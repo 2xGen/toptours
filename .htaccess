@@ -1,0 +1,283 @@
+# TopTours.ai .htaccess Configuration
+# Handle React Router, OpenGraph, and Redirects
+
+# Enable rewrite engine
+RewriteEngine On
+RewriteBase /
+
+# ==========================================
+# BLOG REDIRECTS TO BLOG.TOPTURS.AI
+# ==========================================
+
+# Banff redirects
+Redirect 301 /banff-winter-tours/ https://blog.toptours.ai/banff-winter-tours/
+Redirect 301 /banff-wildlife-tours/ https://blog.toptours.ai/banff-wildlife-tours/
+Redirect 301 /banff-airport-transfers/ https://blog.toptours.ai/banff-airport-transfers/
+Redirect 301 /banff-kayaking-and-rafting-tours/ https://blog.toptours.ai/banff-kayaking-and-rafting-tours/
+Redirect 301 /lake-louise-and-moraine-lake-tours/ https://blog.toptours.ai/lake-louise-and-moraine-lake-tours/
+Redirect 301 /banff-tours/ https://blog.toptours.ai/banff-tours/
+
+# Halifax redirects
+Redirect 301 /halifax-group-and-private-tours/ https://blog.toptours.ai/halifax-group-and-private-tours/
+Redirect 301 /halifax-airport-transfers/ https://blog.toptours.ai/halifax-airport-transfers/
+Redirect 301 /day-trips-from-halifax/ https://blog.toptours.ai/day-trips-from-halifax/
+Redirect 301 /halifax-brewery-and-distillery-tours/ https://blog.toptours.ai/halifax-brewery-and-distillery-tours/
+Redirect 301 /halifax-titanic-tours/ https://blog.toptours.ai/halifax-titanic-tours/
+Redirect 301 /halifax-tours/ https://blog.toptours.ai/halifax-tours/
+
+# Victoria redirects
+Redirect 301 /victoria-private-tours/ https://blog.toptours.ai/victoria-private-tours/
+Redirect 301 /victoria-craft-beer-and-wine-tours/ https://blog.toptours.ai/victoria-craft-beer-and-wine-tours/
+Redirect 301 /victoria-city-tours/ https://blog.toptours.ai/victoria-city-tours/
+Redirect 301 /victoria-airport-transfers/ https://blog.toptours.ai/victoria-airport-transfers/
+Redirect 301 /victoria-whale-watching/ https://blog.toptours.ai/victoria-whale-watching/
+Redirect 301 /victoria-tours/ https://blog.toptours.ai/victoria-tours/
+
+# Ottawa redirects
+Redirect 301 /day-trips-from-ottawa/ https://blog.toptours.ai/day-trips-from-ottawa/
+Redirect 301 /ottawa-airport-transfers/ https://blog.toptours.ai/ottawa-airport-transfers/
+Redirect 301 /ottawa-river-tours/ https://blog.toptours.ai/ottawa-river-tours/
+Redirect 301 /ottawa-parliament-tours/ https://blog.toptours.ai/ottawa-parliament-tours/
+Redirect 301 /ottawa-food-tours/ https://blog.toptours.ai/ottawa-food-tours/
+Redirect 301 /ottawa-tours/ https://blog.toptours.ai/ottawa-tours/
+
+# Calgary redirects
+Redirect 301 /calgary-kayaking/ https://blog.toptours.ai/calgary-kayaking/
+Redirect 301 /calgary-nature-day-trips/ https://blog.toptours.ai/calgary-nature-day-trips/
+Redirect 301 /calgary-western-heritage-tours/ https://blog.toptours.ai/calgary-western-heritage-tours/
+Redirect 301 /calgary-olympic-park-tours/ https://blog.toptours.ai/calgary-olympic-park-tours/
+Redirect 301 /calgary-airport-transfers/ https://blog.toptours.ai/calgary-airport-transfers/
+Redirect 301 /calgary-tours/ https://blog.toptours.ai/calgary-tours/
+
+# Quebec City redirects
+Redirect 301 /quebec-city-art-and-craft-tours/ https://blog.toptours.ai/quebec-city-art-and-craft-tours/
+Redirect 301 /quebec-city-fortification-tours/ https://blog.toptours.ai/quebec-city-fortification-tours/
+Redirect 301 /quebec-city-airport-transfers/ https://blog.toptours.ai/quebec-city-airport-transfers/
+Redirect 301 /quebec-city-water-tours/ https://blog.toptours.ai/quebec-city-water-tours/
+Redirect 301 /quebec-city-full-day-and-half-day-tours/ https://blog.toptours.ai/quebec-city-full-day-and-half-day-tours/
+Redirect 301 /quebec-city-tours/ https://blog.toptours.ai/quebec-city-tours/
+
+# Vancouver redirects
+Redirect 301 /vancouver-gastown-food-tours/ https://blog.toptours.ai/vancouver-gastown-food-tours/
+Redirect 301 /vancouver-airport-transfers/ https://blog.toptours.ai/vancouver-airport-transfers/
+Redirect 301 /day-trips-from-vancouver/ https://blog.toptours.ai/day-trips-from-vancouver/
+Redirect 301 /vancouver-adventure-park-tours/ https://blog.toptours.ai/vancouver-adventure-park-tours/
+Redirect 301 /vancouver-whale-watching-tours/ https://blog.toptours.ai/vancouver-whale-watching-tours/
+Redirect 301 /vancouver-tours/ https://blog.toptours.ai/vancouver-tours/
+
+# Montreal redirects
+Redirect 301 /montreal-airport-transfers/ https://blog.toptours.ai/montreal-airport-transfers/
+Redirect 301 /day-trips-from-montreal/ https://blog.toptours.ai/day-trips-from-montreal/
+Redirect 301 /montreal-nightlife-tours/ https://blog.toptours.ai/montreal-nightlife-tours/
+Redirect 301 /montreal-food-tours/ https://blog.toptours.ai/montreal-food-tours/
+Redirect 301 /montreal-underground-city-tours/ https://blog.toptours.ai/montreal-underground-city-tours/
+Redirect 301 /montreal-tours/ https://blog.toptours.ai/montreal-tours/
+
+# Toronto redirects
+Redirect 301 /toronto-full-day-and-half-day-tours/ https://blog.toptours.ai/toronto-full-day-and-half-day-tours/
+Redirect 301 /day-trips-from-toronto/ https://blog.toptours.ai/day-trips-from-toronto/
+Redirect 301 /toronto-airport-transfers/ https://blog.toptours.ai/toronto-airport-transfers/
+Redirect 301 /toronto-food-tours/ https://blog.toptours.ai/toronto-food-tours/
+Redirect 301 /toronto-island-and-harbor-tours/ https://blog.toptours.ai/toronto-island-and-harbor-tours/
+Redirect 301 /toronto-tours/ https://blog.toptours.ai/toronto-tours/
+
+# Mexico redirects
+Redirect 301 /tulum-jeep-and-atv-tours/ https://blog.toptours.ai/tulum-jeep-and-atv-tours/
+Redirect 301 /tulum-family-wildlife-tours/ https://blog.toptours.ai/tulum-family-wildlife-tours/
+Redirect 301 /day-trips-from-tulum/ https://blog.toptours.ai/day-trips-from-tulum/
+Redirect 301 /tulum-sailing-and-snorkeling/ https://blog.toptours.ai/tulum-sailing-and-snorkeling/
+Redirect 301 /tulum-cenote-jungle-tours/ https://blog.toptours.ai/tulum-cenote-jungle-tours/
+Redirect 301 /tulum-tours/ https://blog.toptours.ai/tulum-tours/
+
+# Cabo San Lucas redirects
+Redirect 301 /cabo-san-lucas-camel-tours/ https://blog.toptours.ai/cabo-san-lucas-camel-tours/
+Redirect 301 /cabo-san-lucas-glass-bottom-boat-tours/ https://blog.toptours.ai/cabo-san-lucas-glass-bottom-boat-tours/
+Redirect 301 /cabo-san-lucas-full-day-and-half-day-tours/ https://blog.toptours.ai/cabo-san-lucas-full-day-and-half-day-tours/
+Redirect 301 /cabo-san-lucas-jeep-and-atv-tours/ https://blog.toptours.ai/cabo-san-lucas-jeep-and-atv-tours/
+Redirect 301 /cabo-san-lucas-fishing-charters/ https://blog.toptours.ai/cabo-san-lucas-fishing-charters/
+Redirect 301 /cabo-san-lucas-tours/ https://blog.toptours.ai/cabo-san-lucas-tours/
+
+# Cozumel redirects
+Redirect 301 /cozumel-zipline-adventure/ https://blog.toptours.ai/cozumel-zipline-adventure/
+Redirect 301 /maximize-your-port-day-your-guide-to-the-best-cozumel-shore-excursions-for-cruise-visitors/ https://blog.toptours.ai/maximize-your-port-day-your-guide-to-the-best-cozumel-shore-excursions-for-cruise-visitors/
+Redirect 301 /cozumel-full-day-and-half-day-tours/ https://blog.toptours.ai/cozumel-full-day-and-half-day-tours/
+Redirect 301 /cozumel-catamaran-snorkeling-tours/ https://blog.toptours.ai/cozumel-catamaran-snorkeling-tours/
+Redirect 301 /cozumel-jeep-and-atv-tours/ https://blog.toptours.ai/cozumel-jeep-and-atv-tours/
+Redirect 301 /cozumel-tours/ https://blog.toptours.ai/cozumel-tours/
+
+# Guanajuato redirects
+Redirect 301 /guanajuato-airport-transfers/ https://blog.toptours.ai/guanajuato-airport-transfers/
+Redirect 301 /guanajuato-night-tours/ https://blog.toptours.ai/guanajuato-night-tours/
+Redirect 301 /day-trips-from-guanajuato/ https://blog.toptours.ai/day-trips-from-guanajuato/
+Redirect 301 /guanajuato-full-day-and-half-day-tours/ https://blog.toptours.ai/guanajuato-full-day-and-half-day-tours/
+Redirect 301 /guanajuato-underground-tours/ https://blog.toptours.ai/guanajuato-underground-tours/
+Redirect 301 /guanajuato-tours/ https://blog.toptours.ai/guanajuato-tours/
+
+# Playa del Carmen redirects
+Redirect 301 /playa-del-carmen-family-animal-tours/ https://blog.toptours.ai/playa-del-carmen-family-animal-tours/
+Redirect 301 /playa-del-carmen-nightlife-tours/ https://blog.toptours.ai/playa-del-carmen-nightlife-tours/
+Redirect 301 /playa-del-carmen-full-day-and-half-day-tours/ https://blog.toptours.ai/playa-del-carmen-full-day-and-half-day-tours/
+Redirect 301 /playa-del-carmen-mayan-ruins-tours/ https://blog.toptours.ai/playa-del-carmen-mayan-ruins-tours/
+Redirect 301 /playa-del-carmen-cenote-tours/ https://blog.toptours.ai/playa-del-carmen-cenote-tours/
+Redirect 301 /playa-del-carmen-tours/ https://blog.toptours.ai/playa-del-carmen-tours/
+
+# San Miguel de Allende redirects
+Redirect 301 /san-miguel-de-allende-day-trips/ https://blog.toptours.ai/san-miguel-de-allende-day-trips/
+Redirect 301 /san-miguel-de-allende-full-day-and-half-day-tours/ https://blog.toptours.ai/san-miguel-de-allende-full-day-and-half-day-tours/
+Redirect 301 /san-miguel-de-allende-hot-air-balloon-tours/ https://blog.toptours.ai/san-miguel-de-allende-hot-air-balloon-tours/
+Redirect 301 /san-miguel-de-allende-cooking-classes/ https://blog.toptours.ai/san-miguel-de-allende-cooking-classes/
+Redirect 301 /san-miguel-de-allende-art-tours/ https://blog.toptours.ai/san-miguel-de-allende-art-tours/
+Redirect 301 /san-miguel-de-allende-tours/ https://blog.toptours.ai/san-miguel-de-allende-tours/
+
+# Oaxaca redirects
+Redirect 301 /oaxaca-water-tours/ https://blog.toptours.ai/oaxaca-water-tours/
+Redirect 301 /oaxaca-full-day-and-half-day-tours/ https://blog.toptours.ai/oaxaca-full-day-and-half-day-tours/
+Redirect 301 /monte-alban-day-trip-oaxaca/ https://blog.toptours.ai/monte-alban-day-trip-oaxaca/
+Redirect 301 /oaxaca-market-and-artisan-tours/ https://blog.toptours.ai/oaxaca-market-and-artisan-tours/
+Redirect 301 /oaxaca-mezcal-tours/ https://blog.toptours.ai/oaxaca-mezcal-tours/
+Redirect 301 /oaxaca-tours/ https://blog.toptours.ai/oaxaca-tours/
+
+# Puerto Vallarta redirects
+Redirect 301 /puerto-vallarta-first-time-visitor-tours/ https://blog.toptours.ai/puerto-vallarta-first-time-visitor-tours/
+Redirect 301 /snorkeling-in-puerto-vallarta/ https://blog.toptours.ai/snorkeling-in-puerto-vallarta/
+Redirect 301 /day-trips-from-puerto-vallarta/ https://blog.toptours.ai/day-trips-from-puerto-vallarta/
+Redirect 301 /puerto-vallarta-whale-watching-tours/ https://blog.toptours.ai/puerto-vallarta-whale-watching-tours/
+Redirect 301 /puerto-vallarta-sunset-cruises/ https://blog.toptours.ai/puerto-vallarta-sunset-cruises/
+Redirect 301 /puerto-vallarta-tours/ https://blog.toptours.ai/puerto-vallarta-tours/
+
+# Mexico City redirects
+Redirect 301 /mexico-city-hot-air-balloon-tour/ https://blog.toptours.ai/mexico-city-hot-air-balloon-tour/
+Redirect 301 /mexico-city-tours-2/ https://blog.toptours.ai/mexico-city-tours-2/
+Redirect 301 /day-trips-from-mexico-city/ https://blog.toptours.ai/day-trips-from-mexico-city/
+Redirect 301 /mexico-city-street-art-tour/ https://blog.toptours.ai/mexico-city-street-art-tour/
+Redirect 301 /mexico-city-lucha-libre-tour/ https://blog.toptours.ai/mexico-city-lucha-libre-tour/
+Redirect 301 /mexico-city-tours/ https://blog.toptours.ai/mexico-city-tours/
+
+# US City redirects
+Redirect 301 /atlanta-movie-tours/ https://blog.toptours.ai/atlanta-movie-tours/
+Redirect 301 /sweet-auburn-atlanta/ https://blog.toptours.ai/sweet-auburn-atlanta/
+Redirect 301 /unveiling-the-canvas-exploring-atlantas-vibrant-cabbagetown-street-art-scene/ https://blog.toptours.ai/unveiling-the-canvas-exploring-atlantas-vibrant-cabbagetown-street-art-scene/
+Redirect 301 /atlanta-beltline-guide/ https://blog.toptours.ai/atlanta-beltline-guide/
+Redirect 301 /atlanta-civil-rights-history/ https://blog.toptours.ai/atlanta-civil-rights-history/
+Redirect 301 /top-things-to-do-in-atlanta/ https://blog.toptours.ai/top-things-to-do-in-atlanta/
+
+# Anchorage redirects
+Redirect 301 /northern-lights-viewing-near-anchorage/ https://blog.toptours.ai/northern-lights-viewing-near-anchorage/
+Redirect 301 /anchorage-helicopter-tours/ https://blog.toptours.ai/anchorage-helicopter-tours/
+Redirect 301 /fishing-in-anchorage/ https://blog.toptours.ai/fishing-in-anchorage/
+Redirect 301 /denali-national-park-from-anchorage/ https://blog.toptours.ai/denali-national-park-from-anchorage/
+Redirect 301 /driving-the-seward-highway/ https://blog.toptours.ai/driving-the-seward-highway/
+Redirect 301 /things-to-do-in-anchorage/ https://blog.toptours.ai/things-to-do-in-anchorage/
+
+# Cancun redirects
+Redirect 301 /cancun-nightlife/ https://blog.toptours.ai/cancun-nightlife/
+Redirect 301 /island-escape-your-ultimate-guide-to-an-isla-mujeres-day-trip-from-cancun/ https://blog.toptours.ai/island-escape-your-ultimate-guide-to-an-isla-mujeres-day-trip-from-cancun/
+Redirect 301 /best-cancun-water-activities/ https://blog.toptours.ai/best-cancun-water-activities/
+Redirect 301 /cancun-adventure-parks/ https://blog.toptours.ai/cancun-adventure-parks/
+Redirect 301 /beyond-the-beach-stepping-back-in-time-with-cancuns-best-mayan-ruins-day-trips/ https://blog.toptours.ai/beyond-the-beach-stepping-back-in-time-with-cancuns-best-mayan-ruins-day-trips/
+Redirect 301 /getting-around-cancun-taxis-buses-cars-more-2025-guide/ https://blog.toptours.ai/getting-around-cancun-taxis-buses-cars-more-2025-guide/
+
+# Destination page redirects to main site
+Redirect 301 /destination/banff/ https://toptours.ai/
+Redirect 301 /destination/cabo-san-lucas/ https://toptours.ai/
+Redirect 301 /destination/calgary/ https://toptours.ai/
+Redirect 301 /destination/cozumel/ https://toptours.ai/
+Redirect 301 /destination/mexico-city/ https://toptours.ai/
+Redirect 301 /destination/boston/ https://toptours.ai/
+Redirect 301 /destination/guanajuato-mexico/ https://toptours.ai/
+Redirect 301 /destination/halifax/ https://toptours.ai/
+Redirect 301 /destination/montreal/ https://toptours.ai/
+Redirect 301 /destination/oaxaca/ https://toptours.ai/
+Redirect 301 /destination/ottawa/ https://toptours.ai/
+Redirect 301 /destination/playa-del-carmen/ https://toptours.ai/
+Redirect 301 /destination/puerto-vallarta/ https://toptours.ai/
+Redirect 301 /destination/quebec-city/ https://toptours.ai/
+Redirect 301 /destination/san-miguel-de-allende/ https://toptours.ai/
+Redirect 301 /destination/anchorage/ https://toptours.ai/
+Redirect 301 /destination/atlanta/ https://toptours.ai/
+Redirect 301 /destination/austin/ https://toptours.ai/
+Redirect 301 /destination/cancun/ https://toptours.ai/
+Redirect 301 /destination/charleston/ https://toptours.ai/
+Redirect 301 /destination/chicago/ https://toptours.ai/
+Redirect 301 /destination/dallas/ https://toptours.ai/
+Redirect 301 /destination/denver/ https://toptours.ai/
+Redirect 301 /destination/detroit/ https://toptours.ai/
+Redirect 301 /destination/honolulu/ https://toptours.ai/
+Redirect 301 /destination/houston/ https://toptours.ai/
+Redirect 301 /destination/indianapolis/ https://toptours.ai/
+Redirect 301 /destination/las-vegas/ https://toptours.ai/
+Redirect 301 /destination/los-angeles/ https://toptours.ai/
+Redirect 301 /destination/miami/ https://toptours.ai/
+Redirect 301 /destination/minneapolis/ https://toptours.ai/
+Redirect 301 /destination/nashville/ https://toptours.ai/
+Redirect 301 /destination/new-orleans/ https://toptours.ai/
+Redirect 301 /destination/new-york-city/ https://toptours.ai/
+Redirect 301 /destination/orlando/ https://toptours.ai/
+Redirect 301 /destination/philadelphia/ https://toptours.ai/
+Redirect 301 /destination/phoenix/ https://toptours.ai/
+Redirect 301 /destination/portland/ https://toptours.ai/
+Redirect 301 /destination/salt-lake-city/ https://toptours.ai/
+Redirect 301 /destination/san-antonio/ https://toptours.ai/
+Redirect 301 /destination/san-diego/ https://toptours.ai/
+Redirect 301 /destination/san-francisco/ https://toptours.ai/
+Redirect 301 /destination/savannah/ https://toptours.ai/
+Redirect 301 /destination/seattle/ https://toptours.ai/
+Redirect 301 /destination/washington-d-c/ https://toptours.ai/
+Redirect 301 /destination/toronto/ https://toptours.ai/
+Redirect 301 /destination/tulum/ https://toptours.ai/
+Redirect 301 /destination/vancouver/ https://toptours.ai/
+Redirect 301 /destination/victoria/ https://toptours.ai/
+
+# ==========================================
+# OPENGRAPH & SEO REWRITE RULES
+# ==========================================
+
+# Serve static HTML for social media crawlers and SEO bots - DESTINATIONS
+RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver|rich-results-test|google-rich-results|search-console) [NC]
+RewriteCond %{REQUEST_URI} ^/destinations/([^/]+)$
+RewriteCond %{DOCUMENT_ROOT}/destinations/$1.html -f
+RewriteRule ^destinations/([^/]+)$ /destinations/$1.html [L]
+
+# Serve static HTML for social media crawlers and SEO bots - TRAVEL GUIDES
+RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver|rich-results-test|google-rich-results|search-console) [NC]
+RewriteCond %{REQUEST_URI} ^/travel-guides/([^/]+)$
+RewriteCond %{DOCUMENT_ROOT}/travel-guides/$1.html -f
+RewriteRule ^travel-guides/([^/]+)$ /travel-guides/$1.html [L]
+
+# Serve static HTML for destinations listing page for crawlers
+RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver) [NC]
+RewriteCond %{REQUEST_URI} ^/destinations/?$
+RewriteCond %{DOCUMENT_ROOT}/destinations.html -f
+RewriteRule ^destinations/?$ /destinations.html [L]
+
+# Serve static HTML for travel guides listing page for crawlers
+RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver) [NC]
+RewriteCond %{REQUEST_URI} ^/travel-guides/?$
+RewriteCond %{DOCUMENT_ROOT}/travel-guides.html -f
+RewriteRule ^travel-guides/?$ /travel-guides.html [L]
+
+# Handle individual destination pages for users - serve React app (must come after bot rules)
+RewriteCond %{REQUEST_URI} ^/destinations/([^/]+)$
+RewriteRule ^destinations/([^/]+)$ index.html [L]
+
+# Handle individual travel guide pages for users - serve React app (must come after bot rules)
+RewriteCond %{REQUEST_URI} ^/travel-guides/([^/]+)$
+RewriteRule ^travel-guides/([^/]+)$ index.html [L]
+
+# Handle /destinations route for users - serve React app
+RewriteCond %{REQUEST_URI} ^/destinations/?$
+RewriteRule ^destinations/?$ index.html [L]
+
+# Handle /travel-guides route for users - serve React app  
+RewriteCond %{REQUEST_URI} ^/travel-guides/?$
+RewriteRule ^travel-guides/?$ index.html [L]
+
+# For all other requests (users), serve React app
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
+
+# Set custom header
+<IfModule mod_headers.c>
+  Header set X-Powered-By "2xGen.com"
+</IfModule>

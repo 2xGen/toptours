@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - TopTours AI</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Find amazing tours and experiences with TopTours AI.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
+                            <span class="text-white text-lg">🧭</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">TopTours AI</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 404 Content -->
+    <div class="min-h-screen flex items-center justify-center gradient-bg">
+        <div class="text-center text-white px-4">
+            <!-- Compass Icon -->
+            <div class="mb-8 animate-float">
+                <div class="w-32 h-32 mx-auto bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <span class="text-6xl">🧭</span>
+                </div>
+            </div>
+
+            <!-- 404 Text -->
+            <h1 class="text-8xl font-bold mb-4">404</h1>
+            <h2 class="text-3xl font-semibold mb-4">Page Not Found</h2>
+            <p class="text-xl mb-8 max-w-md mx-auto opacity-90">
+                Looks like you've taken a wrong turn! The page you're looking for doesn't exist.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="space-y-4">
+                <a href="/" class="inline-block bg-white text-primary font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg">
+                    🏠 Go to Homepage
+                </a>
+                <div class="text-sm opacity-75">
+                    <p>Or try searching for tours and experiences:</p>
+                </div>
+                <a href="/" class="inline-block bg-primary text-white font-semibold px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors duration-200">
+                    🔍 Search Tours
+                </a>
+            </div>
+
+            <!-- Helpful Links -->
+            <div class="mt-12 pt-8 border-t border-white/20">
+                <p class="text-sm opacity-75 mb-4">Popular pages:</p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm">
+                    <a href="/about" class="hover:underline opacity-75 hover:opacity-100 transition-opacity">About</a>
+                    <a href="/how-it-works" class="hover:underline opacity-75 hover:opacity-100 transition-opacity">How It Works</a>
+                    <a href="/blog" class="hover:underline opacity-75 hover:opacity-100 transition-opacity">Blog</a>
+                    <a href="/contact" class="hover:underline opacity-75 hover:opacity-100 transition-opacity">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm opacity-75">
+                © 2025 TopTours AI. All rights reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+</html> 
