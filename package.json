@@ -9,7 +9,7 @@
     "generate-static": "node scripts/generate-static.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "generate-favicon": "node scripts/generate-favicon.js",
-    "build": "npm run sync-destinations && vite build && npm run generate-static && npm run generate-sitemap && npm run generate-favicon && copy api\\*.php dist\\api\\ && copy .htaccess dist\\",
+    "build": "node scripts/build.js",
     "preview": "vite preview"
   },
   "dependencies": {
