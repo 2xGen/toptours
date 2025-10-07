@@ -24,26 +24,32 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 
-// Get the API key from .env file
-$env_file = __DIR__ . '/.env';
+// Get the API key from environment variables (Vercel) or .env file
 $api_key = '';
 
-if (file_exists($env_file)) {
-    $env_content = file_get_contents($env_file);
-    $lines = explode("\n", $env_content);
-    
-    foreach ($lines as $line) {
-        $line = trim($line);
-        if (strpos($line, 'VIATOR_API_KEY=') === 0) {
-            $api_key = substr($line, strlen('VIATOR_API_KEY='));
-            break;
+// Try Vercel environment variable first
+if (getenv('VIATOR_API_KEY')) {
+    $api_key = getenv('VIATOR_API_KEY');
+} else {
+    // Try .env file for local development
+    $env_file = __DIR__ . '/.env';
+    if (file_exists($env_file)) {
+        $env_content = file_get_contents($env_file);
+        $lines = explode("\n", $env_content);
+        
+        foreach ($lines as $line) {
+            $line = trim($line);
+            if (strpos($line, 'VIATOR_API_KEY=') === 0) {
+                $api_key = substr($line, strlen('VIATOR_API_KEY='));
+                break;
+            }
         }
     }
-}
-
-// Fallback to config if .env doesn't exist or key not found
-if (empty($api_key)) {
-    $api_key = VIATOR_API_KEY;
+    
+    // Fallback to config if neither environment variable nor .env found
+    if (empty($api_key)) {
+        $api_key = VIATOR_API_KEY;
+    }
 }
 
 if (empty($api_key) || $api_key === 'your_viator_api_key_here') {
