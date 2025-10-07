@@ -50,30 +50,17 @@ try {
   // Step 2: Build Vite app (required)
   runCommand('vite build', 'Building Vite app');
 
-  // Step 3: Generate static HTML files (optional for Vercel)
-  runCommand('node scripts/generate-static.js', 'Generating static HTML files');
-
-  // Step 4: Generate sitemap (optional)
+  // Step 3: Generate sitemap (for SEO)
   runCommand('node scripts/generate-sitemap.js', 'Generating sitemap');
 
-  // Step 5: Generate favicon (optional)
+  // Step 4: Generate favicon
   runCommand('node scripts/generate-favicon.js', 'Generating favicon');
 
-  // Step 6: Copy API files (cross-platform)
+  // Step 5: Copy API files (cross-platform)
   console.log('📁 Copying API files...');
   const distApiDir = path.join(__dirname, '..', 'dist', 'api');
   const apiDir = path.join(__dirname, '..', 'api');
-  copyFiles(apiDir, distApiDir, file => file.endsWith('.php'));
-
-  // Step 7: Copy .htaccess (cross-platform)
-  console.log('⚙️ Copying .htaccess...');
-  const htaccessSrc = path.join(__dirname, '..', '.htaccess');
-  const htaccessDest = path.join(__dirname, '..', 'dist', '.htaccess');
-  
-  if (fs.existsSync(htaccessSrc)) {
-    fs.copyFileSync(htaccessSrc, htaccessDest);
-    console.log('  ✅ Copied .htaccess');
-  }
+  copyFiles(apiDir, distApiDir, file => file.endsWith('.js'));
 
   console.log('🎉 Build completed successfully!');
   console.log('📦 Ready for deployment to Vercel');
