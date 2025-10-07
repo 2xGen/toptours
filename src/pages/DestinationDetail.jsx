@@ -55,7 +55,7 @@ const DestinationDetail = ({ onOpenModal }) => {
     setLoading(prev => ({ ...prev, [category]: true }));
     try {
       const searchTerm = `${destinationName} ${category}`;
-      const response = await fetch('/api/viator-search.php', {
+      const response = await fetch('/api/viator-search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

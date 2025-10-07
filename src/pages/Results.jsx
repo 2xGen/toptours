@@ -182,7 +182,7 @@ const Results = () => {
     // Fetch filtered results
     setLoading(true);
     try {
-      const response = await fetch('/api/viator-search.php', {
+      const response = await fetch('/api/viator-search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -234,7 +234,7 @@ const Results = () => {
     // Reset to original search without filters
     setLoading(true);
     try {
-      const response = await fetch('/api/viator-search.php', {
+      const response = await fetch('/api/viator-search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -283,7 +283,7 @@ const Results = () => {
     setGeneratingDescription(true);
     
     try {
-      const response = await fetch('/api/openai-description.php', {
+      const response = await fetch('/api/openai-description', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -339,7 +339,7 @@ const Results = () => {
       }
       
       // Call your PHP API endpoint
-      const response = await fetch('/api/viator-search.php', {
+      const response = await fetch('/api/viator-search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -466,7 +466,7 @@ const Results = () => {
       // Extract destination from search term (e.g., "aruba snorkeling" -> "aruba")
       const destination = extractDestination(searchTerm);
       
-      const response = await fetch('/api/openai-categories.php', {
+      const response = await fetch('/api/openai-categories', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
