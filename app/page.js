@@ -1,8 +1,4 @@
-import { Metadata } from 'next'
-import Hero from '@/components/Hero'
-import Destinations from '@/components/Destinations'
-import TravelTips from '@/components/TravelTips'
-import CTA from '@/components/CTA'
+import Home from '@/pages/Home'
 
 export const metadata = {
   title: 'TopTours.ai - AI-Powered Travel Planning & Tour Booking',
@@ -35,7 +31,7 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
+    <>
       {/* Enhanced Schema for Homepage */}
       <script
         type="application/ld+json"
@@ -59,11 +55,7 @@ export default function HomePage() {
           })
         }}
       />
-      
-      <Hero />
-      <Destinations />
-      <TravelTips />
-      <CTA />
-    </main>
+      <Home />
+    </>
   )
 }
