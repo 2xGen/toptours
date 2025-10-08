@@ -47,8 +47,8 @@ export default function DestinationDetailClient({ destination }) {
       fetchToursForCategory(safeDestination.name, category);
     });
 
-    // Load related destinations
-    const related = getRelatedDestinations(safeDestination.id, 6);
+    // Load all related destinations from the same region
+    const related = getRelatedDestinations(safeDestination.id);
     setRelatedDestinations(related);
   }, []);
 

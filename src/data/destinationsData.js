@@ -9619,16 +9619,16 @@ export const getAllDestinations = () => {
   return destinations;
 };
 
-export const getRelatedDestinations = (currentDestinationId, limit = 6) => {
+export const getRelatedDestinations = (currentDestinationId) => {
   const currentDestination = getDestinationById(currentDestinationId);
   if (!currentDestination) return [];
   
-  // Get destinations from the same category, excluding the current one
+  // Get ALL destinations from the same category, excluding the current one
   const related = destinations.filter(dest => 
     dest.category === currentDestination.category && 
     dest.id !== currentDestinationId
   );
   
-  // Shuffle and return limited number
-  return related.sort(() => Math.random() - 0.5).slice(0, limit);
+  // Sort alphabetically by name
+  return related.sort((a, b) => a.name.localeCompare(b.name));
 }; 
