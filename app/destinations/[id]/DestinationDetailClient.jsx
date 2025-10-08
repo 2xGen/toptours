@@ -562,7 +562,7 @@ export default function DestinationDetailClient({ destination }) {
 
         {/* Combined Internal Linking Section */}
         {(relatedGuides.length > 0 || relatedDestinations.length > 0) && (
-          <section className="py-12 px-4" style={{ backgroundColor: '#8C00BF' }}>
+          <section className="py-12 px-4" style={{ backgroundColor: '#764ba2' }}>
             <div className="max-w-7xl mx-auto">
               {/* Related Destinations */}
               {relatedDestinations.length > 0 && (
