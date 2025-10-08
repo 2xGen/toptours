@@ -33,7 +33,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg',
+        url: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/TopTours%20AI%20Home%20Page.png',
         width: 1200,
         height: 630,
         alt: 'TopTours.ai - AI-Powered Travel Planning',
@@ -44,7 +44,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'TopTours.ai - AI-Powered Travel Planning & Tour Booking',
     description: 'Discover and book the best tours, activities, and experiences worldwide with AI-powered recommendations.',
-    images: ['/og-image.jpg'],
+    images: ['https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/TopTours%20AI%20Home%20Page.png'],
   },
   robots: {
     index: true,
