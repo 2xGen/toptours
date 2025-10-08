@@ -66,7 +66,10 @@ export default function DestinationDetailClient({ destination }) {
       }
 
       const data = await response.json();
-      const products = Array.isArray(data.products) ? data.products : [];
+      
+      // Viator API returns products in data.products.results
+      const products = Array.isArray(data.products?.results) ? data.products.results : 
+                      Array.isArray(data.products) ? data.products : [];
       
       setTours(prev => ({
         ...prev,
