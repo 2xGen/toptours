@@ -14,6 +14,13 @@ import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 
 export default function DestinationDetailClient({ destination }) {
+  // Ensure destination has required arrays
+  const safeDestination = {
+    ...destination,
+    tourCategories: Array.isArray(destination?.tourCategories) ? safeDestination.tourCategories : [],
+    whyVisit: Array.isArray(destination?.whyVisit) ? safeDestination.whyVisit : []
+  };
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [preFilledDestination, setPreFilledDestination] = useState('');
   const [tours, setTours] = useState({});
@@ -27,22 +34,16 @@ export default function DestinationDetailClient({ destination }) {
   };
 
   useEffect(() => {
-    // Safety check for tourCategories
-    if (!destination.tourCategories || !Array.isArray(destination.tourCategories)) {
-      console.error('tourCategories is not an array:', destination.tourCategories);
-      return;
-    }
-
     // Initialize carousel indexes for each category
     const indexes = {};
-    destination.tourCategories.forEach(category => {
+    safeDestination.tourCategories.forEach(category => {
       indexes[category] = 0;
     });
     setCarouselIndexes(indexes);
     
     // Fetch tours for each category
-    destination.tourCategories.forEach(category => {
-      fetchToursForCategory(destination.name, category);
+    safeDestination.tourCategories.forEach(category => {
+      fetchToursForCategory(safeDestination.name, category);
     });
   }, []);
 
@@ -114,16 +115,16 @@ export default function DestinationDetailClient({ destination }) {
               >
                 <div className="flex items-center mb-4">
                   <MapPin className="w-5 h-5 text-blue-600 mr-2" />
-                  <span className="text-white font-medium">{destination.category || destination.region}</span>
+                  <span className="text-white font-medium">{safeDestination.category || safeDestination.region}</span>
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold mb-4 md:mb-6 text-white">
-                  {destination.fullName}
+                  {safeDestination.fullName}
                 </h1>
                 <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8">
-                  {destination.heroDescription}
+                  {safeDestination.heroDescription}
                 </p>
                 <div className="flex flex-wrap gap-2 sm:gap-4">
-                  {destination.tourCategories && Array.isArray(destination.tourCategories) && destination.tourCategories.slice(0, 3).map((category, index) => (
+                  {safeDestination.tourCategories.slice(0, 3).map((category, index) => (
                     <Badge key={index} variant="outline" className="bg-white/20 text-white border-white/30 text-sm">
                       {category}
                     </Badge>
@@ -139,8 +140,8 @@ export default function DestinationDetailClient({ destination }) {
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <img
-                    src={destination.imageUrl}
-                    alt={destination.fullName}
+                    src={safeDestination.imageUrl}
+                    alt={safeDestination.fullName}
                     className="w-full h-64 sm:h-80 object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
@@ -158,7 +159,7 @@ export default function DestinationDetailClient({ destination }) {
               <span className="text-gray-400">/</span>
               <Link href="/destinations" className="text-gray-500 hover:text-gray-700">Destinations</Link>
               <span className="text-gray-400">/</span>
-              <span className="text-gray-900 font-medium">{destination.fullName}</span>
+              <span className="text-gray-900 font-medium">{safeDestination.fullName}</span>
             </nav>
           </div>
         </section>
@@ -174,12 +175,12 @@ export default function DestinationDetailClient({ destination }) {
               className="text-center mb-8 sm:mb-12"
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
-                Why Visit {destination.fullName}?
+                Why Visit {safeDestination.fullName}?
               </h2>
             </motion.div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {destination.whyVisit && Array.isArray(destination.whyVisit) && destination.whyVisit.map((reason, index) => (
+              {safeDestination.whyVisit && Array.isArray(safeDestination.whyVisit) && safeDestination.whyVisit.map((reason, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
@@ -229,7 +230,7 @@ export default function DestinationDetailClient({ destination }) {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">Weather</h3>
-                    <p className="text-gray-600">{destination.bestTimeToVisit.weather}</p>
+                    <p className="text-gray-600">{safeDestination.bestTimeToVisit.weather}</p>
                   </div>
                 </div>
                 
@@ -239,7 +240,7 @@ export default function DestinationDetailClient({ destination }) {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">Best Months</h3>
-                    <p className="text-gray-600">{destination.bestTimeToVisit.bestMonths}</p>
+                    <p className="text-gray-600">{safeDestination.bestTimeToVisit.bestMonths}</p>
                   </div>
                 </div>
               </motion.div>
@@ -254,14 +255,14 @@ export default function DestinationDetailClient({ destination }) {
                 <Card className="bg-blue-50 border-blue-200">
                   <CardContent className="p-6">
                     <h3 className="text-lg font-semibold text-blue-800 mb-2">Peak Season</h3>
-                    <p className="text-blue-700">{destination.bestTimeToVisit.peakSeason}</p>
+                    <p className="text-blue-700">{safeDestination.bestTimeToVisit.peakSeason}</p>
                   </CardContent>
                 </Card>
                 
                 <Card className="bg-green-50 border-green-200">
                   <CardContent className="p-6">
                     <h3 className="text-lg font-semibold text-green-800 mb-2">Off Season</h3>
-                    <p className="text-green-700">{destination.bestTimeToVisit.offSeason}</p>
+                    <p className="text-green-700">{safeDestination.bestTimeToVisit.offSeason}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -280,14 +281,14 @@ export default function DestinationDetailClient({ destination }) {
               className="text-center mb-8 sm:mb-12"
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
-                Popular {destination.fullName} Tours & Activities
+                Popular {safeDestination.fullName} Tours & Activities
               </h2>
               <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-                Discover the best tours and activities in {destination.fullName} with our AI-powered recommendations
+                Discover the best tours and activities in {safeDestination.fullName} with our AI-powered recommendations
               </p>
             </motion.div>
 
-            {destination.tourCategories && Array.isArray(destination.tourCategories) && destination.tourCategories.map((category, categoryIndex) => (
+            {safeDestination.tourCategories && Array.isArray(safeDestination.tourCategories) && safeDestination.tourCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category}
                 initial={{ opacity: 0, y: 30 }}
@@ -298,7 +299,7 @@ export default function DestinationDetailClient({ destination }) {
               >
                 <div className="flex items-center justify-between mb-8">
                   <h3 className="text-2xl font-poppins font-bold text-gray-800">
-                    {destination.fullName} {category}
+                    {safeDestination.fullName} {category}
                   </h3>
                   <div className="flex space-x-2">
                     <Button
@@ -386,7 +387,7 @@ export default function DestinationDetailClient({ destination }) {
               className="text-center mb-12"
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-6">
-                Plan Your {destination.fullName} Trip
+                Plan Your {safeDestination.fullName} Trip
               </h2>
             </motion.div>
 
@@ -404,11 +405,11 @@ export default function DestinationDetailClient({ destination }) {
                       <Car className="w-8 h-8 text-blue-600 mr-3" />
                       <h3 className="text-2xl font-bold text-gray-800">Transportation Tips</h3>
                     </div>
-                    <p className="text-gray-700 mb-6 leading-relaxed">{destination.gettingAround}</p>
+                    <p className="text-gray-700 mb-6 leading-relaxed">{safeDestination.gettingAround}</p>
                     <div className="bg-white rounded-lg p-4">
-                      <h4 className="font-semibold text-gray-800 mb-2">Car Rental Deals in {destination.fullName}</h4>
+                      <h4 className="font-semibold text-gray-800 mb-2">Car Rental Deals in {safeDestination.fullName}</h4>
                       <p className="text-gray-600 text-sm mb-3">Rent a car for maximum flexibility and explore at your own pace.</p>
-                      <Button variant="outline" className="w-full" onClick={() => window.open(`https://www.rentalcars.com/SearchResults.do?city=${encodeURIComponent(destination.fullName)}`, '_blank')}>
+                      <Button variant="outline" className="w-full" onClick={() => window.open(`https://www.rentalcars.com/SearchResults.do?city=${encodeURIComponent(safeDestination.fullName)}`, '_blank')}>
                         Find Car Rental Deals
                       </Button>
                     </div>
@@ -430,12 +431,12 @@ export default function DestinationDetailClient({ destination }) {
                       <h3 className="text-2xl font-bold text-gray-800">Where to Stay</h3>
                     </div>
                     <p className="text-gray-700 mb-6 leading-relaxed">
-                      Find the perfect accommodation for your {destination.fullName} adventure. From luxury resorts to cozy hotels, we've got you covered.
+                      Find the perfect accommodation for your {safeDestination.fullName} adventure. From luxury resorts to cozy hotels, we've got you covered.
                     </p>
                     <div className="bg-white rounded-lg p-4">
-                      <h4 className="font-semibold text-gray-800 mb-2">Best Hotel Deals in {destination.fullName}</h4>
+                      <h4 className="font-semibold text-gray-800 mb-2">Best Hotel Deals in {safeDestination.fullName}</h4>
                       <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers.</p>
-                      <Button variant="outline" className="w-full" onClick={() => window.open(`https://www.booking.com/searchresults.html?ss=${encodeURIComponent(destination.fullName)}`, '_blank')}>
+                      <Button variant="outline" className="w-full" onClick={() => window.open(`https://www.booking.com/searchresults.html?ss=${encodeURIComponent(safeDestination.fullName)}`, '_blank')}>
                         Find Hotel Deals
                       </Button>
                     </div>
@@ -456,17 +457,17 @@ export default function DestinationDetailClient({ destination }) {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Ready to Explore {destination.fullName}?
+                Ready to Explore {safeDestination.fullName}?
               </h2>
               <p className="text-xl text-white/90 mb-8">
-                Discover the best tours and activities in {destination.fullName} with AI-powered recommendations tailored just for you.
+                Discover the best tours and activities in {safeDestination.fullName} with AI-powered recommendations tailored just for you.
               </p>
               <Button 
-                onClick={() => handleOpenModal(destination.fullName)}
+                onClick={() => handleOpenModal(safeDestination.fullName)}
                 size="lg"
                 className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-8 py-6 text-lg"
               >
-                Start Planning Your {destination.fullName} Trip
+                Start Planning Your {safeDestination.fullName} Trip
               </Button>
             </motion.div>
           </div>
