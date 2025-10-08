@@ -358,7 +358,7 @@ export default function DestinationDetailClient({ destination }) {
 
                           {/* Tour Content */}
                           <CardContent className="p-3 flex-1 flex flex-col">
-                            <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 flex-1">
+                            <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 h-10">
                               {tour.title}
                             </h4>
                             
@@ -407,6 +407,20 @@ export default function DestinationDetailClient({ destination }) {
                             <div className="text-lg font-bold text-orange-600 mb-3">
                               From ${tour.pricing?.summary?.fromPrice || 'N/A'}
                             </div>
+
+                            {/* Quick View Button */}
+                            <Button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                window.open(tour.productUrl || `https://www.viator.com/tours/${tour.productCode}`, '_blank');
+                              }}
+                              variant="outline"
+                              size="sm"
+                              className="mb-2 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 text-purple-700 hover:from-purple-100 hover:to-blue-100 hover:border-purple-300 transition-all duration-200 text-xs"
+                            >
+                              <Brain className="w-3 h-3 mr-1" />
+                              Quick View
+                            </Button>
 
                             {/* View Details Button */}
                             <Button
