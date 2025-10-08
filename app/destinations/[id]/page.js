@@ -1,5 +1,8 @@
-import { getDestinationById, destinations, getAllDestinations } from '@/data/destinationsData';
+import { getDestinationById } from '@/data/destinationsData';
 import DestinationDetailClient from './DestinationDetailClient';
+
+// Force dynamic rendering to avoid build-time errors
+export const dynamic = 'force-dynamic';
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
@@ -39,23 +42,6 @@ export async function generateMetadata({ params }) {
       canonical: `https://toptours.ai/destinations/${destination.id}`,
     },
   };
-}
-
-// Generate static pages for all destinations at build time
-export async function generateStaticParams() {
-  try {
-    const allDestinations = getAllDestinations();
-    if (!Array.isArray(allDestinations)) {
-      console.error('getAllDestinations did not return an array');
-      return [];
-    }
-    return allDestinations.map((destination) => ({
-      id: destination.id,
-    }));
-  } catch (error) {
-    console.error('Error in generateStaticParams:', error);
-    return [];
-  }
 }
 
 export default function DestinationDetailPage({ params }) {

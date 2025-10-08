@@ -1,6 +1,9 @@
 import { travelGuides } from '@/data/travelGuidesData';
 import TravelGuideClient from './TravelGuideClient';
 
+// Force dynamic rendering to avoid build-time errors
+export const dynamic = 'force-dynamic';
+
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
   const guide = travelGuides.find(g => g.id === params.id);
@@ -41,13 +44,6 @@ export async function generateMetadata({ params }) {
       canonical: `https://toptours.ai/travel-guides/${guide.id}`,
     },
   };
-}
-
-// Generate static pages for all travel guides at build time
-export async function generateStaticParams() {
-  return travelGuides.map((guide) => ({
-    id: guide.id,
-  }));
 }
 
 export default function TravelGuidePage({ params }) {
