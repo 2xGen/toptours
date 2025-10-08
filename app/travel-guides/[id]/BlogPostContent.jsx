@@ -366,65 +366,225 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
     <>
       {/* SEO Meta tags will be handled by the parent page.js component */}
         
-        {/* FAQ Schema for Travel Mistakes */}
-        {slug === 'travel-mistakes-to-avoid' && (
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
+        {/* FAQ Schemas - Dynamically generate based on slug */}
+        {(() => {
+          // Define FAQ data for each blog
+          const faqData = {
+            'travel-mistakes-to-avoid': [
+              { q: "How can I make my travel experience smoother?", a: "Start by avoiding the most common travel mistakes—pack light, research entry rules early, and book your top tours in advance to ensure availability." },
+              { q: "What's the best way to find tours and activities?", a: "Use TopTours.ai to discover the best-rated tours worldwide. Our AI scans thousands of options and recommends activities tailored to your interests and travel style." },
+              { q: "When should I book tours for popular destinations?", a: "Ideally two to three weeks in advance, especially for experiences like sunset cruises, guided hikes, and museum tours." },
+              { q: "Is travel insurance really necessary?", a: "Yes, travel insurance is essential for protecting against unexpected events like trip cancellations, medical emergencies, or lost luggage. The small cost can save you thousands if something goes wrong." },
+              { q: "How much cash should I carry while traveling?", a: "Carry a small amount of local currency for emergencies and places that don't accept cards, but rely primarily on cards with low foreign transaction fees. Keep cash in multiple places for security." },
+              { q: "What's the most important travel document to backup?", a: "Your passport is the most critical document to backup. Store digital copies in your email, cloud storage, and with a trusted contact. Also backup travel insurance documents and important reservations." }
+            ],
+            'ai-travel-planning-guide': [
+              { q: "How does AI travel planning work?", a: "AI travel planning uses machine learning algorithms to analyze your preferences, budget, travel dates, and interests. It then creates personalized itineraries by processing vast amounts of data including reviews, pricing, weather patterns, and local events to suggest the best experiences for your trip." },
+              { q: "What are the benefits of using AI for trip planning?", a: "AI travel planning offers numerous benefits including time-saving efficiency, personalized recommendations based on your travel style, real-time optimization for weather and events, cost optimization by finding the best deals, and the ability to discover hidden gems you might not find otherwise." },
+              { q: "Are AI travel planners accurate and reliable?", a: "Modern AI travel planners are highly accurate and continuously improve through machine learning. They process millions of data points including user reviews, pricing trends, weather patterns, and local events to provide reliable recommendations. However, it's always good practice to verify important details like opening hours and booking requirements." },
+              { q: "Can AI plan multi-destination trips?", a: "Yes, advanced AI travel planners can create complex multi-destination itineraries, optimizing routes, transportation connections, and timing between locations. They can suggest the most efficient travel sequences and help you maximize your time across multiple destinations." },
+              { q: "What information should I provide to AI travel planners?", a: "For the best results, provide your budget range, travel dates and duration, preferred accommodation types, activity preferences, dietary restrictions, accessibility needs, and any specific interests or goals for your trip. The more detailed information you provide, the more personalized your recommendations will be." },
+              { q: "Is AI travel planning free?", a: "Many AI travel planning tools offer free basic features, with premium options available for advanced customization and exclusive deals. Some platforms use freemium models where basic planning is free, but advanced features require a subscription." }
+            ],
+            'when-to-book-tours': [
+              { q: "When is the best time to book tours?", a: "For popular tours, booking 2–3 months in advance is ideal. For seasonal tours, 1–2 months is usually enough. Private or specialized tours may require 3–4 months' notice." },
+              { q: "Can I find last-minute tour discounts?", a: "Yes, last-minute deals are often available 1–2 weeks before the tour, especially during off-peak times. Using platforms like TopTours.ai can help identify these deals." },
+              { q: "Should I book tours online or in person?", a: "Booking online is generally safer and often cheaper. It allows you to compare multiple providers, read reviews, and secure your spot ahead of time." },
+              { q: "Do tour prices vary by season?", a: "Yes, peak season prices are higher due to demand, while off-season tours often have discounts. Planning according to your destination's season can save money." },
+              { q: "Can AI help me choose the best tours for my trip?", a: "Absolutely! AI tools like TopTours.ai analyze your destination, interests, and travel dates to recommend the best tours and activities, often saving you time and money." }
+            ],
+            'how-to-choose-a-tour': [
+              { q: "Should I choose a group or private tour?", a: "Group tours are great for budget-friendly, structured experiences and meeting other travelers. Private tours provide a personalized pace, exclusive access, and flexibility, ideal for small groups or special occasions." },
+              { q: "How do I know if a tour is worth it?", a: "Check traveler reviews, ratings, included activities, and duration. TopTours.ai provides a curated list of top-rated tours using the Viator API, so you can quickly find reliable options." },
+              { q: "What should I look for in a tour operator?", a: "Look for licensed operators with positive reviews, clear cancellation policies, safety certifications, and transparent pricing. Check if they provide insurance and what's included in the tour price." },
+              { q: "How far in advance should I book tours?", a: "Popular tours should be booked 2-3 months ahead, especially during peak season. Some specialized tours may need even earlier booking to secure your spot." },
+              { q: "Can I customize a tour to my preferences?", a: "Many operators offer customizable private tours. TopTours.ai can help you find tours that match your specific interests and requirements." }
+            ],
+            'beach-vacation-packing-list': [
+              { q: "What are the essentials for a beach vacation?", a: "Essential items include sunscreen (reef-safe SPF 50+), swimwear, lightweight clothing, sun protection (hat, sunglasses), beach towel, waterproof phone case, and flip-flops or water shoes." },
+              { q: "How much sunscreen should I pack?", a: "Pack at least one bottle for carry-on and purchase more locally. Use reef-safe sunscreen to protect marine ecosystems, especially in protected areas." },
+              { q: "What should I pack for water activities?", a: "Bring a rash guard, water shoes, waterproof phone case, dry bag for valuables, and a reusable water bottle. Consider packing a snorkel mask if you plan to snorkel frequently." },
+              { q: "Do I need special clothing for beach destinations?", a: "Pack lightweight, breathable fabrics that dry quickly. Bring cover-ups for walking around town, a light jacket for air-conditioned spaces, and comfortable walking shoes for excursions." },
+              { q: "What electronics should I bring to the beach?", a: "Essential electronics include your phone with waterproof case, portable charger, universal adapter, and optionally a waterproof camera. Keep all electronics in waterproof bags when at the beach." }
+            ],
+            'save-money-on-tours-activities': [
+              { q: "How can I find affordable tours without sacrificing quality?", a: "Book in advance, travel during shoulder season, compare prices on multiple platforms, look for combo deals, and use AI tools like TopTours.ai to find the best value options based on reviews and ratings." },
+              { q: "When is the cheapest time to book tours?", a: "Last-minute deals (1-2 weeks before) or early-bird discounts (2-3 months ahead) often offer the best prices. Shoulder season (just before or after peak season) typically has lower prices with good weather." },
+              { q: "Are group tours always cheaper than private tours?", a: "Generally yes, group tours cost less per person. However, for families or small groups, private tours divided among members can sometimes be competitive in price while offering more flexibility." },
+              { q: "Can I negotiate tour prices?", a: "While online prices are usually fixed, local operators may offer discounts for cash payments, multiple bookings, or during slow periods. Always ask politely if there are any current promotions." },
+              { q: "How can TopTours.ai help me save money?", a: "TopTours.ai helps you compare thousands of tours instantly, find highly-rated budget-friendly options, and discover alternative experiences that offer better value for your money." }
+            ],
+            'multi-destination-trip-planning': [
+              { q: "How do I plan a multi-city trip efficiently?", a: "Start by mapping your route geographically to minimize backtracking. Use AI tools to optimize your itinerary, book flexible tours that work with your schedule, and allow buffer days between destinations for travel." },
+              { q: "What's the ideal number of destinations for one trip?", a: "For a 2-week trip, 3-4 destinations is ideal. This allows 3-5 days per location for meaningful exploration without feeling rushed. Quality of experience typically beats quantity of destinations." },
+              { q: "How much time should I allocate between destinations?", a: "Allow at least a full travel day between destinations, including transport time, check-in/out, and rest. Factor in jet lag for long-distance travel and different time zones." },
+              { q: "Should I book all my tours in advance for a multi-destination trip?", a: "Book must-see experiences in advance, but leave flexibility for spontaneous discoveries. AI planning tools can help you find and book tours as you go." },
+              { q: "How can I save money on multi-destination trips?", a: "Use regional airlines or trains instead of multiple international flights, book accommodations with kitchens to save on meals, and look for multi-day tour packages that cover multiple cities." }
+            ],
+            'private-vs-group-tours': [
+              { q: "What are the main advantages of private tours?", a: "Private tours offer personalized pacing, flexible itineraries, exclusive attention from guides, ability to customize stops, and privacy for your group. They're ideal for families, couples, or those with specific interests." },
+              { q: "Are group tours good for solo travelers?", a: "Yes! Group tours are excellent for solo travelers as they provide built-in social interaction, safety in numbers, and the opportunity to meet like-minded travelers while splitting costs." },
+              { q: "How much more expensive are private tours?", a: "Private tours typically cost 2-4x more than group tours, but when split among 4-6 people, the per-person cost can be comparable while offering much more flexibility and personalization." },
+              { q: "Can I request a private version of a group tour?", a: "Many tour operators offer private versions of popular group tours. Contact them directly or use TopTours.ai to find operators who offer both options." },
+              { q: "Which is better for families with young children?", a: "Private tours are often better for families with young children as they allow for flexible pacing, frequent breaks, and age-appropriate customization without worrying about holding up a group." }
+            ],
+            'ai-travel-itinerary-planning': [
+              { q: "How does AI create travel itineraries?", a: "AI analyzes your destination, available time, interests, and budget to create optimized daily schedules. It considers opening hours, travel times between locations, and popular visiting times to maximize your experience." },
+              { q: "Can AI help me find tours I wouldn't discover on my own?", a: "Absolutely! AI analyzes thousands of options including hidden gems, local favorites, and newly launched experiences that don't appear in traditional search results." },
+              { q: "How accurate are AI travel recommendations?", a: "AI recommendations are based on millions of data points including real traveler reviews, current ratings, and booking trends. They're highly accurate for matching tours to your preferences." },
+              { q: "Can I modify AI-generated itineraries?", a: "Yes! AI provides a starting point that you can customize. Most AI travel tools allow you to adjust, add, or remove recommendations to create your perfect itinerary." },
+              { q: "Is TopTours.ai free to use?", a: "Yes! TopTours.ai is completely free. We earn a small commission from our partners when you book, but you pay the same price as booking directly." }
+            ],
+            'best-caribbean-islands': [
+              { q: "Which Caribbean island is best for first-time visitors?", a: "Aruba is ideal for first-timers with its year-round perfect weather, pristine beaches, safety, and easy English communication. It's outside the hurricane belt and offers diverse activities from beaches to adventure sports." },
+              { q: "What are the best Caribbean islands for families?", a: "Turks & Caicos, Cayman Islands, and Aruba are excellent for families with calm waters, family-friendly resorts, and safe environments. They offer activities suitable for all ages." },
+              { q: "Which Caribbean islands have the best beaches?", a: "Aruba, Antigua and Barbuda, and the Cayman Islands are renowned for their pristine beaches. Aruba offers year-round perfect conditions, Antigua has 365 beaches (one for every day), and the Cayman Islands boast the famous Seven Mile Beach with its soft white sand." },
+              { q: "Do I need a passport to visit Caribbean islands?", a: "Yes, a valid passport is required for most Caribbean destinations. Some islands like Puerto Rico and the U.S. Virgin Islands only require a government-issued ID for U.S. citizens, but it's always best to check specific requirements for your chosen destination." },
+              { q: "Which Caribbean island is best for adventure activities?", a: "St. Lucia offers incredible hiking through rainforests and up the iconic Pitons. Jamaica has Dunn's River Falls and excellent hiking trails. The British Virgin Islands are perfect for sailing adventures, while Exuma offers unique experiences like swimming with pigs." },
+              { q: "How can I find the best tours and activities for my chosen Caribbean island?", a: "TopTours.ai makes it easy to discover the best tours and activities for any Caribbean destination. Simply enter your chosen island, and our AI will instantly show you the top-rated experiences, from sailing adventures to cultural tours, all powered by Viator's trusted network." }
+            ],
+            'best-time-to-visit-caribbean': [
+              { q: "What months are best for weather in the Caribbean?", a: "The dry season from December to April offers the best weather, with warm temperatures and minimal rain." },
+              { q: "Which Caribbean islands are safe during hurricane season?", a: "Aruba, Curaçao, Bonaire, Barbados, and Trinidad & Tobago are generally outside the hurricane belt." },
+              { q: "When is the cheapest time to visit the Caribbean?", a: "August to early December offers lower prices on flights, hotels, and tours." },
+              { q: "Can I travel to the Caribbean in summer?", a: "Yes — summer is warm and less crowded. Just monitor weather forecasts and choose southern islands." },
+              { q: "How can I find the best tours during my visit?", a: "Visit TopTours.ai to instantly discover top-rated tours in your chosen Caribbean destination." }
+            ],
+            'family-tours-caribbean': [
+              { q: "What are the best Caribbean islands for families with young children?", a: "Aruba, Cayman Islands, and Nassau are excellent for families with young children. They offer calm waters, shallow beaches, and family-friendly resorts with activities suitable for all ages." },
+              { q: "Are Caribbean tours safe for kids?", a: "Yes, most Caribbean tours are designed with family safety in mind. Operators provide life jackets, safety equipment, and professional guides. Always check age requirements and safety features before booking." },
+              { q: "What activities are suitable for toddlers and young children?", a: "Glass-bottom boat tours, submarine expeditions, and dolphin encounters (3+ years) are perfect for young children. Beach time, shallow water play, and cultural walking tours are also great options for toddlers." },
+              { q: "Do I need to book family tours in advance?", a: "Yes, especially during school holidays and peak season. Popular family activities like dolphin encounters and water parks often sell out weeks in advance." },
+              { q: "Are Caribbean beaches safe for children?", a: "Most Caribbean beaches are safe for families, especially those at resorts with lifeguards. Choose beaches with calm waters and gradual slopes. Always supervise children and check for jellyfish warnings." },
+              { q: "Can I find age-appropriate activities for teenagers?", a: "Absolutely! The Caribbean offers adventure activities like zip-lining, scuba diving (with certification), jet skiing, and ATV tours that teenagers love. Many islands also have water parks and cultural experiences." }
+            ],
+            'amsterdam-3-day-itinerary': [
+              { q: "Is 3 days enough to see Amsterdam?", a: "Yes! Three days allows you to experience Amsterdam's highlights including canal cruises, major museums, historic neighborhoods, and local culture. You can see the main attractions while still having time to explore at a relaxed pace." },
+              { q: "What are the must-see attractions in Amsterdam?", a: "Essential attractions include Anne Frank House, Van Gogh Museum, Rijksmuseum, canal cruise, Jordaan neighborhood, and Dam Square. Book museum tickets in advance as they often sell out." },
+              { q: "How do I get around Amsterdam?", a: "Amsterdam is best explored by bike, tram, or walking. The city has excellent public transport and is very walkable. Rent a bike to experience Amsterdam like a local." },
+              { q: "When is the best time to visit Amsterdam?", a: "April-May (tulip season) and September-October offer the best weather and fewer crowds. Summer is peak season with warm weather but larger crowds and higher prices." },
+              { q: "Should I buy the I Amsterdam City Card?", a: "If you plan to visit multiple museums and use public transport extensively, the I Amsterdam City Card offers great value with free museum entry and unlimited transport." }
+            ],
+            'paris-travel-guide': [
+              { q: "How many days do I need in Paris?", a: "3-5 days is ideal for first-time visitors to see major attractions like the Eiffel Tower, Louvre, Notre-Dame, Versailles, and experience Parisian culture. A week allows for day trips and deeper exploration." },
+              { q: "Do I need to book Eiffel Tower tickets in advance?", a: "Yes! Eiffel Tower tickets sell out weeks in advance, especially for summit access. Book online 60 days ahead for the best availability and to skip long lines." },
+              { q: "What's the best way to see Paris on a budget?", a: "Use the Paris Museum Pass for free entry to 60+ museums, walk along the Seine, visit free attractions like Sacré-Cœur, eat at local boulangeries, and use the metro instead of taxis." },
+              { q: "Is Paris safe for tourists?", a: "Paris is generally safe for tourists. Stay aware of pickpockets in tourist areas and on metro, keep valuables secure, and avoid isolated areas at night. Most visits are trouble-free." },
+              { q: "What Paris tours should I book in advance?", a: "Book Eiffel Tower tickets, Versailles tours, Louvre skip-the-line tickets, Seine river cruises, and Moulin Rouge shows in advance. These popular experiences sell out quickly, especially during peak season." }
+            ],
+            'rome-weekend-guide': [
+              { q: "Can you see Rome in 2 days?", a: "Yes! While Rome deserves more time, a well-planned 48-hour itinerary can cover major highlights including Colosseum, Vatican, Trevi Fountain, Spanish Steps, and Roman Forum with skip-the-line tours." },
+              { q: "What tours should I book in advance for Rome?", a: "Book Vatican Museums and Sistine Chapel tours, Colosseum and Roman Forum tickets, and food tours in advance. These popular experiences sell out quickly and skip-the-line access saves hours." },
+              { q: "How do I get around Rome in a weekend?", a: "Rome's historic center is walkable. Use metro for longer distances, but expect crowds. Taxis and ride-shares are available but can be expensive. Book a hop-on-hop-off bus for quick orientation." },
+              { q: "What's the best area to stay in Rome for a weekend?", a: "Stay near Termini Station, Trastevere, or historic center for easy access to major attractions. These areas have excellent metro connections and are within walking distance of key sites." },
+              { q: "Can I visit Vatican City and Colosseum in one day?", a: "It's possible but rushed. Vatican in the morning (3-4 hours) and Colosseum afternoon (2-3 hours) works, but consider spreading across two days for a more relaxed experience with time for meals and rest." }
+            ],
+            'best-things-to-do-in-new-york': [
+              { q: "What are the top must-see attractions in NYC?", a: "Essential NYC experiences include Statue of Liberty, Central Park, Empire State Building, Times Square, 9/11 Memorial, Brooklyn Bridge, and world-class museums like MoMA and Metropolitan Museum of Art." },
+              { q: "How many days do I need to see New York City?", a: "4-5 days allows you to see major attractions, explore different neighborhoods, catch a Broadway show, and experience NYC's diverse food scene. A week gives time for day trips and deeper neighborhood exploration." },
+              { q: "Do I need to book Broadway tickets in advance?", a: "Yes! Popular shows sell out weeks or months ahead. Book online in advance for best seat selection and prices. For same-day discounts, try TKTS booth in Times Square, but selection is limited." },
+              { q: "What's the best way to get around NYC?", a: "The subway is fastest and most economical for long distances. Walking is great for exploring neighborhoods. Yellow cabs and ride-shares are convenient but expensive. Get a MetroCard for unlimited subway rides." },
+              { q: "Is the New York Pass worth it?", a: "The New York Pass can save money if you plan to visit many paid attractions (4+ per day). It includes skip-the-line access to major sites. Calculate your planned attractions to determine if it's cost-effective for your trip." }
+            ],
+            'los-angeles-tours': [
+              { q: "What are the best tours in Los Angeles?", a: "Top LA tours include Hollywood celebrity homes tours, Warner Bros. or Universal Studios tours, Griffith Observatory visits, Venice Beach and Santa Monica experiences, and downtown food tours." },
+              { q: "How many days do I need in Los Angeles?", a: "3-5 days is ideal for seeing major attractions, beaches, and neighborhoods. A week allows time for theme parks, day trips to nearby destinations, and avoiding LA traffic stress." },
+              { q: "Do I need a car in Los Angeles?", a: "While LA is car-centric, you can manage with ride-shares, metro, and tour buses for main attractions. Renting a car gives more flexibility for beaches and suburbs, but consider traffic and parking costs." },
+              { q: "Should I book Universal Studios or Disneyland?", a: "Universal Studios is in Hollywood with movie-themed rides and studio tour. Disneyland is in Anaheim (1 hour south) with classic Disney magic. Both need full days. Choose based on your interests and trip duration." },
+              { q: "What are the best beaches near Los Angeles?", a: "Santa Monica, Venice Beach, Malibu, and Manhattan Beach are top choices. Each has its own vibe - Santa Monica has the pier, Venice has the boardwalk, Malibu has scenic cliffs, and Manhattan Beach is upscale and relaxed." }
+            ],
+            'miami-water-tours': [
+              { q: "What are the best water activities in Miami?", a: "Top water activities include Biscayne Bay boat tours, jet skiing, parasailing, snorkeling at Biscayne National Park, kayaking through mangroves, and sunset cruises along the coast." },
+              { q: "Do I need to book Miami boat tours in advance?", a: "Yes, especially during peak season (November-April) and weekends. Popular tours like island-hopping and sunset cruises often sell out. Booking ahead ensures availability and sometimes better prices." },
+              { q: "Is snorkeling good in Miami?", a: "Yes! Biscayne National Park offers excellent snorkeling with clear waters, coral reefs, and diverse marine life. Tours provide equipment and transportation to the best spots." },
+              { q: "What should I bring on a Miami boat tour?", a: "Bring sunscreen (reef-safe), sunglasses, hat, light jacket for wind, swimwear, towel, waterproof phone case, and cash for tips. Most tours provide water, but bring extra if you need it." },
+              { q: "Are Miami water sports safe for beginners?", a: "Yes! Most water sports operators provide full instruction, safety equipment, and guides. Activities like kayaking, paddleboarding, and boat tours are suitable for all skill levels, while jet skiing and parasailing require basic swimming ability." }
+            ],
+            'best-time-to-visit-southeast-asia': [
+              { q: "When is the best time to visit Southeast Asia?", a: "November to March is ideal for most of Southeast Asia, with dry weather and comfortable temperatures. However, timing varies by country - Thailand/Cambodia (November-February), Vietnam (February-April), Indonesia (May-September)." },
+              { q: "Should I avoid Southeast Asia during monsoon season?", a: "Not necessarily. Monsoon season varies by region and can offer advantages like fewer crowds, lower prices, and lush landscapes. Rain is usually brief afternoon showers, not all-day downpours." },
+              { q: "Which Southeast Asian countries are best to visit in summer?", a: "Indonesia (especially Bali), Singapore, and Malaysia are good summer destinations. While it's rainy season in some areas, you'll find better prices and fewer crowds." },
+              { q: "Is it safe to travel to Southeast Asia during rainy season?", a: "Yes, it's safe. Just pack rain gear, be flexible with outdoor activities, and check weather forecasts. Some island activities may be cancelled during storms, but cities remain accessible." },
+              { q: "How can I find the best tours for my Southeast Asia trip?", a: "Use TopTours.ai to discover top-rated tours across Southeast Asia. Our AI recommends experiences based on your travel dates, helping you avoid weather issues and find the best seasonal activities." }
+            ],
+            'new-zealand-adventure-tours': [
+              { q: "What are the best adventure activities in New Zealand?", a: "Top adventures include bungee jumping in Queenstown, Milford Sound cruises, skydiving, glacier hiking, white-water rafting, jet boating, and heli-skiing. New Zealand offers activities for all adrenaline levels." },
+              { q: "Do I need to book adventure tours in advance?", a: "Yes, especially during peak season (December-February) and for popular activities like Milford Sound cruises and skydiving. Book 2-4 weeks ahead for best availability." },
+              { q: "Is New Zealand safe for adventure activities?", a: "Yes! New Zealand has strict safety regulations for adventure tourism. All operators must be licensed and meet safety standards. Follow guide instructions and disclose any health conditions." },
+              { q: "What's the best time for adventure activities in New Zealand?", a: "Summer (December-February) offers the best weather for most activities. Winter (June-August) is ideal for skiing and snowboarding. Spring and fall have fewer crowds and good weather for hiking." },
+              { q: "Can beginners do adventure activities in New Zealand?", a: "Absolutely! New Zealand offers activities for all skill levels. Guides provide full training and equipment. Many activities like bungy jumping, skydiving, and jet boating require no previous experience." }
+            ],
+            'japan-cherry-blossom-travel': [
+              { q: "When is the best time to see cherry blossoms in Japan?", a: "Late March to early April in Tokyo and Kyoto. Timing varies by region - Okinawa blooms in January, Tokyo in late March, and Hokkaido in early May. Track bloom forecasts for precise timing." },
+              { q: "How long does cherry blossom season last?", a: "Individual trees bloom for about 1-2 weeks. The viewing window is narrow, so plan flexibly and have backup dates if possible." },
+              { q: "Where are the best places to see cherry blossoms?", a: "Tokyo: Ueno Park, Shinjuku Gyoen. Kyoto: Maruyama Park, Philosopher's Path. Mount Yoshino and Hirosaki Castle Park are also spectacular. Each location offers unique viewing experiences." },
+              { q: "Do I need to book Japan cherry blossom tours in advance?", a: "Yes! Hotels and tours during peak bloom sell out 6-12 months in advance. Book early for accommodation and major tours, but allow flexibility for spontaneous hanami (flower viewing) picnics." },
+              { q: "What should I pack for cherry blossom season in Japan?", a: "Pack layers as spring weather is unpredictable - light jacket, comfortable walking shoes, umbrella, and a picnic blanket for hanami. Bring a good camera to capture the beautiful blooms." }
+            ],
+            'best-time-for-african-safari': [
+              { q: "When is the best time to go on safari in Africa?", a: "Dry season (June-October) offers the best wildlife viewing in most African countries as animals gather around water sources. However, specific timing depends on your destination and what wildlife you want to see." },
+              { q: "When is the Great Migration in Africa?", a: "The Great Migration in Tanzania/Kenya follows a year-round cycle. Calving season is January-February in Tanzania. River crossings peak July-October in Kenya. Timing depends on what stage you want to witness." },
+              { q: "Is safari good during rainy season?", a: "Yes! Rainy season (November-May) offers advantages: fewer crowds, lower prices, lush landscapes, and baby animals. Some roads may be impassable, but overall wildlife viewing is still excellent." },
+              { q: "How far in advance should I book an African safari?", a: "Book 6-12 months ahead for peak season (June-October), especially for luxury lodges and specific parks. Rainy season safaris can sometimes be booked 2-3 months out." },
+              { q: "Which African country is best for first-time safari?", a: "Kenya and Tanzania are ideal for first-timers with excellent infrastructure, diverse wildlife, and experienced guides. South Africa offers the Big Five with luxury options and malaria-free areas." }
+            ],
+            'best-tours-south-africa': [
+              { q: "What are the top tours in South Africa?", a: "Must-do tours include Kruger Safari, Cape Town Table Mountain cable car, Cape Peninsula tour, Robben Island, wine tasting in Stellenbosch, and Garden Route scenic drive." },
+              { q: "How many days do I need in South Africa?", a: "10-14 days allows time for Cape Town (3-4 days), safari (3-4 days), wine country (2 days), and Garden Route or Johannesburg. A week can cover Cape Town and either safari or wine region." },
+              { q: "Is it safe to travel in South Africa?", a: "Yes, with precautions. Stay in tourist areas, don't flash valuables, use registered taxis or ride-shares, avoid walking alone at night, and follow local advice. Millions visit safely each year." },
+              { q: "Do I need malaria pills for South Africa?", a: "Only for Kruger and certain northern areas during rainy season. Cape Town, Garden Route, and Madikwe (malaria-free) don't require prophylaxis. Consult your doctor based on your specific itinerary." },
+              { q: "When is the best time to visit South Africa?", a: "Year-round destination! May-September offers best safari viewing (dry season) and pleasant Cape Town weather. December-March is hot summer, perfect for beaches but less ideal for safaris." }
+            ],
+            'egypt-cultural-tours': [
+              { q: "What are the best cultural experiences in Egypt beyond the pyramids?", a: "Top cultural experiences include Nile River cruises, Luxor Valley of the Kings, Abu Simbel temples, Islamic Cairo historic mosques, Khan el-Khalili bazaar, and traditional felucca sailing." },
+              { q: "How many days do I need for Egypt?", a: "7-10 days allows Cairo (2-3 days), Luxor/Aswan Nile cruise (3-4 days), and optional Red Sea relaxation (2-3 days). Two weeks gives time for Alexandria or Abu Simbel." },
+              { q: "Is it safe to travel to Egypt?", a: "Yes, tourist areas are heavily secured. Stick to popular sites, use registered guides, avoid political demonstrations, and follow current travel advisories. Millions of tourists visit Egypt safely each year." },
+              { q: "Do I need a guide for Egyptian cultural sites?", a: "Highly recommended! Egyptologists provide historical context, navigate complex sites, handle logistics, and enhance your understanding of ancient Egypt. Many tours include expert guides." },
+              { q: "When is the best time to visit Egypt for cultural tours?", a: "October-April offers pleasant temperatures (65-80°F). Avoid summer (June-August) when temperatures exceed 100°F. March-April and October-November are ideal with good weather and fewer crowds." }
+            ],
+            'best-tours-peru-machu-picchu': [
+              { q: "Do I need to book Machu Picchu tickets in advance?", a: "Yes! Tickets are limited to 5,000 daily visitors and sell out weeks ahead, especially for peak season (May-September). Book 2-3 months in advance, or 4-6 months for Inca Trail permits." },
+              { q: "What's the best way to get to Machu Picchu?", a: "Options include the 4-day Inca Trail (permit required), train from Cusco/Ollantaytambo (most popular), or budget bus/trek via Hidroelectrica. The train offers scenic comfort; the Inca Trail provides the most rewarding experience." },
+              { q: "How long should I spend in Peru?", a: "7-10 days allows Cusco (2 days for altitude), Sacred Valley (1-2 days), Machu Picchu (1-2 days), and Lima (1-2 days). Two weeks gives time for Amazon, Lake Titicaca, or Arequipa." },
+              { q: "What altitude sickness precautions should I take?", a: "Spend 2-3 days in Cusco (11,150 ft) before Machu Picchu to acclimatize. Drink coca tea, stay hydrated, avoid alcohol, eat light, and consider altitude medication. Machu Picchu (7,970 ft) is lower and easier." },
+              { q: "Is hiking the Inca Trail worth it?", a: "If you're physically fit and have time, absolutely! The 4-day trek offers breathtaking scenery, ancient ruins, and arriving at Machu Picchu through the Sun Gate is unforgettable. Book 6 months ahead as permits are limited." }
+            ],
+            'best-time-to-visit-brazil': [
+              { q: "When is the best time to visit Brazil?", a: "December-March for beaches and Carnival, June-September for Amazon and Pantanal wildlife viewing. Brazil's size means different regions have different optimal times depending on activities." },
+              { q: "When is Rio Carnival?", a: "Rio Carnival occurs 46 days before Easter, usually in February or early March. Book accommodations and tours 6-12 months in advance as prices soar and availability drops." },
+              { q: "What's the weather like in Brazil?", a: "Brazil has tropical to subtropical climates. Rio and coastal areas are warm year-round (75-85°F). Amazon is hot and humid with rain year-round. Southern regions have distinct seasons with cooler winters." },
+              { q: "Is Brazil safe for tourists?", a: "Tourist areas like Copacabana, Ipanema, and Iguazu Falls are generally safe with precautions. Avoid displaying valuables, use registered taxis, stay in tourist zones, and follow local advice. Millions visit safely each year." },
+              { q: "Do I need a visa to visit Brazil?", a: "US, Canadian, Australian, and many European citizens can enter Brazil visa-free for tourism (up to 90 days). Check current requirements for your nationality before booking." }
+            ],
+            'patagonia-travel-guide': [
+              { q: "When is the best time to visit Patagonia?", a: "November-March (Patagonian summer) offers the best weather, longest days, and all trails/facilities open. December-February is peak season. Shoulder season (October-November, March-April) has fewer crowds but unpredictable weather." },
+              { q: "How many days do I need for Patagonia?", a: "7-10 days for one region (Argentine or Chilean), 14+ days to see both sides. Allow time for weather delays, as Patagonia's weather is notoriously unpredictable." },
+              { q: "Is Torres del Paine or Los Glaciares better?", a: "Torres del Paine (Chile) has more dramatic peaks and better trekking infrastructure. Los Glaciares (Argentina) features Perito Moreno Glacier and Fitz Roy. Both are spectacular - choose based on specific sights or visit both." },
+              { q: "Do I need a guide for Patagonia hiking?", a: "For popular trails like W Trek, guides aren't required but helpful for navigation and safety. For remote areas and multi-day expeditions, guides are strongly recommended or required." },
+              { q: "What should I pack for Patagonia?", a: "Pack layers for all seasons - waterproof jacket and pants, warm fleece, hiking boots, sun protection, and windproof gear. Weather changes rapidly; prepare for rain, wind, sun, and cold in one day." }
+            ]
+          };
+
+          const faqs = faqData[slug];
+          if (!faqs) return null;
+
+          return (
+            <script type="application/ld+json" dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faqs.map(faq => ({
                   "@type": "Question",
-                  "name": "How can I make my travel experience smoother?",
+                  "name": faq.q,
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Start by avoiding the most common travel mistakes—pack light, research entry rules early, and book your top tours in advance to ensure availability."
+                    "text": faq.a
                   }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What's the best way to find tours and activities?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Use TopTours.ai to discover the best-rated tours worldwide. Our AI scans thousands of options and recommends activities tailored to your interests and travel style."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "When should I book tours for popular destinations?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Ideally two to three weeks in advance, especially for experiences like sunset cruises, guided hikes, and museum tours."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Is travel insurance really necessary?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, travel insurance is essential for protecting against unexpected events like trip cancellations, medical emergencies, or lost luggage. The small cost can save you thousands if something goes wrong."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How much cash should I carry while traveling?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Carry a small amount of local currency for emergencies and places that don't accept cards, but rely primarily on cards with low foreign transaction fees. Keep cash in multiple places for security."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What's the most important travel document to backup?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Your passport is the most critical document to backup. Store digital copies in your email, cloud storage, and with a trusted contact. Also backup travel insurance documents and important reservations."
-                  }
-                }
-              ]
-            })}
-          </script>
-        )}
+                }))
+              })
+            }} />
+          );
+        })()}
 
         {/* FAQ Schema for Caribbean Islands */}
         {slug === 'best-time-to-visit-caribbean' && (
