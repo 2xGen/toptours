@@ -571,9 +571,9 @@ export default function DestinationDetailClient({ destination }) {
 
         {/* Related Travel Guides Section */}
         {relatedGuides.length > 0 && (
-          <section className="py-12 px-4 bg-white/10 border-t border-white/10">
+          <section className="py-12 px-4 bg-gray-50 border-t border-gray-200">
             <div className="max-w-7xl mx-auto">
-              <h3 className="text-xl font-semibold text-white mb-6">
+              <h3 className="text-xl font-semibold text-gray-900 mb-6">
                 {safeDestination.category} Travel Guides
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -581,7 +581,7 @@ export default function DestinationDetailClient({ destination }) {
                   <Link 
                     key={guide.id}
                     href={`/travel-guides/${guide.id}`}
-                    className="text-white/80 hover:text-white transition-colors duration-200 hover:underline"
+                    className="text-gray-700 hover:text-blue-600 transition-colors duration-200 hover:underline"
                   >
                     {guide.title}
                   </Link>
