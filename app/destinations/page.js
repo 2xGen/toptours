@@ -14,16 +14,22 @@ export default function DestinationsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [preFilledDestination, setPreFilledDestination] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   const handleOpenModal = (destination = '') => {
     setPreFilledDestination(destination);
     setIsModalOpen(true);
   };
 
-  const filteredDestinations = destinations.filter(dest =>
-    dest.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    dest.region?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const categories = ['All', 'Europe', 'North America', 'Caribbean', 'Asia-Pacific', 'Africa', 'South America'];
+
+  const filteredDestinations = destinations.filter(dest => {
+    const matchesSearch = dest.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         dest.region?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         dest.briefDescription?.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === 'All' || dest.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  }).sort((a, b) => a.fullName.localeCompare(b.fullName));
 
   return (
     <>
@@ -65,8 +71,36 @@ export default function DestinationsPage() {
           </div>
         </div>
 
+        {/* Category Filter */}
+        <div className="bg-white border-b py-6">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="flex flex-wrap justify-center gap-3">
+              {categories.map((category) => (
+                <Button
+                  key={category}
+                  variant={selectedCategory === category ? "default" : "outline"}
+                  onClick={() => setSelectedCategory(category)}
+                  className={selectedCategory === category ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white border-0' : 'border-gray-300 hover:border-orange-500'}
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Results Count */}
+        <div className="container mx-auto px-4 py-6 max-w-7xl">
+          <p className="text-white/90 text-center text-lg">
+            Showing <span className="font-semibold">{filteredDestinations.length}</span> 
+            {filteredDestinations.length === 1 ? ' destination' : ' destinations'}
+            {searchTerm && <span> for "<span className="font-semibold">{searchTerm}</span>"</span>}
+            {selectedCategory !== 'All' && <span> in <span className="font-semibold">{selectedCategory}</span></span>}
+          </p>
+        </div>
+
         {/* Destinations Grid */}
-        <div className="container mx-auto px-4 py-12 max-w-7xl">
+        <div className="container mx-auto px-4 pb-12 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredDestinations.map((destination, index) => (
               <motion.div
