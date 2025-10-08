@@ -6,7 +6,7 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
-  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, ChevronLeft, ChevronRight
+  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, ChevronLeft, ChevronRight, Search
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -28,8 +28,10 @@ export default function DestinationDetailClient({ destination }) {
   const [carouselIndexes, setCarouselIndexes] = useState({});
   const { toast } = useToast();
 
-  const handleOpenModal = (dest = '') => {
-    setPreFilledDestination(dest);
+  const handleOpenModal = (dest) => {
+    // If dest is provided and is a string, use it. Otherwise use destination fullName
+    const destinationName = typeof dest === 'string' && dest ? dest : safeDestination.fullName || '';
+    setPreFilledDestination(destinationName);
     setIsModalOpen(true);
   };
 
@@ -338,31 +340,89 @@ export default function DestinationDetailClient({ destination }) {
                       style={{ transform: `translateX(-${carouselIndexes[category] * 25}%)` }}
                     >
                       {tours[category].map((tour, index) => (
-                        <Card key={tour.productCode || index} className="min-w-[calc(25%-1.5rem)] bg-white border-0 shadow-lg hover:shadow-xl transition-shadow overflow-hidden flex-shrink-0">
-                          <div className="relative h-48">
-                            {tour.images?.[0]?.variants?.[0]?.url && (
+                        <Card key={tour.productCode || index} className="min-w-[calc(25%-1.5rem)] bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col flex-shrink-0">
+                          {/* Tour Image */}
+                          <div className="relative h-32 bg-gray-200 flex-shrink-0">
+                            {tour.images?.[0]?.variants?.[3]?.url ? (
                               <img
-                                src={tour.images[0].variants[0].url}
+                                src={tour.images[0].variants[3].url}
                                 alt={tour.title}
                                 className="w-full h-full object-cover"
                               />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                <Search className="w-6 h-6 text-gray-400" />
+                              </div>
                             )}
                           </div>
-                          <CardContent className="p-6">
-                            <h4 className="font-bold text-lg mb-2 line-clamp-2">{tour.title}</h4>
-                            <div className="flex items-center gap-2 mb-2">
-                              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                              <span className="text-sm">{tour.rating?.average || 'N/A'} ({tour.rating?.totalReviews || 0})</span>
+
+                          {/* Tour Content */}
+                          <CardContent className="p-3 flex-1 flex flex-col">
+                            <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 flex-1">
+                              {tour.title}
+                            </h4>
+                            
+                            {/* Tour Badges */}
+                            {tour.flags && Array.isArray(tour.flags) && tour.flags.length > 0 && (
+                              <div className="flex flex-wrap gap-1 mb-2">
+                                {tour.flags.map((flag, flagIndex) => {
+                                  let badgeClass = "text-xs font-medium px-2 py-1 rounded-full";
+                                  if (flag === "FREE_CANCELLATION") {
+                                    badgeClass += " bg-green-50 text-green-700 border border-green-200";
+                                  } else if (flag === "PRIVATE_TOUR") {
+                                    badgeClass += " bg-purple-50 text-purple-700 border border-purple-200";
+                                  } else if (flag === "LIKELY_TO_SELL_OUT") {
+                                    badgeClass += " bg-orange-50 text-orange-700 border border-orange-200";
+                                  } else {
+                                    badgeClass += " bg-blue-50 text-blue-700 border border-blue-200";
+                                  }
+                                  
+                                  return (
+                                    <Badge
+                                      key={flagIndex}
+                                      variant="secondary"
+                                      className={badgeClass}
+                                    >
+                                      {flag.replace(/_/g, ' ')}
+                                    </Badge>
+                                  );
+                                })}
+                              </div>
+                            )}
+
+                            {/* Rating */}
+                            {tour.reviews && (
+                              <div className="flex items-center mb-2">
+                                <Star className="w-3 h-3 text-yellow-400 fill-current" />
+                                <span className="font-medium text-gray-700 ml-1 text-sm">
+                                  {tour.reviews.combinedAverageRating?.toFixed(1) || 'N/A'}
+                                </span>
+                                <span className="text-gray-500 text-xs ml-1">
+                                  ({tour.reviews.totalReviews || 0})
+                                </span>
+                              </div>
+                            )}
+
+                            {/* Price */}
+                            <div className="text-lg font-bold text-orange-600 mb-3">
+                              From ${tour.pricing?.summary?.fromPrice || 'N/A'}
                             </div>
-                            <p className="text-2xl font-bold text-blue-600 mb-3">
-                              ${tour.pricing?.summary?.fromPrice || 'N/A'}
-                            </p>
-                            <Button 
-                              className="w-full"
-                              onClick={() => window.open(tour.productUrl || `https://www.viator.com/tours/${tour.productCode}`, '_blank')}
+
+                            {/* View Details Button */}
+                            <Button
+                              asChild
+                              size="sm"
+                              className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
                             >
-                              View Details
-                              <ExternalLink className="w-4 h-4 ml-2" />
+                              <a
+                                href={tour.productUrl || `https://www.viator.com/tours/${tour.productCode}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center"
+                              >
+                                View Details
+                                <ExternalLink className="w-3 h-3 ml-1" />
+                              </a>
                             </Button>
                           </CardContent>
                         </Card>
