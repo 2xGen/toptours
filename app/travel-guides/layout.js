@@ -9,7 +9,7 @@ export const metadata = {
     siteName: 'TopTours.ai',
     images: [
       {
-        url: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/How%20to%20Plan%20a%20Trip%20with%20AI.png',
+        url: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/TopToursAI%20travel%20guides.png',
         width: 1200,
         height: 630,
         alt: 'TopTours.ai Travel Guides - Expert Tips & Insights',
@@ -22,7 +22,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Expert Travel Guides & Tips | TopTours.ai',
     description: 'Discover 27+ comprehensive travel guides with expert tips and AI-powered recommendations. Plan your perfect trip today!',
-    images: ['https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/How%20to%20Plan%20a%20Trip%20with%20AI.png'],
+    images: ['https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/TopToursAI%20travel%20guides.png'],
   },
   alternates: {
     canonical: 'https://toptours.ai/travel-guides',
