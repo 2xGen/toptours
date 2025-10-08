@@ -1,7 +1,8 @@
+"use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, MapPin, Sparkles, Globe, Heart } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
@@ -10,7 +11,7 @@ import SmartTourFinder from './SmartTourFinder';
 
 const Hero = ({ onOpenModal }) => {
   const [destination, setDestination] = useState('');
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleSearch = () => {
     if (!destination.trim()) {
@@ -22,7 +23,7 @@ const Hero = ({ onOpenModal }) => {
     }
     
     // Navigate to results page with search term
-    navigate(`/results?searchTerm=${encodeURIComponent(destination.trim())}`);
+    router.push(`/results?searchTerm=${encodeURIComponent(destination.trim())}`);
   };
 
   const handleKeyPress = (e) => {

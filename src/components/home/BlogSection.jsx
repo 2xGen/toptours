@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -87,7 +87,7 @@ const TopDestinations = () => {
               viewport={{ once: true }}
               className="h-full"
             >
-              <Link to={`/destinations/${destination.id}`} className="block h-full group">
+              <Link href={`/destinations/${destination.id}`} className="block h-full group">
                 <Card className="bg-white border-0 shadow-lg group-hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col hover:-translate-y-1">
                   <div className="relative w-full h-56 overflow-hidden">
                     <img
@@ -127,7 +127,7 @@ const TopDestinations = () => {
         </div>
         
         <div className="text-center mt-16">
-          <Link to="/destinations">
+          <Link href="/destinations">
             <Button variant="outline" className="px-8 py-3 text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white transition-colors duration-300">
               View All Destinations
               <ArrowRight className="ml-2 h-5 w-5" />

@@ -1,10 +1,11 @@
+"use client";
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Sparkles, Globe, Heart, ArrowLeft, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { interests } from '@/data/homeData';
 
 const AIPlanner = () => {
@@ -13,7 +14,7 @@ const AIPlanner = () => {
   const [destination, setDestination] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleInterestSelect = (interestId) => {
     setSelectedInterest(interestId);
@@ -45,7 +46,7 @@ const AIPlanner = () => {
     let searchQuery = `${destination.trim()} ${interest?.name.toLowerCase()}`;
     
     // Navigate to results page with search term
-    navigate(`/results?searchTerm=${encodeURIComponent(searchQuery)}`);
+    router.push(`/results?searchTerm=${encodeURIComponent(searchQuery)}`);
     
     setIsLoading(false);
   };
