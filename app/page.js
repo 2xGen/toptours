@@ -1,8 +1,63 @@
 "use client";
-import dynamic from 'next/dynamic'
+import { useState } from 'react';
+import NavigationNext from '@/components/NavigationNext';
+import Footer from '@/components/Footer';
+import Hero from '@/components/home/Hero';
+import AIPlanner from '@/components/home/AIPlanner';
+import FeaturedTours from '@/components/home/FeaturedTours';
+import TopDestinations from '@/components/home/BlogSection';
+import HomeCTA from '@/components/home/HomeCTA';
+import SmartTourFinder from '@/components/home/SmartTourFinder';
 
-const App = dynamic(() => import('@/App'), { ssr: false })
+export default function HomePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-export default function NextJSPage() {
-  return <App />
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  return (
+    <>
+      <NavigationNext onOpenModal={handleOpenModal} />
+      
+      <main className="min-h-screen">
+        <Hero onOpenModal={handleOpenModal} />
+        <AIPlanner onOpenModal={handleOpenModal} />
+        <FeaturedTours onOpenModal={handleOpenModal} />
+        <TopDestinations />
+        <HomeCTA onOpenModal={handleOpenModal} />
+      </main>
+
+      <Footer />
+      
+      <SmartTourFinder 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal} 
+        preFilledDestination=""
+      />
+      
+      {/* Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "TopTours.ai",
+            "url": "https://toptours.ai",
+            "description": "AI-powered travel planning and tour booking platform",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://toptours.ai/results?searchTerm={search_term_string}",
+              "query-input": "required name=search_term_string"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "TopTours.ai",
+              "logo": "https://toptours.ai/logo.png"
+            }
+          })
+        }}
+      />
+    </>
+  );
 }
