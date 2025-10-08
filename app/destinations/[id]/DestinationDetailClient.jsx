@@ -543,6 +543,50 @@ export default function DestinationDetailClient({ destination }) {
           </div>
         </section>
 
+        {/* Related Destinations Section */}
+        {relatedDestinations.length > 0 && (
+          <section className="py-12 px-4 bg-white border-t border-gray-200">
+            <div className="max-w-7xl mx-auto">
+              <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                More {safeDestination.category} Destinations
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                {relatedDestinations.map((dest) => (
+                  <Link 
+                    key={dest.id}
+                    href={`/destinations/${dest.id}`}
+                    className="text-gray-700 hover:text-blue-600 transition-colors duration-200 hover:underline"
+                  >
+                    {dest.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Related Travel Guides Section */}
+        {relatedGuides.length > 0 && (
+          <section className="py-12 px-4 bg-white border-t border-gray-200">
+            <div className="max-w-7xl mx-auto">
+              <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                {safeDestination.category} Travel Guides
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {relatedGuides.map((guide) => (
+                  <Link 
+                    key={guide.id}
+                    href={`/travel-guides/${guide.id}`}
+                    className="text-gray-700 hover:text-blue-600 transition-colors duration-200 hover:underline"
+                  >
+                    {guide.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* CTA Section */}
         <section className="py-16 adventure-gradient">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -568,50 +612,6 @@ export default function DestinationDetailClient({ destination }) {
             </motion.div>
           </div>
         </section>
-
-        {/* Related Destinations Section */}
-        {relatedDestinations.length > 0 && (
-          <section className="py-12 px-4 bg-white/5 border-t border-white/10">
-            <div className="max-w-7xl mx-auto">
-              <h3 className="text-xl font-semibold text-white mb-6">
-                More {safeDestination.category} Destinations
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                {relatedDestinations.map((dest) => (
-                  <Link 
-                    key={dest.id}
-                    href={`/destinations/${dest.id}`}
-                    className="text-white/80 hover:text-white transition-colors duration-200 hover:underline"
-                  >
-                    {dest.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Related Travel Guides Section */}
-        {relatedGuides.length > 0 && (
-          <section className="py-12 px-4 cta-gradient border-t border-white/10">
-            <div className="max-w-7xl mx-auto">
-              <h3 className="text-xl font-semibold text-white mb-6">
-                {safeDestination.category} Travel Guides
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {relatedGuides.map((guide) => (
-                  <Link 
-                    key={guide.id}
-                    href={`/travel-guides/${guide.id}`}
-                    className="text-white/90 hover:text-white transition-colors duration-200 hover:underline"
-                  >
-                    {guide.title}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
       </div>
 
       <FooterNext />
