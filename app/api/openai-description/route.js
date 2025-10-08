@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request) {
   try {
-    const { destination } = await request.json();
+    const { destination, searchTerm } = await request.json();
+    const term = destination || searchTerm;
 
     // Get API key from environment variables
     const apiKey = process.env.OPENAI_API_KEY;
@@ -22,11 +23,11 @@ export async function POST(request) {
         messages: [
           {
             role: 'system',
-            content: `You are a travel expert. Write a compelling, SEO-friendly description for ${destination} tours and activities. Keep it under 150 words, highlight unique experiences, and include local insights. Make it engaging for potential visitors.`
+            content: `You are a travel expert. Write a compelling, SEO-friendly description for ${term} tours and activities. Keep it under 150 words, highlight unique experiences, and include local insights. Make it engaging for potential visitors.`
           },
           {
             role: 'user',
-            content: `Write a compelling description for ${destination} tours and activities.`
+            content: `Write a compelling description for ${term} tours and activities.`
           }
         ],
         max_tokens: 200,
