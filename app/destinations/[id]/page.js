@@ -1,9 +1,9 @@
-import { getDestinationById, destinations } from '@/data/destinationsData';
+import { getDestinationById, destinations, getAllDestinations } from '@/data/destinationsData';
 import DestinationDetailClient from './DestinationDetailClient';
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
-  const destination = getDestinationById(params.id);
+  const destination = getDestinationById(params?.id);
   
   if (!destination) {
     return {
@@ -43,9 +43,19 @@ export async function generateMetadata({ params }) {
 
 // Generate static pages for all destinations at build time
 export async function generateStaticParams() {
-  return destinations.map((destination) => ({
-    id: destination.id,
-  }));
+  try {
+    const allDestinations = getAllDestinations();
+    if (!Array.isArray(allDestinations)) {
+      console.error('getAllDestinations did not return an array');
+      return [];
+    }
+    return allDestinations.map((destination) => ({
+      id: destination.id,
+    }));
+  } catch (error) {
+    console.error('Error in generateStaticParams:', error);
+    return [];
+  }
 }
 
 export default function DestinationDetailPage({ params }) {
