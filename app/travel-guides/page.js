@@ -16,6 +16,8 @@ export default function TravelGuidesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12; // Show 12 guides per page
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -23,7 +25,7 @@ export default function TravelGuidesPage() {
 
   const categories = ['All', 'General Travel Tips', 'Caribbean', 'Europe', 'North America', 'Asia-Pacific', 'Africa', 'South America'];
 
-  const filteredGuides = (Array.isArray(travelGuides) ? travelGuides : []).filter(guide => {
+  const allFilteredGuides = (Array.isArray(travelGuides) ? travelGuides : []).filter(guide => {
     const matchesSearch = guide.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          guide.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          (Array.isArray(guide.tags) && guide.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())));
@@ -31,7 +33,24 @@ export default function TravelGuidesPage() {
     return matchesSearch && matchesCategory;
   }).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
 
+  // Pagination
+  const totalPages = Math.ceil(allFilteredGuides.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const filteredGuides = allFilteredGuides.slice(startIndex, endIndex);
+
   const featuredGuides = (Array.isArray(travelGuides) ? travelGuides : []).filter(guide => guide.featured);
+
+  // Reset to page 1 when filters change
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (value) => {
+    setSearchTerm(value);
+    setCurrentPage(1);
+  };
 
   return (
     <>
@@ -62,7 +81,7 @@ export default function TravelGuidesPage() {
                         <Input
                           placeholder="Search travel guides..."
                           value={searchTerm}
-                          onChange={(e) => setSearchTerm(e.target.value)}
+                          onChange={(e) => handleSearchChange(e.target.value)}
                           className="pl-10 h-12 bg-white/90 border-0 text-gray-800 placeholder:text-gray-500"
                         />
                       </div>
@@ -144,7 +163,7 @@ export default function TravelGuidesPage() {
                   <Button
                     key={category}
                     variant={selectedCategory === category ? "default" : "outline"}
-                    onClick={() => setSelectedCategory(category)}
+                    onClick={() => handleCategoryChange(category)}
                     className={selectedCategory === category ? 'sunset-gradient text-white' : ''}
                   >
                     {category}
@@ -188,6 +207,7 @@ export default function TravelGuidesPage() {
                               className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" 
                               alt={guide.title}
                               src={guide.image}
+                              loading="lazy"
                             />
                             <Badge className="absolute top-4 left-4 adventure-gradient text-white">
                               {guide.category}
@@ -233,6 +253,42 @@ export default function TravelGuidesPage() {
                       </motion.div>
                     ))}
                   </div>
+
+                  {/* Pagination Controls */}
+                  {totalPages > 1 && (
+                    <div className="flex justify-center items-center gap-2 mt-12">
+                      <Button
+                        variant="outline"
+                        onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                        disabled={currentPage === 1}
+                        className="bg-white disabled:opacity-50"
+                      >
+                        Previous
+                      </Button>
+                      
+                      <div className="flex gap-2">
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                          <Button
+                            key={page}
+                            variant={currentPage === page ? "default" : "outline"}
+                            onClick={() => setCurrentPage(page)}
+                            className={currentPage === page ? "sunset-gradient text-white" : "bg-white"}
+                          >
+                            {page}
+                          </Button>
+                        ))}
+                      </div>
+
+                      <Button
+                        variant="outline"
+                        onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                        disabled={currentPage === totalPages}
+                        className="bg-white disabled:opacity-50"
+                      >
+                        Next
+                      </Button>
+                    </div>
+                  )}
                 </>
               ) : (
                 <div className="text-center py-16">

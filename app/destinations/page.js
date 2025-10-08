@@ -18,6 +18,8 @@ export default function DestinationsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 24; // Show 24 destinations per page
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -25,7 +27,7 @@ export default function DestinationsPage() {
 
   const categories = ['All', 'Europe', 'North America', 'Caribbean', 'Asia-Pacific', 'Africa', 'South America'];
 
-  const filteredDestinations = (Array.isArray(destinations) ? destinations : []).filter(dest => {
+  const allFilteredDestinations = (Array.isArray(destinations) ? destinations : []).filter(dest => {
     const matchesSearch = dest.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          (dest.fullName && dest.fullName.toLowerCase().includes(searchTerm.toLowerCase())) ||
                          (dest.briefDescription && dest.briefDescription.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -33,6 +35,23 @@ export default function DestinationsPage() {
                            (dest.category && dest.category === selectedCategory);
     return matchesSearch && matchesCategory;
   }).sort((a, b) => a.name.localeCompare(b.name));
+
+  // Pagination
+  const totalPages = Math.ceil(allFilteredDestinations.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const filteredDestinations = allFilteredDestinations.slice(startIndex, endIndex);
+
+  // Reset to page 1 when filters change
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (value) => {
+    setSearchTerm(value);
+    setCurrentPage(1);
+  };
 
   return (
     <>
@@ -63,7 +82,7 @@ export default function DestinationsPage() {
                         <Input
                           placeholder="Search destinations..."
                           value={searchTerm}
-                          onChange={(e) => setSearchTerm(e.target.value)}
+                          onChange={(e) => handleSearchChange(e.target.value)}
                           className="pl-10 h-12 bg-white/90 border-0 text-gray-800 placeholder:text-gray-500"
                         />
                       </div>
@@ -84,7 +103,7 @@ export default function DestinationsPage() {
                   <Button
                     key={category}
                     variant={selectedCategory === category ? "default" : "outline"}
-                    onClick={() => setSelectedCategory(category)}
+                    onClick={() => handleCategoryChange(category)}
                     className={selectedCategory === category ? 'sunset-gradient text-white' : ''}
                   >
                     {category}
@@ -128,6 +147,7 @@ export default function DestinationsPage() {
                               className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" 
                               alt={destination.name}
                               src={destination.imageUrl}
+                              loading="lazy"
                               onError={(e) => {
                                 e.target.src = "https://images.unsplash.com/photo-1595872018818-97555653a011";
                               }}
@@ -165,6 +185,42 @@ export default function DestinationsPage() {
                       </motion.div>
                     ))}
                   </div>
+
+                  {/* Pagination Controls */}
+                  {totalPages > 1 && (
+                    <div className="flex justify-center items-center gap-2 mt-12">
+                      <Button
+                        variant="outline"
+                        onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                        disabled={currentPage === 1}
+                        className="bg-white disabled:opacity-50"
+                      >
+                        Previous
+                      </Button>
+                      
+                      <div className="flex gap-2">
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                          <Button
+                            key={page}
+                            variant={currentPage === page ? "default" : "outline"}
+                            onClick={() => setCurrentPage(page)}
+                            className={currentPage === page ? "sunset-gradient text-white" : "bg-white"}
+                          >
+                            {page}
+                          </Button>
+                        ))}
+                      </div>
+
+                      <Button
+                        variant="outline"
+                        onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                        disabled={currentPage === totalPages}
+                        className="bg-white disabled:opacity-50"
+                      >
+                        Next
+                      </Button>
+                    </div>
+                  )}
                 </>
               ) : (
                 <div className="text-center py-16">
