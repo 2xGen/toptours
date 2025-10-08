@@ -571,31 +571,11 @@ export default function DestinationDetailClient({ destination }) {
 
         {/* Combined Internal Linking Section */}
         {(relatedGuides.length > 0 || relatedDestinations.length > 0) && (
-          <section className="py-12 px-4 bg-purple-700">
+          <section className="py-12 px-4 bg-purple-600">
             <div className="max-w-7xl mx-auto">
-              {/* Related Travel Guides */}
-              {relatedGuides.length > 0 && (
-                <div className="mb-12">
-                  <h3 className="text-xl font-semibold text-white mb-6">
-                    {safeDestination.category} Travel Guides
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {relatedGuides.map((guide) => (
-                      <Link 
-                        key={guide.id}
-                        href={`/travel-guides/${guide.id}`}
-                        className="text-white/80 hover:text-white transition-colors duration-200 hover:underline"
-                      >
-                        {guide.title}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-
               {/* Related Destinations */}
               {relatedDestinations.length > 0 && (
-                <div>
+                <div className="mb-12">
                   <h3 className="text-xl font-semibold text-white mb-6">
                     More {safeDestination.category} Destinations
                   </h3>
@@ -607,6 +587,26 @@ export default function DestinationDetailClient({ destination }) {
                         className="text-white/80 hover:text-white transition-colors duration-200 hover:underline"
                       >
                         {dest.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Related Travel Guides */}
+              {relatedGuides.length > 0 && (
+                <div>
+                  <h3 className="text-xl font-semibold text-white mb-6">
+                    {safeDestination.category} Travel Guides
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {relatedGuides.map((guide) => (
+                      <Link 
+                        key={guide.id}
+                        href={`/travel-guides/${guide.id}`}
+                        className="text-white/80 hover:text-white transition-colors duration-200 hover:underline"
+                      >
+                        {guide.title}
                       </Link>
                     ))}
                   </div>
