@@ -1,5 +1,5 @@
-import { getAllDestinations } from '@/src/data/destinationsData';
-import { travelGuides } from '@/src/data/travelGuidesData';
+import { getAllDestinations } from '../src/data/destinationsData.js';
+import { travelGuides } from '../src/data/travelGuidesData.js';
 
 export default function sitemap() {
   const baseUrl = 'https://toptours.ai';
