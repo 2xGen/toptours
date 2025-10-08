@@ -1,3 +1,15 @@
 {
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "redirects": [
+    {
+      "source": "https://blog.toptours.ai",
+      "destination": "https://toptours.ai/travel-guides",
+      "permanent": true
+    },
+    {
+      "source": "https://blog.toptours.ai/:path*",
+      "destination": "https://toptours.ai/travel-guides/:path*",
+      "permanent": true
+    }
+  ]
 }

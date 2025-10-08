@@ -3,6 +3,21 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
+  async redirects() {
+    return [
+      // Redirect old blog subdomain to travel-guides
+      {
+        source: '/blog',
+        destination: '/travel-guides',
+        permanent: true,
+      },
+      {
+        source: '/blog/:path*',
+        destination: '/travel-guides/:path*',
+        permanent: true,
+      },
+    ]
+  },
   async rewrites() {
     return [
       {
