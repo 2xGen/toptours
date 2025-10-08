@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 import NavigationNext from '@/components/NavigationNext';
-import Footer from '@/components/Footer';
+import FooterNext from '@/components/FooterNext';
 import Hero from '@/components/home/Hero';
 import AIPlanner from '@/components/home/AIPlanner';
 import FeaturedTours from '@/components/home/FeaturedTours';
@@ -27,7 +27,7 @@ export default function HomePage() {
         <HomeCTA onOpenModal={handleOpenModal} />
       </main>
 
-      <Footer />
+      <FooterNext />
       
       <SmartTourFinder 
         isOpen={isModalOpen} 

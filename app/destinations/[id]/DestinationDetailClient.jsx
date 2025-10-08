@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import NavigationNext from '@/components/NavigationNext';
-import Footer from '@/components/Footer';
+import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
@@ -251,7 +251,7 @@ export default function DestinationDetailClient({ destination }) {
         </div>
       </div>
 
-      <Footer />
+      <FooterNext />
       
       <SmartTourFinder 
         isOpen={isModalOpen} 

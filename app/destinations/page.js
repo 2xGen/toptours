@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 import NavigationNext from '@/components/NavigationNext';
-import Footer from '@/components/Footer';
+import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { destinations } from '@/data/destinationsData';
 import { Search, MapPin, Star, ArrowRight } from 'lucide-react';
@@ -122,7 +122,7 @@ export default function DestinationsPage() {
         </div>
       </div>
 
-      <Footer />
+      <FooterNext />
       
       <SmartTourFinder 
         isOpen={isModalOpen} 
