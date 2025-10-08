@@ -101,7 +101,7 @@ export default function TestOpenAIPage() {
                 />
               </div>
               
-              <div className="flex gap-4">
+              <div className="flex gap-4 flex-wrap">
                 <Button 
                   onClick={testDescription}
                   disabled={loading || !destination}
@@ -116,6 +116,33 @@ export default function TestOpenAIPage() {
                   className="bg-purple-600 hover:bg-purple-700"
                 >
                   Test Categories API
+                </Button>
+
+                <Button 
+                  onClick={async () => {
+                    setLoading(true);
+                    setDescriptionResult({ status: 'Checking...', data: null });
+                    try {
+                      const response = await fetch('/api/direct-openai-test');
+                      const data = await response.json();
+                      setDescriptionResult({
+                        status: response.ok ? 'SUCCESS ✅' : 'ERROR ❌',
+                        statusCode: response.status,
+                        data: data
+                      });
+                    } catch (error) {
+                      setDescriptionResult({
+                        status: 'ERROR ❌',
+                        error: error.message
+                      });
+                    } finally {
+                      setLoading(false);
+                    }
+                  }}
+                  disabled={loading}
+                  className="bg-green-600 hover:bg-green-700"
+                >
+                  Direct GET Test
                 </Button>
               </div>
             </div>
