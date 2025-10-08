@@ -57,7 +57,7 @@ export async function POST(request) {
     console.log('OpenAI response received successfully');
     const description = data.choices[0].message.content;
     
-    return NextResponse.json({ description });
+    return NextResponse.json({ success: true, description });
 
   } catch (error) {
     console.error('OpenAI Description Error:', error);

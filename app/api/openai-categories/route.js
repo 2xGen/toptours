@@ -53,7 +53,7 @@ export async function POST(request) {
     const data = await response.json();
     const categories = JSON.parse(data.choices[0].message.content);
     
-    return NextResponse.json({ categories });
+    return NextResponse.json({ success: true, categories });
 
   } catch (error) {
     console.error('OpenAI Categories Error:', error);
