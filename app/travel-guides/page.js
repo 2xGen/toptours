@@ -25,15 +25,15 @@ export default function TravelGuidesPage() {
 
   const categories = ['All', 'General Travel Tips', 'Caribbean', 'Europe', 'North America', 'Asia-Pacific', 'Africa', 'South America'];
 
-  const filteredGuides = travelGuides.filter(guide => {
+  const filteredGuides = (Array.isArray(travelGuides) ? travelGuides : []).filter(guide => {
     const matchesSearch = guide.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          guide.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         guide.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+                         (Array.isArray(guide.tags) && guide.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())));
     const matchesCategory = selectedCategory === 'All' || guide.category === selectedCategory;
     return matchesSearch && matchesCategory;
   }).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
 
-  const featuredGuides = travelGuides.filter(guide => guide.featured);
+  const featuredGuides = (Array.isArray(travelGuides) ? travelGuides : []).filter(guide => guide.featured);
 
   return (
     <>
@@ -211,7 +211,7 @@ export default function TravelGuidesPage() {
                             </p>
                             
                             <div className="flex flex-wrap gap-2 mb-4">
-                              {guide.tags.slice(0, 2).map((tag) => (
+                              {Array.isArray(guide.tags) && guide.tags.slice(0, 2).map((tag) => (
                                 <Badge key={tag} variant="outline" className="text-xs">
                                   <Tag className="h-3 w-3 mr-1" />
                                   {tag}
