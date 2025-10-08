@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
@@ -105,6 +106,14 @@ export default function DestinationDetailClient({ destination }) {
       <NavigationNext onOpenModal={handleOpenModal} />
       
       <div className="min-h-screen pt-16" suppressHydrationWarning>
+        {/* Breadcrumbs */}
+        <div className="container mx-auto px-4 pt-4">
+          <Breadcrumbs items={[
+            { label: 'Destinations', href: '/destinations' },
+            { label: safeDestination.fullName || safeDestination.name }
+          ]} />
+        </div>
+
         {/* Hero Section */}
         <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

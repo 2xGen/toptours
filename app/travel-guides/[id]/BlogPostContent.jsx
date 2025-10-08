@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Calendar, User, Clock } from 'lucide-react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -1666,7 +1667,16 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
 
       <div className="min-h-screen flex flex-col bg-gray-50 pb-16 md:pb-0">
         <NavigationNext onOpenModal={onOpenModal} />
-        <main className="flex-grow pt-24">
+        
+        {/* Breadcrumbs */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+          <Breadcrumbs items={[
+            { label: 'Travel Guides', href: '/travel-guides' },
+            { label: post.title }
+          ]} />
+        </div>
+
+        <main className="flex-grow pt-4">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             {/* Back Button */}
             <Button variant="ghost" asChild className="mb-8">
