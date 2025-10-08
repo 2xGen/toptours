@@ -688,6 +688,253 @@ const nextConfig = {
         destination: '/travel-guides',
         permanent: true,
       },
+      
+      // Old /destination/ (singular) pages redirect to /destinations/ (plural)
+      {
+        source: '/destination/banff',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/cabo-san-lucas',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/calgary',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/cozumel',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/mexico-city',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/boston',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/guanajuato-mexico',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/halifax',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/montreal',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/oaxaca',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/ottawa',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/playa-del-carmen',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/puerto-vallarta',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/quebec-city',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/san-miguel-de-allende',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/anchorage',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/atlanta',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/austin',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/cancun',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/charleston',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/chicago',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/dallas',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/denver',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/detroit',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/honolulu',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/houston',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/indianapolis',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/las-vegas',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/los-angeles',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/miami',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/minneapolis',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/nashville',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/new-orleans',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/new-york-city',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/orlando',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/philadelphia',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/phoenix',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/portland',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/salt-lake-city',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/san-antonio',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/san-diego',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/san-francisco',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/savannah',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/seattle',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/washington-d-c',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/toronto',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/tulum',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/vancouver',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destination/victoria',
+        destination: '/destinations',
+        permanent: true,
+      },
     ]
   },
   async rewrites() {
