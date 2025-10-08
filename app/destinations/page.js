@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import Navigation from '@/components/Navigation';
+import NavigationNext from '@/components/NavigationNext';
 import Footer from '@/components/Footer';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { destinations } from '@/data/destinationsData';
@@ -27,7 +27,7 @@ export default function DestinationsPage() {
 
   return (
     <>
-      <Navigation onOpenModal={handleOpenModal} />
+      <NavigationNext onOpenModal={handleOpenModal} />
       
       <div className="min-h-screen pt-20">
         {/* Hero Section */}
