@@ -563,61 +563,20 @@ export default function DestinationDetailClient({ destination }) {
 
         {/* Related Destinations Section */}
         {relatedDestinations.length > 0 && (
-          <section className="py-16 px-4 bg-white/5">
+          <section className="py-12 px-4 bg-white/5 border-t border-white/10">
             <div className="max-w-7xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="text-center mb-12"
-              >
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Explore More {safeDestination.category} Destinations
-                </h2>
-                <p className="text-xl text-white/80">
-                  Discover other amazing destinations in the {safeDestination.category} region
-                </p>
-              </motion.div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {relatedDestinations.map((dest, index) => (
-                  <motion.div
+              <h3 className="text-xl font-semibold text-white mb-6">
+                More {safeDestination.category} Destinations
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                {relatedDestinations.map((dest) => (
+                  <Link 
                     key={dest.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    href={`/destinations/${dest.id}`}
+                    className="text-white/80 hover:text-white transition-colors duration-200 hover:underline"
                   >
-                    <Link href={`/destinations/${dest.id}`}>
-                      <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer h-full bg-white">
-                        <div className="relative h-48 overflow-hidden">
-                          <img 
-                            src={dest.imageUrl} 
-                            alt={dest.fullName}
-                            className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                          />
-                          {dest.category && (
-                            <Badge className="absolute top-4 right-4 bg-blue-600 text-white">
-                              {dest.category}
-                            </Badge>
-                          )}
-                        </div>
-                        <CardContent className="p-6">
-                          <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                            {dest.fullName}
-                          </h3>
-                          <p className="text-gray-600 mb-4 line-clamp-2">
-                            {dest.briefDescription}
-                          </p>
-                          <div className="flex items-center text-orange-600 font-semibold">
-                            Explore {dest.name}
-                            <ExternalLink className="w-4 h-4 ml-2" />
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  </motion.div>
+                    {dest.name}
+                  </Link>
                 ))}
               </div>
             </div>
