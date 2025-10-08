@@ -24,6 +24,26 @@ export async function POST(request) {
       return NextResponse.json({ error: 'No destination or searchTerm provided' }, { status: 400 });
     }
 
+    const prompt = `Create an engaging, descriptive one-liner (max 120 characters) for a travel search results page.
+
+Search Term: ${term}
+
+The description should:
+- Be specific to the destination and activity mentioned in the search term
+- Include vivid, sensory details about the location or activity
+- Mention the actual destination name and activity type
+- Include relevant emojis (2-3 max)
+- End with a call to action like 'just a click away below!'
+- Be written in an exciting, enthusiastic tone
+- Avoid generic phrases like 'amazing tours and experiences'
+
+Examples of good descriptions:
+- 'Dive into the crystal-clear waters of Aruba and discover a world of vibrant marine life—your perfect snorkeling adventure awaits just a click away below! 🌊🐠'
+- 'Savor the authentic flavors of Rome as you wander through historic streets and hidden trattorias—your culinary journey through the Eternal City awaits just a click away below! 🍝🏛️'
+- 'Soar above the Grand Canyon on a thrilling helicopter ride and witness nature's masterpiece from the sky—your aerial adventure awaits just a click away below! 🚁🏜️'
+
+Make it specific to the search term provided.`;
+
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -31,19 +51,19 @@ export async function POST(request) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-4o-mini',
         messages: [
           {
             role: 'system',
-            content: `You are a travel expert. Write a compelling, SEO-friendly description for ${term} tours and activities. Keep it under 150 words, highlight unique experiences, and include local insights. Make it engaging for potential visitors.`
+            content: 'You are a travel marketing expert. Create engaging, descriptive one-liners for travel search results that excite users about their search.'
           },
           {
             role: 'user',
-            content: `Write a compelling description for ${term} tours and activities.`
+            content: prompt
           }
         ],
-        max_tokens: 200,
-        temperature: 0.7
+        max_tokens: 150,
+        temperature: 0.8
       })
     });
 
@@ -55,7 +75,9 @@ export async function POST(request) {
 
     const data = await response.json();
     console.log('OpenAI response received successfully');
-    const description = data.choices[0].message.content;
+    let description = data.choices[0].message.content.trim();
+    // Remove quotes if present
+    description = description.replace(/^["']|["']$/g, '');
     
     return NextResponse.json({ success: true, description });
 

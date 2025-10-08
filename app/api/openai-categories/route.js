@@ -23,6 +23,26 @@ export async function POST(request) {
       return NextResponse.json({ error: 'No destination or searchTerm provided' }, { status: 400 });
     }
 
+    const prompt = `Generate 6 popular tour categories for ${term}. These should be specific search terms that travelers would use to find tours.
+
+Requirements:
+- Create exactly 6 categories
+- Each category should be 2-4 words max
+- Focus on the most popular and unique experiences for this destination
+- Use terms that people actually search for
+- Include a mix of activities, cultural experiences, and adventures
+- Make them specific to ${term}
+- IMPORTANT: Do NOT include the destination name in the category - it will be added automatically
+- Categories should be generic activity types that work well with the destination
+
+Format: Return only the 6 categories, one per line, no numbering or bullets.
+
+Examples for different destinations:
+For Rome: food tours, colosseum tours, vatican tours, walking tours, cooking classes, day trips
+For Aruba: snorkeling tours, sunset cruises, jeep tours, horseback riding, water sports, island tours
+
+Note: The destination name will be automatically added to each category, so return only the activity type.`;
+
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -30,18 +50,18 @@ export async function POST(request) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-4o-mini',
         messages: [
           {
             role: 'system',
-            content: `You are a travel expert specializing in ${term}. Generate 6-8 popular tour categories that visitors typically book in this destination. Return only a JSON array of category names, no additional text.`
+            content: 'You are a travel expert. Generate popular tour categories for specific destinations that travelers actually search for.'
           },
           {
             role: 'user',
-            content: `What are the most popular tour categories for ${term}?`
+            content: prompt
           }
         ],
-        max_tokens: 200,
+        max_tokens: 150,
         temperature: 0.7
       })
     });
@@ -51,9 +71,17 @@ export async function POST(request) {
     }
 
     const data = await response.json();
-    const categories = JSON.parse(data.choices[0].message.content);
+    const content = data.choices[0].message.content.trim();
     
-    return NextResponse.json({ success: true, categories });
+    // Split by lines and clean up
+    const categoryList = content
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => line.length > 0)
+      .map(line => line.replace(/^[-•*\d.]+\s*/, '')) // Remove bullets or numbers
+      .slice(0, 6); // Ensure exactly 6 categories
+    
+    return NextResponse.json({ success: true, categories: categoryList });
 
   } catch (error) {
     console.error('OpenAI Categories Error:', error);
