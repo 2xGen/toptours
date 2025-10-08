@@ -152,10 +152,14 @@ const SmartTourFinder = ({ isOpen, onClose, preFilledDestination = '' }) => {
               >
                 <div className="text-center">
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    {preFilledDestination ? `Planning your trip to ${preFilledDestination}?` : 'Where do you want to explore?'}
+                    {preFilledDestination && preFilledDestination.trim() !== '' 
+                      ? `Planning your trip to ${preFilledDestination}?` 
+                      : 'Where do you want to explore?'}
                   </h3>
                   <p className="text-gray-600">
-                    {preFilledDestination ? 'Tell us what you want to see and do' : 'Tell us your dream destination'}
+                    {preFilledDestination && preFilledDestination.trim() !== '' 
+                      ? 'Tell us what you want to see and do' 
+                      : 'Tell us your dream destination'}
                   </p>
                 </div>
                 
