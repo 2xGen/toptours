@@ -2,23 +2,19 @@
 export const dynamic = 'force-dynamic';
 
 import { Suspense } from 'react';
-
-function ResultsContent() {
-  return (
-    <div className="min-h-screen pt-20 flex items-center justify-center">
-      <div className="text-center text-white">
-        <h1 className="text-3xl font-bold mb-4">Search Results</h1>
-        <p>Feature being rebuilt - please use destination pages directly</p>
-      </div>
-    </div>
-  );
-}
+import Results from './ResultsClient';
 
 export default function ResultsPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ResultsContent />
+    <Suspense fallback={
+      <div className="min-h-screen pt-20 flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
+          <p className="text-gray-600">Loading search results...</p>
+        </div>
+      </div>
+    }>
+      <Results />
     </Suspense>
   );
 }
-

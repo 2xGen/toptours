@@ -19,7 +19,7 @@ export default function HomePage() {
     <>
       <NavigationNext onOpenModal={handleOpenModal} />
       
-      <main className="min-h-screen">
+      <main className="min-h-screen" suppressHydrationWarning>
         <Hero onOpenModal={handleOpenModal} />
         <AIPlanner onOpenModal={handleOpenModal} />
         <FeaturedTours onOpenModal={handleOpenModal} />

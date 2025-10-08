@@ -35,11 +35,12 @@ export default async function handler(req, res) {
       return;
     }
 
-    // Get request data
-    const { searchTerm, page = 1, minPrice = 0, maxPrice = 1000, privateTour = false, flags = [] } = req.body;
+    // Get request data - accept both 'destination' and 'searchTerm' for compatibility
+    const { destination, searchTerm, page = 1, minPrice = 0, maxPrice = 1000, privateTour = false, flags = [] } = req.body;
+    const term = destination || searchTerm;
 
-    if (!searchTerm) {
-      res.status(400).json({ error: 'Search term is required' });
+    if (!term) {
+      res.status(400).json({ error: 'Search term or destination is required' });
       return;
     }
 
@@ -48,7 +49,7 @@ export default async function handler(req, res) {
     const start = (page - 1) * perPage + 1;
 
     const requestData = {
-      searchTerm: searchTerm.trim(),
+      searchTerm: term.trim(),
       searchTypes: [{
         searchType: 'PRODUCTS',
         pagination: {
@@ -104,7 +105,7 @@ export default async function handler(req, res) {
       message: error.message,
       debug: {
         hasApiKey: !!process.env.VIATOR_API_KEY,
-        searchTerm: req.body?.searchTerm,
+        searchTerm: term,
         method: req.method
       }
     });

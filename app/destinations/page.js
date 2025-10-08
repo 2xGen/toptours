@@ -4,13 +4,17 @@ import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { destinations } from '@/data/destinationsData';
-import { Search, MapPin, Star, ArrowRight } from 'lucide-react';
+import { Search, MapPin, ArrowRight, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 export default function DestinationsPage() {
+  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [preFilledDestination, setPreFilledDestination] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -24,146 +28,195 @@ export default function DestinationsPage() {
   const categories = ['All', 'Europe', 'North America', 'Caribbean', 'Asia-Pacific', 'Africa', 'South America'];
 
   const filteredDestinations = destinations.filter(dest => {
-    const matchesSearch = dest.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         dest.region?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         dest.briefDescription?.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === 'All' || dest.category === selectedCategory;
+    const matchesSearch = dest.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         (dest.fullName && dest.fullName.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                         (dest.briefDescription && dest.briefDescription.toLowerCase().includes(searchTerm.toLowerCase()));
+    const matchesCategory = selectedCategory === 'All' || 
+                           (dest.category && dest.category === selectedCategory);
     return matchesSearch && matchesCategory;
-  }).sort((a, b) => a.fullName.localeCompare(b.fullName));
+  }).sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <>
       <NavigationNext onOpenModal={handleOpenModal} />
       
-      <div className="min-h-screen pt-20">
-        {/* Hero Section */}
-        <div className="ocean-gradient py-16 px-4">
-          <div className="container mx-auto max-w-6xl text-center">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
-            >
-              Explore Amazing Destinations
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-xl text-white/90 mb-8"
-            >
-              Discover {destinations.length}+ incredible destinations worldwide
-            </motion.p>
-            
-            {/* Search Bar */}
-            <div className="max-w-2xl mx-auto">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <Input
-                  type="text"
-                  placeholder="Search destinations..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-12 pr-4 py-6 text-lg rounded-full border-2 border-white/30 bg-white/90 backdrop-blur-sm"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Category Filter */}
-        <div className="bg-white border-b py-6">
-          <div className="container mx-auto px-4 max-w-7xl">
-            <div className="flex flex-wrap justify-center gap-3">
-              {categories.map((category) => (
-                <Button
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  onClick={() => setSelectedCategory(category)}
-                  className={selectedCategory === category ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white border-0' : 'border-gray-300 hover:border-orange-500'}
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Results Count */}
-        <div className="container mx-auto px-4 py-6 max-w-7xl">
-          <p className="text-white/90 text-center text-lg">
-            Showing <span className="font-semibold">{filteredDestinations.length}</span> 
-            {filteredDestinations.length === 1 ? ' destination' : ' destinations'}
-            {searchTerm && <span> for "<span className="font-semibold">{searchTerm}</span>"</span>}
-            {selectedCategory !== 'All' && <span> in <span className="font-semibold">{selectedCategory}</span></span>}
-          </p>
-        </div>
-
-        {/* Destinations Grid */}
-        <div className="container mx-auto px-4 pb-12 max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredDestinations.map((destination, index) => (
+      <div className="min-h-screen flex flex-col bg-gray-50" suppressHydrationWarning>
+        <main className="flex-grow">
+          <section className="pt-24 pb-16 ocean-gradient">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
-                key={destination.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
+                transition={{ duration: 0.8 }}
+                className="text-center"
               >
-                <Link href={`/destinations/${destination.id}`}>
-                  <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={destination.imageUrl}
-                        alt={destination.fullName}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 flex items-center gap-1">
-                        <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                        <span className="text-sm font-semibold">Popular</span>
+                <h1 className="text-4xl md:text-6xl font-poppins font-bold text-white mb-6">
+                  Popular Destinations
+                </h1>
+                <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
+                  Discover incredible tours and activities in the world's most captivating destinations.
+                </p>
+                
+                <div className="max-w-2xl mx-auto">
+                  <div className="glass-effect rounded-2xl p-4">
+                    <div className="flex gap-4">
+                      <div className="flex-1 relative">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                        <Input
+                          placeholder="Search destinations..."
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+                          className="pl-10 h-12 bg-white/90 border-0 text-gray-800 placeholder:text-gray-500"
+                        />
                       </div>
-                    </div>
-                    
-                    <div className="p-6">
-                      <div className="flex items-center gap-2 text-gray-600 mb-2">
-                        <MapPin className="w-4 h-4" />
-                        <span className="text-sm">{destination.region || 'Popular Destination'}</span>
-                      </div>
-                      
-                      <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
-                        {destination.fullName}
-                      </h3>
-                      
-                      <p className="text-gray-600 mb-4 line-clamp-2">
-                        {destination.seo?.description || destination.heroDescription}
-                      </p>
-                      
-                      <Button variant="outline" className="w-full group-hover:bg-blue-50">
-                        Explore Tours
-                        <ArrowRight className="w-4 h-4 ml-2" />
+                      <Button className="h-12 px-6 sunset-gradient text-white font-semibold">
+                        Search
                       </Button>
                     </div>
                   </div>
-                </Link>
+                </div>
               </motion.div>
-            ))}
-          </div>
-
-          {filteredDestinations.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-gray-600 text-lg">No destinations found matching "{searchTerm}"</p>
             </div>
-          )}
-        </div>
+          </section>
+
+          <section className="py-8 bg-white border-b">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-wrap justify-center gap-4">
+                {categories.map((category) => (
+                  <Button
+                    key={category}
+                    variant={selectedCategory === category ? "default" : "outline"}
+                    onClick={() => setSelectedCategory(category)}
+                    className={selectedCategory === category ? 'sunset-gradient text-white' : ''}
+                  >
+                    {category}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="py-20 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {filteredDestinations.length > 0 ? (
+                <>
+                  <div className="mb-8 text-center">
+                    <p className="text-lg text-gray-600">
+                      Showing <span className="font-semibold text-gray-800">{filteredDestinations.length}</span> 
+                      {filteredDestinations.length === 1 ? ' destination' : ' destinations'}
+                      {searchTerm && (
+                        <span> for "<span className="font-semibold text-gray-800">{searchTerm}</span>"</span>
+                      )}
+                      {selectedCategory !== 'All' && (
+                        <span> in <span className="font-semibold text-gray-800">{selectedCategory}</span></span>
+                      )}
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {filteredDestinations.map((destination, index) => (
+                      <motion.div
+                        key={destination.id}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.05 }}
+                        viewport={{ once: true }}
+                        whileHover={{ y: -5 }}
+                        className="cursor-pointer"
+                        onClick={() => router.push(`/destinations/${destination.id}`)}
+                      >
+                        <Card className="bg-white border-0 shadow-xl overflow-hidden h-full flex flex-col hover:shadow-2xl transition-all duration-300">
+                          <div className="relative h-48 overflow-hidden">
+                            <img 
+                              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" 
+                              alt={destination.name}
+                              src={destination.imageUrl}
+                              onError={(e) => {
+                                e.target.src = "https://images.unsplash.com/photo-1595872018818-97555653a011";
+                              }}
+                            />
+                            <Badge className="absolute top-4 left-4 adventure-gradient text-white">
+                              {destination.category}
+                            </Badge>
+                            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
+                              <span className="text-sm font-medium text-gray-800">{destination.country || destination.fullName}</span>
+                            </div>
+                          </div>
+                          <CardContent className="p-6 flex flex-col flex-grow">
+                            <div className="flex items-center text-gray-600 mb-2">
+                              <MapPin className="h-4 w-4 mr-1" />
+                              <span className="font-semibold">{destination.name}</span>
+                            </div>
+                            <p className="text-gray-700 mb-4 flex-grow">
+                              {destination.briefDescription}
+                            </p>
+                            
+                            <div className="mt-auto pt-4">
+                              <Button 
+                                asChild
+                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <Link href={`/destinations/${destination.id}`}>
+                                  Explore {destination.name}
+                                  <ArrowRight className="ml-2 h-5 w-5" />
+                                </Link>
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className="text-center py-16">
+                  <Globe className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                  <h2 className="text-3xl font-bold text-gray-800 mb-4">
+                    Destinations Coming Soon
+                  </h2>
+                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    We're working on bringing you the most amazing destinations with curated tours and activities. 
+                    Each destination will feature popular tour categories and hand-picked experiences.
+                  </p>
+                </div>
+              )}
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="py-20 adventure-gradient">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white mb-6">
+                  Ready to Experience Smart Travel?
+                </h2>
+                <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+                  Join thousands of travelers who have discovered their perfect adventures with TopTours.ai.
+                </p>
+                <Button 
+                  onClick={() => handleOpenModal()}
+                  className="px-8 py-4 bg-white text-blue-600 font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-200"
+                >
+                  Start Planning Your Trip
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </motion.div>
+            </div>
+          </section>
+        </main>
+        <FooterNext />
       </div>
 
-      <FooterNext />
-      
-      <SmartTourFinder 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <SmartTourFinder
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         preFilledDestination={preFilledDestination}
       />
     </>
   );
 }
-
