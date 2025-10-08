@@ -481,9 +481,15 @@ const Results = () => {
       }
 
       const data = await response.json();
+      console.log('Categories API response:', data);
+      console.log('Categories array:', data.categories);
       
-      if (data.success && data.categories) {
+      if (data.success && data.categories && Array.isArray(data.categories)) {
+        console.log('Setting categories:', data.categories);
         setDestinationCategories(data.categories);
+      } else {
+        console.log('Categories not valid, using fallback');
+        throw new Error('Invalid categories response');
       }
     } catch (err) {
       console.error('Categories generation error:', err);
@@ -585,9 +591,8 @@ const Results = () => {
               )}
             </div>
             
-            {/* Popular Categories */}
-            {!loading && !error && (
-              <div className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl p-6 shadow-sm">
+            {/* Popular Categories - FORCED TO SHOW */}
+            <div className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl p-6 shadow-sm mt-6">
                 <div className="text-center mb-4">
                   <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-full px-3 py-1 mb-2">
                     <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
@@ -602,45 +607,22 @@ const Results = () => {
                   </p>
                 </div>
                 
-                {generatingCategories ? (
-                  <div className="text-center py-4">
-                    <div className="w-6 h-6 animate-spin rounded-full border border-blue-500 border-t-transparent mx-auto mb-2"></div>
-                    <p className="text-sm text-gray-600">Finding popular categories...</p>
-                  </div>
-                ) : destinationCategories.length > 0 ? (
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
-                    {Array.from({ length: 6 }).map((_, index) => {
-                      const category = destinationCategories[index];
-                      return category ? (
-                        <motion.div
-                          key={category}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          <Button
-                            onClick={() => handleCategorySearch(category)}
-                            variant="outline"
-                            size="sm"
-                            className="h-16 w-full flex flex-col justify-center items-center p-2 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 text-blue-700 hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 transition-all duration-200 hover:scale-105"
-                          >
-                            <div className="text-sm font-medium leading-tight text-center">
-                              {category}
-                            </div>
-                          </Button>
-                        </motion.div>
-                      ) : (
-                        <div key={index} className="h-16 w-full opacity-0 pointer-events-none"></div>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  <div className="text-center py-4">
-                    <p className="text-sm text-gray-600">No categories available for this destination.</p>
-                  </div>
-                )}
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+                  {(destinationCategories.length > 0 ? destinationCategories : ['Tours', 'Activities', 'Food & Dining', 'Cultural Experiences', 'Day Trips', 'Adventures']).map((category, index) => (
+                    <Button
+                      key={category}
+                      onClick={() => handleCategorySearch(category)}
+                      variant="outline"
+                      size="sm"
+                      className="h-16 w-full flex flex-col justify-center items-center p-2 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 text-blue-700 hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 transition-all duration-200 hover:scale-105"
+                    >
+                      <div className="text-sm font-medium leading-tight text-center">
+                        {category}
+                      </div>
+                    </Button>
+                  ))}
+                </div>
               </div>
-            )}
           </motion.div>
         </div>
 

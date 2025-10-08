@@ -5,12 +5,12 @@ export async function POST(request) {
     const { destination } = await request.json();
     const dest = destination || 'Paris';
     
-    // Get API key
+    // Get API key from environment
     const apiKey = process.env.OPENAI_API_KEY;
     
     if (!apiKey) {
       return NextResponse.json({
-        error: 'OpenAI API key not configured in Vercel environment variables'
+        error: 'OpenAI API key not configured'
       }, { status: 500 });
     }
 

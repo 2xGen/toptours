@@ -5,17 +5,14 @@ export async function POST(request) {
     const { destination, searchTerm } = await request.json();
     const term = destination || searchTerm;
 
-    // Get API key from environment variables
+    // Get API key from environment
     const apiKey = process.env.OPENAI_API_KEY;
     
-    // Debug logging
     console.log('OpenAI Description API called');
     console.log('Term:', term);
-    console.log('API Key exists:', !!apiKey);
-    console.log('API Key prefix:', apiKey ? apiKey.substring(0, 7) + '...' : 'none');
     
     if (!apiKey) {
-      console.error('OpenAI API key not found in environment variables');
+      console.error('OpenAI API key not configured');
       return NextResponse.json({ error: 'OpenAI API key not configured' }, { status: 500 });
     }
     

@@ -5,16 +5,14 @@ export async function POST(request) {
     const { destination, searchTerm } = await request.json();
     const term = destination || searchTerm;
 
-    // Get API key from environment variables
+    // Get API key from environment
     const apiKey = process.env.OPENAI_API_KEY;
     
-    // Debug logging
     console.log('OpenAI Categories API called');
     console.log('Term:', term);
-    console.log('API Key exists:', !!apiKey);
     
     if (!apiKey) {
-      console.error('OpenAI API key not found in environment variables');
+      console.error('OpenAI API key not configured');
       return NextResponse.json({ error: 'OpenAI API key not configured' }, { status: 500 });
     }
     
@@ -73,6 +71,8 @@ Note: The destination name will be automatically added to each category, so retu
     const data = await response.json();
     const content = data.choices[0].message.content.trim();
     
+    console.log('Raw OpenAI response:', content);
+    
     // Split by lines and clean up
     const categoryList = content
       .split('\n')
@@ -81,7 +81,14 @@ Note: The destination name will be automatically added to each category, so retu
       .map(line => line.replace(/^[-•*\d.]+\s*/, '')) // Remove bullets or numbers
       .slice(0, 6); // Ensure exactly 6 categories
     
-    return NextResponse.json({ success: true, categories: categoryList });
+    console.log('Parsed categories:', categoryList);
+    console.log('Returning response with', categoryList.length, 'categories');
+    
+    return NextResponse.json({ 
+      success: true, 
+      categories: categoryList,
+      raw: content // Include raw response for debugging
+    });
 
   } catch (error) {
     console.error('OpenAI Categories Error:', error);
