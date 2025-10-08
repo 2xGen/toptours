@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
 
-const SmartTourFinder = ({ isOpen, onClose, preFilledDestination = '' }) => {
+const SmartTourFinder = ({ isOpen, onClose }) => {
   const [step, setStep] = useState(1);
   const [destination, setDestination] = useState('');
   const [userInterests, setUserInterests] = useState('');
@@ -20,11 +20,11 @@ const SmartTourFinder = ({ isOpen, onClose, preFilledDestination = '' }) => {
   useEffect(() => {
     if (isOpen) {
       setStep(1);
-      setDestination(preFilledDestination);
+      setDestination(''); // Always start with empty destination for consistent UX
       setUserInterests('');
       setSurpriseMe(false);
     }
-  }, [isOpen, preFilledDestination]);
+  }, [isOpen]);
 
   // Close modal when clicking outside
   useEffect(() => {
@@ -152,14 +152,10 @@ const SmartTourFinder = ({ isOpen, onClose, preFilledDestination = '' }) => {
               >
                 <div className="text-center">
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    {preFilledDestination && preFilledDestination.trim() !== '' 
-                      ? `Planning your trip to ${preFilledDestination}?` 
-                      : 'Where do you want to explore?'}
+                    Where do you want to explore?
                   </h3>
                   <p className="text-gray-600">
-                    {preFilledDestination && preFilledDestination.trim() !== '' 
-                      ? 'Tell us what you want to see and do' 
-                      : 'Tell us your dream destination'}
+                    Tell us your dream destination
                   </p>
                 </div>
                 

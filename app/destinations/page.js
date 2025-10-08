@@ -16,12 +16,10 @@ import { useRouter } from 'next/navigation';
 export default function DestinationsPage() {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [preFilledDestination, setPreFilledDestination] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const handleOpenModal = (destination = '') => {
-    setPreFilledDestination(destination);
+  const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
@@ -215,7 +213,6 @@ export default function DestinationsPage() {
       <SmartTourFinder
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        preFilledDestination={preFilledDestination}
       />
     </>
   );

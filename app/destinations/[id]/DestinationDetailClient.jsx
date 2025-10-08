@@ -22,16 +22,12 @@ export default function DestinationDetailClient({ destination }) {
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [preFilledDestination, setPreFilledDestination] = useState('');
   const [tours, setTours] = useState({});
   const [loading, setLoading] = useState({});
   const [carouselIndexes, setCarouselIndexes] = useState({});
   const { toast } = useToast();
 
-  const handleOpenModal = (dest) => {
-    // If dest is provided and is a string, use it. Otherwise use destination fullName
-    const destinationName = typeof dest === 'string' && dest ? dest : safeDestination.fullName || '';
-    setPreFilledDestination(destinationName);
+  const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
@@ -340,7 +336,7 @@ export default function DestinationDetailClient({ destination }) {
                       style={{ transform: `translateX(-${carouselIndexes[category] * 25}%)` }}
                     >
                       {tours[category].map((tour, index) => (
-                        <Card key={tour.productCode || index} className="min-w-[calc(25%-1.5rem)] h-full bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col flex-shrink-0">
+                        <Card key={tour.productCode || index} className="w-[calc(25%-1.125rem)] flex-shrink-0 bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
                           {/* Tour Image */}
                           <div className="relative h-32 bg-gray-200 flex-shrink-0">
                             {tour.images?.[0]?.variants?.[3]?.url ? (
@@ -553,10 +549,9 @@ export default function DestinationDetailClient({ destination }) {
 
       <FooterNext />
       
-      <SmartTourFinder 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        preFilledDestination={preFilledDestination}
+      <SmartTourFinder
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
       />
     </>
   );

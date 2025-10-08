@@ -14,12 +14,10 @@ import { motion } from 'framer-motion';
 
 export default function TravelGuidesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [preFilledDestination, setPreFilledDestination] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const handleOpenModal = (destination = '') => {
-    setPreFilledDestination(destination);
+  const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
@@ -282,7 +280,6 @@ export default function TravelGuidesPage() {
       <SmartTourFinder
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        preFilledDestination={preFilledDestination}
       />
     </>
   );

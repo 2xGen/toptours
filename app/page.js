@@ -31,8 +31,7 @@ export default function HomePage() {
       
       <SmartTourFinder 
         isOpen={isModalOpen} 
-        onClose={handleCloseModal} 
-        preFilledDestination=""
+        onClose={handleCloseModal}
       />
       
       {/* Schema Markup */}
