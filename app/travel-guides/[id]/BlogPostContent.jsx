@@ -8,9 +8,11 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { getRelatedGuides } from '../../../src/data/travelGuidesData.js';
+import { getDestinationsByCategory } from '../../../src/data/destinationsData.js';
 
 const BlogPostContent = ({ slug, onOpenModal }) => {
   const [relatedGuides, setRelatedGuides] = useState([]);
+  const [relatedDestinations, setRelatedDestinations] = useState([]);
 
   // Scroll to top when component mounts and load related guides
   useEffect(() => {
@@ -350,6 +352,14 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
   };
 
   const post = blogPosts[slug];
+
+  // Load related destinations based on post category
+  useEffect(() => {
+    if (post?.category && post.category !== 'General Travel Tips') {
+      const destinations = getDestinationsByCategory(post.category);
+      setRelatedDestinations(destinations);
+    }
+  }, [post?.category]);
 
   if (!post) {
     return (
@@ -7865,6 +7875,28 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                     className="text-gray-700 hover:text-blue-600 transition-colors duration-200 hover:underline text-sm"
                   >
                     {guide.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Related Destinations Section */}
+        {relatedDestinations.length > 0 && post?.category && (
+          <section className="py-12 px-4 bg-white border-t border-gray-200">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                Explore {post.category} Destinations
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                {relatedDestinations.map((dest) => (
+                  <Link 
+                    key={dest.id}
+                    href={`/destinations/${dest.id}`}
+                    className="text-gray-700 hover:text-blue-600 transition-colors duration-200 hover:underline text-sm"
+                  >
+                    {dest.name}
                   </Link>
                 ))}
               </div>

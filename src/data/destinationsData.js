@@ -9631,4 +9631,16 @@ export const getRelatedDestinations = (currentDestinationId) => {
   
   // Sort alphabetically by name
   return related.sort((a, b) => a.name.localeCompare(b.name));
+};
+
+export const getDestinationsByCategory = (category) => {
+  if (!category) return [];
+  
+  // Get ALL destinations from the specified category
+  const related = destinations.filter(dest => 
+    dest.category === category
+  );
+  
+  // Sort alphabetically by name
+  return related.sort((a, b) => a.name.localeCompare(b.name));
 }; 
