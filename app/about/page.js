@@ -10,8 +10,12 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 
 export default function AboutPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [preFilledDestination, setPreFilledDestination] = useState('');
 
-  const handleOpenModal = () => setIsModalOpen(true);
+  const handleOpenModal = () => {
+    setPreFilledDestination(''); // No pre-filled destination for About page
+    setIsModalOpen(true);
+  };
 
   const values = [
     {
@@ -272,7 +276,7 @@ export default function AboutPage() {
       <SmartTourFinder
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        preFilledDestination=""
+        preFilledDestination={preFilledDestination}
       />
     </>
   );

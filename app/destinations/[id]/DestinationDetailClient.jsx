@@ -340,7 +340,7 @@ export default function DestinationDetailClient({ destination }) {
                       style={{ transform: `translateX(-${carouselIndexes[category] * 25}%)` }}
                     >
                       {tours[category].map((tour, index) => (
-                        <Card key={tour.productCode || index} className="min-w-[calc(25%-1.5rem)] bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col flex-shrink-0">
+                        <Card key={tour.productCode || index} className="min-w-[calc(25%-1.5rem)] h-full bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col flex-shrink-0">
                           {/* Tour Image */}
                           <div className="relative h-32 bg-gray-200 flex-shrink-0">
                             {tour.images?.[0]?.variants?.[3]?.url ? (

@@ -10,8 +10,12 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 
 export default function HowItWorksPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [preFilledDestination, setPreFilledDestination] = useState('');
 
-  const handleOpenModal = () => setIsModalOpen(true);
+  const handleOpenModal = () => {
+    setPreFilledDestination('');
+    setIsModalOpen(true);
+  };
 
   const steps = [
     {
@@ -188,7 +192,7 @@ export default function HowItWorksPage() {
       <SmartTourFinder
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        preFilledDestination=""
+        preFilledDestination={preFilledDestination}
       />
     </>
   );
