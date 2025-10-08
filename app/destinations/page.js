@@ -27,7 +27,7 @@ export default function DestinationsPage() {
 
   const categories = ['All', 'Europe', 'North America', 'Caribbean', 'Asia-Pacific', 'Africa', 'South America'];
 
-  const filteredDestinations = destinations.filter(dest => {
+  const filteredDestinations = (Array.isArray(destinations) ? destinations : []).filter(dest => {
     const matchesSearch = dest.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          (dest.fullName && dest.fullName.toLowerCase().includes(searchTerm.toLowerCase())) ||
                          (dest.briefDescription && dest.briefDescription.toLowerCase().includes(searchTerm.toLowerCase()));

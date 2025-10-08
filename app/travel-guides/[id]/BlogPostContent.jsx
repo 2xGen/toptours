@@ -366,6 +366,66 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
     <>
       {/* SEO Meta tags will be handled by the parent page.js component */}
         
+        {/* FAQ Schema for Travel Mistakes */}
+        {slug === 'travel-mistakes-to-avoid' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "How can I make my travel experience smoother?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Start by avoiding the most common travel mistakes—pack light, research entry rules early, and book your top tours in advance to ensure availability."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What's the best way to find tours and activities?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Use TopTours.ai to discover the best-rated tours worldwide. Our AI scans thousands of options and recommends activities tailored to your interests and travel style."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "When should I book tours for popular destinations?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ideally two to three weeks in advance, especially for experiences like sunset cruises, guided hikes, and museum tours."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is travel insurance really necessary?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, travel insurance is essential for protecting against unexpected events like trip cancellations, medical emergencies, or lost luggage. The small cost can save you thousands if something goes wrong."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How much cash should I carry while traveling?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Carry a small amount of local currency for emergencies and places that don't accept cards, but rely primarily on cards with low foreign transaction fees. Keep cash in multiple places for security."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What's the most important travel document to backup?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Your passport is the most critical document to backup. Store digital copies in your email, cloud storage, and with a trusted contact. Also backup travel insurance documents and important reservations."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
+
         {/* FAQ Schema for Caribbean Islands */}
         {slug === 'best-time-to-visit-caribbean' && (
           <script type="application/ld+json">
