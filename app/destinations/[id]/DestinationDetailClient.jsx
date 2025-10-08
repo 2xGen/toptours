@@ -66,11 +66,11 @@ export default function DestinationDetailClient({ destination }) {
       }
 
       const data = await response.json();
-      const products = data.products || [];
+      const products = Array.isArray(data.products) ? data.products : [];
       
       setTours(prev => ({
         ...prev,
-        [category]: products.slice(0, 6) // Max 6 tours per category
+        [category]: Array.isArray(products) ? products.slice(0, 6) : [] // Max 6 tours per category
       }));
     } catch (error) {
       console.error('Error fetching tours:', error);
