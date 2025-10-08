@@ -179,8 +179,8 @@ export default function TravelGuidesPage() {
                 <>
                   <div className="mb-8 text-center">
                     <p className="text-lg text-gray-600">
-                      Showing <span className="font-semibold text-gray-800">{filteredGuides.length}</span> 
-                      {filteredGuides.length === 1 ? ' guide' : ' guides'}
+                      Showing <span className="font-semibold text-gray-800">{startIndex + 1}-{Math.min(endIndex, allFilteredGuides.length)}</span> of <span className="font-semibold text-gray-800">{allFilteredGuides.length}</span>
+                      {allFilteredGuides.length === 1 ? ' guide' : ' guides'}
                       {searchTerm && (
                         <span> for "<span className="font-semibold text-gray-800">{searchTerm}</span>"</span>
                       )}

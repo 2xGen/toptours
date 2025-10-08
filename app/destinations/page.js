@@ -119,8 +119,8 @@ export default function DestinationsPage() {
                 <>
                   <div className="mb-8 text-center">
                     <p className="text-lg text-gray-600">
-                      Showing <span className="font-semibold text-gray-800">{filteredDestinations.length}</span> 
-                      {filteredDestinations.length === 1 ? ' destination' : ' destinations'}
+                      Showing <span className="font-semibold text-gray-800">{startIndex + 1}-{Math.min(endIndex, allFilteredDestinations.length)}</span> of <span className="font-semibold text-gray-800">{allFilteredDestinations.length}</span>
+                      {allFilteredDestinations.length === 1 ? ' destination' : ' destinations'}
                       {searchTerm && (
                         <span> for "<span className="font-semibold text-gray-800">{searchTerm}</span>"</span>
                       )}
