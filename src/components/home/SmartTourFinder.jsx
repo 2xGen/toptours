@@ -194,7 +194,7 @@ const SmartTourFinder = ({ isOpen, onClose }) => {
                 <div className="text-center">
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">What do you want to see in {destination}?</h3>
                   <p className="text-gray-600">
-                    {preFilledDestination ? 'Tell us your interests or let us surprise you with the best experiences' : 'Tell us your interests or let us surprise you'}
+                    Tell us your interests or let us surprise you
                   </p>
                 </div>
                 
