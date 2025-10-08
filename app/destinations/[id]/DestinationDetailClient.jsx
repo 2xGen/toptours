@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { getRelatedDestinations } from '@/src/data/destinationsData';
+import { getRelatedDestinations } from '../../../src/data/destinationsData.js';
 
 export default function DestinationDetailClient({ destination }) {
   // Ensure destination has required arrays
