@@ -17,8 +17,8 @@ export default function DestinationDetailClient({ destination }) {
   // Ensure destination has required arrays
   const safeDestination = {
     ...destination,
-    tourCategories: Array.isArray(destination?.tourCategories) ? safeDestination.tourCategories : [],
-    whyVisit: Array.isArray(destination?.whyVisit) ? safeDestination.whyVisit : []
+    tourCategories: Array.isArray(destination?.tourCategories) ? destination.tourCategories : [],
+    whyVisit: Array.isArray(destination?.whyVisit) ? destination.whyVisit : []
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
