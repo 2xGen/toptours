@@ -14,6 +14,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { getRelatedDestinations } from '../../../src/data/destinationsData.js';
+import { getGuidesByCategory } from '../../../src/data/travelGuidesData.js';
 
 export default function DestinationDetailClient({ destination }) {
   // Ensure destination has required arrays
@@ -28,6 +29,7 @@ export default function DestinationDetailClient({ destination }) {
   const [loading, setLoading] = useState({});
   const [carouselIndexes, setCarouselIndexes] = useState({});
   const [relatedDestinations, setRelatedDestinations] = useState([]);
+  const [relatedGuides, setRelatedGuides] = useState([]);
   const { toast } = useToast();
 
   const handleOpenModal = () => {
@@ -50,6 +52,12 @@ export default function DestinationDetailClient({ destination }) {
     // Load all related destinations from the same region
     const related = getRelatedDestinations(safeDestination.id);
     setRelatedDestinations(related);
+
+    // Load related guides from the same region
+    if (safeDestination.category) {
+      const guides = getGuidesByCategory(safeDestination.category);
+      setRelatedGuides(guides);
+    }
   }, []);
 
   const fetchToursForCategory = async (destinationName, category) => {
@@ -560,6 +568,28 @@ export default function DestinationDetailClient({ destination }) {
             </motion.div>
           </div>
         </section>
+
+        {/* Related Travel Guides Section */}
+        {relatedGuides.length > 0 && (
+          <section className="py-12 px-4 bg-white/10 border-t border-white/10">
+            <div className="max-w-7xl mx-auto">
+              <h3 className="text-xl font-semibold text-white mb-6">
+                {safeDestination.category} Travel Guides
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {relatedGuides.map((guide) => (
+                  <Link 
+                    key={guide.id}
+                    href={`/travel-guides/${guide.id}`}
+                    className="text-white/80 hover:text-white transition-colors duration-200 hover:underline"
+                  >
+                    {guide.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Related Destinations Section */}
         {relatedDestinations.length > 0 && (

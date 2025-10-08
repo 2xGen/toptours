@@ -541,3 +541,19 @@ export const getRelatedGuides = (currentGuideId) => {
     return new Date(b.publishDate) - new Date(a.publishDate);
   });
 };
+
+export const getGuidesByCategory = (category) => {
+  if (!category) return [];
+  
+  // Get ALL guides from the specified category
+  const related = travelGuides.filter(guide => 
+    guide.category === category
+  );
+  
+  // Sort by featured first, then by publish date
+  return related.sort((a, b) => {
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+    return new Date(b.publishDate) - new Date(a.publishDate);
+  });
+};
