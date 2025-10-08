@@ -7851,7 +7851,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
         </main>
 
         {/* Related Travel Guides Section */}
-        {relatedGuides.length > 0 && (
+        {relatedGuides.length > 0 && post?.category && (
           <section className="py-12 px-4 bg-gray-50 border-t border-gray-200">
             <div className="max-w-4xl mx-auto">
               <h3 className="text-xl font-semibold text-gray-900 mb-6">
