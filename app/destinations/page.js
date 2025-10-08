@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
-import { destinationsData } from '@/data/destinationsData';
+import { destinations } from '@/data/destinationsData';
 import { Search, MapPin, Star, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,7 +20,7 @@ export default function DestinationsPage() {
     setIsModalOpen(true);
   };
 
-  const filteredDestinations = destinationsData.filter(dest =>
+  const filteredDestinations = destinations.filter(dest =>
     dest.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
     dest.region?.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -46,7 +46,7 @@ export default function DestinationsPage() {
               transition={{ delay: 0.1 }}
               className="text-xl text-white/90 mb-8"
             >
-              Discover {destinationsData.length}+ incredible destinations worldwide
+              Discover {destinations.length}+ incredible destinations worldwide
             </motion.p>
             
             {/* Search Bar */}
