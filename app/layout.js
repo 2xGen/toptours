@@ -8,6 +8,8 @@ export const metadata = {
     default: 'TopTours.ai - AI-Powered Travel Planning & Tour Booking',
     template: '%s | TopTours.ai'
   },
+  // Force rebuild v2
+
   description: 'Discover and book the best tours, activities, and experiences worldwide with AI-powered recommendations. From city tours to adventure activities, find your perfect trip with TopTours.ai.',
   keywords: 'tours, activities, travel planning, AI travel, tour booking, travel experiences, city tours, adventure tours',
   authors: [{ name: 'TopTours.ai' }],
