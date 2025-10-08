@@ -4,7 +4,7 @@ export async function POST(request) {
   const startTime = Date.now();
   
   try {
-    console.log('=== NEW OpenAI Test Endpoint Called ===');
+    console.log('=== NEW OpenAI Test Endpoint Called - VERSION 2024-10-08-v3 ===');
     
     const body = await request.json();
     const testDestination = body.destination || 'Paris';
@@ -75,6 +75,8 @@ export async function POST(request) {
 
     return NextResponse.json({
       success: true,
+      endpoint: '/api/test-openai-new',
+      version: '2024-10-08-v3',
       message: 'OpenAI API is working!',
       destination: testDestination,
       generatedText: generatedText,
