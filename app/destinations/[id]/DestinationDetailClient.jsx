@@ -27,6 +27,12 @@ export default function DestinationDetailClient({ destination }) {
   };
 
   useEffect(() => {
+    // Safety check for tourCategories
+    if (!destination.tourCategories || !Array.isArray(destination.tourCategories)) {
+      console.error('tourCategories is not an array:', destination.tourCategories);
+      return;
+    }
+
     // Initialize carousel indexes for each category
     const indexes = {};
     destination.tourCategories.forEach(category => {
@@ -117,7 +123,7 @@ export default function DestinationDetailClient({ destination }) {
                   {destination.heroDescription}
                 </p>
                 <div className="flex flex-wrap gap-2 sm:gap-4">
-                  {destination.tourCategories.slice(0, 3).map((category, index) => (
+                  {destination.tourCategories && Array.isArray(destination.tourCategories) && destination.tourCategories.slice(0, 3).map((category, index) => (
                     <Badge key={index} variant="outline" className="bg-white/20 text-white border-white/30 text-sm">
                       {category}
                     </Badge>
@@ -173,7 +179,7 @@ export default function DestinationDetailClient({ destination }) {
             </motion.div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {destination.whyVisit.map((reason, index) => (
+              {destination.whyVisit && Array.isArray(destination.whyVisit) && destination.whyVisit.map((reason, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
@@ -281,7 +287,7 @@ export default function DestinationDetailClient({ destination }) {
               </p>
             </motion.div>
 
-            {destination.tourCategories.map((category, categoryIndex) => (
+            {destination.tourCategories && Array.isArray(destination.tourCategories) && destination.tourCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category}
                 initial={{ opacity: 0, y: 30 }}
