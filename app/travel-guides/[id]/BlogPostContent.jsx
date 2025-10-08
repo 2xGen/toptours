@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, Calendar, User, Clock } from 'lucide-react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
@@ -7,13 +7,19 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { getRelatedGuides } from '../../../src/data/travelGuidesData.js';
 
 const BlogPostContent = ({ slug, onOpenModal }) => {
+  const [relatedGuides, setRelatedGuides] = useState([]);
 
-  // Scroll to top when component mounts
+  // Scroll to top when component mounts and load related guides
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    
+    // Load related guides
+    const related = getRelatedGuides(slug);
+    setRelatedGuides(related);
+  }, [slug]);
 
   // Blog posts data
   const blogPosts = {
@@ -7843,6 +7849,28 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
             </div>
           </div>
         </main>
+
+        {/* Related Travel Guides Section */}
+        {relatedGuides.length > 0 && (
+          <section className="py-12 px-4 bg-gray-50 border-t border-gray-200">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                More {post.category} Guides
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {relatedGuides.map((guide) => (
+                  <Link 
+                    key={guide.id}
+                    href={`/travel-guides/${guide.id}`}
+                    className="text-gray-700 hover:text-blue-600 transition-colors duration-200 hover:underline text-sm"
+                  >
+                    {guide.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
         
         
         <FooterNext />

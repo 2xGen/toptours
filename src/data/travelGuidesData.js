@@ -523,3 +523,21 @@ Every destination is unique—whether you're exploring the beaches of Aruba or t
     relatedDestination: '/destinations/patagonia'
   }
 ];
+
+export const getRelatedGuides = (currentGuideId) => {
+  const currentGuide = travelGuides.find(guide => guide.id === currentGuideId);
+  if (!currentGuide) return [];
+  
+  // Get ALL guides from the same category, excluding the current one
+  const related = travelGuides.filter(guide => 
+    guide.category === currentGuide.category && 
+    guide.id !== currentGuideId
+  );
+  
+  // Sort by featured first, then by publish date
+  return related.sort((a, b) => {
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+    return new Date(b.publishDate) - new Date(a.publishDate);
+  });
+};
