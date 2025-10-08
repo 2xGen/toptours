@@ -1,7 +1,8 @@
+"use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, MapPin, Sparkles, ArrowLeft, ArrowRight, X } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
@@ -12,7 +13,7 @@ const SmartTourFinder = ({ isOpen, onClose, preFilledDestination = '' }) => {
   const [userInterests, setUserInterests] = useState('');
   const [surpriseMe, setSurpriseMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
   const modalRef = useRef(null);
 
   // Reset form when modal opens/closes
@@ -86,7 +87,7 @@ const SmartTourFinder = ({ isOpen, onClose, preFilledDestination = '' }) => {
 
     // Navigate to results page
     const url = `/results?searchTerm=${encodeURIComponent(searchQuery)}`;
-    navigate(url);
+    router.push(url);
     
     setIsLoading(false);
     handleClose();
