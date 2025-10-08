@@ -536,7 +536,7 @@ export default function DestinationDetailClient({ destination }) {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600">
+        <section className="py-16 adventure-gradient">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -553,7 +553,7 @@ export default function DestinationDetailClient({ destination }) {
               <Button 
                 onClick={() => handleOpenModal(safeDestination.fullName)}
                 size="lg"
-                className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-8 py-6 text-lg"
+                className="bg-white text-blue-600 hover:bg-gray-100 hover:scale-105 transition-all duration-200 px-8 py-6 text-lg font-semibold"
               >
                 Start Planning Your {safeDestination.fullName} Trip
               </Button>
