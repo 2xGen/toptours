@@ -15,27 +15,33 @@ export default function TestOpenAIPage() {
     setDescriptionResult({ status: 'loading...', data: null });
     
     try {
-      console.log('Testing OpenAI Description API...');
-      const response = await fetch('/api/openai-description', {
+      console.log('Testing NEW OpenAI API endpoint...');
+      console.log('Calling: /api/test-openai-new');
+      console.log('With destination:', destination);
+      
+      const response = await fetch('/api/test-openai-new', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          searchTerm: destination
+          destination: destination
         })
       });
 
+      console.log('Response status:', response.status);
       const data = await response.json();
+      console.log('Response data:', data);
       
       setDescriptionResult({
-        status: response.ok ? 'SUCCESS' : 'ERROR',
+        status: response.ok ? 'SUCCESS ✅' : 'ERROR ❌',
         statusCode: response.status,
         data: data
       });
     } catch (error) {
+      console.error('Fetch error:', error);
       setDescriptionResult({
-        status: 'ERROR',
+        status: 'ERROR ❌',
         error: error.message
       });
     } finally {
