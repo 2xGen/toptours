@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'No search term provided' });
     }
 
-    const apiKey = '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';
+    const apiKey = process.env.OPENAI_API_KEY;
 
     const prompt = `Create an engaging one-liner (max 120 characters) for ${term} travel page. Include emojis and end with 'just a click away below!'`;
 
