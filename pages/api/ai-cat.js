@@ -36,16 +36,9 @@ export default async function handler(req, res) {
 
     const data = await response.json();
     
-    // Check if OpenAI returned an error
-    if (data.error) {
-      console.error('OpenAI API Error:', data.error);
-      throw new Error(data.error.message || 'OpenAI API error');
-    }
-    
-    // Check if we have the expected response structure
-    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-      console.error('Unexpected OpenAI response:', JSON.stringify(data));
-      throw new Error('Invalid response from OpenAI');
+    if (!data.choices || !data.choices[0]) {
+      console.error('Unexpected response:', JSON.stringify(data));
+      throw new Error('Invalid API response');
     }
     
     const content = data.choices[0].message.content.trim();

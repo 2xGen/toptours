@@ -35,6 +35,12 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
+    
+    if (!data.choices || !data.choices[0]) {
+      console.error('Unexpected response:', JSON.stringify(data));
+      throw new Error('Invalid API response');
+    }
+    
     let description = data.choices[0].message.content.trim();
     description = description.replace(/^["']|["']$/g, '');
     
