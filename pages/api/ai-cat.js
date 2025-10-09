@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'No destination provided' });
     }
 
-    const apiKey = 'REPLACE_WITH_YOUR_KEY_ON_GITHUB';
+    const apiKey = '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';
 
     const prompt = `Generate 6 popular tour categories for ${term}. Return only the activity types, one per line.`;
 
