@@ -13,25 +13,27 @@ import { getDestinationsByCategory, getDestinationsByIds } from '../../../src/da
 const BlogPostContent = ({ slug, onOpenModal }) => {
   const [relatedGuides, setRelatedGuides] = useState([]);
   const [relatedDestinations, setRelatedDestinations] = useState([]);
+  const [currentGuide, setCurrentGuide] = useState(null);
 
   // Scroll to top when component mounts and load related guides
   useEffect(() => {
     window.scrollTo(0, 0);
     
     // Get current guide from data
-    const currentGuide = travelGuides.find(g => g.id === slug);
+    const guide = travelGuides.find(g => g.id === slug);
+    setCurrentGuide(guide);
     
     // Load related guides
     const related = getRelatedGuides(slug);
     setRelatedGuides(related);
     
-    // Load related destinations - prioritize specific related destinations
-    if (currentGuide?.relatedDestinations && currentGuide.relatedDestinations.length > 0) {
-      const destinations = getDestinationsByIds(currentGuide.relatedDestinations);
+    // Load related destinations - show all destinations in the same region/category
+    if (guide?.category) {
+      const destinations = getDestinationsByCategory(guide.category);
       setRelatedDestinations(destinations);
-    } else if (currentGuide?.category) {
-      const destinations = getDestinationsByCategory(currentGuide.category);
-      setRelatedDestinations(destinations.slice(0, 6)); // Limit to 6
+    } else if (guide?.relatedDestinations && guide.relatedDestinations.length > 0) {
+      const destinations = getDestinationsByIds(guide.relatedDestinations);
+      setRelatedDestinations(destinations);
     }
   }, [slug]);
 
@@ -7877,7 +7879,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
           <section className="py-12 px-4 border-t border-gray-200" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
             <div className="max-w-4xl mx-auto">
               <h3 className="text-xl font-semibold text-white mb-6">
-                Featured Destinations in This Guide
+                {currentGuide?.category ? `Featured Destinations in ${currentGuide.category}` : 'Featured Destinations'}
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {relatedDestinations.map((dest) => (
