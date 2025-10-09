@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'No destination provided' });
     }
 
-    const apiKey = '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';
+    const apiKey = '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';
 
     const prompt = `Generate 6 popular tour categories for ${term}. Return only the activity types, one per line.`;
 
@@ -35,6 +35,19 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
+    
+    // Check if OpenAI returned an error
+    if (data.error) {
+      console.error('OpenAI API Error:', data.error);
+      throw new Error(data.error.message || 'OpenAI API error');
+    }
+    
+    // Check if we have the expected response structure
+    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+      console.error('Unexpected OpenAI response:', JSON.stringify(data));
+      throw new Error('Invalid response from OpenAI');
+    }
+    
     const content = data.choices[0].message.content.trim();
     
     const categoryList = content
@@ -51,7 +64,11 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    return res.status(500).json({ error: 'Failed to generate categories' });
+    console.error('AI Categories API Error:', error);
+    return res.status(500).json({ 
+      error: 'Failed to generate categories',
+      details: error.message 
+    });
   }
 }
 

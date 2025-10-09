@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'No search term provided' });
     }
 
-    const apiKey = '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';
+    const apiKey = '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';
 
     const prompt = `Create an engaging one-liner (max 120 characters) for ${term} travel page. Include emojis and end with 'just a click away below!'`;
 
@@ -42,7 +42,11 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true, description });
 
   } catch (error) {
-    return res.status(500).json({ error: 'Failed to generate description' });
+    console.error('AI Description API Error:', error);
+    return res.status(500).json({ 
+      error: 'Failed to generate description',
+      details: error.message 
+    });
   }
 }
 
