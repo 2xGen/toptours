@@ -701,24 +701,40 @@ export default function DestinationDetailClient({ destination }) {
                           href={`/travel-guides/${guide.id}`}
                           className="w-[calc(33.33%-1rem)] flex-shrink-0 group"
                         >
-                          <Card className="h-full overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                            <div className="relative h-48 bg-gray-200">
+                          <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                            <div className="relative h-48 overflow-hidden bg-gray-200">
                               {guide.image ? (
                                 <img
                                   src={guide.image}
                                   alt={guide.title}
-                                  className="w-full h-full object-cover"
+                                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                 />
                               ) : (
                                 <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100">
                                   <BookOpen className="w-12 h-12 text-gray-400" />
                                 </div>
                               )}
+                              {guide.category && (
+                                <Badge className="absolute top-4 left-4 adventure-gradient text-white">
+                                  {guide.category}
+                                </Badge>
+                              )}
                             </div>
-                            <CardContent className="p-4">
-                              <h4 className="font-semibold text-gray-800 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors h-12">
+                            <CardContent className="p-6 flex flex-col flex-grow">
+                              <h4 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
                                 {guide.title}
                               </h4>
+                              
+                              <p className="text-gray-700 mb-4 line-clamp-3 flex-grow text-sm">
+                                {guide.excerpt}
+                              </p>
+                              
+                              <Button 
+                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold mt-auto"
+                              >
+                                Read Guide
+                                <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
                             </CardContent>
                           </Card>
                         </Link>
