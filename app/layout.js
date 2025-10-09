@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -108,6 +109,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${inter.className} min-h-screen`} style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', backgroundAttachment: 'fixed' }}>
         {children}
+        <Analytics />
       </body>
     </html>
   )
