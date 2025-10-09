@@ -396,34 +396,6 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
   return (
     <>
       {/* SEO Meta tags will be handled by the parent page.js component */}
-        
-        {/* Article Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-                "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": post.title,
-            "description": post.excerpt,
-            "image": post.image,
-            "articleBody": post.content.substring(0, 500) + "...",
-            "wordCount": post.wordCount || 2000,
-            "articleSection": "Travel Tips",
-            "author": {
-              "@type": "Organization",
-              "name": "TopTours.ai"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TopTours.ai",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://toptours.ai/logo.png"
-              }
-            },
-            "datePublished": post.publishDate,
-            "dateModified": post.publishDate
-          })}
-        </script>
 
         {/* Blog Schema */}
           <script type="application/ld+json">
