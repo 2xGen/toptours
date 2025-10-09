@@ -486,37 +486,36 @@ export default function DestinationDetailClient({ destination }) {
                 Other Destinations in {safeDestination.country}
               </h3>
               <div className="flex flex-wrap justify-center gap-6">
-                  {countryDestinations.map((dest) => (
-                    <Link 
-                      key={dest.id}
-                      href={`/destinations/${dest.id}`}
-                      className="group"
-                    >
-                      <Card className="bg-white border-0 shadow-xl overflow-hidden h-full flex flex-col hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 w-full max-w-sm">
-                        <div className="relative h-48 overflow-hidden">
-                          <img 
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" 
-                            alt={dest.name}
-                            src={dest.imageUrl}
-                            loading="lazy"
-                          />
+                {countryDestinations.map((dest) => (
+                  <Link 
+                    key={dest.id}
+                    href={`/destinations/${dest.id}`}
+                    className="group"
+                  >
+                    <Card className="bg-white border-0 shadow-xl overflow-hidden h-full flex flex-col hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 w-full max-w-sm">
+                      <div className="relative h-48 overflow-hidden">
+                        <img 
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" 
+                          alt={dest.name}
+                          src={dest.imageUrl}
+                          loading="lazy"
+                        />
+                      </div>
+                      <CardContent className="p-4 flex-1 flex flex-col">
+                        <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
+                          {dest.name}
+                        </h3>
+                        <p className="text-sm text-gray-600 line-clamp-2 flex-1">
+                          {dest.briefDescription}
+                        </p>
+                        <div className="mt-3 flex items-center text-blue-600 group-hover:text-blue-700">
+                          <span className="text-sm font-semibold">Explore {dest.name}</span>
+                          <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                         </div>
-                        <CardContent className="p-4 flex-1 flex flex-col">
-                          <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
-                            {dest.name}
-                          </h3>
-                          <p className="text-sm text-gray-600 line-clamp-2 flex-1">
-                            {dest.briefDescription}
-                          </p>
-                          <div className="mt-3 flex items-center text-blue-600 group-hover:text-blue-700">
-                            <span className="text-sm font-semibold">Explore {dest.name}</span>
-                            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  ))}
-                </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
               </div>
             </div>
           </section>
