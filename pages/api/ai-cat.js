@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'No destination provided' });
     }
 
-    const apiKey = process.env.OPENAI_API_KEY;
+    const apiKey = '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';
 
     const prompt = `Generate 6 popular tour categories for ${term}. Return only the activity types, one per line.`;
 
