@@ -13,16 +13,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'No search term provided' });
     }
 
-    // Try environment variable first (Vercel), then config file (localhost)
-    let apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      try {
-        const config = require('../../config/api-keys');
-        apiKey = config.OPENAI_API_KEY;
-      } catch (e) {
-        console.error('No API key found in environment or config file');
-      }
-    }
+    const apiKey = 'REPLACE_WITH_YOUR_KEY_ON_GITHUB';
 
     const prompt = `Create an engaging one-liner (max 120 characters) for ${term} travel page. Include emojis and end with 'just a click away below!'`;
 

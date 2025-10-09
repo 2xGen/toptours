@@ -13,16 +13,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'No destination provided' });
     }
 
-    // Try environment variable first (Vercel), then config file (localhost)
-    let apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      try {
-        const config = require('../../config/api-keys');
-        apiKey = config.OPENAI_API_KEY;
-      } catch (e) {
-        console.error('No API key found in environment or config file');
-      }
-    }
+    const apiKey = 'REPLACE_WITH_YOUR_KEY_ON_GITHUB';
 
     const prompt = `Generate 6 popular tour categories for ${term}. Return only the activity types, one per line.`;
 
