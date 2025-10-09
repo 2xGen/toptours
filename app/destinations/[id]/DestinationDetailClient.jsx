@@ -529,7 +529,7 @@ export default function DestinationDetailClient({ destination }) {
                 {safeDestination.country} Travel Guides
               </h3>
               <div className="flex justify-center">
-                <div className="relative w-full max-w-5xl flex justify-center">
+                <div className="relative w-full max-w-5xl">
                   <div className="flex items-center justify-center mb-6 space-x-4">
                     <Button
                       variant="outline"
