@@ -72,6 +72,13 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
         
+        {/* Metricool Tracking */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"98c473ff6ec2603cc1ad9860d5a86670"})});`
+          }}
+        />
+        
         {/* Organization Schema */}
         <script
           type="application/ld+json"
