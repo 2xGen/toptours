@@ -16,6 +16,9 @@ build/
 .env.production.local
 api/.env
 
+# API Keys Config (manually editable)
+config/api-keys.js
+
 # IDE files
 .vscode/
 .idea/
