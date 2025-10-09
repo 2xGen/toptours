@@ -396,7 +396,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
   return (
     <>
       {/* SEO Meta tags will be handled by the parent page.js component */}
-
+        
         {/* Blog Schema */}
           <script type="application/ld+json">
             {JSON.stringify({
@@ -449,6 +449,498 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
               ]
             })}
           </script>
+
+        {/* FAQ Schemas for General Travel Tips Blogs */}
+        {slug === 'ai-travel-planning-guide' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "How does AI travel planning work?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "AI travel planning uses machine learning algorithms to analyze your preferences, budget, travel dates, and interests. It then creates personalized itineraries by processing vast amounts of data including reviews, pricing, weather patterns, and local events to suggest the best experiences for your trip."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What are the benefits of using AI for trip planning?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "AI travel planning offers numerous benefits including time-saving efficiency, personalized recommendations based on your travel style, real-time optimization for weather and events, cost optimization by finding the best deals, and the ability to discover hidden gems you might not find otherwise."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Are AI travel planners accurate and reliable?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Modern AI travel planners are highly accurate and continuously improve through machine learning. They process millions of data points including user reviews, pricing trends, weather patterns, and local events to provide reliable recommendations. However, it's always good practice to verify important details like opening hours and booking requirements."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can AI plan multi-destination trips?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, advanced AI travel planners can create complex multi-destination itineraries, optimizing routes, transportation connections, and timing between locations. They can suggest the most efficient travel sequences and help you maximize your time across multiple destinations."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What information should I provide to AI travel planners?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For the best results, provide your budget range, travel dates and duration, preferred accommodation types, activity preferences, dietary restrictions, accessibility needs, and any specific interests or goals for your trip. The more detailed information you provide, the more personalized your recommendations will be."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is AI travel planning free?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Many AI travel planning tools offer free basic features, with premium options available for advanced customization and exclusive deals. Some platforms use freemium models where basic planning is free, but advanced features require a subscription."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
+
+        {slug === 'travel-mistakes-to-avoid' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "How can I make my travel experience smoother?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Start by avoiding the most common travel mistakes—pack light, research entry rules early, and book your top tours in advance to ensure availability."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What's the best way to find tours and activities?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Use TopTours.ai to discover the best-rated tours worldwide. Our AI scans thousands of options and recommends activities tailored to your interests and travel style."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "When should I book tours for popular destinations?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ideally two to three weeks in advance, especially for experiences like sunset cruises, guided hikes, and museum tours."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is travel insurance really necessary?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, travel insurance is essential for protecting against unexpected events like trip cancellations, medical emergencies, or lost luggage. The small cost can save you thousands if something goes wrong."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How much cash should I carry while traveling?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Carry a small amount of local currency for emergencies and places that don't accept cards, but rely primarily on cards with low foreign transaction fees. Keep cash in multiple places for security."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What's the most important travel document to backup?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Your passport is the most critical document to backup. Store digital copies in your email, cloud storage, and with a trusted contact. Also backup travel insurance documents and important reservations."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
+
+        {slug === 'when-to-book-tours' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "When is the best time to book tours?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For popular tours, booking 2–3 months in advance is ideal. For seasonal tours, 1–2 months is usually enough. Private or specialized tours may require 3–4 months' notice."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I find last-minute tour discounts?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, last-minute deals are often available 1–2 weeks before the tour, especially during off-peak times. Using platforms like TopTours.ai can help identify these deals."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Should I book tours online or in person?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Booking online is generally safer and often cheaper. It allows you to compare multiple providers, read reviews, and secure your spot ahead of time."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do tour prices vary by season?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, peak season prices are higher due to demand, while off-season tours often have discounts. Planning according to your destination's season can save money."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can AI help me choose the best tours for my trip?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely! AI tools like TopTours.ai analyze your destination, interests, and travel dates to recommend the best tours and activities, often saving you time and money."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
+
+        {slug === 'how-to-choose-a-tour' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Should I choose a group or private tour?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Group tours are great for budget-friendly, structured experiences and meeting other travelers. Private tours provide a personalized pace, exclusive access, and flexibility, ideal for small groups or special occasions."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How do I know if a tour is worth it?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Check traveler reviews, ratings, included activities, and duration. TopTours.ai provides a curated list of top-rated tours using the Viator API, so you can quickly find reliable options."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I filter tours by my interests?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! While TopTours.ai doesn't manually plan your itinerary, it allows you to search tours by activity type or category, so you get options aligned with your interests in just one click."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do private tours cost significantly more?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Private tours are typically more expensive than group tours because of exclusivity and customization. However, they provide a tailored experience for your schedule and interests."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How long should I plan for a tour?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Tours can range from a couple of hours to a full day. Choose based on your schedule, energy, and the activities you want to include."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
+
+        {slug === 'beach-vacation-packing-list' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What are the most important items to pack for a beach vacation?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The most essential items include reef-safe sunscreen, comfortable beach gear, polarized sunglasses, lightweight clothing, insulated water bottles, and proper footwear. Don't forget beach floats and snorkeling equipment for water activities."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How much sunscreen should I pack for a beach vacation?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pack at least one bottle per person per week, plus extra. Reef-safe sunscreen is recommended to protect marine life. Apply every 2 hours and after swimming for maximum protection."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What type of clothing is best for beach vacations?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Choose lightweight, quick-dry fabrics like cotton, linen, or moisture-wicking materials. Pack loose-fitting clothes, cover-ups, and swimwear. Avoid heavy fabrics that take long to dry."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Should I bring my own beach gear or rent it?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For longer stays, bringing your own gear is often more cost-effective. For short trips, consider renting. Essential items like snorkels, floats, and beach chairs can usually be rented at most beach destinations."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What's the best way to keep electronics safe at the beach?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Use waterproof cases, dry bags, or zip-lock bags for phones and cameras. Keep electronics in a shaded area when not in use, and consider a waterproof speaker for music."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
+
+        {slug === 'save-money-on-tours-activities' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "How far in advance should I book tours to get the best deals?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Booking early can often secure lower prices, especially for popular destinations. However, last-minute deals can pop up too, so it's smart to check both options using TopTours.ai before you travel."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Are discounted tours lower in quality?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Not necessarily! Many operators offer discounts during low season or as limited-time promotions. Always check reviews and ratings to ensure you're getting a great experience for less."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What's the cheapest way to book tours?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Comparing prices across multiple platforms can take time — but TopTours.ai does the work for you by instantly pulling the best tours and prices from Viator. You'll see trusted results without hours of searching."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I save more with group tours or private tours?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Group tours are usually cheaper since costs are shared among participants. Private tours cost more but can be worth it if you value flexibility and exclusivity."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is it cheaper to book tours locally once I arrive?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sometimes, yes — but availability can be limited, and prices may not always be lower. Booking online through TopTours.ai ensures you secure a spot and often access online discounts."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Are there seasonal discounts for tours?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely! Traveling in the shoulder season (spring or fall) often means fewer crowds and better prices on tours and activities."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can AI really help me save money on tours?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! TopTours.ai analyzes tour data in real time, helping you spot affordable, high-quality options quickly. It's like having a personal travel deal finder built right into your browser."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
+
+        {slug === 'multi-destination-trip-planning' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "How many destinations should I include in one trip?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "It depends on your time and travel pace. For a two-week trip, three destinations are ideal — enough variety without feeling rushed."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is it cheaper to book everything separately or use a travel package?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Booking flights and hotels separately gives you more flexibility, but tours are often cheaper when found through AI aggregators like TopTours.ai that use real-time pricing."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Should I plan tours before or after booking flights?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Always confirm your transportation first, then look for tours. With TopTours.ai, you can easily search by destination anytime — no date commitment required."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How do I avoid burnout on multi-city trips?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Build rest days into your schedule. Alternate busy sightseeing days with lighter ones, like a walking tour or a local food experience."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can AI really help with multi-destination planning?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Definitely. TopTours.ai helps travelers instantly discover the best-rated and most relevant tours in every city, saving hours of research and simplifying trip organization."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
+
+        {slug === 'private-vs-group-tours' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Are private tours worth the higher cost?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, if you value flexibility, comfort, and privacy. You can explore at your own pace without following a strict schedule."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do group tours include transportation and tickets?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most group tours include transport, admission, and a guide. Always check the details before booking."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I book private tours for just one person?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely. Many private tours welcome solo travelers, though prices may be slightly higher."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What's the best type of tour for first-time travelers?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Group tours are great for first-timers — everything is pre-planned, and you'll meet fellow travelers."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I use TopTours.ai to find both private and group tours?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! TopTours.ai uses Viator's live data to instantly show both private and shared experiences in your chosen destination."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
+
+        {slug === 'ai-travel-itinerary-planning' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "How does TopTours.ai find the best tours?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We connect directly with Viator's global database of 300,000+ tours and use AI to highlight top-rated options based on your location."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I filter tours by date or group size?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Currently, TopTours.ai focuses on discovery — finding the most relevant and popular tours instantly, without manual filters."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is TopTours.ai a booking site?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We don't process bookings directly. Once you find a tour, you're redirected to Viator's trusted platform to complete your booking securely."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Does TopTours.ai work worldwide?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! From Paris to Bali to Aruba, our AI covers destinations around the world with tours from Viator's extensive network."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I need to create an account?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No account needed! Simply search for your destination and start discovering top-rated tours instantly."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
 
         {slug === 'family-tours-caribbean' && (
           <script type="application/ld+json">

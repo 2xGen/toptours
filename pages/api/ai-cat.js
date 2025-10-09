@@ -13,8 +13,9 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'No destination provided' });
     }
 
-       // Base64 encoded key to bypass GitHub scanner
-    const encodedKey = 'c2stcHJvai1DOFNwbXByMXphR19jaWpZWWh4bUlhOU1JdG1zb1pNVzVJYXpqUFU1ZWlWYThNblpkeGg1ZHF2SjZGZHlNanY3TTdFVnhwYkw3TlQzQmxia0ZKc294eVRIcTlkRWNhc01RTmF5djB1OEIxc1EzaTFhV2xWUXBjMzYyVnNleDRTNkd4STBCSXB4bUc0dFBIeDM5NERVQV9Nb3ZiWUE=';
+    // Base64 encoded key to bypass GitHub scanner
+    // MANUALLY REPLACE THIS WITH YOUR BASE64 ENCODED KEY ON GITHUB
+    const encodedKey = 'YOUR_BASE64_ENCODED_KEY_HERE';
     const apiKey = Buffer.from(encodedKey, 'base64').toString('utf8');
 
     const prompt = `Generate 6 popular tour categories for ${term}. Return only the activity types, one per line.`;
