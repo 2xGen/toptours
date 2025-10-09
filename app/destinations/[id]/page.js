@@ -104,6 +104,37 @@ export default function DestinationDetailPage({ params }) {
         }}
       />
       
+      {/* BreadcrumbList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://toptours.ai"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Destinations",
+                "item": "https://toptours.ai/destinations"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": destination.fullName,
+                "item": `https://toptours.ai/destinations/${destination.id}`
+              }
+            ]
+          })
+        }}
+      />
+      
       <DestinationDetailClient destination={destination} />
     </>
   );
