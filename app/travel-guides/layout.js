@@ -32,53 +32,6 @@ export const metadata = {
 export default function TravelGuidesLayout({ children }) {
   return (
     <>
-      {/* Structured Data - ItemList Schema for Travel Guides */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "name": "Travel Guides",
-            "description": "Comprehensive travel guides and expert tips for destinations worldwide",
-            "url": "https://toptours.ai/travel-guides",
-            "numberOfItems": 27,
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "item": {
-                  "@type": "Article",
-                  "name": "How to Plan a Trip with AI: The Future of Smart Travel",
-                  "url": "https://toptours.ai/travel-guides/ai-travel-planning-guide",
-                  "description": "Discover how AI trip planners revolutionize travel planning with personalized recommendations"
-                }
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "item": {
-                  "@type": "Article",
-                  "name": "Aruba Travel Tips: Your Complete Guide to the Happy Island",
-                  "url": "https://toptours.ai/travel-guides/aruba-travel-tips",
-                  "description": "Everything you need to know for an unforgettable Aruba vacation"
-                }
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "item": {
-                  "@type": "Article",
-                  "name": "Paris Travel Guide: Top Sights and Tours",
-                  "url": "https://toptours.ai/travel-guides/paris-travel-guide",
-                  "description": "Discover the best of Paris with our comprehensive travel guide"
-                }
-              }
-            ]
-          })
-        }}
-      />
-
       {/* Blog Schema */}
       <script
         type="application/ld+json"
