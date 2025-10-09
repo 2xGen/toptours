@@ -1706,7 +1706,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
           ]} />
         </div>
 
-        <main className="flex-grow pt-4">
+        <main className="flex-grow pt-4 pb-20 md:pb-4">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             {/* Back Button */}
             <Button variant="ghost" asChild className="mb-8">
@@ -7920,6 +7920,16 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
         )}
         
         <FooterNext />
+      </div>
+
+      {/* Sticky CTA Button - Mobile Only */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200 shadow-lg z-50">
+        <Button
+          onClick={onOpenModal}
+          className="w-full sunset-gradient text-white font-semibold py-3 text-base hover:scale-105 transition-transform duration-200"
+        >
+          Start Planning with AI
+        </Button>
       </div>
     </>
   );

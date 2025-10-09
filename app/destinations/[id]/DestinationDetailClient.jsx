@@ -27,6 +27,7 @@ export default function DestinationDetailClient({ destination }) {
   const [tours, setTours] = useState({});
   const [loading, setLoading] = useState({});
   const [carouselIndexes, setCarouselIndexes] = useState({});
+  const [visibleTours, setVisibleTours] = useState({});
   const [relatedDestinations, setRelatedDestinations] = useState([]);
   const [relatedGuides, setRelatedGuides] = useState([]);
   const [categoryGuides, setCategoryGuides] = useState([]);
@@ -39,12 +40,18 @@ export default function DestinationDetailClient({ destination }) {
   };
 
   useEffect(() => {
-    // Initialize carousel indexes for each category
+    // Scroll to top when component mounts (e.g., when navigating back)
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    
+    // Initialize carousel indexes and visible tours for each category
     const indexes = {};
+    const visible = {};
     safeDestination.tourCategories.forEach(category => {
       indexes[category] = 0;
+      visible[category] = 4; // Start with 4 visible tours on mobile
     });
     setCarouselIndexes(indexes);
+    setVisibleTours(visible);
     
     // Fetch tours for each category
     safeDestination.tourCategories.forEach(category => {
@@ -129,11 +136,18 @@ export default function DestinationDetailClient({ destination }) {
     }));
   };
 
+  const loadMoreTours = (category) => {
+    setVisibleTours(prev => ({
+      ...prev,
+      [category]: (prev[category] || 4) + 4
+    }));
+  };
+
   return (
     <>
       <NavigationNext onOpenModal={handleOpenModal} />
       
-      <div className="min-h-screen pt-16" suppressHydrationWarning>
+      <div className="min-h-screen pt-16 overflow-x-hidden" suppressHydrationWarning>
         {/* Hero Section */}
         <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -331,7 +345,8 @@ export default function DestinationDetailClient({ destination }) {
                   <h3 className="text-2xl font-poppins font-bold text-gray-800">
                     {safeDestination.fullName} {category}
                   </h3>
-                  <div className="flex space-x-2">
+                  {/* Desktop carousel controls - hidden on mobile */}
+                  <div className="hidden md:flex space-x-2">
                     <Button
                       variant="outline"
                       size="sm"
@@ -359,13 +374,11 @@ export default function DestinationDetailClient({ destination }) {
                     <p className="text-gray-600">Loading tours...</p>
                   </div>
                 ) : tours[category] && tours[category].length > 0 ? (
-                  <div className="overflow-hidden">
-                    <div 
-                      className="flex transition-transform duration-300 ease-in-out gap-6"
-                      style={{ transform: `translateX(-${carouselIndexes[category] * 25}%)` }}
-                    >
-                      {tours[category].map((tour, index) => (
-                        <Card key={tour.productCode || index} className="w-[calc(25%-1.125rem)] flex-shrink-0 bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                  <>
+                    {/* Mobile grid layout */}
+                    <div className="md:hidden grid grid-cols-1 gap-6">
+                      {tours[category].slice(0, visibleTours[category] || 4).map((tour, index) => (
+                        <Card key={tour.productCode || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
                           {/* Tour Image */}
                           <div className="relative h-32 bg-gray-200 flex-shrink-0">
                             {tour.images?.[0]?.variants?.[3]?.url ? (
@@ -467,7 +480,131 @@ export default function DestinationDetailClient({ destination }) {
                         </Card>
                       ))}
                     </div>
-                  </div>
+                    
+                    {/* Load More button for mobile */}
+                    {tours[category] && (visibleTours[category] || 4) < tours[category].length && (
+                      <div className="md:hidden mt-6 text-center">
+                        <Button
+                          onClick={() => loadMoreTours(category)}
+                          variant="outline"
+                          className="px-6 py-2 text-purple-600 border-purple-300 hover:bg-purple-50"
+                        >
+                          Load More Tours
+                        </Button>
+                      </div>
+                    )}
+
+                    {/* Desktop carousel layout */}
+                    <div className="hidden md:block overflow-hidden">
+                      <div 
+                        className="flex transition-transform duration-300 ease-in-out gap-6"
+                        style={{ transform: `translateX(-${carouselIndexes[category] * 25}%)` }}
+                      >
+                        {tours[category].map((tour, index) => (
+                          <Card key={tour.productCode || index} className="w-[calc(25%-1.125rem)] flex-shrink-0 bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                            {/* Tour Image */}
+                            <div className="relative h-32 bg-gray-200 flex-shrink-0">
+                              {tour.images?.[0]?.variants?.[3]?.url ? (
+                                <img
+                                  src={tour.images[0].variants[3].url}
+                                  alt={tour.title}
+                                  className="w-full h-full object-cover"
+                                />
+                              ) : (
+                                <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                  <Search className="w-6 h-6 text-gray-400" />
+                                </div>
+                              )}
+                            </div>
+
+                            {/* Tour Content */}
+                            <CardContent className="p-3 flex-1 flex flex-col">
+                              <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 h-10">
+                                {tour.title}
+                              </h4>
+                              
+                              {/* Tour Badges */}
+                              {tour.flags && Array.isArray(tour.flags) && tour.flags.length > 0 && (
+                                <div className="flex flex-wrap gap-1 mb-2">
+                                  {tour.flags.map((flag, flagIndex) => {
+                                    let badgeClass = "text-xs font-medium px-2 py-1 rounded-full";
+                                    if (flag === "FREE_CANCELLATION") {
+                                      badgeClass += " bg-green-50 text-green-700 border border-green-200";
+                                    } else if (flag === "PRIVATE_TOUR") {
+                                      badgeClass += " bg-purple-50 text-purple-700 border border-purple-200";
+                                    } else if (flag === "LIKELY_TO_SELL_OUT") {
+                                      badgeClass += " bg-orange-50 text-orange-700 border border-orange-200";
+                                    } else {
+                                      badgeClass += " bg-blue-50 text-blue-700 border border-blue-200";
+                                    }
+                                    
+                                    return (
+                                      <Badge
+                                        key={flagIndex}
+                                        variant="secondary"
+                                        className={badgeClass}
+                                      >
+                                        {flag.replace(/_/g, ' ')}
+                                      </Badge>
+                                    );
+                                  })}
+                                </div>
+                              )}
+
+                              {/* Rating */}
+                              {tour.reviews && (
+                                <div className="flex items-center mb-2">
+                                  <Star className="w-3 h-3 text-yellow-400 fill-current" />
+                                  <span className="font-medium text-gray-700 ml-1 text-sm">
+                                    {tour.reviews.combinedAverageRating?.toFixed(1) || 'N/A'}
+                                  </span>
+                                  <span className="text-gray-500 text-xs ml-1">
+                                    ({tour.reviews.totalReviews || 0})
+                                  </span>
+                                </div>
+                              )}
+
+                              {/* Price */}
+                              <div className="text-lg font-bold text-orange-600 mb-3">
+                                From ${tour.pricing?.summary?.fromPrice || 'N/A'}
+                              </div>
+
+                              {/* Quick View Button */}
+                              <Button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  window.open(tour.productUrl || `https://www.viator.com/tours/${tour.productCode}`, '_blank');
+                                }}
+                                variant="outline"
+                                size="sm"
+                                className="mb-2 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 text-purple-700 hover:from-purple-100 hover:to-blue-100 hover:border-purple-300 transition-all duration-200 text-xs"
+                              >
+                                <Brain className="w-3 h-3 mr-1" />
+                                Quick View
+                              </Button>
+
+                              {/* View Details Button */}
+                              <Button
+                                asChild
+                                size="sm"
+                                className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
+                              >
+                                <a
+                                  href={tour.productUrl || `https://www.viator.com/tours/${tour.productCode}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center justify-center"
+                                >
+                                  View Details
+                                  <ExternalLink className="w-3 h-3 ml-1" />
+                                </a>
+                              </Button>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+                    </div>
+                  </>
                 ) : (
                   <div className="text-center py-12 bg-white rounded-lg">
                     <p className="text-gray-500">No {category} tours found at the moment.</p>
