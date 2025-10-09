@@ -2,14 +2,25 @@
   "framework": "nextjs",
   "redirects": [
     {
-      "source": "https://blog.toptours.ai",
-      "destination": "https://toptours.ai/travel-guides",
+      "source": "/blog",
+      "destination": "/travel-guides",
       "permanent": true
     },
     {
-      "source": "https://blog.toptours.ai/:path*",
-      "destination": "https://toptours.ai/travel-guides/:path*",
+      "source": "/blog/:path*",
+      "destination": "/travel-guides/:path*",
       "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate"
+        }
+      ]
     }
   ]
 }

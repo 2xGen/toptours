@@ -1,0 +1,5 @@
+[33m9226f2c6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m Add 301 redirects for 49 old /destination/ singular URLs to /destinations/ listing page
+[33m12550ddd[m Add 301 redirects for 66 old tour pages from Canadian and Mexican cities to travel-guides
+[33mb8e6fe76[m Add 301 redirects from old blog.toptours.ai subdomain to /travel-guides
+[33mb4c67c75[m Add custom TopTours AI Home Page image to OpenGraph and Twitter metadata
+[33md755a3be[m Add SEO metadata and custom images to about, how-it-works, and contact pages

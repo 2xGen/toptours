@@ -4941,6 +4941,7 @@ export const destinations = [
     briefDescription: 'Lost city, ancient wonder, and world heritage — Machu Picchu is Peru\'s crown jewel.',
     heroDescription: 'Welcome to Machu Picchu, where ancient Inca engineering meets breathtaking Andean landscapes and centuries of mystery surround this lost city in the clouds. From the iconic citadel to surrounding ruins, from mountain vistas to cultural insights, this world wonder offers the perfect blend of history, adventure, and spiritual connection. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Machu%20Picchu.jpg',
+    relatedGuides: ['best-tours-peru-machu-picchu'],
     tourCategories: [
       'Citadel Tours',
       'Inca Trail Tours',
@@ -9631,6 +9632,19 @@ export const getRelatedDestinations = (currentDestinationId) => {
   
   // Sort alphabetically by name
   return related.sort((a, b) => a.name.localeCompare(b.name));
+};
+
+export const getDestinationsByIds = (ids) => {
+  if (!Array.isArray(ids)) return [];
+  return ids.map(id => getDestinationById(id)).filter(dest => dest !== undefined);
+};
+
+export const getDestinationsByCountry = (country, excludeId = null) => {
+  if (!country) return [];
+  return destinations.filter(dest => 
+    dest.country === country && 
+    (excludeId ? dest.id !== excludeId : true)
+  );
 };
 
 export const getDestinationsByCategory = (category) => {

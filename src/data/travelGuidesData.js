@@ -477,6 +477,7 @@ Every destination is unique—whether you're exploring the beaches of Aruba or t
     excerpt: 'Discover the best Peru tours for Machu Picchu and beyond. Explore Inca Trail tours, Sacred Valley experiences, and authentic Peruvian adventures that showcase the country\'s ancient wonders and vibrant culture.',
     content: 'Peru is a land of ancient wonders, where the legacy of the Inca Empire meets breathtaking natural beauty and vibrant contemporary culture...',
     category: 'South America',
+    country: 'Peru',
     readTime: '20 min read',
     publishDate: '2024-03-16',
     author: 'Travel Expert',
@@ -486,7 +487,8 @@ Every destination is unique—whether you're exploring the beaches of Aruba or t
     type: 'guide',
     wordCount: 2300,
     internalLinks: ['/destinations', '/destinations/machu-picchu', '/destinations/cusco'],
-    relatedDestination: '/destinations/machu-picchu'
+    relatedDestination: '/destinations/machu-picchu',
+    relatedDestinations: ['machu-picchu', 'cusco', 'lima']
   },
   {
     id: 'best-time-to-visit-brazil',
@@ -540,6 +542,20 @@ export const getRelatedGuides = (currentGuideId) => {
     if (!a.featured && b.featured) return 1;
     return new Date(b.publishDate) - new Date(a.publishDate);
   });
+};
+
+export const getGuideById = (id) => {
+  return travelGuides.find(guide => guide.id === id);
+};
+
+export const getGuidesByIds = (ids) => {
+  if (!Array.isArray(ids)) return [];
+  return ids.map(id => getGuideById(id)).filter(guide => guide !== undefined);
+};
+
+export const getGuidesByCountry = (country) => {
+  if (!country) return [];
+  return travelGuides.filter(guide => guide.country === country);
 };
 
 export const getGuidesByCategory = (category) => {

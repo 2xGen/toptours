@@ -6,14 +6,14 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
-  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, ChevronLeft, ChevronRight, Search
+  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, ChevronLeft, ChevronRight, Search, BookOpen, ArrowRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { getRelatedDestinations } from '../../../src/data/destinationsData.js';
-import { getGuidesByCategory } from '../../../src/data/travelGuidesData.js';
+import { getRelatedDestinations, getDestinationsByIds, getDestinationsByCountry } from '../../../src/data/destinationsData.js';
+import { getGuidesByCategory, getGuidesByIds, getGuidesByCountry } from '../../../src/data/travelGuidesData.js';
 
 export default function DestinationDetailClient({ destination }) {
   // Ensure destination has required arrays
@@ -29,6 +29,9 @@ export default function DestinationDetailClient({ destination }) {
   const [carouselIndexes, setCarouselIndexes] = useState({});
   const [relatedDestinations, setRelatedDestinations] = useState([]);
   const [relatedGuides, setRelatedGuides] = useState([]);
+  const [categoryGuides, setCategoryGuides] = useState([]);
+  const [countryDestinations, setCountryDestinations] = useState([]);
+  const [guideCarouselIndex, setGuideCarouselIndex] = useState(0);
   const { toast } = useToast();
 
   const handleOpenModal = () => {
@@ -52,10 +55,22 @@ export default function DestinationDetailClient({ destination }) {
     const related = getRelatedDestinations(safeDestination.id);
     setRelatedDestinations(related);
 
-    // Load related guides from the same region
+    // Load guides by country (for SEO internal linking)
+    if (safeDestination.country) {
+      const guidesByCountry = getGuidesByCountry(safeDestination.country);
+      setRelatedGuides(guidesByCountry);
+    }
+    
+    // Load guides by category/region (for bottom section)
     if (safeDestination.category) {
-      const guides = getGuidesByCategory(safeDestination.category);
-      setRelatedGuides(guides);
+      const guidesByCategory = getGuidesByCategory(safeDestination.category);
+      setCategoryGuides(guidesByCategory); // Show all
+    }
+    
+    // Load other destinations in the same country (for SEO internal linking)
+    if (safeDestination.country) {
+      const sameCountryDests = getDestinationsByCountry(safeDestination.country, safeDestination.id);
+      setCountryDestinations(sameCountryDests);
     }
   }, []);
 
@@ -463,6 +478,123 @@ export default function DestinationDetailClient({ destination }) {
           </div>
         </section>
 
+        {/* Other Destinations in Same Country */}
+        {countryDestinations.length > 0 && safeDestination.country && (
+          <section className="py-12 bg-gradient-to-r from-blue-50 to-purple-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h3 className="text-2xl font-poppins font-bold text-gray-800 mb-8 text-center">
+                Other Destinations in {safeDestination.country}
+              </h3>
+              <div className="flex flex-wrap justify-center gap-6">
+                  {countryDestinations.map((dest) => (
+                    <Link 
+                      key={dest.id}
+                      href={`/destinations/${dest.id}`}
+                      className="group"
+                    >
+                      <Card className="bg-white border-0 shadow-xl overflow-hidden h-full flex flex-col hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 w-full max-w-sm">
+                        <div className="relative h-48 overflow-hidden">
+                          <img 
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" 
+                            alt={dest.name}
+                            src={dest.imageUrl}
+                            loading="lazy"
+                          />
+                        </div>
+                        <CardContent className="p-4 flex-1 flex flex-col">
+                          <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
+                            {dest.name}
+                          </h3>
+                          <p className="text-sm text-gray-600 line-clamp-2 flex-1">
+                            {dest.briefDescription}
+                          </p>
+                          <div className="mt-3 flex items-center text-blue-600 group-hover:text-blue-700">
+                            <span className="text-sm font-semibold">Explore {dest.name}</span>
+                            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Related Travel Guides Carousel Section */}
+        {relatedGuides.length > 0 && (
+          <section className="py-12 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h3 className="text-2xl font-poppins font-bold text-gray-800 mb-6 text-center">
+                {safeDestination.country} Travel Guides
+              </h3>
+              <div className="flex justify-center">
+                <div className="relative w-full max-w-5xl flex justify-center">
+                  <div className="flex items-center justify-center mb-6 space-x-4">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setGuideCarouselIndex(Math.max(0, guideCarouselIndex - 1))}
+                      disabled={guideCarouselIndex === 0}
+                      className="w-10 h-10 p-0"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </Button>
+                    <span className="text-sm text-gray-600">
+                      {guideCarouselIndex + 1} - {Math.min(guideCarouselIndex + 3, relatedGuides.length)} of {relatedGuides.length}
+                    </span>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setGuideCarouselIndex(Math.min(Math.max(0, relatedGuides.length - 3), guideCarouselIndex + 1))}
+                      disabled={guideCarouselIndex >= Math.max(0, relatedGuides.length - 3)}
+                      className="w-10 h-10 p-0"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </Button>
+                  </div>
+                  <div className="overflow-hidden">
+                    <div 
+                      className="flex transition-transform duration-300 ease-in-out gap-6 justify-center"
+                      style={{ transform: `translateX(-${guideCarouselIndex * 33.33}%)` }}
+                    >
+                      {relatedGuides.map((guide) => (
+                        <Link 
+                          key={guide.id}
+                          href={`/travel-guides/${guide.id}`}
+                          className="w-[calc(33.33%-1rem)] flex-shrink-0 group"
+                        >
+                          <Card className="h-full overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                            <div className="relative h-48 bg-gray-200">
+                              {guide.image ? (
+                                <img
+                                  src={guide.image}
+                                  alt={guide.title}
+                                  className="w-full h-full object-cover"
+                                />
+                              ) : (
+                                <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100">
+                                  <BookOpen className="w-12 h-12 text-gray-400" />
+                                </div>
+                              )}
+                            </div>
+                            <CardContent className="p-4">
+                              <h4 className="font-semibold text-gray-800 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors h-12">
+                                {guide.title}
+                              </h4>
+                            </CardContent>
+                          </Card>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Plan Your Trip Section */}
         <section className="py-12 sm:py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -561,7 +693,7 @@ export default function DestinationDetailClient({ destination }) {
         </section>
 
         {/* Combined Internal Linking Section */}
-        {(relatedGuides.length > 0 || relatedDestinations.length > 0) && (
+        {(categoryGuides.length > 0 || relatedDestinations.length > 0) && (
           <section className="py-12 px-4" style={{ backgroundColor: '#764ba2' }}>
             <div className="max-w-7xl mx-auto">
               {/* Related Destinations */}
@@ -584,20 +716,22 @@ export default function DestinationDetailClient({ destination }) {
                 </div>
               )}
 
-              {/* Related Travel Guides */}
-              {relatedGuides.length > 0 && (
+              {/* Related Travel Guides by Region */}
+              {categoryGuides.length > 0 && (
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-6">
+                  <h3 className="text-xl font-semibold text-white mb-6 text-center">
                     {safeDestination.category} Travel Guides
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {relatedGuides.map((guide) => (
+                  <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
+                    {categoryGuides.map((guide) => (
                       <Link 
                         key={guide.id}
                         href={`/travel-guides/${guide.id}`}
-                        className="text-white/80 hover:text-white transition-colors duration-200 hover:underline"
+                        className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-lg px-5 py-4 transition-all duration-200 hover:scale-105 w-full max-w-xs"
                       >
-                        {guide.title}
+                        <div className="text-white hover:text-blue-200 font-medium line-clamp-2 h-12 flex items-center">
+                          {guide.title}
+                        </div>
                       </Link>
                     ))}
                   </div>

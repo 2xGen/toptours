@@ -7,8 +7,8 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { getRelatedGuides } from '../../../src/data/travelGuidesData.js';
-import { getDestinationsByCategory } from '../../../src/data/destinationsData.js';
+import { getRelatedGuides, travelGuides } from '../../../src/data/travelGuidesData.js';
+import { getDestinationsByCategory, getDestinationsByIds } from '../../../src/data/destinationsData.js';
 
 const BlogPostContent = ({ slug, onOpenModal }) => {
   const [relatedGuides, setRelatedGuides] = useState([]);
@@ -18,9 +18,21 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     
+    // Get current guide from data
+    const currentGuide = travelGuides.find(g => g.id === slug);
+    
     // Load related guides
     const related = getRelatedGuides(slug);
     setRelatedGuides(related);
+    
+    // Load related destinations - prioritize specific related destinations
+    if (currentGuide?.relatedDestinations && currentGuide.relatedDestinations.length > 0) {
+      const destinations = getDestinationsByIds(currentGuide.relatedDestinations);
+      setRelatedDestinations(destinations);
+    } else if (currentGuide?.category) {
+      const destinations = getDestinationsByCategory(currentGuide.category);
+      setRelatedDestinations(destinations.slice(0, 6)); // Limit to 6
+    }
   }, [slug]);
 
   // Blog posts data
@@ -7860,6 +7872,29 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
           </div>
         </main>
 
+        {/* Related Destinations Section */}
+        {relatedDestinations.length > 0 && (
+          <section className="py-12 px-4 border-t border-gray-200" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-semibold text-white mb-6">
+                Featured Destinations in This Guide
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {relatedDestinations.map((dest) => (
+                  <Link 
+                    key={dest.id}
+                    href={`/destinations/${dest.id}`}
+                    className="group bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-lg p-4 transition-all duration-200 hover:scale-105"
+                  >
+                    <div className="text-white font-medium mb-1">{dest.name}</div>
+                    <div className="text-white/70 text-xs">{dest.country || dest.category}</div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Related Travel Guides Section */}
         {relatedGuides.length > 0 && post?.category && (
           <section className="py-12 px-4 bg-gray-50 border-t border-gray-200">
@@ -7881,29 +7916,6 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
             </div>
           </section>
         )}
-
-        {/* Related Destinations Section */}
-        {relatedDestinations.length > 0 && post?.category && (
-          <section className="py-12 px-4 bg-white border-t border-gray-200">
-            <div className="max-w-4xl mx-auto">
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">
-                Explore {post.category} Destinations
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                {relatedDestinations.map((dest) => (
-                  <Link 
-                    key={dest.id}
-                    href={`/destinations/${dest.id}`}
-                    className="text-gray-700 hover:text-blue-600 transition-colors duration-200 hover:underline text-sm"
-                  >
-                    {dest.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-        
         
         <FooterNext />
       </div>

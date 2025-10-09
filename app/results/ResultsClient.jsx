@@ -283,7 +283,7 @@ const Results = () => {
     setGeneratingDescription(true);
     
     try {
-      const response = await fetch('/api/openai-description', {
+      const response = await fetch('/api/ai-desc', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -294,10 +294,19 @@ const Results = () => {
       });
 
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Description API HTTP error:', response.status, errorText);
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
+      console.log('Description API full response:', JSON.stringify(data, null, 2));
+      
+      // If there's an error in the response, log it
+      if (data.error) {
+        console.error('Description API returned error:', data.error, data.details);
+        throw new Error(data.error);
+      }
       
       if (data.success && data.description) {
         setPageDescription(data.description);
@@ -466,7 +475,7 @@ const Results = () => {
       // Extract destination from search term (e.g., "aruba snorkeling" -> "aruba")
       const destination = extractDestination(searchTerm);
       
-      const response = await fetch('/api/openai-categories', {
+      const response = await fetch('/api/ai-cat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -477,12 +486,22 @@ const Results = () => {
       });
 
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Categories API HTTP error:', response.status, errorText);
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
+      console.log('Categories API full response:', JSON.stringify(data, null, 2));
       console.log('Categories API response:', data);
       console.log('Categories array:', data.categories);
+      console.log('Response has error?', data.error);
+      
+      // If there's an error in the response, throw it
+      if (data.error) {
+        console.error('Categories API returned error:', data.error, data.details);
+        throw new Error(data.error);
+      }
       
       if (data.success && data.categories && Array.isArray(data.categories)) {
         console.log('Setting categories:', data.categories);
@@ -607,21 +626,34 @@ const Results = () => {
                   </p>
                 </div>
                 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
-                  {(destinationCategories.length > 0 ? destinationCategories : ['Tours', 'Activities', 'Food & Dining', 'Cultural Experiences', 'Day Trips', 'Adventures']).map((category, index) => (
-                    <Button
-                      key={category}
-                      onClick={() => handleCategorySearch(category)}
-                      variant="outline"
-                      size="sm"
-                      className="h-16 w-full flex flex-col justify-center items-center p-2 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 text-blue-700 hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 transition-all duration-200 hover:scale-105"
-                    >
-                      <div className="text-sm font-medium leading-tight text-center">
-                        {category}
+                {generatingCategories ? (
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+                    {[1, 2, 3, 4, 5, 6].map((index) => (
+                      <div
+                        key={index}
+                        className="h-16 w-full flex flex-col justify-center items-center p-2 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-md animate-pulse"
+                      >
+                        <div className="h-4 bg-blue-200 rounded w-3/4"></div>
                       </div>
-                    </Button>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+                    {destinationCategories.map((category, index) => (
+                      <Button
+                        key={category}
+                        onClick={() => handleCategorySearch(category)}
+                        variant="outline"
+                        size="sm"
+                        className="h-16 w-full flex flex-col justify-center items-center p-2 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 text-blue-700 hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 transition-all duration-200 hover:scale-105"
+                      >
+                        <div className="text-sm font-medium leading-tight text-center">
+                          {category}
+                        </div>
+                      </Button>
+                    ))}
+                  </div>
+                )}
               </div>
           </motion.div>
         </div>
