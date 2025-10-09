@@ -5,6 +5,7 @@ export const destinations = [
     fullName: 'Aruba',
     category: 'Caribbean',
     briefDescription: 'White-sand beaches, turquoise waters, and endless adventure — Aruba is the Caribbean\'s ultimate island escape.',
+    relatedGuides: ['best-caribbean-islands', 'best-time-to-visit-caribbean'],
     heroDescription: 'Welcome to Aruba, where constant sunshine meets stunning coastlines and warm hospitality. Whether you\'re cruising at sunset, exploring hidden coves on an ATV, or snorkeling vibrant reefs, Aruba offers unforgettable experiences for every traveler. Let our AI-powered planner help you discover the best this island has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//aruba.webp',
     tourCategories: [
@@ -1144,6 +1145,7 @@ export const destinations = [
     country: 'France',
     category: 'Europe',
     briefDescription: 'The City of Light, art, culture, and romance — Paris is the world\'s most enchanting capital.',
+    relatedGuides: ['paris-travel-guide'],
     heroDescription: 'Welcome to Paris, where every street tells a story and every corner reveals a masterpiece. From the iconic Eiffel Tower to the charming Montmartre, from world-class museums to intimate cafés, this magical city offers the perfect blend of history, culture, and modern sophistication. Let our AI-powered planner help you discover the best experiences this timeless destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//paris.jpg',
     tourCategories: [
@@ -1309,6 +1311,7 @@ export const destinations = [
     country: 'Italy',
     category: 'Europe',
     briefDescription: 'The Eternal City, ancient ruins, and Renaissance art — Rome is history come to life.',
+    relatedGuides: ['rome-weekend-guide'],
     heroDescription: 'Welcome to Rome, where every stone tells a story and every corner reveals a masterpiece. From the iconic Colosseum to the magnificent Vatican, from ancient ruins to Renaissance art, this eternal city offers the perfect blend of history, culture, and modern Italian life. Let our AI-powered planner help you discover the best experiences this timeless destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//rome.jpg',
     tourCategories: [
@@ -2299,6 +2302,7 @@ export const destinations = [
     country: 'Netherlands',
     category: 'Europe',
     briefDescription: 'Canal city, artistic heritage, and Dutch charm — Amsterdam is the Netherlands\' cultural heart.',
+    relatedGuides: ['amsterdam-3-day-itinerary'],
     heroDescription: 'Welcome to Amsterdam, where historic canals wind through charming neighborhoods and artistic masterpieces tell stories of centuries past. From the iconic Anne Frank House to the world-famous Van Gogh Museum, from picturesque canals to vibrant culture, this Dutch capital offers the perfect blend of history, art, and contemporary European life. Let our AI-powered planner help you discover the best experiences this enchanting destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Amsterdam.jpg',
     tourCategories: [
@@ -3014,6 +3018,7 @@ export const destinations = [
     country: 'USA',
     category: 'North America',
     briefDescription: 'The city that never sleeps, iconic landmarks, and endless energy — New York City is the world\'s most dynamic metropolis.',
+    relatedGuides: ['best-things-to-do-in-new-york'],
     heroDescription: 'Welcome to New York City, where iconic skyscrapers meet diverse neighborhoods and endless possibilities await around every corner. From the bright lights of Times Square to the cultural treasures of museums, from Central Park\'s green oasis to the vibrant food scene, this global city offers the perfect blend of excitement, culture, and urban adventure. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//New%20York%20City.jpeg',
     tourCategories: [
@@ -3069,6 +3074,7 @@ export const destinations = [
     country: 'USA',
     category: 'North America',
     briefDescription: 'City of Angels, entertainment capital, and endless sunshine — Los Angeles is California\'s glamorous heart.',
+    relatedGuides: ['los-angeles-tours'],
     heroDescription: 'Welcome to Los Angeles, where Hollywood dreams meet beach culture and diverse neighborhoods create a vibrant tapestry of experiences. From the iconic Hollywood sign to the beautiful beaches of Santa Monica, from world-class museums to authentic ethnic cuisine, this sprawling metropolis offers the perfect blend of entertainment, culture, and California lifestyle. Let our AI-powered planner help you discover the best experiences this dynamic destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Los%20Angeles.webp',
     tourCategories: [
@@ -3179,6 +3185,7 @@ export const destinations = [
     country: 'USA',
     category: 'North America',
     briefDescription: 'Magic City, tropical vibes, and Latin flair — Miami is Florida\'s most vibrant metropolis.',
+    relatedGuides: ['miami-water-tours'],
     heroDescription: 'Welcome to Miami, where tropical beaches meet urban sophistication and Latin culture infuses every aspect of life. From the iconic Art Deco architecture of South Beach to the vibrant neighborhoods of Little Havana, from pristine beaches to world-class dining, this dynamic city offers the perfect blend of beach culture, urban excitement, and international flair. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Miami.jpg',
     tourCategories: [
@@ -4829,6 +4836,7 @@ export const destinations = [
     country: 'Peru',
     category: 'South America',
     briefDescription: 'Gastronomic capital, coastal charm, and cultural heritage — Lima is Peru\'s vibrant heart.',
+    relatedGuides: ['best-tours-peru-machu-picchu'],
     heroDescription: 'Welcome to Lima, where world-class cuisine meets colonial architecture and Peruvian culture thrives along the Pacific coast. From the historic center to modern districts, from ceviche to pisco sours, from museums to coastal views, this gastronomic capital offers the perfect blend of history, culture, and culinary excellence. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Lima.jpg',
     tourCategories: [
@@ -4884,6 +4892,7 @@ export const destinations = [
     country: 'Peru',
     category: 'South America',
     briefDescription: 'Inca capital, Andean heritage, and cultural treasure — Cusco is Peru\'s historic heart.',
+    relatedGuides: ['best-tours-peru-machu-picchu'],
     heroDescription: 'Welcome to Cusco, where ancient Inca stonework meets Spanish colonial architecture and Andean culture thrives in the highlands. From the historic Plaza de Armas to ancient ruins, from traditional markets to cultural experiences, this former Inca capital offers the perfect blend of history, culture, and Andean mysticism. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Cusco.jpg',
     tourCategories: [
@@ -4939,9 +4948,9 @@ export const destinations = [
     country: 'Peru',
     category: 'South America',
     briefDescription: 'Lost city, ancient wonder, and world heritage — Machu Picchu is Peru\'s crown jewel.',
+    relatedGuides: ['best-tours-peru-machu-picchu'],
     heroDescription: 'Welcome to Machu Picchu, where ancient Inca engineering meets breathtaking Andean landscapes and centuries of mystery surround this lost city in the clouds. From the iconic citadel to surrounding ruins, from mountain vistas to cultural insights, this world wonder offers the perfect blend of history, adventure, and spiritual connection. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Machu%20Picchu.jpg',
-    relatedGuides: ['best-tours-peru-machu-picchu'],
     tourCategories: [
       'Citadel Tours',
       'Inca Trail Tours',
@@ -4995,6 +5004,7 @@ export const destinations = [
     country: 'Brazil',
     category: 'South America',
     briefDescription: 'Cidade Maravilhosa, carnival spirit, and natural wonders — Rio de Janeiro is Brazil\'s iconic heart.',
+    relatedGuides: ['best-time-to-visit-brazil'],
     heroDescription: 'Welcome to Rio de Janeiro, where stunning beaches meet dramatic mountains and Brazilian culture comes alive with samba rhythms and carnival spirit. From the iconic Christ the Redeemer to beautiful beaches, from vibrant neighborhoods to cultural experiences, this marvelous city offers the perfect blend of natural beauty, culture, and Brazilian joie de vivre. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Rio%20de%20Janeiro.jpeg',
     tourCategories: [
@@ -5765,6 +5775,7 @@ export const destinations = [
     country: 'Japan',
     category: 'Asia-Pacific',
     briefDescription: 'Ultra-modern metropolis, ancient traditions, and endless innovation — Tokyo is Japan\'s dynamic heart.',
+    relatedGuides: ['japan-cherry-blossom-travel'],
     heroDescription: 'Welcome to Tokyo, where cutting-edge technology meets centuries-old traditions in the world\'s most populous metropolis. From the neon-lit streets of Shibuya to the serene temples of Asakusa, from world-class sushi to bullet train adventures, this incredible city offers the perfect blend of past, present, and future. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//tokyo.webp',
     tourCategories: [
@@ -5820,6 +5831,7 @@ export const destinations = [
     country: 'Japan',
     category: 'Asia-Pacific',
     briefDescription: 'Ancient capital, cultural treasure, and spiritual heart — Kyoto is Japan\'s traditional soul.',
+    relatedGuides: ['japan-cherry-blossom-travel'],
     heroDescription: 'Welcome to Kyoto, where over a thousand years of Japanese history and culture come alive in this former imperial capital. From stunning temples and shrines to traditional tea ceremonies, from beautiful gardens to geisha districts, this cultural treasure offers the perfect blend of tradition, spirituality, and Japanese heritage. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//kyoto.jpeg',
     tourCategories: [
@@ -5875,6 +5887,7 @@ export const destinations = [
     country: 'Japan',
     category: 'Asia-Pacific',
     briefDescription: 'Food paradise, modern energy, and friendly culture — Osaka is Japan\'s culinary capital.',
+    relatedGuides: ['japan-cherry-blossom-travel'],
     heroDescription: 'Welcome to Osaka, where incredible street food meets modern entertainment and the warmest hospitality in Japan. From the famous Dotonbori district to historic Osaka Castle, from takoyaki to okonomiyaki, this food paradise offers the perfect blend of cuisine, culture, and Japanese urban life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Osaka.jpg',
     tourCategories: [
@@ -5930,6 +5943,7 @@ export const destinations = [
     country: 'Japan',
     category: 'Asia-Pacific',
     briefDescription: 'Peace memorial, resilient spirit, and cultural heritage — Hiroshima is Japan\'s city of peace.',
+    relatedGuides: ['japan-cherry-blossom-travel'],
     heroDescription: 'Welcome to Hiroshima, where a tragic past has given way to a beautiful future and a powerful message of peace. From the moving Peace Memorial Park to the iconic Itsukushima Shrine, from poignant history to vibrant culture, this resilient city offers the perfect blend of remembrance, hope, and Japanese heritage. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Hiroshima.jpg',
     tourCategories: [
@@ -5985,6 +5999,7 @@ export const destinations = [
     country: 'Japan',
     category: 'Asia-Pacific',
     briefDescription: 'Northern wilderness, powder snow, and natural beauty — Hokkaido is Japan\'s adventure paradise.',
+    relatedGuides: ['japan-cherry-blossom-travel'],
     heroDescription: 'Welcome to Hokkaido, where pristine wilderness meets world-class skiing and incredible natural beauty in Japan\'s northernmost island. From powder snow adventures to hot spring experiences, from wildlife encounters to scenic landscapes, this northern paradise offers the perfect blend of adventure, nature, and Japanese hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Hokkaido.jpg',
     tourCategories: [
@@ -8132,6 +8147,7 @@ export const destinations = [
     country: 'New Zealand',
     category: 'Asia-Pacific',
     briefDescription: 'City of Sails with volcanic landscapes, harbors, and Maori culture — Auckland is New Zealand\'s largest metropolis.',
+    relatedGuides: ['new-zealand-adventure-tours'],
     heroDescription: 'Welcome to Auckland, where volcanic cones meet sparkling harbors and Maori culture infuses every experience. From sailing the Hauraki Gulf to exploring volcanic islands, from vibrant city life to stunning coastal walks, this dynamic city offers the perfect blend of urban sophistication and natural wonders. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Auckland.webp',
     tourCategories: [
@@ -8187,6 +8203,7 @@ export const destinations = [
     country: 'New Zealand',
     category: 'Asia-Pacific',
     briefDescription: 'Adventure capital with stunning alpine scenery and thrilling activities — Queenstown is New Zealand\'s adrenaline hub.',
+    relatedGuides: ['new-zealand-adventure-tours'],
     heroDescription: 'Welcome to Queenstown, where snow-capped peaks meet crystal-clear lakes and adventure awaits around every corner. From world-class skiing to thrilling bungee jumping, from scenic helicopter flights to peaceful lake cruises, this alpine paradise offers the perfect blend of adrenaline-pumping activities and natural beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Queenstown.jpg',
     tourCategories: [
@@ -8242,6 +8259,7 @@ export const destinations = [
     country: 'New Zealand',
     category: 'Asia-Pacific',
     briefDescription: 'Geothermal wonderland with Maori culture and natural hot springs — Rotorua is New Zealand\'s cultural heart.',
+    relatedGuides: ['new-zealand-adventure-tours'],
     heroDescription: 'Welcome to Rotorua, where geothermal wonders meet rich Maori culture and natural hot springs bubble from the earth. From exploring geysers and mud pools to experiencing traditional Maori hospitality, from relaxing in thermal baths to discovering native forests, this unique destination offers the perfect blend of natural wonders and cultural heritage. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Rotorua.jpg',
     tourCategories: [
@@ -8297,6 +8315,7 @@ export const destinations = [
     country: 'New Zealand',
     category: 'Asia-Pacific',
     briefDescription: 'Creative capital with arts scene, coffee culture, and harbor views — Wellington is New Zealand\'s cultural hub.',
+    relatedGuides: ['new-zealand-adventure-tours'],
     heroDescription: 'Welcome to Wellington, where creative energy meets stunning harbor views and the arts scene thrives in every corner. From the vibrant Cuba Street to the stunning waterfront, from world-class museums to hidden coffee spots, this compact capital offers the perfect blend of culture, creativity, and natural beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Wellington%20australia.webp',
     tourCategories: [
@@ -8682,6 +8701,7 @@ export const destinations = [
     country: 'South Africa',
     category: 'Africa',
     briefDescription: 'Stunning coastal city with iconic Table Mountain, vibrant culture, and world-class wine regions — Cape Town is South Africa\'s crown jewel.',
+    relatedGuides: ['best-tours-south-africa'],
     heroDescription: 'Welcome to Cape Town, where dramatic mountains meet the Atlantic Ocean and rich cultural heritage creates an unforgettable experience. From ascending Table Mountain to exploring the Cape of Good Hope, from wine tasting in Stellenbosch to discovering the vibrant Waterfront, this cosmopolitan city offers the perfect blend of natural beauty and urban sophistication. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//cape%20Town.jpg',
     tourCategories: [
@@ -8737,6 +8757,7 @@ export const destinations = [
     country: 'South Africa',
     category: 'Africa',
     briefDescription: 'Dynamic metropolis with rich history, vibrant arts scene, and gateway to African adventures — Johannesburg is South Africa\'s economic heart.',
+    relatedGuides: ['best-tours-south-africa'],
     heroDescription: 'Welcome to Johannesburg, where urban sophistication meets African heritage and a vibrant arts scene creates an exciting cultural experience. From exploring the Apartheid Museum to discovering the trendy Maboneng Precinct, from visiting Soweto to experiencing the city\'s thriving food scene, this dynamic metropolis offers the perfect blend of history and modernity. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Johannesburg.webp',
     tourCategories: [
@@ -8792,6 +8813,7 @@ export const destinations = [
     country: 'South Africa',
     category: 'Africa',
     briefDescription: 'Iconic wildlife sanctuary with the Big Five, diverse ecosystems, and unforgettable safari experiences — Kruger National Park is Africa\'s premier wildlife destination.',
+    relatedGuides: ['best-tours-south-africa'],
     heroDescription: 'Welcome to Kruger National Park, where the African wilderness comes alive with incredible wildlife encounters and breathtaking landscapes. From spotting the Big Five on game drives to experiencing the magic of dawn and dusk in the bush, from guided walking safaris to luxury lodge experiences, this iconic park offers the ultimate African safari adventure. Let our AI-powered planner help you discover the best wildlife experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Kruger%20National%20Park.jpg',
     tourCategories: [
@@ -8847,6 +8869,7 @@ export const destinations = [
     country: 'Egypt',
     category: 'Africa',
     briefDescription: 'Ancient capital with iconic pyramids, rich history, and vibrant culture — Cairo is Egypt\'s timeless heart.',
+    relatedGuides: ['egypt-cultural-tours'],
     heroDescription: 'Welcome to Cairo, where ancient wonders meet modern life and thousands of years of history come alive. From exploring the iconic Pyramids of Giza to discovering the treasures of the Egyptian Museum, from wandering through the historic Islamic Quarter to experiencing the bustling Khan el-Khalili bazaar, this fascinating city offers the perfect blend of ancient heritage and contemporary culture. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Cairo.jpg',
     tourCategories: [
@@ -8902,6 +8925,7 @@ export const destinations = [
     country: 'Egypt',
     category: 'Africa',
     briefDescription: 'Ancient Thebes with magnificent temples, royal tombs, and unparalleled archaeological treasures — Luxor is Egypt\'s open-air museum.',
+    relatedGuides: ['egypt-cultural-tours'],
     heroDescription: 'Welcome to Luxor, where the grandeur of ancient Egypt comes alive through magnificent temples and royal tombs that tell the story of pharaohs and gods. From exploring the awe-inspiring Karnak Temple to discovering the Valley of the Kings, from cruising the Nile to experiencing the magic of Luxor Temple at sunset, this ancient city offers the most authentic glimpse into Egypt\'s glorious past. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Luxor.jpg',
     tourCategories: [
@@ -8957,6 +8981,7 @@ export const destinations = [
     country: 'Egypt',
     category: 'Africa',
     briefDescription: 'Nubian gateway with serene Nile views, ancient temples, and traditional culture — Aswan is Egypt\'s southern gem.',
+    relatedGuides: ['egypt-cultural-tours'],
     heroDescription: 'Welcome to Aswan, where the Nile River flows serenely past ancient temples and Nubian culture thrives in this peaceful southern city. From exploring the magnificent Abu Simbel temples to cruising the Nile on traditional feluccas, from discovering the beautiful Philae Temple to experiencing authentic Nubian hospitality, this charming city offers a perfect blend of ancient wonders and cultural authenticity. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Aswan.jpg',
     tourCategories: [
@@ -9177,6 +9202,7 @@ export const destinations = [
     country: 'Kenya',
     category: 'Africa',
     briefDescription: 'Dynamic capital with wildlife sanctuaries, modern culture, and gateway to African adventures — Nairobi is Kenya\'s vibrant heart.',
+    relatedGuides: ['best-time-for-african-safari'],
     heroDescription: 'Welcome to Nairobi, where urban sophistication meets African wilderness and the spirit of adventure comes alive in this dynamic capital. From exploring the unique Nairobi National Park to discovering the Giraffe Centre, from experiencing the vibrant Maasai Market to learning about conservation at the David Sheldrick Wildlife Trust, this fascinating city offers the perfect blend of wildlife encounters and urban culture. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Nairobi.webp',
     tourCategories: [
@@ -9232,6 +9258,7 @@ export const destinations = [
     country: 'Kenya',
     category: 'Africa',
     briefDescription: 'Iconic wildlife reserve with the Great Migration, Big Five, and traditional Maasai culture — Maasai Mara is Kenya\'s safari crown jewel.',
+    relatedGuides: ['best-time-for-african-safari'],
     heroDescription: 'Welcome to Maasai Mara, where the African savanna comes alive with incredible wildlife encounters and the annual Great Migration creates one of nature\'s most spectacular shows. From witnessing the dramatic river crossings to spotting the Big Five on game drives, from experiencing traditional Maasai culture to staying in luxury tented camps, this iconic reserve offers the ultimate African safari experience. Let our AI-powered planner help you discover the best wildlife experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Maasai%20Mara.jpeg',
     tourCategories: [
@@ -9287,6 +9314,7 @@ export const destinations = [
     country: 'Kenya',
     category: 'Africa',
     briefDescription: 'Coastal paradise with pristine beaches, rich history, and Swahili culture — Mombasa is Kenya\'s tropical gateway.',
+    relatedGuides: ['best-time-for-african-safari'],
     heroDescription: 'Welcome to Mombasa, where pristine Indian Ocean beaches meet centuries of Swahili heritage and the warm coastal breeze carries the scent of spices and adventure. From relaxing on white-sand beaches to exploring the historic Old Town, from discovering Fort Jesus to experiencing traditional Swahili cuisine, this tropical paradise offers the perfect blend of beach relaxation and cultural discovery. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Mombasa.jpg',
     tourCategories: [
