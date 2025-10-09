@@ -33,6 +33,7 @@ export default function DestinationDetailClient({ destination }) {
   const [categoryGuides, setCategoryGuides] = useState([]);
   const [countryDestinations, setCountryDestinations] = useState([]);
   const [guideCarouselIndex, setGuideCarouselIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const { toast } = useToast();
 
   const handleOpenModal = () => {
@@ -42,6 +43,13 @@ export default function DestinationDetailClient({ destination }) {
   useEffect(() => {
     // Scroll to top when component mounts (e.g., when navigating back)
     window.scrollTo({ top: 0, behavior: 'instant' });
+    
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
     
     // Initialize carousel indexes and visible tours for each category
     const indexes = {};
@@ -79,6 +87,11 @@ export default function DestinationDetailClient({ destination }) {
       const sameCountryDests = getDestinationsByCountry(safeDestination.country, safeDestination.id);
       setCountryDestinations(sameCountryDests);
     }
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   const fetchToursForCategory = async (destinationName, category) => {
@@ -677,29 +690,42 @@ export default function DestinationDetailClient({ destination }) {
                     >
                       <ChevronLeft className="w-4 h-4" />
                     </Button>
+                    {/* Mobile: show current of total, Desktop: show range */}
                     <span className="text-sm text-gray-600">
-                      {guideCarouselIndex + 1} - {Math.min(guideCarouselIndex + 3, relatedGuides.length)} of {relatedGuides.length}
+                      <span className="md:hidden">{guideCarouselIndex + 1} of {relatedGuides.length}</span>
+                      <span className="hidden md:inline">{guideCarouselIndex + 1} - {Math.min(guideCarouselIndex + 3, relatedGuides.length)} of {relatedGuides.length}</span>
                     </span>
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => setGuideCarouselIndex(Math.min(Math.max(0, relatedGuides.length - 3), guideCarouselIndex + 1))}
-                      disabled={guideCarouselIndex >= Math.max(0, relatedGuides.length - 3)}
+                      onClick={() => {
+                        // Mobile: move by 1, Desktop: move by 1 but show 3
+                        const maxIndex = isMobile 
+                          ? relatedGuides.length - 1 
+                          : Math.max(0, relatedGuides.length - 3);
+                        setGuideCarouselIndex(Math.min(maxIndex, guideCarouselIndex + 1));
+                      }}
+                      disabled={guideCarouselIndex >= (isMobile ? relatedGuides.length - 1 : Math.max(0, relatedGuides.length - 3))}
                       className="w-10 h-10 p-0"
                     >
                       <ChevronRight className="w-4 h-4" />
                     </Button>
                   </div>
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden px-4 md:px-0">
                     <div 
-                      className="flex transition-transform duration-300 ease-in-out gap-6 justify-center"
-                      style={{ transform: `translateX(-${guideCarouselIndex * 33.33}%)` }}
+                      className="flex transition-transform duration-300 ease-in-out gap-6"
+                      style={{ 
+                        transform: isMobile
+                          ? `translateX(calc(-${guideCarouselIndex * 100}% - ${guideCarouselIndex * 1.5}rem))`
+                          : `translateX(-${guideCarouselIndex * 33.33}%)`,
+                        justifyContent: 'center'
+                      }}
                     >
                       {relatedGuides.map((guide) => (
                         <Link 
                           key={guide.id}
                           href={`/travel-guides/${guide.id}`}
-                          className="w-[calc(33.33%-1rem)] flex-shrink-0 group"
+                          className="w-[calc(100%-2rem)] md:w-[calc(33.33%-1rem)] flex-shrink-0 group"
                         >
                           <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
                             <div className="relative h-48 overflow-hidden bg-gray-200">
