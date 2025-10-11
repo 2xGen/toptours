@@ -2416,12 +2416,12 @@ export const destinations = [
     heroDescription: 'Welcome to Munich, where Bavarian traditions meet modern sophistication and world-famous beer culture comes alive. From the iconic Marienplatz to the magnificent Nymphenburg Palace, from traditional beer gardens to cutting-edge museums, this Bavarian capital offers the perfect blend of tradition, culture, and authentic German charm. Let our AI-powered planner help you discover the best experiences this magnificent destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Munich.webp',
     tourCategories: [
-      'Oktoberfest Tours',
-      'Beer Garden Tours',
-      'Palace & Castle Tours',
-      'Food & Beer Tours',
-      'Historic District Tours',
-      'Bavarian Culture Tours'
+      { name: 'Oktoberfest Tours', hasGuide: true },
+      { name: 'Beer Garden Tours', hasGuide: true },
+      { name: 'Palace & Castle Tours', hasGuide: true },
+      { name: 'Food & Beer Tours', hasGuide: true },
+      { name: 'Historic District Tours', hasGuide: true },
+      { name: 'Bavarian Culture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Munich Tours & Excursions - Top-Rated Activities & Adventures',
