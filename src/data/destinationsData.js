@@ -1920,12 +1920,12 @@ export const destinations = [
     heroDescription: 'Welcome to Mykonos, where cosmopolitan style meets traditional Greek island charm and pristine beaches stretch along the Aegean coast. From the iconic windmills to vibrant nightlife, from crystal-clear waters to charming villages, this glamorous island offers the perfect blend of luxury and authentic Greek culture. Let our AI-powered planner help you discover the best experiences this stunning destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Mykonos.avif',
     tourCategories: [
-      'Windmill Tours',
-      'Beach & Boat Tours',
-      'Island Hopping Tours',
-      'Food & Wine Tours',
-      'Water Sports Tours',
-      'Village Exploration Tours'
+      { name: 'Windmill Tours', hasGuide: true },
+      { name: 'Beach & Boat Tours', hasGuide: true },
+      { name: 'Island Hopping Tours', hasGuide: true },
+      { name: 'Food & Wine Tours', hasGuide: true },
+      { name: 'Water Sports Tours', hasGuide: true },
+      { name: 'Village Exploration Tours', hasGuide: true }
     ],
     seo: {
       title: 'Mykonos Tours & Excursions - Top-Rated Activities & Adventures',

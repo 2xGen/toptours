@@ -28095,5 +28095,986 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
     }
   },
 
+  mykonos: {
+    'windmill-tours': {
+      "title": "Mykonos Windmill Tours",
+      "subtitle": "Explore the iconic whitewashed windmills of Mykonos with stunning Aegean Sea views and sunset magic!",
+      "categoryName": "Windmill Tours",
+      "stats": {
+        "toursAvailable": 12,
+        "priceFrom": 30,
+        "duration": "1.5-3 hours"
+      },
+      "introduction": "Discover Mykonos' most iconic landmarks - the legendary windmills that have become symbols of the Greek islands! These brilliant white windmills, perched above Mykonos Town with the Aegean Sea as backdrop, have graced the island since the 16th century when they ground wheat for the entire Cyclades. The Kato Mili windmills in Little Venice offer spectacular sunset photography, while the windmills in Chora create postcard-perfect scenes that define Greek island beauty. Learn about their fascinating history as vital agricultural tools, understand the engineering behind these remarkable structures, and discover why they've become Instagram sensations. Whether you're capturing sunset photos, learning historical significance, or simply soaking in the views, windmill tours showcase Mykonos at its most photogenic. Perfect for photographers, romantics, and anyone seeking that quintessential Greek island experience!",
+      "seo": {
+        "title": "Mykonos Windmill Tours 2025 - Iconic Photo Spots",
+        "description": "Visit Mykonos' famous windmills with expert guides. Sunset views, photography tips, and island history!",
+        "keywords": "Mykonos windmills, Kato Mili, Mykonos photography, Little Venice windmills, Mykonos sunset tours"
+      },
+      "whyChoose": [
+        {
+          "icon": "Camera",
+          "title": "Instagram Paradise",
+          "description": "The windmills are Mykonos' most photographed landmarks - absolutely stunning!"
+        },
+        {
+          "icon": "Sun",
+          "title": "Spectacular Sunsets",
+          "description": "Watch breathtaking Aegean sunsets from the windmill area - pure magic!"
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Historic Significance",
+          "description": "Learn how these 16th-century windmills were vital to island life and commerce."
+        },
+        {
+          "icon": "MapPin",
+          "title": "Prime Location",
+          "description": "Windmills overlook Little Venice and Mykonos harbor - perfect vantage points."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Sun",
+          "title": "Sunset Windmill Tours",
+          "description": "Timed perfectly for golden hour with the windmills silhouetted against colorful skies.",
+          "features": [
+            "Sunset timing",
+            "Photography guidance",
+            "Little Venice views",
+            "Historical stories",
+            "Romantic atmosphere"
+          ]
+        },
+        {
+          "icon": "Camera",
+          "title": "Photography Tours",
+          "description": "Professional photographers guide you to best angles and lighting for windmill photos.",
+          "features": [
+            "Pro photography tips",
+            "Best compositions",
+            "Golden hour timing",
+            "Hidden viewpoints",
+            "Editing suggestions"
+          ]
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Historical Walking Tours",
+          "description": "Learn the windmills' role in Mykonos history while exploring Chora's charming streets.",
+          "features": [
+            "Historical context",
+            "Engineering insights",
+            "Local guides",
+            "Chora exploration",
+            "Cultural stories"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Romantic Evening Tours",
+          "description": "Couples' tours combining windmills, sunset, and cocktails for unforgettable moments.",
+          "features": [
+            "Sunset views",
+            "Champagne included",
+            "Couples' photos",
+            "Little Venice bars",
+            "Private options"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Mykonos Windmill Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours last 1.5-3 hours, timed for optimal lighting and sunset viewing."
+          },
+          {
+            "icon": "Camera",
+            "title": "Photo Opportunities",
+            "description": "Unlimited opportunities to photograph the iconic whitewashed windmills against blue skies."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Multiple Locations",
+            "description": "Visit both the famous Kato Mili windmills and other windmill viewpoints around Chora."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Historical Insights",
+            "description": "Learn how windmills worked, their importance to island economy, and preservation efforts."
+          },
+          {
+            "icon": "Sun",
+            "title": "Sunset Magic",
+            "description": "Experience why sunset at the windmills is considered one of the world's most beautiful."
+          },
+          {
+            "icon": "Heart",
+            "title": "Romantic Setting",
+            "description": "The windmills area is perfect for proposals, anniversaries, or special moments."
+          }
+        ]
+      },
+      "expertTips": [
+        "Arrive 30 minutes before sunset for best positioning - it gets crowded quickly!",
+        "The windmills behind Little Venice (Kato Mili) offer the most iconic sunset views.",
+        "Morning visits (8-10 AM) provide beautiful light with virtually no crowds for photos.",
+        "Wear comfortable shoes - the area involves walking on uneven stone paths.",
+        "Bring a wide-angle lens for capturing multiple windmills in one frame.",
+        "After sunset, head down to Little Venice bars for cocktails with windmill views above.",
+        "Only 7 of the original 16 windmills remain - each has unique character.",
+        "Ask guides about the \"Bonis Mill\" - it's the most photographed and best preserved."
+      ],
+      "faqs": [
+        {
+          "question": "Where are the Mykonos windmills located?",
+          "answer": "The most famous windmills (Kato Mili - Lower Windmills) are located on a hilltop peninsula just south of Little Venice in Mykonos Town (Chora). There are 5 windmills here in a row - the most photographed spot on the island! They're about a 10-minute walk from the town center. Other windmills dot the area around Chora - 16 originally existed, 7 remain today. The windmills are clearly visible from most parts of Mykonos Town and make excellent landmarks for navigation. All are within easy walking distance. You can't miss them - they're literally everywhere in tourist photos!"
+        },
+        {
+          "question": "Can you go inside the Mykonos windmills?",
+          "answer": "Most windmills are not open to the public as they're protected historic structures. However, the Agricultural Museum windmill (Bonis Mill) in the Kato Mili area occasionally opens for tours showing traditional milling equipment and explaining how windmills operated. Access varies seasonally - check locally. Even without interior access, the exteriors are stunning! The windmills are designed for viewing and photography from outside. Their photogenic quality and historical significance don't require interior access. The setting and views are the real attractions. Some guides provide detailed explanations of windmill mechanics and history from outside."
+        },
+        {
+          "question": "Why does Mykonos have so many windmills?",
+          "answer": "Mykonos windmills were built starting in the 16th century to harness the island's strong Meltemi winds for grinding wheat! The island became a major milling center for the entire Cyclades archipelago. At peak, 16 windmills operated in the Chora area, with more across the island. The strategic location between mainland Greece and Crete made Mykonos ideal for grain processing. Windmills were vital to the economy until the mid-20th century when modern milling ended their commercial use. They remained as iconic architectural landmarks. Today they're protected monuments and tourism symbols. The engineering was remarkable - perfectly designed to catch winds!"
+        },
+        {
+          "question": "What is the best time to photograph the windmills?",
+          "answer": "Sunset is the most magical time - golden hour light makes the white windmills glow against colorful skies, typically 7-8 PM summer, earlier in winter. Arrive 30-45 minutes early as it gets very crowded! Early morning (6:30-8:30 AM) offers equally beautiful light with almost no crowds - ideal for photographers wanting clean shots. Midday provides bright light and blue skies contrasting white windmills beautifully but harsh shadows. Overcast days give soft, even light perfect for photography. Blue hour (just after sunset) creates dramatic silhouettes. Basically, any time is photogenic, but golden hours are special!"
+        },
+        {
+          "question": "Are the windmills free to visit?",
+          "answer": "Yes, completely free! The windmills are outdoor historic monuments accessible to everyone at all times. You can walk around them, photograph them, and enjoy the views without any entrance fee. This makes them one of the best value attractions in expensive Mykonos! The area around the windmills is public space. Some guided tours include windmill visits as part of broader Mykonos explorations (typically €30-60 for full tours). Photography tours focusing specifically on windmills might charge for the guide's expertise and positioning tips. But independent visits are entirely free - one of Mykonos' most accessible experiences!"
+        },
+        {
+          "question": "How crowded do the windmills get?",
+          "answer": "Very crowded at sunset during peak season (July-August)! Hundreds gather for sunset photos, especially around the Little Venice area. The most famous viewpoints can feel packed. However, walking just 50 meters away from the main spot finds quieter areas with excellent views. Mornings are peaceful with few tourists - you might have windmills to yourself! Shoulder seasons (May-June, September-October) have moderate crowds even at sunset. Winter sees minimal crowds. Weekdays are always calmer than weekends. If crowds bother you, visit early morning or skip peak sunset time. Or embrace it - the energy is part of Mykonos' charm!"
+        },
+        {
+          "question": "Can I combine windmill tours with other Mykonos activities?",
+          "answer": "Absolutely! Most Mykonos Town walking tours include windmills as major highlights along with Little Venice, Matogianni shopping street, and Paraportiani Church. Sunset windmill visits pair perfectly with drinks at Little Venice bars afterward. Photography tours often combine windmills with other photogenic spots around Chora. Half-day island tours frequently stop at windmills for photos. The windmills' central location makes them easy to combine with anything! Budget 30-60 minutes for windmill area exploration including photos and views. They're practically mandatory in any Mykonos visit - everyone sees them!"
+        }
+      ]
+    },
+    'beach-and-boat-tours': {
+      "title": "Mykonos Beach & Boat Tours",
+      "subtitle": "Discover pristine beaches, secluded coves, and crystal-clear Aegean waters on island boat adventures!",
+      "categoryName": "Beach & Boat Tours",
+      "stats": {
+        "toursAvailable": 25,
+        "priceFrom": 55,
+        "duration": "4-8 hours"
+      },
+      "introduction": "Experience Mykonos' spectacular coastline where golden beaches meet turquoise Aegean waters in postcard-perfect beauty! The island boasts some of Greece's finest beaches - from the famous party atmosphere of Paradise and Super Paradise to the serene beauty of Agios Sostis and Fokos. Boat tours reveal hidden coves accessible only by sea, pristine waters perfect for snorkeling, and coastal views showcasing Mykonos' stunning landscape. Sail on traditional Greek boats or luxury catamarans, swim in crystal-clear waters, enjoy beachside lunch at tavernas, and discover why Mykonos beaches are legendary. Whether you're seeking beach club glamour, secluded swimming spots, water sports excitement, or sunset sailing romance, these tours deliver unforgettable Aegean experiences. Perfect for beach lovers, snorkeling enthusiasts, party-goers, and anyone wanting the ultimate Greek island beach experience!",
+      "seo": {
+        "title": "Mykonos Beach & Boat Tours 2025 - Aegean Coast",
+        "description": "Explore Mykonos' stunning beaches and coastline with boat tours. Swimming, snorkeling, and island beauty!",
+        "keywords": "Mykonos beaches, Mykonos boat tours, Paradise Beach, Greek island beaches, Mykonos sailing tours"
+      },
+      "whyChoose": [
+        {
+          "icon": "Waves",
+          "title": "Pristine Aegean Waters",
+          "description": "Crystal-clear turquoise water with exceptional visibility perfect for swimming and snorkeling."
+        },
+        {
+          "icon": "Sun",
+          "title": "Diverse Beach Selection",
+          "description": "From party beaches to secluded coves, Mykonos offers beaches for every preference."
+        },
+        {
+          "icon": "Sailboat",
+          "title": "Stunning Coastal Scenery",
+          "description": "Dramatic landscapes, hidden bays, and Mediterranean beauty accessible by boat."
+        },
+        {
+          "icon": "PartyPopper",
+          "title": "Beach Club Culture",
+          "description": "Experience the famous Mykonos beach party scene at world-renowned venues."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Sailboat",
+          "title": "Sailing & Swimming Tours",
+          "description": "Full-day sailing adventures visiting multiple beaches with swimming and snorkeling stops.",
+          "features": [
+            "Traditional Greek boat",
+            "3-4 beach stops",
+            "Snorkeling equipment",
+            "Lunch included",
+            "Swimming time"
+          ]
+        },
+        {
+          "icon": "Star",
+          "title": "Luxury Catamaran Cruises",
+          "description": "Premium sailing experiences on spacious catamarans with gourmet dining and comfort.",
+          "features": [
+            "Luxury catamaran",
+            "Gourmet meals",
+            "Open bar",
+            "Water toys",
+            "Sunset timing"
+          ]
+        },
+        {
+          "icon": "PartyPopper",
+          "title": "Party Beach Tours",
+          "description": "Visit famous party beaches like Paradise and Super Paradise with beach club access.",
+          "features": [
+            "Paradise Beach",
+            "Beach club entry",
+            "DJ performances",
+            "Transportation",
+            "Party atmosphere"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Secluded Beach Tours",
+          "description": "Discover quiet, pristine beaches away from crowds for peaceful swimming and relaxation.",
+          "features": [
+            "Hidden coves",
+            "Peaceful atmosphere",
+            "Snorkeling spots",
+            "Small groups",
+            "Authentic experience"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Mykonos Beach & Boat Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours range from 4-hour half-day trips to 8-hour full-day adventures."
+          },
+          {
+            "icon": "Waves",
+            "title": "Swimming Stops",
+            "description": "Multiple opportunities to swim in pristine turquoise waters at beautiful beaches."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Multiple Beaches",
+            "description": "Visit 3-5 different beaches showing the diversity of Mykonos coastline."
+          },
+          {
+            "icon": "GlassWater",
+            "title": "Snorkeling",
+            "description": "Equipment provided for exploring marine life in crystal-clear Aegean waters."
+          },
+          {
+            "icon": "Heart",
+            "title": "Meals & Drinks",
+            "description": "Most tours include lunch, refreshments, and sometimes open bar or wine."
+          },
+          {
+            "icon": "Camera",
+            "title": "Scenic Beauty",
+            "description": "Spectacular coastal views, hidden caves, and photogenic landscapes throughout."
+          }
+        ]
+      },
+      "expertTips": [
+        "Book morning tours to avoid afternoon Meltemi winds that can make seas choppy.",
+        "Paradise and Super Paradise beaches are party-focused - go elsewhere for tranquility!",
+        "Bring reef-safe sunscreen to protect the Aegean's delicate marine ecosystems.",
+        "Water shoes aren't necessary - Mykonos has mostly sandy beaches (unlike other Greek islands).",
+        "Elia Beach offers the best combination of beauty, facilities, and moderate atmosphere.",
+        "Many beaches have nudist sections - usually clearly marked or at beach ends.",
+        "Beach clubs charge €20-50 for lounger sets but include changing facilities and bars.",
+        "June and September offer perfect beach weather with fewer crowds than July-August."
+      ],
+      "faqs": [
+        {
+          "question": "What are the best beaches in Mykonos?",
+          "answer": "It depends on what you want! For parties: Paradise and Super Paradise beaches with DJ sets and beach clubs. For beauty and facilities: Psarou Beach (luxury), Ornos Beach (family-friendly), and Elia Beach (longest beach, diverse crowd). For quiet seclusion: Agios Sostis (no facilities but pristine!), Fokos Beach (remote and peaceful), and Kapari Beach (tiny and hidden). For windsurfing: Ftelia Beach. For LGBT scene: Super Paradise and Elia have dedicated sections. For convenience: Megali Ammos (walking distance from town). Each beach has unique character - most visitors try several! Boat tours let you sample multiple beaches in one day."
+        },
+        {
+          "question": "How do I get to Mykonos beaches?",
+          "answer": "Popular beaches are accessible by: 1) Local buses from Mykonos Town (Fabrika station) - €2 per ride, running every 30 minutes in summer to major beaches. 2) Water taxis from Old Port - scenic and fun, €5-15 depending on beach. 3) Rental ATVs/cars - most popular option for beach hopping freedom (€25-40/day). 4) Organized beach tours - convenient with transportation included (€40-80). 5) Taxi - expensive (€20-40 each way). Buses are cheapest and reliable for main beaches. Remote beaches require ATV or tour. Many hotels offer beach shuttle services. Roads are good but can be narrow and winding!"
+        },
+        {
+          "question": "Are Mykonos boat tours worth it?",
+          "answer": "Absolutely! Boat tours reach secluded beaches and coves impossible to access by land, providing swimming spots without crowds. You'll see Mykonos' stunning coastline from the sea - a completely different perspective. Tours typically visit 3-4 beaches in one day vs. the hassle of beach-hopping independently. Lunch, drinks, and snorkeling equipment are usually included (€55-150 depending on boat type). The experience of sailing Aegean waters is magical! Catamaran tours offer luxury and stability. For comprehensive beach exploration and convenience, boat tours provide excellent value. Independent beach visits work fine but boats access the most beautiful spots!"
+        },
+        {
+          "question": "What is the party beach scene like?",
+          "answer": "Mykonos party beaches (Paradise, Super Paradise, Tropicana) are legendary! Beach clubs host world-famous DJs playing from afternoon through evening. The atmosphere builds throughout the day - relaxed mornings, energetic afternoons (2-7 PM), and full party mode by sunset. Expect loud music, dancing crowds, bottle service, and spring break energy! It's expensive - beach club beds €40-100, drinks €15-20. Very much an \"Instagram party\" scene. If you're not into loud music and crowds, avoid these beaches! Paraga and Kalafatis offer moderate scenes. The party reputation is real and draws thousands specifically for this experience!"
+        },
+        {
+          "question": "Is the water warm in Mykonos?",
+          "answer": "Yes, from June through September! Water temperatures reach 72-77°F (22-25°C) in peak summer (July-August) - comfortable for swimming. June and September are slightly cooler at 70-73°F (21-23°C) but still pleasant. May and October water is cool at 66-70°F (19-21°C) - refreshing but swimmable for tolerant swimmers. Winter is cold (60°F/16°C). The Aegean warms slower than the Mediterranean but summer temperatures are perfect! Beaches face different directions - south-facing beaches warm earliest in season. Wind can make water feel cooler. Overall, Mykonos offers excellent swimming conditions May through October!"
+        },
+        {
+          "question": "Do I need to book beach club loungers in advance?",
+          "answer": "For popular beaches in peak season (July-August), definitely yes! Famous beach clubs like Scorpios, Nammos, and SantAnna require advance reservations and often have minimum spending (€100-500 per person!). Mid-range beach clubs at Paradise, Ornos, or Elia can be booked day-of in shoulder season but book ahead for weekends. Public beach areas (non-club sections) never require reservations - just arrive and set up your towel for free! Many beaches have both club and public areas. Expect to pay €20-50 for standard lounger sets, €40-100+ for front-row premium positions. Book luxury clubs days or weeks ahead!"
+        },
+        {
+          "question": "Can you swim year-round in Mykonos?",
+          "answer": "Technically yes, but practically only May through October. Summer (June-September) offers perfect swimming temperatures at 72-77°F (22-25°C). May and October are cooler but pleasant at 66-70°F (19-21°C) for those who don't mind refreshing water. Winter (November-April) is cold at 60-65°F (16-18°C) - only for very hardy swimmers! Most beaches and beach clubs close November through March. The swimming season aligns with tourism season. For best experience, visit June-September. Shoulder months (May, October) work fine if you're okay with cooler water and limited beach facilities. Greeks typically swim June-September."
+        }
+      ]
+    },
+    'island-hopping-tours': {
+      "title": "Mykonos Island Hopping Tours",
+      "subtitle": "Explore nearby Cycladic islands including Delos, Rhenia, Tinos, and discover hidden Aegean gems!",
+      "categoryName": "Island Hopping Tours",
+      "stats": {
+        "toursAvailable": 18,
+        "priceFrom": 75,
+        "duration": "6-10 hours"
+      },
+      "introduction": "Discover the magical Cyclades archipelago with island-hopping adventures from Mykonos! These tours unlock the Aegean's treasures - from the sacred archaeological site of Delos (birthplace of Apollo) to the deserted beaches of Rhenia, from the religious pilgrimage island of Tinos to the authentic charm of neighboring islands. Experience each island's unique character: Delos' ancient ruins and mythological significance, Rhenia's pristine swimming coves, Tinos' marble villages and miraculous church, or Paros' traditional Cycladic beauty. Travel on traditional wooden boats or modern catamarans, swim in multiple locations, enjoy Greek island hospitality, and understand how each island contributes to Cycladic culture. These tours showcase Mediterranean island magic at its finest - combining history, natural beauty, local culture, and adventure. Perfect for history lovers, beach enthusiasts, photographers, and explorers!",
+      "seo": {
+        "title": "Mykonos Island Hopping Tours 2025 - Cyclades Islands",
+        "description": "Visit Delos, Rhenia, Tinos, and nearby Greek islands from Mykonos. Archaeological sites, beaches, and island culture!",
+        "keywords": "Mykonos island hopping, Delos tours, Rhenia island, Cyclades tours, Greek island tours from Mykonos"
+      },
+      "whyChoose": [
+        {
+          "icon": "MapPin",
+          "title": "Multiple Islands",
+          "description": "Experience different islands in one day, each with unique character and attractions."
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Ancient Delos",
+          "description": "Visit one of Greece's most important archaeological sites and UNESCO World Heritage treasure."
+        },
+        {
+          "icon": "Waves",
+          "title": "Pristine Swimming",
+          "description": "Discover secluded coves and beaches with crystal-clear waters away from crowds."
+        },
+        {
+          "icon": "Sailboat",
+          "title": "Scenic Sailing",
+          "description": "Enjoy beautiful Aegean cruising between islands with stunning coastal views."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "BookOpen",
+          "title": "Delos & Rhenia Tours",
+          "description": "Half-day tour to ancient Delos archaeological site plus swimming at Rhenia's beaches.",
+          "features": [
+            "Delos guided tour",
+            "Archaeological insights",
+            "Rhenia beach time",
+            "Swimming & snorkeling",
+            "BBQ lunch"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Tinos Day Trip",
+          "description": "Visit the pilgrimage island of Tinos with marble villages and miraculous church.",
+          "features": [
+            "Panagia Evangelistria",
+            "Marble village visits",
+            "Local culture",
+            "Traditional lunch",
+            "Artisan workshops"
+          ]
+        },
+        {
+          "icon": "Sailboat",
+          "title": "Multi-Island Sailing",
+          "description": "Full-day tours visiting 2-3 islands with swimming, sightseeing, and Greek lunch.",
+          "features": [
+            "Multiple islands",
+            "Sailing experience",
+            "Beach stops",
+            "Traditional meal",
+            "Snorkeling gear"
+          ]
+        },
+        {
+          "icon": "Star",
+          "title": "Private Yacht Charters",
+          "description": "Customized island-hopping on private yachts with personalized itineraries.",
+          "features": [
+            "Private yacht",
+            "Custom itinerary",
+            "Gourmet catering",
+            "Water toys",
+            "Professional crew"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Mykonos Island Hopping Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Full-day tours typically last 6-10 hours including sailing time and island visits."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Island Variety",
+            "description": "Visit 1-3 different islands depending on tour type and duration."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Historical Sites",
+            "description": "Delos tours include comprehensive archaeological site exploration with expert guides."
+          },
+          {
+            "icon": "Waves",
+            "title": "Swimming Opportunities",
+            "description": "Multiple swimming and snorkeling stops in pristine, less-crowded waters."
+          },
+          {
+            "icon": "GlassWater",
+            "title": "Meals Included",
+            "description": "Most tours provide Greek lunch, drinks, and refreshments throughout the day."
+          },
+          {
+            "icon": "Sailboat",
+            "title": "Scenic Cruising",
+            "description": "Beautiful sailing through the Cyclades with coastal views and island landscapes."
+          }
+        ]
+      },
+      "expertTips": [
+        "Delos has no shade - bring hat, sunscreen, and water for the archaeological site exploration.",
+        "Wear good walking shoes for Delos' ancient ruins which cover extensive ground.",
+        "Morning departures to Delos (9-10 AM) avoid midday heat at the archaeological site.",
+        "Rhenia's beaches are pristine but have no facilities - plan accordingly.",
+        "Bring waterproof bags for phones and cameras when swimming from boats.",
+        "Tinos is much more authentic and less touristy than Mykonos - a refreshing contrast.",
+        "Pack light for day trips - you'll be carrying belongings on and off boats.",
+        "Book Delos tours in advance during peak season as numbers are limited to protect the site."
+      ],
+      "faqs": [
+        {
+          "question": "What is Delos and why is it important?",
+          "answer": "Delos is a tiny island near Mykonos that's one of Greece's most important archaeological sites and a UNESCO World Heritage Site! According to mythology, it's the birthplace of Apollo and Artemis. Historically, it was the religious and political center of the Cyclades and one of the most sacred sites in ancient Greece. The ruins include stunning mosaics, the famous Terrace of Lions, ancient theaters, temples, and an entire ancient city. The site dates from 3000 BC through Roman times. No one has lived there since the 1st century BC. It's an open-air museum of extraordinary significance - visiting is like stepping into ancient Greece!"
+        },
+        {
+          "question": "How long is the boat ride to Delos?",
+          "answer": "Delos is very close to Mykonos - just 6 kilometers (4 miles) southwest! Boat rides take only 30-40 minutes from Mykonos Old Port. Ferry services run multiple times daily in season (April-October), typically departing 9 AM, 10 AM, and noon, with returns at specified times (usually 12 PM, 1:30 PM, 3 PM). The short distance makes Delos perfect for half-day trips. Round-trip ferry tickets cost €20-25 (includes €12 archaeological site entrance). Most guided tours include ferry tickets. The proximity to such a significant archaeological site is one of Mykonos' unique advantages!"
+        },
+        {
+          "question": "Can you swim at Delos?",
+          "answer": "No swimming is allowed at Delos itself - it's a protected archaeological site where even sitting on ruins is prohibited! However, island-hopping tours combine Delos archaeological visit with swimming stops at nearby Rhenia island. Rhenia (also called Rinia) is uninhabited with pristine beaches and crystal-clear water perfect for swimming and snorkeling. Most Delos tours include 2-3 hours at Rhenia for swimming, lunch, and relaxation. This combination is ideal - culture and history at Delos, then beach time at Rhenia. It's why combo tours are so popular!"
+        },
+        {
+          "question": "What should I bring to Delos?",
+          "answer": "Essential items: comfortable walking shoes (the site is large and rocky), sun hat, high-SPF sunscreen, sunglasses, and plenty of water! The archaeological site has virtually no shade and can be brutally hot in summer. Bring €12 cash for site entrance if not included in tour. No food/drinks are sold on Delos, so pack snacks and water. A camera is mandatory - the ruins are spectacular! Light, breathable clothing recommended. If your tour includes Rhenia swimming, also bring swimwear, towel, and reef-safe sunscreen. Tours typically last 2.5-3 hours at Delos with lots of walking."
+        },
+        {
+          "question": "What is Rhenia island?",
+          "answer": "Rhenia (or Rinia) is an uninhabited island directly adjacent to Delos - they're almost touching! In ancient times, Delos' sacred laws prohibited births and deaths on the island, so Rhenia served as the \"purification island\" where these events occurred. Today it's completely uninhabited with pristine beaches, clear turquoise water, and peaceful atmosphere. There are no facilities whatsoever - pure natural beauty! Boat tours stop at Rhenia's protected bays for swimming, snorkeling, and beach BBQs. The water clarity is exceptional. It's the perfect complement to Delos' historical significance - culture then relaxation!"
+        },
+        {
+          "question": "Can I visit other islands from Mykonos?",
+          "answer": "Yes! Daily ferries connect Mykonos to many Cycladic islands. Closest options: Tinos (35 minutes, €8-12, multiple daily ferries), Naxos (45 minutes), Paros (45 minutes), and Santorini (2-3 hours). You can visit Tinos independently as a day trip easily. For other islands, organized tours are more practical for day trips. Inter-island ferries also run to Athens (Piraeus port), making multi-island itineraries possible. Summer has most connections. Day-trip tours to Santorini exist but involve long travel times. Tinos and Delos/Rhenia are the most practical day trips. Mykonos' central Cyclades location makes island-hopping excellent!"
+        },
+        {
+          "question": "Is Tinos worth visiting from Mykonos?",
+          "answer": "Absolutely! Tinos offers a completely different character - authentic, religious, traditional, and peaceful compared to glitzy Mykonos. The Panagia Evangelistria church is Greece's most important pilgrimage site with a miraculous icon. The island features stunning marble villages (40+ villages!), talented artisan traditions (marble sculpture, basket weaving), dovecotes dotting hillsides, and authentic Greek island life without excessive tourism. It's just 35 minutes by ferry (€8-12 each way) with multiple daily sailings. Tinos provides cultural immersion and tranquility - a perfect counterpoint to Mykonos' energy. Many visitors say Tinos was their favorite discovery. Highly recommended for authentic Greece!"
+        }
+      ]
+    },
+    'food-and-wine-tours': {
+      "title": "Mykonos Food & Wine Tours",
+      "subtitle": "Savor Greek island cuisine, local wines, and authentic Cycladic flavors on culinary adventures!",
+      "categoryName": "Food & Wine Tours",
+      "stats": {
+        "toursAvailable": 16,
+        "priceFrom": 70,
+        "duration": "3-5 hours"
+      },
+      "introduction": "Embark on a delicious journey through Mykonos' rich culinary heritage where fresh Aegean ingredients meet traditional Cycladic recipes! These food and wine tours showcase the best of Greek island cuisine - from fresh seafood caught daily to traditional kopanisti cheese, from sunset dinners overlooking Little Venice to market tours revealing local ingredients. Taste Mykonos' growing wine scene featuring indigenous varieties, sample meze at authentic tavernas locals frequent, learn about Greek olive oil production, and discover why simple ingredients create extraordinary flavors. Visit family-run restaurants, meet local producers, and understand the Mediterranean diet that's sustained islanders for millennia. Whether you're a foodie seeking authentic experiences, a wine enthusiast exploring Greek varieties, or anyone who believes food tells cultural stories, these tours deliver unforgettable culinary memories. Perfect for couples, food lovers, and cultural explorers!",
+      "seo": {
+        "title": "Mykonos Food & Wine Tours 2025 - Greek Cuisine",
+        "description": "Explore Mykonos culinary scene with expert food tours. Greek tavernas, local wine, and island flavors!",
+        "keywords": "Mykonos food tours, Greek wine tours, Mykonos culinary experiences, Greek food tours, Cyclades cuisine"
+      },
+      "whyChoose": [
+        {
+          "icon": "GlassWater",
+          "title": "Authentic Greek Flavors",
+          "description": "Taste traditional Cycladic dishes made with recipes passed through generations."
+        },
+        {
+          "icon": "Heart",
+          "title": "Local Wine Discovery",
+          "description": "Sample wines from Mykonos' growing wine scene featuring indigenous Greek varieties."
+        },
+        {
+          "icon": "Users",
+          "title": "Expert Food Guides",
+          "description": "Passionate locals share culinary traditions, family recipes, and hidden food gems."
+        },
+        {
+          "icon": "MapPin",
+          "title": "Hidden Tavernas",
+          "description": "Discover authentic restaurants where locals eat, away from tourist hotspots."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Heart",
+          "title": "Traditional Taverna Tours",
+          "description": "Visit multiple authentic tavernas tasting meze, seafood, and traditional Greek dishes.",
+          "features": [
+            "3-4 taverna stops",
+            "Meze tastings",
+            "Fresh seafood",
+            "Wine pairings",
+            "Local atmosphere"
+          ]
+        },
+        {
+          "icon": "GlassWater",
+          "title": "Wine Tasting Tours",
+          "description": "Explore Mykonos' wineries and wine bars sampling local and regional Greek wines.",
+          "features": [
+            "Local winery visit",
+            "Multiple wine tastings",
+            "Indigenous varieties",
+            "Cheese pairings",
+            "Production insights"
+          ]
+        },
+        {
+          "icon": "MapPin",
+          "title": "Market & Cooking Tours",
+          "description": "Shop at local markets then cook traditional Greek dishes with expert chefs.",
+          "features": [
+            "Market shopping",
+            "Hands-on cooking",
+            "Professional chef",
+            "Recipe cards",
+            "Eat your creations"
+          ]
+        },
+        {
+          "icon": "Sun",
+          "title": "Sunset Dining Experiences",
+          "description": "Multi-course Greek dinners at restaurants with spectacular Aegean sunset views.",
+          "features": [
+            "Sunset timing",
+            "Multi-course meal",
+            "Wine selection",
+            "Scenic locations",
+            "Romantic ambiance"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Mykonos Food & Wine Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours typically last 3-5 hours with multiple food and wine stops."
+          },
+          {
+            "icon": "GlassWater",
+            "title": "Wine Tastings",
+            "description": "Sample 4-6 different Greek wines including Assyrtiko, Moschofilero, and local varieties."
+          },
+          {
+            "icon": "Heart",
+            "title": "Traditional Foods",
+            "description": "Taste meze, fresh seafood, kopanisti cheese, louza sausage, and island specialties."
+          },
+          {
+            "icon": "Users",
+            "title": "Small Groups",
+            "description": "Intimate groups of 6-12 people ensure personal attention and authentic interactions."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Multiple Venues",
+            "description": "Visit 3-5 different locations from tavernas to wine bars to local markets."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Cultural Stories",
+            "description": "Learn about Greek food culture, Mediterranean diet, and family traditions."
+          }
+        ]
+      },
+      "expertTips": [
+        "Come hungry - food tours include substantial portions that equal a full meal or more!",
+        "Try kopanisti cheese - it's a spicy Mykonos specialty you won't find elsewhere.",
+        "Ask about assyrtiko wine - Greece's most famous white variety from nearby Santorini.",
+        "Louza (cured pork) is a Mykonos delicacy - lean, flavorful, and unique to the island.",
+        "Evening tours offer better atmosphere at tavernas when locals dine (after 9 PM).",
+        "Don't skip the horta (wild greens) - they're simple but quintessentially Greek and healthy!",
+        "Inform guides of dietary restrictions in advance - Greek cuisine is vegetarian-friendly.",
+        "Book tours early in your visit to get restaurant recommendations for later!"
+      ],
+      "faqs": [
+        {
+          "question": "What is traditional Mykonos food?",
+          "answer": "Mykonos cuisine features fresh seafood (the island is surrounded by fish!), kopanisti (spicy soft cheese unique to Mykonos), louza (cured pork), amygdalota (almond cookies), kremydopita (onion pie), and traditional meze like tzatziki, dolmades, and Greek salad. Fresh fish grilled simply with lemon and olive oil is staple. Octopus, calamari, and shellfish are excellent. The cuisine emphasizes simplicity - quality ingredients prepared without fuss. Vegetables, legumes, and olive oil feature heavily. It's Mediterranean diet perfection! Kopanisti and louza are specifically Mykonian - try them while there. The food reflects island traditions and seasonal availability."
+        },
+        {
+          "question": "Where are the best restaurants in Mykonos?",
+          "answer": "For authentic Greek: Niko's Taverna and Kiki's Taverna (Agios Sostis beach - no electricity, cash only, amazing!). For upscale: Matsuhisa Mykonos, Interni, and Scorpios. For Little Venice views: Kastro's and Caprice. For seafood: Sea Satin Market and Tasos. For traditional atmosphere: M-Eating and To Maereio. Avoid obvious tourist traps around harbor. Look for places packed with Greeks! Prices range from €15-30 for tavernas to €50-150+ for upscale dining. Reservations essential for popular restaurants, especially dinner in summer. Many best places are outside Mykonos Town - rent transportation or join tours to reach them!"
+        },
+        {
+          "question": "What Greek wines should I try?",
+          "answer": "Must-try Greek varieties include: Assyrtiko (crisp, minerally white from Santorini - Greece's most famous wine), Moschofilero (aromatic white from Peloponnese), Malagousia (floral white), Agiorgitiko (smooth red), and Xinomavro (bold red). Mykonos itself produces limited wine but the Cyclades region (especially Santorini) produces excellent varietals. Many wine bars feature Greek wines from across the country. Expect to pay €25-40 per bottle in restaurants, €8-12 per glass. Greek wine quality has improved dramatically - it's much better than its old reputation! Tours introduce you to wines you'd never discover independently."
+        },
+        {
+          "question": "Are food tours suitable for vegetarians?",
+          "answer": "Absolutely! Greek cuisine is naturally vegetarian-friendly with emphasis on vegetables, legumes, olive oil, and cheese. Classic vegetarian dishes include Greek salad (authentic version without lettuce!), spanakopita (spinach pie), dolmades (stuffed grape leaves), gigantes (giant beans), horta (greens), various cheese dishes, and countless meze options. Most food tours easily accommodate vegetarians with advance notice. Seafood-focused tours are less suitable. Vegan is more challenging but increasingly possible - olive oil replaces butter in much Greek cooking. Inform tour operators about preferences. You'll eat very well as a vegetarian in Greece!"
+        },
+        {
+          "question": "How much do food tours include?",
+          "answer": "Most food tours include enough tastings to equal a full meal or more! Expect 6-10 tastings across 3-5 venues over 3-4 hours. You'll try meze, main dishes, wine, desserts, and specialties. Tours priced €70-100 typically include substantial food and 3-4 wine tastings. Higher-end tours (€120-180) might include full multi-course meals at upscale restaurants. You should leave comfortably full! The quantity varies by tour style - some offer small samples, others generous portions. Food tours provide excellent value - you're paying for guided expertise, access to best places, and cultural education along with the food itself."
+        },
+        {
+          "question": "When should I take a food tour?",
+          "answer": "Evening tours (6-10 PM) capture authentic Greek dining culture when tavernas come alive and locals eat. Greeks dine late - dinner typically starts 9-10 PM! However, afternoon tours (3-7 PM) work better for those wanting normal dining schedules. Morning tours can include market visits when produce is freshest. Book food tours early in your Mykonos visit - guides provide excellent restaurant recommendations for the rest of your stay! Any day works, but avoid Sundays when some venues might be closed. Summer season (June-September) offers most options. Food tours are weather-independent - perfect backup plans!"
+        },
+        {
+          "question": "What is meze?",
+          "answer": "Meze (or mezze) are small dishes served as appetizers or snacks, central to Greek dining culture! Classic examples include tzatziki (yogurt-cucumber dip), melitzanosalata (eggplant dip), taramosalata (fish roe dip), dolmades (stuffed grape leaves), saganaki (fried cheese), grilled octopus, olives, and fresh bread. Meze are meant for sharing - order many dishes and sample everything! It's social eating encouraging conversation and leisure. Perfect with ouzo or wine. Meze can be light snacks or, collectively, comprise a full meal. The variety lets you try many flavors. Greek dining often centers around meze rather than large individual entrées. It's wonderful tradition!"
+        }
+      ]
+    },
+    'water-sports-tours': {
+      "title": "Mykonos Water Sports Tours",
+      "subtitle": "Experience thrilling water sports from jet skiing to windsurfing in pristine Aegean waters!",
+      "categoryName": "Water Sports Tours",
+      "stats": {
+        "toursAvailable": 20,
+        "priceFrom": 50,
+        "duration": "2-6 hours"
+      },
+      "introduction": "Unleash your adventurous spirit with Mykonos' exciting water sports in the crystal-clear Aegean Sea! The island's coastline and reliable Meltemi winds create perfect conditions for everything from jet skiing and parasailing to windsurfing and kitesurfing. Experience the thrill of flying over turquoise waters on a jet ski, try stand-up paddleboarding in calm bays, learn windsurfing at dedicated spots, or get your adrenaline pumping with wakeboarding. Mykonos offers water sports for all skill levels - from complete beginners with professional instruction to advanced athletes seeking challenging conditions. The warm, clear waters and stunning coastal scenery make every activity more spectacular. Whether you're seeking thrills, trying something new, or pursuing your favorite water sport, Mykonos delivers world-class conditions and experiences. Perfect for adventure lovers, active travelers, and anyone wanting more than just beach lounging!",
+      "seo": {
+        "title": "Mykonos Water Sports Tours 2025 - Jet Ski & More",
+        "description": "Experience exciting water sports in Mykonos! Jet skiing, windsurfing, paddleboarding, and more in Aegean waters!",
+        "keywords": "Mykonos water sports, jet ski Mykonos, windsurfing Mykonos, paddleboarding Greece, Mykonos activities"
+      },
+      "whyChoose": [
+        {
+          "icon": "Waves",
+          "title": "Perfect Conditions",
+          "description": "Crystal-clear waters, reliable winds, and warm temperatures create ideal water sports settings."
+        },
+        {
+          "icon": "Star",
+          "title": "All Skill Levels",
+          "description": "Professional instruction for beginners and challenging conditions for advanced athletes."
+        },
+        {
+          "icon": "Sun",
+          "title": "Beautiful Setting",
+          "description": "Stunning Aegean coastline and picturesque beaches make every activity more memorable."
+        },
+        {
+          "icon": "Users",
+          "title": "Quality Equipment",
+          "description": "Modern, well-maintained equipment with full safety gear and professional support."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Waves",
+          "title": "Jet Ski Adventures",
+          "description": "High-speed jet ski tours exploring Mykonos coastline and reaching remote beaches.",
+          "features": [
+            "Modern jet skis",
+            "Safety briefing",
+            "Guided routes",
+            "Beach stops",
+            "No license required"
+          ]
+        },
+        {
+          "icon": "Sun",
+          "title": "Windsurfing Lessons",
+          "description": "Learn windsurfing or improve skills at ideal spots with professional instructors.",
+          "features": [
+            "Equipment provided",
+            "Certified instructors",
+            "All skill levels",
+            "Ftelia Beach",
+            "Small groups"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Multi-Activity Packages",
+          "description": "Try multiple water sports in one day - jet ski, paddleboard, parasailing, and more!",
+          "features": [
+            "3-4 different sports",
+            "Equipment included",
+            "Flexible timing",
+            "Beach club access",
+            "Great value"
+          ]
+        },
+        {
+          "icon": "Sailboat",
+          "title": "Kitesurfing Experiences",
+          "description": "Advanced water sport combining surfing and kiting in Mykonos' reliable winds.",
+          "features": [
+            "Expert instruction",
+            "Premium equipment",
+            "Best wind spots",
+            "Progression lessons",
+            "Video analysis"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Mykonos Water Sports Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Activities range from 30-minute jet ski rides to half-day multi-sport experiences."
+          },
+          {
+            "icon": "Users",
+            "title": "Professional Instruction",
+            "description": "Certified instructors provide safety briefings and technique guidance for all activities."
+          },
+          {
+            "icon": "Star",
+            "title": "Quality Equipment",
+            "description": "Modern, well-maintained gear including safety equipment and wetsuits if needed."
+          },
+          {
+            "icon": "Waves",
+            "title": "Perfect Conditions",
+            "description": "Operators choose best locations based on daily wind and sea conditions."
+          },
+          {
+            "icon": "Camera",
+            "title": "Action Photos",
+            "description": "Many tours include photography or GoPro footage of your water sports adventure."
+          },
+          {
+            "icon": "Heart",
+            "title": "Safety Focus",
+            "description": "Comprehensive safety protocols, life vests, and support boats ensure secure experiences."
+          }
+        ]
+      },
+      "expertTips": [
+        "Morning sessions (9 AM-noon) offer calmer conditions before afternoon Meltemi winds pick up.",
+        "Ftelia Beach on the north coast is Mykonos' best spot for windsurfing and kitesurfing.",
+        "You don't need a license for jet skis in Greece - just a brief safety orientation.",
+        "Book multi-activity packages for better value than individual activities.",
+        "Bring waterproof phone cases or GoPro cameras to capture action footage.",
+        "Wear rash guards or sunscreen - sunburn happens quickly on the water!",
+        "Paradise and Super Paradise beaches offer the most water sports variety.",
+        "May-June has good wind for sports but warmer water comes July-September."
+      ],
+      "faqs": [
+        {
+          "question": "Do I need experience for water sports in Mykonos?",
+          "answer": "No! Most water sports activities welcome complete beginners with no experience necessary. Jet skiing requires just a brief safety briefing (15-20 minutes). Paddleboarding is easy to learn in 10 minutes. Windsurfing and kitesurfing need lessons - beginner courses teach basics in 2-3 hours. Parasailing requires zero skill - you just enjoy the ride! Instructors are professionals experienced with beginners. All activities include safety equipment and briefings. If you've never tried water sports, Mykonos is a perfect place to start! Advanced athletes also find challenging conditions and quality instruction. Everyone is welcomed!"
+        },
+        {
+          "question": "How much do water sports cost in Mykonos?",
+          "answer": "Prices vary by activity: Jet ski rentals €60-100 for 30 minutes (some tours offer better rates), parasailing €60-80 per person, paddleboard rentals €15-25/hour, windsurfing lessons €50-80/hour, kitesurfing lessons €80-120/hour, wakeboarding €60-90 per session, and flyboarding €100-150. Multi-activity packages (€120-180) offer better value. Private lessons cost more but advance faster. Equipment is always included. Prices are similar to other Mediterranean islands. Peak season (July-August) sometimes has premiums. Booking through tours can be cheaper than beach rentals. Budget €60-100 for a fun water sports afternoon!"
+        },
+        {
+          "question": "What are the best beaches for water sports?",
+          "answer": "Ftelia Beach (north coast) is THE spot for windsurfing and kitesurfing - reliable winds and dedicated areas. Paradise Beach offers the most variety - jet skis, parasailing, banana boats, flyboarding, and more. Super Paradise Beach has good water sports plus party atmosphere. Kalafatis Beach is excellent for windsurfing and waterskiing with less crowd than Paradise. Ornos Beach offers family-friendly water sports in calm waters. Platis Gialos has good variety and is accessible. Each beach has different specialties - tours help you find the right spot for your preferred activity!"
+        },
+        {
+          "question": "What is the Meltemi wind?",
+          "answer": "The Meltemi is the famous Aegean wind blowing from the north during summer (June-September), particularly July-August! It creates the reliable winds that make the Cyclades excellent for windsurfing and kitesurfing. The Meltemi typically starts mid-morning and peaks mid-afternoon (20-30 knots common, sometimes 35+). It brings cooler temperatures on hot summer days - a natural air conditioning! For beach relaxation, Meltemi can be annoying (sand blowing, rough seas on north coasts). For wind sports, it's perfect! South-facing beaches are more sheltered. The wind is predictable and seasonal - crucial to Aegean climate and culture."
+        },
+        {
+          "question": "Is it safe to do water sports in Mykonos?",
+          "answer": "Yes! Water sports operators in Mykonos follow strict safety standards with certified instructors, modern equipment, and comprehensive safety protocols. All activities include life vests and safety briefings. Support boats monitor water sports areas. The Aegean has minimal currents and predictable conditions. Operators check weather daily and cancel if conditions are unsafe. That said, water sports carry inherent risks - follow instructions, don't overestimate abilities, and respect the sea! Activities are very safe when done properly with professional operators. Millions participate safely each summer. Choose licensed, established operators - don't accept random beach offers without proper equipment!"
+        },
+        {
+          "question": "Can children do water sports?",
+          "answer": "Yes, many water sports are suitable for children! Paddleboarding works for kids 8+, parasailing typically requires 12+ years, jet skis often require 16+ to drive alone (younger can ride as passengers with adults). Many beaches offer banana boat rides, pedal boats, and inflatable towing - great for families! Always check age and size restrictions with operators. Kids must be comfortable swimmers for most activities. Life vests are mandatory for children. Some operators offer family packages. Supervised activities in calm bays are safest for young children. Mykonos welcomes active families!"
+        },
+        {
+          "question": "What should I wear for water sports?",
+          "answer": "Wear swimwear as you'll get wet! For most activities, regular swimsuit is perfect. Rash guards or t-shirts recommended for sun protection during extended time on water. Windsurfing and kitesurfing might need wetsuits in shoulder season (provided by operators). Water shoes aren't essential on Mykonos' sandy beaches but help on rocky entries. Secure long hair to prevent tangles. Don't wear jewelry or watches (they might fall off). Sunglasses with straps are useful. Most importantly: apply waterproof sunscreen heavily - you'll burn faster on water! Operators provide any necessary safety gear like life vests."
+        }
+      ]
+    },
+    'village-exploration-tours': {
+      "title": "Mykonos Village Exploration Tours",
+      "subtitle": "Discover charming Cycladic villages, authentic island life, and hidden gems beyond Mykonos Town!",
+      "categoryName": "Village Exploration Tours",
+      "stats": {
+        "toursAvailable": 14,
+        "priceFrom": 45,
+        "duration": "3-5 hours"
+      },
+      "introduction": "Escape the crowds and discover authentic Mykonos in the island's charming traditional villages! Beyond the cosmopolitan energy of Mykonos Town lies a different world - peaceful villages where traditional Cycladic life continues, whitewashed churches dot hillsides, and locals maintain centuries-old customs. Explore Ano Mera with its historic monastery and authentic tavernas, wander through tiny settlements like Marathi with its fishing boat harbor, discover inland villages rarely visited by tourists, and experience the agricultural traditions that sustained the island for millennia. These tours reveal Mykonos' soul - the authentic island beneath the glamorous reputation. Learn about traditional architecture, meet local families, taste home-cooked specialties, and understand life on a Greek island away from the party scene. Perfect for culture enthusiasts, photographers seeking authenticity, and travelers wanting genuine connections!",
+      "seo": {
+        "title": "Mykonos Village Tours 2025 - Authentic Island Life",
+        "description": "Explore traditional Mykonos villages beyond the crowds. Ano Mera, local culture, and authentic Greek island experiences!",
+        "keywords": "Mykonos villages, Ano Mera Mykonos, authentic Mykonos, traditional villages, Mykonos cultural tours"
+      },
+      "whyChoose": [
+        {
+          "icon": "Heart",
+          "title": "Authentic Experience",
+          "description": "Discover real Mykonos where locals live, away from tourist crowds and party scenes."
+        },
+        {
+          "icon": "MapPin",
+          "title": "Hidden Gems",
+          "description": "Visit villages and sites tourists never see - true insider access."
+        },
+        {
+          "icon": "Camera",
+          "title": "Photogenic Beauty",
+          "description": "Capture traditional Cycladic architecture without crowds photobombing your shots!"
+        },
+        {
+          "icon": "Users",
+          "title": "Local Interactions",
+          "description": "Meet island families, artisans, and farmers preserving traditional ways of life."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "BookOpen",
+          "title": "Ano Mera Village Tours",
+          "description": "Explore Mykonos' second-largest village with historic monastery and authentic atmosphere.",
+          "features": [
+            "Panagia Tourliani Monastery",
+            "Traditional square",
+            "Local tavernas",
+            "Market day visits",
+            "Cultural insights"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Island Interior Tours",
+          "description": "Discover inland villages, agricultural traditions, and landscapes tourists miss.",
+          "features": [
+            "Multiple villages",
+            "Farming traditions",
+            "Local families",
+            "Traditional crafts",
+            "Authentic lunch"
+          ]
+        },
+        {
+          "icon": "Camera",
+          "title": "Photography Village Tours",
+          "description": "Capture pristine whitewashed villages, churches, and Cycladic architecture without crowds.",
+          "features": [
+            "Best photo locations",
+            "Traditional architecture",
+            "Empty streets",
+            "Golden hour timing",
+            "Composition guidance"
+          ]
+        },
+        {
+          "icon": "MapPin",
+          "title": "Coastal Villages Tour",
+          "description": "Visit fishing villages and coastal settlements with harbor charm and seafood traditions.",
+          "features": [
+            "Fishing harbors",
+            "Coastal churches",
+            "Seafood tavernas",
+            "Local fishermen",
+            "Maritime culture"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Mykonos Village Exploration Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours last 3-5 hours providing thorough village exploration and cultural immersion."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Multiple Villages",
+            "description": "Visit 2-4 different villages showcasing various aspects of island life."
+          },
+          {
+            "icon": "Users",
+            "title": "Local Encounters",
+            "description": "Meet village residents, artisans, and families maintaining traditional lifestyles."
+          },
+          {
+            "icon": "Heart",
+            "title": "Authentic Experiences",
+            "description": "Visit churches, local cafes, and places completely off tourist radar."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Cultural Learning",
+            "description": "Understand traditional Mykonian agriculture, architecture, and daily life."
+          },
+          {
+            "icon": "Camera",
+            "title": "Peaceful Photography",
+            "description": "Photograph traditional scenes without crowds - authentic Cycladic beauty."
+          }
+        ]
+      },
+      "expertTips": [
+        "Visit Ano Mera on Sunday mornings for church services and authentic village atmosphere.",
+        "The Panagia Tourliani Monastery in Ano Mera is stunning inside - don't just photograph exterior!",
+        "Lunch at traditional tavernas in Ano Mera costs half the price of Mykonos Town.",
+        "Bring cash - village tavernas and shops often don't accept credit cards.",
+        "Morning visits (9-11 AM) capture village life before midday heat empties streets.",
+        "Ask guides about traditional bread ovens still used in some villages.",
+        "The Monday farmers market in Ano Mera shows authentic island life.",
+        "Respect local customs - dress modestly when visiting churches and monasteries."
+      ],
+      "faqs": [
+        {
+          "question": "What is Ano Mera?",
+          "answer": "Ano Mera is Mykonos' second-largest settlement, located in the island's interior about 8 kilometers (5 miles) east of Mykonos Town. It's the only traditional village of significant size on the island! The village centers around a lovely square (plateia) lined with tavernas, cafes, and local shops - where locals actually gather! The highlight is Panagia Tourliani Monastery, founded in 1542 with stunning baroque interior. Ano Mera offers authentic island life without tourist crowds - it's where Mykonians shop, socialize, and maintain traditions. The Monday morning market brings the whole village alive. It's a refreshing contrast to cosmopolitan Mykonos Town!"
+        },
+        {
+          "question": "Are there other villages worth visiting in Mykonos?",
+          "answer": "Yes! Though Mykonos is small with most population in Mykonos Town and Ano Mera, other interesting settlements include: Marathi (tiny fishing village with harbor), Agios Ioannis (church famous from \"Shirley Valentine\" movie), Ftelia (windsurfing beach with small settlement), Kalafatis (fishing village turned resort), and scattered inland settlements of just a few houses showing traditional life. These aren't tourist villages - they're living communities. Don't expect shops or infrastructure. The charm is authenticity! Guided tours provide context and access. Most villages are reached by car/ATV - perfect for independent exploration too."
+        },
+        {
+          "question": "What is traditional Mykonian architecture?",
+          "answer": "Traditional Cycladic architecture features cube-shaped whitewashed houses with flat roofs, tiny windows, and wooden doors and window frames painted bright blue, green, or brown. White lime coating reflects heat and kills bacteria. Flat roofs collect rainwater and provide outdoor living space. Small windows minimize heat. Churches feature painted domes and elaborate bell towers. Narrow streets create cooling wind tunnels. Pelicans - symbols of Mykonos - often feature in decorations! The windmills are architectural landmarks. Everything is compact and connected - villages developed organically over centuries. The aesthetic is simple, functional, and stunningly beautiful. It's protected by strict building codes maintaining traditional style!"
+        },
+        {
+          "question": "Can I visit villages independently or need a tour?",
+          "answer": "You can definitely visit independently! Rent a car or ATV (€25-40/day) and explore at your own pace. Ano Mera is easy to reach via public bus (€2, frequent service). Other villages require personal transport. However, guided tours add significant value through cultural context, local connections, and visiting places you'd never find alone. Guides know which days have village markets, when churches are open, and which tavernas serve authentic food. You might drive through villages in 10 minutes independently, while tours spend hours revealing hidden layers. Both approaches work - tours for depth and insight, independent for flexibility and discovery!"
+        },
+        {
+          "question": "What should I do in Ano Mera?",
+          "answer": "Visit Panagia Tourliani Monastery (free entry, stunning baroque interior with marble iconostasis), relax at the village square (plateia) with coffee at traditional kafenion, have authentic lunch at family tavernas like To Steki or Chez Maria (€10-20 for generous portions), explore the Folklore Museum if open (seasonal), shop at local stores without tourist prices, attend Sunday morning church services for authentic experience, and visit Monday morning market if timing works. The village shows real Mykonian life. Budget 1.5-2 hours minimum. It's peaceful, authentic, and genuinely Greek!"
+        },
+        {
+          "question": "When is the best time to visit Mykonos villages?",
+          "answer": "Morning (9 AM-noon) is ideal for village exploration - streets come alive with local activity, shops open, and temperatures are pleasant. Sunday mornings offer church services and traditional atmosphere. Monday mornings in Ano Mera feature the weekly market. Late afternoon (5-7 PM) captures golden light perfect for photography. Avoid midday (noon-3 PM) when villages quiet down during siesta. Shoulder seasons (May-June, September-October) show authentic island rhythm without peak summer tourism. Winter offers the most authentic experience but limited facilities. Spring brings wildflowers and Easter celebrations - special time for village culture!"
+        },
+        {
+          "question": "Are there traditional festivals in Mykonos villages?",
+          "answer": "Yes! Greek Orthodox festivals (panigiria) happen throughout summer at various churches and monasteries. Major celebrations include Panagia Tourliani feast day (August 15 - Assumption), Agios Ioannis celebrations (June 24), and various saint's days with processions, traditional music, food, and dancing! These are authentic religious and cultural celebrations where locals gather. Easter is the biggest celebration (date varies - usually April/May) with evening services, processions, fireworks, and feasting. Attending festivals provides extraordinary cultural insight. Ask locals about upcoming celebrations - they're welcoming to respectful visitors. These aren't tourist events - they're living traditions!"
+        }
+      ]
+    }
+  },
+
 };
 
