@@ -1149,12 +1149,12 @@ export const destinations = [
     heroDescription: 'Welcome to Paris, where every street tells a story and every corner reveals a masterpiece. From the iconic Eiffel Tower to the charming Montmartre, from world-class museums to intimate cafés, this magical city offers the perfect blend of history, culture, and modern sophistication. Let our AI-powered planner help you discover the best experiences this timeless destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//paris.jpg',
     tourCategories: [
-      'Eiffel Tower Tours',
-      'Louvre Museum Tours',
-      'Seine River Cruises',
-      'Food & Wine Tours',
-      'Montmartre Art Tours',
-      'Notre-Dame Tours'
+      { name: 'Eiffel Tower Tours', hasGuide: true },
+      { name: 'Louvre Museum Tours', hasGuide: true },
+      { name: 'Seine River Cruises', hasGuide: true },
+      { name: 'Food & Wine Tours', hasGuide: true },
+      { name: 'Montmartre Art Tours', hasGuide: true },
+      { name: 'Notre-Dame Tours', hasGuide: true }
     ],
     seo: {
       title: 'Paris Tours & Excursions - Top-Rated Activities & Adventures',

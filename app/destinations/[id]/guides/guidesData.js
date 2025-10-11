@@ -30057,5 +30057,986 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
     }
   },
 
+  paris: {
+    'eiffel-tower-tours': {
+      "title": "Paris Eiffel Tower Tours",
+      "subtitle": "Experience the iconic Iron Lady with skip-the-line access, panoramic views, and the magic of Paris from above!",
+      "categoryName": "Eiffel Tower Tours",
+      "stats": {
+        "toursAvailable": 30,
+        "priceFrom": 35,
+        "duration": "1.5-3 hours"
+      },
+      "introduction": "Stand atop the world's most iconic monument - the magnificent Eiffel Tower, the Iron Lady that defines Paris! Built in 1889 for the World's Fair, this 330-meter engineering marvel offers breathtaking 360-degree views of Paris from multiple levels. Skip the notorious lines with priority access, ascend via glass elevator while learning fascinating history, and experience Paris spread before you - from Arc de Triomphe to Sacré-Cœur, from the Seine's curves to Montparnasse Tower. Whether visiting the first level's glass floor, the second level's restaurants, or the summit champagne bar at 276 meters, the Eiffel Tower delivers unforgettable moments. Learn about Gustave Eiffel's engineering genius, discover the tower's near-demolition story, and understand why this temporary exhibition became Paris's eternal symbol. Perfect for first-time visitors, romantics, photographers, and anyone seeking THE quintessential Paris experience!",
+      "seo": {
+        "title": "Eiffel Tower Tours 2025 - Skip-the-Line Paris",
+        "description": "Visit the Eiffel Tower with skip-the-line access and expert guides. Panoramic views and Paris icon experience!",
+        "keywords": "Eiffel Tower tours, Paris Eiffel Tower, skip-the-line Eiffel Tower, Paris tours, Eiffel Tower tickets"
+      },
+      "whyChoose": [
+        {
+          "icon": "Star",
+          "title": "Skip Enormous Lines",
+          "description": "Avoid 2-3 hour waits with priority access - more time enjoying, less time queuing!"
+        },
+        {
+          "icon": "Camera",
+          "title": "Spectacular Views",
+          "description": "See all of Paris from above - the city of lights spreads in every direction below you."
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Fascinating History",
+          "description": "Learn how the \"temporary\" tower for the 1889 fair became Paris's eternal symbol."
+        },
+        {
+          "icon": "Heart",
+          "title": "Romantic Icon",
+          "description": "Experience the world's most romantic monument - perfect for proposals and special moments!"
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Users",
+          "title": "Skip-the-Line Tours",
+          "description": "Priority access with expert guides to second level or summit with comprehensive history.",
+          "features": [
+            "Skip-the-line entry",
+            "Expert guide",
+            "2nd level or summit",
+            "Historical insights",
+            "Small groups"
+          ]
+        },
+        {
+          "icon": "Sun",
+          "title": "Sunset Tours",
+          "description": "Timed perfectly to see Paris in daylight, sunset, and sparkling at night - magical!",
+          "features": [
+            "Sunset timing",
+            "Day & night views",
+            "Champagne options",
+            "Best photography",
+            "Romantic atmosphere"
+          ]
+        },
+        {
+          "icon": "GlassWater",
+          "title": "Dinner at Eiffel Tower",
+          "description": "Dine at the tower's restaurants - Jules Verne or Madame Brasserie with stunning views.",
+          "features": [
+            "Restaurant reservation",
+            "Skip-the-line entry",
+            "Gourmet French cuisine",
+            "Window seating",
+            "Unforgettable experience"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Private VIP Tours",
+          "description": "Exclusive access with dedicated guides and flexible timing for personalized experiences.",
+          "features": [
+            "Private guide",
+            "Flexible schedule",
+            "Summit access",
+            "Champagne included",
+            "Photography assistance"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Paris Eiffel Tower Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours last 1.5-3 hours including ascent, exploration, and descent at your pace."
+          },
+          {
+            "icon": "Star",
+            "title": "Multiple Levels",
+            "description": "Visit first level (57m), second level (115m), or summit (276m) depending on tour type."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Panoramic Views",
+            "description": "See Arc de Triomphe, Notre-Dame, Sacré-Cœur, and all Paris landmarks from above."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Historical Stories",
+            "description": "Learn about construction, Gustave Eiffel, near-demolition, and how it became beloved."
+          },
+          {
+            "icon": "Camera",
+            "title": "Photo Opportunities",
+            "description": "Unlimited photos from platforms - capture Paris from the world's best viewpoint!"
+          },
+          {
+            "icon": "Users",
+            "title": "Expert Guides",
+            "description": "Knowledgeable guides share fascinating facts and point out landmarks."
+          }
+        ]
+      },
+      "expertTips": [
+        "Book skip-the-line tickets months in advance - the tower sells out quickly, especially summer!",
+        "Evening visits (after 6 PM) have shorter lines and you see Paris lit up at night.",
+        "The hourly sparkle show (5 minutes on the hour after dark) is magical from nearby or atop tower.",
+        "Second level offers best photo angles - summit is higher but views less detailed.",
+        "Bring a jacket - it's windy and cool at the top even in summer!",
+        "The champagne bar at summit offers unique experience (€12-20 per glass).",
+        "Visit Trocadéro Gardens after for the iconic tower photos with fountains.",
+        "Security lines are separate from ticket lines - arrive early for both!"
+      ],
+      "faqs": [
+        {
+          "question": "How tall is the Eiffel Tower?",
+          "answer": "The Eiffel Tower stands 330 meters (1,083 feet) tall including antennas! The main observation deck (summit) is at 276 meters (906 feet). It has three levels: first level at 57 meters with glass floor, second level at 115 meters with the best views and restaurants, and the summit at 276 meters with champagne bar. It was the world's tallest structure for 41 years until 1930! The tower weighs 10,100 tonnes (iron structure) and contains 18,038 metal parts held by 2.5 million rivets. It sways slightly in wind and grows 15cm taller in summer heat as iron expands! Climbing all stairs means 1,665 steps to summit - though elevators are recommended!"
+        },
+        {
+          "question": "How long does an Eiffel Tower visit take?",
+          "answer": "With skip-the-line tickets, budget 1.5-2 hours for second level visit - including elevator waits, exploring both levels, photos, and descent. Summit visits add 30-60 minutes (separate elevator from second level to top). WITHOUT skip-the-line, add 1-3 hours of waiting! During peak season, waits reach 2-3 hours easily. Guided tours typically last 1.5-2 hours. If dining at tower restaurant, allow 2-3 hours total. For photography and soaking in views leisurely, you could spend 2-3 hours. Most people spend about 2 hours total. The experience is worth every minute!"
+        },
+        {
+          "question": "Should I go to the second level or summit?",
+          "answer": "The second level (115m) offers the BEST views! You're high enough for spectacular panoramas but close enough to identify landmarks clearly. You can see architectural details and read the city. The restaurants are here too (Madame Brasserie). The summit (276m) is much higher with more bragging rights, but views are less detailed - Paris becomes a map beneath you. Lines for summit elevator add time. Weather at summit can be problematic (clouds, wind). RECOMMENDATION: Choose second level for best experience and views! Visit summit only if you must say you reached the very top. Most guides agree second level is superior for actual viewing enjoyment!"
+        },
+        {
+          "question": "When is the best time to visit the Eiffel Tower?",
+          "answer": "For views: Clear days obviously! Check weather forecasts. Morning (9-11 AM) has best visibility before afternoon haze. For photos: Sunset timing lets you photograph Paris in daylight then again lit up at night - two visits in one! For crowds: Early morning (9-10 AM opening) or evening (after 7 PM) have shorter lines. For sparkle: Visit after dark to see the hourly light show (5 minutes every hour on the hour). For romance: Sunset or evening when tower is illuminated. Avoid midday (noon-3 PM) when lines peak! Winter has smallest crowds but shortest days. May-June and September offer ideal weather with moderate crowds."
+        },
+        {
+          "question": "Can you buy tickets at the Eiffel Tower?",
+          "answer": "Yes, but DON'T! Same-day tickets at the tower often sell out by late morning, and lines are brutal (2-3 hours in summer!). Online tickets must be purchased well in advance (opens 60 days out) and sell out quickly for good time slots. Skip-the-line tour tickets are expensive but save hours of waiting and include expert guides. The €10-20 premium for skip-the-line vs regular tickets is absolutely worth it! Stairs-only tickets (cheaper) have shorter waits but you climb 674 steps to second level - quite a workout! Bottom line: BOOK AHEAD. Never just show up hoping to buy tickets. You'll waste your Paris day standing in line!"
+        },
+        {
+          "question": "How much does the Eiffel Tower cost?",
+          "answer": "Official tower tickets: stairs to 2nd level €11 (674 steps!), elevator to 2nd level €18.80, elevator to summit €29.40. Children and youth get discounts. However, tickets sell out weeks in advance! Skip-the-line guided tours cost €45-90 but save hours of waiting and include expert commentary - excellent value! Summit tours cost €90-150. Dining reservations (Jules Verne, Madame Brasserie) include tower access - lunches from €100, dinners €185-300 per person. The investment is worth it for skip-the-line convenience and enhanced experience. Budget €50-90 per person for quality tour including priority access."
+        },
+        {
+          "question": "Is the Eiffel Tower worth it?",
+          "answer": "Absolutely YES! Despite being touristy and expensive, the Eiffel Tower is genuinely spectacular and delivers on expectations. The views are breathtaking, the engineering is impressive up close, the history is fascinating, and the experience is quintessentially Paris. First-time Paris visitors should definitely go! The key is managing expectations - book skip-the-line tickets, go at good times, and embrace it as tourist experience. The tower sparkles with romance and magic despite crowds. At night, illuminated, it's enchanting. From above, Paris sprawls majestically. It earns its iconic status! Even Parisians appreciate it. Some say it's overrated - they're wrong!"
+        }
+      ]
+    },
+    'louvre-museum-tours': {
+      "title": "Paris Louvre Museum Tours",
+      "subtitle": "Explore the world's largest art museum with Mona Lisa, Venus de Milo, and masterpieces spanning 9,000 years!",
+      "categoryName": "Louvre Museum Tours",
+      "stats": {
+        "toursAvailable": 28,
+        "priceFrom": 40,
+        "duration": "2-4 hours"
+      },
+      "introduction": "Enter the magnificent Louvre, the world's largest and most visited art museum, housed in a stunning royal palace! With 72,735 square meters of galleries containing 35,000 artworks spanning 9,000 years, the Louvre is overwhelming - which is precisely why guided tours are invaluable! See the Mona Lisa (you won't miss her enigmatic smile!), marvel at the Venus de Milo's timeless beauty, admire the Winged Victory of Samothrace, and discover masterpieces by Da Vinci, Michelangelo, Raphael, and Vermeer. Expert guides navigate the labyrinthine palace, share captivating stories behind artworks, and ensure you see highlights efficiently without wandering lost for hours. From ancient Egyptian treasures to Renaissance masterpieces to Napoleon's apartments, the Louvre contains humanity's greatest artistic achievements. Perfect for art lovers, history enthusiasts, families, and anyone wanting to experience the world's premier art museum!",
+      "seo": {
+        "title": "Louvre Museum Tours 2025 - Skip-the-Line Paris",
+        "description": "Visit the Louvre with expert guides and skip-the-line access. See Mona Lisa, Venus de Milo, and art masterpieces!",
+        "keywords": "Louvre tours, Louvre Museum Paris, Mona Lisa tours, skip-the-line Louvre, Paris art museum tours"
+      },
+      "whyChoose": [
+        {
+          "icon": "Star",
+          "title": "World's Greatest Art",
+          "description": "See the Mona Lisa, Venus de Milo, and masterpieces you've only seen in books!"
+        },
+        {
+          "icon": "Users",
+          "title": "Expert Navigation",
+          "description": "Guides efficiently navigate the massive museum, ensuring you see highlights without getting lost."
+        },
+        {
+          "icon": "Heart",
+          "title": "Skip Enormous Lines",
+          "description": "Priority access saves hours of waiting - the Louvre has some of Paris's longest queues!"
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Fascinating Stories",
+          "description": "Learn the captivating tales behind artworks - context that makes art come alive!"
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Users",
+          "title": "Louvre Highlights Tours",
+          "description": "Efficient 2-3 hour tours covering must-see masterpieces with skip-the-line access.",
+          "features": [
+            "Mona Lisa visit",
+            "Venus de Milo",
+            "Winged Victory",
+            "Crown Jewels",
+            "Skip-the-line entry"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Private Louvre Tours",
+          "description": "Personalized museum experiences with dedicated art historian guides.",
+          "features": [
+            "Private guide",
+            "Custom itinerary",
+            "Your pace",
+            "Special interests",
+            "VIP experience"
+          ]
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Themed Tours",
+          "description": "Focus on specific collections - Ancient Egypt, Renaissance masters, or French paintings.",
+          "features": [
+            "Specialized focus",
+            "Expert curators",
+            "Deep dives",
+            "Specific interests",
+            "Extended time"
+          ]
+        },
+        {
+          "icon": "Sun",
+          "title": "Evening Tours",
+          "description": "Visit the Louvre during late hours (Wednesday/Friday) with smaller crowds and special atmosphere.",
+          "features": [
+            "Evening access",
+            "Fewer crowds",
+            "Different ambiance",
+            "Extended hours",
+            "Romantic lighting"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Paris Louvre Museum Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours typically last 2-4 hours - you could spend days here but tours show highlights efficiently."
+          },
+          {
+            "icon": "Star",
+            "title": "Major Masterpieces",
+            "description": "See Mona Lisa, Venus de Milo, Winged Victory, and other world-famous artworks."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Museum Navigation",
+            "description": "Guides navigate the confusing layout saving you from getting lost in 403 rooms!"
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Art History",
+            "description": "Learn about artists, historical context, and stories that make artworks meaningful."
+          },
+          {
+            "icon": "Users",
+            "title": "Small Groups",
+            "description": "Groups of 6-25 people with headsets ensuring you hear guides clearly."
+          },
+          {
+            "icon": "Camera",
+            "title": "Photography Allowed",
+            "description": "Photography permitted throughout (no flash) - capture your favorite masterpieces!"
+          }
+        ]
+      },
+      "expertTips": [
+        "Book skip-the-line tours - regular entry lines can be 2-3 hours, even with pre-purchased tickets!",
+        "Wednesday and Friday evenings (until 9:45 PM) have fewer crowds - consider evening tours.",
+        "The Mona Lisa is smaller than you think (77×53 cm) and always crowded - manage expectations!",
+        "Don't try to see everything - even highlights tours can feel rushed. Prioritize what interests you.",
+        "Download the official Louvre app for maps and audio guides if exploring independently.",
+        "The museum is closed Tuesdays - plan accordingly!",
+        "Wear comfortable shoes - you'll walk several kilometers on hard museum floors.",
+        "The pyramid entrance is iconic but not the only entry - some tours use quieter entrances."
+      ],
+      "faqs": [
+        {
+          "question": "How big is the Louvre?",
+          "answer": "The Louvre is MASSIVE - the world's largest art museum! It contains 72,735 square meters (782,910 sq ft) of exhibition space across 403 rooms. The museum displays 35,000 artworks (though it owns 380,000+ items!). The building itself is a former royal palace covering 60,600 square meters. To see everything spending 30 seconds per artwork would take 100 days! The museum is organized into eight departments: Egyptian, Near Eastern, Greek/Roman, Islamic, Sculptures, Decorative Arts, Paintings, and Prints. It's built around three courtyards. The scale is overwhelming - you CANNOT see everything. Even locals haven't seen it all. This is why guided tours are essential!"
+        },
+        {
+          "question": "Where is the Mona Lisa?",
+          "answer": "The Mona Lisa hangs in the Denon Wing, Room 711 (Salle des États) on the first floor. From the pyramid entrance, it's about a 10-minute walk through galleries - well-signed as everyone seeks it! The painting is behind bulletproof glass in climate-controlled case with barriers keeping crowds back. You'll see crowds from a distance - just follow them! Expect crowds of 30,000+ daily viewers in peak season. Best viewing: arrive right at opening (9 AM) or late evening (Wednesday/Friday). The painting is surprisingly small (77cm × 53cm) and difficult to see closely due to crowds. Yes, it's worth seeing, but manage expectations about the viewing experience!"
+        },
+        {
+          "question": "How much does the Louvre cost?",
+          "answer": "Regular Louvre entry costs €22 (purchased online mandatory - no cash sales). FREE for EU visitors under 26, all visitors under 18, and first Saturday evening of each month (6-9:45 PM). However, \"free\" doesn't mean no lines! Skip-the-line guided tours cost €45-90 and are absolutely worth it - you save 2+ hours of waiting plus get expert guidance through the overwhelming collections. Private tours cost €250-500+ depending on duration. The Paris Museum Pass (€62 for 2 days, €77 for 4 days, €92 for 6 days) includes Louvre plus 60+ museums and monuments - excellent value if visiting multiple sites!"
+        },
+        {
+          "question": "How long should I spend at the Louvre?",
+          "answer": "Minimum 2-3 hours to see main highlights (Mona Lisa, Venus de Milo, Winged Victory, Crown Jewels, select paintings). A half-day (4-5 hours) allows more thorough exploration of departments that interest you. Art enthusiasts could spend full days! Guided tours typically last 2-3 hours showing highlights efficiently - perfect for first-time visitors or those with limited time. Many visitors return multiple times focusing on different collections each visit. The museum is so vast that trying to see everything causes exhaustion and overwhelm. Better to see highlights well than rush through everything. Plan based on your art interest level!"
+        },
+        {
+          "question": "What are the must-see artworks?",
+          "answer": "Don't miss: Mona Lisa (Leonardo da Vinci - most famous painting ever!), Venus de Milo (ancient Greek sculpture, mysteriously missing arms), Winged Victory of Samothrace (Hellenistic sculpture, incredibly dynamic), The Wedding Feast at Cana (Veronese - largest painting, facing Mona Lisa!), Liberty Leading the People (Delacroix - iconic French Revolution image), The Coronation of Napoleon (David - massive historical scene), ancient Egyptian collections including the Seated Scribe, and the Crown Jewels. These are world-famous for good reason! Guided tours hit all highlights efficiently. Each deserves time and attention - don't just check boxes!"
+        },
+        {
+          "question": "Is the Louvre good for children?",
+          "answer": "Yes, with proper planning! The Louvre offers family-friendly tours with guides trained to engage children through storytelling and interactive elements. Kids love ancient Egypt mummies, dramatic sculptures, and treasure-hunting through galleries! However, the museum is huge and exhausting - limit visits to 1.5-2 hours for younger children. The Nintendo 3DS multimedia guides (free loan with ID) gamify the experience for ages 7-12. Many beautiful courtyards and the pyramid provide breaks. Strollers are allowed (though crowded rooms are challenging). Skip-the-line is essential with kids - they won't tolerate long waits! Make it fun, keep it short, and focus on things that interest them."
+        },
+        {
+          "question": "When is the Louvre least crowded?",
+          "answer": "Least crowded times: Wednesday and Friday evenings (until 9:45 PM, far fewer visitors), early morning right at 9 AM opening, mid-week (Tuesday/Thursday) during school year, winter months (November-March excluding holidays), and rainy days when tourists skip museums. MOST crowded: Weekends, summer (July-August), around Mona Lisa always, and first Sunday of month (free entry). The museum is CLOSED Tuesdays. Even \"quiet\" times can feel busy - it's the world's most visited museum (9-10 million annually)! Managing crowds is about timing and expectations. Skip-the-line access is crucial regardless of when you visit!"
+        }
+      ]
+    },
+    'seine-river-cruises': {
+      "title": "Paris Seine River Cruises",
+      "subtitle": "Glide past Notre-Dame, the Eiffel Tower, and Paris landmarks on romantic Seine River boat tours!",
+      "categoryName": "Seine River Cruises",
+      "stats": {
+        "toursAvailable": 25,
+        "priceFrom": 18,
+        "duration": "1-3 hours"
+      },
+      "introduction": "Experience Paris from its most romantic perspective - gliding along the Seine River past the city's most iconic landmarks! These river cruises offer unique views of Notre-Dame's Gothic spires, the Eiffel Tower rising majestically, the Louvre's elegant facade, and dozens of beautiful bridges dating back centuries. From classic one-hour sightseeing cruises with audio commentary to romantic dinner cruises with champagne and live music, the Seine provides the perfect way to see Paris while resting weary feet! Float past the Musée d'Orsay, under the ornate Pont Alexandre III, alongside the charming Île de la Cité, and through the heart of a city shaped by this legendary river. Whether taking a daytime cruise learning Parisian history or a magical evening cruise seeing the city of lights illuminated, Seine cruises deliver unforgettable perspectives. Perfect for romantics, photographers, first-time visitors, and anyone seeking classic Parisian charm!",
+      "seo": {
+        "title": "Paris Seine River Cruises 2025 - Boat Tours",
+        "description": "Experience Paris from the water with Seine River cruises. Romantic boat tours past Eiffel Tower, Notre-Dame, and landmarks!",
+        "keywords": "Seine River cruises, Paris boat tours, Seine dinner cruises, Bateaux Parisiens, Paris river tours"
+      },
+      "whyChoose": [
+        {
+          "icon": "Heart",
+          "title": "Most Romantic Experience",
+          "description": "The Seine is the heart of romantic Paris - cruises create magical moments!"
+        },
+        {
+          "icon": "Camera",
+          "title": "Unique Perspectives",
+          "description": "See landmarks from angles impossible from land - the river view is spectacular!"
+        },
+        {
+          "icon": "Waves",
+          "title": "Relaxing Sightseeing",
+          "description": "Rest your feet while seeing major monuments - comfortable touring!"
+        },
+        {
+          "icon": "Star",
+          "title": "Iconic Parisian Experience",
+          "description": "Seine cruises are quintessentially Paris - everyone should experience them!"
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Sailboat",
+          "title": "Classic Sightseeing Cruises",
+          "description": "One-hour river tours with audio commentary passing all major Paris landmarks.",
+          "features": [
+            "Audio guide included",
+            "All major monuments",
+            "Frequent departures",
+            "Glass-covered boats",
+            "Affordable option"
+          ]
+        },
+        {
+          "icon": "GlassWater",
+          "title": "Dinner Cruises",
+          "description": "Romantic multi-course French dinners while cruising the illuminated Seine at night.",
+          "features": [
+            "Gourmet 3-4 courses",
+            "Wine included",
+            "Live music",
+            "Window seating",
+            "Evening atmosphere"
+          ]
+        },
+        {
+          "icon": "Sun",
+          "title": "Sunset Cruises",
+          "description": "Timed for golden hour transitioning to the city of lights - magical timing!",
+          "features": [
+            "Sunset views",
+            "Day-to-night transition",
+            "Champagne options",
+            "Best photography",
+            "Romantic ambiance"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Lunch Cruises",
+          "description": "Elegant afternoon cruises with French cuisine and daytime Paris views.",
+          "features": [
+            "Multi-course lunch",
+            "Wine pairings",
+            "Daytime views",
+            "Less crowded",
+            "Quality dining"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Paris Seine River Cruises",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Sightseeing cruises last 1 hour; lunch cruises 2 hours; dinner cruises 2.5-3 hours."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Major Landmarks",
+            "description": "Pass Eiffel Tower, Notre-Dame, Louvre, Musée d'Orsay, and beautiful bridges."
+          },
+          {
+            "icon": "Waves",
+            "title": "Smooth Sailing",
+            "description": "Glass-covered boats with climate control ensure comfort in any weather."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Commentary",
+            "description": "Learn about monuments, bridges, and Parisian history via audio or live guides."
+          },
+          {
+            "icon": "Camera",
+            "title": "Photo Opportunities",
+            "description": "Spectacular angles of landmarks from the water - unique photography perspectives!"
+          },
+          {
+            "icon": "Heart",
+            "title": "Romantic Atmosphere",
+            "description": "Evening cruises with lights reflecting on water create magical Parisian romance."
+          }
+        ]
+      },
+      "expertTips": [
+        "One-hour sightseeing cruises cost just €18-20 - excellent value for Paris sightseeing!",
+        "Bateaux Mouches, Bateaux Parisiens, and Vedettes du Pont Neuf are the main operators - all good quality.",
+        "Board on the RIGHT side of boat for best Eiffel Tower views heading downstream.",
+        "Evening cruises show Paris illuminated - the Eiffel Tower sparkles on the hour!",
+        "Dinner cruises require smart casual dress (no shorts, sneakers, or sportswear).",
+        "Window seats cost extra on dinner cruises but are absolutely worth the premium!",
+        "The Seine freezes approximately never - cruises operate year-round!",
+        "Hop-on-hop-off Batobus offers unlimited cruising (€21/day) with 9 stops at major sites."
+      ],
+      "faqs": [
+        {
+          "question": "How much do Seine River cruises cost?",
+          "answer": "Basic one-hour sightseeing cruises cost €15-20 per person - excellent value! Lunch cruises range €55-90 per person. Dinner cruises vary widely: basic dinner cruises €80-120, mid-range €120-180, luxury options €180-300+. Champagne cruises cost €30-50. Children typically get 50% discount on sightseeing cruises. Private boat rentals start around €150/hour for small groups. The Batobus hop-on-hop-off river taxi costs €21 for day pass. Budget cruises (Vedettes du Pont Neuf at €14) offer great value. Luxury dinner cruises (Bateaux Parisiens, Bateaux Mouches) include gourmet meals, wine, and entertainment - special occasion worthy!"
+        },
+        {
+          "question": "Which Seine cruise company is best?",
+          "answer": "Main operators are all good quality with slight differences! Bateaux Mouches (oldest, since 1949) operates large boats with great views and classic experience. Bateaux Parisiens offers elegant dinner cruises and family-friendly options. Vedettes du Pont Neuf has smaller boats (better for intimate feel) and best budget option (€14). Vedettes de Paris focuses on luxury with smaller, elegant vessels. Batobus is the hop-on-hop-off option (9 stops, €21/day). For basic sightseeing: Vedettes du Pont Neuf or Bateaux Mouches. For dinner: Bateaux Parisiens or Bateaux Mouches. All provide quality experiences - choose by price, schedule, and specific offerings!"
+        },
+        {
+          "question": "What landmarks do you see on Seine cruises?",
+          "answer": "You'll pass: Eiffel Tower (star of the show!), Notre-Dame Cathedral (currently under renovation), Louvre Museum, Musée d'Orsay, Île de la Cité and Île Saint-Louis, Conciergerie, Grand Palais, Petit Palais, Place de la Concorde, Paris City Hall (Hôtel de Ville), and numerous beautiful bridges including Pont Alexandre III (most ornate), Pont Neuf (oldest), and Pont des Arts (love locks bridge). Most cruises loop past the same landmarks going upstream and downstream - you see everything from both sides! The density of iconic landmarks along the Seine is remarkable. It's why river cruises efficiently show Paris highlights!"
+        },
+        {
+          "question": "Are Seine cruises romantic?",
+          "answer": "Absolutely! Seine cruises are among the world's most romantic experiences - it's PARIS on the WATER! Evening cruises with the city illuminated, reflections shimmering on water, the Eiffel Tower sparkling, and wine flowing create magical moments. Dinner cruises with candlelight, live music, and the city gliding past are perfect for anniversaries, proposals, or special occasions. Even daytime cruises holding hands with the Eiffel Tower passing by are romantic! It's a classic Paris romantic experience alongside picnics in parks and Eiffel Tower summits. Many proposals happen on Seine cruises! Window seats on dinner cruises are worth the premium for couples."
+        },
+        {
+          "question": "Can you eat on Seine cruises?",
+          "answer": "Yes! Options range from simple champagne cruises with drinks and canapés (€30-50) to elaborate 4-course gourmet dinner cruises (€80-300). Lunch cruises offer lighter 2-3 course meals (€55-90). All meal cruises include wine. Food quality varies - premium operators like Bateaux Parisiens serve genuinely good French cuisine, budget options are more basic. Basic sightseeing cruises don't include meals but some have snack bars selling drinks and sandwiches. If food is important, read reviews carefully! Dinner cruises are experiences - you're paying for ambiance and views as much as food. Expect good (not Michelin-level) French dining."
+        },
+        {
+          "question": "When is the best time for a Seine cruise?",
+          "answer": "Evening cruises (especially 8:30-10:30 PM in summer) show Paris illuminated - absolutely magical! The Eiffel Tower sparkles on the hour (first 5 minutes), creating spectacular moments. Sunset timing (7-9 PM depending on season) lets you see Paris in daylight then watch it light up - two experiences in one! Daytime cruises (10 AM-4 PM) offer clear monument viewing and photography. Weather matters less than on many activities - boats are enclosed. Avoid cruise times during rush hour river traffic. Any time is pleasant! For romance, evening definitely. For photography and seeing details, daytime. For magic, sunset transition!"
+        },
+        {
+          "question": "Do Seine cruises run in winter?",
+          "answer": "Yes! Seine cruises operate year-round including winter. The boats are glass-enclosed with heating, making them comfortable even in cold weather. Winter actually offers advantages - fewer tourists mean more availability, Christmas lights make evening cruises magical, and clear winter air provides excellent visibility of monuments. The Seine rarely freezes (hasn't frozen since 1963!). Winter dinner cruises are cozy and romantic. Schedules may be reduced (fewer departures) but main operators run daily. Bundle up for brief outdoor sections. Winter Paris from the Seine with holiday lights and possible snow is beautiful - underrated season for cruises!"
+        }
+      ]
+    },
+    'food-and-wine-tours': {
+      "title": "Paris Food & Wine Tours",
+      "subtitle": "Taste authentic French cuisine, artisan cheeses, wines, and pastries on culinary adventures through Paris!",
+      "categoryName": "Food & Wine Tours",
+      "stats": {
+        "toursAvailable": 32,
+        "priceFrom": 85,
+        "duration": "3-4 hours"
+      },
+      "introduction": "Indulge in Paris's legendary culinary scene where world-class cuisine, artisan traditions, and gastronomic excellence create food lover's paradise! These food and wine tours guide you through charming neighborhoods discovering authentic boulangeries with perfect croissants, fromageries offering 400+ cheese varieties, wine caves with expert sommeliers, chocolate ateliers, gourmet markets, and bistros serving classic French dishes. Taste your way through Le Marais' Jewish quarter with its falafel and pastries, explore Saint-Germain's elegant food shops, discover Latin Quarter's village atmosphere, or tour Montmartre's artistic cafes. Learn about French bread-making traditions (baguette is serious business!), cheese aging processes, wine regions and varietals, and the cultural importance of proper meals. Expert guides share insider knowledge, introduce you to artisan producers, and reveal Paris beyond tourist restaurants. Perfect for foodies, wine enthusiasts, culture lovers, and anyone believing food tells cultural stories!",
+      "seo": {
+        "title": "Paris Food & Wine Tours 2025 - Culinary Adventures",
+        "description": "Explore Paris culinary scene with expert food tours. French cuisine, wine tastings, cheese, and pastries!",
+        "keywords": "Paris food tours, Paris wine tours, French cuisine tours, Paris cheese tasting, Marais food tours"
+      },
+      "whyChoose": [
+        {
+          "icon": "GlassWater",
+          "title": "World Capital of Gastronomy",
+          "description": "Paris invented fine dining - experience the culinary traditions that influenced the world!"
+        },
+        {
+          "icon": "Heart",
+          "title": "Artisan Excellence",
+          "description": "Visit masters of their crafts - bakers, cheesemakers, chocolatiers, and winemakers."
+        },
+        {
+          "icon": "Users",
+          "title": "Expert Food Guides",
+          "description": "Passionate local foodies share insider knowledge and hidden culinary gems."
+        },
+        {
+          "icon": "MapPin",
+          "title": "Charming Neighborhoods",
+          "description": "Explore authentic Paris neighborhoods through their food cultures and traditions."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Heart",
+          "title": "Classic Food Tours",
+          "description": "Visit bakeries, cheese shops, markets, and cafes tasting authentic French specialties.",
+          "features": [
+            "Boulangerie visit",
+            "Cheese tastings",
+            "Market exploration",
+            "Wine sampling",
+            "Pastry stops"
+          ]
+        },
+        {
+          "icon": "GlassWater",
+          "title": "Wine Tasting Tours",
+          "description": "Explore French wine culture with tastings of Bordeaux, Burgundy, Champagne, and more.",
+          "features": [
+            "Wine cave visits",
+            "Expert sommeliers",
+            "6-8 wine tastings",
+            "Cheese pairings",
+            "Regional education"
+          ]
+        },
+        {
+          "icon": "MapPin",
+          "title": "Neighborhood Food Tours",
+          "description": "Explore specific areas like Le Marais, Latin Quarter, or Montmartre through their foods.",
+          "features": [
+            "Neighborhood focus",
+            "Local specialties",
+            "Cultural context",
+            "Hidden spots",
+            "Area expertise"
+          ]
+        },
+        {
+          "icon": "Star",
+          "title": "Pastry & Chocolate Tours",
+          "description": "Indulge in Paris's legendary pastries, chocolates, and sweet traditions.",
+          "features": [
+            "Multiple patisseries",
+            "Chocolate ateliers",
+            "Macaron tastings",
+            "Pastry making demos",
+            "Sweet delights"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Paris Food & Wine Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours last 3-4 hours with multiple food stops totaling a full meal or more."
+          },
+          {
+            "icon": "GlassWater",
+            "title": "Wine Tastings",
+            "description": "Sample 3-6 different French wines learning about regions and pairing principles."
+          },
+          {
+            "icon": "Heart",
+            "title": "Cheese Paradise",
+            "description": "Taste authentic French cheeses from cow, sheep, and goat milk with expert explanations."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Multiple Venues",
+            "description": "Visit 5-8 different shops, markets, and eateries in charming Parisian neighborhoods."
+          },
+          {
+            "icon": "Users",
+            "title": "Small Groups",
+            "description": "Intimate groups of 6-12 ensure personalized attention and authentic interactions."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Cultural Education",
+            "description": "Learn about French food culture, traditions, and why food is so important to French identity."
+          }
+        ]
+      },
+      "expertTips": [
+        "Come hungry - food tours include substantial tastings equaling or exceeding a full meal!",
+        "Morning tours let you visit markets when they're most vibrant and fresh.",
+        "Ask about the difference between boulangerie (bakery) and pâtisserie (pastry shop) - it matters!",
+        "Try Comté cheese aged 18+ months - it's complex, nutty, and absolutely delicious.",
+        "Paris has some of the world's best chocolate - don't skip chocolate shops!",
+        "Learn proper baguette protocol - Parisians have strong opinions about bread!",
+        "Wine tours teach you enough to confidently order in French restaurants later.",
+        "Bring reusable bags if you want to purchase items from shops you visit."
+      ],
+      "faqs": [
+        {
+          "question": "What French foods will I taste?",
+          "answer": "Expect to taste: fresh baguettes and croissants from traditional boulangeries, French cheeses (Brie, Camembert, Comté, Roquefort, chèvre), charcuterie (pâté, rillettes, saucisson), wine from various French regions, butter croissants and pain au chocolat, macarons from famous shops, artisan chocolates, jambon-beurre sandwiches, crêpes, escargots possibly, and market specialties. Tours vary but typically include 8-12 tastings. Portions add up - you'll be full! The focus is quality over quantity - each item introduces you to French artisan traditions. Everything is authentic - no tourist traps. You'll taste the real Paris!"
+        },
+        {
+          "question": "Where is Le Marais and why is it famous for food?",
+          "answer": "Le Marais is a historic Paris neighborhood (3rd and 4th arrondissements) known for narrow medieval streets, Jewish quarter heritage, LGBTQ scene, and exceptional food! The Jewish quarter (Rue des Rosiers) offers the best falafel in Paris (L'As du Fallafel - expect lines!), traditional Jewish pastries, and kosher delicacies. The area also has amazing cheese shops, bakeries, chocolate ateliers, and wine bars. It's less touristy than some areas while being incredibly charming. The covered Marché des Enfants Rouges (oldest covered market in Paris, 1615!) is here with fantastic food stalls. Le Marais combines history, culture, and food beautifully!"
+        },
+        {
+          "question": "How many types of cheese are there in France?",
+          "answer": "France produces over 1,000 distinct cheese varieties! Charles de Gaulle famously asked, \"How can you govern a country with 246 varieties of cheese?\" - and that was an undercount! Cheeses are categorized by: milk type (cow, sheep, goat), aging (fresh to aged), and production method (soft, hard, blue, washed-rind). Famous examples include Brie, Camembert, Roquefort, Comté, Reblochon, and countless regional specialties. A proper fromager (cheese shop) might stock 200-400+ varieties! French cheese culture is serious - each has specific characteristics, traditions, and perfect pairings. Food tours introduce you to key categories and tasting principles. It's overwhelming and delicious!"
+        },
+        {
+          "question": "What is a fromagerie?",
+          "answer": "A fromagerie is a specialized French cheese shop run by an affineur (cheese ager) or fromager (cheese expert). These aren't just stores - they're temperature and humidity-controlled aging caves where cheeses mature to perfection! True fromagers select cheeses from small producers, age them in cellars, and sell them at perfect ripeness. They'll ask what you're serving, how many people, when you'll eat it, and recommend perfectly. Famous Paris fromageries include Barthélémy (supplier to the President!), Laurent Dubois, and Fromagerie Quatrehomme. Visiting one with expert guides who translate and explain is eye-opening. French cheese culture is sophisticated and wonderful!"
+        },
+        {
+          "question": "Should I try escargot?",
+          "answer": "Yes! Escargots (snails) are classic French bistro food - you should try them at least once! They're prepared with garlic, parsley, and butter (lots of butter!) and baked in shells. The taste is earthy, garlicky, and buttery - the texture is similar to mushrooms or mussels. They're not slimy when properly prepared! Order them as appetizer (6-12 snails). Use the special tongs and small fork provided. The butter is delicious for bread-dipping. Many people expect to dislike them but are pleasantly surprised! They're less \"challenging\" than you think. Food tours sometimes include escargot tastings. It's authentic French dining experience!"
+        },
+        {
+          "question": "Are food tours suitable for vegetarians?",
+          "answer": "Yes, with advance notice! Many Paris food tours can accommodate vegetarians - French cuisine includes excellent cheese, bread, pastries, vegetables, eggs, and desserts. However, traditional tours feature charcuterie, foie gras, and meat-based dishes. Inform tour operators when booking so they can plan appropriate stops and tastings. Some companies offer vegetarian-specific tours. Cheese and pastry tours work perfectly for vegetarians! Vegan is more challenging as French cuisine uses butter and cream extensively, though increasingly possible. Paris has growing vegetarian restaurant scene. You'll eat very well with proper planning - French produce, bread, and cheese are world-class!"
+        },
+        {
+          "question": "What is the difference between a bistro, brasserie, and restaurant?",
+          "answer": "In France, these have specific meanings! A BISTRO is small, casual, family-owned serving simple French food in cozy atmosphere - classic neighborhood dining. A BRASSERIE (meaning \"brewery\") is larger, more formal, serving food all day with fixed menus - often Alsatian specialties and beer. Open longer hours than bistros. A RESTAURANT is broader term for proper dining establishment with more formal service and extensive menus. Additionally: CAFÉ serves drinks, coffee, simple foods - social gathering spot. BOULANGERIE = bakery. PÂTISSERIE = pastry shop. These distinctions matter to French dining culture! Each has different expectations for formality, timing, and food style."
+        }
+      ]
+    },
+    'montmartre-art-tours': {
+      "title": "Paris Montmartre Art Tours",
+      "subtitle": "Explore the artistic heart of Paris where Picasso, Van Gogh, and Toulouse-Lautrec created masterpieces!",
+      "categoryName": "Montmartre Art Tours",
+      "stats": {
+        "toursAvailable": 22,
+        "priceFrom": 30,
+        "duration": "2-3 hours"
+      },
+      "introduction": "Climb to Montmartre, the legendary hilltop village where Paris's greatest artistic revolution unfolded! This bohemian neighborhood was home to Picasso, Renoir, Van Gogh, Toulouse-Lautrec, Modigliani, and countless artists who created modern art movements in studios and cafes that still exist today. Wander cobblestone streets where impressionism and cubism were born, visit the iconic Sacré-Cœur Basilica with panoramic Paris views, discover Place du Tertre where artists paint portraits, explore the Moulin Rouge cabaret district, and see actual studios where masterpieces emerged. Learn about the artistic community that made Montmartre synonymous with creativity, visit sites painted by famous artists, and understand why this hilltop quarter attracted bohemians and rebels. Perfect for art lovers, history enthusiasts, romantics, and anyone seeking Paris's most charming neighborhood!",
+      "seo": {
+        "title": "Paris Montmartre Art Tours 2025 - Artistic Quarter",
+        "description": "Explore Montmartre with expert guides. Sacré-Cœur, artist studios, bohemian history, and Parisian art heritage!",
+        "keywords": "Montmartre tours Paris, Sacré-Cœur tours, Paris art tours, Moulin Rouge, Montmartre walking tours"
+      },
+      "whyChoose": [
+        {
+          "icon": "Heart",
+          "title": "Artistic Heritage",
+          "description": "Walk where Picasso, Van Gogh, and Renoir lived, worked, and revolutionized art!"
+        },
+        {
+          "icon": "Camera",
+          "title": "Most Charming Quarter",
+          "description": "Cobblestone streets, village atmosphere, and views make Montmartre Paris's most photogenic area."
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Fascinating Stories",
+          "description": "Learn about bohemian artists, cabarets, and the creative spirit that defined an era."
+        },
+        {
+          "icon": "Star",
+          "title": "Sacré-Cœur Basilica",
+          "description": "Visit the stunning white basilica with the best panoramic views of Paris!"
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Users",
+          "title": "Classic Montmartre Tours",
+          "description": "Comprehensive walking tours covering Sacré-Cœur, Place du Tertre, and artistic heritage.",
+          "features": [
+            "Sacré-Cœur visit",
+            "Artist square",
+            "Historic cafes",
+            "Moulin Rouge exterior",
+            "Panoramic views"
+          ]
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Art History Tours",
+          "description": "Deep dives into impressionism, post-impressionism, and artists who lived in Montmartre.",
+          "features": [
+            "Artist studios",
+            "Art history focus",
+            "Museum visits",
+            "Painting locations",
+            "Expert art guides"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Bohemian Paris Tours",
+          "description": "Explore Montmartre's cabaret history, bohemian lifestyle, and Belle Époque glamour.",
+          "features": [
+            "Moulin Rouge history",
+            "Cabaret stories",
+            "Belle Époque Paris",
+            "Artistic cafes",
+            "Bohemian culture"
+          ]
+        },
+        {
+          "icon": "Camera",
+          "title": "Photography Tours",
+          "description": "Capture Montmartre's beauty with professional photographers guiding compositions.",
+          "features": [
+            "Best photo spots",
+            "Composition guidance",
+            "Golden hour timing",
+            "Charming streets",
+            "Sacré-Cœur views"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Paris Montmartre Art Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours typically last 2-3 hours covering the hilltop neighborhood thoroughly."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Key Highlights",
+            "description": "Visit Sacré-Cœur, Place du Tertre, Moulin Rouge, Wall of Love, and charming hidden squares."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Artist Stories",
+            "description": "Hear fascinating tales of Picasso, Van Gogh, Toulouse-Lautrec, and other masters."
+          },
+          {
+            "icon": "Heart",
+            "title": "Village Atmosphere",
+            "description": "Experience Paris's last village with intimate streets and small-town charm."
+          },
+          {
+            "icon": "Camera",
+            "title": "Stunning Views",
+            "description": "Panoramic Paris views from Sacré-Cœur steps - bring your camera!"
+          },
+          {
+            "icon": "Users",
+            "title": "Small Groups",
+            "description": "Intimate groups navigate narrow streets easily and hear guides clearly."
+          }
+        ]
+      },
+      "expertTips": [
+        "Take the funicular up (uses Metro ticket) to save climbing 270 steps to Sacré-Cœur.",
+        "Visit early morning (8-10 AM) for peaceful atmosphere before tour groups arrive.",
+        "The artists in Place du Tertre are pricey - negotiate prices before agreeing to portraits!",
+        "Au Lapin Agile cabaret (still operating!) was frequented by Picasso and other artists.",
+        "Climb inside Sacré-Cœur dome (300 steps) for even more spectacular views - €7 extra.",
+        "The Wall of Love (Mur des Je T'aime) near Abbesses Metro has \"I love you\" in 250 languages.",
+        "Wear comfortable shoes - Montmartre is very hilly with cobblestone streets.",
+        "Evening visits show Sacré-Cœur beautifully illuminated with Paris lights twinkling below."
+      ],
+      "faqs": [
+        {
+          "question": "What is Montmartre?",
+          "answer": "Montmartre is a hilltop neighborhood in Paris's 18th arrondissement, historically a village outside Paris that was absorbed in 1860! The name means \"Mountain of Martyrs\" from early Christian martyrs. At 130 meters, it's Paris's highest point, topped by the stunning white Sacré-Cœur Basilica. In the late 1800s-early 1900s, Montmartre was the bohemian center of Paris - cheap rents attracted struggling artists like Picasso, Renoir, Van Gogh, and Toulouse-Lautrec who lived and worked here. Cabarets like Moulin Rouge provided entertainment. Today it retains village charm with cobblestone streets, artists' square, and romantic atmosphere. It's Paris's most charming neighborhood!"
+        },
+        {
+          "question": "Who are the famous artists associated with Montmartre?",
+          "answer": "Montmartre attracted incredible artistic talent! Pablo Picasso lived at the Bateau-Lavoir (where he painted Les Demoiselles d'Avignon, launching Cubism!). Vincent van Gogh lived on Rue Lepic. Henri de Toulouse-Lautrec immortalized Moulin Rouge and cabaret life in his posters. Auguste Renoir lived and painted here (Bal du Moulin de la Galette depicts Montmartre!). Other residents: Amedeo Modigliani, Edgar Degas, Suzanne Valadon, Maurice Utrillo, Salvador Dalí. The list is extraordinary! These artists revolutionized art while living in Montmartre's cheap studios. Tours show where they lived, worked, and created. The artistic legacy is palpable!"
+        },
+        {
+          "question": "What is Sacré-Cœur?",
+          "answer": "Sacré-Cœur (Sacred Heart Basilica) is the stunning white Romano-Byzantine basilica crowning Montmartre's summit! Built 1875-1914 as a symbol of hope after France's 1870 defeat, its brilliant white travertine stone self-cleans in rain, maintaining eternal brightness. The basilica offers spectacular 360-degree views over Paris from its front steps. Inside features beautiful mosaics including one of the world's largest (Christ in Majesty). The crypt and dome (300 steps up) are worth visiting. It's one of Paris's most visited monuments! Perpetual adoration has continued since 1885 - always a worshiper praying. Entry is free. The setting and views alone make the Montmartre climb worthwhile!"
+        },
+        {
+          "question": "What is Place du Tertre?",
+          "answer": "Place du Tertre is the charming cobblestone square in Montmartre's heart where artists set up easels painting portraits, caricatures, and Paris scenes! This tradition dates back over a century when struggling artists would paint for money. Today it's touristy but atmospheric - dozens of artists work simultaneously while cafes line the square. Portrait prices run €30-100+ depending on size and detail - negotiate first! Quality varies - some artists are very talented. The square captures old Montmartre spirit even if commercialized. Best visited early morning before crowds or evening when atmosphere is more intimate. It's photogenic and quintessentially Montmartre, even if tourist-oriented."
+        },
+        {
+          "question": "How do I get to Montmartre?",
+          "answer": "Metro to Abbesses station (line 12) puts you at Montmartre's base - then walk up or take funicular. Metro to Anvers (line 2) is also close with slight uphill walk. The funicular (uses standard Metro ticket, €2.15) runs from Rue Foyatier to Sacré-Cœur, saving the 270-step climb - it's just 90 seconds! Stairs are free and offer photo opportunities. From Abbesses, it's about 10-15 minutes uphill to Sacré-Cœur. Montmartre is very walkable once you reach the top. Guided tours often meet at Metro stations and handle navigation. The neighborhood is compact - you can see highlights in 2-3 hours of walking."
+        },
+        {
+          "question": "Is Montmartre safe?",
+          "answer": "Montmartre is generally safe, though pickpockets target tourist areas like Sacré-Cœur and Place du Tertre - watch your belongings! The lower areas around Pigalle (Moulin Rouge) have some seediness with sex shops and nightlife, though gentrification is ongoing. Use normal city precautions. The actual hilltop village area is quite safe and charming. Avoid parks after dark. The neighborhood is well-policed due to tourist numbers. Scams to watch: friendship bracelet sellers at Sacré-Cœur (ignore them!), overpriced artists, and three-card monte games. Stay alert but don't be paranoid. Millions visit safely! Guided tours provide safety in numbers and local knowledge."
+        },
+        {
+          "question": "When is the best time to visit Montmartre?",
+          "answer": "Early morning (8-10 AM) offers peaceful atmosphere, soft light perfect for photography, and access to cafes before tourist crowds arrive. The neighborhood wakes up slowly - magical for experiencing village charm. Weekday mornings are quietest. Sunset from Sacré-Cœur steps is spectacular but crowded. Evening visits show Sacré-Cœur illuminated beautifully. Spring and fall offer pleasant weather for hillside walking. Summer brings busiest crowds. Winter is quiet but cold (though Christmas atmosphere is lovely!). Any time is charming, but morning combines best light, fewer crowds, and authentic neighborhood life. Avoid midday tour bus rushes!"
+        }
+      ]
+    },
+    'notre-dame-tours': {
+      "title": "Paris Notre-Dame Tours",
+      "subtitle": "Explore the magnificent Gothic cathedral, its fascinating history, and the Île de la Cité medieval heart of Paris!",
+      "categoryName": "Notre-Dame Tours",
+      "stats": {
+        "toursAvailable": 16,
+        "priceFrom": 28,
+        "duration": "1.5-2.5 hours"
+      },
+      "introduction": "Discover Notre-Dame Cathedral, the Gothic masterpiece that has stood at Paris's heart for over 850 years! While the cathedral remains closed following the 2019 fire (reopening planned late 2024), tours of the exterior, archaeological crypt, surrounding Île de la Cité, and the remarkable reconstruction provide fascinating experiences. Learn about the cathedral's medieval construction, its role in French history (Napoleon's coronation happened here!), Victor Hugo's novel that saved it from demolition, the devastating 2019 fire, and the incredible restoration effort. Explore the île de la Cité where Paris was founded, see Notre-Dame's magnificent Gothic facade, visit Sainte-Chapelle's stunning stained glass nearby, and understand how this cathedral symbolizes French history and resilience. Perfect for history lovers, architecture enthusiasts, and anyone fascinated by this immortal monument!",
+      "seo": {
+        "title": "Paris Notre-Dame Tours 2025 - Gothic Cathedral",
+        "description": "Explore Notre-Dame Cathedral and Île de la Cité with expert guides. Gothic architecture, French history, and restoration!",
+        "keywords": "Notre-Dame Paris, Notre-Dame tours, Île de la Cité, Sainte-Chapelle, Gothic architecture Paris"
+      },
+      "whyChoose": [
+        {
+          "icon": "BookOpen",
+          "title": "Gothic Masterpiece",
+          "description": "Experience one of the finest examples of French Gothic architecture ever built!"
+        },
+        {
+          "icon": "Heart",
+          "title": "French History",
+          "description": "The cathedral witnessed 850 years of French history from medieval to modern times."
+        },
+        {
+          "icon": "Star",
+          "title": "Remarkable Restoration",
+          "description": "Learn about the incredible reconstruction effort following the 2019 fire."
+        },
+        {
+          "icon": "MapPin",
+          "title": "Paris's Birthplace",
+          "description": "Île de la Cité is where Paris began - explore the city's historic heart."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Users",
+          "title": "Notre-Dame & Île de la Cité Tours",
+          "description": "Comprehensive tours covering cathedral exterior, island history, and medieval Paris.",
+          "features": [
+            "Cathedral exterior",
+            "Gothic architecture",
+            "Island exploration",
+            "Historical context",
+            "Expert guides"
+          ]
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Gothic Architecture Tours",
+          "description": "Focus on architectural details, flying buttresses, and medieval building techniques.",
+          "features": [
+            "Architectural analysis",
+            "Building techniques",
+            "Gargoyle details",
+            "Rose windows",
+            "Expert architects"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Fire & Restoration Tours",
+          "description": "Learn about the 2019 fire, heroic firefighting efforts, and ongoing restoration.",
+          "features": [
+            "Fire story",
+            "Rescue efforts",
+            "Restoration details",
+            "Reconstruction progress",
+            "Current access"
+          ]
+        },
+        {
+          "icon": "MapPin",
+          "title": "Combined Tours",
+          "description": "Visit Notre-Dame plus Sainte-Chapelle and Conciergerie on Île de la Cité.",
+          "features": [
+            "Multiple monuments",
+            "Sainte-Chapelle entry",
+            "Medieval history",
+            "Skip-the-line access",
+            "Comprehensive tour"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Paris Notre-Dame Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours last 1.5-2.5 hours exploring the exterior, island, and nearby monuments."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Historical Insights",
+            "description": "Learn 850 years of history from medieval construction to 2019 fire and reconstruction."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Île de la Cité",
+            "description": "Explore the island where Paris began 2,000+ years ago with Roman settlement."
+          },
+          {
+            "icon": "Camera",
+            "title": "Gothic Beauty",
+            "description": "Admire flying buttresses, gargoyles, rose windows, and Gothic architectural details."
+          },
+          {
+            "icon": "Star",
+            "title": "Sainte-Chapelle Option",
+            "description": "Many tours include the nearby chapel with breathtaking medieval stained glass."
+          },
+          {
+            "icon": "Heart",
+            "title": "Reconstruction Story",
+            "description": "Understand the incredible efforts to restore this beloved cathedral."
+          }
+        ]
+      },
+      "expertTips": [
+        "Notre-Dame's interior reopens in late 2024/early 2025 - check current status when visiting!",
+        "Sainte-Chapelle (nearby) has even more stunning stained glass and is open - don't miss it!",
+        "Visit on sunny days - the rose windows and Sainte-Chapelle glass need sunlight to shine!",
+        "The archaeological crypt under square shows Paris's Roman and medieval foundations.",
+        "Point Zéro (kilometer zero of France) is marked in the square in front of Notre-Dame.",
+        "Cross to the Left Bank for classic Notre-Dame photos from across the Seine.",
+        "Shakespeare and Company bookstore (nearby) is charming and worth visiting after.",
+        "Morning light illuminates the facade beautifully - best for photography."
+      ],
+      "faqs": [
+        {
+          "question": "Is Notre-Dame open after the fire?",
+          "answer": "Notre-Dame's interior has been closed since the devastating April 15, 2019 fire that destroyed the spire and roof. The cathedral is undergoing massive restoration with reopening targeted for December 2024 or early 2025! The exterior is visible (though with construction barriers), and you can visit the surrounding Île de la Cité and nearby monuments. Sainte-Chapelle and Conciergerie are fully open. Tours currently focus on exterior, fire story, restoration progress, and island history. When it reopens, expect enormous crowds initially! Check official updates before visiting. The restoration is a triumph - the cathedral will be more beautiful than ever!"
+        },
+        {
+          "question": "What happened in the Notre-Dame fire?",
+          "answer": "On April 15, 2019, a devastating fire broke out during renovation work, likely from electrical fault or cigarette. The fire destroyed the 19th-century spire (which collapsed dramatically), the entire oak roof framework (800+ year old timber called \"the forest\"), and threatened the entire cathedral! Heroic firefighters saved the stone structure, towers, and most treasures. The rose windows survived! Artwork and relics were rescued including the Crown of Thorns. The world watched in horror as Paris's symbol burned. President Macron vowed to rebuild within 5 years. The restoration has been extraordinary - rebuilt spire, new roof, cleaned stonework. It's a story of loss and resilience!"
+        },
+        {
+          "question": "What is Sainte-Chapelle?",
+          "answer": "Sainte-Chapelle is a Gothic chapel on Île de la Cité (5-minute walk from Notre-Dame) containing the most spectacular medieval stained glass in existence! Built 1242-1248 by King Louis IX to house Christ's Crown of Thorns, the upper chapel features 15 massive stained glass windows (15 meters tall!) depicting 1,113 biblical scenes in brilliant color. When sun shines through, it's absolutely transcendent - walls of glowing jewel-toned glass. The lower chapel (also beautiful) was for commoners. Entry costs €13 (€28 combined with Conciergerie). It's Paris's best-kept secret - less crowded than Notre-Dame but equally spectacular! Don't miss it!"
+        },
+        {
+          "question": "What is Île de la Cité?",
+          "answer": "Île de la Cité is the island in the Seine River where Paris began! It's one of two natural islands in the Seine (the other is Île Saint-Louis). The Parisii tribe settled here around 250 BC, Romans built Lutetia here, and medieval Paris grew from this island. Today it holds Notre-Dame Cathedral, Sainte-Chapelle, Conciergerie (former palace and prison where Marie Antoinette was held), Palais de Justice, Pont Neuf (Paris's oldest bridge), and the Préfecture de Police. It's connected by 9 bridges. The island is Paris's geographic and historic heart - all roads in France measure from Point Zéro in Notre-Dame square! Strolling the island is walking through 2,000 years of Parisian history."
+        },
+        {
+          "question": "Can you climb Notre-Dame towers?",
+          "answer": "The towers have been closed since the 2019 fire and will remain closed during restoration. Before the fire, you could climb 387 steps to the towers for close-up gargoyle viewing and panoramic Paris views (€10, long waits typical). The famous gargoyles and chimera overlook the city from here - the Hunchback of Notre-Dame's domain! Tower access might resume after full reopening (late 2024/2025 estimated) but this isn't confirmed. Check official updates. The exterior viewing and surrounding area are accessible now. When towers reopen, expect high demand and long waits initially! The experience was worth the climb - incredible views and meeting the gargoyles face-to-face!"
+        },
+        {
+          "question": "What else should I see on Île de la Cité?",
+          "answer": "Beyond Notre-Dame and Sainte-Chapelle, visit: the Conciergerie (medieval palace turned prison where Marie Antoinette awaited guillotine - €11.50 entry), Pont Neuf (Paris's oldest bridge despite name meaning \"new bridge\"!), Place Dauphine (charming triangular square), the flower market (Marché aux Fleurs - lovely!), and simply wander the picturesque quais (riverbanks). Cross to nearby Île Saint-Louis for ice cream at Berthillon (legendary!) and quiet residential charm. The Crypte Archéologique (archaeological crypt under Notre-Dame square) shows Roman and medieval ruins - fascinating! Budget 2-3 hours for thorough island exploration. It's compact and walkable - Paris's historic heart!"
+        },
+        {
+          "question": "Are Notre-Dame tours worth it if the cathedral is closed?",
+          "answer": "Yes! While you can't enter the interior currently, tours still provide tremendous value. Expert guides explain the Gothic architecture visible from outside, share the fascinating fire and restoration story, provide historical context you'd miss independently, take you through Île de la Cité, often include Sainte-Chapelle (which is spectacular and open!), and show the best viewpoints for appreciating Notre-Dame. The exterior alone - flying buttresses, facade, gargoyles, portals - is magnificent! Understanding the history makes visiting meaningful even without interior access. When the cathedral reopens, the tours will be even better. The island and surroundings are beautiful regardless!"
+        }
+      ]
+    }
+  },
+
 };
 
