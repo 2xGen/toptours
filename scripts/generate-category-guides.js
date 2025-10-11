@@ -233,7 +233,7 @@ async function main() {
   const allGeneratedGuides = {};
   
   // Process specific destination - Update this ID for next generation
-  const testDestinationIds = ['mallorca']; // Next: Mallorca
+  const testDestinationIds = ['munich']; // Regenerate: Munich
   const testBatch = destinations.filter(dest => testDestinationIds.includes(dest.id));
   
   console.log(`\n🧪 GENERATING GUIDES FOR: ${testBatch.map(d => d.fullName || d.name).join(', ')}\n`);

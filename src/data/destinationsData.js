@@ -1204,12 +1204,12 @@ export const destinations = [
     heroDescription: 'Welcome to Nice, where the Mediterranean meets French sophistication. From the famous Promenade des Anglais to the colorful Old Town, from pristine beaches to world-class dining, this coastal gem offers the perfect blend of relaxation and culture. Let our AI-powered planner help you discover the best experiences this stunning destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Nice.webp',
     tourCategories: [
-      'Promenade des Anglais Tours',
-      'Old Town Walking Tours',
-      'Mediterranean Beach Tours',
-      'French Riviera Day Trips',
-      'Castle Hill Tours',
-      'Monaco Excursions'
+      { name: 'Promenade des Anglais Tours', hasGuide: true },
+      { name: 'Old Town Walking Tours', hasGuide: true },
+      { name: 'Mediterranean Beach Tours', hasGuide: true },
+      { name: 'French Riviera Day Trips', hasGuide: true },
+      { name: 'Castle Hill Tours', hasGuide: true },
+      { name: 'Monaco Excursions', hasGuide: true }
     ],
     seo: {
       title: 'Nice Tours & Excursions - Top-Rated Activities & Adventures',
@@ -1700,12 +1700,12 @@ export const destinations = [
     heroDescription: 'Welcome to Mallorca, where crystal-clear waters meet dramatic mountains and charming villages dot the coastline. From pristine beaches to historic Palma, from scenic drives to boat tours, this Mediterranean paradise offers the perfect blend of natural beauty and Spanish island culture. Let our AI-powered planner help you discover the best experiences this breathtaking destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Mallorca.jpeg',
     tourCategories: [
-      'Palma Cathedral Tours',
-      'Coastal Boat Tours',
-      'Mountain Hiking Tours',
-      'Beach & Water Sports',
-      'Wine & Food Tours',
-      'Historic Village Tours'
+      { name: 'Palma Cathedral Tours', hasGuide: true },
+      { name: 'Coastal Boat Tours', hasGuide: true },
+      { name: 'Mountain Hiking Tours', hasGuide: true },
+      { name: 'Beach & Water Sports', hasGuide: true },
+      { name: 'Wine & Food Tours', hasGuide: true },
+      { name: 'Historic Village Tours', hasGuide: true }
     ],
     seo: {
       title: 'Mallorca Tours & Excursions - Top-Rated Activities & Adventures',

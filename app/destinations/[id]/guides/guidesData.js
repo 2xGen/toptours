@@ -25027,5 +25027,2068 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
     },
   },
 
+  mallorca: {
+    'palma-cathedral-tours': {
+      title: 'Mallorca Palma Cathedral Tours',
+      subtitle: 'Explore Palma Cathedral, Mallorca\'s Gothic masterpiece, through guided tours revealing its rich history.',
+      categoryName: 'Palma Cathedral Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 25,
+        duration: '1-3 hours',
+      },
+
+      introduction: `Experience the awe-inspiring Palma Cathedral, also known as La Seu, a must-see gem in Mallorca. This architectural marvel boasts stunning Gothic design and an impressive altarpiece by Gaudí. While exploring, you'll discover intricate stained-glass windows, including one of the largest rose windows in the world. Tours offer a peek into the cathedral's unique history, from its 13th-century origins to its modern-day significance. Whether you're a history buff, architecture enthusiast, or simply seeking breathtaking views of Palma Bay, these tours offer something for everyone. Dive into the stories behind its towering columns and chapels, and witness the serene beauty of the Mediterranean light filtering through colored glass. Get ready for an unforgettable journey through time and art, right in the heart of Mallorca!`,
+
+      seo: {
+        title: 'Palma Cathedral Tours in Mallorca 2025',
+        description: 'Discover La Seu\'s Gothic splendor in Mallorca. Book your 2025 tour now for an unforgettable experience!',
+        keywords: 'Palma Cathedral tours, Mallorca tours, La Seu tours, Gothic architecture, Mallorca sightseeing',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Camera',
+          title: 'Stunning Photography',
+          description: 'Capture breathtaking views and Gothic architecture for unforgettable memories.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Rich History',
+          description: 'Learn about the cathedral\'s fascinating history and renovations by Antoni Gaudí.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Cultural Insight',
+          description: 'Gain cultural insights with expert guides sharing captivating stories and legends.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Prime Location',
+          description: 'Located in Palma\'s vibrant heart, perfect for combining with other local attractions.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Users',
+          title: 'Guided Group Tours',
+          description: 'Join a group and explore the cathedral with a knowledgeable guide.',
+          features: [
+            'Expert guide',
+            'Group interaction',
+            'Scheduled times',
+            'Educational experience',
+            'Cost-effective',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Private Tours',
+          description: 'Enjoy a personalized experience with a private guide tailored to your interests.',
+          features: [
+            'Personal guide',
+            'Flexible schedule',
+            'Customizable itinerary',
+            'In-depth exploration',
+            'Exclusive access',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Focus on capturing the cathedral\'s beauty with a guide highlighting the best spots.',
+          features: [
+            'Photography tips',
+            'Scenic points',
+            'Creative guidance',
+            'Best lighting times',
+            'Unique angles',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Historical Tours',
+          description: 'Dive deep into the cathedral\'s history with detailed stories and insights.',
+          features: [
+            'Historical context',
+            'Detailed narratives',
+            'Cultural significance',
+            'Architectural insights',
+            'In-depth knowledge',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Mallorca Palma Cathedral Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 1 to 3 hours depending on the type chosen.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Cultural Enrichment',
+            description: 'Gain a deep understanding of Mallorca\'s cultural heritage through immersive storytelling.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photographic Highlights',
+            description: 'Capture stunning images of La Seu\'s iconic rose window and intricate details.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Year-Round Access',
+            description: 'Tours are available throughout the year, providing flexibility for your travel plans.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Options',
+            description: 'Tours start at $25, making them accessible for all budgets.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Dynamics',
+            description: 'Engage with fellow travelers or enjoy private moments depending on the tour type.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit early in the morning for the best light through the rose window.',
+        'Book in advance to secure a spot during peak tourist seasons.',
+        'Wear comfortable shoes as the cathedral grounds are extensive.',
+        'Check for special events or services that might offer unique experiences.',
+        'Combine your tour with a stroll through the historic Old Town nearby.',
+        'Don\'t miss the terrace tour for panoramic views of Palma.',
+        'Photography enthusiasts should bring a polarizing filter for best results.',
+        'Consider a night tour for a mystical experience under the cathedral lights.',
+      ],
+
+      faqs: [
+        {
+          question: 'What are the opening hours of Palma Cathedral?',
+          answer: 'Palma Cathedral is generally open from 10 AM to 6 PM, but hours can vary depending on the season and special events. It\'s best to check the official schedule before your visit. During peak seasons, it can get crowded, so arrive early to avoid long lines!',
+        },
+        {
+          question: 'Are there any dress code requirements?',
+          answer: 'Yes, as a place of worship, visitors are expected to dress modestly. This means covering shoulders and knees. You can bring a shawl or scarf if needed. Don\'t worry if you forget - the cathedral often provides wraps at the entrance!',
+        },
+        {
+          question: 'Can I take photos inside the cathedral?',
+          answer: 'Yes, photography is generally allowed, but flash and tripods are not permitted to preserve the artworks and ensure visitor safety. Be sure to capture the stunning rose window and the intricately carved choir stalls!',
+        },
+        {
+          question: 'Is the cathedral accessible for people with disabilities?',
+          answer: 'The cathedral is dedicated to being accessible to all visitors. There are ramps and elevators available, ensuring that everyone can appreciate this stunning site. Be sure to notify staff if you need assistance, and they will be happy to help!',
+        },
+        {
+          question: 'How do I get to Palma Cathedral?',
+          answer: 'Palma Cathedral is located in the heart of Palma\'s Old Town and is easily accessible by foot, car, or public transportation. The nearest bus stop is just a short walk away, and parking is available nearby, though it can be limited during peak hours.',
+        },
+        {
+          question: 'Are there any guided tours available in languages other than English?',
+          answer: 'Absolutely! Tours are available in several languages, including Spanish, German, French, and Italian. Be sure to specify your preferred language when booking to ensure a more enriching experience!',
+        },
+        {
+          question: 'Is there a best time of year to visit Palma Cathedral?',
+          answer: 'While the cathedral is stunning year-round, visiting in the spring or fall offers pleasant weather and fewer crowds. However, if you want to experience special events or services, such as the Easter celebrations, plan accordingly for a memorable visit!',
+        },
+        {
+          question: 'Are there any nearby attractions to visit after the cathedral?',
+          answer: 'Yes! After your tour, explore the charming streets of Palma\'s Old Town, visit the nearby Almudaina Palace, or relax in Parc de la Mar with its stunning sea views. There\'s plenty to see and do in this vibrant area!',
+        },
+      ],
+    },
+
+    'coastal-boat-tours': {
+      title: 'Mallorca Coastal Boat Tours',
+      subtitle: 'Explore Mallorca\'s hidden coves and azure waters with exhilarating coastal boat tours!',
+      categoryName: 'Coastal Boat Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 50,
+        duration: '2 to 8 hours',
+      },
+
+      introduction: `Embark on a thrilling journey through Mallorca's mesmerizing coastlines with our coastal boat tours! As Spain's largest island, Mallorca boasts an array of breathtaking beaches, secluded coves, and charming fishing villages waiting to be discovered. Whether you're a sun-seeker, nature lover, or history buff, these tours offer something truly special. Navigate the sparkling Mediterranean waters to the stunning Sa Calobra, explore the ancient Dragonera Island, or simply relax as you pass the iconic Cap de Formentor. With options ranging from intimate sailing trips to lively party boats, these tours cater to families, couples, and solo adventurers alike. Experience the Balearic beauty from a unique perspective and create unforgettable memories that will last a lifetime!`,
+
+      seo: {
+        title: 'Mallorca Coastal Boat Tours 2025',
+        description: 'Discover Mallorca\'s stunning coastlines with our boat tours. Book now for an unforgettable adventure!',
+        keywords: 'Mallorca boat tours, coastal tours Mallorca, Mallorca sailing trips, Balearic boat excursions, Mallorca 2025 tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Spectacular Views',
+          description: 'Capture breathtaking views of Mallorca\'s pristine beaches and rugged cliffs.',
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunny Escapes',
+          description: 'Enjoy the Mediterranean sun on a relaxing cruise along Mallorca\'s coast.',
+        },
+        {
+          icon: 'Anchor',
+          title: 'Variety of Boats',
+          description: 'Choose from luxury yachts, catamarans, and traditional llaüts for your adventure.',
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Fun Atmosphere',
+          description: 'Join lively party boats with music, drinks, and the chance to meet fellow travelers!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Sailing Tours',
+          description: 'Experience Mallorca\'s coast under sail, perfect for a tranquil and scenic journey.',
+          features: [
+            'Small groups',
+            'Expert guides',
+            'Swimming stops',
+            'Refreshments included',
+            'Custom itineraries',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Luxury Yacht Tours',
+          description: 'Indulge in the ultimate luxury as you cruise Mallorca\'s azure waters in style.',
+          features: [
+            'Private charters',
+            'Gourmet meals',
+            'Personal crew',
+            'Snorkeling equipment',
+            'Sunbathing decks',
+          ],
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Party Boat Tours',
+          description: 'Dance and mingle with new friends on a vibrant boat party along the stunning coastline.',
+          features: [
+            'Live DJ',
+            'Free drinks',
+            'Swimming spots',
+            'Sunset views',
+            'Social atmosphere',
+          ],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Fishing Tours',
+          description: 'Cast your line into the Mediterranean and try your luck at catching local fish.',
+          features: [
+            'All equipment provided',
+            'Professional guidance',
+            'Catch-and-cook options',
+            'Scenic fishing spots',
+            'Family-friendly',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Mallorca Coastal Boat Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically range from 2-hour quick escapes to full-day adventures.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Personalized Experience',
+            description: 'Many tours offer customizable routes to suit your interests and schedule.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Sizes',
+            description: 'Options available for both intimate groups and larger party crowds.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Capture stunning landscapes and vibrant sunsets on every tour.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Refreshments',
+            description: 'Most tours include drinks and snacks to keep you refreshed and energized.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Unique Destinations',
+            description: 'Visit hidden gems like Cala Figuera and the Port of Sóller.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book in advance during peak season to secure your spot on popular tours!',
+        'Opt for a morning tour to enjoy cooler temperatures and calmer seas.',
+        'Bring a waterproof camera to capture underwater moments while snorkeling.',
+        'Pack sunscreen and sunglasses to protect yourself from the strong Mediterranean sun.',
+        'Consider a sunset tour for a romantic and picturesque experience.',
+        'Check if your tour includes snorkeling equipment to save on rentals.',
+        'Wear comfortable swimwear and bring a change of clothes for after your adventure.',
+        'Explore less crowded tours for a more intimate and personalized experience.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best time of year for a boat tour in Mallorca?',
+          answer: 'The best time for a boat tour in Mallorca is from May to October when the weather is sunny and the sea is calm. During these months, the water temperature is perfect for swimming and snorkeling. If you prefer to avoid the crowds, consider visiting in May or September. Prices range from $50 to $150 depending on the tour type and duration. Book early to secure your spot!',
+        },
+        {
+          question: 'Are there family-friendly boat tours available?',
+          answer: 'Yes! Many boat tours in Mallorca are family-friendly and offer activities suitable for all ages. Look for tours that provide life jackets for children and have shaded areas on the boat. Some tours even include stops at beaches where kids can play and swim safely. Family tours often range from $50 to $100 per person, with discounts for children.',
+        },
+        {
+          question: 'What should I bring on a Mallorca boat tour?',
+          answer: 'Pack essentials like sunscreen, a hat, sunglasses, and a towel. If your tour includes swimming or snorkeling, bring swimwear and a change of clothes. Most tours provide refreshments, but it\'s a good idea to bring your own water bottle. Don\'t forget a waterproof camera or phone pouch to capture memories on the water!',
+        },
+        {
+          question: 'Can I customize my boat tour itinerary?',
+          answer: 'Absolutely! Many operators offer customizable itineraries, especially for private charters. You can discuss your preferences with the captain and plan stops at specific locations like secluded coves or popular landmarks. Prices for custom tours depend on the duration and specific requests, so it\'s best to inquire directly with the tour provider.',
+        },
+        {
+          question: 'Are meals included on boat tours?',
+          answer: 'It varies by tour. Some luxury yacht tours offer gourmet meals and snacks as part of the package, while others provide basic refreshments like sandwiches and drinks. Party boats often include drinks in the ticket price. Check with your tour operator to understand what is included and plan accordingly.',
+        },
+        {
+          question: 'How do I get to the boat departure point?',
+          answer: 'Most boat tours depart from popular ports such as Palma, Alcudia, and Port d\'Andratx. Check the meeting point details provided by your tour operator. Many companies offer transport services or can suggest nearby parking options if you\'re driving. Arrive at least 30 minutes before departure to ensure a smooth boarding process.',
+        },
+        {
+          question: 'What is the cancellation policy for boat tours?',
+          answer: 'Cancellation policies vary by operator. Generally, you can cancel your booking for a full refund if you do so at least 24-48 hours before the tour. Some operators offer flexible rescheduling options, especially if weather conditions are unfavorable. Always read the terms and conditions carefully before booking.',
+        },
+        {
+          question: 'Are there eco-friendly boat tours available?',
+          answer: 'Yes, some operators in Mallorca focus on sustainability and offer eco-friendly tours. These tours often use sailboats or solar-powered boats to minimize environmental impact. They also promote responsible tourism practices, such as wildlife conservation and waste reduction. Look for tours with eco-certifications or specific sustainability commitments.',
+        },
+      ],
+    },
+
+    'mountain-hiking-tours': {
+      title: 'Mallorca Mountain Hiking Tours',
+      subtitle: 'Explore Mallorca\'s majestic peaks and scenic trails for an unforgettable hiking adventure!',
+      categoryName: 'Mountain Hiking Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 50,
+        duration: '3 to 8 hours',
+      },
+
+      introduction: `Mallorca, with its stunning Tramuntana mountain range, offers a hiker's paradise that blends breathtaking landscapes with rich cultural history. Known for its UNESCO World Heritage status, the Tramuntana mountains provide a variety of trails, from gentle walks to challenging climbs, catering to all levels of hiking enthusiasts. Traverse through ancient olive groves, discover hidden monasteries, and soak in panoramic views of the Mediterranean. Whether you're a solo adventurer, a family with kids, or a group of friends, Mallorca's hiking tours promise an invigorating escape into nature. Highlights include the dramatic Torrent de Pareis gorge and the picturesque village of Deià. Prepare to be enchanted by the island's natural beauty and cultural treasures!`,
+
+      seo: {
+        title: 'Mallorca Mountain Hiking Tours 2025',
+        description: 'Discover Mallorca\'s scenic trails and majestic mountains. Book your unforgettable hiking tour today!',
+        keywords: 'Mallorca hiking, Tramuntana mountains, Mallorca tours, hiking in Spain, scenic trails',
+      },
+
+      whyChoose: [
+        {
+          icon: 'MapPin',
+          title: 'Stunning Locations',
+          description: 'Experience the beauty of Tramuntana\'s UNESCO-listed landscapes and hidden gems.',
+        },
+        {
+          icon: 'Users',
+          title: 'Guided Expertise',
+          description: 'Enjoy guided tours with local experts who share insider knowledge and safety tips.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Variety of Trails',
+          description: 'From easy walks to challenging climbs, there\'s a trail for every level of hiker.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Incredible Views',
+          description: 'Capture breathtaking vistas and create lasting memories on every trail.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Family-Friendly Hikes',
+          description: 'Enjoy gentle, scenic trails perfect for families with children.',
+          features: [
+            'Easy terrain',
+            'Short duration',
+            'Scenic views',
+            'Educational stops',
+            'Picnic areas',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunrise Hikes',
+          description: 'Start your day with a breathtaking sunrise over the Mediterranean.',
+          features: [
+            'Early start',
+            'Spectacular views',
+            'Breakfast included',
+            'Moderate difficulty',
+            'Photography opportunities',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Romantic Sunset Hikes',
+          description: 'Share a magical sunset with your loved one on a secluded trail.',
+          features: [
+            'Secluded paths',
+            'Romantic settings',
+            'Wine tasting',
+            'Dinner options',
+            'Moderate difficulty',
+          ],
+        },
+        {
+          icon: 'Clock',
+          title: 'Full-Day Adventures',
+          description: 'Challenge yourself with a full day of exploration in the mountains.',
+          features: [
+            'Longer duration',
+            'Diverse landscapes',
+            'Lunch provided',
+            'Expert guides',
+            'Advanced difficulty',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Mallorca Mountain Hiking Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 3-hour family walks to 8-hour full-day adventures.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Scenic Routes',
+            description: 'Explore diverse trails from coastal paths to mountain summits.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Sizes',
+            description: 'Small groups for a personalized experience, typically 6-12 people.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography',
+            description: 'Ample opportunities to capture stunning landscapes and wildlife.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Cultural Insights',
+            description: 'Learn about Mallorca\'s history, flora, and fauna from expert guides.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Adventures',
+            description: 'Tours start from $50, offering great value for an unforgettable experience.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Wear sturdy hiking boots for rocky terrain to ensure safety and comfort.',
+        'Start early in the day to avoid midday heat and enjoy cooler temperatures.',
+        'Bring a reusable water bottle to stay hydrated; refilling stations are available on popular trails.',
+        'Take binoculars for birdwatching; the Tramuntana is home to many unique species.',
+        'Check local weather forecasts and dress in layers to accommodate changing conditions.',
+        'Consider a guided tour for less frequented trails to maximize safety and insights.',
+        'Capture memories with a good quality camera or smartphone; the views are spectacular!',
+        'Respect nature by staying on marked paths and carrying out all trash.',
+      ],
+
+      faqs: [
+        {
+          question: 'What should I bring on a hiking tour?',
+          answer: 'Pack essentials like water, snacks, sunscreen, and a hat. Wear comfortable hiking shoes and bring a light jacket. A camera is a must for capturing the stunning scenery! Many tours provide walking poles and backpacks, but check in advance.',
+        },
+        {
+          question: 'Are there hiking tours suitable for beginners?',
+          answer: 'Absolutely! Mallorca offers a range of easy and moderate trails perfect for beginners and families. Choose a guided tour to the Soller Valley or Alcudia for a leisurely pace with plenty of rest stops and photo opportunities.',
+        },
+        {
+          question: 'Can I hike in Mallorca year-round?',
+          answer: 'Yes, but the best times are spring and autumn for mild weather. Summer hikes are possible, but start early to avoid the heat. Winter is also beautiful, especially in the lower elevations, but be prepared for cooler temperatures and possible rain.',
+        },
+        {
+          question: 'Are guided tours worth it?',
+          answer: 'Guided tours offer local expertise, safety, and convenience. They provide insight into the area\'s history and culture, and are especially beneficial for accessing more remote or challenging trails. Plus, guides bring first-aid kits and emergency communication devices.',
+        },
+        {
+          question: 'How can I book a hiking tour?',
+          answer: 'Book online through tour operators\' websites or visit local tourism offices in Palma de Mallorca. Many hotels also offer booking services. It\'s best to book in advance during peak seasons to ensure availability.',
+        },
+        {
+          question: 'What wildlife might I see while hiking?',
+          answer: 'Keep an eye out for the Balearic lizard, black vultures, and mountain goats. The Tramuntana is rich with birdlife, so bring binoculars. Guides can point out unique flora and fauna along the way.',
+        },
+        {
+          question: 'Is there a specific dress code for hiking?',
+          answer: 'Comfort is key! Wear breathable, moisture-wicking clothing and sturdy hiking boots. A hat, sunglasses, and sunscreen are essential. Layering is advised to adjust to temperature changes throughout the day.',
+        },
+        {
+          question: 'Are there restrooms on the trails?',
+          answer: 'Restrooms are limited to visitor centers and some popular trailheads. Be prepared to use nature\'s facilities and remember to follow Leave No Trace principles. Carry hand sanitizer and toilet paper just in case.',
+        },
+      ],
+    },
+
+    'beach-and-water-sports': {
+      title: 'Mallorca Beach & Water Sports',
+      subtitle: 'Discover Mallorca\'s sun-kissed beaches and thrilling water sports adventures!',
+      categoryName: 'Beach & Water Sports',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 45,
+        duration: '2-8 hours',
+      },
+
+      introduction: `Mallorca, the largest of Spain's Balearic Islands, offers an idyllic setting for beach and water sports enthusiasts. With its crystal-clear Mediterranean waters and stunning coastline, the island is a haven for those seeking sun, sand, and sea adventures. From the serene beaches of Cala Mesquida to the lively shores of Playa de Palma, there's a perfect spot for every beach lover. Water sports aficionados can dive into experiences like windsurfing in Pollença Bay, snorkeling in the vibrant marine life of Cala d'Or, or sailing the azure waters off Port de Sóller. Whether you're a thrill-seeker wanting to try cliff diving at Cala Varques or a family looking for a relaxing beach day at Alcudia, Mallorca caters to all. The island's diverse offerings make it a must-visit for anyone eager to explore the Mediterranean's aquatic wonders.`,
+
+      seo: {
+        title: 'Mallorca Beach & Water Sports Tours 2025',
+        description: 'Explore Mallorca\'s stunning beaches and thrilling water sports in 2025. Book your adventure today!',
+        keywords: 'Mallorca beach tours, water sports Mallorca, Mallorca 2025 adventures',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Stunning Coastlines',
+          description: 'Mallorca boasts breathtaking beaches and coves for the ultimate sun and sea experience.',
+        },
+        {
+          icon: 'Anchor',
+          title: 'Diverse Water Sports',
+          description: 'From sailing to snorkeling, Mallorca offers a wide variety of aquatic activities for all skill levels.',
+        },
+        {
+          icon: 'Sun',
+          title: 'Perfect Climate',
+          description: 'Enjoy year-round sunshine, ideal for beach days and water adventures.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Family-Friendly',
+          description: 'Safe, clean beaches and activities suitable for all ages make Mallorca perfect for families.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Sailing Tours',
+          description: 'Explore Mallorca\'s coastlines by sail, discovering hidden coves and pristine beaches.',
+          features: [
+            'Guided tours',
+            'All equipment included',
+            'Refreshments provided',
+            'Multiple departure points',
+            'Suitable for all ages',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Snorkeling Adventures',
+          description: 'Dive into Mallorca\'s marine life with guided snorkeling tours in crystal-clear waters.',
+          features: [
+            'Professional guides',
+            'Equipment included',
+            'Small groups',
+            'Marine life exploration',
+            'Safety briefings',
+          ],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Windsurfing Experiences',
+          description: 'Catch the wind and ride the waves with expert-led windsurfing lessons across Mallorca.',
+          features: [
+            'Beginner to advanced levels',
+            'Equipment rental',
+            'Beautiful locations',
+            'Experienced instructors',
+            'Safety equipment provided',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Kayaking Excursions',
+          description: 'Paddle through Mallorca\'s serene waters and discover its natural beauty from a unique perspective.',
+          features: [
+            'Scenic routes',
+            'All equipment included',
+            'Suitable for families',
+            'Guided tours',
+            'Wildlife spotting',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Mallorca Beach & Water Sports Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour quick trips to full-day excursions.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Scenic Locations',
+            description: 'Tours take you to the island\'s most beautiful and hidden spots.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Options',
+            description: 'Tours start as low as $45, offering great value for unforgettable experiences.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Expert Guides',
+            description: 'Knowledgeable guides ensure a safe, educational, and fun experience.',
+          },
+          {
+            icon: 'Shirt',
+            title: 'Comfortable Gear',
+            description: 'All necessary equipment provided, ensuring comfort and safety.',
+          },
+          {
+            icon: 'Star',
+            title: 'Unique Experiences',
+            description: 'From secluded beaches to marine life encounters, expect the extraordinary.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit Cala Varques early in the morning for a quieter experience and stunning sunrise views.',
+        'Book windsurfing lessons at Pollença Bay for the best wind conditions and expert instructors.',
+        'Try a sunset sailing tour from Port de Sóller for breathtaking views and romantic settings.',
+        'Pack a picnic for your day at Playa de Muro, where the sand stretches for miles.',
+        'Don\'t miss snorkeling at Cala d\'Or for an up-close look at vibrant marine life.',
+        'Wear reef-safe sunscreen to protect Mallorca\'s delicate marine ecosystems.',
+        'Check local regulations before cliff diving to ensure safety and compliance.',
+        'Bring water shoes for exploring rocky areas and hidden coves comfortably.',
+      ],
+
+      faqs: [
+        {
+          question: 'What are the best months for water sports in Mallorca?',
+          answer: 'The best months to enjoy water sports in Mallorca are from May to September. During this time, the weather is warm and sunny, with sea temperatures perfect for swimming and snorkeling. Windsurfing enthusiasts will find optimal conditions in June and July, while the calmer seas of late summer are ideal for kayaking and sailing. Remember to book your tours in advance during peak season to secure your spot!',
+        },
+        {
+          question: 'Are there any age restrictions for these water sports?',
+          answer: 'Most water sports activities in Mallorca are family-friendly and suitable for all ages, although some activities, like windsurfing or advanced snorkeling tours, may have age restrictions. Typically, children as young as eight can participate in kayaking or beginner snorkeling with parental supervision. Always check with tour operators for specific age recommendations and safety requirements before booking.',
+        },
+        {
+          question: 'What should I bring on a water sports tour?',
+          answer: 'When heading out on a water sports tour in Mallorca, it\'s essential to pack light but smart. Bring a swimwear, towel, sunscreen, hat, and sunglasses to protect against the sun. Water shoes can be helpful for rocky areas. Most tours provide equipment, but if you have your own snorkel gear, feel free to bring it. Don\'t forget a waterproof camera to capture the stunning scenery!',
+        },
+        {
+          question: 'Are these tours suitable for non-swimmers?',
+          answer: 'Yes! Many tours are designed with non-swimmers in mind, offering life jackets and safety briefings to ensure everyone\'s comfort and security. Kayaking and sailing tours typically accommodate non-swimmers, with guides on hand to assist. For snorkeling, shallow waters and flotation devices are available. Always inform the tour operator of your swimming ability so they can provide appropriate support.',
+        },
+        {
+          question: 'How can I book these tours?',
+          answer: 'Booking water sports tours in Mallorca is easy and convenient! You can book online through tour operators\' websites, at local tourist information centers, or directly at beach kiosks. It\'s recommended to book in advance, especially during the summer months, to secure your preferred date and time. Look for package deals for multiple activities to save money and enjoy more experiences.',
+        },
+        {
+          question: 'What safety measures are in place for water sports?',
+          answer: 'Safety is a top priority for all water sports tours in Mallorca. Tour operators provide safety briefings, certified life jackets, and professional guides to ensure a secure experience. Equipment is regularly checked and maintained. It\'s crucial to listen to your guide\'s instructions and follow local regulations. If you have any concerns, don\'t hesitate to ask your guide for assistance.',
+        },
+        {
+          question: 'Can I rent equipment if I prefer to explore independently?',
+          answer: 'Absolutely! Many beaches in Mallorca offer equipment rental options for independent exploration. You can rent kayaks, paddleboards, snorkels, and even small sailboats. Remember to check the weather conditions and safety regulations before venturing out on your own. Rentals typically include a brief safety orientation and tips for the best spots to explore.',
+        },
+        {
+          question: 'Do tours operate year-round?',
+          answer: 'While many tours operate year-round, the best time for water sports in Mallorca is from spring to early fall. Some tours may be limited during the winter months due to cooler weather and sea conditions. However, options like sailing and coastal exploration tours are often available year-round, providing a different but equally enchanting experience of the island\'s natural beauty.',
+        },
+      ],
+    },
+
+    'wine-and-food-tours': {
+      title: 'Mallorca Wine & Food Tours',
+      subtitle: 'Savor Mallorca\'s rich culinary heritage with vibrant wine and food tours, perfect for every palate!',
+      categoryName: 'Wine & Food Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 60,
+        duration: '3 to 8 hours',
+      },
+
+      introduction: `Explore Mallorca through its tantalizing wine and food tours! This Mediterranean jewel offers more than just sun-kissed beaches; it's a culinary haven where you can discover the island's rich gastronomic heritage. From the robust reds and crisp whites of Binissalem to the delectable sobrasada and ensaimada pastries, there's a flavor for every palate. Journey through lush vineyards, partake in olive oil tastings, and enjoy a tapas crawl in Palma's vibrant markets. Whether you're a seasoned foodie or an eager novice, these tours cater to all, promising a feast for the senses. Discover hidden gems and local favorites as you sip and savor your way through Mallorca's culinary landscape!`,
+
+      seo: {
+        title: 'Mallorca Wine & Food Tours 2025',
+        description: 'Explore Mallorca\'s wine and food tours. Discover local flavors, vineyards, and culinary delights today!',
+        keywords: 'Mallorca wine tours, food tours Mallorca, Mallorca culinary experiences',
+      },
+
+      whyChoose: [
+        {
+          icon: 'GlassWater',
+          title: 'Authentic Flavors',
+          description: 'Experience the true taste of Mallorca with local wines and traditional food.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Scenic Locations',
+          description: 'Tours through picturesque vineyards and charming villages provide a feast for the eyes.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Cultural Insights',
+          description: 'Gain a deeper understanding of Mallorcan culture through its culinary traditions.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Knowledgeable guides ensure a rich and informative experience, enhancing your tour.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Vineyard Tours',
+          description: 'Visit Mallorca\'s finest vineyards, sample wines, and learn about the winemaking process.',
+          features: [
+            'Wine tasting',
+            'Winemaking insights',
+            'Scenic views',
+            'Local snacks',
+            'Souvenir shop',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Tapas Tours',
+          description: 'Stroll through Palma\'s bustling markets, savoring a variety of tapas paired with local wines.',
+          features: [
+            'Tapas tasting',
+            'Wine pairings',
+            'Market tour',
+            'Local guides',
+            'Authentic experience',
+          ],
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Culinary Workshops',
+          description: 'Hands-on cooking classes where you\'ll learn to prepare traditional Mallorcan dishes.',
+          features: [
+            'Cooking class',
+            'Recipe book',
+            'Local ingredients',
+            'Chef guidance',
+            'Take-home creations',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Gourmet Tours',
+          description: 'Visit top-rated restaurants and enjoy expertly crafted dishes by renowned chefs.',
+          features: [
+            'Fine dining',
+            'Chef\'s specials',
+            'Wine pairings',
+            'Exclusive access',
+            'Elegant ambiance',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Mallorca Wine & Food Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 3 to 8 hours depending on the type and itinerary.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Seasonal Availability',
+            description: 'Most tours are available year-round, with special events during harvest season.',
+          },
+          {
+            icon: 'Anchor',
+            title: 'Transportation',
+            description: 'Comfortable transport is provided for tours outside Palma, ensuring a stress-free experience.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Cost',
+            description: 'Tours start at around $60, with premium options available for those seeking luxury experiences.',
+          },
+          {
+            icon: 'Shirt',
+            title: 'Dress Code',
+            description: 'Casual, comfortable attire is recommended, with layers for cooler evenings.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Group Sizes',
+            description: 'Tours are intimate, often limited to small groups to enhance the personal experience.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book your tour in advance, especially during the summer months and harvest season!',
+        'Try the local specialty sobrasada, a cured sausage, during your food tour.',
+        'Join a vineyard tour in the Binissalem region for award-winning wines.',
+        'Don\'t miss the olive oil tastings for a true taste of Mallorca\'s produce.',
+        'Wear comfortable shoes for walking tours through markets and vineyards.',
+        'Visit Palma\'s Santa Catalina market for a diverse taste of local produce.',
+        'Pair your wines with local cheeses for a full-bodied experience.',
+        'Ask your guide for restaurant recommendations for an authentic dinner after your tour.',
+      ],
+
+      faqs: [
+        {
+          question: 'What type of wine is Mallorca known for?',
+          answer: 'Mallorca is renowned for its robust red wines, particularly those from the Binissalem region. The Manto Negro and Callet grape varieties are local specialties, offering unique flavors that reflect the island\'s terroir. Don\'t miss the chance to taste these exquisite wines at local vineyards, where tours often include guided tastings and insights into the winemaking process. Prices for bottles typically range from $15 to $30, a wonderful souvenir to bring home!',
+        },
+        {
+          question: 'Are there food options for vegetarians?',
+          answer: 'Absolutely! Mallorca\'s culinary scene is diverse and accommodating. Many tours offer vegetarian-friendly options, including delicious vegetable paella, tumbet (a local vegetable dish), and a variety of tapas featuring seasonal produce. Be sure to inform your tour operator in advance about dietary preferences, and they will ensure you\'re catered for. Enjoy the fresh, vibrant flavors of Mallorca\'s vegetarian offerings!',
+        },
+        {
+          question: 'What is the best time of year for wine tours?',
+          answer: 'The best time for wine tours in Mallorca is during the harvest season, which typically runs from late August to October. This period offers a unique opportunity to witness the grape harvest and enjoy special events like grape-stomping festivals. However, tours run throughout the year, each season offering its own charm and beauty. Winter months can be quieter, allowing for more intimate experiences.',
+        },
+        {
+          question: 'Can I bring children on these tours?',
+          answer: 'While some wine tours are adult-focused, many operators offer family-friendly options. Children can enjoy the beautiful landscapes, and some tours include activities like exploring olive groves or visiting local farms. Always check with the tour provider beforehand to ensure the tour is suitable for children and to learn about any available discounts or special arrangements.',
+        },
+        {
+          question: 'What languages are the tours conducted in?',
+          answer: 'Most tours in Mallorca are conducted in Spanish and English, with some operators offering additional languages such as German and French. It\'s advisable to check with the tour provider beforehand, especially if you require a specific language guide. Multilingual guides are common, ensuring you\'ll have a comprehensive and enjoyable experience!',
+        },
+        {
+          question: 'How do I get to the starting point of the tours?',
+          answer: 'Transport options to tour starting points vary. Many tours provide pick-up and drop-off services from hotels in Palma. Alternatively, you can use public transport or hire a car to reach rural locations. Ensure you confirm the details with your tour operator ahead of time to plan your journey effectively.',
+        },
+        {
+          question: 'Is tipping expected on these tours?',
+          answer: 'While tipping is not mandatory in Spain, it is appreciated as a gesture of good service. If you feel your guide has provided an exceptional experience, a tip of 5-10% is a generous way to show your appreciation. It\'s a great way to thank them for their insights and hospitality!',
+        },
+        {
+          question: 'What should I bring on a wine and food tour?',
+          answer: 'It\'s advisable to bring a camera to capture the stunning landscapes and memorable moments. A reusable water bottle is also practical, along with sun protection like a hat and sunscreen, especially during the warmer months. Don\'t forget a little extra cash for purchasing any local delicacies or wines you might want to take home!',
+        },
+      ],
+    },
+
+    'historic-village-tours': {
+      title: 'Mallorca Historic Village Tours',
+      subtitle: 'Explore timeless villages and discover Mallorca\'s rich history and enchanting landscapes.',
+      categoryName: 'Historic Village Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 45,
+        duration: 'Half-day to full-day',
+      },
+
+      introduction: `Dive into the heart of Mallorca and travel back in time with our Historic Village Tours! Nestled in the Mediterranean, Mallorca is not just about stunning beaches; it boasts a tapestry of charming villages, each with its own story to tell. Wander the cobbled streets of Valldemossa, where the famous composer Chopin found inspiration, or explore the medieval allure of Alcúdia's ancient walls. These tours offer a captivating blend of history, culture, and breathtaking landscapes. Whether you're an avid historian, a photography enthusiast, or a curious traveler, there's something magical for everyone. Discover hidden gems like the mountain village of Deià, known for its artistic legacy, and Soller with its iconic tram line. Experience the warmth of local hospitality and the island's rich tapestry of traditions and tales. Get ready for an unforgettable journey through time!`,
+
+      seo: {
+        title: 'Mallorca Historic Village Tours 2025',
+        description: 'Discover Mallorca\'s historic charm with our village tours. Book now for an unforgettable journey!',
+        keywords: 'Mallorca tours, historic village tours, Mallorca travel 2025, Valldemossa, Alcúdia, Soller tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'MapPin',
+          title: 'Authentic Experience',
+          description: 'Immerse yourself in the true essence of Mallorca with guided tours by local experts.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Picturesque Views',
+          description: 'Capture stunning landscapes and charming village scenes that are postcard-perfect!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Rich History',
+          description: 'Learn about Mallorca\'s fascinating history and cultural heritage directly from the locals.',
+        },
+        {
+          icon: 'Users',
+          title: 'Small Group Sizes',
+          description: 'Enjoy personalized experiences with intimate group sizes for a more engaging tour.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'BookOpen',
+          title: 'Cultural Heritage Tour',
+          description: 'Explore the cultural heart of Mallorca\'s villages with expert guides.',
+          features: [
+            'Valldemossa',
+            'Chopin Museum',
+            'Local Artisan Workshops',
+            'Traditional Markets',
+            'Guided Stories',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Scenic Village Walks',
+          description: 'Experience the beauty of Mallorca\'s landscapes on guided village walks.',
+          features: [
+            'Deià Paths',
+            'Soller Tram',
+            'Mallorcan Architecture',
+            'Olive Groves',
+            'Photo Opportunities',
+          ],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Coastal Village Exploration',
+          description: 'Discover the charm of Mallorca\'s coastal villages and their maritime history.',
+          features: [
+            'Port de Soller',
+            'Fishing Villages',
+            'Seafood Tasting',
+            'Historical Ports',
+            'Coastal Trails',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Local Lifestyle Tour',
+          description: 'Immerse yourself in local life and traditions of Mallorcan villages.',
+          features: [
+            'Culinary Experiences',
+            'Home Visits',
+            'Traditional Fiestas',
+            'Local Crafts',
+            'Cultural Interactions',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Historic Village Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Half-day tours typically last 4-5 hours; full-day tours extend to 8-10 hours.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Unique Villages',
+            description: 'Visit iconic villages like Valldemossa, Deià, and Alcúdia, each with unique stories.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography Opportunities',
+            description: 'Enjoy countless opportunities to capture the stunning scenery and village life.',
+          },
+          {
+            icon: 'Users',
+            title: 'Small Groups',
+            description: 'Tours are intimate, with a maximum of 12 participants, ensuring a personalized experience.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Cultural Insights',
+            description: 'Learn about the local culture and history from knowledgeable guides and locals.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Prices',
+            description: 'Tours start at $45, offering great value for an immersive cultural experience.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit Valldemossa early morning to avoid crowds and enjoy the tranquil streets.',
+        'Pack comfortable shoes for walking through cobblestone streets in villages like Deià.',
+        'Bring a camera with a good zoom lens to capture distant mountain views.',
+        'Don\'t miss trying local pastries like the famous "ensaimada" in village bakeries!',
+        'Consider combining village tours with a stop at local wineries for a full-day adventure.',
+        'Check local festival schedules to witness vibrant cultural celebrations during your visit.',
+        'Carry a refillable water bottle to stay hydrated during your walks.',
+        'Learn basic Spanish phrases to engage more deeply with the locals.',
+      ],
+
+      faqs: [
+        {
+          question: 'What should I wear on a village tour?',
+          answer: 'Dress comfortably with light layers, as Mallorca can be warm but breezy. Comfortable walking shoes are a must for navigating cobblestone streets. Don\'t forget a hat and sunscreen for sun protection! During cooler months, a light jacket might be necessary, especially in the evenings. Remember, some religious sites may require modest clothing, so it\'s a good idea to have a scarf or shawl handy.',
+        },
+        {
+          question: 'Are meals included in the tours?',
+          answer: 'Most tours do not include meals, but they often stop at local eateries where you can buy delicious Mallorcan cuisine. Try the local pa amb oli (bread with tomato and olive oil) or a hearty tumbet (vegetable dish)! Some tours may offer tastings or snacks, so check the specific tour details. Prices for meals can range from $10 to $20 depending on the restaurant.',
+        },
+        {
+          question: 'How do I book a historic village tour?',
+          answer: 'Booking is easy and can usually be done online through tour operators or travel platforms. Popular sites like Viator or GetYourGuide offer a variety of options. It\'s best to book in advance, especially during peak tourist seasons, to secure your spot. Prices start at around $45, and many operators offer discounts for early bookings or group reservations!',
+        },
+        {
+          question: 'What languages are the tours conducted in?',
+          answer: 'Tours are primarily conducted in English, but many operators also offer guides who speak Spanish, German, and French. Be sure to check with the tour provider in advance if you require a specific language. This ensures a more enriching and comfortable experience as you explore the historic villages!',
+        },
+        {
+          question: 'Is transportation included in the tour price?',
+          answer: 'Yes, most tours include transportation from a central meeting point or your accommodation. This often involves a comfortable minibus or coach that will take you between the villages. Make sure to confirm the pick-up arrangements when booking your tour. This convenience adds great value to the experience!',
+        },
+        {
+          question: 'Can I visit these villages on my own?',
+          answer: 'Absolutely! While guided tours offer valuable insights and convenience, adventurous travelers can rent a car and explore independently. Having a map or GPS is recommended, and you\'ll have the freedom to explore at your own pace. Keep in mind that parking can be limited in some villages, so plan accordingly!',
+        },
+        {
+          question: 'What are the cancellation policies for these tours?',
+          answer: 'Cancellation policies vary by provider, but many offer free cancellation up to 24-48 hours before the tour date. It\'s always best to check the specific terms when booking. In case of unforeseen circumstances, contact the provider directly to discuss options. Flexible policies ensure peace of mind when planning your trip!',
+        },
+        {
+          question: 'Are these tours suitable for children?',
+          answer: 'Yes, many tours are family-friendly and suitable for children. They offer an educational experience that can be fun and engaging for young explorers! However, keep in mind the walking involved. Strollers may not be practical on cobblestone streets, so a baby carrier is recommended for infants. Check with the tour provider about any age restrictions.',
+        },
+      ],
+    },
+  },
+
+  nice: {
+    'promenade-des-anglais-tours': {
+      "title": "Nice Promenade des Anglais Tours",
+      "subtitle": "Stroll along the legendary Promenade des Anglais with stunning Mediterranean views and French Riviera charm!",
+      "categoryName": "Promenade des Anglais Tours",
+      "stats": {
+        "toursAvailable": 18,
+        "priceFrom": 35,
+        "duration": "2-4 hours"
+      },
+      "introduction": "Experience the iconic Promenade des Anglais, Nice's legendary seafront boulevard that perfectly captures the essence of the French Riviera! This stunning 7-kilometer stretch along the Baie des Anges offers breathtaking Mediterranean views, Belle Époque architecture, and the glamorous atmosphere that has attracted visitors for over a century. From leisurely walks along the blue chairs to guided tours revealing hidden history, these experiences showcase why Nice is called the Queen of the Riviera. Discover the Negresco Hotel's grandeur, learn about the promenade's English origins, and feel the warm sea breeze as you explore this UNESCO World Heritage site. Whether you're a history enthusiast, architecture lover, or simply seeking that perfect French Riviera moment, these tours offer an unforgettable journey through Nice's most famous landmark!",
+      "seo": {
+        "title": "Nice Promenade des Anglais Tours 2025",
+        "description": "Explore the iconic Promenade des Anglais in Nice with expert-guided tours. Discover Mediterranean beauty and French Riviera elegance!",
+        "keywords": "Nice Promenade tours, Promenade des Anglais, Nice waterfront, French Riviera tours, Nice walking tours"
+      },
+      "whyChoose": [
+        {
+          "icon": "Waves",
+          "title": "Iconic Mediterranean Views",
+          "description": "Experience breathtaking views of the Baie des Anges and the stunning azure waters of the Mediterranean Sea."
+        },
+        {
+          "icon": "Camera",
+          "title": "Historic Architecture",
+          "description": "Admire Belle Époque palaces, the legendary Negresco Hotel, and architectural gems from Nice's golden age."
+        },
+        {
+          "icon": "Heart",
+          "title": "UNESCO Heritage Site",
+          "description": "Walk through a UNESCO World Heritage site that represents the birthplace of seaside tourism."
+        },
+        {
+          "icon": "Sun",
+          "title": "Perfect Year-Round",
+          "description": "Enjoy the famous Côte d'Azur sunshine with over 300 days of sun annually for perfect touring weather."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Users",
+          "title": "Guided Walking Tours",
+          "description": "Join expert guides for fascinating stories about the Promenade's history and hidden secrets.",
+          "features": [
+            "Professional local guides",
+            "Historical insights",
+            "Photo opportunities",
+            "Small group sizes",
+            "Blue chair experience"
+          ]
+        },
+        {
+          "icon": "Sun",
+          "title": "Sunset Promenade Tours",
+          "description": "Experience the magical golden hour along the Mediterranean with stunning sunset views.",
+          "features": [
+            "Golden hour timing",
+            "Romantic atmosphere",
+            "Best photo lighting",
+            "Cocktail stops",
+            "Evening ambiance"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "E-Bike Promenade Tours",
+          "description": "Cover more ground on electric bikes while enjoying the sea breeze and coastal views.",
+          "features": [
+            "Quality e-bikes provided",
+            "Helmet included",
+            "Extended route coverage",
+            "Castle Hill ascent",
+            "Expert guidance"
+          ]
+        },
+        {
+          "icon": "Camera",
+          "title": "Photography Tours",
+          "description": "Capture the Promenade's beauty with guidance from professional photographers.",
+          "features": [
+            "Photography tips",
+            "Best vantage points",
+            "Composition guidance",
+            "Historic landmarks",
+            "Blue hour timing"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Nice Promenade des Anglais Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours typically last 2-4 hours, allowing leisurely exploration of this 7km seafront boulevard."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Key Landmarks",
+            "description": "Visit the Negresco Hotel, Palais de la Méditerranée, and iconic blue chairs along the way."
+          },
+          {
+            "icon": "Heart",
+            "title": "Historical Stories",
+            "description": "Learn fascinating tales about the English aristocrats who created this legendary promenade."
+          },
+          {
+            "icon": "Camera",
+            "title": "Photo Opportunities",
+            "description": "Countless stunning viewpoints for capturing the Mediterranean beauty and Belle Époque architecture."
+          },
+          {
+            "icon": "Users",
+            "title": "Small Groups",
+            "description": "Intimate group sizes ensure personalized attention and authentic local insights."
+          },
+          {
+            "icon": "DollarSign",
+            "title": "Great Value",
+            "description": "Tours start at just $35, offering excellent value for exploring Nice's most iconic landmark."
+          }
+        ]
+      },
+      "expertTips": [
+        "Visit early morning for peaceful walks and the best light for photography.",
+        "Try sitting in the famous blue chairs - they're free and perfect for people-watching!",
+        "Stop at the Negresco Hotel bar for a drink in legendary Belle Époque surroundings.",
+        "The eastern end near Castle Hill offers the best panoramic views of the entire Promenade.",
+        "Wear comfortable shoes as the promenade is paved but you'll be walking several kilometers.",
+        "Join a sunset tour for magical golden hour lighting and romantic atmosphere.",
+        "Look for the mosaic paving that forms a wave pattern - a beautiful detail often missed.",
+        "Visit the Castel Plage beach club for an authentic Riviera beach experience."
+      ],
+      "faqs": [
+        {
+          "question": "What is the best time to visit the Promenade des Anglais?",
+          "answer": "The Promenade is beautiful year-round, but spring (April-June) and fall (September-October) offer perfect weather with fewer crowds. Summer brings vibrant energy but more tourists. Early morning offers peaceful walks with beautiful light, while sunset provides magical golden hour views. Winter is mild on the Côte d'Azur, making it possible to enjoy the Promenade even in December! Many locals prefer morning jogs or evening strolls when the temperature is most pleasant."
+        },
+        {
+          "question": "How long is the Promenade des Anglais?",
+          "answer": "The Promenade des Anglais stretches approximately 7 kilometers (4.3 miles) along Nice's stunning coastline. A leisurely walk from one end to the other takes about 1.5-2 hours, but most tours focus on the most scenic 3-4 kilometer stretch between the airport and Castle Hill. The promenade features dedicated lanes for pedestrians, cyclists, and rollerbladers. You'll find the iconic blue chairs positioned along the entire length, perfect for taking breaks and soaking in the Mediterranean views!"
+        },
+        {
+          "question": "Are the blue chairs free to use?",
+          "answer": "Yes! The iconic blue chairs (Chaises Bleues) are completely free and available to everyone. These 2,000+ chairs have become a symbol of Nice and the French Riviera lifestyle. Simply find an available chair, sit back, and enjoy the Mediterranean views! The chairs are painted the same blue as the Baie des Anges and are perfect for relaxing, reading, or people-watching. They're maintained by the city and available from dawn to dusk throughout the year."
+        },
+        {
+          "question": "Can I rent bikes or e-bikes on the Promenade?",
+          "answer": "Absolutely! Several rental shops along the Promenade offer traditional bikes, e-bikes, and even rollerblades. Prices typically range from €10-15 for regular bikes and €25-35 for e-bikes per day. The Promenade features a dedicated cycling lane, making it safe and enjoyable to explore by bike. E-bikes are particularly popular as they make it easy to reach Castle Hill at the eastern end. Many guided tours include bike rental in their price. Book in advance during peak summer months!"
+        },
+        {
+          "question": "What should I wear for a Promenade tour?",
+          "answer": "Dress casually and comfortably! The French Riviera is relaxed yet stylish. Wear comfortable walking shoes as you'll cover several kilometers. Sunglasses and a hat are essential for the bright Mediterranean sun. Light, breathable clothing works best in summer, while spring and fall may require a light jacket for evening tours. Don't forget sunscreen - the Côte d'Azur sun is strong! If you're planning to sit on the beach afterward, bring swimwear and a beach bag."
+        },
+        {
+          "question": "Is the Promenade accessible for wheelchairs and strollers?",
+          "answer": "Yes! The Promenade des Anglais is fully paved and wheelchair accessible along its entire length. The smooth, wide pathway makes it perfect for wheelchairs, strollers, and mobility scooters. There are numerous access points from the street level, and many have ramps. The promenade is flat and well-maintained, making it one of the most accessible attractions in Nice. Restroom facilities along the route are also wheelchair accessible. It's an ideal destination for families with young children in strollers!"
+        },
+        {
+          "question": "Are there restaurants and cafes along the Promenade?",
+          "answer": "Yes, the Promenade is lined with fantastic restaurants, cafes, and beach clubs! From casual beachfront cafes to elegant hotel restaurants like Le Chantecler at the Negresco, you'll find options for every budget and taste. Try a café au lait at a traditional French café, enjoy fresh seafood at a beachside restaurant, or splurge on Mediterranean cuisine with sea views. Prices range from €5 for a coffee to €50+ for fine dining. Many places offer terrace seating with stunning ocean views!"
+        },
+        {
+          "question": "Can I swim in the sea along the Promenade?",
+          "answer": "Absolutely! Nice's beaches run the entire length of the Promenade, though they're mostly pebble beaches rather than sand. The water is clean, clear, and beautiful for swimming from May through October. Public beaches are free, while private beach clubs charge €20-30 per day for loungers, umbrellas, and facilities. The water temperature reaches 75°F (24°C) in summer. Remember that Nice beaches are pebble beaches, so water shoes can be helpful for comfort. The swimming is excellent with calm, clear Mediterranean waters!"
+        }
+      ]
+    },
+    'old-town-walking-tours': {
+      "title": "Nice Old Town Walking Tours",
+      "subtitle": "Discover the colorful streets, baroque churches, and authentic charm of Vieux Nice!",
+      "categoryName": "Old Town Walking Tours",
+      "stats": {
+        "toursAvailable": 20,
+        "priceFrom": 30,
+        "duration": "2-3 hours"
+      },
+      "introduction": "Step into the enchanting labyrinth of Vieux Nice (Old Town), where narrow medieval streets burst with colorful buildings, baroque architecture, and authentic Provençal atmosphere! This historic quarter preserves centuries of Nice's rich heritage, from Italian influences to Belle Époque elegance. Wander through Cours Saleya's vibrant flower market, discover hidden chapels with stunning baroque art, and taste local specialties like socca and pissaladière. The Old Town's ochre and pastel buildings create a photographer's paradise, while intimate squares invite you to experience la dolce vita French-style. From food lovers exploring local markets to history buffs uncovering Nice's past as part of the Kingdom of Sardinia, these walking tours reveal the soul of the Côte d'Azur. Perfect for families, couples, and solo travelers seeking authentic French Riviera culture!",
+      "seo": {
+        "title": "Nice Old Town Walking Tours 2025",
+        "description": "Explore Vieux Nice with expert guides. Discover baroque churches, local markets, and authentic Provençal charm!",
+        "keywords": "Nice Old Town tours, Vieux Nice, Nice walking tours, Cours Saleya, Nice historic center"
+      },
+      "whyChoose": [
+        {
+          "icon": "Heart",
+          "title": "Authentic Old World Charm",
+          "description": "Experience the real Nice in medieval streets untouched by modern development."
+        },
+        {
+          "icon": "Camera",
+          "title": "Instagram-Perfect Streets",
+          "description": "Colorful buildings, flower markets, and baroque architecture create stunning photo opportunities."
+        },
+        {
+          "icon": "GlassWater",
+          "title": "Food Lover's Paradise",
+          "description": "Taste authentic Niçois specialties like socca, pissaladière, and fresh olive oil."
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Rich History",
+          "description": "Discover Nice's Italian heritage and centuries of fascinating Mediterranean history."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Users",
+          "title": "Classic Walking Tours",
+          "description": "Comprehensive guided walks through Old Town's highlights with local expert guides.",
+          "features": [
+            "Professional local guides",
+            "Historic landmarks",
+            "Market visits",
+            "Small groups",
+            "Cultural insights"
+          ]
+        },
+        {
+          "icon": "GlassWater",
+          "title": "Food & Market Tours",
+          "description": "Culinary journey through Vieux Nice with tastings of local specialties and market visits.",
+          "features": [
+            "Cours Saleya market",
+            "Socca tasting",
+            "Olive oil samples",
+            "Local bakeries",
+            "Wine tasting"
+          ]
+        },
+        {
+          "icon": "Camera",
+          "title": "Photography Tours",
+          "description": "Capture the colorful beauty of Old Town with professional photography guidance.",
+          "features": [
+            "Best photo spots",
+            "Composition tips",
+            "Hidden corners",
+            "Golden hour timing",
+            "Architecture focus"
+          ]
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Historical Tours",
+          "description": "Deep dive into Nice's fascinating past from medieval times to Belle Époque.",
+          "features": [
+            "Cathedral visit",
+            "Palace history",
+            "Italian heritage",
+            "Architecture details",
+            "Historical anecdotes"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Nice Old Town Walking Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours typically last 2-3 hours, perfect for exploring the compact Old Town thoroughly."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Key Highlights",
+            "description": "Visit Cours Saleya market, Cathédrale Sainte-Réparate, and charming historic squares."
+          },
+          {
+            "icon": "Users",
+            "title": "Small Groups",
+            "description": "Intimate groups of 6-15 people ensure personalized attention and easy navigation."
+          },
+          {
+            "icon": "Heart",
+            "title": "Local Stories",
+            "description": "Hear fascinating tales about Nice's Italian past and colorful local characters."
+          },
+          {
+            "icon": "GlassWater",
+            "title": "Tastings Included",
+            "description": "Many tours include samples of socca, olive oil, and other Niçois specialties."
+          },
+          {
+            "icon": "Star",
+            "title": "Hidden Gems",
+            "description": "Discover secret passages, artisan shops, and corners tourists typically miss."
+          }
+        ]
+      },
+      "expertTips": [
+        "Visit Cours Saleya market in the morning (Tuesday-Sunday) for the best flower and produce selection.",
+        "Try socca at Chez Théresa - it's hot, crispy, and absolutely authentic!",
+        "Wear comfortable walking shoes as Old Town streets are cobblestone and can be uneven.",
+        "Book a morning tour to avoid afternoon crowds and enjoy cooler temperatures.",
+        "Don't miss the baroque churches - they're free to enter and absolutely stunning inside.",
+        "The Old Town is mostly pedestrian, making it safe and pleasant for families with children.",
+        "Bring cash as many small local shops and market vendors don't accept cards.",
+        "Monday morning is quieter (market closed) but perfect for photography without crowds."
+      ],
+      "faqs": [
+        {
+          "question": "What is Vieux Nice and where is it located?",
+          "answer": "Vieux Nice (Old Town) is the historic heart of Nice, located between Castle Hill and the modern city center, just behind the Promenade des Anglais. This charming quarter features narrow medieval streets, colorful Italian-influenced architecture, and authentic Provençal atmosphere. The area dates back to the 14th century when Nice was part of the Kingdom of Sardinia. It's compact and easily walkable, roughly 10 blocks wide and extending from the beach to Place Garibaldi. The entire Old Town is pedestrian-friendly, making it perfect for leisurely exploration!"
+        },
+        {
+          "question": "What is socca and where can I try it?",
+          "answer": "Socca is Nice's most famous local specialty - a thin, crispy chickpea flour pancake cooked in a wood-fired oven and seasoned with black pepper. It's hot, savory, and absolutely delicious! The best place to try authentic socca is Chez Théresa or Chez Pipo in the Old Town. Socca is typically served on paper plates and eaten with your hands. It costs around €3-5 for a generous portion. Try it hot - that's when it's crispiest! Many food tours include socca tastings, giving you the authentic Niçois experience."
+        },
+        {
+          "question": "When is the Cours Saleya market open?",
+          "answer": "The famous Cours Saleya market operates Tuesday through Sunday from 6 AM to 1:30 PM. The flower market runs Tuesday-Saturday, while Sunday features an antiques and brocante (flea market). Monday is reserved for the antiques market only. The market is at its most vibrant and colorful from 8-11 AM. You'll find fresh flowers, local produce, Provençal specialties, soaps, and crafts. Arrive early for the best selection and to see locals doing their daily shopping. The market atmosphere is quintessentially French and absolutely not to be missed!"
+        },
+        {
+          "question": "Are Old Town tours suitable for children?",
+          "answer": "Yes! Vieux Nice is fantastic for families with children. The pedestrian streets are safe and traffic-free, perfect for little ones to explore. Kids love the colorful buildings, gelato shops, and market atmosphere. Many tours offer family-friendly options with shorter durations and interactive elements. Children enjoy tasting local treats like socca and learning about Nice's history through storytelling. The compact size means kids won't get too tired. Strollers can navigate most streets, though some narrow passages might require carrying them. It's an educational and fun experience for all ages!"
+        },
+        {
+          "question": "What should I buy at the Old Town markets?",
+          "answer": "Don't miss fresh flowers from Cours Saleya (they're famously affordable), local olive oil and tapenade, Provençal soaps and lavender products, and Nice's own olive oil. Food lovers should get socca flour mix, local honey, and herbs de Provence. The Monday antiques market offers vintage treasures, old postcards, and French antiques. Prices are generally reasonable - flowers start at €3-5 per bunch, while olive products range from €5-20. Local artisan shops sell handmade crafts perfect for gifts. Remember to bring cash as many vendors don't accept cards!"
+        },
+        {
+          "question": "How long should I spend in the Old Town?",
+          "answer": "Plan at least 2-3 hours to properly explore Vieux Nice without rushing. A morning visit allows you to experience the market, have lunch at a local restaurant, and wander the streets. Food tours typically last 2.5-3 hours with multiple tastings. If you want to visit churches, shop, and really soak in the atmosphere, allocate 4-5 hours. The Old Town is compact but there's so much to see! Many visitors return multiple times during their Nice stay. It's perfect for a leisurely exploration with frequent café stops."
+        },
+        {
+          "question": "What are the must-see sights in Old Town?",
+          "answer": "Don't miss Cours Saleya market for flowers and local atmosphere, Cathédrale Sainte-Réparate with stunning baroque interior, Place Rossetti's gelato shops and terraces, Rue Droite (the oldest street), and Palais Lascaris baroque palace museum (free entry!). Also visit Chapelle de la Miséricorde for incredible baroque art, Place Garibaldi's elegant arcades, and climb to the top of Castle Hill for panoramic views. The colorful laundry-draped streets themselves are attractions! Each narrow street reveals new discoveries. All major sights are within a 10-minute walk of each other."
+        },
+        {
+          "question": "Are there good restaurants in the Old Town?",
+          "answer": "Absolutely! Vieux Nice is packed with excellent restaurants serving authentic Niçois cuisine. Try La Rossettisserie for socca and local specialties, Chez Pipo for traditional dishes, and La Petite Maison for upscale French Mediterranean cuisine (reservations essential!). For budget-friendly options, grab a pan bagnat (Niçois sandwich) at any local bakery for €5-8. Tourist-trap restaurants line Cours Saleya - look for places where locals eat instead! Expect to pay €15-25 for a good meal. Evening dining in Old Town squares is magical with great ambiance!"
+        }
+      ]
+    },
+    'mediterranean-beach-tours': {
+      "title": "Nice Mediterranean Beach Tours",
+      "subtitle": "Enjoy the crystal-clear waters, pebble beaches, and stunning coastline of the French Riviera!",
+      "categoryName": "Mediterranean Beach Tours",
+      "stats": {
+        "toursAvailable": 15,
+        "priceFrom": 40,
+        "duration": "3-6 hours"
+      },
+      "introduction": "Discover the stunning Mediterranean coastline of Nice, where azure waters meet iconic pebble beaches backed by the glamorous Promenade des Anglais! Nice's beaches offer the quintessential French Riviera experience - from lively public beaches perfect for families to exclusive beach clubs where you can lounge in luxury. Experience the unique charm of galets (pebble beaches), enjoy water sports in crystal-clear waters, and soak up the legendary Côte d'Azur sunshine. Whether you're swimming in the warm Mediterranean, trying paddleboarding, or simply relaxing with a cocktail at a beach club, Nice's coastline delivers unforgettable moments. These tours showcase everything from snorkeling adventures discovering marine life to sunset beach experiences with champagne. Perfect for beach lovers, water sports enthusiasts, and anyone seeking that iconic French Riviera beach lifestyle!",
+      "seo": {
+        "title": "Nice Beach Tours 2025 - Mediterranean Coast",
+        "description": "Experience Nice's stunning Mediterranean beaches with expert tours. Swimming, water sports, and French Riviera beach culture!",
+        "keywords": "Nice beaches, Mediterranean tours, French Riviera beaches, Nice water sports, Côte d'Azur beaches"
+      },
+      "whyChoose": [
+        {
+          "icon": "Waves",
+          "title": "Crystal-Clear Waters",
+          "description": "Swim in pristine Mediterranean waters with exceptional clarity and beautiful turquoise color."
+        },
+        {
+          "icon": "Sun",
+          "title": "300 Days of Sunshine",
+          "description": "Enjoy the famous Côte d'Azur climate with sunshine nearly year-round for perfect beach days."
+        },
+        {
+          "icon": "Heart",
+          "title": "Iconic French Riviera Experience",
+          "description": "Live the glamorous beach lifestyle that has attracted celebrities and visitors for generations."
+        },
+        {
+          "icon": "Star",
+          "title": "Beach Clubs & Public Beaches",
+          "description": "Choose from luxurious beach clubs with full service or charming free public beaches."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Waves",
+          "title": "Beach Hopping Tours",
+          "description": "Explore multiple beaches along Nice's coastline from public beaches to exclusive clubs.",
+          "features": [
+            "Multiple beach stops",
+            "Beach club visits",
+            "Swimming time",
+            "Coastal views",
+            "Local insights"
+          ]
+        },
+        {
+          "icon": "Sailboat",
+          "title": "Boat & Beach Tours",
+          "description": "Combine sailing along the coast with beach stops and swimming in secluded spots.",
+          "features": [
+            "Private boat charter",
+            "Coastal cruise",
+            "Snorkeling equipment",
+            "Beach picnic",
+            "Swimming breaks"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Sunset Beach Experience",
+          "description": "Enjoy magical Mediterranean sunsets with champagne and relaxation at premium beach clubs.",
+          "features": [
+            "Sunset timing",
+            "Champagne included",
+            "Beach club access",
+            "Lounge chairs",
+            "Romantic atmosphere"
+          ]
+        },
+        {
+          "icon": "Users",
+          "title": "Water Sports Tours",
+          "description": "Try paddleboarding, kayaking, jet skiing, and other exciting water activities.",
+          "features": [
+            "Equipment provided",
+            "Professional instruction",
+            "Multiple activities",
+            "Safety gear included",
+            "All skill levels"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Nice Mediterranean Beach Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours range from 3-hour beach experiences to full-day coastal adventures."
+          },
+          {
+            "icon": "Waves",
+            "title": "Swimming Opportunities",
+            "description": "Plenty of time for swimming in the warm, clear Mediterranean waters."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Best Beach Spots",
+            "description": "Visit both popular beaches and hidden local favorites along the coastline."
+          },
+          {
+            "icon": "Star",
+            "title": "Beach Club Options",
+            "description": "Experience luxurious beach clubs with loungers, umbrellas, and full service."
+          },
+          {
+            "icon": "Camera",
+            "title": "Stunning Scenery",
+            "description": "Incredible photo opportunities with azure waters and mountain backdrops."
+          },
+          {
+            "icon": "Heart",
+            "title": "Relaxation Time",
+            "description": "Leisurely pace allowing you to truly unwind and enjoy the Riviera lifestyle."
+          }
+        ]
+      },
+      "expertTips": [
+        "Bring water shoes - Nice's pebble beaches can be uncomfortable without them!",
+        "Public beaches are free and charming, but beach clubs (€20-30/day) offer comfort and facilities.",
+        "The water is warmest from June through September, reaching 75°F (24°C).",
+        "Castel Plage and Blue Beach are excellent mid-range beach clubs with great atmosphere.",
+        "Free public showers are available along the Promenade for rinsing off after swimming.",
+        "Afternoon winds can pick up - morning is often calmer for water sports.",
+        "Bring sunscreen and reapply often - the Mediterranean sun is strong!",
+        "Try a \"pan bagnat\" (local sandwich) from beach vendors for an authentic lunch."
+      ],
+      "faqs": [
+        {
+          "question": "Are Nice beaches sandy or pebble?",
+          "answer": "Nice beaches are pebble beaches (galets in French), not sandy. The smooth, round pebbles are characteristic of the French Riviera coastline. While this might seem less comfortable at first, the pebbles mean incredibly clear water - no sand clouds or grittiness! The pebbles also mean cleaner beaches and better snorkeling visibility. Most locals and regular visitors love the pebble beaches once they get used to them. Water shoes are highly recommended for comfort when entering and exiting the water. The unique pebble beaches are actually part of Nice's charm!"
+        },
+        {
+          "question": "How much do beach clubs cost in Nice?",
+          "answer": "Beach clubs in Nice typically charge €15-35 per person per day for a lounger and umbrella. This includes access to changing rooms, showers, and sometimes WiFi. Premium clubs like Neptune Plage or Castel Plage are around €25-35, while more casual clubs charge €15-20. Many clubs also have restaurants and bars where you can order food and drinks. Some high-end clubs require minimum spending instead of entrance fees. Public beaches are completely free - just bring your own towel! Beach club prices are worth it for comfort, service, and facilities if you're spending a full day."
+        },
+        {
+          "question": "Is the water clean and safe for swimming?",
+          "answer": "Yes! Nice's Mediterranean waters are exceptionally clean, clear, and safe for swimming. The water quality is regularly monitored and consistently receives excellent ratings. The pebble beaches mean no sand clouds, resulting in crystal-clear visibility - often you can see the bottom even in deeper water. The beaches are Blue Flag certified, indicating high environmental and safety standards. Lifeguards are present at major beaches during summer season. The water is calm most days, though occasional winds can create small waves. It's perfect for swimming, snorkeling, and water sports!"
+        },
+        {
+          "question": "What is the best beach in Nice?",
+          "answer": "It depends on what you're looking for! For families, Carras Beach in the eastern part offers calmer waters and gentler slopes. For atmosphere, the main public beaches near the Promenade are lively and central. For luxury, try beach clubs like Castel Plage or Blue Beach. For locals' favorite, head to Villefranche-sur-Mer just east of Nice (sandy beach!). Coco Beach and Plage Beau Rivage offer good mid-range options. Each beach has its own character - many visitors try several during their stay. All beaches offer the same beautiful Mediterranean water!"
+        },
+        {
+          "question": "When is the best time for beach activities in Nice?",
+          "answer": "The best beach season in Nice runs from May through October. Water temperatures reach 72-77°F (22-25°C) from June through September - perfect for swimming! July and August are busiest with warm water but crowded beaches. June and September offer ideal conditions with pleasant temperatures and fewer crowds. Even April and October can be warm enough for sunbathing (though water is cooler at 63-68°F). Nice's 300 days of sunshine mean you can enjoy the beaches nearly year-round, though swimming is most comfortable May-October."
+        },
+        {
+          "question": "Can I rent water sports equipment on the beach?",
+          "answer": "Yes! Most beaches in Nice offer water sports equipment rentals including paddleboards (€15-20/hour), kayaks (€12-18/hour), and pedal boats (€20-25/hour). Some beach clubs offer free paddleboards or kayaks with your lounger rental. Jet ski rentals are available from several operators (€60-100 for 15-30 minutes). Snorkeling equipment can be rented for around €10/day. Many beach clubs include some water sports in their daily rate. For better rates, book water sports as part of a guided tour rather than individual rentals."
+        },
+        {
+          "question": "Are there facilities like showers and restrooms on the beaches?",
+          "answer": "Yes! Nice's beaches are well-equipped with facilities. Free public showers are located along the Promenade des Anglais at regular intervals - perfect for rinsing off salt water and pebbles. Public restrooms (toilettes) are available, though some charge a small fee (€0.50-1). Beach clubs offer private showers, changing rooms, and clean restrooms included with your lounger rental. Most beaches also have nearby cafes and restaurants with facilities. The Promenade makes it easy to access any facilities you need. Nice beaches are very well-maintained and tourist-friendly!"
+        },
+        {
+          "question": "What should I bring for a day at the beach in Nice?",
+          "answer": "Essential items: water shoes (crucial for pebble beaches!), sunscreen (SPF 50+ - the sun is strong), beach towel, swimwear, hat, and sunglasses. Bring water to stay hydrated, though beach vendors and nearby cafes sell drinks. A waterproof bag protects your phone and valuables. If visiting public beaches, bring a beach mat or lounger for comfort on pebbles. Cash for beach clubs, food, and drinks (not all places take cards). A light cover-up for walking on the Promenade. Most beach clubs provide umbrellas and loungers, so you don't need those if you're booking one!"
+        }
+      ]
+    },
+    'french-riviera-day-trips': {
+      "title": "Nice French Riviera Day Trips",
+      "subtitle": "Explore Monaco, Cannes, Antibes, and stunning coastal villages from Nice!",
+      "categoryName": "French Riviera Day Trips",
+      "stats": {
+        "toursAvailable": 25,
+        "priceFrom": 65,
+        "duration": "6-10 hours"
+      },
+      "introduction": "Discover the legendary French Riviera with unforgettable day trips from Nice to the Côte d'Azur's most glamorous destinations! From the glittering principality of Monaco with its famous casino and royal palace, to Cannes' film festival glory and designer boutiques, to medieval hilltop villages like Èze with breathtaking views - these tours showcase the best of the Mediterranean coast. Experience the artistic charm of Antibes where Picasso worked, explore Saint-Paul-de-Vence's galleries and cobblestone streets, or visit the perfume capital of Grasse. Each destination offers unique attractions, from luxurious yacht harbors to authentic Provençal markets, Belle Époque architecture to contemporary art. Perfect for culture enthusiasts, photography lovers, and anyone wanting to experience the diverse beauty and sophistication of the French Riviera beyond Nice!",
+      "seo": {
+        "title": "Nice Day Trips 2025 - French Riviera Tours",
+        "description": "Explore Monaco, Cannes, Èze, and the French Riviera from Nice. Expert-guided day trips to Côte d'Azur highlights!",
+        "keywords": "Nice day trips, French Riviera tours, Monaco from Nice, Cannes tours, Èze village, Côte d'Azur excursions"
+      },
+      "whyChoose": [
+        {
+          "icon": "MapPin",
+          "title": "Multiple Destinations",
+          "description": "Visit several iconic Riviera locations in one day with expert planning and transportation."
+        },
+        {
+          "icon": "Star",
+          "title": "World-Famous Sites",
+          "description": "Experience Monaco's casino, Cannes' red carpet, and medieval hilltop villages."
+        },
+        {
+          "icon": "Users",
+          "title": "Expert Local Guides",
+          "description": "Benefit from insider knowledge, skip-the-line access, and fascinating historical insights."
+        },
+        {
+          "icon": "Heart",
+          "title": "Stunning Scenery",
+          "description": "Drive along breathtaking coastal roads with spectacular Mediterranean views."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Star",
+          "title": "Monaco & Monte Carlo Tours",
+          "description": "Full-day tour to the glamorous principality including Palace, Casino, and old town.",
+          "features": [
+            "Royal Palace visit",
+            "Monte Carlo Casino",
+            "Formula 1 circuit",
+            "Oceanographic Museum",
+            "Luxury harbor views"
+          ]
+        },
+        {
+          "icon": "MapPin",
+          "title": "Three Corniche Tour",
+          "description": "Spectacular coastal drive visiting Èze, Monaco, and seaside villages along three scenic routes.",
+          "features": [
+            "Corniche roads drive",
+            "Èze medieval village",
+            "Monaco visit",
+            "Panoramic viewpoints",
+            "Perfumery stop"
+          ]
+        },
+        {
+          "icon": "Camera",
+          "title": "Cannes & Antibes Tour",
+          "description": "Explore Cannes' glamour and Antibes' artistic heritage on this western Riviera tour.",
+          "features": [
+            "Cannes red carpet",
+            "Designer shopping",
+            "Antibes old town",
+            "Picasso Museum",
+            "Port viewing"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Hilltop Villages Tour",
+          "description": "Discover authentic Provence in stunning medieval villages with art galleries and views.",
+          "features": [
+            "Saint-Paul-de-Vence",
+            "Èze medieval village",
+            "Art galleries",
+            "Local crafts",
+            "Provençal lunch"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Nice French Riviera Day Trips",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Full-day tours typically last 6-10 hours with multiple stops and sightseeing."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Multiple Destinations",
+            "description": "Visit 2-4 different locations in one day, maximizing your Riviera experience."
+          },
+          {
+            "icon": "Users",
+            "title": "Small Group Tours",
+            "description": "Intimate groups of 8-15 people ensure personalized attention and flexibility."
+          },
+          {
+            "icon": "Camera",
+            "title": "Photo Stops",
+            "description": "Frequent stops at scenic viewpoints for capturing stunning Riviera landscapes."
+          },
+          {
+            "icon": "Star",
+            "title": "Skip-the-Line Access",
+            "description": "Many tours include priority entry to popular attractions, saving valuable time."
+          },
+          {
+            "icon": "Heart",
+            "title": "Comfortable Transportation",
+            "description": "Air-conditioned minibuses or coaches with Wi-Fi and knowledgeable drivers."
+          }
+        ]
+      },
+      "expertTips": [
+        "Book Monaco tours on days without cruise ships for a less crowded experience.",
+        "The Middle Corniche offers the best views - request a window seat!",
+        "Bring your passport if visiting Monaco (though not required for EU/Schengen visitors).",
+        "Wear comfortable shoes - hilltop villages have steep cobblestone streets.",
+        "Start early to beat crowds at popular sites like Monaco Palace and Èze village.",
+        "Wednesday mornings offer the best Antibes market experience - colorful and authentic!",
+        "Photography is prohibited inside Monaco Casino if you're not gambling.",
+        "Pack a light jacket - hilltop villages can be breezy even in summer."
+      ],
+      "faqs": [
+        {
+          "question": "How far is Monaco from Nice?",
+          "answer": "Monaco is only 20 kilometers (12 miles) east of Nice - about 25-40 minutes by car depending on traffic. The three scenic coastal roads (corniches) offer different routes: the Lower Corniche is fastest, the Middle Corniche offers best views, and the Upper Corniche provides dramatic vistas. Most day tours take 6-8 hours total to allow time for exploring Monaco's highlights including the Palace, Casino, old town, and harbor. The proximity makes Monaco perfect for a half-day or full-day trip from Nice!"
+        },
+        {
+          "question": "Can I visit Monaco, Èze, and Cannes in one day?",
+          "answer": "Monaco and Èze definitely yes - they're close together and most tours combine them (6-8 hours total). However, adding Cannes (30km west of Nice) would make an extremely long day as it's in the opposite direction. Better to do Monaco-Èze on one day, and Cannes-Antibes on another day. Some tours offer \"Grand Tour\" options visiting three places in 10+ hours, but it can feel rushed. For quality time at each destination, stick to 2-3 locations. The Riviera is best savored, not rushed!"
+        },
+        {
+          "question": "What is Èze village and why is it special?",
+          "answer": "Èze is a stunning medieval village perched 427 meters (1,400 feet) above the Mediterranean, offering breathtaking panoramic views from Monaco to Nice. This perfectly preserved \"village perché\" features narrow cobblestone streets, stone houses, artisan shops, and art galleries. The famous Exotic Garden at the summit provides spectacular vistas. Èze also houses the Fragonard perfumery where you can learn about perfume-making. The village appears frozen in time yet offers modern boutiques and restaurants. It's one of the Riviera's most photographed and visited villages - absolutely magical!"
+        },
+        {
+          "question": "What are the Three Corniches?",
+          "answer": "The Three Corniches are three parallel coastal roads between Nice and Monaco, each offering different perspectives and experiences. The Lower Corniche (Basse Corniche) runs along the coast through seaside towns - fastest route. The Middle Corniche (Moyenne Corniche) offers the most spectacular views from mid-height, passing through Èze. The Upper Corniche (Grande Corniche) is the highest and most dramatic, built on an ancient Roman road. Many tours use different corniches going and returning for varied scenery. The views are absolutely spectacular - some of Europe's most scenic drives!"
+        },
+        {
+          "question": "Is it better to take a guided tour or explore independently?",
+          "answer": "Both options work well! Guided tours offer stress-free transportation, insider knowledge, skip-the-line access, and optimal time management - you'll see more in less time. They typically cost €65-120 and handle all logistics. Independent travel offers flexibility and costs less (train to Monaco €5, buses €1.50) but requires planning, navigating parking, and managing your own schedule. For first-time visitors or limited time, guided tours provide excellent value and comprehensive experiences. For flexibility or budget travel, trains and buses connect Riviera destinations frequently. Many visitors do both!"
+        },
+        {
+          "question": "What should I see in Monaco?",
+          "answer": "Don't miss the Prince's Palace (changing of guard at 11:55 AM daily), Monte Carlo Casino and surrounding gardens (dress code if entering), Monaco-Ville old town with narrow streets, Oceanographic Museum with marine exhibits, Formula 1 circuit (you can walk/drive the track!), luxury car spotting around Casino Square, Port Hercule yacht harbor, and Japanese Garden for peaceful beauty. Cathedral de Monaco houses Princess Grace's tomb. Allow 4-6 hours to see highlights comfortably. The palace area and Casino Square are must-sees. Monaco is tiny but packed with attractions!"
+        },
+        {
+          "question": "Are day trips suitable for children?",
+          "answer": "Yes, but choose tours carefully! Monaco's Oceanographic Museum, Formula 1 circuit, and yacht harbor fascinate kids. Èze village has narrow paths and steep drops - keep young children close. Beach breaks and ice cream stops help! Look for family-friendly tours with shorter durations (6 hours vs. 10 hours). Train trips to Monaco can be exciting for children and more flexible than long bus tours. Some companies offer special family tours with child-appropriate content and pacing. Most kids love the glamorous cars and yachts in Monaco!"
+        },
+        {
+          "question": "When is the best time for French Riviera day trips?",
+          "answer": "May-June and September-October offer ideal conditions - pleasant weather, fewer crowds, and better photo light. July-August are beautiful but hot and crowded, especially Monaco and Èze. Spring brings flowers and mild temperatures. Winter (November-March) is quieter with mild weather but some attractions have reduced hours. Avoid Mondays when some museums close. Wednesday mornings are perfect for Antibes market. Check Monaco Grand Prix dates (late May) - exciting but extremely crowded and expensive. The Riviera shines nearly year-round thanks to its Mediterranean climate!"
+        }
+      ]
+    },
+    'castle-hill-tours': {
+      "title": "Nice Castle Hill Tours",
+      "subtitle": "Climb to panoramic viewpoints and explore historic ruins above Nice's coastline!",
+      "categoryName": "Castle Hill Tours",
+      "stats": {
+        "toursAvailable": 12,
+        "priceFrom": 25,
+        "duration": "1.5-3 hours"
+      },
+      "introduction": "Ascend to Castle Hill (Colline du Château), Nice's spectacular elevated park offering the most breathtaking 360-degree views of the entire French Riviera! This historic site, where a medieval fortress once stood, now features lush Mediterranean gardens, cascading waterfalls, ancient ruins, and panoramic terraces overlooking the Baie des Anges, Old Town, and coastline extending to Monaco. Whether you hike the scenic paths, take the free elevator, or join a guided tour, reaching the summit rewards you with unforgettable vistas perfect for photography. Explore archaeological remains, discover hidden viewpoints, relax in shaded gardens, and understand Nice's strategic history. The site offers something for everyone - from romantic sunset viewing to family-friendly exploration, historical discovery to peaceful nature walks. Castle Hill is absolutely essential for capturing that perfect Nice moment!",
+      "seo": {
+        "title": "Nice Castle Hill Tours 2025 - Colline du Château",
+        "description": "Explore Castle Hill in Nice with panoramic views, gardens, and historic ruins. Guided tours and hiking options!",
+        "keywords": "Castle Hill Nice, Colline du Château, Nice viewpoints, Nice panoramic views, Castle Hill tours"
+      },
+      "whyChoose": [
+        {
+          "icon": "Camera",
+          "title": "Best Views in Nice",
+          "description": "Unparalleled 360-degree panoramas of the coastline, Old Town, port, and mountains."
+        },
+        {
+          "icon": "Heart",
+          "title": "Historic Significance",
+          "description": "Explore ruins of the medieval castle that defended Nice for centuries."
+        },
+        {
+          "icon": "Sun",
+          "title": "Beautiful Gardens",
+          "description": "Peaceful Mediterranean gardens with waterfalls, shaded paths, and native plants."
+        },
+        {
+          "icon": "Users",
+          "title": "Multiple Access Options",
+          "description": "Hike scenic paths, take the free elevator, or join guided tours - your choice!"
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Users",
+          "title": "Guided Walking Tours",
+          "description": "Climb to the summit with expert guides sharing history and pointing out landmarks.",
+          "features": [
+            "Historical commentary",
+            "Best viewpoints",
+            "Hidden spots",
+            "Photography stops",
+            "Ancient ruins tour"
+          ]
+        },
+        {
+          "icon": "Sun",
+          "title": "Sunrise & Sunset Tours",
+          "description": "Experience magical golden hour lighting from Castle Hill's panoramic terraces.",
+          "features": [
+            "Perfect timing",
+            "Photographer's paradise",
+            "Romantic atmosphere",
+            "Fewer crowds",
+            "Spectacular colors"
+          ]
+        },
+        {
+          "icon": "Camera",
+          "title": "Photography Tours",
+          "description": "Professional guidance for capturing Castle Hill's stunning views and architectural details.",
+          "features": [
+            "Composition tips",
+            "Best photo spots",
+            "Light guidance",
+            "Technical advice",
+            "Hidden angles"
+          ]
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Historical Tours",
+          "description": "Deep dive into Castle Hill's role in Nice's defense and Mediterranean history.",
+          "features": [
+            "Fortress history",
+            "Archaeological sites",
+            "Strategic importance",
+            "Medieval stories",
+            "Architecture details"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Nice Castle Hill Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours typically last 1.5-3 hours including ascent, exploration, and descent."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Stunning Views",
+            "description": "See Nice's entire coastline, Old Town rooftops, port, and distant mountains."
+          },
+          {
+            "icon": "Heart",
+            "title": "Multiple Terraces",
+            "description": "Several viewing platforms offer different perspectives and photo opportunities."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Historical Ruins",
+            "description": "Explore remains of the medieval fortress and learn about Nice's strategic past."
+          },
+          {
+            "icon": "Sun",
+            "title": "Garden Exploration",
+            "description": "Peaceful Mediterranean gardens with waterfalls, benches, and shaded paths."
+          },
+          {
+            "icon": "Camera",
+            "title": "Photography Paradise",
+            "description": "Countless opportunities for spectacular photos of Nice and the Riviera."
+          }
+        ]
+      },
+      "expertTips": [
+        "Take the free elevator from Quai des États-Unis if you don't want to climb stairs.",
+        "Visit at sunrise or sunset for spectacular light and fewer crowds.",
+        "The stairs from Old Town (Rue Rossetti) offer the most scenic climbing route.",
+        "Bring water - the climb can be thirsty work, especially in summer heat.",
+        "The eastern terrace offers the best views of Promenade des Anglais and the entire coastline.",
+        "Free Wi-Fi is available at the top - perfect for sharing photos immediately!",
+        "Visit on clear days for visibility extending to Antibes and beyond.",
+        "The cemetery near the summit is historically interesting and worth a brief visit."
+      ],
+      "faqs": [
+        {
+          "question": "How do I get to the top of Castle Hill?",
+          "answer": "There are three ways to reach the summit: 1) Free elevator from Quai des États-Unis (eastern side, near Tour Bellanda) - quickest and easiest. 2) Scenic stairs from Old Town (Rue Rossetti or Place Garibaldi) - about 15-20 minutes of climbing, beautiful views. 3) Eastern path from Port Lympia - longer but gradual. The elevator runs daily 9 AM-7 PM (8 PM in summer) and is completely free! Most people take the elevator up and walk down through Old Town. All routes are well-signed and safe."
+        },
+        {
+          "question": "How long does it take to climb Castle Hill?",
+          "answer": "The climb from Old Town takes about 15-20 minutes at a moderate pace. There are approximately 200-300 steps depending on which route you choose. The path from Rue Rossetti is most popular. The stairs are stone, uneven in places, and can be tiring in summer heat - take your time and rest at viewpoint landings. Once at the top, allow at least 30-45 minutes to explore the gardens, visit all viewpoints, and enjoy the scenery. Taking the free elevator avoids the climb entirely and takes just 2 minutes!"
+        },
+        {
+          "question": "Is Castle Hill worth visiting?",
+          "answer": "Absolutely yes! Castle Hill offers the single best views of Nice and is considered a must-see attraction. The panoramic vistas are truly spectacular - you'll see the entire sweep of the Baie des Anges, Promenade des Anglais, Old Town's terracotta rooftops, the port, and coastline extending to Monaco on clear days. It's perfect for photography, provides historical context for Nice, and offers peaceful gardens for relaxation. The views alone are worth the visit! Many visitors say Castle Hill was their favorite Nice experience. Best of all, it's completely free!"
+        },
+        {
+          "question": "What is there to see on Castle Hill besides the views?",
+          "answer": "Beyond the spectacular views, you'll find: the waterfall and small lake, medieval castle ruins and archaeological remains, the Tour Bellanda (old defensive tower), several viewing terraces at different heights, beautiful Mediterranean gardens with native plants, a children's playground, the interesting naval cemetery, information panels about the fortress history, shaded benches and picnic areas, and a small café (seasonal). The ruins hint at the massive fortress that once stood here. It's a peaceful oasis above the city - perfect for a relaxing break from sightseeing!"
+        },
+        {
+          "question": "When is the best time to visit Castle Hill?",
+          "answer": "Early morning (8-10 AM) offers peaceful atmosphere, cool temperatures, and beautiful morning light perfect for photography. Sunset (1-2 hours before dusk) provides spectacular golden hour lighting and romantic ambiance. Midday offers clearest visibility but strongest heat. The site is open 24/7, but the elevator operates 9 AM-7 PM (8 PM summer). Avoid midday summer heat if climbing stairs. Spring and fall offer comfortable temperatures. Clear days provide best visibility - check weather! Any time is beautiful, but sunrise and sunset are magical."
+        },
+        {
+          "question": "Is Castle Hill suitable for children and elderly?",
+          "answer": "Yes, absolutely! The free elevator makes Castle Hill accessible for elderly visitors, people with limited mobility, strollers, and wheelchairs (though some viewing areas have steps). Children love the playground at the top, the waterfall, and exploring the gardens. If hiking up, take breaks and go at a comfortable pace. The paths at the summit are mostly paved and easy to navigate. There are benches throughout for resting. It's a family-friendly attraction that all ages can enjoy. Just be mindful of young children near ledges at viewpoints."
+        },
+        {
+          "question": "Are there facilities like restrooms and cafes on Castle Hill?",
+          "answer": "Yes, there are public restrooms near the main viewing terrace (free). A small café operates seasonally at the summit selling drinks, ice cream, and light snacks - perfect for refreshments while enjoying the views. Prices are reasonable for a tourist site. No full restaurant, so bring snacks if you want a picnic. Water fountains are available. The nearest full facilities are in Old Town at the base. The site is well-maintained with adequate facilities for a pleasant visit."
+        },
+        {
+          "question": "Can you see Monaco from Castle Hill?",
+          "answer": "On clear days, yes! From the eastern viewing terrace, you can see Monaco approximately 20 kilometers away along the coast. You'll need good visibility - hazy or cloudy days limit the view. Bring binoculars for a better look! The view extends from Nice port to Cap Ferrat, and on perfect days, you can see as far as Monaco and the Italian border. The best visibility is typically in morning or after rain when the air is clearest. Even without seeing Monaco, the panoramic views of Nice and the immediate coastline are spectacular!"
+        }
+      ]
+    },
+    'monaco-excursions': {
+      "title": "Nice Monaco Excursions",
+      "subtitle": "Visit the glamorous principality of Monaco with its royal palace, casino, and luxury harbor!",
+      "categoryName": "Monaco Excursions",
+      "stats": {
+        "toursAvailable": 22,
+        "priceFrom": 45,
+        "duration": "4-8 hours"
+      },
+      "introduction": "Discover the legendary Principality of Monaco, the world's second-smallest country packed with extraordinary luxury, glamour, and Mediterranean beauty! Just 20 minutes from Nice, Monaco offers unforgettable experiences - from the royal palace perched on the rock to the legendary Monte Carlo Casino, from Formula 1's famous circuit to Port Hercule filled with superyachts. Explore Monaco-Ville's old town with narrow streets and stunning views, visit the impressive Oceanographic Museum, and feel the excitement around Casino Square where Ferraris and Lamborghinis are everyday sights. Whether you're interested in royal history, automotive passion, architectural beauty, or simply experiencing one of the world's most exclusive destinations, Monaco excursions offer the ultimate French Riviera glamour. Perfect for luxury lovers, history enthusiasts, and anyone wanting to experience genuine Riviera sophistication!",
+      "seo": {
+        "title": "Monaco Tours from Nice 2025 - Monte Carlo Excursions",
+        "description": "Visit Monaco from Nice! Explore Monte Carlo Casino, Royal Palace, and luxury harbor. Expert-guided excursions!",
+        "keywords": "Monaco tours from Nice, Monte Carlo tours, Monaco day trips, Monaco excursions, Royal Palace Monaco"
+      },
+      "whyChoose": [
+        {
+          "icon": "Star",
+          "title": "World-Famous Glamour",
+          "description": "Experience the legendary luxury and sophistication of Monaco and Monte Carlo."
+        },
+        {
+          "icon": "MapPin",
+          "title": "Close to Nice",
+          "description": "Just 20km away, making it perfect for a comfortable half-day or full-day excursion."
+        },
+        {
+          "icon": "Heart",
+          "title": "Royal Heritage",
+          "description": "Visit the Prince's Palace and learn about Monaco's fascinating Grimaldi royal family."
+        },
+        {
+          "icon": "Camera",
+          "title": "Stunning Scenery",
+          "description": "Spectacular coastal views, luxury yachts, and architecture unlike anywhere else."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Star",
+          "title": "Classic Monaco Tours",
+          "description": "Comprehensive tours covering all major highlights including Palace, Casino, and old town.",
+          "features": [
+            "Royal Palace visit",
+            "Monte Carlo Casino",
+            "Formula 1 circuit",
+            "Port Hercule",
+            "Old town walking"
+          ]
+        },
+        {
+          "icon": "Users",
+          "title": "Small Group Tours",
+          "description": "Intimate experiences with expert guides in comfortable minibuses from Nice.",
+          "features": [
+            "Expert local guides",
+            "Small groups 8-15",
+            "Pick-up from Nice",
+            "Skip-the-line options",
+            "Photo stops"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Monaco & Èze Tours",
+          "description": "Combine Monaco with the stunning medieval village of Èze for a full Riviera experience.",
+          "features": [
+            "Two destinations",
+            "Èze village",
+            "Monaco highlights",
+            "Scenic Corniche drive",
+            "Perfumery visit"
+          ]
+        },
+        {
+          "icon": "Camera",
+          "title": "Grand Prix & Car Tours",
+          "description": "Focus on Monaco's automotive heritage including the famous Formula 1 circuit.",
+          "features": [
+            "F1 circuit drive",
+            "Car spotting",
+            "Racing history",
+            "Museum options",
+            "Casino Square luxury cars"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Nice Monaco Excursions",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Half-day tours (4-5 hours) or full-day tours (7-8 hours) depending on your preference."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Major Highlights",
+            "description": "Visit Palace Square, Casino, Port Hercule, old town, and scenic viewpoints."
+          },
+          {
+            "icon": "Users",
+            "title": "Guided Experience",
+            "description": "Expert guides provide fascinating insights into Monaco's royal family and history."
+          },
+          {
+            "icon": "Star",
+            "title": "Luxury Atmosphere",
+            "description": "Experience the glamour with superyachts, exotic cars, and prestigious locations."
+          },
+          {
+            "icon": "Camera",
+            "title": "Photo Opportunities",
+            "description": "Incredible shots of the palace, harbor, casino, and stunning coastal views."
+          },
+          {
+            "icon": "Heart",
+            "title": "Comfortable Transport",
+            "description": "Air-conditioned vehicles with scenic coastal drive along the Corniche roads."
+          }
+        ]
+      },
+      "expertTips": [
+        "The changing of the guard at the Palace happens daily at 11:55 AM - don't miss it!",
+        "Dress code for entering the Casino: smart casual, no shorts or sandals.",
+        "Early morning tours avoid cruise ship crowds that arrive around noon.",
+        "You can walk the entire Formula 1 circuit - it's a public road except during the race!",
+        "The Oceanographic Museum is fantastic - allow 1-2 hours if including it in your tour.",
+        "Free Wi-Fi is available in most Monaco public areas - great for sharing photos!",
+        "Casino entry is €17 if you just want to see the gaming rooms (gambling optional).",
+        "Bring your passport - technically required though rarely checked for EU visitors."
+      ],
+      "faqs": [
+        {
+          "question": "How far is Monaco from Nice and how do I get there?",
+          "answer": "Monaco is only 20 kilometers (12 miles) from Nice - about 25-40 minutes by car depending on traffic and route. You can get there by: 1) Guided tour (most convenient, €45-75) with pick-up from Nice. 2) Train from Nice-Ville station (€5, 20 minutes, frequent service). 3) Bus 100 along the coast (€1.50, scenic route, 45 minutes). 4) Private car or taxi (€60-80 one way). The train is fastest and easiest for independent travel. Guided tours handle all logistics and provide commentary."
+        },
+        {
+          "question": "Can I visit Monaco independently or should I take a tour?",
+          "answer": "Both work perfectly! Independent visits via train (€5 each way) offer flexibility and cost less. Monaco is tiny and walkable - you can see major highlights in 4-5 hours. Guided tours (€45-75) provide expert commentary, convenient transportation, skip-the-line access, and efficient routing to see everything. Tours are valuable for first-time visitors and those wanting historical context. Many combine Monaco with Èze village for fuller day trips. Independent travel works great if you prefer flexibility and have basic Monaco knowledge. Choose based on your travel style!"
+        },
+        {
+          "question": "What are the must-see attractions in Monaco?",
+          "answer": "Don't miss: Prince's Palace and changing of the guard (11:55 AM daily), Monte Carlo Casino and surrounding gardens, Monaco-Ville old town with narrow streets, Port Hercule luxury yacht harbor, Formula 1 circuit (drive or walk it!), Cathedral de Monaco (Princess Grace's tomb), Casino Square for luxury car spotting, Oceanographic Museum with marine life, and Japanese Garden for peaceful beauty. The palace area and Casino Square are essential. Allow 4-6 hours to see major highlights comfortably. Monaco is small but packed with extraordinary sights!"
+        },
+        {
+          "question": "Can I enter and gamble at the Monte Carlo Casino?",
+          "answer": "Yes! The Casino opens at 2 PM daily (gaming rooms at 5 PM). Entry to the gaming rooms costs €17 (bring passport/ID). You must be 18+ and dressed appropriately - smart casual minimum, no shorts, flip-flops, or sportswear. Men should wear long pants and closed shoes. Jacket recommended but not required. Minimum bet varies by table (€5-25 typically). Even if not gambling, seeing the Belle Époque interiors is worthwhile! The public areas (atrium, café) are free to enter. Photography is not allowed inside gaming areas."
+        },
+        {
+          "question": "Is Monaco expensive to visit?",
+          "answer": "Monaco has a reputation for expense, but visiting isn't as costly as you might think! Entry to major sights ranges from free (palace exteriors, walking circuit) to €17 (Casino gaming rooms) to €14-20 (museum tickets). Coffee costs €4-6, lunch €15-40 depending on location, dinner €30-150+. You don't need to spend a fortune - exploring the streets, viewpoints, and harbor is free! Budget-conscious visitors can enjoy Monaco fully by having one nice meal and otherwise doing free activities. It's the lifestyle that's expensive, not visiting as a tourist!"
+        },
+        {
+          "question": "What is the Formula 1 circuit like?",
+          "answer": "The Monaco Grand Prix circuit is actually public streets that you can walk or drive year-round (except race weekend in late May)! The 3.3km circuit includes famous turns like Casino Square, the tunnel, and the harbor chicane. You can walk the entire circuit in about 45 minutes, experiencing the same route F1 drivers race at 160mph! Look for the red and white curbs marking the track. It's a unique thrill to walk where racing legends competed. Many tours drive you around the circuit explaining each corner's challenges and history."
+        },
+        {
+          "question": "How long should I spend in Monaco?",
+          "answer": "A half-day (4-5 hours) covers major highlights: Palace area, Casino, harbor, and old town. A full day (7-8 hours) allows more leisurely exploration, museum visits, and lunch at a nice restaurant. Most tours from Nice are 4-5 hours (half-day) or 7-8 hours (full-day often including Èze). Monaco itself is tiny - just 2 square kilometers - so it's very walkable. You could see highlights in 3 hours if rushed, but 4-6 hours is ideal for comfortable exploration without stress."
+        },
+        {
+          "question": "Is Monaco part of France?",
+          "answer": "No! Monaco is an independent country and sovereign principality - the world's second-smallest nation after Vatican City. However, it has very close ties with France. The official language is French (though Italian and English are widely spoken). They use the Euro currency. There are no border controls between France and Monaco - you won't even notice crossing the border! French is the language of government and education. The Grimaldi family has ruled Monaco for over 700 years. It's a fascinating constitutional monarchy with unique status!"
+        }
+      ]
+    }
+  },
+
 };
 
