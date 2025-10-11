@@ -31038,5 +31038,982 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
     }
   },
 
+  prague: {
+    'prague-castle-tours': {
+      "title": "Prague Castle Tours",
+      "subtitle": "Explore the world's largest ancient castle complex with St. Vitus Cathedral, royal palaces, and panoramic Prague views!",
+      "categoryName": "Prague Castle Tours",
+      "stats": {
+        "toursAvailable": 25,
+        "priceFrom": 35,
+        "duration": "2-4 hours"
+      },
+      "introduction": "Discover Prague Castle, the world's largest ancient castle complex and the crown jewel of Czech architecture! This UNESCO World Heritage site sprawls across hilltops overlooking the Vltava River, encompassing palaces, churches, gardens, and towers dating back to the 9th century. Marvel at St. Vitus Cathedral's Gothic spires, explore the medieval Golden Lane where alchemists once worked, visit royal chambers where Czech kings ruled, and enjoy breathtaking views over Prague's terracotta rooftops. The castle complex tells 1,100 years of Czech history through Romanesque, Gothic, Renaissance, and Baroque architecture. From the dramatic changing of the guard ceremony to the stunning stained glass by Alphonse Mucha, every corner reveals treasures. Expert guides bring centuries of royal intrigue, architectural evolution, and Czech heritage alive. Perfect for history enthusiasts, architecture lovers, photographers, and first-time Prague visitors!",
+      "seo": {
+        "title": "Prague Castle Tours 2025 - Skip-the-Line Access",
+        "description": "Visit Prague Castle with expert guides. St. Vitus Cathedral, Golden Lane, and Czech royal history with skip-the-line tickets!",
+        "keywords": "Prague Castle tours, St. Vitus Cathedral, Golden Lane Prague, Prague Castle tickets, Czech castle tours"
+      },
+      "whyChoose": [
+        {
+          "icon": "Star",
+          "title": "World's Largest Castle",
+          "description": "Explore the Guinness World Record holder for largest ancient castle complex!"
+        },
+        {
+          "icon": "Camera",
+          "title": "Spectacular Architecture",
+          "description": "See Gothic, Romanesque, Renaissance, and Baroque styles in one magnificent complex."
+        },
+        {
+          "icon": "Heart",
+          "title": "Skip Long Lines",
+          "description": "Priority access saves hours of waiting at this extremely popular attraction."
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Rich History",
+          "description": "Discover 1,100 years of Czech royal heritage, architecture, and political significance."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Users",
+          "title": "Complete Castle Tours",
+          "description": "Comprehensive tours covering all major sites - cathedral, palaces, gardens, and Golden Lane.",
+          "features": [
+            "St. Vitus Cathedral",
+            "Old Royal Palace",
+            "Golden Lane",
+            "Skip-the-line entry",
+            "Expert guides"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Private Castle Tours",
+          "description": "Personalized experiences with dedicated guides and flexible pacing.",
+          "features": [
+            "Private guide",
+            "Custom itinerary",
+            "Your interests",
+            "Flexible timing",
+            "VIP experience"
+          ]
+        },
+        {
+          "icon": "Camera",
+          "title": "Photography Tours",
+          "description": "Capture the castle's beauty with professional photographers guiding compositions.",
+          "features": [
+            "Best photo spots",
+            "Composition tips",
+            "Architectural details",
+            "Panoramic viewpoints",
+            "Golden hour timing"
+          ]
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Historical Deep Dives",
+          "description": "In-depth tours for history buffs covering Czech royalty and architectural evolution.",
+          "features": [
+            "Detailed history",
+            "Architectural analysis",
+            "Royal stories",
+            "Political significance",
+            "Expert historians"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Prague Castle Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours last 2-4 hours depending on depth and areas covered within the complex."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Major Highlights",
+            "description": "Visit St. Vitus Cathedral, Old Royal Palace, Golden Lane, and castle courtyards."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Historical Insights",
+            "description": "Learn about Czech kings, Holy Roman Emperors, and the castle's 1,100-year role."
+          },
+          {
+            "icon": "Camera",
+            "title": "Panoramic Views",
+            "description": "Stunning vistas over Prague's red rooftops and the Vltava River below."
+          },
+          {
+            "icon": "Star",
+            "title": "Skip-the-Line Access",
+            "description": "Bypass the notorious security and ticket lines that can reach 2+ hours!"
+          },
+          {
+            "icon": "Heart",
+            "title": "Changing of Guard",
+            "description": "See the ceremonial guard change at noon with fanfare and traditional uniforms."
+          }
+        ]
+      },
+      "expertTips": [
+        "The changing of the guard at noon includes fanfare - arrive 10 minutes early for good viewing.",
+        "Visit early morning (9 AM opening) to avoid massive crowds that arrive by 11 AM.",
+        "St. Vitus Cathedral is free to enter the front section - only full entry requires tickets.",
+        "Golden Lane is tiny and gets packed - visit first thing in morning or late afternoon.",
+        "Climb the cathedral tower (287 steps) for the best Prague views - worth the effort!",
+        "Skip-the-line tours are essential in summer - regular security lines can be 2+ hours.",
+        "The castle complex is massive - wear comfortable shoes for extensive walking.",
+        "Combine with Strahov Monastery nearby for views and beautiful library."
+      ],
+      "faqs": [
+        {
+          "question": "How big is Prague Castle?",
+          "answer": "Prague Castle is HUGE - according to Guinness World Records, it's the largest ancient castle complex in the world! It covers 70,000 square meters (750,000 sq ft) - roughly the size of seven football fields! The complex includes palaces, churches, monasteries, gardens, towers, and defensive walls. It's not a single building but an entire fortified area developed over 1,000+ years. You could spend an entire day exploring and still not see everything! The castle stretches 570 meters long and averages 130 meters wide. Most tours focus on main highlights (cathedral, palace, Golden Lane) which takes 2-4 hours. The scale is impressive - bring comfortable shoes!"
+        },
+        {
+          "question": "What is St. Vitus Cathedral?",
+          "answer": "St. Vitus Cathedral is the spectacular Gothic cathedral dominating Prague Castle - the largest and most important church in the Czech Republic! Construction began in 1344 but wasn't completed until 1929 - it took 585 years! The cathedral contains Czech crown jewels (shown only rarely), royal tombs including Charles IV, the stunning Chapel of St. Wenceslas covered in semi-precious stones, beautiful stained glass windows including Art Nouveau work by Alphonse Mucha, and the Great South Tower offering panoramic views. The Gothic architecture is breathtaking - soaring vaults, flying buttresses, and intricate details. It's the coronation and burial site of Czech kings. Absolutely magnificent!"
+        },
+        {
+          "question": "What is Golden Lane?",
+          "answer": "Golden Lane (Zlatá ulička) is a picturesque street of tiny colorful houses built into the castle walls in the 16th century! Originally, castle guards lived here. Later, goldsmiths worked here (hence \"Golden\"). By the 19th-20th centuries, it became slum housing for poor artisans. Franz Kafka lived at #22 briefly! Today the houses are museums showing different historical periods - medieval armory, alchemist workshop, period rooms. They're incredibly small - like dollhouses! The lane is charming and photogenic but gets extremely crowded. It's included in castle ticket Circuit B/C. Visit early morning or late afternoon to avoid tour group crushes. Very touristy but undeniably cute!"
+        },
+        {
+          "question": "How much does Prague Castle cost?",
+          "answer": "Castle grounds are FREE to enter! However, visiting buildings requires tickets. Circuit B (most popular) costs 250 CZK (~$11) including St. Vitus Cathedral, Old Royal Palace, Golden Lane, and St. George's Basilica. Circuit A adds more sites (350 CZK). Individual site tickets are available. The cathedral's entry section is free - only deeper access requires tickets. Guided tours cost €35-60 including skip-the-line and expert commentary - excellent value considering 2+ hour waits for regular tickets in summer! Tower climb is separate 150 CZK. Gardens are free. Children under 6 are free, students get discounts. The Prague Card includes castle entry plus other attractions."
+        },
+        {
+          "question": "How do I get to Prague Castle?",
+          "answer": "Prague Castle sits on a hill west of the Vltava River. Main access options: Tram 22 to Pražský hrad stop (most convenient - right at castle gates), walk across Charles Bridge and climb up (scenic but steep - 20-30 minutes uphill!), or walk up Nerudova Street from Lesser Town (also steep!). Tram 22 runs frequently from city center. Metro A to Malostranská station then tram or steep walk. Some tours include transportation. The climb rewards with views but isn't easy - tram is smart! Once at the top, the complex is relatively flat. Going down after touring is much easier - lovely walk through Lesser Town. Allow 30-40 minutes for walking access."
+        },
+        {
+          "question": "When is the best time to visit Prague Castle?",
+          "answer": "Early morning (9 AM opening, April-October) offers smallest crowds and best photo lighting on the cathedral. Late afternoon (after 4 PM) sees tour groups departing - quieter but limited time before 5-6 PM closing. Weekdays are significantly less crowded than weekends. Winter (November-March) has far fewer tourists but shorter days and colder weather. Spring (April-May) and fall (September-October) offer ideal weather with moderate crowds. Avoid summer midday (11 AM-2 PM) when tour groups peak. The changing of guard at noon is worth seeing but creates crowds. Check current seasonal hours before planning!"
+        },
+        {
+          "question": "Is Prague Castle worth visiting?",
+          "answer": "Absolutely YES! Prague Castle is Prague's #1 must-see attraction - it defines the city's skyline and contains essential historical and architectural treasures. St. Vitus Cathedral alone is worth the visit - one of Europe's most beautiful Gothic cathedrals. The views over Prague are spectacular! The complex tells Czech history from medieval times to present. Yes, it's very touristy and crowded, but there's a reason - it's genuinely extraordinary! Skip-the-line tours manage crowds better. The scale, beauty, and significance make it essential for any Prague visit. Even people who complain about crowds admit it's magnificent. Don't skip it - just plan smartly with early visits or guided tours!"
+        }
+      ]
+    },
+    'charles-bridge-tours': {
+      "title": "Prague Charles Bridge Tours",
+      "subtitle": "Walk the legendary medieval bridge with 30 baroque statues, stunning views, and 700 years of history!",
+      "categoryName": "Charles Bridge Tours",
+      "stats": {
+        "toursAvailable": 18,
+        "priceFrom": 25,
+        "duration": "1.5-2.5 hours"
+      },
+      "introduction": "Cross Charles Bridge, Prague's most iconic landmark and one of Europe's most beautiful medieval bridges! Built in 1357 under King Charles IV, this magnificent stone bridge connects Old Town with Lesser Town across the Vltava River, lined with 30 baroque statues creating an open-air sculpture gallery. Experience the bridge at different times - sunrise when it's peaceful and golden, daytime when street artists and musicians perform, or evening when castle lights reflect in the river. Touch the famous statue of St. John of Nepomuk for good luck, admire views of Prague Castle rising above, photograph the stunning bridge towers, and understand the legends and history that make Charles Bridge magical. These walking tours explore the bridge, surrounding neighborhoods, and riverside areas revealing Prague's medieval character. Perfect for photographers, romantics, history lovers, and everyone visiting Prague!",
+      "seo": {
+        "title": "Prague Charles Bridge Tours 2025 - Medieval Landmark",
+        "description": "Explore Charles Bridge with expert guides. Baroque statues, Prague Castle views, and medieval history!",
+        "keywords": "Charles Bridge Prague, Prague walking tours, Charles Bridge tours, medieval bridge Prague, baroque statues"
+      },
+      "whyChoose": [
+        {
+          "icon": "Heart",
+          "title": "Most Iconic Bridge",
+          "description": "Walk the legendary 700-year-old bridge that symbolizes Prague!"
+        },
+        {
+          "icon": "Camera",
+          "title": "Photography Paradise",
+          "description": "Stunning views of Prague Castle, river, and city create perfect photo opportunities."
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Rich History",
+          "description": "Learn about medieval construction, baroque statues, and legends spanning centuries."
+        },
+        {
+          "icon": "Star",
+          "title": "Cultural Experience",
+          "description": "Street artists, musicians, and vendors create vibrant atmosphere unique to Prague."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Users",
+          "title": "Classic Bridge Tours",
+          "description": "Comprehensive tours explaining statue meanings, bridge history, and surrounding areas.",
+          "features": [
+            "All 30 statues explained",
+            "Historical context",
+            "Photo stops",
+            "Tower visits",
+            "Riverside walks"
+          ]
+        },
+        {
+          "icon": "Sun",
+          "title": "Sunrise Tours",
+          "description": "Experience Charles Bridge at dawn when it's peaceful and golden light is magical.",
+          "features": [
+            "Early morning timing",
+            "Peaceful atmosphere",
+            "Best photography light",
+            "Nearly empty bridge",
+            "Magical experience"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Evening & Night Tours",
+          "description": "Walk the bridge at sunset and see Prague Castle illuminated reflecting in the river.",
+          "features": [
+            "Sunset timing",
+            "Castle lighting",
+            "Romantic atmosphere",
+            "Evening photography",
+            "Quieter crowds"
+          ]
+        },
+        {
+          "icon": "Camera",
+          "title": "Photography Tours",
+          "description": "Professional photographers guide you to best angles and teach composition.",
+          "features": [
+            "Pro photo guidance",
+            "Best viewpoints",
+            "Composition tips",
+            "Golden hour timing",
+            "Technical advice"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Prague Charles Bridge Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours last 1.5-2.5 hours including bridge crossing and surrounding area exploration."
+          },
+          {
+            "icon": "MapPin",
+            "title": "30 Baroque Statues",
+            "description": "Learn the stories behind each statue lining the bridge - saints, legends, and history."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Medieval History",
+            "description": "Understand the bridge's 700-year history, construction, and role in Prague's development."
+          },
+          {
+            "icon": "Camera",
+            "title": "Stunning Views",
+            "description": "See Prague Castle, Old Town, and river views from this perfect vantage point."
+          },
+          {
+            "icon": "Heart",
+            "title": "Cultural Atmosphere",
+            "description": "Experience street performers, artists, and the vibrant energy unique to the bridge."
+          },
+          {
+            "icon": "Users",
+            "title": "Tower Access",
+            "description": "Many tours include climbing the bridge towers for even better panoramic views."
+          }
+        ]
+      },
+      "expertTips": [
+        "Visit at sunrise (6-7 AM) for nearly empty bridge and spectacular golden light - magical!",
+        "Touch the brass plaque on St. John of Nepomuk statue (left side, middle) for good luck.",
+        "The bridge is pedestrian-only - no vehicles, making it safe and pleasant for walking.",
+        "Both bridge towers are climbable (138 steps Old Town, 146 steps Lesser Town) for views.",
+        "Evening visits after 9 PM avoid daytime crowds while capturing illuminated castle beauty.",
+        "Street vendors and artists charge high prices - negotiate or politely decline.",
+        "The bridge connects Old Town and Lesser Town - walk both directions for different views.",
+        "Download map showing all 30 statues' names to identify them as you walk."
+      ],
+      "faqs": [
+        {
+          "question": "How long is Charles Bridge?",
+          "answer": "Charles Bridge is 516 meters (1,693 feet) long and 10 meters (33 feet) wide, crossing the Vltava River with 16 arches! Construction began in 1357 under King Charles IV and finished in 1402. The bridge features three towers - two on Lesser Town side (connected by gate) and one on Old Town side. All three are climbable for views! The bridge served as the only river crossing in Prague for 400+ years. It's paved with cobblestones and has survived floods, wars, and 700 years of heavy use. Walking across takes about 10-15 minutes at a casual pace, longer if you stop for statues, artists, and photos - most people take 30+ minutes enjoying it!"
+        },
+        {
+          "question": "What are the statues on Charles Bridge?",
+          "answer": "The bridge displays 30 baroque statues (and statue groups) of saints, installed mostly in early 1700s. The most famous is St. John of Nepomuk (1683) - the first statue, marking where he was thrown into the river in 1393. Touching the brass plaques is tradition for good luck (now worn shiny from millions of touches!). Other notable statues: St. Luitgarde, Calvary group, St. Francis Xavier. Most are copies now - originals were moved to museums for preservation. Each statue has story and symbolism. The statues transform the bridge into an open-air baroque sculpture gallery. They're beautiful silhouetted at sunrise or sunset!"
+        },
+        {
+          "question": "Who was St. John of Nepomuk?",
+          "answer": "St. John of Nepomuk is the patron saint of Bohemia and the Charles Bridge's most famous statue! He was a priest in Prague who served as confessor to the Queen. In 1393, King Wenceslas IV had him tortured and thrown from the bridge into the Vltava River (the exact spot is marked!) - legends say because he refused to reveal the Queen's confession secrets. He's depicted with a halo of five stars (representing the light that appeared above the river). His statue (1683) is the bridge's oldest. Touching the bronze plaques showing his martyrdom is said to bring good luck and ensure your return to Prague. The plaques are worn smooth and shiny from millions of touches!"
+        },
+        {
+          "question": "When is Charles Bridge least crowded?",
+          "answer": "Sunrise (6-7 AM in summer, 7-8 AM in winter) offers an almost empty bridge - absolutely magical for photography and peaceful walks! Early morning before 9 AM is quiet. Late evening after 9-10 PM sees crowds thin. Midday (10 AM-5 PM) is packed with tour groups, artists, vendors, and tourists - nearly shoulder-to-shoulder in summer! Weekdays are marginally better than weekends. Winter months (November-March) have far fewer crowds but cold weather. The bridge is busiest in peak summer (July-August). If you want classic views without crowds, sacrifice sleep for sunrise - you'll be rewarded with Prague at its most beautiful and serene!"
+        },
+        {
+          "question": "Can you cross Charles Bridge at night?",
+          "answer": "Yes! Charles Bridge is accessible 24/7 - it's a public pedestrian thoroughfare connecting city neighborhoods. Night visits are wonderful - the bridge is illuminated, Prague Castle lights up spectacularly on the hill, and reflections shimmer in the river below. Street artists leave around 8-9 PM, making late evenings quieter. The atmosphere is romantic and peaceful. Some people visit multiple times (sunrise, day, sunset, night) as each offers different magic! Night photography is stunning but requires tripod and long exposures. Walking the bridge at night while castle glows above is quintessentially Prague - absolutely do it!"
+        },
+        {
+          "question": "Are there street performers on Charles Bridge?",
+          "answer": "Yes! Charles Bridge hosts dozens of street performers, artists, musicians, and vendors daily creating vibrant atmosphere! You'll see painters selling artwork, caricature artists offering portraits, musicians playing everything from classical to jazz, living statues, and craftspeople selling jewelry and souvenirs. The performances add character but prices are tourist-oriented (paintings €50-200, portraits €30-80). Quality varies greatly. Feel free to watch and photograph, but no obligation to buy! Tipping musicians who enhance your walk is appreciated (€1-2). Artists are regulated by city - they must have permits. The bridge becomes quieter when performers leave around 8-9 PM."
+        },
+        {
+          "question": "Can you see Charles Bridge from elsewhere in Prague?",
+          "answer": "Yes - some say the best Charles Bridge views are NOT from the bridge itself! Spectacular viewpoints include: Letná Park (northern bank, elevated view showing bridge and castle together), Kampa Island riverside (under the bridge, beautiful reflection shots), Střelecký Island (southern riverside, classic angle), Old Town Bridge Tower top (views down the bridge), and riverside walks on both sides. Many photographers prefer these spots to being on the crowded bridge. Sunset from Letná Park is magnificent! For photographing the bridge with Prague Castle behind, these viewpoints are superior. Walk the bridge for the experience, photograph it from viewpoints for best shots!"
+        }
+      ]
+    },
+    'old-town-tours': {
+      "title": "Prague Old Town Tours",
+      "subtitle": "Discover the medieval heart of Prague with the Astronomical Clock, Gothic churches, and charming cobblestone streets!",
+      "categoryName": "Old Town Tours",
+      "stats": {
+        "toursAvailable": 22,
+        "priceFrom": 20,
+        "duration": "2-3 hours"
+      },
+      "introduction": "Explore Prague's enchanting Old Town (Staré Město), a UNESCO World Heritage wonderland of medieval streets, Gothic spires, and baroque facades! At its heart lies Old Town Square where the famous Astronomical Clock has marked time since 1410, drawing crowds for its hourly show. Wander through the labyrinth of narrow cobblestone lanes discovering hidden courtyards, centuries-old churches, charming cafes in cellars dating to the 1200s, and buildings in rainbow colors telling stories from medieval to Art Nouveau times. Learn about Prague's golden age under Charles IV, explore the Powder Tower gateway, visit the beautiful Estates Theatre where Mozart conducted, and understand how this perfectly preserved medieval center survived wars and communism. These tours reveal Prague's soul through architecture, history, legends, and the irresistible charm that makes it one of Europe's most magical cities. Perfect for history enthusiasts, architecture lovers, photographers, and first-time visitors!",
+      "seo": {
+        "title": "Prague Old Town Tours 2025 - Medieval Historic Center",
+        "description": "Explore Prague Old Town with expert guides. Astronomical Clock, medieval streets, and Gothic architecture!",
+        "keywords": "Prague Old Town tours, Prague Astronomical Clock, Old Town Square Prague, Prague medieval tours, Staré Město"
+      },
+      "whyChoose": [
+        {
+          "icon": "Star",
+          "title": "Best-Preserved Medieval City",
+          "description": "Old Town survived WWII intact - walking through genuine medieval streets, not reconstructions!"
+        },
+        {
+          "icon": "Camera",
+          "title": "Architectural Masterpiece",
+          "description": "Gothic, Renaissance, and Baroque buildings create one of Europe's most beautiful centers."
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Astronomical Clock",
+          "description": "See the world's most famous medieval clock perform its hourly show since 1410!"
+        },
+        {
+          "icon": "Heart",
+          "title": "Magical Atmosphere",
+          "description": "Fairy-tale medieval streets, charming squares, and storybook buildings enchant every visitor."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Users",
+          "title": "Classic Old Town Walking Tours",
+          "description": "Comprehensive tours covering Old Town Square, Astronomical Clock, and medieval streets.",
+          "features": [
+            "Astronomical Clock",
+            "Old Town Square",
+            "Tyn Church",
+            "Medieval lanes",
+            "Hidden courtyards"
+          ]
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Historical Tours",
+          "description": "Deep dives into Czech history from medieval origins through Velvet Revolution.",
+          "features": [
+            "Medieval Prague",
+            "Habsburg era",
+            "Communist period",
+            "Velvet Revolution",
+            "Expert historians"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Ghost & Legend Tours",
+          "description": "Evening tours sharing Prague's dark legends, ghost stories, and mysterious past.",
+          "features": [
+            "Evening timing",
+            "Ghost stories",
+            "Legends & myths",
+            "Atmospheric setting",
+            "Medieval tales"
+          ]
+        },
+        {
+          "icon": "Camera",
+          "title": "Photography Tours",
+          "description": "Capture Old Town's beauty with professional guidance on angles and timing.",
+          "features": [
+            "Best photo spots",
+            "Clock show timing",
+            "Architecture details",
+            "Golden hour",
+            "Composition help"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Prague Old Town Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours last 2-3 hours exploring the historic center thoroughly at comfortable pace."
+          },
+          {
+            "icon": "Star",
+            "title": "Astronomical Clock Show",
+            "description": "See the famous hourly show at 9 AM through 11 PM - twelve apostles appear!"
+          },
+          {
+            "icon": "MapPin",
+            "title": "Major Landmarks",
+            "description": "Visit Old Town Square, Tyn Church, Powder Tower, Estates Theatre, and hidden gems."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Historical Stories",
+            "description": "Learn about medieval guilds, Czech kingdoms, and the square's dramatic history."
+          },
+          {
+            "icon": "Camera",
+            "title": "Photo Opportunities",
+            "description": "Countless angles for capturing one of Europe's most photogenic medieval centers."
+          },
+          {
+            "icon": "Users",
+            "title": "Cultural Context",
+            "description": "Understand Czech history, architecture styles, and Prague's golden age."
+          }
+        ]
+      },
+      "expertTips": [
+        "The Astronomical Clock show runs hourly 9 AM-11 PM - arrive 5 minutes early for good spots.",
+        "Climb the Old Town Hall tower (69m, elevator available) for spectacular square views.",
+        "Early morning (before 9 AM) offers peaceful atmosphere without tour group crowds.",
+        "Tyn Church is free to enter when open - the Gothic interior is beautiful!",
+        "The astronomical dial shows medieval astronomy - ask guides to explain how to read it.",
+        "Christmas markets (late November-early January) transform the square magically.",
+        "Cafes around square are overpriced - walk two blocks away for better value.",
+        "Free walking tours meet at Old Town Square - tip-based, good for budget travelers."
+      ],
+      "faqs": [
+        {
+          "question": "What is the Prague Astronomical Clock?",
+          "answer": "The Prague Astronomical Clock (Pražský orloj) is a medieval astronomical clock installed in 1410 on Old Town Hall - the oldest astronomical clock still operating! The clock has multiple dials showing: astronomical dial (position of sun/moon), calendar dial (months and zodiac), hourly show with twelve apostles appearing in windows (added in 1600s), and figures representing vanities (Death skeleton, Turk, Greed, Vanity). The hourly show draws huge crowds - apostles parade, Death rings bell, and a rooster crows. The astronomical dial is complex - it shows Old Czech time, Babylonian time, stellar time, and astronomical positions. Legend says the clockmaker was blinded to prevent him making another - probably untrue but adds mystique!"
+        },
+        {
+          "question": "What is Tyn Church?",
+          "answer": "The Church of Our Lady before Týn (Týnský chrám) is the Gothic church with dramatic twin spires (80 meters high) dominating Old Town Square's skyline! Built 14th-15th centuries, it's Prague's most recognized church after St. Vitus. The spires are slightly asymmetrical - locals call them \"Adam and Eve.\" The church was the main Hussite church in Prague. Interior features beautiful Gothic vaults, baroque altar, and the tomb of astronomer Tycho Brahe. The church is \"hidden\" behind buildings - you can't see its facade from the square directly! Access is through a narrow passage. It's open irregularly (Tuesday-Saturday typically, 10 AM-1 PM and 3-5 PM) - check before visiting. The spires define Prague's skyline!"
+        },
+        {
+          "question": "How big is Old Town Square?",
+          "answer": "Old Town Square isn't huge - roughly 9,000 square meters - but it feels grand due to the magnificent buildings surrounding it! The square developed over centuries from a marketplace in 1100s. It's shaped irregularly with radiating streets creating dynamic space. You can walk across in 2-3 minutes, but you'll want to spend much longer admiring architecture, watching the clock, and soaking in atmosphere! The square is entirely pedestrianized (cars banned since 1990). It connects to surrounding streets creating a network of medieval lanes. Most of Prague's Old Town is within 10-minute walk of the square - it's the perfect central starting point for city exploration!"
+        },
+        {
+          "question": "What happened in Old Town Square historically?",
+          "answer": "The square witnessed dramatic Czech history! In 1422, Jan Hus's followers were executed here during Hussite Wars. In 1621, 27 Czech noblemen were executed following the Battle of White Mountain - crosses mark the spot on the pavement. The square hosted coronation celebrations for Czech kings, medieval markets, and public announcements. In 1915, the Jan Hus Memorial was unveiled. During communist era (1948-1989), it was site of carefully controlled celebrations. In November 1989, the Velvet Revolution protests gathered here, helping end communist rule peacefully! Today it hosts Christmas and Easter markets, New Year celebrations, and remains Prague's public gathering heart."
+        },
+        {
+          "question": "Can you enter the buildings around the square?",
+          "answer": "Some yes, some no! OPEN: Tyn Church (limited hours - check schedule), St. Nicholas Church (beautiful baroque interior, small entry fee), Old Town Hall with Astronomical Clock (tower climb 250 CZK for stunning views), and various cafes/restaurants occupying historic buildings. EXTERIOR ONLY: Most colorful buildings are private residences, shops, or hotels. The buildings themselves are the attraction - their facades showcase Gothic, Renaissance, and baroque architecture spanning centuries! Simply walking around admiring the architecture is wonderful. Tower climb is absolutely worth it for panoramic square views. Tours often include building interiors when accessible."
+        },
+        {
+          "question": "How crowded is Old Town Square?",
+          "answer": "Very crowded during peak times! The square is Prague's most visited attraction - millions annually. Peak crowding: 10 AM-6 PM daily in summer (June-August), weekends year-round, Christmas markets (late November-December), and Easter. The hourly clock show draws hundreds gathering 5 minutes before! However, early morning (before 9 AM), late evening (after 8 PM), and winter weekdays are manageable. Sunrise visits find the square nearly empty - magical! The crowds are part of the experience but can be overwhelming. Visit at off-peak times for better photos and atmosphere. Despite crowds, the square's beauty and significance make it essential!"
+        },
+        {
+          "question": "Are there good restaurants in Old Town Square?",
+          "answer": "The square restaurants are scenic but very touristy with inflated prices and mediocre food! Expect to pay €15-25 for meals that would cost €8-12 elsewhere. The location premium is real. HOWEVER, for a drink on a terrace watching the square's activity, it can be worth it - budget €5-8 for coffee/beer and enjoy the views. For actual dining, walk 2-3 blocks into side streets for authentic Czech restaurants with better food and prices. Lokál (Dlouhá street, 5-minute walk) offers excellent Czech food at reasonable prices. U Medvídků (nearby) is historic and good. Save square dining for drinks and atmosphere, eat elsewhere for value!"
+        }
+      ]
+    },
+    'beer-and-food-tours': {
+      "title": "Prague Beer & Food Tours",
+      "subtitle": "Taste world-famous Czech beer, traditional cuisine, and discover Prague's legendary beer culture!",
+      "categoryName": "Beer & Food Tours",
+      "stats": {
+        "toursAvailable": 24,
+        "priceFrom": 60,
+        "duration": "3-4 hours"
+      },
+      "introduction": "Immerse yourself in Czech beer culture - the nation that drinks more beer per capita than anywhere on Earth! These beer and food tours showcase Prague's legendary brewing heritage where pilsner was invented, traditional pubs serve beer fresh from tanks, and hearty Czech cuisine provides perfect accompaniment. Visit historic beer halls like U Fleků (operating since 1499!), discover microbreweries revolutionizing Czech beer, taste varieties from pilsner to dark lagers, and learn beer-making traditions dating back centuries. Pair excellent beer with traditional dishes like svíčková, goulash, and bramboráky while expert guides share Czech drinking customs, toast properly (\"Na zdraví!\"), and reveal hidden beer gems tourists miss. Perfect for beer enthusiasts, food lovers, and anyone wanting authentic Czech cultural immersion!",
+      "seo": {
+        "title": "Prague Beer Tours 2025 - Czech Beer & Food Culture",
+        "description": "Experience Prague's legendary beer culture with expert tours. Czech beer, traditional pubs, and local cuisine!",
+        "keywords": "Prague beer tours, Czech beer, Prague food tours, Prague pub crawl, traditional Czech cuisine"
+      },
+      "whyChoose": [
+        {
+          "icon": "GlassWater",
+          "title": "Beer Capital of World",
+          "description": "Czechs drink more beer per capita than any nation - experience the culture that perfected it!"
+        },
+        {
+          "icon": "Heart",
+          "title": "Authentic Pubs",
+          "description": "Visit historic beer halls and local pubs where Czechs actually drink, not tourist traps."
+        },
+        {
+          "icon": "Users",
+          "title": "Expert Beer Guides",
+          "description": "Passionate locals share brewing traditions, beer styles, and hidden gem pubs."
+        },
+        {
+          "icon": "Star",
+          "title": "Traditional Food",
+          "description": "Taste hearty Czech dishes perfectly paired with the excellent beer."
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "GlassWater",
+          "title": "Classic Beer Tours",
+          "description": "Visit 3-4 traditional pubs and breweries tasting different Czech beer styles.",
+          "features": [
+            "4-6 beer tastings",
+            "Traditional pubs",
+            "Beer history",
+            "Food pairings",
+            "Local atmosphere"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Beer & Food Pairing",
+          "description": "Combine beer tastings with traditional Czech dishes in multiple venues.",
+          "features": [
+            "Beer & food pairings",
+            "Multiple courses",
+            "Czech specialties",
+            "3-4 venues",
+            "Pairing principles"
+          ]
+        },
+        {
+          "icon": "MapPin",
+          "title": "Brewery Tours",
+          "description": "Visit working breweries seeing production processes and tasting fresh beer.",
+          "features": [
+            "Brewery visits",
+            "Production tours",
+            "Fresh tank beer",
+            "Brewing education",
+            "Behind-the-scenes"
+          ]
+        },
+        {
+          "icon": "Users",
+          "title": "Pub Crawls",
+          "description": "Social evening tours visiting multiple pubs and bars with local guides.",
+          "features": [
+            "4-5 different pubs",
+            "Social atmosphere",
+            "Meet travelers",
+            "Drinks included",
+            "Party vibe"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Prague Beer & Food Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours last 3-4 hours with multiple pub stops and substantial food."
+          },
+          {
+            "icon": "GlassWater",
+            "title": "Beer Varieties",
+            "description": "Taste pilsner, dark lager, Czech pale lager, and special brews - 4-6 different beers."
+          },
+          {
+            "icon": "Heart",
+            "title": "Traditional Food",
+            "description": "Sample svíčková, goulash, fried cheese, sausages, and other Czech classics."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Multiple Venues",
+            "description": "Visit 3-5 different pubs, breweries, and beer halls across Prague neighborhoods."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Cultural Education",
+            "description": "Learn about Czech beer history, brewing traditions, and drinking customs."
+          },
+          {
+            "icon": "Users",
+            "title": "Small Groups",
+            "description": "Groups of 8-15 people create social atmosphere while allowing personal attention."
+          }
+        ]
+      },
+      "expertTips": [
+        "Czechs take beer seriously - it's often cheaper than water in restaurants!",
+        "Say \"Na zdraví!\" (nah zdrah-vee) when toasting - make eye contact, it's important!",
+        "Tank beer (tankové pivo) is unpasteurized beer from tanks - fresher than bottled, try it!",
+        "Pilsner Urquell invented pilsner style in 1842 - it's the original and still excellent.",
+        "Czech beer is measured in degrees (10°, 12°) - higher number = stronger beer.",
+        "Tipping: round up or add 10% - never leave tips on table, hand to server directly.",
+        "U Fleků dark lager is famous but touristy with aggressive Becherovka sellers - be warned!",
+        "Local pubs often have better beer and food than touristy Old Town spots."
+      ],
+      "faqs": [
+        {
+          "question": "What is Czech beer culture like?",
+          "answer": "Czechs have the world's highest beer consumption per capita - about 140 liters per person annually! Beer (pivo) is central to social life, cheaper than soft drinks, and considered liquid bread. Pub culture emphasizes community - strangers share tables, conversations flow freely. Czechs are particular about beer - proper pour, correct temperature (6-8°C), fresh barrels, and clean glassware matter! Beer gardens and pubs are family-friendly - children often join parents. The culture is casual and unpretentious despite world-class beer quality. Czech beer is point of national pride! Understanding beer customs provides cultural insight beyond just drinking. It's truly a beer-loving nation!"
+        },
+        {
+          "question": "What Czech beers should I try?",
+          "answer": "Must-try Czech beers include: Pilsner Urquell (the original pilsner, crisp and golden), Budweiser Budvar (the REAL original Budweiser, nothing like American version!), Staropramen (Prague's own brewery), Kozel (smooth and popular), Bernard (excellent craft brewery), Únětické (top-rated pale lager), and various dark lagers (tmavé pivo - less common internationally). Tank beer (unpasteurized from tanks) is fresher than bottled. Czech beer is primarily lagers - pilsner-style pale lagers and dark lagers. The quality is exceptional! Most cost €1.50-3 in pubs - incredibly affordable. Beer tours introduce you to varieties you'd never discover independently!"
+        },
+        {
+          "question": "What is traditional Czech food?",
+          "answer": "Czech cuisine is hearty Central European comfort food! Classics include: svíčková (marinated beef sirloin with creamy sauce and dumplings - national favorite!), guláš (goulash - beef stew with dumplings), vepřo-knedlo-zelo (pork, dumplings, and sauerkraut), smažený sýr (fried cheese - delicious!), bramboráky (potato pancakes), utopenci (pickled sausages), and trdelník (sweet chimney cake, though more Slovak/tourist than traditional Czech). Dumplings (knedlíky) accompany everything! Portions are large and filling. The food is made for beer pairing! Czech cuisine isn't fancy but it's flavorful, satisfying, and authentic. Vegetarian options exist but Czech food is traditionally meat-heavy."
+        },
+        {
+          "question": "What is U Fleků?",
+          "answer": "U Fleků is Prague's most famous beer hall - continuously brewing beer since 1499, making it one of the world's oldest breweries still operating! They brew only dark lager (13° tmavé pivo) served exclusively on-site - you can't buy it elsewhere. The medieval beer hall features multiple rooms with painted ceilings, wood-carved décor, and can seat 1,200 people! It's extremely touristy with servers pushing expensive Becherovka shots aggressively (you can refuse!). Beer costs more than normal pubs (€6-7 vs €2-3 elsewhere) but the atmosphere and history are unique. Worth visiting once for the experience but expect tourist treatment. The beer itself is good! Go for history and atmosphere, not authenticity."
+        },
+        {
+          "question": "How affordable is beer in Prague?",
+          "answer": "Beer in Prague is remarkably cheap! Local pubs charge 30-50 CZK (€1.20-2) per half-liter! Beer is literally cheaper than water or soda in most places. Tourist-area pubs charge 60-90 CZK (€2.50-3.70) - still very affordable. Even U Fleků at 150 CZK (€6) is reasonable by Western standards. Supermarket beer costs under €1 per bottle. A fun evening in a local pub might cost €8-12 per person including beers and snacks. Beer tours (€60-80) provide excellent value - multiple beers, food, and expertise included. Prague is a beer lover's paradise not just for quality but affordability. Enjoy responsibly!"
+        },
+        {
+          "question": "Are beer tours suitable for non-drinkers?",
+          "answer": "Beer tours are heavily focused on beer, so they're less ideal for non-drinkers. However, Czech food tours exist emphasizing cuisine over beer! Some beer tours welcome non-drinkers - Czech pubs serve excellent food and soft drinks too. Inform tour operators when booking if someone doesn't drink. They might offer food-focused alternatives or customize experiences. Czech beer culture is social and cultural beyond just drinking - the pub atmosphere and community aspects are interesting even without consuming alcohol. Some tours combine food and culture with beer as component rather than focus. Ask about food-focused tours if beer isn't your interest!"
+        },
+        {
+          "question": "What should I order in a Czech pub?",
+          "answer": "For beer: Start with half-liter (půl) of light lager (světlé pivo) - usually 10° or 12° pilsner-style. Say \"Pivo prosím\" (beer please). Servers often bring beer without asking when you sit - it's normal! For food: svíčková (beef with cream sauce and dumplings - Czech classic!), goulash with dumplings, fried cheese (smažený sýr), or pork dishes. Appetizers: nakládaný hermelín (marinated cheese), utopenci (pickled sausages), or fried mushrooms. Keep beer mat - servers track drinks by marking it. When finished, place mat on glass to signal no more. Tipping: round up or 10%, hand directly to server. Enjoy the relaxed pub atmosphere - it's wonderful!"
+        }
+      ]
+    },
+    'historic-district-tours': {
+      "title": "Prague Historic District Tours",
+      "subtitle": "Explore medieval streets, Gothic architecture, and 1,000 years of Czech history in Prague's UNESCO center!",
+      "categoryName": "Historic District Tours",
+      "stats": {
+        "toursAvailable": 20,
+        "priceFrom": 25,
+        "duration": "2.5-3.5 hours"
+      },
+      "introduction": "Walk through Prague's magnificent historic district where every street corner reveals centuries of Czech history! This UNESCO World Heritage area encompasses the Old Town, New Town, Lesser Town, and Castle District - together forming one of Europe's most beautifully preserved medieval city centers. Explore winding cobblestone streets that survived wars and revolutions, discover baroque churches with golden interiors, visit Gothic cellars now housing restaurants and jazz clubs, and learn how Prague transitioned from medieval kingdom through Habsburg rule, Nazi occupation, communist era, to today's vibrant democracy. See Wenceslas Square where the Velvet Revolution began, walk the Royal Way kings took to coronations, discover Jan Hus's reformation legacy, and understand the layered history visible in architecture spanning Romanesque to Art Nouveau. Perfect for history enthusiasts, architecture lovers, and anyone wanting comprehensive Prague understanding!",
+      "seo": {
+        "title": "Prague Historic District Tours 2025 - UNESCO Heritage",
+        "description": "Explore Prague's historic center with expert guides. Medieval streets, Gothic architecture, and Czech history!",
+        "keywords": "Prague historic tours, Prague UNESCO tours, Prague walking tours, medieval Prague, Wenceslas Square tours"
+      },
+      "whyChoose": [
+        {
+          "icon": "BookOpen",
+          "title": "1,000 Years of History",
+          "description": "Discover Czech history from medieval origins through modern democracy in intact historic setting."
+        },
+        {
+          "icon": "Camera",
+          "title": "Architectural Variety",
+          "description": "See Romanesque, Gothic, Renaissance, Baroque, and Art Nouveau in walkable area."
+        },
+        {
+          "icon": "Heart",
+          "title": "UNESCO World Heritage",
+          "description": "Explore one of the world's most significant and best-preserved historic centers."
+        },
+        {
+          "icon": "MapPin",
+          "title": "Compact & Walkable",
+          "description": "All major historic sites cluster in pedestrian-friendly area - easy exploration!"
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Users",
+          "title": "Complete Historic Tours",
+          "description": "Comprehensive walking tours covering all historic districts and major landmarks.",
+          "features": [
+            "Multiple districts",
+            "Castle to New Town",
+            "Major squares",
+            "Historic churches",
+            "Architectural overview"
+          ]
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Medieval Prague Tours",
+          "description": "Focus on medieval history, Gothic architecture, and 14th-century golden age.",
+          "features": [
+            "Medieval sites",
+            "Gothic architecture",
+            "Charles IV era",
+            "Religious history",
+            "Castle origins"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Communist Era Tours",
+          "description": "Explore Prague's communist period (1948-1989) and the Velvet Revolution.",
+          "features": [
+            "Communist history",
+            "Wenceslas Square",
+            "Velvet Revolution",
+            "Cold War stories",
+            "Modern transition"
+          ]
+        },
+        {
+          "icon": "Star",
+          "title": "Hidden Courtyards Tours",
+          "description": "Discover secret passages, hidden gardens, and tucked-away gems tourists miss.",
+          "features": [
+            "Secret courtyards",
+            "Hidden passages",
+            "Off-tourist-path",
+            "Local secrets",
+            "Architectural details"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Prague Historic District Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours last 2.5-3.5 hours covering extensive ground at comfortable walking pace."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Multiple Districts",
+            "description": "Explore Old Town, New Town, and sometimes Lesser Town and Castle District."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Layered History",
+            "description": "Learn how medieval, baroque, communist, and modern eras shaped Prague."
+          },
+          {
+            "icon": "Camera",
+            "title": "Photo Opportunities",
+            "description": "Countless beautiful streets, squares, and architectural details to capture."
+          },
+          {
+            "icon": "Heart",
+            "title": "Cultural Context",
+            "description": "Understand Czech identity, historical struggles, and modern renaissance."
+          },
+          {
+            "icon": "Users",
+            "title": "Expert Guides",
+            "description": "Knowledgeable locals share fascinating stories and answer all historical questions."
+          }
+        ]
+      },
+      "expertTips": [
+        "Free walking tours (tip-based) are excellent for budget travelers - just tip generously!",
+        "Wenceslas Square isn't a square - it's a long boulevard (750m) with historical significance.",
+        "Many churches offer free entry but request modest dress - covered shoulders and knees.",
+        "Prague's historic center is remarkably compact - you can walk everywhere easily.",
+        "Look up frequently - Prague's beauty is in the upper floors and rooflines!",
+        "Hidden courtyards (pasáž) throughout Old Town lead to cafes and shops - explore them!",
+        "The \"Royal Way\" coronation route from Powder Tower to castle is worth following.",
+        "Evening walks show Prague beautifully lit - the architecture glows magically."
+      ],
+      "faqs": [
+        {
+          "question": "What is Wenceslas Square?",
+          "answer": "Wenceslas Square (Václavské náměstí) is Prague's most significant modern public space - though it's actually a long boulevard, not a square! It's 750 meters long and 60 meters wide, sloping uphill to the National Museum. Named after patron saint King Wenceslas (Good King Wenceslas from the Christmas carol!), the square hosted major historical events: 1918 Czechoslovak independence celebrations, 1968 Soviet invasion protests (Jan Palach's self-immolation), and 1989 Velvet Revolution demonstrations that ended communism peacefully! Today it's lined with shops, hotels, and cafes. The equestrian statue of St. Wenceslas anchors the top. It's Prague's \"Champs-Élysées\" - important historically and still central to modern Prague life."
+        },
+        {
+          "question": "What was the Velvet Revolution?",
+          "answer": "The Velvet Revolution was the peaceful overthrow of communist government in Czechoslovakia in November-December 1989! Student demonstrations on November 17 sparked mass protests in Wenceslas Square. Within weeks, the communist regime collapsed without violence (hence \"velvet\" - smooth and bloodless). Dissident playwright Václav Havel became president. It was part of 1989's wave of Eastern European revolutions ending the Cold War. Prague tours visit sites where it happened - Wenceslas Square, Národní třída where students were beaten, and memorials. For Czechs, it's THE defining modern historical moment - freedom after 41 years of communism! Understanding Velvet Revolution helps appreciate modern Prague."
+        },
+        {
+          "question": "What is the Powder Tower?",
+          "answer": "The Powder Tower (Prašná brána) is a Gothic tower at the entrance to Old Town, built in 1475 as one of the original 13 city gates! It got its name from being used to store gunpowder in the 17th century. The tower marks the beginning of the \"Royal Way\" - the coronation route Czech kings took from here to Prague Castle. You can climb 186 steps to viewing platform (100 CZK) for nice Old Town views! The tower is 65 meters tall with beautiful Gothic decoration. It connects to Municipal House (Art Nouveau masterpiece) next door. The tower survived Prague's modernizations when other gates were demolished. It's photogenic and historically significant - a gateway to medieval Prague!"
+        },
+        {
+          "question": "How walkable is Prague's historic center?",
+          "answer": "Extremely walkable! Prague's historic sites cluster in compact area - Old Town Square to Castle is just 2 kilometers (1.2 miles). The entire UNESCO historic center is pedestrian-friendly with many streets car-free. You can walk from one end to the other in 30-40 minutes, though you'll stop constantly for photos and sights! Distances are deceptive - things look far on maps but are actually close. The main challenge is Prague Castle climb (steep but manageable). Otherwise, it's flat or gently sloping. Cobblestones require comfortable shoes. Metro/tram exist but walking is usually faster and more enjoyable for sightseeing. Prague is one of Europe's most pedestrian-friendly capitals!"
+        },
+        {
+          "question": "Is Prague's historic center safe?",
+          "answer": "Yes, very safe! Prague has low violent crime rates. The historic center is heavily touristed and well-policed. You can walk safely day or night. Standard precautions apply: watch for pickpockets in crowded Old Town Square, Charles Bridge, and trams (especially tram 22 to castle - notorious for pickpockets!). Keep bags secured and be aware in crowds. Money exchange scams exist - use ATMs or legitimate exchange offices. Overcharging in touristy restaurants happens - check bills. Taxi scams occur - use Uber or Bolt. These are nuisance crimes, not safety threats. Prague feels remarkably safe. Solo travelers, including women, explore comfortably. Just use common sense!"
+        },
+        {
+          "question": "What are Prague's hidden courtyards?",
+          "answer": "Prague's hidden courtyards (pasáž or průchod) are passages and interior courtyards accessed through inconspicuous doorways in historic buildings! Many buildings connect through to parallel streets via beautiful courtyards tourists miss. Some feature Art Nouveau decoration, cafes, small galleries, and shops. They developed when property taxes were based on street frontage - building deep with interior courts maximized space! Notable examples: Lucerna Pasáž (Art Nouveau arcade with upside-down Wenceslas statue!), Franciscan Garden (peaceful oasis near Wenceslas Square), and various unnamed passages throughout Old Town. Tours revealing these hidden spaces show locals' Prague. They're magical discoveries - like secret shortcuts through beautiful spaces!"
+        },
+        {
+          "question": "When is the best time to visit Prague?",
+          "answer": "Spring (April-June) and fall (September-October) offer ideal conditions - pleasant weather, moderate crowds, beautiful colors, and reasonable prices. Summer (July-August) brings best weather but huge crowds and high prices - Prague is extremely popular! Winter (November-March) has far fewer tourists, Christmas markets (magical!), and lower prices but cold weather and short days. Easter and Christmas are special times for markets and celebrations. May and September are perfect balance. Avoid major holidays when Czech tourists crowd the city. Weather is unpredictable year-round - bring layers! Prague is beautiful in all seasons but shoulder seasons offer best overall experience."
+        }
+      ]
+    },
+    'architecture-and-culture-tours': {
+      "title": "Prague Architecture & Culture Tours",
+      "subtitle": "Discover stunning Art Nouveau, Gothic masterpieces, and rich Czech cultural heritage throughout Prague!",
+      "categoryName": "Architecture & Culture Tours",
+      "stats": {
+        "toursAvailable": 16,
+        "priceFrom": 40,
+        "duration": "3-4 hours"
+      },
+      "introduction": "Immerse yourself in Prague's extraordinary architectural heritage spanning 1,000 years and multiple styles! From Romanesque rotundas to Gothic cathedrals, from Renaissance palaces to baroque churches, from Art Nouveau masterpieces to Cubist buildings unique to Prague - the city is an architectural museum where every era left magnificent marks. Discover Alphonse Mucha's Art Nouveau decorations, explore the Dancing House's modern deconstructivist design, visit the Municipal House's stunning Art Nouveau interior, and understand architectural movements that shaped European style. These tours also explore Czech cultural identity - Kafka's literary legacy, classical music heritage (Dvořák, Smetana), puppet theatre traditions, and the resilience that preserved culture through occupations. Expert guides trained in art history and architecture reveal details tourists miss. Perfect for architecture enthusiasts, culture lovers, design students, and intellectually curious travelers!",
+      "seo": {
+        "title": "Prague Architecture Tours 2025 - Art Nouveau & Culture",
+        "description": "Explore Prague's stunning architecture from Gothic to Art Nouveau. Expert cultural tours of Czech heritage!",
+        "keywords": "Prague architecture tours, Prague Art Nouveau, Prague culture tours, Municipal House Prague, Gothic architecture"
+      },
+      "whyChoose": [
+        {
+          "icon": "Star",
+          "title": "Architectural Variety",
+          "description": "See Romanesque, Gothic, Renaissance, Baroque, Art Nouveau, and Cubist in one city!"
+        },
+        {
+          "icon": "Camera",
+          "title": "Art Nouveau Capital",
+          "description": "Prague has some of Europe's finest Art Nouveau buildings and decorations."
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Cultural Depth",
+          "description": "Understand Czech arts, music, literature, and traditions that define the culture."
+        },
+        {
+          "icon": "Heart",
+          "title": "Unique Cubism",
+          "description": "See Cubist architecture found almost nowhere else - Prague's special contribution!"
+        }
+      ],
+      "tourTypes": [
+        {
+          "icon": "Star",
+          "title": "Art Nouveau Tours",
+          "description": "Focus on Prague's stunning Art Nouveau buildings, cafes, and Mucha's decorative arts.",
+          "features": [
+            "Municipal House",
+            "Mucha artworks",
+            "Art Nouveau cafes",
+            "Decorative details",
+            "Epoch architecture"
+          ]
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Gothic Architecture Tours",
+          "description": "Explore Prague's Gothic masterpieces from St. Vitus to Tyn Church.",
+          "features": [
+            "Gothic churches",
+            "Architectural analysis",
+            "Building techniques",
+            "Medieval details",
+            "Expert architects"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Kafka & Literary Tours",
+          "description": "Follow Franz Kafka's Prague visiting his homes, haunts, and inspiration locations.",
+          "features": [
+            "Kafka's birthplace",
+            "Literary sites",
+            "Golden Lane #22",
+            "Kafka Museum",
+            "Literary context"
+          ]
+        },
+        {
+          "icon": "MapPin",
+          "title": "Comprehensive Culture Tours",
+          "description": "Broad tours covering architecture, arts, music, literature, and Czech identity.",
+          "features": [
+            "Multiple art forms",
+            "Cultural sites",
+            "Czech identity",
+            "Historical context",
+            "Comprehensive overview"
+          ]
+        }
+      ],
+      "whatToExpect": {
+        "title": "What to Expect on Your Prague Architecture & Culture Tours",
+        "items": [
+          {
+            "icon": "Clock",
+            "title": "Duration",
+            "description": "Tours last 3-4 hours providing thorough architectural and cultural exploration."
+          },
+          {
+            "icon": "Star",
+            "title": "Art Nouveau Gems",
+            "description": "Visit Municipal House, Grand Hotel Evropa, and other stunning early 1900s buildings."
+          },
+          {
+            "icon": "BookOpen",
+            "title": "Expert Commentary",
+            "description": "Guides trained in architecture and art history explain styles, movements, and significance."
+          },
+          {
+            "icon": "Camera",
+            "title": "Architectural Details",
+            "description": "Learn to identify different styles and appreciate decorative elements tourists overlook."
+          },
+          {
+            "icon": "Heart",
+            "title": "Cultural Context",
+            "description": "Understand how architecture reflects Czech history, identity, and artistic movements."
+          },
+          {
+            "icon": "MapPin",
+            "title": "Interior Access",
+            "description": "Enter buildings to see spectacular interiors, cafes, and decorative arts."
+          }
+        ]
+      },
+      "expertTips": [
+        "The Municipal House offers guided tours (200 CZK) - Art Nouveau interior is breathtaking!",
+        "Café Imperial and Café Louvre are Art Nouveau gems perfect for coffee breaks during tours.",
+        "Look for Cubist buildings in Vyšehrad and New Town - nowhere else has Cubist architecture like Prague!",
+        "Mucha Museum (small but excellent) showcases the Art Nouveau master's work.",
+        "Many Art Nouveau buildings are hotels or cafes - you can enter and enjoy the interiors!",
+        "Prague's \"house signs\" (pictorial signs before street numbers) are charming architectural details.",
+        "Download architecture app identifying styles - helps independent exploration after tours.",
+        "Spring and fall light enhances architectural photography - summer can be too harsh."
+      ],
+      "faqs": [
+        {
+          "question": "What is Art Nouveau?",
+          "answer": "Art Nouveau is the decorative arts and architecture movement from roughly 1890-1910 featuring flowing organic lines, floral motifs, and elegant curves! In Czech it's called Secese. Prague has exceptional Art Nouveau buildings - the movement flourished here! Characteristics include: curving lines inspired by nature, decorative ironwork, stained glass, mosaic work, and integrated arts where architecture, furniture, and decoration form unified whole. Prague's Municipal House is Art Nouveau perfection! Artist Alphonse Mucha (famous for posters) created stunning decorative panels. The style rejected historical revival in favor of new aesthetic celebrating nature and craftsmanship. It's Prague's special architectural treasure!"
+        },
+        {
+          "question": "What makes Prague's architecture special?",
+          "answer": "Prague's uniqueness stems from preservation - the historic center survived both World Wars virtually intact! Most European cities were bombed or heavily damaged; Prague wasn't, preserving buildings from every architectural period in one cohesive medieval city. You can see Romanesque rotundas (900s), Gothic cathedrals (1300s), Renaissance arcades (1500s), baroque palaces (1600s-1700s), Art Nouveau masterpieces (1900s), and Cubist architecture (unique to Prague!) all within walking distance! The variety, quality, and intact nature make Prague an architectural time capsule. The golden, red, and pastel buildings create a fairy-tale aesthetic. It's why Prague is called \"the city of a hundred spires\" - genuinely magical!"
+        },
+        {
+          "question": "What is Cubist architecture?",
+          "answer": "Cubist architecture applies Cubist art principles (geometric forms, multiple perspectives) to buildings - and Prague has the world's best examples! While Cubism in painting (Picasso, Braque) is famous, Cubist architecture is rare - primarily found in Prague and small parts of other Czech cities. Czech architects like Pavel Janák and Josef Gočár created angular, prismatic facades between 1910-1925. The House of the Black Madonna is the premier example (now Museum of Czech Cubism - worth visiting!). Cubist buildings use diagonal lines, pyramidal shapes, and geometric decoration. There's even Cubist furniture and street lamps! It's Prague's unique contribution to architecture - nowhere else has anything like it!"
+        },
+        {
+          "question": "Who was Alphonse Mucha?",
+          "answer": "Alphonse Mucha (1860-1939) was Czech Art Nouveau artist famous for decorative posters featuring beautiful women with flowing hair and flower motifs! He became internationally famous in Paris (his Sarah Bernhardt posters are iconic) but returned to Czech lands celebrating Slavic heritage. In Prague, he created stunning decorative work in the Municipal House (absolutely spectacular!) and produced The Slav Epic - 20 massive paintings depicting Slavic history. Mucha's style defined Art Nouveau - flowing lines, pastel colors, organic forms, and elegant beauty. His work is quintessentially Prague! The Mucha Museum displays posters, sketches, and personal items. You'll see his influence throughout Prague's Art Nouveau buildings!"
+        },
+        {
+          "question": "What is the Municipal House?",
+          "answer": "The Municipal House (Obecní dům) is Prague's most spectacular Art Nouveau building, built 1905-1912 as cultural center! The exterior features elaborate decorative work, sculptures, and mosaics. Inside is even more stunning - Mucha's Slavic decorations in Mayor's Hall, Smetana Concert Hall (stunning!), beautiful cafes, and Art Nouveau details throughout. The building hosted the 1918 Czechoslovak independence declaration! It's still active cultural center hosting concerts and events. Guided tours (200 CZK, 1 hour) are highly recommended - you can't see much without them. The café is accessible without tour - enjoy Art Nouveau surroundings with coffee! It's Art Nouveau perfection and Prague's architectural crown jewel!"
+        },
+        {
+          "question": "Can I visit Kafka sites in Prague?",
+          "answer": "Yes! Franz Kafka was born in Prague (1883) and most of his life unfolded here. Key sites: Kafka's birthplace (corner of Old Town Square - now museum entrance), his childhood homes (several in Jewish Quarter), Golden Lane #22 (he rented briefly), Kafka Museum (worthwhile!), Oppelt House where he wrote, and Old Town streets inspiring his surreal works. Kafka died in 1924 and is buried in New Jewish Cemetery. While Kafka wrote in German and felt alienated from Prague, the city profoundly influenced his dark, bureaucratic literary vision. Some tours combine Kafka with Jewish Quarter or architecture. His legacy is complex - celebrated now but he was obscure during his Prague life!"
+        }
+      ]
+    }
+  },
+
 };
 

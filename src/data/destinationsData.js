@@ -2691,12 +2691,12 @@ export const destinations = [
     heroDescription: 'Welcome to Prague, where medieval spires pierce the sky and centuries of history come alive in every cobblestone street. From the iconic Charles Bridge to the magnificent Prague Castle, from charming Old Town to vibrant culture, this golden city offers the perfect blend of history, architecture, and Czech charm. Let our AI-powered planner help you discover the best experiences this enchanting destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Prague.webp',
     tourCategories: [
-      'Prague Castle Tours',
-      'Charles Bridge Tours',
-      'Old Town Tours',
-      'Beer & Food Tours',
-      'Historic District Tours',
-      'Architecture & Culture Tours'
+      { name: 'Prague Castle Tours', hasGuide: true },
+      { name: 'Charles Bridge Tours', hasGuide: true },
+      { name: 'Old Town Tours', hasGuide: true },
+      { name: 'Beer & Food Tours', hasGuide: true },
+      { name: 'Historic District Tours', hasGuide: true },
+      { name: 'Architecture & Culture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Prague Tours & Excursions - Top-Rated Activities & Adventures',
