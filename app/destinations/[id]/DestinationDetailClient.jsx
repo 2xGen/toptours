@@ -16,6 +16,7 @@ import { getRelatedDestinations, getDestinationsByIds, getDestinationsByCountry 
 import { getGuidesByCategory, getGuidesByIds, getGuidesByCountry } from '../../../src/data/travelGuidesData.js';
 
 export default function DestinationDetailClient({ destination }) {
+  
   // Ensure destination has required arrays
   const safeDestination = {
     ...destination,
@@ -34,6 +35,8 @@ export default function DestinationDetailClient({ destination }) {
   const [countryDestinations, setCountryDestinations] = useState([]);
   const [guideCarouselIndex, setGuideCarouselIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [selectedTour, setSelectedTour] = useState(null);
+  const [isTourModalOpen, setIsTourModalOpen] = useState(false);
   const { toast } = useToast();
 
   const handleOpenModal = () => {
@@ -55,15 +58,17 @@ export default function DestinationDetailClient({ destination }) {
     const indexes = {};
     const visible = {};
     safeDestination.tourCategories.forEach(category => {
-      indexes[category] = 0;
-      visible[category] = 4; // Start with 4 visible tours on mobile
+      const categoryName = typeof category === 'string' ? category : category.name;
+      indexes[categoryName] = 0;
+      visible[categoryName] = 4; // Start with 4 visible tours on mobile
     });
     setCarouselIndexes(indexes);
     setVisibleTours(visible);
     
     // Fetch tours for each category
     safeDestination.tourCategories.forEach(category => {
-      fetchToursForCategory(safeDestination.name, category);
+      const categoryName = typeof category === 'string' ? category : category.name;
+      fetchToursForCategory(safeDestination.name, categoryName);
     });
 
     // Load all related destinations from the same region
@@ -183,7 +188,7 @@ export default function DestinationDetailClient({ destination }) {
                 <div className="flex flex-wrap gap-2 sm:gap-4">
                   {safeDestination.tourCategories.slice(0, 3).map((category, index) => (
                     <Badge key={index} variant="outline" className="bg-white/20 text-white border-white/30 text-sm">
-                      {category}
+                      {typeof category === 'string' ? category : category.name}
                     </Badge>
                   ))}
                 </div>
@@ -345,9 +350,11 @@ export default function DestinationDetailClient({ destination }) {
               </p>
             </motion.div>
 
-            {safeDestination.tourCategories && Array.isArray(safeDestination.tourCategories) && safeDestination.tourCategories.map((category, categoryIndex) => (
+            {safeDestination.tourCategories && Array.isArray(safeDestination.tourCategories) && safeDestination.tourCategories.map((category, categoryIndex) => {
+              const categoryName = typeof category === 'string' ? category : category.name;
+              return (
               <motion.div
-                key={category}
+                key={categoryName}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: categoryIndex * 0.1 }}
@@ -355,16 +362,33 @@ export default function DestinationDetailClient({ destination }) {
                 className="mb-16"
               >
                 <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-2xl font-poppins font-bold text-gray-800">
-                    {safeDestination.fullName} {category}
-                  </h3>
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-2xl font-poppins font-bold text-gray-800">
+                      {safeDestination.fullName} {typeof category === 'string' ? category : category.name}
+                    </h3>
+                    {(() => {
+                      const categoryName = typeof category === 'string' ? category : category.name;
+                      const hasGuide = typeof category === 'object' && category.hasGuide;
+                      const categorySlug = categoryName.toLowerCase().replace(/ /g, '-');
+                      
+                      return hasGuide ? (
+                        <Link 
+                          href={`/destinations/${safeDestination.id}/guides/${categorySlug}`}
+                          className="text-blue-600 hover:text-blue-700 transition-colors"
+                          title={`Read complete guide about ${categoryName} in ${safeDestination.fullName}`}
+                        >
+                          <BookOpen className="w-5 h-5" />
+                        </Link>
+                      ) : null;
+                    })()}
+                  </div>
                   {/* Desktop carousel controls - hidden on mobile */}
                   <div className="hidden md:flex space-x-2">
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => prevSlide(category)}
-                      disabled={carouselIndexes[category] === 0}
+                      onClick={() => prevSlide(categoryName)}
+                      disabled={carouselIndexes[categoryName] === 0}
                       className="w-10 h-10 p-0"
                     >
                       <ChevronLeft className="w-4 h-4" />
@@ -372,8 +396,8 @@ export default function DestinationDetailClient({ destination }) {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => nextSlide(category)}
-                      disabled={!tours[category] || carouselIndexes[category] >= (tours[category].length - 4)}
+                      onClick={() => nextSlide(categoryName)}
+                      disabled={!tours[categoryName] || carouselIndexes[categoryName] >= (tours[categoryName].length - 4)}
                       className="w-10 h-10 p-0"
                     >
                       <ChevronRight className="w-4 h-4" />
@@ -381,16 +405,16 @@ export default function DestinationDetailClient({ destination }) {
                   </div>
                 </div>
 
-                {loading[category] ? (
+                {loading[categoryName] ? (
                   <div className="text-center py-12">
                     <Loader2 className="w-8 h-8 animate-spin mx-auto text-blue-600 mb-4" />
                     <p className="text-gray-600">Loading tours...</p>
                   </div>
-                ) : tours[category] && tours[category].length > 0 ? (
+                ) : tours[categoryName] && tours[categoryName].length > 0 ? (
                   <>
                     {/* Mobile grid layout */}
                     <div className="md:hidden grid grid-cols-1 gap-6">
-                      {tours[category].slice(0, visibleTours[category] || 4).map((tour, index) => (
+                      {tours[categoryName].slice(0, visibleTours[categoryName] || 4).map((tour, index) => (
                         <Card key={tour.productCode || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
                           {/* Tour Image */}
                           <div className="relative h-32 bg-gray-200 flex-shrink-0">
@@ -463,7 +487,8 @@ export default function DestinationDetailClient({ destination }) {
                             <Button
                               onClick={(e) => {
                                 e.stopPropagation();
-                                window.open(tour.productUrl || `https://www.viator.com/tours/${tour.productCode}`, '_blank');
+                                setSelectedTour(tour);
+                                setIsTourModalOpen(true);
                               }}
                               variant="outline"
                               size="sm"
@@ -495,10 +520,10 @@ export default function DestinationDetailClient({ destination }) {
                     </div>
                     
                     {/* Load More button for mobile */}
-                    {tours[category] && (visibleTours[category] || 4) < tours[category].length && (
+                    {tours[categoryName] && (visibleTours[categoryName] || 4) < tours[categoryName].length && (
                       <div className="md:hidden mt-6 text-center">
                         <Button
-                          onClick={() => loadMoreTours(category)}
+                          onClick={() => loadMoreTours(categoryName)}
                           variant="outline"
                           className="px-6 py-2 text-purple-600 border-purple-300 hover:bg-purple-50"
                         >
@@ -511,9 +536,9 @@ export default function DestinationDetailClient({ destination }) {
                     <div className="hidden md:block overflow-hidden">
                     <div 
                       className="flex transition-transform duration-300 ease-in-out gap-6"
-                      style={{ transform: `translateX(-${carouselIndexes[category] * 25}%)` }}
+                      style={{ transform: `translateX(-${carouselIndexes[categoryName] * 25}%)` }}
                     >
-                      {tours[category].map((tour, index) => (
+                      {tours[categoryName].map((tour, index) => (
                         <Card key={tour.productCode || index} className="w-[calc(25%-1.125rem)] flex-shrink-0 bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
                           {/* Tour Image */}
                           <div className="relative h-32 bg-gray-200 flex-shrink-0">
@@ -586,7 +611,8 @@ export default function DestinationDetailClient({ destination }) {
                             <Button
                               onClick={(e) => {
                                 e.stopPropagation();
-                                window.open(tour.productUrl || `https://www.viator.com/tours/${tour.productCode}`, '_blank');
+                                setSelectedTour(tour);
+                                setIsTourModalOpen(true);
                               }}
                               variant="outline"
                               size="sm"
@@ -620,11 +646,12 @@ export default function DestinationDetailClient({ destination }) {
                   </>
                 ) : (
                   <div className="text-center py-12 bg-white rounded-lg">
-                    <p className="text-gray-500">No {category} tours found at the moment.</p>
+                    <p className="text-gray-500">No {categoryName} tours found at the moment.</p>
                   </div>
                 )}
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
@@ -805,8 +832,8 @@ export default function DestinationDetailClient({ destination }) {
                     <p className="text-gray-700 mb-6 leading-relaxed">{safeDestination.gettingAround}</p>
                     <div className="bg-white rounded-lg p-4">
                       <h4 className="font-semibold text-gray-800 mb-2">Car Rental Deals in {safeDestination.fullName}</h4>
-                      <p className="text-gray-600 text-sm mb-3">Rent a car for maximum flexibility and explore at your own pace.</p>
-                      <Button variant="outline" className="w-full" onClick={() => window.open(`https://www.rentalcars.com/SearchResults.do?city=${encodeURIComponent(safeDestination.fullName)}`, '_blank')}>
+                      <p className="text-gray-600 text-sm mb-3">Rent a car for maximum flexibility and explore at your own pace on Expedia USA.</p>
+                      <Button variant="outline" className="w-full" onClick={() => window.open(`https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk`, '_blank')}>
                         Find Car Rental Deals
                       </Button>
                     </div>
@@ -832,8 +859,8 @@ export default function DestinationDetailClient({ destination }) {
                     </p>
                     <div className="bg-white rounded-lg p-4">
                       <h4 className="font-semibold text-gray-800 mb-2">Best Hotel Deals in {safeDestination.fullName}</h4>
-                      <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers.</p>
-                      <Button variant="outline" className="w-full" onClick={() => window.open(`https://www.booking.com/searchresults.html?ss=${encodeURIComponent(safeDestination.fullName)}`, '_blank')}>
+                      <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers on Expedia USA.</p>
+                      <Button variant="outline" className="w-full" onClick={() => window.open(`https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk`, '_blank')}>
                         Find Hotel Deals
                       </Button>
                     </div>
@@ -926,6 +953,117 @@ export default function DestinationDetailClient({ destination }) {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
+
+      {/* Tour Details Modal */}
+      {isTourModalOpen && selectedTour && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
+            <button 
+              onClick={() => {
+                setIsTourModalOpen(false);
+                setSelectedTour(null);
+              }}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-2 shadow-lg"
+            >
+              ✕
+            </button>
+            
+            <div className="p-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Tour Details</h2>
+              <p className="text-gray-600 mb-6">Complete tour information</p>
+              
+              {/* Tour Image */}
+              {selectedTour.images?.[0]?.variants?.[3]?.url && (
+                <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
+                  <img
+                    src={selectedTour.images[0].variants[3].url}
+                    alt={selectedTour.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              
+              {/* Tour Title and Rating */}
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{selectedTour.title}</h3>
+              
+              {/* Badges */}
+              {selectedTour.flags && selectedTour.flags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {selectedTour.flags.map((flag, index) => {
+                    let badgeClass = "text-xs font-medium px-3 py-1 rounded-full";
+                    if (flag === "FREE_CANCELLATION") {
+                      badgeClass += " bg-green-50 text-green-700 border border-green-200";
+                    } else if (flag === "PRIVATE_TOUR") {
+                      badgeClass += " bg-purple-50 text-purple-700 border border-purple-200";
+                    } else if (flag === "LIKELY_TO_SELL_OUT") {
+                      badgeClass += " bg-orange-50 text-orange-700 border border-orange-200";
+                    } else {
+                      badgeClass += " bg-blue-50 text-blue-700 border border-blue-200";
+                    }
+                    
+                    return (
+                      <span key={index} className={badgeClass}>
+                        {flag.replace(/_/g, ' ')}
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
+              
+              {/* Rating */}
+              {selectedTour.reviews && (
+                <div className="flex items-center mb-4">
+                  <div className="flex items-center bg-yellow-50 px-3 py-1 rounded-full">
+                    <Star className="w-4 h-4 text-yellow-400 fill-current mr-1" />
+                    <span className="font-semibold text-gray-900">
+                      {selectedTour.reviews.combinedAverageRating?.toFixed(1) || 'N/A'}
+                    </span>
+                    <span className="text-gray-600 ml-1 text-sm">
+                      ({selectedTour.reviews.totalReviews || 0} reviews)
+                    </span>
+                  </div>
+                </div>
+              )}
+              
+              {/* Price */}
+              <div className="text-2xl font-bold text-orange-600 mb-6">
+                From ${selectedTour.pricing?.summary?.fromPrice || 'N/A'}
+              </div>
+              
+              {/* Description */}
+              <div className="mb-6">
+                <h4 className="font-semibold text-gray-900 mb-2">Description</h4>
+                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                  {selectedTour.description || 'No description available.'}
+                </p>
+              </div>
+              
+              {/* Action Buttons */}
+              <div className="flex gap-3 pt-4 border-t">
+                <Button
+                  onClick={() => {
+                    setIsTourModalOpen(false);
+                    setSelectedTour(null);
+                  }}
+                  variant="outline"
+                  className="flex-1"
+                >
+                  Close
+                </Button>
+                <Button
+                  onClick={() => {
+                    window.open(selectedTour.productUrl || `https://www.viator.com/tours/${selectedTour.productCode}`, '_blank');
+                  }}
+                  className="flex-1 sunset-gradient text-white"
+                >
+                  View All Details
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

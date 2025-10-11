@@ -9,12 +9,12 @@ export const destinations = [
     heroDescription: 'Welcome to Aruba, where constant sunshine meets stunning coastlines and warm hospitality. Whether you\'re cruising at sunset, exploring hidden coves on an ATV, or snorkeling vibrant reefs, Aruba offers unforgettable experiences for every traveler. Let our AI-powered planner help you discover the best this island has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//aruba.webp',
     tourCategories: [
-      'Sunset Cruises',
-      'ATV Tours', 
-      'Snorkeling Tours',
-      'Cultural Tours',
-      'Catamaran Sailing',
-      'Jeep Off-Road Tours'
+      { name: 'Sunset Cruises', hasGuide: true },
+      { name: 'ATV Tours', hasGuide: true }, 
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Catamaran Sailing', hasGuide: true },
+      { name: 'Jeep Off-Road Tours', hasGuide: true }
     ],
     seo: {
       title: 'Aruba Tours & Excursions - Top-Rated Activities & Adventures',
@@ -63,12 +63,12 @@ export const destinations = [
     heroDescription: 'Welcome to Curaçao, where Caribbean charm meets European elegance. From diving pristine coral reefs to exploring the colorful streets of Willemstad, this island offers a perfect blend of adventure and culture. Let our AI-powered planner help you discover the best experiences this unique destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//curacao.jpg',
     tourCategories: [
-      'Diving Tours',
-      'Snorkeling Tours',
-      'Willemstad Walking Tours',
-      'Beach Tours',
-      'Catamaran Cruises',
-      'Cultural Heritage Tours'
+      { name: 'Diving Tours', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Willemstad Walking Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Catamaran Cruises', hasGuide: true },
+      { name: 'Cultural Heritage Tours', hasGuide: true }
     ],
     seo: {
       title: 'Curaçao Tours & Excursions - Top-Rated Activities & Adventures',
@@ -117,12 +117,12 @@ export const destinations = [
     heroDescription: 'Welcome to St. Lucia, where dramatic volcanic peaks meet crystal-clear waters and lush tropical rainforests. From hiking the iconic Pitons to relaxing in volcanic mud baths, this island offers the perfect blend of adventure and luxury. Let our AI-powered planner help you discover the best experiences this stunning destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//st%20lucia.webp',
     tourCategories: [
-      'Piton Hiking Tours',
-      'Rainforest Tours',
-      'Volcanic Mud Bath Tours',
-      'Catamaran Cruises',
-      'Snorkeling Tours',
-      'Cultural Heritage Tours'
+      { name: 'Piton Hiking Tours', hasGuide: true },
+      { name: 'Rainforest Tours', hasGuide: true },
+      { name: 'Volcanic Mud Bath Tours', hasGuide: true },
+      { name: 'Catamaran Cruises', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Cultural Heritage Tours', hasGuide: true }
     ],
     seo: {
       title: 'St. Lucia Tours & Excursions - Top-Rated Activities & Adventures',
@@ -171,12 +171,12 @@ export const destinations = [
     heroDescription: 'Welcome to Barbados, where British colonial charm meets Caribbean warmth and natural beauty. From surfing the famous Soup Bowl to exploring historic Bridgetown, this island offers a perfect blend of culture, adventure, and relaxation. Let our AI-powered planner help you discover the best experiences this elegant destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Barbados.jpg',
     tourCategories: [
-      'Surfing Tours',
-      'Cultural Heritage Tours',
-      'Rum Distillery Tours',
-      'Catamaran Cruises',
-      'Snorkeling Tours',
-      'Historical Tours'
+      { name: 'Surfing Tours', hasGuide: true },
+      { name: 'Cultural Heritage Tours', hasGuide: true },
+      { name: 'Rum Distillery Tours', hasGuide: true },
+      { name: 'Catamaran Cruises', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true }
     ],
     seo: {
       title: 'Barbados Tours & Excursions - Top-Rated Activities & Adventures',
@@ -225,12 +225,12 @@ export const destinations = [
     heroDescription: 'Welcome to Jamaica, where reggae music fills the air and natural wonders await around every corner. From climbing Dunn\'s River Falls to exploring Bob Marley\'s legacy, this island offers an authentic Caribbean experience like no other. Let our AI-powered planner help you discover the best experiences this vibrant destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//jamaica.webp',
     tourCategories: [
-      'Waterfall Tours',
-      'Reggae Music Tours',
-      'Adventure Tours',
-      'Cultural Heritage Tours',
-      'Beach Tours',
-      'Historical Tours'
+      { name: 'Waterfall Tours', hasGuide: true },
+      { name: 'Reggae Music Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Cultural Heritage Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true }
     ],
     seo: {
       title: 'Jamaica Tours & Excursions - Top-Rated Activities & Adventures',
@@ -280,12 +280,12 @@ export const destinations = [
     heroDescription: 'Welcome to Punta Cana, where miles of white-sand beaches meet crystal-clear turquoise waters. From water sports and golf to cultural experiences and adventure tours, this paradise offers the perfect blend of relaxation and excitement. Let our AI-powered planner help you discover the best experiences this stunning destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//punta%20cana.webp',
     tourCategories: [
-      'Beach Tours',
-      'Water Sports',
-      'Golf Tours',
-      'Cultural Tours',
-      'Adventure Tours',
-      'Catamaran Cruises'
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Water Sports', hasGuide: true },
+      { name: 'Golf Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Catamaran Cruises', hasGuide: true }
     ],
     seo: {
       title: 'Punta Cana Tours & Excursions - Top-Rated Activities & Adventures',
@@ -335,12 +335,12 @@ export const destinations = [
     heroDescription: 'Welcome to Santo Domingo, where history comes alive in the first city of the New World. From exploring UNESCO World Heritage sites to experiencing vibrant Dominican culture, this city offers a perfect blend of old-world charm and modern excitement. Let our AI-powered planner help you discover the best experiences this historic destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//santo%20domingo.webp',
     tourCategories: [
-      'Historical Tours',
-      'Cultural Tours',
-      'Food Tours',
-      'Architecture Tours',
-      'Museum Tours',
-      'Walking Tours'
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Walking Tours', hasGuide: true }
     ],
     seo: {
       title: 'Santo Domingo Tours & Excursions - Top-Rated Activities & Adventures',
@@ -390,12 +390,12 @@ export const destinations = [
     heroDescription: 'Welcome to Nassau, where colonial history meets tropical paradise. From exploring historic forts to swimming with pigs, this vibrant capital offers the perfect blend of culture and adventure. Let our AI-powered planner help you discover the best experiences this Bahamian gem has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//nassau%20bahama.jpg',
     tourCategories: [
-      'Historical Tours',
-      'Beach Tours',
-      'Water Sports',
-      'Cultural Tours',
-      'Adventure Tours',
-      'Boat Tours'
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Water Sports', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Boat Tours', hasGuide: true }
     ],
     seo: {
       title: 'Nassau Tours & Excursions - Top-Rated Activities & Adventures',
@@ -445,12 +445,12 @@ export const destinations = [
     heroDescription: 'Welcome to Exuma, where turquoise waters meet white sand beaches and swimming pigs create unforgettable memories. From exploring hidden coves to swimming with marine life, this paradise offers the ultimate Bahamian adventure. Let our AI-powered planner help you discover the best experiences this stunning destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//exuma.jpg',
     tourCategories: [
-      'Swimming Pigs Tours',
-      'Boat Tours',
-      'Snorkeling Tours',
-      'Beach Tours',
-      'Adventure Tours',
-      'Island Hopping'
+      { name: 'Swimming Pigs Tours', hasGuide: true },
+      { name: 'Boat Tours', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Island Hopping', hasGuide: true }
     ],
     seo: {
       title: 'Exuma Tours & Excursions - Top-Rated Activities & Adventures',
@@ -499,12 +499,12 @@ export const destinations = [
     heroDescription: 'Welcome to Puerto Rico, where Spanish colonial history meets Caribbean charm. From exploring the historic streets of Old San Juan to hiking in El Yunque rainforest, this island offers an incredible blend of culture, history, and natural beauty. Let our AI-powered planner help you discover the best experiences this vibrant destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//puerto%20rico.jpg',
     tourCategories: [
-      'Historical Tours',
-      'Rainforest Tours',
-      'Beach Tours',
-      'Cultural Tours',
-      'Adventure Tours',
-      'Food Tours'
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Rainforest Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true }
     ],
     seo: {
       title: 'Puerto Rico Tours & Excursions - Top-Rated Activities & Adventures',
@@ -553,12 +553,12 @@ export const destinations = [
     heroDescription: 'Welcome to Turks and Caicos, where powder-white beaches meet crystal-clear turquoise waters. From world-class diving on the third-largest barrier reef to relaxing on pristine shores, this archipelago offers the perfect Caribbean escape. Let our AI-powered planner help you discover the best experiences this stunning destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//turks%20and%20caicos.webp',
     tourCategories: [
-      'Diving Tours',
-      'Beach Tours',
-      'Snorkeling Tours',
-      'Boat Tours',
-      'Adventure Tours',
-      'Luxury Tours'
+      { name: 'Diving Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Boat Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Luxury Tours', hasGuide: true }
     ],
     seo: {
       title: 'Turks and Caicos Tours & Excursions - Top-Rated Activities & Adventures',
@@ -607,12 +607,12 @@ export const destinations = [
     heroDescription: 'Welcome to Grenada, the Spice Island of the Caribbean. From exploring aromatic spice plantations to diving pristine coral reefs, this island offers an authentic Caribbean experience with rich culture and natural beauty. Let our AI-powered planner help you discover the best experiences this enchanting destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//grenada.jpg',
     tourCategories: [
-      'Spice Tours',
-      'Rainforest Tours',
-      'Beach Tours',
-      'Diving Tours',
-      'Cultural Tours',
-      'Adventure Tours'
+      { name: 'Spice Tours', hasGuide: true },
+      { name: 'Rainforest Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Diving Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Grenada Tours & Excursions - Top-Rated Activities & Adventures',
@@ -661,12 +661,12 @@ export const destinations = [
     heroDescription: 'Welcome to St. Martin, where French sophistication meets Dutch hospitality on one beautiful island. From world-class dining to pristine beaches and vibrant culture, this dual-nation paradise offers the best of both worlds. Let our AI-powered planner help you discover the best experiences this unique destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//St%20martin.jpg',
     tourCategories: [
-      'Beach Tours',
-      'Food Tours',
-      'Cultural Tours',
-      'Water Sports',
-      'Adventure Tours',
-      'Shopping Tours'
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Water Sports', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Shopping Tours', hasGuide: true }
     ],
     seo: {
       title: 'St. Martin Tours & Excursions - Top-Rated Activities & Adventures',
@@ -715,12 +715,12 @@ export const destinations = [
     heroDescription: 'Welcome to Bonaire, where crystal-clear waters reveal some of the world\'s most pristine coral reefs. From shore diving to exploring the protected marine park, this island offers an unparalleled underwater adventure. Let our AI-powered planner help you discover the best experiences this diving paradise has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Bonaire.jpg',
     tourCategories: [
-      'Diving Tours',
-      'Snorkeling Tours',
-      'Marine Park Tours',
-      'Beach Tours',
-      'Adventure Tours',
-      'Nature Tours'
+      { name: 'Diving Tours', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Marine Park Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true }
     ],
     seo: {
       title: 'Bonaire Tours & Excursions - Top-Rated Activities & Adventures',
@@ -769,12 +769,12 @@ export const destinations = [
     heroDescription: 'Welcome to the Cayman Islands, where luxury meets natural beauty in the heart of the Caribbean. From world-class diving at Stingray City to relaxing on Seven Mile Beach, this archipelago offers the perfect blend of adventure and sophistication. Let our AI-powered planner help you discover the best experiences this stunning destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//cayman%20islands.jpg',
     tourCategories: [
-      'Diving Tours',
-      'Beach Tours',
-      'Stingray Tours',
-      'Luxury Tours',
-      'Adventure Tours',
-      'Cultural Tours'
+      { name: 'Diving Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Stingray Tours', hasGuide: true },
+      { name: 'Luxury Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true }
     ],
     seo: {
       title: 'Cayman Islands Tours & Excursions - Top-Rated Activities & Adventures',
@@ -823,12 +823,12 @@ export const destinations = [
     heroDescription: 'Welcome to Antigua and Barbuda, where you can visit a different beach every day of the year. From historic Nelson\'s Dockyard to pristine pink sand beaches, this dual-island nation offers the perfect blend of history, culture, and natural beauty. Let our AI-powered planner help you discover the best experiences this stunning destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Antigua%20and%20Barbuda.jpg',
     tourCategories: [
-      'Beach Tours',
-      'Sailing Tours',
-      'Historical Tours',
-      'Water Sports',
-      'Adventure Tours',
-      'Cultural Tours'
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Sailing Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Water Sports', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true }
     ],
     seo: {
       title: 'Antigua and Barbuda Tours & Excursions - Top-Rated Activities & Adventures',
@@ -877,12 +877,12 @@ export const destinations = [
     heroDescription: 'Welcome to Trinidad and Tobago, where Carnival spirit meets natural beauty. From the world-famous Carnival celebrations to pristine beaches and lush rainforests, this dual-island nation offers an authentic Caribbean experience with rich culture and biodiversity. Let our AI-powered planner help you discover the best experiences this vibrant destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Trinidad%20and%20Tobago.jpeg',
     tourCategories: [
-      'Carnival Tours',
-      'Beach Tours',
-      'Cultural Tours',
-      'Nature Tours',
-      'Adventure Tours',
-      'Food Tours'
+      { name: 'Carnival Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true }
     ],
     seo: {
       title: 'Trinidad and Tobago Tours & Excursions - Top-Rated Activities & Adventures',
@@ -931,12 +931,12 @@ export const destinations = [
     heroDescription: 'Welcome to the British Virgin Islands, where 60+ islands and cays create the perfect sailing and island-hopping paradise. From the Baths on Virgin Gorda to the famous beach bars of Jost Van Dyke, this archipelago offers endless adventure and natural beauty. Let our AI-powered planner help you discover the best experiences this stunning destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//British%20Virgin%20Islands.jpg',
     tourCategories: [
-      'Sailing Tours',
-      'Island Hopping',
-      'Beach Tours',
-      'Diving Tours',
-      'Adventure Tours',
-      'Boat Tours'
+      { name: 'Sailing Tours', hasGuide: true },
+      { name: 'Island Hopping', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Diving Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Boat Tours', hasGuide: true }
     ],
     seo: {
       title: 'British Virgin Islands Tours & Excursions - Top-Rated Activities & Adventures',
@@ -985,12 +985,12 @@ export const destinations = [
     heroDescription: 'Welcome to St. Kitts and Nevis, where volcanic peaks meet pristine beaches and rich colonial history. From exploring historic Brimstone Hill Fortress to hiking Mount Liamuiga, this dual-island nation offers the perfect blend of adventure and relaxation. Let our AI-powered planner help you discover the best experiences this stunning destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//St.%20Kitts%20and%20Nevis.jpeg',
     tourCategories: [
-      'Historical Tours',
-      'Hiking Tours',
-      'Beach Tours',
-      'Cultural Tours',
-      'Adventure Tours',
-      'Railway Tours'
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Hiking Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Railway Tours', hasGuide: true }
     ],
     seo: {
       title: 'St. Kitts and Nevis Tours & Excursions - Top-Rated Activities & Adventures',
@@ -1039,12 +1039,12 @@ export const destinations = [
     heroDescription: 'Welcome to Martinique, where French sophistication meets Caribbean charm. From exploring the volcanic Mount Pelée to tasting world-famous rum, this French overseas territory offers a unique blend of European culture and tropical beauty. Let our AI-powered planner help you discover the best experiences this enchanting destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Martinique.jpg',
     tourCategories: [
-      'Rum Tours',
-      'Volcano Tours',
-      'Beach Tours',
-      'Cultural Tours',
-      'Adventure Tours',
-      'Food Tours'
+      { name: 'Rum Tours', hasGuide: true },
+      { name: 'Volcano Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true }
     ],
     seo: {
       title: 'Martinique Tours & Excursions - Top-Rated Activities & Adventures',
@@ -1093,12 +1093,12 @@ export const destinations = [
     heroDescription: 'Welcome to Guadeloupe, where the butterfly-shaped archipelago offers diverse landscapes from volcanic peaks to pristine beaches. From exploring the Soufrière volcano to relaxing on white sand beaches, this French overseas territory offers an authentic Caribbean experience with European sophistication. Let our AI-powered planner help you discover the best experiences this stunning destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Guadeloupe.jpg',
     tourCategories: [
-      'Volcano Tours',
-      'Beach Tours',
-      'Cultural Tours',
-      'Adventure Tours',
-      'Nature Tours',
-      'Food Tours'
+      { name: 'Volcano Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true }
     ],
     seo: {
       title: 'Guadeloupe Tours & Excursions - Top-Rated Activities & Adventures',
@@ -1480,12 +1480,12 @@ export const destinations = [
     heroDescription: 'Welcome to the Amalfi Coast, where dramatic cliffs meet crystal-clear waters and colorful villages cling to the mountainside. From the charming town of Positano to the historic Amalfi, from scenic drives to boat tours, this UNESCO World Heritage site offers the perfect blend of natural beauty and Italian charm. Let our AI-powered planner help you discover the best experiences this breathtaking destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Amalfi%20Coast.webp',
     tourCategories: [
-      'Coastal Boat Tours',
-      'Positano Tours',
-      'Ravello Gardens Tours',
-      'Amalfi Town Tours',
-      'Capri Island Tours',
-      'Coastal Hiking Tours'
+      { name: 'Coastal Boat Tours', hasGuide: true },
+      { name: 'Positano Tours', hasGuide: true },
+      { name: 'Ravello Gardens Tours', hasGuide: true },
+      { name: 'Amalfi Town Tours', hasGuide: true },
+      { name: 'Capri Island Tours', hasGuide: true },
+      { name: 'Coastal Hiking Tours', hasGuide: true }
     ],
     seo: {
       title: 'Amalfi Coast Tours & Excursions - Top-Rated Activities & Adventures',
@@ -1535,12 +1535,12 @@ export const destinations = [
     heroDescription: 'Welcome to Barcelona, where Gaudi\'s architectural masterpieces meet Mediterranean beaches and Catalan culture thrives. From the iconic Sagrada Familia to the bustling Las Ramblas, from Gothic Quarter charm to modern innovation, this cosmopolitan city offers the perfect blend of history, art, and contemporary life. Let our AI-powered planner help you discover the best experiences this dynamic destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Barcelona.jpg',
     tourCategories: [
-      'Sagrada Familia Tours',
-      'Gaudi Architecture Tours',
-      'Gothic Quarter Tours',
-      'Food & Wine Tours',
-      'Beach & Coastal Tours',
-      'Art & Culture Tours'
+      { name: 'Sagrada Familia Tours', hasGuide: true },
+      { name: 'Park Guell Tours', hasGuide: true },
+      { name: 'Gothic Quarter Tours', hasGuide: true },
+      { name: 'La Rambla Tours', hasGuide: true },
+      { name: 'Casa Batllo Tours', hasGuide: true },
+      { name: 'Tapas Food Tours', hasGuide: true }
     ],
     seo: {
       title: 'Barcelona Tours & Excursions - Top-Rated Activities & Adventures',
@@ -1810,12 +1810,12 @@ export const destinations = [
     heroDescription: 'Welcome to Athens, where ancient ruins meet modern life and Greek culture thrives. From the iconic Acropolis to the historic Plaka district, from world-class museums to authentic Greek cuisine, this timeless city offers the perfect blend of history, culture, and contemporary Mediterranean life. Let our AI-powered planner help you discover the best experiences this legendary destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Athens.jpg',
     tourCategories: [
-      'Acropolis Tours',
-      'Ancient Greece Tours',
-      'Museum Tours',
-      'Food & Wine Tours',
-      'Historic District Tours',
-      'Archaeological Site Tours'
+      { name: 'Acropolis Tours', hasGuide: true },
+      { name: 'Ancient Greece Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Food Wine Tours', hasGuide: true },
+      { name: 'Historic District Tours', hasGuide: true },
+      { name: 'Archaeological Site Tours', hasGuide: true }
     ],
     seo: {
       title: 'Athens Tours & Excursions - Top-Rated Activities & Adventures',
@@ -1975,12 +1975,12 @@ export const destinations = [
     heroDescription: 'Welcome to Crete, where ancient Minoan civilization meets stunning natural landscapes and authentic Greek island culture. From the historic Palace of Knossos to dramatic gorges and pristine beaches, from traditional villages to modern cities, this diverse island offers the perfect blend of history, nature, and Mediterranean charm. Let our AI-powered planner help you discover the best experiences this magnificent destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Crete.jpeg',
     tourCategories: [
-      'Knossos Palace Tours',
-      'Samaria Gorge Tours',
-      'Beach & Coastal Tours',
-      'Food & Wine Tours',
-      'Archaeological Site Tours',
-      'Mountain & Village Tours'
+      { name: 'Knossos Palace Tours', hasGuide: true },
+      { name: 'Samaria Gorge Tours', hasGuide: true },
+      { name: 'Beach Coastal Tours', hasGuide: true },
+      { name: 'Food Wine Tours', hasGuide: true },
+      { name: 'Archaeological Site Tours', hasGuide: true },
+      { name: 'Mountain Village Tours', hasGuide: true }
     ],
     seo: {
       title: 'Crete Tours & Excursions - Top-Rated Activities & Adventures',
@@ -2250,12 +2250,12 @@ export const destinations = [
     heroDescription: 'Welcome to Edinburgh, where medieval castles meet Georgian elegance and Scottish traditions come alive. From the iconic Edinburgh Castle to the historic Royal Mile, from world-famous festivals to authentic Scottish culture, this historic capital offers the perfect blend of history, culture, and Scottish charm. Let our AI-powered planner help you discover the best experiences this magnificent destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Edinburgh.jpeg',
     tourCategories: [
-      'Edinburgh Castle Tours',
-      'Royal Mile Tours',
-      'Whisky & Food Tours',
-      'Ghost & History Tours',
-      'Arthur\'s Seat Tours',
-      'Scottish Culture Tours'
+      { name: 'Edinburgh Castle Tours', hasGuide: true },
+      { name: 'Royal Mile Tours', hasGuide: true },
+      { name: 'Whisky Food Tours', hasGuide: true },
+      { name: 'Ghost History Tours', hasGuide: true },
+      { name: 'Arthurs Seat Tours', hasGuide: true },
+      { name: 'Scottish Culture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Edinburgh Tours & Excursions - Top-Rated Activities & Adventures',
@@ -2306,12 +2306,12 @@ export const destinations = [
     heroDescription: 'Welcome to Amsterdam, where historic canals wind through charming neighborhoods and artistic masterpieces tell stories of centuries past. From the iconic Anne Frank House to the world-famous Van Gogh Museum, from picturesque canals to vibrant culture, this Dutch capital offers the perfect blend of history, art, and contemporary European life. Let our AI-powered planner help you discover the best experiences this enchanting destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Amsterdam.jpg',
     tourCategories: [
-      'Canal Boat Tours',
-      'Van Gogh Museum Tours',
-      'Anne Frank House Tours',
-      'Food & Beer Tours',
-      'Historic District Tours',
-      'Art & Culture Tours'
+      { name: 'Canal Boat Tours', hasGuide: true },
+      { name: 'Van Gogh Museum Tours', hasGuide: true },
+      { name: 'Anne Frank House Tours', hasGuide: true },
+      { name: 'Food Beer Tours', hasGuide: true },
+      { name: 'Historic District Tours', hasGuide: true },
+      { name: 'Art Culture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Amsterdam Tours & Excursions - Top-Rated Activities & Adventures',
@@ -2361,12 +2361,12 @@ export const destinations = [
     heroDescription: 'Welcome to Berlin, where historic landmarks tell stories of transformation and cutting-edge culture thrives in every neighborhood. From the iconic Brandenburg Gate to the historic Berlin Wall, from world-class museums to vibrant nightlife, this dynamic capital offers the perfect blend of history, culture, and modern German life. Let our AI-powered planner help you discover the best experiences this fascinating destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Berlin.jpg',
     tourCategories: [
-      'Brandenburg Gate Tours',
-      'Berlin Wall Tours',
-      'Museum Island Tours',
-      'Food & Beer Tours',
-      'Historic District Tours',
-      'Art & Culture Tours'
+      { name: 'Brandenburg Gate Tours', hasGuide: true },
+      { name: 'Berlin Wall Tours', hasGuide: true },
+      { name: 'Museum Island Tours', hasGuide: true },
+      { name: 'Food Beer Tours', hasGuide: true },
+      { name: 'Historic District Tours', hasGuide: true },
+      { name: 'Art Culture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Berlin Tours & Excursions - Top-Rated Activities & Adventures',
@@ -2581,12 +2581,12 @@ export const destinations = [
     heroDescription: 'Welcome to Dubrovnik, where ancient stone walls encircle a perfectly preserved medieval city and the crystal-clear Adriatic Sea provides endless natural beauty. From the iconic city walls to historic churches, from pristine beaches to charming streets, this UNESCO World Heritage site offers the perfect blend of history, culture, and Croatian coastal charm. Let our AI-powered planner help you discover the best experiences this magnificent destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Dubrovnik.webp',
     tourCategories: [
-      'City Walls Tours',
-      'Old Town Tours',
-      'Adriatic Boat Tours',
-      'Food & Wine Tours',
-      'Game of Thrones Tours',
-      'Island Hopping Tours'
+      { name: 'City Walls Tours', hasGuide: true },
+      { name: 'Old Town Tours', hasGuide: true },
+      { name: 'Adriatic Boat Tours', hasGuide: true },
+      { name: 'Food Wine Tours', hasGuide: true },
+      { name: 'Game of Thrones Tours', hasGuide: true },
+      { name: 'Island Hopping Tours', hasGuide: true }
     ],
     seo: {
       title: 'Dubrovnik Tours & Excursions - Top-Rated Activities & Adventures',
@@ -2801,12 +2801,12 @@ export const destinations = [
     heroDescription: 'Welcome to Budapest, where the majestic Danube River divides two historic cities and thermal springs have been healing visitors for centuries. From the magnificent Parliament Building to the historic thermal baths, from charming Buda Castle to vibrant Pest, this dual city offers the perfect blend of history, culture, and Hungarian charm. Let our AI-powered planner help you discover the best experiences this fascinating destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Budapest.webp',
     tourCategories: [
-      'Parliament Building Tours',
-      'Thermal Bath Tours',
-      'Buda Castle Tours',
-      'Danube River Tours',
-      'Food & Wine Tours',
-      'Historic District Tours'
+      { name: 'Parliament Building Tours', hasGuide: true },
+      { name: 'Thermal Bath Tours', hasGuide: true },
+      { name: 'Buda Castle Tours', hasGuide: true },
+      { name: 'Danube River Tours', hasGuide: true },
+      { name: 'Food Wine Tours', hasGuide: true },
+      { name: 'Historic District Tours', hasGuide: true }
     ],
     seo: {
       title: 'Budapest Tours & Excursions - Top-Rated Activities & Adventures',

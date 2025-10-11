@@ -4,8 +4,8 @@ export async function POST(request) {
   try {
     const { destination, category, budget, duration, groupSize } = await request.json();
 
-    // Get API key from environment variables
-    const apiKey = process.env.VIATOR_API_KEY;
+    // Hardcoded API key for local testing
+    const apiKey = '282a363f-5d60-456a-a6a0-774ec4832b07';
     
     if (!apiKey) {
       return NextResponse.json({ error: 'API key not configured' }, { status: 500 });

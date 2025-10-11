@@ -82,25 +82,23 @@ const Footer = () => {
             <a 
               href="https://toptours.ai/" 
               target="_blank" 
-              rel="follow"
+              rel="nofollow noopener noreferrer"
               className="text-yellow-400 hover:text-yellow-300 transition-colors"
             >
               TopTours.ai
             </a>
             {' '}is proudly built by{' '}
-            <a 
-              href="https://2xgen.com/" 
-              target="_blank" 
-              rel="follow"
+            <Link 
+              to="/2xgen"
               className="text-yellow-400 hover:text-yellow-300 transition-colors"
             >
               2xGen
-            </a>
+            </Link>
             {' '}— creators of next-gen digital platforms, including{' '}
             <a 
               href="https://mygoprofile.com/" 
               target="_blank" 
-              rel="follow"
+              rel="nofollow noopener noreferrer"
               className="text-yellow-400 hover:text-yellow-300 transition-colors"
             >
               MyGoProfile
@@ -109,7 +107,7 @@ const Footer = () => {
             <a 
               href="https://factuurbaas.nl/" 
               target="_blank" 
-              rel="follow"
+              rel="nofollow noopener noreferrer"
               className="text-yellow-400 hover:text-yellow-300 transition-colors"
             >
               FactuurBaas
@@ -118,7 +116,7 @@ const Footer = () => {
             <a 
               href="https://arubabuddies.com/" 
               target="_blank" 
-              rel="follow"
+              rel="nofollow noopener noreferrer"
               className="text-yellow-400 hover:text-yellow-300 transition-colors"
             >
               ArubaBuddies
