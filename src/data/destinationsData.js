@@ -2911,12 +2911,12 @@ export const destinations = [
     heroDescription: 'Welcome to Oslo, where modern Scandinavian design meets ancient Viking history and stunning fjords provide a breathtaking natural backdrop. From the iconic Viking Ship Museum to the beautiful Oslo Fjord, from world-class museums to outdoor adventures, this Nordic capital offers the perfect blend of history, culture, and Norwegian nature. Let our AI-powered planner help you discover the best experiences this sophisticated destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Oslo.jpeg',
     tourCategories: [
-      'Viking Ship Museum Tours',
-      'Oslo Fjord Tours',
-      'Fram Museum Tours',
-      'Food & Culture Tours',
-      'Historic District Tours',
-      'Outdoor Adventure Tours'
+      { name: 'Viking Ship Museum Tours', hasGuide: true },
+      { name: 'Oslo Fjord Tours', hasGuide: true },
+      { name: 'Fram Museum Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Historic District Tours', hasGuide: true },
+      { name: 'Outdoor Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Oslo Tours & Excursions - Top-Rated Activities & Adventures',
