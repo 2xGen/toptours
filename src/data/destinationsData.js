@@ -2085,12 +2085,12 @@ export const destinations = [
     heroDescription: 'Welcome to Porto, where historic wine cellars line the Douro River and medieval architecture tells stories of centuries past. From the iconic Dom Luís Bridge to the charming Ribeira district, from world-famous port wine to traditional Portuguese cuisine, this northern city offers the perfect blend of history, culture, and authentic Portuguese charm. Let our AI-powered planner help you discover the best experiences this magnificent destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Porto.jpeg',
     tourCategories: [
-      'Port Wine Tours',
-      'Ribeira District Tours',
-      'Douro River Tours',
-      'Food & Wine Tours',
-      'Historic Bridge Tours',
-      'Wine Cellar Tours'
+      { name: 'Port Wine Tours', hasGuide: true },
+      { name: 'Ribeira District Tours', hasGuide: true },
+      { name: 'Douro River Tours', hasGuide: true },
+      { name: 'Food & Wine Tours', hasGuide: true },
+      { name: 'Historic Bridge Tours', hasGuide: true },
+      { name: 'Wine Cellar Tours', hasGuide: true }
     ],
     seo: {
       title: 'Porto Tours & Excursions - Top-Rated Activities & Adventures',

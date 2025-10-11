@@ -32015,5 +32015,1059 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
     }
   },
 
+  porto: {
+    'port-wine-tours': {
+      title: 'Porto Port Wine Tours',
+      subtitle: 'Discover Portugal\'s legendary Port wine with tastings in historic cellars along the Douro River!',
+      categoryName: 'Port Wine Tours',
+      
+      stats: {
+        toursAvailable: 28,
+        priceFrom: 25,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience the world-famous Port wine in its birthplace - Porto, where centuries-old cellars line the Vila Nova de Gaia riverbank! Port wine, Portugal's most celebrated export, is a fortified wine produced exclusively in the Douro Valley and aged in Porto's historic lodges. These tours take you through atmospheric cellars where thousands of oak barrels hold aging Port, from Ruby and Tawny to vintage treasures worth hundreds. Learn the fascinating production process, understand the difference between styles, taste premium Ports paired with Portuguese cheese and chocolate, and discover why this sweet fortified wine has captivated the world since the 1600s. Visit famous houses like Graham's, Taylor's, and Sandeman, or explore smaller family-run quintas. Perfect for wine enthusiasts, culture lovers, and anyone wanting authentic Portuguese experiences!`,
+
+      seo: {
+        title: 'Porto Port Wine Tours 2025 - Wine Cellar Tastings',
+        description: 'Experience authentic Port wine tours in Porto. Historic cellars, wine tastings, and Portuguese wine heritage!',
+        keywords: 'Porto wine tours, Port wine tastings, Vila Nova de Gaia, Porto wine cellars, Portuguese wine tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'GlassWater',
+          title: 'Birthplace of Port Wine',
+          description: 'Taste Port wine where it\'s made and aged - the authentic experience in historic cellars!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Historic Wine Lodges',
+          description: 'Visit centuries-old cellars with thousands of oak barrels and fascinating traditions.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Sommeliers',
+          description: 'Learn from wine experts who explain production, aging, and tasting techniques.',
+        },
+        {
+          icon: 'Star',
+          title: 'Premium Tastings',
+          description: 'Sample multiple Port styles from Ruby to aged Tawny to rare vintage Ports.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'GlassWater',
+          title: 'Classic Wine Lodge Tours',
+          description: 'Visit famous Port houses like Graham\'s, Taylor\'s, or Sandeman with guided tastings.',
+          features: [
+            'Historic cellar tour',
+            '3-5 Port tastings',
+            'Production explained',
+            'Barrel aging process',
+            'River views',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Multi-Lodge Tours',
+          description: 'Compare different Port houses visiting 2-3 cellars in one comprehensive tour.',
+          features: [
+            'Multiple lodges',
+            '6-8 tastings total',
+            'Style comparisons',
+            'Expert guidance',
+            'Full experience',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Premium & Vintage Tours',
+          description: 'Exclusive tastings of aged Tawny and vintage Ports with sommelier guidance.',
+          features: [
+            'Premium selections',
+            'Vintage Ports',
+            'Aged Tawny',
+            'Food pairings',
+            'VIP experience',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Douro Valley Day Trips',
+          description: 'Visit vineyards where Port grapes grow with tastings, lunch, and scenic valley views.',
+          features: [
+            'Douro Valley visit',
+            'Vineyard tours',
+            'Traditional lunch',
+            'River cruise option',
+            'Full-day experience',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Porto Port Wine Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Cellar tours last 2-3 hours; full Douro Valley trips take 8-10 hours with travel.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Wine Tastings',
+            description: 'Sample 3-8 different Port styles learning to identify characteristics and quality.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Historic Cellars',
+            description: 'Explore atmospheric lodges in Vila Nova de Gaia with centuries of wine-making heritage.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Educational Content',
+            description: 'Learn about fortification process, aging methods, and Port wine classification.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Food Pairings',
+            description: 'Many tours include cheese, chocolate, or Portuguese tapas paired with wines.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Riverside Views',
+            description: 'Cellars offer stunning views across the Douro River to Porto\'s colorful Ribeira.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Graham\'s offers the best panoramic terrace views over Porto - worth visiting for views alone!',
+        'Tawny Port (aged in wood) is drier and more complex than Ruby Port - try both to compare.',
+        'Book tours in advance for premium lodges like Taylor\'s and Croft which limit visitors.',
+        'The cable car across the river (€6) offers spectacular views and connects to wine cellars.',
+        'Most cellars are free to visit independently with small tasting fees (€5-10) if on a budget.',
+        'Late afternoon tours (4-6 PM) provide beautiful golden hour light over the Douro.',
+        'White Port exists too - it\'s served chilled as an aperitif and is refreshing!',
+        'Vintage Port is expensive but extraordinary - splurge on at least one glass if offered.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Port wine?',
+          answer: 'Port wine is a sweet, fortified wine produced exclusively in Portugal\'s Douro Valley and aged in Porto\'s cellars! It\'s made by adding grape spirit (brandy) to fermenting wine, stopping fermentation and preserving natural grape sugars - creating sweet, strong wine (19-22% alcohol). Port comes in multiple styles: Ruby (young, fruity, affordable), Tawny (aged in wood, nutty and smooth), Vintage (best years, ages in bottle, very expensive), Late Bottled Vintage (LBV - good middle ground), and White Port (aperitif style). The wine has been produced since the 1600s when British merchants developed it for shipping to England. It\'s Portugal\'s most famous wine and a protected designation!',
+        },
+        {
+          question: 'Where are the Port wine cellars?',
+          answer: 'The famous Port wine cellars (lodges) are located in Vila Nova de Gaia, directly across the Douro River from Porto\'s Ribeira district! While Port grapes grow in the Douro Valley (100km inland), the wine has traditionally been aged in Gaia\'s riverside cellars due to cooler coastal climate. Over 60 Port lodges line the south bank - some massive (Taylor\'s, Sandeman, Graham\'s) and others small family operations. They\'re easily accessible by walking across the Dom Luís I Bridge (stunning views!) or taking the cable car. The waterfront is lined with cellars offering tours and tastings. Most are within 10-minute walk of each other. It\'s Porto\'s most touristic area but genuinely fascinating!',
+        },
+        {
+          question: 'How much do Port wine tours cost?',
+          answer: 'Prices vary widely! Basic cellar visits with 2-3 Port tastings cost €10-20 per person. Premium tours with more tastings, vintage Ports, and food pairings run €25-50. Multi-lodge tours cost €40-80. Full-day Douro Valley trips with vineyard visits, lunch, and river cruise cost €80-150. Some famous lodges (Graham\'s, Taylor\'s) offer free basic tours with paid upgrades for premium tastings. Small family lodges sometimes charge just €5-8. Generally, you get what you pay for - budget tours are basic, premium tours include better wines and experiences. Many lodges allow walk-in visits. Guided multi-lodge tours provide best value for comprehensive Port education!',
+        },
+        {
+          question: 'Which Port wine lodges should I visit?',
+          answer: 'Top choices: Graham\'s (best rooftop terrace views, excellent tour, premium Ports), Taylor\'s (historic, prestigious, beautiful gardens, pricier), Sandeman (iconic cape-wearing logo, good intro tour), Ferreira (Portuguese-owned, traditional), Croft (smaller, intimate, excellent guides), and Calem (interactive museum, multimedia). For budget: Real Companhia Velha (affordable, quality wines). Each has different character - Graham\'s for views, Taylor\'s for prestige, Sandeman for accessibility. You can visit 2-3 in an afternoon as they\'re close together. Tours booking multiple lodges let you compare! Most visitors love the experience regardless of which they choose. All teach Port fundamentals well!',
+        },
+        {
+          question: 'What\'s the difference between Ruby and Tawny Port?',
+          answer: 'Ruby Port ages in bottles (reductive aging) keeping deep red color, fruity flavors, and youthful character. It\'s aged briefly in wood (2-3 years), then bottled. Basic Ruby is affordable (€8-15) and widely available. Tawny Port ages in wooden barrels (oxidative aging) for 10, 20, 30, or 40+ years! Contact with air and wood gradually changes color from red to tawny/amber brown, develops nutty, caramel, dried fruit flavors, and creates smooth complexity. Aged Tawny (10-year+) is more expensive and sophisticated. Ruby is bolder and fruitier; Tawny is smoother and more complex. Both are delicious - it\'s preference! Try both to discover which you prefer!',
+        },
+        {
+          question: 'Can I visit the Douro Valley from Porto?',
+          answer: 'Yes! The Douro Valley (where Port grapes grow) is about 100 kilometers (60 miles) east of Porto - absolutely worth visiting! Options: Full-day guided tours (€80-150) include transportation, vineyard visits, wine tastings, traditional lunch, and often a river cruise - comprehensive and popular! Train from Porto\'s São Bento station to Pinhão or Régua (scenic route along river, €12-25, 2-3 hours) then explore independently or with local tours. Drive yourself (rental car) for flexibility. The valley is UNESCO World Heritage with spectacular terraced vineyards! Spring (April-May) brings blossoms; September brings harvest; any season is beautiful. Full-day tours are most convenient for first visits!',
+        },
+        {
+          question: 'Is Port wine only sweet?',
+          answer: 'Mostly, but not exclusively! Traditional Ports (Ruby, Tawny, Vintage) are sweet fortified wines - that\'s their defining character. However, White Port comes in sweet AND dry styles - dry White Port served chilled as an aperitif is refreshing! Some modern producers experiment with drier styles. Aged Tawny Ports (20-year+) while still sweet, have such complexity they don\'t taste "dessert wine" sweet. The sweetness comes from stopping fermentation, preserving grape sugars. If you typically dislike sweet wines, try aged Tawny or dry White Port - they might surprise you! The quality and complexity make Port more sophisticated than simple sweet wine. Give it a chance!',
+        },
+      ],
+    },
+
+    'ribeira-district-tours': {
+      title: 'Porto Ribeira District Tours',
+      subtitle: 'Explore Porto\'s most picturesque neighborhood with colorful facades, riverside cafes, and medieval charm!',
+      categoryName: 'Ribeira District Tours',
+      
+      stats: {
+        toursAvailable: 22,
+        priceFrom: 15,
+        duration: '2-3 hours',
+      },
+
+      introduction: `Discover the Ribeira district, Porto's heart and soul! This UNESCO World Heritage waterfront neighborhood is Porto's most photographed area, where colorful medieval buildings cascade down to the Douro River creating Portugal's most iconic view. Narrow cobblestone streets wind between 14th-century houses, traditional azulejo tiles adorn facades, and riverside cafes buzz with life. The Ribeira has been Porto's commercial center since medieval times - once a bustling port where wine, fish, and goods were traded. Today it's a vibrant mix of history and modern life with restaurants, street performers, and stunning views of the Dom Luís Bridge. Walking tours reveal hidden courtyards, explain the district's fascinating history, and guide you to the best viewpoints, local taverns, and photo spots!`,
+
+      seo: {
+        title: 'Porto Ribeira District Tours 2025 - UNESCO Heritage Walks',
+        description: 'Explore Porto\'s UNESCO Ribeira district. Colorful waterfront, medieval streets, and Portuguese culture!',
+        keywords: 'Ribeira Porto, Porto walking tours, Porto riverside, Porto UNESCO, Porto historic district',
+      },
+
+      whyChoose: [
+        {
+          icon: 'MapPin',
+          title: 'UNESCO World Heritage',
+          description: 'Explore Porto\'s most historic neighborhood with protected medieval architecture.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Most Photogenic Area',
+          description: 'Colorful buildings, river views, and charming streets - Instagram paradise!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Authentic Portuguese Life',
+          description: 'Experience real Porto culture with local taverns, traditional food, and daily rhythms.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Medieval History',
+          description: 'Walk streets unchanged for centuries learning Porto\'s fascinating past.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Walking History Tours',
+          description: 'Guided walks through Ribeira\'s medieval streets with historical context and stories.',
+          features: [
+            '2-3 hour walking',
+            'Historic architecture',
+            'Local guide',
+            'Hidden courtyards',
+            'Photo opportunities',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Capture Ribeira\'s beauty with professional photographers guiding you to best spots.',
+          features: [
+            'Best viewpoints',
+            'Golden hour timing',
+            'Photo techniques',
+            'Iconic locations',
+            'Small groups',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Food & Culture Walks',
+          description: 'Combine Ribeira exploration with Portuguese food tastings at local establishments.',
+          features: [
+            'Traditional tastings',
+            'Local taverns',
+            'Port wine samples',
+            'Cultural insights',
+            'Authentic experience',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Evening & Night Tours',
+          description: 'Experience Ribeira after dark when lights reflect on water creating magical atmosphere.',
+          features: [
+            'Illuminated bridges',
+            'Romantic ambiance',
+            'Fewer crowds',
+            'Night photography',
+            'Dinner recommendations',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Porto Ribeira District Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours last 2-3 hours; food tours run 3-4 hours with multiple stops.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Medieval Streets',
+            description: 'Navigate narrow cobblestone lanes between colorful houses dating to the 1300s.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Riverside Promenade',
+            description: 'Stroll the waterfront Cais da Ribeira with cafes, street performers, and bridge views.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Historical Context',
+            description: 'Learn about Porto\'s trading history, medieval life, and UNESCO designation.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Local Culture',
+            description: 'Experience authentic Portuguese life with traditional taverns and local residents.',
+          },
+          {
+            icon: 'Star',
+            title: 'Hidden Gems',
+            description: 'Discover secret courtyards, best viewpoints, and spots tourists miss.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit early morning (8-10 AM) or evening to avoid cruise ship crowds that peak midday.',
+        'The Ribeira waterfront is flat, but streets inland climb steeply - wear comfortable shoes!',
+        'Best photos from the Gaia side across the river or from the upper level of Dom Luís Bridge.',
+        'Traditional lunch at "Ribeira Square" restaurants is touristy - locals eat on side streets.',
+        'The funicular (€4) or cable car (€6) saves climbing from riverside to upper town.',
+        'Saturday mornings feature a small market with local produce and artisan goods.',
+        'Many buildings have beautiful azulejo tile facades - look up as you walk!',
+        'Free walking tours depart daily from São Bento station (tip-based, usually 2.5 hours).',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Ribeira district?',
+          answer: 'The Ribeira is Porto\'s historic riverside district along the Douro River - the city\'s medieval commercial heart and most iconic neighborhood! The name means "riverbank" in Portuguese. This UNESCO World Heritage area features colorful buildings (mostly 14th-18th century) cascading down hillside to the waterfront, narrow cobblestone streets, traditional architecture, and the famous Cais da Ribeira promenade. It was Porto\'s main port and trading center for centuries where wine, fish, and goods were bought and sold. Today it\'s Porto\'s most touristic area but remains authentic with locals living, working, and dining here. The picturesque colorful facades you see in all Porto photos? That\'s Ribeira!',
+        },
+        {
+          question: 'How long do Ribeira tours take?',
+          answer: 'Standard walking tours last 2-3 hours covering the district\'s highlights, history, and best viewpoints. Photography tours run 2-3 hours timed for best light. Food and culture tours take 3-4 hours with multiple tasting stops. You can also explore independently in 1-2 hours for a quick visit. The Ribeira waterfront promenade itself takes 30 minutes to walk end-to-end, but the maze of streets inland deserves more time! Combined tours (Ribeira + wine tasting or Ribeira + river cruise) can take 4-5 hours. Half-day tours often combine Ribeira with other Porto highlights. Evening tours (2-3 hours) showcase the district at sunset.',
+        },
+        {
+          question: 'Is Ribeira safe to visit?',
+          answer: 'Yes, the Ribeira is very safe and heavily touristed! It\'s Porto\'s most visited area with constant foot traffic, police presence, and tourist infrastructure. Standard precautions apply: watch for pickpockets in crowds (especially near riverside cafes and street performers), be aware of belongings, avoid empty side streets late at night. The area is well-lit and busy until late evening. Restaurant touts can be pushy but are harmless - just politely decline. Streets are steep and cobblestones uneven (especially when wet) - watch your step! The biggest "danger" is overpriced touristy restaurants on the main square. Overall, it\'s one of Portugal\'s safest tourist areas!',
+        },
+        {
+          question: 'What are the best things to see in Ribeira?',
+          answer: 'Top highlights: Cais da Ribeira (waterfront promenade with colorful houses - most iconic view!), Praça da Ribeira (main square with fountain and restaurants), Igreja de São Francisco (elaborate golden baroque church nearby), Palácio da Bolsa (stunning neoclassical stock exchange), Dom Luís I Bridge views (walk upper or lower level!), hidden medieval streets and courtyards, traditional azulejo tiles on building facades, Ferreira Borges Market (renovated market hall), and riverside sunset views. From Vila Nova de Gaia across river, photograph Ribeira\'s colorful facades! Don\'t miss climbing the steep streets for aerial views, or taking the funicular. The area rewards wandering - every corner reveals something photogenic!',
+        },
+        {
+          question: 'Where should I eat in Ribeira?',
+          answer: 'Avoid restaurants directly on Praça da Ribeira (main square) - they\'re touristy and overpriced! Better options: Side streets leading inland have authentic tascas (taverns) with better food and prices. Locals recommend Rua de São João for traditional Portuguese cuisine. Try "Taberna dos Mercadores" for authentic Porto food, "Adega São Nicolau" for traditional atmosphere, or "Casa Guedes" for famous pork sandwiches (short walk away). For francesinha (Porto\'s famous sandwich), head slightly inland. River view restaurants charge premium - worth it for drinks/coffee, not full meals. Best strategy: walk inland 2-3 blocks from waterfront for authentic restaurants where locals eat!',
+        },
+        {
+          question: 'Can I walk across the Dom Luís Bridge?',
+          answer: 'Yes! The iconic Dom Luís I Bridge has two levels - you can walk both! Upper level (85 meters high) offers spectacular views, connects Porto\'s Batalha neighborhood to Vila Nova de Gaia, and shares space with metro trains (protected walkway). It\'s thrilling but safe, takes 10-15 minutes, and provides incredible photo opportunities! Lower level connects Ribeira to Gaia\'s wine cellars, lower altitude, also walkable. Both are free! Upper level gets very crowded and can feel vertiginous - not for those with height fears. Best times: early morning or sunset. The bridge was designed by engineer Téophile Seyrig (Eiffel\'s partner) and completed 1886. Walking it is quintessential Porto experience!',
+        },
+        {
+          question: 'What is the best time to visit Ribeira?',
+          answer: 'Early morning (7-9 AM) and evening (7-9 PM) are best to avoid cruise ship crowds that overwhelm the district 10 AM-6 PM! Sunrise offers beautiful light and empty streets for photography. Sunset (from Vila Nova de Gaia side) is magical when golden light hits colorful facades. Weekdays are less crowded than weekends. Avoid midday in summer (very hot, crowded, harsh light). Evening is lovely when bridges are illuminated and restaurants fill with energy. Tuesday-Thursday are quietest days. Winter (November-March) means fewer tourists but more rain. For photography: golden hour (hour after sunrise or before sunset) provides best light. For authentic atmosphere: evening when locals dine out!',
+        },
+        {
+          question: 'How do I get to Ribeira from Porto center?',
+          answer: 'Ribeira IS Porto\'s center! Most hotels are within walking distance (10-20 minutes). From São Bento train station (Porto\'s main station), it\'s a beautiful 10-minute downhill walk through historic streets - follow signs or walk down Rua das Flores. Metro: Take Line D to São Bento station, then walk. From Trindade (metro hub), it\'s 15-minute walk. Taxis/Uber readily available (€5-8 from most Porto locations). Note: Ribeira is downhill - easy to walk TO, harder to climb back up! Consider taking funicular or cable car for return. Many walking tours start at São Bento and include Ribeira. It\'s compact and pedestrian-friendly - walking is best!',
+        },
+      ],
+    },
+
+    'douro-river-tours': {
+      title: 'Porto Douro River Tours',
+      subtitle: 'Cruise Portugal\'s most scenic river under historic bridges with wine, views, and unforgettable beauty!',
+      categoryName: 'Douro River Tours',
+      
+      stats: {
+        toursAvailable: 35,
+        priceFrom: 15,
+        duration: '1-8 hours',
+      },
+
+      introduction: `Experience the magnificent Douro River, Portugal's most beautiful waterway and the heart of Porto's identity! The Douro flows from Spain through Portugal's stunning wine valleys to Porto and the Atlantic, creating one of Europe's most scenic river journeys. River cruises offer unique perspectives of Porto's six bridges (including the iconic Dom Luís), the colorful Ribeira district, Vila Nova de Gaia wine cellars, and centuries-old architecture from water level. Options range from 50-minute city cruises under the bridges to full-day trips through the terraced Douro Valley vineyards (UNESCO World Heritage) with wine tastings and traditional lunch. Sunset cruises are magical, dinner cruises combine gastronomy with views, and multi-day river cruises explore the entire valley. It's Porto's most relaxing and photogenic experience!`,
+
+      seo: {
+        title: 'Porto Douro River Tours 2025 - Cruise & Boat Tours',
+        description: 'Experience Porto Douro River cruises. Scenic boat tours, wine valley trips, and sunset cruises!',
+        keywords: 'Douro River cruise, Porto boat tours, Douro Valley cruise, Porto river cruise, Portugal river tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Ship',
+          title: 'Iconic Six Bridges',
+          description: 'Cruise under Porto\'s historic bridges including the stunning Dom Luís I.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Best City Views',
+          description: 'See Porto\'s colorful Ribeira and architecture from unique water perspective.',
+        },
+        {
+          icon: 'Sun',
+          title: 'Magical Sunsets',
+          description: 'Sunset cruises offer golden light reflecting on water and bridges - spectacular!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'UNESCO Douro Valley',
+          description: 'Full-day cruises explore terraced vineyards where Port wine grapes grow.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Ship',
+          title: 'Six Bridges Cruise',
+          description: 'Classic 50-minute tour under all six Porto bridges with city views and commentary.',
+          features: [
+            '50-60 minutes',
+            'All six bridges',
+            'Ribeira views',
+            'Audio guide',
+            'Budget-friendly €15',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunset Cruises',
+          description: 'Evening cruises timed for magical sunset light over Porto and the bridges.',
+          features: [
+            '2 hours',
+            'Sunset timing',
+            'Wine included',
+            'Romantic atmosphere',
+            'Golden hour photos',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Dinner Cruises',
+          description: 'Multi-course Portuguese dinner served aboard with wine and nighttime city views.',
+          features: [
+            '2-3 hours',
+            'Traditional dinner',
+            'Wine included',
+            'Live music',
+            'Illuminated bridges',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Douro Valley Full-Day',
+          description: 'Cruise to wine country with vineyard visits, tastings, lunch, and valley scenery.',
+          features: [
+            '8-10 hours',
+            'Valley vineyards',
+            'Wine tastings',
+            'Traditional lunch',
+            'UNESCO landscapes',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Porto Douro River Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration Options',
+            description: 'Quick 50-minute bridge tours to full 8-10 hour Douro Valley excursions.',
+          },
+          {
+            icon: 'Ship',
+            title: 'Traditional Boats',
+            description: 'Cruise on rabelo boats (traditional Port wine vessels) or modern tour boats.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Bridge Views',
+            description: 'Pass under six historic bridges including Dom Luís, Arrábida, and Infante.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Riverside Sights',
+            description: 'See Ribeira, Vila Nova de Gaia cellars, historic buildings from water level.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Wine & Refreshments',
+            description: 'Most cruises include Port wine, longer tours add lunch and tastings.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Audio Commentary',
+            description: 'Learn Porto history, bridge engineering, and river heritage during cruise.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book sunset cruises 2-3 days ahead - they fill quickly in summer (June-September)!',
+        'Six Bridges cruises depart hourly and accept walk-ups, but booking guarantees seats.',
+        'Sit on the left (port) side outbound for best Ribeira photos, right side returning.',
+        'Full-day Douro Valley trips require full day - worth it but plan accordingly!',
+        'Morning cruises (9-11 AM) offer best light for photography and smaller crowds.',
+        'Traditional rabelo boats are more atmospheric; modern boats have restrooms and shade.',
+        'Bring sunscreen and hat - minimal shade on boats and sun reflects off water!',
+        'Combined tour + river cruise packages save 15-20% versus booking separately.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Six Bridges cruise?',
+          answer: 'The Six Bridges cruise is Porto\'s most popular boat tour - a 50-60 minute journey that passes under all six bridges connecting Porto to Vila Nova de Gaia! You\'ll cruise under: Dom Luís I (iconic double-deck iron bridge), Infante Dom Henrique (concrete arch), Maria Pia (historic railway bridge by Eiffel), São João (modern railway), Freixo (highway), and Arrábida (longest concrete arch when built). The cruise departs from Ribeira or Gaia, travels upriver past three bridges, returns downriver past the others. It provides fantastic views of Porto\'s colorful Ribeira, wine cellars, and architecture from water level. Audio guides explain bridge history and city landmarks. At just €15, it\'s Porto\'s best-value activity!',
+        },
+        {
+          question: 'How much do Douro River cruises cost?',
+          answer: 'Prices vary by duration and inclusions! Six Bridges cruise: €15-25 (50 minutes, most popular). Extended cruises with wine: €25-40 (2 hours). Sunset cruises: €30-50 (2 hours with drinks). Dinner cruises: €60-90 (2-3 hours with meal). Full-day Douro Valley trips: €80-150 (8-10 hours with lunch, tastings, vineyard visits). Private charters: €200-500+ depending on size and duration. Children often get 50% discounts. Combined packages (cruise + wine tasting or cruise + city tour) offer savings. Booking online typically saves 10-15% versus purchasing at docks. Most companies offer similar routes - price reflects inclusions more than quality differences.',
+        },
+        {
+          question: 'When is the best time for a river cruise?',
+          answer: 'Sunset cruises (departing 6-7 PM depending on season) are most magical - golden light, romantic atmosphere, and illuminated bridges! Morning cruises (9-11 AM) offer excellent photography light and fewer crowds. Midday (12-4 PM) gets hot in summer but fine spring/fall. Weather-wise: April-October is best with warm, sunny days (July-August hottest). November-March has rain risk but fewer tourists and dramatic clouds. For Douro Valley full-day trips, September-October (harvest season) is spectacular! Weekdays are less crowded than weekends. Book sunset cruises 2-3 days ahead in high season. Avoid very windy days - cruises may cancel for safety.',
+        },
+        {
+          question: 'Can I take a cruise to the Douro Valley?',
+          answer: 'Yes! Full-day Douro Valley cruises are incredible experiences! These 8-10 hour tours cruise from Porto upriver into the UNESCO World Heritage Douro Valley wine region where Port grapes grow on terraced hillsides. Tours typically include: scenic river cruise through stunning valley, stop at traditional quintas (wine estates) for tastings, traditional Portuguese lunch with wine, vineyard tours learning winemaking, and either cruise return or coach return. Some combine river cruise one way with train or bus the other. The valley scenery - steep terraced vineyards rising from river - is spectacular! Pinhão is common turnaround point. These are full-day commitments (8+ hours) but absolutely worth it for wine lovers and scenic beauty enthusiasts!',
+        },
+        {
+          question: 'What are rabelo boats?',
+          answer: 'Rabelo boats are traditional flat-bottomed wooden boats historically used to transport Port wine barrels from Douro Valley vineyards down to Porto\'s cellars! Before roads and railways, these boats navigated the river\'s rapids (now dammed) carrying the precious cargo. They\'re distinctive with flat hulls (for shallow water), large square sails, and long steering oar. Today, rabelos are moored along Ribeira and Gaia as floating advertisements for Port houses (you\'ll see boats labeled Sandeman, Taylor\'s, etc.). Some companies offer tourist cruises on traditional rabelos - more atmospheric but slower than modern boats. Annual rabelo races in June celebrate this heritage! They\'re Porto icons and photographing them with colorful Ribeira behind is quintessential Porto shot!',
+        },
+        {
+          question: 'Where do river cruises depart from?',
+          answer: 'Most Douro River cruises depart from either Ribeira quay (Porto side) or Cais de Gaia (Vila Nova de Gaia side) - both are along the waterfront! Specific departure points: Estiva pier (Ribeira), near Dom Luís Bridge lower level (both sides), and Cais da Ribeira (main Porto waterfront). Exact location depends on company - your booking confirmation includes meeting point. All departure points are within 5-minute walk of each other along the riverside promenade. Look for ticket kiosks and boats with company names. Most companies have multiple departures throughout the day. Arrive 15 minutes before departure. If you book online, exchange vouchers at company office or directly at boat - instructions provided with booking.',
+        },
+        {
+          question: 'Are river cruises wheelchair accessible?',
+          answer: 'Accessibility varies by boat! Modern tour boats generally have wheelchair access with ramps and adapted facilities. Traditional rabelo boats typically are NOT wheelchair accessible due to steep steps and narrow spaces. When booking, specifically ask about accessibility - responsible companies clearly communicate capabilities. Factors affecting accessibility: dock access (some have steep ramps especially at low tide), boat boarding (ramps vs. steps), onboard movement (some have narrow passages), and restroom facilities. Full-day Douro Valley trips often involve vineyard visits with uneven terrain limiting accessibility. Many companies welcome wheelchairs but require advance notice to ensure appropriate boat assignment. Contact operators directly to discuss specific needs!',
+        },
+        {
+          question: 'What should I bring on a river cruise?',
+          answer: 'Essentials: Sunscreen and hat (sun reflects off water intensely - you\'ll burn!), sunglasses, camera or phone (SO many photo opportunities!), light jacket (wind on water gets cool even summer evenings), comfortable shoes, and water bottle. For longer cruises: layers (temperature changes), motion sickness medication if prone (though Douro is generally calm), and binoculars for viewing architecture. Sunset cruises: bring a light sweater. Full-day Douro Valley trips: comfortable walking shoes for vineyard visits. Most boats sell drinks and snacks. Some cruises include wine - check inclusions. Restrooms available on modern boats, not always on traditional rabelos. Arrive 15 minutes early for best seat selection!',
+        },
+      ],
+    },
+
+    'food-and-wine-tours': {
+      title: 'Porto Food & Wine Tours',
+      subtitle: 'Taste authentic Portuguese cuisine, Port wine, and local delicacies with expert culinary guides!',
+      categoryName: 'Food & Wine Tours',
+      
+      stats: {
+        toursAvailable: 31,
+        priceFrom: 50,
+        duration: '3-4 hours',
+      },
+
+      introduction: `Discover Porto's incredible culinary scene combining centuries-old traditions with modern Portuguese creativity! These food and wine tours take you beyond tourist restaurants to authentic tascas (taverns), historic markets, family-run bakeries, and wine cellars where locals actually eat and drink. Taste Porto's famous francesinha (decadent sandwich), petiscos (Portuguese tapas), bacalhau (salted cod prepared 1000 ways!), pastéis de nata (custard tarts), queijo (Portuguese cheese), and of course, Port wine paired perfectly with each dish. Expert food guides explain Portuguese culinary traditions, introduce you to passionate local producers, and share the stories behind dishes passed through generations. From market tours to progressive dinners across neighborhoods, these experiences feed your stomach AND your Porto knowledge!`,
+
+      seo: {
+        title: 'Porto Food & Wine Tours 2025 - Portuguese Culinary Experiences',
+        description: 'Experience authentic Porto food and wine tours. Taste Portuguese cuisine, Port wine, and local specialties!',
+        keywords: 'Porto food tours, Portuguese food, Porto wine tours, Porto gastronomy, Portuguese cuisine tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Portuguese Food',
+          description: 'Taste traditional dishes at local tascas where Porto residents actually eat!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Port Wine Pairings',
+          description: 'Learn to pair Port wine with Portuguese cheese, chocolate, and cuisine.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Food Guides',
+          description: 'Local foodies share culinary traditions, history, and insider recommendations.',
+        },
+        {
+          icon: 'Star',
+          title: 'Hidden Culinary Gems',
+          description: 'Discover family-run establishments tourists miss but locals love!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Petiscos Tasting Tours',
+          description: 'Progressive dining through 4-6 stops sampling Portuguese tapas-style petiscos.',
+          features: [
+            '3-4 hours',
+            '4-6 food stops',
+            'Traditional petiscos',
+            'Wine at each stop',
+            'Local neighborhoods',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Market & Food Tours',
+          description: 'Explore Bolhão Market or other food markets with tastings and culinary insights.',
+          features: [
+            '3 hours',
+            'Market exploration',
+            'Fresh produce',
+            'Local vendors',
+            'Portuguese ingredients',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Wine & Food Pairing',
+          description: 'Learn Portuguese wine (Port, Vinho Verde, Douro reds) paired with local cuisine.',
+          features: [
+            '3-4 hours',
+            'Multiple wines',
+            'Pairing education',
+            'Wine cellars',
+            'Expert sommelier',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Douro Valley Gastronomy',
+          description: 'Full-day trips combining wine country with traditional Portuguese lunch and tastings.',
+          features: [
+            'Full day',
+            'Valley vineyards',
+            'Traditional lunch',
+            'Multiple tastings',
+            'Scenic landscapes',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Porto Food & Wine Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'City food tours last 3-4 hours with 4-6 stops; full Douro trips take 8-10 hours.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Multiple Tastings',
+            description: 'Sample 10-15 different Portuguese dishes from traditional to contemporary.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Wine Education',
+            description: 'Taste Port, Vinho Verde, and Douro wines learning characteristics and pairings.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Local Establishments',
+            description: 'Visit family-run tascas, historic bakeries, and markets where Porto locals go.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Culinary Stories',
+            description: 'Learn Portuguese food traditions, history, and the culture behind each dish.',
+          },
+          {
+            icon: 'Users',
+            title: 'Small Groups',
+            description: 'Intimate groups (6-12 people) allow personalized attention and questions.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Come hungry but not starving - pacing yourself through multiple stops is part of the experience!',
+        'Food tours replace lunch or dinner - don\'t eat a big meal beforehand!',
+        'Inform guides of dietary restrictions when booking - vegetarian options exist but are limited.',
+        'Evening tours (starting 6-7 PM) capture authentic dinner atmosphere when locals dine.',
+        'Bolhão Market renovated in 2022 - beautiful but some say less authentic than before.',
+        'Francesinha is Porto\'s most famous dish - rich sandwich with cheese, meat, and beer sauce!',
+        'Tipping food guides 10-15% is customary if you enjoyed the experience.',
+        'Ask guides for restaurant recommendations - they know the best spots!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Portuguese food like?',
+          answer: 'Portuguese cuisine emphasizes fresh ingredients, simple preparation, and incredible flavors! It\'s based on Mediterranean diet principles: seafood (especially bacalhau - salted cod), grilled meats, fresh vegetables, olive oil, garlic, and herbs. Porto specialties: francesinha (sandwich with meat, melted cheese, and beer-tomato sauce - decadent!), tripas à moda do Porto (tripe stew - traditional), bacalhau à Gomes de Sá (cod with potatoes and eggs), alheira (smoked sausage), sardines (grilled whole), caldo verde (kale soup), and pastéis de nata (custard tarts). Portions are generous! Portuguese don\'t rush meals - dining is social experience. Food is hearty, flavorful, and unpretentious - less refined than Spanish cuisine but equally delicious!',
+        },
+        {
+          question: 'What is included in food tours?',
+          answer: 'Typical inclusions: Guided tour with local food expert, tastings at 4-6 different establishments (enough food to replace lunch/dinner!), all food samples (usually 10-15 different items), wine/drinks at most stops (Port wine, Vinho Verde, or local wines), cultural and historical context about Portuguese cuisine, insider tips and restaurant recommendations. Some tours include: Market visits, cooking demonstrations, recipe cards, and post-tour digital guides. Walking between locations is part of the experience! Group sizes typically 6-12 people. Dietary restrictions can be accommodated with advance notice. Value: €50-90 for 3-4 hours includes €30-40 worth of food/wine PLUS expert guidance - fair pricing!',
+        },
+        {
+          question: 'What is francesinha?',
+          answer: 'Francesinha is Porto\'s most iconic dish - and it\'s INDULGENT! This "little French girl" sandwich is Porto\'s hangover cure: layers of bread stuffed with wet-cured ham, linguiça (smoked sausage), fresh sausage, and steak, covered entirely in melted cheese, topped with a fried egg, and drenched in a hot thick beer-tomato sauce! It\'s served with french fries (often drowned in the sauce too). One francesinha could feed two people - they\'re massive! Every Porto restaurant has their own sauce recipe (closely guarded secret). Best places: Café Santiago, Lado B, or Side B. It\'s rich, heavy, and absolutely delicious. Not refined cuisine - it\'s glorious indulgence! Porto residents are fiercely proud of it!',
+        },
+        {
+          question: 'Are food tours good for vegetarians?',
+          answer: 'Portuguese cuisine is traditionally meat and seafood-heavy, making vegetarian food tours somewhat challenging but POSSIBLE! Most food tour operators can accommodate vegetarians with advance notice (mention when booking). Vegetarian options include: Portuguese cheeses (excellent!), vegetarian petiscos, caldo verde (kale soup, sometimes with sausage but can be made without), salads, olives, bread with olive oil, vegetable açorda (bread stew), and pastéis de nata. Some modern Porto restaurants offer creative vegetarian dishes. However, you\'ll miss signature dishes like francesinha, bacalhau, and grilled sardines. Vegans face more challenges. If you\'re strict vegetarian, consider wine-focused tours or ask about vegetarian-specific tours. Mediterranean diet has vegetables, but traditional Portuguese cuisine is protein-centric.',
+        },
+        {
+          question: 'What is Bolhão Market?',
+          answer: 'Mercado do Bolhão is Porto\'s historic central market - a stunning neoclassical building (1914) that reopened in 2022 after major renovation! It\'s Porto\'s food heart where locals buy fresh produce, fish, meat, cheese, flowers, and traditional products. Two floors surround a central courtyard: ground level has fruit, vegetables, fish, and flowers; upper level has butchers, cheese vendors, and small restaurants. The renovation modernized facilities while preserving historic character - some say it\'s now too polished/touristy. Visit morning (8-11 AM) when it\'s busiest with locals shopping and vendors are most animated. Many food tours include Bolhão to show Portuguese ingredients and culinary culture. It\'s still functioning market, not just tourist attraction!',
+        },
+        {
+          question: 'What wines are Porto known for?',
+          answer: 'Porto\'s most famous wine is obviously Port wine - sweet fortified wine aged in local cellars! But the Douro region produces excellent wines beyond Port: Douro DOC red wines (full-bodied, complex, increasingly recognized internationally), Vinho Verde (young, slightly sparkling white wine - refreshing!), and Douro white wines. Port wine comes in styles: Ruby (young, fruity), Tawny (aged in wood, nutty), Vintage (best years, expensive), LBV (Late Bottled Vintage), and White Port (aperitif). Portuguese wine is excellent value - world-class quality at fraction of French/Italian prices! Tours often include multiple wine types showing Portugal\'s diversity beyond Port. Vinho Verde is perfect summer drinking; aged Tawny Port is sophisticated; Douro reds are Portugal\'s hidden gem!',
+        },
+        {
+          question: 'How much food is included in tours?',
+          answer: 'Food tours include A LOT of food - enough to replace a full lunch or dinner! Typical tour: 4-6 different stops with 10-15 tastings total. Portions are generous samplings, not tiny bites. You\'ll try multiple petiscos, a main dish, desserts, and paired wines. Most participants leave comfortably full (some say overfull!). The food isn\'t "tasting menu" tiny portions - you\'re eating real Portuguese servings split among the group. Value-wise: you\'re getting €30-40 worth of food and wine plus expert guidance. Come with appetite but don\'t gorge beforehand. Pace yourself - there\'s always more food coming! If you have large appetite, you can order extra at stops. Guides ensure everyone gets sufficient food!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Timing depends on type! Market tours: Morning (9-11 AM) when markets are busiest, vendors are energetic, and produce is freshest. Petiscos/tapas tours: Evening (6-8 PM start) captures authentic Portuguese dining time when locals eat and restaurants buzz with energy. Lunch tours: Starting 12-1 PM works well. Full-day Douro Valley food tours: Year-round but September-October (harvest) is special! Weather: April-October is pleasant for walking between stops. Avoid midday summer heat (12-3 PM). Weekdays offer more authentic experience; weekends are busier. Book 2-3 days ahead for popular tours. Many tours run daily. Portuguese dine late (8-9 PM) so evening tours can run till 10 PM!',
+        },
+      ],
+    },
+
+    'historic-bridge-tours': {
+      title: 'Porto Historic Bridge Tours',
+      subtitle: 'Walk Porto\'s iconic bridges including the magnificent Dom Luís I with spectacular views!',
+      categoryName: 'Historic Bridge Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 20,
+        duration: '2-3 hours',
+      },
+
+      introduction: `Experience Porto's incredible bridges that define the city's skyline and engineering heritage! Porto has six spectacular bridges spanning the Douro River, connecting the city to Vila Nova de Gaia. The most famous is the Dom Luís I Bridge (1886) - a stunning double-deck iron structure designed by Eiffel's partner, with upper and lower levels both walkable! Bridge tours combine walking across these architectural marvels with historical context about their construction, engineering innovations, and importance to Porto's development. You'll learn about Gustave Eiffel's connection to Porto, compare different bridge styles from 19th-century iron to modern concrete, and capture incredible photos from various vantage points. The upper level of Dom Luís at 85 meters high offers vertiginous thrills and unmatched Porto panoramas!`,
+
+      seo: {
+        title: 'Porto Bridge Tours 2025 - Dom Luís Bridge Walks & History',
+        description: 'Explore Porto\'s iconic bridges including Dom Luís I. Walking tours, history, and spectacular views!',
+        keywords: 'Porto bridges, Dom Luís Bridge, Porto walking tours, Porto architecture, Porto engineering',
+      },
+
+      whyChoose: [
+        {
+          icon: 'MapPin',
+          title: 'Iconic Dom Luís Bridge',
+          description: 'Walk the famous double-deck iron bridge with spectacular 85-meter-high views!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Best Photography Spots',
+          description: 'Capture Porto\'s most stunning bridge views and city panoramas.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Engineering Heritage',
+          description: 'Learn about Porto\'s six bridges spanning 19th century to modern designs.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Unique Perspective',
+          description: 'Experience Porto from above and across the river for complete city context.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Dom Luís Bridge Walk',
+          description: 'Walk both levels of Porto\'s most iconic bridge with guided historical context.',
+          features: [
+            'Upper & lower levels',
+            'Historical background',
+            'City panoramas',
+            'Photography stops',
+            'Engineering explained',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Six Bridges Walking Tour',
+          description: 'Comprehensive walk viewing all six Porto bridges with architecture insights.',
+          features: [
+            '3-4 hours',
+            'All six bridges',
+            'Architectural styles',
+            'Eiffel connection',
+            'Riverside walking',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Bridge Tours',
+          description: 'Guided by photographers to best viewpoints for capturing Porto\'s bridges.',
+          features: [
+            'Best photo spots',
+            'Golden hour timing',
+            'Composition tips',
+            'Multiple vantages',
+            'Professional guidance',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunset Bridge Experience',
+          description: 'Timed walks for magical sunset light over Porto and the Douro from bridges.',
+          features: [
+            'Golden hour',
+            'Romantic views',
+            'Bridge illumination',
+            'Fewer crowds',
+            'Special atmosphere',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Porto Historic Bridge Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Bridge-focused tours last 2-3 hours; comprehensive walks take 3-4 hours.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Walking Experience',
+            description: 'Walk across Dom Luís upper level (thrilling!) and lower level with city views.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Multiple stops at best viewpoints for bridge photos and city panoramas.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Engineering History',
+            description: 'Learn about each bridge\'s construction, Eiffel\'s role, and technical innovations.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Six Bridge Overview',
+            description: 'See all six bridges: Dom Luís, Maria Pia, Infante, Arrábida, São João, Freixo.',
+          },
+          {
+            icon: 'Heart',
+            title: 'City Context',
+            description: 'Understand how bridges shaped Porto\'s development and connected communities.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Upper level Dom Luís walk is thrilling but intense for those with height fears - mentally prepare!',
+        'Best photos are FROM the bridges looking at Porto, and from Gaia looking at the bridges.',
+        'Early morning (7-9 AM) offers empty bridges and beautiful light - highly recommended!',
+        'The metro runs on Dom Luís upper level - exciting to watch trains pass!',
+        'Sunset timing changes seasonally - check sunset time and plan accordingly.',
+        'Lower level connects directly to wine cellars and Ribeira - combine activities!',
+        'Maria Pia bridge (by Eiffel) is not walkable but visible from other bridges - it\'s beautiful!',
+        'Combined bridge walk + river cruise offers complete perspective - above and below!',
+      ],
+
+      faqs: [
+        {
+          question: 'Can you walk across Dom Luís Bridge?',
+          answer: 'Yes! You can walk BOTH levels of the iconic Dom Luís I Bridge - and it\'s FREE! The upper level (85 meters/280 feet high) has a protected pedestrian walkway alongside the metro tracks connecting Porto\'s Batalha area to Vila Nova de Gaia. The views are absolutely spectacular but can feel vertiginous - not recommended for those with height fears! The lower level connects Ribeira to Gaia\'s wine cellars at river level. Both walks take 10-15 minutes. Upper level offers better views and photo opportunities. It\'s exhilarating when metro trains pass right beside you! The bridge was designed by Théophile Seyrig (Eiffel\'s partner) and completed in 1886. Walking it is a quintessential Porto experience!',
+        },
+        {
+          question: 'How many bridges does Porto have?',
+          answer: 'Porto has SIX bridges spanning the Douro River between Porto and Vila Nova de Gaia! From west (Atlantic) to east: Arrábida Bridge (1963, longest concrete arch when built, highway traffic), Luís I Bridge (1886, most iconic, double-deck, pedestrian + metro), Infante Dom Henrique Bridge (2003, modern concrete arch, road traffic), Maria Pia Bridge (1877, designed by Eiffel, railway bridge - beautiful but not walkable), São João Bridge (1991, modern railway), and Freixo Bridge (1995, highway, furthest east). Each represents different era and engineering style! Dom Luís is most famous and walkable. Arrábida offers stunning sunset views from Gaia. Maria Pia showcases Eiffel\'s genius. Together they create Porto\'s iconic skyline!',
+        },
+        {
+          question: 'What is the history of Dom Luís Bridge?',
+          answer: 'The Dom Luís I Bridge is Porto\'s most iconic structure! Built 1881-1886 by engineer Théophile Seyrig (who worked with Gustave Eiffel on Maria Pia bridge nearby), it\'s a stunning double-deck metal arch bridge. Upper level spans 395 meters; lower level 174 meters. It was revolutionary engineering - the longest iron arch span in the world when completed! Named after King Luís I. Initially the upper level carried road traffic and tram, lower level had traffic and pedestrians. Today: upper level has metro and pedestrians (incredible views!), lower level has cars and pedestrians. It\'s Porto\'s symbol appearing in every city photo! UNESCO World Heritage as part of Porto historic center. Still fully functional 140+ years later - testament to 19th-century engineering!',
+        },
+        {
+          question: 'Is it safe to walk Dom Luís upper level?',
+          answer: 'Yes, completely safe! The upper level walkway is protected with high railings and barriers separating pedestrians from the metro tracks. Thousands walk it daily without incident. However, it IS 85 meters (280 feet) above the river - if you have fear of heights, it can feel intense! The see-through metal grating underfoot lets you see straight down (thrilling for some, terrifying for others). When metro trains pass nearby (every 10 minutes) the bridge vibrates slightly - normal and safe but surprising first time! Wind can be strong at height. The walkway is wide enough for comfortable passage. Children should be supervised. For height-sensitive people: stick to lower level or admire from below. For everyone else: it\'s safe, thrilling, and offers Porto\'s best views!',
+        },
+        {
+          question: 'What is the best time to walk the bridges?',
+          answer: 'Early morning (7-9 AM) is ideal - bridges are nearly empty, light is beautiful for photos, and temperatures are comfortable! Sunset (timing varies by season) offers magical golden light and romantic atmosphere but attracts crowds. Midday (11-3) gets hot in summer and light is harsh for photography. Evening after dark showcases illuminated bridges beautifully. Weekdays are less crowded than weekends. For Dom Luís upper level specifically: morning offers views east toward sunrise; evening provides west-facing sunset views over Atlantic. Spring (April-May) and fall (September-October) have perfect weather. Summer (June-August) is hot but long daylight. Winter offers dramatic skies but rain risk. Avoid windy days - wind is intense at height!',
+        },
+        {
+          question: 'Where are the best views of the bridges?',
+          answer: 'Multiple excellent viewpoints! From Vila Nova de Gaia: The waterfront promenade provides classic views of Dom Luís with colorful Ribeira behind - most iconic Porto photo! Jardim do Morro (park above Gaia) offers elevated perspective. Serra do Pilar Monastery terrace has spectacular panoramic views (€3 entry). From Porto side: Walk along Cais da Ribeira (waterfront). Miradouro da Vitória (viewpoint) shows bridges in context. For all six bridges: River cruise passes under all six showing different perspectives. Best photo tip: photograph bridges from the opposite side you\'re on - from Gaia looking at Porto, or from Porto looking at Gaia. Golden hour (sunrise/sunset) provides magical light!',
+        },
+        {
+          question: 'Did Gustave Eiffel design Porto bridges?',
+          answer: 'Sort of! Gustave Eiffel designed the Maria Pia Bridge (1877), a stunning railway bridge still standing (though not walkable). It was revolutionary at the time - longest iron arch span in the world! Eiffel\'s company pioneered metal bridge engineering. The famous Dom Luís I Bridge (1886) was NOT designed by Eiffel directly but by his former partner Théophile Seyrig, who worked with Eiffel on Maria Pia. You can see the family resemblance - both use iron arch construction! Seyrig\'s Dom Luís actually exceeded Eiffel\'s Maria Pia in span length. There was rivalry between them! So Porto has both Eiffel\'s work and his partner\'s competing design. This Eiffel connection is why Porto\'s bridges are engineering icons!',
+        },
+        {
+          question: 'Are bridge tours worth it?',
+          answer: 'Yes, especially if you love engineering, architecture, or photography! You CAN walk Dom Luís independently for free, but guided tours provide valuable context: engineering history, construction stories, Eiffel connection, how bridges shaped Porto development, and best photo spots. Tours take you to viewpoints tourists miss and explain what you\'re seeing. They\'re worth it if you want deeper understanding beyond just crossing the bridge. Value depends on your interests: Engineering buffs will love technical details. History enthusiasts appreciate how bridges connected communities. Photographers benefit from guided composition advice. If you prefer just experiencing the views independently, skip the tour - the bridges are free to explore! Combined tours (bridges + food or bridges + cruise) offer good value.',
+        },
+      ],
+    },
+
+    'wine-cellar-tours': {
+      title: 'Porto Wine Cellar Tours',
+      subtitle: 'Explore historic Port wine lodges in Vila Nova de Gaia with tastings and Portuguese wine heritage!',
+      categoryName: 'Wine Cellar Tours',
+      
+      stats: {
+        toursAvailable: 26,
+        priceFrom: 10,
+        duration: '1-2 hours',
+      },
+
+      introduction: `Step into the atmospheric Port wine cellars of Vila Nova de Gaia, where centuries of Portuguese winemaking tradition comes alive! These historic lodges line the Douro River's south bank, housing thousands of oak barrels filled with aging Port wine from Ruby to Tawny to precious vintage bottles worth hundreds. Wine cellar tours take you deep into these cool, dimly-lit spaces where Port has been aged since the 1600s. Learn about the fortification process that creates Port's distinctive sweetness and strength, understand the differences between Port styles, discover why wines aged in Gaia rather than the Douro Valley, and taste premium Ports guided by expert sommeliers. Visit famous houses like Graham's, Taylor's, Sandeman, or smaller family-run operations. Perfect for wine lovers and anyone curious about Portugal's liquid gold!`,
+
+      seo: {
+        title: 'Porto Wine Cellar Tours 2025 - Port Wine Lodge Visits & Tastings',
+        description: 'Tour Porto\'s historic wine cellars in Vila Nova de Gaia. Port wine tastings, barrel aging, Portuguese wine heritage!',
+        keywords: 'Porto wine cellars, Port wine lodges, Vila Nova de Gaia, wine tastings Porto, Portuguese wine tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Historic Wine Lodges',
+          description: 'Visit centuries-old cellars where Port wine has been aged since the 1600s!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Premium Tastings',
+          description: 'Sample multiple Port styles from young Ruby to aged Tawny to vintage treasures.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guidance',
+          description: 'Learn from sommeliers who explain production, aging, and tasting techniques.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Atmospheric Experience',
+          description: 'Walk among thousands of oak barrels in cool, historic cellars - magical!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Single Lodge Tours',
+          description: 'Visit one famous Port house (Graham\'s, Taylor\'s, Sandeman) with cellar tour and tastings.',
+          features: [
+            '1-1.5 hours',
+            'Cellar exploration',
+            '3-4 Port tastings',
+            'Production explained',
+            'Historic lodge',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Multi-Lodge Tours',
+          description: 'Compare different producers visiting 2-3 cellars to understand varying styles.',
+          features: [
+            '3-4 hours',
+            'Multiple lodges',
+            '6-8 tastings',
+            'Style comparisons',
+            'Expert guide',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Premium Vintage Tastings',
+          description: 'Exclusive experiences with aged Tawny and rare vintage Ports at top houses.',
+          features: [
+            'Premium selections',
+            'Vintage Ports',
+            '20-40 year Tawny',
+            'Food pairings',
+            'VIP treatment',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Small Producer Tours',
+          description: 'Visit family-run lodges and boutique producers for intimate, personal experiences.',
+          features: [
+            'Small operations',
+            'Personal attention',
+            'Family stories',
+            'Unique Ports',
+            'Authentic charm',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Porto Wine Cellar Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Single lodge tours last 1-1.5 hours; multi-lodge experiences take 3-4 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Historic Cellars',
+            description: 'Explore atmospheric lodges with rows of oak barrels and centuries of heritage.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Port Tastings',
+            description: 'Sample 3-8 different Ports learning to identify quality, styles, and characteristics.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Wine Education',
+            description: 'Understand fortification, aging methods, Ruby vs Tawny, and vintage classifications.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Barrel Rooms',
+            description: 'Walk among thousands of oak casks in cool, dimly-lit cellars - atmospheric!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Riverside Location',
+            description: 'Most lodges offer stunning views across the Douro to Porto\'s colorful Ribeira.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Graham\'s offers THE best rooftop terrace with panoramic Porto views - worth visiting just for that!',
+        'Taylor\'s is most prestigious and pricey; Sandeman is accessible and entertaining; Croft is intimate.',
+        'Book premium lodges (Taylor\'s, Croft) in advance - they limit daily visitors.',
+        'Most lodges offer free basic tours with paid premium upgrades - budget-friendly options exist!',
+        'Visit 2-3 cellars to compare styles - more than that and palate fatigue sets in.',
+        'Morning visits (10-12) mean sharper palate; afternoon visits (3-5) are more relaxed.',
+        'Spit buckets provided - use them if visiting multiple cellars! No shame in responsible tasting.',
+        'Cellars are cool (15°C/60°F) - bring light jacket even in summer.',
+      ],
+
+      faqs: [
+        {
+          question: 'Where are the Port wine cellars located?',
+          answer: 'The famous Port wine cellars (called "lodges") are located in Vila Nova de Gaia, across the Douro River from Porto! While Port grapes grow in the Douro Valley (100km inland), historically the wine has been transported to Gaia for aging. Why? Gaia\'s cooler coastal climate provides better conditions for slow, even aging. Over 60 Port lodges line the waterfront - from massive operations (Graham\'s, Taylor\'s, Sandeman, Ferreira) to tiny family cellars. They\'re concentrated along the riverside, easily walkable from each other. Access: Walk across the Dom Luís Bridge (stunning views!) or take cable car from Ribeira. The lodges remain in Gaia partly for tradition, partly for tourism - Gaia is now synonymous with Port wine!',
+        },
+        {
+          question: 'How much do wine cellar tours cost?',
+          answer: 'Prices vary widely by lodge and tasting level! Budget options: Some lodges offer FREE basic tours (Ferreira, Burmester) or charge just €5-10 with 1-2 tastings. Standard tours: €12-20 includes guided cellar tour with 3-4 Port tastings. Premium experiences: €25-50 includes vintage Ports, aged Tawnys, food pairings, and smaller groups. VIP tastings: €60-100+ for rare vintages and exclusive access. Multi-lodge tours: €50-80 for guided experience visiting 2-3 cellars. Many lodges have tiered options - basic tour €10, premium €20, VIP €40+. You can also visit most cellars independently for free and pay only for tastings (€3-5 per glass). Best value: Multi-lodge guided tours provide comprehensive Port education!',
+        },
+        {
+          question: 'Which Port wine lodges should I visit?',
+          answer: 'Top recommendations: GRAHAM\'S - Best rooftop terrace views (worth it alone!), excellent tour, premium Ports, €16-25. TAYLOR\'S - Most prestigious, beautiful gardens, high quality, traditional, but priciest €15-30. SANDEMAN - Most entertaining tour (guides wear iconic black cape and hat), good introduction to Port, accessible €15-20. CROFT - Smaller, intimate, excellent guides, beautiful pink lodge, interactive experiences €12-18. FERREIRA - Portuguese-owned (most are British!), traditional, authentic, good value €10-15. CALEM - Interactive museum, multimedia, good for first-timers €15. For budget: Real Companhia Velha (quality wines, affordable). Visit 2-3 to compare - Graham\'s for views + Sandeman for entertainment + Croft for intimacy is great combination!',
+        },
+        {
+          question: 'What is the difference between lodges?',
+          answer: 'Each Port lodge has distinct character! STYLE: Some are tourist-focused with slick multimedia (Calem), others traditional and intimate (Croft, Churchill\'s). SIZE: Major houses (Sandeman, Taylor\'s, Graham\'s) have massive cellars with thousands of barrels; small producers have cozy operations. OWNERSHIP: Most famous lodges are British-owned (historical trade connections); Ferreira and Real Companhia Velha are Portuguese-owned. PRICE: Premium lodges (Taylor\'s) charge more but offer top-quality Ports; budget options exist. ATMOSPHERE: Some have stunning views (Graham\'s terrace!), beautiful gardens (Taylor\'s), or historic architecture (Ferreira). TOURS: Vary from guided-only to self-paced, from basic to VIP. All teach Port fundamentals - difference is style, ambiance, and specific Ports tasted. Visit multiple to compare!',
+        },
+        {
+          question: 'Can I visit wine cellars without a tour?',
+          answer: 'Yes! Many Port lodges allow free independent visits with optional paid tastings. You can walk through public areas, browse gift shops, enjoy terraces (Graham\'s view!), and order Ports by the glass (€3-8) without joining tours. This gives flexibility to explore at your own pace. However, guided tours (usually 45-90 minutes) provide access to actual barrel cellars, production explanations, and context that enhances understanding significantly. If on tight budget: visit lodges independently, use free audio guides if available, and pay only for specific Ports you want to taste. If you want to learn: take at least one guided tour - the education is worth it! Middle ground: one guided tour to learn basics, then explore others independently.',
+        },
+        {
+          question: 'How many wine cellars should I visit?',
+          answer: 'Quality over quantity! 2-3 cellars is ideal for most visitors - enough to compare styles without palate fatigue or overwhelming information. One cellar: Gives intro to Port but limited perspective. Visit Graham\'s (best views) or Sandeman (entertaining). Two cellars: Good balance - one major house (Taylor\'s, Graham\'s) + one smaller (Croft, Churchill\'s) shows variety. Three cellars: Comprehensive without exhaustion - major house + mid-size + small producer. More than three: Palate fatigue sets in, flavors blur together, and you retain less information. If serious wine enthusiast: 3-4 cellars over two days. Tasting tip: Use spit buckets, drink water between, and don\'t rush. Port education benefits from focus, not volume!',
+        },
+        {
+          question: 'What should I know before visiting wine cellars?',
+          answer: 'Preparation tips: BOOK AHEAD for premium lodges (Taylor\'s, Croft) especially summer - they limit visitors. Check online for combo tickets/discounts. TIMING: Lodges open 10 AM-6 PM (some close 1-2 PM for lunch). Morning visits mean fresher palate; afternoon is more relaxed. TRANSPORT: Walk from Ribeira across Dom Luís Bridge (free, 15 minutes) or cable car (€6). Cellars are walkable from each other in Gaia. DRESS: Cellars are cool (15°C/60°F) - bring light jacket. Wear comfortable shoes for cobblestones. TASTING: Pace yourself! Use spit buckets if visiting multiple cellars. Port is 19-22% alcohol - stronger than regular wine. QUESTIONS: Guides love engaged visitors - ask questions!',
+        },
+        {
+          question: 'What is included in cellar tours?',
+          answer: 'Standard cellar tour includes: Guided walk through barrel aging rooms (atmospheric!), explanation of Port wine production and fortification process, information about the specific lodge\'s history and traditions, education about different Port styles (Ruby, Tawny, Vintage, LBV), visit to bottle storage areas (sometimes including old vintages), and typically 3-4 Port tastings. Tours last 45-90 minutes. Premium tours add: More tastings (5-8), older/rarer Ports (20-year Tawny, vintage), food pairings (Portuguese cheese, chocolate), access to private areas, smaller groups, and sometimes meet-the-winemaker opportunities. Most tours end at gift shop where you can purchase bottles. Audio guides available at some lodges. Tours typically accommodate 10-30 people depending on lodge size.',
+        },
+      ],
+    },
+  },
+
 };
 
