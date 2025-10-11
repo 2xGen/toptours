@@ -232,12 +232,11 @@ async function main() {
   
   const allGeneratedGuides = {};
   
-  // Process specific test batch: European destinations
-  const testDestinationIds = ['amalfi-coast', 'amsterdam', 'athens', 'barcelona', 'berlin'];
+  // Process specific destination - Update this ID for next generation
+  const testDestinationIds = ['mallorca']; // Next: Mallorca
   const testBatch = destinations.filter(dest => testDestinationIds.includes(dest.id));
   
-  console.log(`\n🧪 TEST BATCH: Generating guides for European destinations\n`);
-  console.log(`Target destinations: ${testBatch.map(d => d.fullName || d.name).join(', ')}\n`);
+  console.log(`\n🧪 GENERATING GUIDES FOR: ${testBatch.map(d => d.fullName || d.name).join(', ')}\n`);
   
   for (const destination of testBatch) {
     const guides = await generateGuidesForDestination(destination);
@@ -272,9 +271,7 @@ export const generatedGuides = ${JSON.stringify(allGeneratedGuides, null, 2)};
   console.log(`\n👀 NEXT STEPS:`);
   console.log(`   1. Review generated-guides-output.js for quality`);
   console.log(`   2. Verify pricing and factual accuracy`);
-  console.log(`   3. Let me know when ready to integrate`);
-  console.log(`\n💡 This was a TEST BATCH of 5 destinations.`);
-  console.log(`   If quality looks good, we can generate all remaining ${destinationsNeedingGuides.length} destinations!\n`);
+  console.log(`   3. Ready to integrate into guidesData.js`);
 }
 
 // Run the script

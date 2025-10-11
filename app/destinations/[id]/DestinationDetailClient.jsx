@@ -369,7 +369,10 @@ export default function DestinationDetailClient({ destination }) {
                     {(() => {
                       const categoryName = typeof category === 'string' ? category : category.name;
                       const hasGuide = typeof category === 'object' && category.hasGuide;
-                      const categorySlug = categoryName.toLowerCase().replace(/ /g, '-');
+                      const categorySlug = categoryName.toLowerCase()
+                        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
+                        .replace(/&/g, 'and')
+                        .replace(/ /g, '-');
                       
                       return hasGuide ? (
                         <Link 

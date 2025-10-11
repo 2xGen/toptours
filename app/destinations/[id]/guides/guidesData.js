@@ -15731,6 +15731,9301 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       ],
     },
   },
+  florence: {
+    'uffizi-gallery-tours': {
+      title: 'Florence Uffizi Gallery Tours',
+      subtitle: 'Explore Renaissance masterpieces and Tuscan history at Florence\'s iconic Uffizi Gallery!',
+      categoryName: 'Uffizi Gallery Tours',
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 45,
+        duration: '2 to 4 hours',
+      },
+      introduction: `Discover the heart of the Renaissance with Uffizi Gallery Tours in Florence, offering an unparalleled journey through time! The Uffizi houses iconic works by masters like Botticelli, Michelangelo, and Leonardo da Vinci. Whether you're an art aficionado or a casual traveler, these tours provide a fascinating dive into Italy's rich artistic heritage. From guided tours with art historians to exclusive small group experiences, there's something for everyone. Marvel at the Birth of Venus or the Adoration of the Magi, and learn the intriguing stories behind these masterpieces. With options ranging from express tours to in-depth explorations, the Uffizi Gallery caters to all schedules and interests. Perfect for families, solo travelers, and art lovers alike, these tours promise an unforgettable cultural immersion in the cradle of the Renaissance.`,
+      seo: {
+        title: 'Uffizi Gallery Tours in Florence 2025',
+        description: 'Discover Florence\'s Uffizi Gallery in 2025! Book your tour now and explore Renaissance masterpieces!',
+        keywords: 'Uffizi Gallery tours, Florence art tours, Renaissance art, Italian museums, Florence attractions',
+      },
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Expert Guides',
+          description: 'Experience tours led by knowledgeable art historians for deeper insights.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Iconic Artworks',
+          description: 'See world-renowned pieces by Botticelli, Michelangelo, and more!',
+        },
+        {
+          icon: 'Users',
+          title: 'Small Groups',
+          description: 'Enjoy personalized attention and a more intimate tour experience.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photographic Memories',
+          description: 'Capture stunning art and architecture with ample photo opportunities.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'BookOpen',
+          title: 'Guided Tour',
+          description: 'Join a guided tour with expert commentary on the gallery\'s highlights.',
+          features: [
+            'Expert guide',
+            'Headsets for easy listening',
+            'Small group size',
+            'Skip-the-line access',
+            'Post-tour Q&A',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Private Tour',
+          description: 'Enjoy a private tour tailored to your interests and schedule.',
+          features: [
+            'Personalized itinerary',
+            'Flexible timing',
+            'Dedicated guide',
+            'Exclusive access',
+            'Customizable experience',
+          ],
+        },
+        {
+          icon: 'Clock',
+          title: 'Express Tour',
+          description: 'Perfect for tight schedules, explore the gallery\'s must-see highlights in under two hours.',
+          features: [
+            'Quick entry',
+            'Efficient route',
+            'Top artwork focus',
+            'Professional guide',
+            'Time-saving',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Family-Friendly Tour',
+          description: 'Engaging and interactive tours designed with families in mind.',
+          features: [
+            'Kid-friendly guide',
+            'Interactive storytelling',
+            'Educational activities',
+            'Family-oriented pace',
+            'Flexible timing',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Uffizi Gallery Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically range from 2 to 4 hours depending on the type selected.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Cost',
+            description: 'Tours start at $45, offering various options to suit different budgets.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Meeting Point',
+            description: 'Conveniently located near popular attractions in central Florence.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Cultural Insights',
+            description: 'In-depth stories about each artwork and the history behind it.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Size',
+            description: 'Small groups for a personalized experience, generally up to 15 people.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography',
+            description: 'Capture memorable moments; photography is allowed in most areas.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book tickets in advance to avoid long lines, especially during peak tourist season!',
+        'Visit during weekdays for a less crowded experience and more intimate viewing.',
+        'Consider an early morning tour for the best chance to see popular artworks without the crowds.',
+        'Don\'t miss the gallery\'s rooftop terrace for stunning views of Florence!',
+        'Combine your Uffizi visit with a tour of the adjacent Vasari Corridor for a unique perspective.',
+        'Wear comfortable shoes as you\'ll be on your feet exploring the vast gallery.',
+        'Download the Uffizi app for additional insights and an interactive experience.',
+        'Check for temporary exhibitions which often feature unique collections not usually on display.',
+      ],
+      faqs: [
+        {
+          question: 'How do I purchase tickets for the Uffizi Gallery tours?',
+          answer: 'Tickets for Uffizi Gallery tours can be purchased online through the official website or authorized tour operators. It\'s highly recommended to book in advance due to high demand, especially during peak seasons. Prices start from $45 and may vary based on the type of tour and any additional features included, such as skip-the-line access or private tour arrangements. Ensure to check for any available discounts for students or seniors!',
+        },
+        {
+          question: 'What is the best time to visit the Uffizi Gallery?',
+          answer: 'The best time to visit the Uffizi Gallery is early in the morning or late afternoon to avoid the largest crowds. Weekdays are generally less busy compared to weekends. If you are visiting during the summer, try to book a slot as soon as the gallery opens to enjoy a quieter experience. Remember, the gallery is closed on Mondays, so plan your visit accordingly!',
+        },
+        {
+          question: 'Are there any specific artworks I shouldn\'t miss?',
+          answer: 'Absolutely! Don\'t miss Botticelli\'s "The Birth of Venus" and "Primavera," Michelangelo\'s "Doni Tondo," and Leonardo da Vinci\'s "Annunciation." Each piece offers a window into the past and showcases the skill and innovation of these Renaissance masters. Plan your visit to include these highlights, and consider a guided tour for deeper insights into their history and significance.',
+        },
+        {
+          question: 'Is photography allowed inside the Uffizi Gallery?',
+          answer: 'Yes, photography is allowed inside the Uffizi Gallery, but be sure to turn off your flash to protect the artworks. You\'ll find plenty of opportunities to capture breathtaking pieces and the stunning architecture of the gallery. However, some temporary exhibitions may have specific restrictions, so always check the signage in these areas.',
+        },
+        {
+          question: 'Are there any amenities available within the gallery?',
+          answer: 'The Uffizi Gallery offers several amenities for visitors, including restrooms, a café, and a gift shop with art reproductions and books. Lockers are available for storing bags and coats, ensuring a comfortable tour. The gallery is also wheelchair accessible, with elevators and ramps to accommodate all visitors.',
+        },
+        {
+          question: 'What should I wear when visiting the Uffizi Gallery?',
+          answer: 'While there is no strict dress code at the Uffizi Gallery, it\'s advisable to wear comfortable clothing and shoes, as you\'ll be walking and standing for extended periods. If visiting in the summer, lightweight clothing is recommended, but remember to bring a light scarf or shawl to cover your shoulders if you plan to visit nearby churches afterward.',
+        },
+        {
+          question: 'Can I bring food and drinks into the Uffizi Gallery?',
+          answer: 'No, food and drinks are not allowed inside the Uffizi Gallery to preserve the integrity of the artworks. However, you can enjoy refreshments at the gallery\'s café, which offers a selection of snacks, drinks, and light meals. It\'s a great spot to relax and recharge during your visit.',
+        },
+        {
+          question: 'Is the Uffizi Gallery child-friendly?',
+          answer: 'Yes, the Uffizi Gallery offers family-friendly tours designed to engage young visitors. Interactive tours with storytelling elements make the experience enjoyable and educational for children. Be sure to inquire about family discounts or special programs when booking your tickets.',
+        },
+      ],
+    },
+    'duomo-tours': {
+      title: 'Florence Duomo Tours',
+      subtitle: 'Uncover the majestic beauty and intricate art of Florence\'s iconic Duomo with expert-led tours.',
+      categoryName: 'Duomo Tours',
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 45,
+        duration: '1-3 hours',
+      },
+      introduction: `Explore the heart of Renaissance art and architecture with our Florence Duomo Tours! As you stand before the breathtaking facade of the Cathedral of Santa Maria del Fiore, you'll be struck by the sheer grandeur of Brunelleschi's dome. Our tours offer a range of experiences, from fast-track access to in-depth historical explorations. Discover the stunning frescoes inside, climb to the top for panoramic views of Florence, and learn about the cathedral's fascinating history from expert guides. Whether you're a history buff, an art aficionado, or simply a curious traveler, the Duomo is a must-see. With options ranging from private tours to small group experiences, there's something for everyone. Unveil the secrets of this architectural masterpiece, feel the pulse of Florentine culture, and make your trip unforgettable!`,
+      seo: {
+        title: 'Florence Duomo Tours 2025: Best Experiences & Tips',
+        description: 'Discover Florence\'s iconic Duomo with top tours in 2025. Expert guides, stunning views, book now!',
+        keywords: 'Florence Duomo tours, Cathedral of Santa Maria del Fiore, Brunelleschi dome tours, best Duomo tours Florence, 2025 Florence attractions',
+      },
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Expert Guides',
+          description: 'Learn from passionate experts who bring the Duomo\'s history and art to life.',
+        },
+        {
+          icon: 'Clock',
+          title: 'Skip the Line',
+          description: 'Save time and enjoy priority access to one of Florence\'s most popular sites.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Panoramic Views',
+          description: 'Climb to the top for breathtaking views of Florence\'s rooftops and beyond.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Cultural Immersion',
+          description: 'Immerse yourself in the rich history and artistry of the Renaissance era.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Users',
+          title: 'Group Tours',
+          description: 'Join a group of like-minded travelers for a comprehensive tour of the Duomo.',
+          features: [
+            'Expert guides',
+            'Fixed schedule',
+            'Social experience',
+            'Affordable',
+            'Inclusive of entry fees',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Private Tours',
+          description: 'Enjoy a personalized experience with a private guide tailored to your interests.',
+          features: [
+            'Customizable itinerary',
+            'Dedicated guide',
+            'Flexible timing',
+            'Exclusive access',
+            'Special requests accommodated',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Capture the beauty of the Duomo with guided photography tips and prime spots.',
+          features: [
+            'Photography tips',
+            'Best photo spots',
+            'Golden hour tours',
+            'Professional guidance',
+            'Includes photo review',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Historical Tours',
+          description: 'Delve deeper into the Duomo\'s history with an educational focus.',
+          features: [
+            'In-depth historical context',
+            'Detailed explanations',
+            'Educational materials',
+            'Focus on art history',
+            'Interactive discussions',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Duomo Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 1 to 3 hours, depending on your chosen experience.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Access',
+            description: 'Enjoy exclusive access to areas not open to the general public.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography',
+            description: 'Plenty of opportunities for stunning photos, especially from the dome.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Historical Insights',
+            description: 'Gain a deeper understanding of the Duomo\'s artistic and architectural significance.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Personalized Attention',
+            description: 'Private tours offer tailored experiences to suit your interests.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Value for Money',
+            description: 'Experience Florence\'s iconic landmark with tours starting at $45.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book your tour in advance to secure the best time slots and avoid long queues.',
+        'Visit early in the morning or late afternoon for fewer crowds and better lighting.',
+        'Wear comfortable shoes as you\'ll be climbing many steps to the top of the dome.',
+        'Don\'t miss the stunning frescoes inside the dome by Giorgio Vasari and Federico Zuccari.',
+        'Check if your tour includes access to the Baptistery and the Bell Tower for a complete experience.',
+        'Bring a camera to capture spectacular views from the dome\'s summit.',
+        'Consider a private tour for a more personalized and in-depth experience.',
+        'Combine your Duomo tour with a visit to nearby attractions like the Uffizi Gallery or Ponte Vecchio.',
+      ],
+      faqs: [
+        {
+          question: 'What is included in a typical Duomo tour?',
+          answer: 'A typical Duomo tour includes fast-track entry to the Cathedral of Santa Maria del Fiore, a guided tour of the cathedral, access to the dome, and often additional access to the Baptistery and Bell Tower. Tours usually last between 1 to 3 hours. Prices start around $45, depending on the inclusions and duration.',
+        },
+        {
+          question: 'Are the Duomo tours suitable for children?',
+          answer: 'Yes, Duomo tours can be quite engaging for children, especially if you choose a tour designed with families in mind. Look for options that include interactive elements or storytelling to keep kids interested. However, be mindful of the climb to the dome, which may be challenging for younger children.',
+        },
+        {
+          question: 'How physically demanding are the Duomo tours?',
+          answer: 'While the tour of the cathedral itself is not physically demanding, the climb to the top of the dome involves ascending over 400 steps. There are no elevators, so it\'s important to be prepared for a bit of a workout. The effort is well worth it for the stunning views at the top!',
+        },
+        {
+          question: 'What is the best time of year to visit the Duomo?',
+          answer: 'The best time to visit the Duomo is during the shoulder seasons of spring (April to June) and fall (September to October). During these times, the weather is pleasant, and the crowds are smaller compared to the peak summer months.',
+        },
+        {
+          question: 'Can I take photos inside the Duomo?',
+          answer: 'Yes, photography is allowed inside the Duomo, but flash photography is prohibited to preserve the artworks. The best photo opportunities are from the top of the dome, where you can capture panoramic views of Florence.',
+        },
+        {
+          question: 'Do I need to purchase tickets in advance?',
+          answer: 'While it\'s possible to buy tickets on the day, it\'s highly recommended to purchase them in advance, especially during peak tourist season. This ensures you get your preferred time slot and reduces waiting time.',
+        },
+        {
+          question: 'What should I wear on the Duomo tour?',
+          answer: 'Since the Duomo is a place of worship, modest dress is required. Shoulders and knees should be covered. Comfortable shoes are also recommended, especially if you plan to climb the dome.',
+        },
+        {
+          question: 'Are there any restrictions for visiting the Duomo?',
+          answer: 'Visitors are expected to respect the sanctity of the cathedral. Large bags and backpacks may not be allowed inside, so it\'s best to travel light. Be prepared for security checks at the entrance.',
+        },
+      ],
+    },
+    'tuscan-wine-tours': {
+      title: 'Florence Tuscan Wine Tours',
+      subtitle: 'Experience the soul of Tuscany with immersive wine tours from the heart of Florence!',
+      categoryName: 'Tuscan Wine Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 75,
+        duration: 'Half-day to full-day',
+      },
+      introduction: `Florence, the cradle of the Renaissance, is your gateway to the enchanting world of Tuscan wine tours! Imagine winding through the rolling hills of Chianti, sampling robust reds and delicate whites, each sip telling a story of centuries-old vineyards and masterful craftsmanship. Florence's proximity to world-renowned wine regions like Chianti, Montalcino, and Montepulciano makes it an ideal starting point for wine enthusiasts. Whether you're a seasoned connoisseur or a curious novice, these tours offer a variety of experiences, from intimate cellar tastings and vineyard picnics to guided tours through historical estates. You'll discover the secrets of Sangiovese grapes and the art of traditional winemaking, all set against a backdrop of breathtaking landscapes. Perfect for couples seeking romance, groups of friends, or solo adventurers looking to delve into the heart of Tuscany's wine culture, these tours promise unforgettable memories and flavors.`,
+      seo: {
+        title: 'Top Florence Tuscan Wine Tours 2025',
+        description: 'Discover Florence\'s best Tuscan wine tours in 2025. Explore vineyards, taste wines, and enjoy Tuscany\'s beauty!',
+        keywords: 'Florence wine tours, Tuscan vineyards, Chianti wine tasting, Tuscany trips, wine tours Florence 2025',
+      },
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Rich Heritage',
+          description: 'Explore centuries-old vineyards and learn the art of traditional winemaking.',
+        },
+        {
+          icon: 'Users',
+          title: 'Personalized Experience',
+          description: 'Small group sizes ensure intimate experiences and personalized attention.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Proximity to Vineyards',
+          description: 'Easy access to world-class wine regions like Chianti and Montalcino.',
+        },
+        {
+          icon: 'Star',
+          title: 'Expert Guides',
+          description: 'Knowledgeable guides share insider insights and local stories.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'GlassWater',
+          title: 'Chianti Classico Tour',
+          description: 'Explore the iconic Chianti region with tastings at renowned wineries.',
+          features: [
+            'Guided vineyard tours',
+            'Wine tastings',
+            'Lunch at a local trattoria',
+            'Transport from Florence',
+            'Scenic countryside views',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Montalcino Wine Experience',
+          description: 'Discover the famed Brunello wines with cellar visits and tastings.',
+          features: [
+            'Brunello di Montalcino tasting',
+            'Winery visits',
+            'Historic estate tours',
+            'Local cheese pairings',
+            'Transport included',
+          ],
+        },
+        {
+          icon: 'Sailboat',
+          title: 'Montecarlo Vineyard Tour',
+          description: 'Visit the lesser-known gems of Montecarlo with exclusive access to boutique wineries.',
+          features: [
+            'Boutique winery visits',
+            'Exclusive tastings',
+            'Meet the winemakers',
+            'Artisanal olive oil tasting',
+            'Small group size',
+          ],
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Wine and Dine Experience',
+          description: 'Combine wine tastings with a culinary journey through Tuscany\'s flavors.',
+          features: [
+            'Multi-course Tuscan dinner',
+            'Wine pairings',
+            'Cooking class option',
+            'Transport from Florence',
+            'Local market visit',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Tuscan Wine Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from half-day (4-5 hours) to full-day (8-10 hours) experiences.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Inclusions',
+            description: 'Prices typically include transport, tastings, and guided tours.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Schedule',
+            description: 'Tours operate daily, with morning and afternoon departures available.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Group Size',
+            description: 'Most tours are small groups, ensuring personalized attention and comfort.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Educational Insights',
+            description: 'Learn about Tuscan wine history, grape varieties, and winemaking processes.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Scenic Views',
+            description: 'Enjoy stunning vistas of rolling hills and picturesque vineyards.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book your tours in advance, especially during peak season (May-September).',
+        'Wear comfortable shoes for vineyard tours and uneven terrain.',
+        'Try local specialties like pecorino cheese to enhance your wine tasting experience.',
+        'Don\'t miss the chance to purchase wines directly from the vineyards – they often have exclusive selections.',
+        'Bring a camera to capture the stunning landscapes and charming cellars.',
+        'Plan some free time to explore the nearby towns after your tour.',
+        'Consider a private tour for a more personalized experience.',
+        'Check for special harvest tours if visiting in the fall!',
+      ],
+      faqs: [
+        {
+          question: 'What is included in a typical Tuscan wine tour?',
+          answer: 'Most Tuscan wine tours from Florence include round-trip transportation, guided tours of vineyards and cellars, several wine tastings, and sometimes a light meal or snacks. Some tours also offer additional experiences such as a visit to a local olive oil producer or a traditional Tuscan lunch. Prices typically start around $75 USD per person but can vary depending on the inclusions and duration.',
+        },
+        {
+          question: 'How should I dress for a wine tour?',
+          answer: 'Dress comfortably and casually for a Tuscan wine tour, as you\'ll be walking through vineyards and possibly uneven terrain. Comfortable shoes are a must! In the summer, light clothing and a hat are recommended to protect against the sun. In cooler months, bring a jacket as temperatures can drop in the countryside. Remember, some wineries might have dress codes for inside tastings, so it\'s always good to check in advance.',
+        },
+        {
+          question: 'Are children allowed on wine tours?',
+          answer: 'While wine tours are primarily designed for adults, many tour operators welcome children and offer non-alcoholic beverages for them. It\'s best to check with the specific tour provider regarding their policy on children. Some may offer discounts or have special activities to keep young ones entertained. Always ensure that the tour environment is suitable for children, especially concerning safety and content.',
+        },
+        {
+          question: 'Can I visit multiple wine regions in one day?',
+          answer: 'Yes, some tours are designed to cover multiple wine regions, such as Chianti and Montalcino, in one day. However, this can make for a long day with a lot of travel. If you prefer a more relaxed experience, consider focusing on one region per day. This allows you to enjoy each place thoroughly and not feel rushed. Tours that cover multiple regions often start early and return late to maximize the experience.',
+        },
+        {
+          question: 'What is the best time of year for a wine tour in Tuscany?',
+          answer: 'The best time for a wine tour in Tuscany is during the grape harvest season, which typically runs from late September to October. During this time, you can witness the harvest in action and enjoy the vibrant autumn colors. Spring (April to June) is also a great time as the vineyards are lush, and the weather is pleasant. Summer is popular but can be hot and crowded, while winter offers a quieter, more intimate experience.',
+        },
+        {
+          question: 'Do I need to tip my guide on a wine tour?',
+          answer: 'Tipping is not mandatory in Italy, but it is appreciated if you feel your guide provided an excellent experience. A tip of 10-15% of the tour price is a generous gesture. If your guide went above and beyond, consider showing your appreciation with a small tip. Always check if the service charge is included in the tour cost before tipping.',
+        },
+        {
+          question: 'What types of wines will I taste on a Tuscan wine tour?',
+          answer: 'Tuscan wine tours typically feature a variety of wines, including Chianti Classico, Brunello di Montalcino, and Vino Nobile di Montepulciano. You can expect to taste robust reds, crisp whites, and possibly some dessert wines. The focus is often on Sangiovese-based wines, which are the hallmark of the region. Each vineyard will offer its unique selections, highlighting the diverse flavors and styles of Tuscan wines.',
+        },
+        {
+          question: 'Can I buy wine during the tour?',
+          answer: 'Absolutely! Most wineries offer the option to purchase wines on-site, often at a discount compared to retail prices. This is a great opportunity to take home unique bottles you won\'t find elsewhere. Some wineries also offer shipping services, so you can have your purchases sent directly to your home, allowing you to enjoy your Tuscan wine experience long after your tour has ended!',
+        },
+      ],
+    },
+    'art-and-history-tours': {
+      title: 'Florence Art & History Tours',
+      subtitle: 'Explore Florence\'s Renaissance gems, iconic art, and historic charm on these immersive tours.',
+      categoryName: 'Art & History Tours',
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 50,
+        duration: '2-6 hours',
+      },
+      introduction: `Florence, the birthplace of the Renaissance, offers a captivating journey through art and history that will leave you spellbound! Discover the grandeur of the Medici's legacy as you walk through the magnificent halls of Palazzo Vecchio, stand in awe before Michelangelo's David at the Accademia Gallery, and explore the historic Piazza della Signoria. From the frescoes of Santa Croce to the architectural marvel of Brunelleschi's Dome at the Duomo, each tour unveils a new layer of Florence's rich tapestry. Whether you're an art aficionado, a history buff, or a curious traveler, Florence's art and history tours cater to all, offering guided experiences that bring the past to life with passionate storytelling. Get ready to be inspired by masterpieces that have shaped the world and discover the stories behind the city's most iconic landmarks!`,
+      seo: {
+        title: 'Florence Art & History Tours 2025',
+        description: 'Discover Florence\'s Renaissance art and history with our expert-guided tours! Book now for 2025!',
+        keywords: 'Florence art tours, Renaissance history tours, Medici family tours, Florence sightseeing, guided Florence tours',
+      },
+      whyChoose: [
+        {
+          icon: 'BookOpen',
+          title: 'Expert Guides',
+          description: 'Learn from passionate local guides who bring Florence\'s history and art to life!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Iconic Landmarks',
+          description: 'Visit Florence\'s must-see attractions like Palazzo Vecchio and Santa Croce.',
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Cultural Immersion',
+          description: 'Experience the authentic Florentine culture through its art and history.',
+        },
+        {
+          icon: 'Star',
+          title: 'Unique Insights',
+          description: 'Gain insider knowledge about the Medici family and the Renaissance era.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'City Highlights',
+          description: 'Discover Florence\'s top attractions on a comprehensive city tour.',
+          features: [
+            'Palazzo Vecchio',
+            'Piazza della Signoria',
+            'Santa Croce',
+            'Brunelleschi\'s Dome',
+            'Guided walking tour',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Renaissance Art',
+          description: 'Explore the art of the Renaissance with expert insights and guided museum visits.',
+          features: [
+            'Accademia Gallery',
+            'Uffizi Gallery',
+            'Michelangelo\'s David',
+            'Botticelli\'s Birth of Venus',
+            'Art historian guides',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Medici Legacy',
+          description: 'Uncover the influence of the Medici family on Florence\'s art and culture.',
+          features: [
+            'Medici Chapel',
+            'San Lorenzo',
+            'Palazzo Medici Riccardi',
+            'Family history',
+            'Cultural impact',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tour',
+          description: 'Capture Florence\'s beauty through a photographer\'s lens with expert guidance.',
+          features: [
+            'Iconic views',
+            'Photography tips',
+            'Historic streets',
+            'Sunset shots',
+            'Personalized guidance',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Florence Art & History Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour express visits to full-day experiences.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Size',
+            description: 'Small group sizes for personalized attention and interaction.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Prices',
+            description: 'Tours starting from $50, offering great value for an unforgettable experience.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography',
+            description: 'Plenty of opportunities to capture stunning photos of Florence\'s landmarks.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Local Insights',
+            description: 'Gain unique perspectives and stories from knowledgeable local guides.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Central Locations',
+            description: 'Convenient meeting points in the heart of Florence for easy access.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book Uffizi Gallery tickets in advance to skip long lines.',
+        'Visit Palazzo Vecchio in the early morning for a quieter experience.',
+        'Wear comfortable shoes for exploring Florence\'s cobbled streets.',
+        'Bring a reusable water bottle to stay hydrated while touring.',
+        'Check for free museum entry days for budget-friendly visits.',
+        'Capture Florence\'s skyline from Piazzale Michelangelo at sunset.',
+        'Try local gelato near Santa Croce for a sweet treat.',
+        'Explore lesser-known museums for hidden artistic gems.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time to visit Florence for art and history tours?',
+          answer: 'The best time to visit Florence for art and history tours is during the shoulder seasons of spring (April to June) and autumn (September to October). During these times, the weather is pleasant, and the city is less crowded than in the peak summer months. You\'ll have a more enjoyable experience at attractions like the Uffizi Gallery and Duomo without long lines. Plus, outdoor walking tours are more comfortable in milder temperatures!',
+        },
+        {
+          question: 'Do I need to book tickets in advance for museums?',
+          answer: 'Yes, it\'s highly recommended to book tickets in advance for Florence\'s popular museums like the Uffizi Gallery and Accademia Gallery. These attractions often have long queues, especially in peak tourist seasons. Booking online not only saves time but also guarantees entry on your preferred date and time. Many guided tours offer skip-the-line tickets, which can enhance your experience further!',
+        },
+        {
+          question: 'Are guided tours in Florence worth it?',
+          answer: 'Absolutely! Guided tours in Florence are worth every penny, especially if you want to delve deeper into the city\'s rich art and history. Knowledgeable guides provide fascinating insights and stories that bring landmarks like the Palazzo Vecchio and Santa Croce to life. Plus, with guided tours, you\'ll often gain access to hidden gems and local secrets that you might miss on your own!',
+        },
+        {
+          question: 'What should I wear on a walking tour in Florence?',
+          answer: 'On a walking tour in Florence, comfortable clothing and supportive footwear are key, as you\'ll be navigating cobbled streets and historic sites. In the warmer months, lightweight fabrics and a sunhat are recommended. For visits to religious sites like churches, ensure your shoulders and knees are covered as a sign of respect. Don\'t forget a light jacket for cooler evenings!',
+        },
+        {
+          question: 'Can I take photos during the tours?',
+          answer: 'Yes, photography is generally allowed at most outdoor sites and landmarks in Florence. However, some museums and galleries may have restrictions, especially regarding flash photography. Always check with your guide or the venue\'s policy. Remember to respect signage and other visitors while capturing Florence\'s stunning art and architecture!',
+        },
+        {
+          question: 'How can I learn more about the Medici family\'s influence in Florence?',
+          answer: 'To learn more about the Medici family\'s influence, consider booking a specialized Medici tour that explores their palaces, chapels, and art collections. Guides offer intriguing insights into the family\'s role in shaping Florence\'s political and cultural landscape. Visiting sites like the Medici Chapel and Palazzo Medici Riccardi provides a deeper understanding of their legacy!',
+        },
+        {
+          question: 'Are there any free walking tours available in Florence?',
+          answer: 'Yes, Florence offers several free walking tours led by enthusiastic guides who work for tips. These tours are a great way to explore the city\'s highlights on a budget. While the tours are free, it\'s customary to tip the guide based on your satisfaction and budget. It\'s a wonderful way to discover Florence\'s charm without breaking the bank!',
+        },
+        {
+          question: 'What is a must-see attraction for art lovers in Florence?',
+          answer: 'For art lovers, the Uffizi Gallery is a must-see attraction in Florence! As one of the world\'s premier art museums, it houses an incredible collection of Renaissance masterpieces, including works by Botticelli, Leonardo da Vinci, and Michelangelo. Plan to spend a few hours exploring its stunning galleries and immerse yourself in the beauty of Florence\'s artistic heritage!',
+        },
+      ],
+    },
+    'food-and-cooking-tours': {
+      title: 'Florence Food & Cooking Tours',
+      subtitle: 'Savor authentic Tuscan flavors with immersive Florence cooking and food tours!',
+      categoryName: 'Food & Cooking Tours',
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 50,
+        duration: '2 to 5 hours',
+      },
+      introduction: `Florence, the heart of Tuscany, offers a culinary journey that is as rich and nuanced as its art history. Dive into Florentine food culture with tours that blend hands-on cooking classes, market visits, and tastings of local delicacies like ribollita and cantuccini. From mastering the art of pasta making to indulging in the finest Chianti wines, these tours provide both novices and gourmet enthusiasts a taste of Italy's gastronomic treasures. Explore the bustling Mercato Centrale or enjoy a rustic meal in the rolling Tuscan hills. Whether you're a solo traveler, a couple, or a family, Florence's food and cooking tours promise an unforgettable feast for all senses, where every bite tells a story of tradition and passion. Get ready to discover why Florentine cuisine is a beloved part of the Italian experience!`,
+      seo: {
+        title: 'Florence Food Tours 2025: Taste Tuscany',
+        description: 'Explore Florence through its flavors in 2025! Book food & cooking tours to taste authentic Tuscany now!',
+        keywords: 'Florence food tours, Tuscany cooking classes, Italian cuisine experiences',
+      },
+      whyChoose: [
+        {
+          icon: 'HeartHandshake',
+          title: 'Authentic Experiences',
+          description: 'Connect with local chefs and food artisans for genuine culinary insights.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Explore Local Markets',
+          description: 'Visit iconic markets like Mercato Centrale for fresh ingredients and local vibes.',
+        },
+        {
+          icon: 'Star',
+          title: 'Culinary Mastery',
+          description: 'Learn traditional cooking techniques from seasoned experts in intimate settings.',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Wine Pairing Perfection',
+          description: 'Savor Tuscan wines carefully paired with your culinary creations.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'BookOpen',
+          title: 'Cooking Classes',
+          description: 'Hands-on classes with local chefs, perfect for learning authentic Tuscan recipes.',
+          features: [
+            'Homemade pasta',
+            'Traditional sauces',
+            'Dessert making',
+            'Small group sizes',
+            'Recipe book included',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Market Tours',
+          description: 'Guided tours through Florence\'s vibrant markets, discovering the best local produce.',
+          features: [
+            'Mercato Centrale visit',
+            'Street food tasting',
+            'Local guide expertise',
+            'Fresh ingredient selection',
+            'Culinary history insights',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Wine & Dine Tours',
+          description: 'Enjoy exquisite wine tastings paired with traditional Tuscan dishes.',
+          features: [
+            'Chianti wine tasting',
+            'Gourmet meal',
+            'Sommelier guidance',
+            'Vineyard visits',
+            'Food pairing tips',
+          ],
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Food Festivals',
+          description: 'Experience Florence\'s lively food festivals celebrating seasonal and regional specialties.',
+          features: [
+            'Local festival access',
+            'Specialty food stalls',
+            'Live entertainment',
+            'Cultural immersion',
+            'Exclusive tastings',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Food & Cooking Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from quick 2-hour tastings to comprehensive 5-hour culinary experiences.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Pricing',
+            description: 'Starting at $50, with premium tours offering more luxurious inclusions.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Sizes',
+            description: 'Tours typically host small groups, ensuring a personalized and intimate experience.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Capture stunning moments in Florence\'s picturesque markets and eateries.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Availability',
+            description: 'Tours available year-round, with seasonal offerings highlighting local produce.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Weather Considerations',
+            description: 'Tours operate rain or shine, often incorporating indoor and outdoor elements.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book cooking classes in advance, especially during peak tourist season!',
+        'Visit Mercato Centrale early to experience the market at its liveliest.',
+        'Sample local olive oils and balsamic vinegars for a true taste of Tuscany.',
+        'Don\'t miss the chance to try Florentine steak, a local specialty!',
+        'Pair your meals with local Chianti or Vernaccia wines for an authentic experience.',
+        'Wear comfortable shoes for market tours; you\'ll be on your feet a lot!',
+        'Ask guides for restaurant recommendations; locals know the hidden gems!',
+        'Participate in food festivals for a fun, immersive cultural experience.',
+      ],
+      faqs: [
+        {
+          question: 'What is included in a typical cooking class?',
+          answer: 'A typical cooking class in Florence includes hands-on instruction from a local chef, all necessary ingredients, and a delicious meal that you\'ve prepared. Classes often start with a market tour to select fresh ingredients and conclude with a communal meal paired with local wines. Prices usually start around $75, and participants often receive recipe booklets to take home. It\'s a delightful way to learn about Tuscan cuisine and culture!',
+        },
+        {
+          question: 'Are food tours suitable for children?',
+          answer: 'Absolutely! Many food tours in Florence are family-friendly and cater to children. Cooking classes often have simpler recipes for kids, and market tours can be a fun way for them to learn about local foods. It\'s a great educational experience that the whole family can enjoy. Be sure to check with tour providers about age-appropriate options and any special pricing for children.',
+        },
+        {
+          question: 'Can dietary restrictions be accommodated?',
+          answer: 'Yes, most food and cooking tours in Florence can accommodate dietary restrictions with prior notice. Whether you\'re vegetarian, gluten-free, or have specific allergies, operators are usually happy to adjust menus to suit your needs. Always inform the tour provider when booking to ensure a smooth experience. Some tours even specialize in vegan or gluten-free Italian dishes!',
+        },
+        {
+          question: 'What should I wear on a food tour?',
+          answer: 'Wear comfortable clothing and shoes, as you\'ll be walking and standing quite a bit, especially during market tours. If you\'re attending a cooking class, consider bringing an apron, although most operators provide one. It\'s also a good idea to carry a reusable water bottle to stay hydrated, especially during the warmer months.',
+        },
+        {
+          question: 'How can I book a Florence food tour?',
+          answer: 'Booking a Florence food tour is easy! Many providers offer online reservations through their websites, and platforms like Viator or GetYourGuide also list numerous options. Booking in advance is recommended, especially during peak travel seasons. Some tours offer last-minute availability, but it\'s always best to secure your spot early to avoid disappointment.',
+        },
+        {
+          question: 'Are private tours available?',
+          answer: 'Yes, many companies offer private food and cooking tours in Florence, perfect for those seeking a more personalized experience. Private tours can often be tailored to your interests and dietary preferences, providing a unique and intimate way to explore Florence\'s culinary scene. Pricing for private tours varies, so it\'s best to contact providers directly for detailed information.',
+        },
+        {
+          question: 'What is the best time of year for a food tour?',
+          answer: 'While food tours are available year-round, spring and fall are particularly delightful times to visit Florence. The weather is mild, and seasonal ingredients are abundant. Summer can be busy and hot, but offers vibrant festivals and events. Winter tours provide a cozy experience with hearty Tuscan specialties. Each season has its charm, so it depends on your preference!',
+        },
+        {
+          question: 'Do tours include transportation?',
+          answer: 'Typically, food tours in Florence do not include transportation, as most are conducted within the city center, which is easily walkable. However, if a tour includes visits to vineyards or countryside locations, transportation is usually provided. Be sure to check the tour details or contact the provider if you have specific mobility concerns or require assistance.',
+        },
+      ],
+    },
+    'michelangelo-tours': {
+      title: 'Florence Michelangelo Tours',
+      subtitle: 'Explore Michelangelo\'s masterpieces and the soul of Renaissance Florence on these captivating tours!',
+      categoryName: 'Michelangelo Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 50,
+        duration: '2-4 hours',
+      },
+      introduction: `Step into the world of Michelangelo Buonarroti, where art and history intertwine in the captivating city of Florence. Known as the cradle of the Renaissance, Florence offers travelers the chance to explore Michelangelo's genius through a variety of immersive tours. From the towering David at the Accademia Gallery to the breathtaking frescoes of the Sistine Chapel (located in Rome but influential in his Florence works), these tours are a journey through time and creativity. Whether you're an art aficionado, a history buff, or simply captivated by the beauty of the Renaissance, Michelangelo Tours offer something for everyone. Wander through the city's cobblestone streets and discover hidden gems, like the Medici Chapels or the Laurentian Library, each echoing with the legacy of one of history's greatest artists. Join a tour and experience the magic of Florence through the eyes of Michelangelo himself!`,
+      seo: {
+        title: 'Michelangelo Tours in Florence 2025',
+        description: 'Discover Michelangelo\'s masterpieces in Florence with expert-led tours. Book now for an unforgettable experience!',
+        keywords: 'Michelangelo tours, Florence art tours, Renaissance Florence, Accademia Gallery tours, Florence cultural tours',
+      },
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Expert Guides',
+          description: 'Led by art historians who offer incredible insights into Michelangelo\'s life and works.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Unique Access',
+          description: 'Gain priority access to top sites like the Accademia Gallery and Medici Chapels.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Passionate Storytelling',
+          description: 'Experience Michelangelo\'s world through engaging stories and fascinating anecdotes.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Picture Perfect Spots',
+          description: 'Capture stunning photos at iconic locations and lesser-known gems.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'BookOpen',
+          title: 'Classic Michelangelo Tour',
+          description: 'A comprehensive journey through the highlights of Michelangelo\'s works in Florence.',
+          features: [
+            'Accademia Gallery',
+            'Medici Chapels',
+            'Laurentian Library',
+            'Expert Commentary',
+            'Skip-the-Line Access',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Michelangelo & Medici',
+          description: 'Explore the connection between Michelangelo and the powerful Medici family.',
+          features: [
+            'Medici Chapels',
+            'San Lorenzo Basilica',
+            'Florentine Politics',
+            'Art Patronage Insights',
+            'Small Group Experience',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Family-Friendly Michelangelo',
+          description: 'Engaging tour designed for families, with interactive elements and fun facts.',
+          features: [
+            'Interactive Activities',
+            'Child-Friendly Guides',
+            'Accademia Gallery',
+            'Hands-On Learning',
+            'Souvenir Hunt',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Michelangelo at Sunset',
+          description: 'Witness Michelangelo\'s masterpieces in the magical glow of Florence\'s sunset.',
+          features: [
+            'Evening Access',
+            'Private Tour Option',
+            'Romantic Atmosphere',
+            'David Statue',
+            'Piazza della Signoria',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Michelangelo Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 2 to 4 hours, depending on your chosen itinerary.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Options',
+            description: 'Tour prices start at just $50, offering great value for an enriching experience.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography Opportunities',
+            description: 'Plenty of chances to capture iconic art and architecture up close.',
+          },
+          {
+            icon: 'Users',
+            title: 'Small Group Sizes',
+            description: 'Enjoy personalized attention with groups typically limited to 10-15 people.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Passionate Guides',
+            description: 'Led by passionate locals eager to share their love for Renaissance art.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Central Locations',
+            description: 'Convenient meeting points in the heart of Florence\'s historic center.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book tickets in advance, especially during peak season to ensure availability.',
+        'Visit the Accademia Gallery early in the morning or late afternoon to avoid crowds.',
+        'Consider a private tour for a more personalized and flexible experience.',
+        'Wear comfortable shoes as you\'ll be walking on cobblestone streets.',
+        'Don\'t miss the chance to explore lesser-known works at the Bargello Museum.',
+        'Combine your tour with a visit to the Uffizi Gallery for a full Renaissance experience.',
+        'Learn some basic Italian phrases; guides appreciate the effort!',
+        'Bring a sketchbook to capture inspiration from Michelangelo\'s masterpieces.',
+      ],
+      faqs: [
+        {
+          question: 'How much do Michelangelo tours typically cost?',
+          answer: 'Michelangelo tours in Florence start at around $50 USD, depending on the duration and inclusions. Private tours or those with exclusive access might be priced higher, typically ranging from $100 to $200 USD. Many tours offer skip-the-line benefits, which can save you valuable time, especially during peak tourist seasons!',
+        },
+        {
+          question: 'Is it necessary to book tours in advance?',
+          answer: 'Yes, booking in advance is highly recommended, especially during the busy summer months and holiday seasons. Florence\'s popular attractions like the Accademia Gallery can have long lines, and tours often sell out quickly. By securing your spot ahead of time, you can ensure you don\'t miss out on this incredible experience!',
+        },
+        {
+          question: 'Are the tours suitable for children?',
+          answer: 'Absolutely! Many tour providers offer family-friendly options designed to engage children with interactive elements and fun facts about Michelangelo\'s art. Kids can enjoy activities like treasure hunts or hands-on learning experiences, making the tour both educational and entertaining for young visitors.',
+        },
+        {
+          question: 'What is the best time of year to take a Michelangelo tour?',
+          answer: 'The best times to enjoy a Michelangelo tour in Florence are during the spring (April to June) and fall (September to October) when the weather is pleasant and crowds are thinner. During these months, you can enjoy the city\'s beauty without the summer heat and with fewer tourists around.',
+        },
+        {
+          question: 'What should I wear on a Michelangelo tour?',
+          answer: 'Comfort is key! Wear comfortable shoes suitable for walking on cobblestone streets. Dress modestly if your tour includes visits to religious sites such as churches. In summer, lightweight clothing is recommended, while a light jacket is advisable in spring and fall.',
+        },
+        {
+          question: 'Can I take pictures during the tour?',
+          answer: 'Photography is allowed in most areas, but flash photography may be restricted, especially in places like the Accademia Gallery to preserve the artwork. Your guide will inform you about any specific restrictions. Remember to also take time to simply enjoy the art without the lens!',
+        },
+        {
+          question: 'Are there tours available in languages other than English?',
+          answer: 'Yes, many tour companies in Florence offer guides in several languages, including Italian, Spanish, French, and German. When booking, check with the tour provider to ensure your preferred language is available. This can greatly enhance your understanding and enjoyment of the tour.',
+        },
+        {
+          question: 'How can I make the most of my Michelangelo tour?',
+          answer: 'To maximize your experience, consider combining your Michelangelo tour with a visit to related sites like the Uffizi Gallery or the Bargello Museum. Engage with your guide by asking questions, and take notes or sketches to remember key details. Ending your day with a gelato in a nearby piazza is the perfect way to reflect on the day\'s artistic journey!',
+        },
+      ],
+    },
+  },
+  'french-riviera': {
+    'monaco-and-monte-carlo-tours': {
+      title: 'Monaco & Monte Carlo Tours',
+      subtitle: 'Experience opulence and thrill in Monaco & Monte Carlo with exclusive, glamorous tours.',
+      categoryName: 'Monaco & Monte Carlo Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 75,
+        duration: '2 hours to full-day tours',
+      },
+      introduction: `Dive into the world of luxury and thrill with Monaco & Monte Carlo Tours! Nestled in the heart of the French Riviera, these tours offer a blend of opulence and adventure. Travelers will explore the lavish Monte Carlo Casino, stroll through the exotic gardens of the Prince's Palace, and enjoy the breathtaking views from the Oceanographic Museum. Whether you're a high-roller seeking the adrenaline rush of Grand Prix tracks or a culture enthusiast eager to explore the rich history of this storied principality, there's something for everyone. Families can enjoy leisurely yacht cruises while couples revel in the romantic allure of sunset dinners overlooking the Mediterranean. Each tour promises a unique glimpse into the glamorous lifestyle of one of Europe's most iconic destinations!`,
+      seo: {
+        title: 'Monaco & Monte Carlo Tours 2025',
+        description: 'Discover luxury and excitement in Monaco & Monte Carlo with our exclusive 2025 tours. Book now!',
+        keywords: 'Monaco tours, Monte Carlo excursions, luxury travel, French Riviera tours, 2025 travel',
+      },
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Unmatched Luxury',
+          description: 'Experience the pinnacle of luxury with access to exclusive spots and high-end experiences.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Scenic Beauty',
+          description: 'Capture stunning views of the Mediterranean and iconic landmarks with guided insights.',
+        },
+        {
+          icon: 'Star',
+          title: 'Elite Experiences',
+          description: 'Enjoy VIP treatment at world-famous casinos and events, designed for discerning travelers.',
+        },
+        {
+          icon: 'Sailboat',
+          title: 'Coastal Adventures',
+          description: 'Embark on yacht cruises that offer a unique perspective of the stunning coastline.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Anchor',
+          title: 'Yacht Tours',
+          description: 'Sail along Monaco\'s stunning coastlines on luxury yachts. Perfect for sun-lovers and sea adventurers.',
+          features: [
+            'Private charters',
+            'Sunset cruises',
+            'Snorkeling spots',
+            'Champagne service',
+            'Scenic views',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Walking Tours',
+          description: 'Explore Monaco\'s historic sites and lush gardens on foot with expert guides sharing local stories.',
+          features: [
+            'Prince\'s Palace',
+            'Monaco Cathedral',
+            'Casino Square',
+            'Exotic Garden',
+            'Local insights',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Casino Experiences',
+          description: 'Try your luck at the legendary Monte Carlo Casino and enjoy a night of glamour.',
+          features: [
+            'VIP access',
+            'Gaming tables',
+            'Live entertainment',
+            'Cocktail service',
+            'Dress code guidance',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Cultural Tours',
+          description: 'Immerse in Monaco\'s rich culture with visits to museums and art galleries.',
+          features: [
+            'Oceanographic Museum',
+            'Nouveau Musée National de Monaco',
+            'Art exhibitions',
+            'Guided tours',
+            'Cultural insights',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Monaco & Monte Carlo Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour quick explorations to full-day immersive experiences.',
+          },
+          {
+            icon: 'Users',
+            title: 'Small Groups',
+            description: 'Enjoy personalized attention with small group sizes, enhancing your experience.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Value for Money',
+            description: 'Competitive pricing with high-quality service and exclusive access ensures a memorable trip.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Expert Guides',
+            description: 'Learn from knowledgeable guides who bring Monaco\'s history and culture to life.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Perfect Weather',
+            description: 'Enjoy tours in the sunny and pleasant Mediterranean climate, ideal for sightseeing.',
+          },
+          {
+            icon: 'PartyPopper',
+            title: 'Festive Atmosphere',
+            description: 'Experience the lively energy of Monaco, especially during events like the Grand Prix.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book tours in advance during the Grand Prix season for the best experiences.',
+        'Dress smartly for casino visits; some areas have a formal dress code.',
+        'Visit the Oceanographic Museum in the morning for fewer crowds.',
+        'Opt for sunset yacht tours for breathtaking views and romantic settings.',
+        'Secure a spot on the palace garden tours for exclusive insights.',
+        'Use Monaco\'s public lifts to easily navigate the hilly terrain.',
+        'Try local delicacies like Barbagiuan during your tour breaks.',
+        'Capture photos early in the day for the best lighting conditions.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time to visit Monaco?',
+          answer: 'The best time to visit Monaco is from April to October when the weather is warm and events like the Monaco Grand Prix are in full swing! However, each season offers its own charm. Winter is quieter with fewer tourists, perfect for those seeking a more relaxed experience. Be sure to check event calendars as the principality hosts numerous festivals and cultural events year-round.',
+        },
+        {
+          question: 'Are there any dress codes for the casino?',
+          answer: 'Yes, the Monte Carlo Casino has a dress code. In the gaming rooms, smart attire is required; think jacket and tie for men. Casual wear like shorts and sports shoes are not allowed. In the daytime, tourists can visit the atrium and restaurants in smart casual attire. Always check the specific dress code guidelines for any special events you\'re attending.',
+        },
+        {
+          question: 'How much do tours typically cost?',
+          answer: 'Monaco & Monte Carlo tours can vary widely in price. Walking tours might start around $75, while more exclusive experiences like private yacht charters can range into several hundred dollars or more. It\'s wise to budget accordingly and choose tours that best fit your interests and price range. Most tours offer excellent value considering the exclusive experiences they provide!',
+        },
+        {
+          question: 'Can I visit Monaco as a day trip?',
+          answer: 'Absolutely! Monaco is a popular day-trip destination from nearby cities like Nice or Cannes. With efficient train services and quick access by car, you can easily explore key attractions like the Casino de Monte Carlo, Prince\'s Palace, and the Oceanographic Museum all in a day. Ensure to start early to maximize your time in this enchanting city-state!',
+        },
+        {
+          question: 'What are must-see attractions in Monaco?',
+          answer: 'Don\'t miss the opulent Casino de Monte Carlo, the serene Prince\'s Palace, and the fascinating Oceanographic Museum. Stroll through the Exotic Garden for breathtaking views and visit the Monaco Cathedral for a touch of history. Each of these sites offers a unique glimpse into the rich cultural tapestry of Monaco.',
+        },
+        {
+          question: 'How do I get around Monaco?',
+          answer: 'Monaco is compact and easily navigable on foot. The principality also offers public buses, and numerous elevators and escalators help in traversing the hilly terrain. For a more luxurious experience, taxis and car rentals are available. Consider using the public lifts to save time and energy while exploring the city!',
+        },
+        {
+          question: 'Is Monaco family-friendly?',
+          answer: 'Yes, Monaco is a wonderful destination for families! The Oceanographic Museum offers interactive exhibits for children, while the Prince\'s Palace and its gardens provide a fun and educational experience. Yacht tours are also family-friendly, offering a relaxing way to explore the coastline. Be sure to check out seasonal events that cater to all ages.',
+        },
+        {
+          question: 'Are there any local dishes I should try?',
+          answer: 'Definitely try Barbagiuan, a delicious pastry filled with Swiss chard, ricotta, and herbs, which is a local favorite! Pissaladière, similar to a pizza topped with onions and anchovies, is another must-try. Many restaurants offer these alongside international cuisine, providing a delightful culinary experience during your visit.',
+        },
+      ],
+    },
+    'saint-tropez-beach-tours': {
+      title: 'Saint-Tropez Beach Tours',
+      subtitle: 'Experience glamour and sun-kissed beaches in Saint-Tropez, the jewel of the French Riviera.',
+      categoryName: 'Saint-Tropez Beach Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 75,
+        duration: '2-8 hours',
+      },
+      introduction: `Embark on an unforgettable journey through the opulent beaches of Saint-Tropez, where the azure waters of the Mediterranean meet the vibrant energy of the French Riviera. Known for its luxurious lifestyle, Saint-Tropez offers a diverse range of beach tours, from serene mornings on Pampelonne Beach to exhilarating yacht excursions along the coastline. Travelers can bask in the sun at chic beach clubs, explore hidden coves, or indulge in gourmet dining with a view of the sparkling sea. Whether you're a luxury seeker, a family adventurer, or a couple seeking romance, Saint-Tropez's beach tours promise a captivating experience filled with elegance and charm. Discover iconic spots like Tahiti Beach and enjoy the perfect blend of relaxation and excitement that only the French Riviera can provide!`,
+      seo: {
+        title: 'Saint-Tropez Beach Tours 2025',
+        description: 'Discover luxurious beach tours in Saint-Tropez. Enjoy sun, sea, and glamour on the French Riviera!',
+        keywords: 'Saint-Tropez beach tours, French Riviera beaches, luxury beach tours, Mediterranean beaches, Pampelonne Beach tours',
+      },
+      whyChoose: [
+        {
+          icon: 'Sun',
+          title: 'Mediterranean Sunshine',
+          description: 'Enjoy sun-drenched beaches with perfect weather all year round.',
+        },
+        {
+          icon: 'Anchor',
+          title: 'Luxurious Yacht Tours',
+          description: 'Explore the coastline in style on exclusive yacht tours.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Romantic Getaways',
+          description: 'Experience romance with stunning sunsets and intimate beach settings.',
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Vibrant Beach Clubs',
+          description: 'Dance the night away at world-renowned beach clubs like Nikki Beach.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Yacht Excursions',
+          description: 'Sail along the stunning coastline with luxury amenities.',
+          features: [
+            'Private charters',
+            'Scenic views',
+            'Onboard dining',
+            'Swimming stops',
+            'Sunbathing decks',
+          ],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Beach Club Experiences',
+          description: 'Relax at glamorous beach clubs with exclusive access.',
+          features: [
+            'VIP areas',
+            'Live DJs',
+            'Gourmet cuisine',
+            'Cocktail bars',
+            'Poolside lounges',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Water Sports Adventures',
+          description: 'Thrilling water activities for adventure seekers.',
+          features: [
+            'Jet skiing',
+            'Parasailing',
+            'Snorkeling',
+            'Paddleboarding',
+            'Banana boat rides',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Scenic Beach Tours',
+          description: 'Capture breathtaking views on guided beach walks.',
+          features: [
+            'Guided tours',
+            'Photo ops',
+            'Local insights',
+            'Historical sites',
+            'Nature trails',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Saint-Tropez Beach Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour quick escapes to full-day adventures.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Pricing',
+            description: 'Tours start at $75, with luxury options available.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Locations',
+            description: 'Visit iconic beaches like Pampelonne and Tahiti Beach.',
+          },
+          {
+            icon: 'Ship',
+            title: 'Luxury Amenities',
+            description: 'Experience comfort with premium services on all tours.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Refreshing Drinks',
+            description: 'Complimentary drinks available on most tours.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Romantic Spots',
+            description: 'Discover secluded beaches perfect for couples.',
+          },
+        ],
+      },
+      expertTips: [
+        'Arrive early to secure the best spot at popular beach clubs.',
+        'Book yacht tours in advance to ensure availability during peak season.',
+        'Pack a chic beachwear outfit to blend in with the stylish crowd.',
+        'Visit in September for fewer crowds and still-warm weather.',
+        'Try the local rosé wine, a specialty of the region!',
+        'Use sunscreen liberally; the Mediterranean sun is strong.',
+        'Check out the morning market at Place des Lices for local treats.',
+        'If you love art, visit the Annonciade Museum near the port.',
+      ],
+      faqs: [
+        {
+          question: 'What are the best beaches in Saint-Tropez?',
+          answer: 'Saint-Tropez boasts several stunning beaches, with Pampelonne Beach being the most famous. It stretches for five kilometers and offers a mix of public and private areas, perfect for both relaxation and luxury experiences. Tahiti Beach is another top spot, known for its vibrant beach clubs and clear waters, while Plage des Graniers offers a more secluded escape. Each beach has its unique charm, ensuring a perfect day out in the sun!',
+        },
+        {
+          question: 'When is the best time to visit Saint-Tropez?',
+          answer: 'The ideal time to visit Saint-Tropez is from May to September when the weather is warm and perfect for beach activities. July and August are the peak months, bustling with energy and events. For a quieter experience with pleasant weather, consider visiting in late spring or early autumn. During this time, you can enjoy the beauty of the beaches without the summer crowds!',
+        },
+        {
+          question: 'Is it necessary to book beach clubs in advance?',
+          answer: 'Yes, it is highly recommended to book beach clubs in advance, especially during the peak summer months. Popular clubs like Nikki Beach and Club 55 fill up quickly due to their exclusive nature and vibrant atmosphere. Booking ahead ensures you have a spot reserved and can enjoy premium services without any hassle. Most bookings can be made online through the club\'s website or via concierge services.',
+        },
+        {
+          question: 'What attire is appropriate for beach clubs?',
+          answer: 'Beach clubs in Saint-Tropez have a chic dress code, so pack your most stylish beachwear! Men typically wear tailored swim shorts and linen shirts, while women opt for fashionable swimsuits, sarongs, or cover-ups. Sunglasses and wide-brimmed hats are not only stylish but also practical. Remember, Saint-Tropez is all about glamour, so don\'t shy away from dressing up even at the beach!',
+        },
+        {
+          question: 'Can I rent water sports equipment on the beach?',
+          answer: 'Absolutely! Saint-Tropez beaches offer a variety of water sports equipment for rent. From jet skis and paddleboards to snorkeling gear and parasailing equipment, you\'ll find everything you need for an adventurous day on the water. Operators are available on most major beaches, providing lessons for beginners and all necessary safety gear. Prices vary, but expect to pay around $50-$100 for most activities.',
+        },
+        {
+          question: 'How do I get around Saint-Tropez?',
+          answer: 'Getting around Saint-Tropez is easy with several transportation options. The town is compact, making walking a pleasant way to explore. For longer distances, consider renting a scooter or a bicycle, both popular choices for tourists. Taxis are available, though they can be pricey. In summer, a shuttle bus service runs between popular beaches and the town center, providing an affordable and convenient option.',
+        },
+        {
+          question: 'Are there family-friendly beach options?',
+          answer: 'Yes, Saint-Tropez offers several family-friendly beaches! Pampelonne Beach has areas with shallow waters, ideal for children to play safely. Plage des Salins is another excellent choice, featuring calm waters and a relaxed atmosphere. Many beaches have facilities such as restrooms, showers, and family-friendly dining options, ensuring a comfortable day out for all ages. Don\'t forget the sunscreen and beach toys for a fun-filled family outing!',
+        },
+        {
+          question: 'What local foods should I try in Saint-Tropez?',
+          answer: 'Indulge in Saint-Tropez\'s culinary delights! Don\'t miss the famous Tarte Tropézienne, a delectable cream-filled brioche invented in the town itself. Seafood lovers will relish Bouillabaisse, a traditional Provencal fish stew. For a light bite, try Socca, a chickpea pancake popular in the region. Pair your meals with a glass of local rosé wine for a truly authentic dining experience. Bon appétit!',
+        },
+      ],
+    },
+    'antibes-and-cannes-tours': {
+      title: 'Antibes & Cannes Tours',
+      subtitle: 'Explore stunning coastlines, historic charm, and luxury in Antibes & Cannes on the French Riviera!',
+      categoryName: 'Antibes & Cannes Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 75,
+        duration: '3 hours to full day',
+      },
+      introduction: `Immerse yourself in the unparalleled luxury and beauty of the French Riviera with our Antibes & Cannes Tours! Discover the allure of the Mediterranean as you stroll through the cobblestone streets of Antibes, home to the captivating Picasso Museum and the vibrant Provençal markets. In Cannes, revel in the glitz and glamour of the iconic Croisette Boulevard and the famed Palais des Festivals, where the world-renowned Cannes Film Festival takes place. Whether you're a history buff, a sun-seeker, or a lover of the finer things in life, these tours offer a dynamic range of experiences tailored just for you. From luxurious yacht cruises to intimate guided walking tours, each adventure promises breathtaking views, rich history, and a touch of Riviera sophistication. Prepare to be enchanted by the French Riviera's timeless charm!`,
+      seo: {
+        title: 'Antibes & Cannes Tours 2025: Explore the French Riviera',
+        description: 'Discover luxury and glamour on Antibes & Cannes Tours. Book your unforgettable French Riviera journey now!',
+        keywords: 'Antibes tours, Cannes tours, French Riviera tours, luxury tours, 2025 travel',
+      },
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Unmatched Luxury',
+          description: 'Experience the epitome of luxury with exclusive access to glamorous venues and luxurious settings.',
+        },
+        {
+          icon: 'Anchor',
+          title: 'Breathtaking Coastlines',
+          description: 'Explore stunning Mediterranean coastlines, perfect for sunbathing and scenic photography.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Iconic Landmarks',
+          description: 'Visit iconic sites like the Cannes Film Festival venue and the Picasso Museum.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Cultural Immersion',
+          description: 'Dive into the rich culture and history of the Riviera with local expert guides.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Yacht Cruises',
+          description: 'Sail the azure waters of the Riviera on a luxury yacht. Indulge in elegance at sea.',
+          features: [
+            'Private Charters',
+            'Gourmet Dining',
+            'Sunbathing Decks',
+            'Snorkeling',
+            'Sunset Views',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Walking Tours',
+          description: 'Explore Antibes and Cannes on foot with expert guides. Perfect for history enthusiasts.',
+          features: [
+            'Picasso Museum',
+            'Provençal Markets',
+            'Historic Quarters',
+            'Local Insights',
+            'Scenic Routes',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Cultural Excursions',
+          description: 'Dive into the rich cultural tapestry of the Riviera. Visit museums and historic sites.',
+          features: [
+            'Museum Tours',
+            'Art Galleries',
+            'Historic Landmarks',
+            'Local Artisans',
+            'Traditional Cuisine',
+          ],
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Festival Experiences',
+          description: 'Experience the excitement of Cannes during festival season. See the stars up close!',
+          features: [
+            'Film Festival Access',
+            'Red Carpet Events',
+            'Celebrity Sightings',
+            'Exclusive Parties',
+            'VIP Packages',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Antibes & Cannes Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 3-hour quick trips to full-day immersive experiences.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Luxury',
+            description: 'Tours start at just $75, offering luxury experiences without breaking the bank.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Ideal Weather',
+            description: 'Enjoy sunny skies and warm temperatures, perfect for outdoor explorations.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Sizes',
+            description: 'Tours are available for both small intimate groups and larger parties.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Expert Guides',
+            description: 'Led by knowledgeable local guides passionate about the Riviera\'s heritage.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Refreshments',
+            description: 'Many tours include complimentary beverages or snacks to keep you refreshed.',
+          },
+        ],
+      },
+      expertTips: [
+        'Visit the Picasso Museum in the morning to avoid crowds and enjoy a peaceful tour.',
+        'Book yacht tours in advance, especially during peak summer months, for the best options.',
+        'Wear comfortable shoes for walking tours as cobblestone streets can be uneven.',
+        'Try local specialties like Socca, a delicious chickpea flatbread, at Antibes markets.',
+        'Capture the best sunset photos from the Le Suquet district in Cannes.',
+        'During the Cannes Film Festival, check out free events open to the public.',
+        'Use public transportation or rent a bike to explore the Riviera efficiently.',
+        'Check local calendars for special events or markets happening during your visit.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time to visit Antibes and Cannes?',
+          answer: 'The best time to visit Antibes and Cannes is from May to September when the weather is warm and the Mediterranean Sea is perfect for swimming. During this period, the cities are vibrant with festivals and events. However, if you prefer quieter visits, consider traveling in April or October when crowds are smaller but the weather is still pleasant. Don\'t miss the Cannes Film Festival in May for a truly glamorous experience!',
+        },
+        {
+          question: 'Are the tours suitable for families with children?',
+          answer: 'Absolutely! Many tours in Antibes and Cannes are family-friendly, offering activities that children will enjoy. Walking tours often include engaging stories and interactive experiences. Some yacht cruises provide family packages with kid-friendly amenities. Always check with the tour operator for age recommendations and specific child-friendly features to ensure a delightful experience for the whole family.',
+        },
+        {
+          question: 'How can I book a tour in Antibes or Cannes?',
+          answer: 'Booking a tour in Antibes or Cannes is easy! Most tours can be booked online through tour operator websites or popular travel platforms. It\'s advisable to book in advance, especially during peak seasons, to secure your preferred dates and times. Many operators offer flexible cancellation policies, so you can plan with peace of mind. Look for deals and discounts for early bookings or group tours!',
+        },
+        {
+          question: 'What should I wear on these tours?',
+          answer: 'For most tours, casual and comfortable clothing is ideal. During summer, light fabrics and sunscreen are a must due to the sunny climate. Comfortable walking shoes are recommended for city tours. If you\'re attending a formal event or festival, semi-formal attire may be required. For yacht tours, consider packing swimwear and a light jacket for cooler evening breezes. Always check specific tour guidelines for any dress code requirements.',
+        },
+        {
+          question: 'Is it possible to customize a tour?',
+          answer: 'Yes, many tour operators offer customizable tour options. Whether you want a private guide, specific destinations, or special activities included, customization can enhance your experience. Contact tour providers directly to discuss your preferences and any additional costs. Personalized tours can be tailored to your interests, making your visit to the French Riviera truly unique and memorable!',
+        },
+        {
+          question: 'Are there any local dishes I should try?',
+          answer: 'Absolutely! The French Riviera offers a tantalizing array of local dishes. In Antibes, try Socca, a savory chickpea pancake, and Pissaladière, an onion and anchovy tart. In Cannes, indulge in Bouillabaisse, a delicious fish stew, and Ratatouille, a vegetable medley. Pair these with a glass of local rosé wine for a perfect Riviera dining experience. Don\'t forget the delectable pastries from local patisseries!',
+        },
+        {
+          question: 'Do tours operate in bad weather?',
+          answer: 'Most tours operate rain or shine, but operators prioritize safety and comfort. In the case of extreme weather, such as thunderstorms or high winds, outdoor activities like yacht cruises may be rescheduled or canceled. Always check the weather forecast before your tour and contact the operator for updates. Many offer flexible rebooking policies, ensuring you can still enjoy your Riviera experience despite the weather!',
+        },
+        {
+          question: 'Can I find tours in different languages?',
+          answer: 'Yes, many tours in Antibes and Cannes offer multilingual guides to cater to international travelers. Common languages include English, French, Spanish, and German. When booking, check with the tour operator for language availability to ensure a comfortable and informative experience. Some tours also provide audio guides in multiple languages, enhancing accessibility for all visitors.',
+        },
+      ],
+    },
+    'provence-wine-tours': {
+      title: 'Provence Wine Tours',
+      subtitle: 'Discover the exquisite vineyards of Provence on the idyllic French Riviera — a wine enthusiast\'s dream!',
+      categoryName: 'Provence Wine Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 75,
+        duration: 'Half-day to full-day',
+      },
+      introduction: `Embark on an unforgettable journey through the sun-drenched vineyards of Provence on the glamorous French Riviera. Known for its luxurious coastal charm, this region offers wine tours that are as sophisticated as the surroundings. From the renowned rosés of Côtes de Provence to the rich reds of Bandol, each tour promises a taste of the region's distinct terroir. Whether you're a seasoned sommelier or a casual wine enthusiast, these tours provide a unique opportunity to explore picturesque estates, sample exquisite wines, and learn the art of winemaking from passionate local producers. Highlights include visits to the historic Château de Berne and breathtaking Domaine de la Source. Ideal for families, couples, and solo travelers alike, Provence wine tours offer a blend of education and indulgence, perfectly complemented by the region's stunning landscapes. Discover the heart of Provence, where every sip tells a story!`,
+      seo: {
+        title: 'Provence Wine Tours French Riviera 2025',
+        description: 'Explore Provence wine tours on the French Riviera. Taste exquisite wines and enjoy stunning vineyard views!',
+        keywords: 'Provence wine tours, French Riviera wine tasting, Côtes de Provence vineyards',
+      },
+      whyChoose: [
+        {
+          icon: 'GlassWater',
+          title: 'Exquisite Tastings',
+          description: 'Taste a wide variety of wines directly from award-winning vineyards.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Idyllic Locations',
+          description: 'Visit beautiful estates nestled in the heart of the French Riviera.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Educational Insights',
+          description: 'Learn about winemaking processes from knowledgeable local experts.',
+        },
+        {
+          icon: 'Sun',
+          title: 'Stunning Scenery',
+          description: 'Enjoy the breathtaking landscapes of Provence under the Mediterranean sun.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'GlassWater',
+          title: 'Half-Day Tours',
+          description: 'Perfect for those with a tight schedule, these tours offer a quick yet immersive experience.',
+          features: [
+            'Visit 2-3 wineries',
+            'Wine tasting sessions',
+            'Local cheese pairing',
+            'Guided estate tour',
+            'Scenic vineyard views',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Full-Day Tours',
+          description: 'Spend a full day exploring multiple vineyards with more time for tasting and relaxation.',
+          features: [
+            'Visit 4-5 wineries',
+            'Gourmet lunch',
+            'In-depth tastings',
+            'Meet winemakers',
+            'Transport included',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Private Tours',
+          description: 'For a personalized experience, private tours offer exclusive access and tailored itineraries.',
+          features: [
+            'Customizable visits',
+            'Private guide',
+            'Luxury transport',
+            'Exclusive tastings',
+            'Flexible schedule',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Group Tours',
+          description: 'Ideal for social butterflies, group tours combine camaraderie with wine appreciation.',
+          features: [
+            'Group discounts',
+            'Interactive sessions',
+            'Meet fellow enthusiasts',
+            'Shared transport',
+            'Fun activities',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Provence Wine Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 4-hour half-day experiences to full-day adventures.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Pricing',
+            description: 'Tours start at $75, with private options available for a premium.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography',
+            description: 'Capture stunning views of vineyard landscapes and picturesque estates.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Expert Guides',
+            description: 'Learn from local experts passionate about sharing their wine knowledge.',
+          },
+          {
+            icon: 'PartyPopper',
+            title: 'Wine Pairing',
+            description: 'Enjoy perfectly paired local delicacies with your wine tastings.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Winemaking Insights',
+            description: 'Discover the secrets behind Provence\'s world-class wines.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book in advance, especially during the summer months, to secure your preferred tour.',
+        'Bring a hat and sunscreen — the Riviera sun can be quite intense.',
+        'Plan for extra time to explore the charming towns adjacent to some vineyards.',
+        'Taste responsibly and consider arranging private transport if needed.',
+        'Ask your guide about the best vintages and local favorites for insider recommendations.',
+        'Wear comfortable shoes as some tours involve walking through vineyards.',
+        'Take notes during tastings to remember your favorite wines.',
+        'Don\'t hesitate to ask questions — guides love sharing their passion for wine!',
+      ],
+      faqs: [
+        {
+          question: 'What is included in a typical wine tour?',
+          answer: 'A typical Provence wine tour includes visits to several vineyards, guided tastings of various wines, and often a cheese or charcuterie pairing. Some tours also offer guided walks through vineyards and educational sessions about the winemaking process. Transportation from a central location may also be included. Prices generally start at $75 per person for half-day tours.',
+        },
+        {
+          question: 'Are wine tours family-friendly?',
+          answer: 'Yes, many wine tours are family-friendly, although tastings are reserved for adults over the age of 18. Some vineyards offer activities and tours that children can enjoy, such as exploring the grounds or participating in grape juice tastings. It\'s always a good idea to check with the tour operator beforehand to ensure an experience suited to all family members.',
+        },
+        {
+          question: 'When is the best time to visit for a wine tour?',
+          answer: 'The best time to visit the French Riviera for a wine tour is during the spring (April to June) and fall (September to October). During these periods, the weather is pleasant, and the vineyards are less crowded compared to the peak summer months. Additionally, the grape harvest typically occurs in September, offering a unique opportunity to witness winemaking in action!',
+        },
+        {
+          question: 'Do I need to know about wine to enjoy the tour?',
+          answer: 'Absolutely not! Provence wine tours cater to all levels of wine knowledge, from beginners to connoisseurs. Guides provide insights into the winemaking process, tasting techniques, and vineyard history, ensuring everyone leaves with greater wine appreciation and knowledge. Just bring your curiosity and enthusiasm!',
+        },
+        {
+          question: 'What should I wear on a wine tour?',
+          answer: 'Comfortable clothing and sturdy shoes are recommended, as you may be walking through vineyards. A hat and sunscreen are essential for sun protection, especially in summer. If dining at a château, you might consider smart-casual attire. Always check the weather forecast before heading out for the day.',
+        },
+        {
+          question: 'Can I buy wines during the tour?',
+          answer: 'Yes! Most vineyards offer the opportunity to purchase the wines you taste during the tour. This is an excellent chance to bring home a piece of Provence and savor the memories of your trip. Some vineyards even offer shipping services, making it easy to enjoy your favorites at home.',
+        },
+        {
+          question: 'How do I book a Provence wine tour?',
+          answer: 'Booking a Provence wine tour is easy! Many tour operators offer online reservations on their websites. It is recommended to book in advance, especially during peak travel seasons, to ensure availability. Alternatively, local tourist offices can provide recommendations and assistance with bookings.',
+        },
+        {
+          question: 'Are there any special wine events I should know about?',
+          answer: 'Yes, the French Riviera hosts several wine festivals and events throughout the year, such as the Provence Wine Harvest Festival in September. These events offer a fantastic opportunity to join in the celebrations, meet winemakers, and taste a wide range of local wines. Keep an eye on local event calendars to time your visit with these exciting occasions!',
+        },
+      ],
+    },
+    'grasse-perfume-tours': {
+      title: 'Grasse Perfume Tours',
+      subtitle: 'Uncover the fragrant secrets of Grasse on immersive perfume tours in the stunning French Riviera!',
+      categoryName: 'Grasse Perfume Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 45,
+        duration: '2 to 4 hours',
+      },
+      introduction: `Discover the enchanting world of fragrances in Grasse, the perfume capital nestled in the heart of the French Riviera. Known for its rich history and exquisite scents, Grasse offers a sensory journey like no other. Engage in behind-the-scenes tours of prestigious perfume houses like Fragonard, Galimard, and Molinard, where you can craft your own signature scent. These tours unravel the artistry and science behind perfumery, offering insights into the meticulous process of fragrance creation. Ideal for solo adventurers, couples, and families alike, these experiences blend education with the allure of luxurious scents. Dive into the aromatic fields of jasmine and rose, and let the allure of the Côte d'Azur enhance your senses. Whether you're a fragrance aficionado or a curious traveler, Grasse perfume tours promise an unforgettable journey through the olfactory wonders of Provence.`,
+      seo: {
+        title: 'Grasse Perfume Tours 2025: Unveil the Secrets',
+        description: 'Explore Grasse perfume tours in 2025! Discover, create, and cherish fragrances in the heart of Provence.',
+        keywords: 'Grasse perfume tours, French Riviera scents, fragrance workshops, Provence perfumery, olfactory experiences',
+      },
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Exclusive Access',
+          description: 'Enjoy privileged entry to world-renowned perfume houses and exclusive behind-the-scenes tours!',
+        },
+        {
+          icon: 'Star',
+          title: 'Create Your Scent',
+          description: 'Craft your own unique fragrance with expert guidance in hands-on workshops!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Cultural Immersion',
+          description: 'Experience the rich history and culture of Grasse, the perfume capital of the world.',
+        },
+        {
+          icon: 'Users',
+          title: 'Family Friendly',
+          description: 'Fun and educational tours perfect for travelers of all ages and families.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'BookOpen',
+          title: 'Historical Tours',
+          description: 'Explore the rich history of Grasse\'s perfumery with guided tours.',
+          features: [
+            'Fragonard Museum',
+            'Guided history lesson',
+            'Meet the perfumers',
+            'Antique artifacts',
+            'Cultural insights',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Workshop Experience',
+          description: 'Create your own fragrance in a personalized workshop.',
+          features: [
+            'Personalized scent creation',
+            'Guidance from experts',
+            'Take-home bottle',
+            'Hands-on experience',
+            'All materials included',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Botanical Garden Visits',
+          description: 'Stroll through aromatic gardens and learn about raw materials.',
+          features: [
+            'Guided garden tour',
+            'Botanical insights',
+            'Jasmine fields',
+            'Rose harvest',
+            'Photography opportunities',
+          ],
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Special Events',
+          description: 'Participate in seasonal and special perfume events.',
+          features: [
+            'Exclusive events',
+            'Seasonal themes',
+            'Limited edition scents',
+            'Interactive sessions',
+            'Networking opportunities',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Grasse Perfume Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour quick explorations to half-day immersive experiences.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Seasonal Blooms',
+            description: 'Visit during jasmine and rose harvest seasons for a full sensory experience.',
+          },
+          {
+            icon: 'Shirt',
+            title: 'Dress Code',
+            description: 'Comfortable attire recommended for garden visits and workshops.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Pricing',
+            description: 'Tours start at $45, with premium experiences available for higher budgets.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Location',
+            description: 'Tours are centered around Grasse\'s historic perfume district.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography',
+            description: 'Capture beautiful moments and stunning landscapes throughout your tour.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book tours in advance during peak season to secure your spot.',
+        'Visit in May for the rose harvest and in August for jasmine blooms.',
+        'Wear comfortable shoes for walking tours through gardens and cobblestone streets.',
+        'Spend extra time exploring the charming streets of Grasse for local crafts.',
+        'Combine your tour with a visit to the nearby Cote d\'Azur beaches.',
+        'Look out for special discounts and family packages.',
+        'Taste local Provençal cuisine at nearby restaurants after your tour.',
+        'Bring a travel-size bottle for sampling scents during the tour.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time to visit Grasse for perfume tours?',
+          answer: 'The ideal time to visit Grasse for perfume tours is during the blooming seasons. May is perfect for the rose harvest, offering a chance to see the vibrant fields in full bloom. August is ideal for jasmine, with its intoxicating aroma filling the air. Tours are available year-round, but these months offer a peak sensory experience! Be sure to book early, as these seasons attract many enthusiasts.',
+        },
+        {
+          question: 'Can I create my own perfume during the tour?',
+          answer: 'Absolutely! Many tours offer workshops where you can craft your own signature fragrance. With expert guidance, you can select from a variety of essences to create a personalized scent. This unique experience often includes a keepsake bottle to take home, making it an unforgettable memento of your visit to Grasse.',
+        },
+        {
+          question: 'Are the tours suitable for children?',
+          answer: 'Yes, Grasse perfume tours are family-friendly and suitable for children! Many tours include interactive elements that engage younger visitors, such as sniffing sessions and simple scent creation activities. It\'s an educational experience that combines fun with learning about perfumery and botanical ingredients. Check for tours specifically designed for families for the best experience.',
+        },
+        {
+          question: 'What should I wear for the tours?',
+          answer: 'Comfort is key! Wear comfortable shoes, as you\'ll likely be walking through gardens and charming cobblestone streets. Lightweight, breathable clothing is recommended for the warm Mediterranean climate. If visiting during the harvest seasons, a hat and sunscreen are also advisable to protect against the sun.',
+        },
+        {
+          question: 'How far is Grasse from Nice?',
+          answer: 'Grasse is conveniently located about 23 miles (37 kilometers) from Nice. You can easily reach Grasse by car, which takes around 45 minutes, or by train, which offers a scenic journey through the picturesque landscapes of the French Riviera. Regular bus services are also available for those preferring public transport.',
+        },
+        {
+          question: 'Do I need to book tours in advance?',
+          answer: 'It\'s highly recommended to book your tour in advance, especially during peak seasons like the rose and jasmine harvests. This ensures you secure a spot on your preferred tour and helps avoid disappointment. Many tour operators offer online booking options for added convenience.',
+        },
+        {
+          question: 'Are there any special events related to perfumery in Grasse?',
+          answer: 'Yes, Grasse hosts several special events throughout the year, celebrating its rich heritage in perfumery. Look out for the Fête du Jasmin in August, a vibrant festival dedicated to jasmine, featuring parades, music, and floral displays. These events offer a deeper insight into the cultural significance of perfumery in the region.',
+        },
+        {
+          question: 'What languages are the tours conducted in?',
+          answer: 'Most tours in Grasse are conducted in French and English. Some operators may offer additional language options depending on demand, including German, Spanish, and Italian. It\'s advisable to check with the tour provider in advance to ensure your preferred language is available.',
+        },
+      ],
+    },
+    'eze-village-tours': {
+      title: 'Eze Village Tours',
+      subtitle: 'Explore Eze Village: a medieval gem offering breathtaking views and enchanting experiences.',
+      categoryName: 'Eze Village Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 50,
+        duration: '2-6 hours',
+      },
+      introduction: `Nestled on a hilltop overlooking the sparkling Mediterranean, Eze Village is a must-see on the French Riviera. This medieval gem enchants with its narrow cobblestone streets, vibrant gardens, and panoramic views that will leave you breathless. Eze Village tours offer a delightful mix of history, art, and nature. Wander through the Jardin Exotique, explore the Fragonard Perfume Factory, or admire the ancient architecture of the Chapelle de la Sainte Croix. Whether you're an art lover, history buff, or nature enthusiast, Eze promises a memorable experience. With its charming boutiques and cafes, this picturesque village caters to all traveler types, from solo explorers to families seeking a cultural escape. Come and discover the magic of Eze!`,
+      seo: {
+        title: 'Eze Village Tours 2025: Explore French Riviera',
+        description: 'Discover Eze Village in 2025: stunning views, rich history, and vibrant gardens await! Book your tour now.',
+        keywords: 'Eze Village tours, French Riviera, medieval village tours, Eze attractions, Eze travel 2025',
+      },
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Unforgettable Views',
+          description: 'Experience breathtaking panoramas of the Mediterranean from Eze\'s unique hilltop vantage points.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photographic Paradise',
+          description: 'Capture stunning photos of Eze\'s medieval architecture and lush gardens.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Cultural Richness',
+          description: 'Dive into Eze\'s rich history and culture with guided tours and local insights.',
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Unique Experiences',
+          description: 'Enjoy unique experiences like perfume-making workshops at the iconic Fragonard Perfume Factory.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Historical Walking Tours',
+          description: 'Discover Eze\'s history through guided walking tours.',
+          features: [
+            'Guided tour',
+            'Visit to Chapelle de la Sainte Croix',
+            'Local stories',
+            'Historic sites',
+            'Scenic views',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Romantic Getaways',
+          description: 'Perfect for couples seeking a romantic escape in a picturesque setting.',
+          features: [
+            'Sunset views',
+            'Dinner in a local bistro',
+            'Private guide',
+            'Photo opportunities',
+            'Charming strolls',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Capture the beauty of Eze with professional photography guidance.',
+          features: [
+            'Photography tips',
+            'Scenic spots',
+            'Expert guide',
+            'Unique perspectives',
+            'Photo album',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Gastronomic Tours',
+          description: 'Indulge in the flavors of Eze with curated culinary experiences.',
+          features: [
+            'Local delicacies',
+            'Wine tasting',
+            'Cooking classes',
+            'Market visits',
+            'Tasting menus',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Eze Village Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours last from 2 to 6 hours depending on the type of experience.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Stunning Views',
+            description: 'Enjoy panoramic views of the coast from Eze\'s elevated position.',
+          },
+          {
+            icon: 'Users',
+            title: 'Local Expertise',
+            description: 'Guides provide insights into the village\'s history and culture.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography Opportunities',
+            description: 'Ideal locations for capturing breathtaking photos of the Riviera.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Culinary Delights',
+            description: 'Sample local cuisine and wines on gastronomic tours.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Unique Experiences',
+            description: 'Participate in workshops and activities unique to Eze.',
+          },
+        ],
+      },
+      expertTips: [
+        'Visit the Jardin Exotique early in the morning for the best light and fewer crowds.',
+        'Book a table at Chateau Eza for a dining experience with unmatched views!',
+        'Wear comfortable shoes; the village\'s cobblestone streets can be steep and uneven.',
+        'Join a perfume-making workshop at Fragonard for a fragrant souvenir.',
+        'Capture the sunset from the top of the village for stunning photographs.',
+        'Use the local bus service from Nice for a scenic and affordable journey.',
+        'Visit during spring or fall to enjoy mild weather and vibrant flowers.',
+        'Check local events during your visit for unique cultural experiences.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best way to get to Eze Village from Nice?',
+          answer: 'The easiest way is by the local bus from Nice, which offers a scenic route and costs around $2. Another option is a taxi or private car service, though it\'s more expensive at approximately $50. The bus takes about 30-40 minutes and runs frequently throughout the day. Enjoy the journey along the picturesque coastline!',
+        },
+        {
+          question: 'Are there any entrance fees for attractions in Eze?',
+          answer: 'Yes, certain attractions like the Jardin Exotique charge an entry fee, typically around $7 per person. However, many of the village\'s sights and experiences, including the charming streets and local shops, are free to explore. Guided tours may have additional costs, often included in package deals.',
+        },
+        {
+          question: 'What should I wear when visiting Eze Village?',
+          answer: 'Wear comfortable walking shoes as Eze\'s streets are cobbled and can be steep. In summer, lightweight clothing, a hat, and sunscreen are recommended due to the warm Mediterranean sun. In cooler months, a light jacket is advisable. Always carry a bottle of water to stay hydrated during your explorations!',
+        },
+        {
+          question: 'Can I visit Eze Village with children?',
+          answer: 'Absolutely! Eze is family-friendly with plenty of activities for children. The exotic garden is a hit with kids, and they\'ll enjoy exploring the winding paths. Just be mindful of the steep streets, and consider a guided tour with family-friendly themes. Some tours also offer activities specifically for children.',
+        },
+        {
+          question: 'Is Eze Village accessible for people with mobility issues?',
+          answer: 'Eze\'s steep and narrow streets can pose challenges for those with mobility issues. However, some areas of the village and attractions are accessible, and it\'s best to check with individual tour operators for specific accommodations. The Fragonard Perfume Factory is one of the more accessible spots to visit.',
+        },
+        {
+          question: 'When is the best time to visit Eze Village?',
+          answer: 'The best time to visit is during spring (April to June) or fall (September to October) when the weather is pleasant, and the village is less crowded. Summer can be hot and crowded, but it\'s also when Eze is most vibrant with events and activities. Each season offers a unique charm!',
+        },
+        {
+          question: 'What are some must-see sights in Eze Village?',
+          answer: 'Don\'t miss the Jardin Exotique for stunning views and unique flora. The Fragonard Perfume Factory offers fascinating tours and workshops. Explore the medieval Chapelle de la Sainte Croix and take time to wander the quaint streets filled with art galleries and artisan shops. Each corner reveals a new delight!',
+        },
+        {
+          question: 'Are there dining options in Eze Village?',
+          answer: 'Yes, Eze boasts several delightful dining options ranging from charming cafes to upscale restaurants. Enjoy a meal at Chateau Eza for gourmet cuisine with breathtaking views, or try local specialties at a cozy bistro. Reservations are recommended, especially during peak season. Don\'t miss tasting the local wines!',
+        },
+      ],
+    },
+  },
+  ibiza: {
+    'dalt-vila-tours': {
+      title: 'Ibiza Dalt Vila Tours',
+      subtitle: 'Explore Ibiza\'s ancient heart with enchanting Dalt Vila tours for history buffs and culture seekers!',
+      categoryName: 'Dalt Vila Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 40,
+        duration: '2-4 hours',
+      },
+      introduction: `Perched majestically over the Mediterranean, Dalt Vila is Ibiza's stunning fortified old town, a UNESCO World Heritage site. Dive into the island's rich tapestry of history and culture with our captivating Dalt Vila tours. Traverse cobblestone streets and explore ancient battlements that whisper stories of yore. Marvel at the Cathedral of Our Lady of the Snows and lose yourself in the quaint charm of its winding alleys. From panoramic views atop the ancient walls to discovering hidden gems like the Archaeological Museum, every corner offers a new adventure. Whether you're a history enthusiast, a photography lover, or simply a curious traveler, Dalt Vila promises a mesmerizing journey back in time. Join us as we unveil the secrets of Ibiza's past and soak in the vibrant culture that pulses through its veins. Ideal for solo explorers, couples, and families alike, these tours offer a unique perspective on Ibiza beyond its beaches and nightlife.`,
+      seo: {
+        title: 'Discover Dalt Vila Tours in Ibiza 2025',
+        description: 'Experience Ibiza\'s heritage with Dalt Vila tours. Explore history, culture, and breathtaking views!',
+        keywords: 'Dalt Vila tours, Ibiza history tours, Ibiza 2025, cultural tours Ibiza, UNESCO sites Ibiza',
+      },
+      whyChoose: [
+        {
+          icon: 'MapPin',
+          title: 'Historic Exploration',
+          description: 'Delve into Ibiza\'s rich past with guided tours through its ancient fortified old town.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Stunning Vistas',
+          description: 'Capture breathtaking views of the Mediterranean from the top of the ancient city walls.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Cultural Immersion',
+          description: 'Experience the vibrant culture and history that make Dalt Vila a UNESCO World Heritage site.',
+        },
+        {
+          icon: 'Users',
+          title: 'Family-Friendly',
+          description: 'Engaging tours suitable for all ages, perfect for families seeking a cultural adventure.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Historical Walking Tour',
+          description: 'Step back in time as you walk through the cobblestone streets of Dalt Vila with an expert guide.',
+          features: [
+            'Guided tour',
+            'Cathedral visit',
+            'Archaeological Museum',
+            'Historic walls',
+            'Panoramic views',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tour',
+          description: 'Capture the essence of Ibiza from its ancient walls to hidden alleys with a local photographer.',
+          features: [
+            'Professional photographer',
+            'Best photo spots',
+            'Sunset views',
+            'Tips and techniques',
+            'Souvenir photo album',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Cultural Heritage Tour',
+          description: 'Immerse in the stories and legends of Dalt Vila, learning about its significance over centuries.',
+          features: [
+            'Local guide',
+            'Historical insights',
+            'Museum access',
+            'Interactive storytelling',
+            'Cultural insights',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Romantic Evening Tour',
+          description: 'Experience the magic of Dalt Vila under the stars with a romantic evening tour.',
+          features: [
+            'Sunset views',
+            'Private guide',
+            'Champagne toast',
+            'Dinner options',
+            'Couple\'s photo session',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Dalt Vila Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2 to 4 hours, depending on the type and depth of exploration.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Options',
+            description: 'Tours start at $40, offering a range of prices to suit different budgets.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Personalized Experience',
+            description: 'Smaller group sizes ensure a more personalized and intimate tour experience.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography Opportunities',
+            description: 'Ample opportunities to capture stunning visuals of Ibiza\'s ancient architecture and sea views.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Historical Insights',
+            description: 'Gain deep insights into Ibiza\'s history with stories and facts provided by expert guides.',
+          },
+          {
+            icon: 'Users',
+            title: 'Family-Friendly Tours',
+            description: 'Tours are designed to be engaging for both adults and children, making them ideal for families.',
+          },
+        ],
+      },
+      expertTips: [
+        'Visit early in the morning to avoid crowds and enjoy cooler temperatures.',
+        'Wear comfortable shoes as the cobblestone streets can be uneven.',
+        'Don\'t miss the sunset views from the top of the city walls for a magical experience.',
+        'Bring a water bottle and stay hydrated, especially during summer tours.',
+        'Check for special night tours that offer a different perspective of Dalt Vila.',
+        'Visit the Archaeological Museum for a deeper dive into Ibiza\'s history.',
+        'Look for local artisan shops within Dalt Vila for unique souvenirs.',
+        'Capture the cityscape from the Cathedral for a breathtaking panoramic shot.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time to visit Dalt Vila?',
+          answer: 'The best time to visit Dalt Vila is during the spring (April to June) and fall (September to October). These months offer pleasant weather, fewer crowds, and vibrant local festivals. Early morning or late afternoon visits are ideal for avoiding the midday heat and capturing beautiful photos. Don\'t miss the sunsets from the ancient walls for an unforgettable experience!',
+        },
+        {
+          question: 'Are Dalt Vila tours suitable for children?',
+          answer: 'Absolutely! Dalt Vila tours are designed to be engaging for all ages, making them perfect for families. The historical stories, interactive elements, and the chance to explore ancient walls captivate children\'s imaginations. Just remember to wear comfortable shoes and bring some snacks and water. Kids love the adventure of exploring this ancient fortress!',
+        },
+        {
+          question: 'What should I wear for a Dalt Vila tour?',
+          answer: 'Comfort is key when exploring Dalt Vila. Opt for lightweight, breathable clothing, especially in the warmer months. Closed-toe shoes with good grip are recommended for walking on the cobblestone streets. Don\'t forget a hat and sunglasses for sun protection, and consider bringing a light jacket for evening tours.',
+        },
+        {
+          question: 'Is photography allowed during the tours?',
+          answer: 'Yes, photography is not only allowed but encouraged! Dalt Vila offers endless photo opportunities, from panoramic city views to charming alleyways. Local guides can point out the best spots for capturing memorable shots. Consider joining a photography-focused tour for expert tips and to ensure you get the best angles.',
+        },
+        {
+          question: 'Are there dining options within Dalt Vila?',
+          answer: 'Yes, there are several delightful dining options within Dalt Vila. From cozy cafes to gourmet restaurants, there\'s something to suit every palate. Enjoy a meal with a view at one of the terrace restaurants or savor traditional Ibizan cuisine at a local eatery. Reservations are recommended during peak times.',
+        },
+        {
+          question: 'How can I book a Dalt Vila tour?',
+          answer: 'Booking a Dalt Vila tour is easy and can be done online through various travel platforms or directly with local tour operators. Look for tours that offer small groups for a more personalized experience. Booking in advance is recommended, especially during peak tourist season, to secure your preferred time slot.',
+        },
+        {
+          question: 'Is Dalt Vila accessible for people with mobility issues?',
+          answer: 'Due to its historic nature, Dalt Vila features cobblestone streets and steep inclines, which can pose challenges for those with mobility issues. However, some tours offer accommodations or alternative routes to improve accessibility. It\'s advisable to contact tour operators in advance to discuss specific needs and options.',
+        },
+        {
+          question: 'What languages are the tours conducted in?',
+          answer: 'Most Dalt Vila tours are conducted in English and Spanish, with some operators offering additional languages such as German, French, and Italian. It\'s best to check with the tour provider in advance to ensure availability of your preferred language. Multilingual guides are often available to enhance your tour experience.',
+        },
+      ],
+    },
+    'beach-and-boat-tours': {
+      title: 'Ibiza Beach & Boat Tours',
+      subtitle: 'Dive into Ibiza\'s sun-kissed beaches and vibrant boat tours for unforgettable Mediterranean adventures!',
+      categoryName: 'Beach & Boat Tours',
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 50,
+        duration: '2 to 8 hours',
+      },
+      introduction: `Ibiza isn't just a party hotspot; it's a paradise for beach and boat enthusiasts! With a coastline that boasts crystal-clear waters and hidden coves, Ibiza's beach and boat tours are the best way to experience the island's natural beauty and vibrant energy. Whether you're lounging on Playa d'en Bossa or exploring the mystical Es Vedrà by boat, these tours promise a blend of relaxation and adventure. Feel the thrill as you snorkel in Cala Comte, or dance under the stars on a sunset cruise. Perfect for families, couples, and solo adventurers, these tours offer a unique glimpse into Ibiza's soul, with something for everyone—from tranquil beaches to lively party boats. Discover the magic of the Mediterranean with local guides who know every secret spot!`,
+      seo: {
+        title: 'Ibiza Beach & Boat Tours 2025: Unmissable Adventures!',
+        description: 'Explore Ibiza\'s stunning beaches and thrilling boat tours in 2025. Book now for unforgettable adventures!',
+        keywords: 'Ibiza beach tours, Ibiza boat tours, Mediterranean adventures, 2025 travel',
+      },
+      whyChoose: [
+        {
+          icon: 'Sun',
+          title: 'Perfect Weather',
+          description: 'Enjoy year-round sunshine and ideal conditions for beach and boat excursions!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Stunning Scenery',
+          description: 'Breathtaking views and clear waters make Ibiza\'s coastline a must-see!',
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Vibrant Atmosphere',
+          description: 'Experience the lively spirit of Ibiza with music-filled boat parties!',
+        },
+        {
+          icon: 'Anchor',
+          title: 'Unique Experiences',
+          description: 'Discover hidden coves and secret beaches accessible only by boat.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Sailing Tours',
+          description: 'Set sail on luxury yachts for a day of relaxation and exploration.',
+          features: [
+            'Luxury yachts',
+            'Professional skippers',
+            'Snorkeling gear',
+            'Food and beverages',
+            'Sunbathing decks',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Party Boat Tours',
+          description: 'Dance and enjoy Ibiza\'s famous party scene on the water.',
+          features: [
+            'Live DJ',
+            'Open bar',
+            'Dance floor',
+            'Night and day tours',
+            'Scenic routes',
+          ],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Private Beach Tours',
+          description: 'Exclusive access to secluded beaches for ultimate privacy and tranquility.',
+          features: [
+            'Personal guide',
+            'Beach picnics',
+            'Snorkeling',
+            'Sunset views',
+            'Photography opportunities',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunset Cruises',
+          description: 'Witness breathtaking sunsets over the Mediterranean with a cocktail in hand.',
+          features: [
+            'Cocktail service',
+            'Sunset views',
+            'Music',
+            'Group and private options',
+            'Romantic settings',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Beach & Boat Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from quick 2-hour trips to full-day adventures.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Refreshments',
+            description: 'Most tours include snacks and drinks, often with an open bar.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Capture stunning vistas and picturesque landscapes throughout your journey.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Local Guides',
+            description: 'Knowledgeable locals share insider tips and stories about Ibiza.',
+          },
+          {
+            icon: 'Music',
+            title: 'Live Entertainment',
+            description: 'Many boat tours feature live music or a DJ to enhance your experience.',
+          },
+          {
+            icon: 'Anchor',
+            title: 'Exclusive Access',
+            description: 'Visit secluded spots and hidden gems only accessible by boat.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book sunset cruises early, they fill up fast during peak season!',
+        'Try to include a stop at Cala Jondal for a chic beach experience.',
+        'Bring reef-safe sunscreen to protect Ibiza\'s marine life.',
+        'Opt for smaller boats for a more intimate and relaxed tour.',
+        'Check if your tour offers snorkeling equipment to explore underwater.',
+        'Pack a light jacket for evening tours; it can get breezy!',
+        'Consider a private tour for a customizable experience.',
+        'Always confirm the meeting point and time with the tour operator.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time of year for beach and boat tours in Ibiza?',
+          answer: 'The best time to enjoy Ibiza\'s beach and boat tours is from May to October. During these months, the weather is warm and the sea is calm, perfect for sailing and beach activities. High season is July and August when the island is buzzing, but if you prefer a quieter experience, consider visiting in May or September. Always book in advance during peak season to secure your spot!',
+        },
+        {
+          question: 'Are there family-friendly beach and boat tours in Ibiza?',
+          answer: 'Absolutely! Ibiza offers a variety of family-friendly tours. Opt for a private boat tour with stops at kid-friendly beaches like Cala Bassa. Some tours offer snorkeling equipment and beach games to keep children entertained. It\'s a great way for families to explore the island\'s natural beauty together. Be sure to check with operators about age restrictions and safety equipment for children.',
+        },
+        {
+          question: 'What should I bring on a beach and boat tour in Ibiza?',
+          answer: 'Pack essentials like sunscreen, a hat, sunglasses, and a swimsuit. A waterproof camera or phone case is handy for capturing moments without worry. Bring a light jacket for evening tours and a towel if your tour includes beach stops. Some tours provide refreshments, but it\'s wise to bring a water bottle to stay hydrated.',
+        },
+        {
+          question: 'Can I customize a private boat tour in Ibiza?',
+          answer: 'Yes! Private boat tours in Ibiza can often be customized to suit your preferences. Discuss your interests with the operator—whether it\'s visiting specific beaches, snorkeling spots, or enjoying a sunset cruise. Custom tours offer flexibility in duration and activities, making them ideal for special occasions or personal adventures. Prices vary depending on the customization level and duration.',
+        },
+        {
+          question: 'What is included in the cost of a typical boat tour?',
+          answer: 'Most boat tours include the boat ride, services of a knowledgeable guide, and basic refreshments. Some tours may offer additional amenities like snorkeling gear, onboard meals, or an open bar. It\'s important to check with the tour operator for specific inclusions and exclusions before booking. Prices typically start around $50 for basic tours and can go up for luxury experiences.',
+        },
+        {
+          question: 'Do I need to know how to swim to join a boat tour?',
+          answer: 'While swimming isn\'t necessary to enjoy a boat tour, it\'s recommended if you plan to participate in snorkeling or swimming activities. Non-swimmers can still relax on the boat and enjoy the scenery. Life jackets are usually provided for safety, and tours are designed to cater to all comfort levels, ensuring everyone has a great experience.',
+        },
+        {
+          question: 'How do I book a beach or boat tour in Ibiza?',
+          answer: 'Booking a tour in Ibiza is easy! You can book online through tour operators\' websites, travel platforms, or visit local booking offices upon arrival. During peak season, it\'s advisable to book in advance to secure your spot. Check for reviews and compare prices to find the best deal that suits your preferences and budget.',
+        },
+        {
+          question: 'Are there eco-friendly tour options available?',
+          answer: 'Yes, Ibiza offers eco-friendly tour options focused on sustainability. Look for operators that use solar-powered boats or emphasize environmental awareness. These tours often prioritize visiting natural reserves and educating guests about marine conservation. Choosing an eco-friendly tour helps support Ibiza\'s efforts to preserve its stunning environments for future generations.',
+        },
+      ],
+    },
+    'sunset-party-tours': {
+      title: 'Ibiza Sunset Party Tours',
+      subtitle: 'Unforgettable Ibiza sunset parties blend music, dance, and mesmerizing Mediterranean views.',
+      categoryName: 'Sunset Party Tours',
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 50,
+        duration: '3-6 hours',
+      },
+      introduction: `Ibiza's sunset party tours offer an electrifying blend of music, dance, and breathtaking sunsets over the Mediterranean. Known for its vibrant nightlife, Ibiza transforms its golden beaches into pulsating hubs of energy as the sun dips below the horizon. Travelers can experience everything from intimate boat parties with live DJs to grand beach gatherings at iconic spots like Café del Mar and Mambo Ibiza. Whether you're a dance enthusiast, a music lover, or just seeking a unique social experience, Ibiza's sunset tours promise unforgettable memories. Each tour captures the island's essence, offering a magical atmosphere where every sunset is celebrated with rhythm and color. Perfect for solo travelers, couples, and groups, these tours provide a captivating way to engage with Ibiza's legendary party scene.`,
+      seo: {
+        title: 'Ibiza Sunset Party Tours 2025',
+        description: 'Join Ibiza sunset party tours in 2025 for vibrant music, stunning views, and unforgettable nights!',
+        keywords: 'Ibiza sunset parties, Ibiza tours 2025, sunset party tours in Ibiza, Mediterranean sunset parties',
+      },
+      whyChoose: [
+        {
+          icon: 'PartyPopper',
+          title: 'World-Class DJs',
+          description: 'Experience live music from the world\'s top DJs in a magical sunset setting.',
+        },
+        {
+          icon: 'Sun',
+          title: 'Stunning Sunsets',
+          description: 'Witness breathtaking sunsets over the Mediterranean, a perfect backdrop for any party.',
+        },
+        {
+          icon: 'Anchor',
+          title: 'Variety of Venues',
+          description: 'From beach clubs to private boats, enjoy diverse party settings across the island.',
+        },
+        {
+          icon: 'Music',
+          title: 'Vibrant Atmosphere',
+          description: 'Immerse yourself in Ibiza\'s unique party culture with an electric atmosphere that\'s unmatched.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Boat Party Tours',
+          description: 'Set sail on the Mediterranean with top DJs and endless views. Perfect for party lovers.',
+          features: [
+            'Live DJ sets',
+            'Open bar',
+            'Swimming stops',
+            'Spectacular sunset views',
+            'Party atmosphere',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Beach Club Events',
+          description: 'Enjoy sunset parties at iconic beach clubs with world-class sound systems and vibrant crowds.',
+          features: [
+            'Famous venues',
+            'Top DJs',
+            'Cocktail bars',
+            'VIP areas',
+            'Dance floors',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Luxury Yacht Experiences',
+          description: 'Cruise in style on private yachts with exclusive services and intimate settings.',
+          features: [
+            'Private DJ',
+            'Gourmet snacks',
+            'Champagne service',
+            'Personalized itinerary',
+            'Secluded coves',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Group Party Tours',
+          description: 'Join group tours for a communal party experience with like-minded travelers.',
+          features: [
+            'Group discounts',
+            'Fun activities',
+            'Social atmosphere',
+            'Inclusive packages',
+            'Guided by locals',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Sunset Party Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 3 to 6 hours, varying by type and venue.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Pricing',
+            description: 'Prices start from $50, offering options for different budgets and preferences.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Capture Moments',
+            description: 'Stunning views and vibrant scenes perfect for memorable photos.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Meet New People',
+            description: 'Engage with fellow travelers and locals, sharing the joy of Ibiza\'s nightlife.',
+          },
+          {
+            icon: 'Music',
+            title: 'Unmatched Sound',
+            description: 'Experience cutting-edge sound systems and live performances by renowned artists.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Ocean Vibes',
+            description: 'Enjoy the soothing sounds of the sea as your party backdrop.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book your tour in advance, especially during peak season, to secure your spot.',
+        'Dress comfortably and according to the venue\'s dress code; beachwear is often acceptable.',
+        'Arrive early to enjoy the best sunset views and avoid long queues.',
+        'Bring a light jacket or shawl; it can get cooler on the water after sunset.',
+        'Stay hydrated! Many tours offer complimentary water along with alcoholic beverages.',
+        'Capture the moment; don\'t forget your camera or smartphone for stunning sunset shots.',
+        'If prone to seasickness, consider taking medication before a boat tour.',
+        'Check for package deals that include transportation to and from your accommodation.',
+      ],
+      faqs: [
+        {
+          question: 'What should I wear to a sunset party tour?',
+          answer: 'Dress codes vary, but most tours embrace a casual, beach-appropriate style. For beach clubs, think stylish swimwear paired with chic cover-ups or casual dresses for women, and swim trunks with a smart polo or tee for men. On boat tours, comfortable shoes are recommended, and a light jacket might be handy for later in the evening when the temperature drops. Always check specific venue requirements, as some luxury yacht tours may call for more upscale attire!',
+        },
+        {
+          question: 'Are these tours suitable for families?',
+          answer: 'While Ibiza is known for its vibrant nightlife, some sunset tours are family-friendly, especially those that focus on the scenery and cultural experiences rather than the party atmosphere. It\'s important to check with the tour operator beforehand. Many tours cater to an adult audience, focusing on music and nightlife, so if you\'re traveling with children, specify your needs to find the right experience. Remember, Ibiza offers a wide range of activities beyond parties, suitable for all ages!',
+        },
+        {
+          question: 'How do I get to the tour starting point?',
+          answer: 'Most tours offer convenient pickup points across popular areas in Ibiza, including San Antonio and Ibiza Town. Some may provide transportation as part of the package, especially for group tours and luxury experiences. Check your tour details for specific locations and times. Public transport and taxis are also readily available if your tour does not include transfers. Arrive early to ensure a smooth boarding process, especially in peak seasons!',
+        },
+        {
+          question: 'What is the cancellation policy for these tours?',
+          answer: 'Cancellation policies vary by provider, but most allow free cancellations up to 24-48 hours before the tour. It\'s crucial to read the terms and conditions when booking. Non-refundable tours often offer lower rates, so weigh your options based on your travel plans. During peak times, tours fill up quickly, so booking flexibility can be beneficial. Always confirm the policy directly with the tour operator to avoid surprises!',
+        },
+        {
+          question: 'Can I customize a private tour?',
+          answer: 'Absolutely! Many operators offer customizable private tours, especially for luxury yacht experiences. Tailor your itinerary by choosing your departure time, route, and onboard amenities. Discussing your preferences in advance with the tour provider ensures a personalized experience, whether you\'re celebrating a special occasion or seeking a specific ambiance. Custom options might include catering, special music requests, or visiting secluded spots!',
+        },
+        {
+          question: 'Is food included in the tour packages?',
+          answer: 'Most tours include some form of snacks or meals, particularly boat tours that may offer tapas or buffet-style dining. Beach club events often provide dining options at additional costs. Always check your tour details to understand what is included. Bringing extra cash for drinks or additional food purchases is wise, especially at venues known for their gourmet offerings. Ask your operator for specifics on what to expect!',
+        },
+        {
+          question: 'Do I need to bring anything specific?',
+          answer: 'Depending on the tour, packing essentials like sunscreen, sunglasses, and a hat is smart to protect against the sun. For boat tours, a swimsuit and towel are recommended. Some tours suggest bringing cash for optional purchases or tips. Always verify with your tour provider to ensure you\'re prepared, and consider packing a portable phone charger to capture your magical Ibiza sunset moments without interruption!',
+        },
+        {
+          question: 'Are there any age restrictions on the tours?',
+          answer: 'Most sunset party tours cater to an adult audience, with age restrictions typically set at 18 or 21, depending on the venue and country regulations regarding alcohol. However, some family-friendly sunset cruises and cultural tours welcome younger guests. Always check with the tour operator for specific age policies. Make sure to bring valid ID, as age verification may be required for entry to certain events or venues!',
+        },
+      ],
+    },
+    'water-sports-tours': {
+      title: 'Ibiza Water Sports Tours',
+      subtitle: 'Dive into Ibiza\'s thrilling aquatic adventures amidst stunning coastlines and vibrant marine life.',
+      categoryName: 'Water Sports Tours',
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 50,
+        duration: '2-6 hours',
+      },
+      introduction: `Embark on an exhilarating journey through Ibiza's azure waters, where water sports enthusiasts find their paradise. Known as the Mediterranean's party haven, Ibiza surprises with its captivating aquatic adventures. Whether you're slicing through waves on a jet ski, exploring vibrant marine life while snorkeling, or sailing into the sunset, the island offers an array of unforgettable experiences. Adventurers can navigate hidden coves and majestic cliffs while those seeking serenity can enjoy peaceful paddleboarding sessions. Perfect for thrill-seekers, families, and solo travelers alike, Ibiza's water sports tours promise endless excitement and breathtaking beauty. From the iconic Es Vedrà rock to the pristine Cala Salada beach, discover the island's hidden gems from a whole new perspective. Let Ibiza's enchanting waters captivate you!`,
+      seo: {
+        title: 'Best Ibiza Water Sports Tours 2025',
+        description: 'Discover thrilling water sports tours in Ibiza for 2025! Book now for unforgettable aquatic adventures.',
+        keywords: 'Ibiza water sports, Ibiza tours 2025, water sports adventures Ibiza',
+      },
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Stunning Seascapes',
+          description: 'Experience the breathtaking beauty of Ibiza\'s coastline, featuring hidden coves and crystal-clear waters.',
+        },
+        {
+          icon: 'Sailboat',
+          title: 'Diverse Activities',
+          description: 'From jet skiing to snorkeling, enjoy a wide range of exciting water sports tailored for all skill levels.',
+        },
+        {
+          icon: 'Anchor',
+          title: 'Experienced Guides',
+          description: 'Benefit from knowledgeable local guides who ensure safety and provide insider knowledge of the best spots.',
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Local Charm',
+          description: 'Immerse yourself in Ibiza\'s vibrant culture with authentic experiences led by passionate locals.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Sailing Tours',
+          description: 'Sail the Mediterranean aboard luxurious yachts or traditional boats, exploring Ibiza\'s coastal beauty.',
+          features: [
+            'Professional Skipper',
+            'Gourmet Lunch',
+            'Snorkeling Equipment',
+            'Scenic Views',
+            'Sunset Cruises',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Jet Ski Adventures',
+          description: 'Feel the adrenaline rush as you speed across the waves, exploring hidden bays and stunning vistas.',
+          features: [
+            'High-Speed Jet Skis',
+            'Safety Briefing',
+            'Guided Tours',
+            'Photo Opportunities',
+            'All Equipment Provided',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Snorkeling Trips',
+          description: 'Discover vibrant underwater worlds teeming with marine life in Ibiza\'s crystal-clear waters.',
+          features: [
+            'Snorkeling Gear',
+            'Experienced Guide',
+            'Marine Life Exploration',
+            'Beach Stops',
+            'Refreshments Included',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Catamaran Cruises',
+          description: 'Relax on deck aboard spacious catamarans, enjoying sun-soaked views and leisurely swims.',
+          features: [
+            'Open Bar',
+            'BBQ Lunch',
+            'Swimming Stops',
+            'Music on Board',
+            'Spacious Decks',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Ibiza Water Sports Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour quick adventures to full-day excursions.',
+          },
+          {
+            icon: 'Anchor',
+            title: 'Safety First',
+            description: 'All tours prioritize safety with briefings and guided assistance.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Weather Considerations',
+            description: 'Tours operate in sunny, mild conditions; cancellations may occur during inclement weather.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Family Friendly',
+            description: 'Many tours are perfect for families with activities suitable for all ages.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Options',
+            description: 'Choose from private tours or join group excursions for a social experience.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Convenient Locations',
+            description: 'Tours depart from multiple points around the island, ensuring easy access.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book in advance during peak season (June-August) to secure your spot.',
+        'Bring a waterproof camera to capture underwater memories.',
+        'Try the sunset sailing tour for a magical end to your day.',
+        'Wear reef-safe sunscreen to protect marine life.',
+        'Check if your tour includes hotel pickup for convenience.',
+        'Hydrate well before water activities to prevent fatigue.',
+        'Consider a morning tour for calmer seas and fewer crowds.',
+        'Pack a light jacket for evening tours; it can get breezy on the water.',
+      ],
+      faqs: [
+        {
+          question: 'What should I bring on a water sports tour?',
+          answer: 'Bring essentials like swimwear, a towel, sunscreen, and a hat. Some tours provide snorkeling gear, but you can bring your own. Don\'t forget a waterproof camera to capture the stunning views and marine life. Most tours include refreshments, but packing a bottle of water is always a good idea!',
+        },
+        {
+          question: 'Are water sports tours safe for beginners?',
+          answer: 'Absolutely! Ibiza\'s water sports tours cater to all skill levels. Experienced guides offer thorough safety briefings and ensure you\'re comfortable before heading out. Whether it\'s your first time jet skiing or snorkeling, you\'ll receive all the guidance needed for a safe and enjoyable experience.',
+        },
+        {
+          question: 'Can I book a private tour?',
+          answer: 'Yes, many operators offer private water sports tours tailored to your preferences. These can be perfect for special occasions or if you prefer a more personalized experience. Private tours allow you to set your own pace and customize your itinerary, ensuring a unique adventure on Ibiza\'s stunning waters.',
+        },
+        {
+          question: 'What is the best time of day for a tour?',
+          answer: 'Morning tours are ideal for those seeking calmer seas and fewer crowds, while afternoon and sunset tours offer stunning views and vibrant skies. Choose based on your preference for tranquility or a picturesque sunset backdrop. Each time of day provides a different but equally enchanting experience.',
+        },
+        {
+          question: 'Is there an age limit for water sports?',
+          answer: 'Most tours accommodate children and have no strict age limits, but certain activities like jet skiing may have minimum age requirements. Always check with the tour operator in advance to ensure the chosen activity is suitable for your group\'s age range and abilities.',
+        },
+        {
+          question: 'Do tours operate year-round?',
+          answer: 'Ibiza\'s water sports tours mainly operate from April to October, aligning with the island\'s peak tourist season and favorable weather conditions. Some operators do offer limited tours in the off-season, but it\'s always best to check availability if you\'re visiting outside the summer months.',
+        },
+        {
+          question: 'What happens if the weather is bad?',
+          answer: 'Safety is paramount, so tours may be canceled or rescheduled in case of bad weather. Most operators offer flexible cancellation policies, allowing you to rebook for another day or receive a refund. It\'s always wise to check the weather forecast and keep in touch with your tour provider.',
+        },
+        {
+          question: 'How do I get to the tour departure points?',
+          answer: 'Many tours offer convenient hotel pickup and drop-off services. Alternatively, departure points are often located in major towns like Ibiza Town and San Antonio, accessible by taxi or local bus. Confirm the meeting point and transportation options when booking your tour.',
+        },
+      ],
+    },
+    'food-and-wine-tours': {
+      title: 'Ibiza Food & Wine Tours',
+      subtitle: 'Discover Ibiza\'s culinary delights, from seaside vineyards to traditional tapas in hidden villages.',
+      categoryName: 'Food & Wine Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 75,
+        duration: '2-6 hours',
+      },
+      introduction: `Ibiza is renowned for its vibrant nightlife, but its culinary scene is equally intoxicating! From sunlit vineyards producing exceptional wines to rustic farm-to-table experiences, Ibiza offers a rich tapestry of gastronomic delights. Food and wine tours here promise unique encounters with local producers, where travelers can taste everything from fresh seafood paella by the beach to sumptuous wines amidst scenic vineyards. Whether you're a gourmet enthusiast or a casual diner, these tours cater to all palates, offering a chance to uncover Ibiza's hidden culinary gems. Explore the charming streets of Dalt Vila for traditional tapas or venture into the countryside for a taste of rural Ibiza. These tours are perfect for those who seek authentic experiences and wish to savor the heart of the Mediterranean!`,
+      seo: {
+        title: 'Best Ibiza Food & Wine Tours 2025',
+        description: 'Explore Ibiza\'s culinary wonders with top food & wine tours in 2025. Taste, sip, and savor!',
+        keywords: 'Ibiza food tours, wine tours Ibiza, culinary experiences Ibiza, tapas tours, Ibiza vineyards',
+      },
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Experiences',
+          description: 'Immerse yourself in local culture with genuine culinary experiences guided by knowledgeable locals.',
+        },
+        {
+          icon: 'Sun',
+          title: 'Scenic Locations',
+          description: 'Enjoy breathtaking views of Ibiza\'s landscapes while indulging in exquisite food and wine.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Instagram-Worthy Moments',
+          description: 'Capture stunning photos of picturesque settings and beautifully plated dishes.',
+        },
+        {
+          icon: 'Users',
+          title: 'Meet Fellow Foodies',
+          description: 'Connect with like-minded travelers and share your passion for food and wine.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'GlassWater',
+          title: 'Vineyard Tours',
+          description: 'Explore Ibiza\'s beautiful vineyards and taste local wines.',
+          features: [
+            'Wine tastings',
+            'Scenic vineyard walks',
+            'Local wine experts',
+            'Gourmet pairings',
+            'Take-home bottles',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Tapas Tours',
+          description: 'Savor traditional tapas in Ibiza\'s charming bars and eateries.',
+          features: [
+            'Authentic tapas',
+            'Local guides',
+            'Hidden gems',
+            'Historical insights',
+            'Cultural immersion',
+          ],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Seafood Feasts',
+          description: 'Indulge in fresh seafood dishes by the shimmering Mediterranean Sea.',
+          features: [
+            'Beachfront dining',
+            'Fresh catches',
+            'Paella specialties',
+            'Sunset views',
+            'Local wines',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Farm-to-Table Experiences',
+          description: 'Visit local farms and enjoy meals crafted from fresh, local ingredients.',
+          features: [
+            'Farm visits',
+            'Organic produce',
+            'Cooking demonstrations',
+            'Sustainable practices',
+            'Rural charm',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Ibiza Food & Wine Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from a quick 2-hour tasting to immersive 6-hour explorations.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Locations',
+            description: 'Tours cover diverse locations from coastal towns to inland farms.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Pricing',
+            description: 'Tours start at $75, offering options for various budgets and tastes.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Seasonal Offerings',
+            description: 'Experience seasonal specialties depending on the time of year.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Local Guides',
+            description: 'Tours are led by passionate locals who share insider stories and tips.',
+          },
+          {
+            icon: 'Sailboat',
+            title: 'Transport',
+            description: 'Many tours include convenient transport to and from your accommodation.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book tours in advance, especially during peak season (June to September).',
+        'Try local specialties like sobrasada and flaó for a true taste of Ibiza.',
+        'Wear comfortable shoes for walking tours through vineyards and villages.',
+        'Bring a reusable water bottle to stay hydrated, especially in summer.',
+        'Don\'t miss the sunset seafood feasts for a magical dining experience.',
+        'Check if tours offer vegetarian or vegan options if needed.',
+        'Combine food tours with cultural sightseeing for a well-rounded experience.',
+        'Ask guides about local wine pairings to enhance your tasting experience.',
+      ],
+      faqs: [
+        {
+          question: 'What should I wear on a food and wine tour?',
+          answer: 'For comfort, wear casual, comfortable clothing and shoes suitable for walking. Many tours involve strolling through vineyards or charming village streets. In summer, lightweight fabrics and hats are recommended to stay cool under the Mediterranean sun. Don\'t forget your sunscreen!',
+        },
+        {
+          question: 'Are food and wine tours suitable for children?',
+          answer: 'While some tours are adult-focused, many are family-friendly. Check with tour operators for family packages that may include non-alcoholic tastings and kid-friendly meals. Engaging activities like farm visits can be great for children!',
+        },
+        {
+          question: 'Do I need to book tours in advance?',
+          answer: 'Yes! Especially during the busy summer months, tours can sell out quickly. Booking in advance ensures you secure your spot and often comes with early bird discounts. Online bookings are convenient and usually offer detailed itineraries.',
+        },
+        {
+          question: 'Can I customize my food and wine tour?',
+          answer: 'Absolutely! Many operators offer customizable options to cater to your interests and dietary needs. Whether you\'re a wine aficionado or a seafood lover, bespoke tours can be arranged to create your perfect experience.',
+        },
+        {
+          question: 'What is included in the tour price?',
+          answer: 'Most tours include tastings, meals, and transport, but it\'s best to check specifics with the tour provider. Some may offer extras like take-home gifts or cooking classes. Clarifying inclusions ensures there are no surprises on the day!',
+        },
+        {
+          question: 'Is tipping expected on these tours?',
+          answer: 'While not mandatory, tipping is appreciated if you\'ve enjoyed your experience. A 10-15% tip is a nice gesture for guides who go above and beyond to offer an exceptional tour. It\'s always a great way to show gratitude for personalized service!',
+        },
+        {
+          question: 'How do I get to the starting point of the tour?',
+          answer: 'Many tours offer convenient pick-up from major hotels or central locations. If not, local buses or taxis are reliable options. Make sure to check the meeting point details and plan to arrive at least 15 minutes early to avoid any delays!',
+        },
+        {
+          question: 'Are there vegan options available on food tours?',
+          answer: 'Yes, many tour operators are accommodating to dietary preferences, including vegan options. It\'s advisable to inform them in advance to ensure there are delicious plant-based dishes prepared for you. Enjoy Ibiza\'s fresh produce in innovative vegan creations!',
+        },
+      ],
+    },
+    'island-exploration-tours': {
+      title: 'Ibiza Island Exploration Tours',
+      subtitle: 'Discover Ibiza\'s hidden gems on captivating island exploration tours full of Mediterranean magic.',
+      categoryName: 'Island Exploration Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 50,
+        duration: '2-8 hours',
+      },
+      introduction: `Ibiza, the Mediterranean's most famous island, is not just about wild parties and nightlife. Its Island Exploration Tours open up a world of pristine beaches, breathtaking cliffs, and charming villages. Imagine sailing around Ibiza's rugged coastline, where each cove tells its own story. Explore the mystical Es Vedrà rock, believed to be the third most magnetic spot on Earth, or meander through the quaint streets of Dalt Vila, a UNESCO World Heritage Site. Whether you're a nature lover, history buff, or an adventure seeker, Ibiza's island tours cater to all. Experience the vibrant local culture, taste authentic Balearic cuisine, and capture stunning vistas that will leave you in awe. These tours offer a unique opportunity to see a different side of Ibiza, making them perfect for families, solo travelers, and groups alike. Get ready to fall in love with Ibiza's enchanting landscapes and hidden secrets!`,
+      seo: {
+        title: 'Explore Ibiza Island Tours 2025',
+        description: 'Uncover Ibiza\'s secrets with our island tours. Book now for unforgettable adventures! Prices from $50.',
+        keywords: 'Ibiza tours, island exploration, Ibiza 2025 tours',
+      },
+      whyChoose: [
+        {
+          icon: 'Sun',
+          title: 'Stunning Landscapes',
+          description: 'Explore Ibiza\'s breathtaking beaches and cliffs that offer unforgettable views and serenity.',
+        },
+        {
+          icon: 'Anchor',
+          title: 'Unique Adventures',
+          description: 'Dive into thrilling activities like kayaking, hiking, and sailing around the island\'s hidden spots.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Local Culture',
+          description: 'Immerse yourself in authentic Ibizan life through its charming villages and culinary delights.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Picture-Perfect',
+          description: 'Capture stunning vistas and magical sunsets that make for perfect memories and photographs.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Sailing Tours',
+          description: 'Set sail to explore Ibiza\'s coastline. Discover hidden coves and crystal-clear waters.',
+          features: [
+            'Es Vedrà',
+            'Sunset views',
+            'Snorkeling spots',
+            'Private beaches',
+            'Lunch on board',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Cultural Tours',
+          description: 'Journey through Ibiza\'s rich history and culture. Perfect for history buffs.',
+          features: [
+            'Dalt Vila',
+            'Local guides',
+            'Traditional markets',
+            'Historical landmarks',
+            'Cultural storytelling',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Adventure Tours',
+          description: 'For thrill-seekers, these tours offer kayaking, hiking, and more.',
+          features: [
+            'Kayaking',
+            'Hiking trails',
+            'Rock climbing',
+            'Nature walks',
+            'Wildlife spotting',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Beach Hopping',
+          description: 'Experience the best of Ibiza\'s beaches on a relaxing tour.',
+          features: [
+            'Cala Comte',
+            'Cala Bassa',
+            'Formentera trips',
+            'Beach bars',
+            'Relaxation spots',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Island Exploration Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from a quick 2-hour adventure to full-day excursions.',
+          },
+          {
+            icon: 'Ship',
+            title: 'Transportation',
+            description: 'Travel by comfortable boats or buses, ensuring a smooth experience.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Size',
+            description: 'Small group sizes for personalized experiences, ranging from 6 to 15 people.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Options',
+            description: 'Tours start from $50, offering great value for unforgettable experiences.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Flexible Schedules',
+            description: 'Tours available daily with flexible timing to suit your itinerary.',
+          },
+          {
+            icon: 'PartyPopper',
+            title: 'Special Events',
+            description: 'Occasional themed tours and events, such as sunset parties and cultural festivals.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book your tour in advance, especially during peak season, to secure your spot.',
+        'Bring a swimsuit and towel for impromptu beach stops on sailing tours.',
+        'Wear comfortable shoes for cultural and adventure tours to explore with ease.',
+        'Carry a reusable water bottle to stay hydrated in the Mediterranean sun.',
+        'Capture the sunrise at Es Vedrà for breathtaking views and fewer crowds.',
+        'Try local specialties like Flaó and Hierbas Ibicencas on cultural tours.',
+        'Respect the natural environment by following local guidelines and disposing of waste properly.',
+        'Check the weather forecast and dress appropriately for your chosen tour.',
+      ],
+      faqs: [
+        {
+          question: 'What should I bring on an island exploration tour?',
+          answer: 'Make sure to bring a hat, sunglasses, and sunscreen to protect against the sun. Comfortable clothing and shoes are a must for walking tours, while a swimsuit is essential for beach and sailing tours. Don\'t forget your camera for those Instagram-worthy shots! If you\'re joining a sunset tour, a light jacket might be handy as it can get cooler in the evening.',
+        },
+        {
+          question: 'Are the island exploration tours suitable for families?',
+          answer: 'Absolutely! Many of the tours are family-friendly, offering activities that appeal to both adults and children. From beach hopping to cultural tours, there is something for everyone. Some tours even offer child-friendly amenities and activities to keep the little ones engaged. It\'s a fantastic way to enjoy Ibiza together as a family while discovering different aspects of the island.',
+        },
+        {
+          question: 'Can I customize my island exploration tour?',
+          answer: 'Yes, many tour operators offer customizable options. Whether you want to focus on cultural experiences, adventure activities, or simply relax on the beach, you can tailor your tour to fit your interests. Private tours are also available for a more personalized experience, allowing you to explore at your own pace and include specific destinations of your choice.',
+        },
+        {
+          question: 'What is the best time of year to take an island exploration tour in Ibiza?',
+          answer: 'The ideal time for an island exploration tour in Ibiza is from May to October when the weather is warm and sunny. During these months, the sea is perfect for swimming, and the island is buzzing with activity. However, if you prefer a quieter experience, consider visiting in May or September when the crowds are smaller, yet the weather remains delightful.',
+        },
+        {
+          question: 'How can I book an island exploration tour in Ibiza?',
+          answer: 'Booking an island exploration tour is easy! You can book online through various tour operators or travel websites. It\'s advisable to book in advance, especially during the summer peak season, to ensure availability. Many hotels and local tourist information centers also offer booking services, providing brochures and expert advice to help you choose the perfect tour.',
+        },
+        {
+          question: 'Are food and drinks included in the tours?',
+          answer: 'Many tours include snacks or meals, especially those that take place over several hours. Sailing tours often provide lunch onboard, while cultural tours might include stops at local restaurants. Always check the tour details to confirm what is included and consider bringing your own snacks and water, especially for longer tours or if you have dietary restrictions.',
+        },
+        {
+          question: 'Is transportation included in the tour price?',
+          answer: 'Yes, most island exploration tours include transportation as part of the package. This typically covers pick-up and drop-off services from central locations or your accommodations. Boat tours, of course, provide the vessel as part of the experience. It\'s always best to verify what\'s included when booking to avoid any surprises!',
+        },
+        {
+          question: 'Do the tours operate in all weather conditions?',
+          answer: 'While tours generally operate in most weather conditions, safety is the top priority. Tours may be rescheduled or canceled in the event of severe weather, such as storms or high winds at sea. It\'s always a good idea to check the weather forecast before your tour and contact the operator if you have any concerns. They will provide updates and options for rescheduling if necessary.',
+        },
+      ],
+    },
+  },
+  interlaken: {
+    'jungfrau-region-tours': {
+      title: 'Interlaken Jungfrau Region Tours',
+      subtitle: 'Explore the majestic beauty and thrilling adventures of the Jungfrau Region in Interlaken!',
+      categoryName: 'Jungfrau Region Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 120,
+        duration: '4 hours to full-day',
+      },
+      introduction: `Nestled between Lake Thun and Lake Brienz, Interlaken is your gateway to the stunning Jungfrau Region. A breathtaking spectacle of soaring peaks and verdant valleys awaits, offering adventures for every type of traveler. Whether you're ascending the majestic Jungfraujoch, Europe's highest railway station, or embarking on a thrilling hike through the Lauterbrunnen Valley, the natural beauty here is unparalleled. Adventurers can ski or paraglide from the heights, while those seeking tranquility can meander through charming alpine villages like Grindelwald and Wengen. With each tour, discover the heart of Swiss culture and the grandeur of the Alps. From adrenaline-pumping experiences to serene landscapes, the Jungfrau Region promises memories that will last a lifetime!`,
+      seo: {
+        title: 'Top Jungfrau Region Tours in Interlaken 2025',
+        description: 'Discover thrilling adventures in Interlaken\'s Jungfrau Region. Book your unforgettable Swiss Alpine tour now!',
+        keywords: 'Interlaken tours, Jungfrau Region, Swiss Alps tours, adventure tours Switzerland, Interlaken travel 2025',
+      },
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Breathtaking Scenery',
+          description: 'Experience the awe-inspiring landscapes of the Swiss Alps with unmatched panoramic views.',
+        },
+        {
+          icon: 'Star',
+          title: 'Adventure Awaits',
+          description: 'From skiing to paragliding, the Jungfrau Region is an adventurer\'s paradise all year round.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Picture-Perfect Spots',
+          description: 'Capture stunning photos at iconic locations like Jungfraujoch and Lauterbrunnen Valley.',
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Authentic Swiss Culture',
+          description: 'Immerse yourself in Swiss traditions and hospitality in charming alpine villages.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Scenic Rail Tours',
+          description: 'Travel through the Alps on the famous Jungfrau Railway. Witness breathtaking views from the Top of Europe.',
+          features: [
+            'Jungfraujoch',
+            'Panoramic Views',
+            'Comfortable Carriages',
+            'Guided Commentary',
+            'Photography Stops',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Adventure Tours',
+          description: 'For thrill-seekers, ski or paraglide down the majestic slopes of the Jungfrau Region.',
+          features: [
+            'Skiing',
+            'Paragliding',
+            'Mountain Biking',
+            'Climbing',
+            'Expert Guides',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Hiking Tours',
+          description: 'Explore trails through lush valleys and past cascading waterfalls in the Lauterbrunnen Valley.',
+          features: [
+            'Guided Hikes',
+            'Waterfall Views',
+            'Picnic Spots',
+            'Wildlife Sightings',
+            'Trail Maps',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Cultural Tours',
+          description: 'Discover traditional alpine life in quaint villages like Grindelwald and Wengen.',
+          features: [
+            'Village Tours',
+            'Local Cuisine',
+            'Cultural Insights',
+            'Craft Workshops',
+            'Historic Sites',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Jungfrau Region Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 4-hour half-day trips to full-day adventures packed with activities.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Pricing',
+            description: 'Tours start at $120, offering value-packed experiences in the heart of the Alps.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Seasonal Experiences',
+            description: 'Enjoy skiing in winter or hiking in summer; each season offers unique adventures.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Guided Tours',
+            description: 'Expert guides provide insights into the region\'s history, culture, and natural wonders.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Capture the beauty of the Alps from designated scenic viewpoints along your journey.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Local Culture',
+            description: 'Engage with local communities and savor traditional Swiss hospitality and cuisine.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book your Jungfraujoch tickets in advance to secure a spot, especially during peak season.',
+        'Wear layers and bring sunglasses; the altitude and snow can make it quite bright even on cloudy days.',
+        'Try the traditional Swiss fondue at a local mountain restaurant for an authentic dining experience.',
+        'Catch the early morning train for quieter journeys and the best light for photography.',
+        'Download offline maps before your hike; mobile reception can be spotty in the mountains.',
+        'Check weather conditions before your adventure tours; safety comes first in the Alps!',
+        'Stay hydrated and take breaks while hiking to acclimate to the altitude and enjoy the views.',
+        'Consider purchasing a Swiss Travel Pass for unlimited travel on public transport across Switzerland.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time to visit the Jungfrau Region?',
+          answer: 'The Jungfrau Region is a year-round destination! Visit in winter (December to March) for skiing and snowboarding, or in summer (June to September) for hiking and paragliding. Each season offers unique experiences and stunning landscapes. For fewer crowds, consider visiting during the shoulder months of April and October. Remember to check local events as well, such as the annual Inferno Race in January, which is a must-see for sports enthusiasts!',
+        },
+        {
+          question: 'How can I reach Jungfraujoch?',
+          answer: 'Reaching Jungfraujoch, the "Top of Europe," is a memorable journey! Start from Interlaken and take a train to Lauterbrunnen or Grindelwald. From there, board the cogwheel train to Kleine Scheidegg, where you\'ll switch to the Jungfrau Railway. The final ascent takes you through the Eiger and Mönch mountains, offering breathtaking views. The round trip from Interlaken takes about 5-7 hours, so plan for a full day of adventure! Prices start at $120, but discounts are available with a Swiss Travel Pass.',
+        },
+        {
+          question: 'What should I pack for a tour in the Jungfrau Region?',
+          answer: 'Pack according to the season! In winter, bring warm clothing, waterproof boots, gloves, and a hat. For summer, pack lightweight layers, hiking boots, sunscreen, and a hat. Regardless of the season, always carry a reusable water bottle, snacks, and a camera. A small backpack is ideal for day tours. Don\'t forget to pack a sense of adventure and curiosity as you explore the stunning landscapes!',
+        },
+        {
+          question: 'Are tours in the Jungfrau Region suitable for families?',
+          answer: 'Absolutely! The Jungfrau Region offers a plethora of family-friendly tours. Scenic rail tours provide an easy way to explore the mountains with children. For active families, hiking trails vary in difficulty and length, making them suitable for all ages. Many tours include educational elements, like learning about the region\'s geology and wildlife. Safety is a priority, and guides are experienced in accommodating families. Kids will love the fresh air and breathtaking views!',
+        },
+        {
+          question: 'Can I book tours on the spot in Interlaken?',
+          answer: 'While some tours can be booked last-minute, it\'s wise to book in advance, especially during peak seasons. Popular tours, like those to Jungfraujoch, fill up quickly. Booking ahead ensures you secure your preferred dates and times. For spontaneous travelers, many local tour agencies in Interlaken offer same-day bookings based on availability. Always check if online discounts apply when booking directly through tour operators.',
+        },
+        {
+          question: 'What languages are spoken on the tours?',
+          answer: 'Tours in the Jungfrau Region are typically conducted in English and German. Many tour operators also offer guides who speak French, Italian, and Spanish. When booking, inquire about language options to ensure a comfortable experience. The multilingual nature of the region\'s tours reflects Switzerland\'s diversity, making it accessible to a wide range of international travelers.',
+        },
+        {
+          question: 'Are there any health considerations for high-altitude tours?',
+          answer: 'Yes, it\'s important to consider the effects of high altitude, especially when visiting places like Jungfraujoch. Symptoms can include headaches, dizziness, and shortness of breath. To minimize discomfort, stay hydrated, ascend gradually when possible, and avoid strenuous activities on your first day. Most visitors acclimate easily, but if you have pre-existing health conditions, consult with a healthcare provider before your trip.',
+        },
+        {
+          question: 'What are the dining options during the tours?',
+          answer: 'Dining options are plentiful and diverse! Many tours include stops at mountain restaurants offering traditional Swiss dishes such as fondue and rosti. In villages like Grindelwald, enjoy cozy cafes and bakeries. For those on hiking tours, consider packing a picnic to enjoy amidst nature. If your tour doesn\'t include meals, guides often recommend the best local eateries, ensuring you have a delicious and authentic Swiss dining experience!',
+        },
+      ],
+    },
+    'adventure-sports-tours': {
+      title: 'Interlaken Adventure Sports Tours',
+      subtitle: 'Thrilling adventures in Switzerland\'s alpine paradise, from skydiving to canyoning and beyond!',
+      categoryName: 'Adventure Sports Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 150,
+        duration: '2 to 6 hours',
+      },
+      introduction: `Interlaken, nestled between Lake Thun and Lake Brienz, is Switzerland's ultimate adventure sports hub! With the majestic Swiss Alps and the iconic Jungfrau region as your backdrop, experience heart-pounding activities like paragliding, skydiving, bungee jumping, and canyoning. Each adventure offers a unique way to explore this alpine paradise, whether you're soaring through the skies or navigating cascading waterfalls. Interlaken's diverse tours promise unforgettable experiences for thrill-seekers and nature lovers alike, revealing hidden gems of the region. Whether you're a solo traveler seeking adrenaline or a family looking for excitement, Interlaken's adventure sports tours promise an exhilarating journey into the heart of the Swiss Alps. Get ready to discover why Interlaken is known as Switzerland's outdoor playground!`,
+      seo: {
+        title: 'Interlaken Adventure Sports 2025',
+        description: 'Explore thrilling Interlaken adventures in 2025! Paragliding, skydiving, and more await in the Swiss Alps.',
+        keywords: 'Interlaken adventure sports, Swiss Alps tours, paragliding Interlaken, skydiving Switzerland, canyoning tours',
+      },
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Breathtaking Scenery',
+          description: 'Experience unparalleled views of the Swiss Alps, a backdrop unlike any other.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Thrill-Packed Activities',
+          description: 'From paragliding to bungee jumping, satisfy your adrenaline cravings in stunning settings.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Benefit from knowledgeable local guides ensuring both safety and unforgettable experiences.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Unforgettable Memories',
+          description: 'Capture moments of a lifetime with stunning vistas and exhilarating adventures.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Paragliding Tours',
+          description: 'Soar above Interlaken and enjoy panoramic views of the lakes and mountains. Guided by experts.',
+          features: [
+            'Tandem flights',
+            'Experienced pilots',
+            'Safety briefings',
+            'Photo packages',
+            'Spectacular views',
+          ],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Canyoning Adventures',
+          description: 'Navigate through stunning gorges and waterfalls, perfect for thrill-seekers and nature lovers.',
+          features: [
+            'Experienced guides',
+            'Safety equipment',
+            'Multiple difficulty levels',
+            'Scenic routes',
+            'Waterfall jumps',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Skydiving Experiences',
+          description: 'Jump from a plane for an adrenaline rush and awe-inspiring views of the Swiss Alps.',
+          features: [
+            'Tandem jumps',
+            'Professional instructors',
+            'Safety briefings',
+            'Video packages',
+            'High altitude',
+          ],
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Bungee Jumping',
+          description: 'Leap from incredible heights with the stunning backdrop of the Swiss mountains.',
+          features: [
+            'Safety harness',
+            'Professional staff',
+            'Incredible locations',
+            'Photo options',
+            'Thrilling drops',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Adventure Sports Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2 to 6 hours, depending on the activity and package selected.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Location',
+            description: 'Experience activities in the heart of Interlaken, surrounded by the stunning Swiss Alps.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Costs',
+            description: 'Prices start at $150, offering a variety of packages to suit different budgets.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Safety First',
+            description: 'All tours include safety equipment and comprehensive briefings by professional guides.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography',
+            description: 'Capture your adventures with optional photo and video packages during your tour.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Sizes',
+            description: 'Tours cater to both individual thrill-seekers and groups, ensuring personalized experiences.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book in advance during peak seasons for the best availability.',
+        'Wear comfortable clothing suitable for outdoor activities.',
+        'Check weather conditions; some activities are weather-dependent.',
+        'Consider combo packages to experience multiple activities.',
+        'Bring a waterproof camera for canyoning tours.',
+        'Stay hydrated and bring snacks for longer tours.',
+        'Engage with local guides for insider tips and stories.',
+        'Don\'t forget to apply sunscreen, even on cloudy days.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time of year to enjoy adventure sports in Interlaken?',
+          answer: 'The best time for adventure sports in Interlaken is from May to October when the weather is mild and stable. During these months, paragliding, skydiving, and canyoning conditions are ideal, offering breathtaking views of the lush landscapes and clear skies. However, winter offers unique experiences like ice climbing and skiing in the nearby Jungfrau region. No matter the season, Interlaken promises thrilling adventures all year round!',
+        },
+        {
+          question: 'Are adventure sports in Interlaken suitable for beginners?',
+          answer: 'Absolutely! Interlaken offers a wide range of adventure sports suitable for all skill levels. Beginners can enjoy tandem paragliding flights or bungee jumping with professional guides who ensure safety and comfort. Canyoning tours are available with varying difficulty levels, allowing newcomers to start easy and progress. Experienced instructors are always on hand to provide guidance, ensuring an exhilarating yet safe experience for everyone!',
+        },
+        {
+          question: 'What should I wear and bring for adventure sports tours?',
+          answer: 'It\'s important to dress in comfortable, weather-appropriate clothing. Wear sturdy shoes for canyoning and hiking activities. For water-based adventures like canyoning, a swimsuit and towel are essential. Always bring sunscreen, a hat, and sunglasses to protect against the sun. A small backpack with water and snacks can enhance your experience. Some tours offer rental gear, so check in advance what\'s provided.',
+        },
+        {
+          question: 'How do I get to Interlaken for these tours?',
+          answer: 'Interlaken is easily accessible by train from major Swiss cities like Zurich, Geneva, and Bern, with scenic routes offering stunning views. The town is well-connected by road if you prefer driving. Once in Interlaken, most adventure tour operators offer pick-up services or are a short walk from central locations. Enjoy the journey as much as the destination in this beautiful part of Switzerland!',
+        },
+        {
+          question: 'Can I combine different adventure sports in one day?',
+          answer: 'Yes, many operators offer combo packages that let you experience multiple sports in one day! For example, start with a morning paragliding flight, followed by an exhilarating canyoning tour in the afternoon. These packages are designed for adventure enthusiasts eager to maximize their thrills. Booking in advance is recommended to ensure availability and a seamless experience.',
+        },
+        {
+          question: 'Are there age or health restrictions for participating?',
+          answer: 'While most activities are accessible to a wide range of participants, some have age and health restrictions. Paragliding and skydiving typically require participants to be at least 16 years old. Health considerations such as heart conditions may restrict participation. It\'s always best to check with the tour operator in advance for specific requirements, ensuring a safe and enjoyable experience for everyone!',
+        },
+        {
+          question: 'Do I need prior experience for skydiving or paragliding?',
+          answer: 'No prior experience is necessary for tandem skydiving or paragliding in Interlaken. You\'ll be accompanied by highly trained and certified instructors who handle all technical aspects, allowing you to enjoy the ride. Safety briefings and equipment are provided, ensuring a secure and memorable experience. Just bring your sense of adventure and prepare for an exhilarating journey through the skies!',
+        },
+        {
+          question: 'What safety measures are in place for these activities?',
+          answer: 'Safety is a top priority for all adventure sports in Interlaken. Operators provide comprehensive safety briefings and high-quality equipment for each activity. Experienced guides and instructors accompany participants, ensuring adherence to safety protocols. Regular equipment checks and weather assessments are conducted to maintain the highest safety standards. Enjoy your adventure with peace of mind knowing you\'re in expert hands!',
+        },
+      ],
+    },
+    'mountain-hiking-tours': {
+      title: 'Interlaken Mountain Hiking Tours',
+      subtitle: 'Explore Interlaken\'s Alpine trails, breathtaking vistas, and serene mountain landscapes.',
+      categoryName: 'Mountain Hiking Tours',
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 50,
+        duration: 'Half-day to full-day',
+      },
+      introduction: `Interlaken, nestled between Lake Thun and Lake Brienz, is your gateway to Switzerland's majestic mountains. This alpine paradise offers an array of hiking tours that cater to both casual walkers and seasoned mountaineers. From the awe-inspiring views atop Harder Kulm to the serene paths of the Schynige Platte, hikers will discover diverse landscapes teeming with wildflowers and panoramic vistas. The Eiger Trail, shadowed by the famous North Face, offers a challenging adventure for thrill-seekers, while families can enjoy leisurely hikes through lush meadows and enchanting forests. These tours promise an unforgettable journey through the heart of the Swiss Alps, making them a must for nature lovers and adventurers alike!`,
+      seo: {
+        title: 'Interlaken Mountain Hiking Tours 2025',
+        description: 'Discover breathtaking alpine trails in Interlaken. Join a tour and explore Switzerland\'s mountain beauty!',
+        keywords: 'Interlaken hiking tours, Swiss Alps hiking, mountain trails Interlaken, adventure tours Switzerland',
+      },
+      whyChoose: [
+        {
+          icon: 'Sun',
+          title: 'Stunning Scenery',
+          description: 'Experience the breathtaking beauty of the Swiss Alps with every step on your hike!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Diverse Trails',
+          description: 'Choose from a variety of trails that cater to all skill levels and interests.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Adventure Awaits',
+          description: 'Thrilling experiences for adventure lovers, from easy walks to challenging ascents.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Knowledgeable local guides ensure a safe and enriching hiking experience.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Family-Friendly Hikes',
+          description: 'Perfect for families, these hikes are easy and offer stunning views.',
+          features: [
+            'Gentle slopes',
+            'Wildlife spotting',
+            'Picnic spots',
+            'Short distances',
+            'Educational insights',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Challenging Trails',
+          description: 'For the adventurous, these trails offer both challenge and reward.',
+          features: [
+            'Steep climbs',
+            'Breathtaking views',
+            'Technical paths',
+            'High altitudes',
+            'Advanced navigation',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Capture the beauty of Interlaken on these scenic photo walks.',
+          features: [
+            'Golden hour hikes',
+            'Iconic viewpoints',
+            'Wildlife photography',
+            'Expert tips',
+            'Scenic landscapes',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Cultural Walks',
+          description: 'Combine hiking with cultural insights on these guided tours.',
+          features: [
+            'Local history',
+            'Traditional villages',
+            'Cultural insights',
+            'Heritage sites',
+            'Engaging stories',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Mountain Hiking Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from half-day excursions to full-day adventures, depending on the trail.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Sizes',
+            description: 'Small group sizes for a personalized experience and better interaction with guides.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Weather Conditions',
+            description: 'Be prepared for changing weather; layers are recommended for comfort.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Inclusions',
+            description: 'Tours typically include guide services, trail maps, and safety equipment.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Fitness Level',
+            description: 'Tours available for all fitness levels; choose based on your experience and stamina.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Scenic Stops',
+            description: 'Frequent stops at scenic points for photo opportunities and rest.',
+          },
+        ],
+      },
+      expertTips: [
+        'Start your hike early to enjoy cooler temperatures and fewer crowds.',
+        'Always carry a reusable water bottle to stay hydrated during your hike.',
+        'Download offline maps of the trails to avoid losing your way.',
+        'Check the weather forecast and dress in layers for unpredictable mountain weather.',
+        'Pack snacks like nuts and energy bars for a quick energy boost on the trail.',
+        'Respect the local wildlife by keeping a safe distance and not feeding animals.',
+        'Wear sturdy hiking boots with good traction for safety on rocky trails.',
+        'Consider booking a guided tour for expert insights and a richer experience.',
+      ],
+      faqs: [
+        {
+          question: 'What should I wear for hiking in Interlaken?',
+          answer: 'Dress in layers to adapt to changing temperatures. Wear sturdy hiking boots for rocky paths. A waterproof jacket is advisable in case of rain. Don\'t forget a hat and sunglasses for sun protection. Comfortable and breathable clothing is key!',
+        },
+        {
+          question: 'Are the hiking tours suitable for beginners?',
+          answer: 'Absolutely! Interlaken offers a variety of trails ranging from easy walks to more challenging hikes. Family-friendly hikes are perfect for beginners, providing gentle slopes and manageable distances. Guides also ensure a pleasant and safe experience for all levels.',
+        },
+        {
+          question: 'When is the best time to hike in Interlaken?',
+          answer: 'The best time to hike in Interlaken is from June to September when the weather is warm and the trails are most accessible. During these months, the alpine flora is in full bloom, and the conditions are ideal for hiking. Be prepared for occasional rain showers!',
+        },
+        {
+          question: 'Can I hike alone or should I join a tour?',
+          answer: 'While solo hiking is possible, joining a tour is recommended for a richer experience. Guided tours offer safety, local insights, and the opportunity to meet fellow adventurers. Guides can also take you to hidden gems off the beaten path!',
+        },
+        {
+          question: 'What safety precautions should I take while hiking?',
+          answer: 'Always inform someone of your hiking plans and expected return time. Carry a map and a fully charged mobile phone. Stay on marked trails to prevent getting lost. Keep an eye on weather conditions and turn back if the weather worsens. Carry a small first aid kit.',
+        },
+        {
+          question: 'Are there any entry fees for hiking trails?',
+          answer: 'Most hiking trails in Interlaken are free to access. However, some areas, like national parks or privately maintained trails, may charge a small fee. Check with local tourist information centers for specific details. Guided tours usually include any necessary fees.',
+        },
+        {
+          question: 'How can I book a hiking tour in Interlaken?',
+          answer: 'You can book hiking tours through local tour operators, online platforms, or at the Interlaken Tourist Information Center. It\'s advisable to book in advance, especially during peak season, to secure your spot. Look for tours that fit your interests and fitness level.',
+        },
+        {
+          question: 'What wildlife might I encounter on the trails?',
+          answer: 'Interlaken is home to diverse wildlife, including ibex, marmots, and various bird species. Always observe wildlife from a distance and respect their natural habitat. Keep your camera ready for some amazing photo opportunities!',
+        },
+      ],
+    },
+    'lake-and-boat-tours': {
+      title: 'Interlaken Lake & Boat Tours',
+      subtitle: 'Discover serene Swiss lakes and thrilling boat rides amid breathtaking Alpine vistas!',
+      categoryName: 'Lake & Boat Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 50,
+        duration: '2-8 hours',
+      },
+      introduction: `Interlaken, nestled between the shimmering lakes of Thun and Brienz, is a water lover's haven. Lake & Boat Tours here offer an idyllic escape into Switzerland's natural beauty. As you glide across these pristine waters, surrounded by dramatic mountain peaks, you'll uncover hidden gems like the mesmerizing Giessbach Falls or the charming town of Spiez. Whether you're a family looking for a leisurely cruise or an adrenaline junkie seeking a speedboat adventure, there's something for everyone. Marvel at the crystal-clear waters, explore secluded coves, and capture stunning panoramas. Interlaken's boat tours offer a unique perspective of the Swiss Alps, making them a must for photographers and nature enthusiasts alike!`,
+      seo: {
+        title: 'Interlaken Lake & Boat Tours 2025',
+        description: 'Explore Interlaken\'s stunning lakes with our captivating boat tours. Book now for unforgettable Alpine adventures!',
+        keywords: 'Interlaken boat tours, Swiss lakes, Alpine cruises, Lake Thun, Lake Brienz',
+      },
+      whyChoose: [
+        {
+          icon: 'Anchor',
+          title: 'Breathtaking Scenery',
+          description: 'Experience the stunning beauty of the Swiss Alps from the serenity of the lakes.',
+        },
+        {
+          icon: 'Sailboat',
+          title: 'Diverse Tour Options',
+          description: 'From peaceful cruises to thrilling speedboat rides, there\'s a tour for every taste.',
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Local Expertise',
+          description: 'Knowledgeable guides provide fascinating insights into the region\'s history and nature.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Opportunities',
+          description: 'Capture unforgettable moments with spectacular views and vibrant landscapes.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Scenic Lake Cruises',
+          description: 'Relax and enjoy the tranquil beauty of Lake Thun and Lake Brienz on a scenic cruise.',
+          features: [
+            'Guided narration',
+            'Panoramic views',
+            'Refreshments on board',
+            'Family-friendly',
+            'Photography stops',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Historical Tours',
+          description: 'Discover the rich history of Interlaken with tours featuring historic sites and local legends.',
+          features: [
+            'Visit castles',
+            'Guided tours',
+            'Cultural insights',
+            'Interactive experiences',
+            'All ages',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Adventure Speedboat Rides',
+          description: 'Feel the rush on a high-speed boat ride across Lake Brienz, perfect for thrill seekers.',
+          features: [
+            'High-speed thrills',
+            'Water sprays',
+            'Professional guides',
+            'Safety equipment',
+            'Adrenaline-pumping',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Private Yacht Charters',
+          description: 'Indulge in luxury with a private yacht charter, perfect for special occasions or intimate gatherings.',
+          features: [
+            'Customizable itinerary',
+            'Private crew',
+            'Luxury amenities',
+            'Gourmet dining options',
+            'Secluded coves',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Lake & Boat Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour express trips to full-day excursions.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Route Highlights',
+            description: 'Explore iconic sites like Giessbach Falls, Iseltwald, and Spiez Castle.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Sizes',
+            description: 'Options for intimate small groups or larger gatherings for social fun.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Pricing',
+            description: 'Affordable options starting at $50, with luxury upgrades available.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Educational Content',
+            description: 'Learn about local history and ecology from expert guides.',
+          },
+          {
+            icon: 'PartyPopper',
+            title: 'Special Events',
+            description: 'Seasonal tours and themed events for unique experiences.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book in advance during peak summer months to secure your preferred tour.',
+        'Bring a light jacket; lake breezes can be chilly even in summer.',
+        'Opt for a sunset cruise for the most magical views and photo ops.',
+        'Check if your tour includes a stop at Giessbach Falls for a closer look.',
+        'Combine a boat tour with a hike for a full day of adventure.',
+        'If you\'re prone to seasickness, consider a shorter tour or sit near the center of the boat.',
+        'Don\'t forget sunscreen, especially when sitting on the deck.',
+        'Engage with the guides; they\'re a wealth of local knowledge and stories!',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time of year for a boat tour in Interlaken?',
+          answer: 'The best time for boat tours in Interlaken is from late spring to early autumn (May to September), when the weather is pleasant and the lakes are at their most beautiful. Summer months offer the warmest temperatures and longest days, perfect for extended tours. However, visiting in spring or fall offers fewer crowds and a more intimate experience on the water.',
+        },
+        {
+          question: 'Are the boat tours suitable for children?',
+          answer: 'Absolutely! Most boat tours around Interlaken are family-friendly and offer a safe and enjoyable experience for children of all ages. Scenic cruises provide a relaxed atmosphere, while faster-paced tours have safety measures in place. It\'s always a good idea to check with the tour operator regarding age restrictions and specific safety guidelines to ensure a smooth trip for your little ones.',
+        },
+        {
+          question: 'Do I need to book my boat tour in advance?',
+          answer: 'It is highly recommended to book in advance, especially during peak tourist season (June to August), as tours can fill up quickly. Booking ahead ensures you secure your spot and preferred time. Most operators offer easy online booking systems, and some even provide discounts for early reservations. Don\'t miss out on your preferred adventure by planning ahead!',
+        },
+        {
+          question: 'What should I wear on a boat tour?',
+          answer: 'Dress comfortably and in layers, as weather conditions can change rapidly on the lake. A light jacket is advisable even in summer, due to cool breezes. Non-slip shoes are recommended for safety on the boat, and don\'t forget your sunglasses and hat for sun protection. If you\'re on a speedboat tour, consider bringing a waterproof jacket to stay dry from splashes!',
+        },
+        {
+          question: 'Can I bring food and drinks on the boat?',
+          answer: 'Policies on bringing food and drinks vary by tour company. Many scenic cruises offer refreshments on board, and some even provide full dining options. It\'s best to check with your specific tour operator in advance. If outside food is allowed, bringing a small picnic can enhance your journey as you savor the views along with your meal.',
+        },
+        {
+          question: 'Are there restroom facilities available on the boats?',
+          answer: 'Most larger boats, especially those on scenic and longer tours, are equipped with restroom facilities for your convenience. However, smaller speedboats and shorter tours may not have such amenities. It\'s advisable to use facilities onshore before embarking on your tour to ensure comfort throughout your adventure.',
+        },
+        {
+          question: 'Is photography allowed during the boat tour?',
+          answer: 'Photography is not only allowed but encouraged! The breathtaking landscapes of Interlaken provide countless opportunities for stunning photos. Capture the majestic mountains, serene lakes, and vibrant wildlife. Just be mindful of your equipment on speedier tours, as water sprays might occur. Keep your camera ready for those picture-perfect moments!',
+        },
+        {
+          question: 'What safety measures are in place for boat tours?',
+          answer: 'Safety is a top priority for all tour operators in Interlaken. Life jackets are provided and must be worn on speedboat tours. Boats undergo regular maintenance and safety checks. Guides are trained in first aid and emergency procedures. Always listen to the safety briefing at the start of your tour for a secure and enjoyable experience on the water!',
+        },
+      ],
+    },
+    'alpine-village-tours': {
+      title: 'Interlaken Alpine Village Tours',
+      subtitle: 'Explore charming Alpine villages amidst stunning Swiss landscapes in Interlaken.',
+      categoryName: 'Alpine Village Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 150,
+        duration: 'Half-day to full day',
+      },
+      introduction: `Interlaken, the heart of the Swiss Alps, offers an enchanting gateway to idyllic Alpine village tours. Imagine yourself strolling through picturesque hamlets like Grindelwald and Lauterbrunnen, where time seems to stand still amidst the breathtaking backdrop of snow-capped peaks. These tours offer a delightful mix of culture, nature, and adventure, allowing travelers to discover charming chalets, quaint local shops, and vibrant green meadows. Perfect for nature lovers, culture enthusiasts, and adventure seekers alike, these tours provide a unique glimpse into the traditional Swiss village life. Whether you're sipping hot chocolate while gazing at the Eiger mountain or exploring the spectacular Staubbach Falls, every moment in these villages is a story waiting to be told. Get ready to immerse yourself in the serenity and beauty of Switzerland's alpine heartland!`,
+      seo: {
+        title: 'Interlaken Alpine Village Tours 2025',
+        description: 'Discover charming Swiss villages on alpine tours from Interlaken. Book now for 2025 adventures!',
+        keywords: 'Interlaken tours, Alpine village tours, Swiss Alps tours, Interlaken 2025, Switzerland travel',
+      },
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Breathtaking Scenery',
+          description: 'Experience unparalleled views of the Swiss Alps and charming villages that will take your breath away.',
+        },
+        {
+          icon: 'Users',
+          title: 'Cultural Immersion',
+          description: 'Discover the rich traditions and Swiss hospitality in every village you visit.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Convenient Locations',
+          description: 'Easily accessible villages with well-organized tours starting from central Interlaken.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photographic Opportunities',
+          description: 'Capture stunning landscapes and picturesque village scenes perfect for your travel album.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Guided Village Walks',
+          description: 'Enjoy a leisurely stroll through charming Alpine villages with a knowledgeable guide.',
+          features: [
+            'Local history insights',
+            'Scenic photo spots',
+            'Cultural experiences',
+            'Local cuisine tasting',
+            'Historical landmarks',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Capture the essence of Swiss villages with guided photography tours.',
+          features: [
+            'Instruction from experts',
+            'Best light locations',
+            'Unique perspectives',
+            'Access to hidden gems',
+            'Post-processing tips',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Romantic Getaways',
+          description: 'Perfect for couples, these tours offer intimate experiences in serene settings.',
+          features: [
+            'Private tours',
+            'Scenic picnic spots',
+            'Romantic dinners',
+            'Secluded trails',
+            'Cozy accommodations',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Family Adventures',
+          description: 'Fun and educational tours designed for families to enjoy together.',
+          features: [
+            'Interactive activities',
+            'Child-friendly guides',
+            'Educational experiences',
+            'Safe trails',
+            'Family discounts',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Alpine Village Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from half-day explorations to full-day adventures.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Cultural Experiences',
+            description: 'Engage in traditional Swiss customs and enjoy local cuisine.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Sizes',
+            description: 'Tours are available for small groups, ensuring a personalized experience.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography',
+            description: 'Plenty of opportunities to capture stunning alpine landscapes and village life.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Weather Preparedness',
+            description: 'Tours take place in all weather conditions; dress in layers for comfort.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Options',
+            description: 'Tours available at different price points to suit various budgets.',
+          },
+        ],
+      },
+      expertTips: [
+        'Start your tour early in the morning to enjoy the serene village atmosphere before crowds arrive.',
+        'Wear comfortable walking shoes, as village streets can be uneven and steep.',
+        'Try the local specialty cheese fondue in Grindelwald for an authentic Swiss experience.',
+        'Bring a reusable water bottle to stay hydrated during your walking tours.',
+        'Check the weather forecast and pack accordingly, as Alpine weather can change rapidly.',
+        'Consider staying overnight in a village to experience the magical evening ambiance.',
+        'Use the Swiss Travel Pass for unlimited travel on public transport to and from villages.',
+        'Book guided tours in advance, especially during peak tourist season, to secure your spot.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time to visit Interlaken for village tours?',
+          answer: 'The best time to visit Interlaken for village tours is between late spring and early autumn (May to September). During these months, the weather is generally pleasant, and the trails are open and accessible. Summer offers vibrant green landscapes, while autumn brings stunning fall foliage. However, winter tours are also available for those looking to experience the snowy charm and winter sports.',
+        },
+        {
+          question: 'Are the tours suitable for children and elderly travelers?',
+          answer: 'Absolutely! Many tours are designed with families and older travelers in mind. Family adventures include interactive activities suitable for children, and the guided village walks are conducted at a leisurely pace, making them accessible for elderly participants. Always check with the tour provider for specific accessibility options and tailor your selection to your group\'s needs.',
+        },
+        {
+          question: 'Do I need to book tours in advance?',
+          answer: 'While some tours can be booked on the day, it is highly recommended to book in advance, especially during the peak summer months and festival periods. This ensures availability and allows you to choose from a wider variety of options. Booking ahead also often leads to early bird discounts and better rates!',
+        },
+        {
+          question: 'What should I wear for my village tour?',
+          answer: 'Dress in layers to accommodate the changing weather conditions typical of Swiss alpine regions. Comfortable walking shoes are a must for exploring villages and trails. Don\'t forget to bring a waterproof jacket, a hat, and sunscreen. In winter, additional layers and snow boots are recommended to stay warm and dry.',
+        },
+        {
+          question: 'Are meals included in the tours?',
+          answer: 'Some tours include meals, such as lunch or dinner at a traditional Swiss restaurant, especially those focusing on culinary experiences. For others, meals might not be included, but you\'ll have the opportunity to try local cuisine at your own expense during the tour. Check the tour details to know what\'s provided.',
+        },
+        {
+          question: 'Can I customize my tour itinerary?',
+          answer: 'Many tour providers offer customizable itineraries to suit your interests and schedule. Whether you\'re looking for a more relaxed pace or want to focus on specific activities or sites, contact the provider to discuss your preferences. Customization might incur additional costs but allows for a tailored experience.',
+        },
+        {
+          question: 'What language are the tours conducted in?',
+          answer: 'Most tours are conducted in English, but many providers also offer tours in other languages such as German, French, and Italian. If you require a specific language, it\'s best to inquire with the tour operator ahead of time to ensure availability.',
+        },
+        {
+          question: 'How do I get to the starting point of the tours?',
+          answer: 'Most tours start from central locations in Interlaken, easily accessible by public transportation or on foot from major hotels. Detailed meeting point instructions are typically provided upon booking, ensuring you can plan your travel accordingly. Consider using the Swiss Travel Pass for convenience and cost savings.',
+        },
+      ],
+    },
+    'scenic-train-tours': {
+      title: 'Interlaken Scenic Train Tours',
+      subtitle: 'Experience breathtaking Alpine views and charming Swiss villages on unforgettable scenic train journeys.',
+      categoryName: 'Scenic Train Tours',
+      stats: {
+        toursAvailable: 15,
+        priceFrom: 45,
+        duration: '2-8 hours',
+      },
+      introduction: `Interlaken, nestled between Lakes Thun and Brienz and framed by the iconic peaks of the Eiger, Mönch, and Jungfrau, is a gateway to some of the most stunning scenic train tours in the world. These journeys offer a unique window into Switzerland's Alpine splendor, whisking travelers through lush valleys, past cascading waterfalls, and to the doorsteps of quaint mountain villages. Whether you're a nature enthusiast, a photographer, or simply seeking a tranquil escape, these train tours cater to all. Highlights include the Jungfrau Railway, which takes you to Europe's highest train station, and the GoldenPass Line, offering panoramic views of the Swiss Riviera. Each trip promises a blend of adventure, serenity, and awe-inspiring beauty, making it an essential experience for anyone visiting Interlaken.`,
+      seo: {
+        title: 'Interlaken Scenic Train Tours 2025',
+        description: 'Discover the breathtaking beauty of Interlaken with stunning scenic train tours. Book your adventure now!',
+        keywords: 'Interlaken train tours, scenic train rides, Swiss Alps train tours, Jungfrau Railway, GoldenPass Line',
+      },
+      whyChoose: [
+        {
+          icon: 'Camera',
+          title: 'Unmatched Views',
+          description: 'Capture awe-inspiring vistas of the Swiss Alps and picturesque landscapes from the comfort of your seat.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Unique Experiences',
+          description: 'Journey to Europe\'s highest train station and explore charming Swiss villages along the way.',
+        },
+        {
+          icon: 'Users',
+          title: 'Family-Friendly',
+          description: 'Perfect for travelers of all ages, offering educational and engaging experiences for the whole family.',
+        },
+        {
+          icon: 'Clock',
+          title: 'Convenient Schedules',
+          description: 'Frequent departures and flexible durations make it easy to fit a scenic tour into any itinerary.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Jungfrau Railway',
+          description: 'Ascend to the Top of Europe on a breathtaking journey through tunnels and past glaciers.',
+          features: [
+            'Eiger North Face',
+            'Ice Palace',
+            'Aletsch Glacier',
+            'Sphinx Observatory',
+            'Alpine Sensation',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'GoldenPass Line',
+          description: 'Travel from Interlaken to Montreux on a route known for its stunning panoramic views.',
+          features: [
+            'Panoramic Windows',
+            'Château de Chillon',
+            'Swiss Riviera',
+            'Lavaux Vineyards',
+            'Lake Geneva',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Brienz Rothorn Railway',
+          description: 'Enjoy a journey on a historic steam train climbing to breathtaking mountain vistas.',
+          features: [
+            'Steam Locomotive',
+            'Alpine Flora',
+            'Summit Views',
+            'Mountain Hiking',
+            'Lake Brienz',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Lötschberg Line',
+          description: 'Discover hidden gems and dramatic landscapes on a scenic ride through the Bernese Highlands.',
+          features: [
+            'Kander Viaduct',
+            'Bietschtal Bridge',
+            'Spiez Castle',
+            'Kandersteg',
+            'Lötschberg Tunnel',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Scenic Train Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour short trips to full-day excursions, allowing flexibility to suit your schedule.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Panoramic Views',
+            description: 'Enjoy broad, uninterrupted views of towering mountains, serene lakes, and lush valleys from every seat.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Narrated Journeys',
+            description: 'Learn fascinating insights about the region\'s history and geology through guided commentary.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Cultural Stops',
+            description: 'Explore traditional Swiss villages, offering a taste of local culture and cuisine.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Year-Round Access',
+            description: 'Tours operate in all seasons, each offering unique landscapes from snow-capped mountains to spring blooms.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Options',
+            description: 'With tours starting at just $45, there\'s a scenic journey to fit every budget.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book tickets in advance, especially during peak season, to secure the best seats and departure times.',
+        'Bring a camera with a zoom lens to capture the stunning distant peaks and close-up details of the journey.',
+        'Consider a Swiss Travel Pass for unlimited train travel, offering great value for those planning multiple tours.',
+        'Plan your trip to coincide with the early morning or late afternoon for the best lighting for photography.',
+        'Layer your clothing as temperatures can vary significantly between the valleys and mountain tops.',
+        'If traveling with children, look for family-friendly carriages offering entertainment and activities.',
+        'Bring snacks and water, although many trains offer onboard dining options for a delightful Swiss meal.',
+        'Check the weather forecast and be prepared for sudden changes, especially at higher altitudes.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time to take a scenic train tour?',
+          answer: 'Each season offers unique experiences! Winter showcases snow-covered peaks and cozy train rides, while summer reveals lush greenery and wildflowers. Spring and autumn offer milder weather and fewer crowds. For photographers, early morning or late afternoon light can enhance your shots. Be sure to check weather conditions before booking!',
+        },
+        {
+          question: 'Are there any discounts available for train tours?',
+          answer: 'Yes! Discounts are often available with a Swiss Travel Pass, which offers unlimited travel on many scenic trains. Children under 6 often travel free, and those aged 6-16 can travel at half price with a Junior Card. Group discounts may also apply for larger parties, making it an affordable option for families and friends!',
+        },
+        {
+          question: 'How can I make the most of a day trip from Interlaken?',
+          answer: 'Start your day early to maximize your time! Opt for the GoldenPass Line for a day trip to Montreux, enjoying stops at the charming villages along the way. Pack a picnic to enjoy at one of the scenic stops, and consider taking a boat ride on Lake Geneva for a perfect end to your day!',
+        },
+        {
+          question: 'Is it necessary to reserve seats in advance?',
+          answer: 'While not always required, it\'s highly recommended to reserve seats, especially during high season and for popular routes like the Jungfrau Railway. This ensures you have a spot and can choose the best seats for optimal views. Avoid the disappointment of a fully booked train and plan ahead!',
+        },
+        {
+          question: 'What should I bring on a scenic train tour?',
+          answer: 'Pack light but smart! Bring layers for changing weather, a camera for capturing stunning views, and binoculars for spotting distant wildlife. Snacks and drinks are handy, though many trains have dining cars. Don\'t forget travel essentials like your passport and a Swiss Travel Pass if using one!',
+        },
+        {
+          question: 'Are scenic train tours accessible for people with disabilities?',
+          answer: 'Most scenic train routes in Switzerland offer accessibility features including ramps, reserved spaces, and accessible restrooms. It\'s advisable to check with specific train services in advance to ensure a smooth journey. Assistance is available at many stations and can be arranged beforehand!',
+        },
+        {
+          question: 'Can I bring my pet on the train tours?',
+          answer: 'Pets are generally welcome on Swiss trains, but must be leashed or travel in a pet carrier. Small pets usually travel free, while larger dogs require a half-price ticket. Ensure your pet is comfortable and bring necessary supplies for their comfort. Always check specific train policies ahead of time!',
+        },
+        {
+          question: 'What are the must-see attractions on these tours?',
+          answer: 'Don\'t miss the breathtaking views from the Sphinx Observatory at Jungfraujoch, the historic Château de Chillon on the GoldenPass Line, and the charming village of Kandersteg on the Lötschberg Line. Each route offers unique sights, so consider multiple tours to experience all the highlights!',
+        },
+      ],
+    },
+  },
+  lisbon: {
+    'belem-tower-tours': {
+      title: 'Lisbon Belém Tower Tours',
+      subtitle: 'Explore the iconic Belém Tower and discover Lisbon\'s maritime history and architectural beauty!',
+      categoryName: 'Belém Tower Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 20,
+        duration: '1-3 hours',
+      },
+      introduction: `Dive into the rich tapestry of Portuguese history with Belém Tower Tours in Lisbon! This UNESCO World Heritage site stands as a testament to Portugal's Age of Discoveries, offering you a glimpse into the past with its breathtaking Manueline architecture and maritime relics. Whether you're a history buff, architecture enthusiast, or casual traveler, these tours offer something for everyone. As you explore the tower's battlements and climb its narrow spiral staircase, you'll be treated to panoramic views of the Tagus River and the surrounding Belém district, home to other iconic landmarks like the Jerónimos Monastery and the Monument to the Discoveries. With a variety of guided experiences ranging from basic historical tours to in-depth explorations focusing on Lisbon's maritime heritage, there's a perfect tour for every interest. Get ready to be captivated by tales of explorers, knights, and the golden age of navigation!`,
+      seo: {
+        title: 'Belém Tower Tours in Lisbon 2025',
+        description: 'Discover the iconic Belém Tower in Lisbon with our engaging tours. Book now for 2025 adventures!',
+        keywords: 'Belém Tower tours, Lisbon tourism, historical tours Lisbon, Lisbon 2025 tours, UNESCO sites Lisbon',
+      },
+      whyChoose: [
+        {
+          icon: 'MapPin',
+          title: 'Iconic Landmark',
+          description: 'Visit one of Lisbon\'s most famous landmarks with breathtaking architecture and historical significance.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Rich History',
+          description: 'Learn about Portugal\'s Age of Discoveries and maritime adventures from knowledgeable guides.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Stunning Views',
+          description: 'Capture stunning views of the Tagus River and Lisbon\'s skyline from the tower\'s battlements.',
+        },
+        {
+          icon: 'Users',
+          title: 'Variety of Tours',
+          description: 'Choose from a range of tours catering to different interests and time commitments.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'BookOpen',
+          title: 'Historical Tours',
+          description: 'Explore the rich history of Belém Tower with guided tours highlighting its role in Portugal\'s maritime past.',
+          features: [
+            'Guided exploration',
+            'Historical insights',
+            'Access to battlements',
+            'Visit to dungeons',
+            'Interactive storytelling',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Capture the beauty of Belém Tower and its surroundings with a focus on photography tips and techniques.',
+          features: [
+            'Photography tips',
+            'Golden hour tours',
+            'Access to unique viewpoints',
+            'Scenic landscapes',
+            'Expert photography guide',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Family-Friendly Tours',
+          description: 'Engage the whole family with interactive tours designed to entertain and educate young and old alike.',
+          features: [
+            'Interactive activities',
+            'Family discounts',
+            'Child-friendly guides',
+            'Educational content',
+            'Engaging storytelling',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Romantic Sunset Tours',
+          description: 'Experience a romantic evening as you watch the sun set over the Tagus River from the tower.',
+          features: [
+            'Sunset views',
+            'Romantic setting',
+            'Champagne toast',
+            'Intimate group sizes',
+            'Special evening access',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Belém Tower Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 1 to 3 hours, allowing flexibility for your schedule.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Accessibility',
+            description: 'Some tours include access to areas normally off-limits to the public for exclusive experiences.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Local Guides',
+            description: 'Knowledgeable local guides share personal stories and insights about Lisbon and Belém Tower.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Options',
+            description: 'Tours are available starting at $20, with options to suit all budgets.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Year-Round',
+            description: 'Tours operate throughout the year, accommodating both peak season and off-peak visitors.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Refreshments',
+            description: 'Some tours include refreshments or a small tasting of local delicacies.',
+          },
+        ],
+      },
+      expertTips: [
+        'Visit early in the morning or late afternoon to avoid crowds and catch the best light for photos.',
+        'Combine your Belém Tower visit with a stop at the nearby Jerónimos Monastery for a full day of history.',
+        'Wear comfortable shoes, as the tower involves climbing narrow and steep stairs.',
+        'Check for special night tours during summer months for a unique perspective.',
+        'Bring a camera with a wide-angle lens to capture the tower\'s intricate details and sweeping views.',
+        'Purchase tickets online in advance to skip the lines and secure your preferred tour time.',
+        'Learn a few basic Portuguese phrases to enhance your interaction with local guides.',
+        'Explore the adjacent gardens and waterfront for a relaxing stroll post-tour.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time to visit Belém Tower?',
+          answer: 'The best time to visit Belém Tower is during the early morning or late afternoon. This helps you avoid the large crowds that gather during midday, and the lighting is perfect for photography! During the summer months, consider joining a special evening tour for a magical sunset experience. Be sure to check the weather forecast, as the tower is best enjoyed on clear days.',
+        },
+        {
+          question: 'Are there any discounts available for Belém Tower tours?',
+          answer: 'Yes, discounts are often available for children, students, and seniors. It\'s also common for families to receive a group discount. Be sure to check the tour provider\'s website or inquire at the ticket office for any current promotions or package deals that might include other nearby attractions like the Jerónimos Monastery.',
+        },
+        {
+          question: 'Is Belém Tower wheelchair accessible?',
+          answer: 'Unfortunately, Belém Tower is not fully wheelchair accessible due to its historical architecture and the narrow staircases leading to different levels. However, the surrounding area, including the gardens and waterfront, is accessible. It\'s advisable to contact individual tour operators for specific accommodations that may be available.',
+        },
+        {
+          question: 'What should I wear on a Belém Tower tour?',
+          answer: 'It\'s best to wear comfortable clothing and sturdy shoes, as you\'ll be climbing narrow stairs and walking on uneven surfaces. A hat and sunscreen are recommended for sunny days, and a light jacket is advisable if you\'re visiting in the cooler months or during the evening tours. Always check the weather forecast before your visit.',
+        },
+        {
+          question: 'Can I take photos inside Belém Tower?',
+          answer: 'Yes, photography is encouraged inside Belém Tower! Capture the stunning views from the battlements and the intricate details of the Manueline architecture. However, be mindful of other visitors and avoid using flash in enclosed spaces to preserve the historical artifacts.',
+        },
+        {
+          question: 'Are guided tours available in languages other than Portuguese?',
+          answer: 'Yes, many tour operators offer guided tours in English, Spanish, and French. Some may also provide audio guides in multiple languages. It\'s best to confirm the language options available when booking your tour to ensure you get the most out of your visit.',
+        },
+        {
+          question: 'How do I get to Belém Tower from central Lisbon?',
+          answer: 'Getting to Belém Tower from central Lisbon is easy! You can take the tram 15E from Praça da Figueira or Cais do Sodré, which will drop you off within walking distance of the tower. Alternatively, buses and taxis are also available, offering a quick and convenient journey to this iconic landmark.',
+        },
+        {
+          question: 'Is there a best day of the week to visit Belém Tower?',
+          answer: 'Weekdays are generally less crowded than weekends, making them the ideal time for a leisurely visit. If you\'re visiting during peak tourist season, try to plan your visit for mid-week to enjoy a quieter experience. Always check for any local holidays or events that might affect opening hours or visitor numbers.',
+        },
+      ],
+    },
+    'alfama-district-tours': {
+      title: 'Lisbon Alfama District Tours',
+      subtitle: 'Explore Alfama: Lisbon\'s charming maze of narrow streets, historic sights, and soulful fado music.',
+      categoryName: 'Alfama District Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 30,
+        duration: '2 to 4 hours',
+      },
+      introduction: `Step into the heart of Lisbon with an Alfama District tour, where history and culture intertwine. As the city's oldest neighborhood, Alfama offers a unique glimpse into Lisbon's past with its labyrinth of narrow streets, colorful azulejos, and breathtaking views from the Miradouro de Santa Luzia. Immerse yourself in the soulful sounds of fado echoing through traditional taverns, and discover iconic landmarks like the Lisbon Cathedral and the National Pantheon. Whether you're a history buff, a culture enthusiast, or a curious traveler, Alfama's blend of old-world charm and vibrant local life promises an unforgettable experience. Join guided walking tours, indulge in local delicacies, or capture the essence of Lisbon with your camera. Each corner of Alfama holds a story waiting to be uncovered!`,
+      seo: {
+        title: 'Best Alfama District Tours in Lisbon 2025',
+        description: 'Discover Lisbon\'s Alfama: historic tours, vibrant culture, and fado music. Book your adventure now!',
+        keywords: 'Alfama tours, Lisbon walking tours, fado music Lisbon, historic Lisbon, Lisbon sightseeing',
+      },
+      whyChoose: [
+        {
+          icon: 'MapPin',
+          title: 'Historic Insights',
+          description: 'Explore Lisbon\'s oldest district with expert guides who bring history to life!',
+        },
+        {
+          icon: 'Music',
+          title: 'Authentic Fado',
+          description: 'Experience the soulful sounds of fado in its birthplace!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Scenic Views',
+          description: 'Capture stunning photos from Alfama\'s famous viewpoints!',
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Local Connections',
+          description: 'Meet locals and experience authentic Portuguese culture!',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Users',
+          title: 'Group Walking Tours',
+          description: 'Join a small group and explore Alfama\'s key sites with a knowledgeable guide.',
+          features: [
+            'Lisbon Cathedral',
+            'Miradouro de Santa Luzia',
+            'Local history',
+            'Group discounts',
+            'Bilingual guides',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Romantic Fado Nights',
+          description: 'Enjoy an evening of fado music and dinner in a traditional Alfama tavern.',
+          features: [
+            'Fado performance',
+            'Dinner included',
+            'Intimate setting',
+            'Romantic atmosphere',
+            'Local wines',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photo Tours',
+          description: 'Capture Alfama\'s beauty with a professional photographer guiding your shots.',
+          features: [
+            'Photography tips',
+            'Best photo spots',
+            'Sunset views',
+            'Historic sites',
+            'Post-tour editing advice',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Cultural History Tours',
+          description: 'Deep dive into Alfama\'s rich history with a focus on cultural evolution.',
+          features: [
+            'Historic landmarks',
+            'Art and architecture',
+            'Cultural insights',
+            'Expert historians',
+            'Interactive discussions',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Alfama District Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2 to 4 hours, offering both quick visits and in-depth explorations.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Cultural Immersion',
+            description: 'Engage with locals and experience the authentic culture of Alfama.',
+          },
+          {
+            icon: 'Music',
+            title: 'Live Fado Performances',
+            description: 'Enjoy live fado music during evening tours, an integral part of Alfama\'s charm.',
+          },
+          {
+            icon: 'Users',
+            title: 'Small Group Sizes',
+            description: 'Tours are intimate, ensuring personalized attention and a friendly atmosphere.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Historic Landmarks',
+            description: 'Visit key historic sites like the Lisbon Cathedral and the National Pantheon.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography Opportunities',
+            description: 'Plenty of chances to capture the picturesque streets and stunning vistas.',
+          },
+        ],
+      },
+      expertTips: [
+        'Visit Alfama on a weekday morning to avoid crowds and enjoy a more peaceful experience.',
+        'Bring comfortable shoes for navigating the steep and cobbled streets of Alfama!',
+        'Stop by a local bakery for a pastel de nata to enjoy while strolling through the district.',
+        'Attend a fado show at Clube de Fado for an authentic musical experience.',
+        'Take your time at Miradouro de Santa Luzia for the best panoramic views of Lisbon.',
+        'Join a guided tour to learn about the unique azulejo tiles that decorate many buildings.',
+        'Visit the Fado Museum to deepen your understanding of this traditional music genre.',
+        'Capture the sunset over Lisbon from the Portas do Sol viewpoint for spectacular photos.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time to visit Alfama?',
+          answer: 'Alfama is enchanting year-round, but visiting in spring (April to June) or fall (September to November) offers pleasant weather and fewer crowds. Mornings are ideal for peaceful exploration, while evenings are perfect for enjoying live fado music. Avoid weekends if you prefer a quieter experience, as Alfama is popular with both tourists and locals. Embrace the magic of Alfama at your own pace!',
+        },
+        {
+          question: 'Are Alfama tours suitable for children?',
+          answer: 'Absolutely! Alfama\'s tours are family-friendly, offering engaging experiences for all ages. Children will enjoy exploring the narrow streets, vibrant tiles, and story-filled landmarks. Some tours provide interactive elements, like treasure hunts or storytelling sessions, to keep young ones entertained. Just be sure to wear comfortable shoes, as Alfama\'s cobbled streets can be uneven.',
+        },
+        {
+          question: 'How much do Alfama tours typically cost?',
+          answer: 'Alfama tours vary in price depending on the type and duration. Walking tours start at around $30, while fado dinner experiences might cost $60 or more. Specialized tours, like photography or private guided experiences, can range from $50 to $100. Booking in advance often secures the best rates, and some tours offer discounts for groups or children.',
+        },
+        {
+          question: 'What languages are Alfama tours conducted in?',
+          answer: 'Many Alfama tours are available in Portuguese and English. Some operators also offer tours in Spanish, French, or German, depending on availability. It\'s best to check with the tour provider in advance to ensure your preferred language is offered. Multilingual guides are common, making Alfama accessible to international visitors!',
+        },
+        {
+          question: 'Can I book a private tour in Alfama?',
+          answer: 'Yes, private tours are a fantastic way to explore Alfama at your own pace with personalized attention from a knowledgeable guide. Private tours can be tailored to your interests, whether you\'re keen on history, photography, or culinary delights. Prices for private tours typically range from $80 to $150, depending on the itinerary and group size.',
+        },
+        {
+          question: 'Is it necessary to book tours in advance?',
+          answer: 'While you can find tours on arrival, booking in advance is recommended, especially during peak tourist seasons. This ensures availability and often provides better pricing. Online booking also allows you to read reviews and choose the tour that best fits your interests and schedule. Secure your spot and make the most of your Alfama adventure!',
+        },
+        {
+          question: 'What should I wear on an Alfama tour?',
+          answer: 'Comfort is key when exploring Alfama\'s cobbled streets and steep hills. Wear comfortable, sturdy shoes and casual attire suitable for walking. Bring a hat and sunscreen for daytime tours, and a light jacket for evening tours, as the weather can change. A camera is a must to capture the beauty of Alfama\'s streets and views!',
+        },
+        {
+          question: 'Are there food options available during tours?',
+          answer: 'Yes, many tours either include or suggest stops at local eateries where you can sample Portuguese delicacies. Fado dinner tours offer a meal as part of the experience. Be sure to try a pastel de nata, a traditional Portuguese custard tart, or enjoy a glass of ginjinha, a local cherry liqueur. Alfama is a feast for the senses!',
+        },
+      ],
+    },
+    'tram-tours': {
+      title: 'Lisbon Tram Tours',
+      subtitle: 'Discover Lisbon\'s charm via its iconic trams, traversing historic hills and vibrant neighborhoods.',
+      categoryName: 'Tram Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 15,
+        duration: '1-3 hours',
+      },
+      introduction: `Hop aboard Lisbon's iconic trams and explore the city like never before! These tram tours offer a unique vantage point of Portugal's vibrant capital, traversing its steep hills and narrow streets. As you glide through Lisbon's charming neighborhoods, you'll uncover the city's rich history, from the medieval quarter of Alfama to the bustling streets of Baixa. Perfect for travelers of all types, these tours provide an authentic taste of Lisbon's daily life, complete with views of its famous azulejos tiles and stunning vistas of the Atlantic. Whether you're a history buff, a culture enthusiast, or simply seeking a relaxed way to see the city, Lisbon's tram tours cater to all. Don't miss out on the chance to hop on Tram 28, the city's most famous route, for an unforgettable journey through time and tradition!`,
+      seo: {
+        title: 'Lisbon Tram Tours 2025: Explore by Tram!',
+        description: 'Experience Lisbon like a local with tram tours! Discover historic sites and vibrant neighborhoods. Book now!',
+        keywords: 'Lisbon tram tours, Lisbon trams, explore Lisbon by tram, Lisbon sightseeing, Tram 28',
+      },
+      whyChoose: [
+        {
+          icon: 'MapPin',
+          title: 'Iconic Routes',
+          description: 'Experience Lisbon\'s famous tram routes, including the legendary Tram 28, for a memorable journey.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Cultural Immersion',
+          description: 'Dive deep into Lisbon\'s culture as you pass through historic neighborhoods and local hotspots.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Picture-Perfect Views',
+          description: 'Capture stunning views of Lisbon\'s landscapes and iconic landmarks from the comfort of your tram seat.',
+        },
+        {
+          icon: 'DollarSign',
+          title: 'Affordable Adventure',
+          description: 'Enjoy an economical way to explore the city with tours starting at just $15 USD!',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Anchor',
+          title: 'Historic Tram Tour',
+          description: 'Travel through Lisbon\'s past on trams that have been running since the early 20th century.',
+          features: [
+            'Tram 28 route',
+            'Historic landmarks',
+            'Local guide',
+            'Flexible stops',
+            'Cultural insights',
+          ],
+        },
+        {
+          icon: 'Calendar',
+          title: 'Sunset Tram Tour',
+          description: 'Witness the magic of Lisbon\'s sunsets from the perfect vantage point on a tram.',
+          features: [
+            'Evening departures',
+            'Sunset views',
+            'Photographic opportunities',
+            'Romantic atmosphere',
+            'Complimentary drink',
+          ],
+        },
+        {
+          icon: 'Sailboat',
+          title: 'Tram and River Combo',
+          description: 'Combine a tram tour with a serene boat ride on the Tagus River for a complete experience.',
+          features: [
+            'Tram tour',
+            'Boat ride',
+            'River views',
+            'Guided commentary',
+            'Refreshments included',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Local\'s Choice Tram Tour',
+          description: 'Explore hidden gems and local favorites that are off the beaten path.',
+          features: [
+            'Hidden neighborhoods',
+            'Local cuisine stops',
+            'Insider tips',
+            'Personalized experience',
+            'Small group size',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Tram Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Most tram tours last between 1 to 3 hours, providing ample time to explore and enjoy.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Size',
+            description: 'Tours typically accommodate small groups, ensuring a personalized experience.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Knowledgeable Guides',
+            description: 'Expert guides share fascinating stories and historical context throughout the journey.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Scenic Views',
+            description: 'Enjoy breathtaking views of Lisbon\'s iconic sites and natural landscapes.',
+          },
+          {
+            icon: 'PartyPopper',
+            title: 'Cultural Highlights',
+            description: 'Experience the vibrant culture of Lisbon with stops at local markets and historic sites.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Comfort',
+            description: 'Modern amenities ensure a comfortable ride as you explore the city.',
+          },
+        ],
+      },
+      expertTips: [
+        'Start your tram tour early to avoid crowds and enjoy a more relaxed experience.',
+        'Combine tram tours with walking tours for a comprehensive view of Lisbon.',
+        'Bring a camera to capture the stunning views from your tram seat.',
+        'Wear comfortable shoes as you might want to hop off and explore on foot.',
+        'Purchase a 24-hour tram ticket for unlimited rides and flexibility.',
+        'Try local snacks available at stops to truly taste Lisbon\'s flavors.',
+        'Stay alert for pickpockets, especially on crowded trams.',
+        'Check tram schedules in advance to plan your day efficiently.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best tram route to take in Lisbon?',
+          answer: 'Tram 28 is the most popular route, taking you through some of Lisbon\'s most historic neighborhoods, including Graça, Alfama, and Baixa. It offers a fantastic overview of the city\'s architecture and culture. Operating daily from early morning until late, it\'s a must-do for any visitor!',
+        },
+        {
+          question: 'How much does a typical tram tour cost?',
+          answer: 'Tram tours in Lisbon generally start from $15 USD. Prices may vary based on the route and additional experiences offered, such as guided commentary or combo packages with boat rides. It\'s an affordable way to explore the city\'s charm!',
+        },
+        {
+          question: 'Are tram tours suitable for families?',
+          answer: 'Absolutely! Tram tours are family-friendly, offering a fun and educational way to explore Lisbon. Kids will enjoy the ride, and parents will appreciate the historical insights. Some tours even offer special activities for younger travelers.',
+        },
+        {
+          question: 'Do tram tours operate in bad weather?',
+          answer: 'Yes, tram tours in Lisbon operate rain or shine. The trams provide shelter from the elements, but it\'s always a good idea to check the weather forecast and dress accordingly to ensure a comfortable experience.',
+        },
+        {
+          question: 'Can I hop on and off the trams during a tour?',
+          answer: 'Many tram tours offer hop-on, hop-off options, allowing you to explore various attractions at your own pace. Check with your tour provider for specific details on stops and flexibility.',
+        },
+        {
+          question: 'Is it necessary to book tram tours in advance?',
+          answer: 'While you can purchase tickets on the day, booking in advance is recommended, especially during peak tourist seasons. This ensures you secure a spot and can plan your itinerary without stress.',
+        },
+        {
+          question: 'What languages are available for guided tram tours?',
+          answer: 'Guided tram tours in Lisbon are typically available in multiple languages, including English, Portuguese, Spanish, and French. Confirm with your tour provider to ensure your preferred language is offered.',
+        },
+        {
+          question: 'Are there any accessibility options for tram tours?',
+          answer: 'Many of Lisbon\'s trams have been updated to accommodate those with mobility challenges, including ramps and designated spaces. It\'s advisable to contact the tour company in advance to confirm the availability of accessible trams.',
+        },
+      ],
+    },
+    'food-and-wine-tours': {
+      title: 'Lisbon Food & Wine Tours',
+      subtitle: 'Savor Lisbon\'s culinary treasures and vibrant wines in a city of history and charm!',
+      categoryName: 'Food & Wine Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 65,
+        duration: '3-6 hours',
+      },
+      introduction: `In Lisbon, food and wine tours are a feast for the senses! From the aromatic alleys of Alfama to the bustling Mercado da Ribeira, each tour offers a unique taste of Portuguese culture. Travelers will discover the secrets of making the perfect pastel de nata, sip world-renowned Port wine, and explore the rich flavors of Lisbon's seafood. Whether you're a gourmet enthusiast or a casual diner, the city's vibrant culinary scene promises an unforgettable experience. With expert guides leading the way, discover hidden gems like A Ginjinha, famed for its cherry liqueur, and savor authentic bacalhau at traditional tasquinhas. Perfect for foodies, history buffs, and culture seekers alike, Lisbon's food and wine tours are a delightful journey through Portugal's culinary heart.`,
+      seo: {
+        title: 'Lisbon Food & Wine Tours 2025',
+        description: 'Explore Lisbon\'s best food and wine tours in 2025. Savor local flavors and history. Book now!',
+        keywords: 'Lisbon food tours, wine tours Lisbon, culinary experiences Lisbon',
+      },
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Flavors',
+          description: 'Taste genuine Portuguese dishes, from bacalhau to pastel de nata, curated by local chefs.',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Award-Winning Wines',
+          description: 'Sample exquisite wines from the Douro Valley and beyond, guided by expert sommeliers.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Explore with knowledgeable locals who share personal stories and insider tips on Lisbon\'s culinary scene.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Historical Insights',
+          description: 'Learn about Lisbon\'s rich history and culture through its food, exploring neighborhoods like Alfama and Bairro Alto.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Riverfront Tastings',
+          description: 'Enjoy tastings along the scenic Tagus River, pairing local wines with seafood.',
+          features: [
+            'Tagus River views',
+            'Seafood pairings',
+            'Wine tasting',
+            'Local guides',
+            'Historic insights',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Market Tours',
+          description: 'Dive into Lisbon\'s bustling markets to sample fresh produce and local specialties.',
+          features: [
+            'Mercado da Ribeira',
+            'Local produce',
+            'Cooking demos',
+            'Taste testing',
+            'Cultural stories',
+          ],
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Evening Food Safari',
+          description: 'Experience Lisbon\'s nightlife through its food, from tasquinhas to trendy eateries.',
+          features: [
+            'Nightlife exploration',
+            'Traditional tasquinhas',
+            'Modern cuisine',
+            'Wine bars',
+            'Live music',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography & Food Walk',
+          description: 'Capture Lisbon\'s beauty while enjoying its culinary delights on a guided photography tour.',
+          features: [
+            'Photography tips',
+            'Scenic routes',
+            'Street food',
+            'Photo ops',
+            'Expert guide',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Food & Wine Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 3 to 6 hours, offering a relaxed pace to savor each moment.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Wine Tastings',
+            description: 'Sample a variety of wines, including Vinho Verde and Port, in atmospheric cellars.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Culinary Workshops',
+            description: 'Participate in hands-on workshops to learn traditional recipes like pastéis de nata.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Cultural Excursions',
+            description: 'Explore Lisbon\'s iconic neighborhoods, enhancing your culinary journey with cultural insights.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Local Expertise',
+            description: 'Benefit from the knowledge of local guides who share their passion for Lisbon\'s culinary heritage.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Scenic Views',
+            description: 'Enjoy meals with stunning views, whether along the riverfront or atop Lisbon\'s famous hills.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book tours that include a visit to the Mercado da Ribeira for the freshest local produce.',
+        'Try the Ginjinha at A Ginjinha – a must-visit spot for cherry liqueur lovers!',
+        'Opt for tours that include cooking classes to learn how to make pastéis de nata.',
+        'Wear comfortable shoes as Lisbon\'s cobblestone streets are charming but challenging!',
+        'Visit Alfama for authentic Fado music paired with traditional dishes.',
+        'Taste the variety of Portuguese cheeses – a lesser-known delight on many tours.',
+        'Check seasonal availability of certain seafood like sardines for the freshest experience.',
+        'Engage with local vendors and ask for their recommendations during market tours.',
+      ],
+      faqs: [
+        {
+          question: 'What is the best time to take a food and wine tour in Lisbon?',
+          answer: 'The best time to take a food and wine tour in Lisbon is during spring (March to May) or fall (September to November). The weather is pleasant, making it ideal for exploring the city\'s vibrant culinary scene. During these months, you can enjoy fresh, seasonal produce and participate in local festivals that celebrate Portuguese gastronomy. Tours typically operate year-round, but these seasons offer the most comfortable conditions for walking tours and outdoor tastings!',
+        },
+        {
+          question: 'Are dietary requirements accommodated on these tours?',
+          answer: 'Yes, many food and wine tours in Lisbon accommodate dietary requirements, including vegetarian, vegan, gluten-free, and more. When booking your tour, it\'s important to inform the provider of any specific needs you have, so they can tailor the experience to ensure you enjoy every bite and sip. Some tours may have limited options, especially for more specialized diets, so it\'s always a good idea to confirm in advance. Your taste buds will thank you!',
+        },
+        {
+          question: 'How much should I budget for a food and wine tour?',
+          answer: 'Food and wine tours in Lisbon typically start around $65 USD and can go up to $150 USD or more, depending on the inclusions and duration. These tours offer great value, often covering tastings, meals, and expert guidance throughout. Considering the quality and variety of experiences, budgeting around $100 USD for a comprehensive tour is a safe bet. Prices can vary, so it\'s worth checking what\'s included in each tour package before you book!',
+        },
+        {
+          question: 'Can I bring children on food and wine tours?',
+          answer: 'While some food and wine tours in Lisbon are family-friendly, others may have age restrictions, especially those focusing on wine tasting. It\'s best to check with the tour provider about their policy on children. Family-oriented tours often include interactive elements and non-alcoholic tastings that are enjoyable for all ages. If traveling with kids, look for tours that combine food tasting with cultural activities to keep them engaged!',
+        },
+        {
+          question: 'What should I wear on a food and wine tour?',
+          answer: 'Comfort is key when embarking on a food and wine tour in Lisbon! Wear comfortable shoes as you\'ll likely be walking on cobblestone streets. Dress in layers to adapt to Lisbon\'s changeable weather, especially if your tour includes indoor and outdoor activities. A light jacket and a hat for sun protection are recommended. Remember, some tours may visit fine dining establishments, so smart casual attire is always a safe choice.',
+        },
+        {
+          question: 'Do I need to tip my tour guide?',
+          answer: 'Tipping in Portugal is not obligatory, but it is appreciated as a gesture of gratitude for excellent service. If you enjoyed your food and wine tour and found your guide informative and engaging, consider tipping around 10% of the tour cost. This small gesture goes a long way in showing appreciation for their expertise and enhances the positive experience of your culinary adventure in Lisbon.',
+        },
+        {
+          question: 'Are tours conducted in English?',
+          answer: 'Yes, most food and wine tours in Lisbon are conducted in English, catering to international visitors. Many guides are multilingual and can also offer tours in other languages, such as Spanish or French, upon request. When booking, it\'s a good idea to confirm the language options available. This ensures you can fully enjoy and understand the rich stories and insights shared during your tour!',
+        },
+        {
+          question: 'Is it possible to book private food and wine tours?',
+          answer: 'Absolutely! Many companies in Lisbon offer private food and wine tours tailored to your group\'s interests and needs. These private tours provide a more personalized experience, allowing for flexibility in itinerary and timing. Whether you\'re celebrating a special occasion or simply prefer a more intimate setting, booking a private tour can be a fantastic way to explore Lisbon\'s culinary scene at your own pace. Just be sure to book in advance to secure your preferred date and time!',
+        },
+      ],
+    },
+    'fado-music-tours': {
+      title: 'Lisbon Fado Music Tours',
+      subtitle: 'Experience the soulful sounds of Lisbon with authentic Fado music tours in historic venues!',
+      categoryName: 'Fado Music Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 45,
+        duration: '2-4 hours',
+      },
+      introduction: `Dive into the heart of Portuguese culture with Lisbon's Fado Music Tours! Fado, the soulful and melancholic music, is an integral part of Lisbon's vibrant cultural tapestry. As you wander through the labyrinthine streets of Alfama and Bairro Alto, you'll encounter the haunting melodies in intimate taverns and historic casas de fado. These tours offer a unique glimpse into the local life, where storytelling through song has been passed down through generations. Whether you're a music aficionado or a curious traveler, these tours promise an emotional journey. Discover hidden gems like Clube de Fado and Tasca do Chico, where passionate performances will leave you spellbound. Perfect for solo explorers, romantic couples, or families eager to immerse in authentic Portuguese traditions!`,
+      seo: {
+        title: 'Best Lisbon Fado Music Tours 2025',
+        description: 'Explore Lisbon with enchanting Fado music tours. Discover hidden gems and soulful performances. Book now!',
+        keywords: 'Lisbon Fado tours, Fado music Lisbon, best Fado tours 2025, Lisbon music experience, authentic Fado',
+      },
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Experience',
+          description: 'Immerse in genuine Fado performances in Lisbon\'s historic neighborhoods.',
+        },
+        {
+          icon: 'Music',
+          title: 'Cultural Insight',
+          description: 'Gain a deep understanding of Portuguese music heritage and its emotive power.',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Experts',
+          description: 'Guides with insider knowledge of the best Fado spots and histories.',
+        },
+        {
+          icon: 'Star',
+          title: 'Memorable Evenings',
+          description: 'Enjoy enchanting nights filled with music, stories, and local flavors.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Music',
+          title: 'Traditional Fado Night',
+          description: 'Enjoy an evening of classic Fado in Lisbon\'s best music houses.',
+          features: [
+            'Live performances',
+            'Historic venues',
+            'Local guides',
+            'Dinner options',
+            'Intimate settings',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Romantic Fado Tour',
+          description: 'Perfect for couples seeking a cozy, musical night in Lisbon.',
+          features: [
+            'Candlelit settings',
+            'Wine tasting',
+            'Private performances',
+            'Personalized itineraries',
+            'Scenic views',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Family Fado Experience',
+          description: 'A family-friendly introduction to Fado music and its history.',
+          features: [
+            'Daytime shows',
+            'Interactive sessions',
+            'Kid-friendly venues',
+            'Educational insights',
+            'Cultural activities',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photographic Fado Journey',
+          description: 'Capture the essence of Fado with guided photo tours.',
+          features: [
+            'Photography tips',
+            'Iconic locations',
+            'Behind-the-scenes access',
+            'Professional guidance',
+            'Unique perspectives',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Fado Music Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 2 to 4 hours, depending on the experience.',
+          },
+          {
+            icon: 'Music',
+            title: 'Live Performances',
+            description: 'Enjoy live Fado performances by renowned local artists in authentic venues.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Cultural Immersion',
+            description: 'Learn about the history and significance of Fado in Portuguese culture.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Historic Venues',
+            description: 'Explore iconic Fado houses in Lisbon\'s oldest neighborhoods.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Gastronomic Delights',
+            description: 'Many tours include traditional Portuguese food and wine pairings.',
+          },
+          {
+            icon: 'Star',
+            title: 'Memorable Moments',
+            description: 'Capture unforgettable memories with passionate performances and scenic views.',
+          },
+        ],
+      },
+      expertTips: [
+        'Book your Fado tour in advance to secure a spot at popular venues!',
+        'Visit Alfama for the most authentic Fado experience; it\'s the birthplace of this music genre.',
+        'Combine your Fado tour with a traditional Portuguese dinner for a full cultural experience.',
+        'Check out the Fado Museum in Alfama for a deeper understanding before your tour.',
+        'Opt for tours with small group sizes for a more intimate and personalized experience.',
+        'Don\'t be shy to ask locals for their favorite Fado spots; they love sharing tips!',
+        'Try to catch an outdoor Fado performance in the summer for a unique ambiance.',
+        'Consider a daytime Fado tour if traveling with children for a more relaxed experience.',
+      ],
+      faqs: [
+        {
+          question: 'What is Fado music?',
+          answer: 'Fado is a genre of Portuguese music known for its soulful and melancholic melodies. It often features lyrics about love, loss, and longing, accompanied by traditional Portuguese guitar. Fado is an essential part of Lisbon\'s cultural identity, with roots tracing back to the early 19th century! Seeing it live is a must for any visitor! Prices for Fado tours start around $45.',
+        },
+        {
+          question: 'Where can I find the best Fado performances in Lisbon?',
+          answer: 'Lisbon\'s Alfama and Bairro Alto neighborhoods are home to the most renowned Fado houses. Clube de Fado and Tasca do Chico are highly recommended for their authentic ambiance and talented performers. For a truly local experience, explore smaller, lesser-known venues where the intimacy of the performance is unmatched.',
+        },
+        {
+          question: 'Can I attend a Fado show with my family?',
+          answer: 'Absolutely! Many Fado tours are family-friendly, especially those scheduled in the daytime. These tours often include interactive elements and educational insights suitable for all ages. It\'s a wonderful way to introduce children to Portugal\'s rich cultural heritage while enjoying a memorable family outing.',
+        },
+        {
+          question: 'Are Fado tours available year-round?',
+          answer: 'Yes, Fado tours run throughout the year, making it a perfect activity no matter when you visit Lisbon. However, the atmosphere can vary, with outdoor performances being more common in the warmer months. It\'s always best to check with specific tour operators for their schedules and offerings.',
+        },
+        {
+          question: 'What should I wear to a Fado show?',
+          answer: 'While there\'s no strict dress code, it\'s a good idea to dress smart-casual. Many Fado venues are cozy and intimate, so wearing comfortable clothing is advisable. If you\'re attending a premium show with dinner, you might want to dress up a bit more to match the evening\'s elegance!',
+        },
+        {
+          question: 'How do I book a Fado music tour?',
+          answer: 'Booking a Fado tour is easy! You can reserve your spot online through various travel websites or directly with tour operators. It\'s recommended to book in advance, especially during peak tourist seasons, to ensure availability. Prices generally range from $45 to $100, depending on inclusions.',
+        },
+        {
+          question: 'Do Fado tours include any other activities?',
+          answer: 'Many Fado tours offer additional activities such as guided walks through historic districts, wine or food tastings, and visits to the Fado Museum. These add-ons enrich your experience, providing a fuller understanding of Lisbon\'s cultural and historical context. Check the tour details for any extras included.',
+        },
+        {
+          question: 'What\'s the best time to experience Fado in Lisbon?',
+          answer: 'The evening is the best time to experience Fado, as performances often start around dinner time and continue into the night. This timing adds to the intimate and emotional atmosphere of Fado music. However, afternoon matinee performances are also available for those who prefer an earlier experience.',
+        },
+      ],
+    },
+    'historic-quarter-tours': {
+      title: 'Lisbon Historic Quarter Tours',
+      subtitle: 'Explore Lisbon\'s enchanting past with guided tours through its historic quarters and iconic landmarks.',
+      categoryName: 'Historic Quarter Tours',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 25,
+        duration: '2 to 4 hours',
+      },
+      introduction: `Embark on a journey through time in Lisbon's historic quarters, where the past and present blend seamlessly! From the cobblestone streets of Alfama to the majestic grandeur of Belém, each tour offers a unique glimpse into Portugal's rich history. Discover the enchanting stories behind landmarks like the Jerónimos Monastery and São Jorge Castle, marvel at the intricate azulejos adorning ancient buildings, and feel the pulse of Fado music echoing through the alleys. Whether you're a history buff, a cultural enthusiast, or a curious traveler, these tours promise an unforgettable adventure. With knowledgeable guides leading the way, you'll uncover hidden gems and fascinating tales that make Lisbon a timeless treasure trove. Excitement awaits around every corner!`,
+      seo: {
+        title: 'Explore Lisbon\'s Historic Quarters 2025',
+        description: 'Discover Lisbon\'s historic charm in 2025! Join guided tours to iconic sites like Alfama and Belém. Book now!',
+        keywords: 'Lisbon tours, historic quarter tours, Lisbon 2025, Alfama, Belém, Lisbon history',
+      },
+      whyChoose: [
+        {
+          icon: 'HeartHandshake',
+          title: 'Local Expertise',
+          description: 'Guided by knowledgeable locals passionate about sharing Lisbon\'s rich history and hidden stories.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photogenic Spots',
+          description: 'Capture stunning views and picturesque settings perfect for memorable photos of Lisbon\'s charm.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Iconic Landmarks',
+          description: 'Visit renowned sites like São Jorge Castle and Jerónimos Monastery with insightful commentary.',
+        },
+        {
+          icon: 'Users',
+          title: 'Group or Private Tours',
+          description: 'Choose from intimate private tours or sociable group experiences tailored to your preferences.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Alfama Walking Tour',
+          description: 'Explore the oldest district of Lisbon with its narrow alleys and rich Moorish influence.',
+          features: [
+            'Local guide',
+            'Fado music spots',
+            'Stunning viewpoints',
+            'Historical insights',
+            'Cultural anecdotes',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Belém Highlights Tour',
+          description: 'Visit the iconic landmarks of Belém, including the Tower and Monastery with expert explanations.',
+          features: [
+            'Monumental history',
+            'Tasting included',
+            'River views',
+            'UNESCO sites',
+            'Modern art',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Lisbon History Tour',
+          description: 'Delve into Lisbon\'s past with visits to key historical sites and fascinating narratives.',
+          features: [
+            'Medieval history',
+            'Archaeological sites',
+            'Interactive storytelling',
+            'Expert guides',
+            'Family-friendly',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Cultural Immersion Tour',
+          description: 'Get a taste of local life, from traditional crafts to Lisbon\'s vibrant markets and cuisine.',
+          features: [
+            'Artisan workshops',
+            'Local cuisine tasting',
+            'Market visits',
+            'Cultural insights',
+            'Interactive experiences',
+          ],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Historic Quarter Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 2 to 4 hours, suitable for a morning or afternoon adventure.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Options',
+            description: 'Tours start as low as $25, offering excellent value for an enriching experience.',
+          },
+          {
+            icon: 'Users',
+            title: 'Small Groups',
+            description: 'Enjoy a personalized experience in small groups to enhance interaction and engagement.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Authentic Experiences',
+            description: 'Immerse yourself in authentic Lisbon culture with local guides and genuine interactions.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Outdoor Adventures',
+            description: 'Enjoy Lisbon\'s sunny weather with walking tours that let you soak in the vibrant atmosphere.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Historical Insights',
+            description: 'Gain a deep understanding of Lisbon\'s history through engaging stories and expert commentary.',
+          },
+        ],
+      },
+      expertTips: [
+        'Visit Alfama in the morning to avoid the crowds and enjoy the serene atmosphere.',
+        'Try the famous Pastéis de Belém after exploring the Belém district for a sweet treat!',
+        'Wear comfortable shoes; Lisbon\'s cobblestone streets can be tricky to navigate!',
+        'Take a tram ride through the city to experience Lisbon like a local!',
+        'Bring a camera for breathtaking views from Miradouro da Senhora do Monte.',
+        'Book tours in advance during peak season to secure your spot.',
+        'Learn a few Portuguese phrases to enhance your interaction with locals.',
+        'Stay hydrated! Carry a water bottle, especially during the warmer months.',
+      ],
+      faqs: [
+        {
+          question: 'What should I wear on a historic tour in Lisbon?',
+          answer: 'Comfort is key! Lisbon\'s historic quarters feature charming but uneven cobblestone streets, so wear sturdy, comfortable shoes. Dress in layers, as the weather can change quickly—light clothing for sunny days and a light jacket for cooler evenings. Always carry a hat and sunglasses, especially in summer, to protect against the sun. And don\'t forget a small backpack for essentials like water, maps, and a camera!',
+        },
+        {
+          question: 'Are the historic quarter tours suitable for families with children?',
+          answer: 'Absolutely! Many tours are designed to be family-friendly, offering interactive elements that engage younger travelers. Guides often incorporate stories, legends, and fun facts to keep children entertained. However, it\'s always a good idea to check with the tour provider about specific age recommendations and any special accommodations that might be available for families with young kids. Snacks and breaks are usually included!',
+        },
+        {
+          question: 'How can I book a historic quarter tour in Lisbon?',
+          answer: 'Booking a tour is easy! Most tour operators offer online reservations through their websites. You can also find tour options on popular travel platforms like TripAdvisor or Viator. It\'s advisable to book in advance, especially during peak tourist seasons (spring and summer), to ensure availability. Some tours offer last-minute spots, so check for same-day bookings if you\'re feeling spontaneous!',
+        },
+        {
+          question: 'What language are the tours conducted in?',
+          answer: 'Most historic quarter tours in Lisbon are conducted in English, given its popularity among international tourists. However, many tour operators also offer guides fluent in Portuguese, Spanish, and French. If you require a specific language, it\'s best to inquire ahead of time to ensure your guide can accommodate your needs. Multilingual tours are often available, enhancing the experience for diverse groups!',
+        },
+        {
+          question: 'Is tipping expected on these tours?',
+          answer: 'While tipping is not mandatory, it is appreciated! If you enjoyed your tour and found your guide informative and engaging, a small tip is a great way to show your appreciation. A typical tip ranges from €5 to €10, depending on the duration and quality of the tour. Remember, a heartfelt \'thank you\' goes a long way if you\'re unable to tip monetarily!',
+        },
+        {
+          question: 'Can I customize a private tour of Lisbon\'s historic quarters?',
+          answer: 'Yes, many tour operators offer customizable private tours tailored to your interests and schedule. Whether you wish to focus on specific historical sites, cultural experiences, or even combine different elements, private tours can be personalized to fit your desires. Discuss your preferences with the tour provider in advance to plan an itinerary that maximizes your Lisbon adventure!',
+        },
+        {
+          question: 'What attractions are included in a typical historic quarter tour?',
+          answer: 'A typical historic quarter tour in Lisbon might include visits to iconic sites such as São Jorge Castle, the Lisbon Cathedral, and the narrow streets of Alfama. Tours often highlight the stunning viewpoints like Miradouro de Santa Catarina and Miradouro das Portas do Sol. You\'ll also experience the local culture through visits to Fado houses and traditional markets, making for a comprehensive exploration of Lisbon\'s past and present!',
+        },
+        {
+          question: 'Are there any accessibility considerations I should be aware of?',
+          answer: 'Lisbon\'s historic quarters, with their charming but steep and narrow streets, can be challenging for those with mobility issues. Many areas, especially in Alfama, have limited vehicle access. However, some tours are designed with accessibility in mind, offering alternative routes or transport options. It\'s crucial to check with the tour provider about specific accessibility accommodations to ensure a comfortable experience for everyone!',
+        },
+      ],
+    },
+  },
+
+  'lofoten-islands': {
+    'fishing-village-tours': {
+      title: 'Lofoten Islands Fishing Village Tours',
+      subtitle: 'Explore Lofoten Islands\' charming fishing villages amidst majestic Arctic landscapes!',
+      categoryName: 'Fishing Village Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 75,
+        duration: '2 to 8 hours',
+      },
+
+      introduction: `Embark on a journey through the Lofoten Islands' enchanting fishing villages, where Arctic beauty meets rich maritime heritage. These tours offer an intimate glimpse into the traditional Norwegian lifestyle, surrounded by dramatic landscapes and crystal-clear waters. From the iconic red rorbu cabins of Reine to the picturesque harbor of Henningsvær, each village tells its own story. Delight in fresh seafood delicacies, learn about the rich history of cod fishing, and capture unforgettable views of the Northern Lights. Perfect for history enthusiasts, nature lovers, and cultural explorers alike, these tours reveal the hidden gems of Norway's northern paradise. With diverse experiences ranging from guided walking tours to immersive cultural workshops, there's something for every traveler to discover!`,
+
+      seo: {
+        title: 'Lofoten Islands Fishing Village Tours 2025',
+        description: 'Discover charming fishing villages in Lofoten Islands with our 2025 tours. Book your unforgettable adventure today!',
+        keywords: 'Lofoten fishing village tours, Arctic tours, Norway travel 2025, cultural experiences Lofoten',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Experiences',
+          description: 'Immerse yourself in the authentic Norwegian fishing heritage and enjoy traditional coastal life.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Spectacular Scenery',
+          description: 'Capture breathtaking views of Lofoten\'s dramatic landscapes and picturesque fishing villages.',
+        },
+        {
+          icon: 'Anchor',
+          title: 'Rich Maritime History',
+          description: 'Learn about the important role of fishing in Lofoten\'s history and economy from local experts.',
+        },
+        {
+          icon: 'Star',
+          title: 'Culinary Delights',
+          description: 'Savor fresh seafood straight from the Arctic waters, a true treat for your taste buds.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Anchor',
+          title: 'Guided Village Walks',
+          description: 'Explore charming villages with local guides who share fascinating stories and insights.',
+          features: [
+            'Reine',
+            'Henningsvær',
+            'Svolvær',
+            'Photography spots',
+            'Cultural insights',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Boat Tours',
+          description: 'Sail through the stunning archipelago, discovering hidden gems and wildlife.',
+          features: [
+            'Wildlife watching',
+            'Sea views',
+            'Photography',
+            'Local guides',
+            'Comfortable vessels',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Cultural Workshops',
+          description: 'Participate in workshops to learn traditional crafts and local cooking.',
+          features: [
+            'Craft making',
+            'Cooking classes',
+            'Local experts',
+            'Hands-on experience',
+            'Cultural immersion',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Capture the breathtaking beauty of Lofoten with guidance from professional photographers.',
+          features: [
+            'Northern Lights',
+            'Sunsets',
+            'Dramatic landscapes',
+            'Professional tips',
+            'Ideal locations',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Destination Category Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last from 2 hours for quick village walks to 8 hours for full-day experiences.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Unique Locations',
+            description: 'Visit renowned sites like Reine, Nusfjord, and Å, each with unique stories and views.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Options',
+            description: 'Prices start as low as $75, providing a range of options to suit your budget.',
+          },
+          {
+            icon: 'Sailboat',
+            title: 'Experienced Guides',
+            description: 'Knowledgeable local guides provide deep insights into the culture and history of Lofoten.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Cultural Interaction',
+            description: 'Engage with locals and experience their way of life, enriching your travel experience.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Scenic Beauty',
+            description: 'Enjoy stunning Arctic landscapes, from towering peaks to serene waters, perfect for photography.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit during the summer for the Midnight Sun or winter for the Northern Lights!',
+        'Book tours in advance, especially during peak seasons, to secure your spot.',
+        'Wear layers and waterproof clothing; Arctic weather can be unpredictable!',
+        'Try stockfish, a local delicacy, for an authentic taste of Lofoten.',
+        'Bring a camera with extra batteries to capture the stunning landscapes!',
+        'Learn a few Norwegian phrases to enhance your cultural interactions.',
+        'Consider taking a boat tour for a unique perspective of the islands.',
+        'Explore lesser-known villages like Ballstad for a quieter experience.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best time to visit Lofoten for fishing village tours?',
+          answer: 'The best time to visit Lofoten for fishing village tours is between May and September. During these months, you can experience the Midnight Sun, offering extended daylight hours ideal for exploring. If you\'re interested in witnessing the Northern Lights, consider visiting between October and March. Each season offers a unique view of Lofoten\'s beauty, but summer provides the best weather for outdoor activities and village tours!',
+        },
+        {
+          question: 'Are the fishing village tours suitable for families?',
+          answer: 'Absolutely! Many fishing village tours in Lofoten are family-friendly, offering activities that cater to all ages. Guided walks are educational, providing children with insights into the region\'s history and culture. Boat tours are also a hit with families, offering the excitement of spotting wildlife like sea eagles and seals. Always check with the tour provider for any age restrictions or recommendations to ensure a smooth experience for your family.',
+        },
+        {
+          question: 'What should I pack for a fishing village tour in Lofoten?',
+          answer: 'Packing smartly can significantly enhance your experience in Lofoten! Layered clothing is essential due to the unpredictable Arctic weather. Waterproof jackets and shoes are a must, especially if you plan to participate in boat tours. Don\'t forget your camera for capturing the stunning views, and bring along any personal items like sunscreen and sunglasses. A small backpack is useful for carrying snacks and water during longer tours.',
+        },
+        {
+          question: 'Can I book a private fishing village tour?',
+          answer: 'Yes, many tour operators in Lofoten offer private fishing village tours, which can be customized to your interests and schedule. Private tours provide a more personalized experience, allowing you to explore at your own pace with a dedicated guide. These are ideal for small groups or families seeking an intimate exploration of the islands. Be sure to book in advance, as private tours can fill up quickly during peak seasons!',
+        },
+        {
+          question: 'Is there a lot of walking involved in the village tours?',
+          answer: 'The amount of walking depends on the specific tour you choose. Guided village walks involve moderate walking, usually over flat terrain, making them accessible to most travelers. For those less inclined to walk, boat tours offer a comfortable way to see the villages from the water with minimal physical activity. Always check with the tour provider for specifics regarding the physical demands of each tour.',
+        },
+        {
+          question: 'What kind of wildlife can I see during the tours?',
+          answer: 'Lofoten is a haven for wildlife enthusiasts! On your tours, you might spot majestic sea eagles soaring overhead, seals lounging on the rocks, and various seabirds. During boat tours, keep an eye out for porpoises and even orcas in the surrounding waters. The rich ecosystem of the islands offers plenty of opportunities for wildlife sightings, adding an exciting element to your adventure!',
+        },
+        {
+          question: 'Are meals included in the fishing village tours?',
+          answer: 'Meal inclusions vary by tour. Some full-day tours offer meals as part of the package, often featuring local seafood delicacies. It\'s always best to check with your tour operator regarding meal arrangements. For half-day tours, meals are typically not included, but there are plenty of local eateries in the villages where you can sample traditional Norwegian dishes.',
+        },
+        {
+          question: 'How do I get to the Lofoten Islands for the tours?',
+          answer: 'Reaching the Lofoten Islands is part of the adventure! You can fly into the small airports of Leknes or Svolvær, with connections from Oslo or Bodø. Alternatively, take a scenic ferry ride from Bodø to Moskenes or Svolvær. Once on the islands, car rentals are available and recommended for exploring the villages at your own pace. Public buses also connect major towns and villages, offering a convenient option for travelers.',
+        },
+      ],
+    },
+
+    'northern-lights-tours': {
+      title: 'Lofoten Islands Northern Lights Tours',
+      subtitle: 'Experience the magic of the Northern Lights in Lofoten\'s stunning Arctic landscapes!',
+      categoryName: 'Northern Lights Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 150,
+        duration: '4 to 7 hours',
+      },
+
+      introduction: `Embark on an unforgettable Northern Lights journey in the enchanting Lofoten Islands, where the Arctic beauty and dramatic landscapes set the perfect stage for this celestial spectacle. Known for its picturesque fishing villages and towering fjords, Lofoten offers a variety of Northern Lights tours that cater to every adventurer's spirit. Whether you're a thrill-seeker or a serenity lover, you'll find options ranging from snowshoe hikes to cozy, guided van tours. Imagine standing on the shores of a quiet bay, like those near Svolvær, as the auroras dance across the night sky in hues of green and purple. These tours not only promise awe-inspiring views but also insights into local Sami culture and Arctic wildlife. Ideal for photographers, families, and solo travelers, a Northern Lights tour in Lofoten is your ticket to a magical winter wonderland. Don't miss the chance to witness one of nature's most mesmerizing phenomena!`,
+
+      seo: {
+        title: 'Lofoten Northern Lights Tours 2025',
+        description: 'Discover Lofoten\'s Northern Lights magic with expert-guided tours. Book now for an unforgettable Arctic adventure!',
+        keywords: 'Lofoten Northern Lights, Arctic tours, Norway aurora tours, winter adventures, Lofoten travel 2025',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Stunning Landscapes',
+          description: 'Experience the breathtaking beauty of Lofoten\'s fjords and mountains under the aurora borealis.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Cultural Insights',
+          description: 'Learn about local Sami traditions and Arctic wildlife from knowledgeable guides.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Opportunities',
+          description: 'Capture unforgettable moments with expert tips on photographing the Northern Lights.',
+        },
+        {
+          icon: 'Users',
+          title: 'Small Group Tours',
+          description: 'Enjoy a personalized experience in intimate groups for enhanced comfort and engagement.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Boat Tours',
+          description: 'Glide through serene Arctic waters for a unique perspective of the Northern Lights.',
+          features: [
+            'Calm sea experience',
+            'Photographic opportunities',
+            'Local guides',
+            'Warm onboard environment',
+            'Wildlife spotting',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Guided Van Tours',
+          description: 'Travel comfortably to prime viewing spots with expert guidance and storytelling.',
+          features: [
+            'Heated transport',
+            'Guided by experts',
+            'Cultural insights',
+            'Flexible itineraries',
+            'Family-friendly',
+          ],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Snowshoe Adventures',
+          description: 'Trek through snowy landscapes to find perfect Northern Light vantage points.',
+          features: [
+            'Active exploration',
+            'All gear provided',
+            'Small groups',
+            'Safety briefings',
+            'Incredible vistas',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Photography Tours',
+          description: 'Join a specialized tour focused on capturing the perfect aurora shots.',
+          features: [
+            'Photography guidance',
+            'Best locations',
+            'Tripod rentals',
+            'Post-processing tips',
+            'Nighttime adventure',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Destination Category Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 4 to 7 hours, depending on weather conditions and tour type.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Expert Guides',
+            description: 'Local guides share insights into the Northern Lights, cultural history, and wildlife.',
+          },
+          {
+            icon: 'Shirt',
+            title: 'Dress Warmly',
+            description: 'Prepare for cold temperatures with layers and winter accessories.',
+          },
+          {
+            icon: 'Star',
+            title: 'Starry Nights',
+            description: 'Experience the stunning clarity of the Arctic night sky, far from city lights.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography Tips',
+            description: 'Learn how to capture the auroras beautifully, even with a smartphone.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Remote Locations',
+            description: 'Access secluded spots for the best aurora viewing, away from light pollution.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Check the aurora forecast online for optimal viewing times.',
+        'Dress in multiple layers to stay warm during the night tours.',
+        'Bring a tripod for steady and clear photos of the Northern Lights.',
+        'Consider booking a tour that includes a warm drink or meal.',
+        'Choose a tour that offers photography guidance if you\'re keen on capturing the lights.',
+        'Be patient; Northern Lights sightings can require some waiting.',
+        'Look for tours starting from Svolvær for easy access to great viewing spots.',
+        'Listen to your guide\'s instructions for the best experience and safety.',
+      ],
+
+      faqs: [
+        {
+          question: 'When is the best time to see the Northern Lights in Lofoten?',
+          answer: 'The best time to witness the Northern Lights in Lofoten is between September and April, with peak activity often occurring in the colder months of December through February. During these months, the nights are longest, providing more hours of darkness to catch a glimpse of the auroras. Tours typically operate in the evening, beginning around 6 or 7 PM, and can continue until late, around midnight or even 2 AM. Keep an eye on the weather conditions and aurora forecasts for the best chance to see them!',
+        },
+        {
+          question: 'How much does a Northern Lights tour cost?',
+          answer: 'A Northern Lights tour in the Lofoten Islands generally starts at around $150 USD per person, though prices can vary based on inclusions and duration. Some tours may offer additional amenities like photography workshops or meals, which can increase the price to $200 or more. It\'s a good idea to book in advance, especially during peak season, to secure your spot and ensure you choose the tour that best suits your interests and budget.',
+        },
+        {
+          question: 'What should I wear on a Northern Lights tour?',
+          answer: 'Dressing appropriately for a Northern Lights tour is essential due to the cold Arctic climate. Wear thermal layers, a waterproof outer layer, and insulated boots. Don\'t forget hats, gloves, and scarves to protect against the cold wind. Most tours provide additional gear like snowshoes or extra blankets, but it\'s best to inquire in advance. Staying warm will ensure you enjoy the experience without discomfort!',
+        },
+        {
+          question: 'Are Northern Lights tours suitable for children?',
+          answer: 'Yes, many Northern Lights tours in Lofoten are family-friendly and suitable for children. Guided van tours are particularly popular with families, as they offer a warm and comfortable way to experience the auroras. Always check with the tour operator regarding age restrictions or specific child-friendly offerings. Some tours provide educational insights into the science behind the auroras, making it a fun learning experience for kids!',
+        },
+        {
+          question: 'Can I see the Northern Lights without a tour?',
+          answer: 'While it\'s possible to see the Northern Lights independently, joining a tour enhances your chances significantly. Tour guides are experts in predicting aurora activity and know the best, least light-polluted spots for viewing. Plus, tours often provide informative commentary about the lights and local culture, making it a richer experience. If you choose to go solo, consider staying in rural areas with clear skies and minimal light interference.',
+        },
+        {
+          question: 'What is the chance of seeing the Northern Lights?',
+          answer: 'The chance of seeing the Northern Lights varies with weather conditions and solar activity. On clear nights with high aurora activity, your chances increase significantly. Tour operators typically schedule outings based on aurora forecasts to maximize sightings, but nature can be unpredictable. It\'s always good to plan for multiple nights if possible, enhancing your opportunities to witness this extraordinary phenomenon. Keep an open mind and enjoy the journey!',
+        },
+        {
+          question: 'What happens if the Northern Lights are not visible?',
+          answer: 'If the Northern Lights are not visible during your tour, many operators offer discounts or the opportunity to join another tour at a reduced rate. This gesture ensures you leave with a memorable experience, even if the lights are elusive. Additionally, the tours often include other activities like stargazing or storytelling, providing value and entertainment. Always check the operator\'s policy on non-sightings before booking.',
+        },
+        {
+          question: 'How can I capture the best photos of the Northern Lights?',
+          answer: 'Capturing the Northern Lights requires a bit of preparation. Use a tripod to stabilize your camera and set a long exposure time to capture the light movements. A wide-angle lens is ideal for encompassing the vast sky. Adjust your ISO and aperture settings according to the darkness and light intensity. If you\'re not confident in your skills, consider a photography tour where guides provide expert advice and assistance on capturing stunning aurora images!',
+        },
+      ],
+    },
+
+    'midnight-sun-tours': {
+      title: 'Lofoten Islands Midnight Sun Tours',
+      subtitle: 'Experience the magic of the Midnight Sun phenomenon with 24-hour daylight in Arctic paradise!',
+      categoryName: 'Midnight Sun Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 70,
+        duration: '2 to 10 hours',
+      },
+
+      introduction: `Experience the magic of the Midnight Sun in the stunning Lofoten Islands, where the sun never sets from late May to mid-July! This unique natural phenomenon creates an extraordinary ambiance, perfect for adventurers and photographers. Imagine kayaking through clear fjords under the endless glow, hiking the rugged peaks of Reinebringen with panoramic views, or simply soaking in the serene beauty of Haukland Beach at midnight. The Lofoten Islands are renowned for their dramatic landscapes, picturesque fishing villages like Henningsvær, and vibrant local culture. Midnight Sun Tours here are a gateway to exploring these wonders in the most enchanting light imaginable!`,
+
+      seo: {
+        title: 'Midnight Sun Tours in Lofoten Islands - Complete Guide | Best Tours & Experiences',
+        metaDescription: 'Discover the best Midnight Sun Tours in Lofoten Islands! Expert guide to experiencing the midnight sun phenomenon. Book top-rated tours with flexible cancellation.',
+        keywords: 'lofoten midnight sun, lofoten 24 hour daylight, lofoten summer tours, arctic midnight sun',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Sun',
+          title: '24-Hour Daylight',
+          description: 'Explore iconic spots like Reinebringen and Henningsvær under the never-setting sun.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Paradise',
+          description: 'Capture the unique Arctic light illuminating fishing villages and dramatic landscapes.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Extended Adventures',
+          description: 'More time for exploring, from midnight kayaking to late-night hiking expeditions.',
+        },
+        {
+          icon: 'Star',
+          title: 'Unique Arctic Experience',
+          description: 'Witness nature\'s wonders in the surreal atmosphere of endless daylight.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Midnight Sun Kayaking',
+          description: 'Paddle through the tranquil fjords of Lofoten under the midnight sun! This tour takes you to the serene waters around Skrova Island.',
+          features: [
+            'Guided paddle through Skrova Fjord',
+            'Wildlife spotting',
+            'Sunset over the Arctic Ocean',
+            'Local seafood tasting',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Reinebringen Midnight Hike',
+          description: 'Challenge yourself with a midnight hike up Reinebringen! Enjoy a breathtaking 360-degree view of the Lofoten archipelago.',
+          features: [
+            'Panoramic views from Reinebringen',
+            'Sunset and sunrise in one view',
+            'Guided hike',
+            'Photo opportunities',
+          ],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Fishing Village Exploration',
+          description: 'Explore charming fishing villages like Henningsvær and Nusfjord, where traditional Norwegian culture meets the midnight sun.',
+          features: [
+            'Guided village tours',
+            'Local history insights',
+            'Art galleries and shops',
+            'Meet local artisans',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Beach Bonfire Experience',
+          description: 'Enjoy a cozy bonfire on Haukland Beach as the sun hovers above the horizon.',
+          features: [
+            'Bonfire on Haukland Beach',
+            'Storytelling and folklore',
+            'Marshmallow roasting',
+            'Stargazing and sunset watching',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Full-Day Island Adventure',
+          description: 'Immerse yourself in the Lofoten Islands with a full-day tour covering iconic spots and hidden gems.',
+          features: [
+            'Guided island tour',
+            'Visit to Svolvær and Å',
+            'Nature walks and village visits',
+            'Local cuisine tasting',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Destination Category Tours',
+        items: [
+          {
+            icon: 'Sun',
+            title: 'Endless Daylight',
+            description: 'Experience 24-hour daylight from late May to mid-July for extended adventures.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Unique Photography',
+            description: 'Capture the sun\'s reflection on water for stunning effects.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Iconic Locations',
+            description: 'Visit Reine, Haukland Beach, and Henningsvær Lighthouse.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Local Culture',
+            description: 'Engage with local artisans and experience Norwegian coastal life.',
+          },
+          {
+            icon: 'Clock',
+            title: 'Flexible Timing',
+            description: 'Tours available at all hours thanks to continuous daylight.',
+          },
+          {
+            icon: 'Users',
+            title: 'Expert Guides',
+            description: 'Knowledgeable local guides share insights about the midnight sun phenomenon.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit Reine, Haukland Beach, and the Henningsvær Lighthouse for the best views of the midnight sun.',
+        'Use a tripod for longer exposures and capture the sun\'s reflection on water for stunning effects.',
+        'Pack a light jacket, camera, snacks, and a reusable water bottle.',
+        'Late June offers the most vibrant midnight sun experience with clear skies and warm temperatures.',
+        'Expect mild temperatures, but bring layers as it can get chilly at night.',
+        'Book popular tours at least two months in advance during peak summer.',
+        'Locals recommend visiting lesser-known spots like the village of Å for a more tranquil experience.',
+        'Bring a sleep mask to help adjust to the unusual light conditions.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Midnight Sun?',
+          answer: 'The Midnight Sun is a natural phenomenon occurring in summer months in places north of the Arctic Circle, where the sun remains visible at midnight. In the Lofoten Islands, this means extended daylight hours from May to July, offering unique opportunities for sightseeing, photography, and experiencing nature in a way that is impossible elsewhere. The Lofoten scenery, with its dramatic peaks and serene fjords, becomes even more striking under this perpetual light.',
+        },
+        {
+          question: 'How should I prepare for a Midnight Sun tour?',
+          answer: 'Preparation is key for enjoying Midnight Sun tours! Bring a good camera to capture the stunning landscapes, dress in layers as temperatures can vary, and don\'t forget sunglasses to protect your eyes from the bright sun. A sleep mask is also handy to help adjust to the unusual light conditions. Make sure to book tours in advance, especially during the peak season of June and July, to secure your spot.',
+        },
+        {
+          question: 'Can I experience the Midnight Sun if I visit in August?',
+          answer: 'While the Midnight Sun officially ends in mid-July, visiting in early August still offers long daylight hours, although the sun will dip below the horizon at night. This is a great time to experience the Lofoten Islands with slightly fewer tourists and still ample daylight for activities. You can enjoy beautiful sunsets and sunrises that blend into one another, making it a magical time to visit.',
+        },
+        {
+          question: 'What activities can I do during a Midnight Sun tour?',
+          answer: 'Midnight Sun tours in Lofoten offer a plethora of activities! You can hike iconic trails like Reinebringen, kayak in the calm waters of Skrova, explore charming fishing villages like Henningsvær, or simply enjoy a beach bonfire on Haukland Beach. Each activity is enhanced by the unique lighting, offering an unforgettable Arctic experience!',
+        },
+        {
+          question: 'Is the Midnight Sun visible every night?',
+          answer: 'Yes, during the Midnight Sun season from late May to mid-July, the sun doesn\'t set in the Lofoten Islands. This phenomenon occurs due to the tilt of the Earth\'s axis, allowing the Arctic regions to experience continuous daylight for several weeks. Clear skies and good weather conditions make for the best viewing experiences.',
+        },
+        {
+          question: 'Are there any cultural events during the Midnight Sun?',
+          answer: 'Absolutely! The Midnight Sun season is vibrant with cultural events. In Lofoten, you can enjoy local music festivals, art exhibitions in Henningsvær, and traditional seafood feasts. Engaging with these events is a fantastic way to immerse yourself in the local culture while experiencing the unique daylight phenomenon.',
+        },
+        {
+          question: 'How does the Midnight Sun affect daily life in Lofoten?',
+          answer: 'The Midnight Sun significantly impacts daily life in Lofoten by extending the hours available for work and leisure. Locals often take advantage of the extra daylight for outdoor activities, and it\'s not uncommon to see people hiking or fishing late into the night. The endless daylight energizes both residents and tourists, making the summer months a lively time in the islands.',
+        },
+        {
+          question: 'What are the best places to stay during the Midnight Sun season?',
+          answer: 'Lofoten offers a range of accommodations perfect for Midnight Sun seekers. Stay in traditional rorbuer (fishermen\'s cabins) in villages like Reine or Hamnøy for a charming experience. For a more luxurious stay, consider hotels with panoramic views of the fjords. Booking early is recommended as these popular options fill up quickly during peak season.',
+        },
+      ],
+    },
+
+    'hiking-and-nature-tours': {
+      title: 'Lofoten Islands Hiking & Nature Tours',
+      subtitle: 'Immerse in Arctic beauty with Lofoten Islands\' stunning hikes and serene nature tours.',
+      categoryName: 'Hiking & Nature Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 150,
+        duration: '2-8 hours',
+      },
+
+      introduction: `Embark on a journey through the enchanting Lofoten Islands, where rugged peaks touch the Arctic sky, and quaint fishing villages cradle the coastline. These hiking and nature tours offer an unparalleled experience to explore Norway's northern paradise. Whether you're scaling the dramatic heights of Reinebringen or wandering through the serene valleys of Henningsvær, each trail unveils breathtaking vistas and diverse wildlife. Travelers will discover hidden gems like the isolated beach of Kvalvika or the majestic Trollfjord. Perfect for adventurers, nature enthusiasts, and photographers, the Lofoten Islands promise unforgettable memories. From challenging hikes to leisurely nature walks, these tours cater to all levels of explorers, ensuring an incredible Arctic adventure!`,
+
+      seo: {
+        title: 'Lofoten Islands Hiking & Nature Tours 2025',
+        description: 'Explore Lofoten Islands with stunning hikes and serene nature tours. Book your Arctic adventure now!',
+        keywords: 'Lofoten hiking, nature tours Norway, Arctic adventure, Reinebringen hike, Lofoten Islands 2025',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Sun',
+          title: 'Endless Daylight',
+          description: 'Experience the Midnight Sun, extending your hiking adventures into the night.',
+        },
+        {
+          icon: 'Waves',
+          title: 'Spectacular Fjords',
+          description: 'Explore dramatic fjords like Trollfjord, offering unique natural beauty and wildlife.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Local Culture',
+          description: 'Immerse in the charming culture of fishing villages like Nusfjord and Henningsvær.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photographic Opportunities',
+          description: 'Capture stunning landscapes and wildlife, perfect for photography enthusiasts.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Guided Hikes',
+          description: 'Led by local experts, discover iconic trails such as Reinebringen and Munkebu.',
+          features: [
+            'Expert guides',
+            'Safety equipment',
+            'Local insights',
+            'Photography tips',
+            'Flexible itineraries',
+          ],
+        },
+        {
+          icon: 'Sailboat',
+          title: 'Fjord Exploration',
+          description: 'Cruise through majestic fjords like Trollfjord, witnessing wildlife and scenic beauty.',
+          features: [
+            'Boat tours',
+            'Wildlife spotting',
+            'Comfortable seating',
+            'Onboard commentary',
+            'Refreshments included',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Family Nature Walks',
+          description: 'Gentle walks suitable for all ages, exploring the flora and fauna of Lofoten.',
+          features: [
+            'Family-friendly',
+            'Educational',
+            'Short distances',
+            'Interactive guides',
+            'Nature games',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Cultural Tours',
+          description: 'Visit historic fishing villages and learn about Lofoten\'s rich maritime heritage.',
+          features: [
+            'Cultural insights',
+            'Local cuisine',
+            'Historic landmarks',
+            'Artisanal crafts',
+            'Engaging stories',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Destination Category Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2 to 8 hours, catering to both short excursions and full-day adventures.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Seasonal Variety',
+            description: 'Experience the Midnight Sun in summer or the Northern Lights in winter.',
+          },
+          {
+            icon: 'Anchor',
+            title: 'Accessible Locations',
+            description: 'Tours begin from easily accessible towns like Svolvær and Leknes.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Educational Insights',
+            description: 'Learn about the unique geology and ecology of the Arctic region.',
+          },
+          {
+            icon: 'Shirt',
+            title: 'Comfortable Gear',
+            description: 'Quality outdoor gear provided for all weather conditions.',
+          },
+          {
+            icon: 'Star',
+            title: 'Personalized Experience',
+            description: 'Small group sizes ensure a personalized and immersive experience.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Plan your visit during the Midnight Sun season for extended daylight hiking.',
+        'Book guided tours to access insider knowledge and ensure safety on challenging trails.',
+        'Visit Reinebringen early in the morning to avoid crowds and enjoy the sunrise.',
+        'Layer your clothing to adapt to the changing weather conditions in the Arctic.',
+        'Capture the Northern Lights with long-exposure settings on your camera for stunning photos.',
+        'Try local delicacies like stockfish and boknafisk in traditional Lofoten eateries.',
+        'Respect local wildlife by maintaining a safe distance and avoiding disruptions.',
+        'Bring a reusable water bottle to stay hydrated during long hikes in remote areas.',
+      ],
+
+      faqs: [
+        {
+          question: 'What are the best hikes in Lofoten?',
+          answer: 'Lofoten offers numerous breathtaking hikes. Reinebringen and Munkebu are must-see trails with stunning views! Reinebringen rewards you with panoramic vistas of Reine and the surrounding fjords, while Munkebu offers a serene journey through the heart of the islands. Always check trail conditions and consider hiring a guide for challenging routes.',
+        },
+        {
+          question: 'When is the best time to visit Lofoten for hiking?',
+          answer: 'The best time for hiking in Lofoten is during the summer months, from June to August, when the Midnight Sun provides extended daylight. This period offers warmer temperatures and accessible trails. For a unique experience, visit in the shoulder seasons of May or September for fewer crowds and vibrant autumn colors.',
+        },
+        {
+          question: 'What should I bring for a hiking tour in Lofoten?',
+          answer: 'Pack layers suitable for changing weather, sturdy hiking boots, a waterproof jacket, a hat, gloves, snacks, and a water bottle. Don\'t forget your camera for capturing the stunning landscapes! If you\'re joining a guided tour, many provide safety equipment and gear, so check with your tour provider.',
+        },
+        {
+          question: 'Are there family-friendly hikes in Lofoten?',
+          answer: 'Absolutely! The Lofoten Islands offer several family-friendly trails, such as the walk to Kvalvika Beach, which is gentle yet rewarding. These hikes are ideal for families with children and provide opportunities to learn about local flora and fauna. Always ensure to choose hikes that suit your family\'s ability and stamina.',
+        },
+        {
+          question: 'How do I get to the Lofoten Islands?',
+          answer: 'Travelers can reach Lofoten by flying into Harstad/Narvik Airport and then taking a ferry or driving via the scenic E10 highway. Alternatively, you can arrive by sea, with cruise ships and ferries operating from Bodø and other coastal towns. Plan your journey in advance to ensure availability and accommodation.',
+        },
+        {
+          question: 'Can I see the Northern Lights in Lofoten?',
+          answer: 'Yes, Lofoten is a fantastic location to witness the Northern Lights, especially from September to April. For the best experience, choose a clear, dark night away from city lights. Consider joining a guided tour for expert tips on capturing the aurora and learning about this natural phenomenon.',
+        },
+        {
+          question: 'What wildlife might I see on a nature tour?',
+          answer: 'Lofoten is home to a variety of wildlife, including sea eagles, puffins, otters, and seals. On fjord tours, you might spot cetaceans like orcas and humpback whales. Always keep a respectful distance and follow the guidance of your tour leader to ensure safe and responsible wildlife viewing.',
+        },
+        {
+          question: 'Are there any cultural sites to visit?',
+          answer: 'Definitely! The Lofoten Islands boast rich cultural heritage sites, including the Lofotr Viking Museum and the picturesque fishing villages of Nusfjord and Henningsvær. These locations offer a glimpse into the lives of past and present Lofoten inhabitants, with opportunities to enjoy local crafts and cuisine. Explore at your own pace or join a cultural tour for in-depth insights.',
+        },
+      ],
+    },
+
+    'fjord-and-boat-tours': {
+      title: 'Lofoten Islands Fjord & Boat Tours',
+      subtitle: 'Explore Lofoten Islands\' fjords and waterways amidst stunning Arctic landscapes and charming villages.',
+      categoryName: 'Fjord & Boat Tours',
+      
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 75,
+        duration: '2-6 hours',
+      },
+
+      introduction: `Embark on an unforgettable journey through the fjords of the Lofoten Islands, where dramatic peaks rise from the sea, vibrant fishing villages cling to rocky shores, and wildlife thrives. This unique destination offers a diverse range of fjord and boat tours that allow travelers to experience the Arctic's raw beauty from the water. Whether you're navigating the serene waters of Trollfjord, spotting sea eagles, or exploring the historic village of Henningsvær, each tour offers a new perspective. Perfect for adventurers, nature lovers, and photographers alike, these tours reveal the hidden gems of Norway's northern paradise. From intimate kayak excursions to larger boat trips with local guides, there's a perfect tour for every traveler. Discover secluded beaches, watch playful seals, and feel the magic of the Midnight Sun or Northern Lights dancing across the sky. Join us on a boat tour in Lofoten and create memories that will last a lifetime!`,
+
+      seo: {
+        title: 'Lofoten Islands Fjord & Boat Tours 2025',
+        description: 'Explore Lofoten\'s fjords in 2025! Book now for stunning landscapes, wildlife spotting, and Arctic adventures.',
+        keywords: 'Lofoten Islands tours, fjord tours Norway, boat tours Lofoten, Arctic boat trips, Lofoten travel 2025',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Anchor',
+          title: 'Breathtaking Scenery',
+          description: 'Marvel at the iconic fjords and rugged mountain peaks of the Lofoten Islands.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Wildlife Encounters',
+          description: 'Spot majestic sea eagles, seals, and perhaps even orcas in their natural habitat.',
+        },
+        {
+          icon: 'Sailboat',
+          title: 'Variety of Tours',
+          description: 'Choose from intimate kayak tours, fishing trips, or larger boat excursions.',
+        },
+        {
+          icon: 'Sun',
+          title: 'Midnight Sun & Northern Lights',
+          description: 'Experience the magical Arctic phenomena of the Midnight Sun and Northern Lights.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Sailboat',
+          title: 'Kayak Fjord Tours',
+          description: 'Paddle through tranquil waters and explore hidden inlets up close.',
+          features: [
+            'Guided tours',
+            'Equipment included',
+            'Wildlife spotting',
+            'Suitable for beginners',
+            '2-3 hours',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Wildlife & Sightseeing Cruises',
+          description: 'Cruise the fjords and watch for wildlife with expert guides.',
+          features: [
+            'Sea eagle safaris',
+            'Comfortable boats',
+            'Local guides',
+            'Photography opportunities',
+            '3-4 hours',
+          ],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Fishing Adventures',
+          description: 'Try your hand at traditional fishing in rich Arctic waters.',
+          features: [
+            'All gear provided',
+            'Catch and release',
+            'Learn from locals',
+            'Family-friendly',
+            '4-5 hours',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Evening Northern Lights Tours',
+          description: 'Chase the Northern Lights from the water for a unique view.',
+          features: [
+            'Warm clothing provided',
+            'Hot drinks included',
+            'Expert commentary',
+            'Stunning night views',
+            '3-5 hours',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Destination Category Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2 to 6 hours, depending on the type and itinerary.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography Opportunities',
+            description: 'Capture the stunning landscapes and unique wildlife of Lofoten.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Unique Light Conditions',
+            description: 'Experience the Midnight Sun in summer or Northern Lights in winter.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Local Culture',
+            description: 'Learn about the history and traditions of Lofoten\'s fishing communities.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Comfort & Safety',
+            description: 'All tours include necessary safety equipment and comfortable boats.',
+          },
+          {
+            icon: 'Users',
+            title: 'Friendly Guides',
+            description: 'Knowledgeable local guides enhance your experience with stories and insights.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book in advance during peak seasons (June-August) to secure your spot.',
+        'Dress in layers and bring waterproof clothing, as weather can change quickly.',
+        'Bring a good camera or smartphone for capturing the stunning landscapes.',
+        'Keep an eye out for sea eagles; they are often seen during boat tours!',
+        'Try a local seafood dish onboard for a true taste of Lofoten.',
+        'Evening tours can be cooler; bring extra layers for warmth.',
+        'If you\'re prone to seasickness, consider taking medication beforehand.',
+        'Check the weather forecast but be prepared for quick changes.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best time of year for fjord tours in Lofoten?',
+          answer: 'The best time for fjord tours in Lofoten is during the summer months (June to August) when the weather is milder, and the Midnight Sun provides extended daylight hours. However, winter tours (December to February) offer the chance to see the Northern Lights. Each season offers unique experiences, so choose based on your interests!',
+        },
+        {
+          question: 'Are the boat tours suitable for children?',
+          answer: 'Yes, many boat tours in Lofoten are family-friendly and suitable for children. Options like wildlife cruises or fishing trips are especially enjoyable for kids. Safety gear is provided, and guides are experienced in ensuring a safe and fun experience for all ages. Always check with the tour operator for specific age recommendations and child discounts.',
+        },
+        {
+          question: 'What should I wear on a fjord and boat tour?',
+          answer: 'Dress in layers to adapt to changing weather conditions. Waterproof jackets and pants are highly recommended, along with sturdy waterproof shoes. Even in summer, temperatures can be cool, so bring warm clothing. For evening tours, additional layers or a warm blanket might be necessary. Most tours provide life vests and other necessary safety equipment.',
+        },
+        {
+          question: 'Can I see the Northern Lights on a boat tour?',
+          answer: 'Yes! Many boat tours offer special Northern Lights excursions from October to March. Viewing the aurora from the water can be a magical experience as there\'s less light pollution. Remember that sightings depend on weather and solar activity, so there\'s never a guarantee. However, the experience is thrilling, and the guides are knowledgeable about optimizing chances for a sighting.',
+        },
+        {
+          question: 'Are meals included on the tours?',
+          answer: 'Some longer tours, particularly those lasting over four hours, may include meals or snacks. Always check with the tour operator for specifics. Shorter tours may offer light refreshments or the chance to purchase food on board. Bringing your own snacks is also a good idea, especially if you have dietary restrictions.',
+        },
+        {
+          question: 'What wildlife might I see during a tour?',
+          answer: 'Lofoten\'s waters are teeming with life! You may encounter sea eagles, seals, and various seabirds. Occasionally, orcas and other whales are spotted, especially during the winter months. Guides are adept at pointing out wildlife and sharing insights about the local ecosystem, enhancing your wildlife viewing experience.',
+        },
+        {
+          question: 'Do I need experience for a kayak tour?',
+          answer: 'No experience is necessary for most kayak tours. They are designed for all skill levels, and guides provide a safety briefing and basic instruction before setting out. Kayaks and safety equipment are provided, making it a perfect opportunity for beginners to explore the fjords at a leisurely pace.',
+        },
+        {
+          question: 'What languages are the tours conducted in?',
+          answer: 'Most tours in Lofoten are conducted in English, and many guides also speak Norwegian. Some tour operators may offer guides who speak other languages. It\'s best to check with the tour provider beforehand if you require a tour in a specific language to ensure availability and enhance your experience.',
+        },
+      ],
+    },
+
+    'photography-tours': {
+      title: 'Lofoten Islands Photography Tours',
+      subtitle: 'Capture the ethereal beauty of Lofoten\'s landscapes and vibrant Arctic skies on a photography tour!',
+      categoryName: 'Photography Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 150,
+        duration: '3 to 7 days',
+      },
+
+      introduction: `Lofoten Islands Photography Tours offer an unparalleled opportunity to capture the raw beauty of Norway's northern paradise. As you navigate through the dramatic peaks, pristine fjords, and charming fishing villages, your camera will become a window to the soul of the Arctic. These tours cater to both amateur and professional photographers, offering a range of experiences from capturing the magical Northern Lights to the sun-drenched midnight sun. Discover iconic locations such as Reine and Hamnøy, where red cabins contrast against the azure waters, and hike up Ryten for panoramic views of Kvalvika Beach. Whether you're enchanted by the serene beauty of Nusfjord or the rugged peaks of Moskenesøya, Lofoten's landscapes promise to inspire. Ideal for nature lovers, adventurers, and those seeking a unique Arctic experience, these tours also provide in-depth guidance from local photography experts to enhance your skills and capture the perfect shot.`,
+
+      seo: {
+        title: 'Lofoten Islands Photography Tours 2025',
+        description: 'Explore Lofoten through photography tours in 2025. Capture Northern Lights & fjords. Book now!',
+        keywords: 'Lofoten photography tours, Northern Lights photography, Arctic landscapes photography tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Camera',
+          title: 'Unmatched Scenery',
+          description: 'Capture iconic natural wonders like the Northern Lights and jagged peaks of Lofoten.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guidance',
+          description: 'Learn from seasoned photographers who know the best spots and techniques.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Passionate Community',
+          description: 'Join a group of like-minded photography enthusiasts for a memorable journey.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Exclusive Locations',
+          description: 'Access to off-the-beaten-path sites for unique photographic opportunities.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Sun',
+          title: 'Midnight Sun Tours',
+          description: 'Experience 24-hour daylight in summer and capture the unique glow of the midnight sun.',
+          features: [
+            '24-hour daylight',
+            'Golden hour magic',
+            'Scenic hikes',
+            'Expert guidance',
+            'Photography workshops',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Northern Lights Tours',
+          description: 'Seek out the magical auroras with expert guides and capture the dance of the Northern Lights.',
+          features: [
+            'Aurora hunting',
+            'Night photography tips',
+            'Remote locations',
+            'Warm refreshments',
+            'Local expertise',
+          ],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Coastal Villages Tour',
+          description: 'Photograph the charming fishing villages nestled among fjords and mountains.',
+          features: [
+            'Scenic villages',
+            'Cultural insights',
+            'Sunset photography',
+            'Boat excursions',
+            'Local cuisine',
+          ],
+        },
+        {
+          icon: 'Clock',
+          title: 'Day Trips & Hikes',
+          description: 'Short, focused tours to iconic locations for breathtaking views and perfect shots.',
+          features: [
+            'Short hikes',
+            'Iconic spots',
+            'Professional tips',
+            'All skill levels',
+            'Transport included',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Destination Category Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 3-day intensive sessions to week-long explorations.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Unique Lighting',
+            description: 'Experience dramatic contrasts of Arctic light, from midnight sun to polar night.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Expert Instruction',
+            description: 'Receive tailored photography advice and workshops to improve your skills.',
+          },
+          {
+            icon: 'Anchor',
+            title: 'Cultural Insights',
+            description: 'Learn about the rich history and culture of the Lofoten fishing communities.',
+          },
+          {
+            icon: 'Sailboat',
+            title: 'Adventure',
+            description: 'Engage in optional activities like kayaking and hiking for diverse perspectives.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Memorable Experiences',
+            description: 'Capture unforgettable moments in one of the world\'s most photogenic regions.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Pack layers! Weather in Lofoten can change rapidly, affecting your shooting conditions.',
+        'Bring a tripod for stability during long exposure Northern Lights photography.',
+        'Use polarizing filters to reduce glare and enhance the natural colors of the fjords.',
+        'Scout locations during the day to plan your shots for the perfect golden hour capture.',
+        'Respect local customs and ask permission before photographing people or private properties.',
+        'Experiment with different lenses to capture both grand landscapes and intricate details.',
+        'Consider renting a car to access remote locations and hidden gems at your own pace.',
+        'Stay informed about weather forecasts to maximize your chances of seeing the Northern Lights.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best time to visit for photography tours?',
+          answer: 'The best time for photography tours in Lofoten depends on what you want to capture! For the Midnight Sun, visit between late May and mid-July. To photograph the Northern Lights, the best time is from September to April. Each season offers unique lighting and photography opportunities, from the pastel skies of winter to the vibrant colors of autumn.',
+        },
+        {
+          question: 'What photography equipment should I bring?',
+          answer: 'For your Lofoten photography tour, bring a sturdy tripod, a range of lenses (wide-angle for landscapes, telephoto for wildlife), and spare batteries since cold weather can drain them quickly. A weather-sealed camera body is ideal to withstand the elements. Don\'t forget a polarizing filter to reduce glare and increase color saturation, and plenty of memory cards to store your stunning captures!',
+        },
+        {
+          question: 'Are photography tours suitable for beginners?',
+          answer: 'Absolutely! Lofoten photography tours cater to all skill levels. Beginners will benefit from the guidance of expert photographers who offer tips and workshops to enhance their skills. Advanced photographers will appreciate the access to unique locations and the opportunity to refine their techniques. The tours are designed to be inclusive and educational for everyone.',
+        },
+        {
+          question: 'How physically demanding are the tours?',
+          answer: 'The physical demands vary by tour type. While some tours involve easy walks and minimal exertion, others, like the hiking tours, may require moderate fitness levels. Day trips and village tours are generally accessible, while hiking tours to locations like Ryten or Reinebringen offer more of a challenge. Always check tour descriptions for specific requirements.',
+        },
+        {
+          question: 'What is the accommodation like during the tours?',
+          answer: 'Accommodations during Lofoten photography tours range from cozy cabins to comfortable guesthouses, often situated in scenic locations. Expect modern amenities combined with traditional Norwegian charm. Some tours include meals, offering a taste of local cuisine. Be sure to confirm what\'s included in your tour package when booking.',
+        },
+        {
+          question: 'What is the cancellation policy for photography tours?',
+          answer: 'Cancellation policies vary by tour operator, but generally, you can expect a full refund if you cancel up to 30 days before the tour starts. Partial refunds may be available for cancellations made 15-29 days in advance. Always confirm the specific terms with your chosen tour provider to avoid any surprises.',
+        },
+        {
+          question: 'Can I customize my photography tour?',
+          answer: 'Many tour operators offer customizable options to tailor the experience to your interests. Whether you want to focus more on landscapes, wildlife, or cultural sites, tour guides are usually happy to accommodate special requests. It\'s best to discuss your preferences when booking to ensure a personalized experience.',
+        },
+        {
+          question: 'What is the best way to travel to Lofoten?',
+          answer: 'Traveling to Lofoten typically involves flying into Oslo, then taking a domestic flight to Bodø or Evenes, followed by a ferry or a scenic drive to the islands. Renting a car is recommended for flexibility and access to remote photography spots. Public transport is available but can be infrequent, so plan accordingly!',
+        },
+      ],
+    },
+  },
+
+  london: {
+    'buckingham-palace-tours': {
+      title: 'London Buckingham Palace Tours',
+      subtitle: 'Explore royal opulence and history with exclusive Buckingham Palace tours in London.',
+      categoryName: 'Buckingham Palace Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 45,
+        duration: '1-3 hours',
+      },
+
+      introduction: `Step into the regal world of British royalty with a tour of Buckingham Palace, the epicenter of the British monarchy! Nestled in the heart of London, this iconic residence offers visitors a unique glimpse into royal life, showcasing grand architecture, opulent State Rooms, and the breathtaking Changing of the Guard ceremony. Whether you're a history buff, architecture enthusiast, or culture seeker, these tours cater to all. Marvel at the exquisite art collections, wander through the lush gardens, and uncover the stories behind the throne. From guided tours that delve into royal history to self-paced audio tours that allow for exploration at your own rhythm, the variety is as vast as it is exciting. Perfect for families, solo travelers, or couples, a visit to Buckingham Palace is an unforgettable highlight of any London adventure!`,
+
+      seo: {
+        title: 'Buckingham Palace Tours 2025 | Explore Royal London',
+        description: 'Discover the grandeur of Buckingham Palace in 2025 with exclusive tours. Book your royal experience now!',
+        keywords: 'Buckingham Palace tours, London royal tours, 2025 London attractions, Buckingham Palace tickets, London sightseeing',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Royal Experience',
+          description: 'Immerse yourself in the quintessential British royal experience at Buckingham Palace.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Iconic Photographs',
+          description: 'Capture stunning photos of the iconic façade and Changing of the Guard.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Rich History',
+          description: 'Learn fascinating royal history from expert guides during your tour.',
+        },
+        {
+          icon: 'Users',
+          title: 'Family Friendly',
+          description: 'Enjoy tours designed to captivate visitors of all ages, from kids to adults.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Guided Palace Tour',
+          description: 'An expert-led exploration of Buckingham Palace\'s opulent State Rooms.',
+          features: [
+            'Expert guide',
+            'State Rooms access',
+            'Historical insights',
+            'Small group size',
+            'Photo opportunities',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Audio Tour',
+          description: 'Explore at your own pace with an informative audio guide.',
+          features: [
+            'Flexible timing',
+            'Detailed audio commentary',
+            'Self-paced exploration',
+            'Multilingual options',
+            'Garden access',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Family Tour',
+          description: 'Engaging for all ages, this tour includes interactive elements for kids.',
+          features: [
+            'Family-friendly guides',
+            'Interactive activities',
+            'Engaging storytelling',
+            'Child-friendly pace',
+            'Educational insights',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tour',
+          description: 'Focus on capturing the perfect shots with guidance from a photography expert.',
+          features: [
+            'Photography tips',
+            'Best angles',
+            'Guided shots',
+            'Access to prime spots',
+            'Camera-friendly itinerary',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Buckingham Palace Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Guided tours last around 2-3 hours; audio tours offer flexible timing.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Royal Insight',
+            description: 'In-depth insights into the monarchy\'s history and significance.',
+          },
+          {
+            icon: 'Star',
+            title: 'Exclusive Access',
+            description: 'Access to the opulent State Rooms and beautiful gardens.',
+          },
+          {
+            icon: 'Users',
+            title: 'Engaging Experiences',
+            description: 'Interactive elements and storytelling to captivate all visitors.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography Opportunities',
+            description: 'Perfect spots for capturing the grandeur of the palace.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Pricing',
+            description: 'Tours start at just $45, offering great value for a royal experience.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book your tickets in advance to secure your preferred time slot!',
+        'Visit during the Changing of the Guard for an iconic experience.',
+        'Opt for the audio tour if you prefer a flexible schedule.',
+        'Arrive early to avoid the crowds and enjoy a quieter experience.',
+        'Check the weather and dress comfortably, as some areas are outdoors.',
+        'Bring a camera for stunning photos, but note indoor photography restrictions.',
+        'Utilize multilingual audio guides if English is not your first language.',
+        'Consider visiting in the afternoon for a more relaxed tour atmosphere.',
+      ],
+
+      faqs: [
+        {
+          question: 'Do I need to book Buckingham Palace tours in advance?',
+          answer: 'Yes! It\'s highly recommended to book your Buckingham Palace tours in advance, especially during peak tourist seasons. This ensures you secure a spot at your preferred time and avoid long lines. Tickets can sell out quickly, so booking online is the best option. Prices start at $45 for adults, with discounts for children and seniors. Don\'t miss the chance to explore this iconic royal residence!',
+        },
+        {
+          question: 'What is the best time to visit Buckingham Palace?',
+          answer: 'The best time to visit Buckingham Palace is during the summer months when the State Rooms are open to the public. Mornings tend to be less crowded, allowing for a more leisurely experience. Additionally, try to coincide your visit with the Changing of the Guard ceremony, which takes place at 11:00 AM on certain days, offering a classic British spectacle!',
+        },
+        {
+          question: 'Can I take photos inside Buckingham Palace?',
+          answer: 'Photography is allowed in the gardens and exterior areas of Buckingham Palace but is restricted inside the State Rooms. This policy is in place to preserve the delicate furnishings and artwork. Be sure to capture the stunning façade and gardens, and respect the no-photography rule inside to maintain the palace\'s ambiance and heritage.',
+        },
+        {
+          question: 'Are there guided tours available in languages other than English?',
+          answer: 'Absolutely! Buckingham Palace offers audio guides in multiple languages, including French, Spanish, German, Italian, Japanese, and Mandarin. These guides provide comprehensive information, ensuring all visitors can fully appreciate the rich history and grandeur of the palace, regardless of their native language.',
+        },
+        {
+          question: 'Is the palace accessible for visitors with disabilities?',
+          answer: 'Yes, Buckingham Palace is committed to accessibility. There are provisions for wheelchair users, and assistance is available if needed. Certain tours are specifically designed to accommodate visitors with mobility challenges, ensuring everyone can enjoy the royal experience. It\'s advisable to notify the staff in advance to ensure the best possible arrangements.',
+        },
+        {
+          question: 'What should I wear when visiting Buckingham Palace?',
+          answer: 'While there\'s no strict dress code, it\'s advisable to dress smartly out of respect for the royal setting. Comfortable shoes are a must, as the tours involve quite a bit of walking. If attending a garden event or special occasion, you might want to check if there\'s a specific dress code to follow.',
+        },
+        {
+          question: 'Can I bring food and drinks into Buckingham Palace?',
+          answer: 'Food and drinks are not allowed inside the State Rooms to help preserve the historic interiors. However, there are dining facilities on site where you can enjoy refreshments before or after your tour. Picnics are welcome in designated areas of the gardens during certain events, so check in advance if this option is available during your visit.',
+        },
+        {
+          question: 'What is the Changing of the Guard and when can I see it?',
+          answer: 'The Changing of the Guard is a traditional ceremony involving the Queen\'s Guard at Buckingham Palace. It\'s a colorful and musical spectacle, usually held at 11:00 AM on Mondays, Wednesdays, Fridays, and Sundays. The schedule can change, so it\'s best to confirm ahead of your visit. Arrive early to secure a good viewing spot and enjoy this quintessentially British tradition!',
+        },
+      ],
+    },
+
+    'tower-of-london-tours': {
+      title: 'London Tower of London Tours',
+      subtitle: 'Discover the Tower of London: history, secrets, and stunning royal artifacts await!',
+      categoryName: 'Tower of London Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 40,
+        duration: '1.5 to 3 hours',
+      },
+
+      introduction: `Dive into the captivating world of the Tower of London, where history comes alive! This iconic fortress, once a royal palace and notorious prison, offers an array of tours that cater to history buffs, families, and curious travelers alike. Marvel at the dazzling Crown Jewels, stand in the footsteps of Anne Boleyn, and hear tales from the Yeoman Warders, also known as Beefeaters. Each tour promises a unique glimpse into this UNESCO World Heritage Site's rich past, from its ancient walls to its modern-day ceremonial role. Whether you prefer a guided walk, an audio tour, or a night-time adventure, the Tower of London never ceases to enthrall with its tales of intrigue, betrayal, and power. Perfect for solo adventurers, families, and history enthusiasts, these tours promise a memorable experience steeped in the splendor and mystery of British heritage.`,
+
+      seo: {
+        title: 'Tower of London Tours 2025: Discover Iconic History',
+        description: 'Explore the Tower of London in 2025! Book now for exclusive tours, history, and royal artifacts.',
+        keywords: 'Tower of London tours, London history tours, Crown Jewels tours, Beefeater tours, London attractions',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Historical Insight',
+          description: 'Explore over a thousand years of history with expert guides and captivating stories.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Iconic Photography',
+          description: 'Capture stunning views of the Tower and the Thames from unique vantage points.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Family Friendly',
+          description: 'Engage the whole family with interactive tours suitable for all ages.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Learn from the best with passionate guides who bring history to life.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Guided Tours',
+          description: 'Expert-led tours offering in-depth historical insights.',
+          features: [
+            'Yeoman Warder tales',
+            'Crown Jewels viewing',
+            'Prisoner stories',
+            'Ravens of the Tower',
+            'Thames view',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Audio Tours',
+          description: 'Self-paced tours with audio guides available in multiple languages.',
+          features: [
+            'Multilingual options',
+            'Flexible timing',
+            'Detailed commentary',
+            'Interactive maps',
+            'Insightful anecdotes',
+          ],
+        },
+        {
+          icon: 'Calendar',
+          title: 'Night Tours',
+          description: 'Experience the Tower after dark with exclusive access.',
+          features: [
+            'Evening ambiance',
+            'Unique perspectives',
+            'Limited group size',
+            'Special stories',
+            'Ghostly encounters',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Family Tours',
+          description: 'Interactive tours designed for children and families.',
+          features: [
+            'Kid-friendly guides',
+            'Interactive activities',
+            'Educational experiences',
+            'Treasure hunts',
+            'Storytelling sessions',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Tower of London Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 1.5 to 3 hours, depending on your choice.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Pricing',
+            description: 'Tours start at $40, offering great value for an enriching experience.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Group Sizes',
+            description: 'Tours are available in small groups to ensure personalized attention.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Weather Considerations',
+            description: 'Tours run in all weather; dress accordingly for comfort and enjoyment.',
+          },
+          {
+            icon: 'Anchor',
+            title: 'Access Points',
+            description: 'Easily accessible from central London, with nearby public transport links.',
+          },
+          {
+            icon: 'PartyPopper',
+            title: 'Special Events',
+            description: 'Look out for themed tours and seasonal events throughout the year.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book tickets online in advance to secure your spot and avoid queues!',
+        'Arrive early to explore the Tower grounds before they get busy.',
+        'Don\'t miss the Ceremony of the Keys, a unique nightly tradition!',
+        'Wear comfortable shoes for the cobblestone paths and stairs.',
+        'Check the schedule for special family-friendly events and activities.',
+        'Visit the White Tower to see the impressive armor collection.',
+        'Catch the Yeoman Warder tours for fascinating, free storytelling.',
+        'Bring a camera for breathtaking views of the city skyline!',
+      ],
+
+      faqs: [
+        {
+          question: 'What are the Tower of London opening hours?',
+          answer: 'The Tower of London typically opens at 9 AM and closes at 5:30 PM, with last entries at 4:30 PM. During winter, timings may vary slightly, opening at 10 AM on Sundays and Mondays. Always check the official website for the most current opening hours before planning your visit!',
+        },
+        {
+          question: 'Can I buy tickets on the day?',
+          answer: 'While it is possible to purchase tickets at the gate, it\'s highly recommended to book online in advance. This ensures availability and often provides a discount. Prices start from $40 for adults, with concessions available for children, seniors, and families.',
+        },
+        {
+          question: 'Is the Tower of London suitable for children?',
+          answer: 'Absolutely! The Tower is a fantastic destination for families. Kids will love the interactive exhibits, the iconic ravens, and the engaging family trails. Special family tours and events are often available, making it a memorable experience for all ages.',
+        },
+        {
+          question: 'Are there guided tours available?',
+          answer: 'Yes, guided tours led by the Yeoman Warders are a highlight and included in the ticket price. These tours are packed with fascinating stories and historical insights and run regularly throughout the day. Be sure to join one for a complete experience!',
+        },
+        {
+          question: 'What is the best time to visit the Tower of London?',
+          answer: 'For a more serene experience, visit during the week or early in the morning when the crowds are thinner. Avoid weekends and school holidays if possible. The Tower is particularly beautiful in the spring and fall, offering pleasant weather and stunning views.',
+        },
+        {
+          question: 'Is there food available at the Tower of London?',
+          answer: 'Yes, there are several dining options within the Tower grounds, including cafes and restaurants offering a variety of meals and snacks. From traditional British fare to light bites, there\'s something for every palate. You can also bring your own picnic to enjoy in designated areas.',
+        },
+        {
+          question: 'How do I get to the Tower of London?',
+          answer: 'The Tower is conveniently located in central London and is easily accessible by public transport. Tower Hill Underground Station is the nearest stop, just a 5-minute walk away. Several bus routes and riverboats also serve the area, making it easy to reach from any part of the city.',
+        },
+        {
+          question: 'What should I wear when visiting the Tower?',
+          answer: 'Comfort is key! Wear comfortable footwear as you\'ll be walking on cobblestones and climbing stairs. Dress in layers to adapt to the weather, as the Tower is both indoors and outdoors. Keep an umbrella handy in case of rain, typical of London\'s weather!',
+        },
+      ],
+    },
+
+    'big-ben-and-parliament-tours': {
+      title: 'London Big Ben & Parliament Tours',
+      subtitle: 'Explore iconic Big Ben and Parliament tours in historic, vibrant London!',
+      categoryName: 'Big Ben & Parliament Tours',
+      
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 25,
+        duration: '1-3 hours',
+      },
+
+      introduction: `Discover the very heart of London where history meets grandeur — Big Ben and the Houses of Parliament! These tours offer an unparalleled glimpse into the UK's political epicenter. Wander through the majestic corridors of Parliament, famous for their rich history and stunning Gothic architecture. Hear the chimes of Big Ben that have marked London's time for over a century. Whether you're a history buff eager to delve into British politics or a cultural enthusiast keen on architectural wonders, there's a tour for you. Experience the iconic Westminster Bridge and capture the perfect shot of the Thames River. From guided tours with expert historians to self-paced audio explorations, the variety ensures every traveler finds their perfect fit. Feel the pulse of British democracy and soak in the stories that shaped a nation!`,
+
+      seo: {
+        title: 'Big Ben & Parliament Tours London 2025',
+        description: 'Explore London\'s iconic Big Ben and Parliament with our top tours in 2025! Book now.',
+        keywords: 'Big Ben tours, Parliament tours, London sightseeing, iconic London tours, London 2025',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Iconic Views',
+          description: 'Capture unforgettable views of London from Westminster Bridge and iconic spots!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Rich History',
+          description: 'Delve into centuries of British history with expert guides!',
+        },
+        {
+          icon: 'Users',
+          title: 'Family Friendly',
+          description: 'Fun for all ages with interactive experiences and educational insights!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photographic Opportunities',
+          description: 'Perfect spots for capturing London\'s most photographed landmarks!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Users',
+          title: 'Guided Walking Tours',
+          description: 'Join an expert guide for an immersive experience through London\'s political heart.',
+          features: [
+            'Expert guides',
+            'Historic insights',
+            'Exclusive access',
+            'Small groups',
+            'Interactive sessions',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Audio Tours',
+          description: 'Explore at your own pace with informative audio guides detailing the history and architecture.',
+          features: [
+            'Flexible schedule',
+            'Detail-rich narration',
+            'Offline access',
+            'Multilingual options',
+            'Historic facts',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Capture the best angles of Big Ben and Parliament with a photography expert.',
+          features: [
+            'Photography tips',
+            'Best vantage points',
+            'Iconic landmarks',
+            'Artistic guidance',
+            'Small groups',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'VIP Tours',
+          description: 'Enjoy exclusive access and a personalized experience with a private guide.',
+          features: [
+            'Private guide',
+            'Tailored itinerary',
+            'Exclusive areas',
+            'Flexible timing',
+            'Personalized experience',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Big Ben & Parliament Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 1 to 3 hours, depending on the type chosen.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Location Highlights',
+            description: 'Visit the iconic Big Ben, Westminster Hall, and the House of Commons.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Options',
+            description: 'Tours start at just $25, offering great value for unforgettable experiences.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Cultural Insights',
+            description: 'Learn about British political history and culture from knowledgeable guides.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Capture stunning images of London\'s most famous landmarks.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Sizes',
+            description: 'Tours cater to small groups, ensuring a personalized and engaging experience.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book tickets online in advance to secure your spot, especially during peak seasons.',
+        'Early morning tours offer the best lighting for photography at Big Ben.',
+        'Combine your tour with a River Thames cruise for a unique perspective.',
+        'Wear comfortable shoes as tours involve a fair amount of walking.',
+        'Check for any scheduled Parliament sessions for a chance to see British politics in action.',
+        'Bring a raincoat or umbrella; London weather can be unpredictable!',
+        'Explore nearby attractions like Westminster Abbey for a full day of history.',
+        'Use the official Parliament app for additional insights during your visit.',
+      ],
+
+      faqs: [
+        {
+          question: 'How can I book a tour of Big Ben and Parliament?',
+          answer: 'Booking a tour is easy! You can reserve your spot online through various travel websites or the official Parliament site. Prices generally start at $25. It\'s recommended to book in advance, especially during peak tourist seasons, to ensure availability. Many tours offer flexible cancellation policies, so you can plan worry-free!',
+        },
+        {
+          question: 'What should I wear for the tour?',
+          answer: 'Comfort is key! Wear comfortable footwear as tours often involve walking and standing. Dress in layers to adapt to the changing London weather. A light jacket or raincoat is advisable, and remember, photography is encouraged, so bring your camera!',
+        },
+        {
+          question: 'Can I visit Big Ben?',
+          answer: 'Currently, entry inside Big Ben is restricted to UK residents through prior arrangements. However, you can marvel at its grandeur from the outside. Guided tours provide fascinating details about its history and significance. Don\'t forget to capture its iconic clock face from Westminster Bridge!',
+        },
+        {
+          question: 'Are tours suitable for children?',
+          answer: 'Absolutely! Many tours are designed to be educational and engaging for younger visitors. Family-friendly tours often include interactive activities to keep children entertained and informed about British history and culture. Check tour descriptions for specific age recommendations.',
+        },
+        {
+          question: 'What language are the tours conducted in?',
+          answer: 'Most tours are conducted in English, but many offer multilingual audio guides or live translations in popular languages like Spanish, French, and German. Check with the tour provider for specific language options available on your chosen date.',
+        },
+        {
+          question: 'Is photography allowed during the tours?',
+          answer: 'Yes, photography is encouraged! Capture the beauty of Big Ben and the Houses of Parliament from various vantage points. Some areas may have restrictions, so always follow the guide\'s instructions for the best experience and respect for the site.',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'The best time to visit is during the spring and autumn when the weather is pleasant and the crowds are thinner. Early morning or late afternoon tours often provide the best lighting for photography and a more intimate experience with fewer tourists.',
+        },
+        {
+          question: 'Are there any dining options nearby?',
+          answer: 'Yes, the area around Big Ben and Parliament offers a variety of dining options, from traditional British pubs to international cuisine. Enjoy a meal at the nearby Borough Market or a classic afternoon tea at a local café to complete your London experience!',
+        },
+      ],
+    },
+
+    'food-and-pub-tours': {
+      title: 'London Food & Pub Tours',
+      subtitle: 'Explore London\'s vibrant culinary scene and historic pubs on unforgettable guided tours.',
+      categoryName: 'Food & Pub Tours',
+      
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 45,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Embark on a culinary journey through the heart of London, where rich history and a diverse food culture intertwine. London Food & Pub Tours offer an incredible opportunity to taste your way through iconic neighborhoods like Soho and Covent Garden, while sipping pints in historic pubs where literary greats once gathered. Discover the bustling food markets of Borough and Camden, and indulge in everything from traditional fish and chips to gourmet street food. Whether you're a foodie eager to uncover hidden gastronomic gems or a history buff thrilled by the tales of centuries-old taverns, these tours promise an immersive experience. With expert guides leading the way, you'll delve into local traditions, meet passionate makers, and savor the vibrant flavors that make London a global culinary capital. Join us for an adventure that delights the senses and connects you with the city's soul!`,
+
+      seo: {
+        title: 'Top Food & Pub Tours in London 2025',
+        description: 'Discover London\'s best food and pub tours in 2025. Taste local flavors, explore historic pubs. Book now!',
+        keywords: 'London food tours, London pub tours, London culinary experiences, historic pubs London',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Experience',
+          description: 'Immerse yourself in local culture by tasting authentic dishes and visiting historic pubs.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Expert Guides',
+          description: 'Led by knowledgeable locals who share captivating stories and insider tips.',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Diverse Cuisine',
+          description: 'From traditional British fare to international delights, explore London\'s diverse food scene.',
+        },
+        {
+          icon: 'Users',
+          title: 'Small Groups',
+          description: 'Enjoy personalized attention and a more intimate experience with smaller group sizes.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Sun',
+          title: 'Gourmet Walking Tour',
+          description: 'Explore renowned food markets and taste gourmet street food with an expert guide.',
+          features: [
+            'Borough Market',
+            'Artisan cheese tasting',
+            'Gourmet street food',
+            'Artisanal chocolates',
+            'Craft beer sampling',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Historic Pub Crawl',
+          description: 'Visit iconic pubs with rich histories and enjoy traditional British ales.',
+          features: [
+            'Covent Garden',
+            'Literary pub history',
+            'Traditional ales',
+            'Pub snacks',
+            'Local guide insights',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Food Photography Tour',
+          description: 'Capture the vibrant food scene with guidance from a professional photographer.',
+          features: [
+            'Photo tips',
+            'Street food stalls',
+            'Colorful markets',
+            'Instagram hotspots',
+            'Culinary storytelling',
+          ],
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Evening Gourmet Tour',
+          description: 'Experience the city\'s culinary delights after dark with exclusive tastings.',
+          features: [
+            'Soho eateries',
+            'Wine pairings',
+            'Dessert stop',
+            'Chef interactions',
+            'Nightlife vibes',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Food & Pub Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 2-4 hours, allowing for a relaxed exploration.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Pricing',
+            description: 'Tours start at $45, offering great value for immersive experiences.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Friendly Atmosphere',
+            description: 'Enjoy a welcoming environment as you meet fellow food enthusiasts and locals.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Insights',
+            description: 'Gain a deeper understanding of London\'s culinary history and cultural diversity.',
+          },
+          {
+            icon: 'Star',
+            title: 'Exclusive Access',
+            description: 'Experience behind-the-scenes access and unique tastings not available to the general public.',
+          },
+          {
+            icon: 'Users',
+            title: 'Community Feel',
+            description: 'Connect with local food producers, chefs, and beer brewers during your tour.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit Borough Market on weekdays to avoid the weekend crowds and enjoy a more leisurely experience.',
+        'Try the traditional pie and mash with liquor at a historic East End pie shop for an authentic taste of London.',
+        'Join a nighttime pub tour to discover secret bars and speakeasies hidden in the city\'s alleys.',
+        'Wear comfortable shoes as most tours involve a fair amount of walking through the city\'s cobbled streets.',
+        'Don\'t miss the chance to sample local craft beers at a microbrewery in the vibrant Camden district.',
+        'Book your tour in advance, especially during peak tourist seasons, to secure your spot.',
+        'Carry a reusable water bottle to stay hydrated while exploring the city\'s bustling food markets.',
+        'Engage with your guide and fellow travelers for personalized recommendations and a richer experience.',
+      ],
+
+      faqs: [
+        {
+          question: 'What can I expect from a London food tour?',
+          answer: 'Expect to taste a variety of dishes from iconic British classics like fish and chips to international delights. You\'ll visit famous markets like Borough and Camden, enjoy exclusive tastings, and learn about the city\'s culinary history. Tours are led by knowledgeable guides who share fascinating stories and local insights. Prices start around $45, making it an affordable way to explore London\'s diverse food scene!',
+        },
+        {
+          question: 'Are the tours suitable for vegetarians?',
+          answer: 'Absolutely! Many food tours in London cater to vegetarians, offering delicious plant-based alternatives. Be sure to mention any dietary preferences when booking, and guides will often ensure there are plenty of tasty options. From vegetarian pies to delicious falafels, London\'s food scene has something for everyone!',
+        },
+        {
+          question: 'How can I book a food or pub tour?',
+          answer: 'Booking a tour is easy and can usually be done online through tour providers\' websites. It\'s recommended to book in advance, especially during busy periods. Look for tours with flexible cancellation policies to ensure a stress-free experience. Most tours offer instant confirmation and e-tickets for convenience.',
+        },
+        {
+          question: 'What should I wear on a pub tour?',
+          answer: 'Comfort is key! Wear casual attire and comfortable shoes, as you\'ll likely be walking between venues. London\'s weather can be unpredictable, so pack a light raincoat or umbrella just in case. Pubs have a relaxed dress code, but it\'s always nice to dress up a bit for a night out!',
+        },
+        {
+          question: 'Are the tours family-friendly?',
+          answer: 'Many food tours welcome families and provide a fun, educational experience for all ages. However, pub tours are generally more suited for adults due to the nature of the venues. Always check with the tour provider regarding age restrictions and suitability for younger travelers.',
+        },
+        {
+          question: 'What is the cancellation policy for tours?',
+          answer: 'Cancellation policies vary by provider, but many offer free cancellation up to 24 hours before the tour. Some may have more flexible terms, so it\'s wise to check the specifics when booking. This ensures you have peace of mind should your plans change unexpectedly.',
+        },
+        {
+          question: 'Will I have free time during the tour?',
+          answer: 'Most tours are structured but allow for some free time to explore independently or shop for souvenirs. Guides often provide recommendations for additional stops or dining options to enjoy post-tour. This balance of guided exploration and personal time is perfect for a well-rounded experience!',
+        },
+        {
+          question: 'Do I need to tip my tour guide?',
+          answer: 'While tipping is not mandatory, it is appreciated as a gesture of gratitude for excellent service. If you enjoyed the tour and found your guide informative and engaging, a tip of around 10-15% of the tour price is a nice way to show your appreciation. It\'s always great to acknowledge the hard work and passion of your guide!',
+        },
+      ],
+    },
+
+    'museum-and-gallery-tours': {
+      title: 'London Museum & Gallery Tours',
+      subtitle: 'Discover world-class museums and galleries showcasing art, history, and culture in London!',
+      categoryName: 'Museum & Gallery Tours',
+      
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 40,
+        duration: '2-8 hours',
+      },
+
+      introduction: `London is a veritable paradise for museum and gallery enthusiasts! With its rich history and vibrant art scene, the city offers an unparalleled collection of cultural treasures. From the iconic British Museum, showcasing human history through its extensive artifacts, to the modern masterpieces housed at the Tate Modern, there's something to captivate every visitor. The National Gallery stands as a testament to classical art, housing works by Van Gogh, Monet, and Turner. Meanwhile, the Victoria & Albert Museum dazzles with its design and decorative arts collections. London's museums are not just places to observe; they're immersive experiences where history, art, and culture come alive! Whether you're discovering ancient relics or contemporary art, these institutions promise a journey through time and creativity!`,
+
+      seo: {
+        title: 'Museum & Gallery Tours in London - Complete Guide | Best Tours & Experiences',
+        metaDescription: 'Discover the best Museum & Gallery Tours in London! Expert guide to world-class museums and galleries. Book top-rated tours with flexible cancellation.',
+        keywords: 'london museums, london galleries, british museum tours, national gallery london, tate modern',
+      },
+
+      whyChoose: [
+        {
+          icon: 'BookOpen',
+          title: 'World-Class Collections',
+          description: 'Explore renowned museums like the British Museum, National Gallery, and Tate Modern.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Free Admission',
+          description: 'Many museums offer free general admission, making culture accessible to everyone.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Learn from knowledgeable guides who bring history and art to life.',
+        },
+        {
+          icon: 'Star',
+          title: 'Diverse Offerings',
+          description: 'From ancient history to contemporary art, find something for every interest.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'BookOpen',
+          title: 'Classic British Museum Tour',
+          description: 'This tour offers an in-depth exploration of the British Museum. Discover ancient artifacts like the Rosetta Stone and Egyptian mummies.',
+          features: [
+            'Rosetta Stone',
+            'Egyptian Mummies',
+            'Parthenon Sculptures',
+            'Lewis Chessmen',
+            'Expert commentary',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'National Gallery Highlights',
+          description: 'Explore the masterpieces of the National Gallery, featuring works from Leonardo da Vinci to Van Gogh.',
+          features: [
+            'Van Gogh\'s Sunflowers',
+            'Monet\'s Water Lilies',
+            'Da Vinci works',
+            'Turner paintings',
+            'Art history insights',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Tate Modern Insights',
+          description: 'Dive into the world of contemporary art at Tate Modern. From Picasso to Hockney, discover groundbreaking works.',
+          features: [
+            'Picasso works',
+            'Hockney paintings',
+            'Warhol art',
+            'Modern sculptures',
+            'Contemporary exhibitions',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Victoria & Albert Museum Experience',
+          description: 'Join a full-day tour of the V&A, exploring its vast collection of decorative arts and design.',
+          features: [
+            'Cast Courts',
+            'Fashion Collection',
+            'Tipu\'s Tiger',
+            'Renaissance Art',
+            'Design history',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Science Museum Discovery',
+          description: 'Perfect for families, this tour explores the wonders of science and technology.',
+          features: [
+            'Apollo 10 module',
+            'Interactive exhibits',
+            'Stephenson\'s Rocket',
+            'Energy Hall',
+            'Family-friendly',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Museum & Gallery Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour visits to full-day explorations of multiple museums.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Pricing',
+            description: 'Tours start at $40, with many museums offering free general admission.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Educational Insights',
+            description: 'Learn fascinating stories behind artworks and artifacts from expert guides.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography Opportunities',
+            description: 'Capture memorable moments, though some areas may have restrictions.',
+          },
+          {
+            icon: 'Users',
+            title: 'Small Groups',
+            description: 'Enjoy personalized attention in small group settings.',
+          },
+          {
+            icon: 'Star',
+            title: 'Skip-the-Line Access',
+            description: 'Many tours offer priority entry to avoid long queues.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Don\'t miss the British Museum, National Gallery, and Tate Modern. Each offers a unique glimpse into art and history!',
+        'Consider purchasing tickets online in advance or using a London Pass to save time.',
+        'Many museums, including the British Museum and Tate Modern, offer free general admission every day.',
+        'Visit early in the morning or right before closing to avoid crowds, especially at popular spots like the Natural History Museum.',
+        'Look for combination tickets or city passes that include multiple museum entries to save money.',
+        'Photography is allowed in most museums, but flash and tripods are often prohibited. Always check specific museum rules.',
+        'Locals often visit museums on weekday mornings or late afternoons to dodge the tourist rush.',
+        'Check museum websites for special exhibitions and events during your visit.',
+      ],
+
+      faqs: [
+        {
+          question: 'What are the must-see museums in London?',
+          answer: 'London boasts an array of must-see museums, including the British Museum, which offers a journey through world history, and the National Gallery, home to European masterpieces. The Tate Modern is a must for contemporary art lovers, while the Victoria & Albert Museum is perfect for design enthusiasts. Each offers unique collections and experiences that are sure to enrich your visit!',
+        },
+        {
+          question: 'Are there any free museums in London?',
+          answer: 'Yes, many of London\'s museums offer free general admission! The British Museum, Tate Modern, and the National Gallery are among those that welcome visitors without an entry fee. However, special exhibitions may require an additional ticket. These institutions aim to make culture accessible to everyone, so take advantage of these opportunities!',
+        },
+        {
+          question: 'How can I avoid crowds at popular museums?',
+          answer: 'To avoid crowds, plan your visit for weekdays and arrive early in the morning or later in the afternoon. Consider visiting during off-peak seasons such as late autumn or early spring. Booking tickets in advance can also help you skip the lines and ensure a smoother experience.',
+        },
+        {
+          question: 'Is photography allowed in museums?',
+          answer: 'Photography is generally allowed in most London museums, but there are exceptions for certain exhibits and special collections. Flash photography and tripods are often not permitted. Always check the specific rules of each museum to avoid any issues.',
+        },
+        {
+          question: 'Do I need to book museum tickets in advance?',
+          answer: 'While many museums offer free entry, booking tickets in advance for paid exhibitions is recommended, especially during peak tourist seasons. This ensures you have a spot and often allows you to bypass long lines.',
+        },
+        {
+          question: 'Can I visit multiple museums in one day?',
+          answer: 'Absolutely! With careful planning, it\'s possible to visit multiple museums in a day. Start with the British Museum in the morning, followed by the National Gallery, and finish with a visit to Tate Modern. Ensure you check opening times and travel routes in advance.',
+        },
+        {
+          question: 'What\'s the best way to get around museums in London?',
+          answer: 'Public transport is the best way to navigate London\'s museums. The Underground, buses, and even walking are efficient means of travel. Consider purchasing an Oyster card for discounted fares and easy access to all transport modes.',
+        },
+        {
+          question: 'Are there special tours available for families?',
+          answer: 'Yes, many museums offer family-friendly tours and interactive exhibits. The Science Museum and Natural History Museum are particularly popular with families, featuring hands-on displays and engaging educational programs. It\'s a great way for kids to learn while having fun!',
+        },
+      ],
+    },
+
+    'royal-london-tours': {
+      title: 'London Royal London Tours',
+      subtitle: 'Explore London\'s regal heritage with exclusive insights into the British monarchy\'s iconic landmarks.',
+      categoryName: 'Royal London Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 45,
+        duration: '2-6 hours',
+      },
+
+      introduction: `Step into the grandeur of British royalty with London's Royal London Tours! Discover the majestic allure of Buckingham Palace, witness the Changing of the Guard, and explore the historic Tower of London where the Crown Jewels reside. These tours offer a fascinating glimpse into centuries of royal history and tradition, perfect for history buffs, culture enthusiasts, or anyone dreaming of a royal adventure. Visitors can experience the opulence of Westminster Abbey, the venue for royal coronations and weddings, and stroll through the regal parks of Kensington Palace. Whether you're a solo traveler, a family on vacation, or a couple seeking a romantic escape, Royal London Tours promise an unforgettable journey through time. Feel the excitement as you walk the same paths as kings and queens, and let the stories of the monarchy captivate your imagination!`,
+
+      seo: {
+        title: 'Royal London Tours 2025 | Explore Iconic Landmarks',
+        description: 'Discover London\'s royal heritage with expert-led tours to Buckingham Palace, Tower of London & more.',
+        keywords: 'Royal London tours, London attractions, British monarchy, Buckingham Palace tours, Tower of London',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Iconic Landmarks',
+          description: 'Visit London\'s most famous royal sites like Buckingham Palace and the Tower of London.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Learn from knowledgeable guides who share fascinating stories and historical insights.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photo Opportunities',
+          description: 'Capture unforgettable photos at iconic locations and with iconic British guards!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Central Locations',
+          description: 'Conveniently located tours with easy access to other famous London attractions.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'BookOpen',
+          title: 'Historical Tours',
+          description: 'Dive deep into the history of the British monarchy with in-depth tours.',
+          features: [
+            'Buckingham Palace',
+            'Tower of London',
+            'Westminster Abbey',
+            'Kensington Palace',
+            'St. James Park',
+          ],
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Family-Friendly Tours',
+          description: 'Engaging tours perfect for families, blending fun with education.',
+          features: [
+            'Interactive guides',
+            'Royal Guard ceremony',
+            'Parks and gardens',
+            'Family discounts',
+            'Treasure hunts',
+          ],
+        },
+        {
+          icon: 'Calendar',
+          title: 'Seasonal Tours',
+          description: 'Experience special seasonal tours, including royal events and ceremonies.',
+          features: [
+            'Royal parades',
+            'Garden parties',
+            'Summer openings',
+            'Christmas decorations',
+            'Special exhibitions',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Private Tours',
+          description: 'Exclusive private tours for a personalized royal experience.',
+          features: [
+            'Custom itineraries',
+            'VIP access',
+            'Personal guide',
+            'Flexible scheduling',
+            'Luxury transportation',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Royal London Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour quick visits to 6-hour comprehensive experiences.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Pricing',
+            description: 'Tours start at $45, with options for all budgets and preferences.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Weather Preparedness',
+            description: 'Tours run rain or shine; bring an umbrella and dress in layers.',
+          },
+          {
+            icon: 'Shirt',
+            title: 'Dress Code',
+            description: 'Comfortable shoes recommended; modest dress for certain venues like churches.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Sizes',
+            description: 'Choose from small group tours or larger, more social experiences.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Accessibility',
+            description: 'Many tours are wheelchair accessible; check specific tours for details.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book tickets in advance for the Changing of the Guard to secure the best viewing spots.',
+        'Visit Buckingham Palace during the summer months when the State Rooms are open to the public.',
+        'Take an early morning tour to avoid the afternoon crowds at the Tower of London.',
+        'Bring binoculars to get a closer look at the intricate details of royal architecture.',
+        'Consider a night tour to see the illuminated splendor of London\'s royal landmarks.',
+        'Make time for the royal parks surrounding the palaces for a peaceful retreat.',
+        'Check the official royal websites for any special events during your visit.',
+        'Download a guided audio tour app for additional insights during your exploration.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best time to take a Royal London Tour?',
+          answer: 'The best time to explore Royal London is from April to September when the weather is pleasant and the gardens are in full bloom. However, visiting during winter offers a unique charm with fewer crowds and the chance to see festive decorations. Consider early morning tours to enjoy quieter experiences at popular sites like the Tower of London!',
+        },
+        {
+          question: 'Are Royal London Tours suitable for children?',
+          answer: 'Absolutely! Many Royal London Tours are designed with families in mind, offering interactive elements and engaging storytelling to capture the imaginations of young royals-in-training. Watch the Changing of the Guard, explore the historic dungeons at the Tower of London, and enjoy special family discounts, making these tours both fun and affordable!',
+        },
+        {
+          question: 'Do I need to book Royal London Tours in advance?',
+          answer: 'Yes, booking in advance is highly recommended, especially for popular tours like those of Buckingham Palace and the Tower of London. This ensures you secure a spot and often offers discounts for early bookings. Many tours offer flexible cancellation policies, making planning stress-free!',
+        },
+        {
+          question: 'Can I see the Crown Jewels?',
+          answer: 'Absolutely! The Crown Jewels are housed in the Tower of London, one of the highlights of any Royal London Tour. Visitors can marvel at these priceless symbols of the British monarchy. Arrive early or book a timed ticket to avoid long lines and enjoy an up-close view of these dazzling treasures!',
+        },
+        {
+          question: 'Are there any free royal attractions in London?',
+          answer: 'Yes! Watching the Changing of the Guard at Buckingham Palace is a fabulous free experience, as are walks through the beautiful royal parks. Explore St. James\'s Park or Kensington Gardens without spending a penny, enjoying a glimpse of royal London without breaking the bank!',
+        },
+        {
+          question: 'How can I get around to the different royal sites?',
+          answer: 'London offers excellent public transport, with the Underground providing easy access to most royal sites. Consider purchasing an Oyster card for discounted travel on buses and trains. Alternatively, many tours include transportation, providing a seamless and stress-free way to explore!',
+        },
+        {
+          question: 'What should I wear on a Royal London Tour?',
+          answer: 'Wear comfortable shoes as tours involve a lot of walking. Dress in layers to adapt to London\'s unpredictable weather and bring a waterproof jacket or umbrella. Some venues, like Westminster Abbey, require modest dress, so plan accordingly for a respectful visit!',
+        },
+        {
+          question: 'Can I take photos on Royal London Tours?',
+          answer: 'Yes, but with some restrictions! Photography is generally allowed outside the royal palaces and gardens, offering fantastic opportunities to capture iconic views. However, inside venues like Buckingham Palace, photography is often prohibited to protect the artifacts, so check the rules at each site!',
+        },
+      ],
+    },
+  },
+
+  madeira: {
+    'levada-walking-tours': {
+      title: 'Madeira Levada Walking Tours',
+      subtitle: 'Explore Madeira\'s lush landscapes with captivating levada walks through its stunning botanical paradise.',
+      categoryName: 'Levada Walking Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 30,
+        duration: '2-8 hours',
+      },
+
+      introduction: `Madeira, the floating garden of Portugal, invites you to explore its breathtaking beauty through Levada Walking Tours. These enchanting paths, originally created for irrigation, offer an unparalleled glimpse into the island's lush landscapes, vibrant flora, and dramatic vistas. Whether you're an avid hiker, a nature enthusiast, or a casual traveler, there's a levada walk tailored for you. Discover the awe-inspiring Laurel Forests, a UNESCO World Heritage site, or marvel at the cascading waterfalls of the Rabaçal Valley. From easy strolls for beginners to challenging trails for seasoned trekkers, each route promises a unique adventure. Experience the serenity of Madeira's natural wonders while enjoying the island's perfect climate. These tours are not just walks; they're journeys into the heart of Madeira's rich ecological tapestry. Get ready for an unforgettable adventure!`,
+
+      seo: {
+        title: 'Top Madeira Levada Walks 2025',
+        description: 'Discover Madeira\'s levada walks: lush trails, breathtaking vistas, and unforgettable adventures. Book your tour now!',
+        keywords: 'Madeira levada walks, hiking tours Madeira, levada trails 2025, Madeira hiking, best levada tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Breathtaking Scenery',
+          description: 'Witness the stunning beauty of Madeira\'s landscapes with lush, green vistas and dramatic cliffs.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Unique Trails',
+          description: 'Explore exclusive levada paths that showcase the island\'s unique irrigation channels and natural beauty.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Picture-Perfect Moments',
+          description: 'Capture unforgettable photos of the island\'s diverse flora, fauna, and spectacular viewpoints.',
+        },
+        {
+          icon: 'Users',
+          title: 'Guided Experiences',
+          description: 'Enjoy knowledgeable guides who share insights about Madeira\'s history, culture, and ecology.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Sun',
+          title: 'Family-Friendly Walks',
+          description: 'Gentle trails perfect for families with young children, offering easy terrain and stunning views.',
+          features: [
+            'Short distance',
+            'Gentle inclines',
+            'Accessible paths',
+            'Scenic views',
+            'Flora and fauna',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Advanced Hikes',
+          description: 'Challenging routes for experienced hikers, featuring rugged terrain and rewarding vistas.',
+          features: [
+            'Steep climbs',
+            'Rugged paths',
+            'Spectacular views',
+            'High altitude',
+            'Challenging terrain',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Cultural Tours',
+          description: 'Combine walking with cultural insights into Madeira\'s rich heritage and traditional practices.',
+          features: [
+            'Historical sites',
+            'Local guides',
+            'Cultural insights',
+            'Traditional practices',
+            'Interactive activities',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Specialized tours for photography enthusiasts, focusing on the best spots for capturing Madeira\'s beauty.',
+          features: [
+            'Best photo spots',
+            'Golden hour tours',
+            'Professional tips',
+            'Scenic landscapes',
+            'Unique perspectives',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Levada Walking Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour leisurely walks to full-day hikes, catering to various preferences.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Perfect Weather',
+            description: 'Enjoy Madeira\'s mild climate, which makes levada walking pleasant year-round.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Diverse Routes',
+            description: 'Explore a variety of trails, from lush forests to coastal cliffs, each offering unique experiences.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Stay Hydrated',
+            description: 'Guides provide tips on hydration and offer opportunities to refill water bottles along the way.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Educational Insights',
+            description: 'Learn about Madeira\'s ecology, flora, and fauna from experienced local guides.',
+          },
+          {
+            icon: 'Anchor',
+            title: 'Convenient Access',
+            description: 'Easily reachable trailheads with transport options from major accommodation areas.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Bring a lightweight rain jacket; weather can change quickly on the trails.',
+        'Start early in the morning to enjoy cooler temperatures and fewer crowds.',
+        'Wear sturdy hiking boots; some trails can be slippery or uneven.',
+        'Pack a small backpack with snacks and water to keep energized.',
+        'Use walking poles for better stability on steep or uneven paths.',
+        'Carry a camera or smartphone to capture the stunning landscapes.',
+        'Download offline maps or use a GPS device, as some areas have limited signal.',
+        'Learn a few Portuguese phrases to enhance your interactions with locals.',
+      ],
+
+      faqs: [
+        {
+          question: 'What should I wear for a levada walk?',
+          answer: 'Dress in comfortable, breathable clothing suitable for hiking. Sturdy hiking boots are recommended for the uneven terrain. A lightweight rain jacket is essential, as Madeira\'s weather can change unexpectedly. Don\'t forget a hat and sunglasses for sun protection. Pack a small backpack with essentials like water, snacks, and a camera to capture the breathtaking views you\'ll encounter along the way!',
+        },
+        {
+          question: 'Are levada walks suitable for beginners?',
+          answer: 'Absolutely! Many levada walks are ideal for beginners, with gentle gradients and well-maintained paths. Trails like Levada do Caldeirão Verde offer stunning views without too much exertion. For those new to hiking, guided tours provide extra support and insights. Be sure to choose a route that matches your fitness level, and enjoy the serene beauty of Madeira at your own pace!',
+        },
+        {
+          question: 'Do I need a guide for levada walks?',
+          answer: 'While many levada walks can be done independently, hiring a guide offers numerous benefits. Guides provide valuable insights into the history, ecology, and culture of Madeira, enhancing your experience. They can also ensure safety and help you navigate more challenging routes. For first-timers or those seeking a deeper understanding of the island, guided tours are a fantastic choice!',
+        },
+        {
+          question: 'What is the best season for levada walking?',
+          answer: 'Levada walks can be enjoyed year-round due to Madeira\'s mild climate. However, spring (March to May) and autumn (September to November) are particularly delightful, with pleasant temperatures and blooming flora. During these months, the trails are less crowded, allowing for a more tranquil experience. Whenever you visit, check the local weather forecast to prepare adequately!',
+        },
+        {
+          question: 'Can children participate in levada walks?',
+          answer: 'Yes, many levada walks are suitable for children, especially the shorter, family-friendly routes. Trails like Levada dos Balcões offer easy paths with stunning viewpoints, perfect for little explorers. Always consider your child\'s stamina and comfort level, and choose trails accordingly. Ensure they have proper footwear and a hat for sun protection. It\'s a fantastic family adventure!',
+        },
+        {
+          question: 'What wildlife might I see on a levada walk?',
+          answer: 'Madeira\'s levada walks are teeming with wildlife! Keep an eye out for endemic species like the Madeira Firecrest and the Trocaz Pigeon. You might also spot colorful butterflies and the island\'s famous laurel forests\' unique flora. Guides can point out interesting species and share fascinating facts. Don\'t forget your binoculars for bird watching and a camera to capture these moments!',
+        },
+        {
+          question: 'Are there any safety concerns I should be aware of?',
+          answer: 'Safety is paramount on levada walks. Stick to marked paths, as some areas can be slippery or steep. Bring a map or GPS device, particularly for longer trails. It\'s wise to inform someone of your plans and expected return time. Weather can change rapidly, so pack accordingly. With proper preparation, you\'ll have a safe and enjoyable adventure!',
+        },
+        {
+          question: 'How can I prepare for a long levada hike?',
+          answer: 'Preparation is key for longer levada hikes. Start with a hearty breakfast, and pack energy-rich snacks. Ensure your backpack contains sufficient water, a first-aid kit, and sun protection. Check the weather forecast and adjust your clothing layers accordingly. Familiarize yourself with the trail map, and consider hiring a guide for added safety. Most importantly, enjoy the journey!',
+        },
+      ],
+    },
+
+    'funchal-city-tours': {
+      title: 'Madeira Funchal City Tours',
+      subtitle: 'Explore Funchal\'s vibrant cityscape, rich history, and lush gardens on immersive guided tours.',
+      categoryName: 'Funchal City Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 30,
+        duration: '2 to 8 hours',
+      },
+
+      introduction: `Discover the heart of Madeira with Funchal City Tours, where every corner tells a story of culture, history, and breathtaking beauty. This vibrant city is a haven for travelers seeking to explore lush botanical gardens, such as the Monte Palace Tropical Garden, and historical sites like the 15th-century Sé Cathedral. Unveil the secrets of the island's famous wine on a tasting tour, or wander through the bustling Mercado dos Lavradores, where fresh produce and local crafts abound. From art enthusiasts to history buffs, there's something for everyone. Let the quaint streets and friendly locals guide you through an unforgettable journey that captures the true essence of Madeira. Whether you're a solo traveler, a couple, or a family, Funchal offers a unique blend of experiences that cater to every traveler's whim!`,
+
+      seo: {
+        title: 'Top Funchal City Tours 2025',
+        description: 'Explore Funchal in 2025 with guided city tours! Discover gardens, history, and local flavors. Book now!',
+        keywords: 'Funchal city tours, Madeira tours, 2025 travel, Funchal attractions, Madeira sightseeing',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Sun',
+          title: 'Year-Round Sunshine',
+          description: 'Enjoy Funchal\'s pleasant climate, making it an ideal destination any time of the year.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Cultural Richness',
+          description: 'Immerse yourself in Funchal\'s vibrant culture with its festivals, music, and art.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Stunning Scenery',
+          description: 'Capture the beauty of Funchal\'s landscapes from lush gardens to panoramic views.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Local guides share insider knowledge, ensuring a rich and informative experience.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Historical Walking Tour',
+          description: 'Stroll through Funchal\'s historic streets, exploring landmarks and hidden gems.',
+          features: [
+            'Sé Cathedral',
+            'São Tiago Fortress',
+            'Old Town',
+            'Local Markets',
+            'City Squares',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Wine Tasting Tour',
+          description: 'Savor the flavors of Madeira wine with guided tastings at traditional wineries.',
+          features: [
+            'Wine Cellar Visits',
+            'Tasting Sessions',
+            'Local Vineyards',
+            'Cheese Pairing',
+            'Historical Insights',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Botanical Gardens Tour',
+          description: 'Explore the lush greenery of Funchal\'s renowned gardens with expert commentary.',
+          features: [
+            'Monte Palace',
+            'Madeira Botanical Garden',
+            'Exotic Plants',
+            'Garden History',
+            'Scenic Views',
+          ],
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Cultural Festival Tour',
+          description: 'Experience Funchal\'s vibrant festivals, celebrating local traditions and arts.',
+          features: [
+            'Festival Parades',
+            'Local Music',
+            'Traditional Dances',
+            'Art Exhibitions',
+            'Gastronomic Delights',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Funchal City Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour quick explorations to full-day immersive experiences.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Flexible Scheduling',
+            description: 'Tours available throughout the week to fit any itinerary.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Pricing',
+            description: 'Tours starting as low as $30, offering great value for money.',
+          },
+          {
+            icon: 'Sailboat',
+            title: 'Scenic Transport',
+            description: 'Travel in comfort with options such as cable cars and traditional boats.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Rich Narratives',
+            description: 'Engaging stories and historical insights shared by knowledgeable guides.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photogenic Stops',
+            description: 'Frequent photo opportunities at Funchal\'s most picturesque locations.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book tours in advance during peak seasons to secure your spot.',
+        'Wear comfortable shoes for walking tours; Funchal\'s streets are charmingly cobblestoned!',
+        'Don\'t miss the Monte cable car ride for an aerial view of the city.',
+        'Visit Mercado dos Lavradores early to see the freshest produce and catch the lively fish market.',
+        'Try a local poncha, a traditional Madeira drink, for an authentic taste experience.',
+        'Check the local festival calendar to align your visit with vibrant cultural events.',
+        'Bring a hat and sunscreen; Funchal\'s sun is wonderfully warm but strong.',
+        'Learn a few Portuguese phrases; locals appreciate the effort and it enhances your experience!',
+      ],
+
+      faqs: [
+        {
+          question: 'What are the top attractions included in a Funchal city tour?',
+          answer: 'A Funchal city tour typically includes top attractions such as the Monte Palace Tropical Garden, Sé Cathedral, and the bustling Mercado dos Lavradores. You\'ll explore the charming Old Town with its cobblestone streets and visit historical sites like the São Tiago Fortress. Many tours also offer stops at local wineries for a taste of the island\'s famous Madeira wine. These tours provide a comprehensive overview of the city\'s rich history and vibrant culture, making them a must for any visitor!',
+        },
+        {
+          question: 'Are Funchal city tours suitable for families with children?',
+          answer: 'Absolutely! Funchal city tours are designed to be family-friendly, offering engaging experiences for all ages. Children will enjoy the lush gardens, such as the Madeira Botanical Garden, and the exciting cable car rides. Many walking tours are stroller-friendly, and guides are adept at tailoring information to keep younger travelers entertained. Some tours even include interactive elements like treasure hunts in the Old Town, ensuring that your family has a memorable experience exploring Funchal!',
+        },
+        {
+          question: 'What is the best time to take a Funchal city tour?',
+          answer: 'Funchal enjoys a mild, pleasant climate year-round, making any time a great time to visit! However, the spring months of March to May offer particularly beautiful weather and blooming gardens. If you\'re interested in experiencing local culture, consider timing your visit around one of Funchal\'s famous festivals, like the Madeira Flower Festival in April or the Wine Festival in September. These events add an extra layer of excitement and opportunity to immerse yourself in the local culture!',
+        },
+        {
+          question: 'Can I customize a Funchal city tour?',
+          answer: 'Yes, many tour operators in Funchal offer customizable tours to cater to your specific interests and schedule. Whether you want to focus on history, nature, or gastronomy, guides can adjust the itinerary to include the attractions and experiences that most appeal to you. Private tours are a great option for those seeking a personalized experience, and they often include the flexibility to set your own pace and explore areas of the city not typically covered in standard tours!',
+        },
+        {
+          question: 'What should I wear on a Funchal city tour?',
+          answer: 'Comfort is key when exploring Funchal! Wear comfortable walking shoes, as many tours involve strolling through cobblestone streets and hilly terrains. Light, breathable clothing is recommended, especially in warmer months, and don\'t forget a hat and sunscreen for protection against the sun. If you\'re visiting during the winter months, a light jacket or sweater may be necessary for cooler mornings and evenings. Always check the weather forecast before setting out!',
+        },
+        {
+          question: 'Are there any language barriers on Funchal city tours?',
+          answer: 'Most Funchal city tours are conducted in English, and guides are often multilingual, speaking languages such as Spanish, French, and German to cater to international visitors. While locals primarily speak Portuguese, the tourism industry is well-equipped to accommodate English-speaking travelers. If you have specific language requirements, it\'s a good idea to inquire in advance when booking your tour to ensure a guide who can communicate effectively in your preferred language!',
+        },
+        {
+          question: 'How physically demanding are Funchal city tours?',
+          answer: 'Funchal city tours vary in physical demand, catering to different levels of fitness and mobility. Walking tours involve some uphill climbs and cobblestone streets, which can be challenging for those with mobility issues. However, many tours offer alternatives such as bus or cable car options for those who prefer less walking. It\'s important to check the tour details beforehand and communicate any mobility concerns to your tour provider to ensure a suitable experience.',
+        },
+        {
+          question: 'Is tipping customary on Funchal city tours?',
+          answer: 'While tipping is not mandatory in Madeira, it is always appreciated as a gesture of gratitude for excellent service. If you enjoyed your tour, a tip of around 10% of the tour cost is a considerate way to thank your guide for their expertise and hospitality. Many guides rely on tips as part of their income, so if they\'ve enhanced your experience in Funchal, a small gratuity goes a long way in showing your appreciation!',
+        },
+      ],
+    },
+
+    'wine-and-food-tours': {
+      title: 'Madeira Wine & Food Tours',
+      subtitle: 'Savor the flavors of Madeira with wine tastings and culinary experiences!',
+      categoryName: 'Wine & Food Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 40,
+        duration: '2-8 hours',
+      },
+
+      introduction: `Welcome to Madeira, a paradise for wine and food lovers! This stunning island is not just about breathtaking landscapes; it's a culinary and vinous delight. Imagine sipping the world-famous Madeira wine, a fortified wine with centuries-old history, while enjoying panoramic views of the Atlantic Ocean. From the vibrant capital of Funchal to the lush vineyards of São Vicente, wine and food tours here offer a unique taste of Madeiran culture. Indulge in local delicacies like bolo do caco, fresh seafood, and espetada, perfectly paired with the island's diverse wine varieties like Sercial, Verdelho, Bual, and Malmsey. Experience the warmth of Madeiran hospitality while visiting traditional wineries and savoring every sip of this iconic wine. Let the flavors of Madeira leave a lasting impression on your palate!`,
+
+      seo: {
+        title: 'Wine & Food Tours in Madeira - Complete Guide | Best Tours & Experiences',
+        metaDescription: 'Discover the best Wine & Food Tours in Madeira! Expert guide to Madeira wine tastings and Portuguese cuisine. Book top-rated tours with flexible cancellation.',
+        keywords: 'madeira wine tours, madeira food tours, funchal wine tasting, madeira cuisine, portuguese food',
+      },
+
+      whyChoose: [
+        {
+          icon: 'GlassWater',
+          title: 'World-Famous Wine',
+          description: 'Experience the unique flavors of Madeira wine at historic wineries like Blandy\'s.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Authentic Cuisine',
+          description: 'Savor local delicacies like bolo do caco, espetada, and fresh seafood.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Learn from passionate locals about winemaking and culinary traditions.',
+        },
+        {
+          icon: 'Star',
+          title: 'Diverse Experiences',
+          description: 'From vineyard tours to market visits, discover Madeira\'s rich food culture.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'GlassWater',
+          title: 'Funchal Wine and Gourmet Tour',
+          description: 'Explore Funchal\'s vibrant food scene with visits to local markets, tastings of authentic Madeiran dishes, and wine tasting at Blandy\'s Wine Lodge.',
+          features: [
+            'Blandy\'s Wine Lodge visit',
+            'Local market tour',
+            'Traditional food tasting',
+            'Madeira wine sampling',
+            'Expert commentary',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Vineyards of São Vicente Tour',
+          description: 'Journey to São Vicente for a tour of picturesque vineyards. Learn about wine production and enjoy a traditional lunch.',
+          features: [
+            'Scenic vineyard tours',
+            'Wine production insights',
+            'Traditional lunch',
+            'Wine tasting sessions',
+            'Beautiful landscapes',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Levada Wine Walk',
+          description: 'Combine hiking with wine tasting on this unique tour. Walk along scenic levadas and end with a wine tasting.',
+          features: [
+            'Levada hiking',
+            'Stunning views',
+            'Winery visit',
+            'Wine tasting',
+            'Nature immersion',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Madeira Wine and Culinary Adventure',
+          description: 'A full-day exploration of Madeira\'s wine and culinary delights. Visit multiple wineries and enjoy a gourmet meal.',
+          features: [
+            'Multiple winery visits',
+            'Gourmet meal',
+            'Guided tastings',
+            'Culinary insights',
+            'Local ingredients',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Espetada and Wine Evening',
+          description: 'Experience the flavors of Madeira at a traditional restaurant. Enjoy espetada paired with wine and live folk music.',
+          features: [
+            'Espetada dinner',
+            'Madeira wine pairing',
+            'Live music',
+            'Cultural ambiance',
+            'Traditional setting',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Wine & Food Tours',
+        items: [
+          {
+            icon: 'GlassWater',
+            title: 'Wine Tastings',
+            description: 'Sample various Madeira wine varieties from Sercial to Malmsey.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Local Cuisine',
+            description: 'Taste authentic Madeiran dishes like bolo do caco and espetada.',
+          },
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-3 hour tastings to full-day culinary adventures.',
+          },
+          {
+            icon: 'Users',
+            title: 'Expert Guidance',
+            description: 'Knowledgeable guides share wine and food traditions.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Insights',
+            description: 'Learn about Madeira\'s winemaking history and culinary heritage.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Value Pricing',
+            description: 'Tours start at $40 with meals and tastings included.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Don\'t miss Blandy\'s Wine Lodge and Henriques & Henriques for an authentic wine experience.',
+        'Indulge in bolo do caco, espetada, lapas (limpets), and the traditional black scabbard fish.',
+        'Familiarize yourself with Madeira wine types: Sercial, Verdelho, Bual, and Malmsey.',
+        'Visit during the grape harvest in autumn for the most immersive experience.',
+        'Consider renting a car or joining a guided tour to easily access wineries.',
+        'Book tours at least a month ahead of your visit during peak seasons.',
+        'Locals recommend pairing Madeira wine with bolo de mel, a traditional honey cake.',
+        'Visit during the late afternoon to enjoy quieter wine lodge tours.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best time of year to take a wine tour in Madeira?',
+          answer: 'The best time for wine tours in Madeira is from September to November during the grape harvest season. This is when vineyards are most active, offering visitors a chance to see winemaking in action. The weather is pleasant, and the island is vibrant with activity. Keep in mind that this period can be busy, so early bookings are recommended to ensure availability. Tours during this time often include special events and tastings that are not available at other times of the year!',
+        },
+        {
+          question: 'Are wine tours in Madeira suitable for families?',
+          answer: 'Yes, many wine tours in Madeira are family-friendly! While children cannot participate in wine tastings, they can enjoy the beautiful vineyard landscapes and learn about the winemaking process. Some tours include additional activities such as farm visits or local food tastings that are suitable for all ages. Always check with the tour operator for family-friendly options and any specific age restrictions before booking.',
+        },
+        {
+          question: 'How much do wine and food tours in Madeira typically cost?',
+          answer: 'Wine and food tours in Madeira vary in price depending on the duration and inclusions. Expect to pay around $40 for shorter tours focusing on a single winery or a specific dining experience. Full-day tours that include multiple wineries and meals can range from $100 to $150. Prices usually include tastings, meals, and transportation, making them a great value for experiencing the best of Madeira\'s culinary offerings!',
+        },
+        {
+          question: 'Can I buy wine directly from the wineries during a tour?',
+          answer: 'Absolutely! Most wineries in Madeira offer direct purchasing options, allowing you to take home your favorite wines. Buying directly from the winery often means access to exclusive vintages and limited-edition bottles that aren\'t available elsewhere. It\'s a fantastic way to bring a piece of Madeira back home with you. Remember to check the duty-free allowances for your home country before purchasing large quantities.',
+        },
+        {
+          question: 'Are there any food restrictions or considerations to keep in mind on these tours?',
+          answer: 'When participating in food tours in Madeira, it\'s important to inform your tour operator of any dietary restrictions or allergies in advance. Madeira\'s cuisine features a lot of seafood, meats, and gluten-based products, so providing this information will help ensure that your needs are accommodated. Many tours are flexible and can offer vegetarian or gluten-free alternatives if requested ahead of time.',
+        },
+        {
+          question: 'What should I wear on a wine and food tour in Madeira?',
+          answer: 'Comfort is key! Wear light, breathable clothing as Madeira\'s climate is generally warm, and comfortable shoes, especially if your tour includes walking through vineyards. A hat and sunscreen are advisable for sun protection. If your tour extends into the evening, consider bringing a light jacket as temperatures can drop. Dressing in layers will keep you comfortable throughout the day.',
+        },
+        {
+          question: 'Do I need to tip the tour guides?',
+          answer: 'While tipping is not mandatory in Madeira, it is appreciated as a gesture of thanks for exceptional service. If you enjoyed your tour, consider leaving a tip of around 10% for your guide. It\'s a great way to show appreciation for their knowledge and hospitality. Always carry some cash in Euros for tipping and small purchases during your tour.',
+        },
+        {
+          question: 'How can I make the most of my wine and food tour experience?',
+          answer: 'To maximize your experience, engage with your guides and ask questions—they love sharing their knowledge! Take notes on your favorite wines and dishes to remember them later. Be open to trying new flavors, and if possible, participate in any additional activities or tastings offered. Lastly, relax and enjoy the beautiful surroundings, as Madeira\'s stunning landscapes are an integral part of the tour experience.',
+        },
+      ],
+    },
+
+    'mountain-and-valley-tours': {
+      title: 'Madeira Mountain & Valley Tours',
+      subtitle: 'Explore Madeira\'s majestic peaks and lush valleys in unforgettable mountain and valley tours!',
+      categoryName: 'Mountain & Valley Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 50,
+        duration: 'Half-day to full-day tours',
+      },
+
+      introduction: `Madeira's Mountain & Valley Tours offer a captivating journey through the island's awe-inspiring landscapes. As you traverse the rugged peaks of Pico Ruivo and Pico do Arieiro, you'll be mesmerized by panoramic views of the Atlantic Ocean and verdant valleys below. These tours are a haven for adventure seekers and nature lovers, providing a diverse array of experiences from exhilarating hikes to peaceful strolls through the Laurisilva Forest, a UNESCO World Heritage Site. Discover the vibrant flora and fauna, ancient levadas, and charming mountain villages like Curral das Freiras. Whether you're an avid hiker or a casual explorer, Madeira's mountainous terrains promise breathtaking vistas and unforgettable memories. Get ready to immerse yourself in the natural beauty and cultural richness of this Portuguese paradise!`,
+
+      seo: {
+        title: 'Madeira Mountain & Valley Tours 2025',
+        description: 'Discover Madeira\'s stunning peaks and valleys with our specialized tours! Book your adventure today!',
+        keywords: 'Madeira tours, mountain tours, valley tours, Madeira hiking, Madeira adventure tours, scenic tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Camera',
+          title: 'Stunning Scenery',
+          description: 'Capture breathtaking views from Madeira\'s highest peaks and lush valleys.',
+        },
+        {
+          icon: 'Users',
+          title: 'Experienced Guides',
+          description: 'Learn from local experts who know Madeira\'s trails like the back of their hands.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Unique Biodiversity',
+          description: 'Explore diverse flora and fauna in the Laurisilva Forest, a UNESCO site.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Cultural Insights',
+          description: 'Visit traditional villages and discover Madeira\'s rich cultural heritage.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Hiking Tours',
+          description: 'Challenge yourself with hikes to Pico Ruivo and Pico do Arieiro.',
+          features: [
+            'Guided hikes',
+            'Panoramic views',
+            'Wildlife sightings',
+            'Picnic stops',
+            'Transportation included',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Village Tours',
+          description: 'Explore charming mountain villages and experience local culture.',
+          features: [
+            'Local guides',
+            'Cultural insights',
+            'Traditional crafts',
+            'Tasting sessions',
+            'Small groups',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Capture Madeira\'s natural beauty with professional guidance.',
+          features: [
+            'Photography tips',
+            'Scenic spots',
+            'Golden hour shots',
+            'Guided by photographers',
+            'Flexible itineraries',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Nature Walks',
+          description: 'Enjoy leisurely walks through Madeira\'s lush natural landscapes.',
+          features: [
+            'Easy trails',
+            'Botanical insights',
+            'Birdwatching',
+            'Levada walks',
+            'Family-friendly',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Mountain & Valley Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from half-day to full-day experiences, tailored to your schedule.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Weather Considerations',
+            description: 'Mild climate year-round but pack layers for changing conditions in the mountains.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Size',
+            description: 'Small group tours ensure personalized attention and a more intimate experience.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Fitness Level',
+            description: 'Tours available for all fitness levels, from easy walks to challenging hikes.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Endless chances to capture the island\'s stunning natural beauty and unique landscapes.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Value for Money',
+            description: 'Affordable pricing with many tours including transportation and gear.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Wear sturdy hiking boots for rocky trails.',
+        'Start early to catch the sunrise at Pico do Arieiro.',
+        'Bring a lightweight rain jacket for unexpected showers.',
+        'Don\'t miss tasting "poncha" in local mountain bars.',
+        'Visit in spring for blooming wildflowers and vibrant landscapes.',
+        'Book tours in advance during peak season for the best availability.',
+        'Levada walks are a must for serene nature experiences.',
+        'Capture sunset views from Cabo Girão skywalk.',
+      ],
+
+      faqs: [
+        {
+          question: 'What are the best mountain tours in Madeira?',
+          answer: 'The best mountain tours in Madeira include hiking to Pico Ruivo, the highest peak on the island, and exploring the rugged terrain of Pico do Arieiro. These tours offer breathtaking views and challenging trails, perfect for adventure seekers! Prices start around $60 for a guided tour, including transport and gear.',
+        },
+        {
+          question: 'Are there easy walking tours available?',
+          answer: 'Yes, there are plenty of easy walking tours available in Madeira, especially along the levadas, which are flat, scenic paths following the island\'s ancient irrigation channels. These tours are perfect for all ages and fitness levels, offering a relaxing way to explore the island\'s natural beauty.',
+        },
+        {
+          question: 'What should I pack for a mountain tour in Madeira?',
+          answer: 'When packing for a mountain tour in Madeira, consider the weather and terrain. Essentials include sturdy hiking boots, a lightweight rain jacket, sunscreen, and plenty of water. Don\'t forget your camera to capture stunning vistas! Snacks and a small backpack are also recommended for longer hikes.',
+        },
+        {
+          question: 'Is it possible to visit the Laurisilva Forest on a tour?',
+          answer: 'Absolutely! Many tours include visits to the Laurisilva Forest, a UNESCO World Heritage Site known for its rich biodiversity. Guided tours offer insights into the unique flora and fauna of this ancient forest. Expect to pay around $70 for a comprehensive tour that includes transportation and expert guides.',
+        },
+        {
+          question: 'Can I customize a mountain tour in Madeira?',
+          answer: 'Yes, many tour operators in Madeira offer customizable tours, allowing you to tailor the itinerary to your interests and fitness level. Whether you want a leisurely walk or a more challenging hike, there\'s flexibility to create your perfect mountain adventure.',
+        },
+        {
+          question: 'What is the best time of year for mountain tours in Madeira?',
+          answer: 'Madeira enjoys a mild climate year-round, making it suitable for tours in any season. However, spring (March to May) is particularly beautiful with wildflowers in bloom, while the autumn months offer cooler temperatures ideal for hiking.',
+        },
+        {
+          question: 'Are the tours family-friendly?',
+          answer: 'Many tours in Madeira are family-friendly, especially the levada walks, which are generally easy and safe for children. Some tours offer activities specifically designed for families, ensuring everyone from young kids to grandparents can enjoy the experience.',
+        },
+        {
+          question: 'Do I need to book tours in advance?',
+          answer: 'It is highly recommended to book tours in advance, especially during peak travel seasons (summer and holiday periods) to secure your spot. Popular tours can fill up quickly, so planning ahead ensures you won\'t miss out on the best experiences Madeira has to offer.',
+        },
+      ],
+    },
+
+    'coastal-boat-tours': {
+      title: 'Madeira Coastal Boat Tours',
+      subtitle: 'Explore Madeira\'s stunning coastlines and vibrant marine life on thrilling boat adventures!',
+      categoryName: 'Coastal Boat Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 55,
+        duration: '2 to 8 hours',
+      },
+
+      introduction: `Madeira, Portugal's floating garden, offers more than breathtaking landscapes; its coastal boat tours reveal a marine wonderland waiting to be explored! Imagine gliding over cerulean waters, surrounded by towering cliffs and vibrant sea life. These tours cater to all: from adrenaline-seekers eager to spot dolphins and whales near Cabo Girão to romantics yearning for a sunset sail around Porto Moniz. Adventurers can dive into the crystal-clear waters at Ponta de São Lourenço, while culture enthusiasts explore the historic charm of Funchal's harbor. Whether you're a solo traveler, a family, or a group of friends, Madeira's boat tours promise unforgettable memories. Each excursion unveils unique vistas and experiences, ensuring that every traveler leaves with stories of the Atlantic's enchanting beauty!`,
+
+      seo: {
+        title: 'Madeira Coastal Boat Tours 2025',
+        description: 'Discover Madeira\'s scenic coastlines and vibrant marine life on exciting boat tours. Book your adventure now!',
+        keywords: 'Madeira boat tours, coastal adventures, marine life excursions, Atlantic boat trips, Madeira 2025',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Stunning Scenery',
+          description: 'Experience the dramatic cliffs and lush landscapes of Madeira from the water.',
+        },
+        {
+          icon: 'Sailboat',
+          title: 'Diverse Marine Life',
+          description: 'Spot dolphins, whales, and other marine wildlife in their natural habitat, all year round!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Perfect Weather',
+          description: 'Enjoy the mild, sunny climate of Madeira, ideal for year-round boat tours.',
+        },
+        {
+          icon: 'Anchor',
+          title: 'Variety of Tours',
+          description: 'Choose from relaxed sunset cruises to thrilling wildlife adventures.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Ship',
+          title: 'Whale and Dolphin Watching',
+          description: 'Set sail on a magical journey to observe Madeira\'s playful dolphins and majestic whales.',
+          features: [
+            'Guided tour',
+            'Marine biologist on board',
+            'Refreshments included',
+            'High success rate of sightings',
+            'Family-friendly',
+          ],
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Sunset Cruises',
+          description: 'Experience the romance of a stunning Madeira sunset while cruising along the coast.',
+          features: [
+            'Champagne toast',
+            'Live music',
+            'Gourmet snacks',
+            'Spectacular views',
+            'Photographer',
+          ],
+        },
+        {
+          icon: 'Sailboat',
+          title: 'Snorkeling Adventures',
+          description: 'Dive into the crystal waters of Madeira and explore its vibrant underwater world.',
+          features: [
+            'Snorkeling gear provided',
+            'Experienced guides',
+            'Multiple snorkeling spots',
+            'Underwater photography',
+            'Light lunch',
+          ],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Cultural Harbor Tours',
+          description: 'Explore the historical harbors of Madeira and learn about its rich maritime history.',
+          features: [
+            'Historical insights',
+            'Visit to Funchal Harbor',
+            'Local guide',
+            'Small group sizes',
+            'Interactive experience',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Coastal Boat Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour quick trips to full-day adventures.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography Opportunities',
+            description: 'Capture stunning landscapes and unforgettable moments.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Family Friendly',
+            description: 'Most tours are suitable for all ages, making it a perfect family activity.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Refreshments',
+            description: 'Enjoy complimentary drinks and snacks on board.',
+          },
+          {
+            icon: 'Users',
+            title: 'Small Groups',
+            description: 'Tours are conducted in intimate groups for a personalized experience.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Value for Money',
+            description: 'Affordable pricing with various packages to suit different budgets.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book in advance, especially for summer tours, to secure your spot.',
+        'Bring a jacket; ocean breezes can be cool even on sunny days.',
+        'Early morning tours offer the best light for photography and higher chances to spot wildlife.',
+        'Choose a tour with a marine biologist for insightful commentary on marine life.',
+        'Pack sunscreen and sunglasses for protection against the sun\'s reflection off the water.',
+        'If prone to seasickness, take preventive measures before departure.',
+        'Check the cancellation policy, as weather can affect departures.',
+        'Combine a boat tour with a land excursion for a comprehensive Madeira experience.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best time of year for a boat tour in Madeira?',
+          answer: 'Madeira\'s mild climate makes it ideal for boat tours year-round! However, spring and summer (April to September) offer the most pleasant weather and calm seas. These months are also excellent for spotting marine life, as dolphins and whales are more active. If you prefer fewer crowds, consider visiting during the shoulder months of March or October. Remember to book in advance during peak season to secure your spot!',
+        },
+        {
+          question: 'Are the boat tours suitable for children?',
+          answer: 'Absolutely! Most Madeira coastal boat tours are family-friendly and welcome children of all ages. Operators provide life jackets and safety briefings to ensure a safe experience for everyone. Some tours even have special activities and educational talks to engage young explorers. Always check with the tour provider about age requirements and any additional precautions for children.',
+        },
+        {
+          question: 'What should I wear and bring on a boat tour?',
+          answer: 'Dress comfortably and casually for your Madeira boat tour. Light layers are best, as temperatures can vary. Don\'t forget a hat, sunglasses, and sunscreen to protect against the sun. Comfortable footwear is recommended, especially if you plan to explore on land during the tour. Bring a camera for capturing memories, and perhaps a waterproof bag to protect your electronics from sea spray.',
+        },
+        {
+          question: 'What wildlife can I expect to see on a Madeira boat tour?',
+          answer: 'Madeira\'s waters are teeming with marine life! On your boat tour, you might spot several species of dolphins, including the Common and Bottlenose dolphins, as well as whales such as the Sperm and Pilot whales. The region is also home to many seabirds and, occasionally, turtles. The experienced guides and marine biologists on board will help you identify and learn about the creatures you encounter!',
+        },
+        {
+          question: 'How do I choose the right boat tour in Madeira?',
+          answer: 'Consider what you\'d like to experience. For wildlife enthusiasts, a dolphin and whale watching tour is a must. If you\'re after relaxation, a sunset cruise offers stunning views and tranquility. Adventurers might enjoy a snorkeling trip to explore underwater wonders. Check reviews and ask tour operators about their itineraries and safety measures to ensure a wonderful experience.',
+        },
+        {
+          question: 'Are there any safety precautions on the boat tours?',
+          answer: 'Safety is a top priority for Madeira\'s boat tour operators. All boats are equipped with life jackets and safety equipment, and the crew provides a safety briefing before departure. Tours are conducted with respect for weather conditions, and operators may reschedule if necessary to ensure passenger safety. It\'s always a good idea to inform the crew of any medical conditions before setting sail.',
+        },
+        {
+          question: 'Can I book a private boat tour in Madeira?',
+          answer: 'Yes, many tour operators offer private charters for a more personalized experience. Whether you\'re celebrating a special occasion or simply seeking privacy, a private tour allows you to customize your itinerary. You can focus on wildlife watching, explore hidden coves, or enjoy a leisurely cruise with just your group. Contact local operators to tailor a tour to your preferences.',
+        },
+        {
+          question: 'Is tipping expected on Madeira boat tours?',
+          answer: 'While not mandatory, tipping is appreciated as a gesture of gratitude for excellent service. A tip of 10-15% is customary if you\'re pleased with your experience. Many tour operators rely on gratuities, and it\'s a great way to thank the crew for their effort and hospitality. If you\'ve had a particularly memorable experience, consider tipping a bit more!',
+        },
+      ],
+    },
+
+    'garden-and-nature-tours': {
+      title: 'Madeira Garden & Nature Tours',
+      subtitle: 'Explore Madeira\'s lush gardens, mystical forests, and awe-inspiring natural wonders on unforgettable tours.',
+      categoryName: 'Garden & Nature Tours',
+      
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 50,
+        duration: '2 to 8 hours',
+      },
+
+      introduction: `Welcome to Madeira, Portugal's enchanting island paradise, where nature blooms in stunning diversity! Embark on garden and nature tours to explore the island's lush botanical gardens, such as the Monte Palace Tropical Garden, and the breathtaking Laurisilva Forest, a UNESCO World Heritage site. Discover a world where exotic plants thrive, waterfalls cascade, and panoramic views captivate every visitor. Whether you're a nature lover, a photography enthusiast, or a family seeking adventure, these tours offer something for everyone. Trek along the famous Levada trails, experience the rugged beauty of Cabo Girão, or simply lose yourself in the vibrant colors of Madeira's flora. These experiences promise to connect you deeply with the island's natural beauty and leave you inspired!`,
+
+      seo: {
+        title: 'Best Madeira Garden & Nature Tours 2025',
+        description: 'Discover Madeira\'s stunning gardens & nature tours! Explore lush landscapes. Book your 2025 adventure now!',
+        keywords: 'Madeira garden tours, nature tours Madeira, Madeira Levada walks, Madeira botanical gardens',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Breathtaking Scenery',
+          description: 'Immerse yourself in the stunning landscapes and vibrant gardens unique to Madeira.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Unique Flora',
+          description: 'Experience the rare beauty of Madeira\'s exotic and endemic plant species.',
+        },
+        {
+          icon: 'Star',
+          title: 'Expert Guides',
+          description: 'Learn from knowledgeable local guides who share insider tips and fascinating stories.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Opportunities',
+          description: 'Capture unforgettable moments in some of the most picturesque locations.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Sun',
+          title: 'Botanical Garden Tours',
+          description: 'Discover the rich diversity of Madeira\'s gardens with guided tours.',
+          features: [
+            'Monte Palace Tropical Garden',
+            'Madeira Botanical Garden',
+            'Exotic plant species',
+            'Guided walks',
+            'Panoramic views',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Levada Walks',
+          description: 'Embark on scenic walks along Madeira\'s unique levadas.',
+          features: [
+            'Waterfall views',
+            'UNESCO Laurisilva Forest',
+            'Experienced guides',
+            'Safe trails',
+            'Nature immersion',
+          ],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Coastal Nature Tours',
+          description: 'Explore the dramatic coastline and marine life of Madeira.',
+          features: [
+            'Cabo Girão',
+            'Whale watching',
+            'Coastal cliffs',
+            'Boat tours',
+            'Marine biodiversity',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Family Nature Adventures',
+          description: 'Fun-filled tours for families seeking to explore nature together.',
+          features: [
+            'Family-friendly trails',
+            'Interactive guides',
+            'Picnic spots',
+            'Birdwatching',
+            'Wildlife spotting',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Garden & Nature Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour garden visits to full-day nature explorations.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Seasonal Highlights',
+            description: 'Experience different blooms and landscapes throughout the year.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Refreshments',
+            description: 'Many tours include stops for refreshments and local delicacies.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Educational Insights',
+            description: 'Gain knowledge about Madeira\'s ecosystem and conservation efforts.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Friendly Guides',
+            description: 'Guides are passionate locals eager to share Madeira\'s secrets.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Plenty of chances to snap breathtaking landscapes and unique flora.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit the Monte Palace Tropical Garden early to avoid crowds and enjoy the tranquility.',
+        'Wear comfortable hiking shoes for Levada walks; trails can be wet and uneven.',
+        'Don\'t miss the Cabo Girão skywalk for a thrilling view of the cliffs below!',
+        'Bring a reusable water bottle to stay hydrated during the tours.',
+        'Check the weather forecast as Madeira\'s microclimates can vary significantly.',
+        'Book tours in advance during peak travel seasons to secure your spot.',
+        'Keep your camera ready for unexpected wildlife sightings, especially birds.',
+        'Engage with guides to learn lesser-known facts about Madeira\'s natural history.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best time of year to visit Madeira for garden tours?',
+          answer: 'Madeira is a year-round destination, but for garden tours, spring (March to May) is ideal when flowers are in full bloom. The island\'s mild climate means you can enjoy garden tours at any time, but spring offers the most vibrant colors and fragrances. Don\'t miss the Flower Festival in April, a spectacular celebration of Madeira\'s floral beauty!',
+        },
+        {
+          question: 'Are Levada walks suitable for all ages?',
+          answer: 'Yes, Levada walks are suitable for most ages and fitness levels. Many trails are flat and well-maintained, making them accessible for families and older adults. However, some trails can be challenging with steep sections. Always choose a trail that matches your fitness level and consult with your tour guide for recommendations.',
+        },
+        {
+          question: 'What should I wear for garden and nature tours?',
+          answer: 'Wear comfortable clothing and sturdy shoes, especially if embarking on a Levada walk. The weather can change quickly, so layers are advisable. A light rain jacket is useful in case of showers, and don\'t forget sunscreen and a hat to protect against the sun. A backpack with water and snacks is also recommended.',
+        },
+        {
+          question: 'Are guided tours available in languages other than English?',
+          answer: 'Yes, many guided tours in Madeira offer multilingual guides, including Spanish, French, and German. When booking, check with the provider to confirm language availability. Multilingual tours ensure you can fully enjoy and understand the rich history and details of Madeira\'s natural attractions.',
+        },
+        {
+          question: 'Can I book a private garden tour in Madeira?',
+          answer: 'Absolutely! Private tours are a fantastic option for personalized experiences. They allow you to explore at your own pace and focus on areas of interest. Prices vary depending on the tour and group size, but expect to pay from $150 for a small group. Booking in advance is recommended, especially during the busy season.',
+        },
+        {
+          question: 'Is transportation included in the tours?',
+          answer: 'Most tours include transportation to and from your accommodation or a central meeting point. This is a convenient option, especially for those staying in Funchal. Check with your tour provider to confirm the details of transportation and any additional costs that might be involved.',
+        },
+        {
+          question: 'Are there any age restrictions for the tours?',
+          answer: 'Most garden and nature tours welcome all ages, but some activities, like more strenuous Levada hikes, may have age or fitness recommendations. It\'s always best to check with the tour operator for specific restrictions and ensure that the chosen tour suits your group\'s capabilities and interests.',
+        },
+        {
+          question: 'What is the cancellation policy for tours?',
+          answer: 'Cancellation policies vary by provider, but many offer full refunds for cancellations made at least 48 hours in advance. Some tours may have more flexible policies, while others might charge a fee for last-minute cancellations. Always review the terms and conditions before booking to avoid any surprises!',
+        },
+      ],
+    },
+  },
+
+  madrid: {
+    'prado-museum-tours': {
+      title: 'Madrid Prado Museum Tours',
+      subtitle: 'Discover world-class Spanish art masterpieces at Madrid\'s legendary Prado Museum!',
+      categoryName: 'Prado Museum Tours',
+      
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 30,
+        duration: '1.5-6 hours',
+      },
+
+      introduction: `The Prado Museum in Madrid is a treasure trove for art lovers, housing one of the finest collections of European art in the world! With its stunning array of masterpieces, including Velázquez's enigmatic "Las Meninas" and Goya's haunting "Black Paintings," the Prado offers an immersive journey through centuries of creativity. The museum boasts over 8,000 paintings, sculptures, drawings, and prints, making it a must-visit for anyone passionate about art and history. Imagine standing before Bosch's surreal "The Garden of Earthly Delights" or Rubens' opulent "The Three Graces" – the Prado is a place where art history comes alive! Whether you're an art aficionado or a curious traveler, a tour of the Prado is sure to inspire and delight!`,
+
+      seo: {
+        title: 'Prado Museum Tours in Madrid - Complete Guide | Best Tours & Experiences',
+        metaDescription: 'Discover the best Prado Museum Tours in Madrid! Expert guide to world-class Spanish art collection. Book top-rated tours with flexible cancellation.',
+        keywords: 'prado museum madrid, madrid art tours, velazquez las meninas, goya paintings madrid, spanish art',
+      },
+
+      whyChoose: [
+        {
+          icon: 'BookOpen',
+          title: 'World-Class Collection',
+          description: 'Explore masterpieces by Velázquez, Goya, El Greco, Rubens, and Titian.',
+        },
+        {
+          icon: 'Star',
+          title: 'Iconic Artworks',
+          description: 'See legendary works like Las Meninas and The Garden of Earthly Delights.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Learn from knowledgeable art historians who bring paintings to life.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Cultural Immersion',
+          description: 'Immerse yourself in Spanish art history and European cultural heritage.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Masterpieces of the Prado Tour',
+          description: 'Dive into the world of Spanish art with a focus on the Prado\'s most celebrated pieces including Las Meninas and The Third of May 1808.',
+          features: [
+            'Las Meninas',
+            'The Garden of Earthly Delights',
+            'The Third of May 1808',
+            'The Three Graces',
+            'Expert commentary',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'In-Depth Prado Experience',
+          description: 'Uncover the layers of art history with a comprehensive tour through the Prado\'s extensive galleries.',
+          features: [
+            'El Greco\'s paintings',
+            'Titian\'s portraits',
+            'Rubens\' masterpieces',
+            'Goya\'s Black Paintings',
+            'Historical context',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Half-Day Prado and Retiro Park Tour',
+          description: 'Combine art with nature! Begin at the Prado, then enjoy a guided stroll through the lush Retiro Park.',
+          features: [
+            'Prado highlights',
+            'Retiro Park walk',
+            'Crystal Palace',
+            'Statue of the Fallen Angel',
+            'Art and nature blend',
+          ],
+        },
+        {
+          icon: 'Clock',
+          title: 'Express Highlights Tour',
+          description: 'Short on time? This express tour offers a curated selection of the Prado\'s must-see masterpieces.',
+          features: [
+            'Las Meninas',
+            'Goya\'s masterpieces',
+            'Rubens\' works',
+            'Bosch\'s altarpieces',
+            'Quick overview',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Full-Day Art Immersion',
+          description: 'For the ultimate art lover, this full-day tour covers the Prado in-depth with breaks to refresh.',
+          features: [
+            'Comprehensive gallery visit',
+            'In-depth discussions',
+            'Artistic techniques',
+            'Historical contexts',
+            'Multiple breaks',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Prado Museum Tours',
+        items: [
+          {
+            icon: 'BookOpen',
+            title: 'Masterpiece Viewing',
+            description: 'Experience world-famous artworks including Las Meninas and Goya\'s Black Paintings.',
+          },
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 1.5-hour express visits to 6-hour comprehensive explorations.',
+          },
+          {
+            icon: 'Users',
+            title: 'Expert Guidance',
+            description: 'Art historians provide fascinating insights into artworks and artists.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Pricing',
+            description: 'Tours start at $30, with free admission during last two hours on weekdays.',
+          },
+          {
+            icon: 'Star',
+            title: 'Skip-the-Line Access',
+            description: 'Many tours offer priority entry to avoid long queues.',
+          },
+          {
+            icon: 'Camera',
+            title: 'No Photography',
+            description: 'Photography is not allowed inside to protect the artworks.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Prioritize "Las Meninas," Goya\'s "The Third of May 1808," and Bosch\'s "The Garden of Earthly Delights".',
+        'Purchase tickets online in advance to avoid long queues, especially during peak times.',
+        'Enjoy free admission during the last two hours of opening on weekdays, but expect larger crowds.',
+        'Visit early in the morning or late in the afternoon for a quieter experience.',
+        'Use the audio guide for in-depth insights and stories behind the artworks.',
+        'Photography is not allowed in the museum, so focus on enjoying the art in the moment.',
+        'Locals recommend visiting on a weekday to fully enjoy the art without the weekend rush.',
+        'Combine your Prado visit with a walk through nearby Retiro Park for a perfect Madrid day.',
+      ],
+
+      faqs: [
+        {
+          question: 'How much does a Prado Museum tour cost?',
+          answer: 'Prado Museum tours vary in price depending on the type and duration. Expect to pay around $40 for a basic tour, with more comprehensive experiences costing up to $100. Discounts are often available for students and seniors. Booking in advance online can help secure the best rates and ensure availability, especially during peak tourist seasons.',
+        },
+        {
+          question: 'Can I visit the Prado Museum for free?',
+          answer: 'Yes, the Prado Museum offers free entry during the last two hours of opening from Monday to Saturday, and on Sundays from 5 PM. However, be prepared for crowds as this is a popular time for both locals and tourists. Arriving early to line up is advisable to maximize your free visit time and enjoy the art.',
+        },
+        {
+          question: 'What are the Prado Museum\'s opening hours?',
+          answer: 'The Prado Museum is open Monday to Saturday from 10 AM to 8 PM, and on Sundays and holidays from 10 AM to 7 PM. It\'s closed on January 1, May 1, and December 25. Visiting early in the morning or later in the afternoon is recommended to avoid peak crowd times and enjoy a more relaxed experience.',
+        },
+        {
+          question: 'Is there a dress code for visiting the Prado?',
+          answer: 'While there is no strict dress code for the Prado Museum, it\'s advisable to dress comfortably and respectfully. Wear comfortable shoes as you\'ll be walking and standing for extended periods. Light, breathable clothing is recommended during the summer months, and it\'s wise to bring a jacket or sweater as the museum is air-conditioned.',
+        },
+        {
+          question: 'Are there guided tours available in English?',
+          answer: 'Absolutely! The Prado Museum offers guided tours in English, providing insightful commentary on the artworks and their historical context. Booking these tours in advance is highly recommended, especially during peak tourist seasons, to ensure availability and an enriching museum experience.',
+        },
+        {
+          question: 'Can I take pictures inside the Prado Museum?',
+          answer: 'Photography is not permitted inside the Prado Museum to protect the artworks and ensure an enjoyable viewing experience for all visitors. However, you can capture memories of the museum\'s beautiful exterior and surrounding areas. Respecting these rules helps preserve the art for future generations.',
+        },
+        {
+          question: 'How can I avoid the crowds at the Prado Museum?',
+          answer: 'To avoid crowds, visit the Prado Museum during weekdays early in the morning or late in the afternoon. Avoid visiting during weekends and holidays if possible. Booking tickets in advance online and opting for guided tours with reserved entry can also help bypass queues and enhance your visit.',
+        },
+        {
+          question: 'What facilities are available at the Prado Museum?',
+          answer: 'The Prado Museum offers a range of facilities including a café, gift shop, and restrooms. Lockers are available for storing bags and umbrellas, as large bags are not permitted inside the galleries. The museum also provides accessibility options, such as wheelchair access and adapted tours for visitors with disabilities.',
+        },
+      ],
+    },
+
+    'royal-palace-tours': {
+      title: 'Madrid Royal Palace Tours',
+      subtitle: 'Explore Madrid\'s majestic Royal Palace with exclusive tours revealing its regal splendor and history.',
+      categoryName: 'Royal Palace Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 25,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Embark on an enchanting journey through the heart of Spain's royal heritage with a tour of the Royal Palace of Madrid! This grand residence, known as Palacio Real, is one of the largest palaces in Europe, boasting over 3,400 rooms adorned with opulent tapestries, exquisite frescoes, and an unparalleled collection of art and historical artifacts. Whether you're an art enthusiast, history buff, or simply captivated by royal architecture, these tours offer a variety of experiences tailored for different interests. Marvel at the Throne Room's gilded grandeur, explore the Royal Armory's impressive collection, or stroll through the serene Sabatini Gardens. Perfect for families, solo travelers, and history lovers alike, these tours provide an insightful glimpse into the lives of Spanish royalty and the cultural tapestry of Madrid. Get ready to be amazed by the splendor and stories that await you!`,
+
+      seo: {
+        title: 'Explore Madrid Royal Palace Tours 2025',
+        description: 'Discover Madrid\'s Royal Palace in 2025 with exclusive tours. Book now for an unforgettable regal experience!',
+        keywords: 'Madrid Royal Palace tours, Palacio Real tour, Madrid history tours, Spanish royal tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Rich History',
+          description: 'Delve into centuries of Spanish history and royal legacy in Europe\'s largest palace.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Stunning Architecture',
+          description: 'Capture breathtaking photos of the palace\'s grand halls and intricate details.',
+        },
+        {
+          icon: 'Users',
+          title: 'Guided Insights',
+          description: 'Expert guides provide fascinating stories and little-known facts about the monarchy.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Cultural Immersion',
+          description: 'Experience the cultural heart of Madrid with access to exclusive areas and exhibits.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Standard Palace Tour',
+          description: 'Explore key highlights of the Royal Palace with a knowledgeable guide.',
+          features: [
+            'Throne Room',
+            'Royal Armory',
+            'Main Staircase',
+            'State Rooms',
+            'Sabatini Gardens',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Historical Insights Tour',
+          description: 'Deep dive into the history and stories behind the palace\'s walls.',
+          features: [
+            'History of Spanish Monarchy',
+            'Frescoes & Artwork',
+            'Historical Artifacts',
+            'Guided Narratives',
+            'Interactive Q&A',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Family Adventure Tour',
+          description: 'Engaging tour designed for families with activities for children.',
+          features: [
+            'Interactive Games',
+            'Treasure Hunt',
+            'Child-friendly Guides',
+            'Palace Highlights',
+            'Family Photo Spots',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Evening Elegance Tour',
+          description: 'Experience the palace under the romantic glow of dusk.',
+          features: [
+            'Evening Access',
+            'Candle-lit Rooms',
+            'Romantic Walks',
+            'Exclusive Areas',
+            'Wine Tasting',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Royal Palace Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2 to 4 hours depending on the chosen experience.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Pricing',
+            description: 'Tours start at $25, with premium options available up to $80.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Peak Times',
+            description: 'Best time to visit is late afternoon for lower crowds and better lighting.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Availability',
+            description: 'Tours are available daily, with special events on weekends.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Meeting Point',
+            description: 'Central meeting point at Plaza de Oriente, near Opera Metro Station.',
+          },
+          {
+            icon: 'Music',
+            title: 'Special Events',
+            description: 'Occasional live music and cultural performances in the palace courtyard.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book tickets in advance online to skip the line and secure your preferred time slot.',
+        'Visit during weekdays for a quieter experience and more personal interaction with guides.',
+        'Wear comfortable shoes as there is a fair amount of walking and standing involved.',
+        'Don\'t miss the Royal Kitchen exhibit to see where royal feasts were prepared!',
+        'Combine your tour with a visit to the nearby Almudena Cathedral for a full day of exploration.',
+        'Photography is allowed in most areas, so bring your camera for stunning shots!',
+        'Check out the changing of the guard ceremony for a touch of royal pageantry.',
+        'Consider a night tour for a unique perspective and a more intimate experience.',
+      ],
+
+      faqs: [
+        {
+          question: 'Is photography allowed inside the Royal Palace?',
+          answer: 'Yes! Photography is permitted in most areas of the Royal Palace, except in certain restricted rooms where flash photography is prohibited to protect the artwork. Be sure to capture the opulent interiors, grand staircases, and stunning views from the palace windows. Remember to be respectful of other visitors and the palace\'s rules.',
+        },
+        {
+          question: 'Are there any discounts available for ticket purchases?',
+          answer: 'Absolutely! Discounts are typically available for students, seniors, and children. Additionally, Madrid Card holders can enjoy reduced rates. It\'s always wise to check the official Royal Palace website for current promotions and offers. Group discounts may also be available for parties of 10 or more.',
+        },
+        {
+          question: 'What is the best time to visit the Royal Palace?',
+          answer: 'For a more relaxed visit, aim for late afternoons on weekdays, when the crowds are thinner. The palace is busiest during weekends and holidays. If you\'re looking for a unique experience, consider an evening tour to enjoy the palace lit up at night.',
+        },
+        {
+          question: 'Can we visit the Royal Gardens as part of the tour?',
+          answer: 'Yes, the lovely Sabatini Gardens and Campo del Moro are often included in the tours. These gardens are perfect for a leisurely stroll and offer beautiful views of the palace architecture. They\'re especially enchanting in the spring and early summer when the flowers are in full bloom.',
+        },
+        {
+          question: 'Are there audio guides available at the Royal Palace?',
+          answer: 'Yes, audio guides are available in several languages and offer detailed commentary on the palace\'s history and its many rooms. They provide an excellent alternative for visitors who prefer to explore at their own pace while still gaining insights into the palace\'s rich heritage.',
+        },
+        {
+          question: 'Is there a dress code for visiting the Royal Palace?',
+          answer: 'While there\'s no strict dress code, it\'s recommended to dress respectfully, especially since the palace is a historic site. Comfortable shoes are advisable due to the extensive walking involved. During summer, lightweight clothing is best due to the Madrid heat.',
+        },
+        {
+          question: 'Are food and drinks allowed inside the palace?',
+          answer: 'No, food and drinks are not permitted inside the palace to help preserve the historic interiors and artifacts. However, there are cafes and restaurants nearby where you can enjoy a meal before or after your visit. It\'s a great way to experience local Spanish cuisine!',
+        },
+        {
+          question: 'Is the Royal Palace accessible for visitors with disabilities?',
+          answer: 'Yes, the Royal Palace is committed to accessibility with ramps and elevators available for wheelchair users. There are also special tours designed to accommodate visitors with mobility challenges. It\'s advisable to check in advance and notify the palace staff of any specific needs or assistance required.',
+        },
+      ],
+    },
+
+    'historic-plaza-tours': {
+      title: 'Madrid Historic Plaza Tours',
+      subtitle: 'Explore Madrid\'s timeless plazas rich in history and vibrant life, where past and present meet!',
+      categoryName: 'Historic Plaza Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 30,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Madrid's historic plaza tours offer an enchanting journey through the city's iconic squares, each brimming with tales of royalty, rebellion, and revelry. From the majestic Plaza Mayor with its grand arcades and vibrant atmosphere to the picturesque Plaza de la Villa, a step back into medieval times, these tours promise a deep dive into Madrid's rich past. Discover the charm of Plaza de Oriente with its stunning views of the Royal Palace or the lively buzz of Puerta del Sol, the city's bustling heart. These tours cater to history buffs, cultural enthusiasts, and casual travelers alike, offering a variety of experiences from guided walks to immersive storytelling sessions. Whether you're savoring traditional tapas in Plaza Santa Ana or exploring the artistic legacy of Plaza del Cascorro, each plaza reveals a unique facet of Madrid's dynamic spirit. Get ready to uncover hidden gems and soak up the vibrant culture of Spain's capital!`,
+
+      seo: {
+        title: 'Madrid Historic Plaza Tours 2025',
+        description: 'Discover Madrid\'s historic plazas on guided tours. Explore iconic sites with rich history. Book now!',
+        keywords: 'Madrid plaza tours, historic tours Madrid, Madrid plazas, guided tours Madrid, 2025 travel',
+      },
+
+      whyChoose: [
+        {
+          icon: 'MapPin',
+          title: 'Iconic Locations',
+          description: 'Visit Madrid\'s most famous plazas steeped in history and cultural significance.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Rich History',
+          description: 'Learn fascinating stories and historical insights from expert local guides.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Cultural Immersion',
+          description: 'Experience the vibrant local culture and traditions in the heart of Madrid.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photographic Opportunities',
+          description: 'Capture stunning views and unique architectural details at every turn.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Users',
+          title: 'Guided Walking Tours',
+          description: 'Explore plazas with a knowledgeable guide sharing historical insights.',
+          features: [
+            'Professional guide',
+            'Historic landmarks',
+            'Cultural insights',
+            'Group experience',
+            'Photo opportunities',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Private Tours',
+          description: 'Enjoy a personalized experience tailored to your interests and pace.',
+          features: [
+            'Custom itinerary',
+            'Personal guide',
+            'Flexible timing',
+            'Intimate experience',
+            'Exclusive access',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Capture the beauty of Madrid\'s plazas with expert photography tips.',
+          features: [
+            'Photography guide',
+            'Best photo spots',
+            'Creative techniques',
+            'Hands-on tips',
+            'Scenic locations',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Historical Lectures',
+          description: 'Delve deeper with in-depth lectures on the history of Madrid\'s plazas.',
+          features: [
+            'Expert speakers',
+            'Historical context',
+            'Interactive Q&A',
+            'Detailed narratives',
+            'Educational materials',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Historic Plaza Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 2 to 4 hours depending on the type and itinerary.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Pricing',
+            description: 'Tours start as low as $30, offering great value for cultural insights and experiences.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Sizes',
+            description: 'Enjoy intimate group sizes for a more personalized and engaging experience.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Cultural Engagement',
+            description: 'Participate in local traditions and enjoy the lively atmosphere of each plaza.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Scenic Stops',
+            description: 'Frequent stops at scenic spots perfect for photography and soaking in the views.',
+          },
+          {
+            icon: 'Music',
+            title: 'Live Performances',
+            description: 'Experience street performances and live music in some of Madrid\'s liveliest plazas.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit Plaza Mayor early in the morning to enjoy the architecture without the crowds.',
+        'Try the calamari sandwich, a local specialty, at Plaza Mayor\'s many cafes.',
+        'Check the calendar for public events at Puerta del Sol; it\'s a hub for celebrations!',
+        'Wear comfortable shoes; the cobblestone streets can be tricky for long walks.',
+        'Don\'t miss the changing of the guard at Plaza de Oriente with the Royal Palace as backdrop.',
+        'Visit Plaza de la Villa at dusk for a magical view of its medieval structures under soft lighting.',
+        'Be sure to bring a wide-angle lens for capturing the grandeur of Plaza de España.',
+        'Consider an evening tour to see the plazas illuminated beautifully against the night sky.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best time to visit Madrid\'s plazas?',
+          answer: 'The best time to explore Madrid\'s plazas is during spring (April to June) or fall (September to November) when the weather is mild and pleasant. Avoid the midday heat in summer, although evenings are cooler and plazas come alive with locals. Winter is also a good time for fewer tourists and festive decorations. Remember, each plaza offers a different vibe at various times, so multiple visits can provide unique experiences!',
+        },
+        {
+          question: 'Are these tours suitable for families?',
+          answer: 'Absolutely! Madrid\'s historic plaza tours are family-friendly, with many plazas offering open spaces for children to play and explore. Guides often tailor their stories to engage younger audiences, making history fun and accessible. Additionally, most plazas have nearby amenities like cafes and restrooms, ensuring a comfortable visit for families. It\'s a great way for kids to learn about Spanish culture and history in an engaging environment!',
+        },
+        {
+          question: 'Do I need to book tours in advance?',
+          answer: 'While it\'s possible to join some tours last minute, booking in advance is highly recommended, especially during peak tourist seasons or if you\'re interested in private tours. This ensures availability and often secures a better price. Many tour operators offer online booking options, making it easy to plan your itinerary. Some popular tours may sell out quickly, so early reservations are a smart choice!',
+        },
+        {
+          question: 'What should I wear for a plaza tour?',
+          answer: 'Dress comfortably and appropriately for the weather. Madrid can be hot in summer, so light clothing and sun protection like hats and sunscreen are advisable. In cooler months, layered clothing will keep you comfortable. Given the cobblestone streets, a pair of sturdy, comfortable shoes is essential to navigate the plazas with ease. Always carry a water bottle to stay hydrated during your tour!',
+        },
+        {
+          question: 'Are there any free tours available?',
+          answer: 'Yes, several operators offer free walking tours of Madrid\'s historic plazas. While these tours aren\'t entirely free, they operate on a pay-what-you-feel basis, allowing you to decide the value of your experience. It\'s a budget-friendly option for travelers who want to explore the city without a hefty price tag. Be sure to check the specific meeting points and times ahead of your visit!',
+        },
+        {
+          question: 'Can I take a tour in languages other than Spanish?',
+          answer: 'Definitely! Many tour operators in Madrid offer tours in multiple languages, including English, French, and German. When booking, check the language options available to ensure you have a guide fluent in your preferred language. This allows you to fully appreciate the historical and cultural narratives shared during the tour, making your experience both enjoyable and informative!',
+        },
+        {
+          question: 'What if it rains?',
+          answer: 'Madrid enjoys a relatively dry climate, but occasional rain showers can occur. Tours typically proceed in light rain, so bring an umbrella or raincoat just in case. In the event of heavy rain, some operators may reschedule or offer indoor alternatives, such as museum visits. Always check the weather forecast before your tour and confirm with the operator if inclement weather is expected!',
+        },
+        {
+          question: 'Are there any accessibility concerns?',
+          answer: 'While Madrid\'s plazas are generally accessible, some may have cobblestone streets or uneven surfaces that could pose challenges. Most tours can accommodate those with mobility issues by tailoring routes to avoid difficult terrain. It\'s advisable to inform the tour operator of any specific needs in advance, ensuring they can provide the best possible experience for all participants!',
+        },
+      ],
+    },
+
+    'food-and-tapas-tours': {
+      title: 'Madrid Food & Tapas Tours',
+      subtitle: 'Discover Madrid\'s culinary treasures through mouth-watering food and tapas tours!',
+      categoryName: 'Food & Tapas Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 45,
+        duration: '2 to 4 hours',
+      },
+
+      introduction: `Embark on a gastronomic adventure in Madrid, a city where traditional flavors meet contemporary cuisine! Our food and tapas tours are your gateway to taste the city's vibrant culinary scene. Wander through bustling markets like Mercado de San Miguel, savor delicious tapas in hidden taverns, and sip on exquisite Spanish wines. With every bite, you'll uncover the history and culture that have shaped Madrid's palate. Whether you're a foodie craving authentic experiences or a traveler seeking to deepen your cultural journey, these tours offer a delectable slice of Madrid life. Delight in churros con chocolate, discover the secrets of Iberian ham, and enjoy the lively atmosphere in every corner. These experiences are perfect for families, solo travelers, and groups alike, promising a flavorful adventure in Spain's dynamic heart!`,
+
+      seo: {
+        title: 'Best Madrid Food & Tapas Tours 2025',
+        description: 'Explore Madrid\'s culinary scene with our top food & tapas tours. Book your delicious adventure today!',
+        keywords: 'Madrid food tours, tapas tours, culinary tours Madrid, Spanish cuisine, food tasting Madrid',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Experiences',
+          description: 'Enjoy genuine local flavors in iconic spots and hidden gems throughout Madrid.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Led by passionate locals who share fascinating stories and culinary insights.',
+        },
+        {
+          icon: 'Star',
+          title: 'Top-rated Tours',
+          description: 'Highly rated by travelers worldwide for unforgettable food experiences.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Cultural Immersion',
+          description: 'Deep dive into Madrid\'s vibrant culture through its diverse culinary offerings.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Camera',
+          title: 'Historic Tapas Tour',
+          description: 'Explore Madrid\'s rich history with stops at historic taverns serving delicious tapas.',
+          features: [
+            'Guided visits',
+            'Historic sites',
+            'Traditional tapas',
+            'Local wines',
+            'Cultural insights',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Gourmet Market Tour',
+          description: 'Dive into the bustling markets of Madrid and savor fresh, local delights.',
+          features: [
+            'Market visits',
+            'Fresh produce',
+            'Artisan cheeses',
+            'Wine tastings',
+            'Local guides',
+          ],
+        },
+        {
+          icon: 'PartyPopper',
+          title: 'Evening Tapas Crawl',
+          description: 'Experience Madrid\'s nightlife with an exciting tapas bar crawl.',
+          features: [
+            'Evening tours',
+            'Multiple bars',
+            'Tapas variety',
+            'Meet locals',
+            'Nightlife vibe',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Family-Friendly Tour',
+          description: 'Fun and interactive tours tailored for families with children.',
+          features: [
+            'Child-friendly',
+            'Interactive activities',
+            'Sweet treats',
+            'Family discounts',
+            'Engaging guides',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Food & Tapas Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 2 to 4 hours, depending on the type.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordability',
+            description: 'Tours start at $45, offering great value for an authentic experience.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Historical Insights',
+            description: 'Learn about Madrid\'s history through its cuisine and traditional eateries.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Wine Tastings',
+            description: 'Sample exquisite Spanish wines, enhancing your culinary journey.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Sizes',
+            description: 'Small groups ensure personalized attention and an intimate experience.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Local Connections',
+            description: 'Meet local chefs and vendors, gaining insider knowledge of Madrid\'s food scene.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit Mercado de San Miguel early to avoid crowds and get the freshest bites!',
+        'Try the famous bocadillo de calamares at Plaza Mayor – a must-eat in Madrid!',
+        'Pair your tapas with a glass of Tinto de Verano for a refreshing experience.',
+        'Book evening tours for a lively atmosphere and a taste of Madrid\'s nightlife!',
+        'Ask your guide for the best churros spots – a delicious treat you can\'t miss!',
+        'Wear comfortable shoes; you\'ll be walking through the charming streets of Madrid.',
+        'Bring a small backpack for any delightful local products you might want to buy.',
+        'Don\'t shy away from asking locals for recommendations – they love sharing tips!',
+      ],
+
+      faqs: [
+        {
+          question: 'What should I expect on a tapas tour?',
+          answer: 'Expect a delightful journey through Madrid\'s vibrant culinary scene! You\'ll visit traditional taverns and modern eateries, savoring an array of tapas, each paired with local wines or beers. These tours are led by knowledgeable guides who share fascinating stories about Madrid\'s history and culture. Prices typically range from $45 to $75, depending on the inclusions and duration. Wear comfortable shoes as you\'ll be exploring on foot!',
+        },
+        {
+          question: 'Are food and tapas tours suitable for children?',
+          answer: 'Absolutely! Many tours offer family-friendly options that cater to all ages. These tours often include interactive elements and stops at places that serve kid-friendly dishes. Guides are experienced in keeping the little ones engaged, making it a fun learning experience for the whole family. Be sure to mention any dietary restrictions in advance to ensure a smooth experience.',
+        },
+        {
+          question: 'How do I book a food tour in Madrid?',
+          answer: 'Booking a food tour in Madrid is a breeze! You can book directly through tour operators\' websites or through popular travel platforms like Viator or GetYourGuide. It\'s advisable to book in advance, especially during peak tourist seasons, to secure your spot. Look for tours that include a variety of stops and check reviews to ensure a quality experience.',
+        },
+        {
+          question: 'What if I have dietary restrictions?',
+          answer: 'No worries! Most tours can accommodate dietary restrictions such as vegetarian, gluten-free, or dairy-free diets. It\'s important to inform the tour operator at the time of booking so they can make necessary arrangements. Guides are well-versed in Madrid\'s culinary offerings and will ensure you enjoy a delicious and accommodating experience!',
+        },
+        {
+          question: 'What are some must-try dishes in Madrid?',
+          answer: 'Madrid is a food lover\'s paradise! Don\'t miss trying the iconic tapas like patatas bravas, gambas al ajillo (garlic shrimp), and the famous jamón ibérico. For a sweet treat, indulge in churros con chocolate, and be sure to sample cocido madrileño, a hearty local stew. Each dish tells a story of Madrid\'s rich culinary heritage!',
+        },
+        {
+          question: 'Are tours available in languages other than Spanish?',
+          answer: 'Yes, most food tours in Madrid offer guides who are fluent in English and often other languages like French, German, or Italian. When booking, check with the operator regarding language availability to ensure a seamless and enjoyable tour experience.',
+        },
+        {
+          question: 'How much walking is involved during the tours?',
+          answer: 'Food tours in Madrid generally involve a fair amount of walking, as you\'ll be exploring different neighborhoods and visiting multiple eateries. Distances can vary, but expect to walk for 2 to 3 hours with breaks in between for tastings. Wear comfortable shoes to enjoy the journey without any discomfort!',
+        },
+        {
+          question: 'Can I buy food products during the tour?',
+          answer: 'Definitely! Many tours include stops at markets or shops where you can purchase local products like olive oils, cheeses, or wines. These make great souvenirs or gifts to bring a taste of Madrid back home. Bring some extra cash or a credit card to indulge in these culinary treasures!',
+        },
+      ],
+    },
+
+    'art-and-culture-tours': {
+      title: 'Madrid Art & Culture Tours',
+      subtitle: 'Discover Madrid\'s artistic treasures and vibrant cultural landscape in dynamic guided tours!',
+      categoryName: 'Art & Culture Tours',
+      
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 40,
+        duration: '2-8 hours',
+      },
+
+      introduction: `Madrid, the pulsating heart of Spain, is a paradise for art enthusiasts and culture lovers! This iconic city offers a plethora of art and culture tours that take you deep into its soul, showcasing world-renowned museums like the Prado and Reina Sofia, vibrant local art scenes, and historic neighborhoods. Whether you want to marvel at the masterpieces of Velázquez and Picasso, or explore the bohemian streets of Malasaña, these tours provide a comprehensive look at Madrid's artistic legacy and cultural vibrancy. With options ranging from private gallery tours to immersive flamenco experiences, there's something for every traveler, whether you're an art aficionado, history buff, or curious explorer. Get ready to uncover the hidden stories behind Madrid's artistic gems and cultural landmarks, all while enjoying the warm hospitality and passionate spirit of the locals!`,
+
+      seo: {
+        title: 'Madrid Art & Culture Tours 2025',
+        description: 'Explore Madrid\'s art and culture with top tours! Discover museums, local art, and historic sites.',
+        keywords: 'Madrid art tours, culture tours Madrid, Prado Museum tours, Madrid cultural experiences',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'World-Class Attractions',
+          description: 'Visit iconic sites such as the Prado Museum and Reina Sofia, home to masterpieces by Goya and Picasso.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Local Insights',
+          description: 'Gain insider knowledge from expert guides who share fascinating stories and cultural insights.',
+        },
+        {
+          icon: 'Users',
+          title: 'Diverse Experiences',
+          description: 'From art galleries to flamenco shows, enjoy a variety of tours catering to all interests.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Picture-Perfect Moments',
+          description: 'Capture stunning photos of Madrid\'s artistic and architectural wonders on every tour.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'BookOpen',
+          title: 'Museum Masterpieces Tour',
+          description: 'Explore Madrid\'s top museums and their most famous artworks. Ideal for art lovers and history enthusiasts.',
+          features: [
+            'Prado Museum',
+            'Reina Sofia',
+            'Thyssen-Bornemisza',
+            'Guided insights',
+            'Skip-the-line access',
+          ],
+        },
+        {
+          icon: 'Music',
+          title: 'Flamenco and Tapas Night',
+          description: 'Experience the passion of flamenco and savor authentic Spanish tapas in local venues.',
+          features: [
+            'Live flamenco show',
+            'Traditional tapas',
+            'Local venues',
+            'Cultural insights',
+            'Evening tour',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Historic Neighborhood Walk',
+          description: 'Stroll through Madrid\'s charming neighborhoods, uncovering their history and hidden gems.',
+          features: [
+            'Lavapiés',
+            'Malasaña',
+            'Chueca',
+            'Local stories',
+            'Architectural highlights',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Street Art and Urban Culture',
+          description: 'Discover the vibrant street art and urban culture scene of Madrid.',
+          features: [
+            'Graffiti tours',
+            'Local artists',
+            'Cultural hubs',
+            'Interactive experiences',
+            'Urban exploration',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Art & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 2 to 8 hours, depending on the itinerary.',
+          },
+          {
+            icon: 'HeartHandshake',
+            title: 'Expert Guides',
+            description: 'Knowledgeable guides provide enriching commentary and stories behind the art and culture of Madrid.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable Options',
+            description: 'Tours start as low as $40, offering great value for unforgettable experiences.',
+          },
+          {
+            icon: 'PartyPopper',
+            title: 'Interactive Experiences',
+            description: 'Engage with the art and culture through interactive and participatory activities.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Year-Round Availability',
+            description: 'Enjoy these tours any time of the year, with options for every season.',
+          },
+          {
+            icon: 'Calendar',
+            title: 'Flexible Scheduling',
+            description: 'Tours are available at various times to fit your travel schedule.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit the museums early in the morning to avoid crowds and enjoy a more intimate experience.',
+        'Book a flamenco show in advance to secure the best seats and get a true taste of Spanish culture.',
+        'Wear comfortable shoes for walking tours, as you\'ll explore many historic neighborhoods on foot.',
+        'Don\'t miss the free admission hours at major museums; check their websites for specific times.',
+        'Explore lesser-known galleries in the Lavapiés district for a unique perspective on Madrid\'s art scene.',
+        'Try a guided tour of the Royal Palace for insights into Spanish royalty and stunning architectural details.',
+        'Combine a museum visit with a stroll through Retiro Park for a relaxing afternoon in Madrid.',
+        'Look for tours that include tapas tasting to indulge in Madrid\'s culinary delights as you explore.',
+      ],
+
+      faqs: [
+        {
+          question: 'What are the must-see art museums in Madrid?',
+          answer: 'Madrid is home to some of the world\'s most prestigious art museums! The Prado Museum, with its extensive collection of European art, is a must-visit. The Reina Sofia Museum is famous for housing Picasso\'s "Guernica". Don\'t miss the Thyssen-Bornemisza Museum for its diverse collection spanning several centuries. Each offers unique insights into the world of art, making them essential stops for any art lover visiting Madrid!',
+        },
+        {
+          question: 'How can I book a flamenco show in Madrid?',
+          answer: 'Booking a flamenco show in Madrid is easy! Many venues, such as Corral de la Morería and Casa Patas, offer online reservations. Shows typically range from $50 to $100, including a drink or tapas. It\'s a good idea to book in advance, especially during peak tourist seasons, to secure your spot. Prepare to be captivated by the energy and passion of this traditional Spanish dance!',
+        },
+        {
+          question: 'Are there walking tours available in Madrid?',
+          answer: 'Absolutely! Madrid offers a variety of walking tours that explore its historic neighborhoods, vibrant street art, and cultural landmarks. A guided walking tour of the city\'s iconic areas, such as Malasaña or Lavapiés, provides unique insights into local life and history. Tours vary in length from 2 to 4 hours and typically cost around $25 to $40. Wear comfortable shoes and get ready to discover Madrid\'s hidden gems!',
+        },
+        {
+          question: 'What is the best time of year to visit Madrid for art and culture?',
+          answer: 'Madrid is a year-round destination for art and culture lovers! The spring and fall months offer pleasant weather for exploring the city\'s outdoor art and cultural festivals. Summers can be hot, but are perfect for enjoying indoor museum visits. Winter sees fewer crowds, providing a more intimate experience at popular attractions. Plan accordingly to make the most of Madrid\'s vibrant cultural scene!',
+        },
+        {
+          question: 'Can I visit the Royal Palace on an art and culture tour?',
+          answer: 'Yes, visiting the Royal Palace is a highlight of many art and culture tours in Madrid! The palace, with its stunning architecture and opulent interiors, provides a glimpse into Spain\'s royal history. Tickets typically cost around $15, and guided tours offer deeper insights into its historical significance. Don\'t miss the chance to explore the royal chambers and admire the beautiful artworks housed within!',
+        },
+        {
+          question: 'Are there any art tours that include tapas tasting?',
+          answer: 'Yes, several art tours in Madrid offer a delightful combination of art exploration and tapas tasting! These tours provide a cultural and culinary journey, exploring art galleries and sampling traditional Spanish tapas along the way. Prices generally start at $70, offering great value for a comprehensive experience. Indulge in Madrid\'s rich art scene while savoring its culinary delights!',
+        },
+        {
+          question: 'What languages are available for guided tours?',
+          answer: 'Guided tours in Madrid are available in multiple languages to accommodate international visitors. Most tours offer options in English and Spanish, with some providing guides who speak French, German, or Italian. It\'s advisable to check the language options when booking to ensure a comfortable and informative experience. This multilingual approach makes it accessible for travelers from all over the world!',
+        },
+        {
+          question: 'How can I make the most of my art and culture tour?',
+          answer: 'To make the most of your art and culture tour in Madrid, plan your itinerary ahead of time! Prioritize the attractions and experiences that interest you the most, and consider booking tours that combine multiple activities. Take advantage of skip-the-line tickets to save time at popular sites. Engage with your guide, ask questions, and immerse yourself fully in the cultural narratives shared during the tours. Most importantly, enjoy every moment of your artistic adventure in this vibrant city!',
+        },
+      ],
+    },
+
+    'retiro-park-tours': {
+      title: 'Madrid Retiro Park Tours',
+      subtitle: 'Explore the lush landscapes and historic charm of Madrid\'s Retiro Park on guided tours.',
+      categoryName: 'Retiro Park Tours',
+      
+      stats: {
+        toursAvailable: 15,
+        priceFrom: 25,
+        duration: '1-3 hours',
+      },
+
+      introduction: `Immerse yourself in the enchanting beauty of Madrid's Retiro Park, a verdant oasis in the heart of the city. Spanning over 350 acres, this historic park offers a delightful retreat from the urban hustle, featuring elegant sculptures, tranquil boating lakes, and the stunning Crystal Palace. Whether you're a nature lover, a history buff, or simply seeking a peaceful escape, Retiro Park tours cater to all. Discover hidden gems like the Rosaleda rose garden, bask in the vibrant life of the park's bustling pathways, or indulge in a serene boat ride on the Estanque Grande. Perfect for families, solo travelers, or romantic escapades, these tours offer a perfect blend of relaxation and exploration, ensuring an unforgettable Madrid experience!`,
+
+      seo: {
+        title: 'Top Retiro Park Tours in Madrid 2025',
+        description: 'Discover Madrid\'s Retiro Park with guided tours. Book now for an unforgettable experience!',
+        keywords: 'Retiro Park tours, Madrid tours, Madrid 2025, guided park tours, Retiro Park guide',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Scenic Beauty',
+          description: 'Experience the breathtaking landscapes and serene atmosphere of Madrid\'s iconic park.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Historical Insights',
+          description: 'Learn about the rich history and cultural significance of Retiro Park from expert guides.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photo Opportunities',
+          description: 'Capture stunning photos of the Crystal Palace, lush gardens, and tranquil lakes.',
+        },
+        {
+          icon: 'Users',
+          title: 'Family Friendly',
+          description: 'Enjoy safe and engaging tours that are perfect for all ages, including interactive activities for kids.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Sun',
+          title: 'Walking Tours',
+          description: 'Explore the park on foot with a knowledgeable guide sharing fascinating stories.',
+          features: [
+            'Guided walk',
+            'Historical insights',
+            'Scenic routes',
+            'Photo stops',
+            'Flexible timing',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Boat Tours',
+          description: 'Relax on a boat ride across the park\'s enchanting lake with stunning views.',
+          features: [
+            'Boat rental',
+            'Calm waters',
+            'Unique perspective',
+            'Family friendly',
+            'Photo opportunities',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Cultural Tours',
+          description: 'Delve into the cultural and historical aspects of the park with an expert.',
+          features: [
+            'Historical context',
+            'Cultural landmarks',
+            'Expert guide',
+            'Interactive sessions',
+            'Group activities',
+          ],
+        },
+        {
+          icon: 'HeartHandshake',
+          title: 'Romantic Tours',
+          description: 'Perfect for couples seeking a romantic day out amidst picturesque settings.',
+          features: [
+            'Secluded spots',
+            'Sunset views',
+            'Picnic options',
+            'Romantic stories',
+            'Photography',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Retiro Park Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last between 1 to 3 hours, depending on the type and pace.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Moments',
+            description: 'Ample opportunities for photography at iconic spots like the Crystal Palace.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Relaxation',
+            description: 'Enjoy peaceful environments perfect for unwinding and appreciating nature.',
+          },
+          {
+            icon: 'Users',
+            title: 'Engagement',
+            description: 'Interactive experiences with guides who share captivating stories and insights.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Affordable',
+            description: 'Tours start from just $25, offering great value for an enriching experience.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Weather',
+            description: 'Tours run year-round, with sunny weather enhancing the park\'s beauty.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit early morning to avoid crowds and enjoy the park at its tranquil best.',
+        'Don\'t miss the annual Book Fair if visiting in May, a cultural highlight!',
+        'Rent a rowboat on the lake for a unique perspective of the park.',
+        'Check out the park\'s free art exhibitions, often held in the Crystal Palace.',
+        'Bring a picnic to enjoy in the shade of the park\'s many trees.',
+        'Wear comfortable shoes for walking tours, as the park is expansive.',
+        'Look out for street performers, especially on weekends, adding to the lively atmosphere.',
+        'Download a map of the park beforehand to plan your visit and not miss key attractions.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best time to visit Retiro Park?',
+          answer: 'The best time to visit Retiro Park is during the spring and fall when the weather is pleasant, and the gardens are in full bloom. Early mornings or late afternoons are ideal to avoid the midday sun and crowds. The park is open year-round, so you can enjoy its beauty in all seasons!',
+        },
+        {
+          question: 'Are there any entrance fees to Retiro Park?',
+          answer: 'Retiro Park is free to enter, making it a perfect budget-friendly attraction in Madrid. While entry is free, some activities, such as boat rentals or guided tours, may have a fee. Boat rentals typically cost around $8-$10 for a 45-minute ride.',
+        },
+        {
+          question: 'Can I bring my dog to Retiro Park?',
+          answer: 'Yes, dogs are allowed in Retiro Park! However, they must be kept on a leash. There are designated dog areas where they can run freely and socialize with other dogs. It\'s a great place for a walk with your furry friend.',
+        },
+        {
+          question: 'Is Retiro Park accessible for people with disabilities?',
+          answer: 'Retiro Park is quite accessible, with paved paths suitable for wheelchairs and strollers. Key attractions such as the Crystal Palace and boating lake can be accessed with ease. Additionally, there are accessible restrooms within the park.',
+        },
+        {
+          question: 'What amenities are available in Retiro Park?',
+          answer: 'Retiro Park offers various amenities including restrooms, cafes, children\'s play areas, and picnic spots. There are also several kiosks selling snacks and drinks, ensuring you can refresh during your visit.',
+        },
+        {
+          question: 'Are guided tours available in languages other than Spanish?',
+          answer: 'Yes, many guided tours of Retiro Park are available in multiple languages, including English, French, and German. It\'s advisable to confirm the language options when booking your tour to ensure a smooth experience.',
+        },
+        {
+          question: 'How can I book a tour of Retiro Park?',
+          answer: 'Booking a tour of Retiro Park is simple! You can book online through various tour operators, or visit the tourist information centers in Madrid for assistance. Prices vary, but most start at around $25 for a basic guided tour.',
+        },
+        {
+          question: 'What should I wear when visiting Retiro Park?',
+          answer: 'Wear comfortable clothing and shoes suitable for walking. If you\'re visiting in summer, bring a hat and sunscreen to protect yourself from the sun. In cooler months, a light jacket should suffice. Always carry a water bottle to stay hydrated!',
+        },
+      ],
+    },
+  },
 
 };
 

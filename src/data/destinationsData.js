@@ -1259,12 +1259,12 @@ export const destinations = [
     heroDescription: 'Welcome to the French Riviera, where luxury meets natural beauty along the stunning Mediterranean coast. From the glamorous beaches of Saint-Tropez to the artistic heritage of Antibes, from the casino culture of Monaco to the perfume capital of Grasse, this legendary region offers endless sophistication and charm. Let our AI-powered planner help you discover the best experiences this iconic destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//french%20riviera.avif',
     tourCategories: [
-      'Monaco & Monte Carlo Tours',
-      'Saint-Tropez Beach Tours',
-      'Antibes & Cannes Tours',
-      'Provence Wine Tours',
-      'Grasse Perfume Tours',
-      'Eze Village Tours'
+      { name: 'Monaco & Monte Carlo Tours', hasGuide: true },
+      { name: 'Saint-Tropez Beach Tours', hasGuide: true },
+      { name: 'Antibes & Cannes Tours', hasGuide: true },
+      { name: 'Provence Wine Tours', hasGuide: true },
+      { name: 'Grasse Perfume Tours', hasGuide: true },
+      { name: 'Eze Village Tours', hasGuide: true }
     ],
     seo: {
       title: 'French Riviera Tours & Excursions - Top-Rated Activities & Adventures',
@@ -1425,12 +1425,12 @@ export const destinations = [
     heroDescription: 'Welcome to Florence, where the Renaissance was born and artistic masterpieces await around every corner. From the magnificent Duomo to the world-famous Uffizi Gallery, from Michelangelo\'s David to authentic Tuscan cuisine, this cultural capital offers an unparalleled artistic and culinary experience. Let our AI-powered planner help you discover the best experiences this magnificent destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Florence.jpeg',
     tourCategories: [
-      'Uffizi Gallery Tours',
-      'Duomo Tours',
-      'Tuscan Wine Tours',
-      'Art & History Tours',
-      'Food & Cooking Tours',
-      'Michelangelo Tours'
+      { name: 'Uffizi Gallery Tours', hasGuide: true },
+      { name: 'Duomo Tours', hasGuide: true },
+      { name: 'Tuscan Wine Tours', hasGuide: true },
+      { name: 'Art & History Tours', hasGuide: true },
+      { name: 'Food & Cooking Tours', hasGuide: true },
+      { name: 'Michelangelo Tours', hasGuide: true }
     ],
     seo: {
       title: 'Florence Tours & Excursions - Top-Rated Activities & Adventures',
@@ -1590,12 +1590,12 @@ export const destinations = [
     heroDescription: 'Welcome to Madrid, where royal palaces meet contemporary art and Spanish culture comes alive. From the magnificent Royal Palace to the world-famous Prado Museum, from historic plazas to modern neighborhoods, this dynamic capital offers the perfect blend of tradition and innovation. Let our AI-powered planner help you discover the best experiences this vibrant destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Madrid.webp',
     tourCategories: [
-      'Prado Museum Tours',
-      'Royal Palace Tours',
-      'Historic Plaza Tours',
-      'Food & Tapas Tours',
-      'Art & Culture Tours',
-      'Retiro Park Tours'
+      { name: 'Prado Museum Tours', hasGuide: true },
+      { name: 'Royal Palace Tours', hasGuide: true },
+      { name: 'Historic Plaza Tours', hasGuide: true },
+      { name: 'Food & Tapas Tours', hasGuide: true },
+      { name: 'Art & Culture Tours', hasGuide: true },
+      { name: 'Retiro Park Tours', hasGuide: true }
     ],
     seo: {
       title: 'Madrid Tours & Excursions - Top-Rated Activities & Adventures',
@@ -1755,12 +1755,12 @@ export const destinations = [
     heroDescription: 'Welcome to Ibiza, where world-famous nightlife meets pristine Mediterranean beaches and bohemian charm. From legendary clubs to hidden coves, from historic Dalt Vila to sunset parties, this iconic island offers the perfect blend of excitement and relaxation. Let our AI-powered planner help you discover the best experiences this legendary destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Ibiza.jpg',
     tourCategories: [
-      'Dalt Vila Tours',
-      'Beach & Boat Tours',
-      'Sunset Party Tours',
-      'Water Sports Tours',
-      'Food & Wine Tours',
-      'Island Exploration Tours'
+      { name: 'Dalt Vila Tours', hasGuide: true },
+      { name: 'Beach & Boat Tours', hasGuide: true },
+      { name: 'Sunset Party Tours', hasGuide: true },
+      { name: 'Water Sports Tours', hasGuide: true },
+      { name: 'Food & Wine Tours', hasGuide: true },
+      { name: 'Island Exploration Tours', hasGuide: true }
     ],
     seo: {
       title: 'Ibiza Tours & Excursions - Top-Rated Activities & Adventures',
@@ -2030,12 +2030,12 @@ export const destinations = [
     heroDescription: 'Welcome to Lisbon, where historic trams climb steep hills and colorful tiles tell stories of centuries past. From the iconic Belém Tower to the charming Alfama district, from world-class cuisine to Fado music, this Atlantic capital offers the perfect blend of history, culture, and modern Portuguese life. Let our AI-powered planner help you discover the best experiences this enchanting destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Lisbon.jpeg',
     tourCategories: [
-      'Belém Tower Tours',
-      'Alfama District Tours',
-      'Tram Tours',
-      'Food & Wine Tours',
-      'Fado Music Tours',
-      'Historic Quarter Tours'
+      { name: 'Belém Tower Tours', hasGuide: true },
+      { name: 'Alfama District Tours', hasGuide: true },
+      { name: 'Tram Tours', hasGuide: true },
+      { name: 'Food & Wine Tours', hasGuide: true },
+      { name: 'Fado Music Tours', hasGuide: true },
+      { name: 'Historic Quarter Tours', hasGuide: true }
     ],
     seo: {
       title: 'Lisbon Tours & Excursions - Top-Rated Activities & Adventures',
@@ -2140,12 +2140,12 @@ export const destinations = [
     heroDescription: 'Welcome to Madeira, where dramatic volcanic landscapes meet lush subtropical gardens and the Atlantic Ocean provides endless natural beauty. From the historic Funchal to the famous levada walks, from world-class wine to stunning viewpoints, this Atlantic island offers the perfect blend of nature, culture, and Portuguese island charm. Let our AI-powered planner help you discover the best experiences this breathtaking destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Madeira.jpg',
     tourCategories: [
-      'Levada Walking Tours',
-      'Funchal City Tours',
-      'Wine & Food Tours',
-      'Mountain & Valley Tours',
-      'Coastal Boat Tours',
-      'Garden & Nature Tours'
+      { name: 'Levada Walking Tours', hasGuide: true },
+      { name: 'Funchal City Tours', hasGuide: true },
+      { name: 'Wine & Food Tours', hasGuide: true },
+      { name: 'Mountain & Valley Tours', hasGuide: true },
+      { name: 'Coastal Boat Tours', hasGuide: true },
+      { name: 'Garden & Nature Tours', hasGuide: true }
     ],
     seo: {
       title: 'Madeira Tours & Excursions - Top-Rated Activities & Adventures',
@@ -2195,12 +2195,12 @@ export const destinations = [
     heroDescription: 'Welcome to London, where centuries of history meet cutting-edge culture and royal traditions blend with modern innovation. From the iconic Big Ben to the magnificent Buckingham Palace, from world-class museums to vibrant neighborhoods, this global capital offers the perfect blend of tradition, culture, and contemporary British life. Let our AI-powered planner help you discover the best experiences this legendary destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//London.jpeg',
     tourCategories: [
-      'Buckingham Palace Tours',
-      'Tower of London Tours',
-      'Big Ben & Parliament Tours',
-      'Museum & Gallery Tours',
-      'Food & Pub Tours',
-      'Royal London Tours'
+      { name: 'Buckingham Palace Tours', hasGuide: true },
+      { name: 'Tower of London Tours', hasGuide: true },
+      { name: 'Big Ben & Parliament Tours', hasGuide: true },
+      { name: 'Museum & Gallery Tours', hasGuide: true },
+      { name: 'Food & Pub Tours', hasGuide: true },
+      { name: 'Royal London Tours', hasGuide: true }
     ],
     seo: {
       title: 'London Tours & Excursions - Top-Rated Activities & Adventures',
@@ -2526,12 +2526,12 @@ export const destinations = [
     heroDescription: 'Welcome to Interlaken, where the majestic Swiss Alps provide a stunning backdrop for endless outdoor adventures and natural beauty. From the iconic Jungfrau region to pristine lakes, from thrilling adventure sports to peaceful mountain hikes, this alpine paradise offers the perfect blend of nature, adventure, and Swiss mountain culture. Let our AI-powered planner help you discover the best experiences this breathtaking destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Interlaken.jpg',
     tourCategories: [
-      'Jungfrau Region Tours',
-      'Adventure Sports Tours',
-      'Mountain Hiking Tours',
-      'Lake & Boat Tours',
-      'Alpine Village Tours',
-      'Scenic Train Tours'
+      { name: 'Jungfrau Region Tours', hasGuide: true },
+      { name: 'Adventure Sports Tours', hasGuide: true },
+      { name: 'Mountain Hiking Tours', hasGuide: true },
+      { name: 'Lake & Boat Tours', hasGuide: true },
+      { name: 'Alpine Village Tours', hasGuide: true },
+      { name: 'Scenic Train Tours', hasGuide: true }
     ],
     seo: {
       title: 'Interlaken Tours & Excursions - Top-Rated Activities & Adventures',
@@ -2966,12 +2966,12 @@ export const destinations = [
     heroDescription: 'Welcome to the Lofoten Islands, where dramatic mountains rise from the Norwegian Sea and traditional fishing villages cling to pristine shores. From the iconic fishing villages to stunning fjords, from midnight sun to northern lights, this Arctic archipelago offers the perfect blend of natural beauty, culture, and Norwegian coastal life. Let our AI-powered planner help you discover the best experiences this breathtaking destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Lofoten%20Islands.jpg',
     tourCategories: [
-      'Fishing Village Tours',
-      'Northern Lights Tours',
-      'Midnight Sun Tours',
-      'Hiking & Nature Tours',
-      'Fjord & Boat Tours',
-      'Photography Tours'
+      { name: 'Fishing Village Tours', hasGuide: true },
+      { name: 'Northern Lights Tours', hasGuide: true },
+      { name: 'Midnight Sun Tours', hasGuide: true },
+      { name: 'Hiking & Nature Tours', hasGuide: true },
+      { name: 'Fjord & Boat Tours', hasGuide: true },
+      { name: 'Photography Tours', hasGuide: true }
     ],
     seo: {
       title: 'Lofoten Islands Tours & Excursions - Top-Rated Activities & Adventures',

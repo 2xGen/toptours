@@ -565,7 +565,10 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           .map(cat => typeof cat === 'string' ? cat : cat.name)
           .filter(catName => catName !== guideData.categoryName)
           .filter(catName => {
-            const slug = catName.toLowerCase().replace(/ /g, '-');
+            const slug = catName.toLowerCase()
+              .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
+              .replace(/&/g, 'and')
+              .replace(/ /g, '-');
             return categoryGuides[destinationId] && categoryGuides[destinationId][slug];
           })
           .slice(0, 5);
@@ -588,7 +591,10 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
                 {availableCategories.map((category, index) => {
-                  const categorySlug = category.toLowerCase().replace(/ /g, '-');
+                  const categorySlug = category.toLowerCase()
+                    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
+                    .replace(/&/g, 'and')
+                    .replace(/ /g, '-');
                   return (
                     <motion.div
                       key={index}

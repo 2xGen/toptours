@@ -23,14 +23,14 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: guideData.seo.title,
       description: guideData.seo.description,
-      images: [guideData.heroImage],
+      images: [guideData.heroImage || destination.imageUrl],
       type: 'article',
     },
     twitter: {
       card: 'summary_large_image',
       title: guideData.seo.title,
       description: guideData.seo.description,
-      images: [guideData.heroImage],
+      images: [guideData.heroImage || destination.imageUrl],
     },
     alternates: {
       canonical: `/destinations/${destinationId}/guides/${categorySlug}`,
@@ -76,7 +76,7 @@ export default async function CategoryGuidePage({ params }) {
         '@type': 'Article',
         headline: guideData.title,
         description: guideData.subtitle,
-        image: guideData.heroImage,
+        image: guideData.heroImage || destination.imageUrl,
         author: {
           '@type': 'Organization',
           name: 'TopTours AI',
@@ -136,7 +136,7 @@ export default async function CategoryGuidePage({ params }) {
         '@type': 'TouristAttraction',
         name: `${guideData.categoryName} in ${destination.name}`,
         description: guideData.subtitle,
-        image: guideData.heroImage,
+        image: guideData.heroImage || destination.imageUrl,
         address: {
           '@type': 'PostalAddress',
           addressCountry: destination.category,
