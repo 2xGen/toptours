@@ -2856,12 +2856,12 @@ export const destinations = [
     heroDescription: 'Welcome to Reykjavik, where geothermal energy powers a modern city and the northern lights dance across Arctic skies. From the iconic Hallgrímskirkja to the famous Blue Lagoon, from vibrant culture to stunning natural wonders, this northern capital offers the perfect blend of urban life and Icelandic nature. Let our AI-powered planner help you discover the best experiences this unique destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Reykjavik.jpg',
     tourCategories: [
-      'Northern Lights Tours',
-      'Golden Circle Tours',
-      'Blue Lagoon Tours',
-      'Geothermal Tours',
-      'Food & Culture Tours',
-      'Adventure Tours'
+      { name: 'Northern Lights Tours', hasGuide: true },
+      { name: 'Golden Circle Tours', hasGuide: true },
+      { name: 'Blue Lagoon Tours', hasGuide: true },
+      { name: 'Geothermal Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Reykjavik Tours & Excursions - Top-Rated Activities & Adventures',

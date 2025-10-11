@@ -33069,5 +33069,1063 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
     },
   },
 
+  reykjavik: {
+    'northern-lights-tours': {
+      title: 'Reykjavik Northern Lights Tours',
+      subtitle: 'Witness the magical Aurora Borealis dancing across Iceland\'s Arctic sky - nature\'s greatest light show!',
+      categoryName: 'Northern Lights Tours',
+      
+      stats: {
+        toursAvailable: 42,
+        priceFrom: 45,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Experience one of nature's most spectacular phenomena - the Aurora Borealis dancing across Iceland's dark winter skies! Northern Lights tours from Reykjavik take you away from city light pollution to prime viewing locations where green, pink, purple, and red curtains of light ripple overhead in a mesmerizing celestial display. Expert guides use real-time aurora forecasts, cloud cover data, and years of experience to maximize your chances of witnessing this bucket-list phenomenon. Tours include warm clothing, hot chocolate, photography tips, and scientific explanations of what causes these magical lights. Options range from minibus excursions to luxury coaches, boat tours, and multi-day packages combining northern lights with Iceland's natural wonders. The season runs September to April when Iceland's long dark nights provide perfect viewing conditions!`,
+
+      seo: {
+        title: 'Reykjavik Northern Lights Tours 2025 - Aurora Borealis Viewing',
+        description: 'See the Northern Lights from Reykjavik! Aurora Borealis tours, expert guides, and Iceland winter magic!',
+        keywords: 'Northern Lights Iceland, Aurora Borealis Reykjavik, Iceland Northern Lights tours, Reykjavik aurora tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Bucket-List Experience',
+          description: 'Witness one of nature\'s most magical phenomena - the Aurora Borealis in its full glory!',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Aurora Guides',
+          description: 'Experienced guides use forecasts and local knowledge to find the best viewing spots.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Assistance',
+          description: 'Get help capturing stunning aurora photos with professional camera tips and techniques.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Magical Memories',
+          description: 'Create unforgettable moments under dancing lights in Iceland\'s pristine wilderness.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Minibus Tours',
+          description: 'Small group tours (10-20 people) to prime viewing locations with expert aurora guides.',
+          features: [
+            '3-5 hours',
+            'Multiple locations',
+            'Aurora hunting',
+            'Hot chocolate',
+            'Photography help',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Northern Lights Boat Tours',
+          description: 'View aurora from the water away from all land light pollution - unique perspective!',
+          features: [
+            'Faxaflói Bay cruise',
+            'Minimal light pollution',
+            'Heated indoor cabin',
+            'Outdoor viewing decks',
+            'Hot drinks',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Specialized tours with professional photographers teaching aurora capture techniques.',
+          features: [
+            'Pro photographer guide',
+            'Camera settings help',
+            'Tripod use',
+            'Composition tips',
+            'Small groups',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Super Jeep Adventures',
+          description: 'Off-road 4x4 tours reaching remote highlands and locations regular buses can\'t access.',
+          features: [
+            '4x4 access',
+            'Remote locations',
+            'Small groups',
+            'Adventure element',
+            'Better viewing spots',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Reykjavik Northern Lights Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours last 3-5 hours departing around 8-9 PM, hunting for aurora across multiple locations.',
+          },
+          {
+            icon: 'Star',
+            title: 'Aurora Viewing',
+            description: 'See green, pink, purple, or red lights dancing overhead - intensity varies nightly.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Location Changes',
+            description: 'Guides drive to different spots based on real-time cloud cover and aurora forecasts.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography Tips',
+            description: 'Learn to photograph northern lights with manual settings, long exposures, and tripods.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Warm Amenities',
+            description: 'Hot chocolate, warm clothing available, and heated bus between viewing stops.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Aurora Science',
+            description: 'Understand what causes northern lights - solar winds, magnetic fields, and atmospheric science.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Northern lights are NOT guaranteed - they\'re natural phenomena dependent on solar activity and weather!',
+        'Season: September-April when Iceland has dark nights. December-February offers most darkness.',
+        'Book tours early in your trip so you can reschedule if weather is bad or aurora weak.',
+        'Most companies offer free rebooking if aurora isn\'t visible - check cancellation policies!',
+        'Dress VERY warmly - you\'ll stand outside in freezing temps for extended periods!',
+        'Phone cameras struggle with aurora - DSLR or mirrorless cameras perform best.',
+        'Aurora intensity varies: Kp-index 0-2 is weak, 3-5 is good, 6+ is spectacular!',
+        'Download aurora forecast apps (Aurora Forecast, My Aurora Forecast) to track activity.',
+      ],
+
+      faqs: [
+        {
+          question: 'What are the Northern Lights?',
+          answer: 'The Northern Lights (Aurora Borealis) are natural light displays in Arctic skies caused by solar particles colliding with Earth\'s atmosphere! Here\'s how: The sun constantly emits charged particles (solar wind). When these hit Earth\'s magnetic field, they\'re directed toward the poles. At 60-250 miles altitude, they collide with oxygen and nitrogen molecules, releasing energy as colorful light! Oxygen produces green (most common) and red (rare, high altitude), nitrogen creates blue and purple. The "dancing" effect comes from fluctuating solar winds and magnetic field interactions. Northern lights occur in an oval around the magnetic north pole - Iceland sits perfectly positioned! The phenomenon has fascinated humans for millennia, inspiring countless myths and legends across Arctic cultures!',
+        },
+        {
+          question: 'When can you see Northern Lights in Iceland?',
+          answer: 'Northern Lights season in Iceland runs from late August/early September through mid-April, when nights are dark enough for viewing! BEST MONTHS: September-October and February-March offer optimal conditions (dark enough but not too cold/stormy). Peak darkness: December-January (but also Iceland\'s stormiest months). Late August-September: Season starts, warmer temps. March-April: Season ends, longer days. You CANNOT see aurora in summer (May-July) - Iceland has midnight sun with no darkness! Northern lights need: 1) Dark skies (away from light pollution), 2) Clear weather (no clouds obscuring view), 3) Solar activity (aurora strength varies). Lights can appear any time September-April, but probability increases with darker months. Multi-day trips increase chances significantly!',
+        },
+        {
+          question: 'What are the chances of seeing Northern Lights?',
+          answer: 'Chances vary significantly based on timing, weather, and solar activity! REALISTIC EXPECTATIONS: On any single night with clear skies during season: 50-70% chance of some aurora visibility (might be faint). Strong, dancing displays: 20-30% of clear nights. No aurora despite clear skies: 30-50% (solar activity dependent). Over a 3-4 night stay: 80-90% chance of seeing aurora at least once. Over a week: 95%+ likelihood. FACTORS AFFECTING VISIBILITY: Cloud cover (biggest obstacle - Iceland is often cloudy!), solar activity (Kp-index measures strength), moon phase (bright full moon reduces visibility), light pollution (get away from cities), and season timing. Northern lights are NATURAL phenomena - no one can guarantee them! Tour companies typically offer free rebooking if aurora isn\'t visible.',
+        },
+        {
+          question: 'How much do Northern Lights tours cost?',
+          answer: 'Prices vary by tour type and inclusions! BUDGET OPTIONS: Minibus tours from Reykjavik: €45-70 (most popular, 3-5 hours, 10-20 people). Basic boat tours: €60-90. MID-RANGE: Small group tours: €80-120 (better guide-to-guest ratio). Photography tours: €120-180 (pro photographer guide, camera help). PREMIUM: Super Jeep 4x4 tours: €150-250 (remote access, small groups). Private tours: €500-1,000+ (custom itinerary, flexible timing). Multi-day packages: €200-800 (combine with other activities). WHAT\'S INCLUDED: Transportation, expert guide, multiple locations, hot chocolate, and often warm clothing rental. Photography tours include tripod use and extensive camera help. Most offer FREE rebooking if aurora isn\'t visible - huge value! Book online for 10-15% savings versus walk-in prices.',
+        },
+        {
+          question: 'Can you see Northern Lights from Reykjavik city?',
+          answer: 'Technically yes, but practically NO - light pollution in Reykjavik significantly reduces visibility! You might see STRONG aurora displays from darker Reykjavik neighborhoods (residential areas away from downtown), but faint or moderate aurora will be invisible. Tours drive 30-60+ minutes from Reykjavik to dark sky locations - essential for good viewing! WHY LEAVE REYKJAVIK: City lights drown out aurora, especially weaker displays. Dark sites show more colors, more detail, and more movement. Tour guides know best locations based on real-time conditions. REYKJAVIK ALTERNATIVES: Grotta Lighthouse (western tip) is darkest city spot - free access, popular with locals during strong aurora. But even here, leaving the city is recommended! If aurora is extremely strong (Kp 6+), you might see it from anywhere in Iceland including Reykjavik, but this is uncommon.',
+        },
+        {
+          question: 'What should I wear on Northern Lights tours?',
+          answer: 'Dress for EXTREME COLD - you\'ll stand outside in freezing Icelandic winter for hours! ESSENTIAL LAYERS: Base layer (thermal underwear top + bottom), mid layer (fleece or wool), outer layer (waterproof, windproof winter jacket and pants), thick wool socks, insulated winter boots (warm and waterproof!), warm hat covering ears, gloves (bring extras - hands get cold!), and scarf or neck warmer. Iceland weather changes rapidly - waterproof layers essential! EXTRAS: Hand/foot warmers (lifesavers!), extra gloves (for camera work), and sunglasses for bus ride. Many tours provide warm overalls/coveralls to wear over your clothes - ASK when booking! WHAT NOT TO WEAR: Cotton (stays wet and cold), fashion boots (you need proper winter boots), and light jackets. Remember: You\'re not moving much while viewing - you\'ll get COLD! Overdressing is better than underdressing!',
+        },
+        {
+          question: 'How do you photograph the Northern Lights?',
+          answer: 'Northern lights photography requires manual camera settings and patience! CAMERA REQUIREMENTS: DSLR or mirrorless camera with manual mode. Wide-angle lens (14-24mm ideal). Sturdy tripod (essential for long exposures!). Fully charged batteries (cold drains them fast - bring spares!). Phone cameras struggle with aurora - some newer models work but results are limited. CAMERA SETTINGS: Manual mode, ISO 800-3200 (adjust based on aurora brightness), aperture f/2.8 or widest your lens allows, shutter speed 5-25 seconds (experiment!), manual focus set to infinity, and shoot in RAW format for editing flexibility. TECHNIQUE: Use 2-second timer to avoid camera shake. Focus on distant light or star before aurora appears. Take test shots and adjust. Include foreground elements (mountains, buildings) for context. Tours often include photography help - guides will assist with settings!',
+        },
+        {
+          question: 'What if the Northern Lights tour is canceled?',
+          answer: 'Most reputable companies offer flexible policies for this weather-dependent activity! CANCELLATION SCENARIOS: Tour operator cancels due to bad weather forecast (heavy clouds, storms): Full refund OR free rebooking. Tour departs but aurora isn\'t visible during trip (clear skies, but no aurora): Most companies offer FREE rebooking for another night - huge value! Tour departs, sees faint aurora: Usually no refund (some visibility occurred). You cancel: Typically 24-48 hour cancellation notice required for refund. RECOMMENDATIONS: Book tours early in your Iceland trip allowing rebooking flexibility. Check company cancellation policies before booking - best operators offer free rebooking if aurora not seen. Most tours monitor conditions until departure time (around 8 PM) - you\'ll be notified of cancellations. During multi-day Iceland stays, book multiple tour nights to increase chances. Read reviews about company reliability and refund practices!',
+        },
+      ],
+    },
+
+    'golden-circle-tours': {
+      title: 'Reykjavik Golden Circle Tours',
+      subtitle: 'Explore Iceland\'s most famous route - geysers, waterfalls, and tectonic plates in one spectacular day!',
+      categoryName: 'Golden Circle Tours',
+      
+      stats: {
+        toursAvailable: 56,
+        priceFrom: 50,
+        duration: '6-8 hours',
+      },
+
+      introduction: `Discover Iceland's most iconic route - the Golden Circle, a 300km loop showcasing the country's most spectacular natural wonders! This legendary circuit visits three UNESCO-recognized sites: Þingvellir National Park (where North American and Eurasian tectonic plates meet visibly), Geysir geothermal area (home to Strokkur geyser erupting 100ft every 5-10 minutes), and Gullfoss waterfall (massive two-tier cascade plunging 105ft into a canyon). Tours range from basic 6-hour bus trips to luxury super jeep adventures combining Golden Circle with glacier hiking, snorkeling between continents, Secret Lagoon bathing, or Northern Lights hunting. It's Iceland's most popular tour for excellent reason - nowhere else on Earth can you stand between tectonic plates, watch a geyser erupt, and feel waterfall spray all in one incredible day!`,
+
+      seo: {
+        title: 'Reykjavik Golden Circle Tours 2025 - Geysers & Waterfalls',
+        description: 'Experience Iceland\'s Golden Circle! Geysers, Gullfoss waterfall, tectonic plates, and Iceland wonders!',
+        keywords: 'Golden Circle Iceland, Reykjavik tours, Gullfoss waterfall, Geysir Iceland, Thingvellir tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Iceland\'s Best in One Day',
+          description: 'See Iceland\'s most iconic sights - geysers, waterfalls, and tectonic plates all in one tour!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'UNESCO World Heritage',
+          description: 'Visit Þingvellir National Park - historical parliament site and geological wonder.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Incredible Photo Ops',
+          description: 'Capture erupting geysers, massive waterfalls, and dramatic Icelandic landscapes.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Learn Iceland\'s geology, history, and culture from knowledgeable local guides.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Golden Circle',
+          description: 'Visit the three main sites - Þingvellir, Geysir, and Gullfoss - in a full-day tour.',
+          features: [
+            '6-8 hours',
+            'Three main sites',
+            'Comfortable bus',
+            'Audio guide',
+            'Multiple stops',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Golden Circle + Secret Lagoon',
+          description: 'Classic route plus bathing in Iceland\'s oldest natural hot spring - perfect combo!',
+          features: [
+            'All main sites',
+            'Secret Lagoon bath',
+            'Swimsuit required',
+            'Towel rental',
+            '8-9 hours',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Golden Circle + Snorkeling Silfra',
+          description: 'Add snorkeling between tectonic plates in crystal-clear Silfra fissure - bucket list!',
+          features: [
+            'All main sites',
+            'Silfra snorkeling',
+            'Drysuit provided',
+            'Underwater views',
+            '10-11 hours',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Super Jeep Golden Circle',
+          description: 'Explore in 4x4 super jeeps accessing off-road locations and hidden gems.',
+          features: [
+            'Off-road access',
+            'Small groups',
+            'Hidden locations',
+            'Adventure element',
+            'Premium experience',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Reykjavik Golden Circle Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Full-day tours last 6-8 hours for classic route, up to 12 hours with add-ons.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Þingvellir National Park',
+            description: 'Walk between North American and Eurasian tectonic plates in UNESCO World Heritage site.',
+          },
+          {
+            icon: 'Star',
+            title: 'Geysir Geothermal Area',
+            description: 'Watch Strokkur geyser erupt 60-100ft high every 5-10 minutes - guaranteed spectacle!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Gullfoss Waterfall',
+            description: 'Experience Iceland\'s most powerful waterfall plunging 105ft into a dramatic canyon.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Stops',
+            description: 'Multiple stops at each location with ample time for photos and exploration.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Geological Wonders',
+            description: 'Learn about Iceland\'s unique geology, volcanic activity, and tectonic processes.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Morning tours (8-9 AM start) arrive at sights before afternoon crowds - highly recommended!',
+        'Bring waterproof jacket - Gullfoss creates mist and Iceland weather changes quickly!',
+        'Wear sturdy walking shoes - paths can be wet, icy, or uneven depending on season.',
+        'Winter Golden Circle offers snow-covered landscapes and possible Northern Lights extension!',
+        'Summer (June-August) has best weather but maximum crowds - shoulder seasons offer balance.',
+        'Small group tours (12-19 people) provide better experience than large coaches (40+).',
+        'Combination tours save time but are longer days - pure Golden Circle is more relaxed.',
+        'Book tours including lunch or bring snacks - limited food options at sites.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Golden Circle?',
+          answer: 'The Golden Circle is Iceland\'s most famous tourist route - a 300km (186-mile) loop from Reykjavik visiting three spectacular natural attractions! The circuit includes: ÞINGVELLIR NATIONAL PARK (40 miles from Reykjavik) - UNESCO World Heritage site where you can walk between North American and Eurasian tectonic plates! Also Iceland\'s historical parliament site (established 930 AD). GEYSIR GEOTHERMAL AREA (70 miles) - Active geothermal field where Strokkur geyser erupts 60-100 feet high every 5-10 minutes! The original Geysir (which gave geysers their name) is mostly dormant. GULLFOSS WATERFALL (75 miles) - Massive two-tier waterfall plunging 105 feet into a dramatic canyon with incredible power and spray! The name means "Golden Falls." These three sites represent Iceland\'s geological uniqueness - tectonic plates, geothermal activity, and glacial water power. It\'s possible to self-drive or join organized tours. Most tours complete the circuit in 6-8 hours!',
+        },
+        {
+          question: 'How long does the Golden Circle take?',
+          answer: 'Classic Golden Circle tours take 6-8 hours covering the three main sites with comfortable stops at each! TYPICAL TIMELINE: Depart Reykjavik 8-9 AM, Þingvellir (1 hour visit), Geysir geothermal area (45 minutes), lunch stop (30-45 minutes), Gullfoss waterfall (45 minutes), return to Reykjavik by 4-6 PM. VARIATIONS: Express tours: 5-6 hours (shorter stops). Leisurely tours: 8-10 hours (more time at each site, extra stops). Combination tours: 10-14 hours when adding activities like Secret Lagoon bathing, Snorkeling Silfra, crater visiting, or Northern Lights hunting. Self-driving: Allow full day (6-8 hours minimum) with flexibility. DISTANCES: Total route about 300km (186 miles). Þingvellir is 40km from Reykjavik, Geysir 70km, Gullfoss 75km. Return via different route completing loop. The Golden Circle can be done year-round - each season offers different perspectives!',
+        },
+        {
+          question: 'Can you do the Golden Circle yourself?',
+          answer: 'Yes! Self-driving the Golden Circle is very popular and straightforward - Iceland has excellent roads and signage! PROS OF SELF-DRIVING: Flexibility (stop whenever you want), skip crowds (arrive early or late), explore side attractions, set your own pace, and often cheaper for groups. Car rental: €50-80/day. Gas: ~€20-30. Total for group: €70-110 split among passengers. CONS: No expert commentary/geological education, no insider knowledge, driving in winter can be challenging (ice, snow, darkness), and parking at popular times can be crowded. TOUR BENEFITS: Expert guides explain geology/history, no driving stress (especially winter), social experience meeting travelers, hidden spots tours visit, and hotel pickup/drop-off included. RECOMMENDATION: Self-drive if confident driving, want flexibility, and have 3+ people to split costs. Take tours for first-time visitors, winter trips, solo travelers, or when you want to learn!',
+        },
+        {
+          question: 'When is the best time to visit the Golden Circle?',
+          answer: 'The Golden Circle can be visited year-round - each season offers unique experiences! SUMMER (June-August): PROS - Warmest weather (10-15°C/50-60°F), longest daylight (near midnight sun!), lush green landscapes, all roads accessible. CONS - Peak crowds (arrive early!), higher tour prices. SHOULDER SEASONS (April-May, September-October): PROS - Fewer crowds, pleasant weather, dramatic seasonal landscapes, good tour availability. CONS - Variable weather, some snow possible. WINTER (November-March): PROS - Snow-covered landscapes (magical!), possible Northern Lights viewing, dramatic atmosphere, fewer tourists. CONS - Cold (0 to -10°C/32-14°F), short daylight (4-5 hours in December), icy conditions, some combo activities unavailable. BEST OVERALL: September-October offers beautiful fall colors, fewer crowds, and decent weather. June-August for best weather despite crowds. December-February for snow and Northern Lights but requires warm clothing!',
+        },
+        {
+          question: 'What should I bring on a Golden Circle tour?',
+          answer: 'Pack for variable Icelandic weather - conditions change rapidly! CLOTHING ESSENTIALS: Waterproof jacket (crucial - Gullfoss creates mist!), layers (fleece or wool mid-layer), warm base layer, comfortable waterproof walking shoes or hiking boots, warm hat and gloves (even summer - it can be windy!), and sunglasses. Winter additions: Serious winter jacket, thermal underwear, winter boots, extra layers, hand warmers. PRACTICAL ITEMS: Water bottle (staying hydrated at altitude), snacks (limited food at sites unless tour includes lunch), camera/phone (fully charged!), Icelandic króna for souvenirs/snacks (cards widely accepted), and daypack for carrying items. DON\'T BRING: Umbrella (useless in Iceland wind - waterproof jacket better!). TOUR SPECIFICS: If adding Secret Lagoon - bring swimsuit, towel (or rent), and flip-flops. If adding Silfra snorkeling - swimsuit for under drysuit. Tours typically don\'t include lunch - budget €15-20 for meal at lunch stop.',
+        },
+        {
+          question: 'What is Þingvellir National Park?',
+          answer: 'Þingvellir (pronounced "THING-vet-lir") is a UNESCO World Heritage site of massive geological AND historical importance! GEOLOGICAL WONDER: The only place on Earth where the Mid-Atlantic Ridge (separating North American and Eurasian tectonic plates) is visible above sea level! The plates drift apart 2cm per year, creating a dramatic rift valley. You can literally walk between continents! The Almannagjá gorge shows the spectacular results of thousands of years of plate movement. Silfra fissure here offers world\'s clearest water for snorkeling/diving. HISTORICAL SIGNIFICANCE: Site of Iceland\'s Alþingi (parliament) established 930 AD - one of the world\'s oldest democratic assemblies! Vikings gathered here annually to settle disputes, make laws, and trade. Iceland declared independence here (1944). The Öxarárfoss waterfall and Þingvallavatn lake (Iceland\'s largest) add to the stunning landscape. It\'s free to visit, has excellent paths, and is a must-see Golden Circle stop!',
+        },
+        {
+          question: 'How often does Strokkur geyser erupt?',
+          answer: 'Strokkur geyser erupts every 5-10 minutes shooting water 60-100 feet (20-30 meters) into the air - it\'s incredibly reliable! Unlike the original Geysir (which is mostly dormant, erupting only occasionally), Strokkur performs consistently year-round. You\'re virtually GUARANTEED to see multiple eruptions during your visit! WHAT TO EXPECT: As you approach, you\'ll see a steaming pool with a bright blue dome. The water begins to bubble and form a bubble, then WHOOSH - massive column of hot water explodes upward! The entire eruption lasts 3-5 seconds. Wait a few minutes and it happens again! PRO TIPS: Position yourself upwind (you don\'t want hot water spray or sulfur smell!), have your camera ready (it\'s fast!), video mode works better than trying to time photos, and wait for 2-3 eruptions to capture the best one. The geothermal area also features colorful hot springs, bubbling mud pots, and steaming vents. Strokkur is named for an ancient Icelandic butter churn it resembles!',
+        },
+        {
+          question: 'Is the Golden Circle worth it?',
+          answer: 'YES - absolutely! The Golden Circle is Iceland\'s most popular tour for excellent reasons! WHY IT\'S WORTH IT: Unmatched geological diversity in one day (tectonic plates, geysers, massive waterfall), accessible from Reykjavik (6-8 hour tour), showcases Iceland\'s unique landscapes beautifully, educational about geology and Icelandic history, excellent for first-time Iceland visitors, and combines perfectly with add-ons (Secret Lagoon, snorkeling, Northern Lights). The three main sites are genuinely spectacular - not tourist traps! Strokkur\'s eruptions never get old, Gullfoss is breathtakingly powerful, and walking between tectonic plates is surreal. POTENTIAL CONS: Can be crowded in summer (especially 11 AM-3 PM), touristy compared to more remote Iceland areas, and basic tours can feel rushed. RECOMMENDATIONS: Take the tour! It\'s Iceland\'s greatest hits with good reason. Book morning departure or small group tour to minimize crowds. Consider adding activities for fuller experience. Budget an extra day for off-the-beaten-path Iceland exploration!',
+        },
+      ],
+    },
+
+    'blue-lagoon-tours': {
+      title: 'Reykjavik Blue Lagoon Tours',
+      subtitle: 'Relax in Iceland\'s iconic geothermal spa with milky-blue waters, silica mud masks, and volcanic beauty!',
+      categoryName: 'Blue Lagoon Tours',
+      
+      stats: {
+        toursAvailable: 38,
+        priceFrom: 80,
+        duration: '4-6 hours',
+      },
+
+      introduction: `Experience Iceland's most famous attraction - the Blue Lagoon, a stunning geothermal spa with milky-blue waters set in dramatic black lava fields! This world-renowned spa near Reykjavik features warm waters (37-39°C/98-102°F) rich in silica, algae, and minerals that nourish and exfoliate skin. Float in the surreal blue waters, apply free silica mud masks, enjoy in-water bars, and soak surrounded by volcanic landscape creating an otherworldly atmosphere. Tours include Blue Lagoon admission (various comfort levels from Standard to Premium to Luxury), transportation from Reykjavik, and often combine with airport transfers or nearby attractions. The lagoon is man-made (fed by nearby geothermal power plant) but the experience is authentically Icelandic and utterly magical - voted one of National Geographic's 25 Wonders of the World!`,
+
+      seo: {
+        title: 'Reykjavik Blue Lagoon Tours 2025 - Iceland Geothermal Spa',
+        description: 'Visit Iceland\'s Blue Lagoon! Geothermal spa, milky-blue waters, and Icelandic relaxation!',
+        keywords: 'Blue Lagoon Iceland, Blue Lagoon tours Reykjavik, Iceland geothermal spa, Blue Lagoon tickets',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'World-Famous Geothermal Spa',
+          description: 'Experience Iceland\'s most iconic attraction in stunning volcanic landscape!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Skin Benefits',
+          description: 'Mineral-rich waters with silica, algae, and minerals nourish and rejuvenate skin.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Surreal Beauty',
+          description: 'Milky-blue waters against black lava create incredibly photogenic, otherworldly scenes.',
+        },
+        {
+          icon: 'Users',
+          title: 'Complete Experience',
+          description: 'Transportation, admission, towels, and silica mud masks included in most packages.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Blue Lagoon Standard Package',
+          description: 'Essential Blue Lagoon experience with admission, silica mud mask, and one drink.',
+          features: [
+            'Lagoon admission',
+            'Silica mud mask',
+            'Towel included',
+            'One drink',
+            'Reykjavik transfer',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Blue Lagoon Comfort Package',
+          description: 'Enhanced experience with bathrobe, extra mask, algae mask, and table reservation.',
+          features: [
+            'All Standard items',
+            'Bathrobe use',
+            'Algae mask',
+            'Drink of choice',
+            'Better facilities',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Blue Lagoon + Golden Circle',
+          description: 'Combine Iceland\'s greatest hits - geothermal spa and Golden Circle sights in one day!',
+          features: [
+            'Blue Lagoon visit',
+            'Golden Circle tour',
+            'Full day',
+            'All transport',
+            'Complete Iceland day',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Airport Transfer + Blue Lagoon',
+          description: 'Perfect for arrivals/departures - visit Blue Lagoon en route to/from airport!',
+          features: [
+            'Airport pickup/drop',
+            'Lagoon admission',
+            'Luggage storage',
+            'Efficient timing',
+            'Start/end in style',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Reykjavik Blue Lagoon Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Allow 2-3 hours at lagoon; tours including transport take 4-6 hours total from Reykjavik.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Warm Waters',
+            description: 'Soak in 37-39°C (98-102°F) geothermal waters rich in silica, algae, and minerals.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Silica Mud Masks',
+            description: 'Apply free silica mud from dispensers - excellent for skin exfoliation and nourishment.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Volcanic Setting',
+            description: 'Surreal milky-blue waters surrounded by black lava fields create magical atmosphere.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'In-Water Bar',
+            description: 'Swim up to bars serving drinks including your complimentary beverage.',
+          },
+          {
+            icon: 'Star',
+            title: 'Modern Facilities',
+            description: 'World-class changing rooms, showers, and amenities with Icelandic design excellence.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'BOOK IN ADVANCE - Blue Lagoon requires reservations and often sells out weeks ahead in summer!',
+        'Best time: Early morning (8 AM) or evening (after 7 PM) for fewer crowds and better photos.',
+        'Leave jewelry and metal accessories at hotel - geothermal water can tarnish them.',
+        'Apply conditioner to hair BEFORE entering - mineral water is harsh on hair! Keep hair up/dry.',
+        'Bring your own swimsuit (required) - rental available but bringing your own is cheaper.',
+        'Standard package is sufficient for most visitors - Comfort/Premium add luxury but aren\'t essential.',
+        'Waterproof phone cases allow photos but be careful - dropping phones in lagoon is common!',
+        'Visit sauna and steam rooms between lagoon soaks for complete Icelandic spa experience.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Blue Lagoon?',
+          answer: 'The Blue Lagoon is Iceland\'s most famous geothermal spa featuring stunning milky-blue waters set in a dramatic black lava field near Reykjavik! The lagoon is actually MAN-MADE (opened 1992) - it\'s fed by water from the nearby Svartsengi geothermal power plant. Here\'s how it works: Seawater is drawn from 2km underground where it\'s heated by magma to 240°C, used to generate electricity, then the excess 38°C water is released into the lava field, creating the lagoon! The distinctive blue color comes from silica reflecting sunlight. The water is rich in minerals: silica (white mud - nourishes skin), algae (green - conditions skin), and minerals (therapeutic). The lagoon naturally renews every 40 hours, keeping water pristine. What started as accidental runoff became world-famous spa! It\'s not natural hot spring but the experience is authentically Icelandic and the skin benefits are real!',
+        },
+        {
+          question: 'How much does the Blue Lagoon cost?',
+          answer: 'Blue Lagoon prices vary by package and season - booking ahead saves money! ADMISSION PACKAGES: Comfort: €60-90 (most popular - includes admission, silica mask, algae mask, towel, bathrobe, drink, 2-3 hours). Standard: €50-70 (basic admission, silica mask, towel, drink). Premium: €100-130 (adds private changing, bathrobe, slippers, extra masks, reservation at spa restaurant). Retreat Spa: €250-500+ (exclusive luxury experience). TOURS INCLUDING TRANSPORT: Reykjavik round-trip + Comfort: €110-150. Airport transfer + Blue Lagoon: €100-140. Blue Lagoon + Golden Circle: €150-200. PRICING FACTORS: Prices higher in peak summer (June-August), lower November-March. Booking online in advance (weeks ahead) offers 10-20% savings. Children under 14 free with adult. BUDGET TIPS: Visit during off-peak hours, book 2-3 months ahead, or choose Standard package (sufficient for most)!',
+        },
+        {
+          question: 'Do you need to book the Blue Lagoon in advance?',
+          answer: 'YES - advance booking is MANDATORY! The Blue Lagoon does not accept walk-ups - you must book a specific time slot online before arrival! WHY BOOKING REQUIRED: Manage visitor numbers (prevent overcrowding), ensure quality experience, and maintain facility cleanliness with controlled entries. HOW FAR IN ADVANCE: Summer (June-August): Book 4-8 weeks ahead - it often sells out! Shoulder seasons (April-May, Sept-Oct): 2-4 weeks recommended. Winter (Nov-March): 1-2 weeks usually sufficient but holidays fill quickly. Last-minute availability exists but is risky, especially summer! BOOKING PROCESS: Visit bluelagoon.com, select date and time slot (2-hour windows), choose package level (Comfort recommended), book tour including transport OR admission only if self-driving. You\'ll receive confirmation email with barcode for entry. TIPS: Book as soon as you confirm Iceland dates! Morning (8-10 AM) and evening (7-9 PM) slots have best availability and fewer crowds.',
+        },
+        {
+          question: 'How long should you spend at the Blue Lagoon?',
+          answer: 'Plan 2-3 hours at the Blue Lagoon for optimal experience - enough time to relax without waterlogging! RECOMMENDED TIMELINE: Arrival and check-in: 15 minutes, shower and change: 15 minutes, lagoon soaking: 90-120 minutes (multiple sessions), sauna/steam room visits: 15-30 minutes between soaks, final shower and change: 20-30 minutes. Total: 2.5-3.5 hours. WHY 2-3 HOURS IS IDEAL: Longer than 90-120 minutes in warm water causes dehydration and wrinkly skin. You\'ll want breaks in sauna, steam room, or cool-down areas. Time to apply mud masks, enjoy drinks, and explore facility. Enough time to relax without feeling rushed. PACKAGE TIME LIMITS: Standard/Comfort: No strict limit but 2-3 hours is typical. Premium: Reserved 4-hour window. Most visitors spend 2-3 hours - perfect balance! TOURING TIP: Tours from Reykjavik allocate 3-4 hours at lagoon including changing time - just right!',
+        },
+        {
+          question: 'What should you bring to the Blue Lagoon?',
+          answer: 'Pack light - Blue Lagoon provides most essentials but a few items enhance your experience! REQUIRED: Swimsuit (mandatory - rental available but expensive €10-15). HIGHLY RECOMMENDED: Conditioner for hair (apply BEFORE entering - mineral water is harsh! Keep hair up/dry if possible), flip-flops or sandals (for walking between lagoon, sauna, showers), and waterproof phone case (if you want photos - but be careful, phones drop frequently!). OPTIONAL: Contact lens solution (remove before entering - geothermal water irritates eyes), extra hair tie, water bottle (staying hydrated important!). PROVIDED BY BLUE LAGOON: Towel (included all packages), shampoo and body wash (showers), hair dryer, and silica mud mask (free from dispensers). DON\'T BRING: Jewelry or metal accessories (tarnishes), valuable items (lockers provided but minimize), or expensive swimwear (minerals can fade colors). PACKAGE UPGRADES: Comfort+ includes bathrobe (lovely for moving between areas) and algae mask.',
+        },
+        {
+          question: 'Can you visit the Blue Lagoon in winter?',
+          answer: 'YES - winter is actually MAGICAL at Blue Lagoon and many locals prefer it! WINTER ADVANTAGES: Dramatic contrast between hot lagoon (38°C/100°F) and freezing air (-5 to 5°C/23-41°F) - incredible sensation! Snow-covered lava fields create stunning scenery. Possible Northern Lights viewing while soaking (September-April) - bucket list experience! Fewer crowds than summer peak. Steam rises dramatically in cold air (very photogenic!). WINTER CONSIDERATIONS: Getting from changing room to lagoon in swimsuit requires brief cold exposure (it\'s short!). Hair can freeze if you keep it out of water (actually fun!). Daylight limited in December-January (4 hours) - but that means more time for aurora! Cold air makes face cold while body is warm (adjust by submerging more). RECOMMENDATION: Winter Blue Lagoon is FANTASTIC - the temperature contrast is exhilarating and Northern Lights possibility adds magic! Dress warmly for arriving/leaving. Book evening slots (after dark) for potential aurora viewing!',
+        },
+        {
+          question: 'Is the Blue Lagoon natural?',
+          answer: 'No - despite its natural appearance, Blue Lagoon is MAN-MADE, though the water and minerals are 100% natural geothermal resources! THE REAL STORY: In 1976, Svartsengi geothermal power plant began operations, drawing seawater from 2km underground where magma heats it to 240°C. After generating electricity, excess warm water (38°C) was released into the surrounding lava field. The water pooled naturally in the porous lava creating an accidental lagoon. People noticed the silica-rich water improved skin conditions. In 1987 it opened as informal bathing spot. In 1992 it became commercial spa! Today it\'s Iceland\'s most visited attraction. WHY IT\'S NOT "FAKE": The geothermal water is authentic (from deep underground). The silica, algae, and minerals are natural byproducts. The therapeutic benefits are real. The setting (lava field) is genuine. So while man-made, it\'s authentically Icelandic! Many locals prefer natural hot springs (less touristy, free) but Blue Lagoon offers unmatched facilities and milky-blue beauty!',
+        },
+        {
+          question: 'Are there alternatives to the Blue Lagoon?',
+          answer: 'Yes! Iceland has many natural hot springs and geothermal spas - some prefer them for authentic, less touristy experiences! POPULAR ALTERNATIVES: SECRET LAGOON (Flúðir): Natural hot spring (older than Blue Lagoon!), smaller, more intimate, great in winter with steam, only €25-35. MYVATN NATURE BATHS (North Iceland): Similar concept to Blue Lagoon but less crowded, beautiful northern setting, €35-45. SKY LAGOON (Reykjavik): New luxury geothermal lagoon with ocean views, €60-90, convenient to city. FREE NATURAL HOT SPRINGS: Reykjadalur Hot River (hike required), Landmannalaugar (highlands, summer only), Seljavallalaug (historic pool). PROS OF ALTERNATIVES: Less expensive (often much cheaper!), more authentic Icelandic experience, fewer tourists, more adventurous, and locals actually use them. BLUE LAGOON ADVANTAGES: World-class facilities, guaranteed quality, stunning aesthetic, and skin benefits from specific mineral content. RECOMMENDATION: Do Blue Lagoon for first Iceland visit (it\'s iconic for reason!) plus explore alternative hot springs for authentic experiences!',
+        },
+      ],
+    },
+
+    'geothermal-tours': {
+      title: 'Reykjavik Geothermal Tours',
+      subtitle: 'Explore Iceland\'s bubbling hot springs, steaming vents, and volcanic geothermal wonders!',
+      categoryName: 'Geothermal Tours',
+      
+      stats: {
+        toursAvailable: 34,
+        priceFrom: 60,
+        duration: '4-8 hours',
+      },
+
+      introduction: `Discover Iceland's incredible geothermal power - one of the world's most volcanically active regions where Earth's energy erupts through hot springs, geysers, mud pots, and steaming vents! Geothermal tours showcase Iceland's unique geology visiting geothermal power plants (learning how Icelanders harness Earth's heat for electricity and heating), natural hot spring areas (Geysir, Hveragerði, Krýsuvík), volcanic craters, and geothermal bathing spots from the famous Blue Lagoon to hidden hot rivers. Tours explain the science behind Iceland's position on the Mid-Atlantic Ridge where tectonic plates meet, creating volcanic activity, earthquakes, and abundant geothermal resources. Watch Strokkur geyser erupt, explore bubbling mud pools, feel the power of volcanic steam, and understand how geothermal energy powers Iceland sustainably. It's geology in action!`,
+
+      seo: {
+        title: 'Reykjavik Geothermal Tours 2025 - Hot Springs & Geysers',
+        description: 'Explore Iceland\'s geothermal wonders! Geysers, hot springs, volcanic activity, and Earth\'s power!',
+        keywords: 'Iceland geothermal tours, Reykjavik hot springs, geysers Iceland, geothermal energy tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Active Geology',
+          description: 'Witness Earth\'s power with erupting geysers, bubbling mud, and volcanic steam!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Educational Experience',
+          description: 'Learn how Iceland harnesses geothermal energy for sustainable power and heating.',
+        },
+        {
+          icon: 'Waves',
+          title: 'Hot Spring Bathing',
+          description: 'Combine geothermal exploration with relaxing soaks in natural hot springs.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Otherworldly Landscapes',
+          description: 'Colorful minerals, steaming vents, and volcanic terrain create surreal photo ops.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Golden Circle Geothermal',
+          description: 'Visit Geysir geothermal area, Strokkur eruptions, and hot spring regions on classic route.',
+          features: [
+            'Strokkur geyser',
+            'Geothermal fields',
+            'Educational stops',
+            'Full day',
+            'Classic sights',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Geothermal Power Plant Tours',
+          description: 'Explore working geothermal plants learning how Iceland generates sustainable energy.',
+          features: [
+            'Power plant visit',
+            'Energy education',
+            'Sustainability focus',
+            'Interactive exhibits',
+            'Modern technology',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Hot Spring Hiking Tours',
+          description: 'Hike to natural hot rivers and springs for bathing in beautiful mountain settings.',
+          features: [
+            'Reykjadalur hike',
+            'Hot river bathing',
+            'Natural setting',
+            'Moderate hiking',
+            'Swimsuit required',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Krýsuvík Geothermal Area',
+          description: 'Explore colorful geothermal fields with bubbling mud pots and sulfur deposits on Reykjanes.',
+          features: [
+            'Seltún geothermal',
+            'Colorful minerals',
+            'Mud pools',
+            'Dramatic landscape',
+            'Photography paradise',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Reykjavik Geothermal Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Half-day tours last 4-5 hours; full-day geothermal adventures take 7-10 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Geyser Eruptions',
+            description: 'Watch Strokkur geyser shoot water 60-100ft high every 5-10 minutes - guaranteed action!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Geothermal Fields',
+            description: 'Walk among steaming vents, bubbling mud pools, and colorful mineral deposits.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Volcanic Science',
+            description: 'Learn about plate tectonics, volcanic activity, and geothermal energy generation.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Hot Spring Bathing',
+            description: 'Many tours include natural hot spring or lagoon bathing for relaxation.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Surreal Landscapes',
+            description: 'Photograph otherworldly terrain with steam, colorful minerals, and volcanic features.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Geysir eruptions are impressive but wait for 2-3 eruptions to capture the best one on camera!',
+        'Stay on marked paths at geothermal areas - boiling water and unstable ground are dangerous!',
+        'The sulfur smell at geothermal sites is strong but harmless - you\'ll get used to it quickly.',
+        'Bring swimsuit and towel for tours including hot spring bathing opportunities.',
+        'Geothermal sites are spectacular in winter with steam rising dramatically against snow!',
+        'Waterproof shoes recommended - geothermal areas often have wet, muddy paths.',
+        'Geysir area has excellent facilities (cafe, gift shop, bathrooms) for tour breaks.',
+        'Combine geothermal exploration with Golden Circle for comprehensive Iceland geology day!',
+      ],
+
+      faqs: [
+        {
+          question: 'Why is Iceland so geothermal?',
+          answer: 'Iceland sits in a unique geological sweet spot making it one of Earth\'s most geothermally active regions! Here\'s why: TECTONIC POSITION: Iceland straddles the Mid-Atlantic Ridge where North American and Eurasian tectonic plates are pulling apart at 2cm/year. This creates rifts allowing magma to rise closer to the surface. VOLCANIC HOTSPOT: Iceland also sits over a mantle plume (volcanic hotspot) pumping extra magma upward - double geothermal activity! The combination is rare - Iceland gets plate boundary volcanism AND hotspot volcanism. WHAT THIS CREATES: Over 200 volcanoes (30+ active systems), eruptions every 4-5 years on average, geothermal areas across the country with hot springs, geysers, fumaroles (steam vents), and mud pots, abundant geothermal energy for power/heating, and dramatic volcanic landscapes. RESULT: Iceland generates 25% of electricity and heats 90% of homes using clean geothermal energy! It\'s a living geology laboratory showcasing Earth\'s power!',
+        },
+        {
+          question: 'What is a geyser and how does it work?',
+          answer: 'A geyser is a hot spring that periodically erupts, shooting water and steam high into the air! The word comes from Geysir in Iceland - the first geyser known to Europeans! HOW GEYSERS WORK: Underground water flows through volcanic rock heated by magma. Water collects in underground chambers and channels. As water heats, it tries to boil but pressure from water above prevents it. Pressure builds until superheated water EXPLODES upward as steam and water! After eruption, the chamber refills and the cycle repeats. WHY GEYSERS ARE RARE: Requires specific conditions - volcanic heat source, pressurized underground plumbing system, steady water supply, and proper chamber shape. Only ~1000 geysers exist worldwide! STROKKUR (Iceland\'s reliable geyser): Erupts every 5-10 minutes, shoots 60-100 feet high, has been active since 1963 earthquake unblocked it, and provides guaranteed shows! The original Geysir is mostly dormant now (erupts only occasionally). Geysers are Iceland\'s geological celebrities!',
+        },
+        {
+          question: 'Can you swim in Iceland\'s hot springs?',
+          answer: 'Yes, but NOT all of them - some are too hot, too acidic, or protected! SAFE FOR SWIMMING: Developed geothermal spas: Blue Lagoon (perfect 38°C/100°F), Secret Lagoon, Mývatn Nature Baths, Sky Lagoon - all safe, monitored, with facilities. Natural hot rivers: Reykjadalur (hike required, mix hot and cold water to desired temp), Landmannalaugar (summer only, stunning highlands). Historic pools: Seljavallalaug (free, mountain setting). Municipal pools (all over Iceland - geothermally heated, not natural but lovely!). NOT SAFE: Geysir area (too hot - 100°C/212°F!), geothermal fields with bubbling mud (dangerous!), unmarked hot springs (can be acidic or too hot), and Grýla springs (temperature fluctuates dangerously). SAFETY TIPS: Only enter marked/developed bathing areas, test temperature carefully (some spots very hot!), watch for posted signs, locals know which are safe, and when in doubt, stick to developed facilities. Iceland has hundreds of safe hot springs - no need to risk unsafe ones! Geothermal bathing is quintessential Icelandic experience!',
+        },
+        {
+          question: 'What is the Golden Circle geothermal area?',
+          answer: 'The Golden Circle\'s geothermal highlight is the Geysir (or Haukadalur) Geothermal Area - one of Iceland\'s most active hot spring fields! WHAT YOU\'LL SEE: STROKKUR GEYSER - The star attraction! Erupts 60-100 feet high every 5-10 minutes with impressive reliability. GEYSIR - The original geyser (gave name to all geysers) but mostly dormant now. Erupts only occasionally after earthquakes. HOT SPRINGS - Steaming turquoise and blue pools throughout the field. FUMAROLES - Steam vents releasing volcanic gases with strong sulfur smell. COLORFUL MINERALS - Silica and sulfur deposits create yellow, white, and orange terrain. THE AREA is FREE to visit (parking €5-10), has excellent facilities (cafe, restaurant, gift shop, bathrooms), gets very crowded midday in summer, and is 1-1.5 hours from Reykjavik. VISIT TIPS: Arrive early morning (8-9 AM) or evening (after 5 PM) for fewer crowds. Wait for multiple Strokkur eruptions (you\'ll catch the best one!). Walk the full loop trail (15 minutes) to see all features. Stay on paths - boiling water is dangerous! Combined with Þingvellir and Gullfoss, it makes the iconic Golden Circle route!',
+        },
+        {
+          question: 'How does Iceland use geothermal energy?',
+          answer: 'Iceland is world leader in geothermal energy use, powering the modern nation almost entirely with renewable resources! THE NUMBERS: 25% of Iceland\'s electricity from geothermal (rest from hydro - 100% renewable electricity!), 90% of homes heated by geothermal (almost no fossil fuel heating!), and abundant hot water for homes, pools, greenhouses. HOW IT WORKS: Water is drilled from 1-2km underground where it\'s heated to 150-350°C by volcanic activity. Hot water/steam is piped to power plants generating electricity via turbines. Excess heat warms water for district heating systems. Hot water is piped directly to homes, schools, pools citywide! BENEFITS: Clean energy (minimal emissions), renewable (Earth\'s heat is constant), cost-effective (once infrastructure built), energy independence (no fossil fuel imports), and sustainable for centuries. VISIBLE EXAMPLES: Svartsengi Power Plant (creates Blue Lagoon!), Hellisheiði Plant (near Reykjavik, offers tours), and 170+ geothermal heated pools nationwide! Iceland proves geothermal energy works at national scale - a model for sustainable future!',
+        },
+        {
+          question: 'What is Krýsuvík geothermal area?',
+          answer: 'Krýsuvík (specifically the Seltún geothermal field) is a spectacular geothermal area on the Reykjanes Peninsula near Reykjavik featuring colorful mud pools, steaming vents, and dramatic volcanic landscape! WHAT MAKES IT SPECIAL: COLORFUL TERRAIN - Yellow sulfur, red iron oxide, white silica create a rainbow of minerals! BUBBLING MUD POTS - Boiling clay and mud pools pop and gurgle (mesmerizing to watch!). FUMAROLES - Steam vents releasing volcanic gases with strong sulfur smell. SOLFATARA FIELDS - Sulfur deposits and acid-altered rock creating alien landscape. CRATER LAKE - Nearby Kleifarvatn lake sits in volcanic crater with geothermal springs. LOCATION: Just 45 minutes from Reykjavik on Reykjanes Peninsula (same region as Blue Lagoon and airport!). FREE to visit with good boardwalks and viewing platforms. BEST FOR: Photography (incredibly colorful!), geology enthusiasts, and combining with Blue Lagoon visits. SAFETY: Stay on marked paths - ground is unstable and water is boiling! The sulfur smell is strong but harmless. It\'s like walking on another planet - otherworldly Iceland at its finest!',
+        },
+        {
+          question: 'Can you visit geothermal power plants?',
+          answer: 'Yes! Several Icelandic geothermal power plants offer tours showcasing sustainable energy production! TOP PLANT TOURS: HELLISHEIÐI POWER PLANT (near Reykjavik): Iceland\'s largest geothermal plant! Interactive exhibition "The Geothermal Energy Exhibition" explains how plants work, guided tours of facility (reservations required), carbon capture demonstration, and 45-60 minute visits. Tours €10-15. PERLAN MUSEUM (Reykjavik): Not a working plant but incredible interactive geothermal exhibition with ice cave, planetarium showing geology, and hands-on displays explaining how Iceland harnesses Earth\'s power. €30-35 admission. SVARTSENGI PLANT (Reykjanes): Creates the Blue Lagoon! Can be viewed from outside (not internal tours currently). WHAT YOU\'LL LEARN: How hot water/steam is extracted from underground, electricity generation via turbines, district heating systems supplying cities, carbon capture technology (Iceland is pioneer!), and sustainability benefits. WHY VISIT: Understand Iceland\'s remarkable energy system, see cutting-edge renewable technology, and appreciate how geothermal powers modern Iceland sustainably. It\'s inspiring to see renewable energy at national scale!',
+        },
+        {
+          question: 'What should I wear to geothermal areas?',
+          answer: 'Dress for variable Icelandic weather plus specific geothermal considerations! CLOTHING ESSENTIALS: Waterproof jacket (steam creates moisture, plus Iceland rain!), layers (temperatures vary between sites), long pants (protect from steam burns if you get too close), and waterproof hiking boots or sturdy shoes (paths can be muddy, wet, slippery). AVOID: Light shoes (inadequate for wet terrain), sandals/flip-flops (unsafe on uneven ground), and expensive clothing (sulfur smell can linger!). TOUR-SPECIFIC ADDITIONS: Hot spring tours: Bring swimsuit, towel, and flip-flops for bathing opportunities. Winter visits: Serious warm layers (steam provides some warmth but ambient air is freezing!). Photography tours: Gloves that allow camera operation. PRACTICAL ITEMS: Waterproof bag for electronics (steam and mist everywhere!), spare socks (in case shoes get wet), and hat/sunglasses (sulfur fumes can irritate eyes - glasses help). SAFETY NOTE: The sulfur smell at geothermal sites is strong (rotten eggs!) but harmless - you adapt quickly. However, stay on marked paths always - boiling water and unstable ground are genuinely dangerous!',
+        },
+      ],
+    },
+
+    'food-and-culture-tours': {
+      title: 'Reykjavik Food & Culture Tours',
+      subtitle: 'Taste authentic Icelandic cuisine and discover Viking heritage, local culture, and Nordic traditions!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 29,
+        priceFrom: 70,
+        duration: '3-4 hours',
+      },
+
+      introduction: `Discover Reykjavik's vibrant food scene and rich Icelandic culture combining Nordic traditions with modern creativity! Food and culture tours take you beyond tourist restaurants to authentic Icelandic eateries, local markets, traditional bakeries, and cultural landmarks where you'll taste unique Icelandic specialties - fresh seafood, lamb, skyr (yogurt), rye bread, hot dogs (pylsur), dried fish, and yes, adventurous options like fermented shark! Learn about Iceland's Viking heritage, Saga literature, independence history, and modern culture while sampling food that sustained Icelanders through centuries in harsh Arctic conditions. Expert guides share stories of Icelandic traditions, language quirks, and contemporary Nordic lifestyle. From Reykjavik's colorful streets to hidden food gems, these tours feed both stomach and curiosity!`,
+
+      seo: {
+        title: 'Reykjavik Food & Culture Tours 2025 - Icelandic Cuisine',
+        description: 'Experience Reykjavik food and culture! Icelandic cuisine, local specialties, and Nordic traditions!',
+        keywords: 'Reykjavik food tours, Iceland cuisine, Icelandic food, Reykjavik culture tours, Nordic food',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Icelandic Cuisine',
+          description: 'Taste traditional foods at local spots where Reykjavik residents actually eat!',
+        },
+        {
+          icon: 'Users',
+          title: 'Cultural Insights',
+          description: 'Learn about Viking heritage, Sagas, traditions, and modern Icelandic lifestyle.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Local Expertise',
+          description: 'Guides share stories, history, and insider knowledge about Icelandic culture.',
+        },
+        {
+          icon: 'Star',
+          title: 'Hidden Gems',
+          description: 'Discover local favorites and authentic eateries tourists typically miss.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Reykjavik Food Walking Tours',
+          description: 'Progressive tasting tour visiting 4-6 eateries sampling Icelandic specialties with cultural stories.',
+          features: [
+            '3-4 hours',
+            '6-8 tastings',
+            'Local restaurants',
+            'Cultural context',
+            'Downtown walking',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Traditional Icelandic Feast',
+          description: 'Multi-course meal featuring traditional dishes with stories about Icelandic food history.',
+          features: [
+            'Traditional restaurant',
+            'Multiple courses',
+            'Icelandic specialties',
+            'Cultural storytelling',
+            'Authentic experience',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Reykjavik Culture & History Walk',
+          description: 'Explore Reykjavik landmarks, museums, and cultural sites with food stops along the way.',
+          features: [
+            'Historic sites',
+            'Hallgrímskirkja church',
+            'Harbor area',
+            'Food tastings',
+            'City overview',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Icelandic Cooking Classes',
+          description: 'Learn to prepare traditional Icelandic dishes with local chefs and cultural context.',
+          features: [
+            'Hands-on cooking',
+            'Traditional recipes',
+            'Eat what you make',
+            'Cultural insights',
+            'Take-home recipes',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Reykjavik Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Food tours last 3-4 hours with 6-8 tastings; culture walks take 2-3 hours.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Icelandic Tastings',
+            description: 'Sample lamb, seafood, skyr, rye bread, hot dogs, dried fish, and unique specialties.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Local Eateries',
+            description: 'Visit authentic restaurants, bakeries, and markets where locals shop and eat.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Stories',
+            description: 'Learn about Viking heritage, Sagas, independence, and modern Icelandic culture.',
+          },
+          {
+            icon: 'Users',
+            title: 'Small Groups',
+            description: 'Intimate groups (8-12 people) allow personal interaction and questions.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Reykjavik Landmarks',
+            description: 'Walk past colorful buildings, churches, harbor, and iconic Reykjavik sights.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Come hungry! Food tours include 6-8 substantial tastings - enough to replace lunch or dinner.',
+        'Traditional Icelandic cuisine is unique - approach with open mind, especially adventurous items!',
+        'Reykjavik\'s famous hot dog stands (Bæjarins Beztu) are beloved by locals - try one!',
+        'Skyr (Icelandic yogurt) is not actually yogurt - it\'s strained cheese product, high in protein.',
+        'Ask guides for restaurant recommendations - they know the best spots tourists miss.',
+        'Evening food tours capture Reykjavik\'s vibrant nightlife atmosphere on weekends.',
+        'Icelandic lamb is exceptional - grass-fed, free-roaming, and incredibly flavorful!',
+        'Winter tours often include warming Icelandic meat soup (kjötsúpa) - perfect for cold days!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is traditional Icelandic food?',
+          answer: 'Icelandic cuisine evolved from harsh Arctic conditions requiring food preservation and utilizing available resources! TRADITIONAL STAPLES: LAMB - Free-roaming, grass-fed Icelandic sheep produce incredible meat. Slow-cooked lamb, smoked lamb (hangikjöt), and lamb soup (kjötsúpa) are classics! SEAFOOD - Fresh cod, haddock, herring, and salmon plus lobster (langoustine). Dried fish (harðfiskur) is popular snack! SKYR - Strained dairy product (technically cheese, not yogurt) eaten for 1000+ years. High protein, low fat. RYE BREAD (rúgbrauð) - Dense, dark, slightly sweet bread traditionally baked underground using geothermal heat! PRESERVED FOODS - Centuries ago, preservation was survival: fermented shark (hákarl - extremely pungent!), dried fish, pickled foods, and smoked meats. MODERN ADDITIONS - Excellent hot dogs (pylsur), Nordic-inspired fine dining, and creative fusion! Icelandic food emphasizes quality, freshness, and sustainability - simple preparation letting ingredients shine!',
+        },
+        {
+          question: 'What should I try in Reykjavik?',
+          answer: 'Must-try Icelandic foods and experiences in Reykjavik! ACCESSIBLE & DELICIOUS: Icelandic hot dog (pylsur) - Try at Bæjarins Beztu Pylsur, Clinton and Metallica ate here! Lamb dish - Exceptionally flavorful grass-fed meat. Fresh seafood - Cod, haddock, or langoustine (Icelandic lobster). Skyr - Creamy, protein-rich Icelandic "yogurt." Plokkfiskur - Mashed fish stew (comfort food!). Rye bread with smoked salmon - Classic combination. Kleinur - Icelandic twisted donuts (sweet treat!). ADVENTUROUS OPTIONS: Fermented shark (hákarl) - Extremely pungent, acquired taste, Viking challenge! Sheep head (svið) - Not for everyone but culturally significant. Whale - Controversial and many skip for ethical reasons. DRINKS: Brennivín - "Black Death" schnapps (caraway flavored). Icelandic craft beer - Excellent local breweries! RECOMMENDATION: Start with accessible items - all are delicious! Try hákarl if you\'re adventurous (tours often include small tasting). Icelandic lamb and seafood are world-class!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Reykjavik food tour prices reflect Iceland\'s high cost of living but include substantial value! TYPICAL PRICING: Walking food tours (3-4 hours, 6-8 tastings): €70-110 per person. Traditional feast dinners (multi-course, restaurant): €80-130. Culture & food combination tours: €90-140. Cooking classes (hands-on, includes meal): €100-160. Private food tours: €200-400+ depending on group size. WHAT\'S INCLUDED: Expert local guide (cultural insights + food knowledge), 6-8 substantial food tastings (replaces meal!), beverages at several stops, walking tour of Reykjavik, cultural and historical context, and restaurant recommendations. GROUP SIZES: Typically 8-15 people (intimate experience). VALUE ASSESSMENT: Tours include €40-60 worth of food alone, plus expert guidance through expensive Reykjavik (restaurant meals easily €30-50), so pricing is fair! BUDGET TIP: Food tours are actually cost-effective ways to try multiple Reykjavik restaurants while learning about culture - much cheaper than dining at several restaurants independently!',
+        },
+        {
+          question: 'Is Icelandic food expensive?',
+          answer: 'Yes - Reykjavik is one of the world\'s most expensive cities for food! RESTAURANT PRICES: Casual meal (soup, sandwich, coffee): €15-25. Mid-range restaurant dinner: €30-50 per person. Fine dining: €80-150+. Famous hot dog: €4-6 (cheapest meal!). Beer: €8-12 (alcohol is very expensive!). Coffee: €4-6. WHY SO EXPENSIVE: Most food is imported (limited growing season), small population limits economies of scale, high labor costs, expensive rent, and strong króna. However, QUALITY IS HIGH - ingredients are excellent! BUDGET TIPS: Shop at grocery stores (Bónus supermarket cheapest) and self-cater, eat hot dogs and bakery items for cheap meals, happy hour deals (4-7 PM) at bars cut drink costs, food tours provide value (multiple restaurants for less!), and lunch is cheaper than dinner. Iceland\'s high costs are unavoidable but manageable! WORTH IT: Icelandic lamb and seafood are world-class - splurge on at least one nice meal. The quality justifies premium pricing!',
+        },
+        {
+          question: 'What is hákarl (fermented shark)?',
+          answer: 'Hákarl is Iceland\'s most infamous food - fermented Greenland shark with extremely pungent ammonia smell and challenging taste! THE HISTORY: Vikings had no refrigeration in Iceland. Greenland shark meat is naturally poisonous (high uric acid and trimethylamine oxide), so Icelanders developed fermentation to make it safe! Shark is buried underground or hung for 2-3 months allowing fluids to drain and ferment. After fermentation, it\'s cut into cubes and served as snack. HOW IT TASTES/SMELLS: Incredibly pungent ammonia smell (like cleaning products!), strong fishy/cheesy taste, chewy texture. Typically chased with Brennivín (Black Death schnapps). DO YOU HAVE TO TRY IT? No! Many Icelanders don\'t even eat it regularly - it\'s traditional but not common. However, it\'s a cultural experience and many tours include small tasting. RECOMMENDATIONS: Try one small piece if offered (it\'s memorable!), have Brennivín ready to wash it down, don\'t judge all Icelandic food by hákarl (other items are delicious!). It\'s more cultural novelty than daily food - embrace the adventure!',
+        },
+        {
+          question: 'What is Reykjavik\'s food scene like?',
+          answer: 'Reykjavik has evolved into a vibrant Nordic food capital mixing traditional Icelandic ingredients with modern creativity! FOOD SCENE OVERVIEW: QUALITY INGREDIENTS - Exceptional lamb, seafood, dairy from Iceland\'s pristine environment. TRADITIONAL ROOTS - Restaurants honor Viking-era preservation techniques and historical recipes. MODERN INNOVATION - Young chefs create New Nordic cuisine with Icelandic twist! SUSTAINABILITY FOCUS - Locally sourced, seasonal, minimal waste, ethical fishing. CRAFT BEVERAGE SCENE - Excellent local breweries, craft spirits, and Icelandic coffee culture. RESTAURANT VARIETY: Traditional - Serving classic Icelandic lamb, fish, rye bread. Contemporary - Michelin-level fine dining (Dill is Michelin-starred!). International - Asian fusion, Italian, American influences. Casual - Hot dog stands, bakeries, soup spots. FOOD CULTURE: Icelanders dine late (8-9 PM), reservations recommended for popular spots, service is laid-back (not rushed), and tipping is included in prices. Despite high costs, Reykjavik offers world-class dining worth experiencing!',
+        },
+        {
+          question: 'Are there vegetarian options in Reykjavik?',
+          answer: 'Yes! Reykjavik has increasingly good vegetarian and vegan options despite traditional meat/fish-heavy Icelandic cuisine! VEGETARIAN REALITY: Traditional Icelandic food centers on lamb and seafood (survival in harsh climate required animal protein). However, MODERN REYKJAVIK is very accommodating with growing vegetarian awareness! VEGETARIAN-FRIENDLY OPTIONS: Dedicated vegetarian/vegan restaurants (Gló, Veganæs), most restaurants offer vegetarian dishes (mushroom burgers, vegetable pastas, salads), excellent bakeries with vegetarian pastries and breads, skyr (Icelandic yogurt - if lacto-vegetarian), soup spots often have vegetable soups, and international cuisine (Indian, Thai, Italian) with vegetarian options. FOOD TOUR CONSIDERATIONS: Most food tours can accommodate vegetarians with advance notice (mention when booking!). You\'ll miss traditional lamb/fish tastings but experience other Icelandic foods. Vegan is more challenging but doable. GROCERY STORES: Excellent produce, vegetarian products, and Icelandic bread/dairy. RECOMMENDATION: Reykjavik is surprisingly vegetarian-friendly for Nordic capital! Restaurants are accommodating, and dedicated veggie spots exist. Just communicate dietary needs when booking tours/reservations.',
+        },
+        {
+          question: 'What cultural sites should I visit in Reykjavik?',
+          answer: 'Reykjavik packs impressive cultural attractions despite being a small capital! MUST-VISIT CULTURAL SITES: HALLGRÍMSKIRKJA CHURCH - Iconic modernist church dominating skyline! Tower (€10) offers best city views. HARPA CONCERT HALL - Stunning modern architecture with glass facade, home to Iceland Symphony. Walk through free! NATIONAL MUSEUM OF ICELAND - Excellent overview of Icelandic history from settlement to modern times. €15, 2 hours. PERLAN MUSEUM - Interactive exhibits on Iceland\'s nature, glaciers, and Northern Lights. Ice cave inside! €30. OLD HARBOR - Colorful historic area with museums, restaurants, whale watching tours. THE SETTLEMENT EXHIBITION - Archaeological museum built around Viking-age ruins! CULTURE HOUSE - Manuscripts, Sagas, artifacts showcasing Icelandic literary heritage. REYKJAVIK ART MUSEUM - Contemporary and modern Icelandic art. SUN VOYAGER SCULPTURE - Iconic Viking ship sculpture on waterfront (free, great photos!). LAUGAVEGUR STREET - Main shopping street with colorful buildings, cafes, boutiques. Most cultural sites are walkable in compact downtown. Reykjavik combines Viking heritage with cutting-edge Nordic design!',
+        },
+      ],
+    },
+
+    'adventure-tours': {
+      title: 'Reykjavik Adventure Tours',
+      subtitle: 'Experience Iceland\'s wild side with glacier hiking, ice caves, volcano exploration, and Arctic thrills!',
+      categoryName: 'Adventure Tours',
+      
+      stats: {
+        toursAvailable: 48,
+        priceFrom: 100,
+        duration: '6-12 hours',
+      },
+
+      introduction: `Experience Iceland's incredible adventure opportunities - from glacier hiking with crampons to exploring crystal-blue ice caves, from snorkeling between tectonic plates to snowmobiling across ancient ice caps! Adventure tours from Reykjavik showcase Iceland's dramatic landscape through active exploration combining physical activity with geological wonders. Walk on glaciers that are thousands of years old, descend into volcanic craters, explore lava tubes formed by ancient eruptions, snorkel in the world's clearest water between continents, or ride super jeeps to remote highlands inaccessible to regular vehicles. Iceland offers year-round adventures - summer brings midnight sun hiking and highland access, winter adds Northern Lights, ice caves, and snow adventures. Expert guides ensure safety while sharing geological knowledge. It's outdoor adventure in one of Earth's most spectacular natural playgrounds!`,
+
+      seo: {
+        title: 'Reykjavik Adventure Tours 2025 - Glacier & Ice Cave Exploration',
+        description: 'Experience Iceland adventure tours! Glacier hiking, ice caves, snorkeling, and Arctic exploration!',
+        keywords: 'Iceland adventure tours, glacier hiking Iceland, ice caves Reykjavik, Iceland outdoor activities',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Unique Adventures',
+          description: 'Experience activities only possible in Iceland - glacier hiking, ice caves, continent snorkeling!',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Certified glacier guides and adventure experts ensure safety and incredible experiences.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Bucket-List Activities',
+          description: 'Create unforgettable memories with once-in-a-lifetime Arctic adventures.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Dramatic Landscapes',
+          description: 'Explore Iceland\'s most spectacular terrain - glaciers, volcanoes, and otherworldly beauty.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Glacier Hiking Tours',
+          description: 'Walk on ancient glaciers with crampons learning ice formation and glacier science.',
+          features: [
+            'Certified guides',
+            'Crampons provided',
+            'Ice formations',
+            'Safety equipment',
+            '4-6 hours total',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Ice Cave Exploration',
+          description: 'Enter stunning blue ice caves inside glaciers - winter only, natural wonder!',
+          features: [
+            'Natural ice caves',
+            'Crystal blue ice',
+            'November-March',
+            'Super jeep transport',
+            'Helmet & crampons',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Silfra Snorkeling',
+          description: 'Snorkel between North American and Eurasian tectonic plates in crystal-clear water!',
+          features: [
+            'Continental plates',
+            '100m+ visibility',
+            'Drysuit provided',
+            'Unique experience',
+            'Þingvellir location',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Super Jeep Highlands',
+          description: 'Explore remote highlands in modified 4x4 super jeeps accessing off-road locations.',
+          features: [
+            'Off-road access',
+            'Remote locations',
+            'Small groups',
+            'Adventure element',
+            'Summer access',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Reykjavik Adventure Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Adventure tours last 4-14 hours depending on activity and travel distance from Reykjavik.',
+          },
+          {
+            icon: 'Star',
+            title: 'Glacier Hiking',
+            description: 'Walk on ancient ice with crampons exploring crevasses, ice formations, and glacier features.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Ice Caves',
+            description: 'Enter natural blue ice caves with stunning crystalline formations - winter only phenomenon!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Snorkeling Silfra',
+            description: 'Swim between continents in water so clear you see 100+ meters - bucket list experience!',
+          },
+          {
+            icon: 'Users',
+            title: 'Safety First',
+            description: 'Certified guides, quality equipment, thorough safety briefings before all adventures.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Epic Scenery',
+            description: 'Photograph Iceland\'s most dramatic landscapes from unique adventure perspectives.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book glacier and ice cave tours well in advance - they fill quickly, especially summer and winter peaks!',
+        'Physical fitness requirements vary - glacier hiking is moderate, ice caves lighter, Silfra requires swimming comfort.',
+        'Winter ice caves are natural formations that form anew each year - locations change annually!',
+        'Silfra water is 2-4°C (35-39°F) - drysuits keep you warm but face gets cold! Bring thick socks.',
+        'Glacier tours require sturdy hiking boots - many companies offer rentals if needed.',
+        'Weather can cancel adventure tours - operators offer free rebooking for safety cancellations.',
+        'Combination tours (glacier + ice cave) provide more value but are longer, fuller days.',
+        'Summer highlands adventures (Landmannalaugar, Thorsmork) are spectacular but only June-September!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is glacier hiking?',
+          answer: 'Glacier hiking means walking ON glaciers (massive ice formations) using special equipment and expert guides! HERE\'S HOW IT WORKS: You\'ll hike to glacier\'s edge, strap on crampons (metal spikes) that attach to hiking boots providing grip on ice, follow certified glacier guides across the ice, explore ice formations like crevasses (cracks in ice), moulins (vertical shafts), and seracs (ice towers), and learn about glacier formation, ice age history, and climate change impacts. ICELAND\'S ACCESSIBLE GLACIERS: Sólheimajökull (most popular, 2.5 hours from Reykjavik), Skaftafell (Vatnajökull glacier area, 4.5 hours from Reykjavik), Langjökull (interior glacier, can add ice tunnel tour!). DIFFICULTY: Most tours are MODERATE - requires basic fitness (able to walk 2-3 hours with breaks), sturdy hiking boots needed, and uneven ice surfaces. DURATION: 2-3 hours on glacier itself, 4-6 hours total with travel. SAFETY: Certified guides, all equipment provided, and tours adjust to group ability. Glacier hiking is ACCESSIBLE adventure - no technical climbing skills required, just willingness to explore!',
+        },
+        {
+          question: 'When can you visit ice caves in Iceland?',
+          answer: 'Natural ice caves in Iceland are accessible only NOVEMBER through MARCH - they\'re seasonal winter phenomena! WHY WINTER ONLY: Ice caves form when meltwater flows through glaciers creating tunnels and chambers. In summer, these tunnels are unstable and dangerous with flowing water. In winter, temperatures drop, water freezes solid, creating stunning blue crystal caves safe to explore! Caves form anew each year - locations and shapes change! BEST MONTHS: December-February (most stable conditions). November and March are start/end of season (sometimes limited access). WHERE: Most ice cave tours visit Vatnajökull glacier area (4-5 hours from Reykjavik) with super jeep transport. WHAT YOU\'LL SEE: Crystal-blue ice chambers with light filtering through, natural ice sculptures, and otherworldly beauty! Tours last 10-12 hours total (long day with travel). Book 4-6 weeks ahead - winter ice caves are incredibly popular! SUMMER ALTERNATIVE: Langjökull MAN-MADE ice tunnel (accessible year-round) - less spectacular but still cool experience!',
+        },
+        {
+          question: 'What is Silfra snorkeling?',
+          answer: 'Silfra is a fissure in Þingvellir National Park where you can snorkel between North American and Eurasian tectonic plates in some of Earth\'s clearest water! WHAT MAKES IT SPECIAL: You\'re literally swimming between continents! The plates drift apart 2cm/year creating underwater fissure. VISIBILITY: 100+ meters (300+ feet) - some of world\'s clearest water! Filtered through underground lava for 50+ years before reaching Silfra. COLOR: Surreal electric blue water. You float between dramatic rock walls colored by minerals and algae. EXPERIENCE: Wear drysuit (keeps you dry and warm), glide through crystal-clear water seeing every detail, float through tight sections like "Silfra Cathedral," and experience weightless sensation between continents! CHALLENGES: Water is 2-4°C (35-39°F) - face gets cold! Drysuits are bulky (takes time to adjust). Requires comfort swimming. REQUIREMENTS: Age 14+, able to swim, sign medical form. HEIGHT/WEIGHT restrictions for drysuit fit. DURATION: 30-40 minutes in water, 3-4 hours total. VERDICT: Bucket-list experience - truly unique! Cold but absolutely worth it!',
+        },
+        {
+          question: 'How physically demanding are adventure tours?',
+          answer: 'Physical requirements vary significantly by activity - here\'s the breakdown! LIGHT ACTIVITY: Ice cave tours: Mostly walking on solid ground with short ice sections - EASY for most people. Age 8+. Blue Lagoon/hot springs: No physical exertion - ACCESSIBLE to all. Super jeep tours: Riding in vehicle with short walks - EASY. MODERATE ACTIVITY: Glacier hiking: 2-3 hours walking on uneven ice with breaks - requires MODERATE fitness (ability to walk continuously). Age 10+. Not technical but ice is uneven. Golden Circle tours: Walking at sites - EASY/MODERATE. Full-day involves standing/walking 2-3 hours total. CHALLENGING ACTIVITY: Silfra snorkeling: Must be comfortable swimming and handling cold - MODERATE challenge. Age 14+, height/weight requirements. Requires calm in water. Highland hiking: Summer multi-hour hikes - MODERATE/CHALLENGING depending on route. Requires good fitness. GENERAL RULE: If you can walk 2-3 hours with breaks, most tours are accessible! Tour descriptions specify difficulty. When in doubt, contact operators about specific concerns - they\'re helpful!',
+        },
+        {
+          question: 'What equipment do I need for adventures?',
+          answer: 'Most equipment is PROVIDED by tour operators - you just need appropriate clothing! WHAT OPERATORS PROVIDE: Glacier hiking: Crampons (ice grips), ice axes, harnesses (if needed), helmets. Ice caves: Crampons, helmets, flashlights. Silfra snorkeling: Drysuit, hood, gloves, mask, snorkel, fins. WHAT YOU NEED: FOOTWEAR: Glacier hiking requires sturdy waterproof hiking boots (ankle support essential!). Many operators rent boots (€10-15). Avoid trail runners, fashion boots, or non-waterproof shoes. Ice caves: Regular hiking boots work. Silfra: Warm socks (bring two pairs - first pair gets wet!). CLOTHING: Multiple layers (see below), waterproof outer jacket, warm hat and gloves. PERSONAL: Water bottle, snacks, sunglasses, camera. CLOTHING LAYERS: Base: thermal underwear. Mid: fleece or wool sweater. Outer: waterproof windproof jacket and pants. Always overdress in Iceland - weather changes rapidly and you can always remove layers! Winter: Add heavier layers, winter jacket, serious gloves. RENTALS: Most operators rent hiking boots. Some rent full clothing layers if needed.',
+        },
+        {
+          question: 'Are adventure tours safe?',
+          answer: 'YES - Iceland\'s adventure tour operators maintain excellent safety records with strict regulations! SAFETY MEASURES: CERTIFIED GUIDES: All glacier and adventure guides are certified by Icelandic Mountain Guides association - extensive training required! QUALITY EQUIPMENT: Operators use professional-grade safety equipment regularly inspected. WEATHER MONITORING: Tours cancel if conditions are unsafe - you\'ll get full refund or rebooking. SAFETY BRIEFINGS: Thorough briefings before activities explaining risks and procedures. INSURANCE: Reputable operators carry proper insurance. SMALL GROUPS: Most tours limit group sizes (8-15 people) allowing proper supervision. RISK FACTORS: Weather in Iceland is unpredictable (tours cancel for safety), glaciers have inherent risks (crevasses, ice fall - guides avoid danger zones), Silfra is cold (hypothermia possible - drysuits prevent this), and highland roads can be rough (super jeeps are designed for this). CHOOSING OPERATORS: Book with established companies (not cheapest!), read reviews about safety practices, and verify guide certifications. Overall, adventure tourism in Iceland is VERY SAFE when using reputable operators!',
+        },
+        {
+          question: 'Can you visit Iceland\'s glaciers yourself?',
+          answer: 'You can APPROACH glaciers yourself but NEVER walk ON glacier ice without certified guides - it\'s extremely dangerous! SAFE SELF-ACCESS: Glacier viewpoints: Many glaciers have safe viewing areas accessible by car (Sólheimajökull parking, Skaftafell viewpoints, Jökulsárlón glacier lagoon). You can walk to ice edge and photograph. Glacier lagoons: Jökulsárlón and Fjallsárlón allow self-visits seeing icebergs that calved from glaciers - stunning! WHY GUIDED TOURS FOR GLACIER WALKING: CREVASSES - Hidden cracks in ice can be deadly! Crevasses can be covered by thin snow bridges. Falling in is serious/fatal risk. Guides know safe routes. ICE MOVEMENT - Glaciers constantly move and change. Today\'s safe route might be dangerous tomorrow. EQUIPMENT - Crampons essential for grip. Ice axes needed for stability. KNOWLEDGE - Understanding glacier hazards requires training. RESCUE - If something goes wrong on glacier, rescue is difficult. Guides have communication equipment. BOTTOM LINE: Enjoy glaciers from viewing areas. Book guided tours for walking on ice. DON\'T attempt glacier hiking alone - Icelandic rescue teams regularly save (or recover) tourists who ignored this advice!',
+        },
+        {
+          question: 'What is the best season for adventure tours?',
+          answer: 'Different adventures peak in different seasons - Iceland offers year-round options! WINTER (November-March): BEST FOR: Ice caves (November-March ONLY!), Northern Lights adventures, glacier hiking with dramatic snow/ice, snowmobiling, and winter landscape photography. CHALLENGES: Short daylight (4-5 hours December), cold (0 to -10°C/32-14°F), some roads closed (highlands inaccessible), and higher winds/storms. SUMMER (June-August): BEST FOR: Highland access (Landmannalaugar, Thorsmork), midnight sun adventures (20+ hour daylight!), multi-day hiking, and comfortable temperatures (10-15°C/50-60°F). CHALLENGES: No Northern Lights (not dark), no ice caves, maximum crowds, and highest prices. SHOULDER SEASONS (April-May, September-October): BEST FOR: Balance of activities, fewer crowds, decent weather, and possible Northern Lights (September-October). September-October offers beautiful fall colors! April-May has spring energy. YEAR-ROUND: Glacier hiking, Silfra snorkeling, Golden Circle, geothermal areas, and super jeep tours. RECOMMENDATION: Winter for ice caves/Northern Lights. Summer for highlands/hiking. September-October for best overall balance!',
+        },
+      ],
+    },
+  },
+
 };
 
