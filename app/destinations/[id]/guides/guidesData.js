@@ -29241,7 +29241,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       ]
     },
     'oslo-fjord-tours': {
-      "title": "Oslo Oslo Fjord Tours",
+      "title": "Oslo Fjord Tours",
       "subtitle": "Cruise through stunning Norwegian fjords, island archipelago, and pristine Nordic waters!",
       "categoryName": "Oslo Fjord Tours",
       "stats": {
@@ -29328,7 +29328,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
         }
       ],
       "whatToExpect": {
-        "title": "What to Expect on Your Oslo Oslo Fjord Tours",
+        "title": "What to Expect on Your Oslo Fjord Tours",
         "items": [
           {
             "icon": "Clock",
