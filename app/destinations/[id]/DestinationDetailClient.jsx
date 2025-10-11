@@ -364,7 +364,14 @@ export default function DestinationDetailClient({ destination }) {
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center gap-3">
                     <h3 className="text-2xl font-poppins font-bold text-gray-800">
-                      {safeDestination.fullName} {typeof category === 'string' ? category : category.name}
+                      {(() => {
+                        const categoryName = typeof category === 'string' ? category : category.name;
+                        // Check if category already starts with destination name
+                        if (categoryName.startsWith(safeDestination.fullName)) {
+                          return categoryName; // Already includes destination name
+                        }
+                        return `${safeDestination.fullName} ${categoryName}`; // Add destination name
+                      })()}
                     </h3>
                     {(() => {
                       const categoryName = typeof category === 'string' ? category : category.name;
