@@ -20634,6 +20634,534 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'food-and-culture-tours': {
+      title: 'San Francisco Food & Culture Tours',
+      subtitle: 'Taste sourdough, Dungeness crab, dim sum, and diverse SF cuisine!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 124,
+        priceFrom: 75,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover San Francisco's legendary food scene - culinary capital with diverse global cuisines! Food tours explore Fisherman's Wharf (clam chowder in sourdough bowls!), Chinatown (oldest in North America with amazing dim sum!), Mission District (burritos, taquerias!), Ferry Building Marketplace (artisan foods!), North Beach (Italian heritage!), and innovative restaurant scene. Sample Dungeness crab, sourdough bread, dim sum, Mission-style burritos, cioppino (seafood stew), and Ghirardelli chocolate. Tours include neighborhood exploration, cultural education, chef-led experiences, and wine country excursions. It's farm-to-table pioneer!`,
+
+      seo: {
+        title: 'San Francisco Food & Culture Tours 2025 - Sourdough, Dim Sum & SF Cuisine',
+        description: 'Taste San Francisco! Food tours, dim sum, sourdough, and culinary experiences!',
+        keywords: 'San Francisco food tours, SF dim sum, sourdough, Fisherman Wharf food, Mission burritos',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Culinary Innovation',
+          description: 'Farm-to-table movement birthplace - cutting-edge cuisine!',
+        },
+        {
+          icon: 'Star',
+          title: 'Diverse Neighborhoods',
+          description: 'Chinatown, Mission, North Beach - authentic ethnic food!',
+        },
+        {
+          icon: 'Users',
+          title: 'Fresh Seafood',
+          description: 'Dungeness crab, cioppino, oysters - Pacific freshness!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Wine Country Access',
+          description: 'Napa/Sonoma 1 hour away - wine tours easily added!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Chinatown Food Tour',
+          description: 'Dim sum, tea houses, and Chinese culinary heritage.',
+          features: [
+            '3 hours',
+            '6-8 tastings',
+            'Chinatown',
+            'Authentic',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Mission District Tacos',
+          description: 'Explore Mission with burritos and Latin food.',
+          features: [
+            '3 hours',
+            'Burritos',
+            'Taquerias',
+            'Street art',
+            'Hip',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Fisherman\'s Wharf Seafood',
+          description: 'Crab, clam chowder, waterfront dining.',
+          features: [
+            '2-3 hours',
+            'Seafood',
+            'Waterfront',
+            'Classic SF',
+            'Touristy',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Ferry Building Tour',
+          description: 'Artisan marketplace with local producers.',
+          features: [
+            '2 hours',
+            'Artisan foods',
+            'Farmers market',
+            'Gourmet',
+            'Quality',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your San Francisco Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Dungeness Crab',
+            description: 'Local specialty Nov-June - sweet, fresh, delicious!',
+          },
+          {
+            icon: 'Star',
+            title: 'Sourdough',
+            description: 'SF sourdough famous since Gold Rush - unique wild yeast!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Dim Sum',
+            description: 'Chinatown authentic - dumplings, buns, tea in historic tea houses!',
+          },
+          {
+            icon: 'Users',
+            title: 'Mission Burritos',
+            description: 'SF-style burritos (rice inside!) different from elsewhere!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Neighborhoods',
+            description: 'Food tours explore ethnic enclaves with authentic cuisines.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Chinatown best for dim sum - City View Restaurant, Good Mong Kok locals\' favorites.',
+        'Mission: La Taqueria, El Farolito legendary burritos - cheap ($8-12).',
+        'Ferry Building Farmers Market (Tues/Thurs/Sat) has best local produce.',
+        'Dungeness crab season: November-June (freshest!).',
+        'Avoid Fisherman\'s Wharf restaurants (overpriced!) - buy crab from stands instead.',
+        'North Beach (Little Italy) has authentic Italian - Mama\'s (breakfast) iconic.',
+        'SF sourdough: Boudin Bakery touristy but good. Tartine (Mission) better.',
+        'Food tours show spots tourists miss - worth it for diverse neighborhoods!',
+      ],
+
+      faqs: [
+        {
+          question: 'What food is San Francisco known for?',
+          answer: 'Sourdough bread, Dungeness crab, cioppino (seafood stew), dim sum, Mission burritos, It\'s-It ice cream sandwiches, Ghirardelli chocolate, Irish coffee (invented at Buena Vista!). Plus cutting-edge farm-to-table! Diverse cuisines from every culture. Foodie paradise!',
+        },
+        {
+          question: 'Where should I eat in San Francisco?',
+          answer: 'Chinatown dim sum: City View. Burritos: La Taqueria. Seafood: Swan Oyster Depot. Sourdough: Tartine. Breakfast: Mama\'s (North Beach). Ferry Building for artisan foods. Food tours navigate options - SF has thousands of restaurants!',
+        },
+        {
+          question: 'Is Fisherman\'s Wharf good for food?',
+          answer: 'Tourist trap restaurants overpriced! However, crab stands ($20-30) on sidewalk good for fresh Dungeness crab. Boudin sourdough decent. Clam chowder in bread bowls touristy but fun. Eat crab from stands, skip sit-down restaurants - walk to North Beach instead!',
+        },
+        {
+          question: 'How much do SF food tours cost?',
+          answer: 'Walking food tours: $75-120 (3-4 hours, 6-8 tastings). Chinatown: $80-100. Mission: $75-95. Ferry Building: $90-110. Wine country day trips: $150-200. Tours replace meals - good value for variety and avoiding tourist traps!',
+        },
+        {
+          question: 'What is a Mission burrito?',
+          answer: 'SF-style burrito with rice INSIDE (unlike traditional Mexican). Large, foil-wrapped, everything included. Invented in Mission District. La Taqueria, El Farolito legendary. $8-12. Different from elsewhere - uniquely San Francisco. Try it!',
+        },
+        {
+          question: 'Where is best dim sum?',
+          answer: 'Chinatown: City View, Good Mong Kok, Great Eastern. Richmond District (Clement St): Ton Kiang, Hong Kong Lounge. Richmond has better quality but Chinatown more atmospheric. Go early (10-11 AM) or make reservations. Sundays busiest!',
+        },
+        {
+          question: 'When is Dungeness crab season?',
+          answer: 'November through June! Peak: December-February (holidays!). Fresh, sweet, local. $20-30 whole crab from Fisherman\'s Wharf stands. Restaurants serve year-round (frozen outside season). Winter best for fresh crab - it\'s SF tradition!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Lunch (11 AM-2 PM) or dinner (6-9 PM) tours. Saturday Ferry Building Farmers Market adds experience. Crab season (Nov-June) for seafood. Chinatown dim sum best mornings. Any season offers excellent food!',
+        },
+      ],
+    },
+
+    'neighborhood-tours': {
+      title: 'San Francisco Neighborhood Tours',
+      subtitle: 'Explore diverse districts: Mission, Haight-Ashbury, Castro, and more!',
+      categoryName: 'Neighborhood Tours',
+      
+      stats: {
+        toursAvailable: 86,
+        priceFrom: 50,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover San Francisco's distinct neighborhoods - each with unique character! Neighborhood tours explore Mission District (Latino culture, street art!), Haight-Ashbury (hippie history!), Castro (LGBTQ+ mecca!), Chinatown (oldest in North America!), North Beach (Little Italy!), Pacific Heights (mansions and Painted Ladies!), and more. Experience local culture, historic significance, street art murals, Victorian architecture, diverse communities, and authentic neighborhood life beyond tourist areas. Tours include cultural education, food tastings, historical context, and local insights. It's San Francisco diversity!`,
+
+      seo: {
+        title: 'San Francisco Neighborhood Tours 2025 - Mission, Castro, Haight & SF Districts',
+        description: 'Explore SF neighborhoods! Mission murals, Castro history, and diverse San Francisco districts!',
+        keywords: 'San Francisco neighborhoods, Mission District, Castro SF, Haight-Ashbury, Chinatown SF, SF districts',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Diverse Districts',
+          description: 'Each neighborhood completely different - cultural mosaic!',
+        },
+        {
+          icon: 'Star',
+          title: 'Mission Murals',
+          description: 'World-class street art covering entire blocks!',
+        },
+        {
+          icon: 'Users',
+          title: 'LGBTQ+ History',
+          description: 'Castro - birthplace of gay rights movement!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Painted Ladies',
+          description: 'Iconic Victorian homes in multiple neighborhoods!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Mission District Tour',
+          description: 'Street art, burritos, Latino culture, and murals.',
+          features: [
+            '3 hours',
+            'Murals',
+            'Food',
+            'Culture',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Castro & LGBTQ+ History',
+          description: 'Explore gay rights history and vibrant community.',
+          features: [
+            '2-3 hours',
+            'LGBTQ+ history',
+            'Harvey Milk',
+            'Cultural',
+            'Important',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Haight-Ashbury Tour',
+          description: '1960s hippie history and counterculture.',
+          features: [
+            '2 hours',
+            'Hippie history',
+            'Victorian homes',
+            'Music',
+            'Nostalgic',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Painted Ladies Tour',
+          description: 'Visit Alamo Square and Victorian architecture.',
+          features: [
+            '2 hours',
+            'Victorian homes',
+            'Architecture',
+            'Photo stops',
+            'Iconic',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your San Francisco Neighborhood Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours per neighborhood. Multi-neighborhood: 4-5 hours.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Mission Murals',
+            description: 'Clarion Alley, Balmy Alley - incredible street art covering buildings!',
+          },
+          {
+            icon: 'Star',
+            title: 'Castro History',
+            description: 'Harvey Milk legacy, rainbow crosswalks, LGBTQ+ cultural center!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Painted Ladies',
+            description: 'Victorian homes at Alamo Square - Full House opening shot location!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Haight-Ashbury',
+            description: 'Where Summer of Love happened - vintage shops, hippie history!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Education',
+            description: 'Learn about diverse communities shaping SF\'s progressive identity.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Mission: Best street art in Clarion Alley (16th & Valencia) and Balmy Alley (24th St).',
+        'Castro: Visit Harvey Milk Plaza and Twin Peaks Tavern (first gay bar with windows!).',
+        'Haight-Ashbury: Intersection of Haight & Ashbury - photo op at street signs!',
+        'Painted Ladies best viewed from Alamo Square Park (bring picnic!).',
+        'Each neighborhood needs 2-3 hours - don\'t rush!',
+        'Public transport connects neighborhoods - MUNI buses or walk.',
+        'Tours provide cultural context you\'d miss exploring alone.',
+        'Respect neighborhoods - locals live here, not just tourist attractions!',
+      ],
+
+      faqs: [
+        {
+          question: 'What neighborhoods should I visit in SF?',
+          answer: 'Must-see: Mission (street art, burritos), Castro (LGBTQ+ history), Haight-Ashbury (hippie culture), Chinatown (dim sum), North Beach (Italian). Also: Pacific Heights (Painted Ladies), Fisherman\'s Wharf (touristy but iconic). Each unique - visit multiple!',
+        },
+        {
+          question: 'What is the Mission District?',
+          answer: 'Mission is SF\'s Latino cultural heart - incredible street art murals, best burritos, vibrant nightlife, progressive culture! Clarion Alley and Balmy Alley have world-class murals. Hipster/artistic vibe. Essential SF neighborhood - not touristy. Visit!',
+        },
+        {
+          question: 'What is the Castro?',
+          answer: 'Castro is world\'s first gay neighborhood - LGBTQ+ mecca! Harvey Milk (first openly gay elected official) lived here. Rainbow crosswalks, pride flag, welcoming atmosphere. Historical significance for gay rights movement. Everyone welcome - inclusive and friendly!',
+        },
+        {
+          question: 'What is Haight-Ashbury?',
+          answer: 'Haight-Ashbury is birthplace of 1960s counterculture - Summer of Love (1967), Grateful Dead lived here, hippie movement! Now: Vintage shops, head shops, Victorian homes. Nostalgic but changed. Worth visiting for history. Intersection of Haight & Ashbury famous photo!',
+        },
+        {
+          question: 'Where are the Painted Ladies?',
+          answer: 'Painted Ladies (Victorian homes) at Alamo Square - Full House opening shot! Also: Haight-Ashbury, Castro, Pacific Heights have Victorian architecture. Alamo Square most famous view. FREE to visit park. Best SF photo op! Postcards everywhere.',
+        },
+        {
+          question: 'How much do neighborhood tours cost?',
+          answer: 'Walking tours: $50-80 (2-3 hours). Food + neighborhood: $75-120. Multi-neighborhood: $90-130. Free walking tours (tip-based) available. Public transport between neighborhoods cheap ($3/ride). Budget-friendly with DIY option!',
+        },
+        {
+          question: 'Can you explore neighborhoods yourself?',
+          answer: 'Absolutely! MUNI connects all neighborhoods. However, tours provide cultural history, street art explanations, and local insights. First-timers: Tours recommended for context. Return visitors: Explore freely. Both work!',
+        },
+        {
+          question: 'Are SF neighborhoods safe?',
+          answer: 'Daytime generally safe in tourist neighborhoods. Evening: Stick to busy streets. Tenderloin avoid (downtown drugs/homelessness). Mission, Castro, Haight safe but aware. Use normal urban caution. SF has homeless/property crime - don\'t leave valuables in cars!',
+        },
+      ],
+    },
+
+    'bay-tours': {
+      title: 'San Francisco Bay Tours',
+      subtitle: 'Cruise under Golden Gate, around Alcatraz, and see SF skyline from water!',
+      categoryName: 'Bay Tours',
+      
+      stats: {
+        toursAvailable: 78,
+        priceFrom: 35,
+        duration: '1-3 hours',
+      },
+
+      introduction: `Experience San Francisco Bay from water - best city views! Bay tours cruise under Golden Gate Bridge, circle Alcatraz Island, pass Angel Island, see SF skyline, and explore bay's maritime heritage. Tours range from 1-hour basic cruises to sunset champagne sails, whale watching excursions (winter!), and full-day Sausalito combinations. Experience narrated history, photograph iconic landmarks from unique perspectives, possibly spot sea lions and dolphins, and understand bay's geographic significance. Tours include indoor/outdoor seating, bar service, and audio commentary. It's San Francisco from best vantage point!`,
+
+      seo: {
+        title: 'San Francisco Bay Tours 2025 - Bay Cruises, Golden Gate & Alcatraz Views',
+        description: 'Experience SF Bay! Cruise under Golden Gate, around Alcatraz, and see stunning skyline!',
+        keywords: 'San Francisco Bay cruises, SF boat tours, Golden Gate cruise, bay tours, Alcatraz cruise',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Best City Views',
+          description: 'See Golden Gate, Alcatraz, skyline from water - spectacular!',
+        },
+        {
+          icon: 'Star',
+          title: 'Under Golden Gate',
+          description: 'Cruise underneath bridge - unique perspective!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Sunset Cruises',
+          description: 'Golden hour over bay - romantic and beautiful!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photo Opportunities',
+          description: 'Unobstructed views of all SF icons from water!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Bay Cruise',
+          description: 'Golden Gate and Alcatraz 1-hour cruise.',
+          features: [
+            '1 hour',
+            'Under bridge',
+            'Around Alcatraz',
+            'Narrated',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Sunset Cruise',
+          description: 'Evening sail with champagne and golden hour.',
+          features: [
+            '2 hours',
+            'Sunset',
+            'Champagne',
+            'Romantic',
+            'Beautiful',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Whale Watching',
+          description: 'Winter cruises seeing humpback and gray whales.',
+          features: [
+            '3-4 hours',
+            'Whale season',
+            'Marine life',
+            'Nature',
+            'Seasonal',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Sausalito Ferry',
+          description: 'One-way ferry to charming Marin town.',
+          features: [
+            '30 minutes',
+            'Transport',
+            'Scenic',
+            'One-way',
+            'Practical',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your San Francisco Bay Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Basic cruises: 1 hour. Sunset: 2 hours. Whale watching: 3-4 hours.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Golden Gate Passage',
+            description: 'Cruise under bridge - massive scale impressive from below!',
+          },
+          {
+            icon: 'Star',
+            title: 'Alcatraz Circle',
+            description: 'Cruise around island (no landing) - see prison from water!',
+          },
+          {
+            icon: 'Camera',
+            title: 'SF Skyline',
+            description: 'Downtown, Coit Tower, bay bridge - unobstructed views!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Sea Lions',
+            description: 'Pier 39 sea lions visible from water (loud and smelly!).',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Maritime History',
+            description: 'Learn about Gold Rush shipping, modern port, and bay ecology.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Blue & Gold Fleet most popular cruise operator - departures from Pier 39/41.',
+        'Sunset cruises (6-8 PM summer) magical when weather clear!',
+        'Dress warmly - bay windy and cold even if SF sunny!',
+        'September-October clearest weather with least fog.',
+        'Whale watching: December-May (humpback, gray whales migrate).',
+        'Alcatraz tours include similar views - don\'t need separate bay cruise if visiting Alcatraz.',
+        'Sausalito ferry practical transport + scenic cruise ($13 each way).',
+        'Indoor/outdoor seating available - outdoor better for photos but colder!',
+      ],
+
+      faqs: [
+        {
+          question: 'How much do bay cruises cost?',
+          answer: '1-hour cruise: $35-45. Sunset cruise: $60-80. Whale watching: $80-110. Sausalito ferry: $13 each way. All affordable! Basic cruise best value for seeing major sights. Splurge on sunset for special occasion!',
+        },
+        {
+          question: 'Do bay cruises go to Alcatraz?',
+          answer: 'Circle around it but don\'t land! Only Alcatraz Cruises can land (official park concessionaire). Bay cruises show exterior, provide history, good photos. Alcatraz tour separate if wanting island visit. Seeing from water still worthwhile!',
+        },
+        {
+          question: 'When can you see whales?',
+          answer: 'December-May: Gray and humpback whales migrate through bay! Peak: January-March. Whale watching tours $80-110, 3-4 hours. Sightings common but not guaranteed. Outside season: No whales but dolphins, sea lions visible year-round!',
+        },
+        {
+          question: 'Is it foggy on bay cruises?',
+          answer: 'Summer (June-Aug): Afternoon fog common! September-October: Clearest months. Morning usually clearer than afternoon. Check weather - SF fog unpredictable. Fog creates mystique but limits views. Best: September-October!',
+        },
+        {
+          question: 'Are bay cruises worth it?',
+          answer: 'YES for seeing Golden Gate and Alcatraz from water - unique perspectives! Not essential if visiting both separately. Sunset cruises romantic. 1-hour basic cruise good value ($35-45). First-timers: Consider it. Budget travelers: Skip it.',
+        },
+        {
+          question: 'Can you take ferry to Sausalito?',
+          answer: 'Yes! Ferry from Ferry Building or Pier 41 to Sausalito ($13, 30 min). Scenic transportation + cute town visit. Often combined with biking Golden Gate (bike across, ferry back). Practical and beautiful!',
+        },
+        {
+          question: 'What should I bring?',
+          answer: 'Jacket (always windy/cold on water!), sunglasses, camera, hat, sunscreen. Layers essential - SF microclimates mean deck 20° colder than city. Seasickness rare (bay protected) but Dramamine if prone. Come prepared for wind!',
+        },
+        {
+          question: 'When is the best time for bay cruises?',
+          answer: 'September-October: Clearest, warmest, least fog! Early morning year-round usually clear. Sunset cruises magical when weather cooperates. Avoid summer afternoons (fog!). Check forecasts - SF weather varies neighborhood to neighborhood!',
+        },
+      ],
+    },
   },
 };
 
