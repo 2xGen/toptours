@@ -2636,12 +2636,12 @@ export const destinations = [
     heroDescription: 'Welcome to Split, where ancient Roman ruins meet modern Croatian life and the stunning Dalmatian coast provides endless natural beauty. From the magnificent Diocletian\'s Palace to pristine beaches, from historic churches to vibrant waterfront, this coastal city offers the perfect blend of history, culture, and Croatian seaside charm. Let our AI-powered planner help you discover the best experiences this fascinating destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Split.jpg',
     tourCategories: [
-      'Diocletian\'s Palace Tours',
-      'Coastal Boat Tours',
-      'Island Hopping Tours',
-      'Food & Wine Tours',
-      'Historic District Tours',
-      'Beach & Water Sports'
+      { name: 'Diocletian\'s Palace Tours', hasGuide: true },
+      { name: 'Coastal Boat Tours', hasGuide: true },
+      { name: 'Island Hopping Tours', hasGuide: true },
+      { name: 'Food & Wine Tours', hasGuide: true },
+      { name: 'Historic District Tours', hasGuide: true },
+      { name: 'Beach & Water Sports', hasGuide: true }
     ],
     seo: {
       title: 'Split Tours & Excursions - Top-Rated Activities & Adventures',

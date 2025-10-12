@@ -37245,5 +37245,1063 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
     },
   },
 
+  split: {
+    'diocletians-palace-tours': {
+      title: 'Split Diocletian\'s Palace Tours',
+      subtitle: 'Explore the 1,700-year-old Roman palace where ancient history meets modern Croatian life!',
+      categoryName: 'Diocletian\'s Palace Tours',
+      
+      stats: {
+        toursAvailable: 86,
+        priceFrom: 20,
+        duration: '1.5-3 hours',
+      },
+
+      introduction: `Experience Diocletian's Palace, one of the world's most impressive Roman monuments and Split's beating heart! Built AD 295-305 by Roman Emperor Diocletian as his retirement residence, this UNESCO World Heritage palace is unique because 3,000 people live within its ancient walls today - shops, restaurants, and homes occupy rooms where emperors once walked! The palace blends Roman architecture with medieval and Renaissance additions creating a living museum. Tours explore underground cellars (basement chambers that supported the palace), the Peristyle (central square), Jupiter's Temple, cathedral built into the mausoleum, narrow streets, and ancient walls. Game of Thrones fans will recognize filming locations! It's ancient Rome brought to life in modern Split!`,
+
+      seo: {
+        title: 'Split Diocletian\'s Palace Tours 2025 - Roman Palace & Game of Thrones',
+        description: 'Explore Diocletian\'s Palace in Split! Roman ruins, underground cellars, and Croatian history!',
+        keywords: 'Diocletian Palace Split, Split tours, Roman palace Croatia, Split Game of Thrones, Split walking tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: '1,700-Year-Old Roman Palace',
+          description: 'Walk through remarkably preserved palace where a Roman emperor retired!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Living Monument',
+          description: 'Experience a UNESCO site where people actually live - unique worldwide!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Expert Historians',
+          description: 'Guides explain Roman history, architecture, and palace transformation over centuries.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Game of Thrones Sites',
+          description: 'Visit filming locations from the popular series - Meereen and throne room scenes!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Palace Tours',
+          description: 'Guided exploration of palace highlights, cellars, Peristyle, and cathedral.',
+          features: [
+            '1.5-2 hours',
+            'Palace highlights',
+            'Underground cellars',
+            'Peristyle square',
+            'Expert guide',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Game of Thrones Tours',
+          description: 'Visit filming locations with behind-the-scenes stories and series references.',
+          features: [
+            '2 hours',
+            'Filming locations',
+            'Series stories',
+            'Photo opportunities',
+            'For fans',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Underground Cellars Tour',
+          description: 'Explore atmospheric basement chambers that supported emperor\'s apartments above.',
+          features: [
+            '1 hour',
+            'Underground rooms',
+            'Roman architecture',
+            'Historical context',
+            'Atmospheric',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Small Group Tours',
+          description: 'Intimate groups (10-15) with personalized attention and expert guide interaction.',
+          features: [
+            '2-3 hours',
+            'Small groups',
+            'Personal attention',
+            'Quality experience',
+            'Better access',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Split Diocletian\'s Palace Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Standard tours last 1.5-2 hours; comprehensive tours take 2.5-3 hours with cellars.',
+          },
+          {
+            icon: 'Star',
+            title: 'Roman Architecture',
+            description: 'Explore 1,700-year-old walls, gates, courtyards, and remarkably preserved structures.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Underground Cellars',
+            description: 'Descend into atmospheric basement chambers revealing palace\'s original layout.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Peristyle Square',
+            description: 'Visit the palace\'s central square - still the social heart of Split today.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cathedral History',
+            description: 'See the cathedral built into Diocletian\'s mausoleum - unique transformation!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Living History',
+            description: 'Experience modern life within ancient walls - restaurants, shops, homes in Roman palace!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Morning tours (9-10 AM) avoid midday heat and offer better photos in palace courtyards.',
+        'Underground cellars require separate ticket (€7) or book tours including access.',
+        'Game of Thrones tours combine palace with other Split filming locations - great for fans!',
+        'Summer gets extremely hot (35°C+) - underground cellars offer cool relief!',
+        'The palace is FREE to explore (it\'s public streets!) but cellars and cathedral cost extra.',
+        'Evening in the Peristyle is magical - locals gather, musicians perform, atmosphere is lovely.',
+        'Climb the cathedral bell tower (€7) for excellent views over palace and harbor.',
+        'Guided tours reveal details you\'d miss exploring independently - worth the investment!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Diocletian\'s Palace?',
+          answer: 'It\'s a massive Roman palace built AD 295-305 by Emperor Diocletian for his retirement. Remarkably, it\'s a living monument - 3,000 people live, work, and shop within the ancient walls today! It\'s UNESCO World Heritage and Split\'s historic center.',
+        },
+        {
+          question: 'Is Diocletian\'s Palace free to visit?',
+          answer: 'The palace streets, squares, and exterior are FREE (it\'s public space!). However, the underground cellars (€7), cathedral (€7), and bell tower (€7) require tickets. Guided tours (€20-40) include access and expert explanation.',
+        },
+        {
+          question: 'How long to visit the palace?',
+          answer: 'Plan 2-3 hours minimum for a proper visit. Guided tours are 1.5-2 hours covering highlights efficiently. Self-exploring can take longer as the palace is maze-like with lots to discover.',
+        },
+        {
+          question: 'Was Game of Thrones filmed here?',
+          answer: 'Yes! The cellars were Daenerys\'s throne room in Meereen (Season 4). Other palace locations appeared in multiple scenes. Dedicated GoT tours visit all filming spots with series stories!',
+        },
+        {
+          question: 'Can you climb the bell tower?',
+          answer: 'Yes! The Cathedral of St. Domnius bell tower is open for €7. It\'s a steep climb (stone steps, narrow passages) but offers excellent views over palace, city, and harbor. Worth the effort!',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Early morning (9-10 AM) for fewer crowds and better light. Evening (after 6 PM) for magical atmosphere when locals gather. Best months: May-June & September-October for comfortable weather. Summer gets very hot!',
+        },
+        {
+          question: 'Do I need a guide?',
+          answer: 'Not required but highly recommended! The palace is complex with 1,700 years of history. Guides explain what you\'re seeing, reveal hidden details, and bring Roman history to life. Self-exploring is free but you\'ll miss significant context.',
+        },
+        {
+          question: 'What are the underground cellars?',
+          answer: 'The cellars are basement chambers that supported emperor\'s residential quarters above. They\'re atmospheric Roman vaults used for exhibitions and events today. Access: €7 or included with guided tours. They\'re genuinely impressive!',
+        },
+      ],
+    },
+
+    'coastal-boat-tours': {
+      title: 'Split Coastal Boat Tours',
+      subtitle: 'Cruise the stunning Dalmatian coast with crystal-clear Adriatic, hidden beaches, and island views!',
+      categoryName: 'Coastal Boat Tours',
+      
+      stats: {
+        toursAvailable: 94,
+        priceFrom: 35,
+        duration: '4-8 hours',
+      },
+
+      introduction: `Discover Split's spectacular Dalmatian coastline by boat - crystal-clear Adriatic waters, hidden beaches, sea caves, and dramatic coastal scenery! Boat tours from Split explore nearby islands, secluded coves, the famous Blue Cave with ethereal blue light, Green Cave, sandy beaches like Zlatni Rat, and charming coastal towns. Options range from speedboat adventures to luxury yacht charters, from sunset cruises to full-day excursions combining swimming, snorkeling, and sightseeing. The Adriatic is pristine with visibility often exceeding 20 meters perfect for swimming and snorkeling. Tours include Croatian hospitality, local wine, fresh seafood lunches, and spectacular coastal views. It's Croatia at its most beautiful!`,
+
+      seo: {
+        title: 'Split Boat Tours 2025 - Dalmatian Coast & Island Cruises',
+        description: 'Explore Split coastal boat tours! Blue Cave, island cruises, and Adriatic swimming!',
+        keywords: 'Split boat tours, Dalmatian coast tours, Split Blue Cave, Croatia sailing, Split island tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Crystal-Clear Adriatic',
+          description: 'Swim in pristine waters with incredible visibility and stunning blue colors!',
+        },
+        {
+          icon: 'Ship',
+          title: 'Dalmatian Coast Beauty',
+          description: 'Cruise along dramatic coastlines, hidden coves, and picturesque islands.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Blue Cave Wonder',
+          description: 'Visit the famous Blue Cave where sunlight creates magical ethereal blue glow!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Swimming Paradise',
+          description: 'Multiple stops at pristine beaches and secluded bays for swimming and snorkeling.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Blue Cave & Islands',
+          description: 'Visit Blue Cave, Green Cave, and beautiful islands with swimming and lunch.',
+          features: [
+            '8-10 hours',
+            'Blue Cave',
+            'Multiple islands',
+            'Lunch included',
+            'Swimming stops',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Speedboat Adventures',
+          description: 'Fast-paced tours visiting multiple locations in one exciting day.',
+          features: [
+            '6-8 hours',
+            'Speedboat',
+            '3-5 stops',
+            'Snorkeling gear',
+            'Adventurous',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunset Cruises',
+          description: 'Romantic evening sailing with dinner, wine, and Adriatic sunset views.',
+          features: [
+            '3-4 hours',
+            'Sunset timing',
+            'Dinner included',
+            'Wine & drinks',
+            'Romantic',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Private Yacht Charters',
+          description: 'Exclusive boat with custom itinerary for personalized coastal exploration.',
+          features: [
+            'Private yacht',
+            'Flexible schedule',
+            'Custom route',
+            'Captain & crew',
+            'Premium service',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Split Coastal Boat Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours last 4-10 hours depending on route; sunset cruises run 3-4 hours.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Swimming & Snorkeling',
+            description: 'Multiple stops in crystal-clear Adriatic with snorkeling equipment provided.',
+          },
+          {
+            icon: 'Star',
+            title: 'Blue Cave',
+            description: 'Enter the famous cave where sunlight creates ethereal blue illumination.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Island Stops',
+            description: 'Visit Hvar, Vis, Brač, or other Dalmatian islands with town exploration time.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Food & Drinks',
+            description: 'Most tours include lunch, Croatian wine, and refreshments throughout day.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Coastal Scenery',
+            description: 'Photograph dramatic cliffs, hidden beaches, and turquoise Adriatic waters.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book Blue Cave tours early - weather-dependent and sell out quickly in summer!',
+        'May-June & September offer best conditions - warm water, fewer crowds, calmer seas.',
+        'Speedboat tours are faster but bumpier; traditional boats more comfortable but slower.',
+        'Bring sunscreen (SPF 50+), hat, and light jacket - sun reflects off water intensely!',
+        'Motion sickness prone? Take medication before - Adriatic can be choppy!',
+        'Blue Cave entry (€12-15) often not included in tour price - check what\'s covered.',
+        'Bring waterproof bag or case for phone/camera - splashing is inevitable!',
+        'Full-day tours are long (10+ hours) - bring entertainment for boat travel time.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Blue Cave?',
+          answer: 'The Blue Cave (Modra Špilja) on Biševo island is a stunning sea cave where sunlight enters through underwater opening creating ethereal blue glow. It\'s Croatia\'s most famous natural wonder! Best time: 11 AM-12 PM when sun is positioned perfectly.',
+        },
+        {
+          question: 'How much do boat tours cost?',
+          answer: 'Day tours to Blue Cave & islands: €90-150 (includes lunch, stops, some fees). Speedboat tours: €70-120. Sunset cruises: €60-90. Private charters: €600-1,500+ for groups. Blue Cave entry (€12-15) often extra.',
+        },
+        {
+          question: 'When is the best time for boat tours?',
+          answer: 'May-June & September-October offer best conditions - warm water (22-25°C), calmer seas, fewer crowds. July-August warmest but very busy. Blue Cave best visited mid-morning (11 AM-12 PM) for optimal light.',
+        },
+        {
+          question: 'Are boat tours weather dependent?',
+          answer: 'Yes! Tours cancel if seas are too rough (safety reasons). Blue Cave closes if conditions are poor. Most operators offer full refund or rebooking if cancelled. Summer (June-September) has most reliable weather.',
+        },
+        {
+          question: 'Can you swim during boat tours?',
+          answer: 'Yes! Most tours include 2-4 swimming stops at beaches, coves, and near caves. Water is crystal clear (often 20+ meters visibility). Snorkeling gear typically provided. Bring swimsuit and towel!',
+        },
+        {
+          question: 'What should I bring on boat tours?',
+          answer: 'Essentials: Swimsuit, towel, sunscreen SPF 50+, hat, sunglasses, light jacket (wind on water!), waterproof bag, motion sickness medicine if needed, and cash for Blue Cave entry (€12-15).',
+        },
+        {
+          question: 'Is the Blue Cave worth it?',
+          answer: 'Yes! The ethereal blue light is truly magical and unique. However, visits are brief (5-10 minutes inside), you enter via small boat (can be crowded in peak season), and it\'s weather-dependent. Still worth experiencing!',
+        },
+        {
+          question: 'Can children join boat tours?',
+          answer: 'Yes! Most family-friendly tours welcome children (often with discounts). However, full-day tours are long (8-10 hours) and speedboat tours can be bumpy. Check age restrictions - some tours are 6+ or 12+.',
+        },
+      ],
+    },
+
+    'island-hopping-tours': {
+      title: 'Split Island Hopping Tours',
+      subtitle: 'Explore Croatian islands - Hvar, Brač, Vis, and hidden Adriatic gems with beaches and towns!',
+      categoryName: 'Island Hopping Tours',
+      
+      stats: {
+        toursAvailable: 78,
+        priceFrom: 60,
+        duration: '8-12 hours',
+      },
+
+      introduction: `Experience Croatia's stunning Dalmatian islands on island-hopping tours from Split! The Central Dalmatian archipelago features over 1,000 islands with Hvar (lavender fields and nightlife), Brač (famous Zlatni Rat beach), Vis (unspoiled fishing villages), and countless hidden gems. Island hopping tours combine boat cruising with beach stops, village exploration, wine tasting at island vineyards, swimming in secluded bays, and traditional Dalmatian lunches at waterfront tavernas. Speedboat tours pack multiple islands into one day; ferry-based tours allow longer island stays. Visit Blue Cave, Green Cave, Stiniva Cove, charming harbor towns, and pristine beaches. It's the best way to experience Croatia's island paradise!`,
+
+      seo: {
+        title: 'Split Island Hopping Tours 2025 - Hvar, Brač & Croatian Islands',
+        description: 'Explore Croatian islands from Split! Hvar, Brač, Vis island tours, beaches, and Adriatic paradise!',
+        keywords: 'Split island hopping, Hvar tours, Croatian islands, Brač island, Split island tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Multiple Islands One Day',
+          description: 'Visit 2-4 beautiful Croatian islands efficiently in single tour!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Pristine Beaches',
+          description: 'Swim at famous Zlatni Rat, hidden coves, and crystal-clear Adriatic bays.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Charming Island Towns',
+          description: 'Explore picturesque villages like Hvar Town, Vis, and Komiža with free time.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Spectacular Scenery',
+          description: 'Photograph dramatic coastlines, medieval towns, and turquoise waters.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Hvar & Pakleni Islands',
+          description: 'Visit Hvar Town plus Pakleni archipelago with swimming, lunch, and exploration.',
+          features: [
+            '8-10 hours',
+            'Hvar Town',
+            'Pakleni Islands',
+            'Lunch included',
+            'Beach stops',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Brač & Zlatni Rat',
+          description: 'Visit Brač island and famous Zlatni Rat beach (Golden Horn) for swimming.',
+          features: [
+            '6-8 hours',
+            'Brač island',
+            'Zlatni Rat beach',
+            'Swimming',
+            'Lunch stop',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Blue Cave & 5 Islands',
+          description: 'Comprehensive tour visiting Blue Cave, Vis, Hvar, Brač, and hidden spots.',
+          features: [
+            '10-12 hours',
+            '5 islands',
+            'Blue Cave',
+            'Multiple stops',
+            'Full experience',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Vis Island Day Trip',
+          description: 'Explore unspoiled Vis and Komiža with wine tasting and authentic island life.',
+          features: [
+            '8-10 hours',
+            'Vis island',
+            'Wine tasting',
+            'Traditional lunch',
+            'Quiet island',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Split Island Hopping Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Full-day tours last 8-12 hours including boat travel, island stops, and activities.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Multiple Islands',
+            description: 'Visit 2-4 islands depending on tour with time to explore each destination.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Swimming Stops',
+            description: 'Multiple beach and bay stops with snorkeling in crystal-clear Adriatic.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Island Towns',
+            description: 'Free time to wander charming villages, shop, and experience island culture.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Croatian Cuisine',
+            description: 'Lunch at island tavernas featuring fresh seafood and local specialties.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Scenic Cruising',
+            description: 'Enjoy Adriatic views, coastal scenery, and island landscapes throughout journey.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book early for Blue Cave tours - limited boats and weather-dependent access!',
+        'Hvar gets crowded in peak summer - visit in shoulder seasons for better experience.',
+        'Bring Croatian kuna cash - some islands have limited card acceptance.',
+        'Zlatni Rat beach (Brač) is stunning but crowded July-August - go early or late!',
+        'Full-day island tours are long - bring seasickness medicine, sunscreen, and entertainment.',
+        'Vis island is most authentic and least touristy - great for escaping crowds.',
+        'Some tours use ferries + speedboats combining efficiency with island time.',
+        'Pack light - you\'ll be swimming and moving between locations all day.',
+      ],
+
+      faqs: [
+        {
+          question: 'Which islands should I visit from Split?',
+          answer: 'Top choices: Hvar (charming town, nightlife, lavender), Brač (Zlatni Rat beach), Vis (unspoiled, authentic), and Pakleni Islands (pristine beaches). Blue Cave tours often combine multiple islands. Choose based on interests!',
+        },
+        {
+          question: 'How much do island hopping tours cost?',
+          answer: 'Full-day tours (8-10 hours, 2-3 islands): €80-150 including lunch, drinks, and activities. Blue Cave tours: €90-160. Speedboat tours: €70-120. Private charters: €800-2,000+ for groups. Great value considering what\'s included!',
+        },
+        {
+          question: 'Can you visit islands independently?',
+          answer: 'Yes! Ferries run from Split to Hvar (€7-10, 1-2 hours), Brač (€6-8, 50 min), and Vis (€9-12, 2.5 hours). DIY is cheaper but tours are more efficient, include lunch/drinks, and access spots ferries don\'t reach.',
+        },
+        {
+          question: 'What is Zlatni Rat beach?',
+          answer: 'Zlatni Rat (Golden Horn) on Brač island is Croatia\'s most famous beach - a unique pebble beach spit that changes shape with currents. Crystal-clear water, pine trees for shade, and stunning! Gets very crowded summer.',
+        },
+        {
+          question: 'Are island tours suitable for families?',
+          answer: 'Yes! Most tours are family-friendly with swimming, beaches, and villages to explore. However, full-day tours are long (10+ hours) for young children. Check age restrictions - some speedboat tours require age 6+.',
+        },
+        {
+          question: 'What should I bring on island tours?',
+          answer: 'Essentials: Swimsuit, towel, sunscreen SPF 50+, hat, sunglasses, waterproof bag, motion sickness medicine, cash for extras, and comfortable shoes for island walking. Tours provide snorkeling gear and usually lunch.',
+        },
+        {
+          question: 'When is the best time for island hopping?',
+          answer: 'May-June & September-October offer best balance - warm weather, fewer crowds, calmer seas. July-August busiest and hottest. Tours operate April-October; limited November-March. Book weeks ahead for summer!',
+        },
+        {
+          question: 'Is the Blue Cave tour worth it?',
+          answer: 'Yes! The Blue Cave is stunning with magical light. However, tours are long (10-12 hours), expensive (€100-160), and weather-dependent. The cave visit itself is brief (5-10 minutes) but the full tour includes multiple islands and swimming.',
+        },
+      ],
+    },
+
+    'food-and-wine-tours': {
+      title: 'Split Food & Wine Tours',
+      subtitle: 'Taste Dalmatian cuisine, Croatian wines, and fresh seafood where locals eat!',
+      categoryName: 'Food & Wine Tours',
+      
+      stats: {
+        toursAvailable: 52,
+        priceFrom: 50,
+        duration: '3-4 hours',
+      },
+
+      introduction: `Discover Split's delicious Dalmatian food scene blending Mediterranean and Balkan influences! Food tours take you to authentic konobas (taverns), bustling markets, family bakeries, and wine bars where locals gather. Taste Croatian specialties - peka (slow-cooked meat under iron bell), black risotto, fresh Adriatic fish, pršut (Croatian prosciutto), Pag cheese, and dalmatinska pašticada (beef stew). Wine tours showcase excellent Croatian wines - Plavac Mali reds, Pošip whites, and sweet Prošek dessert wine from Dalmatian vineyards. Expert local guides share food traditions, introduce passionate producers, and reveal the best spots in neighborhoods like Varoš. From market tours to progressive tastings, these experiences feed your stomach and Croatian knowledge!`,
+
+      seo: {
+        title: 'Split Food & Wine Tours 2025 - Dalmatian Cuisine & Croatian Wines',
+        description: 'Experience Split food tours! Dalmatian cuisine, Croatian wine, and fresh Adriatic seafood!',
+        keywords: 'Split food tours, Croatian food, Dalmatian cuisine, Split wine tours, Croatia gastronomy',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Dalmatian Cuisine',
+          description: 'Taste traditional dishes at local konobas where Split residents eat!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Croatian Wine Discovery',
+          description: 'Sample excellent local wines - Plavac Mali, Pošip, and Prošek paired with food.',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Expert Guides',
+          description: 'Split locals share food culture, traditions, and family recipes.',
+        },
+        {
+          icon: 'Star',
+          title: 'Fresh Adriatic Seafood',
+          description: 'Enjoy just-caught fish, octopus, and shellfish prepared Dalmatian style!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Dalmatian Food Walking Tour',
+          description: 'Progressive tasting at 4-6 local spots sampling Croatian specialties.',
+          features: [
+            '3-4 hours',
+            '4-6 stops',
+            '8-10 tastings',
+            'Wine included',
+            'Local guide',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Market + Food Tour',
+          description: 'Visit Green Market meeting vendors, then taste at nearby konobas.',
+          features: [
+            '3 hours',
+            'Market visit',
+            'Fresh produce',
+            'Food tastings',
+            'Local insights',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Croatian Wine Tasting',
+          description: 'Focus on Dalmatian wines paired with local cheeses and pršut.',
+          features: [
+            '2-3 hours',
+            'Multiple wines',
+            'Wine education',
+            'Food pairings',
+            'Expert sommelier',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Cooking Classes',
+          description: 'Learn to prepare traditional Croatian dishes with local chef.',
+          features: [
+            '3-4 hours',
+            'Hands-on cooking',
+            'Traditional recipes',
+            'Eat your meal',
+            'Take-home recipes',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Split Food & Wine Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Food tours last 3-4 hours with 8-10 tastings; wine tours run 2-3 hours.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Dalmatian Specialties',
+            description: 'Taste peka, black risotto, fresh fish, pršut, Pag cheese, and local treats.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Local Venues',
+            description: 'Visit authentic konobas, markets, and wine bars in Split neighborhoods.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Croatian Wines',
+            description: 'Sample Plavac Mali reds, Pošip whites, and sweet Prošek dessert wine.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Food Culture',
+            description: 'Learn Dalmatian culinary traditions and Mediterranean-Balkan fusion.',
+          },
+          {
+            icon: 'Users',
+            title: 'Small Groups',
+            description: 'Intimate groups (8-12) allow interaction with guides and venue owners.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Come hungry! Tours include 8-10 substantial tastings replacing dinner.',
+        'Evening tours (6-8 PM) capture authentic Croatian dining time when locals go out.',
+        'Varoš neighborhood offers authentic konobas away from tourist-heavy Riva waterfront.',
+        'Peka (meat/seafood under iron bell) must be ordered hours ahead - tours pre-arrange it!',
+        'Croatian wines are excellent and affordable - try Plavac Mali (like Zinfandel\'s cousin).',
+        'Green Market (Pazar) tours best in morning (7-10 AM) when freshest and most vibrant.',
+        'Ask guides for restaurant recommendations - they know authentic spots!',
+        'Sunday: Many markets and restaurants closed - book tours Monday-Saturday.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is traditional Croatian food?',
+          answer: 'Dalmatian cuisine emphasizes fresh seafood, olive oil, and Mediterranean flavors. Must-try: peka (slow-cooked meat/seafood), black risotto (squid ink), grilled fish, pršut (prosciutto), Pag cheese, and dalmatinska pašticada (beef stew). Simple, fresh, delicious!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Food walking tours (3-4 hours, 8-10 tastings): €55-90. Market + food tours: €50-80. Wine tastings: €40-70. Cooking classes: €70-120. Includes food, drinks, and guide - good value for dinner-replacement experience!',
+        },
+        {
+          question: 'What is peka?',
+          answer: 'Peka is a traditional Dalmatian cooking method - meat or seafood with vegetables slow-cooked under iron bell covered with hot coals. The result is tender, flavorful, amazing! Must be ordered hours ahead - tours arrange it.',
+        },
+        {
+          question: 'Are food tours good for vegetarians?',
+          answer: 'Somewhat challenging - Croatian cuisine is seafood/meat-heavy. However, tours can accommodate vegetarians with notice. You\'ll enjoy Croatian cheeses, olive oil, vegetables, but miss signature meat/fish dishes. Communicate dietary needs when booking.',
+        },
+        {
+          question: 'What Croatian wines should I try?',
+          answer: 'Must-try: Plavac Mali (full-bodied red, Croatia\'s signature grape), Pošip (crisp white), Grk (unique white from Korčula), and Prošek (sweet dessert wine). Croatian wines are excellent quality and affordable!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Evening tours (6-8 PM) best - experience authentic Croatian dining culture when locals eat. Market tours: early morning (8-10 AM). Food tours run year-round. Best months: April-October for pleasant walking weather.',
+        },
+        {
+          question: 'What is a konoba?',
+          answer: 'A konoba is a traditional Croatian tavern serving home-style Dalmatian food. Often family-run with rustic décor, stone walls, and authentic atmosphere. They\'re where locals eat - not fancy but genuinely delicious!',
+        },
+        {
+          question: 'Where should I eat in Split?',
+          answer: 'Authentic spots: Varoš neighborhood (local area), Bačvice area, and streets behind Riva waterfront. Avoid restaurants directly on Riva (touristy, overpriced). Food tours take you to authentic places locals actually eat!',
+        },
+      ],
+    },
+
+    'historic-district-tours': {
+      title: 'Split Historic District Tours',
+      subtitle: 'Wander medieval streets, Riva waterfront, and charming neighborhoods beyond the palace!',
+      categoryName: 'Historic District Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 20,
+        duration: '2-3 hours',
+      },
+
+      introduction: `Explore Split's historic district beyond Diocletian's Palace - charming neighborhoods, medieval streets, the vibrant Riva waterfront, and authentic Croatian life! Walking tours reveal the Varoš district (old fishermen's quarter with narrow alleys and local konobas), Marjan Hill viewpoints, People's Square (Narodni Trg), historic churches, and the bustling harbor. The Riva promenade is Split's social heart where locals stroll, cafes buzz, and palm trees sway. Guides share stories of Split's evolution from Roman palace town to modern Croatian city, explain Venetian and Austrian influences, and navigate to hidden corners tourists miss. Evening tours capture magical atmosphere when Split comes alive with lights, music, and Mediterranean energy!`,
+
+      seo: {
+        title: 'Split Walking Tours 2025 - Historic District & Riva Waterfront',
+        description: 'Explore Split\'s historic district! Walking tours, medieval streets, and Croatian culture!',
+        keywords: 'Split walking tours, Split historic district, Riva Split, Split old town tours, Croatia walking tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'MapPin',
+          title: 'Beyond the Palace',
+          description: 'Discover Split\'s charming neighborhoods and local life beyond tourist sites!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Authentic Atmosphere',
+          description: 'Experience where Splićani (Split locals) actually live, eat, and socialize.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Riva Waterfront',
+          description: 'Stroll the iconic palm-lined promenade - Split\'s most beautiful street!',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Insights',
+          description: 'Guides share Croatian culture, history, and insider neighborhood knowledge.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Historic Split Walking Tour',
+          description: 'Comprehensive walk through palace, Riva, Varoš, and main historic sites.',
+          features: [
+            '2-3 hours',
+            'Palace included',
+            'Riva waterfront',
+            'Varoš district',
+            'Expert guide',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Free Walking Tours',
+          description: 'Tip-based tours covering Split highlights with enthusiastic local guides.',
+          features: [
+            '2-3 hours',
+            'Tip-based pricing',
+            'Main sights',
+            'Budget-friendly',
+            'Daily departures',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Marjan Hill Walking Tour',
+          description: 'Hike up Marjan forest park for panoramic views over Split and islands.',
+          features: [
+            '2-3 hours',
+            'Forest park',
+            'City viewpoints',
+            'Nature walk',
+            'Photo opportunities',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Evening Historic Tours',
+          description: 'Magical evening walks when Split is illuminated and locals fill the streets.',
+          features: [
+            '2 hours',
+            'Evening ambiance',
+            'Illuminated sights',
+            'Local atmosphere',
+            'Romantic setting',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Split Historic District Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours last 2-3 hours exploring multiple historic areas and neighborhoods.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Riva Waterfront',
+            description: 'Stroll the palm-lined promenade with harbor views and cafe atmosphere.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Varoš District',
+            description: 'Wander the old fishermen\'s quarter with authentic konobas and local life.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Historical Stories',
+            description: 'Learn about Roman, Venetian, and Austrian periods shaping Split.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Capture medieval streets, waterfront views, and historic architecture.',
+          },
+          {
+            icon: 'Star',
+            title: 'Local Culture',
+            description: 'Experience authentic Split lifestyle beyond palace tourist areas.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Morning tours (9-11 AM) offer cooler temperatures and better light for photos.',
+        'Riva promenade is best experienced evening when locals promenade (korzo tradition).',
+        'Marjan Hill hike provides excellent views - go early or late to avoid midday heat.',
+        'Free walking tours are tip-based (€10-15 customary) - great budget option.',
+        'Varoš neighborhood has authentic konobas - ask guides for specific recommendations.',
+        'Summer: Tours best early morning or evening to avoid extreme heat (35°C+).',
+        'Comfortable shoes essential - lots of walking on cobblestones and uneven surfaces.',
+        'Evening tours often combine walking with drinks/tapas - great introduction to Split!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Riva?',
+          answer: 'The Riva is Split\'s famous waterfront promenade lined with palm trees, cafes, and historic buildings. It\'s the social heart where locals stroll, meet friends, and enjoy harbor views. Beautiful day and night!',
+        },
+        {
+          question: 'What is Varoš district?',
+          answer: 'Varoš is the old fishermen\'s quarter just west of Diocletian\'s Palace. It has narrow streets, traditional stone houses, authentic konobas, and local atmosphere. It\'s where Splićani (Split locals) actually live - less touristy than palace area.',
+        },
+        {
+          question: 'Can you climb Marjan Hill?',
+          answer: 'Yes! Marjan is a forested hill/peninsula offering hiking trails, viewpoints, beaches, and city panoramas. The main viewpoint is 30-45 minute hike with excellent Split/island views. Free to access and popular with locals!',
+        },
+        {
+          question: 'Are there free walking tours?',
+          answer: 'Yes! Several companies offer tip-based free tours departing daily from Peristyle or Riva. Tours last 2-3 hours covering palace and main sights. Tip €10-15 per person customary. Great budget option!',
+        },
+        {
+          question: 'How long to explore Split\'s historic district?',
+          answer: 'Plan 2-3 hours for walking tours covering palace, Riva, and one neighborhood. Full-day needed to see palace, museums, Marjan Hill, and explore properly. Split rewards slow exploration!',
+        },
+        {
+          question: 'When is the best time to walk around Split?',
+          answer: 'Early morning (8-10 AM) for empty streets and good photos. Evening (6-9 PM) for magical atmosphere when locals do korzo (evening stroll). Avoid midday in summer - too hot! Best months: May-June, September-October.',
+        },
+        {
+          question: 'Is Split safe to walk around?',
+          answer: 'Very safe! Split has low crime rates. Standard precautions apply: watch for pickpockets in crowded tourist areas, secure valuables. The city is walkable, well-lit at night, and locals are friendly and helpful.',
+        },
+        {
+          question: 'What else should I see beyond the palace?',
+          answer: 'Don\'t miss: Riva waterfront, Marjan Hill views, Varoš neighborhood, People\'s Square, Fruit Square market, Bačvice beach (locals\' favorite), and Meštrov Gallery. Guided tours efficiently cover highlights!',
+        },
+      ],
+    },
+
+    'beach-and-water-sports': {
+      title: 'Split Beach & Water Sports',
+      subtitle: 'Swim at beautiful Adriatic beaches, try water sports, and enjoy Croatia\'s coastal paradise!',
+      categoryName: 'Beach & Water Sports',
+      
+      stats: {
+        toursAvailable: 58,
+        priceFrom: 30,
+        duration: '2-8 hours',
+      },
+
+      introduction: `Experience Split's stunning beaches and exciting water sports on the beautiful Dalmatian coast! Split offers diverse beach experiences - Bačvice (famous sandy beach with picigin tradition), Kašjuni (pebble beach on Marjan), Žnjan (long pebbly beach), and nearby Ćiovo island beaches all with crystal-clear Adriatic waters. Water sports include jet skiing, parasailing, stand-up paddleboarding, kayaking, scuba diving, and windsurfing. Beach clubs provide sunbeds, music, and vibrant atmosphere. Tours combine beach time with water activities, snorkeling excursions, coastal kayaking, or SUP tours exploring caves and coves. The Adriatic temperature reaches 25°C (77°F) in summer - perfect for swimming and water sports paradise!`,
+
+      seo: {
+        title: 'Split Beaches & Water Sports 2025 - Adriatic Swimming & Activities',
+        description: 'Experience Split beaches and water sports! Jet skiing, paddleboarding, and Adriatic fun!',
+        keywords: 'Split beaches, Split water sports, Bačvice beach, Split jet ski, Croatia beach activities',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Crystal-Clear Adriatic',
+          description: 'Swim in pristine waters with excellent visibility and perfect temperatures!',
+        },
+        {
+          icon: 'Star',
+          title: 'Variety of Activities',
+          description: 'Try jet skiing, paddleboarding, kayaking, snorkeling, and more water sports!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Beautiful Beaches',
+          description: 'From sandy Bačvice to secluded Marjan coves - beaches for every preference!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Beach Club Vibes',
+          description: 'Enjoy sunbeds, music, beach bars, and Mediterranean summer atmosphere.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Water Sports Packages',
+          description: 'Try multiple activities - jet ski, parasailing, paddleboard, and banana boat.',
+          features: [
+            '3-4 hours',
+            'Multiple sports',
+            'Equipment included',
+            'Instruction provided',
+            'Adriatic fun',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Kayaking & SUP Tours',
+          description: 'Paddle along coastline exploring caves, coves, and swimming spots.',
+          features: [
+            '2-4 hours',
+            'Kayak or SUP',
+            'Coastal exploration',
+            'Swimming stops',
+            'Snorkeling',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Scuba Diving & Snorkeling',
+          description: 'Discover Adriatic underwater world with diving or snorkeling excursions.',
+          features: [
+            '2-3 hours',
+            'PADI certified',
+            'All equipment',
+            'Multiple sites',
+            'Marine life',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Beach Club Day Pass',
+          description: 'Access premium beach clubs with sunbeds, pools, music, and full facilities.',
+          features: [
+            'Full day access',
+            'Sunbed included',
+            'Pool & beach',
+            'Music & vibes',
+            'Bar & restaurant',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Split Beach & Water Sports',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Water sports sessions 2-4 hours; full beach days flexible timing.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Pristine Waters',
+            description: 'Swim in crystal-clear Adriatic with 20+ meters visibility and warm temperatures.',
+          },
+          {
+            icon: 'Star',
+            title: 'Activity Variety',
+            description: 'Choose from jet ski, parasailing, SUP, kayak, diving, and more!',
+          },
+          {
+            icon: 'Sun',
+            title: 'Beach Facilities',
+            description: 'Sunbeds, showers, changing rooms, and beach bars at organized beaches.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Safety Equipment',
+            description: 'All water sports include safety gear, instruction, and qualified staff.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Coastal Beauty',
+            description: 'Enjoy stunning views of islands, coastline, and Marjan Hill from water.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Bačvice is Split\'s most famous beach - sandy, central, and great for families.',
+        'Kašjuni beach on Marjan\'s south side is locals\' favorite - pebbles but beautiful setting.',
+        'Beach season: June-September when water is warmest (22-26°C/72-79°F).',
+        'Water sports bookings: Reserve popular activities (parasailing, jet ski) in advance summer!',
+        'Picigin (water ball game) at Bačvice is Split tradition - fun to watch or join!',
+        'Beach clubs (Bačvice, Žnjan) offer sunbed rentals (€10-15) with bar/restaurant access.',
+        'Early morning swimming (7-9 AM) offers empty beaches before crowds arrive.',
+        'Bring water shoes - most beaches are pebbles (comfortable to walk on with shoes).',
+      ],
+
+      faqs: [
+        {
+          question: 'What are the best beaches in Split?',
+          answer: 'Bačvice (sandy, central, families), Kašjuni (pebble, beautiful, locals\' favorite), Žnjan (long pebble beach, facilities), Ovčice (hidden, quieter), and Firule (near center). All have crystal-clear water!',
+        },
+        {
+          question: 'Are Split beaches sandy or pebble?',
+          answer: 'Mostly pebble! Bačvice is the main sandy beach (very popular). Most others are pebble - bring water shoes for comfort. The water quality is excellent regardless of beach type.',
+        },
+        {
+          question: 'How much do water sports cost?',
+          answer: 'Jet ski: €50-80 per 30 minutes. Parasailing: €50-70. Paddleboard/kayak rental: €10-20/hour. Scuba diving: €50-90. Banana boat: €15-25. Multi-activity packages offer better value. Book in advance summer!',
+        },
+        {
+          question: 'When is beach season in Split?',
+          answer: 'June-September is prime beach season. Water temperature: 22-26°C (72-79°F). May & October are cooler (18-22°C) but pleasant. July-August warmest but most crowded. Shoulder seasons offer good balance.',
+        },
+        {
+          question: 'Are beaches free in Split?',
+          answer: 'Yes! All beaches are public and free. Sunbed/umbrella rentals cost €10-15 per day if you want them. You can bring your own towel and enjoy beach for free. Beach clubs charge for entry/services.',
+        },
+        {
+          question: 'Is the water clean in Split?',
+          answer: 'Yes! The Adriatic around Split is very clean with excellent water quality. Visibility often exceeds 20 meters. Croatia has some of Europe\'s cleanest beaches. Safe and beautiful for swimming!',
+        },
+        {
+          question: 'What is picigin?',
+          answer: 'Picigin is Split\'s unique beach game played in shallow water at Bačvice. Players keep a small ball in air using acrobatic moves. It\'s UNESCO protected tradition! Fun to watch or join - locals play daily.',
+        },
+        {
+          question: 'Can you rent water sports equipment?',
+          answer: 'Yes! Major beaches (Bačvice, Žnjan) have rental shops for kayaks, paddleboards, snorkel gear, and more. Prices: €10-20/hour typically. Water sports operators offer jet ski, parasailing, diving with all equipment included.',
+        },
+      ],
+    },
+  },
+
 };
 
