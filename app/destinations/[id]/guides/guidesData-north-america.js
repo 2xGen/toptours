@@ -19400,6 +19400,710 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'historical-tours': {
+      title: 'Quebec City Historical Tours',
+      subtitle: 'Explore 400 years of history from New France to modern Quebec!',
+      categoryName: 'Historical Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 48,
+        duration: '2-5 hours',
+      },
+
+      introduction: `Discover Quebec City's fascinating 400-year history! Historical tours explore founding of New France (1608 by Samuel de Champlain), French colonial era, British conquest (Plains of Abraham battle!), Quebec's role in both World Wars, and evolution to modern French-Canadian cultural capital. Visit battlefields, historic sites, museums (Museum of Civilization, Citadelle!), and monuments. Learn about French-English tensions, Quebec independence movement, preservation of French language, and unique identity. Tours include Citadelle fortress (still active military base!), Plains of Abraham park, and historic neighborhoods. It's living history!`,
+
+      seo: {
+        title: 'Quebec City Historical Tours 2025 - New France Heritage & Canadian History',
+        description: 'Explore Quebec history! Citadelle, Plains of Abraham, and 400 years of stories!',
+        keywords: 'Quebec City history tours, Citadelle Quebec, Plains of Abraham, New France, Quebec historical sites',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: '400 Years of History',
+          description: 'Founded 1608 - oldest European city in North America!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Citadelle Fortress',
+          description: 'Largest British fortress in North America - still active!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Battle Sites',
+          description: 'Plains of Abraham where fate of continent decided!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Living Museums',
+          description: 'World-class museums bringing history alive!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Citadelle Tour',
+          description: 'Guided tour of active military fortress.',
+          features: [
+            '90 minutes',
+            'Fortress',
+            'Changing guard',
+            'Military history',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Plains of Abraham',
+          description: 'Historic battlefield now beautiful urban park.',
+          features: [
+            '2 hours',
+            'Battlefield',
+            'Museums',
+            'Walking',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Museum of Civilization',
+          description: 'Quebec history from First Nations to present.',
+          features: [
+            '2-3 hours',
+            'Comprehensive',
+            'Exhibits',
+            'Interactive',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Complete History Tour',
+          description: 'Full-day tour covering all major historical sites.',
+          features: [
+            '5-6 hours',
+            'All major sites',
+            'Comprehensive',
+            'Expert guide',
+            'Detailed',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Quebec City Historical Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Citadelle: 90 min. Plains of Abraham: 2 hours. Full historical: 5-6 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'La Citadelle',
+            description: 'Star-shaped fortress, Changing of Guard ceremony, military history!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Plains of Abraham',
+            description: '1759 battle where British defeated French - changed North American history!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Fort Museums',
+            description: 'Powder magazine, barracks, fortification exhibits!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'French-English History',
+            description: 'Understand complex relationship and modern Quebec identity.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'UNESCO Significance',
+            description: 'Learn why Quebec City earned World Heritage status.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Citadelle Changing of Guard (10 AM daily, June-Sept) free to watch!',
+        'Plains of Abraham beautiful park - great for picnics and walks (free!).',
+        'Museum of Civilization ($17) comprehensive Quebec history - worth it!',
+        'Fortifications interpretation center ($4) shows wall construction.',
+        'Many historic sites in Old Quebec accessible for free with tours adding context.',
+        'Quebec history complex - tours help understand French-Canadian identity.',
+        'Summer (June-Sept) Citadelle has daily ceremonies - best time to visit.',
+        'Winter: Many indoor museums perfect for cold days.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Citadelle?',
+          answer: 'La Citadelle is massive star-shaped fortress built by British (1820s-1850s) to defend against Americans! Largest British fortress in North America. Still active Canadian military base - Royal 22nd Regiment stationed here. Guided tours ($16), Changing of Guard ceremony. Impressive fortification!',
+        },
+        {
+          question: 'What happened at Plains of Abraham?',
+          answer: '1759 battle where British General Wolfe defeated French Montcalm - both died in battle! Led to British control of New France. Pivotal moment changing North American history. Now beautiful urban park. Museum on-site explains battle. Essential Quebec history!',
+        },
+        {
+          question: 'Can you visit Citadelle?',
+          answer: 'Yes! Guided tours only (active military base) - $16, 90 minutes. See ramparts, museum, Governor-General residence (when not in use). Summer: Changing of Guard (free to watch outside!). Reservations recommended. Fascinating military history!',
+        },
+        {
+          question: 'How much do historical tours cost?',
+          answer: 'Walking historical: $48-75 (2-3 hours). Citadelle: $16 (90 min). Museum of Civilization: $17. Plains of Abraham: Free park (museum $14). Full-day historical: $100-150. Many affordable options for history buffs!',
+        },
+        {
+          question: 'Is Quebec City good for history enthusiasts?',
+          answer: 'Excellent! 400 years of preserved history, UNESCO World Heritage, battlefields, fortresses, museums. Best historical city in North America! French colonial, British conquest, unique culture. Living history everywhere. History lovers: Plan 2-3 days minimum!',
+        },
+        {
+          question: 'What museums should I visit?',
+          answer: 'Must-see: Museum of Civilization (comprehensive!), Citadelle (military), Plains of Abraham Museum (battle), Fortifications Center. All affordable ($14-17). Museum of Civilization best overview. Budget half-day for museums. Worth the entrance fees!',
+        },
+        {
+          question: 'When is Changing of Guard?',
+          answer: 'Daily 10 AM, June through early September at Citadelle! Free to watch ceremony outside fortress (paid tour enters). Traditional military ceremony - colorful and photogenic. 30-45 minutes. Worth timing visit! Off-season: No ceremony.',
+        },
+        {
+          question: 'When is the best time for historical tours?',
+          answer: 'Summer (June-Sept): Citadelle ceremonies, warm weather, all sites open. Winter: Snowy atmosphere (beautiful!) but some outdoor sites limited. Year-round museums accessible. History available always - choose season by weather preference!',
+        },
+      ],
+    },
+
+    'food-and-culture-tours': {
+      title: 'Quebec City Food & Culture Tours',
+      subtitle: 'Taste French-Canadian cuisine, poutine, tourtière, and culinary delights!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 68,
+        priceFrom: 70,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Quebec City's French-Canadian cuisine - European elegance meets North American hearty! Food tours sample iconic dishes like poutine (fries, gravy, cheese curds!), tourtière (meat pie), pea soup, sugar pie, maple syrup treats, and French bistro classics. Visit historic restaurants, local markets, artisan cheese shops, maple sugar shacks (cabanes à sucre), and traditional creperies. Experience French culinary techniques with Canadian ingredients, sample ice cider and Quebec wine, learn cooking traditions, and explore food culture. Tours include Old Quebec dining, Lower Town bistros, and neighborhood eateries. It's French gastronomy in Canada!`,
+
+      seo: {
+        title: 'Quebec City Food & Culture Tours 2025 - Poutine, French Cuisine & Culinary Experiences',
+        description: 'Taste Quebec! Poutine, tourtière, maple syrup, and French-Canadian culinary tours!',
+        keywords: 'Quebec City food tours, poutine Quebec, French-Canadian cuisine, Quebec restaurants, food tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'French-Canadian Cuisine',
+          description: 'Unique blend of French techniques and Canadian ingredients!',
+        },
+        {
+          icon: 'Star',
+          title: 'Poutine Birthplace',
+          description: 'Try authentic poutine in its home province!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Maple Syrup Capital',
+          description: 'Quebec produces 70% of world\'s maple syrup!',
+        },
+        {
+          icon: 'Users',
+          title: 'European Dining',
+          description: 'French bistros, cafes, and culinary sophistication!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Food Tour',
+          description: 'Sample poutine, tourtière, and Quebec specialties.',
+          features: [
+            '3 hours',
+            '6-8 tastings',
+            'Local favorites',
+            'Cultural',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Fine Dining Experience',
+          description: 'Multi-course French meal at top restaurants.',
+          features: [
+            '3 hours',
+            'Fine dining',
+            'Wine pairing',
+            'Luxury',
+            'Upscale',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Market & Bistro Tour',
+          description: 'Visit Old Port Market and traditional bistros.',
+          features: [
+            '3-4 hours',
+            'Market visit',
+            'Bistros',
+            'Sampling',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Ice Cider & Wine Tasting',
+          description: 'Sample Quebec ice cider and local wines.',
+          features: [
+            '2-3 hours',
+            'Tastings',
+            'Education',
+            'Cultural',
+            'Fun',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Quebec City Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Poutine',
+            description: 'Fries topped with gravy and cheese curds - Quebec\'s iconic dish!',
+          },
+          {
+            icon: 'Star',
+            title: 'Tourtière',
+            description: 'Traditional meat pie (pork, beef, game) - Christmas staple!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Maple Syrup',
+            description: 'Try maple taffy on snow, maple desserts, and pure syrup!',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Ice Cider',
+            description: 'Quebec specialty - sweet dessert cider from frozen apples!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'French Techniques',
+            description: 'European culinary sophistication with local ingredients.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Ashton (multiple locations) for authentic poutine - locals\' favorite!',
+        'Aux Anciens Canadiens (traditional Quebecois) in historic house - touristy but good.',
+        'Old Port Market (Marché du Vieux-Port) has local produce and artisan foods.',
+        'Sugar shacks (cabanes à sucre) operate March-April - maple season!',
+        'Le Lapin Sauté (rabbit specialists) serves traditional game dishes.',
+        'Ice cider (cidre de glace) unique to Quebec - like ice wine but apples!',
+        'Many bistros close Mondays - plan accordingly.',
+        'Winter comfort food (tourtiè re, pea soup) especially good after cold walks!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is poutine?',
+          answer: 'Poutine is Quebec\'s iconic dish - fries topped with brown gravy and cheese curds! Invented in Quebec in 1950s. Simple but delicious comfort food. Try at Ashton, Chez Ashton, or fancy versions at bistros. Essential Quebec experience - cheap ($8-12) and filling!',
+        },
+        {
+          question: 'What food is Quebec City known for?',
+          answer: 'Poutine (fries/gravy/cheese), tourtière (meat pie), pea soup, sugar pie, maple syrup everything, French bistro cuisine, ice cider, Quebec cheese. French techniques meet Canadian ingredients. Also: Crepes, croissants, pastries. Try traditional AND refined versions!',
+        },
+        {
+          question: 'Where should I eat in Quebec City?',
+          answer: 'Traditional: Aux Anciens Canadiens. Poutine: Ashton. Fine dining: Légende, Chez Muffy. Bistros: Le Lapin Sauté. Breakfast: Café Paillard. Food tours show best spots - worth it for discovering hidden gems and avoiding tourist traps!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Walking food tours: $70-100 (3-4 hours, 6-8 tastings). Fine dining: $100-200. Market tours: $65-90. Ice cider tastings: $60-80. Tours replace meals - good value! Budget: Poutine $8-12, bistro meals $20-35.',
+        },
+        {
+          question: 'What is tourtière?',
+          answer: 'Tourtière is traditional meat pie with pork, beef, sometimes game (venison, rabbit). Spiced with cinnamon, cloves. Christmas tradition but available year-round! Served with ketchup or chutney. Hearty, delicious, quintessentially Quebecois. Try it!',
+        },
+        {
+          question: 'What is ice cider?',
+          answer: 'Ice cider (cidre de glace) is Quebec specialty - sweet dessert cider made from frozen apples! Similar concept to ice wine. Unique to Quebec. Pairs with cheese, foie gras, desserts. $15-30/glass. Delicious and uniquely local - worth trying!',
+        },
+        {
+          question: 'Are there vegetarian options?',
+          answer: 'Yes! Poutine (vegetarian gravy available), crepes, cheese, pastries, salads, vegetable dishes. French bistros accommodate. Easier than rural areas. Tourtière and many traditional dishes meat-heavy. Communicate dietary needs. International restaurants (Italian, Asian) have options!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Maple season (March-April) for sugar shacks. Winter: Comfort food perfect after cold! Summer: Terraces open, festivals. Lunch (12-3 PM) or dinner (6-9 PM) tours available. Come hungry - portions generous!',
+        },
+      ],
+    },
+
+    'fortification-tours': {
+      title: 'Quebec City Fortification Tours',
+      subtitle: 'Walk historic ramparts - only walled city north of Mexico!',
+      categoryName: 'Fortification Tours',
+      
+      stats: {
+        toursAvailable: 52,
+        priceFrom: 40,
+        duration: '2-3 hours',
+      },
+
+      introduction: `Experience Quebec City's unique fortifications - only remaining walled city in North America north of Mexico! Fortification tours walk 4.6 km of ramparts surrounding Upper Town, explore four historic gates (St. Louis, St. Jean, Kent, Prescott), visit fortification interpretation centers, and climb observation points. Learn about French colonial defenses, British military engineering, star fortress design (Citadelle!), and preservation efforts. Tours include panoramic city views, military history, UNESCO significance, and architectural details. Walk where soldiers patrolled for centuries protecting New France. It's defensive architecture marvel!`,
+
+      seo: {
+        title: 'Quebec City Fortification Tours 2025 - Historic Ramparts & City Walls',
+        description: 'Explore Quebec fortifications! Walk ramparts, historic gates, and defensive walls!',
+        keywords: 'Quebec fortifications, Quebec ramparts, Quebec City walls, fortification tours, city gates Quebec',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Only Walled City',
+          description: 'Only fortified city north of Mexico - unique in North America!',
+        },
+        {
+          icon: 'Heart',
+          title: '4.6 km Ramparts',
+          description: 'Walk complete circuit of city walls - scenic and historic!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Panoramic Views',
+          description: 'Best city views from atop fortifications!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Military History',
+          description: 'Learn about defensive architecture and warfare!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Ramparts Walking Tour',
+          description: 'Walk fortification walls with guide explaining history.',
+          features: [
+            '2 hours',
+            'Full circuit',
+            'Military history',
+            'Views',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Gates & Towers Tour',
+          description: 'Visit four historic gates and defense towers.',
+          features: [
+            '90 minutes',
+            'Gates',
+            'Towers',
+            'Architecture',
+            'Focused',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Fortifications Interpretation',
+          description: 'In-depth museum and wall construction education.',
+          features: [
+            '2 hours',
+            'Museum',
+            'Engineering',
+            'Educational',
+            'Detailed',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Walk',
+          description: 'Capture ramparts and city views from walls.',
+          features: [
+            '2-3 hours',
+            'Photo-focused',
+            'Best viewpoints',
+            'Scenic',
+            'Instagram',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Quebec City Fortification Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Full ramparts walk: 2 hours. Gates tour: 90 min. Museum: 1-2 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Historic Gates',
+            description: 'St. Louis, St. Jean, Kent, Prescott - each with unique history!',
+          },
+          {
+            icon: 'Heart',
+            title: 'City Views',
+            description: 'Panoramic views of Old Quebec, St. Lawrence River, surrounding areas!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Defensive Architecture',
+            description: 'Bastions, powder magazines, cannons - military engineering!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Military History',
+            description: 'Learn about sieges, defenses, and fortification evolution.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'UNESCO Site',
+            description: 'Fortifications key reason for World Heritage designation!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'FREE to walk ramparts - tours provide historical context.',
+        'Fortifications Interpretation Center ($4) shows wall construction - worth it!',
+        'Complete circuit walk: 2-3 hours, mostly accessible.',
+        'Winter: Ramparts can be icy - wear proper boots with traction!',
+        'Best views from Dufferin Terrace section and Governor\'s Walk.',
+        'St. Louis Gate most iconic - photograph from inside and outside Old Quebec.',
+        'Summer sunset walks magical - ramparts beautifully lit.',
+        'Some sections wheelchair accessible, others have stairs.',
+      ],
+
+      faqs: [
+        {
+          question: 'Can you walk the fortification walls?',
+          answer: 'Yes! 4.6 km of ramparts FREE to walk. Mostly accessible path atop walls. Some stairs, some flat sections. Takes 2-3 hours to complete. Partial walks possible (Dufferin Terrace to St. Louis Gate popular section). Beautiful views throughout!',
+        },
+        {
+          question: 'What gates are in Quebec City?',
+          answer: 'Four main gates: St. Louis (most iconic, access from Grande Allée), St. Jean (busiest, shopping access), Kent Gate, Prescott Gate. All FREE to see/photograph. St. Louis most photogenic. Each has unique history and architecture. Visit them all!',
+        },
+        {
+          question: 'Are the fortifications free?',
+          answer: 'Walking ramparts FREE! Fortifications Interpretation Center: $4 (optional museum). Citadelle: $16 (guided tours). Most fortification experience free - tours and museums add historical context. Budget-friendly historical attraction!',
+        },
+        {
+          question: 'How long to walk the ramparts?',
+          answer: 'Complete circuit: 2-3 hours walking. Popular section (Dufferin to St. Louis): 30-45 minutes. Depends on pace and photo stops. Accessible for most fitness levels. Don\'t rush - enjoy views and history!',
+        },
+        {
+          question: 'Are fortifications wheelchair accessible?',
+          answer: 'Partially! Some rampart sections accessible (Governor\'s Walk, portions of Dufferin Terrace). Other sections have stairs. Gates viewable from ground level. Not fully accessible but many areas work. Check specific sections for mobility needs.',
+        },
+        {
+          question: 'Why is Quebec City walled?',
+          answer: 'Strategic military importance! Protected French colonial capital from British, then British defended against Americans. Only walled city north of Mexico preserved. UNESCO World Heritage for fortifications. Defensive architecture masterpiece! Walls built 1608-1850s over time.',
+        },
+        {
+          question: 'When is the best time to walk ramparts?',
+          answer: 'Summer (June-Sept): Warm, long days, all accessible. Fall: Beautiful foliage views. Winter: Magical but icy (proper boots required!). Sunset year-round: Golden light and city lights coming on. Morning quieter for photos. Always beautiful!',
+        },
+        {
+          question: 'How much do fortification tours cost?',
+          answer: 'Ramparts walk: FREE. Guided tours: $40-60 (2 hours). Interpretation Center: $4. Citadelle (fortress): $16. Self-guided very affordable - tours provide history and military context. Both options excellent!',
+        },
+      ],
+    },
+
+    'architecture-tours': {
+      title: 'Quebec City Architecture Tours',
+      subtitle: 'Explore French colonial, Victorian, and Château-style masterpieces!',
+      categoryName: 'Architecture Tours',
+      
+      stats: {
+        toursAvailable: 58,
+        priceFrom: 55,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Quebec City's architectural treasures - four centuries of stunning buildings! Architecture tours explore French colonial (17th-18th century stone houses), British Victorian elegance, Château-style grandeur (Frontenac!), Art Deco gems, and modern preservation. Visit Upper Town mansions, Lower Town merchant houses, religious buildings (Notre-Dame Basilica-Cathedral!), Parliament Building, and historic neighborhoods. Learn about different architectural periods, European influences, traditional Quebec building techniques (steep roofs for snow!), and UNESCO preservation standards. Tours include exterior and interior access to significant buildings. It's architectural time travel!`,
+
+      seo: {
+        title: 'Quebec City Architecture Tours 2025 - Colonial Buildings & Historic Preservation',
+        description: 'Explore Quebec architecture! French colonial, Château Frontenac, and historic buildings!',
+        keywords: 'Quebec City architecture, French colonial architecture, Chateau style, Quebec buildings, architectural tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Architectural Diversity',
+          description: 'Four centuries of styles from colonial to modern!',
+        },
+        {
+          icon: 'Heart',
+          title: 'French Colonial',
+          description: 'Best-preserved French colonial architecture in North America!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Château Frontenac',
+          description: 'Iconic Château-style castle hotel - architectural masterpiece!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'UNESCO Preservation',
+          description: 'Learn about World Heritage conservation standards!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Colonial Architecture Walk',
+          description: 'Explore French colonial buildings and techniques.',
+          features: [
+            '2-3 hours',
+            'Colonial focus',
+            'Historic homes',
+            'Architecture',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Religious Architecture',
+          description: 'Visit churches and religious buildings.',
+          features: [
+            '2 hours',
+            'Churches',
+            'Interiors',
+            'Art',
+            'Spiritual',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Parliament & Government',
+          description: 'Tour Parliament Building and government architecture.',
+          features: [
+            '90 minutes',
+            'Parliament',
+            'Free tours',
+            'Political',
+            'Impressive',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Architecture Tour',
+          description: 'Capture best buildings with expert photographer.',
+          features: [
+            '3 hours',
+            'Photo-focused',
+            'Best angles',
+            'Multiple styles',
+            'Instagram',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Quebec City Architecture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Parliament: 90 min. Comprehensive: Half-day.',
+          },
+          {
+            icon: 'Star',
+            title: 'French Colonial',
+            description: 'Stone buildings with steep roofs, dormer windows - traditional Quebec style!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Château Frontenac',
+            description: 'Châteauesque style with turrets, copper roof - fairy-tale architecture!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Notre-Dame Basilica',
+            description: 'Baroque revival cathedral with stunning gold interior!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Parliament Building',
+            description: 'Second Empire style - FREE tours show impressive interiors!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Preservation Stories',
+            description: 'Learn how Quebec maintains UNESCO standards while city evolves.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Parliament Building FREE tours (30-45 min) - impressive architecture and history!',
+        'Notre-Dame Basilica-Cathedral FREE (donations appreciated) - stunning interior!',
+        'Steep roofs characteristic Quebec feature (snow slides off!).',
+        'Lower Town has oldest buildings (1600s-1700s) - narrow stone houses.',
+        'Place Royale has recreated New France architecture - very photogenic.',
+        'Many buildings privately owned - exterior viewing only, tours explain.',
+        'Architecture best appreciated with guide explaining evolution and techniques.',
+        'Winter: Buildings with snow create fairy-tale scenes - bring camera!',
+      ],
+
+      faqs: [
+        {
+          question: 'What architectural styles are in Quebec City?',
+          answer: 'French colonial (1600s-1700s stone houses), British Victorian, Château-style (Frontenac!), Second Empire (Parliament), Art Deco, modern. Four centuries of evolution! French colonial most significant - steep roofs, dormer windows, stone construction. Unique architectural heritage!',
+        },
+        {
+          question: 'Can you tour Parliament Building?',
+          answer: 'Yes! FREE guided tours (30-45 min) show impressive Second Empire architecture and political chambers. No reservations needed - show up at visitor center. Beautiful beaux-arts interior. Tours in English and French. Essential Quebec City visit!',
+        },
+        {
+          question: 'What is Château-style architecture?',
+          answer: 'Château style features steep roofs, turrets, dormers resembling French châteaux. Château Frontenac is prime example! Popularized by Canadian Pacific Railway hotels. Romantic, castle-like appearance. Distinctly Canadian interpretation of French architecture!',
+        },
+        {
+          question: 'Are church tours free?',
+          answer: 'Most churches FREE entry (donations appreciated)! Notre-Dame Basilica-Cathedral, Holy Trinity Cathedral, Notre-Dame-des-Victoires all free. Some offer paid guided tours ($10-15) for detailed history. Respectful visitors welcome. Modest dress appreciated.',
+        },
+        {
+          question: 'How were the fortifications built?',
+          answer: 'Built over 250 years! French started (1608), British continued and expanded (1820s-1850s). Stone walls, earth ramparts, star bastions. Designed to withstand artillery. Interpretation Center ($4) explains construction - fascinating engineering!',
+        },
+        {
+          question: 'Can you walk the walls for free?',
+          answer: 'Yes! Walking ramparts completely FREE. 4.6 km circuit or partial walks. Interpretation centers extra ($4) but optional. One of Quebec\'s best free activities! Tours add historical context - worth it for architecture enthusiasts.',
+        },
+        {
+          question: 'When is the best time for architecture tours?',
+          answer: 'Year-round! Summer: All sites accessible, best weather for walking. Winter: Snowy buildings magical but cold! Fall: Beautiful light for photography. Spring: Fewer crowds. Architecture always there - choose by weather preference!',
+        },
+        {
+          question: 'How much do architecture tours cost?',
+          answer: 'Guided walking: $55-80 (2-3 hours). Parliament tours: FREE! Church entries: FREE. Interpretation centers: $4. Self-guided free with many buildings. Tours provide expert architectural analysis - worth it for enthusiasts!',
+        },
+      ],
+    },
   },
 };
 
