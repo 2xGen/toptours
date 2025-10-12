@@ -1370,12 +1370,12 @@ export const destinations = [
     heroDescription: 'Welcome to Venice, where gondolas glide through ancient canals and every bridge tells a story. From the magnificent St. Mark\'s Square to the charming backstreets, from world-class art to authentic Venetian cuisine, this floating city offers a magical experience unlike any other. Let our AI-powered planner help you discover the best experiences this enchanting destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Venice.webp',
     tourCategories: [
-      'Gondola Tours',
-      'St. Mark\'s Basilica Tours',
-      'Canal Tours',
-      'Murano Glass Tours',
-      'Food & Wine Tours',
-      'Art & History Tours'
+      { name: 'Gondola Tours', hasGuide: true },
+      { name: 'St. Mark\'s Basilica Tours', hasGuide: true },
+      { name: 'Canal Tours', hasGuide: true },
+      { name: 'Murano Glass Tours', hasGuide: true },
+      { name: 'Food & Wine Tours', hasGuide: true },
+      { name: 'Art & History Tours', hasGuide: true }
     ],
     seo: {
       title: 'Venice Tours & Excursions - Top-Rated Activities & Adventures',

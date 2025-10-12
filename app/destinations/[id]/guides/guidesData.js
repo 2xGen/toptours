@@ -38303,5 +38303,1063 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
     },
   },
 
+  venice: {
+    'gondola-tours': {
+      title: 'Venice Gondola Tours',
+      subtitle: 'Glide through romantic canals in iconic Venetian gondolas with singing gondoliers!',
+      categoryName: 'Gondola Tours',
+      
+      stats: {
+        toursAvailable: 156,
+        priceFrom: 80,
+        duration: '30-60 minutes',
+      },
+
+      introduction: `Experience Venice's most iconic activity - a gondola ride through the city's enchanting canals! Gondolas have been Venice's transportation for over 1,000 years, and these sleek black boats navigating narrow waterways offer the quintessential Venetian experience. Gondola tours glide past historic palaces, under romantic bridges (including the famous Bridge of Sighs), through quiet backwater canals away from crowds, and sometimes include singing gondoliers serenading you with Italian classics. Tours range from shared rides (budget-friendly option) to private romantic gondolas for couples, from daytime exploration to magical evening rides. While expensive, it's the experience that defines Venice - floating through a UNESCO World Heritage city unchanged for centuries!`,
+
+      seo: {
+        title: 'Venice Gondola Tours 2025 - Romantic Canal Rides & Serenades',
+        description: 'Experience Venice gondola rides! Romantic canals, singing gondoliers, and iconic Venetian experience!',
+        keywords: 'Venice gondola tours, gondola rides Venice, Venice canals, romantic gondola, Venice gondolier',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Quintessential Venice',
+          description: 'Experience the most iconic Venetian activity - essential for any Venice visit!',
+        },
+        {
+          icon: 'Star',
+          title: 'Romantic Atmosphere',
+          description: 'Glide through serene canals under bridges - incredibly romantic and peaceful.',
+        },
+        {
+          icon: 'Music',
+          title: 'Singing Gondoliers',
+          description: 'Some tours include traditional Italian serenades enhancing the romantic ambiance.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Unique Perspective',
+          description: 'See Venice from water level - palaces, bridges, and canals up close!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Private Gondola Rides',
+          description: 'Exclusive gondola for up to 6 people exploring quieter canals romantically.',
+          features: [
+            '30-40 minutes',
+            'Private boat',
+            'Quiet canals',
+            'Up to 6 people',
+            'Romantic',
+          ],
+        },
+        {
+          icon: 'Music',
+          title: 'Gondola with Serenade',
+          description: 'Private gondola with singing gondolier or accompanying musician.',
+          features: [
+            '30-40 minutes',
+            'Italian songs',
+            'Musician included',
+            'Super romantic',
+            'Premium experience',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Shared Gondola Tours',
+          description: 'Budget-friendly shared rides (5-6 people) covering main canal routes.',
+          features: [
+            '30 minutes',
+            'Shared ride',
+            'Budget option',
+            'Main canals',
+            'Good introduction',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunset Gondola Rides',
+          description: 'Evening gondola rides timed for magical Venetian sunset light.',
+          features: [
+            '30-40 minutes',
+            'Golden hour',
+            'Romantic timing',
+            'Beautiful light',
+            'Peaceful evening',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Venice Gondola Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Standard rides last 30-40 minutes; extended rides available for 60+ minutes.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Romantic Canals',
+            description: 'Glide through quiet backwater canals and under historic bridges.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Bridge of Sighs',
+            description: 'Many routes pass the famous Bridge of Sighs and historic landmarks.',
+          },
+          {
+            icon: 'Music',
+            title: 'Optional Serenade',
+            description: 'Upgrade for singing gondolier performing traditional Italian songs.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Capture Venice from unique water perspective with stunning canal views.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Venetian Heritage',
+            description: 'Learn about gondola history and Venetian canal traditions.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Official rates: €80 for 30-40 minutes (up to 6 people). Agree on price before boarding!',
+        'Shared gondola tours (€25-35 per person) are budget-friendly alternative to private rides.',
+        'Sunset and evening rides are more romantic but cost extra (€100-120).',
+        'Singing gondolier serenades cost extra (€30-50) - negotiate beforehand.',
+        'Avoid gondola stands near major tourist spots - they charge premium prices.',
+        'Book through hotels or reputable companies to avoid price gouging.',
+        'Best time: Early morning (8-9 AM) or evening for quieter canals.',
+        'Gondolas hold max 6 people - split costs with friends/family for better value!',
+      ],
+
+      faqs: [
+        {
+          question: 'How much do gondola rides cost?',
+          answer: 'Official fixed rates: €80 for 30-40 minutes (daytime, up to 6 passengers). €100-120 for evening rides (after 7 PM). Serenades cost extra €30-50. Shared gondolas: €25-35 per person. Prices are regulated but always confirm before boarding!',
+        },
+        {
+          question: 'How long are gondola rides?',
+          answer: 'Standard rides last 30-40 minutes covering backwater canals and some main routes. Extended rides (60+ minutes) available for additional fees. Most tourists find 30-40 minutes sufficient for the experience.',
+        },
+        {
+          question: 'Do gondoliers sing?',
+          answer: 'Not automatically! Singing serenades cost extra (€30-50 on top of ride price). You can request it when booking. Some tours include musicians accompanying gondolas. It\'s romantic but adds to the cost.',
+        },
+        {
+          question: 'Can you share a gondola?',
+          answer: 'Yes! Shared gondola tours cost €25-35 per person (joining others to split the €80 cost). Private gondolas hold up to 6 people - bring friends/family to split the €80 cost making it more affordable.',
+        },
+        {
+          question: 'When is the best time for gondola rides?',
+          answer: 'Early morning (8-9 AM) for quiet canals and fewer tourists. Sunset/evening for romantic atmosphere and beautiful light. Avoid midday in summer - hot and crowded. Book ahead for evening rides (they\'re most popular).',
+        },
+        {
+          question: 'Are gondola rides worth it?',
+          answer: 'Yes! It\'s expensive but iconic Venetian experience. Seeing Venice from canals is magical and unique. Consider shared gondola if on budget. Splurge for private ride if it\'s special occasion. It\'s touristy but genuinely special!',
+        },
+        {
+          question: 'Where do gondola rides start?',
+          answer: 'Gondola stations throughout Venice - near San Marco, Rialto Bridge, train station, and hotels. Book tours that include hotel pickup or meet at designated stations. Confirm exact meeting point when booking.',
+        },
+        {
+          question: 'Can gondolas go on the Grand Canal?',
+          answer: 'Gondolas cross the Grand Canal and enter briefly, but mainly navigate smaller, quieter side canals. The backwater canals are more romantic and peaceful than the busy Grand Canal with vaporetto traffic.',
+        },
+      ],
+    },
+
+    'st-marks-basilica-tours': {
+      title: 'Venice St. Mark\'s Basilica Tours',
+      subtitle: 'Explore Venice\'s golden Byzantine cathedral with stunning mosaics and Doge\'s Palace views!',
+      categoryName: 'St. Mark\'s Basilica Tours',
+      
+      stats: {
+        toursAvailable: 142,
+        priceFrom: 25,
+        duration: '1-2 hours',
+      },
+
+      introduction: `Experience St. Mark's Basilica, Venice's most spectacular church and a Byzantine architectural masterpiece! Built in the 11th century to house St. Mark's relics, this stunning cathedral features over 8,000 square meters of golden mosaics, marble floors, ornate domes, and the famous Pala d'Oro golden altarpiece encrusted with precious gems. The basilica combines Byzantine, Gothic, and Islamic influences creating unique Venetian style. Skip-the-line tours bypass notorious queues, expert guides explain the mosaics' biblical stories and symbolism, and terrace access provides close views of the bronze horses (copies - originals in museum) and St. Mark's Square panoramas. Combined tours include Doge's Palace connected via Bridge of Sighs. It's Venice's spiritual heart!`,
+
+      seo: {
+        title: 'Venice St. Mark\'s Basilica Tours 2025 - Skip the Line & Mosaics',
+        description: 'Explore St. Mark\'s Basilica in Venice! Golden mosaics, skip-the-line tours, and Byzantine beauty!',
+        keywords: 'St Mark\'s Basilica Venice, Venice basilica tours, St Mark\'s skip the line, Doge\'s Palace Venice',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Golden Byzantine Masterpiece',
+          description: 'Marvel at 8,000 sqm of golden mosaics covering every surface!',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Art Guides',
+          description: 'Guides explain biblical stories, mosaics, and 1,000 years of history.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Skip the Lines',
+          description: 'Priority access bypasses 1-2 hour queues in peak season.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Terrace Views',
+          description: 'Access upper terraces for close-up bronze horse views and square panoramas.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Skip-the-Line Basilica Tours',
+          description: 'Priority entrance with expert guide exploring mosaics and treasures.',
+          features: [
+            '1 hour',
+            'Skip lines',
+            'Expert guide',
+            'Golden mosaics',
+            'Historical context',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Basilica + Doge\'s Palace',
+          description: 'Combined tour of both monuments with terrace access and Bridge of Sighs.',
+          features: [
+            '2-3 hours',
+            'Both sites',
+            'Skip lines',
+            'Terraces',
+            'Complete experience',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'After-Hours Tours',
+          description: 'Exclusive evening access when basilica is closed to public - magical!',
+          features: [
+            '1 hour',
+            'Evening access',
+            'No crowds',
+            'Special permission',
+            'Premium experience',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Small Group Tours',
+          description: 'Intimate groups (10-15) with personalized attention and expert guide.',
+          features: [
+            '1-1.5 hours',
+            'Small groups',
+            'Better interaction',
+            'Quality experience',
+            'Hear guide clearly',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Venice St. Mark\'s Basilica Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours last 1-1.5 hours; combined Doge\'s Palace tours take 2-3 hours total.',
+          },
+          {
+            icon: 'Star',
+            title: 'Golden Mosaics',
+            description: 'Marvel at biblical scenes covering walls and ceilings in glittering gold.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Pala d\'Oro',
+            description: 'See the stunning golden altarpiece with precious gems and Byzantine enamel.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Terrace Access',
+            description: 'Climb to upper terraces for bronze horses and St. Mark\'s Square views.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Rich History',
+            description: 'Learn about St. Mark\'s relics, Venetian Republic, and Byzantine influence.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Architectural Beauty',
+            description: 'Admire unique blend of Byzantine, Gothic, and Islamic architectural styles.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book skip-the-line tours weeks in advance - basilica has notorious queues!',
+        'Early morning (9 AM opening) offers fewer crowds and better light through windows.',
+        'Dress modestly required: shoulders and knees covered, no hats, no backpacks.',
+        'Photography NOT allowed inside (strictly enforced) - enjoy with your eyes!',
+        'The basilica is FREE but lines are long - terrace (€7) and Pala d\'Oro (€5) cost extra.',
+        'After-hours tours are pricey (€80-100) but offer crowd-free experience - worth it!',
+        'Combined basilica + Doge\'s Palace tours save time and money - both must-sees.',
+        'Sunday mornings: Basilica hosts mass - limited tourist access until afternoon.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is St. Mark\'s Basilica?',
+          answer: 'St. Mark\'s Basilica is Venice\'s most important church built in the 11th century to house St. Mark the Evangelist\'s relics. It\'s famous for stunning Byzantine golden mosaics covering 8,000 sqm! The architecture is unique - Byzantine domes, Gothic details, Islamic influences. It\'s Venice\'s spiritual heart!',
+        },
+        {
+          question: 'Is St. Mark\'s Basilica free?',
+          answer: 'Yes, basic entry is FREE! However, lines are very long (1-2 hours peak season). Optional extras cost: Pala d\'Oro altarpiece (€5), Treasury (€3), Museum/Terrace (€7). Skip-the-line guided tours (€25-50) save waiting time.',
+        },
+        {
+          question: 'Can you take photos in St. Mark\'s?',
+          answer: 'NO - photography strictly prohibited inside the basilica! Guards actively enforce this. You can photograph the exterior and from the terrace only. Respect the rules - it\'s a sacred space.',
+        },
+        {
+          question: 'How long to visit St. Mark\'s Basilica?',
+          answer: 'Plan 1-1.5 hours minimum - 30-45 minutes for basilica interior, 30 minutes for terrace/museum if visiting. Add queue time (1-2 hours) unless you book skip-the-line. Guided tours are 1 hour and cover highlights efficiently.',
+        },
+        {
+          question: 'What is the dress code?',
+          answer: 'Strict dress code enforced: Shoulders and knees must be covered, no hats, no large bags/backpacks. Shorts, miniskirts, tank tops not allowed. Bring scarf to cover shoulders if needed. They turn people away!',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Early morning right at opening (9:30 AM) for shortest lines. Late afternoon (after 4 PM) also quieter. Best months: November-March for fewer tourists. Avoid midday and summer peak season if possible.',
+        },
+        {
+          question: 'What is the Pala d\'Oro?',
+          answer: 'The Pala d\'Oro is a stunning golden altarpiece behind the main altar encrusted with over 1,900 precious gems and Byzantine enamel panels. It\'s one of the most valuable treasures in Christendom! Viewing costs €5 extra but absolutely worth it.',
+        },
+        {
+          question: 'Can you visit the terrace?',
+          answer: 'Yes! The terrace/museum (€7) lets you see the original bronze horses up close, access upper levels, and enjoy views over St. Mark\'s Square. It\'s worth the climb for the horses and panoramas!',
+        },
+      ],
+    },
+
+    'canal-tours': {
+      title: 'Venice Canal Tours',
+      subtitle: 'Cruise the Grand Canal and hidden waterways discovering Venice from the water!',
+      categoryName: 'Canal Tours',
+      
+      stats: {
+        toursAvailable: 118,
+        priceFrom: 20,
+        duration: '1-3 hours',
+      },
+
+      introduction: `Experience Venice's extensive canal network - over 150 canals threading through the city creating the unique "floating city" character! Canal tours explore the famous Grand Canal (Venice's main waterway lined with palaces), smaller side canals revealing hidden Venice, and backwater routes away from crowds. Travel by vaporetto (water bus), private water taxi, canal cruise boat, or traditional Venetian boats seeing the city as Venetians have for centuries. Tours showcase over 400 bridges, historic palaces with waterside facades, quiet residential areas, colorful Burano island, glassmaking Murano island, and authentic Venetian life. It's the best way to understand how Venice works as a city built entirely on water!`,
+
+      seo: {
+        title: 'Venice Canal Tours 2025 - Grand Canal & Waterway Cruises',
+        description: 'Explore Venice canals! Grand Canal cruises, water taxis, and hidden waterway tours!',
+        keywords: 'Venice canal tours, Grand Canal Venice, Venice water taxi, Venice boat tours, vaporetto Venice',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Ship',
+          title: 'Venice from the Water',
+          description: 'See the city as it\'s meant to be seen - from its historic canals!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Grand Canal Palaces',
+          description: 'Cruise past stunning Renaissance and Gothic palaces lining the main waterway.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Hidden Waterways',
+          description: 'Discover quiet side canals and authentic Venice away from tourist crowds.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Island Exploration',
+          description: 'Visit Murano and Burano islands accessible only by boat.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Ship',
+          title: 'Grand Canal Cruises',
+          description: 'Scenic boat rides along Venice\'s main waterway seeing palaces and bridges.',
+          features: [
+            '1-2 hours',
+            'Grand Canal',
+            'Palace views',
+            'Rialto Bridge',
+            'Commentary',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Private Water Taxi Tours',
+          description: 'Exclusive water taxi with flexible routes and personalized experience.',
+          features: [
+            '1-3 hours',
+            'Private taxi',
+            'Custom route',
+            'Flexible stops',
+            'Premium service',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Murano & Burano Tours',
+          description: 'Island-hopping to famous glassmaking and lace islands by boat.',
+          features: [
+            '4-6 hours',
+            'Murano island',
+            'Burano island',
+            'Glass demos',
+            'Island time',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Sunset Canal Cruises',
+          description: 'Evening canal tours timed for magical Venetian sunset light.',
+          features: [
+            '2 hours',
+            'Sunset timing',
+            'Romantic atmosphere',
+            'Wine included',
+            'Beautiful light',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Venice Canal Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Canal cruises last 1-3 hours; island tours run 4-6 hours with exploration time.',
+          },
+          {
+            icon: 'Ship',
+            title: 'Grand Canal',
+            description: 'Cruise Venice\'s main waterway seeing over 170 buildings lining the canal.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Side Canals',
+            description: 'Explore quieter backwater canals revealing authentic residential Venice.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Historic Palaces',
+            description: 'See Renaissance palaces, Gothic architecture, and waterside facades.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Island Stops',
+            description: 'Visit Murano (glass), Burano (colorful houses), and Torcello (historic).',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Venetian History',
+            description: 'Learn how Venice was built on water and functions as a canal city.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Vaporetto Line 1 (€9.50) travels the Grand Canal - budget DIY option!',
+        'Private water taxis expensive (€60-100 for basic routes) but flexible and fast.',
+        'Canal tours best appreciated afternoon or evening when light is beautiful.',
+        'Murano & Burano island tours need 4-6 hours - they\'re worth a half-day!',
+        'Book tours including island stops for comprehensive experience beyond just Venice.',
+        'Sunset canal cruises offer magical light but book ahead - very popular!',
+        'Learn the difference: Vaporetto (public water bus), gondola (romantic), water taxi (private transport).',
+        'Multi-day vaporetto passes (€30 for 24 hours) save money if using often.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Grand Canal?',
+          answer: 'The Grand Canal is Venice\'s main waterway - a 3.8km reverse S-shaped canal dividing Venice. It\'s lined with over 170 historic buildings including Renaissance palaces, churches, and bridges. Think of it as Venice\'s main "street"!',
+        },
+        {
+          question: 'How much do canal tours cost?',
+          answer: 'Vaporetto (water bus): €9.50 single ride. Grand Canal cruises: €25-50. Private water taxi: €60-150 depending on route. Murano & Burano tours: €20-40. Gondola rides: €80+ (covered in separate category).',
+        },
+        {
+          question: 'Can you tour canals on public transport?',
+          answer: 'Yes! Vaporetto Line 1 travels the entire Grand Canal for just €9.50. It takes 45 minutes and passes all major sights. Slower than water taxi but budget-friendly. 24-hour pass (€25) offers unlimited rides.',
+        },
+        {
+          question: 'What islands should I visit?',
+          answer: 'Must-visit: Murano (famous for glass-making, glass furnace demonstrations), Burano (colorful houses, lace-making), and Torcello (oldest settlement, peaceful, Byzantine church). Half-day needed for island hopping - absolutely worth it!',
+        },
+        {
+          question: 'Are water taxis worth it?',
+          answer: 'Worth it for: Airport transfers (€100-130, much faster than bus), luggage transport, time-constrained visitors, or groups splitting costs. Not essential for sightseeing - vaporetto and tours are cheaper alternatives.',
+        },
+        {
+          question: 'When is the best time for canal tours?',
+          answer: 'Late afternoon/evening for beautiful light and fewer crowds. Morning also nice for quieter canals. Murano & Burano: Visit mid-morning to see glass furnaces working. Avoid midday summer heat.',
+        },
+        {
+          question: 'How many canals does Venice have?',
+          answer: 'Venice has about 150 canals connected by over 400 bridges! The Grand Canal is most famous, but exploring smaller side canals reveals authentic Venice. The canals ARE the streets - Venice has no cars!',
+        },
+        {
+          question: 'Can you swim in Venice canals?',
+          answer: 'Absolutely NOT! Swimming in canals is illegal (€350 fine), dangerous (boat traffic!), and unsanitary (it\'s a working waterway). The water is not clean. Nearby Lido beaches offer swimming - just 15 minutes by vaporetto.',
+        },
+      ],
+    },
+
+    'murano-glass-tours': {
+      title: 'Venice Murano Glass Tours',
+      subtitle: 'Visit the famous glassmaking island watching master artisans create stunning Venetian glass!',
+      categoryName: 'Murano Glass Tours',
+      
+      stats: {
+        toursAvailable: 86,
+        priceFrom: 20,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Murano island, world-famous for Venetian glassmaking dating back to 1291! Murano glass tours combine boat transfers from Venice with visits to glass furnaces where master artisans demonstrate the ancient craft of glass blowing - watching molten glass transform into delicate vases, chandeliers, and sculptures is mesmerizing. Tours include Glass Museum explaining 700+ years of glassmaking history, factory showrooms with stunning pieces, and free time to explore the charming island with canals, churches, and cafes. Learn why Venetian glass became legendary (techniques were trade secrets!), see contemporary artists pushing boundaries, and shop for authentic pieces (certificates guarantee genuine Murano glass). It's living art and centuries-old tradition!`,
+
+      seo: {
+        title: 'Venice Murano Glass Tours 2025 - Glass Blowing & Factory Visits',
+        description: 'Visit Murano island! Watch glass blowing demonstrations, explore factories, and authentic Venetian glass!',
+        keywords: 'Murano glass tours, Venice glass factory, Murano island tours, Venetian glass, glass blowing Venice',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Live Glass Demonstrations',
+          description: 'Watch master artisans transform molten glass into art - mesmerizing craft!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Centuries-Old Tradition',
+          description: 'Experience glassmaking techniques passed through generations since 1291!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Charming Island',
+          description: 'Explore beautiful Murano with canals, bridges, and authentic Venetian atmosphere.',
+        },
+        {
+          icon: 'Users',
+          title: 'Factory Access',
+          description: 'Visit working furnaces and showrooms seeing the complete creative process.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Murano Tours',
+          description: 'Boat to Murano, glass factory demonstration, museum visit, and free time.',
+          features: [
+            '3-4 hours',
+            'Boat transfers',
+            'Glass demo',
+            'Museum entry',
+            'Island time',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Murano & Burano Combo',
+          description: 'Visit both famous islands - glass and colorful houses in one tour.',
+          features: [
+            '4-6 hours',
+            'Both islands',
+            'Glass demo',
+            'Burano colors',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Private Murano Tours',
+          description: 'Exclusive tours with private boat and personalized factory visits.',
+          features: [
+            '3-4 hours',
+            'Private boat',
+            'Flexible schedule',
+            'VIP factory access',
+            'Premium experience',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Glass-Making Workshops',
+          description: 'Hands-on classes where you create your own glass piece with expert guidance.',
+          features: [
+            '2-3 hours',
+            'Hands-on',
+            'Create glass art',
+            'Take home piece',
+            'Unique experience',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Venice Murano Glass Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours last 3-4 hours for Murano only; 4-6 hours if combined with Burano island.',
+          },
+          {
+            icon: 'Star',
+            title: 'Glass Demonstration',
+            description: 'Watch artisan heat glass to 1,000°C and shape it into beautiful objects - amazing!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Factory Visits',
+            description: 'Tour working furnaces, showrooms, and sometimes meet master glassmakers.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Glass Museum',
+            description: 'Learn 700+ years of Venetian glass history with stunning historical pieces.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Island Exploration',
+            description: 'Free time to wander Murano\'s canals, churches, and charming streets.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Shopping',
+            description: 'Browse authentic Murano glass with certificates guaranteeing genuine pieces.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit mid-morning (10 AM-12 PM) when glass furnaces are active - no demos late afternoon!',
+        'Free glass demos at factories are sales opportunities - no obligation to buy.',
+        'Genuine Murano glass has certificate of authenticity - always request it when purchasing.',
+        'Combined Murano + Burano tours offer best value seeing both islands efficiently.',
+        'Vaporetto to Murano costs just €9.50 - easy DIY visit if on budget.',
+        'Glass Museum (€12) worth visiting for understanding history before seeing modern work.',
+        'High-quality pieces are expensive (€100-1,000+) but authentic and beautiful.',
+        'Beware fake "Murano glass" sold in Venice - real Murano glass made only on Murano island!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Murano glass?',
+          answer: 'Murano glass is Venetian glass made exclusively on Murano island using traditional techniques dating to 1291. It\'s world-famous for quality, artistry, and craftsmanship. The glassmaking moved to Murano from Venice (fire hazard!). Techniques were guarded secrets for centuries!',
+        },
+        {
+          question: 'How much do Murano tours cost?',
+          answer: 'Murano-only tours: €20-40 (includes boat, glass demo, island time). Murano + Burano combo: €25-50. Private tours: €100-200+. Vaporetto DIY: €9.50 each way. Most tours include factory demonstration but not museum (€12 extra).',
+        },
+        {
+          question: 'Can you watch glass being made?',
+          answer: 'Yes! Most tours include live glass-blowing demonstrations at furnaces. Artisans heat glass to 1,000°C and shape it into vases, sculptures, etc. It\'s mesmerizing! Demos are free (but in factory showrooms - sales opportunity).',
+        },
+        {
+          question: 'Is Murano glass expensive?',
+          answer: 'Authentic Murano glass ranges from affordable (small pieces €20-50) to very expensive (elaborate chandeliers €1,000-10,000+). Quality pieces cost €100-500 typically. Prices reflect genuine craftsmanship and artistry. Certificates prove authenticity.',
+        },
+        {
+          question: 'Can you visit Murano independently?',
+          answer: 'Yes! Take vaporetto Lines 3, 4.1, or 4.2 from Venice (€9.50, 15-30 minutes). Visit factories (most welcome visitors for free demos), Glass Museum (€12), and explore island independently. Tours offer guided experience and efficiency.',
+        },
+        {
+          question: 'How long to visit Murano?',
+          answer: 'Plan 2-3 hours minimum for glass demo, museum or showroom browsing, and island wandering. Half-day (4 hours) allows leisurely pace. Combined Murano + Burano tours are 4-6 hours - worth doing both!',
+        },
+        {
+          question: 'Should I buy Murano glass?',
+          answer: 'Only if you genuinely want it! Pieces are beautiful but expensive. Don\'t feel pressured during factory tours. If buying, request certificate of authenticity proving it\'s genuine Murano glass. Small pieces (€20-50) make nice souvenirs.',
+        },
+        {
+          question: 'What is Burano island?',
+          answer: 'Burano is a colorful fishing island near Murano famous for brightly painted houses and traditional lace-making. It\'s incredibly photogenic! Most tours combine both islands. Burano is quieter, more charming, and less commercial than Murano.',
+        },
+      ],
+    },
+
+    'food-and-wine-tours': {
+      title: 'Venice Food & Wine Tours',
+      subtitle: 'Taste authentic Venetian cicchetti, fresh seafood, and Italian wine at local bacari!',
+      categoryName: 'Food & Wine Tours',
+      
+      stats: {
+        toursAvailable: 94,
+        priceFrom: 60,
+        duration: '3-4 hours',
+      },
+
+      introduction: `Discover Venice's delicious food scene beyond tourist restaurants - authentic bacari (wine bars), traditional osterias, Rialto Market, and neighborhoods where Venetians actually eat! Venetian cuisine emphasizes fresh Adriatic seafood, risotto, polenta, and cicchetti (Venetian tapas) - small plates paired with wine creating a social dining tradition. Food tours explore Cannaregio (local neighborhood), Rialto Market (morning produce and fish market), Dorsoduro (university district), and hidden bacari serving moeche (soft-shell crab), sarde in saor (sweet-sour sardines), baccalà mantecato (creamed cod), and spritz! Expert local guides share Venetian culinary traditions, introduce passionate producers, and explain why certain dishes taste better in Venice than anywhere else!`,
+
+      seo: {
+        title: 'Venice Food & Wine Tours 2025 - Cicchetti & Venetian Cuisine',
+        description: 'Experience Venice food tours! Cicchetti, fresh seafood, Italian wine, and local bacari!',
+        keywords: 'Venice food tours, Venice cicchetti, Venetian cuisine, Venice wine tours, bacari Venice',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Cicchetti Culture',
+          description: 'Experience Venetian tapas tradition at local bacari where residents gather!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Italian Wine Pairings',
+          description: 'Sample Veneto wines - Prosecco, Soave, Valpolicella paired with cicchetti.',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Expert Guides',
+          description: 'Venetians share food culture, hidden bacari, and insider knowledge.',
+        },
+        {
+          icon: 'Star',
+          title: 'Fresh Adriatic Seafood',
+          description: 'Taste just-caught fish, shellfish, and Venetian lagoon specialties!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Cicchetti & Wine Tour',
+          description: 'Progressive tasting at 4-6 bacari sampling Venetian tapas with wine.',
+          features: [
+            '3-4 hours',
+            '4-6 bacari',
+            '8-12 cicchetti',
+            'Wine at each stop',
+            'Local guide',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Rialto Market Tour',
+          description: 'Morning market visit meeting vendors, then cooking class or lunch.',
+          features: [
+            '3-4 hours',
+            'Market exploration',
+            'Fresh produce/fish',
+            'Cooking or lunch',
+            'Authentic experience',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Wine & Food Pairing',
+          description: 'Focus on Veneto wines paired with Venetian specialties and cheeses.',
+          features: [
+            '3 hours',
+            'Multiple wines',
+            'Food pairings',
+            'Sommelier guide',
+            'Wine education',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Cooking Classes',
+          description: 'Learn to prepare Venetian dishes like risotto and tiramisu with local chef.',
+          features: [
+            '3-4 hours',
+            'Hands-on cooking',
+            'Traditional recipes',
+            'Eat your meal',
+            'Market visit',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Venice Food & Wine Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Food tours last 3-4 hours with 8-12 tastings; market tours run 3-4 hours.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Venetian Cicchetti',
+            description: 'Taste baccalà mantecato, sarde in saor, moeche, polpette, and more small plates.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Local Bacari',
+            description: 'Visit authentic wine bars in Cannaregio, Dorsoduro, and off-tourist-path areas.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Venetian Wines',
+            description: 'Sample Prosecco, Soave, Valpolicella, and Spritz (Venice\'s favorite aperitif).',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Food Culture',
+            description: 'Learn Venetian culinary traditions and lagoon-to-table dining philosophy.',
+          },
+          {
+            icon: 'Users',
+            title: 'Small Groups',
+            description: 'Intimate groups (8-12) allow interaction with guides and bacari owners.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Evening tours (6-8 PM) capture authentic Venetian aperitivo culture when locals gather.',
+        'Rialto Market tours MUST start early (8-9 AM) - market finishes by noon!',
+        'Cicchetti typically cost €2-5 each at bacari - tours show you the best spots.',
+        'Spritz (Aperol/Campari with Prosecco) is Venice\'s signature drink - try one!',
+        'Avoid restaurants with photo menus or aggressive touts - tourist traps!',
+        'Cannaregio and Dorsoduro neighborhoods have authentic bacari away from San Marco crowds.',
+        'Ask guides for bacaro recommendations - they know where Venetians eat.',
+        'Come moderately hungry - tours include substantial tastings replacing dinner!',
+      ],
+
+      faqs: [
+        {
+          question: 'What are cicchetti?',
+          answer: 'Cicchetti are Venetian tapas - small plates served at bacari (wine bars). Traditional cicchetti: baccalà mantecato (creamed cod on bread), sarde in saor (sweet-sour sardines), polpette (meatballs), and crostini with toppings. They cost €1.50-5 each. It\'s social eating!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Cicchetti tours (3-4 hours, 8-12 tastings): €60-90. Market + cooking class: €80-120. Wine-focused tours: €70-100. Includes food, wine, and guide - good value as it replaces dinner!',
+        },
+        {
+          question: 'What is a bacaro?',
+          answer: 'A bacaro (plural: bacari) is a traditional Venetian wine bar serving cicchetti and local wines. Often small, standing-room only, authentic atmosphere. Where locals go for aperitivo (pre-dinner drinks and snacks). Essential Venice experience!',
+        },
+        {
+          question: 'Are food tours good for vegetarians?',
+          answer: 'Challenging - Venetian cuisine is seafood-heavy. However, tours can accommodate vegetarians with notice. You\'ll enjoy vegetable cicchetti, cheeses, and some dishes. Just communicate dietary needs when booking. Vegan is very difficult.',
+        },
+        {
+          question: 'What should I eat in Venice?',
+          answer: 'Must-try: Cicchetti at bacari, risotto al nero (squid ink), seafood pasta, sarde in saor, baccalà mantecato, fegato alla veneziana (liver), and tiramisu (invented near Venice!). Fresh fish from lagoon is exceptional!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Evening tours (6-8 PM) best for aperitivo culture when locals fill bacari. Market tours: Early morning (8-9 AM) when Rialto Market is busiest. Food tours run year-round.',
+        },
+        {
+          question: 'Where is Rialto Market?',
+          answer: 'Near the Rialto Bridge on the San Polo side. It\'s Venice\'s main fresh market with fish, produce, and local products. Open mornings only (8 AM-12 PM). Essential for foodies! Vendors are animated - great atmosphere.',
+        },
+        {
+          question: 'What is Spritz?',
+          answer: 'Spritz is Venice\'s signature aperitif - Aperol or Campari mixed with Prosecco and soda water. It\'s refreshing, slightly bitter, and perfect with cicchetti! Every bacaro serves it. When in Venice, drink Spritz!',
+        },
+      ],
+    },
+
+    'art-and-history-tours': {
+      title: 'Venice Art & History Tours',
+      subtitle: 'Explore Venetian masterpieces, Doge\'s Palace, and 1,000 years of Republic history!',
+      categoryName: 'Art & History Tours',
+      
+      stats: {
+        toursAvailable: 108,
+        priceFrom: 30,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Venice's incredible artistic and historical heritage as a maritime superpower for 1,000 years! Art and history tours explore the Doge's Palace (seat of Venetian government with Tintoretto masterpieces), Accademia Gallery (world's best Venetian painting collection), historic churches hiding Titian and Bellini works, the Bridge of Sighs, secret itineraries revealing hidden rooms, and the Jewish Ghetto (world's first ghetto with fascinating history). Learn about the Venetian Republic's power, doges (elected leaders), maritime trade empire, art patronage, and slow decline. Expert art historians bring Venice to life explaining how this impossible city built on water became one of history's wealthiest and most cultured civilizations!`,
+
+      seo: {
+        title: 'Venice Art & History Tours 2025 - Doge\'s Palace & Venetian Masters',
+        description: 'Explore Venice art and history! Doge\'s Palace, Tintoretto, Titian, and Venetian Republic!',
+        keywords: 'Venice art tours, Doge\'s Palace Venice, Venice history tours, Venetian art, Venice museums',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Venetian Masterpieces',
+          description: 'See Tintoretto, Titian, Bellini, and Veronese in their original settings!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Doge\'s Palace',
+          description: 'Explore the seat of Venetian power with grand halls and secret passages!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Rich History',
+          description: 'Learn about 1,000 years of Venetian Republic as maritime superpower.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Historians',
+          description: 'Art historians explain symbolism, techniques, and political intrigue.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Doge\'s Palace Tours',
+          description: 'Skip-the-line tour of palace with grand halls, art, and Bridge of Sighs.',
+          features: [
+            '1-1.5 hours',
+            'Skip lines',
+            'Grand Council Hall',
+            'Bridge of Sighs',
+            'Expert guide',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Secret Itineraries Tour',
+          description: 'Exclusive access to hidden rooms, torture chamber, and doge\'s private apartments.',
+          features: [
+            '1.5 hours',
+            'Hidden rooms',
+            'Prisons',
+            'Casanova escape route',
+            'Limited spots',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Accademia Gallery Tours',
+          description: 'World\'s finest Venetian painting collection with Bellini, Titian, Tintoretto.',
+          features: [
+            '1.5 hours',
+            'Venetian masters',
+            'Skip lines',
+            'Art history',
+            'Expert guide',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Jewish Ghetto Tours',
+          description: 'Explore world\'s first ghetto with synagogues, museum, and Jewish history.',
+          features: [
+            '2 hours',
+            'Historic ghetto',
+            'Synagogue visits',
+            'Jewish museum',
+            'Cultural insights',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Venice Art & History Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Art tours last 1.5-2 hours per museum; comprehensive tours take 3-4 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Venetian Art',
+            description: 'View masterpieces by Tintoretto, Titian, Bellini, and Venetian school painters.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Grand Palaces',
+            description: 'Explore opulent rooms where doges ruled and ambassadors met.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Historic Sites',
+            description: 'Visit Bridge of Sighs, prisons, churches, and Republic government buildings.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Republic History',
+            description: 'Learn how Venice ruled Mediterranean for 1,000 years and influenced world trade.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Architectural Beauty',
+            description: 'Marvel at Gothic palaces, Byzantine mosaics, and Venetian Gothic style.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book Doge\'s Palace Secret Itineraries weeks in advance - limited daily spots!',
+        'Skip-the-line tours essential for Doge\'s Palace - queues can be 2+ hours summer!',
+        'Combined St. Mark\'s + Doge\'s Palace tickets save time and money - both must-sees.',
+        'Accademia Gallery closes Mondays - plan accordingly!',
+        'Free first Sunday of month at civic museums but expect massive crowds.',
+        'Churches (Frari, San Zaccaria) hide incredible art - €3 entry, no crowds!',
+        'Jewish Ghetto tours book up fast - fascinating history often overlooked.',
+        'Venice Museum Pass (€28) covers multiple museums - good value if visiting 3+.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Doge\'s Palace?',
+          answer: 'The Doge\'s Palace was the seat of Venetian government and home to the doge (elected leader). It\'s a stunning Gothic palace with grand halls, Tintoretto paintings, Bridge of Sighs, and historic prisons. Essential Venice sight!',
+        },
+        {
+          question: 'What is the Bridge of Sighs?',
+          answer: 'The Bridge of Sighs connects Doge\'s Palace to prisons. Prisoners crossed it heading to cells, supposedly sighing at their last view of Venice. It\'s iconic! Casanova famously escaped from these prisons. Included with Doge\'s Palace ticket.',
+        },
+        {
+          question: 'How much do art tours cost?',
+          answer: 'Doge\'s Palace entry: €28. Accademia: €15. Skip-the-line guided tours: €55-90 for 1.5-2 hours. Secret Itineraries: €80-100 (limited spots!). Combined tickets save money. Venice Museum Pass: €28 for multiple museums.',
+        },
+        {
+          question: 'What is in Accademia Gallery?',
+          answer: 'The Accademia houses the world\'s finest collection of Venetian paintings from 14th-18th centuries. Masterpieces by Bellini, Titian, Tintoretto, Veronese, and more! Essential for Venetian art lovers. €15 entry, 1.5-2 hours needed.',
+        },
+        {
+          question: 'Can you see Tintoretto in Venice?',
+          answer: 'Yes! Major Tintoretto works in: Doge\'s Palace (Paradise - huge painting!), Scuola Grande di San Rocco (entire building!), Accademia Gallery, and Madonna dell\'Orto church. The Scuola San Rocco has his most impressive collection.',
+        },
+        {
+          question: 'When is the best time to visit museums?',
+          answer: 'Early morning right at opening (9-10 AM) for minimal crowds. Late afternoon also quieter. Best months: November-March for fewer tourists. Summer peak season means long lines - skip-the-line tours essential!',
+        },
+        {
+          question: 'What is the Secret Itineraries tour?',
+          answer: 'Special Doge\'s Palace tour accessing hidden rooms not on regular route - torture chamber, Casanova\'s cell, doge\'s private apartments, secret passages. Limited to 25 people per tour. Book weeks ahead! €80-100 but fascinating.',
+        },
+        {
+          question: 'Is Venice expensive for museums?',
+          answer: 'Moderately expensive. Major sites: €15-28 each. However, Venice Museum Pass (€28) covers multiple civic museums - good value. Churches often have €3 entry for world-class art. Skip-the-line tours worth premium to avoid queue time.',
+        },
+      ],
+    },
+  },
+
 };
 
