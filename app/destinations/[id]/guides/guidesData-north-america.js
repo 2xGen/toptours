@@ -20282,6 +20282,182 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'alcatraz-tours': {
+      title: 'San Francisco Alcatraz Tours',
+      subtitle: 'Visit the infamous island prison with audio tour and SF Bay views!',
+      categoryName: 'Alcatraz Tours',
+      
+      stats: {
+        toursAvailable: 68,
+        priceFrom: 41,
+        duration: '2-3 hours',
+      },
+
+      introduction: `Discover Alcatraz - America's most infamous prison on island in San Francisco Bay! Alcatraz tours ferry to "The Rock" exploring maximum-security prison (1934-1963) that held Al Capone, Machine Gun Kelly, and "Birdman" Robert Stroud. Experience award-winning audio tour with former inmates and guards narrating, see tiny cells, visit solitary confinement, explore cellhouse, and learn about famous escape attempts (Frank Morris and Anglin brothers!). Tours include ferry, audio tour, island exploration, and stunning SF skyline views. Learn about Native American occupation (1969-1971), lighthouse, and military fort history. It's haunting and fascinating!`,
+
+      seo: {
+        title: 'San Francisco Alcatraz Tours 2025 - Island Prison Tickets & Ferry',
+        description: 'Visit Alcatraz! Island prison tours, audio tour, and SF Bay views!',
+        keywords: 'Alcatraz tours, San Francisco Alcatraz, Alcatraz tickets, Alcatraz prison, SF island prison',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Infamous Prison',
+          description: 'Held Al Capone, Machine Gun Kelly - legendary criminals!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Award-Winning Audio Tour',
+          description: 'Former inmates and guards narrate - incredibly immersive!',
+        },
+        {
+          icon: 'Camera',
+          title: 'SF Skyline Views',
+          description: 'Best city and Golden Gate views from island!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Escape Attempts',
+          description: 'Learn about famous escapes - did they survive?',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Day Tour',
+          description: 'Classic daytime visit with audio tour.',
+          features: [
+            '2-3 hours',
+            'Ferry + audio',
+            'Cellhouse',
+            'Island time',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Night Tour',
+          description: 'Evening visit - spookier and less crowded!',
+          features: [
+            '2.5 hours',
+            'Night atmosphere',
+            'Special access',
+            'Eerie',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Behind-the-Scenes Tour',
+          description: 'Extended tour with restricted area access.',
+          features: [
+            '4 hours',
+            'Hospital',
+            'Underground',
+            'Extended',
+            'In-depth',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Alcatraz + Bay Combo',
+          description: 'Combine Alcatraz with bay cruise.',
+          features: [
+            '4-5 hours',
+            'Two experiences',
+            'Comprehensive',
+            'Value',
+            'Popular',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your San Francisco Alcatraz Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Total: 2-3 hours (15-min ferry + 2 hours on island). Night tours: 2.5 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Cellhouse Audio Tour',
+            description: 'Self-paced audio with former inmates/guards narrating - chilling and fascinating!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Tiny Cells',
+            description: 'See 5x9 ft cells where prisoners lived - claustrophobic reality!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Escape Stories',
+            description: 'Learn about 1962 escape - did they survive? Mystery remains!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Island Views',
+            description: 'Stunning SF skyline, Golden Gate Bridge, bay - ironic beauty for prisoners!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'History Layers',
+            description: 'Military fort, federal prison, Native American occupation - complex history!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book 2-3 months ahead - Alcatraz sells out fast (especially summer!).',
+        'Night tours less crowded, spookier atmosphere - worth it if available.',
+        'Wear layers - island windy and cold even if SF warm!',
+        'Audio tour takes 45-60 min - don\'t rush, it\'s excellent.',
+        'Ferry from Pier 33 Alcatraz Landing - arrive 30 min early.',
+        'Behind-the-Scenes tour ($92) shows hospital, underground - book WAY ahead!',
+        'Budget 2-3 hours total including ferry time.',
+        'Bring jacket and comfortable shoes - lots of walking on island!',
+      ],
+
+      faqs: [
+        {
+          question: 'How much do Alcatraz tickets cost?',
+          answer: 'Day tour: $41 adults, $39 seniors, $25 kids (includes ferry + audio tour). Night tour: $47 adults. Behind-the-Scenes: $92. Tickets sell out weeks/months ahead - book early! Alcatraz Cruises only official operator.',
+        },
+        {
+          question: 'Do you need to book Alcatraz in advance?',
+          answer: 'YES! Book 2-3 months ahead, especially summer! Tickets sell out fast. Night tours book even faster. Day-of tickets rare. Book online at alcatrazcruises.com (official). Don\'t wait - it\'s SF\'s most popular attraction!',
+        },
+        {
+          question: 'Is Alcatraz worth visiting?',
+          answer: 'Absolutely! Award-winning audio tour, fascinating history, stunning views, unique experience. Must-do SF attraction. Even if not into history, it\'s compelling. Budget 2-3 hours. Book ahead! Consistently rated top SF activity.',
+        },
+        {
+          question: 'How long is Alcatraz tour?',
+          answer: '2-3 hours total: 15-min ferry each way + 2 hours on island. Audio tour 45-60 min (self-paced). Can explore island longer. Night tours 2.5 hours. Plan half-day including transport to Pier 33.',
+        },
+        {
+          question: 'Did anyone escape from Alcatraz?',
+          answer: '1962: Frank Morris and Anglin brothers escaped using spoons, dummy heads! Never found - presumed drowned but mystery remains. Movie "Escape from Alcatraz" tells story. 36 escape attempts, officially none successful. Audio tour covers famous escapes - fascinating!',
+        },
+        {
+          question: 'What is on Alcatraz Island?',
+          answer: 'Federal prison (main attraction), cellhouse with audio tour, exercise yard, cafeteria, solitary confinement, lighthouse, gardens, Native American graffiti from 1969 occupation, tide pools. Allow 2-3 hours to see everything. More than just prison!',
+        },
+        {
+          question: 'Is Alcatraz scary?',
+          answer: 'Not scary but sobering. Tiny cells show harsh reality. Audio tour has some eerie moments (solitary confinement). Night tours spookier! Not horror show - historical education. Family-friendly during day. Fascinating more than frightening!',
+        },
+        {
+          question: 'When is the best time to visit Alcatraz?',
+          answer: 'September-October: Clear weather, fewer crowds. Early morning tours: Less crowded. Night tours: Unique atmosphere. Avoid peak summer (sold out, foggier). Book whenever available - demand high year-round. Weather matters less (mostly indoors).',
+        },
+      ],
+    },
   },
 };
 
