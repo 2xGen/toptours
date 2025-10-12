@@ -22398,6 +22398,182 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'museum-tours': {
+      title: 'Toronto Museum Tours',
+      subtitle: 'Explore ROM, Art Gallery of Ontario, and world-class museums!',
+      categoryName: 'Museum Tours',
+      
+      stats: {
+        toursAvailable: 58,
+        priceFrom: 25,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Toronto's incredible museums - world-class collections and architecture! Museum tours explore Royal Ontario Museum (ROM - Canada's largest!), Art Gallery of Ontario (AGO - 95,000 works!), Casa Loma (castle museum!), Bata Shoe Museum (seriously!), Hockey Hall of Fame (Canadian passion!), and more. Experience dinosaur fossils, Group of Seven paintings, contemporary art, historical artifacts, and interactive exhibits. Tours include skip-the-line access, guided experiences, and expert insights. Learn about Canadian history, natural sciences, art movements, and cultural heritage. It's rainy-day paradise!`,
+
+      seo: {
+        title: 'Toronto Museum Tours 2025 - ROM, AGO & World-Class Collections',
+        description: 'Explore Toronto museums! ROM, Art Gallery of Ontario, and incredible exhibits!',
+        keywords: 'Toronto museums, ROM Toronto, Art Gallery Ontario, museum tours Toronto, Casa Loma',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'World-Class Museums',
+          description: 'ROM and AGO rank among world\'s best - incredible collections!',
+        },
+        {
+          icon: 'Heart',
+          title: 'ROM Architecture',
+          description: 'Crystal addition by Daniel Libeskind - architectural marvel!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Diverse Collections',
+          description: 'Dinosaurs, art, history, shoes - something for everyone!',
+        },
+        {
+          icon: 'Users',
+          title: 'Hockey Hall of Fame',
+          description: 'Canadian passion - Stanley Cup and hockey history!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'ROM Tour',
+          description: 'Royal Ontario Museum - natural history and culture.',
+          features: [
+            '2-3 hours',
+            'Dinosaurs',
+            'World cultures',
+            'Crystal building',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'AGO Tour',
+          description: 'Art Gallery of Ontario - Canadian and international art.',
+          features: [
+            '2-3 hours',
+            'Group of Seven',
+            'Contemporary',
+            'Free Wednesdays',
+            'Art lovers',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Casa Loma',
+          description: 'Gothic Revival castle with gardens.',
+          features: [
+            '2 hours',
+            'Castle',
+            'Gardens',
+            'Tunnels',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Multi-Museum Pass',
+          description: 'Visit multiple museums in one day.',
+          features: [
+            'Full day',
+            '2-3 museums',
+            'Value',
+            'Comprehensive',
+            'Flexible',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Toronto Museum Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Each museum: 2-3 hours. Multi-museum day: 6-8 hours. Budget appropriately!',
+          },
+          {
+            icon: 'Star',
+            title: 'ROM',
+            description: 'Dinosaurs, Egyptian mummies, minerals, world cultures - 6 million objects!',
+          },
+          {
+            icon: 'Heart',
+            title: 'AGO',
+            description: 'Group of Seven landscapes, European masters, contemporary - 95,000 works!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Casa Loma',
+            description: 'Gothic castle with 98 rooms, gardens, secret passages - unique Toronto!',
+          },
+          {
+            icon: 'Users',
+            title: 'Hockey Hall of Fame',
+            description: 'Original Stanley Cup, interactive exhibits - Canadian sports shrine!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Special Exhibits',
+            description: 'Rotating exhibitions bring international blockbusters to Toronto.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'ROM busiest weekends - weekday mornings quieter.',
+        'AGO FREE Wednesday evenings 6-9 PM - crowded but free!',
+        'Casa Loma combo with gardens worth it in summer.',
+        'CityPASS includes ROM + Casa Loma + CN Tower - saves money!',
+        'ROM Crystal building controversial but photogenic - love it or hate it!',
+        'AGO\'s Galleria Italia stunning architecture - free to view.',
+        'Bata Shoe Museum quirky but fascinating - only in Toronto!',
+        'Many museums closed Mondays - check schedules.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is ROM?',
+          answer: 'Royal Ontario Museum (ROM) is Canada\'s largest museum - natural history, world cultures, art! Dinosaurs, Egyptian tomb, minerals, Chinese architecture. Iconic Crystal addition (2007) by Daniel Libeskind. $23 adults. 2-3 hours minimum. Must-see Toronto museum!',
+        },
+        {
+          question: 'Is AGO free?',
+          answer: 'FREE Wednesday evenings 6-9 PM! Otherwise $25 adults, $19 seniors, under 25 FREE! Art Gallery of Ontario has 95,000 works - Group of Seven, Canadian art, European masters, contemporary. Wednesday evenings crowded but great value!',
+        },
+        {
+          question: 'Is Casa Loma worth visiting?',
+          answer: 'Yes! Gothic castle built 1914 by eccentric millionaire. 98 rooms, towers, gardens, secret passages, tunnel. $32 adults. Unique Toronto attraction - only real castle! 2 hours sufficient. Game of Thrones feel. Great for families and photos!',
+        },
+        {
+          question: 'What is Hockey Hall of Fame?',
+          answer: 'Hockey Hall of Fame celebrates Canada\'s passion! Original Stanley Cup, interactive exhibits, memorabilia, player enshrinement. $20 adults. 1-2 hours. Even non-fans appreciate cultural significance. Hockey is Canadian religion - this is the shrine!',
+        },
+        {
+          question: 'Should I buy CityPASS?',
+          answer: 'Worth it if visiting multiple attractions! CityPASS ($110 adults) includes CN Tower, ROM, Casa Loma, Toronto Zoo OR Ontario Science Centre. Saves 40%+ vs individual tickets. Valid 9 days. Perfect for first-time visitors!',
+        },
+        {
+          question: 'How long to spend at ROM?',
+          answer: '2-3 hours for highlights, half-day for thorough visit. Huge museum - plan what you want to see! Dinosaurs and Egyptian gallery most popular. ROM café available for breaks. Don\'t rush - lots to see!',
+        },
+        {
+          question: 'Are museums good for kids?',
+          answer: 'Excellent! ROM dinosaurs, Ontario Science Centre (interactive!), Hockey Hall of Fame. AGO has family programs. Casa Loma has knight displays. Most museums family-friendly with kids programs. Rainy day lifesaver!',
+        },
+        {
+          question: 'When is the best time for museums?',
+          answer: 'Rainy days! Also winter (Nov-March) when outdoor activities limited. Weekday mornings least crowded. Summer weekends busiest. AGO Wednesday evenings free but packed. Plan around weather and crowds!',
+        },
+      ],
+    },
   },
 };
 
