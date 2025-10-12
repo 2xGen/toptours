@@ -3189,12 +3189,12 @@ export const destinations = [
     heroDescription: 'Welcome to Miami, where tropical beaches meet urban sophistication and Latin culture infuses every aspect of life. From the iconic Art Deco architecture of South Beach to the vibrant neighborhoods of Little Havana, from pristine beaches to world-class dining, this dynamic city offers the perfect blend of beach culture, urban excitement, and international flair. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Miami.jpg',
     tourCategories: [
-      'South Beach Tours',
-      'Art Deco Tours',
-      'Little Havana Tours',
-      'Beach & Water Sports',
-      'Food & Culture Tours',
-      'Boat Tours'
+      { name: 'South Beach Tours', hasGuide: true },
+      { name: 'Art Deco Tours', hasGuide: true },
+      { name: 'Little Havana Tours', hasGuide: true },
+      { name: 'Beach & Water Sports', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Boat Tours', hasGuide: true }
     ],
     seo: {
       title: 'Miami Tours & Excursions - Top-Rated Activities & Adventures',
@@ -3519,12 +3519,12 @@ export const destinations = [
     heroDescription: 'Welcome to Nashville, where country music fills the air and Southern charm meets modern sophistication. From the iconic Grand Ole Opry to the vibrant Broadway district, from authentic hot chicken to historic plantations, this Music City offers the perfect blend of musical heritage, cultural richness, and warm hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Nashville.jpg',
     tourCategories: [
-      'Country Music Tours',
-      'Broadway Tours',
-      'Food & Hot Chicken Tours',
-      'Historical Tours',
-      'Music Venue Tours',
-      'Cultural Tours'
+      { name: 'Country Music Tours', hasGuide: true },
+      { name: 'Broadway Tours', hasGuide: true },
+      { name: 'Food & Hot Chicken Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Music Venue Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true }
     ],
     seo: {
       title: 'Nashville Tours & Excursions - Top-Rated Activities & Adventures',
@@ -3849,12 +3849,12 @@ export const destinations = [
     heroDescription: 'Welcome to Montreal, where French sophistication meets North American energy and historic charm blends with modern innovation. From the iconic Notre-Dame Basilica to the vibrant Plateau neighborhood, from world-class festivals to authentic French cuisine, this bilingual city offers the perfect blend of European elegance and Canadian warmth. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Montreal.jpg',
     tourCategories: [
-      'Old Montreal Tours',
-      'Food & Culture Tours',
-      'Festival Tours',
-      'Historical Tours',
-      'Neighborhood Tours',
-      'Architecture Tours'
+      { name: 'Old Montreal Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Festival Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Neighborhood Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Montreal Tours & Excursions - Top-Rated Activities & Adventures',

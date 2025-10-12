@@ -10581,5 +10581,2121 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  montreal: {
+    'old-montreal-tours': {
+      title: 'Montreal Old Montreal Tours',
+      subtitle: 'Explore cobblestone streets, French colonial architecture, and historic Vieux-Montréal!',
+      categoryName: 'Old Montreal Tours',
+      
+      stats: {
+        toursAvailable: 82,
+        priceFrom: 35,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Old Montreal (Vieux-Montréal) - a beautifully preserved 17th-century neighborhood! Old Montreal tours explore cobblestone streets, French colonial architecture, Notre-Dame Basilica (stunning Gothic Revival interior), Place Jacques-Cartier (lively plaza with street performers), Old Port waterfront, Bonsecours Market, and Pointe-à-Callière archaeology museum. Walk streets dating to 1642 when Montreal was founded, see fortification remains, visit charming squares, and explore buildings where history unfolded. Tours include architectural insights, historical narratives, food stops at French bistros, and waterfront walks. Learn about New France, French Canadian heritage, Montreal's role in North American history, and preservation efforts. It's European charm in North America!`,
+
+      seo: {
+        title: 'Montreal Old Montreal Tours 2025 - Vieux-Montréal & French Colonial History',
+        description: 'Explore Old Montreal! Cobblestone streets, Notre-Dame Basilica, and French colonial heritage!',
+        keywords: 'Old Montreal tours, Vieux-Montréal, Notre-Dame Basilica Montreal, Old Port Montreal, Montreal history',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'European Charm',
+          description: 'Feel like you\'re in France without leaving North America!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Notre-Dame Basilica',
+          description: 'Stunning Gothic Revival church with breathtaking blue interior!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Cobblestone Streets',
+          description: 'Historic 17th-century streets perfectly preserved.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'French Heritage',
+          description: 'Experience Quebec\'s unique French-Canadian culture and language!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Old Montreal Tour',
+          description: 'Walking tour of historic district seeing major landmarks.',
+          features: [
+            '2-3 hours',
+            'Notre-Dame visit',
+            'Historic sites',
+            'Expert guide',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Food & History Tour',
+          description: 'Combine history with French bistro tastings.',
+          features: [
+            '3-4 hours',
+            'History + food',
+            'Multiple tastings',
+            'Cultural',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Underground City Tour',
+          description: 'Explore RÉSO, Montreal\'s massive underground network.',
+          features: [
+            '2 hours',
+            'Underground',
+            'Winter perfect',
+            'Unique',
+            'Fascinating',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photo Walking Tour',
+          description: 'Capture Old Montreal\'s most photogenic spots.',
+          features: [
+            '2-3 hours',
+            'Photo focus',
+            'Best angles',
+            'Instagram-worthy',
+            'Creative',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Montreal Old Montreal Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Food tours: 3-4 hours. Underground: 2 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Notre-Dame Basilica',
+            description: 'Stunning blue/gold Gothic interior - one of North America\'s most beautiful churches!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Place Jacques-Cartier',
+            description: 'Vibrant square with street performers, cafes, and Old Montreal atmosphere.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Old Port',
+            description: 'Waterfront area with promenades, festivals, and St. Lawrence River views.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Colonial Buildings',
+            description: 'See 17th-18th century French architecture and fortification remains.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'French History',
+            description: 'Learn about New France, French colonization, and Quebec heritage.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Notre-Dame Basilica ($8) absolutely worth entering - exterior doesn\'t show interior beauty!',
+        'Old Montreal cobblestones rough - wear comfortable walking shoes!',
+        'Summer evenings Old Montreal buzzes with terrace dining and street performers.',
+        'Free walking tours available (tip-based) - good budget option.',
+        'Place d\'Armes square is Old Montreal\'s heart - start exploring from here.',
+        'Pointe-à-Callière museum ($20) shows Montreal\'s archaeological layers.',
+        'Many signs in French only - part of authentic Quebec experience!',
+        'Winter: Underground City tour perfect when cold outside.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Old Montreal known for?',
+          answer: 'Old Montreal (Vieux-Montréal) is historic district with cobblestone streets, French colonial architecture, Notre-Dame Basilica, and European atmosphere. Founded 1642, it\'s preserved beautifully. Feels like stepping into 17th-century France! Essential Montreal experience.',
+        },
+        {
+          question: 'Is Notre-Dame Basilica worth it?',
+          answer: 'ABSOLUTELY! One of North America\'s most stunning church interiors - blue vaulted ceiling, gold details, intricate carvings. $8 entry totally worth it! Exterior plain but inside is breathtaking. Audio guide included. Don\'t skip! Plan 30-45 minutes.',
+        },
+        {
+          question: 'How long to explore Old Montreal?',
+          answer: 'Half-day (3-4 hours) for highlights: Notre-Dame, Place Jacques-Cartier, Old Port, main streets. Full day (6-8 hours) for museums, leisurely dining, and thorough exploration. It\'s walkable area - allow time to wander and soak atmosphere.',
+        },
+        {
+          question: 'Can you walk Old Montreal yourself?',
+          answer: 'Yes! It\'s compact and pedestrian-friendly. However, guides provide historical context and stories you\'d miss. Free walking tours available (tip-based). DIY works with research. Tours enhance understanding significantly. Both options good!',
+        },
+        {
+          question: 'Is Old Montreal safe?',
+          answer: 'Very safe! Tourist-friendly area with lots of foot traffic. Evening safe in restaurant/plaza areas. Winter: Icy sidewalks require caution. Use normal urban awareness. Millions visit safely - it\'s established tourist district.',
+        },
+        {
+          question: 'Do you need to speak French?',
+          answer: 'Helpful but not essential! Montreal is bilingual - most tourist areas have English speakers. Signs often French-only (part of Quebec charm). Restaurants, hotels, tour guides speak English. Learning "Bonjour" and "Merci" appreciated but English works fine!',
+        },
+        {
+          question: 'When is the best time to visit Old Montreal?',
+          answer: 'Spring (April-May): Pleasant, tulips blooming. Summer (June-August): Warmest, outdoor terraces, festivals. Fall (Sept-Oct): Fall colors, comfortable. Winter: Cold but charming with snow, underground city. Summer busiest but most atmospheric. Year-round beautiful!',
+        },
+        {
+          question: 'What is the Underground City?',
+          answer: 'RÉSO is 20-mile underground network of shopping, restaurants, and metro connections! It lets Montrealers avoid winter cold. You can walk between downtown buildings underground. Free to use. Unique Montreal feature - worth exploring in winter!',
+        },
+      ],
+    },
+
+    'food-and-culture-tours': {
+      title: 'Montreal Food & Culture Tours',
+      subtitle: 'Taste poutine, bagels, smoked meat, and French-Canadian culinary delights!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 96,
+        priceFrom: 55,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Montreal's exceptional food scene - French technique meets North American ingredients! Food tours explore Montreal specialties like poutine (fries, gravy, cheese curds), Montreal-style bagels (sweeter than New York!), smoked meat sandwiches (Schwartz's Deli institution since 1928), tourtière (meat pie), maple syrup treats, and French bistro cuisine. Visit Jean-Talon Market (best in North America!), Mile End neighborhood (bagel bakeries and cafes), Plateau Mont-Royal (trendy eateries), and Little Italy. Sample French pastries, Quebec cheeses, craft beer, and innovative contemporary cuisine. Learn about French-Canadian food traditions, market culture, and Montreal's culinary innovation. It's delicious cultural exploration!`,
+
+      seo: {
+        title: 'Montreal Food & Culture Tours 2025 - Poutine, Bagels & Smoked Meat',
+        description: 'Experience Montreal food! Poutine, Montreal bagels, smoked meat, and French-Canadian cuisine!',
+        keywords: 'Montreal food tours, poutine Montreal, Montreal bagels, Schwartz Deli, Jean-Talon Market, Quebec food',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Montreal Specialties',
+          description: 'Poutine, smoked meat, and bagels found nowhere else quite like this!',
+        },
+        {
+          icon: 'Star',
+          title: 'French Technique',
+          description: 'Authentic French cuisine and pastries - best in North America!',
+        },
+        {
+          icon: 'Users',
+          title: 'Jean-Talon Market',
+          description: 'Voted one of world\'s best food markets - incredible!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Maple Everything',
+          description: 'Quebec is maple syrup capital - try it on everything!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Montreal Classics Tour',
+          description: 'Sample poutine, smoked meat, bagels, and local favorites.',
+          features: [
+            '3-4 hours',
+            '6-8 tastings',
+            'Iconic foods',
+            'Cultural stories',
+            'Must-do',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Jean-Talon Market Tour',
+          description: 'Explore market tasting Quebec specialties and fresh produce.',
+          features: [
+            '3 hours',
+            'Market visit',
+            'Multiple vendors',
+            'Fresh food',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'French Bistro Tour',
+          description: 'Experience authentic French dining across neighborhoods.',
+          features: [
+            '4 hours',
+            'Multiple bistros',
+            'Wine pairings',
+            'French cuisine',
+            'Upscale',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Craft Beer & Food Tour',
+          description: 'Sample Quebec craft beers with local food pairings.',
+          features: [
+            '3-4 hours',
+            'Beer tastings',
+            'Food pairings',
+            'Breweries',
+            'Fun',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Montreal Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Poutine',
+            description: 'Québécois comfort food - crispy fries, rich gravy, squeaky cheese curds!',
+          },
+          {
+            icon: 'Star',
+            title: 'Smoked Meat',
+            description: 'Montreal-style smoked brisket at Schwartz\'s or Main Deli - legendary!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Montreal Bagels',
+            description: 'Smaller, sweeter than NY bagels - wood-fired at Fairmount or St-Viateur.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Jean-Talon Market',
+            description: 'Year-round market with Quebec produce, cheeses, and prepared foods.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'French-Canadian Food',
+            description: 'Learn about tourtière, pea soup, maple treats, and Quebec traditions.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Poutine debate: La Banquise (24/7, 30+ varieties) vs. traditional spots.',
+        'Schwartz\'s Deli cash-only, no reservations - expect lines! Worth the wait.',
+        'Montreal bagels: Fairmount vs. St-Viateur - locals debate endlessly!',
+        'Jean-Talon Market best Saturday mornings - fresh, busy, and atmospheric.',
+        'Maple syrup season (March-April) - visit sugar shacks for maple treats!',
+        'BYOB ("apportez votre vin") restaurants common - buy wine at grocery, no corkage!',
+        'Quebec produces 70% of world\'s maple syrup - try it on everything!',
+        'Bring cash - some classic spots (Schwartz\'s, bagel shops) cash-only.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is poutine?',
+          answer: 'Poutine is Quebec comfort food - french fries topped with brown gravy and cheese curds. Curds should "squeak" when bitten! Invented 1950s Quebec. La Banquise has 30+ varieties. $8-12. Absolutely essential Montreal food - try it!',
+        },
+        {
+          question: 'Where is the best smoked meat?',
+          answer: 'Schwartz\'s Deli (since 1928) most famous - cash-only, lines long, totally worth it! Main Deli also excellent. Smoked meat is Montreal-style brisket (not pastrami!). $10-15 sandwich. Essential Montreal experience!',
+        },
+        {
+          question: 'What is different about Montreal bagels?',
+          answer: 'Montreal bagels are smaller, denser, sweeter than NY bagels. Wood-fired ovens give them unique flavor. Fairmount Bagel (1919) and St-Viateur (1957) are rivals - both excellent! $1-2 each. Get them fresh (baked 24/7). Sesame best!',
+        },
+        {
+          question: 'How much do Montreal food tours cost?',
+          answer: 'Walking food tours: $55-90 (3-4 hours, 6-8 tastings). Market tours: $60-85. Bistro tours: $90-130. Craft beer: $70-100. Private: $200-400 for group. Tours replace meals - good value for variety and cultural education!',
+        },
+        {
+          question: 'Can vegetarians eat in Montreal?',
+          answer: 'Yes! Montreal has excellent vegetarian scene. Poutine available with veggie gravy. French bistros have veggie options. Jean-Talon Market sells produce. Plateau neighborhood very veg-friendly. Quebec cuisine meat-heavy but cities accommodate vegetarians well!',
+        },
+        {
+          question: 'What is Jean-Talon Market?',
+          answer: 'Jean-Talon is year-round public market (since 1933) with Quebec produce, cheeses, meats, baked goods, and prepared foods. Voted one of world\'s best food markets! Little Italy neighborhood. Open daily, busiest Saturdays. FREE to walk - buy what you want!',
+        },
+        {
+          question: 'Is Montreal food expensive?',
+          answer: 'Affordable! Poutine: $8-12. Smoked meat: $10-15. Bagels: $1-2. Fine dining: $50-100. Food halls and markets budget-friendly. BYOB restaurants save wine costs. Compared to US cities, Montreal is reasonable! Eat well without breaking bank.',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Jean-Talon Market: Saturday mornings busiest. Maple sugar shack season: March-April. Food tours run daily. Summer: Terrace dining. Winter: Cozy bistros. Montreal food scene runs 365 days - book based on schedule!',
+        },
+      ],
+    },
+
+    'festival-tours': {
+      title: 'Montreal Festival Tours',
+      subtitle: 'Experience Just for Laughs, Jazz Festival, and year-round cultural celebrations!',
+      categoryName: 'Festival Tours',
+      
+      stats: {
+        toursAvailable: 58,
+        priceFrom: 50,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Discover Montreal's incredible festival scene - the city hosts over 100 festivals annually! Major festivals include Just for Laughs (world's largest comedy festival, July), Montreal International Jazz Festival (free outdoor concerts, July), Osheaga music festival, Montreal World Film Festival, and seasonal celebrations. Festival tours provide tickets, VIP access, behind-the-scenes experiences, and cultural context. Even without major festivals, Montreal celebrates constantly: winter Fête des Neiges, spring maple festivals, summer terraces, fall harvest events, and Nuit Blanche (all-night arts). Learn about Montreal's cultural calendar, how festivals define the city, and Quebec's joie de vivre. The festival atmosphere makes summer Montreal magical!`,
+
+      seo: {
+        title: 'Montreal Festival Tours 2025 - Just for Laughs, Jazz & Cultural Events',
+        description: 'Experience Montreal festivals! Jazz Fest, Just for Laughs, and year-round celebrations!',
+        keywords: 'Montreal festivals, Just for Laughs, Montreal Jazz Festival, Montreal events, Osheaga',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Music',
+          title: 'Jazz Festival',
+          description: 'World\'s largest jazz fest with FREE outdoor concerts!',
+        },
+        {
+          icon: 'Star',
+          title: 'Just for Laughs',
+          description: 'Legendary comedy festival attracting global comedians!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Year-Round Events',
+          description: 'Montreal celebrates constantly - always something happening!',
+        },
+        {
+          icon: 'Users',
+          title: 'Festival Culture',
+          description: 'Quebecers embrace festivals as lifestyle - infectious energy!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Music',
+          title: 'Jazz Festival Experience',
+          description: 'Attend concerts with VIP access and jazz club visits.',
+          features: [
+            '4-6 hours',
+            'Multiple shows',
+            'VIP tickets',
+            'Club hopping',
+            'Musical',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Just for Laughs Tour',
+          description: 'Comedy shows, galas, and festival atmosphere.',
+          features: [
+            '3-5 hours',
+            'Comedy shows',
+            'Gala tickets',
+            'Festival fun',
+            'Hilarious',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Festival Hop Tour',
+          description: 'Visit multiple simultaneous festivals in summer.',
+          features: [
+            'Full day',
+            'Multiple festivals',
+            'Variety',
+            'Sampling',
+            'Energetic',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Winter Festival Tour',
+          description: 'Experience Fête des Neiges, ice sculptures, winter activities.',
+          features: [
+            '4 hours',
+            'Winter events',
+            'Outdoor activities',
+            'Unique',
+            'Festive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Montreal Festival Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-6 hours. Full festival days: 8+ hours. Evening shows: 2-4 hours.',
+          },
+          {
+            icon: 'Music',
+            title: 'Jazz Festival',
+            description: 'FREE outdoor concerts, paid indoor shows, 10 days in July - massive!',
+          },
+          {
+            icon: 'Star',
+            title: 'Just for Laughs',
+            description: 'Comedy galas, stand-up shows, street performers - world\'s biggest comedy fest!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Summer Atmosphere',
+            description: 'Entire downtown transforms with stages, food vendors, and celebrations.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Festival Sites',
+            description: 'Major festivals at Place des Arts, Quartier des Spectacles, Old Port.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Immersion',
+            description: 'Experience Quebec\'s love of celebration and community gathering.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Jazz Festival FREE outdoor concerts incredible - no tickets needed!',
+        'Just for Laughs tickets sell out - book galas months ahead!',
+        'Summer (June-August): Multiple festivals overlap - amazing energy!',
+        'Hotels expensive during major festivals - book way ahead or stay outside downtown.',
+        'Quartier des Spectacles is festival central - pedestrian-friendly area.',
+        'Many festivals have free components - explore without tickets!',
+        'Winter festivals embrace cold - dress warmly and enjoy!',
+        'Check montreal.com for festival calendar - always something happening.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Montreal Jazz Festival?',
+          answer: 'Montreal International Jazz Festival (10 days in July) is world\'s largest jazz festival! FREE outdoor concerts on multiple stages. Indoor shows ($40-100) feature jazz legends. 2 million attendees! Downtown transforms into music celebration. Essential summer Montreal!',
+        },
+        {
+          question: 'When is Just for Laughs?',
+          answer: 'Just for Laughs (Juste pour Rire) runs in July. Comedy galas, stand-up shows, street performers. Global comedians perform. Gala tickets $75-150. Some FREE street shows. Montreal becomes comedy capital for 2 weeks! Book tickets early.',
+        },
+        {
+          question: 'Are Montreal festivals free?',
+          answer: 'Many have FREE components! Jazz Festival outdoor concerts free. Just for Laughs has free street shows. However, premium shows require tickets ($40-150). Check each festival - mix of free and paid. Budget visitors can enjoy a lot free!',
+        },
+        {
+          question: 'How many festivals does Montreal have?',
+          answer: '100+ festivals annually! Major: Jazz (July), Just for Laughs (July), Osheaga music (August), Film Festival, Pride, Igloofest (winter electronica). Plus neighborhood, cultural, food festivals. Summer packed with events. Montreal is festival city!',
+        },
+        {
+          question: 'Do I need festival tickets?',
+          answer: 'Depends! Jazz Festival outdoor concerts: NO (free). Indoor jazz shows: YES. Just for Laughs galas: YES (sell out fast!). Osheaga: YES (multi-day pass). Check specific festival. Many offer free outdoor + paid premium experiences.',
+        },
+        {
+          question: 'When is the best time for festivals?',
+          answer: 'Summer (June-August) is festival season with Jazz, Just for Laughs, Osheaga overlapping! July especially packed. Winter: Igloofest, Fête des Neiges. Spring/fall: Smaller festivals. Visit summer for maximum festival energy!',
+        },
+        {
+          question: 'Is Montreal expensive during festivals?',
+          answer: 'Hotels get pricey (double rates!) during major festivals. Book months ahead or stay outside downtown. Festival attendance often FREE or reasonable ($40-150 for premium shows). Food/drinks standard prices. Plan accommodation early - hotels book up!',
+        },
+        {
+          question: 'Can you visit Montreal without festival tickets?',
+          answer: 'Absolutely! Even during festivals, city offers tons to see. FREE outdoor concerts, street atmosphere, and regular attractions still accessible. Festival energy enhances Montreal but tickets not mandatory. Enjoy festival vibe without paying for shows!',
+        },
+      ],
+    },
+
+    'historical-tours': {
+      title: 'Montreal Historical Tours',
+      subtitle: 'Explore French Canadian heritage, Basilica, and 380 years of Montreal history!',
+      categoryName: 'Historical Tours',
+      
+      stats: {
+        toursAvailable: 54,
+        priceFrom: 40,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Montreal's fascinating 380-year history from French colony to modern metropolis! Historical tours explore founding in 1642 by French settlers, British conquest aftermath, Notre-Dame Basilica, Mount Royal Park (designed by Olmsted who designed Central Park!), Olympic Stadium from 1976 Olympics, historical museums, and cultural heritage. Visit sites commemorating French explorers, learn about French-English tensions, see how Montreal preserved French language and culture, and understand Quebec independence movement. Tours include McGill University area, Victorian architecture, St. Joseph's Oratory (massive basilica), and neighborhoods showing evolution. It's complex, fascinating history of bicultural city!`,
+
+      seo: {
+        title: 'Montreal Historical Tours 2025 - French Canadian Heritage & City History',
+        description: 'Explore Montreal history! French colonial heritage, Notre-Dame, Mount Royal, and 380 years of culture!',
+        keywords: 'Montreal history tours, Montreal heritage, Mount Royal, Olympic Stadium Montreal, Quebec history',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Unique History',
+          description: 'Only major French-speaking city in North America!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Mount Royal',
+          description: 'Iconic park giving Montreal its name with city views!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Bicultural Story',
+          description: 'Fascinating French-English dynamic shaping Montreal.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Historic Architecture',
+          description: 'French colonial, Victorian, and modern buildings!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Montreal History Walking Tour',
+          description: 'Explore founding, French heritage, and key historical sites.',
+          features: [
+            '3 hours',
+            'Multiple eras',
+            'Expert guide',
+            'Walking',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Mount Royal Park Tour',
+          description: 'Visit park summit for panoramic views and Olmsted design.',
+          features: [
+            '2-3 hours',
+            'Park tour',
+            'Summit views',
+            'Nature + history',
+            'Scenic',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Olympic Stadium Tour',
+          description: 'Behind-scenes at iconic 1976 Olympic venue.',
+          features: [
+            '90 minutes',
+            'Stadium tour',
+            'Tower access',
+            'Sports history',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Heritage Buildings Tour',
+          description: 'Architectural tour of historic Victorian and colonial buildings.',
+          features: [
+            '3 hours',
+            'Architecture',
+            'Multiple eras',
+            'Photo stops',
+            'Educational',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Montreal Historical Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Mount Royal: 2-3 hours. Full historical: 4-5 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Mount Royal',
+            description: 'Mountain in city center with summit views and Frederick Law Olmsted design.',
+          },
+          {
+            icon: 'Heart',
+            title: 'French Heritage',
+            description: 'Understand how Montreal maintained French language and culture.',
+          },
+          {
+            icon: 'Camera',
+            title: 'St. Joseph\'s Oratory',
+            description: 'Massive basilica on Mount Royal slope - impressive architecture!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Founding Story',
+            description: 'Learn about 1642 founding and evolution into modern city.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Olympic Legacy',
+            description: 'Visit 1976 Olympic sites including distinctive stadium tower.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Mount Royal summit accessible by car, bus, or 20-minute hike - views are worth it!',
+        'Olympic Stadium tower ($24) offers 360° views from tallest inclined tower.',
+        'St. Joseph\'s Oratory ($5 donation) - climb 283 steps or take funicular.',
+        'Free historical walking tours (tip-based) available in Old Montreal.',
+        'McGill University campus beautiful - walk through freely.',
+        'Many museums closed Mondays - plan historical tours Tuesday-Sunday.',
+        'Summer Tam-Tams at Mount Royal (Sundays) - drum circle and market!',
+        'Learn a few French words - effort appreciated by locals!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Mount Royal?',
+          answer: 'Mount Royal (Mont Royal) is mountain in city center giving Montreal its name! Frederick Law Olmsted-designed park with summit lookout offering panoramic views. Accessible by hike, bus, or car. FREE! Essential Montreal sight - locals love it.',
+        },
+        {
+          question: 'Can you visit Olympic Stadium?',
+          answer: 'Yes! Montreal Olympic Stadium ($15 tour) shows 1976 Olympic venue with distinctive inclined tower. Tower observation deck ($24) has views. Architecture unique (love it or hate it!). Sports fans and architecture buffs enjoy it. Quick 90-minute tour.',
+        },
+        {
+          question: 'Is Montreal historically significant?',
+          answer: 'Very! Founded 1642 as French colony, conquered by British 1760, became largest French-speaking city in North America. It played key role in fur trade, railroad, and Canadian development. Unique French-English bicultural history. Tours bring it alive!',
+        },
+        {
+          question: 'What is St. Joseph\'s Oratory?',
+          answer: 'St. Joseph\'s Oratory is massive basilica on Mount Royal slope - Canada\'s largest church! Built 1924-1967. Dome is third-largest in world. $5 donation. 283 steps (some pilgrims climb on knees!). Impressive architecture and city views. Worth visiting!',
+        },
+        {
+          question: 'How much do historical tours cost?',
+          answer: 'Walking tours: $40-70 (2-3 hours). Free walking tours (tip-based). Mount Royal: FREE (park). Olympic Stadium: $15-24. Museum combos: $30-50. Private: $150-300 for group. Montreal history accessible and affordable!',
+        },
+        {
+          question: 'Can you hike Mount Royal?',
+          answer: 'Yes! Multiple trails to summit - most popular is 20-30 minute hike from parking/bus stop. It\'s moderate climb but paved. Summit has lookout (Belvédère Kondiaronk) with incredible city views. FREE! Locals jog/walk it daily. Highly recommended!',
+        },
+        {
+          question: 'When is the best time for historical tours?',
+          answer: 'Spring/summer (April-Sept) best for walking and Mount Royal. Fall gorgeous with foliage. Winter cold but Underground City tours work well. Historical sites accessible year-round. Summer busiest but most pleasant for outdoor exploration.',
+        },
+        {
+          question: 'Are historical tours in English?',
+          answer: 'Yes! Most tours offered in English and French. Montreal is officially bilingual. Tour companies cater to both languages. Book English tours in advance. Guides speak both languages. No language barrier for tourists!',
+        },
+      ],
+    },
+
+    'neighborhood-tours': {
+      title: 'Montreal Neighborhood Tours',
+      subtitle: 'Explore Plateau, Mile End, Little Italy, and Montreal\'s diverse communities!',
+      categoryName: 'Neighborhood Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 45,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Montreal's vibrant neighborhoods beyond downtown - each with distinct character! Neighborhood tours explore trendy Plateau Mont-Royal (Victorian triplex homes, murals, cafes), hipster Mile End (bagel shops, multicultural, Arcade Fire neighborhood!), Little Italy (Jean-Talon Market, Italian heritage), Gay Village (Rainbow flags, nightlife), Outremont (upscale French Montrealers), and diverse ethnic enclaves. Walk residential streets seeing how Montrealers actually live, visit local shops, sample neighborhood specialties, and experience authentic culture. Learn about immigration waves, gentrification, language dynamics, and neighborhood pride. It's real Montreal beyond tourist zones!`,
+
+      seo: {
+        title: 'Montreal Neighborhood Tours 2025 - Plateau, Mile End & Local Culture',
+        description: 'Explore Montreal neighborhoods! Plateau, Mile End, Little Italy, and authentic Montreal!',
+        keywords: 'Montreal neighborhoods, Plateau Mont-Royal, Mile End Montreal, Little Italy Montreal, Montreal walking tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Montreal',
+          description: 'Experience where Montrealers live beyond tourist areas!',
+        },
+        {
+          icon: 'Star',
+          title: 'Street Art',
+          description: 'Plateau and Mile End showcase incredible murals!',
+        },
+        {
+          icon: 'Users',
+          title: 'Multicultural',
+          description: 'Neighborhoods reflect Italian, Jewish, Portuguese, Haitian communities!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Victorian Homes',
+          description: 'Colorful triplexes with outdoor staircases - iconic Montreal!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Plateau Walking Tour',
+          description: 'Explore Montreal\'s trendiest neighborhood with murals and cafes.',
+          features: [
+            '3 hours',
+            'Street art',
+            'Victorian homes',
+            'Cafe culture',
+            'Trendy',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Mile End Food Tour',
+          description: 'Walk bagel bakeries, cafes, and multicultural Mile End.',
+          features: [
+            '3-4 hours',
+            'Bagels',
+            'Food stops',
+            'Hipster vibe',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Little Italy Tour',
+          description: 'Explore Italian neighborhood with market and cultural sites.',
+          features: [
+            '3 hours',
+            'Italian culture',
+            'Market visit',
+            'Food tastings',
+            'Authentic',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Multi-Neighborhood Tour',
+          description: 'Visit 3-4 neighborhoods seeing diverse Montreal.',
+          features: [
+            '4-5 hours',
+            'Multiple areas',
+            'Van transport',
+            'Comprehensive',
+            'Efficient',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Montreal Neighborhood Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 3-4 hours. Multi-neighborhood: 4-5 hours by van.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Plateau Triplexes',
+            description: 'See colorful Victorian homes with iconic outdoor staircases.',
+          },
+          {
+            icon: 'Star',
+            title: 'Mile End Bagels',
+            description: 'Visit Fairmount or St-Viateur watching bagels being wood-fired!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Street Murals',
+            description: 'Vibrant street art throughout Plateau and Mile End neighborhoods.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Local Businesses',
+            description: 'Visit neighborhood cafes, bakeries, and shops Montrealers frequent.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Community Stories',
+            description: 'Learn about immigration, language issues, and neighborhood character.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Plateau best explored afternoon when cafes and shops are open.',
+        'Mile End has best bagels - watch them being made at Fairmount (24/7!).',
+        'Jean-Talon Market in Little Italy - combine with neighborhood tour.',
+        'Metro reaches all neighborhoods - efficient and cheap ($3.50/ride).',
+        'Outdoor staircases are iconic Montreal - Plateau has best examples.',
+        'Gay Village (Sainte-Catherine Street) has rainbow balls overhead - photogenic!',
+        'Bring camera - neighborhoods are incredibly photogenic!',
+        'Weekends neighborhoods busiest - weekdays more intimate.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Plateau?',
+          answer: 'Plateau Mont-Royal is trendy neighborhood with Victorian triplex homes (outdoor staircases!), street art, hip cafes, and young creative crowd. It\'s Montreal\'s coolest area! Rue Saint-Denis and Mont-Royal Avenue are main drags. Essential Montreal neighborhood.',
+        },
+        {
+          question: 'What is Mile End known for?',
+          answer: 'Mile End is hipster neighborhood famous for bagel shops (Fairmount, St-Viateur), multicultural vibe, vintage shops, and Arcade Fire connection! Younger, artsy crowd. Great cafes and restaurants. It\'s Brooklyn of Montreal. Essential foodie destination!',
+        },
+        {
+          question: 'Can you visit neighborhoods without guide?',
+          answer: 'Yes! Metro reaches all neighborhoods easily. Plateau and Mile End walkable and safe. However, guides provide history, insider spots, and cultural context. Free walking tours available. DIY works but tours enhance experience. Both options good!',
+        },
+        {
+          question: 'How much do neighborhood tours cost?',
+          answer: 'Walking tours: $45-75 (3-4 hours). Food tours: $60-95. Multi-neighborhood: $75-110. Private: $150-300. Neighborhoods free to explore DIY. Tours add value through stories and local access!',
+        },
+        {
+          question: 'Are Montreal neighborhoods safe?',
+          answer: 'Very safe! Plateau, Mile End, Little Italy, Outremont all safe daytime and evening. Use normal urban awareness. Montreal has low crime compared to many North American cities. Neighborhoods walkable and welcoming. Millions explore safely!',
+        },
+        {
+          question: 'What are the outdoor staircases?',
+          answer: 'Iconic Montreal feature - Victorian homes have exterior staircases to save indoor space! Plateau has best examples in various colors. They\'re practical (snow/ice clearing) and beautiful. Very photogenic - symbol of Montreal residential architecture!',
+        },
+        {
+          question: 'When is best time for neighborhood tours?',
+          answer: 'Spring/summer (May-Sept) best for walking. Fall foliage beautiful. Winter cold but neighborhoods charming with snow. Weekend mornings lively. Afternoon/evening cafe culture best. Year-round accessible - choose based on weather preference!',
+        },
+        {
+          question: 'Which neighborhood should I visit?',
+          answer: 'Plateau (#1 - trendy, street art, cafes). Mile End (bagels, hipster). Little Italy (market, Italian culture). Each offers different Montreal experience. First-timers: Start with Plateau or Mile End. Time allowing: Visit multiple for full picture!',
+        },
+      ],
+    },
+
+    'architecture-tours': {
+      title: 'Montreal Architecture Tours',
+      subtitle: 'Explore French colonial, Victorian, and modern architectural masterpieces!',
+      categoryName: 'Architecture Tours',
+      
+      stats: {
+        toursAvailable: 46,
+        priceFrom: 50,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Montreal's exceptional architecture blending European and North American styles! Architecture tours explore diverse periods: French colonial (Old Montreal), Gothic Revival (Notre-Dame Basilica), Victorian (Plateau triplexes), Art Deco, Brutalist (Habitat 67!), and contemporary designs. See iconic Montreal buildings like Place Ville Marie, Olympic Stadium (controversial design), underground city RÉSO, Montreal Museum of Fine Arts, and innovative modern structures. Unique features include outdoor staircases, church spires dominating skylines, and bilingual signage. Tours explain how climate, French heritage, and cosmopolitan character shaped architecture. It's architectural diversity!`,
+
+      seo: {
+        title: 'Montreal Architecture Tours 2025 - Art Deco, Victorian & Habitat 67',
+        description: 'Explore Montreal architecture! Colonial buildings, Victorian homes, Habitat 67, and diverse styles!',
+        keywords: 'Montreal architecture tours, Habitat 67, Montreal buildings, Victorian Montreal, Montreal design',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Habitat 67',
+          description: 'Iconic Brutalist housing complex - architectural landmark!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Outdoor Staircases',
+          description: 'Unique Montreal feature - exterior staircases on Victorian homes!',
+          },
+        {
+          icon: 'Camera',
+          title: 'Diverse Styles',
+          description: 'French colonial to ultra-modern in one compact city!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Bilingual Design',
+          description: 'French and English influences creating unique aesthetic!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Architecture Tour',
+          description: 'Survey Montreal architecture from colonial to contemporary.',
+          features: [
+            '3 hours',
+            'Multiple eras',
+            'Major buildings',
+            'Expert guide',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Habitat 67 Tour',
+          description: 'Visit iconic Brutalist complex with guided explanation.',
+          features: [
+            '90 minutes',
+            'Habitat 67',
+            'Architecture focus',
+            'Photo ops',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Victorian Homes Tour',
+          description: 'Explore Plateau seeing colorful triplexes and staircases.',
+          features: [
+            '2 hours',
+            'Residential',
+            'Victorian era',
+            'Staircases',
+            'Photogenic',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Modern Architecture Tour',
+          description: 'Focus on contemporary and 20th-century designs.',
+          features: [
+            '3 hours',
+            'Modern focus',
+            'Olympic Stadium',
+            'Innovation',
+            'Current',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Montreal Architecture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 2-3 hours. Comprehensive: 4 hours covering multiple styles.',
+          },
+          {
+            icon: 'Star',
+            title: 'Habitat 67',
+            description: 'Moshe Safdie\'s modular housing - looks like stacked blocks!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Notre-Dame Interior',
+            description: 'Gothic Revival masterpiece with blue vaulted ceiling and gold details.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Triplexes',
+            description: 'Three-story homes with outdoor spiral staircases - uniquely Montreal!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Church Spires',
+            description: 'Montreal called "City of Saints" for numerous historic churches.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Design Evolution',
+            description: 'Understand how architecture reflects Montreal\'s cultural evolution.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Habitat 67 best viewed from distance (Old Port) - it\'s residential (can\'t go inside).',
+        'Plateau outdoor staircases most photogenic in snow - winter visits rewarding!',
+        'Notre-Dame Basilica interior tour essential for architecture fans.',
+        'Olympic Stadium architecture controversial - "love it or hate it" building!',
+        'McGill University campus has beautiful neo-classical buildings - walk freely.',
+        'Underground City (RÉSO) architectural achievement - explore in winter.',
+        'Many beautiful churches open for visits - donations appreciated.',
+        'Architecture walks best on foot - see details you\'d miss from vehicles.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Habitat 67?',
+          answer: 'Habitat 67 is iconic Brutalist housing complex built for 1967 Expo - looks like stacked concrete blocks! Moshe Safdie designed it. Still residential (can\'t tour inside) but viewable from Old Port. Architecture students love it. Controversial but iconic Montreal building!',
+        },
+        {
+          question: 'Why do Montreal homes have outdoor staircases?',
+          answer: 'Outdoor staircases saved interior space in small lots and made ice/snow clearing easier (off main living areas). They became Montreal signature! Plateau has best examples in various colors. Practical meets beautiful - uniquely Quebec solution!',
+        },
+        {
+          question: 'Is Montreal architecture worth touring?',
+          answer: 'Yes! Montreal has unique architectural mix: French colonial, Victorian triplexes, Art Deco, Brutalist (Habitat 67), and contemporary. Outdoor staircases, church spires, bilingual design - it\'s distinctive. Architecture fans find Montreal fascinating! Diverse and photogenic.',
+        },
+        {
+          question: 'Can you visit church interiors?',
+          answer: 'Most are open! Notre-Dame ($8) is must-see. St. Joseph\'s Oratory ($5 donation). Many smaller churches FREE with donation. Respect Mass times. Montreal has 600+ churches - architecture and art treasures. Beautiful sacred spaces!',
+        },
+        {
+          question: 'What is Montreal\'s architectural style?',
+          answer: 'Mixed! French colonial (Old Montreal), Victorian/Edwardian (Plateau triplexes), Art Deco, mid-century modern, Brutalist (Olympic Stadium, Habitat 67), contemporary glass towers. No single style - diversity is Montreal\'s signature. European meets North American!',
+        },
+        {
+          question: 'How much do architecture tours cost?',
+          answer: 'Walking tours: $50-80 (2-3 hours). Specialized tours: $60-100. Free self-guided walking possible. Entry fees separate (Notre-Dame $8, etc.). Architecture tours worth it for expert commentary. Budget: Self-explore with research.',
+        },
+        {
+          question: 'When is the best time for architecture tours?',
+          answer: 'Year-round! Spring/summer: Comfortable walking. Fall: Beautiful foliage backdrop. Winter: Snow makes buildings picturesque but cold! Outdoor staircases photogenic in snow. Architecture doesn\'t change - visit based on weather preference!',
+        },
+        {
+          question: 'Can you photograph Montreal buildings?',
+          answer: 'Yes! Street photography allowed. Interiors: Ask permission (churches usually OK). Habitat 67 viewable from distance. Triplexes are private homes - photograph from street respectfully. Montreal very photogenic - bring camera!',
+        },
+      ],
+    },
+  },
+
+  nashville: {
+    'country-music-tours': {
+      title: 'Nashville Country Music Tours',
+      subtitle: 'Explore the birthplace of country music, honky-tonks, and Music Row!',
+      categoryName: 'Country Music Tours',
+      
+      stats: {
+        toursAvailable: 96,
+        priceFrom: 50,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Experience Nashville - Music City USA and the heart of country music! Country music tours explore legendary sites like the Grand Ole Opry (country music's most famous venue since 1925), RCA Studio B (where Elvis recorded), Music Row (recording studios and labels), Country Music Hall of Fame, Ryman Auditorium (Mother Church of Country Music), and historic honky-tonks on Broadway. Tours include behind-the-scenes studio access, museum visits, live music experiences, and stories of country legends. Learn about Nashville's evolution from Southern city to music capital, hear about Johnny Cash, Dolly Parton, and current stars, and understand why Nashville dominates American music. It's country music mecca!`,
+
+      seo: {
+        title: 'Nashville Country Music Tours 2025 - Grand Ole Opry & Music Row',
+        description: 'Experience Nashville country music! Grand Ole Opry, honky-tonks, Music Row, and Music City!',
+        keywords: 'Nashville country music tours, Grand Ole Opry, Music Row Nashville, Ryman Auditorium, Nashville music',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Music',
+          title: 'Music City',
+          description: 'Country music capital with live music everywhere!',
+        },
+        {
+          icon: 'Star',
+          title: 'Grand Ole Opry',
+          description: 'Legendary venue that made country music famous!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Honky-Tonks',
+          description: 'Broadway bars with FREE live music all day, every day!',
+        },
+        {
+          icon: 'Users',
+          title: 'Music History',
+          description: 'Walk where legends recorded and performed!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Grand Ole Opry Tour',
+          description: 'Behind-the-scenes Opry tour plus show ticket.',
+          features: [
+            '4-5 hours',
+            'Backstage tour',
+            'Show ticket',
+            'History',
+            'Iconic',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Music Row & Studio B',
+          description: 'Tour recording studios where legends recorded.',
+          features: [
+            '3 hours',
+            'RCA Studio B',
+            'Music Row',
+            'Historic studios',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'Music',
+          title: 'Honky-Tonk Pub Crawl',
+          description: 'Visit multiple Broadway honky-tonks with live music.',
+          features: [
+            '3-4 hours',
+            'Multiple bars',
+            'Live music',
+            'Drinks included',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Country Music Hall of Fame',
+          description: 'Museum tour showcasing country music history.',
+          features: [
+            '2-3 hours',
+            'Museum visit',
+            'Artifacts',
+            'Elvis car',
+            'Comprehensive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Nashville Country Music Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours. Grand Ole Opry: 4-5 hours with show. Full day: 6-8 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Grand Ole Opry',
+            description: 'Longest-running radio show in US - see where country stars perform!',
+          },
+          {
+            icon: 'Music',
+            title: 'Live Honky-Tonks',
+            description: 'FREE live music on Broadway starting noon - every bar, every day!',
+          },
+          {
+            icon: 'Heart',
+            title: 'RCA Studio B',
+            description: 'Historic studio where Elvis, Dolly Parton, and legends recorded hits.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Music Row',
+            description: 'See recording studios, labels, and where music business happens.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Country History',
+            description: 'Learn about genre evolution from bluegrass to modern country.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Grand Ole Opry tickets sell out weeks ahead - book early! Shows Tuesday, Friday, Saturday.',
+        'Honky-tonks have FREE live music all day - no cover charge!',
+        'Ryman Auditorium ($30) self-guided tour worth it - gorgeous venue!',
+        'Robert\'s Western World, Tootsie\'s, Layla\'s are classic honky-tonks.',
+        'Country Music Hall of Fame ($30) needs 2-3 hours - extensive exhibits.',
+        'RCA Studio B tour included with Hall of Fame ticket - do both!',
+        'Broadway gets rowdy evening/night - daytime more family-friendly.',
+        'Tip musicians in honky-tonks - they play for tips ($5-20 appreciated).',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Grand Ole Opry?',
+          answer: 'Grand Ole Opry is longest-running radio show in US (since 1925) and country music\'s most famous venue! Live shows feature country stars in 4,400-seat hall. Shows: Tue/Fri/Sat ($50-150). Behind-scenes tours ($40). It\'s country music temple! Book weeks ahead.',
+        },
+        {
+          question: 'Are honky-tonks free?',
+          answer: 'YES! No cover charge at Broadway honky-tonks. Live music starts noon, runs until 3 AM. However, buy drinks (house minimum $10-20) and TIP musicians ($5-20)! Robert\'s, Tootsie\'s, Layla\'s all free entry. Essential Nashville experience!',
+        },
+        {
+          question: 'How much do Nashville music tours cost?',
+          answer: 'Grand Ole Opry show: $50-150. Backstage tour: $40. Hall of Fame: $30. Pub crawls: $60-90. Music Row tours: $50-75. Ryman tour: $30. Many FREE experiences (honky-tonks!). Budget: Free Broadway bars. Splurge: Opry show.',
+        },
+        {
+          question: 'Can you visit RCA Studio B?',
+          answer: 'Yes! Historic studio (oldest in Nashville!) where Elvis, Dolly Parton, Roy Orbison recorded. Tour included with Hall of Fame ticket ($30 total). You stand where legends recorded! 45-minute tour. Music fans love it - seeing actual studio is special!',
+        },
+        {
+          question: 'What is the Ryman Auditorium?',
+          answer: 'Ryman is "Mother Church of Country Music" - former Grand Ole Opry home (1943-1974). Now concert venue with incredible acoustics! $30 self-guided tour shows history. Still hosts shows ($40-150). Beautiful building, amazing history. Don\'t skip!',
+        },
+        {
+          question: 'When is the best time to experience Nashville music?',
+          answer: 'Year-round! Music never stops. Summer festival season. CMA Fest (June) huge country festival. Weekend honky-tonks packed (fun but loud!). Weekday afternoons less crowded. Grand Ole Opry: Tue/Fri/Sat shows. Visit anytime - music is constant!',
+        },
+        {
+          question: 'Do you need tickets for honky-tonks?',
+          answer: 'NO! Broadway honky-tonks are free entry with live music all day/night. Just buy drinks and tip musicians. No reservations (first-come seating). Some special shows at Ryman/Opry require tickets but regular honky-tonks are free!',
+        },
+        {
+          question: 'Is Nashville worth it for non-country fans?',
+          answer: 'Yes! Nashville has blues, rock, Americana, indie scenes too. Honky-tonks play variety beyond country. Music history fascinating even if not country fan. Plus food scene, architecture, nightlife. However, it IS country music capital - embrace it!',
+        },
+      ],
+    },
+
+    'broadway-tours': {
+      title: 'Nashville Broadway Tours',
+      subtitle: 'Experience the honky-tonk highway with live music and neon lights!',
+      categoryName: 'Broadway Tours',
+      
+      stats: {
+        toursAvailable: 72,
+        priceFrom: 40,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience Broadway - Nashville's legendary honky-tonk highway! This 5-block stretch (Lower Broadway from 1st to 5th Avenue) features 40+ bars with FREE live country music playing all day, every day from noon to 3 AM! Broadway tours explore iconic venues like Tootsie's Orchid Lounge (where legends launched careers), Robert's Western World (still has original stage where Brazilton Brothers played), Rippy's, Layla's, and newer additions. Neon signs light up the street creating vibrant nightlife atmosphere. Tours include bar hopping, music history, behind-the-scenes stories, and sometimes drink packages. Learn about honky-tonk culture, Nashville's music business, and where tomorrow's stars perform today. It's Music City's beating heart!`,
+
+      seo: {
+        title: 'Nashville Broadway Tours 2025 - Honky-Tonks & Live Music',
+        description: 'Experience Nashville Broadway! Honky-tonks, FREE live music, and Music City nightlife!',
+        keywords: 'Nashville Broadway, honky-tonks Nashville, Tootsies Nashville, Broadway bars, Nashville nightlife',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Music',
+          title: 'FREE Live Music',
+          description: 'No cover charge at honky-tonks - music all day, every day!',
+        },
+        {
+          icon: 'Star',
+          title: 'Tootsie\'s Orchid Lounge',
+          description: 'Legendary venue where Willie Nelson, Patsy Cline launched careers!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Neon Lights',
+          description: 'Vibrant street with neon signs and energetic atmosphere!',
+        },
+        {
+          icon: 'Users',
+          title: 'Discover New Talent',
+          description: 'See tomorrow\'s country stars performing for tips today!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Music',
+          title: 'Honky-Tonk Pub Crawl',
+          description: 'Visit 4-5 classic honky-tonks with live music and drinks.',
+          features: [
+            '3-4 hours',
+            'Multiple bars',
+            'Live music',
+            'Drink specials',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Broadway History Tour',
+          description: 'Learn stories of legendary venues and Music City history.',
+          features: [
+            '2-3 hours',
+            'Historic venues',
+            'Music stories',
+            'Walking',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'VIP Honky-Tonk Experience',
+          description: 'Skip lines with reserved tables and drink packages.',
+          features: [
+            '3 hours',
+            'VIP access',
+            'Reserved seating',
+            'Drinks included',
+            'Premium',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Broadway & 2nd Avenue Tour',
+          description: 'Explore expanded entertainment district beyond Broadway.',
+          features: [
+            '3-4 hours',
+            'Broader area',
+            'Multiple venues',
+            'Variety',
+            'Comprehensive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Nashville Broadway Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Pub crawls: 3-4 hours. Walking tours: 2-3 hours. Full evening: 4-6 hours.',
+          },
+          {
+            icon: 'Music',
+            title: 'Live Music',
+            description: 'Bands play sets every hour on multiple stages - constant music!',
+          },
+          {
+            icon: 'Star',
+            title: 'Tootsie\'s Orchid Lounge',
+            description: 'Historic purple bar through alley from Ryman - Willie Nelson drank here!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Robert\'s Western World',
+            description: 'Authentic honky-tonk with fried bologna sandwiches and traditional country.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Neon Atmosphere',
+            description: 'Vibrant street lit up at night with music pouring from every doorway.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Music Business',
+            description: 'Learn how Broadway bars launch careers and showcase talent.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Broadway honky-tonks FREE but expect to buy drinks ($6-10/beer) and tip musicians!',
+        'Daytime (noon-5 PM) more relaxed and family-friendly than night rowdiness.',
+        'Tootsie\'s, Robert\'s, and Layla\'s are classics - don\'t skip these three!',
+        'Musicians rotate every hour - stay put or bar-hop to hear variety.',
+        'Weeknights less crowded than Friday-Sunday but still plenty of music.',
+        'Pedal taverns (party bikes) clog Broadway - love them or hate them!',
+        'Wear boots - it\'s Nashville! Blend in and embrace country atmosphere.',
+        'Tip musicians $5-20 per band - they play for tips and you\'ll make their night!',
+      ],
+
+      faqs: [
+        {
+          question: 'Are Broadway honky-tonks free?',
+          answer: 'YES! No cover charge. Live music noon-3 AM daily. However, buy drinks (draft beer $6-10, cocktails $8-15) and TIP musicians ($5-20)! Bands rotate hourly. Robert\'s, Tootsie\'s, Layla\'s all free. Essential Nashville - you MUST experience it!',
+        },
+        {
+          question: 'What is Tootsie\'s Orchid Lounge?',
+          answer: 'Tootsie\'s is legendary honky-tonk (since 1960) with purple facade behind Ryman Auditorium. Willie Nelson, Patsy Cline, Kris Kristofferson launched careers here! Still has live music daily. FREE entry. Walls covered with autographs. Nashville institution!',
+        },
+        {
+          question: 'How many honky-tonks are on Broadway?',
+          answer: '40+ bars on Lower Broadway (1st-5th Avenue)! Most have live music. Robert\'s Western World, Tootsie\'s, Layla\'s, Rippy\'s, Legends Corner are classics. Each has 2-4 floors with bands on each! Music never stops on Broadway.',
+        },
+        {
+          question: 'Can you visit Broadway during the day?',
+          answer: 'Yes! Music starts noon daily. Daytime more relaxed, family-friendly, easier to talk. Evening (7 PM+) louder, crowder, party atmosphere. Both fun - depends on vibe you want! Music quality same all day.',
+        },
+        {
+          question: 'How much do drinks cost on Broadway?',
+          answer: 'Beer: $6-10. Cocktails: $8-15. Shots: $5-10. Not cheap but reasonable for live music venue. Budget $20-40/person for 3-4 drinks over few hours. Free music is value! Bring cash for tipping musicians.',
+        },
+        {
+          question: 'Is Broadway safe?',
+          answer: 'Very safe! Tourist area with police presence. Crowded evening but that\'s atmosphere. Watch belongings in crowds. Can get rowdy late night (drunk bachelorette parties!). Daytime totally safe. Use common sense - millions visit without issues!',
+        },
+        {
+          question: 'When is the best time to visit Broadway?',
+          answer: 'Year-round! Music never stops. Weekend nights packed (fun chaos!). Weekday afternoons less crowded. Summer outdoor activity. Winter indoor warmth. CMA Fest (June) craziest. Daytime family-friendly, evening party vibe. Visit both for different experiences!',
+        },
+        {
+          question: 'Do you need tour for Broadway?',
+          answer: 'Not essential - bars are free entry and self-exploratory! However, tours provide history, best bar recommendations, and skip-line access at popular spots. DIY totally works. Tours ($40-90) add value for first-timers wanting context and efficiency.',
+        },
+      ],
+    },
+
+    'food-and-hot-chicken-tours': {
+      title: 'Nashville Food & Hot Chicken Tours',
+      subtitle: 'Taste spicy Nashville hot chicken, Southern comfort food, and BBQ!',
+      categoryName: 'Food & Hot Chicken Tours',
+      
+      stats: {
+        toursAvailable: 84,
+        priceFrom: 60,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Nashville's delicious food scene - Southern comfort meets spicy innovation! Nashville food tours explore the city's signature dish: Nashville hot chicken (fried chicken coated in cayenne pepper paste - originated at Prince's Hot Chicken Shack!), alongside Southern staples like biscuits and gravy, meat-and-three plates, banana pudding, and Tennessee BBQ. Visit iconic joints like Hattie B's (tourist favorite), Prince's (original!), Bolton's (locals' choice), farm-to-table restaurants, food halls, and trendy 12South neighborhood eateries. Sample hot chicken at various heat levels (mild to "shut the cluck up"!), taste classic Southern sides, and explore Nashville's culinary evolution. It's spicy, soul-satisfying Southern food!`,
+
+      seo: {
+        title: 'Nashville Food & Hot Chicken Tours 2025 - Hot Chicken & Southern Cuisine',
+        description: 'Experience Nashville food! Hot chicken, Southern comfort food, BBQ, and culinary tours!',
+        keywords: 'Nashville hot chicken, Nashville food tours, Hattie B hot chicken, Prince hot chicken, Nashville BBQ',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Nashville Hot Chicken',
+          description: 'City invented hot chicken - spicy, crispy, unforgettable!',
+        },
+        {
+          icon: 'Star',
+          title: 'Southern Comfort Food',
+          description: 'Biscuits, gravy, meat-and-three, banana pudding - soul-satisfying!',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Institutions',
+          description: 'Visit family-run spots serving recipes for generations!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Food Innovation',
+          description: 'Nashville blends traditional Southern with modern creativity!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Hot Chicken Tour',
+          description: 'Sample hot chicken at 3-4 spots comparing styles and heat.',
+          features: [
+            '3-4 hours',
+            'Multiple spots',
+            'Heat levels',
+            'Milk included!',
+            'Spicy',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Southern Food Tour',
+          description: 'Taste biscuits, BBQ, meat-and-three, and Southern classics.',
+          features: [
+            '3-4 hours',
+            '6-8 tastings',
+            'Comfort food',
+            'Cultural stories',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: '12South Food Tour',
+          description: 'Explore trendy neighborhood with modern Nashville dining.',
+          features: [
+            '3 hours',
+            'Trendy area',
+            'Modern Southern',
+            'Instagram-worthy',
+            'Hip',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'BBQ & Whiskey Tour',
+          description: 'Tennessee BBQ paired with local whiskey tastings.',
+          features: [
+            '4 hours',
+            'BBQ focus',
+            'Whiskey',
+            'Pairings',
+            'Smoky',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Nashville Food & Hot Chicken Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Hot Chicken',
+            description: 'Fried chicken with cayenne paste - choose heat level (mild to insane!).',
+          },
+          {
+            icon: 'Star',
+            title: 'Meat-and-Three',
+            description: 'Nashville tradition - pick protein + three sides (mac & cheese, greens, etc).',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Prince\'s Hot Chicken',
+            description: 'Original hot chicken spot where dish was invented in 1930s!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Southern Sides',
+            description: 'Collard greens, mac & cheese, fried okra, cornbread - classic Southern!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Food History',
+            description: 'Learn about hot chicken origin story and Southern food traditions.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Hot chicken heat levels: START MILD! Even "medium" is seriously spicy.',
+        'Prince\'s (original, cash-only) vs. Hattie B\'s (tourist-friendly) - try both!',
+        'Bolton\'s locals prefer for authentic hot chicken experience.',
+        'Order milk with hot chicken - beer makes heat worse!',
+        'Meat-and-three lunch spots ($8-12) are budget Southern food.',
+        'Arnold\'s Country Kitchen (meat-and-three) cash-only, closes at 2:30 PM weekdays.',
+        'Come HUNGRY - portions are generous and tours have many stops.',
+        'Hot chicken is messy - bring napkins and embrace it!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Nashville hot chicken?',
+          answer: 'Nashville hot chicken is fried chicken coated in cayenne pepper paste! Invented 1930s at Prince\'s. It\'s crispy, spicy (mild to extremely hot), served on white bread with pickles. Heat levels: Mild, Medium, Hot, X-Hot, XXX. Start mild - even medium is VERY spicy!',
+        },
+        {
+          question: 'Where is the best hot chicken?',
+          answer: 'Prince\'s (original, most authentic, cash-only). Hattie B\'s (popular, tourist-friendly, consistent). Bolton\'s (locals\' favorite, spiciest). Each has devoted fans! Debate rages endlessly. Tours let you try multiple - best way to decide yourself!',
+        },
+        {
+          question: 'How spicy is Nashville hot chicken?',
+          answer: 'VERY spicy at higher levels! Mild: Moderate kick. Medium: Quite spicy. Hot/X-Hot: Extremely spicy. XXX: Painful for most people! Order milk (beer makes it worse). Start mild - you can always go hotter next time. Don\'t underestimate it!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Hot chicken tours: $60-90 (3-4 hours, 3-4 spots). Southern food tours: $65-95 (6-8 tastings). BBQ tours: $70-100. Private: $200-400 for group. Tours replace meals - good value for variety and avoiding bad spots!',
+        },
+        {
+          question: 'What is meat-and-three?',
+          answer: 'Meat-and-three is Nashville lunch tradition - choose one protein (fried chicken, meatloaf, pork chop) plus three sides from 8-12 options. $8-12 for filling Southern plate. Arnold\'s Country Kitchen is legendary. Cafeteria-style, quick, delicious!',
+        },
+        {
+          question: 'Can vegetarians eat in Nashville?',
+          answer: 'Challenging but possible! Hot chicken is chicken (duh!). However, sides are great: mac & cheese, greens, beans. Some restaurants offer cauliflower hot chicken. Nashville has veggie restaurants (Avo, The Wild Cow). Communicate needs - most places accommodate!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Lunch tours (11 AM-2 PM) hit meat-and-three spots. Dinner tours (5-8 PM) for hot chicken (lighter lunch recommended before spicy dinner!). Food scene runs daily. Hot chicken anytime but prepare for heat!',
+        },
+        {
+          question: 'Should I try hot chicken?',
+          answer: 'ABSOLUTELY! It\'s Nashville\'s signature dish. Start with mild or medium heat level. Have milk ready. It\'s spicy but incredibly flavorful - crispy skin, juicy chicken. Even if not into spicy food, mild is manageable. Must-try Nashville experience!',
+        },
+      ],
+    },
+
+    'historical-tours': {
+      title: 'Nashville Historical Tours',
+      subtitle: 'Explore Civil War history, plantations, and Tennessee heritage!',
+      categoryName: 'Historical Tours',
+      
+      stats: {
+        toursAvailable: 52,
+        priceFrom: 45,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Discover Nashville's rich history beyond music! Historical tours explore Civil War sites (Battle of Nashville,Nashville National Cemetery), historic plantations (Belle Meade, Andrew Jackson's Hermitage), State Capitol building, historic Germantown neighborhood, and museums documenting Tennessee heritage. Learn about Nashville's role in Civil War (changing hands multiple times!), antebellum South, Reconstruction era, Civil Rights movement, and growth into modern city. Tours include plantation visits explaining complex histories, battlefield tours, architecture walks, and cultural heritage sites. Understand Tennessee's evolution, Southern history's difficult legacy, and how Nashville balanced preservation with progress. It's American South history!`,
+
+      seo: {
+        title: 'Nashville Historical Tours 2025 - Civil War, Plantations & Tennessee Heritage',
+        description: 'Explore Nashville history! Civil War sites, historic plantations, and Tennessee heritage!',
+        keywords: 'Nashville history tours, Nashville Civil War, Hermitage plantation, Belle Meade Nashville, Nashville heritage',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'The Hermitage',
+          description: 'Andrew Jackson\'s plantation - one of America\'s best presidential homes!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Civil War Sites',
+          description: 'Battle of Nashville sites and National Cemetery.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Complex History',
+          description: 'Honest exploration of antebellum South and slavery legacy.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Greek Revival',
+          description: 'Beautiful antebellum architecture and historic homes!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Hermitage Plantation Tour',
+          description: 'Visit Andrew Jackson\'s estate with mansion and grounds.',
+          features: [
+            '3 hours',
+            'Presidential home',
+            'Gardens',
+            'Museum',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Civil War Nashville Tour',
+          description: 'Explore battlefields, forts, and Civil War history.',
+          features: [
+            '4 hours',
+            'Multiple sites',
+            'Expert guide',
+            'Battle stories',
+            'Historic',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Historic Nashville Walking Tour',
+          description: 'Downtown historic sites, Capitol, Germantown.',
+          features: [
+            '2-3 hours',
+            'Walking',
+            'Architecture',
+            'City history',
+            'Accessible',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Plantation & Wine Tour',
+          description: 'Belle Meade plantation with winery tours and tastings.',
+          features: [
+            '4 hours',
+            'Plantation',
+            'Wine tastings',
+            'Carriage house',
+            'Comprehensive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Nashville Historical Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Plantation tours: 3-4 hours. Civil War: 4 hours. Walking: 2-3 hours. Combined: 6 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'The Hermitage',
+            description: 'Andrew Jackson\'s mansion with original furnishings and slave cabin remains.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Belle Meade Plantation',
+            description: 'Greek Revival mansion with winery, carriage house, and grounds.',
+          },
+          {
+            icon: 'Camera',
+            title: 'State Capitol',
+            description: 'Greek Revival capitol building with views - still working government building!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Slavery History',
+            description: 'Tours address slavery honestly - plantation enslaved people stories included.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Civil War Battles',
+            description: 'Learn about Battle of Nashville and city\'s strategic importance.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Hermitage ($30) needs 2-3 hours - mansion, gardens, museum, Jackson tomb.',
+        'Belle Meade ($25) includes winery tour - Tennessee\'s first thoroughbred farm.',
+        'State Capitol tours FREE Monday-Friday - call ahead to schedule.',
+        'Fort Negley (FREE) - Union fort with interpretive center.',
+        'Nashville National Cemetery has Civil War graves - sobering history.',
+        'Tours address slavery history honestly - it\'s educational but heavy topic.',
+        'Wear comfortable shoes - plantation tours involve walking on uneven terrain.',
+        'Summer hot and humid - morning tours more comfortable.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Hermitage?',
+          answer: 'The Hermitage was Andrew Jackson\'s (7th US President) plantation home. Greek Revival mansion, gardens, original furnishings, and enslaved people cabins. $30 entry. It\'s one of best-preserved presidential homes. 25 minutes from Nashville. Plan 2-3 hours. Essential American history!',
+        },
+        {
+          question: 'Are plantation tours worth it?',
+          answer: 'Yes for history understanding! Hermitage and Belle Meade show antebellum architecture and address slavery honestly. They\'re educational about complex Southern history. $25-30 entry. Not entertainment - it\'s serious history. Important for understanding American past.',
+        },
+        {
+          question: 'Is Nashville significant in Civil War?',
+          answer: 'Very! Nashville was strategic rail/supply hub. Battle of Nashville (Dec 1864) was major Union victory. City changed hands early in war. Fort Negley, National Cemetery preserve this history. Tours explain Tennessee\'s divided loyalties. Fascinating Civil War site!',
+        },
+        {
+          question: 'How much do historical tours cost?',
+          answer: 'Hermitage: $30. Belle Meade: $25. State Capitol: FREE. Civil War tours: $60-90. Walking tours: $45-70. Private: $150-300 for group. Plantation entries separate from tour costs. Good value for understanding Nashville beyond music!',
+        },
+        {
+          question: 'Can you tour Tennessee State Capitol?',
+          answer: 'Yes! FREE guided tours Monday-Friday (call ahead to schedule). Greek Revival building from 1850s. Still working government building. Views from grounds. 45-minute tours. It\'s beautiful architecture and Tennessee history. Absolutely worth visiting!',
+        },
+        {
+          question: 'What is Belle Meade?',
+          answer: 'Belle Meade is Greek Revival mansion and Tennessee\'s first thoroughbred farm (horse breeding). Tours ($25) include winery, carriage house, mansion. Smaller than Hermitage but charming. Wine tastings available. 20 minutes from downtown. History and wine combo!',
+        },
+        {
+          question: 'When is the best time for historical tours?',
+          answer: 'Spring (April-May) and fall (Sept-Oct): Perfect weather for plantation walking. Summer hot/humid. Winter: Indoor museum tours comfortable. Historical sites accessible year-round. Morning tours beat afternoon heat. Book ahead for guided experiences!',
+        },
+        {
+          question: 'Are historical tours family-friendly?',
+          answer: 'Yes but topics are serious. Plantations address slavery - educational for older kids (10+). Hermitage has family programs. Civil War sites fascinating for history buffs. Topics age-appropriate but honest. Good for mature children interested in history.',
+        },
+      ],
+    },
+
+    'music-venue-tours': {
+      title: 'Nashville Music Venue Tours',
+      subtitle: 'Visit legendary performance halls from Bluebird Cafe to Exit/In!',
+      categoryName: 'Music Venue Tours',
+      
+      stats: {
+        toursAvailable: 46,
+        priceFrom: 55,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Experience Nashville's legendary music venues beyond Broadway honky-tonks! Venue tours explore intimate listening rooms like Bluebird Cafe (where songwriters perform their hits), Station Inn (bluegrass mecca), Third Man Records (Jack White's vinyl pressing plant and venue), Exit/In (indie/rock since 1971), and historic theaters. Tours include venue visits with performances, backstage access, music industry insights, and stories of iconic shows. See where Taylor Swift was discovered, witness songwriter rounds (multiple writers sharing songs), experience "in the round" performances, and visit venues shaping music history. It's Music City beyond the mainstream!`,
+
+      seo: {
+        title: 'Nashville Music Venue Tours 2025 - Bluebird Cafe & Performance Halls',
+        description: 'Experience Nashville venues! Bluebird Cafe, Station Inn, Third Man Records, and music halls!',
+        keywords: 'Bluebird Cafe Nashville, Nashville music venues, Station Inn, Third Man Records, Nashville concerts',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Music',
+          title: 'Bluebird Cafe',
+          description: 'Legendary songwriter venue where hits are born!',
+        },
+        {
+          icon: 'Star',
+          title: 'Intimate Performances',
+          description: 'Hear music in rooms holding 100-200 people - up close!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Songwriter Rounds',
+          description: 'Unique Nashville format where writers share stories and songs!',
+        },
+        {
+          icon: 'Users',
+          title: 'Discover Talent',
+          description: 'See future stars before they\'re famous!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Bluebird Cafe Experience',
+          description: 'Show at legendary songwriter venue with pre-show tour.',
+          features: [
+            '3-4 hours',
+            'Bluebird show',
+            'Songwriter round',
+            'Intimate',
+            'Special',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Listening Room Hop',
+          description: 'Visit multiple intimate venues hearing different genres.',
+          features: [
+            '4-5 hours',
+            'Multiple venues',
+            'Variety',
+            'Shows included',
+            'Musical',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Third Man Records Tour',
+          description: 'Tour Jack White\'s record store, pressing plant, and venue.',
+          features: [
+            '90 minutes',
+            'Record store',
+            'Vinyl pressing',
+            'Unique',
+            'Cool',
+          ],
+        },
+        {
+          icon: 'Music',
+          title: 'Behind-the-Scenes Venue Tour',
+          description: 'Backstage access at historic performance halls.',
+          features: [
+            '2-3 hours',
+            'Backstage',
+            'Green rooms',
+            'Insider access',
+            'Exclusive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Nashville Music Venue Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Single venue: 2-3 hours. Multi-venue: 4-5 hours. Shows: 2-3 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Bluebird Cafe',
+            description: 'Intimate 90-seat room where songwriters perform in the round.',
+          },
+          {
+            icon: 'Music',
+            title: 'Songwriter Rounds',
+            description: 'Writers take turns performing their songs with stories behind them.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Station Inn',
+            description: 'Legendary bluegrass venue - intimate, authentic, music purist paradise.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Third Man Records',
+            description: 'Watch vinyl being pressed, shop rare records, see Jack White\'s blue room.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Music Education',
+            description: 'Learn about Nashville\'s songwriter culture and venue history.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Bluebird Cafe tickets SELL OUT instantly - book online weeks ahead at 8 AM CST Monday!',
+        'No talking during Bluebird shows - serious listening room (enforced!).',
+        'Station Inn ($15-25) has bluegrass nightly - intimate and authentic.',
+        'Third Man Records FREE to visit store - pressing plant tours by appointment.',
+        'Exit/In hosts indie/rock shows - check calendar for touring acts.',
+        'Songwriter rounds unique Nashville format - experience it!',
+        'Venues have drink minimums usually - budget $10-20 for drinks.',
+        'Respect listening rooms - silence phones, no talking during performances!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Bluebird Cafe?',
+          answer: 'Bluebird Cafe is legendary 90-seat listening room where songwriters perform their hits in the round. Taylor Swift discovered here! Featured on TV show Nashville. Tickets $20-40 but sell out INSTANTLY (online Monday 8 AM). No talking during shows. Essential songwriter experience!',
+        },
+        {
+          question: 'How do you get Bluebird Cafe tickets?',
+          answer: 'Released online Mondays 8 AM CST at bluebird cafe.com - sell out in seconds! Brunch shows easier to get. Reservations required. No walk-ups. Tours sometimes include tickets. Getting tickets is extremely challenging - plan weeks ahead!',
+        },
+        {
+          question: 'What is a songwriter round?',
+          answer: 'Songwriter round is Nashville format where 3-4 songwriters sit in circle taking turns performing their songs with stories. They share hits they wrote for famous artists. It\'s intimate, conversational, and uniquely Nashville. Bluebird Cafe pioneered format!',
+        },
+        {
+          question: 'What is Station Inn?',
+          answer: 'Station Inn is legendary bluegrass venue (since 1974) - small, intimate, authentic. Best bluegrass in Nashville! $15-25 shows nightly. Cash-only bar. Serious music fans. It\'s not fancy but music is world-class. Bluegrass lovers essential!',
+        },
+        {
+          question: 'Can you tour Third Man Records?',
+          answer: 'Record store open daily (FREE!). Pressing plant tour must be scheduled. Blue Room performance space books touring acts. Jack White\'s Nashville operation! Shop vinyl, watch records being pressed (when available). Music fans love it!',
+        },
+        {
+          question: 'How much do venue tours cost?',
+          answer: 'Bluebird show: $20-40 (if you get tickets!). Station Inn: $15-25. Third Man: FREE (store). Venue tours: $55-90 (multiple venues). Show tickets separate. Compared to Broadway honky-tonks, these require tickets but offer different experience.',
+        },
+        {
+          question: 'Are music venues different from honky-tonks?',
+          answer: 'Very! Honky-tonks: Rowdy bars, free entry, party vibe. Listening rooms (Bluebird): Quiet, sit-down, serious music appreciation. Both essential but completely different! Experience honky-tonks for energy, listening rooms for songwriting craft.',
+        },
+        {
+          question: 'When is the best time to visit music venues?',
+          answer: 'Year-round! Venues run shows nightly. Bluebird: Book Monday mornings. Station Inn: Check calendar for bluegrass legends. Third Man: Visit anytime (store hours). Music happens 365 days! Summer busiest. Weeknights easier for tickets than weekends.',
+        },
+      ],
+    },
+
+    'cultural-tours': {
+      title: 'Nashville Cultural Tours',
+      subtitle: 'Experience Southern hospitality, honky-tonk culture, and Nashville\'s unique spirit!',
+      categoryName: 'Cultural Tours',
+      
+      stats: {
+        toursAvailable: 58,
+        priceFrom: 50,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Immerse yourself in Nashville's vibrant culture beyond country music! Cultural tours experience authentic Southern hospitality, explore the "Athens of the South" (Nashville has Parthenon replica!), visit Fisk University (historically Black university with Jubilee Singers legacy), discover street art in Gulch and Wedgewood-Houston, attend Gospel brunch, tour whiskey distilleries, and explore local traditions. Learn about Nashville's nicknames, Civil Rights history, cultural diversity, and modern identity balancing heritage with progressive values. Tours include cultural institutions, neighborhood explorations, food traditions, and community stories. It's Nashville's soul beyond the sequins!`,
+
+      seo: {
+        title: 'Nashville Cultural Tours 2025 - Southern Hospitality & Local Culture',
+        description: 'Experience Nashville culture! Southern traditions, Parthenon, street art, and authentic Nashville!',
+        keywords: 'Nashville cultural tours, Nashville Parthenon, Fisk University, Nashville culture, Southern hospitality',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Southern Hospitality',
+          description: 'Experience legendary warmth and friendliness of the South!',
+        },
+        {
+          icon: 'Star',
+          title: 'The Parthenon',
+          description: 'Full-scale replica of Athens Parthenon - totally unexpected!',
+        },
+        {
+          icon: 'Music',
+          title: 'Gospel & Soul',
+          description: 'Gospel brunch and African American musical traditions!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Street Art',
+          description: 'Gulch and WeHo neighborhoods have incredible murals!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Nashville Highlights Tour',
+          description: 'See Parthenon, cultural sites, and city overview.',
+          features: [
+            '3-4 hours',
+            'Major sites',
+            'Parthenon visit',
+            'Overview',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Music',
+          title: 'Gospel Brunch Experience',
+          description: 'Southern brunch with live Gospel music performance.',
+          features: [
+            '2-3 hours',
+            'Gospel music',
+            'Southern brunch',
+            'Soulful',
+            'Moving',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Whiskey & Distillery Tour',
+          description: 'Tour local distilleries with whiskey tastings.',
+          features: [
+            '3-4 hours',
+            'Multiple distilleries',
+            'Tastings',
+            'Education',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Street Art & Murals Tour',
+          description: 'Explore Gulch and WeHo seeing Nashville\'s best murals.',
+          features: [
+            '2-3 hours',
+            'Mural hunting',
+            'Photo ops',
+            'Trendy areas',
+            'Instagrammable',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Nashville Cultural Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours. Gospel brunch: 2-3 hours. Full cultural: 5-6 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Parthenon',
+            description: 'Full-scale Athens Parthenon replica in Centennial Park - FREE entry to park!',
+          },
+          {
+            icon: 'Music',
+            title: 'Gospel Music',
+            description: 'Hear powerful Gospel traditions at brunches and historic churches.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Fisk University',
+            description: 'Visit HBCU campus and learn about Fisk Jubilee Singers legacy.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Gulch Murals',
+            description: 'Instagram-famous wings mural and incredible street art!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Southern Culture',
+            description: 'Understand Nashville\'s blend of tradition, music, and modern progress.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Parthenon ($8) inside has art museum and massive Athena statue.',
+        'Gospel brunch at Gaylord Opryland ($65) - buffet with live Gospel choir!',
+        'Corsair Distillery and Nelson\'s Green Brier whiskey tours near downtown.',
+        'What Lifts You wings mural (Gulch) most photographed spot in Nashville!',
+        'Fisk Jubilee Singers concerts when in town - incredible Gospel tradition.',
+        'Centennial Park (Parthenon location) beautiful for picnics and walking.',
+        'Nashville has 180 live music venues - Broadway is just beginning!',
+        'Southern hospitality is real - people are genuinely friendly!',
+      ],
+
+      faqs: [
+        {
+          question: 'Why does Nashville have a Parthenon?',
+          answer: 'Nashville is "Athens of the South" (higher education center). For 1897 Centennial Exposition, they built temporary Parthenon. It was so loved, permanent replica built 1920s! It\'s full-scale, in Centennial Park. Inside: Art museum + massive Athena statue. $8 entry.',
+        },
+        {
+          question: 'What is a Gospel brunch?',
+          answer: 'Gospel brunch combines Southern buffet with live Gospel choir performance. Gaylord Opryland ($65) most famous. Music is powerful, food delicious, atmosphere uplifting! Sunday tradition. Moving cultural experience - not just entertainment. Worth it!',
+        },
+        {
+          question: 'Can you tour whiskey distilleries?',
+          answer: 'Yes! Corsair, Nelson\'s Green Brier, Tennessee Distillery all tour near Nashville. $15-25 for tours with tastings. Jack Daniel\'s (1.5 hours away) most famous Tennessee whiskey. Tours explain Tennessee whiskey vs. bourbon. 21+ for tastings.',
+        },
+        {
+          question: 'What is Fisk University?',
+          answer: 'Fisk is historically Black university (HBCU) founded 1866. Famous for Fisk Jubilee Singers who toured preserving spirituals. Campus has beautiful buildings and significant Civil Rights history. Tours available. Important Nashville cultural institution!',
+        },
+        {
+          question: 'Where is the best street art?',
+          answer: 'Gulch neighborhood has wings mural and multiple murals. Wedgewood-Houston (WeHo) has extensive street art. 12South has "I believe in Nashville" mural. All free to photograph! Street art growing rapidly - new murals constantly appearing.',
+        },
+        {
+          question: 'How much do cultural tours cost?',
+          answer: 'City tours: $50-75 (3-4 hours). Gospel brunch: $65. Distillery tours: $15-25. Street art: $40-60. Parthenon: $8. Many cultural experiences affordable! Budget: Self-explore Parthenon + free street art.',
+        },
+        {
+          question: 'Is Nashville culturally diverse?',
+          answer: 'More than stereotypes suggest! Significant African American community (Gospel, soul, Civil Rights history), Kurdish population (largest in US!), Latino communities. Country music famous but Nashville has blues, rock, indie, Gospel scenes. It\'s musically diverse city!',
+        },
+        {
+          question: 'When is the best time for cultural tours?',
+          answer: 'Year-round! Gospel brunches: Sundays. Parthenon: Year-round (park always open). Street art: Anytime. Distilleries: Tours daily. Cultural sites accessible always. Summer has outdoor festivals adding cultural energy. Visit anytime!',
+        },
+      ],
+    },
+  },
 };
 
