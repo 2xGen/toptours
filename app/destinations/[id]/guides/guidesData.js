@@ -40419,5 +40419,1063 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
     },
   },
 
+  zurich: {
+    'old-town-tours': {
+      title: 'Zurich Old Town Tours',
+      subtitle: 'Explore medieval Altstadt with cobblestone streets, guild houses, and Limmat River views!',
+      categoryName: 'Old Town Tours',
+      
+      stats: {
+        toursAvailable: 58,
+        priceFrom: 25,
+        duration: '2-3 hours',
+      },
+
+      introduction: `Discover Zurich's charming Old Town (Altstadt) - a beautifully preserved medieval quarter with over 2,000 years of history! The compact historic center straddles both sides of the Limmat River: east side Niederdorf (lively pedestrian zone with shops, restaurants, and nightlife) and west side with upscale Bahnhofstrasse shopping street. Walking tours explore Grossmünster (Zurich's iconic twin-towered cathedral), Fraumünster (famous for Chagall stained glass windows), Lindenhof (elevated plaza with Roman ruins and city views), cobblestone lanes lined with medieval guild houses, trendy Zurich West district (former industrial area), and the charming waterfront. Learn about Zurich's evolution from Roman settlement to financial capital, Reformation history led by Zwingli, and modern Swiss culture. The Old Town combines historical charm with contemporary Swiss lifestyle!`,
+
+      seo: {
+        title: 'Zurich Old Town Tours 2025 - Medieval Altstadt & Walking Tours',
+        description: 'Explore Zurich Old Town! Medieval streets, Grossmünster, Fraumünster, and historic Altstadt!',
+        keywords: 'Zurich Old Town, Zurich walking tours, Altstadt Zurich, Grossmünster, Zurich historic center',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Medieval Charm',
+          description: 'Wander cobblestone streets with guild houses dating back centuries!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Compact & Walkable',
+          description: 'All major Old Town sights within easy walking distance.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Limmat River Views',
+          description: 'Picturesque waterfront with churches, bridges, and mountain backdrop.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Swiss History',
+          description: 'Learn about Reformation, guilds, and Zurich\'s evolution to global city.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Old Town Tour',
+          description: 'Comprehensive walking tour covering major Altstadt highlights.',
+          features: [
+            '2-3 hours',
+            'Grossmünster',
+            'Fraumünster',
+            'Lindenhof',
+            'Expert guide',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Niederdorf Evening Tour',
+          description: 'Explore the lively pedestrian district with bars and restaurants.',
+          features: [
+            '2 hours',
+            'Evening atmosphere',
+            'Local tips',
+            'Nightlife insights',
+            'Vibrant area',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Private Walking Tours',
+          description: 'Personalized tours with flexible itinerary and pace.',
+          features: [
+            '2-4 hours',
+            'Private guide',
+            'Custom route',
+            'Your interests',
+            'Premium experience',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Discover photogenic spots and capture Old Town beauty.',
+          features: [
+            '3 hours',
+            'Best viewpoints',
+            'Photo guidance',
+            'Morning light',
+            'Instagram-worthy',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Zurich Old Town Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours last 2-3 hours covering both sides of the Limmat River.',
+          },
+          {
+            icon: 'Star',
+            title: 'Grossmünster',
+            description: 'Climb the twin towers of Zurich\'s iconic Romanesque cathedral for city views.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Fraumünster',
+            description: 'See stunning Chagall stained glass windows in this beautiful church.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Lindenhof',
+            description: 'Visit elevated plaza with Roman history and panoramic Old Town views.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Limmat River',
+            description: 'Stroll along picturesque waterfront with bridges and guild houses.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Swiss History',
+            description: 'Learn about Reformation, medieval guilds, and modern Zurich.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Start at Lindenhof for best overview of Old Town before exploring streets.',
+        'Grossmünster tower climb (CHF 5) offers best city views - worth it!',
+        'Fraumünster Chagall windows (CHF 5) are must-see - afternoon light is best.',
+        'Niederdorf pedestrian street best explored evening when restaurants/bars buzz.',
+        'Free walking tours available (tip-based) but can be large groups.',
+        'Many museums closed Mondays - plan accordingly.',
+        'Zurich Card (CHF 27/24 hours) includes public transport and museum discounts.',
+        'Old Town restaurants pricey - look for daily lunch menus (Tagesmenu) for better value.',
+      ],
+
+      faqs: [
+        {
+          question: 'How long to explore Zurich Old Town?',
+          answer: 'Plan 2-3 hours minimum for walking tour covering highlights. Half day (4-5 hours) allows leisurely pace with church visits and breaks. Full day if including museums. Old Town is compact and very walkable!',
+        },
+        {
+          question: 'What is the Grossmünster?',
+          answer: 'Grossmünster is Zurich\'s most famous landmark - a Romanesque cathedral with twin towers founded in 12th century. It was the starting point of Swiss Reformation led by Zwingli. CHF 5 to climb tower for spectacular views!',
+        },
+        {
+          question: 'Can you see Chagall windows in Zurich?',
+          answer: 'Yes! Fraumünster church has stunning stained glass windows by Marc Chagall (1970) - vibrant colors depicting biblical scenes. CHF 5 entry, absolutely worth it! Afternoon light shows the colors beautifully. It\'s one of Zurich\'s treasures.',
+        },
+        {
+          question: 'Is Zurich Old Town expensive?',
+          answer: 'Switzerland is expensive! Old Town restaurants: CHF 25-50 per meal. Coffee: CHF 4-6. Churches: CHF 5. Tours: CHF 25-50. Look for lunch menus (Tagesmenu) for better value. Walking the streets is free and beautiful!',
+        },
+        {
+          question: 'What is Niederdorf?',
+          answer: 'Niederdorf is Zurich\'s pedestrian-only Old Town district on east side of Limmat River. It has narrow medieval streets packed with restaurants, bars, shops, and nightlife. Think of it as Zurich\'s "entertainment district" - lively evenings!',
+        },
+        {
+          question: 'Is the Old Town walkable?',
+          answer: 'Very walkable! The Altstadt is compact - you can walk across in 15 minutes. All major sights within walking distance. Cobblestones and some hills (especially Lindenhof) so wear comfortable shoes. No cars in pedestrian zones.',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Morning (9-11 AM) for fewer tourists and best light. Evening great for Niederdorf atmosphere. Spring (April-May) and fall (Sept-Oct) perfect weather. Summer busy but vibrant. Winter charming with Christmas markets. Year-round destination!',
+        },
+        {
+          question: 'What is Lindenhof?',
+          answer: 'Lindenhof is an elevated park/plaza in Old Town with Roman fort ruins and panoramic views over Limmat River. Popular local gathering spot with chess players. Free access. Great for photos and understanding Zurich\'s layout!',
+        },
+      ],
+    },
+
+    'lake-zurich-tours': {
+      title: 'Zurich Lake Zurich Tours',
+      subtitle: 'Cruise pristine alpine lake with mountain views, waterfront promenades, and charming villages!',
+      categoryName: 'Lake Zurich Tours',
+      
+      stats: {
+        toursAvailable: 72,
+        priceFrom: 20,
+        duration: '1-4 hours',
+      },
+
+      introduction: `Experience Lake Zurich (Zürichsee), the stunning alpine lake that defines Zurich's character! This 40km-long glacial lake offers crystal-clear waters backed by snow-capped Alps creating postcard-perfect scenery. Lake cruises explore from Zurich city to charming lakeside villages like Rapperswil (medieval "town of roses"), passing vineyards, elegant villas, and swimming beaches. Tours range from 1-hour city cruises to 4-hour grand tours, sunset dinner cruises, and paddle steamer rides on historic Belle Époque boats. The lake promenades (Quaibrücke, Bürkliplatz) are perfect for strolls, cycling, or swimming at public lidos (Strandbad). In summer, locals swim in the lake right in the city center! It's Swiss natural beauty combined with urban sophistication.`,
+
+      seo: {
+        title: 'Zurich Lake Zurich Tours 2025 - Lake Cruises & Boat Tours',
+        description: 'Explore Lake Zurich! Scenic lake cruises, alpine views, and Swiss waterfront beauty!',
+        keywords: 'Lake Zurich tours, Zurich boat tours, Lake Zurich cruises, Zürichsee, Zurich lake activities',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Alpine Lake Beauty',
+          description: 'Crystal-clear waters with stunning mountain backdrop - iconic Swiss scenery!',
+        },
+        {
+          icon: 'Ship',
+          title: 'Historic Paddle Steamers',
+          description: 'Cruise on Belle Époque boats offering vintage elegance.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Waterfront Promenades',
+          description: 'Beautiful lakeside walks and public swimming areas in city center.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Charming Villages',
+          description: 'Visit medieval Rapperswil and picturesque lakeside towns.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Ship',
+          title: 'Lake Zurich Cruises',
+          description: 'Scenic boat rides from 1-hour city tours to 4-hour grand tours.',
+          features: [
+            '1-4 hours',
+            'Multiple routes',
+            'Alpine views',
+            'Commentary',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Sunset Dinner Cruises',
+          description: 'Evening cruises with Swiss dinner and golden hour views.',
+          features: [
+            '2-3 hours',
+            'Swiss cuisine',
+            'Sunset views',
+            'Romantic',
+            'Wine included',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Rapperswil Day Trip',
+          description: 'Cruise to medieval "town of roses" with castle and lakeside charm.',
+          features: [
+            '4-6 hours',
+            'Medieval town',
+            'Castle visit',
+            'Free time',
+            'Round trip',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Swimming & Lido Tours',
+          description: 'Visit public swimming areas and lakeside beaches.',
+          features: [
+            '2-3 hours',
+            'Beach access',
+            'Swimming spots',
+            'Summer activity',
+            'Refreshing',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Zurich Lake Zurich Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Short cruises: 1-2 hours. Grand tour: 4 hours. Dinner cruises: 2-3 hours.',
+          },
+          {
+            icon: 'Ship',
+            title: 'Scenic Cruises',
+            description: 'Glide past vineyards, villas, Alps backdrop, and charming lakeside villages.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Mountain Views',
+            description: 'See Glarus Alps and Churfirsten mountain range framing the lake.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Rapperswil',
+            description: 'Visit medieval town with castle, rose gardens, and wooden bridge.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Swimming Culture',
+            description: 'Experience Swiss tradition of urban lake swimming at public lidos.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Swiss Lifestyle',
+            description: 'Understand importance of lake to Zurich\'s quality of life.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Zurich Card includes lake cruises - excellent value if sightseeing!',
+        'Grand tour (4 hours to Rapperswil) best way to see entire lake.',
+        'Paddle steamers (May-September) offer most atmospheric cruises.',
+        'Public lidos (Strandbad): Mythenquai and Tiefenbrunnen most popular for swimming.',
+        'Summer swimming in lake is safe - water quality excellent!',
+        'Book dinner cruises ahead - very popular with locals on summer evenings.',
+        'Morning cruises offer best light for photos; evening best for atmosphere.',
+        'Combine cruise with train return for variety - lake + Alps views!',
+      ],
+
+      faqs: [
+        {
+          question: 'How much do Lake Zurich cruises cost?',
+          answer: 'Short cruise (1.5 hours): CHF 9. Grand tour (4 hours): CHF 32. Dinner cruises: CHF 70-120. Zurich Card (CHF 27/24 hours) includes all public boat transport - best value! Children get discounts.',
+        },
+        {
+          question: 'How long are Lake Zurich cruises?',
+          answer: 'Options range from 1.5-hour short cruises around Zurich to 4-hour grand tours to Rapperswil. Most popular: 2-hour cruise covering central lake. Dinner cruises typically 2-3 hours. Choose based on time and interest!',
+        },
+        {
+          question: 'Can you swim in Lake Zurich?',
+          answer: 'Absolutely! Lake swimming is beloved Swiss tradition. Public lidos (Strandbad) offer changing rooms, sunbathing areas, and lake access (CHF 8 entry). Many locals swim right off city docks in summer! Water is clean and refreshing.',
+        },
+        {
+          question: 'What is Rapperswil?',
+          answer: 'Rapperswil is medieval "town of roses" at far end of Lake Zurich. It has hilltop castle, rose gardens, charming old town, and wooden bridge. It\'s 1 hour by boat from Zurich - perfect half-day trip! Return by train for variety.',
+        },
+        {
+          question: 'When is the best time for lake cruises?',
+          answer: 'May-September offers full cruise schedule and paddle steamers. Summer (June-Aug) warmest with swimming. Spring/fall have fewer tourists and beautiful light. Winter limited service but fewer crowds. Lake beautiful year-round!',
+        },
+        {
+          question: 'Are dinner cruises worth it?',
+          answer: 'Yes! Sunset dinner cruises combine Swiss cuisine, wine, and golden hour views over Alps. Popular with locals for special occasions. CHF 70-120 but includes multi-course meal. Book ahead - they sell out summer weekends!',
+        },
+        {
+          question: 'Is the Zurich Card worth it?',
+          answer: 'Definitely for tourists! CHF 27 (24 hours) or CHF 53 (72 hours) includes public transport, lake cruises, and museum discounts. Pays for itself with 1-2 lake cruises plus trams. Very convenient - highly recommended!',
+        },
+        {
+          question: 'Can you see the Alps from the lake?',
+          answer: 'Yes! On clear days, see Glarus Alps and Churfirsten mountains framing lake. Best views from boat or eastern shore. Spring and fall often have clearest air. Mountain backdrop makes Lake Zurich spectacularly photogenic!',
+        },
+      ],
+    },
+
+    'swiss-alps-tours': {
+      title: 'Zurich Swiss Alps Tours',
+      subtitle: 'Experience majestic mountains on day trips to Jungfraujoch, Titlis, and scenic alpine peaks!',
+      categoryName: 'Swiss Alps Tours',
+      
+      stats: {
+        toursAvailable: 94,
+        priceFrom: 120,
+        duration: '8-12 hours',
+      },
+
+      introduction: `Experience the Swiss Alps from Zurich - stunning mountain day trips to Europe's most spectacular peaks! Popular tours visit Jungfraujoch ("Top of Europe" at 3,454m with snow year-round), Mount Titlis (revolving cable car and glacier cave), Pilatus (world's steepest cogwheel railway), Rigi ("Queen of the Mountains"), and Interlaken nestled between turquoise lakes. Tours combine scenic train journeys through alpine valleys, cable car rides offering panoramic views, glacier experiences, charming mountain villages like Grindelwald and Lauterbrunnen (valley of 72 waterfalls), and Swiss culture. Many include cheese factories, chocolate stops, and traditional Swiss lunch. It's the quintessential Swiss Alps experience accessible as day trips from Zurich!`,
+
+      seo: {
+        title: 'Zurich Swiss Alps Tours 2025 - Jungfraujoch & Mountain Day Trips',
+        description: 'Explore Swiss Alps from Zurich! Jungfraujoch, Mount Titlis, and spectacular mountain tours!',
+        keywords: 'Swiss Alps tours Zurich, Jungfraujoch day trip, Mount Titlis, Zurich mountain tours, Alps from Zurich',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Top of Europe',
+          description: 'Visit Jungfraujoch at 3,454m - Europe\'s highest railway station!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Glacier Experiences',
+          description: 'Walk in snow year-round, explore ice caves, and ride cable cars.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Panoramic Views',
+          description: 'See iconic peaks: Eiger, Mönch, Jungfrau, and Matterhorn region.',
+        },
+        {
+          icon: 'Ship',
+          title: 'Scenic Railways',
+          description: 'Experience legendary cogwheel trains through alpine landscapes.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Jungfraujoch Day Trip',
+          description: 'Full-day tour to "Top of Europe" with scenic train journey.',
+          features: [
+            '10-12 hours',
+            'Train to 3,454m',
+            'Snow year-round',
+            'Sphinx Observatory',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Mount Titlis Tour',
+          description: 'Cable car to 3,020m with revolving gondola and glacier cave.',
+          features: [
+            '8-10 hours',
+            'Revolving cable car',
+            'Ice cave',
+            'Cliff Walk bridge',
+            'Spectacular',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Interlaken & Alps',
+          description: 'Visit adventure capital between lakes with mountain views.',
+          features: [
+            '9-11 hours',
+            'Interlaken',
+            'Alpine scenery',
+            'Adventure activities',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Grindelwald & Lauterbrunnen',
+          description: 'Explore charming alpine villages and waterfall valley.',
+          features: [
+            '9-10 hours',
+            'Mountain villages',
+            '72 waterfalls',
+            'Eiger views',
+            'Scenic beauty',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Zurich Swiss Alps Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Full-day tours: 8-12 hours including transport and mountain time.',
+          },
+          {
+            icon: 'Star',
+            title: 'Jungfraujoch',
+            description: 'Europe\'s highest railway station with snow, observatory, and 360° views.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Scenic Train Rides',
+            description: 'Cogwheel railways through valleys, tunnels, and up mountain faces.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Iconic Peaks',
+            description: 'See Eiger North Face, Mönch, Jungfrau, and glacier landscapes.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Alpine Villages',
+            description: 'Visit Grindelwald, Lauterbrunnen, and traditional Swiss towns.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Swiss Culture',
+            description: 'Experience mountain lifestyle, cheese-making, and Swiss traditions.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book tours weeks ahead in summer - Jungfraujoch especially popular!',
+        'Jungfraujoch costs CHF 240 (train + entry) - expensive but bucket-list experience.',
+        'Swiss Travel Pass covers trains and gives discounts on mountain railways.',
+        'Weather critical - check forecasts! Clouds obscure views - reschedule if possible.',
+        'Bring warm clothes even in summer - it\'s 15-20°C colder at altitude!',
+        'Start early (7-8 AM) to maximize mountain time and avoid crowds.',
+        'Jungfraujoch crowds worst 11 AM-2 PM - go early or late if flexible.',
+        'Motion sickness? Mount Titlis easier than Jungfraujoch\'s long train rides.',
+      ],
+
+      faqs: [
+        {
+          question: 'How much does Jungfraujoch cost?',
+          answer: 'Jungfraujoch train tickets: CHF 240 round-trip from Zurich area. Guided tours: CHF 200-300 (includes transport, guide, sometimes entry). Very expensive but iconic bucket-list experience! Swiss Travel Pass offers 25-50% discount. Book combined tours for better value.',
+        },
+        {
+          question: 'Is Jungfraujoch worth it?',
+          answer: 'Yes if weather is clear! At 3,454m, you\'re in snow year-round with spectacular views of Aletsch Glacier. It\'s expensive but truly special experience. Check weather forecast before booking - clouds ruin it. Consider alternatives (Titlis, Pilatus) if budget-conscious.',
+        },
+        {
+          question: 'What is Mount Titlis?',
+          answer: 'Mount Titlis (3,020m) near Lucerne offers revolving cable car (Rotair), glacier cave, cliff walk suspension bridge, and snow park. Less crowded and cheaper than Jungfraujoch. CHF 120 from Zurich. Great alternative for glacier experience!',
+        },
+        {
+          question: 'What should I wear to the Alps?',
+          answer: 'Even summer: Warm jacket, hat, gloves, sunglasses, sunscreen (snow glare!), and sturdy shoes. It can be 0-10°C at altitude even when Zurich is 25°C. Layer clothing. Mountains have unpredictable weather - prepare for all conditions!',
+        },
+        {
+          question: 'How long are Alps day trips?',
+          answer: 'Typical day trips: 8-12 hours total including transport. Travel time: 2-3 hours each way. Mountain time: 3-5 hours. Early start (7-8 AM) and return evening. Full day commitment but worth it for Alps experience!',
+        },
+        {
+          question: 'Can you do Alps in one day from Zurich?',
+          answer: 'Absolutely! Many organized day tours depart Zurich visiting Jungfraujoch, Titlis, or Interlaken. It\'s long day (8-12 hours) but doable. Tours handle logistics - easier than DIY. Perfect for limited time visitors wanting mountain experience!',
+        },
+        {
+          question: 'Which mountain tour is best?',
+          answer: 'Jungfraujoch: Most famous, highest, most expensive. Titlis: Revolving cable car, glacier cave, cheaper. Pilatus: Steepest cogwheel railway, near Lucerne. All spectacular! Choose based on budget, time, and weather. Can\'t go wrong with any!',
+        },
+        {
+          question: 'Is altitude sickness a concern?',
+          answer: 'Minimal risk but possible at 3,000m+. Ascent is gradual by train/cable car. Symptoms: Headache, dizziness, nausea. Most people fine. Stay hydrated, avoid alcohol before, ascend slowly. Descend if symptoms worsen. Rare on day trips.',
+        },
+      ],
+    },
+
+    'food-and-chocolate-tours': {
+      title: 'Zurich Food & Chocolate Tours',
+      subtitle: 'Savor Swiss chocolate, fondue, and authentic Zurich cuisine on culinary adventures!',
+      categoryName: 'Food & Chocolate Tours',
+      
+      stats: {
+        toursAvailable: 52,
+        priceFrom: 70,
+        duration: '3-4 hours',
+      },
+
+      introduction: `Discover Zurich's exceptional food scene combining Swiss traditions with international sophistication! Food tours explore traditional dishes like fondue (melted cheese with bread), raclette (melted cheese scraped onto potatoes), Zürcher Geschnetzeltes (veal in cream sauce), and Rösti (crispy potato cake). But the highlight is Swiss chocolate - tours visit legendary chocolatiers like Sprüngli, Läderach, and Lindt, with tastings of pralines, truffles, and Swiss chocolate specialties. Learn about Swiss chocolate-making traditions, visit Lindt Chocolate Museum (Lindt Home of Chocolate) with world's largest chocolate fountain, explore vibrant Zurich food markets, and dine at traditional restaurants. Many tours include cheese fondue experiences, wine pairings, and insights into Swiss culinary culture. It's delicious introduction to Swiss gastronomy!`,
+
+      seo: {
+        title: 'Zurich Food & Chocolate Tours 2025 - Swiss Cuisine & Chocolate',
+        description: 'Experience Zurich food tours! Swiss chocolate, fondue, and authentic Swiss cuisine!',
+        keywords: 'Zurich food tours, Swiss chocolate, Zurich chocolate tours, Swiss fondue, Lindt chocolate Zurich',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'World-Famous Chocolate',
+          description: 'Taste legendary Swiss chocolate from Sprüngli, Lindt, and artisan chocolatiers!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Fondue & Raclette',
+          description: 'Experience authentic Swiss cheese traditions in cozy restaurants.',
+        },
+        {
+          icon: 'Star',
+          title: 'Lindt Museum',
+          description: 'Visit world\'s largest chocolate museum with interactive exhibits.',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Foodie Guides',
+          description: 'Swiss guides share culinary traditions and hidden food gems.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Chocolate Tasting Tours',
+          description: 'Visit multiple chocolatiers tasting Swiss chocolate specialties.',
+          features: [
+            '3 hours',
+            'Multiple shops',
+            'Chocolate tastings',
+            'Expert guide',
+            'Sweet experience',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Lindt Chocolate Museum',
+          description: 'Interactive museum with world\'s largest chocolate fountain and tastings.',
+          features: [
+            '2-3 hours',
+            'Chocolate fountain',
+            'Factory tour',
+            'Tastings',
+            'Must-visit',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Fondue Experience',
+          description: 'Traditional Swiss fondue dinner with wine in cozy restaurant.',
+          features: [
+            '2 hours',
+            'Cheese fondue',
+            'Swiss wine',
+            'Traditional setting',
+            'Authentic',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Food Market Tours',
+          description: 'Explore Zurich markets tasting local specialties and Swiss products.',
+          features: [
+            '3 hours',
+            'Local markets',
+            'Multiple tastings',
+            'Swiss products',
+            'Cultural insights',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Zurich Food & Chocolate Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Food tours: 3-4 hours. Lindt Museum: 2-3 hours. Fondue dinner: 2 hours.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Swiss Chocolate',
+            description: 'Taste pralines from Sprüngli, truffles from Läderach, and Lindt specialties.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Fondue & Raclette',
+            description: 'Experience melted cheese traditions - Swiss comfort food at its finest!',
+          },
+          {
+            icon: 'Star',
+            title: 'Lindt Fountain',
+            description: 'See world\'s largest chocolate fountain (9m tall!) at Lindt Museum.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Local Markets',
+            description: 'Explore fresh produce, cheese, bread, and Swiss specialties at markets.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Swiss Culinary Culture',
+            description: 'Learn about chocolate-making traditions and Swiss food heritage.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Sprüngli Paradeplatz: Most famous chocolatier - try Luxemburgerli macarons!',
+        'Lindt Home of Chocolate (opened 2020) is €15 entry - absolutely worth it!',
+        'Book fondue restaurants ahead - they\'re popular with tourists and locals.',
+        'Traditional fondue etiquette: Stir in figure-8 pattern, don\'t lose bread!',
+        'Zurich Christmas markets (late Nov-Dec) have amazing Swiss food and Glühwein.',
+        'Saturday morning Bürkliplatz market best for fresh local produce.',
+        'Come hungry - food tours include substantial tastings!',
+        'Swiss food is expensive - tours offer good value by visiting multiple places.',
+      ],
+
+      faqs: [
+        {
+          question: 'How much do Zurich food tours cost?',
+          answer: 'Chocolate tours: CHF 70-100 (3 hours, multiple tastings). Food tours: CHF 90-140 (includes 6-8 tastings). Fondue dinner: CHF 30-50 per person. Lindt Museum: CHF 15. Tours offer better value than visiting individually!',
+        },
+        {
+          question: 'What is Sprüngli?',
+          answer: 'Sprüngli is Zurich\'s most famous chocolatier (since 1836) known for Luxemburgerli - delicate macarons in various flavors. The Paradeplatz shop is iconic! Different from Lindt (they split in 1892). Expensive but exceptional quality. Essential Zurich experience!',
+        },
+        {
+          question: 'Is the Lindt Museum worth it?',
+          answer: 'Yes! Lindt Home of Chocolate (CHF 15) features world\'s largest chocolate fountain (9m!), interactive exhibits, chocolate-making demonstrations, and tastings. Modern, impressive museum opened 2020. Perfect for chocolate lovers. Allow 2-3 hours.',
+        },
+        {
+          question: 'What is Swiss fondue?',
+          answer: 'Fondue is Switzerland\'s national dish - melted cheese (usually Gruyère and Emmental) with white wine and kirsch, served in communal pot. You dip bread cubes using long forks. Tradition says if you drop bread, you buy next round! CHF 25-35 per person.',
+        },
+        {
+          question: 'Where to eat fondue in Zurich?',
+          answer: 'Traditional spots: Swiss Chuchi (Old Town, touristy but good), Zunfthaus zur Zimmerleuten (guild house, upscale), Le Dézaley (local favorite). Book ahead! Expect CHF 25-35 per person. Best enjoyed with Swiss white wine.',
+        },
+        {
+          question: 'Is Swiss chocolate really better?',
+          answer: 'Swiss chocolate is famous for smooth texture and high quality due to conching process (invented in Switzerland!) and premium ingredients. Brands like Lindt, Sprüngli, Läderach maintain high standards. Expensive but genuinely excellent - worth the hype!',
+        },
+        {
+          question: 'What should I try in Zurich?',
+          answer: 'Must-try: Sprüngli Luxemburgerli, cheese fondue, Zürcher Geschnetzeltes (veal in cream sauce), Rösti (potato cake), Raclette, and any Swiss chocolate. Wash down with Swiss wine or beer. All delicious and authentically Swiss!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round available! Saturday mornings best for food markets. Christmas markets (late Nov-Dec) magical for seasonal Swiss treats and Glühwein. Food tours run daily - book ahead for weekends. Come hungry!',
+        },
+      ],
+    },
+
+    'historic-district-tours': {
+      title: 'Zurich Historic District Tours',
+      subtitle: 'Walk through 2,000 years of Swiss history from Roman settlement to financial capital!',
+      categoryName: 'Historic District Tours',
+      
+      stats: {
+        toursAvailable: 48,
+        priceFrom: 20,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Explore Zurich's historic districts revealing layers of Swiss history from Roman Turicum to modern global financial center! Tours cover the medieval Old Town (Altstadt), elegant Bahnhofstrasse (one of world's most expensive shopping streets), Lindenhof hill (Roman fort site), historic guild houses along Limmat River, and diverse neighborhoods like Seefeld, Zürich West (transformed industrial area), and university district. Learn about Swiss Reformation led by Zwingli, guild traditions shaping city governance, banking history that made Zurich a financial powerhouse, and the surprising progressive culture (first European city to elect female mayor in 1970). Guides explain how Zurich balanced tradition with innovation, maintained Swiss neutrality, and became one of world's most livable cities!`,
+
+      seo: {
+        title: 'Zurich Historic District Tours 2025 - Walking Tours & Swiss History',
+        description: 'Explore Zurich historic districts! Roman ruins, medieval Altstadt, and Swiss history!',
+        keywords: 'Zurich historic tours, Zurich history, Altstadt Zurich, Roman Zurich, Zurich walking tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: '2,000 Years of History',
+          description: 'From Roman settlement to modern financial capital - fascinating evolution!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Swiss Reformation Site',
+          description: 'Where Zwingli launched Protestant Reformation in Switzerland.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Banking Heritage',
+          description: 'Understand how Zurich became world financial center.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Diverse Districts',
+          description: 'Explore medieval Old Town, trendy Zürich West, and elegant neighborhoods.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Comprehensive History Tour',
+          description: 'Full walking tour covering all major historic periods and districts.',
+          features: [
+            '3-4 hours',
+            'Complete overview',
+            'Expert historian',
+            'All eras',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Roman & Medieval Zurich',
+          description: 'Focus on ancient origins and medieval development.',
+          features: [
+            '2 hours',
+            'Roman ruins',
+            'Medieval streets',
+            'Early history',
+            'Archaeological sites',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Neighborhood Walking Tours',
+          description: 'Explore specific districts - Seefeld, Zürich West, or university quarter.',
+          features: [
+            '2-3 hours',
+            'Local neighborhoods',
+            'Modern culture',
+            'Off beaten path',
+            'Authentic Zurich',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Banking & Finance Tour',
+          description: 'Discover Zurich\'s evolution as global financial center.',
+          features: [
+            '2 hours',
+            'Banking history',
+            'Bahnhofstrasse',
+            'Financial district',
+            'Unique perspective',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Zurich Historic District Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range 2-4 hours depending on focus and depth of coverage.',
+          },
+          {
+            icon: 'Star',
+            title: 'Roman Heritage',
+            description: 'See Lindenhof Roman fort site and learn about Turicum settlement.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Guild Houses',
+            description: 'Admire historic guild houses along Limmat River - some now restaurants.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Bahnhofstrasse',
+            description: 'Walk one of world\'s most expensive shopping streets with banking history.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Swiss Reformation',
+            description: 'Learn about Zwingli\'s Protestant Reformation starting at Grossmünster.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Modern Transformation',
+            description: 'See Zürich West - former industrial area now trendy cultural district.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Free walking tours (tip-based) available but large groups - private tours better quality.',
+        'Lindenhof offers best overview of city layout - start history tours here.',
+        'Many guild houses now restaurants - dine in historic setting!',
+        'Swiss National Museum (near train station) provides excellent historical context.',
+        'Zürich West best explored afternoon/evening when bars and galleries are open.',
+        'University district has student-friendly prices and vibrant atmosphere.',
+        'Zurich Card (CHF 27) covers public transport and museum discounts.',
+        'Combine history tour with museum visit for comprehensive understanding.',
+      ],
+
+      faqs: [
+        {
+          question: 'How old is Zurich?',
+          answer: 'Zurich dates to Roman times (15 BC) as settlement Turicum. Medieval city developed around monasteries and guilds from 10th century. Today\'s Zurich blends 2,000 years of history with modern innovation. Roman ruins visible at Lindenhof and underground.',
+        },
+        {
+          question: 'What is Lindenhof?',
+          answer: 'Lindenhof is elevated plaza in Old Town - site of Roman fort (Turicum) and later medieval castle. Now peaceful park with panoramic views, chess players, and historical significance. Free access. Perfect spot to understand Zurich\'s strategic location!',
+        },
+        {
+          question: 'What are Zurich guild houses?',
+          answer: 'Guild houses (Zunfthäuser) are historic buildings of trade guilds that governed medieval Zurich. Beautiful examples line Limmat River. Many now restaurants serving traditional Swiss food in historic settings. They represent Zurich\'s democratic traditions and craftsman heritage.',
+        },
+        {
+          question: 'Why is Zurich a financial center?',
+          answer: 'Swiss neutrality, political stability, banking secrecy laws (historically), and strategic location made Zurich banking center since 16th century. Today it\'s global finance hub rivaling London and NYC. Bahnhofstrasse reflects this wealth!',
+        },
+        {
+          question: 'What is Zürich West?',
+          answer: 'Zürich West is former industrial district transformed into trendy neighborhood with galleries, bars, restaurants, and cultural spaces. The transformation shows Zurich\'s ability to reinvent while preserving character. Popular with younger crowd - great nightlife!',
+        },
+        {
+          question: 'Is Zurich historic center walkable?',
+          answer: 'Very walkable! Old Town (Altstadt) compact - 15-minute walk across. All major historic sites within walking distance. Comfortable shoes recommended for cobblestones. Trams available if needed. It\'s one of most pedestrian-friendly cities!',
+        },
+        {
+          question: 'What is the Swiss Reformation?',
+          answer: 'The Swiss Reformation was Protestant movement led by Huldrych Zwingli in Zurich (1520s) paralleling Luther in Germany. Started at Grossmünster cathedral. It shaped Swiss religious and political landscape. Zurich became Protestant center - historically important!',
+        },
+        {
+          question: 'When is the best time for historic tours?',
+          answer: 'Year-round available! Spring (April-May) and fall (Sept-Oct) have perfect weather. Summer busy but vibrant. Winter offers Christmas markets adding historical atmosphere. Morning tours (9-11 AM) best for photos and fewer crowds.',
+        },
+      ],
+    },
+
+    'shopping-and-culture-tours': {
+      title: 'Zurich Shopping & Culture Tours',
+      subtitle: 'Discover luxury Bahnhofstrasse, Swiss watches, designer boutiques, and vibrant arts scene!',
+      categoryName: 'Shopping & Culture Tours',
+      
+      stats: {
+        toursAvailable: 42,
+        priceFrom: 50,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Experience Zurich as a luxury shopping and cultural destination! Bahnhofstrasse, one of world's most expensive shopping streets, features flagship stores of Swiss watchmakers (Rolex, Patek Philippe, Omega), luxury brands (Chanel, Prada, Louis Vuitton), and Swiss specialty shops. Tours explore Swiss watch culture, visit traditional shops selling Swiss Army knives and textiles, discover emerging designers in Niederdorf, and explore art galleries and museums. The cultural scene includes Kunsthaus Zurich (Swiss art museum), Museum Rietberg (Asian art), FIFA World Football Museum, and vibrant street art in Zürich West. Learn about Swiss craftsmanship, precision engineering, and how Zurich balances luxury with progressive culture. Some tours include personal shopping experiences and tax-free shopping guidance!`,
+
+      seo: {
+        title: 'Zurich Shopping & Culture Tours 2025 - Bahnhofstrasse & Luxury',
+        description: 'Explore Zurich shopping! Bahnhofstrasse, Swiss watches, luxury boutiques, and culture!',
+        keywords: 'Zurich shopping, Bahnhofstrasse, Swiss watches Zurich, luxury shopping Zurich, Zurich culture',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Luxury Bahnhofstrasse',
+          description: 'Shop one of world\'s most expensive streets with Swiss watchmakers!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Swiss Watch Heritage',
+          description: 'Discover Rolex, Patek Philippe, and Swiss timepiece craftsmanship.',
+        },
+        {
+          icon: 'Camera',
+          title: 'World-Class Museums',
+          description: 'Kunsthaus, Rietberg, and specialized collections showcase art and culture.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Tax-Free Shopping',
+          description: 'Get VAT refunds on luxury purchases - significant savings!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Bahnhofstrasse Shopping Tour',
+          description: 'Guided tour of luxury shopping street with Swiss brand insights.',
+          features: [
+            '3 hours',
+            'Luxury brands',
+            'Swiss watches',
+            'Shopping tips',
+            'Flagship stores',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Swiss Watch Experience',
+          description: 'Visit watch boutiques learning about Swiss watchmaking tradition.',
+          features: [
+            '2-3 hours',
+            'Multiple brands',
+            'Expert guide',
+            'Watchmaking history',
+            'Boutique access',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Museum & Gallery Tour',
+          description: 'Explore Zurich\'s art scene from classic to contemporary.',
+          features: [
+            '4 hours',
+            'Multiple museums',
+            'Art collections',
+            'Cultural insights',
+            'Skip lines',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Design & Local Shops',
+          description: 'Discover Swiss designers, artisan shops, and unique boutiques.',
+          features: [
+            '3 hours',
+            'Local designers',
+            'Artisan shops',
+            'Hidden gems',
+            'Authentic finds',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Zurich Shopping & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Shopping tours: 3 hours. Museum tours: 4 hours. Combined: Full day.',
+          },
+          {
+            icon: 'Star',
+            title: 'Bahnhofstrasse',
+            description: 'Walk 1.4km luxury street with 250+ shops from Swiss watches to haute couture.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Swiss Watches',
+            description: 'Visit Rolex, Patek Philippe, Omega boutiques learning watchmaking heritage.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Kunsthaus Zurich',
+            description: 'See Swiss art collection with works by Alberto Giacometti and Ferdinand Hodler.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Designer Boutiques',
+            description: 'Discover emerging Swiss designers and local artisan shops.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Shopping Culture',
+            description: 'Learn about Swiss quality, craftsmanship, and luxury retail traditions.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Tax refund (VAT): Non-EU visitors get 8% refund on purchases over CHF 300 - significant savings!',
+        'Swiss watches: Prices similar worldwide but selection in Zurich is unmatched.',
+        'Bahnhofstrasse window shopping is free entertainment - stunning displays!',
+        'Kunsthaus Zurich (CHF 23) has excellent Swiss modern art - Giacometti collection.',
+        'Saturday shopping: Most stores open 9 AM-6 PM; Sundays almost everything closed.',
+        'FIFA Museum (CHF 24) interesting even for non-football fans - interactive!',
+        'Swiss Army knife original Victorinox store near Paradeplatz - authentic souvenirs.',
+        'Zürich West has edgy galleries and street art - free to explore, very different vibe!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Bahnhofstrasse?',
+          answer: 'Bahnhofstrasse is Zurich\'s main shopping street and one of world\'s most expensive retail streets. It stretches 1.4km from train station to lake with 250+ shops: luxury brands, Swiss watches, jewelry, and department stores. Window shopping alone is spectacular!',
+        },
+        {
+          question: 'Are Swiss watches cheaper in Zurich?',
+          answer: 'Not cheaper but better selection! Prices similar worldwide. However, non-EU visitors get 8% VAT refund on purchases over CHF 300. Plus unmatched choice of Rolex, Patek Philippe, Omega in flagship stores. If buying Swiss watch, Zurich is ideal!',
+        },
+        {
+          question: 'How does tax-free shopping work?',
+          answer: 'Non-EU visitors get 8% VAT refund on purchases over CHF 300. Ask for tax-free form at store, get it stamped at airport customs (show unworn items), then get refund. Significant savings on luxury purchases!',
+        },
+        {
+          question: 'What museums should I visit?',
+          answer: 'Top picks: Kunsthaus Zurich (Swiss art, CHF 23), Museum Rietberg (Asian art, CHF 14), Swiss National Museum (history, CHF 10), FIFA Museum (football, CHF 24). Zurich Card (CHF 27) includes free entry to most museums.',
+        },
+        {
+          question: 'Is Zurich shopping expensive?',
+          answer: 'Yes! Switzerland is expensive country. Luxury brands priced globally but quality is exceptional. Look for Swiss specialties: watches, chocolates, textiles, Army knives. VAT refund helps offset costs. Budget travelers: Window shopping Bahnhofstrasse is free!',
+        },
+        {
+          question: 'What to buy in Zurich?',
+          answer: 'Swiss specialties: Watches (Rolex, Omega), Swiss Army knives (Victorinox), chocolate (Sprüngli, Lindt), cheese, luxury goods (VAT refund!). For souvenirs: Quality Swiss products last lifetime. Worth paying Swiss prices for genuine craftsmanship.',
+        },
+        {
+          question: 'When are shops open?',
+          answer: 'Monday-Friday: 9 AM-8 PM. Saturday: 9 AM-6 PM. Sunday: CLOSED (except train station shops). Department stores and Bahnhofstrasse shops keep these hours. Small shops may close earlier or have lunch breaks.',
+        },
+        {
+          question: 'Is there a design district?',
+          answer: 'Zürich West! Former industrial area now has galleries, design shops, and artisan boutiques. Viadukt under railway arches features local designers and sustainable brands. More affordable and edgier than Bahnhofstrasse. Great for unique finds!',
+        },
+      ],
+    },
+  },
+
 };
 

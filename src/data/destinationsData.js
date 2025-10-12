@@ -2471,12 +2471,12 @@ export const destinations = [
     heroDescription: 'Welcome to Zurich, where pristine Lake Zurich meets historic Old Town and Swiss precision creates a perfect urban experience. From the charming Altstadt to the beautiful lakefront, from world-class shopping to authentic Swiss cuisine, this cosmopolitan city offers the perfect blend of tradition, culture, and modern Swiss life. Let our AI-powered planner help you discover the best experiences this sophisticated destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Zurich.jpeg',
     tourCategories: [
-      'Old Town Tours',
-      'Lake Zurich Tours',
-      'Swiss Alps Tours',
-      'Food & Chocolate Tours',
-      'Historic District Tours',
-      'Shopping & Culture Tours'
+      { name: 'Old Town Tours', hasGuide: true },
+      { name: 'Lake Zurich Tours', hasGuide: true },
+      { name: 'Swiss Alps Tours', hasGuide: true },
+      { name: 'Food & Chocolate Tours', hasGuide: true },
+      { name: 'Historic District Tours', hasGuide: true },
+      { name: 'Shopping & Culture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Zurich Tours & Excursions - Top-Rated Activities & Adventures',
