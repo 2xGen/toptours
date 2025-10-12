@@ -14990,6 +14990,888 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'monte-alban-tours': {
+      title: 'Oaxaca Monte Alban Tours',
+      subtitle: 'Explore ancient Zapotec ruins with panoramic valley views!',
+      categoryName: 'Monte Alban Tours',
+      
+      stats: {
+        toursAvailable: 52,
+        priceFrom: 45,
+        duration: '4-6 hours',
+      },
+
+      introduction: `Discover Monte Alban - ancient Zapotec capital perched on flattened mountaintop! Monte Alban tours explore one of Mesoamerica's most important archaeological sites (UNESCO World Heritage) with massive pyramids, ball court, observ observatory, carved stone monuments (danzantes - "dancers"), and panoramic views of Oaxaca Valley. Built 500 BC and abandoned 750 AD, this pre-Columbian city housed 25,000 people at its peak! Learn about Zapotec civilization, astronomical alignment of buildings, hieroglyphic writing, conquest by Mixtecs, and archaeological discoveries. Tours include transportation from Oaxaca City (20 minutes), expert guides explaining history, and time to explore independently. It's ancient wonder!`,
+
+      seo: {
+        title: 'Oaxaca Monte Alban Tours 2025 - Ancient Zapotec Ruins & Archaeology',
+        description: 'Explore Monte Alban! Ancient Zapotec ruins, pyramids, and archaeological wonders near Oaxaca!',
+        keywords: 'Monte Alban tours, Oaxaca ruins, Zapotec ruins, Monte Alban Oaxaca, ancient ruins Mexico',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Ancient Zapotec Capital',
+          description: 'Major pre-Columbian city from 500 BC - UNESCO site!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Panoramic Valley Views',
+          description: 'Mountaintop location with 360-degree Oaxaca Valley vistas!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Massive Pyramids',
+          description: 'Climb ancient structures with incredible photo opportunities!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Archaeological Wonder',
+          description: 'Learn about Zapotec civilization and Mesoamerican history!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Half-Day Monte Alban',
+          description: 'Morning or afternoon tour with transport and guide.',
+          features: [
+            '4 hours total',
+            'Transport included',
+            'Expert guide',
+            'Ruins exploration',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Monte Alban + Artisan Villages',
+          description: 'Combine ruins with visits to craft-making communities.',
+          features: [
+            '6-7 hours',
+            'Ruins + villages',
+            'Comprehensive',
+            'Artisan demos',
+            'Cultural',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Private Archaeological Tour',
+          description: 'Personalized tour with archaeologist guide.',
+          features: [
+            '4-5 hours',
+            'Private',
+            'Expert guide',
+            'Flexible',
+            'In-depth',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunrise Tour',
+          description: 'Early morning visit for best light and fewer crowds.',
+          features: [
+            '4 hours',
+            'Sunrise',
+            'Fewer crowds',
+            'Best photos',
+            'Special',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Oaxaca Monte Alban Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 4 hours total (20 min drive + 2.5 hours at ruins). Full day with villages: 6-7 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Ancient Pyramids',
+            description: 'Massive structures you can climb - Grand Plaza, ballcourt, platforms!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Valley Views',
+            description: 'Mountaintop perch provides 360-degree panoramas - stunning!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Danzantes',
+            description: 'Carved stone figures ("dancers") from 500 BC - mysterious representations!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Zapotec History',
+            description: 'Learn about pre-Columbian civilization, astronomy, and hieroglyphics.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Site Museum',
+            description: 'Small museum with artifacts and explanations (Spanish/basic English).',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Morning tours (8-9 AM) beat heat and crowds - highly recommended!',
+        'Entrance fee: $80 pesos (~$5 USD) separate from tour cost.',
+        'Wear sunscreen, hat, comfortable shoes - exposed mountaintop with altitude!',
+        'Bring water - limited facilities at ruins.',
+        'Tours from Oaxaca City include transport (20 minutes) - worth it!',
+        'Allow 2.5-3 hours at site - it\'s extensive and requires walking.',
+        'Guides explain what you\'d miss alone - worth the investment!',
+        'Combine with artisan villages (Arrazola alebrijes, San Bartolo textiles) for full day.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Monte Alban?',
+          answer: 'Monte Alban is ancient Zapotec capital (500 BC-750 AD) on flattened mountaintop overlooking Oaxaca Valley. At peak, 25,000 people lived here! Massive pyramids, ball court, astronomical observatory, carved monuments. UNESCO World Heritage Site. Most important archaeological site in Oaxaca. Extraordinary!',
+        },
+        {
+          question: 'How far is Monte Alban from Oaxaca?',
+          answer: 'Only 20 minutes drive (10 km) from Oaxaca City center! Easy day trip. Tours include transport (bus or van). Can also take taxi ($150-200 pesos) or colectivo bus (cheap but infrequent). Most visit as half-day tour. Very accessible!',
+        },
+        {
+          question: 'Do you need guide for Monte Alban?',
+          answer: 'Recommended! Guides explain Zapotec history, building purposes, and details you\'d miss alone. Self-exploring possible - ruins are impressive even without context. Tours ($45-75) include transport and guide. Budget: Go independently with guidebook. First-timers: Tour adds value!',
+        },
+        {
+          question: 'How much does Monte Alban cost?',
+          answer: 'Entrance: $80 pesos (~$5 USD). Tours from Oaxaca: $45-75 (includes transport + guide). Private tours: $150-250. Taxi: $150-200 pesos round-trip. Very affordable! Tours best value for learning and convenience.',
+        },
+        {
+          question: 'Can you climb the pyramids?',
+          answer: 'Yes! You can climb most structures at Monte Alban - unlike many ruins. Climb for better views and photos! Some areas roped off for preservation. Bring comfortable shoes - lots of steps. Physical activity but accessible for most fitness levels!',
+        },
+        {
+          question: 'When is the best time to visit Monte Alban?',
+          answer: 'Morning (8-10 AM) best: Cooler temperatures, better light for photos, fewer crowds. Sunrise tours magical but early! Afternoon gets hot on exposed mountaintop. Dry season (Nov-April) ideal weather. Open daily 8 AM-5 PM. Visit morning!',
+        },
+        {
+          question: 'Is Monte Alban worth visiting?',
+          answer: 'Absolutely! One of Mexico\'s best archaeological sites - UNESCO World Heritage. Impressive pyramids, valley views, Zapotec history. Essential Oaxaca experience! Budget 4 hours minimum. Don\'t skip it - rivals Teotihuacan and Palenque for Mexican ruins!',
+        },
+        {
+          question: 'What should I bring to Monte Alban?',
+          answer: 'Sunscreen (exposed mountaintop!), hat, water (limited facilities), comfortable walking shoes, camera, small bills for entrance. Optional: Snacks, guidebook. Wear layers - morning cool, afternoon hot. Altitude (6,400 ft) - take it easy initially.',
+        },
+      ],
+    },
+
+    'food-and-mezcal-tours': {
+      title: 'Oaxaca Food & Mezcal Tours',
+      subtitle: 'Taste mole, tlayudas, chapulines, and authentic mezcal!',
+      categoryName: 'Food & Mezcal Tours',
+      
+      stats: {
+        toursAvailable: 86,
+        priceFrom: 55,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Discover Oaxaca's legendary cuisine - gastronomic capital of Mexico! Food tours sample iconic dishes like mole (complex sauce with 20+ ingredients!), tlayudas (giant crispy tortillas), chapulines (grasshoppers - crunchy!), quesillo (Oaxacan string cheese), tamales, and tejate (pre-Hispanic cacao drink). Visit bustling markets, family-run restaurants, and mezcaler
+
+ías tasting traditional mezcal (artisanal agave spirit smoky and complex!). Tours include market tours, cooking classes, street food adventures, mezcal tastings at palenques (distilleries), and visits to mole-making families. Learn about seven moles of Oaxaca, indigenous ingredients, and food traditions passed down generations. It's culinary paradise!`,
+
+      seo: {
+        title: 'Oaxaca Food & Mezcal Tours 2025 - Mole, Tlayudas & Authentic Cuisine',
+        description: 'Taste Oaxaca! Mole, mezcal, markets, and authentic Mexican culinary experiences!',
+        keywords: 'Oaxaca food tours, mezcal tasting Oaxaca, Oaxaca mole, tlayudas, Oaxaca cuisine',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Gastronomic Capital',
+          description: 'Mexico\'s best cuisine - UNESCO Intangible Heritage!',
+        },
+        {
+          icon: 'Star',
+          title: 'Seven Moles',
+          description: 'Complex sauces taking days to prepare - culinary art!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Mezcal Birthplace',
+          description: 'Artisanal agave spirit - smoky, complex, traditional!',
+        },
+        {
+          icon: 'Users',
+          title: 'Market Culture',
+          description: 'Vibrant markets with exotic ingredients and street food!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Market & Street Food Tour',
+          description: 'Sample tlayudas, chapulines, and market delicacies.',
+          features: [
+            '3-4 hours',
+            '8-10 tastings',
+            'Markets',
+            'Street food',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Mezcal Tasting Tour',
+          description: 'Visit palenques tasting artisanal mezcal varieties.',
+          features: [
+            '4-5 hours',
+            'Multiple distilleries',
+            'Tastings',
+            'Production process',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Cooking Class',
+          description: 'Make mole, tlayudas, or tamales with local chef.',
+          features: [
+            '4-5 hours',
+            'Hands-on',
+            'Market visit',
+            'Eat your creations',
+            'Interactive',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Mole & Chocolate Workshop',
+          description: 'Learn about mole-making and grind cacao.',
+          features: [
+            '3 hours',
+            'Mole education',
+            'Chocolate making',
+            'Tastings',
+            'Cultural',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Oaxaca Food & Mezcal Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Market tours: 3-4 hours. Cooking classes: 4-5 hours. Mezcal tours: 4-5 hours with transport.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Seven Moles',
+            description: 'Complex sauces - negro, rojo, amarillo, verde, coloradito, chichilo, manchamantel!',
+          },
+          {
+            icon: 'Star',
+            title: 'Tlayudas',
+            description: 'Giant crispy tortillas with beans, quesillo, meat - Oaxacan pizza!',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Mezcal Tastings',
+            description: 'Smoky agave spirit - taste espadin, tobalá, cuishe varieties at palenques!',
+          },
+          {
+            icon: 'Users',
+            title: 'Chapulines',
+            description: 'Grasshoppers seasoned with chili and lime - crunchy protein (try them!).',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Market Exploration',
+            description: 'Benito Juárez and 20 de Noviembre markets - vibrant food culture!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Come hungry - tastings add up to full meal (or two!).',
+        'Morning market tours (9-10 AM) see vendors at peak activity.',
+        'Mezcal joven (young) best represents agave flavor - start there.',
+        'Try chapulines (grasshoppers) - Oaxacan delicacy, crunchy and tasty!',
+        'Mole negro (black mole) most complex - takes 3+ days to prepare.',
+        'Benito Juárez Market for shopping. 20 de Noviembre for eating.',
+        'Cooking classes often include market visit - great value and experience.',
+        'Mezcal tours to villages (Matatlán, Santiago) require 4-5 hours with transport.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Oaxacan mole?',
+          answer: 'Mole is complex sauce with 20+ ingredients (chiles, chocolate, spices, nuts). Seven varieties in Oaxaca! Negro (black, most complex), rojo (red), amarillo (yellow), verde (green). Takes days to prepare. Served over chicken or pork. Essential Oaxacan dish - culinary art!',
+        },
+        {
+          question: 'What is mezcal?',
+          answer: 'Mezcal is artisanal agave spirit from Oaxaca - smoky, complex, traditional! Unlike tequila (only blue agave, industrial), mezcal uses many agave types (espadin, tobalá) and traditional methods. Roasted in underground pits creating smoky flavor. Taste at palenques (distilleries) outside Oaxaca.',
+        },
+        {
+          question: 'Should I eat chapulines?',
+          answer: 'Yes, try them! Chapulines (grasshoppers) are Oaxacan delicacy - seasoned with chili/lime, crunchy, tasty! High protein, sustainable. Sold at markets and restaurants. Start with small portion. Not scary once you try! Cultural experience - embrace it!',
+        },
+        {
+          question: 'Where should I eat in Oaxaca?',
+          answer: 'Markets: 20 de Noviembre (grilled meats, tlayudas), Benito Juárez (food stalls). Restaurants: Casa Oaxaca, Origen, Los Danzantes. Street food: Tlayudas Doña Flavia. Mole: Casa Crespo. Cooking classes combine market + restaurant. Tours show best spots!',
+        },
+        {
+          question: 'How much do Oaxaca food tours cost?',
+          answer: 'Market/street food: $55-85 (3-4 hours). Cooking classes: $70-120 (4-5 hours). Mezcal tours: $65-95. Private tours: $200-350. Meals replace lunch/dinner - good value! Budget: Explore markets yourself ($10-20 for sampling).',
+        },
+        {
+          question: 'Is Oaxacan food spicy?',
+          answer: 'Moderately spicy! Uses chiles but not overwhelmingly hot. Dishes have flavor and complexity, not just heat. Mole has chiles but balanced with chocolate and spices. You control spiciness with salsas. More flavorful than hot - delicious!',
+        },
+        {
+          question: 'Can vegetarians eat in Oaxaca?',
+          answer: 'Challenging but possible! Quesillo (cheese), beans, squash blossoms, mushrooms, tlayudas (without meat). Communicate dietary needs. Many dishes contain meat/lard. Some restaurants accommodate. Harder than other destinations but doable. Market fruits/vegetables excellent!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Markets busiest mornings (9-11 AM). Lunch tours (11 AM-2 PM) or dinner (6-9 PM) available. Guelaguetza festival (July) cultural peak with special foods. Always accessible - Oax acan cuisine available daily!',
+        },
+      ],
+    },
+
+    'market-tours': {
+      title: 'Oaxaca Market Tours',
+      subtitle: 'Explore vibrant Benito Juárez and 20 de Noviembre markets!',
+      categoryName: 'Market Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 40,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Oaxaca's legendary markets - sensory explosion of colors, aromas, and flavors! Market tours explore Benito Juárez Market (shopping and food), 20 de Noviembre Market (grilled meats and tlayudas), Tlacolula Market (Sunday only, most authentic!), Abastos (wholesale madness!), and specialty markets. See pyramids of colorful chiles, exotic fruits, fresh flowers, handmade tortillas, traditional textiles, carved alebrijes, quesillo being stretched, insects for eating, and indigenous vendors. Learn about ingredients, haggling etiquette, seasonal specialties, and market culture. Sample street food, taste fresh juices, and shop for artisan crafts. It's living tradition!`,
+
+      seo: {
+        title: 'Oaxaca Market Tours 2025 - Benito Juárez & Traditional Markets',
+        description: 'Explore Oaxaca markets! Food, crafts, culture, and authentic market experiences!',
+        keywords: 'Oaxaca markets, Benito Juarez Market, 20 de Noviembre Market, Tlacolula market, Oaxaca shopping',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Sensory Explosion',
+          description: 'Colors, aromas, flavors - authentic market atmosphere!',
+        },
+        {
+          icon: 'Star',
+          title: 'Local Life',
+          description: 'Where Oaxacans shop daily - real cultural immersion!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photo Paradise',
+          description: 'Colorful displays of chiles, flowers, and traditional goods!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Artisan Crafts',
+          description: 'Textiles, pottery, alebrijes direct from makers!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Market Tour',
+          description: 'Explore Benito Juárez and 20 de Noviembre with guide.',
+          features: [
+            '2-3 hours',
+            'Two markets',
+            'Food samples',
+            'Shopping tips',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Sunday Tlacolula Tour',
+          description: 'Visit authentic Sunday market in Tlacolula village.',
+          features: [
+            '4-5 hours',
+            'Sunday only',
+            'Most authentic',
+            'Village market',
+            'Cultural',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tour',
+          description: 'Capture market colors with photographer guide.',
+          features: [
+            '3 hours',
+            'Photo-focused',
+            'Best light',
+            'Market portraits',
+            'Instagram',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Market + Cooking Class',
+          description: 'Shop for ingredients then cook traditional meal.',
+          features: [
+            '5 hours',
+            'Market shopping',
+            'Cooking',
+            'Comprehensive',
+            'Interactive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Oaxaca Market Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'City markets: 2-3 hours. Tlacolula (Sunday): 4-5 hours with transport.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Benito Juárez Market',
+            description: 'Main market for shopping - handicrafts, textiles, cheese, chocolate, flowers!',
+          },
+          {
+            icon: 'Star',
+            title: '20 de Noviembre Market',
+            description: 'Food market with grilled meats, tlayudas, mole - eat here!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Colorful Displays',
+            description: 'Mountains of chiles, exotic fruits, flowers - incredibly photogenic!',
+          },
+          {
+            icon: 'Users',
+            title: 'Indigenous Vendors',
+            description: 'Many vendors speak indigenous languages - authentic market culture!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Artisan Crafts',
+            description: 'Buy textiles, pottery, alebrijes, baskets direct from makers.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Morning (8-10 AM) markets most active - best time to visit!',
+        'Benito Juárez for shopping. 20 de Noviembre for eating. Both adjacent.',
+        'Sunday Tlacolula market most authentic - worth early wake-up!',
+        'Haggling expected (especially crafts) - start at 70% of asking price.',
+        'Bring cash - most vendors don\'t take cards.',
+        'Try seasonal fruits at juice stands - fresh and delicious!',
+        'Guides navigate overwhelming markets and explain what you\'re seeing.',
+        'Wear comfortable shoes and bring reusable bag for purchases.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Benito Juárez Market?',
+          answer: 'Benito Juárez is Oaxaca\'s main market - massive indoor/outdoor complex for shopping! Handicrafts, textiles, quesillo (cheese), chocolate, mole paste, flowers, produce. Open daily. Adjacent to 20 de Noviembre (food market). Essential Oaxaca experience - plan 2+ hours!',
+        },
+        {
+          question: 'What is 20 de Noviembre Market?',
+          answer: '20 de Noviembre is food market famous for grilled meats and tlayudas! "Pasillo de humo" (smoke corridor) has dozens of grills. Order carne asada, chorizo, or cecina with tlayuda. Cheap, delicious, authentic! Next to Benito Juárez. Visit both!',
+        },
+        {
+          question: 'What is Tlacolula Market?',
+          answer: 'Tlacolula is legendary Sunday market in village 30 km from Oaxaca. Most authentic market in region! Locals come from mountain villages trading goods. Mezcal, barbacoa, indigenous textiles. 4-5 hours with transport. Worth early wake-up - it\'s spectacular!',
+        },
+        {
+          question: 'Can you visit markets yourself?',
+          answer: 'Absolutely! Markets accessible and safe. However, tours explain what you\'re seeing, navigate overwhelming layout, show best food stalls, help with language/haggling. First-timers: Tour recommended (2-3 hours). Then return independently to shop. Both work!',
+        },
+        {
+          question: 'How much do market tours cost?',
+          answer: 'City market tours: $40-70 (2-3 hours). Tlacolula Sunday: $60-90 (includes transport). Photography tours: $75-100. Cooking class with market: $80-130. Free to explore yourself! Tours provide context and navigation.',
+        },
+        {
+          question: 'What should I buy at Oaxaca markets?',
+          answer: 'Best buys: Textiles (San Martín Tilcajete), chocolate bars, mole paste, quesillo (if flying - careful!), pottery, alebrijes (carved wooden animals), mezcal, baskets. Haggle on crafts! Edibles great souvenirs and gifts.',
+        },
+        {
+          question: 'Are Oaxaca markets safe?',
+          answer: 'Very safe! Tourist-friendly with minimal pickpocketing issues. Watch belongings in crowds. Vendors friendly and used to tourists. Food stalls clean - millions eat safely. Use normal caution. Markets are safe, welcoming, and essential Oaxaca!',
+        },
+        {
+          question: 'When are Oaxaca markets open?',
+          answer: 'Benito Juárez & 20 de Noviembre: Daily, busiest mornings (8 AM-2 PM). Tlacolula: Sundays only! Abastos: Daily. Etla: Wednesdays. Ocotlán: Fridays. Sunday markets most authentic - plan around them if possible!',
+        },
+      ],
+    },
+
+    'cultural-tours': {
+      title: 'Oaxaca Cultural Tours',
+      subtitle: 'Experience Zapotec heritage, Guelaguetza, and indigenous traditions!',
+      categoryName: 'Cultural Tours',
+      
+      stats: {
+        toursAvailable: 58,
+        priceFrom: 50,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Immerse yourself in Oaxaca's rich indigenous culture - where Zapotec traditions thrive! Cultural tours explore indigenous communities, traditional festivals, textile weaving demonstrations, mezcal-making ceremonies, Day of the Dead celebrations, Guelaguetza folk dance festival, and cultural museums. Visit Teotitlán del Valle (weavers using natural dyes), Mitla (Zapotec archaeological site), hierve el agua (petrified waterfalls), and artisan workshops. Learn about indigenous languages still spoken, traditional clothing, pre-Hispanic rituals, and how 16 indigenous groups maintain ancestral traditions. Experience authentic culture beyond tourism - it's living heritage!`,
+
+      seo: {
+        title: 'Oaxaca Cultural Tours 2025 - Indigenous Heritage & Zapotec Traditions',
+        description: 'Experience Oaxaca culture! Zapotec heritage, traditional villages, and authentic experiences!',
+        keywords: 'Oaxaca cultural tours, Zapotec culture, Guelaguetza, indigenous Oaxaca, Day of the Dead Oaxaca',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Living Indigenous Culture',
+          description: '16 indigenous groups maintaining ancestral traditions!',
+        },
+        {
+          icon: 'Star',
+          title: 'UNESCO Heritage',
+          description: 'Oaxaca\'s traditions recognized as Intangible Cultural Heritage!',
+        },
+        {
+          icon: 'Users',
+          title: 'Authentic Villages',
+          description: 'Visit artisan communities practicing traditional crafts!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Festivals',
+          description: 'Guelaguetza, Day of the Dead - spectacular cultural celebrations!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Artisan Villages Tour',
+          description: 'Visit Teotitlán (textiles), Arrazola (alebrijes), San Bartolo (pottery).',
+          features: [
+            '6-7 hours',
+            'Multiple villages',
+            'Artisan demos',
+            'Shopping',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Zapotec Experience',
+          description: 'Visit Mitla ruins and indigenous communities.',
+          features: [
+            '5-6 hours',
+            'Archaeological site',
+            'Villages',
+            'Cultural',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Textile Weaving Workshop',
+          description: 'Learn natural dye techniques and weaving in Teotitlán.',
+          features: [
+            '4 hours',
+            'Hands-on',
+            'Natural dyes',
+            'Weaving',
+            'Interactive',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Day of the Dead Tour',
+          description: 'Experience cemetery celebrations and traditions (Oct 31-Nov 2).',
+          features: [
+            '5-6 hours',
+            'Cemetery visits',
+            'Evening',
+            'Seasonal',
+            'Spectacular',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Oaxaca Cultural Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Village tours: 5-7 hours. Workshops: 3-4 hours. Day of the Dead: 5-6 hours evening.',
+          },
+          {
+            icon: 'Star',
+            title: 'Artisan Demonstrations',
+            description: 'Watch weavers, potters, and alebrije carvers at work!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Indigenous Languages',
+            description: 'Many villagers speak Zapotec - guides translate and explain traditions.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Traditional Dress',
+            description: 'See hand-embroidered clothing still worn daily in communities.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Zapotec History',
+            description: 'Learn about pre-Hispanic civilization and colonial influence.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Authentic Experiences',
+            description: 'Visit homes, workshops, and communities beyond tourist spots.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Teotitlán del Valle best for textiles - natural dyes and traditional weaving.',
+        'Arrazola known for colorful alebrijes (carved wooden animals).',
+        'Guelaguetza festival (last two Mondays July) massive celebration - book WAY ahead!',
+        'Day of the Dead (Oct 31-Nov 2) spectacular in Oaxaca - hotels book year ahead.',
+        'Respect indigenous communities - ask before photographing people.',
+        'Many artisans speak limited Spanish - guides facilitate communication.',
+        'Support artisans by buying directly - fair prices and authentic goods.',
+        'Villages require 5-7 hours with transport - plan full day.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Guelaguetza?',
+          answer: 'Guelaguetza is Oaxaca\'s biggest festival (last two Mondays in July) - indigenous folk dance celebration! Seven regions perform traditional dances in regional dress. Massive stadium event, street parties, cultural events. Tickets $50-200, book months ahead. It\'s spectacular - Oaxaca\'s cultural peak!',
+        },
+        {
+          question: 'What are alebrijes?',
+          answer: 'Alebrijes are brightly painted wooden carvings of fantastical creatures! Originated in Mexico City dreams but perfected in Oaxaca. Villages like Arrazola and San Martín specialize. Hand-carved copal wood, painted with intricate designs. Range $10-$10,000+. Amazing souvenirs!',
+        },
+        {
+          question: 'What is Day of the Dead like in Oaxaca?',
+          answer: 'Oaxaca has Mexico\'s best Day of the Dead (Oct 31-Nov 2)! Families decorate graves with marigolds and candles, hold cemetery vigils, make altars with photos/food. Not sad - celebration of life! Visit cemeteries, see altars, experience traditions. Book hotels year ahead. Unforgettable!',
+        },
+        {
+          question: 'Can you visit indigenous villages yourself?',
+          answer: 'Yes but challenging! Villages spread out (30-60 minutes drive), limited public transport, language barriers. Tours provide transport, cultural context, artisan connections, and respect protocols. First-timers: Tours highly recommended. Return independently if confident. Both work!',
+        },
+        {
+          question: 'How much do cultural tours cost?',
+          answer: 'Village tours: $50-90 (5-7 hours, transport included). Workshops: $60-100 (3-4 hours). Day of the Dead: $70-120. Guelaguetza tickets: $50-200. Private tours: $200-350. Good value for cultural immersion and artisan access!',
+        },
+        {
+          question: 'Do villagers speak Spanish?',
+          answer: 'Many speak indigenous languages (Zapotec, Mixtec) as first language - Spanish second! Older generations may have limited Spanish. Guides translate and facilitate. Respect linguistic diversity - it\'s living heritage. Smiles and respect transcend language!',
+        },
+        {
+          question: 'What should I buy from artisans?',
+          answer: 'Textiles from Teotitlán (natural dye rugs $50-500+), alebrijes from Arrazola ($10-500+), black pottery from San Bartolo ($5-100), baskets, embroidered clothing. Buy directly from artisans - fair prices, authentic quality. Bargaining acceptable but respectful.',
+        },
+        {
+          question: 'When is the best time for cultural tours?',
+          answer: 'Year-round! Guelaguetza (July): Cultural peak, crowds, expensive. Day of the Dead (Oct 31-Nov 2): Spectacular traditions, book ahead. Regular season: Lower prices, authentic daily life. Sunday Tlacolula market adds cultural layer. Anytime offers rich culture!',
+        },
+      ],
+    },
+
+    'artisan-tours': {
+      title: 'Oaxaca Artisan Tours',
+      subtitle: 'Meet weavers, potters, and alebrije carvers in traditional workshops!',
+      categoryName: 'Artisan Tours',
+      
+      stats: {
+        toursAvailable: 48,
+        priceFrom: 55,
+        duration: '4-7 hours',
+      },
+
+      introduction: `Discover Oaxaca's legendary artisan traditions - where ancient crafts thrive! Artisan tours visit specialized villages: Teotitlán del Valle (hand-woven textiles with natural dyes from cochineal, indigo, marigold), Arrazola & San Martín (carved alebrijes painted with intricate designs), San Bartolo Coyotepec (black pottery burnished to shine), Santo Tomás Jalieza (backstrap loom weaving), and more. Meet master artisans in their workshops, watch creation processes, learn traditional techniques passed through generations, and purchase directly from makers. Tours include demonstrations, hands-on workshops, cultural context, and shopping opportunities. It's living art!`,
+
+      seo: {
+        title: 'Oaxaca Artisan Tours 2025 - Textiles, Alebrijes & Traditional Crafts',
+        description: 'Meet Oaxaca artisans! Weavers, alebrije carvers, and traditional craft workshops!',
+        keywords: 'Oaxaca artisan tours, Teotitlan weaving, alebrijes Oaxaca, black pottery, traditional crafts',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Master Artisans',
+          description: 'Meet creators in their workshops - authentic connections!',
+        },
+        {
+          icon: 'Star',
+          title: 'Traditional Techniques',
+          description: 'Skills passed through generations using ancestral methods!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photo Opportunities',
+          description: 'Watch artisans work - colorful materials and processes!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Fair Trade Shopping',
+          description: 'Buy directly from makers - support artisans fairly!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Textile Villages Tour',
+          description: 'Visit Teotitlán and Santo Tomás seeing weaving demonstrations.',
+          features: [
+            '5-6 hours',
+            'Multiple villages',
+            'Natural dye demos',
+            'Weaving',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Alebrije Workshop',
+          description: 'Visit Arrazola meeting carvers and watching creation.',
+          features: [
+            '4-5 hours',
+            'Carving demos',
+            'Painting',
+            'Shopping',
+            'Colorful',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Hands-On Weaving Class',
+          description: 'Learn backstrap loom or pedal loom weaving.',
+          features: [
+            '3-4 hours',
+            'Hands-on',
+            'Natural dyes',
+            'Take home piece',
+            'Interactive',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Multi-Craft Village Tour',
+          description: 'Visit textile, alebrije, and pottery villages in one day.',
+          features: [
+            '7-8 hours',
+            'Three villages',
+            'All crafts',
+            'Comprehensive',
+            'Full day',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Oaxaca Artisan Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Single village: 4-5 hours. Multiple villages: 6-8 hours with transport between.',
+          },
+          {
+            icon: 'Star',
+            title: 'Teotitlán Textiles',
+            description: 'Watch weavers at pedal looms creating rugs with natural dyes!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Alebrije Carving',
+            description: 'See copal wood carved into fantastical creatures then hand-painted!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Black Pottery',
+            description: 'Watch burnishing technique creating shiny black pottery without glaze!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Natural Dyes',
+            description: 'Learn about cochineal (red from insects!), indigo, marigold creating colors.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Direct Purchase',
+            description: 'Buy from artisan homes - fair prices, authentic quality, support communities!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Teotitlán del Valle best textiles - natural dyes and traditional designs.',
+        'Arrazola and San Martín both excellent for alebrijes - different styles.',
+        'Quality varies widely - tours connect you with best artisans.',
+        'Prices negotiable (especially bulk) but be respectful - skilled labor!',
+        'Large rugs ($200-1,000+) can be shipped - artisans arrange.',
+        'Hands-on workshops let you create your own piece to take home!',
+        'Villages require transport (30-60 min drive) - tours handle logistics.',
+        'Thursday Zaachila market combines archaeology and market shopping.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Teotitlán del Valle known for?',
+          answer: 'Teotitlán is famous for hand-woven wool textiles with natural dyes! Pedal loom weavers create rugs, tapestries, and blankets. Natural dyes: Cochineal (red from insects!), indigo (blue), marigold (yellow). Zapotec village where families weave for generations. Tours visit workshops. Prices: $50-1,000+ depending on size/complexity!',
+        },
+        {
+          question: 'How are alebrijes made?',
+          answer: 'Alebrijes carved from copal wood into fantastical creatures (dragons, cats, skeletons), then hand-painted with intricate designs! Arrazola and San Martín specialize. Takes days-weeks depending on detail. Watch carving and painting in workshops. Prices: $10-$10,000+ (museum-quality pieces expensive). Amazing gifts!',
+        },
+        {
+          question: 'What is Oaxacan black pottery?',
+          answer: 'Black pottery from San Bartolo Coyotepec gets shine from burnishing, not glaze! Burnished while drying, then fired in underground pit creating black color. Unique to Oaxaca. Watch artisans burnish with quartz stones. Prices: $5-$200. Fragile but beautiful souvenirs!',
+        },
+        {
+          question: 'Can you visit artisan villages yourself?',
+          answer: 'Yes but challenging! Villages 30-60 minutes from Oaxaca, limited transport, hard finding best artisans. Tours provide transport, artisan connections, explanations, and fair pricing guidance. First-timers: Tours recommended. DIY: Rent car, bring Spanish/patience. Both work!',
+        },
+        {
+          question: 'How much do artisan tours cost?',
+          answer: 'Single village: $55-80 (4-5 hours). Multiple villages: $75-120 (6-8 hours). Hands-on workshops: $70-100. Private tours: $200-350. Tours include transport and guide. Worth it for artisan access and cultural context. Direct purchases support communities!',
+        },
+        {
+          question: 'Are prices negotiable with artisans?',
+          answer: 'Yes, gentle haggling acceptable - especially bulk purchases! However, respect skilled labor. Don\'t lowball artisans. Start at 80-90% asking price. Quality work deserves fair compensation. Tours help navigate pricing. Direct purchase supports families - pay fairly!',
+        },
+        {
+          question: 'Can large items be shipped?',
+          answer: 'Yes! Many artisans arrange shipping (rugs, large alebrijes, pottery). Or bring bubble wrap and pack carefully in checked luggage. Fedex/DHL in Oaxaca City ship internationally. Large textiles ($200-1,000+) worth shipping hassle. Artisans experienced with logistics!',
+        },
+        {
+          question: 'When is the best time for artisan tours?',
+          answer: 'Year-round! Artisans work daily (except major holidays). Weekdays quieter than weekends. Morning visits best - artisans fresh, good light. Any season works - crafts not weather-dependent. Plan 4-8 hours depending on villages visited!',
+        },
+      ],
+    },
   },
 };
 
