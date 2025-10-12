@@ -3354,12 +3354,12 @@ export const destinations = [
     heroDescription: 'Welcome to Chicago, where stunning architecture meets Midwestern hospitality and Lake Michigan provides a beautiful backdrop. From the iconic skyline to world-class museums, from deep-dish pizza to vibrant neighborhoods, this dynamic city offers the perfect blend of urban sophistication and friendly charm. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Chicago.jpg',
     tourCategories: [
-      'Architecture Tours',
-      'Museum Tours',
-      'Food & Pizza Tours',
-      'Lake Michigan Tours',
-      'Neighborhood Tours',
-      'Cultural Tours'
+      { name: 'Architecture Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Food & Pizza Tours', hasGuide: true },
+      { name: 'Lake Michigan Tours', hasGuide: true },
+      { name: 'Neighborhood Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true }
     ],
     seo: {
       title: 'Chicago Tours & Excursions - Top-Rated Activities & Adventures',
@@ -3409,12 +3409,12 @@ export const destinations = [
     heroDescription: 'Welcome to Honolulu, where the aloha spirit meets urban sophistication and pristine beaches provide the perfect backdrop for island adventures. From the historic Pearl Harbor to the iconic Waikiki Beach, from Hawaiian culture to world-class dining, this tropical paradise offers the perfect blend of island charm and modern amenities. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Honolulu.jpeg',
     tourCategories: [
-      'Pearl Harbor Tours',
-      'Waikiki Beach Tours',
-      'Hawaiian Culture Tours',
-      'Beach & Water Sports',
-      'Food & Luau Tours',
-      'Island Tours'
+      { name: 'Pearl Harbor Tours', hasGuide: true },
+      { name: 'Waikiki Beach Tours', hasGuide: true },
+      { name: 'Hawaiian Culture Tours', hasGuide: true },
+      { name: 'Beach & Water Sports', hasGuide: true },
+      { name: 'Food & Luau Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true }
     ],
     seo: {
       title: 'Honolulu Tours & Excursions - Top-Rated Activities & Adventures',
@@ -3629,12 +3629,12 @@ export const destinations = [
     heroDescription: 'Welcome to Denver, where the Rocky Mountains meet urban sophistication and outdoor adventures await just minutes from the city center. From the vibrant downtown to world-class museums, from craft breweries to mountain excursions, this Mile High City offers the perfect blend of urban amenities and natural beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Denver.jpeg',
     tourCategories: [
-      'Rocky Mountain Tours',
-      'Brewery Tours',
-      'Museum Tours',
-      'Outdoor Adventure Tours',
-      'Food & Culture Tours',
-      'Historical Tours'
+      { name: 'Rocky Mountain Tours', hasGuide: true },
+      { name: 'Brewery Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Outdoor Adventure Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true }
     ],
     seo: {
       title: 'Denver Tours & Excursions - Top-Rated Activities & Adventures',

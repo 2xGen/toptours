@@ -3175,5 +3175,3179 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  chicago: {
+    'architecture-tours': {
+      title: 'Chicago Architecture Tours',
+      subtitle: 'Explore world-famous skyscrapers and architectural masterpieces in the birthplace of modern architecture!',
+      categoryName: 'Architecture Tours',
+      
+      stats: {
+        toursAvailable: 94,
+        priceFrom: 45,
+        duration: '1.5-3 hours',
+      },
+
+      introduction: `Experience Chicago's legendary architecture - the city that invented the skyscraper and revolutionized modern design! Architecture tours explore iconic buildings like Willis Tower (formerly Sears Tower with 103rd-floor Skydeck), John Hancock Center, Tribune Tower, Wrigley Building, and Cloud Gate (The Bean) at Millennium Park. The famous Chicago Architecture River Cruise navigates the Chicago River showcasing 50+ buildings while expert docents explain architectural styles: Chicago School, Art Deco, International Style, and contemporary designs by Frank Lloyd Wright, Mies van der Rohe, and Santiago Calatrava. Walking tours cover the Loop's historic skyscrapers, Frank Lloyd Wright's Oak Park houses, and cutting-edge modern towers. Learn why the 1871 Great Chicago Fire created opportunity for architectural innovation and how Chicago became the world's architecture capital!`,
+
+      seo: {
+        title: 'Chicago Architecture Tours 2025 - River Cruise & Skyscraper Tours',
+        description: 'Explore Chicago architecture! River cruise, Willis Tower, skyscrapers, and iconic buildings!',
+        keywords: 'Chicago architecture tours, Chicago river cruise, Willis Tower, Chicago architecture boat tour',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Architecture Capital',
+          description: 'Birthplace of skyscrapers and modern architecture - world-renowned!',
+        },
+        {
+          icon: 'Ship',
+          title: 'Famous River Cruise',
+          description: 'Chicago River cruise is THE best way to see architecture!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Expert Docents',
+          description: 'Guides certified by Chicago Architecture Center - passionate experts!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Iconic Skyline',
+          description: 'Photograph some of world\'s most recognizable skyscrapers.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Ship',
+          title: 'Architecture River Cruise',
+          description: 'Classic 90-minute boat tour with expert docent - Chicago\'s #1 tour!',
+          features: [
+            '90 minutes',
+            '50+ buildings',
+            'Expert docent',
+            'River views',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Skydeck & Walking Tour',
+          description: 'Visit Willis Tower Skydeck plus Loop walking tour.',
+          features: [
+            '3 hours',
+            '103rd floor',
+            'Glass ledge',
+            'Historic buildings',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Frank Lloyd Wright Tour',
+          description: 'Explore Wright\'s Oak Park homes and architectural legacy.',
+          features: [
+            '2-3 hours',
+            'Multiple houses',
+            'Unity Temple',
+            'Architecture insight',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Loop Walking Tour',
+          description: 'Walk downtown seeing skyscrapers, Art Deco details, and landmarks.',
+          features: [
+            '2 hours',
+            'Historic Loop',
+            'Ground level',
+            'Photo stops',
+            'Free options',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Chicago Architecture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'River cruise: 90 minutes. Walking tours: 2 hours. Combined: 3-4 hours.',
+          },
+          {
+            icon: 'Ship',
+            title: 'Chicago River Cruise',
+            description: 'Boat tour seeing architecture from water - unique perspective!',
+          },
+          {
+            icon: 'Star',
+            title: 'Willis Tower Skydeck',
+            description: 'Visit 103rd floor with glass ledge extending over city - thrilling!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Architectural Styles',
+            description: 'Learn Chicago School, Art Deco, International, and contemporary designs.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Iconic Buildings',
+            description: 'See Wrigley Building, Tribune Tower, Aqua Tower, and more.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'City History',
+            description: 'Understand Great Fire, rebuilding, and Chicago\'s architectural innovation.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Architecture River Cruise is MUST-DO - book Chicago Architecture Center\'s official tour.',
+        'Go in spring (April-May) or fall (Sept-Oct) for comfortable boat weather.',
+        'Willis Tower Skydeck: Buy CityPASS ($115) including 5 attractions - better value!',
+        'River cruise sunset departures offer beautiful light on buildings.',
+        'Oak Park easy 30-minute train ride (Green Line) to see Wright homes.',
+        'Free Loop walking tours available but paid tours have better docents.',
+        'Bring camera with wide-angle lens - buildings are massive!',
+        'Architecture Center (111 E Wacker) has exhibits and model of Chicago - start there!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Chicago Architecture River Cruise?',
+          answer: 'The Architecture River Cruise is Chicago\'s most popular tour - 90-minute boat ride on Chicago River with expert docent explaining 50+ buildings. Chicago Architecture Center operates official tours. It\'s THE best way to see architecture! $45-50 per person. Book ahead!',
+        },
+        {
+          question: 'How much does Willis Tower Skydeck cost?',
+          answer: 'Skydeck admission: $30-35 (103rd floor, glass ledge). Fast-pass: $60 (skip lines). CityPASS: $115 (includes Skydeck + 4 other attractions - best value!). Views are incredible - tallest building in Western Hemisphere. Book online saves time!',
+        },
+        {
+          question: 'When is the best time for architecture tours?',
+          answer: 'Spring (April-May) and fall (Sept-Oct): Perfect weather for river cruises. Summer (June-Aug) nice but hot and crowded. Winter boats run heated but cold! Walking tours year-round. Weekdays less crowded than weekends.',
+        },
+        {
+          question: 'Do I need tickets in advance?',
+          answer: 'River cruise: BOOK AHEAD - sells out weeks in advance, especially summer/weekends! Skydeck: Book online to skip ticket lines. Walking tours: Usually same-day OK. Peak season (May-Sept): Book everything early.',
+        },
+        {
+          question: 'Can you visit Frank Lloyd Wright homes?',
+          answer: 'Yes! Oak Park (30 min from downtown) has 25 Wright buildings. Tours visit interiors of Unity Temple and Wright Home/Studio. Self-guided also possible. $18-25 for guided tours. Architecture enthusiasts love it! Easy train access.',
+        },
+        {
+          question: 'What is The Bean?',
+          answer: 'Cloud Gate ("The Bean") is Anish Kapoor\'s mirror sculpture in Millennium Park. Free to visit! It reflects Chicago skyline creating fun distorted photos. Touch it, photograph it, walk under it. Iconic Chicago photo op! Visit early morning to avoid crowds.',
+        },
+        {
+          question: 'Are architecture tours worth it?',
+          answer: 'Absolutely! Chicago has world\'s best architecture - docents bring it alive with stories. River cruise especially worth it. Even non-architecture fans enjoy it! Chicago\'s skyline and building density are unmatched. Educational and beautiful.',
+        },
+        {
+          question: 'What buildings should I see?',
+          answer: 'Must-see: Willis Tower (tallest), John Hancock Center, Tribune Tower, Wrigley Building, Aqua Tower (wavy balconies), The Bean, Frank Lloyd Wright Robie House. River cruise shows 50+ from water. Loop has highest concentration. All spectacular!',
+        },
+      ],
+    },
+
+    'museum-tours': {
+      title: 'Chicago Museum Tours',
+      subtitle: 'Discover world-class museums from Art Institute to Field Museum and Museum Campus!',
+      categoryName: 'Museum Tours',
+      
+      stats: {
+        toursAvailable: 68,
+        priceFrom: 30,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience Chicago's exceptional museums rivaling the world's finest institutions! The Museum Campus along Lake Michigan houses three world-class museums: Field Museum (Sue the T-Rex and natural history), Shedd Aquarium (32,000 aquatic animals), and Adler Planetarium (space and astronomy). The Art Institute of Chicago features iconic works like Grant Wood's "American Gothic," Georges Seurat's "A Sunday on La Grande Jatte," and extensive Impressionist collections. Other highlights include Museum of Science and Industry (massive interactive exhibits in historic building), Chicago History Museum, and contemporary art at MCA. Tours provide skip-the-line access, expert guides explaining masterpieces, and thematic explorations. Learn about Chicago's cultural contributions, see dinosaur fossils, interact with science exhibits, and admire world-class art. It's museum paradise!`,
+
+      seo: {
+        title: 'Chicago Museum Tours 2025 - Art Institute, Field Museum & More',
+        description: 'Explore Chicago museums! Art Institute, Field Museum, science exhibits, and world-class collections!',
+        keywords: 'Chicago museums, Art Institute Chicago, Field Museum, Shedd Aquarium, Chicago museum tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'World-Class Collections',
+          description: 'Art Institute and Field Museum rank among world\'s finest museums!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Museum Campus',
+          description: 'Three major museums on beautiful lakefront - easy to visit multiple!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Iconic Artworks',
+          description: 'See "American Gothic," Monet\'s water lilies, and Impressionist masterpieces.',
+        },
+        {
+          icon: 'Users',
+          title: 'Interactive Exhibits',
+          description: 'Science and Industry Museum offers hands-on learning experiences.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Art Institute Tour',
+          description: 'Guided tour of highlights including Impressionist gallery.',
+          features: [
+            '2 hours',
+            'Iconic paintings',
+            'Expert guide',
+            'Skip lines',
+            'Must-see',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Museum Campus Pass',
+          description: 'Visit all three lakefront museums - Field, Shedd, Adler.',
+          features: [
+            'Full day',
+            'Three museums',
+            'Combo ticket',
+            'Best value',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Science & Industry Tour',
+          description: 'Interactive exhibits in historic Palace of Fine Arts building.',
+          features: [
+            '3-4 hours',
+            'Hands-on',
+            'Submarine tour',
+            'Family-friendly',
+            'Engaging',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Private Museum Tours',
+          description: 'Personalized tours focusing on specific interests and collections.',
+          features: [
+            '2-3 hours',
+            'Private guide',
+            'Custom focus',
+            'In-depth',
+            'Premium',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Chicago Museum Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Single museum: 2-3 hours. Museum Campus: Full day. Plan accordingly!',
+          },
+          {
+            icon: 'Star',
+            title: 'Art Institute',
+            description: 'See "American Gothic," Impressionist masterpieces, and modern art collections.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Field Museum',
+            description: 'Meet Sue the T-Rex (largest, most complete T-Rex), mummies, and gems.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Shedd Aquarium',
+            description: 'See beluga whales, dolphins, penguins, and 32,000 aquatic animals.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Science & Industry',
+            description: 'Explore U-505 submarine, coal mine, and interactive science exhibits.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Chicago History',
+            description: 'Understand city\'s role in art, science, and cultural innovation.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'CityPASS ($115) includes Art Institute, Field Museum, Shedd, and 2 more - saves 50%!',
+        'Art Institute FREE Thursdays 5-8 PM for Illinois residents - very crowded!',
+        'Museum Campus walkable between all three - beautiful lakefront path.',
+        'Field Museum: Thursdays stay open late (until 8 PM) - fewer crowds after 5 PM.',
+        'Book Shedd aquarium timed entry in advance - they control capacity.',
+        'Science & Industry needs 3-4 hours minimum - it\'s massive!',
+        'Many museums closed Mondays - check schedules before planning.',
+        'Download museum apps for self-guided audio tours - enhance visit!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best museum in Chicago?',
+          answer: 'Art Institute is world-class (Impressionists, American Gothic). Field Museum amazing for natural history (Sue the T-Rex!). Science & Industry best for families (interactive). Shedd Aquarium great for kids. Each excellent - choose based on interests! CityPASS lets you visit multiple.',
+        },
+        {
+          question: 'How much do Chicago museums cost?',
+          answer: 'Art Institute: $32. Field Museum: $32. Shedd Aquarium: $40. Science & Industry: $25. Adler Planetarium: $30. CityPASS: $115 (includes 5 attractions - best value!). Children discounts available. Book online saves time.',
+        },
+        {
+          question: 'What is Sue the T-Rex?',
+          answer: 'Sue is the largest, most complete T-Rex skeleton ever found at Field Museum! Named after discoverer Sue Hendrickson. 40 feet long, 67 million years old. She\'s the star attraction! Field Museum also has mummies, gems, and natural history. $32 entry.',
+        },
+        {
+          question: 'Is the Art Institute worth it?',
+          answer: 'Absolutely! One of world\'s greatest art museums with iconic works: "American Gothic," Monet\'s water lilies, Seurat\'s "Sunday," and massive collections. Plan 2-3 hours minimum. $32 entry but worth every penny. Architecture alone is stunning!',
+        },
+        {
+          question: 'How long to visit museums?',
+          answer: 'Art Institute: 2-3 hours for highlights, full day for thorough visit. Field Museum: 2-3 hours. Shedd Aquarium: 2-3 hours. Science & Industry: 3-4 hours (huge!). Museum Campus: Full day for all three. Don\'t rush - savor them!',
+        },
+        {
+          question: 'Is CityPASS worth it?',
+          answer: 'Yes! $115 includes Art Institute, Field Museum, Shedd Aquarium, Skydeck, and choice of Science & Industry OR 360 CHICAGO. Separately: $169+. Saves $50+ and skips some ticket lines. Valid 9 days. Perfect for tourists hitting major sights!',
+        },
+        {
+          question: 'Can you visit Museum Campus in one day?',
+          answer: 'Yes but exhausting! All three museums (Field, Shedd, Adler) walkable on Campus. Full day (9 AM-5 PM) needed. Recommend choosing 2 museums for quality over quantity. Beautiful lakefront setting - bring camera for skyline views!',
+        },
+        {
+          question: 'Are museums family-friendly?',
+          answer: 'Very! Shedd Aquarium and Science & Industry especially great for kids (interactive!). Field Museum has Sue the T-Rex (kids love it). Art Institute less engaging for young children. All have family programs and cafes. Chicago museums excel with kids!',
+        },
+      ],
+    },
+
+    'food-and-pizza-tours': {
+      title: 'Chicago Food & Pizza Tours',
+      subtitle: 'Taste legendary deep-dish pizza, hot dogs, and diverse Chicago culinary scene!',
+      categoryName: 'Food & Pizza Tours',
+      
+      stats: {
+        toursAvailable: 86,
+        priceFrom: 55,
+        duration: '3-4 hours',
+      },
+
+      introduction: `Discover Chicago's incredible food scene - from deep-dish pizza to Chicago-style hot dogs to innovative fine dining! Food tours explore iconic pizza institutions like Lou Malnati's, Giordano's, and Pequod's (caramelized crust!), try authentic Chicago hot dogs (never ketchup!), visit diverse neighborhoods like Pilsen (Mexican), Chinatown, Little Italy, and vibrant West Loop restaurant district. Sample Italian beef sandwiches, Garrett Popcorn (cheese + caramel mix), Polish sausages, and cutting-edge cuisine from Michelin-starred chefs. Walking food tours combine 6-8 tastings with neighborhood history, while pizza tours compare different styles (deep-dish vs. tavern-style thin crust). Learn why Chicago became a culinary capital, how immigration shaped food culture, and where locals actually eat. It's delicious cultural education!`,
+
+      seo: {
+        title: 'Chicago Food & Pizza Tours 2025 - Deep Dish & Culinary Adventures',
+        description: 'Experience Chicago food tours! Deep-dish pizza, Chicago hot dogs, and diverse cuisine!',
+        keywords: 'Chicago food tours, Chicago pizza tours, deep dish pizza, Chicago hot dog, Chicago food scene',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Legendary Deep Dish',
+          description: 'Experience Chicago\'s most famous food - thick, cheesy pizza perfection!',
+        },
+        {
+          icon: 'Star',
+          title: 'Diverse Neighborhoods',
+          description: 'Explore ethnic enclaves with authentic Mexican, Italian, Polish, and Asian cuisine!',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Foodie Guides',
+          description: 'Chicagoans share insider spots and neighborhood history.',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Chicago Classics',
+          description: 'Hot dogs, Italian beef, Garrett Popcorn - iconic Chicago eats!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Deep Dish Pizza Tour',
+          description: 'Compare different pizza styles at legendary pizzerias.',
+          features: [
+            '3 hours',
+            '2-3 pizzerias',
+            'Pizza history',
+            'Local guide',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Neighborhood Food Tour',
+          description: 'Explore ethnic neighborhoods with 6-8 tastings.',
+          features: [
+            '3-4 hours',
+            'Multiple stops',
+            'Diverse cuisine',
+            'History included',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Chicago Classics Tour',
+          description: 'Sample hot dogs, Italian beef, pizza, and popcorn.',
+          features: [
+            '3 hours',
+            'Iconic foods',
+            '5-6 tastings',
+            'Chicago staples',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Craft Beer & Food',
+          description: 'Combine Chicago cuisine with craft brewery visits.',
+          features: [
+            '3.5 hours',
+            'Food + beer',
+            'Local breweries',
+            'Pairings',
+            'Great combo',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Chicago Food & Pizza Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours last 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Deep Dish Pizza',
+            description: 'Try authentic Chicago deep-dish with thick crust, layers of cheese, and toppings.',
+          },
+          {
+            icon: 'Star',
+            title: 'Chicago Hot Dog',
+            description: 'All-beef frank, poppy seed bun, relish, onions, tomato, pickle - NO KETCHUP!',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Italian Beef',
+            description: 'Thinly sliced beef on French roll dipped in au jus - messy and delicious!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Neighborhood Exploration',
+            description: 'Walk vibrant areas like Pilsen, West Loop, and ethnic enclaves.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Food History',
+            description: 'Learn how immigration and innovation shaped Chicago\'s culinary scene.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Deep dish takes 45 minutes to cook - order ahead or go for lunch to avoid wait!',
+        'Lou Malnati\'s, Pequod\'s, and Giordano\'s are top deep-dish spots.',
+        'Chicago hot dog rule: NEVER ketchup! Locals are serious about this.',
+        'Garrett Popcorn: Get Chicago Mix (cheese + caramel) - addictive!',
+        'Italian beef: Order "dipped" (bread soaked in au jus) for authentic experience.',
+        'West Loop is Chicago\'s restaurant row - Michelin-starred and trendy spots.',
+        'Food tours replace meals - come moderately hungry, pace yourself!',
+        'Bring cash for tipping and some vendors - not everywhere takes cards.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Chicago deep-dish pizza?',
+          answer: 'Deep-dish is Chicago\'s signature pizza - thick crust filled with cheese, toppings, and chunky tomato sauce on top (reverse order!). It\'s eaten with fork and knife. Takes 45 min to bake. Famous spots: Lou Malnati\'s, Pequod\'s, Giordano\'s. Must-try in Chicago!',
+        },
+        {
+          question: 'Where is the best pizza in Chicago?',
+          answer: 'Deep-dish: Lou Malnati\'s (classic), Pequod\'s (caramelized crust), Giordano\'s (stuffed). Tavern-style thin crust: Vito & Nick\'s, Piece Brewery. Locals debate endlessly! Try multiple on pizza tours. Each has devoted fans. All excellent!',
+        },
+        {
+          question: 'What is a Chicago-style hot dog?',
+          answer: 'All-beef hot dog on poppy seed bun with yellow mustard, chopped onions, bright green relish, tomato slices, pickle spear, sport peppers, celery salt. NEVER ketchup (serious rule!). Portillo\'s and Superdawg are classics. $3-5. Quintessential Chicago!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Walking food tours: $55-80 (3-4 hours, 6-8 tastings). Pizza tours: $60-90. Neighborhood tours: $65-95. Includes food, guide, sometimes drinks. Tours replace meals - good value. Private tours $150-300 for group.',
+        },
+        {
+          question: 'Can vegetarians do food tours?',
+          answer: 'Many tours accommodate vegetarians with notice! Chicago has excellent veggie options. Deep-dish pizza works well. Hot dogs harder but possible. Communicate dietary needs when booking. Some tours specifically vegetarian/vegan. Food scene is diverse!',
+        },
+        {
+          question: 'What is Italian beef?',
+          answer: 'Italian beef is Chicago specialty - thinly sliced seasoned beef on French roll "dipped" (soaked) in au jus with giardiniera (spicy pickled veggies) or sweet peppers. It\'s messy, delicious, and very Chicago! Portillo\'s and Al\'s Beef are famous.',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round available! Lunch tours (11 AM-2 PM) or dinner tours (5-8 PM). Summer great for outdoor eating. Winter offers cozy deep-dish weather! Weekend tours more social. Book ahead for popular times. Come hungry!',
+        },
+        {
+          question: 'What is Garrett Popcorn?',
+          answer: 'Garrett Popcorn is Chicago institution famous for "Chicago Mix" - sweet caramel and sharp cheddar popcorn mixed together. Sounds weird, tastes amazing! Lines out the door but fast-moving. Multiple locations. Great Chicago souvenir!',
+        },
+      ],
+    },
+
+    'lake-michigan-tours': {
+      title: 'Chicago Lake Michigan Tours',
+      subtitle: 'Cruise the Great Lake, explore Navy Pier, and enjoy waterfront beauty!',
+      categoryName: 'Lake Michigan Tours',
+      
+      stats: {
+        toursAvailable: 76,
+        priceFrom: 35,
+        duration: '1.5-3 hours',
+      },
+
+      introduction: `Experience Chicago's stunning Lake Michigan waterfront - 28 miles of beaches, parks, and recreation right in the city! Lake tours include scenic cruises seeing Chicago's skyline from water, Navy Pier attractions (150-foot Ferris wheel, parks, restaurants), Lakefront Trail cycling (18-mile path), North Avenue Beach activities, and sunset sails. The lakefront features Museum Campus, Grant Park, Millennium Park, Oak Street Beach, and Lincoln Park - all accessible and beautiful. Summer brings beach culture with swimming, volleyball, and outdoor concerts. Learn about Lake Michigan's role in Chicago's development, the reversal of Chicago River, and how "the Lake" defines Chicago living. Boat tours offer unique skyline perspectives while beach activities provide urban recreation. It's Chicago's natural playground!`,
+
+      seo: {
+        title: 'Chicago Lake Michigan Tours 2025 - Lake Cruises & Waterfront',
+        description: 'Explore Lake Michigan in Chicago! Lake cruises, Navy Pier, beaches, and waterfront beauty!',
+        keywords: 'Lake Michigan Chicago, Chicago lake cruises, Navy Pier, Chicago beaches, lakefront tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Great Lake Beauty',
+          description: 'Massive freshwater lake offering ocean-like vistas and beaches!',
+        },
+        {
+          icon: 'Ship',
+          title: 'Skyline Cruises',
+          description: 'See Chicago\'s iconic skyline from water - spectacular perspective!',
+        },
+        {
+          icon: 'Heart',
+          title: '28 Miles of Waterfront',
+          description: 'Beaches, parks, and trails accessible throughout the city.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Navy Pier',
+          description: 'Chicago\'s most visited attraction with ferris wheel and entertainment!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Ship',
+          title: 'Skyline Lake Cruise',
+          description: 'Scenic cruise showcasing Chicago skyline from Lake Michigan.',
+          features: [
+            '90 minutes',
+            'Skyline views',
+            'Open-air deck',
+            'Bar available',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Sunset Sailing',
+          description: 'Evening cruise timed for golden hour over Chicago.',
+          features: [
+            '2 hours',
+            'Sunset views',
+            'Romantic',
+            'Drinks included',
+            'Beautiful',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Navy Pier Experience',
+          description: 'Visit pier attractions, ferris wheel, and lakefront entertainment.',
+          features: [
+            '2-3 hours',
+            'Ferris wheel',
+            'Restaurants',
+            'Entertainment',
+            'Family fun',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Beach & Bike Tour',
+          description: 'Cycle Lakefront Trail stopping at beaches and parks.',
+          features: [
+            '3 hours',
+            'Bike rental',
+            'Beach stops',
+            '18-mile trail',
+            'Active',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Chicago Lake Michigan Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Lake cruises: 90 minutes-2 hours. Navy Pier: 2-3 hours. Bike tours: 3 hours.',
+          },
+          {
+            icon: 'Ship',
+            title: 'Skyline Views',
+            description: 'See Chicago\'s magnificent skyline from water - unobstructed panoramas!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Navy Pier',
+            description: 'Ride 150-foot Centennial Wheel, visit gardens, and enjoy pier attractions.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Urban Beaches',
+            description: 'Visit North Avenue Beach, Oak Street Beach - swimming in the city!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Lakefront Trail',
+            description: 'Cycle or walk 18-mile paved path along entire Chicago waterfront.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'City Development',
+            description: 'Learn how Lake Michigan shaped Chicago\'s growth and culture.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Lake cruises best May-September when weather is warm - winter boats are enclosed.',
+        'Sunset cruises offer most dramatic skyline views with golden light.',
+        'Navy Pier Ferris wheel: $18, best at night when lit up - views are spectacular!',
+        'Rent Divvy bikes ($3.30/30 min) to explore Lakefront Trail affordably.',
+        'Beaches free! North Avenue Beach most popular - volleyball, swimming, food.',
+        'Summer weekends beaches get crowded - weekday mornings quieter.',
+        'Bring layers - it\'s cooler on the lake even in summer (lake effect).',
+        'Architecture river cruise better than lake cruise for architecture fans.',
+      ],
+
+      faqs: [
+        {
+          question: 'Can you swim in Lake Michigan?',
+          answer: 'Yes! Chicago has 26 public beaches along Lake Michigan. Swimming popular June-August when water warms to 60-70°F. Lifeguards on duty Memorial Day-Labor Day. North Avenue, Oak Street, and Montrose beaches most popular. Water is clean!',
+        },
+        {
+          question: 'What is Navy Pier?',
+          answer: 'Navy Pier is Chicago\'s #1 tourist attraction - 3,300-foot pier with ferris wheel, gardens, restaurants, boat cruises, and entertainment. It\'s free to walk (attractions cost extra). Ferris wheel $18. Fireworks summer Wednesdays/Saturdays! Great for families.',
+        },
+        {
+          question: 'How much do lake cruises cost?',
+          answer: 'Skyline cruises: $35-45 (90 min). Sunset cruises: $50-70. Architecture river cruise (different): $45-50. Fireworks cruises: $60-80. Book online for discounts. Drinks available onboard (extra cost). Summer advance booking recommended!',
+        },
+        {
+          question: 'When is the best time for lake activities?',
+          answer: 'May-September ideal for cruises, beaches, and biking. July-August warmest for swimming. June and September less crowded. Fall colors September-October beautiful. Winter: Limited lake access, cruises suspended. Summer is peak lake season!',
+        },
+        {
+          question: 'Is the Lakefront Trail safe?',
+          answer: 'Very safe! 18-mile paved trail from north to south with separate bike/pedestrian lanes. Well-maintained, well-lit, and patrolled. Busy with joggers, bikers, walkers. Use normal urban caution. Gorgeous trail - locals\' favorite recreation spot!',
+        },
+        {
+          question: 'Can you bike along Lake Michigan?',
+          answer: 'Yes! Lakefront Trail perfect for biking - 18 miles of paved path along entire waterfront. Rent Divvy bikes ($3.30/30 min) or bike rental shops ($25-40/day). Flat, scenic, and safe. Stop at beaches and parks along the way!',
+        },
+        {
+          question: 'What is the best beach in Chicago?',
+          answer: 'North Avenue Beach most popular - volleyball, food, swimming, skyline views. Oak Street Beach (near downtown) convenient. Montrose Beach (north) has dog beach. 31st Street Beach quieter. All free! Summer beaches buzzing with activity.',
+        },
+        {
+          question: 'Are there fireworks at Navy Pier?',
+          answer: 'Yes! Summer fireworks (Memorial Day-Labor Day) every Wednesday 9:15 PM and Saturday 10:15 PM. Free to watch from pier or surrounding areas! Fireworks cruises ($60-80) offer water views. Very popular - arrive early for good spots!',
+        },
+      ],
+    },
+
+    'neighborhood-tours': {
+      title: 'Chicago Neighborhood Tours',
+      subtitle: 'Explore diverse communities from Wicker Park to Pilsen revealing authentic Chicago!',
+      categoryName: 'Neighborhood Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 40,
+        duration: '3-4 hours',
+      },
+
+      introduction: `Discover Chicago's vibrant neighborhoods - each with unique character, history, and culture! Chicago is famously a "city of neighborhoods" with 77 distinct communities beyond downtown. Tours explore trendy Wicker Park/Bucktown (hipster cafes, vintage shops, street art), historic Pilsen (Mexican murals, taquerías, art galleries), upscale Lincoln Park (zoo, boutiques, brownstones), Andersonville (Swedish heritage, LGBTQ+ friendly), Chinatown (authentic dim sum and culture), and Bronzeville (African American history and jazz). Walking tours combine local history, architecture, food stops, and insider perspectives. Learn about immigration waves shaping Chicago, ethnic enclaves preserving traditions, gentrification dynamics, and neighborhood pride. Guides share stories mainstream tours miss. It's authentic Chicago beyond the Loop!`,
+
+      seo: {
+        title: 'Chicago Neighborhood Tours 2025 - Wicker Park, Pilsen & Local Culture',
+        description: 'Explore Chicago neighborhoods! Wicker Park, Pilsen, ethnic enclaves, and authentic Chicago!',
+        keywords: 'Chicago neighborhood tours, Wicker Park, Pilsen Chicago, Chicago cultural tours, local Chicago',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Chicago',
+          description: 'Experience where Chicagoans actually live beyond tourist areas!',
+        },
+        {
+          icon: 'Star',
+          title: 'Diverse Communities',
+          description: '77 neighborhoods each with unique character, food, and culture.',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Guides',
+          description: 'Neighborhood residents share personal stories and insider knowledge.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Street Art & Murals',
+          description: 'Pilsen and Wicker Park showcase incredible urban art!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Pilsen Art & Food Tour',
+          description: 'Explore Mexican neighborhood with murals, galleries, and taquerías.',
+          features: [
+            '3 hours',
+            'Street art',
+            'Mexican food',
+            'Art galleries',
+            'Vibrant',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Wicker Park Walking Tour',
+          description: 'Discover hipster paradise with vintage shops, cafes, and architecture.',
+          features: [
+            '2-3 hours',
+            'Trendy area',
+            'Coffee culture',
+            'Victorian homes',
+            'Cool vibe',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Multi-Neighborhood Tour',
+          description: 'Visit 3-4 neighborhoods by van seeing diverse Chicago.',
+          features: [
+            '4 hours',
+            'Multiple areas',
+            'Van transport',
+            'Comprehensive',
+            'Efficient',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Historic Neighborhood Tour',
+          description: 'Explore Lincoln Park, Bronzeville, or Gold Coast history.',
+          features: [
+            '3 hours',
+            'Historic focus',
+            'Architecture',
+            'Local stories',
+            'Educational',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Chicago Neighborhood Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours per neighborhood. Multi-area tours: 4 hours by van.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Pilsen Murals',
+            description: 'See stunning Mexican street art celebrating culture and social justice.',
+          },
+          {
+            icon: 'Star',
+            title: 'Local Businesses',
+            description: 'Visit neighborhood cafes, bakeries, shops owned by residents.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Ethnic Enclaves',
+            description: 'Experience Chinatown, Little Italy, Greektown, and cultural preservation.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Victorian Architecture',
+            description: 'See beautiful brownstones and historic homes in residential areas.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Immigration Stories',
+            description: 'Learn how waves of immigrants built and shaped Chicago neighborhoods.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'CTA trains/buses easy and cheap ($2.50) to reach neighborhoods - L train is adventure itself!',
+        'Pilsen Second Fridays (monthly): Art galleries open with receptions - free and fun!',
+        'Wicker Park best explored afternoon/evening when cafes and shops are buzzing.',
+        'Lincoln Park Zoo is FREE - great to combine with neighborhood tour!',
+        'Bring cash for small businesses and street vendors - cards not always accepted.',
+        'Weekend tours more social; weekday tours more intimate.',
+        'Download CTA Ventra app for easy train/bus payment.',
+        'Safety: Neighborhoods on tours are safe daytime - guides know areas well.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best neighborhood to visit?',
+          answer: 'Depends on interests! Pilsen: Art and Mexican culture. Wicker Park: Trendy, hipster. Lincoln Park: Upscale, zoo. Chinatown: Authentic Asian. Andersonville: Quirky, LGBTQ-friendly. All worth visiting - each offers different Chicago experience! Tours show you multiple.',
+        },
+        {
+          question: 'Is it safe to visit Chicago neighborhoods?',
+          answer: 'Neighborhoods on tours are safe! Guides choose safe, vibrant areas and know them well. Pilsen, Wicker Park, Lincoln Park, Andersonville all safe daytime. Use normal urban awareness. Chicago\'s reputation worse than reality - millions of tourists visit safely!',
+        },
+        {
+          question: 'How do you get around Chicago neighborhoods?',
+          answer: 'CTA L train and buses ($2.50/ride, $5 day pass). Uber/Lyft available. Walking within neighborhoods. Some tours include van transport. "L" train is part of experience - elevated trains are iconic! Download Ventra app for easy payment.',
+        },
+        {
+          question: 'What is Pilsen known for?',
+          answer: 'Pilsen is Chicago\'s Mexican neighborhood famous for vibrant street murals, authentic taquerías, art galleries, and cultural pride. It has largest Mexican population outside Mexico City! Great food, incredible art, and real community feel. Essential Chicago neighborhood!',
+        },
+        {
+          question: 'Can you do neighborhood tours without guide?',
+          answer: 'Yes! Most neighborhoods walkable and accessible via CTA. However, guides provide context, history, insider spots, and safety knowledge you\'d miss solo. Tours are educational and efficient. DIY works if researched. Guides enhance experience significantly!',
+        },
+        {
+          question: 'How much do neighborhood tours cost?',
+          answer: 'Walking tours: $40-70 (3 hours, often includes food tastings). Multi-neighborhood van tours: $75-100 (4 hours). Food-focused tours: $55-95. Private tours: $150-300 for group. Good value for insights and local access!',
+        },
+        {
+          question: 'What is Wicker Park like?',
+          answer: 'Wicker Park is trendy, artsy neighborhood with hipster cafes, vintage shops, indie boutiques, craft breweries, and beautiful Victorian homes. Younger crowd, creative vibe. Great food, coffee culture, and nightlife. It\'s Brooklyn of Chicago!',
+        },
+        {
+          question: 'When is the best time for neighborhood tours?',
+          answer: 'Year-round available! Spring/summer best for walking. Weekend mornings popular. Pilsen Second Fridays (monthly) perfect for art. Food tours run daily. Each season offers different neighborhood character. Daytime tours safest and most comprehensive.',
+        },
+      ],
+    },
+
+    'cultural-tours': {
+      title: 'Chicago Cultural Tours',
+      subtitle: 'Experience blues music, theater, public art, and Chicago\'s rich cultural heritage!',
+      categoryName: 'Cultural Tours',
+      
+      stats: {
+        toursAvailable: 58,
+        priceFrom: 50,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Immerse yourself in Chicago's extraordinary cultural scene - from blues and jazz to world-class theater! Cultural tours explore Chicago's musical legacy visiting historic blues clubs on South Side (Buddy Guy's Legends, Kingston Mines), Chicago Theatre District, Millennium Park's public art (Cloud Gate, Crown Fountain), renowned theaters hosting Broadway shows, and cultural institutions. Experience live blues music where legends like Muddy Waters and Howlin' Wolf performed, visit Second City comedy club (launched SNL stars), explore street art in Pilsen and Logan Square, and attend Chicago Symphony Orchestra performances. Learn about Chicago's role in blues history, improv comedy birth, and vibrant arts scene. Tours combine cultural sites with performances, museum visits, and insider access. It's Chicago's creative soul!`,
+
+      seo: {
+        title: 'Chicago Cultural Tours 2025 - Blues Music, Theater & Public Art',
+        description: 'Experience Chicago culture! Blues clubs, theater, Millennium Park, and cultural heritage!',
+        keywords: 'Chicago cultural tours, Chicago blues tours, Chicago theater, Millennium Park, Chicago music',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Music',
+          title: 'Blues Capital',
+          description: 'Birthplace of electric blues - legendary music history!',
+        },
+        {
+          icon: 'Star',
+          title: 'World-Class Theater',
+          description: 'Broadway shows, improv comedy, and acclaimed performance venues.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Public Art',
+          description: 'Cloud Gate (The Bean), Crown Fountain, and incredible street art!',
+        },
+        {
+          icon: 'Users',
+          title: 'Live Performances',
+          description: 'Experience blues, jazz, comedy, and theater in historic venues.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Music',
+          title: 'Chicago Blues Tour',
+          description: 'Visit historic blues clubs with live music and South Side history.',
+          features: [
+            '4 hours',
+            'Live blues',
+            'Multiple clubs',
+            'Music history',
+            'Authentic',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Theater District Tour',
+          description: 'Explore Chicago Theatre, behind-scenes tours, and Broadway shows.',
+          features: [
+            '3 hours',
+            'Historic theaters',
+            'Backstage access',
+            'Show tickets',
+            'Glamorous',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Public Art Walking Tour',
+          description: 'Discover Millennium Park, Loop sculptures, and street art.',
+          features: [
+            '2-3 hours',
+            'The Bean',
+            'Outdoor art',
+            'Photo opportunities',
+            'Free/cheap',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Comedy & Improv Tour',
+          description: 'Visit Second City and experience Chicago\'s comedy legacy.',
+          features: [
+            '3-4 hours',
+            'Live comedy',
+            'Second City',
+            'Improv show',
+            'Hilarious',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Chicago Cultural Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-5 hours. Blues/comedy shows: Add 2 hours. Full evenings common.',
+          },
+          {
+            icon: 'Music',
+            title: 'Live Blues Music',
+            description: 'Hear authentic Chicago blues in legendary clubs where genre was born!',
+          },
+          {
+            icon: 'Star',
+            title: 'Historic Venues',
+            description: 'Visit Chicago Theatre, Green Mill (Al Capone\'s speakeasy), and cultural landmarks.',
+          },
+          {
+            icon: 'Heart',
+            title: 'The Bean',
+            description: 'See and touch Cloud Gate - Chicago\'s most iconic public art sculpture.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Street Art',
+            description: 'Discover Pilsen murals and urban art celebrating community stories.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural History',
+            description: 'Learn about Chicago\'s contributions to music, comedy, and American culture.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Blues clubs: Cover $10-20, buy drinks to support musicians - authentic experience!',
+        'Buddy Guy\'s Legends and Kingston Mines are top blues clubs (South Side).',
+        'Second City shows sell out - book tickets weeks ahead!',
+        'Millennium Park FREE - Cloud Gate, Crown Fountain, Pritzker Pavilion all accessible.',
+        'Chicago Theatre tours ($20) go behind scenes - worth it for theater fans.',
+        'Green Mill (Uptown) has live jazz nightly - Al Capone\'s old speakeasy!',
+        'Summer concerts at Millennium Park (Pritzker Pavilion) often free!',
+        'Combine cultural tour with evening blues or comedy show for full experience.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Chicago blues?',
+          answer: 'Chicago blues is electric blues style that emerged 1940s-50s when blues musicians migrated from Mississippi. Legends like Muddy Waters, Howlin\' Wolf pioneered amplified, urban sound. Chicago became blues capital! Live music nightly at South Side clubs.',
+        },
+        {
+          question: 'Where can you hear live blues?',
+          answer: 'Buddy Guy\'s Legends (owned by blues legend), Kingston Mines (two stages!), Rosa\'s Lounge, Blue Chicago. Cover $10-20, shows 8 PM-2 AM. Thursday-Saturday busiest. All ages welcome early evening. Authentic Chicago experience!',
+        },
+        {
+          question: 'What is Second City?',
+          answer: 'Second City is legendary improv comedy club that launched SNL careers: Tina Fey, Bill Murray, Stephen Colbert, Mike Myers. Shows nightly ($15-40). It invented improv comedy! Multiple stages. Old Town location. Book ahead - sells out!',
+        },
+        {
+          question: 'Is Millennium Park free?',
+          answer: 'Completely free! Cloud Gate (Bean), Crown Fountain (faces spitting water), Lurie Garden, and Pritzker Pavilion all free access. Summer concerts often free. It\'s Chicago\'s living room! Visit anytime. Best early morning or evening to avoid crowds at Bean.',
+        },
+        {
+          question: 'Can you take photos at The Bean?',
+          answer: 'Yes! Cloud Gate is most-photographed Chicago landmark. Touch it, walk under it, photograph reflections. Morning best for photos without crowds. Sunset offers beautiful light. It\'s free, accessible 24/7. Essential Chicago photo op!',
+        },
+        {
+          question: 'What is the Chicago Theatre District?',
+          answer: 'Loop theater district has Broadway shows, historic theaters (Chicago Theatre, Oriental Theatre, Cadillac Palace), and performances. Chicago Theatre icon with marquee. Behind-scenes tours $20. Broadway touring shows year-round. Rich theater tradition!',
+        },
+        {
+          question: 'How much do cultural tours cost?',
+          answer: 'Neighborhood walking tours: $40-70 (3 hours). Blues tours: $75-100 (includes club entry). Theater backstage: $20. Millennium Park public art: FREE. Show tickets separate. Tours offer context and access beyond DIY.',
+        },
+        {
+          question: 'When is the best time for cultural activities?',
+          answer: 'Year-round! Blues clubs: Thursday-Saturday nights best. Theater: September-May season (summer has shows too). Millennium Park: Summer for concerts and fountains. Street art: Anytime. Chicago culture never stops - something always happening!',
+        },
+      ],
+    },
+  },
+
+  denver: {
+    'rocky-mountain-tours': {
+      title: 'Denver Rocky Mountain Tours',
+      subtitle: 'Explore majestic Rockies peaks, alpine lakes, and mountain towns from the Mile High City!',
+      categoryName: 'Rocky Mountain Tours',
+      
+      stats: {
+        toursAvailable: 94,
+        priceFrom: 95,
+        duration: '6-12 hours',
+      },
+
+      introduction: `Experience the spectacular Rocky Mountains just 30 minutes from Denver! Mountain tours explore Rocky Mountain National Park (415 square miles of alpine wilderness), historic mountain towns like Georgetown and Idaho Springs, scenic drives along Trail Ridge Road (highest continuous paved road in US at 12,183 feet), alpine lakes, hiking trails, and wildlife viewing. Adventures include visiting Estes Park gateway town, seeing massive elk herds, exploring old mining towns, riding historic Georgetown Loop Railroad, relaxing in hot springs, and photographing iconic peaks like Longs Peak (14,259 feet). Winter brings skiing/snowboarding at world-class resorts. Learn about gold rush history, mountain ecology, Continental Divide, and why Denver earned its "Mile High" nickname. It's Colorado mountain magic!`,
+
+      seo: {
+        title: 'Denver Rocky Mountain Tours 2025 - National Park & Mountain Adventures',
+        description: 'Explore Rocky Mountains from Denver! National Park, alpine lakes, and Colorado peaks!',
+        keywords: 'Denver mountain tours, Rocky Mountain National Park, Denver to mountains, Estes Park, Colorado tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Rocky Mountain National Park',
+          description: 'Explore one of America\'s most spectacular national parks!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Close to Denver',
+          description: 'Mountains just 30-90 minutes away - easy day trips!',
+        },
+        {
+          icon: 'Camera',
+          title: '14,000-Foot Peaks',
+          description: 'See towering summits, alpine tundra, and glacier-carved valleys.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Historic Mining Towns',
+          description: 'Visit Georgetown, Idaho Springs, and Gold Rush history.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Rocky Mountain National Park',
+          description: 'Full-day tour to RMNP with wildlife, lakes, and Trail Ridge Road.',
+          features: [
+            '10-12 hours',
+            'National Park',
+            'Trail Ridge Road',
+            'Wildlife viewing',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Mountain Towns Tour',
+          description: 'Visit Georgetown, Idaho Springs, and explore mining history.',
+          features: [
+            '6-8 hours',
+            'Historic towns',
+            'Hot springs',
+            'Mining sites',
+            'Charming',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Pikes Peak Day Trip',
+          description: 'Drive or cog railway to 14,115-foot summit - "America\'s Mountain".',
+          features: [
+            '8-10 hours',
+            '14,115 feet',
+            'Summit views',
+            'Cog railway',
+            'Spectacular',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Scenic Mountain Drive',
+          description: 'Drive Mount Evans or Guanella Pass seeing alpine scenery.',
+          features: [
+            '6-8 hours',
+            'Scenic byways',
+            'Photo stops',
+            'Alpine lakes',
+            'Beautiful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Denver Rocky Mountain Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Full-day tours: 10-12 hours. Half-day: 6-8 hours. Early starts common.',
+          },
+          {
+            icon: 'Star',
+            title: 'Trail Ridge Road',
+            description: 'Drive highest continuous paved road in US crossing Continental Divide.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Alpine Tundra',
+            description: 'Experience arctic-like ecosystem above treeline with wildflowers (July).',
+          },
+          {
+            icon: 'Camera',
+            title: 'Elk Herds',
+            description: 'See massive elk populations especially during fall rutting season.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Alpine Lakes',
+            description: 'Visit pristine mountain lakes like Dream Lake, Bear Lake, Emerald Lake.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Mountain Education',
+            description: 'Learn about geology, altitude effects, and Rocky Mountain ecosystems.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'RMNP requires timed entry permits May-October - book weeks ahead!',
+        'Start early (7 AM) to beat crowds and afternoon thunderstorms.',
+        'Bring layers - temperature drops significantly with altitude (can be 30°F difference!).',
+        'Trail Ridge Road closes mid-October to Memorial Day due to snow.',
+        'Altitude sickness possible above 8,000 feet - hydrate well, ascend slowly.',
+        'RMNP entry: $30/vehicle (7 days) or $80 annual pass.',
+        'Wildlife viewing best dawn/dusk - elk especially active mornings.',
+        'Idaho Springs has hot springs ($28) perfect after mountain day!',
+      ],
+
+      faqs: [
+        {
+          question: 'How far is Rocky Mountain National Park from Denver?',
+          answer: '65-90 minutes drive (75 miles). Tours handle transport. Estes Park is gateway town. Full-day tours (10-12 hours) needed to see highlights. Trail Ridge Road alone is 48 miles. Early departure essential. Worth the drive - spectacular!',
+        },
+        {
+          question: 'Do I need tickets for Rocky Mountain National Park?',
+          answer: 'Yes! May-October requires timed entry reservation ($2) PLUS park entry ($30/vehicle). Book both at recreation.gov weeks ahead - they sell out! Tours include permits. Without reservation, you can\'t enter peak season. Plan ahead!',
+        },
+        {
+          question: 'What is Trail Ridge Road?',
+          answer: 'Trail Ridge Road is highest continuous paved road in US reaching 12,183 feet! It crosses Rocky Mountain National Park for 48 miles with 11 miles above treeline. Spectacular views, alpine tundra, wildlife. Open late May-mid October. Must-do Colorado drive!',
+        },
+        {
+          question: 'Will I get altitude sickness?',
+          answer: 'Possible but usually mild. Denver is 5,280 feet (already altitude!). RMNP reaches 12,000+ feet. Symptoms: Headache, dizziness, shortness of breath. Hydrate heavily, avoid alcohol night before, ascend gradually. Most people fine but take it seriously. Descend if worsening.',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Summer (June-September): All roads open, warmest, wildflowers peak July. Fall (September-October): Aspen gold, elk rutting, fewer crowds. Winter: Snow beauty but limited access. Spring: Unpredictable. July-September best for mountain tours.',
+        },
+        {
+          question: 'Can you see elk in Rocky Mountain National Park?',
+          answer: 'Yes! RMNP has huge elk population. Fall (September-October) is rutting season with bugling bulls - amazing! Elk frequent valleys and meadows. Morning/evening best viewing. They\'re habituated but wild - keep 75 feet distance. Nearly guaranteed sightings!',
+        },
+        {
+          question: 'What should I bring?',
+          answer: 'Layers (jacket, fleece, hat, gloves even summer!), water (altitude dehydrates), snacks, sunscreen, sunglasses, camera, comfortable shoes. Weather changes fast in mountains. Afternoon thunderstorms common summer. Prepare for 30°F temperature differences!',
+        },
+        {
+          question: 'Are mountain tours worth it from Denver?',
+          answer: 'Absolutely! Rockies are why people visit Denver. Tours handle logistics (permits, driving, timing) letting you enjoy scenery. Rocky Mountain National Park is bucket-list site. If visiting Denver, mountains are essential! Day trips totally doable and spectacular.',
+        },
+      ],
+    },
+
+    'brewery-tours': {
+      title: 'Denver Brewery Tours',
+      subtitle: 'Experience Napa Valley of craft beer with tours, tastings, and Colorado brewing culture!',
+      categoryName: 'Brewery Tours',
+      
+      stats: {
+        toursAvailable: 78,
+        priceFrom: 60,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Denver's legendary craft beer scene - the city has more breweries than any US city! With over 150 breweries, Denver earned the title "Napa Valley of Beer." Brewery tours explore iconic breweries like Great Divide, Wynkoop (Denver's first brewpub in historic building), Ratio Beerworks, Denver Beer Co., and RiNo (River North Art District) brewery cluster. Tours visit 3-5 breweries sampling diverse styles from IPAs to sours to stouts, learn brewing processes, meet brewmasters, and explore beer-centric neighborhoods. The LoHi (Lower Highlands) and RiNo districts are brewery meccas with walkable clusters. Many tours include food pairings and transportation. Learn about Colorado's hops, high-altitude brewing challenges, and how Denver became craft beer capital. It's beer lover's paradise!`,
+
+      seo: {
+        title: 'Denver Brewery Tours 2025 - Craft Beer & Brewery Tastings',
+        description: 'Experience Denver breweries! Craft beer tastings, brewery tours, and Colorado beer culture!',
+        keywords: 'Denver brewery tours, Denver craft beer, Colorado breweries, Denver beer tours, RiNo breweries',
+      },
+
+      whyChoose: [
+        {
+          icon: 'GlassWater',
+          title: 'Most Breweries in US',
+          description: 'Over 150 breweries - more than any other American city!',
+        },
+        {
+          icon: 'Star',
+          title: 'Award-Winning Beer',
+          description: 'Denver breweries win national and international competitions!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Brewery Districts',
+          description: 'RiNo and LoHi have brewery clusters - walk between multiple!',
+        },
+        {
+          icon: 'Users',
+          title: 'Brewery Culture',
+          description: 'Experience Colorado\'s laid-back beer culture and community.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'GlassWater',
+          title: 'Classic Brewery Tour',
+          description: 'Visit 3-4 breweries sampling 12-15 beers with transportation.',
+          features: [
+            '3-4 hours',
+            '3-4 breweries',
+            '12-15 samples',
+            'Transport included',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'RiNo Brewery Walking Tour',
+          description: 'Walk River North Art District visiting 4-5 breweries.',
+          features: [
+            '3 hours',
+            'Walkable area',
+            'Street art',
+            'Multiple breweries',
+            'Trendy',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Brewery & Food Pairing',
+          description: 'Craft beer paired with Colorado cuisine at brewery restaurants.',
+          features: [
+            '4 hours',
+            'Food pairings',
+            'Expert pairings',
+            '3 breweries',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Private Brewery Tour',
+          description: 'Custom tour visiting breweries matching your taste preferences.',
+          features: [
+            '4-5 hours',
+            'Private group',
+            'Custom stops',
+            'Flexible',
+            'Premium',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Denver Brewery Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours last 3-5 hours visiting 3-5 breweries with tastings.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Beer Tastings',
+            description: 'Sample 12-20 different beers across various styles and breweries.',
+          },
+          {
+            icon: 'Star',
+            title: 'Brewery Culture',
+            description: 'Experience taprooms, meet brewers, and learn brewing processes.',
+          },
+          {
+            icon: 'Heart',
+            title: 'RiNo District',
+            description: 'Explore trendy River North with breweries, street art, and galleries.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Brewery Architecture',
+            description: 'See creative brewery spaces in converted warehouses and unique buildings.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Beer Education',
+            description: 'Learn about brewing, hop varieties, and high-altitude fermentation.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Tours include transport - don\'t drive yourself! Drink responsibly.',
+        'RiNo Art District walkable with 15+ breweries - easy self-guided option.',
+        'Great Divide and Wynkoop are Denver brewery legends - must-visits!',
+        'Bring cash for tips - bartenders appreciate $1-2 per beer.',
+        'Lunch before tours - beer on empty stomach hits hard at altitude!',
+        'Colorado IPAs tend hoppy - try local specialties and seasonal brews.',
+        'Weekend tours more social but busier taprooms - weekday tours more intimate.',
+        'Many breweries have food trucks - pair beers with Colorado cuisine!',
+      ],
+
+      faqs: [
+        {
+          question: 'How many breweries does Denver have?',
+          answer: 'Denver has 150+ breweries - most of any US city! Add metro area: 200+ total. From tiny nanobreweries to huge production facilities. RiNo district alone has 25+. You could visit different brewery daily for 6 months!',
+        },
+        {
+          question: 'How much do brewery tours cost?',
+          answer: 'Group tours: $60-90 (3-4 hours, 3-4 breweries, transport). Private tours: $300-500 for group. Includes tastings and transportation. Self-guided RiNo walk: $20-40 (buying beers). Tours worth it for transport and insider access!',
+        },
+        {
+          question: 'What is RiNo?',
+          answer: 'RiNo (River North Art District) is trendy neighborhood packed with breweries, street art, galleries, and food halls. It has 25+ breweries within walking distance! Think converted warehouses, murals, and creative vibe. Denver\'s craft beer epicenter!',
+        },
+        {
+          question: 'Can you walk between breweries?',
+          answer: 'Yes in RiNo and LoHi (Lower Highlands) - both have brewery clusters. RiNo especially walkable with 25+ breweries in 1-mile radius. However, tours visiting multiple districts need transport. Walking tours focus on single neighborhood.',
+        },
+        {
+          question: 'What beers should I try?',
+          answer: 'Colorado specialties: IPAs (state is hop-forward!), seasonal pumpkin/winter beers, and sours. Try Great Divide Yeti Stout, Wynkoop Rail Yard Ale, Ratio Dear You. Ask bartenders for recommendations - they\'re helpful! Sample variety of styles.',
+        },
+        {
+          question: 'Do brewery tours include food?',
+          answer: 'Some tours include food pairings or snacks. Many breweries have kitchens or food trucks. Brewery & Food pairing tours specifically combine both. Otherwise, eat before touring - beer hits hard on empty stomach, especially at altitude!',
+        },
+        {
+          question: 'When is the best time for brewery tours?',
+          answer: 'Year-round! Summer (June-Aug) best weather for patios. Fall offers seasonal beers. Winter cozy for stouts. Weekends busier but more social. Weekday afternoons quieter taprooms. Tours run daily - book based on schedule.',
+        },
+        {
+          question: 'Why does Denver have so many breweries?',
+          answer: 'Colorado has ideal brewing water, hops, and barley. Denver\'s craft beer culture embraced quality and innovation. Relaxed laws helped breweries proliferate. High altitude affects brewing (lower boiling point!). History of brewing since gold rush. It all combined perfectly!',
+        },
+      ],
+    },
+
+    'museum-tours': {
+      title: 'Denver Museum Tours',
+      subtitle: 'Discover art, natural history, and Western heritage at world-class Denver museums!',
+      categoryName: 'Museum Tours',
+      
+      stats: {
+        toursAvailable: 52,
+        priceFrom: 25,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience Denver's excellent museum scene showcasing Western heritage, natural history, and contemporary art! The Denver Art Museum features striking Daniel Libeskind architecture and extensive American Indian art, Western art, and contemporary collections. Denver Museum of Nature & Science offers dinosaur fossils, space exhibits, IMAX theater, and planetarium. Other highlights include History Colorado Center (interactive Colorado history), Molly Brown House (Titanic survivor's home), Buffalo Bill Museum, and Kirkland Museum (decorative arts). Golden's museums include Colorado School of Mines Geology Museum and Coors Brewery tours. Learn about Wild West history, gold rush, Western expansion, and Colorado's role in American development. Many museums offer hands-on exhibits perfect for families. It's educational Denver!`,
+
+      seo: {
+        title: 'Denver Museum Tours 2025 - Art Museum, Nature & Science Museums',
+        description: 'Explore Denver museums! Denver Art Museum, Natural History, and Western heritage!',
+        keywords: 'Denver museums, Denver Art Museum, Nature Science Museum Denver, Colorado museums',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Denver Art Museum',
+          description: 'Stunning architecture housing American Indian and Western art collections!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Nature & Science',
+          description: 'Dinosaurs, space exhibits, and Egyptian mummies - engaging for all ages!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Western Heritage',
+          description: 'Learn about Wild West, gold rush, and frontier history.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Interactive Exhibits',
+          description: 'Hands-on displays make learning fun for families.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Denver Art Museum Tour',
+          description: 'Explore American Indian art and contemporary collections.',
+          features: [
+            '2 hours',
+            'Iconic building',
+            'Diverse art',
+            'Expert guide',
+            'Must-see',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Nature & Science Museum',
+          description: 'Dinosaurs, space, gems, and interactive science exhibits.',
+          features: [
+            '3 hours',
+            'Family-friendly',
+            'Planetarium',
+            'IMAX',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'History Colorado Tour',
+          description: 'Interactive exhibits telling Colorado\'s story.',
+          features: [
+            '2 hours',
+            'State history',
+            'Hands-on',
+            'Gold rush',
+            'Engaging',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Multi-Museum Pass',
+          description: 'Visit multiple museums with combo ticket savings.',
+          features: [
+            'Full day',
+            '2-3 museums',
+            'Combo ticket',
+            'Best value',
+            'Comprehensive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Denver Museum Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Single museum: 2-3 hours. Multiple museums: Full day recommended.',
+          },
+          {
+            icon: 'Star',
+            title: 'American Indian Art',
+            description: 'Denver Art Museum has one of best Native American art collections.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Dinosaur Fossils',
+            description: 'See T-Rex, Stegosaurus, and Colorado dinosaur discoveries.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Gold Rush History',
+            description: 'Learn about 1859 Pikes Peak Gold Rush that built Denver.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Stunning Architecture',
+            description: 'Art Museum\'s Libeskind building is artwork itself!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Colorado Story',
+            description: 'Understand state\'s evolution from frontier to modern destination.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Denver Art Museum FREE first Saturdays - very crowded but free!',
+        'Nature & Science Museum needs 3+ hours - it\'s large with lots to see.',
+        'Combo tickets available for Art Museum + History Colorado - saves money.',
+        'Many museums closed Mondays - check schedules.',
+        'Molly Brown House ($15) offers fascinating Titanic survivor story.',
+        'Coors Brewery tour in Golden (30 min away) is FREE with beer tastings!',
+        'Museums at altitude (5,280 feet) - hydrate well, especially if just arrived.',
+        'Parking downtown expensive - take light rail to Civic Center station.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best museum in Denver?',
+          answer: 'Denver Art Museum (architecture, American Indian art). Nature & Science Museum great for families (dinosaurs, space!). History Colorado most interactive. Molly Brown House fascinating story. Choose based on interests - all excellent! Art Museum most architecturally significant.',
+        },
+        {
+          question: 'How much do Denver museums cost?',
+          answer: 'Denver Art Museum: $24. Nature & Science: $22.95. History Colorado: $14. Molly Brown House: $15. Combo tickets save money. First Saturdays some museums free. Planetarium/IMAX extra at Nature & Science. Children get discounts.',
+        },
+        {
+          question: 'Is the Denver Art Museum worth it?',
+          answer: 'Yes! Stunning Daniel Libeskind architecture (building itself is art!). World-class American Indian collection, Western art, and contemporary pieces. $24 entry. Plan 2 hours minimum. Architecture and art fans love it. One of best Western US art museums!',
+        },
+        {
+          question: 'Can you visit Coors Brewery?',
+          answer: 'Yes! FREE Coors Brewery tours in Golden (30 min from Denver). See brewing process, massive facility, and get 3 beer samples! Tours run daily, first-come basis. 40-minute tour. Must be 21+ for samples. Popular and fun!',
+        },
+        {
+          question: 'Are museums family-friendly?',
+          answer: 'Very! Nature & Science Museum perfect for kids (dinosaurs, space, hands-on). History Colorado interactive. Art Museum has family programs. All have cafes. Denver museums excel at engaging children while entertaining adults!',
+        },
+        {
+          question: 'What is the Molly Brown House?',
+          answer: 'Molly Brown was Titanic survivor (helped in lifeboats, became "Unsinkable")  and Denver socialite. Her Victorian house ($15) is historic museum telling her fascinating story. 45-minute tours. Near Capitol. Small but interesting! Broadway musical about her.',
+        },
+        {
+          question: 'How long to visit museums?',
+          answer: 'Art Museum: 2 hours. Nature & Science: 3-4 hours (add time for planetarium/IMAX). History Colorado: 2 hours. Molly Brown: 1 hour. Plan full day if visiting multiple. Don\'t rush - savor the exhibits!',
+        },
+        {
+          question: 'When is the best time to visit museums?',
+          answer: 'Year-round! Weekday mornings less crowded. First Saturdays FREE but packed. Museums good rainy-day or winter activity. Summer: Visit museums morning, mountains afternoon. All have air conditioning (summer heat relief!). Most closed Mondays.',
+        },
+      ],
+    },
+
+    'outdoor-adventure-tours': {
+      title: 'Denver Outdoor Adventure Tours',
+      subtitle: 'Experience whitewater rafting, mountain biking, and Colorado outdoor thrills!',
+      categoryName: 'Outdoor Adventure Tours',
+      
+      stats: {
+        toursAvailable: 102,
+        priceFrom: 75,
+        duration: '3-8 hours',
+      },
+
+      introduction: `Experience Denver's incredible outdoor adventure scene - Colorado is the ultimate adventure playground! Denver's proximity to mountains enables whitewater rafting on Clear Creek and Arkansas River (Class II-V rapids!), mountain biking trails, rock climbing in Garden of the Gods, zip-lining through mountain forests, ATV tours, horseback riding through Rocky Mountain valleys, and winter skiing/snowboarding at world-class resorts. Adventure tours cater to all levels from beginner-friendly to extreme challenges. Explore Red Rocks Park (stunning geological formations), hike flatirons near Boulder, or try via ferrata on mountain faces. The high altitude, dry climate (300+ days of sunshine!), and mountain access make Denver perfect for year-round outdoor pursuits. Guides ensure safety while maximizing thrills!`,
+
+      seo: {
+        title: 'Denver Outdoor Adventure Tours 2025 - Rafting, Biking & Adventures',
+        description: 'Experience Denver adventures! Whitewater rafting, mountain biking, and Colorado outdoor thrills!',
+        keywords: 'Denver adventure tours, whitewater rafting Denver, Colorado outdoor activities, Denver hiking',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Whitewater Rafting',
+          description: 'Class II-V rapids just 45 minutes from Denver - thrilling!',
+        },
+        {
+          icon: 'Star',
+          title: '300+ Days of Sunshine',
+          description: 'Colorado\'s climate perfect for year-round outdoor activities.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Mountain Access',
+          description: 'Rockies proximity offers endless adventure opportunities.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Stunning Settings',
+          description: 'Red Rocks, Garden of the Gods, and mountain backdrops!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Waves',
+          title: 'Whitewater Rafting',
+          description: 'Half or full-day rafting Clear Creek or Arkansas River.',
+          features: [
+            '3-8 hours',
+            'Class II-V rapids',
+            'All equipment',
+            'Guide included',
+            'Thrilling',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Mountain Biking Tours',
+          description: 'Ride scenic trails with bike rentals and expert guidance.',
+          features: [
+            '3-4 hours',
+            'Bike rental',
+            'Trail guidance',
+            'All levels',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Rock Climbing & Zip-Line',
+          description: 'Climb routes or zip through forests with safety instruction.',
+          features: [
+            '3-5 hours',
+            'All equipment',
+            'Expert instruction',
+            'No experience needed',
+            'Adventurous',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Multi-Activity Adventure',
+          description: 'Combine rafting, hiking, and activities in one full day.',
+          features: [
+            'Full day',
+            'Multiple activities',
+            'Lunch included',
+            'Maximum adventure',
+            'Best value',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Denver Outdoor Adventure Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Half-day: 3-4 hours. Full-day: 6-8 hours with lunch and activities.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Rafting Rapids',
+            description: 'Navigate exciting rapids from gentle Class II to challenging Class V.',
+          },
+          {
+            icon: 'Star',
+            title: 'Mountain Views',
+            description: 'All adventures showcase stunning Rocky Mountain scenery.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Safety Equipment',
+            description: 'All activities include helmets, harnesses, life jackets, and instruction.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Red Rocks Park',
+            description: 'Visit stunning red rock formations near Denver - photos and hiking.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Expert Guides',
+            description: 'Professional guides ensure safety while teaching skills.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Rafting season: May-August when snowmelt creates best rapids.',
+        'Bring swimsuit, towel, and water shoes for rafting - you WILL get wet!',
+        'Altitude affects stamina - activities feel harder at 5,280+ feet.',
+        'Sunscreen crucial - Colorado sun intense at altitude (burns faster!).',
+        'Book morning rafting (water levels higher) for best rapids.',
+        'Clear Creek (Class II-III) better for beginners; Arkansas (Class IV-V) for experts.',
+        'Summer afternoon thunderstorms common - morning adventures safer.',
+        'Hydrate heavily before and during - altitude dehydrates quickly!',
+      ],
+
+      faqs: [
+        {
+          question: 'How much does Denver rafting cost?',
+          answer: 'Half-day (3-4 hours): $75-95 per person. Full-day: $120-160. Includes transport from Denver, equipment, guide, and sometimes lunch. Clear Creek closer (45 min). Arkansas River (2+ hours) has better rapids. Book ahead for weekends!',
+        },
+        {
+          question: 'Is whitewater rafting safe?',
+          answer: 'Yes with reputable companies! Guides trained, equipment quality, safety briefings provided. Choose difficulty matching ability. Class II-III beginner-friendly. Class IV-V for experienced. Accidents rare. Life jackets and helmets mandatory. Thrilling but controlled!',
+        },
+        {
+          question: 'What is the best outdoor activity in Denver?',
+          answer: 'Rafting most popular (May-Aug). Hiking year-round in Rockies. Mountain biking trails abundant. Winter: Skiing (Breckenridge, Vail 2 hours away). Red Rocks hiking stunning. Choose based on season and interests. Everything is world-class!',
+        },
+        {
+          question: 'When is rafting season?',
+          answer: 'May-August best - snowmelt creates optimal water levels. Peak: June-July (highest water, biggest rapids!). August lower but still fun. September possible but less exciting. Winter: No rafting (frozen). Spring runoff timing varies yearly.',
+        },
+        {
+          question: 'Can beginners go rafting?',
+          answer: 'Yes! Class II-III rapids on Clear Creek perfect for first-timers. Guides teach paddling, safety, and commands. No experience needed - just follow instructions! Class IV-V rivers require confidence and fitness. Most people start Class II-III.',
+        },
+        {
+          question: 'What should I wear for rafting?',
+          answer: 'Swimsuit, synthetic shirt (no cotton!), water shoes/old sneakers, sunscreen, hat. Wetsuits provided in cold water (May-June). Bring change of clothes and towel. Everything gets wet! Waterproof camera case if bringing phone.',
+        },
+        {
+          question: 'What is Red Rocks?',
+          answer: 'Red Rocks is stunning natural amphitheater and park near Denver with dramatic red sandstone formations. It has concert venue (amazing acoustics!), hiking trails, and visitor center. Free to visit park! Concerts $50-200. Must-see Denver attraction!',
+        },
+        {
+          question: 'Are Denver adventures suitable for families?',
+          answer: 'Many activities kid-friendly! Gentle rafting (Class II), easy hiking, Red Rocks exploring, mountain biking (easy trails). Adventure companies offer family tours. Age limits vary: Rafting usually 7+, zip-lining 10+. Check with operators. Tons of family adventures!',
+        },
+      ],
+    },
+
+    'food-and-culture-tours': {
+      title: 'Denver Food & Culture Tours',
+      subtitle: 'Taste green chile, bison, and diverse cuisine while exploring vibrant Denver neighborhoods!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 65,
+        duration: '3-4 hours',
+      },
+
+      introduction: `Discover Denver's exciting food scene combining Rocky Mountain ingredients with global influences! Food tours explore trendy neighborhoods like RiNo (River North Art District with food halls and restaurants), Santa Fe Arts District (galleries and eateries), LoHi (Lower Highlands with rooftop dining), and historic Larimer Square (Denver's oldest block). Sample Colorado specialties like green chile (smothering everything!), bison burgers, Rocky Mountain oysters (if brave!), craft cocktails, farm-to-table cuisine, and innovative fusion food. Tours visit food halls (Denver Central Market, Avanti), taco spots, New American restaurants, and local breweries. Learn about Denver's evolution from cowboy town to culinary capital, how altitude affects cooking, and where locals eat. It's delicious cultural exploration!`,
+
+      seo: {
+        title: 'Denver Food & Culture Tours 2025 - Green Chile & Colorado Cuisine',
+        description: 'Experience Denver food tours! Green chile, craft dining, and Colorado culinary scene!',
+        keywords: 'Denver food tours, Denver green chile, RiNo Denver, Colorado cuisine, Denver restaurants',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Green Chile Culture',
+          description: 'Colorado\'s obsession with green chile - on everything!',
+        },
+        {
+          icon: 'Star',
+          title: 'Farm-to-Table',
+          description: 'Colorado ingredients and Rocky Mountain cuisine.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Trendy Food Halls',
+          description: 'Denver Central Market and Avanti offer diverse vendors.',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Foodie Guides',
+          description: 'Denverites share insider restaurants and neighborhood stories.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'RiNo Food Tour',
+          description: 'Explore River North tasting street food, breweries, and restaurants.',
+          features: [
+            '3 hours',
+            '6-8 tastings',
+            'Trendy area',
+            'Diverse cuisine',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Green Chile & Mexican Tour',
+          description: 'Sample Colorado green chile and Denver\'s excellent Mexican food.',
+          features: [
+            '3 hours',
+            'Green chile focus',
+            'Multiple tacos',
+            'Local favorites',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Food Hall & Brewery Tour',
+          description: 'Visit food halls pairing artisan food with craft beer.',
+          features: [
+            '3-4 hours',
+            'Food halls',
+            'Beer pairings',
+            'Variety',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Farm-to-Table Dining',
+          description: 'Experience Colorado ingredients at top restaurants.',
+          features: [
+            '4 hours',
+            'Upscale dining',
+            'Local ingredients',
+            'Chef stories',
+            'Premium',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Denver Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours last 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Green Chile',
+            description: 'Sample Colorado\'s beloved green chile on burgers, burritos, and more!',
+          },
+          {
+            icon: 'Star',
+            title: 'Bison & Game',
+            description: 'Try Rocky Mountain specialties like bison, elk, and local meats.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Food Halls',
+            description: 'Visit Denver Central Market and Avanti with diverse vendors.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Neighborhood Art',
+            description: 'RiNo tours combine food with street art and gallery hopping.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Culinary History',
+            description: 'Learn how Denver evolved from steakhouses to diverse food scene.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Ask for green chile "Christmas style" (red + green chile) - classic Colorado!',
+        'RiNo neighborhood walkable - easy to explore food halls independently.',
+        'Denver Central Market has excellent vendors - budget DIY alternative to tours.',
+        'Rocky Mountain Oysters are bull testicles (if you dare!) - breaded and fried.',
+        'Happy hours common 3-6 PM - great deals at restaurants.',
+        'Larimer Square oldest Denver block - upscale dining and pretty lights.',
+        'Food tours run year-round - summer offers patio dining.',
+        'Come moderately hungry - tastings are substantial!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is green chile?',
+          answer: 'Green chile is Colorado\'s obsession - roasted Hatch chiles creating savory, mildly spicy sauce. Smothered on burgers, burritos, eggs, fries - everything! "Christmas style" means red AND green chile. Essential Colorado food! Try it on everything.',
+        },
+        {
+          question: 'Where is the best Mexican food in Denver?',
+          answer: 'Federal Boulevard (north Denver) has best authentic Mexican - taquerías, street food. Downtown: Tamayo, Los Chingones. Santa Fe Arts District has options. Green chile burrito is Denver staple. Food tours show best spots!',
+        },
+        {
+          question: 'What should I eat in Denver?',
+          answer: 'Must-try: Green chile (on anything!), bison burger, Colorado lamb, farm-to-table restaurants, craft beer, and breakfast burritos. Avoid: Chain restaurants. Denver has incredible local food - explore it!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Walking food tours: $65-95 (3-4 hours, 6-8 tastings). Brewery + food tours: $80-110. Private tours: $200-400 for group. Includes food, guide, sometimes drinks. Tours replace meals - good value for variety and insights!',
+        },
+        {
+          question: 'What is RiNo?',
+          answer: 'RiNo (River North Art District) is trendy neighborhood with breweries, food halls, street art, galleries, and restaurants. It\'s Denver\'s hippest area! Great for food tours combining dining with art. Walkable area perfect for exploring.',
+        },
+        {
+          question: 'Can vegetarians do food tours?',
+          answer: 'Yes! Denver has excellent vegetarian/vegan scene. Communicate dietary needs when booking. RiNo and food halls have veggie options. Green chile works vegetarian! Many tours accommodate - Denver food scene is progressive and inclusive.',
+        },
+        {
+          question: 'What is a food hall?',
+          answer: 'Food halls are markets with multiple food vendors under one roof. Denver Central Market (artisan vendors), Avanti (rooftop seating, global food), Stanley Marketplace. Like upscale food courts. Try multiple cuisines in one spot! Very Denver trend.',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Lunch tours (11 AM-2 PM) or dinner tours (5-8 PM). Summer offers patio dining. Winter cozy indoor spots. Weekend tours more social. Food halls busiest weekends. Book ahead for popular times. Come hungry!',
+        },
+      ],
+    },
+
+    'historical-tours': {
+      title: 'Denver Historical Tours',
+      subtitle: 'Explore Wild West heritage, gold rush history, and Colorado\'s frontier past!',
+      categoryName: 'Historical Tours',
+      
+      stats: {
+        toursAvailable: 48,
+        priceFrom: 35,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Denver's fascinating Wild West history from frontier settlement to modern Mile High City! Historical tours explore the 1859 Pikes Peak Gold Rush that founded Denver, visit historic Larimer Square (oldest block), tour State Capitol building (mile-high marker on 13th step!), explore LoDo (Lower Downtown) with 19th-century warehouses, and learn about Colorado's cowboy culture, mining heritage, and Native American history. Tours include Buffalo Bill's grave on Lookout Mountain, ghost tours in haunted hotels, Brown Palace Hotel (historic luxury), and Capitol Hill Victorian mansions. Learn about Molly Brown (Titanic survivor), silver boom, prohibition gangsters, and Denver's evolution from lawless Wild West town to sophisticated city. It's American West history brought to life!`,
+
+      seo: {
+        title: 'Denver Historical Tours 2025 - Wild West, Gold Rush & Colorado History',
+        description: 'Explore Denver history! Wild West, gold rush, Capitol tours, and frontier heritage!',
+        keywords: 'Denver historical tours, Denver Wild West, Colorado gold rush, Denver Capitol, Buffalo Bill',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Gold Rush Heritage',
+          description: 'Founded by 1859 gold rush - frontier history everywhere!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Wild West Stories',
+          description: 'Cowboys, outlaws, Buffalo Bill, and frontier legends!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Historic Districts',
+          description: 'LoDo and Larimer Square preserve 19th-century architecture.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Colorado Capitol',
+          description: 'Tour historic capitol building with mile-high marker and dome views!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Denver Capitol & History Tour',
+          description: 'Visit State Capitol with dome views and downtown historic sites.',
+          features: [
+            '2-3 hours',
+            'Capitol tour',
+            'Dome access',
+            'Historic buildings',
+            'Free/cheap',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Wild West Walking Tour',
+          description: 'Explore LoDo hearing gold rush and frontier stories.',
+          features: [
+            '2 hours',
+            'Historic LoDo',
+            'Frontier tales',
+            'Architecture',
+            'Engaging',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Buffalo Bill & Mountain Tour',
+          description: 'Visit Buffalo Bill\'s grave on Lookout Mountain with Denver views.',
+          features: [
+            '3 hours',
+            'Mountain drive',
+            'Museum visit',
+            'Panoramic views',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Historic Pub Crawl',
+          description: 'Visit historic bars and hotels hearing prohibition-era stories.',
+          features: [
+            '3 hours',
+            'Historic venues',
+            'Drinks included',
+            'Fun stories',
+            'Evening tour',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Denver Historical Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Capitol tours: 1 hour. Combined: 3-4 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'State Capitol',
+            description: 'See gold dome, mile-high marker, and climb to views (free tours!).',
+          },
+          {
+            icon: 'Heart',
+            title: 'Larimer Square',
+            description: 'Walk Denver\'s oldest block with Victorian buildings and gas lamps.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'LoDo District',
+            description: 'Explore Lower Downtown with 19th-century warehouses now lofts/restaurants.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Gold Rush Tales',
+            description: 'Learn about miners, frontier life, and rapid city growth.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Buffalo Bill Museum',
+            description: 'Visit showman\'s grave with museum and mountain views.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'State Capitol tours FREE but require advance booking - reserve weeks ahead!',
+        'Mile-high marker is on 13th step - tourists photograph it constantly.',
+        'Capitol dome climb offers 360° Denver views - worth the stairs!',
+        'Larimer Square prettiest at night with string lights - evening walk recommended.',
+        'Brown Palace Hotel offers tours ($15) - historic luxury since 1892.',
+        'LoDo best explored afternoon/evening when bars and restaurants open.',
+        'Buffalo Bill grave/museum $5 - stunning views of Denver and mountains!',
+        'Downtown walking tours best spring/fall - summer hot, winter cold.',
+      ],
+
+      faqs: [
+        {
+          question: 'Can you tour the Colorado State Capitol?',
+          answer: 'Yes! FREE tours Monday-Friday (advance reservation). See chambers, rotunda, gold dome, and climb to views. The 13th step is exactly one mile above sea level - photo op! Tours 45 minutes. Reserve at colorado.gov weeks ahead.',
+        },
+        {
+          question: 'What is LoDo?',
+          answer: 'LoDo (Lower Downtown) is historic district with 19th-century warehouses converted to lofts, restaurants, and bars. Coors Field (baseball) is here. It preserves Denver\'s frontier-era architecture. Great for nightlife, dining, and history. Walking distance from Union Station.',
+        },
+        {
+          question: 'Who was Buffalo Bill?',
+          answer: 'Buffalo Bill Cody was Wild West showman, scout, and legend. His traveling "Wild West Show" toured worldwide. He\'s buried on Lookout Mountain near Denver with museum ($5). Views are spectacular! 30-minute drive from downtown.',
+        },
+        {
+          question: 'What is the Brown Palace Hotel?',
+          answer: 'Brown Palace is Denver\'s most historic luxury hotel (opened 1892). Eight-story atrium, hosted presidents and celebrities, afternoon tea tradition. You can tour ($15), dine, or stay. Architecture is stunning! It\'s Denver landmark.',
+        },
+        {
+          question: 'Is Denver historic?',
+          answer: 'Very! Founded 1858 during gold rush. Wild West heritage, frontier history, mining boom, and rapid growth to modern city. LoDo, Larimer Square, Capitol area preserve this history. Tours bring frontier era alive!',
+        },
+        {
+          question: 'Are there ghost tours?',
+          answer: 'Yes! Denver has haunted history. Ghost tours visit Brown Palace, Oxford Hotel, Capitol Hill mansions, and LoDo buildings. Evening tours share spooky stories. $25-40 per person. Fun mix of history and paranormal! Not scary, just entertaining.',
+        },
+        {
+          question: 'How much do historical tours cost?',
+          answer: 'Capitol tours: FREE! Walking tours: $35-60 (2-3 hours). Ghost tours: $25-40. Buffalo Bill site: $5. Brown Palace tour: $15. Private tours: $150-300 for group. Many free/cheap options make Denver history accessible!',
+        },
+        {
+          question: 'When is the best time for history tours?',
+          answer: 'Spring (April-May) and fall (Sept-Oct) perfect for walking. Summer can be hot. Winter cold but manageable (Denver gets 300 days of sunshine!). Capitol tours year-round. Evening ghost tours fun anytime. History never closes!',
+        },
+      ],
+    },
+  },
+
+  honolulu: {
+    'pearl-harbor-tours': {
+      title: 'Honolulu Pearl Harbor Tours',
+      subtitle: 'Visit USS Arizona Memorial and historic WWII sites honoring fallen heroes!',
+      categoryName: 'Pearl Harbor Tours',
+      
+      stats: {
+        toursAvailable: 86,
+        priceFrom: 55,
+        duration: '4-8 hours',
+      },
+
+      introduction: `Experience Pearl Harbor, one of America's most significant historical sites commemorating the December 7, 1941 attack! Pearl Harbor tours include the USS Arizona Memorial (built over sunken battleship where 1,177 sailors remain entombed), Battleship Missouri (where WWII surrender was signed), USS Bowfin Submarine Museum, and Pacific Aviation Museum. Watch documentary footage of the attack, see bullet holes still visible on buildings, view recovered artifacts, and learn about that day's events that changed history. Tours combine multiple memorials with expert historical interpretation. Some include USS Oklahoma Memorial, walking through actual submarine, and exploring aircraft from the war. It's powerful, moving, and essential American history. Guides share stories of heroism, loss, and resilience!`,
+
+      seo: {
+        title: 'Honolulu Pearl Harbor Tours 2025 - USS Arizona & WWII Memorials',
+        description: 'Visit Pearl Harbor in Honolulu! USS Arizona Memorial, Battleship Missouri, and WWII history!',
+        keywords: 'Pearl Harbor tours, USS Arizona Memorial, Honolulu WWII tours, Pearl Harbor tickets, Battleship Missouri',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'USS Arizona Memorial',
+          description: 'Honor 1,177 sailors entombed in sunken battleship - deeply moving.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Historic Significance',
+          description: 'Visit site where WWII began for America - powerful experience.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Expert Historians',
+          description: 'Guides share detailed accounts of December 7, 1941 attack.',
+        },
+        {
+          icon: 'Ship',
+          title: 'Battleship Missouri',
+          description: 'Stand where Japan signed surrender ending WWII!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'USS Arizona Memorial Tour',
+          description: 'Visit Arizona Memorial with film, museum, and boat ride.',
+          features: [
+            '4-5 hours',
+            'Arizona Memorial',
+            'Documentary',
+            'Museum',
+            'Essential',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Complete Pearl Harbor Tour',
+          description: 'Visit all sites - Arizona, Missouri, Bowfin, Aviation Museum.',
+          features: [
+            '7-8 hours',
+            'All memorials',
+            'Comprehensive',
+            'Lunch included',
+            'Full experience',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Battleship Missouri Tour',
+          description: 'Explore massive battleship where WWII ended.',
+          features: [
+            '2-3 hours',
+            'Ship tour',
+            'Surrender deck',
+            'Guided',
+            'Historic',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Private Pearl Harbor Tour',
+          description: 'Exclusive tour with flexible pace and personalized attention.',
+          features: [
+            '6-7 hours',
+            'Private guide',
+            'Custom pace',
+            'Hotel pickup',
+            'Premium',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Honolulu Pearl Harbor Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Arizona only: 4-5 hours. Complete tour: 7-8 hours. Plan full morning minimum.',
+          },
+          {
+            icon: 'Star',
+            title: 'USS Arizona Memorial',
+            description: 'Boat ride to memorial above sunken battleship - very emotional.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Historic Footage',
+            description: 'Watch 23-minute documentary showing actual attack footage.',
+          },
+          {
+            icon: 'Ship',
+            title: 'Battleship Exploration',
+            description: 'Walk USS Missouri decks where MacArthur accepted Japan\'s surrender.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Museums',
+            description: 'See artifacts, personal stories, and detailed attack timeline.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Remembrance',
+            description: 'Pay respects at memorials honoring over 2,400 who died.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book tickets WEEKS in advance - Arizona Memorial sells out fast (recreation.gov)!',
+        'Arrive early - security is strict (no bags allowed, except small clear bags).',
+        'Arizona Memorial tickets FREE but tours ($55+) include transport and all sites.',
+        'Reserve 7-8 hours for complete experience visiting all memorials.',
+        'Dress respectfully - it\'s an active military base and memorial site.',
+        'Bring ID - required for entry to military base.',
+        'No purses/bags allowed - leave at hotel or use provided bag storage ($7).',
+        'Tours book up entirely in high season - reserve months ahead!',
+      ],
+
+      faqs: [
+        {
+          question: 'How do you get Pearl Harbor tickets?',
+          answer: 'USS Arizona Memorial: FREE but requires advance reservation at recreation.gov (released 8 weeks ahead, gone in minutes!). Tours ($55-100) include tickets, transport, and other sites - easier than DIY. Book tours weeks ahead! Battleship Missouri ($35) separate ticket.',
+        },
+        {
+          question: 'How much does Pearl Harbor cost?',
+          answer: 'Arizona Memorial: FREE (if you get ticket). Battleship Missouri: $35. USS Bowfin: $20. Aviation Museum: $30. Complete tours: $55-100 (includes tickets, transport, all sites). Tours worth it for logistics and avoiding ticket stress!',
+        },
+        {
+          question: 'Can you visit Pearl Harbor without a tour?',
+          answer: 'Yes but challenging! Must get FREE Arizona tickets (recreation.gov, 8 weeks advance - they sell out instantly!). Then navigate yourself. No bags allowed (storage $7). Tours handle tickets and logistics - much easier! DIY saves money if you get tickets.',
+        },
+        {
+          question: 'How long to visit Pearl Harbor?',
+          answer: 'Arizona Memorial only: 4-5 hours (film, museums, boat ride, exhibits). All sites: 7-8 hours minimum. It\'s emotionally and physically draining. Allow full day. Don\'t rush - these stories deserve time. Most tours run 7-8 hours.',
+        },
+        {
+          question: 'What is the USS Arizona Memorial?',
+          answer: 'Memorial built above sunken USS Arizona where 1,177 sailors remain entombed. Ship sank December 7, 1941 during Japanese attack. You boat out to memorial spanning wreck. Oil still leaks ("tears of Arizona"). It\'s deeply moving. FREE but advance tickets essential.',
+        },
+        {
+          question: 'Can you bring bags to Pearl Harbor?',
+          answer: 'NO bags allowed except small clear bags! No purses, backpacks, diaper bags. It\'s active military base with strict security. Paid bag storage ($7) available. Bring only essentials: ID, camera, water bottle, phone. Plan accordingly!',
+        },
+        {
+          question: 'Is Pearl Harbor appropriate for children?',
+          answer: 'Yes but emotionally heavy. Many families visit for educational value. USS Bowfin submarine interests kids. Missouri impressive. However, content is serious (death, war). Recommended 10+ years for maturity. Shorter visits better for young kids.',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Early morning (7-8 AM arrival) for first tours - cooler, less crowded. Weekdays less busy than weekends. Avoid national holidays (very crowded). December 7 (anniversary) extremely busy but powerful. Year-round accessible - book well ahead always!',
+        },
+      ],
+    },
+
+    'waikiki-beach-tours': {
+      title: 'Honolulu Waikiki Beach Tours',
+      subtitle: 'Experience world-famous Waikiki with surfing, beaches, and Diamond Head backdrop!',
+      categoryName: 'Waikiki Beach Tours',
+      
+      stats: {
+        toursAvailable: 124,
+        priceFrom: 40,
+        duration: '2-6 hours',
+      },
+
+      introduction: `Discover Waikiki Beach, one of world's most famous beaches and Honolulu's iconic shoreline! This 2-mile crescent of golden sand offers perfect beginner surfing (where modern surfing was revived!), swimming in calm reef-protected waters, outrigger canoe rides, stand-up paddleboarding, and spectacular Diamond Head crater backdrop. Beach tours include surf lessons on gentle Waikiki waves (Duke Kahanamoku learned here!), catamaran sails along the coast, beachfront walks, sunset viewing from beach bars, and water sports. Explore Waikiki's evolution from Hawaiian royalty playground to international resort destination. The beach culture combines Hawaiian traditions with modern resort amenities. It's where Hawaii's beach lifestyle shines!`,
+
+      seo: {
+        title: 'Honolulu Waikiki Beach Tours 2025 - Surfing & Diamond Head',
+        description: 'Experience Waikiki Beach! Surf lessons, beach activities, and world-famous Hawaiian shoreline!',
+        keywords: 'Waikiki Beach, Honolulu surfing, Waikiki surf lessons, Diamond Head, Honolulu beaches',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Perfect Beginner Surf',
+          description: 'Gentle Waikiki waves ideal for learning to surf!',
+        },
+        {
+          icon: 'Star',
+          title: 'Iconic Beach',
+          description: 'World-famous shoreline with Diamond Head backdrop - postcard perfect!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Beach Culture',
+          description: 'Experience Hawaiian beach lifestyle where surfing was born.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Year-Round Swimming',
+          description: '75-80°F warm water and 300+ days of sunshine!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Waves',
+          title: 'Surf Lessons',
+          description: 'Learn to surf on gentle Waikiki waves with expert instructors.',
+          features: [
+            '2 hours',
+            'Small groups',
+            'All equipment',
+            'Most stand up!',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Outrigger Canoe Ride',
+          description: 'Traditional Hawaiian outrigger canoe with crew - catch a wave!',
+          features: [
+            '1 hour',
+            'Traditional canoe',
+            'Wave riding',
+            'Cultural',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Waikiki Catamaran Cruise',
+          description: 'Sail along Waikiki coast with snorkeling and sunset views.',
+          features: [
+            '2-3 hours',
+            'Sailing',
+            'Snorkeling',
+            'Sunset option',
+            'Relaxing',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Beach & Diamond Head Combo',
+          description: 'Morning beach time plus Diamond Head crater hike.',
+          features: [
+            '4-5 hours',
+            'Beach + hike',
+            'Iconic combo',
+            'Photo opportunities',
+            'Active',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Honolulu Waikiki Beach Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Surf lessons: 2 hours. Canoe rides: 1 hour. Beach tours: 2-4 hours.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Surfing',
+            description: 'Stand up on first try (most do!) on beginner-friendly waves.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Diamond Head Views',
+            description: 'Iconic volcanic crater backdrop for every beach photo!',
+          },
+          {
+            icon: 'Star',
+            title: 'Warm Water',
+            description: 'Year-round swimming in 75-80°F water - perfect temperature!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Beach Activities',
+            description: 'Surfing, paddleboarding, volleyball, and water sports available.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Hawaiian Culture',
+            description: 'Learn about Duke Kahanamoku (surf legend) and beach traditions.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Morning surf lessons best - offshore winds create cleaner waves.',
+        'Waikiki waves gentle (2-4 feet) perfect for beginners - most people stand up!',
+        'Book surf lessons weeks ahead in summer - very popular.',
+        'Outrigger canoe rides $20-30 - unique Hawaiian experience, don\'t skip!',
+        'Sunset best viewed from beach bars or catamaran cruises.',
+        'Waikiki crowded but beautiful - go early (7-8 AM) for peaceful beach time.',
+        'Beach access is FREE - towels/chairs from hotels or bring your own.',
+        'Diamond Head hike (0.8 miles, 560 steps) worth doing for views over Waikiki!',
+      ],
+
+      faqs: [
+        {
+          question: 'Can beginners surf at Waikiki?',
+          answer: 'Absolutely! Waikiki is THE best beginner surf spot - gentle waves, sandy bottom, warm water. Surf schools everywhere ($75-100/2 hours). Most people stand up on first try! Duke Kahanamoku (surf legend) learned here. Perfect introduction to surfing!',
+        },
+        {
+          question: 'How much do Waikiki surf lessons cost?',
+          answer: 'Group lessons: $75-100 per person (2 hours, 4-6 people). Private: $150-200. Includes board, rashguard, instruction. Book reputable schools (not beach touts). Most guarantee you\'ll stand up! Great value for bucket-list experience.',
+        },
+        {
+          question: 'What is an outrigger canoe?',
+          answer: 'Traditional Hawaiian canoe with outrigger (side float) for stability. Crew paddles you out, catches wave, and rides it in - thrilling! $20-30 for rides along Waikiki. Cultural experience dating back ancient Polynesian navigation. Everyone should try!',
+        },
+        {
+          question: 'Is Waikiki Beach free?',
+          answer: 'Yes! All Hawaiian beaches are public. Waikiki Beach completely free to use. Hotels have lounge chairs for guests but sand is public. Bring towel, enjoy! No fees, no tickets. Showers/bathrooms available. Free parking very limited - hotels charge.',
+        },
+        {
+          question: 'When is the best time to visit Waikiki?',
+          answer: 'Year-round perfect! April-May and September-November: Best weather, fewer crowds. Summer (June-August): Busiest, great surf. Winter (Dec-Feb): Bigger waves (still swimmable), whale season. Trade winds keep it comfortable. Always beautiful!',
+        },
+        {
+          question: 'What is Diamond Head?',
+          answer: 'Diamond Head is volcanic crater (tuff cone) creating iconic backdrop to Waikiki. You can hike to summit (0.8 miles, 560 steps, $5 entry) for panoramic Honolulu views. Best done early morning (6-7 AM). Most visitors combine beach + hike.',
+        },
+        {
+          question: 'Can you swim year-round?',
+          answer: 'Yes! Water temperature 75-80°F year-round. Reef protects Waikiki from big waves making it safe for swimming always. Lifeguards on duty. Jellyfish arrive 8-10 days after full moon - check warnings. Otherwise, swim anytime!',
+        },
+        {
+          question: 'Is Waikiki crowded?',
+          answer: 'Very crowded, especially midday! Early morning (7-8 AM) or evening less packed. It\'s tourist central - if seeking quiet, visit North Shore beaches instead. However, Waikiki\'s energy and amenities make crowds worthwhile. People-watching is part of experience!',
+        },
+      ],
+    },
+
+    'hawaiian-culture-tours': {
+      title: 'Honolulu Hawaiian Culture Tours',
+      subtitle: 'Experience authentic Hawaiian traditions, luaus, and Polynesian heritage!',
+      categoryName: 'Hawaiian Culture Tours',
+      
+      stats: {
+        toursAvailable: 76,
+        priceFrom: 70,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Immerse yourself in authentic Hawaiian culture beyond tourist shows! Cultural tours explore Polynesian Cultural Center (living museum with six Pacific island villages), historic sites like Iolani Palace (only royal palace in US), Bishop Museum (premier Hawaiian cultural institution), traditional luaus with hula and fire dancing, lei-making workshops, ukulele lessons, and visits to sacred sites. Learn about ancient Hawaiian navigation (star wayfinding!), kapu (sacred laws), ali'i (royalty), overthrow of Hawaiian Kingdom, and Native Hawaiian cultural renaissance. Tours include traditional crafts, Hawaiian language lessons, taro farming demonstrations, and storytelling by cultural practitioners. Experience the real Hawaii - not just resort version. It's cultural immersion and education!`,
+
+      seo: {
+        title: 'Honolulu Hawaiian Culture Tours 2025 - Luaus, Traditions & Heritage',
+        description: 'Experience Hawaiian culture! Traditional luaus, Polynesian Cultural Center, and authentic Hawaii!',
+        keywords: 'Hawaiian culture tours, Honolulu luau, Polynesian Cultural Center, Bishop Museum, Iolani Palace',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Traditions',
+          description: 'Learn from Hawaiian cultural practitioners and kupuna (elders).',
+        },
+        {
+          icon: 'Star',
+          title: 'Polynesian Cultural Center',
+          description: 'World\'s largest Polynesian cultural attraction with six villages!',
+        },
+        {
+          icon: 'Music',
+          title: 'Traditional Luau',
+          description: 'Experience imu ceremony, hula, fire knife dancing, and Hawaiian feast!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Royal Heritage',
+          description: 'Visit Iolani Palace where Hawaiian monarchy ruled.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Music',
+          title: 'Traditional Luau',
+          description: 'Authentic Hawaiian feast with imu ceremony, hula, and entertainment.',
+          features: [
+            '3-4 hours',
+            'Kalua pig',
+            'Hula show',
+            'Open bar',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Polynesian Cultural Center',
+          description: 'Full-day visiting six island villages with shows and activities.',
+          features: [
+            'Full day',
+            'Six villages',
+            'Evening show',
+            'Buffet',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Bishop Museum Tour',
+          description: 'Explore Hawaiian history, artifacts, and natural history.',
+          features: [
+            '2-3 hours',
+            'Museum visit',
+            'Cultural artifacts',
+            'Expert guides',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Cultural Workshops',
+          description: 'Hands-on lei-making, ukulele, or traditional craft classes.',
+          features: [
+            '2-3 hours',
+            'Hands-on',
+            'Create lei',
+            'Learn ukulele',
+            'Unique',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Honolulu Hawaiian Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Luaus: 3-4 hours. Polynesian Center: Full day. Workshops: 2-3 hours.',
+          },
+          {
+            icon: 'Music',
+            title: 'Luau Feast',
+            description: 'Traditional foods: Kalua pig from imu (underground oven), poi, lomi salmon, haupia.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Hula Performance',
+            description: 'Watch ancient hula (kahiko) and modern hula (auana) storytelling through dance.',
+          },
+          {
+            icon: 'Star',
+            title: 'Polynesian Villages',
+            description: 'Explore recreated villages from Hawaii, Samoa, Tonga, Tahiti, Fiji, Maori.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Hawaiian History',
+            description: 'Learn about monarchy, overthrow, statehood, and cultural preservation.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Fire Knife Dancing',
+            description: 'Watch thrilling Samoan fire knife performances - spectacular!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book luaus weeks ahead - Paradise Cove and Polynesian Center most authentic.',
+        'Polynesian Cultural Center ($80-200) full day needed - North Shore location (1 hour drive).',
+        'Bishop Museum ($30) best for understanding Hawaiian culture - start here!',
+        'Traditional vs. resort luaus: Traditional more cultural, resort more polished.',
+        'Iolani Palace tours ($25) require advance booking - only US royal palace!',
+        'Lei-making workshops ($40-60) let you create and keep fresh flower lei.',
+        'Learn a few Hawaiian words: Aloha (hello/love), Mahalo (thank you), Ohana (family).',
+        'Respect sacred sites - many places have cultural significance to Hawaiians.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is a luau?',
+          answer: 'Luau is Hawaiian feast with traditional food, music, and hula dancing. Imu ceremony unveils kalua pig cooked underground. Includes poi (taro paste), lomi salmon, and haupia (coconut dessert). Shows feature hula and Polynesian dancing. $70-200. Cultural must-do!',
+        },
+        {
+          question: 'Which luau is best in Honolulu?',
+          answer: 'Paradise Cove (most traditional, West Oahu). Polynesian Cultural Center Ali\'i Luau (comprehensive, North Shore). Aha\'Aina Royal Hawaiian (resort luau, Waikiki). Each offers different experience. Traditional: Paradise Cove. Convenient: Royal Hawaiian. Best show: Polynesian Center.',
+        },
+        {
+          question: 'What is the Polynesian Cultural Center?',
+          answer: 'It\'s living museum on North Shore with six recreated Polynesian villages (Hawaii, Samoa, Fiji, Tonga, Tahiti, Maori). Cultural demonstrations, canoe rides, and evening show. $80-200 depending on package. Full day needed. Educational and entertaining! 1-hour drive from Waikiki.',
+        },
+        {
+          question: 'Can you learn to surf in Waikiki?',
+          answer: 'Yes! Waikiki is world\'s best beginner surf spot. Gentle waves, sandy bottom, warm water, and shallow reef. Lessons $75-100 (2 hours). Most people stand up first try! Where Duke Kahanamoku (surf legend) learned. Don\'t leave Hawaii without trying!',
+        },
+        {
+          question: 'What is Iolani Palace?',
+          answer: 'Iolani Palace was home of Hawaiian monarchs - only royal palace on US soil! King Kalakaua built it 1882. You can tour (must book ahead, $25). See throne room, royal chambers, and learn about monarchy overthrow 1893. Important Hawaiian history!',
+        },
+        {
+          question: 'What is poi?',
+          answer: 'Poi is traditional Hawaiian staple made from pounded taro root creating purple paste. It\'s slightly sour, starchy, and eaten with fingers. Hawaiians have eaten it for centuries. Try at luaus! Acquired taste but culturally important.',
+        },
+        {
+          question: 'How much do cultural tours cost?',
+          answer: 'Luaus: $70-200 (includes feast and show). Polynesian Cultural Center: $80-200. Bishop Museum: $30. Lei-making workshops: $40-60. Palace tours: $25. Cultural tours offer education worth the price. Budget: Bishop Museum.',
+        },
+        {
+          question: 'When is the best time for cultural activities?',
+          answer: 'Year-round available! Luaus run nightly. Museums open daily (except some Mondays). Polynesian Cultural Center closed Sundays. Cultural events happen constantly in Hawaii - book based on your schedule. Weather rarely affects indoor cultural activities.',
+        },
+      ],
+    },
+
+    'beach-and-water-sports': {
+      title: 'Honolulu Beach & Water Sports',
+      subtitle: 'Snorkel, dive, kayak, and explore Oahu\'s stunning aquatic playground!',
+      categoryName: 'Beach & Water Sports',
+      
+      stats: {
+        toursAvailable: 164,
+        priceFrom: 35,
+        duration: '2-8 hours',
+      },
+
+      introduction: `Experience Honolulu's incredible water sports and beach activities in Hawaii's aquatic paradise! Warm, crystal-clear waters offer snorkeling at Hanauma Bay (volcanic crater turned marine preserve with 400+ fish species), scuba diving with sea turtles and rays, kayaking to Mokulua Islands (Lanikai), stand-up paddleboarding, jet skiing, parasailing, and surfing at various skill-level beaches. Popular spots include Hanauma Bay (best snorkeling), Lanikai Beach (ranked world's most beautiful), Kailua Beach (calm kayaking), North Shore (pro surfing winter), and Waikiki (beginner surfing). Activities include swimming with dolphins, shark cage diving, submarine tours, and catamaran sails. The year-round warm water (75-85°F), diverse marine life, and reliable trade winds make Honolulu perfect for water sports!`,
+
+      seo: {
+        title: 'Honolulu Beach & Water Sports 2025 - Snorkeling, Diving & Activities',
+        description: 'Experience Honolulu water sports! Hanauma Bay snorkeling, surfing, diving, and beach activities!',
+        keywords: 'Honolulu water sports, Hanauma Bay, Honolulu snorkeling, Oahu beaches, Honolulu diving',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Hanauma Bay',
+          description: 'Best snorkeling on Oahu - protected marine reserve with 400+ species!',
+        },
+        {
+          icon: 'Star',
+          title: 'Warm Year-Round',
+          description: '75-85°F water temperature - perfect for all water activities!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Sea Turtle Swimming',
+          description: 'Swim with green sea turtles (honu) - gentle and common!',
+        },
+        {
+          icon: 'Camera',
+          title: 'World\'s Best Beaches',
+          description: 'Lanikai and Kailua rank among world\'s most beautiful beaches!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Waves',
+          title: 'Hanauma Bay Snorkel Tour',
+          description: 'Visit top snorkel spot with transport and gear.',
+          features: [
+            '4-5 hours',
+            '400+ fish species',
+            'Protected bay',
+            'Gear included',
+            'Must-do',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Turtle Snorkel & Kayak',
+          description: 'Kayak to snorkel spots swimming with sea turtles.',
+          features: [
+            '3-4 hours',
+            'Kayaking',
+            'Turtle swimming',
+            'Beautiful',
+            'Active',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Scuba Diving',
+          description: 'Explore reefs, wrecks, and dive with Hawaiian marine life.',
+          features: [
+            '4-5 hours',
+            '1-2 dives',
+            'All levels',
+            'Equipment',
+            'Amazing',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Water Sports Combo',
+          description: 'Try multiple activities - jet ski, parasailing, paddleboard.',
+          features: [
+            '3-4 hours',
+            'Multiple sports',
+            'Variety',
+            'Fun',
+            'Good value',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Honolulu Beach & Water Sports',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Snorkel tours: 3-5 hours. Diving: 4-5 hours. Activities: 1-3 hours each.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Hanauma Bay',
+            description: 'Volcanic crater bay with coral reef and rainbow of tropical fish!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Sea Turtles',
+            description: 'Green sea turtles (honu) common - respectfully observe from 10 feet.',
+          },
+          {
+            icon: 'Star',
+            title: 'Lanikai/Kailua',
+            description: 'Pristine beaches with turquoise water and offshore islands.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Marine Life',
+            description: 'See parrotfish, butterflyfish, octopus, eels, and 400+ species.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Safety Briefing',
+            description: 'All activities include instruction and safety equipment.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Hanauma Bay reservation required (hanaumabaystatepark.com) - book 2 days ahead!',
+        'Arrive at Hanauma 7 AM (opening) - parking fills by 9 AM.',
+        'Bring reef-safe sunscreen - regular sunscreen banned to protect coral!',
+        'Lanikai Beach has no facilities (bathrooms, shade) - bring what you need.',
+        'Sea turtles protected - stay 10 feet away, no touching (heavy fines!).',
+        'Kailua Beach less crowded than Waikiki - locals\' favorite!',
+        'Wednesday Hanauma Bay closed for reef rest.',
+        'Rent snorkel gear beforehand ($10/day) - saves money over beach rentals.',
+      ],
+
+      faqs: [
+        {
+          question: 'How do you visit Hanauma Bay?',
+          answer: 'Reservation required at hanaumabaystatepark.com (book 2 days ahead, $25 entry). Open 6:45 AM-4 PM, closed Mondays/Tuesdays. Watch mandatory conservation video. Snorkel gear rental $20. Tours ($55-80) include transport and gear - easier! Best snorkeling on Oahu!',
+        },
+        {
+          question: 'Can you swim with sea turtles?',
+          answer: 'Yes! Green sea turtles (honu) common at Hanauma Bay, Laniakea Beach (North Shore), and many spots. They\'re protected - stay 10 feet away, no touching! $500-10,000 fines for harassment. Respectful viewing brings incredible encounters. Snorkel tours know best spots.',
+        },
+        {
+          question: 'What is the best beach on Oahu?',
+          answer: 'Lanikai Beach (#1 - turquoise perfection, small). Kailua Beach (bigger, facilities). Hanauma Bay (best snorkeling). Waikiki (iconic, bustling). North Shore (surf, waves). Each offers different experience. Lanikai most beautiful but no facilities. Choose based on priorities!',
+        },
+        {
+          question: 'How much do water sports cost?',
+          answer: 'Jet ski: $75-120/hour. Parasailing: $70-90. Snorkel tours: $35-80. Scuba diving: $120-180 (2-tank). Kayak rental: $30-60/day. Hanauma entry: $25. SUP rental: $20-30/hour. Hawaii not cheap but quality is excellent!',
+        },
+        {
+          question: 'Can beginners snorkel?',
+          answer: 'Absolutely! Hanauma Bay perfect for beginners - calm, shallow, clear water. Life jackets available if nervous. Tours teach basics. If you can swim (or float with jacket), you can snorkel! 99% of visitors have no issues. Start shallow, build confidence.',
+        },
+        {
+          question: 'Is Hanauma Bay worth it?',
+          answer: 'Yes! Best snorkeling on Oahu - 400+ fish species, coral reef, sea turtles. $25 entry but worth every penny. It\'s protected marine reserve - pristine! Arrive early (7 AM). Crowds manageable. Absolutely don\'t skip if you snorkel!',
+        },
+        {
+          question: 'When is the best time for water activities?',
+          answer: 'Year-round perfect! Summer (May-September): Calmer south shore, best snorkeling. Winter (Oct-April): Big waves North Shore (watch pros!), whales (Dec-April). Mornings calmest for snorkeling/diving. Trade winds pick up afternoon. Hawaii is always beautiful!',
+        },
+        {
+          question: 'What should I bring?',
+          answer: 'Reef-safe sunscreen (mandatory!), towel, water, snacks, waterproof camera, cash. Snorkel gear (rent or bring). Shade (umbrella) for beaches without facilities. Dry bag for valuables. Leave jewelry at hotel. Most beaches have showers.',
+        },
+      ],
+    },
+
+    'food-and-luau-tours': {
+      title: 'Honolulu Food & Luau Tours',
+      subtitle: 'Taste poke, shave ice, and local Hawaiian flavors while experiencing authentic luaus!',
+      categoryName: 'Food & Luau Tours',
+      
+      stats: {
+        toursAvailable: 82,
+        priceFrom: 60,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Discover Honolulu's incredible food scene blending Hawaiian, Asian, and American influences! Food tours explore local favorites like poke (raw fish salad - Hawaii's signature dish), loco moco (rice, burger, gravy, egg), plate lunch (two-scoop rice, macaroni salad, protein), shave ice, malasadas (Portuguese donuts), and spam musubi. Visit Chinatown with lei vendors and dim sum, KCC Farmers Market (Saturday mornings), Leonard's Bakery (original malasadas), and food trucks. Combine with traditional luaus featuring kalua pig from imu (underground oven), poi, lomi salmon, and Hawaiian feast. Learn about plantation-era food fusion, local vs. tourist restaurants, and where Hawaiians actually eat. It's delicious cultural education!`,
+
+      seo: {
+        title: 'Honolulu Food & Luau Tours 2025 - Poke, Shave Ice & Hawaiian Cuisine',
+        description: 'Experience Honolulu food tours! Poke, luaus, shave ice, and authentic Hawaiian flavors!',
+        keywords: 'Honolulu food tours, Hawaiian luau, Honolulu poke, shave ice, Hawaiian cuisine',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Poke',
+          description: 'Taste Hawaii\'s signature dish where it was invented!',
+        },
+        {
+          icon: 'Music',
+          title: 'Traditional Luaus',
+          description: 'Experience Hawaiian feast with hula and cultural performances.',
+        },
+        {
+          icon: 'Star',
+          title: 'Diverse Flavors',
+          description: 'Hawaiian-Asian fusion creating unique local cuisine.',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Guides',
+          description: 'Hawaiian residents share family recipes and insider spots.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Local Food Tour',
+          description: 'Sample poke, plate lunch, malasadas, and Hawaiian favorites.',
+          features: [
+            '3-4 hours',
+            '6-8 tastings',
+            'Local spots',
+            'Cultural insights',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'Music',
+          title: 'Luau & Dinner Show',
+          description: 'Traditional Hawaiian feast with hula, music, and fire dancing.',
+          features: [
+            '3-4 hours',
+            'Imu ceremony',
+            'Hula show',
+            'All-you-can-eat',
+            'Cultural',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Chinatown Food Tour',
+          description: 'Explore historic Chinatown tasting dim sum and Asian fusion.',
+          features: [
+            '3 hours',
+            'Chinatown',
+            'Multiple cuisines',
+            'Market visit',
+            'Diverse',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Farm-to-Table Tour',
+          description: 'Visit farms learning about Hawaiian agriculture and cuisine.',
+          features: [
+            '4-5 hours',
+            'Farm visits',
+            'Farm fresh',
+            'Educational',
+            'Unique',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Honolulu Food & Luau Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Food tours: 3-4 hours. Luaus: 3-4 hours evening. Combined: Full day possible.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Poke',
+            description: 'Raw ahi tuna with soy, sesame, onions - Hawaii\'s signature dish!',
+          },
+          {
+            icon: 'Star',
+            title: 'Plate Lunch',
+            description: 'Local favorite: Two scoops rice, macaroni salad, teriyaki chicken/kalua pig.',
+          },
+          {
+            icon: 'Music',
+            title: 'Luau Feast',
+            description: 'Kalua pig, poi, lomi salmon, haupia with hula entertainment.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Shave Ice',
+            description: 'Hawaiian shave ice (not snow cone!) with tropical syrups and ice cream.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Food Culture',
+            description: 'Learn about plantation influences and local food traditions.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Poke from grocery stores (Foodland, Times) often better than restaurants - locals\' secret!',
+        'Leonard\'s Bakery (malasadas) and Matsumoto\'s (shave ice) are iconic - must-visit!',
+        'Plate lunch $10-12 - cheap, filling, and authentic local food.',
+        'KCC Farmers Market Saturdays 7:30-11 AM - best for local food and produce.',
+        'Rainbow Drive-In (since 1961) classic plate lunch spot.',
+        'Spam musubi ($2-3) perfect beach snack - don\'t judge, just try it!',
+        'Come hungry for food tours - portions generous and frequent.',
+        'Chinatown best explored Saturday morning when market is busiest.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is poke?',
+          answer: 'Poke (POH-keh) is cubed raw fish (usually ahi tuna) marinated with soy sauce, sesame oil, onions, and seaweed. It\'s Hawaii\'s signature dish! Grocery stores have excellent poke bowls ($10-15). Endless varieties. Absolutely must-try! Fresh and delicious.',
+        },
+        {
+          question: 'Where is the best poke in Honolulu?',
+          answer: 'Local secret: Grocery store poke! Foodland Farms, Whole Foods, Times Supermarket have excellent fresh poke ($12-18/lb). Restaurants: Ono Seafood, Maguro Brothers. Food trucks also good. Tours show best spots. Grocery poke is legit!',
+        },
+        {
+          question: 'What is a plate lunch?',
+          answer: 'Plate lunch is Hawaii comfort food - protein (teriyaki chicken, kalua pig, katsu) with two scoops rice and macaroni salad. Plantation workers\' lunch evolved into local staple. $10-12, filling! Rainbow Drive-In classic spot. Essential Hawaiian food!',
+        },
+        {
+          question: 'What is shave ice?',
+          answer: 'Hawaiian shave ice (NOT snow cone!) - finely shaved ice with tropical syrups (lilikoi, guava, coconut), often topped with ice cream and mochi. Matsumoto\'s (North Shore) most famous. $5-8. Refreshing! Get rainbow flavor with ice cream bottom!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Walking food tours: $60-95 (3-4 hours, 6-8 tastings). Luaus: $70-200 (feast and show). Chinatown tours: $65-85. Farm tours: $90-130. Tours replace meals - good value. DIY plate lunch: $10-12 at local spots!',
+        },
+        {
+          question: 'Can vegetarians eat Hawaiian food?',
+          answer: 'Challenging - Hawaiian food is protein-heavy! However, poke bowls come in tofu/veggie versions. Vegetarian plate lunch exists. Communicate dietary needs on tours. Chinatown and health-conscious Oahu have good veggie options. Easier than you\'d think!',
+        },
+        {
+          question: 'What is spam musubi?',
+          answer: 'Spam musubi is Hawaii comfort food - grilled Spam on rice wrapped in nori (seaweed). Sounds weird, tastes amazing! $2-3 at convenience stores (7-Eleven!). Perfect beach snack. Hawaiians love Spam (highest US consumption!). Just try it!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Lunch tours (11 AM-2 PM) sample plate lunch. Farmers markets Saturday mornings. Luaus nightly. Chinatown best Saturdays. Food scene constant - book based on schedule. Come hungry!',
+        },
+      ],
+    },
+
+    'island-tours': {
+      title: 'Honolulu Island Tours',
+      subtitle: 'Circle Oahu exploring North Shore, windward coast, and island highlights!',
+      categoryName: 'Island Tours',
+      
+      stats: {
+        toursAvailable: 98,
+        priceFrom: 85,
+        duration: '6-10 hours',
+      },
+
+      introduction: `Experience Oahu's complete beauty with island circle tours showcasing diverse landscapes beyond Honolulu! Circle island tours explore famous North Shore (big wave surfing, Sunset Beach, Banzai Pipeline), windward coast with Kailua and Lanikai beaches (turquoise perfection), historic sites, scenic lookouts, and hidden gems. Stops include Dole Plantation (pineapple history and maze), Haleiwa town (surf culture and shrimp trucks!), Nu'uanu Pali Lookout (dramatic windward views), Byodo-In Temple (Japanese temple replica), tropical botanical gardens, and sea turtle beach. Learn about Hawaiian geography, how volcanic island formed, traditional ahupua'a land divisions, and cultural sites. Some tours include snorkeling stops, hiking, or beach time. It's complete Oahu in one day!`,
+
+      seo: {
+        title: 'Honolulu Island Tours 2025 - Oahu Circle Tour & North Shore',
+        description: 'Explore Oahu island! Circle tours, North Shore, beaches, and complete island highlights!',
+        keywords: 'Oahu island tours, Oahu circle tour, North Shore Oahu, Honolulu day tours, Oahu highlights',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Complete Island',
+          description: 'See Oahu\'s diversity - beaches, mountains, valleys in one day!',
+        },
+        {
+          icon: 'Waves',
+          title: 'North Shore',
+          description: 'Visit legendary surf beaches where pro surfing championships happen!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Scenic Lookouts',
+          description: 'Stop at panoramic viewpoints showing Oahu\'s dramatic beauty.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Diverse Landscapes',
+          description: 'Mountains, beaches, rainforest, and towns - Oahu has everything!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Circle Island Tour',
+          description: 'Complete Oahu loop visiting all major highlights.',
+          features: [
+            '8-10 hours',
+            'Full circle',
+            'Multiple stops',
+            'Lunch included',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'North Shore Adventure',
+          description: 'Focus on famous North Shore with surf beaches and shrimp trucks.',
+          features: [
+            '6-7 hours',
+            'Surf beaches',
+            'Haleiwa town',
+            'Scenic coast',
+            'Laid-back',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Beach & Snorkel Tour',
+          description: 'Visit best beaches with snorkeling at hidden spots.',
+          features: [
+            '6-8 hours',
+            'Beach time',
+            'Snorkeling',
+            'Swimming',
+            'Relaxing',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Private Island Tour',
+          description: 'Custom tour with flexible itinerary and personalized pace.',
+          features: [
+            '8 hours',
+            'Private guide',
+            'Custom stops',
+            'Your interests',
+            'Premium',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Honolulu Island Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Full circle: 8-10 hours. Half-day tours: 6 hours. Early morning starts.',
+          },
+          {
+            icon: 'Waves',
+            title: 'North Shore',
+            description: 'See Sunset Beach, Banzai Pipeline, Waimea Bay - legendary surf spots!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Scenic Lookouts',
+            description: 'Stop at Pali Lookout, Diamond Head, Makapuu - dramatic island views.',
+          },
+          {
+            icon: 'Star',
+            title: 'Local Culture',
+            description: 'Visit Haleiwa town, shrimp trucks, Dole Plantation, cultural sites.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Stops',
+            description: 'Frequent stops for photos at beaches, lookouts, and landmarks.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Island Education',
+            description: 'Learn about Oahu\'s formation, Hawaiian history, and local life.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Circle tours are LONG (8-10 hours) - bring snacks, water, and patience!',
+        'North Shore winter (Nov-Feb) has massive waves - summer calm for swimming.',
+        'Shrimp trucks at North Shore are must-try - Giovanni\'s most famous ($15).',
+        'Pali Lookout extremely windy - hold onto hats and children!',
+        'Dole Plantation pineapple whip and maze fun but touristy.',
+        'Byodo-In Temple beautiful Japanese temple ($5) - peaceful stop.',
+        'Morning tours get better light for photos and avoid afternoon crowds.',
+        'Small group tours (12-15) better than big bus tours - more personal.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is a circle island tour?',
+          answer: 'Circle island tour drives entire Oahu perimeter (100+ miles, 8-10 hours) visiting North Shore, windward coast, and highlights. Stops at beaches, lookouts, towns, and cultural sites. It\'s best way to see whole island in one day! Lunch included most tours.',
+        },
+        {
+          question: 'Is North Shore worth visiting?',
+          answer: 'Absolutely! Legendary surf beaches (Sunset, Pipeline, Waimea), laid-back Haleiwa town, shrimp trucks, and beautiful coastline. Winter: Watch pro surfers ride 30-foot waves! Summer: Calm swimming. 1 hour from Waikiki - essential Oahu experience!',
+        },
+        {
+          question: 'How much do island tours cost?',
+          answer: 'Circle island tours: $85-140 per person (8-10 hours, lunch often included). North Shore half-day: $75-95. Private tours: $600-1,000 for vehicle. Small group tours better value and experience than big buses. Book ahead!',
+        },
+        {
+          question: 'Can you drive around Oahu yourself?',
+          answer: 'Yes! Rent car ($40-80/day) and drive yourself - easy roads, beautiful drive. However, tours provide narration, history, and hit all highlights efficiently. DIY: More flexible. Tours: More educational. Both work!',
+        },
+        {
+          question: 'What is the Pali Lookout?',
+          answer: 'Nu\'uanu Pali Lookout offers dramatic windward coast views from cliff edge. Extremely windy (hold everything!). Site of 1795 battle where King Kamehameha unified islands. FREE stop. Essential photo op on island tours. Windy but worth it!',
+        },
+        {
+          question: 'Can you swim at North Shore beaches?',
+          answer: 'Summer (May-September): Calm, swimmable. Winter (October-April): HUGE waves - swimming dangerous! Lifeguards post warnings. Winter: Watch surfers, don\'t swim. Waimea Bay especially dangerous winter. Check conditions before entering water always.',
+        },
+        {
+          question: 'How long does it take to drive around Oahu?',
+          answer: 'Non-stop: 3-4 hours (100+ miles). With stops: 8-10 hours full day. Tours hit highlights efficiently. DIY allows flexible timing. Allow full day - it\'s worth not rushing. Oahu is beautiful around every bend!',
+        },
+        {
+          question: 'What should I bring on island tours?',
+          answer: 'Swimsuit, towel, reef-safe sunscreen, camera, water, light jacket (lookouts windy!), cash for food trucks. Tours provide transport. Wear comfortable clothes and shoes. Bring motion sickness meds if prone. Full day so pack accordingly!',
+        },
+      ],
+    },
+  },
 };
 
