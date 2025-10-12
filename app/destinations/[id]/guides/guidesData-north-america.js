@@ -25572,6 +25572,182 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'museum-tours': {
+      title: 'Washington D.C. Museum Tours',
+      subtitle: 'Explore Smithsonian museums - all FREE world-class collections!',
+      categoryName: 'Museum Tours',
+      
+      stats: {
+        toursAvailable: 94,
+        priceFrom: 0,
+        duration: '2-8 hours',
+      },
+
+      introduction: `Discover Washington D.C.'s incredible museums - world's largest museum complex, all FREE! Museum tours explore Smithsonian institutions including Air & Space (most visited!), Natural History (Hope Diamond!), American History, African American History & Culture, National Gallery of Art, Holocaust Memorial Museum, and more. Experience iconic artifacts (Wright Brothers plane, Apollo 11, dinosaurs!), art masterpieces, interactive exhibits, and American cultural heritage. Tours include skip-the-line tips, guided experiences, and curator insights. Learn about collections, history, and significance. It's museum paradise!`,
+
+      seo: {
+        title: 'Washington D.C. Museum Tours 2025 - Smithsonian, Air & Space & Free Museums',
+        description: 'Explore D.C. museums! Smithsonian, Air & Space, Natural History, all FREE!',
+        keywords: 'Smithsonian museums, Air and Space Museum, DC museums free, Natural History Museum, Washington museums',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'All FREE',
+          description: 'World-class Smithsonian museums - no admission fee!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Air & Space',
+          description: 'Most visited museum in world - Wright Brothers, Apollo 11!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Hope Diamond',
+          description: 'See famous Hope Diamond at Natural History Museum!',
+        },
+        {
+          icon: 'BookOpen',
+          title: '19 Museums',
+          description: 'Smithsonian has 19 museums/galleries - incredible variety!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Air & Space Tour',
+          description: 'Most popular Smithsonian - aviation and space.',
+          features: [
+            '2-3 hours',
+            'Wright Brothers',
+            'Apollo 11',
+            'Free',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Natural History',
+          description: 'Hope Diamond, dinosaurs, mammals.',
+          features: [
+            '2-3 hours',
+            'Hope Diamond',
+            'Dinosaurs',
+            'Free',
+            'Families',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Multi-Museum Day',
+          description: 'Visit 2-3 Smithsonians in one day.',
+          features: [
+            '6-8 hours',
+            'Multiple museums',
+            'Comprehensive',
+            'Free',
+            'Full day',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'American History',
+          description: 'Star-Spangled Banner, First Ladies, Americana.',
+          features: [
+            '2-3 hours',
+            'Artifacts',
+            'History',
+            'Free',
+            'Patriotic',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Washington D.C. Museum Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Each museum: 2-3 hours. Multi-museum day: 6-8 hours. Plan accordingly!',
+          },
+          {
+            icon: 'Star',
+            title: 'Air & Space',
+            description: 'Wright Brothers 1903 Flyer, Spirit of St. Louis, Apollo 11 - iconic!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Natural History',
+            description: 'Hope Diamond, dinosaurs, ocean hall, mammals - incredible collection!',
+          },
+          {
+            icon: 'Camera',
+            title: 'African American Museum',
+            description: 'Newest Smithsonian (2016) - powerful, emotional, essential (timed entry!).',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Holocaust Museum',
+            description: 'Not Smithsonian but FREE - deeply moving, timed entry required.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'National Gallery',
+            description: 'European and American art - Da Vinci, Vermeer, FREE!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'ALL Smithsonians FREE - no tickets except special exhibits!',
+        'African American Museum requires timed entry - reserve months ahead!',
+        'Air & Space busiest - go early or choose Natural History.',
+        'Most museums 10 AM-5:30 PM - plan timing.',
+        'Each museum deserves 2-3 hours minimum - choose priorities!',
+        'Holocaust Museum powerful but intense - not for young kids.',
+        'National Gallery two buildings connected by underground - both worth visiting.',
+        'Security at all museums - bag checks, no large bags.',
+      ],
+
+      faqs: [
+        {
+          question: 'Are D.C. museums really free?',
+          answer: 'YES! All 19 Smithsonians completely FREE. National Gallery FREE. Holocaust Museum FREE. No tricks - genuinely free world-class museums! American taxpayers fund. Donations appreciated but not required. Incredible value!',
+        },
+        {
+          question: 'Which Smithsonian is best?',
+          answer: 'Air & Space most visited (Wright Brothers, Apollo 11!). Natural History most popular with families (Hope Diamond, dinosaurs). African American most important (timed entry!). American History for patriots. Each excellent - choose interests!',
+        },
+        {
+          question: 'How many museums can you see in a day?',
+          answer: '2-3 museums realistic (each needs 2-3 hours). Rushing through 5-6 possible but exhausting. Quality over quantity! Most visitors: 2 museums + monuments = perfect day. Plan 3-4 days for thorough Smithsonian experience.',
+        },
+        {
+          question: 'Do you need tickets for Smithsonian?',
+          answer: 'Most: NO tickets needed! African American Museum and Hirshhorn: Free timed entry passes (reserve online months ahead!). Walk-ins sometimes available but limited. Washington Monument: Free timed tickets. Otherwise just show up!',
+        },
+        {
+          question: 'What is the Hope Diamond?',
+          answer: 'Hope Diamond is 45.52-carat blue diamond at Natural History Museum! One of world\'s most famous gems. "Cursed" legend (owners died mysteriously!). Donated 1958. FREE to see. Surrounded by other jewels. Don\'t miss it!',
+        },
+        {
+          question: 'Is Holocaust Museum appropriate for kids?',
+          answer: 'Recommended age 11+. Powerful, emotional, graphic content. Permanent exhibit intense. Children\'s exhibit "Daniel\'s Story" for younger visitors. Important history but prepare kids. Adults: Essential visit. Free timed entry required.',
+        },
+        {
+          question: 'How long at each Smithsonian?',
+          answer: '2-3 hours per museum for highlights. Half-day for thorough visit. Museums huge - easy to spend entire day in one! Plan what you want to see. Cafes available for breaks. Don\'t rush!',
+        },
+        {
+          question: 'When is the best time for museums?',
+          answer: 'Weekday mornings least crowded. Summer weekends busiest. Rainy days perfect! Winter (Jan-Feb) quietest. Museums open year-round 10 AM-5:30 PM. Christmas Day closed. Any time works but avoid peak crowds!',
+        },
+      ],
+    },
   },
 };
 
