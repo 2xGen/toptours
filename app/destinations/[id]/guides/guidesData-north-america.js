@@ -19224,6 +19224,182 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'chateau-frontenac-tours': {
+      title: 'Quebec City Château Frontenac Tours',
+      subtitle: 'Tour the iconic castle-hotel - most photographed hotel in the world!',
+      categoryName: 'Château Frontenac Tours',
+      
+      stats: {
+        toursAvailable: 42,
+        priceFrom: 50,
+        duration: '1-3 hours',
+      },
+
+      introduction: `Experience Château Frontenac - Quebec City's crown jewel and most photographed hotel globally! Château tours explore this magnificent castle-hotel perched on Cap Diamant overlooking St. Lawrence River. Built 1893 by Canadian Pacific Railway, this Fairmont property features grand architecture, luxurious interiors, historic ballrooms, and stunning views. Tours include guided history walks, afternoon tea experiences, architecture appreciation, and access to areas usually restricted. Learn about famous guests (Churchill, Roosevelt met here!), hotel's role in Quebec history, stunning Château-style architecture, and restoration efforts. Even if not staying, it's essential to visit!`,
+
+      seo: {
+        title: 'Quebec City Château Frontenac Tours 2025 - Iconic Castle Hotel & History',
+        description: 'Explore Château Frontenac! Historic castle-hotel tours and Quebec City icon!',
+        keywords: 'Château Frontenac, Quebec City castle, Fairmont Quebec, historic hotels, Chateau Frontenac tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Most Photographed Hotel',
+          description: 'Globally recognized icon - extraordinary architecture!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Historic Grandeur',
+          description: 'Built 1893 - witness to major historical events!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Stunning Location',
+          description: 'Perched on cliff overlooking St. Lawrence River!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'WWII History',
+          description: 'Churchill and Roosevelt held conferences here!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Guided Hotel Tour',
+          description: 'Interior tour with historical narratives.',
+          features: [
+            '90 minutes',
+            'Interior access',
+            'History',
+            'Architecture',
+            'Fascinating',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Afternoon Tea',
+          description: 'Traditional tea service in elegant setting.',
+          features: [
+            '2 hours',
+            'Tea service',
+            'Pastries',
+            'Luxury',
+            'Delightful',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photo Tour',
+          description: 'Capture Château from best vantage points.',
+          features: [
+            '2 hours',
+            'Photo-focused',
+            'Multiple angles',
+            'Scenic',
+            'Instagram',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Dufferin Terrace Walk',
+          description: 'Boardwalk beside Château with panoramic views.',
+          features: [
+            '1 hour',
+            'Scenic walk',
+            'River views',
+            'Free',
+            'Beautiful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Quebec City Château Frontenac Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Guided tours: 90 min. Afternoon tea: 2 hours. Photos/terrace: 1 hour.',
+          },
+          {
+            icon: 'Star',
+            title: 'Grand Architecture',
+            description: 'Château-style with turrets, copper roof - fairy-tale castle appearance!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Interior Splendor',
+            description: 'Ornate lobbies, historic ballrooms, elegant public spaces!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Dufferin Terrace',
+            description: 'Boardwalk beside Château - best photos and St. Lawrence River views!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'WWII Conferences',
+            description: 'Churchill and Roosevelt met here planning war strategy!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Luxury Hotel',
+            description: 'Fairmont property - can book room for ultimate experience ($300-800/night)!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Lobby and public spaces FREE to explore - don\'t need tour or room!',
+        'Dufferin Terrace (boardwalk beside) best Château photos - free access!',
+        'Afternoon tea ($60-80) luxurious experience if budget allows.',
+        'Staying at Château expensive ($300-800/night) but bucket-list worthy.',
+        'Winter: Château even more magical with snow - like fairy tale!',
+        'Photography: Best from Dufferin Terrace, Petit Champlain, or ferry.',
+        'Guided tours provide access to restricted areas - worth it for history buffs.',
+        'Evening: Château beautifully lit - stunning for photos!',
+      ],
+
+      faqs: [
+        {
+          question: 'Can you tour Château Frontenac?',
+          answer: 'Yes! Fairmont offers guided tours (90 min, ~$50) showing historic areas. Lobby and public spaces free to explore. Afternoon tea available ($60-80). Staying as guest ($300-800/night) gives full access. Tours provide history non-guests wouldn\'t know!',
+        },
+        {
+          question: 'Is it worth staying at Château Frontenac?',
+          answer: 'Bucket-list splurge! Expensive ($300-800/night) but iconic experience. Service excellent, rooms historic, location unbeatable. Budget: Visit lobby/terrace for free, stay elsewhere. Special occasion: Worth it! Most visitors: Photograph and visit but stay at cheaper hotel.',
+        },
+        {
+          question: 'Why is Château Frontenac famous?',
+          answer: 'Most photographed hotel globally! Iconic Quebec City symbol, stunning château-style architecture, historic significance (WWII conferences!), dramatic cliff-top location. Built 1893 by Canadian Pacific Railway. Appears in countless films/photos. Architectural masterpiece!',
+        },
+        {
+          question: 'Can you visit for free?',
+          answer: 'Yes! Lobby and public spaces open to all. Dufferin Terrace (boardwalk beside) free with best photo views. Don\'t need tour or room reservation. Respectful visitors welcome. Guided tours and tea service cost extra but seeing exterior/lobby free!',
+        },
+        {
+          question: 'What is Dufferin Terrace?',
+          answer: 'Dufferin Terrace is scenic boardwalk beside Château Frontenac with panoramic St. Lawrence River views! Free access, benches, street performers. Best Château photos from here! Winter: Toboggan slide operates. Summer: Buskers perform. Essential Quebec City spot!',
+        },
+        {
+          question: 'Who stayed at Château Frontenac?',
+          answer: 'Famous guests: Churchill, Roosevelt, Charles de Gaulle, Queen Elizabeth II, Grace Kelly, Alfred Hitchcock, Celine Dion. WWII Quebec Conferences held here. It\'s witnessed major history! Tours share celebrity and political stories.',
+        },
+        {
+          question: 'When is the best time to photograph Château?',
+          answer: 'Golden hour (sunrise/sunset) for warm light. Blue hour (dusk) when lit up! Winter with snow - magical fairy-tale look. From Dufferin Terrace or Lower Town (Petit Champlain) for different angles. Year-round photogenic!',
+        },
+        {
+          question: 'How much does afternoon tea cost?',
+          answer: 'Afternoon tea at Château: $60-80/person. Includes tea, sandwiches, pastries, scones in elegant setting. Reservations required. Luxurious experience - worth splurge for special occasion. Budget: Skip tea, explore lobby/terrace for free instead!',
+        },
+      ],
+    },
   },
 };
 
