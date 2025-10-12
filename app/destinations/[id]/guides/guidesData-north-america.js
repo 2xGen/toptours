@@ -23279,5 +23279,359 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  'tulum': {
+    'mayan-ruins-tours': {
+      title: 'Tulum Mayan Ruins Tours',
+      subtitle: 'Explore clifftop ruins with Caribbean views - ancient Mayan paradise!',
+      categoryName: 'Mayan Ruins Tours',
+      
+      stats: {
+        toursAvailable: 124,
+        priceFrom: 45,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Tulum's spectacular Mayan ruins - only archaeological site on Caribbean coast! Tulum ruins tours explore El Castillo (clifftop pyramid!), Temple of the Frescoes (ancient murals!), Temple of the Descending God, and city walls. Experience ancient Mayan civilization (1200-1521 AD) with turquoise waters backdrop, learn about Tulum as major trading port, explore well-preserved structures, and access beach below ruins. Tours include expert guides explaining history, archaeology insights, and photo opportunities. Learn about Mayan astronomy, architecture, and decline. It's paradise meets history!`,
+
+      seo: {
+        title: 'Tulum Mayan Ruins Tours 2025 - Ancient Temples & Caribbean Beach',
+        description: 'Explore Tulum ruins! Clifftop temples, Mayan history, and stunning Caribbean views!',
+        keywords: 'Tulum ruins tours, Tulum Mayan ruins, Tulum archaeological site, Tulum temples, Mayan ruins',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Clifftop Setting',
+          description: 'Only Mayan ruins on Caribbean coast - stunning location!',
+        },
+        {
+          icon: 'Heart',
+          title: 'El Castillo',
+          description: 'Iconic pyramid overlooking turquoise water - postcard perfect!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Beach Access',
+          description: 'Swim at beach below ruins - combine history and relaxation!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photo Paradise',
+          description: 'Most photographed Mayan site - incredibly scenic!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Guided Ruins Tour',
+          description: 'Expert guide explains Mayan history and archaeology.',
+          features: [
+            '2-3 hours',
+            'Expert guide',
+            'History',
+            'Beach access',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Sunrise Tour',
+          description: 'Visit ruins at dawn before crowds.',
+          features: [
+            '3 hours',
+            'Sunrise',
+            'Fewer crowds',
+            'Golden light',
+            'Magical',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Ruins + Cenote Combo',
+          description: 'Combine ruins with cenote swimming.',
+          features: [
+            '5-6 hours',
+            'Ruins + cenote',
+            'Full day',
+            'Swimming',
+            'Value',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tour',
+          description: 'Capture best angles with photographer.',
+          features: [
+            '3 hours',
+            'Photo-focused',
+            'Best light',
+            'Expert tips',
+            'Instagram',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Tulum Mayan Ruins Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Basic tour: 2 hours. With beach: 3-4 hours. Sunrise: 3 hours. Combos: Full day.',
+          },
+          {
+            icon: 'Star',
+            title: 'El Castillo',
+            description: 'Main pyramid on cliff edge - Tulum\'s iconic structure!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Temple of Frescoes',
+            description: 'Well-preserved murals showing Mayan cosmology - fascinating!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Beach Below',
+            description: 'Gorgeous beach at cliff base - swim after exploring ruins!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Caribbean Backdrop',
+            description: 'Turquoise water views from ruins - photographer\'s dream!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Trading Port History',
+            description: 'Learn how Tulum was major Mayan trading hub (1200-1521).',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Arrive early (8 AM opening) - gets hot and crowded quickly!',
+        'Bring swimsuit for beach below ruins - perfect after exploring.',
+        'Entry $95 pesos (~$5 USD) - cash preferred.',
+        'Guides not mandatory but highly recommended for history.',
+        'Wear sunscreen and hat - minimal shade, intense sun!',
+        'Sunrise tours (7 AM) beat crowds but extra cost.',
+        'Can\'t climb structures anymore - preservation rules.',
+        'Combine with cenotes nearby for full-day experience.',
+      ],
+
+      faqs: [
+        {
+          question: 'Are Tulum ruins worth visiting?',
+          answer: 'Absolutely! Most scenic Mayan site - clifftop location with Caribbean views unique! Smaller than Chichen Itza or Coba but stunning setting. 2-3 hours sufficient. Combine history with beach. Crowded but worth it! Essential Tulum experience!',
+        },
+        {
+          question: 'How long do you need at Tulum ruins?',
+          answer: '2-3 hours for thorough visit. Site compact - can see everything in 90 minutes rushed. Add beach time: 3-4 hours. Sunrise tours: 3 hours. Not huge site but beautiful - don\'t rush photography!',
+        },
+        {
+          question: 'Can you swim at Tulum ruins?',
+          answer: 'Yes! Beach at cliff base accessible. Gorgeous turquoise water, white sand. Bring swimsuit! Beach often crowded. Alternative: Ruins access beach on Playa Paraiso side. Swimming perfect after hot ruins exploration!',
+        },
+        {
+          question: 'Do you need guide for Tulum ruins?',
+          answer: 'Not mandatory but highly recommended! Guides explain Mayan history, architecture, purpose of structures. Without guide: Just pretty buildings. With guide: Fascinating history comes alive! $40-60 for guide. Worth it!',
+        },
+        {
+          question: 'When is best time to visit Tulum ruins?',
+          answer: 'Early morning (8 AM) or late afternoon (3 PM) avoid worst crowds/heat. Sunrise tours (7 AM) magical but extra cost. Avoid midday (hot, packed!). Winter (Nov-April) best weather. Year-round operation.',
+        },
+        {
+          question: 'How much does Tulum ruins cost?',
+          answer: 'Entry: $95 pesos (~$5 USD). Parking: $50-100 pesos. Guide: $40-60 USD. Total budget: $50-70 per person with guide. Cheaper than Chichen Itza! Cash preferred. Very affordable for experience!',
+        },
+        {
+          question: 'Can you climb Tulum pyramids?',
+          answer: 'NO - climbing prohibited for preservation! Can\'t climb El Castillo or any structures. View from outside only. Changed ~2008 for conservation. Still worth visiting - setting and history incredible!',
+        },
+        {
+          question: 'What should I bring to Tulum ruins?',
+          answer: 'Sunscreen (strong sun!), hat, water, swimsuit (beach!), cash, camera, comfortable shoes. Minimal shade - prepare for heat. Sunglasses essential. Small bag for belongings. Come prepared - gets hot!',
+        },
+      ],
+    },
+
+    'cenote-tours': {
+      title: 'Tulum Cenote Tours',
+      subtitle: 'Swim in crystal-clear sinkholes - magical underground caves!',
+      categoryName: 'Cenote Tours',
+      
+      stats: {
+        toursAvailable: 98,
+        priceFrom: 40,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Discover Tulum's magical cenotes - natural sinkholes with crystal-clear water! Cenote tours explore Gran Cenote (most popular!), Dos Ojos (two eyes system!), Cenote Calavera (skull-shaped!), Casa Cenote (mangrove mixing!), and hidden jungle cenotes. Experience swimming, snorkeling, diving in freshwater pools, see stalactites and stalagmites, encounter freshwater turtles, and explore underground cave systems. Tours include equipment, transportation, multiple cenote visits, and safety briefings. Learn about Mayan significance (sacred to Mayans!), geology, and underground rivers. It's natural swimming pools paradise!`,
+
+      seo: {
+        title: 'Tulum Cenote Tours 2025 - Gran Cenote, Dos Ojos & Cave Swimming',
+        description: 'Explore Tulum cenotes! Gran Cenote, cave swimming, and crystal-clear sinkholes!',
+        keywords: 'Tulum cenotes, Gran Cenote, Dos Ojos, cenote tours Tulum, cenote swimming, cave diving',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Crystal-Clear Water',
+          description: 'Visibility 50+ meters - incredibly clear freshwater!',
+        },
+        {
+          icon: 'Star',
+          title: 'Gran Cenote',
+          description: 'Most popular cenote - turtles, caves, perfect for beginners!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Underground Caves',
+          description: 'Swim through stalactite caverns - otherworldly experience!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Light Beams',
+          description: 'Sunlight through openings creates magical light shows!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Gran Cenote Tour',
+          description: 'Visit most famous cenote with turtles.',
+          features: [
+            '3 hours',
+            'Gran Cenote',
+            'Turtles',
+            'Snorkeling',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Multi-Cenote Tour',
+          description: 'Visit 3-4 different cenotes in one day.',
+          features: [
+            '6-8 hours',
+            '3-4 cenotes',
+            'Variety',
+            'Full day',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Dos Ojos System',
+          description: 'Explore two-eye cave system - snorkeling/diving.',
+          features: [
+            '3-4 hours',
+            'Cave system',
+            'Two cenotes',
+            'Amazing',
+            'Adventurous',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Private Cenote Tour',
+          description: 'Visit lesser-known cenotes with fewer crowds.',
+          features: [
+            '4-5 hours',
+            'Hidden gems',
+            'Private',
+            'Peaceful',
+            'Exclusive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Tulum Cenote Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Single cenote: 2-3 hours. Multi-cenote: 6-8 hours. Budget full day for multiple.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Gran Cenote',
+            description: 'Open-air with cave sections - turtles, fish, clear water, beginner-friendly!',
+          },
+          {
+            icon: 'Star',
+            title: 'Dos Ojos',
+            description: 'Two connected cenotes in cave - snorkeling through stalactites incredible!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Crystal Water',
+            description: 'Visibility 50+ meters - see everything! Freshwater, cool (75°F).',
+          },
+          {
+            icon: 'Camera',
+            title: 'Light Beams',
+            description: 'Midday sun creates light beams through openings - magical photos!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Mayan Significance',
+            description: 'Learn about cenotes as sacred Mayan water sources and ritual sites.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Gran Cenote ($500 pesos) most touristy - go early (8-9 AM)!',
+        'Dos Ojos ($550 pesos) less crowded, more dramatic - highly recommended.',
+        'Biodegradable sunscreen ONLY - regular sunscreen prohibited (protects ecosystem).',
+        'Bring waterproof camera - you\'ll regret not capturing this!',
+        'Water temperature ~75°F (24°C) - refreshing but not cold.',
+        'Life jackets available if needed - most cenotes swimmable depth.',
+        'Snorkel gear included at cenotes or bring own.',
+        'Multi-cenote tours show variety - each cenote unique character!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is a cenote?',
+          answer: 'Cenote is natural sinkhole - collapsed limestone revealing underground water! Crystal-clear freshwater, often in caves. Yucatan has thousands! Sacred to Mayans (water source, ritual sites). Unique to region. Swimming, snorkeling, diving. Natural swimming pools - incredible!',
+        },
+        {
+          question: 'Which cenote is best in Tulum?',
+          answer: 'Gran Cenote most popular - turtles, caves, beginner-friendly! Dos Ojos more dramatic (cave system). Cenote Calavera unique (skull-shaped jump). Casa Cenote (mangroves mixing salt/fresh water). Each different! Visit multiple if possible!',
+        },
+        {
+          question: 'Can you swim in cenotes?',
+          answer: 'YES - that\'s the point! Crystal-clear freshwater, cool (~75°F), safe. Snorkeling, swimming, diving all possible. Most cenotes swimmable depth. Life jackets available. Incredible experience - like natural aquariums!',
+        },
+        {
+          question: 'How much do cenotes cost?',
+          answer: 'Entry: $200-600 pesos ($10-30 USD) per cenote. Gran Cenote: $500 pesos. Dos Ojos: $550 pesos. Tours (multi-cenote): $60-120 USD. Snorkel rental: $50-100 pesos. Budget $15-30 per cenote. Affordable natural wonder!',
+        },
+        {
+          question: 'Do I need tour for cenotes?',
+          answer: 'Not essential - can rent car and visit independently! However, tours provide transport, equipment, guide, efficiency (multiple cenotes). DIY: Cheaper, flexible. Tours: Easy, multi-cenote, hassle-free. Both work - depends on style!',
+        },
+        {
+          question: 'Are cenotes safe?',
+          answer: 'Very safe! Crystal-clear water (see everything), lifeguards present, life jackets available. Follow rules: No sunscreen (biodegradable only), shower before entering. Cave diving requires certification. Swimming/snorkeling safe for all. Millions visit safely!',
+        },
+        {
+          question: 'What should I bring to cenotes?',
+          answer: 'Swimsuit, towel, biodegradable sunscreen ONLY, waterproof camera, cash, water shoes (some rocky). Snorkel gear usually provided. Dry bag for belongings. Change of clothes. Come prepared to swim!',
+        },
+        {
+          question: 'When is best time for cenotes?',
+          answer: 'Morning (8-10 AM) for light beams and fewer crowds! Midday: Best light but busiest. Afternoon: Quieter, less dramatic light. Year-round 75°F water. Summer hot but refreshing cenote swim perfect! Any time works!',
+        },
+      ],
+    },
+  },
 };
 
