@@ -8329,7 +8329,7 @@ export const categoryGuidesNorthAmerica = {
           title: 'Insider Gossip',
           description: 'Guides share celebrity stories, real estate prices, and rumors!',
         },
-      },
+      ],
 
       tourTypes: [
         {
