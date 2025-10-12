@@ -16931,5 +16931,1063 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  'playa-del-carmen': {
+    'fifth-avenue-tours': {
+      title: 'Playa del Carmen Fifth Avenue Tours',
+      subtitle: 'Explore Quinta Avenida - vibrant pedestrian street with shops, dining, and beach access!',
+      categoryName: 'Fifth Avenue Tours',
+      
+      stats: {
+        toursAvailable: 84,
+        priceFrom: 40,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience Quinta Avenida (Fifth Avenue) - Playa del Carmen's beating heart! Fifth Avenue tours explore the famous pedestrian street stretching 20+ blocks parallel to Caribbean Sea with boutique shops, international restaurants, rooftop bars, beach clubs, street performers, and vibrant nightlife. Walk from Calle 1 (beach) to Calle Corazón (northern end) discovering artisan markets, luxury shopping, authentic Mexican restaurants, beach access points, and local culture. Tours include shopping guidance, best restaurant recommendations, cultural insights, and evening experiences. Learn about Playa's transformation from fishing village to cosmopolitan destination. It's Riviera Maya's social scene!`,
+
+      seo: {
+        title: 'Playa del Carmen Fifth Avenue Tours 2025 - Quinta Avenida Shopping & Dining',
+        description: 'Explore Fifth Avenue! Quinta Avenida shopping, dining, and Playa del Carmen\'s vibrant street!',
+        keywords: 'Quinta Avenida Playa del Carmen, Fifth Avenue Mexico, Playa shopping, Playa del Carmen nightlife',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Pedestrian Paradise',
+          description: '20+ blocks of car-free street - perfect for strolling!',
+        },
+        {
+          icon: 'Star',
+          title: 'Shopping & Dining',
+          description: 'Everything from artisan markets to luxury boutiques!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Beach Access',
+          description: 'Perpendicular streets lead directly to Caribbean beaches!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Day to Night',
+          description: 'Vibrant day shopping transforms to lively nightlife!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Fifth Avenue Walking Tour',
+          description: 'Guided walk explaining history and best spots.',
+          features: [
+            '2 hours',
+            'Major highlights',
+            'Shopping tips',
+            'History',
+            'Orientation',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Food Tour',
+          description: 'Sample tacos, ceviche, and local specialties along Fifth Ave.',
+          features: [
+            '3 hours',
+            '6-8 tastings',
+            'Food + culture',
+            'Restaurants',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Night Life Tour',
+          description: 'Explore rooftop bars, clubs, and evening scene.',
+          features: [
+            '3-4 hours',
+            'Bar hopping',
+            'Night clubs',
+            'Party',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Shopping Tour',
+          description: 'Find best artisan markets, boutiques, and local crafts.',
+          features: [
+            '2-3 hours',
+            'Shopping focused',
+            'Bargaining tips',
+            'Local goods',
+            'Souvenirs',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Playa del Carmen Fifth Avenue Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking: 2-3 hours. Food tours: 3 hours. Shopping: 2-4 hours. Nightlife: 3-4 hours.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Pedestrian Street',
+            description: 'Car-free avenue with shops, restaurants, and vibrant atmosphere!',
+          },
+          {
+            icon: 'Star',
+            title: 'Beach Access',
+            description: 'Every perpendicular street leads to Caribbean beach - easy access!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Street Performers',
+            description: 'Live music, dancers, entertainers creating lively atmosphere!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Diverse Dining',
+            description: 'Italian, Japanese, Mexican, seafood - international cuisine capital!',
+          },
+          {
+            icon: 'Sun',
+            title: 'Beach Clubs',
+            description: 'Access famous beach clubs from Fifth Avenue - Mamita\'s, Kool, Coralina!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'South end (Calles 1-12) more touristy. North end (26-38) more local.',
+        'Calle Corazón (north) has hip restaurants and local vibe - worth exploring!',
+        'Evening (6-10 PM) Fifth Avenue peaks - music, dining, crowds!',
+        'Artisan markets negotiate - start at 60-70% asking price.',
+        'Beach clubs require minimum spend ($30-50) for loungers/umbrellas.',
+        'Free to walk Fifth Avenue - tours provide context and navigation.',
+        'Wednesday-Saturday evenings busiest. Sunday-Tuesday more relaxed.',
+        'Uber/taxis can\'t access Fifth Avenue - walk from nearby streets.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Fifth Avenue in Playa del Carmen?',
+          answer: 'Quinta Avenida (Fifth Avenue) is main pedestrian street running parallel to beach for 20+ blocks. Shopping, dining, nightlife, beach access - it\'s Playa\'s social center! Runs from ferry pier south to Calle Corazón north. Car-free, vibrant, always busy. Essential Playa experience!',
+        },
+        {
+          question: 'Is Fifth Avenue worth visiting?',
+          answer: 'Essential Playa experience! It\'s where everything happens - shopping, dining, nightlife, people-watching. Free to walk. Budget hours (or full day) exploring. Both touristy and authentic depending on section. Visit early for shopping, evening for atmosphere!',
+        },
+        {
+          question: 'How long to spend on Fifth Avenue?',
+          answer: 'Minimum 2-3 hours for walking and seeing highlights. Serious shoppers/diners: Half-day. Evening: 3-4 hours for dining and nightlife. You\'ll return multiple times during Playa stay - it\'s central to everything!',
+        },
+        {
+          question: 'What should I buy on Fifth Avenue?',
+          answer: 'Hammocks ($30-100), Huipil dresses ($30-80), silver jewelry ($20-200), vanilla (real Mexican vanilla!), tequila/mezcal, pottery, blankets, artisan crafts. Haggle at markets! Fixed prices in boutiques. Avoid tourist traps - research fair prices.',
+        },
+        {
+          question: 'Are prices negotiable on Fifth Avenue?',
+          answer: 'Yes at markets and artisan stalls - start at 60-70% asking price. No haggling in established stores/restaurants (fixed prices). Some small shops negotiate on bulk purchases. Be respectful - smile, walk away if price too high. Part of the experience!',
+        },
+        {
+          question: 'Is Fifth Avenue safe?',
+          answer: 'Very safe! Tourist police patrol constantly, well-lit, crowds provide safety. Watch for pickpockets in crowds. Street vendors persistent but harmless. Evening safe - major tourist area. Use normal urban caution. Playa generally very safe for tourists!',
+        },
+        {
+          question: 'When is the best time to visit Fifth Avenue?',
+          answer: 'Morning (9-11 AM): Shops opening, quieter for browsing. Afternoon: Hot and crowded. Evening (6-10 PM): Peak atmosphere - dining, music, crowds! Late night (10 PM-2 AM): Nightlife peaks. Visit different times for different vibes. Year-round accessible!',
+        },
+        {
+          question: 'How much do Fifth Avenue tours cost?',
+          answer: 'Walking tours: $40-60 (2-3 hours). Food tours: $65-95 (3 hours, tastings). Nightlife tours: $60-90 (bar hopping). Free to explore yourself! Tours provide insider knowledge, best spots, and cultural context. Both options work!',
+        },
+      ],
+    },
+
+    'beach-tours': {
+      title: 'Playa del Carmen Beach Tours',
+      subtitle: 'Experience pristine Caribbean beaches, beach clubs, and turquoise waters!',
+      categoryName: 'Beach Tours',
+      
+      stats: {
+        toursAvailable: 112,
+        priceFrom: 35,
+        duration: '3-8 hours',
+      },
+
+      introduction: `Discover Playa del Carmen's stunning Caribbean beaches - powder-white sand and turquoise water! Beach tours explore iconic beaches like Mamita's Beach Club (trendy!), Playacar (quieter southern beach), Punta Esmeralda (local favorite with cenote!), and nearby islands. Experience beach club culture with DJ music and cocktails, snorkeling in coral reefs, sailing catamarans, paddleboarding, and beach yoga. Tours include day passes to exclusive beach clubs, snorkel equipment, boat trips to Cozumel or Isla Mujeres, and sunset cruises. Learn about Mesoamerican Reef (second-largest globally!), sea turtle conservation, and beach culture. It's Caribbean paradise!`,
+
+      seo: {
+        title: 'Playa del Carmen Beach Tours 2025 - Caribbean Beaches & Beach Clubs',
+        description: 'Experience Playa beaches! Beach clubs, snorkeling, and turquoise Caribbean waters!',
+        keywords: 'Playa del Carmen beaches, Mamitas Beach Club, Playa snorkeling, Caribbean beaches Mexico',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Caribbean Perfection',
+          description: 'Turquoise water, white sand, warm temperatures year-round!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Beach Club Culture',
+          description: 'Mamita\'s, Kool, Coralina - DJ music, cocktails, loungers!',
+        },
+        {
+          icon: 'Star',
+          title: 'Mesoamerican Reef',
+          description: 'World\'s second-largest reef - incredible snorkeling!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Year-Round Swimming',
+          description: 'Water 78-82°F always - perfect beach weather!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Beach Club Day Pass',
+          description: 'Access Mamita\'s, Kool, or Fusion with amenities.',
+          features: [
+            'Full day',
+            'Loungers',
+            'Music',
+            'Pool/beach',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Snorkel Tour',
+          description: 'Explore coral reefs and marine life.',
+          features: [
+            '3-4 hours',
+            'Reef snorkeling',
+            'Equipment',
+            'Guide',
+            'Marine life',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Catamaran Cruise',
+          description: 'Sail to snorkel spots with open bar and lunch.',
+          features: [
+            '5-6 hours',
+            'Sailing',
+            'Snorkeling',
+            'Lunch + drinks',
+            'Relaxing',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunset Beach Tour',
+          description: 'Evening beach experience with cocktails and views.',
+          features: [
+            '2-3 hours',
+            'Sunset views',
+            'Cocktails',
+            'Romantic',
+            'Beautiful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Playa del Carmen Beach Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Beach clubs: Full day. Snorkeling: 3-4 hours. Catamaran: 5-6 hours. Sunset: 2-3 hours.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Caribbean Water',
+            description: 'Turquoise, clear, warm (78-82°F) - perfect for swimming year-round!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Beach Clubs',
+            description: 'DJ music, pools, bars, loungers, beach volleyball - party atmosphere!',
+          },
+          {
+            icon: 'Star',
+            title: 'Coral Reef Snorkeling',
+            description: 'See tropical fish, sea turtles, and vibrant coral!',
+          },
+          {
+            icon: 'Camera',
+            title: 'White Sand Beaches',
+            description: 'Powder-soft sand perfect for sunbathing and beach walks!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Island Day Trips',
+            description: 'Boat to Cozumel or Isla Mujeres for diverse beach experiences!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Mamita\'s Beach Club most famous - trendy, DJ music, minimum spend $30-50.',
+        'Punta Esmeralda FREE public beach with cenote - local secret!',
+        'Playacar (south) quieter and more relaxed than central Playa beaches.',
+        'Beach clubs include loungers, shade, bathrooms - worth minimum spend.',
+        'Bring reef-safe sunscreen (regular sunscreen harms coral - banned!).',
+        'Morning (8-10 AM) beaches uncrowded. Afternoon beach clubs peak.',
+        'Weekdays less crowded than weekends at beach clubs.',
+        'Water shoes helpful for rocky entry points and avoiding sea urchins.',
+      ],
+
+      faqs: [
+        {
+          question: 'What are the best beaches in Playa del Carmen?',
+          answer: 'Mamita\'s Beach: Trendy beach club (music, party vibe). Punta Esmeralda: Free, quieter, has cenote! Playacar: Calm, fewer vendors. Playa 88: Good snorkeling. All have white sand and turquoise water. Choose by vibe preference!',
+        },
+        {
+          question: 'Do you need to pay for beaches?',
+          answer: 'Beaches FREE in Mexico (public access!)! However, beach clubs charge minimum spend ($30-50) for loungers, shade, facilities. Public beaches free but limited shade/facilities. Most visitors mix both - beach clubs some days, free beaches others.',
+        },
+        {
+          question: 'Are Playa del Carmen beaches nice?',
+          answer: 'Beautiful! White sand, turquoise Caribbean water, warm year-round. Not as pristine as Tulum (more developed, seaweed sometimes) but gorgeous! Beach clubs add amenities. Snorkeling good. Very accessible from town. Yes, they\'re lovely!',
+        },
+        {
+          question: 'Can you snorkel in Playa del Carmen?',
+          answer: 'Yes! Reef close to shore at some beaches. Better: Take boat tour to reef ($45-75, 3-4 hours). Best snorkeling at Cozumel (30 min ferry). Playa has decent snorkeling but Cozumel world-class. Equipment rental $10-15 or included in tours.',
+        },
+        {
+          question: 'What is a beach club?',
+          answer: 'Beach clubs offer loungers, umbrellas, pools, bars, music (often DJ), food, bathrooms for minimum spend ($30-50). Mamita\'s, Kool, Fusion, Coralina popular. It\'s party/relaxation hybrid. Great if wanting amenities. Free beaches work too if budget-conscious!',
+        },
+        {
+          question: 'Is seaweed a problem?',
+          answer: 'Can be seasonal (April-August sargassum season). Some years worse than others. Beach clubs clean beaches daily. Check current conditions online. When present, affects beach experience but snorkeling/swimming still possible. Not constant issue - varies!',
+        },
+        {
+          question: 'What should I bring to Playa beaches?',
+          answer: 'Reef-safe sunscreen (required!), towel (unless beach club), water, hat, water shoes, snorkel gear (if own), cash for beach vendors. Beach clubs provide loungers/towels with minimum spend. Bring less if using beach club!',
+        },
+        {
+          question: 'Are Playa beaches crowded?',
+          answer: 'Central beaches (Mamita\'s, Calle 10-14) busy but manageable. Punta Esmeralda and Playacar quieter. Weekdays less crowded than weekends. High season (Dec-April) busiest. Morning beaches uncrowded - perfect for walks. Plenty of space for everyone!',
+        },
+      ],
+    },
+
+    'cenote-tours': {
+      title: 'Playa del Carmen Cenote Tours',
+      subtitle: 'Swim in mystical underwater caves and crystal-clear freshwater pools!',
+      categoryName: 'Cenote Tours',
+      
+      stats: {
+        toursAvailable: 96,
+        priceFrom: 45,
+        duration: '4-8 hours',
+      },
+
+      introduction: `Discover cenotes - mystical natural sinkholes unique to Yucatan Peninsula! Cenote tours explore stunning freshwater pools like Gran Cenote (famous snorkeling!), Dos Ojos (two connected caverns), Ik Kil (near Chichen Itza), Cenote Azul, and countless hidden gems. Swim in crystal-clear water (visibility 100+ feet!), snorkel among stalactites, dive into open-air pools, explore underwater cave systems, and experience magical light beams. Tours include transportation, entrance fees, snorkel equipment, and expert guides explaining cenote formation and Mayan sacred significance. Learn about limestone geology, underground river systems, and ancient rituals. It's otherworldly swimming!`,
+
+      seo: {
+        title: 'Playa del Carmen Cenote Tours 2025 - Swim in Mystical Underwater Caves',
+        description: 'Explore cenotes! Gran Cenote, Dos Ojos, and magical freshwater swimming!',
+        keywords: 'cenote tours Playa del Carmen, Gran Cenote, Dos Ojos, cenote swimming, Tulum cenotes',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Mystical Experience',
+          description: 'Swim in underground caves - unique to Yucatan!',
+        },
+        {
+          icon: 'Star',
+          title: 'Crystal Clear Water',
+          description: 'Visibility 100+ feet in freshwater - like swimming in aquarium!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Light Beams',
+          description: 'Magical sunlight streaming into caverns - incredibly photogenic!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Mayan Sacred Sites',
+          description: 'Ancient Maya performed rituals in cenotes - spiritual significance!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Multi-Cenote Tour',
+          description: 'Visit 3-4 different cenotes in one day.',
+          features: [
+            '6-8 hours',
+            'Multiple cenotes',
+            'Swimming',
+            'Snorkeling',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Gran Cenote & Tulum',
+          description: 'Combine famous cenote with Tulum ruins visit.',
+          features: [
+            '6-7 hours',
+            'Cenote + ruins',
+            'Snorkeling',
+            'Cultural',
+            'Popular combo',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Dos Ojos Snorkel',
+          description: 'Snorkel two connected underwater caverns.',
+          features: [
+            '4-5 hours',
+            'Cave snorkeling',
+            'Spectacular',
+            'Clear water',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Private Cenote Experience',
+          description: 'Visit less-touristy cenotes with small groups.',
+          features: [
+            '5-6 hours',
+            'Hidden gems',
+            'Fewer crowds',
+            'Photos',
+            'Exclusive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Playa del Carmen Cenote Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 4-8 hours depending on number of cenotes. Include transport time (30-60 min each way).',
+          },
+          {
+            icon: 'Waves',
+            title: 'Crystal Water',
+            description: '72-78°F freshwater, visibility 100+ feet - incredibly clear!',
+          },
+          {
+            icon: 'Star',
+            title: 'Cave Swimming',
+            description: 'Open-air cenotes and underground caverns - both spectacular!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Light Beams',
+            description: 'Midday sunlight streams into cenotes creating magical effect!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Stalactites',
+            description: 'Ancient formations hanging from cave ceilings - swim among them!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Mayan Significance',
+            description: 'Learn why Maya considered cenotes sacred portals to underworld.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Midday (11 AM-1 PM) best light beams in cenotes - most photogenic!',
+        'Bring biodegradable sunscreen only - chemicals harm cenotes (many ban regular).',
+        'Life jacket provided and often required (cenotes deep!).',
+        'Gran Cenote near Tulum most famous - very touristy but gorgeous.',
+        'Dos Ojos better snorkeling with cave systems - incredible!',
+        'Hidden cenotes (Chikin Ha, Nicte-Ha) less crowded, more authentic.',
+        'Water cool (72-78°F) - refreshing but some find cold for extended swimming.',
+        'Morning tours (8-9 AM) beat crowds at popular cenotes.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is a cenote?',
+          answer: 'Cenote is natural sinkhole where limestone bedrock collapsed revealing underground water. Unique to Yucatan Peninsula! Crystal-clear freshwater pools, some open-air, some in caves. Maya considered sacred. Over 6,000 cenotes in region! Swimming, snorkeling, diving available. Extraordinary natural phenomenon!',
+        },
+        {
+          question: 'Can you swim in cenotes?',
+          answer: 'Yes! Most cenotes allow swimming and snorkeling. Some require life jackets (provided). Water 72-78°F (cooler than Caribbean). Incredibly clear and refreshing! Safe - no currents. Cave cenotes require guide. Essential Riviera Maya experience - don\'t skip!',
+        },
+        {
+          question: 'Which cenotes are best?',
+          answer: 'Gran Cenote: Most famous, excellent snorkeling. Dos Ojos: Best cave snorkeling. Ik Kil: Near Chichen Itza, dramatic. Cenote Azul: Open-air, cliff jumping. Chikin Ha: Less touristy, underground. Each unique - tours visit multiple for variety!',
+        },
+        {
+          question: 'Are cenotes safe?',
+          answer: 'Very safe! Life jackets provided, guides monitor. No currents in most. Cave cenotes require guide (mandatory). Millions swim safely. Only risk: Cold water for some (72-78°F). Avoid touching formations. Follow rules. Safe and incredible!',
+        },
+        {
+          question: 'How much do cenote tours cost?',
+          answer: 'Single cenote entry: $10-20. Multi-cenote tours: $45-95 (4-8 hours, transport included). Dos Ojos: $25-35. Gran Cenote: $25. Private tours: $150-300. Good value - transport, multiple cenotes, guide expertise. DIY cheaper if you have car.',
+        },
+        {
+          question: 'What should I bring to cenotes?',
+          answer: 'Biodegradable sunscreen (required!), towel, water shoes, underwater camera, change of clothes, cash. Snorkel gear provided. No regular sunscreen or insect repellent allowed (harms cenotes). Life jackets provided. Lockers available ($3-5). Come prepared!',
+        },
+        {
+          question: 'Can you dive in cenotes?',
+          answer: 'Yes! Cenote diving is world-famous (especially Dos Ojos). Requires dive certification. Crystal-clear water, dramatic stalactites, unique experience. Tours for certified divers $100-180. Snorkeling accessible for everyone though - equally amazing!',
+        },
+        {
+          question: 'When is the best time for cenote tours?',
+          answer: 'Year-round! Midday (11 AM-1 PM) best for light beams in open cenotes. Morning (8-9 AM) fewer crowds. Summer water warmest. Winter cooler but still swimmable. Always accessible - cenotes don\'t depend on weather. Visit anytime!',
+        },
+      ],
+    },
+
+    'food-and-culture-tours': {
+      title: 'Playa del Carmen Food & Culture Tours',
+      subtitle: 'Taste authentic tacos, ceviche, and Yucatecan specialties!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 74,
+        priceFrom: 60,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Playa del Carmen's diverse food scene - authentic Mexican to international fusion! Food tours explore local taco stands, cevicherías, traditional Yucatecan restaurants, street food markets, cocktail bars, and chef-driven establishments. Sample cochinita pibil (slow-roasted pork), fresh ceviche, fish tacos, sopes, quesadillas, and regional specialties. Visit local neighborhoods beyond tourist zones, experience mezcal/tequila tastings, learn cooking techniques, and understand cultural significance of food. Tours combine tastings with cultural education - Mayan heritage, fishing village history, and modern cosmopolitan blend. It's culinary and cultural immersion!`,
+
+      seo: {
+        title: 'Playa del Carmen Food & Culture Tours 2025 - Tacos, Ceviche & Mexican Cuisine',
+        description: 'Taste Playa! Authentic tacos, ceviche, and cultural culinary experiences!',
+        keywords: 'Playa del Carmen food tours, Playa tacos, ceviche, Yucatan food, Mexican cuisine tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic & International',
+          description: 'Local Mexican plus Italian, Japanese, Mediterranean - diverse!',
+        },
+        {
+          icon: 'Star',
+          title: 'Fresh Seafood',
+          description: 'Caribbean fish, ceviche, lobster - ocean-to-table fresh!',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Neighborhoods',
+          description: 'Visit where locals eat - beyond tourist restaurants!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Tequila & Mezcal',
+          description: 'Tastings of Mexico\'s legendary spirits!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Taco & Street Food Tour',
+          description: 'Sample authentic tacos at local stands and markets.',
+          features: [
+            '3 hours',
+            '6-8 tastings',
+            'Street food',
+            'Local spots',
+            'Authentic',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Seafood & Ceviche Tour',
+          description: 'Fresh Caribbean seafood and ceviche experiences.',
+          features: [
+            '3-4 hours',
+            'Seafood focus',
+            'Ceviche',
+            'Beach restaurants',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Cooking Class',
+          description: 'Learn to make tacos, salsa, and Mexican dishes.',
+          features: [
+            '4 hours',
+            'Hands-on',
+            'Market visit',
+            'Cook + eat',
+            'Interactive',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Mezcal & Tequila Tasting',
+          description: 'Sample premium spirits with expert education.',
+          features: [
+            '2-3 hours',
+            'Multiple tastings',
+            'Education',
+            'Cultural',
+            'Fun',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Playa del Carmen Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Fresh Tacos',
+            description: 'Al pastor, pescado, carnitas from street stands - authentic Mexico!',
+          },
+          {
+            icon: 'Star',
+            title: 'Ceviche',
+            description: 'Fresh fish "cooked" in lime juice with cilantro, onion, chili - Caribbean specialty!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Cochinita Pibil',
+            description: 'Yucatecan slow-roasted pork with achiote - regional must-try!',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Mezcal Tastings',
+            description: 'Sample artisanal agave spirits - smoky, complex, traditional!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Stories',
+            description: 'Learn about Mayan heritage, fishing village past, and modern evolution.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'La Cueva del Chango (breakfast) local favorite - fresh juices, authentic!',
+        'Avoid Fifth Avenue restaurants (overpriced!) - walk few blocks away.',
+        'Fish tacos freshest at lunch when fishing boats return.',
+        'Colectivo corner (Calle 2 & Juárez) has cheap authentic food stands.',
+        'El Fogón (tacos al pastor) legendary local spot - cheap and delicious!',
+        'Sunday markets have food stalls with regional specialties.',
+        'Mezcal quality varies - tours guide you to good bottles.',
+        'Come hungry - portions generous and tastings add up!',
+      ],
+
+      faqs: [
+        {
+          question: 'Where should I eat in Playa del Carmen?',
+          answer: 'Tacos: El Fogón, Honorio. Ceviche: El Oasis Mariscos. Breakfast: La Cueva del Chango. Upscale: Alux (in cave!), Axiote. Avoid Fifth Avenue (touristy/expensive). Walk to Calle 30-38 for local restaurants. Food tours show best spots!',
+        },
+        {
+          question: 'Is Playa del Carmen food safe?',
+          answer: 'Generally safe! Stick to busy restaurants with fresh ingredients. Avoid ice in sketchy places. Street food from busy stalls (high turnover = fresh) safe. Bottled water only. Most visitors have no issues. Use judgment - busy places = safe!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Walking food tours: $60-95 (3-4 hours, 6-8 tastings). Cooking classes: $75-120. Tequila tastings: $50-80. Tours replace meals - good value! Budget: Eat at local stands ($3-8/meal). Mix tours and DIY for best experience.',
+        },
+        {
+          question: 'What is Yucatecan food?',
+          answer: 'Yucatecan cuisine uses achiote (red seasoning), citrus, and unique techniques. Cochinita pibil (pork), poc chuc (grilled meat), panuchos, salbutes. Different from mainland Mexican food! Mayan influences. Less spicy, more citrus. Essential to try!',
+        },
+        {
+          question: 'Are there vegetarian options?',
+          answer: 'Yes! Quesadillas, vegetable tacos, elote (corn), guacamole, bean-based dishes. Communicate dietary needs. International restaurants (Italian, Japanese) have options. Easier than rural Mexico but less variety than vegan-friendly cities. Possible with planning!',
+        },
+        {
+          question: 'What should I drink in Playa?',
+          answer: 'Mezcal (artisanal, smoky), tequila (blanco/reposado), micheladas (beer cocktail), fresh juices (jamaica, horchata), coconut water fresh from coconut! Margaritas at beach clubs. Bottled water only. Coffee culture growing - good cafes on Fifth Avenue.',
+        },
+        {
+          question: 'Can you eat street food safely?',
+          answer: 'Yes if smart! Choose busy stands (high turnover = fresh), avoid suspicious looking food, skip ice/raw vegetables if unsure. Tacos, quesadillas from grill safe. Ceviche from good spots fine. Millions eat street food safely - use judgment!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Lunch (11 AM-2 PM) or dinner (6-9 PM) tours available. Taco stands busiest evenings. Seafood freshest at lunch. Year-round! Tours run daily. Come moderately hungry - you\'ll eat a lot! Book ahead for popular tours.',
+        },
+      ],
+    },
+
+    'water-sports': {
+      title: 'Playa del Carmen Water Sports',
+      subtitle: 'Experience kitesurfing, paddleboarding, jet skiing, and Caribbean action!',
+      categoryName: 'Water Sports',
+      
+      stats: {
+        toursAvailable: 86,
+        priceFrom: 55,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience Playa del Carmen's incredible water sports - perfect conditions year-round! Water sports tours offer kitesurfing lessons (steady winds!), stand-up paddleboarding, jet skiing, parasailing, flyboarding, windsurfing, and sea kayaking. Explore Caribbean waters with professional instruction, rent equipment, join group activities, or book private lessons. Visit dedicated kitesurf beaches north of Playa, paddleboard calm waters, jet ski along coastline, or parasail for aerial views. Tours include equipment, safety gear, instruction, and insurance. Learn about ocean conditions, safety protocols, and progress from beginner to confident. It's aquatic adventure!`,
+
+      seo: {
+        title: 'Playa del Carmen Water Sports 2025 - Kitesurfing, Paddleboarding & Caribbean Action',
+        description: 'Experience Playa water sports! Kitesurfing, jet skiing, and Caribbean aquatic adventures!',
+        keywords: 'Playa del Carmen water sports, kitesurfing Playa, paddleboarding, jet ski Playa, parasailing',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Perfect Conditions',
+          description: 'Steady winds, warm water, calm areas - ideal for water sports!',
+        },
+        {
+          icon: 'Star',
+          title: 'Kitesurfing Capital',
+          description: 'Consistent winds and shallow waters - learning paradise!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Year-Round Activity',
+          description: 'Warm water (78-82°F) allows sports every day!',
+        },
+        {
+          icon: 'Sun',
+          title: 'All Skill Levels',
+          description: 'Beginner lessons to advanced - equipment rental available!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Waves',
+          title: 'Kitesurfing Lesson',
+          description: 'Learn kiteboarding with certified IKO instructors.',
+          features: [
+            '3 hours',
+            'Instruction',
+            'Equipment',
+            'Shallow water',
+            'Thrilling',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Paddleboard Tour',
+          description: 'SUP along coast or mangroves with guide.',
+          features: [
+            '2 hours',
+            'Paddleboard',
+            'Scenic',
+            'Relaxing',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Jet Ski Adventure',
+          description: 'Ride jet ski along Caribbean coastline.',
+          features: [
+            '1-2 hours',
+            'Jet ski rental',
+            'Coastal tour',
+            'Fast',
+            'Exciting',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Parasailing',
+          description: 'Soar above Caribbean with aerial beach views.',
+          features: [
+            '1 hour',
+            'Aerial views',
+            'Tandem option',
+            'Scenic',
+            'Memorable',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Playa del Carmen Water Sports',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Lessons: 2-3 hours. Jet ski: 1-2 hours. Parasailing: 1 hour. Rentals: Flexible.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Kitesurfing',
+            description: 'Steady winds (12-20 knots), shallow lagoons north of Playa - perfect learning!',
+          },
+          {
+            icon: 'Star',
+            title: 'Paddleboarding',
+            description: 'Calm waters perfect for SUP - beginners learn quickly!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Jet Skiing',
+            description: 'Ride along coast or to nearby spots - thrilling and fast!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Parasailing Views',
+            description: 'Soar 300+ feet above Caribbean - incredible aerial photos!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Professional Instruction',
+            description: 'Certified instructors for safe learning and progression.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Kitesurfing: November-March best winds. Book lessons in advance!',
+        'SUP morning calm (7-9 AM) or sunset (5-7 PM) - beautiful and less windy.',
+        'Jet ski tours more fun than solo rental - guides show best spots.',
+        'Parasailing tandem option available - fly with partner or kid!',
+        'Water sports north of Playa (near Mayakoba) have calmer conditions.',
+        'Equipment quality matters - book reputable operators.',
+        'Many hotels/beach clubs offer water sports - compare prices.',
+        'Bring waterproof camera or GoPro - capture the action!',
+      ],
+
+      faqs: [
+        {
+          question: 'Can you kitesurf in Playa del Carmen?',
+          answer: 'Yes! Playa is kitesurfing hotspot - steady winds (Nov-March especially), shallow lagoons, professional schools. Lessons $180-250 (3 hours). Rental for experienced: $60-80/day. Head to beaches north of Playa (Punta Venado). Beginners learn quickly in perfect conditions!',
+        },
+        {
+          question: 'Is Playa good for paddleboarding?',
+          answer: 'Excellent! Calm Caribbean waters, warm temperatures, scenic coastline. Beginner-friendly! Lessons $45-65 (2 hours). Rental: $20-30/hour. Morning or sunset best (calmer winds). SUP to snorkel spots possible. Very accessible - easy to learn!',
+        },
+        {
+          question: 'How much do water sports cost?',
+          answer: 'Kitesurfing lesson: $180-250. SUP lesson: $45-65. Jet ski: $70-120/hour. Parasailing: $80-100 (10-15 min). Snorkel equipment: $10-15/day. Private lessons more expensive. Shop around - prices vary. Budget accordingly!',
+        },
+        {
+          question: 'Do you need certification for water sports?',
+          answer: 'No for most! Kitesurfing, SUP, jet ski, parasailing: No cert needed, lessons/rental available. Scuba diving: Certification required (or discovery dive with instructor). Beginner-friendly - most activities accessible to everyone!',
+        },
+        {
+          question: 'Is it safe?',
+          answer: 'Very safe with professional operators! Life jackets provided, instructors certified, safety briefings given. Ocean conditions generally calm. Follow instructions, use reputable companies. Millions participate safely. Kitesurfing/jet ski carry inherent risks but very manageable!',
+        },
+        {
+          question: 'When is the best time for water sports?',
+          answer: 'Kitesurfing: November-March (best winds). SUP/jet ski: Year-round, morning calm. Parasailing: Year-round when winds moderate. Summer warm but sometimes too windy for some activities. Winter ideal for most. Morning generally best conditions!',
+        },
+        {
+          question: 'Can beginners try water sports?',
+          answer: 'Absolutely! SUP, parasailing, jet ski easy for beginners. Kitesurfing requires lessons but Playa has best learning conditions globally - shallow water, steady winds. Most activities beginner-friendly with instruction. Don\'t be intimidated - try them!',
+        },
+        {
+          question: 'What should I bring?',
+          answer: 'Swimsuit, reef-safe sunscreen, water shoes, towel, waterproof phone case/camera, change of clothes. Most activities provide life jackets and equipment. Cash for tips. Rashguard for sun protection during longer activities. Come ready for water!',
+        },
+      ],
+    },
+
+    'adventure-tours': {
+      title: 'Playa del Carmen Adventure Tours',
+      subtitle: 'Experience zip-lining, ATVs, jungle expeditions, and adrenaline rush!',
+      categoryName: 'Adventure Tours',
+      
+      stats: {
+        toursAvailable: 108,
+        priceFrom: 85,
+        duration: '4-8 hours',
+      },
+
+      introduction: `Discover Riviera Maya's adventure parks and jungle experiences! Adventure tours explore jungle zip-lining (soar through canopy!), ATV rides through Mayan villages, underground river swimming, rappelling into cenotes, jungle hiking, and adrenaline-packed eco-parks. Visit parks like Xplor (zip-lines, amphibious vehicles, rafts!), Selvatica (longest zip-line in Riviera Maya!), Aventuras Mayas, and jungle reserves. Tours combine multiple activities - zip-lining, cenote swimming, Mayan village visits, authentic lunch, and cultural experiences. Learn about jungle ecology, Mayan culture, sustainable tourism, and wildlife. It's adrenaline and nature combined!`,
+
+      seo: {
+        title: 'Playa del Carmen Adventure Tours 2025 - Zip-Lining, ATVs & Jungle Expeditions',
+        description: 'Experience Playa adventure! Zip-lining, ATV jungle rides, and adrenaline tours!',
+        keywords: 'Playa del Carmen adventure tours, zip-lining Playa, ATV tours, Xplor, jungle tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Jungle Zip-Lining',
+          description: 'Soar through tropical canopy - thrilling and scenic!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Adventure Parks',
+          description: 'Xplor, Selvatica - multiple activities in one location!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'ATV Jungle Rides',
+          description: 'Ride through Mayan villages and dirt roads - exciting!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Cenote Swimming',
+          description: 'Combine adrenaline with refreshing cenote dips!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Xplor Adventure Park',
+          description: 'All-inclusive park with zip-lines, vehicles, rafts.',
+          features: [
+            'Full day',
+            'All activities',
+            'Buffet included',
+            'Popular',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'ATV & Cenote Combo',
+          description: 'Ride ATVs through jungle then swim in cenote.',
+          features: [
+            '4-5 hours',
+            'ATV riding',
+            'Cenote swim',
+            'Jungle',
+            'Exciting',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Zip-Line Canopy Tour',
+          description: 'Multiple zip-lines through jungle with rappelling.',
+          features: [
+            '3-4 hours',
+            'Zip-lining',
+            'Rappelling',
+            'Thrilling',
+            'Scenic',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Jungle Expedition',
+          description: 'Combine zip-line, rappel, cenote, Mayan village.',
+          features: [
+            '6-8 hours',
+            'Multiple activities',
+            'Cultural',
+            'Full day',
+            'Adventure',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Playa del Carmen Adventure Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Adventure parks: Full day. ATV/zip-line combos: 4-6 hours with transport.',
+          },
+          {
+            icon: 'Star',
+            title: 'Jungle Zip-Lining',
+            description: 'Multi-platform zip-lines soaring through canopy - safe and thrilling!',
+          },
+          {
+            icon: 'Heart',
+            title: 'ATV Riding',
+            description: 'Muddy jungle trails through Mayan communities - exciting off-road!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Cenote Rappelling',
+            description: 'Descend into cenotes on ropes - unique entry method!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Underground Rivers',
+            description: 'Swim through cave systems in crystal water - magical!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Mayan Villages',
+            description: 'Visit traditional communities and learn about culture.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Xplor ($140) best value - all activities, buffet, full day unlimited.',
+        'Selvatica has longest zip-lines in Riviera Maya - thrilling!',
+        'Wear closed-toe water shoes (required for most activities).',
+        'Bring change of clothes - you\'ll get wet and muddy!',
+        'GoPro or waterproof camera essential - capture the adventure!',
+        'Tours include hotel pickup (add 30-45 min travel time).',
+        'Morning tours cooler and less humid for jungle activities.',
+        'Minimum age restrictions (usually 5-6 years) - check before booking kids.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Xplor Park?',
+          answer: 'Xplor is all-inclusive adventure park near Playa - zip-lines (9 lines!), amphibious vehicles, underground rafts, cave swimming! $140 includes all activities and buffet. Full day recommended. Less crowded than Disney/Universal. Thrilling and worth it!',
+        },
+        {
+          question: 'Are adventure tours safe?',
+          answer: 'Very safe! Professional operators, safety gear (helmets, harnesses), guides, insurance included. Millions participate safely. Follow instructions, disclose health conditions. Activities carry inherent risks but very well-managed. Zip-lines have weight limits (usually 300 lbs max).',
+        },
+        {
+          question: 'Can kids do adventure tours?',
+          answer: 'Yes with age/weight restrictions! Most activities: Minimum 5-6 years old, 40+ lbs. Xplor: 5+ years. Zip-lining: Usually 6+. Check specific requirements. Many family-friendly options. Young kids: Stick to mild activities, avoid extreme zip-lines/ATVs.',
+        },
+        {
+          question: 'How much do adventure tours cost?',
+          answer: 'Xplor Park: $140 (all-inclusive). ATV + cenote: $85-120. Zip-line tours: $70-100. Selvatica: $120-150. Private tours: $200-350. Multi-activity combos best value. Budget accordingly - worth the experience!',
+        },
+        {
+          question: 'What should I wear?',
+          answer: 'Swimsuit (you\'ll get wet!), closed-toe water shoes (required!), athletic clothes, hat. Leave valuables at hotel. Bring change of dry clothes for after. Lockers provided ($5). Wear clothes you don\'t mind getting muddy!',
+        },
+        {
+          question: 'Do I need to be fit?',
+          answer: 'Moderate fitness sufficient for most activities! Zip-lining not strenuous (harnesses do work). ATVs easy to drive. Some hiking involved. Weight limits exist (usually 300 lbs). Inform of health conditions. Most adventures accessible to average fitness!',
+        },
+        {
+          question: 'What is the best adventure tour?',
+          answer: 'Xplor Park best value (all-inclusive, multiple activities). Selvatica best zip-lines (longest!). ATV + cenote combos popular balance. Choose based on priorities: Zip-lines, ATVs, or variety. All excellent - can\'t go wrong!',
+        },
+        {
+          question: 'When is the best time for adventure tours?',
+          answer: 'Year-round! Morning tours (8-9 AM) cooler for jungle activities. Dry season (Nov-April) less muddy. Summer hotter but fine with water activities. Avoid midday heat if possible. Book ahead for weekends and peak season!',
+        },
+      ],
+    },
+  },
 };
 
