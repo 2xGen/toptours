@@ -3299,12 +3299,12 @@ export const destinations = [
     heroDescription: 'Welcome to San Francisco, where the iconic Golden Gate Bridge meets innovative tech culture and diverse neighborhoods create a unique urban tapestry. From the historic cable cars to the vibrant Mission District, from world-class dining to stunning bay views, this hilly city offers the perfect blend of history, innovation, and California charm. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//San%20Francisco.jpeg',
     tourCategories: [
-      'Golden Gate Bridge Tours',
-      'Alcatraz Tours',
-      'Cable Car Tours',
-      'Food & Culture Tours',
-      'Neighborhood Tours',
-      'Bay Tours'
+      { name: 'Golden Gate Bridge Tours', hasGuide: true },
+      { name: 'Alcatraz Tours', hasGuide: true },
+      { name: 'Cable Car Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Neighborhood Tours', hasGuide: true },
+      { name: 'Bay Tours', hasGuide: true }
     ],
     seo: {
       title: 'San Francisco Tours & Excursions - Top-Rated Activities & Adventures',
@@ -3684,12 +3684,12 @@ export const destinations = [
     heroDescription: 'Welcome to Sedona, where stunning red rock formations create a spiritual sanctuary and outdoor adventures abound in every direction. From the iconic Cathedral Rock to ancient Native American sites, from world-class hiking to spiritual retreats, this mystical destination offers the perfect blend of natural wonder, cultural heritage, and spiritual energy. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Sedona.jpg',
     tourCategories: [
-      'Red Rock Tours',
-      'Spiritual Tours',
-      'Hiking & Adventure Tours',
-      'Native American Tours',
-      'Photography Tours',
-      'Nature Tours'
+      { name: 'Red Rock Tours', hasGuide: true },
+      { name: 'Spiritual Tours', hasGuide: true },
+      { name: 'Hiking & Adventure Tours', hasGuide: true },
+      { name: 'Native American Tours', hasGuide: true },
+      { name: 'Photography Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true }
     ],
     seo: {
       title: 'Sedona Tours & Excursions - Top-Rated Activities & Adventures',
@@ -3959,12 +3959,12 @@ export const destinations = [
     heroDescription: 'Welcome to Quebec City, where cobblestone streets and historic fortifications transport you to old Europe in the heart of North America. From the iconic Château Frontenac to the charming Old Quebec, from authentic French cuisine to rich cultural heritage, this UNESCO World Heritage site offers the perfect blend of European elegance and Canadian warmth. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Quebec%20City.webp',
     tourCategories: [
-      'Old Quebec Tours',
-      'Château Frontenac Tours',
-      'Historical Tours',
-      'Food & Culture Tours',
-      'Fortification Tours',
-      'Architecture Tours'
+      { name: 'Old Quebec Tours', hasGuide: true },
+      { name: 'Château Frontenac Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Fortification Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Quebec City Tours & Excursions - Top-Rated Activities & Adventures',

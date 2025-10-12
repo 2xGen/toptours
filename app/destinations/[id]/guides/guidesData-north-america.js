@@ -19047,5 +19047,183 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  'quebec-city': {
+    'old-quebec-tours': {
+      title: 'Quebec City Old Quebec Tours',
+      subtitle: 'Explore UNESCO World Heritage walled city with European charm!',
+      categoryName: 'Old Quebec Tours',
+      
+      stats: {
+        toursAvailable: 72,
+        priceFrom: 45,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Old Quebec - only fortified city north of Mexico and UNESCO World Heritage Site! Old Quebec tours explore Upper Town (Haute-Ville with Château Frontenac!) and Lower Town (Basse-Ville with Place Royale), cobblestone streets, 400-year-old buildings, historic gates, charming squares, and French colonial architecture. Walk through Quartier Petit Champlain (oldest commercial district in North America!), visit Notre-Dame de Québec Basilica-Cathedral, explore ramparts, and experience living European history. Tours include French heritage stories, British conquest history, and modern Quebec identity. It's Europe in North America!`,
+
+      seo: {
+        title: 'Quebec City Old Quebec Tours 2025 - UNESCO Heritage & Historic Walled City',
+        description: 'Explore Old Quebec! Walled city, cobblestone streets, and European charm in Canada!',
+        keywords: 'Old Quebec tours, Quebec City historic, UNESCO Quebec, Petit Champlain, walled city Quebec',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'UNESCO World Heritage',
+          description: 'Only fortified city in North America - extraordinary preservation!',
+        },
+        {
+          icon: 'Heart',
+          title: 'European Atmosphere',
+          description: 'Feels like France - cobblestones, cafes, French language!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Château Frontenac',
+          description: 'Iconic castle-hotel - most photographed hotel globally!',
+        },
+        {
+          icon: 'BookOpen',
+          title: '400 Years History',
+          description: 'Founded 1608 - North America\'s oldest European settlement!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Upper & Lower Town Walk',
+          description: 'Explore both historic levels with guide.',
+          features: [
+            '2-3 hours',
+            'Both levels',
+            'History',
+            'Architecture',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Petit Champlain Tour',
+          description: 'Explore charming Lower Town shopping district.',
+          features: [
+            '90 minutes',
+            'Shopping street',
+            'Boutiques',
+            'Cafes',
+            'Charming',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Ramparts Walking Tour',
+          description: 'Walk fortification walls with city views.',
+          features: [
+            '2 hours',
+            'City walls',
+            'Panoramic views',
+            'Historic',
+            'Scenic',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tour',
+          description: 'Capture Old Quebec\'s most photogenic spots.',
+          features: [
+            '3 hours',
+            'Photo-focused',
+            'Best angles',
+            'Golden hour',
+            'Instagram',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Quebec City Old Quebec Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Ramparts: 2 hours. Full exploration: Half-day minimum.',
+          },
+          {
+            icon: 'Star',
+            title: 'Château Frontenac',
+            description: 'Iconic castle-hotel overlooking St. Lawrence River - photograph from every angle!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Petit Champlain',
+            description: 'North America\'s oldest commercial street - boutiques, cafes, charm!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Place Royale',
+            description: 'Where Quebec began in 1608 - historic square in Lower Town!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Fortifications',
+            description: 'Walk 4.6 km of ramparts surrounding Upper Town - only in North America!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'French Heritage',
+            description: 'French spoken, European architecture, Parisian atmosphere - unique in North America!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Funicular ($3.50) connects Upper and Lower Towns - saves steep walk!',
+        'Upper Town: Château Frontenac, Dufferin Terrace, ramparts. Lower Town: Petit Champlain, Place Royale.',
+        'Petit Champlain magical with lights - evening visit recommended!',
+        'Free to explore but tours provide history and navigate efficiently.',
+        'Winter (Dec-Feb): Snowy European Christmas atmosphere - gorgeous!',
+        'Summer (June-Aug): Festivals, warm weather, most crowded.',
+        'Wear comfortable shoes - lots of cobblestones and stairs!',
+        'Many signs in French only - tours help with navigation.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Old Quebec?',
+          answer: 'Old Quebec is historic walled city - only fortified city north of Mexico! Upper Town (Haute-Ville) and Lower Town (Basse-Ville) both UNESCO World Heritage Sites. Founded 1608 - oldest European settlement in North America. French language, European architecture. Absolutely unique!',
+        },
+        {
+          question: 'How long to explore Old Quebec?',
+          answer: 'Minimum half-day (3-4 hours) for highlights. Full day (6-8 hours) for thorough exploration including museums and shopping. You could spend days! Most tours: 2-3 hours. Plan half-day minimum - it\'s extensive and charming!',
+        },
+        {
+          question: 'Can you walk Old Quebec yourself?',
+          answer: 'Absolutely! Compact and pedestrian-friendly. However, tours provide historical context, French heritage stories, and navigate steep terrain efficiently. First-timers: Tour recommended. Return visitors: Explore freely. Both work well!',
+        },
+        {
+          question: 'Is Old Quebec safe?',
+          answer: 'Extremely safe! One of Canada\'s safest cities. Tourist-friendly, police presence, well-lit. Evening safe - families everywhere. Quebec City has very low crime. Winter: Icy sidewalks (wear proper boots!). Otherwise, very safe destination!',
+        },
+        {
+          question: 'Do you need to speak French?',
+          answer: 'Helpful but not required! Most tourism workers speak English. Many locals prefer French but accommodate English speakers. Basic French phrases appreciated. It\'s French-speaking city but tourist-friendly. Knowing "Bonjour!" and "Merci!" goes far!',
+        },
+        {
+          question: 'What is the funicular?',
+          answer: 'Funicular is cliff railway connecting Upper and Lower Towns (saves steep walk/stairs!). $3.50 each way or included in some passes. Operating since 1879 - historic itself! Optional (stairs free) but worth it for convenience. Runs year-round.',
+        },
+        {
+          question: 'When is the best time to visit Old Quebec?',
+          answer: 'Winter Carnival (Feb): Snowy magic, ice palace, festivities! Summer (June-Aug): Warm, festivals, most crowded. Fall (Sept-Oct): Foliage, fewer crowds. Christmas season: European markets, lights! Each season beautiful - winter most unique experience!',
+        },
+        {
+          question: 'How much do Old Quebec tours cost?',
+          answer: 'Walking tours: $45-70 (2-3 hours). Free walking tours (tip-based). Food tours: $75-100. Private: $200-350. Many sites FREE to see - tours add historical context. Budget-friendly with DIY option!',
+        },
+      ],
+    },
+  },
 };
 
