@@ -22574,6 +22574,710 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'food-and-culture-tours': {
+      title: 'Toronto Food & Culture Tours',
+      subtitle: 'Taste diverse cuisines, markets, and multicultural neighborhoods!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 86,
+        priceFrom: 70,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Toronto's incredible food diversity - most multicultural city in world! Food tours explore Kensington Market (bohemian foodie paradise!), St. Lawrence Market (historic since 1803!), Chinatown (authentic dim sum!), Little Italy (pasta perfection!), Greek Town (Danforth Avenue!), and countless ethnic neighborhoods. Sample peameal bacon sandwiches (Toronto classic!), butter tarts (Canadian tradition!), BeaverTails (fried dough!), poutine, international cuisines, craft breweries, and diverse street food. Tours include neighborhood exploration, cultural education, chef-led experiences, and market visits. It's global cuisine without leaving city!`,
+
+      seo: {
+        title: 'Toronto Food & Culture Tours 2025 - Markets, Neighborhoods & Diverse Cuisine',
+        description: 'Taste Toronto! Food tours, St. Lawrence Market, and multicultural cuisine!',
+        keywords: 'Toronto food tours, St. Lawrence Market, Kensington Market, Toronto restaurants, food tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Most Multicultural',
+          description: 'Over 200 ethnic groups - authentic global cuisine!',
+        },
+        {
+          icon: 'Star',
+          title: 'St. Lawrence Market',
+          description: 'Best food market in world (National Geographic!)',
+        },
+        {
+          icon: 'Users',
+          title: 'Neighborhood Diversity',
+          description: 'Little Italy, Chinatown, Greektown - authentic cultures!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Canadian Specialties',
+          description: 'Peameal bacon, poutine, butter tarts - uniquely Toronto!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'St. Lawrence Market Tour',
+          description: 'Historic market with vendors and tastings.',
+          features: [
+            '3 hours',
+            'Market visit',
+            '6-8 tastings',
+            'Saturday best',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Kensington Market Walk',
+          description: 'Bohemian neighborhood with diverse eateries.',
+          features: [
+            '3 hours',
+            'Hipster vibe',
+            'Eclectic',
+            'Food + culture',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Neighborhood Food Tour',
+          description: 'Visit Little Italy, Chinatown, or Greektown.',
+          features: [
+            '3-4 hours',
+            'Ethnic cuisine',
+            'Authentic',
+            'Cultural',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Craft Brewery Tour',
+          description: 'Sample Toronto\'s booming craft beer scene.',
+          features: [
+            '3 hours',
+            'Breweries',
+            'Tastings',
+            'Local',
+            'Fun',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Toronto Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Star',
+            title: 'St. Lawrence Market',
+            description: 'Historic market (1803!) - peameal bacon, cheese, produce, baked goods!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Peameal Bacon',
+            description: 'Toronto classic - back bacon rolled in cornmeal, grilled, in sandwich!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Ethnic Diversity',
+            description: 'Chinese, Italian, Greek, Indian, Caribbean - authentic global cuisine!',
+          },
+          {
+            icon: 'Users',
+            title: 'Kensington Market',
+            description: 'Bohemian neighborhood - vintage shops, diverse food, multicultural!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Canadian Foods',
+            description: 'Butter tarts, poutine, Nanaimo bars - uniquely Canadian treats!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'St. Lawrence Market Saturday (farmers market) best day - arrive early!',
+        'Kensington Market pedestrian Sundays summer - perfect for walking.',
+        'Peameal bacon sandwich from Carousel Bakery (St. Lawrence) - iconic!',
+        'Chinatown on Spadina authentic - dim sum weekends crowded (worth it!).',
+        'Greektown (Danforth) best for dinner - patio season magical.',
+        'Distillery District has restaurants/cafes in historic setting.',
+        'Toronto food scene dynamic - tours show spots you\'d miss.',
+        'Come hungry - tours generous with portions!',
+      ],
+
+      faqs: [
+        {
+          question: 'What food is Toronto known for?',
+          answer: 'Peameal bacon sandwich (cornmeal-crusted back bacon), diverse ethnic cuisines (most multicultural city!), poutine, butter tarts, BeaverTails (fried dough), bagels (Montreal-style from Toronto shops). Global food capital - over 200 ethnic groups represented!',
+        },
+        {
+          question: 'What is St. Lawrence Market?',
+          answer: 'Historic market since 1803 - best food market in world (National Geographic 2012)! Peameal bacon, cheese, produce, bakers, butchers. Saturday farmers market amazing. Tuesday-Saturday hours. Carousel Bakery peameal bacon legendary. Essential Toronto experience!',
+        },
+        {
+          question: 'Where should I eat in Toronto?',
+          answer: 'St. Lawrence Market (Carousel Bakery!). Kensington Market (diverse). Chinatown dim sum (Rol San, Crown Princess). Little Italy (College St). Greektown (Danforth). Distillery District (upscale). Food tours navigate options - Toronto has 10,000+ restaurants!',
+        },
+        {
+          question: 'What is peameal bacon?',
+          answer: 'Toronto classic - Canadian back bacon rolled in cornmeal (originally peameal!), grilled, served in kaiser roll. NOT American crispy bacon! Tender, lean, unique. Carousel Bakery in St. Lawrence Market invented sandwich. $8. Must-try Toronto food!',
+        },
+        {
+          question: 'Is Kensington Market worth visiting?',
+          answer: 'YES! Bohemian neighborhood with vintage shops, diverse food (Jamaican, Chinese, Mexican, vegan), multicultural vibe. Pedestrian Sundays summer. Hipster/artistic feel. Different from typical Toronto. Great for wandering and eating. 2-3 hours sufficient.',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Walking food tours: $70-110 (3-4 hours, 6-8 tastings). Market tours: $75-95. Neighborhood tours: $80-120. Brewery tours: $70-90. Tours replace meals - good value for variety and avoiding tourist traps!',
+        },
+        {
+          question: 'Are there vegetarian/vegan options?',
+          answer: 'Excellent! Toronto very vegan-friendly. Kensington Market has vegan vendors. Ethiopian, Indian, Chinese cuisines offer veggie options. Dedicated vegan restaurants abundant. Food tours accommodate dietary restrictions - mention when booking!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! St. Lawrence Market: Saturday (farmers market). Kensington: Sunday (pedestrian). Lunch (12-3 PM) or dinner (6-9 PM) tours. Summer: Patio season beautiful. Winter: Comfort food perfect! Any season offers excellent eating!',
+        },
+      ],
+    },
+
+    'neighborhood-tours': {
+      title: 'Toronto Neighborhood Tours',
+      subtitle: 'Explore diverse districts: Kensington, Distillery, Yorkville, and more!',
+      categoryName: 'Neighborhood Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 55,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Toronto's distinct neighborhoods - mosaic of cultures and communities! Neighborhood tours explore Kensington Market (bohemian charm!), Distillery District (Victorian industrial chic!), Yorkville (luxury and elegance!), Queen West (arts and culture!), Graffiti Alley (street art!), Little Italy, Chinatown, Greektown, and The Beaches. Experience local culture, historic significance, street art, diverse communities, and authentic neighborhood life beyond tourist areas. Tours include cultural education, food tastings, historical context, and local insights. It's Toronto diversity!`,
+
+      seo: {
+        title: 'Toronto Neighborhood Tours 2025 - Kensington, Distillery & Diverse Districts',
+        description: 'Explore Toronto neighborhoods! Kensington Market, Distillery District, and diverse communities!',
+        keywords: 'Toronto neighborhoods, Kensington Market, Distillery District, Queen West, Toronto districts',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Cultural Mosaic',
+          description: 'Each neighborhood completely different - incredible diversity!',
+        },
+        {
+          icon: 'Star',
+          title: 'Distillery District',
+          description: 'Historic Victorian buildings now arts/dining destination!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Graffiti Alley',
+          description: 'Largest outdoor gallery in Canada - colorful street art!',
+        },
+        {
+          icon: 'Users',
+          title: 'Authentic Communities',
+          description: 'Experience real Toronto beyond tourist attractions!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Kensington Market Tour',
+          description: 'Bohemian neighborhood with vintage and food.',
+          features: [
+            '2-3 hours',
+            'Eclectic',
+            'Multicultural',
+            'Shopping',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Distillery District Walk',
+          description: 'Victorian industrial buildings now cultural hub.',
+          features: [
+            '2 hours',
+            'Historic',
+            'Arts',
+            'Dining',
+            'Photogenic',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Street Art Tour',
+          description: 'Graffiti Alley and urban art exploration.',
+          features: [
+            '2 hours',
+            'Street art',
+            'Queen West',
+            'Colorful',
+            'Instagram',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Multi-Neighborhood Tour',
+          description: 'Visit 2-3 diverse neighborhoods in one day.',
+          features: [
+            '4-5 hours',
+            'Multiple areas',
+            'Comprehensive',
+            'Cultural',
+            'Full day',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Toronto Neighborhood Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours per neighborhood. Multi-neighborhood: 4-5 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Kensington Market',
+            description: 'Bohemian vibe - vintage shops, diverse food, multicultural community!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Distillery District',
+            description: 'Victorian industrial buildings (1832!) - galleries, restaurants, cobblestones!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Graffiti Alley',
+            description: 'Rush Lane - constantly changing street art, Instagram paradise!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Queen West',
+            description: 'Arts district - galleries, independent shops, trendy restaurants!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural History',
+            description: 'Learn about immigration waves and multicultural development.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Kensington Market pedestrian Sundays (summer) - best for walking.',
+        'Distillery District free to visit - restaurants/shops inside pricy.',
+        'Graffiti Alley constantly changes - artists update regularly.',
+        'Queen West better for shopping than touristy Eaton Centre.',
+        'Yorkville luxury shopping - Bloor Street "Mink Mile" (expensive!).',
+        'The Beaches (east) boardwalk perfect summer - beach in city!',
+        'Each neighborhood needs 2-3 hours - choose based on interests.',
+        'Public transit connects all neighborhoods - TTC easy to use.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Kensington Market?',
+          answer: 'Bohemian neighborhood with vintage shops, diverse food vendors, multicultural community! Pedestrian Sundays summer. Hipster/artistic vibe. Cheese shops, vintage clothing, global cuisine. National Historic Site. Different from typical Toronto - authentic and quirky!',
+        },
+        {
+          question: 'Is Distillery District free?',
+          answer: 'FREE to visit! Victorian industrial buildings (1832-1921) now galleries, restaurants, shops. Cobblestone streets, historic architecture. Restaurants/shops charge but wandering free. Beautiful for photos. 1-2 hours walking. Close to downtown. Worth visiting!',
+        },
+        {
+          question: 'Where is Graffiti Alley?',
+          answer: 'Rush Lane in Fashion District (Queen St W & Spadina area). Largest outdoor gallery in Canada! Constantly changing street art - artists update regularly. FREE to see. Instagram paradise. 15 min walk through alley. Best street art in Toronto!',
+        },
+        {
+          question: 'What neighborhood should I visit?',
+          answer: 'Must-see: Distillery District (historic/pretty), Kensington Market (quirky/multicultural). Also: Queen West (arts), Yorkville (luxury), Chinatown (authentic), Greektown (dining). Each offers different vibe. Tours provide context - DIY also works!',
+        },
+        {
+          question: 'What is Queen West?',
+          answer: 'Queen Street West is arts district - galleries, independent boutiques, trendy restaurants, Graffiti Alley! Hipster vibe. Better shopping than malls. Trinity Bellwoods Park nearby. West of downtown. 2-3 hours for walking/shopping/eating.',
+        },
+        {
+          question: 'How much do neighborhood tours cost?',
+          answer: 'Walking tours: $55-80 (2-3 hours). Multi-neighborhood: $90-130. Graffiti Alley/Food combos: $75-110. Free walking tours (tip-based) available. Public transit cheap ($3.35/ride). Budget-friendly with DIY option!',
+        },
+        {
+          question: 'Can you explore neighborhoods yourself?',
+          answer: 'Absolutely! TTC (subway/streetcar) connects all neighborhoods. However, tours provide cultural history, street art explanations, local spots. First-timers: Tours recommended for context. Return visitors: Explore freely. Both work!',
+        },
+        {
+          question: 'When is the best time for neighborhood tours?',
+          answer: 'Summer (June-Sept): Patios open, festivals, pedestrian Sundays Kensington! Fall (Sept-Oct): Beautiful weather, fewer tourists. Year-round operation. Weekends busier. Each season offers different neighborhood energy!',
+        },
+      ],
+    },
+
+    'lake-ontario-tours': {
+      title: 'Toronto Lake Ontario Tours',
+      subtitle: 'Cruise harbourfront, visit islands, and enjoy waterfront activities!',
+      categoryName: 'Lake Ontario Tours',
+      
+      stats: {
+        toursAvailable: 52,
+        priceFrom: 35,
+        duration: '1-4 hours',
+      },
+
+      introduction: `Experience Toronto's stunning waterfront - Lake Ontario defines the city! Lake tours explore Toronto Islands (car-free oasis!), harbour cruises, waterfront trails, Harbourfront Centre (festivals and culture!), and beaches. Take ferry to Toronto Islands for skyline views, bike paths, Centre Island amusement park, and sandy beaches. Cruise harbour seeing CN Tower from water, explore Harbourfront cultural venues, walk Martin Goodman Trail, and enjoy lakeside dining. Tours include ferry tickets, boat cruises, and waterfront exploration. It's urban beach paradise!`,
+
+      seo: {
+        title: 'Toronto Lake Ontario Tours 2025 - Toronto Islands, Harbour Cruises & Waterfront',
+        description: 'Explore Toronto waterfront! Toronto Islands, lake cruises, and harbourfront activities!',
+        keywords: 'Toronto Islands, Lake Ontario tours, Toronto harbour cruises, waterfront Toronto, Toronto ferry',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Toronto Islands',
+          description: 'Car-free paradise with beaches and skyline views!',
+        },
+        {
+          icon: 'Star',
+          title: 'Harbour Cruises',
+          description: 'See CN Tower and skyline from water - spectacular!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Beaches in City',
+          description: 'Sandy beaches within city limits - unique urban oasis!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Waterfront Trail',
+          description: '56km lakeside path - biking, walking, rollerblading!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Toronto Islands Ferry',
+          description: 'Visit car-free islands with beaches and views.',
+          features: [
+            '3-4 hours',
+            'Ferry',
+            'Beaches',
+            'Biking',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Harbour Cruise',
+          description: 'Boat tour of Toronto harbour and waterfront.',
+          features: [
+            '1-2 hours',
+            'Boat cruise',
+            'Skyline views',
+            'Narrated',
+            'Scenic',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Sunset Cruise',
+          description: 'Evening sail with city lights coming on.',
+          features: [
+            '2 hours',
+            'Sunset',
+            'Romantic',
+            'Dinner option',
+            'Beautiful',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Waterfront Bike Tour',
+          description: 'Cycle Martin Goodman Trail along lake.',
+          features: [
+            '3 hours',
+            'Bike rental',
+            'Waterfront',
+            'Active',
+            'Refreshing',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Toronto Lake Ontario Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Toronto Islands: 3-4 hours. Harbour cruise: 1-2 hours. Full waterfront day: 5-6 hours.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Toronto Islands',
+            description: 'Three islands - Centre (amusement park), Ward\'s (residential), Hanlan\'s (beach)!',
+          },
+          {
+            icon: 'Star',
+            title: 'Ferry Ride',
+            description: '15-min ferry from Jack Layton Terminal - best Toronto skyline views!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Beaches',
+            description: 'Sandy beaches, swimming (summer), picnic areas - urban paradise!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Skyline Views',
+            description: 'CN Tower from islands iconic - best city photo ops!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Harbourfront Centre',
+            description: 'Cultural venues, festivals, concerts - free events often!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Toronto Islands ferry ($9 round-trip) - Centre Island most popular.',
+        'Summer weekends Islands PACKED - go early or weekdays.',
+        'Bring picnic for islands - restaurants limited and pricey.',
+        'Bike rentals on islands ($15-30) - explore all three islands.',
+        'Centre Island amusement park extra ($40-50) - good for kids.',
+        'Hanlan\'s Point has clothing-optional section - FYI!',
+        'Last ferry back ~11 PM summer - don\'t miss it!',
+        'Waterfront Trail great for running/biking - 56km total.',
+      ],
+
+      faqs: [
+        {
+          question: 'How do you get to Toronto Islands?',
+          answer: 'Ferry from Jack Layton Ferry Terminal (Bay St & Queens Quay). 15-min ride, $9 round-trip. Three routes: Centre Island (most popular), Ward\'s Island, Hanlan\'s Point. Ferries every 15-30 min summer. No cars on islands - walking/biking only!',
+        },
+        {
+          question: 'How long to spend at Toronto Islands?',
+          answer: '3-4 hours minimum! Ferry + island time. Full day possible with beach, biking, picnic. Centre Island amusement park adds time. Budget half-day. Peaceful escape from city hustle. Don\'t rush - enjoy car-free tranquility!',
+        },
+        {
+          question: 'Can you swim at Toronto Islands?',
+          answer: 'Yes! Multiple beaches - Centre Island Beach, Ward\'s Island Beach, Hanlan\'s Point Beach. Swimming summer months (June-Sept). Water quality tested. Free beaches! Bring towel/sunscreen. Water chilly early summer. Beaches sandy and clean!',
+        },
+        {
+          question: 'Is Centre Island good for kids?',
+          answer: 'Excellent! Centreville Amusement Park ($40-50 admission) - antique carousel, rides, Far Enough Farm (petting zoo). Beaches, playgrounds, splash pads. Bike-friendly. Perfect family day. Summer weekends busy - go early!',
+        },
+        {
+          question: 'Do harbour cruises run year-round?',
+          answer: 'May-October mainly. Winter limited (some Christmas cruises). Summer (June-Aug): Daily departures, multiple times. Spring/fall: Reduced schedule. $35-45 for basic 1-hour cruise. Sunset cruises more expensive but beautiful. Book ahead summer!',
+        },
+        {
+          question: 'What is Harbourfront Centre?',
+          answer: 'Harbourfront Centre is lakefront cultural venue - galleries, theatre, concerts, festivals! Free events often. Open year-round. Winter: Skating rink. Summer: Concerts, markets. Great for wandering. Restaurants nearby. 30 min visit or full afternoon!',
+        },
+        {
+          question: 'Can you bike the waterfront?',
+          answer: 'Yes! Martin Goodman Trail runs 56km along waterfront. Flat, paved, scenic. Bike rentals throughout downtown ($20-40/day). Section from Harbourfront to Beaches popular. Perfect for casual cycling. Separate path from pedestrians. Safe and beautiful!',
+        },
+        {
+          question: 'When is the best time for waterfront?',
+          answer: 'Summer (June-Aug): Warm, swimming, full ferry service, festivals! Spring/fall: Beautiful, fewer crowds, cooler. Winter: Limited activities but pretty. Toronto Islands summer best. Harbour cruises May-Oct. Plan around warm weather for full experience!',
+        },
+      ],
+    },
+
+    'architecture-tours': {
+      title: 'Toronto Architecture Tours',
+      subtitle: 'Explore modern skyscrapers, historic buildings, and innovative design!',
+      categoryName: 'Architecture Tours',
+      
+      stats: {
+        toursAvailable: 48,
+        priceFrom: 60,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Toronto's architectural evolution - historic to ultra-modern! Architecture tours explore CN Tower (engineering icon!), ROM Crystal (Daniel Libeskind!), City Hall (Oscar Niemeyer-influenced!), Financial District skyscrapers, Gooderham Building (Flatiron!), Casa Loma (Gothic castle!), St. Lawrence Hall, and diverse building styles. Experience walking tours through architectural eras, Distillery District Victorian industrial, modern condo towers, heritage buildings, and innovative contemporary design. Tours include expert architects explaining styles, heritage preservation, and urban development. It's architectural time travel!`,
+
+      seo: {
+        title: 'Toronto Architecture Tours 2025 - Modern Design, Historic Buildings & Landmarks',
+        description: 'Explore Toronto architecture! CN Tower, ROM Crystal, and diverse building styles!',
+        keywords: 'Toronto architecture tours, CN Tower architecture, ROM Crystal, Toronto buildings, architectural tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Architectural Diversity',
+          description: 'Victorian, Art Deco, Modernist, contemporary - all eras!',
+        },
+        {
+          icon: 'Heart',
+          title: 'CN Tower',
+          description: 'Engineering marvel - iconic communication tower!',
+        },
+        {
+          icon: 'Camera',
+          title: 'ROM Crystal',
+          description: 'Daniel Libeskind\'s controversial addition - architectural landmark!',
+        },
+        {
+          icon: 'Users',
+          title: 'Rapid Development',
+          description: 'Condo boom transforming skyline - dynamic city!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Downtown Architecture Walk',
+          description: 'Explore Financial District and City Hall.',
+          features: [
+            '2-3 hours',
+            'Skyscrapers',
+            'City Hall',
+            'Walking',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Historic Buildings Tour',
+          description: 'Victorian and heritage architecture.',
+          features: [
+            '2-3 hours',
+            'Heritage',
+            'Distillery',
+            'Casa Loma',
+            'Historic',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Modern Architecture',
+          description: 'Contemporary towers and innovative design.',
+          features: [
+            '2 hours',
+            'Modern',
+            'ROM Crystal',
+            'Condos',
+            'Cutting-edge',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Architecture Tour',
+          description: 'Capture best buildings with expert.',
+          features: [
+            '3 hours',
+            'Photo-focused',
+            'Iconic buildings',
+            'Multiple styles',
+            'Instagram',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Toronto Architecture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Comprehensive: Half-day with interior access.',
+          },
+          {
+            icon: 'Star',
+            title: 'CN Tower',
+            description: '553m communications tower - Canadian engineering achievement (1976)!',
+          },
+          {
+            icon: 'Heart',
+            title: 'ROM Crystal',
+            description: 'Daniel Libeskind\'s angular addition (2007) - love it or hate it!',
+          },
+          {
+            icon: 'Camera',
+            title: 'City Hall',
+            description: 'Viljo Revell design (1965) - curved towers, UFO-like council chamber!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Financial District',
+            description: 'Modern skyscrapers - Bay Street (Canada\'s Wall Street)!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Heritage Preservation',
+            description: 'Victorian buildings amid modern towers - Toronto balancing old/new.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'City Hall and Nathan Phillips Square free to visit - iconic brutalist design.',
+        'ROM Crystal controversial but Toronto landmark - photograph from outside.',
+        'Gooderham Building (Flatiron) at Wellington & Front - mini NYC Flatiron!',
+        'Financial District weekdays busy - see business Toronto in action.',
+        'Distillery District best-preserved Victorian industrial in North America.',
+        'Casa Loma ($32) Gothic castle - unusual Toronto architecture.',
+        'Walking tours show buildings you\'d miss - guides explain significance.',
+        'PATH underground walkway (30km!) connects buildings - winter lifesaver.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Toronto\'s most famous building?',
+          answer: 'CN Tower! 553m communications tower, iconic skyline symbol. Engineering marvel (1976). Other notables: ROM Crystal (Daniel Libeskind), City Hall (Viljo Revell), Casa Loma (Gothic castle). CN Tower most recognized globally!',
+        },
+        {
+          question: 'What is the ROM Crystal?',
+          answer: 'ROM Crystal is Daniel Libeskind\'s 2007 addition to Royal Ontario Museum. Angular, crystalline structure - ultra-modern! Controversial design (some love, some hate). Architectural landmark. Contrasts with original Romanesque building. Toronto talking point - definitely distinctive!',
+        },
+        {
+          question: 'Can you tour City Hall?',
+          answer: 'Yes! Free tours available (check schedule). Viljo Revell design (1965) - curved towers, UFO-like council chamber. Nathan Phillips Square in front iconic. Tours show interior, explain design. Brutalist/modernist architecture. Quintessential 1960s Toronto!',
+        },
+        {
+          question: 'What is Toronto\'s Flatiron?',
+          answer: 'Gooderham Building (Wellington & Front) - Toronto\'s mini Flatiron! Wedge-shaped (1892), Romanesque Revival. Much smaller than NYC Flatiron but charming. Red brick, mural on side. Free to see exterior. Iconic Toronto building!',
+        },
+        {
+          question: 'What is the PATH?',
+          answer: 'PATH is 30km underground walkway connecting Financial District buildings! Shopping, restaurants, subway connections. Useful winter. World\'s largest underground complex. Confusing layout - get lost easily! Office workers use daily. Free to walk - interesting Toronto feature.',
+        },
+        {
+          question: 'Is Casa Loma worth it for architecture?',
+          answer: 'Yes if you like Gothic Revival! Built 1914, only real castle in Toronto. 98 rooms, towers, tunnel. $32 admission. Eccentric millionaire\'s dream. Architecturally unique for Toronto. Not everyone\'s taste but impressive. 2 hours. Good for architecture enthusiasts!',
+        },
+        {
+          question: 'How much do architecture tours cost?',
+          answer: 'Walking tours: $60-90 (2-3 hours). Private architectural: $150-300. Many buildings free to see exterior. City Hall tours: FREE. Self-guided possible with research. Tours provide architectural analysis - worth it for enthusiasts!',
+        },
+        {
+          question: 'When is best time for architecture tours?',
+          answer: 'Year-round! Architecture always there. Summer: Pleasant walking. Winter: PATH underground option. Weekdays: See Financial District in action. Clear days: Better photos. Architecture accessible all seasons - choose by weather preference!',
+        },
+      ],
+    },
   },
 };
 
