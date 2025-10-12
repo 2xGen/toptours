@@ -3904,12 +3904,12 @@ export const destinations = [
     heroDescription: 'Welcome to Banff, where the majestic Canadian Rockies create a stunning backdrop for unforgettable outdoor adventures. From the iconic Lake Louise to the charming town center, from world-class hiking to wildlife encounters, this mountain paradise offers the perfect blend of natural beauty, outdoor recreation, and Canadian hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Banff.jpeg',
     tourCategories: [
-      'Lake Louise Tours',
-      'Hiking & Adventure Tours',
-      'Wildlife Tours',
-      'Mountain Tours',
-      'Photography Tours',
-      'Nature Tours'
+      { name: 'Lake Louise Tours', hasGuide: true },
+      { name: 'Hiking & Adventure Tours', hasGuide: true },
+      { name: 'Wildlife Tours', hasGuide: true },
+      { name: 'Mountain Tours', hasGuide: true },
+      { name: 'Photography Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true }
     ],
     seo: {
       title: 'Banff Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4014,12 +4014,12 @@ export const destinations = [
     heroDescription: 'Welcome to Cancun, where the turquoise waters of the Caribbean meet ancient Mayan history and modern luxury. From the pristine beaches of the Hotel Zone to the mysterious ruins of Chichen Itza, from world-class diving to vibrant nightlife, this tropical paradise offers the perfect blend of relaxation, adventure, and cultural discovery. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Cancun.webp',
     tourCategories: [
-      'Beach Tours',
-      'Mayan Ruins Tours',
-      'Water Sports',
-      'Isla Mujeres Tours',
-      'Snorkeling Tours',
-      'Cultural Tours'
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Mayan Ruins Tours', hasGuide: true },
+      { name: 'Water Sports', hasGuide: true },
+      { name: 'Isla Mujeres Tours', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true }
     ],
     seo: {
       title: 'Cancun Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4234,12 +4234,12 @@ export const destinations = [
     heroDescription: 'Welcome to Cabo San Lucas, where the Pacific Ocean meets the Sea of Cortez and dramatic rock formations create a stunning backdrop for luxury and adventure. From the iconic Arch of Cabo San Lucas to world-class sport fishing, from pristine beaches to vibrant nightlife, this Baja California paradise offers the perfect blend of natural beauty and sophisticated entertainment. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Cabo%20San%20Lucas.avif',
     tourCategories: [
-      'Arch of Cabo Tours',
-      'Sport Fishing Tours',
-      'Beach Tours',
-      'Whale Watching Tours',
-      'Water Sports',
-      'Luxury Tours'
+      { name: 'Arch of Cabo Tours', hasGuide: true },
+      { name: 'Sport Fishing Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Whale Watching Tours', hasGuide: true },
+      { name: 'Water Sports', hasGuide: true },
+      { name: 'Luxury Tours', hasGuide: true }
     ],
     seo: {
       title: 'Cabo San Lucas Tours & Excursions - Top-Rated Activities & Adventures',
