@@ -20105,5 +20105,183 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  'san-francisco': {
+    'golden-gate-bridge-tours': {
+      title: 'San Francisco Golden Gate Bridge Tours',
+      subtitle: 'Walk, bike, or cruise under the world\'s most iconic bridge!',
+      categoryName: 'Golden Gate Bridge Tours',
+      
+      stats: {
+        toursAvailable: 98,
+        priceFrom: 45,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience the Golden Gate Bridge - engineering marvel and SF icon! Golden Gate tours explore this 1.7-mile suspension bridge spanning Golden Gate strait with International Orange color, Art Deco towers, and stunning views. Walk across (free!), bike to Sausalito, cruise underneath on bay tours, visit vista points (Battery Spencer best photos!), and learn bridge history. Tours include bike rentals with Sausalito ferry return, guided walks explaining engineering, historical photo exhibits, and Fort Point exploration (underneath bridge!). Learn about 1937 construction, why it\'s orange (visibility in fog!), suicide prevention efforts, and cultural significance. It\'s Golden Gate City icon!`,
+
+      seo: {
+        title: 'San Francisco Golden Gate Bridge Tours 2025 - Walk, Bike & Bay Views',
+        description: 'Experience Golden Gate Bridge! Walk across, bike to Sausalito, and iconic SF tours!',
+        keywords: 'Golden Gate Bridge tours, San Francisco bridge, bike Golden Gate, Sausalito, SF iconic',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Engineering Marvel',
+          description: '1.7-mile suspension bridge - was world\'s longest in 1937!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Iconic SF Symbol',
+          description: 'Most photographed bridge globally - quintessential San Francisco!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Stunning Views',
+          description: 'Bay, Marin Headlands, Alcatraz, SF skyline - spectacular!',
+        },
+        {
+          icon: 'Waves',
+          title: 'International Orange',
+          description: 'Unique color chosen for fog visibility - instantly recognizable!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Bike to Sausalito',
+          description: 'Most popular - bike across bridge, ferry back.',
+          features: [
+            '3-4 hours',
+            'Bike rental',
+            'Ferry return',
+            'Sausalito',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Guided Walking Tour',
+          description: 'Walk bridge with guide explaining history/engineering.',
+          features: [
+            '2 hours',
+            'Walking',
+            'Expert guide',
+            'History',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Bay Cruise',
+          description: 'Boat cruise passing under bridge and around Alcatraz.',
+          features: [
+            '90 minutes',
+            'Boat cruise',
+            'Under bridge',
+            'Bay views',
+            'Scenic',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tour',
+          description: 'Visit best viewpoints with pro photographer.',
+          features: [
+            '3 hours',
+            'Multiple viewpoints',
+            'Photo tips',
+            'Golden hour',
+            'Instagram',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your San Francisco Golden Gate Bridge Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walk across: 30-45 min. Bike to Sausalito: 3-4 hours. Bay cruise: 90 min.',
+          },
+          {
+            icon: 'Star',
+            title: 'Bridge Walk',
+            description: 'FREE to walk - sidewalk has pedestrian/bike separation. Views amazing!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Bike Across',
+            description: 'Downhill to Sausalito (charming town!), ferry back with bike - perfect!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Vista Points',
+            description: 'Battery Spencer (Marin side), Fort Point (underneath), Baker Beach - best photos!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Fog',
+            description: 'Bridge often fogged - part of mystique! Summer fog common, winter clearer.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Engineering',
+            description: 'Learn about 1937 construction, Art Deco design, ongoing maintenance.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Battery Spencer (Marin Headlands) best classic bridge photo - worth drive/Uber!',
+        'Bike across MUCH better than walking - downhill to Sausalito, ferry back ($13).',
+        'Blazing Saddles bike rental most popular - book online for discount.',
+        'East sidewalk (Bay side) open to pedestrians weekdays - best views!',
+        'Windy and cold on bridge - bring jacket even if SF sunny!',
+        'September-October clearest weather with least fog.',
+        'Fort Point underneath bridge free to visit - Civil War era fort.',
+        'Sunrise/sunset best light but fog often rolls in afternoon.',
+      ],
+
+      faqs: [
+        {
+          question: 'Can you walk across Golden Gate Bridge?',
+          answer: 'Yes! Completely FREE. East sidewalk open to pedestrians (1.7 miles each way, 30-45 min). West side bikes only. Windy and cold - bring jacket! Views spectacular. Most walk halfway and return. Full walk to Marin: Need transport back.',
+        },
+        {
+          question: 'Is it better to walk or bike?',
+          answer: 'BIKE! More fun, faster, downhill to Sausalito, ferry back included. Walking fine but no easy return from Marin side. Bike tours ($50-70) include bike, ferry, helmet. Best way to experience bridge - locals agree!',
+        },
+        {
+          question: 'Where are best Golden Gate photos?',
+          answer: 'Battery Spencer (Marin Headlands) - classic postcard view! Fort Point (underneath). Baker Beach. Crissy Field. Each offers different perspective. Battery Spencer requires car/Uber but worth it for iconic shot. All FREE vantage points!',
+        },
+        {
+          question: 'Why is Golden Gate Bridge orange?',
+          answer: 'International Orange chosen for visibility in fog! Not golden despite name (Golden Gate refers to strait). Navy wanted black/yellow stripes (yikes!). Architect chose orange - perfect contrast with blue bay and visibility. Iconic color now!',
+        },
+        {
+          question: 'Is the bridge always foggy?',
+          answer: 'Summer (June-Aug): Fog common, especially afternoon! "May Gray, June Gloom." September-October: Clearest months. Winter: Mixed but often clear mornings. Fog part of SF charm - creates mystique. Check webcams before visiting for conditions!',
+        },
+        {
+          question: 'How much do bridge tours cost?',
+          answer: 'Walking: FREE! Bike rentals: $35-50 (includes ferry). Guided bike tours: $50-70. Bay cruises: $35-45. Vista point access: FREE. Very affordable - bike tour best value for complete experience!',
+        },
+        {
+          question: 'Can you drive across?',
+          answer: 'Yes! Southbound (entering SF) tolls $9.75 (FasTrak or license plate bill). Northbound: FREE. However, walking/biking more memorable! Viewpoints require driving/Uber. Most visitors: Bike across, Uber to Battery Spencer for photos.',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'September-October: Clearest weather, least fog, warm! Early morning year-round usually clear before afternoon fog. Avoid summer afternoons (foggy!). Sunset gorgeous when clear. Check weather - it varies daily. Come prepared for wind always!',
+        },
+      ],
+    },
+  },
 };
 
