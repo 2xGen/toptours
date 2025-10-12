@@ -3078,12 +3078,12 @@ export const destinations = [
     heroDescription: 'Welcome to Los Angeles, where Hollywood dreams meet beach culture and diverse neighborhoods create a vibrant tapestry of experiences. From the iconic Hollywood sign to the beautiful beaches of Santa Monica, from world-class museums to authentic ethnic cuisine, this sprawling metropolis offers the perfect blend of entertainment, culture, and California lifestyle. Let our AI-powered planner help you discover the best experiences this dynamic destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Los%20Angeles.webp',
     tourCategories: [
-      'Hollywood Tours',
-      'Beach Tours',
-      'Movie Studio Tours',
-      'Food & Culture Tours',
-      'Museum Tours',
-      'Celebrity Tours'
+      { name: 'Hollywood Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Movie Studio Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Celebrity Tours', hasGuide: true }
     ],
     seo: {
       title: 'Los Angeles Tours & Excursions - Top-Rated Activities & Adventures',
@@ -3133,12 +3133,12 @@ export const destinations = [
     heroDescription: 'Welcome to Las Vegas, where the desert meets dazzling entertainment and every night promises unforgettable experiences. From the iconic Strip with its spectacular shows to world-class dining and shopping, from thrilling casinos to stunning natural landscapes just beyond the city, this entertainment capital offers the perfect blend of excitement, luxury, and adventure. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Las%20Vegas.webp',
     tourCategories: [
-      'Strip Tours',
-      'Show Tours',
-      'Casino Tours',
-      'Food & Dining Tours',
-      'Adventure Tours',
-      'Helicopter Tours'
+      { name: 'Strip Tours', hasGuide: true },
+      { name: 'Show Tours', hasGuide: true },
+      { name: 'Casino Tours', hasGuide: true },
+      { name: 'Food & Dining Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Helicopter Tours', hasGuide: true }
     ],
     seo: {
       title: 'Las Vegas Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4179,12 +4179,12 @@ export const destinations = [
     heroDescription: 'Welcome to Mexico City, where ancient Aztec ruins meet colonial architecture and modern innovation creates a vibrant metropolis. From the historic Zocalo to world-class museums, from authentic street food to sophisticated dining, this cultural capital offers the perfect blend of history, art, and contemporary Mexican life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Mexico%20City.avif',
     tourCategories: [
-      'Historic Center Tours',
-      'Museum Tours',
-      'Food & Street Food Tours',
-      'Teotihuacan Tours',
-      'Neighborhood Tours',
-      'Cultural Tours'
+      { name: 'Historic Center Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Food & Street Food Tours', hasGuide: true },
+      { name: 'Teotihuacan Tours', hasGuide: true },
+      { name: 'Neighborhood Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true }
     ],
     seo: {
       title: 'Mexico City Tours & Excursions - Top-Rated Activities & Adventures',

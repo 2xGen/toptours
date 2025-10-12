@@ -7936,6 +7936,1592 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'food-and-culture-tours': {
+      title: 'Los Angeles Food & Culture Tours',
+      subtitle: 'Taste diverse cuisines from tacos to food trucks in LA\'s multicultural scene!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 94,
+        priceFrom: 65,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Los Angeles's incredible food diversity - a global culinary capital! LA food tours explore diverse neighborhoods: Koreatown (best Korean BBQ outside Seoul), Olvera Street (historic Mexican marketplace), Thai Town, Little Tokyo, Little Armenia, Grand Central Market (iconic food hall since 1917), and trendy food scenes. Sample tacos from food trucks (LA invented gourmet food trucks!), Korean BBQ, Japanese ramen, Ethiopian cuisine, and fusion creations. Tours include farmer's markets, celebrity chef restaurants, ethnic enclaves, and street food. LA has more restaurants than any US city reflecting immigration from 140+ countries. Learn about food truck culture, ethnic neighborhoods, and how Hollywood influences dining. It's culinary world tour in one city!`,
+
+      seo: {
+        title: 'Los Angeles Food & Culture Tours 2025 - Tacos, Food Trucks & Diversity',
+        description: 'Experience LA food tours! Diverse cuisines, food trucks, and multicultural culinary scene!',
+        keywords: 'LA food tours, Los Angeles food trucks, Koreatown, LA tacos, Grand Central Market, LA cuisine',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Global Cuisine',
+          description: 'LA has food from 140+ countries - ultimate diversity!',
+        },
+        {
+          icon: 'Star',
+          title: 'Food Truck Capital',
+          description: 'LA invented gourmet food truck scene - still the best!',
+        },
+        {
+          icon: 'Users',
+          title: 'Ethnic Neighborhoods',
+          description: 'Authentic Korean, Mexican, Japanese, Thai, and more!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Celebrity Chefs',
+          description: 'Roy Choi, Wolfgang Puck, and innovative LA culinary scene.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Taco Tour',
+          description: 'Sample LA\'s best tacos from trucks, stands, and restaurants.',
+          features: [
+            '3 hours',
+            '6-8 taco stops',
+            'Various styles',
+            'Food trucks',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Koreatown Food Tour',
+          description: 'Explore Korean BBQ, banchan, and K-Town culinary scene.',
+          features: [
+            '3-4 hours',
+            'Korean BBQ',
+            'Multiple tastings',
+            'Cultural insights',
+            'Authentic',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Grand Central Market Tour',
+          description: 'Historic downtown food hall with diverse vendors.',
+          features: [
+            '2-3 hours',
+            'Food hall',
+            'Multiple cuisines',
+            'Historic venue',
+            'Accessible',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Food Truck & Street Food',
+          description: 'Tour gourmet food trucks and street food hotspots.',
+          features: [
+            '3 hours',
+            'Food trucks',
+            'Street food',
+            'Trendy spots',
+            'Fun',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Los Angeles Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'LA Tacos',
+            description: 'Sample authentic Mexican tacos from trucks and taquerías.',
+          },
+          {
+            icon: 'Star',
+            title: 'Korean BBQ',
+            description: 'All-you-can-eat Korean BBQ experience in Koreatown.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Food Trucks',
+            description: 'LA pioneered gourmet food trucks - Roy Choi\'s Kogi started trend!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Ethnic Neighborhoods',
+            description: 'Explore authentic cultural enclaves with immigrant food traditions.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Culinary History',
+            description: 'Learn about LA\'s food truck revolution and immigrant food culture.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Koreatown has best Korean BBQ outside Korea - go hungry!',
+        'Grand Central Market ($5-15 meals) - great budget option downtown.',
+        'Food trucks cluster at events, parks, office districts - check schedules!',
+        'Olvera Street is touristy but historic - first Mexican marketplace (1930).',
+        'LA tacos: Order al pastor, carnitas, or carne asada - avoid chains!',
+        'Little Tokyo has excellent ramen, sushi, and Japanese bakeries.',
+        'Farmers markets (Hollywood, Santa Monica) on weekends - fresh, local.',
+        'Bring cash - many food trucks and ethnic restaurants cash-only.',
+      ],
+
+      faqs: [
+        {
+          question: 'What food is LA known for?',
+          answer: 'Tacos (food trucks and street stands), Korean BBQ (Koreatown), sushi, food trucks, In-N-Out Burger, and fusion cuisine. LA invented gourmet food truck scene! Diverse immigrant communities create authentic global cuisines. Try everything!',
+        },
+        {
+          question: 'Where are the best tacos in LA?',
+          answer: 'East LA has most authentic (Guisados, Mariscos Jalisco). Food trucks everywhere (Leo\'s Tacos). Downtown: Grand Central Market. Avoid touristy areas. Best tacos from trucks and small stands - $2-3 each. Carne asada and al pastor best!',
+        },
+        {
+          question: 'What is Koreatown like?',
+          answer: 'Koreatown has best Korean food outside Korea! All-you-can-eat Korean BBQ ($20-30), 24/7 restaurants, karaoke, spas. It\'s authentic, bustling, and affordable. Western between 6th-Olympic. Night owl neighborhood - open late! Worth visiting!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Walking food tours: $65-95 (3-4 hours, 6-8 tastings). Taco tours: $70-90. Koreatown: $80-100. Grand Central Market: DIY $15-25. Private tours: $200-400 for group. Tours replace meals - good value for variety and insights!',
+        },
+        {
+          question: 'Can vegetarians find food in LA?',
+          answer: 'LA is vegetarian/vegan paradise! Plant-based restaurants everywhere. Most ethnic cuisines have veggie options. Farmers markets abundant. LA leads US in vegetarian dining. Communicate dietary needs - restaurants very accommodating. You\'ll eat well!',
+        },
+        {
+          question: 'What are LA food trucks?',
+          answer: 'LA invented gourmet food truck scene! Roy Choi\'s Kogi BBQ (Korean-Mexican fusion) started trend 2008. Trucks offer restaurant-quality food at affordable prices ($8-15). Find via Twitter/Instagram. Cluster at events and office districts. Essential LA experience!',
+        },
+        {
+          question: 'Is LA food expensive?',
+          answer: 'Ranges wildly! Food trucks/ethnic restaurants: $8-15. Mid-range: $20-40. Fine dining: $100+. Grand Central Market and ethnic neighborhoods are budget-friendly. Celebrity chef restaurants expensive. LA offers all price points - choose accordingly!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Lunch tours (11 AM-2 PM) hit food trucks when busy. Dinner tours (5-8 PM) for Korean BBQ and night food scene. Weekend farmers markets. Food tours run daily. Book based on schedule - LA dining never stops!',
+        },
+      ],
+    },
+
+    'museum-tours': {
+      title: 'Los Angeles Museum Tours',
+      subtitle: 'Explore Getty Center, LACMA, and world-class art and cultural museums!',
+      categoryName: 'Museum Tours',
+      
+      stats: {
+        toursAvailable: 58,
+        priceFrom: 25,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience Los Angeles's exceptional museum scene rivaling any world capital! LA museums include The Getty Center (stunning architecture, European art, gardens with city views - FREE!), LACMA (largest art museum in western US with iconic Urban Light installation), The Broad (contemporary art), Natural History Museum (dinosaurs and gems), California Science Center (Space Shuttle Endeavour!), Grammy Museum, Petersen Automotive Museum, and Museum of Tolerance. Tours provide expert guides, skip-the-line access, and thematic explorations. LA's museums showcase everything from ancient artifacts to contemporary art, Hollywood history to natural science. Many museums are free or low-cost. It's cultural wealth often overlooked!`,
+
+      seo: {
+        title: 'Los Angeles Museum Tours 2025 - Getty Center, LACMA & LA Museums',
+        description: 'Explore LA museums! Getty Center, LACMA, contemporary art, and cultural institutions!',
+        keywords: 'LA museums, Getty Center, LACMA, The Broad, Los Angeles museums, Getty Villa',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Getty Center',
+          description: 'World-class museum with FREE admission and stunning architecture!',
+        },
+        {
+          icon: 'Heart',
+          title: 'LACMA',
+          description: 'Largest art museum in western US with iconic Urban Light!',
+        },
+        {
+          icon: 'Camera',
+          title: 'The Broad',
+          description: 'Contemporary art museum featuring Infinity Mirrors - FREE!',
+        },
+        {
+          icon: 'Users',
+          title: 'Space Shuttle',
+          description: 'See actual Space Shuttle Endeavour at California Science Center!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Getty Center Tour',
+          description: 'Guided tour of art, architecture, and gardens at hilltop museum.',
+          features: [
+            '2-3 hours',
+            'Free admission',
+            'Expert guide',
+            'Art & gardens',
+            'Must-visit',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'LACMA Tour',
+          description: 'Explore LA County Museum with diverse art collections.',
+          features: [
+            '2-3 hours',
+            'Largest West',
+            'Urban Light',
+            'Varied art',
+            'Iconic',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Museum Row Tour',
+          description: 'Visit multiple Wilshire Boulevard museums in one day.',
+          features: [
+            'Full day',
+            'Multiple museums',
+            'LACMA + more',
+            'Comprehensive',
+            'Efficient',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Contemporary Art Tour',
+          description: 'The Broad, MOCA, and LA contemporary art scene.',
+          features: [
+            '3-4 hours',
+            'Modern art',
+            'Multiple venues',
+            'Cutting-edge',
+            'Trendy',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Los Angeles Museum Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Single museum: 2-3 hours. Multiple museums: Full day recommended.',
+          },
+          {
+            icon: 'Star',
+            title: 'Getty Center',
+            description: 'European art, gardens, architecture, and panoramic LA views - all FREE!',
+          },
+          {
+            icon: 'Heart',
+            title: 'LACMA Urban Light',
+            description: 'Iconic 202 restored street lamps installation - most Instagrammed LA spot!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Space Shuttle Endeavour',
+            description: 'See actual Space Shuttle that flew 25 missions - incredible!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'The Broad',
+            description: 'Yayoi Kusama\'s Infinity Mirror Rooms and contemporary masterpieces.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Diverse Collections',
+            description: 'From ancient artifacts to space exploration to Hollywood history.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Getty Center FREE admission - only pay $20 parking (or take free shuttle)!',
+        'The Broad FREE but timed tickets required - book weeks ahead!',
+        'LACMA free 2nd Tuesday each month - very crowded but free!',
+        'California Science Center FREE including Space Shuttle exhibit!',
+        'Museum Row has 5+ museums on Wilshire Blvd - walkable area.',
+        'Getty Villa (separate from Getty Center) requires advance reservation.',
+        'Many museums closed Mondays - check schedules before planning.',
+        'Parking expensive at most museums - use public transit if possible.',
+      ],
+
+      faqs: [
+        {
+          question: 'Is the Getty Center free?',
+          answer: 'YES! Getty Center admission is FREE - only pay $20 parking ($15 after 3 PM). Take free shuttle from parking to museum. It has world-class art, Richard Meier architecture, gardens, and incredible LA views. Must-visit LA museum! Plan 2-3 hours minimum.',
+        },
+        {
+          question: 'What is the best museum in LA?',
+          answer: 'Getty Center (#1 - FREE, art, architecture, views). LACMA (largest, diverse). The Broad (contemporary art, FREE). Natural History Museum (families). Each excellent - choose based on interests! Getty Center most comprehensive and FREE!',
+        },
+        {
+          question: 'How much do LA museums cost?',
+          answer: 'Getty Center: FREE. The Broad: FREE. LACMA: $25. Natural History: $15. California Science Center: FREE! Petersen Automotive: $18. Many free/affordable museums in LA. Budget-friendly culture!',
+        },
+        {
+          question: 'What is Urban Light?',
+          answer: 'Urban Light is Chris Burden\'s iconic LACMA installation - 202 restored vintage street lamps. It\'s free, accessible 24/7, and most Instagrammed spot in LA! Visit at night when lit. Outside museum entrance. Essential LA photo op!',
+        },
+        {
+          question: 'Can you see the Space Shuttle in LA?',
+          answer: 'Yes! Space Shuttle Endeavour at California Science Center (FREE admission!). It flew 25 missions including International Space Station assembly. You walk underneath it - massive! Plan 2-3 hours for whole museum. Parking $15. Book timed entry online.',
+        },
+        {
+          question: 'Do you need tickets for The Broad?',
+          answer: 'YES! Free admission but timed tickets required. Book online weeks ahead - they go fast! Standby line exists but long waits (1-2 hours). Yayoi Kusama\'s Infinity Mirror Rooms require separate timed tickets. Plan ahead for The Broad!',
+        },
+        {
+          question: 'How long to visit Getty Center?',
+          answer: '2-3 hours minimum for highlights. Art enthusiasts: 4-5 hours. Massive collection, gardens, multiple pavilions, and views. Arrive early (museum opens 10 AM). FREE admission worth leisurely visit. Don\'t rush - it\'s spectacular!',
+        },
+        {
+          question: 'Are LA museums worth visiting?',
+          answer: 'Absolutely! Getty Center, LACMA, and The Broad rival world-class museums. Many are FREE or affordable. LA\'s museum scene underrated - incredible collections, architecture, and variety. Essential LA cultural experience beyond Hollywood!',
+        },
+      ],
+    },
+
+    'celebrity-tours': {
+      title: 'Los Angeles Celebrity Tours',
+      subtitle: 'Tour Beverly Hills mansions, celebrity hotspots, and star-studded LA!',
+      categoryName: 'Celebrity Tours',
+      
+      stats: {
+        toursAvailable: 76,
+        priceFrom: 55,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience celebrity Los Angeles - where stars live, dine, and play! Celebrity tours explore Beverly Hills mansions (drive past celebrity homes - exteriors only), Rodeo Drive luxury shopping, West Hollywood nightlife, celebrity restaurants (Craig's, Catch LA, Nobu Malibu), famous filming locations, and star hotspots. Tours visit neighborhoods like Bel Air, Holmby Hills, Malibu Colony, and Hollywood Hills where celebrities own estates. See homes of current and past stars (tour guides share who lives where!), visit celebrity-owned businesses, explore TMZ Hollywood, and learn about LA's celebrity culture. Some tours include opportunities for celebrity sightings at restaurants, studios, or events. It's glamorous, gossipy, and quintessentially LA!`,
+
+      seo: {
+        title: 'Los Angeles Celebrity Tours 2025 - Beverly Hills Mansions & Star Homes',
+        description: 'Experience LA celebrity tours! Beverly Hills mansions, Rodeo Drive, and celebrity hotspots!',
+        keywords: 'LA celebrity tours, Beverly Hills homes tours, celebrity homes LA, Rodeo Drive, celebrity sightings',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Beverly Hills Mansions',
+          description: 'See where Hollywood\'s biggest stars live in luxury!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Rodeo Drive',
+          description: 'Walk world-famous luxury shopping street - Pretty Woman location!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Celebrity Hotspots',
+          description: 'Visit restaurants, shops, and venues where stars hang out.',
+        },
+        {
+          icon: 'Users',
+          title: 'Insider Gossip',
+          description: 'Guides share celebrity stories, real estate prices, and rumors!',
+        },
+      },
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Beverly Hills Homes Tour',
+          description: 'Drive past celebrity mansions with guide pointing out star homes.',
+          features: [
+            '2-3 hours',
+            'Multiple homes',
+            'Beverly Hills',
+            'Van tour',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'TMZ Hollywood Tour',
+          description: 'Official TMZ bus tour visiting celebrity hotspots and filming sites.',
+          features: [
+            '2 hours',
+            'TMZ guides',
+            'Gossip focus',
+            'Photo stops',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Rodeo Drive Walking Tour',
+          description: 'Walk luxury shopping street with celebrity shopping stories.',
+          features: [
+            '1-2 hours',
+            'Rodeo Drive',
+            'Luxury shops',
+            'Photo ops',
+            'Glamorous',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Celebrity Hotspot Tour',
+          description: 'Visit restaurants, clubs, and venues where celebrities frequent.',
+          features: [
+            '3 hours',
+            'Multiple spots',
+            'Sighting chances',
+            'Insider access',
+            'Exciting',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Los Angeles Celebrity Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 2-3 hours. Walking: 1-2 hours. Extended: 4 hours with multiple areas.',
+          },
+          {
+            icon: 'Star',
+            title: 'Celebrity Homes',
+            description: 'View mansion exteriors - tours can\'t go inside or guarantee sightings!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Beverly Hills',
+            description: 'Drive through 90210 zip code seeing multimillion-dollar estates.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Rodeo Drive',
+            description: 'Walk where Julia Roberts shopped in Pretty Woman - luxury central!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Celebrity Gossip',
+            description: 'Guides share who lives where, recent transactions, and star stories.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'LA Luxury',
+            description: 'Learn about real estate prices, celebrity lifestyles, and Hollywood wealth.',
+          },
+        },
+      },
+
+      expertTips: [
+        'Celebrity sightings NOT guaranteed - tours show homes, not stars!',
+        'Best sighting chances: Craig\'s, Catch LA, Nobu Malibu (dinner), SoHo House.',
+        'Tours can only show exterior - privacy laws prevent trespassing.',
+        'Maps showing celebrity homes available free online - tours add context.',
+        'TMZ tour most gossip-focused and fun - less serious than others.',
+        'Rodeo Drive is FREE to walk - don\'t need tour unless wanting context.',
+        'Weekday afternoons better for quieter roads than weekend crowds.',
+        'Lower expectations for celebrity encounters - they value privacy!',
+      ],
+
+      faqs: [
+        {
+          question: 'Can you see celebrities on tours?',
+          answer: 'Rare! Tours show homes (exteriors), not actual celebrities. Better sighting chances: celebrity restaurants (Craig\'s, Catch LA, Nobu), studio tours, TV show tapings, or events. Stars value privacy. Don\'t expect encounters - treat as bonus if it happens!',
+        },
+        {
+          question: 'How much do celebrity home tours cost?',
+          answer: 'Van tours: $55-80 (2-3 hours). TMZ tour: $65 (2 hours). Walking tours: $40-60. Private tours: $300-500 for group. Tours show exteriors only - can\'t go inside. Consider if context worth price vs. free online maps!',
+        },
+        {
+          question: 'Where do most celebrities live in LA?',
+          answer: 'Beverly Hills, Bel Air, Holmby Hills (platinum triangle), Malibu, Hollywood Hills, Hidden Hills, Calabasas. Each area has different vibe: Beverly Hills (traditional luxury), Malibu (beach), Hidden Hills (privacy). Tours focus on Beverly Hills most accessible.',
+        },
+        {
+          question: 'Is Rodeo Drive worth visiting?',
+          answer: 'Worth quick visit for iconic status (Pretty Woman!)! Window shop luxury brands. It\'s FREE to walk. However, it\'s just a shopping street - can be underwhelming. 30-60 minutes sufficient. Combine with Beverly Hills homes tour for full experience.',
+        },
+        {
+          question: 'Can you go inside celebrity homes?',
+          answer: 'NO! Tours show exterior only. Privacy laws prevent access. Occasionally, estate sales or charity events offer home tours but rare and expensive. Lower expectations - tours are driving past gates seeing homes from street. Still fun!',
+        },
+        {
+          question: 'What is TMZ Hollywood Tour?',
+          answer: 'Official TMZ bus tour ($65, 2 hours) visiting celebrity hotspots, filming locations, and gossip sites. TMZ guides share celebrity stories and scandals. It\'s fun, irreverent, and gossip-focused. More entertainment than serious tour. Worth it for fans!',
+        },
+        {
+          question: 'Where can you spot celebrities?',
+          answer: 'Best chances: Craig\'s (dinner), Catch LA, Nobu Malibu, Erewhon (grocery), SoHo House, Chateau Marmont. Also: studio tours, TV tapings (free tickets!), premieres. However, celebrities value privacy - sightings never guaranteed. Be respectful if you see someone!',
+        },
+        {
+          question: 'Are celebrity tours worth it?',
+          answer: 'Depends! If interested in real estate, celebrity culture, and LA luxury - yes! Tours provide context and access beyond online maps. However, no celebrity encounters guaranteed and exteriors only. Fun and glamorous but manage expectations. First-timers usually enjoy them!',
+        },
+      ],
+    },
+  },
+
+  'mexico-city': {
+    'historic-center-tours': {
+      title: 'Mexico City Historic Center Tours',
+      subtitle: 'Explore Zócalo, ancient Aztec ruins, and colonial architecture in vibrant Centro!',
+      categoryName: 'Historic Center Tours',
+      
+      stats: {
+        toursAvailable: 102,
+        priceFrom: 35,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Mexico City's Historic Center (Centro Histórico) - a UNESCO World Heritage Site built atop ancient Tenochtitlan! Historic tours explore the massive Zócalo plaza (one of world's largest), Metropolitan Cathedral (largest in the Americas), National Palace with Diego Rivera murals, Templo Mayor (Aztec temple ruins discovered 1978), Palacio de Bellas Artes (stunning Art Nouveau/Art Deco), and colonial-era buildings. Walk cobblestone streets where Aztec and Spanish histories collide, see archaeological excavations revealing ancient city beneath, visit markets, and explore charming plazas. Learn about Aztec empire, Spanish conquest, Mexican independence, and how modern Mexico City sits atop layers of history. It's 700 years of civilization in one walkable area!`,
+
+      seo: {
+        title: 'Mexico City Historic Center Tours 2025 - Zócalo, Aztec Ruins & Colonial Heritage',
+        description: 'Explore Mexico City Centro! Zócalo plaza, Templo Mayor, Diego Rivera murals, and UNESCO sites!',
+        keywords: 'Mexico City historic center, Zócalo, Templo Mayor, Centro Historico, CDMX tours, colonial Mexico City',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'UNESCO World Heritage',
+          description: 'Historic Center recognized for cultural and historical significance!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Aztec & Spanish',
+          description: 'Layers of history from Tenochtitlan to colonial era to modern!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Architectural Marvels',
+          description: 'Massive cathedral, ornate palaces, and Aztec pyramids!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Diego Rivera Murals',
+          description: 'See iconic murals depicting Mexican history at National Palace.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Centro Walking Tour',
+          description: 'Explore Zócalo, cathedral, National Palace, and Templo Mayor.',
+          features: [
+            '3-4 hours',
+            'Major sites',
+            'Expert guide',
+            'Walking',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Aztec History Tour',
+          description: 'Focus on Templo Mayor ruins and Aztec heritage.',
+          features: [
+            '3 hours',
+            'Aztec focus',
+            'Museum visit',
+            'Archaeological',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Diego Rivera Murals Tour',
+          description: 'See Rivera\'s epic murals at National Palace and other sites.',
+          features: [
+            '3 hours',
+            'Multiple murals',
+            'Art history',
+            'Political themes',
+            'Artistic',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Colonial Architecture Tour',
+          description: 'Explore Spanish colonial buildings and Baroque churches.',
+          features: [
+            '3-4 hours',
+            'Colonial focus',
+            'Churches',
+            'Palaces',
+            'Beautiful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Mexico City Historic Center Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 3-4 hours. Museum visits add 1-2 hours. Full day for thorough exploration.',
+          },
+          {
+            icon: 'Star',
+            title: 'Zócalo Plaza',
+            description: 'Massive central square surrounded by cathedral, palace, and historic buildings.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Templo Mayor',
+            description: 'Aztec temple ruins where human sacrifices occurred - fascinating archaeology!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Metropolitan Cathedral',
+            description: 'Largest cathedral in Americas with ornate Baroque/Neoclassical architecture.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'National Palace Murals',
+            description: 'Diego Rivera\'s epic murals depicting 3,000 years of Mexican history.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Palacio de Bellas Artes',
+            description: 'Stunning marble palace with Art Nouveau/Art Deco architecture.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Start Centro tours early (9 AM) to beat crowds and afternoon heat.',
+        'Templo Mayor museum ($5) essential for understanding Aztec history.',
+        'National Palace is FREE - bring passport for entry to see Rivera murals!',
+        'Sunday flag ceremony at Zócalo (8 AM) - massive Mexican flag raising!',
+        'Palacio de Bellas Artes ($5) has murals and usually has events/performances.',
+        'Wear comfortable shoes - cobblestones and lots of walking!',
+        'Centro safe daytime but watch belongings in crowds - pickpockets exist.',
+        'Free walking tours available (tip-based) - good budget option.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Zócalo?',
+          answer: 'Zócalo (Plaza de la Constitución) is Mexico City\'s main square - one of world\'s largest (59,000 sq meters!). It\'s surrounded by Metropolitan Cathedral, National Palace, and historic buildings. Site of Aztec ceremonial center. Free to visit. Heart of Mexico City!',
+        },
+        {
+          question: 'What is Templo Mayor?',
+          answer: 'Templo Mayor was main Aztec temple in Tenochtitlan where human sacrifices occurred. Ruins discovered 1978 during construction. Museum ($5) displays Aztec artifacts found on site. You see actual temple foundations! Essential for understanding pre-Hispanic Mexico. Fascinating!',
+        },
+        {
+          question: 'Can you see Diego Rivera murals?',
+          answer: 'Yes! National Palace has epic Rivera murals (FREE, bring passport). Palacio de Bellas Artes has murals ($5). National Preparatory School also has them. Rivera\'s murals depict Mexican history - politically charged and artistically significant. Must-see Mexico City art!',
+        },
+        {
+          question: 'How long to explore Centro Histórico?',
+          answer: 'Half-day (3-4 hours) for highlights: Zócalo, cathedral, National Palace, Templo Mayor. Full day (6-8 hours) for thorough exploration including museums and plazas. It\'s dense with sights - allow plenty of time. Most tours 3-4 hours.',
+        },
+        {
+          question: 'Is Centro Histórico safe?',
+          answer: 'Safe daytime with normal urban precautions! Millions visit safely. Watch belongings in crowds (pickpockets). Evening: Stick to well-lit main areas. Avoid isolated streets after dark. Tours very safe. Centro is touristy and generally secure. Use common sense!',
+        },
+        {
+          question: 'How much do Centro tours cost?',
+          answer: 'Walking tours: $35-60 (3-4 hours). Free walking tours exist (tip-based, 200-300 pesos expected). Private tours: $150-300 for group. Museum entries separate ($5 each). Good value for context and efficient routing!',
+        },
+        {
+          question: 'What should you not miss in Centro?',
+          answer: 'Must-see: Zócalo, Metropolitan Cathedral, Templo Mayor ruins/museum, National Palace (Rivera murals), Palacio de Bellas Artes. All within walking distance! Plan 4-6 hours minimum. Each site historically/architecturally significant. This is Mexico City\'s heart!',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Year-round! Weekday mornings (9-11 AM) least crowded. Avoid midday heat. Sunday flag ceremony (8 AM) impressive. Centro busiest weekends but very lively! Spring/fall perfect weather. Tours run daily. Early start recommended!',
+        },
+      ],
+    },
+
+    'museum-tours': {
+      title: 'Mexico City Museum Tours',
+      subtitle: 'Discover Anthropology Museum, Frida Kahlo, and world-class Mexican museums!',
+      categoryName: 'Museum Tours',
+      
+      stats: {
+        toursAvailable: 76,
+        priceFrom: 30,
+        duration: '2-5 hours',
+      },
+
+      introduction: `Experience Mexico City's exceptional museums - some of world's finest! The National Museum of Anthropology houses unparalleled pre-Hispanic artifacts including the Aztec Sun Stone, Frida Kahlo Museum (Casa Azul where she lived and painted), Diego Rivera Anahuacalli Museum, Soumaya Museum (free, stunning architecture by Carlos Slim), National Palace murals, Dolores Olmedo Museum, and Museum of Modern Art. Tours explore Mexico's indigenous cultures (Aztec, Maya, Olmec), revolutionary art movement, and contemporary scene. Museums showcase everything from ancient Mesoamerican treasures to Frida's personal belongings to colonial art. Learn about Mexican history, pre-Hispanic civilizations, artistic legacy, and cultural identity. It's museum paradise!`,
+
+      seo: {
+        title: 'Mexico City Museum Tours 2025 - Anthropology, Frida Kahlo & Art Museums',
+        description: 'Explore Mexico City museums! Anthropology Museum, Frida Kahlo Casa Azul, and Mexican art!',
+        keywords: 'Mexico City museums, Anthropology Museum, Frida Kahlo Museum, Casa Azul, CDMX museums, Soumaya',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Anthropology Museum',
+          description: 'World\'s best pre-Hispanic archaeology museum - unmatched collection!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Frida Kahlo Casa Azul',
+          description: 'Visit the artist\'s actual home where she lived and created!',
+        },
+        {
+          icon: 'Camera',
+          title: 'World-Class Collections',
+          description: 'Aztec Sun Stone, Frida\'s paintings, Rivera murals!',
+        },
+        {
+          icon: 'Users',
+          title: 'Art & History',
+          description: 'From ancient civilizations to modern art in one city!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Anthropology Museum Tour',
+          description: 'Guided tour of pre-Hispanic archaeology and cultures.',
+          features: [
+            '3-4 hours',
+            'Aztec artifacts',
+            'Expert guide',
+            'Comprehensive',
+            'Must-do',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Frida Kahlo Casa Azul',
+          description: 'Visit Frida\'s home-turned-museum in Coyoacán.',
+          features: [
+            '2-3 hours',
+            'Artist\'s home',
+            'Personal items',
+            'Skip-the-line',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Art Museums Tour',
+          description: 'Visit Soumaya, Bellas Artes, and modern art museums.',
+          features: [
+            '4-5 hours',
+            'Multiple museums',
+            'Diverse art',
+            'Architecture',
+            'Cultural',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Diego Rivera & Muralists',
+          description: 'Tour murals and homes of Rivera, Orozco, Siqueiros.',
+          features: [
+            '4 hours',
+            'Mural focus',
+            'Multiple sites',
+            'Art history',
+            'Educational',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Mexico City Museum Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Single museum: 2-3 hours. Anthropology: 3-4 hours. Multiple: Full day.',
+          },
+          {
+            icon: 'Star',
+            title: 'Aztec Sun Stone',
+            description: 'See massive calendar stone at Anthropology Museum - iconic artifact!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Frida\'s Home',
+            description: 'Walk through Casa Azul seeing her studio, bedroom, and belongings.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Diverse Collections',
+            description: 'From 3,000-year-old Olmec heads to contemporary Mexican art.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Soumaya Museum',
+            description: 'FREE museum with 66,000 works in striking modern building.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Mexican History',
+            description: 'Understand pre-Hispanic civilizations, colonial era, and modern Mexico.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Anthropology Museum ($5) needs FULL morning - it\'s massive and incredible!',
+        'Frida Kahlo Museum book tickets WEEKS ahead online - sells out daily!',
+        'Soumaya Museum is FREE - Carlos Slim\'s private collection!',
+        'Most museums closed Mondays - plan accordingly.',
+        'Sundays many museums FREE but extremely crowded - weekdays better.',
+        'Anthropology Museum best Wednesday-Friday mornings - less crowded.',
+        'Coyoacán neighborhood (Frida\'s house) charming - combine with lunch.',
+        'Bring passport - some museums require ID for entry.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best museum in Mexico City?',
+          answer: 'National Museum of Anthropology (#1 - world\'s best pre-Hispanic archaeology!). Frida Kahlo Casa Azul (personal, intimate). Soumaya (FREE, impressive). Each offers unique experience. Anthropology Museum essential - don\'t skip! Plan 3-4 hours for it.',
+        },
+        {
+          question: 'How do you get Frida Kahlo Museum tickets?',
+          answer: 'Book online at museofridakahlo.org.mx weeks ahead - sells out DAILY! $12 entry. Timed tickets control crowds. No walk-ups usually available. Advanced booking essential! Skip-the-line tours ($50-80) handle tickets. Most popular museum in Mexico City!',
+        },
+        {
+          question: 'How much do museums cost?',
+          answer: 'Anthropology: $5. Frida Kahlo: $12. Templo Mayor: $5. Soumaya: FREE! Most museums $3-10. Sundays some are FREE but packed. Mexico City museums very affordable. Budget $20-30 for full day of multiple museums.',
+        },
+        {
+          question: 'Is the Anthropology Museum worth it?',
+          answer: 'ABSOLUTELY! World\'s finest pre-Hispanic archaeology museum. Aztec Sun Stone, massive Olmec heads, Maya artifacts, and 23 exhibit halls. It\'s incredible - even non-museum fans love it! $5 entry, 3-4 hours minimum. Essential Mexico City experience!',
+        },
+        {
+          question: 'Can you visit Frida Kahlo\'s house?',
+          answer: 'Yes! Casa Azul (Blue House) in Coyoacán where Frida was born, lived, and died. See her studio, wheelchair, dresses, Diego Rivera\'s belongings. $12, timed entry. Book weeks ahead - it sells out! Intimate and moving. Must-book for Frida fans!',
+        },
+        {
+          question: 'What is the Soumaya Museum?',
+          answer: 'Soumaya is FREE museum with 66,000-piece collection in striking silver building. Carlos Slim\'s private collection includes Rodin sculptures, Old Masters, and modern art. Polanco neighborhood. No reservation needed. Unique architecture - visit even if not museum person!',
+        },
+        {
+          question: 'How long to visit Anthropology Museum?',
+          answer: 'Minimum 3 hours for highlights. Enthusiasts: 4-6 hours. It has 23 massive exhibit halls! Most comprehensive pre-Hispanic collection globally. Don\'t rush - it\'s extraordinary. Arrive when it opens (9 AM) for peaceful morning visit.',
+        },
+        {
+          question: 'Are Mexico City museums worth visiting?',
+          answer: 'Absolutely! Some of world\'s best museums at affordable prices. Anthropology Museum alone worth trip to Mexico City. Add Frida Kahlo, Rivera murals - it\'s museum paradise! Museums are Mexico City highlight - don\'t skip!',
+        },
+      ],
+    },
+
+    'food-and-street-food-tours': {
+      title: 'Mexico City Food & Street Food Tours',
+      subtitle: 'Taste authentic tacos, street food, and Mexico\'s incredible culinary capital!',
+      categoryName: 'Food & Street Food Tours',
+      
+      stats: {
+        toursAvailable: 124,
+        priceFrom: 40,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Mexico City's extraordinary food scene - one of world's great culinary capitals! Food tours explore vibrant street food culture with tacos al pastor, tamales, tortas, quesadillas, tostadas, and countless antojitos (street snacks). Visit markets like Mercado de San Juan (exotic ingredients), Mercado Roma (food hall), street stands in Condesa and Roma neighborhoods, traditional cantinas, and innovative modern Mexican restaurants. Sample mole (complex sauce with 30+ ingredients), chiles en nogada, fresh ceviche, and end with churros or tres leches cake. Learn about indigenous ingredients (corn, chili, cacao), regional variations, and culinary innovation. Mexico City offers authentic Mexican cuisine in all its glory!`,
+
+      seo: {
+        title: 'Mexico City Food & Street Food Tours 2025 - Tacos, Markets & Mexican Cuisine',
+        description: 'Experience Mexico City food! Street tacos, markets, and authentic Mexican culinary tours!',
+        keywords: 'Mexico City food tours, CDMX street food, Mexico City tacos, Mexican food tours, Mercado Roma',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Culinary Capital',
+          description: 'Mexico City has more restaurants than any Latin American city!',
+        },
+        {
+          icon: 'Star',
+          title: 'Authentic Street Food',
+          description: 'Tacos, tamales, and antojitos from generations-old stands!',
+        },
+        {
+          icon: 'Users',
+          title: 'Market Culture',
+          description: 'Vibrant mercados offering ingredients and prepared foods.',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Affordable Excellence',
+          description: 'World-class food at street stand prices ($1-3 tacos!).',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Street Food Walking Tour',
+          description: 'Sample 8-10 street food stops with local guide.',
+          features: [
+            '3-4 hours',
+            '8-10 tastings',
+            'Street stands',
+            'Authentic',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Market Food Tour',
+          description: 'Explore Mercado Roma or traditional markets tasting specialties.',
+          features: [
+            '3 hours',
+            'Market visit',
+            'Multiple vendors',
+            'Fresh food',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Neighborhood Food Tour',
+          description: 'Explore Condesa, Roma, or Polanco food scenes.',
+          features: [
+            '4 hours',
+            'Trendy areas',
+            'Modern Mexican',
+            'Restaurants',
+            'Hip',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Cantina & Mezcal Tour',
+          description: 'Traditional cantinas with food and mezcal tastings.',
+          features: [
+            '3-4 hours',
+            'Cantinas',
+            'Mezcal focus',
+            'Local culture',
+            'Fun',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Mexico City Food & Street Food Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 8-10 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Tacos Al Pastor',
+            description: 'Marinated pork cooked on vertical spit with pineapple - Mexico City specialty!',
+          },
+          {
+            icon: 'Star',
+            title: 'Market Exploration',
+            description: 'Visit traditional mercados with produce, meats, and prepared foods.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Street Stands',
+            description: 'Eat where locals eat - small stands with generations-old recipes.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Regional Specialties',
+            description: 'Sample foods from different Mexican regions all in one city.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Culinary Education',
+            description: 'Learn about indigenous ingredients and Mexican cooking traditions.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Street food is SAFE on tours - guides choose reputable, clean stands!',
+        'Tacos cost $1-3 each at street stands - incredibly affordable!',
+        'Try tacos al pastor, carnitas, barbacoa - all Mexico City specialties.',
+        'Mercado de San Juan has exotic ingredients - grasshoppers, ants, unusual meats.',
+        'Come hungry - portions are generous and frequent on food tours.',
+        'Street food best evening (6-9 PM) when stands are busiest and freshest.',
+        'Bring pesos cash - street vendors don\'t take cards.',
+        'Don\'t drink tap water but street food from hot griddles is safe!',
+      ],
+
+      faqs: [
+        {
+          question: 'Is street food safe in Mexico City?',
+          answer: 'YES when choosing busy, popular stands! Food tours choose reputable vendors with high turnover (fresher food). Look for crowds of locals - sign of quality. Cooked-to-order from hot griddles is safe. Millions eat street food daily. Tours eliminate guesswork!',
+        },
+        {
+          question: 'What are the best tacos in Mexico City?',
+          answer: 'Tacos al pastor (#1 - marinated pork, pineapple). El Huequito and El Vilsito famous. Carnitas (Carnitas Uruapan). Barbacoa (weekend specialty). Street stands often better than restaurants! $1-3 per taco. Food tours show best spots. Try everything!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Street food tours: $40-70 (3-4 hours, 8-10 tastings). Market tours: $50-80. Neighborhood tours: $60-90. Mezcal tours: $70-100. Private tours: $200-400 for group. Tours replace meals - excellent value for variety and local access!',
+        },
+        {
+          question: 'What is tacos al pastor?',
+          answer: 'Al pastor is Mexico City\'s signature taco - marinated pork cooked on vertical spit (like shawarma), topped with pineapple, onions, cilantro. Lebanese immigrants created it! It\'s sweet, savory, and incredible. Must-try Mexico City food! $1-3 per taco.',
+        },
+        {
+          question: 'Can vegetarians do food tours?',
+          answer: 'Absolutely! Mexico has excellent vegetarian traditions. Quesadillas with huitlacoche (corn fungus), squash blossoms, cheese. Bean/cheese tacos. Communicate dietary needs when booking. Many tours have vegetarian versions. You won\'t go hungry!',
+        },
+        {
+          question: 'What should I eat in Mexico City?',
+          answer: 'Must-try: Tacos al pastor, tamales, quesadillas, tortas, mole, churros, pan dulce, elote (grilled corn), and aguas frescas. Avoid: Chain restaurants. Mexico City street food is world-class - embrace it with tours guiding you!',
+        },
+        {
+          question: 'Where are the best food markets?',
+          answer: 'Mercado Roma (modern food hall, trendy). Mercado de San Juan (exotic ingredients). Mercado de Coyoacán (traditional, near Frida Museum). Each offers different experience. Roma trendiest, San Juan most adventurous, Coyoacán most traditional. All worth visiting!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Lunch tours (12-3 PM) or dinner tours (6-9 PM). Street food busiest evenings. Market tours best mornings when vendors are fresh. Sunday markets especially lively. Food scene runs daily - book based on schedule!',
+        },
+      ],
+    },
+
+    'teotihuacan-tours': {
+      title: 'Mexico City Teotihuacan Tours',
+      subtitle: 'Explore ancient pyramids and mysterious City of the Gods near Mexico City!',
+      categoryName: 'Teotihuacan Tours',
+      
+      stats: {
+        toursAvailable: 94,
+        priceFrom: 50,
+        duration: '6-10 hours',
+      },
+
+      introduction: `Experience Teotihuacan, the mysterious ancient city 30 miles from Mexico City! These archaeological tours explore one of Mesoamerica's largest ancient cities (200,000 inhabitants at peak!) featuring the massive Pyramid of the Sun (third-largest pyramid in world), Pyramid of the Moon, Avenue of the Dead, Palace of Quetzalpapalotl, and Temple of the Feathered Serpent. Climb pyramids for panoramic views, see original murals, explore residential complexes, and learn about this enigmatic civilization that predates Aztecs by 1,000 years! Tours often include stops at nearby craft villages, pulque tastings, obsidian workshops, and sometimes hot air balloon rides over the pyramids at sunrise. It's Mexico's most visited archaeological site!`,
+
+      seo: {
+        title: 'Mexico City Teotihuacan Tours 2025 - Pyramid Tours & Ancient Ruins',
+        description: 'Experience Teotihuacan from Mexico City! Pyramid of the Sun, ancient ruins, and archaeological tours!',
+        keywords: 'Teotihuacan tours, Pyramid of the Sun, Mexico City day trips, Teotihuacan pyramids, CDMX archaeological tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Pyramid of the Sun',
+          description: 'Third-largest pyramid in world - climb 248 steps to summit!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Ancient Mystery',
+          description: 'Enigmatic civilization older than Aztecs - still many unknowns!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Massive Scale',
+          description: 'Ancient city covered 8 square miles with 200,000 inhabitants!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Easy Day Trip',
+          description: 'Just 30 miles from Mexico City - perfect half-day excursion!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Teotihuacan Tour',
+          description: 'Full tour of pyramids, Avenue of the Dead, and site museum.',
+          features: [
+            '6-8 hours',
+            'Both pyramids',
+            'Expert guide',
+            'Transport',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Hot Air Balloon & Pyramids',
+          description: 'Sunrise balloon flight over Teotihuacan plus ground tour.',
+          features: [
+            '8-10 hours',
+            'Balloon flight',
+            'Sunrise views',
+            'Breakfast',
+            'Bucket-list',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Early Access Tour',
+          description: 'Enter pyramids before crowds for peaceful experience.',
+          features: [
+            '6 hours',
+            'Early entry',
+            'Fewer crowds',
+            'Best photos',
+            'Smart',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Teotihuacan & Guadalupe',
+          description: 'Combine pyramids with Basilica of Guadalupe visit.',
+          features: [
+            '8 hours',
+            'Two sites',
+            'Full day',
+            'Cultural',
+            'Comprehensive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Mexico City Teotihuacan Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 6-8 hours total. At site: 3-4 hours. Early starts (7-8 AM) common.',
+          },
+          {
+            icon: 'Star',
+            title: 'Pyramid Climbing',
+            description: 'Climb Pyramid of the Sun (248 steps) and Pyramid of the Moon (242 steps).',
+          },
+          {
+            icon: 'Heart',
+            title: 'Avenue of the Dead',
+            description: 'Walk 1.5-mile ceremonial avenue connecting pyramids and temples.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Ancient Murals',
+            description: 'See original frescoes with vibrant colors still visible after 1,500 years!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Archaeological Site',
+            description: 'Explore residential areas, palaces, and temple complexes.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Ancient History',
+            description: 'Learn about mysterious civilization, cosmology, and astronomical alignments.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Start early (7-8 AM arrival) - it gets HOT and crowded by 11 AM!',
+        'Pyramid climbing is strenuous at 7,500 feet altitude - take it slow!',
+        'Bring water, sunscreen, hat - minimal shade at archaeological site.',
+        'Entry $5 (site) + $5 (museum) - affordable!',
+        'Hot air balloon tours ($150-200) offer spectacular sunrise views.',
+        'Wear good shoes - site is large (8 sq km) with uneven surfaces.',
+        'Tours include transport (1-hour drive) - much easier than public transit.',
+        'Sundays site is FREE for Mexicans - very crowded!',
+      ],
+
+      faqs: [
+        {
+          question: 'How far is Teotihuacan from Mexico City?',
+          answer: '30 miles northeast (1 hour drive). Tours include transport. Bus possible ($2, 1.5 hours) but complicated. Tours worth it for convenience, guide knowledge, and efficient timing. Day trip totally doable - tours run 6-8 hours total.',
+        },
+        {
+          question: 'Can you climb the pyramids?',
+          answer: 'YES! Pyramid of the Sun: 248 steps. Pyramid of the Moon: 242 steps. It\'s strenuous at 7,500 feet altitude but doable for most. Views from top are spectacular! Rope helps on steep parts. Climb early before heat. Hugely rewarding!',
+        },
+        {
+          question: 'How much does Teotihuacan cost?',
+          answer: 'Site entry: $5. Museum: $5. Tours: $50-80 (includes transport, guide, sometimes lunch). Hot air balloon tours: $150-200. Sundays FREE entry for Mexican nationals (very crowded!). Affordable for incredible experience!',
+        },
+        {
+          question: 'What is Teotihuacan?',
+          answer: 'Teotihuacan was massive ancient city (100 BC - 750 AD) with 200,000 inhabitants! It predates Aztecs who found abandoned ruins and named it "City of the Gods." Pyramid of the Sun is third-largest pyramid globally. UNESCO World Heritage Site. Mexico\'s most visited archaeological site!',
+        },
+        {
+          question: 'Is the hot air balloon worth it?',
+          answer: 'If budget allows, YES! Sunrise balloon flight ($150-200) over pyramids is magical - seeing them from above at dawn. Usually includes breakfast and ground tour. Expensive but bucket-list experience. Regular tour ($50-80) also excellent - choose based on budget!',
+        },
+        {
+          question: 'How long to visit Teotihuacan?',
+          answer: 'At site: 3-4 hours (climb both pyramids, walk Avenue of the Dead, see murals, visit museum). Total with transport: 6-8 hours. Early arrival (8-9 AM) best for photos and fewer crowds. Don\'t rush - it\'s massive site!',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Early morning (8-9 AM arrival) before crowds and heat! Year-round accessible. Dry season (November-April) clearest weather. Avoid Sundays (free entry = packed!). Weekdays least crowded. Summer rainy afternoons - morning visits safer.',
+        },
+        {
+          question: 'What should I bring?',
+          answer: 'Water (dehydrating at altitude!), sunscreen, hat, comfortable shoes, camera, light jacket (mornings cool). Bring cash for souvenirs/snacks. Site has minimal shade - prepare for sun exposure. Weather changes fast - layers helpful!',
+        },
+      ],
+    },
+
+    'neighborhood-tours': {
+      title: 'Mexico City Neighborhood Tours',
+      subtitle: 'Explore Coyoacán, Roma, Condesa, and vibrant Mexico City colonias!',
+      categoryName: 'Neighborhood Tours',
+      
+      stats: {
+        toursAvailable: 78,
+        priceFrom: 40,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Mexico City's diverse neighborhoods (colonias) - each with unique character and culture! Neighborhood tours explore charming Coyoacán (cobblestone streets, Frida Kahlo's house, colonial plazas), trendy Roma and Condesa (Art Nouveau architecture, cafes, galleries), upscale Polanco (luxury shopping, museums), bohemian San Ángel (Saturday art market, colonial charm), and historic Xochimilco (floating gardens and trajineras). Walk tree-lined streets, visit local markets, see street art, explore parks, and discover where chilangos (Mexico City residents) actually live. Learn about neighborhood histories, architectural styles, gentrification, and local culture. It's authentic Mexico City beyond Centro!`,
+
+      seo: {
+        title: 'Mexico City Neighborhood Tours 2025 - Coyoacán, Roma, Condesa & Local Culture',
+        description: 'Explore Mexico City neighborhoods! Coyoacán, Roma, Condesa, and authentic colonias!',
+        keywords: 'Mexico City neighborhoods, Coyoacán tours, Roma Condesa, CDMX colonias, Mexico City walking tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Charming Coyoacán',
+          description: 'Colonial neighborhood where Frida Kahlo lived - cobblestone charm!',
+        },
+        {
+          icon: 'Star',
+          title: 'Trendy Roma-Condesa',
+          description: 'Hipster paradise with Art Nouveau buildings, cafes, and culture!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Authentic Local Life',
+          description: 'Experience where chilangos live beyond tourist areas.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Architectural Beauty',
+          description: 'Colonial, Art Nouveau, Art Deco, and modern architecture!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Coyoacán Walking Tour',
+          description: 'Explore Frida\'s neighborhood with colonial plazas and markets.',
+          features: [
+            '3-4 hours',
+            'Colonial charm',
+            'Frida connection',
+            'Markets',
+            'Charming',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Roma-Condesa Tour',
+          description: 'Discover trendy neighborhoods with cafes, galleries, and architecture.',
+          features: [
+            '3 hours',
+            'Art Nouveau',
+            'Hipster cafes',
+            'Street art',
+            'Trendy',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Xochimilco Trajineras',
+          description: 'Boat ride through floating gardens with mariachi and food.',
+          features: [
+            '4-5 hours',
+            'Colorful boats',
+            'Mariachi',
+            'Food/drinks',
+            'Festive',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Multi-Neighborhood Tour',
+          description: 'Visit 3-4 neighborhoods seeing diverse Mexico City.',
+          features: [
+            '5-6 hours',
+            'Multiple areas',
+            'Van transport',
+            'Comprehensive',
+            'Efficient',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Mexico City Neighborhood Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 3-4 hours. Xochimilco: 4-5 hours. Multi-area: 5-6 hours.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Coyoacán Plazas',
+            description: 'Beautiful colonial squares with churches, cafes, and weekend markets.',
+          },
+          {
+            icon: 'Star',
+            title: 'Art Nouveau Buildings',
+            description: 'Roma-Condesa showcase stunning early 1900s architecture.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Xochimilco Canals',
+            description: 'UNESCO site with colorful trajinera boats, mariachi, and floating vendors.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Street Art',
+            description: 'Roma especially has vibrant murals and urban art.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Local Culture',
+            description: 'Understand how chilangos live, work, and socialize in different areas.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Coyoacán best visited weekends when plazas are liveliest.',
+        'Roma-Condesa perfect for cafe-hopping and afternoon strolls.',
+        'Xochimilco trajinera boats charge per hour ($20-30/hr) - negotiate!',
+        'Bring cash for markets, street vendors, and trajinera boats.',
+        'San Ángel Saturday art market (Bazar Sábado) has quality artisan crafts.',
+        'Polanco is Mexico City\'s most upscale area - designer shopping and dining.',
+        'All neighborhoods walkable and safe daytime - use normal urban precautions.',
+        'Metro efficient for reaching neighborhoods - $0.25 per ride!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Coyoacán?',
+          answer: 'Coyoacán is charming colonial neighborhood with cobblestone streets, plazas, and Frida Kahlo\'s house! It was separate village before Mexico City absorbed it. Bohemian vibe, weekend markets, cafes. Essential Mexico City neighborhood - spend half-day exploring!',
+        },
+        {
+          question: 'What is the difference between Roma and Condesa?',
+          answer: 'Adjacent trendy neighborhoods! Roma: More bohemian, street art, galleries, hipster. Condesa: Upscale, parks (Parque México), Art Deco buildings, restaurants. Both have excellent cafes, nightlife, and walkability. Roma grittier, Condesa prettier. Visit both!',
+        },
+        {
+          question: 'What is Xochimilco?',
+          answer: 'Xochimilco has floating gardens (chinampas) with canal network dating to Aztecs! Rent colorful trajinera boats ($20-30/hour), mariachi bands float by, vendors sell food/drinks. UNESCO World Heritage Site. Festive, uniquely Mexican experience! Best weekends when busiest.',
+        },
+        {
+          question: 'How much do neighborhood tours cost?',
+          answer: 'Walking tours: $40-70 (3-4 hours). Xochimilco: $50-80 (includes trajinera). Multi-neighborhood: $70-100. Free walking tours exist (tip-based). Private: $150-300. Neighborhoods free to explore DIY - tours add context and efficiency!',
+        },
+        {
+          question: 'Can you visit neighborhoods without guide?',
+          answer: 'Yes! Metro reaches all neighborhoods ($0.25!). Coyoacán, Roma-Condesa easily explored solo. However, guides provide history, insider spots, and safety knowledge. Tours efficient and educational. DIY works if researched. Both options good!',
+        },
+        {
+          question: 'Are neighborhoods safe?',
+          answer: 'Coyoacán, Roma, Condesa, Polanco, San Ángel all very safe daytime! Use normal urban precautions. Evening: Stick to main streets in Roma-Condesa (nightlife areas). Xochimilco: Go with tours. Tourist neighborhoods generally secure. Millions visit safely!',
+        },
+        {
+          question: 'What is the best neighborhood to visit?',
+          answer: 'Coyoacán (#1 - colonial charm, Frida Kahlo). Roma-Condesa (trendy, cafes, nightlife). Polanco (upscale, museums). Xochimilco (floating gardens, unique!). Each offers different experience. First-timers: Coyoacán essential. Time allowing: Visit multiple!',
+        },
+        {
+          question: 'When is the best time for neighborhood tours?',
+          answer: 'Weekends liveliest (markets, plazas buzzing). Coyoacán especially vibrant Saturdays/Sundays. Roma-Condesa cafes best mornings/afternoons. Xochimilco Sundays most festive but crowded. Weekdays quieter, more intimate. Year-round accessible!',
+        },
+      ],
+    },
+
+    'cultural-tours': {
+      title: 'Mexico City Cultural Tours',
+      subtitle: 'Experience mariachi, lucha libre, and vibrant Mexican traditions!',
+      categoryName: 'Cultural Tours',
+      
+      stats: {
+        toursAvailable: 68,
+        priceFrom: 55,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Immerse yourself in Mexico City's vibrant cultural scene beyond museums! Cultural tours experience authentic traditions like lucha libre wrestling (masked luchadores in spectacular matches!), mariachi music at Plaza Garibaldi, folkloric ballet at Bellas Artes, Day of the Dead celebrations, traditional markets, artisan workshops (pottery, textiles, silver), and mezcal tastings. Learn about Mexican holidays, music traditions, indigenous crafts, religious festivals, and contemporary culture. Tours include attending lucha libre matches with crowd energy, hearing mariachi in historic plaza, visiting artisan cooperatives, and experiencing traditions passed through generations. See dance performances, witness tequila/mezcal production, and participate in cultural activities. It's Mexico's soul!`,
+
+      seo: {
+        title: 'Mexico City Cultural Tours 2025 - Lucha Libre, Mariachi & Mexican Traditions',
+        description: 'Experience Mexico City culture! Lucha libre, mariachi, traditions, and authentic Mexican heritage!',
+        keywords: 'Mexico City cultural tours, lucha libre, Plaza Garibaldi mariachi, CDMX traditions, Mexican culture',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Lucha Libre',
+          description: 'Experience masked Mexican wrestling - theatrical and thrilling!',
+        },
+        {
+          icon: 'Music',
+          title: 'Mariachi Plaza',
+          description: 'Hear authentic mariachi at historic Plaza Garibaldi!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Living Traditions',
+          description: 'Participate in cultural activities, not just observe!',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Experiences',
+          description: 'Cultural tours show real Mexico beyond tourist shows.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Lucha Libre Night',
+          description: 'Attend wrestling match with masks, tacos, and beer.',
+          features: [
+            '4 hours',
+            'Live wrestling',
+            'Arena atmosphere',
+            'Food included',
+            'Exciting',
+          ],
+        },
+        {
+          icon: 'Music',
+          title: 'Mariachi & Cantina Tour',
+          description: 'Visit Plaza Garibaldi hearing mariachi in traditional cantinas.',
+          features: [
+            '3-4 hours',
+            'Live mariachi',
+            'Cantina culture',
+            'Drinks/food',
+            'Festive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Artisan Workshop Tour',
+          description: 'Visit workshops seeing pottery, textiles, and crafts made.',
+          features: [
+            '4 hours',
+            'Multiple workshops',
+            'Hands-on',
+            'Shopping',
+            'Cultural',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Mezcal & Tequila Tasting',
+          description: 'Learn about and taste Mexico\'s iconic spirits.',
+          features: [
+            '3 hours',
+            'Multiple tastings',
+            'Education',
+            'Traditional',
+            'Fun',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Mexico City Cultural Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-5 hours. Lucha libre: 4 hours evening. Full cultural days: 6+ hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Lucha Libre Match',
+            description: 'Watch masked wrestlers perform acrobatic moves in Arena México or Arena Coliseo!',
+          },
+          {
+            icon: 'Music',
+            title: 'Mariachi Music',
+            description: 'Hear traditional mariachi bands at Plaza Garibaldi - Mexico\'s mariachi epicenter.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Traditional Crafts',
+            description: 'See artisans creating pottery, textiles, silver jewelry using ancient techniques.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Mezcal Culture',
+            description: 'Learn about agave spirits, regional varieties, and proper tasting method.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Education',
+            description: 'Understand Mexican traditions, festivals, and contemporary culture.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Lucha libre Tuesday/Friday/Sunday nights at Arena México - atmosphere is incredible!',
+        'Buy luchador mask ($10-20) at arena - fun souvenir and adds to experience!',
+        'Plaza Garibaldi safe with tours but sketchy alone - go with group!',
+        'Mezcal vs tequila: Mezcal smoky (any agave), tequila smooth (blue agave only).',
+        'Artisan markets: La Ciudadela, San Juan, Coyoacán have quality crafts.',
+        'Folkloric ballet at Bellas Artes (Wednesdays/Sundays) showcases regional dances.',
+        'Day of the Dead (early November) - incredible cultural experience if visiting then!',
+        'Many cultural tours include food/drinks - come moderately hungry.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is lucha libre?',
+          answer: 'Lucha libre is Mexican professional wrestling featuring masked luchadores performing acrobatic moves! It\'s theatrical, athletic, and huge part of Mexican culture. Arena México hosts matches Tuesday/Friday/Sunday. $5-30 tickets. Loud, energetic, family-friendly! Essential Mexico City experience!',
+        },
+        {
+          question: 'How much do lucha libre tours cost?',
+          answer: 'Tours: $55-80 (includes transport, match ticket, guide, often tacos/beer). DIY: $5-30 match ticket + transport. Tours worth it for safety (Arena in rough area), seats, and cultural context. Match tickets cheap but tours enhance experience!',
+        },
+        {
+          question: 'What is Plaza Garibaldi?',
+          answer: 'Plaza Garibaldi is mariachi epicenter where bands gather offering to play for hire ($15-30/song). Surrounding cantinas have live music. Evening atmosphere festive but area can be sketchy - go with tours for safety! Authentic mariachi experience.',
+        },
+        {
+          question: 'Is Plaza Garibaldi safe?',
+          answer: 'With tours, yes! Solo, it can be sketchy (pickpockets, aggressive vendors). Tours provide safety, know good cantinas, and handle negotiations. Don\'t go alone after dark. Daytime safer than evening. Tours worth it for safety and local knowledge.',
+        },
+        {
+          question: 'What is the difference between mezcal and tequila?',
+          answer: 'Both from agave plants. Tequila: Made only from blue agave, Jalisco region, smooth. Mezcal: Any agave species, Oaxaca mainly, smoky (roasted agave). Mezcal artisanal, tequila more industrial. Try both! Mezcal more traditional. Tequila more refined.',
+        },
+        {
+          question: 'Can you buy authentic crafts in Mexico City?',
+          answer: 'Yes! La Ciudadela Market has quality crafts from across Mexico. Coyoacán market good too. San Ángel Saturday art market upscale. Avoid airport shops (overpriced). Look for artisan cooperatives. Prices negotiable at markets. Quality varies - choose carefully!',
+        },
+        {
+          question: 'When is the best time for cultural tours?',
+          answer: 'Year-round! Lucha libre: Tue/Fri/Sun evenings. Plaza Garibaldi: Evenings (7-10 PM). Day of the Dead (late Oct-early Nov) incredible! Markets: Weekends busiest. Folkloric ballet: Wed/Sun at Bellas Artes. Cultural activities run constantly!',
+        },
+        {
+          question: 'Are cultural tours family-friendly?',
+          answer: 'Lucha libre: Yes - families love it! Mariachi: Yes but evening/alcohol. Artisan workshops: Very kid-friendly. Mezcal tours: Adults only. Most cultural activities welcome families. Mexican culture is family-oriented - kids enjoy it!',
+        },
+      ],
+    },
   },
 };
 
