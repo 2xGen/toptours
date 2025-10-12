@@ -24337,5 +24337,183 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  'vancouver': {
+    'stanley-park-tours': {
+      title: 'Vancouver Stanley Park Tours',
+      subtitle: 'Explore 1,000-acre urban park with seawall, totem poles, and forests!',
+      categoryName: 'Stanley Park Tours',
+      
+      stats: {
+        toursAvailable: 68,
+        priceFrom: 40,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Stanley Park - Vancouver's crown jewel and urban paradise! Stanley Park tours explore 1,000-acre park with seawall (10km scenic path!), totem poles at Brockton Point, old-growth forest, beaches, Vancouver Aquarium, and stunning views. Bike or walk the seawall, visit Prospect Point (best views!), see First Nations totem poles, explore forest trails, and enjoy outdoor spaces. Tours include bike rentals, guided walks, Indigenous cultural experiences, and nature education. Learn about park history (1888), conservation efforts, and cultural significance. It's urban forest heaven!`,
+
+      seo: {
+        title: 'Vancouver Stanley Park Tours 2025 - Seawall, Totem Poles & Urban Forest',
+        description: 'Explore Stanley Park! Seawall bike rides, totem poles, and Vancouver\'s iconic park!',
+        keywords: 'Stanley Park tours, Vancouver seawall, Stanley Park bikes, totem poles Vancouver, Vancouver park',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: '1,000-Acre Paradise',
+          description: 'Massive urban park larger than Central Park!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Seawall Path',
+          description: '10km paved path - world\'s longest uninterrupted waterfront path!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Totem Poles',
+          description: 'First Nations totem poles at Brockton Point - iconic!',
+        },
+        {
+          icon: 'Trees',
+          title: 'Old-Growth Forest',
+          description: 'Ancient cedars and hemlocks in heart of city!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Seawall Bike Tour',
+          description: 'Bike full seawall loop with guide.',
+          features: [
+            '2-3 hours',
+            'Bike rental',
+            'Full loop',
+            'Scenic',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Walking Nature Tour',
+          description: 'Explore forest trails with naturalist.',
+          features: [
+            '2 hours',
+            'Forest trails',
+            'Nature',
+            'Educational',
+            'Peaceful',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Indigenous Cultural Tour',
+          description: 'Learn First Nations history with totem poles.',
+          features: [
+            '2 hours',
+            'Totem poles',
+            'Cultural',
+            'Indigenous',
+            'Respectful',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tour',
+          description: 'Capture best park spots with photographer.',
+          features: [
+            '3 hours',
+            'Photo-focused',
+            'Multiple locations',
+            'Expert tips',
+            'Beautiful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Vancouver Stanley Park Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Bike seawall: 2-3 hours. Walking tours: 2 hours. Full park day: 4-6 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Seawall Path',
+            description: '10km paved path around park - bike, walk, rollerblade, stunning views!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Totem Poles',
+            description: 'Brockton Point has First Nations totem poles - photo must!',
+          },
+          {
+            icon: 'Trees',
+            title: 'Forest Trails',
+            description: 'Old-growth cedars, quiet paths, escape city bustle!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Prospect Point',
+            description: 'Highest point in park - best Lions Gate Bridge and mountain views!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Beaches',
+            description: 'Third Beach, Second Beach pools, English Bay - swim spots!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Bike seawall counter-clockwise - designated direction!',
+        'Spokes Bicycle Rentals at park entrance - $8-15/hour.',
+        'FREE to visit park - bike rental and aquarium cost extra.',
+        'Prospect Point has cafe and best viewpoint - worth visiting.',
+        'Totem poles at Brockton Point FREE - no guide needed but cultural tours add context.',
+        'Seawall busy weekends - weekday mornings quieter.',
+        'Full loop 10km (6.2 mi) - moderate fitness, 1-2 hours biking.',
+        'Third Beach best for sunset - locals\' favorite spot.',
+      ],
+
+      faqs: [
+        {
+          question: 'How long to spend at Stanley Park?',
+          answer: '2-3 hours for seawall bike ride. Half-day (4-5 hours) for thorough visit with forest, beaches, totem poles. Full day possible with aquarium. Flexible - quick visit or all day works!',
+        },
+        {
+          question: 'Can you bike Stanley Park?',
+          answer: 'YES - best way to see it! Seawall 10km paved path. Bike rentals $8-15/hour. Counter-clockwise direction required. Separate path for walkers. 1-2 hours for full loop. Most popular park activity!',
+        },
+        {
+          question: 'Is Stanley Park free?',
+          answer: 'Completely FREE! Seawall, totem poles, forest trails, beaches all free. Bike rental costs money. Aquarium $38 (separate attraction). Parking $3/hour. Otherwise free urban paradise - incredible value!',
+        },
+        {
+          question: 'Where are the totem poles?',
+          answer: 'Brockton Point (east side of park near seawall). Nine totem poles representing different First Nations. FREE to visit. Most photographed spot in park. Cultural significance - respectful viewing. 15 min from park entrance.',
+        },
+        {
+          question: 'Can you walk Stanley Park?',
+          answer: 'Absolutely! Seawall 10km walk (2-3 hours). Many shorter forest trails. Walking fine but bike covers more ground. Combine walking forest trails + biking seawall perfect! Both activities popular.',
+        },
+        {
+          question: 'What is Prospect Point?',
+          answer: 'Prospect Point is highest point in Stanley Park - best Lions Gate Bridge views! Cafe, gift shop, overlook. FREE viewpoint. Great photo spot. 15 min bike from entrance. Worth visiting for panoramic Vancouver and mountains!',
+        },
+        {
+          question: 'Is Vancouver Aquarium worth it?',
+          answer: 'Worth it if you like aquariums! $38 adults. Marine mammals, fish, conservation focus. 2-3 hours. Good for families, rainy days. Not essential for Stanley Park visit - aquarium separate from park proper. Skip if budget/time limited.',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Summer (June-Sept): Best weather, long days, perfect! Fall: Beautiful foliage. Winter: Mild but rainy (Vancouver!). Spring: Cherry blossoms nearby. Year-round accessible. Mornings less crowded. Sunset at Third Beach magical!',
+        },
+      ],
+    },
+  },
 };
 
