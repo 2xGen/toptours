@@ -379,6 +379,7 @@ export default function DestinationDetailClient({ destination }) {
                       const categorySlug = categoryName.toLowerCase()
                         .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
                         .replace(/&/g, 'and')
+                        .replace(/'/g, '') // Remove apostrophes
                         .replace(/ /g, '-');
                       
                       return hasGuide ? (
