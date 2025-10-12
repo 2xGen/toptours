@@ -25395,5 +25395,183 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  'washington-dc': {
+    'national-mall-tours': {
+      title: 'Washington D.C. National Mall Tours',
+      subtitle: 'Explore iconic monuments, memorials, and American history on the Mall!',
+      categoryName: 'National Mall Tours',
+      
+      stats: {
+        toursAvailable: 124,
+        priceFrom: 45,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Discover the National Mall - America's front yard and iconic heart of Washington D.C.! National Mall tours explore 2-mile stretch from Capitol to Lincoln Memorial with Washington Monument, WWII Memorial, Vietnam Veterans Memorial, Korean War Memorial, and reflecting pools. Walk historic grounds where MLK spoke, protests happened, and history was made. Visit Smithsonian museums lining the Mall, experience powerful memorials, and understand American democracy. Tours include guided walks, tram rides, bike tours, and segway experiences. It's American history concentrated!`,
+
+      seo: {
+        title: 'Washington D.C. National Mall Tours 2025 - Monuments, Memorials & Smithsonian',
+        description: 'Explore National Mall! Monuments, memorials, museums, and D.C. history tours!',
+        keywords: 'National Mall tours, Washington DC monuments, National Mall, DC memorials, Smithsonian tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'American Icons',
+          description: 'Lincoln Memorial, Washington Monument - most famous symbols!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Free Access',
+          description: 'All monuments and most museums FREE - incredible value!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Living History',
+          description: 'Where MLK spoke, protests march, democracy celebrated!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photo Paradise',
+          description: 'Iconic backdrops - every American has seen these!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Walking Tour',
+          description: 'Comprehensive walk covering major monuments.',
+          features: [
+            '3-4 hours',
+            'All major sites',
+            'Expert guide',
+            'History',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Night Tour',
+          description: 'Evening tour with illuminated monuments.',
+          features: [
+            '3 hours',
+            'Night views',
+            'Lit monuments',
+            'Magical',
+            'Beautiful',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Bike or Segway Tour',
+          description: 'Cover more ground efficiently.',
+          features: [
+            '3 hours',
+            'Bike/Segway',
+            'More monuments',
+            'Efficient',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Full-Day Mall Tour',
+          description: 'Monuments + select Smithsonian museums.',
+          features: [
+            '6-8 hours',
+            'Comprehensive',
+            'Museums included',
+            'Full day',
+            'Thorough',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Washington D.C. National Mall Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking: 3-4 hours. Night tour: 3 hours. Bike: 3 hours. Full day: 6-8 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Lincoln Memorial',
+            description: 'Iconic seated Lincoln where MLK gave "I Have a Dream" speech!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Washington Monument',
+            description: '555-foot obelisk - tallest structure in DC, tickets required!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Reflecting Pool',
+            description: 'Mirror pool between Lincoln and WWII Memorial - iconic view!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'War Memorials',
+            description: 'WWII, Vietnam, Korean War - powerful and moving tributes!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Smithsonian Museums',
+            description: '11 museums line the Mall - all FREE! Plan which to visit.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'ALL monuments FREE! Washington Monument requires free timed tickets.',
+        'Night tours magical - monuments beautifully lit, less crowded.',
+        'National Mall is 2 miles - wear comfortable shoes!',
+        'Cherry blossoms (late March-early April) incredibly beautiful but packed.',
+        'Summer hot/humid - bring water, start early or go evening.',
+        'Many Smithsonians on Mall - Air & Space, Natural History most popular.',
+        'Bike/Segway tours cover more monuments efficiently.',
+        'Security checkpoints at some monuments - allow time.',
+      ],
+
+      faqs: [
+        {
+          question: 'How long to see National Mall?',
+          answer: 'Half-day (3-4 hours) for major monuments walking. Full day (6-8 hours) with museums. Can spend days! Budget minimum 4 hours. Don\'t rush - it\'s massive and meaningful!',
+        },
+        {
+          question: 'Is National Mall free?',
+          answer: 'Completely FREE! All monuments, most museums (Smithsonian), grounds. Washington Monument requires free timed ticket (reserve online). Most affordable major tourist destination! Donations appreciated but not required.',
+        },
+        {
+          question: 'What monuments are on National Mall?',
+          answer: 'Lincoln Memorial, Washington Monument, WWII Memorial, Vietnam Veterans, Korean War, FDR Memorial, MLK Memorial, Jefferson Memorial (Tidal Basin). All FREE! Each powerful and historic. Plan to see multiple!',
+        },
+        {
+          question: 'Do you need tour guide?',
+          answer: 'Not essential - monuments accessible yourself! However, guides provide historical context, stories, significance you\'d miss. First-timers: Tours recommended. Return visitors: Self-guided works. Both valid!',
+        },
+        {
+          question: 'Can you see everything in one day?',
+          answer: 'All monuments: Yes, if efficient (bike/segway helps!). Monuments + museums: No - choose priorities. Most visitors: Focus on top monuments + 1-2 museums. Plan 2-3 days for thorough visit. Don\'t rush history!',
+        },
+        {
+          question: 'When are monuments lit at night?',
+          answer: 'All night, every night! Beautiful after dark - less crowded, dramatic lighting. Night tours (7-10 PM) popular. Safest after dark destination in DC. Lincoln Memorial especially magical lit up!',
+        },
+        {
+          question: 'What is the best time to visit National Mall?',
+          answer: 'Cherry Blossom season (late March-early April): Beautiful but PACKED! Spring/fall: Perfect weather, fewer crowds. Summer: Hot/humid but full hours. Winter: Cold but manageable, least crowded. Early morning or evening avoid crowds!',
+        },
+        {
+          question: 'How much do National Mall tours cost?',
+          answer: 'Monuments: FREE! Walking tours: $45-75 (3-4 hours). Night tours: $50-80. Bike tours: $55-90. Segway: $70-100. Self-guided FREE - tours add context and efficiency. Mix of free and paid options!',
+        },
+      ],
+    },
+  },
 };
 
