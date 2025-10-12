@@ -24514,6 +24514,182 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'granville-island-tours': {
+      title: 'Vancouver Granville Island Tours',
+      subtitle: 'Explore public market, artisan studios, and waterfront charm!',
+      categoryName: 'Granville Island Tours',
+      
+      stats: {
+        toursAvailable: 52,
+        priceFrom: 35,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Granville Island - Vancouver's beloved public market and cultural hub! Granville Island tours explore Public Market (local produce, artisan foods!), craft studios, theatres, galleries, waterfront walkways, and vibrant atmosphere. Sample fresh foods, watch artists at work, browse handmade crafts, enjoy street performers, and experience local culture. Visit breweries, Granville Island Brewing (Canada's first micro-brewery!), Kids Market, and waterfront dining. Tours include market tastings, artisan visits, and cultural insights. Accessible by foot, water taxi, or Aquabus ferry. It's foodie and culture paradise!`,
+
+      seo: {
+        title: 'Vancouver Granville Island Tours 2025 - Public Market, Artisans & Food',
+        description: 'Explore Granville Island! Public Market, artisan studios, and Vancouver culture!',
+        keywords: 'Granville Island, Vancouver Public Market, Granville Island tours, Vancouver food market, artisan',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Public Market',
+          description: 'Fresh produce, artisan foods, bakeries - foodie heaven!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Artisan Studios',
+          description: 'Watch artists create - glassblowing, jewelry, crafts!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Waterfront Location',
+          description: 'False Creek setting with Aquabus ferry access!',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Vibe',
+          description: 'Authentic Vancouver - locals shop here daily!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Market Food Tour',
+          description: 'Taste your way through Public Market.',
+          features: [
+            '2-3 hours',
+            '6-8 tastings',
+            'Market vendors',
+            'Delicious',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Artisan Workshop Tour',
+          description: 'Visit studios watching artists at work.',
+          features: [
+            '2 hours',
+            'Artist studios',
+            'Glassblowing',
+            'Cultural',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Brewery Tour',
+          description: 'Granville Island Brewing + craft beer scene.',
+          features: [
+            '2 hours',
+            'Brewery',
+            'Tastings',
+            'Beer history',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Complete Island Experience',
+          description: 'Market, studios, brewery, waterfront combo.',
+          features: [
+            '4 hours',
+            'Comprehensive',
+            'All highlights',
+            'Flexible',
+            'Full experience',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Vancouver Granville Island Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Market visit: 1-2 hours. Food tour: 2-3 hours. Full island: 4 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Public Market',
+            description: 'Fresh produce, seafood, bakeries, cheese, flowers - sensory overload!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Lee\'s Donuts',
+            description: 'Famous mini donuts - must-try Granville Island tradition!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Artisan Studios',
+            description: 'Glassblowing, jewelry making, potters - watch artists create!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Aquabus Ferry',
+            description: 'Cute mini ferries ($3.50) - fun transport to island!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Local Culture',
+            description: 'Experience authentic Vancouver - not tourist trap but real community hub.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Arrive early (9-10 AM) - market freshest, less crowded.',
+        'Lee\'s Donuts line long but worth it - mini donuts legendary!',
+        'Aquabus or False Creek Ferry ($3.50) fun way to arrive from downtown.',
+        'Free to visit - only pay for food/products you buy.',
+        'Kids Market has toy shops - great if traveling with children.',
+        'Granville Island Brewing tours ($15) include samples.',
+        'Saturday busiest - weekdays easier for shopping.',
+        'Combine with seawall bike ride for perfect half-day.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Granville Island?',
+          answer: 'Granville Island is peninsula under Granville Bridge - Public Market, artisan studios, theatres, galleries! Former industrial area transformed 1970s. Food paradise, cultural hub, waterfront charm. Essential Vancouver experience - locals and tourists love it!',
+        },
+        {
+          question: 'Is Granville Island worth visiting?',
+          answer: 'Absolutely! Best public market in Vancouver, artisan culture, waterfront beauty. 2-4 hours sufficient. Great for food lovers, shoppers, culture seekers. FREE to visit (pay only for purchases). Must-see Vancouver attraction!',
+        },
+        {
+          question: 'How do you get to Granville Island?',
+          answer: 'Walk (15 min from downtown), Aquabus ferry ($3.50 from downtown/Yaletown - fun!), drive (parking $3/hour), bus (#50). Ferry most scenic! Multiple access options. Under Granville Bridge.',
+        },
+        {
+          question: 'What should I buy at Public Market?',
+          answer: 'Lee\'s Donuts (must-try!), fresh salmon, artisan cheese, baked goods, flowers, local produce. Eat fresh: Oysters, fish tacos, crepes. Gifts: Jams, sauces, crafts. Everything fresh and local - shopping paradise!',
+        },
+        {
+          question: 'Is Granville Island expensive?',
+          answer: 'Moderate! Market food reasonable ($10-20/meal). Artisan products range. Lee\'s Donuts cheap ($6). Restaurant dining pricier. Budget-friendly for quality - comparable to any fresh market. Worth the value for fresh, local!',
+        },
+        {
+          question: 'How long to spend at Granville Island?',
+          answer: '2-3 hours for market + browsing. Half-day (4 hours) includes brewery, studios, waterfront. Flexible - quick market visit (1 hour) or linger all afternoon. Locals spend hours - relax and enjoy!',
+        },
+        {
+          question: 'What is Lee\'s Donuts?',
+          answer: 'Lee\'s Donuts makes famous mini donuts fresh! Line always long (worth wait). Cinnamon sugar classic. Warm, fresh, delicious. Granville Island institution since 1979. $6 for bag. Vancouver tradition - must-try!',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Weekday mornings (9-11 AM): Fresh, less crowded, best shopping. Saturday: Busiest but full energy. Sunday: Relaxed. Year-round operation. Summer: Outdoor seating perfect. Winter: Cozy indoor market. Always good!',
+        },
+      ],
+    },
   },
 };
 
