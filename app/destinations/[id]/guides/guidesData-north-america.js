@@ -9523,5 +9523,1063 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  miami: {
+    'south-beach-tours': {
+      title: 'Miami South Beach Tours',
+      subtitle: 'Experience iconic SoBe with Art Deco, beaches, and vibrant Ocean Drive!',
+      categoryName: 'South Beach Tours',
+      
+      stats: {
+        toursAvailable: 108,
+        priceFrom: 45,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience South Beach (SoBe) - Miami's most iconic neighborhood with Art Deco architecture, white-sand beaches, and legendary Ocean Drive! South Beach tours explore the famous Art Deco Historic District (800+ pastel buildings from 1920s-40s), Lincoln Road pedestrian mall, Ocean Drive with sidewalk cafes, pristine beaches, and vibrant nightlife scene. Walk past hotels where celebrities stay, see where Miami Vice was filmed, visit Versace Mansion, and experience the energy that defines Miami. Tours include architectural walks, beach time, food stops, and photo opportunities at iconic spots. Learn about Miami Beach's transformation from mangrove swamps to international glamour destination. It's tropical sophistication and beach culture combined!`,
+
+      seo: {
+        title: 'Miami South Beach Tours 2025 - Ocean Drive & Art Deco District',
+        description: 'Experience Miami South Beach! Art Deco architecture, Ocean Drive, beaches, and SoBe culture!',
+        keywords: 'South Beach tours, Miami Beach, Ocean Drive, Art Deco Miami, SoBe tours, Miami beaches',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Art Deco District',
+          description: 'Largest collection of Art Deco architecture in the world - 800+ buildings!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Beautiful Beaches',
+          description: 'White sand, turquoise water, and year-round warm swimming!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Ocean Drive',
+          description: 'Iconic street with pastel buildings, sidewalk cafes, and beach views!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Glamorous Atmosphere',
+          description: 'Celebrity sightings, fashion shoots, and vibrant energy!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Art Deco Walking Tour',
+          description: 'Explore historic district learning architecture and history.',
+          features: [
+            '2 hours',
+            'Architecture focus',
+            'Expert guide',
+            '800+ buildings',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Beach & Ocean Drive Tour',
+          description: 'Walk Ocean Drive with beach time and café stops.',
+          features: [
+            '3 hours',
+            'Beach access',
+            'Ocean Drive',
+            'Photo ops',
+            'Relaxing',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'SoBe Bike Tour',
+          description: 'Cycle through South Beach seeing highlights efficiently.',
+          features: [
+            '2-3 hours',
+            'Bike included',
+            'Multiple stops',
+            'Active',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunset Beach Tour',
+          description: 'Evening tour capturing golden hour on South Beach.',
+          features: [
+            '2 hours',
+            'Sunset timing',
+            'Beach views',
+            'Romantic',
+            'Beautiful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Miami South Beach Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Beach tours: 3-4 hours. Bike: 2-3 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Art Deco Buildings',
+            description: 'See pastel-colored 1920s-40s architecture with porthole windows and nautical themes.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Ocean Drive',
+            description: 'Walk Miami\'s most famous street lined with cafes and beach views.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Beach Access',
+            description: 'Beautiful white-sand beaches with warm water year-round.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Versace Mansion',
+            description: 'See Casa Casuarina where Gianni Versace lived (now restaurant/hotel).',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Miami History',
+            description: 'Learn about Miami Beach\'s evolution from swampland to glamour capital.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Art Deco tours best morning (9-10 AM) before heat and crowds.',
+        'Ocean Drive most photogenic early morning or evening - midday harsh light.',
+        'Beach access FREE - bring towel, chairs available to rent.',
+        'Lincoln Road pedestrian mall great for shopping and dining.',
+        'Versace Mansion ($50-75) now restaurant - expensive but historic!',
+        'Parking nightmare - use tours, Uber, or trolley (50¢!).',
+        'South Beach safe daytime but use caution at night - party scene can be rowdy.',
+        'Bring sunscreen - Miami sun intense year-round!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is South Beach known for?',
+          answer: 'South Beach (SoBe) famous for Art Deco architecture, beautiful beaches, Ocean Drive cafes, nightlife, and glamorous atmosphere. It\'s Miami\'s most iconic area with 800+ pastel Art Deco buildings! Celebrities, models, fashion shoots. Year-round warm weather. Essential Miami!',
+        },
+        {
+          question: 'Is South Beach worth visiting?',
+          answer: 'Absolutely! Even if you don\'t beach, the Art Deco architecture and Ocean Drive are iconic. Beautiful beaches, great restaurants, vibrant energy. Can be crowded and touristy but that\'s part of experience. First-time Miami visitors must see SoBe!',
+        },
+        {
+          question: 'Can you swim at South Beach?',
+          answer: 'Yes! Beautiful beaches with lifeguards, warm water (75-85°F), and gentle waves. Swimming year-round. Beach FREE - just bring towel. Chair/umbrella rentals available ($15-25). Weekends crowded. Arrive early for good spots!',
+        },
+        {
+          question: 'What is Ocean Drive?',
+          answer: 'Ocean Drive is iconic street running along South Beach lined with colorful Art Deco hotels and sidewalk cafes. It\'s postcard Miami - palm trees, pastel buildings, beach views! Very touristy (expensive cafes) but worth walking. FREE to stroll!',
+        },
+        {
+          question: 'How much do South Beach tours cost?',
+          answer: 'Art Deco walking tours: $45-70 (2 hours). Bike tours: $50-75 (2-3 hours). Beach tours: $40-60. Free self-guided walking possible. Tours provide context and architecture knowledge. Budget option: Miami trolley 50¢!',
+        },
+        {
+          question: 'Is South Beach safe?',
+          answer: 'Safe daytime with normal urban caution. Evening: Stick to busy areas (Ocean Drive, Lincoln Road). Late night can be rowdy (party scene). Watch belongings on beach. Use hotel safes. Millions visit safely - common sense required!',
+        },
+        {
+          question: 'When is the best time to visit South Beach?',
+          answer: 'Year-round warm! Winter (Dec-April): Perfect 70-80°F, peak season, crowded. Summer (June-Aug): Hot and humid (90°F+), afternoon thunderstorms, fewer crowds. Spring/fall ideal. Avoid spring break (March) if seeking calm!',
+        },
+        {
+          question: 'Can you walk Ocean Drive?',
+          answer: 'Yes! Ocean Drive is 1.5 miles - totally walkable. It\'s FREE, lined with cafes and Art Deco hotels. Best walked morning (9-10 AM) or evening (sunset). Midday very hot. Bring camera - it\'s incredibly photogenic!',
+        },
+      ],
+    },
+
+    'art-deco-tours': {
+      title: 'Miami Art Deco Tours',
+      subtitle: 'Explore world\'s largest Art Deco district with pastel buildings and 1930s glamour!',
+      categoryName: 'Art Deco Tours',
+      
+      stats: {
+        toursAvailable: 42,
+        priceFrom: 40,
+        duration: '1.5-3 hours',
+      },
+
+      introduction: `Discover Miami Beach's Art Deco Historic District - the world's largest collection of Art Deco architecture! With 800+ buildings from the 1920s-40s, this National Register district showcases Streamline Moderne, Mediterranean Revival, and tropical Art Deco styles. Tours explore iconic hotels like The Carlyle, Colony, and Breakwater with their pastel facades, porthole windows, neon signs, and nautical themes. Learn about preservation efforts that saved these buildings from demolition in 1970s-80s, architectural elements (eyebrows, fins, terrazzo floors), and how Miami Beach became synonymous with Art Deco glamour. Expert guides share stories of Miami's boom era, famous architects, and ongoing restoration. It's architecture and history lesson combined!`,
+
+      seo: {
+        title: 'Miami Art Deco Tours 2025 - Historic District & 1930s Architecture',
+        description: 'Explore Miami Art Deco! Historic district walking tours, pastel buildings, and architectural heritage!',
+        keywords: 'Miami Art Deco tours, Art Deco District Miami Beach, Miami architecture tours, SoBe Art Deco',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Largest Collection',
+          description: 'World\'s largest Art Deco district - 800+ preserved buildings!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Pastel Paradise',
+          description: 'Iconic pastel colors, neon signs, and tropical Deco style!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photogenic',
+          description: 'Every corner is Instagram-worthy with unique architecture!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Preservation Story',
+          description: 'Learn how community saved buildings from demolition.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Deco Walking Tour',
+          description: 'Expert-led walk through historic district seeing highlights.',
+          features: [
+            '90 minutes',
+            'Ocean Drive',
+            'Collins Avenue',
+            'Architecture focus',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Evening Neon Tour',
+          description: 'See Art Deco at night when neon signs are lit.',
+          features: [
+            '2 hours',
+            'Night views',
+            'Neon lights',
+            'Photo ops',
+            'Magical',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Interior Tours',
+          description: 'Visit hotel lobbies and interiors seeing period details.',
+          features: [
+            '2 hours',
+            'Interior access',
+            'Lobbies',
+            'Terrazzo floors',
+            'Detailed',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tour',
+          description: 'Focus on photographing best Art Deco facades and details.',
+          features: [
+            '2-3 hours',
+            'Photo focus',
+            'Best angles',
+            'Lighting tips',
+            'Creative',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Miami Art Deco Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 90 minutes to 2 hours. Bike tours: 2-3 hours covering more ground.',
+          },
+          {
+            icon: 'Star',
+            title: 'Architectural Elements',
+            description: 'Learn about eyebrows, fins, porthole windows, and nautical themes.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Pastel Buildings',
+            description: 'See iconic pink, yellow, turquoise buildings lining Ocean Drive.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Neon Signs',
+            description: 'Restored vintage neon signs lighting up at night - spectacular!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Preservation History',
+            description: 'Understand 1970s-80s fight to save buildings from demolition.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Famous Hotels',
+            description: 'Visit Colony, Carlyle, Breakwater - icons of Art Deco Miami.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Art Deco Welcome Center offers free brochures and self-guided maps.',
+        'Thursday evenings Miami Design Preservation League offers $30 walking tours.',
+        'Best photo times: Morning (soft light) or blue hour (just after sunset).',
+        'Bike tours cover more buildings efficiently - rent bikes ($10-15/hour).',
+        'Many hotels have beautiful lobbies open to public - peek inside!',
+        'Combine Art Deco tour with beach time for full SoBe experience.',
+        'Terrazzo floors in lobbies are original 1930s - beautiful craftsmanship!',
+        'Evening neon tours show different perspective - buildings lit dramatically.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Art Deco?',
+          answer: 'Art Deco is 1920s-30s architectural style with geometric patterns, streamlined shapes, and decorative elements. Miami\'s version adds tropical pastels, nautical themes (portholes, ship railings), and "eyebrow" sun shades. It\'s distinctive Miami Beach look!',
+        },
+        {
+          question: 'How many Art Deco buildings are in Miami?',
+          answer: '800+ Art Deco buildings in South Beach Historic District - world\'s largest concentration! Mostly from 1923-1943. The district is National Register of Historic Places. Ocean Drive and Collins Avenue have highest concentration. Unique architectural treasure!',
+        },
+        {
+          question: 'Are Art Deco tours worth it?',
+          answer: 'Yes for architecture fans! Guides explain elements you\'d miss solo (eyebrows, fins, symbolism). $40-70 for 90-minute tours. However, self-guided walking also works (free maps available). Tours add context and stories. Choose based on architecture interest!',
+        },
+        {
+          question: 'Can you go inside Art Deco buildings?',
+          answer: 'Hotel lobbies often accessible! Many have beautiful original terrazzo floors, murals, and furnishings. Versace Mansion is now restaurant (expensive). Tours sometimes arrange interior access. Most viewing is exterior but lobbies worth peeking into!',
+        },
+        {
+          question: 'What is the Versace Mansion?',
+          answer: 'Casa Casuarina is where Gianni Versace lived and was murdered 1997. It\'s now boutique hotel and restaurant. You can dine ($50+ lunch, $150+ dinner) or book room ($1,000+/night). Tours show exterior. Iconic but tragic Miami landmark.',
+        },
+        {
+          question: 'When is the best time for Art Deco tours?',
+          answer: 'Morning (9-10 AM) before heat and crowds - best photos in soft light! Evening tours (7 PM+) show neon signs lit. Avoid midday (too hot, harsh light). Year-round accessible. Weekdays less crowded than weekends.',
+        },
+        {
+          question: 'Can you walk the Art Deco district yourself?',
+          answer: 'Yes! It\'s compact and walkable. Get free map from Art Deco Welcome Center (1001 Ocean Drive). Ocean Drive and Collins Avenue main streets. Self-guided saves money. Tours provide expertise worth it for architecture enthusiasts. Both options work!',
+        },
+        {
+          question: 'What should I see in Art Deco District?',
+          answer: 'Must-see: Colony Hotel (iconic sign), The Carlyle (Birdcage movie location), Breakwater, Versace Mansion, Clevelander. Walk entire Ocean Drive (1.5 miles). Lincoln Road also has Deco buildings. All within walking distance. Plan 2-3 hours minimum.',
+        },
+      ],
+    },
+
+    'little-havana-tours': {
+      title: 'Miami Little Havana Tours',
+      subtitle: 'Experience vibrant Cuban culture, authentic cuisine, and Latin spirit!',
+      categoryName: 'Little Havana Tours',
+      
+      stats: {
+        toursAvailable: 86,
+        priceFrom: 40,
+        duration: '3-4 hours',
+      },
+
+      introduction: `Discover Little Havana - Miami's vibrant Cuban neighborhood pulsing with Latin culture! Little Havana tours explore Calle Ocho (SW 8th Street), the heart of Cuban Miami, with cigar shops, domino parks (Máximo Gómez Park where locals play dominoes), Cuban restaurants, art galleries, and Latin music venues. Experience Cuban coffee at ventanitas (walk-up windows), watch cigars being hand-rolled, hear live salsa music, see colorful murals, and visit memorials to Cuban heroes. Tours include food tastings (Cuban sandwiches, empanadas, pastelitos), cultural insights, and visits to Ball & Chain (historic bar with live music). Learn about Cuban exile history, how Miami became second Cuban capital, and traditions preserved in this community. It's cultural immersion!`,
+
+      seo: {
+        title: 'Miami Little Havana Tours 2025 - Cuban Culture & Calle Ocho',
+        description: 'Experience Little Havana! Cuban culture, food, cigars, and authentic Miami Latin neighborhood!',
+        keywords: 'Little Havana tours, Miami Cuban culture, Calle Ocho, Little Havana Miami, Cuban food tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Cuban Culture',
+          description: 'Experience Cuba in Miami - language, food, music, traditions!',
+        },
+        {
+          icon: 'Music',
+          title: 'Live Salsa & Latin Music',
+          description: 'Hear authentic Cuban music at venues and on streets!',
+        },
+        {
+          icon: 'Star',
+          title: 'Cuban Cuisine',
+          description: 'Taste authentic Cuban sandwiches, empanadas, and café cubano!',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Community',
+          description: 'Meet Cuban residents and hear exile stories.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Little Havana Food Tour',
+          description: 'Sample Cuban cuisine with 6-8 tastings along Calle Ocho.',
+          features: [
+            '3-4 hours',
+            'Cuban food',
+            '6-8 tastings',
+            'Cultural stories',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Music',
+          title: 'Cultural Walking Tour',
+          description: 'Explore culture, music, cigars, and community.',
+          features: [
+            '2-3 hours',
+            'Cultural focus',
+            'Cigar shop',
+            'Domino park',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Cuban Music & Dance',
+          description: 'Experience live salsa with dancing and music venues.',
+          features: [
+            '3 hours',
+            'Live music',
+            'Dance lesson',
+            'Ball & Chain',
+            'Festive',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Cigar & Rum Tasting',
+          description: 'Visit cigar factories and taste Cuban-style rum.',
+          features: [
+            '2-3 hours',
+            'Cigar rolling',
+            'Rum tasting',
+            'Cultural',
+            'Unique',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Miami Little Havana Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with food, culture, and walking through neighborhood.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Cuban Sandwich',
+            description: 'Try authentic Cubano - ham, roast pork, Swiss, pickles, mustard, pressed!',
+          },
+          {
+            icon: 'Star',
+            title: 'Café Cubano',
+            description: 'Strong, sweet espresso served at ventanitas (walk-up windows) - $1!',
+          },
+          {
+            icon: 'Music',
+            title: 'Live Salsa',
+            description: 'Hear traditional Cuban music at Ball & Chain and street musicians.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Domino Park',
+            description: 'Watch elderly Cuban men play dominoes at Máximo Gómez Park.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Exile Stories',
+            description: 'Learn about Cuban immigration and community building in Miami.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Café cubano at ventanitas is $1 - sweet, strong espresso is Little Havana essential!',
+        'Ball & Chain bar has live salsa nightly - great for dancing!',
+        'Friday evening "Viernes Culturales" (Cultural Fridays) has street festival - best time!',
+        'Cuban sandwich debate: Versailles vs. Sanguich - try both!',
+        'Watch cigars being hand-rolled - fascinating and free to observe.',
+        'Bring cash - many small businesses are cash-only.',
+        'Learn basic Spanish - most residents speak Spanish primarily.',
+        'Tours combine food with culture - come moderately hungry!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Little Havana known for?',
+          answer: 'Little Havana is Miami\'s Cuban neighborhood famous for authentic Cuban culture, food, cigars, and community. Calle Ocho (8th Street) is main drag with restaurants, cigar shops, domino parks. It\'s like visiting Cuba without leaving Miami! Essential cultural experience.',
+        },
+        {
+          question: 'What should I eat in Little Havana?',
+          answer: 'Must-try: Cuban sandwich (Cubano), café cubano, croquetas, empanadas, pastelitos (guava pastries), ropa vieja, and lechón asado. Versailles restaurant most famous ($10-15 meals). Ventanitas for quick coffee/snacks. Food is authentic and affordable!',
+        },
+        {
+          question: 'How much do Little Havana tours cost?',
+          answer: 'Food tours: $40-75 (3-4 hours, 6-8 tastings). Cultural walking tours: $35-60 (2-3 hours). Music/dance tours: $50-80. Private: $150-300 for group. Tours replace meals - good value for tastings and cultural education!',
+        },
+        {
+          question: 'Can you visit Little Havana without a tour?',
+          answer: 'Yes! Calle Ocho is public street - walk freely. Visit Versailles, Domino Park, cigar shops independently. However, tours provide context, best food spots, and cultural stories you\'d miss. DIY works but tours enhance experience significantly!',
+        },
+        {
+          question: 'What is Viernes Culturales?',
+          answer: 'Viernes Culturales (Cultural Fridays) is last Friday each month street festival on Calle Ocho. Live music, food vendors, art galleries open, street performers. 7 PM-11 PM. FREE! It\'s Little Havana\'s biggest party - perfect time to visit!',
+        },
+        {
+          question: 'Is Little Havana safe?',
+          answer: 'Yes! Tourist areas along Calle Ocho safe daytime. Evening: Stick to main streets and busy areas. Use normal urban caution. Tours very safe. Locals friendly and welcoming. Millions visit safely - it\'s established tourist area.',
+        },
+        {
+          question: 'Do people speak English in Little Havana?',
+          answer: 'Spanish is primary language - many residents are first-generation Cuban immigrants. However, tourist areas have English speakers. Restaurants, shops, tour guides speak English. Learning basic Spanish helps but not essential. Part of authentic cultural experience!',
+        },
+        {
+          question: 'When is the best time to visit Little Havana?',
+          answer: 'Viernes Culturales (last Friday monthly) best for festival atmosphere! Otherwise, year-round. Afternoon/evening (3-8 PM) when cafes and music venues are busiest. Weekends lively. Domino park most active mornings. Tours run daily.',
+        },
+      ],
+    },
+
+    'beach-and-water-sports': {
+      title: 'Miami Beach & Water Sports',
+      subtitle: 'Snorkel, jet ski, and enjoy tropical water activities in warm Atlantic waters!',
+      categoryName: 'Beach & Water Sports',
+      
+      stats: {
+        toursAvailable: 142,
+        priceFrom: 50,
+        duration: '2-6 hours',
+      },
+
+      introduction: `Experience Miami's incredible water sports in warm Atlantic waters and Biscayne Bay! Miami offers year-round water activities including jet skiing (rent or tours), parasailing over South Beach, snorkeling/diving at Biscayne National Park (coral reefs and shipwrecks), paddleboarding, kayaking through mangroves, windsurfing, kiteboarding (Miami is North American capital!), and boat rentals. Popular spots include South Beach, Key Biscayne, Virginia Key, and Haulover Beach. Water temperature stays 75-85°F enabling swimming, snorkeling, and watersports 365 days! Activities range from relaxing beach paddleboarding to high-energy jet ski adventures. The tropical climate, warm water, and coastal setting make Miami a water sports paradise!`,
+
+      seo: {
+        title: 'Miami Beach & Water Sports 2025 - Jet Ski, Snorkeling & Activities',
+        description: 'Experience Miami water sports! Jet skiing, snorkeling, parasailing, and tropical beach activities!',
+        keywords: 'Miami water sports, Miami jet ski, Miami Beach activities, Miami snorkeling, Miami parasailing',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Warm Year-Round',
+          description: '75-85°F water temperature - perfect for all water activities!',
+        },
+        {
+          icon: 'Star',
+          title: 'Biscayne Bay',
+          description: 'Protected bay waters ideal for jet skiing and paddleboarding!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Diverse Activities',
+          description: 'Snorkeling, jet ski, parasailing, paddleboarding - something for everyone!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Skyline Views',
+          description: 'See Miami skyline from water - unique perspective!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Waves',
+          title: 'Jet Ski Tours',
+          description: 'Guided jet ski adventure through Biscayne Bay.',
+          features: [
+            '1-2 hours',
+            'Jet ski rental',
+            'Guided tour',
+            'Skyline views',
+            'Thrilling',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Snorkel & Dive Tours',
+          description: 'Explore coral reefs and shipwrecks in Biscayne National Park.',
+          features: [
+            '4-6 hours',
+            'Reef snorkeling',
+            'Equipment',
+            'Marine life',
+            'Beautiful',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Parasailing Adventure',
+          description: 'Soar 500 feet above South Beach seeing coastline.',
+          features: [
+            '1-2 hours',
+            'Aerial views',
+            'Beach departure',
+            'Safe & fun',
+            'Memorable',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Water Sports Combo',
+          description: 'Try multiple activities - jet ski, paddleboard, kayak.',
+          features: [
+            '3-4 hours',
+            'Multiple sports',
+            'Variety',
+            'Good value',
+            'Active',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Miami Beach & Water Sports',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Jet ski: 1-2 hours. Snorkeling: 4-6 hours. Parasailing: 1-2 hours. Rentals: Hourly.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Biscayne Bay',
+            description: 'Protected waters perfect for jet skiing and seeing skyline.',
+          },
+          {
+            icon: 'Star',
+            title: 'Coral Reefs',
+            description: 'Snorkel colorful reefs at Biscayne National Park with tropical fish.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Warm Water',
+            description: 'Year-round swimming in 75-85°F Atlantic water - no wetsuits needed!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Skyline Views',
+            description: 'See Miami skyscrapers from water - iconic perspective!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Safety Instruction',
+            description: 'All activities include safety briefing and equipment.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Jet ski tours $100-150/hour - thrilling way to see Biscayne Bay!',
+        'Parasailing $70-90 - safe and offers amazing aerial views of coastline.',
+        'Biscayne National Park snorkeling best at Key Biscayne - coral reefs pristine!',
+        'Bring reef-safe sunscreen - protecting marine ecosystems.',
+        'Morning water sports best - calmer winds and fewer crowds.',
+        'Key Biscayne beaches less crowded than South Beach - better for water sports.',
+        'Kiteboarding capital: Virginia Key has shallow water perfect for learning.',
+        'Rent paddleboards/kayaks hourly ($20-40) for budget water activity.',
+      ],
+
+      faqs: [
+        {
+          question: 'Can you jet ski in Miami?',
+          answer: 'Yes! Jet ski tours $100-150/hour explore Biscayne Bay seeing skyline and islands. Rentals ($80-120/hour) available but guided tours better for first-timers. Warm water, beautiful views, thrilling! No experience needed - they provide instruction.',
+        },
+        {
+          question: 'Is Miami good for snorkeling?',
+          answer: 'Yes! Biscayne National Park (Key Biscayne) has coral reefs, tropical fish, and shipwrecks. Tours ($75-120) include gear and boat transport. Water is warm and clear. Not as spectacular as Keys but good for day trip!',
+        },
+        {
+          question: 'How much do Miami water sports cost?',
+          answer: 'Jet ski: $80-150/hour. Parasailing: $70-90. Snorkel tours: $75-120. SUP/kayak rental: $20-40/hour. Boat rentals: $200-500/day. Miami not cheap but high quality. Tours include equipment and instruction.',
+        },
+        {
+          question: 'Can you swim at Miami beaches year-round?',
+          answer: 'YES! Water temperature 75-85°F year-round. Swimming always comfortable - no wetsuits needed! Winter (Dec-Feb) coolest at 72-75°F but still pleasant. Summer hottest at 85°F+. Beaches have lifeguards. Swim anytime!',
+        },
+        {
+          question: 'What is the best beach for water sports?',
+          answer: 'Key Biscayne: Best for snorkeling, kiteboarding, calm water. South Beach: Jet ski, parasailing, beach scene. Virginia Key: Kiteboarding capital. Haulover Beach: Windsurfing. Each offers different activities. South Beach most convenient but crowded.',
+        },
+        {
+          question: 'Is parasailing safe?',
+          answer: 'Very safe! Companies FAA-regulated, equipment inspected, experienced crews. You\'re harnessed securely, take off/land on boat deck. Weather cancellations if unsafe. Flights 8-12 minutes at 500 feet. Thrilling but controlled! Age usually 6+ with adult.',
+        },
+        {
+          question: 'When is the best time for water sports?',
+          answer: 'Year-round perfect! Summer (May-Oct): Warmest water, occasional afternoon rain. Winter (Nov-April): Slightly cooler but still great, less humid. Morning activities have calmer winds. Avoid hurricane season disruptions (Aug-Oct).',
+        },
+        {
+          question: 'Do you need a boating license in Miami?',
+          answer: 'Rentals: Yes, Florida boating license OR complete safety course with rental company. Jet ski tours/guided: No license needed (guide drives). Kayak/SUP: No license needed. Check rental requirements - many offer quick safety courses.',
+        },
+      ],
+    },
+
+    'food-and-culture-tours': {
+      title: 'Miami Food & Culture Tours',
+      subtitle: 'Taste diverse Latin cuisines from Cuban to Peruvian in multicultural Miami!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 94,
+        priceFrom: 60,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Miami's incredible culinary diversity - a Latin American and Caribbean fusion! Food tours explore Miami's multicultural neighborhoods sampling Cuban, Haitian, Peruvian, Colombian, Venezuelan, and Argentinian cuisines. Visit Little Havana for Cuban sandwiches, Wynwood for food halls and street food, Design District for upscale dining, Coconut Grove, and ethnic enclaves. Sample stone crabs (Miami specialty!), ceviche, empanadas, arepas, fresh tropical fruits, and innovative fusion creations. The food scene reflects Miami's immigration creating authentic Latin flavors. Tours include markets, food trucks, waterfront dining, and trendy restaurants. Learn about cultural communities, immigration stories, and how Caribbean-Latin influence defines Miami food. It's culinary passport to Americas!`,
+
+      seo: {
+        title: 'Miami Food & Culture Tours 2025 - Latin Cuisine & Multicultural Dining',
+        description: 'Experience Miami food! Cuban, Latin American cuisines, stone crabs, and diverse culinary tours!',
+        keywords: 'Miami food tours, Miami Cuban food, Miami stone crab, Wynwood food, Miami Latin cuisine',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Latin Diversity',
+          description: 'Sample cuisines from Cuba, Peru, Colombia, Venezuela in one city!',
+        },
+        {
+          icon: 'Star',
+          title: 'Stone Crab',
+          description: 'Miami specialty - sweet, delicious, and sustainably harvested!',
+        },
+        {
+          icon: 'Users',
+          title: 'Multicultural',
+          description: 'Miami is 70% Hispanic - authentic Latin food everywhere!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Waterfront Dining',
+          description: 'Seafood restaurants with bay and ocean views!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Latin Food Tour',
+          description: 'Sample multiple Latin American cuisines across neighborhoods.',
+          features: [
+            '3-4 hours',
+            '6-8 tastings',
+            'Diverse cuisines',
+            'Cultural stories',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Wynwood Food Hall Tour',
+          description: 'Explore trendy Wynwood with street art and food halls.',
+          features: [
+            '3 hours',
+            'Wynwood area',
+            'Food halls',
+            'Street art',
+            'Hip',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Seafood & Stone Crab',
+          description: 'Taste Miami\'s famous stone crab and fresh seafood.',
+          features: [
+            '3 hours',
+            'Stone crab',
+            'Seafood focus',
+            'Waterfront',
+            'Premium',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Design District Dining',
+          description: 'Upscale dining tour in Miami\'s luxury shopping district.',
+          features: [
+            '3-4 hours',
+            'Fine dining',
+            'Chef tastings',
+            'Upscale',
+            'Sophisticated',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Miami Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Cuban Cuisine',
+            description: 'Café cubano, Cuban sandwich, croquetas - Little Havana specialties!',
+          },
+          {
+            icon: 'Star',
+            title: 'Stone Crab',
+            description: 'Miami\'s signature dish - sweet claw meat with mustard sauce (Oct-May).',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Latin Flavors',
+            description: 'Peruvian ceviche, Colombian arepas, Venezuelan cachapas - diverse tastes!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Wynwood Walls',
+            description: 'Combine food with street art at Wynwood food halls.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Immigration Stories',
+            description: 'Learn how Latin American communities shaped Miami\'s food culture.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Stone crab season: October-May (sustainable harvesting - only one claw taken!).',
+        'Joe\'s Stone Crab most famous but expensive - $50+ per person minimum.',
+        'Wynwood has food halls (1-800-Lucky, Oasis) - budget-friendly variety.',
+        'Fresh fish markets in Little River sell local catch - cook yourself to save!',
+        'Key lime pie is Florida specialty - try it!',
+        'Miami Mix: Cuban coffee with steamed milk - more mellow than café cubano.',
+        'Bring cash for food trucks and small Cuban restaurants.',
+        'Food tours run year-round - tropical fruit tours great in summer!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Miami stone crab?',
+          answer: 'Stone crab is Miami delicacy - sweet claw meat served cold with mustard sauce. Only harvested Oct-May (sustainable - claw removed, crab released to regrow!). Joe\'s Stone Crab most famous ($50+ per person). Medium claw $30-40. Must-try Miami food!',
+        },
+        {
+          question: 'Where should I eat in Miami?',
+          answer: 'Little Havana: Cuban food (Versailles, Sanguich). Wynwood: Food halls, trendy spots. South Beach: Upscale dining. Design District: Fine dining. Stone crab: Joe\'s (expensive) or Truluck\'s. Avoid chain restaurants - Miami has incredible local food!',
+        },
+        {
+          question: 'How much do Miami food tours cost?',
+          answer: 'Walking food tours: $60-95 (3-4 hours, 6-8 tastings). Cuban tours: $40-75. Wynwood: $65-90. Seafood: $80-120. Private: $200-400 for group. Tours replace meals - good value for variety and cultural insights!',
+        },
+        {
+          question: 'Can vegetarians eat in Miami?',
+          answer: 'Yes! Latin cuisine has beans, plantains, yuca, salads. Cuban: Congri (beans/rice), tostones. Peruvian/Colombian: Vegetarian options. Communicate dietary needs. Wynwood and trendy areas very vegetarian-friendly. Miami accommodates all diets!',
+        },
+        {
+          question: 'What food is Miami known for?',
+          answer: 'Stone crab (Oct-May season), Cuban sandwich, café cubano, ceviche (Peruvian), empanadas, key lime pie, and tropical fruits. Miami is Latin American food capital with authentic cuisines! Try everything - food scene is diverse and excellent.',
+        },
+        {
+          question: 'Is Miami food expensive?',
+          answer: 'Ranges widely! Cuban cafes: $8-15 meals. Food halls: $10-20. Upscale: $50-150. Stone crab: Expensive ($50+). Little Havana affordable, South Beach/Design District pricey. Budget eaters: Cuban restaurants and food halls. Options for all budgets!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Lunch tours (12-3 PM) or dinner tours (6-9 PM). Stone crab season: Oct-May. Tropical fruit tours: Summer. Little Havana afternoons when cafes busiest. Food scene runs daily - book based on schedule!',
+        },
+        {
+          question: 'What is a ventanita?',
+          answer: 'Ventanita is walk-up window at Cuban cafes serving café cubano ($1), croquetas, pastries. You stand outside, order, and drink coffee quickly! Very Cuban Miami tradition. Found throughout Little Havana. Quick, cheap, authentic - try it!',
+        },
+      ],
+    },
+
+    'boat-tours': {
+      title: 'Miami Boat Tours',
+      subtitle: 'Cruise Biscayne Bay, see celebrity island homes, and explore by water!',
+      categoryName: 'Boat Tours',
+      
+      stats: {
+        toursAvailable: 118,
+        priceFrom: 35,
+        duration: '1.5-4 hours',
+      },
+
+      introduction: `Experience Miami from the water - the best way to see the city! Boat tours cruise Biscayne Bay seeing Miami skyline, celebrity homes on Star Island and Fisher Island, luxury yachts, cruise ship terminals, and waterfront mansions. Options include sightseeing cruises (narrated tours of Millionaire's Row), sunset cruises, party boats, yacht rentals, speedboat thrill rides, and island-hopping adventures. See mansions owned by celebrities (guides point out who lives where!), cruise past Port of Miami, view South Beach from water, and explore Miami's extensive waterways. Learn about Miami's development as port city, real estate boom, and how water defines the city. It's Miami from the best vantage point!`,
+
+      seo: {
+        title: 'Miami Boat Tours 2025 - Biscayne Bay Cruises & Celebrity Island Homes',
+        description: 'Experience Miami boat tours! Biscayne Bay cruises, celebrity homes, and waterfront sightseeing!',
+        keywords: 'Miami boat tours, Biscayne Bay cruises, Miami celebrity homes, Miami yacht tours, millionaire row',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Ship',
+          title: 'Celebrity Island Homes',
+          description: 'See mansions of stars on Star Island and Fisher Island!',
+        },
+        {
+          icon: 'Star',
+          title: 'Skyline Views',
+          description: 'Best Miami skyline views are from Biscayne Bay!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Sunset Cruises',
+          description: 'Evening cruises offer golden hour over Miami - romantic!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Warm Weather',
+          description: 'Year-round perfect boating weather in tropical Miami!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Ship',
+          title: 'Millionaire\'s Row Cruise',
+          description: 'Narrated tour of celebrity homes and luxury mansions.',
+          features: [
+            '90 minutes',
+            'Celebrity homes',
+            'Narration',
+            'Skyline views',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Sunset Cruise',
+          description: 'Evening cruise timed for golden hour over Biscayne Bay.',
+          features: [
+            '2 hours',
+            'Sunset timing',
+            'Drinks included',
+            'Romantic',
+            'Beautiful',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Speedboat Adventure',
+          description: 'High-speed thrill ride through bay and ocean.',
+          features: [
+            '1 hour',
+            'Fast boat',
+            'Thrilling',
+            'Music',
+            'Exciting',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Yacht Charter',
+          description: 'Private yacht rental for custom cruising.',
+          features: [
+            '2-4 hours',
+            'Private yacht',
+            'Captain included',
+            'Flexible route',
+            'Luxury',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Miami Boat Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Sightseeing: 90 minutes. Sunset: 2 hours. Speedboat: 1 hour. Charters: 2-4 hours.',
+          },
+          {
+            icon: 'Ship',
+            title: 'Star Island',
+            description: 'See celebrity mansions - guides share who owns which waterfront estates!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Biscayne Bay',
+            description: 'Cruise protected bay waters with skyline and island views.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Miami Skyline',
+            description: 'Photograph downtown skyscrapers from water - iconic perspective!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Luxury Yachts',
+            description: 'See massive yachts anchored in bay - some worth $50+ million!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Miami Development',
+            description: 'Learn about Miami\'s growth as port city and real estate market.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Budget option: Island Queen cruise ($30, 90 min) - affordable and narrated!',
+        'Sunset cruises offer best light for photos and romantic atmosphere.',
+        'Celebrity homes viewable from water - exteriors only but impressive!',
+        'Bring sunscreen even on covered boats - water reflects UV intensely.',
+        'Speedboat tours wet and wild - bring change of clothes!',
+        'Yacht charters expensive ($400-1,000+) but split cost among group.',
+        'Morning cruises less crowded but sunset timing most beautiful.',
+        'Bring light jacket - wind on water makes it cooler than shore.',
+      ],
+
+      faqs: [
+        {
+          question: 'How much do Miami boat tours cost?',
+          answer: 'Sightseeing cruises: $30-60 (90 min). Sunset cruises: $50-90 (2 hours). Speedboat: $60-100 (1 hour). Yacht charters: $400-1,000+ (2-4 hours). Budget: Island Queen ($30). Luxury: Private yacht. All offer great skyline/home views!',
+        },
+        {
+          question: 'Can you see celebrity homes in Miami?',
+          answer: 'Yes! Boat tours cruise Star Island, Fisher Island, and Venetian Islands showing waterfront mansions. Guides point out celebrity homes (exteriors from water). You can\'t go inside or guarantee celebrity sightings but homes are impressive! Tours $30-60.',
+        },
+        {
+          question: 'What is Millionaire\'s Row?',
+          answer: 'Millionaire\'s Row refers to Star Island, Fisher Island, and Venetian Islands where celebrities and wealthy own waterfront mansions. Homes worth $10-100+ million! Boat tours cruise past explaining who lives where. It\'s Miami luxury real estate on display!',
+        },
+        {
+          question: 'Are boat tours worth it?',
+          answer: 'Yes! Best way to see Miami skyline and celebrity homes. Biscayne Bay views spectacular. Sunset cruises especially beautiful. Budget-friendly ($30-60) for value. Even non-boat fans enjoy the perspective. Essential Miami experience!',
+        },
+        {
+          question: 'Can you rent boats in Miami?',
+          answer: 'Yes! Bareboat rentals require Florida boating license or safety course. Captained charters available ($400-1,000+ for 2-4 hours). Smaller boats (4-6 people) rent for $200-400/half-day. Tours ($30-100) easiest option for visitors.',
+        },
+        {
+          question: 'When is the best time for boat tours?',
+          answer: 'Year-round! Sunset cruises most popular (golden hour). Morning less crowded. Summer: Afternoon storms possible - morning safer. Winter: Perfect weather (70-80°F). Avoid rough sea days. Book sunset cruises ahead - they sell out!',
+        },
+        {
+          question: 'Do boat tours go to ocean?',
+          answer: 'Most stay in Biscayne Bay (protected water, calmer). Some venture to Atlantic for ocean views. Speedboat tours often go to ocean. Bay offers best celebrity home/skyline viewing. Ocean rougher - bay smoother. Check tour route!',
+        },
+        {
+          question: 'Can you swim from boat tours?',
+          answer: 'Some tours include swimming stops at sandbars or islands! Party boats often have swim time. Sightseeing cruises usually don\'t. Check tour description. Bring swimsuit if swimming included. Warm water year-round makes swimming delightful!',
+        },
+      ],
+    },
+  },
 };
 
