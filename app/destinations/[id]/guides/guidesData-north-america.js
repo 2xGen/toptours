@@ -24866,6 +24866,534 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'food-and-culture-tours': {
+      title: 'Vancouver Food & Culture Tours',
+      subtitle: 'Taste Asian fusion, seafood, and multicultural Vancouver cuisine!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 78,
+        priceFrom: 70,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Vancouver's incredible food scene - Asian fusion capital and seafood paradise! Food tours explore Chinatown (oldest in Canada!), Richmond (Asian food mecca!), Granville Island Market, Commercial Drive (Little Italy/Latin!), and innovative restaurants. Sample sushi, dim sum, seafood (salmon, Dungeness crab!), pho, Japanese ramen, farm-to-table Pacific Northwest cuisine, and craft breweries. Tours include neighborhood exploration, cultural education, chef-led experiences, and market visits. Learn about multicultural influences, sustainable seafood, and Vancouver's culinary innovation. It's Pacific Rim cuisine!`,
+
+      seo: {
+        title: 'Vancouver Food & Culture Tours 2025 - Asian Fusion, Seafood & Diverse Cuisine',
+        description: 'Taste Vancouver! Food tours, Asian cuisine, fresh seafood, and culinary experiences!',
+        keywords: 'Vancouver food tours, Vancouver sushi, Granville Island Market, Richmond food, Vancouver restaurants',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Asian Food Capital',
+          description: 'Best Asian food outside Asia - incredible diversity!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Fresh Seafood',
+          description: 'Wild Pacific salmon, Dungeness crab, oysters - ocean fresh!',
+        },
+        {
+          icon: 'Star',
+          title: 'Richmond Food Scene',
+          description: 'Authentic Chinese, Japanese, Korean - best in North America!',
+        },
+        {
+          icon: 'Users',
+          title: 'Multicultural',
+          description: 'Every global cuisine represented - culinary diversity!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Chinatown Food Tour',
+          description: 'Dim sum, Chinese bakeries, and heritage.',
+          features: [
+            '3 hours',
+            '6-8 tastings',
+            'Chinatown',
+            'Authentic',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Richmond Night Market',
+          description: 'Summer Asian night market experience.',
+          features: [
+            '3 hours',
+            'Night market',
+            'Street food',
+            'Summer only',
+            'Vibrant',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Seafood Experience',
+          description: 'Fresh Pacific seafood and fish markets.',
+          features: [
+            '3-4 hours',
+            'Seafood',
+            'Markets',
+            'Tastings',
+            'Ocean-fresh',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Granville Island Food',
+          description: 'Market sampling with local specialties.',
+          features: [
+            '2-3 hours',
+            'Public Market',
+            'Artisan foods',
+            'Samples',
+            'Delicious',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Vancouver Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Asian Cuisine',
+            description: 'Sushi, dim sum, ramen, pho - best outside Asia!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Wild Salmon',
+            description: 'Pacific salmon fresh from ocean - grilled, smoked, sushi-grade!',
+          },
+          {
+            icon: 'Star',
+            title: 'Richmond',
+            description: 'Asian food mecca - authentic Chinese, Japanese, Korean, best in North America!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Granville Market',
+            description: 'Fresh produce, seafood, bakeries, artisan foods - local shopping!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Fusion',
+            description: 'Pacific Northwest meets Asian - unique culinary innovation!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Richmond (30 min south) has best authentic Asian food - worth trip!',
+        'Richmond Night Market (summer) massive Asian street food - Friday-Sunday.',
+        'Chinatown best for dim sum - Floata Seafood, Jade Dynasty.',
+        'Granville Island market mornings freshest - local shopping paradise.',
+        'Wild BC salmon superior to farmed - ask for wild!',
+        'Commercial Drive (The Drive) has Italian, Latin, hipster cafes.',
+        'Japadog (Japanese hot dogs) Vancouver creation - try it!',
+        'Food tours navigate overwhelming options - worth it for first visit.',
+      ],
+
+      faqs: [
+        {
+          question: 'What food is Vancouver known for?',
+          answer: 'Wild Pacific salmon, Asian cuisine (sushi, dim sum, ramen!), Japadog (Japanese hot dogs), Nanaimo bars (Canadian dessert), seafood (Dungeness crab, oysters). Best Asian food outside Asia! Multicultural food capital!',
+        },
+        {
+          question: 'Where should I eat in Vancouver?',
+          answer: 'Richmond for authentic Asian. Granville Island Market for fresh. Chinatown dim sum (Floata). Commercial Drive cafes. Gastown upscale. Food tours show best spots - Vancouver has thousands of restaurants!',
+        },
+        {
+          question: 'Is Richmond worth visiting for food?',
+          answer: 'ABSOLUTELY! Best authentic Asian food in North America - Chinese, Japanese, Korean, Taiwanese! Aberdeen Centre, Richmond Night Market (summer), authentic restaurants. 30 min from downtown. Essential for food lovers! Locals go here!',
+        },
+        {
+          question: 'What is Japadog?',
+          answer: 'Japadog is Vancouver creation - Japanese-style hot dogs! Toppings: Teriyaki, nori, wasabi mayo, miso. Started as street cart, now multiple locations. Unique Vancouver food! $7-10. Worth trying for quirky local specialty!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Walking food tours: $70-120 (3-4 hours, 6-8 tastings). Chinatown: $80-100. Richmond: $90-120. Granville Island: $75-95. Tours replace meals - good value for variety and avoiding tourist traps!',
+        },
+        {
+          question: 'Where is best sushi in Vancouver?',
+          answer: 'Miku (aburi style), Tojo\'s (traditional), Minami (contemporary), Guu (izakaya). Richmond has authentic Japanese. Vancouver sushi world-class - ocean-fresh fish. Expensive ($30-60/person) but worth it! Best outside Japan many say!',
+        },
+        {
+          question: 'Are there vegetarian options?',
+          answer: 'Excellent! Vancouver very vegan-friendly. Asian cuisines offer tofu, vegetable options. Dedicated vegan restaurants abundant. Indian, Thai, Chinese cuisines naturally have vegetarian dishes. Food tours accommodate dietary needs!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Richmond Night Market: May-October (Friday-Sunday evenings). Dim sum: Mornings/weekends. Lunch or dinner tours available. Summer: Outdoor dining beautiful. Winter: Cozy indoor eating. Always delicious!',
+        },
+      ],
+    },
+
+    'harbor-tours': {
+      title: 'Vancouver Harbor Tours',
+      subtitle: 'Cruise Burrard Inlet, see seaplanes, and enjoy waterfront views!',
+      categoryName: 'Harbor Tours',
+      
+      stats: {
+        toursAvailable: 58,
+        priceFrom: 40,
+        duration: '1-3 hours',
+      },
+
+      introduction: `Experience Vancouver Harbor - one of world's most scenic urban waterfronts! Harbor tours cruise Burrard Inlet, False Creek, English Bay with mountains backdrop, city skyline, and seaplane activity (world's busiest seaplane terminal!). Visit Canada Place (cruise ship terminal!), Coal Harbour, Stanley Park from water, and North Shore views. Tours include narrated cruises, sunset sails, dinner cruises, and water taxi experiences. Learn about port history, maritime activity, and coastal geography. It's Vancouver from best perspective!`,
+
+      seo: {
+        title: 'Vancouver Harbor Tours 2025 - Burrard Inlet Cruises & Seaplane Views',
+        description: 'Explore Vancouver Harbor! Bay cruises, seaplanes, and stunning waterfront views!',
+        keywords: 'Vancouver harbor tours, Burrard Inlet cruises, Vancouver boat tours, seaplanes Vancouver, harbor cruises',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Mountain Backdrop',
+          description: 'North Shore mountains rising from water - spectacular!',
+        },
+        {
+          icon: 'Star',
+          title: 'Seaplane Activity',
+          description: 'World\'s busiest seaplane terminal - constant takeoffs/landings!',
+        },
+        {
+          icon: 'Heart',
+          title: 'City Skyline',
+          description: 'Downtown from water with mountains - iconic Vancouver!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunset Cruises',
+          description: 'Golden hour over water with mountains - magical!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Harbor Cruise',
+          description: 'Burrard Inlet and English Bay tour.',
+          features: [
+            '1-2 hours',
+            'Narrated',
+            'Scenic',
+            'Relaxing',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Sunset Dinner Cruise',
+          description: 'Evening sail with dining.',
+          features: [
+            '2-3 hours',
+            'Sunset',
+            'Dinner',
+            'Romantic',
+            'Premium',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Aquabus Ferry Hop',
+          description: 'Hop-on-hop-off mini ferry experience.',
+          features: [
+            'Flexible',
+            'Transport + tour',
+            'Affordable',
+            'Convenient',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Cruise',
+          description: 'Best angles for capturing city and mountains.',
+          features: [
+            '2 hours',
+            'Photo-focused',
+            'Expert tips',
+            'Golden hour',
+            'Beautiful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Vancouver Harbor Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Basic cruises: 1-2 hours. Sunset/dinner: 2-3 hours. Aquabus: Flexible.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Burrard Inlet',
+            description: 'Main harbor with port activity, seaplanes, mountain backdrop!',
+          },
+          {
+            icon: 'Star',
+            title: 'Seaplanes',
+            description: 'Constant seaplane takeoffs/landings - busiest terminal globally!',
+          },
+          {
+            icon: 'Mountain',
+            title: 'North Shore Mountains',
+            description: 'Grouse, Cypress, Seymour rising from water - stunning backdrop!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Canada Place',
+            description: 'Sail-shaped building, cruise ship terminal, convention center!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Maritime History',
+            description: 'Learn about port significance and coastal geography.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Aquabus/False Creek Ferry cheap transport + mini cruise ($3.50).',
+        'Sunset cruises (summer 8-9 PM) beautiful when weather clear.',
+        'May-September best weather - winter rainy (Vancouver!).',
+        'Harbour Cruises and Seabus popular operators.',
+        'Dress warmly - water always cooler, can be windy.',
+        'Seaplane watching free from Canada Place - cruises optional.',
+        'Combine with Granville Island visit via Aquabus.',
+        'Photography best from water - Stanley Park, downtown, mountains!',
+      ],
+
+      faqs: [
+        {
+          question: 'How much do harbor cruises cost?',
+          answer: '1-hour cruise: $40-55. Sunset cruise: $70-90. Dinner cruise: $100-150. Aquabus: $3.50/ride (cheap mini cruise!). Range from budget to luxury. Basic cruise good value for views!',
+        },
+        {
+          question: 'Are Vancouver harbor cruises worth it?',
+          answer: 'Worth it for seeing mountains, downtown, Stanley Park from water - unique perspective! Not essential but beautiful. Sunset cruises romantic. Budget travelers: Aquabus gives similar views cheap! First-timers: Consider it.',
+        },
+        {
+          question: 'What is Seabus?',
+          answer: 'Seabus is commuter ferry connecting downtown and North Vancouver ($3.10). 12-min ride, stunning views, locals use daily. Cheapest "harbor cruise" but functional transport. Great for budget travelers wanting water experience!',
+        },
+        {
+          question: 'Can you see seaplanes?',
+          answer: 'Yes! Coal Harbour has world\'s busiest seaplane terminal. Constant takeoffs/landings. Watch FREE from waterfront or Canada Place. Cruises pass seaplanes. Unique Vancouver sight - float planes everywhere!',
+        },
+        {
+          question: 'What is Aquabus?',
+          answer: 'Aquabus is cute mini ferry ($3.50) operating False Creek. Hops between Granville Island, Yaletown, downtown, Olympic Village. Transport + mini cruise! Fun, affordable, scenic. Locals use regularly. Visitors love it!',
+        },
+        {
+          question: 'Do cruises run year-round?',
+          answer: 'Most operate May-October (summer season). Winter: Limited schedule (some Christmas cruises). Aquabus/Seabus: Year-round! Summer best weather. Book ahead for sunset/dinner cruises. Check seasonal schedules.',
+        },
+        {
+          question: 'What should I bring?',
+          answer: 'Jacket (cooler on water!), camera, sunglasses, hat. Layers essential - Vancouver weather changes quickly. Rain jacket if cloudy. Seasickness rare (protected harbor). Come prepared for wind and cool!',
+        },
+        {
+          question: 'When is the best time for harbor cruises?',
+          answer: 'Summer (June-Sept): Best weather, long days, sunset cruises! Spring/fall: Beautiful, fewer crowds. Winter: Rainy (Vancouver!). Sunset timing varies by season. Clear days show mountains best!',
+        },
+      ],
+    },
+
+    'mountain-tours': {
+      title: 'Vancouver Mountain Tours',
+      subtitle: 'Explore North Shore mountains, Whistler, and alpine adventures!',
+      categoryName: 'Mountain Tours',
+      
+      stats: {
+        toursAvailable: 68,
+        priceFrom: 85,
+        duration: '4-10 hours',
+      },
+
+      introduction: `Discover Vancouver's mountain playground - peaks meet city! Mountain tours explore Grouse Mountain (Peak of Vancouver!), Whistler (world-class resort 2 hours away!), Cypress Mountain, Mount Seymour, and alpine environments. Experience gondola rides, winter skiing/snowboarding, summer hiking, mountain biking, wildlife viewing (grizzly bears!), and stunning alpine vistas. Visit Peak 2 Peak gondola (Whistler!), mountain lodges, and backcountry areas. Tours include transportation, equipment, expert guides, and mountain access. It's urban mountains paradise!`,
+
+      seo: {
+        title: 'Vancouver Mountain Tours 2025 - Grouse, Whistler & North Shore Adventures',
+        description: 'Explore Vancouver mountains! Grouse Mountain, Whistler day trips, and alpine tours!',
+        keywords: 'Vancouver mountain tours, Grouse Mountain, Whistler day trip, North Shore mountains, skiing Vancouver',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Mountain',
+          title: 'Mountains in City',
+          description: 'Ski mountains 30 minutes from downtown - unique!',
+        },
+        {
+          icon: 'Star',
+          title: 'Whistler Access',
+          description: 'World-class ski resort 2 hours away - day trips easy!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Grizzly Bears',
+          description: 'Grouse Mountain has grizzly bear refuge - close encounters!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Alpine Views',
+          description: 'City, ocean, mountains in one panorama - spectacular!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Mountain',
+          title: 'Whistler Day Trip',
+          description: 'Full-day tour to world-famous resort.',
+          features: [
+            '10-12 hours',
+            'Whistler',
+            'Gondolas',
+            'Village time',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Grouse Mountain Tour',
+          description: 'Gondola, wildlife, hiking package.',
+          features: [
+            '4-5 hours',
+            'Gondola',
+            'Grizzly bears',
+            'Views',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Winter Ski Day',
+          description: 'Ski Grouse, Cypress, or Seymour.',
+          features: [
+            'Full day',
+            'Skiing',
+            'Rentals',
+            'Instruction',
+            'Winter',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Mountain Photography',
+          description: 'Capture alpine scenery with expert.',
+          features: [
+            '5-6 hours',
+            'Photo-focused',
+            'Multiple peaks',
+            'Expert tips',
+            'Stunning',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Vancouver Mountain Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Grouse: 4-5 hours. Whistler day trip: 10-12 hours. Skiing: Full day.',
+          },
+          {
+            icon: 'Mountain',
+            title: 'Grouse Mountain',
+            description: 'Gondola ($65), grizzly bears, Eye of the Wind turbine, hiking, views!',
+          },
+          {
+            icon: 'Star',
+            title: 'Whistler',
+            description: 'Peak 2 Peak gondola, village, alpine scenery - world-class resort!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Sea-to-Sky Highway',
+            description: 'Scenic drive to Whistler - waterfalls, Shannon Falls, ocean views!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Alpine Vistas',
+            description: 'City, ocean, mountains, islands - 360° incredible views!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Wildlife',
+            description: 'Grizzly bears (Grouse refuge), eagles, mountain goats possible!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Whistler day trips long (10-12 hours) - start early!',
+        'Grouse gondola $65 - includes wildlife refuge, shows, hiking.',
+        'Free alternative: Hike Grouse Grind up, gondola down included.',
+        'Local mountains adequate for day skiing - Whistler for destination skiing.',
+        'Sea-to-Sky Highway to Whistler scenic - stop at Shannon Falls!',
+        'Winter: Check mountain conditions before visiting.',
+        'Summer: Grouse Mountain open for hiking, Peak Chairlift.',
+        'Book Whistler tours in advance - popular year-round!',
+      ],
+
+      faqs: [
+        {
+          question: 'Is Whistler worth a day trip?',
+          answer: 'Absolutely! World-class resort, Peak 2 Peak gondola, alpine village, stunning scenery. 2-hour drive each way. Full-day commitment (10-12 hours) but worth it! Summer or winter both amazing. Essential BC experience!',
+        },
+        {
+          question: 'How much does Grouse Mountain cost?',
+          answer: 'Gondola: $65 adults (includes attractions on top). Grouse Grind hike: FREE (gondola down included). Peak Chairlift summer: $22 extra. Worth it for views and grizzly bears. Full experience 4-5 hours.',
+        },
+        {
+          question: 'Can you hike without gondola?',
+          answer: 'Yes - Grouse Grind! 2.9km straight up (850m gain). Strenuous! Gondola down included in free hike. "Mother Nature\'s Stairmaster." Locals train here. Free way to reach summit! Gondola easier for casual visitors.',
+        },
+        {
+          question: 'What is Peak 2 Peak?',
+          answer: 'Peak 2 Peak is gondola connecting Whistler and Blackcomb peaks. World record holders (longest unsupported span!). 11-minute ride with glass bottom option. Included in Whistler ticket. Incredible engineering and views!',
+        },
+        {
+          question: 'Can you ski from Vancouver?',
+          answer: 'YES! Grouse, Cypress, Seymour 30 min from downtown. Day tickets $60-90. Nov-March season. Not destination skiing but very convenient! Unique: Ski morning, explore city afternoon. Whistler (2 hours) for world-class skiing.',
+        },
+        {
+          question: 'How far is Whistler from Vancouver?',
+          answer: '125km (78 miles), 2-2.5 hours drive on Sea-to-Sky Highway. Scenic route! Day trips: 10-12 hours total. Bus tours available. Worth the drive - spectacular resort and scenery!',
+        },
+        {
+          question: 'How much do mountain tours cost?',
+          answer: 'Grouse gondola: $65. Whistler day trip: $120-180 (includes transport, gondola). Skiing: $60-90 day pass + rentals. Guided tours: $85-150. Various price points - mountain access worth investment!',
+        },
+        {
+          question: 'When is the best time for mountain tours?',
+          answer: 'Winter (Dec-March): Skiing, snowshoeing, winter sports! Summer (June-Sept): Hiking, gondolas, alpine meadows. Fall: Beautiful foliage. Year-round activities! Choose based on interest - mountains always spectacular!',
+        },
+      ],
+    },
   },
 };
 
