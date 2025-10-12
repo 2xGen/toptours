@@ -6349,5 +6349,1063 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  'las-vegas': {
+    'strip-tours': {
+      title: 'Las Vegas Strip Tours',
+      subtitle: 'Experience iconic casinos, dazzling lights, and world-famous Las Vegas Boulevard!',
+      categoryName: 'Strip Tours',
+      
+      stats: {
+        toursAvailable: 94,
+        priceFrom: 45,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience the legendary Las Vegas Strip - 4.2 miles of neon lights, mega-resorts, and entertainment! Strip tours explore iconic casino-hotels like Bellagio (fountains and conservatory), Caesars Palace (ancient Rome theming), Venetian (indoor canals with gondolas), Luxor (pyramid and sphinx), Paris (half-scale Eiffel Tower), and New York-New York (mini skyline and roller coaster). Tours showcase the famous Bellagio Fountains choreographed water show, Fremont Street Experience (original Vegas with LED canopy), High Roller observation wheel (550 feet tall!), and themed attractions. Learn about Vegas history from mob-run gambling town to family destination, see architectural excess, and understand how casinos are designed to keep you inside. Walking tours, hop-on-hop-off buses, and evening tours capture the Strip's magic!`,
+
+      seo: {
+        title: 'Las Vegas Strip Tours 2025 - Casino Hotels & Neon Lights',
+        description: 'Explore Las Vegas Strip! Bellagio Fountains, iconic casinos, and Vegas Boulevard highlights!',
+        keywords: 'Las Vegas Strip tours, Bellagio Fountains, Las Vegas casinos, Vegas tours, Fremont Street',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Iconic Casinos',
+          description: 'See world\'s largest and most extravagant casino-resorts!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Bellagio Fountains',
+          description: 'Watch choreographed water shows set to music - free and spectacular!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Vegas at Night',
+          description: 'The Strip comes alive after dark with neon lights blazing!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Free Attractions',
+          description: 'Many casino attractions are free - fountains, conservatory, shows!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Strip Walking Tour',
+          description: 'Guided walk covering major casino highlights and history.',
+          features: [
+            '2-3 hours',
+            'Multiple casinos',
+            'Expert guide',
+            'History stories',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Night Lights Tour',
+          description: 'Evening tour when Strip is fully lit - most spectacular!',
+          features: [
+            '3 hours',
+            'After dark',
+            'Neon lights',
+            'Photo stops',
+            'Magical',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Hop-On Hop-Off Bus',
+          description: 'Double-decker bus touring Strip with flexible stops.',
+          features: [
+            'All day',
+            'Multiple stops',
+            'Flexible',
+            'Audio guide',
+            'Easy',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Fremont Street Experience',
+          description: 'Visit original downtown Vegas with LED canopy and vintage casinos.',
+          features: [
+            '2-3 hours',
+            'Old Vegas',
+            'LED shows',
+            'Street performers',
+            'Nostalgic',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Las Vegas Strip Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Hop-on-hop-off: All day access. Evening: 3 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Bellagio Fountains',
+            description: 'See water shows every 15-30 minutes set to music - free and amazing!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Casino Theming',
+            description: 'Explore elaborate themes - Venice canals, Eiffel Tower, ancient Rome!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Welcome to Las Vegas Sign',
+            description: 'Photo op at iconic sign at south end of Strip.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Free Attractions',
+            description: 'Bellagio Conservatory, Mirage Volcano, Fall of Atlantis - all free!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Vegas History',
+            description: 'Learn about mob era, Rat Pack, and transformation to family destination.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit Strip after 7 PM when it\'s fully lit - daytime lacks Vegas magic!',
+        'Bellagio Fountains show every 15 min (Mon-Fri 3-8 PM), every 30 min after.',
+        'Strip is 4.2 miles - wear comfortable shoes! It looks closer than it is.',
+        'Free tram connects Bellagio-Aria-Park MGM and Excalibur-Luxor-Mandalay Bay.',
+        'Casinos use circuitous layouts - easy to get lost! That\'s intentional design.',
+        'Stay hydrated - Vegas is desert (110°F+ summer), AC dehydrates you.',
+        'Free attractions save money: Conservatory, Volcano, Fountains, street performers.',
+        'Fremont Street better experienced evening - LED canopy shows hourly.',
+      ],
+
+      faqs: [
+        {
+          question: 'How long is the Las Vegas Strip?',
+          answer: '4.2 miles from Mandalay Bay to Stratosphere! Looks shorter than it is. Walking entire Strip takes 2+ hours. Casinos are massive - Venetian alone is over 1 mile walking. Use hop-on buses or trams to save energy!',
+        },
+        {
+          question: 'Are Strip tours worth it?',
+          answer: 'Worth it for first-timers! Guides share history, point out free attractions, and navigate efficiently. However, much of Strip is self-exploratory. Consider hop-on-hop-off bus ($50-60) for flexibility. Evening walking tours capture Vegas magic best!',
+        },
+        {
+          question: 'When is the best time to visit the Strip?',
+          answer: 'After dark (7 PM+) when neon lights are lit - Vegas is made for night! Daytime lacks the magic. Spring (March-May) and fall (Sept-Nov) perfect weather. Summer VERY hot (110°F+). Winter pleasant (50-60°F). Strip bustles 24/7!',
+        },
+        {
+          question: 'Is the Strip walkable?',
+          answer: 'Yes but LONG (4.2 miles)! Wear comfortable shoes. Pedestrian bridges cross busy streets. Free trams connect some casinos. In summer heat, use buses/trams. Plan which end to start based on hotel location. Walking entire Strip is workout!',
+        },
+        {
+          question: 'What are the best free attractions?',
+          answer: 'Bellagio Fountains (water show every 15-30 min), Bellagio Conservatory (seasonal gardens), Mirage Volcano (erupts nightly), Fall of Atlantis (Caesars animatronics), Fremont Street LED canopy. All free! Vegas has surprising amount of free entertainment.',
+        },
+        {
+          question: 'Can you visit casinos without gambling?',
+          answer: 'Absolutely! Casinos are free to walk through - stunning architecture, restaurants, shops, attractions. You\'re not required to gamble. Many visitors just sightsee. Casino floors can be smoky - pass through to reach attractions/restaurants.',
+        },
+        {
+          question: 'What is Fremont Street?',
+          answer: 'Fremont Street is original downtown Vegas (pre-Strip) with vintage casinos under massive LED canopy. Free LED light shows hourly, street performers, cheaper gambling, zip-line overhead! It\'s old-school Vegas vibe. 20 min from Strip. Worth visiting!',
+        },
+        {
+          question: 'How much do Strip tours cost?',
+          answer: 'Walking tours: $45-70 (2-3 hours). Hop-on-hop-off bus: $50-60 (all day). Night tours: $60-90. Most attractions inside casinos are free! Tours provide history and efficient routing. Consider self-exploring - it\'s easy!',
+        },
+      ],
+    },
+
+    'show-tours': {
+      title: 'Las Vegas Show Tours',
+      subtitle: 'Experience Cirque du Soleil, magic shows, and world-class Vegas entertainment!',
+      categoryName: 'Show Tours',
+      
+      stats: {
+        toursAvailable: 156,
+        priceFrom: 70,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience Las Vegas entertainment - the greatest concentration of shows in the world! Las Vegas hosts Cirque du Soleil residencies (O, Mystère, KÀ, Michael Jackson ONE), celebrity headliners, magic shows (David Copperfield, Penn & Teller), tribute acts, adult revues, comedy shows, and Broadway productions. The Strip's theaters range from intimate clubs to massive arenas. Shows feature cutting-edge technology, elaborate costumes, acrobatic performances, and production values unmatched anywhere. Tours include show tickets combined with dinner packages, backstage tours, VIP seating, and show-hopping options. Learn about Vegas evolution into entertainment capital, how productions are created, and insider theater tips. From family-friendly Cirque to adults-only burlesque, Vegas shows cater to every taste. It's Broadway meets Circus Maximus!`,
+
+      seo: {
+        title: 'Las Vegas Show Tours 2025 - Cirque du Soleil, Magic & Entertainment',
+        description: 'Experience Las Vegas shows! Cirque du Soleil, magic shows, and world-class entertainment!',
+        keywords: 'Las Vegas shows, Cirque du Soleil Vegas, Las Vegas entertainment, Vegas magic shows, Vegas tickets',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Music',
+          title: 'World-Class Shows',
+          description: 'Cirque du Soleil and top productions found nowhere else!',
+        },
+        {
+          icon: 'Star',
+          title: 'Celebrity Performers',
+          description: 'Headliners, resident performers, and top touring acts.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Spectacular Production',
+          description: 'Vegas shows feature incredible budgets, sets, and technology.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Variety',
+          description: 'Magic, circus, comedy, music, adult shows - entertainment for everyone!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Cirque du Soleil Shows',
+          description: 'Resident Cirque productions - O (water), KÀ (martial arts), Mystère.',
+          features: [
+            '90 minutes',
+            'Acrobatics',
+            'Stunning sets',
+            'World-famous',
+            'Must-see',
+          ],
+        },
+        {
+          icon: 'Music',
+          title: 'Magic Show Tours',
+          description: 'David Copperfield, Penn & Teller, or Mac King comedy magic.',
+          features: [
+            '75-90 minutes',
+            'Close-up magic',
+            'Illusions',
+            'Interactive',
+            'Amazing',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Dinner & Show Packages',
+          description: 'Combine gourmet dining with premium show tickets.',
+          features: [
+            '4 hours',
+            'Pre-show dinner',
+            'VIP seating',
+            'Full experience',
+            'Convenient',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Show-Hopping Tours',
+          description: 'Sample multiple shows or see highlights in one evening.',
+          features: [
+            '4-5 hours',
+            'Multiple shows',
+            'Variety',
+            'Sampler',
+            'Fun',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Las Vegas Show Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Most shows: 75-90 minutes. With dinner: 3-4 hours total. Evening performances.',
+          },
+          {
+            icon: 'Star',
+            title: 'Cirque du Soleil',
+            description: 'Acrobatics, costumes, music, and production on scale found nowhere else!',
+          },
+          {
+            icon: 'Music',
+            title: 'Magic & Illusions',
+            description: 'World-class magicians performing mind-bending tricks and grand illusions.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Headliner Acts',
+            description: 'Celine Dion, Lady Gaga, Adele (when in residence) and tribute shows.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Production Values',
+            description: 'Massive budgets create sets, effects, and costumes that wow audiences.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Vegas Entertainment',
+            description: 'Understand why Vegas became world\'s entertainment capital.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book Cirque du Soleil weeks ahead - best shows sell out!',
+        'O (Bellagio) most impressive Cirque show but KÀ (MGM) more action-packed.',
+        'Buy tickets online directly from venues - avoid high-commission resellers.',
+        'Matinee shows (afternoon) cheaper than evening performances.',
+        'Dress code varies: Casual fine for most, some upscale shows require business casual.',
+        'Arrive 30 minutes early for good seats (even assigned seating has tier views).',
+        'Half-price ticket booths sell same-day discounts but limited selection.',
+        'Free shows: Bellagio Fountains, Mirage Volcano, casino entertainment!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best show in Las Vegas?',
+          answer: 'Cirque du Soleil "O" at Bellagio most acclaimed (water acrobatics, $100-250). KÀ at MGM more action (martial arts, $80-200). Magic: David Copperfield or Penn & Teller. Choose based on interests - all are world-class! Cirque shows most "Vegas."',
+        },
+        {
+          question: 'How much do Las Vegas shows cost?',
+          answer: 'Cirque du Soleil: $80-250. Magic shows: $70-150. Headliners: $100-500+. Afternoon shows cheaper. Half-price booths offer 25-50% discounts same-day. Budget: Penn & Teller ($80) or afternoon shows. Splurge: O or Celine Dion.',
+        },
+        {
+          question: 'Should I book shows in advance?',
+          answer: 'Yes for popular shows! Cirque du Soleil, headliners, weekend shows sell out weeks ahead. Book 2-4 weeks early for best seats and prices. Last-minute? Half-price booths or less popular shows. Advance booking guarantees seats.',
+        },
+        {
+          question: 'What is Cirque du Soleil?',
+          answer: 'Cirque du Soleil is Canadian circus company with permanent Las Vegas shows. Vegas has 7 resident Cirque shows! O (water), KÀ (combat), Mystère (classic), Michael Jackson ONE, Beatles LOVE, etc. Acrobatics, costumes, music - mind-blowing! $80-250.',
+        },
+        {
+          question: 'Are Vegas shows family-friendly?',
+          answer: 'Many are! Cirque shows (except Zumanity), magic shows, and Blue Man Group perfect for families. Adult shows clearly marked (topless revues, comedy). Read descriptions. Most major shows welcome all ages. Vegas has surprisingly good family entertainment!',
+        },
+        {
+          question: 'Can you get cheap show tickets?',
+          answer: 'Yes! Half-price ticket booths (Tix4Tonight locations on Strip) sell same-day discounts 25-50% off. Limited selection, cash only. Afternoon shows cheaper than evening. Tuesday-Thursday cheapest nights. Book direct online for 10-15% discounts.',
+        },
+        {
+          question: 'What shows have best seats?',
+          answer: 'Cirque shows: Sections 101-104 (center). Magic shows: Close-up better (rows 1-10). Headliners: Depends on venue. Premium seats worth it for Cirque - you\'ll see details. Magic shows: Closer is better. Research venue seating charts!',
+        },
+        {
+          question: 'When do shows start?',
+          answer: 'Most evening shows: 7 PM or 9:30 PM. Some have matinees (3-4 PM) weekends. Cirque typically 7 PM and 9:30 PM. Check specific show schedules - they vary. Plan dinner around show time. Vegas runs late - shows past midnight common!',
+        },
+      ],
+    },
+
+    'casino-tours': {
+      title: 'Las Vegas Casino Tours',
+      subtitle: 'Experience gaming, poker rooms, and the thrill of Las Vegas casinos!',
+      categoryName: 'Casino Tours',
+      
+      stats: {
+        toursAvailable: 68,
+        priceFrom: 75,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Las Vegas casinos beyond the slot machines - from gaming lessons to high-stakes poker rooms! Casino tours teach blackjack, craps, roulette, and poker basics with professional dealers in low-pressure settings. Explore casino design psychology (no clocks, maze layouts, oxygen pumping myths!), visit high-limit rooms, learn card counting history, and understand how odds work. Tours include the World Series of Poker room at Horseshoe, vintage casinos preserving old Vegas charm, sports books during big games, and exclusive gaming lounges. Some tours offer gambling bankrolls for practice. Learn about Vegas gaming history, famous casino heists, professional gamblers, and why "the house always wins." It's gambling education and entertainment!`,
+
+      seo: {
+        title: 'Las Vegas Casino Tours 2025 - Gaming Lessons & Poker Rooms',
+        description: 'Experience Las Vegas casinos! Gaming lessons, poker rooms, and casino culture!',
+        keywords: 'Las Vegas casinos, Vegas gaming lessons, poker rooms Las Vegas, blackjack lessons, Vegas gambling',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Gaming Lessons',
+          description: 'Learn blackjack, craps, poker from pros before risking money!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Casino Culture',
+          description: 'Understand psychology and design behind Vegas gaming.',
+        },
+        {
+          icon: 'DollarSign',
+          title: 'Better Odds',
+          description: 'Learn which games have best odds and strategy tips.',
+        },
+        {
+          icon: 'Users',
+          title: 'Professional Dealers',
+          description: 'Patient instructors teach games without pressure.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Casino Gaming Lessons',
+          description: 'Learn blackjack, craps, and roulette with practice chips.',
+          features: [
+            '2-3 hours',
+            'Multiple games',
+            'Practice chips',
+            'Pro dealers',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Poker Room Tours',
+          description: 'Visit famous poker rooms and learn Texas Hold\'em basics.',
+          features: [
+            '2 hours',
+            'Poker lessons',
+            'Room tours',
+            'Strategy tips',
+            'Informative',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'High-Roller Casino Tour',
+          description: 'Access VIP gaming areas and high-limit rooms.',
+          features: [
+            '3 hours',
+            'Exclusive access',
+            'High-stakes rooms',
+            'Insider stories',
+            'Premium',
+          ],
+        },
+        {
+          icon: 'DollarSign',
+          title: 'Gambling Strategy Tour',
+          description: 'Learn odds, bankroll management, and winning strategies.',
+          features: [
+            '3 hours',
+            'Strategy focus',
+            'Math behind games',
+            'Practical tips',
+            'Smart',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Las Vegas Casino Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Lessons: 2-3 hours. Casino tours: 2-4 hours with multiple venues.',
+          },
+          {
+            icon: 'Star',
+            title: 'Game Instruction',
+            description: 'Learn rules, etiquette, and basic strategy for table games.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Practice Play',
+            description: 'Use chips practicing without risking real money - low pressure!',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Odds Education',
+            description: 'Understand house edge and which games offer best player odds.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Casino Access',
+            description: 'Visit multiple casinos seeing different gaming atmospheres.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Vegas History',
+            description: 'Learn about mob era, legendary gamblers, and casino evolution.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Free gaming lessons offered at many casinos mornings - ask casino hosts!',
+        'Blackjack has best odds (if you play basic strategy) - learn the chart!',
+        'Craps looks intimidating but offers great odds - take lessons before playing.',
+        'Slot machines have worst odds - stick to table games for better chances.',
+        'Never gamble more than you can afford to lose - set budgets!',
+        'Casino player\'s cards earn comps (free rooms, meals) - always use them!',
+        'Downtown casinos (Fremont) have lower table minimums than Strip.',
+        'Tip dealers $5-10 per hour when winning - it\'s customary and appreciated.',
+      ],
+
+      faqs: [
+        {
+          question: 'Can you learn to play casino games?',
+          answer: 'Yes! Gaming lessons ($75-100, 2-3 hours) teach blackjack, craps, roulette, poker. Many casinos offer FREE morning lessons to guests. Tours include practice chips - learn without risking money! Dealers patient with beginners. Worth learning before gambling!',
+        },
+        {
+          question: 'What games have the best odds?',
+          answer: 'Blackjack (with basic strategy): ~0.5% house edge. Craps (pass line): ~1.4%. Baccarat: ~1.2%. WORST: Keno, slots (10-15% house edge). Learn basic strategy for best chances. House always has edge but some games more favorable!',
+        },
+        {
+          question: 'How much money should I bring?',
+          answer: 'Depends on games! $100-300 enough for casual play (few hours, lower stakes). Table minimums: $10-25 daytime, $25-50 evenings. Bring only what you can afford to lose. ATMs everywhere but fees high. Budget accordingly!',
+        },
+        {
+          question: 'Can you count cards in Vegas?',
+          answer: 'Card counting is LEGAL but casinos can ask you to leave if caught. It\'s difficult with multi-deck shoes and surveillance. Don\'t try unless you\'re expert! Tours explain history (MIT team, etc.) but don\'t teach it. Stick to basic strategy!',
+        },
+        {
+          question: 'What is a player\'s card?',
+          answer: 'Player\'s card (casino loyalty card) tracks your play earning comps - free rooms, meals, show tickets! Sign up FREE at any casino. Use it every time you gamble. Even small play accumulates benefits. Tier systems reward frequent players. Always get one!',
+        },
+        {
+          question: 'Are casino lessons worth it?',
+          answer: 'Yes if gambling! Learning rules and basic strategy before risking money is smart. Lessons give confidence and improve your odds. Practice with chips in low-pressure environment. $75-100 for 2-3 hours or find free casino lessons mornings.',
+        },
+        {
+          question: 'Can beginners gamble in Vegas?',
+          answer: 'Absolutely! Dealers help beginners - just ask. Start with simple games (blackjack, roulette). Take lessons first. Set strict budget. Lower minimum tables downtown. Gamble for fun, not profit. Beginners welcome everywhere!',
+        },
+        {
+          question: 'What should you never do in a casino?',
+          answer: 'Don\'t touch cards in blackjack (dealer handles), don\'t take photos on casino floor (security!), don\'t sit at poker tables without knowing rules, don\'t blow smoke at non-smokers, don\'t touch other players\' chips, and DON\'T chase losses!',
+        },
+      ],
+    },
+
+    'food-and-dining-tours': {
+      title: 'Las Vegas Food & Dining Tours',
+      subtitle: 'Taste celebrity chef restaurants, buffets, and diverse culinary excellence!',
+      categoryName: 'Food & Dining Tours',
+      
+      stats: {
+        toursAvailable: 72,
+        priceFrom: 80,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Las Vegas's extraordinary culinary scene - celebrity chefs, innovative cuisine, and legendary buffets! Once known for cheap buffets, Vegas now rivals culinary capitals with restaurants by Gordon Ramsay, Wolfgang Puck, Joël Robuchon (3 Michelin stars!), Nobu, and Bobby Flay. Food tours explore diverse options from classic Vegas buffets (Bacchanal, Wicked Spoon) to Chinatown's authentic Asian cuisine, food halls like Circa's Legacy Club, high-end steakhouses, and secret local spots. Sample international cuisines, molecular gastronomy, farm-to-table desert ingredients, and fusion creations. Learn about Vegas culinary evolution, how casinos lure celebrity chefs, and where locals eat off-Strip. It's world-class dining in the desert!`,
+
+      seo: {
+        title: 'Las Vegas Food & Dining Tours 2025 - Celebrity Chefs & Buffets',
+        description: 'Experience Las Vegas dining! Celebrity chef restaurants, legendary buffets, and culinary tours!',
+        keywords: 'Las Vegas food tours, Vegas buffets, celebrity chef restaurants Vegas, Las Vegas dining, Vegas food',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Celebrity Chefs',
+          description: 'Gordon Ramsay, Wolfgang Puck, Joël Robuchon - culinary legends!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Legendary Buffets',
+          description: 'All-you-can-eat extravaganzas with crab legs, prime rib, and desserts!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Diverse Cuisine',
+          description: 'Every cuisine imaginable from Michelin-starred to food trucks.',
+        },
+        {
+          icon: 'Users',
+          title: 'Foodie Paradise',
+          description: 'More high-end restaurants per capita than anywhere in US!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Buffet Tours',
+          description: 'Sample multiple famous buffets comparing quality and variety.',
+          features: [
+            '4-5 hours',
+            '2-3 buffets',
+            'All-you-can-eat',
+            'Variety',
+            'Indulgent',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Celebrity Chef Dining',
+          description: 'Dine at Gordon Ramsay, Wolfgang Puck, or other celebrity restaurants.',
+          features: [
+            '3 hours',
+            'Fine dining',
+            'Tasting menus',
+            'Premium',
+            'Unforgettable',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Chinatown Food Tour',
+          description: 'Explore off-Strip authentic Asian restaurants where locals eat.',
+          features: [
+            '3-4 hours',
+            'Authentic Asian',
+            'Local spots',
+            '6-8 tastings',
+            'Budget-friendly',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Cocktail & Dining Tour',
+          description: 'Combine craft cocktails with gourmet small plates.',
+          features: [
+            '3-4 hours',
+            'Multiple venues',
+            'Cocktail focus',
+            'Tapas style',
+            'Sophisticated',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Las Vegas Food & Dining Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-5 hours with 6-8 tastings or buffet visits.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Vegas Buffets',
+            description: 'Sample Bacchanal, Wicked Spoon, or other legendary all-you-can-eat spreads.',
+          },
+          {
+            icon: 'Star',
+            title: 'Celebrity Restaurants',
+            description: 'Dine at Gordon Ramsay Hell\'s Kitchen, Wolfgang Puck Spago, or Nobu.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Chinatown',
+            description: 'Discover authentic Chinese, Korean, Thai, and Vietnamese restaurants.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Food Halls',
+            description: 'Visit modern food halls with artisan vendors and trendy options.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Culinary Evolution',
+            description: 'Learn how Vegas transformed from cheap buffets to culinary destination.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Buffet strategy: Start with expensive items (crab legs, prime rib), save carbs for last!',
+        'Bacchanal at Caesars Palace rated #1 Vegas buffet - $65-85 depending on time.',
+        'Make reservations for celebrity restaurants weeks ahead - they book up!',
+        'Chinatown (Spring Mountain Road) has best authentic Asian food - cheap too!',
+        'Lunch buffets cheaper than dinner (same food often) - go midday for deals.',
+        'Many restaurants offer lunch specials ($20-40) vs. $100+ dinner.',
+        'Happy hours common 3-6 PM - great deals on apps and drinks.',
+        'Off-Strip restaurants often better value and quality than on-Strip.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best buffet in Las Vegas?',
+          answer: 'Bacchanal at Caesars Palace (#1 - $65-85, endless variety!). Wicked Spoon at Cosmopolitan (individual portions, $35-50). Wynn Buffet (upscale, $45-60). Each offers 200+ items. Dinner costs more than lunch. Come hungry - it\'s all-you-can-eat excellence!',
+        },
+        {
+          question: 'Are Vegas buffets worth it?',
+          answer: 'Top buffets YES - quality rivals restaurants with all-you-can-eat! Bacchanal, Wicked Spoon, Wynn worth the price. Budget buffets ($20-30) hit-or-miss. Buffets are Vegas tradition - try at least one! Lunch cheaper than dinner (similar food).',
+        },
+        {
+          question: 'Can you eat cheaply in Las Vegas?',
+          answer: 'Yes! Off-Strip: Chinatown has $10-15 meals. Casino coffee shops serve specials. Food courts and cafes offer deals. Happy hours (3-6 PM). Avoid Strip restaurants - overpriced. Budget $30-50/day eating strategically off-Strip.',
+        },
+        {
+          question: 'What celebrity chefs are in Vegas?',
+          answer: 'Gordon Ramsay (Hell\'s Kitchen, multiple), Wolfgang Puck (Spago, Cut), Joël Robuchon (3 Michelin stars!), Nobu Matsuhisa, Bobby Flay, Emeril Lagasse, Guy Savoy, and more! Vegas has highest concentration of celebrity chef restaurants globally!',
+        },
+        {
+          question: 'How much does dining cost in Vegas?',
+          answer: 'Buffets: $30-85. Celebrity chef dinner: $80-200+ per person. Steakhouses: $100-300. Chinatown: $10-20. Fast food: $8-15. Vegas ranges from cheap to ultra-luxury. Strip restaurants expensive - venture off-Strip for better value!',
+        },
+        {
+          question: 'Do you need reservations?',
+          answer: 'Celebrity restaurants: YES - book weeks ahead! Buffets: Not always needed but recommended (Bacchanal can wait 1+ hour). Walk-ins possible at casual spots. Peak times (Friday-Sunday dinner) book everything. Make reservations for peace of mind.',
+        },
+        {
+          question: 'Where is Chinatown in Las Vegas?',
+          answer: 'Spring Mountain Road (west of Strip, 10-15 min drive). Authentic Chinese, Korean, Thai, Japanese, Vietnamese restaurants. Cheap ($10-20 meals), delicious, and where locals eat! Best Asian food in Vegas. Easy Uber ride. Dinner reservations recommended weekends.',
+        },
+        {
+          question: 'Can you bring kids to Vegas restaurants?',
+          answer: 'Yes! Buffets family-friendly. Many celebrity restaurants welcome kids. However, Vegas casinos are 21+ so minors can\'t linger on casino floors (walk through OK). Off-Strip restaurants more relaxed. High-end dining less suitable for young children.',
+        },
+      ],
+    },
+
+    'adventure-tours': {
+      title: 'Las Vegas Adventure Tours',
+      subtitle: 'Experience Grand Canyon, Valley of Fire, and desert adventures from Vegas!',
+      categoryName: 'Adventure Tours',
+      
+      stats: {
+        toursAvailable: 128,
+        priceFrom: 90,
+        duration: '4-12 hours',
+      },
+
+      introduction: `Escape Las Vegas for incredible desert and canyon adventures! Las Vegas's location enables day trips to Grand Canyon (South Rim 4.5 hours, West Rim/Skywalk 2.5 hours), Red Rock Canyon (stunning red sandstone just 30 minutes away), Valley of Fire (ancient petroglyphs and dramatic formations), Hoover Dam (engineering marvel), and Lake Mead recreation. Adventures include Grand Canyon helicopter tours, Hoover Dam tours, ATV desert rides, zip-lining over canyons, rock climbing, kayaking Colorado River, horseback riding, and sandboarding dunes. Some tours combine multiple sites or add Skywalk glass bridge experiences. The Mojave Desert surroundings offer completely different scenery from Strip. It's natural wonder just outside Sin City!`,
+
+      seo: {
+        title: 'Las Vegas Adventure Tours 2025 - Grand Canyon & Desert Excursions',
+        description: 'Experience Vegas adventures! Grand Canyon, Red Rock Canyon, Hoover Dam, and desert tours!',
+        keywords: 'Las Vegas Grand Canyon tours, Red Rock Canyon, Hoover Dam tours, Vegas adventures, Valley of Fire',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Grand Canyon Access',
+          description: 'Visit one of world\'s natural wonders from Las Vegas!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Red Rock Canyon',
+          description: 'Stunning desert scenery just 30 minutes from Strip!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Hoover Dam',
+          description: 'Engineering marvel creating Lake Mead - impressive!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Desert Adventures',
+          description: 'ATV rides, zip-lines, and outdoor thrills in Mojave Desert.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Grand Canyon South Rim',
+          description: 'Full-day tour to most scenic rim with multiple viewpoints.',
+          features: [
+            '12-14 hours',
+            'South Rim',
+            'Multiple stops',
+            'Lunch',
+            'Epic',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Grand Canyon Helicopter',
+          description: 'Helicopter tour into canyon landing on floor - bucket-list!',
+          features: [
+            '4 hours total',
+            'Helicopter flight',
+            'Canyon landing',
+            'Champagne',
+            'Thrilling',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Red Rock & Hoover Dam',
+          description: 'Half-day visiting red rock formations and massive dam.',
+          features: [
+            '5-6 hours',
+            'Two sites',
+            'Scenic drive',
+            'Photo stops',
+            'Accessible',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Valley of Fire Tour',
+          description: 'Explore ancient petroglyphs and fire-red sandstone formations.',
+          features: [
+            '6-7 hours',
+            'State park',
+            'Petroglyphs',
+            'Unique geology',
+            'Beautiful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Las Vegas Adventure Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Grand Canyon: 12-14 hours (driving). Helicopter: 4 hours. Half-day: 5-7 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Grand Canyon',
+            description: 'See one of world\'s natural wonders - 277 miles long, 1 mile deep!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Red Rock Canyon',
+            description: 'Drive 13-mile scenic loop through vibrant red sandstone formations.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Hoover Dam',
+            description: 'Massive 726-foot dam holding back Lake Mead - impressive engineering!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Desert Landscapes',
+            description: 'Mojave Desert scenery completely different from Vegas glitz.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Natural History',
+            description: 'Learn about desert ecology, canyon geology, and dam construction.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Grand Canyon South Rim is LONG day (12-14 hours) but worth it - most scenic rim!',
+        'West Rim closer (2.5 hours) with Skywalk but less impressive views.',
+        'Helicopter tours expensive ($300-500) but unforgettable canyon experience!',
+        'Red Rock Canyon scenic drive $15/vehicle - easy DIY or join tours.',
+        'Bring layers - desert temperatures swing 40°F between day and night!',
+        'Summer Grand Canyon tours start EARLY (5-6 AM) to avoid heat.',
+        'Hoover Dam tours ($15-30) go inside - impressive engineering tour.',
+        'Valley of Fire less crowded than Red Rock - equally beautiful!',
+      ],
+
+      faqs: [
+        {
+          question: 'How far is Grand Canyon from Las Vegas?',
+          answer: 'South Rim: 280 miles (4.5 hours drive). West Rim (Skywalk): 125 miles (2.5 hours). Tours run 12-14 hours (South) or 8-10 hours (West). South Rim FAR more impressive! Long day but worth it. Helicopter tours cut travel time.',
+        },
+        {
+          question: 'Is the Skywalk worth it?',
+          answer: 'Controversial! Skywalk is glass bridge extending over canyon at West Rim ($50 entry!). Views are good but West Rim less impressive than South Rim. If short on time, it\'s option. South Rim worth the longer drive for better scenery.',
+        },
+        {
+          question: 'Can you visit Grand Canyon in one day from Vegas?',
+          answer: 'Yes! South Rim tours (12-14 hours, $90-130) are full day but doable. Early start (5-6 AM), return evening. Helicopter tours shorter (4 hours, $300-500). West Rim easier (8-10 hours). Full day commitment but Grand Canyon is bucket-list!',
+        },
+        {
+          question: 'What is Red Rock Canyon?',
+          answer: 'Red Rock Canyon National Conservation Area is stunning red sandstone formations 30 minutes west of Vegas. 13-mile scenic drive, hiking trails, rock climbing. $15 entry. Easy half-day trip. Locals\' favorite outdoor escape. Less crowded than Grand Canyon!',
+        },
+        {
+          question: 'Is Hoover Dam worth visiting?',
+          answer: 'Yes! Impressive engineering marvel on way to Grand Canyon. Massive dam (726 feet), created Lake Mead. Tours ($15-30) go inside seeing generators. Photo ops from bridge. 45 min from Vegas. Good half-day trip or combine with other sites.',
+        },
+        {
+          question: 'What should I bring on adventure tours?',
+          answer: 'Water (desert is dry!), sunscreen, hat, comfortable shoes, layers (temperature swings!), camera, snacks. Tours provide transport. Summer: Bring extra water - it\'s 110°F+! Winter: Jacket needed. Desert conditions are extreme.',
+        },
+        {
+          question: 'When is the best time for outdoor tours?',
+          answer: 'Spring (March-May) and fall (Sept-Nov): Perfect temperatures (70-85°F). Summer: VERY hot (110°F+ in desert) - go anyway but hydrate! Winter: Pleasant (50-70°F), can be cold at canyon. Avoid summer for Grand Canyon if heat-sensitive.',
+        },
+        {
+          question: 'Are adventure tours worth it from Vegas?',
+          answer: 'Absolutely! Grand Canyon, Red Rock, Hoover Dam all incredible. Tours handle driving (long!), provide narration, and hit highlights efficiently. DIY possible (rent car) but tours offer value. Natural beauty contrasts wonderfully with Vegas excess!',
+        },
+      ],
+    },
+
+    'helicopter-tours': {
+      title: 'Las Vegas Helicopter Tours',
+      subtitle: 'Soar over the Strip at night and fly to Grand Canyon for aerial adventures!',
+      categoryName: 'Helicopter Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 120,
+        duration: '15 minutes - 4 hours',
+      },
+
+      introduction: `Experience Las Vegas from above with spectacular helicopter tours! Vegas helicopter adventures range from 12-minute nighttime Strip flights seeing neon lights from above to 4-hour Grand Canyon excursions landing on canyon floor. Popular tours include the Vegas Night Flight (Strip and Downtown illuminated), Grand Canyon West with Skywalk and champagne landing, Valley of Fire aerial tour, Hoover Dam flyover, and sunset flights over desert. Helicopter tours offer unique perspectives on Vegas's architectural excess, desert landscapes, and natural wonders. See the entire Strip lit up, fly through Grand Canyon, hover over Hoover Dam, and land in remote desert locations. Some tours include ground activities, meals, or champagne. It's ultimate Vegas luxury!`,
+
+      seo: {
+        title: 'Las Vegas Helicopter Tours 2025 - Strip Flights & Grand Canyon',
+        description: 'Experience Vegas helicopter tours! Strip night flights, Grand Canyon, and aerial adventures!',
+        keywords: 'Las Vegas helicopter tours, Vegas Strip helicopter, Grand Canyon helicopter, Vegas aerial tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Strip at Night',
+          description: 'See Vegas neon from above - absolutely spectacular!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Grand Canyon Landing',
+          description: 'Land on canyon floor 4,000 feet below rim - bucket-list!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Aerial Photography',
+          description: 'Capture unique angles impossible from ground.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Luxury Experience',
+          description: 'Premium way to see Vegas and natural wonders.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Vegas Night Flight',
+          description: 'Fly over illuminated Strip seeing neon from above.',
+          features: [
+            '12-15 minutes',
+            'Night views',
+            'Strip & Downtown',
+            'Spectacular',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Grand Canyon Landing',
+          description: 'Helicopter to West Rim landing on canyon floor with champagne.',
+          features: [
+            '4 hours',
+            'Canyon landing',
+            'Champagne toast',
+            'Return flight',
+            'Bucket-list',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Grand Canyon & Skywalk',
+          description: 'Fly to canyon with Skywalk glass bridge and viewpoints.',
+          features: [
+            '6-7 hours',
+            'Helicopter',
+            'Skywalk',
+            'Ground time',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunset Desert Tour',
+          description: 'Evening flight over desert, Valley of Fire, and Vegas at dusk.',
+          features: [
+            '90 minutes',
+            'Sunset timing',
+            'Desert scenery',
+            'Golden hour',
+            'Beautiful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Las Vegas Helicopter Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Strip flights: 12-15 minutes. Grand Canyon: 4-7 hours total. Sunset: 90 minutes.',
+          },
+          {
+            icon: 'Star',
+            title: 'Strip Aerial Views',
+            description: 'Fly over Bellagio, Caesars, entire Strip lit up like a jewel!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Canyon Floor Landing',
+            description: 'Touch down 4,000 feet below rim for champagne toast.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Windows for every passenger - bring camera with fast shutter!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Hoover Dam Flyover',
+            description: 'Aerial views of dam, Lake Mead, and Colorado River.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Pilot Narration',
+            description: 'Learn about sights, geology, and Vegas history from pilot.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Sunset flights over Strip most spectacular - book golden hour!',
+        'Weight limits apply (usually 275-300 lbs per person) - confirm when booking.',
+        'Window seats best - request at check-in or book "guaranteed window" tours.',
+        'Bring camera but no selfie sticks - they interfere with controls.',
+        'Grand Canyon tours expensive ($300-500) but save 8+ hours vs. driving.',
+        'Early morning Grand Canyon flights have clearest air - better visibility.',
+        'Book directly with helicopter companies, not third-party resellers.',
+        'Motion sickness rare but bring medication if prone - flights can be bumpy.',
+      ],
+
+      faqs: [
+        {
+          question: 'How much do Vegas helicopter tours cost?',
+          answer: 'Strip night flight: $120-180 (12-15 min). Grand Canyon with landing: $300-500 (4 hours). Grand Canyon + Skywalk: $400-600. Sunset tours: $180-250. Prices vary by company and flight length. Expensive but unforgettable views!',
+        },
+        {
+          question: 'Are helicopter tours safe?',
+          answer: 'Very safe! Helicopter tourism is highly regulated with strict maintenance and pilot requirements. Companies have excellent safety records. Weather cancellations common (they won\'t fly if unsafe). Modern helicopters, experienced pilots. Statistically very safe!',
+        },
+        {
+          question: 'How long are helicopter tours?',
+          answer: 'Strip flights: 12-15 minutes. Grand Canyon: 30-40 min flight each way + 30 min ground time. Total trip 4-7 hours including transport to heliport. Even short flights memorable - aerial perspective is completely different!',
+        },
+        {
+          question: 'Can you land in Grand Canyon?',
+          answer: 'Only at West Rim (Hualapai Reservation)! Tours land on canyon floor, offer champagne, 30 minutes to explore. South Rim flyovers only (no landing allowed). West Rim landing is bucket-list experience - 4,000 feet below rim!',
+        },
+        {
+          question: 'What is the best helicopter tour?',
+          answer: 'Strip night flight for Vegas views ($120-180, 12-15 min). Grand Canyon landing for natural wonder ($400-500, 4 hours). Choose based on budget/time. Both spectacular! First-timers: Do both if budget allows - completely different experiences.',
+        },
+        {
+          question: 'When is the best time for helicopter tours?',
+          answer: 'Strip: After dark (sunset-10 PM) when lights are lit! Grand Canyon: Morning for clearest air and photos. Sunset flights beautiful but expensive. Weather matters - clear days essential. Book based on Vegas weather forecast.',
+        },
+        {
+          question: 'Do I need to book in advance?',
+          answer: 'Yes! Popular flights (Strip night, Grand Canyon landing) book up 1-2 weeks ahead. Walk-up possible off-season but risky. Advance booking guarantees preferred time slots. Weekends busiest - book early for weekend tours.',
+        },
+        {
+          question: 'What should I bring?',
+          answer: 'Camera, ID (required!), sunglasses, light jacket. Leave large bags at hotel. No selfie sticks. Wear dark clothing for night flights (less window reflection). Comfortable shoes. They provide headsets for pilot narration. Travel light!',
+        },
+      ],
+    },
+  },
 };
 
