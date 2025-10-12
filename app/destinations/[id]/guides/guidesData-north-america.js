@@ -20458,6 +20458,182 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'cable-car-tours': {
+      title: 'San Francisco Cable Car Tours',
+      subtitle: 'Ride historic cable cars up SF\'s steep hills - moving landmarks!',
+      categoryName: 'Cable Car Tours',
+      
+      stats: {
+        toursAvailable: 54,
+        priceFrom: 8,
+        duration: '1-3 hours',
+      },
+
+      introduction: `Experience San Francisco's iconic cable cars - last manually operated system in the world! Cable car tours ride three historic lines (Powell-Hyde, Powell-Mason, California Street) climbing SF's famously steep hills with vintage wooden cars pulled by underground cables. Experience gripman operating cars, ride outside running boards, hear bells clanging, pass landmarks like Lombard Street and Fisherman's Wharf, and enjoy thrilling hill descents. Tours include all-day passes, hop-on-hop-off flexibility, cable car museum visits, and expert guidance. Learn about 1873 invention, how cable system works, preservation efforts, and cultural icon status. It's mobile National Historic Landmark!`,
+
+      seo: {
+        title: 'San Francisco Cable Car Tours 2025 - Historic Rides & SF Hills',
+        description: 'Ride SF cable cars! Historic transportation, steep hills, and iconic San Francisco!',
+        keywords: 'San Francisco cable cars, SF cable car rides, Powell-Hyde, cable car tours, historic transportation',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Last Manual System',
+          description: 'Only remaining manually operated cable cars globally!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Moving Landmarks',
+          description: 'National Historic Landmarks - ride history!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Steep Hills',
+          description: 'Experience SF\'s famous hills - thrilling descents!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Scenic Routes',
+          description: 'Pass Lombard Street, Fisherman\'s Wharf, Nob Hill!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Powell-Hyde Line',
+          description: 'Most scenic - Lombard Street, bay views, Fisherman\'s Wharf.',
+          features: [
+            '20 minutes',
+            'Most scenic',
+            'Lombard Street',
+            'Bay views',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'All-Day Cable Car Pass',
+          description: 'Unlimited rides on all three lines.',
+          features: [
+            'Full day',
+            'Unlimited rides',
+            'All lines',
+            'Hop-on-hop-off',
+            'Value',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Cable Car + Walking Tour',
+          description: 'Combine cable car with guided neighborhood walk.',
+          features: [
+            '3 hours',
+            'Cable + walking',
+            'Guided',
+            'Comprehensive',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Cable Car Museum',
+          description: 'Visit free museum showing working cable machinery!',
+          features: [
+            '1 hour',
+            'Free entry',
+            'Working machinery',
+            'Educational',
+            'Fascinating',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your San Francisco Cable Car Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Single ride: 20-30 min. All-day pass: Unlimited. Museum: 1 hour.',
+          },
+          {
+            icon: 'Star',
+            title: 'Manual Operation',
+            description: 'Gripman manually operates - watch them work the grip and brake!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Steep Hills',
+            description: 'Climb/descend SF\'s famous hills - thrilling and scenic!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Lombard Street',
+            description: 'Powell-Hyde line passes "crookedest street" - great photo op!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Bay Views',
+            description: 'Powell-Hyde has best Alcatraz and bay views!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Historic Cars',
+            description: 'Vintage wooden cars from early 1900s - living history!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Powell-Hyde most scenic (Lombard St, bay views) - ride this one!',
+        'Board at turnarounds (Powell & Market, Hyde & Beach) for seats.',
+        'Mid-line stops: Long waits, often full. Walk to turnarounds!',
+        'Ride outside running boards for thrill (hold on tight!).',
+        'Cable Car Museum FREE - see working cable system, fascinating!',
+        'Early morning (7-8 AM) or evening (after 7 PM) shorter waits.',
+        'Single ride $8. All-day Muni pass: $13 (includes buses/metro too).',
+        'Lines can be 1+ hour wait at peak times - plan accordingly!',
+      ],
+
+      faqs: [
+        {
+          question: 'How much do cable cars cost?',
+          answer: 'Single ride: $8 (exact change or Clipper card). All-day cable car pass: $17. Muni passport (includes buses/metro): $13/day, $27/3-days. Cash on cable car or buy pass. Riding multiple times? Get pass - good value!',
+        },
+        {
+          question: 'Which cable car line is best?',
+          answer: 'Powell-Hyde most scenic - Lombard Street, Russian Hill, bay views, ends at Fisherman\'s Wharf! Powell-Mason: Similar but less scenic. California Street: Least scenic but functional. First-timers: Ride Powell-Hyde. All have character!',
+        },
+        {
+          question: 'How long do you wait for cable cars?',
+          answer: 'Peak times (midday): 1-2 hour waits at turnarounds! Early morning (7-9 AM) or evening (after 6 PM): 15-30 min. Mid-line stops: Long waits, cars often full. Plan accordingly - it\'s popular!',
+        },
+        {
+          question: 'Can you ride standing on the outside?',
+          answer: 'Yes! Running boards designed for standing passengers - hold poles tight! Thrilling but safe. Seats fill fast - standing often only option. Part of the experience! Not recommended for young kids or mobility issues.',
+        },
+        {
+          question: 'Are cable cars worth it?',
+          answer: 'YES for iconic SF experience! Tourists love it. Locals use sparingly (crowded, slow). Worth riding once for history and thrill. Not practical transport - buses faster/cheaper. Experience trumps function - quintessential San Francisco!',
+        },
+        {
+          question: 'Is the Cable Car Museum free?',
+          answer: 'Completely FREE! See working cable machinery (all cable cars powered from here!), historic cars, learn system mechanics. Donations appreciated. 1 hour sufficient. Mason & Washington Streets. Fascinating engineering - highly recommended visit!',
+        },
+        {
+          question: 'Do cable cars run all day?',
+          answer: 'Operate 6 AM-midnight daily (reduced hours late night). Most frequent midday. No service for major maintenance occasionally - check schedules. Year-round operation - rain or shine (cables work always!).',
+        },
+        {
+          question: 'When is the best time to ride?',
+          answer: 'Early morning (7-8 AM) or evening (after 7 PM): Shorter waits. September-October: Best weather. Avoid midday peak tourist times. Weekdays less crowded than weekends. Sunset rides beautiful when clear!',
+        },
+      ],
+    },
   },
 };
 
