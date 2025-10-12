@@ -22221,5 +22221,183 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  'toronto': {
+    'cn-tower-tours': {
+      title: 'Toronto CN Tower Tours',
+      subtitle: 'Visit iconic 553m tower with glass floor, EdgeWalk, and 360° views!',
+      categoryName: 'CN Tower Tours',
+      
+      stats: {
+        toursAvailable: 42,
+        priceFrom: 38,
+        duration: '1-3 hours',
+      },
+
+      introduction: `Experience the CN Tower - Toronto's most iconic landmark and engineering marvel! CN Tower tours explore this 553-meter (1,815 ft) communications tower with glass floor (courage required!), 360 Restaurant (revolving dining!), SkyPod observation deck (447m high!), and thrilling EdgeWalk (hands-free walk around outside edge!). Visit observation decks with panoramic city views, Lake Ontario, and Toronto Islands. Tours include skip-the-line access, multimedia experiences, and photo opportunities. Learn about 1976 construction, tallest free-standing structure record (held until 2007), and engineering innovations. It's Toronto's must-see attraction!`,
+
+      seo: {
+        title: 'Toronto CN Tower Tours 2025 - Observation Deck, EdgeWalk & Glass Floor',
+        description: 'Visit CN Tower! Observation decks, glass floor, EdgeWalk, and iconic Toronto views!',
+        keywords: 'CN Tower tours, Toronto CN Tower, EdgeWalk, glass floor Toronto, CN Tower tickets',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Iconic Landmark',
+          description: '553m tall - Toronto\'s most recognizable symbol!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Glass Floor',
+          description: 'Stand 342m above ground - thrilling experience!',
+        },
+        {
+          icon: 'Camera',
+          title: '360° Views',
+          description: 'See Toronto, Lake Ontario, and beyond - spectacular!',
+        },
+        {
+          icon: 'Zap',
+          title: 'EdgeWalk',
+          description: 'Walk around outside edge hands-free - world\'s highest!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'General Admission',
+          description: 'Access main observation level and glass floor.',
+          features: [
+            '1-2 hours',
+            'LookOut Level',
+            'Glass Floor',
+            'Views',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'SkyPod Upgrade',
+          description: 'Highest observation deck at 447m.',
+          features: [
+            'Add 30 min',
+            'Highest deck',
+            'Extra views',
+            'Worth it',
+            'Upgrade',
+          ],
+        },
+        {
+          icon: 'Zap',
+          title: 'EdgeWalk',
+          description: 'Harnessed walk around outside ledge.',
+          features: [
+            '90 minutes',
+            'Extreme',
+            'Age 13+',
+            'Bucket list',
+            'Thrilling',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: '360 Restaurant',
+          description: 'Fine dining with revolving views.',
+          features: [
+            '2 hours',
+            'Dining',
+            'Revolving',
+            'Reservation',
+            'Luxurious',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Toronto CN Tower Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'General visit: 1-2 hours. EdgeWalk: 90 minutes total (30 min outside). Restaurant: 2 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'LookOut Level',
+            description: 'Main observation deck at 346m with indoor/outdoor viewing!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Glass Floor',
+            description: 'Stand on glass 342m above ground - see through to streets below!',
+          },
+          {
+            icon: 'Camera',
+            title: 'SkyPod',
+            description: 'Highest public observation deck at 447m - clear-day views 160km!',
+          },
+          {
+            icon: 'Zap',
+            title: 'EdgeWalk',
+            description: 'World\'s highest external walk - lean back over edge harnessed!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'History',
+            description: 'Learn about 1976 construction and engineering achievements.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book timed tickets online - saves time and money (cheaper than door price!).',
+        'Visit sunset for day-to-night transition - magical city lights!',
+        'Clear days offer best views - check weather forecast.',
+        'Glass Floor intimidating but safe - walk slowly if nervous!',
+        'SkyPod worth upgrade ($15) on clear days for extended views.',
+        'EdgeWalk requires reservation weeks ahead - weather-dependent.',
+        '360 Restaurant includes tower admission - dining + views package.',
+        'Weekday mornings least crowded (avoid weekends and school holidays).',
+      ],
+
+      faqs: [
+        {
+          question: 'How much does CN Tower cost?',
+          answer: 'General admission: $38-43 adults, $28-33 kids (includes LookOut + Glass Floor). SkyPod upgrade: +$15. EdgeWalk: $225. 360 Restaurant: $65+ per person (includes admission). Book online cheaper! Worth every dollar for iconic experience.',
+        },
+        {
+          question: 'How long to spend at CN Tower?',
+          answer: '1-2 hours sufficient for observation decks. Add 30 min for SkyPod. EdgeWalk: 90 minutes (30 min outside). Restaurant: 2 hours. Budget half-day for full experience. Don\'t rush - enjoy views!',
+        },
+        {
+          question: 'Is the glass floor scary?',
+          answer: 'Can be! You\'re standing 342m above ground seeing through to streets. Completely safe but intimidating. Many people crawl or edge carefully. Kids often braver than adults! Try it - exhilarating once you trust it!',
+        },
+        {
+          question: 'Do you need to book in advance?',
+          answer: 'Recommended! Online tickets cheaper and skip some lines. Walk-ins possible but longer waits and higher prices. EdgeWalk MUST book ahead (weeks!). 360 Restaurant requires reservations. Summer and holidays: Definitely book online!',
+        },
+        {
+          question: 'What is EdgeWalk?',
+          answer: 'EdgeWalk is hands-free walk around CN Tower\'s outside edge at 356m high! Harnessed to safety rail. Lean back over edge, walk full circle. World\'s highest external building walk! Age 13+, $225. Weather-dependent. Bucket-list experience!',
+        },
+        {
+          question: 'Is SkyPod worth it?',
+          answer: 'On clear days: YES! Extra 100m height makes difference in views. Can see Niagara Falls mist on clear days! Cloudy/foggy: Skip it. Add $15 to admission. Not essential but enhances experience if weather cooperates.',
+        },
+        {
+          question: 'Can you eat at CN Tower?',
+          answer: 'Yes! 360 Restaurant (fine dining, revolving, reservations required, $65+). Also Le Café (casual, no reservation). Restaurant admission includes tower entry - good value if dining anyway. 360 rotates full circle in 72 minutes!',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Sunset ideal - see day and night views! Clear days show most (check forecast). Weekday mornings least crowded. Summer busy but great weather. Winter less crowded but possible snow/clouds. Year-round operation - choose based on weather!',
+        },
+      ],
+    },
+  },
 };
 
