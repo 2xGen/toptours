@@ -8415,7 +8415,7 @@ export const categoryGuidesNorthAmerica = {
             title: 'LA Luxury',
             description: 'Learn about real estate prices, celebrity lifestyles, and Hollywood wealth.',
           },
-        },
+        ],
       },
 
       expertTips: [
