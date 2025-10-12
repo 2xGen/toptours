@@ -12,23 +12,29 @@ export async function POST(request) {
     }
 
     // Construct the Viator API URL
-    const baseUrl = 'https://api.viator.com/partner/products/search';
-    const params = new URLSearchParams({
-      topX: '10-50',
-      currency: 'USD',
-      destId: destination || '684',
-      sortOrder: 'FEATURED',
-      sortOrder: 'REVIEW_AVG_RATING_D',
-      topX: '1-20'
-    });
+    const baseUrl = 'https://api.viator.com/partner/search/freetext';
+    
+    const requestBody = {
+      searchTerm: destination.trim(),
+      searchTypes: [{
+        searchType: 'PRODUCTS',
+        pagination: {
+          start: 1,
+          count: 20
+        }
+      }],
+      currency: 'USD'
+    };
 
-    const response = await fetch(`${baseUrl}?${params}`, {
-      method: 'GET',
+    const response = await fetch(baseUrl, {
+      method: 'POST',
       headers: {
         'exp-api-key': apiKey,
-        'Accept': 'application/json',
-        'Accept-Language': 'en-US'
-      }
+        'Accept': 'application/json;version=2.0',
+        'Accept-Language': 'en-US',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestBody)
     });
 
     if (!response.ok) {
