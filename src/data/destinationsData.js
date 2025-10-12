@@ -1865,12 +1865,12 @@ export const destinations = [
     heroDescription: 'Welcome to Santorini, where dramatic volcanic cliffs meet crystal-clear Aegean waters and white-washed buildings create a picture-perfect paradise. From the iconic caldera views to stunning sunsets, from charming villages to pristine beaches, this volcanic island offers the perfect blend of natural beauty and Greek island charm. Let our AI-powered planner help you discover the best experiences this breathtaking destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Santorini.avif',
     tourCategories: [
-      'Caldera Tours',
-      'Sunset Tours',
-      'Volcano Tours',
-      'Wine & Food Tours',
-      'Beach & Boat Tours',
-      'Village Exploration Tours'
+      { name: 'Caldera Tours', hasGuide: true },
+      { name: 'Sunset Tours', hasGuide: true },
+      { name: 'Volcano Tours', hasGuide: true },
+      { name: 'Wine & Food Tours', hasGuide: true },
+      { name: 'Beach & Boat Tours', hasGuide: true },
+      { name: 'Village Exploration Tours', hasGuide: true }
     ],
     seo: {
       title: 'Santorini Tours & Excursions - Top-Rated Activities & Adventures',

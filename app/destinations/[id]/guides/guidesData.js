@@ -35177,5 +35177,1015 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
     },
   },
 
+  santorini: {
+    'caldera-tours': {
+      title: 'Santorini Caldera Tours',
+      subtitle: 'Explore the stunning volcanic caldera with dramatic cliffs, azure waters, and iconic white-washed villages!',
+      categoryName: 'Caldera Tours',
+      
+      stats: {
+        toursAvailable: 48,
+        priceFrom: 40,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Experience Santorini's breathtaking caldera, one of the world's most spectacular volcanic landscapes! The caldera was formed by a massive volcanic eruption around 1600 BC that shaped the island's dramatic crescent form. Caldera tours explore this geological wonder by boat, hiking, or viewing platforms showcasing the 300-meter-high cliffs, deep blue waters, volcanic islands, and the iconic white-washed villages of Oia and Fira perched dramatically on the rim. Boat tours sail across the caldera visiting hot springs, volcanic beaches, and sunset viewpoints. Hiking tours follow clifftop paths connecting villages with stunning views at every turn. Photography tours capture the caldera's beauty at golden hour. It's Santorini's defining feature creating the dramatic scenery that makes this Greek island world-famous!`,
+
+      seo: {
+        title: 'Santorini Caldera Tours 2025 - Volcanic Cliffs & Boat Tours',
+        description: 'Experience Santorini\'s stunning caldera! Boat tours, volcanic cliffs, and dramatic Aegean views!',
+        keywords: 'Santorini caldera tours, Santorini boat tours, caldera cruise, Santorini volcanic tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Iconic Volcanic Landscape',
+          description: 'Explore one of the world\'s most dramatic calderas with 300m cliffs and azure waters!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Spectacular Photo Ops',
+          description: 'Capture Santorini\'s famous white villages against volcanic cliffs and blue sea.',
+        },
+        {
+          icon: 'Ship',
+          title: 'Boat & Sailing Tours',
+          description: 'See the caldera from water level with swimming, hot springs, and island stops.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Unforgettable Views',
+          description: 'Experience Santorini\'s most stunning vistas from land and sea.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Ship',
+          title: 'Caldera Boat Cruises',
+          description: 'Sail across the caldera visiting volcanic islands, hot springs, and swimming spots.',
+          features: [
+            '3-5 hours',
+            'Boat cruise',
+            'Hot springs',
+            'Swimming stops',
+            'Volcanic islands',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Caldera Sunset Sailing',
+          description: 'Romantic sunset cruises with dinner, wine, and views of the caldera in golden light.',
+          features: [
+            'Sunset timing',
+            'Dinner included',
+            'Wine & drinks',
+            'Swimming',
+            'Romantic atmosphere',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Catamaran Tours',
+          description: 'Luxury catamaran sailing around the caldera with BBQ, drinks, and multiple stops.',
+          features: [
+            'Catamaran sailing',
+            'BBQ lunch/dinner',
+            'Open bar',
+            'Snorkeling',
+            'All-inclusive',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Caldera Hiking Tours',
+          description: 'Hike the famous Fira to Oia trail along clifftops with stunning caldera views.',
+          features: [
+            '10km hiking',
+            'Cliffside paths',
+            'Panoramic views',
+            '3-4 hours',
+            'Village to village',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Santorini Caldera Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Boat tours last 3-5 hours; hiking tours take 3-4 hours along clifftop paths.',
+          },
+          {
+            icon: 'Ship',
+            title: 'Caldera Sailing',
+            description: 'Cruise across azure waters seeing the dramatic cliffs from sea level.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Swimming & Hot Springs',
+            description: 'Swim in volcanic hot springs and clear Aegean waters at various stops.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Dramatic Scenery',
+            description: 'Photograph white villages, volcanic cliffs, and deep blue caldera waters.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Volcanic Islands',
+            description: 'Visit Nea Kameni (active volcano) and Palea Kameni (hot springs) in caldera center.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Sunset Views',
+            description: 'Many tours time for magical Santorini sunset over the caldera - spectacular!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book sunset caldera cruises weeks in advance - extremely popular and sell out quickly!',
+        'Morning caldera tours offer better swimming conditions and fewer crowds on boats.',
+        'Fira to Oia hike is stunning but challenging - 10km, 3-4 hours, minimal shade in summer heat!',
+        'Catamaran tours provide more space and stability than smaller sailboats - better for families.',
+        'Hot springs turn water reddish-brown - wear dark swimsuit (sulfur stains light colors!).',
+        'Bring sunscreen, hat, and water - sun reflects intensely off caldera cliffs and water.',
+        'Caldera-view hotels cost premium but waking up to these views is unforgettable!',
+        'Cable car from Fira to old port (€6) beats walking 600+ donkey-dung covered steps!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Santorini caldera?',
+          answer: 'The Santorini caldera is a massive volcanic crater filled with seawater - one of the world\'s most spectacular geological formations! FORMATION: Around 1600 BC, a catastrophic volcanic eruption (one of history\'s largest!) destroyed the center of the ancient circular island, creating a crescent-shaped landmass we see today. The explosion was so massive it may have contributed to the Minoan civilization\'s collapse and possibly inspired the Atlantis legend! The volcanic center collapsed into the sea forming the caldera. WHAT YOU SEE NOW: Dramatic crescent islands (Santorini/Thira is largest) with 300-meter (1000-foot) high cliffs plunging into deep blue sea. Caldera water depth: 400 meters! Two small volcanic islands (Nea Kameni, Palea Kameni) in center where volcanic activity continues (hot springs!). White-washed villages (Oia, Fira, Imerovigli) perched impossibly on cliff edges. It\'s active volcanic system - last eruption 1950! The caldera creates Santorini\'s iconic dramatic beauty - nowhere else looks like this!',
+        },
+        {
+          question: 'How much do caldera tours cost?',
+          answer: 'Caldera tour prices vary by boat type, duration, and inclusions! BUDGET OPTIONS: Shared boat tours (3-4 hours): €40-60. Basic sailing tours: €50-80. STANDARD: Catamaran sunset cruise (5 hours, BBQ, drinks): €90-120. Morning sailing with lunch: €80-110. PREMIUM: Luxury catamaran with gourmet meal: €150-200. Private sailing charter: €500-1,500+ depending on group size and duration. HIKING: Fira to Oia guided hike: €40-80. Self-guided: Free! WHAT\'S INCLUDED: Most tours include transportation, boat cruise, swimming stops, meals/snacks (sunset tours have dinner!), drinks (wine, beer, soft drinks), snorkeling equipment, and guide. Catamaran tours often have open bar! VALUE TIP: Sunset cruises are most expensive but include dinner and drinks - actually good value considering what\'s included. Morning tours are cheaper and offer better swimming. Book online for 10-15% savings. Groups of 4+ should consider private charters (costs comparable when split!).',
+        },
+        {
+          question: 'When is the best time for caldera tours?',
+          answer: 'BEST TIMES: Sunset tours (departing 3-5 PM) - Experience famous Santorini sunset from the water with dinner and drinks. Most popular and romantic! Morning tours (9-11 AM) - Better swimming conditions, clearer water, fewer crowds on boats, more comfortable temperatures. BEST MONTHS: May-June & September-October (shoulder seasons) - Perfect weather (22-28°C/72-82°F), fewer crowds than July-August, still warm water, easier tour bookings. July-August (peak summer) - Warmest weather (28-35°C/82-95°F), best swimming, but VERY crowded and expensive. Book months ahead! April & November - Quieter, cooler (18-22°C/64-72°F), good for hiking, swimming chilly, fewer tour options. Winter (December-March) - Many tours don\'t operate. Beautiful views but cold for boat tours. SUNSET TIMING: Changes seasonally - June-August sunsets around 8:30 PM, September-October around 7-7:30 PM. Tours time accordingly. RECOMMENDATION: Shoulder seasons (May-June, Sept-Oct) offer best balance of weather and crowds. Book sunset cruises for special occasion; morning tours for swimming focus!',
+        },
+        {
+          question: 'Can you hike the caldera rim?',
+          answer: 'YES - the Fira to Oia hike along the caldera rim is one of Santorini\'s most spectacular experiences! THE HIKE: DISTANCE: 10 kilometers (6.2 miles). TIME: 2.5-4 hours depending on pace and photo stops. DIFFICULTY: Moderate - not technical but challenging due to distance, some elevation change (up and down), and heat exposure. PATH: Well-marked trail along caldera edge with STUNNING views the entire way! Passes through Fira, Firostefani, Imerovigli, and ends in Oia. WHAT YOU\'LL SEE: Non-stop caldera panoramas, white-washed villages, blue-domed churches, volcanic islands below, photo opportunities every 50 meters! CHALLENGES: Minimal shade (sun exposure intense!). Summer heat can be brutal (35°C/95°F+). Rocky, uneven path. BEST TIMING: Early morning start (7-8 AM) before heat. October-May more comfortable temperatures. TIPS: Bring lots of water (2+ liters!), wear hat and sunscreen, good hiking shoes, start Fira (downhill bias to Oia). Reward yourself with Oia sunset after finishing! GUIDED vs SELF: Easily done self-guided (well-marked). Guided tours provide geological/historical context. It\'s Santorini\'s best free activity!',
+        },
+        {
+          question: 'What are the volcanic islands in the caldera?',
+          answer: 'Two small volcanic islands sit in Santorini\'s caldera center - both fascinating for different reasons! NEA KAMENI ("New Burnt"): The active volcanic island! Formed by eruptions starting 197 BC, most recently active 1950. BLACK LAVA LANDSCAPE - Walking on hardened lava feels otherworldly! Sulfur smell, steaming vents, volcanic craters. HIKING: 30-45 minute hike to crater (moderate, volcanic rocks, hot in summer!). €2.50 landing fee. ACTIVITY: It\'s ACTIVE volcano - seismologists monitor constantly! Safe to visit but genuinely active. PALEA KAMENI ("Old Burnt"): Older volcanic island famous for HOT SPRINGS! Warm sulfur springs where water is 30-35°C (86-95°F). Swimming here is highlight of many caldera cruises! Water is reddish/brown from iron and sulfur - turns white swimsuits yellow (wear dark colors!). Therapeutic but smells like sulfur. BOAT ACCESS: Can only visit these islands via boat tours (no permanent residents, no ferries). Most caldera cruises include stops at both - Nea Kameni hike and Palea Kameni hot spring swim. It\'s unique experience - swimming in volcanic waters surrounded by dramatic caldera!',
+        },
+        {
+          question: 'Are caldera boat tours worth it?',
+          answer: 'YES - caldera boat tours provide Santorini\'s best perspectives and experiences! WHY WORTH IT: UNIQUE VIEWPOINT - Seeing Santorini\'s dramatic cliffs and white villages FROM the water reveals the island\'s incredible scale and beauty. Photos from sea level are stunning! VOLCANIC EXPERIENCE - Visit active volcano Nea Kameni and swim in hot springs at Palea Kameni - can\'t do from land! SWIMMING - Multiple stops in crystal-clear Aegean at beaches and coves. SUNSET MAGIC - Sunset cruises offer front-row seats to world-famous Santorini sunset without Oia crowds! RELAXATION - Enjoy Greek hospitality, food, wine while professionals sail you around paradise. ALL-INCLUSIVE - Most include meals, drinks (often open bar!), snorkeling gear, and guide. POTENTIAL DOWNSIDES: Can be crowded (catamarans hold 20-40 people). Expensive (€90-150). Weather-dependent (rough seas = cancellation). RECOMMENDATION: Absolutely take at least one caldera tour - it\'s essential Santorini experience! Sunset cruises are worth the splurge for special occasions. Morning tours better for swimming and photos. Catamaran more comfortable than smaller sailboats. Book weeks ahead for summer!',
+        },
+        {
+          question: 'What should I bring on caldera boat tours?',
+          answer: 'Pack for a day on the water with sun, swimming, and comfort! ESSENTIALS: Swimsuit (wear under clothes for easy changing!), towel (many tours provide but bring own to be sure), sunscreen (SPF 50+ - sun reflects off water intensely!), hat and sunglasses (sun exposure all day!), light cover-up or rash guard (protect from sun between swims), and waterproof bag for phone/valuables. CLOTHING: Comfortable casual clothes, sandals or flip-flops (you\'ll kick off for swimming), light jacket (wind on water gets cool even summer!). EXTRAS: Underwater camera or waterproof phone case (capture swimming moments!), motion sickness medication if prone (Aegean can be choppy!), cash for landing fees (€2.50 for Nea Kameni), and reusable water bottle. WHAT TOURS PROVIDE: Most include meals (BBQ on sunset cruises!), drinks/wine (catamaran tours often have open bar!), snorkeling equipment, and sometimes towels. CLOTHING TIP: Wear DARK swimsuit - volcanic hot springs stain light-colored suits reddish/brown! Bring change of clothes for after tour if going to dinner. Modest cover-ups for volcano island hike (respect Greek culture).',
+        },
+        {
+          question: 'Can you swim in the caldera?',
+          answer: 'YES - swimming in Santorini\'s caldera is incredible! The deep blue waters are clean, clear, and perfect for swimming at designated spots. SWIMMING LOCATIONS: HOT SPRINGS (Palea Kameni island) - Warm volcanic springs (30-35°C/86-95°F) mixed with sea water. Therapeutic sulfur water (turns reddish-brown!). Most tours stop here. Unique experience swimming in volcanic warmth! RED BEACH & WHITE BEACH - Volcanic beaches accessible by boat. Dramatic colored cliffs, clear water, excellent snorkeling. Various coves and bays around caldera during boat tours. WATER CONDITIONS: Crystal clear visibility. Temperature: 22-26°C (72-79°F) summer, 16-18°C (61-64°F) spring/fall. Generally calm inside caldera (protected from open sea). SAFETY: Boat tours only stop at safe swimming spots. No swimming near cliffs (unstable rocks). Hot springs are safe but sulfur smell strong! Life jackets provided on boats. WHAT TO KNOW: Volcanic hot springs stain light swimsuits - wear dark colors! Water at hot springs isn\'t crystal clear (reddish from minerals). Caldera is deep (400m) but you swim near islands where it\'s shallower. Most caldera cruises allocate 30-45 minutes for swimming - bring your swimsuit!',
+        },
+      ],
+    },
+
+    'sunset-tours': {
+      title: 'Santorini Sunset Tours',
+      subtitle: 'Witness the world\'s most famous sunset painting Santorini\'s sky in gold, pink, and purple!',
+      categoryName: 'Sunset Tours',
+      
+      stats: {
+        toursAvailable: 52,
+        priceFrom: 50,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Experience Santorini's legendary sunset - consistently ranked among the world's most beautiful! Watching the sun sink into the Aegean Sea behind volcanic cliffs while whitewashed villages glow golden creates magical moments that define the Santorini experience. Sunset tours offer various perspectives: sailing cruises position you on the water for unobstructed sunset views with dinner and wine, Oia village tours secure prime viewing spots avoiding crushing crowds, helicopter tours provide aerial sunset perspectives, and private terraces offer exclusive romantic settings. The best sunsets occur April through October when clear skies and warm colors dominate. Tours include photography tips, Greek wine, traditional meals, and the expertise of locals who know exactly where and when to position for perfection. It's the sunset that launched a thousand Instagram posts!`,
+
+      seo: {
+        title: 'Santorini Sunset Tours 2025 - Oia Sunset & Sailing Cruises',
+        description: 'Experience Santorini\'s famous sunset! Oia viewpoints, sunset cruises, and romantic Greek evenings!',
+        keywords: 'Santorini sunset tours, Oia sunset, Santorini sunset cruise, Greece sunset sailing',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Sun',
+          title: 'World-Famous Sunset',
+          description: 'Witness one of the planet\'s most spectacular sunsets over the Aegean Sea!',
+        },
+        {
+          icon: 'Ship',
+          title: 'Sunset from the Water',
+          description: 'Sailing cruises offer front-row sunset seats without Oia\'s crushing crowds.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Perfect Photography',
+          description: 'Capture golden hour magic with expert tips and prime viewing positions.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Romantic Atmosphere',
+          description: 'Create unforgettable memories with loved ones during nature\'s evening show.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Ship',
+          title: 'Sunset Sailing Cruises',
+          description: 'Romantic catamaran or sailboat tours with dinner, wine, and sunset from the water.',
+          features: [
+            '4-5 hours',
+            'Dinner included',
+            'Open bar',
+            'Caldera sailing',
+            'Best views',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Oia Sunset Tours',
+          description: 'Guided tours to best Oia viewpoints arriving before crowds with local insider spots.',
+          features: [
+            'Prime locations',
+            'Beat the crowds',
+            'Photography tips',
+            'Oia exploration',
+            '2-3 hours',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Private Sunset Experiences',
+          description: 'Exclusive terrace dining or private yacht charters for intimate sunset viewing.',
+          features: [
+            'Private setting',
+            'Gourmet dinner',
+            'Premium wine',
+            'Romantic exclusivity',
+            'Special occasions',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Sunset Tours',
+          description: 'Professional photographers guide you to best spots teaching composition and techniques.',
+          features: [
+            'Pro photographer',
+            'Best viewpoints',
+            'Camera settings',
+            'Multiple locations',
+            'Stunning shots',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Santorini Sunset Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Sunset tours last 2-5 hours timed to arrive before sunset with dinner/drinks.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Golden Hour Magic',
+            description: 'Watch the sky turn gold, pink, orange, and purple as sun meets Aegean Sea.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Prime Viewpoints',
+            description: 'Access best locations whether on boats away from crowds or in Oia\'s iconic spots.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography',
+            description: 'Capture stunning sunset photos with caldera, white villages, and blue domes.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Greek Wine & Dinner',
+            description: 'Most tours include Santorini wine, traditional Greek food, and sunset toasts.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Romantic Atmosphere',
+            description: 'Share magical moments as the sun sets over one of the world\'s most beautiful places.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book sunset cruises 2-4 weeks in advance - they sell out quickly in summer!',
+        'Oia sunset attracts 1,000s of tourists - arrive 1 hour early for decent viewing spot or book tours!',
+        'Sunset timing changes seasonally: June-August (8:15-8:30 PM), September (7:30 PM), October (6:30 PM).',
+        'Alternative to Oia: Watch from Imerovigli, Fira, or Akrotiri Lighthouse - fewer crowds!',
+        'Cloudy days can produce more dramatic, colorful sunsets - don\'t skip tours for clouds!',
+        'Sunset cruises include swimming BEFORE sunset - bring swimsuit even though it\'s evening tour!',
+        'Photography: Arrive early, shoot in RAW format, bracket exposures, capture blue hour after sunset too.',
+        'Post-sunset: Oia gets even more magical with village lights twinkling - stay for that!',
+      ],
+
+      faqs: [
+        {
+          question: 'Why is Santorini sunset famous?',
+          answer: 'Santorini sunsets are legendary thanks to unique geography, consistent beauty, and romantic setting! WHY SO SPECIAL: UNOBSTRUCTED VIEWS - The caldera faces west with nothing between you and horizon. Sun sinks directly into Aegean Sea! DRAMATIC BACKDROP - Volcanic cliffs, whitewashed villages, blue-domed churches create iconic foreground for sunset colors. CONSISTENT QUALITY - Santorini\'s Mediterranean climate means clear evenings most summer days (April-October). Reliable beauty! VOLCANIC ATMOSPHERE - Fine volcanic particles in air scatter light creating particularly vibrant colors (golds, pinks, purples, oranges). COLOR REFLECTION - Sunset reflects off caldera cliffs and sea, amplifying the show. White buildings glow golden! ROMANTIC SETTING - The intimate villages perched on cliffs create perfect romantic atmosphere. PHOTOGRAPHY - The combination of natural beauty and architectural icons makes every sunset Instagram-perfect! CULTURAL PHENOMENON: Oia sunset viewing has become a ritual - locals even applaud when sun finally sets! It\'s not just sunset - it\'s an EVENT. While beautiful sunsets occur worldwide, Santorini\'s combination of all these factors creates consistently spectacular shows!',
+        },
+        {
+          question: 'Where is the best place to watch Santorini sunset?',
+          answer: 'Multiple excellent sunset viewpoints across Santorini! OIA CASTLE RUINS - Most famous spot! Dramatic views with windmills and village. PROBLEM: Outrageously crowded (1,000s of people shoulder-to-shoulder!). Arrive 90+ minutes early for space. ALTERNATIVES IN OIA: Amoudi Bay (below Oia, waterfront tavernas, fewer crowds). Northern tip past castle (walk 10 minutes from crowds). Caldera-facing restaurants/bars (pay for drinks, get table). IMEROVIGLI - "Balcony to the Aegean" - STUNNING views, FAR fewer crowds than Oia! Skaros Rock viewpoint especially beautiful. FIRA - Capital city with caldera views, multiple spots, accessible, moderate crowds. AKROTIRI LIGHTHOUSE - Southern tip, completely different perspective, almost no tourists! SANTO WINERY - Watch sunset with wine glass at winery terrace. Perfect! SUNSET CRUISES - Best option! Front-row seats on water, no crowds, includes dinner/drinks. RECOMMENDATION: Sunset cruise provides best experience. On land: Imerovigli for views without crazy crowds. Oia if you want the iconic experience (arrive very early!). Each spot offers magical sunset - Oia is most famous but not necessarily best!',
+        },
+        {
+          question: 'How early should you arrive for Oia sunset?',
+          answer: 'For Oia sunset at castle ruins (most famous spot), arrive 60-90 minutes BEFORE sunset to secure decent viewing position! TIMING BREAKDOWN: Peak season (June-August): Arrive 90 minutes early minimum. Crowds start gathering 2 hours before! Expect shoulder-to-shoulder packed conditions. Shoulder seasons (May, September-October): 60 minutes early usually sufficient. Still very crowded but manageable. Winter/spring (November-April): 30-45 minutes early adequate (fewer tourists). SUNSET TIMES: June-July: ~8:15-8:30 PM. August: ~8:00 PM. September: ~7:30 PM. October: ~6:30-7:00 PM. Times shift seasonally! WHY SO EARLY: Limited space at best viewpoints. Tourists arrive from all over island. Everyone wants the iconic Oia sunset! THE EXPERIENCE: Arrive early, claim your spot, chat with travelers worldwide, watch anticipation build, then the show! Locals often applaud when sun finally sets. ALTERNATIVES TO WAITING: Book sunset cruise (no waiting, better views!). Watch from Oia restaurant terrace (buy dinner, get table). Arrive 30 minutes before and accept suboptimal position. Visit alternative locations (Imerovigli, Fira) with fewer crowds. VERDICT: The Oia sunset experience (crowds included) is quintessentially Santorini - do it at least once! But sunset cruises provide more comfortable, equally beautiful alternatives.',
+        },
+        {
+          question: 'What is included in sunset cruises?',
+          answer: 'Santorini sunset cruises are typically ALL-INCLUSIVE experiences! STANDARD INCLUSIONS: Hotel pickup/drop-off (from most Santorini hotels), catamaran or sailboat cruise (4-5 hours), swimming stops (2-3 locations with snorkeling equipment), hot springs visit at Palea Kameni, dinner (Greek BBQ - chicken, seafood, salads, sides), unlimited drinks (wine, beer, soft drinks - often open bar!), sunset viewing from the water, and professional crew/guide. PREMIUM ADDITIONS: Some tours include: Gourmet meals (not just BBQ), champagne toast at sunset, smaller group sizes (semi-private), luxury catamaran with premium amenities, and live music. WHAT TO BRING: Swimsuit, towel, sunscreen, camera, light jacket. TIMING: Tours depart 3-5 PM (depending on sunset time), cruise caldera with swimming, serve dinner around 6-7 PM, position for sunset, return after dark. DURATION: Usually 5 hours total. COST: €90-150 for standard tours, €150-250 for luxury/semi-private. VALUE: Considering what\'s included (dinner, unlimited drinks, 5-hour cruise, sunset show!), pricing is reasonable. It\'s Santorini\'s best-value romantic experience - absolutely worth it!',
+        },
+        {
+          question: 'Can you see sunset from your hotel in Santorini?',
+          answer: 'Depends on your hotel location! CALDERA-FACING HOTELS - If you booked caldera-view accommodation in Oia, Imerovigli, or Fira, you can absolutely watch sunset from your room/terrace! These hotels are expensive (€200-500+ per night) but offer private sunset viewing. Wake up to sunrise, watch sunset before bed - worth the splurge for honeymoons/special trips! NON-CALDERA HOTELS - If you\'re staying in Perissa, Kamari, or non-caldera locations (budget hotels), you WON\'T see sunset over water from hotel. You\'ll need to travel to caldera side (15-30 minutes by car/bus). RECOMMENDATIONS: If sunset views are priority, book caldera-facing accommodation despite higher cost - you\'ll watch sunset nightly! If on budget, stay in cheaper areas and take sunset cruise or visit Oia for sunset experience. HOTEL SUNSET TIPS: Many caldera hotels have sunset terraces/restaurants open to non-guests (buy drinks, enjoy sunset!). Sunset from private hotel terrace beats crowded Oia castle. Book infinity pool caldera hotels for ultimate luxury! Even non-caldera hotels can be beautiful - Santorini is gorgeous everywhere. Just plan sunset activities accordingly!',
+        },
+      ],
+    },
+
+    'volcano-tours': {
+      title: 'Santorini Volcano Tours',
+      subtitle: 'Hike an active volcano, swim in hot springs, and discover Santorini\'s explosive geological past!',
+      categoryName: 'Volcano Tours',
+      
+      stats: {
+        toursAvailable: 38,
+        priceFrom: 35,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Explore Santorini's volcanic origins hiking on an active volcano in the caldera center! Nea Kameni island is an active volcanic formation where you can walk on hardened black lava, see steaming volcanic vents, peer into craters, and smell sulfur while standing on ground that last erupted in 1950. Volcano tours combine boat transfers with 30-45 minute hikes across the otherworldly landscape, followed by swimming in nearby Palea Kameni's therapeutic hot springs where volcanic warmth heats the water. Expert guides explain the catastrophic 1600 BC eruption that formed today's caldera, ongoing volcanic activity (seismologists monitor constantly!), and Santorini's position on the South Aegean Volcanic Arc. It's rare opportunity to explore an active volcano safely with stunning caldera views surrounding you. Geology brought to life!`,
+
+      seo: {
+        title: 'Santorini Volcano Tours 2025 - Nea Kameni Hiking & Hot Springs',
+        description: 'Hike Santorini\'s active volcano! Nea Kameni tours, volcanic hot springs, and geological wonders!',
+        keywords: 'Santorini volcano tours, Nea Kameni tours, volcanic hot springs, Santorini geology tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Active Volcano Hiking',
+          description: 'Walk on an active volcano that last erupted in 1950 - safe but genuinely active!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Volcanic Hot Springs',
+          description: 'Swim in warm sulfur springs heated by underground volcanic activity.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Geological Education',
+          description: 'Learn about the massive eruption that shaped Santorini and ongoing volcanic processes.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Otherworldly Landscape',
+          description: 'Photograph black lava fields, steaming vents, and dramatic caldera scenery.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Volcano & Hot Springs',
+          description: 'Classic tour: boat to Nea Kameni, volcano hike, then hot springs swim at Palea Kameni.',
+          features: [
+            '4-5 hours',
+            'Boat transfers',
+            'Volcano hike',
+            'Hot springs',
+            'Swimming',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Volcano + Sunset Cruise',
+          description: 'Combine volcano hiking with sunset sailing - full caldera experience with dinner.',
+          features: [
+            '6-7 hours',
+            'Volcano hike',
+            'Hot springs',
+            'Sunset sailing',
+            'Dinner included',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Volcano + Thirassia Island',
+          description: 'Visit volcano plus Thirassia (quieter island across caldera) for traditional Greek life.',
+          features: [
+            'Volcano hike',
+            'Thirassia village',
+            'Local taverna',
+            'Swimming',
+            '5-6 hours',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Private Volcano Tours',
+          description: 'Exclusive boat charters with flexible timing for personalized volcano experience.',
+          features: [
+            'Private boat',
+            'Flexible schedule',
+            'Custom itinerary',
+            'Small group',
+            'Premium service',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Santorini Volcano Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours last 4-6 hours including boat transfers, volcano hike, and hot springs swim.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Nea Kameni Hike',
+            description: 'Walk 30-45 minutes across black lava to volcanic craters with steaming vents.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Hot Springs Swimming',
+            description: 'Swim in warm sulfur springs (30-35°C) with reddish water from iron content.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Volcanic Science',
+            description: 'Learn about the 1600 BC eruption, volcanic processes, and ongoing activity.',
+          },
+          {
+            icon: 'Ship',
+            title: 'Boat Transfers',
+            description: 'Cruise to volcanic islands seeing Santorini\'s cliffs from water level.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Dramatic Views',
+            description: 'Photograph volcanic landscapes, caldera panoramas, and unique terrain.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Wear sturdy closed-toe shoes for volcano hike - sharp volcanic rocks hurt in sandals!',
+        'Bring dark-colored swimsuit - volcanic hot springs stain light suits reddish/brown permanently!',
+        'Landing fee for Nea Kameni (€2.50) usually not included in tour price - bring cash.',
+        'Volcano hike has no shade - wear hat, sunscreen, bring water (gets very hot on black lava!).',
+        'Hot springs smell strongly of sulfur (rotten eggs) - normal and harmless, you\'ll adapt quickly.',
+        'The volcano is genuinely active with seismic monitoring - completely safe but real volcanic activity!',
+        'Best months: April-October when weather allows comfortable boat tours and hiking.',
+        'Combine volcano tour with sunset cruise for full-day caldera experience - great value!',
+      ],
+
+      faqs: [
+        {
+          question: 'Is Nea Kameni an active volcano?',
+          answer: 'YES - Nea Kameni is a genuinely ACTIVE volcano monitored constantly by seismologists! VOLCANIC ACTIVITY: Last erupted 1950 (small eruption). Before that: 1925-1928, 1866-1870. The volcano has been forming through eruptions since 197 BC - it\'s one of the youngest land formations in the Mediterranean! CURRENT STATUS: Dormant but active. Seismic activity monitored 24/7. Occasional small earthquakes. Fumaroles (steam vents) still release volcanic gases. Ground temperature higher than ambient (warm to touch in spots!). Scientists consider it likely to erupt again eventually - timescale uncertain (could be years, decades, or centuries!). SAFETY: Completely safe to visit! Greek authorities monitor closely and would close access if danger emerged. Thousands visit annually without incident. The volcano grows gradually - each eruption adds more land. EXPERIENCE: You\'re walking on an ACTIVE volcanic system! The steaming vents, sulfur smell, and warm rocks are real volcanic activity, not museum displays. It\'s thrilling to explore active geology safely. Guides explain the science and risks (minimal with monitoring!). It\'s bucket-list geology experience!',
+        },
+        {
+          question: 'What is the volcano hike like?',
+          answer: 'The Nea Kameni volcano hike is a moderate 30-45 minute walk across black lava to volcanic craters! THE ROUTE: Start at landing dock (boat drops you). Hike uphill on marked paths across hardened lava flows (black, sharp, otherworldly!). Paths wind through volcanic formations to crater areas. Multiple craters with steaming fumaroles (volcanic steam vents). Summit offers 360° caldera views! Return same path to boat. DIFFICULTY: MODERATE - Not technical (just walking) but challenging due to: Uneven volcanic rock (sharp, ankle-twisting hazards!). Uphill grade (steady climb). No shade (exposed to sun - hot on black lava!). Distance: About 1.5km total with elevation gain. TIMING: Most visitors take 30-45 minutes up, 30 minutes down. Allow 1-1.5 hours total with photo stops. REQUIREMENTS: Closed-toe shoes mandatory (volcanic rock is sharp!). Basic fitness (can walk 1.5km uphill). Not wheelchair accessible. SCENERY: Otherworldly black landscape, steaming vents, sulfur deposits (yellow crystals!), and spectacular caldera views. WORTH IT: Absolutely - how often do you hike on active volcano?! The terrain is unlike anything else!',
+        },
+        {
+          question: 'What are the Santorini hot springs?',
+          answer: 'The hot springs at Palea Kameni island are volcanic-heated waters in the caldera - unique swimming experience! LOCATION: Small coves on Palea Kameni (the older volcanic island next to Nea Kameni). Accessible only by boat - no land access. TEMPERATURE: Warm spots reach 30-35°C (86-95°F) where underground volcanic vents heat the water! Mixed with cooler sea water creating comfortable swimming temperature. The warmth is genuinely from volcanic activity underground! WATER CHARACTERISTICS: Reddish-brown color from iron, sulfur, and mineral content. Not crystal clear like typical Aegean! Strong sulfur smell (like rotten eggs - it\'s harmless!). Therapeutic properties - Greeks have bathed here for centuries believing in health benefits. SWIMMING: Most caldera tours include 15-30 minute hot springs stop. You swim from boat to coves (50-100 meters - be confident swimmer!). Wear dark swimsuit (minerals STAIN light colors permanently!). Goggles help if you want to open eyes underwater. EXPERIENCE: Surreal swimming in warm volcanic water surrounded by dramatic cliffs. Therapeutic and unique! The staining and sulfur smell are minor inconveniences for this once-in-a-lifetime experience!',
+        },
+        {
+          question: 'When was Santorini\'s big eruption?',
+          answer: 'Santorini\'s catastrophic eruption occurred around 1600 BC (exact date debated - possibly 1628-1600 BC) - one of the largest volcanic events in recorded history! THE ERUPTION: SCALE - Estimated Volcanic Explosivity Index (VEI) of 6-7 (Krakatoa was VEI 6, Vesuvius VEI 5). Absolutely massive! DESTRUCTION - The eruption destroyed the prosperous Minoan settlement at Akrotiri (Santorini\'s "Pompeii"). Ash clouds, pyroclastic flows, tsunamis devastated the region. CALDERA FORMATION - The volcanic center collapsed into the sea creating today\'s crescent-shaped islands and the dramatic cliffs. HISTORICAL IMPACT - May have contributed to Minoan civilization\'s decline (they were based in Crete nearby). Possibly inspired Atlantis legend (Plato\'s writings!). Ash deposited across Mediterranean - found in Greenland ice cores! EVIDENCE: Archaeological excavation at Akrotiri reveals incredibly preserved Minoan city buried under ash (like Pompeii!). You can visit - it\'s fascinating! ONGOING ACTIVITY: The volcanic system remains active (Nea Kameni eruptions in 1950, 1928, earlier). Santorini\'s beauty exists BECAUSE of this catastrophic event - the caldera is the scar!',
+        },
+        {
+          question: 'Can you visit Akrotiri archaeological site?',
+          answer: 'YES - Akrotiri is Santorini\'s "Pompeii" showing a Minoan Bronze Age city perfectly preserved under volcanic ash! WHAT IT IS: Advanced prehistoric settlement (inhabited since 5th millennium BC!) destroyed and buried by the ~1600 BC eruption. Excavations began 1967 revealing remarkably intact city! WHAT YOU\'LL SEE: Multi-story buildings (2-3 floors!), sophisticated urban planning, advanced drainage systems, beautiful frescoes (originals in museums - reproductions on site), pottery and artifacts, streets and squares showing Minoan life. Modern protective roof covers excavations. WHY IT\'S IMPORTANT: Provides incredible insights into Bronze Age Aegean civilization before the catastrophic eruption. Shows how advanced Minoans were! No human remains found (residents likely evacuated before final eruption after earthquakes warned them). VISITING: €12 admission. Self-guided with information panels (English available). 1-2 hours sufficient. Located southwest Santorini (20 minutes from Fira). RECOMMENDATION: Essential for history enthusiasts! Less crowded than Oia/Fira. Best visited morning or late afternoon. Combine with nearby Red Beach and lighthouse. The frescoes especially are stunning - it\'s window into ancient world!',
+        },
+      ],
+    },
+
+    'wine-and-food-tours': {
+      title: 'Santorini Wine & Food Tours',
+      subtitle: 'Taste volcanic wines, traditional Greek cuisine, and Santorini\'s unique culinary treasures!',
+      categoryName: 'Wine & Food Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 55,
+        duration: '4-5 hours',
+      },
+
+      introduction: `Discover Santorini's exceptional wine and food scene shaped by volcanic soil and Aegean traditions! Santorini produces unique wines - crisp Assyrtiko white wines grown in volcanic ash, sweet Vinsanto dessert wine, and distinctive cultivation methods where vines grow in basket shapes (kouloura) protecting grapes from winds. Wine tours visit family-run wineries with caldera views, underground cave wineries carved into volcanic rock, and vineyards where ancient grape varieties thrive in mineral-rich soil. Food tours showcase Greek island cuisine - fresh seafood, fava (yellow split pea puree), tomatokeftedes (tomato fritters), white eggplant, capers, and local cheeses paired perfectly with Santorini wines. Sunset wine tastings overlooking the caldera combine stunning views with exceptional wines creating unforgettable experiences!`,
+
+      seo: {
+        title: 'Santorini Wine & Food Tours 2025 - Winery Tastings & Greek Cuisine',
+        description: 'Experience Santorini wine and food tours! Volcanic wines, Greek cuisine, and caldera winery views!',
+        keywords: 'Santorini wine tours, Santorini food tours, Greek wine tasting, Assyrtiko wine, Santorini wineries',
+      },
+
+      whyChoose: [
+        {
+          icon: 'GlassWater',
+          title: 'Unique Volcanic Wines',
+          description: 'Taste distinctive wines grown in volcanic soil using traditional basket-vine cultivation!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Caldera Winery Views',
+          description: 'Sip wine on terraces overlooking the stunning caldera - unforgettable setting!',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Producers',
+          description: 'Meet passionate winemakers and chefs sharing Santorini\'s culinary traditions.',
+        },
+        {
+          icon: 'Star',
+          title: 'Greek Island Cuisine',
+          description: 'Taste authentic Santorini specialties - fava, tomatokeftedes, fresh seafood!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'GlassWater',
+          title: 'Winery Tours & Tastings',
+          description: 'Visit 2-4 wineries sampling Assyrtiko, Vinsanto, and local wines with expert guidance.',
+          features: [
+            '4-5 hours',
+            '3-4 wineries',
+            '8-12 wine tastings',
+            'Vineyard tours',
+            'Caldera views',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunset Wine Tasting',
+          description: 'Evening winery visits timed for sunset over caldera with wine pairings and dinner.',
+          features: [
+            'Sunset timing',
+            'Caldera winery',
+            'Wine tastings',
+            'Light dinner',
+            'Romantic atmosphere',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Wine & Food Pairing Tours',
+          description: 'Combine winery visits with traditional Greek food tastings and local specialties.',
+          features: [
+            'Wine + food',
+            'Multiple wineries',
+            'Greek cuisine',
+            'Pairing education',
+            'Full experience',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Traditional Greek Cooking Class',
+          description: 'Learn to prepare Santorini dishes with local ingredients and wine pairings.',
+          features: [
+            'Hands-on cooking',
+            'Traditional recipes',
+            'Market visit',
+            'Wine included',
+            'Eat what you make',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Santorini Wine & Food Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Wine tours last 4-5 hours visiting 3-4 wineries; food tours run 3-4 hours.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Volcanic Wines',
+            description: 'Taste Assyrtiko (crisp white), Vinsanto (sweet dessert wine), and unique local varieties.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Winery Visits',
+            description: 'Explore traditional cave wineries and modern facilities with caldera-view terraces.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Food Tastings',
+            description: 'Sample Santorini specialties - fava, tomatokeftedes, fresh seafood, local cheeses.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Wine Education',
+            description: 'Learn about volcanic terroir, basket-vine cultivation, and Santorini wine history.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Stunning Settings',
+            description: 'Enjoy tastings with breathtaking caldera views at sunset-facing wineries.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Santo Wines offers best caldera views from winery terrace - perfect for sunset wine tasting!',
+        'Book wine tours for afternoon (3-6 PM) ending at sunset for magical golden hour.',
+        'Assyrtiko is Santorini\'s signature wine - crisp, mineral, pairs beautifully with seafood!',
+        'Vinsanto (sweet dessert wine) is delicious - try it even if you typically dislike sweet wines.',
+        'Most wineries accessible from Fira/Oia by car/tour - don\'t drink and drive on winding roads!',
+        'Fava (yellow split pea) is Santorini specialty - sounds boring but absolutely delicious!',
+        'Wine tours typically include transportation, tastings, and light food - excellent value.',
+        'Visit Pyrgos village for authentic tavernas away from tourist-heavy Oia/Fira prices.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Santorini wine like?',
+          answer: 'Santorini produces unique wines thanks to volcanic soil, ancient grape varieties, and distinctive cultivation! SIGNATURE WINE - ASSYRTIKO: Crisp, dry white wine with high acidity, mineral character (volcanic soil!), citrus and stone fruit flavors. Perfect with seafood! It\'s Santorini\'s pride - some of Greece\'s best white wine. VINSANTO: Sweet dessert wine made from sun-dried grapes aged in oak. Rich, complex, delicious with desserts! Similar to Italian Vin Santo but uniquely Santorinian. OTHER VARIETIES: Aidani (aromatic white), Athiri (soft white), Mavrotragano (rare red). VOLCANIC TERROIR: Vines grow in volcanic ash and pumice stone creating distinctive mineral flavors. No phylloxera pest (volcanic soil protects!) so vines are ungrafted - some 150+ years old! CULTIVATION: Unique "kouloura" basket-shaped vines protect grapes from strong winds and retain moisture. Looks like wreaths on ground! CHARACTERISTICS: High minerality, crisp acidity, citrus notes, volcanic character. Wines are food-friendly and age beautifully. Santorini wine is seriously good - internationally recognized quality!',
+        },
+        {
+          question: 'Which Santorini wineries should I visit?',
+          answer: 'Santorini has excellent wineries - here are top picks! SANTO WINES - Most famous! Stunning caldera-view terrace (best views!), modern facility, good intro to Santorini wines, restaurant with wine pairings, sunset tastings popular. €12-20 for tastings. Perfect for first-timers! VENETSANOS WINERY - Dramatic caldera views, built into cliffside, traditional + modern wines, sunset tastings spectacular, terraced architecture. €15-25. ESTATE ARGYROS - Family-run, traditional, excellent quality wines, vineyard tours explaining kouloura cultivation, authentic experience. €15-20. SIG ALAS - Cave winery carved into volcanic rock! Atmospheric underground tastings, excellent wines, unique setting. €12-18. GAVALAS WINERY - Small family operation, organic wines, personal attention, authentic Greek hospitality. €15. ART SPACE WINERY - Combination winery + art gallery in cave, unique concept, good wines. €12. RECOMMENDATIONS: Visit 2-3 wineries to compare. Santo for views + one traditional cave winery for atmosphere. Tours visiting multiple wineries provide transportation (essential - don\'t drink and drive!), context, and value!',
+        },
+        {
+          question: 'What is Santorini food like?',
+          answer: 'Santorini cuisine emphasizes fresh local ingredients shaped by volcanic soil and island traditions! SIGNATURE DISHES: FAVA - Yellow split pea puree (Santorini\'s most famous dish!). Creamy, flavorful, topped with olive oil, onions, capers. Sounds simple but absolutely delicious - you\'ll eat it everywhere! TOMATOKEFTEDES - Tomato fritters/balls with herbs. Santorini cherry tomatoes (tiny, sweet!) are special. FRESH SEAFOOD - Grilled octopus, calamari, sea bream, lobster pasta. Caught daily from Aegean! WHITE EGGPLANT - Unique to Santorini, sweeter than purple variety. CAPERS - Grow wild on island, used in many dishes. CHLORO - Soft fresh cheese (like ricotta). TRADITIONAL DISHES: Moussaka, Greek salads, grilled meats, mezze spreads. SWEETS: Melopita (honey pie), baklava, Greek yogurt with honey. VOLCANIC INFLUENCE: The volcanic soil gives tomatoes, eggplants extra sweetness and intensity! DINING: Fresh, simple preparation emphasizing quality ingredients. Tavernas serve generous portions. Caldera-view restaurants charge premium for views but food quality varies - choose carefully!',
+        },
+        {
+          question: 'How much do wine tours cost?',
+          answer: 'Santorini wine tour prices vary by wineries visited and inclusions! TYPICAL PRICING: Multi-winery tours (4-5 hours, 3-4 wineries): €80-120 per person. Includes transport, 8-12 tastings, light food. Sunset wine tours (winery + sunset): €90-140. Includes tastings, sunset views, mezze/light dinner. Single winery visits (self-arranged): €12-25 per person for tasting flight (4-6 wines). Private wine tours: €250-500+ for groups. Cooking classes + wine: €100-150. WHAT\'S INCLUDED IN TOURS: Hotel pickup/drop-off, visits to 3-4 wineries, guided tastings (8-12 wines total), vineyard tours explaining kouloura cultivation, light food/cheese pairings, and expert wine guide. Some include lunch or sunset timing. INDIVIDUAL WINERY COSTS: Basic tasting (4 wines): €12-15. Premium tasting (6-8 wines + food): €20-30. Sunset experiences: €25-40. BUDGET TIP: Visit wineries independently if you have rental car (cheaper) BUT you can\'t drink and drive safely on Santorini\'s winding roads! Tours provide transportation - worth the premium for safety and education!',
+        },
+        {
+          question: 'When is the best time for wine tours?',
+          answer: 'BEST TIMING: Afternoon (3-6 PM) - Perfect for ending at sunset winery with caldera views. Wine tastes better as palate develops through day! Sunset wine tours time final tasting for magical golden hour. Morning (9 AM-12 PM) - Sharper palate, cooler temperatures, visit vineyards when fresh. BEST MONTHS: May-June & September-October (shoulder seasons) - Perfect temperatures (20-28°C), fewer crowds, harvest season in September is special! July-August (peak summer) - Hot for vineyard walking but great for sunset wine terraces. Book far ahead! April & November - Quieter, cooler, good but limited tour options. Winter (December-March) - Fewer tours operate, but wineries open year-round. HARVEST TIME: Late August-September - Witness grape harvest! Wineries busiest but authentic experience. SUNSET CONSIDERATION: Afternoon/evening wine tours position you at caldera-view wineries for sunset - magical! But sunset timing changes seasonally (8:30 PM summer, 6:30 PM October). RECOMMENDATION: Book afternoon wine tours ending at sunset (3-6 PM start). Shoulder seasons offer best weather. September for harvest atmosphere!',
+        },
+        {
+          question: 'Can you visit Santorini wineries without tours?',
+          answer: 'YES - most Santorini wineries welcome independent visitors with reservations! DIY WINERY VISITS: REQUIREMENTS: Rental car or taxi (wineries spread across island, 15-30 minutes apart). Most require reservations (call/email ahead). Tasting fees €12-30. PROS: Flexibility (visit at your pace), cheaper than guided tours (if you have car), choose specific wineries, and spend more time at favorites. CONS: Transportation challenges (taxis expensive, can\'t drink and drive!), no educational context (guides explain volcanic terroir, cultivation), miss vineyard tours and behind-scenes access that guides arrange, and logistics hassle (booking, navigating, coordinating). LOGISTICS: Santo Wines, Venetsanos, Estate Argyros, and others accept walk-ins/reservations. Tastings €12-25. Pair of wineries makes nice afternoon. RECOMMENDATION: Take guided tour for first visit (transportation, education, efficiency!). If returning to Santorini or serious wine enthusiast, visiting independently works. But Santorini\'s narrow winding roads + wine tastings = dangerous combination! Guided tours provide safe transportation - worth it. Alternative: Hire driver for day and visit wineries independently with safe transport.',
+        },
+        {
+          question: 'What is kouloura vine training?',
+          answer: 'Kouloura is Santorini\'s unique basket-shaped vine training method - you won\'t see it anywhere else! WHAT IT IS: Instead of growing upward on stakes/trellises like typical vineyards, Santorini vines are trained into low basket/wreath shapes lying close to ground. Looks like wreaths or bird nests made of vines! WHY THIS METHOD: WIND PROTECTION - Santorini has strong Aegean winds (especially meltemi summer winds). Basket shape keeps grapes low and protected. MOISTURE RETENTION - Volcanic soil is porous and dry. Basket creates microclimate trapping morning dew, providing moisture to grapes. HEAT PROTECTION - Pumice stone reflects heat but baskets shade grapes from intense sun. NO IRRIGATION - Vines survive on dew and minimal rainfall! ANCIENT TRADITION: This technique is centuries old, passed through generations. RESULT: Grapes develop concentrated flavors and high mineral content from volcanic soil. The wines have distinctive character! VISITING: Walk through kouloura vineyards seeing this unique cultivation. It\'s agricultural art form! Winery tours explain the technique and showcase old vines (some 150+ years!). It\'s fascinating viticulture adapted to volcanic island challenges!',
+        },
+      ],
+    },
+
+    'beach-and-boat-tours': {
+      title: 'Santorini Beach & Boat Tours',
+      subtitle: 'Discover volcanic beaches, crystal Aegean waters, and stunning coastal cliffs by boat and shore!',
+      categoryName: 'Beach & Boat Tours',
+      
+      stats: {
+        toursAvailable: 71,
+        priceFrom: 45,
+        duration: '4-8 hours',
+      },
+
+      introduction: `Experience Santorini's unique volcanic beaches and stunning coastline! Unlike typical Greek islands with white sand, Santorini's beaches feature dramatic black, red, and white volcanic sand created by ancient eruptions. Beach and boat tours explore Red Beach (dramatic crimson cliffs), Perissa and Kamari (black sand beaches with crystal-clear waters), White Beach (accessible only by boat with stunning white cliffs), and hidden coves around the island. Boat tours combine beach stops with swimming, snorkeling, caldera sailing, and coastal cliff views. Catamaran cruises visit multiple beaches with BBQ lunch and drinks. Water sports include jet skiing, paddleboarding, and diving. It's Santorini beyond the caldera showcasing the island's complete coastal beauty!`,
+
+      seo: {
+        title: 'Santorini Beach & Boat Tours 2025 - Volcanic Beaches & Coastal Cruises',
+        description: 'Explore Santorini beaches and boat tours! Red Beach, black sand, coastal cruises, and Aegean swimming!',
+        keywords: 'Santorini beaches, Red Beach Santorini, Santorini boat tours, black sand beaches, Santorini sailing',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Unique Volcanic Beaches',
+          description: 'Swim at dramatic red, black, and white volcanic sand beaches unlike anywhere else!',
+        },
+        {
+          icon: 'Ship',
+          title: 'Coastal Boat Tours',
+          description: 'Explore Santorini\'s coastline accessing hidden beaches only reachable by boat.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Dramatic Scenery',
+          description: 'Photograph colorful volcanic cliffs, crystal waters, and unique coastal formations.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Swimming Paradise',
+          description: 'Crystal-clear Aegean waters perfect for swimming, snorkeling, and water activities!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Ship',
+          title: 'Coastal Catamaran Cruise',
+          description: 'Full-day sailing visiting Red Beach, White Beach, and hidden coves with BBQ lunch.',
+          features: [
+            '5-7 hours',
+            'Multiple beaches',
+            'BBQ lunch',
+            'Open bar',
+            'Snorkeling',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Beach Hopping Tours',
+          description: 'Visit Santorini\'s most beautiful beaches - Red, White, Perissa, and Kamari by boat or bus.',
+          features: [
+            'Multiple beaches',
+            'Swimming time',
+            'Beach facilities',
+            'Snorkeling gear',
+            '4-6 hours',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Sailing & Swimming Tours',
+          description: 'Morning or afternoon sailing with emphasis on swimming, snorkeling, and beach stops.',
+          features: [
+            '4-5 hours',
+            'Sailing',
+            'Multiple swim stops',
+            'Lunch/snacks',
+            'Drinks included',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Red Beach & South Coast',
+          description: 'Explore southern Santorini visiting Red Beach, Akrotiri ruins, and lighthouse.',
+          features: [
+            'Red Beach',
+            'Akrotiri site',
+            'Lighthouse',
+            'Swimming',
+            'Photography',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Santorini Beach & Boat Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Boat tours last 5-7 hours with multiple stops; beach tours run 4-6 hours.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Volcanic Beaches',
+            description: 'Visit unique red, black, and white sand beaches created by volcanic activity.',
+          },
+          {
+            icon: 'Ship',
+            title: 'Coastal Sailing',
+            description: 'Cruise Santorini\'s coastline seeing dramatic cliffs and hidden coves from water.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Swimming & Snorkeling',
+            description: 'Multiple swimming stops in crystal-clear Aegean with snorkeling equipment provided.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Food & Drinks',
+            description: 'Most tours include Greek BBQ lunch, snacks, and unlimited drinks or open bar.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Coastal Scenery',
+            description: 'Photograph colorful volcanic cliffs, sea caves, and unique geological formations.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Red Beach is stunning but access involves short hike over rocks - water shoes recommended!',
+        'Black sand beaches (Perissa, Kamari) get VERY hot in summer - bring sandals or beach shoes!',
+        'White Beach accessible only by boat or difficult hike - join boat tours for easy access.',
+        'Best beach months: May-October when water is warm (22-26°C/72-79°F) and weather sunny.',
+        'Perissa has best beach facilities (sunbeds, tavernas, water sports) - good for full beach days.',
+        'Boat tours access beaches without crowds since most tourists go by land to popular ones.',
+        'Bring underwater camera - snorkeling around volcanic rocks reveals colorful marine life!',
+        'Morning beach tours offer better swimming conditions before afternoon winds pick up.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Red Beach?',
+          answer: 'Red Beach (Kokkini Paralia) is Santorini\'s most dramatic beach featuring stunning crimson-colored volcanic cliffs! WHAT MAKES IT SPECIAL: VOLCANIC CLIFFS - Towering red/burgundy cliffs surround small beach creating amphitheater effect. The color comes from iron-rich volcanic rock! UNIQUE SCENERY - Black volcanic pebbles meet red cliffs and turquoise water - incredibly photogenic. GEOLOGICAL INTEREST - Shows layers of volcanic deposits from different eruptions visible in cliff faces. LOCATION: Near Akrotiri village on southern coast (20 minutes from Fira). ACCESS: Short 5-minute hike from parking over volcanic rocks (wear sturdy shoes!). Or arrive by boat (tours stop here). SWIMMING: The beach itself is small (gets crowded!), mostly pebbles (not sand), crystal-clear water, good snorkeling around rocks. CONSIDERATIONS: No facilities (no sunbeds, tavernas, shade). Unstable cliffs (rockfalls occur - don\'t sit under cliffs!). Gets VERY hot (red rocks intensify heat!). RECOMMENDATION: Visit for photos and geological interest! Swim briefly, then move on. Best via boat tours. Go early morning or late afternoon. It\'s stunning but not for all-day beach relaxation - Perissa/Kamari better for that!',
+        },
+        {
+          question: 'What is the best beach in Santorini?',
+          answer: 'Best beach depends on what you want! PERISSA - BEST FOR FACILITIES: Long black sand beach (volcanic!), sunbeds and umbrellas available, numerous tavernas and cafes, water sports (jet ski, paddleboard), beach bars, family-friendly. Good for full beach days! East coast (calmer waters, no caldera views). 15 minutes from Fira. KAMARI - SIMILAR TO PERISSA: Black sand, full facilities, slightly more organized/touristy, easy access, good for families. Also east coast. RED BEACH - BEST FOR PHOTOS: Dramatic red volcanic cliffs, unique scenery, geological interest. Small, crowded, limited facilities. Southern coast near Akrotiri. WHITE BEACH - MOST UNIQUE: White volcanic cliffs, accessible by boat only (or difficult hike), stunning isolated setting. VLYCHADA - MOST DRAMATIC: Lunar-like landscape with sculptured white cliffs, quieter, some facilities. AMOUDI BAY - BEST FOR DINING: Fishing village below Oia, waterfront tavernas (excellent seafood!), swimming off rocks, sunset views. RECOMMENDATION: Perissa for classic beach day. Red Beach for photos and geological wonder. Boat tours for visiting multiple beaches efficiently. Each offers different Santorini experience!',
+        },
+        {
+          question: 'Can you swim at all Santorini beaches?',
+          answer: 'Yes, all of Santorini\'s beaches are swimmable with varying conditions! SWIMMING QUALITY: EXCELLENT: Perissa, Kamari (organized beaches, lifeguards summer season, gentle entry, good for families). Red Beach (crystal clear, good snorkeling, but pebbles and small space). Amoudi Bay (swimming off platforms/rocks, very clear water). GOOD: White Beach (clear water, pebbles, accessed by boat). Vlychada (good swimming, quiet, less organized). Perivolos (black sand, adjacent to Perissa, nice swimming). WATER CONDITIONS: Temperature: 22-26°C (72-79°F) June-September. 18-22°C (64-72°F) April-May, October. Crystal clear visibility (great snorkeling!). Generally calm on east coast beaches, more wave action on southern exposure. BEACH TYPES: Most are volcanic pebbles or coarse black sand (not soft white sand). Brings water shoes for comfort! FACILITIES: Major beaches (Perissa, Kamari) have sunbed rentals (€8-10), showers, changing rooms, tavernas. Smaller beaches minimal facilities. SAFETY: Calmer waters on protected east coast. Southern beaches can have waves. Rocky entries at some beaches - water shoes help. RECOMMENDATION: Perissa/Kamari for best swimming infrastructure. Red/White beaches for unique scenery. All offer safe swimming!',
+        },
+        {
+          question: 'Are boat tours better than beach visits?',
+          answer: 'Both offer different experiences - ideally do BOTH! BOAT TOUR ADVANTAGES: ACCESS - Reach White Beach and isolated coves only accessible by boat. MULTIPLE BEACHES - Visit 3-4 beaches in one trip vs. traveling individually. CALDERA VIEWS - Sailing provides stunning perspectives of cliffs and villages. SWIMMING VARIETY - Different spots throughout day, crystal waters, snorkeling. ALL-INCLUSIVE - Meals, drinks, equipment, transportation included. No beach club fees! RELAXATION - No driving, parking hassles, or beach setup. BEACH VISIT ADVANTAGES: MORE TIME - Spend full day at one beach vs. quick stops on boats. FACILITIES - Organized beaches have sunbeds, showers, tavernas, water sports. FLEXIBILITY - Arrive/leave when you want, choose your beach vibe. BUDGET-FRIENDLY - Just bus fare (€1.80!) or scooter rental. Beach is free! RECOMMENDATION: DO BOTH! Take one boat tour (seeing multiple beaches, swimming, lunch, views) - great overview. Spend another day at Perissa or Kamari for full beach relaxation with facilities. Boat tours are excellent value at €80-120 considering transportation, meals, drinks included. Beach days are budget-friendly alternatives. Each offers unique Santorini coastal experience!',
+        },
+        {
+          question: 'What should I bring to Santorini beaches?',
+          answer: 'Beach essentials for volcanic sand and Greek sun! MUST-BRING: Swimsuit, beach towel (organized beaches rent sunbeds with included towels but €8-10), sunscreen SPF 50+ (Greek sun is INTENSE!), hat and sunglasses, water shoes or sandals (black volcanic pebbles get HOT - impossible to walk barefoot in summer!), water bottle (stay hydrated!), and waterproof bag for phone/valuables. CLOTHING: Cover-up or beach dress, flip-flops for walking (but water shoes for actual beach!). OPTIONAL: Snorkeling gear (rentals available at major beaches but bring own if you have), underwater camera, beach umbrella (if not renting sunbed), book or entertainment, and cash for sunbed rentals (€8-10) and taverna meals. SPECIAL NOTES: Volcanic black sand gets INCREDIBLY hot in summer - cannot walk barefoot! Water shoes essential. Red Beach and White Beach have no facilities - bring everything! Organized beaches (Perissa, Kamari) have tavernas, showers, and rentals. BOAT TOUR ADDITIONS: If joining boat tour, tours typically provide snorkeling gear, towels sometimes, meals/drinks. Just bring: swimsuit, sunscreen, personal items. AVOID: Valuable jewelry (leave at hotel), excessive cash, or non-waterproof electronics without protection.',
+        },
+      ],
+    },
+
+    'village-exploration-tours': {
+      title: 'Santorini Village Exploration Tours',
+      subtitle: 'Discover charming white-washed villages, blue-domed churches, and authentic Greek island life!',
+      categoryName: 'Village Exploration Tours',
+      
+      stats: {
+        toursAvailable: 42,
+        priceFrom: 30,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Santorini's enchanting villages beyond the iconic Oia - each offering unique character, stunning architecture, and authentic Greek island experiences! Village tours explore whitewashed cube houses with blue-domed churches, narrow cobblestone paths, traditional Cycladic architecture, local artisan shops, and breathtaking caldera or sea views. Visit Oia (most photographed village with sunset fame), Fira (capital with caldera views and vibrant energy), Imerovigli (quieter "balcony to the Aegean"), Pyrgos (highest village with Venetian castle), and traditional inland villages like Megalochori and Emporio preserving authentic Greek life. Walking tours reveal hidden churches, explain volcanic architecture, introduce local residents, and guide you away from tourist masses to quieter authentic corners. It's Santorini's soul beyond the Instagram photos!`,
+
+      seo: {
+        title: 'Santorini Village Tours 2025 - Oia, Fira & Traditional Villages',
+        description: 'Explore Santorini\'s beautiful villages! Oia, Fira, traditional Greek towns, and island culture!',
+        keywords: 'Santorini village tours, Oia tours, Fira tours, Santorini walking tours, Greek island villages',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Iconic Greek Architecture',
+          description: 'Explore famous whitewashed villages with blue domes - quintessential Cycladic beauty!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Instagram Perfection',
+          description: 'Photograph Santorini\'s most beautiful corners with expert composition guidance.',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Insights',
+          description: 'Guides share village history, traditions, and introduce authentic Greek island life.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Hidden Gems',
+          description: 'Discover quiet villages and secret viewpoints tourists miss beyond Oia crowds.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Oia Walking Tours',
+          description: 'Guided exploration of Santorini\'s most famous village with hidden corners and history.',
+          features: [
+            '2-3 hours',
+            'Oia village',
+            'Blue domes',
+            'Castle ruins',
+            'Photography spots',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Traditional Villages Tour',
+          description: 'Visit authentic inland villages - Pyrgos, Megalochori, Emporio - for genuine Greek life.',
+          features: [
+            '4-5 hours',
+            'Multiple villages',
+            'Local culture',
+            'No crowds',
+            'Traditional tavernas',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Complete Island Tour',
+          description: 'Comprehensive island circuit visiting all major villages, beaches, and viewpoints.',
+          features: [
+            '6-8 hours',
+            'Full island',
+            'All highlights',
+            'Multiple stops',
+            'Lunch included',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Village Tours',
+          description: 'Professional photographers guide you to Santorini\'s most photogenic spots and teach techniques.',
+          features: [
+            '3-4 hours',
+            'Best photo spots',
+            'Composition tips',
+            'Golden hour',
+            'Iconic locations',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Santorini Village Exploration Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Village tours last 3-5 hours for focused exploration, 6-8 hours for full island tours.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Whitewashed Villages',
+            description: 'Wander through iconic white cube houses, blue-domed churches, and narrow paths.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Capture stunning architecture, caldera views, and authentic Greek island scenes.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Insights',
+            description: 'Learn about Cycladic architecture, island history, and traditional Greek lifestyle.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Local Interactions',
+            description: 'Meet artisans, visit family shops, and experience authentic island hospitality.',
+          },
+          {
+            icon: 'Star',
+            title: 'Hidden Corners',
+            description: 'Discover quiet spots, secret viewpoints, and authentic areas beyond tourist paths.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit Oia early morning (7-9 AM) for empty streets and photos without crowds - magical!',
+        'Pyrgos village offers stunning 360° views from Venetian castle - underrated gem!',
+        'Megalochori maintains authentic Greek character with fewer tourists - excellent for photography.',
+        'Imerovigli is quieter than Oia/Fira but equally beautiful - stay here to avoid crowds.',
+        'Wear comfortable walking shoes - village paths are cobblestone and involve stairs!',
+        'Many villages have midday siesta (2-5 PM) when shops close - visit morning or evening.',
+        'Emporio village has unique fortified architecture and maze-like streets - bring camera!',
+        'Combined village + winery tours efficiently see cultural and culinary highlights together.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the most beautiful village in Santorini?',
+          answer: 'Each village offers unique beauty! OIA - MOST FAMOUS: Iconic blue domes, whitewashed houses cascading down caldera cliffs, world-famous sunset, postcard-perfect views. EXTREMELY touristy and crowded! But undeniably stunning. Best early morning or for iconic Santorini experience. IMEROVIGLI - MOST ROMANTIC: "Balcony to the Aegean" with spectacular caldera views, much quieter than Oia, excellent sunset alternative, beautiful Skaros Rock landmark, charming paths. Less commercialized! PYRGOS - MOST AUTHENTIC: Highest village (360° views!), Venetian castle, traditional Cycladic architecture, maze of alleys, fewer tourists, authentic Greek life. Beautiful! FIRA - MOST VIBRANT: Capital city energy, caldera views, shopping, dining, nightlife, accessible, mix of traditional and modern. Busy but convenient! MEGALOCHORI - HIDDEN GEM: Traditional bell towers, vine-covered squares, wine culture, authentic charm, very quiet. EMPORIO - MOST UNIQUE: Fortified medieval village with Kasteli fortress, maze-like streets, black and white architecture. RECOMMENDATION: Oia for iconic photos (go early!). Imerovigli for beauty without crowds. Pyrgos for authentic Greek village feel. Visit multiple - each offers different Santorini!',
+        },
+        {
+          question: 'How long to visit Oia?',
+          answer: 'Plan 2-4 hours for Oia depending on your pace and whether you\'re staying for sunset! QUICK VISIT (1-2 hours): Walk main pedestrian path, photograph blue domes, see castle ruins, grab coffee, leave before crowds. Sufficient for photos and basic experience. STANDARD VISIT (2-3 hours): Explore side streets, visit shops and galleries, enjoy caldera-view cafe, walk to less-touristy northern section, capture photos from multiple angles. SUNSET VISIT (4-5 hours): Arrive mid-afternoon, explore while light is good, claim sunset spot (90 minutes before!), watch sunset, stay for evening village atmosphere with twinkling lights. WHAT TO DO: Maritime Museum (small, €3), castle ruins (sunset viewpoint), blue-domed churches (Agios Spiridonas, Anastasi), main pedestrian street shopping, Amoudi Bay below (300 steps down, seafood tavernas), caldera-view restaurants/cafes. TIMING: Early morning (7-9 AM) - Empty streets, best photos, magical! Midday (11 AM-4 PM) - PACKED, hot, crowded. Better to avoid. Sunset (6-9 PM) - Very crowded but that\'s the experience! RECOMMENDATION: Visit twice - once early morning for photos, once for sunset experience. Or stay overnight in Oia hotel to enjoy village when day tourists leave!',
+        },
+        {
+          question: 'Can you walk between Santorini villages?',
+          answer: 'Yes! Walking between caldera-rim villages is one of Santorini\'s highlights! THE FAMOUS HIKE - FIRA TO OIA: DISTANCE: 10km (6.2 miles). TIME: 2.5-4 hours. ROUTE: Follows caldera edge through Fira → Firostefani → Imerovigli → Oia. Non-stop spectacular views! DIFFICULTY: Moderate (distance + some elevation + heat exposure). SCENERY: Absolutely stunning every step - caldera panoramas, white villages, blue domes, volcanic views! OTHER VILLAGE WALKS: Fira to Firostefani: 20-30 minutes, easy, beautiful. Firostefani to Imerovigli: 30 minutes, easy. Imerovigli to Oia: Longer section (1.5-2 hours). INLAND VILLAGES: Walking between Pyrgos, Megalochori, Emporio requires roads (not scenic paths) - better to drive/bus. CONSIDERATIONS: Minimal shade (sun exposure intense!). Summer heat brutal (35°C+). Bring water (2+ liters!), hat, sunscreen. Uneven paths (good shoes!). Can be challenging in heat. ALTERNATIVES: Do partial hike (Fira to Imerovigli only - 1 hour). Hike early morning (7-9 AM before heat). Take bus one direction. VERDICT: The Fira-Oia hike is must-do Santorini experience - the views are INCREDIBLE! But prepare for heat and distance. It\'s free and unforgettable!',
+        },
+        {
+          question: 'What is Pyrgos village?',
+          answer: 'Pyrgos is Santorini\'s highest village offering 360° island views and authentic Greek charm! WHAT IT IS: Traditional Cycladic village built amphitheatrically up hillside, crowned by Venetian castle (Kasteli) ruins at summit. Once Santorini\'s capital! WHAT YOU\'LL SEE: KASTELI CASTLE - Climb to fortress ruins for panoramic views over entire island (both caldera and Aegean sides!). Stunning at sunset. TRADITIONAL ARCHITECTURE - Whitewashed cube houses, blue-domed churches, narrow winding alleys creating maze-like layout. Beautiful preserved Cycladic style! CHURCHES - Multiple historic churches including Theotokaki (viewpoint). AUTHENTICITY - Fewer tourists than Oia/Fira! Local shops, traditional tavernas, residential village feel. WINE CULTURE - Several wineries nearby (Estate Argyros and others). WHY VISIT: Experience authentic Greek island life, incredible views (seriously - you see everywhere from the castle!), far fewer crowds, beautiful architecture without commercialization, excellent photography opportunities. LOCATION: Central Santorini (15 minutes from Fira). Easy bus or car access. BEST TIME: Late afternoon for golden hour photos and sunset from castle (no crowds!). RECOMMENDATION: Essential for seeing "real Santorini" beyond tourist villages. The castle views alone are worth the visit!',
+        },
+        {
+          question: 'Is Fira or Oia better?',
+          answer: 'Both are beautiful but offer very different experiences! OIA - BEST FOR: Iconic photos (blue domes, whitewashed houses), world-famous sunset, romantic atmosphere, luxury shopping, upscale dining. CHARACTERISTICS: Small, intimate, pedestrian-only, dramat caldera views, VERY touristy and crowded (especially sunset!), expensive, picture-perfect beauty. Best: Early morning visits or sunset experience. FIRA - BEST FOR: Central location (transport hub), vibrant energy, shopping variety, dining options (all budgets), nightlife, accessibility, practical amenities. CHARACTERISTICS: Larger, more "city" feel, mix of traditional and modern, caldera views from clifftop path, busy but navigable crowds, more affordable, cable car to old port. Best: Base for exploring island, evening energy. COMPARISON: Oia is postcard-perfect but touristy. Fira is functional capital with beauty. Oia for romance and photos. Fira for practical stay and liveliness. Oia feels exclusive/expensive. Fira feels accessible/democratic. RECOMMENDATION: VISIT BOTH! Stay in Fira (central, affordable, convenient). Visit Oia for photos and sunset (day trip). Or split stay. Imerovigli is middle ground - quieter than Fira, more accessible than Oia. Each serves different purposes - no "better" just different!',
+        },
+        {
+          question: 'What is the best time to explore villages?',
+          answer: 'BEST TIMES: Early morning (7-9 AM) - Villages nearly empty, perfect for photography, cool temperatures, authentic morning life (locals shopping, cafes opening). ABSOLUTE BEST for Oia! Late afternoon/evening (5-9 PM) - Pleasant temperatures, golden hour light, villages come alive for evening, tavernas open, locals out. Good for dinner atmosphere. AVOID: Midday (11 AM-4 PM) - Intense heat, maximum tourist crowds, harsh photography light, many shops close for siesta. Unless beach-bound, avoid village exploring midday! BEST MONTHS: May-June & September-October - Perfect weather (22-28°C), manageable crowds, comfortable walking. July-August - Hot (30-35°C) and very crowded. Beautiful but intense! November-April - Quieter (many tourists gone), cooler (15-20°C), some businesses closed, but peaceful and affordable. SPECIFIC RECOMMENDATIONS: Oia photography: 7-8 AM (empty streets!). Oia sunset: Arrive 5-6 PM (secure spot, sunset around 7-8 PM depending on season). Pyrgos castle: Late afternoon for 360° views. Traditional villages: Morning when locals are out, shops open. SEASONAL NOTE: Summer villages packed 10 AM-8 PM. Shoulder seasons more relaxed. Winter quiet but charming. Each season offers different village experience!',
+        },
+      ],
+    },
+  },
+
 };
 
