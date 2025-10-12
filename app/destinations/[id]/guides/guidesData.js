@@ -39361,5 +39361,1063 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
     },
   },
 
+  vienna: {
+    'schonbrunn-palace-tours': {
+      title: 'Vienna Schönbrunn Palace Tours',
+      subtitle: 'Explore the magnificent Habsburg summer palace with baroque gardens and imperial grandeur!',
+      categoryName: 'Schönbrunn Palace Tours',
+      
+      stats: {
+        toursAvailable: 78,
+        priceFrom: 18,
+        duration: '1.5-3 hours',
+      },
+
+      introduction: `Experience Schönbrunn Palace, Vienna's most visited attraction and a UNESCO World Heritage masterpiece! Built as the Habsburg summer residence, this stunning baroque palace features 1,441 rooms (40 open to visitors), lavish imperial apartments where Empress Elisabeth (Sisi) lived, the magnificent Great Gallery where Mozart performed as a child, and spectacular gardens spanning 1.2 km with fountains, sculptures, and the Gloriette monument offering panoramic Vienna views. Tours explore Maria Theresa's opulent state rooms, Franz Joseph's surprisingly modest apartments, the world's oldest zoo (established 1752), Palm House with tropical plants, and seasonal highlights like Christmas markets. Skip-the-line tours bypass notorious queues, while combo tickets include the maze, carriage museum, and gardens. It's Habsburg grandeur at its finest!`,
+
+      seo: {
+        title: 'Vienna Schönbrunn Palace Tours 2025 - Habsburg Palace & Gardens',
+        description: 'Explore Schönbrunn Palace in Vienna! Imperial apartments, baroque gardens, and Habsburg history!',
+        keywords: 'Schönbrunn Palace Vienna, Vienna palace tours, Schönbrunn gardens, Habsburg palace, Vienna attractions',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Habsburg Grandeur',
+          description: 'Explore 40 imperial rooms with original furnishings and baroque splendor!',
+        },
+        {
+          icon: 'Heart',
+          title: 'UNESCO World Heritage',
+          description: 'Visit one of Europe\'s most significant cultural monuments and gardens.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Spectacular Gardens',
+          description: 'Wander 1.2 km of baroque gardens with fountains, maze, and Gloriette views!',
+        },
+        {
+          icon: 'Users',
+          title: 'Skip the Lines',
+          description: 'Priority access bypasses long queues saving hours in peak season.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Grand Tour',
+          description: 'Complete palace tour of 40 rooms including imperial apartments and state rooms.',
+          features: [
+            '1.5 hours',
+            '40 rooms',
+            'Imperial apartments',
+            'Audio guide',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Imperial Tour',
+          description: 'Shorter tour of 22 main rooms highlighting Habsburg history.',
+          features: [
+            '45 minutes',
+            '22 rooms',
+            'Key highlights',
+            'Audio guide',
+            'Budget option',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Palace & Gardens Combo',
+          description: 'Palace tour plus gardens, maze, Gloriette, and zoo access.',
+          features: [
+            '3-4 hours',
+            'Full experience',
+            'Gardens access',
+            'Multiple sites',
+            'Best value',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Evening Concerts',
+          description: 'Palace concerts featuring Mozart and Strauss in historic Orangery.',
+          features: [
+            '2 hours',
+            'Classical music',
+            'Orangery venue',
+            'Optional dinner',
+            'Magical atmosphere',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Vienna Schönbrunn Palace Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Imperial Tour: 45 minutes. Grand Tour: 1.5 hours. Full experience: 3-4 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Imperial Apartments',
+            description: 'See Maria Theresa\'s lavish rooms and Franz Joseph\'s surprisingly modest quarters.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Great Gallery',
+            description: 'Marvel at the stunning Hall of Mirrors where Mozart performed at age 6!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Baroque Gardens',
+            description: 'Explore fountains, Neptune Fountain, Roman ruins, and perfectly manicured paths.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Gloriette Monument',
+            description: 'Climb to the hilltop pavilion for panoramic views over Vienna.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Habsburg History',
+            description: 'Learn about 640 years of Habsburg dynasty and imperial Vienna life.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book skip-the-line tickets weeks in advance - Schönbrunn gets 2+ hour queues summer!',
+        'Grand Tour (€26, 40 rooms) worth the upgrade over Imperial Tour (€20, 22 rooms).',
+        'Arrive early (9 AM opening) for photos without crowds and best light.',
+        'Classic Pass (€28) includes palace, gardens, maze, zoo - great value for full day visit.',
+        'The Gloriette café serves coffee with best views in Vienna - worth the €5 entry!',
+        'Download the audio guide app beforehand - palace WiFi can be slow.',
+        'Christmas market (late November-December) is magical but extremely crowded.',
+        'Allow 3-4 hours minimum for palace + gardens - it\'s massive!',
+      ],
+
+      faqs: [
+        {
+          question: 'How much does Schönbrunn Palace cost?',
+          answer: 'Imperial Tour (22 rooms): €20. Grand Tour (40 rooms): €26. Classic Pass (palace + gardens + maze + zoo): €28. Children under 19: FREE with adults! Skip-the-line guided tours: €50-70. Book online for small discount.',
+        },
+        {
+          question: 'How long to visit Schönbrunn?',
+          answer: 'Palace tours: 45 minutes (Imperial) or 1.5 hours (Grand). Add 1-2 hours for gardens. Full day (4-5 hours) to include zoo, maze, Gloriette. Most visitors spend 2-3 hours total.',
+        },
+        {
+          question: 'What is the difference between tours?',
+          answer: 'Imperial Tour: 22 main rooms (45 mins, €20). Grand Tour: 40 rooms including more private apartments (1.5 hrs, €26). Grand Tour recommended - shows complete palace and better value. Both include audio guide.',
+        },
+        {
+          question: 'Is Schönbrunn Palace free?',
+          answer: 'Gardens are FREE! Palace requires ticket (€20-26). Children under 19 FREE with adult tickets. First Sunday of month: No discounts (unlike some museums). Skip-the-line worth paying for in summer.',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Early morning (9 AM opening) for fewer crowds and best light. Weekdays better than weekends. Best months: April-May or September-October. Christmas market season (late Nov-Dec) is magical but very crowded.',
+        },
+        {
+          question: 'What is the Gloriette?',
+          answer: 'The Gloriette is a stunning pavilion atop the hill behind the palace built to celebrate Habsburg military victories. It offers spectacular panoramic views over Vienna! Café inside serves coffee with the view. €5 entry.',
+        },
+        {
+          question: 'Can you visit the gardens for free?',
+          answer: 'Yes! The entire baroque gardens are FREE to explore - fountains, paths, lawns. Only paid areas: Gloriette (€5), maze (€6), Palm House (€6), zoo (€24). You can easily spend hours just in free gardens.',
+        },
+        {
+          question: 'Is the palace wheelchair accessible?',
+          answer: 'Partially accessible. Ground floor rooms accessible via elevator. Upper floors require climbing stairs. Gardens fully accessible on paved paths. Wheelchairs available free at entrance. Contact palace ahead for specific needs.',
+        },
+      ],
+    },
+
+    'hofburg-palace-tours': {
+      title: 'Vienna Hofburg Palace Tours',
+      subtitle: 'Explore the Habsburg winter palace with imperial apartments and royal treasures!',
+      categoryName: 'Hofburg Palace Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 16,
+        duration: '1-3 hours',
+      },
+
+      introduction: `Discover the Hofburg Palace, the massive Habsburg winter residence in Vienna's historic center where emperors ruled for 640 years! This sprawling complex covers 59 acres with 2,600 rooms housing multiple museums: the Imperial Apartments where Franz Joseph and Sisi lived, the Sisi Museum dedicated to Empress Elisabeth's fascinating life, the Imperial Treasury with the Habsburg Crown Jewels, the Spanish Riding School with Lipizzaner stallions, and the impressive Neue Burg museums. Tours reveal opulent state rooms, Sisi's gymnastics room, Franz Joseph's modest sleeping quarters, ceremonial halls, and the world's most important collection of imperial regalia. The palace complex also includes the Hofburg Chapel where the Vienna Boys' Choir sings Sunday mass. It's Vienna's power center for centuries!`,
+
+      seo: {
+        title: 'Vienna Hofburg Palace Tours 2025 - Imperial Apartments & Sisi Museum',
+        description: 'Explore Hofburg Palace in Vienna! Imperial apartments, Sisi Museum, and Habsburg treasures!',
+        keywords: 'Hofburg Palace Vienna, Vienna imperial apartments, Sisi Museum, Habsburg palace, Vienna attractions',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Imperial Power Center',
+          description: 'Explore where Habsburg emperors ruled Europe for 640 years!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Sisi Museum',
+          description: 'Discover Empress Elisabeth\'s tragic life story and personal belongings.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Crown Jewels',
+          description: 'See the Imperial Treasury with Habsburg crowns and sacred relics!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Central Location',
+          description: 'Located in Vienna\'s historic center near major sights.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Imperial Apartments Tour',
+          description: 'Visit Franz Joseph and Sisi\'s private apartments with Sisi Museum.',
+          features: [
+            '1-1.5 hours',
+            'Imperial apartments',
+            'Sisi Museum',
+            'Audio guide',
+            'Core experience',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Imperial Treasury',
+          description: 'See Crown Jewels, imperial regalia, and Holy Roman Empire treasures.',
+          features: [
+            '1 hour',
+            'Crown Jewels',
+            'Sacred relics',
+            'Audio guide',
+            'Priceless artifacts',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Hofburg Complex Pass',
+          description: 'Access multiple museums - apartments, treasury, and Neue Burg.',
+          features: [
+            '3-4 hours',
+            'Multiple museums',
+            'Best value',
+            'Comprehensive',
+            'Full experience',
+          ],
+        },
+        {
+          icon: 'Music',
+          title: 'Spanish Riding School',
+          description: 'Watch Lipizzaner stallion training or full performances.',
+          features: [
+            '1-2 hours',
+            'Lipizzaner horses',
+            'Baroque hall',
+            'Traditional riding',
+            'Unique experience',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Vienna Hofburg Palace Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Imperial Apartments: 1-1.5 hours. Treasury: 1 hour. Full complex: 3-4 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Sisi\'s Apartments',
+            description: 'See Empress Elisabeth\'s gymnastics room, beauty routine, and personal effects.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Franz Joseph\'s Rooms',
+            description: 'Surprisingly modest quarters of Austria\'s longest-ruling emperor.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Imperial Treasury',
+            description: 'Marvel at Holy Roman Empire crown, Habsburg jewels, and sacred relics.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Habsburg History',
+            description: 'Learn about dynasty that ruled Europe and shaped Vienna\'s grandeur.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Ceremonial Halls',
+            description: 'Visit opulent state rooms where emperors held court and ceremonies.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Sisi Ticket (€20) includes Imperial Apartments, Sisi Museum, and Imperial Furniture Collection.',
+        'Imperial Treasury (€16) separate ticket - don\'t miss the Crown Jewels!',
+        'Spanish Riding School morning training (€15) more affordable than full performances (€55-200).',
+        'Visit Hofburg first, then walk to nearby St. Stephen\'s Cathedral and Opera House.',
+        'Audio guides included with tickets - very informative, allow extra time to listen.',
+        'Hofburg open daily 9 AM-5:30 PM (July-August until 6 PM).',
+        'Combined ticket with Schönbrunn available - saves if visiting both palaces.',
+        'Less crowded than Schönbrunn - better for off-season visits.',
+      ],
+
+      faqs: [
+        {
+          question: 'How much does Hofburg Palace cost?',
+          answer: 'Imperial Apartments + Sisi Museum: €16. Imperial Treasury: €16. Spanish Riding School training: €15, performances: €55-200. Sisi Ticket (apartments + furniture collection): €20. Combo tickets available for multiple sites.',
+        },
+        {
+          question: 'What is included in Hofburg tickets?',
+          answer: 'Basic ticket (€16): Imperial Apartments, Sisi Museum, Silver Collection (imperial tableware). Audio guide included. Imperial Treasury separate ticket. Spanish Riding School also separate. Each museum needs individual ticket unless combo pass.',
+        },
+        {
+          question: 'Who was Empress Sisi?',
+          answer: 'Elisabeth of Austria (Sisi) was Franz Joseph\'s wife and Austria\'s empress (1854-1898). Famous for her beauty, obsession with fitness, tragic life, and assassination in Geneva. The Sisi Museum tells her fascinating story with personal belongings.',
+        },
+        {
+          question: 'What is the Spanish Riding School?',
+          answer: 'The Spanish Riding School is a traditional riding academy in the Hofburg training Lipizzaner stallions in classical dressage since 1735! Morning training sessions (€15) or full performances (€55-200). It\'s living tradition and world-famous!',
+        },
+        {
+          question: 'How long to visit Hofburg?',
+          answer: 'Imperial Apartments: 1-1.5 hours. Imperial Treasury: 1 hour. Both: 2.5-3 hours. Add Spanish Riding School: +1-2 hours. The complex is massive - choose specific museums based on interests.',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Weekday mornings (9-11 AM) for fewer crowds. Hofburg less crowded than Schönbrunn overall. Best months: April-May, September-October. Summer busy but manageable. Open year-round.',
+        },
+        {
+          question: 'Where is Hofburg Palace located?',
+          answer: 'In Vienna\'s historic center (Innere Stadt), walking distance from St. Stephen\'s Cathedral, Opera House, and Ringstrasse. U3 metro to Herrengasse station. Central location makes it easy to combine with other sights.',
+        },
+        {
+          question: 'Can you see the Crown Jewels?',
+          answer: 'Yes! The Imperial Treasury (Schatzkammer) displays Crown Jewels - Holy Roman Empire crown, Habsburg imperial crown, orb, scepter, and sacred relics. It\'s one of world\'s most important collections! €16 entry, worth every cent.',
+        },
+      ],
+    },
+
+    'classical-music-tours': {
+      title: 'Vienna Classical Music Tours',
+      subtitle: 'Experience Mozart, Strauss, and Vienna Philharmonic in historic concert halls!',
+      categoryName: 'Classical Music Tours',
+      
+      stats: {
+        toursAvailable: 112,
+        priceFrom: 35,
+        duration: '1.5-3 hours',
+      },
+
+      introduction: `Experience Vienna's legendary classical music scene - the city of Mozart, Beethoven, Strauss, and Brahms! Vienna's musical heritage comes alive nightly with concerts in historic venues: the golden Musikverein (home of Vienna Philharmonic's New Year Concert), State Opera House (one of world's finest opera houses), intimate Kursalon (where Johann Strauss himself performed), Mozart House, and Schönbrunn Palace Orangery. Concerts feature waltz music, opera highlights, full symphonies, chamber music, and even costumed Mozart performances. Many tours combine concerts with palace visits or Viennese dinners. The Vienna Boys' Choir performs Sunday masses at Hofburg Chapel. From budget-friendly church concerts to premium opera performances, Vienna offers classical music for every taste and budget. It's the world's classical music capital!`,
+
+      seo: {
+        title: 'Vienna Classical Music Tours 2025 - Mozart, Opera & Concerts',
+        description: 'Experience Vienna classical music! Mozart concerts, State Opera, Musikverein, and historic venues!',
+        keywords: 'Vienna concerts, Vienna classical music, Mozart Vienna, Vienna opera, Musikverein, Vienna Philharmonic',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Music',
+          title: 'World Music Capital',
+          description: 'Experience classical music where Mozart, Beethoven, and Strauss lived and performed!',
+        },
+        {
+          icon: 'Star',
+          title: 'Historic Venues',
+          description: 'Attend concerts in golden halls and palaces with perfect acoustics.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Nightly Performances',
+          description: 'Concerts every night year-round - classical music is alive in Vienna!',
+        },
+        {
+          icon: 'Users',
+          title: 'All Budgets',
+          description: 'Options from free church concerts to premium opera performances.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Music',
+          title: 'Mozart & Strauss Concerts',
+          description: 'Classic Viennese concerts featuring Mozart, Strauss waltzes, and opera highlights.',
+          features: [
+            '2 hours',
+            'Historic halls',
+            'Famous pieces',
+            'Costumed performers',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Vienna State Opera',
+          description: 'World-class opera performances in one of Europe\'s finest opera houses.',
+          features: [
+            '3-4 hours',
+            'Full operas',
+            'Premier venue',
+            'Vienna Philharmonic',
+            'Premium experience',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Palace Concerts',
+          description: 'Intimate concerts in Schönbrunn or Hofburg palace halls.',
+          features: [
+            '1.5-2 hours',
+            'Palace setting',
+            'Chamber music',
+            'Optional dinner',
+            'Elegant atmosphere',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Classical Music Tours',
+          description: 'Guided tours visiting composers\' homes plus concert tickets.',
+          features: [
+            '4-5 hours',
+            'Composer houses',
+            'Historic sites',
+            'Concert included',
+            'Comprehensive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Vienna Classical Music Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Concerts: 1.5-2 hours. Full operas: 3-4 hours. Tours with concerts: 4-5 hours.',
+          },
+          {
+            icon: 'Music',
+            title: 'Famous Compositions',
+            description: 'Hear Eine Kleine Nachtmusik, Blue Danube, opera arias, and Viennese waltzes.',
+          },
+          {
+            icon: 'Star',
+            title: 'Historic Venues',
+            description: 'Perform in golden concert halls with crystal chandeliers and perfect acoustics.',
+          },
+          {
+            icon: 'Heart',
+            title: 'World-Class Musicians',
+            description: 'Vienna Philharmonic, State Opera Orchestra, and top international performers.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Elegant Atmosphere',
+            description: 'Dress code varies - casual for church concerts, formal for opera.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Musical Heritage',
+            description: 'Experience the city where greatest composers lived and created masterpieces.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book Mozart/Strauss concerts weeks ahead - very popular with tourists!',
+        'State Opera standing room tickets (€10-15) available same-day - budget option!',
+        'Musikverein Golden Hall hosts Vienna Philharmonic - world\'s best acoustics.',
+        'Free organ concerts at Karlskirche (Saturdays 6 PM) - beautiful church, great music.',
+        'Dress code: Smart casual for most concerts, formal (jacket/tie) for State Opera.',
+        'Kursalon concerts touristy but fun - Johann Strauss performed there!',
+        'Vienna Boys\' Choir at Hofburg Chapel (Sunday mornings) - book months ahead, FREE standing room.',
+        'Combo tickets (palace tour + concert) offer better value than separate purchases.',
+      ],
+
+      faqs: [
+        {
+          question: 'How much do Vienna concerts cost?',
+          answer: 'Mozart/Strauss concerts: €35-70. State Opera: €10 (standing) to €300+ (premium seats). Palace concerts: €50-90. Church concerts: Free-€20. Budget: Church concerts and opera standing room. Splurge: Musikverein or State Opera.',
+        },
+        {
+          question: 'What should I wear to concerts?',
+          answer: 'Depends on venue! Mozart/Strauss concerts: Smart casual fine. State Opera: Jacket/tie for men, dress for women (standing room casual OK). Palace concerts: Smart casual to formal. Church concerts: Casual.',
+        },
+        {
+          question: 'Where is the best concert venue?',
+          answer: 'Musikverein Golden Hall: World\'s finest acoustics, home of New Year Concert. State Opera: World-class opera. Kursalon: Historic Strauss venue. Schönbrunn Orangery: Intimate palace setting. Each offers unique experience!',
+        },
+        {
+          question: 'Are concerts in English?',
+          answer: 'Music is universal! Opera performed in original language (Italian, German) with subtitles/translations. Concert programs available in English. Mozart/Strauss concerts have no narration - just enjoy the music!',
+        },
+        {
+          question: 'Can I get same-day tickets?',
+          answer: 'Yes! State Opera standing room tickets (€10-15) sold 80 minutes before performance - arrive early! Some concerts have last-minute availability. Popular shows sell out weeks ahead - book early for best seats.',
+        },
+        {
+          question: 'What is the Vienna Philharmonic?',
+          answer: 'The Vienna Philharmonic is one of world\'s finest orchestras performing at Musikverein and State Opera. Famous for New Year Concert broadcast globally. Hearing them live is bucket-list experience! Tickets highly sought after.',
+        },
+        {
+          question: 'When is concert season?',
+          answer: 'Classical music year-round in Vienna! Main season: September-June. Summer has outdoor concerts and special programs. Something happening every night - Vienna never stops making music!',
+        },
+        {
+          question: 'What is the difference between venues?',
+          answer: 'Musikverein: Pure classical concerts, best acoustics. State Opera: Full operas, 3-4 hours. Kursalon: Waltz music, touristy but fun. Palace venues: Intimate, elegant. Churches: Acoustics, budget-friendly. Choose based on preference!',
+        },
+      ],
+    },
+
+    'coffee-house-tours': {
+      title: 'Vienna Coffee House Tours',
+      subtitle: 'Experience legendary Viennese coffee culture in historic cafés serving tradition since the 1700s!',
+      categoryName: 'Coffee House Tours',
+      
+      stats: {
+        toursAvailable: 46,
+        priceFrom: 40,
+        duration: '2-3 hours',
+      },
+
+      introduction: `Experience Vienna's legendary coffee house culture - a UNESCO Intangible Cultural Heritage tradition dating to the 1683 Ottoman siege! Viennese coffee houses are not just cafés but institutions where intellectuals debated, artists created, and time stands still. Tours visit iconic establishments like Café Central (frequented by Freud, Trotsky, and Einstein), Café Sacher (home of Sachertorte chocolate cake), Café Sperl (unchanged since 1880), and Café Demel (k.u.k. Hofzuckerbäcker - Imperial Court Pastry Shop). Learn to order Melange, Einspänner, and Kapuziner, understand coffee house etiquette (newspapers on wooden poles!), taste Apfelstrudel and Sachertorte, and discover why Viennese spend hours in these "living rooms" of the city. It's coffee elevated to art form!`,
+
+      seo: {
+        title: 'Vienna Coffee House Tours 2025 - Café Culture & Sachertorte',
+        description: 'Experience Vienna coffee houses! Historic cafés, Sachertorte, and legendary coffee culture!',
+        keywords: 'Vienna coffee houses, Cafe Central Vienna, Sachertorte, Vienna café culture, Viennese coffee',
+      },
+
+      whyChoose: [
+        {
+          icon: 'GlassWater',
+          title: 'UNESCO Heritage',
+          description: 'Experience coffee culture recognized as Intangible Cultural Heritage!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Historic Cafés',
+          description: 'Visit legendary establishments where emperors, intellectuals, and artists gathered.',
+        },
+        {
+          icon: 'Star',
+          title: 'Sachertorte & Strudel',
+          description: 'Taste original Sachertorte and authentic Apfelstrudel in their birthplace!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Living Tradition',
+          description: 'Understand Viennese lifestyle where coffee houses are social institutions.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Coffee House Walking Tour',
+          description: 'Visit 3-4 historic coffee houses tasting different coffees and pastries.',
+          features: [
+            '3 hours',
+            '3-4 cafés',
+            'Coffee tastings',
+            'Pastries included',
+            'Local guide',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Café Central Experience',
+          description: 'In-depth visit to legendary Café Central with coffee and cake.',
+          features: [
+            '1.5 hours',
+            'Iconic café',
+            'Coffee & cake',
+            'Historical stories',
+            'Most famous',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Sachertorte Tasting',
+          description: 'Visit Café Sacher tasting the original Sachertorte chocolate cake.',
+          features: [
+            '1 hour',
+            'Original recipe',
+            'Coffee included',
+            'Behind scenes',
+            'Sweet experience',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Coffee & Cake Tour',
+          description: 'Comprehensive tour of coffee culture with multiple traditional pastries.',
+          features: [
+            '2.5 hours',
+            'Multiple venues',
+            'Variety of cakes',
+            'Coffee education',
+            'Delicious!',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Vienna Coffee House Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours last 2-3 hours visiting 3-4 historic coffee houses.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Coffee Varieties',
+            description: 'Taste Melange, Einspänner, Kapuziner, and learn ordering etiquette.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Sachertorte',
+            description: 'Try the original chocolate torte from Café Sacher - Vienna\'s most famous cake!',
+          },
+          {
+            icon: 'Star',
+            title: 'Historic Cafés',
+            description: 'Visit establishments unchanged for over 100 years with original interiors.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Insights',
+            description: 'Learn why coffee houses are Vienna\'s "living rooms" and social institutions.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Belle Époque Atmosphere',
+            description: 'Enjoy chandeliers, marble tables, and velvet banquettes in grand settings.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Café Central opens 7:30 AM - arrive early before tour groups fill it!',
+        'Sachertorte debate: Café Sacher vs. Demel both claim the "original" - try both!',
+        'Order Melange (similar to cappuccino) - most popular Viennese coffee.',
+        'Coffee houses include glass of water with coffee - tradition since Ottoman times.',
+        'Newspapers on wooden poles are free to read - part of coffee house culture.',
+        'You can sit for hours after ordering one coffee - no pressure to leave!',
+        'Café Sperl (unchanged since 1880) is most authentic and least touristy.',
+        'Dress smart casual - coffee houses have elegant atmosphere.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is a Viennese coffee house?',
+          answer: 'A Viennese coffee house (Kaffeehaus) is more than a café - it\'s a social institution and "living room" of the city! They feature marble tables, newspapers, elegant interiors, and tradition of spending hours over coffee. UNESCO Intangible Cultural Heritage! They\'ve been Vienna\'s intellectual centers since 1683.',
+        },
+        {
+          question: 'How much do coffee house tours cost?',
+          answer: 'Walking tours (3-4 cafés): €40-60 including coffee and cakes. Individual visits: Coffee €4-6, cake €5-8. Sachertorte at Sacher: €8.50. Tours offer better value as they include multiple tastings and guide.',
+        },
+        {
+          question: 'What is Sachertorte?',
+          answer: 'Sachertorte is Vienna\'s most famous chocolate cake - dense chocolate sponge with apricot jam and dark chocolate glaze. Invented 1832 by Franz Sacher. The "original" served at Café Sacher. It\'s rich, not too sweet, and absolutely delicious!',
+        },
+        {
+          question: 'What coffee should I order?',
+          answer: 'Melange: Similar to cappuccino, most popular. Einspänner: Black coffee with whipped cream in glass. Kapuziner: Coffee with cream. Großer/Kleiner Brauner: Large/small coffee with milk. Use German names - ordering "cappuccino" marks you as tourist!',
+        },
+        {
+          question: 'Which is the most famous coffee house?',
+          answer: 'Café Central is most famous - intellectuals like Freud, Trotsky, Einstein gathered here. Stunning architecture! Also iconic: Café Sacher (original Sachertorte), Café Sperl (most authentic), Café Demel (imperial pastry shop). Each has unique character.',
+        },
+        {
+          question: 'Can you stay long in coffee houses?',
+          answer: 'Absolutely! Tradition is to linger for hours over one coffee - no pressure to order more or leave. Bring a book, read newspapers, or just people-watch. It\'s why they\'re called Vienna\'s "living rooms"!',
+        },
+        {
+          question: 'What pastries should I try?',
+          answer: 'Must-try: Sachertorte (chocolate cake), Apfelstrudel (apple strudel), Kaiserschmarrn (shredded pancake), Topfenstrudel (cheese strudel), and Linzertorte. Pair with Melange coffee. Get pastries at café counter - they\'re displayed beautifully!',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Mid-morning (9-11 AM) for fresh pastries and lighter crowds. Afternoon (3-5 PM) for traditional coffee and cake time (Kaffeejause). Avoid peak lunch (12-2 PM). Weekdays quieter than weekends.',
+        },
+      ],
+    },
+
+    'historic-district-tours': {
+      title: 'Vienna Historic District Tours',
+      subtitle: 'Explore the UNESCO World Heritage Innere Stadt with imperial palaces and grand boulevards!',
+      categoryName: 'Historic District Tours',
+      
+      stats: {
+        toursAvailable: 82,
+        priceFrom: 25,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Vienna's magnificent historic center (Innere Stadt), a UNESCO World Heritage site showcasing 2,000 years of history! The Ringstrasse boulevard encircles the first district with grand buildings from Vienna's 19th-century golden age: Parliament, City Hall, Opera House, Museums, and Burgtheater. Walking tours explore St. Stephen's Cathedral (Stephansdom - Vienna's Gothic masterpiece), the Jewish Quarter with cobblestone streets, Spanish Riding School, imperial Hofburg Palace complex, elegant Kohlmarkt shopping street, and hidden courtyards. Learn about Habsburg emperors, Mozart's performances, Vienna's siege history, WWII scars, and modern Austrian life. Evening tours reveal illuminated monuments creating magical atmosphere. The compact historic center combines imperial grandeur with vibrant café culture!`,
+
+      seo: {
+        title: 'Vienna Historic District Tours 2025 - Ringstrasse & Innere Stadt',
+        description: 'Explore Vienna\'s historic district! Ringstrasse, St. Stephen\'s Cathedral, and UNESCO heritage!',
+        keywords: 'Vienna historic district, Vienna walking tours, Ringstrasse Vienna, St Stephen\'s Cathedral, Vienna old town',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'UNESCO World Heritage',
+          description: 'Explore Vienna\'s protected historic center with imperial architecture!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Grand Ringstrasse',
+          description: 'See magnificent boulevards lined with palaces, museums, and monuments.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Compact & Walkable',
+          description: 'All major sights within walking distance in the historic first district.',
+        },
+        {
+          icon: 'BookOpen',
+          title: '2,000 Years of History',
+          description: 'From Roman Vindobona to Habsburg empire to modern European capital.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Old Town Tour',
+          description: 'Comprehensive walking tour of Innere Stadt covering major monuments.',
+          features: [
+            '2-3 hours',
+            'All highlights',
+            'St. Stephen\'s',
+            'Expert guide',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Ringstrasse Tram Tour',
+          description: 'Scenic tram ride along the grand boulevard with audio commentary.',
+          features: [
+            '30 minutes',
+            'Hop-on hop-off',
+            'All major buildings',
+            'Relaxing',
+            'Budget-friendly',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Jewish Quarter Tours',
+          description: 'Explore Judenplatz, synagogues, and Vienna\'s rich Jewish history.',
+          features: [
+            '2 hours',
+            'Medieval quarter',
+            'Synagogues',
+            'WWII history',
+            'Moving stories',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Evening Walking Tours',
+          description: 'Discover illuminated Vienna with lit-up monuments and romantic atmosphere.',
+          features: [
+            '2 hours',
+            'Evening magic',
+            'Lit monuments',
+            'Quieter streets',
+            'Romantic',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Vienna Historic District Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Ringstrasse tram: 30 minutes. Comprehensive: 4 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'St. Stephen\'s Cathedral',
+            description: 'Marvel at Vienna\'s Gothic masterpiece with mosaic roof and tallest tower.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Grand Ringstrasse',
+            description: 'See Parliament, Opera House, City Hall, and museums along grand boulevard.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Hofburg Palace',
+            description: 'Explore the massive complex where Habsburg emperors lived and ruled.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Habsburg History',
+            description: 'Learn how emperors shaped Vienna into one of Europe\'s grandest capitals.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Hidden Courtyards',
+            description: 'Discover secret passages, elegant courtyards, and local neighborhoods.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Start at St. Stephen\'s Cathedral (center of Vienna) and explore outward from there.',
+        'Climb St. Stephen\'s tower (343 steps) for best Vienna panorama - €6 entry.',
+        'Ringstrasse tram (lines 1, 2, D) offers cheap DIY tour - €2.40 single ride.',
+        'Free walking tours available (tip-based) but can be crowded - book private for quality.',
+        'Download Vienna city app for self-guided walking tour routes.',
+        'Best views: St. Stephen\'s tower, Gloriette at Schönbrunn, Prater Ferris wheel.',
+        'The "Blue Danube" river is actually brown - Canal is closer to historic center!',
+        'Allow full day to explore historic center properly - there\'s so much to see!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Ringstrasse?',
+          answer: 'The Ringstrasse is a grand 5.3km boulevard encircling Vienna\'s historic center built 1857-1865 on former city walls. It features magnificent buildings: Parliament, City Hall, Opera House, Burgtheater, Museums, and University. It\'s one of Europe\'s finest boulevards!',
+        },
+        {
+          question: 'How long to explore historic Vienna?',
+          answer: 'Minimum 3-4 hours for highlights. Full day (6-8 hours) to explore properly including museums. Walking tours (2-3 hours) cover main sights efficiently. St. Stephen\'s Cathedral: 1 hour. Hofburg: 2-3 hours.',
+        },
+        {
+          question: 'Is Vienna\'s historic center walkable?',
+          answer: 'Very walkable! The Innere Stadt (first district) is compact - you can walk across in 20 minutes. All major sights within walking distance. Comfortable shoes essential for cobblestones. Trams available for Ringstrasse buildings.',
+        },
+        {
+          question: 'What is St. Stephen\'s Cathedral?',
+          answer: 'St. Stephen\'s Cathedral (Stephansdom) is Vienna\'s most important church and iconic landmark. Gothic masterpiece with mosaic tile roof, 137m tower, and 800+ years of history. Free entry to main church, €6 to climb tower. Vienna\'s heart!',
+        },
+        {
+          question: 'Are walking tours worth it?',
+          answer: 'Yes! Vienna has 2,000+ years of history - guides bring it alive with stories of emperors, Mozart, and WWII. Choose private tours (€150-200) for quality or free tip-based tours (€10-20 tip) for budget option.',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Early morning (8-10 AM) for photos without crowds. Spring (April-May) and fall (September-October) perfect weather. Christmas markets (late Nov-Dec) magical! Summer busy but vibrant. Historic center beautiful year-round.',
+        },
+        {
+          question: 'What is the Jewish Quarter?',
+          answer: 'Vienna\'s Jewish Quarter (centered on Judenplatz) has medieval Jewish heritage and synagogues. Holocaust Memorial and Jewish Museum tell moving stories. Vienna had thriving Jewish community before WWII. Tours explore this important history.',
+        },
+        {
+          question: 'Can you climb St. Stephen\'s tower?',
+          answer: 'Yes! 343 steps up the South Tower (€6) for spectacular Vienna panorama. Worth the climb! There\'s also an elevator to the North Tower (€6) with Pummerin bell. Views are stunning - highlight of many visits!',
+        },
+      ],
+    },
+
+    'art-and-culture-tours': {
+      title: 'Vienna Art & Culture Tours',
+      subtitle: 'Discover Klimt, Schiele, and world-class museums in Austria\'s cultural capital!',
+      categoryName: 'Art & Culture Tours',
+      
+      stats: {
+        toursAvailable: 96,
+        priceFrom: 18,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience Vienna's extraordinary art and culture scene rivaling Paris and Florence! The museum quarter houses world-class collections: Kunsthistorisches Museum (Old Masters - Bruegel, Vermeer, Caravaggio), Belvedere Palace (Klimt's "The Kiss" and largest Klimt collection), Albertina (drawings by Dürer, Michelangelo, and Impressionists), Leopold Museum (Schiele and Viennese Modernism), and Museum Quarter (MuseumsQuartier - contemporary art hub). Tours reveal Vienna Secession art movement, Art Nouveau architecture, imperial collections amassed by Habsburgs, and vibrant contemporary scene. Special exhibitions, evening tours, and combination tickets make experiencing Vienna's cultural treasures accessible. From medieval altarpieces to Klimt's golden period to cutting-edge installations, Vienna offers art for every taste!`,
+
+      seo: {
+        title: 'Vienna Art & Culture Tours 2025 - Klimt, Museums & Belvedere',
+        description: 'Explore Vienna\'s art scene! Klimt\'s Kiss, Belvedere Palace, and world-class museums!',
+        keywords: 'Vienna art museums, Klimt Vienna, Belvedere Palace, Vienna culture, Kunsthistorisches Museum',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Klimt\'s "The Kiss"',
+          description: 'See one of world\'s most famous paintings at Belvedere Palace!',
+        },
+        {
+          icon: 'Heart',
+          title: 'World-Class Museums',
+          description: 'Vienna\'s museums rival the Louvre with Habsburg imperial collections.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Vienna Secession',
+          description: 'Discover Art Nouveau movement that revolutionized European art.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Baroque Palaces',
+          description: 'Museums housed in stunning Belvedere and Hofburg palaces.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Belvedere Palace Tour',
+          description: 'See Klimt\'s "The Kiss" and Austrian art in stunning baroque palace.',
+          features: [
+            '1.5-2 hours',
+            'Klimt collection',
+            'Palace gardens',
+            'Skip lines',
+            'Must-see',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Kunsthistorisches Tour',
+          description: 'Explore Habsburg art collection - Old Masters in magnificent museum.',
+          features: [
+            '2 hours',
+            'Bruegel, Vermeer',
+            'Grand architecture',
+            'Expert guide',
+            'World-class',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Art History Walking Tour',
+          description: 'Visit multiple museums and Vienna Secession building.',
+          features: [
+            '4 hours',
+            'Multiple venues',
+            'Art movements',
+            'Comprehensive',
+            'Art lovers',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Leopold Museum Tour',
+          description: 'Discover Egon Schiele and Viennese Modernism in MuseumsQuartier.',
+          features: [
+            '1.5 hours',
+            'Schiele works',
+            'Modern art',
+            'Contemporary hub',
+            'Unique collection',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Vienna Art & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Single museum: 1.5-2 hours. Multiple museums: 4+ hours. Allow full day for art lovers.',
+          },
+          {
+            icon: 'Star',
+            title: 'Klimt\'s Masterpieces',
+            description: 'See "The Kiss," "Judith," and world\'s largest Klimt collection at Belvedere.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Old Masters',
+            description: 'View Bruegel, Vermeer, Caravaggio, Raphael, and Habsburg treasures.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Vienna Secession',
+            description: 'Explore Art Nouveau movement with Klimt\'s Beethoven Frieze.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Art History',
+            description: 'Learn about Habsburg patronage and Vienna\'s golden age of art.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Palace Settings',
+            description: 'Museums housed in baroque palaces with gardens and grand architecture.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book Belvedere tickets online weeks ahead - very popular, lines can be 1+ hour!',
+        'Vienna Museum Pass (€75) covers 60+ museums for 7 days - excellent value!',
+        'Kunsthistorisches open late Thursdays (9 PM) - fewer crowds, romantic atmosphere.',
+        'The Secession building (€11) houses Klimt\'s stunning Beethoven Frieze - don\'t miss!',
+        'Leopold Museum has world\'s largest Schiele collection - essential for modern art fans.',
+        'Many museums closed Mondays - check schedules before planning!',
+        'First Sunday monthly: Some museums offer free/reduced admission but very crowded.',
+        'Audio guides (usually €5) worth it for understanding context and masterpieces.',
+      ],
+
+      faqs: [
+        {
+          question: 'Where can I see Klimt\'s "The Kiss"?',
+          answer: 'Klimt\'s "The Kiss" is at Belvedere Palace Upper Palace. €18 entry includes entire Austrian art collection. The painting is Vienna\'s most famous artwork - stunning gold leaf masterpiece from 1908! Belvedere has world\'s largest Klimt collection.',
+        },
+        {
+          question: 'What are Vienna\'s best art museums?',
+          answer: 'Top museums: Belvedere (Klimt, Austrian art), Kunsthistorisches (Old Masters, Habsburg collection), Leopold (Schiele, Modernism), Albertina (drawings, Impressionists), Vienna Secession (Art Nouveau). Each world-class - choose based on interests!',
+        },
+        {
+          question: 'How much do museum tickets cost?',
+          answer: 'Belvedere: €18. Kunsthistorisches: €20. Leopold: €15. Albertina: €18. Vienna Secession: €11. Combined tickets available. Vienna Museum Pass (€75 for 60+ museums, 7 days) excellent value if visiting multiple museums.',
+        },
+        {
+          question: 'Is the Vienna Museum Pass worth it?',
+          answer: 'Yes if visiting 4+ major museums! €75 for 7 days covering 60+ museums including Belvedere, Kunsthistorisches, Schönbrunn, Hofburg, and more. Also skip lines at some venues. Pays for itself quickly.',
+        },
+        {
+          question: 'What is the Vienna Secession?',
+          answer: 'The Vienna Secession was Art Nouveau movement (1897-1905) led by Klimt rebelling against conservative art. The Secession building houses Klimt\'s monumental Beethoven Frieze. It\'s architectural and artistic masterpiece - stunning gold dome! €11 entry.',
+        },
+        {
+          question: 'How long to visit Vienna museums?',
+          answer: 'Plan 1.5-2 hours per museum for highlights. Kunsthistorisches needs 3+ hours (it\'s massive!). Art lovers: Allow full day for multiple museums. Combined museum tours (4-5 hours) efficient way to see top collections.',
+        },
+        {
+          question: 'When are museums least crowded?',
+          answer: 'Early morning right at opening or late afternoon (after 3 PM). Weekdays better than weekends. Avoid first Sunday (free/discounted). Kunsthistorisches late Thursdays (until 9 PM) quieter. Winter months (Nov-March) generally less crowded.',
+        },
+        {
+          question: 'Can you see Egon Schiele in Vienna?',
+          answer: 'Yes! Leopold Museum has world\'s largest Schiele collection - over 200 works including major paintings and drawings. Schiele was controversial Austrian Expressionist whose intense portraits shocked Vienna. The collection is extraordinary! €15 entry.',
+        },
+      ],
+    },
+  },
+
 };
 

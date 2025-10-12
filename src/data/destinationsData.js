@@ -2746,12 +2746,12 @@ export const destinations = [
     heroDescription: 'Welcome to Vienna, where imperial palaces echo with the music of Mozart and centuries of Habsburg grandeur create a city of unmatched elegance. From the magnificent Schönbrunn Palace to the historic Hofburg, from world-class opera to charming coffee houses, this imperial capital offers the perfect blend of history, culture, and Austrian sophistication. Let our AI-powered planner help you discover the best experiences this magnificent destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Vienna.webp',
     tourCategories: [
-      'Schönbrunn Palace Tours',
-      'Hofburg Palace Tours',
-      'Classical Music Tours',
-      'Coffee House Tours',
-      'Historic District Tours',
-      'Art & Culture Tours'
+      { name: 'Schönbrunn Palace Tours', hasGuide: true },
+      { name: 'Hofburg Palace Tours', hasGuide: true },
+      { name: 'Classical Music Tours', hasGuide: true },
+      { name: 'Coffee House Tours', hasGuide: true },
+      { name: 'Historic District Tours', hasGuide: true },
+      { name: 'Art & Culture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Vienna Tours & Excursions - Top-Rated Activities & Adventures',
