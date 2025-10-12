@@ -22085,7 +22085,7 @@ export const categoryGuidesNorthAmerica = {
           title: 'Four Seasons',
           description: 'Oak Creek Canyon shows dramatic seasonal changes!',
         },
-      },
+      ],
 
       tourTypes: [
         {
