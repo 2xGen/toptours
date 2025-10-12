@@ -1315,12 +1315,12 @@ export const destinations = [
     heroDescription: 'Welcome to Rome, where every stone tells a story and every corner reveals a masterpiece. From the iconic Colosseum to the magnificent Vatican, from ancient ruins to Renaissance art, this eternal city offers the perfect blend of history, culture, and modern Italian life. Let our AI-powered planner help you discover the best experiences this timeless destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//rome.jpg',
     tourCategories: [
-      'Colosseum Tours',
-      'Vatican Tours',
-      'Ancient Rome Tours',
-      'Food & Wine Tours',
-      'Art & Architecture Tours',
-      'Trevi Fountain Tours'
+      { name: 'Colosseum Tours', hasGuide: true },
+      { name: 'Vatican Tours', hasGuide: true },
+      { name: 'Ancient Rome Tours', hasGuide: true },
+      { name: 'Food & Wine Tours', hasGuide: true },
+      { name: 'Art & Architecture Tours', hasGuide: true },
+      { name: 'Trevi Fountain Tours', hasGuide: true }
     ],
     seo: {
       title: 'Rome Tours & Excursions - Top-Rated Activities & Adventures',

@@ -34479,6 +34479,702 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
         },
       ],
     },
+
+    'ancient-rome-tours': {
+      title: 'Rome Ancient Rome Tours',
+      subtitle: 'Walk through 2,000 years of history at the Roman Forum, Palatine Hill, and ancient ruins!',
+      categoryName: 'Ancient Rome Tours',
+      
+      stats: {
+        toursAvailable: 142,
+        priceFrom: 30,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Step back 2,000 years exploring Ancient Rome's heart - the Roman Forum and Palatine Hill where emperors ruled and Roman civilization flourished! The Forum was ancient Rome's bustling center - marketplace, political hub, religious site, and social gathering place where Julius Caesar walked, Marc Antony delivered speeches, and Roman law was debated. Palatine Hill is where Rome was founded (753 BC legend) and where emperors built lavish palaces with stunning views over the Forum. Ancient Rome tours reveal temples, basilicas, triumphal arches, and the Via Sacra (Sacred Way) where victorious generals paraded. Expert archaeologist guides bring ruins to life explaining Roman politics, daily life, architecture, and the rise and fall of history's greatest empire. Combined with Colosseum tickets for complete ancient experience!`,
+
+      seo: {
+        title: 'Rome Ancient Rome Tours 2025 - Roman Forum & Palatine Hill',
+        description: 'Explore Ancient Rome! Roman Forum, Palatine Hill, emperor palaces, and 2,000 years of history!',
+        keywords: 'Ancient Rome tours, Roman Forum tours, Palatine Hill Rome, ancient Rome history, Roman ruins tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Walk Where Emperors Walked',
+          description: 'Explore the political center where Julius Caesar, Augustus, and Roman emperors ruled!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Expert Archaeologists',
+          description: 'Guides bring ancient ruins to life with stories of Roman politics, battles, and daily life.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Birthplace of Rome',
+          description: 'Visit Palatine Hill where Romulus founded Rome and emperors built spectacular palaces.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Incredible Photo Ops',
+          description: 'Capture stunning views over ancient ruins with Colosseum backdrop!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Forum & Palatine Tours',
+          description: 'Guided exploration of Roman Forum and Palatine Hill with archaeological insights.',
+          features: [
+            '2-3 hours',
+            'Roman Forum',
+            'Palatine Hill',
+            'Skip lines',
+            'Expert guide',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Colosseum + Forum + Palatine',
+          description: 'Complete Ancient Rome experience visiting all three major archaeological sites together.',
+          features: [
+            'All three sites',
+            'One ticket',
+            'Full day ancient Rome',
+            'Skip-the-line',
+            '4-5 hours',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Small Group Archaeological Tours',
+          description: 'Intimate groups (10-15) with archaeologist guides for detailed historical exploration.',
+          features: [
+            'Small groups',
+            'Archaeologist guide',
+            'Deep dive history',
+            'Personal attention',
+            '3-4 hours',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunset Ancient Rome',
+          description: 'Experience ancient ruins in magical golden hour light with fewer crowds.',
+          features: [
+            'Golden hour',
+            'Beautiful light',
+            'Fewer tourists',
+            'Romantic atmosphere',
+            'Stunning photos',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Rome Ancient Rome Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Forum/Palatine tours last 2-3 hours; combined Colosseum tours take 4-5 hours total.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Roman Forum',
+            description: 'Walk the ancient marketplace seeing temples, basilicas, and the Senate house.',
+          },
+          {
+            icon: 'Star',
+            title: 'Palatine Hill',
+            description: 'Explore emperor palaces, beautiful gardens, and Rome\'s legendary founding site.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Roman History',
+            description: 'Learn about emperors, senators, gladiators, and daily life in ancient Rome.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Archaeological Ruins',
+            description: 'See temples, arches, basilicas, and structures dating back 2,000+ years.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Spectacular Views',
+            description: 'Palatine offers stunning panoramas over Forum with Colosseum in distance.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Combine Forum/Palatine with Colosseum on same ticket (valid 24 hours) - see all ancient Rome!',
+        'Start with Forum/Palatine in morning, do Colosseum afternoon when crowds thin out.',
+        'Wear comfortable shoes - ancient stone paths are uneven and you\'ll walk miles.',
+        'Bring water and snacks - limited facilities within archaeological sites.',
+        'Summer: Palatine Hill has minimal shade and gets extremely hot - go early or late!',
+        'Audio guides available but expert guides provide much richer context for ruins.',
+        'Free first Sunday of month but extremely crowded - skip-the-line tours better value.',
+        'Forum entrance also from Colosseum side - use whichever has shorter line!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Roman Forum?',
+          answer: 'The Roman Forum (Foro Romano) was ancient Rome\'s political, commercial, and social center for over 1,000 years! Think of it as ancient Rome\'s "downtown" - a rectangular plaza surrounded by ruins of government buildings, temples, monuments, and markets. KEY HISTORY: Founded 8th century BC as marketplace. Became heart of Roman Republic and Empire. Julius Caesar walked here! Senate met here! Triumphal processions along Via Sacra! Eventually abandoned after Western Roman Empire fell (476 AD), became cow pasture (!) for centuries until excavations began 1800s. WHAT YOU\'LL SEE TODAY: Temple of Saturn (497 BC - 8 remaining columns). Arch of Septimius Severus (203 AD - stunning triumphal arch). Curia (Senate House - where Roman senators debated!). Temple of Vesta (goddess of hearth). Basilica of Maxentius (massive ruins). Via Sacra (Sacred Way - ancient main street). It\'s like walking through history textbook - every stone has story!',
+        },
+        {
+          question: 'What is Palatine Hill?',
+          answer: 'Palatine Hill is one of Rome\'s seven hills and the most important - it\'s where Rome was founded and where emperors lived! LEGENDARY FOUNDING: According to legend, Romulus founded Rome here in 753 BC after killing his twin Remus. Archaeological evidence shows settlement from 1000 BC! EMPEROR PALACES: Augustus built first imperial palace here (30 BC). Subsequent emperors (Tiberius, Nero, Domitian) built increasingly lavish palaces - Domus Augustana ruins remain impressive! The word "palace" comes from Palatine! WHAT YOU\'LL SEE: Ruins of emperor palaces (columns, frescoes, mosaics), Stadium of Domitian (emperor\'s private circus!), Farnese Gardens (beautiful 16th-century gardens), House of Augustus (recently opened - incredible frescoes!), and STUNNING VIEWS over Roman Forum and Circus Maximus! It\'s 40m above Forum providing spectacular panoramas. Less crowded than Forum, more peaceful atmosphere, absolutely essential for understanding ancient Rome!',
+        },
+        {
+          question: 'Do I need separate tickets for Forum and Palatine?',
+          answer: 'NO - they\'re on the SAME TICKET! The Colosseum/Forum/Palatine use a combined ticket valid for 24 hours allowing one entry to each site. TICKET TYPES: Standard ticket: €16-18 (includes Colosseum + Roman Forum + Palatine Hill valid 24 hours). SUPER ticket: €22 (adds 7 more sites including Palatine Museum, valid 2 consecutive days). Roma Pass: Includes free entry plus public transport. IMPORTANT: Even with tickets, book time slots online for Colosseum (required) and Forum/Palatine (recommended peak season). STRATEGY: Visit Forum/Palatine morning (8 AM opening - cooler, fewer crowds). Visit Colosseum afternoon (you have 24 hours from first entry). OR reverse if you prefer. ENTRANCES: Forum has two entrances (Via dei Fori Imperiali and near Colosseum). Palatine accessible from Forum or separate Palatine entrance. You can walk between Forum and Palatine freely - they\'re connected. It\'s excellent value - three major ancient sites for one ticket price!',
+        },
+        {
+          question: 'How long to visit Roman Forum and Palatine Hill?',
+          answer: 'Plan 2-3 hours MINIMUM for Forum and Palatine combined - there\'s a LOT to see! TIMING BREAKDOWN: Roman Forum: 1-1.5 hours (walking main Via Sacra, seeing major temples/basilicas/arches). Palatine Hill: 1-1.5 hours (exploring emperor palaces, gardens, viewing points). Total: 2-3 hours for decent visit. Can spend 4+ hours if really into archaeology! GUIDED TOURS: Usually 2.5-3 hours covering both sites with expert explanations. Worthwhile because ruins need context - pile of stones becomes fascinating with guide\'s stories! SELF-GUIDED: Doable with audio guide or guidebook but you\'ll miss a lot of historical context. The ruins aren\'t always well-labeled. PHYSICAL DEMANDS: Moderate walking on uneven ancient stones. Palatine involves some uphill climbing. Minimal shade (hot in summer!). RECOMMENDATION: Take guided tour for first visit - archaeologist guides bring ruins to life! If combining with Colosseum, budget 5-6 hours total for all three ancient Rome sites.',
+        },
+        {
+          question: 'When is the best time to visit the Roman Forum?',
+          answer: 'BEST TIMES: Early morning opening (8:30-9 AM) - fewer crowds, cooler temperatures, beautiful morning light. Late afternoon (after 3 PM) - tour groups depart, golden hour lighting. BEST MONTHS: November-March (winter) - shortest lines, comfortable temperatures (10-15°C/50-60°F), fewer tourists. April-May & September-October (shoulder season) - pleasant weather, manageable crowds, spring/fall beauty. AVOID: June-August (peak summer) - extreme heat (30-35°C/85-95°F), intense sun, minimal shade! Midday 11 AM-2 PM (hottest, most crowded). First Sunday of month (free entry = overwhelming crowds). WEATHER CONSIDERATIONS: Forum and Palatine are OUTDOOR archaeological sites with minimal shade. Summer: Brutally hot - go early morning or wait until late afternoon. Bring hat, sunscreen, water! Winter: Pleasant for walking but bring light jacket. CROWD TIP: Forum/Palatine are slightly less crowded than Colosseum - many tourists skip them (mistake!). Start here in morning when fresh, then Colosseum later.',
+        },
+        {
+          question: 'What should I wear to the Roman Forum?',
+          answer: 'Comfortable, practical clothing for outdoor archaeological site! FOOTWEAR: Sturdy, comfortable walking shoes or sneakers (ESSENTIAL!). Ancient stones are uneven. You\'ll walk miles. Avoid heels, sandals, flip-flops - you\'ll regret it! CLOTHING: Breathable, comfortable clothes for walking. Summer: Light, breathable fabrics (cotton, linen), hat for sun protection, sunglasses. Winter: Layered clothing - starts cool, warms midday. Light jacket sufficient (Rome winters are mild 10-15°C/50-60°F). WHAT TO BRING: Water bottle (crucial - you\'ll dehydrate!). Sunscreen (no shade, sun is intense!). Daypack for belongings. Camera/phone for photos. Snacks (limited food options inside). DRESS CODE: Unlike Vatican, no strict dress code for Forum/Palatine. However, if combining with churches that day, dress modestly (shoulders/knees covered). SEASONAL TIPS: Summer: Bring portable fan, cooling towel - it gets HOT! Winter: Bring layers - temperature varies from morning to afternoon. Rain gear if forecast predicts rain (October-November wettest months).',
+        },
+        {
+          question: 'Is the Roman Forum worth visiting?',
+          answer: 'YES - but it\'s very different from Colosseum! WORTH IT IF: You love history/archaeology. You enjoy imagining past civilizations. You want complete ancient Rome picture (not just Colosseum). You appreciate ruins with context (hire guide!). You want fewer crowds than Colosseum. WHAT MAKES IT SPECIAL: This is where Roman civilization actually HAPPENED! Julius Caesar was assassinated near here! Roman senators debated in the Curia! Emperors lived on Palatine! It\'s living history museum. The ruins are extensive and atmospheric. Palatine views are spectacular. It\'s included with Colosseum ticket - excellent value! NOT IDEAL IF: You need intact structures (these are ruins requiring imagination). You dislike walking on uneven terrain. You can\'t handle heat/sun exposure. You\'re not into history (might seem like "just rocks"). RECOMMENDATION: Absolutely visit if combining with Colosseum (same ticket!). Hire guide or audioguide - context makes ruins fascinating! Start here in morning when fresh and less crowded. Even "not history people" appreciate the scale and Palatine views. It\'s Rome\'s most important archaeological area!',
+        },
+        {
+          question: 'Can you visit the House of Augustus?',
+          answer: 'YES - but with restrictions! The House of Augustus (Domus Augusti) is Emperor Augustus\'s residence on Palatine Hill recently opened after years of restoration. WHAT IT IS: Private home of Rome\'s first emperor Augustus (63 BC - 14 AD). Remarkably preserved frescoes (2,000 years old!) with vibrant colors, intricate designs. Shows how emperor actually lived. Multiple rooms with different decorative themes. Absolutely stunning! ACCESS: Special visit (limited numbers for preservation). Often requires separate timed reservation beyond regular Palatine ticket. Check official Colosseum website for availability. Sometimes included with SUPER ticket (€22). LIMITED HOURS: Often only open certain days/hours. Morning visits typical. Groups limited to 5-10 people at a time. Advance booking essential! WHAT YOU\'LL SEE: Frescoes depicting mythological scenes, trompe l\'oeil architecture, Egyptian-inspired designs. Small intimate rooms (Augustus lived modestly despite being emperor!). Archaeological explanations of Roman domestic life. WORTH IT: Absolutely for history/art enthusiasts - the frescoes are incredible! Book ahead - spots fill quickly!',
+        },
+      ],
+    },
+
+    'food-and-wine-tours': {
+      title: 'Rome Food & Wine Tours',
+      subtitle: 'Taste authentic Roman cuisine - pasta carbonara, pizza, gelato, and local wine in the Eternal City!',
+      categoryName: 'Food & Wine Tours',
+      
+      stats: {
+        toursAvailable: 176,
+        priceFrom: 60,
+        duration: '3-4 hours',
+      },
+
+      introduction: `Discover Rome's incredible food scene beyond tourist traps - authentic trattorias, historic markets, family bakeries, and wine bars where Romans actually eat! Roman cuisine is simple but spectacular: pasta carbonara (invented here!), cacio e pepe (cheese and pepper perfection), pizza al taglio (Roman-style rectangular pizza), supplì (fried rice balls), Jewish-Roman specialties from the Ghetto, and gelato from artisan shops. Food tours take you through vibrant neighborhoods like Trastevere, Testaccio, and Campo de' Fiori Market tasting Rome's culinary traditions passed through generations. Expert local guides share stories of Roman food culture, introduce passionate producers, and explain why certain dishes taste better in Rome than anywhere else. From market visits to progressive dinners, these tours feed both stomach and soul!`,
+
+      seo: {
+        title: 'Rome Food & Wine Tours 2025 - Italian Cuisine & Local Tastings',
+        description: 'Experience Rome food tours! Authentic pasta, pizza, gelato, and Italian wine in local neighborhoods!',
+        keywords: 'Rome food tours, Italian cuisine Rome, Rome wine tours, Trastevere food tours, Roman food tastings',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Roman Cuisine',
+          description: 'Taste traditional dishes at local trattorias where Romans eat - not tourist restaurants!',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Expert Guides',
+          description: 'Romans share food culture, family recipes, and insider knowledge of best eateries.',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Wine Pairings',
+          description: 'Sample Italian wines paired with Roman specialties learning regional characteristics.',
+        },
+        {
+          icon: 'Star',
+          title: 'Hidden Culinary Gems',
+          description: 'Discover family-run shops, historic bakeries, and authentic spots tourists miss!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Trastevere Food Tour',
+          description: 'Progressive tasting through Rome\'s most charming neighborhood visiting 6-8 local spots.',
+          features: [
+            '3-4 hours',
+            'Trastevere district',
+            '6-8 tastings',
+            'Wine included',
+            'Local guide',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Campo de\' Fiori Market Tour',
+          description: 'Morning market visit meeting vendors, tasting fresh produce, and learning Italian ingredients.',
+          features: [
+            'Morning market',
+            'Fresh produce',
+            'Local vendors',
+            'Ingredient insights',
+            'Authentic experience',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Wine & Food Pairing',
+          description: 'Explore Italian wines (Lazio, Tuscany, Piedmont) paired with Roman specialties.',
+          features: [
+            'Multiple wines',
+            'Food pairings',
+            'Sommelier guide',
+            'Wine education',
+            '3 hours',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Street Food & Market Tour',
+          description: 'Sample Rome\'s best street food - supplì, pizza al taglio, porchetta, and more!',
+          features: [
+            'Street food',
+            'Market stops',
+            'Local snacks',
+            'Authentic bites',
+            'Budget-friendly',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Rome Food & Wine Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Food tours last 3-4 hours with 6-10 tastings; market tours run 2-3 hours.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Roman Specialties',
+            description: 'Taste carbonara, cacio e pepe, pizza, supplì, porchetta, gelato, and more!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Local Neighborhoods',
+            description: 'Explore Trastevere, Testaccio, Campo de\' Fiori, and Jewish Ghetto food scenes.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Wine Tastings',
+            description: 'Sample Italian wines from Lazio region and beyond paired with dishes.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Food Culture',
+            description: 'Learn Roman culinary traditions, family recipes, and why food is life in Italy!',
+          },
+          {
+            icon: 'Users',
+            title: 'Small Groups',
+            description: 'Intimate groups (10-15 people) allow personal interaction and questions.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Come hungry! Food tours include substantial tastings - enough to replace lunch or dinner.',
+        'Evening tours (6-8 PM start) capture authentic Roman dining atmosphere when locals eat.',
+        'Romans take food seriously - ask guides for restaurant recommendations beyond tourist areas.',
+        'Carbonara in Rome is made with guanciale (pork cheek), egg, pecorino, pepper - NO cream!',
+        'Best gelato has natural colors (pistachio is brownish-green, not bright green = artificial!).',
+        'Trastevere is charming but touristy - Testaccio offers more authentic local food scene.',
+        'Campo de\' Fiori market tours best in morning (8-10 AM) when freshest and most vibrant.',
+        'Sunday: Most markets closed and many restaurants shut - book tours Monday-Saturday!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is traditional Roman food?',
+          answer: 'Roman cuisine is simple, flavorful, and based on humble ingredients transformed into delicious dishes! ICONIC PASTA DISHES: Carbonara - guanciale (pork cheek), egg, pecorino cheese, black pepper. NO cream! Cacio e pepe - pecorino cheese and black pepper. Simple perfection. Amatriciana - guanciale, tomato, pecorino. Gricia - carbonara without egg (just guanciale, pecorino, pepper). All use pasta like rigatoni or tonnarelli. ROMAN CLASSICS: Carciofi alla giudia - Jewish-style fried artichokes (amazing!). Carciofi alla romana - braised artichokes. Saltimbocca - veal with prosciutto and sage ("jumps in your mouth!"). Coda alla vaccinara - oxtail stew. Supplì - fried rice balls with mozzarella center. Pizza al taglio - rectangular Roman-style pizza by weight. DESSERTS: Maritozzo - sweet bun with whipped cream. Tiramisu (not originally Roman but everywhere!). SEASONAL: Artichokes (winter/spring). Puntarelle salad (winter). Zucchini blossoms (summer). Roman food emphasizes quality ingredients, simple preparation, and traditional recipes!',
+        },
+        {
+          question: 'What should I eat in Rome?',
+          answer: 'Rome must-eats that you CANNOT miss! PASTA (absolutely essential): Carbonara - Rome\'s most famous pasta. Order at traditional trattorias like Flavio al Velavevodetto or Roscioli. Cacio e pepe - if done right, it\'s magic! Try Felice a Testaccio. Amatriciana - tomato-based classic. PIZZA: Pizza al taglio - Roman rectangular pizza sold by weight. Try Pizzarium (near Vatican). Sit-down pizza - thin, crispy Roman style. Try Emma or Dar Poeta. STREET FOOD: Supplì - fried rice balls. Get them at Supplizio. Trapizzino - pizza pocket with fillings. Original Trapizzino in Testaccio. Porchetta - roasted pork. Try it at any market! ARTICHOKES: Carciofi alla giudia - Jewish-style fried artichokes in Jewish Ghetto. GELATO: Artisan gelato (not bright artificial colors!). Try Giolitti, Gelateria del Teatro, or Fatamorgana. COFFEE: Espresso at historic cafes. Sant\'Eustachio il Caffè or Tazza d\'Oro near Pantheon. WINE: Frascati (local white). Montepulciano d\'Abruzzo (red). Food tours hit many of these - excellent way to sample!',
+        },
+        {
+          question: 'How much do Rome food tours cost?',
+          answer: 'Rome food tour prices reflect quality ingredients and guided experience! TYPICAL PRICING: Neighborhood food tours (3-4 hours, 6-8 tastings): €70-110 per person. Market + food tours (2-3 hours): €60-90. Wine + food pairing tours: €80-130. Cooking classes (hands-on, includes meal): €80-150. Street food tours (budget-friendly): €50-80. Private tours: €200-400+ depending on group size. WHAT\'S INCLUDED: Expert local guide (food culture + insider knowledge), 6-10 substantial food tastings (replaces meal!), wine/beverages at multiple stops, walking tour of neighborhood, restaurant recommendations for rest of trip, and sometimes recipes or food guide. GROUP SIZES: Typically 10-15 people (intimate experience). VALUE ASSESSMENT: Tours include €40-60 worth of food/drink, save time finding authentic places (Rome has many tourist traps!), expert guidance through Italian food culture, and access to places you\'d never find alone. BUDGET TIP: Evening tours replace dinner - better value than eating at one restaurant! Book directly with tour companies for best prices.',
+        },
+        {
+          question: 'Are food tours good for vegetarians?',
+          answer: 'Yes! Rome\'s food scene is increasingly vegetarian-friendly, and tours can accommodate with advance notice! VEGETARIAN REALITY: Traditional Roman cuisine is meat-heavy (carbonara, amatriciana, porchetta, saltimbocca). However, plenty of vegetarian options exist! VEGETARIAN DISHES: Cacio e pepe (cheese and pepper pasta - vegetarian!). Carciofi (artichokes - Jewish Ghetto specialty). Pizza (endless vegetarian varieties). Supplì (some vegetarian versions available). Fried zucchini blossoms. Bruschetta. Italian cheeses (pecorino, ricotta, mozzarella). Pasta pomodoro (tomato sauce). Gelato! TOUR ACCOMMODATION: Inform tour company when booking - they\'ll arrange vegetarian alternatives. You\'ll miss carbonara and meat dishes but still enjoy authentic Roman food. Market tours are naturally vegetarian-friendly (produce, cheese, bread). VEGAN: More challenging but doable - communicate clearly when booking. RECOMMENDATION: Book vegetarian-specific tours or clearly communicate needs. Roman cuisine has wonderful vegetarian traditions, especially seasonal vegetables and cheeses. You won\'t go hungry!',
+        },
+        {
+          question: 'Which Rome neighborhood has the best food?',
+          answer: 'Each neighborhood offers different food experiences! TESTACCIO: MOST AUTHENTIC - Working-class neighborhood where Romans eat. Traditional trattorias with carbonara, coda alla vaccinara. Testaccio Market for street food. Less touristy, more genuine. Try: Flavio al Velavevodetto, Trapizzino original location. TRASTEVERE: CHARMING BUT TOURISTY - Picturesque cobblestone streets, romantic atmosphere. Many restaurants cater to tourists (higher prices, lower quality). But gems exist! Evening atmosphere lovely. Try: Da Enzo al 29, Tonnarello. CENTRO STORICO (Historic Center): MIXED - Near major sights so very touristy. Some excellent spots but also many tourist traps. Try: Roscioli (incredible!), Emma, Armando al Pantheon. JEWISH GHETTO: UNIQUE CUISINE - Jewish-Roman specialties like carciofi alla giudia. Historic neighborhood. Try: Ba\'Ghetto, Nonna Betta. PRATI (near Vatican): LOCALS eat here - authentic neighborhood restaurants. Try: Il Sorpasso, Pizzarium. RECOMMENDATION: Food tours visit best spots in each neighborhood. Testaccio for most authentic experience. Avoid restaurants with photo menus or aggressive touts!',
+        },
+        {
+          question: 'What is the best time for food tours?',
+          answer: 'Timing depends on tour type! MARKET TOURS: Morning (8-11 AM) when markets are vibrant, vendors energetic, produce is freshest. Campo de\' Fiori and Testaccio markets are morning affairs. Essential to go early! NEIGHBORHOOD FOOD TOURS: Evening (6-8 PM start) captures authentic Roman dining culture. Romans eat late (8-9 PM) so evening tours experience restaurants coming alive. Some afternoon tours (2-5 PM) work well too. COOKING CLASSES: Morning or afternoon depending on preference - you\'ll eat what you cook! SEASONAL CONSIDERATIONS: Best months: April-October (pleasant weather for walking between stops). Summer: Early evening tours avoid midday heat. Winter: Any time works - Rome winters are mild. DAYS: Monday-Saturday best - many places closed Sundays. Romans take food seriously on Sunday (family day). HUNGER LEVEL: Come moderately hungry but not starving - pacing yourself through tastings is part of the experience! Tours replace lunch or dinner so plan accordingly. RECOMMENDATION: Evening food tours for full Roman dining experience. Market tours in morning. Food tours run year-round - always a good time to eat in Rome!',
+        },
+        {
+          question: 'What is carbonara and how should it be made?',
+          answer: 'Carbonara is Rome\'s most iconic pasta dish - and Romans are SERIOUS about authentic preparation! AUTHENTIC CARBONARA: Only 5 ingredients: Pasta (traditionally tonnarelli or rigatoni), guanciale (cured pork cheek - NOT bacon!), eggs (just yolks or whole eggs depending on recipe), Pecorino Romano cheese (NOT Parmigiano!), and black pepper (lots!). TECHNIQUE: Cook guanciale until crispy. Meanwhile, cook pasta al dente. Mix eggs and pecorino into paste. Drain pasta (save pasta water!). Toss hot pasta with guanciale. Remove from heat. Add egg mixture, tossing constantly. Add pasta water to create creamy sauce (egg cooks from pasta heat - no scrambled eggs!). The result: silky, creamy coating (NOT sauce!) with smoky guanciale and pepper bite. WHAT CARBONARA IS NOT: NO cream (Romans will be offended!). NO garlic. NO onions. NO peas. Just the 5 ingredients! ORIGIN: Debated - possibly Roman shepherds, possibly post-WWII American soldiers bringing bacon/eggs. Definitively Roman though! WHERE TO TRY: Flavio al Velavevodetto (Testaccio), Roscioli (Centro), Felice a Testaccio. Food tours often include carbonara tastings. It\'s simple perfection - when done right, it\'s incredible!',
+        },
+        {
+          question: 'How do I avoid tourist trap restaurants?',
+          answer: 'Rome has MANY tourist traps near major sights - here\'s how to avoid them! RED FLAGS: Photo menus outside (real restaurants don\'t need them!). Aggressive touts pulling you in (legitimate places don\'t beg!). Menus in 10+ languages (catering to tourists, not locals). Located directly on major piazzas (Piazza Navona, near Colosseum = overpriced!). "Authentic Roman cuisine!" signs (if they have to advertise it...). Tablecloths with tourist attractions printed on them. Tour buses parked outside. GOOD SIGNS: Locals eating there (best indicator!). Menu in Italian (with English maybe). Handwritten daily specials. Neighborhood location (not tourist areas). No one trying to lure you in. Simple, clean interior (not overdone "Italian" décor). Reservation recommended/necessary (popular with Romans!). HOW TO FIND GOOD RESTAURANTS: Walk 2-3 blocks from major tourist sites. Ask locals (hotel staff, shop owners). Check Italian food blogs/guides. Book food tours (guides know authentic spots). Eat where Romans eat: Testaccio, Prati, Trastevere side streets. PRICING: €10-15 pasta is normal. €25+ pasta near tourist sites is overpriced. Cover charge (coperto) €1-3 is standard. Service charge sometimes added. Food tours take you to authentic places - great way to discover gems!',
+        },
+      ],
+    },
+
+    'art-and-architecture-tours': {
+      title: 'Rome Art & Architecture Tours',
+      subtitle: 'Explore Renaissance masterpieces, Baroque fountains, and 2,000 years of architectural brilliance!',
+      categoryName: 'Art & Architecture Tours',
+      
+      stats: {
+        toursAvailable: 128,
+        priceFrom: 40,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Rome's incredible artistic and architectural heritage spanning 2,000 years from ancient Roman engineering to Renaissance genius to Baroque extravagance! Rome is an open-air museum where every street reveals masterpieces - Michelangelo's Sistine Chapel, Bernini's Baroque fountains, Caravaggio's revolutionary paintings, ancient Pantheon's perfect dome, and Raphael's frescoes. Art and architecture tours explore world-class museums (Borghese Gallery with Bernini sculptures and Caravaggio paintings), historic churches hiding Renaissance treasures, Baroque squares designed by master architects, and architectural marvels that revolutionized building. Expert art historians explain symbolism, techniques, patron stories, and artistic movements that shaped Western art. From ancient Roman innovation to Renaissance rebirth to Baroque drama, Rome holds humanity's greatest artistic achievements!`,
+
+      seo: {
+        title: 'Rome Art & Architecture Tours 2025 - Renaissance & Baroque Masterpieces',
+        description: 'Explore Rome\'s art and architecture! Michelangelo, Bernini, Caravaggio, and 2,000 years of masterpieces!',
+        keywords: 'Rome art tours, Rome architecture tours, Borghese Gallery, Baroque Rome, Renaissance art tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'World-Class Masterpieces',
+          description: 'See works by Michelangelo, Raphael, Caravaggio, and Bernini in their original settings!',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Art Historians',
+          description: 'Guides explain artistic techniques, symbolism, and stories behind each masterpiece.',
+        },
+        {
+          icon: 'BookOpen',
+          title: '2,000 Years of Art',
+          description: 'From ancient Roman architecture to Renaissance to Baroque - complete artistic journey!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Architectural Marvels',
+          description: 'Explore Pantheon, Baroque fountains, Renaissance palaces, and engineering wonders.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Borghese Gallery Tours',
+          description: 'Explore Rome\'s finest art museum with Bernini sculptures and Caravaggio masterpieces.',
+          features: [
+            'Borghese Gallery',
+            'Bernini sculptures',
+            'Caravaggio paintings',
+            'Advance booking',
+            '2-3 hours',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Baroque Rome Walking Tour',
+          description: 'Discover Bernini\'s fountains, Piazza Navona, Trevi Fountain, and Baroque architecture.',
+          features: [
+            '3 hours',
+            'Bernini fountains',
+            'Baroque squares',
+            'Historic center',
+            'Walking tour',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Hidden Churches Art Tour',
+          description: 'Visit lesser-known churches hiding Caravaggio paintings and Renaissance frescoes.',
+          features: [
+            'Hidden churches',
+            'Caravaggio works',
+            'Renaissance art',
+            'No crowds',
+            'Art treasures',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Ancient Roman Architecture',
+          description: 'Explore Pantheon, Baths of Caracalla, and architectural innovations of ancient Rome.',
+          features: [
+            'Pantheon',
+            'Ancient engineering',
+            'Roman innovation',
+            'Architectural history',
+            '3-4 hours',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Rome Art & Architecture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Art tours last 2-4 hours depending on museums visited and number of sites.',
+          },
+          {
+            icon: 'Star',
+            title: 'Masterpiece Viewing',
+            description: 'See works by history\'s greatest artists in churches, museums, and public spaces.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Architectural Wonders',
+            description: 'Explore Pantheon\'s perfect dome, Baroque fountains, and Renaissance palaces.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Art History',
+            description: 'Learn about artistic movements, patron relationships, and symbolism in masterpieces.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Hidden Treasures',
+            description: 'Discover Caravaggio paintings and Renaissance frescoes in lesser-known churches.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Capture stunning architecture, fountains, and artistic details throughout Rome.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Borghese Gallery requires advance booking (weeks ahead in summer) - limited daily visitors!',
+        'Many churches hide incredible art but have siesta closures (12:30-3:30 PM) - plan accordingly.',
+        'Caravaggio churches (San Luigi dei Francesi, Sant\'Agostino) are FREE but require modest dress.',
+        'Pantheon is best-preserved ancient Roman building - it\'s FREE and absolutely stunning!',
+        'Art tours work wonderfully in bad weather - museums and churches provide shelter.',
+        'Small group tours (10-15) in museums allow you to hear guide without crowds drowning them out.',
+        'Photography allowed in most churches but not always - ask before shooting.',
+        'Combine art tours with morning Vatican visit for complete Renaissance art immersion!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Borghese Gallery?',
+          answer: 'Galleria Borghese is Rome\'s finest art museum (many say Italy\'s best!) housing incredible Bernini sculptures and Caravaggio masterpieces in a stunning 17th-century villa! COLLECTION HIGHLIGHTS: BERNINI SCULPTURES - Apollo and Daphne (Daphne transforming into tree - breathtaking!), The Rape of Proserpina (you can see marble "flesh" indent under fingers!), David (completely different from Michelangelo\'s), Aeneas and Anchises. Bernini\'s genius is mind-blowing! CARAVAGGIO PAINTINGS - Boy with a Basket of Fruit, Madonna dei Palafrenieri, David with Head of Goliath, John the Baptist. RAPHAEL, TITIAN, RUBENS works too! SETTING: Cardinal Scipione Borghese\'s pleasure villa in beautiful park. 20 rooms of concentrated masterpieces. VISITING: MUST book in advance (they limit to 360 visitors per 2-hour slot). Entrance €15-20. Book weeks ahead for summer! Located in Villa Borghese park (30 minutes walk from Spanish Steps). Tours last 2-3 hours. It\'s intimate, uncrowded, and showcases art perfection - absolutely worth visiting!',
+        },
+        {
+          question: 'Where can I see Caravaggio in Rome?',
+          answer: 'Rome has the world\'s best collection of Caravaggio paintings - many in FREE churches! MUST-SEE CARAVAGGIO LOCATIONS: SAN LUIGI DEI FRANCESI (near Pantheon): Calling of St. Matthew trilogy - Caravaggio\'s breakthrough work! FREE entry. Bring €1 coins for lights illuminating paintings (worth it!). SANT\'AGOSTINO (near Piazza Navona): Madonna di Loreto - controversial barefoot peasants! FREE. SANTA MARIA DEL POPOLO (Piazza del Popolo): Conversion of St. Paul and Crucifixion of St. Peter in Cerasi Chapel. FREE. BORGHESE GALLERY: Multiple Caravaggio works including David with Goliath. Requires booking + €15-20 admission. VATICAN MUSEUMS: Entombment. Included with Vatican ticket. PALAZZO BARBERINI: Judith Beheading Holofernes, Narcissus. €12 admission. WHY SO MANY IN ROME: Caravaggio worked in Rome 1592-1606 (until he murdered a man and fled!). Cardinal patrons commissioned works for churches. TOUR RECOMMENDATION: Caravaggio-focused walking tours visit multiple churches explaining his revolutionary technique, dramatic life, and artistic influence. His use of light (chiaroscuro) changed art history!',
+        },
+        {
+          question: 'What is the Pantheon?',
+          answer: 'The Pantheon is ancient Rome\'s best-preserved building - a 2,000-year-old architectural marvel that\'s still the world\'s largest unreinforced concrete dome! HISTORY: Built AD 118-128 by Emperor Hadrian (though inscription credits earlier Marcus Agrippa whose temple stood here first). Originally a Roman temple to all gods ("Pantheon" = all gods). Became Christian church 609 AD (saving it from destruction/neglect). ARCHITECTURAL GENIUS: The dome is perfect hemisphere - 43.3m diameter (142 feet) and exactly same height! The oculus (circular opening at top) is 8.2m wide providing natural light and symbolic connection to heavens. No steel reinforcement - just Roman concrete genius! The dome gets progressively lighter/thinner toward top using different materials. After 1900+ years, it remains largest unreinforced concrete dome ever built! WHAT YOU\'LL SEE: Stunning interior with marble, original Roman floor, oculus with rain entering (drains in floor!), tombs of Italian kings and Raphael. VISITING: FREE entry (incredible for such importance!). Can have lines but usually manageable. Modest dress required (it\'s consecrated church). Visit midday when sun shines through oculus dramatically!',
+        },
+        {
+          question: 'Can you visit Rome art museums without tours?',
+          answer: 'Yes! Many Rome museums allow independent visits, but tours enhance appreciation significantly! MUSEUMS ALLOWING SELF-VISITS: BORGHESE GALLERY - Requires advance booking but you can visit without guide. However, 2-hour slot goes fast and context helps appreciation! Audio guides available. VATICAN MUSEUMS - Can self-guide but you\'ll miss so much context! Museums are overwhelming - guides help you focus on masterpieces. CAPITOLINE MUSEUMS - Self-visit friendly with good labeling. €15 admission. PALAZZO BARBERINI - Easy to self-tour with Caravaggio and Baroque works. €12. FREE CHURCHES - Most churches with art (Caravaggio, Renaissance frescoes) are free and self-accessible! BENEFITS OF GUIDES: Art is more meaningful with explanations! Symbolism, historical context, artist stories, technique explanations, and focused tours hit highlights (not overwhelming). Guides skip crowds showing you best viewing positions. RECOMMENDATION: Consider guide for Borghese and Vatican (so much to see!). Churches are fine to self-visit (bring €1 coins for lights). Art tours provide incredible value for deepening appreciation. Mix guided and self-visits based on budget and interest level!',
+        },
+        {
+          question: 'What is the best art museum in Rome?',
+          answer: 'Rome has multiple world-class museums - best depends on your interests! BORGHESE GALLERY: Probably Rome\'s FINEST! Intimate villa with concentrated masterpieces. Bernini sculptures (Apollo and Daphne is breathtaking!), Caravaggio paintings, Raphael, Titian. Limited visitors = uncrowded experience. Must book in advance! €15-20. ABSOLUTE MUST for art lovers. VATICAN MUSEUMS: Largest collection - 54 galleries with Sistine Chapel, Raphael Rooms, ancient sculptures, Renaissance masters. Overwhelming scale but unmatched treasures! €17-20. Skip-the-line essential! CAPITOLINE MUSEUMS: Ancient Roman sculptures (Marcus Aurelius statue, Dying Gaul) plus Renaissance/Baroque paintings. Less crowded than Vatican. €15. Beautiful Capitoline Hill setting. PALAZZO BARBERINI: Caravaggio, Raphael, Holbein works in Baroque palace. €12. Underrated! DORIA PAMPHILJ GALLERY: Private palace still owned by family! Caravaggio, Velázquez, Titian. €12. RECOMMENDATION: Borghese for concentrated excellence. Vatican for overwhelming scope. Capitoline for ancient Roman art. All are world-class - you can\'t go wrong! Budget 2-3 hours per museum.',
+        },
+        {
+          question: 'When is the best time to visit art museums?',
+          answer: 'BEST TIMES: Early morning opening (9 AM) - fewer crowds, fresh mind for art appreciation. Late afternoon (after 2-3 PM) - tour groups depart, quieter galleries. BEST MONTHS: November-March (winter) - fewest tourists, comfortable temperatures for walking between sites, shorter museum lines. April-May & September-October (shoulder season) - pleasant weather, moderate crowds. AVOID: June-August (peak summer) - maximum crowds making museums overwhelming, long lines, hot temperatures. Midday 11 AM-2 PM - always most crowded. Last Sunday of month - Vatican/national museums FREE = 4+ hour lines! SPECIAL CONSIDERATIONS: BORGHESE GALLERY - Book specific 2-hour time slot weeks ahead. Morning (9-11 AM) or late afternoon (3-5 PM) slots are most peaceful. VATICAN MUSEUMS - Early-access tours (7 AM) before opening = worth premium! Avoid Wednesdays (Papal Audience = extra crowds). CHURCHES - Open 7-12:30 PM, closed for siesta, reopen 3:30-7 PM. Visit morning or late afternoon (not midday!). WEATHER: Museums are perfect rainy day activities! RECOMMENDATION: Visit major museums early morning in shoulder seasons. Book Borghese Gallery far in advance. Bad weather days are perfect for art immersion!',
+        },
+        {
+          question: 'What architectural styles are in Rome?',
+          answer: 'Rome showcases 2,500+ years of architectural evolution - nowhere else has such diversity! ANCIENT ROMAN (753 BC - 476 AD): Innovations that changed architecture forever! Arches, concrete domes, vaults. Examples: Colosseum (AD 80), Pantheon (AD 118-128 - still world\'s largest unreinforced concrete dome!), Roman Forum temples, aqueducts, Baths of Caracalla. Engineering genius! EARLY CHRISTIAN & MEDIEVAL (400-1400s): Basilica-style churches. Mosaics. Examples: Santa Maria Maggiore, San Clemente (layers of history!). RENAISSANCE (1400s-1600): Revival of classical principles. Proportion, symmetry, domes. Masters: Michelangelo, Raphael, Bramante. Examples: St. Peter\'s Basilica dome (Michelangelo!), Palazzo Farnese, Santa Maria del Popolo. BAROQUE (1600s-1700s): Drama, movement, emotion, curves! Master: Bernini. Examples: St. Peter\'s Square colonnade, Trevi Fountain, Sant\'Andrea al Quirinale, Spanish Steps, fountains everywhere! NEOCLASSICAL (1800s): Return to classical forms. Examples: Victor Emmanuel Monument. FASCIST ERA (1920s-40s): EUR district (Mussolini\'s modern Rome). Rome is living architecture museum where you can trace Western civilization\'s building evolution!',
+        },
+      ],
+    },
+
+    'trevi-fountain-tours': {
+      title: 'Rome Trevi Fountain Tours',
+      subtitle: 'Toss a coin in Rome\'s most spectacular Baroque fountain and explore the historic Trevi district!',
+      categoryName: 'Trevi Fountain Tours',
+      
+      stats: {
+        toursAvailable: 94,
+        priceFrom: 20,
+        duration: '2-3 hours',
+      },
+
+      introduction: `Experience the Trevi Fountain, Rome's largest and most spectacular Baroque fountain - an architectural masterpiece where tradition says tossing a coin ensures your return to Rome! Built 1732-1762, this stunning 26-meter-high fountain depicts Neptune (god of sea) with tritons and horses emerging from Palazzo Poli's facade in dramatic Baroque style. The fountain attracts millions annually, all tossing coins into its waters (€3,000 collected daily going to charity!). Trevi Fountain tours explore the surrounding historic quarter with narrow medieval streets, hidden piazzas, charming cafes, and architectural gems tourists miss. Expert guides share the fountain's history, Roman water engineering (it marks the endpoint of ancient Aqua Virgo aqueduct!), and legends surrounding the coin toss. Visit at different times - crowded but magical by day, illuminated and romantic at night!`,
+
+      seo: {
+        title: 'Rome Trevi Fountain Tours 2025 - Baroque Fountains & Historic Quarter',
+        description: 'Experience Rome\'s Trevi Fountain! Baroque masterpiece, coin toss tradition, and historic Trevi district!',
+        keywords: 'Trevi Fountain Rome, Trevi Fountain tours, Rome fountains, Baroque Rome, Trevi district',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Rome\'s Most Beautiful Fountain',
+          description: 'See the Trevi Fountain - Baroque masterpiece and Rome\'s most iconic water feature!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Coin Toss Tradition',
+          description: 'Toss a coin over your shoulder ensuring your return to Rome - beloved ritual!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Spectacular Photos',
+          description: 'Capture the stunning illuminated fountain at night or in beautiful morning light.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Historic Trevi District',
+          description: 'Explore charming medieval streets and hidden gems surrounding the fountain.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Trevi & Baroque Rome',
+          description: 'Walking tour of Trevi Fountain, Spanish Steps, Piazza Navona, and Baroque highlights.',
+          features: [
+            '2-3 hours',
+            'Multiple fountains',
+            'Baroque architecture',
+            'Historic squares',
+            'Photo stops',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Evening Trevi Tours',
+          description: 'Experience the fountain illuminated at night with fewer crowds and romantic atmosphere.',
+          features: [
+            'Evening timing',
+            'Illuminated fountain',
+            'Fewer crowds',
+            'Romantic setting',
+            'Night photography',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Trevi District Hidden Gems',
+          description: 'Explore medieval streets, artisan shops, and local cafes in historic Trevi quarter.',
+          features: [
+            'Medieval streets',
+            'Hidden piazzas',
+            'Local cafes',
+            'Artisan shops',
+            'Authentic district',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Rome Fountains Photography Tour',
+          description: 'Capture Trevi, Barcaccia, Four Rivers, and Rome\'s most beautiful fountains with pro photographer.',
+          features: [
+            'Multiple fountains',
+            'Photography tips',
+            'Best times/angles',
+            'Professional guidance',
+            'Stunning shots',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Rome Trevi Fountain Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Trevi-focused tours last 2-3 hours exploring fountain and surrounding historic district.',
+          },
+          {
+            icon: 'Star',
+            title: 'Trevi Fountain',
+            description: 'Marvel at Rome\'s largest Baroque fountain with Neptune and dramatic water displays.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Coin Toss Ritual',
+            description: 'Learn the proper way to toss your coin and the legend ensuring return to Rome!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Baroque Masterpieces',
+            description: 'See multiple fountains and Baroque architecture throughout historic center.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Roman Water History',
+            description: 'Understand ancient aqueducts and how Romans engineered water supply 2,000 years ago.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Capture the illuminated fountain at night and beautiful details in morning light.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit early morning (6-7 AM) for empty fountain and stunning photos - absolutely worth waking early!',
+        'Evening after 10 PM also quieter with beautiful illumination - romantic and less crowded.',
+        'The proper coin toss: Back to fountain, right hand over left shoulder = guaranteed return to Rome!',
+        'Pickpockets work Trevi crowds - keep valuables secure and bags zipped!',
+        'Gelato shops around Trevi are touristy and overpriced - walk 2 blocks away for authentic spots.',
+        'Sitting on fountain edges is prohibited (€500 fine!) - guards enforce this strictly.',
+        'Aqua Virgo aqueduct still supplies the fountain - water has flowed here since 19 BC!',
+        'Combine Trevi with nearby Pantheon (10-minute walk) and Spanish Steps for efficient sightseeing.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Trevi Fountain?',
+          answer: 'The Trevi Fountain (Fontana di Trevi) is Rome\'s largest and most spectacular Baroque fountain - an architectural masterpiece and beloved symbol of the Eternal City! BASICS: Built 1732-1762 by Nicola Salvi. Stands 26 meters (85 feet) high and 49 meters (161 feet) wide. Features Neptune (god of sea) in central niche flanked by Tritons and horses representing calm and stormy seas. Built against Palazzo Poli creating unified facade. WATER SOURCE: The fountain marks endpoint of Aqua Virgo aqueduct built 19 BC! Still supplied by same ancient aqueduct - water has flowed here for 2,000+ years! Name "Trevi" from tre vie (three roads) that converge here. BAROQUE STYLE: Dramatic sculptures, theatrical composition, water movement, emotion, and grandeur - pure Baroque! COIN TRADITION: Toss coin over left shoulder with right hand = you\'ll return to Rome. Legend says 2 coins = fall in love with Roman, 3 coins = marry them! An estimated €3,000+ in coins are thrown daily (collected and donated to charity). FAMOUS ROLES: La Dolce Vita film scene made it world-famous. Three Coins in the Fountain song. It\'s Rome\'s most visited fountain!',
+        },
+        {
+          question: 'When is the best time to visit Trevi Fountain?',
+          answer: 'The Trevi Fountain is accessible 24/7 but timing dramatically affects your experience! BEST TIMES: EARLY MORNING (6-7 AM) - Nearly empty, beautiful morning light, easy photos without crowds, peaceful atmosphere. ABSOLUTELY BEST option! LATE NIGHT (after 10-11 PM) - Fewer tourists (still busy but manageable), fountain is beautifully illuminated, romantic atmosphere, locals out for evening strolls. AVOID: Midday 10 AM-6 PM - PACKED with thousands of tourists! Impossible to get near fountain edge. Hot in summer. Difficult photos with crowd chaos. Evening 7-9 PM - Still very crowded though less than midday. SEASONAL VARIATIONS: Summer (June-August) - Extremely crowded all day, go very early or very late. Winter (November-March) - Fewer tourists, but still busy at popular times. Shoulder seasons (April-May, Sept-Oct) - Moderate crowds. SPECIAL: Full moon nights are magical! Rain clears crowds (fountain beautiful in rain!). PHOTOGRAPHY TIP: Early morning offers empty shots. Night captures illumination beautifully but requires camera that handles low light. BOTTOM LINE: Set alarm for 6 AM visit - the empty fountain experience is worth early wake-up!',
+        },
+        {
+          question: 'How do you toss a coin in Trevi Fountain?',
+          answer: 'The Trevi Fountain coin toss is a beloved tradition with specific technique (and multiple legends)! THE PROPER WAY: Stand with your BACK to the fountain. Take coin in your RIGHT hand. Toss over your LEFT shoulder into the water. Don\'t look! (Though everyone peeks). THE LEGEND: One coin = you\'ll return to Rome (most popular!). Two coins = you\'ll fall in love with an attractive Italian (romantic!). Three coins = you\'ll marry that person (commitment!). More than three = you\'re just wasting money! ORIGIN: The tradition became famous after the 1954 film "Three Coins in the Fountain" but Romans had been tossing coins for luck long before. WHERE MONEY GOES: All coins collected daily (estimated €3,000+ or €1+ million annually!) are donated to Caritas charity helping Rome\'s poor and homeless - your wish helps those in need! PRACTICAL TIPS: Use small denomination coins (don\'t throw €50 notes!). €1-2 is standard. The fountain gets VERY crowded - toss during quieter times for better experience. Pickpockets work crowds - secure belongings before focusing on coin toss!',
+        },
+        {
+          question: 'Can you drink from the Trevi Fountain?',
+          answer: 'NO - do not drink from the Trevi Fountain! The water is treated with chemicals for monument preservation and is NOT potable (drinkable). Guards will stop you if you try! Plus it\'s illegal to touch/enter the fountain - €500 fine enforced! HOWEVER: Rome has FREE drinking fountains (nasoni - "big noses") everywhere with fresh, clean, cold aqueduct water - same ancient supply! DRINKING WATER IN ROME: Over 2,500 nasoni fountains throughout the city provide free potable water from same ancient aqueduct system! The water is excellent quality - Romans drink it constantly. Bring reusable bottle and refill at any nasoni (saves money on bottled water!). Constant flow conserves water (turning on/off would damage ancient aqueduct pressure). Near Trevi: Nasoni fountains within 1-2 blocks where you can drink. IRONY: The Trevi marks ancient Aqua Virgo aqueduct\'s endpoint - historically the water WAS for drinking! But modern fountain water is treated for preservation, not consumption. Stick to the nasoni!',
+        },
+        {
+          question: 'What other fountains should I see in Rome?',
+          answer: 'Rome has hundreds of spectacular fountains - the city is built on water! TOP FOUNTAINS BEYOND TREVI: FOUR RIVERS FOUNTAIN (Piazza Navona) - Bernini\'s masterpiece (1651) with four river gods representing continents. Obelisk center. Stunning Baroque square! BARCACCIA (Spanish Steps) - Bernini\'s father Pietro made this "sinking boat" fountain (1627). Charming! FONTANA DEI QUATTRO FIUMI details above. FONTANA DELL\'ACQUA PAOLA (Janiculum Hill) - Massive Baroque fountain with Rome views behind. Beautiful! TURTLE FOUNTAIN (Piazza Mattei) - Tiny, charming Renaissance fountain in Jewish Ghetto. Hidden gem! TRITON FOUNTAIN (Piazza Barberini) - Bernini (1643) with Triton blowing shell. FOUNTAIN OF THE NAIADS (Piazza della Repubblica) - Sensual nymphs (controversial when built!). MARCUS AURELIUS FOUNTAIN - Ancient Roman fountain still functioning! NASONI: 2,500+ "big nose" drinking fountains (free water!). TOURS: Baroque fountain tours visit 4-6 major fountains explaining Baroque art, Roman water engineering, and fountain history. Rome has more fountains than any city - water is essential to Rome\'s identity!',
+        },
+        {
+          question: 'Is Trevi Fountain free to visit?',
+          answer: 'YES - the Trevi Fountain is completely FREE to visit 24/7! It\'s a public monument accessible to everyone at any time. No tickets, no reservations, no entry fee required. WHAT\'S FREE: Viewing the fountain (unlimited time). Taking photos (unlimited!). Tossing coins (just cost of coin!). Walking around Trevi district. Sitting on nearby steps (not fountain edge!). POTENTIAL COSTS: Gelato at nearby shops (tourist prices - €3-5). Dining at Trevi-area restaurants (expensive, touristy). Buying souvenirs. Guided walking tours including Trevi (€20-60 but cover multiple sites). BUDGET TIP: Visit Trevi as part of self-guided walking tour hitting multiple free sites: Pantheon (free!), Trevi (free!), Spanish Steps (free!), Piazza Navona (free!). All within 15-minute walk of each other! That\'s a full morning of sightseeing for €0. AVOIDING COSTS: Skip overpriced gelato shops immediately around fountain. Don\'t buy from aggressive street vendors. Watch for pickpockets in crowds. The fountain itself though? Absolutely free and accessible to all - one of Rome\'s most democratic treasures!',
+        },
+        {
+          question: 'Why is the Trevi Fountain famous?',
+          answer: 'The Trevi Fountain became Rome\'s most iconic fountain through stunning beauty, movie fame, and beloved traditions! ARTISTIC BRILLIANCE: It\'s Baroque architecture at its finest - dramatic Neptune sculpture, tritons and horses emerging from palace facade, theatrical water display, perfect proportions. Built 1732-1762 as culmination of Baroque fountain art. Rome\'s largest fountain! MOVIE FAME: Fellini\'s "La Dolce Vita" (1960) - Anita Ekberg\'s iconic scene wading in fountain made it internationally famous! "Three Coins in the Fountain" (1954) song/film established coin tradition globally. Countless movies since. TRADITIONS: The coin toss legend (ensure return to Rome) attracts everyone - it\'s participatory, not just viewing! ENGINEERING MARVEL: Marks endpoint of Aqua Virgo aqueduct from 19 BC! Still supplied by ancient Roman aqueduct. Water engineering wonder! LOCATION: Perfect setting in small piazza making fountain seem enormous! You turn corner and BAM - there it is! DAILY DRAMA: €3,000+ in coins thrown daily (donated to charity). Crowds, selfies, proposals, celebration - it\'s living tourist theater! COMBINATION: Spectacular art + ancient engineering + movie fame + beloved tradition = perfect tourist attraction!',
+        },
+      ],
+    },
   },
 
 };
