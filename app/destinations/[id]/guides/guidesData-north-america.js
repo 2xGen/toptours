@@ -481,7 +481,7 @@ export const categoryGuidesNorthAmerica = {
             title: 'Conservation Education',
             description: 'Learn about Parks Canada wildlife protection and human-wildlife coexistence.',
           },
-        },
+        ],
       },
 
       expertTips: [
