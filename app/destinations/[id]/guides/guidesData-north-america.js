@@ -24690,6 +24690,182 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'outdoor-adventure-tours': {
+      title: 'Vancouver Outdoor Adventure Tours',
+      subtitle: 'Hike, kayak, ski, and explore mountains meeting ocean!',
+      categoryName: 'Outdoor Adventure Tours',
+      
+      stats: {
+        toursAvailable: 96,
+        priceFrom: 75,
+        duration: '4-8 hours',
+      },
+
+      introduction: `Experience Vancouver's outdoor playground - mountains meet ocean! Adventure tours explore hiking Grouse Mountain, kayaking Indian Arm fjord, mountain biking North Shore, skiing/snowboarding local mountains (Grouse, Cypress, Seymour!), zip-lining through rainforest, and coastal adventures. Visit Capilano Suspension Bridge, Lynn Canyon, Lighthouse Park, and pristine wilderness within city limits. Tours include equipment, expert guides, transportation, and safety briefings. Learn about temperate rainforest ecosystem, coastal geography, and outdoor culture. It's adventure capital!`,
+
+      seo: {
+        title: 'Vancouver Outdoor Adventure Tours 2025 - Hiking, Kayaking, Skiing & Mountain Tours',
+        description: 'Adventure in Vancouver! Mountain hiking, kayaking, skiing, and outdoor activities!',
+        keywords: 'Vancouver outdoor tours, Grouse Mountain, Vancouver kayaking, North Shore hiking, skiing Vancouver',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Mountain',
+          title: 'Mountains Meet Ocean',
+          description: 'Ski in morning, beach in afternoon - unique geography!',
+        },
+        {
+          icon: 'Star',
+          title: 'Grouse Mountain',
+          description: 'Gondola to peak with hiking, wildlife, stunning views!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Kayaking Fjords',
+          description: 'Paddle Indian Arm - glacial fjord in city limits!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Year-Round Activities',
+          description: 'Hike summer, ski winter - outdoor adventures always!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Mountain',
+          title: 'Grouse Mountain Tour',
+          description: 'Gondola ride with hiking and wildlife.',
+          features: [
+            '4-5 hours',
+            'Gondola',
+            'Peak views',
+            'Wildlife',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Kayaking Adventure',
+          description: 'Paddle Indian Arm or False Creek.',
+          features: [
+            '3-4 hours',
+            'Kayaking',
+            'Wildlife',
+            'Scenic',
+            'Active',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'North Shore Hiking',
+          description: 'Hike rainforest trails with waterfalls.',
+          features: [
+            '4-6 hours',
+            'Forest hiking',
+            'Waterfalls',
+            'Beautiful',
+            'Moderate',
+          ],
+        },
+        {
+          icon: 'Zap',
+          title: 'Winter Skiing',
+          description: 'Ski/snowboard local mountains.',
+          features: [
+            'Full day',
+            'Skiing',
+            'Mountain access',
+            'Winter',
+            'Thrilling',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Vancouver Outdoor Adventure Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Grouse Mountain: 4-5 hours. Kayaking: 3-4 hours. Hiking: 4-6 hours. Skiing: Full day.',
+          },
+          {
+            icon: 'Mountain',
+            title: 'Grouse Mountain',
+            description: 'Gondola ($65) to peak - hiking, grizzly bears, skyride, stunning views!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Indian Arm Kayaking',
+            description: 'Glacial fjord paddle - seals, eagles, waterfalls, pristine!',
+          },
+          {
+            icon: 'Trees',
+            title: 'Temperate Rainforest',
+            description: 'Ancient cedars, moss-covered trails, waterfalls - lush and green!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Capilano Suspension',
+            description: 'Bridge 70m above canyon - thrilling walkway through forest!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Wildlife Encounters',
+            description: 'Grizzly bears (Grouse), bald eagles, seals - incredible proximity to city!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Grouse Grind (2.9km hike) FREE but strenuous - locals train here!',
+        'Gondola down from Grouse $65 - worth it for views without hike.',
+        'Lynn Canyon suspension bridge FREE alternative to paid Capilano ($60).',
+        'North Shore hiking trails world-class - Lynn Canyon, Baden Powell.',
+        'Kayaking best May-Sept - calm water, whales possible!',
+        'Local mountains (Grouse, Cypress, Seymour) 30 min from downtown.',
+        'Rent car for mountain access - public transit limited.',
+        'Layer clothing - weather changes quickly on mountains!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Grouse Mountain?',
+          answer: 'Grouse Mountain is local ski mountain 15 min from downtown! Gondola ($65) to peak with hiking, grizzly bears, zip-line, views. Summer: Hiking, wildlife. Winter: Skiing, snowshoeing. Year-round attraction. "Peak of Vancouver" - worth visiting!',
+        },
+        {
+          question: 'Is Grouse Grind difficult?',
+          answer: 'YES! Grouse Grind is 2.9km hike with 850m elevation gain - "Mother Nature\'s Stairmaster!" Strenuous workout (1-2 hours). FREE but challenging. Gondola down included. Locals train here. Great workout with reward at top!',
+        },
+        {
+          question: 'Can you kayak in Vancouver?',
+          answer: 'Absolutely! Indian Arm (glacial fjord), False Creek (urban), English Bay popular. Rentals $40-70/day. Guided tours $75-120. Beginner-friendly. Seals, eagles, scenic! May-Sept best. Vancouver paddling paradise!',
+        },
+        {
+          question: 'Is Capilano Suspension Bridge worth it?',
+          answer: 'Worth it if budget allows! $60 adults - expensive but impressive. 140m long, 70m high suspension bridge. Treetops walkway, cliffwalk. Alternative: Lynn Canyon FREE (smaller but beautiful!). Capilano more developed - choose based on budget.',
+        },
+        {
+          question: 'Can you ski near Vancouver?',
+          answer: 'YES! Three local mountains 30 min from downtown: Grouse, Cypress, Seymour. Nov-March skiing. Day tickets $60-90. Not destination skiing but convenient! Whistler (2 hours) for world-class. Vancouver unique: Ski morning, city afternoon!',
+        },
+        {
+          question: 'What is the best hike in Vancouver?',
+          answer: 'Grouse Grind (workout), Lynn Canyon (waterfalls/suspension bridge), Quarry Rock (views), Lighthouse Park (coastal forest). Each offers different experience. All moderate-strenuous. North Shore trails legendary! Choose based on fitness/interests.',
+        },
+        {
+          question: 'How much do outdoor tours cost?',
+          answer: 'Grouse Mountain gondola: $65. Kayaking tours: $75-120. Guided hikes: $60-100. Capilano: $60. Multi-activity: $150-200. Free hiking available! Tours provide equipment, transport, expertise - worth it!',
+        },
+        {
+          question: 'When is the best time for outdoor activities?',
+          answer: 'Summer (June-Sept): Hiking, kayaking, all activities! Winter (Dec-March): Skiing, snowshoeing. Spring: Cherry blossoms, mild. Fall: Beautiful foliage. Year-round activities available - choose season by interest!',
+        },
+      ],
+    },
   },
 };
 
