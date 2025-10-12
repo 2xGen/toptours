@@ -23632,6 +23632,710 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'beach-tours': {
+      title: 'Tulum Beach Tours',
+      subtitle: 'Relax on white sand beaches with turquoise Caribbean waters!',
+      categoryName: 'Beach Tours',
+      
+      stats: {
+        toursAvailable: 72,
+        priceFrom: 50,
+        duration: '3-8 hours',
+      },
+
+      introduction: `Experience Tulum's stunning beaches - powdery white sand and turquoise Caribbean! Beach tours explore Playa Paraiso (paradise beach!), Playa Ruinas (ruins beach!), Xcaanan Beach, Las Palmas, and hidden coves. Enjoy beach clubs with daybeds, snorkeling from shore, kiteboarding, paddleboarding, and pure relaxation. Visit eco-chic beach clubs, experience bohemian Tulum vibes, enjoy fresh seafood, and watch spectacular sunsets. Tours include beach access, equipment rental, beach club experiences, and water activities. It's Caribbean paradise!`,
+
+      seo: {
+        title: 'Tulum Beach Tours 2025 - Beach Clubs, White Sand & Caribbean Paradise',
+        description: 'Explore Tulum beaches! Beach clubs, water sports, and turquoise Caribbean!',
+        keywords: 'Tulum beaches, Playa Paraiso, Tulum beach clubs, Tulum white sand, Caribbean beaches',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Powder-White Sand',
+          description: 'Soft white sand and turquoise water - postcard perfect!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Beach Clubs',
+          description: 'Bohemian-chic clubs with daybeds, food, and vibes!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Playa Paraiso',
+          description: 'Paradise Beach lives up to name - stunning!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Instagram Paradise',
+          description: 'Most photogenic beaches - swings, daybeds, perfect lighting!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Sun',
+          title: 'Beach Club Day Pass',
+          description: 'Full day at beach club with amenities.',
+          features: [
+            'Full day',
+            'Daybed',
+            'Pool/beach',
+            'Food credit',
+            'Relaxing',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Beach Hopping Tour',
+          description: 'Visit multiple beaches in one day.',
+          features: [
+            '6-8 hours',
+            '3-4 beaches',
+            'Variety',
+            'Exploring',
+            'Active',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Water Sports Package',
+          description: 'Kiteboarding, SUP, snorkeling combo.',
+          features: [
+            '4-5 hours',
+            'Multiple sports',
+            'Equipment',
+            'Instruction',
+            'Adventurous',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Sunset Beach Tour',
+          description: 'Evening beach visit with sunset viewing.',
+          features: [
+            '3 hours',
+            'Sunset',
+            'Cocktails',
+            'Romantic',
+            'Beautiful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Tulum Beach Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Beach club day: 6-8 hours. Beach hopping: 6-8 hours. Water sports: 4-5 hours.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Playa Paraiso',
+            description: 'Most famous beach - palm trees, white sand, turquoise water, stunning!',
+          },
+          {
+            icon: 'Sun',
+            title: 'Beach Clubs',
+            description: 'Bohemian-chic clubs - Papaya Playa, Nomade, Azulik - daybeds, pools, vibes!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Playa Ruinas',
+            description: 'Beach below ruins - combine history with swimming!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Instagram Spots',
+            description: 'Beach swings, hanging beds, perfect lighting - photographer\'s paradise!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Eco-Conscious',
+            description: 'Many beach clubs eco-friendly - sustainability focus.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Beach clubs require minimum spend ($50-100 USD) - includes food/drinks.',
+        'Playa Paraiso free but crowded - beach clubs offer premium experience.',
+        'North beaches (Playa Paraiso) calmer water - south (Boca Paila) windier for kiteboarding.',
+        'Bring cash - many beach clubs cash-only or charge card fees.',
+        'Rent car to beach hop - taxis expensive between beaches.',
+        'November-April best weather - summer seaweed season possible.',
+        'Sunset at beach clubs magical - worth staying late!',
+        'Biodegradable sunscreen only - protect reef ecosystem.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best beach in Tulum?',
+          answer: 'Playa Paraiso (Paradise Beach) most famous - powdery white sand, turquoise water, palm trees! Playa Ruinas below ruins combines history. Xcaanan quieter. Las Palmas bohemian. Each beautiful! Beach clubs enhance experience with amenities.',
+        },
+        {
+          question: 'Are Tulum beaches free?',
+          answer: 'Public beaches FREE (Playa Paraiso, Playa Ruinas, etc). However, beach clubs charge minimum spend ($50-100 USD) for daybeds, pool, amenities. Worth it for service and experience! Public access always available.',
+        },
+        {
+          question: 'What are Tulum beach clubs?',
+          answer: 'Beach clubs offer daybeds, pools, restaurants, bars, curated bohemian atmosphere! Papaya Playa, Nomade, Azulik, Mia famous. Minimum spend $50-100 USD (includes food/drinks). Premium beach experience - worth it for ambiance!',
+        },
+        {
+          question: 'Is there seaweed in Tulum?',
+          answer: 'Sargassum (seaweed) can be issue May-August! Varies year-to-year, changes daily. Winter (Nov-April) clearer. Beach clubs clean beaches daily. Check recent reports before visit. Cenotes always clear alternative!',
+        },
+        {
+          question: 'Can you swim in Tulum beaches?',
+          answer: 'Yes! Beautiful swimming - turquoise Caribbean water, calm most days. Some beaches better for different activities: North (Paraiso) - swimming. South (Boca Paila) - kiteboarding. Always safe with normal ocean caution. Lifeguards at popular beaches.',
+        },
+        {
+          question: 'How much do beach clubs cost?',
+          answer: 'Minimum spend: $50-100 USD per person. Includes food, drinks, daybed, pool access. Papaya Playa, Nomade higher-end ($100-150). Budget: Visit public beaches free! Worth splurging for premium experience once.',
+        },
+        {
+          question: 'What should I bring to Tulum beaches?',
+          answer: 'Biodegradable sunscreen (required!), towel, swimsuit, cash, hat, sunglasses, water. Beach clubs provide loungers. Snorkel gear if snorkeling. Waterproof phone case. Come prepared for sun!',
+        },
+        {
+          question: 'When is the best time for Tulum beaches?',
+          answer: 'November-April: Best weather, minimal seaweed, perfect! December-February: High season (crowded but beautiful). May-October: Hotter, seaweed possible, fewer crowds, cheaper. Year-round stunning but winter ideal!',
+        },
+      ],
+    },
+
+    'eco-tours': {
+      title: 'Tulum Eco Tours',
+      subtitle: 'Explore biosphere reserves, wildlife, and sustainable tourism!',
+      categoryName: 'Eco Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 70,
+        duration: '4-8 hours',
+      },
+
+      introduction: `Discover Tulum's incredible ecosystems - UNESCO Biosphere Reserve and beyond! Eco tours explore Sian Ka'an Biosphere (1.3 million acres!), mangrove channels, lagoons, wildlife spotting (dolphins, manatees, crocodiles!), bird watching (350+ species!), and pristine nature. Experience boat tours through lagoons, snorkeling in reef channels, floating down lazy rivers, spotting wildlife, and learning about conservation. Tours include expert naturalist guides, sustainable practices, wildlife encounters, and environmental education. It's nature paradise!`,
+
+      seo: {
+        title: 'Tulum Eco Tours 2025 - Sian Ka\'an, Wildlife & Biosphere Reserve',
+        description: 'Explore Tulum nature! Sian Ka\'an Biosphere, wildlife, and eco adventures!',
+        keywords: 'Tulum eco tours, Sian Ka\'an, Tulum wildlife, biosphere reserve, nature tours Tulum',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Sian Ka\'an Biosphere',
+          description: 'UNESCO World Heritage - 1.3 million acres pristine nature!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Wildlife Encounters',
+          description: 'Dolphins, manatees, crocodiles, sea turtles - incredible!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Mangrove Channels',
+          description: 'Float through mangroves in crystal-clear channels!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Pristine Nature',
+          description: 'Undeveloped, protected ecosystem - pure nature!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Sian Ka\'an Day Tour',
+          description: 'Full-day biosphere exploration with guide.',
+          features: [
+            '7-8 hours',
+            'Biosphere',
+            'Boat tour',
+            'Wildlife',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Mangrove Kayaking',
+          description: 'Kayak through mangrove channels.',
+          features: [
+            '4-5 hours',
+            'Kayaking',
+            'Mangroves',
+            'Wildlife',
+            'Active',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Muyil Ruins + Lagoon',
+          description: 'Combine ancient ruins with lagoon float.',
+          features: [
+            '5-6 hours',
+            'Ruins',
+            'Lagoon float',
+            'Nature',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Birdwatching Tour',
+          description: 'Spot exotic birds with expert ornithologist.',
+          features: [
+            '4 hours',
+            'Birdwatching',
+            '350+ species',
+            'Educational',
+            'Peaceful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Tulum Eco Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Sian Ka\'an: 7-8 hours full day. Kayaking: 4-5 hours. Muyil: 5-6 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Sian Ka\'an Biosphere',
+            description: 'UNESCO site - mangroves, lagoons, coral reefs, pristine jungle!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Wildlife Spotting',
+            description: 'Dolphins, manatees, crocodiles, sea turtles, tropical birds - incredible diversity!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Lagoon Float',
+            description: 'Float down natural lazy river through mangrove channels - magical!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Birdwatching',
+            description: '350+ species including flamingos, herons, toucans - paradise for birders!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Conservation Education',
+            description: 'Learn about ecosystem protection and sustainable tourism.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Sian Ka\'an tours require early start (6-7 AM) - budget full day.',
+        'Bring biodegradable sunscreen only - ecosystem protection critical.',
+        'Muyil ruins + lagoon float combo excellent value ($50-70).',
+        'Wildlife sightings never guaranteed but very common.',
+        'Boat tours bumpy - Dramamine if prone to seasickness.',
+        'Muyil less touristy alternative entrance to Sian Ka\'an.',
+        'Small group tours better for wildlife spotting (less disturbance).',
+        'Winter (Nov-April) best for birdwatching - migratory species present.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Sian Ka\'an?',
+          answer: 'Sian Ka\'an ("Where Sky is Born") is UNESCO Biosphere Reserve - 1.3 million acres! Pristine mangroves, lagoons, coral reef, jungle. Dolphins, manatees, crocodiles, 350+ bird species. Protected since 1986. Tulum\'s incredible natural treasure - must-see for nature lovers!',
+        },
+        {
+          question: 'Is Sian Ka\'an worth visiting?',
+          answer: 'Absolutely! Pristine nature contrast to touristy Tulum. Wildlife encounters, beautiful lagoons, educational. Full-day commitment but worth it! Best eco-experience in region. Book tour with responsible operator - protects ecosystem.',
+        },
+        {
+          question: 'Can you see dolphins in Sian Ka\'an?',
+          answer: 'Yes! Dolphins common in lagoons and offshore. Not guaranteed (wild animals!) but frequently spotted. Also manatees, sea turtles, crocodiles. Summer: Higher dolphin activity. Tours know best spots. Magical when spotted!',
+        },
+        {
+          question: 'What is Muyil?',
+          answer: 'Muyil is small Mayan ruins + lagoon on Sian Ka\'an edge. Climb pyramid, then float down natural lazy river through mangroves! $50-70 tours. Less crowded than main Sian Ka\'an entrance. Great combo: History + nature!',
+        },
+        {
+          question: 'How much do Sian Ka\'an tours cost?',
+          answer: 'Full-day tours: $100-150 USD (7-8 hours). Muyil + lagoon: $50-70. Private tours: $200-400. Includes transport, guide, equipment, entry fees. Worth investment for UNESCO experience! Book reputable eco-tour operator.',
+        },
+        {
+          question: 'Can you visit Sian Ka\'an independently?',
+          answer: 'Technically yes but not recommended! No infrastructure, easy to get lost, need boat access. Tours provide expertise, safe navigation, wildlife spotting, conservation education. Muyil ruins accessible independently then join lagoon tour. Biosphere best with guide!',
+        },
+        {
+          question: 'What wildlife can you see?',
+          answer: 'Dolphins, manatees, crocodiles, sea turtles common! 350+ bird species: Flamingos, herons, toucans, kingfishers. Occasional: Jaguars, pumas (rare!). Fish, rays in lagoons. Incredible biodiversity! Winter: Migratory birds add variety.',
+        },
+        {
+          question: 'When is the best time for eco tours?',
+          answer: 'November-April: Best weather, comfortable temperatures, migratory birds! May-October: Hotter, fewer crowds, some species breed. Wildlife year-round. Early morning tours best for animal activity. Winter ideal but summer works!',
+        },
+      ],
+    },
+
+    'food-and-culture-tours': {
+      title: 'Tulum Food & Culture Tours',
+      subtitle: 'Taste authentic Mexican cuisine and explore Mayan culture!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 56,
+        priceFrom: 65,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Tulum's culinary scene and Mayan heritage! Food tours explore authentic Mexican cuisine, street tacos, Mayan cooking traditions, farm-to-table restaurants, mezcal tastings, and local markets. Visit taco stands, traditional restaurants, contemporary fusion spots, learn tortilla making, taste regional Yucatecan dishes, and explore Mayan cultural experiences. Tours include food tastings, cooking classes, market visits, mezcal education, and cultural insights. Learn about Mayan descendants, traditional cooking methods, and modern Tulum food scene. It's flavor and culture!`,
+
+      seo: {
+        title: 'Tulum Food & Culture Tours 2025 - Tacos, Mayan Cuisine & Culinary Experiences',
+        description: 'Taste Tulum! Food tours, authentic Mexican cuisine, and Mayan culture!',
+        keywords: 'Tulum food tours, Tulum tacos, Mexican cuisine Tulum, Mayan culture, Tulum restaurants',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Tacos',
+          description: 'Best street tacos - cochinita pibil, al pastor, authentic!',
+        },
+        {
+          icon: 'Star',
+          title: 'Mayan Traditions',
+          description: 'Learn ancient cooking methods still used today!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Mezcal Tastings',
+          description: 'Sample artisanal mezcal - smoky agave spirit!',
+        },
+        {
+          icon: 'Users',
+          title: 'Farm-to-Table',
+          description: 'Innovative restaurants using local ingredients!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Taco Tour',
+          description: 'Visit best taco stands with local guide.',
+          features: [
+            '3 hours',
+            '4-5 stops',
+            'Authentic tacos',
+            'Local spots',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Cooking Class',
+          description: 'Learn to make traditional Mexican dishes.',
+          features: [
+            '4 hours',
+            'Hands-on',
+            'Market visit',
+            'Eat what you make',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Mezcal Tasting',
+          description: 'Sample artisanal mezcals with expert.',
+          features: [
+            '2-3 hours',
+            'Multiple mezcals',
+            'Education',
+            'Food pairing',
+            'Cultural',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Market + Food Tour',
+          description: 'Explore local market then taste street food.',
+          features: [
+            '4 hours',
+            'Market',
+            'Street food',
+            'Cultural',
+            'Comprehensive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Tulum Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Taco tours: 3 hours. Cooking class: 4 hours. Market tours: 4 hours.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Street Tacos',
+            description: 'Cochinita pibil (slow-roasted pork), al pastor, authentic local spots!',
+          },
+          {
+            icon: 'Star',
+            title: 'Yucatecan Cuisine',
+            description: 'Regional specialties different from typical Mexican - Mayan influence!',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Mezcal',
+            description: 'Artisanal agave spirit - learn production, taste varieties, smoky flavors!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Local Markets',
+            description: 'Tulum pueblo market - produce, spices, local life authentic!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Mayan Heritage',
+            description: 'Learn how ancient cooking traditions continue in modern cuisine.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Tulum pueblo (town) has authentic, cheaper restaurants than beach zone.',
+        'Cochinita pibil (Yucatecan pulled pork) must-try - Mayan cooking method.',
+        'Best tacos at El Camello Jr, Taqueria Honorio, La Chiapaneca - local favorites.',
+        'Mezcal different from tequila - made from various agaves, smoky flavor.',
+        'Beach zone restaurants expensive - pueblo equally good, half price.',
+        'Ask locals for recommendations - constantly changing food scene.',
+        'Come hungry - taco tours generous portions!',
+        'Try salbutes, panuchos (Yucatecan specialties) - not common outside region.',
+      ],
+
+      faqs: [
+        {
+          question: 'Where are the best tacos in Tulum?',
+          answer: 'Tulum pueblo (town)! El Camello Jr (fish tacos), Taqueria Honorio (al pastor), La Chiapaneca (variety). Cochinita pibil everywhere - Yucatecan specialty! Avoid beach zone (touristy, expensive). Authentic tacos cheap ($1-2/taco) and incredible!',
+        },
+        {
+          question: 'What food is Tulum known for?',
+          answer: 'Yucatecan cuisine: Cochinita pibil (slow-roasted pork), salbutes/panuchos (fried tortillas), fresh seafood, street tacos. Also: Contemporary farm-to-table, mezcal bars, international fusion. Mix of authentic Mexican and innovative dining!',
+        },
+        {
+          question: 'Is Tulum expensive for food?',
+          answer: 'Beach zone: Very expensive ($20-40/meal). Tulum pueblo: Affordable ($5-10/meal, tacos $1-2)! Huge price difference. Budget travelers: Eat in pueblo, visit beach for activities. Both offer great food - pueblo more authentic!',
+        },
+        {
+          question: 'What is cochinita pibil?',
+          answer: 'Cochinita pibil is Yucatecan pulled pork - marinated in citrus/achiote, slow-roasted in banana leaves! Ancient Mayan cooking method. Served in tacos, tortas, or plates. MUST-TRY Yucatan specialty. Tender, flavorful, unique!',
+        },
+        {
+          question: 'Do you need food tours in Tulum?',
+          answer: 'Not essential but helpful! Tours find best local spots, explain dishes, avoid tourist traps. DIY: Ask locals, explore pueblo. Tours: Efficient, educational, curated. Both work - tours good for first-timers wanting authentic experience!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Taco tours: $65-90 (3 hours, 4-5 stops). Cooking class: $80-120 (4 hours). Market tours: $70-100. Mezcal tasting: $60-80. Tours replace meals - good value for variety and local knowledge!',
+        },
+        {
+          question: 'What is mezcal?',
+          answer: 'Mezcal is agave spirit (like tequila but smokier, various agaves). Artisanal production, Oaxaca region famous. Smoky flavor from roasting agave. Sip neat (don\'t shoot!). Pairs with food. Cultural Mexican spirit - worth trying!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Lunch (12-3 PM) or evening (6-9 PM) tours. Some taco stands evening only. Market tours best morning (8-10 AM). Weather doesn\'t affect food! Any time perfect for eating!',
+        },
+      ],
+    },
+
+    'adventure-tours': {
+      title: 'Tulum Adventure Tours',
+      subtitle: 'Zip-line, ATV, rappel, and explore jungle adventures!',
+      categoryName: 'Adventure Tours',
+      
+      stats: {
+        toursAvailable: 88,
+        priceFrom: 80,
+        duration: '4-8 hours',
+      },
+
+      introduction: `Experience Tulum's adventure activities - jungle thrills and adrenaline! Adventure tours include zip-lining through jungle canopy, ATV rides, rappelling into cenotes, jungle trekking, cave exploration, kiteboarding, and multi-activity combos. Visit adventure parks with zip lines, rope swings, cenote swims, explore hidden caves, ride ATVs through jungle trails, and experience extreme activities. Tours include safety equipment, expert guides, transportation, and multiple activities. Combine ruins, cenotes, and adventure for full Tulum experience. It's adrenaline paradise!`,
+
+      seo: {
+        title: 'Tulum Adventure Tours 2025 - Zip-Line, ATV, Cenote Rappelling & Jungle Tours',
+        description: 'Adventure in Tulum! Zip-lines, ATVs, jungle tours, and extreme activities!',
+        keywords: 'Tulum adventure tours, Tulum zip-line, ATV tours Tulum, adventure activities, Tulum extreme',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Zap',
+          title: 'Zip-Line Canopy',
+          description: 'Fly through jungle canopy - thrilling views!',
+        },
+        {
+          icon: 'Star',
+          title: 'ATV Jungle Rides',
+          description: 'Ride ATVs through jungle trails and Mayan villages!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Cenote Rappelling',
+          description: 'Rappel into open cenotes - adrenaline rush!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Kiteboarding',
+          description: 'Perfect wind conditions - kiteboarding paradise!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Zap',
+          title: 'Jungle Adventure Park',
+          description: 'Zip-lines, cenotes, ATVs, rope swings combo.',
+          features: [
+            '5-6 hours',
+            'Multiple activities',
+            'Lunch included',
+            'Full adventure',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'ATV Tour',
+          description: 'Ride ATVs through jungle and cenotes.',
+          features: [
+            '4 hours',
+            'ATV riding',
+            'Jungle trails',
+            'Cenote swim',
+            'Thrilling',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Extreme Adventure',
+          description: 'Rappelling, zip-lining, cliff jumping.',
+          features: [
+            '6-7 hours',
+            'Extreme activities',
+            'Adrenaline',
+            'Expert guides',
+            'Intense',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Kiteboarding Lesson',
+          description: 'Learn kiteboarding with certified instructor.',
+          features: [
+            '3-4 hours',
+            'Kiteboarding',
+            'Instruction',
+            'Equipment',
+            'Fun',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Tulum Adventure Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Adventure parks: 5-6 hours. ATV tours: 4 hours. Kiteboarding: 3-4 hours. Extreme: Full day.',
+          },
+          {
+            icon: 'Zap',
+            title: 'Zip-Lines',
+            description: 'Multiple zip-lines through jungle canopy - some over cenotes!',
+          },
+          {
+            icon: 'Star',
+            title: 'ATV Riding',
+            description: 'Drive through jungle, Mayan villages, muddy trails - adventurous!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Cenote Activities',
+            description: 'Rappel into cenotes, rope swing, cliff jump - combine adventure + swimming!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Kiteboarding',
+            description: 'Consistent wind Nov-May - perfect conditions for learning or advancing!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Safety First',
+            description: 'All equipment provided, expert guides, safety briefings - secure thrills!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Popular adventure parks: Selvatica, Xplor, Extreme Adventure Eco Park.',
+        'Book combo packages - better value than individual activities.',
+        'Wear closed-toe shoes for zip-lining and ATVs - sandals not allowed.',
+        'Bring change of clothes - you\'ll get wet and muddy!',
+        'GoPro rental available at most parks - capture adventures!',
+        'Weight/age limits for some activities - check requirements.',
+        'Kiteboarding best Nov-May - consistent wind season.',
+        'Adventure parks often include lunch - full-day experience.',
+      ],
+
+      faqs: [
+        {
+          question: 'What adventure activities are in Tulum?',
+          answer: 'Zip-lining, ATV rides, cenote rappelling, rope swings, cliff jumping, jungle trekking, kiteboarding, cave exploration! Adventure parks combine multiple activities. Kiteboarding popular (great wind!). Mix adventure with cenotes for best experience!',
+        },
+        {
+          question: 'Are adventure tours safe?',
+          answer: 'Very safe! Certified guides, quality equipment, safety briefings, weight/health checks. Follow instructions carefully. Millions participate safely. Choose reputable operators. Some risk inherent but professionally managed. Fun and safe!',
+        },
+        {
+          question: 'What should I bring?',
+          answer: 'Closed-toe shoes (required!), swimsuit, towel, change of clothes, waterproof camera, sunscreen, cash for tips/extras. Parks provide equipment. Come prepared to get wet/muddy! Secure loose items.',
+        },
+        {
+          question: 'Can beginners do adventure tours?',
+          answer: 'Yes! Most activities beginner-friendly with instruction. Zip-lining, ATVs, rope swings accessible to most. Rappelling requires some courage. Guides help everyone. Age/weight limits vary. Choose appropriate difficulty level!',
+        },
+        {
+          question: 'How much do adventure tours cost?',
+          answer: 'Adventure park combos: $100-150 USD (5-6 hours, multiple activities). ATV tours: $80-120. Zip-line only: $60-90. Kiteboarding lesson: $150-200. Full-day extreme: $150-200. Combos best value!',
+        },
+        {
+          question: 'What is the best adventure park?',
+          answer: 'Xplor (high-end, polished), Selvatica (jungle focus), Extreme Adventure Eco Park (value). Each offers zip-lines, cenotes, activities. Xplor most expensive but comprehensive. All excellent! Choose based on budget/preferences.',
+        },
+        {
+          question: 'Is kiteboarding easy to learn?',
+          answer: 'Challenging but achievable! First lesson (3-4 hours): Basics, kite control, body dragging. Standing on board: Day 2-3. Tulum has great conditions (consistent wind Nov-May). Multi-day packages recommended for learning!',
+        },
+        {
+          question: 'When is the best time for adventure tours?',
+          answer: 'Year-round for most activities! Kiteboarding: Nov-May (wind season). Summer: Hotter but less crowded. Winter: Perfect weather. Morning tours cooler. Adventure parks operate daily. Any time works for adrenaline!',
+        },
+      ],
+    },
   },
 };
 
