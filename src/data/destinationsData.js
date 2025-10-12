@@ -3464,12 +3464,12 @@ export const destinations = [
     heroDescription: 'Welcome to Washington, D.C., where the power of democracy meets architectural grandeur and American history comes alive. From the iconic National Mall to world-class museums, from historic monuments to vibrant neighborhoods, this capital city offers the perfect blend of political significance, cultural richness, and national pride. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Washington,%20D.C..jpeg',
     tourCategories: [
-      'National Mall Tours',
-      'Museum Tours',
-      'Monument Tours',
-      'Capitol Hill Tours',
-      'Food & Culture Tours',
-      'Historical Tours'
+      { name: 'National Mall Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Monument Tours', hasGuide: true },
+      { name: 'Capitol Hill Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true }
     ],
     seo: {
       title: 'Washington, D.C. Tours & Excursions - Top-Rated Activities & Adventures',
@@ -3739,12 +3739,12 @@ export const destinations = [
     heroDescription: 'Welcome to Toronto, where the iconic CN Tower meets diverse neighborhoods and Lake Ontario provides a stunning backdrop. From the vibrant downtown to world-class museums, from multicultural cuisine to the beautiful Toronto Islands, this cosmopolitan city offers the perfect blend of urban excitement, cultural richness, and Canadian charm. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Toronto.jpeg',
     tourCategories: [
-      'CN Tower Tours',
-      'Museum Tours',
-      'Food & Culture Tours',
-      'Neighborhood Tours',
-      'Lake Ontario Tours',
-      'Architecture Tours'
+      { name: 'CN Tower Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Neighborhood Tours', hasGuide: true },
+      { name: 'Lake Ontario Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Toronto Tours & Excursions - Top-Rated Activities & Adventures',
@@ -3794,12 +3794,12 @@ export const destinations = [
     heroDescription: 'Welcome to Vancouver, where the Pacific Ocean meets the Coast Mountains and urban sophistication blends seamlessly with natural beauty. From the iconic Stanley Park to the vibrant Granville Island, from world-class dining to outdoor adventures, this coastal city offers the perfect blend of metropolitan amenities and outdoor lifestyle. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Vancouver.webp',
     tourCategories: [
-      'Stanley Park Tours',
-      'Granville Island Tours',
-      'Outdoor Adventure Tours',
-      'Food & Culture Tours',
-      'Harbor Tours',
-      'Mountain Tours'
+      { name: 'Stanley Park Tours', hasGuide: true },
+      { name: 'Granville Island Tours', hasGuide: true },
+      { name: 'Outdoor Adventure Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Harbor Tours', hasGuide: true },
+      { name: 'Mountain Tours', hasGuide: true }
     ],
     seo: {
       title: 'Vancouver Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4069,12 +4069,12 @@ export const destinations = [
     heroDescription: 'Welcome to Tulum, where ancient Mayan ruins overlook pristine beaches and bohemian chic meets natural beauty. From the iconic cliff-top ruins to the crystal-clear cenotes, from eco-friendly resorts to authentic Mexican cuisine, this magical destination offers the perfect blend of history, culture, and laid-back luxury. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Tulum.jpg',
     tourCategories: [
-      'Mayan Ruins Tours',
-      'Cenote Tours',
-      'Beach Tours',
-      'Eco Tours',
-      'Food & Culture Tours',
-      'Adventure Tours'
+      { name: 'Mayan Ruins Tours', hasGuide: true },
+      { name: 'Cenote Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Eco Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Tulum Tours & Excursions - Top-Rated Activities & Adventures',
