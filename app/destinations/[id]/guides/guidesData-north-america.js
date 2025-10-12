@@ -21163,5 +21163,1063 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  'sedona': {
+    'red-rock-tours': {
+      title: 'Sedona Red Rock Tours',
+      subtitle: 'Explore iconic Cathedral Rock, Bell Rock, and stunning red formations!',
+      categoryName: 'Red Rock Tours',
+      
+      stats: {
+        toursAvailable: 94,
+        priceFrom: 65,
+        duration: '2-6 hours',
+      },
+
+      introduction: `Discover Sedona's legendary red rocks - Arizona's most spectacular natural wonder! Red rock tours explore iconic formations like Cathedral Rock (most photographed!), Bell Rock (vortex site!), Chapel of the Holy Cross (built into rocks!), Devil's Bridge (largest natural arch!), and countless stunning vistas. Experience jeep tours through rugged terrain, scenic drives, hiking to formations, photography stops, and sunset viewing. Tours include Red Rock Scenic Byway (SR 179), Oak Creek Canyon, viewpoint stops, and geological education. Learn about iron oxide creating red color, 300-million-year-old Schnebly Hill Formation, and how erosion sculpted masterpieces. It's red rock paradise!`,
+
+      seo: {
+        title: 'Sedona Red Rock Tours 2025 - Cathedral Rock, Bell Rock & Jeep Tours',
+        description: 'Explore Sedona red rocks! Jeep tours, Cathedral Rock, and stunning red formations!',
+        keywords: 'Sedona red rocks, Cathedral Rock, Bell Rock, Sedona jeep tours, red rock formations',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Iconic Formations',
+          description: 'Cathedral Rock, Bell Rock - world-famous red rocks!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Stunning Colors',
+          description: 'Iron oxide creates vibrant red/orange hues - incredible!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photo Paradise',
+          description: 'Every angle Instagram-worthy - photographer\'s dream!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Jeep Adventures',
+          description: 'Pink jeep tours access remote formations - thrilling!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Pink Jeep Tour',
+          description: 'Off-road jeep adventure through red rocks.',
+          features: [
+            '2-3 hours',
+            'Jeep ride',
+            'Off-road',
+            'Thrilling',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Scenic Drive Tour',
+          description: 'Visit viewpoints along Red Rock Scenic Byway.',
+          features: [
+            '3-4 hours',
+            'Multiple stops',
+            'Photography',
+            'Comfortable',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Sunset Tour',
+          description: 'Watch red rocks glow at golden hour.',
+          features: [
+            '2-3 hours',
+            'Sunset',
+            'Best light',
+            'Magical',
+            'Romantic',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Cathedral Rock Hike',
+          description: 'Guided hike to iconic formation summit.',
+          features: [
+            '3 hours',
+            'Hiking',
+            'Summit views',
+            'Moderate',
+            'Rewarding',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Sedona Red Rock Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Jeep tours: 2-3 hours. Scenic drives: 3-4 hours. Sunset: 2-3 hours. Hikes: 2-4 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Cathedral Rock',
+            description: 'Most iconic formation - stunning spires perfect for photos!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Bell Rock',
+            description: 'Famous vortex site with energy - spiritual and scenic!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Chapel of Holy Cross',
+            description: 'Church built into red rocks - architectural marvel!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Devil\'s Bridge',
+            description: 'Largest natural sandstone arch in Sedona - thrilling views!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Geology Education',
+            description: 'Learn about 300-million-year-old formations and erosion.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Sunset at red rocks magical - rocks literally glow orange/red!',
+        'Pink Jeep Tours ($100-150) most popular - book ahead!',
+        'Red Rock Pass ($5/day, $15/week) required for parking at trailheads.',
+        'Cathedral Rock viewpoint (SR 179) FREE and accessible - no hiking needed.',
+        'Bell Rock accessible trail - can hike partway without technical climbing.',
+        'September-November and March-May best weather for tours.',
+        'Morning light different from sunset - both beautiful!',
+        'Bring wide-angle lens for photography - formations massive!',
+      ],
+
+      faqs: [
+        {
+          question: 'What are Sedona red rocks?',
+          answer: 'Sedona red rocks are stunning sandstone formations created 300+ million years ago! Iron oxide creates vibrant red/orange color. Cathedral Rock, Bell Rock, Devil\'s Bridge most famous. Erosion sculpted incredible shapes. Absolutely stunning - Arizona\'s most photographed landscape!',
+        },
+        {
+          question: 'Do you need jeep tour to see red rocks?',
+          answer: 'No! Many formations visible from roads and easy trails. However, jeep tours access remote areas, provide geology education, and navigate efficiently. DIY: Drive SR 179 and Schnebly Hill Road. Tours: Off-road adventure + expert knowledge. Both work!',
+        },
+        {
+          question: 'What is the most famous red rock?',
+          answer: 'Cathedral Rock most iconic - twin spires reflected in Oak Creek! Bell Rock also famous (vortex site). Devil\'s Bridge (largest arch). All stunning! Cathedral Rock most photographed. Can\'t choose wrong - all extraordinary!',
+        },
+        {
+          question: 'Can you hike red rocks?',
+          answer: 'Yes! Many trails from easy (Bell Rock pathway) to strenuous (Cathedral Rock summit). Red Rock Pass required ($5/day). Trails well-marked. Moderate fitness needed for most. Summer hot - hike morning! Incredible hiking destination!',
+        },
+        {
+          question: 'When do red rocks look best?',
+          answer: 'Sunset! Rocks literally glow red/orange. Golden hour magical. Morning light beautiful too (different quality). Midday: Harsh shadows but still stunning. Cloudy days: Muted colors. Clear sunset: Absolute best! Plan timing around light.',
+        },
+        {
+          question: 'How much do red rock tours cost?',
+          answer: 'Pink Jeep tours: $100-150 (2-3 hours). Scenic van tours: $75-110. Sunset tours: $90-130. Private jeeps: $200-400. Red Rock Pass (DIY): $5/day. Tours worth it for off-road access and education!',
+        },
+        {
+          question: 'Do I need 4WD?',
+          answer: 'Not for paved roads (SR 179, 89A)! Schnebly Hill Road requires high-clearance or 4WD. Most viewpoints accessible by regular car. Jeep tours access areas regular cars can\'t. Rental car sufficient for major sites - jeep tours for adventure!',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Spring (March-May) and fall (Sept-Nov): Perfect weather, wildflowers (spring). Summer: Hot (90-100°F) but monsoons create drama! Winter: Mild, possible snow on rocks (gorgeous!). September-November ideal - warm days, clear skies, beautiful light!',
+        },
+      ],
+    },
+
+    'spiritual-tours': {
+      title: 'Sedona Spiritual Tours',
+      subtitle: 'Experience vortex energy sites, meditation, and mystical Sedona!',
+      categoryName: 'Spiritual Tours',
+      
+      stats: {
+        toursAvailable: 76,
+        priceFrom: 75,
+        duration: '2-5 hours',
+      },
+
+      introduction: `Discover Sedona's legendary spiritual energy - vortex capital of the world! Spiritual tours explore four main vortex sites (Bell Rock, Airport Mesa, Cathedral Rock, Boynton Canyon) where earth's electromagnetic energy supposedly concentrates. Experience guided meditation, energy readings, chakra balancing, sound healing, and consciousness expansion. Visit Chapel of the Holy Cross (spiritual architecture!), metaphysical shops, healing centers, and sacred Native American sites. Tours include experienced spiritual guides, meditation instruction, vortex education, and personal energy experiences. Whether believer or skeptic, Sedona's spiritual atmosphere is palpable. It's mystical Arizona!`,
+
+      seo: {
+        title: 'Sedona Spiritual Tours 2025 - Vortex Sites, Meditation & Energy Healing',
+        description: 'Experience Sedona vortexes! Spiritual tours, energy sites, and meditation in mystical Sedona!',
+        keywords: 'Sedona vortex tours, Sedona spiritual, vortex sites, Sedona meditation, energy healing Sedona',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Vortex Sites',
+          description: 'Four main vortexes with concentrated earth energy!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Spiritual Community',
+          description: 'Sedona attracts seekers, healers, and spiritual practitioners!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Meditation Spots',
+          description: 'Red rocks create perfect atmosphere for inner work!',
+        },
+        {
+          icon: 'Users',
+          title: 'Energy Experiences',
+          description: 'Many report feeling something - tangible or placebo, it\'s powerful!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Vortex Tour',
+          description: 'Visit main vortex sites with spiritual guide.',
+          features: [
+            '3-4 hours',
+            'Four vortexes',
+            'Meditation',
+            'Energy work',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Meditation & Healing',
+          description: 'Guided meditation and energy healing session.',
+          features: [
+            '2-3 hours',
+            'Meditation',
+            'Healing',
+            'Personal',
+            'Transformative',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunrise Meditation',
+          description: 'Early meditation at vortex during sunrise.',
+          features: [
+            '2 hours',
+            'Sunrise',
+            'Meditation',
+            'Peaceful',
+            'Magical',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Private Spiritual Session',
+          description: 'One-on-one spiritual guidance and vortex experience.',
+          features: [
+            '2-3 hours',
+            'Private',
+            'Customized',
+            'Personal',
+            'Intimate',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Sedona Spiritual Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Vortex tours: 3-4 hours. Meditation: 2-3 hours. Private sessions: 2-3 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Bell Rock Vortex',
+            description: 'Most accessible vortex - upward/masculine energy, easy to visit!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Cathedral Rock Vortex',
+            description: 'Feminine/magnetic energy - near Oak Creek, beautiful setting!',
+          },
+          {
+            icon: 'Sun',
+            title: 'Airport Mesa Vortex',
+            description: 'Balanced energy, sunset views - accessible by short walk!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Boynton Canyon Vortex',
+            description: 'Balanced masculine/feminine energy - requires moderate hike!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Spiritual Practices',
+            description: 'Meditation, crystal work, energy sensing - various modalities!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Vortexes FREE to visit - tours provide spiritual context and meditation guidance.',
+        'Open mind recommended - skeptics and believers both welcome!',
+        'Bell Rock easiest vortex access (paved pathway partway up).',
+        'Airport Mesa vortex has parking and short walk - accessible.',
+        'Twisted juniper trees supposedly indicate vortex energy (scientific debate!).',
+        'Bring yoga mat or blanket for meditation sessions.',
+        'Sunrise/sunset vortex visits most powerful according to practitioners.',
+        'Respect sacred sites - many are also Native American ceremonial areas.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is a Sedona vortex?',
+          answer: 'Vortex is spot where earth\'s electromagnetic energy supposedly concentrates creating spiritual energy field! Four main sites: Bell Rock, Airport Mesa, Cathedral Rock, Boynton Canyon. Some report feeling tingling, emotional releases, or heightened awareness. Skeptics attribute to placebo. Either way, experience is powerful!',
+        },
+        {
+          question: 'Can you feel the vortex energy?',
+          answer: 'Subjective! Many report tingling, warmth, emotional shifts, or profound peace. Skeptics feel nothing specific. No scientific proof but many sincere believers. Come open-minded! Beautiful settings regardless of energy beliefs. Experience is personal!',
+        },
+        {
+          question: 'Which vortex is most powerful?',
+          answer: 'Depends who you ask! Bell Rock most accessible (upward energy). Cathedral Rock most beautiful (feminine energy). Airport Mesa best sunset. Boynton Canyon most balanced. Try multiple - each feels different. Guides help you sense energies.',
+        },
+        {
+          question: 'Do I need tour for vortexes?',
+          answer: 'No - vortex sites are free to visit! However, spiritual guides teach meditation, explain energy types, facilitate experiences. DIY: Drive to sites, meditate yourself. Tours: Guided spiritual experience. Both valid - choose your style!',
+        },
+        {
+          question: 'Is Sedona spiritual stuff real?',
+          answer: 'Controversial! Believers swear by vortex energy. Science hasn\'t proven electromagnetic anomalies. Sedona attracts spiritual seekers - community creates atmosphere. Real or placebo, many report transformative experiences! Approach with open but discerning mind.',
+        },
+        {
+          question: 'What should I bring?',
+          answer: 'Yoga mat/blanket for meditation, water, comfortable clothes, open mind! Some bring crystals to "charge" at vortexes. Sunscreen, hat. Journal for insights. Camera. Leave skepticism open-minded - experience before judging!',
+        },
+        {
+          question: 'How much do spiritual tours cost?',
+          answer: 'Vortex tours: $75-130 (3-4 hours). Meditation sessions: $90-150. Private spiritual: $150-300. Healing sessions: $100-200. Vortex sites FREE to visit yourself. Tours provide guidance and context.',
+        },
+        {
+          question: 'When is the best time for vortex visits?',
+          answer: 'Sunrise/sunset considered most powerful energetically. Full moon special significance. Spring/fall pleasant weather. Summer hot but monsoons create energy (believers say!). Winter mild. Anytime works - spiritual energy supposedly constant!',
+        },
+      ],
+    },
+
+    'hiking-and-adventure-tours': {
+      title: 'Sedona Hiking & Adventure Tours',
+      subtitle: 'Trek to Devil\'s Bridge, West Fork Trail, and stunning red rock summits!',
+      categoryName: 'Hiking & Adventure Tours',
+      
+      stats: {
+        toursAvailable: 108,
+        priceFrom: 70,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Discover Sedona's incredible hiking - red rock paradise for outdoor enthusiasts! Hiking tours explore legendary trails like Devil's Bridge (largest natural arch requiring moderate climb!), West Fork Trail (creek crossings in canyon!), Cathedral Rock (steep but rewarding!), Soldier Pass (seven sacred pools!), and countless desert paths. Experience guided hikes with naturalists, rock scrambling, slot canyons, swimming holes, and panoramic vista rewards. Tours include transportation, expert guides explaining flora/fauna/geology, safety equipment, and trail navigation. Learn about desert ecosystem, proper hiking techniques, Leave No Trace principles, and best photography spots. It's high-desert hiking heaven!`,
+
+      seo: {
+        title: 'Sedona Hiking & Adventure Tours 2025 - Devil\'s Bridge, West Fork & Red Rock Trails',
+        description: 'Hike Sedona! Guided trails, Devil\'s Bridge, and red rock adventures!',
+        keywords: 'Sedona hiking tours, Devil\'s Bridge, West Fork Trail, Sedona trails, guided hikes Sedona',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'World-Class Trails',
+          description: 'Over 200 trails through stunning red rock scenery!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Devil\'s Bridge',
+          description: 'Largest natural sandstone arch - bucket-list hike!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Panoramic Vistas',
+          description: 'Summit rewards with 360-degree red rock views!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Perfect Weather',
+          description: 'Spring and fall ideal hiking temperatures!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Devil\'s Bridge Hike',
+          description: 'Guided hike to famous natural arch.',
+          features: [
+            '3-4 hours',
+            'Moderate',
+            'Natural arch',
+            'Photos',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'West Fork Trail',
+          description: 'Creek walk through Oak Creek Canyon.',
+          features: [
+            '3-4 hours',
+            'Creek crossings',
+            'Shaded canyon',
+            'Easy-moderate',
+            'Beautiful',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Multi-Trail Day',
+          description: 'Visit 2-3 trails in one guided day.',
+          features: [
+            '5-6 hours',
+            'Multiple trails',
+            'Comprehensive',
+            'Varied',
+            'Full day',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Cathedral Rock Summit',
+          description: 'Challenging hike to vortex summit.',
+          features: [
+            '3 hours',
+            'Strenuous',
+            'Summit views',
+            'Vortex',
+            'Rewarding',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Sedona Hiking & Adventure Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Half-day hikes: 3-4 hours. Full-day: 6-8 hours. Difficulty varies by trail.',
+          },
+          {
+            icon: 'Star',
+            title: 'Devil\'s Bridge',
+            description: 'Moderate 4-mile round trip - walking on natural arch thrilling!',
+          },
+          {
+            icon: 'Heart',
+            title: 'West Fork',
+            description: 'Easy trail with 13+ creek crossings - bring water shoes!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Cathedral Rock',
+            description: 'Steep scramble (use hands!) but incredible summit views!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Soldier Pass',
+            description: 'Seven sacred pools, sinkhole, arches - varied terrain!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Desert Ecology',
+            description: 'Learn about plants (juniper, agave), wildlife, and adaptation.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Devil\'s Bridge best at sunrise (fewer crowds, cool temps, good light!).',
+        'West Fork Trail requires parking reservation ($9) - book days ahead!',
+        'Red Rock Pass required ($5/day, $15/week) for most trailheads.',
+        'Cathedral Rock strenuous - use hands, not for acrophobia!',
+        'Bring 2+ liters water per person - high desert dehydration quick!',
+        'Summer: Hike before 10 AM or after 4 PM (too hot midday!).',
+        'Guides provide safety, navigation, ecology knowledge - worth it!',
+        'Fall colors in Oak Creek Canyon (October) stunning!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best Sedona hike?',
+          answer: 'Devil\'s Bridge most popular - natural arch, moderate difficulty, incredible! West Fork most beautiful (creek canyon). Cathedral Rock most challenging (summit views). Each unique! First-timers: Devil\'s Bridge. All fitness: West Fork. Views: Cathedral. All excellent!',
+        },
+        {
+          question: 'Are Sedona hikes difficult?',
+          answer: 'Range from easy (Bell Rock pathway, West Fork) to strenuous (Cathedral Rock summit, Bear Mountain)! Many moderate options. Altitude 4,500 ft - some feel it. Well-marked trails. Guides help with pacing and safety. Choose appropriate difficulty!',
+        },
+        {
+          question: 'Do I need Red Rock Pass?',
+          answer: 'YES for parking at most trailheads! $5/day, $15/week, $20/year. Buy at visitor centers, many stores, or online. Not needed if tour provides transport. Required - rangers ticket! Worth it for trail access.',
+        },
+        {
+          question: 'Can you hike Sedona yourself?',
+          answer: 'Absolutely! Trails well-marked, maps available, AllTrails app helpful. However, guides provide safety, ecology education, navigation in confusing areas. First-timers or solo hikers: Consider guide. Experienced: DIY fine with research. Both work!',
+        },
+        {
+          question: 'How much do hiking tours cost?',
+          answer: 'Guided hikes: $70-120 (3-4 hours). Full-day: $150-200. Private guides: $200-400. Includes transport, guide, sometimes equipment. Red Rock Pass (DIY): $5/day. Tours worth it for safety and education!',
+        },
+        {
+          question: 'What should I bring hiking?',
+          answer: 'Water (2+ liters!), snacks, sunscreen, hat, sturdy shoes, layers (mornings cool!), first aid, phone, camera. Trekking poles helpful for rocky terrain. Red Rock Pass. West Fork: Water shoes for crossings. Come prepared - desert unforgiving!',
+        },
+        {
+          question: 'When is the best hiking season?',
+          answer: 'Spring (March-May) and fall (Sept-Nov): Perfect temperatures (60-80°F). Summer: Too hot (90-100°F) - hike early morning only! Winter: Mild (40-65°F), possible snow on trails (beautiful!). September-November ideal!',
+        },
+        {
+          question: 'Are there easy Sedona hikes?',
+          answer: 'Yes! Bell Rock pathway (paved partway), West Fork (flat creek walk), Airport Mesa (short vortex walk). All easy-moderate with stunning scenery. Not all hikes require fitness! Many accessible options. Choose appropriately!',
+        },
+      ],
+    },
+
+    'native-american-tours': {
+      title: 'Sedona Native American Tours',
+      subtitle: 'Explore ancient ruins, rock art, and indigenous heritage!',
+      categoryName: 'Native American Tours',
+      
+      stats: {
+        toursAvailable: 58,
+        priceFrom: 80,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Discover Sedona's rich Native American heritage - sacred land for millennia! Native American tours visit ancient Sinagua cliff dwellings (Montezuma Castle, Palatki!), Hohokam and Sinagua rock art (pictographs and petroglyphs!), sacred sites, and archaeological ruins. Experience guided tours with Native American guides sharing cultural traditions, visit Honanki Heritage Site, explore V-Bar-V Petroglyph Site (1,000+ rock carvings!), and learn about indigenous connection to red rocks. Tours include respectful cultural education, archaeology insights, traditional stories, and understanding of ongoing Native presence. It's ancient Arizona!`,
+
+      seo: {
+        title: 'Sedona Native American Tours 2025 - Ancient Ruins, Rock Art & Indigenous Heritage',
+        description: 'Explore Sedona Native American sites! Ancient ruins, petroglyphs, and cultural tours!',
+        keywords: 'Sedona Native American tours, Palatki ruins, Montezuma Castle, petroglyphs Sedona, ancient ruins',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Ancient Ruins',
+          description: 'Sinagua cliff dwellings from 1100-1400 AD!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Rock Art',
+          description: '1,000+ petroglyphs and pictographs - ancient stories!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Cultural Education',
+          description: 'Learn from Native guides about indigenous heritage!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Archaeological Sites',
+          description: 'Well-preserved ruins in red rock settings!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Palatki Ruins Tour',
+          description: 'Visit cliff dwellings and extensive rock art.',
+          features: [
+            '4-5 hours',
+            'Cliff dwellings',
+            'Rock art',
+            'Reservation required',
+            'Authentic',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Montezuma Castle',
+          description: 'National Monument with 5-story cliff dwelling.',
+          features: [
+            '2-3 hours',
+            'Cliff dwelling',
+            'Visitors center',
+            'Educational',
+            'Impressive',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'V-Bar-V Petroglyphs',
+          description: 'Over 1,000 ancient rock carvings.',
+          features: [
+            '2 hours',
+            'Petroglyphs',
+            'Interpretive',
+            'Educational',
+            'Fascinating',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Cultural Heritage Tour',
+          description: 'Comprehensive Native history with indigenous guide.',
+          features: [
+            '5-6 hours',
+            'Multiple sites',
+            'Native guide',
+            'Cultural',
+            'Respectful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Sedona Native American Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-6 hours. Palatki requires reservations and moderate hike.',
+          },
+          {
+            icon: 'Star',
+            title: 'Palatki Heritage Site',
+            description: 'Sinagua cliff dwellings + rock art from 1100-1400 AD!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Montezuma Castle',
+            description: '5-story cliff dwelling (20 rooms!) - incredibly preserved!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Rock Art',
+            description: 'Petroglyphs (carved) and pictographs (painted) - ancient communication!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Sinagua Culture',
+            description: 'Learn about people who inhabited Verde Valley AD 500-1425.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Sacred Sites',
+            description: 'Understand spiritual significance to current Native peoples.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Palatki requires advance reservation (limited daily visitors) - book early!',
+        'Montezuma Castle National Monument ($10/person) most accessible ruins.',
+        'V-Bar-V Petroglyph Site ($5) has over 1,000 carvings - incredible!',
+        'Respect archaeological sites - don\'t touch rock art or ruins!',
+        'Tours with Native guides provide authentic cultural perspective.',
+        'Honanki similar to Palatki - less crowded alternative (also needs reservation).',
+        'Best ruins are 30-60 minutes from Sedona - tours handle transport.',
+        'Photography allowed but respectful distance from fragile rock art.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Palatki?',
+          answer: 'Palatki Heritage Site has Sinagua cliff dwellings and extensive rock art from 1100-1400 AD! Red rock alcoves with rooms, pictographs, petroglyphs. Advance reservation required (928-282-3854). Moderate hike. 45 min from Sedona. Absolutely stunning - best preserved ruins in area!',
+        },
+        {
+          question: 'Can you visit Montezuma Castle?',
+          answer: 'Yes! Montezuma Castle National Monument ($10) is 5-story Sinagua cliff dwelling. Self-guided trail, visitors center, ranger talks. 45 min from Sedona. Can\'t enter dwelling (preservation) but viewing from below impressive! Easy accessibility - paved paths.',
+        },
+        {
+          question: 'What are petroglyphs?',
+          answer: 'Petroglyphs are rock carvings (pecked or carved into stone). Pictographs are rock paintings. Sedona has both! Ancient Sinagua, Hohokam, Yavapai peoples created them. Meanings: Astronomical, spiritual, communication. V-Bar-V has 1,000+ carvings - incredible site!',
+        },
+        {
+          question: 'Do you need reservation for ruins?',
+          answer: 'Palatki and Honanki: YES (call 928-282-3854)! Montezuma Castle and V-Bar-V: No reservation. Palatki most impressive but requires planning. Tours handle reservations - easier! Book 1-2 weeks ahead for Palatki.',
+        },
+        {
+          question: 'Are tours with Native guides available?',
+          answer: 'Yes! Some tours led by Native American guides (Yavapai-Apache often). Provide authentic cultural perspective, traditional stories, respectful approach. More expensive but culturally enriching. Research tour companies for Native-led options.',
+        },
+        {
+          question: 'How far are ruins from Sedona?',
+          answer: 'Palatki: 45 min drive. Montezuma Castle: 45 min. V-Bar-V: 30 min. Honanki: 50 min. All require driving - tours provide transport. Sedona area rich with archaeological sites but scattered. Plan half/full-day excursions.',
+        },
+        {
+          question: 'Can you touch the ruins?',
+          answer: 'NO! Touching damages fragile 800-year-old sites. Look, photograph (respectfully), but don\'t touch ruins or rock art. Oils from hands cause deterioration. Federal offense to deface. Rangers monitor. Respect archaeological treasures!',
+        },
+        {
+          question: 'When is the best time for ruins tours?',
+          answer: 'Spring (March-May) and fall (Sept-Nov): Perfect weather. Summer: Hot but morning visits work. Winter: Mild, beautiful. Ruins accessible year-round. Morning tours cooler. Book Palatki reservations early regardless of season!',
+        },
+      ],
+    },
+
+    'photography-tours': {
+      title: 'Sedona Photography Tours',
+      subtitle: 'Capture red rocks at golden hour with expert photographers!',
+      categoryName: 'Photography Tours',
+      
+      stats: {
+        toursAvailable: 72,
+        priceFrom: 120,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Experience Sedona through the lens - photographer's ultimate paradise! Photography tours visit iconic locations at optimal light with professional photographers guiding composition, settings, and techniques. Capture Cathedral Rock at sunrise, Bell Rock at golden hour, Chapel of the Holy Cross, Airport Mesa sunset, Oak Creek reflections, and hidden photogenic spots. Tours include private locations, timing for best light, post-processing tips, and expert guidance. Learn about landscape photography, long exposure techniques, composition rules, and how to photograph dramatic red rock formations. It's Instagram gold and portfolio builder!`,
+
+      seo: {
+        title: 'Sedona Photography Tours 2025 - Red Rock Photos & Landscape Photography',
+        description: 'Capture Sedona! Photography tours, golden hour, and expert landscape photography guidance!',
+        keywords: 'Sedona photography tours, red rock photography, Sedona photo spots, landscape photography, photo tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Camera',
+          title: 'Photographer\'s Paradise',
+          description: 'Every angle stunning - 360-degree photo opportunities!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Golden Hour Magic',
+          description: 'Sunrise/sunset make rocks glow - perfect light!',
+        },
+        {
+          icon: 'Star',
+          title: 'Expert Guidance',
+          description: 'Pro photographers teach composition and technique!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Secret Locations',
+          description: 'Access spots tourists miss - unique perspectives!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Sun',
+          title: 'Sunrise Photography Tour',
+          description: 'Capture golden hour at best vantage points.',
+          features: [
+            '3 hours',
+            'Sunrise',
+            'Multiple spots',
+            'Pro guidance',
+            'Magical',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Sunset Workshop',
+          description: 'Evening photography at Cathedral Rock or Airport Mesa.',
+          features: [
+            '2-3 hours',
+            'Sunset',
+            'Best light',
+            'Instruction',
+            'Stunning',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Full-Day Photo Safari',
+          description: 'Visit multiple locations throughout day.',
+          features: [
+            '8 hours',
+            'All-day',
+            'Multiple locations',
+            'Comprehensive',
+            'Intensive',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Private Photography Lesson',
+          description: 'One-on-one instruction at your skill level.',
+          features: [
+            '3-4 hours',
+            'Private',
+            'Customized',
+            'Your pace',
+            'Personalized',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Sedona Photography Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Sunrise/sunset: 3 hours. Full-day: 8 hours. Private: 3-4 hours flexible.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Golden Hour',
+            description: 'Rocks glow orange/red at sunrise/sunset - magical light!',
+          },
+          {
+            icon: 'Star',
+            title: 'Composition Tips',
+            description: 'Learn rule of thirds, leading lines, foreground interest!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Technical Settings',
+            description: 'Aperture, shutter speed, ISO for landscape photography!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Hidden Locations',
+            description: 'Access secret spots with unique perspectives!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Post-Processing',
+            description: 'Learn editing techniques to enhance red rock photos!',
+          ],
+        ],
+      },
+
+      expertTips: [
+        'Bring DSLR or mirrorless - smartphones work but limited for landscape.',
+        'Wide-angle lens (16-35mm) essential for capturing formations.',
+        'Tripod necessary for sunrise/sunset long exposures.',
+        'Polarizing filter reduces glare and enhances colors!',
+        'Cathedral Rock at sunrise most photographed spot - arrive early!',
+        'Oak Creek reflections require calm water (early morning).',
+        'RAW format for post-processing flexibility.',
+        'Tours provide location access and timing - worth it for serious photographers!',
+      ],
+
+      faqs: [
+        {
+          question: 'What are best photo spots in Sedona?',
+          answer: 'Cathedral Rock (sunrise reflection!), Bell Rock (any time), Airport Mesa (sunset), Chapel of Holy Cross, Devil\'s Bridge, Red Rock Crossing. Each offers different perspective. All stunning! Tours show hidden gems tourists miss.',
+        },
+        {
+          question: 'Do I need photography tour?',
+          answer: 'Not essential - spots accessible yourself! However, tours provide timing (golden hour), composition help, secret locations, technical guidance. Beginners: Tours teach technique. Advanced: Access unique spots. DIY: Research AllTrails and photo blogs. Both work!',
+        },
+        {
+          question: 'When is best light for photography?',
+          answer: 'Golden hour (hour after sunrise, hour before sunset) makes rocks GLOW! Blue hour (after sunset) creates drama. Midday harsh shadows (avoid!). Cloudy days mute colors. Clear sunrise/sunset: Absolute best. Plan entire trip around light!',
+        },
+        {
+          question: 'What camera gear do I need?',
+          answer: 'DSLR/mirrorless, wide-angle lens (16-35mm), tripod (for long exposures), polarizing filter, extra batteries, memory cards. Smartphone works for casual but serious photography needs proper gear. Bring cleaning cloth (dust!).',
+        },
+        {
+          question: 'How much do photography tours cost?',
+          answer: 'Sunrise/sunset tours: $120-200 (3 hours). Full-day: $300-500. Private: $250-500. Includes expert guidance, locations, sometimes transport. Worth it for serious photographers wanting portfolio shots!',
+        },
+        {
+          question: 'Can beginners join photo tours?',
+          answer: 'Yes! Tours accommodate all levels. Guides teach basics or advanced techniques. Bring whatever camera you have - even smartphones! Learn as you shoot. No experience required - passion for photography sufficient!',
+        },
+        {
+          question: 'What is Red Rock Crossing?',
+          answer: 'Red Rock Crossing (Crescent Moon Picnic Area) has iconic Cathedral Rock reflection in Oak Creek! $10 day-use fee. Early morning calm water creates mirror reflection - most photographed Sedona spot! Bring tripod. Arrive sunrise for best light!',
+        },
+        {
+          question: 'When should I visit for photography?',
+          answer: 'Spring (wildflowers add foreground!), Fall (perfect light), Winter (possible snow on rocks - unique!). Avoid summer midday (too harsh). September-November ideal. Plan sunrise/sunset timing - that\'s when magic happens!',
+        },
+      ],
+    },
+
+    'nature-tours': {
+      title: 'Sedona Nature Tours',
+      subtitle: 'Explore desert ecology, Oak Creek, wildlife, and natural wonders!',
+      categoryName: 'Nature Tours',
+      
+      stats: {
+        toursAvailable: 68,
+        priceFrom: 65,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Discover Sedona's diverse natural ecosystem - more than just red rocks! Nature tours explore Oak Creek (lush riparian corridor!), Slide Rock State Park (natural water slide!), desert flora (agave, juniper, prickly pear), wildlife (javelina, eagles, elk!), and ecological diversity. Experience guided naturalist hikes, creek swimming, waterfall visits, bird watching, and ecology education. Visit Red Rock State Park (nature center and easy trails!), Secret Canyon, and pristine natural areas. Tours include expert naturalists explaining desert adaptations, water sources, wildlife behavior, and conservation. Learn about high-desert ecosystems thriving at 4,500 ft elevation. It's Arizona biodiversity!`,
+
+      seo: {
+        title: 'Sedona Nature Tours 2025 - Oak Creek, Desert Wildlife & Natural Wonders',
+        description: 'Explore Sedona nature! Oak Creek, desert ecology, wildlife, and natural tours!',
+        keywords: 'Sedona nature tours, Oak Creek, Slide Rock, desert wildlife, Sedona ecology, naturalist tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Oak Creek',
+          description: 'Perennial creek creating lush oasis in desert!',
+        },
+        {
+          icon: 'Star',
+          title: 'Slide Rock',
+          description: 'Natural water slide in creek - uniquely fun!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Desert Wildlife',
+          description: 'Javelina, elk, eagles, lizards - diverse species!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Four Seasons',
+          description: 'Oak Creek Canyon shows dramatic seasonal changes!',
+        },
+      },
+
+      tourTypes: [
+        {
+          icon: 'Waves',
+          title: 'Oak Creek Canyon Tour',
+          description: 'Explore lush creek canyon with swimming stops.',
+          features: [
+            '4-5 hours',
+            'Creek swimming',
+            'Canyon views',
+            'Beautiful',
+            'Refreshing',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Slide Rock Adventure',
+          description: 'Natural water slide and creek swimming.',
+          features: [
+            '3-4 hours',
+            'Water slide',
+            'Swimming',
+            'Family fun',
+            'Summer perfect',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Wildlife Safari',
+          description: 'Jeep tour seeking javelina, elk, and birds.',
+          features: [
+            '3 hours',
+            'Wildlife focus',
+            'Jeep tour',
+            'Naturalist guide',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Red Rock State Park',
+          description: 'Nature center and easy trails along creek.',
+          features: [
+            '2-3 hours',
+            'Easy trails',
+            'Nature center',
+            'Educational',
+            'Accessible',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Sedona Nature Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-5 hours. Slide Rock: 3-4 hours. Wildlife: 3 hours. State park: 2-3 hours.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Oak Creek',
+            description: 'Perennial creek with swimming holes, trout, lush vegetation - desert oasis!',
+          },
+          {
+            icon: 'Star',
+            title: 'Slide Rock',
+            description: 'Natural 80-ft slick rock water slide - cold but thrilling!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Wildlife',
+            description: 'Javelina (wild pigs), elk, eagles, lizards, rattlesnakes (careful!).',
+          },
+          {
+            icon: 'Camera',
+            title: 'Fall Colors',
+            description: 'Oak Creek Canyon turns gold/red in October - stunning!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Desert Ecology',
+            description: 'Learn about cacti, adaptations, water conservation, ecosystems.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Slide Rock State Park ($20/vehicle) crowded summer - arrive early!',
+        'Oak Creek water cold (50-60°F) even in summer - refreshing!',
+        'Red Rock State Park ($7/person) has easy nature trails and visitors center.',
+        'Fall (October) Oak Creek Canyon foliage spectacular - cottonwoods turn gold!',
+        'Early morning best for wildlife viewing (animals active before heat).',
+        'Bring water shoes for creek activities.',
+        'Monsoon season (July-Sept) creates waterfalls and dramatic clouds!',
+        'West Fork Trail combines nature + photography - gorgeous creek walk.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Slide Rock?',
+          answer: 'Slide Rock State Park has natural 80-foot water slide formed by slick creek rocks! Cold water (50-60°F), slippery, thrilling! $20/vehicle. Summer crowded (arrive early!). Unique swimming - bring water shoes and old clothes. Fun but can be rough on back!',
+        },
+        {
+          question: 'Can you swim in Oak Creek?',
+          answer: 'Yes! Popular swimming spots: Slide Rock, Red Rock Crossing, Grasshopper Point, West Fork. Water cold (50-60°F) but refreshing! Summer perfect. Bring water shoes (rocks slippery). Free at some spots, day-use fees at state parks. Gorgeous creek swimming!',
+        },
+        {
+          question: 'What wildlife is in Sedona?',
+          answer: 'Javelina (wild pigs), elk, mule deer, coyotes, bobcats (rare), golden eagles, hawks, lizards, rattlesnakes! Diverse for desert. Early morning/dusk best viewing. Guided tours know where animals frequent. Don\'t approach wildlife - respect distance!',
+        },
+        {
+          question: 'When is fall foliage?',
+          answer: 'October! Oak Creek Canyon cottonwoods, sycamores, maples turn gold/orange/red. Gorgeous contrast with red rocks! Drive SR 89A through canyon. Peak: Mid-late October. Short season (2-3 weeks). Plan accordingly - it\'s stunning!',
+        },
+        {
+          question: 'Are rattlesnakes common?',
+          answer: 'Present but not aggressive! Stay on trails, watch where you step/reach. Most active spring/summer mornings. They avoid humans. Rare encounters. Don\'t provoke if seen - back away slowly. Serious but uncommon risk. Guides know how to avoid.',
+        },
+        {
+          question: 'What is Red Rock State Park?',
+          answer: 'Red Rock State Park is nature preserve with easy trails, visitors center, ranger programs, Oak Creek access. $7/person. Environmental education focus. Less crowded than popular trails. Great for families, birding, easy nature walks. 10 min from Sedona.',
+        },
+        {
+          question: 'How much do nature tours cost?',
+          answer: 'Guided nature hikes: $65-100 (3-4 hours). Oak Creek tours: $75-110. Wildlife safaris: $90-130. Slide Rock visit: $20 (self-visit). Red Rock State Park: $7. Nature tours add education and access!',
+        },
+        {
+          question: 'When is the best time for nature tours?',
+          answer: 'Spring (wildflowers, mild), Fall (foliage, perfect temps), Summer (creek swimming but hot!), Winter (mild, possible snow). Oak Creek gorgeous year-round. Wildlife active spring/fall. Each season offers different nature experiences!',
+        },
+      ],
+    },
+  },
 };
 
