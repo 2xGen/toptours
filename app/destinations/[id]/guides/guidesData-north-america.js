@@ -16050,6 +16050,886 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'universal-studios-tours': {
+      title: 'Orlando Universal Studios Tours',
+      subtitle: 'Experience Wizarding World of Harry Potter, thrilling rides, and movie magic!',
+      categoryName: 'Universal Studios Tours',
+      
+      stats: {
+        toursAvailable: 124,
+        priceFrom: 109,
+        duration: 'Full day',
+      },
+
+      introduction: `Experience Universal Orlando Resort - three incredible theme parks with movie magic! Universal Studios tours explore Universal Studios Florida (Wizarding World - Diagon Alley, Transformers!), Islands of Adventure (Hogsmeade, Marvel Super Hero Island, Jurassic Park!), and Volcano Bay water park. Tours include Express Pass (skip-the-line!), park-to-park tickets (ride Hogwarts Express between parks!), early park admission, and expert planning. Visit Wizarding World of Harry Potter (most popular!), experience thrilling rides like Hagrid's Motorbike, Velocicoaster (best coaster in Florida!), and enjoy Universal CityWalk dining/entertainment. Universal is smaller than Disney (easier to navigate!), more thrill-focused, and incredible for Harry Potter fans. It's movie magic come alive!`,
+
+      seo: {
+        title: 'Orlando Universal Studios Tours 2025 - Harry Potter & Theme Park Tickets',
+        description: 'Experience Universal Orlando! Wizarding World, thrilling rides, and park tickets!',
+        keywords: 'Universal Studios Orlando, Harry Potter World, Universal tickets, Islands of Adventure, theme parks',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Wizarding World',
+          description: 'Harry Potter lands (Diagon Alley + Hogsmeade) - incredibly immersive!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Thrill Rides',
+          description: 'Velocicoaster, Hagrid\'s Motorbike - best coasters in Florida!',
+        },
+        {
+          icon: 'Users',
+          title: 'Express Pass',
+          description: 'Skip lines on most rides - worth every penny!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'More Compact',
+          description: 'Easier to navigate than Disney - see more in less time!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Park-to-Park Tickets',
+          description: 'Access both theme parks and ride Hogwarts Express.',
+          features: [
+            '1-3 days',
+            'Both parks',
+            'Hogwarts Express',
+            'Essential',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Express Pass',
+          description: 'Skip regular lines at most attractions.',
+          features: [
+            'Add-on option',
+            'Skip most lines',
+            'Save hours',
+            'Premium',
+            'Worth it',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'VIP Experience',
+          description: 'Private guided tour with behind-the-scenes access.',
+          features: [
+            'Full day',
+            'Private guide',
+            'Skip all lines',
+            'Backstage',
+            'Luxury',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: '3-Park Ticket',
+          description: 'Add Volcano Bay water park to theme parks.',
+          features: [
+            '2-3 days',
+            'Three parks',
+            'Complete experience',
+            'Summer perfect',
+            'Comprehensive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Orlando Universal Studios Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Each theme park needs full day. Plan 2-3 days for both parks + Volcano Bay.',
+          },
+          {
+            icon: 'Star',
+            title: 'Wizarding World',
+            description: 'Diagon Alley (Studios) + Hogsmeade (Islands) - ride Hogwarts Express between!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Velocicoaster',
+            description: 'Florida\'s best roller coaster in Jurassic Park - intense thrill!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Hagrid\'s Motorbike',
+            description: 'Most popular ride - motorcycle coaster through Forbidden Forest!',
+          },
+          {
+            icon: 'Users',
+            title: 'Marvel Super Hero Island',
+            description: 'Spider-Man, Hulk coaster, Marvel characters (Disney can\'t have them in FL!).',
+          },
+          {
+            icon: 'MapPin',
+            title: 'CityWalk',
+            description: 'Free entertainment district - restaurants, bars, shops between parks.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Express Pass ($90-300/day) worth it for busy days - skip 1+ hour waits!',
+        'Park-to-Park ticket required to ride Hogwarts Express - worth it!',
+        'Arrive at rope drop - do Hagrid\'s Motorbike or Velocicoaster first!',
+        'Early Park Admission (resort guests) huge advantage - book on-property.',
+        'Islands of Adventure has better rides. Studios has better shows.',
+        'Butterbeer (in Wizarding World) must-try - frozen version best!',
+        'Mid-week less crowded. September-November and January-February best.',
+        'Universal easier to navigate than Disney - can see both parks in 2 days.',
+      ],
+
+      faqs: [
+        {
+          question: 'How much do Universal Orlando tickets cost?',
+          answer: '1-day/1-park: $109-159. Park-to-Park: Add $65/day. Multi-day saves money: 2 days ~$300, 3 days ~$350. Express Pass: $90-300/day (separate). Budget $150-250/person/day with food. Annual Pass: $400+ if visiting multiple times.',
+        },
+        {
+          question: 'Is Universal better than Disney?',
+          answer: 'Different! Universal: Better thrill rides, easier to navigate, amazing for Harry Potter fans. Disney: More magical for young kids, more parks, classic characters. Universal more compact and efficient. Teens/adults often prefer Universal. Families with young kids prefer Disney. Both excellent!',
+        },
+        {
+          question: 'How many days needed for Universal Orlando?',
+          answer: 'Minimum 2 days (one per theme park). Ideal: 3 days (2 theme parks + Volcano Bay water park). Each park needs full day. Can rush both parks in 1 day with Express Pass but exhausting. Plan 2-3 days for good experience.',
+        },
+        {
+          question: 'Is Express Pass worth it?',
+          answer: 'YES for busy seasons (summer, holidays)! Costs $90-300/day but skips 1+ hour waits on most rides. Saves 3-4 hours. Not needed off-season. Universal Unlimited worth splurge - ride multiple times. Budget travelers: Go off-season, skip Express.',
+        },
+        {
+          question: 'Can you do Universal in one day?',
+          answer: 'Technically yes with Park-to-Park ticket and Express Pass, but rushed! You\'ll miss shows and re-rides. Each park deserves full day. 2 days ideal. 1 day only if absolutely necessary - prioritize Islands of Adventure (better rides).',
+        },
+        {
+          question: 'What is the Wizarding World?',
+          answer: 'Harry Potter lands in both parks! Diagon Alley (Studios) and Hogsmeade (Islands of Adventure). Incredibly immersive - shops, wands, Butterbeer, Gringotts ride, Escape from Gringotts! Park-to-Park ticket needed to ride Hogwarts Express between lands. Essential for Potter fans!',
+        },
+        {
+          question: 'When is the best time to visit Universal?',
+          answer: 'Best: September-November and January-February (low crowds, mild weather). Avoid: Summer (hot, crowded), Christmas-New Year, spring break. Weekdays less crowded. Early Park Admission (resort guests) huge advantage. Universal easier to visit off-peak than Disney.',
+        },
+        {
+          question: 'Should I stay at Universal resort?',
+          answer: 'Pros: Early Park Admission (1 hour early!), free Express Pass (top tier hotels!), walking distance. Cons: Expensive ($250-600/night). Off-property cheaper but need car. Serious about Universal? Stay on-property - Early Admission + Express Pass worth it!',
+        },
+      ],
+    },
+
+    'theme-park-tours': {
+      title: 'Orlando Theme Park Tours',
+      subtitle: 'Explore Disney, Universal, SeaWorld, and Orlando\'s incredible parks!',
+      categoryName: 'Theme Park Tours',
+      
+      stats: {
+        toursAvailable: 98,
+        priceFrom: 85,
+        duration: 'Full day',
+      },
+
+      introduction: `Discover Orlando - the theme park capital of the world! Theme park tours explore Disney World (4 parks), Universal Orlando (3 parks), SeaWorld Orlando (marine life and coasters!), Legoland (perfect for young kids!), Fun Spot (go-karts and coasters), and more. Tours include multi-park tickets, skip-the-line options, transportation between parks, expert planning, and insider tips. Learn about best park combinations, money-saving strategies, when to visit which parks, and how to maximize limited time. With 20+ parks and attractions, Orlando offers endless entertainment options - tours help navigate overwhelming choices and create efficient itineraries. It's thrill-seeker paradise!`,
+
+      seo: {
+        title: 'Orlando Theme Park Tours 2025 - Disney, Universal & Multi-Park Tickets',
+        description: 'Explore Orlando theme parks! Multi-park tickets, combos, and expert planning!',
+        keywords: 'Orlando theme parks, Orlando attractions, Disney Universal combo, theme park tickets Orlando',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Most Parks Globally',
+          description: '20+ theme parks and attractions - entertainment capital!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Multi-Park Combos',
+          description: 'Visit Disney, Universal, SeaWorld in one trip!',
+        },
+        {
+          icon: 'Users',
+          title: 'All Ages',
+          description: 'Parks for toddlers to thrill-seekers - something for everyone!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Expert Planning',
+          description: 'Guides create efficient itineraries maximizing your time!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Disney + Universal Combo',
+          description: 'Most popular - experience both major resorts.',
+          features: [
+            '5-7 days',
+            'Disney + Universal',
+            'Skip-the-line',
+            'Most popular',
+            'Complete',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'All Parks Pass',
+          description: 'Disney, Universal, SeaWorld - comprehensive experience.',
+          features: [
+            '7-10 days',
+            'All major parks',
+            'Flexible',
+            'Ultimate',
+            'Value',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Budget Park Tour',
+          description: 'SeaWorld, Fun Spot, Legoland - cheaper alternatives.',
+          features: [
+            '3-4 days',
+            'Budget-friendly',
+            'Less crowded',
+            'Affordable',
+            'Family',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'VIP Multi-Park',
+          description: 'Private guides at multiple parks with luxury transport.',
+          features: [
+            '5-7 days',
+            'Private',
+            'Skip all lines',
+            'Luxury transport',
+            'Premium',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Orlando Theme Park Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Full days at each park. Plan 5-10 days for multiple parks. Each park needs dedicated time.',
+          },
+          {
+            icon: 'Star',
+            title: 'Disney World',
+            description: '4 parks - most expensive but most magical. Plan 4-5 days minimum.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Universal Orlando',
+            description: '3 parks - best thrill rides and Harry Potter. Plan 2-3 days.',
+          },
+          {
+            icon: 'Camera',
+            title: 'SeaWorld',
+            description: 'Marine life + coasters - underrated! 1 day sufficient. More affordable than Disney/Universal.',
+          },
+          {
+            icon: 'Users',
+            title: 'Legoland',
+            description: 'Perfect for kids 2-12. Located 45 minutes from Orlando. 1 day.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Transportation',
+            description: 'Parks spread out - need rental car or tour transport between resorts.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Disney and Universal require 5-7 days combined - don\'t rush!',
+        'Consider Disney OR Universal (not both) if limited time - both need multiple days.',
+        'SeaWorld often overlooked - great coasters and less crowded!',
+        'Multi-park tickets save money vs. single-day tickets.',
+        'Rental car necessary if visiting multiple resort areas.',
+        'September-November and January-February: Best weather, lowest crowds.',
+        'Stay near International Drive for central access to most parks.',
+        'Budget $200-300/person/day including tickets, food, lodging.',
+      ],
+
+      faqs: [
+        {
+          question: 'How many theme parks are in Orlando?',
+          answer: 'Major parks: Disney World (4), Universal Orlando (3), SeaWorld (3 including Discovery Cove/Aquatica). Total 20+ parks and attractions including Legoland, Fun Spot, Gatorland, etc. Orlando is world\'s theme park capital - endless options!',
+        },
+        {
+          question: 'Can you visit Disney and Universal in one trip?',
+          answer: 'Yes but needs 5-7 days minimum! Disney needs 4 days, Universal needs 2-3 days. Rushing both exhausting. They\'re 15 minutes apart. Most visitors do both in one Orlando trip. Plan week minimum for proper experience.',
+        },
+        {
+          question: 'Which Orlando park is best?',
+          answer: 'Depends on interests! Disney Magic Kingdom: Most magical, best for young kids. Universal Islands of Adventure: Best thrill rides. EPCOT: Best for adults (drinking!). Hollywood Studios: Star Wars fans. All excellent - choose based on preferences!',
+        },
+        {
+          question: 'How much do Orlando theme parks cost?',
+          answer: 'Disney: $109-159/day. Universal: $109-159/day. SeaWorld: $85-105/day. Multi-day and combo tickets save money. Budget $150-200/person/day including food. Week-long Orlando trip: $1,500-2,500/person including tickets, food, lodging.',
+        },
+        {
+          question: 'How many days needed for Orlando?',
+          answer: 'Minimum 5-7 days for Disney + Universal. Ideal: 10 days for all major parks + rest days. Each park needs full day. Budget travelers: 3-4 days hitting highlights. Orlando rewards longer stays - don\'t rush!',
+        },
+        {
+          question: 'Is SeaWorld Orlando worth it?',
+          answer: 'YES! Often overlooked but great value. Amazing coasters (Mako, Kraken), marine life shows, less crowded than Disney/Universal. More affordable ($85/day). Perfect add-on day or budget option. 1 day sufficient. Underrated!',
+        },
+        {
+          question: 'Do you need rental car in Orlando?',
+          answer: 'Depends! Staying at Disney/Universal and only visiting those parks: No (free transport). Visiting multiple resorts (Disney + Universal + SeaWorld): YES, need car. Parks spread across 30+ miles. Uber adds up fast. Rental car recommended for multi-park trips.',
+        },
+        {
+          question: 'When is the best time to visit Orlando?',
+          answer: 'Best: September-November and January-February (low crowds, nice weather). Worst: Summer (hot, crowded, expensive), Christmas-New Year (insane crowds), spring break. Weekdays always better than weekends. Plan around school schedules for lowest crowds!',
+        },
+      ],
+    },
+
+    'family-adventure-tours': {
+      title: 'Orlando Family Adventure Tours',
+      subtitle: 'Experience kid-friendly attractions, interactive experiences, and family fun!',
+      categoryName: 'Family Adventure Tours',
+      
+      stats: {
+        toursAvailable: 86,
+        priceFrom: 65,
+        duration: '4-8 hours',
+      },
+
+      introduction: `Discover Orlando's family-friendly adventures beyond theme parks! Family tours explore Kennedy Space Center (real rockets and astronauts!), Gatorland (alligator shows and ziplines over gators!), WonderWorks (upside-down building with interactive exhibits), Icon Park (400ft Wheel observation!), mini-golf courses, trampoline parks, and interactive museums. Experience airboat rides seeing wild gators, visit SEA LIFE Aquarium, explore Madame Tussauds wax museum, and enjoy educational attractions. Tours combine fun with learning - science, nature, space exploration, and wildlife. Perfect for families wanting variety beyond theme parks or rest days between Disney/Universal. It's Orlando diversity!`,
+
+      seo: {
+        title: 'Orlando Family Adventure Tours 2025 - Kennedy Space Center & Family Fun',
+        description: 'Family-friendly Orlando! Kennedy Space Center, Gatorland, and kid adventures!',
+        keywords: 'Orlando family tours, Kennedy Space Center, Gatorland, family activities Orlando, kids Orlando',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Kennedy Space Center',
+          description: 'Real rockets, meet astronauts - incredible space experience!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Gatorland',
+          description: 'Alligator shows, feeding, zipline over gators - thrilling!',
+        },
+        {
+          icon: 'Users',
+          title: 'Educational Fun',
+          description: 'Learn while having fun - science, nature, space!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Theme Park Alternative',
+          description: 'More affordable and less crowded than Disney/Universal!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Kennedy Space Center',
+          description: 'Day trip to NASA complex with shuttle exhibits.',
+          features: [
+            '6-8 hours',
+            'Real rockets',
+            'Astronaut encounter',
+            'Educational',
+            'Incredible',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Gatorland Adventure',
+          description: 'Alligator park with shows, feeding, and zipline.',
+          features: [
+            '4-5 hours',
+            'Gator shows',
+            'Feeding demo',
+            'Zipline option',
+            'Thrilling',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Icon Park Experience',
+          description: 'Observation wheel, aquarium, wax museum, mini-golf.',
+          features: [
+            '3-4 hours',
+            'Multiple attractions',
+            'Central location',
+            'Convenient',
+            'Fun',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Airboat & Wildlife',
+          description: 'Airboat ride through Everglades seeing wild gators.',
+          features: [
+            '2-3 hours',
+            'Airboat ride',
+            'Wild gators',
+            'Nature',
+            'Exciting',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Orlando Family Adventure Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Kennedy Space Center: Full day. Gatorland: 4-5 hours. Icon Park: 3-4 hours. Airboat: 2-3 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Space Shuttle Atlantis',
+            description: 'See real space shuttle up close at Kennedy Space Center!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Gator Shows',
+            description: 'Watch trainers wrestle alligators and jump gators - thrilling demonstrations!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Icon Wheel',
+            description: '400-foot observation wheel with air-conditioned capsules - stunning views!',
+          },
+          {
+            icon: 'Users',
+            title: 'Interactive Exhibits',
+            description: 'WonderWorks, science centers - hands-on learning experiences!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Wildlife Encounters',
+            description: 'Airboat rides, Gatorland, and Florida nature experiences!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Kennedy Space Center 1 hour from Orlando - full day trip, worth it!',
+        'Gatorland ($30 adults, $20 kids) cheaper alternative to theme parks.',
+        'Icon Park combo ticket saves money - Wheel + Aquarium + Museum.',
+        'Airboat tours near Orlando (30-45 min drive) - hotel pickup available.',
+        'WonderWorks ($35) great for rainy days or theme park breaks.',
+        'Many family attractions cheaper than Disney/Universal - budget-friendly!',
+        'Boggy Creek Airboats popular choice - wild gator sightings guaranteed.',
+        'Schedule family adventures between theme park days for variety and rest.',
+      ],
+
+      faqs: [
+        {
+          question: 'Is Kennedy Space Center worth visiting?',
+          answer: 'Absolutely! See real space shuttles, rockets, meet astronauts, and learn NASA history. $75 adults, $65 kids. Full day needed (1 hour from Orlando). Incredible for space enthusiasts and educational for kids. One of Florida\'s best attractions!',
+        },
+        {
+          question: 'What is Gatorland?',
+          answer: 'Gatorland is Orlando\'s "Alligator Capital" - 110-acre park with thousands of gators and crocs! Breeding marsh, jumping gator show, feeding demos, zipline over gators! $30 adults, $20 kids. Fun, educational, uniquely Florida. Great alternative to expensive theme parks!',
+        },
+        {
+          question: 'Is Orlando good for families with young kids?',
+          answer: 'Excellent! Disney perfect for young kids (Magic Kingdom especially). Legoland for ages 2-12. Gatorland, mini-golf, interactive museums kid-friendly. Many options beyond big theme parks. Plan mix of activities - don\'t do theme parks every day!',
+        },
+        {
+          question: 'What are cheaper alternatives to Disney/Universal?',
+          answer: 'SeaWorld ($85), Gatorland ($30), Legoland ($85), Icon Park attractions ($30-50), Fun Spot (free entry, pay per ride), WonderWorks ($35), mini-golf ($10-15). All much cheaper! Mix expensive and budget attractions for affordable family trip.',
+        },
+        {
+          question: 'Can you do airboat tours in Orlando?',
+          answer: 'Yes! Boggy Creek, Wild Florida, and other operators offer airboat rides 30-45 minutes from Orlando. See wild gators, birds, Florida wetlands. Tours $45-75 (1-2 hours). Included in some family tour packages. Thrilling and uniquely Florida!',
+        },
+        {
+          question: 'What should families do on non-theme-park days?',
+          answer: 'Kennedy Space Center, Gatorland, Icon Park, mini-golf, pool days at hotel, airboat tours, WonderWorks, Aquarium. Mix rest with lighter activities. Theme park fatigue is real - variety keeps kids engaged. Non-park days save money too!',
+        },
+        {
+          question: 'How much do family tours cost?',
+          answer: 'Kennedy Space Center: $75 adults, $65 kids. Gatorland: $30/$20. Airboat: $50-75. Icon Park: $30-50. Multi-attraction combo tickets save 20-30%. Budget $50-150/person/day for non-theme-park activities. Much cheaper than Disney/Universal!',
+        },
+        {
+          question: 'When is the best time for family Orlando trip?',
+          answer: 'September-November and January-February: Best weather, lower crowds, cheaper. Avoid summer (hot, crowded, expensive) and major holidays. School breaks always crowded. Orlando great year-round - spring and fall ideal. Plan 7-10 days for full experience!',
+        },
+      ],
+    },
+
+    'water-park-tours': {
+      title: 'Orlando Water Park Tours',
+      subtitle: 'Experience Volcano Bay, Typhoon Lagoon, Aquatica, and aquatic adventures!',
+      categoryName: 'Water Park Tours',
+      
+      stats: {
+        toursAvailable: 54,
+        priceFrom: 69,
+        duration: 'Full day',
+      },
+
+      introduction: `Discover Orlando's incredible water parks - perfect Florida escape! Water park tours explore Volcano Bay (Universal - amazing theming!), Disney's Typhoon Lagoon (wave pool and lazy river), Disney's Blizzard Beach (ski resort theme!), Aquatica (SeaWorld - dolphin viewing while sliding!), Discovery Cove (swim with dolphins!), and more. Experience wave pools, lazy rivers, water slides, surf simulators, private cabanas, and tropical theming. Tours include tickets, cabana rentals, skip-the-line options, and transportation. Florida's heat makes water parks essential! Perfect for theme park breaks, summer visits, or full water park vacation. It's splashing fun!`,
+
+      seo: {
+        title: 'Orlando Water Park Tours 2025 - Volcano Bay, Typhoon Lagoon & Aquatic Fun',
+        description: 'Experience Orlando water parks! Volcano Bay, Disney water parks, and aquatic adventures!',
+        keywords: 'Orlando water parks, Volcano Bay, Typhoon Lagoon, Aquatica Orlando, water park tickets',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'World-Class Parks',
+          description: 'Volcano Bay, Typhoon Lagoon - best water parks globally!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Beat Florida Heat',
+          description: 'Perfect escape from Orlando\'s hot summers!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Amazing Theming',
+          description: 'Volcano, tropical island, ski resort - immersive experiences!',
+        },
+        {
+          icon: 'Users',
+          title: 'All Ages',
+          description: 'Slides for thrill-seekers, lazy rivers for relaxation!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Waves',
+          title: 'Volcano Bay',
+          description: 'Universal\'s tropical water park with innovative rides.',
+          features: [
+            'Full day',
+            'TapuTapu system',
+            'Amazing theming',
+            'Best slides',
+            'Top-rated',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Disney Water Parks',
+          description: 'Typhoon Lagoon or Blizzard Beach - classic Disney fun.',
+          features: [
+            'Full day',
+            'Wave pools',
+            'Lazy rivers',
+            'Family-friendly',
+            'Themed',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Discovery Cove',
+          description: 'All-inclusive swim with dolphins and snorkeling!',
+          features: [
+            'Full day',
+            'Swim with dolphins',
+            'All meals included',
+            'Luxury',
+            'Special',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Multi-Park Pass',
+          description: 'Visit multiple water parks with flexible tickets.',
+          features: [
+            '2-3 days',
+            'Multiple parks',
+            'Variety',
+            'Efficient',
+            'Value',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Orlando Water Park Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Full days recommended. Parks open 10 AM-6 PM typically. Arrive early for cabanas.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Volcano Bay',
+            description: 'TapuTapu virtual queue system - no physical lines! Krakatau volcano centerpiece.',
+          },
+          {
+            icon: 'Star',
+            title: 'Typhoon Lagoon',
+            description: 'Massive wave pool (6-foot waves!), lazy river, tropical theming - Disney classic!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Discovery Cove',
+            description: 'Swim with dolphins, snorkel coral reef, all meals/drinks included! $200-400 all-inclusive.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Lazy Rivers',
+            description: 'All parks have relaxing lazy rivers - perfect for chilling between slides!',
+          },
+          {
+            icon: 'Users',
+            title: 'Cabana Rentals',
+            description: 'Private cabanas available ($150-400/day) - shade, loungers, service!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Volcano Bay TapuTapu system genius - virtual queues, no standing in line!',
+        'Discovery Cove limits attendance (expensive but never crowded) - book ahead!',
+        'Cabanas worth it for large families - shade, storage, comfort.',
+        'Bring waterproof sunscreen - Florida sun intense and reflection amplifies!',
+        'Water park + theme park combos save money.',
+        'Typhoon Lagoon closes winter (Nov-Mar) for refurbishment - check schedules!',
+        'Arrive at opening (10 AM) for best cabana selection and shorter waits.',
+        'Lockers required for rides - $10-15/day.',
+      ],
+
+      faqs: [
+        {
+          question: 'Which Orlando water park is best?',
+          answer: 'Volcano Bay: Most innovative, best slides, TapuTapu system. Typhoon Lagoon: Best wave pool, classic Disney. Discovery Cove: Swim with dolphins, all-inclusive luxury. Aquatica: Good balance of slides and relaxation. All excellent - choose by priorities!',
+        },
+        {
+          question: 'How much do Orlando water parks cost?',
+          answer: 'Volcano Bay: $80-90. Typhoon Lagoon/Blizzard Beach: $69-79. Aquatica: $65-75. Discovery Cove: $200-400 (all-inclusive). Add water park to Disney/Universal tickets: Cheaper combo option. Cabanas: $150-400 extra.',
+        },
+        {
+          question: 'Can you do water park and theme park same day?',
+          answer: 'Technically yes but exhausting! Water parks need full day (10 AM-5 PM). Could do theme park evening after but tiring. Better: Dedicate full day to water park. Some tickets allow "hop" option but not recommended - enjoy each fully!',
+        },
+        {
+          question: 'What is Discovery Cove?',
+          answer: 'Discovery Cove is all-inclusive luxury water park - swim with dolphins, snorkel coral reef, tropical birds, all meals/drinks included! Limited attendance (never crowded). $200-400/person. It\'s full-day resort-like experience. Special occasion or bucket list - worth splurge!',
+        },
+        {
+          question: 'Do you need cabana at water parks?',
+          answer: 'Not required but nice! Cabanas provide shade (Florida sun brutal!), loungers, storage, sometimes food service. $150-400/day. Worth it for families with young kids or full-day visits. Budget: Bring towels, find shade under palm trees. Works either way!',
+        },
+        {
+          question: 'When are water parks open?',
+          answer: 'Summer (March-October): All parks open. Winter: Volcano Bay year-round, Disney parks close Nov-Feb for refurbishment (alternating). Check schedules! Water parks most fun when hot - summer ideal. Spring break and summer peak season.',
+        },
+        {
+          question: 'Are water parks worth it?',
+          answer: 'YES, especially summer! Beat Florida heat, less expensive than theme parks, more relaxing. Great variety from Disney/Universal. Families love water parks. 1-2 water park days in week-long trip perfect balance. Refreshing and fun!',
+        },
+        {
+          question: 'What should I bring to Orlando water parks?',
+          answer: 'Waterproof sunscreen (reapply!), towels, water shoes (pavement hot!), change of clothes, waterproof phone case. Rent lockers for valuables ($10-15). Most parks allow small coolers. Cabanas provide towels. Cash for lockers/food. Come prepared!',
+        },
+      ],
+    },
+
+    'nature-tours': {
+      title: 'Orlando Nature Tours',
+      subtitle: 'Explore springs, airboats, wildlife, and natural Florida beauty!',
+      categoryName: 'Nature Tours',
+      
+      stats: {
+        toursAvailable: 62,
+        priceFrom: 55,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Experience Florida's natural beauty beyond theme parks! Nature tours explore crystal-clear springs (Blue Spring, Wekiwa Springs - swim in 72°F natural pools!), airboat rides through wetlands seeing wild alligators and birds, kayaking eco-tours, manatee encounters (winter!), Everglades day trips, and state parks. Visit Orlando Wetlands Park (birding paradise!), Lake Eola (downtown oasis), and natural areas preserving "real Florida." Tours include wildlife viewing, swimming in springs, hiking trails, and education about Florida ecology. Learn about endangered species, wetland importance, and escape Orlando's tourist crowds. It's wild Florida!`,
+
+      seo: {
+        title: 'Orlando Nature Tours 2025 - Springs, Airboats & Florida Wildlife',
+        description: 'Explore Orlando nature! Crystal springs, airboat rides, manatees, and Florida wildlife!',
+        keywords: 'Orlando nature tours, Florida springs, airboat tours Orlando, manatee tours, Blue Spring',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Crystal Springs',
+          description: 'Swim in 72°F natural springs - incredibly clear and refreshing!',
+        },
+        {
+          icon: 'Star',
+          title: 'Wild Alligators',
+          description: 'Airboat rides through wetlands seeing gators in natural habitat!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Manatee Encounters',
+          description: 'See endangered manatees in winter (Nov-March) - gentle giants!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Natural Escape',
+          description: 'Peaceful alternative to crowded theme parks!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Waves',
+          title: 'Crystal Springs Tour',
+          description: 'Visit Blue Spring or Wekiwa Springs for swimming.',
+          features: [
+            '4-5 hours',
+            'Natural swimming',
+            'Crystal clear water',
+            'Refreshing',
+            'Beautiful',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Airboat Adventure',
+          description: 'High-speed airboat through wetlands spotting wildlife.',
+          features: [
+            '2-3 hours',
+            'Airboat ride',
+            'Wild gators',
+            'Thrilling',
+            'Nature',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Manatee Tour',
+          description: 'See or swim with manatees (winter season only).',
+          features: [
+            '3-4 hours',
+            'Manatee viewing',
+            'Winter only',
+            'Educational',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Kayak Eco-Tour',
+          description: 'Paddle through springs or wetlands observing wildlife.',
+          features: [
+            '3 hours',
+            'Kayaking',
+            'Peaceful',
+            'Wildlife',
+            'Active',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Orlando Nature Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Springs: 4-5 hours. Airboat: 2-3 hours. Kayaking: 3 hours. Full day eco-tours: 6-8 hours.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Crystal Clear Springs',
+            description: '72°F year-round, visibility 100+ feet - like swimming in aquarium!',
+          },
+          {
+            icon: 'Star',
+            title: 'Alligator Sightings',
+            description: 'Wild gators in wetlands - safe from airboat or kayak (with guide!).',
+          },
+          {
+            icon: 'Heart',
+            title: 'Manatees',
+            description: 'Gentle giants visit springs in winter (Nov-March) - up to 500 at Blue Spring!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Bird Watching',
+            description: 'Herons, egrets, eagles, and diverse Florida bird species.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Ecology Education',
+            description: 'Learn about Florida ecosystems, endangered species, and conservation.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Blue Spring State Park (30 min from Orlando) best for manatees - 500+ in winter!',
+        'Wekiwa Springs closer (20 min) - beautiful for swimming and kayaking.',
+        'Airboat tours 30-45 min from Orlando - Boggy Creek, Wild Florida popular.',
+        'Manatee season: November-March (they seek warm spring water).',
+        'Springs 72°F year-round - wetsuit recommended for extended swimming.',
+        'Bring underwater camera for springs - visibility incredible!',
+        'State parks charge $5-8 entrance per vehicle - very affordable.',
+        'Morning tours best for wildlife activity and cooler temperatures.',
+      ],
+
+      faqs: [
+        {
+          question: 'What are Florida springs?',
+          answer: 'Natural springs are crystal-clear freshwater pools fed by underground aquifers. 72°F year-round, visibility 100+ feet! Blue Spring, Wekiwa Springs near Orlando. You can swim, snorkel, kayak. $5-8 park entry. Incredibly beautiful and refreshing - essential Florida experience!',
+        },
+        {
+          question: 'Can you see manatees in Orlando?',
+          answer: 'Yes at Blue Spring State Park (30 min from Orlando)! November-March, manatees seek warm spring water - 500+ manatees gather! View from boardwalk or kayak (no touching - protected species). Most reliable manatee viewing in Florida. Free with park entry ($6). Incredible!',
+        },
+        {
+          question: 'Are airboat tours worth it?',
+          answer: 'YES for Florida wildlife experience! See wild gators, birds, wetlands ecology. High-speed thrilling ride. Tours $55-75 (1-2 hours). Uniquely Florida. Boggy Creek Airboats near Orlando popular. Great theme park alternative. Kids love it!',
+        },
+        {
+          question: 'Can you swim in Florida springs?',
+          answer: 'Absolutely! Springs are safe, clean, and gorgeous. No gators in springs (they prefer warmer water). 72°F refreshing year-round. Blue Spring, Wekiwa Springs, Rock Springs allow swimming. Bring snorkel mask - visibility incredible! $5-8 park entry. Natural water park!',
+        },
+        {
+          question: 'What is Discovery Cove?',
+          answer: 'Discovery Cove is all-inclusive park where you swim with dolphins ($200-400), snorkel coral reef, interact with birds, all in tropical setting. Meals, drinks, gear included. Limited daily attendance - never crowded. Bucket-list experience. Book weeks ahead. Worth splurge!',
+        },
+        {
+          question: 'How much do nature tours cost?',
+          answer: 'Springs entry: $5-8. Airboat: $55-75. Kayak tours: $60-90. Manatee tours: $65-85. Discovery Cove: $200-400. Much cheaper than theme parks! Budget-friendly nature experiences. Great for theme park breaks.',
+        },
+        {
+          question: 'When is the best time for nature tours?',
+          answer: 'Manatees: November-March (winter only!). Springs: Year-round but summer most refreshing. Airboats: Year-round. Bird watching: Winter migrations. Morning tours best for wildlife activity. Nature accessible all year!',
+        },
+        {
+          question: 'Is Orlando nature tours good for kids?',
+          answer: 'Excellent! Kids love airboats (thrilling!), swimming in springs (natural water park!), seeing manatees (gentle giants!). Educational and fun. Great theme park alternative. More affordable too. Mix nature with theme parks for variety!',
+        },
+      ],
+    },
   },
 };
 
