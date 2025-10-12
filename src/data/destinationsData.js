@@ -3022,12 +3022,12 @@ export const destinations = [
     heroDescription: 'Welcome to New York City, where iconic skyscrapers meet diverse neighborhoods and endless possibilities await around every corner. From the bright lights of Times Square to the cultural treasures of museums, from Central Park\'s green oasis to the vibrant food scene, this global city offers the perfect blend of excitement, culture, and urban adventure. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//New%20York%20City.jpeg',
     tourCategories: [
-      'Times Square Tours',
-      'Central Park Tours',
-      'Museum Tours',
-      'Food & Culture Tours',
-      'Broadway Shows',
-      'Architecture Tours'
+      { name: 'Times Square Tours', hasGuide: true },
+      { name: 'Central Park Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Broadway Shows', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true }
     ],
     seo: {
       title: 'New York City Tours & Excursions - Top-Rated Activities & Adventures',
@@ -3574,12 +3574,12 @@ export const destinations = [
     heroDescription: 'Welcome to New Orleans, where jazz rhythms echo through historic streets and Creole culture infuses every aspect of life. From the iconic French Quarter to the vibrant music scene, from world-famous cuisine to Mardi Gras celebrations, this soulful city offers the perfect blend of history, culture, and Southern charm. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//New%20Orleans.webp',
     tourCategories: [
-      'French Quarter Tours',
-      'Jazz Tours',
-      'Food & Creole Tours',
-      'Historical Tours',
-      'Swamp Tours',
-      'Cultural Tours'
+      { name: 'French Quarter Tours', hasGuide: true },
+      { name: 'Jazz Tours', hasGuide: true },
+      { name: 'Food & Creole Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Swamp Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true }
     ],
     seo: {
       title: 'New Orleans Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4344,12 +4344,12 @@ export const destinations = [
     heroDescription: 'Welcome to Oaxaca, where colonial architecture meets indigenous culture and authentic Mexican traditions come alive. From the historic Zocalo to ancient Monte Alban ruins, from world-famous cuisine to vibrant markets, this cultural treasure offers the perfect blend of history, art, and authentic Mexican life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Oaxaca.webp',
     tourCategories: [
-      'Historic Center Tours',
-      'Monte Alban Tours',
-      'Food & Mezcal Tours',
-      'Market Tours',
-      'Cultural Tours',
-      'Artisan Tours'
+      { name: 'Historic Center Tours', hasGuide: true },
+      { name: 'Monte Alban Tours', hasGuide: true },
+      { name: 'Food & Mezcal Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Artisan Tours', hasGuide: true }
     ],
     seo: {
       title: 'Oaxaca Tours & Excursions - Top-Rated Activities & Adventures',

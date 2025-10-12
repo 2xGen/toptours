@@ -12697,5 +12697,1241 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  'new-orleans': {
+    'french-quarter-tours': {
+      title: 'New Orleans French Quarter Tours',
+      subtitle: 'Explore historic Vieux Carré with wrought-iron balconies and Bourbon Street!',
+      categoryName: 'French Quarter Tours',
+      
+      stats: {
+        toursAvailable: 124,
+        priceFrom: 35,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience the French Quarter (Vieux Carré) - America's most historic and atmospheric neighborhood! French Quarter tours explore iconic Bourbon Street (legendary nightlife and music), Royal Street (antique shops and art galleries), Jackson Square (heart of the Quarter with street performers), St. Louis Cathedral (oldest continuously active cathedral in US), beautiful wrought-iron balconies, hidden courtyards, and historic buildings dating to 1700s. Walk cobblestone streets where Tennessee Williams wrote, pirates once roamed, and jazz was born. Tours include architectural insights, ghost stories, history of French and Spanish colonial periods, and cultural heritage. Learn about Creole culture, voodoo traditions, devastating Hurricane Katrina, and resilience of New Orleans. It's living history!`,
+
+      seo: {
+        title: 'New Orleans French Quarter Tours 2025 - Bourbon Street & Vieux Carré',
+        description: 'Explore French Quarter! Bourbon Street, Jackson Square, historic NOLA, and Creole heritage!',
+        keywords: 'French Quarter tours, New Orleans Bourbon Street, Jackson Square, Vieux Carre, NOLA history',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Oldest Neighborhood',
+          description: 'Founded 1718 - America\'s most historic urban neighborhood!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Bourbon Street',
+          description: 'Legendary street with live music, bars, and NOLA nightlife!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Wrought-Iron Balconies',
+          description: 'Iconic Spanish colonial architecture - incredibly photogenic!',
+        },
+        {
+          icon: 'Music',
+          title: 'Birthplace of Jazz',
+          description: 'Where jazz music was born and still thrives!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic French Quarter Tour',
+          description: 'Walking tour of major landmarks and hidden courtyards.',
+          features: [
+            '2-3 hours',
+            'Major sites',
+            'Expert guide',
+            'Architecture',
+            'History',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Ghost & Vampire Tour',
+          description: 'Evening tour of haunted sites and voodoo history.',
+          features: [
+            '2 hours',
+            'Ghost stories',
+            'Haunted sites',
+            'Evening',
+            'Spooky',
+          ],
+        },
+        {
+          icon: 'Music',
+          title: 'Jazz History Tour',
+          description: 'Visit jazz birthplace sites and historic music venues.',
+          features: [
+            '3 hours',
+            'Jazz history',
+            'Music sites',
+            'Live music',
+            'Musical',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Food & Culture Tour',
+          description: 'Combine French Quarter history with Creole food tastings.',
+          features: [
+            '3-4 hours',
+            'Food + history',
+            '6-8 tastings',
+            'Cultural',
+            'Delicious',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your New Orleans French Quarter Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Food tours: 3-4 hours. Ghost tours: 2 hours evening.',
+          },
+          {
+            icon: 'Star',
+            title: 'Jackson Square',
+            description: 'Historic plaza with St. Louis Cathedral, street performers, and artists.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Bourbon Street',
+            description: 'Walk legendary street with bars, live music, and NOLA party atmosphere.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Balconies',
+            description: 'See iconic wrought-iron balconies on Spanish colonial buildings.',
+          },
+          {
+            icon: 'Music',
+            title: 'Live Music',
+            description: 'Hear jazz, blues, and brass bands throughout the Quarter.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Creole History',
+            description: 'Learn about French/Spanish colonial era and unique Creole culture.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Morning tours (9-10 AM) see French Quarter before crowds and heat.',
+        'Bourbon Street rowdy at night - daytime more family-friendly!',
+        'Royal Street better for galleries and shopping than touristy Bourbon.',
+        'Free self-guided walking possible but tours provide stories you\'d miss.',
+        'Jackson Square artists and performers - bring cash for tips/purchases.',
+        'Café Du Monde (beignets and coffee) is French Quarter institution!',
+        'Wear comfortable shoes - cobblestones and lots of walking.',
+        'Evening ghost tours atmospheric but French Quarter safe - very touristy.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the French Quarter?',
+          answer: 'French Quarter (Vieux Carré) is New Orleans\' oldest neighborhood (founded 1718) with French/Spanish colonial architecture, Bourbon Street nightlife, jazz clubs, and Creole culture. It\'s the heart and soul of NOLA with wrought-iron balconies and cobblestone streets. Essential New Orleans!',
+        },
+        {
+          question: 'Is Bourbon Street worth visiting?',
+          answer: 'Worth experiencing once! It\'s iconic NOLA - bars, live music, party atmosphere. Daytime tame and touristy. Evening wild and rowdy! Not family-friendly after dark. Royal Street better for culture but Bourbon is legendary. Visit during day for photos!',
+        },
+        {
+          question: 'How long to explore French Quarter?',
+          answer: 'Half-day (3-4 hours) for highlights: Jackson Square, Bourbon Street, Royal Street, Café Du Monde. Full day (6-8 hours) for museums, thorough exploration, food. It\'s compact and walkable - perfect for wandering. Most tours 2-3 hours.',
+        },
+        {
+          question: 'Is the French Quarter safe?',
+          answer: 'Safe daytime in tourist areas! Millions visit safely. Evening: Stick to busy streets (Bourbon, Royal, Decatur). Use normal urban caution - pickpockets exist. Avoid isolated side streets late night. Tours very safe. Don\'t wander drunk alone!',
+        },
+        {
+          question: 'Can you walk the French Quarter yourself?',
+          answer: 'Absolutely! It\'s compact (13 blocks by 7 blocks) and pedestrian-friendly. However, tours provide history, ghost stories, and architectural details you\'d miss. Free walking tours available (tip-based). Both DIY and guided work!',
+        },
+        {
+          question: 'What should you see in French Quarter?',
+          answer: 'Must-see: Jackson Square, St. Louis Cathedral, Bourbon Street, Royal Street galleries, Café Du Monde, wrought-iron balconies, hidden courtyards. All walkable! Plan minimum 3-4 hours. Each corner has history and character. Don\'t rush!',
+        },
+        {
+          question: 'When is the best time to visit French Quarter?',
+          answer: 'Year-round! Spring (March-May) and fall (Sept-Nov): Perfect weather. Summer: Hot and humid. Winter: Mild, fewer crowds. Mardi Gras (Feb-March): Insane crowds but incredible! Morning visits beat heat and crowds. Evening for nightlife.',
+        },
+        {
+          question: 'How much do French Quarter tours cost?',
+          answer: 'Walking tours: $35-60 (2-3 hours). Ghost tours: $30-50 (2 hours). Food tours: $65-95 (3-4 hours). Free walking tours available (tip-based). Café Du Monde $5 for beignets/coffee. Budget-friendly with free self-guided option!',
+        },
+      ],
+    },
+
+    'jazz-tours': {
+      title: 'New Orleans Jazz Tours',
+      subtitle: 'Experience birthplace of jazz with live music, historic clubs, and NOLA soul!',
+      categoryName: 'Jazz Tours',
+      
+      stats: {
+        toursAvailable: 76,
+        priceFrom: 45,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover New Orleans - the birthplace of jazz music! Jazz tours explore legendary Frenchmen Street (better than Bourbon for authentic music!), historic Preservation Hall (intimate jazz venue since 1961), Congo Square (where slaves gathered creating jazz foundations), old jazz clubs, brass band culture, and music venues throughout the city. Experience live jazz in intimate settings, learn about Louis Armstrong, Jelly Roll Morton, and jazz legends, visit Louis Armstrong Park, and understand how African, Caribbean, and European musical traditions fused creating jazz. Tours include club hopping, second-line parades (if lucky!), music history lessons, and possibly catching street musicians. It's jazz immersion!`,
+
+      seo: {
+        title: 'New Orleans Jazz Tours 2025 - Frenchmen Street & Live Music',
+        description: 'Experience New Orleans jazz! Frenchmen Street, Preservation Hall, live music, and jazz history!',
+        keywords: 'New Orleans jazz tours, Frenchmen Street, Preservation Hall, NOLA jazz, New Orleans music',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Music',
+          title: 'Birthplace of Jazz',
+          description: 'Where jazz was invented - authentic music history!',
+        },
+        {
+          icon: 'Star',
+          title: 'Preservation Hall',
+          description: 'Intimate venue preserving traditional New Orleans jazz!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Frenchmen Street',
+          description: 'Better than Bourbon for authentic live music - locals\' favorite!',
+        },
+        {
+          icon: 'Users',
+          title: 'Live Music Nightly',
+          description: 'Jazz clubs, brass bands, and street musicians everywhere!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Music',
+          title: 'Frenchmen Street Jazz Tour',
+          description: 'Club-hop authentic music venues with live jazz.',
+          features: [
+            '3-4 hours',
+            'Multiple clubs',
+            'Live music',
+            'Local scene',
+            'Authentic',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Preservation Hall Experience',
+          description: 'Traditional jazz show in historic intimate venue.',
+          features: [
+            '2-3 hours',
+            'Traditional jazz',
+            'Historic venue',
+            'Intimate',
+            'Must-do',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Jazz History Walking Tour',
+          description: 'Visit jazz birthplace sites and learn music history.',
+          features: [
+            '3 hours',
+            'Historic sites',
+            'Congo Square',
+            'Educational',
+            'Cultural',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Jazz Dinner Cruise',
+          description: 'Steamboat cruise with live jazz and Creole dinner.',
+          features: [
+            '2-3 hours',
+            'River cruise',
+            'Jazz band',
+            'Dinner',
+            'Romantic',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your New Orleans Jazz Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Club tours: 3-4 hours. Preservation Hall: 1 hour show. Walking: 3 hours.',
+          },
+          {
+            icon: 'Music',
+            title: 'Live Jazz',
+            description: 'Hear authentic New Orleans jazz in intimate venues - trumpet, trombone, clarinet!',
+          },
+          {
+            icon: 'Star',
+            title: 'Preservation Hall',
+            description: 'No-frills venue (benches, standing room) with traditional jazz - pure music!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Frenchmen Street',
+            description: 'Three blocks of music clubs - jazz, funk, brass, blues - locals\' favorite!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Street Musicians',
+            description: 'Brass bands and street performers throughout French Quarter.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Jazz History',
+            description: 'Learn about Louis Armstrong, jazz birth, and New Orleans musical legacy.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Frenchmen Street better than Bourbon for authentic music - locals agree!',
+        'Preservation Hall tickets ($20-45) sell out - book online weeks ahead!',
+        'Snug Harbor (Frenchmen) has best jazz - $20-30 cover, worth it!',
+        'Spotted Cat Music Club (Frenchmen) FREE entry with donations.',
+        'Second-line parades happen Sundays - follow brass band through streets!',
+        'Tip street musicians generously - they\'re often incredible talents.',
+        'Jazz clubs don\'t serve food usually - eat before club-hopping.',
+        'Late night (10 PM-2 AM) Frenchmen Street peaks - that\'s when locals go!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Preservation Hall?',
+          answer: 'Preservation Hall is intimate jazz venue (since 1961) dedicated to preserving traditional New Orleans jazz. No-frills room (benches, standing), no drinks/food, pure music! Shows $20-45, 1 hour. Tickets sell out weeks ahead. Acoustic, intimate, authentic - essential NOLA experience!',
+        },
+        {
+          question: 'Is Frenchmen Street better than Bourbon?',
+          answer: 'For music: YES! Frenchmen has authentic live music in multiple clubs. Locals go here. Bourbon is touristy party street. Both worth experiencing but Frenchmen has better music quality. Safer, cleaner, more about music than drinking. Three blocks of clubs!',
+        },
+        {
+          question: 'Can you hear jazz for free in New Orleans?',
+          answer: 'Yes! Street musicians throughout French Quarter (tip them!). Some Frenchmen clubs have free entry (Spotted Cat, d.b.a.). Jackson Square has performers. However, best venues charge $10-30 cover. Budget $20-40 for evening of quality jazz.',
+        },
+        {
+          question: 'What is a second-line parade?',
+          answer: 'Second-line is New Orleans tradition - brass band leads parade, crowd follows dancing with umbrellas and handkerchiefs! Happens Sundays in different neighborhoods. It\'s spontaneous, joyful, free to join! Follow the music. Quintessential New Orleans experience!',
+        },
+        {
+          question: 'How much do jazz tours cost?',
+          answer: 'Jazz club tours: $45-80 (3-4 hours, multiple clubs). Preservation Hall show: $20-45. Jazz history walking: $40-60. Dinner cruises: $80-120. Club covers separate ($10-30). Tours handle logistics - worth it for first-timers!',
+        },
+        {
+          question: 'Who was Louis Armstrong?',
+          answer: 'Louis Armstrong ("Satchmo") was New Orleans native who became jazz legend - revolutionary trumpet player and singer. Influenced all jazz. Birthplace now Louis Armstrong Park. His legacy is everywhere in NOLA. He put New Orleans jazz on world stage!',
+        },
+        {
+          question: 'When is the best time for jazz?',
+          answer: 'Year-round! Jazz Fest (late April-early May) massive festival. However, live jazz happens nightly 365 days. Evening (8 PM-midnight) clubs peak. Frenchmen Street best Thursday-Saturday nights. Music never stops in New Orleans!',
+        },
+        {
+          question: 'Do you need tickets for jazz clubs?',
+          answer: 'Preservation Hall: YES (book weeks ahead!). Most Frenchmen clubs: $10-30 cover at door (first-come). Some free entry. No reservations needed except Preservation Hall. Arrive early for seats - many venues standing room only.',
+        },
+      ],
+    },
+
+    'food-and-creole-tours': {
+      title: 'New Orleans Food & Creole Tours',
+      subtitle: 'Taste gumbo, beignets, po-boys, and authentic Creole-Cajun cuisine!',
+      categoryName: 'Food & Creole Tours',
+      
+      stats: {
+        toursAvailable: 112,
+        priceFrom: 60,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover New Orleans' legendary food scene - Creole and Cajun cuisine at its finest! Food tours sample iconic dishes like gumbo (rice and rich stew), jambalaya, po-boy sandwiches (fried seafood on French bread), beignets at Café Du Monde, crawfish étouffée, red beans and rice, muffuletta, and bananas foster. Visit historic restaurants (Commander's Palace, Antoine's since 1840), neighborhood joints, French Market, and food halls. Learn differences between Creole (city cooking, tomatoes, refined) and Cajun (country cooking, spicier, rustic), sample chicory coffee, taste pralines, and experience food culture shaped by French, Spanish, African, and Caribbean influences. It's America's most unique culinary tradition!`,
+
+      seo: {
+        title: 'New Orleans Food & Creole Tours 2025 - Gumbo, Beignets & Cajun Cuisine',
+        description: 'Experience NOLA food! Gumbo, beignets, po-boys, and authentic Creole-Cajun culinary tours!',
+        keywords: 'New Orleans food tours, NOLA Creole food, beignets, gumbo, New Orleans cuisine, Cajun food',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Unique Cuisine',
+          description: 'Creole-Cajun food found nowhere else - totally unique!',
+        },
+        {
+          icon: 'Star',
+          title: 'Historic Restaurants',
+          description: 'Commander\'s Palace, Antoine\'s - dining institutions!',
+        },
+        {
+          icon: 'Users',
+          title: 'Café Du Monde',
+          description: 'Beignets and chicory coffee since 1862 - NOLA essential!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Cocktail Culture',
+          description: 'Birthplace of cocktails - Sazerac, Hurricane, Ramos Gin Fizz!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Creole Food Walking Tour',
+          description: 'Sample gumbo, po-boys, pralines at 6-8 spots.',
+          features: [
+            '3-4 hours',
+            '6-8 tastings',
+            'French Quarter',
+            'Classics',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Fine Dining Experience',
+          description: 'Multi-course Creole meal at Commander\'s or Antoine\'s.',
+          features: [
+            '3 hours',
+            'Fine dining',
+            'Historic venue',
+            'Premium',
+            'Upscale',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Garden District Food Tour',
+          description: 'Explore upscale neighborhood with food and architecture.',
+          features: [
+            '3-4 hours',
+            'Garden District',
+            'Food + history',
+            'Beautiful',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Cocktail History Tour',
+          description: 'Visit bars tasting New Orleans\' invented cocktails.',
+          features: [
+            '3 hours',
+            'Multiple bars',
+            'Classic cocktails',
+            'History',
+            'Fun',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your New Orleans Food & Creole Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Gumbo',
+            description: 'Rich stew with seafood or chicken, okra, rice, and holy trinity (onion/celery/pepper).',
+          },
+          {
+            icon: 'Star',
+            title: 'Beignets',
+            description: 'Fried dough covered in powdered sugar at Café Du Monde - NOLA icon!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Po-Boy Sandwich',
+            description: 'Fried shrimp or oysters on French bread - invented in New Orleans!',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Sazerac Cocktail',
+            description: 'Official New Orleans cocktail with rye whiskey, absinthe, Peychaud\'s bitters.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Creole vs Cajun',
+            description: 'Learn differences between two Louisiana cooking traditions.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Café Du Monde open 24/7 - go early morning or late night to avoid lines!',
+        'Commander\'s Palace ($40-60 lunch, $80-120 dinner) worth splurge - NOLA institution.',
+        'Po-boy debate: Parkway Bakery vs. Domilise\'s - both excellent!',
+        'Red beans and rice traditional Monday dish (laundry day tradition!).',
+        'Try chargrilled oysters at Acme or Felix\'s - New Orleans specialty.',
+        'Sazerac Bar at Roosevelt Hotel makes official NOLA cocktail perfectly.',
+        'Bring appetite - portion sizes generous and food is rich!',
+        'Food tours run year-round - come moderately hungry.',
+      ],
+
+      faqs: [
+        {
+          question: 'What food is New Orleans known for?',
+          answer: 'Gumbo, beignets, po-boys, jambalaya, crawfish étouffée, red beans & rice, muffuletta, chargrilled oysters, bananas foster, pralines. NOLA invented many dishes! Creole-Cajun cuisine is unique blend. Try everything - food is essential NOLA experience!',
+        },
+        {
+          question: 'What is the difference between Creole and Cajun?',
+          answer: 'Creole: City cooking (New Orleans), uses tomatoes, more refined, African/French/Spanish influenced. Cajun: Country cooking (bayou), spicier, rustic, French Acadian roots. Gumbo comes both ways! Both delicious. Tours explain differences while you taste!',
+        },
+        {
+          question: 'Where should I eat in New Orleans?',
+          answer: 'Fine dining: Commander\'s Palace, Antoine\'s, Galatoire\'s. Po-boys: Parkway Bakery. Beignets: Café Du Monde. Gumbo: Gumbo Shop. Oysters: Acme Oyster House. Muffuletta: Central Grocery. Food tours show best spots - good value!',
+        },
+        {
+          question: 'How much do NOLA food tours cost?',
+          answer: 'Walking food tours: $60-95 (3-4 hours, 6-8 tastings). Fine dining: $80-150. Cocktail tours: $60-90. Garden District: $70-100. Private: $200-400. Tours replace meals - good value for variety and avoiding tourist traps!',
+        },
+        {
+          question: 'What are beignets?',
+          answer: 'Beignets are fried dough squares covered in powdered sugar - French Quarter staple! Served at Café Du Monde since 1862 with chicory coffee. $3 for three beignets. Messy (sugar everywhere!), hot, delicious. Essential NOLA food - go early to avoid lines!',
+        },
+        {
+          question: 'Can vegetarians eat in New Orleans?',
+          answer: 'Challenging - NOLA food is meat/seafood heavy! However, red beans & rice (Monday), gumbo z\'herbes (Good Friday), sides exist. Communicate dietary needs. Some restaurants accommodate. Tougher than most cities but possible. Food tours can adapt.',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Crawfish season (Jan-July) peak March-May. Lunch tours (11 AM-2 PM) or dinner (6-9 PM). Sunday brunch is NOLA tradition. Food scene runs 365 days. Come hungry - portions are generous!',
+        },
+        {
+          question: 'Is New Orleans food spicy?',
+          answer: 'Moderately spicy! Not as hot as Nashville hot chicken. Cajun food spicier than Creole. Dishes have flavor and kick but manageable for most. Hot sauce available if you want more heat. Not overwhelming - flavorful with spice!',
+        },
+      ],
+    },
+
+    'historical-tours': {
+      title: 'New Orleans Historical Tours',
+      subtitle: 'Explore French colonial heritage, Civil War, and unique NOLA history!',
+      categoryName: 'Historical Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 40,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover New Orleans' fascinating 300-year history! Historical tours explore French colonial founding (1718), Spanish rule period, Louisiana Purchase, Civil War significance, Reconstruction, devastating Hurricane Katrina (2005), and resilient recovery. Visit historic sites like Cabildo museum (Louisiana Purchase signed here!), old Ursuline Convent (oldest building in Mississippi Valley), Garden District mansions, above-ground cemeteries ("Cities of the Dead"), plantations on River Road, and Civil War forts. Learn about Creole culture, voodoo queen Marie Laveau, pirate Jean Lafitte, and how multicultural influences created unique NOLA identity. It's complex, colorful American history!`,
+
+      seo: {
+        title: 'New Orleans Historical Tours 2025 - French Colonial & NOLA Heritage',
+        description: 'Explore NOLA history! French Quarter heritage, cemeteries, Civil War, and New Orleans culture!',
+        keywords: 'New Orleans history tours, French Quarter history, NOLA cemeteries, New Orleans heritage, Louisiana history',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Unique History',
+          description: 'French, Spanish, African, Caribbean fusion - totally unique!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Above-Ground Cemeteries',
+          description: 'Historic "Cities of the Dead" with ornate tombs!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Hurricane Katrina',
+          description: 'Learn about 2005 disaster and remarkable recovery.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Garden District',
+          description: 'Antebellum mansions with lush gardens - gorgeous!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Cemetery Tour',
+          description: 'Visit above-ground tombs at St. Louis Cemetery #1.',
+          features: [
+            '90 minutes',
+            'Historic tombs',
+            'Marie Laveau',
+            'Architecture',
+            'Fascinating',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Garden District Tour',
+          description: 'Walk through mansion district on streetcar route.',
+          features: [
+            '2-3 hours',
+            'Antebellum homes',
+            'Streetcar ride',
+            'Architecture',
+            'Beautiful',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Katrina Recovery Tour',
+          description: 'Learn about hurricane impact and city resilience.',
+          features: [
+            '3 hours',
+            'Katrina sites',
+            'Recovery stories',
+            'Educational',
+            'Moving',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Plantation Tour',
+          description: 'Visit River Road plantations with complex histories.',
+          features: [
+            '4-5 hours',
+            'Oak Alley/Laura',
+            'Plantation grounds',
+            'History',
+            'Day trip',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your New Orleans Historical Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Cemetery: 90 min. Garden District: 2-3 hours. Plantation: 4-5 hours. Walking: 3 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'St. Louis Cemetery',
+            description: 'Above-ground tombs required (high water table) - Marie Laveau buried here!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Garden District Mansions',
+            description: 'Antebellum homes on oak-lined streets - take historic streetcar!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Voodoo History',
+            description: 'Learn about Marie Laveau and New Orleans voodoo traditions.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Katrina Impact',
+            description: 'Understand hurricane\'s devastation and city\'s remarkable recovery.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Creole Culture',
+            description: 'Learn about unique Creole identity mixing French, Spanish, African roots.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Cemetery tours required by law - can\'t visit alone (safety/vandalism prevention).',
+        'St. Louis Cemetery #1 most historic - Marie Laveau\'s tomb (leave offerings!).',
+        'Garden District accessible via St. Charles streetcar ($1.25) - historic ride itself!',
+        'Oak Alley or Laura Plantation best for history - both address slavery honestly.',
+        'Hurricane Katrina tours emotional but important for understanding New Orleans.',
+        'Cabildo museum ($6) shows Louisiana Purchase documents and NOLA history.',
+        'Many historic sites in French Quarter are FREE - explore independently.',
+        'Summer very hot and humid - morning tours more comfortable.',
+      ],
+
+      faqs: [
+        {
+          question: 'Why are New Orleans cemeteries above ground?',
+          answer: 'High water table makes underground burial impossible - coffins would float! Above-ground tombs (vaults) required. They\'re called "Cities of the Dead" for ornate architecture. St. Louis Cemetery #1 most famous. Tours required for entry ($25-35). Fascinating!',
+        },
+        {
+          question: 'Can you visit cemeteries alone?',
+          answer: 'NO! St. Louis Cemetery #1 requires licensed tour guide by law (vandalism/safety). Tours $25-35, 90 minutes. Other cemeteries (Lafayette, Metairie) can be visited alone. Historic cemetery tours worth it for stories and safety.',
+        },
+        {
+          question: 'Who was Marie Laveau?',
+          answer: 'Marie Laveau was legendary 19th-century voodoo queen of New Orleans. Her tomb in St. Louis Cemetery #1 is most visited - people leave offerings (XXX marks, coins, flowers). Mix of history and legend. Tours separate fact from fiction!',
+        },
+        {
+          question: 'What is the Garden District?',
+          answer: 'Garden District is upscale neighborhood with antebellum mansions, oak-lined streets, and lush gardens. Take St. Charles streetcar ($1.25) to reach it. Walk Magazine Street. Beautiful architecture - very different from French Quarter. 2-3 hours to explore.',
+        },
+        {
+          question: 'Are plantation tours worth it?',
+          answer: 'Yes for understanding Louisiana history! Oak Alley, Laura, and Whitney plantations address slavery honestly. They\'re educational about complex, difficult history. $25-30 entry. Not entertainment - serious history. 45 minutes from NOLA. Important for understanding South.',
+        },
+        {
+          question: 'How much do historical tours cost?',
+          answer: 'Cemetery: $25-35 (90 min). Garden District: $40-60 (2-3 hours). Katrina: $50-75. Plantation: $80-120 (includes transport, entry). Walking tours: $35-60. Many affordable options for history education!',
+        },
+        {
+          question: 'What happened during Hurricane Katrina?',
+          answer: 'August 2005, Hurricane Katrina devastated New Orleans - levees failed, 80% of city flooded, 1,800+ died. Lower Ninth Ward hit worst. Recovery took years. Tours explain impact, resilience, ongoing challenges. It\'s emotional but important history. NOLA rebuilt remarkably!',
+        },
+        {
+          question: 'When is the best time for historical tours?',
+          answer: 'Spring (March-May) and fall (Sept-Nov): Perfect weather for walking and plantation tours. Summer: Very hot/humid. Winter: Mild, fewer crowds. Historical sites accessible year-round. Morning tours beat afternoon heat!',
+        },
+      ],
+    },
+
+    'swamp-tours': {
+      title: 'New Orleans Swamp Tours',
+      subtitle: 'Explore Louisiana bayous with alligators, cypress trees, and wetland wildlife!',
+      categoryName: 'Swamp Tours',
+      
+      stats: {
+        toursAvailable: 68,
+        priceFrom: 50,
+        duration: '2-6 hours',
+      },
+
+      introduction: `Experience Louisiana's mysterious swamps and bayous - ecosystem unlike anywhere! Swamp tours cruise through cypress forests draped with Spanish moss, see wild alligators (guides sometimes feed them - they jump!), spot herons, egrets, turtles, and diverse wetland wildlife. Tours explore Honey Island Swamp (least altered swamp in Louisiana), Jean Lafitte National Park, Lake Pontchartrain, and bayou communities. Airboat tours offer high-speed thrills while pontoon boats provide relaxed nature viewing. Learn about wetland ecology, Cajun bayou culture, how swamps protect New Orleans from hurricanes, and threats facing Louisiana wetlands (losing football field of land hourly!). It's wild Louisiana!`,
+
+      seo: {
+        title: 'New Orleans Swamp Tours 2025 - Alligator Tours & Louisiana Bayous',
+        description: 'Experience Louisiana swamps! Alligator tours, bayou cruises, and wetland wildlife near NOLA!',
+        keywords: 'New Orleans swamp tours, Louisiana bayou tours, alligator tours NOLA, Honey Island Swamp, swamp boat tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Wild Alligators',
+          description: 'See gators in natural habitat - guides feed them (thrilling!).',
+        },
+        {
+          icon: 'Heart',
+          title: 'Unique Ecosystem',
+          description: 'Cypress swamps and bayous found only in Louisiana!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Spanish Moss',
+          description: 'Haunting beauty of moss-draped trees over dark water.',
+        },
+        {
+          icon: 'Waves',
+          title: 'Airboat Adventure',
+          description: 'High-speed airboat rides through shallow waterways!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Swamp Boat Tour',
+          description: 'Pontoon boat through Honey Island or Jean Lafitte swamp.',
+          features: [
+            '2 hours',
+            'Alligators',
+            'Wildlife',
+            'Narrated',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Airboat Swamp Tour',
+          description: 'High-speed airboat adventure through bayous.',
+          features: [
+            '1.5 hours',
+            'Fast boat',
+            'Thrilling',
+            'Loud',
+            'Exciting',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Kayak Swamp Tour',
+          description: 'Paddle through cypress swamp quietly observing nature.',
+          features: [
+            '3 hours',
+            'Kayaking',
+            'Peaceful',
+            'Close to nature',
+            'Active',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Swamp & Plantation Combo',
+          description: 'Combine swamp tour with plantation visit.',
+          features: [
+            '6-7 hours',
+            'Two experiences',
+            'Full day',
+            'Comprehensive',
+            'Efficient',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your New Orleans Swamp Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 2-2.5 hours on water. With transport: 4-5 hours total from NOLA.',
+          },
+          {
+            icon: 'Star',
+            title: 'Alligator Sightings',
+            description: 'Near-guaranteed gator sightings - guides know where they hang out!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Cypress Forest',
+            description: 'Glide through ancient cypress trees with Spanish moss.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Wetland Wildlife',
+            description: 'Herons, egrets, turtles, snakes, nutria, and diverse bird species.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Bayou Culture',
+            description: 'See how Cajun communities live in remote wetland areas.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Ecology Education',
+            description: 'Learn about wetland importance and Louisiana land loss crisis.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Honey Island Swamp least altered - most pristine swamp experience.',
+        'Morning tours best for wildlife activity and cooler temperatures.',
+        'Airboats loud (ear protection provided) - pontoons quieter and better for photos.',
+        'Gator feeding exciting but controversial - some tours don\'t feed (more natural).',
+        'Bring bug spray (mosquitoes!) and sunscreen - limited shade on boats.',
+        'Tours 30-60 minutes from NOLA - transport usually included.',
+        'Closed-toe shoes recommended (boats can be wet and muddy).',
+        'Winter (Nov-Feb) alligators less active (cold-blooded) - summer best for sightings.',
+      ],
+
+      faqs: [
+        {
+          question: 'Will I see alligators?',
+          answer: 'Nearly guaranteed! Guides know where gators hang out. Spring-fall (warm months) gators most active. Some guides feed them (they jump out of water!). Perfectly safe on boat. Close encounters but controlled. Thrilling and memorable!',
+        },
+        {
+          question: 'Are swamp tours safe?',
+          answer: 'Very safe! Experienced guides, boats well-maintained, life jackets provided. Alligators don\'t attack boats. Millions tour safely. Weather cancellations if storms. Use reputable companies. Swamps are wild but tours are controlled and safe!',
+        },
+        {
+          question: 'How much do swamp tours cost?',
+          answer: 'Standard swamp tours: $50-75 (2 hours + transport). Airboat: $60-90. Kayak: $75-100. Combo with plantation: $120-160. Includes hotel pickup usually. Small boats (6-10 people) more expensive but intimate. Worth it for unique Louisiana experience!',
+        },
+        {
+          question: 'Which swamp tour is best?',
+          answer: 'Honey Island Swamp (most pristine, least altered). Jean Lafitte National Park (closest to NOLA, 30 min). Barataria Preserve (free kayaking!). Tour companies: Dr. Wagner\'s Honey Island, Cajun Pride. Small boats better than large tour boats!',
+        },
+        {
+          question: 'What is the difference between swamp and bayou?',
+          answer: 'Swamp: Forested wetland with trees (cypress). Bayou: Slow-moving waterway/stream. Louisiana has both! Tours explore cypress swamps and navigate bayous. Spanish moss, dark water, alligators - it\'s all Louisiana wetlands. Both terms used interchangeably!',
+        },
+        {
+          question: 'When is the best time for swamp tours?',
+          answer: 'Spring (March-May) and fall (Sept-Oct): Perfect weather, active wildlife. Summer: Hot/humid but gators most active! Winter: Cooler, gators less active (but still visible). Morning tours beat afternoon heat. Year-round accessible!',
+        },
+        {
+          question: 'Can you swim in Louisiana swamps?',
+          answer: 'NO! Alligators, snakes, and bacteria make swimming dangerous. Stay in boat! Swamps are for viewing, not swimming. Guides won\'t let you in water anyway. Just enjoy from safe boat - that\'s exciting enough!',
+        },
+        {
+          question: 'How far are swamps from New Orleans?',
+          answer: '30-60 minutes drive depending on tour. Jean Lafitte closest (30 min). Honey Island 45 min. Tours include transport from French Quarter hotels. It\'s easy day trip - no need for rental car. Schedule 4-5 hours total.',
+        },
+      ],
+    },
+
+    'cultural-tours': {
+      title: 'New Orleans Cultural Tours',
+      subtitle: 'Experience voodoo, Mardi Gras, Creole traditions, and NOLA\'s unique spirit!',
+      categoryName: 'Cultural Tours',
+      
+      stats: {
+        toursAvailable: 72,
+        priceFrom: 50,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Immerse yourself in New Orleans' unique culture - a magical blend unlike anywhere else! Cultural tours explore voodoo history (Marie Laveau, rituals, misconceptions), Mardi Gras traditions (krewe culture, bead throws, second-lines), Creole heritage, jazz funerals (celebration of life!), cemetery customs, street car culture, and local traditions. Visit voodoo shops, learn about Creole vs. Cajun identities, attend cultural events, explore African American heritage, and understand "joie de vivre" (joy of living) philosophy. Tours include mask-making workshops (Mardi Gras), voodoo museum visits, cultural performances, and authentic experiences beyond tourist shows. It's NOLA's soul!`,
+
+      seo: {
+        title: 'New Orleans Cultural Tours 2025 - Voodoo, Mardi Gras & Creole Traditions',
+        description: 'Experience NOLA culture! Voodoo, Mardi Gras, Creole heritage, and authentic New Orleans!',
+        keywords: 'New Orleans culture tours, voodoo tours NOLA, Mardi Gras, Creole culture, New Orleans traditions',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Voodoo History',
+          description: 'Learn truth about voodoo beyond Hollywood stereotypes!',
+        },
+        {
+          icon: 'Star',
+          title: 'Mardi Gras Traditions',
+          description: 'Understand carnival culture beyond bead-throwing!',
+        },
+        {
+          icon: 'Music',
+          title: 'Jazz Funerals',
+          description: 'Experience celebration of life with brass band processions!',
+        },
+        {
+          icon: 'Users',
+          title: 'Creole Heritage',
+          description: 'Unique culture mixing French, Spanish, African, Caribbean!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Voodoo & Cemetery Tour',
+          description: 'Learn voodoo history visiting Marie Laveau tomb and shops.',
+          features: [
+            '2-3 hours',
+            'Voodoo history',
+            'Cemetery',
+            'Cultural',
+            'Fascinating',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Mardi Gras Experience',
+          description: 'Learn carnival traditions with parade tours (season only).',
+          features: [
+            '3-4 hours',
+            'Parade viewing',
+            'Traditions',
+            'Beads',
+            'Festive',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Creole Cultural Tour',
+          description: 'Explore Creole heritage, food, music, and traditions.',
+          features: [
+            '3-4 hours',
+            'Cultural sites',
+            'Food tastings',
+            'Music',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Music',
+          title: 'Jazz Funeral Experience',
+          description: 'Witness or learn about traditional New Orleans funeral.',
+          features: [
+            '2-3 hours',
+            'Cultural education',
+            'Brass band',
+            'Unique',
+            'Moving',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your New Orleans Cultural Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 2-4 hours. Mardi Gras parades: 4-6 hours. Cultural experiences vary.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Voodoo Education',
+            description: 'Learn real voodoo history - not horror movie version!',
+          },
+          {
+            icon: 'Star',
+            title: 'Mardi Gras Culture',
+            description: 'Understand krewe traditions, king cakes, and carnival beyond debauchery.',
+          },
+          {
+            icon: 'Music',
+            title: 'Jazz Funerals',
+            description: 'Brass band leads somber march, then breaks into celebration - unique tradition!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Second-Lines',
+            description: 'Join spontaneous parade following brass band through streets!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Heritage',
+            description: 'Understand how diverse influences created unique NOLA culture.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Voodoo tours educational - separate fact from fiction about practice.',
+        'Mardi Gras (Feb-March) insane crowds but incredible! Book hotels year ahead.',
+        'King cake (Mardi Gras season) has baby inside - finder hosts next party!',
+        'Second-line parades Sundays in different neighborhoods - free to join!',
+        'Marie Laveau tomb visited by believers leaving XXX marks and offerings.',
+        'New Orleans Voodoo Museum ($7) small but educational.',
+        'Respect voodoo as actual religion - not all spooky entertainment.',
+        'Cultural tours offer authentic NOLA beyond party stereotypes.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is voodoo in New Orleans?',
+          answer: 'Voodoo (or Vodou) is religion brought by enslaved Africans mixing with Catholicism. Marie Laveau (1800s voodoo queen) is legendary. It\'s actual spiritual practice, not Hollywood horror! Tours explain real history. Voodoo shops sell gris-gris, potions. Educational and fascinating!',
+        },
+        {
+          question: 'What is Mardi Gras?',
+          answer: 'Mardi Gras ("Fat Tuesday") is carnival season ending on Shrove Tuesday before Lent. Parades by krewes (social clubs), bead throwing, king cakes, parties! February-March depending on Easter. It\'s HUGE in New Orleans - million+ visitors. Book hotels year ahead!',
+        },
+        {
+          question: 'Can you visit New Orleans during Mardi Gras?',
+          answer: 'Yes but challenging! Hotels expensive ($300-500/night) and book year ahead. Crowds insane. However, it\'s bucket-list experience! Family-friendly parades daytime, adult party at night. If going, plan WAY ahead. Otherwise, visit off-season for easier time!',
+        },
+        {
+          question: 'What is a jazz funeral?',
+          answer: 'Jazz funeral is New Orleans tradition - brass band escorts deceased to cemetery playing somber music, then breaks into joyful celebration after burial! It\'s "celebrating life" philosophy. You might see one (follow respectfully). Unique to NOLA. Beautiful tradition!',
+        },
+        {
+          question: 'How much do cultural tours cost?',
+          answer: 'Voodoo/cemetery: $30-50 (2-3 hours). Cultural walking: $50-75. Mardi Gras parade tours: $75-120. Jazz funeral education: $40-60. Many affordable cultural experiences. Budget: Free second-lines and street culture!',
+        },
+        {
+          question: 'Is voodoo real in New Orleans?',
+          answer: 'Yes, voodoo is practiced religion! Not common but real practitioners exist. Most "voodoo" is tourism - shops sell charms, dolls. Marie Laveau was real historical figure. Tours separate authentic practice from tourist kitsch. Respectful approach important!',
+        },
+        {
+          question: 'When is Mardi Gras?',
+          answer: 'Mardi Gras date changes (47 days before Easter) - usually February-March. Carnival season starts January 6 (Epiphany). Main parades last 2 weeks before Mardi Gras day. King cake season: January-March. Check dates - varies yearly!',
+        },
+        {
+          question: 'Can you participate in second-lines?',
+          answer: 'Yes! Second-line parades Sunday afternoons in different neighborhoods. Follow brass band, dance with crowd, wave handkerchief/umbrella! Free to join. Check schedules online. It\'s joyful, spontaneous, and quintessentially New Orleans. Embrace it!',
+        },
+      ],
+    },
+  },
+
+  'new-york-city': {
+    'times-square-tours': {
+      title: 'New York City Times Square Tours',
+      subtitle: 'Experience the Crossroads of the World with dazzling billboards and NYC energy!',
+      categoryName: 'Times Square Tours',
+      
+      stats: {
+        toursAvailable: 102,
+        priceFrom: 40,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience Times Square - the most visited tourist attraction in the world (50 million annually)! Times Square tours explore the iconic intersection of Broadway and 7th Avenue with massive LED billboards, Broadway theaters, street performers (naked Cowboy, Elmos), TKTS discount booth, New Year's Eve ball drop site, and vibrant pedestrian plazas. Walk through Midtown Manhattan seeing nearby attractions like Rockefeller Center, Bryant Park, and Theater District. Tours explain Times Square's transformation from seedy 1970s-80s to family-friendly today, advertising history, Broadway show culture, and why it's called "Crossroads of the World." It's sensory overload and quintessential NYC!`,
+
+      seo: {
+        title: 'New York City Times Square Tours 2025 - Broadway & The Crossroads',
+        description: 'Experience NYC Times Square! Broadway theaters, billboards, and iconic New York energy!',
+        keywords: 'Times Square tours, NYC Broadway, New York City tours, Times Square NYC, Broadway tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Iconic NYC',
+          description: 'Most recognizable location in New York - must-see!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Broadway Theaters',
+          description: '40+ theaters within blocks - world\'s theater capital!',
+        },
+        {
+          icon: 'Camera',
+          title: 'LED Billboards',
+          description: 'Massive animated screens creating sensory spectacle!',
+        },
+        {
+          icon: 'Users',
+          title: 'People-Watching',
+          description: 'Observe humanity from every corner of globe!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Times Square Walking Tour',
+          description: 'Guided walk explaining history, billboards, and culture.',
+          features: [
+            '2 hours',
+            'Expert guide',
+            'History stories',
+            'Photo stops',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Broadway & Times Square',
+          description: 'Combine Times Square with backstage Broadway tour.',
+          features: [
+            '3-4 hours',
+            'Times Square',
+            'Theater tour',
+            'Comprehensive',
+            'Theatrical',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Midtown Highlights Tour',
+          description: 'Times Square plus Rockefeller, Bryant Park, Grand Central.',
+          features: [
+            '3-4 hours',
+            'Multiple sites',
+            'Walking',
+            'Efficient',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Night Lights Tour',
+          description: 'Evening tour when Times Square is fully lit - spectacular!',
+          features: [
+            '2 hours',
+            'Night views',
+            'LED displays',
+            'Magical',
+            'Photogenic',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your New York City Times Square Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 2-3 hours. Combined with attractions: 4-5 hours. Crowds always!',
+          },
+          {
+            icon: 'Star',
+            title: 'LED Billboards',
+            description: 'Massive animated advertisements creating unique sensory experience.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Theater District',
+            description: 'Walk among 40+ Broadway theaters and stage doors.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Street Performers',
+            description: 'Costumed characters, musicians, artists (tipping expected if photographing!).',
+          },
+          {
+            icon: 'MapPin',
+            title: 'TKTS Booth',
+            description: 'Red stairs and discount Broadway tickets - iconic photo spot!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'NYC History',
+            description: 'Learn about Times Square evolution and New York\'s entertainment industry.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit both day AND night - completely different experiences!',
+        'Night (after 7 PM) when billboards fully lit is most spectacular.',
+        'Times Square FREE but extremely crowded - arrive early morning for photos.',
+        'TKTS booth sells same-day Broadway discounts (25-50% off) - long lines!',
+        'Avoid eating in Times Square - overpriced tourist traps! Walk few blocks away.',
+        'Street performers expect tips ($1-2) if you photograph them.',
+        'New Year\'s Eve (ball drop) requires arriving 12+ hours early - brutal!',
+        'Tours provide context beyond just seeing bright lights - worth it for first-timers.',
+      ],
+
+      faqs: [
+        {
+          question: 'Is Times Square worth visiting?',
+          answer: 'Worth seeing once - it\'s iconic NYC! However, it\'s touristy, crowded, and overwhelming. Visit for photos, experience energy, then explore real NYC neighborhoods. New Yorkers avoid it! First-timers should see it. 30-60 minutes sufficient unless seeing Broadway show.',
+        },
+        {
+          question: 'When is the best time to visit Times Square?',
+          answer: 'Night (7 PM-midnight) when billboards fully lit - most spectacular! Early morning (6-7 AM) for photos without crowds. Avoid midday unless seeing matinee show. New Year\'s Eve if you\'re crazy (arrive 12+ hours early!). Year-round accessible.',
+        },
+        {
+          question: 'Is Times Square safe?',
+          answer: 'Very safe! Heavy police presence, cameras everywhere, massive crowds. Watch for pickpockets in crowds and aggressive costumed characters demanding tips. Don\'t sign petitions (scams). Otherwise, totally safe - it\'s one of safest places in NYC!',
+        },
+        {
+          question: 'Can you get cheap Broadway tickets?',
+          answer: 'TKTS booth in Times Square sells same-day discounts (25-50% off) - long lines but legit! Matinee shows cheaper than evening. Lottery tickets ($10-40) for some shows. Rush tickets day-of at box offices. Advance online usually best prices though!',
+        },
+        {
+          question: 'What is near Times Square?',
+          answer: 'Rockefeller Center (10 min walk), Bryant Park, Grand Central Terminal (15 min), Central Park (20 min), Museum of Modern Art. All walkable! Times Square is Midtown - everything accessible. Plan full day exploring area.',
+        },
+        {
+          question: 'Do you need tour for Times Square?',
+          answer: 'Not essential - it\'s self-explanatory! However, tours provide history, insider theater tips, and navigate efficiently. Free to walk yourself. Tours ($40-60) worth it if wanting context. First-timers: Tour adds value. Return visitors: Self-explore.',
+        },
+        {
+          question: 'What should I avoid in Times Square?',
+          answer: 'Avoid: Restaurants (overpriced tourist traps!), aggressive costumed characters (tip only if you want photo), petition scammers, slow walking in pedestrian flow. Don\'t eat here - walk to Hell\'s Kitchen or elsewhere for better value!',
+        },
+        {
+          question: 'How long to spend at Times Square?',
+          answer: 'Most visitors: 30-60 minutes (photos, absorb atmosphere). Broadway show: Add 2-3 hours. Full Midtown exploration: 4-6 hours. It\'s worth experiencing but not all-day destination. See it, photograph it, move on to deeper NYC!',
+        },
+      ],
+    },
+  },
 };
 
