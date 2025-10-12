@@ -13969,7 +13969,7 @@ export const categoryGuidesNorthAmerica = {
           description: 'Filmed in 300+ movies and TV shows - recognize many spots!',
         },
         {
-          icon: 'Bike',
+          icon: 'MapPin',
           title: 'Bike-Friendly',
           description: 'Perfect for cycling with car-free loop roads!',
         },
@@ -13977,7 +13977,7 @@ export const categoryGuidesNorthAmerica = {
 
       tourTypes: [
         {
-          icon: 'Walking',
+          icon: 'Users',
           title: 'Walking Tour',
           description: 'Guided walk to major landmarks and hidden gems.',
           features: [
@@ -13989,7 +13989,7 @@ export const categoryGuidesNorthAmerica = {
           ],
         },
         {
-          icon: 'Bike',
+          icon: 'Star',
           title: 'Bike Tour',
           description: 'Cover more ground cycling the 6-mile park loop.',
           features: [
