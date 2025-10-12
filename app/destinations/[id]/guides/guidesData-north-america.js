@@ -22259,7 +22259,7 @@ export const categoryGuidesNorthAmerica = {
           description: 'See Toronto, Lake Ontario, and beyond - spectacular!',
         },
         {
-          icon: 'Zap',
+          icon: 'Star',
           title: 'EdgeWalk',
           description: 'Walk around outside edge hands-free - world\'s highest!',
         },
@@ -22291,7 +22291,7 @@ export const categoryGuidesNorthAmerica = {
           ],
         },
         {
-          icon: 'Zap',
+          icon: 'Star',
           title: 'EdgeWalk',
           description: 'Harnessed walk around outside ledge.',
           features: [
@@ -22340,7 +22340,7 @@ export const categoryGuidesNorthAmerica = {
             description: 'Highest public observation deck at 447m - clear-day views 160km!',
           },
           {
-            icon: 'Zap',
+            icon: 'Star',
             title: 'EdgeWalk',
             description: 'World\'s highest external walk - lean back over edge harnessed!',
           },
@@ -24182,17 +24182,17 @@ export const categoryGuidesNorthAmerica = {
 
       whyChoose: [
         {
-          icon: 'Zap',
+          icon: 'Star',
           title: 'Zip-Line Canopy',
           description: 'Fly through jungle canopy - thrilling views!',
         },
         {
-          icon: 'Star',
+          icon: 'Heart',
           title: 'ATV Jungle Rides',
           description: 'Ride ATVs through jungle trails and Mayan villages!',
         },
         {
-          icon: 'Heart',
+          icon: 'Users',
           title: 'Cenote Rappelling',
           description: 'Rappel into open cenotes - adrenaline rush!',
         },
@@ -24205,7 +24205,7 @@ export const categoryGuidesNorthAmerica = {
 
       tourTypes: [
         {
-          icon: 'Zap',
+          icon: 'Star',
           title: 'Jungle Adventure Park',
           description: 'Zip-lines, cenotes, ATVs, rope swings combo.',
           features: [
@@ -24263,7 +24263,7 @@ export const categoryGuidesNorthAmerica = {
             description: 'Adventure parks: 5-6 hours. ATV tours: 4 hours. Kiteboarding: 3-4 hours. Extreme: Full day.',
           },
           {
-            icon: 'Zap',
+            icon: 'Camera',
             title: 'Zip-Lines',
             description: 'Multiple zip-lines through jungle canopy - some over cenotes!',
           },
@@ -24771,7 +24771,7 @@ export const categoryGuidesNorthAmerica = {
           ],
         },
         {
-          icon: 'Zap',
+          icon: 'Heart',
           title: 'Winter Skiing',
           description: 'Ski/snowboard local mountains.',
           features: [
