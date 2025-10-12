@@ -1645,12 +1645,12 @@ export const destinations = [
     heroDescription: 'Welcome to Seville, where flamenco rhythms echo through historic streets and Moorish architecture tells stories of centuries past. From the magnificent Alcázar to the iconic Cathedral, from passionate flamenco shows to authentic tapas culture, this Andalusian gem offers the perfect blend of history, culture, and Spanish passion. Let our AI-powered planner help you discover the best experiences this enchanting destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Seville.jpeg',
     tourCategories: [
-      'Alcázar Palace Tours',
-      'Cathedral Tours',
-      'Flamenco Show Tours',
-      'Tapas & Food Tours',
-      'Historic Quarter Tours',
-      'Plaza de España Tours'
+      { name: 'Alcázar Palace Tours', hasGuide: true },
+      { name: 'Cathedral Tours', hasGuide: true },
+      { name: 'Flamenco Show Tours', hasGuide: true },
+      { name: 'Tapas & Food Tours', hasGuide: true },
+      { name: 'Historic Quarter Tours', hasGuide: true },
+      { name: 'Plaza de España Tours', hasGuide: true }
     ],
     seo: {
       title: 'Seville Tours & Excursions - Top-Rated Activities & Adventures',

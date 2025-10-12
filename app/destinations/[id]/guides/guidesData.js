@@ -36187,5 +36187,1063 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
     },
   },
 
+  seville: {
+    'alcazar-palace-tours': {
+      title: 'Seville Alcázar Palace Tours',
+      subtitle: 'Explore Spain\'s oldest royal palace with stunning Moorish architecture and lush gardens!',
+      categoryName: 'Alcázar Palace Tours',
+      
+      stats: {
+        toursAvailable: 124,
+        priceFrom: 35,
+        duration: '1.5-3 hours',
+      },
+
+      introduction: `Experience the Royal Alcázar of Seville, a breathtaking palace complex showcasing 1,000 years of architectural evolution from Moorish fortress to royal residence! This UNESCO World Heritage site is Spain's oldest royal palace still in use - the Spanish royal family stays here when visiting Seville. The Alcázar blends Mudéjar, Gothic, Renaissance, and Baroque styles with intricate tilework, carved ceilings, horseshoe arches, and stunning courtyards. The palace gardens feature fountains, orange trees, peacocks, and hidden pavilions creating an oasis in the city. Skip-the-line tours bypass notorious queues, expert guides explain the rich history and Game of Thrones filming locations, and special evening visits offer magical atmosphere. It's Seville's crown jewel combining Moorish artistry with Spanish royal heritage!`,
+
+      seo: {
+        title: 'Seville Alcázar Tours 2025 - Skip the Line Royal Palace Tickets',
+        description: 'Explore Seville\'s Royal Alcázar! Moorish palace, stunning gardens, and skip-the-line tours!',
+        keywords: 'Alcázar Seville, Seville palace tours, Royal Alcázar tickets, Seville skip the line, Mudéjar architecture',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Spain\'s Oldest Royal Palace',
+          description: 'Visit a living palace still used by Spanish royalty with 1,000 years of history!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Stunning Moorish Architecture',
+          description: 'Marvel at intricate tilework, carved arches, and Mudéjar craftsmanship.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Beautiful Gardens',
+          description: 'Explore lush palace gardens with fountains, peacocks, and hidden corners.',
+        },
+        {
+          icon: 'Users',
+          title: 'Skip the Long Lines',
+          description: 'Priority access bypasses 1-2 hour queues in peak season - essential!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Skip-the-Line Guided Tours',
+          description: 'Priority entrance with expert guide exploring palace rooms and gardens.',
+          features: [
+            '1.5-2 hours',
+            'Skip lines',
+            'Expert guide',
+            'Palace & gardens',
+            'Historical context',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Alcázar + Cathedral Combo',
+          description: 'Visit Seville\'s two UNESCO sites together with skip-the-line access to both.',
+          features: [
+            '3-4 hours',
+            'Both monuments',
+            'Skip lines',
+            'Combined ticket',
+            'Full experience',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Evening Alcázar Tours',
+          description: 'Special after-hours visits with palace illuminated and fewer crowds.',
+          features: [
+            'Evening access',
+            'Magical lighting',
+            'Fewer crowds',
+            'Special atmosphere',
+            'Unique experience',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Small Group Tours',
+          description: 'Intimate groups (10-15) with personalized attention and better guide interaction.',
+          features: [
+            'Small groups',
+            'Personal attention',
+            'Hear clearly',
+            'Ask questions',
+            'Premium experience',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Seville Alcázar Palace Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Standard tours last 1.5-2 hours; comprehensive tours take 2.5-3 hours including gardens.',
+          },
+          {
+            icon: 'Star',
+            title: 'Moorish Palace',
+            description: 'Explore stunning rooms with intricate tiles, carved ceilings, and horseshoe arches.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Royal Apartments',
+            description: 'See chambers still used by Spanish royal family when visiting Seville.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Lush Gardens',
+            description: 'Wander through beautiful gardens with fountains, peacocks, and orange trees.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Rich History',
+            description: 'Learn about Moorish rulers, Christian kings, and 1,000 years of palace evolution.',
+          },
+          {
+            icon: 'Star',
+            title: 'Game of Thrones Sites',
+            description: 'Visit filming locations from the popular series set in Dorne!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book skip-the-line tours weeks in advance - Alcázar is Seville\'s most popular attraction!',
+        'Early morning (9 AM opening) or late afternoon (after 4 PM) have fewer crowds.',
+        'The palace gardens are extensive - budget extra 45-60 minutes to explore properly.',
+        'Photography allowed everywhere - the tilework and arches are incredibly photogenic!',
+        'Summer: Go early or late to avoid extreme heat (40°C/104°F+ common June-August).',
+        'Game of Thrones fans: Look for the Water Gardens and Dorne filming locations!',
+        'Audio guides available but expert guides provide much richer historical context.',
+        'Combined Alcázar + Cathedral tickets save time and money - both are must-sees!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Alcázar of Seville?',
+          answer: 'The Royal Alcázar is a stunning palace complex originally built as a Moorish fort in the 10th century, later expanded by Christian kings. It\'s Spain\'s oldest royal palace still in use and a UNESCO World Heritage site. The architecture blends Mudéjar, Gothic, and Renaissance styles with incredible tilework and beautiful gardens.',
+        },
+        {
+          question: 'How long are Alcázar lines?',
+          answer: 'Lines can be 1-2 hours in peak season (April-October), sometimes longer in summer. Skip-the-line tours are essential - the saved time is worth the extra €15-20. Book timed-entry tickets or guided tours in advance to bypass the general admission queue.',
+        },
+        {
+          question: 'How much do Alcázar tours cost?',
+          answer: 'Standard entry tickets: €14.50. Skip-the-line guided tours: €35-65 (includes priority access + expert guide for 1.5-2 hours). Combined Alcázar + Cathedral tours: €60-90. Evening tours: €50-80. Book online in advance for best availability and prices.',
+        },
+        {
+          question: 'When is the best time to visit the Alcázar?',
+          answer: 'Early morning (9 AM opening) is best - fewer crowds and cooler temperatures. Late afternoon (after 4 PM) also quieter. Best months: October-April for comfortable weather. Summer (June-August) gets extremely hot - go very early if visiting then!',
+        },
+        {
+          question: 'Can you visit the Alcázar gardens?',
+          answer: 'Yes! The gardens are included with palace admission and are absolutely stunning. Allow 45-60 minutes to explore the extensive grounds with fountains, pavilions, peacocks, and orange trees. The gardens are often less crowded than the palace interiors.',
+        },
+        {
+          question: 'Is the Alcázar worth it?',
+          answer: 'Absolutely YES! It\'s one of Spain\'s most beautiful palaces with stunning Mudéjar architecture rivaling the Alhambra. The tilework, gardens, and historical significance make it essential. Skip-the-line tours highly recommended to avoid wasting time in queues.',
+        },
+        {
+          question: 'Was Game of Thrones filmed at the Alcázar?',
+          answer: 'Yes! The Alcázar\'s gardens and halls were used as the Water Gardens of Dorne in Season 5. Fans will recognize specific courtyards and the maze-like gardens. Tours often point out filming locations.',
+        },
+        {
+          question: 'What should I wear to the Alcázar?',
+          answer: 'Comfortable walking shoes (lots of walking and stairs!), modest clothing (shoulders/knees covered recommended for palace sections), hat and sunscreen for gardens. Summer: Light, breathable fabrics and bring water - it gets very hot!',
+        },
+      ],
+    },
+
+    'cathedral-tours': {
+      title: 'Seville Cathedral Tours',
+      subtitle: 'Explore the world\'s largest Gothic cathedral with Giralda tower, Columbus tomb, and stunning architecture!',
+      categoryName: 'Cathedral Tours',
+      
+      stats: {
+        toursAvailable: 98,
+        priceFrom: 30,
+        duration: '1-2 hours',
+      },
+
+      introduction: `Experience Seville Cathedral, the world's largest Gothic cathedral and third-largest church overall! Built on the site of a grand mosque, this UNESCO World Heritage masterpiece took over a century to complete (1401-1528). The cathedral houses Christopher Columbus's tomb, the stunning Giralda tower (former minaret offering panoramic city views), the largest altarpiece in Christianity with gold-covered carvings, beautiful chapels, and priceless art treasures. Skip-the-line tours bypass long queues, expert guides explain the rich history and artistic details, and climbing the Giralda's 34 ramps (originally designed for horses!) rewards you with spectacular Seville views. It's an architectural marvel combining Gothic grandeur with Moorish heritage!`,
+
+      seo: {
+        title: 'Seville Cathedral Tours 2025 - Giralda Tower & Skip the Line',
+        description: 'Visit Seville Cathedral! World\'s largest Gothic cathedral, Giralda tower, and Columbus tomb!',
+        keywords: 'Seville Cathedral tours, Giralda tower Seville, Cathedral skip the line, Seville church tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'World\'s Largest Gothic Cathedral',
+          description: 'Explore an architectural masterpiece of incredible scale and beauty!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Climb the Giralda Tower',
+          description: 'Ascend the iconic bell tower for panoramic views over Seville.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Columbus Tomb',
+          description: 'See the ornate tomb where Christopher Columbus is said to be buried.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Skip the Lines',
+          description: 'Priority access saves 1+ hours in peak season queues.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Skip-the-Line Cathedral Tours',
+          description: 'Priority entrance with guided tour of cathedral, Giralda tower, and art treasures.',
+          features: [
+            '1-1.5 hours',
+            'Skip lines',
+            'Expert guide',
+            'Giralda climb',
+            'Columbus tomb',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Cathedral + Alcázar Combo',
+          description: 'Visit both UNESCO sites with skip-the-line access to Seville\'s top monuments.',
+          features: [
+            '3-4 hours',
+            'Both monuments',
+            'Skip all lines',
+            'Expert guide',
+            'Best value',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Small Group Tours',
+          description: 'Intimate groups with personalized attention exploring cathedral and history.',
+          features: [
+            'Small groups',
+            '10-15 people',
+            'Personal attention',
+            'Better interaction',
+            'Quality experience',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Rooftop Cathedral Tours',
+          description: 'Special access to cathedral rooftops for unique perspectives and city views.',
+          features: [
+            'Rooftop access',
+            'Unique views',
+            'Special permission',
+            'Limited availability',
+            'Premium experience',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Seville Cathedral Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours last 1-1.5 hours for cathedral; 1.5-2 hours including Giralda tower climb.',
+          },
+          {
+            icon: 'Star',
+            title: 'Gothic Masterpiece',
+            description: 'Marvel at massive Gothic architecture, soaring ceilings, and intricate details.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Giralda Tower',
+            description: 'Climb 34 ramps to the top for spectacular panoramic views over Seville.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Columbus Tomb',
+            description: 'See the elaborate tomb carried by four kings representing Spanish kingdoms.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Art & History',
+            description: 'View priceless artworks, the gold altarpiece, and learn cathedral history.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photography',
+            description: 'Photos allowed inside - capture stunning architecture and artistic details.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book skip-the-line tours in advance - cathedral has long queues year-round!',
+        'Early morning (11 AM opening Mondays) or late afternoon for fewer crowds.',
+        'The Giralda climb is 34 ramps (no stairs) - originally built for horses! Worth the climb!',
+        'Dress modestly - shoulders and knees covered (it\'s an active place of worship).',
+        'Free entry Mondays 4:30-6 PM but expect crowds and no guided tours.',
+        'Combined tickets with Alcázar save time and money - both are must-sees!',
+        'Allow 30-45 minutes for Giralda climb - there\'s often a queue inside.',
+        'The Patio de los Naranjos (Orange Tree Courtyard) is peaceful - don\'t skip it!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Seville Cathedral?',
+          answer: 'It\'s the world\'s largest Gothic cathedral built 1401-1528 on the site of a grand mosque. The cathedral is UNESCO World Heritage and the third-largest church globally. The Gothic architecture is spectacular!',
+        },
+        {
+          question: 'How much do cathedral tours cost?',
+          answer: 'Entry tickets: €12. Skip-the-line guided tours: €30-50 (1-1.5 hours). Combined Cathedral + Alcázar tours: €60-90. Giralda tower climb included with all tickets. Book tours online for skip-the-line access.',
+        },
+        {
+          question: 'Can you climb the Giralda tower?',
+          answer: 'Yes! The Giralda is included with cathedral admission. It\'s 34 ramps (not stairs) to the top - 104 meters high. The climb takes 20-30 minutes and offers fantastic Seville views. Worth the effort!',
+        },
+        {
+          question: 'Is Christopher Columbus buried here?',
+          answer: 'Supposedly! His ornate tomb is in the cathedral, carried by four statues representing Spanish kingdoms. However, DNA evidence is debated - he may also be buried in the Dominican Republic. Regardless, the tomb is impressive!',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Early morning right at opening (11 AM Mondays, 10:45 AM other days) for minimal crowds. Late afternoon (after 4 PM) also quieter. Best months: October-April for comfortable weather - summer gets extremely hot!',
+        },
+        {
+          question: 'Is the cathedral worth it?',
+          answer: 'Absolutely! It\'s one of the world\'s most impressive churches with stunning Gothic architecture, the Giralda tower views, and historical significance. Essential Seville experience. Skip-the-line tours recommended for best visit.',
+        },
+        {
+          question: 'What is the dress code?',
+          answer: 'Modest dress required (it\'s an active cathedral): shoulders and knees covered, no hats inside, no revealing clothing. They enforce this at entrance - bring a scarf if wearing tank top or shorts.',
+        },
+        {
+          question: 'How long to visit the cathedral?',
+          answer: 'Plan 1.5-2 hours minimum - 45-60 minutes for cathedral interior, 30-45 minutes for Giralda climb, plus time for queues/photos. Guided tours are typically 1-1.5 hours and cover the highlights efficiently.',
+        },
+      ],
+    },
+
+    'flamenco-show-tours': {
+      title: 'Seville Flamenco Show Tours',
+      subtitle: 'Experience passionate flamenco - soulful guitar, rhythmic dancing, and Andalusian heart!',
+      categoryName: 'Flamenco Show Tours',
+      
+      stats: {
+        toursAvailable: 86,
+        priceFrom: 20,
+        duration: '1-2 hours',
+      },
+
+      introduction: `Experience authentic flamenco in its birthplace - Seville, the heart of Andalusian flamenco culture! Flamenco is passionate art combining guitar, singing (cante), dance, and rhythm expressing deep emotion through movement and music. Seville's tablaos (flamenco venues) range from intimate traditional spaces to grand theaters, all showcasing world-class performers. Shows feature professional dancers in colorful dresses, virtuoso guitarists, and powerful singers creating an emotional, unforgettable performance. Options include traditional tablaos with drinks, dinner shows pairing flamenco with tapas or full meals, small intimate performances, and flamenco museums explaining the art form's history. It's Spain's soul expressed through dance - seeing flamenco in Seville is essential!`,
+
+      seo: {
+        title: 'Seville Flamenco Shows 2025 - Authentic Tablao Performances',
+        description: 'Experience authentic flamenco in Seville! Traditional shows, dinner tablaos, and Andalusian passion!',
+        keywords: 'Seville flamenco shows, Seville tablao, flamenco Seville, Spanish flamenco, authentic flamenco',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Birthplace of Flamenco',
+          description: 'Experience flamenco in Seville - the heart of this passionate Andalusian art!',
+        },
+        {
+          icon: 'Star',
+          title: 'World-Class Performers',
+          description: 'See professional dancers, guitarists, and singers at top-rated tablaos.',
+        },
+        {
+          icon: 'Music',
+          title: 'Authentic Atmosphere',
+          description: 'Intimate traditional venues create genuine emotional flamenco experience.',
+        },
+        {
+          icon: 'Users',
+          title: 'Cultural Immersion',
+          description: 'Understand Spanish culture through this UNESCO-recognized art form.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Traditional Tablao Shows',
+          description: 'Authentic flamenco performances in intimate venues with drinks included.',
+          features: [
+            '1 hour show',
+            'Professional dancers',
+            'Drink included',
+            'Traditional venue',
+            'Intimate setting',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Flamenco Dinner Shows',
+          description: 'Combine flamenco with traditional Spanish dinner or tapas at premium tablaos.',
+          features: [
+            '2-3 hours',
+            'Full dinner',
+            'Flamenco show',
+            'Wine included',
+            'Complete experience',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Flamenco Museum + Show',
+          description: 'Visit Flamenco Dance Museum learning the history, then watch live performance.',
+          features: [
+            'Museum visit',
+            'Educational',
+            'Live show',
+            'Cultural context',
+            '2-3 hours',
+          ],
+        },
+        {
+          icon: 'Music',
+          title: 'Triana Neighborhood Shows',
+          description: 'Experience flamenco in Triana, the traditional flamenco district across the river.',
+          features: [
+            'Authentic Triana',
+            'Local atmosphere',
+            'Traditional venue',
+            'Cultural district',
+            'Genuine experience',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Seville Flamenco Show Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Shows last 60-90 minutes; dinner shows run 2-3 hours with meal and performance.',
+          },
+          {
+            icon: 'Music',
+            title: 'Live Performance',
+            description: 'Watch professional flamenco dancers, guitarists, and singers perform passionately.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Emotional Experience',
+            description: 'Feel the duende (spirit) of flamenco - it\'s deeply emotional and powerful.',
+          },
+          {
+            icon: 'Star',
+            title: 'Traditional Venue',
+            description: 'Intimate tablaos create authentic atmosphere where performers and audience connect.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Drinks & Food',
+            description: 'Most shows include drinks; dinner shows add tapas or full Spanish meal.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Cultural Insight',
+            description: 'Learn about flamenco\'s Andalusian roots and UNESCO cultural heritage status.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book popular tablaos (Casa de la Memoria, Museo del Baile Flamenco) days in advance!',
+        'Smaller, intimate venues offer more authentic experience than large tourist theaters.',
+        'Shows typically start 7-8 PM or 9-10 PM - book time slot that fits your schedule.',
+        'Dinner shows: Food quality varies - some are excellent, others mediocre. Read reviews!',
+        'Triana neighborhood offers authentic flamenco where local artists perform.',
+        'Photography often not allowed during shows - check rules and respect performers.',
+        'Dress code: Smart casual appropriate, but no strict requirements at most venues.',
+        'Reserve front-row seats if possible - being close intensifies the emotional experience!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is flamenco?',
+          answer: 'Flamenco is a passionate Spanish art form combining guitar music, singing (cante), dance, and rhythmic clapping (palmas). Originating in Andalusia, it expresses deep emotion - joy, sorrow, passion. It\'s UNESCO Intangible Cultural Heritage!',
+        },
+        {
+          question: 'How much do flamenco shows cost?',
+          answer: 'Show only (with drink): €20-40. Show with tapas: €40-70. Full dinner show: €60-100. Premium tablaos or intimate venues cost more. Book online for better prices and availability.',
+        },
+        {
+          question: 'Which tablao is best?',
+          answer: 'Top tablaos: Casa de la Memoria (intimate, authentic, €20), Museo del Baile Flamenco (historic, excellent, €25), Casa de la Guitarra (small, traditional, €20), and La Carbonería (free entry, drink minimum, casual). Each offers different atmosphere!',
+        },
+        {
+          question: 'Are flamenco shows authentic?',
+          answer: 'Quality varies! Top-rated tablaos feature professional performers and genuine flamenco passion. Tourist shows at some restaurants can be watered-down. Book well-reviewed traditional tablaos or Triana venues for authentic experiences.',
+        },
+        {
+          question: 'Should I book a dinner show?',
+          answer: 'Depends on budget and time! Dinner shows are convenient (meal + entertainment) but food quality varies and they\'re pricier. Often better to eat at authentic restaurant then attend show-only performance. Read reviews about food quality!',
+        },
+        {
+          question: 'When do shows start?',
+          answer: 'Most tablaos have 2-3 shows nightly: early (7-8 PM), mid (8:30-9 PM), and late (9:30-10:30 PM). Book your preferred time slot in advance, especially for popular venues.',
+        },
+        {
+          question: 'Can I take photos during shows?',
+          answer: 'Policies vary - some venues allow photos without flash, others prohibit all photography to respect performers. Always check venue rules and be discreet. Video recording typically not allowed.',
+        },
+        {
+          question: 'Is flamenco suitable for children?',
+          answer: 'Yes! Flamenco is family-friendly (no inappropriate content). Children often enjoy the energetic dancing and music. However, shows are 60-90 minutes - consider if your kids can sit still that long.',
+        },
+      ],
+    },
+
+    'tapas-and-food-tours': {
+      title: 'Seville Tapas & Food Tours',
+      subtitle: 'Taste authentic Andalusian tapas, jamón ibérico, and local specialties where Sevillanos eat!',
+      categoryName: 'Tapas & Food Tours',
+      
+      stats: {
+        toursAvailable: 92,
+        priceFrom: 55,
+        duration: '3-4 hours',
+      },
+
+      introduction: `Discover Seville's incredible tapas culture - an essential part of Andalusian life! Tapas tours take you beyond tourist restaurants to authentic bars and taverns where locals gather for small plates, wine, and conversation. Taste Spanish classics - jamón ibérico (acorn-fed ham), gazpacho (cold tomato soup), salmorejo (thick tomato cream), fried fish from Cádiz, montaditos (small sandwiches), tortilla española, and local Seville specialties paired with Spanish wines and sherry from nearby Jerez. Expert local guides share the tapas tradition, explain Spanish food culture, introduce passionate owners, and reveal the best spots in neighborhoods like Triana, Alameda, and the historic center. From market tours to progressive tapas crawls, these experiences showcase why eating in Seville is a social, joyful ritual!`,
+
+      seo: {
+        title: 'Seville Tapas Tours 2025 - Spanish Food & Wine Experiences',
+        description: 'Experience Seville tapas tours! Authentic Spanish food, local bars, and Andalusian cuisine!',
+        keywords: 'Seville tapas tours, Seville food tours, Spanish tapas, Seville gastronomy, Andalusian food tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Tapas Culture',
+          description: 'Experience genuine Seville tapas culture at local bars where residents eat!',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Expert Guides',
+          description: 'Sevillanos share food traditions, history, and insider neighborhood knowledge.',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Wine & Sherry Pairings',
+          description: 'Sample Spanish wines and Jerez sherry paired with traditional tapas.',
+        },
+        {
+          icon: 'Star',
+          title: 'Hidden Culinary Gems',
+          description: 'Discover authentic family-run bars tourists miss but locals love!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Classic Tapas Tour',
+          description: 'Progressive tasting at 4-6 traditional bars sampling Andalusian specialties.',
+          features: [
+            '3-4 hours',
+            '4-6 bar stops',
+            '8-12 tapas',
+            'Wine & sherry',
+            'Local guide',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Triana Food Tour',
+          description: 'Explore Triana neighborhood - the authentic heart of Seville tapas culture.',
+          features: [
+            '3 hours',
+            'Triana district',
+            'Local bars',
+            'Traditional tapas',
+            'Authentic atmosphere',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Market + Tapas Tour',
+          description: 'Visit Triana Market meeting vendors, then tapas tasting at nearby bars.',
+          features: [
+            '3-4 hours',
+            'Market visit',
+            'Fresh produce',
+            'Tapas stops',
+            'Local insights',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Wine & Tapas Pairing',
+          description: 'Focus on Spanish wines and sherries expertly paired with regional dishes.',
+          features: [
+            '3 hours',
+            'Multiple wines',
+            'Sherry education',
+            'Food pairings',
+            'Sommelier guide',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Seville Tapas & Food Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tapas tours last 3-4 hours visiting 4-6 bars with substantial tastings.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Andalusian Specialties',
+            description: 'Taste jamón ibérico, gazpacho, salmorejo, fried fish, montaditos, and local dishes.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Local Bars',
+            description: 'Visit authentic tapas bars in Triana, Alameda, and historic center.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Spanish Wines',
+            description: 'Sample regional wines, Jerez sherry, and local beverages paired with food.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Food Culture',
+            description: 'Learn tapas traditions, Spanish dining customs, and Andalusian food history.',
+          },
+          {
+            icon: 'Users',
+            title: 'Small Groups',
+            description: 'Intimate groups (8-12 people) allow interaction with guides and bar owners.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Come hungry! Tours include 8-12 tapas - enough to replace dinner.',
+        'Evening tours (7-9 PM start) capture authentic Spanish dining time when locals go out.',
+        'Triana neighborhood offers most authentic tapas scene across the Guadalquivir River.',
+        'Traditional tapas bars often don\'t have seating - standing at the bar is part of the culture!',
+        'Jamón ibérico de bellota (acorn-fed ham) is expensive but absolutely worth trying.',
+        'Ask guides for bar recommendations - they\'ll share their favorite spots beyond the tour.',
+        'Tapas culture is social - embrace the vibe of eating, drinking, and chatting!',
+        'Book tours for Monday-Thursday for most authentic local atmosphere (weekends touristier).',
+      ],
+
+      faqs: [
+        {
+          question: 'What are tapas?',
+          answer: 'Tapas are small Spanish dishes served in bars and restaurants - ranging from simple (olives, cheese) to elaborate (mini paellas, seafood). The tradition started in Andalusia! Tapas culture is about sharing, socializing, and enjoying multiple flavors.',
+        },
+        {
+          question: 'How much do tapas tours cost?',
+          answer: 'Tapas tours typically cost €55-90 per person for 3-4 hours including 8-12 tapas, drinks, and guide. It\'s good value considering you get dinner\'s worth of food plus expert guidance to authentic spots!',
+        },
+        {
+          question: 'Are tapas tours good for vegetarians?',
+          answer: 'Yes! Inform the tour company when booking and they\'ll arrange vegetarian alternatives. Spanish cuisine has excellent vegetable dishes, cheeses, and meat-free tapas. Vegan is more challenging but doable.',
+        },
+        {
+          question: 'What tapas should I try in Seville?',
+          answer: 'Must-try: Jamón ibérico (Iberian ham), salmorejo (thick tomato soup), espinacas con garbanzos (spinach with chickpeas), pescaíto frito (fried fish), carrillada (beef cheek), and montaditos (small sandwiches). Food tours hit many of these!',
+        },
+        {
+          question: 'When is the best time for tapas tours?',
+          answer: 'Evening tours (7-9 PM start) are best - you\'ll experience authentic Spanish tapeo culture when locals dine. Some afternoon tours (5-8 PM) work well too. Avoid midday when many bars close for siesta.',
+        },
+        {
+          question: 'Do tapas tours include enough food?',
+          answer: 'Yes! Tours include 8-12 tapas across multiple bars - that\'s a full dinner\'s worth of food. Most participants leave comfortably full. The portions are generous Spanish-style, not tiny bites.',
+        },
+        {
+          question: 'Which neighborhood has the best tapas?',
+          answer: 'Triana is most authentic with local bars. Alameda de Hércules has trendy spots. Historic Center (near Cathedral) mixes tourist and local places. Avoid immediate tourist zones - guides take you to authentic neighborhood bars!',
+        },
+        {
+          question: 'What drinks come with tapas?',
+          answer: 'Tours typically include Spanish wine (tinto, blanco), beer (cerveza), and sometimes sherry from nearby Jerez. Some venues offer rebujito (sherry + lemon soda - refreshing!). Unlimited drinks or one per stop depending on tour.',
+        },
+      ],
+    },
+
+    'historic-quarter-tours': {
+      title: 'Seville Historic Quarter Tours',
+      subtitle: 'Explore the Santa Cruz quarter - medieval streets, hidden plazas, and Seville\'s Moorish heritage!',
+      categoryName: 'Historic Quarter Tours',
+      
+      stats: {
+        toursAvailable: 78,
+        priceFrom: 25,
+        duration: '2-3 hours',
+      },
+
+      introduction: `Discover Seville's enchanting historic quarter (Barrio Santa Cruz) - the former Jewish quarter with labyrinthine medieval streets, flower-filled courtyards, hidden plazas, and whitewashed buildings! This charming neighborhood surrounds the Cathedral and Alcázar with narrow alleys designed to provide shade from Andalusian heat. Walking tours reveal Seville's Moorish and Jewish heritage, explain the area's transformation over centuries, visit beautiful patios (traditional courtyards), and share stories of famous Sevillanos. Expert guides navigate the maze-like streets showing hidden corners, romantic squares, traditional azulejo tiles, orange trees, and authentic tapas bars. Evening tours capture magical atmosphere when streets glow with lantern light. It's Seville's most atmospheric district!`,
+
+      seo: {
+        title: 'Seville Historic Quarter Tours 2025 - Santa Cruz Walking Tours',
+        description: 'Explore Seville\'s Santa Cruz quarter! Medieval streets, hidden plazas, and Andalusian charm!',
+        keywords: 'Seville walking tours, Santa Cruz Seville, Seville historic quarter, Barrio Santa Cruz tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'MapPin',
+          title: 'Medieval Labyrinth',
+          description: 'Navigate charming narrow streets and discover hidden plazas in historic quarter!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Authentic Atmosphere',
+          description: 'Experience Seville\'s soul in flower-filled courtyards and whitewashed alleys.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Rich History',
+          description: 'Learn about Moorish, Jewish, and Christian heritage in historic Seville.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photogenic Beauty',
+          description: 'Capture stunning traditional architecture, colorful tiles, and romantic corners.',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Santa Cruz Walking Tours',
+          description: 'Guided walk through the historic Jewish quarter with cultural and historical insights.',
+          features: [
+            '2-3 hours',
+            'Medieval streets',
+            'Hidden plazas',
+            'Cultural stories',
+            'Expert guide',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Evening Historic Tours',
+          description: 'Magical evening walks when streets are illuminated and atmosphere is romantic.',
+          features: [
+            '2 hours',
+            'Evening ambiance',
+            'Illuminated streets',
+            'Fewer crowds',
+            'Romantic setting',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Free Walking Tours',
+          description: 'Tip-based tours covering Santa Cruz, Cathedral area, and Seville highlights.',
+          features: [
+            '2-3 hours',
+            'Tip-based pricing',
+            'Main highlights',
+            'Budget-friendly',
+            'Daily departures',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Professional photographers guide you to best spots and teach composition.',
+          features: [
+            '2-3 hours',
+            'Photo techniques',
+            'Best locations',
+            'Golden hour',
+            'Instagram spots',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Seville Historic Quarter Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours last 2-3 hours exploring the medieval quarter and surroundings.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Medieval Streets',
+            description: 'Navigate narrow labyrinthine alleys designed for shade and medieval defense.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Hidden Courtyards',
+            description: 'Peek into traditional patios with fountains, tiles, and flowers - Seville\'s charm!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Historical Stories',
+            description: 'Learn about Moorish Al-Andalus, Jewish community, and Christian reconquest.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Capture whitewashed buildings, orange trees, colorful tiles, and romantic plazas.',
+          },
+          {
+            icon: 'Star',
+            title: 'Local Culture',
+            description: 'Experience authentic Sevillano lifestyle in residential neighborhoods.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Early morning (9-10 AM) or evening (6-8 PM) offer best light and fewer crowds.',
+        'Santa Cruz can be confusing - guided tours help you navigate and see hidden spots.',
+        'Bring comfortable shoes - cobblestone streets and lots of walking!',
+        'Summer: Go early or late to avoid midday heat (40°C+ common).',
+        'Free walking tours are tip-based (€10-15 tip customary) - budget-friendly option.',
+        'Evening tours capture magical atmosphere with illuminated streets - highly romantic!',
+        'Many tours include Plaza de España - confirm itinerary if you want to see it.',
+        'Ask guides for restaurant recommendations in Santa Cruz - they know authentic spots!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Barrio Santa Cruz?',
+          answer: 'Santa Cruz is Seville\'s historic quarter - the former Jewish quarter with narrow medieval streets, whitewashed buildings, flower-filled patios, and romantic plazas. It\'s the city\'s most charming neighborhood surrounding the Cathedral and Alcázar.',
+        },
+        {
+          question: 'How long to explore Santa Cruz?',
+          answer: 'Plan 2-3 hours for a proper walk through the quarter. It\'s easy to get lost in the labyrinthine streets (part of the charm!). Guided tours efficiently cover highlights while sharing history and finding hidden gems.',
+        },
+        {
+          question: 'Can you explore Santa Cruz without a guide?',
+          answer: 'Yes! It\'s public streets and free to wander. However, guided tours reveal hidden courtyards, share historical context, and navigate efficiently. The quarter is maze-like - you\'ll likely get lost exploring alone (which can be fun!).',
+        },
+        {
+          question: 'What should I see in Santa Cruz?',
+          answer: 'Don\'t miss: Hidden plazas (Plaza de Doña Elvira, Plaza de los Venerables), traditional patios, Hospital de los Venerables (beautiful courtyard), narrow streets like Callejón del Agua, and charming bars/cafes. Guides show the best spots!',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Early morning (9-10 AM) for quiet streets and good photos, or evening (6-8 PM) for magical atmosphere when streets are illuminated. Avoid midday in summer - extremely hot! October-April best weather months.',
+        },
+        {
+          question: 'Are there free walking tours?',
+          answer: 'Yes! Several companies offer tip-based free walking tours departing daily from Plaza del Triunfo or Plaza Nueva. Tours last 2-3 hours covering Santa Cruz and main sights. Tip €10-15 per person customary.',
+        },
+        {
+          question: 'Is Santa Cruz safe?',
+          answer: 'Very safe! It\'s Seville\'s most touristic area with constant foot traffic and police presence. Watch for pickpockets in crowded areas. The maze-like streets can be disorienting but you\'re never far from major landmarks.',
+        },
+        {
+          question: 'What is a patio in Seville?',
+          answer: 'Patios are traditional Andalusian courtyards inside buildings with fountains, tiles, plants, and shade. Many in Santa Cruz open to public or visible from streets. They\'re architectural gems showing Moorish influence on Spanish design!',
+        },
+      ],
+    },
+
+    'plaza-de-espana-tours': {
+      title: 'Seville Plaza de España Tours',
+      subtitle: 'Visit Seville\'s most spectacular plaza - stunning Renaissance architecture and canal beauty!',
+      categoryName: 'Plaza de España Tours',
+      
+      stats: {
+        toursAvailable: 56,
+        priceFrom: 20,
+        duration: '1-2 hours',
+      },
+
+      introduction: `Experience Plaza de España, Seville's most magnificent square and one of Spain's most impressive architectural achievements! Built for the 1929 Ibero-American Exposition, this stunning semicircular plaza features Renaissance/Neo-Mudéjar architecture, a beautiful canal with ceramic bridges, elaborate tilework representing Spanish provinces, and grand colonnades creating spectacular symmetry. The plaza starred in Star Wars (Attack of the Clones filmed here!) and Lawrence of Arabia. Tours explore the architectural details, explain the 1929 Exposition history, offer boat rides on the canal, and guide photography at best angles. The adjacent María Luisa Park provides lush gardens perfect for strolling. It's Seville's most photogenic spot combining grand architecture with romantic atmosphere!`,
+
+      seo: {
+        title: 'Seville Plaza de España Tours 2025 - Architecture & Canal Boats',
+        description: 'Explore Plaza de España in Seville! Stunning architecture, canal boats, and beautiful park!',
+        keywords: 'Plaza de España Seville, Seville architecture tours, Maria Luisa Park, Seville attractions',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Architectural Masterpiece',
+          description: 'One of Spain\'s most spectacular squares with stunning Renaissance design!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Instagram Paradise',
+          description: 'Incredibly photogenic with colorful tiles, bridges, and perfect symmetry!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Romantic Setting',
+          description: 'Canal boat rides, beautiful gardens, and stunning architecture create magical atmosphere.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Star Wars Filming Location',
+          description: 'Visit where Attack of the Clones scenes were filmed - movie fans love it!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Plaza de España Walking Tours',
+          description: 'Guided exploration of the plaza, tilework, and María Luisa Park with history.',
+          features: [
+            '1-2 hours',
+            'Plaza architecture',
+            'Tile details',
+            'Park walk',
+            'Photo stops',
+          ],
+        },
+        {
+          icon: 'Ship',
+          title: 'Plaza Boat Rides',
+          description: 'Romantic rowboat or paddleboat rides along the plaza\'s scenic canal.',
+          features: [
+            '30-45 minutes',
+            'Canal ride',
+            'Unique perspective',
+            'Romantic',
+            'Photo opportunities',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tours',
+          description: 'Professional photographers guide you to best angles capturing the plaza beautifully.',
+          features: [
+            '1-2 hours',
+            'Photo techniques',
+            'Best times',
+            'Composition tips',
+            'Stunning shots',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Evening Plaza Tours',
+          description: 'Experience the plaza illuminated at night with fewer crowds and magical ambiance.',
+          features: [
+            '1 hour',
+            'Evening lighting',
+            'Fewer tourists',
+            'Romantic atmosphere',
+            'Night photography',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Seville Plaza de España Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Plaza visits last 1-2 hours including walking, photography, and optional boat rides.',
+          },
+          {
+            icon: 'Star',
+            title: 'Stunning Architecture',
+            description: 'Marvel at the semicircular plaza with Renaissance/Neo-Mudéjar design and colonnades.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Ceramic Tilework',
+            description: 'See 48 provincial alcoves with beautiful azulejo tiles representing Spanish regions.',
+          },
+          {
+            icon: 'Ship',
+            title: 'Canal & Bridges',
+            description: 'Walk along or boat on the canal spanned by four ornate ceramic bridges.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Capture stunning symmetrical architecture, colorful tiles, and canal reflections.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'María Luisa Park',
+            description: 'Stroll through adjacent lush park with fountains, monuments, and shaded paths.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Visit early morning (8-9 AM) for empty plaza and best photos - stunning light!',
+        'Evening (after 7 PM) offers beautiful illumination and romantic atmosphere.',
+        'Boat rides cost €6 for 30-45 minutes - fun and photogenic from canal perspective!',
+        'Each of the 48 alcoves represents a Spanish province - find your favorite!',
+        'Star Wars fans: The plaza doubled for Naboo in Attack of the Clones!',
+        'Combine Plaza de España with María Luisa Park walk - both are beautiful.',
+        'Summer: Visit early or evening - midday is brutally hot with minimal shade.',
+        'The plaza is FREE to visit 24/7 - no entrance fee required!',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Plaza de España?',
+          answer: 'Plaza de España is a magnificent semicircular plaza built for the 1929 Ibero-American Exposition. It features stunning Renaissance/Neo-Mudéjar architecture, a canal with bridges, and tilework representing 48 Spanish provinces. It\'s Seville\'s most iconic square!',
+        },
+        {
+          question: 'Is Plaza de España free to visit?',
+          answer: 'Yes! The plaza is completely free and open 24/7. You can walk around, take photos, and enjoy the architecture anytime. Boat rides on the canal cost €6 extra if you want that experience.',
+        },
+        {
+          question: 'How long to visit Plaza de España?',
+          answer: 'Plan 1-2 hours to walk around, photograph the alcoves, and enjoy the atmosphere. Add 30-45 minutes for boat ride. Combining with María Luisa Park adds another hour. It\'s worth taking your time!',
+        },
+        {
+          question: 'Can you rent boats at the plaza?',
+          answer: 'Yes! Rowboats and paddleboats are available for €6 per boat for 30-45 minutes. It\'s a fun, romantic way to see the plaza from the canal. Queues can be long on weekends - go early!',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Early morning (8-9 AM) for empty plaza and best photos. Evening (after 7 PM) for beautiful illumination and romantic ambiance. Avoid midday in summer - extremely hot with no shade!',
+        },
+        {
+          question: 'Was Star Wars filmed here?',
+          answer: 'Yes! Plaza de España was used as the city of Theed on planet Naboo in Star Wars Episode II: Attack of the Clones. Movie fans will recognize the distinctive architecture!',
+        },
+        {
+          question: 'Is Plaza de España wheelchair accessible?',
+          answer: 'Mostly yes! The plaza is flat and wheelchair accessible. Boat rides may be challenging depending on mobility. María Luisa Park adjacent has paved paths but some areas have steps.',
+        },
+        {
+          question: 'What else is nearby?',
+          answer: 'The plaza is in María Luisa Park, which has beautiful gardens, fountains, museums (Archaeological Museum, Museum of Popular Arts), and shaded walking paths. Plan time to explore the park too!',
+        },
+      ],
+    },
+  },
+
 };
 
