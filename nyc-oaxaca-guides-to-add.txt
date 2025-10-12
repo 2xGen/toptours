@@ -1,9 +1,0 @@
-// This file contains the remaining 11 guides to add to guidesData-north-america.js
-// 5 NYC guides + 6 Oaxaca guides = 11 total
-
-Due to the file being very large (13,938 lines), I'll add these guides directly by continuing the batch approach.
-
-Let me add them in 2 batches:
-1. Remaining 5 NYC guides
-2. All 6 Oaxaca guides
-

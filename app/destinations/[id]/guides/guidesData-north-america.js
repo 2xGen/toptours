@@ -13932,6 +13932,182 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'central-park-tours': {
+      title: 'New York City Central Park Tours',
+      subtitle: 'Explore NYC\'s iconic urban oasis with 843 acres of green space!',
+      categoryName: 'Central Park Tours',
+      
+      stats: {
+        toursAvailable: 96,
+        priceFrom: 35,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Central Park - the green heart of Manhattan and America's first landscaped public park! Central Park tours explore 843 acres of meadows, lakes, bridges, and famous landmarks like Bethesda Fountain, Bow Bridge, Strawberry Fields (John Lennon memorial), Belvedere Castle, and The Mall tree-lined promenade. Tours by foot, bike, pedicab, or horse-drawn carriage show you iconic filming locations (Home Alone, When Harry Met Sally, Avengers), hidden gems, seasonal beauty, and the park's fascinating history. Learn about Frederick Law Olmsted's visionary design, how the park transformed Manhattan, wildlife that calls it home, and free activities. It's an 840-acre escape from urban chaos!`,
+
+      seo: {
+        title: 'New York City Central Park Tours 2025 - NYC\'s Urban Oasis',
+        description: 'Explore Central Park! Bethesda Fountain, bike tours, iconic NYC landmarks, and green escape!',
+        keywords: 'Central Park tours NYC, New York Central Park, Central Park bike tours, Bethesda Fountain, NYC parks',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Iconic Landmarks',
+          description: 'Bethesda Fountain, Bow Bridge, Strawberry Fields - famous worldwide!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Urban Escape',
+          description: '843 acres of green space in Manhattan - incredible oasis!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Movie Locations',
+          description: 'Filmed in 300+ movies and TV shows - recognize many spots!',
+        },
+        {
+          icon: 'Bike',
+          title: 'Bike-Friendly',
+          description: 'Perfect for cycling with car-free loop roads!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Walking',
+          title: 'Walking Tour',
+          description: 'Guided walk to major landmarks and hidden gems.',
+          features: [
+            '2-3 hours',
+            'Major sites',
+            'History',
+            'Photo stops',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Bike',
+          title: 'Bike Tour',
+          description: 'Cover more ground cycling the 6-mile park loop.',
+          features: [
+            '2-3 hours',
+            'Bike included',
+            'Efficient',
+            'Fun',
+            'Active',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Pedicab Tour',
+          description: 'Relaxed rickshaw ride with narrated commentary.',
+          features: [
+            '1-2 hours',
+            'Relaxing',
+            'No walking',
+            'Customizable',
+            'Romantic',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tour',
+          description: 'Focus on best photo spots and golden hour shooting.',
+          features: [
+            '2-3 hours',
+            'Photo-focused',
+            'Pro tips',
+            'Scenic spots',
+            'Creative',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your New York City Central Park Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking: 2-3 hours. Bike: 2-3 hours. Pedicab: 1-2 hours. Self-exploration: All day!',
+          },
+          {
+            icon: 'Star',
+            title: 'Bethesda Fountain',
+            description: 'Iconic fountain at heart of park - most photographed spot!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Bow Bridge',
+            description: 'Beautiful cast-iron bridge over The Lake - romantic spot!',
+          },
+          {
+            icon: 'Music',
+            title: 'Strawberry Fields',
+            description: 'John Lennon memorial with "Imagine" mosaic - touching tribute.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Movie Locations',
+            description: 'See spots from Home Alone, Avengers, When Harry Met Sally, Elf!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Belvedere Castle',
+            description: 'Miniature castle with best park views from top!',
+          },
+        },
+      },
+
+      expertTips: [
+        'Central Park is FREE but enormous - tours help navigate efficiently.',
+        'Spring (April-May) cherry blossoms gorgeous. Fall (Oct-Nov) foliage stunning!',
+        'Early morning (7-9 AM) quieter with better light for photos.',
+        'Bike rental $15-20/hour - tours include bikes (better value!).',
+        'Strawberry Fields often has musicians - bring donation for performers.',
+        'Download Central Park app for self-guided tour if budget-conscious.',
+        'Wear comfortable shoes - even "short" walks are 2+ miles!',
+        'Central Park Zoo ($19.95) separate attraction - small but nice for kids.',
+      ],
+
+      faqs: [
+        {
+          question: 'Is Central Park safe?',
+          answer: 'Very safe! Millions visit annually. Daytime extremely safe. Evening: Stick to well-lit paths and populated areas. Park closes 1 AM. Police presence throughout. Tours run safely all day. Don\'t wander deserted areas late night.',
+        },
+        {
+          question: 'Can you explore Central Park yourself?',
+          answer: 'Absolutely! It\'s free and accessible. Download Central Park app for self-guided tour. However, tours provide history, navigate efficiently, and show hidden gems you\'d miss. First-timers: Tour recommended. Return visitors: Explore freely!',
+        },
+        {
+          question: 'How long to spend in Central Park?',
+          answer: 'Quick visit: 1-2 hours (Bethesda Fountain, Bow Bridge, Strawberry Fields). Moderate: 3-4 hours (add Belvedere Castle, The Mall, Conservatory Garden). Full day: Pack picnic, rent boat, attend free concerts! Most tours: 2-3 hours.',
+        },
+        {
+          question: 'What are must-see spots in Central Park?',
+          answer: 'Bethesda Fountain (iconic!), Bow Bridge, Strawberry Fields, The Mall, Belvedere Castle, Conservatory Garden, Alice in Wonderland statue, Sheep Meadow (sunbathing!). All walkable from each other. Plan minimum 2-3 hours to see highlights.',
+        },
+        {
+          question: 'Should I walk or bike Central Park?',
+          answer: 'Depends on time/fitness! Walking: See details, leisurely, 2-3 hours for southern half. Biking: Cover entire park in 2-3 hours, fun, efficient. Bike tours most comprehensive! Pedicab if you don\'t want exercise. All great options!',
+        },
+        {
+          question: 'When is the best time to visit Central Park?',
+          answer: 'Spring (April-May): Cherry blossoms, tulips. Summer: Free concerts, Shakespeare in Park. Fall (Oct-Nov): Stunning foliage! Winter: Snow scenes, ice skating. Early morning (7-9 AM) quieter. Sunset golden hour magical. Year-round beautiful!',
+        },
+        {
+          question: 'How much do Central Park tours cost?',
+          answer: 'Walking tours: $35-60 (2-3 hours). Bike tours: $45-75 (includes bike). Pedicab: $50-150 (customizable). Photography: $80-120. Private: $200-400. Park FREE to explore yourself - tours add context and efficiency!',
+        },
+        {
+          question: 'Can you see all of Central Park in one day?',
+          answer: 'Technically yes (2.5 miles long, 0.5 miles wide) but exhausting! Full bike loop: 6 miles, 1-2 hours. Most visitors see southern half (59th-79th Streets) with highlights. Full exploration needs 6-8 hours. Plan realistic expectations!',
+        },
+      ],
+    },
   },
 };
 
