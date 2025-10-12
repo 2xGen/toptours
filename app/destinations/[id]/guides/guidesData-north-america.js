@@ -25748,6 +25748,710 @@ export const categoryGuidesNorthAmerica = {
         },
       ],
     },
+
+    'monument-tours': {
+      title: 'Washington D.C. Monument Tours',
+      subtitle: 'Visit Washington Monument, Lincoln Memorial, and iconic memorials!',
+      categoryName: 'Monument Tours',
+      
+      stats: {
+        toursAvailable: 86,
+        priceFrom: 40,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Experience Washington D.C.'s iconic monuments - symbols of American democracy! Monument tours explore Washington Monument (555-foot obelisk!), Lincoln Memorial (where MLK spoke!), Jefferson Memorial (Tidal Basin!), Vietnam Veterans Memorial (The Wall), Korean War Memorial, WWII Memorial, FDR Memorial, and MLK Memorial. Visit monuments by day or illuminated at night, learn stories behind each memorial, understand historical context, and experience powerful tributes. Tours include guided experiences, photo opportunities, and historical education. All monuments FREE to visit!`,
+
+      seo: {
+        title: 'Washington D.C. Monument Tours 2025 - Lincoln, Washington & Memorial Tours',
+        description: 'Explore D.C. monuments! Washington Monument, Lincoln Memorial, and iconic tributes!',
+        keywords: 'DC monuments, Washington Monument, Lincoln Memorial, Vietnam Memorial, DC monument tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Washington Monument',
+          description: '555-foot obelisk - tallest structure in D.C., iconic!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Lincoln Memorial',
+          description: 'Where MLK gave "I Have a Dream" speech - powerful site!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'War Memorials',
+          description: 'Vietnam, Korea, WWII - moving tributes to service!',
+        },
+        {
+          icon: 'Camera',
+          title: 'All FREE',
+          description: 'Every monument free to visit - accessible to everyone!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Major Monuments Tour',
+          description: 'Visit Washington, Lincoln, and key memorials.',
+          features: [
+            '3-4 hours',
+            'Top monuments',
+            'Walking',
+            'Guided',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Night Monuments Tour',
+          description: 'See illuminated monuments after dark.',
+          features: [
+            '3 hours',
+            'Night',
+            'Lit monuments',
+            'Less crowds',
+            'Magical',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Tidal Basin Walk',
+          description: 'Jefferson, FDR, MLK around Tidal Basin.',
+          features: [
+            '2 hours',
+            'Tidal Basin',
+            'Cherry blossoms',
+            'Scenic',
+            'Beautiful',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'War Memorials Tour',
+          description: 'Focus on Vietnam, Korea, WWII memorials.',
+          features: [
+            '2-3 hours',
+            'War memorials',
+            'Moving',
+            'Educational',
+            'Respectful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Washington D.C. Monument Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Major monuments: 3-4 hours. Night tour: 3 hours. Tidal Basin: 2 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Washington Monument',
+            description: '555-foot obelisk - free timed tickets to go to top (advance booking!).',
+          },
+          {
+            icon: 'Heart',
+            title: 'Lincoln Memorial',
+            description: 'Seated Lincoln, "I Have a Dream" step marker, powerful atmosphere!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Reflecting Pool',
+            description: 'Mirror pool between Lincoln and WWII - iconic photo!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Vietnam Wall',
+            description: '58,000+ names of fallen - moving and sobering memorial.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Tidal Basin',
+            description: 'Jefferson, MLK, FDR memorials around water - cherry blossoms beautiful!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Washington Monument timed tickets FREE but reserve online weeks ahead!',
+        'Night tours show monuments lit beautifully - highly recommended.',
+        'Lincoln Memorial stairs where MLK spoke - stand where history happened.',
+        'Vietnam Wall organized by date of death - find names on database.',
+        'Cherry blossom season (late March-early April) Tidal Basin stunning but packed!',
+        'Jefferson Memorial sunset views beautiful.',
+        'All monuments have 24/7 access - night visiting popular.',
+        'Bring water - lots of walking, summer heat intense!',
+      ],
+
+      faqs: [
+        {
+          question: 'Can you go to top of Washington Monument?',
+          answer: 'Yes! FREE timed tickets (reserve online weeks ahead at recreation.gov). Elevator to 500-foot observation. 360° D.C. views. Limited slots - book early! Walk-up tickets sometimes available at 9 AM (line early!). Worth the effort!',
+        },
+        {
+          question: 'Are monuments free?',
+          answer: 'ALL monuments completely FREE! 24/7 access. Washington Monument needs free timed ticket to go inside. Otherwise unrestricted access. No entrance fees. American treasure accessible to everyone!',
+        },
+        {
+          question: 'What is the best monument in D.C.?',
+          answer: 'Lincoln Memorial most iconic - seated Lincoln, MLK speech site, powerful! Washington Monument tallest. Vietnam Wall most moving. Jefferson beautiful (Tidal Basin). All significant - visit multiple! Each offers different emotional impact.',
+        },
+        {
+          question: 'Can you visit monuments at night?',
+          answer: 'Yes! 24/7 access to all outdoor monuments. Beautiful after dark - dramatic lighting, fewer crowds, magical atmosphere. Night tours popular (7-10 PM). Very safe - park rangers present. Lincoln Memorial especially stunning lit!',
+        },
+        {
+          question: 'How far apart are monuments?',
+          answer: 'National Mall is 2 miles from Capitol to Lincoln. Monuments spread across. Walking possible but lots! Bike/Segway tours cover more efficiently. Tidal Basin adds another mile. Budget 3-4 hours walking minimum!',
+        },
+        {
+          question: 'What is the Vietnam Wall?',
+          answer: 'Vietnam Veterans Memorial lists 58,000+ names of Americans killed/missing in Vietnam War. Black granite wall, organized by date of death. Deeply moving. Directory helps find names. FREE. Visitors leave mementos - emotional tribute.',
+        },
+        {
+          question: 'When is cherry blossom season?',
+          answer: 'Late March-early April (peak varies yearly!). Tidal Basin (Jefferson Memorial) most beautiful. National Cherry Blossom Festival. PACKED but gorgeous! Monitor peak bloom forecasts. Book accommodations way ahead!',
+        },
+        {
+          question: 'How much do monument tours cost?',
+          answer: 'Monuments: FREE! Guided walking tours: $40-75 (3-4 hours). Night tours: $50-80. Bike/Segway: $55-90. Self-guided completely free - tours add historical context and stories!',
+        },
+      ],
+    },
+
+    'capitol-hill-tours': {
+      title: 'Washington D.C. Capitol Hill Tours',
+      subtitle: 'Tour the U.S. Capitol, Supreme Court, and Library of Congress!',
+      categoryName: 'Capitol Hill Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 0,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Capitol Hill - seat of American legislative power! Capitol Hill tours explore U.S. Capitol Building (dome and Rotunda!), Supreme Court (highest court!), Library of Congress (largest library in world!), and surrounding historic district. Tour Capitol interior seeing Rotunda, National Statuary Hall, Crypt, and learning about legislative process. Visit Supreme Court chamber (when court not in session!), explore Jefferson Building with stunning architecture, and walk historic Capitol Hill neighborhood. Tours include free Capitol tours (advanced booking!), building access, and civic education. It's American government center!`,
+
+      seo: {
+        title: 'Washington D.C. Capitol Hill Tours 2025 - U.S. Capitol, Supreme Court & Congress',
+        description: 'Tour Capitol Hill! U.S. Capitol Building, Supreme Court, Library of Congress, FREE!',
+        keywords: 'U.S. Capitol tours, Capitol Hill, Supreme Court DC, Library of Congress, Capitol Building tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'U.S. Capitol',
+          description: 'Iconic dome - where Congress meets, laws made!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'All FREE Tours',
+          description: 'Capitol, Supreme Court, Library all offer free tours!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Library of Congress',
+          description: 'Most beautiful library - stunning Jefferson Building!',
+        },
+        {
+          icon: 'Users',
+          title: 'Active Government',
+          description: 'See democracy in action - working government buildings!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Capitol Tour',
+          description: 'Official free tour of Capitol Building interior.',
+          features: [
+            '90 minutes',
+            'Rotunda',
+            'Statuary Hall',
+            'Free',
+            'Must-book',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Library of Congress',
+          description: 'Self-guided or docent tour of Jefferson Building.',
+          features: [
+            '1-2 hours',
+            'Beautiful',
+            'Free',
+            'Architecture',
+            'Impressive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Supreme Court',
+          description: 'Tour highest court and watch oral arguments.',
+          features: [
+            '1 hour',
+            'Supreme Court',
+            'Free',
+            'Legal history',
+            'Interesting',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Complete Capitol Hill',
+          description: 'Visit all three buildings in half-day.',
+          features: [
+            '4-5 hours',
+            'All buildings',
+            'Comprehensive',
+            'Free',
+            'Educational',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Washington D.C. Capitol Hill Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Capitol: 90 min. Library: 1-2 hours. Supreme Court: 1 hour. All three: 4-5 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Capitol Rotunda',
+            description: 'Massive dome interior, historic paintings, National Statuary Hall!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Library Jefferson Building',
+            description: 'Most beautiful library - ornate architecture, Main Reading Room stunning!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Supreme Court',
+            description: 'Courtroom when not in session, "Equal Justice Under Law" inscription!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Capitol Grounds',
+            description: 'Beautiful Capitol grounds with gardens - free to explore!',
+          },
+          {
+            icon: 'Users',
+            title: 'Security',
+            description: 'Strict security at all buildings - no large bags, arrive early!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Capitol tours FREE but MUST book online weeks ahead (visitthecapitol.gov).',
+        'Library of Congress FREE, no reservations - most beautiful building in D.C.!',
+        'Supreme Court oral arguments (Oct-April, Mon-Wed mornings) - line early!',
+        'All three buildings walkable - do in one morning or afternoon.',
+        'Security strict - no large bags, allow 30+ min for entry.',
+        'Capitol visitor center has exhibits - worth exploring.',
+        'Congressional gallery passes from representative\'s office - watch House/Senate!',
+        'Free but competitive - plan ahead and book early!',
+      ],
+
+      faqs: [
+        {
+          question: 'How do you tour the U.S. Capitol?',
+          answer: 'FREE tours but MUST reserve online weeks ahead at visitthecapitol.gov! 90-minute tour of Rotunda, Statuary Hall, Crypt. Same-day tickets rare. Congressional office tours more extensive (contact rep!). Book early - popular!',
+        },
+        {
+          question: 'Can you visit Supreme Court?',
+          answer: 'Yes! FREE entry, no reservation. Court in session Oct-April. Oral arguments public (line early!). When not in session: Self-guided tour, lectures. Beautiful building, important history. 1 hour sufficient. Fascinating!',
+        },
+        {
+          question: 'Is Library of Congress worth visiting?',
+          answer: 'ABSOLUTELY! Most beautiful building in D.C. - Jefferson Building stunning! Main Reading Room gorgeous. FREE, no reservation (except tours). 1-2 hours. Even non-readers amazed. Don\'t miss it!',
+        },
+        {
+          question: 'Are Capitol tours free?',
+          answer: 'YES! Completely free but advance online reservation required (weeks ahead!). Tours fill fast. Alternative: Contact your representative\'s office for congressional tour (more extensive). Plan ahead!',
+        },
+        {
+          question: 'Can you watch Congress in session?',
+          answer: 'Yes! House and Senate galleries open to public. Congressional gallery passes from your representative\'s office (email/call ahead). Watch democracy in action! Session times vary - check schedule. Unique experience!',
+        },
+        {
+          question: 'What is in Library of Congress?',
+          answer: 'Library of Congress is world\'s largest library - 173 million items! Jefferson Building has Main Reading Room (stunning!), Gutenberg Bible, Jefferson\'s library. FREE to visit. Research library but public tours available. Architecture alone worth visit!',
+        },
+        {
+          question: 'How long for Capitol Hill?',
+          answer: 'Capitol tour: 90 min. Library: 1-2 hours. Supreme Court: 1 hour. All three: 4-5 hours with security/walking. Budget half-day for complete Capitol Hill experience. Don\'t rush government!',
+        },
+        {
+          question: 'When is the best time for Capitol Hill?',
+          answer: 'Weekday mornings for Supreme Court oral arguments (Oct-April). Book Capitol tours as soon as available (weeks ahead!). Avoid Cherry Blossom crowds. Year-round operation. Plan based on what\'s in session!',
+        },
+      ],
+    },
+
+    'food-and-culture-tours': {
+      title: 'Washington D.C. Food & Culture Tours',
+      subtitle: 'Taste diverse cuisines, historic markets, and diplomatic dining!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 72,
+        priceFrom: 70,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Washington D.C.'s dynamic food scene - diplomatic diversity meets Southern charm! Food tours explore historic neighborhoods like Georgetown (upscale dining!), U Street Corridor (Ethiopian food capital of America!), Eastern Market (historic since 1873!), Adams Morgan (international cuisine!), and The Wharf (seafood waterfront!). Sample half-smokes (D.C. sausage!), Chesapeake Bay blue crabs, Ethiopian injera, international embassy cuisines, and innovative restaurants. Tours include neighborhood exploration, market visits, cultural education, and diverse tastings. It's diplomatic dining!`,
+
+      seo: {
+        title: 'Washington D.C. Food & Culture Tours 2025 - Eastern Market, Half-Smokes & Diverse Cuisine',
+        description: 'Taste D.C.! Food tours, Eastern Market, Ethiopian food, and culinary experiences!',
+        keywords: 'DC food tours, Eastern Market, half-smoke, Ethiopian food DC, Washington DC restaurants',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Diplomatic Diversity',
+          description: 'Embassies bring authentic global cuisines - unique to D.C.!',
+        },
+        {
+          icon: 'Star',
+          title: 'Half-Smoke',
+          description: 'D.C.\'s signature sausage - Ben\'s Chili Bowl iconic!',
+        },
+        {
+          icon: 'Users',
+          title: 'Ethiopian Capital',
+          description: 'Most Ethiopian restaurants outside Ethiopia - U Street!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Eastern Market',
+          description: 'Historic market since 1873 - local produce and vendors!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Georgetown Food Tour',
+          description: 'Historic neighborhood with upscale dining.',
+          features: [
+            '3 hours',
+            '6-8 tastings',
+            'Georgetown',
+            'Upscale',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'U Street Food Walk',
+          description: 'Ethiopian food and historic Black Broadway.',
+          features: [
+            '3 hours',
+            'Ethiopian',
+            'History',
+            'Cultural',
+            'Unique',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Eastern Market Tour',
+          description: 'Historic market with local vendors.',
+          features: [
+            '2-3 hours',
+            'Market',
+            'Saturday best',
+            'Local',
+            'Authentic',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Embassy Row Dining',
+          description: 'Sample international cuisines from embassies.',
+          features: [
+            '3-4 hours',
+            'International',
+            'Diplomatic',
+            'Diverse',
+            'Cultural',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Washington D.C. Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Half-Smoke',
+            description: 'D.C. sausage (half pork/beef) with chili - Ben\'s Chili Bowl since 1958!',
+          },
+          {
+            icon: 'Star',
+            title: 'Ethiopian Food',
+            description: 'U Street has most Ethiopian restaurants outside Ethiopia - injera, wats, unique!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Blue Crabs',
+            description: 'Chesapeake Bay blue crabs - Maryland/D.C. specialty, steamed with Old Bay!',
+          },
+          {
+            icon: 'Users',
+            title: 'Eastern Market',
+            description: 'Historic market (1873) - local produce, Saturday vendors, community hub!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'International',
+            description: 'Embassies bring authentic global cuisines - diplomatic dining privilege!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Ben\'s Chili Bowl (U Street) D.C. institution - half-smoke legendary!',
+        'Eastern Market Saturday (farmers market) best day - arrive early.',
+        'U Street has most Ethiopian restaurants - Dukem, Habesha, authentic.',
+        'Georgetown expensive but beautiful neighborhood for dining.',
+        'The Wharf (waterfront) has seafood and new development.',
+        'Blue crabs seasonal (April-November) - summer best.',
+        'Many restaurants near Capitol cater to politicians - expensive!',
+        'Food tours show neighborhoods and avoid tourist traps.',
+      ],
+
+      faqs: [
+        {
+          question: 'What food is D.C. known for?',
+          answer: 'Half-smoke (D.C. sausage), Chesapeake Bay blue crabs, Ethiopian food (U Street!), mumbo sauce (sweet/tangy condiment), diverse international cuisines from embassies. Southern influence meets global diplomacy!',
+        },
+        {
+          question: 'What is a half-smoke?',
+          answer: 'Half-smoke is D.C. sausage - half pork, half beef, smoked, grilled! Served with chili, onions, mustard. Ben\'s Chili Bowl since 1958 most famous. $6-8. Essential D.C. food! Different from regular hot dog.',
+        },
+        {
+          question: 'Where is best Ethiopian food?',
+          answer: 'U Street Corridor (historic "Black Broadway")! Dukem, Habesha, Ethiopic, Zenebech. More Ethiopian restaurants than anywhere outside Ethiopia! Injera (spongy bread), wats (stews), traditional coffee ceremony. Unique to D.C.!',
+        },
+        {
+          question: 'What is Eastern Market?',
+          answer: 'Eastern Market is historic market since 1873 - local produce, meats, cheese, crafts! Saturday farmers/flea market amazing. Sunday crafts. Neighborhood community hub. FREE to visit (pay for purchases). Capitol Hill location. Essential D.C. experience!',
+        },
+        {
+          question: 'Is D.C. expensive for food?',
+          answer: 'Can be! Georgetown, downtown expensive ($30-50/meal). However, affordable options exist: Ben\'s Chili Bowl ($8), Ethiopian ($15-25), Eastern Market. Mix of expensive and budget. Food tours show both!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Walking food tours: $70-110 (3-4 hours, 6-8 tastings). Georgetown: $80-120. U Street: $75-95. Eastern Market: $70-90. Tours replace meals - good value for variety and cultural education!',
+        },
+        {
+          question: 'What is mumbo sauce?',
+          answer: 'Mumbo sauce is D.C. condiment - sweet/tangy sauce on chicken, fries, everything! Orange/red color, origins debated. Unique to D.C. region. Wings and fried chicken served with mumbo. Local specialty!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Year-round! Eastern Market: Saturday (farmers market). Lunch (12-3 PM) or dinner (6-9 PM) tours. Summer: Outdoor dining nice. Any season offers excellent food. Weather doesn\'t affect eating!',
+        },
+      ],
+    },
+
+    'historical-tours': {
+      title: 'Washington D.C. Historical Tours',
+      subtitle: 'Explore American history from founding to civil rights movements!',
+      categoryName: 'Historical Tours',
+      
+      stats: {
+        toursAvailable: 88,
+        priceFrom: 50,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Discover Washington D.C.'s rich American history - capital since 1790! Historical tours explore founding of the city, Civil War sites (Ford's Theatre where Lincoln shot!), civil rights landmarks (MLK Memorial, African American Museum!), presidential history, and political evolution. Visit Arlington National Cemetery, Ford's Theatre, Frederick Douglass House, historic Georgetown, and countless monuments telling America's story. Tours include expert historians, primary source locations, and comprehensive context. Learn about democracy, struggles, triumphs, and ongoing American experiment. It's living history!`,
+
+      seo: {
+        title: 'Washington D.C. Historical Tours 2025 - Civil War, Lincoln & American History',
+        description: 'Explore D.C. history! Ford\'s Theatre, Arlington, civil rights, and American heritage!',
+        keywords: 'DC historical tours, Ford\'s Theatre, Arlington Cemetery, DC history, Lincoln assassination, civil rights',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Capital Since 1790',
+          description: 'Where American history happened - founding to present!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Ford\'s Theatre',
+          description: 'Where Lincoln was assassinated - preserved and moving!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Arlington Cemetery',
+          description: 'Nation\'s most sacred ground - JFK, Tomb of Unknown!',
+        },
+        {
+          icon: 'Users',
+          title: 'Civil Rights History',
+          description: 'MLK Memorial, African American Museum - essential stories!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Arlington Cemetery Tour',
+          description: 'Visit national cemetery with changing of guard.',
+          features: [
+            '3-4 hours',
+            'Arlington',
+            'JFK grave',
+            'Tomb Unknown',
+            'Moving',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Ford\'s Theatre',
+          description: 'Where Lincoln shot - theatre and museum.',
+          features: [
+            '2 hours',
+            'Theatre',
+            'Lincoln',
+            'Free',
+            'Historic',
+          ],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Civil Rights Tour',
+          description: 'MLK sites, African American Museum, civil rights history.',
+          features: [
+            '4-5 hours',
+            'Civil rights',
+            'MLK',
+            'Important',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Comprehensive History',
+          description: 'Full-day covering founding through present.',
+          features: [
+            '6-7 hours',
+            'All eras',
+            'Comprehensive',
+            'Expert guide',
+            'Thorough',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Washington D.C. Historical Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Arlington: 3-4 hours. Ford\'s: 2 hours. Civil rights: 4-5 hours. Full history: 6-7 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Arlington Cemetery',
+            description: 'JFK eternal flame, Tomb of Unknown Soldier, changing of guard ceremony!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Ford\'s Theatre',
+            description: 'Theatre where Lincoln shot (April 14, 1865), Petersen House where he died!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Civil Rights Sites',
+            description: 'Lincoln Memorial (MLK speech), African American Museum, important landmarks!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Presidential History',
+            description: 'White House, monuments, memorials - presidential legacy!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Historic Georgetown',
+            description: 'Oldest neighborhood (pre-D.C.!) with Federal architecture!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Arlington changing of guard (Tomb of Unknown) every hour - time visit!',
+        'Ford\'s Theatre FREE but timed tickets - reserve online or arrive early.',
+        'African American Museum most important new museum - timed entry months ahead!',
+        'Many historic sites FREE - guides add crucial context.',
+        'Arlington vast - trolley tours ($15) cover more ground.',
+        'Respectful attire at Arlington - it\'s active cemetery.',
+        'Civil rights history powerful - budget time to process.',
+        'History everywhere in D.C. - plan multiple days for thorough understanding!',
+      ],
+
+      faqs: [
+        {
+          question: 'Can you visit Arlington Cemetery?',
+          answer: 'Yes! FREE to visit. JFK grave, Tomb of Unknown Soldier (changing of guard every hour!), Arlington House. Active military cemetery - respectful behavior required. Metro accessible. Trolley tours ($15) available. 3-4 hours recommended. Moving experience!',
+        },
+        {
+          question: 'What is Ford\'s Theatre?',
+          answer: 'Ford\'s Theatre is where President Lincoln was shot April 14, 1865! Still working theatre, also museum. Petersen House (where Lincoln died) across street included. FREE timed tickets. 1-2 hours. Essential American history site!',
+        },
+        {
+          question: 'Can you tour the White House?',
+          answer: 'Yes but complicated! Free tours through Congressional office (submit request 3 months-21 days ahead). Limited availability, extensive background check. Self-guided tour of select rooms. Worth effort if interested! Otherwise, see from outside (Pennsylvania Avenue).',
+        },
+        {
+          question: 'What is the changing of guard?',
+          answer: 'Tomb of Unknown Soldier at Arlington has 24/7 guard. Changing ceremony every hour (half-hour summer). Precise, moving military ritual. FREE to watch. Time your Arlington visit for ceremony. 20 minutes. Respectful silence required.',
+        },
+        {
+          question: 'Is D.C. good for history enthusiasts?',
+          answer: 'BEST in America! Capital city, all branches of government, monuments, museums, historic sites. Free access to most. Plan minimum 4-5 days for thorough history experience. History everywhere - overwhelming in best way!',
+        },
+        {
+          question: 'What is Georgetown?',
+          answer: 'Georgetown is D.C.\'s oldest neighborhood (founded 1751, pre-D.C.!). Historic Federal architecture, C&O Canal, upscale shopping/dining, Georgetown University. Beautiful for walking. 2-3 hours. Free to explore - dining expensive.',
+        },
+        {
+          question: 'How much do historical tours cost?',
+          answer: 'Many sites FREE! Ford\'s Theatre: Free timed tickets. Arlington: Free (trolley $15). Walking history tours: $50-90 (3-4 hours). Civil rights: $60-100. Full-day: $100-150. Mix of free sites and paid tours!',
+        },
+        {
+          question: 'When is the best time for historical tours?',
+          answer: 'Year-round! History always there. Spring/fall: Best weather. Summer: Hot/humid but peak season. Winter: Least crowded, cold but manageable. Many sites indoor. Plan around weather and crowd preferences!',
+        },
+      ],
+    },
   },
 };
 
