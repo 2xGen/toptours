@@ -3244,12 +3244,12 @@ export const destinations = [
     heroDescription: 'Welcome to Orlando, where dreams come true and magical adventures await around every corner. From the enchanting world of Disney to the thrilling rides of Universal, from world-class attractions to natural wonders, this family-friendly destination offers the perfect blend of entertainment, adventure, and unforgettable experiences. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Orlando.jpeg',
     tourCategories: [
-      'Disney World Tours',
-      'Universal Studios Tours',
-      'Theme Park Tours',
-      'Family Adventure Tours',
-      'Water Park Tours',
-      'Nature Tours'
+      { name: 'Disney World Tours', hasGuide: true },
+      { name: 'Universal Studios Tours', hasGuide: true },
+      { name: 'Theme Park Tours', hasGuide: true },
+      { name: 'Family Adventure Tours', hasGuide: true },
+      { name: 'Water Park Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true }
     ],
     seo: {
       title: 'Orlando Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4124,12 +4124,12 @@ export const destinations = [
     heroDescription: 'Welcome to Playa del Carmen, where the famous Fifth Avenue meets pristine Caribbean beaches and international flair creates a vibrant atmosphere. From the bustling pedestrian street to the beautiful beaches, from world-class dining to exciting nightlife, this cosmopolitan beach town offers the perfect blend of Mexican charm and international sophistication. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Playa%20del%20Carmen.jpg',
     tourCategories: [
-      'Fifth Avenue Tours',
-      'Beach Tours',
-      'Cenote Tours',
-      'Food & Culture Tours',
-      'Water Sports',
-      'Adventure Tours'
+      { name: 'Fifth Avenue Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Cenote Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Water Sports', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Playa del Carmen Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4289,12 +4289,12 @@ export const destinations = [
     heroDescription: 'Welcome to Puerto Vallarta, where the Sierra Madre mountains meet the Pacific Ocean and colonial charm creates a romantic atmosphere. From the historic Malecon boardwalk to the charming Old Town, from world-class dining to beautiful beaches, this Pacific paradise offers the perfect blend of culture, natural beauty, and authentic Mexican hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Puerto%20Vallarta.webp',
     tourCategories: [
-      'Malecon Tours',
-      'Old Town Tours',
-      'Beach Tours',
-      'Food & Culture Tours',
-      'Whale Watching Tours',
-      'Adventure Tours'
+      { name: 'Malecon Tours', hasGuide: true },
+      { name: 'Old Town Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Whale Watching Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Puerto Vallarta Tours & Excursions - Top-Rated Activities & Adventures',

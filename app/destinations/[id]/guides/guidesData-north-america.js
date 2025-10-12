@@ -15873,5 +15873,183 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  'orlando': {
+    'disney-world-tours': {
+      title: 'Orlando Disney World Tours',
+      subtitle: 'Experience the magic of Disney\'s four theme parks and endless wonder!',
+      categoryName: 'Disney World Tours',
+      
+      stats: {
+        toursAvailable: 156,
+        priceFrom: 109,
+        duration: 'Full day',
+      },
+
+      introduction: `Experience Walt Disney World - the most magical place on Earth! Disney World tours explore four massive theme parks: Magic Kingdom (Cinderella Castle, classic rides!), EPCOT (futuristic attractions and World Showcase), Hollywood Studios (Star Wars, Toy Story!), and Animal Kingdom (Avatar, real animals!). Tours include skip-the-line access, expert planning, character meet-and-greets, dining reservations, and insider tips for maximizing your day. Learn about FastPass strategy, park hopping, best times to visit attractions, hidden Mickeys, and Disney magic. With 25+ hotels, two water parks, Disney Springs shopping, and countless experiences, Disney World requires serious planning - tours help navigate the overwhelming options. It's where dreams come true!`,
+
+      seo: {
+        title: 'Orlando Disney World Tours 2025 - Magic Kingdom & Theme Park Tickets',
+        description: 'Experience Disney World! Four theme parks, character experiences, and magical tours!',
+        keywords: 'Disney World tours, Orlando Disney, Magic Kingdom, EPCOT, Disney tickets, Disney World vacation',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Four Theme Parks',
+          description: 'Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom - endless options!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Skip-the-Line Access',
+          description: 'Tours include FastPass strategy and Genie+ to minimize waits!',
+        },
+        {
+          icon: 'Users',
+          title: 'Character Meet-and-Greets',
+          description: 'Meet Mickey, princesses, and favorite characters!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Expert Planning',
+          description: 'Guides maximize your day with insider knowledge!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Multi-Day Park Tickets',
+          description: 'Access all four parks with flexible multi-day passes.',
+          features: [
+            '2-7 days',
+            'All parks',
+            'Park hopper option',
+            'FastPass included',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'VIP Guided Tour',
+          description: 'Private guide navigating parks with skip-the-line access.',
+          features: [
+            'Full day',
+            'Private guide',
+            'Skip all lines',
+            'Luxury',
+            'Premium',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Character Dining Experience',
+          description: 'Meals with characters like Cinderella, Mickey, Princesses.',
+          features: [
+            '1-2 hours',
+            'Character photos',
+            'Themed meal',
+            'Family favorite',
+            'Magical',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Park Planning Service',
+          description: 'Personalized itinerary and FastPass strategy.',
+          features: [
+            'Virtual planning',
+            'Custom itinerary',
+            'Dining reservations',
+            'Efficient',
+            'Value',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Orlando Disney World Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Full days required per park. Multi-day tickets best value. Plan 4-7 days for complete experience.',
+          },
+          {
+            icon: 'Star',
+            title: 'Magic Kingdom',
+            description: 'Cinderella Castle, Space Mountain, classic Disney - most iconic park!',
+          },
+          {
+            icon: 'Heart',
+            title: 'EPCOT',
+            description: 'Futuristic rides + World Showcase (11 countries) - educational and fun!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Hollywood Studios',
+            description: 'Star Wars Galaxy\'s Edge, Toy Story Land - thrilling attractions!',
+          },
+          {
+            icon: 'Users',
+            title: 'Animal Kingdom',
+            description: 'Avatar Flight of Passage, real safari with animals - nature + thrill!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Character Experiences',
+            description: 'Meet Mickey, princesses, Star Wars characters throughout parks!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Book 60 days ahead for dining and Genie+ reservations!',
+        'Arrive at rope drop (park opening) - first 2 hours least crowded.',
+        'Genie+ ($15-25/day) worth it for popular rides (skip 1+ hour waits!).',
+        'Magic Kingdom needs 2 days minimum - it\'s enormous!',
+        'Stay on Disney property for Extra Magic Hours and free transport.',
+        'Mid-week (Tues-Thurs) less crowded than weekends.',
+        'Download My Disney Experience app - essential for planning!',
+        'September-November and January-February: Lower crowds, great weather.',
+      ],
+
+      faqs: [
+        {
+          question: 'How much do Disney World tickets cost?',
+          answer: '1-day ticket: $109-159 (varies by season/park). Multi-day better value: 4 days ~$400, 7 days ~$500. Park Hopper add $65/day (visit multiple parks daily). Genie+ $15-25/day extra. Budget $150-200/person/day including food. Annual Pass: $1,400+ if visiting multiple times.',
+        },
+        {
+          question: 'How many days needed for Disney World?',
+          answer: 'Minimum 4 days (one per park). Ideal: 5-7 days allowing revisits to favorites and rest. Magic Kingdom alone needs 2 days! Rushing through in 1-2 days = exhausting and missing major attractions. Plan accordingly!',
+        },
+        {
+          question: 'What is the best Disney World park?',
+          answer: 'Magic Kingdom most iconic (Cinderella Castle, classic rides). Hollywood Studios best for Star Wars/Marvel fans. EPCOT great for adults (World Showcase, drinking!). Animal Kingdom unique (real animals + Avatar). All excellent - depends on interests! Magic Kingdom if choosing one.',
+        },
+        {
+          question: 'Is Disney World worth the money?',
+          answer: 'Expensive ($150-200/person/day) but unique experience! Best for families with kids or Disney fans. Not budget destination. However, quality, magic, and memories justify cost for many. Plan ahead to maximize value. Worth it if Disney magic appeals to you!',
+        },
+        {
+          question: 'When is the best time to visit Disney World?',
+          answer: 'Best: September-November and January-February (low crowds, mild weather). Avoid: Summer (hot, crowded), Christmas-New Year (insane crowds), spring break. Weekdays less crowded than weekends. Early entry (rope drop) and late closing best times daily!',
+        },
+        {
+          question: 'What is Genie+?',
+          answer: 'Genie+ ($15-25/day) skip-the-line system replacing FastPass. Book return times for popular rides via app. Worth it for busy days - saves hours waiting! Lightning Lanes for top rides ($10-20 each separately). Plan to spend $30-50/person for optimal experience.',
+        },
+        {
+          question: 'Should I stay at Disney resort?',
+          answer: 'Pros: Free transport, Extra Magic Hours, easier planning. Cons: Expensive ($200-800/night). Off-property hotels cheaper ($80-150) but need rental car. First-timers: Consider Disney resort for convenience. Budget travelers: Save money staying off-property.',
+        },
+        {
+          question: 'Can you do Disney World in one day?',
+          answer: 'Technically yes but not recommended! You\'ll see small fraction and be exhausted. Each park needs full day minimum. Rushing misses Disney magic. Budget 4+ days for worthwhile experience. One day only if absolutely necessary - choose Magic Kingdom.',
+        },
+      ],
+    },
+  },
 };
 
