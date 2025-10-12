@@ -14059,7 +14059,7 @@ export const categoryGuidesNorthAmerica = {
             title: 'Belvedere Castle',
             description: 'Miniature castle with best park views from top!',
           },
-        },
+        ],
       },
 
       expertTips: [
@@ -14105,6 +14105,888 @@ export const categoryGuidesNorthAmerica = {
         {
           question: 'Can you see all of Central Park in one day?',
           answer: 'Technically yes (2.5 miles long, 0.5 miles wide) but exhausting! Full bike loop: 6 miles, 1-2 hours. Most visitors see southern half (59th-79th Streets) with highlights. Full exploration needs 6-8 hours. Plan realistic expectations!',
+        },
+      ],
+    },
+
+    'museum-tours': {
+      title: 'New York City Museum Tours',
+      subtitle: 'Explore world-class museums: MET, MoMA, Natural History, and more!',
+      categoryName: 'Museum Tours',
+      
+      stats: {
+        toursAvailable: 88,
+        priceFrom: 30,
+        duration: '2-6 hours',
+      },
+
+      introduction: `Experience NYC's incredible museums - world's greatest concentration of art and culture! Museum tours explore The Metropolitan Museum of Art (MET - largest art museum in Americas with 2 million works!), Museum of Modern Art (MoMA - Starry Night, Picasso, Warhol), American Museum of Natural History (dinosaurs, planetarium, 45 million specimens!), Guggenheim (Frank Lloyd Wright spiral building), 9/11 Memorial Museum (moving tribute), Whitney, Frick Collection, and countless specialized museums. Tours provide skip-the-line access, expert art historians explaining masterpieces, hidden gems, must-see highlights, and historical context. NYC has 100+ museums - you could spend weeks exploring!`,
+
+      seo: {
+        title: 'New York City Museum Tours 2025 - MET, MoMA & World-Class Art',
+        description: 'Explore NYC museums! MET, MoMA, Natural History, and world-class art with expert guides!',
+        keywords: 'NYC museum tours, Metropolitan Museum, MoMA tours, New York museums, museum tickets NYC',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'World-Class Collections',
+          description: 'MET, MoMA, Natural History - best museums globally!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Skip-the-Line Access',
+          description: 'Tours bypass long ticket lines - save hours!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Expert Art Historians',
+          description: 'Guides explain masterpieces and hidden stories!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Iconic Masterpieces',
+          description: 'See Starry Night, Egyptian Temple, dinosaurs in person!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'MET Highlights Tour',
+          description: 'Guided tour of Metropolitan Museum must-sees.',
+          features: [
+            '2-3 hours',
+            'Skip-the-line',
+            'Major works',
+            'Expert guide',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'MoMA Modern Art Tour',
+          description: 'Explore Starry Night, Picasso, Warhol, and modern masters.',
+          features: [
+            '2-3 hours',
+            'Modern art',
+            'Famous works',
+            'Art historian',
+            'Iconic',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Natural History Tour',
+          description: 'Dinosaurs, planetarium, and 45 million specimens!',
+          features: [
+            '2-3 hours',
+            'Family-friendly',
+            'Dinosaurs',
+            'Interactive',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Multi-Museum Pass',
+          description: 'Visit MET, MoMA, and Natural History in one day.',
+          features: [
+            'Full day',
+            'Three museums',
+            'Skip-the-line',
+            'Efficient',
+            'Comprehensive',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your New York City Museum Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Single museum: 2-3 hours. Full day: 6-8 hours for multiple museums.',
+          },
+          {
+            icon: 'Star',
+            title: 'The MET',
+            description: 'Largest art museum in Americas - Egyptian Temple, European paintings, armor!',
+          },
+          {
+            icon: 'Heart',
+            title: 'MoMA',
+            description: 'See Starry Night, Picasso, Warhol, and modern art masterpieces!',
+          },
+          {
+            icon: 'Users',
+            title: 'Natural History',
+            description: 'Dinosaur fossils, Rose Center planetarium, blue whale - kids love it!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Guggenheim',
+            description: 'Frank Lloyd Wright spiral building - architecture itself is art!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Expert Context',
+            description: 'Guides explain art history, techniques, and stories behind masterpieces.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'MET has "suggested" admission ($30) - pay what you wish for NY residents!',
+        'MoMA free Friday evenings (4-8 PM) - arrive early for massive crowds.',
+        'Natural History "suggested" $28 - also pay-what-you-wish.',
+        'Tours worth it for skip-the-line and expert explanations!',
+        'MET needs 3-4 hours minimum - it\'s HUGE (2 million works!).',
+        'CityPASS ($146) includes 6 attractions - good value if seeing multiple.',
+        'Wednesday-Friday mornings quieter than weekends.',
+        'Many smaller museums (Frick, Morgan) less crowded but excellent!',
+      ],
+
+      faqs: [
+        {
+          question: 'Which NYC museum is best?',
+          answer: 'Depends on interests! Art lovers: MET (encyclopedic) or MoMA (modern). Families: Natural History (dinosaurs!). Architecture: Guggenheim. History: 9/11 Memorial. Most visitors: MET first - it\'s world-class and enormous. Can\'t go wrong!',
+        },
+        {
+          question: 'How much do NYC museum tickets cost?',
+          answer: 'MET: $30 suggested (pay-what-you-wish for NY residents). MoMA: $30. Natural History: $28 suggested. Guggenheim: $30. 9/11 Memorial: Free (museum $33). Whitney: $30. CityPASS: $146 for 6 attractions. Tours $50-120 with skip-the-line!',
+        },
+        {
+          question: 'Can you visit museums for free?',
+          answer: 'Some yes! MET and Natural History "suggested" admission (residents pay what they wish). MoMA free Friday 4-8 PM. Many smaller museums have free hours. However, "suggested" technically applies to NY residents only. Budget $25-30 per museum.',
+        },
+        {
+          question: 'How long to spend at the MET?',
+          answer: 'Minimum 2-3 hours for highlights (Egyptian Temple, European paintings, Arms & Armor). Half-day (4-5 hours) for thorough visit. Full day for art enthusiasts! It\'s HUGE - second largest museum globally. Don\'t rush! Tours help navigate efficiently.',
+        },
+        {
+          question: 'Is MoMA or MET better?',
+          answer: 'Different! MET: Encyclopedic (5,000 years of art - Egyptian to contemporary). MoMA: Modern/contemporary only (Starry Night, Picasso, Warhol). MET larger and more comprehensive. MoMA more focused. Art lovers: Visit both! First-timers: MET.',
+        },
+        {
+          question: 'Are museum tours worth it?',
+          answer: 'YES for first-timers! Skip-the-line saves hours. Expert guides explain masterpieces and navigate efficiently. Self-exploring works but tours provide context you\'d miss. MET/MoMA tours ($50-80) good value. Budget: Use audio guides ($7). Both options work!',
+        },
+        {
+          question: 'When is the best time to visit NYC museums?',
+          answer: 'Weekday mornings (10-11 AM opening) less crowded. Wednesday-Friday better than weekends. Avoid rainy days (everyone goes to museums!). Summer peak season busiest. Winter fewer crowds. Book timed tickets online - skip-the-line essential!',
+        },
+        {
+          question: 'Can you visit multiple museums in one day?',
+          answer: 'Possible but exhausting! MET or Natural History alone can fill day. Realistic: Two museums maximum (4-6 hours total). MET + Guggenheim works (both Upper East Side). MoMA + 9/11 Memorial feasible. Quality over quantity - don\'t rush!',
+        },
+      ],
+    },
+
+    'food-and-culture-tours': {
+      title: 'New York City Food & Culture Tours',
+      subtitle: 'Taste authentic NYC: pizza, bagels, street food, and global cuisines!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 124,
+        priceFrom: 65,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover NYC's legendary food scene - global capital of cuisine! Food tours explore diverse neighborhoods tasting authentic pizza (Brooklyn coal-oven!), bagels with lox, pastrami sandwiches at Katz's Deli, street food (halal carts, hot dogs), Chinatown dumplings, Little Italy cannoli, Chelsea Market, Smorgasburg, and ethnic enclaves. Experience cultural neighborhoods like Harlem (soul food), Flushing (Chinese/Korean), Arthur Avenue (Bronx's "real" Little Italy), Jackson Heights (South Asian/Latin), and Brooklyn food scene. Tours combine food with cultural history - immigration stories, neighborhood evolution, and NYC's role as melting pot. It's edible anthropology!`,
+
+      seo: {
+        title: 'New York City Food & Culture Tours 2025 - Pizza, Bagels & NYC Eats',
+        description: 'Taste NYC! Authentic pizza, bagels, ethnic neighborhoods, and global food culture tours!',
+        keywords: 'NYC food tours, New York pizza tours, bagels NYC, food culture, New York food walking tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Global Food Capital',
+          description: 'Every cuisine imaginable - world\'s most diverse food scene!',
+        },
+        {
+          icon: 'Star',
+          title: 'Authentic Experiences',
+          description: 'Local joints tourists miss - real NYC food!',
+        },
+        {
+          icon: 'Users',
+          title: 'Cultural Immersion',
+          description: 'Food + immigration stories - understand NYC\'s soul!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Ethnic Neighborhoods',
+          description: 'Chinatown, Little Italy, Harlem - authentic cultural experiences!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Heart',
+          title: 'Classic NYC Food Tour',
+          description: 'Pizza, bagels, pastrami - iconic New York foods!',
+          features: [
+            '3-4 hours',
+            '6-8 tastings',
+            'Classics',
+            'Greenwich Village',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Chinatown & Little Italy',
+          description: 'Dim sum, dumplings, cannoli in historic ethnic neighborhoods.',
+          features: [
+            '3 hours',
+            'Two neighborhoods',
+            'Cultural history',
+            'Authentic',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Brooklyn Food Tour',
+          description: 'Williamsburg, DUMBO, or Carroll Gardens food scenes.',
+          features: [
+            '3-4 hours',
+            'Brooklyn eats',
+            'Hip neighborhoods',
+            'Trendy spots',
+            'Local favorites',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Harlem Soul Food Tour',
+          description: 'Gospel brunch, soul food, and African American cultural heritage.',
+          features: [
+            '3-4 hours',
+            'Soul food',
+            'Gospel music',
+            'Cultural',
+            'Unique',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your New York City Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'NYC Pizza',
+            description: 'Coal-oven Brooklyn pizza or classic NY slice - thin crust, foldable!',
+          },
+          {
+            icon: 'Star',
+            title: 'Bagels & Lox',
+            description: 'Hand-rolled bagels with cream cheese and smoked salmon - NYC staple!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Katz\'s Deli',
+            description: 'Famous pastrami sandwich at historic deli (When Harry Met Sally scene!).',
+          },
+          {
+            icon: 'Users',
+            title: 'Ethnic Neighborhoods',
+            description: 'Chinatown dumplings, Little Italy cannoli, authentic cultural experiences!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Immigration Stories',
+            description: 'Learn how diverse immigrants shaped NYC food and culture.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Come hungry - tastings add up to full meal (sometimes two meals!).',
+        'Classic NYC: Joe\'s Pizza, Russ & Daughters (bagels), Katz\'s Deli.',
+        'Skip touristy Little Italy (Mulberry St) - Arthur Avenue in Bronx is authentic.',
+        'Halal Guys (53rd & 6th) - iconic street cart with cult following.',
+        'Smorgasburg (Saturdays Williamsburg, Sundays Prospect Park) - food market heaven!',
+        'Chelsea Market combines food hall with High Line access - great combo.',
+        'Flushing, Queens for authentic Chinese/Korean - better than Manhattan Chinatown!',
+        'Food tours run year-round - book ahead for popular times.',
+      ],
+
+      faqs: [
+        {
+          question: 'Where is the best pizza in NYC?',
+          answer: 'Heated debate! Classic: Joe\'s Pizza, Prince Street Pizza. Upscale: Lucali, Roberta\'s. Coal-oven: Grimaldi\'s (Brooklyn). Dollar slice: Any corner joint! Truth: NYC has thousands of great pizzas. Tours show multiple styles. Can\'t go wrong!',
+        },
+        {
+          question: 'What food is NYC known for?',
+          answer: 'Pizza (thin crust, foldable), bagels with lox, pastrami sandwiches (Katz\'s), hot dogs (Gray\'s Papaya), black & white cookies, cheesecake, street food (halal carts), pretzels. Plus every global cuisine! NYC invented many foods. Endless options!',
+        },
+        {
+          question: 'How much do NYC food tours cost?',
+          answer: 'Walking food tours: $65-120 (3-4 hours, 6-8 tastings). Specialty (Harlem, Brooklyn): $80-150. Private: $200-400. Tours replace meals - good value for variety and avoiding tourist traps. Budget option: DIY with research!',
+        },
+        {
+          question: 'Are NYC food tours worth it?',
+          answer: 'YES if you want authentic local spots and cultural context! Tours show places you\'d miss, skip tourist traps, provide neighborhood history. First-timers: Definitely worth it. Foodies: Great way to discover neighborhoods. Budget travelers: DIY works too!',
+        },
+        {
+          question: 'What is a NYC bagel?',
+          answer: 'NYC bagels are hand-rolled, boiled then baked - chewy outside, soft inside! Different from elsewhere (which steam/bake). NYC water supposedly makes difference. Classic: Plain with cream cheese and lox (smoked salmon). Russ & Daughters iconic spot!',
+        },
+        {
+          question: 'Where should I eat in NYC?',
+          answer: 'Depends on neighborhood! Pizza: Joe\'s. Bagels: Russ & Daughters, Essa. Pastrami: Katz\'s. Italian: Arthur Avenue (Bronx). Chinese: Flushing, Queens. Soul food: Sylvia\'s (Harlem). Street food: Halal Guys. Food tours navigate options!',
+        },
+        {
+          question: 'Is Chinatown or Flushing better for Chinese food?',
+          answer: 'Flushing, Queens is more authentic! Larger Chinese population, better regional variety (Sichuan, Xi\'an). Manhattan Chinatown touristy but convenient. Serious food lovers: Go to Flushing. Tourists: Chinatown + Little Italy combo tours work fine.',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Lunch (11 AM-2 PM) or dinner (5-8 PM) tours available. Weekdays less crowded than weekends. Year-round! Winter outdoor markets closed but restaurants open. Come moderately hungry - you\'ll eat a lot! Weather doesn\'t matter much.',
+        },
+      ],
+    },
+
+    'broadway-shows': {
+      title: 'New York City Broadway Shows',
+      subtitle: 'Experience world-famous theater: Hamilton, Wicked, Lion King, and more!',
+      categoryName: 'Broadway Shows',
+      
+      stats: {
+        toursAvailable: 52,
+        priceFrom: 89,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience Broadway - the pinnacle of live theater! Broadway shows feature world-class performances in historic theaters of Times Square's Theater District. See blockbuster musicals like Hamilton, Wicked, The Lion King, Phantom of the Opera (longest-running show!), plus new hits and classic plays. Tours include backstage theater tours (see dressing rooms, stage machinery, learn theater history), show ticket packages, dinner-and-show combos, and insider experiences. Learn about Broadway history, how shows are produced, theater architecture, and legendary performers. It's live entertainment at its finest - nowhere does theater like Broadway!`,
+
+      seo: {
+        title: 'New York City Broadway Shows 2025 - Theater Tickets & Backstage Tours',
+        description: 'Experience Broadway! Show tickets, backstage tours, and world-class NYC theater!',
+        keywords: 'Broadway shows NYC, Broadway tickets, New York theater, Broadway tours, Hamilton tickets',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'World\'s Best Theater',
+          description: 'Broadway sets global standard - nowhere else compares!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Iconic Shows',
+          description: 'Hamilton, Wicked, Lion King - legendary performances!',
+        },
+        {
+          icon: 'Users',
+          title: 'Historic Theaters',
+          description: '40+ beautiful theaters in Times Square district!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Backstage Access',
+          description: 'Tours show dressing rooms and stage machinery!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Backstage Theater Tour',
+          description: 'Go behind scenes at working Broadway theater.',
+          features: [
+            '90 minutes',
+            'Dressing rooms',
+            'Stage access',
+            'Theater history',
+            'Fascinating',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Show + Dinner Package',
+          description: 'Pre-theater dinner at Restaurant Row + show tickets.',
+          features: [
+            '4-5 hours',
+            'Dinner included',
+            'Premium seats',
+            'Convenient',
+            'Complete',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Theater District Walking Tour',
+          description: 'Explore Broadway history and theater exteriors.',
+          features: [
+            '2 hours',
+            'Walking',
+            'Theater history',
+            'Times Square',
+            'Educational',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Show Tickets',
+          description: 'Book tickets to Hamilton, Wicked, Lion King, and more!',
+          features: [
+            '2.5-3 hours',
+            'Major shows',
+            'Good seats',
+            'Guaranteed entry',
+            'Essential',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your New York City Broadway Shows',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Shows: 2.5-3 hours (with intermission). Backstage tours: 90 minutes. Dinner combos: 4-5 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'World-Class Performances',
+            description: 'Tony Award-winning actors, singers, dancers - best talent globally!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Historic Theaters',
+            description: 'Ornate venues from early 1900s - beautiful architecture and atmosphere!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Backstage Tours',
+            description: 'See dressing rooms, stage machinery, costumes - how shows work!',
+          },
+          {
+            icon: 'Music',
+            title: 'Live Orchestra',
+            description: 'Full orchestras in pit - not recorded music! Real live performance.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Theater District',
+            description: '40+ theaters clustered in Times Square - walk between shows!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'TKTS booth (Times Square) sells same-day discount tickets (25-50% off) - long lines!',
+        'Book popular shows (Hamilton, Wicked) weeks/months ahead online.',
+        'Wednesday matinees and Thursday evenings least expensive.',
+        'Broadway.com and Telecharge official ticket sellers - avoid scams!',
+        'Lottery tickets ($10-40) for some shows - enter morning of performance.',
+        'Dress code: No formal requirement but most dress business casual.',
+        'Arrive 30 minutes early - theaters strict about late seating!',
+        'Backstage tours at Radio City, New Amsterdam Theater don\'t require show ticket.',
+      ],
+
+      faqs: [
+        {
+          question: 'How much do Broadway tickets cost?',
+          answer: 'Regular tickets: $89-350+ depending on show/seats. Premium seats: $400-800. Discount options: TKTS same-day ($50-150), lottery ($10-40), rush tickets ($35-50). Popular shows expensive! Budget: See matinees and use TKTS. Average: $150-200 for good seats.',
+        },
+        {
+          question: 'What are the best Broadway shows?',
+          answer: 'Current hits: Hamilton (revolutionary!), Wicked (always popular), Lion King (visual spectacle), Phantom (longest-running), Book of Mormon (hilarious), Hadestown. Best changes! Check current Tony Award winners. Can\'t-miss: Hamilton if available. All Broadway shows are high quality!',
+        },
+        {
+          question: 'How to get cheap Broadway tickets?',
+          answer: 'TKTS booth: Same-day 25-50% off (arrive early!). Lottery: $10-40 (enter online morning-of). Rush: $35-50 at box office (limited). Matinees cheaper than evening. Tuesday-Thursday cheaper than weekends. Book advance for best prices. All legit options!',
+        },
+        {
+          question: 'Should I book Broadway tickets in advance?',
+          answer: 'Popular shows (Hamilton, Wicked): YES - weeks/months ahead! Other shows: Few days works. Want good seats: Advance booking essential. Flexible: TKTS same-day works. Check availability online - sell out fast. Summer and holidays: Book WAY ahead.',
+        },
+        {
+          question: 'What is a Broadway backstage tour?',
+          answer: 'Tours show behind-the-scenes of working theater - dressing rooms, stage machinery, costumes, props, how shows work! Radio City and New Amsterdam popular ($30-40, 90 minutes). Fascinating for theater fans. Some include meet-and-greet with performers. Book separately from show tickets.',
+        },
+        {
+          question: 'Are Broadway shows worth the money?',
+          answer: 'Absolutely! World\'s best live theater - nowhere else compares. Quality is extraordinary. Expensive but worth experiencing once. Budget options exist (TKTS, matinees). Even "bad" Broadway shows are better than most theater elsewhere. Essential NYC experience!',
+        },
+        {
+          question: 'When is the best time to see Broadway shows?',
+          answer: 'Year-round! Matinees (Wednesday 2 PM, Saturday/Sunday afternoons) cheaper. Evening shows (Tuesday-Saturday 7-8 PM). Avoid Monday (many theaters closed). January-February fewer crowds. Summer peak season. Book holidays way ahead. All seasons offer full lineup!',
+        },
+        {
+          question: 'Where should I sit for a Broadway show?',
+          answer: 'Mezzanine (balcony) center: Best value - great view, less expensive. Orchestra (floor) mid-center: Premium but pricey. Avoid: Far sides, last rows. Theaters small - most seats decent! Budget: Rear mezzanine still good views. Splurge: Orchestra center rows E-M.',
+        },
+      ],
+    },
+
+    'architecture-tours': {
+      title: 'New York City Architecture Tours',
+      subtitle: 'Explore iconic skyscrapers, Art Deco masterpieces, and historic buildings!',
+      categoryName: 'Architecture Tours',
+      
+      stats: {
+        toursAvailable: 72,
+        priceFrom: 45,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover NYC's architectural wonders - from soaring skyscrapers to historic brownstones! Architecture tours explore iconic buildings like Empire State Building, Chrysler Building (Art Deco masterpiece!), One World Trade Center, Flatiron Building (oldest!), Grand Central Terminal, Brooklyn Bridge, and historic neighborhoods. Learn about different architectural styles (Art Deco, Beaux-Arts, International, Gothic Revival), legendary architects (Frank Lloyd Wright's Guggenheim!), construction techniques, and how architecture shaped NYC's skyline. Tours by foot, boat, or bus show you building details you'd miss, engineering marvels, and preservation stories. It's vertical city at its finest!`,
+
+      seo: {
+        title: 'New York City Architecture Tours 2025 - Skyscrapers & Historic Buildings',
+        description: 'Explore NYC architecture! Empire State, Art Deco, skyscrapers, and iconic building tours!',
+        keywords: 'NYC architecture tours, New York skyscrapers, Empire State Building, architectural tours NYC, Art Deco',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Iconic Skyline',
+          description: 'Most famous skyline globally - Empire State, Chrysler, One World!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Art Deco Capital',
+          description: 'More Art Deco masterpieces than anywhere on Earth!',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Architectural Diversity',
+          description: 'Every style represented - from 1700s to cutting-edge modern!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Engineering Marvels',
+          description: 'Learn how they built skyscrapers on Manhattan bedrock!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Skyscraper Walking Tour',
+          description: 'Explore Midtown\'s iconic towers and Art Deco gems.',
+          features: [
+            '2-3 hours',
+            'Midtown',
+            'Art Deco',
+            'Skyscrapers',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Architecture Boat Tour',
+          description: 'See Manhattan skyline from water - best views!',
+          features: [
+            '90 minutes',
+            'Boat cruise',
+            'Skyline views',
+            'Narrated',
+            'Photogenic',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Historic Districts Tour',
+          description: 'Brownstones, cast-iron buildings in SoHo, Greenwich Village.',
+          features: [
+            '2-3 hours',
+            'Historic buildings',
+            'Walking',
+            'Neighborhoods',
+            'Charming',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Grand Central & Chrysler',
+          description: 'In-depth tours of two Beaux-Arts/Art Deco masterpieces.',
+          features: [
+            '2 hours',
+            'Interior access',
+            'Art Deco details',
+            'Historic',
+            'Detailed',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your New York City Architecture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Boat tours: 90 minutes. Building interiors: 1-2 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Empire State Building',
+            description: 'Iconic Art Deco skyscraper (1931) - was world\'s tallest for 40 years!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Chrysler Building',
+            description: 'Most beautiful Art Deco building - stainless steel crown and gargoyles!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Grand Central Terminal',
+            description: 'Beaux-Arts masterpiece with celestial ceiling - not just train station!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Flatiron Building',
+            description: 'Triangular icon (1902) - one of NYC\'s oldest skyscrapers!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Architectural Styles',
+            description: 'Learn Art Deco, Beaux-Arts, International, Gothic Revival, and modern styles.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Architecture boat tours provide best skyline views and photos!',
+        'Grand Central free to explore - take free tour Wednesdays 12:30 PM.',
+        'Chrysler Building lobby accessible (office building) - stunning Art Deco!',
+        'Flatiron District walk includes Madison Square Park - great combo.',
+        'Brooklyn Bridge walk (pedestrian path) offers both engineering and skyline views.',
+        'NYC Architecture Center (Greenwich Street) has exhibits and tours.',
+        'Best skyline views: Top of the Rock, DUMBO (Brooklyn), Roosevelt Island tram.',
+        'Spring and fall best weather for walking architecture tours.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Art Deco architecture?',
+          answer: 'Art Deco (1920s-1930s) features geometric patterns, metallic finishes, bold colors, and decorative elements. NYC has world\'s best examples! Chrysler Building (stainless crown), Empire State, Rockefeller Center all Art Deco. Elegant, glamorous, machine-age aesthetic. Tours explain details!',
+        },
+        {
+          question: 'Can you go inside famous NYC buildings?',
+          answer: 'Some yes! Empire State: Yes (observation deck $44+). Chrysler: Lobby only (office building). Grand Central: Free access! Flatiron: Office building (no tours). One World Observatory: Yes ($44+). Guggenheim: Museum entry ($30). Most lobbies accessible during business hours!',
+        },
+        {
+          question: 'What is the most famous building in NYC?',
+          answer: 'Empire State Building most iconic globally! Also famous: Chrysler Building (most beautiful!), One World Trade Center (tallest), Flatiron (oldest skyscraper), Statue of Liberty. Architecture fans: Chrysler and Grand Central unmissable. All worth seeing!',
+        },
+        {
+          question: 'Are architecture tours worth it?',
+          answer: 'YES for anyone interested in design/history! Guides explain engineering, styles, and details you\'d miss. Tours navigate efficiently. Self-exploring possible but tours add enormous value. Boat tours provide best views. Budget: Free Grand Central tour Wednesdays. Worthwhile investment!',
+        },
+        {
+          question: 'What is the best way to see NYC architecture?',
+          answer: 'Combine methods! Walking tours: See details up close. Boat tours: Best skyline views. Observation decks: Aerial perspective. Mix all three! Start with Midtown skyscraper walking tour, add boat cruise, visit Empire State deck. Each offers different experience!',
+        },
+        {
+          question: 'How much do architecture tours cost?',
+          answer: 'Walking tours: $45-80 (2-3 hours). Boat tours: $40-70 (90 min). Grand Central: FREE (Wednesdays). Observation decks separate: $40-50. Architecture Center tours: $30. Private tours: $200-400. Good value for learning and navigation!',
+        },
+        {
+          question: 'When is the best time for architecture tours?',
+          answer: 'Spring (April-May) and fall (Sept-Oct): Perfect weather for walking. Summer: Hot but longer days for photos. Winter: Cold but fewer crowds. Boat tours: April-October (seasonal). Early morning or late afternoon best light for photography. Year-round options!',
+        },
+        {
+          question: 'What neighborhoods have best architecture?',
+          answer: 'Midtown: Skyscrapers and Art Deco. Financial District: Historic + modern. SoHo: Cast-iron buildings. Greenwich Village: Brownstones. Brooklyn Heights: Historic townhouses. Upper East Side: Mansions and museums. Each area offers different styles - tours show best of each!',
+        },
+      ],
+    },
+  },
+
+  'oaxaca': {
+    'historic-center-tours': {
+      title: 'Oaxaca Historic Center Tours',
+      subtitle: 'Explore UNESCO World Heritage colonial architecture and vibrant Zocalo!',
+      categoryName: 'Historic Center Tours',
+      
+      stats: {
+        toursAvailable: 68,
+        priceFrom: 35,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Oaxaca's Historic Center - UNESCO World Heritage Site preserving Spanish colonial splendor! Historic center tours explore the magnificent Zocalo (main square bustling with life!), Santo Domingo Church (most beautiful baroque church in Mexico!), Cathedral of Oaxaca, colonial mansions with stunning courtyards, historic museums, vibrant arcades with artisan shops, and cobblestone streets lined with colorful buildings. Walk where Zapotec civilization meets Spanish colonial architecture - see indigenous influences in buildings, learn about Benito Juárez (Mexico's first indigenous president born near Oaxaca), colonial history, and preservation efforts. It's living history at its finest!`,
+
+      seo: {
+        title: 'Oaxaca Historic Center Tours 2025 - Colonial Architecture & Zocalo',
+        description: 'Explore Oaxaca historic center! UNESCO site, Santo Domingo Church, and colonial beauty!',
+        keywords: 'Oaxaca historic center, Oaxaca Zocalo, Santo Domingo Church Oaxaca, colonial Oaxaca tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'UNESCO World Heritage',
+          description: 'Preserved Spanish colonial architecture from 1500s!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Santo Domingo Church',
+          description: 'Most beautiful baroque church in Mexico - gold leaf interior!',
+        },
+        {
+          icon: 'Users',
+          title: 'Vibrant Zocalo',
+          description: 'Bustling main square with music, food, and local life!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Colorful Streets',
+          description: 'Instagram-perfect colonial buildings and cobblestones!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Walking Historic Tour',
+          description: 'Explore major sites with knowledgeable local guide.',
+          features: [
+            '2-3 hours',
+            'Walking',
+            'Major sites',
+            'History',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Santo Domingo Deep Dive',
+          description: 'In-depth tour of church and cultural museum.',
+          features: [
+            '2 hours',
+            'Church interior',
+            'Museum',
+            'Art history',
+            'Detailed',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tour',
+          description: 'Capture colonial beauty with pro photographer guide.',
+          features: [
+            '3 hours',
+            'Photo-focused',
+            'Best spots',
+            'Golden hour',
+            'Instagram',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Architecture & Culture',
+          description: 'Combine historic buildings with indigenous heritage.',
+          features: [
+            '3-4 hours',
+            'Comprehensive',
+            'Cultural context',
+            'Museums',
+            'Educational',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Oaxaca Historic Center Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Church/museum visits: 1-2 hours. Comprehensive: 4 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Santo Domingo Church',
+            description: 'Stunning gold leaf baroque interior - most beautiful church in Mexico!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Zocalo',
+            description: 'Bustling main square with music, balloons, street food, and local atmosphere!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Colonial Buildings',
+            description: 'Colorful facades, carved wooden doors, inner courtyards - architectural gems!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Museum',
+            description: 'Inside Santo Domingo complex - Zapotec artifacts and regional history.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Artisan Markets',
+            description: 'Arcades surrounding Zocalo sell traditional crafts and textiles.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Morning tours (9-10 AM) beat heat and see locals starting day.',
+        'Santo Domingo closes Mondays - plan accordingly!',
+        'Zocalo evenings magical - live music, food vendors, balloon sellers!',
+        'Free walking tours available (tip-based) - budget-friendly option.',
+        'Wear comfortable shoes - cobblestones and lots of walking!',
+        'Historic center compact - easy to explore yourself too.',
+        'Andador Macedonio Alcalá (pedestrian street) perfect for strolling.',
+        'Tours provide context about Zapotec-Spanish fusion you\'d miss alone.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Zocalo?',
+          answer: 'Zocalo is Oaxaca\'s main square - heart of city life! Surrounded by arcades, cathedral, government buildings. Evening: Music, food, balloons, families gathering. It\'s social center where locals hang out. Tree-shaded benches, constant activity, pure Oaxacan atmosphere. Essential stop!',
+        },
+        {
+          question: 'Is Santo Domingo Church worth visiting?',
+          answer: 'Absolutely! Most beautiful baroque church in Mexico - gold leaf interior, ornate ceiling, stunning detail! Free entry. Cultural museum attached ($75 pesos) shows Zapotec artifacts. Allow 1-2 hours. Closed Mondays. It\'s Oaxaca\'s crown jewel - don\'t miss!',
+        },
+        {
+          question: 'How long to explore Oaxaca historic center?',
+          answer: 'Half-day (3-4 hours) for major sites: Santo Domingo, Zocalo, main streets. Full day (6-8 hours) includes museums, markets, leisurely exploration. Historic center compact - everything walkable! Most tours: 2-3 hours. Plan minimum half-day.',
+        },
+        {
+          question: 'Is Oaxaca historic center safe?',
+          answer: 'Very safe! Tourist-friendly with police presence. Daytime extremely safe - millions visit annually. Evening: Stick to well-lit areas around Zocalo. Use normal urban caution. Oaxaca is one of Mexico\'s safest cities. Enjoy confidently!',
+        },
+        {
+          question: 'Can you explore Oaxaca center yourself?',
+          answer: 'Absolutely! It\'s compact and pedestrian-friendly. However, tours provide historical context, Zapotec-Spanish fusion stories, and hidden gems. First-timers: Tour recommended (2-3 hours). Then explore independently. Both approaches work well!',
+        },
+        {
+          question: 'How much do Oaxaca historic tours cost?',
+          answer: 'Walking tours: $35-60 (2-3 hours). Free walking tours: Tip-based ($10-20 typical). Santo Domingo museum: $75 pesos (~$4 USD). Photography tours: $70-100. Private tours: $150-300. Budget-friendly - great value for cultural immersion!',
+        },
+        {
+          question: 'When is the best time to visit?',
+          answer: 'Year-round! Mornings (9-11 AM) beat afternoon heat. Evenings (6-9 PM) magical at Zocalo - music and atmosphere. Dry season (Nov-April) ideal weather. Guelaguetza festival (July) cultural peak but crowded. Anytime works!',
+        },
+        {
+          question: 'What should I see in historic center?',
+          answer: 'Must-see: Santo Domingo Church, Zocalo, Cathedral, Andador Macedonio Alcalá, arcades, Cultural Museum, Teatro Macedonio Alcalá. All walkable! Plan minimum 3-4 hours. Each corner reveals colonial beauty and indigenous culture. Don\'t rush!',
         },
       ],
     },
