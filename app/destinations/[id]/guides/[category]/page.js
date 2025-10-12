@@ -1,7 +1,14 @@
 import { destinations } from '../../../../../src/data/destinationsData';
-import { categoryGuides } from '../guidesData';
+import { categoryGuides as categoryGuidesBase } from '../guidesData';
+import { categoryGuidesNorthAmerica } from '../guidesData-north-america';
 import CategoryGuideClient from './CategoryGuideClient';
 import { notFound } from 'next/navigation';
+
+// Merge all regional guide files
+const categoryGuides = {
+  ...categoryGuidesBase,
+  ...categoryGuidesNorthAmerica,
+};
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
