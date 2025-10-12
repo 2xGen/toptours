@@ -380,6 +380,7 @@ export default function DestinationDetailClient({ destination }) {
                         .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
                         .replace(/&/g, 'and')
                         .replace(/'/g, '') // Remove apostrophes
+                        .replace(/\./g, '') // Remove periods
                         .replace(/ /g, '-');
                       
                       return hasGuide ? (
