@@ -60,11 +60,17 @@ export default function TwoXGenPage() {
       "@type": "SoftwareApplication",
       "name": "TopTours.ai",
       "applicationCategory": "TravelApplication",
+      "operatingSystem": "Web Browser",
       "description": "AI-powered travel planning platform helping thousands discover amazing tours and activities worldwide.",
       "url": "https://toptours.ai",
       "creator": {
         "@type": "Organization",
         "name": "2xGen"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
       }
     },
     {
@@ -72,11 +78,17 @@ export default function TwoXGenPage() {
       "@type": "SoftwareApplication",
       "name": "ArubaBuddies",
       "applicationCategory": "TravelApplication",
+      "operatingSystem": "Web Browser",
       "description": "Smart trip planning platform for personalized Aruba vacations with curated local recommendations.",
       "url": "https://arubabuddies.com",
       "creator": {
         "@type": "Organization",
         "name": "2xGen"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
       }
     },
     {
@@ -84,11 +96,17 @@ export default function TwoXGenPage() {
       "@type": "SoftwareApplication",
       "name": "FactuurBaas",
       "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
       "description": "Fast and easy invoicing tool for freelancers and small businesses with no-login-needed experience.",
       "url": "https://factuurbaas.nl",
       "creator": {
         "@type": "Organization",
         "name": "2xGen"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
       }
     },
     {
@@ -96,11 +114,17 @@ export default function TwoXGenPage() {
       "@type": "SoftwareApplication",
       "name": "MyGoProfile",
       "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
       "description": "Automated Google Business Profile management with AI-powered review responses and local SEO optimization.",
       "url": "https://mygoprofile.com",
       "creator": {
         "@type": "Organization",
         "name": "2xGen"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "29",
+        "priceCurrency": "USD"
       }
     }
   ];

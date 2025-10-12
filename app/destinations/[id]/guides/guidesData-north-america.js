@@ -24375,7 +24375,7 @@ export const categoryGuidesNorthAmerica = {
           description: 'First Nations totem poles at Brockton Point - iconic!',
         },
         {
-          icon: 'Trees',
+          icon: 'MapPin',
           title: 'Old-Growth Forest',
           description: 'Ancient cedars and hemlocks in heart of city!',
         },
@@ -24451,7 +24451,7 @@ export const categoryGuidesNorthAmerica = {
             description: 'Brockton Point has First Nations totem poles - photo must!',
           },
           {
-            icon: 'Trees',
+            icon: 'MapPin',
             title: 'Forest Trails',
             description: 'Old-growth cedars, quiet paths, escape city bustle!',
           },
@@ -24712,12 +24712,12 @@ export const categoryGuidesNorthAmerica = {
 
       whyChoose: [
         {
-          icon: 'Mountain',
+          icon: 'Star',
           title: 'Mountains Meet Ocean',
           description: 'Ski in morning, beach in afternoon - unique geography!',
         },
         {
-          icon: 'Star',
+          icon: 'Heart',
           title: 'Grouse Mountain',
           description: 'Gondola to peak with hiking, wildlife, stunning views!',
         },
@@ -24735,7 +24735,7 @@ export const categoryGuidesNorthAmerica = {
 
       tourTypes: [
         {
-          icon: 'Mountain',
+          icon: 'Star',
           title: 'Grouse Mountain Tour',
           description: 'Gondola ride with hiking and wildlife.',
           features: [
@@ -24793,7 +24793,7 @@ export const categoryGuidesNorthAmerica = {
             description: 'Grouse Mountain: 4-5 hours. Kayaking: 3-4 hours. Hiking: 4-6 hours. Skiing: Full day.',
           },
           {
-            icon: 'Mountain',
+            icon: 'Star',
             title: 'Grouse Mountain',
             description: 'Gondola ($65) to peak - hiking, grizzly bears, skyride, stunning views!',
           },
@@ -24803,7 +24803,7 @@ export const categoryGuidesNorthAmerica = {
             description: 'Glacial fjord paddle - seals, eagles, waterfalls, pristine!',
           },
           {
-            icon: 'Trees',
+            icon: 'MapPin',
             title: 'Temperate Rainforest',
             description: 'Ancient cedars, moss-covered trails, waterfalls - lush and green!',
           },
@@ -25155,7 +25155,7 @@ export const categoryGuidesNorthAmerica = {
             description: 'Constant seaplane takeoffs/landings - busiest terminal globally!',
           },
           {
-            icon: 'Mountain',
+            icon: 'Camera',
             title: 'North Shore Mountains',
             description: 'Grouse, Cypress, Seymour rising from water - stunning backdrop!',
           },
@@ -25240,17 +25240,17 @@ export const categoryGuidesNorthAmerica = {
 
       whyChoose: [
         {
-          icon: 'Mountain',
+          icon: 'Star',
           title: 'Mountains in City',
           description: 'Ski mountains 30 minutes from downtown - unique!',
         },
         {
-          icon: 'Star',
+          icon: 'Heart',
           title: 'Whistler Access',
           description: 'World-class ski resort 2 hours away - day trips easy!',
         },
         {
-          icon: 'Heart',
+          icon: 'Users',
           title: 'Grizzly Bears',
           description: 'Grouse Mountain has grizzly bear refuge - close encounters!',
         },
@@ -25263,7 +25263,7 @@ export const categoryGuidesNorthAmerica = {
 
       tourTypes: [
         {
-          icon: 'Mountain',
+          icon: 'Star',
           title: 'Whistler Day Trip',
           description: 'Full-day tour to world-famous resort.',
           features: [
@@ -25321,12 +25321,12 @@ export const categoryGuidesNorthAmerica = {
             description: 'Grouse: 4-5 hours. Whistler day trip: 10-12 hours. Skiing: Full day.',
           },
           {
-            icon: 'Mountain',
+            icon: 'Star',
             title: 'Grouse Mountain',
             description: 'Gondola ($65), grizzly bears, Eye of the Wind turbine, hiking, views!',
           },
           {
-            icon: 'Star',
+            icon: 'Heart',
             title: 'Whistler',
             description: 'Peak 2 Peak gondola, village, alpine scenery - world-class resort!',
           },
