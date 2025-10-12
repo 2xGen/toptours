@@ -7407,5 +7407,535 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  'los-angeles': {
+    'hollywood-tours': {
+      title: 'Los Angeles Hollywood Tours',
+      subtitle: 'Explore Hollywood Walk of Fame, movie studios, and entertainment capital!',
+      categoryName: 'Hollywood Tours',
+      
+      stats: {
+        toursAvailable: 112,
+        priceFrom: 50,
+        duration: '2-5 hours',
+      },
+
+      introduction: `Experience Hollywood - the entertainment capital of the world! Hollywood tours explore the famous Walk of Fame (2,700+ star-embedded stars), TCL Chinese Theatre (handprints and footprints of legends), Dolby Theatre (where Oscars are held), Hollywood Sign (iconic 45-foot letters on Mount Lee), and historic landmarks. Tours include Hollywood Boulevard walking tours, celebrity homes tours in Beverly Hills, movie studio visits (Warner Bros., Paramount, Universal), Griffith Observatory views, and themed experiences. Learn about Golden Age of Hollywood, current film industry, celebrity culture, and behind-the-scenes entertainment business. See where movies are made, stars live, and Hollywood magic happens. It's cinema history come alive!`,
+
+      seo: {
+        title: 'Los Angeles Hollywood Tours 2025 - Walk of Fame & Movie Studios',
+        description: 'Explore Hollywood! Walk of Fame, celebrity homes, movie studios, and entertainment tours!',
+        keywords: 'Hollywood tours, Walk of Fame, Hollywood Sign, LA movie studios, celebrity homes tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Walk of Fame',
+          description: '2,700+ star-embedded sidewalk celebrating entertainment legends!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Hollywood Sign',
+          description: 'Iconic landmark visible throughout LA - ultimate photo op!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Movie Studios',
+          description: 'Go behind-the-scenes at working Hollywood studios!',
+        },
+        {
+          icon: 'Users',
+          title: 'Celebrity Culture',
+          description: 'See where stars live, work, and create entertainment!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Hollywood Walking Tour',
+          description: 'Walk of Fame, Chinese Theatre, and Hollywood Boulevard highlights.',
+          features: [
+            '2-3 hours',
+            'Walk of Fame',
+            'Historic theaters',
+            'Photo stops',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Movie Studio Tour',
+          description: 'Warner Bros or Paramount behind-the-scenes studio experience.',
+          features: [
+            '3-4 hours',
+            'Working studios',
+            'Sound stages',
+            'Backlots',
+            'Exclusive',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Hollywood Sign Hike',
+          description: 'Hike to close-up views of iconic Hollywood Sign.',
+          features: [
+            '3 hours',
+            'Hiking',
+            'Sign views',
+            'Exercise',
+            'Rewarding',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Celebrity Homes Tour',
+          description: 'Drive through Beverly Hills seeing stars\' mansions.',
+          features: [
+            '2-3 hours',
+            'Beverly Hills',
+            'Mansion viewing',
+            'Celebrity spots',
+            'Glamorous',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Los Angeles Hollywood Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Studio tours: 3-4 hours. Combination: 5-6 hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Walk of Fame',
+            description: 'See 2,700+ stars honoring actors, musicians, directors, and entertainers.',
+          },
+          {
+            icon: 'Heart',
+            title: 'TCL Chinese Theatre',
+            description: 'Celebrity hand and footprints preserved in concrete since 1927.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Hollywood Sign',
+            description: 'View or hike near iconic 45-foot letters - LA\'s most recognizable landmark.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Studio Backlots',
+            description: 'See actual sets, props, and locations where movies/TV are filmed.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Film History',
+            description: 'Learn about Golden Age of Hollywood and modern entertainment industry.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Walk of Fame is FREE but crowded - go early morning or evening for photos.',
+        'Studio tours (Warner Bros, Paramount) book weeks ahead - they sell out!',
+        'Hollywood Boulevard is touristy but essential first-time experience.',
+        'Hollywood Sign hike (3 miles) is strenuous - bring water and start early.',
+        'Celebrity homes tours ($50-80) show exteriors only - stars rarely visible!',
+        'Griffith Observatory FREE - amazing Hollywood Sign views and city panoramas.',
+        'TCL Chinese Theatre tour ($15) shows interior - worth it for movie fans.',
+        'Avoid Hollywood Boulevard evening - can be sketchy. Daytime is safe.',
+      ],
+
+      faqs: [
+        {
+          question: 'Can you visit the Hollywood Sign?',
+          answer: 'You can\'t touch it (fenced off) but hiking trails get close views! Hiking: 3-mile trails from Griffith Observatory. Driving: Griffith Observatory or Lake Hollywood Park have great vantage points. Tours include sign viewpoints. It\'s LA\'s icon - must photograph!',
+        },
+        {
+          question: 'Is Hollywood Walk of Fame worth it?',
+          answer: 'Worth quick visit for first-timers! It\'s FREE, iconic, and fun finding favorite stars. However, it\'s just a sidewalk - can be disappointing vs. expectations. Combine with Chinese Theatre and Dolby Theatre. 30-60 minutes sufficient. Very touristy!',
+        },
+        {
+          question: 'Can you tour movie studios?',
+          answer: 'Yes! Warner Bros ($75, 3 hours) - best behind-scenes tour. Paramount ($65, 2 hours) - only major studio in Hollywood proper. Universal Studios ($100+) - theme park with studio tour. Sony ($55) - smaller tour. Book ahead - they sell out weeks!',
+        },
+        {
+          question: 'How much do Hollywood tours cost?',
+          answer: 'Walking tours: $50-75 (2-3 hours). Studio tours: $55-75. Celebrity homes: $50-80. Hollywood Sign hike: FREE (DIY). Combination tours: $90-150. Walk of Fame FREE! Budget option: Self-explore Hollywood Boulevard - it\'s accessible.',
+        },
+        {
+          question: 'Can you see celebrities in Hollywood?',
+          answer: 'Rare on Walk of Fame (tourists, street performers). Better chances: Studio tours, TV show tapings (free tickets!), premieres at Chinese Theatre, trendy restaurants (Beverly Hills, West Hollywood). Celebrity homes tours show exteriors only - stars not visible. Lower expectations!',
+        },
+        {
+          question: 'What is TCL Chinese Theatre?',
+          answer: 'Historic movie palace (1927) famous for celebrity hand/footprints preserved in forecourt concrete. Over 200 impressions! Movie premieres held here. $15 interior tour or just see forecourt FREE. It\'s iconic Hollywood landmark - must-see!',
+        },
+        {
+          question: 'Is Hollywood safe to visit?',
+          answer: 'Hollywood Boulevard safe daytime but can be sketchy evening (homeless, panhandlers). Stay on main streets, watch belongings. Beverly Hills very safe. Studio tours extremely safe. Use common sense - it\'s urban LA. Millions visit safely!',
+        },
+        {
+          question: 'When is the best time to visit Hollywood?',
+          answer: 'Year-round! Weekday mornings less crowded than weekends. Avoid summer midday heat. Spring/fall perfect weather. Hollywood Sign hike: Early morning (6-7 AM) for sunrise and cooler temps. Studios run tours daily. Book ahead regardless of season!',
+        },
+      ],
+    },
+
+    'beach-tours': {
+      title: 'Los Angeles Beach Tours',
+      subtitle: 'Explore Santa Monica Pier, Venice Beach, and stunning Pacific coastline!',
+      categoryName: 'Beach Tours',
+      
+      stats: {
+        toursAvailable: 86,
+        priceFrom: 45,
+        duration: '3-6 hours',
+      },
+
+      introduction: `Experience LA's incredible beaches - 75 miles of Pacific coastline! Beach tours explore iconic Santa Monica with its historic Pier (1909 amusement park and Pacific Park), Venice Beach (eclectic Boardwalk, Muscle Beach, street performers), Malibu (celebrity beach homes and surf culture), Manhattan Beach (volleyball capital), and hidden gems. Activities include beach walks, bike rentals on Strand path (22 miles of oceanfront bikeway!), pier exploration, boardwalk people-watching, surfing lessons, and coastal dining. Learn about SoCal beach culture, surf history, and coastal ecology. See where Baywatch was filmed, celebrities live, and quintessential California beach lifestyle thrives. It's sun, sand, and Southern California cool!`,
+
+      seo: {
+        title: 'Los Angeles Beach Tours 2025 - Santa Monica, Venice & Malibu',
+        description: 'Experience LA beaches! Santa Monica Pier, Venice Boardwalk, and Pacific coastline!',
+        keywords: 'LA beach tours, Santa Monica Pier, Venice Beach, Malibu beaches, Los Angeles coastline',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Iconic Beaches',
+          description: 'Santa Monica and Venice Beach are world-famous!',
+        },
+        {
+          icon: 'Star',
+          title: 'Perfect Weather',
+          description: '280+ days of sunshine - beach weather year-round!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Beach Culture',
+          description: 'Experience SoCal lifestyle with surfing, volleyball, and boardwalks.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Scenic Coastline',
+          description: 'Pacific Coast Highway offers stunning ocean views!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Waves',
+          title: 'Santa Monica & Venice Tour',
+          description: 'Explore two iconic beaches with pier and boardwalk.',
+          features: [
+            '3-4 hours',
+            'Two beaches',
+            'Pier & boardwalk',
+            'Bike rental option',
+            'Popular',
+          ],
+        },
+        {
+          icon: 'Star',
+          title: 'Malibu Coastal Tour',
+          description: 'Drive scenic PCH visiting Malibu beaches and celebrity areas.',
+          features: [
+            '4-5 hours',
+            'PCH drive',
+            'Multiple beaches',
+            'Scenic views',
+            'Beautiful',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Beach Bike Tour',
+          description: 'Cycle 22-mile Strand path connecting LA beaches.',
+          features: [
+            '3-4 hours',
+            'Bike included',
+            'Oceanfront path',
+            'Multiple stops',
+            'Active',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Beach & Pier Sunset Tour',
+          description: 'Evening tour capturing golden hour at Santa Monica Pier.',
+          features: [
+            '2-3 hours',
+            'Sunset timing',
+            'Ferris wheel',
+            'Photo ops',
+            'Romantic',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Los Angeles Beach Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-5 hours. Bike rentals: 2-4 hours. Full beach day: 6+ hours.',
+          },
+          {
+            icon: 'Star',
+            title: 'Santa Monica Pier',
+            description: 'Historic 1909 pier with Pacific Park amusement park and ocean views.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Venice Boardwalk',
+            description: 'Eclectic street performers, vendors, Muscle Beach, and bohemian vibes.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Malibu Beaches',
+            description: 'Celebrity beach homes, surf culture, and pristine Pacific coastline.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Pacific Coast Highway',
+            description: 'Scenic drive along coast with pull-offs for photos and beach access.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Beach Culture',
+            description: 'Learn about surf history, beach volleyball origins, and SoCal lifestyle.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Parking nightmare at beaches - use tours, Uber, or Metro to Santa Monica!',
+        'Venice Beach best visited morning or early afternoon - sketchy after dark.',
+        'Santa Monica Pier FREE - Pacific Park rides cost extra ($5-10 each).',
+        'Bike The Strand (22-mile path) - rentals $15-25/day, connects all beaches.',
+        'Malibu beaches often have limited parking - arrive early or weekday.',
+        'May-June "June Gloom" brings morning fog - clears afternoon.',
+        'Water cold (60-70°F) year-round - wetsuits recommended for swimming!',
+        'Best beaches: Santa Monica (crowds), Manhattan Beach (upscale), Zuma (spacious).',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the best beach in LA?',
+          answer: 'Santa Monica most famous (pier, tourism). Venice Beach most eclectic (boardwalk, street performers). Manhattan Beach upscale (volleyball, pier). Malibu most scenic (cliffs, celebrity homes). Zuma biggest (families). Each offers different vibe - visit multiple!',
+        },
+        {
+          question: 'Is Venice Beach worth visiting?',
+          answer: 'Yes for the experience! Eclectic boardwalk with street performers, vendors, Muscle Beach, skate park. It\'s bohemian, weird, and very LA. Free to visit! However, can be sketchy (homeless, panhandlers). Go daytime. 1-2 hours sufficient. Unique!',
+        },
+        {
+          question: 'Can you swim at LA beaches?',
+          answer: 'Yes! Water is cold (60-70°F) even summer - locals wear wetsuits. Best swimming: July-October when warmest. Lifeguards on duty summer. Beaches clean and safe. However, SoCal beaches more about sunbathing and culture than swimming. Bring wetsuit!',
+        },
+        {
+          question: 'How much does Santa Monica Pier cost?',
+          answer: 'Pier access FREE! Walking, viewing, dining all free. Pacific Park rides cost extra: $5-10 per ride or $33 unlimited wristband. Ferris wheel $10. Aquarium $5. Most visitors just walk pier - it\'s free experience. Budget-friendly!',
+        },
+        {
+          question: 'Can you bike between LA beaches?',
+          answer: 'Yes! The Strand (Marvin Braude Bike Trail) is 22-mile paved path from Will Rogers State Beach to Torrance Beach passing Santa Monica, Venice, Manhattan Beach. Bike rentals $15-25/day. Flat, scenic, popular! Great way to see multiple beaches.',
+        },
+        {
+          question: 'What is Muscle Beach?',
+          answer: 'Muscle Beach is outdoor gym at Venice Beach where bodybuilders work out publicly. Arnold Schwarzenegger trained here in 1970s! Free to watch, small fee to use equipment. Street performers and vendors surround it. Venice Beach icon!',
+        },
+        {
+          question: 'When is the best time to visit beaches?',
+          answer: 'Year-round! Summer (June-September) busiest and warmest. May-June has "June Gloom" morning fog. September-October often best - warm, clear, fewer crowds. Winter pleasant (60-70°F) but cooler water. Weekend crowds - weekdays quieter.',
+        },
+        {
+          question: 'How do you get to Santa Monica from Hollywood?',
+          answer: 'Metro Expo Line from Downtown LA to Santa Monica (45 min, $1.75). Uber/Lyft: 30-60 min depending on traffic, $25-50. Car: Take I-10 West - parking expensive ($10-15)! Tours include transport. Public transit best budget option.',
+        },
+      ],
+    },
+
+    'movie-studio-tours': {
+      title: 'Los Angeles Movie Studio Tours',
+      subtitle: 'Go behind the scenes at Warner Bros, Paramount, and working Hollywood studios!',
+      categoryName: 'Movie Studio Tours',
+      
+      stats: {
+        toursAvailable: 52,
+        priceFrom: 65,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience Hollywood's working movie studios where actual films and TV shows are made! Studio tours offer exclusive behind-the-scenes access to Warner Bros (most comprehensive tour visiting sound stages, backlots, prop departments), Paramount (only major studio still in Hollywood), Sony Pictures, and Universal Studios (theme park with studio tour). See active sound stages, famous backlots (New York streets, suburban houses used in countless productions), prop warehouses, costume departments, and possibly witness filming! Tours vary from intimate walking experiences to tram rides through massive lots. Learn about filmmaking process, special effects, production design, and entertainment business. It's real Hollywood magic!`,
+
+      seo: {
+        title: 'Los Angeles Movie Studio Tours 2025 - Warner Bros & Hollywood Studios',
+        description: 'Experience Hollywood studios! Behind-the-scenes tours at Warner Bros, Paramount, and more!',
+        keywords: 'LA movie studio tours, Warner Bros tour, Paramount Studios, Hollywood studio tours, Universal Studios',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Working Studios',
+          description: 'See where actual movies and TV shows are filmed!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Behind the Scenes',
+          description: 'Access sound stages, backlots, and production areas.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Film History',
+          description: 'Walk where Hollywood legends created iconic movies!',
+        },
+        {
+          icon: 'Users',
+          title: 'Small Groups',
+          description: 'Intimate tours with insider guides - no crowds!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Warner Bros Studio Tour',
+          description: 'Most comprehensive studio tour with backlot and sound stages.',
+          features: [
+            '3 hours',
+            'Sound stages',
+            'Backlot',
+            'Props & costumes',
+            'Best tour',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Paramount Studios Tour',
+          description: 'Only major studio in Hollywood proper - historic backlot.',
+          features: [
+            '2 hours',
+            'Hollywood location',
+            'Backlot tour',
+            'Historic gates',
+            'Classic',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Sony Pictures Tour',
+          description: 'Smaller, more intimate tour of working Culver City studio.',
+          features: [
+            '2 hours',
+            'Small groups',
+            'Historic MGM lot',
+            'Intimate',
+            'Affordable',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Universal Studios Tour',
+          description: 'Theme park studio tour via tram seeing sets and attractions.',
+          features: [
+            'Full day',
+            'Theme park',
+            'Tram tour',
+            'Rides included',
+            'Family fun',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Los Angeles Movie Studio Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Warner Bros: 3 hours. Paramount: 2 hours. Sony: 2 hours. Universal: Full day.',
+          },
+          {
+            icon: 'Star',
+            title: 'Sound Stages',
+            description: 'Visit massive buildings where interior scenes are filmed.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Backlots',
+            description: 'Explore outdoor sets - New York streets, suburbs used in countless films!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Props & Costumes',
+            description: 'See warehouses of props, costumes, and set pieces from famous productions.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Active Filming',
+            description: 'Possibility of witnessing actual production (no guarantees!).',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Film Education',
+            description: 'Learn about filmmaking process from production to post.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Warner Bros tour most comprehensive - book this if choosing only one!',
+        'Studio tours book out weeks ahead - reserve early!',
+        'You might see celebrities - but tours emphasize production over star-gazing.',
+        'Photography restrictions on all tours - respect rules or get kicked out!',
+        'Wear comfortable shoes - lots of walking (1-2 miles).',
+        'Each tour differs based on what\'s filming - experiences vary daily.',
+        'Minimum ages apply: Warner Bros 8+, Paramount 12+.',
+        'VIP tours available ($300+) with extended access and lunch.',
+      ],
+
+      faqs: [
+        {
+          question: 'Which studio tour is best?',
+          answer: 'Warner Bros (#1 - $75, 3 hours, most comprehensive). Paramount ($65, 2 hours, historic Hollywood location). Sony ($55, 2 hours, intimate, budget). Universal (theme park, $100+). Warner Bros shows most behind-scenes. Book it!',
+        },
+        {
+          question: 'Can you see celebrities on studio tours?',
+          answer: 'Possible but not guaranteed! You might spot actors during filming breaks or see someone famous across the lot. Tours focus on production, not celebrity sightings. Lower expectations - treat celebrity encounters as bonus. It happens occasionally!',
+        },
+        {
+          question: 'How much do studio tours cost?',
+          answer: 'Warner Bros: $75 (3 hours). Paramount: $65 (2 hours). Sony: $55 (2 hours). Universal Studios: $100+ (full day theme park). VIP tours: $300+. Standard tours worth the price - unique access to working studios!',
+        },
+        {
+          question: 'Do you need to book studio tours in advance?',
+          answer: 'YES! Tours sell out 2-4 weeks ahead, especially summer and weekends. Warner Bros fills fastest. Book online as soon as dates known. Walk-ups rarely available. Advance booking essential for studio tours!',
+        },
+        {
+          question: 'What is the difference between Warner Bros and Universal?',
+          answer: 'Warner Bros: Working studio tour (3 hours, intimate, behind-scenes). Universal Studios: Theme park with studio tour component (full day, tram ride, includes rides). WB for film fans, Universal for families. Both worthwhile but very different!',
+        },
+        {
+          question: 'Can you take photos on studio tours?',
+          answer: 'Limited! Photos allowed in certain areas (backlots, some exhibits) but NOT near active filming, inside sound stages with sets, or of confidential material. Guides specify when photos allowed. Violators get kicked out. Respect rules!',
+        },
+        {
+          question: 'Will you see active filming?',
+          answer: 'Maybe! Tours visit sound stages and backlots where filming happens. However, production schedules vary daily - some days busy, some quiet. Can\'t guarantee active sets. Guides share what\'s filming but access depends on production needs.',
+        },
+        {
+          question: 'Are studio tours worth it?',
+          answer: 'Absolutely for movie fans! Seeing where films are actually made, walking famous backlots, understanding production process - it\'s incredible. Warner Bros especially delivers. $65-75 for 2-3 hours of exclusive access is fair value. Highly recommended!',
+        },
+      ],
+    },
+  },
 };
 
