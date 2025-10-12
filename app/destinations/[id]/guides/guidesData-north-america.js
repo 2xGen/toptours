@@ -17989,5 +17989,1063 @@ export const categoryGuidesNorthAmerica = {
       ],
     },
   },
+
+  'puerto-vallarta': {
+    'malecon-tours': {
+      title: 'Puerto Vallarta Malecon Tours',
+      subtitle: 'Stroll iconic oceanfront boardwalk with sculptures, sunsets, and Pacific views!',
+      categoryName: 'Malecon Tours',
+      
+      stats: {
+        toursAvailable: 64,
+        priceFrom: 35,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Experience El Malecón - Puerto Vallarta's iconic mile-long oceanfront promenade! Malecon tours explore the beautiful boardwalk stretching from Hotel Zone to Old Town (Zona Romántica) with famous sculptures (seahorse statue, Los Arcos symbol), street performers, artisan vendors, restaurants with Pacific views, and stunning sunsets. Walk along cobblestone promenade, watch cliff divers at Los Muertos Pier, visit Playa de los Muertos beach, and experience vibrant atmosphere. Evening brings live music, street food, families strolling - it's PV's social heart! Learn about sculptures and artists, boardwalk history, and beachfront culture. It's romantic Pacific paradise!`,
+
+      seo: {
+        title: 'Puerto Vallarta Malecon Tours 2025 - Oceanfront Boardwalk & Sunsets',
+        description: 'Explore Puerto Vallarta Malecon! Iconic boardwalk, sculptures, and Pacific sunsets!',
+        keywords: 'Puerto Vallarta Malecon, El Malecon, Puerto Vallarta boardwalk, PV sunsets, Los Muertos beach',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Iconic Boardwalk',
+          description: 'Mile-long oceanfront promenade - PV\'s most romantic spot!',
+        },
+        {
+          icon: 'Star',
+          title: 'Famous Sculptures',
+          description: 'Seahorse, dancers, arches - Instagram-worthy art!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Stunning Sunsets',
+          description: 'Pacific sunsets from Malecon are legendary!',
+        },
+        {
+          icon: 'Users',
+          title: 'Street Performers',
+          description: 'Live music, dancers, vendors - vibrant atmosphere!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Malecon Walking Tour',
+          description: 'Guided walk explaining sculptures and history.',
+          features: [
+            '2 hours',
+            'Sculptures',
+            'History',
+            'Culture',
+            'Orientation',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunset Stroll',
+          description: 'Evening tour for magical Pacific sunsets.',
+          features: [
+            '2 hours',
+            'Sunset viewing',
+            'Romantic',
+            'Photos',
+            'Beautiful',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Food & Malecon Tour',
+          description: 'Combine boardwalk with street food tastings.',
+          features: [
+            '3 hours',
+            'Food + culture',
+            'Tastings',
+            'Comprehensive',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Art & Culture Walk',
+          description: 'Focus on sculptures, galleries, and artistic heritage.',
+          features: [
+            '2-3 hours',
+            'Art focus',
+            'Galleries',
+            'Cultural',
+            'Educational',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Puerto Vallarta Malecon Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 2-3 hours. Self-stroll: 1-2 hours. Sunset: Budget 2 hours evening.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Famous Sculptures',
+            description: 'Seahorse, Millennium sculpture, dancers - over 12 major art installations!',
+          },
+          {
+            icon: 'Star',
+            title: 'Los Muertos Pier',
+            description: 'Iconic pier with restaurants, bars, and beach access - social hub!',
+          },
+          {
+            icon: 'Sun',
+            title: 'Pacific Sunsets',
+            description: 'Legendary sunsets over Banderas Bay - absolutely stunning!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Street Performers',
+            description: 'Musicians, dancers, living statues - vibrant entertainment!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Beachfront Dining',
+            description: 'Restaurants along Malecon with Pacific views and fresh seafood!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Sunset (6-7 PM Nov-Feb, 7-8 PM summer) absolutely magical - don\'t miss!',
+        'Walk entire Malecon (1 mile) from Hotel Zone to Zona Romántica.',
+        'Los Muertos Pier perfect for sunset drinks at oceanfront bars.',
+        'Evening Malecon (7-10 PM) most vibrant - families, music, atmosphere!',
+        'Free to walk - tours provide context about sculptures and history.',
+        'Saturday nights busiest - folkloric dancers sometimes perform!',
+        'Artisan vendors on Malecon - prices negotiable.',
+        'Start at Hotel Zone, walk south to Zona Romántica, end at Los Muertos.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is the Malecon?',
+          answer: 'El Malecón is Puerto Vallarta\'s oceanfront boardwalk - mile-long promenade along Banderas Bay with sculptures, restaurants, street performers, and beach access. It\'s PV\'s social heart where locals and tourists gather. Stunning sunsets, romantic atmosphere. Essential Puerto Vallarta experience!',
+        },
+        {
+          question: 'Is the Malecon worth visiting?',
+          answer: 'Absolutely essential! It\'s FREE, beautiful, and quintessential Puerto Vallarta. Sunset walks romantic. Street performers entertaining. Sculptures photo-worthy. You\'ll return multiple times during stay. Budget 1-2 hours minimum. Worth experiencing multiple times!',
+        },
+        {
+          question: 'How long to spend on the Malecon?',
+          answer: 'Minimum 1-2 hours for full walk and photos. Sunset: Budget 2 hours (arrive early, stay for dark). Dining adds time. You\'ll likely walk Malecon multiple times during PV stay - it\'s central to everything!',
+        },
+        {
+          question: 'What sculptures are on the Malecon?',
+          answer: 'Seahorse (Caballito del Mar - most famous!), Millennium sculpture, La Rotonda del Mar dancers, Friendship fountain, In Search of Reason, plus rotating exhibits. Over 12 major installations. All free to photograph. Tours explain symbolism and artists!',
+        },
+        {
+          question: 'Is the Malecon safe?',
+          answer: 'Very safe! Heavy foot traffic, police presence, well-lit evening. Puerto Vallarta one of Mexico\'s safest tourist cities. Watch for pickpockets in crowds. Evening safe - families everywhere. Use normal caution. Extremely safe tourist area!',
+        },
+        {
+          question: 'Can you access beach from Malecon?',
+          answer: 'Yes! Multiple access points along boardwalk. Los Muertos Beach (south end) most popular. Playa Olas Altas accessible. Beach clubs and public access mix. Malecon provides easy beach entry throughout. Seamless boardwalk-to-beach experience!',
+        },
+        {
+          question: 'When is the best time to walk the Malecon?',
+          answer: 'Sunset (6-8 PM) most magical - legendary Pacific sunsets! Evening (7-10 PM) most vibrant with performers and crowds. Early morning (7-8 AM) peaceful for photos without crowds. Visit multiple times - different vibes! Year-round beautiful.',
+        },
+        {
+          question: 'Do you need tour for Malecon?',
+          answer: 'Not essential - it\'s self-explanatory and free! However, tours explain sculptures, provide history, and show hidden spots. First-timers: Brief tour adds value ($35-50, 2 hours). Then return independently. Both approaches work - it\'s accessible!',
+        },
+      ],
+    },
+
+    'old-town-tours': {
+      title: 'Puerto Vallarta Old Town Tours',
+      subtitle: 'Explore cobblestone streets, Our Lady of Guadalupe church, and colonial charm!',
+      categoryName: 'Old Town Tours',
+      
+      stats: {
+        toursAvailable: 58,
+        priceFrom: 40,
+        duration: '2-4 hours',
+      },
+
+      introduction: `Discover Puerto Vallarta's charming Old Town (Centro Historico and Zona Romántica)! Old Town tours explore cobblestone streets, iconic Our Lady of Guadalupe church (crowned tower!), historic plaza, colonial architecture, hidden courtyards, art galleries, traditional markets, and authentic neighborhoods. Visit Isla Cuale (river island with shops!), Los Arcos amphitheater, colorful hillside homes, and local cantinas. Tours include cultural insights, architectural history, shopping guidance, and authentic restaurant recommendations. Learn about Puerto Vallarta's evolution from small fishing village to beloved resort, preserving Mexican charm while welcoming international visitors. It's romantic Mexico!`,
+
+      seo: {
+        title: 'Puerto Vallarta Old Town Tours 2025 - Colonial Streets & Historic Centro',
+        description: 'Explore PV Old Town! Guadalupe church, cobblestone streets, and colonial charm!',
+        keywords: 'Puerto Vallarta Old Town, Centro Historico, Zona Romantica, Guadalupe church, PV historic',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Colonial Charm',
+          description: 'Cobblestone streets and colorful hillside homes!',
+        },
+        {
+          icon: 'Star',
+          title: 'Guadalupe Church',
+          description: 'Iconic crowned tower - PV\'s most recognizable symbol!',
+        },
+        {
+          icon: 'Camera',
+          title: 'Authentic Mexico',
+          description: 'Preserved local character amid resort development!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Art Galleries',
+          description: 'Vibrant art scene with dozens of galleries!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Historic Walking Tour',
+          description: 'Explore Old Town highlights with local guide.',
+          features: [
+            '2-3 hours',
+            'Major sites',
+            'History',
+            'Culture',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Art Gallery Walk',
+          description: 'Visit galleries and meet local artists.',
+          features: [
+            '2-3 hours',
+            'Art focus',
+            'Galleries',
+            'Artists',
+            'Cultural',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Food & Culture Tour',
+          description: 'Combine Old Town history with food tastings.',
+          features: [
+            '3 hours',
+            'Food + history',
+            '5-6 tastings',
+            'Comprehensive',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Tour',
+          description: 'Capture colonial beauty and colorful street scenes.',
+          features: [
+            '3 hours',
+            'Photo-focused',
+            'Best spots',
+            'Golden hour',
+            'Instagram',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Puerto Vallarta Old Town Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Walking tours: 2-3 hours. Food tours: 3 hours. Gallery walks: 2-3 hours.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Guadalupe Church',
+            description: 'Iconic church with crowned tower - PV\'s symbol. Free entry, beautiful interior!',
+          },
+          {
+            icon: 'Star',
+            title: 'Cobblestone Streets',
+            description: 'Charming narrow streets climbing hillsides - wonderfully photogenic!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Isla Cuale',
+            description: 'River island with artisan markets, restaurants, and cultural center!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Los Arcos',
+            description: 'Oceanfront amphitheater - free cultural performances and events!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Local Culture',
+            description: 'Authentic Mexican atmosphere preserved amid tourist development.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Morning (9-11 AM) cooler for hillside walking and good light.',
+        'Our Lady of Guadalupe church free - visit interior (modest dress).',
+        'Isla Cuale artisan market less touristy than Malecon vendors.',
+        'Wednesday evenings: Free art walks (6-10 PM) with gallery openings!',
+        'Zona Romántica (south) has LGBTQ+-friendly bars and bohemian vibe.',
+        'Gringo Gulch (hillside above town) has historic celebrity homes.',
+        'Wear comfortable shoes - cobblestones and hills require good footwear!',
+        'Free walking tours available (tip-based) - budget option.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Puerto Vallarta Old Town?',
+          answer: 'Old Town includes Centro Historico (downtown) and Zona Romántica (south) - historic neighborhoods with colonial architecture, cobblestone streets, Our Lady of Guadalupe church, and authentic character. Unlike hotel zone, Old Town preserves Mexican charm. Essential PV experience!',
+        },
+        {
+          question: 'Is Old Town safe?',
+          answer: 'Very safe! Tourist-friendly with police presence. Daytime extremely safe. Evening: Stick to main streets (well-lit, busy). Zona Romántica very safe with LGBTQ+ welcoming atmosphere. Puerto Vallarta one of Mexico\'s safest cities. Enjoy confidently!',
+        },
+        {
+          question: 'How long to explore Old Town?',
+          answer: 'Minimum 2-3 hours for highlights. Half-day (4-5 hours) for thorough exploration including shopping. Full day if adding beaches and dining. You\'ll return multiple times - it\'s walkable from most hotels. Plan minimum half-day!',
+        },
+        {
+          question: 'What is Isla Cuale?',
+          answer: 'Isla Cuale is small island in Cuale River between Centro and Zona Romántica. Artisan market (better prices than Malecon!), restaurants, cultural center, walking paths. Cross pedestrian bridges to access. Peaceful shopping - less touristy. Worth visiting!',
+        },
+        {
+          question: 'Can you walk Old Town yourself?',
+          answer: 'Absolutely! Compact and pedestrian-friendly. Maps available. However, tours provide history, hidden gems, and cultural context. First-timers: Tour recommended (2-3 hours). Then explore independently. Both work well!',
+        },
+        {
+          question: 'What is the church in Puerto Vallarta?',
+          answer: 'Our Lady of Guadalupe church (Nuestra Señora de Guadalupe) is PV\'s iconic symbol - crowned tower visible throughout town! Beautiful interior, free entry. Baroque revival style. Photo from Malecon! Essential landmark. Modest dress required for entry.',
+        },
+        {
+          question: 'When is the best time to visit Old Town?',
+          answer: 'Morning (9-11 AM) cooler for walking hills. Wednesday evenings: Art walks (6-10 PM). Sunset: Combine Malecon + Old Town. Dry season (Nov-April) ideal weather. Year-round accessible - rain brief in summer. Visit morning or evening!',
+        },
+        {
+          question: 'How much do Old Town tours cost?',
+          answer: 'Walking tours: $40-60 (2-3 hours). Food tours: $65-85. Art walks: $50-70. Free walking tours (tip-based). Gallery visits free. Budget-friendly exploring! Tours add context and navigation. Both DIY and guided work.',
+        },
+      ],
+    },
+
+    'beach-tours': {
+      title: 'Puerto Vallarta Beach Tours',
+      subtitle: 'Discover Los Muertos, Conchas Chinas, and hidden Pacific coves!',
+      categoryName: 'Beach Tours',
+      
+      stats: {
+        toursAvailable: 92,
+        priceFrom: 45,
+        duration: '3-8 hours',
+      },
+
+      introduction: `Experience Puerto Vallarta's diverse beaches - from bustling Los Muertos to secluded coves! Beach tours explore Playa de los Muertos (most famous!), Conchas Chinas (snorkeling paradise!), Las Gemelas (twins beaches), Playa Camarones, and remote beaches accessible only by boat like Yelapa, Majahuitas, and Quimixto. Enjoy beach clubs, snorkeling vibrant reefs, boat trips to hidden coves, paddleboarding, and sunset cruises. Tours include boat transportation, snorkel gear, lunch, open bar, and beach time. Learn about Los Arcos Marine Park (protected rocks with diverse marine life!), sea turtle conservation, and coastal ecology. It's Pacific beach perfection!`,
+
+      seo: {
+        title: 'Puerto Vallarta Beach Tours 2025 - Los Muertos, Hidden Coves & Pacific Beaches',
+        description: 'Explore PV beaches! Los Muertos, Conchas Chinas, and boat-access hidden coves!',
+        keywords: 'Puerto Vallarta beaches, Los Muertos beach, Conchas Chinas, Yelapa, PV beach tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Diverse Beaches',
+          description: 'Bustling to secluded - every beach vibe available!',
+        },
+        {
+          icon: 'Star',
+          title: 'Hidden Coves',
+          description: 'Boat-access only beaches like Yelapa - pristine and remote!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Los Arcos Park',
+          description: 'Protected marine park with incredible snorkeling!',
+        },
+        {
+          icon: 'Sun',
+          title: 'Warm Pacific',
+          description: 'Water 75-85°F perfect for swimming year-round!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Los Muertos Beach Day',
+          description: 'Spend day at PV\'s most famous beach with clubs.',
+          features: [
+            'Full day',
+            'Beach clubs',
+            'Restaurants',
+            'Pier',
+            'Social',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Hidden Beaches Boat Tour',
+          description: 'Visit Yelapa, Majahuitas, Quimixto by boat.',
+          features: [
+            '6-8 hours',
+            'Boat transport',
+            'Multiple beaches',
+            'Snorkeling',
+            'Adventure',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Los Arcos Snorkel',
+          description: 'Snorkel protected marine park with diverse life.',
+          features: [
+            '3-4 hours',
+            'Boat tour',
+            'Snorkeling',
+            'Marine park',
+            'Spectacular',
+          ],
+        },
+        {
+          icon: 'Sun',
+          title: 'Sunset Beach Cruise',
+          description: 'Evening cruise along coast with open bar.',
+          features: [
+            '3 hours',
+            'Sunset',
+            'Open bar',
+            'Romantic',
+            'Beautiful',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Puerto Vallarta Beach Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Beach days: Full day. Boat tours: 6-8 hours. Snorkeling: 3-4 hours. Sunset: 3 hours.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Los Muertos Beach',
+            description: 'Most popular beach - pier, restaurants, vendors, water sports, social!',
+          },
+          {
+            icon: 'Star',
+            title: 'Conchas Chinas',
+            description: 'Rocky coves south of town - excellent snorkeling, quieter!',
+          },
+          {
+            icon: 'Heart',
+            title: 'Yelapa',
+            description: 'Boat-only access village beach - waterfall hike, pristine, remote!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Los Arcos',
+            description: 'Granite rock formations teeming with fish - snorkeling paradise!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Beach Clubs',
+            description: 'Mantamar, Sapphire, others offer loungers, food, music!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Los Muertos FREE but vendors persistent - polite "no gracias" works.',
+        'Conchas Chinas best snorkeling from shore - bring own gear.',
+        'Yelapa boat tours popular - authentic village, waterfall hike included.',
+        'Los Arcos snorkel tours ($45-65) worth it - incredible marine life!',
+        'South beaches (Conchas Chinas, Gemelas) quieter than Los Muertos.',
+        'Beach clubs minimum spend ($20-40) includes loungers and facilities.',
+        'Water taxis from Los Muertos Pier to south beaches ($10-15).',
+        'November-April: Calm seas perfect. Summer: Warmer but occasional waves.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Los Muertos Beach?',
+          answer: 'Playa de los Muertos ("Beach of the Dead" - historical name!) is Puerto Vallarta\'s most famous beach in Zona Romántica. Vibrant atmosphere, pier with restaurants/bars, water sports, beach vendors. Social center! Not prettiest beach but best atmosphere. Essential PV experience!',
+        },
+        {
+          question: 'Which Puerto Vallarta beach is best?',
+          answer: 'Depends on preference! Los Muertos: Social, vibrant. Conchas Chinas: Quiet, snorkeling. Yelapa: Remote, pristine. Playa Camarones: Hotel zone convenience. Each offers different vibe. Try multiple - easy to access! All beautiful Pacific beaches.',
+        },
+        {
+          question: 'Can you snorkel in Puerto Vallarta?',
+          answer: 'Yes! Los Arcos Marine Park best snorkeling (boat tour required). Conchas Chinas good from shore. Majahuitas and Yelapa excellent on boat tours. Tropical fish, manta rays, sea turtles! Equipment rental $10-15 or included in tours. Great snorkeling!',
+        },
+        {
+          question: 'How do you get to Yelapa?',
+          answer: 'Boat only access! Tours from Los Muertos Pier or Marina Vallarta (6-8 hours, $60-100). Includes village visit, beach time, waterfall hike, lunch. Water taxi also available ($25-35 round-trip). Remote fishing village - pristine and authentic. Worth the boat ride!',
+        },
+        {
+          question: 'Are Puerto Vallarta beaches nice?',
+          answer: 'Beautiful! Pacific beaches with Sierra Madre mountain backdrop. Golden sand (not white like Caribbean), warm water (75-85°F), good waves for boogie boarding. Different from Caribbean but stunning! Sunset views incredible. Yes, they\'re lovely!',
+        },
+        {
+          question: 'Do beaches have jellyfish?',
+          answer: 'Rarely an issue! Occasional jellyfish but not common problem. If stung, lifeguards assist. Much less concern than other destinations. Mostly safe swimming year-round. Sea urchins in rocky areas - wear water shoes. Generally very swimmable!',
+        },
+        {
+          question: 'What should I bring to beaches?',
+          answer: 'Reef-safe sunscreen, towel, water, hat, sunglasses, water shoes (rocky areas), snorkel gear (if own), cash for vendors. Beach clubs provide loungers with minimum spend. Bring underwater camera for snorkeling!',
+        },
+        {
+          question: 'When is the best beach weather?',
+          answer: 'November-April: Dry season, calm seas, perfect! May-October: Warmer, occasional rain, bigger waves (fun for boogie boarding!). Water warmest June-October. Year-round swimmable. Dry season ideal for boat tours and snorkeling.',
+        },
+      ],
+    },
+
+    'food-and-culture-tours': {
+      title: 'Puerto Vallarta Food & Culture Tours',
+      subtitle: 'Taste fresh seafood, traditional Mexican cuisine, and Pacific flavors!',
+      categoryName: 'Food & Culture Tours',
+      
+      stats: {
+        toursAvailable: 72,
+        priceFrom: 65,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Discover Puerto Vallarta's incredible food scene - fresh Pacific seafood and authentic Mexican flavors! Food tours explore local markets, street taco stands, traditional seafood restaurants, upscale dining, and hidden gems. Sample fish tacos (caught daily!), ceviche, aguachile (spicy shrimp), grilled octopus, pescado zarandeado (butterflied grilled fish), and regional specialties. Visit Municipal Market, experience tequila tastings, learn cooking techniques, and explore neighborhoods beyond tourist zones. Tours combine food with cultural education - fishing heritage, Huichol indigenous art, and local traditions. It's Pacific culinary paradise!`,
+
+      seo: {
+        title: 'Puerto Vallarta Food & Culture Tours 2025 - Seafood, Tacos & Mexican Cuisine',
+        description: 'Taste Puerto Vallarta! Fresh seafood, authentic tacos, and culinary tours!',
+        keywords: 'Puerto Vallarta food tours, PV seafood, fish tacos, Mexican food tours, tequila tasting',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Fresh Pacific Seafood',
+          description: 'Daily catch - octopus, fish, shrimp - ocean-to-table!',
+        },
+        {
+          icon: 'Star',
+          title: 'Authentic Tacos',
+          description: 'Fish tacos, al pastor, carnitas - local favorites!',
+        },
+        {
+          icon: 'Users',
+          title: 'Local Markets',
+          description: 'Municipal Market shows real Mexican food culture!',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Tequila Culture',
+          description: 'Premium tequila tastings and education!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Taco & Street Food Tour',
+          description: 'Sample authentic tacos at local favorites.',
+          features: [
+            '3 hours',
+            '6-8 tastings',
+            'Street food',
+            'Local spots',
+            'Authentic',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Seafood Tour',
+          description: 'Fresh fish, ceviche, and Pacific specialties.',
+          features: [
+            '3-4 hours',
+            'Seafood focus',
+            'Beachfront',
+            'Fresh catch',
+            'Delicious',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Market & Cooking Class',
+          description: 'Shop at market then cook traditional dishes.',
+          features: [
+            '4-5 hours',
+            'Hands-on',
+            'Market visit',
+            'Cook + eat',
+            'Interactive',
+          ],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Tequila Tasting Tour',
+          description: 'Sample premium tequilas with education.',
+          features: [
+            '2-3 hours',
+            'Multiple tastings',
+            'Education',
+            'Cultural',
+            'Fun',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Puerto Vallarta Food & Culture Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours with 6-8 tastings replacing lunch or dinner.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Fish Tacos',
+            description: 'Fresh-caught fish battered or grilled - PV specialty with cabbage and sauce!',
+          },
+          {
+            icon: 'Star',
+            title: 'Ceviche',
+            description: 'Fresh fish "cooked" in lime with tomato, onion, cilantro - coastal classic!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Aguachile',
+            description: 'Spicy shrimp in green chili sauce - Pacific coast specialty!',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Municipal Market',
+            description: 'Local market with food stalls, produce, seafood - authentic atmosphere!',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Tequila',
+            description: 'Sample blanco, reposado, añejo with expert explanations!',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Pancho\'s Takos (Zona Romántica) legendary fish tacos - cheap and amazing!',
+        'Municipal Market upper floor has food stalls - authentic and cheap.',
+        'Pescado zarandeado (butterflied fish) PV specialty - try it!',
+        'Avoid Malecon restaurants (expensive/touristy) - walk inland few blocks.',
+        'Joe Jack\'s Fish Shack excellent fresh seafood - local favorite.',
+        'Tequila: 100% agave only (avoid mixto). Blanco shows true flavor.',
+        'Street tacos $1-2 each - incredible value!',
+        'Tours show spots tourists miss - worth it for authentic food!',
+      ],
+
+      faqs: [
+        {
+          question: 'What food is Puerto Vallarta known for?',
+          answer: 'Fish tacos (daily catch!), ceviche, aguachile (spicy shrimp), pescado zarandeado (grilled fish), octopus, fresh seafood. Also: Tacos al pastor, tamales, pozole. Pacific coastal cuisine with fresh catches. Try everything - seafood exceptional!',
+        },
+        {
+          question: 'Where should I eat in Puerto Vallarta?',
+          answer: 'Fish tacos: Pancho\'s Takos. Seafood: Joe Jack\'s, Mariscos Cisneros. Upscale: Café des Artistes, La Leche. Street food: Municipal Market. Breakfast: Freddy\'s Tucan. Food tours show best spots - worth it for discovering hidden gems!',
+        },
+        {
+          question: 'Is Puerto Vallarta food safe?',
+          answer: 'Generally safe! Stick to busy restaurants with fresh ingredients. Seafood at reputable spots safe (high turnover). Avoid ice in questionable places. Bottled water only. Most visitors have no issues. Use judgment - busy = fresh = safe!',
+        },
+        {
+          question: 'How much do food tours cost?',
+          answer: 'Walking food tours: $65-95 (3-4 hours, 6-8 tastings). Cooking classes: $80-120. Tequila tastings: $55-85. Tours replace meals - good value! Budget: Street tacos $1-2, market meals $5-10. Mix tours and budget eating!',
+        },
+        {
+          question: 'What is aguachile?',
+          answer: 'Aguachile is Pacific coast specialty - raw shrimp "cooked" in lime juice with spicy green chili sauce! Similar to ceviche but spicier. Fresh, tangy, picante! Popular in PV. Not for spice-averse but delicious. Try small portion first!',
+        },
+        {
+          question: 'Are there vegetarian options?',
+          answer: 'Yes! Quesadillas, vegetable tacos, guacamole, elote, bean dishes. International restaurants (Italian, Mediterranean) have options. Easier than rural Mexico. Communicate dietary needs. Seafood-heavy but vegetables available. Planning helps!',
+        },
+        {
+          question: 'What is pescado zarandeado?',
+          answer: 'Pescado zarandeado is Puerto Vallarta specialty - whole fish butterflied, marinated (achiote, citrus), grilled over open fire! Usually red snapper or sea bass. Smoky, flavorful, traditional! Essential PV dish. Order at beachfront restaurants. Delicious!',
+        },
+        {
+          question: 'When is the best time for food tours?',
+          answer: 'Lunch (12-3 PM) or dinner (6-9 PM) tours available. Seafood freshest at lunch (morning catch!). Evening has better atmosphere. Year-round! Come hungry - portions generous. Book ahead for popular tours.',
+        },
+      ],
+    },
+
+    'whale-watching-tours': {
+      title: 'Puerto Vallarta Whale Watching Tours',
+      subtitle: 'See humpback whales, dolphins, and marine life in Banderas Bay!',
+      categoryName: 'Whale Watching Tours',
+      
+      stats: {
+        toursAvailable: 68,
+        priceFrom: 75,
+        duration: '3-5 hours',
+      },
+
+      introduction: `Experience Puerto Vallarta's incredible whale watching - December through March spectacle! Whale tours explore Banderas Bay where 300+ humpback whales migrate annually for breeding and calving. Watch mothers with calves, breaching whales (jumping!), tail slapping, and hear whale songs via hydrophone. Tours include dolphin sightings (spinner, bottlenose!), manta rays, sea turtles, and diverse marine life. Cruise on boats with expert naturalist guides explaining whale behavior, migration patterns, and conservation efforts. Tours range from large boats to intimate pangas (small boats - closer encounters!). It's nature's greatest show!`,
+
+      seo: {
+        title: 'Puerto Vallarta Whale Watching Tours 2025 - Humpback Whales & Marine Life',
+        description: 'See humpback whales in PV! December-March whale watching in Banderas Bay!',
+        keywords: 'Puerto Vallarta whale watching, humpback whales, Banderas Bay whales, PV dolphins, whale tours',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Humpback Migration',
+          description: '300+ whales visit Dec-March - breeding and calving season!',
+        },
+        {
+          icon: 'Star',
+          title: 'Banderas Bay',
+          description: 'Protected bay perfect for whale watching - calm waters!',
+        },
+        {
+          icon: 'Users',
+          title: 'Dolphins & Turtles',
+          description: 'See spinner dolphins, sea turtles, manta rays too!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Breaching Whales',
+          description: 'Watch 40-ton whales leap from water - spectacular!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Classic Whale Tour',
+          description: 'Large boat with naturalist guide.',
+          features: [
+            '3-4 hours',
+            'Large boat',
+            'Stable',
+            'Naturalist',
+            'Most popular',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'Panga Whale Tour',
+          description: 'Small boat for closer encounters.',
+          features: [
+            '3 hours',
+            'Small boat',
+            'Close encounters',
+            'Intimate',
+            'Exciting',
+          ],
+        },
+        {
+          icon: 'Waves',
+          title: 'Whale + Snorkel Combo',
+          description: 'Whale watching plus snorkeling at Los Arcos.',
+          features: [
+            '5-6 hours',
+            'Whales + snorkel',
+            'Comprehensive',
+            'Full experience',
+            'Value',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Photography Tour',
+          description: 'Focus on capturing whales with pro photographer.',
+          features: [
+            '4 hours',
+            'Photo-focused',
+            'Expert tips',
+            'Equipment',
+            'Memorable',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Puerto Vallarta Whale Watching Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 3-4 hours on water. With transport: 4-5 hours total.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Humpback Whales',
+            description: 'See mothers with calves, breaching, tail slapping - 40 tons of marine mammal!',
+          },
+          {
+            icon: 'Star',
+            title: 'Dolphins',
+            description: 'Spinner dolphins often accompany boats - playful and acrobatic!',
+          },
+          {
+            icon: 'Waves',
+            title: 'Whale Songs',
+            description: 'Hear whale songs via hydrophone - hauntingly beautiful!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Breaching',
+            description: 'Whales jumping out of water - thrilling and unpredictable!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Conservation Education',
+            description: 'Learn about whale migration, behavior, and protection efforts.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Whale season: December-March (peak January-February) - plan accordingly!',
+        'Morning tours (8-9 AM) better light for photos and whale activity.',
+        'Panga boats closer encounters but bumpier ride - not for seasickness-prone!',
+        'Large boats more stable - better for families and those prone to seasickness.',
+        'Bring Dramamine if prone to motion sickness (Pacific can be choppy).',
+        'Sightings 95%+ guaranteed in season - whales are everywhere!',
+        'Dress in layers - cool on water, bring windbreaker.',
+        'Book ahead in peak season (January-February) - tours sell out!',
+      ],
+
+      faqs: [
+        {
+          question: 'When can you see whales in Puerto Vallarta?',
+          answer: 'December through March! Peak: January-February (most whales, best calving). 300+ humpback whales migrate to Banderas Bay for breeding/calving. 95%+ sighting rate in season. Outside season: No whales. Plan December-March for whale watching!',
+        },
+        {
+          question: 'Are whale sightings guaranteed?',
+          answer: '95%+ success rate in season (Dec-March)! Banderas Bay has 300+ whales - they\'re everywhere. Rare to not see whales. Most tours see multiple whales. If no sightings, many operators offer free return tour. Practically guaranteed!',
+        },
+        {
+          question: 'How close do you get to whales?',
+          answer: 'Legal minimum: 100 feet. However, whales often approach boats closer (curious!)! Panga tours sometimes have closer encounters. Breaching happens unpredictably - thrilling! Respectful distance protects whales while allowing amazing views. Binoculars help!',
+        },
+        {
+          question: 'How much do whale tours cost?',
+          answer: 'Standard tours: $75-120 (3-4 hours). Private panga: $150-250. Whale + snorkel combos: $100-150. Photography tours: $140-200. Good value for 3-4 hours on water with expert guides. Book reputable operators!',
+        },
+        {
+          question: 'Will I get seasick?',
+          answer: 'Banderas Bay generally calm but Pacific can be choppy! Large boats more stable. Panga boats bumpier. Take Dramamine 1 hour before. Sit middle of boat. Focus on horizon. Most handle fine but prepare if prone to motion sickness.',
+        },
+        {
+          question: 'Can kids go whale watching?',
+          answer: 'Yes! Family-friendly activity. Minimum age usually 3-5 years. Large boats better for young kids (more stable, bathrooms!). Pangas for older kids/teens. Educational and exciting! 3-4 hours manageable for most kids. Bring snacks!',
+        },
+        {
+          question: 'What else do you see besides whales?',
+          answer: 'Spinner dolphins (often swim with boats!), bottlenose dolphins, manta rays, sea turtles, seabirds! Banderas Bay rich with marine life. Even without whales, tours see dolphins usually. Incredible biodiversity!',
+        },
+        {
+          question: 'Should I book whale tour in advance?',
+          answer: 'YES for January-February (peak season) - tours sell out! December and March: Book few days ahead. Popular tours fill up. Morning tours most sought-after. Book reputable operators online for best boats and guides. Worth planning ahead!',
+        },
+      ],
+    },
+
+    'adventure-tours': {
+      title: 'Puerto Vallarta Adventure Tours',
+      subtitle: 'Experience zip-lining, jungle expeditions, and Sierra Madre adventures!',
+      categoryName: 'Adventure Tours',
+      
+      stats: {
+        toursAvailable: 76,
+        priceFrom: 75,
+        duration: '4-8 hours',
+      },
+
+      introduction: `Discover Sierra Madre mountains and jungle adventures around Puerto Vallarta! Adventure tours explore canopy zip-lining through tropical forest, ATV rides to waterfalls, horseback riding in mountains, river rapids, jungle hiking, and adrenaline parks. Visit destinations like Canopy River (longest zip-line circuit!), Las Caletas (hidden beach eco-adventure!), Sierra Madre foothills, El Eden waterfall (Predator movie location!), and remote villages. Tours combine multiple activities - zip-lining, waterfall rappelling, tequila tasting, authentic lunch, and cultural experiences. Learn about tropical ecology, local communities, and sustainable adventure tourism. It's mountains meet ocean!`,
+
+      seo: {
+        title: 'Puerto Vallarta Adventure Tours 2025 - Zip-Lining, ATVs & Jungle Expeditions',
+        description: 'Experience PV adventure! Zip-lining, jungle tours, and Sierra Madre excitement!',
+        keywords: 'Puerto Vallarta adventure tours, PV zip-lining, ATV tours, jungle tours, Sierra Madre',
+      },
+
+      whyChoose: [
+        {
+          icon: 'Star',
+          title: 'Canopy Zip-Lining',
+          description: 'Soar through jungle canopy with ocean views!',
+        },
+        {
+          icon: 'Heart',
+          title: 'Sierra Madre Mountains',
+          description: 'Dramatic backdrop perfect for adventures!',
+        },
+        {
+          icon: 'Waves',
+          title: 'Waterfall Swimming',
+          description: 'Hidden waterfalls and jungle pools - refreshing!',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Eco-Adventures',
+          description: 'Sustainable tours supporting local communities!',
+        },
+      ],
+
+      tourTypes: [
+        {
+          icon: 'Star',
+          title: 'Canopy River Zip-Line',
+          description: 'Longest zip-line circuit with multiple platforms.',
+          features: [
+            '5-6 hours',
+            '11 zip-lines',
+            'Mule ride',
+            'Lunch',
+            'Comprehensive',
+          ],
+        },
+        {
+          icon: 'Heart',
+          title: 'ATV & Waterfall',
+          description: 'Ride ATVs to El Eden waterfall for swimming.',
+          features: [
+            '4-5 hours',
+            'ATV riding',
+            'Waterfall swim',
+            'Jungle',
+            'Exciting',
+          ],
+        },
+        {
+          icon: 'MapPin',
+          title: 'Las Caletas Eco-Adventure',
+          description: 'Hidden beach accessible by boat with activities.',
+          features: [
+            'Full day',
+            'Beach paradise',
+            'Multiple activities',
+            'Lunch',
+            'Exclusive',
+          ],
+        },
+        {
+          icon: 'Users',
+          title: 'Horseback to Waterfall',
+          description: 'Ride horses through jungle to waterfalls.',
+          features: [
+            '4 hours',
+            'Horseback',
+            'Waterfall',
+            'Scenic',
+            'Authentic',
+          ],
+        },
+      ],
+
+      whatToExpect: {
+        title: 'What to Expect on Your Puerto Vallarta Adventure Tours',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours: 4-8 hours with transport. Zip-line circuits: 2-3 hours activity.',
+          },
+          {
+            icon: 'Star',
+            title: 'Jungle Zip-Lining',
+            description: 'Multi-platform zip-lines with ocean and mountain views!',
+          },
+          {
+            icon: 'Heart',
+            title: 'El Eden Waterfall',
+            description: 'Swim where Predator filmed - beautiful jungle waterfall!',
+          },
+          {
+            icon: 'Waves',
+            title: 'ATV Riding',
+            description: 'Muddy jungle trails through Sierra Madre foothills!',
+          },
+          {
+            icon: 'Camera',
+            title: 'Mountain Views',
+            description: 'Sierra Madre backdrop with Pacific Ocean vistas!',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Local Villages',
+            description: 'Visit traditional communities and experience culture.',
+          },
+        ],
+      },
+
+      expertTips: [
+        'Canopy River ($120) best value - 11 zip-lines, mule ride, lunch, full experience.',
+        'El Eden waterfall swimming refreshing after ATV ride - bring swimsuit!',
+        'Wear closed-toe water shoes (required for most activities).',
+        'Bring change of clothes - you\'ll get wet and muddy!',
+        'GoPro or waterproof camera essential for zip-lining!',
+        'Tours include hotel pickup (30-45 min to mountains).',
+        'Morning tours cooler for jungle activities.',
+        'Weight limits (usually 250-280 lbs) for zip-lines - confirm beforehand.',
+      ],
+
+      faqs: [
+        {
+          question: 'What is Canopy River?',
+          answer: 'Canopy River is Puerto Vallarta\'s premier zip-line adventure - 11 lines through jungle canopy, mule ride up mountain, waterfall swim, buffet lunch! $120-140. Full morning/afternoon. Thrilling and scenic. Most popular adventure tour in PV!',
+        },
+        {
+          question: 'Are adventure tours safe?',
+          answer: 'Very safe! Professional operators, safety gear, certified guides, insurance included. Millions participate safely. Follow instructions, disclose health conditions. Activities have inherent risks but well-managed. Weight limits enforced. Puerto Vallarta has excellent safety record!',
+        },
+        {
+          question: 'Can kids do adventure tours?',
+          answer: 'Yes with restrictions! Zip-lining: Usually 6+ years, 60+ lbs. ATV: 8+ (passenger), 16+ (driver). Horseback: 6+ years. Check specific requirements. Many family options. Younger kids: Stick to mild activities. Tours accommodate families!',
+        },
+        {
+          question: 'How much do adventure tours cost?',
+          answer: 'Canopy River: $120-140. ATV tours: $75-110. Horseback: $70-95. Las Caletas: $140-160. Multi-activity combos: $100-180. Includes transport, equipment, lunch usually. Worth the investment for unique experiences!',
+        },
+        {
+          question: 'What is Las Caletas?',
+          answer: 'Las Caletas is hidden beach cove accessible only by boat - private eco-park with zip-lining, kayaking, snorkeling, beach time, buffet lunch! $140-160. Full day. Former retreat of film director John Huston. Pristine and less touristy. Excellent for families!',
+        },
+        {
+          question: 'Do I need to be fit?',
+          answer: 'Moderate fitness sufficient! Zip-lining not strenuous (harnesses support). ATV/horseback manageable. Some hiking involved. Weight limits: 250-280 lbs typically. Inform of health conditions. Most adventures accessible to average fitness. Not extreme athletics!',
+        },
+        {
+          question: 'What should I wear?',
+          answer: 'Swimsuit (underneath), athletic clothes, closed-toe water shoes (required!), hat, sunglasses. Leave valuables at hotel. Bring change of dry clothes. Lockers provided. Wear clothes you don\'t mind getting wet/muddy!',
+        },
+        {
+          question: 'When is the best time for adventure tours?',
+          answer: 'Year-round! Dry season (Nov-April) less muddy, better for ATVs. Summer hotter but fine with waterfall swims. Morning tours (8-9 AM) cooler. Zip-lines run rain or shine. Book ahead for weekends and peak season!',
+        },
+      ],
+    },
+  },
 };
 
