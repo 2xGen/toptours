@@ -21994,7 +21994,7 @@ export const categoryGuidesNorthAmerica = {
             icon: 'BookOpen',
             title: 'Post-Processing',
             description: 'Learn editing techniques to enhance red rock photos!',
-          ],
+          },
         ],
       },
 
