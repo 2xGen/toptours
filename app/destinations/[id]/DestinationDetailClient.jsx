@@ -968,7 +968,15 @@ export default function DestinationDetailClient({ destination }) {
 
       {/* Tour Details Modal */}
       {isTourModalOpen && selectedTour && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 overflow-y-auto">
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 overflow-y-auto"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setIsTourModalOpen(false);
+              setSelectedTour(null);
+            }
+          }}
+        >
           <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
             <button 
               onClick={() => {
