@@ -10,6 +10,17 @@
       "source": "/blog/:path*",
       "destination": "/travel-guides/:path*",
       "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://toptours.ai/$1",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "blog.toptours.ai"
+        }
+      ]
     }
   ],
   "headers": [
