@@ -15,7 +15,16 @@ import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { destinations } from '../../../../../src/data/destinationsData';
 import { travelGuides } from '../../../../../src/data/travelGuidesData';
-import { categoryGuides } from '../guidesData';
+import { categoryGuides as categoryGuidesBase } from '../guidesData';
+import { categoryGuidesNorthAmerica } from '../guidesData-north-america';
+import { categoryGuidesAfrica } from '../guidesData-africa';
+
+// Merge all regional guide files
+const categoryGuides = {
+  ...categoryGuidesBase,
+  ...categoryGuidesNorthAmerica,
+  ...categoryGuidesAfrica,
+};
 
 export default function CategoryGuideClient({ destinationId, categorySlug, guideData }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);

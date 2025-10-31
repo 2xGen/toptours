@@ -8705,12 +8705,12 @@ export const destinations = [
     heroDescription: 'Welcome to Cape Town, where dramatic mountains meet the Atlantic Ocean and rich cultural heritage creates an unforgettable experience. From ascending Table Mountain to exploring the Cape of Good Hope, from wine tasting in Stellenbosch to discovering the vibrant Waterfront, this cosmopolitan city offers the perfect blend of natural beauty and urban sophistication. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//cape%20Town.jpg',
     tourCategories: [
-      'City Tours',
-      'Table Mountain Tours',
-      'Wine Tours',
-      'Cape Peninsula Tours',
-      'Cultural Tours',
-      'Adventure Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Table Mountain Tours', hasGuide: true },
+      { name: 'Wine Tours', hasGuide: true },
+      { name: 'Cape Peninsula Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Cape Town Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8761,12 +8761,12 @@ export const destinations = [
     heroDescription: 'Welcome to Johannesburg, where urban sophistication meets African heritage and a vibrant arts scene creates an exciting cultural experience. From exploring the Apartheid Museum to discovering the trendy Maboneng Precinct, from visiting Soweto to experiencing the city\'s thriving food scene, this dynamic metropolis offers the perfect blend of history and modernity. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Johannesburg.webp',
     tourCategories: [
-      'City Tours',
-      'Historical Tours',
-      'Cultural Tours',
-      'Soweto Tours',
-      'Food Tours',
-      'Art Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Soweto Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Art Tours', hasGuide: true }
     ],
     seo: {
       title: 'Johannesburg Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8817,12 +8817,12 @@ export const destinations = [
     heroDescription: 'Welcome to Kruger National Park, where the African wilderness comes alive with incredible wildlife encounters and breathtaking landscapes. From spotting the Big Five on game drives to experiencing the magic of dawn and dusk in the bush, from guided walking safaris to luxury lodge experiences, this iconic park offers the ultimate African safari adventure. Let our AI-powered planner help you discover the best wildlife experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Kruger%20National%20Park.jpg',
     tourCategories: [
-      'Safari Tours',
-      'Game Drives',
-      'Walking Safaris',
-      'Wildlife Photography Tours',
-      'Bird Watching Tours',
-      'Luxury Lodge Experiences'
+      { name: 'Safari Tours', hasGuide: true },
+      { name: 'Game Drives', hasGuide: true },
+      { name: 'Walking Safaris', hasGuide: true },
+      { name: 'Wildlife Photography Tours', hasGuide: true },
+      { name: 'Bird Watching Tours', hasGuide: true },
+      { name: 'Luxury Lodge Experiences', hasGuide: true }
     ],
     seo: {
       title: 'Kruger National Park Tours & Safaris - Top-Rated Wildlife Adventures',
@@ -8873,12 +8873,12 @@ export const destinations = [
     heroDescription: 'Welcome to Cairo, where ancient wonders meet modern life and thousands of years of history come alive. From exploring the iconic Pyramids of Giza to discovering the treasures of the Egyptian Museum, from wandering through the historic Islamic Quarter to experiencing the bustling Khan el-Khalili bazaar, this fascinating city offers the perfect blend of ancient heritage and contemporary culture. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Cairo.jpg',
     tourCategories: [
-      'Pyramid Tours',
-      'Museum Tours',
-      'Islamic Cairo Tours',
-      'Cultural Tours',
-      'Food Tours',
-      'Historical Tours'
+      { name: 'Pyramid Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Islamic Cairo Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true }
     ],
     seo: {
       title: 'Cairo Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8929,12 +8929,12 @@ export const destinations = [
     heroDescription: 'Welcome to Luxor, where the grandeur of ancient Egypt comes alive through magnificent temples and royal tombs that tell the story of pharaohs and gods. From exploring the awe-inspiring Karnak Temple to discovering the Valley of the Kings, from cruising the Nile to experiencing the magic of Luxor Temple at sunset, this ancient city offers the most authentic glimpse into Egypt\'s glorious past. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Luxor.jpg',
     tourCategories: [
-      'Temple Tours',
-      'Valley of the Kings Tours',
-      'Nile Cruises',
-      'Archaeological Tours',
-      'Cultural Tours',
-      'Sunset Tours'
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'Valley of the Kings Tours', hasGuide: true },
+      { name: 'Nile Cruises', hasGuide: true },
+      { name: 'Archaeological Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Sunset Tours', hasGuide: true }
     ],
     seo: {
       title: 'Luxor Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8985,12 +8985,12 @@ export const destinations = [
     heroDescription: 'Welcome to Aswan, where the Nile River flows serenely past ancient temples and Nubian culture thrives in this peaceful southern city. From exploring the magnificent Abu Simbel temples to cruising the Nile on traditional feluccas, from discovering the beautiful Philae Temple to experiencing authentic Nubian hospitality, this charming city offers a perfect blend of ancient wonders and cultural authenticity. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Aswan.jpg',
     tourCategories: [
-      'Temple Tours',
-      'Nile Cruises',
-      'Nubian Village Tours',
-      'Cultural Tours',
-      'Felucca Tours',
-      'Archaeological Tours'
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'Nile Cruises', hasGuide: true },
+      { name: 'Nubian Village Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Felucca Tours', hasGuide: true },
+      { name: 'Archaeological Tours', hasGuide: true }
     ],
     seo: {
       title: 'Aswan Tours & Excursions - Top-Rated Activities & Adventures',
@@ -9040,12 +9040,12 @@ export const destinations = [
     heroDescription: 'Welcome to Marrakech, where ancient medinas meet modern luxury and the magic of Morocco comes alive in every corner. From exploring the labyrinthine souks of the Medina to discovering the stunning Bahia Palace, from experiencing the vibrant Djemaa el-Fna square to relaxing in traditional hammams, this enchanting city offers the perfect blend of tradition and sophistication. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Marrakech.webp',
     tourCategories: [
-      'Medina Tours',
-      'Palace Tours',
-      'Souk Tours',
-      'Cultural Tours',
-      'Food Tours',
-      'Desert Tours'
+      { name: 'Medina Tours', hasGuide: true },
+      { name: 'Palace Tours', hasGuide: true },
+      { name: 'Souk Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Desert Tours', hasGuide: true }
     ],
     seo: {
       title: 'Marrakech Tours & Excursions - Top-Rated Activities & Adventures',
@@ -9095,12 +9095,12 @@ export const destinations = [
     heroDescription: 'Welcome to Fes, where medieval architecture meets living tradition and the world\'s largest car-free urban area transports you back in time. From exploring the labyrinthine Fes el-Bali medina to discovering the historic Al-Qarawiyyin University, from witnessing traditional leather tanning to experiencing authentic Moroccan cuisine, this ancient city offers the most authentic glimpse into Morocco\'s rich heritage. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Fes.webp',
     tourCategories: [
-      'Medina Tours',
-      'Historical Tours',
-      'Craft Tours',
-      'Cultural Tours',
-      'Food Tours',
-      'Spiritual Tours'
+      { name: 'Medina Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Craft Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Spiritual Tours', hasGuide: true }
     ],
     seo: {
       title: 'Fes Tours & Excursions - Top-Rated Activities & Adventures',
@@ -9150,12 +9150,12 @@ export const destinations = [
     heroDescription: 'Welcome to Casablanca, where modern sophistication meets coastal charm and the spirit of the classic film comes alive in this vibrant metropolis. From exploring the magnificent Hassan II Mosque to strolling along the Corniche, from discovering the Art Deco architecture to experiencing the city\'s thriving food scene, this cosmopolitan city offers the perfect blend of tradition and modernity. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Casablanca.webp',
     tourCategories: [
-      'City Tours',
-      'Mosque Tours',
-      'Architecture Tours',
-      'Coastal Tours',
-      'Food Tours',
-      'Cultural Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Mosque Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true },
+      { name: 'Coastal Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true }
     ],
     seo: {
       title: 'Casablanca Tours & Excursions - Top-Rated Activities & Adventures',
@@ -9206,12 +9206,12 @@ export const destinations = [
     heroDescription: 'Welcome to Nairobi, where urban sophistication meets African wilderness and the spirit of adventure comes alive in this dynamic capital. From exploring the unique Nairobi National Park to discovering the Giraffe Centre, from experiencing the vibrant Maasai Market to learning about conservation at the David Sheldrick Wildlife Trust, this fascinating city offers the perfect blend of wildlife encounters and urban culture. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Nairobi.webp',
     tourCategories: [
-      'Wildlife Tours',
-      'City Tours',
-      'Cultural Tours',
-      'Conservation Tours',
-      'Food Tours',
-      'Adventure Tours'
+      { name: 'Wildlife Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Conservation Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Nairobi Tours & Excursions - Top-Rated Activities & Adventures',
@@ -9262,12 +9262,12 @@ export const destinations = [
     heroDescription: 'Welcome to Maasai Mara, where the African savanna comes alive with incredible wildlife encounters and the annual Great Migration creates one of nature\'s most spectacular shows. From witnessing the dramatic river crossings to spotting the Big Five on game drives, from experiencing traditional Maasai culture to staying in luxury tented camps, this iconic reserve offers the ultimate African safari experience. Let our AI-powered planner help you discover the best wildlife experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Maasai%20Mara.jpeg',
     tourCategories: [
-      'Safari Tours',
-      'Great Migration Tours',
-      'Game Drives',
-      'Cultural Tours',
-      'Wildlife Photography Tours',
-      'Luxury Camp Experiences'
+      { name: 'Safari Tours', hasGuide: true },
+      { name: 'Great Migration Tours', hasGuide: true },
+      { name: 'Game Drives', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Wildlife Photography Tours', hasGuide: true },
+      { name: 'Luxury Camp Experiences', hasGuide: true }
     ],
     seo: {
       title: 'Maasai Mara Tours & Safaris - Top-Rated Wildlife Adventures',
@@ -9318,12 +9318,12 @@ export const destinations = [
     heroDescription: 'Welcome to Mombasa, where pristine Indian Ocean beaches meet centuries of Swahili heritage and the warm coastal breeze carries the scent of spices and adventure. From relaxing on white-sand beaches to exploring the historic Old Town, from discovering Fort Jesus to experiencing traditional Swahili cuisine, this tropical paradise offers the perfect blend of beach relaxation and cultural discovery. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Mombasa.jpg',
     tourCategories: [
-      'Beach Tours',
-      'Historical Tours',
-      'Cultural Tours',
-      'Water Sports Tours',
-      'Food Tours',
-      'Island Tours'
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Water Sports Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true }
     ],
     seo: {
       title: 'Mombasa Tours & Excursions - Top-Rated Activities & Adventures',
@@ -9373,12 +9373,12 @@ export const destinations = [
     heroDescription: 'Welcome to Arusha, where the majestic Mount Meru provides a stunning backdrop and the spirit of African adventure comes alive in this vibrant safari gateway. From exploring the beautiful Arusha National Park to discovering the city\'s coffee culture, from visiting the Cultural Heritage Centre to experiencing traditional Tanzanian hospitality, this charming city offers the perfect starting point for unforgettable safari adventures. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Arusha.jpg',
     tourCategories: [
-      'Safari Gateway Tours',
-      'National Park Tours',
-      'Cultural Tours',
-      'Coffee Tours',
-      'Mountain Tours',
-      'City Tours'
+      { name: 'Safari Gateway Tours', hasGuide: true },
+      { name: 'National Park Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Coffee Tours', hasGuide: true },
+      { name: 'Mountain Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true }
     ],
     seo: {
       title: 'Arusha Tours & Excursions - Top-Rated Activities & Adventures',
@@ -9428,12 +9428,12 @@ export const destinations = [
     heroDescription: 'Welcome to Zanzibar, where the scent of spices fills the air and pristine Indian Ocean beaches meet centuries of Swahili culture. From exploring the historic Stone Town to relaxing on white-sand beaches, from discovering spice plantations to experiencing traditional dhow sailing, this enchanting island offers the perfect blend of history, culture, and tropical beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Zanzibar.jpg',
     tourCategories: [
-      'Stone Town Tours',
-      'Beach Tours',
-      'Spice Tours',
-      'Cultural Tours',
-      'Dhow Tours',
-      'Water Sports Tours'
+      { name: 'Stone Town Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Spice Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Dhow Tours', hasGuide: true },
+      { name: 'Water Sports Tours', hasGuide: true }
     ],
     seo: {
       title: 'Zanzibar Tours & Excursions - Top-Rated Activities & Adventures',
@@ -9483,12 +9483,12 @@ export const destinations = [
     heroDescription: 'Welcome to Swakopmund, where German colonial architecture meets the vast Namib Desert and the Atlantic Ocean creates a unique coastal atmosphere. From exploring the charming historic center to embarking on desert adventures, from discovering the nearby Skeleton Coast to experiencing traditional Namibian hospitality, this coastal gem offers the perfect blend of European charm and African adventure. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Swakopmund.jpg',
     tourCategories: [
-      'Desert Tours',
-      'City Tours',
-      'Adventure Tours',
-      'Cultural Tours',
-      'Coastal Tours',
-      'Historical Tours'
+      { name: 'Desert Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Coastal Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true }
     ],
     seo: {
       title: 'Swakopmund Tours & Excursions - Top-Rated Activities & Adventures',
@@ -9538,12 +9538,12 @@ export const destinations = [
     heroDescription: 'Welcome to Etosha National Park, where the vast salt pan creates a surreal landscape and incredible wildlife encounters await around every waterhole. From spotting the Big Five on game drives to witnessing the dramatic salt pan at sunset, from staying in comfortable lodges to experiencing the magic of African wildlife, this iconic park offers the ultimate Namibian safari experience. Let our AI-powered planner help you discover the best wildlife experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Etosha%20National%20Park.jpeg',
     tourCategories: [
-      'Safari Tours',
-      'Game Drives',
-      'Wildlife Photography Tours',
-      'Bird Watching Tours',
-      'Lodge Experiences',
-      'Sunset Tours'
+      { name: 'Safari Tours', hasGuide: true },
+      { name: 'Game Drives', hasGuide: true },
+      { name: 'Wildlife Photography Tours', hasGuide: true },
+      { name: 'Bird Watching Tours', hasGuide: true },
+      { name: 'Lodge Experiences', hasGuide: true },
+      { name: 'Sunset Tours', hasGuide: true }
     ],
     seo: {
       title: 'Etosha National Park Tours & Safaris - Top-Rated Wildlife Adventures',
@@ -9593,12 +9593,12 @@ export const destinations = [
     heroDescription: 'Welcome to Mauritius, where turquoise waters meet pristine white-sand beaches and a melting pot of cultures creates a unique island experience. From relaxing on stunning beaches to exploring the colorful capital of Port Louis, from discovering the Seven Colored Earths to experiencing traditional Creole cuisine, this tropical paradise offers the perfect blend of luxury and authenticity. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Mauritius.jpeg',
     tourCategories: [
-      'Beach Tours',
-      'Island Tours',
-      'Cultural Tours',
-      'Water Sports Tours',
-      'Luxury Resort Experiences',
-      'Adventure Tours'
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Water Sports Tours', hasGuide: true },
+      { name: 'Luxury Resort Experiences', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Mauritius Tours & Excursions - Top-Rated Activities & Adventures',

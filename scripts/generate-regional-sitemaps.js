@@ -22,7 +22,7 @@ const destinations = Array.from(destinationMatches).map(m => ({
 
 // Read guide data files to get all category slugs per destination
 const guidesPath = path.join(__dirname, '../app/destinations/[id]/guides');
-const guidesFiles = ['guidesData.js', 'guidesData-north-america.js'];
+const guidesFiles = ['guidesData.js', 'guidesData-north-america.js', 'guidesData-africa.js'];
 
 // Extract all guides
 const allGuides = {};
@@ -115,6 +115,15 @@ fs.writeFileSync(
   northAmericaXML
 );
 console.log(`✅ Generated sitemap-guides-north-america.xml (${northAmericaDestinations.length} destinations)`);
+
+// Generate Africa sitemap
+const africaDestinations = destinations.filter(d => d.category === 'Africa');
+const africaXML = generateSitemapXML(africaDestinations);
+fs.writeFileSync(
+  path.join(__dirname, '../public/sitemap-guides-africa.xml'),
+  africaXML
+);
+console.log(`✅ Generated sitemap-guides-africa.xml (${africaDestinations.length} destinations)`);
 
 console.log('\n✨ All regional guide sitemaps generated successfully!');
 
