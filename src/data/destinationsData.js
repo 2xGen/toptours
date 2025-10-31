@@ -4399,12 +4399,12 @@ export const destinations = [
     heroDescription: 'Welcome to San José, where colonial architecture meets modern culture and Costa Rican traditions come alive. From the historic National Theater to bustling markets, from coffee plantations to vibrant neighborhoods, this dynamic capital offers the perfect blend of history, culture, and authentic Costa Rican life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//san%20jose%20costa%20rica.webp',
     tourCategories: [
-      'Historic Center Tours',
-      'Coffee Plantation Tours',
-      'Museum Tours',
-      'Food & Culture Tours',
-      'Market Tours',
-      'Architecture Tours'
+      { name: 'Historic Center Tours', hasGuide: true },
+      { name: 'Coffee Plantation Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true }
     ],
     seo: {
       title: 'San José Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4454,12 +4454,12 @@ export const destinations = [
     heroDescription: 'Welcome to La Fortuna, where the majestic Arenal Volcano meets pristine rainforest and endless adventure opportunities. From thrilling zip-lining to relaxing hot springs, from waterfall hikes to wildlife encounters, this adventure paradise offers the perfect blend of excitement, nature, and Costa Rican beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//La%20Fortuna%20(Arenal).jpg',
     tourCategories: [
-      'Arenal Volcano Tours',
-      'Hot Springs Tours',
-      'Adventure Tours',
-      'Wildlife Tours',
-      'Waterfall Tours',
-      'Rainforest Tours'
+      { name: 'Arenal Volcano Tours', hasGuide: true },
+      { name: 'Hot Springs Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Wildlife Tours', hasGuide: true },
+      { name: 'Waterfall Tours', hasGuide: true },
+      { name: 'Rainforest Tours', hasGuide: true }
     ],
     seo: {
       title: 'La Fortuna Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4509,12 +4509,12 @@ export const destinations = [
     heroDescription: 'Welcome to Manuel Antonio, where pristine beaches meet lush rainforest and incredible wildlife encounters await around every corner. From the famous national park to beautiful beaches, from monkey sightings to water activities, this coastal paradise offers the perfect blend of nature, adventure, and tropical relaxation. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Manuel%20Antonio.jpg',
     tourCategories: [
-      'National Park Tours',
-      'Wildlife Tours',
-      'Beach Tours',
-      'Water Activities',
-      'Hiking Tours',
-      'Sunset Tours'
+      { name: 'National Park Tours', hasGuide: true },
+      { name: 'Wildlife Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Water Activities', hasGuide: true },
+      { name: 'Hiking Tours', hasGuide: true },
+      { name: 'Sunset Tours', hasGuide: true }
     ],
     seo: {
       title: 'Manuel Antonio Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4564,12 +4564,12 @@ export const destinations = [
     heroDescription: 'Welcome to Panama City, where modern skyscrapers meet historic Casco Viejo and the iconic Panama Canal connects two oceans. From the impressive skyline to colonial architecture, from canal tours to vibrant nightlife, this dynamic metropolis offers the perfect blend of history, modernity, and Panamanian culture. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Panama%20City.jpg',
     tourCategories: [
-      'Panama Canal Tours',
-      'Casco Viejo Tours',
-      'City Tours',
-      'Food & Culture Tours',
-      'Architecture Tours',
-      'Nightlife Tours'
+      { name: 'Panama Canal Tours', hasGuide: true },
+      { name: 'Casco Viejo Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true },
+      { name: 'Nightlife Tours', hasGuide: true }
     ],
     seo: {
       title: 'Panama City Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4619,12 +4619,12 @@ export const destinations = [
     heroDescription: 'Welcome to Bocas del Toro, where crystal-clear Caribbean waters meet lush tropical islands and laid-back island culture. From pristine beaches to vibrant coral reefs, from water activities to island hopping, this Caribbean paradise offers the perfect blend of adventure, relaxation, and tropical beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Bocas%20del%20Toro.jpg',
     tourCategories: [
-      'Island Hopping Tours',
-      'Snorkeling Tours',
-      'Beach Tours',
-      'Water Activities',
-      'Wildlife Tours',
-      'Sunset Tours'
+      { name: 'Island Hopping Tours', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Water Activities', hasGuide: true },
+      { name: 'Wildlife Tours', hasGuide: true },
+      { name: 'Sunset Tours', hasGuide: true }
     ],
     seo: {
       title: 'Bocas del Toro Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4674,12 +4674,12 @@ export const destinations = [
     heroDescription: 'Welcome to Cartagena, where colorful colonial architecture meets Caribbean beaches and centuries of history come alive. From the walled Old Town to beautiful beaches, from vibrant plazas to cultural experiences, this historic gem offers the perfect blend of history, culture, and tropical beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Cartagena.avif',
     tourCategories: [
-      'Old Town Tours',
-      'Historic Tours',
-      'Beach Tours',
-      'Food & Culture Tours',
-      'Architecture Tours',
-      'Sunset Tours'
+      { name: 'Old Town Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true },
+      { name: 'Sunset Tours', hasGuide: true }
     ],
     seo: {
       title: 'Cartagena Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4729,12 +4729,12 @@ export const destinations = [
     heroDescription: 'Welcome to Medellín, where innovation meets tradition and the spirit of transformation creates a vibrant urban experience. From the famous flower festival to modern architecture, from cable car views to cultural experiences, this dynamic city offers the perfect blend of progress, culture, and Colombian warmth. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Medellin.jpeg',
     tourCategories: [
-      'City Tours',
-      'Cable Car Tours',
-      'Food & Culture Tours',
-      'Art Tours',
-      'Neighborhood Tours',
-      'Nightlife Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Cable Car Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Art Tours', hasGuide: true },
+      { name: 'Neighborhood Tours', hasGuide: true },
+      { name: 'Nightlife Tours', hasGuide: true }
     ],
     seo: {
       title: 'Medellín Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4784,12 +4784,12 @@ export const destinations = [
     heroDescription: 'Welcome to Bogotá, where Andean mountains meet urban sophistication and Colombian culture thrives in every neighborhood. From the historic La Candelaria to modern districts, from world-class museums to vibrant street art, this dynamic capital offers the perfect blend of history, culture, and modern Colombian life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Bogota.webp',
     tourCategories: [
-      'La Candelaria Tours',
-      'Museum Tours',
-      'Food & Culture Tours',
-      'Street Art Tours',
-      'Mountain Tours',
-      'Nightlife Tours'
+      { name: 'La Candelaria Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Street Art Tours', hasGuide: true },
+      { name: 'Mountain Tours', hasGuide: true },
+      { name: 'Nightlife Tours', hasGuide: true }
     ],
     seo: {
       title: 'Bogotá Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4840,12 +4840,12 @@ export const destinations = [
     heroDescription: 'Welcome to Lima, where world-class cuisine meets colonial architecture and Peruvian culture thrives along the Pacific coast. From the historic center to modern districts, from ceviche to pisco sours, from museums to coastal views, this gastronomic capital offers the perfect blend of history, culture, and culinary excellence. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Lima.jpg',
     tourCategories: [
-      'Historic Center Tours',
-      'Food & Culinary Tours',
-      'Museum Tours',
-      'Coastal Tours',
-      'Architecture Tours',
-      'Nightlife Tours'
+      { name: 'Historic Center Tours', hasGuide: true },
+      { name: 'Food & Culinary Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Coastal Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true },
+      { name: 'Nightlife Tours', hasGuide: true }
     ],
     seo: {
       title: 'Lima Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4896,12 +4896,12 @@ export const destinations = [
     heroDescription: 'Welcome to Cusco, where ancient Inca stonework meets Spanish colonial architecture and Andean culture thrives in the highlands. From the historic Plaza de Armas to ancient ruins, from traditional markets to cultural experiences, this former Inca capital offers the perfect blend of history, culture, and Andean mysticism. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Cusco.jpg',
     tourCategories: [
-      'Historic Center Tours',
-      'Inca Ruins Tours',
-      'Sacred Valley Tours',
-      'Cultural Tours',
-      'Market Tours',
-      'Mountain Tours'
+      { name: 'Historic Center Tours', hasGuide: true },
+      { name: 'Inca Ruins Tours', hasGuide: true },
+      { name: 'Sacred Valley Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true },
+      { name: 'Mountain Tours', hasGuide: true }
     ],
     seo: {
       title: 'Cusco Tours & Excursions - Top-Rated Activities & Adventures',
@@ -4952,12 +4952,12 @@ export const destinations = [
     heroDescription: 'Welcome to Machu Picchu, where ancient Inca engineering meets breathtaking Andean landscapes and centuries of mystery surround this lost city in the clouds. From the iconic citadel to surrounding ruins, from mountain vistas to cultural insights, this world wonder offers the perfect blend of history, adventure, and spiritual connection. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Machu%20Picchu.jpg',
     tourCategories: [
-      'Citadel Tours',
-      'Inca Trail Tours',
-      'Mountain Tours',
-      'Cultural Tours',
-      'Photography Tours',
-      'Sunrise Tours'
+      { name: 'Citadel Tours', hasGuide: true },
+      { name: 'Inca Trail Tours', hasGuide: true },
+      { name: 'Mountain Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Photography Tours', hasGuide: true },
+      { name: 'Sunrise Tours', hasGuide: true }
     ],
     seo: {
       title: 'Machu Picchu Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5008,12 +5008,12 @@ export const destinations = [
     heroDescription: 'Welcome to Rio de Janeiro, where stunning beaches meet dramatic mountains and Brazilian culture comes alive with samba rhythms and carnival spirit. From the iconic Christ the Redeemer to beautiful beaches, from vibrant neighborhoods to cultural experiences, this marvelous city offers the perfect blend of natural beauty, culture, and Brazilian joie de vivre. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Rio%20de%20Janeiro.jpeg',
     tourCategories: [
-      'Christ the Redeemer Tours',
-      'Beach Tours',
-      'Sugarloaf Mountain Tours',
-      'Cultural Tours',
-      'Favela Tours',
-      'Carnival Tours'
+      { name: 'Christ the Redeemer Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Sugarloaf Mountain Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Favela Tours', hasGuide: true },
+      { name: 'Carnival Tours', hasGuide: true }
     ],
     seo: {
       title: 'Rio de Janeiro Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5063,12 +5063,12 @@ export const destinations = [
     heroDescription: 'Welcome to São Paulo, where skyscrapers meet cultural diversity and Brazilian innovation thrives in this massive metropolis. From world-class museums to diverse neighborhoods, from excellent cuisine to vibrant nightlife, from business districts to cultural experiences, this dynamic city offers the perfect blend of urban sophistication, culture, and Brazilian energy. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Sao%20Paulo.jpg',
     tourCategories: [
-      'City Tours',
-      'Museum Tours',
-      'Food & Culture Tours',
-      'Architecture Tours',
-      'Neighborhood Tours',
-      'Nightlife Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Food & Culture Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true },
+      { name: 'Neighborhood Tours', hasGuide: true },
+      { name: 'Nightlife Tours', hasGuide: true }
     ],
     seo: {
       title: 'São Paulo Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5118,12 +5118,12 @@ export const destinations = [
     heroDescription: 'Welcome to Salvador, where African heritage meets Portuguese colonial architecture and Brazilian culture thrives in the historic Pelourinho. From colorful colonial buildings to vibrant capoeira performances, from traditional Bahian cuisine to cultural experiences, this historic gem offers the perfect blend of history, culture, and Afro-Brazilian traditions. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Salvador.jpeg',
     tourCategories: [
-      'Pelourinho Tours',
-      'Historic Tours',
-      'Cultural Tours',
-      'Food & Culinary Tours',
-      'Capoeira Tours',
-      'Beach Tours'
+      { name: 'Pelourinho Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food & Culinary Tours', hasGuide: true },
+      { name: 'Capoeira Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true }
     ],
     seo: {
       title: 'Salvador Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5173,12 +5173,12 @@ export const destinations = [
     heroDescription: 'Welcome to Buenos Aires, where tango rhythms echo through historic streets and European elegance meets Latin American passion. From the colorful La Boca to elegant Recoleta, from passionate tango shows to world-class dining, this cosmopolitan capital offers the perfect blend of culture, history, and Argentine charm. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Buenos%20Aires.webp',
     tourCategories: [
-      'Tango Tours',
-      'Historic Tours',
-      'Food & Wine Tours',
-      'Cultural Tours',
-      'Architecture Tours',
-      'Neighborhood Tours'
+      { name: 'Tango Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Food & Wine Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true },
+      { name: 'Neighborhood Tours', hasGuide: true }
     ],
     seo: {
       title: 'Buenos Aires Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5228,12 +5228,12 @@ export const destinations = [
     heroDescription: 'Welcome to Mendoza, where world-class Malbec wines meet stunning Andean landscapes and endless outdoor adventures. From prestigious wineries to mountain excursions, from wine tastings to adventure sports, this wine paradise offers the perfect blend of luxury, nature, and Argentine hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Mendoza.jpeg',
     tourCategories: [
-      'Wine Tours',
-      'Vineyard Tours',
-      'Adventure Tours',
-      'Mountain Tours',
-      'Food & Wine Tours',
-      'Scenic Tours'
+      { name: 'Wine Tours', hasGuide: true },
+      { name: 'Vineyard Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Mountain Tours', hasGuide: true },
+      { name: 'Food & Wine Tours', hasGuide: true },
+      { name: 'Scenic Tours', hasGuide: true }
     ],
     seo: {
       title: 'Mendoza Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5283,12 +5283,12 @@ export const destinations = [
     heroDescription: 'Welcome to Bariloche, where snow-capped peaks meet crystal-clear lakes and endless outdoor adventures await in the heart of Patagonia. From world-class skiing to scenic lake cruises, from chocolate shops to mountain hiking, this alpine paradise offers the perfect blend of adventure, nature, and Swiss-inspired charm. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Bariloche.jpg',
     tourCategories: [
-      'Ski Tours',
-      'Lake Tours',
-      'Adventure Tours',
-      'Mountain Tours',
-      'Scenic Tours',
-      'Chocolate Tours'
+      { name: 'Ski Tours', hasGuide: true },
+      { name: 'Lake Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Mountain Tours', hasGuide: true },
+      { name: 'Scenic Tours', hasGuide: true },
+      { name: 'Chocolate Tours', hasGuide: true }
     ],
     seo: {
       title: 'Bariloche Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5338,12 +5338,12 @@ export const destinations = [
     heroDescription: 'Welcome to Santiago, where modern skyscrapers meet historic neighborhoods and the majestic Andes provide a stunning backdrop to this dynamic capital. From the historic Plaza de Armas to trendy Bellavista, from wine tours to mountain excursions, this cosmopolitan city offers the perfect blend of history, culture, and Chilean hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Santiago.webp',
     tourCategories: [
-      'City Tours',
-      'Wine Tours',
-      'Mountain Tours',
-      'Cultural Tours',
-      'Food Tours',
-      'Historic Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Wine Tours', hasGuide: true },
+      { name: 'Mountain Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true }
     ],
     seo: {
       title: 'Santiago Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5393,12 +5393,12 @@ export const destinations = [
     heroDescription: 'Welcome to Patagonia, where jagged peaks meet pristine glaciers and endless wilderness adventures await in one of the world\'s most spectacular regions. From the iconic Torres del Paine to the Perito Moreno Glacier, from epic hiking trails to wildlife encounters, this wilderness paradise offers the perfect blend of adventure, nature, and untouched beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Patagonia.jpeg',
     tourCategories: [
-      'Hiking Tours',
-      'Glacier Tours',
-      'Wildlife Tours',
-      'Adventure Tours',
-      'Scenic Tours',
-      'Photography Tours'
+      { name: 'Hiking Tours', hasGuide: true },
+      { name: 'Glacier Tours', hasGuide: true },
+      { name: 'Wildlife Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Scenic Tours', hasGuide: true },
+      { name: 'Photography Tours', hasGuide: true }
     ],
     seo: {
       title: 'Patagonia Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5448,12 +5448,12 @@ export const destinations = [
     heroDescription: 'Welcome to Quito, where colonial architecture meets Andean culture in the world\'s highest capital city. From the UNESCO World Heritage Old Town to the Equator line, from historic churches to vibrant markets, this Andean treasure offers the perfect blend of history, culture, and Ecuadorian traditions. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Quito.jpeg',
     tourCategories: [
-      'Historic Tours',
-      'Cultural Tours',
-      'Equator Tours',
-      'Church Tours',
-      'Market Tours',
-      'Architecture Tours'
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Equator Tours', hasGuide: true },
+      { name: 'Church Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Quito Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5503,12 +5503,12 @@ export const destinations = [
     heroDescription: 'Welcome to the Galápagos Islands, where Charles Darwin\'s theory of evolution comes to life among unique wildlife and pristine ecosystems. From giant tortoises to marine iguanas, from snorkeling with sea lions to hiking volcanic landscapes, this evolutionary wonder offers the perfect blend of wildlife, adventure, and natural history. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Galapagos%20Islands.jpeg',
     tourCategories: [
-      'Wildlife Tours',
-      'Snorkeling Tours',
-      'Island Tours',
-      'Cruise Tours',
-      'Adventure Tours',
-      'Photography Tours'
+      { name: 'Wildlife Tours', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Cruise Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Photography Tours', hasGuide: true }
     ],
     seo: {
       title: 'Galápagos Islands Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5558,12 +5558,12 @@ export const destinations = [
     heroDescription: 'Welcome to Belize City, where Caribbean culture meets Central American heritage and historic architecture tells stories of colonial times. From the historic Swing Bridge to vibrant markets, from cultural experiences to gateway adventures, this coastal city offers the perfect blend of history, culture, and Belizean hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Belize%20City.webp',
     tourCategories: [
-      'Historic Tours',
-      'Cultural Tours',
-      'Gateway Tours',
-      'Market Tours',
-      'Architecture Tours',
-      'Food Tours'
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Gateway Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true }
     ],
     seo: {
       title: 'Belize City Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5613,12 +5613,12 @@ export const destinations = [
     heroDescription: 'Welcome to San Pedro, where pristine beaches meet crystal-clear Caribbean waters and laid-back island life creates the perfect tropical escape. From beautiful beaches to water activities, from local culture to island adventures, this beach paradise offers the perfect blend of relaxation, adventure, and Caribbean charm. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//San%20Pedro.jpg',
     tourCategories: [
-      'Beach Tours',
-      'Water Tours',
-      'Island Tours',
-      'Snorkeling Tours',
-      'Adventure Tours',
-      'Cultural Tours'
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Water Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true }
     ],
     seo: {
       title: 'San Pedro Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5668,12 +5668,12 @@ export const destinations = [
     heroDescription: 'Welcome to Antigua, where perfectly preserved colonial architecture meets dramatic volcanic landscapes in this UNESCO World Heritage city. From historic churches to cobblestone streets, from coffee plantations to cultural experiences, this colonial treasure offers the perfect blend of history, culture, and Guatemalan traditions. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Antigua.jpg',
     tourCategories: [
-      'Historic Tours',
-      'Cultural Tours',
-      'Coffee Tours',
-      'Volcano Tours',
-      'Architecture Tours',
-      'Market Tours'
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Coffee Tours', hasGuide: true },
+      { name: 'Volcano Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true }
     ],
     seo: {
       title: 'Antigua Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5723,12 +5723,12 @@ export const destinations = [
     heroDescription: 'Welcome to Lake Atitlán, where three majestic volcanoes frame a pristine highland lake and traditional Mayan villages dot the shores. From scenic boat rides to cultural experiences, from hiking trails to indigenous markets, this highland paradise offers the perfect blend of nature, culture, and Guatemalan traditions. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Lake%20Atitlan.jpeg',
     tourCategories: [
-      'Lake Tours',
-      'Cultural Tours',
-      'Village Tours',
-      'Hiking Tours',
-      'Boat Tours',
-      'Market Tours'
+      { name: 'Lake Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Village Tours', hasGuide: true },
+      { name: 'Hiking Tours', hasGuide: true },
+      { name: 'Boat Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true }
     ],
     seo: {
       title: 'Lake Atitlán Tours & Excursions - Top-Rated Activities & Adventures',
