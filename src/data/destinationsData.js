@@ -5835,12 +5835,12 @@ export const destinations = [
     heroDescription: 'Welcome to Kyoto, where over a thousand years of Japanese history and culture come alive in this former imperial capital. From stunning temples and shrines to traditional tea ceremonies, from beautiful gardens to geisha districts, this cultural treasure offers the perfect blend of tradition, spirituality, and Japanese heritage. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//kyoto.jpeg',
     tourCategories: [
-      'Temple Tours',
-      'Cultural Tours',
-      'Garden Tours',
-      'Tea Ceremony Tours',
-      'Historic Tours',
-      'Photography Tours'
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Garden Tours', hasGuide: true },
+      { name: 'Tea Ceremony Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Photography Tours', hasGuide: true }
     ],
     seo: {
       title: 'Kyoto Tours & Excursions - Top-Rated Activities & Adventures',
@@ -5891,12 +5891,12 @@ export const destinations = [
     heroDescription: 'Welcome to Osaka, where incredible street food meets modern entertainment and the warmest hospitality in Japan. From the famous Dotonbori district to historic Osaka Castle, from takoyaki to okonomiyaki, this food paradise offers the perfect blend of cuisine, culture, and Japanese urban life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Osaka.jpg',
     tourCategories: [
-      'Food Tours',
-      'City Tours',
-      'Cultural Tours',
-      'Castle Tours',
-      'Entertainment Tours',
-      'Shopping Tours'
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Castle Tours', hasGuide: true },
+      { name: 'Entertainment Tours', hasGuide: true },
+      { name: 'Shopping Tours', hasGuide: true }
     ],
     seo: {
       title: 'Osaka Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6168,12 +6168,12 @@ export const destinations = [
     heroDescription: 'Welcome to Phuket, where pristine beaches meet crystal-clear waters and endless island adventures await in Thailand\'s largest island. From beautiful beaches to water activities, from vibrant nightlife to cultural experiences, this tropical paradise offers the perfect blend of relaxation, adventure, and Thai island life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Phuket.webp',
     tourCategories: [
-      'Beach Tours',
-      'Island Tours',
-      'Water Tours',
-      'Cultural Tours',
-      'Adventure Tours',
-      'Nightlife Tours'
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Water Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Nightlife Tours', hasGuide: true }
     ],
     seo: {
       title: 'Phuket Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6443,12 +6443,12 @@ export const destinations = [
     heroDescription: 'Welcome to Yogyakarta, where ancient temples meet royal palaces and traditional Javanese culture thrives in Indonesia\'s cultural heart. From the magnificent Borobudur to the royal Kraton, from traditional batik to shadow puppetry, this cultural treasure offers the perfect blend of history, tradition, and Indonesian heritage. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Yogyakarta.avif',
     tourCategories: [
-      'Temple Tours',
-      'Cultural Tours',
-      'Royal Tours',
-      'Historic Tours',
-      'Art Tours',
-      'Market Tours'
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Royal Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Art Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true }
     ],
     seo: {
       title: 'Yogyakarta Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6773,12 +6773,12 @@ export const destinations = [
     heroDescription: 'Welcome to Kuala Lumpur, where gleaming skyscrapers meet historic temples and diverse cultures create a vibrant melting pot in Malaysia\'s capital. From the iconic Petronas Towers to the historic Batu Caves, from excellent shopping to incredible food, this modern metropolis offers the perfect blend of tradition, innovation, and Malaysian hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Kuala%20Lumpur.jpg',
     tourCategories: [
-      'City Tours',
-      'Cultural Tours',
-      'Food Tours',
-      'Shopping Tours',
-      'Temple Tours',
-      'Architecture Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Shopping Tours', hasGuide: true },
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Kuala Lumpur Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6828,12 +6828,12 @@ export const destinations = [
     heroDescription: 'Welcome to Langkawi, where pristine beaches meet lush rainforests and duty-free shopping creates the perfect island escape in Malaysia\'s archipelago. From stunning beaches to cable car adventures, from mangrove tours to water activities, this tropical paradise offers the perfect blend of relaxation, adventure, and Malaysian island hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Langkawi.jpg',
     tourCategories: [
-      'Island Tours',
-      'Beach Tours',
-      'Adventure Tours',
-      'Water Tours',
-      'Shopping Tours',
-      'Nature Tours'
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Water Tours', hasGuide: true },
+      { name: 'Shopping Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true }
     ],
     seo: {
       title: 'Langkawi Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6883,12 +6883,12 @@ export const destinations = [
     heroDescription: 'Welcome to Penang, where historic George Town meets vibrant street art and incredible food creates a cultural feast in Malaysia\'s most diverse state. From UNESCO World Heritage sites to street art murals, from hawker food to historic temples, this cultural melting pot offers the perfect blend of heritage, creativity, and Malaysian hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Penang.jpg',
     tourCategories: [
-      'Cultural Tours',
-      'Food Tours',
-      'Historic Tours',
-      'Street Art Tours',
-      'Temple Tours',
-      'Photography Tours'
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Street Art Tours', hasGuide: true },
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'Photography Tours', hasGuide: true }
     ],
     seo: {
       title: 'Penang Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6938,12 +6938,12 @@ export const destinations = [
     heroDescription: 'Welcome to Singapore, where futuristic architecture meets lush gardens and diverse cultures create a world-class city-state in the heart of Asia. From the iconic Marina Bay Sands to the stunning Gardens by the Bay, from world-class shopping to incredible food, this modern marvel offers the perfect blend of innovation, nature, and Singaporean hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Singapore.webp',
     tourCategories: [
-      'City Tours',
-      'Cultural Tours',
-      'Food Tours',
-      'Shopping Tours',
-      'Garden Tours',
-      'Architecture Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Shopping Tours', hasGuide: true },
+      { name: 'Garden Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Singapore Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7048,12 +7048,12 @@ export const destinations = [
     heroDescription: 'Welcome to Shanghai, where the futuristic skyline meets historic neighborhoods and the energy of China\'s largest city creates an unforgettable experience. From the iconic Bund to the modern Pudong district, from traditional gardens to world-class shopping, this modern metropolis offers the perfect blend of tradition, innovation, and Chinese urban life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Shanghai.jpg',
     tourCategories: [
-      'City Tours',
-      'Cultural Tours',
-      'Architecture Tours',
-      'Food Tours',
-      'Shopping Tours',
-      'Garden Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Shopping Tours', hasGuide: true },
+      { name: 'Garden Tours', hasGuide: true }
     ],
     seo: {
       title: 'Shanghai Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7213,12 +7213,12 @@ export const destinations = [
     heroDescription: 'Welcome to Seoul, where ancient palaces meet cutting-edge technology and K-pop culture creates a vibrant energy in South Korea\'s capital. From the historic Gyeongbokgung Palace to the modern Gangnam district, from traditional markets to world-class shopping, this dynamic metropolis offers the perfect blend of tradition, innovation, and Korean hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Seoul.webp',
     tourCategories: [
-      'City Tours',
-      'Cultural Tours',
-      'Palace Tours',
-      'Food Tours',
-      'Shopping Tours',
-      'K-pop Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Palace Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Shopping Tours', hasGuide: true },
+      { name: 'K-pop Tours', hasGuide: true }
     ],
     seo: {
       title: 'Seoul Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7379,12 +7379,12 @@ export const destinations = [
     heroDescription: 'Welcome to Manila, where Spanish colonial architecture meets Filipino hospitality and modern urban energy creates a dynamic capital experience. From the historic Intramuros district to the vibrant Makati business center, from traditional jeepney rides to world-class shopping, this bustling metropolis offers the perfect blend of history, culture, and contemporary Filipino life. Let our AI-powered planner help you discover the best experiences this incredible city has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Manila.jpeg',
     tourCategories: [
-      'Cultural Tours',
-      'Historic Tours',
-      'City Tours',
-      'Food Tours',
-      'Shopping Tours',
-      'Architecture Tours'
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Shopping Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Manila Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7489,12 +7489,12 @@ export const destinations = [
     heroDescription: 'Welcome to Palawan, where limestone karsts meet turquoise waters and pristine nature creates one of the world\'s most beautiful destinations. From the dramatic landscapes of El Nido to the underground river of Puerto Princesa, from hidden lagoons to vibrant coral reefs, this UNESCO World Heritage site offers the perfect blend of natural wonders, adventure, and serenity. Let our AI-powered planner help you discover the best experiences this incredible paradise has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Palawan.avif',
     tourCategories: [
-      'Nature Tours',
-      'Adventure Tours',
-      'Island Tours',
-      'Diving Tours',
-      'Cave Tours',
-      'Beach Tours'
+      { name: 'Nature Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Diving Tours', hasGuide: true },
+      { name: 'Cave Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true }
     ],
     seo: {
       title: 'Palawan Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7600,12 +7600,12 @@ export const destinations = [
     heroDescription: 'Welcome to New Delhi, where ancient Mughal monuments meet British colonial architecture and modern Indian energy creates a fascinating capital experience. From the majestic Red Fort to the peaceful Humayun\'s Tomb, from bustling markets to elegant government buildings, this historic city offers the perfect blend of history, culture, and contemporary Indian life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//New%20Delhi.jpeg',
     tourCategories: [
-      'Cultural Tours',
-      'Historic Tours',
-      'Architecture Tours',
-      'Food Tours',
-      'Market Tours',
-      'Monument Tours'
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true },
+      { name: 'Monument Tours', hasGuide: true }
     ],
     seo: {
       title: 'New Delhi Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7710,12 +7710,12 @@ export const destinations = [
     heroDescription: 'Welcome to Mumbai, where Bollywood dreams meet colonial heritage and coastal beauty creates India\'s most dynamic city. From the iconic Gateway of India to the bustling markets of Colaba, from the glamorous film industry to the peaceful Marine Drive, this vibrant metropolis offers the perfect blend of entertainment, history, and contemporary Indian life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Mumbai.jpeg',
     tourCategories: [
-      'Cultural Tours',
-      'Bollywood Tours',
-      'Food Tours',
-      'Market Tours',
-      'Architecture Tours',
-      'Coastal Tours'
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Bollywood Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true },
+      { name: 'Coastal Tours', hasGuide: true }
     ],
     seo: {
       title: 'Mumbai Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7875,12 +7875,12 @@ export const destinations = [
     heroDescription: 'Welcome to Sydney, where the iconic Opera House meets the majestic Harbor Bridge and golden beaches stretch along the Pacific coast. From the bustling CBD to the laid-back Bondi lifestyle, from world-class dining to outdoor adventures, this cosmopolitan city offers the perfect blend of urban sophistication and natural beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Sydney.jpg',
     tourCategories: [
-      'Harbor Tours',
-      'City Tours',
-      'Beach Tours',
-      'Cultural Tours',
-      'Food Tours',
-      'Adventure Tours'
+      { name: 'Harbor Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Sydney Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7930,12 +7930,12 @@ export const destinations = [
     heroDescription: 'Welcome to Melbourne, where laneway culture meets world-class dining and artistic expression flows through every street. From the famous coffee culture to the vibrant arts scene, from hidden bars to stunning coastal drives, this cosmopolitan city offers the perfect blend of sophistication and creativity. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Sydney.jpg',
     tourCategories: [
-      'City Tours',
-      'Food Tours',
-      'Cultural Tours',
-      'Arts Tours',
-      'Coffee Tours',
-      'Coastal Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Arts Tours', hasGuide: true },
+      { name: 'Coffee Tours', hasGuide: true },
+      { name: 'Coastal Tours', hasGuide: true }
     ],
     seo: {
       title: 'Melbourne Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8095,12 +8095,12 @@ export const destinations = [
     heroDescription: 'Welcome to Perth, where endless sunshine meets pristine beaches and the Swan River flows through a city of natural beauty. From the stunning coastline to the nearby wine regions, from vibrant cultural precincts to outdoor adventures, this relaxed capital offers the perfect blend of urban sophistication and natural wonders. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Perth.jpeg',
     tourCategories: [
-      'City Tours',
-      'Beach Tours',
-      'Wine Tours',
-      'Cultural Tours',
-      'Nature Tours',
-      'Adventure Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Wine Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Perth Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8207,12 +8207,12 @@ export const destinations = [
     heroDescription: 'Welcome to Queenstown, where snow-capped peaks meet crystal-clear lakes and adventure awaits around every corner. From world-class skiing to thrilling bungee jumping, from scenic helicopter flights to peaceful lake cruises, this alpine paradise offers the perfect blend of adrenaline-pumping activities and natural beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Queenstown.jpg',
     tourCategories: [
-      'Adventure Tours',
-      'Skiing Tours',
-      'Scenic Tours',
-      'Lake Tours',
-      'Wine Tours',
-      'Cultural Tours'
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Skiing Tours', hasGuide: true },
+      { name: 'Scenic Tours', hasGuide: true },
+      { name: 'Lake Tours', hasGuide: true },
+      { name: 'Wine Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true }
     ],
     seo: {
       title: 'Queenstown Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8263,12 +8263,12 @@ export const destinations = [
     heroDescription: 'Welcome to Rotorua, where geothermal wonders meet rich Maori culture and natural hot springs bubble from the earth. From exploring geysers and mud pools to experiencing traditional Maori hospitality, from relaxing in thermal baths to discovering native forests, this unique destination offers the perfect blend of natural wonders and cultural heritage. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Rotorua.jpg',
     tourCategories: [
-      'Geothermal Tours',
-      'Cultural Tours',
-      'Nature Tours',
-      'Adventure Tours',
-      'Wellness Tours',
-      'Wildlife Tours'
+      { name: 'Geothermal Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Wellness Tours', hasGuide: true },
+      { name: 'Wildlife Tours', hasGuide: true }
     ],
     seo: {
       title: 'Rotorua Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8374,12 +8374,12 @@ export const destinations = [
     heroDescription: 'Welcome to Nadi, where tropical paradise meets warm Fijian hospitality and island adventures await. From pristine beaches to traditional village experiences, from water sports to cultural performances, this gateway city offers the perfect blend of relaxation and authentic Fijian culture. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Nadi.webp',
     tourCategories: [
-      'Island Tours',
-      'Cultural Tours',
-      'Beach Tours',
-      'Water Sports',
-      'Adventure Tours',
-      'Wellness Tours'
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Water Sports', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Wellness Tours', hasGuide: true }
     ],
     seo: {
       title: 'Nadi Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8484,12 +8484,12 @@ export const destinations = [
     heroDescription: 'Welcome to the Mamanuca Islands, where crystal-clear waters meet pristine coral reefs and island adventures await around every corner. From snorkeling vibrant reefs to relaxing on white-sand beaches, from island hopping to traditional Fijian experiences, this tropical archipelago offers the perfect blend of adventure and relaxation. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Mamanuca%20Islands.jpg',
     tourCategories: [
-      'Island Tours',
-      'Snorkeling Tours',
-      'Beach Tours',
-      'Cultural Tours',
-      'Water Sports',
-      'Adventure Tours'
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Water Sports', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Mamanuca Islands Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8594,12 +8594,12 @@ export const destinations = [
     heroDescription: 'Welcome to Tahiti, where black sand beaches meet cascading waterfalls and Polynesian culture infuses every experience. From exploring lush valleys to discovering traditional villages, from surfing world-class waves to experiencing authentic Polynesian hospitality, this island of love offers the perfect blend of natural beauty and cultural heritage. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Tahiti.avif',
     tourCategories: [
-      'Cultural Tours',
-      'Nature Tours',
-      'Adventure Tours',
-      'Beach Tours',
-      'Waterfall Tours',
-      'Surfing Tours'
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Waterfall Tours', hasGuide: true },
+      { name: 'Surfing Tours', hasGuide: true }
     ],
     seo: {
       title: 'Tahiti Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8649,12 +8649,12 @@ export const destinations = [
     heroDescription: 'Welcome to Moorea, where dramatic volcanic peaks meet pristine lagoon waters and pineapple plantations dot the landscape. From hiking scenic trails to snorkeling crystal-clear waters, from exploring traditional villages to experiencing authentic Polynesian culture, this magical island offers the perfect blend of adventure and natural beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Moorea.webp',
     tourCategories: [
-      'Nature Tours',
-      'Adventure Tours',
-      'Cultural Tours',
-      'Snorkeling Tours',
-      'Hiking Tours',
-      'Island Tours'
+      { name: 'Nature Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Hiking Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true }
     ],
     seo: {
       title: 'Moorea Tours & Excursions - Top-Rated Activities & Adventures',
