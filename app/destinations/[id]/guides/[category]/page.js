@@ -3,6 +3,7 @@ import { categoryGuides as categoryGuidesBase } from '../guidesData';
 import { categoryGuidesNorthAmerica } from '../guidesData-north-america';
 import { categoryGuidesAfrica } from '../guidesData-africa';
 import { categoryGuidesSouthAmerica } from '../guidesData-south-america';
+import { categoryGuidesAsiaPacificPart1 } from '../guidesData-asia-pacific-part1';
 import CategoryGuideClient from './CategoryGuideClient';
 import { notFound } from 'next/navigation';
 
@@ -12,6 +13,7 @@ const categoryGuides = {
   ...categoryGuidesNorthAmerica,
   ...categoryGuidesAfrica,
   ...categoryGuidesSouthAmerica,
+  ...categoryGuidesAsiaPacificPart1,
 };
 
 // Generate metadata for SEO

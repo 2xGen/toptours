@@ -5947,12 +5947,12 @@ export const destinations = [
     heroDescription: 'Welcome to Hiroshima, where a tragic past has given way to a beautiful future and a powerful message of peace. From the moving Peace Memorial Park to the iconic Itsukushima Shrine, from poignant history to vibrant culture, this resilient city offers the perfect blend of remembrance, hope, and Japanese heritage. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Hiroshima.jpg',
     tourCategories: [
-      'Peace Tours',
-      'Historic Tours',
-      'Cultural Tours',
-      'Shrine Tours',
-      'Memorial Tours',
-      'Island Tours'
+      { name: 'Peace Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Shrine Tours', hasGuide: true },
+      { name: 'Memorial Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true }
     ],
     seo: {
       title: 'Hiroshima Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6003,12 +6003,12 @@ export const destinations = [
     heroDescription: 'Welcome to Hokkaido, where pristine wilderness meets world-class skiing and incredible natural beauty in Japan\'s northernmost island. From powder snow adventures to hot spring experiences, from wildlife encounters to scenic landscapes, this northern paradise offers the perfect blend of adventure, nature, and Japanese hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Hokkaido.jpg',
     tourCategories: [
-      'Ski Tours',
-      'Nature Tours',
-      'Hot Spring Tours',
-      'Wildlife Tours',
-      'Adventure Tours',
-      'Scenic Tours'
+      { name: 'Ski Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true },
+      { name: 'Hot Spring Tours', hasGuide: true },
+      { name: 'Wildlife Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Scenic Tours', hasGuide: true }
     ],
     seo: {
       title: 'Hokkaido Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6058,12 +6058,12 @@ export const destinations = [
     heroDescription: 'Welcome to Bangkok, where ancient temples meet modern skyscrapers and incredible street food creates a sensory feast in Thailand\'s bustling capital. From the Grand Palace to floating markets, from spicy street food to luxury shopping, this vibrant city offers the perfect blend of tradition, culture, and Thai hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Bangkok.jpeg',
     tourCategories: [
-      'Temple Tours',
-      'Food Tours',
-      'Cultural Tours',
-      'Market Tours',
-      'River Tours',
-      'Shopping Tours'
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true },
+      { name: 'River Tours', hasGuide: true },
+      { name: 'Shopping Tours', hasGuide: true }
     ],
     seo: {
       title: 'Bangkok Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6113,12 +6113,12 @@ export const destinations = [
     heroDescription: 'Welcome to Chiang Mai, where ancient temples meet mountain landscapes and traditional Thai culture thrives in the heart of northern Thailand. From historic Old City temples to hill tribe villages, from night bazaars to elephant sanctuaries, this cultural treasure offers the perfect blend of history, nature, and Thai traditions. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Chiang%20Mai.jpeg',
     tourCategories: [
-      'Temple Tours',
-      'Cultural Tours',
-      'Mountain Tours',
-      'Elephant Tours',
-      'Market Tours',
-      'Adventure Tours'
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Mountain Tours', hasGuide: true },
+      { name: 'Elephant Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Chiang Mai Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6223,12 +6223,12 @@ export const destinations = [
     heroDescription: 'Welcome to Krabi, where dramatic limestone cliffs meet pristine beaches and endless outdoor adventures await in this stunning coastal province. From rock climbing to island hopping, from hot springs to mangrove forests, this natural wonder offers the perfect blend of adventure, beauty, and Thai coastal life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Krabi.jpg',
     tourCategories: [
-      'Adventure Tours',
-      'Beach Tours',
-      'Island Tours',
-      'Rock Climbing Tours',
-      'Nature Tours',
-      'Water Tours'
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Rock Climbing Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true },
+      { name: 'Water Tours', hasGuide: true }
     ],
     seo: {
       title: 'Krabi Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6278,12 +6278,12 @@ export const destinations = [
     heroDescription: 'Welcome to Koh Samui, where coconut palms sway in the breeze and pristine beaches meet luxury resorts in this beautiful island paradise. From stunning beaches to spiritual temples, from water activities to wellness retreats, this tropical gem offers the perfect blend of relaxation, adventure, and Thai island hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Koh%20Samui.jpg',
     tourCategories: [
-      'Beach Tours',
-      'Island Tours',
-      'Water Tours',
-      'Wellness Tours',
-      'Cultural Tours',
-      'Adventure Tours'
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Water Tours', hasGuide: true },
+      { name: 'Wellness Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Koh Samui Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6333,12 +6333,12 @@ export const destinations = [
     heroDescription: 'Welcome to Bali, where ancient temples meet pristine beaches and spiritual traditions create a magical island paradise. From sacred temples to rice terraces, from surf beaches to wellness retreats, this Island of the Gods offers the perfect blend of spirituality, culture, and natural beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Bali.jpeg',
     tourCategories: [
-      'Temple Tours',
-      'Cultural Tours',
-      'Beach Tours',
-      'Wellness Tours',
-      'Adventure Tours',
-      'Rice Terrace Tours'
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Wellness Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Rice Terrace Tours', hasGuide: true }
     ],
     seo: {
       title: 'Bali Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6388,12 +6388,12 @@ export const destinations = [
     heroDescription: 'Welcome to Jakarta, where modern skyscrapers meet historic neighborhoods and diverse cultures create a dynamic capital city. From the historic Old Town to modern shopping districts, from traditional markets to international cuisine, this bustling metropolis offers the perfect blend of history, culture, and Indonesian urban life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Jakarta.jpg',
     tourCategories: [
-      'City Tours',
-      'Cultural Tours',
-      'Food Tours',
-      'Historic Tours',
-      'Market Tours',
-      'Shopping Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true },
+      { name: 'Shopping Tours', hasGuide: true }
     ],
     seo: {
       title: 'Jakarta Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6498,12 +6498,12 @@ export const destinations = [
     heroDescription: 'Welcome to the Gili Islands, where pristine beaches meet crystal-clear waters and laid-back island life creates the perfect tropical escape. From stunning coral reefs to beautiful beaches, from snorkeling adventures to sunset views, this island paradise offers the perfect blend of relaxation, adventure, and Indonesian island hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Gili%20Islands.jpg',
     tourCategories: [
-      'Island Tours',
-      'Snorkeling Tours',
-      'Beach Tours',
-      'Water Tours',
-      'Adventure Tours',
-      'Relaxation Tours'
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Water Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Relaxation Tours', hasGuide: true }
     ],
     seo: {
       title: 'Gili Islands Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6553,12 +6553,12 @@ export const destinations = [
     heroDescription: 'Welcome to Hanoi, where ancient temples meet French colonial architecture and the bustling Old Quarter creates a sensory feast in Vietnam\'s historic capital. From the Hoan Kiem Lake to the Temple of Literature, from street food adventures to cultural experiences, this vibrant city offers the perfect blend of history, culture, and Vietnamese hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Hanoi.webp',
     tourCategories: [
-      'Cultural Tours',
-      'Food Tours',
-      'Historic Tours',
-      'City Tours',
-      'Temple Tours',
-      'Market Tours'
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true }
     ],
     seo: {
       title: 'Hanoi Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6608,12 +6608,12 @@ export const destinations = [
     heroDescription: 'Welcome to Ho Chi Minh City, where modern skyscrapers meet historic landmarks and the energy of Vietnam\'s largest city creates an unforgettable experience. From the historic Cu Chi Tunnels to the bustling Ben Thanh Market, from French colonial architecture to vibrant nightlife, this dynamic metropolis offers the perfect blend of history, culture, and Vietnamese urban life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Ho%20Chi%20Minh%20City%20(Saigon).jpg',
     tourCategories: [
-      'City Tours',
-      'Historic Tours',
-      'Food Tours',
-      'Cultural Tours',
-      'Market Tours',
-      'Nightlife Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true },
+      { name: 'Nightlife Tours', hasGuide: true }
     ],
     seo: {
       title: 'Ho Chi Minh City Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6663,12 +6663,12 @@ export const destinations = [
     heroDescription: 'Welcome to Hoi An, where ancient trading port heritage meets lantern-lit magic and traditional Vietnamese culture thrives in this UNESCO World Heritage site. From the historic Old Town to beautiful beaches, from traditional lantern making to excellent cuisine, this charming town offers the perfect blend of history, culture, and Vietnamese hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Hoi%20An.jpg',
     tourCategories: [
-      'Cultural Tours',
-      'Historic Tours',
-      'Food Tours',
-      'Beach Tours',
-      'Craft Tours',
-      'Photography Tours'
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Craft Tours', hasGuide: true },
+      { name: 'Photography Tours', hasGuide: true }
     ],
     seo: {
       title: 'Hoi An Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6718,12 +6718,12 @@ export const destinations = [
     heroDescription: 'Welcome to Halong Bay, where thousands of limestone karsts rise dramatically from emerald waters and traditional junk boats create a scene of timeless beauty. From stunning cave systems to floating villages, from kayaking adventures to sunset cruises, this UNESCO World Heritage site offers the perfect blend of natural wonder, adventure, and Vietnamese coastal life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Halong%20Bay.jpg',
     tourCategories: [
-      'Cruise Tours',
-      'Kayaking Tours',
-      'Cave Tours',
-      'Island Tours',
-      'Photography Tours',
-      'Adventure Tours'
+      { name: 'Cruise Tours', hasGuide: true },
+      { name: 'Kayaking Tours', hasGuide: true },
+      { name: 'Cave Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Photography Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Halong Bay Tours & Excursions - Top-Rated Activities & Adventures',
@@ -6993,12 +6993,12 @@ export const destinations = [
     heroDescription: 'Welcome to Beijing, where the Great Wall meets the Forbidden City and thousands of years of Chinese history come alive in the nation\'s capital. From the iconic Great Wall to the majestic Temple of Heaven, from traditional hutongs to modern skyscrapers, this ancient capital offers the perfect blend of history, culture, and Chinese hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Beijing.jpg',
     tourCategories: [
-      'Historic Tours',
-      'Cultural Tours',
-      'Great Wall Tours',
-      'Temple Tours',
-      'Food Tours',
-      'Architecture Tours'
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Great Wall Tours', hasGuide: true },
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Architecture Tours', hasGuide: true }
     ],
     seo: {
       title: 'Beijing Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7158,12 +7158,12 @@ export const destinations = [
     heroDescription: 'Welcome to Guilin, where dramatic karst mountains rise from the Li River and traditional villages create scenes of timeless beauty in China\'s most picturesque region. From stunning river cruises to mountain adventures, from ancient villages to natural caves, this scenic paradise offers the perfect blend of nature, culture, and Chinese rural life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Guilin.jpg',
     tourCategories: [
-      'Nature Tours',
-      'River Tours',
-      'Mountain Tours',
-      'Cultural Tours',
-      'Photography Tours',
-      'Adventure Tours'
+      { name: 'Nature Tours', hasGuide: true },
+      { name: 'River Tours', hasGuide: true },
+      { name: 'Mountain Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Photography Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
     ],
     seo: {
       title: 'Guilin Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7268,12 +7268,12 @@ export const destinations = [
     heroDescription: 'Welcome to Busan, where beautiful beaches meet historic temples and fresh seafood creates a coastal paradise in South Korea\'s second-largest city. From the stunning Gamcheon Culture Village to the historic Beomeosa Temple, from fresh seafood markets to beautiful beaches, this coastal gem offers the perfect blend of nature, culture, and Korean coastal life. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Busan.jpeg',
     tourCategories: [
-      'Cultural Tours',
-      'Beach Tours',
-      'Food Tours',
-      'Temple Tours',
-      'Market Tours',
-      'Photography Tours'
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'Market Tours', hasGuide: true },
+      { name: 'Photography Tours', hasGuide: true }
     ],
     seo: {
       title: 'Busan Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7323,12 +7323,12 @@ export const destinations = [
     heroDescription: 'Welcome to Jeju Island, where volcanic landscapes meet pristine beaches and natural wonders create a paradise in South Korea\'s largest island. From the majestic Hallasan volcano to stunning waterfalls, from beautiful beaches to traditional villages, this volcanic paradise offers the perfect blend of nature, adventure, and Korean island hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Jeju%20Island.jpeg',
     tourCategories: [
-      'Nature Tours',
-      'Volcano Tours',
-      'Beach Tours',
-      'Adventure Tours',
-      'Cultural Tours',
-      'Photography Tours'
+      { name: 'Nature Tours', hasGuide: true },
+      { name: 'Volcano Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Photography Tours', hasGuide: true }
     ],
     seo: {
       title: 'Jeju Island Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7434,12 +7434,12 @@ export const destinations = [
     heroDescription: 'Welcome to Cebu, where pristine beaches meet historic landmarks and thrilling adventures create an unforgettable island experience. From the crystal-clear waters of Malapascua to the historic Magellan\'s Cross, from world-class diving spots to cascading waterfalls, this diverse island offers the perfect blend of natural beauty, history, and adrenaline-pumping activities. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Cebu.jpeg',
     tourCategories: [
-      'Adventure Tours',
-      'Beach Tours',
-      'Diving Tours',
-      'Cultural Tours',
-      'Waterfall Tours',
-      'Island Tours'
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Diving Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Waterfall Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true }
     ],
     seo: {
       title: 'Cebu Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7544,12 +7544,12 @@ export const destinations = [
     heroDescription: 'Welcome to Boracay, where powdery white sand meets crystal-clear waters and vibrant energy creates the perfect beach paradise. From the famous White Beach to the thrilling water sports, from stunning sunsets to lively nightlife, this small island offers the perfect blend of relaxation, adventure, and entertainment. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Boracay.jpeg',
     tourCategories: [
-      'Beach Tours',
-      'Water Sports Tours',
-      'Sunset Tours',
-      'Island Tours',
-      'Adventure Tours',
-      'Nightlife Tours'
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Water Sports Tours', hasGuide: true },
+      { name: 'Sunset Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Nightlife Tours', hasGuide: true }
     ],
     seo: {
       title: 'Boracay Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7655,12 +7655,12 @@ export const destinations = [
     heroDescription: 'Welcome to Jaipur, where pink-hued palaces meet ancient forts and royal traditions create the perfect Indian fairy tale. From the magnificent Amber Fort to the elegant City Palace, from bustling bazaars to traditional crafts, this historic city offers the perfect blend of royal heritage, culture, and authentic Indian hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Jaipur.jpeg',
     tourCategories: [
-      'Cultural Tours',
-      'Palace Tours',
-      'Fort Tours',
-      'Shopping Tours',
-      'Food Tours',
-      'Heritage Tours'
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Palace Tours', hasGuide: true },
+      { name: 'Fort Tours', hasGuide: true },
+      { name: 'Shopping Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Heritage Tours', hasGuide: true }
     ],
     seo: {
       title: 'Jaipur Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7765,12 +7765,12 @@ export const destinations = [
     heroDescription: 'Welcome to Goa, where Portuguese colonial charm meets tropical beaches and laid-back vibes create India\'s most relaxed destination. From the golden sands of Calangute to the historic churches of Old Goa, from spice plantations to vibrant nightlife, this coastal paradise offers the perfect blend of beach life, culture, and Indian hospitality. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Goa.jpg',
     tourCategories: [
-      'Beach Tours',
-      'Cultural Tours',
-      'Food Tours',
-      'Adventure Tours',
-      'Heritage Tours',
-      'Water Sports Tours'
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Heritage Tours', hasGuide: true },
+      { name: 'Water Sports Tours', hasGuide: true }
     ],
     seo: {
       title: 'Goa Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7820,12 +7820,12 @@ export const destinations = [
     heroDescription: 'Welcome to Kerala, where emerald backwaters meet misty tea plantations and ancient Ayurvedic traditions create India\'s most serene destination. From the peaceful houseboat cruises to the rolling hills of Munnar, from traditional Kathakali performances to rejuvenating Ayurvedic treatments, this tropical paradise offers the perfect blend of nature, culture, and wellness. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Kerala.jpeg',
     tourCategories: [
-      'Backwater Tours',
-      'Nature Tours',
-      'Cultural Tours',
-      'Wellness Tours',
-      'Tea Plantation Tours',
-      'Wildlife Tours'
+      { name: 'Backwater Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Wellness Tours', hasGuide: true },
+      { name: 'Tea Plantation Tours', hasGuide: true },
+      { name: 'Wildlife Tours', hasGuide: true }
     ],
     seo: {
       title: 'Kerala Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7985,12 +7985,12 @@ export const destinations = [
     heroDescription: 'Welcome to Cairns, where the world\'s largest coral reef meets ancient rainforests and adventure awaits around every corner. From diving the Great Barrier Reef to exploring the Daintree Rainforest, from thrilling water sports to indigenous cultural experiences, this tropical paradise offers the perfect blend of natural wonders and adrenaline-pumping activities. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Cairns%20(Great%20Barrier%20Reef).jpg',
     tourCategories: [
-      'Reef Tours',
-      'Rainforest Tours',
-      'Adventure Tours',
-      'Cultural Tours',
-      'Wildlife Tours',
-      'Water Sports'
+      { name: 'Reef Tours', hasGuide: true },
+      { name: 'Rainforest Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Wildlife Tours', hasGuide: true },
+      { name: 'Water Sports', hasGuide: true }
     ],
     seo: {
       title: 'Cairns Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8040,12 +8040,12 @@ export const destinations = [
     heroDescription: 'Welcome to the Gold Coast, where golden beaches meet thrilling theme parks and the surf culture pulses through every wave. From world-class surfing to family-friendly attractions, from vibrant nightlife to natural hinterland adventures, this coastal paradise offers the perfect blend of excitement and relaxation. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Gold%20Coast.png',
     tourCategories: [
-      'Surfing Tours',
-      'Theme Park Tours',
-      'Beach Tours',
-      'Adventure Tours',
-      'Nightlife Tours',
-      'Nature Tours'
+      { name: 'Surfing Tours', hasGuide: true },
+      { name: 'Theme Park Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Nightlife Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true }
     ],
     seo: {
       title: 'Gold Coast Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8151,12 +8151,12 @@ export const destinations = [
     heroDescription: 'Welcome to Auckland, where volcanic cones meet sparkling harbors and Maori culture infuses every experience. From sailing the Hauraki Gulf to exploring volcanic islands, from vibrant city life to stunning coastal walks, this dynamic city offers the perfect blend of urban sophistication and natural wonders. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Auckland.webp',
     tourCategories: [
-      'Harbor Tours',
-      'Volcanic Tours',
-      'Cultural Tours',
-      'City Tours',
-      'Adventure Tours',
-      'Island Tours'
+      { name: 'Harbor Tours', hasGuide: true },
+      { name: 'Volcanic Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true }
     ],
     seo: {
       title: 'Auckland Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8429,12 +8429,12 @@ export const destinations = [
     heroDescription: 'Welcome to Denarau Island, where luxury meets tropical beauty and world-class amenities create the perfect island escape. From championship golf courses to indulgent spa treatments, from pristine beaches to fine dining, this exclusive island offers the perfect blend of sophistication and natural beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Denarau%20Island.jpg',
     tourCategories: [
-      'Luxury Tours',
-      'Golf Tours',
-      'Spa Tours',
-      'Beach Tours',
-      'Water Sports',
-      'Cultural Tours'
+      { name: 'Luxury Tours', hasGuide: true },
+      { name: 'Golf Tours', hasGuide: true },
+      { name: 'Spa Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Water Sports', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true }
     ],
     seo: {
       title: 'Denarau Island Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8539,12 +8539,12 @@ export const destinations = [
     heroDescription: 'Welcome to Bora Bora, where overwater bungalows float above turquoise waters and volcanic peaks rise from the heart of the Pacific. From snorkeling vibrant coral gardens to relaxing in luxury overwater accommodations, from romantic sunset cruises to exploring the island\'s natural beauty, this ultimate paradise offers the perfect blend of luxury and natural wonder. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Bora%20Bora.webp',
     tourCategories: [
-      'Luxury Tours',
-      'Snorkeling Tours',
-      'Romantic Tours',
-      'Island Tours',
-      'Water Sports',
-      'Cultural Tours'
+      { name: 'Luxury Tours', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Romantic Tours', hasGuide: true },
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Water Sports', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true }
     ],
     seo: {
       title: 'Bora Bora Tours & Excursions - Top-Rated Activities & Adventures',
