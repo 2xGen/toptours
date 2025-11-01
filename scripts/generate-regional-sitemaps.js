@@ -44,19 +44,28 @@ guidesFiles.forEach(file => {
     let currentDest = null;
     const lines = content.split('\n');
     lines.forEach((line, idx) => {
-      // Find destination ID
+      // Find destination ID - this should come first to set currentDest before checking for guides
       const destMatch = line.match(/^\s*['"]?([a-z-]+)['"]?:\s*{/);
-      if (destMatch && destinations.find(d => d.id === destMatch[1])) {
-        currentDest = destMatch[1];
-        if (!allGuides[currentDest]) {
-          allGuides[currentDest] = [];
+      if (destMatch) {
+        const destId = destMatch[1];
+        if (destinations.find(d => d.id === destId)) {
+          // Found a destination, set it as current (this will overwrite previous destination)
+          currentDest = destId;
+          if (!allGuides[currentDest]) {
+            allGuides[currentDest] = [];
+          }
         }
       }
-      // Find guide slugs within that destination
+      
+      // Find guide slugs within that destination - check after destination detection
+      // Only add if we have a currentDest and the guide slug doesn't match the dest ID
       const guideMatch = line.match(/^\s*['"]([a-z-]+)['"]:\s*{\s*$/);
       if (guideMatch && currentDest && guideMatch[1] !== currentDest) {
-        if (!allGuides[currentDest].includes(guideMatch[1])) {
-          allGuides[currentDest].push(guideMatch[1]);
+        // Make sure the guide slug isn't actually a destination ID
+        const guideSlug = guideMatch[1];
+        const isDestination = destinations.find(d => d.id === guideSlug);
+        if (!isDestination && !allGuides[currentDest].includes(guideSlug)) {
+          allGuides[currentDest].push(guideSlug);
         }
       }
     });
