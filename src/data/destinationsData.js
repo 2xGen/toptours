@@ -5779,12 +5779,12 @@ export const destinations = [
     heroDescription: 'Welcome to Tokyo, where cutting-edge technology meets centuries-old traditions in the world\'s most populous metropolis. From the neon-lit streets of Shibuya to the serene temples of Asakusa, from world-class sushi to bullet train adventures, this incredible city offers the perfect blend of past, present, and future. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//tokyo.webp',
     tourCategories: [
-      'City Tours',
-      'Cultural Tours',
-      'Food Tours',
-      'Technology Tours',
-      'Temple Tours',
-      'Shopping Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Technology Tours', hasGuide: true },
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'Shopping Tours', hasGuide: true }
     ],
     seo: {
       title: 'Tokyo Tours & Excursions - Top-Rated Activities & Adventures',
@@ -7103,12 +7103,12 @@ export const destinations = [
     heroDescription: 'Welcome to Xi\'an, where the legendary Terracotta Warriors guard ancient secrets and the Silk Road heritage comes alive in China\'s former imperial capital. From the magnificent Terracotta Army to the historic Muslim Quarter, from ancient city walls to incredible food, this historic treasure offers the perfect blend of archaeology, culture, and Chinese heritage. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Xi%20an.jpg',
     tourCategories: [
-      'Historic Tours',
-      'Archaeological Tours',
-      'Cultural Tours',
-      'Food Tours',
-      'Temple Tours',
-      'City Wall Tours'
+      { name: 'Historic Tours', hasGuide: true },
+      { name: 'Archaeological Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Temple Tours', hasGuide: true },
+      { name: 'City Wall Tours', hasGuide: true }
     ],
     seo: {
       title: 'Xi\'an Tours & Excursions - Top-Rated Activities & Adventures',
@@ -8319,12 +8319,12 @@ export const destinations = [
     heroDescription: 'Welcome to Wellington, where creative energy meets stunning harbor views and the arts scene thrives in every corner. From the vibrant Cuba Street to the stunning waterfront, from world-class museums to hidden coffee spots, this compact capital offers the perfect blend of culture, creativity, and natural beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Wellington%20australia.webp',
     tourCategories: [
-      'City Tours',
-      'Cultural Tours',
-      'Food Tours',
-      'Coffee Tours',
-      'Arts Tours',
-      'Harbor Tours'
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Coffee Tours', hasGuide: true },
+      { name: 'Arts Tours', hasGuide: true },
+      { name: 'Harbor Tours', hasGuide: true }
     ],
     seo: {
       title: 'Wellington Tours & Excursions - Top-Rated Activities & Adventures',
