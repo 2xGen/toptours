@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Star, ArrowRight } from 'lucide-react';
+import { MapPin, Star, ArrowRight, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -69,9 +69,10 @@ const FeaturedTours = ({ onOpenModal }) => {
                     <span className="text-2xl font-bold text-gray-800">{tour.price}</span>
                     <Button 
                       onClick={() => handleViewTour(tour.bookingUrl)}
-                      className="sunset-gradient text-white hover:scale-105 transition-transform duration-200"
+                      className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 flex items-center gap-2"
                     >
                       View Tour
+                      <ExternalLink className="w-4 h-4" />
                     </Button>
                   </div>
                 </CardContent>

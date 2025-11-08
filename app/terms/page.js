@@ -53,7 +53,9 @@ export default function TermsOfServicePage() {
                   <div className="prose prose-lg max-w-none text-gray-600">
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">1. Acceptance of Terms</h3>
                     <p className="mb-6">
-                      By accessing and using TopTours.ai, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+                      By accessing and using TopTours.ai, you accept and agree to these Terms of Service. You also acknowledge that you have read our{' '}
+                      <a href="/cookie-policy" className="text-blue-600 hover:text-blue-700 underline">Cookie Policy</a> and{' '}
+                      <a href="/disclosure" className="text-blue-600 hover:text-blue-700 underline">Affiliate Disclosure</a>. The Cookie Policy explains how we use cookies; you may reject non-essential cookies at any time and continue browsing the site.
                     </p>
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">2. Description of Service</h3>
@@ -68,7 +70,7 @@ export default function TermsOfServicePage() {
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">4. Booking and Payments</h3>
                     <p className="mb-6">
-                      All bookings are processed through our partner tour operators. We act as an intermediary and are not responsible for the actual delivery of services. Payment processing is handled by our partners, and their terms and conditions apply to all transactions.
+                      TopTours.ai acts solely as an intermediary between users and partner tour operators. We are not the merchant of record and are not responsible for the execution or fulfillment of services purchased through our partners. Payment processing is handled by these partners, and their terms and conditions apply to all transactions.
                     </p>
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">5. Cancellation and Refunds</h3>
@@ -133,7 +135,7 @@ export default function TermsOfServicePage() {
                   <strong>Contact us:</strong>
                 </p>
                 <p className="text-gray-600">
-                  Email: email@toptours.ai<br />
+                  Email: mail@toptours.ai<br />
                   We typically respond within 24 hours.
                 </p>
               </div>

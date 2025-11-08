@@ -64,7 +64,17 @@ const FooterNext = () => {
             <ul className="space-y-2">
               <li><Link href="/terms" className="text-gray-300 hover:text-white transition-colors">Terms of Service</Link></li>
               <li><Link href="/disclosure" className="text-gray-300 hover:text-white transition-colors">Affiliate Disclosure</Link></li>
+              <li><Link href="/cookie-policy" className="text-gray-300 hover:text-white transition-colors">Cookie Policy</Link></li>
               <li><Link href="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => window?.showCookieConsent?.()}
+                  className="text-gray-300 hover:text-white transition-colors underline"
+                >
+                  Cookie Preferences
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -95,33 +105,7 @@ const FooterNext = () => {
             >
               2xGen
             </Link>
-            {' '}— creators of next-gen digital platforms, including{' '}
-            <a 
-              href="https://mygoprofile.com/" 
-              target="_blank" 
-              rel="nofollow noopener noreferrer"
-              className="text-yellow-400 hover:text-yellow-300 transition-colors"
-            >
-              MyGoProfile
-            </a>
-            ,{' '}
-            <a 
-              href="https://factuurbaas.nl/" 
-              target="_blank" 
-              rel="nofollow noopener noreferrer"
-              className="text-yellow-400 hover:text-yellow-300 transition-colors"
-            >
-              FactuurBaas
-            </a>
-            {' '}and{' '}
-            <a 
-              href="https://arubabuddies.com/" 
-              target="_blank" 
-              rel="nofollow noopener noreferrer"
-              className="text-yellow-400 hover:text-yellow-300 transition-colors"
-            >
-              ArubaBuddies
-            </a>
+        {' '}— creators of next-gen digital platforms.
           </p>
         </div>
       </div>

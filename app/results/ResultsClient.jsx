@@ -11,6 +11,105 @@ import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { useToast } from '@/components/ui/use-toast';
+import Link from 'next/link';
+import { destinations } from '@/data/destinationsData';
+import { travelGuides } from '@/data/travelGuidesData';
+
+const regions = ['Africa', 'Asia-Pacific', 'Caribbean', 'Europe', 'North America', 'South America'];
+
+const regionThemes = {
+  'Africa': {
+    emoji: '🌍',
+    background: 'bg-neutral-50',
+    border: 'border-neutral-200',
+    text: 'text-neutral-700',
+    chip: 'bg-white text-neutral-700 border-neutral-200',
+  },
+  'Asia-Pacific': {
+    emoji: '🌏',
+    background: 'bg-neutral-50',
+    border: 'border-neutral-200',
+    text: 'text-neutral-700',
+    chip: 'bg-white text-neutral-700 border-neutral-200',
+  },
+  'Caribbean': {
+    emoji: '🏝️',
+    background: 'bg-neutral-50',
+    border: 'border-neutral-200',
+    text: 'text-neutral-700',
+    chip: 'bg-white text-neutral-700 border-neutral-200',
+  },
+  'Europe': {
+    emoji: '🗺️',
+    background: 'bg-neutral-50',
+    border: 'border-neutral-200',
+    text: 'text-neutral-700',
+    chip: 'bg-white text-neutral-700 border-neutral-200',
+  },
+  'North America': {
+    emoji: '🧭',
+    background: 'bg-neutral-50',
+    border: 'border-neutral-200',
+    text: 'text-neutral-700',
+    chip: 'bg-white text-neutral-700 border-neutral-200',
+  },
+  'South America': {
+    emoji: '⛰️',
+    background: 'bg-neutral-50',
+    border: 'border-neutral-200',
+    text: 'text-neutral-700',
+    chip: 'bg-white text-neutral-700 border-neutral-200',
+  },
+  'General Travel Tips': {
+    emoji: '📚',
+    background: 'bg-neutral-50',
+    border: 'border-neutral-200',
+    text: 'text-neutral-700',
+    chip: 'bg-white text-neutral-700 border-neutral-200',
+  },
+};
+
+const defaultRegionTheme = {
+  emoji: '🌎',
+  background: 'bg-neutral-50',
+  border: 'border-neutral-200',
+  text: 'text-neutral-700',
+  chip: 'bg-white text-neutral-700 border-neutral-200',
+};
+
+const popularDestinationsByRegion = regions.reduce((acc, region) => {
+  const regionDestinations = (destinations || [])
+    .filter(destination => destination.category === region)
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .slice(0, 10)
+    .map(destination => ({
+      id: destination.id,
+      name: destination.name || destination.fullName || destination.id,
+    }));
+
+  if (regionDestinations.length > 0) {
+    acc[region] = regionDestinations;
+  }
+  return acc;
+}, {});
+
+const travelGuideRegions = [...regions, 'General Travel Tips'];
+
+const travelGuidesByRegion = travelGuideRegions.reduce((acc, region) => {
+  const guides = (travelGuides || [])
+    .filter(guide => guide.category === region)
+    .sort((a, b) => {
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+      return new Date(b.publishDate) - new Date(a.publishDate);
+    });
+
+  if (guides.length > 0) {
+    acc[region] = guides;
+  }
+
+  return acc;
+}, {});
 
 const Results = () => {
   const searchParams = useSearchParams();
@@ -826,7 +925,7 @@ const Results = () => {
                           <a
                             href={tour.productUrl}
                             target="_blank"
-                            rel="noopener noreferrer"
+                            rel="sponsored noopener noreferrer"
                             className="flex items-center justify-center"
                           >
                             View Details
@@ -930,7 +1029,7 @@ const Results = () => {
                 <a
                   href={generateViatorLink(searchTerm)}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   className="flex items-center justify-center"
                 >
                   Want to see all "{searchTerm}" tours? Click here!
@@ -940,6 +1039,115 @@ const Results = () => {
             </div>
           </div>
         )}
+
+        {/* Popular Destinations by Region */}
+        <div className="container mx-auto px-4 pb-12">
+          <div className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl p-8 shadow-sm">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-full px-3 py-1 mb-3">
+                <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium text-blue-700">Plan by Region</span>
+                <MapPin className="w-3 h-3 text-blue-500" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Popular Destinations</h3>
+              <p className="text-sm text-gray-600 mt-2">Explore 10 hand-picked destinations in every region we cover</p>
+            </div>
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {Object.entries(popularDestinationsByRegion).map(([region, regionDestinations]) => {
+                const theme = regionThemes[region] || defaultRegionTheme;
+                return (
+                  <div
+                    key={region}
+                    className={`rounded-2xl border ${theme.border} ${theme.background} p-5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5`}
+                  >
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl" aria-hidden="true">{theme.emoji}</span>
+                        <div>
+                          <h4 className={`text-lg font-semibold text-gray-900`}>{region}</h4>
+                          <p className={`text-xs uppercase tracking-wide font-medium ${theme.text}`}>
+                            {regionDestinations.length} destinations
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {regionDestinations.map(destination => (
+                        <Button
+                          key={destination.id}
+                          asChild
+                          variant="outline"
+                          size="sm"
+                          className={`border ${theme.chip} hover:shadow-sm hover:-translate-y-0.5 transition-transform duration-150`}
+                        >
+                          <Link href={`/destinations/${destination.id}`}>
+                            {destination.name}
+                          </Link>
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* Travel Guides by Region */}
+        <div className="container mx-auto px-4 pb-20">
+          <div className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl p-8 shadow-sm">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-50 via-blue-50 to-purple-100 border border-purple-200 rounded-full px-3 py-1 mb-3">
+                <div className="w-1.5 h-1.5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium text-purple-700">Travel Library</span>
+                <Crown className="w-3 h-3 text-purple-500" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Travel Guides by Region</h3>
+              <p className="text-sm text-gray-600 mt-2">Every long-form travel guide we&apos;ve published, organized by the regions you love</p>
+            </div>
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {Object.entries(travelGuidesByRegion).map(([region, guides]) => {
+                const theme = regionThemes[region] || defaultRegionTheme;
+                const isGeneralTips = region === 'General Travel Tips';
+                const cardClasses = `rounded-xl border ${theme.border} ${theme.background} p-5`;
+                const responsiveClasses = isGeneralTips ? 'md:col-span-2 xl:col-span-3' : '';
+                const contentAlignment = isGeneralTips ? 'items-center text-center' : 'items-center';
+                const justifyClass = isGeneralTips ? 'justify-center' : 'justify-between';
+
+                return (
+                  <div
+                    key={region}
+                    className={`${cardClasses} ${responsiveClasses}`.trim()}
+                  >
+                    <div className={`flex ${contentAlignment} ${justifyClass} gap-3 mb-4`}>
+                      <div className={`flex gap-3 ${isGeneralTips ? 'flex-col' : 'flex-row items-center'}`}>
+                        <span className="text-2xl" aria-hidden="true">{theme.emoji}</span>
+                        <div className={isGeneralTips ? 'space-y-1' : ''}>
+                          <h4 className="text-lg font-semibold text-gray-900">{region}</h4>
+                          <p className={`text-xs uppercase tracking-wide font-medium ${theme.text}`}>
+                            {guides.length} guides
+                          </p>
+                        </div>
+                      </div>
+                      {!isGeneralTips && <span className="text-xs text-neutral-500">{guides.length} guides</span>}
+                    </div>
+                    <div className={`flex flex-wrap gap-2 ${isGeneralTips ? 'justify-center' : ''}`}>
+                      {guides.map(guide => (
+                        <Link
+                          key={guide.id}
+                          href={`/travel-guides/${guide.id}`}
+                          className={`px-3 py-1 text-sm rounded-full border bg-white ${theme.chip} hover:shadow-sm hover:-translate-y-0.5 transition-transform duration-150`}
+                        >
+                          {guide.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Filter Modal */}
@@ -1189,7 +1397,7 @@ const Results = () => {
                 <a
                   href={selectedTour.productUrl}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   className="flex items-center justify-center"
                 >
                   View All Details

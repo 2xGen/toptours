@@ -5,6 +5,7 @@ import { Shield, DollarSign, Users, CheckCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
+import { ExternalLink } from 'lucide-react';
 
 export default function DisclosurePage() {
   useEffect(() => {
@@ -76,36 +77,47 @@ export default function DisclosurePage() {
                 <CardContent className="p-8">
                   <div className="prose prose-lg max-w-none text-gray-600">
                     <p className="text-lg leading-relaxed mb-6">
-                      TopTours.ai is a travel recommendation platform that helps you discover and book amazing tours and activities worldwide. 
-                      We want to be completely transparent about how our business works and how we're compensated.
+                      TopTours.ai is a travel recommendation platform that helps you discover and book tours and activities worldwide. 
+                      We believe in full transparency about how our business operates and how we&apos;re compensated.
                     </p>
                     
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">Affiliate Partnerships</h3>
                     <p className="mb-6">
-                      We partner with reputable tour operators and booking platforms like Viator, GetYourGuide, and other trusted providers. 
-                      When you click on our recommendations and make a booking, we may earn a commission from these partners. This is a 
-                      standard practice in the travel industry and helps us keep our service free for users.
+                      We partner with reputable tour and booking platforms such as Viator, GetYourGuide, and other trusted providers. 
+                      When you click on our recommendations and complete a booking, we may earn a commission from these partners. 
+                      This standard affiliate model allows us to keep our service free for users.
                     </p>
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">No Extra Cost to You</h3>
                     <p className="mb-6">
-                      Important: You never pay more when booking through our links. The prices you see are identical to what you would 
-                      pay if you booked directly with the tour operator. Our commission comes from the tour operator's marketing budget, 
-                      not from additional charges to you.
+                      You never pay more when booking through our links. Prices remain identical to booking directly with the tour operator. 
+                      Any commission comes from the operator’s marketing budget.
                     </p>
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">Our Commitment to Quality</h3>
                     <p className="mb-6">
-                      Our AI-powered recommendations are based on factors like tour quality, customer reviews, safety standards, and how 
-                      well they match your preferences – not on commission rates. We believe that recommending the best experiences for 
-                      you ultimately benefits everyone: you get amazing trips, tour operators get satisfied customers, and we build trust 
-                      that keeps you coming back.
+                      Our AI-powered recommendations prioritize tour quality, verified reviews, safety standards, and alignment with your preferences — not commission rates. 
+                      We only recommend experiences we believe provide genuine value.
+                    </p>
+
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                      Identifying Affiliate Links
+                      <ExternalLink className="w-5 h-5 text-blue-500" />
+                    </h3>
+                    <p className="mb-6">
+                      External affiliate links are marked with an external icon. Clicking these links may take you to another website and may generate a commission for TopTours.ai.
+                    </p>
+                    <p className="mb-6">
+                      While we strive to mark all affiliate links, please assume that any external link may be an affiliate link, even if the icon is missing due to oversight.
+                    </p>
+                    <p className="mb-6">
+                      Internal links—those that keep you on TopTours.ai—do not include the icon and are not affiliate links. Should you ever see the icon applied internally, please assume it was a mistake made in good faith and let us know so we can correct it.
                     </p>
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">Legal Compliance</h3>
                     <p>
-                      This disclosure is in accordance with the Federal Trade Commission's guidelines on endorsements and testimonials. 
-                      We are committed to honest and transparent business practices in all our operations.
+                      This disclosure complies with the Federal Trade Commission (FTC) guidelines on endorsements and EU transparency laws. 
+                      If you do not agree with these terms, please refrain from using TopTours.ai.
                     </p>
                   </div>
                 </CardContent>
@@ -185,7 +197,7 @@ export default function DisclosurePage() {
                   <strong>Contact us:</strong>
                 </p>
                 <p className="text-gray-600">
-                  Email: email@toptours.ai<br />
+                  Email: mail@toptours.ai<br />
                   We typically respond within 24 hours.
                 </p>
               </div>
