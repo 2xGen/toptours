@@ -120,7 +120,7 @@ export default function ContactPage() {
                   className="bg-white rounded-lg p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow"
                 >
                   <a 
-                    href="mailto:email@toptours.ai" 
+                    href="mailto:mail@toptours.ai" 
                     className="block"
                   >
                     <div className="text-center">
@@ -128,7 +128,7 @@ export default function ContactPage() {
                         <Mail className="h-8 w-8" />
                       </div>
                       <h3 className="text-lg font-semibold text-gray-800 mb-2">Email</h3>
-                      <p className="text-gray-600 text-sm">email@toptours.ai</p>
+                      <p className="text-gray-600 text-sm">mail@toptours.ai</p>
                     </div>
                   </a>
                 </motion.div>
