@@ -94,5 +94,26 @@
     "phone": "+1 809-959-2222",
     "website": "https://www.puntacana.com/",
     "notes": "Beachfront restaurant inside Puntacana Resort & Club. Hosts private events and water-sport rentals next door."
+  },
+  {
+    "name": "SBG Punta Cana",
+    "email": "bachatarosapc@gmail.com",
+    "phone": "+1 809-784-4047",
+    "website": "https://www.instagram.com/sbgpc/",
+    "notes": "BlueMall Punta Cana hotspot mixing Mediterranean-Caribbean cuisine, cocktails, and live music."
+  },
+  {
+    "name": "Jellyfish Restaurant Punta Cana",
+    "email": "info@jellyfishrestaurant.com",
+    "phone": "+1 809-551-1451",
+    "website": "https://jellyfishrestaurant.com/",
+    "notes": "Iconic Bávaro Beach venue known for weddings, fresh seafood, and upscale beachfront dining."
+  },
+  {
+    "name": "La Bruja Chupadora BBQ & Pub",
+    "email": null,
+    "phone": "+1 809-872-6893",
+    "website": "https://www.labrujachupadora.com.do/",
+    "notes": "Smokehouse-meets-bar concept near Bávaro with live DJs, creative tacos, and celebrated ribs."
   }
 ]
