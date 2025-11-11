@@ -830,5 +830,163 @@ export const restaurantsPuntaCana = {
         ],
       },
     },
+    'capitan-cook-restaurant-punta-cana': {
+      id: 'capitan-cook-restaurant-punta-cana',
+      slug: 'capitan-cook-restaurant-punta-cana',
+      name: 'Restaurante Capitán Cook Punta Cana',
+      shortName: 'Capitán Cook',
+      destinationId: 'punta-cana',
+      heroImage:
+        'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/Carib%20Restaurants/Capitan%20Cook%20Punta%20Cana.jpg',
+      imageAlt: 'Waterfront dining deck at Capitán Cook Punta Cana with ocean views',
+      tagline: 'Seafront landmark serving daily catch in seven signature styles for over a decade.',
+      description:
+        `A short stroll from Bávaro Beach, Capitán Cook has spent more than 20 years perfecting gourmet seafood and prime beef. The two-level space, filled with nautical artifacts and a ship-shaped bar, celebrates the voyages of British explorer James Cook while chefs turn the day’s catch into showstopping plates.`,
+      summary:
+        `Expect fresh fish cooked seven different ways, market sushi, charcoal-grilled steaks, and a wine list curated for lingering seaside dinners. With attentive service, views over the Caribbean, and a blend of classic and contemporary décor, Capitán Cook is a go-to for travelers craving elevated seafood in Punta Cana.`,
+      seo: {
+        title: 'Restaurante Capitán Cook Punta Cana – Waterfront Seafood Dining',
+        description:
+          'Dine at Capitán Cook Punta Cana for fresh catch cooked seven ways, gourmet steaks, and panoramic ocean views near Bávaro Beach. An iconic seafood restaurant with over two decades of tradition.',
+        keywords: [
+          'Capitan Cook Punta Cana',
+          'Punta Cana seafood restaurant',
+          'Bávaro waterfront dining',
+          'best paella Punta Cana',
+          'fresh catch Punta Cana',
+        ],
+      },
+      contact: {
+        email: 'capitancookbavaro@gmail.com',
+        phone: '+1 809-933-3171',
+        formattedPhone: '+1 809-933-3171',
+        address: 'C. Pedro Mir, Punta Cana 23000, Dominican Republic',
+        neighborhood: 'Bávaro',
+        website: 'https://captaincook.bg/',
+        googleMapsUrl: 'https://maps.google.com/?q=Capitan%20Cook%20Punta%20Cana',
+      },
+      pricing: {
+        priceRangeLabel: 'Seafood fine dining',
+        priceRange: '$$',
+      },
+      cuisines: ['Seafood', 'Steakhouse', 'Fine Dining'],
+      hours: [
+        { label: 'Daily Service', days: 'Monday – Sunday', time: '11:00 am – 11:00 pm' },
+      ],
+      booking: {
+        partner: 'Direct Reservation',
+        note:
+          'Reserve by phone or email for waterfront seating. Wine pairings and tasting menus available by request.',
+        partnerUrl: 'https://captaincook.bg/reservations',
+        isActive: true,
+      },
+      ratings: {
+        googleRating: 4.2,
+        reviewCount: 2594,
+        source: 'Google Reviews',
+        updated: '2025-01-15',
+      },
+      highlights: [
+        'Daily catch and premium seafood prepared in seven signature styles',
+        'Elegant two-level dining room filled with nautical artifacts and a ship-shaped bar',
+        'Extensive wine list and premium beef cuts alongside avant-garde fish dishes',
+        'Personalized service with a tradition of catering to special requests for more than 20 years',
+      ],
+      menuHighlights: [
+        {
+          section: 'From the Sea',
+          items: [
+            'Fresh catch cooked seven ways, from grilled to pan-seared with signature sauces',
+            'Seafood salad with shrimp, lobster, conch, and octopus in citrus dressing',
+            'Paella de mariscos loaded with seasonal shellfish and lobster',
+          ],
+        },
+        {
+          section: 'Raw & Tapas',
+          items: [
+            'Octopus and mahi carpaccios dressed with olive oil and lime',
+            'Tuna tartare with avocado, soy, and ponzu',
+            'French oysters on the half shell when available',
+          ],
+        },
+        {
+          section: 'Steaks & Comfort Classics',
+          items: [
+            'Jellyfish steak – 16 oz Angus ribeye with house sides',
+            'Ribeye de la casa served with roasted potatoes, corn, and Roquefort sauce',
+            'Pasta frutti di mare, Alfredo with shrimp, and kids’ menu favorites',
+          ],
+        },
+      ],
+      reviewSummary:
+        'Travelers love Capitán Cook’s fresh seafood, oceanfront views, and generous portions, noting that paella and lobster dishes are standouts. Some mention higher pricing and occasional wait times, but attentive service and the romantic setting keep the restaurant on many repeat-visit lists.',
+      story: {
+        title: 'A Nautical Institution on Bávaro Beach',
+        paragraphs: [
+          'Capitán Cook’s décor nods to the voyages of the British explorer with authentic maps, ship masts, and a bar shaped like a galleon—setting the stage for seafaring storytelling.',
+          'For more than 20 years, the restaurant has cultivated relationships with fishermen to ensure top-quality seafood year-round, alongside premium beef and seasonal produce.',
+          'Whether you’re in the mood for sushi, grilled lobster, or a tomahawk steak, the crew aims to make every dinner feel like a special expedition.',
+        ],
+      },
+      sustainability: {
+        title: 'Respect Bávaro’s Coastal Waters',
+        description:
+          'Arrive prepared with reef-safe sunscreen and reusable bottles before strolling the shore—it keeps Bávaro’s waters pristine for future explorers.',
+        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideImage:
+          'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
+        guideCta: 'Read the guide',
+      },
+      practicalInfo: [
+        {
+          title: 'Dress Code',
+          description: 'Resort elegant. Sundresses, collared shirts, and smart sandals fit the nautical fine-dining ambiance.',
+        },
+        {
+          title: 'Best For',
+          description: 'Seafood enthusiasts, date nights, special celebrations, and wine lovers seeking upscale waterfront dining.',
+        },
+        {
+          title: 'Good to Know',
+          description: 'Request balcony seating for the best views. Wine pairings and kids’ menu available.',
+        },
+      ],
+      meta: {
+        articlePublished: '2025-11-12',
+        articleModified: '2025-11-12',
+      },
+      schema: {
+        '@context': 'https://schema.org',
+        '@type': 'Restaurant',
+        name: 'Restaurante Capitán Cook Punta Cana',
+        image:
+          'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/Carib%20Restaurants/Capitan%20Cook%20Punta%20Cana.jpg',
+        '@id': 'https://toptours.ai/destinations/punta-cana/restaurants/capitan-cook-restaurant-punta-cana',
+        url: 'https://toptours.ai/destinations/punta-cana/restaurants/capitan-cook-restaurant-punta-cana',
+        servesCuisine: ['Seafood', 'Steakhouse', 'Fine Dining'],
+        priceRange: '$$',
+        telephone: '+1 809-933-3171',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'C. Pedro Mir',
+          addressLocality: 'Punta Cana',
+          addressRegion: 'La Altagracia',
+          postalCode: '23000',
+          addressCountry: 'DO',
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.2',
+          ratingCount: '2594',
+          reviewCount: '2594',
+          bestRating: '5',
+        },
+        sameAs: [
+          'https://www.facebook.com/CaptainCookRestaurant',
+          'https://www.instagram.com/captaincookpuntacana',
+          'https://captaincook.bg/',
+        ],
+      },
+    },
   },
 };
