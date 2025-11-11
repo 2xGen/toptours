@@ -4,7 +4,7 @@ import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { destinations } from '@/data/destinationsData';
-import { Search, MapPin, ArrowRight, Globe, X } from 'lucide-react';
+import { Search, MapPin, ArrowRight, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -19,7 +19,6 @@ export default function DestinationsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
-  const [showStickyButton, setShowStickyButton] = useState(true);
   const itemsPerPage = 24; // Show 24 destinations per page
 
   // Scroll to top when page changes
@@ -271,30 +270,6 @@ export default function DestinationsPage() {
             </div>
           </section>
         </main>
-        {/* Sticky Floating Button */}
-        {showStickyButton && filteredDestinations.length > 0 && (
-          <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 transition-opacity duration-300">
-            <div className="flex flex-col items-end gap-2">
-              <button
-                onClick={() => setShowStickyButton(false)}
-                className="w-10 h-10 bg-white hover:bg-gray-100 rounded-full flex items-center justify-center shadow-xl border-2 border-gray-300 transition-all duration-200 hover:scale-110"
-                aria-label="Close"
-              >
-                <X className="w-6 h-6 text-gray-900 stroke-2" />
-              </button>
-              <Link href={`/results?searchTerm=${encodeURIComponent(primaryDestinationName)}`}>
-                <Button 
-                  size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
-                >
-                  <span className="hidden sm:inline">See {primaryDestinationName} Tours & Prices</span>
-                  <span className="sm:hidden">View Tours</span>
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        )}
         <FooterNext />
       </div>
 
