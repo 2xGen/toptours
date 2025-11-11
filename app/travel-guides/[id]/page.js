@@ -6,7 +6,8 @@ export const dynamic = 'force-dynamic';
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
-  const guide = travelGuides.find(g => g.id === params.id);
+  const resolvedParams = await params;
+  const guide = travelGuides.find(g => g.id === resolvedParams.id);
   
   if (!guide) {
     return {
@@ -46,6 +47,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function TravelGuidePage({ params }) {
-  return <TravelGuideClient slug={params.id} />;
+export default async function TravelGuidePage({ params }) {
+  const resolvedParams = await params;
+  return <TravelGuideClient slug={resolvedParams.id} />;
 }

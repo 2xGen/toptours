@@ -22,3 +22,16 @@ export function getRestaurantBySlug(destinationId, slug) {
 
   return destinationRestaurants[slug] || null;
 }
+
+export function getAllRestaurants() {
+  return Object.entries(restaurantsData).flatMap(([destinationId, destinationRestaurants]) => {
+    if (!destinationRestaurants) {
+      return [];
+    }
+
+    return Object.values(destinationRestaurants).map((restaurant) => ({
+      destinationId,
+      restaurant,
+    }));
+  });
+}

@@ -28,6 +28,37 @@ export default function RestaurantsListClient({ destination, restaurants }) {
   const zanzibarRestaurant = restaurants.find((restaurant) => restaurant.slug === 'zanzibar-beach-restaurant-curacao');
   const heroTourText = `Pair dinner at ${zanzibarRestaurant?.shortName || zanzibarRestaurant?.name || destination.fullName} with these top-rated experiences in ${destination.fullName}.`;
 
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://toptours.ai/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Destinations',
+        item: 'https://toptours.ai/destinations',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: destination.name,
+        item: `https://toptours.ai/destinations/${destination.id}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        name: `Best Restaurants in ${destination.fullName}`,
+        item: `https://toptours.ai/destinations/${destination.id}/restaurants`,
+      },
+    ],
+  };
+
   const formatCategorySlug = (categoryName) =>
     categoryName
       .toLowerCase()
@@ -307,6 +338,8 @@ export default function RestaurantsListClient({ destination, restaurants }) {
       <FooterNext />
 
       <SmartTourFinder isOpen={isModalOpen} onClose={handleCloseModal} />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       {showStickyButton && (
         <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 transition-opacity duration-300">

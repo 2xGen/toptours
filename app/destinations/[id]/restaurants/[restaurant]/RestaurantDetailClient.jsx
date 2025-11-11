@@ -44,6 +44,37 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
     ...(restaurant.schema || {}),
   };
 
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://toptours.ai/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Destinations',
+        item: 'https://toptours.ai/destinations',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: destination.name,
+        item: `https://toptours.ai/destinations/${destination.id}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        name: restaurant.shortName || restaurant.name,
+        item: `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`,
+      },
+    ],
+  };
+
   const otherRestaurantsAvailable = otherRestaurants && otherRestaurants.length > 0;
 
   const headingCuisine = cuisines.length > 0 ? `${cuisines.join(' & ')} restaurant in ${destination.name}` : `Restaurant in ${destination.name}`;
@@ -716,6 +747,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
       )}
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       <FooterNext />
     </>

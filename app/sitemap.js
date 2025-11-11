@@ -1,5 +1,6 @@
 import { getAllDestinations } from '../src/data/destinationsData.js';
 import { travelGuides } from '../src/data/travelGuidesData.js';
+import { getRestaurantsForDestination, getAllRestaurants } from './destinations/[id]/restaurants/restaurantsData.js';
 
 export default function sitemap() {
   const baseUrl = 'https://toptours.ai';
@@ -66,6 +67,24 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
+  // Restaurant listing pages per destination
+  const restaurantListingPages = destinations
+    .filter((destination) => getRestaurantsForDestination(destination.id).length > 0)
+    .map((destination) => ({
+      url: `${baseUrl}/destinations/${destination.id}/restaurants`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.75,
+    }));
+
+  // Individual restaurant pages
+  const restaurantDetailPages = getAllRestaurants().map(({ destinationId, restaurant }) => ({
+    url: `${baseUrl}/destinations/${destinationId}/restaurants/${restaurant.slug}`,
+    lastModified: restaurant.meta?.articleModified || restaurant.meta?.articlePublished || currentDate,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+
   // Travel guide pages
   const travelGuidePages = travelGuides.map((guide) => ({
     url: `${baseUrl}/travel-guides/${guide.id}`,
@@ -74,6 +93,12 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...destinationPages, ...travelGuidePages];
+  return [
+    ...staticPages,
+    ...destinationPages,
+    ...restaurantListingPages,
+    ...restaurantDetailPages,
+    ...travelGuidePages,
+  ];
 }
 
