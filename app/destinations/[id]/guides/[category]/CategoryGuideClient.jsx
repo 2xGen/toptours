@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { 
   Anchor, MapPin, Clock, Users, DollarSign, Calendar, 
   Camera, Shirt, Sun, Waves, Heart, Star, ArrowRight,
-  BookOpen, ChevronRight, Home, GlassWater, Music, Sailboat, Ship, PartyPopper, HeartHandshake, X
+  BookOpen, ChevronRight, Home, GlassWater, Music, Sailboat, Ship, PartyPopper, HeartHandshake, X, ExternalLink
 } from 'lucide-react';
 import Link from 'next/link';
 import NavigationNext from '@/components/NavigationNext';
@@ -662,10 +662,11 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                     <p className="text-gray-600 text-sm mb-3">Rent a car for maximum flexibility and explore at your own pace on Expedia USA.</p>
                     <Button 
                       variant="outline" 
-                      className="w-full" 
+                      className="w-full flex items-center justify-center gap-2" 
                       onClick={() => window.open('https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk', '_blank')}
                     >
                       Find Car Rental Deals
+                      <ExternalLink className="w-4 h-4" />
                     </Button>
                   </div>
                 </CardContent>
@@ -683,10 +684,11 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                     <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers on Expedia USA.</p>
                     <Button 
                       variant="outline" 
-                      className="w-full" 
+                      className="w-full flex items-center justify-center gap-2" 
                       onClick={() => window.open('https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk', '_blank')}
                     >
                       Find Hotel Deals
+                      <ExternalLink className="w-4 h-4" />
                     </Button>
                   </div>
                 </CardContent>

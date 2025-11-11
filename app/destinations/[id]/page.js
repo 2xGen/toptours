@@ -6,7 +6,8 @@ export const dynamic = 'force-dynamic';
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
-  const destination = getDestinationById(params?.id);
+  const { id } = await params;
+  const destination = getDestinationById(id);
   
   if (!destination) {
     return {
@@ -44,8 +45,9 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function DestinationDetailPage({ params }) {
-  const destination = getDestinationById(params.id);
+export default async function DestinationDetailPage({ params }) {
+  const { id } = await params;
+  const destination = getDestinationById(id);
   
   if (!destination) {
     return (
