@@ -669,5 +669,166 @@ export const restaurantsPuntaCana = {
         ],
       },
     },
+    'pearl-beach-club-punta-cana': {
+      id: 'pearl-beach-club-punta-cana',
+      slug: 'pearl-beach-club-punta-cana',
+      name: 'Pearl Beach Club Punta Cana',
+      shortName: 'Pearl Beach Club',
+      destinationId: 'punta-cana',
+      heroImage:
+        'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/Carib%20Restaurants/pearl%20beach%20club%20punta%20cana.jpg',
+      imageAlt: 'Infinity pool and oceanfront cabanas at Pearl Beach Club Punta Cana',
+      tagline: 'Playa-chic daytime lounge with infinity pool, live DJs, and global cuisine in Cabeza de Toro.',
+      description:
+        `Set on the palm-fringed sands of Cabeza de Toro, Pearl Beach Club blends a modern beach club vibe with an all-day restaurant that swings from breakfast to sunset beats. Sip cocktails by the infinity pool, graze on sushi and Mediterranean fare, and watch the skyline turn gold as DJs take over the decks.`,
+      summary:
+        `Open daily 10 a.m.–7 p.m., Pearl is a private, tropical-glam escape minutes from Punta Cana International Airport. The menu spans Dominican breakfasts, sushi rolls, vegan grill platters, seafood paellas, and beach-friendly snacks—perfect for guests lounging on daybeds, celebrating special occasions, or planning glamorous destination events.`,
+      seo: {
+        title: 'Pearl Beach Club Punta Cana – Luxury Beach Club Dining in Cabeza de Toro',
+        description:
+          'Relax at Pearl Beach Club Punta Cana with an infinity pool, live DJ sets, cocktails, and Mediterranean-Caribbean-Asian cuisine in a private beachfront setting.',
+        keywords: [
+          'Pearl Beach Club Punta Cana',
+          'Cabeza de Toro beach club',
+          'Punta Cana brunch',
+          'Punta Cana infinity pool restaurant',
+          'Punta Cana sushi and paella',
+        ],
+      },
+      contact: {
+        email: null,
+        phone: '+1 809-933-3171',
+        formattedPhone: '+1 809-933-3171',
+        address: 'Bávaro, Punta Cana, La Altagracia, Higüey 23000, Dominican Republic',
+        neighborhood: 'Cabeza de Toro',
+        website: 'https://www.pearlbeachclub.com/',
+        googleMapsUrl: 'https://maps.google.com/?q=Pearl%20Beach%20Club%20Punta%20Cana',
+      },
+      pricing: {
+        priceRangeLabel: 'Beach club dining',
+        priceRange: '$$',
+      },
+      cuisines: ['Mediterranean', 'Caribbean', 'Asian Fusion'],
+      hours: [
+        { label: 'Daily Service', days: 'Monday – Sunday', time: '10:00 am – 7:00 pm' },
+      ],
+      booking: {
+        partner: 'Direct Reservation',
+        note:
+          'Reserve cabanas or daybeds online; dress code is resort chic. Destination events and weddings available through the events team.',
+        partnerUrl: 'https://www.pearlbeachclub.com/',
+        isActive: true,
+      },
+      ratings: {
+        googleRating: 4.5,
+        reviewCount: 2104,
+        source: 'Google Reviews',
+        updated: '2025-01-15',
+      },
+      highlights: [
+        'Private beachfront location with infinity pool, cabanas, and daybeds',
+        'Live DJ sets, sunset parties, and glamorous tropical atmosphere',
+        'Menu covering Dominican breakfasts, sushi, paellas, vegan grill platters, and gourmet burgers',
+        'Hosts luxury events, corporate parties, and destination weddings in Cabeza de Toro',
+      ],
+      menuHighlights: [
+        {
+          section: 'Breakfast & Bowls',
+          items: [
+            'Dominican breakfast with mangú, salami, fried eggs, and queso frito',
+            'American breakfast with pancakes, bacon, and scrambled eggs',
+            'Eggs Benedict on English muffins with hollandaise',
+            'Fresh fruit plates, croissants, and café drinks',
+          ],
+        },
+        {
+          section: 'Sushi & Raw Bar',
+          items: [
+            'Dominican roll with king crab, plantain, and eel sauce',
+            'Shrimp roll with breaded shrimp, avocado, and sesame',
+            'Ceviche Nikkei featuring tuna, leche de tigre, and wakame',
+            'Sushi special platter with rolls, sashimi, and nigiri',
+          ],
+        },
+        {
+          section: 'Signatures & Shared Plates',
+          items: [
+            'Vegan grill platter loaded with roasted veggies and tomato dressing',
+            'Seafood paella for sharing with lobster and seasonal shellfish',
+            'Pearl burger with Angus beef, camembert, and truffle mushroom sauce',
+            'Risotto de hongo y churrasco with skirt steak and parmesan',
+          ],
+        },
+      ],
+      reviewSummary:
+        'Guests love Pearl Beach Club’s photogenic pool, attentive service, and the way the venue shifts from relaxed daytime to lively sunset parties. Food ranges from sushi and ceviche to paellas and burgers, making it a crowd-pleaser for beach days, brunches, and celebrations.',
+      story: {
+        title: 'Infinity Pool Days & Sunset DJ Nights',
+        paragraphs: [
+          'Pearl Beach Club was built for modern tropical glamour: white cabanas, a glassy infinity pool, and views stretching across Cabeza de Toro’s calm waters.',
+          'Days start with breakfast, a dip in the pool, or toes-in-sand lunches. As the sun lowers, DJs and performers elevate the vibe—and the venue becomes one of Punta Cana’s favorite sunset spots.',
+          'Whether you’re planning a romantic day escape or a luxury event with friends, the Pearl team curates music, mixology, and menus to match the Caribbean backdrop.',
+        ],
+      },
+      sustainability: {
+        title: 'Protect Cabeza de Toro’s Coast',
+        description:
+          'Pack reef-safe sunscreen and reusable bottles so the lagoon-like waters of Cabeza de Toro stay crystal clear for future pool-and-beach days.',
+        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideImage:
+          'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
+        guideCta: 'Read the guide',
+      },
+      practicalInfo: [
+        {
+          title: 'Dress Code',
+          description: 'Resort chic—breezy linens, swimsuits with cover-ups, and sunglasses for poolside glamour.',
+        },
+        {
+          title: 'Best For',
+          description: 'Beach club brunches, pool parties, sunset cocktails, and destination weddings.',
+        },
+        {
+          title: 'Good to Know',
+          description: 'Currency: DOP, USD, EUR. English and Spanish spoken. Daybeds and cabanas require reservation for guaranteed space.',
+        },
+      ],
+      meta: {
+        articlePublished: '2025-11-12',
+        articleModified: '2025-11-12',
+      },
+      schema: {
+        '@context': 'https://schema.org',
+        '@type': 'Restaurant',
+        name: 'Pearl Beach Club Punta Cana',
+        image:
+          'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/Carib%20Restaurants/pearl%20beach%20club%20punta%20cana.jpg',
+        '@id': 'https://toptours.ai/destinations/punta-cana/restaurants/pearl-beach-club-punta-cana',
+        url: 'https://toptours.ai/destinations/punta-cana/restaurants/pearl-beach-club-punta-cana',
+        servesCuisine: ['Mediterranean', 'Caribbean', 'Asian Fusion'],
+        priceRange: '$$',
+        telephone: '+1 809-933-3171',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Bávaro',
+          addressLocality: 'Punta Cana',
+          addressRegion: 'La Altagracia',
+          postalCode: '23000',
+          addressCountry: 'DO',
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.5',
+          ratingCount: '2104',
+          reviewCount: '2104',
+          bestRating: '5',
+        },
+        sameAs: [
+          'https://www.facebook.com/pearlbeachclub',
+          'https://www.instagram.com/pearlbeachclub',
+          'https://www.pearlbeachclub.com/',
+        ],
+      },
+    },
   },
 };
