@@ -797,8 +797,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               size="lg"
               className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
             >
-              <span className="hidden sm:inline">See {destination.name} {guideData.categoryName} Options</span>
-              <span className="sm:hidden">View Tours</span>
+              <span>See {destination.name} {guideData.categoryName} Options</span>
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>

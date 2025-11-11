@@ -101,9 +101,13 @@ export const restaurantsCuracao = {
         ],
       },
       sustainability: {
-        title: 'Sourcing Locally & Respecting the Island',
+        title: 'Protecting Curaçao’s Reefs',
         description:
-          'Kome partners directly with Curaçao farmers, fisherfolk, and artisans to keep ingredients local and reduce waste. Eco-friendly products, mindful portioning, and a sustainability-first mindset ensure every dish is as responsible as it is flavorful.',
+          'Do your part to keep Curaçao’s reefs vibrant—pack reef-safe sunscreen and low-waste beach essentials before you hit the water.',
+        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideImage:
+          'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
+        guideCta: 'Read the guide',
       },
       practicalInfo: [
         {
@@ -252,9 +256,13 @@ export const restaurantsCuracao = {
         ],
       },
       sustainability: {
-        title: 'Supporting Local Fishers',
+        title: 'Protecting Curaçao’s Coast',
         description:
-          'Brisa do Mar sources seafood directly from Caracas Bay fishermen whenever possible and keeps the menu seasonal to minimise waste.',
+          'Help keep Caracas Bay sparkling by choosing reef-safe sunscreen and reusable beach gear for your seaside meals.',
+        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideImage:
+          'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
+        guideCta: 'Read the guide',
       },
       practicalInfo: [
         {
@@ -390,9 +398,13 @@ export const restaurantsCuracao = {
         ],
       },
       sustainability: {
-        title: 'Hooked on Local Catch',
+        title: 'Respect for Piscadera’s Waters',
         description:
-          'De Visserij works directly with Piscadera fishermen, keeping seafood miles low and supporting the local fleet.',
+          'Plan ahead with reef-safe sunscreen and reusable containers so Piscadera’s calm waters stay pristine for fishermen and foodies alike.',
+        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideImage:
+          'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
+        guideCta: 'Read the guide',
       },
       practicalInfo: [
         {
@@ -526,9 +538,13 @@ export const restaurantsCuracao = {
         ],
       },
       sustainability: {
-        title: 'Community-Driven Hospitality',
+        title: 'Supporting Downtown Curaçao',
         description:
-          'La Bohème supports local farmers for produce, sources honey and dairy from island partners, and offers plant-forward dishes to reduce its footprint.',
+          'Pack reef-safe sunscreen and reusable totes to wander Punda’s streets while keeping Curaçao’s reefs healthy.',
+        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideImage:
+          'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
+        guideCta: 'Read the guide',
       },
       practicalInfo: [
         {
@@ -674,9 +690,13 @@ export const restaurantsCuracao = {
         ],
       },
       sustainability: {
-        title: 'Celebrating Local Heritage',
+        title: 'Historic Waterfront Stewardship',
         description:
-          'De Gouverneur works with island farmers and fishers for seasonal ingredients and preserves the historic building with mindful restorations.',
+          'Keep the Handelskade dazzling—choose reef-safe sunscreen and low-waste beach kits before strolling the waterfront.',
+        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideImage:
+          'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
+        guideCta: 'Read the guide',
       },
       practicalInfo: [
         {
@@ -821,9 +841,13 @@ export const restaurantsCuracao = {
         ],
       },
       sustainability: {
-        title: 'Island Vibes, Local Partnerships',
+        title: 'Beach-Friendly Practices',
         description:
-          'Zanzibar supports Jan Thiel Beach events by partnering with local musicians and sourcing produce from island vendors when possible.',
+          'Heading to Jan Thiel? Protect the lagoon with reef-safe sunscreen and reusable bottles so the beach stays vibrant.',
+        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideImage:
+          'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
+        guideCta: 'Read the guide',
       },
       practicalInfo: [
         {

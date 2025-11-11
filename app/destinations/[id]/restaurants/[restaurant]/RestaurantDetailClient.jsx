@@ -419,6 +419,24 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                         <p className="text-gray-700 leading-relaxed">
                           {restaurant.sustainability.description}
                         </p>
+                        {restaurant.sustainability.guideImage && (
+                          <div className="mt-6 overflow-hidden rounded-2xl border border-green-100">
+                            <img
+                              src={restaurant.sustainability.guideImage}
+                              alt={`${restaurant.sustainability.title} guide cover`}
+                              className="w-full h-40 object-cover"
+                            />
+                          </div>
+                        )}
+                        {restaurant.sustainability.guideUrl && (
+                          <div className="mt-6">
+                            <Button asChild className="bg-green-600 hover:bg-green-700 text-white">
+                              <Link href={restaurant.sustainability.guideUrl} target="_blank" rel="noopener noreferrer">
+                                {restaurant.sustainability.guideCta || 'Read the guide'}
+                              </Link>
+                            </Button>
+                          </div>
+                        )}
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -737,8 +755,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                 size="lg"
                 className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
               >
-                <span className="hidden sm:inline">Explore {destination.name} Tours</span>
-                <span className="sm:hidden">View Tours</span>
+                <span>Explore {destination.name}</span>
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>

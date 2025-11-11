@@ -1,7 +1,9 @@
 import { restaurantsCuracao } from './restaurantsData-curacao';
+import { restaurantsAruba } from './restaurantsData-aruba';
 
 export const restaurantsData = {
   ...restaurantsCuracao,
+  ...restaurantsAruba,
 };
 
 export function getRestaurantsForDestination(destinationId) {

@@ -24,7 +24,7 @@
     "primaryEmail": null,
     "phone": "+599 9 521 0000",
     "website": "https://www.facebook.com/piscaderanoreservations",
-    "notes": "Self-service fish market restaurant at Piscadera fishing port; best contact via phone or Facebook."
+    "notes": "Fresh fish from local fishermen, informal dining. No reservations."
   },
   {
     "destinationId": "curacao",
@@ -52,5 +52,40 @@
     "phone": "+599 9 747 0633",
     "website": "https://www.janthielbeach.com/zanzibar-beach-curacao",
     "notes": "Jan Thiel beach bar with live music; best contacted by phone or through Jan Thiel Beach events team."
+  },
+  {
+    "name": "Atardi Beach Restaurant Aruba",
+    "email": "AtardiAruba@Marriott.com",
+    "phone": "+297 520 6537",
+    "website": "https://www.atardiaruba.com/",
+    "notes": "Romantic beachfront dining at the Aruba Marriott. Book at least two weeks ahead for sunset seating."
+  },
+  {
+    "name": "Passions on the Beach Aruba",
+    "email": "concierge@amsterdammanor.aw",
+    "phone": "+297 527 1118",
+    "website": "https://www.passionsonthebeach.com/",
+    "notes": "Toes-in-the-sand dining on Eagle Beach with breakfast, lunch, and sunset dinner service."
+  },
+  {
+    "name": "Zeerovers Aruba",
+    "email": "jp.zeerovers@outlook.com",
+    "phone": "+297 584 8401",
+    "website": "https://www.facebook.com/pages/Zeerovers/119447924791845",
+    "notes": "Fisherman-run dock in Savaneta serving fried catch by the pound. Cash only, closed Mondays."
+  },
+  {
+    "name": "Gianni’s Restaurant Aruba",
+    "email": "Giannis@giannisgroup.com",
+    "phone": "+297 586 7794",
+    "website": "https://giannisristoranteitaliano.com/",
+    "notes": "Palm Beach Italian favorite known for flaming Parmigiano spaghetti and group-friendly dining rooms."
+  },
+  {
+    "name": "Wacky Wahoo’s Seafood Aruba",
+    "email": "info@wackywahoo.com",
+    "phone": "+297 586 7333",
+    "website": "https://wackywahoo.com/",
+    "notes": "Fisherman-owned seafood spot near Palm Beach. Walk-in only; lines form before 5:30 p.m."
   }
 ]

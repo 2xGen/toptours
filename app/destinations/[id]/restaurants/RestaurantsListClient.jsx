@@ -161,8 +161,8 @@ export default function RestaurantsListClient({ destination, restaurants }) {
                   key={restaurant.id}
                   className="border border-blue-100 shadow-xl overflow-hidden"
                 >
-                  <div className={`grid grid-cols-1 lg:grid-cols-2 ${imageFirst ? '' : 'lg:grid-flow-col-dense'}`}>
-                    <div className={`relative h-64 lg:h-full ${imageFirst ? '' : 'lg:order-2'}`}>
+                  <div className={`flex flex-col lg:flex-row ${imageFirst ? '' : 'lg:flex-row-reverse'}`}>
+                    <div className="relative w-full lg:w-1/2 h-64 lg:min-h-[360px]">
                       <img
                         src={restaurant.heroImage || destination.imageUrl}
                         alt={restaurant.imageAlt || restaurant.name}
@@ -184,7 +184,7 @@ export default function RestaurantsListClient({ destination, restaurants }) {
                       </div>
                     </div>
 
-                    <div className="p-6 md:p-8 lg:p-10 flex flex-col gap-4">
+                    <div className="w-full lg:w-1/2 p-6 md:p-8 lg:p-10 flex flex-col gap-4">
                       <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
                         {restaurant.cuisines ? `${restaurant.cuisines.join(' · ')} restaurant in ${destination.fullName}` : `Restaurant in ${destination.fullName}`}
                       </span>
@@ -356,8 +356,7 @@ export default function RestaurantsListClient({ destination, restaurants }) {
                 size="lg"
                 className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
               >
-                <span className="hidden sm:inline">Explore {destination.name} Tours</span>
-                <span className="sm:hidden">View Tours</span>
+                <span>Explore {destination.name}</span>
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
