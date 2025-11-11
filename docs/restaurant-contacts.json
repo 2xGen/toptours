@@ -171,5 +171,47 @@
     "phone": "+1 242-323-0320",
     "website": "https://acropolisbahamas.com/",
     "notes": "Mediterranean-inspired Nassau cafe serving beloved breakfasts, gyros, and grilled plates."
+  },
+  {
+    "name": "Rockhouse Restaurant",
+    "email": "info@rockhousehotel.com",
+    "phone": "+1 876-957-4373",
+    "website": "https://www.rockhouse.com/",
+    "notes": "Cliffside fine-dining in Negril with modern Caribbean cuisine and Pristine Cove views."
+  },
+  {
+    "name": "Broken Plate Restaurant",
+    "email": "adminbrokenplateja@gmail.com",
+    "phone": "+1 876-667-6891",
+    "website": "https://brokenplatejamaica.com/",
+    "notes": "Kingston rooftop hotspot mixing Jamaican flavors with international finesse and craft cocktails."
+  },
+  {
+    "name": "Devon House Bakery",
+    "email": "marketingandevents@devonhouseja.com",
+    "phone": "+1 876-566-3198",
+    "website": "https://www.devonhousejamaica.com/dining/devon-house-bakery",
+    "notes": "Artisanal bakery inside historic Devon House, famous for patties, cakes, and sweet buns."
+  },
+  {
+    "name": "South Avenue Grill",
+    "email": "info@southavenuegrill.com",
+    "phone": "+1 876-906-3609",
+    "website": "https://southavenuegrill.com/",
+    "notes": "Kingston steakhouse mixing South American grilling with Jamaican classics and fresh local produce."
+  },
+  {
+    "name": "Miss T's Kitchen",
+    "email": "misstskitchen@gmail.com",
+    "phone": "+1 876-795-0099",
+    "website": "https://www.misstskitchen.com/",
+    "notes": "Open-air Ocho Rios favorite by Chef Anna-Kay “Miss T” Tomlinson serving rustic Jamaican comfort food."
+  },
+  {
+    "name": "Little Ochie Seafood Restaurant & Bar",
+    "email": null,
+    "phone": "+1 876-852-6430",
+    "website": "https://littleochiejamaica.a-zcompanies.com/",
+    "notes": "South coast institution in Alligator Pond serving pick-your-catch seafood from boat cabanas since 1989."
   }
 ]
