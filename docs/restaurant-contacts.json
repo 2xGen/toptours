@@ -129,5 +129,47 @@
     "phone": "+1 809-933-3171",
     "website": "https://captaincook.bg/",
     "notes": "Waterfront seafood institution with daily catch, steakhouse cuts, and nautical décor."
+  },
+  {
+    "name": "The New Duff Nassau",
+    "email": "guava@thenewduff.com",
+    "phone": "+1 242-824-3000",
+    "website": "https://www.thenewduff.com/",
+    "notes": "Observation kitchen and dessert trucks serving handmade Bahamian guava duff near Arawak Cay."
+  },
+  {
+    "name": "The Green Parrot – Harbour Front",
+    "email": null,
+    "phone": "+1 242-322-9248",
+    "website": "https://greenparrotbar.com/",
+    "notes": "Harbourfront bar and grill on East Bay Street known for conch bites, burgers, and sunset cocktails."
+  },
+  {
+    "name": "Twin Brothers Seafood & Steakhouse",
+    "email": "dannymccardy1@gmail.com",
+    "phone": "+1 242-328-5033",
+    "website": "https://twinbrothersbahamas.com/",
+    "notes": "Fish Fry staple famous for cracked conch dinners and colorful daiquiris."
+  },
+  {
+    "name": "Goldie’s Conch House",
+    "email": "goldiesconchhouseofficial@gmail.com",
+    "phone": "+1 242-325-4300",
+    "website": "https://goldiesconchhouseofficial.com/",
+    "notes": "Arawak Cay favorite with conch salad, sunset decks, and harbor views."
+  },
+  {
+    "name": "The Poop Deck",
+    "email": "info@thepoopdeck.com",
+    "phone": "+1 242-393-8175",
+    "website": "https://thepoopdeck.com/",
+    "notes": "You-pick-it seafood institution on East Bay Street with marina views and stone crab claws."
+  },
+  {
+    "name": "Acropolis Cafe & Bakery",
+    "email": "acropoliscafebahamas@gmail.com",
+    "phone": "+1 242-323-0320",
+    "website": "https://acropolisbahamas.com/",
+    "notes": "Mediterranean-inspired Nassau cafe serving beloved breakfasts, gyros, and grilled plates."
   }
 ]

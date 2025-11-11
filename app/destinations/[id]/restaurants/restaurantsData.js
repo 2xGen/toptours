@@ -1,11 +1,13 @@
 import { restaurantsCuracao } from './restaurantsData-curacao';
 import { restaurantsAruba } from './restaurantsData-aruba';
 import { restaurantsPuntaCana } from './restaurantsData-punta-cana';
+import { restaurantsNassau } from './restaurantsData-nassau';
 
 export const restaurantsData = {
   ...restaurantsCuracao,
   ...restaurantsAruba,
   ...restaurantsPuntaCana,
+  ...restaurantsNassau,
 };
 
 export function getRestaurantsForDestination(destinationId) {
