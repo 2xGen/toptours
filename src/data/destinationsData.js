@@ -6,7 +6,7 @@ export const destinations = [
     category: 'Caribbean',
     country: 'Aruba',
     briefDescription: 'White-sand beaches, turquoise waters, and endless adventure — Aruba is the Caribbean\'s ultimate island escape.',
-    relatedGuides: ['best-caribbean-islands', 'best-time-to-visit-caribbean', 'aruba-vs-curacao'],
+    relatedGuides: ['aruba-packing-list', 'best-time-to-visit-aruba', '3-day-aruba-itinerary', 'aruba-vs-curacao', 'aruba-vs-punta-cana', 'aruba-vs-jamaica'],
     heroDescription: 'Welcome to Aruba, where constant sunshine meets stunning coastlines and warm hospitality. Whether you\'re cruising at sunset, exploring hidden coves on an ATV, or snorkeling vibrant reefs, Aruba offers unforgettable experiences for every traveler. Let our AI-powered planner help you discover the best this island has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//aruba.webp',
     tourCategories: [
@@ -236,7 +236,7 @@ export const destinations = [
       { name: 'Beach Tours', hasGuide: true },
       { name: 'Historical Tours', hasGuide: true }
     ],
-    relatedGuides: ['curacao-vs-jamaica'],
+    relatedGuides: ['curacao-vs-jamaica', 'aruba-vs-jamaica'],
     seo: {
       title: 'Jamaica Tours & Excursions - Top-Rated Activities & Adventures',
       description: 'Discover top-rated Jamaica tours, excursions, and activities powered by AI. From waterfall adventures to reggae music tours, find the perfect way to explore Jamaica.',
@@ -329,7 +329,7 @@ export const destinations = [
       'Scape Park - Adventure park with zip lines and natural pools',
       'Catalina Island - Perfect for snorkeling and diving'
     ],
-    relatedGuides: ['curacao-vs-punta-cana']
+    relatedGuides: ['curacao-vs-punta-cana', 'aruba-vs-punta-cana']
   },
   {
     id: 'santo-domingo',

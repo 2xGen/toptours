@@ -149,6 +149,30 @@ Every destination is unique—whether you're exploring the beaches of Aruba or t
     relatedDestination: null
   },
   {
+    id: 'aruba-packing-list',
+    title: 'Aruba Beach Vacation Packing List: Essentials You Shouldn’t Forget',
+    excerpt: 'Pack for Aruba with confidence using this island-ready checklist covering Palm Beach sunsets, Boca Catalina snorkel days, and breezy nights along the high-rise strip.',
+    content: 'Aruba’s ever-present trade winds, shallow turquoise bays, and boardwalk dining call for a smart mix of reef-safe sun care, lightweight linen, and gear that transitions from catamaran decks to sunset dinners. Use this guide to cover the packing essentials so every hour on “One Happy Island” feels effortless.',
+    category: 'Caribbean',
+    country: 'Aruba',
+    readTime: '8 min read',
+    publishDate: '2025-11-12',
+    author: 'Caribbean Travel Expert',
+    image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/aruba%20packing.png',
+    tags: ['Aruba Packing List', 'Aruba Travel Tips', 'Caribbean Packing Guide', 'Palm Beach Aruba'],
+    featured: true,
+    type: 'guide',
+    wordCount: 1100,
+    internalLinks: [
+      '/destinations/aruba',
+      '/destinations/aruba/restaurants',
+      '/travel-guides/best-time-to-visit-caribbean',
+      '/travel-guides/aruba-vs-curacao'
+    ],
+    relatedDestination: '/destinations/aruba',
+    relatedDestinationLabel: 'Aruba'
+  },
+  {
     id: 'curacao-packing-list',
     title: 'Curaçao Beach Vacation Packing List: Essentials You Shouldn\'t Forget',
     excerpt: 'Pack for Curaçao with confidence using this island-ready checklist covering reef-safe sun care, snorkel gear, and trade-wind-friendly outfits for every adventure.',
@@ -188,8 +212,34 @@ Every destination is unique—whether you're exploring the beaches of Aruba or t
       '/travel-guides/best-time-to-visit-curacao',
       '/travel-guides/curacao-packing-list'
     ],
+    relatedPosts: ['best-time-to-visit-curacao', 'curacao-packing-list', 'aruba-vs-curacao'],
     relatedDestination: '/destinations/curacao',
     relatedDestinationLabel: 'Curaçao'
+  },
+  {
+    id: '3-day-aruba-itinerary',
+    title: '3 Days in Aruba: Palm Beach Sunsets, Desert Thrills, and Local Flavor',
+    excerpt: 'Spend 72 hours on “One Happy Island” with sunrise snorkels, UTV adventures through Arikok, and barefoot dinners at Aruba’s top restaurants.',
+    content: `Three days in Aruba is all you need to sail past the Antilla wreck, taste local pastechi, and watch the sun sink behind Palm Beach with your toes in the sand. This itinerary lines up snorkel-ready mornings, desert adventures, and dinner reservations at the restaurants locals and travelers rave about—so every day feels curated, not crammed.`,
+    category: 'Caribbean',
+    country: 'Aruba',
+    readTime: '9 min read',
+    publishDate: '2025-11-12',
+    author: 'Caribbean Travel Expert',
+    image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/three%20day%20aruba%20itinerary.png',
+    tags: ['Aruba Itinerary', '3 Days in Aruba', 'Aruba Tours', 'Aruba Restaurants', 'Palm Beach Aruba'],
+    featured: true,
+    type: 'guide',
+    wordCount: 1600,
+    internalLinks: [
+      '/destinations/aruba',
+      '/destinations/aruba/restaurants',
+      '/travel-guides/aruba-packing-list',
+      '/travel-guides/best-time-to-visit-aruba'
+    ],
+    relatedPosts: ['best-time-to-visit-aruba', 'aruba-packing-list', 'aruba-vs-curacao'],
+    relatedDestination: '/destinations/aruba',
+    relatedDestinationLabel: 'Aruba'
   },
   {
     id: 'aruba-vs-curacao',
@@ -212,6 +262,54 @@ Every destination is unique—whether you're exploring the beaches of Aruba or t
       '/travel-guides/best-time-to-visit-curacao',
       '/travel-guides/curacao-packing-list',
       '/travel-guides/3-day-curacao-itinerary'
+    ],
+    relatedDestination: null
+  },
+  {
+    id: 'aruba-vs-punta-cana',
+    title: 'Aruba vs Punta Cana: Which Caribbean Escape Matches Your Vacation Style?',
+    excerpt: 'Compare Aruba’s resort-ready Palm Beach with Punta Cana’s all-inclusive coastline—weather, beaches, dining, and signature adventures so you can choose (or combine) the right island.',
+    content: 'Aruba and Punta Cana both deliver sugar-soft sand and dependable sunshine, but the vibe on each island feels entirely different. Aruba is compact and walkable, blending high-rise resorts with boutique beach clubs and desert adventures. Punta Cana stretches along miles of palm-lined coast where all-inclusives, catamaran cruises, and Saona day trips reign supreme. Use this guide to stack their strengths, key differences, top restaurants, and can’t-miss activities so you can zero in on the Caribbean experience that fits your getaway—or plan a split trip that captures both perks.',
+    category: 'Caribbean',
+    country: 'Multidestination',
+    readTime: '10 min read',
+    publishDate: '2025-11-12',
+    author: 'Caribbean Travel Expert',
+    image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/aruba%20vs%20punta%20cana.png',
+    tags: ['Aruba vs Punta Cana', 'Caribbean Comparison', 'Aruba Travel', 'Punta Cana Travel', 'Caribbean Resorts'],
+    featured: true,
+    type: 'guide',
+    wordCount: 1700,
+    internalLinks: [
+      '/destinations/aruba',
+      '/destinations/punta-cana',
+      '/travel-guides/best-time-to-visit-aruba',
+      '/travel-guides/curacao-vs-punta-cana',
+      '/travel-guides/3-day-aruba-itinerary'
+    ],
+    relatedDestination: null
+  },
+  {
+    id: 'aruba-vs-jamaica',
+    title: 'Aruba vs Jamaica: Which Caribbean Island Fits Your Travel Style?',
+    excerpt: 'Compare Aruba’s breezy beaches and boutique dining with Jamaica’s reggae nightlife, waterfalls, and all-inclusive energy so you can pick (or combine) the island that matches your next getaway.',
+    content: 'Aruba and Jamaica sit on opposite ends of the Caribbean travel spectrum. Aruba is compact, desert-sunny, and easy to explore independently with Palm Beach resorts and sunset sails. Jamaica pulses with reggae rhythms, rainforest adventures, and cliff-top bars backed by all-inclusive resorts. This guide stacks their strengths, key differences, and signature experiences so you can choose the island vibe that suits your vacation—or plan a two-stop itinerary that gives you both.',
+    category: 'Caribbean',
+    country: 'Multidestination',
+    readTime: '10 min read',
+    publishDate: '2025-11-12',
+    author: 'Caribbean Travel Expert',
+    image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/aruba%20vs%20jamaica.png',
+    tags: ['Aruba vs Jamaica', 'Caribbean Comparison', 'Aruba Travel', 'Jamaica Travel', 'Caribbean Islands'],
+    featured: true,
+    type: 'guide',
+    wordCount: 1700,
+    internalLinks: [
+      '/destinations/aruba',
+      '/destinations/jamaica',
+      '/travel-guides/best-time-to-visit-caribbean',
+      '/travel-guides/beach-vacation-packing-list',
+      '/travel-guides/3-day-aruba-itinerary'
     ],
     relatedDestination: null
   },
@@ -720,9 +818,84 @@ Ready to time your island escape perfectly? Use TopTours.ai to compare Curaçao'
     type: 'seasonal',
     wordCount: 1800,
     internalLinks: ['/destinations/curacao', '/travel-guides/best-time-to-visit-caribbean', '/destinations/aruba'],
+    relatedPosts: ['3-day-curacao-itinerary', 'curacao-packing-list', 'aruba-vs-curacao'],
     relatedDestination: '/destinations/curacao',
     relatedDestinationLabel: 'Curaçao',
     relatedDestinations: ['curacao', 'aruba', 'bonaire']
+  },
+  {
+    id: 'best-time-to-visit-aruba',
+    title: 'Best Time to Visit Aruba: Sunshine, Trade Winds, and Top Tours',
+    excerpt: 'Match Aruba’s sunshine, trade winds, and island events to your travel dates with this month-by-month guide covering weather, festivals, and the best times to book snorkel cruises and desert adventures.',
+    content: `Aruba’s forecast is famously reliable—sunny skies, gentle trade winds, and warm turquoise water almost every week of the year. But slight seasonal shifts make certain months better for kite festivals, ultra-clear snorkel days, or quieter spa escapes. Use this guide to time your trip, understand the weather, and reserve the tours that shine in each stretch of Aruba’s calendar.
+
+## Aruba Weather at a Glance
+
+### January – April: Peak Sunshine Season
+- Dry skies, steady trade winds, and 78–84°F days make this the classic winter escape.
+- Expect postcard sunsets, lively Palm Beach boardwalks, and top demand for sunset sails and snorkel cruises.
+
+### May – August: Breezy Shoulder Season
+- Brief afternoon sprinkles keep the island lush while crowds thin and hotel rates soften.
+- Winds pick up—perfect for windsurfing, kitesurfing, and off-road explorations inland.
+
+### September – November: Calm Seas & Value Finds
+- Trade winds relax, seas turn glassy, and snorkeling visibility spikes around Boca Catalina and the Antilla wreck.
+- This is hurricane season elsewhere, but Aruba sits safely south, making it a savvy-value window.
+
+### December: Festive High Season
+- Holiday lights, beachside fireworks, and end-of-year festivals fill the island.
+- Book flights, resorts, and tours several months ahead—demand surges during Christmas and New Year’s.
+
+## Month-by-Month Snapshot
+- **January – March:** Peak sunshine for catamaran cruises, Antilla snorkel days, and the Aruba Carnival parades.
+- **April:** Lighter winds create dreamy SUP and kayak conditions in calm bays like Mangel Halto.
+- **May – June:** Shoulder-season pricing with reliably sunny mornings—ideal for desert UTV tours and sunset dinners.
+- **July – August:** Trade winds reach their peak, powering the Aruba Hi-Winds Championships and kitesurfing clinics.
+- **September – October:** Glassy water and thin crowds—great for scuba refreshers, beach club lounging, and spa getaways.
+- **November:** Perfect compromise month with calm seas, culinary festivals, and pre-holiday boutique sales.
+- **December:** Holiday buzz, Bon Bini Festival celebrations, and nightly fireworks leading up to New Year’s Eve.
+
+## Best Time for Tours & Experiences
+- **Snorkeling & Sailing:** September through early December deliver the clearest water and smoothest seas; January–April offers breezy catamaran days with lively decks.
+- **Kitesurfing & Windsurfing:** June–August is prime time thanks to steady 20+ mph trade winds and the Aruba Hi-Winds event.
+- **Off-Road & Desert Tours:** December–March’s cooler mornings keep UTV, Jeep, and horseback excursions comfortable in Arikok National Park.
+- **Cultural & Food Experiences:** January–February aligns with Carnival street parties, while October–November bring Eat Local Restaurant Month menus.
+
+## Signature Events & Festivals
+- **Aruba Carnival (January–February):** Torchlight parades, colorful costumes, and island-wide celebrations.
+- **Aruba Hi-Winds (Late June/Early July):** International windsurfing and kitesurfing competition at Fisherman’s Huts.
+- **Caribbean Sea Jazz Festival (September):** Live music, culinary pop-ups, and beachside jam sessions.
+- **Eat Local Restaurant Month (October/November):** Prix-fixe menus spotlighting Aruban and fusion cuisine.
+- **Dande & Fireworks (December):** Traditional caroling, fireworks, and nightly festivities leading into New Year’s Eve.
+
+## When to Find the Best Deals
+- **May – June** and **September – November** deliver lower hotel rates, softer flight prices, and bundled tour offers.
+- Book snorkel cruises, dinner sails, and jeep safaris online during these windows to grab early-bird discounts.
+- Traveling with family? June and October often feature family-friendly resort promos with included activities.
+
+## Quick Planning Tips
+- Reserve Carnival and holiday stays 6–9 months ahead—boutique resorts and oceanfront condos fill quickly.
+- Schedule Antilla wreck snorkel tours early in your itinerary—if winds spike, operators can rebook you later in the week.
+- Rent a car for beach hopping, but lean on guided off-road tours to reach remote natural pools and rock bridges.
+- Pack reef-safe sunscreen, a cooling towel, and anchoring stakes for beach umbrellas—the trade winds are no joke.
+
+## Plan Your Aruba Trip with TopTours.ai
+Ready to sync your Aruba getaway with perfect weather and tours? Use TopTours.ai to compare Palm Beach catamaran cruises, UTV desert adventures, kitesurf lessons, and foodie walking tours. Our AI highlights trusted operators, real traveler reviews, and instant booking options so every day on “One Happy Island” hits your ideal vibe.` ,
+    category: 'Caribbean',
+    country: 'Aruba',
+    readTime: '10 min read',
+    publishDate: '2025-11-12',
+    author: 'Caribbean Travel Expert',
+    image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/Best%20Time%20to%20Visit%20aruba.png',
+    tags: ['Best Time to Visit Aruba', 'Aruba Weather', 'Aruba Travel Seasons', 'Aruba Tours', 'Caribbean Travel'],
+    featured: true,
+    type: 'seasonal',
+    wordCount: 1700,
+    internalLinks: ['/destinations/aruba', '/travel-guides/aruba-packing-list', '/travel-guides/aruba-vs-curacao'],
+    relatedDestination: '/destinations/aruba',
+    relatedDestinationLabel: 'Aruba',
+    relatedDestinations: ['aruba', 'curacao', 'bonaire']
   },
   {
     id: 'patagonia-travel-guide',

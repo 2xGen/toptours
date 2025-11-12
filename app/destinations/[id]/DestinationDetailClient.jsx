@@ -43,6 +43,7 @@ export default function DestinationDetailClient({ destination }) {
   const { toast } = useToast();
   const restaurants = getRestaurantsForDestination(safeDestination.id);
   const hasRestaurants = restaurants.length > 0;
+  const normalizedRelatedGuides = Array.isArray(relatedGuides) ? relatedGuides : [];
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -724,7 +725,7 @@ export default function DestinationDetailClient({ destination }) {
         )}
 
         {/* Related Travel Guides Carousel Section */}
-        {relatedGuides.length > 0 && (
+        {normalizedRelatedGuides.length > 0 && (
           <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h3 className="text-2xl font-poppins font-bold text-gray-800 mb-6 text-center">
@@ -744,13 +745,13 @@ export default function DestinationDetailClient({ destination }) {
                         <ChevronLeft className="w-4 h-4" />
                       </Button>
                       <span className="text-sm text-gray-600">
-                        {guideCarouselIndex + 1} of {relatedGuides.length}
+                        {guideCarouselIndex + 1} of {normalizedRelatedGuides.length}
                       </span>
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => setGuideCarouselIndex(Math.min(relatedGuides.length - 1, guideCarouselIndex + 1))}
-                        disabled={guideCarouselIndex >= relatedGuides.length - 1}
+                        onClick={() => setGuideCarouselIndex(Math.min(normalizedRelatedGuides.length - 1, guideCarouselIndex + 1))}
+                        disabled={guideCarouselIndex >= normalizedRelatedGuides.length - 1}
                         className="w-10 h-10 p-0"
                       >
                         <ChevronRight className="w-4 h-4" />
@@ -763,7 +764,7 @@ export default function DestinationDetailClient({ destination }) {
                           transform: `translateX(calc(-${guideCarouselIndex * 100}% - ${guideCarouselIndex * 1.5}rem))`
                         }}
                       >
-                        {relatedGuides.map((guide) => (
+                        {normalizedRelatedGuides.map((guide) => (
                           <Link 
                             key={guide.id}
                             href={`/travel-guides/${guide.id}`}
@@ -813,7 +814,7 @@ export default function DestinationDetailClient({ destination }) {
                 </div>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {relatedGuides.map((guide) => (
+                        {normalizedRelatedGuides.map((guide) => (
                     <Link 
                       key={guide.id}
                       href={`/travel-guides/${guide.id}`}

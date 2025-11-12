@@ -101,6 +101,20 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
               tags: ['Beach Packing', 'Vacation Essentials', 'Travel Tips'],
               relatedPosts: ['curacao-packing-list', 'how-to-choose-a-tour']
             },
+    'aruba-packing-list': {
+      title: 'Aruba Beach Vacation Packing List: Essentials You Shouldn’t Forget',
+      excerpt: 'Pack for Aruba with confidence using this island-ready checklist covering Palm Beach sunsets, Boca Catalina snorkel days, and breezy nights along the high-rise strip.',
+      publishDate: '2025-11-12',
+      author: 'Caribbean Travel Expert',
+      readTime: '8 min read',
+      category: 'Caribbean',
+      image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/aruba%20packing.png',
+      content: 'Aruba’s trade winds, shallow turquoise bays, and boardwalk dining call for a smart mix of reef-safe sun care, lightweight linen, and gear that transitions from catamaran decks to sunset dinners. Use this guide to cover the packing essentials so every hour on “One Happy Island” feels effortless.',
+      tags: ['Aruba Packing List', 'Aruba Travel Tips', 'Caribbean Packing Guide', 'Palm Beach Aruba'],
+      relatedPosts: ['aruba-vs-curacao', 'curacao-packing-list'],
+      relatedDestination: '/destinations/aruba',
+      relatedDestinationLabel: 'Aruba'
+    },
             'curacao-packing-list': {
               title: 'Curaçao Beach Vacation Packing List: Essentials You Shouldn\'t Forget',
               excerpt: 'Pack for Curaçao with confidence using this island-ready checklist covering reef-safe sun care, snorkel gear, and outfits made for trade winds and pastel city strolls.',
@@ -115,7 +129,35 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
               relatedDestination: '/destinations/curacao',
               relatedDestinationLabel: 'Curaçao'
             },
-            '3-day-curacao-itinerary': {
+        'best-time-to-visit-aruba': {
+          title: 'Best Time to Visit Aruba: Sunshine, Trade Winds, and Top Tours',
+          excerpt: 'Match Aruba’s sunshine, trade winds, and festivals to your travel dates with this month-by-month breakdown covering weather, events, and the ideal times to book snorkel cruises and desert adventures.',
+          publishDate: '2025-11-12',
+          author: 'Caribbean Travel Expert',
+          readTime: '10 min read',
+          category: 'Caribbean',
+          image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/Best%20Time%20to%20Visit%20aruba.png',
+          content: 'Aruba’s forecast rarely surprises—think brilliant sunshine, warm turquoise water, and trade winds that keep the island comfortable year-round. Still, slight seasonal shifts change which tours shine, when festivals light up Palm Beach, and how far your travel dollars stretch. Use this guide to time your trip perfectly, from breezy kite season to calm-sea snorkel days.',
+          tags: ['Best Time to Visit Aruba', 'Aruba Weather', 'Aruba Travel Seasons', 'Aruba Tours'],
+          relatedPosts: ['aruba-packing-list', 'aruba-vs-curacao'],
+          relatedDestination: '/destinations/aruba',
+          relatedDestinationLabel: 'Aruba'
+        },
+        '3-day-aruba-itinerary': {
+          title: '3 Days in Aruba: Palm Beach Sunsets, Desert Thrills, and Local Flavor',
+          excerpt: 'Spend 72 hours on “One Happy Island” with sunrise snorkels, UTV adventures through Arikok, and barefoot dinners at Aruba’s top restaurants.',
+          publishDate: '2025-11-12',
+          author: 'Caribbean Travel Expert',
+          readTime: '9 min read',
+          category: 'Caribbean',
+          image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/three%20day%20aruba%20itinerary.png',
+          content: 'Three days in Aruba is all you need to sail past the Antilla wreck, taste local pastechi, and watch the sun sink behind Palm Beach with your toes in the sand. This itinerary lines up snorkel-ready mornings, desert adventures, and dinner reservations at Aruba’s most-loved restaurants so every day feels curated, not crammed.',
+          tags: ['Aruba Itinerary', '3 Days in Aruba', 'Aruba Tours', 'Aruba Restaurants', 'Palm Beach Aruba'],
+          relatedPosts: ['best-time-to-visit-aruba', 'aruba-packing-list', 'aruba-vs-curacao'],
+          relatedDestination: '/destinations/aruba',
+          relatedDestinationLabel: 'Aruba'
+        },
+        '3-day-curacao-itinerary': {
               title: '3 Days in Curaçao: The Perfect Long Weekend Itinerary',
               excerpt: 'Make the most of 72 hours in Curaçao with a curated itinerary covering Willemstad’s UNESCO core, Klein Curaçao day trips, and sunset dining at top restaurants.',
               publishDate: '2025-11-12',
@@ -140,6 +182,32 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
               content: 'Aruba and Curaçao may share sunshine and Dutch-Caribbean roots, but each brings a distinct energy. Use this comparison to see how they line up for beaches, nightlife, culture, and signature experiences.',
               tags: ['Aruba vs Curaçao', 'Caribbean Comparison', 'Aruba Travel', 'Curaçao Travel'],
               relatedPosts: ['3-day-curacao-itinerary', 'curacao-packing-list'],
+              relatedDestination: null
+            },
+            'aruba-vs-punta-cana': {
+              title: 'Aruba vs Punta Cana: Which Caribbean Escape Matches Your Vacation Style?',
+              excerpt: 'Compare Aruba’s resort-ready Palm Beach with Punta Cana’s all-inclusive coastline so you can choose the island that fits your getaway—or plan a combo trip that delivers both.',
+              publishDate: '2025-11-12',
+              author: 'Caribbean Travel Expert',
+              readTime: '10 min read',
+              category: 'Caribbean',
+              image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/aruba%20vs%20punta%20cana.png',
+              content: 'Aruba is compact and easy-going, pairing high-rise resorts with boutique beach clubs, desert adventures, and sunset sails. Punta Cana sprawls along miles of palm-lined sand where all-inclusive resorts, Saona Island excursions, and catamaran parties headline every itinerary. This guide stacks both destinations—beaches, dining, nightlife, and signature experiences—so you can pick the right Caribbean vibe or stitch them together for one unforgettable escape.',
+              tags: ['Aruba vs Punta Cana', 'Caribbean Comparison', 'Aruba Travel', 'Punta Cana Travel'],
+              relatedPosts: ['3-day-aruba-itinerary', 'best-time-to-visit-aruba', 'curacao-vs-punta-cana'],
+              relatedDestination: null
+            },
+            'aruba-vs-jamaica': {
+              title: 'Aruba vs Jamaica: Which Caribbean Island Fits Your Travel Style?',
+              excerpt: 'Compare Aruba’s breezy beaches and boutique dining with Jamaica’s reggae nightlife, waterfalls, and all-inclusive energy so you can pick (or combine) the island that matches your next getaway.',
+              publishDate: '2025-11-12',
+              author: 'Caribbean Travel Expert',
+              readTime: '10 min read',
+              category: 'Caribbean',
+              image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/aruba%20vs%20jamaica.png',
+              content: 'Aruba and Jamaica sit on opposite sides of the Caribbean travel spectrum. Aruba is sun-drenched, desert-scenic, and easy to explore independently, while Jamaica pulses with reggae rhythms, rainforest adventures, and cliff-top bars. This guide lines them up so you can match the island vibe—or plan a combo trip that delivers both.',
+              tags: ['Aruba vs Jamaica', 'Caribbean Comparison', 'Aruba Travel', 'Jamaica Travel'],
+              relatedPosts: ['3-day-aruba-itinerary', 'best-time-to-visit-caribbean', 'curacao-vs-jamaica'],
               relatedDestination: null
             },
             'curacao-vs-jamaica': {
@@ -448,7 +516,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
             }
   };
 
-  const post = blogPosts[slug];
+  const post = blogPosts[slug] || travelGuides.find(g => g.id === slug);
   const exploreDestinationLabel = post?.relatedDestinationLabel ?? null;
 
   // Load related destinations based on post category
@@ -805,6 +873,85 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
             })}
           </script>
         )}
+        {slug === 'aruba-packing-list' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What should I pack for a trip to Aruba?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Bring reef-safe sunscreen, polarized sunglasses, a cooling towel, water shoes for rocky entries, and a personal snorkel set. Add breezy linen outfits for Palm Beach evenings and an insulated bottle for catamaran cruises."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I need water shoes in Aruba?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Popular snorkel spots like Tres Trapi, Boca Catalina, and Malmok have rocky ledges. Water shoes protect your feet and give traction when entering or exiting the water."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is reef-safe sunscreen required in Aruba?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "While not legally mandated everywhere, reef-safe sunscreen is highly recommended to protect Aruba’s coral reefs. Many snorkel and dive operators prefer guests to use mineral sunscreen."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Should I bring my own snorkel gear to Aruba?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Bringing your own snorkel mask ensures comfort and hygiene, especially if you plan to swim at Boca Catalina or the Antilla wreck several times during your stay."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What kind of clothing works best for Aruba nights?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pack lightweight dresses, linen pants, and breathable shirts that transition from the beach to Palm Beach restaurants. Include a light layer for breezy waterfront dinners."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
+        {slug === 'best-time-to-visit-aruba' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": "Best Time to Visit Aruba: Sunshine, Trade Winds, and Top Tours",
+              "description": "Discover when to visit Aruba for perfect weather, signature festivals, calm snorkel days, and breezy adventure tours with this month-by-month planning guide.",
+              "author": {
+                "@type": "Person",
+                "name": "Caribbean Travel Expert"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "TopTours.ai",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://toptours.ai/logo.png"
+                }
+              },
+              "image": "https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/Best%20Time%20to%20Visit%20aruba.png",
+              "datePublished": "2025-11-12",
+              "dateModified": "2025-11-12",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://toptours.ai/travel-guides/best-time-to-visit-aruba"
+              }
+            })}
+          </script>
+        )}
         {slug === 'curacao-packing-list' && (
           <script type="application/ld+json">
             {JSON.stringify({
@@ -905,6 +1052,90 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
             })}
           </script>
         )}
+        {slug === 'aruba-vs-punta-cana' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Is Aruba or Punta Cana better for all-inclusive resorts?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Punta Cana is the stronger all-inclusive hub, featuring dozens of beachfront resorts with bundled dining, activities, and airport transfers. Aruba has a handful of all-inclusive properties, but most travellers opt for high-rise hotels or boutique stays and build their own dining schedule."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I need to rent a car in Aruba or Punta Cana?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You do not need a car in Punta Cana—resort shuttles, private transfers, and organised excursions cover the major attractions. In Aruba, taxis and ride shares handle most outings, but hiring a Jeep or compact car for a day unlocks Arikok National Park, San Nicolas street art, and hidden snorkel spots."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "When is the best time to visit Aruba or Punta Cana?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "December through April is peak season on both islands with breezy sunshine and minimal rain. Book early if you are travelling over holidays or spring break. Shoulder months such as May, June, and late August through October bring lighter crowds and better hotel deals with only occasional showers."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I visit Aruba and Punta Cana on the same trip?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Most itineraries route through Miami, Panama City, or Santo Domingo, and total travel time between the islands is about five to six hours including a connection. Many travellers start with Aruba’s boutique stays and snorkelling, then finish with an all-inclusive resort week in Punta Cana."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
+        {slug === 'aruba-vs-jamaica' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Is Aruba or Jamaica better for first-time Caribbean travelers?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Aruba is more compact and walkable, with calm beaches and short taxi rides—ideal for first-time visitors who want simplicity. Jamaica offers larger resorts, reggae nightlife, and rainforest adventures, making it perfect for travelers seeking a high-energy escape with guided excursions."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I need to rent a car in Aruba or Jamaica?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can rely on taxis, ride shares, or guided tours in Aruba, renting a Jeep only if you plan to explore Arikok National Park or the island’s south coast. In Jamaica, distances are longer, so most visitors book private drivers, resort transfers, or group excursions instead of renting a car."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "When is the best time to visit Aruba or Jamaica?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "December through April brings breezy sunshine on both islands and is the most popular travel window. Shoulder seasons—May to June and late August to early November—offer lighter crowds and better hotel deals, though Jamaica sees brief afternoon showers."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I visit Aruba and Jamaica on the same trip?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Many travelers fly into Aruba for a few days of beach-hopping and catamarans, then connect via Miami, Panama City, or Santo Domingo to Jamaica for waterfalls, reggae shows, and cliff-top sunsets. Total travel time between the islands is about five to six hours including the connection."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
         {slug === 'aruba-vs-curacao' && (
           <script type="application/ld+json">
             {JSON.stringify({
@@ -930,6 +1161,35 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
               "mainEntityOfPage": {
                 "@type": "WebPage",
                 "@id": "https://toptours.ai/travel-guides/aruba-vs-curacao"
+              }
+            })}
+          </script>
+        )}
+        {slug === 'aruba-vs-jamaica' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": "Aruba vs Jamaica: Which Caribbean Island Fits Your Travel Style?",
+              "description": "Compare Aruba’s breezy beaches and boutique dining with Jamaica’s reggae nightlife, waterfalls, and all-inclusive energy so you can choose (or combine) the island that matches your next getaway.",
+              "author": {
+                "@type": "Person",
+                "name": "Caribbean Travel Expert"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "TopTours.ai",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://toptours.ai/logo.png"
+                }
+              },
+              "image": 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/aruba%20vs%20jamaica.png',
+              "datePublished": "2025-11-12",
+              "dateModified": "2025-11-12",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://toptours.ai/travel-guides/aruba-vs-jamaica"
               }
             })}
           </script>
@@ -2025,6 +2285,64 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
             })}
           </script>
         )}
+        {slug === 'best-time-to-visit-aruba' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "When is the best time to visit Aruba?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "January through April deliver classic sunshine with lively events, while May through August bring stronger trade winds perfect for kitesurfing. September through November offer calm seas, thinner crowds, and great value without hurricane risk."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Does Aruba get hurricanes?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Aruba sits well south of the main Atlantic hurricane belt, so direct hits are extremely rare. Late summer and autumn may bring brief showers or distant systems, but the island remains reliably sunny and breezy."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "When is the best time for snorkeling and sailing in Aruba?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "September through early December deliver the clearest water and calmest seas for Boca Catalina and the Antilla wreck. January through April offers breezy catamaran cruises with festive decks and warm water."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What events should I plan my Aruba trip around?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Key annual events include Aruba Carnival (January–February), Aruba Hi-Winds (late June/early July), Caribbean Sea Jazz Festival (September), Eat Local Restaurant Month (October/November), and Dande caroling with fireworks in December."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How far in advance should I book Aruba tours?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Reserve sunset sails, Antilla snorkel charters, and UTV adventures as soon as you confirm travel dates—prime departures during Carnival, summer windsport season, and holidays often sell out weeks ahead."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is summer a good time to visit Aruba?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. June through August are warm and breezy with world-class kitesurfing, plus shoulder-season pricing on hotels. Expect livelier wind conditions—plan morning boat tours and enjoy the energy around Aruba Hi-Winds."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
         {slug === 'best-time-to-visit-curacao' && (
           <script type="application/ld+json">
             {JSON.stringify({
@@ -2362,14 +2680,749 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                     <p className="text-xl leading-relaxed text-gray-700 font-light">
                       Choosing the perfect tour can be overwhelming. With so many options, from guided city tours to private adventures, it's hard to know which one will give you the experience you want. Luckily, understanding the types of tours and what to expect from each can make the decision much easier.
                     </p>
+                  ) : slug === 'aruba-packing-list' ? (
+                    <>
+                      <div className="bg-gradient-to-r from-orange-50 to-teal-50 border border-orange-200 rounded-lg p-8 my-8">
+                        <p className="text-lg text-orange-900 italic">
+                          <strong>Island Insight:</strong> Aruba’s trade winds feel refreshing, but they also send unsecured beach gear tumbling down the sand. Pack wind-ready essentials so your Palm Beach base stays put while you hop in for a swim.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Aruba Beach Packing Checklist</h2>
+                      
+                      <div className="space-y-12 my-8">
+                        <div className="bg-gradient-to-r from-orange-50 to-amber-50 border-l-4 border-orange-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-orange-900 mb-3">1. ☀️ Reef-Safe Sun Protection</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//reef%20safe%20sunscreen.jpg"
+                            alt="Reef-safe sunscreen packed for Aruba beaches"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Mineral sunscreen is essential for Malmok Reef and Mangel Halto.</strong> Aruba’s UV index soars by midday, so pack enough for generous reapplication on catamaran decks and Eagle Beach strolls.</p>
+                          <a
+                            href="https://amzn.to/45abfxx"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-blue-900 mb-3">2. 🏖️ Wind-Proof Beach Setup</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp"
+                            alt="Wind-resistant beach gear packed for Aruba"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Bring a sand-free mat, collapsible cooler, and umbrella anchors.</strong> Aruba’s steady trade winds mean you’ll want ground stakes or sand screws to keep shade structures upright on Palm and Eagle Beach.</p>
+                          <a
+                            href="https://amzn.to/4lDnatL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-green-900 mb-3">3. 👟 Water Shoes & Reef-Safe Footwear</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//shoes%20on%20the%20beach.jpg"
+                            alt="Water shoes ready for Aruba snorkel entries"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Malmok Beach, Arashi, and Tres Trapi have rocky entries.</strong> Quick-dry water shoes protect your feet when you hop in to see blue parrotfish or climb limestone ledges.</p>
+                          <a
+                            href="https://amzn.to/40rJsWO"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-teal-50 to-cyan-50 border-l-4 border-teal-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-teal-900 mb-3">4. 🤿 Personal Snorkel Set</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//snorkel%20gear%20on%20the%20beach.webp"
+                            alt="Snorkel gear packed for Boca Catalina in Aruba"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Aruba’s best snorkel spots start right offshore.</strong> A personal mask and fins mean you can slip into Boca Catalina or the Antilla wreck without relying on boat rental gear.</p>
+                          <a
+                            href="https://amzn.to/411vniV"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-purple-50 to-violet-50 border-l-4 border-purple-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-purple-900 mb-3">5. 💧 Insulated Hydration & Cooling Gear</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//insulated%20bottle%20on%20the%20beach.jpg"
+                            alt="Insulated bottle and cooling towel for Aruba excursions"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Catamaran cruises and UTV tours run hot under the sun.</strong> Pack an insulated bottle, cooling towel, and electrolyte packets to stay refreshed while exploring the desert interior or cruising to De Palm Island.</p>
+                          <a
+                            href="https://amzn.to/46isTQO"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-pink-50 to-rose-50 border-l-4 border-pink-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-pink-900 mb-3">6. 👕 Breezy Day-to-Night Outfits</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20clothing.jpg"
+                            alt="Lightweight clothing perfect for Aruba evenings"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Linen shirts, airy cover-ups, and lightweight dresses thrive in Aruba’s climate.</strong> Pack pieces that go from beach clubs to Palm Beach dinners without overheating.</p>
+                          <a
+                            href="https://amzn.to/4nX2cay"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-indigo-50 to-blue-50 border-l-4 border-indigo-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-indigo-900 mb-3">7. 🕶️ Polarized Sunglasses & Sun Accessories</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//sunglasses%20on%20the%20beach.jpg"
+                            alt="Polarized sunglasses ready for Aruba glare"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Glare off the Caribbean Sea is intense around the high-rise district.</strong> Polarized lenses, a wide-brim hat, and aloe gel keep your eyes and skin comfortable during long beach days.</p>
+                          <a
+                            href="https://amzn.to/3IxXu2T"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 border-yellow-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-yellow-900 mb-3">8. 🦆 Compact Floats & Hammocks</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20floats%20on%20the%20beach.jpg"
+                            alt="Inflatable floats for calm Aruba waters"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Aruba’s calm shallows beg for lazy float sessions.</strong> Pack lightweight inflatables or a mesh water hammock for tranquil afternoons at Baby Beach or Renaissance’s private lagoon.</p>
+                          <a
+                            href="https://amzn.to/45aiLZi"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-gray-50 to-slate-50 border-l-4 border-gray-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-gray-900 mb-3">9. ⚓ Dry Bag & Sand-Proof Tech Kit</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//float%20anchor%20on%20the%20beach.jpg"
+                            alt="Dry bag and anchor kit for Aruba excursions"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Protect phones and action cams during De Palm snorkel cruises or UTV rides.</strong> A waterproof dry bag, float anchor, and sand-proof cases keep gear safe when the wind kicks up.</p>
+                          <a
+                            href="https://amzn.to/46Ocunm"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Aruba Packing Tips</h2>
+                      
+                      <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-8 my-8">
+                        <ul className="space-y-3 text-gray-700">
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Double up on swimwear:</strong> Trade winds dry suits quickly, but two or three rotations keep you ready for sunrise dips and sunset dinners.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Use packing cubes:</strong> Separate snorkel gear, resort wear, and excursion outfits so you can pivot from ATV trails to Palm Beach nightlife.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Bring a portable fan or cooling towel:</strong> They’re lifesavers during midday shopping along the Oranjestad tram line.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Carry a reusable tote:</strong> Perfect for Super Food grocery runs, floating markets, or tossing in beach snacks before a catamaran sail.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Pack a lightweight rash guard:</strong> Great for UV protection during Antilla snorkel excursions or long SUP sessions at Mangel Halto.</span>
+                          </li>
+                        </ul>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Plan the Rest of Your Aruba Escape</h2>
+                      <div className="bg-gradient-to-r from-orange-50 to-pink-50 border border-orange-200 rounded-lg p-8">
+                        <p className="text-lg text-gray-700 leading-relaxed">
+                          Once your suitcase is dialed in, it’s time to match those outfits with Aruba experiences. Pair this list with curated tours, dining reservations, and sunset sails so every day on “One Happy Island” runs perfectly.
+                        </p>
+                        <p className="text-lg text-gray-700 leading-relaxed mt-4">
+                          Ready to build your itinerary? Explore AI-picked excursions, beachfront restaurants, and local insights tailored to Aruba’s best neighborhoods.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                          <Button
+                            asChild
+                            className="bg-white text-orange-600 border border-orange-400 hover:bg-orange-50 transition-colors px-5 py-3 font-semibold"
+                          >
+                            <Link href="/destinations/aruba">
+                              Explore Aruba →
+                            </Link>
+                          </Button>
+                          <Button
+                            asChild
+                            className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-5 py-3 font-semibold"
+                          >
+                            <Link href="/destinations/aruba/restaurants">
+                              See Top Restaurants →
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 my-8">
+                        <p className="text-sm text-yellow-800">
+                          <strong>Disclosure:</strong> *As an Amazon Associate, we may earn commission from qualifying purchases at no extra cost to you.
+                        </p>
+                      </div>
+                    </>
                   ) : slug === 'beach-vacation-packing-list' ? (
                     <p className="text-xl leading-relaxed text-gray-700 font-light">
                       Packing for a beach vacation can make or break your trip. Whether you're heading to the Caribbean, Mediterranean, or tropical paradise, having the right essentials ensures you'll be comfortable, protected, and ready for endless beach adventures. Here's your comprehensive checklist to pack like a pro.
                     </p>
-                  ) : slug === 'curacao-packing-list' ? (
-                    <p className="text-xl leading-relaxed text-gray-700 font-light">
-                      Curaçao's year-round sunshine, breezy trade winds, and coral-rich coves deserve a packing list tailored to island life. From Klein Curaçao catamaran days to sunset strolls along the Handelskade, this guide keeps your suitcase light, functional, and ready for every Curaçao adventure.
-                    </p>
+                  ) : slug === 'aruba-packing-list' ? (
+                    <>
+                      <p className="text-xl leading-relaxed text-gray-700 font-light">
+                        Aruba’s constant trade winds, powder-soft beaches, and catamaran-ready bays deserve a packing list tuned to the island’s pace. From Palm Beach boardwalk evenings to morning snorkel runs at Boca Catalina, this guide keeps your suitcase light, sun-safe, and ready for every “One Happy Island” moment.
+                      </p>
+                      <div className="bg-gradient-to-r from-orange-50 to-teal-50 border border-orange-200 rounded-lg p-8 my-8">
+                        <p className="text-lg text-orange-900 italic">
+                          <strong>Island Insight:</strong> Aruba’s trade winds feel refreshing, but they also send unsecured beach gear tumbling down the sand. Pack wind-ready essentials so your Palm Beach base stays put while you hop in for a swim.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Aruba Beach Packing Checklist</h2>
+                      
+                      <div className="space-y-12 my-8">
+                        <div className="bg-gradient-to-r from-orange-50 to-amber-50 border-l-4 border-orange-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-orange-900 mb-3">1. ☀️ Reef-Safe Sun Protection</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//reef%20safe%20sunscreen.jpg"
+                            alt="Reef-safe sunscreen packed for Aruba beaches"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Mineral sunscreen is essential for Malmok Reef and Mangel Halto.</strong> Aruba’s UV index soars by midday, so pack enough for generous reapplication on catamaran decks and Eagle Beach strolls.</p>
+                          <a
+                            href="https://amzn.to/45abfxx"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-blue-900 mb-3">2. 🏖️ Wind-Proof Beach Setup</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp"
+                            alt="Wind-resistant beach gear packed for Aruba"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Bring a sand-free mat, collapsible cooler, and umbrella anchors.</strong> Aruba’s steady trade winds mean you’ll want ground stakes or sand screws to keep shade structures upright on Palm and Eagle Beach.</p>
+                          <a
+                            href="https://amzn.to/4lDnatL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-green-900 mb-3">3. 👟 Water Shoes & Reef-Safe Footwear</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//shoes%20on%20the%20beach.jpg"
+                            alt="Water shoes ready for Aruba snorkel entries"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Malmok Beach, Arashi, and Tres Trapi have rocky entries.</strong> Quick-dry water shoes protect your feet when you hop in to see blue parrotfish or climb limestone ledges.</p>
+                          <a
+                            href="https://amzn.to/40rJsWO"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-teal-50 to-cyan-50 border-l-4 border-teal-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-teal-900 mb-3">4. 🤿 Personal Snorkel Set</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//snorkel%20gear%20on%20the%20beach.webp"
+                            alt="Snorkel gear packed for Boca Catalina in Aruba"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Aruba’s best snorkel spots start right offshore.</strong> A personal mask and fins mean you can slip into Boca Catalina or the Antilla wreck without relying on boat rental gear.</p>
+                          <a
+                            href="https://amzn.to/411vniV"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-purple-50 to-violet-50 border-l-4 border-purple-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-purple-900 mb-3">5. 💧 Insulated Hydration & Cooling Gear</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//insulated%20bottle%20on%20the%20beach.jpg"
+                            alt="Insulated bottle and cooling towel for Aruba excursions"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Catamaran cruises and UTV tours run hot under the sun.</strong> Pack an insulated bottle, cooling towel, and electrolyte packets to stay refreshed while exploring the desert interior or cruising to De Palm Island.</p>
+                          <a
+                            href="https://amzn.to/46isTQO"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-pink-50 to-rose-50 border-l-4 border-pink-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-pink-900 mb-3">6. 👕 Breezy Day-to-Night Outfits</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20clothing.jpg"
+                            alt="Lightweight clothing perfect for Aruba evenings"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Linen shirts, airy cover-ups, and lightweight dresses thrive in Aruba’s climate.</strong> Pack pieces that go from beach clubs to Palm Beach dinners without overheating.</p>
+                          <a
+                            href="https://amzn.to/4nX2cay"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-indigo-50 to-blue-50 border-l-4 border-indigo-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-indigo-900 mb-3">7. 🕶️ Polarized Sunglasses & Sun Accessories</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//sunglasses%20on%20the%20beach.jpg"
+                            alt="Polarized sunglasses ready for Aruba glare"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Glare off the Caribbean Sea is intense around the high-rise district.</strong> Polarized lenses, a wide-brim hat, and aloe gel keep your eyes and skin comfortable during long beach days.</p>
+                          <a
+                            href="https://amzn.to/3IxXu2T"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 border-yellow-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-yellow-900 mb-3">8. 🦆 Compact Floats & Hammocks</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20floats%20on%20the%20beach.jpg"
+                            alt="Inflatable floats for calm Aruba waters"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Aruba’s calm shallows beg for lazy float sessions.</strong> Pack lightweight inflatables or a mesh water hammock for tranquil afternoons at Baby Beach or Renaissance’s private lagoon.</p>
+                          <a
+                            href="https://amzn.to/45aiLZi"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-gray-50 to-slate-50 border-l-4 border-gray-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-gray-900 mb-3">9. ⚓ Dry Bag & Sand-Proof Tech Kit</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//float%20anchor%20on%20the%20beach.jpg"
+                            alt="Dry bag and anchor kit for Aruba excursions"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Protect phones and action cams during De Palm snorkel cruises or UTV rides.</strong> A waterproof dry bag, float anchor, and sand-proof cases keep gear safe when the wind kicks up.</p>
+                          <a
+                            href="https://amzn.to/46Ocunm"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Aruba Packing Tips</h2>
+                      
+                      <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-8 my-8">
+                        <ul className="space-y-3 text-gray-700">
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Double up on swimwear:</strong> Trade winds dry suits quickly, but two or three rotations keep you ready for sunrise dips and sunset dinners.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Use packing cubes:</strong> Separate snorkel gear, resort wear, and excursion outfits so you can pivot from ATV trails to Palm Beach nightlife.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Bring a portable fan or cooling towel:</strong> They’re lifesavers during midday shopping along the Oranjestad tram line.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Carry a reusable tote:</strong> Perfect for Super Food grocery runs, floating markets, or tossing in beach snacks before a catamaran sail.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Pack a lightweight rash guard:</strong> Great for UV protection during Antilla snorkel excursions or long SUP sessions at Mangel Halto.</span>
+                          </li>
+                        </ul>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Plan the Rest of Your Aruba Escape</h2>
+                      <div className="bg-gradient-to-r from-orange-50 to-pink-50 border border-orange-200 rounded-lg p-8">
+                        <p className="text-lg text-gray-700 leading-relaxed">
+                          Once your suitcase is dialed in, it’s time to match those outfits with Aruba experiences. Pair this list with curated tours, dining reservations, and sunset sails so every day on “One Happy Island” runs perfectly.
+                        </p>
+                        <p className="text-lg text-gray-700 leading-relaxed mt-4">
+                          Ready to build your itinerary? Explore AI-picked excursions, beachfront restaurants, and local insights tailored to Aruba’s best neighborhoods.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                          <Button
+                            asChild
+                            className="bg-white text-orange-600 border border-orange-400 hover:bg-orange-50 transition-colors px-5 py-3 font-semibold"
+                          >
+                            <Link href="/destinations/aruba">
+                              Explore Aruba →
+                            </Link>
+                          </Button>
+                          <Button
+                            asChild
+                            className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-5 py-3 font-semibold"
+                          >
+                            <Link href="/destinations/aruba/restaurants">
+                              See Top Restaurants →
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 my-8">
+                        <p className="text-sm text-yellow-800">
+                          <strong>Disclosure:</strong> *As an Amazon Associate, we may earn commission from qualifying purchases at no extra cost to you.
+                        </p>
+                      </div>
+                    </>
+                  ) : slug === 'best-time-to-visit-aruba' ? (
+                    <>
+                      <div className="bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-lg p-8 my-8">
+                        <p className="text-lg text-orange-900 italic">
+                          <strong>Local Insight:</strong> Aruba’s trade winds are strongest from June through August—great for kitesurfers, but sunset sails and snorkel trips can reschedule if gusts spike. Plan a little buffer in your itinerary so you can shift boat days if needed.
+                        </p>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Aruba Weather at a Glance</h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {[
+                          {
+                            title: 'January – April',
+                            subtitle: 'Peak Sunshine Season',
+                            points: [
+                              'Dry skies, 78–84°F days, and postcard sunsets',
+                              'High demand for catamaran cruises and Palm Beach dining'
+                            ]
+                          },
+                          {
+                            title: 'May – August',
+                            subtitle: 'Breezy Shoulder Season',
+                            points: [
+                              'Brief afternoon sprinkles keep the island lush',
+                              'Windsport season peaks—ideal for kitesurfing and sailing'
+                            ]
+                          },
+                          {
+                            title: 'September – November',
+                            subtitle: 'Calm Seas & Value Finds',
+                            points: [
+                              'Trade winds relax, snorkeling visibility spikes',
+                              'Lower hotel rates while the wider Caribbean enters hurricane season'
+                            ]
+                          },
+                          {
+                            title: 'December',
+                            subtitle: 'Festive High Season',
+                            points: [
+                              'Holiday lights, nightly fireworks, and packed restaurants',
+                              'Book flights, resorts, and tours several months ahead'
+                            ]
+                          }
+                        ].map(section => (
+                          <div key={section.title} className="bg-gradient-to-br from-white to-orange-50 border border-orange-200 rounded-xl p-6 shadow-sm">
+                            <h3 className="text-xl font-bold text-orange-700">{section.title}</h3>
+                            <p className="text-sm uppercase tracking-wide text-orange-500 font-semibold mb-4">{section.subtitle}</p>
+                            <ul className="space-y-2 text-gray-700">
+                              {section.points.map(point => (
+                                <li key={point} className="flex items-start">
+                                  <span className="text-orange-500 font-bold mr-3">•</span>
+                                  <span>{point}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Month-by-Month Snapshot</h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {[
+                          {
+                            month: 'January – March',
+                            details: 'Peak sunshine, Aruba Carnival parades, perfect visibility for Antilla wreck snorkel tours, and sold-out sunset sails—book early.'
+                          },
+                          {
+                            month: 'April',
+                            details: 'Trade winds soften, creating dreamy SUP and kayak conditions at Mangel Halto before summer crowds arrive.'
+                          },
+                          {
+                            month: 'May – June',
+                            details: 'Shoulder-season value with sunny mornings—ideal for desert UTV tours, culinary walking tours, and waterfront dinners.'
+                          },
+                          {
+                            month: 'July – August',
+                            details: 'Aruba Hi-Winds Championships take over Fisherman’s Huts; expect energetic beaches and top-notch kitesurfing clinics.'
+                          },
+                          {
+                            month: 'September – October',
+                            details: 'Calmest seas of the year. Slip into Boca Catalina for glassy snorkel sessions and enjoy quieter resorts and spas.'
+                          },
+                          {
+                            month: 'November – December',
+                            details: 'Eat Local Restaurant Month menus, festive shopping, and nightly fireworks leading into New Year’s Eve.'
+                          }
+                        ].map(item => (
+                          <div key={item.month} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
+                            <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.month}</h3>
+                            <p className="text-gray-700 leading-relaxed">{item.details}</p>
+                          </div>
+                        ))}
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Best Time for Tours & Experiences</h2>
+                      <div className="space-y-4">
+                        {[
+                          {
+                            title: 'Snorkeling & Sailing',
+                            text: 'September through early December offers glassy water and ultra-clear visibility around Boca Catalina and the Antilla shipwreck. January–April delivers lively catamaran decks with steady trade winds.'
+                          },
+                          {
+                            title: 'Kitesurfing & Windsurfing',
+                            text: 'June–August is prime season at Fisherman’s Huts thanks to consistent 20+ mph winds and pro-level coaching around the Aruba Hi-Winds event.'
+                          },
+                          {
+                            title: 'Off-Road & Desert Adventures',
+                            text: 'December–March keeps Arikok National Park temps comfortable for UTV, Jeep, and horseback tours—schedule sunrise departures for the coolest rides.'
+                          },
+                          {
+                            title: 'Cultural & Culinary Experiences',
+                            text: 'January–February brings Carnival pageantry, while October–November’s Eat Local Restaurant Month delivers prix-fixe menus and chef collaborations.'
+                          }
+                        ].map(item => (
+                          <div key={item.title} className="bg-gradient-to-r from-orange-50 to-pink-50 border border-orange-200 rounded-lg p-6">
+                            <h3 className="text-xl font-bold text-orange-900 mb-2">{item.title}</h3>
+                            <p className="text-gray-700 leading-relaxed">{item.text}</p>
+                          </div>
+                        ))}
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Signature Events & Festivals</h2>
+                      <div className="bg-gradient-to-r from-white to-orange-50 border border-orange-200 rounded-xl p-6">
+                        <ul className="space-y-3 text-gray-700">
+                          <li><strong>Aruba Carnival (Jan–Feb):</strong> Torchlight parades, glittering costumes, and electrifying music competitions across the island.</li>
+                          <li><strong>Aruba Hi-Winds (Late Jun/Early Jul):</strong> International windsurfing and kitesurfing showdown at Fisherman’s Huts.</li>
+                          <li><strong>Caribbean Sea Jazz Festival (September):</strong> Two nights of live jazz, soul, and Latin performances paired with foodie pop-ups.</li>
+                          <li><strong>Eat Local Restaurant Month (Oct/Nov):</strong> Island-wide prix-fixe menus that spotlight Aruban, Latin, and fusion dishes.</li>
+                          <li><strong>Dande & New Year’s Fireworks (December):</strong> Traditional caroling, street parties, and nightly fireworks leading into New Year’s Eve.</li>
+                        </ul>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">When to Find the Best Deals</h2>
+                      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg p-6">
+                        <ul className="space-y-3 text-gray-700">
+                          <li><strong>May – June & September – November:</strong> Softer hotel rates, flexible tour schedules, and bundled snorkel or UTV packages.</li>
+                          <li><strong>Book ahead online:</strong> Many operators release early-bird discounts for sunset sails, private charters, and Jeep safaris during shoulder months.</li>
+                          <li><strong>Traveling with family?</strong> Look for fall promotions that add kids-free perks or dining credits at Palm Beach resorts.</li>
+                        </ul>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Quick Planning Tips</h2>
+                      <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-8">
+                        <ul className="space-y-3 text-gray-700">
+                          <li className="flex items-start"><span className="text-blue-600 font-bold mr-3">✓</span><span>Reserve Carnival and holiday stays 6–9 months out—oceanfront suites and boutique condos book fastest.</span></li>
+                          <li className="flex items-start"><span className="text-blue-600 font-bold mr-3">✓</span><span>Lock in Antilla snorkel cruises and sunset catamarans early in your trip so you can reschedule if winds pick up.</span></li>
+                          <li className="flex items-start"><span className="text-blue-600 font-bold mr-3">✓</span><span>Rent a car for beach hopping, but lean on guided off-road tours to reach natural pools and rugged desert trails safely.</span></li>
+                          <li className="flex items-start"><span className="text-blue-600 font-bold mr-3">✓</span><span>Pack reef-safe sunscreen, a cooling towel, and umbrella anchors—the trade winds mean shade gear needs backup.</span></li>
+                          <li className="flex items-start"><span className="text-blue-600 font-bold mr-3">✓</span><span>Use TopTours.ai to compare Viator-powered operators—filter by reviews, inclusions, and departure times before you fly.</span></li>
+                        </ul>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Plan Your Aruba Escape with TopTours.ai</h2>
+                      <div className="bg-gradient-to-r from-orange-50 to-pink-50 border border-orange-200 rounded-lg p-8">
+                        <p className="text-lg text-gray-700 leading-relaxed">
+                          Ready to sync your Aruba getaway with the perfect weather window? Our AI surfaces top-rated sunset cruises, Antilla snorkel charters, UTV adventures in Arikok, and foodie walking tours—complete with live pricing and verified traveler reviews.
+                        </p>
+                        <p className="text-lg text-gray-700 leading-relaxed mt-4">
+                          Build your itinerary in minutes, slot in trusted restaurants along Palm and Eagle Beach, and keep everything linked in one place so every beach day ends with a sunset worth remembering.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                          <Button
+                            asChild
+                            className="bg-white text-orange-600 border border-orange-400 hover:bg-orange-50 transition-colors px-5 py-3 font-semibold"
+                          >
+                            <Link href="/destinations/aruba">
+                              Explore Aruba →
+                            </Link>
+                          </Button>
+                          <Button
+                            asChild
+                            className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-5 py-3 font-semibold"
+                          >
+                            <Link href="/travel-guides/aruba-packing-list">
+                              View Aruba Packing List →
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    </>
+                  ) : slug === '3-day-aruba-itinerary' ? (
+                    <>
+                      <div className="bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-lg p-8 my-8">
+                        <p className="text-lg text-orange-900 italic">
+                          <strong>Arrival Game Plan:</strong> Confirm your Antilla snorkel cruise, Arikok UTV tour, and beachfront dinner reservations before wheels down—sunset departures and toes-in-the-sand tables go fast on “One Happy Island.”
+                        </p>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Day 1 – Palm Beach Vibes & Sunset Sails</h2>
+                      <div className="space-y-4 text-gray-700 leading-relaxed">
+                        <p><strong>Morning:</strong> Touch down, drop your bags along Palm or Eagle Beach, and kick things off with brunch—The Dutch Pancake House or Eduardo’s Beach Shack make it easy. Walk the Palm Beach boardwalk to get your bearings or hop over to Eagle Beach for its powder-fine sand.</p>
+                        <p><strong>Midday:</strong> Ease into island time with a lounger session and a dip in the calm turquoise water. If you’re itching to explore, grab a stand-up paddleboard or wander through the boutiques and cafés at Palm Beach Plaza.</p>
+                        <p><strong>Evening:</strong> Board a champagne sunset sail for a front-row seat to Aruba’s famous golden hour, then dine directly on the sand at <Link href="/destinations/aruba/restaurants/passions-on-the-beach-aruba" className="text-orange-600 hover:underline">Passions on the Beach</Link>. Torchlight, live music, and a rotating seafood menu set the tone for the rest of your stay.</p>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Day 2 – Desert Trails, Street Art & Dockside Seafood</h2>
+                      <div className="space-y-4 text-gray-700 leading-relaxed">
+                        <p><strong>Morning:</strong> Join an early UTV or Jeep adventure through Arikok National Park. Expect cacti-dotted landscapes, visits to the Natural Bridge, California Lighthouse, and dramatic northern cliffs.</p>
+                        <p><strong>Midday:</strong> Reward the dust with fried snapper baskets, plantain, and coconut shrimp at <Link href="/destinations/aruba/restaurants/zeerovers-aruba" className="text-orange-600 hover:underline">Zeerovers Aruba</Link> in Savaneta—this locals’ dockside spot is worth the drive. On the way back north, swing by the San Nicolas street art district for Caribbean murals and coffee shops.</p>
+                        <p><strong>Evening:</strong> Settle into <Link href="/destinations/aruba/restaurants/wacky-wahoos-seafood-aruba" className="text-orange-600 hover:underline">Wacky Wahoo’s Seafood</Link> for lionfish specials and daily catch platters (reservations recommended). Cap the night with rum punches or live music along the Palm Beach high-rise strip.</p>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Day 3 – Antilla Snorkel & Farewell Feast</h2>
+                      <div className="space-y-4 text-gray-700 leading-relaxed">
+                        <p><strong>Morning:</strong> Hop on a catamaran to the Antilla shipwreck, Boca Catalina, or Mangel Halto. Clear visibility, sea turtles, and gentle currents make these stops a final-day highlight.</p>
+                        <p><strong>Midday:</strong> Recharge with a beachside lunch or aloe spa treatment. If you rented a car, detour to Baby Beach for shallow turquoise coves and low-key beach bars.</p>
+                        <p><strong>Evening:</strong> Close the trip with a barefoot tasting menu at <Link href="/destinations/aruba/restaurants/atardi-beach-restaurant-aruba" className="text-orange-600 hover:underline">Atardi Beach Restaurant</Link> or the water’s-edge tables at <Link href="/destinations/aruba/restaurants/flying-fishbone-aruba" className="text-orange-600 hover:underline">Flying Fishbone</Link>. Time dessert with the sunset, then toast a final Aruba Ariba under the stars.</p>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Essential Tours to Book Ahead</h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                        <div className="bg-white border border-orange-100 rounded-xl p-6 shadow-sm">
+                          <h3 className="text-xl font-bold text-orange-900 mb-3">Top Experiences</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Antilla shipwreck catamaran with open bar and snorkel gear.</li>
+                            <li>• Arikok National Park UTV safari covering the Natural Pool, Alto Vista Chapel, and desert dunes.</li>
+                            <li>• Sunset champagne sail departing from Palm Beach piers.</li>
+                            <li>• Guided snorkel safari to Boca Catalina, Tres Trapi “Stairway to Heaven,” and Malmok reefs.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-amber-100 rounded-xl p-6 shadow-sm">
+                          <h3 className="text-xl font-bold text-amber-900 mb-3">Need-to-Know Tips</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Schedule sunset sails and snorkel cruises 2–3 weeks out, longer for holiday travel.</li>
+                            <li>• Plan to taxi or rideshare most days—rent a car just for the Arikok/Savaneta loop if you prefer.</li>
+                            <li>• Reserve <Link href="/destinations/aruba/restaurants/passions-on-the-beach-aruba" className="text-orange-600 hover:underline">Passions on the Beach</Link>, <Link href="/destinations/aruba/restaurants/wacky-wahoos-seafood-aruba" className="text-orange-600 hover:underline">Wacky Wahoo’s</Link>, and <Link href="/destinations/aruba/restaurants/flying-fishbone-aruba" className="text-orange-600 hover:underline">Flying Fishbone</Link> as soon as you confirm dates.</li>
+                            <li>• Pack reef-safe sunscreen, a cooling towel, and water shoes—the trade winds are real and some entries are rocky.</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="bg-gradient-to-r from-orange-50 to-pink-50 border border-orange-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Helpful Resources for Your 72-Hour Escape</h3>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                          Pair this itinerary with the <Link href="/travel-guides/best-time-to-visit-aruba" className="text-orange-600 hover:underline">Best Time to Visit Aruba</Link> guide to match sunshine with events, and the <Link href="/travel-guides/aruba-packing-list" className="text-orange-600 hover:underline">Aruba Packing List</Link> so your carry-on covers reef-safe sunscreen to windproof beach gear.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                          Hungry for more dining inspo? Browse our curated <Link href="/destinations/aruba/restaurants" className="text-orange-600 hover:underline">Top Restaurants in Aruba</Link> list for backup reservations or a “Day 4” splurge.
+                        </p>
+                      </div>
+
+                      <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Plan Your Aruba Escape?</h3>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                          Let our AI planner surface the highest-rated tours, sunset sails, and restaurants that match your dates. Whether you’re chasing turquoise coves or barefoot suppers, we’ll help you lock in every highlight.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4">
+                          <Button
+                            asChild
+                            className="bg-white text-orange-600 border border-orange-400 hover:bg-orange-50 transition-colors px-6 py-3 font-semibold"
+                          >
+                            <Link href="/destinations/aruba">
+                              Explore Aruba →
+                            </Link>
+                          </Button>
+                          <Button
+                            asChild
+                            className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-6 py-3 font-semibold"
+                          >
+                            <Link href="/destinations/aruba/restaurants">
+                              See Top Restaurants →
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    </>
                   ) : slug === '3-day-curacao-itinerary' ? (
                     <p className="text-xl leading-relaxed text-gray-700 font-light">
                       Only have 72 hours in Curaçao? This long-weekend itinerary blends vibrant Willemstad mornings, Klein Curaçao sailing days, and sunset dinners at the island restaurants travelers rave about—so you leave feeling like you saw the best of the island without rushing.
@@ -2381,6 +3434,10 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                   ) : slug === 'best-time-to-visit-caribbean' ? (
                     <p className="text-xl leading-relaxed text-gray-700 font-light">
                       Planning a Caribbean getaway? Timing is everything. While the region is warm and tropical year-round, the best time to visit the Caribbean depends on what you're looking for — whether it's sunny beaches, lower prices, or fewer crowds. From the dry season's perfect weather to the off-season's unbeatable deals, here's everything you need to know about the Caribbean travel seasons.
+                    </p>
+                  ) : slug === 'best-time-to-visit-aruba' ? (
+                    <p className="text-xl leading-relaxed text-gray-700 font-light">
+                      Aruba stays sunny across the calendar, but each stretch brings a different flavor—Carnival parades, kitesurf championships, calm snorkel days, or value-packed shoulder seasons. This guide breaks down the weather, events, and tour timing so you can match “One Happy Island” to your perfect travel window.
                     </p>
                   ) : slug === 'best-time-to-visit-curacao' ? (
                     <p className="text-xl leading-relaxed text-gray-700 font-light">
@@ -2462,11 +3519,15 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                         <p className="text-xl leading-relaxed text-gray-700 font-light">
                           Curaçao is made for snorkel coves, cliff-top sunsets, and boutique stays; Punta Cana delivers white-sand mega resorts, beach clubs, and day trips to Saona Island. Compare them here to pinpoint the Caribbean escape that fits your style—or plan a split itinerary that blends the best of both.
                         </p>
-                      ) : (
-                    <p className="text-xl leading-relaxed text-gray-700 font-light">
-                      Travel experiences don't have to break your budget. With the right strategy, you can explore the world's most exciting destinations while keeping your wallet happy. Whether you're planning a family vacation, a solo getaway, or a romantic escape, these smart tips will help you save money on tours and activities — without missing out on the fun.
-                    </p>
-                  )}
+                      ) : slug === 'aruba-vs-punta-cana' ? (
+                        <p className="text-xl leading-relaxed text-gray-700 font-light">
+                          Aruba keeps everything within easy reach—Palm Beach boardwalks, desert UTV runs, and sunset sails—while Punta Cana stretches along miles of all-inclusive coastline with Saona catamarans and overwater lounges. This guide lines them up side by side so you can match the island vibe (or combo trip) to your vacation style.
+                        </p>
+                      ) : slug === 'aruba-vs-jamaica' ? (
+                        <p className="text-xl leading-relaxed text-gray-700 font-light">
+                          Aruba keeps the pace breezy with walkable beaches and boutique dining, while Jamaica doubles down on reggae nightlife, rainforest waterfalls, and cliff-top sunsets. Compare them here to see which island’s rhythm matches your getaway—or map out a two-stop itinerary that gives you both.
+                        </p>
+                      ) : null}
                   
                   {slug === 'ai-travel-planning-guide' ? (
                     <div className="border-l-4 border-blue-500 pl-6 py-2 bg-blue-50 rounded-r-lg my-8">
@@ -2504,10 +3565,28 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                         Trade winds keep Curaçao breezy, but shade and sun protection are scarce on Klein Curaçao. Pack reef-safe sunscreen, a wide-brim hat, and a cooling towel—you'll thank yourself midway through that catamaran day trip.
                       </p>
                     </div>
+                  ) : slug === '3-day-aruba-itinerary' ? (
+                    <div className="border-l-4 border-orange-500 pl-6 py-2 bg-orange-50 rounded-r-lg my-8">
+                      <p className="text-lg text-orange-900 italic">
+                        <strong>Weekend Wisdom:</strong> Reserve Antilla snorkel cruises, Arikok UTV tours, and beachfront dinner tables at Atardi or Flying Fishbone before you land—sunset slots disappear fast in peak season.
+                      </p>
+                    </div>
                   ) : slug === '3-day-curacao-itinerary' ? (
                     <div className="border-l-4 border-indigo-500 pl-6 py-2 bg-indigo-50 rounded-r-lg my-8">
                       <p className="text-lg text-indigo-900 italic">
                         Book Klein Curaçao catamarans, ATV adventures, and dinner reservations before you land—weekend slots sell out fast, especially during peak season and cruise days.
+                      </p>
+                    </div>
+                  ) : slug === 'aruba-packing-list' ? (
+                    <div className="border-l-4 border-orange-500 pl-6 py-2 bg-orange-50 rounded-r-lg my-8">
+                      <p className="text-lg text-orange-900 italic">
+                        Trade winds keep Aruba breezy, but the UV index stays high. Pair reef-safe sunscreen with a cooling towel and wide-brim hat so you can linger on Eagle Beach or sail past the Antilla wreck without cutting the day short.
+                      </p>
+                    </div>
+                  ) : slug === 'best-time-to-visit-aruba' ? (
+                    <div className="border-l-4 border-orange-500 pl-6 py-2 bg-orange-50 rounded-r-lg my-8">
+                      <p className="text-lg text-orange-900 italic">
+                        Carnival, kite season, and glassy snorkel months each book up fast. Reserve Aruba sunset sails, UTV adventures, and kitesurf lessons as soon as you settle on dates—peak departures sell out weeks in advance.
                       </p>
                     </div>
                   ) : slug === 'best-time-to-visit-curacao' ? (
@@ -2522,6 +3601,18 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                         Flights between Aruba and Curaçao take about 35 minutes. If you can’t choose one vibe, combine both islands and book inter-island tickets early to secure prime daylight departures.
                       </p>
                     </div>
+                  ) : slug === 'aruba-vs-punta-cana' ? (
+                    <div className="border-l-4 border-orange-500 pl-6 py-2 bg-orange-50 rounded-r-lg my-8">
+                      <p className="text-lg text-orange-900 italic">
+                        Decide early if you want an all-inclusive stay—Punta Cana’s top suites and Aruba’s beachfront tasting menus sell out months ahead in peak season. Mix and match: start with boutique days in Aruba, then fly 2.5 hours to unwind at a Dominican resort.
+                      </p>
+                    </div>
+                  ) : slug === 'aruba-vs-jamaica' ? (
+                    <div className="border-l-4 border-orange-500 pl-6 py-2 bg-orange-50 rounded-r-lg my-8">
+                      <p className="text-lg text-orange-900 italic">
+                        Aruba keeps logistics simple with walkable beaches and quick taxi hops; Jamaica rewards planning ahead for waterfall tours, reggae nights, and cliff-top dinners. Secure key experiences on both islands before you land to lock in the best guides and sunset tables.
+                      </p>
+                    </div>
                   ) : slug === 'curacao-vs-jamaica' ? (
                     <div className="border-l-4 border-emerald-500 pl-6 py-2 bg-emerald-50 rounded-r-lg my-8">
                       <p className="text-lg text-emerald-900 italic">
@@ -2534,13 +3625,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                         Punta Cana’s all-inclusive deals pair perfectly with Curaçao’s boutique stays. Plan Curaçao first for reef adventures, then unwind in Punta Cana—booking Saona and catamaran tours ahead of arrival keeps your schedule stress-free.
                       </p>
                     </div>
-                  ) : (
-                    <div className="border-l-4 border-emerald-500 pl-6 py-2 bg-emerald-50 rounded-r-lg my-8">
-                      <p className="text-lg text-emerald-900 italic">
-                        Smart travelers save up to 40% on tours by combining multiple strategies. The key is planning ahead and using the right tools to find the best deals.
-                      </p>
-                    </div>
-                  )}
+                  ) : null}
                   
                   {slug === 'ai-travel-planning-guide' ? (
                     <>
@@ -3780,6 +4865,332 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                         >
                           <Link href="/destinations/curacao">
                             Explore Curaçao →
+                          </Link>
+                        </Button>
+                        <Button
+                          asChild
+                          className="bg-gradient-to-r from-emerald-500 to-lime-500 text-white hover:scale-105 transition-transform duration-200 px-6 py-4 font-semibold"
+                        >
+                          <Link href="/destinations/jamaica">
+                            Explore Jamaica →
+                          </Link>
+                        </Button>
+                      </div>
+                    </>
+                  ) : slug === 'aruba-vs-punta-cana' ? (
+                    <>
+                      <div className="bg-gradient-to-r from-orange-50 via-amber-50 to-sky-50 border border-orange-200 rounded-lg p-8 my-8">
+                        <p className="text-lg text-orange-900 leading-relaxed">
+                          Aruba keeps everything within easy reach—Palm Beach boardwalks, desert UTV runs, and sunset sails—while Punta Cana stretches along miles of all-inclusive coastline with Saona catamarans and overwater lounges. This guide lines them up side by side so you can match the island vibe (or combo trip) to your vacation style.
+                        </p>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Aruba vs Punta Cana Snapshot</h2>
+                      <div className="overflow-x-auto my-8">
+                        <table className="w-full border-collapse border border-gray-200 rounded-xl overflow-hidden">
+                          <thead className="bg-gradient-to-r from-orange-500 via-pink-500 to-sky-500 text-white">
+                            <tr>
+                              <th className="px-6 py-4 text-left font-semibold">Category</th>
+                              <th className="px-6 py-4 text-left font-semibold">Aruba</th>
+                              <th className="px-6 py-4 text-left font-semibold">Punta Cana</th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white divide-y divide-gray-200">
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Overall Vibe</td>
+                              <td className="px-6 py-4 text-gray-700">Compact, walkable, and great for DIY explorers chasing “One Happy Island” energy</td>
+                              <td className="px-6 py-4 text-gray-700">Miles of palm-lined sand dotted with all-inclusives designed for effortless relaxation</td>
+                            </tr>
+                            <tr className="bg-gray-50">
+                              <td className="px-6 py-4 font-semibold text-gray-800">Beaches</td>
+                              <td className="px-6 py-4 text-gray-700">Palm & Eagle Beach serve calm water, powder-soft sand, and boardwalk cocktails</td>
+                              <td className="px-6 py-4 text-gray-700">Bávaro & Cap Cana deliver wide beaches, gentle surf, loungers, and beach clubs</td>
+                            </tr>
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Best For</td>
+                              <td className="px-6 py-4 text-gray-700">Couples, snorkelers, food lovers, travelers who like to explore beyond the resort</td>
+                              <td className="px-6 py-4 text-gray-700">All-inclusive fans, destination weddings, groups seeking turnkey fun in the sun</td>
+                            </tr>
+                            <tr className="bg-gray-50">
+                              <td className="px-6 py-4 font-semibold text-gray-800">Where to Stay</td>
+                              <td className="px-6 py-4 text-gray-700">Palm Beach high-rises, Eagle Beach low-rise boutiques, and Savaneta hideaways</td>
+                              <td className="px-6 py-4 text-gray-700">Bávaro resort corridor, Cap Cana luxury enclaves, and boutique retreats in Uvero Alto</td>
+                            </tr>
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Getting Around</td>
+                              <td className="px-6 py-4 text-gray-700">Taxis and ride shares for most outings; rent a car or Jeep for Arikok and San Nicolas</td>
+                              <td className="px-6 py-4 text-gray-700">Lean on resort shuttles, private transfers, or guided tours for Saona, cenotes, and ziplines</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Where They Overlap & Where They Differ</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
+                        <div className="bg-white border border-orange-100 rounded-xl shadow-sm p-6">
+                          <h3 className="text-xl font-bold text-orange-900 mb-4">Shared Strengths</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Sunshine and warm water year-round with peak weather from December through April.</li>
+                            <li>• Catamaran cruises, snorkeling, and watersports keep the itinerary lively in every season.</li>
+                            <li>• English is widely spoken, U.S. dollars are accepted, and nonstop flights run daily from major North American hubs.</li>
+                            <li>• Island-hopping is doable—Aruba connects via Miami or Panama, Punta Cana via Miami, Santo Domingo, or Panama.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-sky-100 rounded-xl shadow-sm p-6">
+                          <h3 className="text-xl font-bold text-sky-900 mb-4">Key Differences</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Aruba’s desert interior welcomes UTV tours, cliff views, and wind-driven sports; Punta Cana packs dense jungle, cenotes, and golf courses.</li>
+                            <li>• Dining in Aruba skews chef-driven and boutique; Punta Cana treats you to buffet spreads, overwater lounges, and beach club brunches.</li>
+                            <li>• Punta Cana excels at all-inclusive convenience; Aruba favours mix-and-match stays with boutique nights in Savaneta or Eagle Beach.</li>
+                            <li>• Nightlife in Aruba clusters along Palm Beach and Eagle Beach; Punta Cana nightlife often stays within resorts—unless you head to Coco Bongo or Cap Cana marinas.</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Restaurants Worth Booking</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div className="bg-white border border-orange-100 rounded-xl shadow-md p-6">
+                          <h3 className="text-2xl font-bold text-orange-900 mb-4">Aruba Highlights</h3>
+                          <ul className="space-y-4">
+                            <li>
+                              <Link href="/destinations/aruba/restaurants/atardi-beach-restaurant-aruba" className="text-orange-600 font-semibold hover:underline">Atardi Beach Restaurant Aruba</Link>
+                              <p className="text-gray-700 text-sm mt-1">Toes-in-the-sand tables, seafood tasting menus, and sunsets framed by the Marriott pier.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/aruba/restaurants/wacky-wahoos-seafood-aruba" className="text-orange-600 font-semibold hover:underline">Wacky Wahoo’s Seafood Aruba</Link>
+                              <p className="text-gray-700 text-sm mt-1">Local institution for lionfish specials, Caribbean snapper, and chalkboard-fresh catches.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/aruba/restaurants/flying-fishbone-aruba" className="text-orange-600 font-semibold hover:underline">Flying Fishbone Aruba</Link>
+                              <p className="text-gray-700 text-sm mt-1">Lantern-lit dinner in Savaneta with water-level seating, champagne sangria, and flambéed desserts.</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-sky-100 rounded-xl shadow-md p-6">
+                          <h3 className="text-2xl font-bold text-sky-900 mb-4">Punta Cana Highlights</h3>
+                          <ul className="space-y-4">
+                            <li>
+                              <Link href="/destinations/punta-cana/restaurants/playa-blanca-restaurant-punta-cana" className="text-sky-600 font-semibold hover:underline">Playa Blanca Restaurant</Link>
+                              <p className="text-gray-700 text-sm mt-1">Casual beachfront lunches inside Puntacana Resort & Club—ceviche, coconut cocktails, and lagoon breezes.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/punta-cana/restaurants/sbg-punta-cana" className="text-sky-600 font-semibold hover:underline">SBG Punta Cana</Link>
+                              <p className="text-gray-700 text-sm mt-1">Poolside lounge on the marina with Mediterranean plates, sushi, and DJ-backed sunset sessions.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/punta-cana/restaurants/jellyfish-restaurant-punta-cana" className="text-sky-600 font-semibold hover:underline">Jellyfish Restaurant Punta Cana</Link>
+                              <p className="text-gray-700 text-sm mt-1">Architectural showpiece between Bávaro and Cortecito serving grilled lobster, Dominican staples, and event-ready ambiance.</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Signature Experiences You Can’t Miss</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
+                        <div className="bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-xl p-6">
+                          <h3 className="text-xl font-bold text-orange-900 mb-3">Aruba Must-Dos</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Sail a champagne sunset cruise that stops at the Antilla wreck and Boca Catalina reef.</li>
+                            <li>• Book an Arikok National Park UTV adventure to the Natural Pool, Fontein Cave, and desert cliffs.</li>
+                            <li>• Snorkel Tres Trapi “Stairway to Heaven” or Malmok Beach for turtles and tropical fish just offshore.</li>
+                            <li>• Sip craft cocktails in downtown Oranjestad or hunt street art in San Nicolas before an Eagle Beach sunset.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-gradient-to-br from-sky-50 to-teal-50 border border-sky-200 rounded-xl p-6">
+                          <h3 className="text-xl font-bold text-sky-900 mb-3">Punta Cana Must-Dos</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Cruise to Saona Island for natural pools, starfish, and powdery white sand on a protected reserve.</li>
+                            <li>• Snorkel or dance aboard a catamaran in Bávaro’s reef lagoon with floating bars and live DJs.</li>
+                            <li>• Tackle zip lines and cenotes at Scape Park or Bávaro Adventure Park for an adrenaline jolt.</li>
+                            <li>• Explore Altos de Chavón’s stone village, then linger over rum tastings and marina-front dinners in Cap Cana.</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="bg-gradient-to-r from-orange-50 to-sky-50 border border-orange-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-3">When to Go & How to Pack</h3>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                          Decide early if you want an all-inclusive stay—Punta Cana’s top suites and Aruba’s beachfront tasting menus sell out months ahead in peak season. Mix and match: start with boutique days in Aruba, then fly 2.5 hours to unwind at a Dominican resort.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                          Use the <Link href="/travel-guides/best-time-to-visit-caribbean" className="text-orange-600 hover:underline">Best Time to Visit the Caribbean</Link> guide to time shoulder-season savings or peak sunshine, then check the <Link href="/travel-guides/beach-vacation-packing-list" className="text-blue-600 hover:underline">Beach Vacation Packing List</Link> for reef-safe essentials, water shoes, and dry bags that work on both islands.
+                        </p>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Ready to Choose (or Combine) Your Island?</h2>
+                      <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                        Flights between Aruba and Punta Cana typically connect through Miami, Santo Domingo, or Panama in about five hours. Decide on your anchor resort first, then layer in excursions and dining reservations so every sunset is accounted for.
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                        <Button
+                          asChild
+                          className="bg-white text-orange-600 border border-orange-400 hover:bg-orange-50 transition-colors px-6 py-4 font-semibold"
+                        >
+                          <Link href="/destinations/aruba">
+                            Explore Aruba →
+                          </Link>
+                        </Button>
+                        <Button
+                          asChild
+                          className="bg-gradient-to-r from-sky-500 to-indigo-600 text-white hover:scale-105 transition-transform duration-200 px-6 py-4 font-semibold"
+                        >
+                          <Link href="/destinations/punta-cana">
+                            Explore Punta Cana →
+                          </Link>
+                        </Button>
+                      </div>
+                    </>
+                  ) : slug === 'aruba-vs-jamaica' ? (
+                    <>
+                      <div className="bg-gradient-to-r from-orange-50 via-lime-50 to-emerald-50 border border-orange-200 rounded-lg p-8 my-8">
+                        <p className="text-lg text-orange-900 leading-relaxed">
+                          Aruba deals in breezy beach days, easy taxi hops, and sunset catamarans; Jamaica turns up the sound with reggae nights, rainforest waterfalls, and cliff-top cocktail bars. Use this comparison to weigh their beaches, dining scenes, and signature adventures—or craft a two-stop itinerary that gives you both vibes.
+                        </p>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Aruba vs Jamaica Snapshot</h2>
+                      <div className="overflow-x-auto my-8">
+                        <table className="w-full border-collapse border border-gray-200 rounded-xl overflow-hidden">
+                          <thead className="bg-gradient-to-r from-orange-500 via-amber-500 to-emerald-500 text-white">
+                            <tr>
+                              <th className="px-6 py-4 text-left font-semibold">Category</th>
+                              <th className="px-6 py-4 text-left font-semibold">Aruba</th>
+                              <th className="px-6 py-4 text-left font-semibold">Jamaica</th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white divide-y divide-gray-200">
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Overall Vibe</td>
+                              <td className="px-6 py-4 text-gray-700">Compact, desert-sunny, and easy to explore independently with high-rise resorts and boutique beach clubs</td>
+                              <td className="px-6 py-4 text-gray-700">Larger island with reggae nightlife, rainforest adventures, and cliff-top hangouts powered by live music</td>
+                            </tr>
+                            <tr className="bg-gray-50">
+                              <td className="px-6 py-4 font-semibold text-gray-800">Beaches</td>
+                              <td className="px-6 py-4 text-gray-700">Palm & Eagle Beach offer calm turquoise water, powder sand, and boardwalk bars</td>
+                              <td className="px-6 py-4 text-gray-700">Negril’s Seven Mile Beach, Montego Bay’s Doctor’s Cave, and hidden coves along the north coast</td>
+                            </tr>
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Best For</td>
+                              <td className="px-6 py-4 text-gray-700">Couples, first-time Caribbean visitors, snorkelers, and sunset cruise lovers</td>
+                              <td className="px-6 py-4 text-gray-700">Adventure seekers, music fans, foodies, and travelers craving big-resort energy</td>
+                            </tr>
+                            <tr className="bg-gray-50">
+                              <td className="px-6 py-4 font-semibold text-gray-800">Where to Stay</td>
+                              <td className="px-6 py-4 text-gray-700">Palm Beach high-rises, Eagle Beach low-rise boutiques, Savaneta hideaways</td>
+                              <td className="px-6 py-4 text-gray-700">Negril cliffside boutique hotels, Montego Bay all-inclusives, Ocho Rios adventure resorts</td>
+                            </tr>
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Getting Around</td>
+                              <td className="px-6 py-4 text-gray-700">Taxi or ride-share most days; rent a Jeep for Arikok National Park and San Nicolas street art</td>
+                              <td className="px-6 py-4 text-gray-700">Use private drivers, resort transfers, or guided tours—distances are longer and roads livelier</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Shared Strengths & Key Differences</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
+                        <div className="bg-white border border-orange-100 rounded-xl shadow-sm p-6">
+                          <h3 className="text-xl font-bold text-orange-900 mb-4">Where They Overlap</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Year-round warmth and sunshine, with peak weather from December through April.</li>
+                            <li>• Catamaran cruises, snorkeling, and sunset cocktails anchor every itinerary.</li>
+                            <li>• English is widely spoken, U.S. dollars are accepted, and flights arrive daily from Miami, New York, and Toronto.</li>
+                            <li>• Easy add-ons to multi-island itineraries—route through Miami or Panama to connect both destinations in a single trip.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-emerald-100 rounded-xl shadow-sm p-6">
+                          <h3 className="text-xl font-bold text-emerald-900 mb-4">Where They Differ</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Aruba’s desert interior is built for UTV tours and windsurfing; Jamaica trades desert panoramas for lush mountains, waterfalls, and river rafting.</li>
+                            <li>• Dining in Aruba spotlights chef-driven beachfront restaurants; Jamaica leans into jerk smokehouses, reggae brunches, and rum bars with live bands.</li>
+                            <li>• Aruba nightlife clusters along Palm Beach casinos and lounges; Jamaica spreads the party across Negril cliffs, Montego Bay resorts, and Kingston venues.</li>
+                            <li>• Jamaica’s size means more road time—plan drivers or tours—while Aruba lets you lounge without leaving a two-mile stretch.</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Restaurants Worth Booking</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div className="bg-white border border-orange-100 rounded-xl shadow-md p-6">
+                          <h3 className="text-2xl font-bold text-orange-900 mb-4">Aruba Dining Highlights</h3>
+                          <ul className="space-y-4">
+                            <li>
+                              <Link href="/destinations/aruba/restaurants/atardi-beach-restaurant-aruba" className="text-orange-600 font-semibold hover:underline">Atardi Beach Restaurant Aruba</Link>
+                              <p className="text-gray-700 text-sm mt-1">Barefoot tables in the sand, a seafood tasting menu, and golden-hour views off the Marriott pier.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/aruba/restaurants/passions-on-the-beach-aruba" className="text-orange-600 font-semibold hover:underline">Passions on the Beach</Link>
+                              <p className="text-gray-700 text-sm mt-1">Eagle Beach sunsets, torches, and Caribbean-inspired plates served just steps from the shoreline.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/aruba/restaurants/zeerovers-aruba" className="text-orange-600 font-semibold hover:underline">Zeerovers Aruba</Link>
+                              <p className="text-gray-700 text-sm mt-1">Locals’ dockside favorite in Savaneta for just-caught fish baskets, plantain, and icy Balashi beer.</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-emerald-100 rounded-xl shadow-md p-6">
+                          <h3 className="text-2xl font-bold text-emerald-900 mb-4">Jamaica Dining Highlights</h3>
+                          <ul className="space-y-4">
+                            <li>
+                              <Link href="/destinations/jamaica/restaurants/rockhouse-restaurant-jamaica" className="text-emerald-600 font-semibold hover:underline">Rockhouse Restaurant</Link>
+                              <p className="text-gray-700 text-sm mt-1">Cliff-top dining in Negril with Caribbean fusion cuisine, sea breezes, and unforgettable sunsets.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/jamaica/restaurants/miss-ts-kitchen-jamaica" className="text-emerald-600 font-semibold hover:underline">Miss T’s Kitchen</Link>
+                              <p className="text-gray-700 text-sm mt-1">Ocho Rios crowd-pleaser for jerk chicken, coconut rundown, and yard-style hospitality under the stars.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/jamaica/restaurants/little-ochie-seafood-restaurant-jamaica" className="text-emerald-600 font-semibold hover:underline">Little Ochie Seafood Restaurant &amp; Bar</Link>
+                              <p className="text-gray-700 text-sm mt-1">Rustic beach shacks in Alligator Pond grilling the day’s catch with Scotch bonnet heat right on the sand.</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Signature Experiences You Can’t Miss</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
+                        <div className="bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-xl p-6">
+                          <h3 className="text-xl font-bold text-orange-900 mb-3">Aruba Must-Dos</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Sail a champagne sunset cruise to the Antilla wreck and Boca Catalina reef.</li>
+                            <li>• Tackle an Arikok National Park UTV adventure to the Natural Pool, dunes, and lighthouse.</li>
+                            <li>• Snorkel Tres Trapi “Stairway to Heaven” for turtles and crystal-clear limestone pools.</li>
+                            <li>• Spend an evening along the Palm Beach strip—casino hopping, rooftop cocktails, and live music.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-gradient-to-br from-emerald-50 to-lime-50 border border-emerald-200 rounded-xl p-6">
+                          <h3 className="text-xl font-bold text-emerald-900 mb-3">Jamaica Must-Dos</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Climb Dunn’s River Falls or tube the Martha Brae River with a local guide.</li>
+                            <li>• Cruise the Luminous Lagoon after dark to watch bioluminescent waters glow around your boat.</li>
+                            <li>• Toast the sunset at Rick’s Café—cliff jumps, live reggae, and bucket-list vibes.</li>
+                            <li>• Explore the Blue Mountains for coffee tastings, lush hiking trails, and misty sunrise views.</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="bg-gradient-to-r from-orange-50 to-emerald-50 border border-orange-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-3">When to Go & How to Pack</h3>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                          Book early if you’re targeting Carnival season in Jamaica or winter sunshine in Aruba—prime suites and top-shelf dinner reservations disappear months out. Pair breezy Aruba nights with reggae-filled Jamaican evenings by planning the highlight tours before you depart.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                          Use the <Link href="/travel-guides/best-time-to-visit-caribbean" className="text-orange-600 hover:underline">Best Time to Visit the Caribbean</Link> guide to balance weather, events, and shoulder-season savings, then check the <Link href="/travel-guides/beach-vacation-packing-list" className="text-blue-600 hover:underline">Beach Vacation Packing List</Link> for reef-safe sunscreen, water shoes, and dry bags that work from Palm Beach to Dunn’s River Falls.
+                        </p>
+                      </div>
+
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Ready to Choose (or Combine) Your Island?</h2>
+                      <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                        Many travelers split time—start with Aruba’s walkable beaches and catamaran days, then connect via Miami or Panama to Jamaica for waterfalls, jerk smokehouses, and reggae nights.
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                        <Button
+                          asChild
+                          className="bg-white text-orange-600 border border-orange-400 hover:bg-orange-50 transition-colors px-6 py-4 font-semibold"
+                        >
+                          <Link href="/destinations/aruba">
+                            Explore Aruba →
                           </Link>
                         </Button>
                         <Button
@@ -7169,7 +8580,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                         </p>
                       </div>
                     </>
-                  ) : slug === 'best-tours-peru-machu-picchu' ? (
+                ) : slug === 'best-tours-peru-machu-picchu' ? (
                     <>
                       <div className="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-lg p-8 my-8">
                         <p className="text-lg text-orange-900 italic">
@@ -7813,11 +9224,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                         </p>
                       </div>
                     </>
-                  ) : (
-                    <div className="text-center py-12">
-                      <p className="text-gray-600">Blog post not found.</p>
-                    </div>
-                  )}
+                  ) : null}
                 </div>
               </div>
             </article>
@@ -8104,6 +9511,184 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                       </h3>
                       <p className="text-gray-700 ml-8 leading-relaxed">
                         <span className="font-semibold text-green-600">A:</span> Use waterproof cases, dry bags, or zip-lock bags for phones and cameras. Keep electronics in a shaded area when not in use, and consider a waterproof speaker for music.
+                      </p>
+                    </div>
+                  </>
+                ) : slug === 'aruba-packing-list' ? (
+                  <>
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        What should I pack for Aruba’s beaches?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Start with reef-safe sunscreen, polarized sunglasses, a cooling towel, and water shoes for Malmok and Arashi. Add a personal snorkel set, insulated bottle, and breezy outfits for Palm Beach evenings.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Do I need water shoes in Aruba?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Yes—many snorkel-worthy spots like Tres Trapi and Boca Catalina have rocky ledges. Water shoes protect your feet and give traction when you climb back onto the limestone steps.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Is reef-safe sunscreen required in Aruba?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> It’s strongly encouraged. Aruba’s marine parks and shallow reefs benefit from mineral formulas, and many snorkel operators ask guests to use reef-safe sunscreen before boarding.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Should I bring my own snorkel gear for Aruba?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Bringing your own mask ensures a great seal and cleanliness, especially if you plan to swim at Boca Catalina daily. Rentals are widely available, but personal gear lets you jump in anytime the water looks inviting.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        What should I wear for Aruba nights out?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Lightweight dresses, linen pants, and breathable button-downs keep you comfortable along the Palm Beach strip. Pack a light layer—trade winds can feel crisp during waterfront dinners or sunset sails.
+                      </p>
+                    </div>
+                  </>
+                ) : slug === '3-day-aruba-itinerary' ? (
+                  <>
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        How many days do I need in Aruba?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Three full days cover Palm Beach, an Antilla snorkel sail, Arikok’s rugged outback, and sunset dining. Add a fourth night if you want extra downtime or a Baby Beach day trip.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Do I need to rent a car?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Not for the whole trip. Taxis and tour shuttles cover Palm Beach easily, but renting a car for one day lets you reach Arikok National Park, San Nicolas street art, and dockside bites in Savaneta.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        When should I book tours and restaurants?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Reserve sunset sails, Antilla snorkel cruises, and Arikok UTV tours 2–3 weeks ahead (longer around holidays). Lock in dinner at Passions, Wacky Wahoo’s, and Flying Fishbone as soon as flights are confirmed.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Where should I stay for this itinerary?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Base yourself on Palm Beach for walk-to-everything energy or Eagle Beach for a quieter low-rise vibe. Boutique fans can tack on a final night in Savaneta for waterfront dining before departure.
+                      </p>
+                    </div>
+                  </>
+                ) : slug === 'aruba-vs-punta-cana' ? (
+                  <>
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Which destination has better all-inclusive resorts?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Punta Cana. It lines its coast with full-service properties that bundle dining, drinks, activities, and airport transfers. Aruba offers a handful of all-inclusives, but most travellers mix high-rise hotels with à la carte dining reservations.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Do I need a car in Aruba or Punta Cana?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Use taxis or ride shares in Aruba for short hops, then rent a Jeep for a day if you want to explore Arikok National Park or San Nicolas murals. In Punta Cana, resort shuttles and organised tours cover most excursions, so a rental car is rarely necessary.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        When is the best time to visit?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> December through April brings the most reliable sunshine, steady trade winds, and lively event calendars on both islands. For lower prices, consider May, June, or late August through October when showers are brief and resorts run promotions.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Can I visit both Aruba and Punta Cana in one trip?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Yes. Fly into one island, then connect through Miami, Panama City, or Santo Domingo to reach the other in about five hours. Many travellers start with boutique stays in Aruba before finishing with an all-inclusive resort week in Punta Cana.
+                      </p>
+                    </div>
+                  </>
+                ) : slug === 'aruba-vs-jamaica' ? (
+                  <>
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Which island is better for nightlife and live music?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Jamaica. Montego Bay, Negril, and Kingston pulse with reggae concerts, sound-system parties, and beach bars that go late into the night. Aruba offers lounges and casinos along Palm Beach, but the scene winds down earlier and feels more low-key.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Do I need to rent a car in Aruba or Jamaica?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> In Aruba, taxis and ride shares cover most outings, and a one-day Jeep rental is plenty if you want to explore Arikok National Park. Jamaica is larger—most travelers arrange private drivers, resort shuttles, or guided excursions instead of renting a car.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        When is the best time to visit Aruba or Jamaica?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> December through April brings breezy sunshine, calm seas, and marquee festivals on both islands, so book ahead. Shoulder months—May, June, and late August through October—offer lower prices and lighter crowds, though Jamaica sees quick afternoon showers.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Can I visit Aruba and Jamaica on one vacation?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Absolutely. Fly into Aruba for a few days of catamarans and beach clubs, then connect via Miami, Panama City, or Santo Domingo to Jamaica for waterfall adventures and reggae nights. Total travel time between the islands is about five to six hours including the connection.
                       </p>
                     </div>
                   </>
@@ -9554,6 +11139,68 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                       </h3>
                       <p className="text-gray-700 ml-8 leading-relaxed">
                         <span className="font-semibold text-green-600">A:</span> Use TopTours.ai to discover the best Peru tours and Machu Picchu experiences instantly. Our AI helps you find everything from Inca Trail treks and Machu Picchu guided tours to Sacred Valley explorations and Lake Titicaca cultural experiences, all powered by Viator's trusted network of local operators with verified reviews and expertise across Peru's most spectacular destinations.
+                      </p>
+                    </div>
+                  </>
+                ) : slug === 'best-time-to-visit-aruba' ? (
+                  <>
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        When is the best time to visit Aruba?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> January to April brings peak sunshine and island-wide festivities, May to August delivers breezy trade winds perfect for kitesurfing, and September to November offers calm seas, thinner crowds, and excellent value—all with virtually no hurricane risk.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Does Aruba get hurricanes?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Aruba sits well south of the Atlantic hurricane belt, so direct hits are extremely rare. Late summer may bring occasional brief showers, but sunshine and steady breezes dominate the forecast year-round.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        When is the best time for snorkeling and sailing in Aruba?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> September through early December offers glassy water and peak visibility at Boca Catalina and the Antilla wreck. January through April keeps catamarans lively with reliable trade winds and warm evenings.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Which Aruba events should I plan around?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Build your trip around Aruba Carnival (Jan–Feb), Aruba Hi-Winds (late Jun/early Jul), Caribbean Sea Jazz Festival (September), Eat Local Restaurant Month (Oct/Nov), or December’s Dande celebrations—just reserve hotels and tours months ahead.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        How far in advance should I book Aruba tours?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Lock in sunset sails, Antilla snorkel charters, and UTV adventures as soon as your dates are set—prime departures during Carnival, windsport season, and the holidays often sell out weeks in advance.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Is summer a good time to visit Aruba?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Absolutely—June through August deliver breezy beaches, world-class kitesurfing, and shoulder-season hotel pricing. Schedule morning boat tours in case afternoon gusts prompt rescheduling.
                       </p>
                     </div>
                   </>
