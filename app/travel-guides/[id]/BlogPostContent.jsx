@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight, Calendar, User, Clock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, User, Clock, X } from 'lucide-react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
@@ -14,6 +14,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
   const [relatedGuides, setRelatedGuides] = useState([]);
   const [relatedDestinations, setRelatedDestinations] = useState([]);
   const [currentGuide, setCurrentGuide] = useState(null);
+  const [showExploreCta, setShowExploreCta] = useState(true);
 
   // Scroll to top when component mounts and load related guides
   useEffect(() => {
@@ -22,6 +23,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
     // Get current guide from data
     const guide = travelGuides.find(g => g.id === slug);
     setCurrentGuide(guide);
+    setShowExploreCta(true);
     
     // Load related guides
     const related = getRelatedGuides(slug);
@@ -96,8 +98,75 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
       category: 'General Travel Tips',
       image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/What%20to%20Pack%20for%20a%20Beach%20Vacation.png',
       content: 'Packing for a beach vacation can make or break your trip. Whether you\'re heading to the Caribbean, Mediterranean, or tropical paradise...',
-      tags: ['Beach Packing', 'Vacation Essentials', 'Travel Tips'],
-      relatedPosts: ['how-to-choose-a-tour', 'save-money-on-tours-activities']
+              tags: ['Beach Packing', 'Vacation Essentials', 'Travel Tips'],
+              relatedPosts: ['curacao-packing-list', 'how-to-choose-a-tour']
+            },
+            'curacao-packing-list': {
+              title: 'Curaçao Beach Vacation Packing List: Essentials You Shouldn\'t Forget',
+              excerpt: 'Pack for Curaçao with confidence using this island-ready checklist covering reef-safe sun care, snorkel gear, and outfits made for trade winds and pastel city strolls.',
+              publishDate: '2025-11-12',
+              author: 'Caribbean Travel Expert',
+              readTime: '8 min read',
+              category: 'Caribbean',
+              image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/Carib%20Restaurants/curacao%20packing%20list%20and%20must%20bring%20items.png',
+              content: 'Curaçao\'s steady trade winds, reef-lined bays, and pastel waterfronts call for a thoughtful packing plan. From Klein Curaçao catamaran days to Willemstad food crawls, this list keeps you cool, protected, and ready for every island moment.',
+              tags: ['Curaçao Packing List', 'Caribbean Vacation Essentials', 'Curaçao Travel Tips'],
+              relatedPosts: ['beach-vacation-packing-list', 'best-time-to-visit-curacao'],
+              relatedDestination: '/destinations/curacao',
+              relatedDestinationLabel: 'Curaçao'
+            },
+            '3-day-curacao-itinerary': {
+              title: '3 Days in Curaçao: The Perfect Long Weekend Itinerary',
+              excerpt: 'Make the most of 72 hours in Curaçao with a curated itinerary covering Willemstad’s UNESCO core, Klein Curaçao day trips, and sunset dining at top restaurants.',
+              publishDate: '2025-11-12',
+              author: 'Caribbean Travel Expert',
+              readTime: '9 min read',
+              category: 'Caribbean',
+              image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/Carib%20Restaurants/3%20days%20curacao.png',
+              content: 'With just three days in Curaçao, you can balance pastel city strolls, reef snorkeling, and foodie-approved dinners—if you plan each day with intention.',
+              tags: ['Curaçao Itinerary', '3 Days in Curaçao', 'Curaçao Tours', 'Curaçao Travel Tips'],
+              relatedPosts: ['best-time-to-visit-curacao', 'curacao-packing-list'],
+              relatedDestination: '/destinations/curacao',
+              relatedDestinationLabel: 'Curaçao'
+            },
+            'aruba-vs-curacao': {
+              title: 'Aruba vs Curaçao: Which Caribbean Island Fits Your Travel Style?',
+              excerpt: 'Compare Aruba and Curaçao across beaches, dining, nightlife, and must-do experiences so you can pick (or combine) the island that fits your getaway.',
+              publishDate: '2025-11-12',
+              author: 'Caribbean Travel Expert',
+              readTime: '10 min read',
+              category: 'Caribbean',
+              image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/aruba%20vs%20curacao.png',
+              content: 'Aruba and Curaçao may share sunshine and Dutch-Caribbean roots, but each brings a distinct energy. Use this comparison to see how they line up for beaches, nightlife, culture, and signature experiences.',
+              tags: ['Aruba vs Curaçao', 'Caribbean Comparison', 'Aruba Travel', 'Curaçao Travel'],
+              relatedPosts: ['3-day-curacao-itinerary', 'curacao-packing-list'],
+              relatedDestination: null
+            },
+            'curacao-vs-jamaica': {
+              title: 'Curaçao vs Jamaica: Which Caribbean Escape Matches Your Vibe?',
+              excerpt: 'Compare Curaçao and Jamaica across beaches, culture, dining, and adventure so you can pick (or combine) the island that fits your getaway.',
+              publishDate: '2025-11-12',
+              author: 'Caribbean Travel Expert',
+              readTime: '10 min read',
+              category: 'Caribbean',
+              image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/curacao%20vs%20jamaica.png',
+              content: 'Curaçao leans into pastel waterfronts and reef-laced coves; Jamaica pulses with reggae, waterfalls, and jerk smokehouses. This guide compares the two so you can match your travel style—or plan a multi-island adventure.',
+              tags: ['Curaçao vs Jamaica', 'Caribbean Comparison', 'Curaçao Travel', 'Jamaica Travel'],
+              relatedPosts: ['3-day-curacao-itinerary', 'curacao-packing-list'],
+              relatedDestination: null
+            },
+            'curacao-vs-punta-cana': {
+              title: 'Curaçao vs Punta Cana: Which Caribbean Escape Is Right for You?',
+              excerpt: 'Compare Curaçao and Punta Cana across beaches, resorts, dining, and adventures so you can match the island to your travel style—or plan a combo getaway.',
+              publishDate: '2025-11-12',
+              author: 'Caribbean Travel Expert',
+              readTime: '10 min read',
+              category: 'Caribbean',
+              image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/curacao%20vs%20punta%20cana.png',
+              content: 'Curaçao’s boutique coves and pastel waterfronts feel worlds apart from Punta Cana’s all-inclusive coastline—but both promise endless Caribbean blue. This guide compares them side by side so you can plan the perfect island escape.',
+              tags: ['Curaçao vs Punta Cana', 'Caribbean Comparison', 'Curaçao Travel', 'Punta Cana Travel'],
+              relatedPosts: ['3-day-curacao-itinerary', 'curacao-packing-list'],
+              relatedDestination: null
     },
     'save-money-on-tours-activities': {
       title: '7 Smart Ways to Save Money on Tours and Activities',
@@ -351,6 +420,20 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
               tags: ['Best Time to Visit Brazil', 'Brazil Festivals', 'Rio Weather', 'Brazil Travel Seasons', 'Brazilian Festivals', 'Amazon Weather', 'Brazil Beaches'],
               relatedPosts: ['best-tours-peru-machu-picchu', 'egypt-cultural-tours']
             },
+            'best-time-to-visit-curacao': {
+              title: 'Best Time to Visit Curaçao: Weather, Festivals, and Top Tours',
+              excerpt: 'Find the perfect season for your Curaçao vacation with month-by-month weather tips, festival highlights, and the best times to book diving trips, Klein Curaçao cruises, and cultural experiences.',
+              publishDate: '2025-11-12',
+              author: 'Caribbean Travel Expert',
+              readTime: '10 min read',
+              category: 'Caribbean',
+              image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/Carib%20Restaurants/curacao%20best%20time%20to%20visit.png',
+              content: 'Curaçao enjoys warm trade winds, calm seas, and vibrant island life all year long. Understanding how each season shapes the weather, festivals, and tour availability helps you match your travel dates to the experiences you crave most.',
+              tags: ['Best Time to Visit Curaçao', 'Curaçao Weather', 'Curaçao Tours', 'Curaçao Carnival', 'Caribbean Travel Seasons'],
+              relatedPosts: ['best-time-to-visit-caribbean', 'best-caribbean-islands'],
+              relatedDestination: '/destinations/curacao',
+              relatedDestinationLabel: 'Curaçao'
+            },
             'patagonia-travel-guide': {
               title: 'Patagonia Travel Guide: How to Experience Argentina and Chile\'s Wild South',
               excerpt: 'Discover the ultimate Patagonia travel guide for experiencing Argentina and Chile\'s wild south. Explore hiking trails, glacier tours, and adventure activities in one of the world\'s most spectacular wilderness regions.',
@@ -366,6 +449,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
   };
 
   const post = blogPosts[slug];
+  const exploreDestinationLabel = post?.relatedDestinationLabel ?? null;
 
   // Load related destinations based on post category
   useEffect(() => {
@@ -718,6 +802,193 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                   }
                 }
               ]
+            })}
+          </script>
+        )}
+        {slug === 'curacao-packing-list' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What should I pack for a Curaçao vacation?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Bring reef-safe sunscreen, polarized sunglasses, a cooling towel, lightweight clothes, and reliable water shoes. Curaçao's coral-lined beaches and Klein Curaçao day trips also call for snorkel gear, insulated water bottles, and a foldable beach bag."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I need reef-safe sunscreen in Curaçao?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Curaçao's marine parks and coral reefs benefit from mineral-based, reef-safe sunscreen. Pack enough for frequent reapplication—at least one bottle per person per week."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Should I bring my own snorkel gear to Curaçao?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Bringing your own snorkel mask ensures a comfortable fit and hygiene, especially if you plan to explore Playa Piskadó, Tugboat Beach, or Klein Curaçao. Many travelers prefer their own gear rather than renting on-site."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What kind of clothing works best in Curaçao?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pack breathable, quick-dry fabrics like linen and moisture-wicking blends. Curaçao's trade winds keep evenings pleasant, so a light layer or scarf is perfect for sunset dining along the Handelskade."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Are water shoes necessary for Curaçao beaches?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Water shoes protect against shells, coral, and rocky entries—especially at Playa Lagun, Playa Forti, and Klein Curaçao. They're recommended for snorkelling and boat excursions."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What extras should I pack for Klein Curaçao?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Bring a dry bag, extra sunscreen, a rash guard, a cooling towel, and a charged power bank. Shade is limited on the sandbar, so sun protection matters even on breezy days."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
+        {slug === '3-day-curacao-itinerary' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "How many days do I need in Curaçao?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Three days is enough to experience Willemstad, a Klein Curaçao day trip, and the island’s west-coast beaches. If you want extra dive time or more beach relaxation, add a fourth night."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Should I book a Klein Curaçao tour in advance?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Klein Curaçao catamarans and yachts often sell out, especially on weekends and cruise days. Reserve at least two weeks ahead during peak season."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I need to rent a car for this itinerary?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Renting a car for day three gives you flexibility to explore Playa Kenepa, Playa Piskadó, and Shete Boka at your own pace. Taxis and tours can cover day one and Klein Curaçao."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Where should I stay for a long weekend in Curaçao?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Base yourself in Pietermaai or Punda for walkable access to UNESCO landmarks, cafés, and nightlife. Consider Jan Thiel if you prefer a beach club scene with quick access to catamarans."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
+        {slug === 'aruba-vs-curacao' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": "Aruba vs Curaçao: Which Caribbean Island Fits Your Travel Style?",
+              "description": "Compare Aruba and Curaçao across weather, beaches, dining, and activities so you can choose the island that matches your dream Caribbean getaway.",
+              "author": {
+                "@type": "Person",
+                "name": "Caribbean Travel Expert"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "TopTours.ai",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://toptours.ai/logo.png"
+                }
+              },
+              "image": 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/aruba%20vs%20curacao.png',
+              "datePublished": "2025-11-12",
+              "dateModified": "2025-11-12",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://toptours.ai/travel-guides/aruba-vs-curacao"
+              }
+            })}
+          </script>
+        )}
+        {slug === 'curacao-vs-jamaica' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": "Curaçao vs Jamaica: Which Caribbean Escape Matches Your Vibe?",
+              "description": "Compare Curaçao and Jamaica across beaches, culture, dining, and signature adventures so you can choose the island that fits your getaway.",
+              "author": {
+                "@type": "Person",
+                "name": "Caribbean Travel Expert"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "TopTours.ai",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://toptours.ai/logo.png"
+                }
+              },
+              "image": 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/curacao%20vs%20jamaica.png',
+              "datePublished": "2025-11-12",
+              "dateModified": "2025-11-12",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://toptours.ai/travel-guides/curacao-vs-jamaica"
+              }
+            })}
+          </script>
+        )}
+        {slug === 'curacao-vs-punta-cana' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": "Curaçao vs Punta Cana: Which Caribbean Escape Is Right for You?",
+              "description": "Compare Curaçao and Punta Cana across beaches, resorts, dining, and adventures so you can match the island to your travel style—or plan a combo getaway.",
+              "author": {
+                "@type": "Person",
+                "name": "Caribbean Travel Expert"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "TopTours.ai",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://toptours.ai/logo.png"
+                }
+              },
+              "image": 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/MGP%20Blogs/curacao%20vs%20punta%20cana.png',
+              "datePublished": "2025-11-12",
+              "dateModified": "2025-11-12",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://toptours.ai/travel-guides/curacao-vs-punta-cana"
+              }
             })}
           </script>
         )}
@@ -1754,6 +2025,64 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
             })}
           </script>
         )}
+        {slug === 'best-time-to-visit-curacao' && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "When is the best time to visit Curaçao?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The best time to visit Curaçao depends on the experiences you want. December to April delivers postcard weather and Carnival festivities. May to August offers lighter crowds and attractive hotel rates. September to November provides calm seas, peak dive visibility, and the lowest prices of the year."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Does Curaçao get hurricanes?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Curaçao lies outside the Atlantic hurricane belt, so direct hits are extremely rare. Late summer and autumn may bring brief showers or distant tropical systems, but the island enjoys sunshine and steady trade winds throughout the year."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "When is the best time for diving and snorkelling in Curaçao?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "September through early December offers Curaçao's clearest water and calmest seas, with visibility often reaching 100 feet. Night dives and macro photography sessions are excellent from May through July when marine life is especially active."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What major festivals should I plan around?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Key events include Curaçao Carnival (January–March), King's Day celebrations (April 27), Curaçao North Sea Jazz Festival (late August or early September), and Curaçao Pride (September/October). Book hotels and tours early—rates climb quickly around festival dates."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is summer a good time to visit Curaçao?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. June through August bring warm water, balanced crowds, and great value on boutique hotels. Expect occasional afternoon showers that pass quickly and breezy evenings perfect for waterfront dining and sunset sails."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How far in advance should I book Curaçao tours?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Reserve Klein Curaçao day trips, luxury catamarans, and popular dive charters at least one month ahead during peak season. Even in shoulder season, book before you fly to secure the best departure times and on-board experiences."
+                  }
+                }
+              ]
+            })}
+          </script>
+        )}
         {slug === 'best-time-to-visit-brazil' && (
           <script type="application/ld+json">
             {JSON.stringify({
@@ -2037,6 +2366,14 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                     <p className="text-xl leading-relaxed text-gray-700 font-light">
                       Packing for a beach vacation can make or break your trip. Whether you're heading to the Caribbean, Mediterranean, or tropical paradise, having the right essentials ensures you'll be comfortable, protected, and ready for endless beach adventures. Here's your comprehensive checklist to pack like a pro.
                     </p>
+                  ) : slug === 'curacao-packing-list' ? (
+                    <p className="text-xl leading-relaxed text-gray-700 font-light">
+                      Curaçao's year-round sunshine, breezy trade winds, and coral-rich coves deserve a packing list tailored to island life. From Klein Curaçao catamaran days to sunset strolls along the Handelskade, this guide keeps your suitcase light, functional, and ready for every Curaçao adventure.
+                    </p>
+                  ) : slug === '3-day-curacao-itinerary' ? (
+                    <p className="text-xl leading-relaxed text-gray-700 font-light">
+                      Only have 72 hours in Curaçao? This long-weekend itinerary blends vibrant Willemstad mornings, Klein Curaçao sailing days, and sunset dinners at the island restaurants travelers rave about—so you leave feeling like you saw the best of the island without rushing.
+                    </p>
                   ) : slug === 'best-caribbean-islands' ? (
                     <p className="text-xl leading-relaxed text-gray-700 font-light">
                       The Caribbean is a dream destination for travelers of all types. Whether you're seeking pristine beaches, vibrant culture, adventure activities, or luxury resorts, there's a perfect Caribbean island waiting for you. From the white sands of Aruba to the lush rainforests of St. Lucia, each island offers its own unique charm and experiences.
@@ -2044,6 +2381,10 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                   ) : slug === 'best-time-to-visit-caribbean' ? (
                     <p className="text-xl leading-relaxed text-gray-700 font-light">
                       Planning a Caribbean getaway? Timing is everything. While the region is warm and tropical year-round, the best time to visit the Caribbean depends on what you're looking for — whether it's sunny beaches, lower prices, or fewer crowds. From the dry season's perfect weather to the off-season's unbeatable deals, here's everything you need to know about the Caribbean travel seasons.
+                    </p>
+                  ) : slug === 'best-time-to-visit-curacao' ? (
+                    <p className="text-xl leading-relaxed text-gray-700 font-light">
+                      Curaçao sits outside the hurricane belt, so sunshine and trade winds greet travelers in every month. Still, each season offers something special—Carnival parades, Klein Curaçao catamaran parties, or quiet reef dives with 100-foot visibility. This guide shows you exactly when to go for perfect weather, fewer crowds, and the tours you can't miss.
                     </p>
                   ) : slug === 'family-tours-caribbean' ? (
                     <p className="text-xl leading-relaxed text-gray-700 font-light">
@@ -2109,6 +2450,18 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                         <p className="text-xl leading-relaxed text-gray-700 font-light">
                           Patagonia represents one of the world's last great wilderness frontiers, where towering granite peaks, massive glaciers, pristine lakes, and endless steppes create a landscape of unparalleled beauty and adventure. Spanning both Argentina and Chile, this vast region offers some of the planet's most spectacular natural wonders, from the iconic Torres del Paine to the massive Perito Moreno Glacier, from the dramatic Fitz Roy massif to the windswept plains where guanacos roam freely.
                         </p>
+                      ) : slug === 'aruba-vs-curacao' ? (
+                        <p className="text-xl leading-relaxed text-gray-700 font-light">
+                          Aruba’s resort-lined Palm Beach and Curaçao’s pastel waterfront might share Dutch-Caribbean roots, but the vibe on each island feels completely different. This comparison guide stacks their beaches, dining scenes, nightlife, and signature tours so you can choose the island that matches your getaway—or split your time between both.
+                        </p>
+                      ) : slug === 'curacao-vs-jamaica' ? (
+                        <p className="text-xl leading-relaxed text-gray-700 font-light">
+                          Curaçao keeps things breezy with UNESCO neighborhoods and reef-filled coves, while Jamaica turns up the energy with reggae nights, rainforest waterfalls, and jerk smokehouses. Use this side-by-side breakdown to see which island fits your travel rhythm or how to combine them in one itinerary.
+                        </p>
+                      ) : slug === 'curacao-vs-punta-cana' ? (
+                        <p className="text-xl leading-relaxed text-gray-700 font-light">
+                          Curaçao is made for snorkel coves, cliff-top sunsets, and boutique stays; Punta Cana delivers white-sand mega resorts, beach clubs, and day trips to Saona Island. Compare them here to pinpoint the Caribbean escape that fits your style—or plan a split itinerary that blends the best of both.
+                        </p>
                       ) : (
                     <p className="text-xl leading-relaxed text-gray-700 font-light">
                       Travel experiences don't have to break your budget. With the right strategy, you can explore the world's most exciting destinations while keeping your wallet happy. Whether you're planning a family vacation, a solo getaway, or a romantic escape, these smart tips will help you save money on tours and activities — without missing out on the fun.
@@ -2143,6 +2496,42 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                     <div className="border-l-4 border-cyan-500 pl-6 py-2 bg-cyan-50 rounded-r-lg my-8">
                       <p className="text-lg text-cyan-900 italic">
                         Pack smart and light—most beach destinations have shops, but quality and prices vary. Bringing essentials ensures you're prepared for any beach adventure.
+                      </p>
+                    </div>
+                  ) : slug === 'curacao-packing-list' ? (
+                    <div className="border-l-4 border-blue-500 pl-6 py-2 bg-blue-50 rounded-r-lg my-8">
+                      <p className="text-lg text-blue-900 italic">
+                        Trade winds keep Curaçao breezy, but shade and sun protection are scarce on Klein Curaçao. Pack reef-safe sunscreen, a wide-brim hat, and a cooling towel—you'll thank yourself midway through that catamaran day trip.
+                      </p>
+                    </div>
+                  ) : slug === '3-day-curacao-itinerary' ? (
+                    <div className="border-l-4 border-indigo-500 pl-6 py-2 bg-indigo-50 rounded-r-lg my-8">
+                      <p className="text-lg text-indigo-900 italic">
+                        Book Klein Curaçao catamarans, ATV adventures, and dinner reservations before you land—weekend slots sell out fast, especially during peak season and cruise days.
+                      </p>
+                    </div>
+                  ) : slug === 'best-time-to-visit-curacao' ? (
+                    <div className="border-l-4 border-blue-500 pl-6 py-2 bg-blue-50 rounded-r-lg my-8">
+                      <p className="text-lg text-blue-900 italic">
+                        Trade winds keep Curaçao breezy all year, but Klein Curaçao charters and dive boats still sell out fast. Reserve your top tours before you fly—shoulder-season deals disappear quickly.
+                      </p>
+                    </div>
+                  ) : slug === 'aruba-vs-curacao' ? (
+                    <div className="border-l-4 border-orange-500 pl-6 py-2 bg-orange-50 rounded-r-lg my-8">
+                      <p className="text-lg text-orange-900 italic">
+                        Flights between Aruba and Curaçao take about 35 minutes. If you can’t choose one vibe, combine both islands and book inter-island tickets early to secure prime daylight departures.
+                      </p>
+                    </div>
+                  ) : slug === 'curacao-vs-jamaica' ? (
+                    <div className="border-l-4 border-emerald-500 pl-6 py-2 bg-emerald-50 rounded-r-lg my-8">
+                      <p className="text-lg text-emerald-900 italic">
+                        Want reef dives and reggae nights in a single trip? Lock in Curaçao–Jamaica flights via Miami or Panama first, then reserve signature tours like Klein Curaçao day sails and Dunn’s River Falls climbs before they sell out.
+                      </p>
+                    </div>
+                  ) : slug === 'curacao-vs-punta-cana' ? (
+                    <div className="border-l-4 border-cyan-500 pl-6 py-2 bg-cyan-50 rounded-r-lg my-8">
+                      <p className="text-lg text-cyan-900 italic">
+                        Punta Cana’s all-inclusive deals pair perfectly with Curaçao’s boutique stays. Plan Curaçao first for reef adventures, then unwind in Punta Cana—booking Saona and catamaran tours ahead of arrival keeps your schedule stress-free.
                       </p>
                     </div>
                   ) : (
@@ -2751,6 +3140,826 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                         <p className="text-sm text-yellow-800">
                           <strong>Disclosure:</strong> *As an Amazon Associate, we may earn commission from qualifying purchases at no extra cost to you.
                         </p>
+                      </div>
+                    </>
+                  ) : slug === 'curacao-packing-list' ? (
+                    <>
+                      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-8 my-8">
+                        <p className="text-lg text-blue-900 italic">
+                          <strong>Local Insight:</strong> Curaçao day trips often mean full days in the sun with limited shade. Pack sun-safe layers, hydration helpers, and gear you can rinse quickly after snorkeling Playa Piskadó or Klein Curaçao.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Curaçao Beach Packing Checklist</h2>
+                      
+                      <div className="space-y-12 my-8">
+                        <div className="bg-gradient-to-r from-orange-50 to-yellow-50 border-l-4 border-orange-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-orange-900 mb-3">1. ☀️ Reef-Safe Sun Protection</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//reef%20safe%20sunscreen.jpg"
+                            alt="Reef safe sunscreen for Curaçao beaches"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Mineral sunscreen is mandatory for Klein Curaçao and Curaçao's protected reefs.</strong> Pack enough for frequent reapplication during boat rides, snorkel stops, and wind-swept beach days.</p>
+                          <a
+                            href="https://amzn.to/45abfxx"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-blue-900 mb-3">2. 🏖️ Beach Gear Ready for Trade Winds</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp"
+                            alt="Beach gear for Curaçao"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Bring a sand-friendly beach mat, foldable cooler, and wind-resistant umbrella.</strong> Curaçao's trade winds can be strong, so opt for weighted pegs or a travel anchor to keep your setup grounded.</p>
+                          <a
+                            href="https://amzn.to/4lDnatL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-green-900 mb-3">3. 👟 Water Shoes & Island Footwear</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//shoes%20on%20the%20beach.jpg"
+                            alt="Water shoes for Curaçao snorkeling"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Protect your feet from coral, piers, and rocky entries.</strong> Playa Lagun, Playa Piskadó, and Playa Forti all have pebbled shorelines—pack quick-dry water shoes and cushioned sandals for exploring Willemstad.</p>
+                          <a
+                            href="https://amzn.to/40rJsWO"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-purple-50 to-violet-50 border-l-4 border-purple-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-purple-900 mb-3">4. 💧 Insulated Hydration Gear</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//insulated%20bottle%20on%20the%20beach.jpg"
+                            alt="Insulated bottle for Curaçao excursions"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Stay cool during Klein Curaçao and Shete Boka outings.</strong> Insulated bottles keep water icy on hot catamaran decks and reduce plastic waste on the island.</p>
+                          <a
+                            href="https://amzn.to/46isTQO"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-teal-50 to-cyan-50 border-l-4 border-teal-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-teal-900 mb-3">5. 🤿 Personal Snorkel Set</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//snorkel%20gear%20on%20the%20beach.webp"
+                            alt="Snorkel gear for Curaçao reefs"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Bring your own mask for clear views of turtles and coral.</strong> Curaçao's reefs start just off the shore, and a personal set guarantees hygiene, comfort, and ready-to-go exploration.</p>
+                          <a
+                            href="https://amzn.to/411vniV"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-pink-50 to-rose-50 border-l-4 border-pink-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-pink-900 mb-3">6. 👕 Breezy, Quick-Dry Layers</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20clothing.jpg"
+                            alt="Lightweight clothing for Curaçao"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Pack linen shirts, airy cover-ups, and dresses that transition from beach clubs to Punda dinners.</strong> Trade winds can feel cool at night, so include a light layer or shawl.</p>
+                          <a
+                            href="https://amzn.to/4nX2cay"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-indigo-50 to-blue-50 border-l-4 border-indigo-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-indigo-900 mb-3">7. 🕶️ Polarized Sunglasses</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//sunglasses%20on%20the%20beach.jpg"
+                            alt="Polarized sunglasses for Curaçao"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Glare on the water is strong at Playa Kenepa and Blue Bay.</strong> Polarized lenses protect your eyes while you spot sea turtles or sail past the Handelskade.</p>
+                          <a
+                            href="https://amzn.to/3IxXu2T"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 border-yellow-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-yellow-900 mb-3">8. 🦆 Floats & Relaxation Gear</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20floats%20on%20the%20beach.jpg"
+                            alt="Beach floats for Curaçao coves"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Compact floats are perfect for calm bays like Playa Porto Mari.</strong> They pack small, inflate fast, and keep sunset swims extra relaxing.</p>
+                          <a
+                            href="https://amzn.to/45aiLZi"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-gray-50 to-slate-50 border-l-4 border-gray-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-gray-900 mb-3">9. ⚓ Float & Beach Anchor</h3>
+                          <img
+                            src="https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//float%20anchor%20on%20the%20beach.jpg"
+                            alt="Beach anchor for Curaçao floats"
+                            className="w-full h-64 object-cover rounded-lg mb-4"
+                          />
+                          <p className="text-gray-700 mb-3"><strong>Anchor your float or sunshade when the trade winds pick up.</strong> It keeps your gear secure on Klein Curaçao's open sandbar and windy west coast beaches.</p>
+                          <a
+                            href="https://amzn.to/46Ocunm"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors font-semibold"
+                          >
+                            View on Amazon →
+                          </a>
+                        </div>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Curaçao Packing Tips</h2>
+                      
+                      <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-8 my-8">
+                        <ul className="space-y-3 text-gray-700">
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Pack a reef-safe kit:</strong> Include mineral sunscreen, a rash guard, and aloe gel to soothe sun after Klein Curaçao excursions.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Use packing cubes:</strong> Separate snorkel gear, wet swimsuits, and dinner outfits for quick changes between beach days and city nights.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Add a lightweight dry bag:</strong> Keep phones and cameras safe during boat tours and dockside dining.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Bring extra swimwear:</strong> Trade winds help things dry, but two or three suits let you rotate between snorkeling, pools, and dinners.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-green-600 font-bold mr-3">✓</span>
+                            <span><strong>Carry a reusable tote:</strong> Perfect for floating markets, Pietermaai cafés, and spontaneous beach stops.</span>
+                          </li>
+                        </ul>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Plan the Rest of Your Curaçao Escape</h2>
+                      <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-8">
+                        <p className="text-lg text-gray-700 leading-relaxed">
+                          Packing is only the beginning. Combine this checklist with curated tours, dining picks, and destination guides to build your perfect Curaçao itinerary—from Handelskade photo walks to Klein Curaçao catamarans.
+                        </p>
+                        <p className="text-lg text-gray-700 leading-relaxed mt-4">
+                          Ready to turn your packing list into an unforgettable trip? Explore our hand-picked experiences, restaurants, and planning resources for Curaçao.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                          <Button
+                            asChild
+                            className="bg-white text-blue-700 border border-blue-500 hover:bg-blue-50 transition-colors px-5 py-3 font-semibold"
+                          >
+                            <Link href="/destinations/curacao">
+                              Explore Curaçao →
+                            </Link>
+                          </Button>
+                          <Button
+                            asChild
+                            className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-5 py-3 font-semibold"
+                          >
+                            <Link href="/destinations/curacao/restaurants">
+                              See Top Restaurants →
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 my-8">
+                        <p className="text-sm text-yellow-800">
+                          <strong>Disclosure:</strong> *As an Amazon Associate, we may earn commission from qualifying purchases at no extra cost to you.
+                        </p>
+                      </div>
+                    </>
+                  ) : slug === 'aruba-vs-curacao' ? (
+                    <>
+                      <div className="bg-gradient-to-r from-orange-50 via-amber-50 to-teal-50 border border-orange-200 rounded-lg p-8 my-8">
+                        <p className="text-lg text-amber-900 leading-relaxed">
+                          Aruba and Curaçao are sister islands in the Southern Caribbean, sharing reliable sunshine and Dutch-Caribbean culture. Aruba leans toward breezy beach resorts and nightlife, while Curaçao blends historic neighborhoods with reef-rich coastlines. Use this guide to see how they stack up across lodging, dining, and adventure so you can choose the island that matches your travel style—or plan a combo trip that gives you the best of both.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Aruba vs Curaçao at a Glance</h2>
+                      <div className="overflow-x-auto my-8">
+                        <table className="w-full border-collapse border border-gray-200 rounded-xl overflow-hidden">
+                          <thead className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+                            <tr>
+                              <th className="px-6 py-4 text-left font-semibold">Category</th>
+                              <th className="px-6 py-4 text-left font-semibold">Aruba</th>
+                              <th className="px-6 py-4 text-left font-semibold">Curaçao</th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white divide-y divide-gray-200">
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Vibe</td>
+                              <td className="px-6 py-4 text-gray-700">Resort-ready, lively Palm Beach strip, nightlife & casinos</td>
+                              <td className="px-6 py-4 text-gray-700">Colorful UNESCO capital, relaxed pace, thriving arts scene</td>
+                            </tr>
+                            <tr className="bg-gray-50">
+                              <td className="px-6 py-4 font-semibold text-gray-800">Beaches</td>
+                              <td className="px-6 py-4 text-gray-700">Long, blonde-sand beaches like Eagle & Palm; gentle surf</td>
+                              <td className="px-6 py-4 text-gray-700">Cove-style beaches with snorkeling (Playa Kenepa, Playa Lagun)</td>
+                            </tr>
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Best For</td>
+                              <td className="px-6 py-4 text-gray-700">Sunset seekers, first-time Caribbean visitors, nightlife lovers</td>
+                              <td className="px-6 py-4 text-gray-700">Culture hunters, divers, foodies, travelers who love a slower pace</td>
+                            </tr>
+                            <tr className="bg-gray-50">
+                              <td className="px-6 py-4 font-semibold text-gray-800">Average Weather</td>
+                              <td className="px-6 py-4 text-gray-700">82°F (28°C) with steady trade winds; minimal rain year-round</td>
+                              <td className="px-6 py-4 text-gray-700">Similar temps; slightly more microclimates thanks to hilly terrain</td>
+                            </tr>
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Where to Stay</td>
+                              <td className="px-6 py-4 text-gray-700">Palm Beach (high-rise resorts), Eagle Beach (low-rise & boutique)</td>
+                              <td className="px-6 py-4 text-gray-700">Pietermaai & Punda (boutique hotels), Jan Thiel (beach clubs & villas)</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Shared Strengths & Key Differences</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
+                        <div className="bg-white border border-blue-100 rounded-xl shadow-sm p-6">
+                          <h3 className="text-xl font-bold text-blue-900 mb-4">Where They Overlap</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Both islands sit outside the primary hurricane belt, so weather stays reliable year-round.</li>
+                            <li>• English, Dutch, Spanish, and Papiamento are widely spoken, and U.S. dollars are accepted in most tourist areas.</li>
+                            <li>• Daily flights connect them to Miami, New York, Toronto, and Amsterdam, making island hopping easy.</li>
+                            <li>• Snorkeling, catamaran cruising, and sunset sails headline water adventures on both islands.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-purple-100 rounded-xl shadow-sm p-6">
+                          <h3 className="text-xl font-bold text-purple-900 mb-4">Where They Diverge</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Aruba’s long shoreline feels built for beach lounging, while Curaçao’s coves reward snorkelers and divers.</li>
+                            <li>• Aruba’s nightlife centres on Palm Beach bars and casinos; Curaçao’s energy flows through live music nights in Pietermaai.</li>
+                            <li>• Curaçao’s UNESCO-listed Willemstad gives you pastel streets, floating markets, and museum stops between beach days.</li>
+                            <li>• Aruba’s flat terrain is ideal for ATV tours and windsurfing; Curaçao offers more hiking, cliff jumping, and underwater walls.</li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-teal-50 to-blue-50 border border-teal-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-3">The Short Version</h3>
+                        <p className="text-gray-700 leading-relaxed">
+                          Choose <Link href="/destinations/aruba" className="text-blue-600 hover:underline">Aruba</Link> if you want a resort-ready escape with easy beach access, sunset sails, and nightlife steps from your hotel. Pick <Link href="/destinations/curacao" className="text-indigo-600 hover:underline">Curaçao</Link> if you love a dash of history between dive sites, pastel waterfronts, and a quietly confident culinary scene.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Top Restaurants to Book Ahead</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div className="bg-white border border-orange-100 rounded-xl shadow-md p-6">
+                          <h3 className="text-2xl font-bold text-orange-900 mb-4">Aruba Dining Highlights</h3>
+                          <ul className="space-y-4">
+                            <li>
+                              <Link href="/destinations/aruba/restaurants/atardi-beach-restaurant-aruba" className="text-blue-600 font-semibold hover:underline">Atardi Beach Restaurant Aruba</Link>
+                              <p className="text-gray-700 text-sm mt-1">Barefoot tables on Palm Beach, a seafood tasting menu paced with the sunset, and Marriott-level service perfect for celebrations.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/aruba/restaurants/passions-on-the-beach-aruba" className="text-blue-600 font-semibold hover:underline">Passions on the Beach</Link>
+                              <p className="text-gray-700 text-sm mt-1">From sunrise smoothies to moonlit dinners on Eagle Beach, Passions layers live music, tiki torches, and Caribbean-inspired menus.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/aruba/restaurants/flying-fishbone-aruba" className="text-blue-600 font-semibold hover:underline">Flying Fishbone</Link>
+                              <p className="text-gray-700 text-sm mt-1">Toes-in-the-sand dining in Savaneta since 1997—think seafood platters, torched tiradito, and lantern-lit water tables.</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-indigo-100 rounded-xl shadow-md p-6">
+                          <h3 className="text-2xl font-bold text-indigo-900 mb-4">Curaçao Dining Highlights</h3>
+                          <ul className="space-y-4">
+                            <li>
+                              <Link href="/destinations/curacao/restaurants/kome-restaurant-curacao" className="text-indigo-600 font-semibold hover:underline">Kome Restaurant Curaçao</Link>
+                              <p className="text-gray-700 text-sm mt-1">Chef-driven favorites inside Pietermaai—wood-fired meats, house-baked desserts, and cocktails crafted for each menu.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/curacao/restaurants/brisa-do-mar-curacao" className="text-indigo-600 font-semibold hover:underline">Brisa do Mar – Pop’s Place</Link>
+                              <p className="text-gray-700 text-sm mt-1">A Caracas Bay classic with sunset views, fresh catch baskets, and local vibes just steps from the water.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/curacao/restaurants/de-visserij-piscadera-curacao" className="text-indigo-600 font-semibold hover:underline">De Visserij Piscadera</Link>
+                              <p className="text-gray-700 text-sm mt-1">Pick your fish at the counter and watch it hit the grill—dockside dining with picnic tables, jumbo shrimp baskets, and harbor breezes.</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Signature Experiences on Each Island</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
+                        <div className="bg-gradient-to-br from-orange-50 to-red-50 border border-orange-200 rounded-xl p-6">
+                          <h3 className="text-xl font-bold text-orange-900 mb-3">Aruba Must-Do Activities</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Sail a sunset catamaran or champagne cruise along Palm Beach.</li>
+                            <li>• Tackle an ATV or UTV tour through Arikok National Park and the island’s north coast.</li>
+                            <li>• Snorkel the Antilla shipwreck and Boca Catalina’s calm waters.</li>
+                            <li>• Join a windsurfing or kitesurfing lesson—Aruba’s trade winds are legendary.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-gradient-to-br from-indigo-50 to-blue-50 border border-indigo-200 rounded-xl p-6">
+                          <h3 className="text-xl font-bold text-indigo-900 mb-3">Curaçao Must-Do Activities</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Day-trip to Klein Curaçao for powdery beaches, snorkeling with turtles, and a picture-perfect lighthouse.</li>
+                            <li>• Dive or snorkel Tugboat Beach, Playa Lagun, and Mushroom Forest for thriving reefs.</li>
+                            <li>• Wander Willemstad’s Punda and Otrobanda quarters—float along the Queen Emma Bridge and photograph the Handelskade.</li>
+                            <li>• Toast sunset at beach clubs in Jan Thiel or explore street art in Pietermaai by night.</li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">When to Go & What to Pack</h3>
+                        <p className="text-gray-700 leading-relaxed">
+                          Time your island hop with the <Link href="https://www.toptours.ai/travel-guides/best-time-to-visit-caribbean" className="text-indigo-600 hover:underline">Best Time to Visit the Caribbean</Link> guide—it breaks down peak sunshine, shoulder-season deals, and hurricane-belt considerations at a glance. Packing one suitcase for both vibes? The <Link href="https://www.toptours.ai/travel-guides/beach-vacation-packing-list" className="text-blue-600 hover:underline">Beach Vacation Packing List</Link> covers reef-safe sun care, snorkel gear, and resort-ready outfits that work from Palm Beach sunsets to Willemstad strolls.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Plan the Island That Fits You (or Do Both)</h2>
+                      <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                        Ready to lock in your trip? Browse curated tours, dining, and itineraries for each island below. Flights between Aruba and Curaçao take about 35 minutes, so adding a few days on the neighboring island is easier than you think.
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                        <Button
+                          asChild
+                          className="bg-white text-blue-700 border border-blue-500 hover:bg-blue-50 transition-colors px-6 py-4 font-semibold"
+                        >
+                          <Link href="/destinations/aruba">
+                            Explore Aruba →
+                          </Link>
+                        </Button>
+                        <Button
+                          asChild
+                          className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-6 py-4 font-semibold"
+                        >
+                          <Link href="/destinations/curacao">
+                            Explore Curaçao →
+                          </Link>
+                        </Button>
+                      </div>
+                    </>
+                  ) : slug === '3-day-curacao-itinerary' ? (
+                    <>
+                      <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-lg p-8 my-8">
+                        <p className="text-lg text-blue-900 italic">
+                          <strong>Weekend Wisdom:</strong> Secure Klein Curaçao catamarans, UNESCO walking tours, and dinner reservations before you land—Saturdays and cruise days fill quickly.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Day 1 – UNESCO Streets & Sunset Dinner</h2>
+                      <div className="space-y-4 text-gray-700 leading-relaxed">
+                        <p><strong>Morning:</strong> Check into your base in Pietermaai or Punda and grab a coffee along the Handelskade. Stroll across the Queen Emma Bridge while it’s still quiet, then join a guided walking tour to hear stories behind Otrobanda’s street art and the pastel Dutch façades.</p>
+                        <p><strong>Midday:</strong> Duck into the floating market for fresh fruit or head to Plasa Bieu for a slow-cooked stoba lunch. Spend the afternoon exploring the Kura Hulanda Museum or cooling off at the Infinity pool at Rif Fort.</p>
+                        <p><strong>Evening:</strong> Toast the golden hour with a cocktail at Saint Tropez Ocean Club before dinner at <Link href="/destinations/curacao/restaurants/kome-restaurant-curacao" className="text-indigo-600 hover:underline">Kome Restaurant Curaçao</Link>. Their wood-fired menu and in-house bakery make for a celebratory first night. Finish with gelato on Wilhelminaplein or live music in Pietermaai.</p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Day 2 – Klein Curaçao Catamaran Escape</h2>
+                      <div className="space-y-4 text-gray-700 leading-relaxed">
+                        <p><strong>Morning:</strong> Board an early catamaran to Klein Curaçao. Expect a 90-minute sail with breakfast onboard, followed by impossibly turquoise water, a photogenic lighthouse, and sea turtles gliding past the shore.</p>
+                        <p><strong>Midday:</strong> Dive into snorkeling straight off the beach, walk to the shipwreck, and refuel with the BBQ lunch most charters include. Pack reef-safe sunscreen and a rash guard—the sandbar offers little shade.</p>
+                        <p><strong>Evening:</strong> Back on the main island, stay salty with a twilight swim at Jan Thiel or lounge at Mood Beach. Reserve dinner at <Link href="/destinations/curacao/restaurants/brisa-do-mar-curacao" className="text-indigo-600 hover:underline">Brisa do Mar – Pop’s Place</Link> for waterfront seafood and sunset-on-Caracas-Bay vibes.</p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Day 3 – West Coast Coves & Local Flavor</h2>
+                      <div className="space-y-4 text-gray-700 leading-relaxed">
+                        <p><strong>Morning:</strong> Rent a car and head west. Stop for cliff views and a rope swing at Playa Kenepa Grandi before snorkeling with sea turtles at Playa Piskadó.</p>
+                        <p><strong>Midday:</strong> Grab a lionfish burger or batidos at a roadside stand, then continue to Shete Boka National Park for blowholes and crashing surf. Alternatively, opt for an ATV excursion across the rugged northern coastline.</p>
+                        <p><strong>Evening:</strong> Cap your trip with a dockside feast at <Link href="/destinations/curacao/restaurants/de-visserij-piscadera-curacao" className="text-indigo-600 hover:underline">De Visserij Piscadera</Link>. Pick your catch at the counter, sip a Polar beer while it grills, and watch the fishing boats ease back into the harbor.</p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Essential Tours to Book Ahead</h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                        <div className="bg-white border border-blue-100 rounded-xl p-6 shadow-sm">
+                          <h3 className="text-xl font-bold text-blue-900 mb-3">Top Experiences</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Klein Curaçao full-day catamaran with snorkel gear and open bar.</li>
+                            <li>• Willemstad UNESCO walking tour or tuk-tuk excursion through Punda & Otrobanda.</li>
+                            <li>• Sunset cocktail sail departing from Spanish Water.</li>
+                            <li>• Westpunt snorkel safari covering Playa Lagun, Playa Piskadó, and Grote Knip.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-indigo-100 rounded-xl p-6 shadow-sm">
+                          <h3 className="text-xl font-bold text-indigo-900 mb-3">Need-to-Know Tips</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Book catamarans 2–3 weeks ahead; they sell out on weekends.</li>
+                            <li>• Schedule museums and city tours on weekdays—Sundays are quiet in Willemstad.</li>
+                            <li>• Reserve dinner slots for Kome, Brisa do Mar, and De Visserij before you travel.</li>
+                            <li>• Rent a car with GPS or download offline maps for day three’s west-coast loop.</li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-teal-50 to-blue-50 border border-teal-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Helpful Resources for Your Long Weekend</h3>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                          Still polishing your plans? Pair this itinerary with the <Link href="/travel-guides/best-time-to-visit-curacao" className="text-indigo-600 hover:underline">Best Time to Visit Curaçao</Link> guide to time the sunshine, and the <Link href="/travel-guides/curacao-packing-list" className="text-blue-600 hover:underline">Curaçao Packing List</Link> so your suitcase is ready for reef days and city nights.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                          For more food inspiration (or a “Day 4” splurge), browse our curated <Link href="/destinations/curacao/restaurants" className="text-indigo-600 hover:underline">Top Restaurants in Curaçao</Link> list.
+                        </p>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Lock in Your Curaçao Escape?</h3>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                          Let our AI planner surface the highest-rated tours, day trips, and dining picks that match your dates. Whether you’re leaning into catamaran life or cliff-jumping coves, we’ve got your 72-hour game plan covered.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4">
+                          <Button
+                            asChild
+                            className="bg-white text-blue-700 border border-blue-500 hover:bg-blue-50 transition-colors px-6 py-3 font-semibold"
+                          >
+                            <Link href="/destinations/curacao">
+                              Explore Curaçao →
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    </>
+                  ) : slug === 'curacao-vs-jamaica' ? (
+                    <>
+                      <div className="bg-gradient-to-r from-blue-50 via-green-50 to-yellow-50 border border-blue-200 rounded-lg p-8 my-8">
+                        <p className="text-lg text-blue-900 leading-relaxed">
+                          Curaçao and Jamaica might share Caribbean sunshine, but they deliver completely different island experiences. Curaçao charms with pastel waterfronts, quiet coves, and European flair; Jamaica turns the volume up with reggae soundtracks, rainforest waterfalls, and jerk smokehouses. Use this guide to compare them side by side before you book—or plan a two-island escape that balances reef days with jungle adventures.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Curaçao vs Jamaica Snapshot</h2>
+                      <div className="overflow-x-auto my-8">
+                        <table className="w-full border-collapse border border-gray-200 rounded-xl overflow-hidden">
+                          <thead className="bg-gradient-to-r from-emerald-600 to-blue-600 text-white">
+                            <tr>
+                              <th className="px-6 py-4 text-left font-semibold">Category</th>
+                              <th className="px-6 py-4 text-left font-semibold">Curaçao</th>
+                              <th className="px-6 py-4 text-left font-semibold">Jamaica</th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white divide-y divide-gray-200">
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Overall Vibe</td>
+                              <td className="px-6 py-4 text-gray-700">Laid-back, pastel Dutch architecture, boutique beach clubs</td>
+                              <td className="px-6 py-4 text-gray-700">High-energy, reggae rhythm, all-inclusive beach strips</td>
+                            </tr>
+                            <tr className="bg-gray-50">
+                              <td className="px-6 py-4 font-semibold text-gray-800">Beaches</td>
+                              <td className="px-6 py-4 text-gray-700">Cove-style beaches with calm snorkeling (Playa Kenepa, Playa Lagun)</td>
+                              <td className="px-6 py-4 text-gray-700">Long stretches with surf & sunset parties (Negril, Montego Bay).</td>
+                            </tr>
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Best For</td>
+                              <td className="px-6 py-4 text-gray-700">Divers, culture lovers, relaxed foodies</td>
+                              <td className="px-6 py-4 text-gray-700">Adventure seekers, music fans, all-inclusive travelers</td>
+                            </tr>
+                            <tr className="bg-gray-50">
+                              <td className="px-6 py-4 font-semibold text-gray-800">Where to Stay</td>
+                              <td className="px-6 py-4 text-gray-700">Pietermaai & Punda (boutiques), Jan Thiel (beach clubs & villas)</td>
+                              <td className="px-6 py-4 text-gray-700">Negril (beach bars), Montego Bay (resorts), Ocho Rios (adventure base)</td>
+                            </tr>
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Getting Around</td>
+                              <td className="px-6 py-4 text-gray-700">Rent a car for cove-hopping; compact island and good roads</td>
+                              <td className="px-6 py-4 text-gray-700">Book drivers/taxis or day tours; roads are lively and distances longer</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">What They Share & Where They Differ</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
+                        <div className="bg-white border border-blue-100 rounded-xl shadow-sm p-6">
+                          <h3 className="text-xl font-bold text-blue-900 mb-4">What Curaçao & Jamaica Have in Common</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Both sit outside the main hurricane belt, making winter and spring travel blissfully reliable.</li>
+                            <li>• English is widely spoken; U.S. dollars are accepted alongside local currency.</li>
+                            <li>• Snorkeling, catamaran cruises, and sunset sails headline coastal adventures on both islands.</li>
+                            <li>• Nonstop flights connect each island to Miami, New York, Toronto, and Amsterdam, making two-stop itineraries doable.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-emerald-100 rounded-xl shadow-sm p-6">
+                          <h3 className="text-xl font-bold text-emerald-900 mb-4">Where the Experiences Diverge</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Curaçao’s UNESCO capital packs museums and street art into walkable neighborhoods; Jamaica spreads its culture across multiple resort towns.</li>
+                            <li>• Jamaica’s soundtrack is live reggae and dancehall; Curaçao’s nightlife leans toward cocktail bars and DJ sets along the waterfront.</li>
+                            <li>• Jamaica’s interior is lush—think Blue Mountains coffee farms and Dunn’s River Falls. Curaçao’s adventures stay coastal with cliff jumps and reef dives.</li>
+                            <li>• Curaçao is great for independent explorers with a rental car; Jamaica is easier with private drivers or guided excursions.</li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-teal-50 to-blue-50 border border-teal-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-3">Short Answer</h3>
+                        <p className="text-gray-700 leading-relaxed">
+                          Choose <Link href="/destinations/curacao" className="text-indigo-600 hover:underline">Curaçao</Link> if you want pastel city strolls, snorkeling coves, and boutique dining. Pick <Link href="/destinations/jamaica" className="text-emerald-600 hover:underline">Jamaica</Link> if you crave live music, waterfall hikes, rum distillery tours, and big resort energy. Can’t decide? Fly into Curaçao for reef time, then hop to Jamaica for jungle adventures.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Restaurants Worth Booking Ahead</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div className="bg-white border border-indigo-100 rounded-xl shadow-md p-6">
+                          <h3 className="text-2xl font-bold text-indigo-900 mb-4">Curaçao Dining Highlights</h3>
+                          <ul className="space-y-4">
+                            <li>
+                              <Link href="/destinations/curacao/restaurants/kome-restaurant-curacao" className="text-indigo-600 font-semibold hover:underline">Kome Restaurant Curaçao</Link>
+                              <p className="text-gray-700 text-sm mt-1">Wood-fired Caribbean cuisine in the heart of Pietermaai, backed by an in-house bakery and cocktail program.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/curacao/restaurants/brisa-do-mar-curacao" className="text-indigo-600 font-semibold hover:underline">Brisa do Mar – Pop’s Place</Link>
+                              <p className="text-gray-700 text-sm mt-1">Sunset seafood on Caracas Bay with a locals’ vibe, live music, and straight-off-the-boat specials.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/curacao/restaurants/de-visserij-piscadera-curacao" className="text-indigo-600 font-semibold hover:underline">De Visserij Piscadera</Link>
+                              <p className="text-gray-700 text-sm mt-1">Pick your fish at the counter, then watch it hit the grill—dockside dining with jumbo shrimp baskets and harbor breezes.</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-emerald-100 rounded-xl shadow-md p-6">
+                          <h3 className="text-2xl font-bold text-emerald-900 mb-4">Jamaica Dining Highlights</h3>
+                          <ul className="space-y-4">
+                            <li>
+                              <Link href="/destinations/jamaica/restaurants/rockhouse-restaurant-jamaica" className="text-emerald-600 font-semibold hover:underline">Rockhouse Restaurant</Link>
+                              <p className="text-gray-700 text-sm mt-1">Cliff-top tables in Negril serving Caribbean fusion with sunset views and a soundtrack of the sea.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/jamaica/restaurants/miss-ts-kitchen-jamaica" className="text-emerald-600 font-semibold hover:underline">Miss T’s Kitchen</Link>
+                              <p className="text-gray-700 text-sm mt-1">Ocho Rios favorite for jerk chicken, coconut rundown, and homestyle hospitality under twinkling lights.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/jamaica/restaurants/little-ochie-seafood-restaurant-jamaica" className="text-emerald-600 font-semibold hover:underline">Little Ochie Seafood</Link>
+                              <p className="text-gray-700 text-sm mt-1">Beach shacks in Alligator Pond grilling the day’s catch with Scotch bonnet heat right on the sand.</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Signature Experiences You Can’t Miss</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
+                        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6">
+                          <h3 className="text-xl font-bold text-indigo-900 mb-3">Curaçao Must-Dos</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Sail to Klein Curaçao for a full day of snorkeling with turtles and relaxing on powder-fine sand.</li>
+                            <li>• Dive Tugboat Beach or Mushroom Forest for technicolor reefs starting right off the shore.</li>
+                            <li>• Wander Willemstad’s Punda and Otrobanda quarters, crossing the Queen Emma Bridge between murals and Dutch façades.</li>
+                            <li>• Toast sunset at beach clubs in Jan Thiel or cliff-jump the Blue Room cave on the island’s rugged west coast.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-gradient-to-br from-emerald-50 to-lime-50 border border-emerald-200 rounded-xl p-6">
+                          <h3 className="text-xl font-bold text-emerald-900 mb-3">Jamaica Must-Dos</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Climb the cascades of Dunn’s River Falls or raft down the Martha Brae with a local captain.</li>
+                            <li>• Cruise the Luminous Lagoon after dark to watch bioluminescent waters glow around your boat.</li>
+                            <li>• Spend a night at Rick’s Café in Negril for cliff jumps, sunsets, and live reggae sets.</li>
+                            <li>• Tour Appleton Estate or Hampden Estate for cane-to-cask rum tastings and estate stories.</li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-yellow-50 to-teal-50 border border-yellow-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">When to Visit & What to Pack</h3>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                          Compare seasonal weather patterns with the island-wide insights in <Link href="https://www.toptours.ai/travel-guides/best-time-to-visit-caribbean" className="text-indigo-600 hover:underline">Best Time to Visit the Caribbean</Link>. It highlights when trade winds cool Curaçao and when Jamaica’s dry season brings perfect waterfall days, so you can dodge storms and cruise crowds.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                          Packing for both? Start with the essentials from our <Link href="https://www.toptours.ai/travel-guides/beach-vacation-packing-list" className="text-blue-600 hover:underline">Beach Vacation Packing List</Link>, then add reef-safe sunscreen for Curaçao’s snorkel spots and quick-dry layers plus sturdy water shoes for Jamaica’s river climbs.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Ready to Choose Your Island?</h2>
+                      <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                        Decide which island fits your travel style below—or split your time between Curaçao’s cove-hopping calm and Jamaica’s jungle-soaked adventures.
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                        <Button
+                          asChild
+                          className="bg-white text-indigo-700 border border-indigo-500 hover:bg-indigo-50 transition-colors px-6 py-4 font-semibold"
+                        >
+                          <Link href="/destinations/curacao">
+                            Explore Curaçao →
+                          </Link>
+                        </Button>
+                        <Button
+                          asChild
+                          className="bg-gradient-to-r from-emerald-500 to-lime-500 text-white hover:scale-105 transition-transform duration-200 px-6 py-4 font-semibold"
+                        >
+                          <Link href="/destinations/jamaica">
+                            Explore Jamaica →
+                          </Link>
+                        </Button>
+                      </div>
+                    </>
+                  ) : slug === 'curacao-vs-punta-cana' ? (
+                    <>
+                      <div className="bg-gradient-to-r from-cyan-50 via-blue-50 to-orange-50 border border-cyan-200 rounded-lg p-8 my-8">
+                        <p className="text-lg text-blue-900 leading-relaxed">
+                          Curaçao’s pastel harbor and snorkel coves feel worlds away from Punta Cana’s all-inclusive stretch of sand—but both deliver unmistakable Caribbean blue. Compare the two below to decide which island fits your vacation style, or plan a combo trip that blends Curaçao’s boutique energy with Punta Cana’s resort ease.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Curaçao vs Punta Cana Snapshot</h2>
+                      <div className="overflow-x-auto my-8">
+                        <table className="w-full border-collapse border border-gray-200 rounded-xl overflow-hidden">
+                          <thead className="bg-gradient-to-r from-indigo-600 to-orange-500 text-white">
+                            <tr>
+                              <th className="px-6 py-4 text-left font-semibold">Category</th>
+                              <th className="px-6 py-4 text-left font-semibold">Curaçao</th>
+                              <th className="px-6 py-4 text-left font-semibold">Punta Cana</th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white divide-y divide-gray-200">
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Overall Vibe</td>
+                              <td className="px-6 py-4 text-gray-700">UNESCO waterfront, boutique beach clubs, walkable culture</td>
+                              <td className="px-6 py-4 text-gray-700">All-inclusive resorts, palm-lined beaches, nightlife along the hotel zone</td>
+                            </tr>
+                            <tr className="bg-gray-50">
+                              <td className="px-6 py-4 font-semibold text-gray-800">Beaches</td>
+                              <td className="px-6 py-4 text-gray-700">Cove-style beaches with calm snorkeling (Playa Kenepa, Playa Lagun)</td>
+                              <td className="px-6 py-4 text-gray-700">Wide sandy stretches with gentle surf (Bávaro, Playa Blanca)</td>
+                            </tr>
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Best For</td>
+                              <td className="px-6 py-4 text-gray-700">Divers, culture lovers, food-focused travelers</td>
+                              <td className="px-6 py-4 text-gray-700">All-inclusive escapes, couples’ trips, easy-going families</td>
+                            </tr>
+                            <tr className="bg-gray-50">
+                              <td className="px-6 py-4 font-semibold text-gray-800">Where to Stay</td>
+                              <td className="px-6 py-4 text-gray-700">Pietermaai & Punda boutiques, Jan Thiel beach villas</td>
+                              <td className="px-6 py-4 text-gray-700">Bávaro resort strip, Cap Cana luxury enclaves</td>
+                            </tr>
+                            <tr>
+                              <td className="px-6 py-4 font-semibold text-gray-800">Getting Around</td>
+                              <td className="px-6 py-4 text-gray-700">Rent a car for cove-hopping and west-coast adventures</td>
+                              <td className="px-6 py-4 text-gray-700">Rely on resort shuttles or excursions for Saona Island, cenotes, ziplining</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Shared Strengths & Key Differences</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
+                        <div className="bg-white border border-indigo-100 rounded-xl shadow-sm p-6">
+                          <h3 className="text-xl font-bold text-indigo-900 mb-4">What They Share</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Both sit outside the main hurricane belt, keeping winter and spring reliably sunny.</li>
+                            <li>• Catamaran cruises, snorkel trips, and sunset beach clubs headline each itinerary.</li>
+                            <li>• English is widely spoken, and U.S. dollars are accepted throughout resort areas.</li>
+                            <li>• Nonstop flights from the U.S., Canada, and Europe make island hopping straightforward.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-orange-100 rounded-xl shadow-sm p-6">
+                          <h3 className="text-xl font-bold text-orange-900 mb-4">Where They Differ</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Curaçao balances beach time with strolls through Willemstad; Punta Cana leans into resort downtime.</li>
+                            <li>• Curaçao’s dining scene spotlights chef-driven restaurants and waterfront shacks; Punta Cana mixes upscale beach clubs with property restaurants.</li>
+                            <li>• Punta Cana is a launch pad for Saona Island boat trips, cenote swims, and zipline parks; Curaçao is about reef dives, cliff jumps, and pastel streets.</li>
+                            <li>• DIY explorers love Curaçao’s compact layout. Punta Cana visitors often prefer drivers or organized excursions.</li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-teal-50 to-orange-50 border border-teal-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-3">Quick Take</h3>
+                        <p className="text-gray-700 leading-relaxed">
+                          Choose <Link href="/destinations/curacao" className="text-indigo-600 hover:underline">Curaçao</Link> if you want pastel neighborhoods, snorkeling coves, and boutique stays. Book <Link href="/destinations/punta-cana" className="text-orange-500 hover:underline">Punta Cana</Link> for one-stop resort comfort, wide beaches, and nightlife along the sand. Can’t decide? Dive Curaçao first, then unwind at a Punta Cana spa with a catamaran cruise on standby.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Restaurants Worth Booking</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div className="bg-white border border-indigo-100 rounded-xl shadow-md p-6">
+                          <h3 className="text-2xl font-bold text-indigo-900 mb-4">Curaçao</h3>
+                          <ul className="space-y-4">
+                            <li>
+                              <Link href="/destinations/curacao/restaurants/kome-restaurant-curacao" className="text-indigo-600 font-semibold hover:underline">Kome Restaurant Curaçao</Link>
+                              <p className="text-gray-700 text-sm mt-1">Wood-fired plates, craft cocktails, and bakery-fresh desserts in Pietermaai.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/curacao/restaurants/brisa-do-mar-curacao" className="text-indigo-600 font-semibold hover:underline">Brisa do Mar – Pop’s Place</Link>
+                              <p className="text-gray-700 text-sm mt-1">Caracas Bay seafood shacks with sunset views and relaxed island service.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/curacao/restaurants/de-visserij-piscadera-curacao" className="text-indigo-600 font-semibold hover:underline">De Visserij Piscadera</Link>
+                              <p className="text-gray-700 text-sm mt-1">Dockside grills, jumbo shrimp baskets, and pick-your-catch platters.</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-orange-100 rounded-xl shadow-md p-6">
+                          <h3 className="text-2xl font-bold text-orange-900 mb-4">Punta Cana</h3>
+                          <ul className="space-y-4">
+                            <li>
+                              <Link href="/destinations/punta-cana/restaurants/playa-blanca-restaurant-punta-cana" className="text-orange-500 font-semibold hover:underline">Playa Blanca Restaurant</Link>
+                              <p className="text-gray-700 text-sm mt-1">Beachfront lunch spot on a private cove with ceviche, fish tacos, and cocktails.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/punta-cana/restaurants/sbg-punta-cana" className="text-orange-500 font-semibold hover:underline">SBG Punta Cana</Link>
+                              <p className="text-gray-700 text-sm mt-1">Cap Cana lounge serving Mediterranean-Caribbean plates with sunset DJ sets.</p>
+                            </li>
+                            <li>
+                              <Link href="/destinations/punta-cana/restaurants/jellyfish-restaurant-punta-cana" className="text-orange-500 font-semibold hover:underline">Jellyfish Restaurant</Link>
+                              <p className="text-gray-700 text-sm mt-1">Iconic thatched-roof dining on Bávaro Beach—think seafood towers and candlelit sunsets.</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Signature Experiences</h2>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
+                        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6">
+                          <h3 className="text-xl font-bold text-indigo-900 mb-3">Only-in-Curaçao Moments</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Sail to Klein Curaçao for shipwreck photos, a lighthouse stroll, and snorkeling with turtles.</li>
+                            <li>• Dive the Superior Producer wreck or snorkel Tugboat Beach straight from the shore.</li>
+                            <li>• Explore Willemstad’s Punda, floating market, and Queen Emma Bridge at golden hour.</li>
+                            <li>• Toast sunset at Jan Thiel beach clubs as DJs spin tropical house sets.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-gradient-to-br from-orange-50 to-rose-50 border border-orange-200 rounded-xl p-6">
+                          <h3 className="text-xl font-bold text-orange-900 mb-3">Only-in-Punta-Cana Moments</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            <li>• Cruise to Saona Island for turquoise sandbars and palm forests straight out of a postcard.</li>
+                            <li>• Zipline, swim in cenotes, and hike at Scape Park inside Cap Cana.</li>
+                            <li>• Join a catamaran party or snorkeling tour along Bávaro’s reef-fringed coast.</li>
+                            <li>• Book a spa day and sunset dinner without ever leaving your resort.</li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-yellow-50 to-cyan-50 border border-yellow-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">When to Visit & What to Pack</h3>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                          Use <Link href="https://www.toptours.ai/travel-guides/best-time-to-visit-caribbean" className="text-indigo-600 hover:underline">Best Time to Visit the Caribbean</Link> to see when Curaçao’s trade winds feel coolest and when Punta Cana’s resort corridor hits peak sunshine or afternoon showers. It’s the fastest way to map out ideal months for reef visibility, Saona boat days, and crowd levels.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                          For packing, start with the must-haves in the <Link href="https://www.toptours.ai/travel-guides/beach-vacation-packing-list" className="text-blue-600 hover:underline">Beach Vacation Packing List</Link>. Add snorkel gear and rash guards for Curaçao’s coves, plus breezy resort wear for Punta Cana’s beachfront dinners and spa days.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Pick Your Island (or Do Both)</h2>
+                      <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                        Ready to plan? Explore handpicked tours, dining, and travel tips below—or split your getaway between Curaçao’s snorkel coves and Punta Cana’s spa-ready resorts.
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                        <Button
+                          asChild
+                          className="bg-white text-indigo-700 border border-indigo-500 hover:bg-indigo-50 transition-colors px-6 py-4 font-semibold"
+                        >
+                          <Link href="/destinations/curacao">
+                            Explore Curaçao →
+                          </Link>
+                        </Button>
+                        <Button
+                          asChild
+                          className="bg-gradient-to-r from-orange-500 to-pink-500 text-white hover:scale-105 transition-transform duration-200 px-6 py-4 font-semibold"
+                        >
+                          <Link href="/destinations/punta-cana">
+                            Explore Punta Cana →
+                          </Link>
+                        </Button>
                       </div>
                     </>
                   ) : slug === 'save-money-on-tours-activities' ? (
@@ -6118,6 +7327,172 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                         </p>
                       </div>
                     </>
+                  ) : slug === 'best-time-to-visit-curacao' ? (
+                    <>
+                      <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-lg p-8 my-8">
+                        <p className="text-lg text-blue-900 italic">
+                          <strong>Pro Tip:</strong> Curaçao rarely sees hurricanes, but peak seasons still book out. Reserve Klein Curaçao catamarans and signature dive charters 4–6 weeks ahead—especially from December through April.
+                        </p>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Curaçao's Breeze-Filled Seasons</h2>
+                      
+                      <div className="space-y-8 my-8">
+                        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border-l-4 border-indigo-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-indigo-900 mb-3">🌤️ Trade-Wind Dry Season (Dec – Apr)</h3>
+                          <p className="text-gray-700 mb-3">Sun-drenched skies, minimal rain, and steady breezes make this the island's marquee window. Perfect for Klein Curaçao day trips, catamaran sunset sails, and Carnival festivities.</p>
+                          <p className="text-sm text-gray-600"><strong>Expect:</strong> 82°F days, 78°F water temps, vibrant nightlife, higher hotel rates.</p>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-amber-900 mb-3">🌺 Shoulder Season (May – Aug)</h3>
+                          <p className="text-gray-700 mb-3">Light afternoon showers keep the island lush while crowds ease. Dive boats are relaxed, SUP sessions on Spanish Water are glass calm, and boutique hotels run enticing specials.</p>
+                          <p className="text-sm text-gray-600"><strong>Best For:</strong> Balanced crowds, family trips, and value-seekers.</p>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border-l-4 border-emerald-500 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-emerald-900 mb-3">🌊 Value Season (Sep – Nov)</h3>
+                          <p className="text-gray-700 mb-3">Curaçao's calmest seas deliver 100-foot dive visibility, and resort rates drop to their yearly lows. Passing showers are brief, and major storms stay far north of the island.</p>
+                          <p className="text-sm text-gray-600"><strong>Perfect For:</strong> Divers, photographers, and couples hunting quiet beaches.</p>
+                        </div>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Month-by-Month Highlights</h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                          <h3 className="text-lg font-semibold text-blue-700 mb-2">January – March</h3>
+                          <ul className="space-y-2 text-gray-700 text-sm leading-relaxed">
+                            <li>• Curaçao Carnival parades and Tumba Fest finals</li>
+                            <li>• Glassy morning seas for Klein Curaçao and snorkel trips</li>
+                            <li>• Floating markets stocked with peak-season produce</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                          <h3 className="text-lg font-semibold text-blue-700 mb-2">April – June</h3>
+                          <ul className="space-y-2 text-gray-700 text-sm leading-relaxed">
+                            <li>• King's Day (Apr 27) street fairs and orange-clad celebrations</li>
+                            <li>• Dive charters with concierge service and fewer boats</li>
+                            <li>• SUP yoga and kayak tours on Spanish Water at sunrise</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                          <h3 className="text-lg font-semibold text-blue-700 mb-2">July – August</h3>
+                          <ul className="space-y-2 text-gray-700 text-sm leading-relaxed">
+                            <li>• Family travel season—bundle beach hopping with Jeep safaris</li>
+                            <li>• Night snorkels to the Blue Room and turtle spotting at Playa Piskadó</li>
+                            <li>• Live-music sunset sails departing Rif Fort and Jan Thiel</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                          <h3 className="text-lg font-semibold text-blue-700 mb-2">September – December</h3>
+                          <ul className="space-y-2 text-gray-700 text-sm leading-relaxed">
+                            <li>• Curaçao North Sea Jazz Festival and Pride celebrations</li>
+                            <li>• Peak dive visibility and specialty photography dives</li>
+                            <li>• Floating Christmas Market, fireworks over Queen Emma Bridge</li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-8 sm:p-10 my-12 text-white shadow-xl">
+                        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                          <div>
+                            <h3 className="text-2xl font-bold mb-3">Find Curaçao's Top Tours and Restaurants</h3>
+                            <p className="text-white/80 max-w-2xl">Head to our Curaçao destination hub for hand-picked tours, Klein Curaçao sailings, reef dives, and restaurant favorites—all curated in one place.</p>
+                          </div>
+                          <Button
+                            asChild
+                            className="bg-white text-indigo-700 hover:bg-indigo-50 px-6 py-4 h-auto text-base font-semibold shadow-md"
+                          >
+                            <Link href="/destinations/curacao">Explore Curaçao Experiences</Link>
+                          </Button>
+                        </div>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Festival Calendar & Weekly Traditions</h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                        <div className="bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-lg border border-pink-200">
+                          <h3 className="text-xl font-bold text-pink-900 mb-3">🎉 Annual Highlights</h3>
+                          <ul className="space-y-2 text-pink-800 text-sm leading-relaxed">
+                            <li>• <strong>Curaçao Carnival (Jan–Mar):</strong> Road marches, brass bands, Grand Parade</li>
+                            <li>• <strong>King's Day (Apr 27):</strong> Orange street markets and live DJs across Willemstad</li>
+                            <li>• <strong>Curaçao North Sea Jazz (Aug/Sept):</strong> International headliners at WTC Curaçao</li>
+                            <li>• <strong>Curaçao Pride (Sep/Oct):</strong> Beach parties, boat parades, cultural programming</li>
+                          </ul>
+                        </div>
+                        <div className="bg-gradient-to-br from-yellow-50 to-lime-50 p-6 rounded-lg border border-yellow-200">
+                          <h3 className="text-xl font-bold text-yellow-900 mb-3">📅 Weekly Rituals</h3>
+                          <ul className="space-y-2 text-yellow-800 text-sm leading-relaxed">
+                            <li>• <strong>Punda Vibes (Thu):</strong> Fireworks, art walks, heritage tours</li>
+                            <li>• <strong>Sunday Jazz Brunch:</strong> Live sax sets at Jan Thiel and Pietermaai boutiques</li>
+                            <li>• <strong>Full-Moon Parties:</strong> Beach clubs at Kokomo and Madero Ocean Club</li>
+                            <li>• <strong>Floating Market:</strong> Venezuelan vendors bring fresh produce daily</li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Best Time for Popular Experiences</h2>
+                      <div className="overflow-x-auto my-8">
+                        <table className="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">
+                          <thead>
+                            <tr className="bg-gradient-to-r from-indigo-600 to-sky-600 text-white">
+                              <th className="border border-gray-300 px-6 py-4 text-left font-semibold">Experience</th>
+                              <th className="border border-gray-300 px-6 py-4 text-left font-semibold">Ideal Months</th>
+                              <th className="border border-gray-300 px-6 py-4 text-left font-semibold">Why It Shines</th>
+                              <th className="border border-gray-300 px-6 py-4 text-left font-semibold">What to Book Early</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr className="bg-gray-50 hover:bg-gray-100 transition-colors">
+                              <td className="border border-gray-300 px-6 py-4 font-medium">Klein Curaçao Day Trips</td>
+                              <td className="border border-gray-300 px-6 py-4">Jan–Aug</td>
+                              <td className="border border-gray-300 px-6 py-4">Steady trade winds, turquoise water, Loggerhead turtle sightings</td>
+                              <td className="border border-gray-300 px-6 py-4">Luxury catamarans, private charters, beach cabana upgrades</td>
+                            </tr>
+                            <tr className="hover:bg-gray-100 transition-colors">
+                              <td className="border border-gray-300 px-6 py-4 font-medium">Reef Diving & Snorkelling</td>
+                              <td className="border border-gray-300 px-6 py-4">Sep–Dec</td>
+                              <td className="border border-gray-300 px-6 py-4">100-foot visibility, calm seas, vibrant marine life</td>
+                              <td className="border border-gray-300 px-6 py-4">Specialty courses, underwater photography sessions</td>
+                            </tr>
+                            <tr className="bg-gray-50 hover:bg-gray-100 transition-colors">
+                              <td className="border border-gray-300 px-6 py-4 font-medium">Cultural & Food Tours</td>
+                              <td className="border border-gray-300 px-6 py-4">Jan–Apr & Sep–Oct</td>
+                              <td className="border border-gray-300 px-6 py-4">Festivals, farmers' markets, cooler walking-tour temperatures</td>
+                              <td className="border border-gray-300 px-6 py-4">Guided Willemstad history walks, floating market tastings</td>
+                            </tr>
+                            <tr className="hover:bg-gray-100 transition-colors">
+                              <td className="border border-gray-300 px-6 py-4 font-medium">Adventure & National Parks</td>
+                              <td className="border border-gray-300 px-6 py-4">May–Aug</td>
+                              <td className="border border-gray-300 px-6 py-4">Cool breezes for Christoffel hikes, lush landscapes</td>
+                              <td className="border border-gray-300 px-6 py-4">Jeep safaris, mountain biking, guided Shete Boka excursions</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Planning Your Curaçao Escape</h3>
+                        <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                          Ready to sync sunshine with unforgettable experiences? Explore Klein Curaçao sailings, reef dives, foodie walks, and Jeep safaris curated for every season.
+                        </p>
+                        <Button
+                          asChild
+                          className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-4 md:px-8 py-3 text-sm md:text-lg font-semibold my-2"
+                        >
+                          <Link href="/destinations/curacao">Explore Curaçao Tours & Activities</Link>
+                        </Button>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-gray-50 to-slate-50 border border-gray-200 rounded-lg p-8 my-8">
+                        <h3>Ready to Explore Curaçao's Hidden Gems?</h3>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                          Whether you're chasing Carnival energy, reef adventures, or a laid-back escape, Curaçao rewards smart timing. Combine our seasonal tips with AI-powered tour picks to build an island itinerary that feels effortless.
+                        </p>
+                        <p className="text-gray-700">
+                          <strong>Related Guides:</strong> <Link href="/travel-guides/best-time-to-visit-caribbean" className="text-blue-600 hover:underline">Caribbean Timing Tips</Link> | <Link href="/travel-guides/best-caribbean-islands" className="text-blue-600 hover:underline">Best Caribbean Islands</Link> | <Link href="/destinations/curacao" className="text-blue-600 hover:underline">Curaçao Tours & Activities</Link>
+                        </p>
+                      </div>
+                    </>
                   ) : slug === 'best-time-to-visit-brazil' ? (
                     <>
                       <div className="bg-gradient-to-r from-green-50 to-yellow-50 border border-green-200 rounded-lg p-8 my-8">
@@ -6729,6 +8104,236 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                       </h3>
                       <p className="text-gray-700 ml-8 leading-relaxed">
                         <span className="font-semibold text-green-600">A:</span> Use waterproof cases, dry bags, or zip-lock bags for phones and cameras. Keep electronics in a shaded area when not in use, and consider a waterproof speaker for music.
+                      </p>
+                    </div>
+                  </>
+                ) : slug === 'curacao-packing-list' ? (
+                  <>
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        What should I pack for a trip to Curaçao?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Start with reef-safe sunscreen, polarized sunglasses, breathable clothing, and water shoes. Add snorkel gear for Playa Piskadó, a dry bag for boat tours, and an insulated bottle for Klein Curaçao day trips.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Do I need water shoes in Curaçao?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Yes. Many Curaçao beaches have coral or rocky entries, especially on the west coast. Water shoes protect your feet and make it easier to explore reefs and tide pools.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Is reef-safe sunscreen required in Curaçao?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> While not legally required everywhere, reef-safe sunscreen is strongly encouraged to protect Curaçao's coral reefs. Many tour operators prefer guests to use mineral sunscreen.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Should I pack my own snorkel gear for Curaçao?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Bringing your own mask ensures the best fit and comfort, especially if you plan multiple snorkel stops. Rentals are available, but personal gear is more hygienic and ready whenever you spot turtles offshore.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        What kind of clothing works best for Curaçao evenings?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Lightweight dresses, linen shirts, and breathable pants transition perfectly from beach clubs to waterfront dinners in Punda. Pack a light layer for breezy trade-wind nights.
+                      </p>
+                    </div>
+                  </>
+                ) : slug === '3-day-curacao-itinerary' ? (
+                  <>
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        How many days do I need in Curaçao?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Three days lets you cover Willemstad’s UNESCO core, a Klein Curaçao day trip, and west-coast beaches. Add a fourth night if you want extra dive time or more relaxed beach hours.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Do I need to rent a car?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> You can rely on tours and taxis for Willemstad and Klein Curaçao, but renting a car for day three makes it easy to explore Playa Kenepa, Playa Piskadó, and Shete Boka at your own pace.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        When should I book tours and restaurants?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Reserve Klein Curaçao catamarans, Willemstad walking tours, and dinner at Kome, Brisa do Mar, and De Visserij at least two weeks in advance—weekend slots fill quickly during peak season.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Where should I stay for this itinerary?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Base in Pietermaai or Punda for walkable cafés, nightlife, and tour pickups. Jan Thiel is ideal if you prefer a beach club scene with quick access to catamarans and waterfront dining.
+                      </p>
+                    </div>
+                  </>
+                ) : slug === 'aruba-vs-curacao' ? (
+                  <>
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Which island has better beaches—Aruba or Curaçao?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Aruba offers long, white-sand stretches on Palm and Eagle Beach with gentle surf. Curaçao features smaller coves like Playa Kenepa and Playa Lagun where calm water and reefs sit just offshore. Beach loungers often prefer Aruba; snorkelers love Curaçao’s cove-style coastline.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Is it easy to visit both Aruba and Curaçao on one trip?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Yes. Flight time between the islands is about 35 minutes, and daily service makes weekend hops simple. Many travelers split a week—three nights in Aruba for beach clubs and nightlife, then three in Curaçao for reef adventures and Willemstad’s historic core.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Where will I find more nightlife?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Aruba’s Palm Beach has a dense strip of bars, lounges, and casinos within walking distance of high-rise resorts. Curaçao leans toward live music nights and cocktail bars in Pietermaai—livelier on weekends but generally more low-key than Aruba.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Which island is better for scuba diving?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Curaçao is the stronger dive destination thanks to easy shore entries, walls like Mushroom Forest, and crystal-clear visibility. Aruba still offers great wreck dives (like the Antilla) and calm snorkeling, but Curaçao’s reef system is more extensive.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Do I need a car on either island?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> In Aruba, you can stay car-free if you base in Palm Beach or Eagle Beach; tours and taxis cover most outings. In Curaçao, renting a car is recommended for cove-hopping and exploring Willemstad, Jan Thiel, and the island’s west coast beaches at your own pace.
+                      </p>
+                    </div>
+                  </>
+                ) : slug === 'curacao-vs-jamaica' ? (
+                  <>
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Which island is more relaxed, Curaçao or Jamaica?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Curaçao feels calmer with boutique beach clubs and walkable Willemstad neighborhoods. Jamaica has a livelier energy thanks to reggae nightlife, bustling resorts, and waterfall excursions.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Do I need to rent a car in Curaçao or Jamaica?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Curaçao is easy to explore with a rental car—the island is compact and signage is clear. In Jamaica, many travelers hire drivers or join guided tours because distances are longer and traffic can be intense.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Which island is better for diving and snorkeling?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Curaçao takes the crown for reef lovers—shore dives at Playa Lagun, Tugboat Beach, and Mushroom Forest start just a fin-kick from the sand. Jamaica offers snorkeling and a few dive sites, but the underwater scene is better in Curaçao.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        What’s the nightlife difference between the two islands?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Curaçao nightlife is centered around seaside bars and DJ sets in Pietermaai and Jan Thiel. Jamaica’s evenings are louder—think reggae concerts, beach parties, and live bands in Montego Bay, Negril, and Kingston.
+                      </p>
+                    </div>
+                  </>
+                ) : slug === 'curacao-vs-punta-cana' ? (
+                  <>
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Which destination is better for independent explorers?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Curaçao. Renting a car and hopping between beaches, pastel neighborhoods, and cliff jumps is straightforward. Punta Cana is more resort-based, so most travelers rely on organized excursions or private transfers.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Are the beaches calmer in Curaçao or Punta Cana?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Curaçao’s coves are usually calm—perfect for snorkeling right off the sand. Punta Cana’s beaches are wider with a gentle Atlantic swell, great for swimming and water sports, but snorkeling often requires a boat trip.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Which island has more all-inclusive resorts?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Punta Cana. It’s one of the Caribbean’s biggest all-inclusive hubs, stretching from Bávaro to Cap Cana. Curaçao offers a handful of all-inclusive properties, but most stays are boutique hotels, villas, or apartment-style accommodations.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Can I visit both Curaçao and Punta Cana on one vacation?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Absolutely. Spend a few days reef diving and exploring Willemstad, then connect through Miami or Panama to Punta Cana for an all-inclusive finale. Total travel time is roughly 4–5 hours including the connection.
                       </p>
                     </div>
                   </>
@@ -7952,6 +9557,68 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                       </p>
                     </div>
                   </>
+                ) : slug === 'best-time-to-visit-curacao' ? (
+                  <>
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        When is the best time to visit Curaçao?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Visit during December–April for sun-soaked beaches and Carnival festivities, May–August for balanced crowds and great hotel offers, or September–November for calm seas and incredible dive visibility. Curaçao's trade winds keep the island comfortable year-round.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Does Curaçao get hurricanes?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Curaçao sits safely outside the Atlantic hurricane belt, so direct hits are extremely rare. Late summer may see brief showers, but sunny skies and steady trade winds dominate the forecast all year.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        When is the best time for diving and snorkelling in Curaçao?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> September through early December offers the clearest water and calmest seas, ideal for wall dives, night snorkels, and underwater photography. Book specialty charters ahead of time to secure your preferred departure slots.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Which Curaçao festivals should I plan around?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Don't miss Curaçao Carnival (Jan–Mar), King's Day (Apr 27), Curaçao North Sea Jazz Festival (late Aug/early Sep), or Curaçao Pride (Sep/Oct). These events fill hotels fast, so book accommodations and tours months in advance.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Is summer a good time to visit Curaçao?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Absolutely—June through August brings warm water, family-friendly events, and attractive hotel deals. Expect brief afternoon showers that pass quickly, leaving breezy evenings perfect for waterfront dining.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        How far in advance should I book Curaçao tours?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Reserve Klein Curaçao catamarans, luxury yacht charters, and dive trips at least 4–6 weeks ahead—longer for peak season (Dec–Apr). TopTours.ai helps you compare operators and lock in instant confirmations before you arrive.
+                      </p>
+                    </div>
+                  </>
                 ) : slug === 'best-time-to-visit-brazil' ? (
                   <>
                     <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -8103,7 +9770,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
             <div className="mb-12">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Related Guides</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {post.relatedPosts.map((relatedSlug) => {
+        {post.relatedPosts.slice(0, 3).map((relatedSlug) => {
                   const relatedPost = blogPosts[relatedSlug];
                   if (!relatedPost) return null;
                   
@@ -8148,29 +9815,6 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
           </div>
         </main>
 
-        {/* Related Destinations Section */}
-        {relatedDestinations.length > 0 && (
-          <section className="py-12 px-4 border-t border-gray-200" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
-            <div className="max-w-4xl mx-auto">
-              <h3 className="text-xl font-semibold text-white mb-6">
-                {currentGuide?.category ? `Featured Destinations in ${currentGuide.category}` : 'Featured Destinations'}
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {relatedDestinations.map((dest) => (
-                  <Link 
-                    key={dest.id}
-                    href={`/destinations/${dest.id}`}
-                    className="group bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-lg p-4 transition-all duration-200 hover:scale-105"
-                  >
-                    <div className="text-white font-medium mb-1">{dest.name}</div>
-                    <div className="text-white/70 text-xs">{dest.country || dest.category}</div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
         {/* Related Travel Guides Section */}
         {relatedGuides.length > 0 && post?.category && (
           <section className="py-12 px-4 bg-gray-50 border-t border-gray-200">
@@ -8196,15 +9840,29 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
         <FooterNext />
       </div>
 
-      {/* Sticky CTA Button - Mobile Only */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200 shadow-lg z-50">
-        <Button
-          onClick={onOpenModal}
-          className="w-full sunset-gradient text-white font-semibold py-3 text-base hover:scale-105 transition-transform duration-200"
-        >
-          Start Planning with AI
-        </Button>
-      </div>
+      {/* Sticky Explore CTA */}
+      {post?.relatedDestination && exploreDestinationLabel && showExploreCta && (
+        <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 transition-opacity duration-300">
+          <div className="flex flex-col items-end gap-2">
+            <button
+              onClick={() => setShowExploreCta(false)}
+              className="w-10 h-10 bg-white hover:bg-gray-100 rounded-full flex items-center justify-center shadow-xl border-2 border-gray-300 transition-all duration-200 hover:scale-110"
+              aria-label="Close explore button"
+            >
+              <X className="w-6 h-6 text-gray-900 stroke-2" />
+            </button>
+            <Link href={post.relatedDestination}>
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
+              >
+                <span>Explore {exploreDestinationLabel}</span>
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      )}
     </>
   );
 };

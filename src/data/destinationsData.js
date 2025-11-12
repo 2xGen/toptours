@@ -4,8 +4,9 @@ export const destinations = [
     name: 'Aruba',
     fullName: 'Aruba',
     category: 'Caribbean',
+    country: 'Aruba',
     briefDescription: 'White-sand beaches, turquoise waters, and endless adventure — Aruba is the Caribbean\'s ultimate island escape.',
-    relatedGuides: ['best-caribbean-islands', 'best-time-to-visit-caribbean'],
+    relatedGuides: ['best-caribbean-islands', 'best-time-to-visit-caribbean', 'aruba-vs-curacao'],
     heroDescription: 'Welcome to Aruba, where constant sunshine meets stunning coastlines and warm hospitality. Whether you\'re cruising at sunset, exploring hidden coves on an ATV, or snorkeling vibrant reefs, Aruba offers unforgettable experiences for every traveler. Let our AI-powered planner help you discover the best this island has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//aruba.webp',
     tourCategories: [
@@ -59,7 +60,9 @@ export const destinations = [
     name: 'Curaçao',
     fullName: 'Curaçao',
     category: 'Caribbean',
+    country: 'Curaçao',
     briefDescription: 'Vibrant coral reefs, colorful Dutch architecture, and crystal-clear waters — Curaçao is the Caribbean\'s hidden gem waiting to be discovered.',
+    relatedGuides: ['best-time-to-visit-curacao', 'curacao-packing-list', '3-day-curacao-itinerary', 'aruba-vs-curacao', 'curacao-vs-jamaica', 'curacao-vs-punta-cana'],
     heroDescription: 'Welcome to Curaçao, where Caribbean charm meets European elegance. From diving pristine coral reefs to exploring the colorful streets of Willemstad, this island offers a perfect blend of adventure and culture. Let our AI-powered planner help you discover the best experiences this unique destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//curacao.jpg',
     tourCategories: [
@@ -221,6 +224,7 @@ export const destinations = [
     name: 'Jamaica',
     fullName: 'Jamaica',
     category: 'Caribbean',
+    country: 'Jamaica',
     briefDescription: 'Reggae rhythms, cascading waterfalls, and vibrant culture — Jamaica is the Caribbean\'s most spirited and adventurous island.',
     heroDescription: 'Welcome to Jamaica, where reggae music fills the air and natural wonders await around every corner. From climbing Dunn\'s River Falls to exploring Bob Marley\'s legacy, this island offers an authentic Caribbean experience like no other. Let our AI-powered planner help you discover the best experiences this vibrant destination has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//jamaica.webp',
@@ -232,6 +236,7 @@ export const destinations = [
       { name: 'Beach Tours', hasGuide: true },
       { name: 'Historical Tours', hasGuide: true }
     ],
+    relatedGuides: ['curacao-vs-jamaica'],
     seo: {
       title: 'Jamaica Tours & Excursions - Top-Rated Activities & Adventures',
       description: 'Discover top-rated Jamaica tours, excursions, and activities powered by AI. From waterfall adventures to reggae music tours, find the perfect way to explore Jamaica.',
@@ -323,7 +328,8 @@ export const destinations = [
       'Altos de Chavon - Replica 16th-century Mediterranean village',
       'Scape Park - Adventure park with zip lines and natural pools',
       'Catalina Island - Perfect for snorkeling and diving'
-    ]
+    ],
+    relatedGuides: ['curacao-vs-punta-cana']
   },
   {
     id: 'santo-domingo',
@@ -7866,61 +7872,6 @@ export const destinations = [
     ]
   },
   {
-    id: 'sydney',
-    name: 'Sydney',
-    fullName: 'Sydney',
-    country: 'Australia',
-    category: 'Asia-Pacific',
-    briefDescription: 'Iconic harbor city with world-famous landmarks, stunning beaches, and vibrant culture — Sydney is Australia\'s dazzling gateway.',
-    heroDescription: 'Welcome to Sydney, where the iconic Opera House meets the majestic Harbor Bridge and golden beaches stretch along the Pacific coast. From the bustling CBD to the laid-back Bondi lifestyle, from world-class dining to outdoor adventures, this cosmopolitan city offers the perfect blend of urban sophistication and natural beauty. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
-    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Sydney.jpg',
-    tourCategories: [
-      { name: 'Harbor Tours', hasGuide: true },
-      { name: 'City Tours', hasGuide: true },
-      { name: 'Beach Tours', hasGuide: true },
-      { name: 'Cultural Tours', hasGuide: true },
-      { name: 'Food Tours', hasGuide: true },
-      { name: 'Adventure Tours', hasGuide: true }
-    ],
-    seo: {
-      title: 'Sydney Tours & Excursions - Top-Rated Activities & Adventures',
-      description: 'Discover top-rated Sydney tours, excursions, and activities powered by AI. From harbor cruises to city experiences, find the perfect way to explore Australia\'s iconic city.',
-      keywords: 'Sydney tours, harbor tours, city tours, things to do in Sydney',
-      primaryKeyword: 'Sydney tours',
-      secondaryKeywords: [
-        'Sydney harbor tours',
-        'Sydney city tours',
-        'Sydney beach tours',
-        'Sydney cultural tours',
-        'Sydney food tours',
-        'Things to do in Sydney'
-      ]
-    },
-    whyVisit: [
-      'Iconic landmarks',
-      'Beautiful harbor',
-      'World-class beaches',
-      'Vibrant culture',
-      'Excellent dining',
-      'Perfect blend of city and nature'
-    ],
-    bestTimeToVisit: {
-      weather: 'Sydney has four distinct seasons. Spring (September-November) and autumn (March-May) are pleasant, summer (December-February) is warm, and winter (June-August) is mild.',
-      bestMonths: 'March to May and September to November offer the best weather with pleasant temperatures.',
-      peakSeason: 'December to February brings peak tourist season with warm weather, larger crowds, and higher prices.',
-      offSeason: 'June to August offers lower prices but cooler weather.'
-    },
-    gettingAround: 'Public transport is excellent. Walking is perfect for the CBD, and organized tours include transportation.',
-    highlights: [
-      'Sydney Opera House - Iconic landmark',
-      'Sydney Harbor Bridge - Majestic bridge',
-      'Bondi Beach - Famous beach',
-      'Darling Harbor - Entertainment precinct',
-      'The Rocks - Historic area',
-      'Royal Botanic Garden - Beautiful gardens'
-    ]
-  },
-  {
     id: 'melbourne',
     name: 'Melbourne',
     fullName: 'Melbourne',
@@ -8472,61 +8423,6 @@ export const destinations = [
       'Spa Treatments - Indulgent wellness',
       'Beach Activities - Water sports',
       'Fine Dining - International cuisine'
-    ]
-  },
-  {
-    id: 'mamanuca-islands',
-    name: 'Mamanuca Islands',
-    fullName: 'Mamanuca Islands',
-    country: 'Fiji',
-    category: 'Asia-Pacific',
-    briefDescription: 'Tropical archipelago with crystal-clear waters, coral reefs, and island adventures — Mamanuca Islands are Fiji\'s island paradise.',
-    heroDescription: 'Welcome to the Mamanuca Islands, where crystal-clear waters meet pristine coral reefs and island adventures await around every corner. From snorkeling vibrant reefs to relaxing on white-sand beaches, from island hopping to traditional Fijian experiences, this tropical archipelago offers the perfect blend of adventure and relaxation. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
-    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Mamanuca%20Islands.jpg',
-    tourCategories: [
-      { name: 'Island Tours', hasGuide: true },
-      { name: 'Snorkeling Tours', hasGuide: true },
-      { name: 'Beach Tours', hasGuide: true },
-      { name: 'Cultural Tours', hasGuide: true },
-      { name: 'Water Sports', hasGuide: true },
-      { name: 'Adventure Tours', hasGuide: true }
-    ],
-    seo: {
-      title: 'Mamanuca Islands Tours & Excursions - Top-Rated Activities & Adventures',
-      description: 'Discover top-rated Mamanuca Islands tours, excursions, and activities powered by AI. From island experiences to snorkeling adventures, find the perfect way to explore Fiji\'s island paradise.',
-      keywords: 'Mamanuca Islands tours, island tours, snorkeling tours, things to do in Mamanuca Islands',
-      primaryKeyword: 'Mamanuca Islands tours',
-      secondaryKeywords: [
-        'Mamanuca Islands island tours',
-        'Mamanuca Islands snorkeling tours',
-        'Mamanuca Islands beach tours',
-        'Mamanuca Islands cultural tours',
-        'Mamanuca Islands water sports',
-        'Things to do in Mamanuca Islands'
-      ]
-    },
-    whyVisit: [
-      'Crystal-clear waters',
-      'Pristine coral reefs',
-      'White-sand beaches',
-      'Island adventures',
-      'Fijian culture',
-      'Perfect blend of adventure and relaxation'
-    ],
-    bestTimeToVisit: {
-      weather: 'The Mamanuca Islands have a tropical climate. Dry season (May-October) is pleasant, and wet season (November-April) brings rain and humidity.',
-      bestMonths: 'May to October offers the best weather with pleasant temperatures and less rain.',
-      peakSeason: 'July to September brings peak tourist season with ideal weather, larger crowds, and higher prices.',
-      offSeason: 'November to April offers lower prices but wet weather and potential cyclones.'
-    },
-    gettingAround: 'Boat transfers connect the islands. Organized tours include transportation, and walking is perfect on each island.',
-    highlights: [
-      'Coral Reefs - Vibrant marine life',
-      'White-Sand Beaches - Pristine shores',
-      'Island Hopping - Multiple islands',
-      'Snorkeling - Marine exploration',
-      'Traditional Villages - Fijian culture',
-      'Water Sports - Adventure activities'
     ]
   },
   {
@@ -9086,58 +8982,113 @@ export const destinations = [
     ]
   },
   {
-    id: 'fes',
-    name: 'Fes',
-    fullName: 'Fes',
-    country: 'Morocco',
-    category: 'Africa',
-    briefDescription: 'Medieval city with ancient medina, traditional crafts, and spiritual heritage — Fes is Morocco\'s cultural capital.',
-    heroDescription: 'Welcome to Fes, where medieval architecture meets living tradition and the world\'s largest car-free urban area transports you back in time. From exploring the labyrinthine Fes el-Bali medina to discovering the historic Al-Qarawiyyin University, from witnessing traditional leather tanning to experiencing authentic Moroccan cuisine, this ancient city offers the most authentic glimpse into Morocco\'s rich heritage. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
-    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Fes.webp',
+    id: 'melbourne',
+    name: 'Melbourne',
+    fullName: 'Melbourne',
+    country: 'Australia',
+    category: 'Asia-Pacific',
+    briefDescription: 'Culturally rich city with world-class arts, sports, and food scenes — Melbourne is Australia\'s vibrant capital.',
+    heroDescription: 'Welcome to Melbourne, where the arts and culture thrive, sports are celebrated, and the food scene is unmatched. From exploring the National Gallery of Victoria to discovering the Royal Botanic Gardens, from cheering on the Melbourne Cricket Ground to indulging in the city\'s famous laneway cafes, this culturally rich city offers the perfect blend of sophistication and laid-back charm. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
+    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Melbourne.jpg',
     tourCategories: [
-      { name: 'Medina Tours', hasGuide: true },
-      { name: 'Historical Tours', hasGuide: true },
-      { name: 'Craft Tours', hasGuide: true },
-      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Art Tours', hasGuide: true },
+      { name: 'Sports Tours', hasGuide: true },
       { name: 'Food Tours', hasGuide: true },
-      { name: 'Spiritual Tours', hasGuide: true }
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Nature Tours', hasGuide: true }
     ],
     seo: {
-      title: 'Fes Tours & Excursions - Top-Rated Activities & Adventures',
-      description: 'Discover top-rated Fes tours, excursions, and activities powered by AI. From medina experiences to cultural tours, find the perfect way to explore Morocco\'s cultural capital.',
-      keywords: 'Fes tours, medina tours, historical tours, things to do in Fes',
-      primaryKeyword: 'Fes tours',
+      title: 'Melbourne Tours & Excursions - Top-Rated Activities & Adventures',
+      description: 'Discover top-rated Melbourne tours, excursions, and activities powered by AI. From art experiences to sports adventures, find the perfect way to explore Australia\'s vibrant capital.',
+      keywords: 'Melbourne tours, art tours, sports tours, things to do in Melbourne',
+      primaryKeyword: 'Melbourne tours',
       secondaryKeywords: [
-        'Fes medina tours',
-        'Fes historical tours',
-        'Fes craft tours',
-        'Fes cultural tours',
-        'Fes food tours',
-        'Things to do in Fes'
+        'Melbourne city tours',
+        'Melbourne art tours',
+        'Melbourne sports tours',
+        'Melbourne food tours',
+        'Melbourne cultural tours',
+        'Things to do in Melbourne'
       ]
     },
     whyVisit: [
-      'Ancient medina',
-      'Traditional crafts',
-      'Spiritual heritage',
-      'Authentic culture',
-      'Historical significance',
-      'Perfect medieval experience'
+      'World-class arts scene',
+      'Sports and entertainment',
+      'Diverse food scene',
+      'Rich cultural heritage',
+      'Beautiful parks and gardens',
+      'Perfect blend of city and nature'
     ],
     bestTimeToVisit: {
-      weather: 'Fes has a Mediterranean climate. Summer (June-August) is hot, while winter (December-February) is mild and can be rainy.',
-      bestMonths: 'March to May and October to November offer pleasant weather with fewer crowds.',
-      peakSeason: 'December to February brings peak tourist season with mild weather, larger crowds, and higher prices.',
-      offSeason: 'June to August offers lower prices but hot weather.'
+      weather: 'Melbourne has four distinct seasons. Spring (September-November) and autumn (March-May) are pleasant, summer (December-February) is warm, and winter (June-August) is mild.',
+      bestMonths: 'March to May and September to November offer the best weather with pleasant temperatures.',
+      peakSeason: 'December to February brings peak tourist season with warm weather, larger crowds, and higher prices.',
+      offSeason: 'June to August offers lower prices but cooler weather.'
     },
-    gettingAround: 'Walking is the best way to explore the medina. Organized tours include transportation, and guides are recommended for navigation.',
+    gettingAround: 'Public transport is excellent. Walking is perfect for the CBD, and organized tours include transportation.',
     highlights: [
-      'Fes el-Bali - Ancient medina',
-      'Al-Qarawiyyin University - Oldest university',
-      'Chouara Tannery - Traditional leather',
-      'Bou Inania Madrasa - Stunning architecture',
-      'Bab Boujloud - Blue gate',
-      'Merenid Tombs - Panoramic views'
+      'National Gallery of Victoria - World-class art',
+      'Royal Botanic Gardens - Beautiful gardens',
+      'Melbourne Cricket Ground - Iconic sports venue',
+      'Federation Square - Cultural hub',
+      'Queen Victoria Market - Traditional market',
+      'Great Ocean Road - Scenic drive'
+    ]
+  },
+  {
+    id: 'mamanuca-islands',
+    name: 'Mamanuca Islands',
+    fullName: 'Mamanuca Islands',
+    country: 'Fiji',
+    category: 'Asia-Pacific',
+    briefDescription: 'Tropical archipelago with crystal-clear waters, coral reefs, and island adventures — Mamanuca Islands are Fiji\'s island paradise.',
+    heroDescription: 'Welcome to the Mamanuca Islands, where crystal-clear waters meet pristine coral reefs and island adventures await around every corner. From snorkeling vibrant reefs to relaxing on white-sand beaches, from island hopping to traditional Fijian experiences, this tropical archipelago offers the perfect blend of adventure and relaxation. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
+    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Mamanuca%20Islands.jpg',
+    tourCategories: [
+      { name: 'Island Tours', hasGuide: true },
+      { name: 'Snorkeling Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Water Sports', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
+    ],
+    seo: {
+      title: 'Mamanuca Islands Tours & Excursions - Top-Rated Activities & Adventures',
+      description: 'Discover top-rated Mamanuca Islands tours, excursions, and activities powered by AI. From island experiences to snorkeling adventures, find the perfect way to explore Fiji\'s island paradise.',
+      keywords: 'Mamanuca Islands tours, island tours, snorkeling tours, things to do in Mamanuca Islands',
+      primaryKeyword: 'Mamanuca Islands tours',
+      secondaryKeywords: [
+        'Mamanuca Islands island tours',
+        'Mamanuca Islands snorkeling tours',
+        'Mamanuca Islands beach tours',
+        'Mamanuca Islands cultural tours',
+        'Mamanuca Islands water sports',
+        'Things to do in Mamanuca Islands'
+      ]
+    },
+    whyVisit: [
+      'Crystal-clear waters',
+      'Pristine coral reefs',
+      'White-sand beaches',
+      'Island adventures',
+      'Fijian culture',
+      'Perfect blend of adventure and relaxation'
+    ],
+    bestTimeToVisit: {
+      weather: 'The Mamanuca Islands have a tropical climate. Dry season (May-October) is pleasant, and wet season (November-April) brings rain and humidity.',
+      bestMonths: 'May to October offers the best weather with pleasant temperatures and less rain.',
+      peakSeason: 'July to September brings peak tourist season with ideal weather, larger crowds, and higher prices.',
+      offSeason: 'November to April offers lower prices but wet weather and potential cyclones.'
+    },
+    gettingAround: 'Boat transfers connect the islands. Organized tours include transportation, and walking is perfect on each island.',
+    highlights: [
+      'Coral Reefs - Vibrant marine life',
+      'White-Sand Beaches - Pristine shores',
+      'Island Hopping - Multiple islands',
+      'Snorkeling - Marine exploration',
+      'Traditional Villages - Fijian culture',
+      'Water Sports - Adventure activities'
     ]
   },
   {

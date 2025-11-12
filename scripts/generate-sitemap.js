@@ -21,6 +21,7 @@ const generateSitemap = () => {
     'best-things-to-do-in-new-york',
     'best-time-for-african-safari',
     'best-time-to-visit-brazil',
+    'best-time-to-visit-curacao',
     'best-time-to-visit-caribbean',
     'best-time-to-visit-southeast-asia',
     'best-tours-peru-machu-picchu',

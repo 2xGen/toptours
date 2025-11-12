@@ -83,7 +83,14 @@ export default function DestinationDetailClient({ destination }) {
     // Load guides by country (for SEO internal linking)
     if (safeDestination.country) {
       const guidesByCountry = getGuidesByCountry(safeDestination.country);
-      setRelatedGuides(guidesByCountry);
+      const guideIds = Array.isArray(safeDestination.relatedGuides) ? safeDestination.relatedGuides : [];
+      const guidesByIds = guideIds.length > 0 ? getGuidesByIds(guideIds) : [];
+
+      const combinedGuidesMap = new Map();
+      guidesByCountry.forEach((guide) => combinedGuidesMap.set(guide.id, guide));
+      guidesByIds.forEach((guide) => combinedGuidesMap.set(guide.id, guide));
+
+      setRelatedGuides(Array.from(combinedGuidesMap.values()));
     }
     
     // Load guides by category/region (for bottom section)
@@ -391,10 +398,11 @@ export default function DestinationDetailClient({ destination }) {
                       return hasGuide ? (
                         <Link 
                           href={`/destinations/${safeDestination.id}/guides/${categorySlug}`}
-                          className="text-blue-600 hover:text-blue-700 transition-colors"
+                          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors text-sm font-medium"
                           title={`Read complete guide about ${categoryName} in ${safeDestination.fullName}`}
                         >
                           <BookOpen className="w-5 h-5" />
+                          <span className="hidden sm:inline">Read guide</span>
                         </Link>
                       ) : null;
                     })()}
@@ -722,97 +730,135 @@ export default function DestinationDetailClient({ destination }) {
               <h3 className="text-2xl font-poppins font-bold text-gray-800 mb-6 text-center">
                 {safeDestination.country} Travel Guides
               </h3>
-              <div className="flex justify-center">
-                <div className="relative w-full max-w-5xl">
-                  <div className="flex items-center justify-center mb-6 space-x-4">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => setGuideCarouselIndex(Math.max(0, guideCarouselIndex - 1))}
-                      disabled={guideCarouselIndex === 0}
-                      className="w-10 h-10 p-0"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </Button>
-                    {/* Mobile: show current of total, Desktop: show range */}
-                    <span className="text-sm text-gray-600">
-                      <span className="md:hidden">{guideCarouselIndex + 1} of {relatedGuides.length}</span>
-                      <span className="hidden md:inline">{guideCarouselIndex + 1} - {Math.min(guideCarouselIndex + 3, relatedGuides.length)} of {relatedGuides.length}</span>
-                    </span>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => {
-                        // Mobile: move by 1, Desktop: move by 1 but show 3
-                        const maxIndex = isMobile 
-                          ? relatedGuides.length - 1 
-                          : Math.max(0, relatedGuides.length - 3);
-                        setGuideCarouselIndex(Math.min(maxIndex, guideCarouselIndex + 1));
-                      }}
-                      disabled={guideCarouselIndex >= (isMobile ? relatedGuides.length - 1 : Math.max(0, relatedGuides.length - 3))}
-                      className="w-10 h-10 p-0"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </Button>
-                  </div>
-                  <div className="overflow-hidden px-4 md:px-0">
-                    <div 
-                      className="flex transition-transform duration-300 ease-in-out gap-6"
-                      style={{ 
-                        transform: isMobile
-                          ? `translateX(calc(-${guideCarouselIndex * 100}% - ${guideCarouselIndex * 1.5}rem))`
-                          : `translateX(-${guideCarouselIndex * 33.33}%)`,
-                        justifyContent: 'center'
-                      }}
-                    >
-                      {relatedGuides.map((guide) => (
-                        <Link 
-                          key={guide.id}
-                          href={`/travel-guides/${guide.id}`}
-                          className="w-[calc(100%-2rem)] md:w-[calc(33.33%-1rem)] flex-shrink-0 group"
-                        >
-                          <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
-                            <div className="relative h-48 overflow-hidden bg-gray-200">
-                              {guide.image ? (
-                                <img
-                                  src={guide.image}
-                                  alt={guide.title}
-                                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                />
-                              ) : (
-                                <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100">
-                                  <BookOpen className="w-12 h-12 text-gray-400" />
-                                </div>
-                              )}
-                              {guide.category && (
-                                <Badge className="absolute top-4 left-4 adventure-gradient text-white">
-                                  {guide.category}
-                                </Badge>
-                              )}
-                            </div>
-                            <CardContent className="p-6 flex flex-col flex-grow">
-                              <h4 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
-                                {guide.title}
-                              </h4>
-                              
-                              <p className="text-gray-700 mb-4 line-clamp-3 flex-grow text-sm">
-                                {guide.excerpt}
-                              </p>
-                              
-                              <Button 
-                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold mt-auto"
-                              >
-                                Read Guide
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                              </Button>
-                            </CardContent>
-                          </Card>
-                        </Link>
-                      ))}
+              {isMobile ? (
+                <div className="flex justify-center">
+                  <div className="relative w-full max-w-sm">
+                    <div className="flex items-center justify-center mb-6 space-x-4">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setGuideCarouselIndex(Math.max(0, guideCarouselIndex - 1))}
+                        disabled={guideCarouselIndex === 0}
+                        className="w-10 h-10 p-0"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </Button>
+                      <span className="text-sm text-gray-600">
+                        {guideCarouselIndex + 1} of {relatedGuides.length}
+                      </span>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setGuideCarouselIndex(Math.min(relatedGuides.length - 1, guideCarouselIndex + 1))}
+                        disabled={guideCarouselIndex >= relatedGuides.length - 1}
+                        className="w-10 h-10 p-0"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </Button>
+                    </div>
+                    <div className="overflow-hidden px-4">
+                      <div 
+                        className="flex transition-transform duration-300 ease-in-out gap-6"
+                        style={{ 
+                          transform: `translateX(calc(-${guideCarouselIndex * 100}% - ${guideCarouselIndex * 1.5}rem))`
+                        }}
+                      >
+                        {relatedGuides.map((guide) => (
+                          <Link 
+                            key={guide.id}
+                            href={`/travel-guides/${guide.id}`}
+                            className="w-[calc(100%-2rem)] flex-shrink-0 group"
+                          >
+                            <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                              <div className="relative h-48 overflow-hidden bg-gray-200">
+                                {guide.image ? (
+                                  <img
+                                    src={guide.image}
+                                    alt={guide.title}
+                                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                  />
+                                ) : (
+                                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100">
+                                    <BookOpen className="w-12 h-12 text-gray-400" />
+                                  </div>
+                                )}
+                                {guide.category && (
+                                  <Badge className="absolute top-4 left-4 adventure-gradient text-white">
+                                    {guide.category}
+                                  </Badge>
+                                )}
+                              </div>
+                              <CardContent className="p-6 flex flex-col flex-grow">
+                                <h4 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                                  {guide.title}
+                                </h4>
+                                
+                                <p className="text-gray-700 mb-4 line-clamp-3 flex-grow text-sm">
+                                  {guide.excerpt}
+                                </p>
+                                
+                                <Button 
+                                  className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold mt-auto"
+                                >
+                                  Read Guide
+                                  <ArrowRight className="ml-2 h-4 w-4" />
+                                </Button>
+                              </CardContent>
+                            </Card>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {relatedGuides.map((guide) => (
+                    <Link 
+                      key={guide.id}
+                      href={`/travel-guides/${guide.id}`}
+                      className="group"
+                    >
+                      <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                        <div className="relative h-48 overflow-hidden bg-gray-200">
+                          {guide.image ? (
+                            <img
+                              src={guide.image}
+                              alt={guide.title}
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100">
+                              <BookOpen className="w-12 h-12 text-gray-400" />
+                            </div>
+                          )}
+                          {guide.category && (
+                            <Badge className="absolute top-4 left-4 adventure-gradient text-white">
+                              {guide.category}
+                            </Badge>
+                          )}
+                        </div>
+                        <CardContent className="p-6 flex flex-col flex-grow">
+                          <h4 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                            {guide.title}
+                          </h4>
+                          
+                          <p className="text-gray-700 mb-4 line-clamp-3 flex-grow text-sm">
+                            {guide.excerpt}
+                          </p>
+                          
+                          <Button 
+                            className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold mt-auto"
+                          >
+                            Read Guide
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
           </section>
         )}
