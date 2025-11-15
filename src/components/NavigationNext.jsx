@@ -24,7 +24,7 @@ const NavigationNext = ({ onOpenModal }) => {
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center space-x-2">
             <Compass className="h-8 w-8 text-white" />
-            <span className="font-poppins font-bold text-xl text-white">TopTours.ai</span>
+            <span className="font-poppins font-bold text-xl text-white">TopTours.ai<span className="text-xs align-super ml-1">™</span></span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">

@@ -175,7 +175,7 @@ export default function DestinationsPage() {
                               {destination.briefDescription}
                             </p>
                             
-                            <div className="mt-auto pt-4">
+                            <div className="mt-auto pt-4 space-y-3">
                               <Button 
                                 asChild
                                 className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
@@ -183,6 +183,17 @@ export default function DestinationsPage() {
                               >
                                 <Link href={`/destinations/${destination.id}`}>
                                   Explore {destination.name}
+                                  <ArrowRight className="ml-2 h-5 w-5" />
+                                </Link>
+                              </Button>
+                              <Button
+                                asChild
+                                variant="secondary"
+                                className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 h-12 text-base font-semibold"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <Link href={`/destinations/${destination.id}/tours`}>
+                                  View Top Tours in {destination.name}
                                   <ArrowRight className="ml-2 h-5 w-5" />
                                 </Link>
                               </Button>

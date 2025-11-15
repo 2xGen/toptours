@@ -219,7 +219,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 <p className="text-blue-100 mb-6 text-lg">
                   Browse {guideData.stats.toursAvailable}+ available tours with instant booking & best price guarantee
                 </p>
-                <Link href={`/results?searchTerm=${destination.name} ${guideData.categoryName}`}>
+                <Link href={`/destinations/${destinationId}/tours`}>
                   <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-6">
                     View All Tours & Prices
                     <ArrowRight className="ml-2 w-5 h-5" />
@@ -332,7 +332,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
             viewport={{ once: true }}
             className="mt-12 text-center"
           >
-            <Link href={`/results?searchTerm=${destination.name} ${guideData.categoryName}`}>
+            <Link href={`/destinations/${destinationId}/tours`}>
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
                 Compare All Tour Options
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -454,7 +454,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
                   Book your {guideData.categoryName.toLowerCase()} today - {guideData.stats.toursAvailable}+ tours with instant confirmation & best price guarantee!
                 </p>
-                <Link href={`/results?searchTerm=${destination.name} ${guideData.categoryName}`}>
+                <Link href={`/destinations/${destinationId}/tours`}>
                   <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-xl px-10 py-7">
                     Browse All Tours & Prices
                     <ArrowRight className="ml-2 w-6 h-6" />
@@ -792,7 +792,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           >
             <X className="w-6 h-6 text-gray-900 stroke-2" />
           </button>
-          <Link href={`/results?searchTerm=${destination.name} ${guideData.categoryName}`}>
+          <Link href={`/destinations/${destinationId}/tours`}>
             <Button 
               size="lg"
               className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"

@@ -113,7 +113,7 @@ export default function RestaurantsListClient({ destination, restaurants }) {
                     </Link>
                   </Button>
                   <Button asChild className="sunset-gradient text-white gap-2">
-                    <Link href={`/results?searchTerm=${encodeURIComponent(destination.fullName + ' tours')}`}>
+                    <Link href={`/destinations/${destination.id}/tours`}>
                       View Top Tours
                       <ArrowRight className="w-4 h-4" />
                     </Link>
@@ -325,7 +325,7 @@ export default function RestaurantsListClient({ destination, restaurants }) {
                 Pair these dining spots with unforgettable experiences. Browse curated tours, skip-the-line attractions, and sunset cruises tailored to {destination.fullName}.
               </p>
               <Button asChild className="bg-white text-blue-600 hover:bg-gray-100 gap-2 px-8 py-3 text-lg font-semibold">
-                <Link href={`/results?searchTerm=${encodeURIComponent(destination.fullName + ' tours')}`}>
+                <Link href={`/destinations/${destination.id}/tours`}>
                   Discover {destination.fullName} Tours
                   <ArrowRight className="w-5 h-5" />
                 </Link>

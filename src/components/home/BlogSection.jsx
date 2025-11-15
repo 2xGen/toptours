@@ -5,8 +5,10 @@ import { ArrowRight, MapPin } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { useRouter } from 'next/navigation';
 
 const TopDestinations = () => {
+  const router = useRouter();
   // Popular destinations from different categories
   const topDestinations = [
     {
@@ -87,8 +89,19 @@ const TopDestinations = () => {
               viewport={{ once: true }}
               className="h-full"
             >
-              <Link href={`/destinations/${destination.id}`} className="block h-full group">
-                <Card className="bg-white border-0 shadow-lg group-hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col hover:-translate-y-1">
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => router.push(`/destinations/${destination.id}`)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    router.push(`/destinations/${destination.id}`);
+                  }
+                }}
+                className="block h-full group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-3xl"
+              >
+                <Card className="bg-white border-0 shadow-lg group-hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col hover:-translate-y-1 rounded-3xl">
                   <div className="relative w-full h-56 overflow-hidden">
                     <img
                       src={destination.imageUrl}
@@ -111,17 +124,32 @@ const TopDestinations = () => {
                     <p className="text-gray-700 mb-4 flex-grow">
                       {destination.briefDescription}
                     </p>
-                    <div className="mt-auto pt-4">
+                    <div className="mt-auto pt-4 space-y-3">
                       <Button 
+                        asChild
                         className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
+                        onClick={(e) => e.stopPropagation()}
                       >
-                        Explore {destination.name}
-                        <ArrowRight className="ml-2 h-5 w-5" />
+                        <Link href={`/destinations/${destination.id}`}>
+                          Explore {destination.name}
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Link>
+                      </Button>
+                      <Button
+                        asChild
+                        variant="secondary"
+                        className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 h-12 text-base font-semibold"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Link href={`/destinations/${destination.id}/tours`}>
+                          View Top Tours in {destination.name}
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Link>
                       </Button>
                     </div>
                   </CardContent>
                 </Card>
-              </Link>
+              </div>
             </motion.div>
           ))}
         </div>

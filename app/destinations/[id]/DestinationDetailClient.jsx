@@ -15,6 +15,7 @@ import Link from 'next/link';
 import { getRelatedDestinations, getDestinationsByIds, getDestinationsByCountry } from '../../../src/data/destinationsData.js';
 import { getGuidesByCategory, getGuidesByIds, getGuidesByCountry } from '../../../src/data/travelGuidesData.js';
 import { getRestaurantsForDestination } from './restaurants/restaurantsData';
+import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 
 export default function DestinationDetailClient({ destination }) {
   
@@ -440,109 +441,113 @@ export default function DestinationDetailClient({ destination }) {
                   <>
                     {/* Mobile grid layout */}
                     <div className="md:hidden grid grid-cols-1 gap-6">
-                      {tours[categoryName].slice(0, visibleTours[categoryName] || 4).map((tour, index) => (
-                        <Card key={tour.productCode || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
-                          {/* Tour Image */}
-                          <div className="relative h-32 bg-gray-200 flex-shrink-0">
-                            {tour.images?.[0]?.variants?.[3]?.url ? (
-                              <img
-                                src={tour.images[0].variants[3].url}
-                                alt={tour.title}
-                                className="w-full h-full object-cover"
-                              />
-                            ) : (
-                              <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                                <Search className="w-6 h-6 text-gray-400" />
+                      {tours[categoryName].slice(0, visibleTours[categoryName] || 4).map((tour, index) => {
+                        const tourId = getTourProductId(tour);
+                        const tourUrl = getTourUrl(tourId, tour.title);
+                        
+                        return (
+                          <Card key={tourId || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                            {/* Tour Image - Clickable link to internal page */}
+                            <Link href={tourUrl}>
+                              <div className="relative h-32 bg-gray-200 flex-shrink-0 cursor-pointer">
+                                {tour.images?.[0]?.variants?.[3]?.url ? (
+                                  <img
+                                    src={tour.images[0].variants[3].url}
+                                    alt={tour.title}
+                                    className="w-full h-full object-cover"
+                                  />
+                                ) : (
+                                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                    <Search className="w-6 h-6 text-gray-400" />
+                                  </div>
+                                )}
                               </div>
-                            )}
-                          </div>
+                            </Link>
 
-                          {/* Tour Content */}
-                          <CardContent className="p-3 flex-1 flex flex-col">
-                            <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 h-10">
-                              {tour.title}
-                            </h4>
-                            
-                            {/* Tour Badges */}
-                            {tour.flags && Array.isArray(tour.flags) && tour.flags.length > 0 && (
-                              <div className="flex flex-wrap gap-1 mb-2">
-                                {tour.flags.map((flag, flagIndex) => {
-                                  let badgeClass = "text-xs font-medium px-2 py-1 rounded-full";
-                                  if (flag === "FREE_CANCELLATION") {
-                                    badgeClass += " bg-green-50 text-green-700 border border-green-200";
-                                  } else if (flag === "PRIVATE_TOUR") {
-                                    badgeClass += " bg-purple-50 text-purple-700 border border-purple-200";
-                                  } else if (flag === "LIKELY_TO_SELL_OUT") {
-                                    badgeClass += " bg-orange-50 text-orange-700 border border-orange-200";
-                                  } else {
-                                    badgeClass += " bg-blue-50 text-blue-700 border border-blue-200";
-                                  }
-                                  
-                                  return (
-                                    <Badge
-                                      key={flagIndex}
-                                      variant="secondary"
-                                      className={badgeClass}
-                                    >
-                                      {flag.replace(/_/g, ' ')}
-                                    </Badge>
-                                  );
-                                })}
+                            {/* Tour Content */}
+                            <CardContent className="p-3 flex-1 flex flex-col">
+                              <Link href={tourUrl}>
+                                <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 h-10 hover:text-purple-600 transition-colors cursor-pointer">
+                                  {tour.title}
+                                </h4>
+                              </Link>
+                              
+                              {/* Tour Badges */}
+                              {tour.flags && Array.isArray(tour.flags) && tour.flags.length > 0 && (
+                                <div className="flex flex-wrap gap-1 mb-2">
+                                  {tour.flags.map((flag, flagIndex) => {
+                                    let badgeClass = "text-xs font-medium px-2 py-1 rounded-full";
+                                    if (flag === "FREE_CANCELLATION") {
+                                      badgeClass += " bg-green-50 text-green-700 border border-green-200";
+                                    } else if (flag === "PRIVATE_TOUR") {
+                                      badgeClass += " bg-purple-50 text-purple-700 border border-purple-200";
+                                    } else if (flag === "LIKELY_TO_SELL_OUT") {
+                                      badgeClass += " bg-orange-50 text-orange-700 border border-orange-200";
+                                    } else {
+                                      badgeClass += " bg-blue-50 text-blue-700 border border-blue-200";
+                                    }
+                                    
+                                    return (
+                                      <Badge
+                                        key={flagIndex}
+                                        variant="secondary"
+                                        className={badgeClass}
+                                      >
+                                        {flag.replace(/_/g, ' ')}
+                                      </Badge>
+                                    );
+                                  })}
+                                </div>
+                              )}
+
+                              {/* Rating */}
+                              {tour.reviews && (
+                                <div className="flex items-center mb-2">
+                                  <Star className="w-3 h-3 text-yellow-400 fill-current" />
+                                  <span className="font-medium text-gray-700 ml-1 text-sm">
+                                    {tour.reviews.combinedAverageRating?.toFixed(1) || 'N/A'}
+                                  </span>
+                                  <span className="text-gray-500 text-xs ml-1">
+                                    ({tour.reviews.totalReviews?.toLocaleString('en-US') || 0})
+                                  </span>
+                                </div>
+                              )}
+
+                              {/* Price */}
+                              <div className="text-lg font-bold text-orange-600 mb-3">
+                                From ${tour.pricing?.summary?.fromPrice || 'N/A'}
                               </div>
-                            )}
 
-                            {/* Rating */}
-                            {tour.reviews && (
-                              <div className="flex items-center mb-2">
-                                <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                                <span className="font-medium text-gray-700 ml-1 text-sm">
-                                  {tour.reviews.combinedAverageRating?.toFixed(1) || 'N/A'}
-                                </span>
-                                <span className="text-gray-500 text-xs ml-1">
-                                  ({tour.reviews.totalReviews || 0})
-                                </span>
-                              </div>
-                            )}
-
-                            {/* Price */}
-                            <div className="text-lg font-bold text-orange-600 mb-3">
-                              From ${tour.pricing?.summary?.fromPrice || 'N/A'}
-                            </div>
-
-                            {/* Quick View Button */}
-                            <Button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setSelectedTour(tour);
-                                setIsTourModalOpen(true);
-                              }}
-                              variant="outline"
-                              size="sm"
-                              className="mb-2 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 text-purple-700 hover:from-purple-100 hover:to-blue-100 hover:border-purple-300 transition-all duration-200 text-xs"
-                            >
-                              <Brain className="w-3 h-3 mr-1" />
-                              Quick View
-                            </Button>
-
-                            {/* View Details Button */}
-                            <Button
-                              asChild
-                              size="sm"
-                              className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
-                            >
-                              <a
-                                href={tour.productUrl || `https://www.viator.com/tours/${tour.productCode}`}
-                                target="_blank"
-                                rel="sponsored noopener noreferrer"
-                                className="flex items-center justify-center"
+                              {/* Quick View Button */}
+                              <Button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setSelectedTour(tour);
+                                  setIsTourModalOpen(true);
+                                }}
+                                variant="outline"
+                                size="sm"
+                                className="mb-2 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 text-purple-700 hover:from-purple-100 hover:to-blue-100 hover:border-purple-300 transition-all duration-200 text-xs"
                               >
-                                View Details
-                                <ExternalLink className="w-3 h-3 ml-1" />
-                              </a>
-                            </Button>
-                          </CardContent>
-                        </Card>
-                      ))}
+                                <Brain className="w-3 h-3 mr-1" />
+                                Quick View
+                              </Button>
+
+                              {/* View Details Button - Links to internal page */}
+                              <Button
+                                asChild
+                                size="sm"
+                                className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
+                              >
+                                <Link href={tourUrl}>
+                                  View Details
+                                  <ArrowRight className="w-3 h-3 ml-1" />
+                                </Link>
+                              </Button>
+                            </CardContent>
+                          </Card>
+                        );
+                      })}
                     </div>
                     
                     {/* Load More button for mobile */}
@@ -564,111 +569,115 @@ export default function DestinationDetailClient({ destination }) {
                       className="flex transition-transform duration-300 ease-in-out gap-6"
                       style={{ transform: `translateX(-${carouselIndexes[categoryName] * 25}%)` }}
                     >
-                      {tours[categoryName].map((tour, index) => (
-                        <Card key={tour.productCode || index} className="w-[calc(25%-1.125rem)] flex-shrink-0 bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
-                          {/* Tour Image */}
-                          <div className="relative h-32 bg-gray-200 flex-shrink-0">
-                            {tour.images?.[0]?.variants?.[3]?.url ? (
-                              <img
-                                src={tour.images[0].variants[3].url}
-                                alt={tour.title}
-                                className="w-full h-full object-cover"
-                              />
-                            ) : (
-                              <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                                <Search className="w-6 h-6 text-gray-400" />
+                      {tours[categoryName].map((tour, index) => {
+                        const tourId = getTourProductId(tour);
+                        const tourUrl = getTourUrl(tourId, tour.title);
+                        
+                        return (
+                          <Card key={tourId || index} className="w-[calc(25%-1.125rem)] flex-shrink-0 bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                            {/* Tour Image - Clickable link to internal page */}
+                            <Link href={tourUrl}>
+                              <div className="relative h-32 bg-gray-200 flex-shrink-0 cursor-pointer">
+                                {tour.images?.[0]?.variants?.[3]?.url ? (
+                                  <img
+                                    src={tour.images[0].variants[3].url}
+                                    alt={tour.title}
+                                    className="w-full h-full object-cover"
+                                  />
+                                ) : (
+                                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                    <Search className="w-6 h-6 text-gray-400" />
+                                  </div>
+                                )}
                               </div>
-                            )}
-                          </div>
+                            </Link>
 
-                          {/* Tour Content */}
-                          <CardContent className="p-3 flex-1 flex flex-col">
-                            <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 h-10">
-                              {tour.title}
-                            </h4>
-                            
-                            {/* Tour Badges */}
-                            {tour.flags && Array.isArray(tour.flags) && tour.flags.length > 0 && (
-                              <div className="flex flex-wrap gap-1 mb-2">
-                                {tour.flags.map((flag, flagIndex) => {
-                                  let badgeClass = "text-xs font-medium px-2 py-1 rounded-full";
-                                  if (flag === "FREE_CANCELLATION") {
-                                    badgeClass += " bg-green-50 text-green-700 border border-green-200";
-                                  } else if (flag === "PRIVATE_TOUR") {
-                                    badgeClass += " bg-purple-50 text-purple-700 border border-purple-200";
-                                  } else if (flag === "LIKELY_TO_SELL_OUT") {
-                                    badgeClass += " bg-orange-50 text-orange-700 border border-orange-200";
-                                  } else {
-                                    badgeClass += " bg-blue-50 text-blue-700 border border-blue-200";
-                                  }
-                                  
-                                  return (
-                                    <Badge
-                                      key={flagIndex}
-                                      variant="secondary"
-                                      className={badgeClass}
-                                    >
-                                      {flag.replace(/_/g, ' ')}
-                                    </Badge>
-                                  );
-                                })}
+                            {/* Tour Content */}
+                            <CardContent className="p-3 flex-1 flex flex-col">
+                              <Link href={tourUrl}>
+                                <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 h-10 hover:text-purple-600 transition-colors cursor-pointer">
+                                  {tour.title}
+                                </h4>
+                              </Link>
+                              
+                              {/* Tour Badges */}
+                              {tour.flags && Array.isArray(tour.flags) && tour.flags.length > 0 && (
+                                <div className="flex flex-wrap gap-1 mb-2">
+                                  {tour.flags.map((flag, flagIndex) => {
+                                    let badgeClass = "text-xs font-medium px-2 py-1 rounded-full";
+                                    if (flag === "FREE_CANCELLATION") {
+                                      badgeClass += " bg-green-50 text-green-700 border border-green-200";
+                                    } else if (flag === "PRIVATE_TOUR") {
+                                      badgeClass += " bg-purple-50 text-purple-700 border border-purple-200";
+                                    } else if (flag === "LIKELY_TO_SELL_OUT") {
+                                      badgeClass += " bg-orange-50 text-orange-700 border border-orange-200";
+                                    } else {
+                                      badgeClass += " bg-blue-50 text-blue-700 border border-blue-200";
+                                    }
+                                    
+                                    return (
+                                      <Badge
+                                        key={flagIndex}
+                                        variant="secondary"
+                                        className={badgeClass}
+                                      >
+                                        {flag.replace(/_/g, ' ')}
+                                      </Badge>
+                                    );
+                                  })}
+                                </div>
+                              )}
+
+                              {/* Rating */}
+                              {tour.reviews && (
+                                <div className="flex items-center mb-2">
+                                  <Star className="w-3 h-3 text-yellow-400 fill-current" />
+                                  <span className="font-medium text-gray-700 ml-1 text-sm">
+                                    {tour.reviews.combinedAverageRating?.toFixed(1) || 'N/A'}
+                                  </span>
+                                  <span className="text-gray-500 text-xs ml-1">
+                                    ({tour.reviews.totalReviews?.toLocaleString('en-US') || 0})
+                                  </span>
+                                </div>
+                              )}
+
+                              {/* Price */}
+                              <div className="text-lg font-bold text-orange-600 mb-3">
+                                From ${tour.pricing?.summary?.fromPrice || 'N/A'}
                               </div>
-                            )}
 
-                            {/* Rating */}
-                            {tour.reviews && (
-                              <div className="flex items-center mb-2">
-                                <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                                <span className="font-medium text-gray-700 ml-1 text-sm">
-                                  {tour.reviews.combinedAverageRating?.toFixed(1) || 'N/A'}
-                                </span>
-                                <span className="text-gray-500 text-xs ml-1">
-                                  ({tour.reviews.totalReviews || 0})
-                                </span>
-                              </div>
-                            )}
-
-                            {/* Price */}
-                            <div className="text-lg font-bold text-orange-600 mb-3">
-                              From ${tour.pricing?.summary?.fromPrice || 'N/A'}
-                            </div>
-
-                            {/* Quick View Button */}
-                            <Button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setSelectedTour(tour);
-                                setIsTourModalOpen(true);
-                              }}
-                              variant="outline"
-                              size="sm"
-                              className="mb-2 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 text-purple-700 hover:from-purple-100 hover:to-blue-100 hover:border-purple-300 transition-all duration-200 text-xs"
-                            >
-                              <Brain className="w-3 h-3 mr-1" />
-                              Quick View
-                            </Button>
-
-                            {/* View Details Button */}
-                            <Button
-                              asChild
-                              size="sm"
-                              className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
-                            >
-                              <a
-                                href={tour.productUrl || `https://www.viator.com/tours/${tour.productCode}`}
-                                target="_blank"
-                                rel="sponsored noopener noreferrer"
-                                className="flex items-center justify-center"
+                              {/* Quick View Button */}
+                              <Button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setSelectedTour(tour);
+                                  setIsTourModalOpen(true);
+                                }}
+                                variant="outline"
+                                size="sm"
+                                className="mb-2 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 text-purple-700 hover:from-purple-100 hover:to-blue-100 hover:border-purple-300 transition-all duration-200 text-xs"
                               >
-                                View Details
-                                <ExternalLink className="w-3 h-3 ml-1" />
-                              </a>
-                            </Button>
-                          </CardContent>
-                        </Card>
-                      ))}
+                                <Brain className="w-3 h-3 mr-1" />
+                                Quick View
+                              </Button>
+
+                              {/* View Details Button - Links to internal page */}
+                              <Button
+                                asChild
+                                size="sm"
+                                className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
+                              >
+                                <Link href={tourUrl}>
+                                  View Details
+                                  <ArrowRight className="w-3 h-3 ml-1" />
+                                </Link>
+                              </Button>
+                            </CardContent>
+                          </Card>
+                        );
+                      })}
                     </div>
-                  </div>
+                    </div>
                   </>
                 ) : (
                   <div className="text-center py-12 bg-white rounded-lg">
@@ -1061,6 +1070,18 @@ export default function DestinationDetailClient({ destination }) {
               <p className="text-xl text-white/90 mb-8">
                 Discover the best tours and activities in {safeDestination.fullName} with AI-powered recommendations tailored just for you.
               </p>
+              <div className="flex flex-wrap justify-center gap-4 mb-4">
+                <Button
+                  asChild
+                  size="lg"
+                  className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-8 py-6 text-lg font-semibold"
+                >
+                  <Link href={`/destinations/${safeDestination.id}/tours`}>
+                    View All Tours & Activities
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+              </div>
               <Button 
                 onClick={() => handleOpenModal(safeDestination.fullName)}
                 size="lg"
@@ -1133,7 +1154,7 @@ export default function DestinationDetailClient({ destination }) {
             >
               <X className="w-6 h-6 text-gray-900 stroke-2" />
             </button>
-            <Link href={`/results?searchTerm=${encodeURIComponent(destinationName)}`}>
+            <Link href={`/destinations/${safeDestination.id}/tours`}>
               <Button 
                 size="lg"
                 className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"

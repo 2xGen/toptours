@@ -98,12 +98,17 @@ export default function TermsOfServicePage() {
                       We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting. Your continued use of the service constitutes acceptance of the modified terms.
                     </p>
 
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">10. Governing Law</h3>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">10. Trademarks</h3>
+                    <p className="mb-6">
+                      TopTours.ai<span className="text-xs align-super ml-1">™</span>, including its name, branding, logos, and all associated marks, is a trademark of 2xGen LLC. All rights are reserved. You may not use, reproduce, imitate, or distribute any trademarked material without prior written authorization from 2xGen LLC. Unauthorized use may violate applicable trademark, copyright, and unfair-competition laws.
+                    </p>
+
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">11. Governing Law</h3>
                     <p className="mb-6">
                       These terms shall be governed by and construed in accordance with the laws of the jurisdiction in which TopTours.ai operates, without regard to its conflict of law provisions.
                     </p>
 
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">11. Contact Information</h3>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">12. Contact Information</h3>
                     <p className="mb-6">
                       If you have any questions about these Terms of Service, please contact us through our website or at the contact information provided on our platform.
                     </p>

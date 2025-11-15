@@ -14,6 +14,7 @@ import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import { destinations } from '@/data/destinationsData';
 import { travelGuides } from '@/data/travelGuidesData';
+import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 
 const regions = ['Africa', 'Asia-Pacific', 'Caribbean', 'Europe', 'North America', 'South America'];
 
@@ -821,38 +822,42 @@ const Results = () => {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8"
             >
               {tours.map((tour, index) => {
-                const tourId = tour.productId || index;
+                const tourId = getTourProductId(tour);
+                const tourUrl = getTourUrl(tourId, tour.title);
                 
                 return (
                   <motion.div
-                    key={tourId}
+                    key={tourId || index}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="h-full cursor-pointer"
-                    onClick={() => handleBookingPopup(tour)}
+                    className="h-full"
                   >
                     <Card className="h-full overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
-                      {/* Tour Image */}
-                      <div className="relative h-32 bg-gray-200 flex-shrink-0">
-                        {tour.images?.[0]?.variants?.[3]?.url ? (
-                          <img
-                            src={tour.images[0].variants[3].url}
-                            alt={tour.title}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                            <Search className="w-6 h-6 text-gray-400" />
-                          </div>
-                        )}
-                      </div>
+                      {/* Tour Image - Clickable link to internal page */}
+                      <Link href={tourUrl}>
+                        <div className="relative h-32 bg-gray-200 flex-shrink-0 cursor-pointer">
+                          {tour.images?.[0]?.variants?.[3]?.url ? (
+                            <img
+                              src={tour.images[0].variants[3].url}
+                              alt={tour.title}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                              <Search className="w-6 h-6 text-gray-400" />
+                            </div>
+                          )}
+                        </div>
+                      </Link>
 
                       {/* Tour Content */}
                       <div className="p-3 flex-1 flex flex-col">
-                        <h3 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 flex-1">
-                          {tour.title}
-                        </h3>
+                        <Link href={tourUrl}>
+                          <h3 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 flex-1 hover:text-purple-600 transition-colors cursor-pointer">
+                            {tour.title}
+                          </h3>
+                        </Link>
                         
                         {/* Tour Badges - Display ALL flags from Viator API */}
                         {tour.flags && Array.isArray(tour.flags) && tour.flags.length > 0 && (
@@ -891,7 +896,7 @@ const Results = () => {
                               {tour.reviews.combinedAverageRating?.toFixed(1) || 'N/A'}
                             </span>
                             <span className="text-gray-500 text-xs ml-1">
-                              ({tour.reviews.totalReviews || 0})
+                              ({tour.reviews.totalReviews?.toLocaleString('en-US') || 0})
                             </span>
                           </div>
                         )}
@@ -915,22 +920,16 @@ const Results = () => {
                           Quick View
                         </Button>
 
-                        {/* View Details Button */}
+                        {/* View Details Button - Links to internal page */}
                         <Button
                           asChild
                           size="sm"
-                          onClick={(e) => e.stopPropagation()}
                           className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
                         >
-                          <a
-                            href={tour.productUrl}
-                            target="_blank"
-                            rel="sponsored noopener noreferrer"
-                            className="flex items-center justify-center"
-                          >
+                          <Link href={tourUrl}>
                             View Details
-                            <ExternalLink className="w-3 h-3 ml-1" />
-                          </a>
+                            <ArrowRight className="w-3 h-3 ml-1" />
+                          </Link>
                         </Button>
                       </div>
                     </Card>

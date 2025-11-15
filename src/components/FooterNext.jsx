@@ -11,7 +11,10 @@ const FooterNext = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <Compass className="h-8 w-8 text-yellow-400" />
-              <span className="font-poppins font-bold text-xl">TopTours.ai</span>
+              <span className="font-poppins font-bold text-xl">
+                TopTours.ai
+                <span className="text-xs align-super ml-1">™</span>
+              </span>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
               Discover amazing tours and activities worldwide with AI-powered recommendations. 
@@ -81,7 +84,7 @@ const FooterNext = () => {
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © 2025 TopTours.ai. All rights reserved. | 
+            © 2025 TopTours.ai<span className="text-xs align-super ml-1">™</span>. All rights reserved. | 
             <Link href="/disclosure" className="text-yellow-400 hover:text-yellow-300 ml-1">
               Affiliate Disclosure
             </Link>
@@ -90,22 +93,14 @@ const FooterNext = () => {
             We may earn a commission from bookings made through our affiliate links at no extra cost to you.
           </p>
           <p className="text-gray-500 text-sm mt-2">
-            <a 
-              href="https://toptours.ai/" 
-              target="_blank" 
-              rel="nofollow noopener noreferrer"
-              className="text-yellow-400 hover:text-yellow-300 transition-colors"
-            >
-              TopTours.ai
-            </a>
-            {' '}is proudly built by{' '}
+            TopTours.ai<span className="text-xs align-super ml-1">™</span> is owned and operated by{' '}
             <Link 
               href="/2xgen"
               className="text-yellow-400 hover:text-yellow-300 transition-colors"
             >
-              2xGen
+              2xGen LLC
             </Link>
-        {' '}— creators of next-gen digital platforms.
+            {' '}— creators of next-gen digital platforms.
           </p>
         </div>
       </div>

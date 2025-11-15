@@ -252,7 +252,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                   <p className="text-blue-100 mb-6 text-lg">
                     Browse {destination.tourCategories?.length || 6} curated tour categories with instant booking & best price guarantee.
                   </p>
-                  <Link href={`/destinations/${destination.id}`}>
+                  <Link href={`/destinations/${destination.id}/tours`}>
                     <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-6">
                       View All Tours & Prices
                       <ArrowRight className="ml-2 w-5 h-5" />
@@ -493,7 +493,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
               <p className="text-blue-100 text-lg mb-8 max-w-3xl mx-auto">
                 Pair your reservation at {restaurant.shortName || restaurant.name} with unforgettable tours in {destination.name}. From sunset sails to culinary adventures, our AI curates the best ways to explore the island like a local.
               </p>
-              <Link href={`/results?searchTerm=${encodeURIComponent(destination.name + ' tours')}`}>
+              <Link href={`/destinations/${destination.id}/tours`}>
                 <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-xl px-10 py-6">
                   Discover {destination.name} Tours
                   <ArrowRight className="ml-2 w-6 h-6" />
@@ -602,13 +602,14 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
               <p className="text-xl text-white/90 mb-8">
                 Discover the best tours, activities, and restaurant picks with AI-powered recommendations tailored just for you.
               </p>
+            <Link href={`/destinations/${destination.id}`}>
               <Button
-                onClick={() => setIsModalOpen(true)}
                 size="lg"
                 className="bg-white text-blue-600 hover:bg-gray-100 hover:scale-105 transition-all duration-200 px-8 py-6 text-lg font-semibold"
               >
                 Start Planning Your {destination.name} Trip
               </Button>
+            </Link>
             </motion.div>
           </div>
         </section>
