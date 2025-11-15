@@ -206,23 +206,23 @@ export default function DestinationsPage() {
 
                   {/* Pagination Controls */}
                   {totalPages > 1 && (
-                    <div className="flex justify-center items-center gap-2 mt-12">
+                    <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-12 w-full">
                       <Button
                         variant="outline"
                         onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                         disabled={currentPage === 1}
-                        className="bg-white disabled:opacity-50"
+                        className="bg-white disabled:opacity-50 w-full sm:w-auto"
                       >
                         Previous
                       </Button>
                       
-                      <div className="flex gap-2">
+                      <div className="flex flex-wrap justify-center gap-2 max-w-full">
                         {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
                           <Button
                             key={page}
                             variant={currentPage === page ? "default" : "outline"}
                             onClick={() => setCurrentPage(page)}
-                            className={currentPage === page ? "sunset-gradient text-white" : "bg-white"}
+                            className={`${currentPage === page ? "sunset-gradient text-white" : "bg-white"} min-w-[48px]`}
                           >
                             {page}
                           </Button>
@@ -233,7 +233,7 @@ export default function DestinationsPage() {
                         variant="outline"
                         onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                         disabled={currentPage === totalPages}
-                        className="bg-white disabled:opacity-50"
+                        className="bg-white disabled:opacity-50 w-full sm:w-auto"
                       >
                         Next
                       </Button>

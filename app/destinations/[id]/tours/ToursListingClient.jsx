@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Search, 
@@ -18,7 +18,8 @@ import {
   Filter,
   Sun,
   Moon,
-  Sunrise
+  Sunrise,
+  MoveHorizontal
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -490,17 +491,44 @@ export default function ToursListingClient({
   const featuredTours = filteredTours.filter(t => t.isFeatured);
   const regularTours = filteredTours.filter(t => !t.isFeatured);
 
-const destinationTagOptions = (() => {
-  const customTags = DESTINATION_TAG_OPTIONS[destination.id];
-  if (customTags && customTags.length) return customTags;
-  return buildFallbackTagOptions(destination);
-})();
+  const destinationTagOptions = (() => {
+    const customTags = DESTINATION_TAG_OPTIONS[destination.id];
+    if (customTags && customTags.length) return customTags;
+    return buildFallbackTagOptions(destination);
+  })();
+
   const tagScrollRef = useRef(null);
+  const [tagScrollState, setTagScrollState] = useState({
+    canScrollLeft: false,
+    canScrollRight: false,
+  });
+
+  const updateTagScrollIndicators = useCallback(() => {
+    const el = tagScrollRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    const maxScrollLeft = scrollWidth - clientWidth;
+    setTagScrollState({
+      canScrollLeft: scrollLeft > 6,
+      canScrollRight: scrollLeft < maxScrollLeft - 6,
+    });
+  }, []);
+
+  useEffect(() => {
+    const el = tagScrollRef.current;
+    if (!el) return;
+    updateTagScrollIndicators();
+    el.addEventListener('scroll', updateTagScrollIndicators);
+    return () => {
+      el.removeEventListener('scroll', updateTagScrollIndicators);
+    };
+  }, [updateTagScrollIndicators, destination.id, destinationTagOptions.length]);
 
   const handleTagScroll = (direction) => {
     if (!tagScrollRef.current) return;
     const scrollAmount = direction === 'left' ? -200 : 200;
     tagScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    setTimeout(updateTagScrollIndicators, 250);
   };
 
   const handleApplyFilters = async () => {
@@ -1038,6 +1066,7 @@ const destinationTagOptions = (() => {
                 <div
                   ref={tagScrollRef}
                   className="flex gap-3 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-1"
+                  onScroll={updateTagScrollIndicators}
                 >
                   {destinationTagOptions.map((tag) => {
                     const isSelected = (activeFilters.tags || []).includes(tag.id);
@@ -1068,21 +1097,37 @@ const destinationTagOptions = (() => {
                     );
                   })}
                 </div>
+                {tagScrollState.canScrollLeft && (
+                  <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-white via-white/80 to-transparent" />
+                )}
+                {tagScrollState.canScrollRight && (
+                  <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-white via-white/80 to-transparent" />
+                )}
                 <button
                   type="button"
                   onClick={() => handleTagScroll('left')}
-                  className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white shadow border border-gray-200 items-center justify-center text-gray-600 hover:text-purple-600"
+                  className={`absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white shadow border border-gray-200 items-center justify-center text-gray-600 hover:text-purple-600 transition-opacity ${
+                    tagScrollState.canScrollLeft ? 'flex' : 'hidden md:flex'
+                  }`}
                 >
                   ‹
                 </button>
                 <button
                   type="button"
                   onClick={() => handleTagScroll('right')}
-                  className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white shadow border border-gray-200 items-center justify-center text-gray-600 hover:text-purple-600"
+                  className={`absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white shadow border border-gray-200 items-center justify-center text-gray-600 hover:text-purple-600 transition-opacity ${
+                    tagScrollState.canScrollRight ? 'flex' : 'hidden md:flex'
+                  }`}
                 >
                   ›
                 </button>
               </div>
+              {destinationTagOptions.length > 3 && (
+                <div className="flex items-center gap-1 text-xs text-purple-600 sm:hidden">
+                  <MoveHorizontal className="w-4 h-4" />
+                  Swipe sideways to see more categories
+                </div>
+              )}
               <div className="mt-4">
                 <div className="bg-gradient-to-r from-rose-50 to-orange-50 border border-rose-100 rounded-2xl p-4 flex flex-col sm:flex-row gap-4 items-center justify-between">
                   <div className="text-center sm:text-left">
