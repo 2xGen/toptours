@@ -6,8 +6,21 @@ import { createSupabaseServiceRoleClient } from './supabaseClient';
 const require = createRequire(import.meta.url);
 let cachedOpenAiKey = null;
 
-const loadFallbackOpenAiKey = () => {
+const resolveOpenAiKey = () => {
   if (cachedOpenAiKey !== null) return cachedOpenAiKey;
+
+  const envKey = process.env.OPENAI_API_KEY;
+  if (envKey) {
+    cachedOpenAiKey = envKey;
+    return cachedOpenAiKey;
+  }
+
+  const envBase64 = process.env.OPENAI_API_KEY_BASE64;
+  if (envBase64) {
+    cachedOpenAiKey = Buffer.from(envBase64, 'base64').toString('utf8');
+    return cachedOpenAiKey;
+  }
+
   try {
     // eslint-disable-next-line import/no-dynamic-require, global-require
     const config = require('../../config/api-keys.js');
@@ -238,7 +251,7 @@ Notable Hook: ${experienceHook || 'N/A'}
 };
 
 const generateAiSummary = async (tour) => {
-  const apiKey = process.env.OPENAI_API_KEY || loadFallbackOpenAiKey();
+  const apiKey = resolveOpenAiKey();
   if (!apiKey) {
     return { error: 'Missing OpenAI API key' };
   }
