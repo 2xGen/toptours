@@ -11,7 +11,16 @@ const loadFallbackOpenAiKey = () => {
   try {
     // eslint-disable-next-line import/no-dynamic-require, global-require
     const config = require('../../config/api-keys.js');
-    cachedOpenAiKey = config?.OPENAI_API_KEY || null;
+    if (config?.OPENAI_API_KEY) {
+      cachedOpenAiKey = config.OPENAI_API_KEY;
+    } else if (config?.OPENAI_API_KEY_BASE64) {
+      cachedOpenAiKey = Buffer.from(
+        config.OPENAI_API_KEY_BASE64,
+        'base64'
+      ).toString('utf8');
+    } else {
+      cachedOpenAiKey = null;
+    }
   } catch (error) {
     cachedOpenAiKey = null;
   }
