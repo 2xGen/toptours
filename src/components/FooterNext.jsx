@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Compass, Facebook, Instagram } from 'lucide-react';
+import { Compass, Facebook, Instagram, Youtube } from 'lucide-react';
 
 const FooterNext = () => {
   return (
@@ -36,6 +36,14 @@ const FooterNext = () => {
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 <Instagram className="h-6 w-6" />
+              </a>
+              <a 
+                href="https://www.youtube.com/@toptoursai" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <Youtube className="h-6 w-6" />
               </a>
               <a 
                 href="https://www.tiktok.com/@toptours.ai" 

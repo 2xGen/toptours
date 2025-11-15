@@ -1106,8 +1106,8 @@ export default function ToursListingClient({
                 <button
                   type="button"
                   onClick={() => handleTagScroll('left')}
-                  className={`absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white shadow border border-gray-200 items-center justify-center text-gray-600 hover:text-purple-600 transition-opacity ${
-                    tagScrollState.canScrollLeft ? 'flex' : 'hidden md:flex'
+                  className={`absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white shadow border border-gray-200 items-center justify-center text-gray-600 hover:text-purple-600 transition-opacity ${
+                    tagScrollState.canScrollLeft ? 'hidden sm:flex' : 'hidden md:flex'
                   }`}
                 >
                   ‹
@@ -1115,8 +1115,8 @@ export default function ToursListingClient({
                 <button
                   type="button"
                   onClick={() => handleTagScroll('right')}
-                  className={`absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white shadow border border-gray-200 items-center justify-center text-gray-600 hover:text-purple-600 transition-opacity ${
-                    tagScrollState.canScrollRight ? 'flex' : 'hidden md:flex'
+                  className={`absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white shadow border border-gray-200 items-center justify-center text-gray-600 hover:text-purple-600 transition-opacity ${
+                    tagScrollState.canScrollRight ? 'hidden sm:flex' : 'hidden md:flex'
                   }`}
                 >
                   ›

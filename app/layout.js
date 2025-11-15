@@ -85,17 +85,11 @@ export default function RootLayout({ children }) {
               "logo": "https://toptours.ai/logo.png",
               "description": "AI-powered travel planning and tour booking platform",
               "sameAs": [
-                "https://twitter.com/toptoursai",
-                "https://facebook.com/toptoursai",
-                "https://instagram.com/toptoursai"
-              ],
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+1-555-TOURS-AI",
-                "contactType": "customer service",
-                "areaServed": "US",
-                "availableLanguage": "English"
-              }
+                "https://www.facebook.com/profile.php?id=61573639234569",
+                "https://www.instagram.com/toptours.ai/?hl=en",
+                "https://www.tiktok.com/@toptours.ai",
+                "https://www.youtube.com/@toptoursai"
+              ]
             })
           }}
         />
