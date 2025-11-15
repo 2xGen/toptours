@@ -77,6 +77,14 @@ export default function sitemap() {
       priority: 0.75,
     }));
 
+  // Destination tour listing pages
+  const tourListingPages = destinations.map((destination) => ({
+    url: `${baseUrl}/destinations/${destination.id}/tours`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly',
+    priority: 0.78,
+  }));
+
   // Individual restaurant pages
   const restaurantDetailPages = getAllRestaurants().map(({ destinationId, restaurant }) => ({
     url: `${baseUrl}/destinations/${destinationId}/restaurants/${restaurant.slug}`,
@@ -96,6 +104,7 @@ export default function sitemap() {
   return [
     ...staticPages,
     ...destinationPages,
+    ...tourListingPages,
     ...restaurantListingPages,
     ...restaurantDetailPages,
     ...travelGuidePages,
