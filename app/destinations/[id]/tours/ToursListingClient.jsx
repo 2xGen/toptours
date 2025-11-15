@@ -514,7 +514,7 @@ const destinationTagOptions = (() => {
       setLoading(true);
       setIsFiltered(true);
       try {
-        const response = await fetch('/api/viator-products-search', {
+        const response = await fetch('/api/internal/viator-products-search', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -589,7 +589,7 @@ const destinationTagOptions = (() => {
           const allToursPromises = [];
           for (let page = 1; page <= pagesNeeded; page++) {
             allToursPromises.push(
-              fetch('/api/viator-search', {
+              fetch('/api/internal/viator-search', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -747,7 +747,7 @@ const destinationTagOptions = (() => {
           const allToursPromises = [];
           for (let page = 1; page <= pagesNeeded; page++) {
             allToursPromises.push(
-              fetch('/api/viator-search', {
+              fetch('/api/internal/viator-search', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

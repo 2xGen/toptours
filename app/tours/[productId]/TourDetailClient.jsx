@@ -167,7 +167,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     const controller = new AbortController();
     const trackView = async () => {
       try {
-        await fetch(`/api/tour-views/${productId}`, {
+        await fetch(`/api/internal/tour-views/${productId}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -705,7 +705,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       setIsGeneratingRecommendation(true);
       setRecommendationError('');
 
-      const response = await fetch(`/api/tour-enrichment/${productId}`, {
+      const response = await fetch(`/api/internal/tour-enrichment/${productId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ tour }),

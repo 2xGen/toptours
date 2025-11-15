@@ -23,7 +23,7 @@ const Paris = () => {
   const fetchTours = async (searchTerm) => {
     setLoading(true);
     try {
-      const response = await fetch('/api/viator-search', {
+      const response = await fetch('/api/internal/viator-search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -66,7 +66,7 @@ Your site should now be live at your Hostinger domain with working tour search f
 ## How It Works
 
 1. **Search**: Enter a destination in the hero search bar
-2. **API Call**: React app calls your PHP endpoint (`/api/viator-search.php`)
+2. **API Call**: React app calls your PHP endpoint (`/api/internal/viator-search.php`)
 3. **PHP Proxy**: PHP file calls Viator API with your API key
 4. **Results**: Tour data is returned and displayed in your React app
 5. **Book**: Click "View Details" to go to Viator's booking page

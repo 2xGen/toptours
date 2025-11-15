@@ -56,7 +56,7 @@ If tours don't load, check:
 
 ### API Endpoints
 
-- **Viator Search**: `/api/viator-search`
+- **Viator Search**: `/api/internal/viator-search`
   - Method: POST
   - Body: `{ "destination": "Paris", "searchTerm": "Paris tours" }`
   

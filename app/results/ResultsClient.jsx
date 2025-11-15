@@ -282,7 +282,7 @@ const Results = () => {
     // Fetch filtered results
     setLoading(true);
     try {
-      const response = await fetch('/api/viator-search', {
+      const response = await fetch('/api/internal/viator-search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -334,7 +334,7 @@ const Results = () => {
     // Reset to original search without filters
     setLoading(true);
     try {
-      const response = await fetch('/api/viator-search', {
+      const response = await fetch('/api/internal/viator-search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -448,7 +448,7 @@ const Results = () => {
       }
       
       // Call your PHP API endpoint
-      const response = await fetch('/api/viator-search', {
+      const response = await fetch('/api/internal/viator-search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
