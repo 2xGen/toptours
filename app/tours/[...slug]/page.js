@@ -52,21 +52,29 @@ export async function generateMetadata({ params }) {
       };
     }
     const title = tour.title || 'Tour';
+    const operatorName =
+      tour?.supplier?.name ||
+      tour?.supplierName ||
+      tour?.operator?.name ||
+      tour?.vendor?.name ||
+      tour?.partner?.name ||
+      '';
+    const metaTitle = operatorName ? `${operatorName} – ${title}` : title;
     const description = tour.description?.summary || tour.description?.shortDescription || `Book ${title} and discover amazing experiences.`;
     const image = tour.images?.[0]?.variants?.[3]?.url || tour.images?.[0]?.variants?.[0]?.url || '';
 
     return {
-      title: `${title} | TopTours.ai`,
+      title: metaTitle,
       description: description.substring(0, 160),
       openGraph: {
-        title: `${title} | TopTours.ai`,
+        title: metaTitle,
         description: description.substring(0, 160),
         images: image ? [image] : [],
         type: 'website',
       },
       twitter: {
         card: 'summary_large_image',
-        title: `${title} | TopTours.ai`,
+        title: metaTitle,
         description: description.substring(0, 160),
         images: image ? [image] : [],
       },
@@ -269,78 +277,129 @@ export default async function TourDetailPage({ params }) {
       console.error('Error fetching pricing:', error);
     }
 
-    // Fetch similar tours by searching for tours in the same category/destination
-    // Extract destination and category from tour title
-    let similarTours = [];
-    try {
-      // Try to extract destination name from title (first word or common destination names)
-      const destinationKeywords = ['Aruba', 'Curaçao', 'Jamaica', 'Punta Cana', 'Nassau', 'Barbados', 'St. Lucia', 'Amalfi', 'Italy', 'Rome', 'Florence', 'Venice'];
-      let searchTerm = tour.title || '';
-      
-      // If we can identify a destination, search for tours in that destination
-      for (const dest of destinationKeywords) {
-        if (tour.title?.includes(dest)) {
-          // Search for tours in this destination with similar keywords
-          const categoryKeywords = ['Sunset', 'Cruise', 'ATV', 'Snorkel', 'Dive', 'Catamaran', 'Cultural', 'Beach', 'Boat', 'Tour', 'Aperitif'];
-          for (const keyword of categoryKeywords) {
-            if (tour.title?.includes(keyword)) {
-              searchTerm = `${dest} ${keyword}`;
-              break;
-            }
-          }
-          if (searchTerm === tour.title) {
-            searchTerm = dest; // Fallback to just destination
-          }
-          break;
+    const deriveDestinationName = () => {
+      if (Array.isArray(tour?.destinations) && tour.destinations.length > 0) {
+        const entry = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
+        if (entry?.destinationName || entry?.name) {
+          return entry.destinationName || entry.name;
         }
       }
-      
-      // Use Viator search API directly
-      const similarResponse = await fetch('https://api.viator.com/partner/search/freetext', {
-        method: 'POST',
-        headers: {
-          'exp-api-key': apiKey,
-          'Accept': 'application/json;version=2.0',
-          'Accept-Language': 'en-US',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          searchTerm: searchTerm,
-          productFiltering: viatorDestinationIdForTour
-            ? {
-                destination: String(viatorDestinationIdForTour),
-              }
-            : undefined,
-          searchTypes: [{
-            searchType: 'PRODUCTS',
-            pagination: {
-              start: 1,
-              count: 20
+      if (primaryDestinationSlug) {
+        const matchedDestination = siteDestinations.find((dest) => dest.id === primaryDestinationSlug);
+        if (matchedDestination) {
+          return matchedDestination.fullName || matchedDestination.name;
+        }
+      }
+      return tour.destinationName || '';
+    };
+
+    const buildSimilarToursList = (tours = []) =>
+      tours
+        .filter((t) => {
+          const tId = t.productId || t.productCode;
+          return tId && tId !== productId;
+        })
+        .sort((a, b) => {
+          const ratingA = a.reviews?.combinedAverageRating || 0;
+          const ratingB = b.reviews?.combinedAverageRating || 0;
+          return ratingB - ratingA;
+        })
+        .slice(0, 9);
+
+    const fetchToursForDestination = async (searchTerm, destinationId = null, pages = 2) => {
+      if (!searchTerm) return [];
+
+      const toursPerPage = 20;
+      const fetchPromises = [];
+
+      for (let page = 1; page <= pages; page++) {
+        const start = (page - 1) * toursPerPage + 1;
+        fetchPromises.push(
+          fetch('https://api.viator.com/partner/search/freetext', {
+            method: 'POST',
+            headers: {
+              'exp-api-key': apiKey,
+              'Accept': 'application/json;version=2.0',
+              'Accept-Language': 'en-US',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              searchTerm,
+              productFiltering: destinationId
+                ? {
+                    destination: String(destinationId),
+                  }
+                : undefined,
+              searchTypes: [
+                {
+                  searchType: 'PRODUCTS',
+                  pagination: {
+                    start,
+                    count: toursPerPage,
+                  },
+                },
+              ],
+              currency: 'USD',
+            }),
+            cache: 'no-store',
+          }).then(async (res) => {
+            if (res.ok) {
+              return res.json();
             }
-          }],
-          currency: 'USD'
-        }),
-        cache: 'no-store' // Don't cache search results
+            const errorText = await res.text();
+            console.error(`Similar tours page ${page} error:`, res.status, errorText);
+            return null;
+          })
+        );
+      }
+
+      const responses = await Promise.all(fetchPromises);
+      const tours = [];
+      const seenIds = new Set();
+
+      responses.forEach((data) => {
+        if (data && !data.error) {
+          const results = data.products?.results || [];
+          results.forEach((tourResult) => {
+            const tId = tourResult.productId || tourResult.productCode;
+            if (tId && !seenIds.has(tId)) {
+              seenIds.add(tId);
+              tours.push(tourResult);
+            }
+          });
+        }
       });
 
-      if (similarResponse.ok) {
-        const similarData = await similarResponse.json();
-        const allTours = similarData.products?.results || [];
-        // Filter out current tour and get top 6 similar ones (sorted by rating)
-        similarTours = allTours
-          .filter(t => {
-            const tId = t.productId || t.productCode;
-            return tId && tId !== productId;
-          })
-          .sort((a, b) => {
-            const ratingA = a.reviews?.combinedAverageRating || 0;
-            const ratingB = b.reviews?.combinedAverageRating || 0;
-            return ratingB - ratingA;
-          })
-          .slice(0, 6);
+      return tours;
+    };
+
+    const destinationNameForSearch = deriveDestinationName() || tour.title || '';
+    let similarTours = [];
+
+    try {
+      if (destinationNameForSearch) {
+        const primaryResults = await fetchToursForDestination(
+          destinationNameForSearch,
+          viatorDestinationIdForTour
+        );
+        similarTours = buildSimilarToursList(primaryResults);
+      }
+
+      if (similarTours.length === 0 && viatorDestinationIdForTour) {
+        const fallbackResults = await fetchToursForDestination(
+          destinationNameForSearch || tour.title || productId,
+          viatorDestinationIdForTour
+        );
+        similarTours = buildSimilarToursList(fallbackResults);
+      }
+
+      if (similarTours.length === 0 && destinationNameForSearch) {
+        const finalResults = await fetchToursForDestination(destinationNameForSearch, null, 1);
+        similarTours = buildSimilarToursList(finalResults);
       }
     } catch (error) {
       console.error('Error fetching similar tours:', error);
+      similarTours = [];
     }
 
     const enrichment = await getTourEnrichment(productId);

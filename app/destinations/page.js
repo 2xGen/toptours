@@ -103,6 +103,16 @@ export default function DestinationsPage() {
             </div>
           </section>
 
+          <section className="bg-white border-b">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+              <nav className="flex items-center space-x-2 text-xs sm:text-sm text-gray-500">
+                <Link href="/" className="hover:text-gray-700">Home</Link>
+                <span className="text-gray-400">/</span>
+                <span className="text-gray-900 font-medium">Destinations</span>
+              </nav>
+            </div>
+          </section>
+
           <section className="py-8 bg-white border-b">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex flex-wrap justify-center gap-4">

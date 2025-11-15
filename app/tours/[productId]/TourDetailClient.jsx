@@ -82,6 +82,37 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     return null;
   })();
 
+  const derivedDestinationName = useMemo(() => {
+    if (destination?.fullName || destination?.name) {
+      return destination.fullName || destination.name;
+    }
+    if (Array.isArray(tour?.destinations) && tour.destinations.length > 0) {
+      const entry = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
+      return entry?.destinationName || entry?.name || '';
+    }
+    return '';
+  }, [destination, tour]);
+
+  const similarSectionTitle = derivedDestinationName
+    ? `Other Tours in ${derivedDestinationName}`
+    : 'Other Tours You Might Like';
+
+  const destinationTourUrl = useMemo(() => {
+    if (primaryDestinationSlug) {
+      return `/destinations/${primaryDestinationSlug}/tours`;
+    }
+    if (Array.isArray(tour?.destinations) && tour.destinations.length > 0) {
+      const entry = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
+      if (entry?.destinationId) {
+        return `/destinations/${entry.destinationId}/tours`;
+      }
+      if (entry?.id) {
+        return `/destinations/${entry.id}/tours`;
+      }
+    }
+    return null;
+  }, [primaryDestinationSlug, tour]);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     
@@ -1417,6 +1448,21 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       </div>
                     ))}
                   </div>
+
+              {destinationTourUrl && (
+                <div className="mt-10 text-center">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="px-6 py-3 border rounded-full border-purple-200 text-purple-700 hover:bg-purple-50"
+                  >
+                    <Link href={destinationTourUrl}>
+                      Back to all tours in {derivedDestinationName || 'this destination'}
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                </div>
+              )}
                 </motion.section>
               )}
 
@@ -1565,7 +1611,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               className="mt-16"
             >
               <div className="mb-6">
-                <h2 className="text-3xl font-bold text-gray-900">Similar Tours You Might Like</h2>
+                <h2 className="text-3xl font-bold text-gray-900">{similarSectionTitle}</h2>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
