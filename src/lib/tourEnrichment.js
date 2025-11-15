@@ -1,9 +1,7 @@
-import { createRequire } from 'module';
 import { destinations as siteDestinations } from '@/data/destinationsData';
 import { viatorRefToSlug } from '@/data/viatorDestinationMap';
 import { createSupabaseServiceRoleClient } from './supabaseClient';
 
-const require = createRequire(import.meta.url);
 let cachedOpenAiKey = null;
 
 const resolveOpenAiKey = () => {
@@ -21,22 +19,6 @@ const resolveOpenAiKey = () => {
     return cachedOpenAiKey;
   }
 
-  try {
-    // eslint-disable-next-line import/no-dynamic-require, global-require
-    const config = require('../../config/api-keys.js');
-    if (config?.OPENAI_API_KEY) {
-      cachedOpenAiKey = config.OPENAI_API_KEY;
-    } else if (config?.OPENAI_API_KEY_BASE64) {
-      cachedOpenAiKey = Buffer.from(
-        config.OPENAI_API_KEY_BASE64,
-        'base64'
-      ).toString('utf8');
-    } else {
-      cachedOpenAiKey = null;
-    }
-  } catch (error) {
-    cachedOpenAiKey = null;
-  }
   return cachedOpenAiKey;
 };
 
