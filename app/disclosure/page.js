@@ -16,7 +16,7 @@ export default function DisclosurePage() {
     {
       icon: DollarSign,
       title: 'Affiliate Commissions',
-      description: 'We earn a commission when you book tours through our affiliate links. This comes at no extra cost to you and helps us maintain our free service.'
+      description: 'We earn a commission when you book tours through our affiliate links. This comes at no extra cost to you and helps us reinvest in improving TopTours.ai.'
     },
     {
       icon: Shield,
@@ -83,9 +83,9 @@ export default function DisclosurePage() {
                     
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">Affiliate Partnerships</h3>
                     <p className="mb-6">
-                      We partner with reputable tour and booking platforms such as Viator, GetYourGuide, and other trusted providers. 
-                      When you click on our recommendations and complete a booking, we may earn a commission from these partners. 
-                      This standard affiliate model allows us to keep our service free for users.
+                      We currently partner directly with Viator, our primary booking affiliate. 
+                      When you click on our recommendations and complete a booking with Viator, we may earn a commission from that purchase. 
+                      This standard affiliate model helps fund improvements to TopTours.ai and future features.
                     </p>
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">No Extra Cost to You</h3>
