@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Menu, X, Compass } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const NavigationNext = ({ onOpenModal }) => {
+const NavigationNext = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -15,7 +15,6 @@ const NavigationNext = ({ onOpenModal }) => {
     { name: 'How It Works', path: '/how-it-works' },
     { name: 'Destinations', path: '/destinations' },
     { name: 'Travel Guides', path: '/travel-guides' },
-    { name: 'About', path: '/about' },
   ];
 
   return (
@@ -28,26 +27,22 @@ const NavigationNext = ({ onOpenModal }) => {
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-white hover:text-blue-200 transition-colors">
-              Home
-            </Link>
-            <Link href="/how-it-works" className="text-white hover:text-blue-200 transition-colors">
-              How It Works
-            </Link>
-            <Link href="/destinations" className="text-white hover:text-blue-200 transition-colors">
-              Destinations
-            </Link>
-            <Link href="/travel-guides" className="text-white hover:text-blue-200 transition-colors">
-              Travel Guides
-            </Link>
-            <Link href="/about" className="text-white hover:text-blue-200 transition-colors">
-              About
-            </Link>
-            <Button 
-              onClick={onOpenModal}
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.path}
+                className={`text-white hover:text-blue-200 transition-colors ${
+                  pathname === item.path ? 'font-semibold text-blue-100' : ''
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+            <Button
+              asChild
               className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200"
             >
-              Start Planning
+              <Link href="/destinations">Explore Destinations</Link>
             </Button>
           </div>
 
@@ -82,14 +77,13 @@ const NavigationNext = ({ onOpenModal }) => {
                 {item.name}
               </Link>
             ))}
-            <Button 
-              onClick={() => {
-                onOpenModal();
-                setIsOpen(false);
-              }}
+            <Button
+              asChild
               className="w-full mt-4 sunset-gradient text-white font-semibold"
             >
-              Start Planning
+              <Link href="/destinations" onClick={() => setIsOpen(false)}>
+                Explore Destinations
+              </Link>
             </Button>
           </motion.div>
         )}

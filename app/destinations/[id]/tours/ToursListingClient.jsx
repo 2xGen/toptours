@@ -257,7 +257,7 @@ export default function ToursListingClient({
   const restaurants = getRestaurantsForDestination(destination.id);
   const hasRestaurants = restaurants.length > 0;
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortBy, setSortBy] = useState('rating'); // 'rating', 'price-low', 'price-high'
+  const [sortBy, setSortBy] = useState('rating'); // 'rating', 'reviews', 'price-low', 'price-high'
   const defaultFilterState = {
     category: '',
     priceFrom: '',
@@ -471,6 +471,10 @@ export default function ToursListingClient({
         const ratingA = a.reviews?.combinedAverageRating || 0;
         const ratingB = b.reviews?.combinedAverageRating || 0;
         return ratingB - ratingA;
+      } else if (sortBy === 'reviews') {
+        const reviewsA = a.reviews?.totalReviews || 0;
+        const reviewsB = b.reviews?.totalReviews || 0;
+        return reviewsB - reviewsA;
       } else if (sortBy === 'price-low') {
         const priceA = parseFloat(a.pricing?.summary?.fromPrice || a.price || 0);
         const priceB = parseFloat(b.pricing?.summary?.fromPrice || b.price || 0);
@@ -1420,6 +1424,7 @@ export default function ToursListingClient({
                 className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               >
                 <option value="rating">Highest Rated</option>
+                <option value="reviews">Most Reviewed</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
               </select>

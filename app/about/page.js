@@ -258,11 +258,13 @@ export default function AboutPage() {
                 Join our community of travelers and discover your next amazing adventure with AI-powered recommendations.
               </p>
               <Button 
-                onClick={handleOpenModal}
+                asChild
                 className="px-8 py-4 bg-white text-blue-600 font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-200"
               >
-                Start Planning Now
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <Link href="/destinations">
+                  Start Planning Now
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
             </motion.div>
           </div>

@@ -2,7 +2,7 @@
 import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Search, MapPin, Sparkles, Globe, Heart, ArrowRight } from 'lucide-react';
+import { Search, MapPin, Sparkles, Globe, ShieldCheck, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,6 +17,11 @@ const SPOTLIGHT_DESTINATIONS = [
   { id: 'punta-cana', label: 'Punta Cana' },
   { id: 'lisbon', label: 'Lisbon' },
   { id: 'bali', label: 'Bali' },
+  { id: 'amsterdam', label: 'Amsterdam' },
+  { id: 'tokyo', label: 'Tokyo' },
+  { id: 'new-york-city', label: 'New York' },
+  { id: 'rome', label: 'Rome' },
+  { label: 'Sydney', search: 'Sydney' },
 ];
 
 const DESTINATION_LOOKUP = destinations.map((destination) => ({
@@ -42,6 +47,7 @@ const Hero = () => {
   }, [query]);
 
   const showSuggestions = isInputFocused && filteredDestinations.length > 0;
+  const hasValidDestination = filteredDestinations.length > 0;
 
   const handleDestinationSelect = (destinationId, target = 'destination') => {
     const path =
@@ -53,11 +59,29 @@ const Hero = () => {
     setIsInputFocused(false);
   };
 
+  const handleSpotlightClick = (spotlight) => {
+    if (spotlight.id && DESTINATION_LOOKUP.some((destination) => destination.id === spotlight.id)) {
+      handleDestinationSelect(spotlight.id);
+      return;
+    }
+
+    const fallbackQuery = spotlight.search || spotlight.label;
+    router.push(`/destinations?search=${encodeURIComponent(fallbackQuery)}`);
+  };
+
   const handleSearch = () => {
     if (!query.trim()) {
       toast({
         title: 'Choose a destination',
         description: 'Start typing to jump directly into one of our 170+ curated guides.',
+      });
+      return;
+    }
+
+    if (!hasValidDestination) {
+      toast({
+        title: 'Pick a destination from the list',
+        description: 'Use one of our suggested destinations so we can pull the right guide for you.',
       });
       return;
     }
@@ -86,24 +110,18 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="lg:col-span-7 text-white"
           >
-            <div className="inline-flex items-center gap-2 text-sm font-medium text-white/80 mb-6 px-4 py-1 rounded-full border border-white/30 backdrop-blur">
-              <Sparkles className="h-4 w-4 text-yellow-300" />
-              Trip intelligence built for explorers
-            </div>
-
             <h1 className="font-poppins font-bold leading-tight mb-6">
               <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl">
-                Where do you want
+                The smarter way
               </span>
               <span className="gradient-text block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl">
-                to explore next?
+                to discover tours
               </span>
             </h1>
 
             <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl">
-              Skip the endless tabs. Jump straight into curated destination guides and
-              internal tour pages with everything you need—reviews, AI insights, and direct
-              Viator booking links.
+              Skip the endless research. Jump straight into curated destination guides, expert AI
+              insights, and direct booking links for 170+ destinations worldwide.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-10">
@@ -137,8 +155,8 @@ const Hero = () => {
                 <span>170+ destinations</span>
               </div>
               <div className="flex items-center gap-2">
-                <Heart className="h-5 w-5 text-rose-200" />
-                <span>Handpicked operators</span>
+                <ShieldCheck className="h-5 w-5 text-emerald-200" />
+                <span>Trusted partners</span>
               </div>
             </div>
           </motion.div>
@@ -164,7 +182,7 @@ const Hero = () => {
                   <div className="relative flex-1">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
                     <Input
-                      placeholder="Try “Aruba”, “Lisbon”, “Tokyo food tours”…"
+                      placeholder="Try “Aruba”, “Lisbon”, “Tokyo”, “Bali”…"
                       value={query}
                       onChange={(event) => setQuery(event.target.value)}
                       onFocus={() => setIsInputFocused(true)}
@@ -177,7 +195,8 @@ const Hero = () => {
                   </div>
                   <Button
                     onClick={handleSearch}
-                    className="h-12 px-8 sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200"
+                    disabled={!hasValidDestination}
+                    className="h-12 px-8 sunset-gradient text-white font-semibold transition-transform duration-200 disabled:opacity-60 disabled:cursor-not-allowed hover:scale-105 disabled:hover:scale-100"
                   >
                     Go
                   </Button>
@@ -234,9 +253,9 @@ const Hero = () => {
                 <div className="flex flex-wrap gap-2">
                   {SPOTLIGHT_DESTINATIONS.map((destination) => (
                     <button
-                      key={destination.id}
+                      key={destination.id || destination.label}
                       type="button"
-                      onClick={() => handleDestinationSelect(destination.id)}
+                      onClick={() => handleSpotlightClick(destination)}
                       className="px-3 py-1.5 rounded-full border border-gray-200 text-sm font-medium text-gray-700 hover:border-purple-400 hover:text-purple-600 transition-colors"
                     >
                       {destination.label}

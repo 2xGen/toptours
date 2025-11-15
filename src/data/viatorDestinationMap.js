@@ -54,7 +54,7 @@ export const slugToViatorId = {
   "reykjavik": "905",
   "oslo": "902",
   "lofoten-islands": "61",
-  "new-york-city": "77",
+  "new-york-city": "687",
   "los-angeles": "645",
   "las-vegas": "77",
   "miami": "662",

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { MapPin, Star, ArrowRight, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -67,13 +68,25 @@ const FeaturedTours = ({ onOpenModal }) => {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-gray-800">{tour.price}</span>
-                    <Button 
-                      onClick={() => handleViewTour(tour.bookingUrl)}
-                      className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 flex items-center gap-2"
-                    >
-                      View Tour
-                      <ExternalLink className="w-4 h-4" />
-                    </Button>
+                    {tour.internalUrl ? (
+                      <Link
+                        href={tour.internalUrl}
+                        className="sunset-gradient text-white px-4 py-2 rounded-full font-medium flex items-center gap-2 transition-transform duration-200 hover:scale-105"
+                      >
+                        View Tour
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    ) : (
+                      <a
+                        href={tour.bookingUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="sunset-gradient text-white px-4 py-2 rounded-full font-medium flex items-center gap-2 transition-transform duration-200 hover:scale-105"
+                      >
+                        View Tour
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -83,12 +96,14 @@ const FeaturedTours = ({ onOpenModal }) => {
 
         <div className="text-center mt-12">
           <Button 
-            onClick={onOpenModal}
+            asChild
             variant="outline" 
             className="bg-white/20 border-white text-white hover:bg-white hover:text-gray-800 transition-all duration-200"
           >
-            View All Tours
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <Link href="/destinations">
+              View All Tours
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
           </Button>
         </div>
       </div>
