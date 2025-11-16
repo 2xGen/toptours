@@ -113,6 +113,24 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     return null;
   }, [primaryDestinationSlug, tour]);
 
+  // Fallback: try to resolve slug by destination name if URL above is still null
+  const fallbackDestinationSlugByName = useMemo(() => {
+    if (!derivedDestinationName) return null;
+    const match = destinations.find((d) => {
+      const name = (d.fullName || d.name || '').toLowerCase();
+      return name === derivedDestinationName.toLowerCase();
+    });
+    return match?.id || null;
+  }, [derivedDestinationName]);
+
+  const finalDestinationTourUrl = useMemo(() => {
+    if (destinationTourUrl) return destinationTourUrl;
+    if (fallbackDestinationSlugByName) {
+      return `/destinations/${fallbackDestinationSlugByName}/tours`;
+    }
+    return null;
+  }, [destinationTourUrl, fallbackDestinationSlugByName]);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     
@@ -1449,14 +1467,14 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                     ))}
                   </div>
 
-              {destinationTourUrl && (
+              {finalDestinationTourUrl && (
                 <div className="mt-10 text-center">
                   <Button
                     asChild
                     variant="outline"
                     className="px-6 py-3 border rounded-full border-purple-200 text-purple-700 hover:bg-purple-50"
                   >
-                    <Link href={destinationTourUrl}>
+                    <Link href={finalDestinationTourUrl}>
                       View all tours in {derivedDestinationName || 'this destination'}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
@@ -1466,15 +1484,15 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 </motion.section>
               )}
 
-          {/* Show the "View all tours" button even when similarTours is empty */}
-          {similarTours.length === 0 && destinationTourUrl && (
-            <div className="mt-10 text-center">
+          {/* Always show "View all tours" button (even if there are no related tours) */}
+          {finalDestinationTourUrl && (
+            <div className="mt-8 text-center">
               <Button
                 asChild
                 variant="outline"
                 className="px-6 py-3 border rounded-full border-purple-200 text-purple-700 hover:bg-purple-50"
               >
-                <Link href={destinationTourUrl}>
+                <Link href={finalDestinationTourUrl}>
                   View all tours in {derivedDestinationName || 'this destination'}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
