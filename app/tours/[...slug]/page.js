@@ -404,14 +404,131 @@ export default async function TourDetailPage({ params }) {
 
     const enrichment = await getTourEnrichment(productId);
 
+    // Build JSON-LD for Product/Tour and Breadcrumbs
+    const operatorName =
+      tour?.supplier?.name ||
+      tour?.supplierName ||
+      tour?.operator?.name ||
+      tour?.vendor?.name ||
+      tour?.partner?.name ||
+      '';
+
+    const productName = operatorName ? `${operatorName} – ${tour.title || 'Tour'}` : (tour.title || 'Tour');
+
+    const mainImage =
+      tour.images?.[0]?.variants?.[3]?.url ||
+      tour.images?.[0]?.variants?.[0]?.url ||
+      '';
+
+    const aggregateRatingCount = tour.reviews?.totalReviews || 0;
+    const aggregateRatingValue = tour.reviews?.combinedAverageRating || null;
+
+    const destinationFromSlug = primaryDestinationSlug
+      ? siteDestinations.find((d) => d.id === primaryDestinationSlug)
+      : null;
+    const destinationDisplayName =
+      destinationFromSlug?.fullName ||
+      destinationFromSlug?.name ||
+      tour?.destinations?.[0]?.destinationName ||
+      tour?.destinations?.[0]?.name ||
+      null;
+
+    const canonicalUrl = `https://toptours.ai/tours/${productId}${tour.seo?.title ? `/${encodeURIComponent(tour.seo.title.toLowerCase().replace(/[^a-z0-9]+/g,'-'))}` : ''}`;
+
+    const productJsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: productName,
+      description:
+        tour.description?.summary ||
+        tour.description?.shortDescription ||
+        tour.viatorUniqueContent?.shortDescription ||
+        '',
+      image: mainImage ? [mainImage] : undefined,
+      sku: productId,
+      brand: operatorName
+        ? {
+            '@type': 'Organization',
+            name: operatorName,
+          }
+        : undefined,
+      offers: pricing
+        ? {
+            '@type': 'Offer',
+            url: canonicalUrl,
+            priceCurrency: 'USD',
+            price: typeof pricing === 'number' ? pricing : String(pricing),
+            availability: 'https://schema.org/InStock',
+          }
+        : undefined,
+      aggregateRating:
+        aggregateRatingValue && aggregateRatingCount
+          ? {
+              '@type': 'AggregateRating',
+              ratingValue: aggregateRatingValue,
+              reviewCount: aggregateRatingCount,
+            }
+          : undefined,
+      sameAs: tour?.productUrl ? [tour.productUrl] : undefined,
+    };
+
+    const breadcrumbItems = [
+      { position: 1, name: 'Home', item: 'https://toptours.ai' },
+      { position: 2, name: 'Destinations', item: 'https://toptours.ai/destinations' },
+    ];
+    if (primaryDestinationSlug && destinationDisplayName) {
+      breadcrumbItems.push({
+        position: 3,
+        name: destinationDisplayName,
+        item: `https://toptours.ai/destinations/${primaryDestinationSlug}`,
+      });
+      breadcrumbItems.push({
+        position: 4,
+        name: 'Tours',
+        item: `https://toptours.ai/destinations/${primaryDestinationSlug}/tours`,
+      });
+      breadcrumbItems.push({
+        position: 5,
+        name: tour.title || 'Tour',
+        item: canonicalUrl,
+      });
+    } else {
+      breadcrumbItems.push({
+        position: 3,
+        name: tour.title || 'Tour',
+        item: canonicalUrl,
+      });
+    }
+
+    const breadcrumbJsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbItems.map((b) => ({
+        '@type': 'ListItem',
+        position: b.position,
+        name: b.name,
+        item: b.item,
+      })),
+    };
+
     return (
-      <TourDetailClient
-        tour={tour}
-        similarTours={similarTours}
-        productId={productId}
-        pricing={pricing}
-        enrichment={enrichment}
-      />
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+        <TourDetailClient
+          tour={tour}
+          similarTours={similarTours}
+          productId={productId}
+          pricing={pricing}
+          enrichment={enrichment}
+        />
+      </>
     );
   } catch (error) {
     console.error('Error fetching tour:', error);
