@@ -1467,26 +1467,12 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                     ))}
                   </div>
 
-              {finalDestinationTourUrl && (
-                <div className="mt-10 text-center">
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="px-6 py-3 border rounded-full border-purple-200 text-purple-700 hover:bg-purple-50"
-                  >
-                    <Link href={finalDestinationTourUrl}>
-                      View all tours in {derivedDestinationName || 'this destination'}
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Link>
-                  </Button>
-                </div>
-              )}
                 </motion.section>
               )}
 
-          {/* Always show "View all tours" button (even if there are no related tours) */}
+          {/* Always show the "View all tours" button directly below the related section */}
           {finalDestinationTourUrl && (
-            <div className="mt-8 text-center">
+            <div className="mt-10 text-center">
               <Button
                 asChild
                 variant="outline"
