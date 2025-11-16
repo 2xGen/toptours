@@ -1457,7 +1457,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                     className="px-6 py-3 border rounded-full border-purple-200 text-purple-700 hover:bg-purple-50"
                   >
                     <Link href={destinationTourUrl}>
-                      Back to all tours in {derivedDestinationName || 'this destination'}
+                      View all tours in {derivedDestinationName || 'this destination'}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
                   </Button>
@@ -1465,6 +1465,22 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               )}
                 </motion.section>
               )}
+
+          {/* Show the "View all tours" button even when similarTours is empty */}
+          {similarTours.length === 0 && destinationTourUrl && (
+            <div className="mt-10 text-center">
+              <Button
+                asChild
+                variant="outline"
+                className="px-6 py-3 border rounded-full border-purple-200 text-purple-700 hover:bg-purple-50"
+              >
+                <Link href={destinationTourUrl}>
+                  View all tours in {derivedDestinationName || 'this destination'}
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+            </div>
+          )}
 
               {/* Book CTA after Ratings */}
               <motion.section
