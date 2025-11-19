@@ -9,13 +9,13 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: {
-    default: 'TopTours.ai - AI-Powered Travel Planning & Tour Booking',
-    template: '%s | TopTours.ai'
+    default: 'AI-Powered Tour Recommendations | Find the Best Tours & Activities',
+    template: '%s | TopTours.ai™'
   },
   // Force rebuild v6 - Deploy with all SEO improvements Oct 9 2025
 
-  description: 'Discover and book the best tours, activities, and experiences worldwide with AI-powered recommendations. From city tours to adventure activities, find your perfect trip with TopTours.ai.',
-  keywords: 'tours, activities, travel planning, AI travel, tour booking, travel experiences, city tours, adventure tours',
+  description: 'Discover the best tours and activities with smart AI recommendations tailored to your travel style. Explore destinations, compare top-rated operators, and book directly through trusted partners like Viator.',
+  keywords: 'tours, activities, travel planning, AI travel, tour booking, travel experiences, city tours, adventure tours, community-driven tours, personalized tour recommendations, tour match score, tour leaderboard',
   authors: [{ name: 'TopTours.ai' }],
   creator: 'TopTours.ai',
   publisher: 'TopTours.ai',
@@ -29,10 +29,10 @@ export const metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'TopTours.ai - AI-Powered Travel Planning & Tour Booking',
-    description: 'Discover and book the best tours, activities, and experiences worldwide with AI-powered recommendations.',
+    title: 'AI-Powered Tour Recommendations | Find the Best Tours & Activities',
+    description: 'Discover the best tours and activities with smart AI recommendations tailored to your travel style. Explore destinations, compare top-rated operators, and book directly through trusted partners like Viator.',
     url: 'https://toptours.ai',
-    siteName: 'TopTours.ai',
+    siteName: 'TopTours.ai™',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -40,14 +40,14 @@ export const metadata = {
         url: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/TopTours%20AI%20Home%20Page.png',
         width: 1200,
         height: 630,
-        alt: 'TopTours.ai - AI-Powered Travel Planning',
+        alt: 'TopTours.ai™ - Community-Driven, AI-Powered Tour Discovery',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TopTours.ai - AI-Powered Travel Planning & Tour Booking',
-    description: 'Discover and book the best tours, activities, and experiences worldwide with AI-powered recommendations.',
+    title: 'AI-Powered Tour Recommendations | Find the Best Tours & Activities',
+    description: 'Discover the best tours and activities with smart AI recommendations tailored to your travel style. Explore destinations, compare top-rated operators, and book directly through trusted partners like Viator.',
     images: ['https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/TopTours%20AI%20Home%20Page.png'],
   },
   robots: {

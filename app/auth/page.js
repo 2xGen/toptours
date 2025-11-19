@@ -52,29 +52,46 @@ function AuthPageContent() {
     checkNickname();
   }, [supabase]);
 
-  // Check if display name is available
+  // Check if display name is available using API endpoint (bypasses RLS)
   const checkDisplayNameAvailability = async (name) => {
     if (!name.trim()) {
       setNameAvailable(null);
+      setCheckingName(false);
       return;
     }
 
     setCheckingName(true);
     try {
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('id')
-        .eq('display_name', name.trim())
-        .maybeSingle();
+      // Add timeout to prevent hanging (5 seconds)
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Request timeout')), 5000)
+      );
 
-      if (error && error.code !== 'PGRST116') {
-        // PGRST116 = no rows returned (name is available)
-        throw error;
+      const apiPromise = fetch('/api/internal/check-display-name', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ displayName: name.trim() }),
+      }).then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      });
+
+      const result = await Promise.race([apiPromise, timeoutPromise]);
+
+      if (result.available === true) {
+        setNameAvailable(true);
+      } else if (result.available === false) {
+        setNameAvailable(false);
+      } else {
+        setNameAvailable(null);
       }
-
-      setNameAvailable(!data); // true if no data (available), false if data exists (taken)
     } catch (err) {
       console.error('Error checking name availability:', err);
+      // On timeout or other error, reset to allow user to try again
       setNameAvailable(null);
     } finally {
       setCheckingName(false);
@@ -83,6 +100,7 @@ function AuthPageContent() {
 
   // Debounce name checking with useEffect
   const debounceTimerRef = useRef(null);
+  const isCheckingRef = useRef(false);
   
   useEffect(() => {
     // Clear previous timer
@@ -94,9 +112,13 @@ function AuthPageContent() {
     setNameAvailable(null);
     
     // Set new timer to check availability after user stops typing (500ms delay)
-    if (displayName.trim()) {
-      debounceTimerRef.current = setTimeout(() => {
-        checkDisplayNameAvailability(displayName);
+    if (displayName.trim() && !isCheckingRef.current) {
+      debounceTimerRef.current = setTimeout(async () => {
+        if (!isCheckingRef.current) {
+          isCheckingRef.current = true;
+          await checkDisplayNameAvailability(displayName);
+          isCheckingRef.current = false;
+        }
       }, 500);
     }
     
