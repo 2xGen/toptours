@@ -49,8 +49,10 @@ export default async function handler(req, res) {
 
     const priceId = STRIPE_PRICE_IDS[plan];
     if (!priceId) {
+      console.error(`Price ID not found for plan: ${plan}`);
+      console.error('Available price IDs:', Object.keys(STRIPE_PRICE_IDS).map(key => `${key}: ${STRIPE_PRICE_IDS[key] || 'NOT SET'}`));
       return res.status(500).json({
-        error: 'Stripe price ID not configured for this plan'
+        error: `Stripe price ID not configured for plan: ${plan}. Please set STRIPE_${plan.toUpperCase()}_PRICE_ID in environment variables.`
       });
     }
 
@@ -109,6 +111,17 @@ export default async function handler(req, res) {
         }, {
           onConflict: 'user_id',
         });
+    }
+
+    // Verify price exists in Stripe before creating checkout
+    try {
+      const price = await stripe.prices.retrieve(priceId);
+      console.log(`Price verified: ${price.id} for plan ${plan}`);
+    } catch (priceError) {
+      console.error(`Price ID ${priceId} not found in Stripe:`, priceError);
+      return res.status(500).json({
+        error: `Price ID "${priceId}" not found in Stripe. Please verify the price ID is correct and exists in your Stripe account (check if you're using test vs live mode).`
+      });
     }
 
     // Create checkout session
