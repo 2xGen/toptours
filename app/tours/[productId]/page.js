@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
 import TourDetailClient from './TourDetailClient';
 import { getTourEnrichment, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
+import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey } from '@/lib/viatorCache';
+import { getTourPromotionScore } from '@/lib/promotionSystem';
 
 /**
  * Generate metadata for tour detail page
@@ -19,35 +21,43 @@ export async function generateMetadata({ params }) {
   }
 
   try {
-    // Fetch tour data directly from Viator API
-    const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
-    const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
+    // Try to get cached tour data first
+    let tour = await getCachedTour(productId);
     
-    const productResponse = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'exp-api-key': apiKey,
-        'Accept': 'application/json;version=2.0',
-        'Accept-Language': 'en-US',
-        'Content-Type': 'application/json'
-      },
-      next: { revalidate: 3600 } // Revalidate every hour
-    });
+    if (!tour) {
+      // Cache miss - fetch from Viator API
+      const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+      const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
+      
+      const productResponse = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'exp-api-key': apiKey,
+          'Accept': 'application/json;version=2.0',
+          'Accept-Language': 'en-US',
+          'Content-Type': 'application/json'
+        },
+        next: { revalidate: 3600 } // Revalidate every hour
+      });
 
-    if (!productResponse.ok) {
-      return {
-        title: 'Tour Not Found | TopTours.ai',
-        description: 'The tour you are looking for could not be found.'
-      };
-    }
+      if (!productResponse.ok) {
+        return {
+          title: 'Tour Not Found | TopTours.ai',
+          description: 'The tour you are looking for could not be found.'
+        };
+      }
 
-    const tour = await productResponse.json();
-    
-    if (!tour || tour.error) {
-      return {
-        title: 'Tour Not Found | TopTours.ai',
-        description: 'The tour you are looking for could not be found.'
-      };
+      tour = await productResponse.json();
+      
+      if (!tour || tour.error) {
+        return {
+          title: 'Tour Not Found | TopTours.ai',
+          description: 'The tour you are looking for could not be found.'
+        };
+      }
+
+      // Cache the tour data for future requests
+      await cacheTour(productId, tour);
     }
     const tourEnrichment = await getTourEnrichment(productId);
     const title = tour.title || 'Tour';
@@ -103,29 +113,37 @@ export default async function TourDetailPage({ params }) {
   }
 
   try {
-    // Fetch tour data directly from Viator API
-    const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
-    const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
+    // Try to get cached tour data first
+    let tour = await getCachedTour(productId);
     
-    const productResponse = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'exp-api-key': apiKey,
-        'Accept': 'application/json;version=2.0',
-        'Accept-Language': 'en-US',
-        'Content-Type': 'application/json'
-      },
-      next: { revalidate: 3600 } // Revalidate every hour
-    });
+    if (!tour) {
+      // Cache miss - fetch from Viator API
+      const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+      const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
+      
+      const productResponse = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'exp-api-key': apiKey,
+          'Accept': 'application/json;version=2.0',
+          'Accept-Language': 'en-US',
+          'Content-Type': 'application/json'
+        },
+        next: { revalidate: 3600 } // Revalidate every hour
+      });
 
-    if (!productResponse.ok) {
-      notFound();
-    }
+      if (!productResponse.ok) {
+        notFound();
+      }
 
-    const tour = await productResponse.json();
-    
-    if (!tour || tour.error) {
-      notFound();
+      tour = await productResponse.json();
+      
+      if (!tour || tour.error) {
+        notFound();
+      }
+
+      // Cache the tour data for future requests
+      await cacheTour(productId, tour);
     }
 
     // Fetch similar tours by searching for tours in the same category/destination
@@ -154,44 +172,58 @@ export default async function TourDetailPage({ params }) {
         }
       }
       
-      // Use Viator search API directly
-      const similarResponse = await fetch('https://api.viator.com/partner/search/freetext', {
-        method: 'POST',
-        headers: {
-          'exp-api-key': apiKey,
-          'Accept': 'application/json;version=2.0',
-          'Accept-Language': 'en-US',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          searchTerm: searchTerm,
-          searchTypes: [{
-            searchType: 'PRODUCTS',
-            pagination: {
-              start: 1,
-              count: 20
-            }
-          }],
-          currency: 'USD'
-        }),
-        cache: 'no-store' // Don't cache search results
-      });
+      // Generate cache key for similar tours
+      const cacheKey = generateSimilarToursCacheKey(productId, searchTerm);
+      
+      // Try to get cached similar tours first
+      const cachedSimilarTours = await getCachedSimilarTours(cacheKey);
+      
+      if (cachedSimilarTours) {
+        similarTours = cachedSimilarTours;
+      } else {
+        // Cache miss - fetch from Viator API
+        const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+        const similarResponse = await fetch('https://api.viator.com/partner/search/freetext', {
+          method: 'POST',
+          headers: {
+            'exp-api-key': apiKey,
+            'Accept': 'application/json;version=2.0',
+            'Accept-Language': 'en-US',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            searchTerm: searchTerm,
+            searchTypes: [{
+              searchType: 'PRODUCTS',
+              pagination: {
+                start: 1,
+                count: 20
+              }
+            }],
+            currency: 'USD'
+          }),
+          next: { revalidate: 21600 } // Revalidate every 6 hours
+        });
 
-      if (similarResponse.ok) {
-        const similarData = await similarResponse.json();
-        const allTours = similarData.products?.results || [];
-        // Filter out current tour and get top 6 similar ones (sorted by rating)
-        similarTours = allTours
-          .filter(t => {
-            const tId = t.productId || t.productCode;
-            return tId && tId !== productId;
-          })
-          .sort((a, b) => {
-            const ratingA = a.reviews?.combinedAverageRating || 0;
-            const ratingB = b.reviews?.combinedAverageRating || 0;
-            return ratingB - ratingA;
-          })
-          .slice(0, 6);
+        if (similarResponse.ok) {
+          const similarData = await similarResponse.json();
+          const allTours = similarData.products?.results || [];
+          // Filter out current tour and get top 6 similar ones (sorted by rating)
+          similarTours = allTours
+            .filter(t => {
+              const tId = t.productId || t.productCode;
+              return tId && tId !== productId;
+            })
+            .sort((a, b) => {
+              const ratingA = a.reviews?.combinedAverageRating || 0;
+              const ratingB = b.reviews?.combinedAverageRating || 0;
+              return ratingB - ratingA;
+            })
+            .slice(0, 6);
+          
+          // Cache the similar tours for future requests
+          await cacheSimilarTours(cacheKey, similarTours);
+        }
       }
     } catch (error) {
       console.error('Error fetching similar tours:', error);
@@ -215,7 +247,33 @@ export default async function TourDetailPage({ params }) {
       }
     }
 
-    return <TourDetailClient tour={tour} similarTours={similarTours} productId={productId} enrichment={tourEnrichment} />;
+    // Fetch promotion score server-side for fast display (returns 0 if not found)
+    let promotionScore = null;
+    try {
+      promotionScore = await getTourPromotionScore(productId);
+      // If tour doesn't exist in database, return 0 scores (fast, no API call needed)
+      if (!promotionScore) {
+        promotionScore = {
+          product_id: productId,
+          total_score: 0,
+          monthly_score: 0,
+          weekly_score: 0,
+          past_28_days_score: 0,
+        };
+      }
+    } catch (error) {
+      console.error('Error fetching promotion score:', error);
+      // Default to 0 if error
+      promotionScore = {
+        product_id: productId,
+        total_score: 0,
+        monthly_score: 0,
+        weekly_score: 0,
+        past_28_days_score: 0,
+      };
+    }
+
+    return <TourDetailClient tour={tour} similarTours={similarTours} productId={productId} enrichment={tourEnrichment} initialPromotionScore={promotionScore} />;
   } catch (error) {
     console.error('Error fetching tour:', error);
     notFound();

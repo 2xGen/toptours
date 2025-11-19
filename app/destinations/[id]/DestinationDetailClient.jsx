@@ -16,8 +16,10 @@ import { getRelatedDestinations, getDestinationsByIds, getDestinationsByCountry 
 import { getGuidesByCategory, getGuidesByIds, getGuidesByCountry } from '../../../src/data/travelGuidesData.js';
 import { getRestaurantsForDestination } from './restaurants/restaurantsData';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
+import TourPromotionCard from '@/components/promotion/TourPromotionCard';
+import { TrendingUp } from 'lucide-react';
 
-export default function DestinationDetailClient({ destination }) {
+export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [] }) {
   
   // Ensure destination has required arrays
   const safeDestination = {
@@ -199,12 +201,23 @@ export default function DestinationDetailClient({ destination }) {
                 <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8">
                   {safeDestination.heroDescription}
                 </p>
-                <div className="flex flex-wrap gap-2 sm:gap-4">
+                <div className="flex flex-wrap gap-2 sm:gap-4 mb-6">
                   {safeDestination.tourCategories.slice(0, 3).map((category, index) => (
                     <Badge key={index} variant="outline" className="bg-white/20 text-white border-white/30 text-sm">
                       {typeof category === 'string' ? category : category.name}
                     </Badge>
                   ))}
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <Button
+                    asChild
+                    className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
+                  >
+                    <Link href={`/destinations/${safeDestination.id}/tours`}>
+                      View All Tours
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
                 </div>
               </motion.div>
               
@@ -346,6 +359,113 @@ export default function DestinationDetailClient({ destination }) {
           </div>
         </section>
 
+        {/* Trending Now Section - Past 28 Days */}
+        {trendingTours && trendingTours.length > 0 && (
+          <section className="py-12 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center gap-2 mb-6">
+                <TrendingUp className="w-5 h-5 text-orange-600" />
+                <h2 className="text-2xl font-bold text-gray-900">Trending Now in {safeDestination.fullName}</h2>
+                <Badge variant="secondary" className="ml-2 bg-orange-100 text-orange-700 border-orange-300">
+                  Past 28 Days
+                </Badge>
+              </div>
+              <p className="text-sm text-gray-600 mb-6">
+                Tours that are currently popular based on recent community boosts
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {trendingTours.map((trending, index) => {
+                  const tourId = trending.product_id;
+                  const tourUrl = trending.tour_slug 
+                    ? `/tours/${tourId}/${trending.tour_slug}` 
+                    : getTourUrl(tourId, trending.tour_name);
+                  
+                  return (
+                    <motion.div
+                      key={tourId || index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <Link href={tourUrl}>
+                          <div className="relative h-48 overflow-hidden">
+                            {trending.tour_image_url ? (
+                              <img
+                                src={trending.tour_image_url}
+                                alt={trending.tour_name}
+                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                              />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                <Search className="w-6 h-6 text-gray-400" />
+                              </div>
+                            )}
+                            <div className="absolute top-3 left-3">
+                              <Badge className="adventure-gradient text-white">
+                                <TrendingUp className="w-3 h-3 mr-1" />
+                                Trending
+                              </Badge>
+                            </div>
+                          </div>
+                        </Link>
+
+                        <CardContent className="p-4 flex-1 flex flex-col">
+                          <Link href={tourUrl}>
+                            <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                              {trending.tour_name}
+                            </h3>
+                          </Link>
+
+                          {/* Promotion Score */}
+                          <div className="mb-3">
+                            <TourPromotionCard 
+                              productId={tourId} 
+                              compact={true}
+                              tourData={{
+                                productId: tourId,
+                                productCode: tourId,
+                                title: trending.tour_name,
+                                images: trending.tour_image_url ? [{
+                                  variants: [
+                                    { url: trending.tour_image_url },
+                                    { url: trending.tour_image_url },
+                                    { url: trending.tour_image_url },
+                                    { url: trending.tour_image_url }
+                                  ]
+                                }] : []
+                              }}
+                              destinationId={safeDestination.id}
+                              initialScore={{
+                                product_id: tourId,
+                                total_score: trending.total_score || 0,
+                                monthly_score: trending.monthly_score || 0,
+                                weekly_score: trending.weekly_score || 0,
+                                past_28_days_score: trending.past_28_days_score || 0,
+                              }}
+                            />
+                          </div>
+
+                          <Button
+                            asChild
+                            className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                          >
+                            <Link href={tourUrl}>
+                              View Details
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Link>
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Tour Categories */}
         <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -483,6 +603,8 @@ export default function DestinationDetailClient({ destination }) {
                                       badgeClass += " bg-purple-50 text-purple-700 border border-purple-200";
                                     } else if (flag === "LIKELY_TO_SELL_OUT") {
                                       badgeClass += " bg-orange-50 text-orange-700 border border-orange-200";
+                                    } else if (flag === "NEW_ON_VIATOR") {
+                                      badgeClass += " bg-pink-50 text-pink-700 border border-pink-200";
                                     } else {
                                       badgeClass += " bg-blue-50 text-blue-700 border border-blue-200";
                                     }
@@ -493,7 +615,7 @@ export default function DestinationDetailClient({ destination }) {
                                         variant="secondary"
                                         className={badgeClass}
                                       >
-                                        {flag.replace(/_/g, ' ')}
+                                        {flag === "NEW_ON_VIATOR" ? "NEW" : flag.replace(/_/g, ' ')}
                                       </Badge>
                                     );
                                   })}
@@ -518,20 +640,22 @@ export default function DestinationDetailClient({ destination }) {
                                 From ${tour.pricing?.summary?.fromPrice || 'N/A'}
                               </div>
 
-                              {/* Quick View Button */}
-                              <Button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setSelectedTour(tour);
-                                  setIsTourModalOpen(true);
-                                }}
-                                variant="outline"
-                                size="sm"
-                                className="mb-2 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 text-purple-700 hover:from-purple-100 hover:to-blue-100 hover:border-purple-300 transition-all duration-200 text-xs"
-                              >
-                                <Brain className="w-3 h-3 mr-1" />
-                                Quick View
-                              </Button>
+                              {/* Promotion Score / Boost Button */}
+                              <div className="mb-2">
+                                <TourPromotionCard 
+                                  productId={tourId} 
+                                  compact={true}
+                                  tourData={tour}
+                                  destinationId={safeDestination.id}
+                                  initialScore={promotionScores[tourId] || {
+                                    product_id: tourId,
+                                    total_score: 0,
+                                    monthly_score: 0,
+                                    weekly_score: 0,
+                                    past_28_days_score: 0,
+                                  }}
+                                />
+                              </div>
 
                               {/* View Details Button - Links to internal page */}
                               <Button
@@ -611,6 +735,8 @@ export default function DestinationDetailClient({ destination }) {
                                       badgeClass += " bg-purple-50 text-purple-700 border border-purple-200";
                                     } else if (flag === "LIKELY_TO_SELL_OUT") {
                                       badgeClass += " bg-orange-50 text-orange-700 border border-orange-200";
+                                    } else if (flag === "NEW_ON_VIATOR") {
+                                      badgeClass += " bg-pink-50 text-pink-700 border border-pink-200";
                                     } else {
                                       badgeClass += " bg-blue-50 text-blue-700 border border-blue-200";
                                     }
@@ -621,7 +747,7 @@ export default function DestinationDetailClient({ destination }) {
                                         variant="secondary"
                                         className={badgeClass}
                                       >
-                                        {flag.replace(/_/g, ' ')}
+                                        {flag === "NEW_ON_VIATOR" ? "NEW" : flag.replace(/_/g, ' ')}
                                       </Badge>
                                     );
                                   })}
@@ -646,20 +772,22 @@ export default function DestinationDetailClient({ destination }) {
                                 From ${tour.pricing?.summary?.fromPrice || 'N/A'}
                               </div>
 
-                              {/* Quick View Button */}
-                              <Button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setSelectedTour(tour);
-                                  setIsTourModalOpen(true);
-                                }}
-                                variant="outline"
-                                size="sm"
-                                className="mb-2 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 text-purple-700 hover:from-purple-100 hover:to-blue-100 hover:border-purple-300 transition-all duration-200 text-xs"
-                              >
-                                <Brain className="w-3 h-3 mr-1" />
-                                Quick View
-                              </Button>
+                              {/* Promotion Score / Boost Button */}
+                              <div className="mb-2">
+                                <TourPromotionCard 
+                                  productId={tourId} 
+                                  compact={true}
+                                  tourData={tour}
+                                  destinationId={safeDestination.id}
+                                  initialScore={promotionScores[tourId] || {
+                                    product_id: tourId,
+                                    total_score: 0,
+                                    monthly_score: 0,
+                                    weekly_score: 0,
+                                    past_28_days_score: 0,
+                                  }}
+                                />
+                              </div>
 
                               {/* View Details Button - Links to internal page */}
                               <Button

@@ -1,0 +1,522 @@
+"use client";
+
+import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Info } from 'lucide-react';
+
+export default function AuthPage() {
+  const supabase = createSupabaseBrowserClient();
+  const searchParams = useSearchParams();
+  const [mode, setMode] = useState('signin'); // 'signin' | 'signup' | 'forgot' | 'reset' | 'setNickname'
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [displayName, setDisplayName] = useState('');
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [checkingName, setCheckingName] = useState(false);
+  const [nameAvailable, setNameAvailable] = useState(null); // null = not checked, true = available, false = taken
+  const [needsNickname, setNeedsNickname] = useState(false);
+
+  // Check URL params for reset mode
+  useEffect(() => {
+    const urlMode = searchParams.get('mode');
+    if (urlMode === 'reset') {
+      setMode('reset');
+    }
+  }, [searchParams]);
+
+  // Check if user needs to set nickname after sign-in
+  useEffect(() => {
+    const checkNickname = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('display_name')
+          .eq('id', session.user.id)
+          .single();
+        
+        if (!profile?.display_name) {
+          setNeedsNickname(true);
+          setMode('setNickname');
+        }
+      }
+    };
+    checkNickname();
+  }, [supabase]);
+
+  // Check if display name is available
+  const checkDisplayNameAvailability = async (name) => {
+    if (!name.trim()) {
+      setNameAvailable(null);
+      return;
+    }
+
+    setCheckingName(true);
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('display_name', name.trim())
+        .maybeSingle();
+
+      if (error && error.code !== 'PGRST116') {
+        // PGRST116 = no rows returned (name is available)
+        throw error;
+      }
+
+      setNameAvailable(!data); // true if no data (available), false if data exists (taken)
+    } catch (err) {
+      console.error('Error checking name availability:', err);
+      setNameAvailable(null);
+    } finally {
+      setCheckingName(false);
+    }
+  };
+
+  // Debounce name checking with useEffect
+  const debounceTimerRef = useRef(null);
+  
+  useEffect(() => {
+    // Clear previous timer
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+    
+    // Reset availability when display name changes
+    setNameAvailable(null);
+    
+    // Set new timer to check availability after user stops typing (500ms delay)
+    if (displayName.trim()) {
+      debounceTimerRef.current = setTimeout(() => {
+        checkDisplayNameAvailability(displayName);
+      }, 500);
+    }
+    
+    // Cleanup on unmount or when displayName changes
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, [displayName]);
+  
+  const handleDisplayNameChange = (value) => {
+    setDisplayName(value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    
+    // Validate terms acceptance for signup
+    if (mode === 'signup' && !acceptedTerms) {
+      setMessage('Please accept the terms and conditions to continue.');
+      return;
+    }
+
+    // Validate display name for setNickname mode
+    if (mode === 'setNickname') {
+      if (!displayName.trim()) {
+        setMessage('Please enter a nickname.');
+        return;
+      }
+      if (nameAvailable === false) {
+        setMessage('This nickname is already taken. Please choose another one.');
+        return;
+      }
+      // If name hasn't been checked yet, check it now
+      if (nameAvailable === null) {
+        await checkDisplayNameAvailability(displayName);
+        if (nameAvailable === false) {
+          setMessage('This nickname is already taken. Please choose another one.');
+          return;
+        }
+      }
+    }
+    
+    setMessage('');
+    setLoading(true);
+    try {
+      if (mode === 'reset') {
+        if (!newPassword || !confirmPassword) {
+          setMessage('Please enter and confirm your new password.');
+          setLoading(false);
+          return;
+        }
+        if (newPassword !== confirmPassword) {
+          setMessage('Passwords do not match.');
+          setLoading(false);
+          return;
+        }
+        if (newPassword.length < 6) {
+          setMessage('Password must be at least 6 characters long.');
+          setLoading(false);
+          return;
+        }
+        const { error } = await supabase.auth.updateUser({ password: newPassword });
+        if (error) throw error;
+        setMessage('Password updated successfully! Redirecting to sign in...');
+        setTimeout(() => {
+          setMode('signin');
+          setNewPassword('');
+          setConfirmPassword('');
+          setMessage('');
+        }, 2000);
+        return;
+      } else if (mode === 'forgot') {
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: `${window.location.origin}/auth?mode=reset`,
+        });
+        if (error) throw error;
+        setMessage('Password reset email sent! Check your inbox for instructions.');
+        return;
+      } else if (mode === 'signin') {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        
+        // Check if user has display name
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('display_name')
+            .eq('id', user.id)
+            .single();
+          
+          if (!profile?.display_name) {
+            setNeedsNickname(true);
+            setMode('setNickname');
+            setMessage('');
+            setLoading(false);
+            return;
+          }
+        }
+        
+        setMessage('Signed in! Redirecting...');
+        window.location.href = '/';
+      } else if (mode === 'setNickname') {
+        // Validate display name
+        if (!displayName.trim()) {
+          setMessage('Please enter a nickname.');
+          setLoading(false);
+          return;
+        }
+        if (nameAvailable === false) {
+          setMessage('This nickname is already taken. Please choose another one.');
+          setLoading(false);
+          return;
+        }
+        // If name hasn't been checked yet, check it now
+        if (nameAvailable === null) {
+          await checkDisplayNameAvailability(displayName);
+          if (nameAvailable === false) {
+            setMessage('This nickname is already taken. Please choose another one.');
+            setLoading(false);
+            return;
+          }
+        }
+
+        // Save display name
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+          setMessage('Please sign in first.');
+          setLoading(false);
+          return;
+        }
+
+        const { error: profileError } = await supabase
+          .from('profiles')
+          .upsert({ id: user.id, display_name: displayName.trim() });
+
+        if (profileError) {
+          if (profileError.code === '23505' || profileError.message?.includes('unique')) {
+            setMessage('This nickname is already taken. Please choose another one.');
+            setNameAvailable(false);
+            setLoading(false);
+            return;
+          }
+          throw profileError;
+        }
+
+        setMessage('Nickname saved! Redirecting...');
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 1000);
+        return;
+      } else {
+        // Sign up - just email and password, no nickname needed yet
+        const { data, error } = await supabase.auth.signUp({ email, password });
+        if (error) {
+          throw error;
+        }
+        
+        // If email confirmation is disabled, a session is returned and user is signed in
+        if (data?.session?.user) {
+          // User is signed in, check if they need a nickname
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('display_name')
+            .eq('id', data.session.user.id)
+            .single();
+          
+          if (!profile?.display_name) {
+            // No nickname, show nickname screen
+            setMode('setNickname');
+            setMessage('');
+            setLoading(false);
+            return;
+          }
+          
+          setMessage('Account created! Redirecting...');
+          window.location.href = '/';
+        } else {
+          // If confirmation is enabled, no session is returned
+          setMessage('Account created. Please check your email to confirm your account, then sign in.');
+          setMode('signin');
+        }
+      }
+    } catch (err) {
+      setMessage(err.message || 'Something went wrong');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    setLoading(true);
+    setMessage('');
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/auth`,
+        },
+      });
+      if (error) throw error;
+      // The redirect will happen automatically
+    } catch (err) {
+      setMessage(err.message || 'Failed to sign in with Google');
+      setLoading(false);
+    }
+  };
+
+  const handleSignOut = async () => {
+    setLoading(true);
+    try {
+      await supabase.auth.signOut();
+      window.location.href = '/';
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-6">
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-xl font-semibold">
+            {mode === 'setNickname' ? 'Choose Your Nickname' : mode === 'reset' ? 'Set New Password' : mode === 'forgot' ? 'Reset Password' : mode === 'signin' ? 'Sign in to TopTours' : 'Create your account'}
+          </h1>
+          <Link href="/" className="text-sm text-purple-600 hover:underline">Back to home</Link>
+        </div>
+        {mode !== 'forgot' && mode !== 'reset' && mode !== 'setNickname' && (
+          <div className="flex gap-2 mb-4">
+            <Button variant={mode === 'signin' ? 'default' : 'outline'} onClick={() => { setMode('signin'); setMessage(''); }}>Sign In</Button>
+            <Button variant={mode === 'signup' ? 'default' : 'outline'} onClick={() => { setMode('signup'); setMessage(''); }}>Sign Up</Button>
+          </div>
+        )}
+        {(mode === 'forgot' || mode === 'reset') && (
+          <div className="mb-4">
+            <Button variant="outline" onClick={() => { setMode('signin'); setMessage(''); setNewPassword(''); setConfirmPassword(''); }} className="mb-2">
+              ← Back to Sign In
+            </Button>
+          </div>
+        )}
+        {mode === 'setNickname' && (
+          <p className="mb-4 text-sm text-gray-600">
+            Choose a nickname that will be displayed publicly on the leaderboard and in your profile.
+          </p>
+        )}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {mode === 'setNickname' && (
+            <div>
+              <label className="block text-sm text-gray-700 mb-1 flex items-center gap-2">
+                Nickname
+                <div className="group relative">
+                  <Info className="w-4 h-4 text-gray-400 hover:text-gray-600 cursor-help" />
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block z-10">
+                    <div className="bg-gray-900 text-white text-xs rounded-lg py-2 px-3 whitespace-nowrap shadow-lg">
+                      This name will be used as your public name
+                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1">
+                        <div className="border-4 border-transparent border-t-gray-900"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+              <div className="relative">
+                <Input
+                  type="text"
+                  value={displayName}
+                  onChange={(e) => handleDisplayNameChange(e.target.value)}
+                  placeholder="How should we call you?"
+                  className={nameAvailable === false ? 'border-red-500 focus-visible:ring-red-500' : nameAvailable === true ? 'border-green-500 focus-visible:ring-green-500' : ''}
+                />
+                {checkingName && (
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <div className="w-4 h-4 border-2 border-gray-300 border-t-purple-600 rounded-full animate-spin"></div>
+                  </div>
+                )}
+                {!checkingName && nameAvailable === true && displayName.trim() && (
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500">
+                    ✓
+                  </div>
+                )}
+                {!checkingName && nameAvailable === false && (
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-red-500">
+                    ✗
+                  </div>
+                )}
+              </div>
+              {nameAvailable === false && (
+                <p className="text-xs text-red-600 mt-1">This nickname is already taken. Please choose another one.</p>
+              )}
+              {nameAvailable === true && displayName.trim() && (
+                <p className="text-xs text-green-600 mt-1">Great! This nickname is available.</p>
+              )}
+            </div>
+          )}
+          {mode !== 'reset' && mode !== 'setNickname' && (
+            <div>
+              <label className="block text-sm text-gray-700 mb-1">Email</label>
+              <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            </div>
+          )}
+          {mode === 'reset' && (
+            <>
+              <div>
+                <label className="block text-sm text-gray-700 mb-1">New Password</label>
+                <Input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required minLength={6} />
+              </div>
+              <div>
+                <label className="block text-sm text-gray-700 mb-1">Confirm New Password</label>
+                <Input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required minLength={6} />
+              </div>
+            </>
+          )}
+          {mode !== 'forgot' && mode !== 'reset' && mode !== 'setNickname' && (
+            <div>
+              <div className="flex items-center justify-between mb-1">
+                <label className="block text-sm text-gray-700">Password</label>
+                {mode === 'signin' && (
+                  <button
+                    type="button"
+                    onClick={() => { setMode('forgot'); setMessage(''); }}
+                    className="text-sm text-purple-600 hover:underline"
+                  >
+                    Forgot password?
+                  </button>
+                )}
+              </div>
+              <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            </div>
+          )}
+          {mode === 'signup' && (
+            <div className="flex items-start gap-2">
+              <input
+                type="checkbox"
+                id="acceptTerms"
+                checked={acceptedTerms}
+                onChange={(e) => setAcceptedTerms(e.target.checked)}
+                className="mt-1 h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
+                required
+              />
+              <label htmlFor="acceptTerms" className="text-sm text-gray-700 cursor-pointer">
+                I accept the{' '}
+                <Link href="/terms" target="_blank" className="text-purple-600 hover:underline">
+                  Terms of Service
+                </Link>
+                {' '}and{' '}
+                <Link href="/privacy" target="_blank" className="text-purple-600 hover:underline">
+                  Privacy Policy
+                </Link>
+              </label>
+            </div>
+          )}
+          <Button type="submit" className="w-full sunset-gradient text-white" disabled={loading || (mode === 'signup' && !acceptedTerms)}>
+            {loading ? 'Please wait…' : mode === 'setNickname' ? 'Continue' : mode === 'reset' ? 'Update Password' : mode === 'forgot' ? 'Send Reset Link' : mode === 'signin' ? 'Sign In' : 'Create Account'}
+          </Button>
+        </form>
+        
+        {mode !== 'forgot' && mode !== 'reset' && mode !== 'setNickname' && (
+          <div className="mt-4">
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t border-gray-300" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-white px-2 text-gray-500">Or continue with</span>
+              </div>
+            </div>
+            <Button
+              type="button"
+              onClick={handleGoogleSignIn}
+              disabled={loading}
+              variant="outline"
+              className="w-full mt-4 flex items-center justify-center gap-2"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24">
+                <path
+                  fill="#4285F4"
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                />
+                <path
+                  fill="#34A853"
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                />
+                <path
+                  fill="#FBBC05"
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                />
+                <path
+                  fill="#EA4335"
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                />
+              </svg>
+              Sign in with Google
+            </Button>
+          </div>
+        )}
+        {message && (
+          <p className={`mt-4 text-sm ${message.includes('sent') || message.includes('Signed in') || message.includes('created') || message.includes('updated successfully') ? 'text-green-600' : 'text-gray-700'}`}>
+            {message}
+          </p>
+        )}
+        {mode === 'forgot' && (
+          <p className="mt-4 text-xs text-gray-500">
+            Enter your email address and we'll send you a link to reset your password.
+          </p>
+        )}
+        {mode === 'reset' && (
+          <p className="mt-4 text-xs text-gray-500">
+            Enter your new password. Make sure it's at least 6 characters long.
+          </p>
+        )}
+        {mode !== 'setNickname' && (
+          <Button onClick={handleSignOut} variant="outline" className="w-full mt-4" disabled={loading}>
+            Sign Out
+          </Button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+

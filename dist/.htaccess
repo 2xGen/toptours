@@ -1,0 +1,32 @@
+# TopTours.ai .htaccess Configuration
+# Handle React Router and OpenGraph
+
+# Enable rewrite engine
+RewriteEngine On
+RewriteBase /
+
+# Serve static HTML for social media crawlers and SEO bots
+RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver) [NC]
+RewriteCond %{REQUEST_URI} ^/destinations/([^/]+)$
+RewriteCond %{DOCUMENT_ROOT}/destinations/$1.html -f
+RewriteRule ^destinations/([^/]+)$ /destinations/$1.html [L]
+
+# Serve static HTML for destinations listing page for crawlers
+RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver) [NC]
+RewriteCond %{REQUEST_URI} ^/destinations/?$
+RewriteCond %{DOCUMENT_ROOT}/destinations.html -f
+RewriteRule ^destinations/?$ /destinations.html [L]
+
+# Handle /destinations route for users - serve React app
+RewriteCond %{REQUEST_URI} ^/destinations/?$
+RewriteRule ^destinations/?$ index.html [L]
+
+# For all other requests (users), serve React app
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
+
+# Set custom header
+<IfModule mod_headers.c>
+  Header set X-Powered-By "2xGen.com"
+</IfModule>

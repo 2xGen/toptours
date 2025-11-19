@@ -7,19 +7,40 @@ let cachedOpenAiKey = null;
 const resolveOpenAiKey = () => {
   if (cachedOpenAiKey !== null) return cachedOpenAiKey;
 
+  // Check for OPENAI_API_KEY (most common)
   const envKey = process.env.OPENAI_API_KEY;
-  if (envKey) {
-    cachedOpenAiKey = envKey;
+  if (envKey && envKey.trim()) {
+    cachedOpenAiKey = envKey.trim();
     return cachedOpenAiKey;
   }
 
+  // Check for base64 encoded version
   const envBase64 = process.env.OPENAI_API_KEY_BASE64;
-  if (envBase64) {
-    cachedOpenAiKey = Buffer.from(envBase64, 'base64').toString('utf8');
+  if (envBase64 && envBase64.trim()) {
+    try {
+      cachedOpenAiKey = Buffer.from(envBase64.trim(), 'base64').toString('utf8');
+      return cachedOpenAiKey;
+    } catch (e) {
+      console.error('Failed to decode OPENAI_API_KEY_BASE64:', e);
+    }
+  }
+
+  // Check for NEXT_PUBLIC_OPENAI_API_KEY (though this shouldn't be public)
+  const publicKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
+  if (publicKey && publicKey.trim()) {
+    cachedOpenAiKey = publicKey.trim();
     return cachedOpenAiKey;
   }
 
-  return cachedOpenAiKey;
+  // Log available env vars for debugging (only in development)
+  if (process.env.NODE_ENV === 'development') {
+    const envKeys = Object.keys(process.env).filter(key => 
+      key.includes('OPENAI') || key.includes('OPEN_AI')
+    );
+    console.log('Available OpenAI-related env vars:', envKeys);
+  }
+
+  return null;
 };
 
 export const cleanText = (text) => {
@@ -304,6 +325,17 @@ const generateAiSummary = async (tour) => {
 
 export async function getTourEnrichment(productId) {
   if (!productId) return null;
+
+  // Use cached version if available
+  try {
+    const { getCachedTourEnrichment } = await import('./supabaseCache');
+    const cached = await getCachedTourEnrichment(productId);
+    if (cached) return cached;
+  } catch (error) {
+    // Fallback to direct query if cache import fails
+    console.error('Error using cache, falling back to direct query:', error);
+  }
+
   try {
     const supabase = createSupabaseServiceRoleClient();
     const { data, error } = await supabase
@@ -602,4 +634,475 @@ export async function incrementViewCount(productId, destinationId = null) {
     return { error: 'Unexpected error' };
   }
 }
+
+/**
+ * Extract structured values from a tour using AI (one-time analysis)
+ * Returns values like adventureLevel, structureLevel, foodImportance, etc.
+ */
+export const extractTourStructuredValues = async (tour) => {
+  const apiKey = resolveOpenAiKey();
+  if (!apiKey) {
+    return { error: 'Missing OpenAI API key' };
+  }
+
+  if (!tour || typeof tour !== 'object') {
+    return { error: 'Missing tour data' };
+  }
+
+  try {
+    // Extract tour data for the prompt
+    const title = tour.seo?.title || tour.title || 'Tour';
+    const operator = tour.supplier?.name || tour.operatorName || 'Tour operator';
+    const flags = tour.flags || tour.specialFlags || [];
+    const categories = (tour.categories || []).map(c => c.categoryName || c.name || '').filter(Boolean);
+    
+    const highlights = extractHighlights(tour, 5);
+    const description = cleanText(
+      tour.viatorUniqueContent?.shortDescription ||
+      tour.viatorUniqueContent?.longDescription ||
+      tour.description ||
+      tour.content?.heroDescription ||
+      ''
+    );
+
+    const inclusions = (tour.inclusions || []).map(item => {
+      if (typeof item === 'string') return item;
+      if (item.category === 'OTHER' && item.otherDescription) return item.otherDescription;
+      return item.categoryDescription || item.typeDescription || '';
+    }).filter(Boolean);
+
+    // Determine group type from tour data
+    const isPrivate = flags.includes('PRIVATE_TOUR') || tour.logistics?.isPrivate || false;
+    const groupType = isPrivate ? 'private' : tour.logistics?.groupType || 'group';
+
+    // Build the prompt to extract structured values
+    const prompt = `You are analyzing a tour to extract structured values that will be used for matching with traveler preferences.
+
+Your job:
+- Analyze the tour description, highlights, inclusions, and categories
+- Extract structured numeric values (0-100) for each dimension
+- Be objective and accurate based on what the tour actually offers
+
+OUTPUT FORMAT:
+Return ONLY a single JSON object with this exact shape and keys:
+
+{
+  "adventureLevel": 0,        // 0-100: 0 = very relaxed/chill, 100 = very adventurous/thrilling
+  "structureLevel": 0,        // 0-100: 0 = independent/flexible, 100 = fully guided/structured
+  "foodImportance": 0,       // 0-100: 0 = food not important, 100 = food/drinks are central
+  "groupType": 0,            // 0-100: 0 = big groups, 100 = private/small groups
+  "budgetLevel": 0,          // 0-100: 0 = budget-friendly, 100 = luxury/premium
+  "relaxationVsExploration": 0  // 0-100: 0 = relaxation/beach, 100 = exploration/culture/discovery
+}
+
+GUIDELINES:
+- adventureLevel: Consider activities (ATV, hiking, water sports = high; walking tours, sightseeing = medium; spa, beach = low)
+- structureLevel: Fully guided with fixed itinerary = high; hop-on-hop-off, self-guided = low; mix = medium
+- foodImportance: Food tours, wine tastings, dinner cruises = high; no food mentioned = low; snacks/drinks included = medium
+- groupType: Private tours, small groups (<10) = high; large bus tours = low; medium groups = 50
+- budgetLevel: Luxury, premium experiences = high; budget-friendly, free = low; mid-range = 50
+- relaxationVsExploration: Beach, spa, relaxation = low; museums, history, culture, discovery = high
+
+Now here is the tour data:
+
+{
+  "title": "${title}",
+  "operatorName": "${operator}",
+  "flags": ${JSON.stringify(flags)},
+  "categories": ${JSON.stringify(categories)},
+  "highlights": ${JSON.stringify(highlights)},
+  "description": "${description.substring(0, 1500)}",
+  "inclusions": ${JSON.stringify(inclusions.slice(0, 15))},
+  "logistics": {
+    "groupType": "${groupType}",
+    "isPrivate": ${isPrivate}
+  }
+}`;
+
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: process.env.OPENAI_TOUR_MODEL || 'gpt-3.5-turbo',
+        temperature: 0.3, // Lower temperature for more consistent extraction
+        messages: [
+          {
+            role: 'system',
+            content: 'You are a helpful AI assistant that extracts structured data from tour descriptions. Always return valid JSON only.',
+          },
+          {
+            role: 'user',
+            content: prompt,
+          },
+        ],
+        response_format: { type: 'json_object' },
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('OpenAI API error:', errorText);
+      return { error: 'Failed to extract tour values' };
+    }
+
+    const data = await response.json();
+    const content = data.choices?.[0]?.message?.content;
+    if (!content) {
+      return { error: 'No response from AI' };
+    }
+
+    // Parse JSON response
+    let structuredValues;
+    try {
+      structuredValues = JSON.parse(content);
+    } catch (parseError) {
+      // Try to extract JSON from code blocks
+      const jsonMatch = content.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        structuredValues = JSON.parse(jsonMatch[0]);
+      } else {
+        return { error: 'Invalid JSON response from AI' };
+      }
+    }
+
+    // Validate and normalize values (ensure 0-100 range)
+    const normalized = {
+      adventureLevel: Math.max(0, Math.min(100, Number(structuredValues.adventureLevel) || 50)),
+      structureLevel: Math.max(0, Math.min(100, Number(structuredValues.structureLevel) || 50)),
+      foodImportance: Math.max(0, Math.min(100, Number(structuredValues.foodImportance) || 50)),
+      groupType: Math.max(0, Math.min(100, Number(structuredValues.groupType) || 50)),
+      budgetLevel: Math.max(0, Math.min(100, Number(structuredValues.budgetLevel) || 50)),
+      relaxationVsExploration: Math.max(0, Math.min(100, Number(structuredValues.relaxationVsExploration) || 50)),
+    };
+
+    return { values: normalized };
+  } catch (error) {
+    console.error('Error extracting tour structured values:', error);
+    return { error: error.message || 'Failed to extract tour values' };
+  }
+};
+
+/**
+ * Simple matching algorithm (no AI) - compares user preferences with tour structured values
+ */
+export const calculatePreferenceMatch = (userPreferences, tourValues) => {
+  if (!userPreferences || !tourValues) {
+    return { error: 'Missing preferences or tour values' };
+  }
+
+  // Calculate match percentage for each dimension
+  const calculateMatch = (userValue, tourValue) => {
+    // Closer values = higher match
+    // 0 difference = 100% match, 50 difference = 0% match
+    const diff = Math.abs(userValue - tourValue);
+    return Math.max(0, 100 - (diff * 2)); // Linear scale: 0 diff = 100%, 50 diff = 0%
+  };
+
+  const matches = {
+    adventure: calculateMatch(userPreferences.adventureLevel || 50, tourValues.adventureLevel || 50),
+    structure: calculateMatch(userPreferences.structurePreference || 50, tourValues.structureLevel || 50),
+    food: calculateMatch(userPreferences.foodAndDrinkInterest || 50, tourValues.foodImportance || 50),
+    group: calculateMatch(userPreferences.groupPreference || 50, tourValues.groupType || 50),
+    budget: calculateMatch(userPreferences.budgetComfort || 50, tourValues.budgetLevel || 50),
+    relaxExplore: calculateMatch(userPreferences.cultureVsBeach || 50, tourValues.relaxationVsExploration || 50),
+  };
+
+  // Calculate weighted average
+  // Give more weight to preferences that are far from 50 (strong preferences)
+  const weights = {
+    adventure: Math.abs((userPreferences.adventureLevel || 50) - 50) / 50, // 0-1
+    structure: Math.abs((userPreferences.structurePreference || 50) - 50) / 50,
+    food: Math.abs((userPreferences.foodAndDrinkInterest || 50) - 50) / 50,
+    group: Math.abs((userPreferences.groupPreference || 50) - 50) / 50,
+    budget: Math.abs((userPreferences.budgetComfort || 50) - 50) / 50,
+    relaxExplore: Math.abs((userPreferences.cultureVsBeach || 50) - 50) / 50,
+  };
+
+  // Normalize weights (sum to 1)
+  const totalWeight = Object.values(weights).reduce((sum, w) => sum + w, 0);
+  const normalizedWeights = totalWeight > 0 
+    ? Object.fromEntries(Object.entries(weights).map(([k, v]) => [k, v / totalWeight]))
+    : Object.fromEntries(Object.keys(weights).map(k => [k, 1 / Object.keys(weights).length]));
+
+  // Calculate weighted average
+  const overallScore = Math.round(
+    matches.adventure * normalizedWeights.adventure +
+    matches.structure * normalizedWeights.structure +
+    matches.food * normalizedWeights.food +
+    matches.group * normalizedWeights.group +
+    matches.budget * normalizedWeights.budget +
+    matches.relaxExplore * normalizedWeights.relaxExplore
+  );
+
+  // Generate match summary
+  const getMatchLabel = (score) => {
+    if (score >= 80) return 'Excellent match';
+    if (score >= 65) return 'Strong match';
+    if (score >= 50) return 'Good match';
+    if (score >= 35) return 'Partial match';
+    return 'Poor match';
+  };
+
+  // Generate pros and cons
+  const pros = [];
+  const cons = [];
+
+  Object.entries(matches).forEach(([key, score]) => {
+    const labels = {
+      adventure: 'Adventure level',
+      structure: 'Structure preference',
+      food: 'Food & drink interest',
+      group: 'Group size preference',
+      budget: 'Budget vs comfort',
+      relaxExplore: 'Relaxation vs exploration',
+    };
+
+    if (score >= 75) {
+      pros.push(`${labels[key]} matches well (${score}%)`);
+    } else if (score < 50) {
+      cons.push(`${labels[key]} differs (${score}% match)`);
+    }
+  });
+
+  return {
+    matchScore: overallScore,
+    fitSummary: `${getMatchLabel(overallScore)}: ${overallScore}% compatibility with your travel preferences.`,
+    matches,
+    pros: pros.length > 0 ? pros : ['Overall good compatibility'],
+    cons: cons.length > 0 ? cons : [],
+    idealFor: overallScore >= 70 ? 'Your travel style' : 'Consider if other factors align',
+  };
+};
+
+/**
+ * Generate AI-powered tour match score based on user preferences and tour data
+ * DEPRECATED: Use extractTourStructuredValues + calculatePreferenceMatch instead
+ */
+export const generateTourMatch = async (tour, userPreferences) => {
+  const apiKey = resolveOpenAiKey();
+  if (!apiKey) {
+    return { error: 'Missing OpenAI API key' };
+  }
+
+  if (!userPreferences || typeof userPreferences !== 'object') {
+    return { error: 'Missing user preferences' };
+  }
+
+  if (!tour || typeof tour !== 'object') {
+    return { error: 'Missing tour data' };
+  }
+
+  try {
+    // Extract tour data for the prompt
+    const title = tour.seo?.title || tour.title || 'Tour';
+    const operator = tour.supplier?.name || tour.operatorName || 'Tour operator';
+    // Extract price from multiple possible locations
+    const price = tour.pricing?.summary?.fromPrice || 
+                  tour.pricing?.summary?.fromPriceBeforeDiscount ||
+                  tour.price || 
+                  tour.fromPrice ||
+                  (tour.pricing && typeof tour.pricing === 'object' ? Object.values(tour.pricing).find(v => typeof v === 'number' && v > 0) : null) ||
+                  0;
+    const originalPrice = tour.pricing?.summary?.fromPriceBeforeDiscount || null;
+    const hasDiscount = originalPrice && originalPrice > price && price > 0;
+    const durationMinutes = tour.itinerary?.duration?.fixedDurationInMinutes ||
+                           tour.duration?.fixedDurationInMinutes ||
+                           tour.duration?.variableDurationFromMinutes ||
+                           null;
+    const durationLabel = durationMinutes
+      ? durationMinutes < 60
+        ? `${durationMinutes} min`
+        : `${Math.floor(durationMinutes / 60)}h ${durationMinutes % 60}m`
+      : 'N/A';
+
+    const flags = tour.flags || tour.specialFlags || [];
+    const categories = (tour.categories || []).map(c => c.categoryName || c.name || '').filter(Boolean);
+    
+    const highlights = extractHighlights(tour, 5);
+    const description = cleanText(
+      tour.viatorUniqueContent?.shortDescription ||
+      tour.viatorUniqueContent?.longDescription ||
+      tour.description ||
+      tour.content?.heroDescription ||
+      ''
+    );
+
+    const inclusions = (tour.inclusions || []).map(item => {
+      if (typeof item === 'string') return item;
+      if (item.category === 'OTHER' && item.otherDescription) return item.otherDescription;
+      return item.categoryDescription || item.typeDescription || '';
+    }).filter(Boolean);
+
+    // Determine group type from tour data
+    const isPrivate = flags.includes('PRIVATE_TOUR') || tour.logistics?.isPrivate || false;
+    const groupType = isPrivate ? 'private' : tour.logistics?.groupType || 'group';
+
+    // Build the prompt
+    const prompt = `You are an AI travel advisor helping a traveler understand how well a specific tour matches their trip preferences.
+
+You are given:
+1) The traveler's saved trip preferences.
+2) Detailed data about ONE tour.
+
+Your job:
+- Analyze how well this tour fits the traveler's preferences.
+- Produce a numeric score between 0 and 100 (integer).
+- Explain the reasoning in clear, traveler-friendly language.
+- Be honest: a low score is okay if there are real mismatches.
+- Do NOT mention star ratings or "4.7/5" type review scores.
+- DO mention the tour operator by name when relevant.
+
+Scoring guidelines (high level):
+- 90–100: Excellent match; fits nearly everything they care about.
+- 75–89: Strong match with only minor trade-offs.
+- 55–74: Decent option but with noticeable compromises.
+- 30–54: Only a partial fit; highlight who it *is* a good fit for instead.
+- 0–29: Poor match for this traveler; call that out clearly.
+
+PREFERENCE VALUE INTERPRETATION (CRITICAL - READ CAREFULLY):
+All preference sliders are 0–100. The value indicates WHERE on the spectrum they prefer:
+- adventureLevel: 0 = very relaxed, 100 = very adventurous
+- cultureVsBeach: 0 = relaxation/beach/unwind, 100 = exploration/culture/discovery
+- groupPreference: 0 = big groups ok, 100 = prefer private/small groups
+- budgetComfort: 0 = budget first, 100 = comfort/quality first
+- structurePreference: 0 = lots of free time, 100 = fully structured
+- foodAndDrinkInterest: 0 = not focused on food, 100 = food & drinks are a big part
+- familyFriendlyImportance: 0 = not important, 100 = very important
+- accessibilityImportance: 0 = not important, 100 = very important
+
+IMPORTANT: A LOW value (0–40) means they prefer the LEFT side. A HIGH value (60–100) means they prefer the RIGHT side. 
+- Example: cultureVsBeach = 23 means they prefer RELAXATION/BEACH, NOT culture
+- Example: structurePreference = 25 means they want LOTS OF FREE TIME, NOT structured tours
+- Example: familyFriendlyImportance = 50 means NEUTRAL, not a strong preference either way
+
+Weighting (conceptual – you apply it):
+- Give more weight to preferences that are far from 50 (strong preferences).
+- Values near 50 (40–60) are neutral/indifferent - don't penalize or reward based on these.
+- "Must-have" flags or hard constraints (e.g., maxPricePerPerson) should heavily penalize the score if violated.
+- If the tour strongly matches 1–2 very important dimensions (e.g., adventure + private) but slightly misses some less important ones, you can still give a high score.
+
+OUTPUT FORMAT:
+Return ONLY a single JSON object with this exact shape and keys:
+
+{
+  "matchScore": 0,          // integer 0–100
+  "fitSummary": "",         // 1–2 sentences overall verdict
+  "pros": [],               // 2–4 bullet points, each a short sentence
+  "cons": [],               // 1–3 bullet points, or [] if none
+  "idealFor": "",           // short phrase like "Adventurous couples" or "Families with teens"
+  "notes": ""               // optional nuance; 1–2 sentences, can be empty string
+}
+
+Make the tone:
+- Clear, friendly, and practical.
+- Focused on what the traveler would actually feel on the tour (pace, vibe, crowd size, inclusions).
+- Avoid generic fluff like "This is a great experience" without saying why.
+
+ANALYSIS GUIDELINES:
+- If cultureVsBeach is LOW (0–40), they prefer relaxation/beach - DON'T say they want "cultural insights"
+- If structurePreference is LOW (0–40), they want free time - a highly structured tour is a MISMATCH
+- If familyFriendlyImportance is around 50 (40–60), it's NEUTRAL - don't mention it as a preference unless it's very far from 50
+- If a preference value is 50 or close to it (45–55), treat it as neutral/indifferent - don't use it to penalize or reward
+- Only mention preferences that are STRONG (far from 50) as important factors
+
+Now here is the input data as JSON:
+
+{
+  "userPreferences": ${JSON.stringify(userPreferences, null, 2)},
+  "tour": {
+    "title": "${title}",
+    "operatorName": "${operator}",
+    "priceFrom": ${price > 0 ? price : 'null'},
+    "priceDisplay": ${price > 0 ? `"From $${price}"` : '"Price on booking"'},
+    ${hasDiscount ? `"originalPrice": ${originalPrice},` : ''}
+    ${hasDiscount ? `"hasDiscount": true,` : ''}
+    "durationMinutes": ${durationMinutes || 'null'},
+    "durationLabel": "${durationLabel}",
+    "flags": ${JSON.stringify(flags)},
+    "categories": ${JSON.stringify(categories)},
+    "highlights": ${JSON.stringify(highlights)},
+    "description": "${description.substring(0, 1000)}",
+    "inclusions": ${JSON.stringify(inclusions.slice(0, 10))},
+    "logistics": {
+      "groupType": "${groupType}",
+      "isPrivate": ${isPrivate},
+      "isFamilyFriendly": ${tour.logistics?.isFamilyFriendly || false},
+      "hasAccessibilityNotes": ${tour.logistics?.hasAccessibilityNotes || false}
+    }
+  }
+}
+
+IMPORTANT: If "priceFrom" is a number (not null), the tour HAS a price. Do NOT say "doesn't mention the price" or "price not available" - use the actual price value in your analysis. Compare it to the user's maxPricePerPerson preference if provided.`;
+
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: process.env.OPENAI_TOUR_MODEL || 'gpt-3.5-turbo',
+        temperature: 0.7,
+        messages: [
+          {
+            role: 'system',
+            content: 'You are a helpful AI travel advisor for TopTours.ai. You analyze tours and match them to traveler preferences.',
+          },
+          {
+            role: 'user',
+            content: prompt,
+          },
+        ],
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('OpenAI match request failed:', errorText);
+      return { error: 'OpenAI request failed' };
+    }
+
+    const json = await response.json();
+    const content = stripCodeFences(json?.choices?.[0]?.message?.content?.trim());
+
+    if (!content) {
+      return { error: 'OpenAI response missing content' };
+    }
+
+    let parsed;
+    try {
+      parsed = JSON.parse(content);
+    } catch (err) {
+      console.error('Failed to parse OpenAI match response:', err, content);
+      return { error: 'Failed to parse AI response' };
+    }
+
+    // Validate and clean the response
+    const matchScore = Math.max(0, Math.min(100, parseInt(parsed.matchScore) || 0));
+    const fitSummary = cleanText(parsed.fitSummary || '');
+    const pros = Array.isArray(parsed.pros) ? parsed.pros.map(cleanText).filter(Boolean) : [];
+    const cons = Array.isArray(parsed.cons) ? parsed.cons.map(cleanText).filter(Boolean) : [];
+    const idealFor = cleanText(parsed.idealFor || '');
+    const notes = cleanText(parsed.notes || '');
+
+    if (!fitSummary) {
+      return { error: 'OpenAI did not return a usable match summary' };
+    }
+
+    return {
+      matchScore,
+      fitSummary,
+      pros,
+      cons,
+      idealFor,
+      notes,
+    };
+  } catch (error) {
+    console.error('Error generating tour match:', error);
+    return { error: 'Failed to generate tour match' };
+  }
+};
 

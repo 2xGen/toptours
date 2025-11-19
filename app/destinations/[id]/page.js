@@ -1,5 +1,6 @@
 import { getDestinationById } from '@/data/destinationsData';
 import DestinationDetailClient from './DestinationDetailClient';
+import { getPromotionScoresByDestination, getTrendingToursByDestination } from '@/lib/promotionSystem';
 
 // Force dynamic rendering to avoid build-time errors
 export const dynamic = 'force-dynamic';
@@ -59,6 +60,12 @@ export default async function DestinationDetailPage({ params }) {
       </div>
     );
   }
+
+  // Fetch promotion scores for this destination
+  const promotionScores = await getPromotionScoresByDestination(destination.id);
+
+  // Fetch trending tours (past 28 days) for this destination
+  const trendingTours = await getTrendingToursByDestination(destination.id, 6);
 
   return (
     <>
@@ -137,7 +144,11 @@ export default async function DestinationDetailPage({ params }) {
         }}
       />
       
-      <DestinationDetailClient destination={destination} />
+      <DestinationDetailClient 
+        destination={destination} 
+        promotionScores={promotionScores}
+        trendingTours={trendingTours}
+      />
     </>
   );
 }

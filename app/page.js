@@ -1,62 +1,27 @@
-"use client";
-import { useState } from 'react';
-import NavigationNext from '@/components/NavigationNext';
-import FooterNext from '@/components/FooterNext';
-import Hero from '@/components/home/Hero';
-import AIPlanner from '@/components/home/AIPlanner';
-import FeaturedTours from '@/components/home/FeaturedTours';
-import TopDestinations from '@/components/home/BlogSection';
-import HomeCTA from '@/components/home/HomeCTA';
-import SmartTourFinder from '@/components/home/SmartTourFinder';
+import { getLeaderboardTours, getTopPromoters } from '@/lib/promotionSystem';
+import HomePageClient from './HomePageClient';
 
-export default function HomePage() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+export default async function HomePage() {
+  // Fetch top 3 tours from leaderboard (past 28 days) - lightweight, uses cached metadata
+  const topTours = await getLeaderboardTours({
+    scoreType: 'last_month', // past_28_days_score
+    region: null,
+    limit: 3,
+    offset: 0,
+  });
 
-  const handleOpenModal = () => setIsModalOpen(true);
-  const handleCloseModal = () => setIsModalOpen(false);
+  // Fetch top 3 promoters - lightweight, just database queries
+  const topPromoters = await getTopPromoters(3);
 
-  return (
-    <>
-      <NavigationNext onOpenModal={handleOpenModal} />
-      
-      <main className="min-h-screen" suppressHydrationWarning>
-        <Hero />
-        <AIPlanner />
-        <FeaturedTours onOpenModal={handleOpenModal} />
-        <TopDestinations />
-        <HomeCTA onOpenModal={handleOpenModal} />
-      </main>
+  // Format tours for display (using cached metadata only - no API calls)
+  const formattedTours = topTours.map((tour) => ({
+    productId: tour.product_id,
+    title: tour.tour_name || 'Tour',
+    image: tour.tour_image_url || null,
+    location: tour.tour_region ? tour.tour_region.replace('_', ' ') : 'Various Locations',
+    score: tour.past_28_days_score || 0,
+    slug: tour.tour_slug || null,
+  }));
 
-      <FooterNext />
-      
-      <SmartTourFinder 
-        isOpen={isModalOpen} 
-        onClose={handleCloseModal}
-      />
-      
-      {/* Schema Markup */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "TopTours.ai",
-            "url": "https://toptours.ai",
-            "description": "AI-powered travel planning and tour booking platform",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://toptours.ai/results?searchTerm={search_term_string}",
-              "query-input": "required name=search_term_string"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TopTours.ai",
-              "logo": "https://toptours.ai/logo.png"
-            }
-          })
-        }}
-      />
-    </>
-  );
+  return <HomePageClient topTours={formattedTours} topPromoters={topPromoters} />;
 }

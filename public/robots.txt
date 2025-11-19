@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin-matthijs
+Disallow: /api/
+
+Sitemap: https://toptours.ai/sitemap.xml
+

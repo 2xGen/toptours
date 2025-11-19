@@ -74,6 +74,7 @@ const FooterNext = () => {
             <span className="font-semibold text-lg mb-4 block">Legal</span>
             <ul className="space-y-2">
               <li><Link href="/terms" className="text-gray-300 hover:text-white transition-colors">Terms of Service</Link></li>
+              <li><Link href="/privacy" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link></li>
               <li><Link href="/disclosure" className="text-gray-300 hover:text-white transition-colors">Affiliate Disclosure</Link></li>
               <li><Link href="/cookie-policy" className="text-gray-300 hover:text-white transition-colors">Cookie Policy</Link></li>
               <li><Link href="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>

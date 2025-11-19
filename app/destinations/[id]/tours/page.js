@@ -3,6 +3,7 @@ import { getDestinationById } from '@/data/destinationsData';
 import { getPopularToursForDestination } from '@/data/popularTours';
 import ToursListingClient from './ToursListingClient';
 import { slugToViatorId } from '@/data/viatorDestinationMap';
+import { getPromotionScoresByDestination, getTrendingToursByDestination } from '@/lib/promotionSystem';
 
 // Force dynamic rendering for API calls
 export const dynamic = 'force-dynamic';
@@ -114,7 +115,8 @@ export default async function ToursListingPage({ params }) {
     const destinationName = destination.fullName || destination.name;
     
     // Use freetext search with destination name
-    // Fetch 3 pages (20 per page) to get 51 tours
+    // IMPORTANT: We only make 3 API calls (3 pages × 20 tours = 60 tours max)
+    // The total count (e.g., 1,980) comes from Viator's response metadata, NOT from making 1,980 API calls
     const toursPerPage = 20;
     const pagesNeeded = 3; // 3 pages = 60 tours, we'll take 51
     
@@ -141,7 +143,7 @@ export default async function ToursListingPage({ params }) {
             }],
             currency: 'USD'
           }),
-          next: { revalidate: 3600 }
+          next: { revalidate: 3600 } // Cache for 1 hour
         }).then(async (res) => {
           if (res.ok) {
             return res.json();
@@ -161,7 +163,8 @@ export default async function ToursListingPage({ params }) {
     for (let i = 0; i < allResponses.length; i++) {
       const data = allResponses[i];
       if (data && !data.error) {
-        // Get total count from first response
+        // Get total count from first response - this is metadata from Viator, not from fetching all tours
+        // Viator tells us "there are 1,980 total tours" in the response, we don't fetch them all
         if (i === 0 && data.products?.totalCount) {
           totalToursAvailable = data.products.totalCount;
         }
@@ -188,6 +191,14 @@ export default async function ToursListingPage({ params }) {
   } catch (error) {
     console.error('Error fetching dynamic tours:', error);
   }
+
+  // Fetch all promotion scores for this destination (one query - most efficient!)
+  // This returns only tours with points, all others default to 0
+  const promotionScores = await getPromotionScoresByDestination(destination.id);
+
+  // Fetch trending tours (past 28 days) for this destination
+  // These will be displayed in a "Trending Now" section
+  const trendingTours = await getTrendingToursByDestination(destination.id, 6);
 
   // Generate JSON-LD schema for SEO
   const jsonLd = {
@@ -259,6 +270,8 @@ export default async function ToursListingPage({ params }) {
         dynamicTours={dynamicTours}
         viatorDestinationId={viatorDestinationId}
         totalToursAvailable={totalToursAvailable}
+        promotionScores={promotionScores}
+        trendingTours={trendingTours}
       />
     </>
   );

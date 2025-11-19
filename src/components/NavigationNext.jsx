@@ -1,14 +1,83 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Menu, X, Compass } from 'lucide-react';
+import { Menu, X, UserCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 
 const NavigationNext = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const [displayName, setDisplayName] = useState('');
+  const [authLoading, setAuthLoading] = useState(true);
   const pathname = usePathname();
+  const supabase = createSupabaseBrowserClient();
+
+  useEffect(() => {
+    let isMounted = true;
+    let fetchedForUser = null;
+    (async () => {
+      // Prefer session to reduce flicker
+      const { data } = await supabase.auth.getSession();
+      const sessionUser = data?.session?.user || null;
+      if (!isMounted) return;
+      setUser(sessionUser);
+      if (sessionUser) {
+        try {
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('display_name')
+            .eq('id', sessionUser.id)
+            .single();
+          const name =
+            profile?.display_name ||
+            (sessionUser.email ? sessionUser.email.split('@')[0] : 'Profile');
+          setDisplayName(name);
+          fetchedForUser = sessionUser.id;
+        } catch {
+          // If profile row doesn't exist yet, fall back to email prefix
+          const fallback = sessionUser.email ? sessionUser.email.split('@')[0] : 'Profile';
+          setDisplayName(fallback);
+          fetchedForUser = sessionUser.id;
+        }
+      } else {
+        setDisplayName('');
+      }
+      setAuthLoading(false);
+    })();
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user || null);
+      if (session?.user) {
+        // Avoid refetching repeatedly for the same user to prevent loops
+        if (fetchedForUser === session.user.id) return;
+        supabase
+          .from('profiles')
+          .select('display_name')
+          .eq('id', session.user.id)
+          .single()
+          .then(({ data: profile }) => {
+            const name =
+              profile?.display_name ||
+              (session.user.email ? session.user.email.split('@')[0] : 'Profile');
+            setDisplayName(name);
+            fetchedForUser = session.user.id;
+          })
+          .catch(() => {
+            const fallback = session.user.email ? session.user.email.split('@')[0] : 'Profile';
+            setDisplayName(fallback);
+            fetchedForUser = session.user.id;
+          });
+      } else {
+        setDisplayName('');
+      }
+    });
+    return () => {
+      isMounted = false;
+      sub.subscription?.unsubscribe?.();
+    };
+  }, [supabase]);
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -21,8 +90,7 @@ const NavigationNext = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass-effect">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center space-x-2">
-            <Compass className="h-8 w-8 text-white" />
+          <Link href="/" className="flex items-center">
             <span className="font-poppins font-bold text-xl text-white">TopTours.ai<span className="text-xs align-super ml-1">™</span></span>
           </Link>
 
@@ -42,8 +110,22 @@ const NavigationNext = () => {
               asChild
               className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200"
             >
-              <Link href="/destinations">Explore Destinations</Link>
+              <Link href="/toptours">Explore TopTours</Link>
             </Button>
+            {!authLoading && user ? (
+              <Link
+                href="/profile"
+                className="ml-2 px-3 py-1.5 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors text-sm font-medium"
+                aria-label="Profile"
+                title="Profile"
+              >
+                {displayName}
+              </Link>
+            ) : (
+              <Link href="/auth" aria-label="Sign in" className="ml-2 text-white hover:text-blue-200 transition-colors">
+                <UserCircle2 className="h-7 w-7" />
+              </Link>
+            )}
           </div>
 
           <div className="md:hidden">
@@ -81,8 +163,8 @@ const NavigationNext = () => {
               asChild
               className="w-full mt-4 sunset-gradient text-white font-semibold"
             >
-              <Link href="/destinations" onClick={() => setIsOpen(false)}>
-                Explore Destinations
+              <Link href="/toptours" onClick={() => setIsOpen(false)}>
+                Explore TopTours
               </Link>
             </Button>
           </motion.div>

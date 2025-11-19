@@ -56,6 +56,12 @@ export default function sitemap() {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
+    {
+      url: `${baseUrl}/toptours`,
+      lastModified: currentDate,
+      changeFrequency: 'hourly',
+      priority: 0.9,
+    },
   ];
 
   // Destination pages

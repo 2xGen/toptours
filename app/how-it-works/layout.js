@@ -1,18 +1,18 @@
 export const metadata = {
-  title: 'How It Works - AI Travel Planning Made Simple | TopTours.ai',
-  description: 'Discover how TopTours.ai makes travel planning effortless. Our AI analyzes your preferences, searches thousands of tours, and creates personalized recommendations in seconds. Start planning smarter today.',
+  title: 'How It Works - AI Travel Planning Made Simple | TopTours.ai™',
+  description: 'Discover how TopTours.ai™ makes travel planning effortless. Our AI analyzes your preferences, searches thousands of tours, and creates personalized recommendations in seconds. Start planning smarter today.',
   keywords: 'how it works, AI travel planning, smart trip planning, personalized travel, tour recommendations, AI itinerary, travel planning process',
   openGraph: {
-    title: 'How It Works - AI Travel Planning Made Simple | TopTours.ai',
-    description: 'Discover how TopTours.ai makes travel planning effortless with AI-powered recommendations and smart itineraries.',
+    title: 'How It Works - AI Travel Planning Made Simple | TopTours.ai™',
+    description: 'Discover how TopTours.ai™ makes travel planning effortless with AI-powered recommendations and smart itineraries.',
     url: 'https://toptours.ai/how-it-works',
-    siteName: 'TopTours.ai',
+    siteName: 'TopTours.ai™',
     images: [
       {
         url: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/How%20to%20Plan%20a%20Trip%20with%20AI.png',
         width: 1200,
         height: 630,
-        alt: 'How TopTours.ai Works - AI Travel Planning',
+        alt: 'How TopTours.ai™ Works - AI Travel Planning',
       },
     ],
     locale: 'en_US',
@@ -20,8 +20,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'How It Works - AI Travel Planning Made Simple | TopTours.ai',
-    description: 'Discover how TopTours.ai makes travel planning effortless with AI-powered recommendations.',
+    title: 'How It Works - AI Travel Planning Made Simple | TopTours.ai™',
+    description: 'Discover how TopTours.ai™ makes travel planning effortless with AI-powered recommendations.',
     images: ['https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/How%20to%20Plan%20a%20Trip%20with%20AI.png'],
   },
   alternates: {
@@ -39,8 +39,8 @@ export default function HowItWorksLayout({ children }) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "HowTo",
-            "name": "How to Plan Your Trip with TopTours.ai",
-            "description": "Learn how to use TopTours.ai's AI-powered platform to plan your perfect trip",
+            "name": "How to Plan Your Trip with TopTours.ai™",
+            "description": "Learn how to use TopTours.ai™'s AI-powered platform to plan your perfect trip",
             "totalTime": "PT5M",
             "step": [
               {
@@ -79,7 +79,7 @@ export default function HowItWorksLayout({ children }) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "TopTours.ai",
+            "name": "TopTours.ai™",
             "url": "https://toptours.ai",
             "logo": "https://toptours.ai/logo.png",
             "description": "AI-powered travel planning and tour recommendations",

@@ -19,7 +19,8 @@ import {
   Sun,
   Moon,
   Sunrise,
-  MoveHorizontal
+  MoveHorizontal,
+  TrendingUp
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -28,9 +29,14 @@ import { Input } from '@/components/ui/input';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import Link from 'next/link';
+import { useBookmarks } from '@/hooks/useBookmarks';
+import { Heart, Trophy } from 'lucide-react';
+import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
+import { toast } from '@/components/ui/use-toast';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import { getGuidesByCountry } from '@/data/travelGuidesData';
 import { getRestaurantsForDestination } from '../restaurants/restaurantsData';
+import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 
 const DESTINATION_TAG_OPTIONS = {
   aruba: [
@@ -250,7 +256,9 @@ export default function ToursListingClient({
   popularTours = [], 
   dynamicTours = [],
   viatorDestinationId,
-  totalToursAvailable = 0
+  totalToursAvailable = 0,
+  promotionScores = {}, // Map of productId -> score object
+  trendingTours = [] // Tours with highest past_28_days_score for this destination
 }) {
   // Get guides and restaurants for internal linking
   const guides = getGuidesByCountry(destination.country) || [];
@@ -1069,7 +1077,7 @@ export default function ToursListingClient({
               <div className="relative -mx-4 px-4">
                 <div
                   ref={tagScrollRef}
-                  className="flex gap-3 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-1"
+                  className="flex gap-3 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-1 pl-16"
                   onScroll={updateTagScrollIndicators}
                 >
                   {destinationTagOptions.map((tag) => {
@@ -1088,15 +1096,6 @@ export default function ToursListingClient({
                         <span className="block text-sm font-semibold whitespace-nowrap">
                           {tag.label}
                         </span>
-                        {tag.description && (
-                          <span
-                            className={`block text-xs whitespace-nowrap ${
-                              isSelected ? 'text-white/80' : 'text-gray-500'
-                            }`}
-                          >
-                            {tag.description}
-                          </span>
-                        )}
                       </button>
                     );
                   })}
@@ -1389,6 +1388,55 @@ export default function ToursListingClient({
       {/* Main Content */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Trending Now Section - Past 28 Days (Always visible, not affected by filters) */}
+          {trendingTours.length > 0 && (() => {
+            // Convert trending tours from Supabase format to tour card format
+            const trendingToursForDisplay = trendingTours.map(trending => ({
+              productId: trending.product_id,
+              productCode: trending.product_id,
+              title: trending.tour_name,
+              seo: { 
+                title: trending.tour_name,
+                slug: trending.tour_slug || null
+              },
+              images: trending.tour_image_url ? [{
+                variants: [
+                  { url: trending.tour_image_url },
+                  { url: trending.tour_image_url },
+                  { url: trending.tour_image_url },
+                  { url: trending.tour_image_url }
+                ]
+              }] : null,
+              slug: trending.tour_slug || null,
+            }));
+
+            return (
+              <div className="mb-12">
+                <div className="flex items-center gap-2 mb-6">
+                  <TrendingUp className="w-5 h-5 text-orange-600" />
+                  <h2 className="text-2xl font-bold text-gray-900">Trending Now in {destination.name}</h2>
+                  <Badge variant="secondary" className="ml-2 bg-orange-100 text-orange-700 border-orange-300">
+                    Past 28 Days
+                  </Badge>
+                </div>
+                <p className="text-sm text-gray-600 mb-6">
+                  Tours that are currently popular based on recent community boosts
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {trendingToursForDisplay.map((tour, index) => (
+                    <TourCard 
+                      key={tour.productId || index} 
+                      tour={tour} 
+                      isFeatured={false} 
+                      destination={destination} 
+                      promotionScores={promotionScores} 
+                    />
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
+
           {/* Sort and Results Count - Same Line */}
           <div className="mb-6 flex items-center justify-between flex-wrap gap-4">
             {/* Results Count */}
@@ -1441,7 +1489,7 @@ export default function ToursListingClient({
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {featuredTours.map((tour, index) => (
-                  <TourCard key={tour.productId || index} tour={tour} isFeatured={true} destination={destination} />
+                  <TourCard key={tour.productId || index} tour={tour} isFeatured={true} destination={destination} promotionScores={promotionScores} />
                 ))}
               </div>
             </div>
@@ -1455,7 +1503,7 @@ export default function ToursListingClient({
               )}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {regularTours.map((tour, index) => (
-                  <TourCard key={tour.productId || tour.productCode || index} tour={tour} isFeatured={false} destination={destination} />
+                  <TourCard key={tour.productId || tour.productCode || index} tour={tour} isFeatured={false} destination={destination} promotionScores={promotionScores} />
                 ))}
               </div>
             </div>
@@ -1585,11 +1633,13 @@ export default function ToursListingClient({
 }
 
 // Tour Card Component
-function TourCard({ tour, isFeatured, destination }) {
+function TourCard({ tour, isFeatured, destination, promotionScores = {} }) {
   const productId = tour.productId || tour.productCode;
   const tourUrl = tour.slug 
     ? `/tours/${productId}/${tour.slug}` 
     : getTourUrl(productId, tour.seo?.title || tour.title);
+  const supabase = createSupabaseBrowserClient();
+  const [isSaved, setIsSaved] = useState(false);
   
   const image = tour.images?.[0]?.variants?.[3]?.url || 
                 tour.images?.[0]?.variants?.[0]?.url || 
@@ -1657,6 +1707,7 @@ function TourCard({ tour, isFeatured, destination }) {
                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
               />
             )}
+            {/* price badge stays on right; no save here to avoid overlap */}
             {hasDiscount && (
               <div className="absolute top-3 left-3 z-20">
                 <span className="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-rose-600 text-white rounded-full shadow">
@@ -1712,28 +1763,73 @@ function TourCard({ tour, isFeatured, destination }) {
         </Link>
         
         <CardContent className="p-4 flex flex-col flex-grow">
-          <Link href={tourUrl}>
-            <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
-              {title}
-            </h3>
-          </Link>
+          <div className="flex items-start justify-between gap-2 mb-2">
+            <Link href={tourUrl} className="flex-1">
+              <h3 className="font-semibold text-lg text-gray-800 line-clamp-2 hover:text-purple-600 transition-colors">
+                {title}
+              </h3>
+            </Link>
+            <button
+              type="button"
+              aria-label={isSaved ? 'Saved' : 'Save'}
+              onClick={async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const { data } = await supabase.auth.getUser();
+                if (!data?.user) {
+                  toast({
+                    title: 'Sign in required',
+                    description: 'Create a free account to save tours to your favorites.',
+                  });
+                  return;
+                }
+                try {
+                  const method = isSaved ? 'DELETE' : 'POST';
+                  const url = isSaved
+                    ? `/api/internal/bookmarks/${encodeURIComponent(productId)}`
+                    : '/api/internal/bookmarks';
+                  const body = isSaved
+                    ? JSON.stringify({ userId: data.user.id })
+                    : JSON.stringify({ userId: data.user.id, productId });
+                  await fetch(url, {
+                    method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body,
+                  });
+                  setIsSaved(!isSaved);
+                  toast({
+                    title: isSaved ? 'Removed from favorites' : 'Saved to favorites',
+                    description: 'You can view your favorites in your profile.',
+                  });
+                } catch (_) {}
+              }}
+              className={`ml-2 inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors ${
+                isSaved ? 'text-red-600 bg-white' : 'text-gray-400 bg-white hover:text-red-500'
+              }`}
+              title={isSaved ? 'Saved' : 'Save'}
+            >
+              <Heart className="w-5 h-5" fill={isSaved ? 'currentColor' : 'none'} />
+            </button>
+          </div>
           
           <p className="text-sm text-gray-600 mb-3 line-clamp-2 flex-grow">
             {description}
           </p>
           
-          <div className="flex items-center justify-between mb-3">
-            {rating > 0 && (
-              <div className="flex items-center">
-                <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                <span className="font-medium text-gray-700 ml-1 text-sm" suppressHydrationWarning>
-                  {typeof rating === 'number' ? rating.toFixed(1) : rating}
-                </span>
-                <span className="text-gray-500 text-xs ml-1" suppressHydrationWarning>
-                  ({typeof reviewCount === 'number' ? reviewCount.toLocaleString('en-US') : reviewCount})
-                </span>
-              </div>
-            )}
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-3">
+              {rating > 0 && (
+                <div className="flex items-center">
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <span className="font-medium text-gray-700 ml-1 text-sm" suppressHydrationWarning>
+                    {typeof rating === 'number' ? rating.toFixed(1) : rating}
+                  </span>
+                  <span className="text-gray-500 text-xs ml-1" suppressHydrationWarning>
+                    ({typeof reviewCount === 'number' ? reviewCount.toLocaleString('en-US') : reviewCount})
+                  </span>
+                </div>
+              )}
+            </div>
             {(() => {
               const durationMinutes = getTourDurationMinutes(tour);
               if (!durationMinutes) return null;
@@ -1745,6 +1841,24 @@ function TourCard({ tour, isFeatured, destination }) {
               );
             })()}
           </div>
+
+          {/* Promotion Score - On its own line */}
+          <div className="mb-3">
+            <TourPromotionCard 
+              productId={productId} 
+              compact={true}
+              tourData={tour} // Pass tour data so we don't need to fetch from Viator!
+              destinationId={destination.id}
+              initialScore={promotionScores[productId] || {
+                product_id: productId,
+                total_score: 0,
+                monthly_score: 0,
+                weekly_score: 0,
+                past_28_days_score: 0,
+              }}
+            />
+          </div>
+
 
           <Button
             asChild

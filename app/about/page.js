@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Brain, Globe, Heart, Users, Award, Zap, ArrowRight } from 'lucide-react';
+import { Brain, Globe, Heart, Users, Award, Zap, ArrowRight, Trophy, Sparkles } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import NavigationNext from '@/components/NavigationNext';
@@ -18,42 +18,41 @@ export default function AboutPage() {
 
   const values = [
     {
+      icon: Users,
+      title: 'Community-Driven Discovery',
+      description: 'You decide which tours deserve the spotlight. Every day, travelers use their points to boost tours they love, creating real-time rankings based on actual community preference—not just algorithms.'
+    },
+    {
       icon: Brain,
-      title: 'AI-Powered Intelligence',
-      description: 'Our advanced algorithms analyze millions of data points to provide personalized recommendations.'
+      title: 'AI-Powered Matching',
+      description: 'Get personalized tour recommendations that actually fit your style. Our AI analyzes your travel preferences and shows you detailed match scores (0-100%) with explanations of why a tour matches or doesn\'t.'
+    },
+    {
+      icon: Trophy,
+      title: 'Real-Time Rankings',
+      description: 'See which tours are trending based on community boosts. Tours with the most points appear in "Trending Now" sections and climb the global leaderboard, giving you insight into what travelers actually love.'
     },
     {
       icon: Globe,
-      title: 'Global Reach',
-      description: 'Access to tours and activities in over 150 countries worldwide, from popular destinations to hidden gems.'
+      title: '170+ Destinations',
+      description: 'Access to thousands of tours and activities across 170+ destinations worldwide, from popular hotspots to hidden gems, all curated and community-validated.'
     },
     {
       icon: Heart,
       title: 'Personalized Experience',
-      description: 'Every recommendation is tailored to your unique preferences, interests, and travel style.'
-    },
-    {
-      icon: Users,
-      title: 'Trusted Community',
-      description: 'Join thousands of satisfied travelers who have discovered amazing experiences through our platform.'
-    },
-    {
-      icon: Award,
-      title: 'Quality Assurance',
-      description: 'All our partner tours are vetted for quality, safety, and authentic local experiences.'
+      description: 'Fill out your travel preferences once—adventure level, travel style, budget comfort, group preference—and get matches forever with detailed breakdowns.'
     },
     {
       icon: Zap,
-      title: 'Instant Results',
-      description: 'Get personalized tour recommendations in seconds, not hours of manual research.'
+      title: 'Transparent & Fair',
+      description: 'Tours rise to the top because travelers boost them, and you see exactly how well each tour matches your preferences with detailed match scores and explanations.'
     }
   ];
 
   const stats = [
-    { number: '500K+', label: 'Happy Travelers' },
-    { number: '150+', label: 'Countries Covered' },
-    { number: '10K+', label: 'Curated Tours' },
-    { number: '4.9', label: 'Average Rating' }
+    { number: '170+', label: 'Destinations Covered' },
+    { number: '1050+', label: 'Guides Written' },
+    { number: '300k+', label: 'Tours Available' }
   ];
 
   return (
@@ -70,14 +69,30 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
+              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+                <Sparkles className="w-4 h-4 text-white" />
+                <span className="text-sm font-semibold text-white">The smarter way to discover tours</span>
+              </div>
               <h1 className="text-4xl md:text-6xl font-poppins font-bold text-white mb-6">
-                About TopTours.ai
+                About TopTours.ai<span className="text-xs align-super">™</span>
               </h1>
               <p className="text-xl text-white/90 max-w-3xl mx-auto">
-                We're revolutionizing travel planning with AI-powered recommendations that help you discover 
-                the perfect tours and activities for your unique travel style.
+                We're revolutionizing tour booking by combining the power of community with cutting-edge AI. 
+                The first platform where travelers decide which tours deserve the spotlight, and AI helps you 
+                discover tours that actually match your style.
               </p>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Breadcrumb */}
+        <section className="bg-white border-b">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+            <nav className="flex items-center space-x-2 text-xs sm:text-sm">
+              <Link href="/" className="text-gray-500 hover:text-gray-700">Home</Link>
+              <span className="text-gray-400">/</span>
+              <span className="text-gray-900 font-medium">About</span>
+            </nav>
           </div>
         </section>
 
@@ -95,14 +110,22 @@ export default function AboutPage() {
                   Our Mission
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
-                  At TopTours.ai, we believe that every traveler deserves to discover experiences that perfectly 
-                  match their interests, budget, and travel style. Our mission is to eliminate the overwhelming 
-                  process of researching and booking tours by using artificial intelligence to provide personalized, 
-                  curated recommendations.
+                  At TopTours.ai<span className="text-xs align-super">™</span>, we're pioneering a new way to discover and book tours. 
+                  We've built something unique: a platform where the community decides which tours deserve visibility, 
+                  and AI helps you find tours that actually fit your travel preferences. This combination creates a 
+                  more personalized, transparent, and engaging experience for travelers.
+                </p>
+                <p className="text-lg text-gray-600 mb-6">
+                  Our mission is to create the most personalized tour discovery experience ever built by combining 
+                  real community preference with intelligent matching. Every day, travelers use their points to 
+                  boost tours they love, creating real-time rankings based on actual community preference. Meanwhile, 
+                  our AI analyzes your travel style to show you tours with detailed match scores, so you know exactly 
+                  why a tour fits you perfectly.
                 </p>
                 <p className="text-lg text-gray-600">
                   We partner with trusted tour operators worldwide to ensure you have access to authentic, 
-                  high-quality experiences that create lasting memories.
+                  high-quality experiences. But more importantly, we give you the power to shape which tours 
+                  get discovered—and the intelligence to find the ones that match you perfectly.
                 </p>
               </motion.div>
               <motion.div
@@ -135,7 +158,8 @@ export default function AboutPage() {
                 What Makes Us Different
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our core values drive everything we do, from product development to customer service.
+                We're the first platform to combine community-driven promotion with AI-powered matching. 
+                This unique approach creates a more transparent, personalized, and fair way to discover tours.
               </p>
             </motion.div>
 
@@ -185,7 +209,7 @@ export default function AboutPage() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
@@ -233,10 +257,22 @@ export default function AboutPage() {
                   Why We Built This
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
-                  The inspiration behind TopTours.ai was the realization that most travel platforms overwhelm users with too many options and too little guidance. We wanted to fix that by using AI to help travelers make smarter, faster decisions—without sacrificing quality or personalization.
+                  The inspiration behind TopTours.ai<span className="text-xs align-super">™</span> came from a simple question: 
+                  What if travelers could shape which tours get discovered, while AI helps them find tours that perfectly 
+                  match their style? We saw an opportunity to create something entirely new—a platform that combines the 
+                  collective wisdom of the community with intelligent, personalized matching.
+                </p>
+                <p className="text-lg text-gray-600 mb-6">
+                  We realized that the best way to discover great tours is by combining the power of community preference 
+                  with the intelligence of AI. When travelers can boost tours they love, the best experiences naturally rise 
+                  to the top based on real preference. When AI analyzes your travel style and shows you detailed match 
+                  scores, you can make confident decisions with full transparency about why a tour fits you.
                 </p>
                 <p className="text-lg text-gray-600">
-                  We're passionate about connecting people with meaningful travel experiences, and we're constantly evolving the platform to serve that mission.
+                  This combination of community-driven promotion and AI-powered matching creates something entirely new: 
+                  a transparent, fair, and personalized way to discover tours. We're passionate about giving travelers 
+                  the power to shape which tours get discovered—and the intelligence to find the ones that match them 
+                  perfectly. That's how we're changing tour booking, one boost and one match at a time.
                 </p>
               </motion.div>
             </div>
@@ -256,7 +292,8 @@ export default function AboutPage() {
                 Ready to Start Your Journey?
               </h2>
               <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-                Join our community of travelers and discover your next amazing adventure with AI-powered recommendations.
+                Join our community of travelers and discover your next amazing adventure. Boost tours you love, 
+                get AI-powered matches that fit your style, and be part of how tour discovery works.
               </p>
               <Button 
                 asChild

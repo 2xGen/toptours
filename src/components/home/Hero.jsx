@@ -121,7 +121,7 @@ const Hero = () => {
 
             <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl">
               Skip the endless research. Jump straight into curated destination guides, expert AI
-              insights, and direct booking links for 170+ destinations worldwide.
+              insights, and direct booking links for 170+ destinations worldwide and thousands of tours.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-10">
@@ -139,7 +139,7 @@ const Hero = () => {
                 variant="secondary"
                 className="bg-white/90 text-purple-700 border border-purple-100 hover:bg-white px-8 py-3 text-lg font-semibold"
               >
-                <Link href={`/destinations/${FEATURED_TOURS_DESTINATION}/tours`}>
+                <Link href="/toptours">
                   Find Top Tours
                 </Link>
               </Button>

@@ -4,6 +4,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Set cache headers for Vercel Edge Network (shorter cache for search results)
+  res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=3600');
+
   try {
     const body = req.body || {};
     const {

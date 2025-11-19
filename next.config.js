@@ -951,7 +951,11 @@ const nextConfig = {
       '@': require('path').resolve(__dirname, './src'),
     }
     return config
-  }
+  },
+  // Fix for Windows symlink issues (especially with OneDrive)
+  experimental: {
+    outputFileTracingRoot: require('path').resolve(__dirname),
+  },
 }
 
 module.exports = nextConfig

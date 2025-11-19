@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import confetti from 'canvas-confetti';
 import { 
   Star, 
   Clock, 
@@ -15,7 +16,8 @@ import {
   ArrowLeft,
   Home,
   BookOpen,
-  UtensilsCrossed
+  UtensilsCrossed,
+  Bookmark
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -27,20 +29,26 @@ import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import { destinations } from '@/data/destinationsData';
 import { viatorRefToSlug } from '@/data/viatorDestinationMap';
 import { getGuidesByCountry } from '@/data/travelGuidesData';
+import { toast } from '@/components/ui/use-toast';
+import { useBookmarks } from '@/hooks/useBookmarks';
+import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
+import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 
-export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null }) {
+export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [destination, setDestination] = useState(null);
   const [showStickyButton, setShowStickyButton] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-  const [recommendation, setRecommendation] = useState(enrichment?.ai_summary || '');
-  const [recommendationHighlights, setRecommendationHighlights] = useState(
-    Array.isArray(enrichment?.ai_highlights) ? enrichment.ai_highlights.filter(Boolean) : []
-  );
-  const [isGeneratingRecommendation, setIsGeneratingRecommendation] = useState(false);
-  const [recommendationError, setRecommendationError] = useState('');
-  const hasTrackedViewRef = useRef(false);
+  const [matchData, setMatchData] = useState(null);
+  const [isGeneratingMatch, setIsGeneratingMatch] = useState(false);
+  const [matchError, setMatchError] = useState('');
+  const [showMatchModal, setShowMatchModal] = useState(false);
+  const [matchModalMessage, setMatchModalMessage] = useState('');
+  const [tourValuesExtracted, setTourValuesExtracted] = useState(false);
+  const [showMatchResultsModal, setShowMatchResultsModal] = useState(false);
+  const supabase = createSupabaseBrowserClient();
   const getSlugFromRef = (value) => {
     if (!value) return null;
     const normalized = String(value).replace(/^d/i, '');
@@ -131,6 +139,51 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     return null;
   }, [destinationTourUrl, fallbackDestinationSlugByName]);
 
+  // Trigger confetti when returning from instant boost payment
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const boostSuccess = searchParams.get('boost_success') === 'true';
+    if (boostSuccess) {
+      // Trigger confetti celebration
+      const duration = 3000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      const interval = setInterval(() => {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+        
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+        });
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+        });
+      }, 250);
+
+      // Clean up URL parameter
+      const url = new URL(window.location.href);
+      url.searchParams.delete('boost_success');
+      window.history.replaceState({}, '', url.toString());
+
+      return () => clearInterval(interval);
+    }
+  }, [searchParams]);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     
@@ -210,33 +263,9 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     };
   }, []);
 
-  useEffect(() => {
-    if (!productId || hasTrackedViewRef.current) return;
-    hasTrackedViewRef.current = true;
-    const controller = new AbortController();
-    const trackView = async () => {
-      try {
-        await fetch(`/api/internal/tour-views/${productId}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            destinationId: primaryDestinationSlug || destination?.id || null,
-          }),
-          signal: controller.signal,
-        });
-      } catch (error) {
-        if (error.name !== 'AbortError') {
-          console.error('Failed to track tour view:', error);
-        }
-      }
-    };
-    trackView();
-    return () => {
-      if (!controller.signal.aborted) {
-        controller.abort();
-      }
-    };
-  }, [productId, primaryDestinationSlug, destination?.id]);
+  // Tour view tracking is now handled by PageViewTracker component in layout.js
+  // This ensures consistent tracking across all pages and avoids duplicate tracking
+  // The PageViewTracker automatically detects tour pages and updates aggregated counts
 
   useEffect(() => {
     if (primaryDestinationSlug) {
@@ -748,40 +777,163 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                        tour?.partner?.name ||
                        '';
 
-  const handleGenerateRecommendation = async () => {
-    if (!productId || isGeneratingRecommendation) return;
-    try {
-      setIsGeneratingRecommendation(true);
-      setRecommendationError('');
+  // Check if tour values are already extracted
+  useEffect(() => {
+    if (enrichment?.structured_values) {
+      setTourValuesExtracted(true);
+    }
+  }, [enrichment]);
 
-      const response = await fetch(`/api/internal/tour-enrichment/${productId}`, {
+  const handleExtractTourValues = async () => {
+    if (!productId || isGeneratingMatch) return;
+    
+    try {
+      setIsGeneratingMatch(true);
+      setMatchError('');
+
+      // Call API to extract structured values (one-time)
+      const response = await fetch(`/api/internal/tour-match/${productId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tour }),
+        body: JSON.stringify({ 
+          extractOnly: true, // Just extract values, don't match yet
+          tour: pricing ? {
+            ...tour,
+            pricing: {
+              ...tour.pricing,
+              summary: {
+                ...tour.pricing?.summary,
+                fromPrice: tour.pricing?.summary?.fromPrice || pricing?.fromPrice || pricing?.summary?.fromPrice,
+                fromPriceBeforeDiscount: tour.pricing?.summary?.fromPriceBeforeDiscount || pricing?.fromPriceBeforeDiscount || pricing?.summary?.fromPriceBeforeDiscount,
+              }
+            }
+          } : tour
+        }),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData?.error || 'Failed to generate recommendation');
+        throw new Error(errorData?.error || 'Failed to extract tour values');
       }
 
       const data = await response.json();
-      const enrichmentData = data?.enrichment;
-
-      if (enrichmentData?.ai_summary) {
-        setRecommendation(enrichmentData.ai_summary);
-        setRecommendationHighlights(
-          Array.isArray(enrichmentData.ai_highlights) ? enrichmentData.ai_highlights.filter(Boolean) : []
-        );
+      
+      if (data.valuesExtracted) {
+        setTourValuesExtracted(true);
+        toast({
+          title: 'Tour analyzed',
+          description: 'Tour characteristics have been extracted successfully.',
+        });
         router.refresh();
       } else {
-        throw new Error('No summary returned');
+        throw new Error('Failed to extract values');
       }
     } catch (error) {
-      console.error('Error generating recommendation:', error);
-      setRecommendationError(error.message || 'Unable to generate summary');
+      console.error('Error extracting tour values:', error);
+      setMatchError(error.message || 'Unable to extract tour values');
+      toast({
+        title: 'Extraction failed',
+        description: error.message || 'Please try again later.',
+        variant: 'destructive',
+      });
     } finally {
-      setIsGeneratingRecommendation(false);
+      setIsGeneratingMatch(false);
+    }
+  };
+
+  const handleGenerateMatch = async () => {
+    if (!productId || isGeneratingMatch) return;
+    
+    try {
+      setIsGeneratingMatch(true);
+      setMatchError('');
+
+      // Check if user is signed in
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      if (authError || !user) {
+        setIsGeneratingMatch(false);
+        setMatchModalMessage('Please sign in to use AI tour matching. Create a free account to get personalized match scores based on your trip preferences.');
+        setShowMatchModal(true);
+        return;
+      }
+
+      // Check if user has trip preferences set (use cached version)
+      let profile = null;
+      try {
+        const { getCachedUserProfile } = await import('@/lib/supabaseCache');
+        profile = await getCachedUserProfile(user.id);
+      } catch (error) {
+        // Fallback to direct query
+        const { data, error: profileError } = await supabase
+          .from('profiles')
+          .select('trip_preferences')
+          .eq('id', user.id)
+          .single();
+        profile = data;
+      }
+
+      if (!profile || !profile.trip_preferences) {
+        setIsGeneratingMatch(false);
+        setMatchModalMessage('Please set your trip preferences in your profile first. Go to your profile and fill in your travel style, budget, and preferences to get personalized match scores.');
+        setShowMatchModal(true);
+        return;
+      }
+
+      const userPreferences = profile.trip_preferences;
+      if (!userPreferences || typeof userPreferences !== 'object' || Object.keys(userPreferences).length === 0) {
+        setIsGeneratingMatch(false);
+        setMatchModalMessage('Please set your trip preferences in your profile first. Go to your profile and fill in your travel style, budget, and preferences to get personalized match scores.');
+        setShowMatchModal(true);
+        return;
+      }
+
+      // Merge pricing prop into tour object if available
+      const tourWithPricing = pricing ? {
+        ...tour,
+        pricing: {
+          ...tour.pricing,
+          summary: {
+            ...tour.pricing?.summary,
+            fromPrice: tour.pricing?.summary?.fromPrice || pricing?.fromPrice || pricing?.summary?.fromPrice,
+            fromPriceBeforeDiscount: tour.pricing?.summary?.fromPriceBeforeDiscount || pricing?.fromPriceBeforeDiscount || pricing?.summary?.fromPriceBeforeDiscount,
+          }
+        }
+      } : tour;
+
+      // Call the match API
+      const response = await fetch(`/api/internal/tour-match/${productId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          userId: user.id,
+          tour: tourWithPricing
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData?.error || 'Failed to generate match score');
+      }
+
+      const data = await response.json();
+      const match = data?.match;
+
+      if (match && match.matchScore !== undefined) {
+        setMatchData(match);
+        setShowMatchResultsModal(true); // Open modal with results
+      } else {
+        throw new Error('No match data returned');
+      }
+    } catch (error) {
+      console.error('Error generating match:', error);
+      setMatchError(error.message || 'Failed to generate match score');
+      toast({
+        title: 'Match analysis failed',
+        description: error.message || 'Please try again later.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsGeneratingMatch(false);
     }
   };
 
@@ -921,6 +1073,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     return `${hours}h ${mins}m`;
   };
 
+  const { user: bookmarksUser, isBookmarked, toggle } = useBookmarks();
+
   return (
     <div className="min-h-screen pt-16" style={{ overflowX: 'hidden' }} suppressHydrationWarning>
       <NavigationNext />
@@ -964,6 +1118,31 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   </div>
                 )}
 
+                <button
+                  type="button"
+                  onClick={async () => {
+                    const res = await toggle(productId);
+                    if (res?.error === 'not_signed_in') {
+                      toast({
+                        title: 'Sign in required',
+                        description: 'Create a free account to save tours to your favorites.',
+                      });
+                      return;
+                    }
+                    toast({
+                      title: isBookmarked?.(productId) ? 'Removed from favorites' : 'Saved to favorites',
+                      description: 'You can view your favorites in your profile.',
+                    });
+                  }}
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border transition-colors ${
+                    isBookmarked?.(productId)
+                      ? 'bg-yellow-50 border-yellow-200 text-yellow-700 hover:bg-yellow-100'
+                      : 'bg-white/20 border-white/30 text-white hover:bg-white/30'
+                  }`}
+                >
+                  <Bookmark className={`w-4 h-4 ${isBookmarked?.(productId) ? 'text-yellow-600' : 'text-white'}`} />
+                  <span>{isBookmarked?.(productId) ? 'Saved' : 'Save'}</span>
+                </button>
               </div>
 
               {flags.length > 0 && (
@@ -1192,78 +1371,153 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 </motion.section>
               )}
 
-              {/* Why We Recommend This Tour */}
-              {recommendation ? (
+              {/* Tour Characteristics (Extracted Values) */}
+              {enrichment?.structured_values && (
                 <motion.section
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.18 }}
-                  className="bg-gradient-to-br from-purple-50 to-rose-50 rounded-lg shadow-sm p-6 md:p-8 border border-purple-100"
+                  className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg shadow-sm p-6 md:p-8 border border-purple-200"
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-full bg-white shadow-inner flex items-center justify-center text-purple-600 text-xl font-bold">
-                      ❤️
+                      📊
                     </div>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.4em] text-purple-500">TopTours pick</p>
-                      <h2 className="text-2xl font-bold text-gray-900">Why We Recommend This Tour</h2>
+                      <p className="text-xs uppercase tracking-[0.4em] text-purple-500">Tour Analysis</p>
+                      <h2 className="text-2xl font-bold text-gray-900">Tour Characteristics</h2>
                     </div>
                   </div>
-                  <p className="text-gray-700 text-lg leading-relaxed">{recommendation}</p>
-                  {recommendationHighlights.length > 0 && (
-                    <div className="mt-4 grid grid-cols-1 gap-3">
-                      {recommendationHighlights.map((item, index) => (
-                        <div key={`enrichment-highlight-${index}`} className="flex items-start gap-2 text-gray-700">
-                          <span className="text-purple-500 mt-1">•</span>
-                          <span>{item}</span>
+                  <p className="text-gray-600 text-base mb-6">
+                    This tour has been analyzed to help you understand its key features and match it with your travel preferences.
+                  </p>
+                  <div className="space-y-3">
+                    {[
+                      { key: 'adventureLevel', label: '🔥 Adventure Level', icon: '🔥' },
+                      { key: 'structureLevel', label: '📋 Structure Level', icon: '📋' },
+                      { key: 'foodImportance', label: '🍷 Food & Drink Importance', icon: '🍷' },
+                      { key: 'groupType', label: '👥 Group Type', icon: '👥' },
+                      { key: 'budgetLevel', label: '💰 Budget Level', icon: '💰' },
+                      { key: 'relaxationVsExploration', label: '🌊 Relaxation vs Exploration', icon: '🌊' },
+                    ].map(({ key, label, icon }) => {
+                      const value = enrichment.structured_values[key];
+                      if (value === undefined || value === null) return null;
+                      
+                      // Convert numeric value to descriptive text
+                      const getValueLabel = (val) => {
+                        if (val <= 25) return 'Low';
+                        if (val <= 50) return 'Moderate';
+                        if (val <= 75) return 'High';
+                        return 'Very High';
+                      };
+                      
+                      const getValueColor = (val) => {
+                        if (val <= 25) return 'bg-blue-500';
+                        if (val <= 50) return 'bg-yellow-500';
+                        if (val <= 75) return 'bg-orange-500';
+                        return 'bg-red-500';
+                      };
+                      
+                      return (
+                        <div key={key} className="flex items-center justify-between p-3 bg-white/60 rounded-lg">
+                          <div className="flex items-center gap-2">
+                            <span className="text-lg">{icon}</span>
+                            <span className="text-sm font-medium text-gray-700">{label.replace(/^[^\s]+\s/, '')}</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                              <div
+                                className={`h-full transition-all duration-500 ${getValueColor(value)}`}
+                                style={{ width: `${value}%` }}
+                              />
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className="text-sm font-semibold text-gray-700 min-w-[3rem] text-right">
+                                {value}%
+                              </span>
+                              <span className="text-xs text-gray-500 min-w-[4rem]">
+                                ({getValueLabel(value)})
+                              </span>
+                            </div>
+                          </div>
                         </div>
-                      ))}
-                    </div>
-                  )}
-                </motion.section>
-              ) : (
-                <motion.section
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.18 }}
-                  className="bg-gradient-to-br from-purple-50 to-rose-50 rounded-lg shadow-sm p-6 md:p-8 border border-dashed border-purple-200 text-center"
-                >
-                  <div className="flex flex-col items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-white shadow-inner flex items-center justify-center text-purple-600 text-xl font-bold">
-                      ❤️
-                    </div>
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.4em] text-purple-500">TopTours pick</p>
-                      <h2 className="text-2xl font-bold text-gray-900">Why We Recommend This Tour</h2>
-                    </div>
-                    <p className="text-gray-600 text-base max-w-3xl">
-                      Ready for a quick expert breakdown? Tap below to have TopTours AI analyze this experience and create a clear, helpful “should you book it?” summary.
-                    </p>
-        <div className="flex flex-col gap-2 items-center">
+                      );
+                    })}
+                  </div>
+                  <div className="mt-6 pt-4 border-t border-purple-200">
+                    <div className="flex flex-col items-center gap-4">
+                      <p className="text-xs text-gray-500 text-center">
+                        Set your travel preferences in your profile to see how well this tour matches your style.
+                      </p>
                       <Button
-                        onClick={handleGenerateRecommendation}
-                        disabled={isGeneratingRecommendation}
+                        onClick={handleGenerateMatch}
+                        disabled={isGeneratingMatch}
                         className="sunset-gradient text-white font-semibold px-6 py-3"
                       >
-            {isGeneratingRecommendation ? (
-              <span className="flex items-center gap-2">
-                <span className="relative flex h-4 w-4">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-                  <span className="relative inline-flex rounded-full h-4 w-4 bg-white" />
-                </span>
-                Thinking…
-              </span>
-            ) : (
-              'Ask AI to Recommend'
-            )}
+                        {isGeneratingMatch ? (
+                          <span className="flex items-center gap-2">
+                            <span className="relative flex h-4 w-4">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+                              <span className="relative inline-flex rounded-full h-4 w-4 bg-white" />
+                            </span>
+                            Calculating match…
+                          </span>
+                        ) : (
+                          'See Match with My Preferences'
+                        )}
                       </Button>
-                      {recommendationError && <p className="text-sm text-red-600">{recommendationError}</p>}
+                      {matchError && <p className="text-sm text-red-600">{matchError}</p>}
                     </div>
                   </div>
                 </motion.section>
               )}
+
+              {/* Show button to analyze if values not extracted yet */}
+              {!enrichment?.structured_values && (
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.18 }}
+                  className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg shadow-sm p-6 md:p-8 border border-dashed border-purple-200 text-center"
+                >
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-white shadow-inner flex items-center justify-center text-purple-600 text-xl font-bold">
+                      📊
+                    </div>
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.4em] text-purple-500">Tour Analysis</p>
+                      <h2 className="text-2xl font-bold text-gray-900">Tour Characteristics</h2>
+                    </div>
+                    <p className="text-gray-600 text-base max-w-3xl">
+                      Analyze this tour to extract its characteristics (adventure level, structure, food importance, etc.). This is a one-time analysis that enables personalized matching.
+                    </p>
+                    <Button
+                      onClick={handleExtractTourValues}
+                      disabled={isGeneratingMatch}
+                      className="sunset-gradient text-white font-semibold px-6 py-3"
+                    >
+                      {isGeneratingMatch ? (
+                        <span className="flex items-center gap-2">
+                          <span className="relative flex h-4 w-4">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+                            <span className="relative inline-flex rounded-full h-4 w-4 bg-white" />
+                          </span>
+                          Analyzing tour…
+                        </span>
+                      ) : (
+                        'Analyze Tour Characteristics'
+                      )}
+                    </Button>
+                    {matchError && <p className="text-sm text-red-600">{matchError}</p>}
+                    <p className="text-xs text-gray-500 mt-2">
+                      One-time analysis • Enables preference matching
+                    </p>
+                  </div>
+                </motion.section>
+              )}
+
 
               {/* What's Included */}
               {inclusions.length > 0 && (
@@ -1556,6 +1810,14 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                     )}
                   </CardContent>
                 </Card>
+
+                {/* Promotion Card */}
+                <TourPromotionCard 
+                  productId={productId} 
+                  tourData={tour}
+                  destinationId={primaryDestinationSlug || null}
+                  initialScore={initialPromotionScore}
+                />
 
                 {/* Destination Link */}
                 {destination && (
@@ -2077,6 +2339,225 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               </div>
             </div>
           )}
+        </div>
+      )}
+
+      {/* Match Results Modal */}
+      {showMatchResultsModal && matchData && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 overflow-y-auto"
+          onClick={() => setShowMatchResultsModal(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 md:p-8 my-8 max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
+                  <span className="text-2xl">🎯</span>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.4em] text-orange-500">Preference Match</p>
+                  <h2 className="text-2xl font-bold text-gray-900">How Well Does This Tour Match Your Preferences?</h2>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowMatchResultsModal(false)}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Match Score Badge */}
+            <div className="flex items-center justify-center mb-6">
+              <div className="relative">
+                <div className={`w-32 h-32 rounded-full flex items-center justify-center text-4xl font-bold shadow-lg ${
+                  matchData.matchScore >= 75 ? 'bg-gradient-to-br from-green-400 to-green-600 text-white' :
+                  matchData.matchScore >= 55 ? 'bg-gradient-to-br from-yellow-400 to-orange-500 text-white' :
+                  'bg-gradient-to-br from-red-400 to-red-600 text-white'
+                }`}>
+                  {matchData.matchScore}%
+                </div>
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full shadow text-xs font-semibold text-gray-700">
+                  Match
+                </div>
+              </div>
+            </div>
+
+            {/* Summary */}
+            <p className="text-gray-700 text-lg leading-relaxed mb-4 text-center font-medium">
+              {matchData.fitSummary}
+            </p>
+
+            {/* Ideal For */}
+            {matchData.idealFor && (
+              <div className="text-center mb-6">
+                <span className="inline-block bg-orange-50 px-4 py-2 rounded-full text-sm font-semibold text-orange-700 border border-orange-200">
+                  Ideal for: {matchData.idealFor}
+                </span>
+              </div>
+            )}
+
+            {/* Match Breakdown */}
+            {matchData.matches && (
+              <div className="mb-6">
+                <h3 className="text-sm font-semibold text-gray-800 mb-3">Match Breakdown:</h3>
+                <div className="space-y-3">
+                  {[
+                    { key: 'adventure', label: '🔥 Adventure level', icon: '🔥' },
+                    { key: 'structure', label: '📋 Structure preference', icon: '📋' },
+                    { key: 'food', label: '🍷 Food & drink interest', icon: '🍷' },
+                    { key: 'group', label: '👥 Group size preference', icon: '👥' },
+                    { key: 'budget', label: '💰 Budget vs comfort', icon: '💰' },
+                    { key: 'relaxExplore', label: '🌊 Relaxation vs exploration', icon: '🌊' },
+                  ].map(({ key, label, icon }) => {
+                    const score = matchData.matches[key] || 0;
+                    const isGood = score >= 75;
+                    const isOk = score >= 50;
+                    return (
+                      <div key={key} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div className="flex items-center gap-2">
+                          <span className="text-lg">{icon}</span>
+                          <span className="text-sm font-medium text-gray-700">{label.replace(/^[^\s]+\s/, '')}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div
+                              className={`h-full transition-all duration-500 ${
+                                isGood ? 'bg-green-500' : isOk ? 'bg-yellow-500' : 'bg-red-500'
+                              }`}
+                              style={{ width: `${score}%` }}
+                            />
+                          </div>
+                          <span className={`text-sm font-semibold min-w-[3rem] text-right ${
+                            isGood ? 'text-green-600' : isOk ? 'text-yellow-600' : 'text-red-600'
+                          }`}>
+                            {score}%
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Pros */}
+            {matchData.pros && matchData.pros.length > 0 && (
+              <div className="mb-4">
+                <h3 className="text-sm font-semibold text-gray-800 mb-2">✓ What makes this a good fit:</h3>
+                <div className="space-y-2">
+                  {matchData.pros.map((pro, index) => (
+                    <div key={`pro-${index}`} className="flex items-start gap-2 text-gray-700">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span>{pro}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Cons */}
+            {matchData.cons && matchData.cons.length > 0 && (
+              <div className="mb-6">
+                <h3 className="text-sm font-semibold text-gray-800 mb-2">⚠️ Things to consider:</h3>
+                <div className="space-y-2">
+                  {matchData.cons.map((con, index) => (
+                    <div key={`con-${index}`} className="flex items-start gap-2 text-gray-700">
+                      <span className="text-orange-500 mt-1">⚠</span>
+                      <span>{con}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-200">
+              <Button
+                asChild
+                className="sunset-gradient text-white font-semibold px-6 py-3 flex-1"
+              >
+                <a
+                  href={viatorUrl}
+                  target="_blank"
+                  rel="sponsored noopener noreferrer"
+                >
+                  Book this tour on Viator
+                  <ExternalLink className="w-5 h-5 ml-2 inline" />
+                </a>
+              </Button>
+              <Button
+                onClick={async () => {
+                  await toggle(productId);
+                  toast({
+                    title: isBookmarked?.(productId) ? 'Removed from favorites' : 'Saved to favorites',
+                    description: isBookmarked?.(productId) ? 'This tour has been removed from your saved tours.' : 'This tour has been saved to your favorites.',
+                  });
+                }}
+                variant="outline"
+                className="flex-1 border-2 border-orange-200 hover:bg-orange-50"
+              >
+                <Bookmark className={`w-4 h-4 mr-2 ${isBookmarked?.(productId) ? 'text-yellow-600 fill-yellow-600' : 'text-gray-600'}`} />
+                {isBookmarked?.(productId) ? 'Saved to Favorites' : 'Save to Favorites'}
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Match Requirements Modal */}
+      {showMatchModal && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4"
+          onClick={() => setShowMatchModal(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
+                <span className="text-2xl">🎯</span>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-900">Setup Required</h3>
+                <p className="text-sm text-gray-600">To use AI tour matching</p>
+              </div>
+            </div>
+            
+            <p className="text-gray-700 mb-6">
+              {matchModalMessage}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              {matchModalMessage.includes('sign in') ? (
+                <Button
+                  onClick={() => router.push('/auth')}
+                  className="sunset-gradient text-white flex-1"
+                >
+                  Sign In / Sign Up
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => router.push('/profile?tab=trip')}
+                  className="sunset-gradient text-white flex-1"
+                >
+                  Go to Preferences
+                </Button>
+              )}
+              <Button
+                onClick={() => setShowMatchModal(false)}
+                variant="outline"
+                className="flex-1"
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
         </div>
       )}
 
