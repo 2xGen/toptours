@@ -8,9 +8,13 @@ import { Badge } from '@/components/ui/badge';
 import { getTourUrl } from '@/utils/tourHelpers';
 
 const FeaturedTours = ({ onOpenModal, topTours = [], topPromoters = [] }) => {
-  // If no tours from leaderboard, show empty state or fallback
-  if (!topTours || topTours.length === 0) {
-    return null;
+  // Always render the section, even if data is empty (for SEO and layout consistency)
+  const hasTours = topTours && topTours.length > 0;
+  const hasPromoters = topPromoters && topPromoters.length > 0;
+
+  // Debug logging (remove in production if needed)
+  if (typeof window !== 'undefined') {
+    console.log('FeaturedTours - topTours:', topTours, 'topPromoters:', topPromoters);
   }
 
   // Tier badge config
@@ -22,7 +26,7 @@ const FeaturedTours = ({ onOpenModal, topTours = [], topPromoters = [] }) => {
   };
 
   return (
-    <section className="py-20 adventure-gradient">
+    <section className="py-20 adventure-gradient" style={{ background: 'linear-gradient(135deg, #48dbfb 0%, #0abde3 100%)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -40,7 +44,7 @@ const FeaturedTours = ({ onOpenModal, topTours = [], topPromoters = [] }) => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {topTours.map((tour, index) => {
+          {hasTours ? topTours.map((tour, index) => {
             const tourUrl = tour.slug 
               ? `/tours/${tour.productId}/${tour.slug}` 
               : getTourUrl(tour.productId, tour.title);
@@ -100,7 +104,13 @@ const FeaturedTours = ({ onOpenModal, topTours = [], topPromoters = [] }) => {
                 </Card>
               </motion.div>
             );
-          })}
+          }) : (
+            // Empty state when no tours available
+            <div className="col-span-3 text-center py-12">
+              <Trophy className="w-16 h-16 text-white/50 mx-auto mb-4" />
+              <p className="text-white/80 text-lg">No tours on the leaderboard yet. Be the first to promote a tour!</p>
+            </div>
+          )}
         </div>
 
         {/* Top Promoters Section */}

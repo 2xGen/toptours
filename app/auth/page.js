@@ -201,7 +201,18 @@ function AuthPageContent() {
         return;
       } else if (mode === 'signin') {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
+        if (error) {
+          // Handle specific error cases
+          if (error.message?.includes('Invalid login credentials') || error.message?.includes('Email not confirmed')) {
+            setMessage('Invalid email or password. Please check your credentials and try again.');
+          } else if (error.message?.includes('Email not confirmed')) {
+            setMessage('Please check your email to confirm your account before signing in.');
+          } else {
+            throw error;
+          }
+          setLoading(false);
+          return;
+        }
         
         // Check if user has display name
         const { data: { user } } = await supabase.auth.getUser();
@@ -276,7 +287,15 @@ function AuthPageContent() {
         // Sign up - just email and password, no nickname needed yet
         const { data, error } = await supabase.auth.signUp({ email, password });
         if (error) {
-          throw error;
+          // Handle specific error cases
+          if (error.message?.includes('User already registered') || error.message?.includes('already registered') || error.message?.includes('already exists')) {
+            setMessage('Email is already in use. If this is yours, please sign in.');
+            setMode('signin');
+          } else {
+            throw error;
+          }
+          setLoading(false);
+          return;
         }
         
         // If email confirmation is disabled, a session is returned and user is signed in
@@ -517,9 +536,20 @@ function AuthPageContent() {
           </div>
         )}
         {message && (
-          <p className={`mt-4 text-sm ${message.includes('sent') || message.includes('Signed in') || message.includes('created') || message.includes('updated successfully') ? 'text-green-600' : 'text-gray-700'}`}>
-            {message}
-          </p>
+          <div className={`mt-4 text-sm ${message.includes('sent') || message.includes('Signed in') || message.includes('created') || message.includes('updated successfully') || message.includes('saved!') ? 'text-green-600' : message.includes('already in use') ? 'text-orange-600' : 'text-red-600'}`}>
+            <p>{message}</p>
+            {message.includes('already in use') && (
+              <button
+                onClick={() => {
+                  setMode('signin');
+                  setMessage('');
+                }}
+                className="mt-2 text-sm font-semibold underline hover:no-underline"
+              >
+                Go to Sign In →
+              </button>
+            )}
+          </div>
         )}
         {mode === 'forgot' && (
           <p className="mt-4 text-xs text-gray-500">
