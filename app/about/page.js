@@ -59,9 +59,9 @@ export default function AboutPage() {
     <>
       <NavigationNext onOpenModal={handleOpenModal} />
       
-      <div className="min-h-screen" suppressHydrationWarning>
+      <div className="min-h-screen overflow-x-hidden" suppressHydrationWarning>
         {/* Hero Section */}
-        <section className="pt-24 pb-16 ocean-gradient">
+        <section className="pt-24 pb-16 ocean-gradient overflow-x-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}

@@ -1451,9 +1451,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                               <span className="text-sm font-semibold text-gray-700 min-w-[3rem] text-right">
                                 {value}%
                               </span>
-                              <span className="text-xs text-gray-500 min-w-[4rem]">
-                                ({getValueLabel(value)})
-                              </span>
                             </div>
                           </div>
                         </div>

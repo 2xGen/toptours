@@ -246,7 +246,7 @@ export default function TopToursClient({ initialTours = [], initialBoosts = [], 
                       >
                         <Card className="hover:shadow-lg transition-all bg-white">
                           <CardContent className="p-4">
-                            <div className="flex items-center gap-4">
+                            <div className="flex flex-col sm:flex-row items-start gap-4">
                               {/* Thumbnail */}
                               <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden">
                                 {image ? (
@@ -264,47 +264,53 @@ export default function TopToursClient({ initialTours = [], initialBoosts = [], 
                                   </div>
                                 )}
                               </div>
-                              <div className="flex-1 min-w-0">
-                                <div className="flex items-start justify-between gap-4">
-                                  <div className="flex-1 min-w-0">
-                                    <h3 className="font-semibold text-gray-900 mb-1 line-clamp-1">
-                                      {title}
-                                    </h3>
-                                    <div className="flex items-center gap-2 text-sm text-gray-600 flex-wrap">
-                                      <User className="w-4 h-4" />
-                                      <span>{userName}</span>
-                                      
-                                      {/* Tier Badge */}
-                                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${tierInfo.color}`}>
-                                        <TierIcon className="w-3 h-3" />
-                                        {tierInfo.label}
-                                      </span>
-                                      
-                                      {/* Streak Badge */}
-                                      {streakDays > 0 && (
-                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-700">
-                                          <Flame className="w-3 h-3" />
-                                          {streakDays} day{streakDays !== 1 ? 's' : ''}
-                                        </span>
-                                      )}
-                                      
-                                      {pointsSpent > 0 && (
-                                        <>
-                                          <span>•</span>
-                                          <span className="font-semibold text-orange-600">{pointsSpent} points</span>
-                                        </>
-                                      )}
-                                      <span>•</span>
-                                      <span>{timeAgo}</span>
+                              <div className="flex-1 min-w-0 w-full relative">
+                                {/* Tour Title - Full width on mobile */}
+                                <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 text-base sm:text-sm pr-0 sm:pr-24">
+                                  {title}
+                                </h3>
+                                
+                                {/* User Info - Better styled */}
+                                <div className="space-y-2 pr-0 sm:pr-24">
+                                  <div className="flex items-center gap-2 flex-wrap">
+                                    <div className="flex items-center gap-1.5">
+                                      <User className="w-4 h-4 text-gray-500" />
+                                      <span className="text-sm font-medium text-gray-900">{userName}</span>
                                     </div>
+                                    
+                                    {/* Tier Badge */}
+                                    <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold ${tierInfo.color}`}>
+                                      <TierIcon className="w-3 h-3" />
+                                      {tierInfo.label}
+                                    </span>
+                                    
+                                    {/* Streak Badge */}
+                                    {streakDays > 0 && (
+                                      <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-700">
+                                        <Flame className="w-3 h-3" />
+                                        {streakDays} day{streakDays !== 1 ? 's' : ''}
+                                      </span>
+                                    )}
                                   </div>
-                                  <Link href={tourUrl}>
-                                    <Button variant="outline" size="sm" className="flex-shrink-0">
-                                      View Tour
-                                      <ArrowRight className="w-4 h-4 ml-1" />
-                                    </Button>
-                                  </Link>
+                                  
+                                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                                    {pointsSpent > 0 && (
+                                      <>
+                                        <span className="font-semibold text-orange-600">{pointsSpent} points</span>
+                                        <span>•</span>
+                                      </>
+                                    )}
+                                    <span>{timeAgo}</span>
+                                  </div>
                                 </div>
+                                
+                                {/* View Tour Button - Full width on mobile, absolute on desktop */}
+                                <Link href={tourUrl} className="block mt-3 sm:mt-0 sm:absolute sm:top-0 sm:right-0">
+                                  <Button variant="outline" size="sm" className="w-full sm:w-auto">
+                                    View Tour
+                                    <ArrowRight className="w-4 h-4 ml-1" />
+                                  </Button>
+                                </Link>
                               </div>
                             </div>
                           </CardContent>

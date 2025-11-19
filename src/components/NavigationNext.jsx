@@ -167,6 +167,26 @@ const NavigationNext = () => {
                 Explore TopTours
               </Link>
             </Button>
+            {/* Auth Section */}
+            <div className="mt-4 pt-4 border-t border-white/20">
+              {!authLoading && user ? (
+                <Link
+                  href="/profile"
+                  className="block py-2 px-3 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors text-sm font-medium text-center"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {displayName || 'Profile'}
+                </Link>
+              ) : (
+                <Link
+                  href="/auth"
+                  className="block py-2 px-3 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors text-sm font-medium text-center"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Sign In / Sign Up
+                </Link>
+              )}
+            </div>
           </motion.div>
         )}
       </div>
