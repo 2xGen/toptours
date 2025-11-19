@@ -744,8 +744,19 @@ Now here is the tour data:
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('OpenAI API error:', errorText);
-      return { error: 'Failed to extract tour values' };
+      console.error('OpenAI API error:', {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorText
+      });
+      let errorMessage = 'Failed to extract tour values';
+      try {
+        const errorJson = JSON.parse(errorText);
+        errorMessage = errorJson.error?.message || errorJson.error || errorMessage;
+      } catch (e) {
+        errorMessage = errorText || errorMessage;
+      }
+      return { error: `OpenAI API error (${response.status}): ${errorMessage}` };
     }
 
     const data = await response.json();
@@ -781,7 +792,16 @@ Now here is the tour data:
     return { values: normalized };
   } catch (error) {
     console.error('Error extracting tour structured values:', error);
-    return { error: error.message || 'Failed to extract tour values' };
+    console.error('Error stack:', error.stack);
+    console.error('Error details:', {
+      message: error.message,
+      name: error.name,
+      cause: error.cause
+    });
+    return { 
+      error: error.message || 'Failed to extract tour values',
+      details: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    };
   }
 };
 

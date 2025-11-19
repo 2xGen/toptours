@@ -110,23 +110,31 @@ export default async function handler(req, res) {
       tourValues = extractionResult.values;
 
       // Save structured values to database for future use (as JSONB)
-      const { error: upsertError } = await supabase
-        .from('tour_enrichment')
-        .upsert({
-          product_id: productId,
-          structured_values: tourValues, // JSONB column accepts object directly
-        }, {
-          onConflict: 'product_id',
-        });
+      try {
+        const { error: upsertError } = await supabase
+          .from('tour_enrichment')
+          .upsert({
+            product_id: productId,
+            structured_values: tourValues, // JSONB column accepts object directly
+          }, {
+            onConflict: 'product_id',
+          });
 
-      if (upsertError) {
-        console.error('Error saving structured values:', upsertError);
+        if (upsertError) {
+          console.error('Error saving structured values to database:', upsertError);
+          // Continue anyway - we have the values in memory
+        } else {
+          console.log('Tour values saved to database successfully');
+        }
+      } catch (dbError) {
+        console.error('Database error saving structured values:', dbError);
         // Continue anyway - we have the values in memory
       }
     }
 
     // If extractOnly mode, just return that values were extracted
     if (extractOnly) {
+      console.log('Returning extracted values (extractOnly mode)');
       return res.status(200).json({ 
         valuesExtracted: true,
         structuredValues: tourValues 
@@ -143,7 +151,12 @@ export default async function handler(req, res) {
     return res.status(200).json({ match: matchResult });
   } catch (error) {
     console.error('Error generating tour match:', error);
-    return res.status(500).json({ error: 'Failed to generate tour match' });
+    console.error('Error stack:', error.stack);
+    console.error('Error message:', error.message);
+    return res.status(500).json({ 
+      error: error.message || 'Failed to generate tour match',
+      details: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
   }
 }
 
