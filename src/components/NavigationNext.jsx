@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
@@ -14,6 +14,7 @@ const NavigationNext = () => {
   const [authLoading, setAuthLoading] = useState(true);
   const pathname = usePathname();
   const supabase = createSupabaseBrowserClient();
+  const navRef = useRef(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -79,6 +80,30 @@ const NavigationNext = () => {
     };
   }, [supabase]);
 
+  // Close menu when pathname changes (navigation occurred)
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isOpen && navRef.current && !navRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isOpen]);
+
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'How It Works', path: '/how-it-works' },
@@ -87,7 +112,7 @@ const NavigationNext = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-effect">
+    <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50 glass-effect">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center">
