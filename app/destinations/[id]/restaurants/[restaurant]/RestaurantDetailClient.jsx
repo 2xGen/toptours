@@ -431,7 +431,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                         {restaurant.sustainability.guideUrl && (
                           <div className="mt-6">
                             <Button asChild className="bg-green-600 hover:bg-green-700 text-white">
-                              <Link href={restaurant.sustainability.guideUrl} target="_blank" rel="noopener noreferrer">
+                              <Link href={restaurant.sustainability.guideUrl}>
                                 {restaurant.sustainability.guideCta || 'Read the guide'}
                               </Link>
                             </Button>

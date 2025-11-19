@@ -202,11 +202,39 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   {safeDestination.heroDescription}
                 </p>
                 <div className="flex flex-wrap gap-2 sm:gap-4 mb-6">
-                  {safeDestination.tourCategories.slice(0, 3).map((category, index) => (
-                    <Badge key={index} variant="outline" className="bg-white/20 text-white border-white/30 text-sm">
-                      {typeof category === 'string' ? category : category.name}
-                    </Badge>
-                  ))}
+                  {safeDestination.tourCategories
+                    .filter(category => {
+                      // Only show categories that have guides
+                      if (typeof category === 'object' && category.hasGuide) return true;
+                      // If it's a string, check if there's a guide for it
+                      const categoryName = typeof category === 'string' ? category : category.name;
+                      return safeDestination.tourCategories.some(c => 
+                        typeof c === 'object' && c.name === categoryName && c.hasGuide
+                      );
+                    })
+                    .slice(0, 3)
+                    .map((category, index) => {
+                      const categoryName = typeof category === 'string' ? category : category.name;
+                      const categorySlug = categoryName
+                        .toLowerCase()
+                        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
+                        .replace(/&/g, 'and')
+                        .replace(/'/g, '') // Remove apostrophes
+                        .replace(/\./g, '') // Remove periods
+                        .replace(/\s+/g, '-'); // Replace spaces with hyphens
+                      
+                      return (
+                        <Link
+                          key={index}
+                          href={`/destinations/${safeDestination.id}/guides/${categorySlug}`}
+                          className="inline-block"
+                        >
+                          <Badge variant="outline" className="bg-white/20 text-white border-white/30 text-sm hover:bg-white/30 hover:border-white/40 transition-colors cursor-pointer">
+                            {categoryName}
+                          </Badge>
+                        </Link>
+                      );
+                    })}
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <Button
