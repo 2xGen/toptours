@@ -88,6 +88,7 @@ export default async function handler(req, res) {
     // If structured values exist, use them
     if (enrichment?.structured_values && typeof enrichment.structured_values === 'object') {
       tourValues = enrichment.structured_values;
+      console.log('Using existing structured values from database');
     } else {
       // Extract structured values using AI (one-time)
       console.log('Starting tour value extraction...');
@@ -134,11 +135,20 @@ export default async function handler(req, res) {
 
     // If extractOnly mode, just return that values were extracted
     if (extractOnly) {
+      if (!tourValues) {
+        console.error('Tour values are null/undefined in extractOnly mode');
+        return res.status(500).json({ error: 'Failed to extract tour values - no values returned' });
+      }
       console.log('Returning extracted values (extractOnly mode)');
-      return res.status(200).json({ 
-        valuesExtracted: true,
-        structuredValues: tourValues 
-      });
+      try {
+        return res.status(200).json({ 
+          valuesExtracted: true,
+          structuredValues: tourValues 
+        });
+      } catch (jsonError) {
+        console.error('Error serializing JSON response:', jsonError);
+        return res.status(500).json({ error: 'Failed to serialize response' });
+      }
     }
 
     // Calculate match using simple algorithm (no AI)
