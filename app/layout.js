@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { Suspense } from 'react'
 import CookieConsentManager from '@/components/CookieConsentManager'
 import { Toaster } from '@/components/ui/toaster'
 import PageViewTracker from '@/components/PageViewTracker'
@@ -101,7 +102,9 @@ export default function RootLayout({ children }) {
         style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', backgroundAttachment: 'fixed' }}
         suppressHydrationWarning
       >
-        <PageViewTracker />
+        <Suspense fallback={null}>
+          <PageViewTracker />
+        </Suspense>
         {children}
         <CookieConsentManager />
         <Toaster />
