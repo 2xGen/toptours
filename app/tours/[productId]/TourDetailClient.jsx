@@ -812,8 +812,16 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData?.error || 'Failed to extract tour values');
+        let errorMessage = 'Failed to extract tour values';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData?.error || errorMessage;
+        } catch (e) {
+          // If response is not JSON, try to get text
+          const errorText = await response.text();
+          errorMessage = errorText || errorMessage;
+        }
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();

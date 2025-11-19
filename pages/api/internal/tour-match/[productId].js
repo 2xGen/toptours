@@ -89,7 +89,15 @@ export default async function handler(req, res) {
       const extractionResult = await extractTourStructuredValues(tour);
       
       if (extractionResult.error) {
-        return res.status(500).json({ error: extractionResult.error });
+        console.error('Tour extraction error:', extractionResult.error);
+        // Provide more specific error message
+        let errorMessage = extractionResult.error;
+        if (extractionResult.error === 'Missing OpenAI API key') {
+          errorMessage = 'OpenAI API key is not configured. Please add OPENAI_API_KEY to environment variables.';
+        } else if (extractionResult.error.includes('OpenAI')) {
+          errorMessage = `OpenAI API error: ${extractionResult.error}`;
+        }
+        return res.status(500).json({ error: errorMessage });
       }
 
       tourValues = extractionResult.values;
