@@ -45,9 +45,11 @@ export default async function handler(req, res) {
     let tour = null;
     if (req.body && typeof req.body === 'object' && req.body.tour) {
       tour = req.body.tour;
+      console.log('Using tour data from request body');
     }
 
     if (!tour) {
+      console.log('Fetching tour from Viator API...');
       const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
       const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
 
@@ -64,15 +66,17 @@ export default async function handler(req, res) {
 
       if (!productResponse.ok) {
         const errorText = await productResponse.text();
-        console.error('Failed to fetch tour from Viator:', errorText);
-        return res.status(500).json({ error: 'Unable to fetch tour details' });
+        console.error('Failed to fetch tour from Viator:', productResponse.status, errorText);
+        return res.status(500).json({ error: `Unable to fetch tour details from Viator: ${productResponse.status} ${errorText}` });
       }
 
       tour = await productResponse.json();
+      console.log('Tour fetched from Viator successfully');
     }
 
     if (!tour || tour.error) {
-      return res.status(404).json({ error: 'Tour not found' });
+      console.error('Tour data invalid:', { hasTour: !!tour, tourError: tour?.error });
+      return res.status(404).json({ error: 'Tour not found or invalid tour data' });
     }
 
     // Check if tour already has structured values in database (use cached version)
@@ -86,6 +90,7 @@ export default async function handler(req, res) {
       tourValues = enrichment.structured_values;
     } else {
       // Extract structured values using AI (one-time)
+      console.log('Starting tour value extraction...');
       const extractionResult = await extractTourStructuredValues(tour);
       
       if (extractionResult.error) {
@@ -99,6 +104,8 @@ export default async function handler(req, res) {
         }
         return res.status(500).json({ error: errorMessage });
       }
+      
+      console.log('Tour values extracted successfully:', Object.keys(extractionResult.values || {}));
 
       tourValues = extractionResult.values;
 

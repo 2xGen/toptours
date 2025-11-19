@@ -813,15 +813,22 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
 
       if (!response.ok) {
         let errorMessage = 'Failed to extract tour values';
+        const status = response.status;
         try {
           const errorData = await response.json();
           errorMessage = errorData?.error || errorMessage;
+          console.error('API Error Response:', { status, error: errorData });
         } catch (e) {
           // If response is not JSON, try to get text
-          const errorText = await response.text();
-          errorMessage = errorText || errorMessage;
+          try {
+            const errorText = await response.text();
+            errorMessage = errorText || errorMessage;
+            console.error('API Error Text:', { status, error: errorText });
+          } catch (textError) {
+            console.error('API Error (could not parse):', { status, error: textError });
+          }
         }
-        throw new Error(errorMessage);
+        throw new Error(`[${status}] ${errorMessage}`);
       }
 
       const data = await response.json();
