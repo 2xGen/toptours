@@ -1,9 +1,24 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend with API key
+const resendApiKey = process.env.RESEND_API_KEY;
+if (!resendApiKey) {
+  console.warn('⚠️ RESEND_API_KEY is not set in environment variables');
+}
+
+const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'noreply@toptoursai.com';
 const FROM_NAME = 'TopTours.ai™';
+
+// Log configuration on module load (only in development)
+if (process.env.NODE_ENV === 'development') {
+  console.log('📧 Resend email configuration:', {
+    hasApiKey: !!resendApiKey,
+    fromEmail: FROM_EMAIL,
+    fromName: FROM_NAME,
+  });
+}
 
 /**
  * Send subscription confirmation email
@@ -14,7 +29,13 @@ export async function sendSubscriptionConfirmationEmail({
   startDate, 
   endDate 
 }) {
+  if (!resend) {
+    console.error('❌ Resend not initialized - RESEND_API_KEY is missing');
+    return { success: false, error: 'Resend not configured' };
+  }
+
   try {
+    console.log(`📧 Attempting to send subscription confirmation email to: ${to}`);
     const { data, error } = await resend.emails.send({
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
       to: [to],
@@ -69,13 +90,16 @@ export async function sendSubscriptionConfirmationEmail({
     });
 
     if (error) {
-      console.error('Error sending subscription confirmation email:', error);
+      console.error('❌ Resend API error sending subscription confirmation email:', error);
+      console.error('Error details:', JSON.stringify(error, null, 2));
       return { success: false, error };
     }
 
+    console.log('✅ Subscription confirmation email sent successfully:', data?.id);
     return { success: true, data };
   } catch (error) {
-    console.error('Error sending subscription confirmation email:', error);
+    console.error('❌ Exception sending subscription confirmation email:', error);
+    console.error('Error stack:', error.stack);
     return { success: false, error };
   }
 }
@@ -89,7 +113,13 @@ export async function sendInstantBoostConfirmationEmail({
   points, 
   tourUrl 
 }) {
+  if (!resend) {
+    console.error('❌ Resend not initialized - RESEND_API_KEY is missing');
+    return { success: false, error: 'Resend not configured' };
+  }
+
   try {
+    console.log(`📧 Attempting to send instant boost confirmation email to: ${to}`);
     const { data, error } = await resend.emails.send({
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
       to: [to],
@@ -142,13 +172,16 @@ export async function sendInstantBoostConfirmationEmail({
     });
 
     if (error) {
-      console.error('Error sending instant boost confirmation email:', error);
+      console.error('❌ Resend API error sending instant boost confirmation email:', error);
+      console.error('Error details:', JSON.stringify(error, null, 2));
       return { success: false, error };
     }
 
+    console.log('✅ Instant boost confirmation email sent successfully:', data?.id);
     return { success: true, data };
   } catch (error) {
-    console.error('Error sending instant boost confirmation email:', error);
+    console.error('❌ Exception sending instant boost confirmation email:', error);
+    console.error('Error stack:', error.stack);
     return { success: false, error };
   }
 }
@@ -161,7 +194,13 @@ export async function sendSubscriptionCancellationEmail({
   planName, 
   endDate 
 }) {
+  if (!resend) {
+    console.error('❌ Resend not initialized - RESEND_API_KEY is missing');
+    return { success: false, error: 'Resend not configured' };
+  }
+
   try {
+    console.log(`📧 Attempting to send subscription cancellation email to: ${to}`);
     const { data, error } = await resend.emails.send({
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
       to: [to],

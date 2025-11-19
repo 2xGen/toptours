@@ -199,16 +199,22 @@ async function handleCheckoutSessionCompleted(session) {
           const { data: { user }, error: userError } = await supabase.auth.admin.getUserById(userId);
           
           if (user?.email) {
-            await sendSubscriptionConfirmationEmail({
+            const emailResult = await sendSubscriptionConfirmationEmail({
               to: user.email,
               planName: plan.charAt(0).toUpperCase() + plan.slice(1),
               startDate: startDate.toISOString(),
               endDate: endDate.toISOString(),
             });
-            console.log(`✅ Subscription confirmation email sent to ${user.email}`);
+            if (emailResult.success) {
+              console.log(`✅ Subscription confirmation email sent to ${user.email}`);
+            } else {
+              console.error(`❌ Failed to send subscription confirmation email to ${user.email}:`, emailResult.error);
+            }
+          } else {
+            console.warn(`⚠️ No email found for user ${userId}, skipping subscription confirmation email`);
           }
         } catch (emailError) {
-          console.error('Error sending subscription confirmation email:', emailError);
+          console.error('❌ Exception sending subscription confirmation email:', emailError);
           // Don't fail the webhook if email fails
         }
       }
@@ -283,16 +289,22 @@ async function handleCheckoutSessionCompleted(session) {
             ? `https://toptours.ai/tours/${productId}`
             : null;
           
-          await sendInstantBoostConfirmationEmail({
+          const emailResult = await sendInstantBoostConfirmationEmail({
             to: user.email,
             tourName: tourPromo?.tour_name || 'Your selected tour',
             points: packageInfo.points,
             tourUrl: tourUrl,
           });
-          console.log(`✅ Instant boost confirmation email sent to ${user.email}`);
+          if (emailResult.success) {
+            console.log(`✅ Instant boost confirmation email sent to ${user.email}`);
+          } else {
+            console.error(`❌ Failed to send instant boost confirmation email to ${user.email}:`, emailResult.error);
+          }
+        } else {
+          console.warn(`⚠️ No email found for user ${userId}, skipping instant boost confirmation email`);
         }
       } catch (emailError) {
-        console.error('Error sending instant boost confirmation email:', emailError);
+        console.error('❌ Exception sending instant boost confirmation email:', emailError);
         // Don't fail the webhook if email fails
       }
     }
