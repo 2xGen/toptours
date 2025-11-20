@@ -7,26 +7,30 @@ import { Button } from '@/components/ui/button';
 import { 
   Anchor, MapPin, Clock, Users, DollarSign, Calendar, 
   Camera, Shirt, Sun, Waves, Heart, Star, ArrowRight,
-  BookOpen, ChevronRight, Home, GlassWater, Music, Sailboat, Ship, PartyPopper, HeartHandshake, X, ExternalLink
+  BookOpen, ChevronRight, Home, GlassWater, Music, Sailboat, Ship, PartyPopper, HeartHandshake, X, ExternalLink, Search
 } from 'lucide-react';
 import Link from 'next/link';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
+import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
+import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import { destinations } from '../../../../../src/data/destinationsData';
 import { travelGuides } from '../../../../../src/data/travelGuidesData';
 import { categoryGuides as categoryGuidesBase } from '../guidesData';
 import { categoryGuidesNorthAmerica } from '../guidesData-north-america';
 import { categoryGuidesAfrica } from '../guidesData-africa';
+import { categoryGuidesMiddleEast } from '../guidesData-middle-east';
 
 // Merge all regional guide files
 const categoryGuides = {
   ...categoryGuidesBase,
   ...categoryGuidesNorthAmerica,
   ...categoryGuidesAfrica,
+  ...categoryGuidesMiddleEast,
 };
 
-export default function CategoryGuideClient({ destinationId, categorySlug, guideData }) {
+export default function CategoryGuideClient({ destinationId, categorySlug, guideData, categoryTours = [], promotionScores = {} }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [showStickyButton, setShowStickyButton] = React.useState(true);
   
@@ -205,6 +209,178 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               </p>
             </div>
           </motion.div>
+
+          {/* Featured Tours Section */}
+          {categoryTours && categoryTours.length > 0 && (
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-12"
+            >
+              <div className="text-center mb-8">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4">
+                  Featured {guideData.categoryName} Tours
+                </h2>
+                <p className="text-gray-600 max-w-2xl mx-auto">
+                  Discover our top picks for {guideData.categoryName.toLowerCase()} in {destination.name}
+                </p>
+              </div>
+
+              {/* Mobile grid layout */}
+              <div className="md:hidden grid grid-cols-1 gap-6">
+                {categoryTours.map((tour, index) => {
+                  const tourId = tour.productId;
+                  const tourUrl = getTourUrl(tourId, tour.title);
+                  
+                  return (
+                    <Card key={tourId || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                      <Link href={tourUrl}>
+                        <div className="relative h-32 bg-gray-200 flex-shrink-0 cursor-pointer">
+                          {tour.image ? (
+                            <img
+                              src={tour.image}
+                              alt={tour.title}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                              <Search className="w-6 h-6 text-gray-400" />
+                            </div>
+                          )}
+                        </div>
+                      </Link>
+
+                      <CardContent className="p-3 flex-1 flex flex-col">
+                        <Link href={tourUrl}>
+                          <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 h-10 hover:text-purple-600 transition-colors cursor-pointer">
+                            {tour.title}
+                          </h4>
+                        </Link>
+
+                        {/* Promotion Score / Boost Button */}
+                        <div className="mb-2">
+                          <TourPromotionCard 
+                            productId={tourId} 
+                            compact={true}
+                            tourData={{
+                              productId: tourId,
+                              title: tour.title,
+                              images: tour.image ? [{
+                                variants: [
+                                  { url: tour.image },
+                                  { url: tour.image },
+                                  { url: tour.image },
+                                  { url: tour.image }
+                                ]
+                              }] : []
+                            }}
+                            destinationId={destinationId}
+                            initialScore={promotionScores[tourId] || {
+                              product_id: tourId,
+                              total_score: 0,
+                              monthly_score: 0,
+                              weekly_score: 0,
+                              past_28_days_score: 0,
+                            }}
+                          />
+                        </div>
+
+                        {/* View Details Button */}
+                        <Button
+                          asChild
+                          size="sm"
+                          className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
+                        >
+                          <Link href={tourUrl}>
+                            View Details
+                            <ArrowRight className="w-3 h-3 ml-1" />
+                          </Link>
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+
+              {/* Desktop grid layout - 4 tours per row */}
+              <div className="hidden md:grid md:grid-cols-4 gap-6">
+                {categoryTours.map((tour, index) => {
+                  const tourId = tour.productId;
+                  const tourUrl = getTourUrl(tourId, tour.title);
+                  
+                  return (
+                    <Card key={tourId || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                      <Link href={tourUrl}>
+                        <div className="relative h-32 bg-gray-200 flex-shrink-0 cursor-pointer">
+                          {tour.image ? (
+                            <img
+                              src={tour.image}
+                              alt={tour.title}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                              <Search className="w-6 h-6 text-gray-400" />
+                            </div>
+                          )}
+                        </div>
+                      </Link>
+
+                      <CardContent className="p-3 flex-1 flex flex-col">
+                        <Link href={tourUrl}>
+                          <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 h-10 hover:text-purple-600 transition-colors cursor-pointer">
+                            {tour.title}
+                          </h4>
+                        </Link>
+
+                        {/* Promotion Score / Boost Button */}
+                        <div className="mb-2">
+                          <TourPromotionCard 
+                            productId={tourId} 
+                            compact={true}
+                            tourData={{
+                              productId: tourId,
+                              title: tour.title,
+                              images: tour.image ? [{
+                                variants: [
+                                  { url: tour.image },
+                                  { url: tour.image },
+                                  { url: tour.image },
+                                  { url: tour.image }
+                                ]
+                              }] : []
+                            }}
+                            destinationId={destinationId}
+                            initialScore={promotionScores[tourId] || {
+                              product_id: tourId,
+                              total_score: 0,
+                              monthly_score: 0,
+                              weekly_score: 0,
+                              past_28_days_score: 0,
+                            }}
+                          />
+                        </div>
+
+                        {/* View Details Button */}
+                        <Button
+                          asChild
+                          size="sm"
+                          className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
+                        >
+                          <Link href={tourUrl}>
+                            View Details
+                            <ArrowRight className="w-3 h-3 ml-1" />
+                          </Link>
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
           {/* Primary CTA */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}

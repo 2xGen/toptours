@@ -517,6 +517,8 @@ export async function updateTourMetadata(productId, tourData) {
               tourRegion = 'south_america';
             } else if (categoryLower === 'africa') {
               tourRegion = 'africa';
+            } else if (categoryLower === 'middle east') {
+              tourRegion = 'middle_east';
             }
           }
         }
@@ -546,6 +548,8 @@ export async function updateTourMetadata(productId, tourData) {
               tourRegion = 'south_america';
             } else if (categoryLower === 'africa') {
               tourRegion = 'africa';
+            } else if (categoryLower === 'middle east') {
+              tourRegion = 'middle_east';
             }
           }
         } catch (importError2) {
@@ -567,6 +571,9 @@ export async function updateTourMetadata(productId, tourData) {
         } else if (destinationName.includes('asia') || 
                    ['tokyo', 'bali', 'singapore', 'bangkok', 'hong kong'].some(d => destinationName.includes(d))) {
           tourRegion = 'asia';
+        } else if (destinationName.includes('middle east') || 
+                   ['dubai', 'abu dhabi', 'doha', 'muscat', 'riyadh', 'tel aviv', 'amman', 'beirut', 'cairo', 'istanbul'].some(d => destinationName.includes(d))) {
+          tourRegion = 'middle_east';
         }
       }
     }
@@ -1111,6 +1118,150 @@ export async function getTopPromoters(limit = 10) {
   } catch (error) {
     console.error('Error in getTopPromoters:', error);
     return [];
+  }
+}
+
+/**
+ * Get hardcoded tours for a specific destination and category
+ * Lightweight function - fetches from Supabase (no API calls)
+ * Returns tours for the specified category with TopTours scores
+ */
+export async function getHardcodedToursByCategory(destinationId, categoryName) {
+  if (!destinationId || !categoryName) return [];
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    
+    // Fetch hardcoded tours for this destination and category
+    const { data: hardcodedTours, error: toursError } = await supabase
+      .from('hardcoded_destination_tours')
+      .select('*')
+      .eq('destination', destinationId)
+      .eq('category', categoryName)
+      .order('position');
+
+    if (toursError) {
+      console.error('Error fetching hardcoded tours by category:', toursError);
+      return [];
+    }
+
+    if (!hardcodedTours || hardcodedTours.length === 0) {
+      return []; // No hardcoded tours for this category
+    }
+
+    // Get product IDs to fetch scores
+    const productIds = hardcodedTours.map(tour => tour.product_id).filter(Boolean);
+    
+    // Fetch TopTours scores for these tours
+    let scoresMap = {};
+    if (productIds.length > 0) {
+      const { data: scores, error: scoresError } = await supabase
+        .from('tour_promotions')
+        .select('product_id, total_score, past_28_days_score')
+        .in('product_id', productIds);
+
+      if (!scoresError && scores) {
+        scoresMap = scores.reduce((acc, score) => {
+          acc[score.product_id] = {
+            totalScore: score.total_score || 0,
+            lastMonthScore: score.past_28_days_score || 0,
+          };
+          return acc;
+        }, {});
+      }
+    }
+
+    // Format tours with scores
+    return hardcodedTours.map(tour => {
+      const score = scoresMap[tour.product_id] || { totalScore: 0, lastMonthScore: 0 };
+      
+      return {
+        productId: tour.product_id,
+        title: tour.title,
+        image: tour.image_url,
+        totalScore: score.totalScore,
+        lastMonthScore: score.lastMonthScore,
+      };
+    });
+  } catch (error) {
+    console.error('Error in getHardcodedToursByCategory:', error);
+    return [];
+  }
+}
+
+/**
+ * Get hardcoded tours for a destination by category
+ * Lightweight function - fetches from Supabase (no API calls)
+ * Returns tours organized by category with TopTours scores
+ */
+export async function getHardcodedToursByDestination(destinationId) {
+  if (!destinationId) return {};
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    
+    // Fetch hardcoded tours for this destination
+    const { data: hardcodedTours, error: toursError } = await supabase
+      .from('hardcoded_destination_tours')
+      .select('*')
+      .eq('destination', destinationId)
+      .order('category')
+      .order('position');
+
+    if (toursError) {
+      console.error('Error fetching hardcoded tours:', toursError);
+      return {};
+    }
+
+    if (!hardcodedTours || hardcodedTours.length === 0) {
+      return {}; // No hardcoded tours yet
+    }
+
+    // Get product IDs to fetch scores
+    const productIds = hardcodedTours.map(tour => tour.product_id).filter(Boolean);
+    
+    // Fetch TopTours scores for these tours
+    let scoresMap = {};
+    if (productIds.length > 0) {
+      const { data: scores, error: scoresError } = await supabase
+        .from('tour_promotions')
+        .select('product_id, total_score, past_28_days_score')
+        .in('product_id', productIds);
+
+      if (!scoresError && scores) {
+        scoresMap = scores.reduce((acc, score) => {
+          acc[score.product_id] = {
+            totalScore: score.total_score || 0,
+            lastMonthScore: score.past_28_days_score || 0,
+          };
+          return acc;
+        }, {});
+      }
+    }
+
+    // Organize tours by category
+    const toursByCategory = {};
+    hardcodedTours.forEach(tour => {
+      if (!toursByCategory[tour.category]) {
+        toursByCategory[tour.category] = [];
+      }
+      
+      const score = scoresMap[tour.product_id] || { totalScore: 0, lastMonthScore: 0 };
+      
+      toursByCategory[tour.category].push({
+        productId: tour.product_id,
+        title: tour.title,
+        image: tour.image_url,
+        // Add score data
+        totalScore: score.totalScore,
+        lastMonthScore: score.lastMonthScore,
+      });
+    });
+
+    return toursByCategory;
+  } catch (error) {
+    console.error('Error in getHardcodedToursByDestination:', error);
+    return {};
   }
 }
 

@@ -1,5 +1,9 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Read destinations data
 const destinationsPath = path.join(__dirname, '../src/data/destinationsData.js');
@@ -22,7 +26,7 @@ const destinations = Array.from(destinationMatches).map(m => ({
 
 // Read guide data files to get all category slugs per destination
 const guidesPath = path.join(__dirname, '../app/destinations/[id]/guides');
-const guidesFiles = ['guidesData.js', 'guidesData-north-america.js', 'guidesData-africa.js', 'guidesData-south-america.js', 'guidesData-asia-pacific-part1.js', 'guidesData-asia-pacific-part2.js'];
+const guidesFiles = ['guidesData.js', 'guidesData-north-america.js', 'guidesData-africa.js', 'guidesData-south-america.js', 'guidesData-asia-pacific-part1.js', 'guidesData-asia-pacific-part2.js', 'guidesData-middle-east.js'];
 
 // Extract all guides
 const allGuides = {};
@@ -152,5 +156,13 @@ fs.writeFileSync(
 );
 console.log(`✅ Generated sitemap-guides-asia-pacific.xml (${asiaPacificDestinations.length} destinations)`);
 
-console.log('\n✨ All regional guide sitemaps generated successfully!');
+// Generate Middle East sitemap
+const middleEastDestinations = destinations.filter(d => d.category === 'Middle East');
+const middleEastXML = generateSitemapXML(middleEastDestinations);
+fs.writeFileSync(
+  path.join(__dirname, '../public/sitemap-guides-middle-east.xml'),
+  middleEastXML
+);
+console.log(`✅ Generated sitemap-guides-middle-east.xml (${middleEastDestinations.length} destinations)`);
 
+console.log('\n✨ All regional guide sitemaps generated successfully!');

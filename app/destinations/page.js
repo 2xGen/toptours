@@ -30,7 +30,7 @@ export default function DestinationsPage() {
     setIsModalOpen(true);
   };
 
-  const categories = ['All', 'Europe', 'North America', 'Caribbean', 'Asia-Pacific', 'Africa', 'South America'];
+  const categories = ['All', 'Europe', 'North America', 'Caribbean', 'Asia-Pacific', 'Africa', 'South America', 'Middle East'];
 
   const allFilteredDestinations = (Array.isArray(destinations) ? destinations : []).filter(dest => {
     const matchesSearch = dest.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

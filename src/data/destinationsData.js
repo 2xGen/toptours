@@ -9588,6 +9588,454 @@ export const destinations = [
       'Luxury Resorts - World-class accommodation',
       'Creole Cuisine - Traditional flavors'
     ]
+  },
+  {
+    id: 'dubai',
+    name: 'Dubai',
+    fullName: 'Dubai, UAE',
+    category: 'Middle East',
+    country: 'United Arab Emirates',
+    briefDescription: 'Luxury shopping, futuristic architecture, and desert adventures — Dubai is where modern innovation meets Arabian tradition in the heart of the Middle East.',
+    relatedGuides: [],
+    heroDescription: 'Welcome to Dubai, where futuristic skylines meet ancient traditions and luxury knows no bounds. From the world\'s tallest building to pristine desert dunes, from world-class shopping malls to traditional souks, Dubai offers an extraordinary blend of opulence, adventure, and cultural richness. Whether you\'re seeking thrilling desert safaris, iconic landmarks, or unparalleled shopping experiences, this dynamic city promises unforgettable moments at every turn. Let our AI-powered planner help you discover the best this dazzling destination has to offer.',
+    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/dubai.png',
+    tourCategories: [
+      { name: 'Desert Safaris', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Burj Khalifa Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
+    ],
+    seo: {
+      title: 'Dubai Tours & Excursions - Top-Rated Activities & Adventures',
+      description: 'Discover top-rated Dubai tours, excursions, and activities powered by AI. From desert safaris and Burj Khalifa visits to cultural tours and luxury experiences, find the perfect way to explore Dubai.',
+      keywords: 'Dubai tours, Dubai excursions, Dubai activities, Dubai desert safari, Burj Khalifa tours, Dubai city tours, Dubai food tours, things to do in Dubai',
+      primaryKeyword: 'Dubai tours',
+      secondaryKeywords: [
+        'Dubai desert safari',
+        'Burj Khalifa tours',
+        'Dubai city tours',
+        'Dubai food tours',
+        'Dubai cultural tours',
+        'Things to do in Dubai'
+      ]
+    },
+    whyVisit: [
+      'Iconic landmarks including the world\'s tallest building, Burj Khalifa',
+      'Thrilling desert safaris with dune bashing, camel rides, and traditional entertainment',
+      'World-class shopping from luxury malls to traditional souks',
+      'Diverse culinary scene blending Middle Eastern, Asian, and international cuisines',
+      'Year-round sunshine with perfect weather for outdoor activities',
+      'Unique blend of modern luxury and rich Arabian culture'
+    ],
+    bestTimeToVisit: {
+      weather: 'Dubai enjoys year-round sunshine with hot summers (May-September) averaging 95-105°F (35-41°C) and pleasant winters (November-March) with temperatures of 70-80°F (21-27°C).',
+      bestMonths: 'November to March offers the most comfortable weather for outdoor activities and sightseeing.',
+      peakSeason: 'December to February brings peak tourist season with perfect weather, but higher prices and larger crowds.',
+      offSeason: 'May to September offers lower prices but extremely hot weather, making indoor activities and early morning/evening tours more appealing.'
+    },
+    gettingAround: 'Dubai has an excellent metro system, taxis, and ride-sharing services. Many tours include hotel pickup. Renting a car is convenient for exploring at your own pace.',
+    highlights: [
+      'Burj Khalifa - World\'s tallest building with stunning city views',
+      'Burj Al Arab - Iconic 7-star hotel and architectural marvel',
+      'Dubai Mall - One of the world\'s largest shopping and entertainment destinations',
+      'Palm Jumeirah - Man-made island shaped like a palm tree',
+      'Dubai Marina - Stunning waterfront district with luxury yachts',
+      'Dubai Desert - Endless dunes perfect for safaris and adventures'
+    ]
+  },
+  {
+    id: 'abu-dhabi',
+    name: 'Abu Dhabi',
+    fullName: 'Abu Dhabi, UAE',
+    category: 'Middle East',
+    country: 'United Arab Emirates',
+    briefDescription: 'Luxurious culture, stunning architecture, and pristine beaches — Abu Dhabi is the sophisticated capital of the UAE, where tradition meets modern elegance.',
+    relatedGuides: [],
+    heroDescription: 'Welcome to Abu Dhabi, the elegant capital of the United Arab Emirates where cultural richness meets architectural splendor. From the magnificent Sheikh Zayed Grand Mosque to world-class museums, from pristine beaches to thrilling theme parks, Abu Dhabi offers a refined blend of heritage, luxury, and adventure. Whether you\'re exploring the opulent palaces, experiencing authentic Emirati culture, or enjoying world-class entertainment, this sophisticated city promises unforgettable experiences. Let our AI-powered planner help you discover the best this captivating capital has to offer.',
+    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/Abu%20Dhabi.png',
+    tourCategories: [
+      { name: 'Grand Mosque Tours', hasGuide: true },
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Desert Safaris', hasGuide: true },
+      { name: 'Yas Island Tours', hasGuide: true },
+      { name: 'Heritage Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true }
+    ],
+    seo: {
+      title: 'Abu Dhabi Tours & Excursions - Top-Rated Activities & Adventures',
+      description: 'Discover top-rated Abu Dhabi tours, excursions, and activities powered by AI. From Grand Mosque visits and cultural tours to desert safaris and theme parks, find the perfect way to explore Abu Dhabi.',
+      keywords: 'Abu Dhabi tours, Abu Dhabi excursions, Abu Dhabi activities, Sheikh Zayed Grand Mosque tours, Abu Dhabi desert safari, Yas Island tours, things to do in Abu Dhabi',
+      primaryKeyword: 'Abu Dhabi tours',
+      secondaryKeywords: [
+        'Sheikh Zayed Grand Mosque tours',
+        'Abu Dhabi cultural tours',
+        'Abu Dhabi desert safari',
+        'Yas Island tours',
+        'Abu Dhabi heritage tours',
+        'Things to do in Abu Dhabi'
+      ]
+    },
+    whyVisit: [
+      'Sheikh Zayed Grand Mosque - One of the world\'s most beautiful mosques',
+      'Rich cultural heritage with world-class museums and heritage sites',
+      'Pristine beaches and luxurious beachfront resorts',
+      'Thrilling theme parks on Yas Island including Ferrari World and Warner Bros. World',
+      'Authentic Emirati culture and traditional experiences',
+      'Sophisticated dining scene and world-class shopping'
+    ],
+    bestTimeToVisit: {
+      weather: 'Abu Dhabi enjoys year-round sunshine with hot summers (May-September) averaging 95-105°F (35-41°C) and pleasant winters (November-March) with temperatures of 70-80°F (21-27°C).',
+      bestMonths: 'November to March offers the most comfortable weather for outdoor activities and sightseeing.',
+      peakSeason: 'December to February brings peak tourist season with perfect weather, but higher prices and larger crowds at popular attractions.',
+      offSeason: 'May to September offers lower prices but extremely hot weather, making indoor attractions and early morning/evening activities more appealing.'
+    },
+    gettingAround: 'Abu Dhabi has an efficient public bus system, taxis, and ride-sharing services. Many tours include hotel pickup. Renting a car provides flexibility for exploring at your own pace.',
+    highlights: [
+      'Sheikh Zayed Grand Mosque - Architectural masterpiece and spiritual landmark',
+      'Louvre Abu Dhabi - World-class art museum on Saadiyat Island',
+      'Yas Island - Home to Ferrari World, Warner Bros. World, and Yas Waterworld',
+      'Corniche Beach - Pristine 8km beachfront with stunning views',
+      'Qasr Al Watan - Presidential Palace open to visitors',
+      'Heritage Village - Authentic recreation of traditional Emirati life'
+    ]
+  },
+  {
+    id: 'doha',
+    name: 'Doha',
+    fullName: 'Doha, Qatar',
+    category: 'Middle East',
+    country: 'Qatar',
+    briefDescription: 'Modern architecture, rich Islamic heritage, and world-class museums — Doha is where traditional Qatari culture meets contemporary luxury in the heart of the Arabian Gulf.',
+    relatedGuides: [],
+    heroDescription: 'Welcome to Doha, the vibrant capital of Qatar where futuristic skylines blend seamlessly with ancient traditions and Islamic heritage. From the stunning Museum of Islamic Art to the traditional Souq Waqif, from the modern Pearl-Qatar to the historic Al Zubarah Fort, Doha offers a captivating journey through time and culture. Whether you\'re exploring world-class museums, experiencing authentic Qatari hospitality, or enjoying luxury shopping and dining, this sophisticated city promises unforgettable experiences. Let our AI-powered planner help you discover the best this dynamic capital has to offer.',
+    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/qatar.png',
+    tourCategories: [
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Museum Tours', hasGuide: true },
+      { name: 'Desert Safaris', hasGuide: true },
+      { name: 'Souq Waqif Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true }
+    ],
+    seo: {
+      title: 'Doha Tours & Excursions - Top-Rated Activities & Adventures',
+      description: 'Discover top-rated Doha tours, excursions, and activities powered by AI. From Museum of Islamic Art visits and cultural tours to desert safaris and traditional souks, find the perfect way to explore Doha.',
+      keywords: 'Doha tours, Doha excursions, Doha activities, Museum of Islamic Art tours, Doha desert safari, Souq Waqif tours, things to do in Doha',
+      primaryKeyword: 'Doha tours',
+      secondaryKeywords: [
+        'Museum of Islamic Art tours',
+        'Doha cultural tours',
+        'Doha desert safari',
+        'Souq Waqif tours',
+        'Doha food tours',
+        'Things to do in Doha'
+      ]
+    },
+    whyVisit: [
+      'Museum of Islamic Art - World-renowned collection in an architectural masterpiece',
+      'Souq Waqif - Authentic traditional market with Qatari culture and heritage',
+      'Stunning modern architecture including the iconic Doha skyline',
+      'Rich Islamic heritage and cultural experiences',
+      'World-class dining scene blending traditional Qatari and international cuisines',
+      'Luxury shopping and modern amenities in a traditional setting'
+    ],
+    bestTimeToVisit: {
+      weather: 'Doha enjoys year-round sunshine with hot summers (May-September) averaging 95-105°F (35-41°C) and pleasant winters (November-March) with temperatures of 70-80°F (21-27°C).',
+      bestMonths: 'November to March offers the most comfortable weather for outdoor activities and sightseeing.',
+      peakSeason: 'December to February brings peak tourist season with perfect weather, but higher prices and larger crowds at popular attractions.',
+      offSeason: 'May to September offers lower prices but extremely hot weather, making indoor attractions and early morning/evening activities more appealing.'
+    },
+    gettingAround: 'Doha has an efficient metro system, taxis, and ride-sharing services. Many tours include hotel pickup. The Doha Metro is modern, clean, and connects major attractions.',
+    highlights: [
+      'Museum of Islamic Art - I.M. Pei\'s architectural masterpiece housing world-class Islamic art',
+      'Souq Waqif - Traditional Qatari market with authentic culture, food, and shopping',
+      'The Pearl-Qatar - Man-made island with luxury residences and upscale shopping',
+      'Katara Cultural Village - Cultural hub with theaters, galleries, and traditional architecture',
+      'Aspire Park - Largest park in Doha with beautiful landscapes and family activities',
+      'Corniche - Stunning 7km waterfront promenade with views of Doha skyline'
+    ]
+  },
+  {
+    id: 'muscat',
+    name: 'Muscat',
+    fullName: 'Muscat, Oman',
+    category: 'Middle East',
+    country: 'Oman',
+    briefDescription: 'A stunning blend of ancient forts, pristine beaches, and traditional Omani culture — Muscat offers authentic Arabian experiences in a beautiful coastal setting.',
+    relatedGuides: [],
+    heroDescription: 'Welcome to Muscat, the enchanting capital of Oman where ancient forts overlook pristine beaches, traditional souks bustle with authentic Omani culture, and stunning mountains meet the turquoise waters of the Arabian Sea. From the magnificent Sultan Qaboos Grand Mosque to the historic Mutrah Souq, from the dramatic Wahiba Sands desert to the serene wadis, Muscat offers a perfect blend of heritage, natural beauty, and warm Omani hospitality. Whether you\'re exploring centuries-old forts, diving in crystal-clear waters, experiencing traditional Omani life, or simply relaxing on beautiful beaches, this captivating city promises unforgettable adventures. Let our AI-powered planner help you discover the best this authentic Arabian gem has to offer.',
+    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/muscat%20oman.png',
+    tourCategories: [
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Desert Safaris', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Wadi Tours', hasGuide: true },
+      { name: 'Heritage Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
+    ],
+    seo: {
+      title: 'Muscat Tours & Activities - Top-Rated Experiences & Adventures',
+      description: 'Discover top-rated Muscat tours, excursions, and activities powered by AI. From desert safaris and wadi adventures to cultural tours and heritage sites, find the perfect way to explore Muscat.',
+      keywords: 'Muscat tours, Muscat activities, Muscat desert safari, Wahiba Sands tours, Muscat wadi tours, things to do in Muscat, Muscat excursions, Omani cultural tours',
+      primaryKeyword: 'Muscat tours',
+      secondaryKeywords: [
+        'Muscat desert safari',
+        'Wahiba Sands tours',
+        'Muscat wadi tours',
+        'Muscat cultural tours',
+        'Muscat heritage tours',
+        'Muscat adventure activities'
+      ]
+    },
+    whyVisit: [
+      'Sultan Qaboos Grand Mosque - One of the most beautiful mosques in the world',
+      'Historic forts and traditional Omani architecture throughout the city',
+      'Pristine beaches and crystal-clear waters perfect for diving and snorkeling',
+      'Authentic Omani culture and warm hospitality in traditional souks',
+      'Dramatic desert landscapes of Wahiba Sands just a short drive away',
+      'Stunning wadis (valleys) with natural pools and waterfalls for adventure'
+    ],
+    bestTimeToVisit: {
+      weather: 'Muscat has a hot desert climate with very hot summers (May-September) averaging 95-105°F (35-41°C) and pleasant winters (November-March) with temperatures of 70-80°F (21-27°C).',
+      bestMonths: 'November to March offers the most comfortable weather for outdoor activities, sightseeing, and desert adventures.',
+      peakSeason: 'December to February is peak tourist season with ideal weather, but higher prices and more crowds at popular attractions.',
+      offSeason: 'May to September is the off-season with extremely hot temperatures, but lower prices and fewer crowds, ideal for indoor attractions and early morning activities.'
+    },
+    gettingAround: 'Muscat has a reliable public bus system, taxis, and ride-sharing services. Many tours include hotel pickup. Renting a car is also a good option for exploring beyond the city.',
+    highlights: [
+      'Sultan Qaboos Grand Mosque - Architectural masterpiece with stunning Islamic design',
+      'Mutrah Souq - Traditional Omani market with authentic crafts, spices, and silver',
+      'Al Jalali and Al Mirani Forts - Historic forts guarding Muscat harbor',
+      'Royal Opera House Muscat - World-class venue showcasing Omani and international performances',
+      'Wahiba Sands - Vast desert dunes perfect for safaris and traditional Bedouin experiences',
+      'Wadi Shab - Beautiful valley with natural pools and waterfalls for swimming and hiking'
+    ]
+  },
+  {
+    id: 'riyadh',
+    name: 'Riyadh',
+    fullName: 'Riyadh, Saudi Arabia',
+    category: 'Middle East',
+    country: 'Saudi Arabia',
+    briefDescription: 'The modern capital of Saudi Arabia where ancient traditions meet futuristic architecture, offering a unique blend of heritage, culture, and innovation in the heart of the Arabian Peninsula.',
+    relatedGuides: [],
+    heroDescription: 'Welcome to Riyadh, the dynamic capital of Saudi Arabia where ancient Najdi heritage meets visionary modern development, creating a fascinating destination that showcases the Kingdom\'s transformation. From the historic Diriyah UNESCO World Heritage Site to the futuristic King Abdullah Financial District, from traditional souks to world-class museums, Riyadh offers an extraordinary journey through Saudi culture, history, and ambition. Whether you\'re exploring ancient mud-brick palaces, experiencing authentic Saudi hospitality, discovering contemporary art and culture, or witnessing the Kingdom\'s rapid modernization, this captivating city promises unforgettable experiences. Let our AI-powered planner help you discover the best this remarkable capital has to offer.',
+    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/Riyadh.png',
+    tourCategories: [
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Desert Safaris', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'Adventure Tours', hasGuide: true }
+    ],
+    seo: {
+      title: 'Riyadh Tours & Activities - Top-Rated Experiences & Adventures',
+      description: 'Discover top-rated Riyadh tours, excursions, and activities powered by AI. From Diriyah heritage tours and desert safaris to cultural experiences and modern attractions, find the perfect way to explore Riyadh.',
+      keywords: 'Riyadh tours, Riyadh activities, Diriyah tours, Riyadh desert safari, Saudi Arabia tours, things to do in Riyadh, Riyadh excursions, Riyadh cultural tours',
+      primaryKeyword: 'Riyadh tours',
+      secondaryKeywords: [
+        'Diriyah tours',
+        'Riyadh desert safari',
+        'Riyadh cultural tours',
+        'Riyadh historical tours',
+        'Riyadh food tours',
+        'Saudi Arabia tours'
+      ]
+    },
+    whyVisit: [
+      'Diriyah - UNESCO World Heritage Site with ancient Najdi architecture and the birthplace of Saudi Arabia',
+      'Modern architecture including the Kingdom Centre Tower and King Abdullah Financial District',
+      'Rich Saudi culture and heritage showcased in museums and cultural centers',
+      'Authentic traditional souks and markets offering genuine Saudi experiences',
+      'Dramatic desert landscapes perfect for safaris and outdoor adventures',
+      'World-class dining scene blending traditional Saudi cuisine with international flavors'
+    ],
+    bestTimeToVisit: {
+      weather: 'Riyadh has a hot desert climate with extremely hot summers (May-September) averaging 100-110°F (38-43°C) and mild winters (November-March) with temperatures of 60-75°F (15-24°C).',
+      bestMonths: 'November to March offers the most comfortable weather for outdoor activities, sightseeing, and desert adventures.',
+      peakSeason: 'December to February is peak tourist season with pleasant weather, but higher prices and more crowds at popular attractions.',
+      offSeason: 'May to September is the off-season with extremely hot temperatures, but lower prices and fewer crowds, ideal for indoor attractions and early morning activities.'
+    },
+    gettingAround: 'Riyadh has a modern metro system, extensive taxi and ride-sharing services, and a growing public bus network. Many tours include hotel pickup. Renting a car is also an option for exploring independently.',
+    highlights: [
+      'Diriyah - UNESCO World Heritage Site with ancient mud-brick palaces and the birthplace of the Saudi state',
+      'Kingdom Centre Tower - Iconic 99-story skyscraper with Sky Bridge and panoramic city views',
+      'National Museum of Saudi Arabia - Comprehensive museum showcasing Saudi history and culture',
+      'Masmak Fortress - Historic mud-brick fort symbolizing the unification of Saudi Arabia',
+      'King Fahd Cultural Center - Modern cultural hub with exhibitions and performances',
+      'Riyadh Season - Annual entertainment and cultural festival showcasing Saudi Arabia\'s transformation'
+    ]
+  },
+  {
+    id: 'tel-aviv',
+    name: 'Tel Aviv',
+    fullName: 'Tel Aviv, Israel',
+    category: 'Middle East',
+    country: 'Israel',
+    briefDescription: 'A vibrant Mediterranean city known for its beautiful beaches, world-class cuisine, thriving arts scene, and legendary nightlife — Tel Aviv is the cultural and culinary heart of Israel.',
+    relatedGuides: [],
+    heroDescription: 'Welcome to Tel Aviv, the vibrant Mediterranean metropolis where ancient Jaffa meets modern innovation, creating a dynamic destination that pulses with energy day and night. From the historic port of Jaffa to the modern Bauhaus architecture of the White City, from world-renowned restaurants to legendary nightlife, Tel Aviv offers an extraordinary blend of culture, cuisine, and coastal beauty. Whether you\'re exploring art galleries and museums, indulging in the incredible food scene, relaxing on pristine beaches, or experiencing the city\'s famous nightlife, this captivating destination promises unforgettable experiences. Let our AI-powered planner help you discover the best this cosmopolitan city has to offer.',
+    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/tel%20aviv.png',
+    tourCategories: [
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Beach Tours', hasGuide: true },
+      { name: 'Nightlife Tours', hasGuide: true }
+    ],
+    seo: {
+      title: 'Tel Aviv Tours & Activities - Top-Rated Experiences & Adventures',
+      description: 'Discover top-rated Tel Aviv tours, excursions, and activities powered by AI. From food tours and cultural experiences to beach activities and nightlife, find the perfect way to explore Tel Aviv.',
+      keywords: 'Tel Aviv tours, Tel Aviv activities, Tel Aviv food tours, Jaffa tours, things to do in Tel Aviv, Tel Aviv excursions, Tel Aviv nightlife, Israel tours',
+      primaryKeyword: 'Tel Aviv tours',
+      secondaryKeywords: [
+        'Tel Aviv food tours',
+        'Jaffa tours',
+        'Tel Aviv cultural tours',
+        'Tel Aviv beach tours',
+        'Tel Aviv nightlife tours',
+        'Israel tours'
+      ]
+    },
+    whyVisit: [
+      'World-renowned food scene with incredible restaurants, markets, and street food',
+      'Beautiful Mediterranean beaches perfect for swimming, sunbathing, and water sports',
+      'Historic Jaffa with its ancient port, narrow alleys, and rich history',
+      'Vibrant arts and culture scene with galleries, museums, and street art',
+      'Legendary nightlife with world-class bars, clubs, and entertainment',
+      'Bauhaus architecture in the White City, a UNESCO World Heritage Site'
+    ],
+    bestTimeToVisit: {
+      weather: 'Tel Aviv has a Mediterranean climate with hot, dry summers (June-September) averaging 80-90°F (27-32°C) and mild, rainy winters (December-February) with temperatures of 55-65°F (13-18°C).',
+      bestMonths: 'April to June and September to November offer the most pleasant weather with warm temperatures and minimal rain, perfect for beach activities and sightseeing.',
+      peakSeason: 'June to August is peak tourist season with hot weather and crowded beaches, leading to higher prices and larger crowds.',
+      offSeason: 'December to February is the off-season with cooler temperatures and occasional rain, but lower prices and fewer crowds, ideal for cultural activities and indoor attractions.'
+    },
+    gettingAround: 'Tel Aviv has an excellent public transportation system including buses and a light rail. Taxis and ride-sharing services are widely available. The city is also very walkable, and bike-sharing is popular along the beachfront.',
+    highlights: [
+      'Jaffa - Ancient port city with historic alleys, art galleries, and stunning views of Tel Aviv',
+      'Tel Aviv Beaches - Beautiful Mediterranean coastline with golden sand and clear blue water',
+      'White City - UNESCO World Heritage Site featuring the world\'s largest collection of Bauhaus architecture',
+      'Carmel Market - Vibrant open-air market with fresh produce, street food, and local culture',
+      'Rothschild Boulevard - Iconic tree-lined boulevard with Bauhaus buildings and trendy cafes',
+      'Tel Aviv Museum of Art - World-class museum featuring Israeli and international contemporary art'
+    ]
+  },
+  {
+    id: 'amman',
+    name: 'Amman',
+    fullName: 'Amman, Jordan',
+    category: 'Middle East',
+    country: 'Jordan',
+    briefDescription: 'The ancient capital of Jordan where Roman ruins meet modern culture, offering a perfect gateway to Petra, the Dead Sea, and Jordan\'s rich historical heritage.',
+    relatedGuides: [],
+    heroDescription: 'Welcome to Amman, the captivating capital of Jordan where ancient history meets modern Middle Eastern culture, creating a fascinating destination that serves as the perfect gateway to Jordan\'s wonders. From the historic Citadel with its Roman ruins to the bustling downtown souks, from world-class museums to authentic Jordanian cuisine, Amman offers an extraordinary blend of heritage, culture, and warm hospitality. Whether you\'re exploring ancient archaeological sites, experiencing traditional Jordanian life, discovering the city\'s vibrant arts scene, or using Amman as a base for day trips to Petra and the Dead Sea, this welcoming city promises unforgettable experiences. Let our AI-powered planner help you discover the best this historic capital has to offer.',
+    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/amman.png',
+    tourCategories: [
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Desert Safaris', hasGuide: true },
+      { name: 'Day Trips', hasGuide: true }
+    ],
+    seo: {
+      title: 'Amman Tours & Activities - Top-Rated Experiences & Adventures',
+      description: 'Discover top-rated Amman tours, excursions, and activities powered by AI. From Citadel tours and historical sites to day trips to Petra and the Dead Sea, find the perfect way to explore Amman.',
+      keywords: 'Amman tours, Amman activities, Amman Citadel tour, Petra day trip from Amman, Dead Sea tour, things to do in Amman, Jordan tours, Amman historical tours',
+      primaryKeyword: 'Amman tours',
+      secondaryKeywords: [
+        'Amman Citadel tour',
+        'Petra day trip from Amman',
+        'Dead Sea tour from Amman',
+        'Amman historical tours',
+        'Amman food tours',
+        'Jordan tours'
+      ]
+    },
+    whyVisit: [
+      'Amman Citadel - Ancient hilltop site with Roman ruins, Byzantine churches, and stunning city views',
+      'Perfect gateway to Petra, the Dead Sea, and Wadi Rum - Jordan\'s most famous attractions',
+      'Rich Jordanian culture and warm hospitality in traditional souks and neighborhoods',
+      'World-class museums showcasing Jordanian history and archaeology',
+      'Authentic Jordanian cuisine from street food to fine dining',
+      'Vibrant arts and culture scene with galleries, theaters, and cultural centers'
+    ],
+    bestTimeToVisit: {
+      weather: 'Amman has a Mediterranean climate with hot, dry summers (June-September) averaging 80-90°F (27-32°C) and cool, rainy winters (December-February) with temperatures of 45-55°F (7-13°C).',
+      bestMonths: 'March to May and September to November offer the most pleasant weather with mild temperatures and minimal rain, perfect for sightseeing and outdoor activities.',
+      peakSeason: 'April to May and September to October is peak tourist season with ideal weather, but higher prices and more crowds at popular attractions.',
+      offSeason: 'December to February is the off-season with cooler temperatures and occasional rain, but lower prices and fewer crowds, ideal for indoor attractions and cultural activities.'
+    },
+    gettingAround: 'Amman has a reliable public bus system, taxis, and ride-sharing services. Many tours include hotel pickup. Renting a car is also an option for exploring independently or taking day trips.',
+    highlights: [
+      'Amman Citadel - Ancient hilltop archaeological site with Roman Temple of Hercules and Umayyad Palace',
+      'Roman Theater - Well-preserved 2nd-century Roman amphitheater in the heart of downtown Amman',
+      'Jordan Museum - World-class museum showcasing Jordanian history, archaeology, and the Dead Sea Scrolls',
+      'Downtown Amman - Bustling traditional souks, markets, and authentic Jordanian street food',
+      'King Abdullah I Mosque - Beautiful modern mosque with stunning blue dome and Islamic architecture',
+      'Rainbow Street - Trendy neighborhood with cafes, galleries, and vibrant local culture'
+    ]
+  },
+  {
+    id: 'beirut',
+    name: 'Beirut',
+    fullName: 'Beirut, Lebanon',
+    category: 'Middle East',
+    country: 'Lebanon',
+    briefDescription: 'The vibrant capital of Lebanon where ancient history meets modern culture, offering world-class cuisine, legendary nightlife, and a rich blend of Middle Eastern and Mediterranean influences.',
+    relatedGuides: [],
+    heroDescription: 'Welcome to Beirut, the dynamic capital of Lebanon where ancient Phoenician history meets contemporary Middle Eastern culture, creating a fascinating destination that pulses with energy and resilience. From the historic downtown with its Roman ruins to the vibrant neighborhoods of Gemmayze and Mar Mikhael, from world-renowned restaurants to legendary nightlife, Beirut offers an extraordinary blend of heritage, cuisine, and cosmopolitan charm. Whether you\'re exploring archaeological sites, indulging in incredible Lebanese cuisine, experiencing the city\'s famous nightlife, or discovering its rich cultural scene, this captivating city promises unforgettable experiences. Let our AI-powered planner help you discover the best this remarkable Mediterranean capital has to offer.',
+    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/Beirut.png',
+    tourCategories: [
+      { name: 'Cultural Tours', hasGuide: true },
+      { name: 'Food Tours', hasGuide: true },
+      { name: 'City Tours', hasGuide: true },
+      { name: 'Historical Tours', hasGuide: true },
+      { name: 'Nightlife Tours', hasGuide: true },
+      { name: 'Day Trips', hasGuide: true }
+    ],
+    seo: {
+      title: 'Beirut Tours & Activities - Top-Rated Experiences & Adventures',
+      description: 'Discover top-rated Beirut tours, excursions, and activities powered by AI. From food tours and cultural experiences to day trips to Byblos and Baalbek, find the perfect way to explore Beirut.',
+      keywords: 'Beirut tours, Beirut activities, Beirut food tours, Byblos day trip, Baalbek tour, things to do in Beirut, Lebanon tours, Beirut nightlife tours',
+      primaryKeyword: 'Beirut tours',
+      secondaryKeywords: [
+        'Beirut food tours',
+        'Byblos day trip from Beirut',
+        'Baalbek tour from Beirut',
+        'Beirut cultural tours',
+        'Beirut nightlife tours',
+        'Lebanon tours'
+      ]
+    },
+    whyVisit: [
+      'World-renowned Lebanese cuisine with incredible restaurants, street food, and culinary traditions',
+      'Legendary nightlife scene with world-class bars, clubs, and entertainment venues',
+      'Rich history and culture with Roman ruins, museums, and historic neighborhoods',
+      'Vibrant arts and culture scene with galleries, theaters, and cultural centers',
+      'Beautiful Mediterranean coastline with beaches and waterfront promenades',
+      'Perfect gateway to Lebanon\'s wonders including Byblos, Baalbek, and the Cedars'
+    ],
+    bestTimeToVisit: {
+      weather: 'Beirut has a Mediterranean climate with hot, dry summers (June-September) averaging 80-90°F (27-32°C) and mild, rainy winters (December-February) with temperatures of 55-65°F (13-18°C).',
+      bestMonths: 'April to June and September to November offer the most pleasant weather with warm temperatures and minimal rain, perfect for sightseeing and outdoor activities.',
+      peakSeason: 'June to August is peak tourist season with hot weather and crowded beaches, leading to higher prices and larger crowds.',
+      offSeason: 'December to February is the off-season with cooler temperatures and occasional rain, but lower prices and fewer crowds, ideal for cultural activities and indoor attractions.'
+    },
+    gettingAround: 'Beirut has a reliable public bus system, taxis, and ride-sharing services. Many tours include hotel pickup. The city is also very walkable, especially in downtown and popular neighborhoods.',
+    highlights: [
+      'Downtown Beirut - Historic city center with Roman ruins, restored buildings, and vibrant atmosphere',
+      'National Museum of Beirut - World-class museum showcasing Lebanese history and archaeology',
+      'Pigeon Rocks (Raouche) - Iconic natural rock formations in the Mediterranean Sea',
+      'Gemmayze & Mar Mikhael - Trendy neighborhoods with cafes, galleries, and vibrant nightlife',
+      'Beirut Souks - Modern shopping district with traditional souk atmosphere',
+      'Corniche Beirut - Beautiful waterfront promenade perfect for walking and sunset views'
+    ]
   }
 ];
 

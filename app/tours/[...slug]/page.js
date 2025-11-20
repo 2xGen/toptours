@@ -327,7 +327,7 @@ export default async function TourDetailPage({ params }) {
               searchTerm,
               productFiltering: destinationId
                 ? {
-                    destination: String(destinationId),
+                    destination: String(destinationId).replace(/^d/, ''), // Remove 'd' prefix if present (e.g., 'd4215' -> '4215')
                   }
                 : undefined,
               searchTypes: [

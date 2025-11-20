@@ -23,7 +23,7 @@ export default function TravelGuidesPage() {
     setIsModalOpen(true);
   };
 
-  const categories = ['All', 'General Travel Tips', 'Caribbean', 'Europe', 'North America', 'Asia-Pacific', 'Africa', 'South America'];
+  const categories = ['All', 'General Travel Tips', 'Caribbean', 'Europe', 'North America', 'Asia-Pacific', 'Africa', 'South America', 'Middle East'];
 
   const allFilteredGuides = (Array.isArray(travelGuides) ? travelGuides : []).filter(guide => {
     const matchesSearch = guide.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

@@ -1,6 +1,6 @@
 import { getDestinationById } from '@/data/destinationsData';
 import DestinationDetailClient from './DestinationDetailClient';
-import { getPromotionScoresByDestination, getTrendingToursByDestination } from '@/lib/promotionSystem';
+import { getPromotionScoresByDestination, getTrendingToursByDestination, getHardcodedToursByDestination } from '@/lib/promotionSystem';
 
 // Force dynamic rendering to avoid build-time errors
 export const dynamic = 'force-dynamic';
@@ -33,6 +33,8 @@ export async function generateMetadata({ params }) {
         },
       ],
       type: 'website',
+      siteName: 'TopTours.ai',
+      locale: 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
@@ -66,6 +68,26 @@ export default async function DestinationDetailPage({ params }) {
 
   // Fetch trending tours (past 28 days) for this destination
   const trendingTours = await getTrendingToursByDestination(destination.id, 6);
+
+  // Fetch hardcoded tours by category (lightweight - no API calls)
+  const hardcodedTours = await getHardcodedToursByDestination(destination.id);
+
+  // Merge hardcoded tour scores into promotionScores
+  if (hardcodedTours && Object.keys(hardcodedTours).length > 0) {
+    Object.values(hardcodedTours).forEach(categoryTours => {
+      categoryTours.forEach(tour => {
+        if (tour.productId && !promotionScores[tour.productId]) {
+          promotionScores[tour.productId] = {
+            product_id: tour.productId,
+            total_score: tour.totalScore || 0,
+            monthly_score: 0,
+            weekly_score: 0,
+            past_28_days_score: tour.lastMonthScore || 0,
+          };
+        }
+      });
+    });
+  }
 
   return (
     <>
@@ -144,10 +166,48 @@ export default async function DestinationDetailPage({ params }) {
         }}
       />
       
+      {/* Tour List Schema - Organized by Category */}
+      {hardcodedTours && Object.keys(hardcodedTours).length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "name": `${destination.fullName} Tours & Activities`,
+              "description": `Popular tours and activities in ${destination.fullName}`,
+              "itemListElement": (() => {
+                const items = [];
+                let position = 1;
+                Object.keys(hardcodedTours).forEach(categoryName => {
+                  hardcodedTours[categoryName].forEach(tour => {
+                    if (tour.productId && tour.title) {
+                      items.push({
+                        "@type": "ListItem",
+                        "position": position++,
+                        "item": {
+                          "@type": "TouristAttraction",
+                          "name": tour.title,
+                          "description": `${tour.title} in ${destination.fullName}`,
+                          "image": tour.image || destination.imageUrl,
+                          "url": `https://toptours.ai/tours/${tour.productId}/${tour.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
+                        }
+                      });
+                    }
+                  });
+                });
+                return items;
+              })()
+            })
+          }}
+        />
+      )}
+      
       <DestinationDetailClient 
         destination={destination} 
         promotionScores={promotionScores}
         trendingTours={trendingTours}
+        hardcodedTours={hardcodedTours}
       />
     </>
   );

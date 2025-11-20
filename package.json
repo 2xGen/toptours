@@ -2,6 +2,7 @@
   "name": "toptours-ai",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,6 +12,9 @@
     "generate-static": "node scripts/generate-static.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "generate-favicon": "node scripts/generate-favicon.js",
+    "populate-hardcoded-tours": "node scripts/bulk-populate-hardcoded-tours.js",
+    "populate-middle-east-tours": "node scripts/populate-middle-east-tours.js",
+    "update-tour-images": "node scripts/update-hardcoded-tour-images.js",
     "vite-dev": "vite",
     "vite-build": "node scripts/build.js",
     "vite-preview": "vite preview"

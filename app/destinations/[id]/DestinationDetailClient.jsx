@@ -6,7 +6,7 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
-  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, ChevronLeft, ChevronRight, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign
+  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -19,7 +19,7 @@ import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import { TrendingUp } from 'lucide-react';
 
-export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [] }) {
+export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], hardcodedTours = {} }) {
   
   // Ensure destination has required arrays
   const safeDestination = {
@@ -32,7 +32,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tours, setTours] = useState({});
   const [loading, setLoading] = useState({});
-  const [carouselIndexes, setCarouselIndexes] = useState({});
   const [visibleTours, setVisibleTours] = useState({});
   const [relatedDestinations, setRelatedDestinations] = useState([]);
   const [relatedGuides, setRelatedGuides] = useState([]);
@@ -63,22 +62,56 @@ export default function DestinationDetailClient({ destination, promotionScores =
     checkMobile();
     window.addEventListener('resize', checkMobile);
     
-    // Initialize carousel indexes and visible tours for each category
-    const indexes = {};
+    // Initialize visible tours for each category (mobile only)
     const visible = {};
     safeDestination.tourCategories.forEach(category => {
       const categoryName = typeof category === 'string' ? category : category.name;
-      indexes[categoryName] = 0;
       visible[categoryName] = 4; // Start with 4 visible tours on mobile
     });
-    setCarouselIndexes(indexes);
     setVisibleTours(visible);
     
-    // Fetch tours for each category
-    safeDestination.tourCategories.forEach(category => {
-      const categoryName = typeof category === 'string' ? category : category.name;
-      fetchToursForCategory(safeDestination.name, categoryName);
-    });
+    // Use hardcoded tours if available, otherwise fetch from API
+    if (hardcodedTours && Object.keys(hardcodedTours).length > 0) {
+      // Convert hardcoded tours to the format expected by the UI
+      const formattedTours = {};
+      Object.keys(hardcodedTours).forEach(categoryName => {
+        formattedTours[categoryName] = hardcodedTours[categoryName].map(tour => ({
+          productId: tour.productId,
+          productCode: tour.productId,
+          title: tour.title,
+          // Format images to match Viator API structure
+          images: tour.image ? [{
+            variants: [
+              { url: tour.image }, // small
+              { url: tour.image }, // medium
+              { url: tour.image }, // large
+              { url: tour.image }  // variant[3] - what UI expects
+            ]
+          }] : [],
+          pricing: {
+            summary: {
+              fromPrice: null, // Will be fetched on detail page
+              currency: 'USD'
+            }
+          },
+          reviews: {
+            combinedAverageRating: null, // Will be fetched on detail page
+            totalReviews: 0
+          },
+          flags: [], // No flags for hardcoded tours
+          // Add TopTours score to promotionScores for TourPromotionCard
+        }));
+      });
+      setTours(formattedTours);
+      // Set loading to false for all categories since we have data
+      const loadingState = {};
+      safeDestination.tourCategories.forEach(category => {
+        const categoryName = typeof category === 'string' ? category : category.name;
+        loadingState[categoryName] = false;
+      });
+      setLoading(loadingState);
+    }
+    // Note: We no longer fetch from Viator API when hardcoded tours are available
 
     // Load all related destinations from the same region
     const related = getRelatedDestinations(safeDestination.id);
@@ -155,20 +188,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
     }
   };
 
-  const prevSlide = (category) => {
-    setCarouselIndexes(prev => ({
-      ...prev,
-      [category]: Math.max(0, prev[category] - 1)
-    }));
-  };
-
-  const nextSlide = (category) => {
-    const maxIndex = tours[category] ? tours[category].length - 4 : 0;
-    setCarouselIndexes(prev => ({
-      ...prev,
-      [category]: Math.min(maxIndex, prev[category] + 1)
-    }));
-  };
 
   const loadMoreTours = (category) => {
     setVisibleTours(prev => ({
@@ -557,27 +576,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       ) : null;
                     })()}
                   </div>
-                  {/* Desktop carousel controls - hidden on mobile */}
-                  <div className="hidden md:flex space-x-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => prevSlide(categoryName)}
-                      disabled={carouselIndexes[categoryName] === 0}
-                      className="w-10 h-10 p-0"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => nextSlide(categoryName)}
-                      disabled={!tours[categoryName] || carouselIndexes[categoryName] >= (tours[categoryName].length - 4)}
-                      className="w-10 h-10 p-0"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </Button>
-                  </div>
                 </div>
 
                 {loading[categoryName] ? (
@@ -650,23 +648,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
                                 </div>
                               )}
 
-                              {/* Rating */}
-                              {tour.reviews && (
-                                <div className="flex items-center mb-2">
-                                  <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                                  <span className="font-medium text-gray-700 ml-1 text-sm">
-                                    {tour.reviews.combinedAverageRating?.toFixed(1) || 'N/A'}
-                                  </span>
-                                  <span className="text-gray-500 text-xs ml-1">
-                                    ({tour.reviews.totalReviews?.toLocaleString('en-US') || 0})
-                                  </span>
-                                </div>
-                              )}
-
-                              {/* Price */}
-                              <div className="text-lg font-bold text-orange-600 mb-3">
-                                From ${tour.pricing?.summary?.fromPrice || 'N/A'}
-                              </div>
 
                               {/* Promotion Score / Boost Button */}
                               <div className="mb-2">
@@ -715,18 +696,14 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       </div>
                     )}
 
-                    {/* Desktop carousel layout */}
-                    <div className="hidden md:block overflow-hidden">
-                    <div 
-                      className="flex transition-transform duration-300 ease-in-out gap-6"
-                      style={{ transform: `translateX(-${carouselIndexes[categoryName] * 25}%)` }}
-                    >
+                    {/* Desktop grid layout - 4 tours per row */}
+                    <div className="hidden md:grid md:grid-cols-4 gap-6">
                       {tours[categoryName].map((tour, index) => {
                         const tourId = getTourProductId(tour);
                         const tourUrl = getTourUrl(tourId, tour.title);
                         
                         return (
-                          <Card key={tourId || index} className="w-[calc(25%-1.125rem)] flex-shrink-0 bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                          <Card key={tourId || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
                             {/* Tour Image - Clickable link to internal page */}
                             <Link href={tourUrl}>
                               <div className="relative h-32 bg-gray-200 flex-shrink-0 cursor-pointer">
@@ -782,23 +759,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
                                 </div>
                               )}
 
-                              {/* Rating */}
-                              {tour.reviews && (
-                                <div className="flex items-center mb-2">
-                                  <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                                  <span className="font-medium text-gray-700 ml-1 text-sm">
-                                    {tour.reviews.combinedAverageRating?.toFixed(1) || 'N/A'}
-                                  </span>
-                                  <span className="text-gray-500 text-xs ml-1">
-                                    ({tour.reviews.totalReviews?.toLocaleString('en-US') || 0})
-                                  </span>
-                                </div>
-                              )}
-
-                              {/* Price */}
-                              <div className="text-lg font-bold text-orange-600 mb-3">
-                                From ${tour.pricing?.summary?.fromPrice || 'N/A'}
-                              </div>
 
                               {/* Promotion Score / Boost Button */}
                               <div className="mb-2">
@@ -832,7 +792,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
                           </Card>
                         );
                       })}
-                    </div>
                     </div>
                   </>
                 ) : (
@@ -1226,25 +1185,18 @@ export default function DestinationDetailClient({ destination, promotionScores =
               <p className="text-xl text-white/90 mb-8">
                 Discover the best tours and activities in {safeDestination.fullName} with AI-powered recommendations tailored just for you.
               </p>
-              <div className="flex flex-wrap justify-center gap-4 mb-4">
+              <div className="flex flex-wrap justify-center gap-4">
                 <Button
                   asChild
                   size="lg"
                   className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-8 py-6 text-lg font-semibold"
                 >
                   <Link href={`/destinations/${safeDestination.id}/tours`}>
-                    View All Tours & Activities
+                    View All Tours & Activities in {safeDestination.fullName}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
               </div>
-              <Button 
-                onClick={() => handleOpenModal(safeDestination.fullName)}
-                size="lg"
-                className="bg-white text-blue-600 hover:bg-gray-100 hover:scale-105 transition-all duration-200 px-8 py-6 text-lg font-semibold"
-              >
-                Start Planning Your {safeDestination.fullName} Trip
-              </Button>
             </motion.div>
           </div>
         </section>

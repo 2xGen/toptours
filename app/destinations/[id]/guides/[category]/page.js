@@ -5,8 +5,11 @@ import { categoryGuidesAfrica } from '../guidesData-africa';
 import { categoryGuidesSouthAmerica } from '../guidesData-south-america';
 import { categoryGuidesAsiaPacificPart1 } from '../guidesData-asia-pacific-part1';
 import { categoryGuidesAsiaPacificPart2 } from '../guidesData-asia-pacific-part2';
+import { categoryGuidesMiddleEast } from '../guidesData-middle-east';
 import CategoryGuideClient from './CategoryGuideClient';
 import { notFound } from 'next/navigation';
+import { getHardcodedToursByCategory } from '@/lib/promotionSystem';
+import { getPromotionScoresByDestination } from '@/lib/promotionSystem';
 
 // Merge all regional guide files
 const categoryGuides = {
@@ -16,6 +19,7 @@ const categoryGuides = {
   ...categoryGuidesSouthAmerica,
   ...categoryGuidesAsiaPacificPart1,
   ...categoryGuidesAsiaPacificPart2,
+  ...categoryGuidesMiddleEast,
 };
 
 // Generate metadata for SEO
@@ -31,6 +35,8 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  const ogImage = guideData.heroImage || destination.imageUrl;
+  
   return {
     title: guideData.seo.title,
     description: guideData.seo.description,
@@ -38,17 +44,27 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: guideData.seo.title,
       description: guideData.seo.description,
-      images: [guideData.heroImage || destination.imageUrl],
+      url: `https://toptours.ai/destinations/${destinationId}/guides/${categorySlug}`,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${guideData.title} - ${destination.fullName || destination.name}`,
+        },
+      ],
       type: 'article',
+      siteName: 'TopTours.ai',
+      locale: 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
       title: guideData.seo.title,
       description: guideData.seo.description,
-      images: [guideData.heroImage || destination.imageUrl],
+      images: [ogImage],
     },
     alternates: {
-      canonical: `/destinations/${destinationId}/guides/${categorySlug}`,
+      canonical: `https://toptours.ai/destinations/${destinationId}/guides/${categorySlug}`,
     },
   };
 }
@@ -82,6 +98,12 @@ export default async function CategoryGuidePage({ params }) {
   if (!destination || !guideData) {
     notFound();
   }
+
+  // Fetch hardcoded tours for this specific category
+  const categoryTours = await getHardcodedToursByCategory(destinationId, guideData.categoryName);
+  
+  // Fetch promotion scores for these tours
+  const promotionScores = await getPromotionScoresByDestination(destinationId);
 
   // JSON-LD Schema for SEO
   const jsonLd = {
@@ -157,6 +179,23 @@ export default async function CategoryGuidePage({ params }) {
           addressCountry: destination.category,
         },
       },
+      // Tour List Schema - Featured tours for this category
+      ...(categoryTours && categoryTours.length > 0 ? [{
+        '@type': 'ItemList',
+        name: `${guideData.categoryName} Tours in ${destination.name}`,
+        description: `Featured ${guideData.categoryName.toLowerCase()} tours and activities in ${destination.name}`,
+        itemListElement: categoryTours.map((tour, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@type': 'TouristAttraction',
+            name: tour.title,
+            description: `${tour.title} - ${guideData.categoryName} in ${destination.name}`,
+            image: tour.image || guideData.heroImage || destination.imageUrl,
+            url: `https://toptours.ai/tours/${tour.productId}/${tour.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
+          }
+        }))
+      }] : []),
     ],
   };
 
@@ -170,6 +209,8 @@ export default async function CategoryGuidePage({ params }) {
         destinationId={destinationId} 
         categorySlug={categorySlug}
         guideData={guideData}
+        categoryTours={categoryTours}
+        promotionScores={promotionScores}
       />
     </>
   );

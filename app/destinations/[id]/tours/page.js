@@ -222,6 +222,23 @@ export default async function ToursListingPage({ params }) {
 
   return (
     <>
+      {/* TouristDestination Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TouristDestination",
+            "name": destination.fullName || destination.name,
+            "description": destination.seo?.description || destination.briefDescription,
+            "image": destination.imageUrl,
+            "url": `https://toptours.ai/destinations/${id}/tours`,
+            "touristType": "Leisure travelers, Adventure seekers, Culture enthusiasts"
+          })
+        }}
+      />
+      
+      {/* ItemList Schema for Tours */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

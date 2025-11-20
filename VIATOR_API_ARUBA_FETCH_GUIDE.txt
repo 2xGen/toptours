@@ -1,0 +1,395 @@
+================================================================================
+HOW TO FETCH ALL TOURS FOR ARUBA (DESTINATION ID 28) FROM VIATOR API
+================================================================================
+
+This guide shows you how to use the Viator API to fetch all tours for Aruba
+(destination ID 28) and save them to a JSON file.
+
+================================================================================
+PREREQUISITES
+================================================================================
+
+1. Get your Viator API key from: https://partners.viator.com/
+2. You'll need a programming language that can make HTTP requests (Node.js, Python, PHP, etc.)
+
+================================================================================
+API ENDPOINT
+================================================================================
+
+Endpoint: https://api.viator.com/partner/products/search
+Method: POST
+
+================================================================================
+REQUIRED HEADERS
+================================================================================
+
+exp-api-key: YOUR_VIATOR_API_KEY_HERE
+Accept: application/json;version=2.0
+Accept-Language: en-US
+Content-Type: application/json
+
+================================================================================
+REQUEST BODY FOR ARUBA (DESTINATION ID 28)
+================================================================================
+
+{
+  "filtering": {
+    "destination": "28"
+  },
+  "pagination": {
+    "start": 1,
+    "count": 500
+  },
+  "sorting": {
+    "sort": "TRAVELER_RATING",
+    "order": "DESCENDING"
+  },
+  "currency": "USD"
+}
+
+Note: The "count" parameter determines how many results per page (max is usually 500).
+You may need to paginate if there are more than 500 tours.
+
+================================================================================
+EXAMPLE: NODE.JS SCRIPT
+================================================================================
+
+const fs = require('fs');
+const https = require('https');
+
+const API_KEY = 'YOUR_VIATOR_API_KEY_HERE';
+const DESTINATION_ID = 28; // Aruba
+const OUTPUT_FILE = 'aruba-tours.json';
+
+async function fetchAllArubaTours() {
+  let allTours = [];
+  let start = 1;
+  const count = 500; // Max per request
+  let hasMore = true;
+
+  while (hasMore) {
+    const requestBody = {
+      filtering: {
+        destination: String(DESTINATION_ID)
+      },
+      pagination: {
+        start: start,
+        count: count
+      },
+      sorting: {
+        sort: 'TRAVELER_RATING',
+        order: 'DESCENDING'
+      },
+      currency: 'USD'
+    };
+
+    const postData = JSON.stringify(requestBody);
+
+    const options = {
+      hostname: 'api.viator.com',
+      path: '/partner/products/search',
+      method: 'POST',
+      headers: {
+        'exp-api-key': API_KEY,
+        'Accept': 'application/json;version=2.0',
+        'Accept-Language': 'en-US',
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(postData)
+      }
+    };
+
+    try {
+      const response = await new Promise((resolve, reject) => {
+        const req = https.request(options, (res) => {
+          let data = '';
+          res.on('data', (chunk) => { data += chunk; });
+          res.on('end', () => {
+            resolve({ status: res.statusCode, data: JSON.parse(data) });
+          });
+        });
+        req.on('error', reject);
+        req.write(postData);
+        req.end();
+      });
+
+      if (response.status === 200) {
+        const products = response.data.products || [];
+        allTours = allTours.concat(products);
+        
+        console.log(`Fetched ${products.length} tours (Total: ${allTours.length})`);
+        
+        // Check if there are more results
+        if (products.length < count) {
+          hasMore = false;
+        } else {
+          start += count;
+          // Add a small delay to avoid rate limiting
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+      } else {
+        console.error('API Error:', response.status, response.data);
+        hasMore = false;
+      }
+    } catch (error) {
+      console.error('Request Error:', error);
+      hasMore = false;
+    }
+  }
+
+  // Save to JSON file
+  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(allTours, null, 2));
+  console.log(`\n✅ Saved ${allTours.length} tours to ${OUTPUT_FILE}`);
+}
+
+fetchAllArubaTours();
+
+================================================================================
+EXAMPLE: PYTHON SCRIPT
+================================================================================
+
+import requests
+import json
+
+API_KEY = 'YOUR_VIATOR_API_KEY_HERE'
+DESTINATION_ID = 28  # Aruba
+OUTPUT_FILE = 'aruba-tours.json'
+
+def fetch_all_aruba_tours():
+    all_tours = []
+    start = 1
+    count = 500  # Max per request
+    has_more = True
+
+    headers = {
+        'exp-api-key': API_KEY,
+        'Accept': 'application/json;version=2.0',
+        'Accept-Language': 'en-US',
+        'Content-Type': 'application/json'
+    }
+
+    url = 'https://api.viator.com/partner/products/search'
+
+    while has_more:
+    request_body = {
+        'filtering': {
+            'destination': str(DESTINATION_ID)
+        },
+        'pagination': {
+            'start': start,
+            'count': count
+        },
+        'sorting': {
+            'sort': 'TRAVELER_RATING',
+            'order': 'DESCENDING'
+        },
+        'currency': 'USD'
+    }
+
+        try:
+            response = requests.post(url, headers=headers, json=request_body)
+            response.raise_for_status()
+            
+            data = response.json()
+            products = data.get('products', [])
+            all_tours.extend(products)
+            
+            print(f'Fetched {len(products)} tours (Total: {len(all_tours)})')
+            
+            # Check if there are more results
+            if len(products) < count:
+                has_more = False
+            else:
+                start += count
+                # Add a small delay to avoid rate limiting
+                import time
+                time.sleep(1)
+                
+        except requests.exceptions.RequestException as e:
+            print(f'Error: {e}')
+            has_more = False
+
+    # Save to JSON file
+    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
+        json.dump(all_tours, f, indent=2, ensure_ascii=False)
+    
+    print(f'\n✅ Saved {len(all_tours)} tours to {OUTPUT_FILE}')
+
+if __name__ == '__main__':
+    fetch_all_aruba_tours()
+
+================================================================================
+EXAMPLE: PHP SCRIPT
+================================================================================
+
+<?php
+
+$apiKey = 'YOUR_VIATOR_API_KEY_HERE';
+$destinationId = 28; // Aruba
+$outputFile = 'aruba-tours.json';
+
+$allTours = [];
+$start = 1;
+$count = 500; // Max per request
+$hasMore = true;
+
+$url = 'https://api.viator.com/partner/products/search';
+
+$headers = [
+    'exp-api-key: ' . $apiKey,
+    'Accept: application/json;version=2.0',
+    'Accept-Language: en-US',
+    'Content-Type: application/json'
+];
+
+while ($hasMore) {
+    $requestBody = [
+        'filtering' => [
+            'destination' => (string)$destinationId
+        ],
+        'pagination' => [
+            'start' => $start,
+            'count' => $count
+        ],
+        'sorting' => [
+            'sort' => 'TRAVELER_RATING',
+            'order' => 'DESCENDING'
+        ],
+        'currency' => 'USD'
+    ];
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($requestBody));
+
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode === 200) {
+        $data = json_decode($response, true);
+        $products = $data['products'] ?? [];
+        $allTours = array_merge($allTours, $products);
+
+        echo "Fetched " . count($products) . " tours (Total: " . count($allTours) . ")\n";
+
+        // Check if there are more results
+        if (count($products) < $count) {
+            $hasMore = false;
+        } else {
+            $start += $count;
+            // Add a small delay to avoid rate limiting
+            sleep(1);
+        }
+    } else {
+        echo "API Error: HTTP $httpCode\n";
+        echo $response . "\n";
+        $hasMore = false;
+    }
+}
+
+// Save to JSON file
+file_put_contents($outputFile, json_encode($allTours, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+echo "\n✅ Saved " . count($allTours) . " tours to $outputFile\n";
+
+?>
+
+================================================================================
+ALTERNATIVE: USING FREETEXT SEARCH (if products/search doesn't work)
+================================================================================
+
+If the products/search endpoint doesn't work, you can use the freetext search:
+
+Endpoint: https://api.viator.com/partner/search/freetext
+Method: POST
+
+Request Body:
+{
+  "searchTerm": "Aruba",
+  "searchTypes": [
+    {
+      "searchType": "PRODUCTS",
+      "pagination": {
+        "start": 1,
+        "count": 500
+      }
+    }
+  ],
+  "productFiltering": {
+    "destination": "28"
+  },
+  "currency": "USD"
+}
+
+Headers: Same as above
+
+Note: This method searches by text "Aruba" and filters by destination ID 28.
+
+================================================================================
+RESPONSE STRUCTURE
+================================================================================
+
+The API will return a JSON response with this structure:
+
+{
+  "products": [
+    {
+      "productId": "12345",
+      "title": "Tour Name",
+      "description": "Tour description...",
+      "price": {
+        "fromPrice": 50.00,
+        "currency": "USD"
+      },
+      "images": [...],
+      "reviews": {...},
+      // ... more tour data
+    }
+  ]
+}
+
+================================================================================
+IMPORTANT NOTES
+================================================================================
+
+1. Rate Limits: Viator API has rate limits. Don't make too many requests too quickly.
+   Add delays between requests if needed (e.g., 1-2 seconds).
+
+2. API Key Security: Never commit your API key to version control. Use environment
+   variables or config files that are in .gitignore.
+
+3. Pagination: If there are more than 500 tours, you'll need to paginate by
+   incrementing the "start" parameter.
+
+4. Error Handling: Always check the HTTP status code. Common errors:
+   - 401: Invalid API key
+   - 429: Rate limit exceeded (wait and retry)
+   - 500: Server error (retry later)
+
+5. Data Updates: Tour data changes frequently. Consider running this script
+   periodically to keep your data up to date.
+
+================================================================================
+TESTING WITH CURL
+================================================================================
+
+You can test the API with curl:
+
+curl -X POST https://api.viator.com/partner/products/search \
+  -H "exp-api-key: YOUR_VIATOR_API_KEY_HERE" \
+  -H "Accept: application/json;version=2.0" \
+  -H "Accept-Language: en-US" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "filtering": {"destination": "28"},
+    "pagination": {"start": 1, "count": 500},
+    "sorting": {"sort": "TRAVELER_RATING", "order": "DESCENDING"},
+    "currency": "USD"
+  }' \
+  -o aruba-tours.json
+
+================================================================================
+END OF GUIDE
+================================================================================
+
