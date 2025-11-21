@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import TourDetailClient from './TourDetailClient';
 import { getTourEnrichment, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
-import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey } from '@/lib/viatorCache';
+import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, getDestinationData } from '@/lib/viatorCache';
 import { getTourPromotionScore } from '@/lib/promotionSystem';
 
 /**
@@ -274,6 +274,24 @@ export default async function TourDetailPage({ params }) {
       };
     }
 
+    // Fetch destination data for country information (only if tour has destinationId and doesn't match our destinations)
+    let destinationData = null;
+    try {
+      if (tour?.destinations && tour.destinations.length > 0) {
+        const primaryDestination = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
+        const destinationId = primaryDestination?.destinationId || primaryDestination?.id || primaryDestination?.ref;
+        
+        if (destinationId) {
+          // Only fetch if we don't have a matching destination in our 182 destinations
+          // This will be checked client-side, but we can fetch here for unmatched tours
+          destinationData = await getDestinationData(destinationId);
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching destination data:', error);
+      // Non-critical, continue without destination data
+    }
+
     return (
       <Suspense fallback={
         <div className="min-h-screen flex items-center justify-center">
@@ -283,7 +301,7 @@ export default async function TourDetailPage({ params }) {
           </div>
         </div>
       }>
-        <TourDetailClient tour={tour} similarTours={similarTours} productId={productId} enrichment={tourEnrichment} initialPromotionScore={promotionScore} />
+        <TourDetailClient tour={tour} similarTours={similarTours} productId={productId} enrichment={tourEnrichment} initialPromotionScore={promotionScore} destinationData={destinationData} />
       </Suspense>
     );
   } catch (error) {

@@ -35,7 +35,7 @@ import { useBookmarks } from '@/hooks/useBookmarks';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 
-export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null }) {
+export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [destination, setDestination] = useState(null);
@@ -139,6 +139,17 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     }
     return null;
   }, [destinationTourUrl, fallbackDestinationSlugByName]);
+
+  // Extract country from destinationData (for unmatched destinations)
+  const countryFromDestination = useMemo(() => {
+    if (destination?.country) return destination.country;
+    // Viator destinations API returns country in various possible fields
+    if (destinationData?.country) return destinationData.country;
+    if (destinationData?.countryName) return destinationData.countryName;
+    if (destinationData?.country?.name) return destinationData.country.name;
+    if (destinationData?.parentDestination?.countryName) return destinationData.parentDestination.countryName;
+    return null;
+  }, [destination, destinationData]);
 
   // Trigger confetti when returning from instant boost payment
   useEffect(() => {
@@ -1247,7 +1258,15 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 <Link href={`/destinations/${destination.id}/tours`} className="text-gray-500 hover:text-gray-700">Tours</Link>
               </>
             )}
-            {!destination && (
+            {!destination && countryFromDestination && (
+              <>
+                <span className="text-gray-400">/</span>
+                <span className="text-gray-500">{countryFromDestination}</span>
+                <span className="text-gray-400">/</span>
+                <span className="text-gray-500">Tours</span>
+              </>
+            )}
+            {!destination && !countryFromDestination && (
               <>
                 <span className="text-gray-400">/</span>
                 <span className="text-gray-500">Tours</span>
@@ -1898,6 +1917,31 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       >
                         <Link href={`/destinations/${destination.id}`}>
                           Explore {destination.name}
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Country Link (for unmatched destinations) */}
+                {!destination && countryFromDestination && (
+                  <Card className="bg-white border-0 shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                    <CardContent className="p-6 flex flex-col">
+                      <div className="flex items-center text-gray-600 mb-2">
+                        <MapPin className="h-4 w-4 mr-1" />
+                        <span className="font-semibold">{countryFromDestination}</span>
+                      </div>
+                      <p className="text-gray-700 mb-4 flex-grow">
+                        Discover more tours and activities in {countryFromDestination}
+                      </p>
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="w-full border-purple-300 text-purple-700 hover:bg-purple-50 bg-transparent transition-all duration-200 h-12 text-base font-semibold"
+                      >
+                        <Link href={`/destinations?search=${encodeURIComponent(countryFromDestination)}`}>
+                          Explore {countryFromDestination}
                           <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>
                       </Button>
