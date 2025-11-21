@@ -135,7 +135,7 @@ const NavigationNext = () => {
               asChild
               className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200"
             >
-              <Link href="/toptours">Explore TopTours</Link>
+              <Link href="/toptours">Leaderboard</Link>
             </Button>
             {!authLoading && user ? (
               <Link
@@ -189,7 +189,7 @@ const NavigationNext = () => {
               className="w-full mt-4 sunset-gradient text-white font-semibold"
             >
               <Link href="/toptours" onClick={() => setIsOpen(false)}>
-                Explore TopTours
+                Leaderboard
               </Link>
             </Button>
             {/* Auth Section */}

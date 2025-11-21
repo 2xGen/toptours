@@ -228,13 +228,13 @@ const AIPlanner = () => {
             Discover Well-Researched Destination Guides
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
-            Skip the endless research. Our team has created comprehensive, expert-curated guides for 170+ destinations worldwide. 
+            Skip the endless research. Our team has created comprehensive, expert-curated guides for 180+ destinations worldwide. 
             Get insider tips, compare tour options, and find exactly what you're looking for—all in one place.
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-gray-600">
             <div className="flex items-center gap-2">
               <Globe className="h-5 w-5 text-blue-500" />
-              <span className="font-medium">170+ Destinations</span>
+              <span className="font-medium">180+ Destinations</span>
             </div>
             <div className="flex items-center gap-2">
               <Heart className="h-5 w-5 text-red-500" />

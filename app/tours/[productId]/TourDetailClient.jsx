@@ -17,7 +17,8 @@ import {
   Home,
   BookOpen,
   UtensilsCrossed,
-  Bookmark
+  Bookmark,
+  Info
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -1172,7 +1173,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 </div>
               )}
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 items-center">
                 <Button
                   asChild
                   size="lg"
@@ -1183,10 +1184,17 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                     target="_blank"
                     rel="sponsored noopener noreferrer"
                   >
-                    Book on Viator
+                    View Reviews & Availability
                     <ExternalLink className="w-5 h-5 ml-2" />
                   </a>
                 </Button>
+                <div className="relative group">
+                  <Info className="w-4 h-4 text-gray-400 cursor-help" />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                    Opens Viator, our trusted affiliate partner
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+                  </div>
+                </div>
               </div>
             </motion.div>
             
@@ -1756,7 +1764,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       Secure your spot instantly through Viator and receive flexible cancellation options plus verified customer support.
                     </p>
                   </div>
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 relative">
                     <Button
                       asChild
                       size="lg"
@@ -1767,10 +1775,17 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                         target="_blank"
                         rel="sponsored noopener noreferrer"
                       >
-                        Book on Viator
+                        View Reviews & Availability
                         <ExternalLink className="w-5 h-5 ml-2" />
                       </a>
                     </Button>
+                    <div className="absolute top-2 right-2 group">
+                      <Info className="w-3.5 h-3.5 text-purple-700/70 cursor-help bg-white/80 rounded-full p-0.5" />
+                      <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                        Opens Viator, our trusted affiliate partner
+                        <div className="absolute top-full right-4 border-4 border-transparent border-t-gray-900"></div>
+                      </div>
+                    </div>
                     <p className="text-xs text-white/80 mt-2 text-center">
                       Trusted partner • Instant confirmation
                     </p>
@@ -1799,20 +1814,33 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       )}
                     </div>
                     
-                    <Button
-                      asChild
-                      size="lg"
-                      className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 font-semibold py-6"
-                    >
-                      <a
-                        href={viatorUrl}
-                        target="_blank"
-                        rel="sponsored noopener noreferrer"
+                    <div className="relative">
+                      <Button
+                        asChild
+                        size="lg"
+                        className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 font-semibold py-6"
                       >
-                        Book on Viator
-                        <ExternalLink className="w-5 h-5 ml-2" />
-                      </a>
-                    </Button>
+                        <a
+                          href={viatorUrl}
+                          target="_blank"
+                          rel="sponsored noopener noreferrer"
+                        >
+                          View Reviews & Availability
+                          <ExternalLink className="w-5 h-5 ml-2" />
+                        </a>
+                      </Button>
+                      <div className="absolute top-2 right-2 group">
+                        <Info className="w-3.5 h-3.5 text-white/70 cursor-help" />
+                        <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                          Opens Viator, our trusted affiliate partner
+                          <div className="absolute top-full right-4 border-4 border-transparent border-t-gray-900"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-xs text-gray-400 mt-2 text-center flex items-center justify-center gap-1">
+                      Opens Viator, our trusted affiliate partner
+                      <ExternalLink className="w-3 h-3" />
+                    </p>
 
                     {flags.includes('FREE_CANCELLATION') && (
                       <div className="mt-4 flex items-center justify-center gap-2 text-sm text-green-600">
@@ -2205,20 +2233,29 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
           exit={{ opacity: 0, y: 100 }}
           className="fixed bottom-6 right-6 z-50"
         >
-          <Button
-            asChild
-            size="lg"
-            className="sunset-gradient text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
-          >
-            <a
-              href={viatorUrl}
-              target="_blank"
-              rel="sponsored noopener noreferrer"
+          <div className="relative">
+            <Button
+              asChild
+              size="lg"
+              className="sunset-gradient text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
             >
-              <span>Book this tour on Viator</span>
-              <ExternalLink className="ml-2 w-5 h-5" />
-            </a>
-          </Button>
+              <a
+                href={viatorUrl}
+                target="_blank"
+                rel="sponsored noopener noreferrer"
+              >
+                <span>View Reviews & Availability</span>
+                <ExternalLink className="ml-2 w-5 h-5" />
+              </a>
+            </Button>
+            <div className="absolute -top-0.5 -right-0.5 group">
+              <Info className="w-3 h-3 text-gray-600 cursor-help bg-white/90 rounded-full p-0.5 shadow-sm" />
+              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                Opens Viator, our trusted affiliate partner
+                <div className="absolute top-full right-4 border-4 border-transparent border-t-gray-900"></div>
+              </div>
+            </div>
+          </div>
         </motion.div>
       )}
 
@@ -2239,23 +2276,32 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               </div>
             )}
             
-            {/* Book on Viator Button - Centered */}
+            {/* View Reviews & Availability Button - Centered */}
             <div onClick={(e) => e.stopPropagation()} className="absolute left-1/2 -translate-x-1/2">
-              <Button
-                asChild
-                size="lg"
-                className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 shadow-2xl px-6 py-3 text-base font-semibold"
-              >
-                <a
-                  href={viatorUrl}
-                  target="_blank"
-                  rel="sponsored noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
+              <div className="relative">
+                <Button
+                  asChild
+                  size="lg"
+                  className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 shadow-2xl px-6 py-3 text-base font-semibold"
                 >
-                  Book on Viator
-                  <ExternalLink className="w-4 h-4 ml-2" />
-                </a>
-              </Button>
+                  <a
+                    href={viatorUrl}
+                    target="_blank"
+                    rel="sponsored noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    View Reviews & Availability
+                    <ExternalLink className="w-4 h-4 ml-2" />
+                  </a>
+                </Button>
+                <div className="absolute -top-1 -right-1 group">
+                  <Info className="w-3.5 h-3.5 text-white/70 cursor-help bg-orange-500 rounded-full p-0.5" />
+                  <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                    Opens Viator, our trusted affiliate partner
+                    <div className="absolute top-full right-4 border-4 border-transparent border-t-gray-900"></div>
+                  </div>
+                </div>
+              </div>
             </div>
             
             {/* Close Button - Right side */}
