@@ -1,6 +1,20 @@
 import { getDestinationById } from '@/data/destinationsData';
 import DestinationDetailClient from './DestinationDetailClient';
 import { getPromotionScoresByDestination, getTrendingToursByDestination, getHardcodedToursByDestination } from '@/lib/promotionSystem';
+import { getDestinationFullContent } from '@/data/destinationFullContent';
+import { getDestinationSeoContent } from '@/data/destinationSeoContent';
+import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
+
+// Helper to generate slug
+function generateSlug(name) {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
 
 // Force dynamic rendering to avoid build-time errors
 export const dynamic = 'force-dynamic';
@@ -8,14 +22,61 @@ export const dynamic = 'force-dynamic';
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
   const { id } = await params;
-  const destination = getDestinationById(id);
+  let destination = getDestinationById(id);
   
+  // If not in curated destinations, check generated content
   if (!destination) {
+    const fullContent = getDestinationFullContent(id);
+    const seoContent = getDestinationSeoContent(id);
+    
+    if (fullContent || seoContent) {
+      const destinationName = fullContent?.destinationName || seoContent?.destinationName || id;
+      const heroDescription = fullContent?.heroDescription || seoContent?.heroDescription || seoContent?.briefDescription || '';
+      const seoTitle = fullContent?.seo?.title || seoContent?.seo?.title || `${destinationName} Tours & Activities`;
+      // Use favicon for destinations without images
+      const ogImage = seoContent?.ogImage || (fullContent?.imageUrl || seoContent?.imageUrl || 'https://toptours.ai/favicon.ico');
+      
+      return {
+        title: `${seoTitle} | TopTours.ai`,
+        description: heroDescription || `Discover the best tours and activities in ${destinationName}. Find top-rated experiences, book instantly, and explore ${destinationName} with AI-powered recommendations.`,
+        keywords: `${destinationName} tours, ${destinationName} activities, ${destinationName} experiences, things to do in ${destinationName}`,
+        openGraph: {
+          title: seoTitle,
+          description: heroDescription || `Discover the best tours and activities in ${destinationName}.`,
+          url: `https://toptours.ai/destinations/${id}`,
+          images: [
+            {
+              url: ogImage,
+              width: 1200,
+              height: 630,
+              alt: destinationName,
+            },
+          ],
+          type: 'website',
+          siteName: 'TopTours.ai',
+          locale: 'en_US',
+        },
+        twitter: {
+          card: 'summary_large_image',
+          title: seoTitle,
+          description: heroDescription || `Discover the best tours and activities in ${destinationName}.`,
+          images: [ogImage],
+        },
+        alternates: {
+          canonical: `https://toptours.ai/destinations/${id}`,
+        },
+      };
+    }
+    
+    // If still not found, return not found metadata
     return {
       title: 'Destination Not Found | TopTours.ai',
     };
   }
 
+  // Use favicon for destinations without images
+  const ogImage = destination.imageUrl || 'https://toptours.ai/favicon.ico';
+  
   return {
     title: `${destination.fullName} Tours & Activities | TopTours.ai`,
     description: destination.seo?.description || destination.heroDescription,
@@ -26,7 +87,7 @@ export async function generateMetadata({ params }) {
       url: `https://toptours.ai/destinations/${destination.id}`,
       images: [
         {
-          url: destination.imageUrl,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: destination.fullName,
@@ -40,7 +101,7 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: `${destination.fullName} Tours & Activities`,
       description: destination.seo?.description || destination.heroDescription,
-      images: [destination.imageUrl],
+      images: [ogImage],
     },
     alternates: {
       canonical: `https://toptours.ai/destinations/${destination.id}`,
@@ -50,7 +111,102 @@ export async function generateMetadata({ params }) {
 
 export default async function DestinationDetailPage({ params }) {
   const { id } = await params;
-  const destination = getDestinationById(id);
+  let destination = getDestinationById(id);
+  
+  // If not in our 182 destinations, check if we have generated full content
+  if (!destination) {
+    const fullContent = getDestinationFullContent(id);
+    const seoContent = getDestinationSeoContent(id);
+    
+    if (fullContent || seoContent) {
+      // Find destination in classified data to get country and region
+      let country = fullContent?.country || seoContent?.country || null;
+      let region = fullContent?.region || seoContent?.region || null;
+      
+      // Find classified destination data (contains destinationId, country, region)
+      let classifiedDest = null;
+      if (Array.isArray(viatorDestinationsClassifiedData)) {
+        classifiedDest = viatorDestinationsClassifiedData.find(dest => {
+          const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
+          const searchName = (fullContent?.destinationName || seoContent?.destinationName || id).toLowerCase().trim();
+          return destName === searchName || generateSlug(destName) === id;
+        });
+        
+        if (classifiedDest) {
+          country = classifiedDest.country || country;
+          region = classifiedDest.region || region;
+          
+          // If country is not set, try to get it from parent destination
+          if (!country && classifiedDest.parentDestinationId) {
+            const parentDest = viatorDestinationsClassifiedData.find(dest => 
+              dest.destinationId === classifiedDest.parentDestinationId.toString() || 
+              dest.destinationId === classifiedDest.parentDestinationId
+            );
+            if (parentDest && parentDest.country) {
+              country = parentDest.country;
+            }
+            if (!region && parentDest && parentDest.region) {
+              region = parentDest.region;
+            }
+          }
+        }
+      }
+      
+      // Create destination object from generated content
+      const destName = fullContent?.destinationName || seoContent?.destinationName || id;
+      
+      // CRITICAL: Get destinationId from classified data (100% available as user confirmed)
+      const viatorDestinationId = classifiedDest?.destinationId || fullContent?.destinationId;
+      
+      if (!viatorDestinationId) {
+        console.warn(`⚠️ No destinationId found for ${destName} (slug: ${id}). Tours may show incorrectly.`);
+      }
+      
+      // Check if this is a small destination with a parent country (especially Caribbean)
+      let parentCountryDestination = null;
+      if (classifiedDest && classifiedDest.parentDestinationId && (region || '').toLowerCase() === 'caribbean') {
+        // Find the parent country destination
+        const parentDest = viatorDestinationsClassifiedData.find(dest => 
+          (dest.destinationId === classifiedDest.parentDestinationId.toString() || 
+           dest.destinationId === classifiedDest.parentDestinationId) &&
+          dest.type === 'COUNTRY'
+        );
+        
+        if (parentDest) {
+          const parentSlug = generateSlug(parentDest.destinationName || parentDest.name || '');
+          parentCountryDestination = {
+            id: parentSlug,
+            name: parentDest.destinationName || parentDest.name,
+            fullName: parentDest.destinationName || parentDest.name,
+            destinationId: parentDest.destinationId
+          };
+        }
+      }
+      
+      destination = {
+        id: id,
+        name: destName,
+        fullName: destName,
+        category: region || null,
+        country: country || null,
+        destinationId: viatorDestinationId, // CRITICAL: Always use Viator destination ID for accurate tour filtering
+        briefDescription: fullContent?.briefDescription || seoContent?.briefDescription || `Discover tours and activities in ${destName}`,
+        heroDescription: fullContent?.heroDescription || seoContent?.heroDescription || null,
+        whyVisit: fullContent?.whyVisit || [],
+        highlights: fullContent?.highlights || [],
+        gettingAround: fullContent?.gettingAround || '',
+        bestTimeToVisit: fullContent?.bestTimeToVisit || null,
+        tourCategories: fullContent?.tourCategories || [],
+        seo: fullContent?.seo || seoContent?.seo || {
+          title: `${destName} Tours & Excursions - Top-Rated Activities & Adventures`,
+          description: `Discover top-rated ${destName} tours, excursions, and activities powered by AI.`,
+        },
+        imageUrl: null, // No image for generated destinations
+        isViatorDestination: true, // Flag to indicate this is a generated destination
+        parentCountryDestination: parentCountryDestination, // For small destinations that belong to a parent country
+      };
+    }
+  }
   
   if (!destination) {
     return (

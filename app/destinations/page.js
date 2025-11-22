@@ -3,10 +3,11 @@ import { useState, useEffect, useMemo } from 'react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
-import { destinations } from '@/data/destinationsData';
+import { destinations, getDestinationsByCountry } from '@/data/destinationsData';
 import viatorDestinationsData from '@/data/viatorDestinations.json';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
+import { hasDestinationPage } from '@/data/destinationFullContent';
 
 // Use classified destinations (has region/country data)
 const viatorDestinationsClassified = Array.isArray(viatorDestinationsClassifiedData) ? viatorDestinationsClassifiedData : null;
@@ -102,18 +103,19 @@ export default function DestinationsPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const [otherDestinationsPage, setOtherDestinationsPage] = useState(1);
+  const [showMoreCountryDestinations, setShowMoreCountryDestinations] = useState(12);
   const itemsPerPage = 24; // Show 24 destinations per page
   
   // Use Viator destinations from JSON file (no API call needed)
   const viatorDestinations = Array.isArray(viatorDestinationsData) ? viatorDestinationsData : [];
   
-  // Calculate total available destinations (182 featured + all classified destinations)
-  // This is the global total, used when no filter is active
+  // Calculate total available destinations
+  // The classified destinations already include all destinations, so we just use that count
+  // The 182 destinations with guides are a subset of the classified data
   const totalAvailableDestinations = useMemo(() => {
-    const featuredCount = Array.isArray(destinations) ? destinations.length : 0;
     const classifiedCount = Array.isArray(viatorDestinationsClassified) ? viatorDestinationsClassified.length : 0;
-    return featuredCount + classifiedCount;
-  }, [destinations, viatorDestinationsClassified]);
+    return classifiedCount;
+  }, [viatorDestinationsClassified]);
 
 
   // Scroll to top when page changes
@@ -501,6 +503,19 @@ export default function DestinationsPage() {
                                   </Link>
                                 </Button>
                               )}
+                              {hasDestinationPage(destination.id) && (
+                                <Button
+                                  asChild
+                                  variant="secondary"
+                                  className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <Link href={`/destinations/${destination.id}`}>
+                                    Explore {destination.name}
+                                    <ArrowRight className="ml-2 h-5 w-5" />
+                                  </Link>
+                                </Button>
+                              )}
                               <Button
                                 asChild
                                 variant="secondary"
@@ -568,10 +583,22 @@ export default function DestinationsPage() {
                                   {destination.briefDescription}
                                 </p>
                                 
-                                <div className="mt-auto pt-4">
+                                <div className="mt-auto pt-4 space-y-3">
+                                  {hasDestinationPage(destination.id) && (
+                                    <Button
+                                      asChild
+                                      className="w-full bg-purple-600 hover:bg-purple-700 text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
+                                    >
+                                      <Link href={`/destinations/${destination.id}`}>
+                                        Explore {destination.name}
+                                        <ArrowRight className="ml-2 h-5 w-5" />
+                                      </Link>
+                                    </Button>
+                                  )}
                                   <Button
                                     asChild
-                                    className="w-full bg-purple-600 hover:bg-purple-700 text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
+                                    variant="secondary"
+                                    className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
                                   >
                                     <Link href={`/destinations/${destination.id}/tours`}>
                                       View Top Tours in {destination.name}
@@ -682,6 +709,180 @@ export default function DestinationsPage() {
               )}
             </div>
           </section>
+
+          {/* Other Destinations in Country Section */}
+          {(() => {
+            // Detect if we're showing destinations from a specific country
+            const detectedCountry = useMemo(() => {
+              if (allFilteredDestinations.length === 0) return null;
+              
+              // Check if search term is a country name
+              const searchLower = searchTerm.toLowerCase().trim();
+              const commonCountries = ['netherlands', 'france', 'italy', 'spain', 'germany', 'greece', 'portugal', 'turkey', 'croatia', 'poland', 'czech republic', 'austria', 'switzerland', 'belgium', 'norway', 'sweden', 'denmark', 'finland', 'ireland', 'united kingdom', 'uk', 'united states', 'usa', 'canada', 'mexico', 'japan', 'china', 'thailand', 'vietnam', 'indonesia', 'philippines', 'india', 'australia', 'new zealand', 'south africa', 'egypt', 'morocco', 'kenya', 'brazil', 'argentina', 'chile', 'peru', 'colombia'];
+              
+              // Check if search matches a country
+              for (const country of commonCountries) {
+                if (searchLower === country || searchLower.includes(country)) {
+                  // Find the actual country name from destinations
+                  const matchingDest = allFilteredDestinations.find(d => 
+                    d.country && d.country.toLowerCase().includes(country)
+                  );
+                  if (matchingDest && matchingDest.country) {
+                    return matchingDest.country;
+                  }
+                }
+              }
+              
+              // If no country match in search, check if all filtered destinations share the same country
+              if (allFilteredDestinations.length > 0) {
+                const countries = new Set();
+                allFilteredDestinations.forEach(dest => {
+                  if (dest.country) {
+                    countries.add(dest.country);
+                  }
+                });
+                
+                // If all destinations share the same country and we have multiple destinations
+                if (countries.size === 1 && allFilteredDestinations.length > 1) {
+                  return Array.from(countries)[0];
+                }
+              }
+              
+              return null;
+            }, [searchTerm, allFilteredDestinations]);
+            
+            // Get other destinations in the detected country
+            const otherDestinationsInCountry = useMemo(() => {
+              if (!detectedCountry) return [];
+              
+              // Get all destinations in this country (excluding current filtered ones)
+              const allCountryDests = [];
+              
+              // From curated destinations
+              const curatedDests = getDestinationsByCountry(detectedCountry);
+              curatedDests.forEach(dest => {
+                if (!allFilteredDestinations.find(d => d.id === dest.id)) {
+                  allCountryDests.push({
+                    id: dest.id,
+                    name: dest.name || dest.fullName,
+                    fullName: dest.fullName || dest.name,
+                    briefDescription: dest.briefDescription,
+                    imageUrl: dest.imageUrl,
+                    country: dest.country
+                  });
+                }
+              });
+              
+              // From classified data
+              if (viatorDestinationsClassified) {
+                const classifiedDests = viatorDestinationsClassified.filter(dest => {
+                  const destCountry = (dest.country || '').toLowerCase().trim();
+                  const targetCountry = detectedCountry.toLowerCase().trim();
+                  return destCountry === targetCountry && 
+                         dest.type === 'CITY' && // Only cities
+                         !allFilteredDestinations.find(d => {
+                           const dName = (d.name || '').toLowerCase().trim();
+                           const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
+                           return dName === destName || generateSlug(dName) === generateSlug(destName);
+                         });
+                });
+                
+                classifiedDests.forEach(dest => {
+                  const slug = generateSlug(dest.destinationName || dest.name || '');
+                  const seoContent = getDestinationSeoContent(slug);
+                  
+                  allCountryDests.push({
+                    id: slug,
+                    name: dest.destinationName || dest.name,
+                    fullName: dest.destinationName || dest.name,
+                    briefDescription: seoContent?.briefDescription || seoContent?.heroDescription || `Explore tours and activities in ${dest.destinationName || dest.name}`,
+                    imageUrl: null,
+                    country: dest.country
+                  });
+                });
+              }
+              
+              // Remove duplicates and sort alphabetically
+              const uniqueDests = [];
+              const seenNames = new Set();
+              
+              allCountryDests.forEach(dest => {
+                const nameKey = (dest.name || '').toLowerCase().trim();
+                if (!seenNames.has(nameKey)) {
+                  seenNames.add(nameKey);
+                  uniqueDests.push(dest);
+                }
+              });
+              
+              return uniqueDests.sort((a, b) => 
+                (a.name || '').localeCompare(b.name || '')
+              );
+            }, [detectedCountry, allFilteredDestinations]);
+            
+            if (!detectedCountry || otherDestinationsInCountry.length === 0) {
+              return null;
+            }
+            
+            return (
+              <section className="py-12 bg-gradient-to-br from-purple-50 to-blue-50 border-t-2 border-gray-200">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                          <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
+                        </div>
+                        <div className="flex-1 w-full">
+                          <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">
+                            Top Tours in Other {detectedCountry} Destinations
+                          </h3>
+                          <p className="text-xs sm:text-sm text-gray-600 mb-3">
+                            Explore top-rated tours and activities in other amazing destinations across {detectedCountry}.
+                          </p>
+                          <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 mb-3">
+                            {otherDestinationsInCountry.slice(0, showMoreCountryDestinations).map((otherDest) => (
+                              <Link key={otherDest.id} href={`/destinations/${otherDest.id}/tours`}>
+                                <Button 
+                                  variant="outline" 
+                                  size="sm"
+                                  className="w-full sm:w-auto border-purple-300 text-purple-700 hover:bg-purple-50 text-xs px-2 sm:px-3 py-1.5 h-auto whitespace-nowrap justify-center"
+                                >
+                                  {otherDest.name}
+                                </Button>
+                              </Link>
+                            ))}
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {otherDestinationsInCountry.length > showMoreCountryDestinations && (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => setShowMoreCountryDestinations(otherDestinationsInCountry.length)}
+                                className="text-purple-700 hover:text-purple-800 hover:bg-purple-50 text-xs"
+                              >
+                                View All ({otherDestinationsInCountry.length} destinations)
+                                <ArrowRight className="w-3 h-3 ml-1" />
+                              </Button>
+                            )}
+                            {showMoreCountryDestinations > 12 && (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => setShowMoreCountryDestinations(12)}
+                                className="text-gray-600 hover:text-gray-800 hover:bg-gray-50 text-xs"
+                              >
+                                Show Less
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </section>
+            );
+          })()}
 
           {/* CTA Section */}
           <section className="py-20 adventure-gradient">

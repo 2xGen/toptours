@@ -36,7 +36,21 @@ import { toast } from '@/components/ui/use-toast';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import { getGuidesByCountry } from '@/data/travelGuidesData';
 import { getRestaurantsForDestination } from '../restaurants/restaurantsData';
+import { getDestinationById, getDestinationsByCountry } from '@/data/destinationsData';
+import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
+import { hasDestinationPage } from '@/data/destinationFullContent';
+
+// Helper function to generate slug
+function generateSlug(name) {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
 
 const DESTINATION_TAG_OPTIONS = {
   aruba: [
@@ -261,12 +275,83 @@ export default function ToursListingClient({
   promotionScores = {}, // Map of productId -> score object
   trendingTours = [] // Tours with highest past_28_days_score for this destination
 }) {
+  // CRITICAL: Use destination.destinationId if available (from classified data), otherwise fall back to prop
+  const effectiveDestinationId = destination.destinationId || destination.viatorDestinationId || viatorDestinationId;
+  
+  if (!effectiveDestinationId) {
+    console.warn('⚠️ No Viator destination ID found for', destination.fullName || destination.name, '- tours may show incorrectly');
+  } else {
+    console.log('✅ Using Viator Destination ID for tours page:', effectiveDestinationId, 'for', destination.fullName || destination.name);
+  }
+  
   // Get guides and restaurants for internal linking
   const guides = getGuidesByCountry(destination.country) || [];
   const restaurants = getRestaurantsForDestination(destination.id);
   const hasRestaurants = restaurants.length > 0;
+  
+  // Check if destination has a guide (not a Viator destination without guide)
+  const destinationWithGuide = getDestinationById(destination.id);
+  const hasDestinationGuide = destinationWithGuide && !isViatorDestination;
+  
+  // Get other destinations in the same country for internal linking (for all destinations)
+  let otherDestinationsInCountry = [];
+  if (destination.country) {
+    // First try to get from destinationsData (182 destinations with guides)
+    const destinationsFromData = getDestinationsByCountry(destination.country, destination.id);
+    
+    // Also check classified data for additional destinations (works for both with and without guides)
+    if (Array.isArray(viatorDestinationsClassifiedData)) {
+      const currentName = (destination.name || destination.fullName || '').toLowerCase().trim();
+      const currentSlug = generateSlug(destination.name || destination.fullName || '');
+      
+      const classifiedDestinations = viatorDestinationsClassifiedData
+        .filter(dest => {
+          // Only include cities, not regions or countries
+          if (dest.type && dest.type !== 'CITY') {
+            return false;
+          }
+          
+          const destCountry = (dest.country || '').toLowerCase().trim();
+          const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
+          const destSlug = generateSlug(dest.destinationName || dest.name || '');
+          
+          // Must match country and not be the current destination
+          return destCountry === destination.country.toLowerCase().trim() && 
+                 destName !== currentName && 
+                 destSlug !== currentSlug &&
+                 destName.length > 0; // Ensure name exists
+        })
+        .map(dest => ({
+          id: generateSlug(dest.destinationName || dest.name || ''),
+          name: dest.destinationName || dest.name || '',
+          fullName: dest.destinationName || dest.name || '',
+        }));
+      
+      // Combine and deduplicate by id
+      const allDestinations = [...destinationsFromData, ...classifiedDestinations];
+      const seen = new Set();
+      const uniqueDestinations = allDestinations.filter(dest => {
+        if (seen.has(dest.id)) {
+          return false;
+        }
+        seen.add(dest.id);
+        return true;
+      });
+      
+      // Sort alphabetically by name
+      otherDestinationsInCountry = uniqueDestinations.sort((a, b) => 
+        (a.name || a.fullName || '').localeCompare(b.name || b.fullName || '')
+      );
+    } else {
+      // Sort alphabetically
+      otherDestinationsInCountry = destinationsFromData.sort((a, b) => 
+        (a.name || a.fullName || '').localeCompare(b.name || b.fullName || '')
+      );
+    }
+  }
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('rating'); // 'rating', 'reviews', 'price-low', 'price-high'
+  const [showMoreDestinations, setShowMoreDestinations] = useState(12); // Show 12 initially (2 rows of 6)
   const defaultFilterState = {
     category: '',
     priceFrom: '',
@@ -304,6 +389,7 @@ export default function ToursListingClient({
   const [activeFilters, setActiveFilters] = useState({});
   const [loading, setLoading] = useState(false);
   const [filteredToursFromAPI, setFilteredToursFromAPI] = useState([]);
+  const [showParentCountryModal, setShowParentCountryModal] = useState(false);
   const [isFiltered, setIsFiltered] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
@@ -527,6 +613,19 @@ export default function ToursListingClient({
     });
   }, []);
 
+  // Show parent country modal after 5 seconds (if destination has parent country)
+  useEffect(() => {
+    if (destination.parentCountryDestination) {
+      const timer = setTimeout(() => {
+        setShowParentCountryModal(true);
+      }, 5000); // 5 seconds
+      
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [destination.parentCountryDestination]);
+
   useEffect(() => {
     const el = tagScrollRef.current;
     if (!el) return;
@@ -559,7 +658,7 @@ export default function ToursListingClient({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            destinationId: viatorDestinationId || null,
+            destinationId: effectiveDestinationId ? String(effectiveDestinationId) : null,
             flags: ['SPECIAL_OFFER'],
             start: 1,
             count: 100,
@@ -599,12 +698,14 @@ export default function ToursListingClient({
           const primaryTagSearchTerm = primaryTag?.searchTerm || primaryTag?.label || '';
 
           const requestBody = {
+            // Use destination name or tag search term as searchTerm (for API compatibility)
+            // The destination ID filter ensures accurate results, not text matching
             searchTerm: hasTagFilter && primaryTagSearchTerm
               ? `${destinationName} ${primaryTagSearchTerm}`.trim()
-              : destinationName,
+              : destinationName, // Keep destination name for API compatibility
             page: 1,
-            viatorDestinationId: viatorDestinationId || null,
-            includeDestination: !hasTagFilter && !hasSpecialOffersFilter,
+            viatorDestinationId: effectiveDestinationId ? String(effectiveDestinationId) : null,
+            includeDestination: !hasTagFilter && !hasSpecialOffersFilter && !!effectiveDestinationId, // This filter ensures accuracy
           };
           
           // Add price filters
@@ -794,8 +895,11 @@ export default function ToursListingClient({
                   'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                  // When searching with a term, still include destination ID filter for accuracy
                   searchTerm: searchQuery,
-                  page: page
+                  page: page,
+                  viatorDestinationId: effectiveDestinationId ? String(effectiveDestinationId) : null,
+                  includeDestination: !!effectiveDestinationId // Use destination ID filter when available
                 })
               }).then(res => res.ok ? res.json() : null)
             );
@@ -935,14 +1039,14 @@ export default function ToursListingClient({
             <span className="text-gray-400">/</span>
             <Link href="/destinations" className="text-gray-500 hover:text-gray-700">Destinations</Link>
             <span className="text-gray-400">/</span>
-            {isViatorDestination ? (
-              <span className="text-gray-500">
-                {destination.fullName || destination.name}
-              </span>
-            ) : (
+            {hasDestinationPage(destination.id) ? (
               <Link href={`/destinations/${destination.id}`} className="text-gray-500 hover:text-gray-700">
                 {destination.fullName || destination.name}
               </Link>
+            ) : (
+              <span className="text-gray-500">
+                {destination.fullName || destination.name}
+              </span>
             )}
             <span className="text-gray-400">/</span>
             <span className="text-gray-900 font-medium">Tours</span>
@@ -1533,32 +1637,93 @@ export default function ToursListingClient({
       {/* Internal Linking Section */}
       <section className="py-12 bg-white border-t">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Back to Destination Page */}
-          <div className="mb-6">
-            <Link href={`/destinations/${destination.id}`}>
-              <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200 hover:shadow-lg transition-all duration-300 cursor-pointer">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Home className="w-6 h-6 text-purple-600" />
+          {/* Back to Destination Page - Only show if destination has a guide */}
+          {hasDestinationGuide && (
+            <div className="mb-6">
+              <Link href={`/destinations/${destination.id}`}>
+                <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Home className="w-6 h-6 text-purple-600" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold text-gray-900 mb-2">
+                          {destination.fullName || destination.name} Guide
+                        </h3>
+                        <p className="text-sm text-gray-600 mb-4">
+                          Explore the complete destination guide with travel tips, best time to visit, and more.
+                        </p>
+                        <Button variant="outline" className="border-purple-300 text-purple-700 hover:bg-purple-50">
+                          View Destination Guide
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">
-                        {destination.fullName || destination.name} Guide
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+          )}
+
+          {/* Other Destinations in Country - Show for all destinations to increase internal linking */}
+          {destination.country && otherDestinationsInCountry.length > 0 && (
+            <div className="mb-6">
+              <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
+                <CardContent className="p-4 sm:p-6">
+                  <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
+                    </div>
+                    <div className="flex-1 w-full">
+                      <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">
+                        Top Tours in Other {destination.country || destination.fullName || destination.name} Destinations
                       </h3>
-                      <p className="text-sm text-gray-600 mb-4">
-                        Explore the complete destination guide with travel tips, best time to visit, and more.
+                      <p className="text-xs sm:text-sm text-gray-600 mb-3">
+                        Explore top-rated tours and activities in other amazing destinations across {destination.country || destination.fullName || destination.name}.
                       </p>
-                      <Button variant="outline" className="border-purple-300 text-purple-700 hover:bg-purple-50">
-                        View Destination Guide
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
+                      <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 mb-3">
+                        {otherDestinationsInCountry.slice(0, showMoreDestinations).map((otherDest) => (
+                          <Link key={otherDest.id} href={`/destinations/${otherDest.id}/tours`}>
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              className="w-full sm:w-auto border-purple-300 text-purple-700 hover:bg-purple-50 text-xs px-2 sm:px-3 py-1.5 h-auto whitespace-nowrap justify-center"
+                            >
+                              {otherDest.name}
+                            </Button>
+                          </Link>
+                        ))}
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {otherDestinationsInCountry.length > showMoreDestinations && (
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setShowMoreDestinations(otherDestinationsInCountry.length)}
+                            className="text-purple-700 hover:text-purple-800 hover:bg-purple-50 text-xs"
+                          >
+                            View All ({otherDestinationsInCountry.length} destinations)
+                            <ArrowRight className="w-3 h-3 ml-1" />
+                          </Button>
+                        )}
+                        {showMoreDestinations > 12 && (
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setShowMoreDestinations(12)}
+                            className="text-gray-600 hover:text-gray-800 hover:bg-gray-50 text-xs"
+                          >
+                            Show Less
+                          </Button>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
-            </Link>
-          </div>
+            </div>
+          )}
 
           {/* Top Restaurants */}
           {hasRestaurants && (
@@ -1600,7 +1765,7 @@ export default function ToursListingClient({
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-bold text-gray-900 mb-2">
-                        {destination.fullName || destination.name} Travel Guides
+                        {destination.country || destination.fullName || destination.name} Travel Guides
                       </h3>
                       <p className="text-sm text-gray-600 mb-4">
                         Read comprehensive guides to plan your perfect trip.
@@ -1619,9 +1784,9 @@ export default function ToursListingClient({
                           </Badge>
                         )}
                       </div>
-                      <Link href={`/destinations/${destination.id}`}>
+                      <Link href={hasDestinationGuide ? `/destinations/${destination.id}` : '/travel-guides'}>
                         <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
-                          View All Guides
+                          {hasDestinationGuide ? 'View All Guides' : 'Browse All Travel Guides'}
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Button>
                       </Link>
@@ -1635,6 +1800,71 @@ export default function ToursListingClient({
       </section>
 
       <FooterNext />
+
+      {/* Parent Country Modal - Shows after 5 seconds for small destinations */}
+      {showParentCountryModal && destination.parentCountryDestination && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+          onClick={() => setShowParentCountryModal(false)}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900">Explore More Tours</h3>
+                  <p className="text-sm text-gray-500">Discover all destinations</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowParentCountryModal(false)}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+                aria-label="Close"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            
+            <div className="mb-6">
+              <p className="text-gray-700 leading-relaxed">
+                <span className="font-semibold text-gray-900">{destination.fullName || destination.name}</span> is part of{' '}
+                <span className="font-semibold text-blue-600">{destination.parentCountryDestination.fullName}</span>.
+              </p>
+              <p className="text-gray-600 mt-2 text-sm">
+                View all tours and activities available across {destination.parentCountryDestination.fullName} for the best selection.
+              </p>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button
+                asChild
+                className="flex-1 sunset-gradient text-white hover:scale-105 transition-transform duration-200 font-semibold"
+              >
+                <Link href={`/destinations/${destination.parentCountryDestination.id}/tours`}>
+                  View All Tours in {destination.parentCountryDestination.fullName}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setShowParentCountryModal(false)}
+                className="px-6 border-gray-300 hover:bg-gray-50"
+              >
+                Stay Here
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }

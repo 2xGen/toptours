@@ -28,15 +28,20 @@ export default async function handler(req, res) {
     }
 
     const term = destination || searchTerm;
-    if (!term) {
-      return res.status(400).json({ error: 'Search term or destination is required' });
+    
+    // If we have a destination ID filter, searchTerm can be minimal or empty
+    // Otherwise, searchTerm is required
+    if (!term && !(includeDestination && viatorDestinationId)) {
+      return res.status(400).json({ error: 'Search term or destination is required (or use destination ID filter)' });
     }
 
     const perPage = 20;
     const start = (page - 1) * perPage + 1;
 
     const requestBody = {
-      searchTerm: term.trim(),
+      // Always use the searchTerm if provided (even with destination ID filter)
+      // The destination ID filter will ensure accuracy, but searchTerm helps with API compatibility
+      searchTerm: term ? term.trim() : '',
       searchTypes: [
         {
           searchType: 'PRODUCTS',

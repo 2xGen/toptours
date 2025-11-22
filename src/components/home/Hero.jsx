@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
 import AnimatedHeroBackground from './AnimatedHeroBackground';
 import { destinations } from '@/data/destinationsData';
+import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 
 const FEATURED_TOURS_DESTINATION = 'curacao';
 const SPOTLIGHT_DESTINATIONS = [
@@ -28,26 +29,20 @@ const Hero = () => {
   const router = useRouter();
   const [query, setQuery] = useState('');
   const [isInputFocused, setIsInputFocused] = useState(false);
-  const [viatorDestinations, setViatorDestinations] = useState([]);
 
-  // Fetch Viator destinations for autocomplete
-  useEffect(() => {
-    const fetchViatorDestinations = async () => {
-      try {
-        const response = await fetch('/api/internal/get-viator-destinations');
-        if (response.ok) {
-          const data = await response.json();
-          setViatorDestinations(data.destinations || []);
-        }
-      } catch (error) {
-        console.error('Error fetching Viator destinations:', error);
-      }
-    };
-    fetchViatorDestinations();
-  }, []);
+  // Helper function to generate URL-friendly slug
+  const generateSlug = (name) => {
+    return name
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '') // Remove special characters
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+      .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+  };
 
   // Combine regular and Viator destinations
-  // Filter out Viator destinations that match our curated destinations
+  // Use the same data source as /destinations page (viatorDestinationsClassified.json)
   const DESTINATION_LOOKUP = useMemo(() => {
     const regular = destinations.map((destination) => ({
       id: destination.id,
@@ -57,8 +52,17 @@ const Hero = () => {
       isViator: false,
     }));
 
+    // Get all destinations from classified data (same as /destinations page)
+    const allClassifiedDestinations = Array.isArray(viatorDestinationsClassifiedData) 
+      ? viatorDestinationsClassifiedData 
+      : [];
+
+    // Get curated destination slugs for filtering
+    const curatedSlugs = new Set(
+      destinations.map(d => d.id.toLowerCase())
+    );
+
     // Create normalized names from our curated destinations for matching
-    // Extract base names (remove country suffixes like ", UAE", ", Italy", etc.)
     const curatedBaseNames = new Set();
     const curatedFullNames = new Set();
     
@@ -76,10 +80,15 @@ const Hero = () => {
       }
     });
     
-    // Helper function to check if a Viator destination matches any curated destination
-    const matchesCurated = (viatorName) => {
-      const normalized = viatorName.toLowerCase().trim();
+    // Helper function to check if a destination matches any curated destination
+    const matchesCurated = (destName, destSlug) => {
+      const normalized = destName.toLowerCase().trim();
       const baseName = normalized.split(',')[0].trim();
+      
+      // Check by slug first (most reliable)
+      if (destSlug && curatedSlugs.has(destSlug.toLowerCase())) {
+        return true;
+      }
       
       // Check exact matches
       if (curatedBaseNames.has(normalized) || curatedFullNames.has(normalized)) {
@@ -94,31 +103,24 @@ const Hero = () => {
       return false;
     };
 
-    // Filter Viator destinations - exclude ones that match our curated destinations
-    // Also deduplicate within Viator destinations (by name)
+    // Filter classified destinations - exclude ones that match our curated destinations
+    // Also deduplicate by name
     const seenViatorNames = new Set();
-    // Helper function to generate URL-friendly slug
-    const generateSlug = (name) => {
-      return name
-        .toLowerCase()
-        .trim()
-        .replace(/[^\w\s-]/g, '') // Remove special characters
-        .replace(/\s+/g, '-') // Replace spaces with hyphens
-        .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
-        .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
-    };
     
-    const viator = viatorDestinations
+    const viator = allClassifiedDestinations
       .filter(dest => {
-        const destName = dest.destinationName || dest.name || '';
+        const destName = (dest.destinationName || dest.name || '').trim();
+        if (!destName) return false;
+        
         const normalized = destName.toLowerCase().trim();
+        const slug = generateSlug(destName);
         
         // Skip if it matches a curated destination
-        if (matchesCurated(destName)) {
+        if (matchesCurated(destName, slug)) {
           return false;
         }
         
-        // Skip if we've already seen this exact name in Viator destinations
+        // Skip if we've already seen this exact name
         if (seenViatorNames.has(normalized)) {
           return false;
         }
@@ -133,14 +135,14 @@ const Hero = () => {
           id: slug, // Use slug as ID for SEO-friendly URLs
           name: destName,
           fullName: destName,
-          country: '',
+          country: dest.country || dest.region || '',
           isViator: true,
           viatorId: dest.destinationId || dest.id, // Store original Viator ID
         };
       });
 
     return [...regular, ...viator];
-  }, [viatorDestinations]);
+  }, []);
 
   const filteredDestinations = useMemo(() => {
     if (!query.trim()) return [];
@@ -186,7 +188,7 @@ const Hero = () => {
     if (!query.trim()) {
       toast({
         title: 'Choose a destination',
-        description: 'Start typing to jump directly into one of our 180+ curated guides.',
+        description: 'Start typing to search from 3300+ destinations worldwide.',
       });
       return;
     }
@@ -234,7 +236,7 @@ const Hero = () => {
 
             <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl">
               Skip the endless research. Jump straight into curated destination guides, expert AI
-              insights, and direct booking links for 180+ destinations worldwide and thousands of tours.
+              insights, and direct booking links for 3300+ destinations worldwide and thousands of tours.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-10">
@@ -243,7 +245,7 @@ const Hero = () => {
                 className="sunset-gradient text-white font-semibold shadow-lg hover:scale-105 transition-transform duration-200 px-8 py-3 text-lg"
               >
                 <Link href="/destinations">
-                  Explore Destinations
+                  All Destinations
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Link>
               </Button>
@@ -265,7 +267,7 @@ const Hero = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Globe className="h-5 w-5 text-blue-200" />
-                <span>180+ destinations</span>
+                <span>3300+ destinations</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="h-5 w-5 text-emerald-200" />

@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { 
   Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign
 } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -18,6 +19,28 @@ import { getRestaurantsForDestination } from './restaurants/restaurantsData';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import { TrendingUp } from 'lucide-react';
+import { groupToursByCategory } from '@/lib/tourCategorization';
+import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
+import { getDestinationSeoContent } from '@/data/destinationSeoContent';
+
+// Helper to generate slug
+function generateSlug(name) {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+// Map category names for display (e.g., "Culinary Tours" -> "Food Tours")
+function getDisplayCategoryName(categoryName) {
+  const categoryMap = {
+    'Culinary Tours': 'Food Tours',
+  };
+  return categoryMap[categoryName] || categoryName;
+}
 
 export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], hardcodedTours = {} }) {
   
@@ -25,23 +48,42 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const safeDestination = {
     ...destination,
     tourCategories: Array.isArray(destination?.tourCategories) ? destination.tourCategories : [],
-    whyVisit: Array.isArray(destination?.whyVisit) ? destination.whyVisit : []
+    whyVisit: Array.isArray(destination?.whyVisit) ? destination.whyVisit : [],
+    highlights: Array.isArray(destination?.highlights) ? destination.highlights : [],
+    gettingAround: destination?.gettingAround || '',
+    bestTimeToVisit: destination?.bestTimeToVisit || null,
+    parentCountryDestination: destination?.parentCountryDestination || null, // For small destinations that belong to a parent country
   };
   const destinationName = safeDestination.name || safeDestination.fullName || safeDestination.id;
 
+  // Debug: Log destination data (remove in production)
+  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+    console.log('Destination data:', {
+      id: safeDestination.id,
+      name: safeDestination.name,
+      whyVisit: safeDestination.whyVisit,
+      highlights: safeDestination.highlights,
+      gettingAround: safeDestination.gettingAround,
+      bestTimeToVisit: safeDestination.bestTimeToVisit,
+    });
+  }
+
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [tours, setTours] = useState({});
-  const [loading, setLoading] = useState({});
+  const [tours, setTours] = useState({ all: [] });
+  const [loading, setLoading] = useState({ all: false });
+  const [totalToursCount, setTotalToursCount] = useState(null);
   const [visibleTours, setVisibleTours] = useState({});
   const [relatedDestinations, setRelatedDestinations] = useState([]);
   const [relatedGuides, setRelatedGuides] = useState([]);
   const [categoryGuides, setCategoryGuides] = useState([]);
   const [countryDestinations, setCountryDestinations] = useState([]);
+  const [showMoreCountryDestinations, setShowMoreCountryDestinations] = useState(12);
   const [guideCarouselIndex, setGuideCarouselIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [selectedTour, setSelectedTour] = useState(null);
   const [isTourModalOpen, setIsTourModalOpen] = useState(false);
   const [showStickyButton, setShowStickyButton] = useState(true);
+  const [showParentCountryModal, setShowParentCountryModal] = useState(false);
   const { toast } = useToast();
   const restaurants = getRestaurantsForDestination(safeDestination.id);
   const hasRestaurants = restaurants.length > 0;
@@ -62,6 +104,14 @@ export default function DestinationDetailClient({ destination, promotionScores =
     checkMobile();
     window.addEventListener('resize', checkMobile);
     
+    // Show parent country modal after 5 seconds (if destination has parent country)
+    let timer = null;
+    if (safeDestination.parentCountryDestination) {
+      timer = setTimeout(() => {
+        setShowParentCountryModal(true);
+      }, 5000); // 5 seconds
+    }
+    
     // Initialize visible tours for each category (mobile only)
     const visible = {};
     safeDestination.tourCategories.forEach(category => {
@@ -70,7 +120,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
     });
     setVisibleTours(visible);
     
-    // Use hardcoded tours if available, otherwise fetch from API
+    // Use hardcoded tours if available, otherwise fetch from API with caching
     if (hardcodedTours && Object.keys(hardcodedTours).length > 0) {
       // Convert hardcoded tours to the format expected by the UI
       const formattedTours = {};
@@ -102,16 +152,31 @@ export default function DestinationDetailClient({ destination, promotionScores =
           // Add TopTours score to promotionScores for TourPromotionCard
         }));
       });
-      setTours(formattedTours);
-      // Set loading to false for all categories since we have data
-      const loadingState = {};
-      safeDestination.tourCategories.forEach(category => {
-        const categoryName = typeof category === 'string' ? category : category.name;
-        loadingState[categoryName] = false;
+      // Convert to new flat format
+      const allHardcodedTours = [];
+      Object.keys(formattedTours).forEach(categoryName => {
+        allHardcodedTours.push(...formattedTours[categoryName]);
       });
-      setLoading(loadingState);
+      
+      // Sort and take top 12
+      const sortedTours = allHardcodedTours.sort((a, b) => {
+        const ratingA = a.reviews?.combinedAverageRating || 0;
+        const ratingB = b.reviews?.combinedAverageRating || 0;
+        const reviewsA = a.reviews?.totalReviews || 0;
+        const reviewsB = b.reviews?.totalReviews || 0;
+        
+        if (ratingA !== ratingB) {
+          return ratingB - ratingA;
+        }
+        return reviewsB - reviewsA;
+      });
+      
+      setTours({ all: sortedTours.slice(0, 12) });
+      setLoading({ all: false });
+    } else {
+      // No hardcoded tours - fetch all tours with one API call (cached for 7 days)
+      fetchAllToursForDestination();
     }
-    // Note: We no longer fetch from Viator API when hardcoded tours are available
 
     // Load all related destinations from the same region
     const related = getRelatedDestinations(safeDestination.id);
@@ -138,17 +203,200 @@ export default function DestinationDetailClient({ destination, promotionScores =
     
     // Load other destinations in the same country (for SEO internal linking)
     if (safeDestination.country) {
-      const sameCountryDests = getDestinationsByCountry(safeDestination.country, safeDestination.id);
-      setCountryDestinations(sameCountryDests);
+      // First get from curated destinations (182 destinations)
+      const curatedDests = getDestinationsByCountry(safeDestination.country, safeDestination.id);
+      
+      // Also get from classified data (all destinations)
+      const allCountryDests = [];
+      const currentSlug = safeDestination.id;
+      const currentName = (safeDestination.name || safeDestination.fullName || '').toLowerCase().trim();
+      
+      // Track seen IDs and names to prevent duplicates
+      const seenIds = new Set();
+      const seenNames = new Set();
+      
+      // Add curated destinations first
+      curatedDests.forEach(dest => {
+        const destId = dest.id || '';
+        const destName = (dest.name || dest.fullName || '').toLowerCase().trim();
+        if (destId && !seenIds.has(destId)) {
+          seenIds.add(destId);
+          seenNames.add(destName);
+          allCountryDests.push(dest);
+        }
+      });
+      
+      if (Array.isArray(viatorDestinationsClassifiedData)) {
+        const classifiedDests = viatorDestinationsClassifiedData
+          .filter(dest => {
+            const destCountry = (dest.country || '').toLowerCase().trim();
+            const targetCountry = (safeDestination.country || '').toLowerCase().trim();
+            const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
+            const destSlug = generateSlug(dest.destinationName || dest.name || '');
+            
+            // Must match country, be a city, not be the current destination
+            return destCountry === targetCountry && 
+                   dest.type === 'CITY' &&
+                   destName !== currentName &&
+                   destSlug !== currentSlug &&
+                   destName.length > 0;
+          })
+          .map(dest => {
+            const slug = generateSlug(dest.destinationName || dest.name || '');
+            const seoContent = getDestinationSeoContent(slug);
+            
+            return {
+              id: slug,
+              name: dest.destinationName || dest.name,
+              fullName: dest.destinationName || dest.name,
+              briefDescription: seoContent?.briefDescription || seoContent?.heroDescription || `Explore tours and activities in ${dest.destinationName || dest.name}`,
+              imageUrl: null,
+              country: dest.country
+            };
+          });
+        
+        // Add classified destinations, avoiding duplicates by both ID and name
+        classifiedDests.forEach(dest => {
+          const destId = dest.id || '';
+          const destName = (dest.name || dest.fullName || '').toLowerCase().trim();
+          
+          // Check both ID and name to avoid duplicates
+          if (destId && !seenIds.has(destId) && !seenNames.has(destName)) {
+            seenIds.add(destId);
+            seenNames.add(destName);
+            allCountryDests.push(dest);
+          }
+        });
+      }
+      
+      // Sort alphabetically
+      const sortedDests = allCountryDests.sort((a, b) => 
+        (a.name || '').localeCompare(b.name || '')
+      );
+      
+      setCountryDestinations(sortedDests);
     }
     
     // Cleanup
     return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
       window.removeEventListener('resize', checkMobile);
     };
-  }, []);
+  }, [safeDestination.parentCountryDestination]);
+
+  // Fetch all tours for destination (single API call, cached for 7 days)
+  const fetchAllToursForDestination = async () => {
+    // Set loading state
+    setLoading({ all: true });
+
+    try {
+      // Use the existing working viator-search endpoint instead
+      const destinationName = safeDestination.fullName || safeDestination.name || safeDestination.destinationName || safeDestination.id;
+      const viatorDestinationId = safeDestination.destinationId || safeDestination.viatorDestinationId;
+      
+      // CRITICAL: If we have a destination ID, use it for filtering instead of text search
+      // This prevents matching tours by name (e.g., "Main" matching "Main Sights" tours)
+      if (!viatorDestinationId) {
+        console.error('❌ No Viator destination ID found for', destinationName, '- falling back to text search (may show irrelevant tours)');
+        console.error('Destination object:', safeDestination);
+      } else {
+        console.log('✅ Using Viator Destination ID for filtering:', viatorDestinationId, 'for', destinationName);
+      }
+      
+      const requestBody = {
+        // Use destination name as searchTerm (for API compatibility)
+        // The destination ID filter ensures accurate results, not text matching
+        searchTerm: destinationName, // Keep destination name for API compatibility
+        page: 1,
+        viatorDestinationId: viatorDestinationId ? String(viatorDestinationId) : null, // Ensure it's a string
+        includeDestination: !!viatorDestinationId // CRITICAL: This filter ensures accuracy, not the searchTerm
+      };
+      
+      console.log('API Request Body:', JSON.stringify(requestBody, null, 2));
+      
+      const response = await fetch('/api/internal/viator-search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      if (!response.ok) {
+        let errorData = {};
+        try {
+          const text = await response.text();
+          try {
+            errorData = JSON.parse(text);
+          } catch {
+            errorData = { error: text || 'Unknown error', raw: text };
+          }
+        } catch (e) {
+          errorData = { error: 'Failed to parse error response', details: e.message };
+        }
+        
+        console.error('API Error Response:', {
+          status: response.status,
+          statusText: response.statusText,
+          errorData: errorData
+        });
+        
+        const errorMessage = errorData.error || errorData.details || errorData.message || `HTTP ${response.status}`;
+        throw new Error(`Failed to fetch tours: ${response.status} - ${errorMessage}`);
+      }
+
+      const data = await response.json();
+      
+      // The viator-search endpoint returns data.products.results, not data.tours
+      const allTours = data.products?.results || data.tours || [];
+      const totalCount = data.products?.totalCount || allTours.length || 0;
+      
+      // Store total count for button
+      setTotalToursCount(totalCount);
+
+      // Store all tours (no need to group by category anymore)
+      if (allTours.length > 0) {
+        // Sort by rating/reviews
+        const sortedTours = allTours.sort((a, b) => {
+          const ratingA = a.reviews?.combinedAverageRating || 0;
+          const ratingB = b.reviews?.combinedAverageRating || 0;
+          const reviewsA = a.reviews?.totalReviews || 0;
+          const reviewsB = b.reviews?.totalReviews || 0;
+          
+          if (ratingA !== ratingB) {
+            return ratingB - ratingA;
+          }
+          return reviewsB - reviewsA;
+        });
+        
+        // Store as a flat array, take top 12
+        setTours({ all: sortedTours.slice(0, 12) });
+      } else {
+        setTours({ all: [] });
+        setTotalToursCount(0);
+      }
+
+      // Set loading to false
+      setLoading({ all: false });
+    } catch (error) {
+      console.error('Error fetching tours:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to load tours. Please try again later.',
+        variant: 'destructive',
+      });
+      
+      // Set loading to false
+      setLoading({ all: false });
+    }
+  };
 
   const fetchToursForCategory = async (destinationName, category) => {
+    // This function is kept for backward compatibility but shouldn't be used
+    // All tours are now fetched in one call via fetchAllToursForDestination
+    console.warn('fetchToursForCategory is deprecated. Use fetchAllToursForDestination instead.');
     setLoading(prev => ({ ...prev, [category]: true }));
     try {
       const searchTerm = `${destinationName} ${category}`;
@@ -202,209 +450,318 @@ export default function DestinationDetailClient({ destination, promotionScores =
       
       <div className="min-h-screen pt-16 overflow-x-hidden" suppressHydrationWarning>
         {/* Hero Section */}
-        <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
+        <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden ocean-gradient">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+            {safeDestination.imageUrl ? (
+              // Hero with image - side by side layout (original style)
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <div className="flex items-center mb-4">
+                    <MapPin className="w-5 h-5 text-blue-600 mr-2" />
+                    <span className="text-white font-medium">{safeDestination.category || safeDestination.region}</span>
+                  </div>
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold mb-4 md:mb-6 text-white">
+                    {safeDestination.fullName}
+                  </h1>
+                  <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8">
+                    {safeDestination.heroDescription}
+                  </p>
+                  <div className="flex flex-wrap gap-2 sm:gap-4 mb-6">
+                    {safeDestination.tourCategories
+                      .filter(category => {
+                        // Only show categories that have guides
+                        if (typeof category === 'object' && category.hasGuide) return true;
+                        // If it's a string, check if there's a guide for it
+                        const categoryName = typeof category === 'string' ? category : category.name;
+                        return safeDestination.tourCategories.some(c => 
+                          typeof c === 'object' && c.name === categoryName && c.hasGuide
+                        );
+                      })
+                      .slice(0, 3)
+                      .map((category, index) => {
+                        const categoryName = typeof category === 'string' ? category : category.name;
+                        const categorySlug = categoryName
+                          .toLowerCase()
+                          .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
+                          .replace(/&/g, 'and')
+                          .replace(/'/g, '') // Remove apostrophes
+                          .replace(/\./g, '') // Remove periods
+                          .replace(/\s+/g, '-'); // Replace spaces with hyphens
+                        
+                        return (
+                          <Link
+                            key={index}
+                            href={`/destinations/${safeDestination.id}/guides/${categorySlug}`}
+                            className="inline-block"
+                          >
+                            <Badge variant="outline" className="bg-white/20 text-white border-white/30 text-sm hover:bg-white/30 hover:border-white/40 transition-colors cursor-pointer">
+                              {categoryName}
+                            </Badge>
+                          </Link>
+                        );
+                      })}
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    <Button
+                      asChild
+                      className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
+                    >
+                      <Link href={`/destinations/${safeDestination.id}/tours`}>
+                        View All Tours & Activities in {safeDestination.fullName || safeDestination.name}
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
+                  </div>
+                </motion.div>
+                
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="relative"
+                >
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <img
+                      src={safeDestination.imageUrl}
+                      alt={safeDestination.fullName}
+                      className="w-full h-64 sm:h-80 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  </div>
+                </motion.div>
+              </div>
+            ) : (
+              // Hero without image - centered layout (matching /tours page style)
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
+                className="text-center"
               >
-                <div className="flex items-center mb-4">
-                  <MapPin className="w-5 h-5 text-blue-600 mr-2" />
+                <div className="flex items-center justify-center mb-4">
+                  <MapPin className="w-5 h-5 text-blue-200 mr-2" />
                   <span className="text-white font-medium">{safeDestination.category || safeDestination.region}</span>
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold mb-4 md:mb-6 text-white">
                   {safeDestination.fullName}
                 </h1>
-                <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8">
+                <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
                   {safeDestination.heroDescription}
                 </p>
-                <div className="flex flex-wrap gap-2 sm:gap-4 mb-6">
-                  {safeDestination.tourCategories
-                    .filter(category => {
-                      // Only show categories that have guides
-                      if (typeof category === 'object' && category.hasGuide) return true;
-                      // If it's a string, check if there's a guide for it
-                      const categoryName = typeof category === 'string' ? category : category.name;
-                      return safeDestination.tourCategories.some(c => 
-                        typeof c === 'object' && c.name === categoryName && c.hasGuide
-                      );
-                    })
-                    .slice(0, 3)
-                    .map((category, index) => {
-                      const categoryName = typeof category === 'string' ? category : category.name;
-                      const categorySlug = categoryName
-                        .toLowerCase()
-                        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
-                        .replace(/&/g, 'and')
-                        .replace(/'/g, '') // Remove apostrophes
-                        .replace(/\./g, '') // Remove periods
-                        .replace(/\s+/g, '-'); // Replace spaces with hyphens
-                      
-                      return (
-                        <Link
-                          key={index}
-                          href={`/destinations/${safeDestination.id}/guides/${categorySlug}`}
-                          className="inline-block"
-                        >
-                          <Badge variant="outline" className="bg-white/20 text-white border-white/30 text-sm hover:bg-white/30 hover:border-white/40 transition-colors cursor-pointer">
-                            {categoryName}
-                          </Badge>
-                        </Link>
-                      );
-                    })}
-                </div>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap justify-center gap-3">
                   <Button
                     asChild
                     className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
                   >
                     <Link href={`/destinations/${safeDestination.id}/tours`}>
-                      View All Tours
+                      View All Tours & Activities in {safeDestination.fullName || safeDestination.name}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
                   </Button>
                 </div>
               </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative"
-              >
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src={safeDestination.imageUrl}
-                    alt={safeDestination.fullName}
-                    className="w-full h-64 sm:h-80 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                </div>
-              </motion.div>
-            </div>
+            )}
           </div>
         </section>
 
         {/* Breadcrumb */}
         <section className="bg-white border-b">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
-            <nav className="flex items-center space-x-2 text-xs sm:text-sm">
-              <Link href="/" className="text-gray-500 hover:text-gray-700">Home</Link>
+            <nav className="flex items-center space-x-2 text-xs sm:text-sm" aria-label="Breadcrumb">
+              <Link href="/" className="text-gray-500 hover:text-gray-700 transition-colors cursor-pointer">Home</Link>
               <span className="text-gray-400">/</span>
-              <Link href="/destinations" className="text-gray-500 hover:text-gray-700">Destinations</Link>
+              <Link href="/destinations" className="text-gray-500 hover:text-gray-700 transition-colors cursor-pointer">Destinations</Link>
               <span className="text-gray-400">/</span>
-              <span className="text-gray-900 font-medium">{safeDestination.fullName}</span>
+              <span className="text-gray-900 font-medium" aria-current="page">{safeDestination.fullName || safeDestination.name}</span>
             </nav>
           </div>
         </section>
 
         {/* Why Visit Section */}
-        <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-8 sm:mb-12"
-            >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
-                Why Visit {safeDestination.fullName}?
-              </h2>
-            </motion.div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {safeDestination.whyVisit && Array.isArray(safeDestination.whyVisit) && safeDestination.whyVisit.map((reason, index) => (
+        {safeDestination.whyVisit && safeDestination.whyVisit.length > 0 && (
+          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-center mb-8 sm:mb-12"
+              >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
+                  Why Visit {safeDestination.fullName}?
+                </h2>
+              </motion.div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8">
+                {safeDestination.whyVisit.map((reason, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <Card className="bg-white border-0 shadow-lg h-full">
+                      <CardContent className="p-6">
+                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                          <Star className="w-6 h-6 text-blue-600" />
+                        </div>
+                        <p className="text-gray-700 leading-relaxed">{reason}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Getting Around & Must-See Attractions - Combined */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+                {/* Getting Around - Compact */}
+                {safeDestination.gettingAround && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                  >
+                    <Card className="bg-white border-0 shadow-sm h-full">
+                      <CardContent className="p-4 sm:p-5">
+                        <div className="flex items-start gap-3">
+                          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <Car className="w-5 h-5 text-blue-600" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-lg font-semibold text-gray-800 mb-2">Getting Around</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed mb-3">{safeDestination.gettingAround}</p>
+                            <div className="pt-2 border-t border-gray-100">
+                              <p className="text-gray-600 text-xs mb-2">Prefer renting a car? See options here.</p>
+                              <Button 
+                                variant="outline" 
+                                size="sm"
+                                className="w-full text-xs"
+                                onClick={() => window.open(`https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk`, '_blank')}
+                              >
+                                <Car className="w-3 h-3 mr-1.5" />
+                                Find Car Rental Deals
+                                <ExternalLink className="w-3 h-3 ml-1.5" />
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                )}
+
+                {/* Must-See Attractions - Compact List */}
+                {safeDestination.highlights && safeDestination.highlights.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                  >
+                    <Card className="bg-white border-0 shadow-sm h-full">
+                      <CardContent className="p-4 sm:p-5">
+                        <div className="flex items-start gap-3">
+                          <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <MapPin className="w-5 h-5 text-purple-600" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-lg font-semibold text-gray-800 mb-3">Must-See Attractions</h3>
+                            <ul className="space-y-2">
+                              {safeDestination.highlights.map((highlight, index) => (
+                                <li key={index} className="flex items-start gap-2">
+                                  <span className="text-purple-600 mt-1">•</span>
+                                  <span className="text-gray-600 text-sm leading-relaxed">{highlight}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                )}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Best Time to Visit */}
+        {safeDestination.bestTimeToVisit && (
+          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-center mb-8 sm:mb-12"
+              >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
+                  Best Time to Visit
+                </h2>
+              </motion.div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="bg-white border-0 shadow-lg h-full">
+                  <div className="flex items-start mb-6">
+                    <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                      <Calendar className="w-6 h-6 text-orange-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">Weather</h3>
+                      <p className="text-gray-600">{safeDestination.bestTimeToVisit.weather}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start mb-6">
+                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                      <Clock className="w-6 h-6 text-green-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">Best Months</h3>
+                      <p className="text-gray-600">{safeDestination.bestTimeToVisit.bestMonths}</p>
+                    </div>
+                  </div>
+                </motion.div>
+                
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className="space-y-6"
+                >
+                  <Card className="bg-blue-50 border-blue-200">
                     <CardContent className="p-6">
-                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                        <Star className="w-6 h-6 text-blue-600" />
-                      </div>
-                      <p className="text-gray-700 leading-relaxed">{reason}</p>
+                      <h3 className="text-lg font-semibold text-blue-800 mb-2">Peak Season</h3>
+                      <p className="text-blue-700">{safeDestination.bestTimeToVisit.peakSeason}</p>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="bg-green-50 border-green-200">
+                    <CardContent className="p-6">
+                      <h3 className="text-lg font-semibold text-green-800 mb-2">Off Season</h3>
+                      <p className="text-green-700">{safeDestination.bestTimeToVisit.offSeason}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
-              ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
-        {/* Best Time to Visit */}
-        <section className="py-12 sm:py-16 bg-white overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-8 sm:mb-12"
-            >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
-                Best Time to Visit
-              </h2>
-            </motion.div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex items-start mb-6">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
-                    <Calendar className="w-6 h-6 text-orange-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Weather</h3>
-                    <p className="text-gray-600">{safeDestination.bestTimeToVisit.weather}</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start mb-6">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                    <Clock className="w-6 h-6 text-green-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Best Months</h3>
-                    <p className="text-gray-600">{safeDestination.bestTimeToVisit.bestMonths}</p>
-                  </div>
-                </div>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="space-y-6"
-              >
-                <Card className="bg-blue-50 border-blue-200">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-blue-800 mb-2">Peak Season</h3>
-                    <p className="text-blue-700">{safeDestination.bestTimeToVisit.peakSeason}</p>
-                  </CardContent>
-                </Card>
-                
-                <Card className="bg-green-50 border-green-200">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-green-800 mb-2">Off Season</h3>
-                    <p className="text-green-700">{safeDestination.bestTimeToVisit.offSeason}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </div>
-          </div>
-        </section>
 
         {/* Trending Now Section - Past 28 Days */}
         {trendingTours && trendingTours.length > 0 && (
@@ -513,7 +870,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </section>
         )}
 
-        {/* Tour Categories */}
+        {/* Popular Tours & Activities */}
         <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -531,322 +888,364 @@ export default function DestinationDetailClient({ destination, promotionScores =
               </p>
             </motion.div>
 
-            {safeDestination.tourCategories && Array.isArray(safeDestination.tourCategories) && safeDestination.tourCategories.map((category, categoryIndex) => {
-              const categoryName = typeof category === 'string' ? category : category.name;
-              return (
-              <motion.div
-                key={categoryName}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: categoryIndex * 0.1 }}
-                viewport={{ once: true }}
-                className="mb-16"
-              >
-                <div className="flex items-center justify-between mb-8">
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-2xl font-poppins font-bold text-gray-800">
-                      {(() => {
-                        const categoryName = typeof category === 'string' ? category : category.name;
-                        // Check if category already starts with destination name
-                        if (categoryName.startsWith(safeDestination.fullName)) {
-                          return categoryName; // Already includes destination name
-                        }
-                        return `${safeDestination.fullName} ${categoryName}`; // Add destination name
-                      })()}
-                    </h3>
-                    {(() => {
-                      const categoryName = typeof category === 'string' ? category : category.name;
-                      const hasGuide = typeof category === 'object' && category.hasGuide;
-                      const categorySlug = categoryName.toLowerCase()
-                        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
-                        .replace(/&/g, 'and')
-                        .replace(/'/g, '') // Remove apostrophes
-                        .replace(/\./g, '') // Remove periods
-                        .replace(/ /g, '-');
-                      
-                      return hasGuide ? (
-                        <Link 
-                          href={`/destinations/${safeDestination.id}/guides/${categorySlug}`}
-                          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors text-sm font-medium"
-                          title={`Read complete guide about ${categoryName} in ${safeDestination.fullName}`}
-                        >
-                          <BookOpen className="w-5 h-5" />
-                          <span className="hidden sm:inline">Read guide</span>
+            {loading.all ? (
+              <div className="text-center py-12">
+                <Loader2 className="w-8 h-8 animate-spin mx-auto text-blue-600 mb-4" />
+                <p className="text-gray-600">Loading tours...</p>
+              </div>
+            ) : tours.all && tours.all.length > 0 ? (
+              <>
+                {/* Mobile grid layout - 1 column */}
+                <div className="md:hidden grid grid-cols-1 gap-6">
+                  {tours.all.slice(0, 12).map((tour, index) => {
+                    const tourId = getTourProductId(tour);
+                    const tourUrl = getTourUrl(tourId, tour.title);
+                    
+                    return (
+                      <Card key={`${tourId}-${index}`} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                        <Link href={tourUrl}>
+                          <div className="relative h-48 bg-gray-200 flex-shrink-0 cursor-pointer">
+                            {tour.images?.[0]?.variants?.[3]?.url ? (
+                              <img
+                                src={tour.images[0].variants[3].url}
+                                alt={tour.title}
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                <Search className="w-8 h-8 text-gray-400" />
+                              </div>
+                            )}
+                          </div>
                         </Link>
-                      ) : null;
-                    })()}
-                  </div>
+
+                        <CardContent className="p-4 flex-1 flex flex-col">
+                          <Link href={tourUrl}>
+                            <h4 className="font-semibold text-base text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors cursor-pointer">
+                              {tour.title}
+                            </h4>
+                          </Link>
+                          
+                          {tour.flags && Array.isArray(tour.flags) && tour.flags.length > 0 && (
+                            <div className="flex flex-wrap gap-1 mb-3">
+                              {tour.flags.slice(0, 2).map((flag, flagIndex) => {
+                                let badgeClass = "text-xs font-medium px-2 py-1 rounded-full";
+                                if (flag === "FREE_CANCELLATION") {
+                                  badgeClass += " bg-green-50 text-green-700 border border-green-200";
+                                } else if (flag === "PRIVATE_TOUR") {
+                                  badgeClass += " bg-purple-50 text-purple-700 border border-purple-200";
+                                } else if (flag === "LIKELY_TO_SELL_OUT") {
+                                  badgeClass += " bg-orange-50 text-orange-700 border border-orange-200";
+                                } else if (flag === "NEW_ON_VIATOR") {
+                                  badgeClass += " bg-pink-50 text-pink-700 border border-pink-200";
+                                } else {
+                                  badgeClass += " bg-blue-50 text-blue-700 border border-blue-200";
+                                }
+                                
+                                return (
+                                  <Badge key={flagIndex} variant="secondary" className={badgeClass}>
+                                    {flag === "NEW_ON_VIATOR" ? "NEW" : flag.replace(/_/g, ' ')}
+                                  </Badge>
+                                );
+                              })}
+                            </div>
+                          )}
+
+                          <div className="mb-3">
+                            <TourPromotionCard 
+                              productId={tourId} 
+                              compact={true}
+                              tourData={tour}
+                              destinationId={safeDestination.id}
+                              initialScore={promotionScores[tourId] || {
+                                product_id: tourId,
+                                total_score: 0,
+                                monthly_score: 0,
+                                weekly_score: 0,
+                                past_28_days_score: 0,
+                              }}
+                            />
+                          </div>
+
+                          <Button
+                            asChild
+                            size="sm"
+                            className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto"
+                          >
+                            <Link href={tourUrl}>
+                              View Details
+                              <ArrowRight className="w-4 h-4 ml-1" />
+                            </Link>
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
+                </div>
+                
+                {/* Desktop grid layout - 4 columns, 12 tours */}
+                <div className="hidden md:grid md:grid-cols-4 gap-6">
+                  {tours.all.slice(0, 12).map((tour, index) => {
+                    const tourId = getTourProductId(tour);
+                    const tourUrl = getTourUrl(tourId, tour.title);
+                    
+                    return (
+                      <Card key={`${tourId}-${index}`} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                        <Link href={tourUrl}>
+                          <div className="relative h-40 bg-gray-200 flex-shrink-0 cursor-pointer">
+                            {tour.images?.[0]?.variants?.[3]?.url ? (
+                              <img
+                                src={tour.images[0].variants[3].url}
+                                alt={tour.title}
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                <Search className="w-6 h-6 text-gray-400" />
+                              </div>
+                            )}
+                          </div>
+                        </Link>
+
+                        <CardContent className="p-4 flex-1 flex flex-col">
+                          <Link href={tourUrl}>
+                            <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 h-10 hover:text-purple-600 transition-colors cursor-pointer">
+                              {tour.title}
+                            </h4>
+                          </Link>
+                          
+                          {tour.flags && Array.isArray(tour.flags) && tour.flags.length > 0 && (
+                            <div className="flex flex-wrap gap-1 mb-2">
+                              {tour.flags.slice(0, 2).map((flag, flagIndex) => {
+                                let badgeClass = "text-xs font-medium px-2 py-1 rounded-full";
+                                if (flag === "FREE_CANCELLATION") {
+                                  badgeClass += " bg-green-50 text-green-700 border border-green-200";
+                                } else if (flag === "PRIVATE_TOUR") {
+                                  badgeClass += " bg-purple-50 text-purple-700 border border-purple-200";
+                                } else if (flag === "LIKELY_TO_SELL_OUT") {
+                                  badgeClass += " bg-orange-50 text-orange-700 border border-orange-200";
+                                } else if (flag === "NEW_ON_VIATOR") {
+                                  badgeClass += " bg-pink-50 text-pink-700 border border-pink-200";
+                                } else {
+                                  badgeClass += " bg-blue-50 text-blue-700 border border-blue-200";
+                                }
+                                
+                                return (
+                                  <Badge key={flagIndex} variant="secondary" className={badgeClass}>
+                                    {flag === "NEW_ON_VIATOR" ? "NEW" : flag.replace(/_/g, ' ')}
+                                  </Badge>
+                                );
+                              })}
+                            </div>
+                          )}
+
+                          <div className="mb-2">
+                            <TourPromotionCard 
+                              productId={tourId} 
+                              compact={true}
+                              tourData={tour}
+                              destinationId={safeDestination.id}
+                              initialScore={promotionScores[tourId] || {
+                                product_id: tourId,
+                                total_score: 0,
+                                monthly_score: 0,
+                                weekly_score: 0,
+                                past_28_days_score: 0,
+                              }}
+                            />
+                          </div>
+
+                          <Button
+                            asChild
+                            size="sm"
+                            className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
+                          >
+                            <Link href={tourUrl}>
+                              View Details
+                              <ArrowRight className="w-3 h-3 ml-1" />
+                            </Link>
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
                 </div>
 
-                {loading[categoryName] ? (
-                  <div className="text-center py-12">
-                    <Loader2 className="w-8 h-8 animate-spin mx-auto text-blue-600 mb-4" />
-                    <p className="text-gray-600">Loading tours...</p>
-                  </div>
-                ) : tours[categoryName] && tours[categoryName].length > 0 ? (
-                  <>
-                    {/* Mobile grid layout */}
-                    <div className="md:hidden grid grid-cols-1 gap-6">
-                      {tours[categoryName].slice(0, visibleTours[categoryName] || 4).map((tour, index) => {
-                        const tourId = getTourProductId(tour);
-                        const tourUrl = getTourUrl(tourId, tour.title);
-                        
-                        return (
-                          <Card key={tourId || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
-                            {/* Tour Image - Clickable link to internal page */}
-                            <Link href={tourUrl}>
-                              <div className="relative h-32 bg-gray-200 flex-shrink-0 cursor-pointer">
-                                {tour.images?.[0]?.variants?.[3]?.url ? (
-                                  <img
-                                    src={tour.images[0].variants[3].url}
-                                    alt={tour.title}
-                                    className="w-full h-full object-cover"
-                                  />
-                                ) : (
-                                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                                    <Search className="w-6 h-6 text-gray-400" />
-                                  </div>
-                                )}
-                              </div>
-                            </Link>
-
-                            {/* Tour Content */}
-                            <CardContent className="p-3 flex-1 flex flex-col">
-                              <Link href={tourUrl}>
-                                <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 h-10 hover:text-purple-600 transition-colors cursor-pointer">
-                                  {tour.title}
-                                </h4>
-                              </Link>
-                              
-                              {/* Tour Badges */}
-                              {tour.flags && Array.isArray(tour.flags) && tour.flags.length > 0 && (
-                                <div className="flex flex-wrap gap-1 mb-2">
-                                  {tour.flags.map((flag, flagIndex) => {
-                                    let badgeClass = "text-xs font-medium px-2 py-1 rounded-full";
-                                    if (flag === "FREE_CANCELLATION") {
-                                      badgeClass += " bg-green-50 text-green-700 border border-green-200";
-                                    } else if (flag === "PRIVATE_TOUR") {
-                                      badgeClass += " bg-purple-50 text-purple-700 border border-purple-200";
-                                    } else if (flag === "LIKELY_TO_SELL_OUT") {
-                                      badgeClass += " bg-orange-50 text-orange-700 border border-orange-200";
-                                    } else if (flag === "NEW_ON_VIATOR") {
-                                      badgeClass += " bg-pink-50 text-pink-700 border border-pink-200";
-                                    } else {
-                                      badgeClass += " bg-blue-50 text-blue-700 border border-blue-200";
-                                    }
-                                    
-                                    return (
-                                      <Badge
-                                        key={flagIndex}
-                                        variant="secondary"
-                                        className={badgeClass}
-                                      >
-                                        {flag === "NEW_ON_VIATOR" ? "NEW" : flag.replace(/_/g, ' ')}
-                                      </Badge>
-                                    );
-                                  })}
-                                </div>
-                              )}
-
-
-                              {/* Promotion Score / Boost Button */}
-                              <div className="mb-2">
-                                <TourPromotionCard 
-                                  productId={tourId} 
-                                  compact={true}
-                                  tourData={tour}
-                                  destinationId={safeDestination.id}
-                                  initialScore={promotionScores[tourId] || {
-                                    product_id: tourId,
-                                    total_score: 0,
-                                    monthly_score: 0,
-                                    weekly_score: 0,
-                                    past_28_days_score: 0,
-                                  }}
-                                />
-                              </div>
-
-                              {/* View Details Button - Links to internal page */}
-                              <Button
-                                asChild
-                                size="sm"
-                                className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
-                              >
-                                <Link href={tourUrl}>
-                                  View Details
-                                  <ArrowRight className="w-3 h-3 ml-1" />
-                                </Link>
-                              </Button>
-                            </CardContent>
-                          </Card>
-                        );
-                      })}
-                    </div>
-                    
-                    {/* Load More button for mobile */}
-                    {tours[categoryName] && (visibleTours[categoryName] || 4) < tours[categoryName].length && (
-                      <div className="md:hidden mt-6 text-center">
-                        <Button
-                          onClick={() => loadMoreTours(categoryName)}
-                          variant="outline"
-                          className="px-6 py-2 text-purple-600 border-purple-300 hover:bg-purple-50"
-                        >
-                          Load More Tours
-                        </Button>
-                      </div>
-                    )}
-
-                    {/* Desktop grid layout - 4 tours per row */}
-                    <div className="hidden md:grid md:grid-cols-4 gap-6">
-                      {tours[categoryName].map((tour, index) => {
-                        const tourId = getTourProductId(tour);
-                        const tourUrl = getTourUrl(tourId, tour.title);
-                        
-                        return (
-                          <Card key={tourId || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
-                            {/* Tour Image - Clickable link to internal page */}
-                            <Link href={tourUrl}>
-                              <div className="relative h-32 bg-gray-200 flex-shrink-0 cursor-pointer">
-                                {tour.images?.[0]?.variants?.[3]?.url ? (
-                                  <img
-                                    src={tour.images[0].variants[3].url}
-                                    alt={tour.title}
-                                    className="w-full h-full object-cover"
-                                  />
-                                ) : (
-                                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                                    <Search className="w-6 h-6 text-gray-400" />
-                                  </div>
-                                )}
-                              </div>
-                            </Link>
-
-                            {/* Tour Content */}
-                            <CardContent className="p-3 flex-1 flex flex-col">
-                              <Link href={tourUrl}>
-                                <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 h-10 hover:text-purple-600 transition-colors cursor-pointer">
-                                  {tour.title}
-                                </h4>
-                              </Link>
-                              
-                              {/* Tour Badges */}
-                              {tour.flags && Array.isArray(tour.flags) && tour.flags.length > 0 && (
-                                <div className="flex flex-wrap gap-1 mb-2">
-                                  {tour.flags.map((flag, flagIndex) => {
-                                    let badgeClass = "text-xs font-medium px-2 py-1 rounded-full";
-                                    if (flag === "FREE_CANCELLATION") {
-                                      badgeClass += " bg-green-50 text-green-700 border border-green-200";
-                                    } else if (flag === "PRIVATE_TOUR") {
-                                      badgeClass += " bg-purple-50 text-purple-700 border border-purple-200";
-                                    } else if (flag === "LIKELY_TO_SELL_OUT") {
-                                      badgeClass += " bg-orange-50 text-orange-700 border border-orange-200";
-                                    } else if (flag === "NEW_ON_VIATOR") {
-                                      badgeClass += " bg-pink-50 text-pink-700 border border-pink-200";
-                                    } else {
-                                      badgeClass += " bg-blue-50 text-blue-700 border border-blue-200";
-                                    }
-                                    
-                                    return (
-                                      <Badge
-                                        key={flagIndex}
-                                        variant="secondary"
-                                        className={badgeClass}
-                                      >
-                                        {flag === "NEW_ON_VIATOR" ? "NEW" : flag.replace(/_/g, ' ')}
-                                      </Badge>
-                                    );
-                                  })}
-                                </div>
-                              )}
-
-
-                              {/* Promotion Score / Boost Button */}
-                              <div className="mb-2">
-                                <TourPromotionCard 
-                                  productId={tourId} 
-                                  compact={true}
-                                  tourData={tour}
-                                  destinationId={safeDestination.id}
-                                  initialScore={promotionScores[tourId] || {
-                                    product_id: tourId,
-                                    total_score: 0,
-                                    monthly_score: 0,
-                                    weekly_score: 0,
-                                    past_28_days_score: 0,
-                                  }}
-                                />
-                              </div>
-
-                              {/* View Details Button - Links to internal page */}
-                              <Button
-                                asChild
-                                size="sm"
-                                className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
-                              >
-                                <Link href={tourUrl}>
-                                  View Details
-                                  <ArrowRight className="w-3 h-3 ml-1" />
-                                </Link>
-                              </Button>
-                            </CardContent>
-                          </Card>
-                        );
-                      })}
-                    </div>
-                  </>
-                ) : (
-                  <div className="text-center py-12 bg-white rounded-lg">
-                    <p className="text-gray-500">No {categoryName} tours found at the moment.</p>
-                  </div>
-                )}
-              </motion.div>
-              );
-            })}
+                {/* View All Button */}
+                <div className="text-center mt-8">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 px-8 py-6"
+                  >
+                    <Link href={`/destinations/${safeDestination.id}/tours`}>
+                      {totalToursCount !== null && totalToursCount > 0 
+                        ? `View All ${totalToursCount} Tours & Activities in ${safeDestination.fullName}`
+                        : `View All Tours & Activities in ${safeDestination.fullName}`
+                      }
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Link>
+                  </Button>
+                  <p className="text-sm text-gray-500 mt-2">
+                    Browse all available tours, filter by category, price, and more
+                  </p>
+                </div>
+              </>
+            ) : (
+              <div className="text-center py-12 bg-white rounded-lg">
+                <p className="text-gray-500 mb-2">Tours are loading or no tours found at the moment.</p>
+                <p className="text-sm text-gray-400 mb-6">Try browsing all tours to see what's available.</p>
+                <Button
+                  asChild
+                  size="lg"
+                  className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200"
+                >
+                  <Link href={`/destinations/${safeDestination.id}/tours`}>
+                    Browse All Tours & Activities
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+              </div>
+            )}
           </div>
         </section>
 
         {/* Other Destinations in Same Country */}
         {countryDestinations.length > 0 && safeDestination.country && (
-          <section className="py-12 bg-gradient-to-r from-blue-50 to-purple-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h3 className="text-2xl font-poppins font-bold text-gray-800 mb-8 text-center">
-                Other Destinations in {safeDestination.country}
-              </h3>
-              <div className="flex flex-wrap justify-center gap-6">
-                {countryDestinations.map((dest) => (
-                  <Link 
-                    key={dest.id}
-                    href={`/destinations/${dest.id}`}
-                    className="group"
-                  >
-                    <Card className="bg-white border-0 shadow-xl overflow-hidden h-full flex flex-col hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 w-full max-w-sm">
-                      <div className="relative h-48 overflow-hidden">
-                        <img 
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" 
-                          alt={dest.name}
-                          src={dest.imageUrl}
-                          loading="lazy"
-                        />
+          <section className="py-12 bg-white border-t">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="mb-6">
+                <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
                       </div>
-                      <CardContent className="p-4 flex-1 flex flex-col">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
-                          {dest.name}
+                      <div className="flex-1 w-full">
+                        <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">
+                          Top Tours in Other {safeDestination.country} Destinations
                         </h3>
-                        <p className="text-sm text-gray-600 line-clamp-2 flex-1">
-                          {dest.briefDescription}
+                        <p className="text-xs sm:text-sm text-gray-600 mb-3">
+                          Explore top-rated tours and activities in other amazing destinations across {safeDestination.country}.
                         </p>
-                        <div className="mt-3 flex items-center text-blue-600 group-hover:text-blue-700">
-                          <span className="text-sm font-semibold">Explore {dest.name}</span>
-                          <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                        <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 mb-3">
+                          {countryDestinations.slice(0, showMoreCountryDestinations).map((otherDest, index) => (
+                            <Link key={`${otherDest.id}-${index}`} href={`/destinations/${otherDest.id}/tours`}>
+                              <Button 
+                                variant="outline" 
+                                size="sm"
+                                className="w-full sm:w-auto border-purple-300 text-purple-700 hover:bg-purple-50 text-xs px-2 sm:px-3 py-1.5 h-auto whitespace-nowrap justify-center"
+                              >
+                                {otherDest.name}
+                              </Button>
+                            </Link>
+                          ))}
                         </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
+                        <div className="flex flex-wrap gap-2">
+                          {countryDestinations.length > showMoreCountryDestinations && (
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => setShowMoreCountryDestinations(countryDestinations.length)}
+                              className="text-purple-700 hover:text-purple-800 hover:bg-purple-50 text-xs"
+                            >
+                              View All ({countryDestinations.length} destinations)
+                              <ArrowRight className="w-3 h-3 ml-1" />
+                            </Button>
+                          )}
+                          {showMoreCountryDestinations > 12 && (
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => setShowMoreCountryDestinations(12)}
+                              className="text-gray-600 hover:text-gray-800 hover:bg-gray-50 text-xs"
+                            >
+                              Show Less
+                            </Button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </section>
         )}
+
+        {/* Popular Categories */}
+        {safeDestination.tourCategories && Array.isArray(safeDestination.tourCategories) && safeDestination.tourCategories.length > 0 && (
+          <section className="py-12 sm:py-16 bg-white overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-center mb-8 sm:mb-12"
+              >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
+                  Popular Categories in {safeDestination.fullName}
+                </h2>
+                <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+                  Explore the most popular tour categories in {safeDestination.fullName}
+                </p>
+              </motion.div>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                {safeDestination.tourCategories.slice(0, 6).map((category, index) => {
+                  const categoryName = typeof category === 'string' ? category : category.name;
+                  const displayName = getDisplayCategoryName(categoryName);
+                  const hasGuide = typeof category === 'object' && category.hasGuide;
+                  const categorySlug = categoryName.toLowerCase()
+                    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                    .replace(/&/g, 'and')
+                    .replace(/'/g, '')
+                    .replace(/\./g, '')
+                    .replace(/ /g, '-');
+                  
+                  // Link to tours page with category filter, or guide if available
+                  const categoryLink = hasGuide 
+                    ? `/destinations/${safeDestination.id}/guides/${categorySlug}`
+                    : `/destinations/${safeDestination.id}/tours`;
+                  
+                  return (
+                    <motion.div
+                      key={categoryName}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <Link href={categoryLink}>
+                        <Card className={`bg-gradient-to-br transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer h-full border-0 ${
+                          hasGuide 
+                            ? 'from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 border-2 border-purple-200' 
+                            : 'from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100'
+                        }`}>
+                          <CardContent className="p-6 text-center flex flex-col items-center justify-center min-h-[120px]">
+                            {hasGuide && (
+                              <BookOpen className="w-5 h-5 text-purple-600 mb-2" />
+                            )}
+                            <h3 className="font-poppins font-semibold text-gray-800 text-sm md:text-base mb-1">
+                              {displayName}
+                            </h3>
+                            {hasGuide ? (
+                              <p className="text-xs text-purple-600 font-medium">Read Guide</p>
+                            ) : (
+                              <p className="text-xs text-gray-500">View Tours</p>
+                            )}
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
 
         {/* Related Travel Guides Carousel Section */}
         {normalizedRelatedGuides.length > 0 && (
@@ -937,12 +1336,12 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   </div>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center max-w-5xl mx-auto">
                         {normalizedRelatedGuides.map((guide) => (
                     <Link 
                       key={guide.id}
                       href={`/travel-guides/${guide.id}`}
-                      className="group"
+                      className="group w-full max-w-sm"
                     >
                       <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
                         <div className="relative h-48 overflow-hidden bg-gray-200">
@@ -1281,6 +1680,71 @@ export default function DestinationDetailClient({ destination, promotionScores =
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
+
+      {/* Parent Country Modal - Shows after 5 seconds for small destinations */}
+      {showParentCountryModal && safeDestination.parentCountryDestination && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+          onClick={() => setShowParentCountryModal(false)}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900">Explore More Tours</h3>
+                  <p className="text-sm text-gray-500">Discover all destinations</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowParentCountryModal(false)}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+                aria-label="Close"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            
+            <div className="mb-6">
+              <p className="text-gray-700 leading-relaxed">
+                <span className="font-semibold text-gray-900">{safeDestination.fullName}</span> is part of{' '}
+                <span className="font-semibold text-blue-600">{safeDestination.parentCountryDestination.fullName}</span>.
+              </p>
+              <p className="text-gray-600 mt-2 text-sm">
+                View all tours and activities available across {safeDestination.parentCountryDestination.fullName} for the best selection.
+              </p>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button
+                asChild
+                className="flex-1 sunset-gradient text-white hover:scale-105 transition-transform duration-200 font-semibold"
+              >
+                <Link href={`/destinations/${safeDestination.parentCountryDestination.id}/tours`}>
+                  View All Tours in {safeDestination.parentCountryDestination.fullName}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setShowParentCountryModal(false)}
+                className="px-6 border-gray-300 hover:bg-gray-50"
+              >
+                Stay Here
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       {/* Tour Details Modal */}
       {isTourModalOpen && selectedTour && (

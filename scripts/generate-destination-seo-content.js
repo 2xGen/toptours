@@ -108,11 +108,13 @@ Examples:
 - "Canal city, artistic heritage, and Dutch charm — Amsterdam is the Netherlands' cultural heart."
 - "Ancient ruins, vibrant markets, and rich history — Athens is Greece's legendary capital."
 
-2. HERO DESCRIPTION: A 2-3 sentence description (40-60 words) for the main hero section. Start with "Discover top-rated [Destination] tours, excursions, and activities powered by AI." Then mention 2-3 specific tour types or experiences. End with "find the perfect way to explore [unique aspect of destination]."
+2. HERO DESCRIPTION: A 3-4 sentence engaging description (60-90 words) for the main hero section. Start with "Welcome to [Destination], where..." and paint a vivid picture of the destination. Mention 2-3 specific attractions, landmarks, or experiences naturally. End with "Let our AI-powered planner help you discover the best experiences this [descriptor] destination has to offer."
+
+Style: Write naturally and engagingly, like a travel writer sharing genuine insights. Avoid generic phrases like "Discover top-rated tours" or "find the perfect way to explore." Instead, create a welcoming, descriptive narrative that captures the destination's essence.
 
 Examples:
-- "Discover top-rated Amalfi Coast tours, excursions, and activities powered by AI. From coastal boat tours to Positano experiences, find the perfect way to explore Italy's most beautiful coastline."
-- "Discover top-rated Athens tours, excursions, and activities powered by AI. From Acropolis tours to ancient Greece experiences, find the perfect way to explore the cradle of Western civilization."
+- "Welcome to Amsterdam, where historic canals wind through charming neighborhoods and artistic masterpieces tell stories of centuries past. From the iconic Anne Frank House to the world-famous Van Gogh Museum, from picturesque canals to vibrant culture, this Dutch capital offers the perfect blend of history, art, and contemporary European life. Let our AI-powered planner help you discover the best experiences this enchanting destination has to offer."
+- "Welcome to Athens, where ancient history meets modern vibrancy in the cradle of Western civilization. From the majestic Acropolis overlooking the city to the bustling Plaka district, from world-class museums to authentic Greek tavernas, this legendary capital offers an unforgettable journey through time. Let our AI-powered planner help you discover the best experiences this historic destination has to offer."
 
 3. SEO TITLE: A 50-60 character title optimized for search engines. Format: "[Destination] Tours & Excursions - Top-Rated Activities & Adventures"
 
@@ -122,12 +124,13 @@ Examples:
 
 IMPORTANT:
 - Be specific and accurate about the destination
-- Use compelling, descriptive language
+- Use compelling, descriptive language that feels natural and engaging
 - Make each piece unique to this destination
 - Keep card sentence under 25 words
-- Keep hero description between 40-60 words
+- Keep hero description between 60-90 words (3-4 sentences)
 - Keep SEO title under 60 characters
 - Focus on SEO-rich keywords naturally integrated
+- Hero description should feel like a warm welcome, not a sales pitch
 
 Return ONLY a valid JSON object (no markdown, no code blocks) in this exact format:
 {
