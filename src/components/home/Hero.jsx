@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Search, MapPin, Sparkles, Globe, ShieldCheck, ArrowRight } from 'lucide-react';
@@ -24,17 +24,123 @@ const SPOTLIGHT_DESTINATIONS = [
   { label: 'Sydney', search: 'Sydney' },
 ];
 
-const DESTINATION_LOOKUP = destinations.map((destination) => ({
-  id: destination.id,
-  name: destination.name,
-  fullName: destination.fullName || destination.name,
-  country: destination.country || destination.category || '',
-}));
-
 const Hero = () => {
   const router = useRouter();
   const [query, setQuery] = useState('');
   const [isInputFocused, setIsInputFocused] = useState(false);
+  const [viatorDestinations, setViatorDestinations] = useState([]);
+
+  // Fetch Viator destinations for autocomplete
+  useEffect(() => {
+    const fetchViatorDestinations = async () => {
+      try {
+        const response = await fetch('/api/internal/get-viator-destinations');
+        if (response.ok) {
+          const data = await response.json();
+          setViatorDestinations(data.destinations || []);
+        }
+      } catch (error) {
+        console.error('Error fetching Viator destinations:', error);
+      }
+    };
+    fetchViatorDestinations();
+  }, []);
+
+  // Combine regular and Viator destinations
+  // Filter out Viator destinations that match our curated destinations
+  const DESTINATION_LOOKUP = useMemo(() => {
+    const regular = destinations.map((destination) => ({
+      id: destination.id,
+      name: destination.name,
+      fullName: destination.fullName || destination.name,
+      country: destination.country || destination.category || '',
+      isViator: false,
+    }));
+
+    // Create normalized names from our curated destinations for matching
+    // Extract base names (remove country suffixes like ", UAE", ", Italy", etc.)
+    const curatedBaseNames = new Set();
+    const curatedFullNames = new Set();
+    
+    destinations.forEach(dest => {
+      const name = (dest.name || '').toLowerCase().trim();
+      const fullName = (dest.fullName || dest.name || '').toLowerCase().trim();
+      
+      curatedBaseNames.add(name);
+      curatedFullNames.add(fullName);
+      
+      // Extract base name (remove country suffix)
+      const baseName = fullName.split(',')[0].trim();
+      if (baseName && baseName !== fullName) {
+        curatedBaseNames.add(baseName);
+      }
+    });
+    
+    // Helper function to check if a Viator destination matches any curated destination
+    const matchesCurated = (viatorName) => {
+      const normalized = viatorName.toLowerCase().trim();
+      const baseName = normalized.split(',')[0].trim();
+      
+      // Check exact matches
+      if (curatedBaseNames.has(normalized) || curatedFullNames.has(normalized)) {
+        return true;
+      }
+      
+      // Check base name matches (e.g., "Abu Dhabi" matches "Abu Dhabi, UAE")
+      if (curatedBaseNames.has(baseName) || curatedFullNames.has(baseName)) {
+        return true;
+      }
+      
+      return false;
+    };
+
+    // Filter Viator destinations - exclude ones that match our curated destinations
+    // Also deduplicate within Viator destinations (by name)
+    const seenViatorNames = new Set();
+    // Helper function to generate URL-friendly slug
+    const generateSlug = (name) => {
+      return name
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '') // Remove special characters
+        .replace(/\s+/g, '-') // Replace spaces with hyphens
+        .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+        .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+    };
+    
+    const viator = viatorDestinations
+      .filter(dest => {
+        const destName = dest.destinationName || dest.name || '';
+        const normalized = destName.toLowerCase().trim();
+        
+        // Skip if it matches a curated destination
+        if (matchesCurated(destName)) {
+          return false;
+        }
+        
+        // Skip if we've already seen this exact name in Viator destinations
+        if (seenViatorNames.has(normalized)) {
+          return false;
+        }
+        
+        seenViatorNames.add(normalized);
+        return true;
+      })
+      .map((dest) => {
+        const destName = dest.destinationName || dest.name || '';
+        const slug = generateSlug(destName);
+        return {
+          id: slug, // Use slug as ID for SEO-friendly URLs
+          name: destName,
+          fullName: destName,
+          country: '',
+          isViator: true,
+          viatorId: dest.destinationId || dest.id, // Store original Viator ID
+        };
+      });
+
+    return [...regular, ...viator];
+  }, [viatorDestinations]);
 
   const filteredDestinations = useMemo(() => {
     if (!query.trim()) return [];
@@ -44,25 +150,32 @@ const Hero = () => {
       destination.fullName.toLowerCase().includes(term) ||
       destination.country.toLowerCase().includes(term)
     ).slice(0, 6);
-  }, [query]);
+  }, [query, DESTINATION_LOOKUP]);
 
   const showSuggestions = isInputFocused && filteredDestinations.length > 0;
   const hasValidDestination = filteredDestinations.length > 0;
 
-  const handleDestinationSelect = (destinationId, target = 'destination') => {
-    const path =
-      target === 'tours'
-        ? `/destinations/${destinationId}/tours`
-        : `/destinations/${destinationId}`;
+  const handleDestinationSelect = (destination, target = 'destination') => {
+    // Check if it's a Viator destination
+    const isViator = destination.isViator || false;
+    const destinationId = destination.id || destination;
+    
+    // Viator destinations always go to tours page (no landing page)
+    const path = isViator || target === 'tours'
+      ? `/destinations/${destinationId}/tours`
+      : `/destinations/${destinationId}`;
     router.push(path);
     setQuery('');
     setIsInputFocused(false);
   };
 
   const handleSpotlightClick = (spotlight) => {
-    if (spotlight.id && DESTINATION_LOOKUP.some((destination) => destination.id === spotlight.id)) {
-      handleDestinationSelect(spotlight.id);
-      return;
+    if (spotlight.id) {
+      const dest = DESTINATION_LOOKUP.find((destination) => destination.id === spotlight.id);
+      if (dest) {
+        handleDestinationSelect(dest);
+        return;
+      }
     }
 
     const fallbackQuery = spotlight.search || spotlight.label;
@@ -87,7 +200,7 @@ const Hero = () => {
     }
 
     if (filteredDestinations.length > 0) {
-      handleDestinationSelect(filteredDestinations[0].id);
+      handleDestinationSelect(filteredDestinations[0]);
       return;
     }
 
@@ -213,7 +326,7 @@ const Hero = () => {
                           type="button"
                           onMouseDown={(event) => {
                             event.preventDefault();
-                            handleDestinationSelect(destination.id);
+                            handleDestinationSelect(destination);
                           }}
                           className="flex items-center gap-3 text-left"
                         >
@@ -234,7 +347,7 @@ const Hero = () => {
                           size="sm"
                           onMouseDown={(event) => {
                             event.preventDefault();
-                            handleDestinationSelect(destination.id, 'tours');
+                            handleDestinationSelect(destination, 'tours');
                           }}
                           className="text-purple-600 hover:text-purple-800"
                         >

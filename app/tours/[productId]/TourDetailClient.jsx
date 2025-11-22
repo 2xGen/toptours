@@ -140,16 +140,31 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     return null;
   }, [destinationTourUrl, fallbackDestinationSlugByName]);
 
-  // Extract country from destinationData (for unmatched destinations)
-  const countryFromDestination = useMemo(() => {
-    if (destination?.country) return destination.country;
-    // Viator destinations API returns country in various possible fields
-    if (destinationData?.country) return destinationData.country;
-    if (destinationData?.countryName) return destinationData.countryName;
-    if (destinationData?.country?.name) return destinationData.country.name;
-    if (destinationData?.parentDestination?.countryName) return destinationData.parentDestination.countryName;
-    return null;
+  // Get destination name and ID for unmatched destinations (for display in breadcrumbs and sidebar)
+  const unmatchedDestinationName = useMemo(() => {
+    if (destination) return null; // Only for unmatched destinations
+    return destinationData?.destinationName || null;
   }, [destination, destinationData]);
+
+  // Get Viator destination slug/ID for unmatched destinations (for linking to tours page)
+  // Prefer slug from destinationData if available, otherwise use ID
+  const unmatchedDestinationSlug = useMemo(() => {
+    if (destination) return null; // Only for unmatched destinations
+    // Use slug from destinationData if available (SEO-friendly)
+    if (destinationData?.slug) {
+      return destinationData.slug;
+    }
+    // Fall back to destinationId from destinationData
+    if (destinationData?.destinationId) {
+      return destinationData.destinationId;
+    }
+    // Last resort: extract from tour data
+    if (tour?.destinations && tour.destinations.length > 0) {
+      const primaryDestination = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
+      return primaryDestination?.ref || primaryDestination?.destinationId || primaryDestination?.id || null;
+    }
+    return null;
+  }, [destination, destinationData, tour]);
 
   // Trigger confetti when returning from instant boost payment
   useEffect(() => {
@@ -1258,15 +1273,27 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 <Link href={`/destinations/${destination.id}/tours`} className="text-gray-500 hover:text-gray-700">Tours</Link>
               </>
             )}
-            {!destination && countryFromDestination && (
+            {!destination && unmatchedDestinationName && (
               <>
                 <span className="text-gray-400">/</span>
-                <span className="text-gray-500">{countryFromDestination}</span>
-                <span className="text-gray-400">/</span>
-                <span className="text-gray-500">Tours</span>
+                {unmatchedDestinationSlug ? (
+                  <>
+                    <Link href={`/destinations/${unmatchedDestinationSlug}/tours`} className="text-gray-500 hover:text-gray-700">
+                      {unmatchedDestinationName}
+                    </Link>
+                    <span className="text-gray-400">/</span>
+                    <span className="text-gray-500">Tours</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-gray-500">{unmatchedDestinationName}</span>
+                    <span className="text-gray-400">/</span>
+                    <span className="text-gray-500">Tours</span>
+                  </>
+                )}
               </>
             )}
-            {!destination && !countryFromDestination && (
+            {!destination && !unmatchedDestinationName && (
               <>
                 <span className="text-gray-400">/</span>
                 <span className="text-gray-500">Tours</span>
@@ -1924,24 +1951,41 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   </Card>
                 )}
 
-                {/* Country Link (for unmatched destinations) */}
-                {!destination && countryFromDestination && (
+                {/* Generic Explore All Destinations Card (for unmatched destinations) */}
+                {!destination && (
                   <Card className="bg-white border-0 shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                    <div className="relative h-32 overflow-hidden">
+                      <img 
+                        className="w-full h-full object-cover" 
+                        alt="Explore destinations"
+                        src="https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/toptours%20destinations.png"
+                        loading="lazy"
+                        onError={(e) => {
+                          e.target.src = "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80";
+                        }}
+                      />
+                    </div>
                     <CardContent className="p-6 flex flex-col">
                       <div className="flex items-center text-gray-600 mb-2">
                         <MapPin className="h-4 w-4 mr-1" />
-                        <span className="font-semibold">{countryFromDestination}</span>
+                        <span className="font-semibold">
+                          {unmatchedDestinationName || 'Explore Destinations'}
+                        </span>
                       </div>
                       <p className="text-gray-700 mb-4 flex-grow">
-                        Discover more tours and activities in {countryFromDestination}
+                        {unmatchedDestinationName 
+                          ? `Discover more tours and activities in ${unmatchedDestinationName}`
+                          : 'Discover incredible tours and activities in 180+ destinations around the world'}
                       </p>
                       <Button
                         asChild
                         variant="outline"
                         className="w-full border-purple-300 text-purple-700 hover:bg-purple-50 bg-transparent transition-all duration-200 h-12 text-base font-semibold"
                       >
-                        <Link href={`/destinations?search=${encodeURIComponent(countryFromDestination)}`}>
-                          Explore {countryFromDestination}
+                        <Link href={unmatchedDestinationSlug ? `/destinations/${unmatchedDestinationSlug}/tours` : "/destinations"}>
+                          {unmatchedDestinationName 
+                            ? `View Top Tours in ${unmatchedDestinationName}`
+                            : 'Explore All Destinations'}
                           <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>
                       </Button>

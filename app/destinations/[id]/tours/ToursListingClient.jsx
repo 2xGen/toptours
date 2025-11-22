@@ -251,7 +251,8 @@ const matchesDurationBucket = (minutes, bucket) => {
   }
 };
 
-export default function ToursListingClient({ 
+export default function ToursListingClient({
+  isViatorDestination = false, 
   destination, 
   popularTours = [], 
   dynamicTours = [],
@@ -934,9 +935,15 @@ export default function ToursListingClient({
             <span className="text-gray-400">/</span>
             <Link href="/destinations" className="text-gray-500 hover:text-gray-700">Destinations</Link>
             <span className="text-gray-400">/</span>
-            <Link href={`/destinations/${destination.id}`} className="text-gray-500 hover:text-gray-700">
-              {destination.fullName || destination.name}
-            </Link>
+            {isViatorDestination ? (
+              <span className="text-gray-500">
+                {destination.fullName || destination.name}
+              </span>
+            ) : (
+              <Link href={`/destinations/${destination.id}`} className="text-gray-500 hover:text-gray-700">
+                {destination.fullName || destination.name}
+              </Link>
+            )}
             <span className="text-gray-400">/</span>
             <span className="text-gray-900 font-medium">Tours</span>
           </nav>

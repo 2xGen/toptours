@@ -31,6 +31,7 @@ export default function AdminDashboardClient() {
   const [loggingIn, setLoggingIn] = useState(false);
   const [stats, setStats] = useState(null);
   const [pageViews, setPageViews] = useState([]);
+  const [popularViatorDestinations, setPopularViatorDestinations] = useState([]);
   const [dateRange, setDateRange] = useState('30'); // days
   const [lastRefresh, setLastRefresh] = useState(new Date());
 
@@ -81,16 +82,19 @@ export default function AdminDashboardClient() {
     setLoading(true);
     try {
       // No need for Supabase auth token - we use simple password auth
-      const [statsRes, viewsRes] = await Promise.all([
+      const [statsRes, viewsRes, popularRes] = await Promise.all([
         fetch('/api/admin/analytics/stats'),
-        fetch(`/api/admin/analytics/page-views?days=${dateRange}`)
+        fetch(`/api/admin/analytics/page-views?days=${dateRange}`),
+        fetch(`/api/admin/analytics/popular-viator-destinations?days=${dateRange}`)
       ]);
 
       const statsData = await statsRes.json();
       const viewsData = await viewsRes.json();
+      const popularData = await popularRes.json();
 
       setStats(statsData);
       setPageViews(viewsData.pageViews || []);
+      setPopularViatorDestinations(popularData.popularDestinations || []);
       setLastRefresh(new Date());
     } catch (error) {
       console.error('Error fetching admin data:', error);
@@ -423,6 +427,77 @@ export default function AdminDashboardClient() {
             </CardContent>
           </Card>
         </div>
+
+        {/* Popular Viator Destinations Section */}
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <MapPin className="w-5 h-5" />
+              Popular Viator Destinations (Not in Featured 182)
+            </CardTitle>
+            <p className="text-sm text-gray-600 mt-2">
+              These destinations are getting traffic but aren't in your featured list. Consider adding them!
+            </p>
+          </CardHeader>
+          <CardContent>
+            {popularViatorDestinations.length > 0 ? (
+              <div className="space-y-3">
+                {popularViatorDestinations.map((dest, index) => (
+                  <div 
+                    key={dest.destinationId} 
+                    className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg border border-purple-100 hover:shadow-md transition-shadow"
+                  >
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-3">
+                        <span className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-600 text-white font-bold text-sm">
+                          {index + 1}
+                        </span>
+                        <div>
+                          <h3 className="text-lg font-semibold text-gray-900">
+                            {dest.destinationName}
+                          </h3>
+                          <div className="flex items-center gap-4 mt-1">
+                            {dest.region && (
+                              <span className="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded-full">
+                                {dest.region}
+                              </span>
+                            )}
+                            {dest.country && (
+                              <span className="text-xs text-gray-600">
+                                {dest.country}
+                              </span>
+                            )}
+                            <span className="text-xs text-gray-500">
+                              {dest.pageCount} page{dest.pageCount !== 1 ? 's' : ''}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="ml-4 text-right">
+                      <p className="text-2xl font-bold text-purple-600">
+                        {dest.viewCount.toLocaleString()}
+                      </p>
+                      <p className="text-xs text-gray-500">views</p>
+                      <a
+                        href={`/destinations/${dest.destinationId}/tours`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-purple-600 hover:text-purple-700 mt-1 inline-block"
+                      >
+                        View page →
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-gray-500 text-center py-8">
+                No popular Viator destinations found. These will appear as they get traffic.
+              </p>
+            )}
+          </CardContent>
+        </Card>
       </main>
       <FooterNext />
     </div>

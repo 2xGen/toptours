@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import TourDetailClient from './TourDetailClient';
 import { getTourEnrichment, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
-import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, getDestinationData } from '@/lib/viatorCache';
+import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName, getDestinationNameById } from '@/lib/viatorCache';
 import { getTourPromotionScore } from '@/lib/promotionSystem';
 
 /**
@@ -274,22 +274,59 @@ export default async function TourDetailPage({ params }) {
       };
     }
 
-    // Fetch destination data for country information (only if tour has destinationId and doesn't match our destinations)
+    // Get destination name and country for breadcrumbs/sidebar
+    // The tour response only includes destination ID (ref), not the name
+    // So we need to fetch it from Viator destinations API if not in our 182 destinations
     let destinationData = null;
     try {
       if (tour?.destinations && tour.destinations.length > 0) {
         const primaryDestination = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
-        const destinationId = primaryDestination?.destinationId || primaryDestination?.id || primaryDestination?.ref;
+        const destinationId = primaryDestination?.ref || primaryDestination?.destinationId || primaryDestination?.id;
         
         if (destinationId) {
-          // Only fetch if we don't have a matching destination in our 182 destinations
-          // This will be checked client-side, but we can fetch here for unmatched tours
-          destinationData = await getDestinationData(destinationId);
+          // Try to get destination name from Viator API (cached for 90 days)
+          const destinationInfo = await getDestinationNameById(destinationId);
+          
+          if (destinationInfo && destinationInfo.destinationName) {
+            // Generate slug from destination name for SEO-friendly URLs
+            const generateSlug = (name) => {
+              return name
+                .toLowerCase()
+                .trim()
+                .replace(/[^\w\s-]/g, '') // Remove special characters
+                .replace(/\s+/g, '-') // Replace spaces with hyphens
+                .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+                .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+            };
+            
+            const slug = generateSlug(destinationInfo.destinationName);
+            
+            // Extract country from destination name (e.g., "Dubai, UAE" -> "UAE")
+            const country = extractCountryFromDestinationName(destinationInfo.destinationName);
+            if (country) {
+              destinationData = {
+                country: country,
+                destinationName: destinationInfo.destinationName,
+                destinationId: destinationId.toString(),
+                slug: slug // Include slug for URL generation
+              };
+            } else {
+              // If destination name doesn't include country (e.g., "Vanuatu" is already a country)
+              // Use the destination name itself as the country
+              destinationData = {
+                country: destinationInfo.destinationName,
+                destinationName: destinationInfo.destinationName,
+                destinationId: destinationId.toString(),
+                slug: slug // Include slug for URL generation
+              };
+            }
+          }
         }
       }
     } catch (error) {
-      console.error('Error fetching destination data:', error);
-      // Non-critical, continue without destination data
+      // Non-critical - destination data is optional, page works fine without it
+      console.warn('Could not extract destination data (non-critical):', error.message || error);
+      destinationData = null;
     }
 
     return (

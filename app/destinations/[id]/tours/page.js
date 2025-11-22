@@ -4,6 +4,9 @@ import { getPopularToursForDestination } from '@/data/popularTours';
 import ToursListingClient from './ToursListingClient';
 import { slugToViatorId } from '@/data/viatorDestinationMap';
 import { getPromotionScoresByDestination, getTrendingToursByDestination } from '@/lib/promotionSystem';
+import { getDestinationNameById, findDestinationBySlug } from '@/lib/viatorCache';
+import { redirect } from 'next/navigation';
+import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 
 // Force dynamic rendering for API calls
 export const dynamic = 'force-dynamic';
@@ -49,7 +52,47 @@ const buildSeoCopy = (destination) => {
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
-  const destination = getDestinationById(id);
+  let destination = getDestinationById(id);
+  let seoContent = null;
+  
+  // If not in our 182 destinations, try to get from Viator API cache or SEO content
+  if (!destination) {
+    // First check if we have SEO content for this slug
+    seoContent = getDestinationSeoContent(id);
+    
+    if (seoContent) {
+      // Use SEO content to create destination object
+      destination = {
+        id: id,
+        name: seoContent.destinationName,
+        fullName: seoContent.destinationName,
+        imageUrl: seoContent.seo?.ogImage || 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/How%20to%20Choose%20the%20Best%20Tour%20for%20Your%20Next%20Vacation.png',
+        seo: seoContent.seo,
+        briefDescription: seoContent.briefDescription,
+        heroDescription: seoContent.heroDescription,
+        tourCategories: [],
+      };
+    } else {
+      // Check if id is a Viator destination ID (numeric or starts with 'd')
+      const viatorId = id.startsWith('d') ? id : `d${id}`;
+      const destinationInfo = await getDestinationNameById(viatorId);
+      
+      if (destinationInfo && destinationInfo.destinationName) {
+        // Create a minimal destination object for metadata
+        destination = {
+          id: id,
+          name: destinationInfo.destinationName,
+          fullName: destinationInfo.destinationName,
+          imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/How%20to%20Choose%20the%20Best%20Tour%20for%20Your%20Next%20Vacation.png',
+          seo: {
+            description: `Discover the best tours and activities in ${destinationInfo.destinationName}. Browse trusted operators and secure instant confirmations.`,
+          },
+          briefDescription: `Explore ${destinationInfo.destinationName} with curated tours and activities.`,
+          tourCategories: [],
+        };
+      }
+    }
+  }
   
   if (!destination) {
     return {
@@ -58,19 +101,23 @@ export async function generateMetadata({ params }) {
   }
 
   const destinationName = destination.fullName || destination.name;
-  const seoCopy = buildSeoCopy(destination);
+  
+  // Use SEO content if available, otherwise build from destination
+  const seoTitle = destination.seo?.title || `Top Tours & Activities in ${destinationName}`;
+  const seoDescription = destination.seo?.description || destination.briefDescription || buildSeoCopy(destination).description;
+  const ogImage = destination.seo?.ogImage || destination.imageUrl || 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/How%20to%20Choose%20the%20Best%20Tour%20for%20Your%20Next%20Vacation.png';
   
   return {
-    title: `${seoCopy.title} | TopTours.ai`,
-    description: seoCopy.description,
-    keywords: seoCopy.keywords,
+    title: `${seoTitle} | TopTours.ai`,
+    description: seoDescription,
+    keywords: `${destinationName} tours, ${destinationName} activities, ${destinationName} excursions, things to do in ${destinationName}`,
     openGraph: {
-      title: seoCopy.title,
-      description: seoCopy.description,
+      title: seoTitle,
+      description: seoDescription,
       url: `https://toptours.ai/destinations/${id}/tours`,
       images: [
         {
-          url: destination.imageUrl,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: `${destinationName} Tours`,
@@ -80,9 +127,9 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: seoCopy.title,
-      description: seoCopy.description,
-      images: [destination.imageUrl],
+      title: seoTitle,
+      description: seoDescription,
+      images: [ogImage],
     },
     alternates: {
       canonical: `https://toptours.ai/destinations/${id}/tours`,
@@ -91,21 +138,88 @@ export async function generateMetadata({ params }) {
 }
 
 /**
+ * Generate a URL-friendly slug from a destination name
+ */
+function generateSlug(name) {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+    .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+}
+
+/**
  * Tours listing page for a destination
  */
 export default async function ToursListingPage({ params }) {
   const { id } = await params;
-  const destination = getDestinationById(id);
+  let destination = getDestinationById(id);
+  let isViatorDestination = false;
+  let viatorDestinationId = null;
+  
+  // If not in our 182 destinations, try to get from Viator API cache
+  if (!destination) {
+    let destinationInfo = null;
+    let lookupId = id;
+    
+    // Check if id is a Viator destination ID (numeric or starts with 'd')
+    if (/^d?\d+$/.test(id)) {
+      // It's a numeric ID - look up the destination name and redirect to slug
+      lookupId = id.startsWith('d') ? id : `d${id}`;
+      viatorDestinationId = id.startsWith('d') ? id.replace(/^d/i, '') : id;
+      
+      destinationInfo = await getDestinationNameById(lookupId);
+      
+      if (destinationInfo && destinationInfo.destinationName) {
+        // Generate slug and redirect to SEO-friendly URL
+        const slug = generateSlug(destinationInfo.destinationName);
+        redirect(`/destinations/${slug}/tours`);
+      }
+    } else {
+      // It's a slug - find the destination by slug
+      destinationInfo = await findDestinationBySlug(id);
+      
+      if (destinationInfo) {
+        viatorDestinationId = destinationInfo.destinationId;
+      }
+    }
+    
+    if (destinationInfo && destinationInfo.destinationName) {
+      // Check if we have SEO content for this destination
+      const seoContent = getDestinationSeoContent(id);
+      
+      // Create a minimal destination object for dynamic destinations
+      destination = {
+        id: id, // Use the slug as id (already in URL)
+        name: destinationInfo.destinationName,
+        fullName: destinationInfo.destinationName,
+        imageUrl: seoContent?.seo?.ogImage || 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/How%20to%20Choose%20the%20Best%20Tour%20for%20Your%20Next%20Vacation.png',
+        seo: seoContent?.seo || {
+          description: `Discover the best tours and activities in ${destinationInfo.destinationName}. Browse trusted operators and secure instant confirmations.`,
+        },
+        briefDescription: seoContent?.briefDescription || `Explore ${destinationInfo.destinationName} with curated tours and activities.`,
+        heroDescription: seoContent?.heroDescription || null,
+        tourCategories: [],
+        country: destinationInfo.destinationName, // Use name as country for now
+      };
+      isViatorDestination = true;
+    }
+  }
   
   if (!destination) {
     notFound();
   }
 
-  // Get hardcoded popular tours for this destination
-  const popularTours = getPopularToursForDestination(id);
+  // Get hardcoded popular tours for this destination (only for our 182 destinations)
+  const popularTours = isViatorDestination ? [] : getPopularToursForDestination(id);
   
   // Get Viator destination ID
-  const viatorDestinationId = slugToViatorId[id] || null;
+  if (!isViatorDestination) {
+    viatorDestinationId = slugToViatorId[id] || null;
+  }
+  // For Viator destinations, viatorDestinationId is already set above
 
   // Fetch dynamic tours from Viator API using freetext search
   let dynamicTours = [];
@@ -192,13 +306,13 @@ export default async function ToursListingPage({ params }) {
     console.error('Error fetching dynamic tours:', error);
   }
 
-  // Fetch all promotion scores for this destination (one query - most efficient!)
+  // Fetch all promotion scores for this destination (only for our 182 destinations)
   // This returns only tours with points, all others default to 0
-  const promotionScores = await getPromotionScoresByDestination(destination.id);
+  const promotionScores = isViatorDestination ? {} : await getPromotionScoresByDestination(destination.id);
 
-  // Fetch trending tours (past 28 days) for this destination
+  // Fetch trending tours (past 28 days) for this destination (only for our 182 destinations)
   // These will be displayed in a "Trending Now" section
-  const trendingTours = await getTrendingToursByDestination(destination.id, 6);
+  const trendingTours = isViatorDestination ? [] : await getTrendingToursByDestination(destination.id, 6);
 
   // Generate JSON-LD schema for SEO
   const jsonLd = {
@@ -289,6 +403,7 @@ export default async function ToursListingPage({ params }) {
         totalToursAvailable={totalToursAvailable}
         promotionScores={promotionScores}
         trendingTours={trendingTours}
+        isViatorDestination={isViatorDestination}
       />
     </>
   );
