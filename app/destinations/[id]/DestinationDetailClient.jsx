@@ -829,10 +829,19 @@ export default function DestinationDetailClient({ destination, promotionScores =
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {safeTrendingTours.map((trending, index) => {
+                  if (!trending || !trending.product_id) return null;
+                  
                   const tourId = trending.product_id;
-                  const tourUrl = trending.tour_slug 
-                    ? `/tours/${tourId}/${trending.tour_slug}` 
-                    : getTourUrl(tourId, trending.tour_name);
+                  let tourUrl = `/tours/${tourId}`;
+                  try {
+                    if (trending.tour_slug) {
+                      tourUrl = `/tours/${tourId}/${trending.tour_slug}`;
+                    } else if (trending.tour_name) {
+                      tourUrl = getTourUrl(tourId, trending.tour_name);
+                    }
+                  } catch (error) {
+                    console.error('Error generating tour URL:', error);
+                  }
                   
                   return (
                     <motion.div
@@ -873,24 +882,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
                           </Link>
 
                           {/* Promotion Score */}
+                          {tourId && (
                           <div className="mb-3">
                             <TourPromotionCard 
                               productId={tourId} 
                               compact={true}
-                              tourData={{
-                                productId: tourId,
-                                productCode: tourId,
-                                title: trending.tour_name,
-                                images: trending.tour_image_url ? [{
-                                  variants: [
-                                    { url: trending.tour_image_url },
-                                    { url: trending.tour_image_url },
-                                    { url: trending.tour_image_url },
-                                    { url: trending.tour_image_url }
-                                  ]
-                                }] : []
-                              }}
-                              destinationId={safeDestination.id}
                               initialScore={{
                                 product_id: tourId,
                                 total_score: trending.total_score || 0,
@@ -900,6 +896,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                               }}
                             />
                           </div>
+                          )}
 
                           <Button
                             asChild
