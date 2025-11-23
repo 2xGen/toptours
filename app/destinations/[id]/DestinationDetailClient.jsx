@@ -1597,7 +1597,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   );
                   })}
                 </div>
-              )}
+              ) : null}
             </div>
           </section>
         )}
