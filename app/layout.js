@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import CookieConsentManager from '@/components/CookieConsentManager'
 import { Toaster } from '@/components/ui/toaster'
 import PageViewTracker from '@/components/PageViewTracker'
+import MobileConsoleViewer from '@/components/MobileConsoleViewer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -108,6 +109,7 @@ export default function RootLayout({ children }) {
         {children}
         <CookieConsentManager />
         <Toaster />
+        <MobileConsoleViewer />
       </body>
     </html>
   )
