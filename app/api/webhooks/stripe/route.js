@@ -361,6 +361,7 @@ async function handleCheckoutSessionCompleted(session) {
           // Don't fail the webhook if email fails
         }
       }
+    }
   }
 }
 
