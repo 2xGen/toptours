@@ -141,20 +141,31 @@ export default function DestinationDetailClient({ destination, promotionScores =
       console.error('Error scrolling to top:', error);
     }
     
-    // Check if mobile
+    // Check if mobile - only after client-side mount
     const checkMobile = () => {
       try {
-        if (typeof window !== 'undefined' && window.innerWidth !== undefined) {
-          setIsMobile(window.innerWidth < 768);
+        if (typeof window !== 'undefined' && window.innerWidth !== undefined && window.innerWidth !== null) {
+          const width = window.innerWidth;
+          if (!isNaN(width) && width > 0) {
+            setIsMobile(width < 768);
+          }
         }
       } catch (error) {
         console.error('Error checking mobile:', error);
+        // Default to desktop on error
+        setIsMobile(false);
       }
     };
-    checkMobile();
     
+    // Only check mobile after a small delay to ensure window is ready
+    const timeoutId = setTimeout(() => {
+      checkMobile();
+    }, 0);
+    
+    let resizeListener = null;
     try {
-      window.addEventListener('resize', checkMobile);
+      resizeListener = () => checkMobile();
+      window.addEventListener('resize', resizeListener);
     } catch (error) {
       console.error('Error adding resize listener:', error);
     }
