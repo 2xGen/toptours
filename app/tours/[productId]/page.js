@@ -4,6 +4,8 @@ import TourDetailClient from './TourDetailClient';
 import { getTourEnrichment, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
 import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName, getDestinationNameById } from '@/lib/viatorCache';
 import { getTourPromotionScore } from '@/lib/promotionSystem';
+import { getRestaurantCountsByDestination } from '@/lib/restaurants';
+import { destinations } from '@/data/destinationsData';
 
 /**
  * Generate metadata for tour detail page
@@ -329,6 +331,53 @@ export default async function TourDetailPage({ params }) {
       destinationData = null;
     }
 
+    // Check if destination has restaurants
+    let restaurantCount = 0;
+    try {
+      // Try to match destination from our destinationsData
+      let matchedDestinationId = null;
+      
+      if (destinationData?.slug) {
+        // Try to find matching destination by slug
+        const matchedDest = destinations.find(d => d.id === destinationData.slug);
+        if (matchedDest) {
+          matchedDestinationId = matchedDest.id;
+        }
+      }
+      
+      // Also try to match by destination name or other fields
+      if (!matchedDestinationId && tour?.destinations && tour.destinations.length > 0) {
+        const primaryDestination = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
+        const destinationName = primaryDestination?.destinationName || primaryDestination?.name || '';
+        
+        if (destinationName) {
+          const matchedDest = destinations.find(d => {
+            const comparable = [
+              d.id,
+              d.name,
+              d.fullName,
+            ]
+              .filter(Boolean)
+              .map((value) => value.toLowerCase());
+            return comparable.some(val => destinationName.toLowerCase().includes(val) || val.includes(destinationName.toLowerCase()));
+          });
+          if (matchedDest) {
+            matchedDestinationId = matchedDest.id;
+          }
+        }
+      }
+
+      if (matchedDestinationId) {
+        // Fetch restaurant counts for all destinations
+        const restaurantCounts = await getRestaurantCountsByDestination();
+        restaurantCount = restaurantCounts[matchedDestinationId] || 0;
+      }
+    } catch (error) {
+      // Non-critical - restaurant count is optional
+      console.warn('Could not fetch restaurant count (non-critical):', error.message || error);
+      restaurantCount = 0;
+    }
+
     return (
       <Suspense fallback={
         <div className="min-h-screen flex items-center justify-center">
@@ -338,7 +387,7 @@ export default async function TourDetailPage({ params }) {
           </div>
         </div>
       }>
-        <TourDetailClient tour={tour} similarTours={similarTours} productId={productId} enrichment={tourEnrichment} initialPromotionScore={promotionScore} destinationData={destinationData} />
+        <TourDetailClient tour={tour} similarTours={similarTours} productId={productId} enrichment={tourEnrichment} initialPromotionScore={promotionScore} destinationData={destinationData} restaurantCount={restaurantCount} />
       </Suspense>
     );
   } catch (error) {

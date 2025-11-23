@@ -1,8 +1,23 @@
 import { destinations as siteDestinations } from '@/data/destinationsData';
 import { viatorRefToSlug } from '@/data/viatorDestinationMap';
 import { createSupabaseServiceRoleClient } from './supabaseClient';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 let cachedOpenAiKey = null;
+let cachedGeminiKey = null;
+
+const resolveGeminiKey = () => {
+  if (cachedGeminiKey !== null) return cachedGeminiKey;
+
+  // Check for GEMINI_API_KEY (most common)
+  const envKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+  if (envKey && envKey.trim()) {
+    cachedGeminiKey = envKey.trim();
+    return cachedGeminiKey;
+  }
+
+  return null;
+};
 
 const resolveOpenAiKey = () => {
   if (cachedOpenAiKey !== null) return cachedOpenAiKey;
@@ -254,66 +269,94 @@ Notable Hook: ${experienceHook || 'N/A'}
 };
 
 const generateAiSummary = async (tour) => {
-  const apiKey = resolveOpenAiKey();
+  const apiKey = resolveGeminiKey();
   if (!apiKey) {
-    return { error: 'Missing OpenAI API key' };
+    return { error: 'Missing Gemini API key' };
   }
 
   try {
     const prompt = buildAiPrompt(tour);
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: process.env.OPENAI_TOUR_MODEL || 'gpt-3.5-turbo',
-        temperature: 0.6,
-        messages: [
-          {
-            role: 'system',
-            content: 'You are a helpful travel copywriter for TopTours.ai.',
-          },
-          {
-            role: 'user',
-            content: prompt,
-          },
-        ],
-      }),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('OpenAI request failed:', errorText);
-      return { error: 'OpenAI request failed' };
+    const genAI = new GoogleGenerativeAI(apiKey);
+    
+    // Try different models in order of preference
+    const models = [
+      'gemini-2.5-flash-lite', // Cheapest, try first
+      'gemini-2.5-flash',
+      'gemini-1.5-flash',
+      'gemini-1.5-pro',
+    ];
+    
+    let content = null;
+    let lastError = null;
+    
+    let usedModel = null;
+    for (const modelName of models) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        content = response.text();
+        
+        if (content) {
+          usedModel = modelName;
+          console.log(`✅ Tour summary generated using Gemini model: ${modelName}`);
+          break; // Success, exit loop
+        }
+      } catch (error) {
+        lastError = error;
+        console.log(`   ⚠️  Model ${modelName} failed, trying next...`);
+        continue;
+      }
+    }
+    
+    if (!content) {
+      console.error('All Gemini models failed:', lastError);
+      return { error: 'Gemini request failed' };
     }
 
-    const json = await response.json();
-    const content = stripCodeFences(json?.choices?.[0]?.message?.content?.trim());
+    // Log which model was used (for verification)
+    if (usedModel) {
+      console.log(`📝 Tour summary generated using: Gemini ${usedModel}`);
+    }
 
-    if (!content) {
-      return { error: 'OpenAI response missing content' };
+    const cleanedContent = stripCodeFences(content.trim());
+
+    if (!cleanedContent) {
+      return { error: 'Gemini response missing content' };
     }
 
     let parsed;
     try {
-      parsed = JSON.parse(content);
+      parsed = JSON.parse(cleanedContent);
     } catch (err) {
-      // Fall back to raw text if parsing failed
-      parsed = {
-        summary: content,
-        bullets: [],
-      };
+      // Try to extract JSON from markdown code blocks
+      const jsonMatch = cleanedContent.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        try {
+          parsed = JSON.parse(jsonMatch[0]);
+        } catch (parseErr) {
+          // Fall back to raw text if parsing failed
+          parsed = {
+            summary: cleanedContent,
+            bullets: [],
+          };
+        }
+      } else {
+        // Fall back to raw text if parsing failed
+        parsed = {
+          summary: cleanedContent,
+          bullets: [],
+        };
+      }
     }
 
-    const summary = cleanText(parsed.summary || content || '');
+    const summary = cleanText(parsed.summary || cleanedContent || '');
     const bullets = Array.isArray(parsed.bullets)
       ? parsed.bullets.map(cleanText).filter(Boolean).slice(0, 3)
       : [];
 
     if (!summary) {
-      return { error: 'OpenAI did not return a usable summary' };
+      return { error: 'Gemini did not return a usable summary' };
     }
 
     return { summary, bullets };
@@ -640,9 +683,9 @@ export async function incrementViewCount(productId, destinationId = null) {
  * Returns values like adventureLevel, structureLevel, foodImportance, etc.
  */
 export const extractTourStructuredValues = async (tour) => {
-  const apiKey = resolveOpenAiKey();
+  const apiKey = resolveGeminiKey();
   if (!apiKey) {
-    return { error: 'Missing OpenAI API key' };
+    return { error: 'Missing Gemini API key' };
   }
 
   if (!tour || typeof tour !== 'object') {
@@ -717,52 +760,57 @@ Now here is the tour data:
     "groupType": "${groupType}",
     "isPrivate": ${isPrivate}
   }
-}`;
+}
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: process.env.OPENAI_TOUR_MODEL || 'gpt-3.5-turbo',
-        temperature: 0.3, // Lower temperature for more consistent extraction
-        messages: [
-          {
-            role: 'system',
-            content: 'You are a helpful AI assistant that extracts structured data from tour descriptions. Always return valid JSON only.',
-          },
-          {
-            role: 'user',
-            content: prompt,
-          },
-        ],
-        response_format: { type: 'json_object' },
-      }),
-    });
+IMPORTANT: Return ONLY valid JSON, no markdown, no code blocks, just the JSON object.`;
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('OpenAI API error:', {
-        status: response.status,
-        statusText: response.statusText,
-        error: errorText
-      });
-      let errorMessage = 'Failed to extract tour values';
+    const genAI = new GoogleGenerativeAI(apiKey);
+    
+    // Try different models in order of preference
+    const models = [
+      'gemini-2.5-flash-lite', // Cheapest, try first
+      'gemini-2.5-flash',
+      'gemini-1.5-flash',
+      'gemini-1.5-pro',
+    ];
+    
+    let content = null;
+    let lastError = null;
+    
+    let usedModel = null;
+    for (const modelName of models) {
       try {
-        const errorJson = JSON.parse(errorText);
-        errorMessage = errorJson.error?.message || errorJson.error || errorMessage;
-      } catch (e) {
-        errorMessage = errorText || errorMessage;
+        const model = genAI.getGenerativeModel({ 
+          model: modelName,
+          generationConfig: {
+            temperature: 0.3, // Lower temperature for more consistent extraction
+            responseMimeType: 'application/json',
+          }
+        });
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        content = response.text();
+        
+        if (content) {
+          usedModel = modelName;
+          console.log(`✅ Tour analysis using Gemini model: ${modelName}`);
+          break; // Success, exit loop
+        }
+      } catch (error) {
+        lastError = error;
+        console.log(`   ⚠️  Model ${modelName} failed, trying next...`);
+        continue;
       }
-      return { error: `OpenAI API error (${response.status}): ${errorMessage}` };
+    }
+    
+    if (!content) {
+      console.error('All Gemini models failed:', lastError);
+      return { error: `Gemini API error: ${lastError?.message || 'All models failed'}` };
     }
 
-    const data = await response.json();
-    const content = data.choices?.[0]?.message?.content;
-    if (!content) {
-      return { error: 'No response from AI' };
+    // Log which model was used (for verification)
+    if (usedModel) {
+      console.log(`📊 Tour structured values extracted using: Gemini ${usedModel}`);
     }
 
     // Parse JSON response
@@ -770,10 +818,14 @@ Now here is the tour data:
     try {
       structuredValues = JSON.parse(content);
     } catch (parseError) {
-      // Try to extract JSON from code blocks
+      // Try to extract JSON from code blocks or markdown
       const jsonMatch = content.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
-        structuredValues = JSON.parse(jsonMatch[0]);
+        try {
+          structuredValues = JSON.parse(jsonMatch[0]);
+        } catch (e) {
+          return { error: 'Invalid JSON response from AI' };
+        }
       } else {
         return { error: 'Invalid JSON response from AI' };
       }

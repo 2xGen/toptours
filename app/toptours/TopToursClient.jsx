@@ -13,11 +13,13 @@ import { useRouter } from 'next/navigation';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import { getTourUrl } from '@/utils/tourHelpers';
 
-export default function TopToursClient({ initialTours = [], initialBoosts = [], topPromoters = [], scoreType = 'all', region = null }) {
+export default function TopToursClient({ initialTours = [], initialRestaurants = [], initialBoosts = [], topPromoters = [], scoreType = 'all', region = null, section = 'tours' }) {
   const router = useRouter();
   const [selectedType, setSelectedType] = useState(scoreType);
   const [selectedRegion, setSelectedRegion] = useState(region);
+  const [selectedSection, setSelectedSection] = useState(section);
   const [toursWithDetails, setToursWithDetails] = useState(initialTours);
+  const [restaurantsWithDetails, setRestaurantsWithDetails] = useState(initialRestaurants);
   const [recentBoosts, setRecentBoosts] = useState(initialBoosts);
   const [topPromotersList, setTopPromotersList] = useState(topPromoters);
   const [showAllPromoters, setShowAllPromoters] = useState(false);
@@ -44,6 +46,11 @@ export default function TopToursClient({ initialTours = [], initialBoosts = [], 
     setToursWithDetails(initialTours);
   }, [initialTours]);
 
+  // Update restaurants when initialRestaurants changes (from server-side fetch)
+  useEffect(() => {
+    setRestaurantsWithDetails(initialRestaurants);
+  }, [initialRestaurants]);
+
   // Update boosts when initialBoosts changes (from server-side fetch)
   useEffect(() => {
     setRecentBoosts(initialBoosts);
@@ -58,6 +65,7 @@ export default function TopToursClient({ initialTours = [], initialBoosts = [], 
     setSelectedType(type);
     const params = new URLSearchParams();
     params.set('type', type);
+    params.set('section', selectedSection);
     if (selectedRegion) params.set('region', selectedRegion);
     router.push(`/toptours?${params.toString()}`);
   };
@@ -66,7 +74,17 @@ export default function TopToursClient({ initialTours = [], initialBoosts = [], 
     setSelectedRegion(reg);
     const params = new URLSearchParams();
     params.set('type', selectedType);
+    params.set('section', selectedSection);
     if (reg) params.set('region', reg);
+    router.push(`/toptours?${params.toString()}`);
+  };
+
+  const handleSectionChange = (sec) => {
+    setSelectedSection(sec);
+    const params = new URLSearchParams();
+    params.set('type', selectedType);
+    params.set('section', sec);
+    if (selectedRegion) params.set('region', selectedRegion);
     router.push(`/toptours?${params.toString()}`);
   };
 
@@ -157,13 +175,13 @@ export default function TopToursClient({ initialTours = [], initialBoosts = [], 
             >
               <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
                 <Trophy className="w-4 h-4 text-white" />
-                <span className="text-sm font-semibold text-white">Top Tours Leaderboard</span>
+                <span className="text-sm font-semibold text-white">Top Tours & Restaurants Leaderboard</span>
               </div>
               <h1 className="text-4xl md:text-6xl font-poppins font-bold text-white mb-6">
                 The Competition is On!
               </h1>
               <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
-                Join our growing community competing to promote the best tours. Every boost counts. Every point matters. <span className="font-bold">Will you make it to the top?</span>
+                Join our growing community competing to promote the best tours and restaurants. Every boost counts. Every point matters. <span className="font-bold">Will you make it to the top?</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Button asChild size="lg" className="bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 font-bold px-8 py-6 text-lg shadow-xl hover:scale-105 transition-transform border border-white/30">
@@ -468,6 +486,38 @@ export default function TopToursClient({ initialTours = [], initialBoosts = [], 
           </section>
         )}
 
+        {/* Section Selector (Tours vs Restaurants) */}
+        <section className="mb-8 bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+          <div className="flex items-center gap-3 mb-4">
+            <Trophy className="w-5 h-5 text-orange-600" />
+            <h2 className="text-xl font-bold text-gray-900">View Leaderboard</h2>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <button
+              onClick={() => handleSectionChange('tours')}
+              className={`flex items-center justify-center gap-2 px-6 py-4 rounded-lg border-2 transition-all font-medium ${
+                selectedSection === 'tours'
+                  ? 'border-orange-500 bg-orange-50 text-orange-700 shadow-sm'
+                  : 'border-gray-200 hover:border-gray-300 text-gray-700 bg-white'
+              }`}
+            >
+              <Trophy className="w-5 h-5" />
+              <span className="font-semibold">Tours</span>
+            </button>
+            <button
+              onClick={() => handleSectionChange('restaurants')}
+              className={`flex items-center justify-center gap-2 px-6 py-4 rounded-lg border-2 transition-all font-medium ${
+                selectedSection === 'restaurants'
+                  ? 'border-orange-500 bg-orange-50 text-orange-700 shadow-sm'
+                  : 'border-gray-200 hover:border-gray-300 text-gray-700 bg-white'
+              }`}
+            >
+              <Star className="w-5 h-5" />
+              <span className="font-semibold">Restaurants</span>
+            </button>
+          </div>
+        </section>
+
         {/* Filters */}
         <section className="mb-16 bg-white rounded-xl shadow-sm p-6 border border-gray-200">
           <div>
@@ -525,7 +575,9 @@ export default function TopToursClient({ initialTours = [], initialBoosts = [], 
             <div className="flex items-center gap-3">
               <Trophy className="w-6 h-6 text-orange-600" />
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Leaderboard</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  {selectedSection === 'restaurants' ? 'Restaurants' : 'Tours'} Leaderboard
+                </h2>
                 <p className="text-gray-600">Rankings based on community promotion</p>
               </div>
             </div>
@@ -536,21 +588,160 @@ export default function TopToursClient({ initialTours = [], initialBoosts = [], 
               </Link>
             </Button>
           </div>
-          {toursWithDetails.length === 0 ? (
-            <div className="p-12 text-center">
-              <Trophy className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-600 text-lg mb-4">No tours found yet.</p>
-              <p className="text-gray-500 mb-6">Be the first to promote a tour and claim the #1 spot!</p>
-              <Button asChild className="sunset-gradient text-white">
-                <Link href="/destinations">
-                  Find Tours to Promote
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </Button>
-            </div>
+          {selectedSection === 'restaurants' ? (
+            restaurantsWithDetails.length === 0 ? (
+              <div className="p-12 text-center">
+                <Star className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                <p className="text-gray-600 text-lg mb-4">No restaurants found yet.</p>
+                <p className="text-gray-500 mb-6">Be the first to promote a restaurant and claim the #1 spot!</p>
+                <Button asChild className="sunset-gradient text-white">
+                  <Link href="/restaurants">
+                    Find Restaurants to Promote
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {restaurantsWithDetails.map((restaurant, index) => {
+                  const score = getScoreLabel(restaurant);
+                  const rank = index + 1;
+                  const restaurantData = restaurant.restaurantData;
+                  const image = restaurantData?.image || null;
+                  const name = restaurantData?.name || `Restaurant #${restaurant.restaurant_id}`;
+                  const restaurantUrl = restaurantData?.slug && restaurantData?.destination_id
+                    ? `/destinations/${restaurantData.destination_id}/restaurants/${restaurantData.slug}`
+                    : `/destinations/${restaurant.destination_id}/restaurants`;
+
+                  return (
+                    <motion.div
+                      key={restaurant.restaurant_id}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.03 }}
+                    >
+                      <Card className="hover:shadow-xl transition-all duration-300 bg-white border border-gray-200">
+                        <CardContent className="p-0">
+                          <div className="flex flex-col md:flex-row">
+                            {/* Rank Badge */}
+                            <div className="flex-shrink-0 flex items-center justify-center md:justify-start p-4 md:p-6 bg-gray-50 md:bg-transparent">
+                              {rank <= 3 ? (
+                                <Trophy className={`w-12 h-12 ${
+                                  rank === 1 ? 'text-yellow-500' :
+                                  rank === 2 ? 'text-gray-400' :
+                                  'text-orange-500'
+                                }`} />
+                              ) : (
+                                <div className="w-12 h-12 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center shadow-md">
+                                  <span className="text-xl font-bold text-gray-700">{rank}</span>
+                                </div>
+                              )}
+                            </div>
+
+                            {/* Image */}
+                            <div className="flex-shrink-0 w-full md:w-48 h-48 md:h-auto">
+                              {image ? (
+                                <img
+                                  src={image}
+                                  alt={name}
+                                  className="w-full h-full object-cover"
+                                  onError={(e) => {
+                                    e.target.src = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4";
+                                  }}
+                                />
+                              ) : (
+                                <div className="w-full h-full bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
+                                  <Star className="w-16 h-16 text-orange-300" />
+                                </div>
+                              )}
+                            </div>
+
+                            {/* Restaurant Info */}
+                            <div className="flex-1 p-5 md:p-6 flex flex-col">
+                              <div className="flex-1">
+                                <Link
+                                  href={restaurantUrl}
+                                  className="text-xl font-bold text-gray-900 hover:text-orange-600 transition-colors mb-2 block line-clamp-2"
+                                >
+                                  {name}
+                                </Link>
+
+                                {restaurant.region && (
+                                  <Badge variant="outline" className="mb-3 w-fit">
+                                    <Globe className="w-3 h-3 mr-1" />
+                                    {restaurant.region.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                                  </Badge>
+                                )}
+                              </div>
+
+                              {/* Actions */}
+                              <div className="flex items-center gap-3 mt-auto">
+                                <Button
+                                  asChild
+                                  className="flex-1 sunset-gradient text-white hover:scale-105 transition-transform duration-200"
+                                >
+                                  <Link href={restaurantUrl}>
+                                    View Restaurant
+                                    <ArrowRight className="w-4 h-4 ml-2" />
+                                  </Link>
+                                </Button>
+                              </div>
+                            </div>
+
+                            {/* Score Badge */}
+                            <div className="flex-shrink-0 p-5 md:p-6 flex items-center justify-center md:justify-end bg-gray-50 md:bg-transparent">
+                              <div className={`rounded-lg px-4 py-3 border-2 shadow-md ${
+                                rank === 1 
+                                  ? 'bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-300'
+                                  : rank === 2
+                                  ? 'bg-gradient-to-br from-gray-50 to-gray-100 border-gray-300'
+                                  : rank === 3
+                                  ? 'bg-gradient-to-br from-orange-50 to-red-50 border-orange-300'
+                                  : 'bg-gradient-to-br from-orange-50 to-yellow-50 border-orange-200'
+                              }`}>
+                                <div className="flex flex-col items-center">
+                                  <Trophy className={`w-6 h-6 mb-1 ${
+                                    rank === 1 ? 'text-yellow-500' :
+                                    rank === 2 ? 'text-gray-400' :
+                                    rank === 3 ? 'text-orange-500' :
+                                    'text-orange-600'
+                                  }`} />
+                                  <div className={`text-2xl font-bold ${
+                                    rank === 1 ? 'text-yellow-600' :
+                                    rank === 2 ? 'text-gray-700' :
+                                    rank === 3 ? 'text-orange-600' :
+                                    'text-orange-600'
+                                  }`}>
+                                    {score.toLocaleString()}
+                                  </div>
+                                  <div className="text-xs text-gray-500 mt-1">points</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            )
           ) : (
-            <div className="space-y-4">
-            {toursWithDetails.map((tour, index) => {
+            toursWithDetails.length === 0 ? (
+              <div className="p-12 text-center">
+                <Trophy className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                <p className="text-gray-600 text-lg mb-4">No tours found yet.</p>
+                <p className="text-gray-500 mb-6">Be the first to promote a tour and claim the #1 spot!</p>
+                <Button asChild className="sunset-gradient text-white">
+                  <Link href="/destinations">
+                    Find Tours to Promote
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {toursWithDetails.map((tour, index) => {
               const score = getScoreLabel(tour);
               const rank = index + 1;
               const tourData = tour.tourData;
@@ -700,8 +891,9 @@ export default function TopToursClient({ initialTours = [], initialBoosts = [], 
                   </Card>
                 </motion.div>
               );
-            })}
-            </div>
+                })}
+              </div>
+            )
           )}
         </section>
         </div>

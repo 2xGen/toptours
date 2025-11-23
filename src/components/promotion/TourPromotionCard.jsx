@@ -455,25 +455,53 @@ export default function TourPromotionCard({ productId, initialScore = null, comp
               {showInfo && (
                 <div
                   ref={infoRef}
-                  className="absolute top-6 left-0 z-50 bg-white border-2 border-orange-300 rounded-lg shadow-2xl p-3 w-64"
+                  className="absolute top-6 left-0 z-50 bg-white border-2 border-orange-300 rounded-lg shadow-2xl p-4 w-80 max-h-[500px] overflow-y-auto"
                 >
-                  <div className="flex items-start justify-between mb-2">
-                    <h4 className="font-bold text-gray-900 text-xs">How Promotion Works</h4>
+                  <div className="flex items-start justify-between mb-3">
+                    <h4 className="font-bold text-gray-900 text-sm">How Promotion Works</h4>
                     <button
                       onClick={() => setShowInfo(false)}
                       className="text-gray-400 hover:text-gray-600"
                     >
-                      <X className="w-3 h-3" />
+                      <X className="w-4 h-4" />
                     </button>
                   </div>
-                  <p className="text-xs text-gray-600 mb-2">
-                    Points boost a tour's score, making it appear higher in search results and on the <a href="/toptours" className="text-orange-600 hover:underline font-semibold">leaderboard</a>.
-                  </p>
+                  
+                  <div className="space-y-3 text-xs text-gray-700">
+                    <div>
+                      <p className="font-semibold text-gray-900 mb-1">Where Your Promotion Appears:</p>
+                      <ul className="list-disc list-inside space-y-1 ml-2">
+                        <li>Search results (higher ranking)</li>
+                        <li><a href="/leaderboard" className="text-orange-600 hover:underline font-semibold">Leaderboard</a> (trending section)</li>
+                        <li>Destination pages (trending tours)</li>
+                        <li>Restaurant pages (trending tours section)</li>
+                        <li>Tour listing pages</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="border-t border-gray-200 pt-3">
+                      <p className="font-semibold text-gray-900 mb-1">Why This Pricing is Justified:</p>
+                      <ul className="list-disc list-inside space-y-1 ml-2">
+                        <li>Multiple high-visibility placements</li>
+                        <li>Targeted audience (travelers actively planning)</li>
+                        <li>Long-term visibility (points accumulate)</li>
+                        <li>Community-driven (authentic recommendations)</li>
+                        <li>Free daily points available (no subscription needed)</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="bg-orange-50 border border-orange-200 rounded p-2 mt-3">
+                      <p className="text-xs text-orange-800 font-medium">
+                        💡 <strong>Tip:</strong> Instant boosts help promote your listing instantly.
+                      </p>
+                    </div>
+                  </div>
+                  
                   <a 
                     href="/how-it-works" 
-                    className="text-xs text-orange-600 hover:underline font-semibold"
+                    className="block mt-3 text-xs text-orange-600 hover:underline font-semibold text-center pt-2 border-t border-gray-200"
                   >
-                    Learn more →
+                    Learn more about our promotion system →
                   </a>
                 </div>
               )}

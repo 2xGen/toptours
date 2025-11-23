@@ -356,7 +356,7 @@ export default function ProfilePage() {
                   <ul className="space-y-1 text-xs text-gray-600">
                     <li>• Your streak increases by 1 each day you claim points consecutively</li>
                     <li>• Missing a day resets your streak to 1 when you claim again</li>
-                    <li>• Your streak badge appears on the <Link href="/toptours" className="text-orange-600 hover:underline font-semibold">Top Tours</Link> leaderboard</li>
+                    <li>• Your streak badge appears on the <Link href="/leaderboard" className="text-orange-600 hover:underline font-semibold">Leaderboard</Link></li>
                   </ul>
                 </div>
               </div>
@@ -1139,7 +1139,7 @@ export default function ProfilePage() {
                             <li className="flex items-start gap-2">
                               <span className="text-blue-600 font-bold mt-0.5">✓</span>
                               <span className="text-gray-700">
-                                Badge on <strong className="text-gray-900">/toptours</strong>
+                                Badge on <strong className="text-gray-900">/leaderboard</strong>
                               </span>
                             </li>
                             {planKey !== 'free' && (

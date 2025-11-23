@@ -108,6 +108,8 @@ const NavigationNext = () => {
     { name: 'Home', path: '/' },
     { name: 'How It Works', path: '/how-it-works' },
     { name: 'Destinations', path: '/destinations' },
+    { name: 'Tours', path: '/tours' },
+    { name: 'Restaurants', path: '/restaurants' },
     { name: 'Travel Guides', path: '/travel-guides' },
   ];
 
@@ -135,7 +137,7 @@ const NavigationNext = () => {
               asChild
               className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200"
             >
-              <Link href="/toptours">Leaderboard</Link>
+              <Link href="/leaderboard">Leaderboard</Link>
             </Button>
             {!authLoading && user ? (
               <Link
@@ -188,7 +190,7 @@ const NavigationNext = () => {
               asChild
               className="w-full mt-4 sunset-gradient text-white font-semibold"
             >
-              <Link href="/toptours" onClick={() => setIsOpen(false)}>
+              <Link href="/leaderboard" onClick={() => setIsOpen(false)}>
                 Leaderboard
               </Link>
             </Button>

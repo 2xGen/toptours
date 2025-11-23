@@ -1,8 +1,9 @@
 import { getAllDestinations } from '../src/data/destinationsData.js';
 import { travelGuides } from '../src/data/travelGuidesData.js';
-import { getRestaurantsForDestination, getAllRestaurants } from './destinations/[id]/restaurants/restaurantsData.js';
+import { getRestaurantCountsByDestination } from '../src/lib/restaurants.js';
+import { createSupabaseServiceRoleClient } from '../src/lib/supabaseClient.js';
 
-export default function sitemap() {
+export default async function sitemap() {
   const baseUrl = 'https://toptours.ai';
   const currentDate = new Date().toISOString();
 
@@ -57,9 +58,21 @@ export default function sitemap() {
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/toptours`,
+      url: `${baseUrl}/leaderboard`,
       lastModified: currentDate,
       changeFrequency: 'hourly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/restaurants`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/tours`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
       priority: 0.9,
     },
   ];
@@ -73,9 +86,10 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
-  // Restaurant listing pages per destination
+  // Restaurant listing pages per destination (fetch from database)
+  const restaurantCounts = await getRestaurantCountsByDestination();
   const restaurantListingPages = destinations
-    .filter((destination) => getRestaurantsForDestination(destination.id).length > 0)
+    .filter((destination) => (restaurantCounts[destination.id] || 0) > 0)
     .map((destination) => ({
       url: `${baseUrl}/destinations/${destination.id}/restaurants`,
       lastModified: currentDate,
@@ -91,10 +105,36 @@ export default function sitemap() {
     priority: 0.78,
   }));
 
-  // Individual restaurant pages
-  const restaurantDetailPages = getAllRestaurants().map(({ destinationId, restaurant }) => ({
-    url: `${baseUrl}/destinations/${destinationId}/restaurants/${restaurant.slug}`,
-    lastModified: restaurant.meta?.articleModified || restaurant.meta?.articlePublished || currentDate,
+  // Individual restaurant pages (fetch from database)
+  const supabase = createSupabaseServiceRoleClient();
+  const allRestaurants = [];
+  const pageSize = 1000;
+  let from = 0;
+  let hasMore = true;
+
+  while (hasMore) {
+    const { data, error } = await supabase
+      .from('restaurants')
+      .select('destination_id, slug, updated_at')
+      .eq('is_active', true)
+      .range(from, from + pageSize - 1);
+
+    if (error) {
+      console.error('Error fetching restaurants for sitemap:', error);
+      break;
+    }
+
+    if (data && data.length > 0) {
+      allRestaurants.push(...data);
+    }
+
+    hasMore = data && data.length === pageSize;
+    from += pageSize;
+  }
+
+  const restaurantDetailPages = allRestaurants.map((restaurant) => ({
+    url: `${baseUrl}/destinations/${restaurant.destination_id}/restaurants/${restaurant.slug}`,
+    lastModified: restaurant.updated_at || currentDate,
     changeFrequency: 'monthly',
     priority: 0.7,
   }));

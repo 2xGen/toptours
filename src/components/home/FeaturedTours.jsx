@@ -265,7 +265,7 @@ const FeaturedTours = ({ onOpenModal, topTours = [], topPromoters = [] }) => {
             variant="outline" 
             className="bg-white/20 border-white text-white hover:bg-white hover:text-gray-800 transition-all duration-200"
           >
-            <Link href="/toptours?type=last_month">
+            <Link href="/leaderboard?type=last_month">
               View Leaderboard
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>

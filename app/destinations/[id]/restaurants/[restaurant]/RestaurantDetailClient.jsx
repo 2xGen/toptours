@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import NavigationNext from '@/components/NavigationNext';
@@ -9,6 +9,10 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
+import RestaurantPromotionCard from '@/components/promotion/RestaurantPromotionCard';
+import { getTourUrl } from '@/utils/tourHelpers';
+import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import {
   MapPin,
   Phone,
@@ -25,11 +29,73 @@ import {
   Info,
   X,
   Hotel,
+  Music,
+  Coffee,
+  Wine,
+  Beer,
+  Baby,
+  Dog,
+  Users,
+  CreditCard,
+  Car,
+  Accessibility,
+  CheckCircle2,
+  XCircle,
+  TrendingUp,
 } from 'lucide-react';
 
-export default function RestaurantDetailClient({ destination, restaurant, otherRestaurants }) {
+export default function RestaurantDetailClient({ destination, restaurant, otherRestaurants, initialPromotionScore = null, trendingTours = [], trendingRestaurants = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showStickyButton, setShowStickyButton] = useState(true);
+  const [user, setUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [showSignInModal, setShowSignInModal] = useState(false);
+  const supabase = createSupabaseBrowserClient();
+
+  // Check authentication status
+  useEffect(() => {
+    let isMounted = true;
+    let subscription = null;
+
+    (async () => {
+      // Get current session
+      const { data } = await supabase.auth.getSession();
+      if (!isMounted) return;
+      setUser(data?.session?.user || null);
+      setAuthLoading(false);
+
+      // Listen for auth changes
+      const { data: { subscription: authSubscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        if (!isMounted) return;
+        setUser(session?.user || null);
+      });
+      subscription = authSubscription;
+    })();
+
+    return () => {
+      isMounted = false;
+      subscription?.unsubscribe?.();
+    };
+  }, [supabase]);
+
+  // Close sign-in modal when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showSignInModal && event.target.classList.contains('bg-black/50')) {
+        setShowSignInModal(false);
+      }
+    };
+
+    if (showSignInModal) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'unset';
+    };
+  }, [showSignInModal]);
 
   if (!destination || !restaurant) {
     return null;
@@ -39,10 +105,121 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
   const hours = restaurant.hours || [];
   const menuHighlights = restaurant.menuHighlights || [];
   const practicalInfo = restaurant.practicalInfo || [];
+  
+  // Parse opening hours if it's a string
+  let openingHours = [];
+  try {
+    if (typeof hours === 'string') {
+      openingHours = JSON.parse(hours);
+    } else if (Array.isArray(hours)) {
+      openingHours = hours;
+    }
+  } catch (e) {
+    console.error('Error parsing opening hours:', e);
+    openingHours = [];
+  }
+  
+  // Business attributes
+  const businessAttributes = [];
+  if (restaurant.outdoorSeating) businessAttributes.push({ icon: UtensilsCrossed, label: 'Outdoor Seating', color: 'green' });
+  if (restaurant.liveMusic) businessAttributes.push({ icon: Music, label: 'Live Music', color: 'purple' });
+  if (restaurant.servesCocktails) businessAttributes.push({ icon: Wine, label: 'Cocktails', color: 'pink' });
+  if (restaurant.servesBeer) businessAttributes.push({ icon: Beer, label: 'Beer', color: 'amber' });
+  if (restaurant.servesWine) businessAttributes.push({ icon: Wine, label: 'Wine', color: 'red' });
+  if (restaurant.servesCoffee) businessAttributes.push({ icon: Coffee, label: 'Coffee', color: 'brown' });
+  if (restaurant.goodForChildren) businessAttributes.push({ icon: Baby, label: 'Family Friendly', color: 'blue' });
+  if (restaurant.allowsDogs) businessAttributes.push({ icon: Dog, label: 'Dog Friendly', color: 'orange' });
+  if (restaurant.goodForGroups) businessAttributes.push({ icon: Users, label: 'Groups Welcome', color: 'indigo' });
+  if (restaurant.reservable) businessAttributes.push({ icon: BookOpen, label: 'Reservations', color: 'teal' });
+  
+  // Payment options
+  const paymentMethods = [];
+  if (restaurant.paymentOptions) {
+    if (restaurant.paymentOptions.acceptsCreditCards) paymentMethods.push('Credit Cards');
+    if (restaurant.paymentOptions.acceptsDebitCards) paymentMethods.push('Debit Cards');
+    if (restaurant.paymentOptions.acceptsNfc) paymentMethods.push('NFC/Contactless');
+    if (restaurant.paymentOptions.acceptsCashOnly) paymentMethods.push('Cash Only');
+  }
+  
+  // Parking options
+  const parkingInfo = [];
+  if (restaurant.parkingOptions) {
+    if (restaurant.parkingOptions.freeParkingLot) parkingInfo.push('Free Parking Lot');
+    if (restaurant.parkingOptions.freeStreetParking) parkingInfo.push('Free Street Parking');
+    if (restaurant.parkingOptions.paidParkingLot) parkingInfo.push('Paid Parking Lot');
+    if (restaurant.parkingOptions.paidStreetParking) parkingInfo.push('Paid Street Parking');
+    if (restaurant.parkingOptions.valetParking) parkingInfo.push('Valet Parking');
+  }
+  
+  // Accessibility options
+  const accessibilityFeatures = [];
+  if (restaurant.accessibilityOptions) {
+    if (restaurant.accessibilityOptions.wheelchairAccessibleEntrance) accessibilityFeatures.push('Wheelchair Accessible Entrance');
+    if (restaurant.accessibilityOptions.wheelchairAccessibleRestroom) accessibilityFeatures.push('Wheelchair Accessible Restroom');
+    if (restaurant.accessibilityOptions.wheelchairAccessibleSeating) accessibilityFeatures.push('Wheelchair Accessible Seating');
+    if (restaurant.accessibilityOptions.wheelchairAccessibleParking) accessibilityFeatures.push('Wheelchair Accessible Parking');
+  }
 
-  const jsonLd = {
-    ...(restaurant.schema || {}),
+  // Generate Schema.org structured data for SEO
+  const jsonLd = restaurant.schema || {
+    '@context': 'https://schema.org',
+    '@type': 'Restaurant',
+    name: restaurant.name,
+    description: restaurant.metaDescription || restaurant.description || restaurant.summary || restaurant.tagline || '',
+    image: restaurant.heroImage || destination.imageUrl,
+    url: `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: restaurant.contact?.address || '',
+      addressLocality: destination.name,
+      addressCountry: destination.country || '',
+    },
+    telephone: restaurant.contact?.phone || restaurant.contact?.formattedPhone || undefined,
+    email: restaurant.contact?.email || undefined,
+    servesCuisine: cuisines.length > 0 ? cuisines : undefined,
+    priceRange: restaurant.pricing?.priceRange || undefined,
+    // AggregateRating is required for rich results - always include if rating exists
+    aggregateRating: restaurant.ratings?.googleRating ? {
+      '@type': 'AggregateRating',
+      ratingValue: parseFloat(restaurant.ratings.googleRating),
+      reviewCount: restaurant.ratings.reviewCount || 0,
+      bestRating: 5,
+      worstRating: 1,
+      ratingExplanation: `Based on ${restaurant.ratings.reviewCount || 0} ${restaurant.ratings.source || 'Google'} reviews`,
+    } : undefined,
+    openingHoursSpecification: openingHours && openingHours.length > 0 ? openingHours.map((hour) => {
+      const timeParts = hour.time?.split('–') || hour.time?.split('-') || [];
+      return {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: hour.days || hour.label || 'Monday',
+        opens: timeParts[0]?.trim() || '',
+        closes: timeParts[1]?.trim() || timeParts[0]?.trim() || '',
+      };
+    }).filter(h => h.opens && h.closes) : undefined,
+    // Additional restaurant properties
+    ...(restaurant.contact?.website && {
+      sameAs: [restaurant.contact.website],
+    }),
+    ...(restaurant.pricing?.priceRangeLabel && {
+      priceRange: restaurant.pricing.priceRangeLabel,
+    }),
   };
+  
+  // Remove undefined fields to keep JSON-LD clean
+  Object.keys(jsonLd).forEach(key => {
+    if (jsonLd[key] === undefined || jsonLd[key] === null || jsonLd[key] === '') {
+      delete jsonLd[key];
+    }
+  });
+  
+  // Clean nested objects
+  if (jsonLd.address) {
+    Object.keys(jsonLd.address).forEach(key => {
+      if (jsonLd.address[key] === undefined || jsonLd.address[key] === null || jsonLd.address[key] === '') {
+        delete jsonLd.address[key];
+      }
+    });
+  }
 
   const breadcrumbLd = {
     '@context': 'https://schema.org',
@@ -69,6 +246,12 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
       {
         '@type': 'ListItem',
         position: 4,
+        name: 'Restaurants',
+        item: `https://toptours.ai/destinations/${destination.id}/restaurants`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 5,
         name: restaurant.shortName || restaurant.name,
         item: `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`,
       },
@@ -101,6 +284,52 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
         <SmartTourFinder isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       )}
 
+      {/* Sign In Modal */}
+      {showSignInModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="bg-white rounded-2xl max-w-md w-full shadow-2xl"
+          >
+            <div className="flex items-center justify-between p-6 border-b">
+              <h2 className="text-xl font-bold text-gray-800">Account Required</h2>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowSignInModal(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
+            <div className="p-6">
+              <p className="text-gray-700 mb-6">
+                Sign in to access restaurant reservations and website links. Create a free account to continue.
+              </p>
+              <div className="flex gap-3">
+                <Button
+                  asChild
+                  className="flex-1 sunset-gradient text-white hover:scale-105 transition-transform"
+                >
+                  <Link href="/auth" onClick={() => setShowSignInModal(false)}>
+                    Sign In / Sign Up
+                  </Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => setShowSignInModal(false)}
+                  className="flex-1"
+                >
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
       <div className="min-h-screen pt-16 overflow-x-hidden">
         <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -116,7 +345,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                   {restaurant.name}
                 </h1>
                 <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8">
-                  {restaurant.tagline || restaurant.summary}
+                  {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
                 </p>
 
                 <div className="flex flex-wrap items-center gap-3">
@@ -144,6 +373,29 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                     </div>
                   )}
                 </div>
+
+                {/* Reserve/Visit Website Button */}
+                {(restaurant.contact?.website || restaurant.booking?.partnerUrl) && (
+                  <div className="mt-6 md:mt-8">
+                    <Button
+                      onClick={() => {
+                        if (user) {
+                          // If signed in, open the website/booking URL
+                          const url = restaurant.booking?.partnerUrl || restaurant.contact?.website;
+                          if (url) {
+                            window.open(url, '_blank', 'noopener,noreferrer');
+                          }
+                        } else {
+                          // If not signed in, show modal
+                          setShowSignInModal(true);
+                        }
+                      }}
+                      className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
+                    >
+                      {restaurant.booking?.partnerUrl ? 'Reserve a Table' : `Visit ${restaurant.name}'s Website`}
+                    </Button>
+                  </div>
+                )}
               </motion.div>
 
               <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
@@ -173,6 +425,10 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
               <span className="text-gray-400">/</span>
               <Link href={`/destinations/${destination.id}`} className="text-gray-500 hover:text-gray-700">
                 {destination.name}
+              </Link>
+              <span className="text-gray-400">/</span>
+              <Link href={`/destinations/${destination.id}/restaurants`} className="text-gray-500 hover:text-gray-700">
+                Restaurants
               </Link>
               <span className="text-gray-400">/</span>
               <span className="text-gray-900 font-medium">{restaurant.shortName || restaurant.name}</span>
@@ -238,6 +494,28 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
               </div>
             </motion.div>
 
+            {/* About Section - SEO Rich Content */}
+            {(restaurant.uniqueContent || restaurant.story) && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="max-w-4xl mx-auto mb-12"
+              >
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 text-center">
+                  About {restaurant.name}
+                </h2>
+                <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                  {(restaurant.uniqueContent || restaurant.story || '').includes('<') ? (
+                    <div dangerouslySetInnerHTML={{ __html: restaurant.uniqueContent || restaurant.story }} />
+                  ) : (
+                    <p className="text-lg mb-4 whitespace-pre-line">{restaurant.uniqueContent || restaurant.story}</p>
+                  )}
+                </div>
+              </motion.div>
+            )}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -264,6 +542,58 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
           </div>
         </section>
 
+        {(restaurant.reviewSummary || restaurant.ratings?.googleRating) && (
+          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-12"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                  <div>
+                    <h2 className="text-2xl font-poppins font-bold text-gray-900">
+                      Why Travelers Love {restaurant.shortName || restaurant.name}
+                    </h2>
+                    <p className="text-gray-600 text-sm">
+                      Sourced from recent guest feedback and verified reviews.
+                    </p>
+                  </div>
+                  {restaurant.ratings?.googleRating && (
+                    <div className="flex items-center gap-3 bg-blue-50 border border-blue-100 rounded-full px-4 py-2">
+                      <Star className="w-5 h-5 text-blue-600" />
+                      <span className="text-lg font-semibold text-blue-700">
+                        {restaurant.ratings.googleRating.toFixed(1)} / 5.0
+                      </span>
+                      {restaurant.ratings.reviewCount && (
+                        <span className="text-sm text-blue-600/80">
+                          ({restaurant.ratings.reviewCount.toLocaleString()} reviews)
+                        </span>
+                      )}
+                      {restaurant.reviewsUri && (
+                        <a
+                          href={restaurant.reviewsUri}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="ml-2 text-xs text-blue-600 hover:text-blue-700 underline flex items-center gap-1"
+                        >
+                          Read all reviews
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </div>
+                <p className="text-gray-700 leading-relaxed text-lg">
+                  {restaurant.reviewSummary}
+                </p>
+              </motion.div>
+            </div>
+          </section>
+        )}
+
         <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -287,7 +617,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                     <p className="text-gray-800 text-base leading-relaxed mb-4">
                       {restaurant.contact?.address}
                     </p>
-                    <div className="space-y-3 text-sm text-gray-700">
+                    <div className="space-y-3 text-sm text-gray-700 mb-4">
                       {restaurant.contact?.phone && (
                         <div className="flex items-center gap-2 font-medium">
                           <div className="bg-blue-100 text-blue-600 rounded-lg p-2">
@@ -304,10 +634,88 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                           <span>{restaurant.contact.email}</span>
                         </div>
                       )}
+                      {restaurant.contact?.website && (
+                        <div className="flex items-center gap-2 font-medium">
+                          <div className="bg-blue-100 text-blue-600 rounded-lg p-2">
+                            <ExternalLink className="w-4 h-4" />
+                          </div>
+                          <a href={restaurant.contact.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                            Visit {restaurant.name}'s Website
+                          </a>
+                        </div>
+                      )}
                     </div>
+                    {(restaurant.googleMapsUri || restaurant.contact?.googleMapsUrl) && (
+                      <a
+                        href={restaurant.googleMapsUri || restaurant.contact?.googleMapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700"
+                      >
+                        <MapPin className="w-4 h-4" />
+                        View on Google Maps
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
                   </div>
+                  
+                  {/* Opening Hours with Open Now Status */}
+                  {openingHours && openingHours.length > 0 && (
+                    <div className="mt-6 bg-white/70 rounded-2xl border border-blue-100 p-5 shadow-sm">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-2">
+                          <Clock className="w-5 h-5 text-blue-600" />
+                          <h4 className="font-semibold text-gray-900">Opening Hours</h4>
+                        </div>
+                        {restaurant.openNow !== null && (
+                          <div className={`flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium ${
+                            restaurant.openNow 
+                              ? 'bg-green-100 text-green-700' 
+                              : 'bg-red-100 text-red-700'
+                          }`}>
+                            {restaurant.openNow ? (
+                              <>
+                                <CheckCircle2 className="w-4 h-4" />
+                                <span>Open Now</span>
+                              </>
+                            ) : (
+                              <>
+                                <XCircle className="w-4 h-4" />
+                                <span>Closed Now</span>
+                              </>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                      <div className="space-y-2">
+                        {openingHours.map((hour, idx) => (
+                          <div key={idx} className="flex justify-between items-center text-sm">
+                            <span className="text-gray-700 font-medium">{hour.days || hour.label}</span>
+                            <span className="text-gray-600">{hour.time}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
+              
+              {/* Promotion Card */}
+              {restaurant.id && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <RestaurantPromotionCard 
+                    restaurantId={restaurant.id} 
+                    restaurantData={restaurant}
+                    destinationId={destination.id}
+                    initialScore={initialPromotionScore}
+                  />
+                </motion.div>
+              )}
             </motion.div>
           </div>
         </section>
@@ -356,43 +764,276 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
           </section>
         )}
 
-        {(restaurant.reviewSummary || restaurant.ratings?.googleRating) && (
-          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
+        {/* Individual Reviews */}
+        {restaurant.reviews && Array.isArray(restaurant.reviews) && restaurant.reviews.length > 0 && (
+          <section className="py-12 sm:py-16 bg-white overflow-hidden">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-12"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-                  <div>
-                    <h2 className="text-2xl font-poppins font-bold text-gray-900">
-                      Why Travelers Love {restaurant.shortName || restaurant.name}
-                    </h2>
-                    <p className="text-gray-600 text-sm">
-                      Sourced from recent guest feedback and verified reviews.
-                    </p>
-                  </div>
-                  {restaurant.ratings?.googleRating && (
-                    <div className="flex items-center gap-3 bg-blue-50 border border-blue-100 rounded-full px-4 py-2">
-                      <Star className="w-5 h-5 text-blue-600" />
-                      <span className="text-lg font-semibold text-blue-700">
-                        {restaurant.ratings.googleRating.toFixed(1)} / 5.0
-                      </span>
-                      {restaurant.ratings.reviewCount && (
-                        <span className="text-sm text-blue-600/80">
-                          ({restaurant.ratings.reviewCount.toLocaleString()} reviews)
-                        </span>
-                      )}
-                    </div>
-                  )}
+                <h2 className="text-3xl font-poppins font-bold text-gray-900 mb-8">
+                  Recent Reviews
+                </h2>
+                <div className="space-y-6">
+                  {restaurant.reviews.slice(0, 5).map((review, index) => {
+                    // Handle both simplified structure (from DB) and full Google API structure
+                    // Simplified: { text, rating, publishTime, author }
+                    // Full: { text: { text }, rating, authorAttribution: { displayName, photoUri }, relativePublishTimeDescription }
+                    const reviewText = review.text || (review.text?.text) || '';
+                    const fullAuthorName = review.author || (review.authorAttribution?.displayName) || 'Anonymous';
+                    const rating = review.rating || null;
+                    const publishTimeRaw = review.relativePublishTimeDescription || review.publishTime || null;
+                    const photoUri = review.authorAttribution?.photoUri || null;
+                    
+                    // Format author name: "FirstName L."
+                    const formatAuthorName = (name) => {
+                      if (!name || name === 'Anonymous') return 'Anonymous';
+                      const parts = name.trim().split(' ');
+                      if (parts.length === 1) return parts[0];
+                      const firstName = parts[0];
+                      const lastInitial = parts[parts.length - 1][0]?.toUpperCase() || '';
+                      return `${firstName} ${lastInitial}.`;
+                    };
+                    
+                    // Format date from ISO string
+                    const formatDate = (dateString) => {
+                      if (!dateString) return null;
+                      try {
+                        // Handle ISO date string
+                        if (dateString.includes('T') && dateString.includes('Z')) {
+                          const date = new Date(dateString);
+                          return date.toLocaleDateString('en-US', { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                          });
+                        }
+                        // If it's already a relative time description, return as is
+                        return dateString;
+                      } catch (e) {
+                        return dateString;
+                      }
+                    };
+                    
+                    const authorName = formatAuthorName(fullAuthorName);
+                    const publishTime = formatDate(publishTimeRaw);
+                    
+                    // Skip if no text
+                    if (!reviewText || reviewText.trim() === '') return null;
+                    
+                    return (
+                      <motion.div
+                        key={review.name || `review-${index}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                        viewport={{ once: true }}
+                        className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
+                      >
+                        <div className="flex items-start gap-4">
+                          {photoUri && (
+                            <img
+                              src={photoUri}
+                              alt={authorName}
+                              className="w-12 h-12 rounded-full object-cover"
+                            />
+                          )}
+                          <div className="flex-1">
+                            <div className="flex items-center gap-3 mb-2">
+                              <h3 className="font-semibold text-gray-900">
+                                {authorName}
+                              </h3>
+                              {rating && (
+                                <div className="flex items-center gap-1">
+                                  {[...Array(5)].map((_, i) => (
+                                    <Star
+                                      key={i}
+                                      className={`w-4 h-4 ${
+                                        i < rating
+                                          ? 'text-yellow-400 fill-yellow-400'
+                                          : 'text-gray-300'
+                                      }`}
+                                    />
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                            {publishTime && (
+                              <p className="text-sm text-gray-500 mb-3">
+                                {publishTime}
+                              </p>
+                            )}
+                            <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                              {reviewText}
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    );
+                  }).filter(Boolean)}
                 </div>
-                <p className="text-gray-700 leading-relaxed text-lg">
-                  {restaurant.reviewSummary}
+                {restaurant.reviews.length > 5 && (
+                  <div className="mt-8 text-center">
+                    <p className="text-gray-600 mb-4">
+                      Showing 5 of {restaurant.reviews.length} reviews
+                    </p>
+                    {restaurant.reviewsUri && (
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="border-2 border-gray-300 hover:border-gray-400"
+                      >
+                        <a
+                          href={restaurant.reviewsUri}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2"
+                        >
+                          Read All Reviews on Google
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                )}
+              </motion.div>
+            </div>
+          </section>
+        )}
+
+        {/* Business Attributes & Features */}
+        {businessAttributes.length > 0 && (
+          <section className="py-12 sm:py-16 bg-white overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="text-center mb-8 sm:mb-12"
+              >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4">
+                  What to Expect
+                </h2>
+                <p className="text-gray-600 text-lg">
+                  Features and amenities that make {restaurant.shortName || restaurant.name} special
                 </p>
               </motion.div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {businessAttributes.map((attr, idx) => {
+                  const Icon = attr.icon;
+                  const colorClasses = {
+                    green: 'bg-green-50 text-green-700 border-green-200',
+                    purple: 'bg-purple-50 text-purple-700 border-purple-200',
+                    pink: 'bg-pink-50 text-pink-700 border-pink-200',
+                    amber: 'bg-amber-50 text-amber-700 border-amber-200',
+                    red: 'bg-red-50 text-red-700 border-red-200',
+                    brown: 'bg-amber-50 text-amber-800 border-amber-200',
+                    blue: 'bg-blue-50 text-blue-700 border-blue-200',
+                    orange: 'bg-orange-50 text-orange-700 border-orange-200',
+                    indigo: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+                    teal: 'bg-teal-50 text-teal-700 border-teal-200',
+                  };
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: idx * 0.05 }}
+                      viewport={{ once: true }}
+                    >
+                      <Card className={`h-full border-2 ${colorClasses[attr.color] || 'bg-gray-50 text-gray-700 border-gray-200'} hover:shadow-lg transition-all`}>
+                        <CardContent className="p-4 text-center">
+                          <Icon className="w-6 h-6 mx-auto mb-2" />
+                          <p className="text-sm font-semibold">{attr.label}</p>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Practical Information: Payment, Parking, Accessibility */}
+        {(paymentMethods.length > 0 || parkingInfo.length > 0 || accessibilityFeatures.length > 0) && (
+          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="text-center mb-8 sm:mb-12"
+              >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4">
+                  Practical Information
+                </h2>
+                <p className="text-gray-600 text-lg">
+                  Everything you need to know before you visit
+                </p>
+              </motion.div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {paymentMethods.length > 0 && (
+                  <Card className="bg-white border border-gray-200 shadow-md">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <CreditCard className="w-6 h-6 text-blue-600" />
+                        <h3 className="text-lg font-semibold text-gray-900">Payment Options</h3>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {paymentMethods.map((method, idx) => (
+                          <Badge key={idx} variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
+                            {method}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+                
+                {parkingInfo.length > 0 && (
+                  <Card className="bg-white border border-gray-200 shadow-md">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <Car className="w-6 h-6 text-green-600" />
+                        <h3 className="text-lg font-semibold text-gray-900">Parking</h3>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {parkingInfo.map((info, idx) => (
+                          <Badge key={idx} variant="outline" className="bg-green-50 text-green-700 border-green-200">
+                            {info}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+                
+                {accessibilityFeatures.length > 0 && (
+                  <Card className="bg-white border border-gray-200 shadow-md">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <Accessibility className="w-6 h-6 text-purple-600" />
+                        <h3 className="text-lg font-semibold text-gray-900">Accessibility</h3>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {accessibilityFeatures.map((feature, idx) => (
+                          <Badge key={idx} variant="outline" className="bg-purple-50 text-purple-700 border-purple-200">
+                            {feature}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
             </div>
           </section>
         )}
@@ -502,6 +1143,191 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
             </motion.div>
           </div>
         </section>
+
+        {/* Trending Tours Section */}
+        {trendingTours && trendingTours.length > 0 && (
+          <section className="py-12 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center gap-2 mb-6">
+                <TrendingUp className="w-5 h-5 text-orange-600" />
+                <h2 className="text-2xl font-bold text-gray-900">Trending Tours in {destination.fullName}</h2>
+                <Badge variant="secondary" className="ml-2 bg-orange-100 text-orange-700 border-orange-300">
+                  Past 28 Days
+                </Badge>
+              </div>
+              <p className="text-sm text-gray-600 mb-6">
+                Tours that are currently popular based on recent community boosts
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {trendingTours.map((trending, index) => {
+                  const tourId = trending.product_id;
+                  const tourUrl = trending.tour_slug 
+                    ? `/tours/${tourId}/${trending.tour_slug}` 
+                    : getTourUrl(tourId, trending.tour_name);
+                  
+                  return (
+                    <motion.div
+                      key={tourId || index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <Link href={tourUrl}>
+                          <div className="relative h-48 overflow-hidden">
+                            {trending.tour_image_url ? (
+                              <img
+                                src={trending.tour_image_url}
+                                alt={trending.tour_name || 'Tour'}
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                              />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                <UtensilsCrossed className="w-8 h-8 text-gray-400" />
+                              </div>
+                            )}
+                          </div>
+                        </Link>
+                        <CardContent className="p-4 flex-1 flex flex-col">
+                          <Link href={tourUrl}>
+                            <h4 className="font-semibold text-base text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors cursor-pointer">
+                              {trending.tour_name || 'Tour'}
+                            </h4>
+                          </Link>
+                          
+                          <div className="mt-auto pt-3">
+                            <TourPromotionCard
+                              productId={tourId}
+                              compact={true}
+                              initialScore={{
+                                total_score: trending.total_score || 0,
+                                monthly_score: trending.monthly_score || 0,
+                                weekly_score: trending.weekly_score || 0,
+                                past_28_days_score: trending.past_28_days_score || 0,
+                              }}
+                            />
+                          </div>
+
+                          <Button
+                            asChild
+                            className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-3"
+                          >
+                            <Link href={tourUrl}>
+                              View Details
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Link>
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Trending Restaurants Section */}
+        {trendingRestaurants && trendingRestaurants.length > 0 && (
+          <section className="py-12 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center gap-2 mb-6">
+                <TrendingUp className="w-5 h-5 text-orange-600" />
+                <h2 className="text-2xl font-bold text-gray-900">Trending Restaurants in {destination.fullName}</h2>
+                <Badge variant="secondary" className="ml-2 bg-orange-100 text-orange-700 border-orange-300">
+                  Past 28 Days
+                </Badge>
+              </div>
+              <p className="text-sm text-gray-600 mb-6">
+                Restaurants that are currently popular based on recent community boosts
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {trendingRestaurants.map((trending, index) => {
+                  const restaurantUrl = trending.slug
+                    ? `/destinations/${destination.id}/restaurants/${trending.slug}`
+                    : null;
+                  
+                  if (!restaurantUrl) return null;
+                  
+                  return (
+                    <motion.div
+                      key={trending.restaurant_id || index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <Link href={restaurantUrl}>
+                          <div className="relative h-48 overflow-hidden">
+                            {trending.heroImage || trending.restaurant_image_url ? (
+                              <img
+                                src={trending.heroImage || trending.restaurant_image_url}
+                                alt={trending.name || 'Restaurant'}
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                              />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                <UtensilsCrossed className="w-8 h-8 text-gray-400" />
+                              </div>
+                            )}
+                          </div>
+                        </Link>
+                        <CardContent className="p-4 flex-1 flex flex-col">
+                          <Link href={restaurantUrl}>
+                            <h4 className="font-semibold text-base text-gray-800 mb-2 line-clamp-2 hover:text-blue-600 transition-colors cursor-pointer">
+                              {trending.name || trending.restaurant_name || 'Restaurant'}
+                            </h4>
+                          </Link>
+                          
+                          {trending.ratings?.googleRating && (
+                            <div className="flex items-center gap-2 mb-3">
+                              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                              <span className="text-sm font-medium text-gray-700">
+                                {trending.ratings.googleRating.toFixed(1)}
+                              </span>
+                              {trending.ratings.reviewCount && (
+                                <span className="text-xs text-gray-500">
+                                  ({trending.ratings.reviewCount.toLocaleString()})
+                                </span>
+                              )}
+                            </div>
+                          )}
+                          
+                          <div className="mt-auto pt-3">
+                            <RestaurantPromotionCard
+                              restaurantId={trending.restaurant_id}
+                              compact={true}
+                              initialScore={{
+                                total_score: trending.total_score || 0,
+                                monthly_score: trending.monthly_score || 0,
+                                weekly_score: trending.weekly_score || 0,
+                                past_28_days_score: trending.past_28_days_score || 0,
+                              }}
+                            />
+                          </div>
+
+                          <Button
+                            asChild
+                            className="w-full bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 transition-transform duration-200 mt-3"
+                          >
+                            <Link href={restaurantUrl}>
+                              View Restaurant
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Link>
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

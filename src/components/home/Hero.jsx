@@ -254,7 +254,7 @@ const Hero = () => {
                 variant="secondary"
                 className="bg-white/90 text-purple-700 border border-purple-100 hover:bg-white px-8 py-3 text-lg font-semibold"
               >
-                <Link href="/toptours">
+                <Link href="/leaderboard">
                   View leaderboard
                 </Link>
               </Button>

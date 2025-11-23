@@ -1,9 +1,10 @@
 import { getDestinationById } from '@/data/destinationsData';
 import DestinationDetailClient from './DestinationDetailClient';
-import { getPromotionScoresByDestination, getTrendingToursByDestination, getHardcodedToursByDestination } from '@/lib/promotionSystem';
+import { getPromotionScoresByDestination, getTrendingToursByDestination, getHardcodedToursByDestination, getTrendingRestaurantsByDestination } from '@/lib/promotionSystem';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
+import { getRestaurantsForDestination, formatRestaurantForFrontend } from '@/lib/restaurants';
 
 // Helper to generate slug
 function generateSlug(name) {
@@ -225,8 +226,38 @@ export default async function DestinationDetailPage({ params }) {
   // Fetch trending tours (past 28 days) for this destination
   const trendingTours = await getTrendingToursByDestination(destination.id, 6);
 
+  // Fetch trending restaurants (past 28 days) for this destination
+  const trendingRestaurants = await getTrendingRestaurantsByDestination(destination.id, 6);
+
   // Fetch hardcoded tours by category (lightweight - no API calls)
   const hardcodedTours = await getHardcodedToursByDestination(destination.id);
+
+  // Fetch restaurants from database for this destination
+  // Wrap in try-catch to prevent page crashes if database is unavailable
+  let restaurants = [];
+  try {
+    // Only fetch if we have the required environment variables
+    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      const dbRestaurants = await getRestaurantsForDestination(destination.id);
+      // Format restaurants for frontend and limit to 6 for the preview
+      // Add extra error handling for each restaurant
+      restaurants = (dbRestaurants || [])
+        .slice(0, 6)
+        .map(restaurant => {
+          try {
+            return formatRestaurantForFrontend(restaurant);
+          } catch (err) {
+            console.error('Error formatting restaurant:', err, restaurant?.id);
+            return null;
+          }
+        })
+        .filter(restaurant => restaurant !== null && restaurant !== undefined);
+    }
+  } catch (error) {
+    // Silently fail - don't crash the page if restaurants can't be loaded
+    console.error('Error fetching restaurants (non-fatal):', error.message);
+    restaurants = [];
+  }
 
   // Merge hardcoded tour scores into promotionScores
   if (hardcodedTours && Object.keys(hardcodedTours).length > 0) {
@@ -363,7 +394,9 @@ export default async function DestinationDetailPage({ params }) {
         destination={destination} 
         promotionScores={promotionScores}
         trendingTours={trendingTours}
+        trendingRestaurants={trendingRestaurants}
         hardcodedTours={hardcodedTours}
+        restaurants={restaurants}
       />
     </>
   );

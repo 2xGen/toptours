@@ -13,7 +13,7 @@
  */
 
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
-import { A_LA_CARTE_PACKAGES, updateTourMetadata } from '@/lib/promotionSystem';
+import { A_LA_CARTE_PACKAGES, updateTourMetadata, updateRestaurantMetadata } from '@/lib/promotionSystem';
 import { stripe, STRIPE_PRICE_IDS } from '@/lib/stripe';
 
 export default async function handler(req, res) {
@@ -31,11 +31,14 @@ export default async function handler(req, res) {
       });
     }
 
-    const { productId, packageName, userId, tourData, returnUrl } = req.body;
+    const { productId, restaurantId, packageName, userId, tourData, restaurantData, returnUrl, type = 'tour' } = req.body;
 
-    if (!productId || !packageName || !userId) {
+    // Support both tours (productId) and restaurants (restaurantId)
+    const entityId = type === 'restaurant' ? restaurantId : productId;
+    
+    if (!entityId || !packageName || !userId) {
       return res.status(400).json({
-        error: 'Missing required fields: productId, packageName, userId'
+        error: `Missing required fields: ${type === 'restaurant' ? 'restaurantId' : 'productId'}, packageName, userId`
       });
     }
 
@@ -88,15 +91,28 @@ export default async function handler(req, res) {
       }
     }
 
-    // Save tour metadata immediately if tourData is provided (same as regular boosts)
+    // Save metadata immediately if provided (same as regular boosts)
     // This uses the data already available, no API call needed!
-    if (tourData) {
+    if (type === 'restaurant' && restaurantData) {
+      try {
+        console.log(`📦 Attempting to save metadata for restaurant ${restaurantId} with restaurantData:`, {
+          hasName: !!restaurantData.name,
+          hasImage: !!restaurantData.hero_image_url || !!restaurantData.heroImage,
+          hasDestinationId: !!restaurantData.destination_id,
+        });
+        await updateRestaurantMetadata(parseInt(restaurantId), restaurantData);
+        console.log(`✅ Metadata saved from page data for restaurant ${restaurantId} (instant boost)`);
+      } catch (metadataError) {
+        console.error(`❌ Error saving restaurant metadata for ${restaurantId}:`, metadataError);
+        // Continue even if metadata save fails
+      }
+    } else if (type === 'tour' && tourData) {
       try {
         console.log(`📦 Attempting to save metadata for ${productId} with tourData:`, {
           hasTitle: !!(tourData.title || tourData.seo?.title || tourData.productContent?.title),
           hasImages: !!tourData.images,
           hasDestinations: !!tourData.destinations,
-          hasDestinationId: !!tourData._destinationId || !!destinationId,
+          hasDestinationId: !!tourData._destinationId || !!tourData.destinationId,
         });
         await updateTourMetadata(productId, tourData);
         console.log(`✅ Metadata saved from page data for ${productId} (instant boost)`);
@@ -105,7 +121,7 @@ export default async function handler(req, res) {
         // Continue even if metadata save fails
       }
     } else {
-      console.log(`⚠️ No tourData provided for ${productId}, metadata will be fetched from cache/API later`);
+      console.log(`⚠️ No ${type}Data provided for ${entityId}, metadata will be fetched from cache/API later`);
     }
 
     // Get or create Stripe customer
@@ -162,11 +178,14 @@ export default async function handler(req, res) {
       ],
       metadata: {
         userId: userId,
-        productId: productId,
+        [type === 'restaurant' ? 'restaurantId' : 'productId']: entityId,
+        type: type, // 'tour' or 'restaurant'
         packageName: packageName,
         points: packageInfo.points.toString(),
-        // Only include destinationId if available (for tour metadata update)
-        destinationId: tourData?._destinationId || tourData?.destinationId || '',
+        // Only include destinationId if available (for metadata update)
+        destinationId: type === 'restaurant' 
+          ? (restaurantData?.destination_id || '')
+          : (tourData?._destinationId || tourData?.destinationId || ''),
         // Include return URL for redirect after payment
         returnUrl: returnUrl || '',
       },
@@ -187,7 +206,8 @@ export default async function handler(req, res) {
       success: true,
       checkoutUrl: session.url,
       sessionId: session.id,
-      productId,
+      [type === 'restaurant' ? 'restaurantId' : 'productId']: entityId,
+      type: type,
       packageName,
       points: packageInfo.points,
       priceCents: packageInfo.priceCents,

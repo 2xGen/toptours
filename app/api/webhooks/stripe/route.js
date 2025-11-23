@@ -13,7 +13,7 @@
 import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
-import { purchaseALaCartePoints } from '@/lib/promotionSystem';
+import { purchaseALaCartePoints, purchaseALaCartePointsForRestaurant } from '@/lib/promotionSystem';
 import { PLAN_TO_TIER, STRIPE_PRICE_IDS } from '@/lib/stripe';
 import { TIER_POINTS } from '@/lib/promotionSystem';
 import { 
@@ -232,12 +232,14 @@ async function handleCheckoutSessionCompleted(session) {
     // One-time payment - handle instant boost purchase
     // IMPORTANT: This only fires when payment is SUCCESSFUL
     // If user cancels, this webhook never fires, so no points are added ✅
+    const type = metadata.type || 'tour'; // Default to 'tour' for backward compatibility
     const productId = metadata.productId;
+    const restaurantId = metadata.restaurantId;
     const packageName = metadata.packageName;
     const paymentIntentId = session.payment_intent;
 
-    if (!productId || !packageName || !paymentIntentId) {
-      console.error('Missing required fields for instant boost purchase:', { productId, packageName, paymentIntentId });
+    if ((!productId && !restaurantId) || !packageName || !paymentIntentId) {
+      console.error('Missing required fields for instant boost purchase:', { productId, restaurantId, packageName, paymentIntentId, type });
       return;
     }
 
@@ -247,56 +249,107 @@ async function handleCheckoutSessionCompleted(session) {
       return;
     }
 
-    // Build minimal tourData with only destinationId if available
-    // The purchaseALaCartePoints function will fetch full tour metadata from cache/API if needed
-    let tourData = null;
-    if (metadata.destinationId) {
-      tourData = {
-        _destinationId: metadata.destinationId,
-      };
-    }
+    if (type === 'restaurant' && restaurantId) {
+      // Handle restaurant purchase
+      console.log(`💰 Processing instant boost purchase: ${packageName} for restaurant ${restaurantId}`);
+      const result = await purchaseALaCartePointsForRestaurant(
+        userId,
+        parseInt(restaurantId),
+        packageName,
+        paymentIntentId,
+        null // restaurantData can be fetched from database if needed
+      );
+      console.log(`✅ Instant boost points added successfully for restaurant ${restaurantId}`);
+      
+      // Send confirmation email
+      if (result.success) {
+        try {
+          const { data: { user } } = await supabase.auth.admin.getUserById(userId);
+          
+          // Get restaurant name from restaurant_promotions table
+          const { data: restaurantPromo } = await supabase
+            .from('restaurant_promotions')
+            .select('restaurant_name, restaurant_slug, destination_id')
+            .eq('restaurant_id', parseInt(restaurantId))
+            .single();
+          
+          if (user?.email) {
+            const packageInfo = {
+              '1000_points': { points: 1000 },
+              '3000_points': { points: 3000 },
+              '5000_points': { points: 5000 },
+            }[packageName] || { points: 0 };
+            
+            const restaurantUrl = restaurantPromo?.restaurant_slug && restaurantPromo?.destination_id
+              ? `https://toptours.ai/destinations/${restaurantPromo.destination_id}/restaurants/${restaurantPromo.restaurant_slug}`
+              : null;
+            
+            const emailResult = await sendInstantBoostConfirmationEmail({
+              to: user.email,
+              tourName: restaurantPromo?.restaurant_name || 'Your selected restaurant',
+              points: packageInfo.points,
+              tourUrl: restaurantUrl,
+            });
+            if (emailResult.success) {
+              console.log(`✅ Instant boost confirmation email sent to ${user.email}`);
+            }
+          }
+        } catch (emailError) {
+          console.error('❌ Exception sending instant boost confirmation email:', emailError);
+        }
+      }
+    } else if (type === 'tour' && productId) {
+      // Handle tour purchase (existing logic)
+      // Build minimal tourData with only destinationId if available
+      // The purchaseALaCartePoints function will fetch full tour metadata from cache/API if needed
+      let tourData = null;
+      if (metadata.destinationId) {
+        tourData = {
+          _destinationId: metadata.destinationId,
+        };
+      }
 
-    console.log(`💰 Processing instant boost purchase: ${packageName} for tour ${productId}`);
-    const result = await purchaseALaCartePoints(
-      userId,
-      productId,
-      packageName,
-      paymentIntentId,
-      tourData
-    );
-    console.log(`✅ Instant boost points added successfully for tour ${productId}`);
-    
-    // Send confirmation email
-    if (result.success) {
-      try {
-        const { data: { user }, error: userError } = await supabase.auth.admin.getUserById(userId);
-        
-        // Get tour name from tour_promotions table
-        const { data: tourPromo } = await supabase
-          .from('tour_promotions')
-          .select('tour_name, tour_slug')
-          .eq('product_id', productId)
-          .single();
-        
-        if (user?.email) {
-          const packageInfo = {
-            '1000_points': { points: 1000 },
-            '3000_points': { points: 3000 },
-            '5000_points': { points: 5000 },
-          }[packageName] || { points: 0 };
+      console.log(`💰 Processing instant boost purchase: ${packageName} for tour ${productId}`);
+      const result = await purchaseALaCartePoints(
+        userId,
+        productId,
+        packageName,
+        paymentIntentId,
+        tourData
+      );
+      console.log(`✅ Instant boost points added successfully for tour ${productId}`);
+      
+      // Send confirmation email
+      if (result.success) {
+        try {
+          const { data: { user }, error: userError } = await supabase.auth.admin.getUserById(userId);
           
-          const tourUrl = tourPromo?.tour_slug 
-            ? `https://toptours.ai/tours/${productId}`
-            : null;
+          // Get tour name from tour_promotions table
+          const { data: tourPromo } = await supabase
+            .from('tour_promotions')
+            .select('tour_name, tour_slug')
+            .eq('product_id', productId)
+            .single();
           
-          const emailResult = await sendInstantBoostConfirmationEmail({
-            to: user.email,
-            tourName: tourPromo?.tour_name || 'Your selected tour',
-            points: packageInfo.points,
-            tourUrl: tourUrl,
-          });
-          if (emailResult.success) {
-            console.log(`✅ Instant boost confirmation email sent to ${user.email}`);
+          if (user?.email) {
+            const packageInfo = {
+              '1000_points': { points: 1000 },
+              '3000_points': { points: 3000 },
+              '5000_points': { points: 5000 },
+            }[packageName] || { points: 0 };
+            
+            const tourUrl = tourPromo?.tour_slug 
+              ? `https://toptours.ai/tours/${productId}`
+              : null;
+            
+            const emailResult = await sendInstantBoostConfirmationEmail({
+              to: user.email,
+              tourName: tourPromo?.tour_name || 'Your selected tour',
+              points: packageInfo.points,
+              tourUrl: tourUrl,
+            });
+            if (emailResult.success) {
+              console.log(`✅ Instant boost confirmation email sent to ${user.email}`);
           } else {
             console.error(`❌ Failed to send instant boost confirmation email to ${user.email}:`, emailResult.error);
           }
@@ -533,25 +586,37 @@ async function handlePaymentIntentSucceeded(paymentIntent) {
   // But we'll process it here if needed
   const metadata = paymentIntent.metadata || {};
   const userId = metadata.userId;
+  const type = metadata.type || 'tour';
   const productId = metadata.productId;
+  const restaurantId = metadata.restaurantId;
   const packageName = metadata.packageName;
 
-  if (userId && productId && packageName) {
-    // Build minimal tourData with only destinationId if available
-    let tourData = null;
-    if (metadata.destinationId) {
-      tourData = {
-        _destinationId: metadata.destinationId,
-      };
-    }
+  if (userId && packageName) {
+    if (type === 'restaurant' && restaurantId) {
+      await purchaseALaCartePointsForRestaurant(
+        userId,
+        parseInt(restaurantId),
+        packageName,
+        paymentIntent.id,
+        null
+      );
+    } else if (type === 'tour' && productId) {
+      // Build minimal tourData with only destinationId if available
+      let tourData = null;
+      if (metadata.destinationId) {
+        tourData = {
+          _destinationId: metadata.destinationId,
+        };
+      }
 
-    await purchaseALaCartePoints(
-      userId,
-      productId,
-      packageName,
-      paymentIntent.id,
-      tourData
-    );
+      await purchaseALaCartePoints(
+        userId,
+        productId,
+        packageName,
+        paymentIntent.id,
+        tourData
+      );
+    }
   }
 }
 

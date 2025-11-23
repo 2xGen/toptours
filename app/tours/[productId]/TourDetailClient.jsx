@@ -35,7 +35,7 @@ import { useBookmarks } from '@/hooks/useBookmarks';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 
-export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null }) {
+export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [destination, setDestination] = useState(null);
@@ -1457,9 +1457,12 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       <p className="text-xs uppercase tracking-[0.4em] text-purple-500">Tour Analysis</p>
                       <h2 className="text-2xl font-bold text-gray-900">Tour Characteristics</h2>
                     </div>
+                    <Badge variant="secondary" className="bg-blue-50 text-blue-700 border-blue-200 text-xs">
+                      Powered by Gemini AI
+                    </Badge>
                   </div>
                   <p className="text-gray-600 text-base mb-6">
-                    This tour has been analyzed to help you understand its key features and match it with your travel preferences.
+                    This tour has been analyzed using Gemini AI to help you understand its key features and match it with your travel preferences.
                   </p>
                   <div className="space-y-3">
                     {[
@@ -1804,7 +1807,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   <div className="flex-1">
                     <p className="uppercase text-xs tracking-[0.3em] text-white/80 mb-2">Ready to Go?</p>
                     <h3 className="text-2xl sm:text-3xl font-bold mb-3">
-                      Book {tour.title || 'this tour'} on Viator
+                      Book {tour.title || 'this tour'}
                     </h3>
                     <p className="text-white/90 text-base leading-relaxed">
                       Secure your spot instantly through Viator and receive flexible cancellation options plus verified customer support.
@@ -2110,7 +2113,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               {(() => {
                 const destinationGuides = destination.country ? getGuidesByCountry(destination.country) : [];
                 // Check if restaurants exist for this destination
-                const hasRestaurants = destination.id && ['aruba', 'curacao', 'punta-cana', 'nassau', 'jamaica'].includes(destination.id);
+                const hasRestaurants = restaurantCount > 0;
                 const hasGuides = destinationGuides && destinationGuides.length > 0;
 
                 return (
@@ -2196,7 +2199,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                                 </div>
                                 <div className="flex-1">
                                   <h3 className="text-lg font-bold text-gray-900 mb-2">
-                                    Top Restaurants in {destination.fullName || destination.name}
+                                    Explore Top Restaurants in {destination.fullName || destination.name}
                                   </h3>
                                   <p className="text-sm text-gray-600 mb-4">
                                     Discover the best dining experiences and hand-picked restaurants.
@@ -2632,7 +2635,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   target="_blank"
                   rel="sponsored noopener noreferrer"
                 >
-                  Book this tour on Viator
+                  Book this tour
                   <ExternalLink className="w-5 h-5 ml-2 inline" />
                 </a>
               </Button>

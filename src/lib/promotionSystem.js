@@ -947,6 +947,130 @@ export async function purchaseALaCartePoints(userId, productId, packageName, str
 }
 
 /**
+ * Purchase a la carte points for a specific restaurant
+ * This is called after Stripe payment is confirmed
+ * Points are applied immediately to the restaurant (not added to user's wallet)
+ */
+export async function purchaseALaCartePointsForRestaurant(userId, restaurantId, packageName, stripePaymentIntentId, restaurantData = null) {
+  if (!userId || !restaurantId || !packageName || !stripePaymentIntentId) {
+    return { error: 'Invalid parameters' };
+  }
+
+  const packageInfo = A_LA_CARTE_PACKAGES[packageName];
+  if (!packageInfo) {
+    return { error: 'Invalid package name' };
+  }
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+
+    // SIMPLIFIED: Just like regular boosts, but with instant boost points
+    // Metadata is already saved during checkout, so we just need to add points
+    
+    // Get or create restaurant promotion record
+    let { data: restaurantPromo, error: restaurantError } = await supabase
+      .from('restaurant_promotions')
+      .select('*')
+      .eq('restaurant_id', restaurantId)
+      .single();
+
+    const isNewRestaurant = restaurantError && restaurantError.code === 'PGRST116';
+
+    if (isNewRestaurant) {
+      // Restaurant doesn't exist - create it with points
+      // Metadata should already be saved during checkout, so it should exist
+      // But if it doesn't, we'll create the record anyway (metadata will be saved separately if needed)
+      const { data: newRestaurantPromo, error: createError } = await supabase
+        .from('restaurant_promotions')
+        .insert({
+          restaurant_id: restaurantId,
+          total_score: packageInfo.points,
+          monthly_score: packageInfo.points,
+          weekly_score: packageInfo.points,
+          past_28_days_score: packageInfo.points,
+          first_promoted_at: new Date().toISOString(),
+          last_promoted_at: new Date().toISOString(),
+        })
+        .select()
+        .single();
+
+      if (createError) {
+        console.error('Error creating restaurant promotion:', createError);
+        return { error: 'Failed to create restaurant promotion' };
+      }
+
+      restaurantPromo = newRestaurantPromo;
+    } else if (restaurantError) {
+      console.error('Error fetching restaurant promotion:', restaurantError);
+      return { error: 'Failed to fetch restaurant promotion' };
+    } else {
+      // Update existing restaurant promotion - add points to all score types (just like regular boost)
+      const { error: updateError } = await supabase
+        .from('restaurant_promotions')
+        .update({
+          total_score: (restaurantPromo.total_score || 0) + packageInfo.points,
+          monthly_score: (restaurantPromo.monthly_score || 0) + packageInfo.points,
+          weekly_score: (restaurantPromo.weekly_score || 0) + packageInfo.points,
+          past_28_days_score: (restaurantPromo.past_28_days_score || 0) + packageInfo.points,
+          last_promoted_at: new Date().toISOString(),
+        })
+        .eq('restaurant_id', restaurantId);
+
+      if (updateError) {
+        console.error('Error updating restaurant promotion:', updateError);
+        return { error: 'Failed to update restaurant promotion' };
+      }
+    }
+
+    // Check if this payment intent was already processed (prevent duplicate processing)
+    // This ensures that if the webhook fires twice, we don't add points twice
+    const { data: existingTransaction } = await supabase
+      .from('promotion_transactions')
+      .select('id')
+      .eq('stripe_payment_intent_id', stripePaymentIntentId)
+      .single();
+
+    if (existingTransaction) {
+      console.warn(`⚠️ Payment intent ${stripePaymentIntentId} was already processed. Skipping duplicate to prevent double-counting.`);
+      return { 
+        error: 'This payment has already been processed',
+        alreadyProcessed: true 
+      };
+    }
+
+    // Create transaction record
+    const { error: transactionError } = await supabase
+      .from('promotion_transactions')
+      .insert({
+        user_id: userId,
+        restaurant_id: restaurantId,
+        points_spent: packageInfo.points,
+        transaction_type: 'a_la_carte',
+        a_la_carte_package: packageName,
+        amount_paid_cents: packageInfo.priceCents,
+        stripe_payment_intent_id: stripePaymentIntentId,
+        score_type: 'all', // A la carte affects all score types
+      });
+
+    if (transactionError) {
+      console.error('Error creating transaction:', transactionError);
+      // Transaction is already applied, so we don't fail here
+    } else {
+      console.log(`✅ Transaction record created for payment intent ${stripePaymentIntentId}`);
+    }
+
+    return { 
+      success: true, 
+      pointsApplied: packageInfo.points,
+      newTotalScore: (restaurantPromo?.total_score || 0) + packageInfo.points,
+    };
+  } catch (error) {
+    console.error('Error in purchaseALaCartePointsForRestaurant:', error);
+    return { error: 'Failed to purchase a la carte points' };
+  }
+}
+
+/**
  * Get recent boosts (transactions)
  */
 export async function getRecentBoosts(limit = 20) {
@@ -1262,6 +1386,430 @@ export async function getHardcodedToursByDestination(destinationId) {
   } catch (error) {
     console.error('Error in getHardcodedToursByDestination:', error);
     return {};
+  }
+}
+
+// ============================================================================
+// RESTAURANT PROMOTION FUNCTIONS
+// ============================================================================
+
+/**
+ * Spend points on a restaurant
+ */
+export async function spendPointsOnRestaurant(userId, restaurantId, pointsToSpend, scoreType = 'all', restaurantData = null) {
+  if (!userId || !restaurantId || pointsToSpend <= 0) {
+    return { error: 'Invalid parameters' };
+  }
+
+  // Enforce minimum boost requirement
+  if (pointsToSpend < MIN_BOOST_POINTS) {
+    return { error: `Minimum boost is ${MIN_BOOST_POINTS} points. This prevents inefficient small transactions.` };
+  }
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+
+    // Get user's promotion account
+    const account = await getPromotionAccount(userId);
+    if (!account) {
+      return { error: 'Promotion account not found' };
+    }
+
+    // Read daily points from profiles table (primary source of truth)
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('daily_points_available')
+      .eq('id', userId)
+      .single();
+
+    const currentPoints = profile?.daily_points_available ?? account.daily_points_available ?? 0;
+
+    // Check if user has enough points
+    if (currentPoints < pointsToSpend) {
+      return { error: 'Insufficient points available' };
+    }
+
+    // Deduct points from both promotion_accounts and profiles tables
+    const newPointsAvailable = currentPoints - pointsToSpend;
+    const { error: deductError } = await supabase
+      .from('promotion_accounts')
+      .update({
+        daily_points_available: newPointsAvailable, // Keep for backward compatibility
+        total_points_spent_all_time: (account.total_points_spent_all_time || 0) + pointsToSpend,
+      })
+      .eq('user_id', userId);
+
+    // Also update profiles table (primary source of truth)
+    await supabase
+      .from('profiles')
+      .update({
+        daily_points_available: newPointsAvailable,
+      })
+      .eq('id', userId);
+
+    if (deductError) {
+      console.error('Error deducting points:', deductError);
+      return { error: 'Failed to deduct points' };
+    }
+
+    // Get or create restaurant promotion record
+    let { data: restaurantPromo, error: restaurantError } = await supabase
+      .from('restaurant_promotions')
+      .select('*')
+      .eq('restaurant_id', restaurantId)
+      .single();
+
+    const isNewRestaurant = restaurantError && restaurantError.code === 'PGRST116';
+    const needsMetadata = isNewRestaurant || !restaurantPromo?.restaurant_name;
+
+    if (isNewRestaurant) {
+      // Restaurant doesn't exist, create it
+      const { data: newRestaurantPromo, error: createError } = await supabase
+        .from('restaurant_promotions')
+        .insert({
+          restaurant_id: restaurantId,
+          total_score: scoreType === 'all' ? pointsToSpend : 0,
+          monthly_score: scoreType === 'monthly' ? pointsToSpend : 0,
+          weekly_score: scoreType === 'weekly' ? pointsToSpend : 0,
+          past_28_days_score: pointsToSpend, // Always update past 28 days
+          first_promoted_at: new Date().toISOString(),
+          last_promoted_at: new Date().toISOString(),
+        })
+        .select()
+        .single();
+
+      if (createError) {
+        console.error('Error creating restaurant promotion:', createError);
+        return { error: 'Failed to create restaurant promotion' };
+      }
+
+      restaurantPromo = newRestaurantPromo;
+    } else if (restaurantError) {
+      console.error('Error fetching restaurant promotion:', restaurantError);
+      return { error: 'Failed to fetch restaurant promotion' };
+    } else {
+      // Update existing restaurant promotion
+      const updateData = {
+        last_promoted_at: new Date().toISOString(),
+        past_28_days_score: (restaurantPromo.past_28_days_score || 0) + pointsToSpend,
+      };
+
+      if (scoreType === 'all') {
+        updateData.total_score = (restaurantPromo.total_score || 0) + pointsToSpend;
+      } else if (scoreType === 'monthly') {
+        updateData.monthly_score = (restaurantPromo.monthly_score || 0) + pointsToSpend;
+      } else if (scoreType === 'weekly') {
+        updateData.weekly_score = (restaurantPromo.weekly_score || 0) + pointsToSpend;
+      }
+
+      const { error: updateError } = await supabase
+        .from('restaurant_promotions')
+        .update(updateData)
+        .eq('restaurant_id', restaurantId);
+
+      if (updateError) {
+        console.error('Error updating restaurant promotion:', updateError);
+        return { error: 'Failed to update restaurant promotion' };
+      }
+    }
+
+    // Save restaurant metadata if needed
+    if (needsMetadata) {
+      try {
+        if (restaurantData) {
+          await updateRestaurantMetadata(restaurantId, restaurantData);
+          console.log(`✅ Metadata saved from page data for restaurant ${restaurantId}`);
+        } else {
+          // Fetch from restaurants table
+          const { data: restaurant, error: fetchError } = await supabase
+            .from('restaurants')
+            .select('*')
+            .eq('id', restaurantId)
+            .single();
+
+          if (!fetchError && restaurant) {
+            await updateRestaurantMetadata(restaurantId, restaurant);
+            console.log(`✅ Metadata saved from database for restaurant ${restaurantId}`);
+          }
+        }
+      } catch (err) {
+        console.error(`Error saving metadata for restaurant ${restaurantId}:`, err);
+        // Continue even if metadata save fails
+      }
+    }
+
+    // Create transaction record
+    const { error: transactionError } = await supabase
+      .from('promotion_transactions')
+      .insert({
+        user_id: userId,
+        restaurant_id: restaurantId,
+        points_spent: pointsToSpend,
+        transaction_type: 'daily_points',
+        score_type: scoreType,
+      });
+
+    if (transactionError) {
+      console.error('Error creating transaction:', transactionError);
+      // Don't fail the whole operation if transaction logging fails
+    }
+
+    // Return remaining points from profiles (primary source of truth)
+    return { success: true, remainingPoints: newPointsAvailable };
+  } catch (error) {
+    console.error('Error in spendPointsOnRestaurant:', error);
+    return { error: 'Failed to spend points' };
+  }
+}
+
+/**
+ * Update restaurant metadata in restaurant_promotions
+ */
+export async function updateRestaurantMetadata(restaurantId, restaurantData) {
+  if (!restaurantId || !restaurantData) return;
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    
+    const restaurantName = restaurantData.name || null;
+    const restaurantImageUrl = restaurantData.hero_image_url || restaurantData.heroImage || null;
+    const restaurantSlug = restaurantData.slug || null;
+    const destinationId = restaurantData.destination_id || null;
+    
+    // Determine region from destination
+    let region = null;
+    if (destinationId) {
+      try {
+        const { destinations } = await import('@/data/destinationsData');
+        const destination = Array.isArray(destinations) 
+          ? destinations.find(d => d.id === destinationId)
+          : null;
+        
+        if (destination && destination.category) {
+          const categoryLower = destination.category.toLowerCase();
+          if (categoryLower === 'caribbean') {
+            region = 'caribbean';
+          } else if (categoryLower === 'europe') {
+            region = 'europe';
+          } else if (categoryLower === 'north america' || categoryLower === 'usa' || categoryLower === 'united states') {
+            region = 'north_america';
+          } else if (categoryLower === 'asia' || categoryLower === 'asia-pacific') {
+            region = 'asia';
+          } else if (categoryLower === 'oceania' || categoryLower === 'australia') {
+            region = 'oceania';
+          } else if (categoryLower === 'south america' || categoryLower === 'latin america') {
+            region = 'south_america';
+          } else if (categoryLower === 'africa') {
+            region = 'africa';
+          } else if (categoryLower === 'middle east') {
+            region = 'middle_east';
+          }
+        }
+      } catch (importError) {
+        console.warn('Could not import destinations data for region detection:', importError);
+      }
+    }
+
+    // Check if restaurant_promotions record exists
+    const { data: existingRestaurant, error: fetchError } = await supabase
+      .from('restaurant_promotions')
+      .select('restaurant_id')
+      .eq('restaurant_id', restaurantId)
+      .single();
+
+    const recordExists = existingRestaurant && !fetchError;
+
+    if (recordExists) {
+      // Update existing record
+      const { error: updateError } = await supabase
+        .from('restaurant_promotions')
+        .update({
+          restaurant_name: restaurantName,
+          restaurant_image_url: restaurantImageUrl,
+          restaurant_slug: restaurantSlug,
+          destination_id: destinationId,
+          region: region,
+        })
+        .eq('restaurant_id', restaurantId);
+
+      if (updateError) {
+        console.error(`Error updating restaurant metadata for ${restaurantId}:`, updateError);
+      } else {
+        console.log(`✅ Successfully updated metadata for restaurant ${restaurantId}: ${restaurantName || 'N/A'}`);
+      }
+    } else {
+      // Create new record with metadata (will be updated with scores later)
+      const { error: insertError } = await supabase
+        .from('restaurant_promotions')
+        .insert({
+          restaurant_id: restaurantId,
+          total_score: 0,
+          monthly_score: 0,
+          weekly_score: 0,
+          past_28_days_score: 0,
+          restaurant_name: restaurantName,
+          restaurant_image_url: restaurantImageUrl,
+          restaurant_slug: restaurantSlug,
+          destination_id: destinationId,
+          region: region,
+          first_promoted_at: new Date().toISOString(),
+          last_promoted_at: new Date().toISOString(),
+        });
+
+      if (insertError) {
+        console.error(`Error creating restaurant metadata record for ${restaurantId}:`, insertError);
+      } else {
+        console.log(`✅ Successfully created metadata record for restaurant ${restaurantId}: ${restaurantName || 'N/A'}`);
+      }
+    }
+
+  } catch (error) {
+    console.error('Error updating restaurant metadata:', error);
+  }
+}
+
+/**
+ * Get restaurant promotion score
+ */
+export async function getRestaurantPromotionScore(restaurantId) {
+  if (!restaurantId) return null;
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    const { data, error } = await supabase
+      .from('restaurant_promotions')
+      .select('*')
+      .eq('restaurant_id', restaurantId)
+      .single();
+
+    if (error && error.code === 'PGRST116') {
+      return null; // Restaurant not promoted yet
+    }
+
+    if (error) {
+      console.error('Error fetching restaurant promotion:', error);
+      return null;
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Error in getRestaurantPromotionScore:', error);
+    return null;
+  }
+}
+
+/**
+ * Fetch all promotion scores for restaurants in a specific destination
+ */
+export async function getRestaurantPromotionScoresByDestination(destinationId) {
+  if (!destinationId) return {};
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    const { data, error } = await supabase
+      .from('restaurant_promotions')
+      .select('*')
+      .eq('destination_id', destinationId)
+      .gt('total_score', 0); // Only restaurants with points
+
+    if (error) {
+      console.error('Error fetching restaurant promotion scores by destination:', error);
+      return {};
+    }
+
+    // Convert array to map for easy lookup
+    const scoresMap = {};
+    if (data) {
+      data.forEach(score => {
+        scoresMap[score.restaurant_id] = score;
+      });
+    }
+
+    return scoresMap;
+  } catch (error) {
+    console.error('Error in getRestaurantPromotionScoresByDestination:', error);
+    return {};
+  }
+}
+
+/**
+ * Get trending restaurants for a destination (past 28 days score)
+ * Returns restaurants sorted by past_28_days_score, with full metadata
+ */
+export async function getTrendingRestaurantsByDestination(destinationId, limit = 6) {
+  if (!destinationId) return [];
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    const { data, error } = await supabase
+      .from('restaurant_promotions')
+      .select('*')
+      .eq('destination_id', destinationId)
+      .gt('past_28_days_score', 0) // Only restaurants with points in last 28 days
+      .order('past_28_days_score', { ascending: false })
+      .limit(limit);
+
+    if (error) {
+      console.error('Error fetching trending restaurants by destination:', error);
+      return [];
+    }
+
+    return data || [];
+  } catch (error) {
+    console.error('Error in getTrendingRestaurantsByDestination:', error);
+    return [];
+  }
+}
+
+/**
+ * Get leaderboard restaurants
+ */
+export async function getLeaderboardRestaurants({
+  scoreType = 'all', // 'all', 'monthly', 'weekly', 'last_month'
+  region = null,
+  limit = 20,
+  offset = 0,
+}) {
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    
+    let query = supabase
+      .from('restaurant_promotions')
+      .select('*')
+      .order(getRestaurantScoreColumn(scoreType), { ascending: false })
+      .range(offset, offset + limit - 1);
+
+    if (region) {
+      query = query.eq('region', region);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      console.error('Error fetching restaurant leaderboard:', error);
+      return [];
+    }
+
+    return data || [];
+  } catch (error) {
+    console.error('Error in getLeaderboardRestaurants:', error);
+    return [];
+  }
+}
+
+/**
+ * Get score column name based on score type (for restaurants)
+ */
+function getRestaurantScoreColumn(scoreType) {
+  switch (scoreType) {
+    case 'monthly':
+      return 'monthly_score';
+    case 'weekly':
+      return 'weekly_score';
+    case 'last_month':
+      return 'past_28_days_score';
+    default:
+      return 'total_score';
   }
 }
 

@@ -98,13 +98,16 @@ export default async function handler(req, res) {
         console.error('Tour extraction error:', extractionResult.error);
         // Provide more specific error message
         let errorMessage = extractionResult.error;
-        if (extractionResult.error === 'Missing OpenAI API key') {
-          errorMessage = 'OpenAI API key is not configured. Please add OPENAI_API_KEY to environment variables.';
-        } else if (extractionResult.error.includes('OpenAI')) {
-          errorMessage = `OpenAI API error: ${extractionResult.error}`;
+        if (extractionResult.error === 'Missing Gemini API key') {
+          errorMessage = 'Gemini API key is not configured. Please add GEMINI_API_KEY to environment variables.';
+        } else if (extractionResult.error.includes('Gemini')) {
+          errorMessage = `Gemini API error: ${extractionResult.error}`;
         }
         return res.status(500).json({ error: errorMessage });
       }
+      
+      // Log which AI provider was used (for verification)
+      console.log('✅ Tour analysis completed using Gemini AI');
       
       console.log('Tour values extracted successfully:', Object.keys(extractionResult.values || {}));
 

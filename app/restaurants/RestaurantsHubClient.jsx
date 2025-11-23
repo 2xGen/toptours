@@ -1,0 +1,319 @@
+'use client';
+
+import { useState, useMemo } from 'react';
+import NavigationNext from '@/components/NavigationNext';
+import FooterNext from '@/components/FooterNext';
+import SmartTourFinder from '@/components/home/SmartTourFinder';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Search, MapPin, ArrowRight, UtensilsCrossed } from 'lucide-react';
+
+export default function RestaurantsHubClient({ destinations, totalRestaurants = 0 }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  // Get unique categories from destinations in specific order
+  const categories = useMemo(() => {
+    const categoryOrder = ['All', 'Europe', 'North America', 'Caribbean', 'Asia-Pacific', 'Africa', 'South America', 'Middle East'];
+    const cats = new Set(['All']);
+    destinations.forEach((dest) => {
+      if (dest.category) {
+        cats.add(dest.category);
+      }
+    });
+    // Sort by predefined order
+    return Array.from(cats).sort((a, b) => {
+      const aIndex = categoryOrder.indexOf(a);
+      const bIndex = categoryOrder.indexOf(b);
+      // If both are in the order, sort by order
+      if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+      // If only one is in the order, prioritize it
+      if (aIndex !== -1) return -1;
+      if (bIndex !== -1) return 1;
+      // If neither is in the order, sort alphabetically
+      return a.localeCompare(b);
+    });
+  }, [destinations]);
+
+  // Filter destinations
+  const filteredDestinations = useMemo(() => {
+    return destinations
+      .filter((dest) => {
+        const matchesSearch =
+          !searchTerm.trim() ||
+          dest.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          dest.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          dest.country?.toLowerCase().includes(searchTerm.toLowerCase());
+
+        const matchesCategory =
+          selectedCategory === 'All' || dest.category === selectedCategory;
+
+        return matchesSearch && matchesCategory;
+      })
+      .sort((a, b) => {
+        // Sort alphabetically by name (A to Z)
+        return a.name.localeCompare(b.name);
+      });
+  }, [destinations, searchTerm, selectedCategory]);
+
+  // Calculate total destinations count for the selected category (before search filter)
+  const totalDestinationsInCategory = useMemo(() => {
+    if (selectedCategory === 'All') {
+      return destinations.length;
+    }
+    return destinations.filter((dest) => dest.category === selectedCategory).length;
+  }, [destinations, selectedCategory]);
+
+  // Calculate total restaurants for the selected category
+  const totalRestaurantsInCategory = useMemo(() => {
+    if (selectedCategory === 'All') {
+      return totalRestaurants;
+    }
+    return destinations
+      .filter((dest) => dest.category === selectedCategory)
+      .reduce((sum, dest) => sum + (dest.restaurantCount || 0), 0);
+  }, [destinations, selectedCategory, totalRestaurants]);
+
+  const handleSearchChange = (value) => {
+    setSearchTerm(value);
+    if (value.trim() && selectedCategory !== 'All') {
+      setSelectedCategory('All');
+    }
+  };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
+
+  return (
+    <>
+      <NavigationNext onOpenModal={handleOpenModal} />
+
+      <div className="min-h-screen flex flex-col bg-gray-50" suppressHydrationWarning>
+        <main className="flex-grow">
+          <section className="pt-24 pb-16 ocean-gradient">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-center"
+              >
+                <h1 className="text-4xl md:text-6xl font-poppins font-bold text-white mb-6">
+                  Best Restaurants by Destination
+                </h1>
+                <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
+                  Discover incredible dining experiences in the world's most captivating destinations. Browse restaurants by location and find the perfect meal for your trip.
+                </p>
+
+                <div className="max-w-2xl mx-auto">
+                  <div className="glass-effect rounded-2xl p-4">
+                    <div className="flex gap-4">
+                      <div className="flex-1 relative">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                        <Input
+                          placeholder="Search destinations..."
+                          value={searchTerm}
+                          onChange={(e) => handleSearchChange(e.target.value)}
+                          className="pl-10 h-12 bg-white/90 border-0 text-gray-800 placeholder:text-gray-500"
+                        />
+                      </div>
+                      <Button className="h-12 px-6 sunset-gradient text-white font-semibold">
+                        Search
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+
+          <section className="bg-white border-b">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+              <nav className="flex items-center space-x-2 text-xs sm:text-sm text-gray-500">
+                <Link href="/" className="hover:text-gray-700">
+                  Home
+                </Link>
+                <span className="text-gray-400">/</span>
+                <span className="text-gray-900 font-medium">Restaurants</span>
+              </nav>
+            </div>
+          </section>
+
+          <section className="py-8 bg-white border-b">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-wrap justify-center gap-4">
+                {categories.map((category) => (
+                  <Button
+                    key={category}
+                    variant={selectedCategory === category ? 'default' : 'outline'}
+                    onClick={() => handleCategoryChange(category)}
+                    className={
+                      selectedCategory === category
+                        ? 'sunset-gradient text-white'
+                        : ''
+                    }
+                  >
+                    {category}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="py-20 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {filteredDestinations.length > 0 ? (
+                <>
+                  <div className="mb-8">
+                    <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                      {searchTerm.trim()
+                        ? `Destinations with Restaurants`
+                        : 'Restaurant Destinations'}
+                    </h2>
+                    <p className="text-lg text-gray-600">
+                      {searchTerm.trim() ? (
+                        <>
+                          Showing {filteredDestinations.length}{' '}
+                          {filteredDestinations.length === 1
+                            ? 'destination'
+                            : 'destinations'}{' '}
+                          matching "{searchTerm}"
+                          {selectedCategory !== 'All' && (
+                            <span> in {selectedCategory}</span>
+                          )}
+                          {' • '}
+                          <span className="font-semibold text-gray-900">
+                            {filteredDestinations.reduce((sum, dest) => sum + (dest.restaurantCount || 0), 0).toLocaleString()} restaurants
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          Showing {filteredDestinations.length}{' '}
+                          {filteredDestinations.length === 1
+                            ? 'destination'
+                            : 'destinations'}
+                          {selectedCategory !== 'All' && (
+                            <span> in {selectedCategory}</span>
+                          )}
+                          {' • '}
+                          <span className="font-semibold text-gray-900">
+                            {totalRestaurantsInCategory.toLocaleString()} restaurants
+                          </span>
+                        </>
+                      )}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {filteredDestinations.map((destination, index) => (
+                      <motion.div
+                        key={`${destination.id}-${index}-${destination.restaurantCount || 0}`}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.05 }}
+                        viewport={{ once: true }}
+                        whileHover={{ y: -5 }}
+                        className="cursor-pointer"
+                      >
+                        <Card className="bg-white border-0 shadow-xl overflow-hidden h-full flex flex-col hover:shadow-2xl transition-all duration-300">
+                          <CardContent className="p-5 flex flex-col flex-grow">
+                            <div className="flex items-center gap-3 mb-3">
+                              <MapPin className="h-5 w-5 text-purple-600 flex-shrink-0" />
+                              <div className="flex-1">
+                                <div className="flex items-center gap-2 flex-wrap">
+                                  <h3 className="font-semibold text-gray-900 text-base">
+                                    {destination.name}
+                                  </h3>
+                                  {destination.category && (
+                                    <Badge className="adventure-gradient text-white text-xs">
+                                      {destination.category}
+                                    </Badge>
+                                  )}
+                                </div>
+                                {destination.country && (
+                                  <div className="flex items-center text-gray-600 mt-1">
+                                    <span className="text-xs">{destination.country}</span>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                            
+                            <p className="text-gray-700 mb-3 flex-grow text-sm leading-relaxed">
+                              {destination.briefDescription ||
+                                `Discover top-rated restaurants in ${destination.fullName}.`}
+                            </p>
+                            
+                            <div className="mb-3">
+                              <span className="text-sm font-medium text-gray-600">
+                                {destination.restaurantCount} Restaurant{destination.restaurantCount !== 1 ? 's' : ''}
+                              </span>
+                            </div>
+
+                            <div className="mt-auto pt-3 space-y-2">
+                              <Button
+                                asChild
+                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold"
+                              >
+                                <Link
+                                  href={`/destinations/${destination.id}/restaurants`}
+                                >
+                                  View Restaurants
+                                  <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
+                              </Button>
+                              <Button
+                                asChild
+                                variant="secondary"
+                                className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold"
+                              >
+                                <Link href={`/destinations/${destination.id}`}>
+                                  Explore {destination.name}
+                                  <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className="text-center py-20">
+                  <p className="text-xl text-gray-600 mb-4">
+                    No destinations found
+                    {searchTerm.trim() && ` matching "${searchTerm}"`}
+                    {selectedCategory !== 'All' && ` in ${selectedCategory}`}
+                  </p>
+                  <Button
+                    onClick={() => {
+                      setSearchTerm('');
+                      setSelectedCategory('All');
+                    }}
+                    variant="outline"
+                  >
+                    Clear Filters
+                  </Button>
+                </div>
+              )}
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <FooterNext />
+
+      <SmartTourFinder isOpen={isModalOpen} onClose={handleCloseModal} />
+    </>
+  );
+}
+

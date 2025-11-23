@@ -15,7 +15,7 @@ import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { getRelatedDestinations, getDestinationsByIds, getDestinationsByCountry } from '../../../src/data/destinationsData.js';
 import { getGuidesByCategory, getGuidesByIds, getGuidesByCountry } from '../../../src/data/travelGuidesData.js';
-import { getRestaurantsForDestination } from './restaurants/restaurantsData';
+// Restaurants are now passed as props from the server component
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import { TrendingUp } from 'lucide-react';
@@ -42,7 +42,7 @@ function getDisplayCategoryName(categoryName) {
   return categoryMap[categoryName] || categoryName;
 }
 
-export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], hardcodedTours = {} }) {
+export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], hardcodedTours = {}, restaurants = [] }) {
   
   // Ensure destination has required arrays
   const safeDestination = {
@@ -85,8 +85,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const [showStickyButton, setShowStickyButton] = useState(true);
   const [showParentCountryModal, setShowParentCountryModal] = useState(false);
   const { toast } = useToast();
-  const restaurants = getRestaurantsForDestination(safeDestination.id);
-  const hasRestaurants = restaurants.length > 0;
+  // Restaurants are now passed as props (already formatted from database)
+  // Ensure restaurants is always an array
+  const safeRestaurants = Array.isArray(restaurants) ? restaurants : [];
+  const hasRestaurants = safeRestaurants.length > 0;
   const normalizedRelatedGuides = Array.isArray(relatedGuides) ? relatedGuides : [];
 
   const handleOpenModal = () => {
@@ -1110,6 +1112,121 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </div>
         </section>
 
+        {/* Top Restaurants */}
+        {hasRestaurants && (
+          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="mb-8 sm:mb-12"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+                  <div className="text-center sm:text-left">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-3">
+                      Top Restaurants in {safeDestination.fullName}
+                    </h2>
+                    <p className="text-base sm:text-lg text-gray-600 max-w-3xl sm:max-w-xl mx-auto sm:mx-0">
+                      Reserve a table at our hand-picked local favorites and plan dinner around your tours in {safeDestination.fullName}.
+                    </p>
+                  </div>
+                  <Link href={`/destinations/${safeDestination.id}/restaurants`} className="self-center sm:self-end">
+                    <Button variant="outline" className="gap-2">
+                      View All Restaurants in {safeDestination.fullName}
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+                {safeRestaurants.map((restaurant) => {
+                  if (!restaurant || !restaurant.id || !restaurant.slug) return null;
+                  
+                  const addressParts = restaurant.contact?.address
+                    ? restaurant.contact.address.split(',').map(part => part.trim())
+                    : [];
+                  const neighborhood = addressParts.length >= 2
+                    ? addressParts[addressParts.length - 2]
+                    : null;
+
+                  const restaurantUrl = `/destinations/${safeDestination.id}/restaurants/${restaurant.slug}`;
+
+                  return (
+                    <motion.article
+                      key={restaurant.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6 }}
+                      viewport={{ once: true }}
+                      className="h-full overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                    >
+                      <div className="relative h-52">
+                        <Link href={restaurantUrl} aria-label={`View ${restaurant.name} restaurant details`} className="block h-full">
+                          <img
+                            src={restaurant.heroImage || safeDestination.imageUrl || '/placeholder-restaurant.jpg'}
+                            alt={restaurant.imageAlt || restaurant.name || 'Restaurant'}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              e.target.src = safeDestination.imageUrl || '/placeholder-restaurant.jpg';
+                            }}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
+                          <div className="absolute top-4 left-4 flex gap-2">
+                            {restaurant.ratings?.googleRating && !isNaN(restaurant.ratings.googleRating) && (
+                              <Badge className="bg-white/95 text-gray-900 flex items-center gap-1">
+                                <Star className="w-3.5 h-3.5 text-yellow-500" />
+                                {parseFloat(restaurant.ratings.googleRating).toFixed(1)}
+                              </Badge>
+                            )}
+                            {restaurant.pricing?.priceRange && (
+                              <Badge className="bg-white/85 text-gray-900">
+                                {String(restaurant.pricing.priceRange)}
+                              </Badge>
+                            )}
+                          </div>
+                        </Link>
+                      </div>
+
+                      <div className="p-6 space-y-4">
+                        <div className="flex items-start gap-3">
+                          <div className="bg-blue-50 text-blue-600 rounded-lg p-2 shadow-inner">
+                            <UtensilsCrossed className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-semibold text-gray-900 leading-tight">
+                              {restaurant.name || 'Restaurant'}
+                            </h3>
+                            {restaurant.cuisines && Array.isArray(restaurant.cuisines) && restaurant.cuisines.length > 0 && (
+                              <p className="text-xs uppercase tracking-wide text-blue-600 font-semibold">
+                                {restaurant.cuisines.filter(c => c).join(' · ')}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
+                        </p>
+
+                        <Link
+                          href={restaurantUrl}
+                          className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-orange-600"
+                        >
+                          View Restaurant
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      </div>
+                    </motion.article>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Other Destinations in Same Country */}
         {countryDestinations.length > 0 && safeDestination.country && (
           <section className="py-12 bg-white border-t">
@@ -1460,108 +1577,71 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </div>
         </section>
 
-        {hasRestaurants && (
-          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
+        {/* Trending Restaurants Section */}
+        {trendingRestaurants && trendingRestaurants.length > 0 && (
+          <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="mb-8 sm:mb-12"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-                  <div className="text-center sm:text-left">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-3">
-                      Top Restaurants in {safeDestination.fullName}
-                    </h2>
-                    <p className="text-base sm:text-lg text-gray-600 max-w-3xl sm:max-w-xl mx-auto sm:mx-0">
-                      Reserve a table at our hand-picked local favorites and plan dinner around your tours in {safeDestination.fullName}.
-                    </p>
-                  </div>
-                  <Link href={`/destinations/${safeDestination.id}/restaurants`} className="self-center sm:self-end">
-                    <Button variant="outline" className="gap-2">
-                      View All Restaurants
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </Link>
-                </div>
-              </motion.div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
-                {restaurants.map((restaurant) => {
-                  const addressParts = restaurant.contact?.address
-                    ? restaurant.contact.address.split(',').map(part => part.trim())
-                    : [];
-                  const neighborhood = addressParts.length >= 2
-                    ? addressParts[addressParts.length - 2]
-                    : null;
-
-                  const restaurantUrl = `/destinations/${safeDestination.id}/restaurants/${restaurant.slug}`;
-
+              <div className="flex items-center gap-2 mb-6">
+                <TrendingUp className="w-5 h-5 text-orange-600" />
+                <h2 className="text-2xl font-bold text-gray-900">Trending Restaurants in {safeDestination.fullName}</h2>
+                <Badge variant="secondary" className="ml-2 bg-orange-100 text-orange-700 border-orange-300">
+                  Past 28 Days
+                </Badge>
+              </div>
+              <p className="text-sm text-gray-600 mb-6">
+                Restaurants that are currently popular based on recent community boosts
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {trendingRestaurants.map((trending, index) => {
+                  const restaurantId = trending.restaurant_id;
+                  const restaurantUrl = trending.restaurant_slug && trending.destination_id
+                    ? `/destinations/${trending.destination_id}/restaurants/${trending.restaurant_slug}`
+                    : `/destinations/${safeDestination.id}/restaurants`;
+                  
                   return (
-                    <motion.article
-                      key={restaurant.id}
-                      initial={{ opacity: 0, y: 30 }}
+                    <motion.div
+                      key={restaurantId || index}
+                      initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
                       viewport={{ once: true }}
-                      className="h-full overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
                     >
-                      <div className="relative h-52">
-                        <Link href={restaurantUrl} aria-label={`View ${restaurant.name} restaurant details`} className="block h-full">
-                          <img
-                            src={restaurant.heroImage || safeDestination.imageUrl}
-                            alt={restaurant.imageAlt || restaurant.name}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
-                          <div className="absolute top-4 left-4 flex gap-2">
-                            {restaurant.ratings?.googleRating && (
-                              <Badge className="bg-white/95 text-gray-900 flex items-center gap-1">
-                                <Star className="w-3.5 h-3.5 text-yellow-500" />
-                                {restaurant.ratings.googleRating.toFixed(1)}
-                              </Badge>
+                      <Card className="h-full overflow-hidden hover:shadow-lg transition-all">
+                        <Link href={restaurantUrl} className="block">
+                          <div className="relative h-48">
+                            {trending.restaurant_image_url ? (
+                              <img
+                                src={trending.restaurant_image_url}
+                                alt={trending.restaurant_name || 'Restaurant'}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  e.target.src = safeDestination.imageUrl || '/placeholder-restaurant.jpg';
+                                }}
+                              />
+                            ) : (
+                              <div className="w-full h-full bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
+                                <UtensilsCrossed className="w-12 h-12 text-orange-300" />
+                              </div>
                             )}
-                            {restaurant.pricing?.priceRange && (
-                              <Badge className="bg-white/85 text-gray-900">
-                                {restaurant.pricing.priceRange}
+                            <div className="absolute top-2 right-2">
+                              <Badge className="bg-orange-600 text-white">
+                                {trending.past_28_days_score?.toLocaleString() || 0} pts
                               </Badge>
-                            )}
+                            </div>
                           </div>
-                        </Link>
-                      </div>
-
-                      <div className="p-6 space-y-4">
-                        <div className="flex items-start gap-3">
-                          <div className="bg-blue-50 text-blue-600 rounded-lg p-2 shadow-inner">
-                            <UtensilsCrossed className="w-5 h-5" />
-                          </div>
-                          <div>
-                            <h3 className="text-xl font-semibold text-gray-900 leading-tight">
-                              {restaurant.name}
+                          <CardContent className="p-4">
+                            <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2">
+                              {trending.restaurant_name || `Restaurant #${restaurantId}`}
                             </h3>
-                            {restaurant.cuisines && (
-                              <p className="text-xs uppercase tracking-wide text-blue-600 font-semibold">
-                                {restaurant.cuisines.join(' · ')}
-                              </p>
+                            {trending.region && (
+                              <Badge variant="outline" className="text-xs mb-2">
+                                {trending.region.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                              </Badge>
                             )}
-                          </div>
-                        </div>
-
-                        <p className="text-sm text-gray-600 leading-relaxed">
-                          {restaurant.tagline || restaurant.summary}
-                        </p>
-
-                        <Link
-                          href={restaurantUrl}
-                          className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-orange-600"
-                        >
-                          View Restaurant
-                          <ArrowRight className="w-4 h-4" />
+                          </CardContent>
                         </Link>
-                      </div>
-                    </motion.article>
+                      </Card>
+                    </motion.div>
                   );
                 })}
               </div>

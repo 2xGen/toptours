@@ -55,7 +55,7 @@ export default function HowItWorksClient() {
               </Link>
               <Link href="/destinations">
                 <Button variant="outline" className="border-2 border-white bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 font-bold px-8 py-6 text-lg">
-                  Explore Tours
+                  Explore Destinations
                 </Button>
               </Link>
             </div>
@@ -377,7 +377,7 @@ export default function HowItWorksClient() {
                         <li className="flex items-start gap-2">
                           <span className="text-blue-600 font-bold mt-0.5">✓</span>
                           <span className="text-gray-700">
-                            Badge on <strong className="text-gray-900">/toptours</strong>
+                            Badge on <strong className="text-gray-900">/leaderboard</strong>
                           </span>
                         </li>
                         {planKey !== 'free' && (
@@ -700,7 +700,7 @@ export default function HowItWorksClient() {
             </div>
 
             <div className="text-center">
-              <Link href="/toptours">
+              <Link href="/leaderboard">
                 <Button className="sunset-gradient text-white font-bold px-8 py-6 text-lg shadow-xl hover:shadow-2xl transition-all">
                   View the Leaderboard
                   <Trophy className="w-5 h-5 ml-2" />
@@ -765,7 +765,7 @@ export default function HowItWorksClient() {
               </Link>
               <Link href="/destinations">
                 <Button variant="outline" className="border-2 border-white bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 font-bold px-8 py-6 text-lg">
-                  Explore Tours
+                  Explore Destinations
                 </Button>
               </Link>
             </div>

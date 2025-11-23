@@ -16,9 +16,13 @@ import {
   Hotel,
   ExternalLink,
   X,
+  TrendingUp,
 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { getTourUrl } from '@/utils/tourHelpers';
+import { motion } from 'framer-motion';
 
-export default function RestaurantsListClient({ destination, restaurants }) {
+export default function RestaurantsListClient({ destination, restaurants, trendingTours = [] }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [showStickyButton, setShowStickyButton] = React.useState(true);
 
@@ -85,8 +89,7 @@ export default function RestaurantsListClient({ destination, restaurants }) {
       <div className="min-h-screen pt-16 overflow-x-hidden bg-gradient-to-b from-blue-50 via-white to-white">
         {/* Hero */}
         <section
-          className="relative py-20 sm:py-24 md:py-28 overflow-hidden -mt-12 sm:-mt-16"
-          style={{ background: 'linear-gradient(135deg, #764ba2 0%, #667eea 100%)' }}
+          className="relative py-20 sm:py-24 md:py-28 overflow-hidden -mt-12 sm:-mt-16 ocean-gradient"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center text-white">
@@ -114,7 +117,7 @@ export default function RestaurantsListClient({ destination, restaurants }) {
                   </Button>
                   <Button asChild className="sunset-gradient text-white gap-2">
                     <Link href={`/destinations/${destination.id}/tours`}>
-                      View Top Tours
+                      View Top Tours and Activities in {destination.fullName}
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                   </Button>
@@ -150,6 +153,78 @@ export default function RestaurantsListClient({ destination, restaurants }) {
             </nav>
           </div>
         </section>
+
+        {/* Trending Tours Section */}
+        {trendingTours && trendingTours.length > 0 && (
+          <section className="py-12 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center gap-2 mb-6">
+                <TrendingUp className="w-5 h-5 text-orange-600" />
+                <h2 className="text-2xl font-bold text-gray-900">Trending Tours in {destination.fullName}</h2>
+                <Badge variant="secondary" className="ml-2 bg-orange-100 text-orange-700 border-orange-300">
+                  Past 28 Days
+                </Badge>
+              </div>
+              <p className="text-sm text-gray-600 mb-6">
+                Tours that are currently popular based on recent community boosts
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {trendingTours.map((trending, index) => {
+                  const tourId = trending.product_id;
+                  const tourUrl = trending.tour_slug 
+                    ? `/tours/${tourId}/${trending.tour_slug}` 
+                    : getTourUrl(tourId, trending.tour_name);
+                  
+                  return (
+                    <motion.div
+                      key={tourId || index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <Card className="h-full overflow-hidden hover:shadow-lg transition-all">
+                        <Link href={tourUrl} className="block">
+                          <div className="relative h-48">
+                            {trending.tour_image_url ? (
+                              <img
+                                src={trending.tour_image_url}
+                                alt={trending.tour_name || 'Tour'}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  e.target.src = destination.imageUrl || '/placeholder-tour.jpg';
+                                }}
+                              />
+                            ) : (
+                              <div className="w-full h-full bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
+                                <MapPin className="w-12 h-12 text-orange-300" />
+                              </div>
+                            )}
+                            <div className="absolute top-2 right-2">
+                              <Badge className="bg-orange-600 text-white">
+                                {trending.past_28_days_score?.toLocaleString() || 0} pts
+                              </Badge>
+                            </div>
+                          </div>
+                          <CardContent className="p-4">
+                            <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2">
+                              {trending.tour_name || `Tour #${tourId}`}
+                            </h3>
+                            {trending.region && (
+                              <Badge variant="outline" className="text-xs mb-2">
+                                {trending.region.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                              </Badge>
+                            )}
+                          </CardContent>
+                        </Link>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Restaurant sections */}
         <section className="py-8 sm:py-12">
@@ -192,7 +267,7 @@ export default function RestaurantsListClient({ destination, restaurants }) {
                         {restaurant.name}
                       </h2>
                       <p className="text-sm text-gray-600 leading-relaxed">
-                        {restaurant.tagline || restaurant.summary}
+                        {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
                       </p>
 
                       <div className="flex flex-wrap gap-4 text-sm text-gray-600">

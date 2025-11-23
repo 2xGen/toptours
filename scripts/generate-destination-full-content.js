@@ -1,18 +1,24 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import dotenv from 'dotenv';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Read API key from config
-const apiKeysContent = fs.readFileSync(path.join(__dirname, '../config/api-keys.js'), 'utf8');
-const base64Match = apiKeysContent.match(/OPENAI_API_KEY_BASE64:\s*['"]([^'"]+)['"]/);
-if (!base64Match) {
-  throw new Error('Could not find OPENAI_API_KEY_BASE64 in config/api-keys.js');
+// Load environment variables
+dotenv.config({ path: path.join(__dirname, '../.env.local') });
+
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+
+if (!GEMINI_API_KEY) {
+  console.error('❌ Missing GEMINI_API_KEY in .env.local');
+  console.error('   Get your API key from: https://aistudio.google.com/app/apikey');
+  process.exit(1);
 }
-const OPENAI_API_KEY_BASE64 = base64Match[1];
-const OPENAI_API_KEY = Buffer.from(OPENAI_API_KEY_BASE64, 'base64').toString('utf8');
+
+console.log(`🔑 Using Gemini API key (first 10 chars): ${GEMINI_API_KEY.substring(0, 10)}...`);
 
 // Load data
 const viatorDestinationsPath = path.join(__dirname, '../src/data/viatorDestinationsClassified.json');
@@ -85,30 +91,54 @@ async function generateCountryClimateData(country, destinations) {
 Return ONLY valid JSON, no markdown.`;
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${OPENAI_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
-        messages: [
-          { role: 'system', content: 'You are a travel content expert. Always return valid JSON only.' },
-          { role: 'user', content: prompt }
-        ],
-        temperature: 0.7,
-        max_tokens: 200, // Reduced from 300 - climate data is shorter
-      }),
-    });
-
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(data.error?.message || 'OpenAI API error');
+    const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+    
+    // Try different models in order of preference
+    const models = [
+      'gemini-2.5-flash-lite', // Cheapest, fastest - try first
+      'gemini-2.5-flash',
+      'gemini-1.5-flash',
+      'gemini-1.5-pro',
+    ];
+    
+    let content = null;
+    let lastError = null;
+    
+    let usedModel = null;
+    for (const modelName of models) {
+      try {
+        const model = genAI.getGenerativeModel({ 
+          model: modelName,
+          generationConfig: {
+            temperature: 0.7,
+            responseMimeType: 'application/json',
+            maxOutputTokens: 200,
+          }
+        });
+        
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        content = response.text();
+        
+        if (content) {
+          usedModel = modelName;
+          break; // Success, exit loop
+        }
+      } catch (error) {
+        lastError = error;
+        continue; // Try next model
+      }
+    }
+    
+    if (usedModel) {
+      console.log(`   ✓ Using Gemini model: ${usedModel}`);
+    }
+    
+    if (!content) {
+      throw new Error(lastError?.message || 'All Gemini models failed');
     }
 
-    const content = data.choices[0].message.content.trim();
-    // Try to parse JSON directly
+    // Parse JSON response
     let jsonData;
     try {
       jsonData = JSON.parse(content);
@@ -171,33 +201,59 @@ Guidelines: Real person tone, specific place names, natural SEO integration, avo
 Return ONLY valid JSON, no markdown.`;
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${OPENAI_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
-        messages: [
-          { role: 'system', content: 'Travel writer. Authentic, natural content. Valid JSON only.' },
-          { role: 'user', content: prompt }
-        ],
-        temperature: 0.8,
-        max_tokens: 900, // Reduced from 1200 - still enough for quality content
-      }),
-    });
-
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(data.error?.message || 'OpenAI API error');
+    const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+    
+    // Try different models in order of preference
+    const models = [
+      'gemini-2.5-flash-lite', // Cheapest, fastest - try first
+      'gemini-2.5-flash',
+      'gemini-1.5-flash',
+      'gemini-1.5-pro',
+    ];
+    
+    let content = null;
+    let lastError = null;
+    let usedModel = null;
+    
+    for (const modelName of models) {
+      try {
+        const model = genAI.getGenerativeModel({ 
+          model: modelName,
+          generationConfig: {
+            temperature: 0.8,
+            responseMimeType: 'application/json',
+            maxOutputTokens: 900,
+          }
+        });
+        
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        content = response.text();
+        
+        if (content) {
+          usedModel = modelName;
+          break; // Success, exit loop
+        }
+      } catch (error) {
+        lastError = error;
+        continue; // Try next model
+      }
+    }
+    
+    if (usedModel) {
+      console.log(`   ✓ Using Gemini model: ${usedModel}`);
+    }
+    
+    if (!content) {
+      throw new Error(lastError?.message || 'All Gemini models failed');
     }
 
-    const content = data.choices[0].message.content.trim();
+    // Parse JSON response
     let jsonData;
     try {
       jsonData = JSON.parse(content);
     } catch (e) {
+      // If parsing fails, try to extract JSON from markdown
       const jsonMatch = content.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
         jsonData = JSON.parse(jsonMatch[0]);
@@ -290,10 +346,12 @@ async function main() {
   const total = destinationsNeedingGeneration.length;
   const alreadyGenerated = destinationsToProcess.length - total;
 
-  console.log(`\n🚀 Starting content generation...`);
+  console.log(`\n🚀 Starting content generation with Gemini 2.5 Flash Lite...`);
   console.log(`   Total destinations to process: ${destinationsToProcess.length}`);
   console.log(`   Already generated: ${alreadyGenerated}`);
-  console.log(`   Remaining to generate: ${total}\n`);
+  console.log(`   Remaining to generate: ${total}`);
+  console.log(`   Estimated cost: ~$${(total * 0.0003).toFixed(2)} (vs $${(total * 0.0016).toFixed(2)} with OpenAI)`);
+  console.log(`   Estimated time: ~${Math.ceil(total / 300)} minutes (vs ~${Math.ceil(total / 50)} minutes with OpenAI)\n`);
 
   for (const destination of destinationsNeedingGeneration) {
     const destName = destination.destinationName || destination.name || '';
@@ -314,8 +372,8 @@ async function main() {
           country,
           destinationsByCountry[country] || []
         );
-        // Small delay to avoid rate limits
-        await new Promise(resolve => setTimeout(resolve, 500));
+        // Small delay to avoid rate limits (reduced for Gemini)
+        await new Promise(resolve => setTimeout(resolve, 200));
       }
 
       // Generate destination content
@@ -347,8 +405,8 @@ async function main() {
         console.error(`   ❌ Failed to generate content for ${destName}`);
       }
 
-      // Rate limiting: 50 requests per minute
-      await new Promise(resolve => setTimeout(resolve, 1200));
+      // Rate limiting: Reduced delay for Gemini (higher rate limits)
+      await new Promise(resolve => setTimeout(resolve, 200));
     } catch (error) {
       errors++;
       console.error(`   ❌ Error processing ${destName}:`, error.message);
