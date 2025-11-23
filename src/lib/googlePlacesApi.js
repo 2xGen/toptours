@@ -3,12 +3,15 @@
  * Fetches restaurant data from Google Places API
  */
 
-const GOOGLE_PLACES_API_KEY = process.env.GOOGLE_PLACES_API_KEY;
-
-if (!GOOGLE_PLACES_API_KEY) {
-  throw new Error('GOOGLE_PLACES_API_KEY environment variable is required');
-}
 const GOOGLE_PLACES_API_BASE = 'https://places.googleapis.com/v1';
+
+function getApiKey() {
+  const key = process.env.GOOGLE_PLACES_API_KEY;
+  if (!key) {
+    throw new Error('GOOGLE_PLACES_API_KEY environment variable is required');
+  }
+  return key;
+}
 
 /**
  * Search for restaurants near a location using Text Search
@@ -43,7 +46,7 @@ export async function searchRestaurants(query, location = null) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Goog-Api-Key': GOOGLE_PLACES_API_KEY,
+        'X-Goog-Api-Key': getApiKey(),
         'X-Goog-FieldMask': 'places.id,places.displayName,places.formattedAddress,places.rating,places.userRatingCount,places.photos,places.types,places.priceLevel,places.nationalPhoneNumber,places.websiteUri,places.location',
       },
     });
@@ -73,7 +76,7 @@ export async function getPlaceDetails(placeId) {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        'X-Goog-Api-Key': GOOGLE_PLACES_API_KEY,
+        'X-Goog-Api-Key': getApiKey(),
         'X-Goog-FieldMask': 'id,displayName,formattedAddress,nationalPhoneNumber,internationalPhoneNumber,websiteUri,rating,userRatingCount,priceLevel,editorialSummary,photos,types,location,currentOpeningHours,regularOpeningHours,reviews,outdoorSeating,liveMusic,menuForChildren,servesCocktails,servesDessert,servesCoffee,goodForChildren,allowsDogs,restroom,goodForGroups,reservable,dineIn,takeout,delivery,paymentOptions,parkingOptions,accessibilityOptions,addressComponents,plusCode,viewport,businessStatus,primaryTypeDisplayName,servesBeer,servesWine,servesBrunch,servesDinner,utcOffsetMinutes,adrFormatAddress,googleMapsUri',
       },
     });
@@ -104,7 +107,7 @@ export function getPhotoUrl(photoName, maxWidth = 1200) {
   // Photo name format: places/ChIJ.../photos/...
   const photoReference = photoName.split('/').pop();
   
-  return `https://places.googleapis.com/v1/${photoName}/media?maxWidthPx=${maxWidth}&key=${GOOGLE_PLACES_API_KEY}`;
+  return `https://places.googleapis.com/v1/${photoName}/media?maxWidthPx=${maxWidth}&key=${getApiKey()}`;
 }
 
 /**
