@@ -350,17 +350,17 @@ async function handleCheckoutSessionCompleted(session) {
             });
             if (emailResult.success) {
               console.log(`✅ Instant boost confirmation email sent to ${user.email}`);
+            } else {
+              console.error(`❌ Failed to send instant boost confirmation email to ${user.email}:`, emailResult.error);
+            }
           } else {
-            console.error(`❌ Failed to send instant boost confirmation email to ${user.email}:`, emailResult.error);
+            console.warn(`⚠️ No email found for user ${userId}, skipping instant boost confirmation email`);
           }
-        } else {
-          console.warn(`⚠️ No email found for user ${userId}, skipping instant boost confirmation email`);
+        } catch (emailError) {
+          console.error('❌ Exception sending instant boost confirmation email:', emailError);
+          // Don't fail the webhook if email fails
         }
-      } catch (emailError) {
-        console.error('❌ Exception sending instant boost confirmation email:', emailError);
-        // Don't fail the webhook if email fails
       }
-    }
   }
 }
 

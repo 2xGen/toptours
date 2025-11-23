@@ -18,7 +18,13 @@ const __dirname = dirname(__filename);
 // Load environment variables
 dotenv.config({ path: join(__dirname, '..', '.env.local') });
 
-const GOOGLE_PLACES_API_KEY = process.env.GOOGLE_PLACES_API_KEY || 'AIzaSyA9oGVujy1ntmAcRjXO7FngHxvOOK9lFKM';
+const GOOGLE_PLACES_API_KEY = process.env.GOOGLE_PLACES_API_KEY;
+
+if (!GOOGLE_PLACES_API_KEY) {
+  console.error('❌ Missing GOOGLE_PLACES_API_KEY environment variable');
+  console.error('Please set GOOGLE_PLACES_API_KEY in your .env.local file');
+  process.exit(1);
+}
 
 // Google Places API functions
 async function searchRestaurant(query, location = null) {

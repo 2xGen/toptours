@@ -3,7 +3,11 @@
  * Fetches restaurant data from Google Places API
  */
 
-const GOOGLE_PLACES_API_KEY = process.env.GOOGLE_PLACES_API_KEY || 'AIzaSyA9oGVujy1ntmAcRjXO7FngHxvOOK9lFKM';
+const GOOGLE_PLACES_API_KEY = process.env.GOOGLE_PLACES_API_KEY;
+
+if (!GOOGLE_PLACES_API_KEY) {
+  throw new Error('GOOGLE_PLACES_API_KEY environment variable is required');
+}
 const GOOGLE_PLACES_API_BASE = 'https://places.googleapis.com/v1';
 
 /**

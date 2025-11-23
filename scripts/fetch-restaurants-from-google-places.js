@@ -17,9 +17,15 @@ const __dirname = dirname(__filename);
 // Load environment variables
 dotenv.config({ path: join(__dirname, '..', '.env.local') });
 
-const GOOGLE_PLACES_API_KEY = process.env.GOOGLE_PLACES_API_KEY || 'AIzaSyA9oGVujy1ntmAcRjXO7FngHxvOOK9lFKM';
+const GOOGLE_PLACES_API_KEY = process.env.GOOGLE_PLACES_API_KEY;
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+if (!GOOGLE_PLACES_API_KEY) {
+  console.error('❌ Missing GOOGLE_PLACES_API_KEY environment variable');
+  console.error('Please set GOOGLE_PLACES_API_KEY in your .env.local file');
+  process.exit(1);
+}
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
   console.error('Missing Supabase environment variables');
