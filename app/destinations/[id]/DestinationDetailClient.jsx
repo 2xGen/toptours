@@ -113,15 +113,33 @@ export default function DestinationDetailClient({ destination, promotionScores =
   };
 
   useEffect(() => {
+    // Only run on client side (not during SSR)
+    if (typeof window === 'undefined') return;
+    
     // Scroll to top when component mounts (e.g., when navigating back)
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    try {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    } catch (error) {
+      console.error('Error scrolling to top:', error);
+    }
     
     // Check if mobile
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      try {
+        if (typeof window !== 'undefined' && window.innerWidth !== undefined) {
+          setIsMobile(window.innerWidth < 768);
+        }
+      } catch (error) {
+        console.error('Error checking mobile:', error);
+      }
     };
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    
+    try {
+      window.addEventListener('resize', checkMobile);
+    } catch (error) {
+      console.error('Error adding resize listener:', error);
+    }
     
     // Show parent country modal after 5 seconds (if destination has parent country)
     let timer = null;
@@ -308,7 +326,13 @@ export default function DestinationDetailClient({ destination, promotionScores =
       if (timer) {
         clearTimeout(timer);
       }
-      window.removeEventListener('resize', checkMobile);
+      try {
+        if (typeof window !== 'undefined') {
+          window.removeEventListener('resize', checkMobile);
+        }
+      } catch (error) {
+        console.error('Error removing resize listener:', error);
+      }
     };
   }, [safeDestination.parentCountryDestination]);
 
@@ -790,7 +814,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
 
         {/* Trending Now Section - Past 28 Days */}
-        {trendingTours && trendingTours.length > 0 && (
+        {safeTrendingTours && safeTrendingTours.length > 0 && (
           <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center gap-2 mb-6">
@@ -1602,7 +1626,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
         </section>
 
         {/* Trending Restaurants Section */}
-        {trendingRestaurants && trendingRestaurants.length > 0 && (
+        {safeTrendingRestaurants && safeTrendingRestaurants.length > 0 && (
           <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center gap-2 mb-6">
@@ -1617,6 +1641,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {safeTrendingRestaurants.map((trending, index) => {
+                  if (!trending || !trending.restaurant_id) return null;
+                  
                   const restaurantId = trending.restaurant_id;
                   const restaurantUrl = trending.restaurant_slug && trending.destination_id
                     ? `/destinations/${trending.destination_id}/restaurants/${trending.restaurant_slug}`
