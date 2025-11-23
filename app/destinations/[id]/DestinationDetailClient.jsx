@@ -97,6 +97,12 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const [showMoreCountryDestinations, setShowMoreCountryDestinations] = useState(12);
   const [guideCarouselIndex, setGuideCarouselIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  
+  // Mark as client-side after mount to prevent hydration issues
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   
   // Reset carousel index when guides change or become empty
   useEffect(() => {
@@ -352,9 +358,12 @@ export default function DestinationDetailClient({ destination, promotionScores =
       if (timer) {
         clearTimeout(timer);
       }
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
       try {
-        if (typeof window !== 'undefined') {
-          window.removeEventListener('resize', checkMobile);
+        if (typeof window !== 'undefined' && resizeListener) {
+          window.removeEventListener('resize', resizeListener);
         }
       } catch (error) {
         console.error('Error removing resize listener:', error);
@@ -1442,7 +1451,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
               <h3 className="text-2xl font-poppins font-bold text-gray-800 mb-6 text-center">
                 {safeDestination.country} Travel Guides
               </h3>
-              {isMobile && normalizedRelatedGuides.length > 0 ? (
+              {isClient && isMobile && normalizedRelatedGuides.length > 0 ? (
                 <div className="flex justify-center">
                   <div className="relative w-full max-w-sm">
                     <div className="flex items-center justify-center mb-6 space-x-4">
