@@ -270,47 +270,61 @@ export default function DestinationDetailClient({ destination, promotionScores =
         }
       });
       
-      if (Array.isArray(viatorDestinationsClassifiedData)) {
-        const classifiedDests = viatorDestinationsClassifiedData
-          .filter(dest => {
-            const destCountry = (dest.country || '').toLowerCase().trim();
-            const targetCountry = (safeDestination.country || '').toLowerCase().trim();
-            const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
-            const destSlug = generateSlug(dest.destinationName || dest.name || '');
-            
-            // Must match country, be a city, not be the current destination
-            return destCountry === targetCountry && 
-                   dest.type === 'CITY' &&
-                   destName !== currentName &&
-                   destSlug !== currentSlug &&
-                   destName.length > 0;
-          })
-          .map(dest => {
-            const slug = generateSlug(dest.destinationName || dest.name || '');
-            const seoContent = getDestinationSeoContent(slug);
-            
-            return {
-              id: slug,
-              name: dest.destinationName || dest.name,
-              fullName: dest.destinationName || dest.name,
-              briefDescription: seoContent?.briefDescription || seoContent?.heroDescription || `Explore tours and activities in ${dest.destinationName || dest.name}`,
-              imageUrl: null,
-              country: dest.country
-            };
-          });
-        
-        // Add classified destinations, avoiding duplicates by both ID and name
-        classifiedDests.forEach(dest => {
-          const destId = dest.id || '';
-          const destName = (dest.name || dest.fullName || '').toLowerCase().trim();
+      try {
+        if (Array.isArray(viatorDestinationsClassifiedData) && viatorDestinationsClassifiedData.length > 0) {
+          const classifiedDests = viatorDestinationsClassifiedData
+            .filter(dest => {
+              if (!dest) return false;
+              const destCountry = (dest.country || '').toLowerCase().trim();
+              const targetCountry = (safeDestination.country || '').toLowerCase().trim();
+              const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
+              const destSlug = generateSlug(dest.destinationName || dest.name || '');
+              
+              // Must match country, be a city, not be the current destination
+              return destCountry === targetCountry && 
+                     dest.type === 'CITY' &&
+                     destName !== currentName &&
+                     destSlug !== currentSlug &&
+                     destName.length > 0;
+            })
+            .map(dest => {
+              if (!dest) return null;
+              try {
+                const slug = generateSlug(dest.destinationName || dest.name || '');
+                const seoContent = getDestinationSeoContent(slug);
+                
+                return {
+                  id: slug,
+                  name: dest.destinationName || dest.name,
+                  fullName: dest.destinationName || dest.name,
+                  briefDescription: seoContent?.briefDescription || seoContent?.heroDescription || `Explore tours and activities in ${dest.destinationName || dest.name}`,
+                  imageUrl: null,
+                  country: dest.country
+                };
+              } catch (error) {
+                console.error('Error processing classified destination:', error);
+                return null;
+              }
+            })
+            .filter(dest => dest !== null);
           
-          // Check both ID and name to avoid duplicates
-          if (destId && !seenIds.has(destId) && !seenNames.has(destName)) {
-            seenIds.add(destId);
-            seenNames.add(destName);
-            allCountryDests.push(dest);
-          }
-        });
+          // Add classified destinations, avoiding duplicates by both ID and name
+          classifiedDests.forEach(dest => {
+            if (!dest) return;
+            const destId = dest.id || '';
+            const destName = (dest.name || dest.fullName || '').toLowerCase().trim();
+            
+            // Check both ID and name to avoid duplicates
+            if (destId && !seenIds.has(destId) && !seenNames.has(destName)) {
+              seenIds.add(destId);
+              seenNames.add(destName);
+              allCountryDests.push(dest);
+            }
+          });
+        }
+      } catch (error) {
+        console.error('Error processing viatorDestinationsClassifiedData:', error);
+        // Continue without classified destinations - not critical
       }
       
       // Sort alphabetically

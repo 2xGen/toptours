@@ -126,31 +126,43 @@ export default async function DestinationDetailPage({ params }) {
       
       // Find classified destination data (contains destinationId, country, region)
       let classifiedDest = null;
-      if (Array.isArray(viatorDestinationsClassifiedData)) {
-        classifiedDest = viatorDestinationsClassifiedData.find(dest => {
-          const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
-          const searchName = (fullContent?.destinationName || seoContent?.destinationName || id).toLowerCase().trim();
-          return destName === searchName || generateSlug(destName) === id;
-        });
-        
-        if (classifiedDest) {
-          country = classifiedDest.country || country;
-          region = classifiedDest.region || region;
+      try {
+        if (Array.isArray(viatorDestinationsClassifiedData) && viatorDestinationsClassifiedData.length > 0) {
+          classifiedDest = viatorDestinationsClassifiedData.find(dest => {
+            if (!dest) return false;
+            const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
+            const searchName = (fullContent?.destinationName || seoContent?.destinationName || id).toLowerCase().trim();
+            return destName === searchName || generateSlug(destName) === id;
+          });
           
-          // If country is not set, try to get it from parent destination
-          if (!country && classifiedDest.parentDestinationId) {
-            const parentDest = viatorDestinationsClassifiedData.find(dest => 
-              dest.destinationId === classifiedDest.parentDestinationId.toString() || 
-              dest.destinationId === classifiedDest.parentDestinationId
-            );
-            if (parentDest && parentDest.country) {
-              country = parentDest.country;
-            }
-            if (!region && parentDest && parentDest.region) {
-              region = parentDest.region;
+          if (classifiedDest) {
+            country = classifiedDest.country || country;
+            region = classifiedDest.region || region;
+            
+            // If country is not set, try to get it from parent destination
+            if (!country && classifiedDest.parentDestinationId) {
+              try {
+                const parentDest = viatorDestinationsClassifiedData.find(dest => 
+                  dest && (
+                    dest.destinationId === classifiedDest.parentDestinationId.toString() || 
+                    dest.destinationId === classifiedDest.parentDestinationId
+                  )
+                );
+                if (parentDest && parentDest.country) {
+                  country = parentDest.country;
+                }
+                if (!region && parentDest && parentDest.region) {
+                  region = parentDest.region;
+                }
+              } catch (error) {
+                console.error('Error finding parent destination:', error);
+              }
             }
           }
         }
+      } catch (error) {
+        console.error('Error processing viatorDestinationsClassifiedData:', error);
+        // Continue without classified data - not critical
       }
       
       // Create destination object from generated content
@@ -165,23 +177,30 @@ export default async function DestinationDetailPage({ params }) {
       
       // Check if this is a small destination with a parent country (especially Caribbean)
       let parentCountryDestination = null;
-      if (classifiedDest && classifiedDest.parentDestinationId && (region || '').toLowerCase() === 'caribbean') {
-        // Find the parent country destination
-        const parentDest = viatorDestinationsClassifiedData.find(dest => 
-          (dest.destinationId === classifiedDest.parentDestinationId.toString() || 
-           dest.destinationId === classifiedDest.parentDestinationId) &&
-          dest.type === 'COUNTRY'
-        );
-        
-        if (parentDest) {
-          const parentSlug = generateSlug(parentDest.destinationName || parentDest.name || '');
-          parentCountryDestination = {
-            id: parentSlug,
-            name: parentDest.destinationName || parentDest.name,
-            fullName: parentDest.destinationName || parentDest.name,
-            destinationId: parentDest.destinationId
-          };
+      try {
+        if (classifiedDest && classifiedDest.parentDestinationId && (region || '').toLowerCase() === 'caribbean') {
+          // Find the parent country destination
+          const parentDest = viatorDestinationsClassifiedData.find(dest => 
+            dest && (
+              (dest.destinationId === classifiedDest.parentDestinationId.toString() || 
+               dest.destinationId === classifiedDest.parentDestinationId) &&
+              dest.type === 'COUNTRY'
+            )
+          );
+          
+          if (parentDest) {
+            const parentSlug = generateSlug(parentDest.destinationName || parentDest.name || '');
+            parentCountryDestination = {
+              id: parentSlug,
+              name: parentDest.destinationName || parentDest.name,
+              fullName: parentDest.destinationName || parentDest.name,
+              destinationId: parentDest.destinationId
+            };
+          }
         }
+      } catch (error) {
+        console.error('Error finding parent country destination:', error);
+        // Continue without parent country - not critical
       }
       
       destination = {
