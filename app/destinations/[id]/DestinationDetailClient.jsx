@@ -97,6 +97,15 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const [showMoreCountryDestinations, setShowMoreCountryDestinations] = useState(12);
   const [guideCarouselIndex, setGuideCarouselIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  
+  // Reset carousel index when guides change or become empty
+  useEffect(() => {
+    if (normalizedRelatedGuides.length === 0) {
+      setGuideCarouselIndex(0);
+    } else if (guideCarouselIndex >= normalizedRelatedGuides.length) {
+      setGuideCarouselIndex(Math.max(0, normalizedRelatedGuides.length - 1));
+    }
+  }, [normalizedRelatedGuides.length, guideCarouselIndex]);
   const [selectedTour, setSelectedTour] = useState(null);
   const [isTourModalOpen, setIsTourModalOpen] = useState(false);
   const [showStickyButton, setShowStickyButton] = useState(true);
@@ -106,7 +115,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
   // Ensure restaurants is always an array
   const safeRestaurants = Array.isArray(restaurants) ? restaurants : [];
   const hasRestaurants = safeRestaurants.length > 0;
-  const normalizedRelatedGuides = Array.isArray(relatedGuides) ? relatedGuides : [];
+  // Filter out invalid guides and ensure all required fields exist
+  const normalizedRelatedGuides = Array.isArray(relatedGuides) 
+    ? relatedGuides.filter(guide => guide && guide.id && guide.title)
+    : [];
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -1430,27 +1442,34 @@ export default function DestinationDetailClient({ destination, promotionScores =
               <h3 className="text-2xl font-poppins font-bold text-gray-800 mb-6 text-center">
                 {safeDestination.country} Travel Guides
               </h3>
-              {isMobile ? (
+              {isMobile && normalizedRelatedGuides.length > 0 ? (
                 <div className="flex justify-center">
                   <div className="relative w-full max-w-sm">
                     <div className="flex items-center justify-center mb-6 space-x-4">
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => setGuideCarouselIndex(Math.max(0, guideCarouselIndex - 1))}
-                        disabled={guideCarouselIndex === 0}
+                        onClick={() => {
+                          const newIndex = Math.max(0, guideCarouselIndex - 1);
+                          setGuideCarouselIndex(newIndex);
+                        }}
+                        disabled={guideCarouselIndex === 0 || normalizedRelatedGuides.length === 0}
                         className="w-10 h-10 p-0"
                       >
                         <ChevronLeft className="w-4 h-4" />
                       </Button>
                       <span className="text-sm text-gray-600">
-                        {guideCarouselIndex + 1} of {normalizedRelatedGuides.length}
+                        {Math.min(guideCarouselIndex + 1, normalizedRelatedGuides.length)} of {normalizedRelatedGuides.length}
                       </span>
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => setGuideCarouselIndex(Math.min(normalizedRelatedGuides.length - 1, guideCarouselIndex + 1))}
-                        disabled={guideCarouselIndex >= normalizedRelatedGuides.length - 1}
+                        onClick={() => {
+                          const maxIndex = Math.max(0, normalizedRelatedGuides.length - 1);
+                          const newIndex = Math.min(maxIndex, guideCarouselIndex + 1);
+                          setGuideCarouselIndex(newIndex);
+                        }}
+                        disabled={guideCarouselIndex >= Math.max(0, normalizedRelatedGuides.length - 1) || normalizedRelatedGuides.length === 0}
                         className="w-10 h-10 p-0"
                       >
                         <ChevronRight className="w-4 h-4" />
@@ -1460,12 +1479,14 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       <div 
                         className="flex transition-transform duration-300 ease-in-out gap-6"
                         style={{ 
-                          transform: `translateX(calc(-${guideCarouselIndex * 100}% - ${guideCarouselIndex * 1.5}rem))`
+                          transform: `translateX(calc(-${Math.min(guideCarouselIndex, Math.max(0, normalizedRelatedGuides.length - 1)) * 100}% - ${Math.min(guideCarouselIndex, Math.max(0, normalizedRelatedGuides.length - 1)) * 1.5}rem))`
                         }}
                       >
-                        {normalizedRelatedGuides.map((guide) => (
+                        {normalizedRelatedGuides.map((guide, idx) => {
+                          if (!guide || !guide.id || !guide.title) return null;
+                          return (
                           <Link 
-                            key={guide.id}
+                            key={guide.id || idx}
                             href={`/travel-guides/${guide.id}`}
                             className="w-[calc(100%-2rem)] flex-shrink-0 group"
                           >
@@ -1474,14 +1495,19 @@ export default function DestinationDetailClient({ destination, promotionScores =
                                 {guide.image ? (
                                   <img
                                     src={guide.image}
-                                    alt={guide.title}
+                                    alt={guide.title || 'Travel Guide'}
                                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                    onError={(e) => {
+                                      if (e.target && e.target.nextElementSibling) {
+                                        e.target.style.display = 'none';
+                                        e.target.nextElementSibling.style.display = 'flex';
+                                      }
+                                    }}
                                   />
-                                ) : (
-                                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100">
-                                    <BookOpen className="w-12 h-12 text-gray-400" />
-                                  </div>
-                                )}
+                                ) : null}
+                                <div className={`w-full h-full flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100 ${guide.image ? 'hidden' : ''}`}>
+                                  <BookOpen className="w-12 h-12 text-gray-400" />
+                                </div>
                                 {guide.category && (
                                   <Badge className="absolute top-4 left-4 adventure-gradient text-white">
                                     {guide.category}
@@ -1490,12 +1516,14 @@ export default function DestinationDetailClient({ destination, promotionScores =
                               </div>
                               <CardContent className="p-6 flex flex-col flex-grow">
                                 <h4 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
-                                  {guide.title}
+                                  {guide.title || 'Travel Guide'}
                                 </h4>
                                 
-                                <p className="text-gray-700 mb-4 line-clamp-3 flex-grow text-sm">
-                                  {guide.excerpt}
-                                </p>
+                                {guide.excerpt && (
+                                  <p className="text-gray-700 mb-4 line-clamp-3 flex-grow text-sm">
+                                    {guide.excerpt}
+                                  </p>
+                                )}
                                 
                                 <Button 
                                   className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold mt-auto"
@@ -1506,16 +1534,19 @@ export default function DestinationDetailClient({ destination, promotionScores =
                               </CardContent>
                             </Card>
                           </Link>
-                        ))}
+                        );
+                        })}
                       </div>
                     </div>
                   </div>
                 </div>
-              ) : (
+              ) : normalizedRelatedGuides.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center max-w-5xl mx-auto">
-                        {normalizedRelatedGuides.map((guide) => (
+                        {normalizedRelatedGuides.map((guide, idx) => {
+                          if (!guide || !guide.id || !guide.title) return null;
+                          return (
                     <Link 
-                      key={guide.id}
+                      key={guide.id || idx}
                       href={`/travel-guides/${guide.id}`}
                       className="group w-full max-w-sm"
                     >
@@ -1524,14 +1555,19 @@ export default function DestinationDetailClient({ destination, promotionScores =
                           {guide.image ? (
                             <img
                               src={guide.image}
-                              alt={guide.title}
+                              alt={guide.title || 'Travel Guide'}
                               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                              onError={(e) => {
+                                if (e.target && e.target.nextElementSibling) {
+                                  e.target.style.display = 'none';
+                                  e.target.nextElementSibling.style.display = 'flex';
+                                }
+                              }}
                             />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100">
-                              <BookOpen className="w-12 h-12 text-gray-400" />
-                            </div>
-                          )}
+                          ) : null}
+                          <div className={`w-full h-full flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100 ${guide.image ? 'hidden' : ''}`}>
+                            <BookOpen className="w-12 h-12 text-gray-400" />
+                          </div>
                           {guide.category && (
                             <Badge className="absolute top-4 left-4 adventure-gradient text-white">
                               {guide.category}
@@ -1540,12 +1576,14 @@ export default function DestinationDetailClient({ destination, promotionScores =
                         </div>
                         <CardContent className="p-6 flex flex-col flex-grow">
                           <h4 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
-                            {guide.title}
+                            {guide.title || 'Travel Guide'}
                           </h4>
                           
-                          <p className="text-gray-700 mb-4 line-clamp-3 flex-grow text-sm">
-                            {guide.excerpt}
-                          </p>
+                          {guide.excerpt && (
+                            <p className="text-gray-700 mb-4 line-clamp-3 flex-grow text-sm">
+                              {guide.excerpt}
+                            </p>
+                          )}
                           
                           <Button 
                             className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold mt-auto"
@@ -1556,7 +1594,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
                         </CardContent>
                       </Card>
                     </Link>
-                  ))}
+                  );
+                  })}
                 </div>
               )}
             </div>
