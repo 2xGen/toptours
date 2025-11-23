@@ -44,6 +44,18 @@ function getDisplayCategoryName(categoryName) {
 
 export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], hardcodedTours = {}, restaurants = [] }) {
   
+  // Ensure destination exists
+  if (!destination) {
+    return (
+      <div className="min-h-screen pt-20 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-white mb-4">Destination Not Found</h1>
+          <p className="text-white/80 mb-6">Sorry, we couldn't find that destination.</p>
+        </div>
+      </div>
+    );
+  }
+  
   // Ensure destination has required arrays
   const safeDestination = {
     ...destination,
@@ -55,6 +67,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
     parentCountryDestination: destination?.parentCountryDestination || null, // For small destinations that belong to a parent country
   };
   const destinationName = safeDestination.name || safeDestination.fullName || safeDestination.id;
+  
+  // Ensure arrays are safe
+  const safeTrendingTours = Array.isArray(trendingTours) ? trendingTours : [];
+  const safeTrendingRestaurants = Array.isArray(trendingRestaurants) ? trendingRestaurants : [];
+  const safeHardcodedTours = hardcodedTours && typeof hardcodedTours === 'object' ? hardcodedTours : {};
 
   // Debug: Log destination data (remove in production)
   if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
@@ -116,18 +133,24 @@ export default function DestinationDetailClient({ destination, promotionScores =
     
     // Initialize visible tours for each category (mobile only)
     const visible = {};
-    safeDestination.tourCategories.forEach(category => {
-      const categoryName = typeof category === 'string' ? category : category.name;
-      visible[categoryName] = 4; // Start with 4 visible tours on mobile
-    });
+    if (Array.isArray(safeDestination.tourCategories)) {
+      safeDestination.tourCategories.forEach(category => {
+        const categoryName = typeof category === 'string' ? category : category?.name;
+        if (categoryName) {
+          visible[categoryName] = 4; // Start with 4 visible tours on mobile
+        }
+      });
+    }
     setVisibleTours(visible);
     
     // Use hardcoded tours if available, otherwise fetch from API with caching
-    if (hardcodedTours && Object.keys(hardcodedTours).length > 0) {
+    if (safeHardcodedTours && Object.keys(safeHardcodedTours).length > 0) {
       // Convert hardcoded tours to the format expected by the UI
       const formattedTours = {};
-      Object.keys(hardcodedTours).forEach(categoryName => {
-        formattedTours[categoryName] = hardcodedTours[categoryName].map(tour => ({
+      Object.keys(safeHardcodedTours).forEach(categoryName => {
+        const categoryTours = safeHardcodedTours[categoryName];
+        if (Array.isArray(categoryTours)) {
+          formattedTours[categoryName] = categoryTours.map(tour => ({
           productId: tour.productId,
           productCode: tour.productId,
           title: tour.title,
@@ -153,6 +176,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
           flags: [], // No flags for hardcoded tours
           // Add TopTours score to promotionScores for TourPromotionCard
         }));
+        }
       });
       // Convert to new flat format
       const allHardcodedTours = [];
@@ -780,7 +804,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 Tours that are currently popular based on recent community boosts
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {trendingTours.map((trending, index) => {
+                {safeTrendingTours.map((trending, index) => {
                   const tourId = trending.product_id;
                   const tourUrl = trending.tour_slug 
                     ? `/tours/${tourId}/${trending.tour_slug}` 
@@ -1592,7 +1616,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 Restaurants that are currently popular based on recent community boosts
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {trendingRestaurants.map((trending, index) => {
+                {safeTrendingRestaurants.map((trending, index) => {
                   const restaurantId = trending.restaurant_id;
                   const restaurantUrl = trending.restaurant_slug && trending.destination_id
                     ? `/destinations/${trending.destination_id}/restaurants/${trending.restaurant_slug}`
@@ -1869,7 +1893,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
               {/* Badges */}
               {selectedTour.flags && selectedTour.flags.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {selectedTour.flags.map((flag, index) => {
+                  {selectedTour?.flags && Array.isArray(selectedTour.flags) && selectedTour.flags.map((flag, index) => {
                     let badgeClass = "text-xs font-medium px-3 py-1 rounded-full";
                     if (flag === "FREE_CANCELLATION") {
                       badgeClass += " bg-green-50 text-green-700 border border-green-200";
