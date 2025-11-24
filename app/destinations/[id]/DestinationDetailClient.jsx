@@ -98,6 +98,22 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const [guideCarouselIndex, setGuideCarouselIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [selectedTour, setSelectedTour] = useState(null);
+  const [isTourModalOpen, setIsTourModalOpen] = useState(false);
+  const [showStickyButton, setShowStickyButton] = useState(true);
+  const [showParentCountryModal, setShowParentCountryModal] = useState(false);
+  const { toast } = useToast();
+  
+  // Restaurants are now passed as props (already formatted from database)
+  // Ensure restaurants is always an array
+  const safeRestaurants = Array.isArray(restaurants) ? restaurants : [];
+  const hasRestaurants = safeRestaurants.length > 0;
+  
+  // Filter out invalid guides and ensure all required fields exist
+  // Must be declared before useEffect that uses it
+  const normalizedRelatedGuides = Array.isArray(relatedGuides) 
+    ? relatedGuides.filter(guide => guide && guide.id && guide.title)
+    : [];
   
   // Mark as client-side after mount to prevent hydration issues
   useEffect(() => {
@@ -112,19 +128,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
       setGuideCarouselIndex(Math.max(0, normalizedRelatedGuides.length - 1));
     }
   }, [normalizedRelatedGuides.length, guideCarouselIndex]);
-  const [selectedTour, setSelectedTour] = useState(null);
-  const [isTourModalOpen, setIsTourModalOpen] = useState(false);
-  const [showStickyButton, setShowStickyButton] = useState(true);
-  const [showParentCountryModal, setShowParentCountryModal] = useState(false);
-  const { toast } = useToast();
-  // Restaurants are now passed as props (already formatted from database)
-  // Ensure restaurants is always an array
-  const safeRestaurants = Array.isArray(restaurants) ? restaurants : [];
-  const hasRestaurants = safeRestaurants.length > 0;
-  // Filter out invalid guides and ensure all required fields exist
-  const normalizedRelatedGuides = Array.isArray(relatedGuides) 
-    ? relatedGuides.filter(guide => guide && guide.id && guide.title)
-    : [];
 
   const handleOpenModal = () => {
     setIsModalOpen(true);

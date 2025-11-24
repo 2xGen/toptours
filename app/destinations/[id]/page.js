@@ -5,6 +5,7 @@ import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { getRestaurantsForDestination, formatRestaurantForFrontend } from '@/lib/restaurants';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 // Helper to generate slug
 function generateSlug(name) {
@@ -466,14 +467,16 @@ export default async function DestinationDetailPage({ params }) {
         />
       )}
       
-      <DestinationDetailClient 
-        destination={destination} 
-        promotionScores={promotionScores}
-        trendingTours={trendingTours}
-        trendingRestaurants={trendingRestaurants}
-        hardcodedTours={hardcodedTours}
-        restaurants={restaurants}
-      />
+      <ErrorBoundary>
+        <DestinationDetailClient 
+          destination={destination} 
+          promotionScores={promotionScores}
+          trendingTours={trendingTours}
+          trendingRestaurants={trendingRestaurants}
+          hardcodedTours={hardcodedTours}
+          restaurants={restaurants}
+        />
+      </ErrorBoundary>
     </>
   );
 }

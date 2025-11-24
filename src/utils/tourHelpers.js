@@ -3,23 +3,44 @@
  * Generates slugs, manages tour data, and provides utilities for tour pages
  */
 
+// Define functions first, then export to avoid initialization order issues
+function generateTourSlugInternal(title) {
+  if (!title || typeof title !== 'string') return '';
+  
+  try {
+    return title
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') // Remove accents
+      .replace(/&/g, 'and')
+      .replace(/'/g, '') // Remove apostrophes
+      .replace(/\./g, '') // Remove periods
+      .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric with hyphens
+      .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+  } catch (error) {
+    console.error('Error generating tour slug:', error);
+    return '';
+  }
+}
+
+function getTourUrlInternal(productId, title) {
+  if (!productId) return '#';
+  try {
+    const slug = generateTourSlugInternal(title || '');
+    return `/tours/${String(productId)}${slug ? `/${slug}` : ''}`;
+  } catch (error) {
+    console.error('Error generating tour URL:', error);
+    return `/tours/${String(productId)}`;
+  }
+}
+
 /**
  * Generate a URL-friendly slug from a tour title
  * @param {string} title - Tour title
  * @returns {string} - URL-friendly slug
  */
 export function generateTourSlug(title) {
-  if (!title) return '';
-  
-  return title
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '') // Remove accents
-    .replace(/&/g, 'and')
-    .replace(/'/g, '') // Remove apostrophes
-    .replace(/\./g, '') // Remove periods
-    .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric with hyphens
-    .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+  return generateTourSlugInternal(title);
 }
 
 /**
@@ -29,9 +50,7 @@ export function generateTourSlug(title) {
  * @returns {string} - Internal tour URL
  */
 export function getTourUrl(productId, title) {
-  if (!productId) return '#';
-  const slug = generateTourSlug(title);
-  return `/tours/${productId}${slug ? `/${slug}` : ''}`;
+  return getTourUrlInternal(productId, title);
 }
 
 /**

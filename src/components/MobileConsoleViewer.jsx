@@ -2,6 +2,87 @@
 import { useState, useEffect } from 'react';
 import { X, AlertCircle } from 'lucide-react';
 
+// Safe stringify function that handles circular references and non-serializable values
+function safeStringify(value, visited = new WeakSet()) {
+  // Handle primitives
+  if (value === null || value === undefined) {
+    return String(value);
+  }
+  
+  if (typeof value === 'string') {
+    return value;
+  }
+  
+  if (typeof value === 'number' || typeof value === 'boolean') {
+    return String(value);
+  }
+  
+  // Handle functions
+  if (typeof value === 'function') {
+    return `[Function: ${value.name || 'anonymous'}]`;
+  }
+  
+  // Handle DOM elements
+  if (value instanceof HTMLElement) {
+    return `[HTMLElement: ${value.tagName}${value.id ? `#${value.id}` : ''}${value.className ? `.${value.className.split(' ').join('.')}` : ''}]`;
+  }
+  
+  // Handle Error objects
+  if (value instanceof Error) {
+    return `${value.name}: ${value.message}${value.stack ? '\n' + value.stack : ''}`;
+  }
+  
+  // Handle arrays
+  if (Array.isArray(value)) {
+    if (visited.has(value)) {
+      return '[Circular Array]';
+    }
+    visited.add(value);
+    try {
+      return '[' + value.map(item => safeStringify(item, visited)).join(', ') + ']';
+    } catch (e) {
+      return '[Array]';
+    } finally {
+      visited.delete(value);
+    }
+  }
+  
+  // Handle objects
+  if (typeof value === 'object') {
+    if (visited.has(value)) {
+      return '[Circular Object]';
+    }
+    visited.add(value);
+    
+    try {
+      // Manually stringify with circular reference handling
+      const keys = Object.keys(value);
+      const pairs = keys.slice(0, 10).map(key => {
+        try {
+          return `${key}: ${safeStringify(value[key], visited)}`;
+        } catch (e) {
+          return `${key}: [Unable to stringify]`;
+        }
+      });
+      if (keys.length > 10) {
+        pairs.push(`... and ${keys.length - 10} more`);
+      }
+      return `{${pairs.join(', ')}}`;
+    } catch (e2) {
+      return `[Object: ${value.constructor?.name || 'Object'}]`;
+    } finally {
+      visited.delete(value);
+    }
+  }
+  
+  // Fallback for anything else
+  try {
+    return String(value);
+  } catch (e) {
+    return '[Unable to stringify]';
+  }
+}
+
 export default function MobileConsoleViewer() {
   const [errors, setErrors] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
@@ -32,20 +113,27 @@ export default function MobileConsoleViewer() {
     // Override console.error
     console.error = (...args) => {
       originalError.apply(console, args);
-      const errorMessage = args.map(arg => 
-        typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
-      ).join(' ');
-      setErrors(prev => [...prev.slice(-9), { message: errorMessage, timestamp: new Date() }]);
-      setIsVisible(true);
+      try {
+        const errorMessage = args.map(arg => safeStringify(arg)).join(' ');
+        setErrors(prev => [...prev.slice(-9), { message: errorMessage, timestamp: new Date() }]);
+        setIsVisible(true);
+      } catch (e) {
+        // Fallback if stringification fails completely
+        setErrors(prev => [...prev.slice(-9), { message: args.map(a => String(a)).join(' '), timestamp: new Date() }]);
+        setIsVisible(true);
+      }
     };
 
     // Override console.warn
     console.warn = (...args) => {
       originalWarn.apply(console, args);
-      const warnMessage = args.map(arg => 
-        typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
-      ).join(' ');
-      setLogs(prev => [...prev.slice(-9), { message: warnMessage, type: 'warn', timestamp: new Date() }]);
+      try {
+        const warnMessage = args.map(arg => safeStringify(arg)).join(' ');
+        setLogs(prev => [...prev.slice(-9), { message: warnMessage, type: 'warn', timestamp: new Date() }]);
+      } catch (e) {
+        // Fallback if stringification fails completely
+        setLogs(prev => [...prev.slice(-9), { message: args.map(a => String(a)).join(' '), type: 'warn', timestamp: new Date() }]);
+      }
     };
 
     // Override console.log (optional, for debugging)
@@ -53,10 +141,13 @@ export default function MobileConsoleViewer() {
       originalLog.apply(console, args);
       // Only log if ?debug=verbose
       if (urlParams.get('debug') === 'verbose') {
-        const logMessage = args.map(arg => 
-          typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
-        ).join(' ');
-        setLogs(prev => [...prev.slice(-9), { message: logMessage, type: 'log', timestamp: new Date() }]);
+        try {
+          const logMessage = args.map(arg => safeStringify(arg)).join(' ');
+          setLogs(prev => [...prev.slice(-9), { message: logMessage, type: 'log', timestamp: new Date() }]);
+        } catch (e) {
+          // Fallback if stringification fails completely
+          setLogs(prev => [...prev.slice(-9), { message: args.map(a => String(a)).join(' '), type: 'log', timestamp: new Date() }]);
+        }
       }
     };
 

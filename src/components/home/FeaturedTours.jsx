@@ -45,9 +45,19 @@ const FeaturedTours = ({ onOpenModal, topTours = [], topPromoters = [] }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {hasTours ? topTours.map((tour, index) => {
-            const tourUrl = tour.slug 
-              ? `/tours/${tour.productId}/${tour.slug}` 
-              : getTourUrl(tour.productId, tour.title);
+            let tourUrl = '#';
+            try {
+              if (tour.slug) {
+                tourUrl = `/tours/${tour.productId}/${tour.slug}`;
+              } else if (tour.productId && tour.title) {
+                tourUrl = getTourUrl(tour.productId, tour.title);
+              } else if (tour.productId) {
+                tourUrl = `/tours/${tour.productId}`;
+              }
+            } catch (error) {
+              console.error('Error generating tour URL:', error);
+              tourUrl = tour.productId ? `/tours/${tour.productId}` : '#';
+            }
             
             return (
               <motion.div
