@@ -125,15 +125,72 @@ export default async function DestinationDetailPage({ params }) {
       let region = fullContent?.region || seoContent?.region || null;
       
       // Find classified destination data (contains destinationId, country, region)
+      // IMPORTANT: Some destinations have duplicate names with different IDs
+      // We need to prioritize: CITY > REGION > other types, and match by country/region when available
       let classifiedDest = null;
       try {
         if (Array.isArray(viatorDestinationsClassifiedData) && viatorDestinationsClassifiedData.length > 0) {
-          classifiedDest = viatorDestinationsClassifiedData.find(dest => {
+          const searchName = (fullContent?.destinationName || seoContent?.destinationName || id).toLowerCase().trim();
+          const searchSlug = generateSlug(fullContent?.destinationName || seoContent?.destinationName || id);
+          
+          // Find all matching destinations
+          const matches = viatorDestinationsClassifiedData.filter(dest => {
             if (!dest) return false;
             const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
-            const searchName = (fullContent?.destinationName || seoContent?.destinationName || id).toLowerCase().trim();
-            return destName === searchName || generateSlug(destName) === id;
+            const destSlug = generateSlug(dest.destinationName || dest.name || '');
+            return destName === searchName || destSlug === searchSlug || destSlug === id;
           });
+          
+          if (matches.length > 0) {
+            // If multiple matches, prioritize:
+            // 1. Match by country if we have country info
+            // 2. CITY type over other types
+            // 3. First match as fallback
+            
+            if (matches.length === 1) {
+              classifiedDest = matches[0];
+            } else {
+              // Multiple matches - need to prioritize
+              let bestMatch = null;
+              
+              // First, try to match by country if we have it
+              if (country) {
+                const countryMatch = matches.find(dest => 
+                  dest.country && dest.country.toLowerCase().trim() === country.toLowerCase().trim()
+                );
+                if (countryMatch) {
+                  bestMatch = countryMatch;
+                }
+              }
+              
+              // If no country match, prioritize CITY type
+              if (!bestMatch) {
+                const cityMatch = matches.find(dest => dest.type === 'CITY');
+                if (cityMatch) {
+                  bestMatch = cityMatch;
+                }
+              }
+              
+              // If still no match, prioritize REGION over other types
+              if (!bestMatch) {
+                const regionMatch = matches.find(dest => dest.type === 'REGION');
+                if (regionMatch) {
+                  bestMatch = regionMatch;
+                }
+              }
+              
+              // Fallback to first match
+              classifiedDest = bestMatch || matches[0];
+              
+              // Log warning if we had to choose between multiple matches
+              if (matches.length > 1 && !bestMatch) {
+                console.warn(`⚠️ Multiple destination IDs found for "${searchName}":`, 
+                  matches.map(m => `${m.destinationId} (${m.type}, ${m.country})`).join(', '),
+                  '- Using:', classifiedDest.destinationId
+                );
+              }
+            }
+          }
           
           if (classifiedDest) {
             country = classifiedDest.country || country;
