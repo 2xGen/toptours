@@ -85,41 +85,24 @@ export default async function RestaurantsIndexPage({ params }) {
   // Fetch trending tours (past 28 days) for this destination
   const trendingTours = await getTrendingToursByDestination(id, 6);
 
-  // Enhanced ItemList schema
-  // Note: ItemList items should only contain basic properties (name, url, position)
-  // Restaurant-specific data like ratings should be on the individual restaurant pages, not in the list
+  // ItemList schema for restaurant listing page
+  // Keep it simple - just list the restaurants. Detailed ratings/reviews belong on individual restaurant pages
   const itemListJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: `Best Restaurants in ${destination.fullName}`,
     description: `A curated list of top-rated restaurants in ${destination.fullName}`,
     numberOfItems: restaurants.length,
-    itemListElement: restaurants.map((restaurant, index) => {
-      const item = {
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          '@type': 'Restaurant',
-          '@id': `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`,
-          name: restaurant.name,
-          url: `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`,
-        },
-      };
-      
-      // Only include aggregateRating if reviewCount is positive (Google requirement)
-      const reviewCount = restaurant.ratings?.reviewCount || restaurant.reviewCount || 0;
-      const rating = restaurant.ratings?.googleRating;
-      
-      if (rating && reviewCount > 0) {
-        item.item.aggregateRating = {
-          '@type': 'AggregateRating',
-          ratingValue: rating,
-          reviewCount: reviewCount,
-        };
-      }
-      
-      return item;
-    }),
+    itemListElement: restaurants.map((restaurant, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Restaurant',
+        '@id': `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`,
+        name: restaurant.name,
+        url: `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`,
+      },
+    })),
   };
 
   // Breadcrumb schema
