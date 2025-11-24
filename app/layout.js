@@ -103,6 +103,43 @@ export default function RootLayout({ children }) {
         style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', backgroundAttachment: 'fixed' }}
         suppressHydrationWarning
       >
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                // Global error handler - catches errors before React
+                window.addEventListener('error', function(e) {
+                  console.error('Global Error:', e.error || e.message, e.filename, e.lineno);
+                  if (window.__errorLog) {
+                    window.__errorLog.push({
+                      type: 'error',
+                      message: e.error ? e.error.toString() : e.message,
+                      stack: e.error ? e.error.stack : null,
+                      filename: e.filename,
+                      lineno: e.lineno,
+                      timestamp: new Date().toISOString()
+                    });
+                  }
+                });
+                
+                window.addEventListener('unhandledrejection', function(e) {
+                  console.error('Unhandled Promise Rejection:', e.reason);
+                  if (window.__errorLog) {
+                    window.__errorLog.push({
+                      type: 'unhandledrejection',
+                      message: e.reason ? e.reason.toString() : 'Unknown',
+                      stack: e.reason && e.reason.stack ? e.reason.stack : null,
+                      timestamp: new Date().toISOString()
+                    });
+                  }
+                });
+                
+                // Initialize error log
+                window.__errorLog = window.__errorLog || [];
+              })();
+            `
+          }}
+        />
         <Suspense fallback={null}>
           <PageViewTracker />
         </Suspense>

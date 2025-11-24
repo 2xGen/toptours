@@ -13,6 +13,16 @@ export default function MobileConsoleViewer() {
     const isDebug = process.env.NODE_ENV === 'development' || urlParams.get('debug') === 'true';
     
     if (!isDebug) return;
+    
+    // Check for pre-existing errors from global handler
+    if (typeof window !== 'undefined' && window.__errorLog && window.__errorLog.length > 0) {
+      window.__errorLog.forEach(error => {
+        if (error.type === 'error') {
+          setErrors(prev => [...prev.slice(-9), { message: error.message + (error.stack ? '\n' + error.stack : ''), timestamp: new Date(error.timestamp) }]);
+        }
+      });
+      setIsVisible(true);
+    }
 
     // Store original console methods
     const originalError = console.error;
