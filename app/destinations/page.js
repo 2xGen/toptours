@@ -272,7 +272,12 @@ export default function DestinationsPage() {
                            (dest.region && dest.region === selectedCategory);
     return matchesSearch && matchesCategory;
   }).sort((a, b) => {
-    // Sort by category first, then by name
+    // When "All" is selected, sort alphabetically by name only (no grouping by region)
+    if (selectedCategory === 'All') {
+      return a.name.localeCompare(b.name);
+    }
+    
+    // When a specific category is selected, sort by category first, then by name
     if (a.category !== b.category) {
       const categoryOrder = ['Europe', 'North America', 'Caribbean', 'Asia-Pacific', 'Africa', 'South America', 'Middle East'];
       const aIndex = categoryOrder.indexOf(a.category || '');

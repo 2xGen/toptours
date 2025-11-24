@@ -93,16 +93,91 @@ export default async function RestaurantsIndexPage({ params }) {
     name: `Best Restaurants in ${destination.fullName}`,
     description: `A curated list of top-rated restaurants in ${destination.fullName}`,
     numberOfItems: restaurants.length,
-    itemListElement: restaurants.map((restaurant, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: {
+    itemListElement: restaurants.map((restaurant, index) => {
+      // Build address object from available data
+      let address = null;
+      
+      // Try to get address from schema data first (most complete)
+      if (restaurant.schema?.address) {
+        address = restaurant.schema.address;
+      } 
+      // Try to get from addressComponents (parsed from database)
+      else if (restaurant.addressComponents) {
+        address = {
+          '@type': 'PostalAddress',
+          ...(restaurant.addressComponents.street_number && restaurant.addressComponents.route && {
+            streetAddress: `${restaurant.addressComponents.street_number} ${restaurant.addressComponents.route}`.trim(),
+          }),
+          ...(restaurant.addressComponents.locality && {
+            addressLocality: restaurant.addressComponents.locality,
+          }),
+          ...(restaurant.addressComponents.administrative_area_level_1 && {
+            addressRegion: restaurant.addressComponents.administrative_area_level_1,
+          }),
+          ...(restaurant.addressComponents.postal_code && {
+            postalCode: restaurant.addressComponents.postal_code,
+          }),
+          ...(restaurant.addressComponents.country && {
+            addressCountry: restaurant.addressComponents.country,
+          }),
+        };
+        
+        // Remove empty fields
+        Object.keys(address).forEach(key => {
+          if (address[key] === undefined || address[key] === null || address[key] === '') {
+            delete address[key];
+          }
+        });
+        
+        // If no valid fields, set to null
+        if (Object.keys(address).length <= 1) { // Only @type remains
+          address = null;
+        }
+      }
+      // Fallback to contact.address string - parse it if possible
+      else if (restaurant.contact?.address) {
+        const addressString = restaurant.contact.address;
+        // Try to extract city and country from destination
+        address = {
+          '@type': 'PostalAddress',
+          streetAddress: addressString,
+          ...(destination.name && {
+            addressLocality: destination.name,
+          }),
+          ...(destination.country && {
+            addressCountry: destination.country,
+          }),
+        };
+      }
+      // Last resort: use destination location
+      else {
+        address = {
+          '@type': 'PostalAddress',
+          addressLocality: destination.name || destination.fullName,
+          ...(destination.country && {
+            addressCountry: destination.country,
+          }),
+        };
+      }
+      
+      const restaurantItem = {
         '@type': 'Restaurant',
         '@id': `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`,
         name: restaurant.name,
         url: `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`,
-      },
-    })),
+      };
+      
+      // Only add address if we have valid address data
+      if (address && Object.keys(address).length > 1) {
+        restaurantItem.address = address;
+      }
+      
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        item: restaurantItem,
+      };
+    }),
   };
 
   // Breadcrumb schema
