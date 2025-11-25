@@ -491,8 +491,22 @@ export default async function ToursListingPage({ params }) {
   }
 
   // Fetch all promotion scores for this destination
-  // Use Viator destination ID (numeric) for querying, fall back to slug for curated destinations
-  const destinationIdForScores = viatorDestinationId || destination.destinationId || destination.id;
+  // CRITICAL: For old destinations (182), database has slugs - pass slug directly
+  // For new destinations (3300+), database has numeric IDs - pass numeric ID
+  // The query functions handle both formats
+  const isCuratedDestination = id && slugToViatorId[id];
+  
+  let destinationIdForScores;
+  if (isCuratedDestination) {
+    // For old destinations: database has slugs, so pass the slug
+    destinationIdForScores = id; // Use slug for old destinations
+  } else if (viatorDestinationId || destination.destinationId) {
+    // For new Viator destinations: database has numeric IDs, so pass numeric ID
+    destinationIdForScores = viatorDestinationId || destination.destinationId;
+  } else {
+    // Fallback: use slug, query function will handle it
+    destinationIdForScores = id;
+  }
   let promotionScores = destinationIdForScores ? await getPromotionScoresByDestination(destinationIdForScores) : {};
 
   // CRITICAL: Also fetch scores by product IDs as a fallback

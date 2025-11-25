@@ -257,7 +257,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
     // Load all related destinations from the same region
     const related = getRelatedDestinations(safeDestination.id);
-    setRelatedDestinations(related);
+    // Filter out duplicates by id to prevent React key errors
+    const uniqueRelated = related.filter((dest, index, self) => 
+      index === self.findIndex(d => d.id === dest.id)
+    );
+    setRelatedDestinations(uniqueRelated);
 
     // Load guides by country (for SEO internal linking)
     if (safeDestination.country) {
@@ -1848,9 +1852,9 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     More {safeDestination.category} Destinations
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                    {relatedDestinations.map((dest) => (
+                    {relatedDestinations.map((dest, index) => (
                       <Link 
-                        key={dest.id}
+                        key={`${dest.id}-${index}`}
                         href={`/destinations/${dest.id}`}
                         className="text-white/80 hover:text-white transition-colors duration-200 hover:underline"
                       >

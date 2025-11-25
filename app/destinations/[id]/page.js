@@ -312,35 +312,27 @@ export default async function DestinationDetailPage({ params }) {
     );
   }
 
-  // CRITICAL: Use destinationId (numeric Viator ID) for promotion queries, not the slug
-  // For curated destinations (182), we need to look up the Viator ID from slugToViatorId
-  // For Viator destinations (3300+), destinationId is already set in the destination object
-  // If still not found, try to look it up from Supabase by slug
+  // CRITICAL: For promotion queries, we need to handle both old (182) and new (3300+) destinations
+  // Old destinations: database has slugs (e.g., "amsterdam", "aruba") - pass slug directly
+  // New destinations: database has numeric IDs (e.g., "50751") - pass numeric ID
+  // The query functions handle both formats, but we should pass what matches the database
+  
+  // Check if this is a curated destination (182) - these use slugs in the database
   const { slugToViatorId } = await import('@/data/viatorDestinationMap');
-  let viatorDestinationId = destination.destinationId || (destination.id && slugToViatorId[destination.id]) || null;
+  const isCuratedDestination = destination.id && slugToViatorId[destination.id];
   
-  // If we still don't have a numeric ID, try to look it up from Supabase
-  if (!viatorDestinationId || !/^\d+$/.test(viatorDestinationId.toString())) {
-    try {
-      // Try to find by slug in Supabase
-      const { createSupabaseServiceRoleClient } = await import('@/lib/supabaseClient');
-      const supabase = createSupabaseServiceRoleClient();
-      const { data: destInfo } = await supabase
-        .from('viator_destinations')
-        .select('id')
-        .eq('slug', destination.id)
-        .maybeSingle();
-      
-      if (destInfo?.id) {
-        viatorDestinationId = destInfo.id.toString();
-      }
-    } catch (error) {
-      console.warn('Could not lookup destination ID from Supabase:', error);
-    }
+  let destinationIdForScores;
+  if (isCuratedDestination) {
+    // For old destinations: database has slugs, so pass the slug
+    // The query function will also try the numeric ID as a fallback
+    destinationIdForScores = destination.id; // Use slug for old destinations
+  } else if (destination.destinationId) {
+    // For new Viator destinations: database has numeric IDs, so pass numeric ID
+    destinationIdForScores = destination.destinationId;
+  } else {
+    // Fallback: try to get numeric ID, but query function will handle slug too
+    destinationIdForScores = destination.id;
   }
-  
-  // Fallback to destination.id if we still don't have a numeric ID
-  const destinationIdForScores = viatorDestinationId || destination.id;
   
   // Fetch promotion scores for this destination
   const promotionScores = await getPromotionScoresByDestination(destinationIdForScores);

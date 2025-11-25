@@ -403,6 +403,34 @@ export const calculateRestaurantPreferenceMatch = (userPreferences, restaurantVa
   const pros = [];
   const cons = [];
 
+  // Build matches object with all relevant scores FIRST (before using it)
+  // When using restaurant preferences, prioritize restaurant-specific metrics
+  const allMatches = {
+    timeOfDay: timeMatch,
+  };
+
+  if (useRestaurantPrefs) {
+    // Restaurant-specific matches (prioritize these)
+    allMatches.priceRange = priceMatch;
+    allMatches.features = featuresMatch;
+    allMatches.groupSize = groupSizeMatch;
+    allMatches.diningStyle = matches.structure; // Map structure to diningStyle for clarity
+    allMatches.food = matches.food; // Food & drink is still relevant
+  } else {
+    // Fallback to tour preferences - include all matches (but still use restaurant-friendly labels)
+    allMatches.structure = matches.structure; // Will be labeled as "Dining Style" in UI
+    allMatches.food = matches.food;
+    allMatches.group = matches.group; // Will be labeled as "Group Size" in UI
+    allMatches.budget = matches.budget; // Will be labeled as "Price Range" in UI
+    // Only include adventure and relaxExplore if they're significantly different from default
+    if (Math.abs(matches.adventure - 50) > 10) {
+      allMatches.adventure = matches.adventure;
+    }
+    if (Math.abs(matches.relaxExplore - 50) > 10) {
+      allMatches.relaxExplore = matches.relaxExplore;
+    }
+  }
+
   // Only include restaurant-relevant matches in pros/cons
   const restaurantRelevantMatches = { ...matches };
   if (useRestaurantPrefs) {
@@ -466,35 +494,6 @@ export const calculateRestaurantPreferenceMatch = (userPreferences, restaurantVa
     pros.push(`Meal timing aligns (${timeOfDay})`);
   } else if (timeMatch < 50) {
     cons.push(`Meal timing may not align (restaurant focuses on ${timeOfDay})`);
-  }
-
-  // Build matches object with all relevant scores
-  // When using restaurant preferences, prioritize restaurant-specific metrics
-  const allMatches = {
-    timeOfDay: timeMatch,
-  };
-
-  if (useRestaurantPrefs) {
-    // Restaurant-specific matches (prioritize these)
-    allMatches.priceRange = priceMatch;
-    allMatches.features = featuresMatch;
-    allMatches.groupSize = groupSizeMatch;
-    allMatches.diningStyle = matches.structure; // Map structure to diningStyle for clarity
-    allMatches.food = matches.food; // Food & drink is still relevant
-    // Don't include adventure, relaxExplore, budget, or group when restaurant prefs are set
-  } else {
-    // Fallback to tour preferences - include all matches (but still use restaurant-friendly labels)
-    allMatches.structure = matches.structure; // Will be labeled as "Dining Style" in UI
-    allMatches.food = matches.food;
-    allMatches.group = matches.group; // Will be labeled as "Group Size" in UI
-    allMatches.budget = matches.budget; // Will be labeled as "Price Range" in UI
-    // Only include adventure and relaxExplore if they're significantly different from default
-    if (Math.abs(matches.adventure - 50) > 10) {
-      allMatches.adventure = matches.adventure;
-    }
-    if (Math.abs(matches.relaxExplore - 50) > 10) {
-      allMatches.relaxExplore = matches.relaxExplore;
-    }
   }
 
   return {

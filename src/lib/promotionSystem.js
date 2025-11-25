@@ -722,20 +722,20 @@ export async function getPromotionScoresByDestination(destinationId) {
     const seenProductIds = new Set();
     
     for (const idToQuery of possibleIds) {
-      const { data, error } = await supabase
-        .from('tour_promotions')
-        .select('*')
+    const { data, error } = await supabase
+      .from('tour_promotions')
+      .select('*')
         .eq('destination_id', idToQuery)
-        .gt('total_score', 0); // Only tours with points
-      
+      .gt('total_score', 0); // Only tours with points
+
       if (!error && data) {
-        data.forEach(score => {
+      data.forEach(score => {
           // Only add if we haven't seen this product_id yet (avoid duplicates)
           if (!seenProductIds.has(score.product_id)) {
             seenProductIds.add(score.product_id);
             allScores[score.product_id] = score;
           }
-        });
+      });
       }
     }
 
@@ -799,12 +799,12 @@ export async function getTrendingToursByDestination(destinationId, limit = 6) {
     const seenProductIds = new Set();
     
     for (const idToQuery of possibleIds) {
-      const { data, error } = await supabase
-        .from('tour_promotions')
-        .select('*')
+    const { data, error } = await supabase
+      .from('tour_promotions')
+      .select('*')
         .eq('destination_id', idToQuery)
-        .gt('past_28_days_score', 0) // Only tours with points in last 28 days
-        .order('past_28_days_score', { ascending: false })
+      .gt('past_28_days_score', 0) // Only tours with points in last 28 days
+      .order('past_28_days_score', { ascending: false })
         .limit(limit * 2); // Get more to account for duplicates
       
       if (!error && data) {
@@ -813,7 +813,7 @@ export async function getTrendingToursByDestination(destinationId, limit = 6) {
           if (!seenProductIds.has(tour.product_id)) {
             seenProductIds.add(tour.product_id);
             allTours.push(tour);
-          }
+    }
         });
       }
     }
