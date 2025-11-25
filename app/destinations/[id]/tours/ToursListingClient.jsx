@@ -1600,7 +1600,7 @@ export default function ToursListingClient({
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {featuredTours.map((tour, index) => (
-                  <TourCard key={tour.productId || index} tour={tour} isFeatured={true} destination={destination} promotionScores={promotionScores} />
+                  <TourCard key={tour.productId || index} tour={tour} isFeatured={true} destination={destination} promotionScores={promotionScores} effectiveDestinationId={effectiveDestinationId} />
                 ))}
               </div>
             </div>
@@ -1614,7 +1614,7 @@ export default function ToursListingClient({
               )}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {regularTours.map((tour, index) => (
-                  <TourCard key={tour.productId || tour.productCode || index} tour={tour} isFeatured={false} destination={destination} promotionScores={promotionScores} />
+                  <TourCard key={tour.productId || tour.productCode || index} tour={tour} isFeatured={false} destination={destination} promotionScores={promotionScores} effectiveDestinationId={effectiveDestinationId} />
                 ))}
               </div>
             </div>
@@ -1870,7 +1870,7 @@ export default function ToursListingClient({
 }
 
 // Tour Card Component
-function TourCard({ tour, isFeatured, destination, promotionScores = {} }) {
+function TourCard({ tour, isFeatured, destination, promotionScores = {}, effectiveDestinationId = null }) {
   const productId = tour.productId || tour.productCode;
   const tourUrl = tour.slug 
     ? `/tours/${productId}/${tour.slug}` 
@@ -2085,7 +2085,7 @@ function TourCard({ tour, isFeatured, destination, promotionScores = {} }) {
               productId={productId} 
               compact={true}
               tourData={tour} // Pass tour data so we don't need to fetch from Viator!
-              destinationId={destination.id}
+              destinationId={effectiveDestinationId || destination?.destinationId || destination?.id}
               initialScore={promotionScores[productId] || {
                 product_id: productId,
                 total_score: 0,

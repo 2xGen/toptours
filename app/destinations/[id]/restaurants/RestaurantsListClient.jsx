@@ -17,12 +17,22 @@ import {
   ExternalLink,
   X,
   TrendingUp,
+  Info,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { getTourUrl } from '@/utils/tourHelpers';
 import { motion } from 'framer-motion';
+import RestaurantPromotionCard from '@/components/promotion/RestaurantPromotionCard';
+import TourPromotionCard from '@/components/promotion/TourPromotionCard';
+import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
+import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
+import { useToast } from '@/components/ui/use-toast';
+import { Heart } from 'lucide-react';
 
-export default function RestaurantsListClient({ destination, restaurants, trendingTours = [] }) {
+export default function RestaurantsListClient({ destination, restaurants, trendingTours = [], trendingRestaurants = [], restaurantPromotionScores = {} }) {
+  const { isBookmarked, toggle } = useRestaurantBookmarks();
+  const supabase = createSupabaseBrowserClient();
+  const { toast } = useToast();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [showStickyButton, setShowStickyButton] = React.useState(true);
 
@@ -154,20 +164,35 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
           </div>
         </section>
 
-        {/* Trending Tours Section */}
-        {trendingTours && trendingTours.length > 0 && (
-          <section className="py-12 bg-gray-50">
+        {/* Trending Now Section - Past 28 Days */}
+        {((trendingTours && trendingTours.length > 0) || (trendingRestaurants && trendingRestaurants.length > 0)) && (
+          <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center gap-2 mb-6">
                 <TrendingUp className="w-5 h-5 text-orange-600" />
-                <h2 className="text-2xl font-bold text-gray-900">Trending Tours in {destination.fullName}</h2>
+                <h2 className="text-2xl font-bold text-gray-900">Trending Now in {destination.fullName}</h2>
                 <Badge variant="secondary" className="ml-2 bg-orange-100 text-orange-700 border-orange-300">
                   Past 28 Days
                 </Badge>
               </div>
-              <p className="text-sm text-gray-600 mb-6">
-                Tours that are currently popular based on recent community boosts
+              <div className="flex items-center gap-2 mb-6">
+                <p className="text-sm text-gray-600">
+                  Tours and restaurants that are currently popular based on recent community boosts
               </p>
+                <Link 
+                  href="/how-it-works" 
+                  className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                  title="Learn how promotions work"
+                >
+                  <Info className="w-3.5 h-3.5" />
+                  <span>Learn more</span>
+                </Link>
+              </div>
+
+              {/* Trending Tours Subsection */}
+              {trendingTours && trendingTours.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Trending Tours Now in {destination.fullName}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {trendingTours.map((trending, index) => {
                   const tourId = trending.product_id;
@@ -183,52 +208,180 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
                       transition={{ duration: 0.4, delay: index * 0.1 }}
                       viewport={{ once: true }}
                     >
-                      <Card className="h-full overflow-hidden hover:shadow-lg transition-all">
-                        <Link href={tourUrl} className="block">
-                          <div className="relative h-48">
+                          <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <Link href={tourUrl}>
+                              <div className="relative h-48 overflow-hidden">
                             {trending.tour_image_url ? (
                               <img
                                 src={trending.tour_image_url}
                                 alt={trending.tour_name || 'Tour'}
-                                className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                                 onError={(e) => {
                                   e.target.src = destination.imageUrl || '/placeholder-tour.jpg';
                                 }}
                               />
                             ) : (
-                              <div className="w-full h-full bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
-                                <MapPin className="w-12 h-12 text-orange-300" />
+                                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                    <MapPin className="w-6 h-6 text-gray-400" />
+                                  </div>
+                                )}
+                                <div className="absolute top-3 left-3">
+                                  <Badge className="adventure-gradient text-white">
+                                    <TrendingUp className="w-3 h-3 mr-1" />
+                                    Trending
+                                  </Badge>
+                                </div>
+                              </div>
+                            </Link>
+
+                            <CardContent className="p-4 flex-1 flex flex-col">
+                              <Link href={tourUrl}>
+                                <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                  {trending.tour_name || `Tour #${tourId}`}
+                                </h3>
+                              </Link>
+
+                              {/* Promotion Score */}
+                              {tourId && (
+                              <div className="mb-3">
+                                <TourPromotionCard 
+                                  productId={tourId} 
+                                  compact={true}
+                                  initialScore={{
+                                    product_id: tourId,
+                                    total_score: trending.total_score || 0,
+                                    monthly_score: trending.monthly_score || 0,
+                                    weekly_score: trending.weekly_score || 0,
+                                    past_28_days_score: trending.past_28_days_score || 0,
+                                  }}
+                                />
                               </div>
                             )}
-                            <div className="absolute top-2 right-2">
-                              <Badge className="bg-orange-600 text-white">
-                                {trending.past_28_days_score?.toLocaleString() || 0} pts
+
+                              <Button
+                                asChild
+                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                              >
+                                <Link href={tourUrl}>
+                                  View Details
+                                  <ArrowRight className="w-4 h-4 ml-2" />
+                                </Link>
+                              </Button>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Trending Restaurants Subsection */}
+              {trendingRestaurants && trendingRestaurants.length > 0 && (
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Trending Restaurants Now in {destination.fullName}</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {trendingRestaurants.map((trending, index) => {
+                      if (!trending || !trending.restaurant_id) return null;
+                      
+                      const restaurantId = trending.restaurant_id;
+                      const restaurantUrl = trending.restaurant_slug && trending.destination_id
+                        ? `/destinations/${trending.destination_id}/restaurants/${trending.restaurant_slug}`
+                        : `/destinations/${destination.id}/restaurants`;
+                      
+                      return (
+                        <motion.div
+                          key={restaurantId || index}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.4, delay: index * 0.1 }}
+                          viewport={{ once: true }}
+                        >
+                          <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <Link href={restaurantUrl}>
+                              <div className="relative h-48 overflow-hidden">
+                                {trending.restaurant_image_url ? (
+                                  <img
+                                    src={trending.restaurant_image_url}
+                                    alt={trending.restaurant_name || 'Restaurant'}
+                                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                    onError={(e) => {
+                                      e.target.src = destination.imageUrl || '/placeholder-restaurant.jpg';
+                                    }}
+                                  />
+                                ) : (
+                                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                    <UtensilsCrossed className="w-6 h-6 text-gray-400" />
+                                  </div>
+                                )}
+                                <div className="absolute top-3 left-3">
+                                  <Badge className="adventure-gradient text-white">
+                                    <TrendingUp className="w-3 h-3 mr-1" />
+                                    Trending
                               </Badge>
                             </div>
                           </div>
-                          <CardContent className="p-4">
-                            <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2">
-                              {trending.tour_name || `Tour #${tourId}`}
+                            </Link>
+
+                            <CardContent className="p-4 flex-1 flex flex-col">
+                              <Link href={restaurantUrl}>
+                                <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                  {trending.restaurant_name || `Restaurant #${restaurantId}`}
                             </h3>
-                            {trending.region && (
-                              <Badge variant="outline" className="text-xs mb-2">
-                                {trending.region.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                              </Badge>
-                            )}
+                              </Link>
+
+                              {/* Promotion Score */}
+                              {restaurantId && (
+                              <div className="mb-3">
+                                <RestaurantPromotionCard 
+                                  restaurantId={restaurantId} 
+                                  compact={true}
+                                  initialScore={restaurantPromotionScores[restaurantId] || {
+                                    restaurant_id: restaurantId,
+                                    total_score: trending.total_score || 0,
+                                    monthly_score: trending.monthly_score || 0,
+                                    weekly_score: trending.weekly_score || 0,
+                                    past_28_days_score: trending.past_28_days_score || 0,
+                                  }}
+                                />
+                              </div>
+                              )}
+
+                              <Button
+                                asChild
+                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                              >
+                                <Link href={restaurantUrl}>
+                                  View Details
+                                  <ArrowRight className="w-4 h-4 ml-2" />
+                                </Link>
+                              </Button>
                           </CardContent>
-                        </Link>
                       </Card>
                     </motion.div>
                   );
                 })}
               </div>
+                </div>
+              )}
             </div>
           </section>
         )}
 
         {/* Restaurant sections */}
         <section className="py-8 sm:py-12">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Header */}
+            <div className="mb-8 sm:mb-10 text-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-900 mb-2">
+                View {restaurants.length} of Top Restaurants in {destination.fullName}
+              </h2>
+              <p className="text-gray-600 text-sm sm:text-base">
+                Discover our curated selection of the best dining experiences in {destination.fullName}
+              </p>
+            </div>
+
+            <div className="space-y-10">
             {restaurants.map((restaurant, index) => {
               const imageFirst = index % 2 === 0;
               return (
@@ -263,9 +416,41 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
                       <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
                         {restaurant.cuisines ? `${restaurant.cuisines.join(' · ')} restaurant in ${destination.fullName}` : `Restaurant in ${destination.fullName}`}
                       </span>
-                      <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">
+                      <div className="flex items-start justify-between gap-2">
+                        <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 flex-1">
                         {restaurant.name}
                       </h2>
+                        <button
+                          type="button"
+                          aria-label={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
+                          onClick={async (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const { data } = await supabase.auth.getUser();
+                            if (!data?.user) {
+                              toast({
+                                title: 'Sign in required',
+                                description: 'Create a free account to save restaurants to your favorites.',
+                              });
+                              return;
+                            }
+                            try {
+                              const wasBookmarked = isBookmarked(restaurant.id);
+                              await toggle(restaurant.id);
+                              toast({
+                                title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
+                                description: 'You can view your favorites in your profile.',
+                              });
+                            } catch (_) {}
+                          }}
+                          className={`ml-2 inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors ${
+                            isBookmarked(restaurant.id) ? 'text-red-600 bg-white' : 'text-gray-400 bg-white hover:text-red-500'
+                          }`}
+                          title={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
+                        >
+                          <Heart className="w-5 h-5" fill={isBookmarked(restaurant.id) ? 'currentColor' : 'none'} />
+                        </button>
+                      </div>
                       <p className="text-sm text-gray-600 leading-relaxed">
                         {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
                       </p>
@@ -289,6 +474,23 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
                         )}
                       </div>
 
+                      {/* Restaurant Promotion Card */}
+                      {restaurant.id && (
+                        <div className="mt-2">
+                          <RestaurantPromotionCard
+                            restaurantId={restaurant.id}
+                            compact={true}
+                            initialScore={restaurantPromotionScores[restaurant.id] || {
+                              restaurant_id: restaurant.id,
+                              total_score: 0,
+                              monthly_score: 0,
+                              weekly_score: 0,
+                              past_28_days_score: 0,
+                            }}
+                          />
+                        </div>
+                      )}
+
                       <div className="mt-auto pt-4">
                         <Button asChild className="sunset-gradient text-white font-semibold gap-2">
                           <Link href={`/destinations/${destination.id}/restaurants/${restaurant.slug}`}>
@@ -302,6 +504,7 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
                 </Card>
               );
             })}
+            </div>
           </div>
         </section>
 

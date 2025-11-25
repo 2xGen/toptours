@@ -239,13 +239,30 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                   style={{ transform: `translateX(-${boostCarouselIndex * 100}%)` }}
                 >
                   {recentBoosts.map((boost, index) => {
+                    // Check if this is a restaurant promotion
+                    const isRestaurant = !!boost.restaurant_id;
+                    const restaurantData = boost.restaurantData;
                     const tourData = boost.tourData;
-                    const image = getTourImage(tourData);
-                    const title = getTourTitle(tourData, boost.product_id);
-                    // Use slug from cached data if available, otherwise generate from title
-                    const tourUrl = tourData?.slug 
-                      ? `/tours/${boost.product_id}/${tourData.slug}`
-                      : (tourData ? getTourUrl(boost.product_id, title) : `/tours/${boost.product_id}`);
+                    
+                    // Get image, title, and URL based on type
+                    let image, title, itemUrl, itemType;
+                    if (isRestaurant && restaurantData) {
+                      image = restaurantData.image;
+                      title = restaurantData.name || `Restaurant #${boost.restaurant_id}`;
+                      const destSlug = restaurantData.destination_slug || restaurantData.destination_id;
+                      itemUrl = restaurantData.slug && destSlug
+                        ? `/destinations/${destSlug}/restaurants/${restaurantData.slug}`
+                        : `/destinations/${destSlug}/restaurants`;
+                      itemType = 'restaurant';
+                    } else {
+                      image = getTourImage(tourData);
+                      title = getTourTitle(tourData, boost.product_id);
+                      itemUrl = tourData?.slug 
+                        ? `/tours/${boost.product_id}/${tourData.slug}`
+                        : (tourData ? getTourUrl(boost.product_id, title) : `/tours/${boost.product_id}`);
+                      itemType = 'tour';
+                    }
+                    
                     const displayName = boost.profiles?.display_name?.trim();
                     const userName = displayName && displayName.length > 0 
                       ? displayName 
@@ -281,17 +298,23 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                                     alt={title}
                                     className="w-full h-full object-cover"
                                     onError={(e) => {
-                                      e.target.src = "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800";
+                                      e.target.src = isRestaurant 
+                                        ? "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
+                                        : "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800";
                                     }}
                                   />
                                 ) : (
                                   <div className="w-full h-full bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
-                                    <Trophy className="w-8 h-8 text-orange-300" />
+                                    {isRestaurant ? (
+                                      <Star className="w-8 h-8 text-orange-300" />
+                                    ) : (
+                                      <Trophy className="w-8 h-8 text-orange-300" />
+                                    )}
                                   </div>
                                 )}
                               </div>
                               <div className="flex-1 min-w-0 w-full relative">
-                                {/* Tour Title - Full width on mobile */}
+                                {/* Title - Full width on mobile */}
                                 <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 text-base sm:text-sm pr-0 sm:pr-24">
                                   {title}
                                 </h3>
@@ -330,10 +353,10 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                                   </div>
                                 </div>
                                 
-                                {/* View Tour Button - Full width on mobile, absolute on desktop */}
-                                <Link href={tourUrl} className="block mt-3 sm:mt-0 sm:absolute sm:top-0 sm:right-0">
+                                {/* View Button - Full width on mobile, absolute on desktop */}
+                                <Link href={itemUrl} className="block mt-3 sm:mt-0 sm:absolute sm:top-0 sm:right-0">
                                   <Button variant="outline" size="sm" className="w-full sm:w-auto">
-                                    View Tour
+                                    {isRestaurant ? 'View Restaurant' : 'View Tour'}
                                     <ArrowRight className="w-4 h-4 ml-1" />
                                   </Button>
                                 </Link>
@@ -617,9 +640,10 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                   const restaurantData = restaurant.restaurantData;
                   const image = restaurantData?.image || null;
                   const name = restaurantData?.name || `Restaurant #${restaurant.restaurant_id}`;
-                  const restaurantUrl = restaurantData?.slug && restaurantData?.destination_id
-                    ? `/destinations/${restaurantData.destination_id}/restaurants/${restaurantData.slug}`
-                    : `/destinations/${restaurant.destination_id}/restaurants`;
+                  const destSlug = restaurantData?.destination_slug || restaurantData?.destination_id || restaurant.destination_id;
+                  const restaurantUrl = restaurantData?.slug && destSlug
+                    ? `/destinations/${destSlug}/restaurants/${restaurantData.slug}`
+                    : `/destinations/${destSlug}/restaurants`;
 
                   return (
                     <motion.div

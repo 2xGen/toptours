@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy } from 'lucide-react';
+import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy, UtensilsCrossed } from 'lucide-react';
 import { SUBSCRIPTION_PRICING } from '@/lib/promotionSystem';
 import { toast } from '@/components/ui/use-toast';
 import Link from 'next/link';
@@ -23,6 +23,7 @@ export default function ProfilePage() {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(true);
   const [savedTours, setSavedTours] = useState([]);
+  const [savedRestaurants, setSavedRestaurants] = useState([]);
   const [loadingSaved, setLoadingSaved] = useState(false);
   const [activeTab, setActiveTab] = useState('saved'); // 'profile' | 'trip' | 'saved' | 'plan'
   const [planTier, setPlanTier] = useState('free');
@@ -43,7 +44,7 @@ export default function ProfilePage() {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const tab = params.get('tab');
-      if (tab === 'trip' || tab === 'profile' || tab === 'plan') {
+      if (tab === 'trip' || tab === 'profile' || tab === 'plan' || tab === 'restaurant') {
         setActiveTab(tab);
       }
     }
@@ -62,6 +63,15 @@ export default function ProfilePage() {
     maxPricePerPerson: '',
     mustHaveFlags: [],
     avoidTags: [],
+  });
+
+  const [restaurantPreferences, setRestaurantPreferences] = useState({
+    priceRange: 'any', // 'any', '$', '$$', '$$$', '$$$$'
+    mealTime: 'any', // 'any', 'breakfast', 'lunch', 'dinner'
+    atmosphere: 'any', // 'any', 'casual', 'relaxed', 'upscale', 'fine_dining'
+    groupSize: 'any', // 'any', 'solo', 'couple', 'family', 'groups'
+    features: [], // ['outdoor_seating', 'live_music', 'dog_friendly', 'family_friendly', 'reservations']
+    diningStyle: 50, // 0-100: 0 = casual/walk-in, 100 = formal/reservations required
   });
 
   useEffect(() => {
@@ -116,6 +126,13 @@ export default function ProfilePage() {
                 ...prev,
                 ...prefs,
               }));
+              // Extract restaurant preferences if they exist
+              if (prefs.restaurantPreferences) {
+                setRestaurantPreferences((prev) => ({
+                  ...prev,
+                  ...prefs.restaurantPreferences,
+                }));
+              }
             } catch {
               // ignore malformed JSON
             }
@@ -142,29 +159,49 @@ export default function ProfilePage() {
     }
   }, [loading, user, router]);
 
-  // Load saved bookmarks -> tour details
+  // Load saved bookmarks -> tour and restaurant details
   useEffect(() => {
     const loadSaved = async () => {
       if (!user) return;
       setLoadingSaved(true);
       try {
-        const res = await fetch(`/api/internal/bookmarks?userId=${encodeURIComponent(user.id)}`);
-        const json = await res.json();
-        const bookmarks = json.bookmarks || [];
+        // Fetch tour bookmarks
+        const toursRes = await fetch(`/api/internal/bookmarks?userId=${encodeURIComponent(user.id)}`);
+        const toursJson = await toursRes.json();
+        const tourBookmarks = toursJson.bookmarks || [];
         // Fetch product details in parallel (cap to 24 for speed)
-        const items = await Promise.all(
-          bookmarks.slice(0, 24).map(async (b) => {
+        const tourItems = await Promise.all(
+          tourBookmarks.slice(0, 24).map(async (b) => {
             try {
               const r = await fetch(`/api/internal/viator-product/${encodeURIComponent(b.product_id)}`);
               if (!r.ok) return null;
               const data = await r.json();
-              return { productId: b.product_id, tour: data };
+              return { productId: b.product_id, tour: data, type: 'tour' };
             } catch {
               return null;
             }
           })
         );
-        setSavedTours(items.filter(Boolean));
+        setSavedTours(tourItems.filter(Boolean));
+
+        // Fetch restaurant bookmarks
+        const restaurantsRes = await fetch(`/api/internal/restaurant-bookmarks?userId=${encodeURIComponent(user.id)}`);
+        const restaurantsJson = await restaurantsRes.json();
+        const restaurantBookmarks = restaurantsJson.bookmarks || [];
+        // Fetch restaurant details in parallel (cap to 24 for speed)
+        const restaurantItems = await Promise.all(
+          restaurantBookmarks.slice(0, 24).map(async (b) => {
+            try {
+              const r = await fetch(`/api/internal/restaurant/${encodeURIComponent(b.restaurant_id)}`);
+              if (!r.ok) return null;
+              const data = await r.json();
+              return { restaurantId: b.restaurant_id, restaurant: data, type: 'restaurant' };
+            } catch {
+              return null;
+            }
+          })
+        );
+        setSavedRestaurants(restaurantItems.filter(Boolean));
       } finally {
         setLoadingSaved(false);
       }
@@ -238,11 +275,50 @@ export default function ProfilePage() {
     try {
       const { error } = await supabase
         .from('profiles')
-        .upsert({ id: user.id, display_name: displayName, trip_preferences: tripPreferences });
+        .upsert({ 
+          id: user.id, 
+          display_name: displayName, 
+          trip_preferences: {
+            ...tripPreferences,
+            restaurantPreferences: restaurantPreferences,
+          }
+        });
       if (error) throw error;
+      
+      // Invalidate cache so fresh data is fetched next time
+      try {
+        const { invalidateProfileCache } = await import('@/lib/supabaseCache');
+        invalidateProfileCache(user.id);
+      } catch (cacheError) {
+        console.warn('Could not invalidate cache:', cacheError);
+      }
+      
+      // Show success toast based on active tab
+      if (activeTab === 'trip') {
+        toast({
+          title: 'Travel preferences saved',
+          description: 'Your travel preferences have been updated successfully.',
+        });
+      } else if (activeTab === 'restaurant') {
+        toast({
+          title: 'Restaurant preferences saved',
+          description: 'Your restaurant preferences have been updated successfully.',
+        });
+      } else {
+        toast({
+          title: 'Profile updated',
+          description: 'Your profile has been updated successfully.',
+        });
+      }
       setMessage('Profile updated.');
     } catch (err) {
-      setMessage(err.message || 'Failed to save profile.');
+      const errorMessage = err.message || 'Failed to save profile.';
+      setMessage(errorMessage);
+      toast({
+        title: 'Failed to save',
+        description: errorMessage,
+        variant: 'destructive',
+      });
     } finally {
       setSaving(false);
     }
@@ -407,13 +483,19 @@ export default function ProfilePage() {
                 onClick={() => setActiveTab('trip')}
                 className={`w-full text-left px-3 py-2 rounded-lg ${activeTab === 'trip' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
               >
-                Trip Preferences
+                Tour Preferences
+              </button>
+              <button
+                onClick={() => setActiveTab('restaurant')}
+                className={`w-full text-left px-3 py-2 rounded-lg ${activeTab === 'restaurant' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
+              >
+                Restaurant Preferences
               </button>
               <button
                 onClick={() => setActiveTab('saved')}
                 className={`w-full text-left px-3 py-2 rounded-lg ${activeTab === 'saved' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
               >
-                Saved Tours
+                Saved Tours & Restaurants
               </button>
               <button
                 onClick={() => setActiveTab('plan')}
@@ -801,22 +883,249 @@ export default function ProfilePage() {
               </div>
             )}
 
+            {activeTab === 'restaurant' && (
+              <div className="bg-white rounded-xl shadow p-4 sm:p-6 space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  <div className="flex-1">
+                    <h1 className="text-xl sm:text-2xl font-semibold mb-1">Restaurant Preferences</h1>
+                    <p className="text-sm text-gray-600 max-w-xl">
+                      Tell us your dining preferences so we can match you with restaurants that fit your style.
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-xs font-medium text-orange-700 self-start sm:self-auto">
+                    <span>🍽️</span>
+                    Powers restaurant matching
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+                  {/* Left column - Simple selects */}
+                  <div className="space-y-5">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-800 mb-1">
+                        💰 Price Range
+                      </label>
+                      <select
+                        className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-purple-500 focus:ring-purple-500"
+                        value={restaurantPreferences.priceRange}
+                        onChange={(e) =>
+                          setRestaurantPreferences((prev) => ({ ...prev, priceRange: e.target.value }))
+                        }
+                      >
+                        <option value="any">Any price range</option>
+                        <option value="$">$ - Budget friendly</option>
+                        <option value="$$">$$ - Moderate</option>
+                        <option value="$$$">$$$ - Upscale</option>
+                        <option value="$$$$">$$$$ - Fine dining</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-800 mb-1">
+                        🕐 Preferred Meal Time
+                      </label>
+                      <select
+                        className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-purple-500 focus:ring-purple-500"
+                        value={restaurantPreferences.mealTime}
+                        onChange={(e) =>
+                          setRestaurantPreferences((prev) => ({ ...prev, mealTime: e.target.value }))
+                        }
+                      >
+                        <option value="any">Any time</option>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-800 mb-1">
+                        👥 Group Size
+                      </label>
+                      <select
+                        className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-purple-500 focus:ring-purple-500"
+                        value={restaurantPreferences.groupSize}
+                        onChange={(e) =>
+                          setRestaurantPreferences((prev) => ({ ...prev, groupSize: e.target.value }))
+                        }
+                      >
+                        <option value="any">Any group size</option>
+                        <option value="solo">Solo dining</option>
+                        <option value="couple">Couple / date night</option>
+                        <option value="family">Family with children</option>
+                        <option value="groups">Large groups</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Right column - Three-option cards */}
+                  <div className="space-y-6">
+                    {/* Atmosphere */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-800 mb-3">
+                        🎭 What kind of atmosphere do you prefer?
+                      </label>
+                      <div className="grid grid-cols-3 gap-3">
+                        {[
+                          { value: 'casual', label: '😌 Casual', desc: 'Relaxed & laid-back' },
+                          { value: 'relaxed', label: '🌳 Outdoor', desc: 'Al fresco dining' },
+                          { value: 'upscale', label: '✨ Upscale', desc: 'Refined experience' },
+                        ].map((option) => (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() =>
+                              setRestaurantPreferences((prev) => ({
+                                ...prev,
+                                atmosphere: restaurantPreferences.atmosphere === option.value ? 'any' : option.value,
+                              }))
+                            }
+                            className={`relative p-4 rounded-xl border-2 transition-all duration-200 transform hover:scale-105 ${
+                              restaurantPreferences.atmosphere === option.value
+                                ? 'border-orange-500 bg-gradient-to-br from-orange-50 to-orange-100 shadow-lg scale-105'
+                                : 'border-gray-200 bg-white hover:border-orange-300 hover:bg-orange-50'
+                            }`}
+                          >
+                            <div className="text-2xl mb-1">{option.label.split(' ')[0]}</div>
+                            <div className="text-xs font-semibold text-gray-700 mb-1">
+                              {option.label.split(' ').slice(1).join(' ')}
+                            </div>
+                            <div className="text-xs text-gray-500">{option.desc}</div>
+                            {restaurantPreferences.atmosphere === option.value && (
+                              <div className="absolute top-2 right-2">
+                                <div className="w-5 h-5 rounded-full bg-orange-500 flex items-center justify-center">
+                                  <span className="text-white text-xs">✓</span>
+                                </div>
+                              </div>
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Dining Style */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-800 mb-3">
+                        🍽️ Do you prefer casual walk-ins or formal reservations?
+                      </label>
+                      <div className="grid grid-cols-3 gap-3">
+                        {[
+                          { value: 25, label: '🚶 Casual', desc: 'Walk-in friendly' },
+                          { value: 50, label: '⚖️ Flexible', desc: 'Either way' },
+                          { value: 75, label: '📋 Formal', desc: 'Reservations preferred' },
+                        ].map((option) => (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() =>
+                              setRestaurantPreferences((prev) => ({
+                                ...prev,
+                                diningStyle: option.value,
+                              }))
+                            }
+                            className={`relative p-4 rounded-xl border-2 transition-all duration-200 transform hover:scale-105 ${
+                              restaurantPreferences.diningStyle === option.value
+                                ? 'border-orange-500 bg-gradient-to-br from-orange-50 to-orange-100 shadow-lg scale-105'
+                                : 'border-gray-200 bg-white hover:border-orange-300 hover:bg-orange-50'
+                            }`}
+                          >
+                            <div className="text-2xl mb-1">{option.label.split(' ')[0]}</div>
+                            <div className="text-xs font-semibold text-gray-700 mb-1">
+                              {option.label.split(' ').slice(1).join(' ')}
+                            </div>
+                            <div className="text-xs text-gray-500">{option.desc}</div>
+                            {restaurantPreferences.diningStyle === option.value && (
+                              <div className="absolute top-2 right-2">
+                                <div className="w-5 h-5 rounded-full bg-orange-500 flex items-center justify-center">
+                                  <span className="text-white text-xs">✓</span>
+                                </div>
+                              </div>
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Features */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-800 mb-3">
+                        ✨ Features & Amenities (select all that apply)
+                      </label>
+                      <div className="grid grid-cols-2 gap-3">
+                        {[
+                          { value: 'outdoor_seating', label: '🌳 Outdoor Seating', desc: 'Al fresco dining' },
+                          { value: 'live_music', label: '🎵 Live Music', desc: 'Entertainment' },
+                          { value: 'dog_friendly', label: '🐕 Dog Friendly', desc: 'Bring your pup' },
+                          { value: 'family_friendly', label: '👨‍👩‍👧 Family Friendly', desc: 'Kids welcome' },
+                          { value: 'reservations', label: '📅 Reservations', desc: 'Book ahead' },
+                        ].map((feature) => (
+                          <button
+                            key={feature.value}
+                            type="button"
+                            onClick={() => {
+                              const currentFeatures = restaurantPreferences.features || [];
+                              const isSelected = currentFeatures.includes(feature.value);
+                              setRestaurantPreferences((prev) => ({
+                                ...prev,
+                                features: isSelected
+                                  ? currentFeatures.filter((f) => f !== feature.value)
+                                  : [...currentFeatures, feature.value],
+                              }));
+                            }}
+                            className={`relative p-3 rounded-xl border-2 transition-all duration-200 text-left ${
+                              (restaurantPreferences.features || []).includes(feature.value)
+                                ? 'border-orange-500 bg-gradient-to-br from-orange-50 to-orange-100 shadow-md'
+                                : 'border-gray-200 bg-white hover:border-orange-300 hover:bg-orange-50'
+                            }`}
+                          >
+                            <div className="text-sm font-semibold text-gray-700 mb-0.5">
+                              {feature.label}
+                            </div>
+                            <div className="text-xs text-gray-500">{feature.desc}</div>
+                            {(restaurantPreferences.features || []).includes(feature.value) && (
+                              <div className="absolute top-2 right-2">
+                                <div className="w-5 h-5 rounded-full bg-orange-500 flex items-center justify-center">
+                                  <span className="text-white text-xs">✓</span>
+                                </div>
+                              </div>
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t mt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <Button onClick={handleSave} disabled={saving} className="sunset-gradient text-white">
+                    {saving ? 'Saving…' : 'Save Restaurant Preferences'}
+                  </Button>
+                  <p className="text-xs sm:text-sm text-gray-600">
+                    These preferences help us match you with restaurants that fit your dining style.
+                  </p>
+                </div>
+              </div>
+            )}
+
             {activeTab === 'saved' && (
               <div>
                 <div className="mb-4 flex items-center justify-between">
-                  <h1 className="text-2xl font-semibold">Saved Tours</h1>
-                  {savedTours.length > 0 && (
-                    <span className="text-sm text-gray-500">{savedTours.length} item{savedTours.length > 1 ? 's' : ''}</span>
+                  <h1 className="text-2xl font-semibold">Saved Tours & Restaurants</h1>
+                  {(savedTours.length + savedRestaurants.length) > 0 && (
+                    <span className="text-sm text-gray-500">
+                      {savedTours.length + savedRestaurants.length} item{(savedTours.length + savedRestaurants.length) > 1 ? 's' : ''}
+                    </span>
                   )}
                 </div>
                 {loadingSaved ? (
-                  <p className="text-gray-600">Loading your saved tours…</p>
-                ) : savedTours.length === 0 ? (
+                  <p className="text-gray-600">Loading your saved items…</p>
+                ) : savedTours.length === 0 && savedRestaurants.length === 0 ? (
                   <div className="text-gray-600 bg-white rounded-xl shadow p-6">
-                    You haven’t saved any tours yet. Browse destinations and tap the heart to save your favorites.
+                    You haven't saved any tours or restaurants yet. Browse destinations and tap the heart to save your favorites.
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {/* Render saved tours */}
                     {savedTours.map(({ productId, tour }) => {
                       const image =
                         tour?.images?.[0]?.variants?.[3]?.url ||
@@ -991,6 +1300,120 @@ export default function ProfilePage() {
                                 </a>
                               </Button>
                             </div>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                    {/* Render saved restaurants */}
+                    {savedRestaurants.map(({ restaurantId, restaurant }) => {
+                      const image = restaurant?.heroImage || '';
+                      const rating = restaurant?.ratings?.googleRating || 0;
+                      const reviewCount = restaurant?.ratings?.reviewCount || 0;
+                      const priceRange = restaurant?.pricing?.priceRange || '';
+                      const name = restaurant?.name || 'Restaurant';
+                      const tagline = restaurant?.tagline || restaurant?.description || '';
+                      const destinationId = restaurant?.destinationId || '';
+                      const slug = restaurant?.slug || '';
+                      const restaurantUrl = slug 
+                        ? `/destinations/${destinationId}/restaurants/${slug}`
+                        : `/destinations/${destinationId}/restaurants`;
+                      
+                      return (
+                        <Card key={restaurantId} className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300">
+                          <Link href={restaurantUrl}>
+                            <div className="relative h-48 overflow-hidden">
+                              {image && (
+                                <img
+                                  src={image}
+                                  alt={name}
+                                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                />
+                              )}
+                              {priceRange && (
+                                <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 z-20">
+                                  <span className="text-sm font-bold text-orange-600">
+                                    {priceRange}
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          </Link>
+
+                          <CardContent className="p-4 flex flex-col flex-grow">
+                            <div className="flex items-start justify-between gap-2 mb-2">
+                              <Link href={restaurantUrl} className="flex-1">
+                                <h3 className="font-semibold text-lg text-gray-800 line-clamp-2 hover:text-purple-600 transition-colors">
+                                  {name}
+                                </h3>
+                              </Link>
+                              <button
+                                type="button"
+                                aria-label="Saved"
+                                onClick={async (e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  const { data } = await supabase.auth.getUser();
+                                  if (!data?.user) {
+                                    toast({
+                                      title: 'Sign in required',
+                                      description: 'Create a free account to save restaurants to your favorites.',
+                                    });
+                                    return;
+                                  }
+                                  try {
+                                    await fetch(`/api/internal/restaurant-bookmarks/${encodeURIComponent(restaurantId)}`, {
+                                      method: 'DELETE',
+                                      headers: { 'Content-Type': 'application/json' },
+                                      body: JSON.stringify({ userId: data.user.id }),
+                                    });
+                                    // Optimistically remove from list
+                                    setSavedRestaurants((prev) => prev.filter((r) => r.restaurantId !== restaurantId));
+                                    toast({
+                                      title: 'Removed from favorites',
+                                      description: 'This restaurant was removed from your saved list.',
+                                    });
+                                  } catch {}
+                                }}
+                                className="ml-2 inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors text-red-600 bg-white"
+                                title="Saved"
+                              >
+                                <Heart className="w-5 h-5" fill="currentColor" />
+                              </button>
+                            </div>
+
+                            <p className="text-sm text-gray-600 mb-3 line-clamp-2 flex-grow">
+                              {tagline}
+                            </p>
+
+                            <div className="flex items-center justify-between mb-3">
+                              {rating > 0 && (
+                                <div className="flex items-center">
+                                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                                  <span className="font-medium text-gray-700 ml-1 text-sm" suppressHydrationWarning>
+                                    {typeof rating === 'number' ? rating.toFixed(1) : rating}
+                                  </span>
+                                  <span className="text-gray-500 text-xs ml-1" suppressHydrationWarning>
+                                    ({typeof reviewCount === 'number' ? reviewCount.toLocaleString('en-US') : reviewCount})
+                                  </span>
+                                </div>
+                              )}
+                              {restaurant?.cuisines && restaurant.cuisines.length > 0 && (
+                                <div className="flex items-center text-gray-600 text-sm">
+                                  <UtensilsCrossed className="w-4 h-4 mr-1" />
+                                  <span className="line-clamp-1">{restaurant.cuisines[0]}</span>
+                                </div>
+                              )}
+                            </div>
+
+                            <Button
+                              asChild
+                              className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                            >
+                              <Link href={restaurantUrl}>
+                                View Details
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                              </Link>
+                            </Button>
                           </CardContent>
                         </Card>
                       );

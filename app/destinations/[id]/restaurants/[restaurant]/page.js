@@ -202,22 +202,22 @@ export default async function RestaurantPage({ params }) {
     }
   }
 
-  // Get trending tours for this destination
+  // Get trending tours for this destination - limit to 3
   let trendingTours = [];
   try {
-    trendingTours = await getTrendingToursByDestination(destinationId, 6);
+    trendingTours = await getTrendingToursByDestination(destinationId, 3);
   } catch (error) {
     console.error('Error fetching trending tours:', error);
   }
 
-  // Get trending restaurants for this destination (excluding current restaurant)
+  // Get trending restaurants for this destination (excluding current restaurant) - limit to 3
   let trendingRestaurants = [];
   try {
     const allTrending = await getTrendingRestaurantsByDestination(destinationId, 10);
     // Filter out current restaurant and format for frontend
     trendingRestaurants = allTrending
       .filter(tr => tr.restaurant_id !== restaurant.id)
-      .slice(0, 6)
+      .slice(0, 3)
       .map(tr => {
         // Find matching restaurant from otherRestaurants or create minimal object
         const matchingRestaurant = otherRestaurants.find(r => r.id === tr.restaurant_id);

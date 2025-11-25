@@ -9,7 +9,7 @@ const HowItWorksHighlights = () => {
     {
       icon: Users,
       title: 'Community-Driven',
-      description: 'You decide which tours deserve the spotlight. Boost tours you love with daily points.',
+      description: 'You decide which tours and restaurants deserve the spotlight. Boost listings you love with daily points. The most-boosted rise to the top, appearing in "Trending Now" sections across destination pages.',
       color: 'orange',
       gradient: 'from-orange-50 to-yellow-50',
       border: 'border-orange-200',
@@ -18,7 +18,7 @@ const HowItWorksHighlights = () => {
     {
       icon: Brain,
       title: 'AI-Powered Matching',
-      description: 'Get personalized tour recommendations that actually fit your travel style with detailed match scores.',
+      description: 'Get personalized tour and restaurant recommendations that actually fit your travel style. See 0-100% match scores with detailed breakdowns explaining why listings match (or don\'t).',
       color: 'purple',
       gradient: 'from-purple-50 to-pink-50',
       border: 'border-purple-200',
@@ -27,7 +27,7 @@ const HowItWorksHighlights = () => {
     {
       icon: Trophy,
       title: 'Real-Time Rankings',
-      description: 'See which tours are trending and climb the global leaderboard based on community preference.',
+      description: 'See which tours and restaurants are trending right now. Climb the global leaderboard based on community preference. Rankings update in real-time as travelers boost their favorites.',
       color: 'yellow',
       gradient: 'from-yellow-50 to-orange-50',
       border: 'border-yellow-200',
@@ -36,8 +36,8 @@ const HowItWorksHighlights = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ const HowItWorksHighlights = () => {
             How TopTours.ai<span className="text-xs align-super">™</span> Works
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover tours that match your style through community-driven promotion and AI-powered matching.
+            The first platform where <strong>you control what's trending</strong>. Boost tours and restaurants you love, get AI recommendations that match your style, and see real-time rankings based on community preference — not algorithms.
           </p>
         </motion.div>
 

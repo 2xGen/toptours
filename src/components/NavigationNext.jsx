@@ -106,7 +106,6 @@ const NavigationNext = () => {
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'How It Works', path: '/how-it-works' },
     { name: 'Destinations', path: '/destinations' },
     { name: 'Tours', path: '/tours' },
     { name: 'Restaurants', path: '/restaurants' },
@@ -133,11 +132,19 @@ const NavigationNext = () => {
                 {item.name}
               </Link>
             ))}
+            <Link
+              href="/leaderboard"
+              className={`text-white hover:text-blue-200 transition-colors ${
+                pathname === '/leaderboard' ? 'font-semibold text-blue-100' : ''
+              }`}
+            >
+              Leaderboard
+            </Link>
             <Button
               asChild
               className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200"
             >
-              <Link href="/leaderboard">Leaderboard</Link>
+              <Link href="/how-it-works">How It Works</Link>
             </Button>
             {!authLoading && user ? (
               <Link
@@ -186,12 +193,21 @@ const NavigationNext = () => {
                 {item.name}
               </Link>
             ))}
+            <Link
+              href="/leaderboard"
+              className={`block py-2 text-white hover:text-yellow-300 transition-colors duration-200 ${
+                pathname === '/leaderboard' ? 'text-yellow-300 font-semibold' : ''
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              Leaderboard
+            </Link>
             <Button
               asChild
               className="w-full mt-4 sunset-gradient text-white font-semibold"
             >
-              <Link href="/leaderboard" onClick={() => setIsOpen(false)}>
-                Leaderboard
+              <Link href="/how-it-works" onClick={() => setIsOpen(false)}>
+                How It Works
               </Link>
             </Button>
             {/* Auth Section */}

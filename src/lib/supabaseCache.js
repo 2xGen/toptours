@@ -122,6 +122,45 @@ export function invalidateEnrichmentCache(productId) {
 }
 
 /**
+ * Fetch a Viator destination record (by destinationId) with caching
+ */
+export async function getViatorDestinationById(destinationId) {
+  if (!destinationId) return null;
+
+  const normalizedId = destinationId.toString().replace(/^d/i, '');
+  const memoryKey = `viator_destination_${normalizedId}`;
+  const cached = getMemoryCache(memoryKey);
+  if (cached) {
+    return cached;
+  }
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    const { data, error } = await supabase
+      .from('viator_destinations')
+      .select('id, name, slug, country, region, type')
+      .eq('id', normalizedId)
+      .maybeSingle();
+
+    if (error) {
+      console.error('Error querying viator_destinations:', error.message || error);
+      return null;
+    }
+
+    if (!data) {
+      console.warn(`viator_destinations lookup returned null for ID ${normalizedId}`);
+      return null;
+    }
+
+    setMemoryCache(memoryKey, data);
+    return data;
+  } catch (error) {
+    console.error('Error fetching viator destination:', error.message || error);
+    return null;
+  }
+}
+
+/**
  * Batch view count updates
  * Instead of updating on every page view, we can batch them
  */

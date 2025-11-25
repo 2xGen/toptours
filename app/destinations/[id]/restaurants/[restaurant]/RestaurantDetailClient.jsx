@@ -13,6 +13,10 @@ import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import RestaurantPromotionCard from '@/components/promotion/RestaurantPromotionCard';
 import { getTourUrl } from '@/utils/tourHelpers';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
+import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
+import { useToast } from '@/components/ui/use-toast';
+import { extractRestaurantStructuredValues, getRestaurantTimeOfDay } from '@/lib/restaurantMatching';
+import { useRouter } from 'next/navigation';
 import {
   MapPin,
   Phone,
@@ -42,6 +46,7 @@ import {
   CheckCircle2,
   XCircle,
   TrendingUp,
+  Heart,
 } from 'lucide-react';
 
 export default function RestaurantDetailClient({ destination, restaurant, otherRestaurants, initialPromotionScore = null, trendingTours = [], trendingRestaurants = [] }) {
@@ -51,6 +56,15 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
   const [authLoading, setAuthLoading] = useState(true);
   const [showSignInModal, setShowSignInModal] = useState(false);
   const supabase = createSupabaseBrowserClient();
+  const { isBookmarked, toggle } = useRestaurantBookmarks();
+  const { toast } = useToast();
+  const router = useRouter();
+  const [isGeneratingMatch, setIsGeneratingMatch] = useState(false);
+  const [matchError, setMatchError] = useState(null);
+  const [showMatchResultsModal, setShowMatchResultsModal] = useState(false);
+  const [matchData, setMatchData] = useState(null);
+  const [showMatchModal, setShowMatchModal] = useState(false);
+  const [matchModalMessage, setMatchModalMessage] = useState('');
 
   // Check authentication status
   useEffect(() => {
@@ -100,6 +114,25 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
   if (!destination || !restaurant) {
     return null;
   }
+
+  // Extract restaurant structured values (formula-based, no AI needed)
+  const restaurantValues = extractRestaurantStructuredValues(restaurant);
+  
+  // Get meal time availability
+  const mealTimeAvailability = getRestaurantTimeOfDay(restaurant);
+  
+  // Derive atmosphere from features
+  const getAtmosphere = () => {
+    if (restaurant.pricing?.priceRangeLabel?.toLowerCase().includes('fine dining') || 
+        restaurant.pricing?.priceRange === '$$$$') {
+      return { value: 75, label: 'Upscale', description: 'Refined and elegant dining experience' };
+    }
+    if (restaurant.outdoorSeating) {
+      return { value: 25, label: 'Outdoor', description: 'Al fresco dining with outdoor seating' };
+    }
+    return { value: 15, label: 'Casual', description: 'Relaxed and laid-back atmosphere' };
+  };
+  const atmosphere = getAtmosphere();
 
   const cuisines = restaurant.cuisines || [];
   const hours = restaurant.hours || [];
@@ -341,9 +374,41 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                     {headingCuisine}
                   </span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white mb-4 md:mb-6">
-                  {restaurant.name}
-                </h1>
+                <div className="flex items-start justify-between gap-4 mb-4 md:mb-6">
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex-1">
+                    {restaurant.name}
+                  </h1>
+                  <button
+                    type="button"
+                    aria-label={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      const { data } = await supabase.auth.getUser();
+                      if (!data?.user) {
+                        toast({
+                          title: 'Sign in required',
+                          description: 'Create a free account to save restaurants to your favorites.',
+                        });
+                        return;
+                      }
+                      try {
+                        const wasBookmarked = isBookmarked(restaurant.id);
+                        await toggle(restaurant.id);
+                        toast({
+                          title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
+                          description: 'You can view your favorites in your profile.',
+                        });
+                      } catch (_) {}
+                    }}
+                    className={`inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full transition-colors bg-white/20 backdrop-blur-sm hover:bg-white/30 ${
+                      isBookmarked(restaurant.id) ? 'text-red-500' : 'text-white'
+                    }`}
+                    title={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
+                  >
+                    <Heart className="w-5 h-5 md:w-6 md:h-6" fill={isBookmarked(restaurant.id) ? 'currentColor' : 'none'} />
+                  </button>
+                </div>
                 <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8">
                   {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
                 </p>
@@ -514,6 +579,355 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                   )}
                 </div>
               </motion.div>
+            )}
+
+            {/* Restaurant Characteristics (Extracted Values) */}
+            {restaurantValues && !restaurantValues.error && (
+              <motion.section
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.18 }}
+                className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg shadow-sm p-6 md:p-8 border border-purple-200 max-w-4xl mx-auto mb-12"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-white shadow-inner flex items-center justify-center text-purple-600 text-xl font-bold">
+                    📊
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.4em] text-purple-500">Restaurant Analysis</p>
+                    <h2 className="text-2xl font-bold text-gray-900">Restaurant Characteristics</h2>
+                  </div>
+                  <Badge variant="secondary" className="bg-blue-50 text-blue-700 border-blue-200 text-xs">
+                    Formula-Based Analysis
+                  </Badge>
+                </div>
+                <p className="text-gray-600 text-base mb-6">
+                  This restaurant has been analyzed using our formula-based system to help you understand its key features and match it with your dining preferences.
+                </p>
+
+                <div className="space-y-3">
+                  {/* Price Range */}
+                  {restaurantValues.budgetLevel !== undefined && (
+                    (() => {
+                      const value = restaurantValues.budgetLevel;
+                      const priceRangeSymbol = restaurant.pricing?.priceRange || 
+                        (value <= 25 ? '$' : value <= 50 ? '$$' : value <= 75 ? '$$$' : '$$$$');
+                      
+                      // Convert to descriptive text
+                      const getPriceRangeLabel = (symbol) => {
+                        if (symbol.includes('$$$$')) return 'Luxury';
+                        if (symbol.includes('$$$') && !symbol.includes('$$$$')) return 'Upscale';
+                        if (symbol.includes('$$') && !symbol.includes('$$$')) return 'Moderate';
+                        if (symbol.includes('$') && !symbol.includes('$$')) return 'Budget-friendly';
+                        return 'Moderate';
+                      };
+                      
+                      const priceRangeLabel = getPriceRangeLabel(priceRangeSymbol);
+                      
+                      return (
+                        <div key="priceRange" className="group relative">
+                          <div className="flex items-center justify-between p-3 bg-white/60 rounded-lg">
+                            <div className="flex items-center gap-2 flex-1">
+                              <span className="text-lg">💰</span>
+                              <span className="text-sm font-medium text-gray-700">Price Range</span>
+                              <button
+                                type="button"
+                                className="ml-2 text-gray-400 hover:text-blue-600 transition-colors"
+                                aria-label="Learn more about Price Range"
+                              >
+                                <Info className="w-4 h-4" />
+                              </button>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <span className="text-sm font-semibold text-gray-700 min-w-[3rem] text-right">
+                                {priceRangeLabel}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="absolute left-0 top-full mt-2 z-10 w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none">
+                            <p className="font-semibold mb-1">Price Range ({priceRangeLabel})</p>
+                            <p className="text-gray-300 leading-relaxed">
+                              {value <= 25 ? 'Budget-friendly dining ($) - Affordable options for everyday dining' : 
+                               value <= 50 ? 'Moderate pricing ($$) - Mid-range restaurants with good value' : 
+                               value <= 75 ? 'Upscale dining ($$$) - Fine dining with premium prices' : 
+                               'Luxury fine dining ($$$$) - High-end restaurants with exceptional service and cuisine'}
+                            </p>
+                            <div className="absolute -top-1 left-4 w-2 h-2 bg-gray-900 transform rotate-45"></div>
+                          </div>
+                        </div>
+                      );
+                    })()
+                  )}
+
+                  {/* Meal Time Availability */}
+                  {mealTimeAvailability && mealTimeAvailability !== 'any' && (
+                    <div key="mealTime" className="group relative">
+                      <div className="flex items-center justify-between p-3 bg-white/60 rounded-lg">
+                        <div className="flex items-center gap-2 flex-1">
+                          <span className="text-lg">🕐</span>
+                          <span className="text-sm font-medium text-gray-700">Meal Time</span>
+                          <button
+                            type="button"
+                            className="ml-2 text-gray-400 hover:text-blue-600 transition-colors"
+                            aria-label="Learn more about Meal Time"
+                          >
+                            <Info className="w-4 h-4" />
+                          </button>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <span className="text-sm font-semibold text-gray-700 min-w-[3rem] text-right capitalize">
+                            {mealTimeAvailability}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="absolute left-0 top-full mt-2 z-10 w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none">
+                        <p className="font-semibold mb-1">Meal Time ({mealTimeAvailability})</p>
+                        <p className="text-gray-300 leading-relaxed">
+                          This restaurant primarily serves {mealTimeAvailability}. Based on opening hours.
+                        </p>
+                        <div className="absolute -top-1 left-4 w-2 h-2 bg-gray-900 transform rotate-45"></div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Group Size Preference */}
+                  {restaurantValues.groupType !== undefined && (
+                    (() => {
+                      const value = restaurantValues.groupType;
+                      const groupLabel = value <= 30 ? 'Groups Welcome' : value <= 50 ? 'Flexible' : 'Intimate/Solo';
+                      return (
+                        <div key="groupSize" className="group relative">
+                          <div className="flex items-center justify-between p-3 bg-white/60 rounded-lg">
+                            <div className="flex items-center gap-2 flex-1">
+                              <span className="text-lg">👥</span>
+                              <span className="text-sm font-medium text-gray-700">Group Size</span>
+                              <button
+                                type="button"
+                                className="ml-2 text-gray-400 hover:text-blue-600 transition-colors"
+                                aria-label="Learn more about Group Size"
+                              >
+                                <Info className="w-4 h-4" />
+                              </button>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div
+                                  className={`h-full transition-all duration-500 ${
+                                    value <= 30 ? 'bg-green-500' : value <= 50 ? 'bg-yellow-500' : 'bg-blue-500'
+                                  }`}
+                                  style={{ width: `${100 - value}%` }}
+                                />
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <span className="text-sm font-semibold text-gray-700 min-w-[3rem] text-right">
+                                  {groupLabel}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="absolute left-0 top-full mt-2 z-10 w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none">
+                            <p className="font-semibold mb-1">Group Size ({groupLabel})</p>
+                            <p className="text-gray-300 leading-relaxed">
+                              {value <= 30 ? 'Welcomes large groups and families. Great for group dining.' : 
+                               value <= 50 ? 'Flexible group sizes. Can accommodate various party sizes.' : 
+                               'Better suited for couples or solo dining. More intimate setting.'}
+                            </p>
+                            <div className="absolute -top-1 left-4 w-2 h-2 bg-gray-900 transform rotate-45"></div>
+                          </div>
+                        </div>
+                      );
+                    })()
+                  )}
+
+                  {/* Atmosphere */}
+                  {atmosphere && (
+                    <div key="atmosphere" className="group relative">
+                      <div className="flex items-center justify-between p-3 bg-white/60 rounded-lg">
+                        <div className="flex items-center gap-2 flex-1">
+                          <span className="text-lg">🎭</span>
+                          <span className="text-sm font-medium text-gray-700">Atmosphere</span>
+                          <button
+                            type="button"
+                            className="ml-2 text-gray-400 hover:text-blue-600 transition-colors"
+                            aria-label="Learn more about Atmosphere"
+                          >
+                            <Info className="w-4 h-4" />
+                          </button>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div
+                              className={`h-full transition-all duration-500 ${
+                                atmosphere.value <= 25 ? 'bg-green-500' : atmosphere.value <= 50 ? 'bg-yellow-500' : 'bg-purple-500'
+                              }`}
+                              style={{ width: `${atmosphere.value}%` }}
+                            />
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm font-semibold text-gray-700 min-w-[3rem] text-right">
+                              {atmosphere.label}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="absolute left-0 top-full mt-2 z-10 w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none">
+                        <p className="font-semibold mb-1">Atmosphere ({atmosphere.label})</p>
+                        <p className="text-gray-300 leading-relaxed">{atmosphere.description}</p>
+                        <div className="absolute -top-1 left-4 w-2 h-2 bg-gray-900 transform rotate-45"></div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Dining Style */}
+                  {restaurantValues.structureLevel !== undefined && (
+                    (() => {
+                      const value = restaurantValues.structureLevel;
+                      const styleLabel = value <= 30 ? 'Casual' : value <= 60 ? 'Flexible' : 'Formal';
+                      return (
+                        <div key="diningStyle" className="group relative">
+                          <div className="flex items-center justify-between p-3 bg-white/60 rounded-lg">
+                            <div className="flex items-center gap-2 flex-1">
+                              <span className="text-lg">🍽️</span>
+                              <span className="text-sm font-medium text-gray-700">Dining Style</span>
+                              <button
+                                type="button"
+                                className="ml-2 text-gray-400 hover:text-blue-600 transition-colors"
+                                aria-label="Learn more about Dining Style"
+                              >
+                                <Info className="w-4 h-4" />
+                              </button>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div
+                                  className={`h-full transition-all duration-500 ${
+                                    value <= 30 ? 'bg-green-500' : value <= 60 ? 'bg-yellow-500' : 'bg-purple-500'
+                                  }`}
+                                  style={{ width: `${value}%` }}
+                                />
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <span className="text-sm font-semibold text-gray-700 min-w-[3rem] text-right">
+                                  {styleLabel}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="absolute left-0 top-full mt-2 z-10 w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none">
+                            <p className="font-semibold mb-1">Dining Style ({styleLabel})</p>
+                            <p className="text-gray-300 leading-relaxed">
+                              {value <= 30 ? 'Walk-in friendly. No reservations needed. Casual dining experience.' : 
+                               value <= 60 ? 'Flexible options. Reservations available but not required.' : 
+                               'Formal dining. Reservations preferred or required. Fine dining experience.'}
+                            </p>
+                            <div className="absolute -top-1 left-4 w-2 h-2 bg-gray-900 transform rotate-45"></div>
+                          </div>
+                        </div>
+                      );
+                    })()
+                  )}
+
+                  {/* Available Features */}
+                  {businessAttributes.length > 0 && (
+                    <div key="features" className="group relative">
+                      <div className="flex items-start justify-between p-3 bg-white/60 rounded-lg">
+                        <div className="flex items-center gap-2 flex-1">
+                          <span className="text-lg">✨</span>
+                          <span className="text-sm font-medium text-gray-700">Features & Amenities</span>
+                          <button
+                            type="button"
+                            className="ml-2 text-gray-400 hover:text-blue-600 transition-colors"
+                            aria-label="Learn more about Features"
+                          >
+                            <Info className="w-4 h-4" />
+                          </button>
+                        </div>
+                        <div className="flex items-center gap-2 flex-wrap justify-end">
+                          {businessAttributes.slice(0, 4).map((attr, idx) => (
+                            <Badge key={idx} variant="outline" className="text-xs">
+                              {attr.label}
+                            </Badge>
+                          ))}
+                          {businessAttributes.length > 4 && (
+                            <Badge variant="outline" className="text-xs">
+                              +{businessAttributes.length - 4} more
+                            </Badge>
+                          )}
+                        </div>
+                      </div>
+                      <div className="absolute left-0 top-full mt-2 z-10 w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none">
+                        <p className="font-semibold mb-1">Features & Amenities</p>
+                        <p className="text-gray-300 leading-relaxed mb-2">
+                          This restaurant offers: {businessAttributes.map(a => a.label).join(', ')}
+                        </p>
+                        <div className="absolute -top-1 left-4 w-2 h-2 bg-gray-900 transform rotate-45"></div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div className="mt-6 pt-4 border-t border-purple-200">
+                  <div className="flex flex-col items-center gap-4">
+                    <p className="text-xs text-gray-500 text-center">
+                      Set your restaurant preferences in your profile to see how well this restaurant matches your dining style.
+                    </p>
+                    <Button
+                      onClick={async () => {
+                        if (!user) {
+                          setMatchModalMessage('Please sign in to see how well this restaurant matches your preferences.');
+                          setShowMatchModal(true);
+                          return;
+                        }
+
+                        setIsGeneratingMatch(true);
+                        setMatchError(null);
+
+                        try {
+                          const response = await fetch(`/api/internal/restaurant-match/${encodeURIComponent(restaurant.id)}`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ userId: user.id }),
+                          });
+
+                          if (!response.ok) {
+                            const errorData = await response.json();
+                            if (response.status === 404 && errorData.error?.includes('preferences')) {
+                              setMatchModalMessage('Please set your restaurant preferences in your profile to see match scores.');
+                              setShowMatchModal(true);
+                              return;
+                            }
+                            throw new Error(errorData.error || 'Failed to calculate match');
+                          }
+
+                          const data = await response.json();
+                          setMatchData(data.match);
+                          setShowMatchResultsModal(true);
+                        } catch (err) {
+                          console.error('Error calculating restaurant match:', err);
+                          setMatchError(err.message || 'Failed to calculate match. Please try again.');
+                        } finally {
+                          setIsGeneratingMatch(false);
+                        }
+                      }}
+                      disabled={isGeneratingMatch}
+                      className="sunset-gradient text-white font-semibold px-6 py-3"
+                    >
+                      {isGeneratingMatch ? (
+                        <span className="flex items-center gap-2">
+                          <span className="relative flex h-4 w-4">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+                            <span className="relative inline-flex rounded-full h-4 w-4 bg-white" />
+                          </span>
+                          Calculating match…
+                        </span>
+                      ) : (
+                        'See Match with My Preferences'
+                      )}
+                    </Button>
+                    {matchError && <p className="text-sm text-red-600">{matchError}</p>}
+                  </div>
+                </div>
+              </motion.section>
             )}
 
             <motion.div
@@ -1144,187 +1558,189 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
           </div>
         </section>
 
-        {/* Trending Tours Section */}
-        {trendingTours && trendingTours.length > 0 && (
+        {/* Trending Now Section - Past 28 Days */}
+        {((trendingTours && trendingTours.length > 0) || (trendingRestaurants && trendingRestaurants.length > 0)) && (
           <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center gap-2 mb-6">
                 <TrendingUp className="w-5 h-5 text-orange-600" />
-                <h2 className="text-2xl font-bold text-gray-900">Trending Tours in {destination.fullName}</h2>
+                <h2 className="text-2xl font-bold text-gray-900">Trending Now in {destination.fullName}</h2>
                 <Badge variant="secondary" className="ml-2 bg-orange-100 text-orange-700 border-orange-300">
                   Past 28 Days
                 </Badge>
               </div>
-              <p className="text-sm text-gray-600 mb-6">
-                Tours that are currently popular based on recent community boosts
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {trendingTours.map((trending, index) => {
-                  const tourId = trending.product_id;
-                  const tourUrl = trending.tour_slug 
-                    ? `/tours/${tourId}/${trending.tour_slug}` 
-                    : getTourUrl(tourId, trending.tour_name);
-                  
-                  return (
-                    <motion.div
-                      key={tourId || index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                        <Link href={tourUrl}>
-                          <div className="relative h-48 overflow-hidden">
-                            {trending.tour_image_url ? (
-                              <img
-                                src={trending.tour_image_url}
-                                alt={trending.tour_name || 'Tour'}
-                                className="w-full h-full object-cover"
-                                loading="lazy"
-                              />
-                            ) : (
-                              <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                                <UtensilsCrossed className="w-8 h-8 text-gray-400" />
-                              </div>
-                            )}
-                          </div>
-                        </Link>
-                        <CardContent className="p-4 flex-1 flex flex-col">
-                          <Link href={tourUrl}>
-                            <h4 className="font-semibold text-base text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors cursor-pointer">
-                              {trending.tour_name || 'Tour'}
-                            </h4>
-                          </Link>
-                          
-                          <div className="mt-auto pt-3">
-                            <TourPromotionCard
-                              productId={tourId}
-                              compact={true}
-                              initialScore={{
-                                total_score: trending.total_score || 0,
-                                monthly_score: trending.monthly_score || 0,
-                                weekly_score: trending.weekly_score || 0,
-                                past_28_days_score: trending.past_28_days_score || 0,
-                              }}
-                            />
-                          </div>
-
-                          <Button
-                            asChild
-                            className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-3"
-                          >
-                            <Link href={tourUrl}>
-                              View Details
-                              <ArrowRight className="w-4 h-4 ml-2" />
-                            </Link>
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Trending Restaurants Section */}
-        {trendingRestaurants && trendingRestaurants.length > 0 && (
-          <section className="py-12 bg-gray-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center gap-2 mb-6">
-                <TrendingUp className="w-5 h-5 text-orange-600" />
-                <h2 className="text-2xl font-bold text-gray-900">Trending Restaurants in {destination.fullName}</h2>
-                <Badge variant="secondary" className="ml-2 bg-orange-100 text-orange-700 border-orange-300">
-                  Past 28 Days
-                </Badge>
+                <p className="text-sm text-gray-600">
+                  Tours and restaurants that are currently popular based on recent community boosts
+                </p>
+                <Link 
+                  href="/how-it-works" 
+                  className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                  title="Learn how promotions work"
+                >
+                  <Info className="w-3.5 h-3.5" />
+                  <span>Learn more</span>
+                </Link>
               </div>
-              <p className="text-sm text-gray-600 mb-6">
-                Restaurants that are currently popular based on recent community boosts
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {trendingRestaurants.map((trending, index) => {
-                  const restaurantUrl = trending.slug
-                    ? `/destinations/${destination.id}/restaurants/${trending.slug}`
-                    : null;
-                  
-                  if (!restaurantUrl) return null;
-                  
-                  return (
-                    <motion.div
-                      key={trending.restaurant_id || index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                        <Link href={restaurantUrl}>
-                          <div className="relative h-48 overflow-hidden">
-                            {trending.heroImage || trending.restaurant_image_url ? (
-                              <img
-                                src={trending.heroImage || trending.restaurant_image_url}
-                                alt={trending.name || 'Restaurant'}
-                                className="w-full h-full object-cover"
-                                loading="lazy"
-                              />
-                            ) : (
-                              <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                                <UtensilsCrossed className="w-8 h-8 text-gray-400" />
-                              </div>
-                            )}
-                          </div>
-                        </Link>
-                        <CardContent className="p-4 flex-1 flex flex-col">
-                          <Link href={restaurantUrl}>
-                            <h4 className="font-semibold text-base text-gray-800 mb-2 line-clamp-2 hover:text-blue-600 transition-colors cursor-pointer">
-                              {trending.name || trending.restaurant_name || 'Restaurant'}
-                            </h4>
-                          </Link>
-                          
-                          {trending.ratings?.googleRating && (
-                            <div className="flex items-center gap-2 mb-3">
-                              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                              <span className="text-sm font-medium text-gray-700">
-                                {trending.ratings.googleRating.toFixed(1)}
-                              </span>
-                              {trending.ratings.reviewCount && (
-                                <span className="text-xs text-gray-500">
-                                  ({trending.ratings.reviewCount.toLocaleString()})
-                                </span>
-                              )}
-                            </div>
-                          )}
-                          
-                          <div className="mt-auto pt-3">
-                            <RestaurantPromotionCard
-                              restaurantId={trending.restaurant_id}
-                              compact={true}
-                              initialScore={{
-                                total_score: trending.total_score || 0,
-                                monthly_score: trending.monthly_score || 0,
-                                weekly_score: trending.weekly_score || 0,
-                                past_28_days_score: trending.past_28_days_score || 0,
-                              }}
-                            />
-                          </div>
 
-                          <Button
-                            asChild
-                            className="w-full bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 transition-transform duration-200 mt-3"
-                          >
-                            <Link href={restaurantUrl}>
-                              View Restaurant
-                              <ArrowRight className="w-4 h-4 ml-2" />
+              {/* Trending Tours Subsection */}
+              {trendingTours && trendingTours.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Trending Tours Now in {destination.fullName}</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {trendingTours.map((trending, index) => {
+                      const tourId = trending.product_id;
+                      const tourUrl = trending.tour_slug 
+                        ? `/tours/${tourId}/${trending.tour_slug}` 
+                        : getTourUrl(tourId, trending.tour_name);
+                      
+                      return (
+                        <motion.div
+                          key={tourId || index}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.4, delay: index * 0.1 }}
+                          viewport={{ once: true }}
+                        >
+                          <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <Link href={tourUrl}>
+                              <div className="relative h-48 overflow-hidden">
+                                {trending.tour_image_url ? (
+                                  <img
+                                    src={trending.tour_image_url}
+                                    alt={trending.tour_name || 'Tour'}
+                                    className="w-full h-full object-cover"
+                                    loading="lazy"
+                                  />
+                                ) : (
+                                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                    <UtensilsCrossed className="w-8 h-8 text-gray-400" />
+                                  </div>
+                                )}
+                              </div>
                             </Link>
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  );
-                })}
-              </div>
+                            <CardContent className="p-4 flex-1 flex flex-col">
+                              <Link href={tourUrl}>
+                                <h4 className="font-semibold text-base text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors cursor-pointer">
+                                  {trending.tour_name || 'Tour'}
+                                </h4>
+                              </Link>
+                              
+                              <div className="mt-auto pt-3">
+                                <TourPromotionCard
+                                  productId={tourId}
+                                  compact={true}
+                                  initialScore={{
+                                    total_score: trending.total_score || 0,
+                                    monthly_score: trending.monthly_score || 0,
+                                    weekly_score: trending.weekly_score || 0,
+                                    past_28_days_score: trending.past_28_days_score || 0,
+                                  }}
+                                />
+                              </div>
+
+                              <Button
+                                asChild
+                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-3"
+                              >
+                                <Link href={tourUrl}>
+                                  View Details
+                                  <ArrowRight className="w-4 h-4 ml-2" />
+                                </Link>
+                              </Button>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Trending Restaurants Subsection */}
+              {trendingRestaurants && trendingRestaurants.length > 0 && (
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Trending Restaurants Now in {destination.fullName}</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {trendingRestaurants.map((trending, index) => {
+                      const restaurantUrl = trending.slug
+                        ? `/destinations/${destination.id}/restaurants/${trending.slug}`
+                        : null;
+                      
+                      if (!restaurantUrl) return null;
+                      
+                      return (
+                        <motion.div
+                          key={trending.restaurant_id || index}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.4, delay: index * 0.1 }}
+                          viewport={{ once: true }}
+                        >
+                          <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <Link href={restaurantUrl}>
+                              <div className="relative h-48 overflow-hidden">
+                                {trending.heroImage || trending.restaurant_image_url ? (
+                                  <img
+                                    src={trending.heroImage || trending.restaurant_image_url}
+                                    alt={trending.name || 'Restaurant'}
+                                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                    loading="lazy"
+                                  />
+                                ) : (
+                                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                    <UtensilsCrossed className="w-6 h-6 text-gray-400" />
+                                  </div>
+                                )}
+                                <div className="absolute top-3 left-3">
+                                  <Badge className="adventure-gradient text-white">
+                                    <TrendingUp className="w-3 h-3 mr-1" />
+                                    Trending
+                                  </Badge>
+                                </div>
+                              </div>
+                            </Link>
+                            <CardContent className="p-4 flex-1 flex flex-col">
+                              <Link href={restaurantUrl}>
+                                <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                  {trending.name || trending.restaurant_name || 'Restaurant'}
+                                </h3>
+                              </Link>
+                              
+                              {/* Promotion Score */}
+                              {trending.restaurant_id && (
+                              <div className="mb-3">
+                                <RestaurantPromotionCard
+                                  restaurantId={trending.restaurant_id}
+                                  compact={true}
+                                  initialScore={{
+                                    restaurant_id: trending.restaurant_id,
+                                    total_score: trending.total_score || 0,
+                                    monthly_score: trending.monthly_score || 0,
+                                    weekly_score: trending.weekly_score || 0,
+                                    past_28_days_score: trending.past_28_days_score || 0,
+                                  }}
+                                />
+                              </div>
+                              )}
+
+                              <Button
+                                asChild
+                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                              >
+                                <Link href={restaurantUrl}>
+                                  View Details
+                                  <ArrowRight className="w-4 h-4 ml-2" />
+                                </Link>
+                              </Button>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           </section>
         )}
@@ -1586,6 +2002,249 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
+          </div>
+        </div>
+      )}
+
+      {/* Match Results Modal */}
+      {showMatchResultsModal && matchData && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 overflow-y-auto"
+          onClick={() => setShowMatchResultsModal(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 md:p-8 my-8 max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
+                  <span className="text-2xl">🎯</span>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.4em] text-orange-500">Preference Match</p>
+                  <h2 className="text-2xl font-bold text-gray-900">How Well Does This Restaurant Match Your Preferences?</h2>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowMatchResultsModal(false)}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Match Score Badge */}
+            <div className="flex items-center justify-center mb-6">
+              <div className="relative">
+                <div className={`w-32 h-32 rounded-full flex items-center justify-center text-4xl font-bold shadow-lg ${
+                  matchData.matchScore >= 75 ? 'bg-gradient-to-br from-green-400 to-green-600 text-white' :
+                  matchData.matchScore >= 55 ? 'bg-gradient-to-br from-yellow-400 to-orange-500 text-white' :
+                  'bg-gradient-to-br from-red-400 to-red-600 text-white'
+                }`}>
+                  {matchData.matchScore}%
+                </div>
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full shadow text-xs font-semibold text-gray-700">
+                  Match
+                </div>
+              </div>
+            </div>
+
+            {/* Summary */}
+            <p className="text-gray-700 text-lg leading-relaxed mb-4 text-center font-medium">
+              {matchData.fitSummary}
+            </p>
+
+            {/* Ideal For */}
+            {matchData.idealFor && (
+              <div className="text-center mb-6">
+                <span className="inline-block bg-orange-50 px-4 py-2 rounded-full text-sm font-semibold text-orange-700 border border-orange-200">
+                  Ideal for: {matchData.idealFor}
+                </span>
+              </div>
+            )}
+
+            {/* Match Breakdown */}
+            {matchData.matches && (
+              <div className="mb-6">
+                <h3 className="text-sm font-semibold text-gray-800 mb-3">Match Breakdown:</h3>
+                <div className="space-y-3">
+                  {[
+                    // Restaurant-specific characteristics (prioritize these)
+                    ...(matchData.matches.priceRange !== undefined ? [{ key: 'priceRange', label: '💰 Price Range', icon: '💰' }] : []),
+                    ...(matchData.matches.diningStyle !== undefined ? [{ key: 'diningStyle', label: '🍽️ Dining Style', icon: '🍽️' }] : []),
+                    ...(matchData.matches.structure !== undefined && matchData.matches.diningStyle === undefined ? [{ key: 'structure', label: '🍽️ Dining Style', icon: '🍽️' }] : []), // Fallback to structure if diningStyle not available
+                    ...(matchData.matches.timeOfDay !== undefined ? [{ key: 'timeOfDay', label: '🕐 Meal Time', icon: '🕐' }] : []),
+                    ...(matchData.matches.groupSize !== undefined ? [{ key: 'groupSize', label: '👥 Group Size', icon: '👥' }] : []),
+                    ...(matchData.matches.group !== undefined && matchData.matches.groupSize === undefined ? [{ key: 'group', label: '👥 Group Size', icon: '👥' }] : []), // Fallback
+                    ...(matchData.matches.features !== undefined ? [{ key: 'features', label: '✨ Features & Amenities', icon: '✨' }] : []),
+                    ...(matchData.matches.atmosphere !== undefined ? [{ key: 'atmosphere', label: '🎭 Atmosphere', icon: '🎭' }] : []),
+                    // Food & drink is still relevant for restaurants
+                    ...(matchData.matches.food !== undefined ? [{ key: 'food', label: '🍷 Food & Drink Focus', icon: '🍷' }] : []),
+                    // Fallback to budget only if priceRange doesn't exist
+                    ...(matchData.matches.budget !== undefined && matchData.matches.priceRange === undefined ? [{ key: 'budget', label: '💰 Price Range', icon: '💰' }] : []),
+                  ]
+                  .filter(({ key }) => {
+                    // Remove duplicates and tour-oriented metrics
+                    // If priceRange exists, don't show budget
+                    if (key === 'budget' && matchData.matches.priceRange !== undefined) return false;
+                    // If groupSize exists, don't show group
+                    if (key === 'group' && matchData.matches.groupSize !== undefined) return false;
+                    // If diningStyle exists, don't show structure
+                    if (key === 'structure' && matchData.matches.diningStyle !== undefined) return false;
+                    // Hide tour-oriented metrics that aren't relevant for restaurants
+                    if (key === 'adventure' || key === 'relaxExplore') return false;
+                    return true;
+                  })
+                  .map(({ key, label, icon }) => {
+                    const score = matchData.matches[key];
+                    if (score === undefined || score === null) return null;
+                    const isGood = score >= 75;
+                    const isOk = score >= 50;
+                    return (
+                      <div key={key} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div className="flex items-center gap-2">
+                          <span className="text-lg">{icon}</span>
+                          <span className="text-sm font-medium text-gray-700">{label.replace(/^[^\s]+\s/, '')}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div
+                              className={`h-full transition-all duration-500 ${
+                                isGood ? 'bg-green-500' : isOk ? 'bg-yellow-500' : 'bg-red-500'
+                              }`}
+                              style={{ width: `${score}%` }}
+                            />
+                          </div>
+                          <span className={`text-sm font-semibold min-w-[3rem] text-right ${
+                            isGood ? 'text-green-600' : isOk ? 'text-yellow-600' : 'text-red-600'
+                          }`}>
+                            {score}%
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Pros */}
+            {matchData.pros && matchData.pros.length > 0 && (
+              <div className="mb-4">
+                <h3 className="text-sm font-semibold text-gray-800 mb-2">✓ What makes this a good fit:</h3>
+                <div className="space-y-2">
+                  {matchData.pros.map((pro, index) => (
+                    <div key={`pro-${index}`} className="flex items-start gap-2 text-gray-700">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span>{pro}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Cons */}
+            {matchData.cons && matchData.cons.length > 0 && (
+              <div className="mb-6">
+                <h3 className="text-sm font-semibold text-gray-800 mb-2">⚠️ Things to consider:</h3>
+                <div className="space-y-2">
+                  {matchData.cons.map((con, index) => (
+                    <div key={`con-${index}`} className="flex items-start gap-2 text-gray-700">
+                      <span className="text-orange-500 mt-1">⚠</span>
+                      <span>{con}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-200">
+              <Button
+                onClick={async () => {
+                  const wasBookmarked = isBookmarked(restaurant.id);
+                  await toggle(restaurant.id);
+                  toast({
+                    title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
+                    description: 'You can view your favorites in your profile.',
+                  });
+                }}
+                variant="outline"
+                className="flex-1 border-2 border-orange-200 hover:bg-orange-50"
+              >
+                <Heart className={`w-4 h-4 mr-2 ${isBookmarked(restaurant.id) ? 'text-red-600 fill-red-600' : 'text-gray-600'}`} />
+                {isBookmarked(restaurant.id) ? 'Saved to Favorites' : 'Save to Favorites'}
+              </Button>
+              {(restaurant.contact?.website || restaurant.booking?.partnerUrl) && (
+                <Button
+                  asChild
+                  className="sunset-gradient text-white font-semibold px-6 py-3 flex-1"
+                >
+                  <a
+                    href={restaurant.booking?.partnerUrl || restaurant.contact?.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {restaurant.booking?.partnerUrl ? 'Reserve a Table' : 'Visit Website'}
+                    <ExternalLink className="w-5 h-5 ml-2 inline" />
+                  </a>
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Match Requirements Modal */}
+      {showMatchModal && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4"
+          onClick={() => setShowMatchModal(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
+                <span className="text-2xl">🎯</span>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-900">Setup Required</h3>
+                <p className="text-sm text-gray-600">To use restaurant matching</p>
+              </div>
+            </div>
+            
+            <p className="text-gray-700 mb-6">
+              {matchModalMessage}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              {matchModalMessage.includes('sign in') ? (
+                <Button
+                  onClick={() => router.push('/auth')}
+                  className="sunset-gradient text-white flex-1"
+                >
+                  Sign In / Sign Up
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => router.push('/profile?tab=restaurant')}
+                  className="sunset-gradient text-white flex-1"
+                >
+                  Go to Restaurant Preferences
+                </Button>
+              )}
+              <Button
+                onClick={() => setShowMatchModal(false)}
+                variant="outline"
+                className="flex-1"
+              >
+                Cancel
+              </Button>
+            </div>
           </div>
         </div>
       )}

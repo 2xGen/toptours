@@ -5,6 +5,7 @@ import ToursListingClient from './ToursListingClient';
 import { slugToViatorId } from '@/data/viatorDestinationMap';
 import { getPromotionScoresByDestination, getTrendingToursByDestination } from '@/lib/promotionSystem';
 import { getDestinationNameById, findDestinationBySlug } from '@/lib/viatorCache';
+import { getViatorDestinationById } from '@/lib/supabaseCache';
 import { redirect } from 'next/navigation';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
@@ -223,12 +224,33 @@ export default async function ToursListingPage({ params }) {
       lookupId = id.startsWith('d') ? id : `d${id}`;
       viatorDestinationId = id.startsWith('d') ? id.replace(/^d/i, '') : id;
       
-      destinationInfo = await getDestinationNameById(lookupId);
+      // Try Supabase lookup first (most reliable)
+      let destInfo = null;
+      try {
+        destInfo = await getViatorDestinationById(viatorDestinationId);
+        if (destInfo && destInfo.name) {
+          const slug = destInfo.slug || generateSlug(destInfo.name);
+          redirect(`/destinations/${slug}/tours`);
+        }
+      } catch (error) {
+        console.warn(`Supabase lookup failed for ${viatorDestinationId}, trying fallback:`, error);
+      }
       
-      if (destinationInfo && destinationInfo.destinationName) {
-        // Generate slug and redirect to SEO-friendly URL
-        const slug = generateSlug(destinationInfo.destinationName);
-        redirect(`/destinations/${slug}/tours`);
+      // Fallback to JSON file lookup
+      if (!destInfo) {
+        destinationInfo = await getDestinationNameById(lookupId);
+        
+        if (destinationInfo && destinationInfo.destinationName) {
+          // Generate slug and redirect to SEO-friendly URL
+          const slug = generateSlug(destinationInfo.destinationName);
+          redirect(`/destinations/${slug}/tours`);
+        }
+      } else {
+        // Use Supabase data
+        destinationInfo = {
+          destinationName: destInfo.name,
+          destinationId: destInfo.id,
+        };
       }
     } else {
       // It's a slug - find the destination by slug
@@ -468,13 +490,32 @@ export default async function ToursListingPage({ params }) {
     console.error('Error fetching dynamic tours:', error);
   }
 
-  // Fetch all promotion scores for this destination (only for our 182 destinations)
-  // This returns only tours with points, all others default to 0
-  const promotionScores = isViatorDestination ? {} : await getPromotionScoresByDestination(destination.id);
+  // Fetch all promotion scores for this destination
+  // Use Viator destination ID (numeric) for querying, fall back to slug for curated destinations
+  const destinationIdForScores = viatorDestinationId || destination.destinationId || destination.id;
+  let promotionScores = destinationIdForScores ? await getPromotionScoresByDestination(destinationIdForScores) : {};
 
-  // Fetch trending tours (past 28 days) for this destination (only for our 182 destinations)
+  // CRITICAL: Also fetch scores by product IDs as a fallback
+  // This ensures we find scores even if destination_id format doesn't match (slug vs numeric ID)
+  const allProductIds = [
+    ...popularTours.map(t => t.productId).filter(Boolean),
+    ...dynamicTours.map(t => t.productId || t.productCode).filter(Boolean),
+  ];
+  
+  if (allProductIds.length > 0) {
+    const { getTourPromotionScoresBatch } = await import('@/lib/promotionSystem');
+    const scoresByProductId = await getTourPromotionScoresBatch(allProductIds);
+    
+    // Merge: destination-based scores take priority, but product-based scores fill in gaps
+    promotionScores = {
+      ...scoresByProductId,
+      ...promotionScores, // Destination-based scores override (more specific)
+    };
+  }
+
+  // Fetch trending tours (past 28 days) for this destination
   // These will be displayed in a "Trending Now" section
-  const trendingTours = isViatorDestination ? [] : await getTrendingToursByDestination(destination.id, 6);
+  const trendingTours = destinationIdForScores ? await getTrendingToursByDestination(destinationIdForScores, 6) : [];
 
   // Generate JSON-LD schema for SEO
   const jsonLd = {

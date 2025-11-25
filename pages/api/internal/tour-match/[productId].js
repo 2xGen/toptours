@@ -39,6 +39,27 @@ export default async function handler(req, res) {
           error: 'No trip preferences found. Please set your preferences in your profile first.' 
         });
       }
+      
+      // Check if preferences have meaningful values (at least one key preference should be set)
+      // Exclude restaurantPreferences from this check as it's separate
+      const { restaurantPreferences, ...tourPreferences } = userPreferences;
+      const hasTourPreferences = tourPreferences && Object.keys(tourPreferences).length > 0;
+      
+      // Check if at least one meaningful preference is set (not just default/empty values)
+      const meaningfulPreferences = [
+        'adventureLevel', 'structurePreference', 'foodAndDrinkInterest', 
+        'groupPreference', 'budgetComfort', 'cultureVsBeach', 'travelerType'
+      ];
+      const hasMeaningfulPreferences = meaningfulPreferences.some(key => {
+        const value = tourPreferences[key];
+        return value !== undefined && value !== null && value !== '' && value !== 'not_set' && value !== 'no_preference';
+      });
+      
+      if (!hasTourPreferences || !hasMeaningfulPreferences) {
+        return res.status(400).json({ 
+          error: 'No trip preferences found. Please set your preferences in your profile first.' 
+        });
+      }
     }
 
     // Get tour data (from request body or fetch from Viator)

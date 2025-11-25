@@ -2,10 +2,12 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import TourDetailClient from './TourDetailClient';
 import { getTourEnrichment, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
-import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName, getDestinationNameById } from '@/lib/viatorCache';
+import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName } from '@/lib/viatorCache';
 import { getTourPromotionScore } from '@/lib/promotionSystem';
 import { getRestaurantCountsByDestination } from '@/lib/restaurants';
 import { destinations } from '@/data/destinationsData';
+import { getDestinationNameById } from '@/lib/destinationIdLookup';
+import { getViatorDestinationById } from '@/lib/supabaseCache';
 
 /**
  * Generate metadata for tour detail page
@@ -281,54 +283,201 @@ export default async function TourDetailPage({ params }) {
     // So we need to fetch it from Viator destinations API if not in our 182 destinations
     let destinationData = null;
     try {
+      // Generate slug helper function
+      const generateSlug = (name) => {
+        if (!name) return null;
+        return name
+          .toLowerCase()
+          .trim()
+          .replace(/[^\w\s-]/g, '') // Remove special characters
+          .replace(/\s+/g, '-') // Replace spaces with hyphens
+          .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+          .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+      };
+      
+      let destinationId = null;
+      let destinationNameFromTour = null;
+      
+      // Try to extract destination from tour.destinations array
       if (tour?.destinations && tour.destinations.length > 0) {
         const primaryDestination = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
-        const destinationId = primaryDestination?.ref || primaryDestination?.destinationId || primaryDestination?.id;
-        
-        if (destinationId) {
-          // Try to get destination name from Viator API (cached for 90 days)
-          const destinationInfo = await getDestinationNameById(destinationId);
-          
-          if (destinationInfo && destinationInfo.destinationName) {
-            // Generate slug from destination name for SEO-friendly URLs
-            const generateSlug = (name) => {
-              return name
-                .toLowerCase()
-                .trim()
-                .replace(/[^\w\s-]/g, '') // Remove special characters
-                .replace(/\s+/g, '-') // Replace spaces with hyphens
-                .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
-                .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+        destinationId = primaryDestination?.ref || primaryDestination?.destinationId || primaryDestination?.id;
+        destinationNameFromTour = primaryDestination?.destinationName || primaryDestination?.name;
+      }
+      
+      // Fallback: Try to extract from other tour fields if destinations array is empty
+      if (!destinationId && tour) {
+        // Check if there's a destinationId in other fields
+        destinationId = tour.destinationId || tour.destination?.id || tour.destination?.ref;
+        destinationNameFromTour = tour.destinationName || tour.destination?.name;
+      }
+      
+      console.log(`🔍 Server: Extracting destination data for tour ${productId}:`, {
+        destinationId,
+        destinationNameFromTour,
+        hasDestinationsArray: !!(tour?.destinations && tour.destinations.length > 0),
+        destinationsCount: tour?.destinations?.length || 0,
+      });
+      
+      if (destinationId) {
+        const destinationIdString = destinationId.toString();
+        const normalizedDestinationId = destinationIdString.replace(/^d/i, '');
+        let destinationResolved = false;
+
+        // 1) Preferred: Supabase (viator_destinations table)
+        try {
+          const supabaseDestination = await getViatorDestinationById(normalizedDestinationId);
+          if (supabaseDestination) {
+            const slug = supabaseDestination.slug || generateSlug(supabaseDestination.name) || normalizedDestinationId;
+            destinationData = {
+              country: supabaseDestination.country || supabaseDestination.region || null,
+              region: supabaseDestination.region || null,
+              destinationName: supabaseDestination.name || null,
+              destinationId: supabaseDestination.id || normalizedDestinationId,
+              slug,
+              source: 'supabase',
             };
+            destinationResolved = true;
+            console.log(`✅ Destination resolved via Supabase for ID ${normalizedDestinationId}:`, destinationData);
+          } else {
+            console.warn(`⚠️ Supabase destination not found for ID ${normalizedDestinationId}`);
+          }
+        } catch (err) {
+          console.error('❌ Supabase destination lookup failed:', err?.message || err);
+        }
+
+        if (!destinationResolved) {
+          // 2) Fallback: Lookup destination name from stored JSON file
+          let destinationInfo = null;
+          try {
+            console.log(`🔍 CRITICAL LOOKUP: Finding destination name for ID: ${normalizedDestinationId}`);
+            destinationInfo = await getDestinationNameById(normalizedDestinationId);
             
-            const slug = generateSlug(destinationInfo.destinationName);
-            
-            // Extract country from destination name (e.g., "Dubai, UAE" -> "UAE")
-            const country = extractCountryFromDestinationName(destinationInfo.destinationName);
-            if (country) {
-              destinationData = {
-                country: country,
-                destinationName: destinationInfo.destinationName,
-                destinationId: destinationId.toString(),
-                slug: slug // Include slug for URL generation
-              };
+            if (destinationInfo?.destinationName) {
+              console.log(`✅ SUCCESS: Found "${destinationInfo.destinationName}" for ID ${normalizedDestinationId}`);
             } else {
-              // If destination name doesn't include country (e.g., "Vanuatu" is already a country)
-              // Use the destination name itself as the country
-              destinationData = {
-                country: destinationInfo.destinationName,
-                destinationName: destinationInfo.destinationName,
-                destinationId: destinationId.toString(),
-                slug: slug // Include slug for URL generation
-              };
+              console.error(`❌ FAILED: No destination name found for ID ${normalizedDestinationId}`);
+            }
+          } catch (lookupError) {
+            console.error(`❌ LOOKUP ERROR for ID ${normalizedDestinationId}:`, lookupError.message || lookupError);
+            console.error('Stack:', lookupError.stack);
+          }
+          
+          // Use lookup result if available, otherwise fall back to tour data
+          let destinationName = destinationInfo?.destinationName || destinationNameFromTour;
+          
+          // LAST RESORT: Try to extract from tour title if still no name (e.g., "...from Aberfeldy")
+          if (!destinationName && tour?.title) {
+            const titleMatch = tour.title.match(/from\s+([A-Z][a-zA-Z\s]+?)(?:\s|$|,)/i);
+            if (titleMatch && titleMatch[1]) {
+              destinationName = titleMatch[1].trim();
+              console.log(`🔧 SERVER FALLBACK: Extracted destination name from tour title: "${destinationName}"`);
             }
           }
+          
+          // CRITICAL: Always set destinationData with at least the ID
+          // This ensures breadcrumbs work even if name lookup fails
+          const slug = destinationName ? generateSlug(destinationName) : normalizedDestinationId;
+          const country = destinationName ? extractCountryFromDestinationName(destinationName) : null;
+          
+          destinationData = {
+            country: country || destinationName || null,
+            destinationName: destinationName || null, // Can be null, but ID is always present
+            destinationId: normalizedDestinationId, // ALWAYS include ID
+            slug: slug || normalizedDestinationId, // Use ID as slug fallback
+            source: destinationInfo?.destinationName
+              ? 'stored_json'
+              : destinationNameFromTour
+                ? 'tour_data'
+                : destinationName
+                  ? 'tour_title'
+                  : 'id_only',
+          };
+          
+          // Debug logging
+          console.log(`✅ Destination data set for tour ${productId}:`, {
+            destinationId: destinationData.destinationId,
+            destinationName: destinationData.destinationName || 'NOT FOUND',
+            slug: destinationData.slug,
+            country: destinationData.country || 'NOT FOUND',
+            source: destinationInfo?.destinationName ? 'stored JSON' : (destinationNameFromTour ? 'tour data' : (destinationName ? 'tour title' : 'ID only'))
+          });
+          
+          if (!destinationName) {
+            console.warn(`⚠️ WARNING: No destination name found for ID ${normalizedDestinationId}, but ID is available for breadcrumbs`);
+          }
         }
+      } else {
+        console.error(`❌ CRITICAL: No destination ID available for tour ${productId} - breadcrumbs will be broken!`);
+        console.error('Tour structure:', JSON.stringify({
+          hasDestinations: !!(tour?.destinations),
+          destinationsLength: tour?.destinations?.length || 0,
+          firstDestination: tour?.destinations?.[0],
+        }, null, 2));
+        destinationData = null;
       }
     } catch (error) {
       // Non-critical - destination data is optional, page works fine without it
-      console.warn('Could not extract destination data (non-critical):', error.message || error);
+      console.error('❌ ERROR extracting destination data:', error.message || error);
+      console.error('Stack:', error.stack);
       destinationData = null;
+    }
+    
+    // Final check - ensure destinationData is logged before passing to client
+    console.log(`📤 FINAL destinationData for tour ${productId}:`, destinationData ? JSON.stringify(destinationData, null, 2) : 'NULL');
+    
+    // CRITICAL FALLBACK: If destinationData is still null but we have tour data, try one more time
+    if (!destinationData && tour) {
+      console.warn(`⚠️ FALLBACK: destinationData is null, attempting emergency extraction...`);
+      
+      // Try to extract from any possible location in the tour object
+      let emergencyDestinationId = null;
+      let emergencyDestinationName = null;
+      
+      // Check destinations array
+      if (tour.destinations && tour.destinations.length > 0) {
+        const dest = tour.destinations[0];
+        emergencyDestinationId = dest?.ref || dest?.destinationId || dest?.id;
+        emergencyDestinationName = dest?.destinationName || dest?.name;
+      }
+      
+      // Check top-level fields
+      if (!emergencyDestinationId) {
+        emergencyDestinationId = tour.destinationId || tour.destination?.id || tour.destination?.ref;
+        emergencyDestinationName = tour.destinationName || tour.destination?.name;
+      }
+      
+      if (emergencyDestinationId) {
+        console.log(`✅ FALLBACK: Found emergency destination ID: ${emergencyDestinationId}`);
+        
+        // Try lookup one more time
+        try {
+          const emergencyLookup = await getDestinationNameById(emergencyDestinationId);
+          const finalName = emergencyLookup?.destinationName || emergencyDestinationName;
+          
+          destinationData = {
+            destinationId: emergencyDestinationId.toString(),
+            destinationName: finalName || null,
+            slug: finalName ? finalName.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '') : emergencyDestinationId.toString(),
+            country: null,
+            source: finalName ? 'emergency_lookup' : 'emergency_id_only',
+          };
+          
+          console.log(`✅ FALLBACK SUCCESS: Set destinationData:`, destinationData);
+        } catch (fallbackError) {
+          console.error(`❌ FALLBACK ERROR:`, fallbackError);
+          // Still set it with just the ID
+          destinationData = {
+            destinationId: emergencyDestinationId.toString(),
+            destinationName: emergencyDestinationName || null,
+            slug: emergencyDestinationName ? emergencyDestinationName.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '') : emergencyDestinationId.toString(),
+            country: null,
+            source: emergencyDestinationName ? 'emergency_tour_data' : 'emergency_id_only',
+          };
+        }
+      } else {
+        console.error(`❌ FALLBACK FAILED: Could not extract any destination ID from tour object`);
+      }
     }
 
     // Check if destination has restaurants

@@ -12,10 +12,6 @@ const FeaturedTours = ({ onOpenModal, topTours = [], topPromoters = [] }) => {
   const hasTours = topTours && topTours.length > 0;
   const hasPromoters = topPromoters && topPromoters.length > 0;
 
-  // Debug logging (remove in production if needed)
-  if (typeof window !== 'undefined') {
-    console.log('FeaturedTours - topTours:', topTours, 'topPromoters:', topPromoters);
-  }
 
   // Tier badge config
   const tierConfig = {
@@ -39,7 +35,7 @@ const FeaturedTours = ({ onOpenModal, topTours = [], topPromoters = [] }) => {
             Top Tours & Top Promoters
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            See which tours are trending and who's leading the community in promoting amazing experiences.
+            See which tours and restaurants are trending and who's leading the community in promoting amazing experiences.
           </p>
         </motion.div>
 

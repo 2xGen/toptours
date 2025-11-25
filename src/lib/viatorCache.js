@@ -487,7 +487,50 @@ export async function getDestinationNameById(destinationId) {
       return cachedDestination;
     }
 
-    // Try to load from our stored JSON file first (faster than API, includes all 3,382 destinations)
+    // Try to load from our stored JSON file first (faster than API, includes all 3,300+ destinations)
+    // This is the PRIMARY source - we have all destinations stored locally
+    try {
+      // Try viatorDestinationsClassified.json first (our main source with 3300+ destinations)
+      const viatorDestinationsClassifiedModule = await import('@/data/viatorDestinationsClassified.json');
+      const viatorDestinationsClassified = viatorDestinationsClassifiedModule.default || viatorDestinationsClassifiedModule;
+      if (Array.isArray(viatorDestinationsClassified)) {
+        // Direct numeric comparison - most reliable
+        const searchId = parseInt(normalizedId, 10);
+        const destination = viatorDestinationsClassified.find((dest) => {
+          const destId = dest.destinationId;
+          // Try as string first
+          if (destId?.toString() === normalizedId || destId?.toString() === idWithD || destId?.toString() === idWithoutD) {
+            return true;
+          }
+          // Try as number
+          const destIdNum = parseInt(destId, 10);
+          if (!isNaN(destIdNum) && !isNaN(searchId) && destIdNum === searchId) {
+            return true;
+          }
+          // Try original input format
+          if (destId?.toString() === destinationId.toString()) {
+            return true;
+          }
+          return false;
+        });
+
+        if (destination && destination.destinationName) {
+          // Cache this specific destination for faster future lookups
+          await cacheDestination(destinationId, { destinationName: destination.destinationName });
+          console.log(`✅ Found and returning destination: ${destination.destinationName} (ID: ${destination.destinationId}) for lookup ID: ${destinationId}`);
+          return { destinationName: destination.destinationName };
+        } else {
+          console.warn(`⚠️ Destination not found in viatorDestinationsClassified.json for ID: ${destinationId}. Searched ${viatorDestinationsClassified.length} destinations. Normalized: ${normalizedId}, searchId: ${searchId}`);
+        }
+      } else {
+        console.warn(`⚠️ viatorDestinationsClassified.json is not an array. Type: ${typeof viatorDestinationsClassified}`);
+      }
+    } catch (jsonError) {
+      // JSON file not available, try fallback
+      console.error('❌ Could not load viatorDestinationsClassified.json:', jsonError.message || jsonError);
+    }
+
+    // Fallback: Try viatorDestinations.json if it exists
     try {
       const viatorDestinationsModule = await import('@/data/viatorDestinations.json');
       const viatorDestinations = viatorDestinationsModule.default || viatorDestinationsModule;

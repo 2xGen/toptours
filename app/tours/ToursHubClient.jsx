@@ -169,50 +169,26 @@ export default function ToursHubClient({
                             </p>
 
                             <div className="mt-auto pt-3 space-y-2">
-                              {hasDestinationPage(destination.id) ? (
-                                <>
-                                  <Button
-                                    asChild
-                                    className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold"
-                                  >
-                                    <Link href={`/destinations/${destination.id}`}>
-                                      View Tours
-                                      <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Link>
-                                  </Button>
-                                  <Button
-                                    asChild
-                                    variant="secondary"
-                                    className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold"
-                                  >
-                                    <Link href={`/destinations/${destination.id}`}>
-                                      Explore {destination.name}
-                                      <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Link>
-                                  </Button>
-                                </>
-                              ) : (
-                                <>
-                                  <Button
-                                    asChild
-                                    className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold"
-                                  >
-                                    <Link href={`/destinations/${destination.id}/tours`}>
-                                      View Tours
-                                      <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Link>
-                                  </Button>
-                                  <Button
-                                    asChild
-                                    variant="secondary"
-                                    className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold"
-                                  >
-                                    <Link href={`/destinations/${destination.id}`}>
-                                      Explore {destination.name}
-                                      <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Link>
-                                  </Button>
-                                </>
+                              <Button
+                                asChild
+                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold"
+                              >
+                                <Link href={`/destinations/${destination.id}/tours`}>
+                                  View Tours
+                                  <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
+                              </Button>
+                              {hasDestinationPage(destination.id) && (
+                                <Button
+                                  asChild
+                                  variant="secondary"
+                                  className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold"
+                                >
+                                  <Link href={`/destinations/${destination.id}`}>
+                                    Explore {destination.name}
+                                    <ArrowRight className="ml-2 h-4 w-4" />
+                                  </Link>
+                                </Button>
                               )}
                             </div>
                           </CardContent>

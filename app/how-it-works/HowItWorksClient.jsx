@@ -44,7 +44,7 @@ export default function HowItWorksClient() {
               How TopTours.ai<span className="text-xs align-super">™</span> Works
             </h1>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              The first community-driven, AI-powered platform that helps you discover tours that actually match your travel style — and lets you boost the ones you love.
+              The first community-driven, AI-powered platform that helps you discover tours and restaurants that actually match your travel style — and lets you boost the ones you love.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/auth">
@@ -93,7 +93,7 @@ export default function HowItWorksClient() {
                   <h3 className="text-2xl font-bold text-gray-900">Community-Driven</h3>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  <strong>You decide which tours deserve the spotlight.</strong> Every day, our growing community uses their points to boost tours they love. The most-boosted tours rise to the top, creating a real-time ranking based on actual community preference — not just algorithms.
+                  <strong>You decide which tours and restaurants deserve the spotlight.</strong> Every day, our growing community uses their points to boost tours and restaurants they love. The most-boosted listings rise to the top, creating a real-time ranking based on actual community preference — not just algorithms.
                 </p>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start gap-2">
@@ -110,11 +110,11 @@ export default function HowItWorksClient() {
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                    <span>Trending tours appear in "Trending Now" sections on destination pages</span>
+                    <span>Trending tours and restaurants appear in "Trending Now" sections on destination pages</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                    <span>Global leaderboard shows the most-loved tours across all destinations</span>
+                    <span>Global leaderboard shows the most-loved tours and restaurants across all destinations</span>
                   </li>
                 </ul>
               </div>
@@ -159,7 +159,7 @@ export default function HowItWorksClient() {
                 How Promotion Points Work
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Every tour has a promotion score. The higher the score, the more visible it becomes. You control which tours get boosted.
+                Every tour and restaurant has a promotion score. The higher the score, the more visible it becomes — appearing in "Trending Now" sections, climbing leaderboards, and getting featured across destination pages. <strong>You control which tours and restaurants get boosted and seen by thousands of travelers.</strong>
               </p>
             </div>
 
@@ -174,16 +174,16 @@ export default function HowItWorksClient() {
                 </div>
                 <div className="text-center">
                   <Zap className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                  <h3 className="font-bold text-gray-900 mb-2">2. Boost Tours You Love</h3>
+                  <h3 className="font-bold text-gray-900 mb-2">2. Boost Tours & Restaurants You Love</h3>
                   <p className="text-sm text-gray-600">
-                    Spend your subscription points on tours that deserve more visibility. Minimum 10 points per boost.
+                    Spend your subscription points on tours and restaurants that deserve more visibility. Minimum 10 points per boost.
                   </p>
                 </div>
                 <div className="text-center">
                   <TrendingUp className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                   <h3 className="font-bold text-gray-900 mb-2">3. Watch Them Rise</h3>
                   <p className="text-sm text-gray-600">
-                    Boosted tours appear in "Trending Now" sections and climb the leaderboard.
+                    Boosted tours and restaurants appear in "Trending Now" sections on destination pages, climb the leaderboard, and get featured across tour and restaurant listing pages — giving them massive visibility to travelers.
                   </p>
                 </div>
               </div>
@@ -423,7 +423,7 @@ export default function HowItWorksClient() {
                 Get Tours That Actually Match Your Style
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                No more scrolling through hundreds of tours that don't fit. Tell us what kind of traveler you are, and we'll show you tours that match.
+                No more scrolling through hundreds of tours that don't fit. Tell us what kind of traveler you are, and we'll show you tours and restaurants that match.
               </p>
             </div>
 
@@ -516,7 +516,7 @@ export default function HowItWorksClient() {
                 Need More Points Right Now?
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                One-time purchase packages that apply points immediately to a specific tour. Perfect for tour operators or travelers who want to give a tour an extra boost.
+                One-time purchase packages that apply points immediately to a specific tour or restaurant. Perfect for tour operators, restaurant owners, or travelers who want to give a listing an extra boost.
               </p>
             </div>
 
@@ -572,30 +572,50 @@ export default function HowItWorksClient() {
             </div>
 
             {/* How to Purchase & What Instant Boosts Do/Don't Do */}
-            <div className="bg-blue-50 rounded-xl p-6 border-2 border-blue-200 max-w-3xl mx-auto">
-              <h3 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-                <Zap className="w-5 h-5 text-blue-600" />
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border-2 border-blue-300 max-w-4xl mx-auto shadow-lg">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <Zap className="w-6 h-6 text-blue-600" />
                 How to Purchase Instant Boosts
               </h3>
-              <p className="text-gray-700 mb-3">
-                Navigate to any tour listing page or tour card, click the <strong>"Boost"</strong> button, and purchase points directly. The points are applied immediately to that specific tour.
+              <p className="text-gray-700 mb-4 text-base">
+                Navigate to any tour or restaurant listing page or card, click the <strong>"Boost"</strong> button, and purchase points directly. The points are applied immediately to that specific tour or restaurant.
               </p>
-              <div className="bg-white rounded-lg p-4 border border-blue-200">
-                <p className="text-sm font-semibold text-gray-900 mb-2">What Instant Boosts Do:</p>
-                <ul className="space-y-1 text-sm text-gray-700 mb-3">
+              
+              <div className="bg-white rounded-lg p-5 border-2 border-blue-200 mb-4">
+                <p className="text-base font-bold text-gray-900 mb-3 flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5 text-green-600" />
+                  What Instant Boosts Do — Massive Visibility Boost:
+                </p>
+                <ul className="space-y-2 text-sm text-gray-700 mb-4">
                   <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                    <span>Give your favorite listing an <strong>instant boost</strong> on the Top Tours Leaderboard</span>
+                    <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span><strong>Featured in "Trending Now" sections</strong> on destination pages — get seen by thousands of travelers browsing your destination</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                    <span>Help tours <strong>compete on the Top Tours Leaderboard</strong> immediately</span>
+                    <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span><strong>Appear on tour listing pages</strong> — stand out when travelers search for activities in your destination</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                    <span>Affect <strong>all score types</strong> (all-time, monthly, weekly, past 28 days)</span>
+                    <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span><strong>Featured on restaurant pages</strong> — get discovered by food lovers planning their trip</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span><strong>Climb the Global Leaderboard</strong> — compete for top rankings across all destinations</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span><strong>Affect all score types</strong> — boost your all-time, monthly, weekly, and past 28 days rankings</span>
                   </li>
                 </ul>
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4 border border-green-200">
+                  <p className="text-sm font-semibold text-green-800">
+                    💡 <strong>Why This Matters:</strong> Promoted tours and restaurants get significantly more visibility, leading to more bookings. The "Trending Now" sections are the first thing travelers see when exploring a destination — make sure your listing is there!
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg p-5 border border-gray-200">
                 <p className="text-sm font-semibold text-gray-900 mb-2">What Instant Boosts Don't Do:</p>
                 <ul className="space-y-1 text-sm text-gray-700">
                   <li className="flex items-start gap-2">
@@ -608,7 +628,7 @@ export default function HowItWorksClient() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-red-600 font-bold mr-1">✗</span>
-                    <span>Don't add points to your <strong>wallet</strong> — they're applied directly to the tour</span>
+                    <span>Don't add points to your <strong>wallet</strong> — they're applied directly to the tour or restaurant</span>
                   </li>
                 </ul>
               </div>
@@ -628,7 +648,7 @@ export default function HowItWorksClient() {
                 The TopTours Leaderboard
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                See which tours are winning the community's hearts. Rankings update in real-time as travelers boost their favorites.
+                See which tours and restaurants are winning the community's hearts. Rankings update in real-time as travelers boost their favorites.
               </p>
             </div>
 
@@ -645,7 +665,7 @@ export default function HowItWorksClient() {
                         <span className="text-blue-600 font-bold text-sm">∞</span>
                       </div>
                       <div>
-                        <strong className="text-gray-900">All Time:</strong> Total points ever received. Shows the most-loved tours of all time.
+                        <strong className="text-gray-900">All Time:</strong> Total points ever received. Shows the most-loved tours and restaurants of all time.
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
@@ -681,7 +701,7 @@ export default function HowItWorksClient() {
                     Regional Rankings
                   </h3>
                   <p className="text-gray-700 mb-4">
-                    Filter the leaderboard by region to see which tours are winning in:
+                    Filter the leaderboard by region to see which tours and restaurants are winning in:
                   </p>
                   <div className="grid grid-cols-2 gap-3">
                     {['Caribbean', 'Europe', 'North America', 'Asia', 'South America', 'Africa'].map((region) => (
@@ -692,7 +712,7 @@ export default function HowItWorksClient() {
                   </div>
                   <div className="mt-6 bg-yellow-50 rounded-lg p-4 border border-yellow-200">
                     <p className="text-sm text-gray-700">
-                      <strong className="text-yellow-700">Monthly Winners:</strong> Each month, we crown the top tours per region. Winners get featured badges and recognition.
+                      <strong className="text-yellow-700">Monthly Winners:</strong> Each month, we crown the top tours and restaurants per region. Winners get featured badges and recognition.
                     </p>
                   </div>
                 </div>
@@ -724,7 +744,7 @@ export default function HowItWorksClient() {
                 <Star className="w-12 h-12 text-blue-600 mb-4" />
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Save Your Favorites</h3>
                 <p className="text-sm text-gray-700">
-                  Signed-in users can bookmark tours to their favorites list. Build your dream itinerary and compare tours side-by-side.
+                  Signed-in users can bookmark tours and restaurants to their favorites list. Build your dream itinerary and compare listings side-by-side.
                 </p>
               </div>
 
@@ -732,7 +752,7 @@ export default function HowItWorksClient() {
                 <Users className="w-12 h-12 text-green-600 mb-4" />
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Community-Driven</h3>
                 <p className="text-sm text-gray-700">
-                  Every boost matters. Your points help real tours get discovered by real travelers. No algorithms, just community preference.
+                  Every boost matters. Your points help real tours and restaurants get discovered by real travelers. No algorithms, just community preference.
                 </p>
               </div>
 
@@ -751,10 +771,10 @@ export default function HowItWorksClient() {
         <section className="py-16 cta-gradient text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Discover Your Perfect Tours?
+              Ready to Discover Your Perfect Tours & Restaurants?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Be part of the TopTours.ai<span className="text-xs align-super">™</span> community and find tours that actually match your style. It's free to get started.
+              Be part of the TopTours.ai<span className="text-xs align-super">™</span> community and find tours and restaurants that actually match your style. It's free to get started.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/auth">
@@ -770,7 +790,7 @@ export default function HowItWorksClient() {
               </Link>
             </div>
             <p className="text-sm text-white/80 mt-6">
-              ✓ Free account includes 50 points/day • ✓ Save/bookmark unlimited tours • ✓ 1 AI match per day
+              ✓ Free account includes 50 points/day • ✓ Save/bookmark unlimited tours & restaurants • ✓ 1 AI match per day
             </p>
           </div>
         </section>

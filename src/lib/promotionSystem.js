@@ -251,6 +251,25 @@ export async function spendPointsOnTour(userId, productId, pointsToSpend, scoreT
     const isNewTour = tourError && tourError.code === 'PGRST116';
     const needsMetadata = isNewTour || !tourPromo?.tour_name;
 
+    // Extract destination_id early if available from tourData
+    let destinationId = null;
+    if (tourData) {
+      destinationId = tourData._destinationId || null;
+      // Normalize _destinationId (remove 'd' prefix if present, convert to string)
+      if (destinationId) {
+        destinationId = destinationId.toString().replace(/^d/i, '');
+      }
+      // Also try to extract from destinations array if _destinationId not provided
+      if (!destinationId && tourData.destinations && tourData.destinations.length > 0) {
+        const dest = tourData.destinations[0];
+        destinationId = dest?.ref || dest?.destinationId || dest?.id || null;
+        // Normalize (remove 'd' prefix if present)
+        if (destinationId) {
+          destinationId = destinationId.toString().replace(/^d/i, '');
+        }
+      }
+    }
+
     if (isNewTour) {
       // Tour doesn't exist, create it
       const { data: newTourPromo, error: createError } = await supabase
@@ -261,6 +280,7 @@ export async function spendPointsOnTour(userId, productId, pointsToSpend, scoreT
           monthly_score: scoreType === 'monthly' ? pointsToSpend : 0,
           weekly_score: scoreType === 'weekly' ? pointsToSpend : 0,
           past_28_days_score: pointsToSpend, // Always update past 28 days
+          destination_id: destinationId || null, // Include destination_id from the start
           first_promoted_at: new Date().toISOString(),
           last_promoted_at: new Date().toISOString(),
         })
@@ -458,17 +478,25 @@ export async function updateTourMetadata(productId, tourData) {
                        .replace(/(^-|-$)/g, '') : null);
 
     // Extract region and destination_id from destinations
-    // Priority 1: Use _destinationId if provided (from page context)
+    // Priority 1: Use _destinationId if provided (from page context) - this is the Viator numeric ID
     // Priority 2: Extract from tourData.destinations array
     let tourRegion = null;
     let destinationId = tourData._destinationId || null;
+    // Normalize _destinationId if provided (remove 'd' prefix, ensure it's a string)
+    if (destinationId) {
+      destinationId = destinationId.toString().replace(/^d/i, '');
+    }
+    
+    // Track if we have a numeric Viator ID (not a slug)
+    const hasNumericViatorId = destinationId && /^\d+$/.test(destinationId);
+    
     if (tourData.destinations && tourData.destinations.length > 0) {
       // Try to determine region from destination
       const destination = tourData.destinations[0];
       const destinationName = (destination.destinationName || destination.name || '').toLowerCase();
       const destinationRef = destination.destinationRef || destination.ref || '';
       
-      // Try to match with our internal destinations data
+      // Try to match with our internal destinations data (for region detection only)
       try {
         const { destinations } = await import('@/data/destinationsData');
         const { slugToViatorId } = await import('@/data/viatorDestinationMap');
@@ -497,7 +525,9 @@ export async function updateTourMetadata(productId, tourData) {
           );
         }
         
-        if (matchedDestination) {
+        // Only use matched destination for region, NOT for destinationId if we already have a numeric Viator ID
+        if (matchedDestination && !hasNumericViatorId) {
+          // Only set destinationId to slug if we don't already have a numeric Viator ID
           destinationId = matchedDestination.id;
           
           if (matchedDestination.category) {
@@ -647,26 +677,69 @@ export async function getPromotionScoresByDestination(destinationId) {
 
   try {
     const supabase = createSupabaseServiceRoleClient();
-    const { data, error } = await supabase
-      .from('tour_promotions')
-      .select('*')
-      .eq('destination_id', destinationId)
-      .gt('total_score', 0); // Only tours with points
-
-    if (error) {
-      console.error('Error fetching promotion scores by destination:', error);
-      return {};
+    // Normalize destination ID (convert to string, remove 'd' prefix if present)
+    const normalizedId = destinationId.toString().replace(/^d/i, '');
+    const isNumericId = /^\d+$/.test(normalizedId);
+    
+    // Build array of possible destination_id values to query
+    const possibleIds = [normalizedId];
+    
+    // If we have a numeric ID, also try to get the slug
+    if (isNumericId) {
+      try {
+        const { data: destInfo } = await supabase
+          .from('viator_destinations')
+          .select('slug')
+          .eq('id', normalizedId)
+          .maybeSingle();
+        
+        if (destInfo?.slug) {
+          possibleIds.push(destInfo.slug);
+        }
+      } catch (lookupError) {
+        console.warn('Could not lookup destination slug:', lookupError);
+      }
+    } else {
+      // If it's a slug, try to find the numeric ID
+      try {
+        const { data: destInfo } = await supabase
+          .from('viator_destinations')
+          .select('id')
+          .eq('slug', normalizedId)
+          .maybeSingle();
+        
+        if (destInfo?.id) {
+          possibleIds.push(destInfo.id.toString());
+        }
+      } catch (lookupError) {
+        console.warn('Could not lookup destination ID from slug:', lookupError);
+      }
+    }
+    
+    // Query by all possible IDs using OR condition
+    // Supabase doesn't support OR directly, so we'll query each and merge
+    const allScores = {};
+    const seenProductIds = new Set();
+    
+    for (const idToQuery of possibleIds) {
+      const { data, error } = await supabase
+        .from('tour_promotions')
+        .select('*')
+        .eq('destination_id', idToQuery)
+        .gt('total_score', 0); // Only tours with points
+      
+      if (!error && data) {
+        data.forEach(score => {
+          // Only add if we haven't seen this product_id yet (avoid duplicates)
+          if (!seenProductIds.has(score.product_id)) {
+            seenProductIds.add(score.product_id);
+            allScores[score.product_id] = score;
+          }
+        });
+      }
     }
 
-    // Convert array to map for easy lookup
-    const scoresMap = {};
-    if (data) {
-      data.forEach(score => {
-        scoresMap[score.product_id] = score;
-      });
-    }
-
-    return scoresMap;
+    return allScores;
   } catch (error) {
     console.error('Error in getPromotionScoresByDestination:', error);
     return {};
@@ -682,20 +755,75 @@ export async function getTrendingToursByDestination(destinationId, limit = 6) {
 
   try {
     const supabase = createSupabaseServiceRoleClient();
-    const { data, error } = await supabase
-      .from('tour_promotions')
-      .select('*')
-      .eq('destination_id', destinationId)
-      .gt('past_28_days_score', 0) // Only tours with points in last 28 days
-      .order('past_28_days_score', { ascending: false })
-      .limit(limit);
-
-    if (error) {
-      console.error('Error fetching trending tours by destination:', error);
-      return [];
+    // Normalize destination ID (convert to string, remove 'd' prefix if present)
+    const normalizedId = destinationId.toString().replace(/^d/i, '');
+    const isNumericId = /^\d+$/.test(normalizedId);
+    
+    // Build array of possible destination_id values to query
+    const possibleIds = [normalizedId];
+    
+    // If we have a numeric ID, also try to get the slug
+    if (isNumericId) {
+      try {
+        const { data: destInfo } = await supabase
+          .from('viator_destinations')
+          .select('slug')
+          .eq('id', normalizedId)
+          .maybeSingle();
+        
+        if (destInfo?.slug) {
+          possibleIds.push(destInfo.slug);
+        }
+      } catch (lookupError) {
+        console.warn('Could not lookup destination slug:', lookupError);
+      }
+    } else {
+      // If it's a slug, try to find the numeric ID
+      try {
+        const { data: destInfo } = await supabase
+          .from('viator_destinations')
+          .select('id')
+          .eq('slug', normalizedId)
+          .maybeSingle();
+        
+        if (destInfo?.id) {
+          possibleIds.push(destInfo.id.toString());
+        }
+      } catch (lookupError) {
+        console.warn('Could not lookup destination ID from slug:', lookupError);
+      }
     }
-
-    return data || [];
+    
+    // Query by all possible IDs and merge results
+    const allTours = [];
+    const seenProductIds = new Set();
+    
+    for (const idToQuery of possibleIds) {
+      const { data, error } = await supabase
+        .from('tour_promotions')
+        .select('*')
+        .eq('destination_id', idToQuery)
+        .gt('past_28_days_score', 0) // Only tours with points in last 28 days
+        .order('past_28_days_score', { ascending: false })
+        .limit(limit * 2); // Get more to account for duplicates
+      
+      if (!error && data) {
+        data.forEach(tour => {
+          // Only add if we haven't seen this product_id yet (avoid duplicates)
+          if (!seenProductIds.has(tour.product_id)) {
+            seenProductIds.add(tour.product_id);
+            allTours.push(tour);
+          }
+        });
+      }
+    }
+    
+    // Sort by past_28_days_score and limit
+    const sortedTours = allTours
+      .sort((a, b) => (b.past_28_days_score || 0) - (a.past_28_days_score || 0))
+      .slice(0, limit);
+    
+    return sortedTours;
   } catch (error) {
     console.error('Error in getTrendingToursByDestination:', error);
     return [];
@@ -1071,16 +1199,16 @@ export async function purchaseALaCartePointsForRestaurant(userId, restaurantId, 
 }
 
 /**
- * Get recent boosts (transactions)
+ * Get recent boosts (transactions) - includes both tours and restaurants
  */
 export async function getRecentBoosts(limit = 20) {
   try {
     const supabase = createSupabaseServiceRoleClient();
     
-    // First, get the transactions
+    // First, get the transactions (both tours and restaurants)
     const { data: transactions, error: transactionsError } = await supabase
       .from('promotion_transactions')
-      .select('id, user_id, product_id, points_spent, created_at, transaction_type')
+      .select('id, user_id, product_id, restaurant_id, points_spent, created_at, transaction_type')
       .order('created_at', { ascending: false })
       .limit(limit);
 

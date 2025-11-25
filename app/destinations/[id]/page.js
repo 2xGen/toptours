@@ -1,10 +1,12 @@
 import { getDestinationById } from '@/data/destinationsData';
 import DestinationDetailClient from './DestinationDetailClient';
-import { getPromotionScoresByDestination, getTrendingToursByDestination, getHardcodedToursByDestination, getTrendingRestaurantsByDestination } from '@/lib/promotionSystem';
+import { getPromotionScoresByDestination, getTrendingToursByDestination, getHardcodedToursByDestination, getTrendingRestaurantsByDestination, getRestaurantPromotionScoresByDestination } from '@/lib/promotionSystem';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { getRestaurantsForDestination, formatRestaurantForFrontend } from '@/lib/restaurants';
+import { getViatorDestinationById } from '@/lib/supabaseCache';
+import { redirect } from 'next/navigation';
 import ErrorBoundary from '@/components/ErrorBoundary';
 
 // Helper to generate slug
@@ -114,6 +116,19 @@ export async function generateMetadata({ params }) {
 export default async function DestinationDetailPage({ params }) {
   const { id } = await params;
   let destination = getDestinationById(id);
+  
+  // If ID is numeric (Viator destination ID), look it up in Supabase and redirect to slug
+  if (!destination && /^\d+$/.test(id)) {
+    try {
+      const destInfo = await getViatorDestinationById(id);
+      if (destInfo && destInfo.name) {
+        const slug = destInfo.slug || generateSlug(destInfo.name);
+        redirect(`/destinations/${slug}`);
+      }
+    } catch (error) {
+      console.warn(`Failed to lookup destination ${id} from Supabase:`, error);
+    }
+  }
   
   // If not in our 182 destinations, check if we have generated full content
   if (!destination) {
@@ -297,14 +312,47 @@ export default async function DestinationDetailPage({ params }) {
     );
   }
 
+  // CRITICAL: Use destinationId (numeric Viator ID) for promotion queries, not the slug
+  // For curated destinations (182), we need to look up the Viator ID from slugToViatorId
+  // For Viator destinations (3300+), destinationId is already set in the destination object
+  // If still not found, try to look it up from Supabase by slug
+  const { slugToViatorId } = await import('@/data/viatorDestinationMap');
+  let viatorDestinationId = destination.destinationId || (destination.id && slugToViatorId[destination.id]) || null;
+  
+  // If we still don't have a numeric ID, try to look it up from Supabase
+  if (!viatorDestinationId || !/^\d+$/.test(viatorDestinationId.toString())) {
+    try {
+      // Try to find by slug in Supabase
+      const { createSupabaseServiceRoleClient } = await import('@/lib/supabaseClient');
+      const supabase = createSupabaseServiceRoleClient();
+      const { data: destInfo } = await supabase
+        .from('viator_destinations')
+        .select('id')
+        .eq('slug', destination.id)
+        .maybeSingle();
+      
+      if (destInfo?.id) {
+        viatorDestinationId = destInfo.id.toString();
+      }
+    } catch (error) {
+      console.warn('Could not lookup destination ID from Supabase:', error);
+    }
+  }
+  
+  // Fallback to destination.id if we still don't have a numeric ID
+  const destinationIdForScores = viatorDestinationId || destination.id;
+  
   // Fetch promotion scores for this destination
-  const promotionScores = await getPromotionScoresByDestination(destination.id);
+  const promotionScores = await getPromotionScoresByDestination(destinationIdForScores);
 
-  // Fetch trending tours (past 28 days) for this destination
-  const trendingTours = await getTrendingToursByDestination(destination.id, 6);
+  // Fetch trending tours (past 28 days) for this destination - limit to 3
+  const trendingTours = await getTrendingToursByDestination(destinationIdForScores, 3);
 
-  // Fetch trending restaurants (past 28 days) for this destination
-  const trendingRestaurants = await getTrendingRestaurantsByDestination(destination.id, 6);
+  // Fetch trending restaurants (past 28 days) for this destination - limit to 3
+  const trendingRestaurants = await getTrendingRestaurantsByDestination(destination.id, 3);
+
+  // Fetch restaurant promotion scores for this destination
+  const restaurantPromotionScores = await getRestaurantPromotionScoresByDestination(destination.id);
 
   // Fetch hardcoded tours by category (lightweight - no API calls)
   const hardcodedTours = await getHardcodedToursByDestination(destination.id);
@@ -475,6 +523,7 @@ export default async function DestinationDetailPage({ params }) {
           trendingRestaurants={trendingRestaurants}
           hardcodedTours={hardcodedTours}
           restaurants={restaurants}
+          restaurantPromotionScores={restaurantPromotionScores}
         />
       </ErrorBoundary>
     </>

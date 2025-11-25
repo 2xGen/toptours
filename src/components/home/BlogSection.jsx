@@ -75,7 +75,7 @@ const TopDestinations = () => {
             Top Destinations
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover the world's most popular destinations with curated tours and unforgettable experiences.
+            Discover the world's most popular destinations with curated tours, restaurants, and unforgettable experiences.
           </p>
         </motion.div>
 

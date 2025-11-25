@@ -8,6 +8,8 @@ import FeaturedTours from '@/components/home/FeaturedTours';
 import TopDestinations from '@/components/home/BlogSection';
 import HomeCTA from '@/components/home/HomeCTA';
 import HowItWorksHighlights from '@/components/home/HowItWorksHighlights';
+import DestinationSearch from '@/components/home/DestinationSearch';
+import CommunityPromotion from '@/components/home/CommunityPromotion';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 
 export default function HomePageClient({ topTours = [], topPromoters = [] }) {
@@ -22,10 +24,12 @@ export default function HomePageClient({ topTours = [], topPromoters = [] }) {
       
       <main className="min-h-screen" suppressHydrationWarning>
         <Hero />
-        <AIPlanner />
-        <FeaturedTours onOpenModal={handleOpenModal} topTours={topTours} topPromoters={topPromoters} />
-        <TopDestinations />
+        <DestinationSearch />
         <HowItWorksHighlights />
+        <CommunityPromotion />
+        <FeaturedTours onOpenModal={handleOpenModal} topTours={topTours} topPromoters={topPromoters} />
+        <AIPlanner />
+        <TopDestinations />
         <HomeCTA onOpenModal={handleOpenModal} />
       </main>
 

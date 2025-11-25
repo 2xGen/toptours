@@ -1,6 +1,19 @@
 import { getLeaderboardTours, getLeaderboardRestaurants, getRecentBoosts, updateTourMetadata, getTourPromotionScoresBatch, getTopPromoters } from '@/lib/promotionSystem';
 import { getCachedTour, cacheTour } from '@/lib/viatorCache';
+import { getViatorDestinationById } from '@/lib/supabaseCache';
 import LeaderboardClient from './LeaderboardClient';
+
+// Helper to generate slug from name
+function generateSlug(name) {
+  if (!name) return null;
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
 
 // Metadata is now handled in layout.js for better SEO structure
 
@@ -66,11 +79,84 @@ export default async function LeaderboardPage({ searchParams }) {
   const topPromoters = await getTopPromoters(20);
   
   // Get promotion data for boosts to check for cached metadata
+  // Separate tours and restaurants
   const boostProductIds = recentBoosts.map(b => b.product_id).filter(Boolean);
+  const boostRestaurantIds = recentBoosts.map(b => b.restaurant_id).filter(Boolean);
+  
   const boostScores = await getTourPromotionScoresBatch(boostProductIds);
+  
+  // Fetch restaurant promotion data if we have restaurant IDs
+  let restaurantScores = {};
+  if (boostRestaurantIds.length > 0) {
+    const { createSupabaseServiceRoleClient } = await import('@/lib/supabaseClient');
+    const supabase = createSupabaseServiceRoleClient();
+    const { data: restaurantPromos, error: restaurantError } = await supabase
+      .from('restaurant_promotions')
+      .select('restaurant_id, restaurant_name, restaurant_image_url, restaurant_slug, destination_id, region')
+      .in('restaurant_id', boostRestaurantIds);
+    
+    if (!restaurantError && restaurantPromos) {
+      restaurantScores = restaurantPromos.reduce((acc, promo) => {
+        acc[promo.restaurant_id] = promo;
+        return acc;
+      }, {});
+    }
+  }
+
+  // Look up destination names and slugs for all unique destination IDs
+  const allDestinationIds = new Set();
+  recentBoosts.forEach(boost => {
+    if (boost.destination_id) allDestinationIds.add(boost.destination_id);
+  });
+  restaurants.forEach(restaurant => {
+    if (restaurant.destination_id) allDestinationIds.add(restaurant.destination_id);
+  });
+  tours.forEach(tour => {
+    if (tour.destination_id) allDestinationIds.add(tour.destination_id);
+  });
+
+  // Fetch destination info from Supabase for all unique IDs
+  const destinationLookup = {};
+  for (const destId of allDestinationIds) {
+    // Only lookup if it's numeric (Viator destination ID)
+    if (/^\d+$/.test(destId)) {
+      try {
+        const destInfo = await getViatorDestinationById(destId);
+        if (destInfo) {
+          destinationLookup[destId] = {
+            name: destInfo.name,
+            slug: destInfo.slug || generateSlug(destInfo.name),
+          };
+        }
+      } catch (error) {
+        console.warn(`Failed to lookup destination ${destId}:`, error);
+      }
+    }
+  }
   
   // Use ONLY cached metadata from Supabase - no Viator API calls!
   const boostsWithDetails = recentBoosts.map((boost) => {
+    // Check if this is a restaurant promotion
+    if (boost.restaurant_id) {
+      const restaurantData = restaurantScores[boost.restaurant_id];
+      const destId = restaurantData?.destination_id || boost.destination_id;
+      const destInfo = destId ? destinationLookup[destId] : null;
+      
+      return {
+        ...boost,
+        restaurantData: restaurantData ? {
+          name: restaurantData.restaurant_name,
+          image: restaurantData.restaurant_image_url,
+          slug: restaurantData.restaurant_slug,
+          destination_id: destId,
+          destination_slug: destInfo?.slug || destId, // Use name-based slug if available
+          destination_name: destInfo?.name || null,
+        } : null,
+        tourData: null, // Not a tour
+      };
+    }
+    
+    // Otherwise, it's a tour promotion
     const promotionData = boostScores[boost.product_id];
     
     // Use cached metadata from tour_promotions table
@@ -98,18 +184,24 @@ export default async function LeaderboardPage({ searchParams }) {
     return {
       ...boost,
       tourData: tourData,
+      restaurantData: null, // Not a restaurant
     };
   });
 
   // Format restaurants with details (similar to tours)
   const restaurantsWithDetails = restaurants.map((restaurant) => {
+    const destId = restaurant.destination_id;
+    const destInfo = destId ? destinationLookup[destId] : null;
+    
     return {
       ...restaurant,
       restaurantData: {
         name: restaurant.restaurant_name,
         image: restaurant.restaurant_image_url,
         slug: restaurant.restaurant_slug,
-        destination_id: restaurant.destination_id,
+        destination_id: destId,
+        destination_slug: destInfo?.slug || destId, // Use name-based slug if available
+        destination_name: destInfo?.name || null,
       },
     };
   });

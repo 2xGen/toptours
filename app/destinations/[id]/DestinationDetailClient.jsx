@@ -6,7 +6,7 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
-  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight
+  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, Info
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -18,6 +18,7 @@ import { getGuidesByCategory, getGuidesByIds, getGuidesByCountry } from '../../.
 // Restaurants are now passed as props from the server component
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
+import RestaurantPromotionCard from '@/components/promotion/RestaurantPromotionCard';
 import { TrendingUp } from 'lucide-react';
 import { groupToursByCategory } from '@/lib/tourCategorization';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
@@ -42,7 +43,7 @@ function getDisplayCategoryName(categoryName) {
   return categoryMap[categoryName] || categoryName;
 }
 
-export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], hardcodedTours = {}, restaurants = [] }) {
+export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], hardcodedTours = {}, restaurants = [], restaurantPromotionScores = {} }) {
   
   // Ensure destination exists
   if (!destination) {
@@ -863,7 +864,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
 
         {/* Trending Now Section - Past 28 Days */}
-        {safeTrendingTours && safeTrendingTours.length > 0 && (
+        {((safeTrendingTours && safeTrendingTours.length > 0) || (safeTrendingRestaurants && safeTrendingRestaurants.length > 0)) && (
           <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center gap-2 mb-6">
@@ -873,9 +874,24 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   Past 28 Days
                 </Badge>
               </div>
-              <p className="text-sm text-gray-600 mb-6">
-                Tours that are currently popular based on recent community boosts
+              <div className="flex items-center gap-2 mb-6">
+                <p className="text-sm text-gray-600">
+                  Tours and restaurants that are currently popular based on recent community boosts
               </p>
+                <Link 
+                  href="/how-it-works" 
+                  className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                  title="Learn how promotions work"
+                >
+                  <Info className="w-3.5 h-3.5" />
+                  <span>Learn more</span>
+                </Link>
+              </div>
+
+              {/* Trending Tours Subsection */}
+              {safeTrendingTours && safeTrendingTours.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Trending Tours Now in {safeDestination.fullName}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {safeTrendingTours.map((trending, index) => {
                   if (!trending || !trending.product_id) return null;
@@ -962,6 +978,97 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   );
                 })}
               </div>
+                </div>
+              )}
+
+              {/* Trending Restaurants Subsection */}
+              {safeTrendingRestaurants && safeTrendingRestaurants.length > 0 && (
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Trending Restaurants Now in {safeDestination.fullName}</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {safeTrendingRestaurants.map((trending, index) => {
+                      if (!trending || !trending.restaurant_id) return null;
+                      
+                      const restaurantId = trending.restaurant_id;
+                      const restaurantUrl = trending.restaurant_slug && trending.destination_id
+                        ? `/destinations/${trending.destination_id}/restaurants/${trending.restaurant_slug}`
+                        : `/destinations/${safeDestination.id}/restaurants`;
+                      
+                      return (
+                        <motion.div
+                          key={restaurantId || index}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.4, delay: index * 0.1 }}
+                          viewport={{ once: true }}
+                        >
+                          <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <Link href={restaurantUrl}>
+                              <div className="relative h-48 overflow-hidden">
+                                {trending.restaurant_image_url ? (
+                                  <img
+                                    src={trending.restaurant_image_url}
+                                    alt={trending.restaurant_name || 'Restaurant'}
+                                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                    onError={(e) => {
+                                      e.target.src = safeDestination.imageUrl || '/placeholder-restaurant.jpg';
+                                    }}
+                                  />
+                                ) : (
+                                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                    <UtensilsCrossed className="w-6 h-6 text-gray-400" />
+                                  </div>
+                                )}
+                                <div className="absolute top-3 left-3">
+                                  <Badge className="adventure-gradient text-white">
+                                    <TrendingUp className="w-3 h-3 mr-1" />
+                                    Trending
+                                  </Badge>
+                                </div>
+                              </div>
+                            </Link>
+
+                            <CardContent className="p-4 flex-1 flex flex-col">
+                              <Link href={restaurantUrl}>
+                                <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                  {trending.restaurant_name || `Restaurant #${restaurantId}`}
+                                </h3>
+                              </Link>
+
+                              {/* Promotion Score */}
+                              {restaurantId && (
+                              <div className="mb-3">
+                                <RestaurantPromotionCard 
+                                  restaurantId={restaurantId} 
+                                  compact={true}
+                                  initialScore={restaurantPromotionScores[restaurantId] || {
+                                    restaurant_id: restaurantId,
+                                    total_score: trending.total_score || 0,
+                                    monthly_score: trending.monthly_score || 0,
+                                    weekly_score: trending.weekly_score || 0,
+                                    past_28_days_score: trending.past_28_days_score || 0,
+                                  }}
+                                />
+                              </div>
+                              )}
+
+                              <Button
+                                asChild
+                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                              >
+                                <Link href={restaurantUrl}>
+                                  View Details
+                                  <ArrowRight className="w-4 h-4 ml-2" />
+                                </Link>
+                              </Button>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           </section>
         )}
@@ -1698,79 +1805,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </div>
         </section>
 
-        {/* Trending Restaurants Section */}
-        {safeTrendingRestaurants && safeTrendingRestaurants.length > 0 && (
-          <section className="py-12 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center gap-2 mb-6">
-                <TrendingUp className="w-5 h-5 text-orange-600" />
-                <h2 className="text-2xl font-bold text-gray-900">Trending Restaurants in {safeDestination.fullName}</h2>
-                <Badge variant="secondary" className="ml-2 bg-orange-100 text-orange-700 border-orange-300">
-                  Past 28 Days
-                </Badge>
-              </div>
-              <p className="text-sm text-gray-600 mb-6">
-                Restaurants that are currently popular based on recent community boosts
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {safeTrendingRestaurants.map((trending, index) => {
-                  if (!trending || !trending.restaurant_id) return null;
-                  
-                  const restaurantId = trending.restaurant_id;
-                  const restaurantUrl = trending.restaurant_slug && trending.destination_id
-                    ? `/destinations/${trending.destination_id}/restaurants/${trending.restaurant_slug}`
-                    : `/destinations/${safeDestination.id}/restaurants`;
-                  
-                  return (
-                    <motion.div
-                      key={restaurantId || index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <Card className="h-full overflow-hidden hover:shadow-lg transition-all">
-                        <Link href={restaurantUrl} className="block">
-                          <div className="relative h-48">
-                            {trending.restaurant_image_url ? (
-                              <img
-                                src={trending.restaurant_image_url}
-                                alt={trending.restaurant_name || 'Restaurant'}
-                                className="w-full h-full object-cover"
-                                onError={(e) => {
-                                  e.target.src = safeDestination.imageUrl || '/placeholder-restaurant.jpg';
-                                }}
-                              />
-                            ) : (
-                              <div className="w-full h-full bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
-                                <UtensilsCrossed className="w-12 h-12 text-orange-300" />
-                              </div>
-                            )}
-                            <div className="absolute top-2 right-2">
-                              <Badge className="bg-orange-600 text-white">
-                                {trending.past_28_days_score?.toLocaleString() || 0} pts
-                              </Badge>
-                            </div>
-                          </div>
-                          <CardContent className="p-4">
-                            <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2">
-                              {trending.restaurant_name || `Restaurant #${restaurantId}`}
-                            </h3>
-                            {trending.region && (
-                              <Badge variant="outline" className="text-xs mb-2">
-                                {trending.region.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                              </Badge>
-                            )}
-                          </CardContent>
-                        </Link>
-                      </Card>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* CTA Section */}
         <section className="py-16 adventure-gradient">

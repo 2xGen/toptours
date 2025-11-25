@@ -5,7 +5,7 @@ import {
   formatRestaurantForFrontend,
 } from '@/lib/restaurants';
 import { getRestaurantsForDestination as getRestaurantsForDestinationFromStatic } from './restaurantsData';
-import { getTrendingToursByDestination } from '@/lib/promotionSystem';
+import { getTrendingToursByDestination, getRestaurantPromotionScoresByDestination, getTrendingRestaurantsByDestination } from '@/lib/promotionSystem';
 import RestaurantsListClient from './RestaurantsListClient';
 
 export async function generateMetadata({ params }) {
@@ -82,8 +82,14 @@ export default async function RestaurantsIndexPage({ params }) {
     notFound();
   }
 
-  // Fetch trending tours (past 28 days) for this destination
-  const trendingTours = await getTrendingToursByDestination(id, 6);
+  // Fetch trending tours (past 28 days) for this destination - limit to 3
+  const trendingTours = await getTrendingToursByDestination(id, 3);
+
+  // Fetch trending restaurants (past 28 days) for this destination - limit to 3
+  const trendingRestaurants = await getTrendingRestaurantsByDestination(id, 3);
+
+  // Fetch restaurant promotion scores for this destination
+  const restaurantPromotionScores = await getRestaurantPromotionScoresByDestination(id);
 
   // ItemList schema for restaurant listing page
   // Keep it simple - just list the restaurants. Detailed ratings/reviews belong on individual restaurant pages
@@ -222,7 +228,7 @@ export default async function RestaurantsIndexPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <RestaurantsListClient destination={destination} restaurants={restaurants} trendingTours={trendingTours} />
+      <RestaurantsListClient destination={destination} restaurants={restaurants} trendingTours={trendingTours} trendingRestaurants={trendingRestaurants} restaurantPromotionScores={restaurantPromotionScores} />
     </>
   );
 }
