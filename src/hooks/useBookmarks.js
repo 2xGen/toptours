@@ -48,7 +48,8 @@ export function useBookmarks(lazy = false) {
     // Share one inflight request across all hook instances
     if (!inflight) {
       setLoading(true);
-      inflight = fetch(`/api/internal/bookmarks?userId=${encodeURIComponent(user.id)}`)
+      // Use window.fetch to avoid conflict with the hook's fetch function
+      inflight = (typeof window !== 'undefined' ? window.fetch : globalThis.fetch)(`/api/internal/bookmarks?userId=${encodeURIComponent(user.id)}`)
         .then((res) => res.json())
         .then((json) => {
           cachedBookmarks = json.bookmarks || [];
@@ -85,7 +86,8 @@ export function useBookmarks(lazy = false) {
     // Share one inflight request across all hook instances
     if (!inflight) {
       setLoading(true);
-      inflight = fetch(`/api/internal/bookmarks?userId=${encodeURIComponent(user.id)}`)
+      // Use window.fetch to avoid conflict with the hook's fetch function
+      inflight = (typeof window !== 'undefined' ? window.fetch : globalThis.fetch)(`/api/internal/bookmarks?userId=${encodeURIComponent(user.id)}`)
         .then((res) => res.json())
         .then((json) => {
           cachedBookmarks = json.bookmarks || [];
@@ -124,14 +126,16 @@ export function useBookmarks(lazy = false) {
   const toggle = useCallback(
     async (productId) => {
       if (!user) return { error: 'not_signed_in' };
+      // Use window.fetch to avoid conflict with the hook's fetch function
+      const fetchApi = typeof window !== 'undefined' ? window.fetch : globalThis.fetch;
       if (ids.has(productId)) {
-        await fetch(`/api/internal/bookmarks/${encodeURIComponent(productId)}`, {
+        await fetchApi(`/api/internal/bookmarks/${encodeURIComponent(productId)}`, {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userId: user.id }),
         });
       } else {
-        await fetch('/api/internal/bookmarks', {
+        await fetchApi('/api/internal/bookmarks', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userId: user.id, productId }),

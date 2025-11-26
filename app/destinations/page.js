@@ -249,7 +249,25 @@ export default function DestinationsPage() {
     return [...regularDests, ...viatorDests];
   }, [destinations, searchTerm, selectedCategory, viatorDestinationsClassified]);
 
-  const allFilteredDestinations = allDestinations.filter(dest => {
+  // Deduplicate by ID to ensure unique keys - remove duplicates, keeping curated destinations over Viator ones
+  const uniqueDestinations = useMemo(() => {
+    const seen = new Map();
+    allDestinations.forEach(dest => {
+      const existing = seen.get(dest.id);
+      if (!existing) {
+        seen.set(dest.id, dest);
+      } else if (!existing.isViator && dest.isViator) {
+        // Keep curated over Viator if duplicate
+        return;
+      } else if (existing.isViator && !dest.isViator) {
+        // Replace Viator with curated if duplicate
+        seen.set(dest.id, dest);
+      }
+    });
+    return Array.from(seen.values());
+  }, [allDestinations]);
+
+  const allFilteredDestinations = uniqueDestinations.filter(dest => {
     if (!searchTerm.trim() && selectedCategory === 'All') {
       // No filters, show all
       return true;
@@ -457,7 +475,7 @@ export default function DestinationsPage() {
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {paginatedFeaturedDestinations.map((destination, index) => (
                       <motion.div
-                        key={destination.id}
+                        key={`featured-${destination.id}-${index}`}
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -559,7 +577,7 @@ export default function DestinationsPage() {
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {paginatedOtherDestinations.map((destination, index) => (
                           <motion.div
-                            key={destination.id}
+                            key={`other-${destination.id}-${index}`}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4, delay: index * 0.05 }}
