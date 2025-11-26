@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ArrowRight, Sparkles, Users, Trophy, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const HomeCTA = ({ onOpenModal }) => {
+const HomeCTA = ({ onOpenModal, onOpenOnboardingModal }) => {
   return (
     <section className="py-20 ocean-gradient relative overflow-hidden">
       <div className="absolute inset-0 bg-black/30" />
@@ -46,13 +46,11 @@ const HomeCTA = ({ onOpenModal }) => {
 
           <div className="flex flex-wrap gap-4 justify-center mb-12">
             <Button
-              asChild
+              onClick={onOpenOnboardingModal}
               className="px-8 py-6 bg-white text-orange-600 font-bold text-lg shadow-xl hover:bg-gray-100 hover:scale-105 transition-all duration-200"
             >
-              <Link href="/auth">
-                Create Free Account
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              Create Free Account
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button 
               asChild

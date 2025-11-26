@@ -6,7 +6,7 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
-  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, Info
+  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, Info, Share2
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -20,9 +20,12 @@ import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import RestaurantPromotionCard from '@/components/promotion/RestaurantPromotionCard';
 import { TrendingUp } from 'lucide-react';
+import PromotionExplainerModal from '@/components/auth/PromotionExplainerModal';
 import { groupToursByCategory } from '@/lib/tourCategorization';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
+import ShareModal from '@/components/sharing/ShareModal';
+import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 
 // Helper to generate slug
 function generateSlug(name) {
@@ -87,6 +90,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
   }
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPromotionModalOpen, setIsPromotionModalOpen] = useState(false);
   const [tours, setTours] = useState({ all: [] });
   const [loading, setLoading] = useState({ all: false });
   const [totalToursCount, setTotalToursCount] = useState(null);
@@ -103,6 +107,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const [isTourModalOpen, setIsTourModalOpen] = useState(false);
   const [showStickyButton, setShowStickyButton] = useState(true);
   const [showParentCountryModal, setShowParentCountryModal] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [user, setUser] = useState(null);
   const { toast } = useToast();
   
   // Restaurants are now passed as props (already formatted from database)
@@ -120,6 +126,17 @@ export default function DestinationDetailClient({ destination, promotionScores =
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  // Check authentication
+  useEffect(() => {
+    if (!isClient) return;
+    const checkAuth = async () => {
+      const supabase = createSupabaseBrowserClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+    };
+    checkAuth();
+  }, [isClient]);
   
   // Reset carousel index when guides change or become empty
   useEffect(() => {
@@ -410,12 +427,12 @@ export default function DestinationDetailClient({ destination, promotionScores =
       }
       
       const requestBody = {
-        // Use destination name as searchTerm (for API compatibility)
-        // The destination ID filter ensures accurate results, not text matching
-        searchTerm: destinationName, // Keep destination name for API compatibility
+        // Use /products/search endpoint when we have destination ID (standard approach, 100% accurate)
+        // No search term needed - the destination ID filter handles everything
+        searchTerm: '', // No search term - use /products/search endpoint
         page: 1,
         viatorDestinationId: viatorDestinationId ? String(viatorDestinationId) : null, // Ensure it's a string
-        includeDestination: !!viatorDestinationId // CRITICAL: This filter ensures accuracy, not the searchTerm
+        includeDestination: !!viatorDestinationId // Use /products/search when destination ID is available
       };
       
       console.log('API Request Body:', JSON.stringify(requestBody, null, 2));
@@ -568,9 +585,20 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     <MapPin className="w-5 h-5 text-blue-600 mr-2" />
                     <span className="text-white font-medium">{safeDestination.category || safeDestination.region}</span>
                   </div>
-                  <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold mb-4 md:mb-6 text-white">
-                    {safeDestination.fullName}
-                  </h1>
+                  <div className="flex items-center gap-3 mb-4 md:mb-6">
+                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex-1">
+                      {safeDestination.fullName}
+                    </h1>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="text-white hover:bg-white/20 flex-shrink-0"
+                      onClick={() => setShowShareModal(true)}
+                      title="Share this destination"
+                    >
+                      <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
+                    </Button>
+                  </div>
                   <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8">
                     {safeDestination.heroDescription}
                   </p>
@@ -619,6 +647,18 @@ export default function DestinationDetailClient({ destination, promotionScores =
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
+                    {isClient && user && (
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="border-white text-white hover:bg-white/20 gap-2"
+                      >
+                        <Link href={`/plans/create?destination=${safeDestination.id}`}>
+                          <Calendar className="w-4 h-4" />
+                          Create Plan
+                        </Link>
+                      </Button>
+                    )}
                   </div>
                 </motion.div>
                 
@@ -650,9 +690,20 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   <MapPin className="w-5 h-5 text-blue-200 mr-2" />
                   <span className="text-white font-medium">{safeDestination.category || safeDestination.region}</span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold mb-4 md:mb-6 text-white">
-                  {safeDestination.fullName}
-                </h1>
+                <div className="flex items-center justify-center gap-3 mb-4 md:mb-6">
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white">
+                    {safeDestination.fullName}
+                  </h1>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-white hover:bg-white/20 flex-shrink-0"
+                    onClick={() => setShowShareModal(true)}
+                    title="Share this destination"
+                  >
+                    <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </Button>
+                </div>
                 <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
                   {safeDestination.heroDescription}
                 </p>
@@ -882,14 +933,14 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 <p className="text-sm text-gray-600">
                   Tours and restaurants that are currently popular based on recent community boosts
               </p>
-                <Link 
-                  href="/how-it-works" 
-                  className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                <button
+                  onClick={() => setIsPromotionModalOpen(true)}
+                  className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 hover:underline transition-colors cursor-pointer"
                   title="Learn how promotions work"
                 >
                   <Info className="w-3.5 h-3.5" />
                   <span>Learn more</span>
-                </Link>
+                </button>
               </div>
 
               {/* Trending Tours Subsection */}
@@ -1346,8 +1397,9 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 </div>
               </motion.div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
-                {safeRestaurants.map((restaurant) => {
+              {/* Featured Restaurants (first 6) - Card Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mb-8">
+                {safeRestaurants.slice(0, 6).map((restaurant) => {
                   if (!restaurant || !restaurant.id || !restaurant.slug) return null;
                   
                   const addressParts = restaurant.contact?.address
@@ -1366,9 +1418,9 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6 }}
                       viewport={{ once: true }}
-                      className="h-full overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                      className="h-full flex flex-col overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
                     >
-                      <div className="relative h-52">
+                      <div className="relative h-52 flex-shrink-0">
                         <Link href={restaurantUrl} aria-label={`View ${restaurant.name} restaurant details`} className="block h-full">
                           <img
                             src={restaurant.heroImage || safeDestination.imageUrl || '/placeholder-restaurant.jpg'}
@@ -1395,12 +1447,12 @@ export default function DestinationDetailClient({ destination, promotionScores =
                         </Link>
                       </div>
 
-                      <div className="p-6 space-y-4">
+                      <div className="p-6 flex flex-col flex-grow space-y-4">
                         <div className="flex items-start gap-3">
-                          <div className="bg-blue-50 text-blue-600 rounded-lg p-2 shadow-inner">
+                          <div className="bg-blue-50 text-blue-600 rounded-lg p-2 shadow-inner flex-shrink-0">
                             <UtensilsCrossed className="w-5 h-5" />
                           </div>
-                          <div>
+                          <div className="flex-1 min-w-0">
                             <h3 className="text-xl font-semibold text-gray-900 leading-tight">
                               {restaurant.name || 'Restaurant'}
                             </h3>
@@ -1412,13 +1464,13 @@ export default function DestinationDetailClient({ destination, promotionScores =
                           </div>
                         </div>
 
-                        <p className="text-sm text-gray-600 leading-relaxed">
+                        <p className="text-sm text-gray-600 leading-relaxed flex-grow">
                           {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
                         </p>
 
                         <Link
                           href={restaurantUrl}
-                          className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-orange-600"
+                          className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-orange-600"
                         >
                           View Restaurant
                           <ArrowRight className="w-4 h-4" />
@@ -1428,6 +1480,121 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   );
                 })}
               </div>
+
+              {/* Remaining Restaurants (7+) - Simple List Format */}
+              {safeRestaurants.length > 6 && (
+                <div className="space-y-6">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="mb-6"
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      <h3 className="text-xl font-semibold text-gray-800">
+                        More Restaurants in {safeDestination.fullName}
+                      </h3>
+                      <Link href={`/destinations/${safeDestination.id}/restaurants`} className="text-blue-600 hover:text-blue-700 font-medium text-sm flex items-center gap-1">
+                        View All
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      Discover {safeRestaurants.length - 6} more curated dining experiences
+                    </p>
+                  </motion.div>
+
+                  {safeRestaurants.slice(6).map((restaurant, index) => {
+                    if (!restaurant || !restaurant.id || !restaurant.slug) return null;
+                    
+                    const restaurantUrl = `/destinations/${safeDestination.id}/restaurants/${restaurant.slug}`;
+                    const imageFirst = index % 2 === 0;
+
+                    return (
+                      <motion.article
+                        key={restaurant.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                        viewport={{ once: true }}
+                        className="border border-blue-100 shadow-lg overflow-hidden rounded-xl bg-white hover:shadow-xl transition-shadow"
+                      >
+                        <div className={`flex flex-col lg:flex-row ${imageFirst ? '' : 'lg:flex-row-reverse'}`}>
+                          {/* Image */}
+                          <div className="relative w-full lg:w-1/3 h-48 lg:min-h-[200px]">
+                            <Link href={restaurantUrl}>
+                              <img
+                                src={restaurant.heroImage || safeDestination.imageUrl || '/placeholder-restaurant.jpg'}
+                                alt={restaurant.imageAlt || restaurant.name || 'Restaurant'}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  e.target.src = safeDestination.imageUrl || '/placeholder-restaurant.jpg';
+                                }}
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+                              <div className="absolute top-3 left-3 flex gap-2">
+                                {restaurant.ratings?.googleRating && !isNaN(restaurant.ratings.googleRating) && (
+                                  <Badge className="bg-white/95 text-gray-900 flex items-center gap-1 text-xs">
+                                    <Star className="w-3 h-3 text-yellow-500" />
+                                    {parseFloat(restaurant.ratings.googleRating).toFixed(1)}
+                                  </Badge>
+                                )}
+                                {restaurant.pricing?.priceRange && (
+                                  <Badge className="bg-white/85 text-gray-900 text-xs">
+                                    {String(restaurant.pricing.priceRange)}
+                                  </Badge>
+                                )}
+                              </div>
+                            </Link>
+                          </div>
+
+                          {/* Content */}
+                          <div className="w-full lg:w-2/3 p-5 lg:p-6 flex flex-col gap-3">
+                            <div className="flex items-start justify-between gap-3">
+                              <div className="flex-1">
+                                <Link href={restaurantUrl}>
+                                  <h3 className="text-lg lg:text-xl font-semibold text-gray-900 mb-1 hover:text-purple-600 transition-colors">
+                                    {restaurant.name || 'Restaurant'}
+                                  </h3>
+                                </Link>
+                                {restaurant.cuisines && Array.isArray(restaurant.cuisines) && restaurant.cuisines.length > 0 && (
+                                  <p className="text-xs uppercase tracking-wide text-blue-600 font-semibold mb-2">
+                                    {restaurant.cuisines.filter(c => c).join(' · ')}
+                                  </p>
+                                )}
+                              </div>
+                            </div>
+
+                            <p className="text-sm text-gray-600 line-clamp-2">
+                              {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
+                            </p>
+
+                            <div className="flex items-center justify-between mt-auto pt-2">
+                              <div className="flex items-center gap-4 text-xs text-gray-500">
+                                {restaurant.ratings?.reviewCount && (
+                                  <span>{restaurant.ratings.reviewCount.toLocaleString()} reviews</span>
+                                )}
+                                {restaurant.contact?.address && (
+                                  <span className="truncate max-w-[200px]">
+                                    {restaurant.contact.address.split(',')[0]}
+                                  </span>
+                                )}
+                              </div>
+                              <Link href={restaurantUrl}>
+                                <Button variant="outline" size="sm" className="gap-2">
+                                  View Details
+                                  <ArrowRight className="w-3.5 h-3.5" />
+                                </Button>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.article>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </section>
         )}
@@ -2104,6 +2271,20 @@ export default function DestinationDetailClient({ destination, promotionScores =
             </div>
           </div>
         </div>
+      )}
+      
+      <PromotionExplainerModal 
+        isOpen={isPromotionModalOpen} 
+        onClose={() => setIsPromotionModalOpen(false)}
+      />
+      
+      {isClient && (
+        <ShareModal
+          isOpen={showShareModal}
+          onClose={() => setShowShareModal(false)}
+          url={typeof window !== 'undefined' ? window.location.href : ''}
+          title={`Discover ${safeDestination.fullName} - Top Tours & Restaurants`}
+        />
       )}
     </>
   );

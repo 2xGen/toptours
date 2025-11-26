@@ -178,7 +178,8 @@ export default function ToursHubClient({
                                   <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
                               </Button>
-                              {hasDestinationPage(destination.id) && (
+                              {/* Show Explore button for all curated destinations (182) or Viator destinations with pages */}
+                              {(destination.isViator === false || hasDestinationPage(destination.id)) && (
                                 <Button
                                   asChild
                                   variant="secondary"

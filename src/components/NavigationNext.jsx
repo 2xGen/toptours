@@ -109,6 +109,7 @@ const NavigationNext = () => {
     { name: 'Destinations', path: '/destinations' },
     { name: 'Tours', path: '/tours' },
     { name: 'Restaurants', path: '/restaurants' },
+    { name: 'Plans', path: '/plans' },
     { name: 'Travel Guides', path: '/travel-guides' },
   ];
 
@@ -121,17 +122,22 @@ const NavigationNext = () => {
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.path}
-                className={`text-white hover:text-blue-200 transition-colors ${
-                  pathname === item.path ? 'font-semibold text-blue-100' : ''
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = item.path === '/' 
+                ? pathname === '/' 
+                : pathname.startsWith(item.path);
+              return (
+                <Link
+                  key={item.name}
+                  href={item.path}
+                  className={`text-white hover:text-blue-200 transition-colors ${
+                    isActive ? 'font-semibold text-blue-100' : ''
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
             <Link
               href="/leaderboard"
               className={`text-white hover:text-blue-200 transition-colors ${
@@ -181,18 +187,23 @@ const NavigationNext = () => {
             exit={{ opacity: 0, y: -20 }}
             className="md:hidden bg-slate-900/80 backdrop-blur-lg rounded-lg mt-2 p-4"
           >
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.path}
-                className={`block py-2 text-white hover:text-yellow-300 transition-colors duration-200 ${
-                  pathname === item.path ? 'text-yellow-300 font-semibold' : ''
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = item.path === '/' 
+                ? pathname === '/' 
+                : pathname.startsWith(item.path);
+              return (
+                <Link
+                  key={item.name}
+                  href={item.path}
+                  className={`block py-2 text-white hover:text-yellow-300 transition-colors duration-200 ${
+                    isActive ? 'text-yellow-300 font-semibold' : ''
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
             <Link
               href="/leaderboard"
               className={`block py-2 text-white hover:text-yellow-300 transition-colors duration-200 ${

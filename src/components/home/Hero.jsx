@@ -6,7 +6,7 @@ import { Sparkles, Globe, ArrowRight, Users, UtensilsCrossed, Ticket } from 'luc
 import { Button } from '@/components/ui/button';
 import AnimatedHeroBackground from './AnimatedHeroBackground';
 
-const Hero = () => {
+const Hero = ({ onOpenOnboardingModal }) => {
   return (
     <section className="relative overflow-hidden pt-24 pb-20">
       <div className="absolute inset-0 ocean-gradient" />
@@ -58,12 +58,10 @@ const Hero = () => {
                 </Link>
               </Button>
               <Button
-                asChild
+                onClick={onOpenOnboardingModal}
                 className="bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white/30 px-8 py-3 text-lg font-semibold"
               >
-                <Link href="/auth">
-                  Login / Sign Up Free
-                </Link>
+                Login / Sign Up Free
               </Button>
             </div>
 

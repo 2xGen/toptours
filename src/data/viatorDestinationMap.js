@@ -122,7 +122,7 @@ export const slugToViatorId = {
   "phuket": "349",
   "krabi": "348",
   "koh-samui": "347",
-  "bali": "50944",
+  "bali": "98", // Bali, Indonesia (REGION) - NOT "50944" which is Bali, Crete, Greece
   "jakarta": "4633",
   "yogyakarta": "22560",
   "gili-islands": "32622",

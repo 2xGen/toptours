@@ -18,7 +18,8 @@ import {
   BookOpen,
   UtensilsCrossed,
   Bookmark,
-  Info
+  Info,
+  Share2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -34,6 +35,7 @@ import { toast } from '@/components/ui/use-toast';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
+import ShareModal from '@/components/sharing/ShareModal';
 
 export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0 }) {
   const router = useRouter();
@@ -42,6 +44,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   const [showStickyButton, setShowStickyButton] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [showShareModal, setShowShareModal] = useState(false);
   const [matchData, setMatchData] = useState(null);
   const [isGeneratingMatch, setIsGeneratingMatch] = useState(false);
   const [matchError, setMatchError] = useState('');
@@ -1465,9 +1468,19 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 <MapPin className="w-5 h-5 text-blue-200 mr-2" />
                 <span className="text-white font-medium">{destination?.category || 'Tour'}</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold mb-4 md:mb-6 text-white">
-                {tour.title}
-              </h1>
+              <div className="flex items-start gap-3 mb-4 md:mb-6">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex-1">
+                  {tour.title}
+                </h1>
+                <button
+                  onClick={() => setShowShareModal(true)}
+                  className="flex-shrink-0 p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors mt-2"
+                  aria-label="Share this tour"
+                  title="Share this tour"
+                >
+                  <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+              </div>
               
               <div className="flex flex-wrap items-center gap-3 mb-6">
                 {rating > 0 && (
@@ -3068,6 +3081,13 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       )}
 
       <FooterNext />
+      
+      <ShareModal
+        isOpen={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        title={tour?.title || 'this tour'}
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+      />
     </div>
   );
 }

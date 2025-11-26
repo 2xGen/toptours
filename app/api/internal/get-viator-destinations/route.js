@@ -1,23 +1,32 @@
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 
-export async function GET() {
+export async function GET(request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const searchTerm = searchParams.get('search') || '';
+    
     const supabase = createSupabaseServiceRoleClient();
     
-    // Fetch all destinations with pagination (Supabase limit is 1000 per query)
+    // Fetch all destinations from viator_destinations table with proper pagination
     let allData = [];
-    let page = 0;
+    let from = 0;
     const pageSize = 1000;
     let hasMore = true;
+    let totalFetched = 0;
 
     while (hasMore) {
-      const { data, error } = await supabase
-        .from('viator_cache')
-        .select('cache_key, tour_data, cached_at')
-        .eq('cache_type', 'destination')
-        .neq('cache_key', 'destinations_list')
-        .order('cached_at', { ascending: false })
-        .range(page * pageSize, (page + 1) * pageSize - 1);
+      let query = supabase
+        .from('viator_destinations')
+        .select('id, name, slug, country, region, type', { count: 'exact' })
+        .order('name', { ascending: true })
+        .range(from, from + pageSize - 1);
+
+      // If search term provided, filter results
+      if (searchTerm) {
+        query = query.or(`name.ilike.%${searchTerm}%,slug.ilike.%${searchTerm}%,country.ilike.%${searchTerm}%`);
+      }
+
+      const { data, error, count } = await query;
 
       if (error) {
         console.error('Error fetching Viator destinations:', error);
@@ -26,36 +35,36 @@ export async function GET() {
 
       if (data && data.length > 0) {
         allData = [...allData, ...data];
-        page++;
-        // If we got less than pageSize, we've reached the end
-        hasMore = data.length === pageSize;
+        totalFetched += data.length;
+        from += pageSize;
+        
+        // Continue if we got a full page and there might be more
+        // Use count if available, otherwise check if we got less than pageSize
+        if (count !== null && count !== undefined) {
+          hasMore = totalFetched < count;
+        } else {
+          hasMore = data.length === pageSize;
+        }
       } else {
         hasMore = false;
       }
     }
 
-    // Extract destination data from cache
-    const destinations = allData
-      .map(item => {
-        const destData = item.tour_data;
-        // Handle both destinationName and name fields
-        const destinationName = destData?.destinationName || destData?.name;
-        if (destData && destinationName) {
-          return {
-            destinationId: item.cache_key,
-            destinationName: destinationName,
-            type: destData.type || null,
-            parentDestinationId: destData.parentDestinationId || null,
-          };
-        }
-        return null;
-      })
-      .filter(Boolean);
+    // Format destinations for frontend
+    const destinations = allData.map(item => ({
+      id: item.id?.toString(),
+      destination_id: item.id?.toString(),
+      name: item.name,
+      slug: item.slug,
+      country: item.country,
+      region: item.region,
+      type: item.type,
+    }));
 
-    return Response.json({ destinations });
+    return Response.json({ destinations, total: destinations.length });
   } catch (error) {
     console.error('Error in get-viator-destinations API:', error);
-    return Response.json({ destinations: [] }, { status: 200 });
+    return Response.json({ destinations: [], total: 0 }, { status: 200 });
   }
 }
 

@@ -3,13 +3,14 @@ import { getDestinationById } from '@/data/destinationsData';
 import { getPopularToursForDestination } from '@/data/popularTours';
 import ToursListingClient from './ToursListingClient';
 import { slugToViatorId } from '@/data/viatorDestinationMap';
-import { getPromotionScoresByDestination, getTrendingToursByDestination } from '@/lib/promotionSystem';
+import { getPromotionScoresByDestination, getTrendingToursByDestination, getTrendingRestaurantsByDestination, getRestaurantPromotionScoresByDestination, getHardcodedToursByDestination } from '@/lib/promotionSystem';
 import { getDestinationNameById, findDestinationBySlug } from '@/lib/viatorCache';
-import { getViatorDestinationById } from '@/lib/supabaseCache';
+import { getViatorDestinationById, getViatorDestinationBySlug } from '@/lib/supabaseCache';
 import { redirect } from 'next/navigation';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { hasDestinationPage } from '@/data/destinationFullContent';
+import { headers } from 'next/headers';
 
 // Force dynamic rendering for API calls
 export const dynamic = 'force-dynamic';
@@ -377,102 +378,166 @@ export default async function ToursListingPage({ params }) {
   const popularTours = isViatorDestination ? [] : getPopularToursForDestination(id);
   
   // Get Viator destination ID
+  // CRITICAL: Use database as source of truth - query by slug to get correct destination ID
+  // This ensures we use the correct ID from the database (id field = Viator destination ID)
   if (!isViatorDestination) {
-    viatorDestinationId = slugToViatorId[id] || null;
+    // Curated destination - query database by slug to get the correct destination ID
+    const dbDestination = await getViatorDestinationBySlug(id);
+    if (dbDestination && dbDestination.id) {
+      viatorDestinationId = dbDestination.id.toString();
+      console.log(`🔍 Tours Page - Curated destination "${id}": Using database ID = ${viatorDestinationId} (name: ${dbDestination.name})`);
+    } else {
+      // Fallback to hardcoded map if database lookup fails
+      viatorDestinationId = slugToViatorId[id] || null;
+      console.log(`⚠️ Tours Page - Curated destination "${id}": Database lookup failed, using fallback slugToViatorId = ${viatorDestinationId}`);
+    }
+    // CRITICAL: Add destinationId to destination object for 182 destinations
+    // This ensures consistency with destination detail page
+    if (viatorDestinationId && !destination.destinationId) {
+      destination.destinationId = viatorDestinationId;
+    }
   } else {
     // For Viator destinations, get from destination object or classified data
     viatorDestinationId = destination.destinationId || viatorDestinationId;
-  }
-  
-  // CRITICAL: Ensure we have destinationId from classified data if not already set
-  if (!viatorDestinationId && Array.isArray(viatorDestinationsClassifiedData)) {
-    const classifiedDest = viatorDestinationsClassifiedData.find(dest => {
-      const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
-      const searchName = (destination.fullName || destination.name || '').toLowerCase().trim();
-      return destName === searchName || generateSlug(destName) === id;
-    });
-    if (classifiedDest?.destinationId) {
-      viatorDestinationId = classifiedDest.destinationId;
-      // Also update destination object
-      if (!destination.destinationId) {
-        destination.destinationId = viatorDestinationId;
+    
+    // If still not set, try classified data lookup
+    if (!viatorDestinationId && Array.isArray(viatorDestinationsClassifiedData)) {
+      const classifiedDest = viatorDestinationsClassifiedData.find(dest => {
+        const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
+        const searchName = (destination.fullName || destination.name || '').toLowerCase().trim();
+        return destName === searchName || generateSlug(destName) === id;
+      });
+      if (classifiedDest?.destinationId) {
+        viatorDestinationId = classifiedDest.destinationId;
+        console.log(`🔍 Tours Page - Viator destination "${id}": Using classified data ID = ${viatorDestinationId}`);
+        // Also update destination object
+        if (!destination.destinationId) {
+          destination.destinationId = viatorDestinationId;
+        }
       }
     }
   }
+  
+  // CRITICAL: Ensure destination.destinationId is set to the final viatorDestinationId
+  // This ensures consistency between server-side and client-side API calls
+  if (viatorDestinationId && !destination.destinationId) {
+    destination.destinationId = viatorDestinationId;
+  } else if (destination.destinationId && !viatorDestinationId) {
+    // If destination has ID but viatorDestinationId doesn't, use destination's ID
+    viatorDestinationId = destination.destinationId;
+  }
 
-  // Fetch dynamic tours from Viator API using freetext search
+  // Fetch dynamic tours - EXACT SAME FUNCTION as destination detail page
+  // 100% IDENTICAL - same endpoint, same parameters, same logic
   let dynamicTours = [];
-  let totalToursAvailable = 0; // Total tours available from Viator
+  let totalToursAvailable = 0;
   try {
-    const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
-    const destinationName = destination.fullName || destination.name;
+    // EXACT same variable names and logic as DestinationDetailClient.jsx line 400-401
+    const destinationName = destination.fullName || destination.name || destination.destinationName || destination.id;
+    const viatorDestinationId = destination.destinationId || destination.viatorDestinationId;
     
-    // Use freetext search with destination name
-    // IMPORTANT: We only make 3 API calls (3 pages × 20 tours = 60 tours max)
-    // The total count (e.g., 1,980) comes from Viator's response metadata, NOT from making 1,980 API calls
-    const toursPerPage = 20;
-    const pagesNeeded = 3; // 3 pages = 60 tours, we'll take 51
+    // Get base URL for server-side fetch (must await headers in Next.js 15)
+    const headersList = await headers();
+    const host = headersList.get('host') || 'localhost:3000';
+    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+    const baseUrl = `${protocol}://${host}`;
     
-    const allToursPromises = [];
-    for (let page = 1; page <= pagesNeeded; page++) {
-      const start = (page - 1) * toursPerPage + 1;
+    // Use /products/search endpoint (standard approach) when we have destination ID and no search term
+    // This is 100% accurate for all 3300+ destinations
+    let requestBody = {
+      searchTerm: '', // No search term - use /products/search endpoint
+      page: 1,
+      viatorDestinationId: viatorDestinationId ? String(viatorDestinationId) : null,
+      includeDestination: !!viatorDestinationId // Use /products/search when destination ID is available
+    };
+    
+    // EXACT same fetch call as DestinationDetailClient.jsx line 423-429
+    let response = await fetch(`${baseUrl}/api/internal/viator-search`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody),
+      cache: 'no-store',
+    });
+
+    if (!response.ok) {
+      let errorData = {};
+      try {
+        const text = await response.text();
+        try {
+          errorData = JSON.parse(text);
+        } catch {
+          errorData = { error: text || 'Unknown error', raw: text };
+        }
+      } catch (e) {
+        errorData = { error: 'Failed to parse error response', details: e.message };
+      }
+      
+      console.error('API Error Response:', {
+        status: response.status,
+        statusText: response.statusText,
+        errorData: errorData
+      });
+      
+      const errorMessage = errorData.error || errorData.details || errorData.message || `HTTP ${response.status}`;
+      throw new Error(`Failed to fetch tours: ${response.status} - ${errorMessage}`);
+    }
+
+    // EXACT same data extraction as DestinationDetailClient.jsx line 454-458
+    const data = await response.json();
+    const allTours = data.products?.results || data.tours || [];
+    totalToursAvailable = data.products?.totalCount || allTours.length || 0; // Fix: assign to outer variable, don't declare new one
+    
+    // Now fetch additional pages (detail page only fetches page 1, we fetch a few more for initial load)
+    // Client-side can fetch more via pagination/filters if needed
+    // Use the same requestBody that worked (either with or without destination filter)
+    const pagesNeeded = 3; // Reduced from 10 to 3 (60 tours initial load) - client can fetch more via filters
+    const allToursPromises = [Promise.resolve(data)]; // Start with first page we already fetched
+    
+    for (let page = 2; page <= pagesNeeded; page++) {
+      const pageRequestBody = {
+        ...requestBody, // Use the requestBody that worked (may have includeDestination: false if fallback was used)
+        page: page
+      };
+      
       allToursPromises.push(
-        fetch('https://api.viator.com/partner/search/freetext', {
+        fetch(`${baseUrl}/api/internal/viator-search`, {
           method: 'POST',
           headers: {
-            'exp-api-key': apiKey,
-            'Accept': 'application/json;version=2.0',
-            'Accept-Language': 'en-US',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            // Use destination name as searchTerm (for API compatibility)
-            // The destination ID filter ensures accurate results
-            searchTerm: destinationName.trim(),
-            searchTypes: [{
-              searchType: 'PRODUCTS',
-              pagination: {
-                start: start,
-                count: toursPerPage
-              }
-            }],
-            currency: 'USD',
-            productFiltering: viatorDestinationId ? {
-              destination: String(viatorDestinationId)
-            } : undefined
-          }),
-          next: { revalidate: 3600 } // Cache for 1 hour
+          body: JSON.stringify(pageRequestBody),
+          cache: 'no-store',
         }).then(async (res) => {
           if (res.ok) {
             return res.json();
           } else {
             const errorText = await res.text();
             console.error(`Page ${page} error:`, res.status, errorText);
-            return null;
+            return { products: { results: [] } };
           }
+        }).catch(error => {
+          console.error(`Page ${page} fetch error:`, error);
+          return { products: { results: [] } };
         })
       );
     }
     
     const allResponses = await Promise.all(allToursPromises);
-    const allTours = [];
-    const seenTourIds = new Set(); // Track seen tours to avoid duplicates
+    const allToursList = [];
+    const seenTourIds = new Set();
     
-    for (let i = 0; i < allResponses.length; i++) {
-      const data = allResponses[i];
-      if (data && !data.error) {
-        // Get total count from first response - this is metadata from Viator, not from fetching all tours
-        // Viator tells us "there are 1,980 total tours" in the response, we don't fetch them all
-        if (i === 0 && data.products?.totalCount) {
-          totalToursAvailable = data.products.totalCount;
-        }
-        
-        const tours = data.products?.results || [];
+    // Process all responses and collect tours
+    // totalToursAvailable is already set from the first successful response (either destination filter or text search fallback)
+    for (const responseData of allResponses) {
+      if (responseData && !responseData.error) {
+        const tours = responseData.products?.results || [];
         for (const tour of tours) {
           const tourId = tour.productId || tour.productCode;
           if (tourId && !seenTourIds.has(tourId)) {
             seenTourIds.add(tourId);
-            allTours.push(tour);
+            allToursList.push(tour);
           }
         }
       }
@@ -480,33 +545,39 @@ export default async function ToursListingPage({ params }) {
     
     // Filter out tours that are already in popularTours
     const popularProductIds = new Set(popularTours.map(t => t.productId));
-    dynamicTours = allTours.filter(tour => {
+    dynamicTours = allToursList.filter(tour => {
       const tourId = tour.productId || tour.productCode;
       return !popularProductIds.has(tourId);
-    }).slice(0, 51); // Limit to 51 tours after filtering
+    });
     
-    console.log(`Fetched ${dynamicTours.length} dynamic tours for ${destinationName} (from ${allTours.length} total, filtered out ${popularTours.length} popular tours, ${totalToursAvailable} total available)`);
+    console.log(`Fetched ${dynamicTours.length} dynamic tours for ${destinationName} (from ${allToursList.length} total, filtered out ${popularTours.length} popular tours, ${totalToursAvailable} total available)`);
   } catch (error) {
     console.error('Error fetching dynamic tours:', error);
   }
 
   // Fetch all promotion scores for this destination
-  // CRITICAL: For old destinations (182), database has slugs - pass slug directly
-  // For new destinations (3300+), database has numeric IDs - pass numeric ID
-  // The query functions handle both formats
-  const isCuratedDestination = id && slugToViatorId[id];
-  
+  // CRITICAL: Use the SAME destination ID that we use for fetching tours
+  // This ensures promotions match the tours being displayed
+  // destination.destinationId is set from database lookup (getViatorDestinationBySlug)
+  // This ensures consistency between tours and promotions
   let destinationIdForScores;
-  if (isCuratedDestination) {
-    // For old destinations: database has slugs, so pass the slug
-    destinationIdForScores = id; // Use slug for old destinations
-  } else if (viatorDestinationId || destination.destinationId) {
-    // For new Viator destinations: database has numeric IDs, so pass numeric ID
-    destinationIdForScores = viatorDestinationId || destination.destinationId;
+  
+  // Use the destinationId from destination object (set from database lookup above)
+  // This is the same ID we use for fetching tours, ensuring consistency
+  if (destination.destinationId) {
+    // Use the database-derived destination ID (numeric Viator ID)
+    destinationIdForScores = destination.destinationId;
+    console.log(`✅ Tours Page - Using destination.destinationId ${destinationIdForScores} for promotions (same as tours)`);
+  } else if (viatorDestinationId) {
+    // Fallback to viatorDestinationId if destination.destinationId not set
+    destinationIdForScores = viatorDestinationId;
+    console.log(`⚠️ Tours Page - Using viatorDestinationId ${destinationIdForScores} for promotions (destination.destinationId not set)`);
   } else {
-    // Fallback: use slug, query function will handle it
+    // Last resort: use slug, promotion function will look up numeric ID
     destinationIdForScores = id;
+    console.log(`⚠️ Tours Page - Using slug ${destinationIdForScores} for promotions (no destination ID available)`);
   }
+  
   let promotionScores = destinationIdForScores ? await getPromotionScoresByDestination(destinationIdForScores) : {};
 
   // CRITICAL: Also fetch scores by product IDs as a fallback
@@ -528,8 +599,14 @@ export default async function ToursListingPage({ params }) {
   }
 
   // Fetch trending tours (past 28 days) for this destination
-  // These will be displayed in a "Trending Now" section
-  const trendingTours = destinationIdForScores ? await getTrendingToursByDestination(destinationIdForScores, 6) : [];
+  // These will be displayed in a "Trending Now" section - limit to top 3
+  const trendingTours = destinationIdForScores ? await getTrendingToursByDestination(destinationIdForScores, 3) : [];
+
+  // Fetch trending restaurants (past 28 days) for this destination - limit to top 3
+  const trendingRestaurants = destination.id ? await getTrendingRestaurantsByDestination(destination.id, 3) : [];
+
+  // Fetch restaurant promotion scores for this destination
+  const restaurantPromotionScores = destination.id ? await getRestaurantPromotionScoresByDestination(destination.id) : {};
 
   // Generate JSON-LD schema for SEO
   const jsonLd = {
@@ -620,6 +697,8 @@ export default async function ToursListingPage({ params }) {
         totalToursAvailable={totalToursAvailable}
         promotionScores={promotionScores}
         trendingTours={trendingTours}
+        trendingRestaurants={trendingRestaurants}
+        restaurantPromotionScores={restaurantPromotionScores}
         isViatorDestination={isViatorDestination}
       />
     </>

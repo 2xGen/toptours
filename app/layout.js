@@ -5,6 +5,7 @@ import CookieConsentManager from '@/components/CookieConsentManager'
 import { Toaster } from '@/components/ui/toaster'
 import PageViewTracker from '@/components/PageViewTracker'
 import MobileConsoleViewer from '@/components/MobileConsoleViewer'
+import StreakWelcomePopup from '@/components/StreakWelcomePopup'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -147,6 +148,7 @@ export default function RootLayout({ children }) {
         <CookieConsentManager />
         <Toaster />
         <MobileConsoleViewer />
+        <StreakWelcomePopup />
       </body>
     </html>
   )

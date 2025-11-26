@@ -7,12 +7,15 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy, UtensilsCrossed } from 'lucide-react';
+import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy, UtensilsCrossed, X } from 'lucide-react';
+import ConfirmDialog from '@/components/ui/ConfirmDialog';
 import { SUBSCRIPTION_PRICING } from '@/lib/promotionSystem';
 import { toast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
+import TourPromotionCard from '@/components/promotion/TourPromotionCard';
+import RestaurantPromotionCard from '@/components/promotion/RestaurantPromotionCard';
 
 export default function ProfilePage() {
   const supabase = createSupabaseBrowserClient();
@@ -25,7 +28,11 @@ export default function ProfilePage() {
   const [savedTours, setSavedTours] = useState([]);
   const [savedRestaurants, setSavedRestaurants] = useState([]);
   const [loadingSaved, setLoadingSaved] = useState(false);
-  const [activeTab, setActiveTab] = useState('saved'); // 'profile' | 'trip' | 'saved' | 'plan'
+  const [tourPromotionScores, setTourPromotionScores] = useState({});
+  const [restaurantPromotionScores, setRestaurantPromotionScores] = useState({});
+  const [activeTab, setActiveTab] = useState('saved'); // 'profile' | 'trip' | 'saved' | 'my-plans' | 'plan'
+  const [myPlans, setMyPlans] = useState([]);
+  const [loadingMyPlans, setLoadingMyPlans] = useState(false);
   const [planTier, setPlanTier] = useState('free');
   const [streakDays, setStreakDays] = useState(0);
   const [dailyPointsAvailable, setDailyPointsAvailable] = useState(0);
@@ -38,6 +45,8 @@ export default function ProfilePage() {
   const [stripeSubscriptionId, setStripeSubscriptionId] = useState(null);
   const [cancelling, setCancelling] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
+  const [showDeletePlanConfirm, setShowDeletePlanConfirm] = useState(false);
+  const [planToDelete, setPlanToDelete] = useState(null);
 
   // Check for tab query parameter
   useEffect(() => {
@@ -182,7 +191,26 @@ export default function ProfilePage() {
             }
           })
         );
-        setSavedTours(tourItems.filter(Boolean));
+        const validTours = tourItems.filter(Boolean);
+        setSavedTours(validTours);
+
+        // Fetch promotion scores for saved tours
+        const tourScoresPromises = validTours.map(async ({ productId }) => {
+          try {
+            const res = await fetch(`/api/internal/promotion/tour-score?productId=${encodeURIComponent(productId)}`);
+            if (res.ok) {
+              const score = await res.json();
+              return { productId, score };
+            }
+          } catch {}
+          return null;
+        });
+        const tourScores = await Promise.all(tourScoresPromises);
+        const scoresMap = {};
+        tourScores.forEach((item) => {
+          if (item) scoresMap[item.productId] = item.score;
+        });
+        setTourPromotionScores(scoresMap);
 
         // Fetch restaurant bookmarks
         const restaurantsRes = await fetch(`/api/internal/restaurant-bookmarks?userId=${encodeURIComponent(user.id)}`);
@@ -201,7 +229,26 @@ export default function ProfilePage() {
             }
           })
         );
-        setSavedRestaurants(restaurantItems.filter(Boolean));
+        const validRestaurants = restaurantItems.filter(Boolean);
+        setSavedRestaurants(validRestaurants);
+
+        // Fetch promotion scores for saved restaurants
+        const restaurantScoresPromises = validRestaurants.map(async ({ restaurantId }) => {
+          try {
+            const res = await fetch(`/api/internal/promotion/restaurant-score?restaurantId=${encodeURIComponent(restaurantId)}`);
+            if (res.ok) {
+              const score = await res.json();
+              return { restaurantId, score };
+            }
+          } catch {}
+          return null;
+        });
+        const restaurantScores = await Promise.all(restaurantScoresPromises);
+        const restaurantScoresMap = {};
+        restaurantScores.forEach((item) => {
+          if (item) restaurantScoresMap[item.restaurantId] = item.score;
+        });
+        setRestaurantPromotionScores(restaurantScoresMap);
       } finally {
         setLoadingSaved(false);
       }
@@ -267,6 +314,31 @@ export default function ProfilePage() {
       loadPromotionAccount();
     }
   }, [user, supabase]);
+
+  // Load user's travel plans
+  useEffect(() => {
+    const loadMyPlans = async () => {
+      if (!user) return;
+      setLoadingMyPlans(true);
+      try {
+        const response = await fetch(`/api/internal/user-plans?userId=${encodeURIComponent(user.id)}`);
+        if (response.ok) {
+          const data = await response.json();
+          console.log('User plans response:', data);
+          setMyPlans(data.plans || []);
+        } else {
+          console.error('Failed to fetch user plans:', response.status);
+        }
+      } catch (error) {
+        console.error('Error fetching my plans:', error);
+      } finally {
+        setLoadingMyPlans(false);
+      }
+    };
+    if (user) {
+      loadMyPlans();
+    }
+  }, [user]);
 
   const handleSave = async () => {
     if (!user) return;
@@ -337,10 +409,51 @@ export default function ProfilePage() {
             </div>
           </div>
         </main>
-        <FooterNext />
-      </div>
-    );
-  }
+      <FooterNext />
+
+      {/* Delete Plan Confirmation Dialog */}
+      <ConfirmDialog
+        isOpen={showDeletePlanConfirm}
+        onClose={() => {
+          setShowDeletePlanConfirm(false);
+          setPlanToDelete(null);
+        }}
+        onConfirm={async () => {
+          if (!planToDelete || !user) return;
+          try {
+            const response = await fetch(`/api/plans`, {
+              method: 'DELETE',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ planId: planToDelete.id, userId: user.id }),
+            });
+            if (response.ok) {
+              setMyPlans((prev) => prev.filter((p) => p.id !== planToDelete.id));
+              toast({
+                title: 'Plan deleted',
+                description: 'Your travel plan has been removed.',
+              });
+            } else {
+              const data = await response.json();
+              throw new Error(data.error || 'Failed to delete plan');
+            }
+          } catch (error) {
+            console.error('Error deleting plan:', error);
+            toast({
+              title: 'Failed to delete plan',
+              description: error.message || 'Please try again.',
+              variant: 'destructive',
+            });
+          }
+        }}
+        title="Delete Travel Plan?"
+        message="Are you sure you want to delete this plan? This action cannot be undone."
+        confirmText="Delete Plan"
+        cancelText="Cancel"
+        variant="destructive"
+      />
+    </div>
+  );
+}
 
   if (!user) {
     // We already redirected; render nothing to avoid flash
@@ -496,6 +609,12 @@ export default function ProfilePage() {
                 className={`w-full text-left px-3 py-2 rounded-lg ${activeTab === 'saved' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
               >
                 Saved Tours & Restaurants
+              </button>
+              <button
+                onClick={() => setActiveTab('my-plans')}
+                className={`w-full text-left px-3 py-2 rounded-lg ${activeTab === 'my-plans' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
+              >
+                My Travel Plans
               </button>
               <button
                 onClick={() => setActiveTab('plan')}
@@ -1274,6 +1393,22 @@ export default function ProfilePage() {
                               })()}
                             </div>
 
+                            {/* Promotion Score - On its own line */}
+                            <div className="mb-3">
+                              <TourPromotionCard 
+                                productId={productId} 
+                                compact={true}
+                                tourData={tour}
+                                initialScore={tourPromotionScores[productId] || {
+                                  product_id: productId,
+                                  total_score: 0,
+                                  monthly_score: 0,
+                                  weekly_score: 0,
+                                  past_28_days_score: 0,
+                                }}
+                              />
+                            </div>
+
                             <Button
                               asChild
                               className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
@@ -1405,6 +1540,22 @@ export default function ProfilePage() {
                               )}
                             </div>
 
+                            {/* Promotion Score - On its own line */}
+                            <div className="mb-3">
+                              <RestaurantPromotionCard 
+                                restaurantId={restaurantId} 
+                                compact={true}
+                                restaurantData={restaurant}
+                                initialScore={restaurantPromotionScores[restaurantId] || {
+                                  restaurant_id: restaurantId,
+                                  total_score: 0,
+                                  monthly_score: 0,
+                                  weekly_score: 0,
+                                  past_28_days_score: 0,
+                                }}
+                              />
+                            </div>
+
                             <Button
                               asChild
                               className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
@@ -1418,6 +1569,75 @@ export default function ProfilePage() {
                         </Card>
                       );
                     })}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {activeTab === 'my-plans' && (
+              <div>
+                <div className="mb-4 flex items-center justify-between">
+                  <h1 className="text-2xl font-semibold">My Travel Plans</h1>
+                  {myPlans.length > 0 && (
+                    <span className="text-sm text-gray-500">
+                      {myPlans.length} plan{myPlans.length > 1 ? 's' : ''}
+                    </span>
+                  )}
+                </div>
+                {loadingMyPlans ? (
+                  <p className="text-gray-600">Loading your plans…</p>
+                ) : myPlans.length === 0 ? (
+                  <div className="text-gray-600 bg-white rounded-xl shadow p-6">
+                    You haven't created any travel plans yet. <Link href="/plans/create" className="text-blue-600 hover:underline">Create your first plan</Link> to share with the community.
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {myPlans.map((plan) => (
+                      <Card key={plan.id} className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300">
+                        <Link href={`/plans/${plan.slug}`}>
+                          <div className="relative h-48 overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600">
+                            {plan.cover_image_url && (
+                              <img
+                                src={plan.cover_image_url}
+                                alt={plan.title}
+                                className="w-full h-full object-cover"
+                              />
+                            )}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                              <h3 className="font-semibold text-lg text-white line-clamp-2">
+                                {plan.title}
+                              </h3>
+                            </div>
+                          </div>
+                        </Link>
+                        <CardContent className="p-4 flex flex-col flex-grow">
+                          {plan.description && (
+                            <p className="text-sm text-gray-600 mb-3 line-clamp-2 flex-grow">
+                              {plan.description}
+                            </p>
+                          )}
+                          <div className="flex items-center justify-between mt-auto">
+                            <Link href={`/plans/${plan.slug}`}>
+                              <Button className="sunset-gradient text-white">
+                                View Plan
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                              </Button>
+                            </Link>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => {
+                                setPlanToDelete(plan);
+                                setShowDeletePlanConfirm(true);
+                              }}
+                              className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                            >
+                              <X className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
                   </div>
                 )}
               </div>
@@ -1772,6 +1992,47 @@ export default function ProfilePage() {
         </div>
       </main>
       <FooterNext />
+
+      {/* Delete Plan Confirmation Dialog */}
+      <ConfirmDialog
+        isOpen={showDeletePlanConfirm}
+        onClose={() => {
+          setShowDeletePlanConfirm(false);
+          setPlanToDelete(null);
+        }}
+        onConfirm={async () => {
+          if (!planToDelete || !user) return;
+          try {
+            const response = await fetch(`/api/plans`, {
+              method: 'DELETE',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ planId: planToDelete.id, userId: user.id }),
+            });
+            if (response.ok) {
+              setMyPlans((prev) => prev.filter((p) => p.id !== planToDelete.id));
+              toast({
+                title: 'Plan deleted',
+                description: 'Your travel plan has been removed.',
+              });
+            } else {
+              const data = await response.json();
+              throw new Error(data.error || 'Failed to delete plan');
+            }
+          } catch (error) {
+            console.error('Error deleting plan:', error);
+            toast({
+              title: 'Failed to delete plan',
+              description: error.message || 'Please try again.',
+              variant: 'destructive',
+            });
+          }
+        }}
+        title="Delete Travel Plan?"
+        message="Are you sure you want to delete this plan? This action cannot be undone."
+        confirmText="Delete Plan"
+        cancelText="Cancel"
+        variant="destructive"
+      />
     </div>
   );
 }

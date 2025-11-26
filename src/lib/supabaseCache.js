@@ -161,6 +161,66 @@ export async function getViatorDestinationById(destinationId) {
 }
 
 /**
+ * Fetch a Viator destination record by slug with caching
+ * This is the source of truth for destination IDs - matches database where id = Viator destination ID
+ * Also tries to match by name if slug lookup fails (for destinations where slug might not match exactly)
+ */
+export async function getViatorDestinationBySlug(slug) {
+  if (!slug) return null;
+
+  const memoryKey = `viator_destination_slug_${slug}`;
+  const cached = getMemoryCache(memoryKey);
+  if (cached) {
+    return cached;
+  }
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    
+    // First try exact slug match
+    let { data, error } = await supabase
+      .from('viator_destinations')
+      .select('id, name, slug, country, region, type')
+      .eq('slug', slug)
+      .maybeSingle();
+
+    if (error) {
+      console.error('Error querying viator_destinations by slug:', error.message || error);
+      return null;
+    }
+
+    // If not found by slug, try matching by name (case-insensitive)
+    if (!data) {
+      // Convert slug to name format (e.g., "bali" -> "Bali", "new-york-city" -> "New York City")
+      const nameFromSlug = slug
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+      
+      const { data: nameData, error: nameError } = await supabase
+        .from('viator_destinations')
+        .select('id, name, slug, country, region, type')
+        .ilike('name', nameFromSlug)
+        .maybeSingle();
+
+      if (!nameError && nameData) {
+        data = nameData;
+        console.log(`✅ Found destination by name match: "${nameFromSlug}" -> ID ${nameData.id}`);
+      } else {
+        console.warn(`viator_destinations lookup returned null for slug ${slug} and name ${nameFromSlug}`);
+        return null;
+      }
+    }
+
+    setMemoryCache(memoryKey, data);
+    return data;
+  } catch (error) {
+    console.error('Error fetching viator destination by slug:', error.message || error);
+    return null;
+  }
+}
+
+/**
  * Batch view count updates
  * Instead of updating on every page view, we can batch them
  */

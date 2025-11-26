@@ -20,7 +20,9 @@ import {
   Moon,
   Sunrise,
   MoveHorizontal,
-  TrendingUp
+  TrendingUp,
+  Info,
+  Share2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -39,7 +41,10 @@ import { getRestaurantsForDestination } from '../restaurants/restaurantsData';
 import { getDestinationById, getDestinationsByCountry } from '@/data/destinationsData';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
+import RestaurantPromotionCard from '@/components/promotion/RestaurantPromotionCard';
 import { hasDestinationPage } from '@/data/destinationFullContent';
+import PromotionExplainerModal from '@/components/auth/PromotionExplainerModal';
+import ShareModal from '@/components/sharing/ShareModal';
 
 // Helper function to generate slug
 function generateSlug(name) {
@@ -273,10 +278,15 @@ export default function ToursListingClient({
   viatorDestinationId,
   totalToursAvailable = 0,
   promotionScores = {}, // Map of productId -> score object
-  trendingTours = [] // Tours with highest past_28_days_score for this destination
+  trendingTours = [], // Tours with highest past_28_days_score for this destination
+  trendingRestaurants = [], // Restaurants with highest past_28_days_score for this destination
+  restaurantPromotionScores = {} // Map of restaurantId -> score object
 }) {
   // CRITICAL: Use destination.destinationId if available (from classified data), otherwise fall back to prop
   const effectiveDestinationId = destination.destinationId || destination.viatorDestinationId || viatorDestinationId;
+  
+  // Debug: Log totalToursAvailable to see what we're receiving
+  console.log('🔍 ToursListingClient - totalToursAvailable prop:', totalToursAvailable, 'type:', typeof totalToursAvailable);
   
   if (!effectiveDestinationId) {
     console.warn('⚠️ No Viator destination ID found for', destination.fullName || destination.name, '- tours may show incorrectly');
@@ -388,7 +398,13 @@ export default function ToursListingClient({
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [activeFilters, setActiveFilters] = useState({});
   const [loading, setLoading] = useState(false);
+  const [isPromotionModalOpen, setIsPromotionModalOpen] = useState(false);
   const [filteredToursFromAPI, setFilteredToursFromAPI] = useState([]);
+  const [filteredTotalCount, setFilteredTotalCount] = useState(0); // Total count when filters are applied
+  const [filteredCurrentPage, setFilteredCurrentPage] = useState(1); // Current page for filtered results
+  const [filteredHasMore, setFilteredHasMore] = useState(false); // Whether there are more filtered tours to load
+  const [loadingMoreFiltered, setLoadingMoreFiltered] = useState(false); // Loading state for "Load More"
+  const [showShareModal, setShowShareModal] = useState(false);
   const [showParentCountryModal, setShowParentCountryModal] = useState(false);
   const [isFiltered, setIsFiltered] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
@@ -669,15 +685,23 @@ export default function ToursListingClient({
           const errorText = await response.text();
           console.error('Special offers fetch error:', errorText);
           setFilteredToursFromAPI([]);
+          setFilteredTotalCount(0);
         } else {
           const data = await response.json();
-          const results = data?.products || data?.products?.results || [];
+          // /api/internal/viator-products-search returns: { products: [...], totalCount: number }
+          const results = Array.isArray(data?.products) ? data.products : (data?.products?.results || []);
+          const totalCount = data?.totalCount || data?.products?.totalCount || 0;
+          console.log('🔍 Special offers totalCount:', totalCount, 'Response:', data);
           setFilteredToursFromAPI(results);
+          setFilteredTotalCount(totalCount);
+          setFilteredCurrentPage(1);
+          setFilteredHasMore(totalCount > results.length);
           setActiveFilters({ ...filters });
         }
       } catch (error) {
         console.error('Error fetching special offers:', error);
         setFilteredToursFromAPI([]);
+        setFilteredTotalCount(0);
       } finally {
         setLoading(false);
       }
@@ -698,14 +722,15 @@ export default function ToursListingClient({
           const primaryTagSearchTerm = primaryTag?.searchTerm || primaryTag?.label || '';
 
           const requestBody = {
-            // Use destination name or tag search term as searchTerm (for API compatibility)
-            // The destination ID filter ensures accurate results, not text matching
+            // When using categories/search: searchTerm should be JUST the category/search term (e.g., "snorkeling tours")
+            // NOT including destination name - the destination ID filter handles that
+            // This uses /search/freetext endpoint with destination filter
             searchTerm: hasTagFilter && primaryTagSearchTerm
-              ? `${destinationName} ${primaryTagSearchTerm}`.trim()
-              : destinationName, // Keep destination name for API compatibility
+              ? primaryTagSearchTerm.trim() // Just the category term, e.g., "Snorkeling Tours"
+              : '', // No search term means use /products/search endpoint
             page: 1,
             viatorDestinationId: effectiveDestinationId ? String(effectiveDestinationId) : null,
-            includeDestination: !hasTagFilter && !hasSpecialOffersFilter && !!effectiveDestinationId, // This filter ensures accuracy
+            includeDestination: !!effectiveDestinationId, // Always use destination filter when available
           };
           
           // Add price filters
@@ -763,6 +788,18 @@ export default function ToursListingClient({
           const allResponses = await Promise.all(allToursPromises);
           const allFetchedTours = [];
           const seenIds = new Set();
+          let totalCountFromAPI = 0;
+          
+          // Extract totalCount from the first response (all pages should have the same totalCount)
+          if (allResponses.length > 0 && allResponses[0] && !allResponses[0].error) {
+            totalCountFromAPI = allResponses[0].products?.totalCount || allResponses[0].totalCount || 0;
+            console.log('🔍 Filtered totalCount from API:', totalCountFromAPI, 'Response structure:', {
+              hasProducts: !!allResponses[0].products,
+              productsTotalCount: allResponses[0].products?.totalCount,
+              directTotalCount: allResponses[0].totalCount,
+              firstResponse: allResponses[0]
+            });
+          }
           
           for (const data of allResponses) {
             if (data && !data.error) {
@@ -785,12 +822,18 @@ export default function ToursListingClient({
             return !popularProductIds.has(tourId);
           });
           
-          console.log(`Fetched ${filtered.length} tours, will filter by flags client-side`);
+          console.log(`Fetched ${filtered.length} tours, will filter by flags client-side. Total available: ${totalCountFromAPI}`);
           setFilteredToursFromAPI(filtered);
+          setFilteredTotalCount(totalCountFromAPI);
+          setFilteredCurrentPage(pagesNeeded); // Track how many pages we've loaded
+          // Check if there are more tours to load (if totalCount is greater than what we fetched)
+          const totalFetched = allFetchedTours.length;
+          setFilteredHasMore(totalCountFromAPI > 0 && totalFetched < totalCountFromAPI);
           setActiveFilters({ ...filters });
       } catch (error) {
         console.error('Error fetching filtered tours:', error);
         setFilteredToursFromAPI([]);
+        setFilteredTotalCount(0);
       } finally {
         setLoading(false);
       }
@@ -799,6 +842,89 @@ export default function ToursListingClient({
       setActiveFilters({ ...filters });
       setIsFiltered(false);
       setFilteredToursFromAPI([]);
+      setFilteredTotalCount(0);
+    }
+  };
+
+  // Load more filtered tours (pagination for filtered results)
+  const handleLoadMoreFiltered = async () => {
+    if (loadingMoreFiltered || !isFiltered) return;
+
+    setLoadingMoreFiltered(true);
+    try {
+      const destinationName = destination.fullName || destination.name;
+      const tagDefinitions = destinationTagOptions.filter((tag) =>
+        (activeFilters.tags || []).includes(tag.id)
+      );
+      const primaryTag = tagDefinitions.length > 0 ? tagDefinitions[0] : null;
+      const primaryTagSearchTerm = primaryTag?.searchTerm || primaryTag?.label || '';
+
+      const requestBody = {
+        searchTerm: activeFilters.tags && primaryTagSearchTerm
+          ? primaryTagSearchTerm.trim()
+          : '',
+        page: filteredCurrentPage + 1,
+        viatorDestinationId: effectiveDestinationId ? String(effectiveDestinationId) : null,
+        includeDestination: !!effectiveDestinationId,
+      };
+
+      // Add price filters
+      if (activeFilters.priceFrom) {
+        requestBody.minPrice = parseInt(activeFilters.priceFrom);
+      }
+      if (activeFilters.priceTo) {
+        requestBody.maxPrice = parseInt(activeFilters.priceTo);
+      }
+
+      if (activeFilters.flags && activeFilters.flags.length > 0) {
+        requestBody.flags = activeFilters.flags.filter((flag) => flag !== 'SPECIAL_OFFER');
+      }
+
+      const response = await fetch('/api/internal/viator-search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(requestBody)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      const newTours = data.products?.results || [];
+      const popularProductIds = new Set(popularTours.map(t => t.productId));
+      const filteredNewTours = newTours.filter(tour => {
+        const tourId = tour.productId || tour.productCode;
+        return tourId && !popularProductIds.has(tourId);
+      });
+
+      // Add new tours to existing filtered tours
+      setFilteredToursFromAPI(prev => {
+        const seenIds = new Set(prev.map(t => t.productId || t.productCode));
+        const uniqueNewTours = filteredNewTours.filter(t => {
+          const id = t.productId || t.productCode;
+          return id && !seenIds.has(id);
+        });
+        return [...prev, ...uniqueNewTours];
+      });
+
+      setFilteredCurrentPage(prev => prev + 1);
+      
+      // Check if there are more tours (if we got fewer than 20, we're probably at the end)
+      setFilteredHasMore(newTours.length >= 20);
+    } catch (error) {
+      console.error('Error loading more filtered tours:', error);
+      toast({
+        title: "Error",
+        description: "Failed to load more tours. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setLoadingMoreFiltered(false);
     }
   };
   
@@ -830,15 +956,18 @@ export default function ToursListingClient({
     setSearchTerm('');
     setIsSearching(false);
     setSearchResults([]);
-    setFilteredToursFromAPI([]);
-    setActiveFilters({});
-    if (enable) {
-      setFilters({ ...defaultFilterState, specialOffersOnly: true });
-      setIsFiltered(true);
-    } else {
-      setFilters({ ...defaultFilterState });
-      setIsFiltered(false);
-    }
+      setFilteredToursFromAPI([]);
+      setFilteredTotalCount(0);
+      setFilteredCurrentPage(1);
+      setFilteredHasMore(false);
+      setActiveFilters({});
+      if (enable) {
+        setFilters({ ...defaultFilterState, specialOffersOnly: true });
+        setIsFiltered(true);
+      } else {
+        setFilters({ ...defaultFilterState });
+        setIsFiltered(false);
+      }
   };
 
   const handleTimeOfDayToggle = (value) => {
@@ -865,6 +994,9 @@ export default function ToursListingClient({
     setSortBy('rating'); // Reset sort to default
     setIsFiltered(false);
     setFilteredToursFromAPI([]);
+    setFilteredTotalCount(0);
+    setFilteredCurrentPage(1);
+    setFilteredHasMore(false);
     setIsSearching(false);
     setSearchResults([]);
   };
@@ -878,9 +1010,10 @@ export default function ToursListingClient({
         setIsSearching(true);
         
         try {
-          const destinationName = destination.fullName || destination.name;
-          // Search for tours matching both destination and search term
-          const searchQuery = `${destinationName} ${searchTerm.trim()}`;
+          // Search term should be JUST what the user typed (e.g., "snorkeling")
+          // NOT including destination name - the destination ID filter handles that
+          // This uses /search/freetext endpoint with destination filter
+          const searchQuery = searchTerm.trim();
           
           // Fetch multiple pages to get more results
           const toursPerPage = 20;
@@ -990,10 +1123,11 @@ export default function ToursListingClient({
     `Discover the best tours and experiences in ${destinationName}.`;
 
   return (
-    <div className="min-h-screen pt-16 overflow-x-hidden" suppressHydrationWarning>
+    <>
       <NavigationNext />
       
-      {/* Hero Section */}
+      <div className="min-h-screen pt-16 overflow-x-hidden" suppressHydrationWarning>
+        {/* Hero Section */}
       <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden ocean-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -1006,9 +1140,20 @@ export default function ToursListingClient({
               <MapPin className="w-5 h-5 text-blue-200 mr-2" />
               <span className="text-white font-medium">{destination.category || destination.region}</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold mb-4 md:mb-6 text-white">
-              Top Tours & Activities in {destinationName}
-            </h1>
+            <div className="flex items-center justify-center gap-3 mb-4 md:mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white">
+                Top Tours & Activities in {destinationName}
+              </h1>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-white hover:bg-white/20 flex-shrink-0"
+                onClick={() => setShowShareModal(true)}
+                title="Share this page"
+              >
+                <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
+              </Button>
+            </div>
             <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
               {heroDescription}
             </p>
@@ -1019,12 +1164,21 @@ export default function ToursListingClient({
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
                   <Input
-                    placeholder="Search tours..."
+                    placeholder={`Search tours in ${destinationName}...`}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pl-10 h-12 bg-white/90 border-0 text-gray-800 placeholder:text-gray-500"
                   />
                 </div>
+              </div>
+              {/* Find tours in other destinations link */}
+              <div className="mt-3 text-center">
+                <Link 
+                  href="/tours" 
+                  className="text-white/80 hover:text-white text-sm transition-colors"
+                >
+                  Looking for tours in other destinations?
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -1039,15 +1193,9 @@ export default function ToursListingClient({
             <span className="text-gray-400">/</span>
             <Link href="/destinations" className="text-gray-500 hover:text-gray-700">Destinations</Link>
             <span className="text-gray-400">/</span>
-            {hasDestinationPage(destination.id) ? (
-              <Link href={`/destinations/${destination.id}`} className="text-gray-500 hover:text-gray-700">
-                {destination.fullName || destination.name}
-              </Link>
-            ) : (
-              <span className="text-gray-500">
-                {destination.fullName || destination.name}
-              </span>
-            )}
+            <Link href={`/destinations/${destination.id}`} className="text-gray-500 hover:text-gray-700">
+              {destination.fullName || destination.name}
+            </Link>
             <span className="text-gray-400">/</span>
             <span className="text-gray-900 font-medium">Tours</span>
           </nav>
@@ -1377,6 +1525,7 @@ export default function ToursListingClient({
                   setActiveFilters({ ...activeFilters, priceFrom: '', priceTo: '', flags: [], timeOfDay: [], durationBucket: '' });
                   setIsFiltered(false);
                   setFilteredToursFromAPI([]);
+                  setFilteredTotalCount(0);
                 }}
                 variant="outline"
                 size="lg"
@@ -1499,54 +1648,215 @@ export default function ToursListingClient({
       {/* Main Content */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Trending Now Section - Past 28 Days (Always visible, not affected by filters) */}
-          {trendingTours.length > 0 && (() => {
-            // Convert trending tours from Supabase format to tour card format
-            const trendingToursForDisplay = trendingTours.map(trending => ({
-              productId: trending.product_id,
-              productCode: trending.product_id,
-              title: trending.tour_name,
-              seo: { 
-                title: trending.tour_name,
-                slug: trending.tour_slug || null
-              },
-              images: trending.tour_image_url ? [{
-                variants: [
-                  { url: trending.tour_image_url },
-                  { url: trending.tour_image_url },
-                  { url: trending.tour_image_url },
-                  { url: trending.tour_image_url }
-                ]
-              }] : null,
-              slug: trending.tour_slug || null,
-            }));
-
-            return (
-              <div className="mb-12">
+          {/* Trending Now Section - Past 28 Days (Combined Tours & Restaurants) */}
+          {((trendingTours && trendingTours.length > 0) || (trendingRestaurants && trendingRestaurants.length > 0)) && (
+            <section className="py-12 bg-white mb-12">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center gap-2 mb-6">
                   <TrendingUp className="w-5 h-5 text-orange-600" />
-                  <h2 className="text-2xl font-bold text-gray-900">Trending Now in {destination.name}</h2>
+                  <h2 className="text-2xl font-bold text-gray-900">Trending Now in {destination.fullName || destination.name}</h2>
                   <Badge variant="secondary" className="ml-2 bg-orange-100 text-orange-700 border-orange-300">
                     Past 28 Days
                   </Badge>
                 </div>
-                <p className="text-sm text-gray-600 mb-6">
-                  Tours that are currently popular based on recent community boosts
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {trendingToursForDisplay.map((tour, index) => (
-                    <TourCard 
-                      key={tour.productId || index} 
-                      tour={tour} 
-                      isFeatured={false} 
-                      destination={destination} 
-                      promotionScores={promotionScores} 
-                    />
-                  ))}
+                <div className="flex items-center gap-2 mb-6">
+                  <p className="text-sm text-gray-600">
+                    Tours and restaurants that are currently popular based on recent community boosts
+                  </p>
+                  <button
+                    onClick={() => setIsPromotionModalOpen(true)}
+                    className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 hover:underline transition-colors cursor-pointer"
+                    title="Learn how promotions work"
+                  >
+                    <Info className="w-3.5 h-3.5" />
+                    <span>Learn more</span>
+                  </button>
                 </div>
+
+                {/* Trending Tours Subsection */}
+                {trendingTours && trendingTours.length > 0 && (
+                  <div className="mb-8">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Trending Tours Now in {destination.fullName || destination.name}</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {trendingTours.slice(0, 3).map((trending, index) => {
+                        if (!trending || !trending.product_id) return null;
+                        
+                        const tourId = trending.product_id;
+                        let tourUrl = `/tours/${tourId}`;
+                        try {
+                          if (trending.tour_slug) {
+                            tourUrl = `/tours/${tourId}/${trending.tour_slug}`;
+                          } else if (trending.tour_name) {
+                            tourUrl = getTourUrl(tourId, trending.tour_name);
+                          }
+                        } catch (error) {
+                          console.error('Error generating tour URL:', error);
+                        }
+                        
+                        return (
+                          <motion.div
+                            key={tourId || index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                          >
+                            <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                              <Link href={tourUrl}>
+                                <div className="relative h-48 overflow-hidden">
+                                  {trending.tour_image_url ? (
+                                    <img
+                                      src={trending.tour_image_url}
+                                      alt={trending.tour_name}
+                                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                    />
+                                  ) : (
+                                    <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                      <Search className="w-6 h-6 text-gray-400" />
+                                    </div>
+                                  )}
+                                  <div className="absolute top-3 left-3">
+                                    <Badge className="adventure-gradient text-white">
+                                      <TrendingUp className="w-3 h-3 mr-1" />
+                                      Trending
+                                    </Badge>
+                                  </div>
+                                </div>
+                              </Link>
+
+                              <CardContent className="p-4 flex-1 flex flex-col">
+                                <Link href={tourUrl}>
+                                  <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                    {trending.tour_name}
+                                  </h3>
+                                </Link>
+
+                                {/* Promotion Score */}
+                                {tourId && (
+                                  <div className="mb-3">
+                                    <TourPromotionCard 
+                                      productId={tourId} 
+                                      compact={true}
+                                      initialScore={promotionScores[tourId] || {
+                                        product_id: tourId,
+                                        total_score: trending.total_score || 0,
+                                        monthly_score: trending.monthly_score || 0,
+                                        weekly_score: trending.weekly_score || 0,
+                                        past_28_days_score: trending.past_28_days_score || 0,
+                                      }}
+                                    />
+                                  </div>
+                                )}
+
+                                <Button
+                                  asChild
+                                  className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                                >
+                                  <Link href={tourUrl}>
+                                    View Details
+                                    <ArrowRight className="w-4 h-4 ml-2" />
+                                  </Link>
+                                </Button>
+                              </CardContent>
+                            </Card>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* Trending Restaurants Subsection */}
+                {trendingRestaurants && trendingRestaurants.length > 0 && (
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Trending Restaurants Now in {destination.fullName || destination.name}</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {trendingRestaurants.slice(0, 3).map((trending, index) => {
+                        if (!trending || !trending.restaurant_id) return null;
+                        
+                        const restaurantId = trending.restaurant_id;
+                        const restaurantUrl = trending.restaurant_slug && trending.destination_id
+                          ? `/destinations/${trending.destination_id}/restaurants/${trending.restaurant_slug}`
+                          : `/destinations/${destination.id}/restaurants`;
+                        
+                        return (
+                          <motion.div
+                            key={restaurantId || index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                          >
+                            <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                              <Link href={restaurantUrl}>
+                                <div className="relative h-48 overflow-hidden">
+                                  {trending.restaurant_image_url ? (
+                                    <img
+                                      src={trending.restaurant_image_url}
+                                      alt={trending.restaurant_name || 'Restaurant'}
+                                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                      onError={(e) => {
+                                        e.target.src = destination.imageUrl || '/placeholder-restaurant.jpg';
+                                      }}
+                                    />
+                                  ) : (
+                                    <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                      <UtensilsCrossed className="w-6 h-6 text-gray-400" />
+                                    </div>
+                                  )}
+                                  <div className="absolute top-3 left-3">
+                                    <Badge className="adventure-gradient text-white">
+                                      <TrendingUp className="w-3 h-3 mr-1" />
+                                      Trending
+                                    </Badge>
+                                  </div>
+                                </div>
+                              </Link>
+
+                              <CardContent className="p-4 flex-1 flex flex-col">
+                                <Link href={restaurantUrl}>
+                                  <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                    {trending.restaurant_name || `Restaurant #${restaurantId}`}
+                                  </h3>
+                                </Link>
+
+                                {/* Promotion Score */}
+                                {restaurantId && (
+                                  <div className="mb-3">
+                                    <RestaurantPromotionCard 
+                                      restaurantId={restaurantId} 
+                                      compact={true}
+                                      initialScore={restaurantPromotionScores[restaurantId] || {
+                                        restaurant_id: restaurantId,
+                                        total_score: trending.total_score || 0,
+                                        monthly_score: trending.monthly_score || 0,
+                                        weekly_score: trending.weekly_score || 0,
+                                        past_28_days_score: trending.past_28_days_score || 0,
+                                      }}
+                                    />
+                                  </div>
+                                )}
+
+                                <Button
+                                  asChild
+                                  className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                                >
+                                  <Link href={restaurantUrl}>
+                                    View Details
+                                    <ArrowRight className="w-4 h-4 ml-2" />
+                                  </Link>
+                                </Button>
+                              </CardContent>
+                            </Card>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
-            );
-          })()}
+            </section>
+          )}
 
           {/* Sort and Results Count - Same Line */}
           <div className="mb-6 flex items-center justify-between flex-wrap gap-4">
@@ -1566,7 +1876,13 @@ export default function ToursListingClient({
                 )}
                 {' tours'}
                 {isSearching && ' (searched from all available tours)'}
-                {isFiltered && !isSearching && ' (filtered from all available tours)'}
+                {isFiltered && !isSearching && filteredTotalCount > 0 && (
+                  <span> (filtered from {filteredTotalCount.toLocaleString()}+ available tours)</span>
+                )}
+                {isFiltered && !isSearching && filteredTotalCount === 0 && totalToursAvailable > 0 && (
+                  <span> (filtered from {totalToursAvailable.toLocaleString()}+ available tours)</span>
+                )}
+                {isFiltered && !isSearching && filteredTotalCount === 0 && totalToursAvailable === 0 && ' (filtered from all available tours)'}
                 {!isSearching && !isFiltered && hasActiveFilters && ' matching your criteria'}
                 {!isSearching && !isFiltered && !hasActiveFilters && totalToursAvailable > 0 && (
                   <span className="text-gray-500 text-sm ml-2">(Use search or filters to see more)</span>
@@ -1617,6 +1933,27 @@ export default function ToursListingClient({
                   <TourCard key={tour.productId || tour.productCode || index} tour={tour} isFeatured={false} destination={destination} promotionScores={promotionScores} effectiveDestinationId={effectiveDestinationId} />
                 ))}
               </div>
+              
+              {/* Load More Button for Filtered Results */}
+              {isFiltered && filteredHasMore && (
+                <div className="mt-8 text-center">
+                  <Button
+                    onClick={handleLoadMoreFiltered}
+                    disabled={loadingMoreFiltered}
+                    className="sunset-gradient text-white px-8 py-6 text-lg"
+                    size="lg"
+                  >
+                    {loadingMoreFiltered ? (
+                      <>
+                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                        Loading more tours...
+                      </>
+                    ) : (
+                      `Load More Tours (${filteredTours.length} of ${filteredTotalCount > 0 ? filteredTotalCount.toLocaleString() : 'many'}+)`
+                    )}
+                  </Button>
+                </div>
+              )}
             </div>
           )}
 
@@ -1798,8 +2135,14 @@ export default function ToursListingClient({
           )}
         </div>
       </section>
+      </div>
 
       <FooterNext />
+      
+      <PromotionExplainerModal 
+        isOpen={isPromotionModalOpen} 
+        onClose={() => setIsPromotionModalOpen(false)}
+      />
 
       {/* Parent Country Modal - Shows after 5 seconds for small destinations */}
       {showParentCountryModal && destination.parentCountryDestination && (
@@ -1865,7 +2208,14 @@ export default function ToursListingClient({
           </motion.div>
         </div>
       )}
-    </div>
+      
+      <ShareModal
+        isOpen={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title={`Top Tours & Activities in ${destinationName} - TopTours.ai`}
+      />
+    </>
   );
 }
 
@@ -1875,8 +2225,8 @@ function TourCard({ tour, isFeatured, destination, promotionScores = {}, effecti
   const tourUrl = tour.slug 
     ? `/tours/${productId}/${tour.slug}` 
     : getTourUrl(productId, tour.seo?.title || tour.title);
-  const supabase = createSupabaseBrowserClient();
-  const [isSaved, setIsSaved] = useState(false);
+  const { isBookmarked, toggle: toggleBookmark } = useBookmarks();
+  const isSaved = isBookmarked(productId);
   
   const image = tour.images?.[0]?.variants?.[3]?.url || 
                 tour.images?.[0]?.variants?.[0]?.url || 
@@ -2012,36 +2362,23 @@ function TourCard({ tour, isFeatured, destination, promotionScores = {}, effecti
               onClick={async (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                const { data } = await supabase.auth.getUser();
-                if (!data?.user) {
+                const result = await toggleBookmark(productId);
+                if (result?.error === 'not_signed_in') {
                   toast({
                     title: 'Sign in required',
                     description: 'Create a free account to save tours to your favorites.',
                   });
                   return;
                 }
-                try {
-                  const method = isSaved ? 'DELETE' : 'POST';
-                  const url = isSaved
-                    ? `/api/internal/bookmarks/${encodeURIComponent(productId)}`
-                    : '/api/internal/bookmarks';
-                  const body = isSaved
-                    ? JSON.stringify({ userId: data.user.id })
-                    : JSON.stringify({ userId: data.user.id, productId });
-                  await fetch(url, {
-                    method,
-                    headers: { 'Content-Type': 'application/json' },
-                    body,
-                  });
-                  setIsSaved(!isSaved);
+                if (result?.ok) {
                   toast({
                     title: isSaved ? 'Removed from favorites' : 'Saved to favorites',
                     description: 'You can view your favorites in your profile.',
                   });
-                } catch (_) {}
+                }
               }}
-              className={`ml-2 inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors ${
-                isSaved ? 'text-red-600 bg-white' : 'text-gray-400 bg-white hover:text-red-500'
+              className={`ml-2 inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors shadow-sm ${
+                isSaved ? 'text-red-600 bg-red-50 hover:bg-red-100' : 'text-gray-400 bg-white hover:text-red-500 hover:bg-red-50'
               }`}
               title={isSaved ? 'Saved' : 'Save'}
             >

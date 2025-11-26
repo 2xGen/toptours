@@ -5,7 +5,7 @@ import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { getRestaurantsForDestination, formatRestaurantForFrontend } from '@/lib/restaurants';
-import { getViatorDestinationById } from '@/lib/supabaseCache';
+import { getViatorDestinationById, getViatorDestinationBySlug } from '@/lib/supabaseCache';
 import { redirect } from 'next/navigation';
 import ErrorBoundary from '@/components/ErrorBoundary';
 
@@ -317,21 +317,40 @@ export default async function DestinationDetailPage({ params }) {
   // New destinations: database has numeric IDs (e.g., "50751") - pass numeric ID
   // The query functions handle both formats, but we should pass what matches the database
   
-  // Check if this is a curated destination (182) - these use slugs in the database
+  // CRITICAL: Use database as source of truth - query by slug to get correct destination ID
+  // This ensures we use the correct ID from the database (id field = Viator destination ID)
   const { slugToViatorId } = await import('@/data/viatorDestinationMap');
   const isCuratedDestination = destination.id && slugToViatorId[destination.id];
   
+  // Query database by slug to get the correct destination ID
+  if (isCuratedDestination && !destination.destinationId) {
+    const dbDestination = await getViatorDestinationBySlug(destination.id);
+    if (dbDestination && dbDestination.id) {
+      destination.destinationId = dbDestination.id.toString();
+      console.log(`✅ Destination Detail Page - Added destinationId ${destination.destinationId} from database for ${destination.id} (name: ${dbDestination.name})`);
+    } else {
+      // Fallback to hardcoded map if database lookup fails
+      destination.destinationId = slugToViatorId[destination.id];
+      console.log(`⚠️ Destination Detail Page - Database lookup failed for ${destination.id}, using fallback slugToViatorId = ${destination.destinationId}`);
+    }
+  }
+  
+  // CRITICAL: Use the SAME destination ID that we use for fetching tours
+  // This ensures promotions match the tours being displayed
+  // destination.destinationId is set from database lookup (getViatorDestinationBySlug) above
+  // This ensures consistency between tours and promotions
   let destinationIdForScores;
-  if (isCuratedDestination) {
-    // For old destinations: database has slugs, so pass the slug
-    // The query function will also try the numeric ID as a fallback
-    destinationIdForScores = destination.id; // Use slug for old destinations
-  } else if (destination.destinationId) {
-    // For new Viator destinations: database has numeric IDs, so pass numeric ID
+  
+  // Use the destinationId from destination object (set from database lookup above)
+  // This is the same ID we use for fetching tours, ensuring consistency
+  if (destination.destinationId) {
+    // Use the database-derived destination ID (numeric Viator ID)
     destinationIdForScores = destination.destinationId;
+    console.log(`✅ Destination Page - Using destination.destinationId ${destinationIdForScores} for promotions (same as tours)`);
   } else {
-    // Fallback: try to get numeric ID, but query function will handle slug too
+    // Fallback: use slug, promotion function will look up numeric ID
     destinationIdForScores = destination.id;
+    console.log(`⚠️ Destination Page - Using slug ${destinationIdForScores} for promotions (destination.destinationId not set)`);
   }
   
   // Fetch promotion scores for this destination
@@ -356,10 +375,9 @@ export default async function DestinationDetailPage({ params }) {
     // Only fetch if we have the required environment variables
     if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
       const dbRestaurants = await getRestaurantsForDestination(destination.id);
-      // Format restaurants for frontend and limit to 6 for the preview
+      // Format restaurants for frontend - show all (no limit, will display 6 as cards + rest as list)
       // Add extra error handling for each restaurant
       restaurants = (dbRestaurants || [])
-        .slice(0, 6)
         .map(restaurant => {
           try {
             return formatRestaurantForFrontend(restaurant);

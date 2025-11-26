@@ -1210,19 +1210,151 @@ export async function getRecentBoosts(limit = 20) {
       .from('promotion_transactions')
       .select('id, user_id, product_id, restaurant_id, points_spent, created_at, transaction_type')
       .order('created_at', { ascending: false })
-      .limit(limit);
+      .limit(limit * 2); // Get more to account for filtering
 
     if (transactionsError) {
       console.error('Error fetching recent boosts:', transactionsError);
       return [];
     }
 
-    if (!transactions || transactions.length === 0) {
+    // Also get recent restaurant promotions directly from restaurant_promotions table
+    // This catches restaurants that might have null restaurant_id in transactions
+    const { data: recentRestaurants, error: restaurantsError } = await supabase
+      .from('restaurant_promotions')
+      .select('restaurant_id, last_promoted_at, destination_id')
+      .not('last_promoted_at', 'is', null)
+      .order('last_promoted_at', { ascending: false })
+      .limit(limit);
+
+    if (restaurantsError) {
+      console.warn('Error fetching recent restaurant promotions:', restaurantsError);
+    }
+
+    // Get transactions for restaurants that were recently promoted
+    // This ensures we catch restaurants even if restaurant_id was null in some transactions
+    let restaurantTransactions = [];
+    if (recentRestaurants && recentRestaurants.length > 0) {
+      const restaurantIds = recentRestaurants.map(r => r.restaurant_id);
+      
+      // Get all transactions for these restaurants
+      const { data: restTransactions, error: restTransError } = await supabase
+        .from('promotion_transactions')
+        .select('id, user_id, product_id, restaurant_id, points_spent, created_at, transaction_type, destination_id')
+        .in('restaurant_id', restaurantIds)
+        .order('created_at', { ascending: false });
+
+      if (!restTransError && restTransactions) {
+        // Group transactions by restaurant_id and get the most recent one for each
+        const restaurantTransactionMap = {};
+        restTransactions.forEach(trans => {
+          if (trans.restaurant_id) {
+            const existing = restaurantTransactionMap[trans.restaurant_id];
+            if (!existing || new Date(trans.created_at) > new Date(existing.created_at)) {
+              restaurantTransactionMap[trans.restaurant_id] = trans;
+            }
+          }
+        });
+
+        // For restaurants that were recently promoted but don't have a matching transaction,
+        // try to find a transaction created around the same time (within 1 hour)
+        recentRestaurants.forEach(restaurant => {
+          if (!restaurantTransactionMap[restaurant.restaurant_id]) {
+            // Try to find a transaction created around the same time as last_promoted_at
+            const promoTime = new Date(restaurant.last_promoted_at);
+            const timeWindowStart = new Date(promoTime.getTime() - 3600000); // 1 hour before
+            const timeWindowEnd = new Date(promoTime.getTime() + 3600000); // 1 hour after
+            
+            const matchingTrans = (transactions || []).find(trans => {
+              if (trans.restaurant_id === restaurant.restaurant_id) return true;
+              const transTime = new Date(trans.created_at);
+              return transTime >= timeWindowStart && transTime <= timeWindowEnd && !trans.product_id;
+            });
+
+            if (matchingTrans) {
+              // Found a transaction that might be for this restaurant
+              restaurantTransactionMap[restaurant.restaurant_id] = {
+                ...matchingTrans,
+                restaurant_id: restaurant.restaurant_id, // Ensure restaurant_id is set
+                destination_id: restaurant.destination_id,
+              };
+            } else {
+              // No transaction found - create a synthetic entry (user will be anonymous)
+              restaurantTransactionMap[restaurant.restaurant_id] = {
+                id: `restaurant_${restaurant.restaurant_id}_${restaurant.last_promoted_at}`,
+                user_id: null,
+                product_id: null,
+                restaurant_id: restaurant.restaurant_id,
+                points_spent: null,
+                created_at: restaurant.last_promoted_at,
+                transaction_type: 'restaurant_promotion',
+                destination_id: restaurant.destination_id,
+              };
+            }
+          } else {
+            // Add destination_id to existing transaction if missing
+            if (!restaurantTransactionMap[restaurant.restaurant_id].destination_id) {
+              restaurantTransactionMap[restaurant.restaurant_id].destination_id = restaurant.destination_id;
+            }
+          }
+        });
+
+        restaurantTransactions = Object.values(restaurantTransactionMap);
+      } else if (recentRestaurants.length > 0) {
+        // If we couldn't get transactions, still create entries for the restaurants
+        recentRestaurants.forEach(restaurant => {
+          restaurantTransactions.push({
+            id: `restaurant_${restaurant.restaurant_id}_${restaurant.last_promoted_at}`,
+            user_id: null,
+            product_id: null,
+            restaurant_id: restaurant.restaurant_id,
+            points_spent: null,
+            created_at: restaurant.last_promoted_at,
+            transaction_type: 'restaurant_promotion',
+            destination_id: restaurant.destination_id,
+          });
+        });
+      }
+    }
+
+    // Combine all transactions (tours + restaurants)
+    // Start with tour transactions (those with product_id)
+    const tourTransactions = (transactions || []).filter(t => t.product_id && !t.restaurant_id);
+    
+    // Get restaurant transactions from the main transactions list
+    const restaurantTransFromMain = (transactions || []).filter(t => t.restaurant_id);
+    
+    // Combine: tours + restaurant transactions from main list + restaurant transactions from restaurant_promotions
+    const allTransactions = [...tourTransactions, ...restaurantTransFromMain];
+    
+    // Add restaurant transactions from restaurant_promotions that aren't already in the list
+    if (restaurantTransactions.length > 0) {
+      restaurantTransactions.forEach(restTrans => {
+        // Check if we already have this restaurant transaction
+        const exists = allTransactions.some(t => 
+          t.restaurant_id === restTrans.restaurant_id && 
+          Math.abs(new Date(t.created_at) - new Date(restTrans.created_at)) < 60000 // Within 1 minute
+        );
+        if (!exists) {
+          allTransactions.push(restTrans);
+        }
+      });
+    }
+
+    // Sort by created_at and limit
+    allTransactions.sort((a, b) => {
+      const dateA = new Date(a.created_at);
+      const dateB = new Date(b.created_at);
+      return dateB - dateA;
+    });
+
+    const finalTransactions = allTransactions.slice(0, limit);
+
+    if (finalTransactions.length === 0) {
       return [];
     }
 
     // Get unique user IDs
-    const userIds = [...new Set(transactions.map(t => t.user_id).filter(Boolean))];
+    const userIds = [...new Set(finalTransactions.map(t => t.user_id).filter(Boolean))];
     
     // Fetch profiles, promotion accounts (for tier/streak), and emails
     let profilesMap = {};
@@ -1289,7 +1421,7 @@ export async function getRecentBoosts(limit = 20) {
     }
 
     // Combine transactions with profiles and account data
-    const boosts = transactions.map(transaction => {
+    const boosts = finalTransactions.map(transaction => {
       const profile = transaction.user_id ? profilesMap[transaction.user_id] || null : null;
       
       return {
@@ -1938,6 +2070,217 @@ function getRestaurantScoreColumn(scoreType) {
       return 'past_28_days_score';
     default:
       return 'total_score';
+  }
+}
+
+/**
+ * Spend points on a travel plan
+ */
+export async function spendPointsOnPlan(userId, planId, pointsToSpend, scoreType = 'all') {
+  if (!userId || !planId || pointsToSpend <= 0) {
+    return { error: 'Invalid parameters' };
+  }
+
+  // Enforce minimum boost requirement
+  if (pointsToSpend < MIN_BOOST_POINTS) {
+    return { error: `Minimum boost is ${MIN_BOOST_POINTS} points. This prevents inefficient small transactions.` };
+  }
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    
+    // Check if user already boosted this plan
+    const { data: existingPromo } = await supabase
+      .from('plan_promotions')
+      .select('*')
+      .eq('plan_id', planId)
+      .eq('user_id', userId)
+      .single();
+
+    if (existingPromo) {
+      return { error: 'You have already boosted this plan' };
+    }
+
+    // Get user's promotion account
+    const account = await getPromotionAccount(userId);
+    if (!account) {
+      return { error: 'Promotion account not found' };
+    }
+
+    // Read daily points from profiles table (primary source of truth)
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('daily_points_available')
+      .eq('id', userId)
+      .single();
+
+    const currentPoints = profile?.daily_points_available ?? account.daily_points_available ?? 0;
+
+    // Check if user has enough points
+    if (currentPoints < pointsToSpend) {
+      return { error: 'Insufficient points available' };
+    }
+
+    // Deduct points from both promotion_accounts and profiles tables
+    const newPointsAvailable = currentPoints - pointsToSpend;
+    const { error: deductError } = await supabase
+      .from('promotion_accounts')
+      .update({
+        daily_points_available: newPointsAvailable,
+        total_points_spent_all_time: (account.total_points_spent_all_time || 0) + pointsToSpend,
+      })
+      .eq('user_id', userId);
+
+    // Also update profiles table (primary source of truth)
+    await supabase
+      .from('profiles')
+      .update({
+        daily_points_available: newPointsAvailable,
+      })
+      .eq('id', userId);
+
+    if (deductError) {
+      console.error('Error deducting points:', deductError);
+      return { error: 'Failed to deduct points' };
+    }
+
+    // Get or create plan promotion record
+    let { data: planPromo, error: planError } = await supabase
+      .from('travel_plans')
+      .select('*')
+      .eq('id', planId)
+      .single();
+
+    if (planError) {
+      console.error('Error fetching plan:', planError);
+      return { error: 'Plan not found' };
+    }
+
+    // Create promotion record (trigger will update scores)
+    const { data: promotion, error: promoError } = await supabase
+      .from('plan_promotions')
+      .insert({
+        plan_id: planId,
+        user_id: userId,
+        points: pointsToSpend,
+      })
+      .select()
+      .single();
+
+    if (promoError) {
+      console.error('Error creating plan promotion:', promoError);
+      // Refund points if promotion creation fails
+      await supabase
+        .from('promotion_accounts')
+        .update({
+          daily_points_available: currentPoints,
+          total_points_spent_all_time: (account.total_points_spent_all_time || 0) - pointsToSpend,
+        })
+        .eq('user_id', userId);
+      await supabase
+        .from('profiles')
+        .update({
+          daily_points_available: currentPoints,
+        })
+        .eq('id', userId);
+      return { error: 'Failed to create plan promotion' };
+    }
+
+    // Get updated plan with new scores
+    const { data: updatedPlan } = await supabase
+      .from('travel_plans')
+      .select('*')
+      .eq('id', planId)
+      .single();
+
+    return {
+      success: true,
+      promotion,
+      plan: updatedPlan,
+      pointsRemaining: newPointsAvailable,
+    };
+  } catch (error) {
+    console.error('Error in spendPointsOnPlan:', error);
+    return { error: 'Failed to spend points' };
+  }
+}
+
+/**
+ * Get plan promotion scores by destination
+ */
+export async function getPlanPromotionScoresByDestination(destinationId) {
+  if (!destinationId) {
+    return {};
+  }
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    
+    const { data: plans, error } = await supabase
+      .from('travel_plans')
+      .select('id, total_score, monthly_score, weekly_score, past_28_days_score')
+      .eq('destination_id', destinationId)
+      .eq('is_public', true);
+
+    if (error) {
+      console.error('Error fetching plan promotion scores:', error);
+      return {};
+    }
+
+    // Convert to map by plan ID
+    const scoresMap = {};
+    plans?.forEach(plan => {
+      scoresMap[plan.id] = {
+        plan_id: plan.id,
+        total_score: plan.total_score || 0,
+        monthly_score: plan.monthly_score || 0,
+        weekly_score: plan.weekly_score || 0,
+        past_28_days_score: plan.past_28_days_score || 0,
+      };
+    });
+
+    return scoresMap;
+  } catch (error) {
+    console.error('Error in getPlanPromotionScoresByDestination:', error);
+    return {};
+  }
+}
+
+/**
+ * Get plan promotion score for a single plan
+ */
+export async function getPlanPromotionScore(planId) {
+  if (!planId) {
+    return null;
+  }
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    
+    const { data: plan, error } = await supabase
+      .from('travel_plans')
+      .select('id, total_score, monthly_score, weekly_score, past_28_days_score')
+      .eq('id', planId)
+      .single();
+
+    if (error) {
+      if (error.code === 'PGRST116') {
+        return null; // Plan not found
+      }
+      console.error('Error fetching plan promotion score:', error);
+      return null;
+    }
+
+    return {
+      planId: plan.id,
+      total_score: plan.total_score || 0,
+      monthly_score: plan.monthly_score || 0,
+      weekly_score: plan.weekly_score || 0,
+      past_28_days_score: plan.past_28_days_score || 0,
+    };
+  } catch (error) {
+    console.error('Error in getPlanPromotionScore:', error);
+    return null;
   }
 }
 

@@ -6,7 +6,9 @@ import { useSearchParams } from 'next/navigation';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Info } from 'lucide-react';
+import { Info, Check, Sparkles, Users, Trophy, Coins, Bookmark } from 'lucide-react';
+import { motion } from 'framer-motion';
+import AnimatedExplainer from '@/components/auth/AnimatedExplainer';
 
 function AuthPageContent() {
   const supabase = createSupabaseBrowserClient();
@@ -348,44 +350,155 @@ function AuthPageContent() {
     }
   };
 
-  const handleSignOut = async () => {
-    setLoading(true);
-    try {
-      await supabase.auth.signOut();
-      window.location.href = '/';
-    } finally {
-      setLoading(false);
-    }
-  };
+
+  // Determine if we should show the split layout (only for signin/signup, not for forgot/reset/setNickname)
+  const showSplitLayout = mode === 'signin' || mode === 'signup';
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-xl font-semibold">
-            {mode === 'setNickname' ? 'Choose Your Nickname' : mode === 'reset' ? 'Set New Password' : mode === 'forgot' ? 'Reset Password' : mode === 'signin' ? 'Sign in to TopTours' : 'Create your account'}
-          </h1>
-          <Link href="/" className="text-sm text-purple-600 hover:underline">Back to home</Link>
-        </div>
-        {mode !== 'forgot' && mode !== 'reset' && mode !== 'setNickname' && (
-          <div className="flex gap-2 mb-4">
-            <Button variant={mode === 'signin' ? 'default' : 'outline'} onClick={() => { setMode('signin'); setMessage(''); }}>Sign In</Button>
-            <Button variant={mode === 'signup' ? 'default' : 'outline'} onClick={() => { setMode('signup'); setMessage(''); }}>Sign Up</Button>
+    <div className="min-h-screen bg-white">
+      {showSplitLayout ? (
+        // Split Layout for Sign In/Sign Up
+        <div className="min-h-screen flex">
+          {/* Left Side - Benefits & Explainer */}
+          <div className="hidden lg:flex lg:w-1/2 ocean-gradient p-12 flex-col justify-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-black/20" />
+            <div className="relative z-10 max-w-lg mx-auto w-full">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="mb-8"
+              >
+                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+                  <Sparkles className="w-4 h-4 text-yellow-300" />
+                  <span className="text-sm font-semibold text-white">Revolutionary Tour Discovery</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                  Discover Amazing Tours & Restaurants
+                </h2>
+                <p className="text-xl text-white/90 mb-8">
+                  The first community-driven, AI-powered platform that helps you discover tours and restaurants that actually match your travel style — and lets you boost the ones you love.
+                </p>
+              </motion.div>
+
+              {/* Animated Explainer */}
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 mb-8 border-2 border-white/30 shadow-lg">
+                <AnimatedExplainer autoPlay={true} />
+              </div>
+
+              {/* Quick Benefits */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="grid grid-cols-2 gap-4"
+              >
+                <div className="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl p-4 border-2 border-orange-200 shadow-lg">
+                  <Coins className="w-6 h-6 text-orange-600 mb-2" />
+                  <p className="text-gray-900 text-sm font-semibold">50 Points/Day</p>
+                  <p className="text-gray-700 text-xs">Free daily points</p>
+                </div>
+                <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4 border-2 border-purple-200 shadow-lg">
+                  <Trophy className="w-6 h-6 text-purple-600 mb-2" />
+                  <p className="text-gray-900 text-sm font-semibold">Leaderboard</p>
+                  <p className="text-gray-700 text-xs">Compete globally</p>
+                </div>
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 border-2 border-blue-200 shadow-lg">
+                  <Sparkles className="w-6 h-6 text-blue-600 mb-2" />
+                  <p className="text-gray-900 text-sm font-semibold">AI Matching</p>
+                  <p className="text-gray-700 text-xs">1 match per day</p>
+                </div>
+                <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 border-2 border-green-200 shadow-lg">
+                  <Bookmark className="w-6 h-6 text-green-600 mb-2" />
+                  <p className="text-gray-900 text-sm font-semibold">Save Unlimited</p>
+                  <p className="text-gray-700 text-xs">Tours & restaurants</p>
+                </div>
+              </motion.div>
+            </div>
           </div>
-        )}
-        {(mode === 'forgot' || mode === 'reset') && (
-          <div className="mb-4">
-            <Button variant="outline" onClick={() => { setMode('signin'); setMessage(''); setNewPassword(''); setConfirmPassword(''); }} className="mb-2">
-              ← Back to Sign In
-            </Button>
-          </div>
-        )}
-        {mode === 'setNickname' && (
-          <p className="mb-4 text-sm text-gray-600">
-            Choose a nickname that will be displayed publicly on the leaderboard and in your profile.
-          </p>
-        )}
-        <form onSubmit={handleSubmit} className="space-y-4">
+
+          {/* Right Side - Auth Form */}
+          <div className="w-full lg:w-1/2 lg:fixed lg:right-0 lg:top-0 lg:h-screen flex items-center justify-center p-4 lg:p-12 bg-gray-50 lg:overflow-y-auto">
+            <div className="w-full max-w-md my-auto">
+              <div className="bg-white rounded-2xl shadow-xl border-2 border-gray-200 p-10">
+                <div className="flex items-center justify-between mb-8">
+                  <div>
+                    <h1 className="text-3xl font-bold text-gray-900 mb-1">
+                      {mode === 'signin' ? 'Welcome Back' : 'Create Account'}
+                    </h1>
+                    <p className="text-sm text-gray-600">
+                      {mode === 'signin' ? 'Sign in to continue your journey' : 'Join thousands of travelers discovering amazing places'}
+                    </p>
+                  </div>
+                  <Link href="/" className="text-sm text-purple-600 hover:underline whitespace-nowrap ml-4">← Home</Link>
+                </div>
+
+                {/* Progress Indicator for Sign Up */}
+                {mode === 'signup' && (
+                  <div className="mb-6">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-xs text-gray-600">Step 1 of 2</span>
+                      <span className="text-xs text-gray-600">50%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <motion.div
+                        className="sunset-gradient h-2 rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: '50%' }}
+                        transition={{ duration: 0.5 }}
+                      />
+                    </div>
+                    <p className="text-xs text-gray-500 mt-2">Create your account → Choose nickname</p>
+                  </div>
+                )}
+
+                {mode === 'setNickname' && (
+                  <div className="mb-6">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-xs text-gray-600">Step 2 of 2</span>
+                      <span className="text-xs text-gray-600">100%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <motion.div
+                        className="sunset-gradient h-2 rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: '100%' }}
+                        transition={{ duration: 0.5 }}
+                      />
+                    </div>
+                    <p className="text-xs text-gray-500 mt-2">Almost there! Choose your nickname</p>
+                  </div>
+                )}
+
+                {/* Mode Toggle */}
+                {mode !== 'forgot' && mode !== 'reset' && mode !== 'setNickname' && (
+                  <div className="flex gap-2 mb-6 bg-gray-100 p-1 rounded-lg border border-gray-200">
+                    <Button 
+                      variant={mode === 'signin' ? 'default' : 'ghost'} 
+                      onClick={() => { setMode('signin'); setMessage(''); }}
+                      className={`flex-1 ${mode === 'signin' ? 'sunset-gradient text-white shadow-md' : ''}`}
+                    >
+                      Sign In
+                    </Button>
+                    <Button 
+                      variant={mode === 'signup' ? 'default' : 'ghost'} 
+                      onClick={() => { setMode('signup'); setMessage(''); }}
+                      className={`flex-1 ${mode === 'signup' ? 'sunset-gradient text-white shadow-md' : ''}`}
+                    >
+                      Sign Up
+                    </Button>
+                  </div>
+                )}
+
+                {(mode === 'forgot' || mode === 'reset') && (
+                  <div className="mb-4">
+                    <Button variant="outline" onClick={() => { setMode('signin'); setMessage(''); setNewPassword(''); setConfirmPassword(''); }} className="mb-2">
+                      ← Back to Sign In
+                    </Button>
+                  </div>
+                )}
+
+                <form onSubmit={handleSubmit} className="space-y-4">
           {mode === 'setNickname' && (
             <div>
               <label className="block text-sm text-gray-700 mb-1 flex items-center gap-2">
@@ -561,12 +674,166 @@ function AuthPageContent() {
             Enter your new password. Make sure it's at least 6 characters long.
           </p>
         )}
-        {mode !== 'setNickname' && (
-          <Button onClick={handleSignOut} variant="outline" className="w-full mt-4" disabled={loading}>
-            Sign Out
-          </Button>
-        )}
-      </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        // Single Column Layout for Forgot/Reset/SetNickname
+        <div className="min-h-screen flex items-center justify-center px-4 bg-gray-50">
+          <div className="w-full max-w-md bg-white rounded-2xl shadow-lg border-2 border-gray-200 p-8">
+            <div className="flex items-center justify-between mb-6">
+              <h1 className="text-xl font-semibold">
+                {mode === 'setNickname' ? 'Choose Your Nickname' : mode === 'reset' ? 'Set New Password' : mode === 'forgot' ? 'Reset Password' : 'Sign in to TopTours'}
+              </h1>
+              <Link href="/" className="text-sm text-purple-600 hover:underline">Back to home</Link>
+            </div>
+            {mode === 'setNickname' && (
+              <div className="mb-6">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-xs text-gray-600">Step 2 of 2</span>
+                  <span className="text-xs text-gray-600">100%</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <motion.div
+                    className="sunset-gradient h-2 rounded-full"
+                    initial={{ width: 0 }}
+                    animate={{ width: '100%' }}
+                    transition={{ duration: 0.5 }}
+                  />
+                </div>
+                <p className="text-xs text-gray-500 mt-2">Almost there! Choose your nickname</p>
+              </div>
+            )}
+            {(mode === 'forgot' || mode === 'reset') && (
+              <div className="mb-4">
+                <Button variant="outline" onClick={() => { setMode('signin'); setMessage(''); setNewPassword(''); setConfirmPassword(''); }} className="mb-2">
+                  ← Back to Sign In
+                </Button>
+              </div>
+            )}
+            {mode === 'setNickname' && (
+              <p className="mb-4 text-sm text-gray-600">
+                Choose a nickname that will be displayed publicly on the leaderboard and in your profile.
+              </p>
+            )}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {mode === 'setNickname' && (
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1 flex items-center gap-2">
+                    Nickname
+                    <div className="group relative">
+                      <Info className="w-4 h-4 text-gray-400 hover:text-gray-600 cursor-help" />
+                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block z-10">
+                        <div className="bg-gray-900 text-white text-xs rounded-lg py-2 px-3 whitespace-nowrap shadow-lg">
+                          This name will be used as your public name
+                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1">
+                            <div className="border-4 border-transparent border-t-gray-900"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+                  <div className="relative">
+                    <Input
+                      type="text"
+                      value={displayName}
+                      onChange={(e) => handleDisplayNameChange(e.target.value)}
+                      placeholder="How should we call you?"
+                      className={nameAvailable === false ? 'border-red-500 focus-visible:ring-red-500' : nameAvailable === true ? 'border-green-500 focus-visible:ring-green-500' : ''}
+                    />
+                    {checkingName && (
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                        <div className="w-4 h-4 border-2 border-gray-300 border-t-purple-600 rounded-full animate-spin"></div>
+                      </div>
+                    )}
+                    {!checkingName && nameAvailable === true && displayName.trim() && (
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500">
+                        ✓
+                      </div>
+                    )}
+                    {!checkingName && nameAvailable === false && (
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-red-500">
+                        ✗
+                      </div>
+                    )}
+                  </div>
+                  {nameAvailable === false && (
+                    <p className="text-xs text-red-600 mt-1">This nickname is already taken. Please choose another one.</p>
+                  )}
+                  {nameAvailable === true && displayName.trim() && (
+                    <p className="text-xs text-green-600 mt-1">Great! This nickname is available.</p>
+                  )}
+                </div>
+              )}
+              {mode !== 'reset' && mode !== 'setNickname' && (
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1">Email</label>
+                  <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                </div>
+              )}
+              {mode === 'reset' && (
+                <>
+                  <div>
+                    <label className="block text-sm text-gray-700 mb-1">New Password</label>
+                    <Input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required minLength={6} />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-gray-700 mb-1">Confirm New Password</label>
+                    <Input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required minLength={6} />
+                  </div>
+                </>
+              )}
+              {mode !== 'forgot' && mode !== 'reset' && mode !== 'setNickname' && (
+                <div>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-sm text-gray-700">Password</label>
+                    {mode === 'signin' && (
+                      <button
+                        type="button"
+                        onClick={() => { setMode('forgot'); setMessage(''); }}
+                        className="text-sm text-purple-600 hover:underline"
+                      >
+                        Forgot password?
+                      </button>
+                    )}
+                  </div>
+                  <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                </div>
+              )}
+              <Button type="submit" className="w-full sunset-gradient text-white" disabled={loading || (mode === 'signup' && !acceptedTerms)}>
+                {loading ? 'Please wait…' : mode === 'setNickname' ? 'Continue' : mode === 'reset' ? 'Update Password' : mode === 'forgot' ? 'Send Reset Link' : mode === 'signin' ? 'Sign In' : 'Create Account'}
+              </Button>
+            </form>
+            {message && (
+              <div className={`mt-4 text-sm ${message.includes('sent') || message.includes('Signed in') || message.includes('created') || message.includes('updated successfully') || message.includes('saved!') ? 'text-green-600' : message.includes('already in use') ? 'text-orange-600' : 'text-red-600'}`}>
+                <p>{message}</p>
+                {message.includes('already in use') && (
+                  <button
+                    onClick={() => {
+                      setMode('signin');
+                      setMessage('');
+                    }}
+                    className="mt-2 text-sm font-semibold underline hover:no-underline"
+                  >
+                    Go to Sign In →
+                  </button>
+                )}
+              </div>
+            )}
+            {mode === 'forgot' && (
+              <p className="mt-4 text-xs text-gray-500">
+                Enter your email address and we'll send you a link to reset your password.
+              </p>
+            )}
+            {mode === 'reset' && (
+              <p className="mt-4 text-xs text-gray-500">
+                Enter your new password. Make sure it's at least 6 characters long.
+              </p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

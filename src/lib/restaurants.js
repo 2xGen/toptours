@@ -84,6 +84,32 @@ export async function getRestaurantCountsByDestination() {
 }
 
 /**
+ * Get a restaurant by ID
+ * @param {number} restaurantId - Restaurant ID
+ * @returns {Promise<Object|null>} Restaurant object or null
+ */
+export async function getRestaurantById(restaurantId) {
+  const supabase = createSupabaseServiceRoleClient();
+  
+  const { data, error } = await supabase
+    .from('restaurants')
+    .select('*')
+    .eq('id', restaurantId)
+    .eq('is_active', true)
+    .single();
+
+  if (error) {
+    if (error.code === 'PGRST116') {
+      return null;
+    }
+    console.error('Error fetching restaurant:', error);
+    return null;
+  }
+
+  return formatRestaurantForFrontend(data);
+}
+
+/**
  * Get a restaurant by slug
  * @param {string} destinationId - Destination ID
  * @param {string} slug - Restaurant slug

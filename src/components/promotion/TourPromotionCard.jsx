@@ -9,6 +9,8 @@ import { toast } from '@/components/ui/use-toast';
 import confetti from 'canvas-confetti';
 import { A_LA_CARTE_PACKAGES } from '@/lib/promotionSystem';
 import { getTourUrl } from '@/utils/tourHelpers';
+import PromotionExplainerModal from '@/components/auth/PromotionExplainerModal';
+import BoostShareModal from './BoostShareModal';
 
 export default function TourPromotionCard({ productId, initialScore = null, compact = false, tourData = null, destinationId = null }) {
   // Only load account automatically if not in compact mode
@@ -19,6 +21,9 @@ export default function TourPromotionCard({ productId, initialScore = null, comp
   const [loadingScore, setLoadingScore] = useState(!initialScore);
   const [showInfo, setShowInfo] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showPromotionExplainerModal, setShowPromotionExplainerModal] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [lastBoostedData, setLastBoostedData] = useState(null);
   const [accountLoaded, setAccountLoaded] = useState(false);
   const infoRef = useRef(null);
   const modalRef = useRef(null);
@@ -159,11 +164,28 @@ export default function TourPromotionCard({ productId, initialScore = null, comp
         description: `You've boosted this tour with ${points} points!`,
       });
 
+      // Prepare share data
+      const tourUrl = tourData?.title 
+        ? getTourUrl(productId, tourData.title)
+        : `/tours/${productId}`;
+      const tourName = tourData?.title || `this tour`;
+      
+      setLastBoostedData({
+        name: tourName,
+        url: typeof window !== 'undefined' ? `${window.location.origin}${tourUrl}` : tourUrl,
+        points: points
+      });
+
       setPointsToSpend('');
       await loadScore(); // Refresh score
       if (compact) {
         setShowModal(false);
       }
+      
+      // Show share modal after a short delay (let confetti play)
+      setTimeout(() => {
+        setShowShareModal(true);
+      }, 1500);
     } catch (error) {
       toast({
         title: 'Error',
@@ -259,6 +281,13 @@ export default function TourPromotionCard({ productId, initialScore = null, comp
         <div className="flex items-center gap-2">
           <Trophy className="w-4 h-4 text-orange-600" />
           <span className="text-xs font-semibold text-gray-700">TopTours Score</span>
+          <button
+            onClick={() => setShowPromotionExplainerModal(true)}
+            className="relative"
+            aria-label="Learn how promotions work"
+          >
+            <Info className="w-3 h-3 text-gray-400 hover:text-orange-600 transition-colors cursor-pointer" />
+          </button>
           {loadingScore ? (
             <div className="h-4 w-8 bg-gray-200 animate-pulse rounded" />
           ) : (
@@ -429,6 +458,15 @@ export default function TourPromotionCard({ productId, initialScore = null, comp
           </div>,
           document.body
         )}
+        
+        {/* Promotion Explainer Modal - Using portal to avoid overflow clipping */}
+        {showPromotionExplainerModal && typeof window !== 'undefined' && createPortal(
+          <PromotionExplainerModal 
+            isOpen={showPromotionExplainerModal} 
+            onClose={() => setShowPromotionExplainerModal(false)}
+          />,
+          document.body
+        )}
       </>
     );
   }
@@ -443,69 +481,13 @@ export default function TourPromotionCard({ productId, initialScore = null, comp
           <div className="flex items-center gap-2">
             <Trophy className="w-5 h-5 text-orange-600" />
             <span className="text-sm font-bold text-gray-800">Promotion Score</span>
-            <div className="relative group">
-              <button
-                onClick={() => setShowInfo(!showInfo)}
-                className="relative"
-                aria-label="What is this?"
-              >
-                <Info className="w-4 h-4 text-gray-400 hover:text-orange-600 transition-colors" />
-              </button>
-              {/* Info Tooltip */}
-              {showInfo && (
-                <div
-                  ref={infoRef}
-                  className="absolute top-6 left-0 z-50 bg-white border-2 border-orange-300 rounded-lg shadow-2xl p-4 w-80 max-h-[500px] overflow-y-auto"
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <h4 className="font-bold text-gray-900 text-sm">How Promotion Works</h4>
-                    <button
-                      onClick={() => setShowInfo(false)}
-                      className="text-gray-400 hover:text-gray-600"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                  </div>
-                  
-                  <div className="space-y-3 text-xs text-gray-700">
-                    <div>
-                      <p className="font-semibold text-gray-900 mb-1">Where Your Promotion Appears:</p>
-                      <ul className="list-disc list-inside space-y-1 ml-2">
-                        <li>Search results (higher ranking)</li>
-                        <li><a href="/leaderboard" className="text-orange-600 hover:underline font-semibold">Leaderboard</a> (trending section)</li>
-                        <li>Destination pages (trending tours)</li>
-                        <li>Restaurant pages (trending tours section)</li>
-                        <li>Tour listing pages</li>
-                      </ul>
-                    </div>
-                    
-                    <div className="border-t border-gray-200 pt-3">
-                      <p className="font-semibold text-gray-900 mb-1">Why This Pricing is Justified:</p>
-                      <ul className="list-disc list-inside space-y-1 ml-2">
-                        <li>Multiple high-visibility placements</li>
-                        <li>Targeted audience (travelers actively planning)</li>
-                        <li>Long-term visibility (points accumulate)</li>
-                        <li>Community-driven (authentic recommendations)</li>
-                        <li>Free daily points available (no subscription needed)</li>
-                      </ul>
-                    </div>
-                    
-                    <div className="bg-orange-50 border border-orange-200 rounded p-2 mt-3">
-                      <p className="text-xs text-orange-800 font-medium">
-                        💡 <strong>Tip:</strong> Instant boosts help promote your listing instantly.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <a 
-                    href="/how-it-works" 
-                    className="block mt-3 text-xs text-orange-600 hover:underline font-semibold text-center pt-2 border-t border-gray-200"
-                  >
-                    Learn more about our promotion system →
-                  </a>
-                </div>
-              )}
-            </div>
+            <button
+              onClick={() => setShowPromotionExplainerModal(true)}
+              className="relative"
+              aria-label="Learn how promotions work"
+            >
+              <Info className="w-4 h-4 text-gray-400 hover:text-orange-600 transition-colors cursor-pointer" />
+            </button>
           </div>
           {loadingScore ? (
             <div className="h-6 w-16 bg-gray-200 animate-pulse rounded-lg" />
@@ -641,6 +623,20 @@ export default function TourPromotionCard({ productId, initialScore = null, comp
           💡 <strong>Tip:</strong> Subscriptions are 90% cheaper per point!
         </p>
       </div>
+      
+      <PromotionExplainerModal 
+        isOpen={showPromotionExplainerModal} 
+        onClose={() => setShowPromotionExplainerModal(false)}
+      />
+      
+      <BoostShareModal
+        isOpen={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        itemName={lastBoostedData?.name || ''}
+        itemUrl={lastBoostedData?.url || ''}
+        points={lastBoostedData?.points || 0}
+        itemType="tour"
+      />
     </div>
   );
 }

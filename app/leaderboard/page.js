@@ -142,16 +142,18 @@ export default async function LeaderboardPage({ searchParams }) {
       const destId = restaurantData?.destination_id || boost.destination_id;
       const destInfo = destId ? destinationLookup[destId] : null;
       
+      // Always return restaurantData object, even if metadata is missing
+      // This ensures restaurants are displayed in Live Activity
       return {
         ...boost,
-        restaurantData: restaurantData ? {
-          name: restaurantData.restaurant_name,
-          image: restaurantData.restaurant_image_url,
-          slug: restaurantData.restaurant_slug,
+        restaurantData: {
+          name: restaurantData?.restaurant_name || null,
+          image: restaurantData?.restaurant_image_url || null,
+          slug: restaurantData?.restaurant_slug || null,
           destination_id: destId,
           destination_slug: destInfo?.slug || destId, // Use name-based slug if available
           destination_name: destInfo?.name || null,
-        } : null,
+        },
         tourData: null, // Not a tour
       };
     }

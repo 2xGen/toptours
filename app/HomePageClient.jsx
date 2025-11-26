@@ -7,30 +7,32 @@ import AIPlanner from '@/components/home/AIPlanner';
 import FeaturedTours from '@/components/home/FeaturedTours';
 import TopDestinations from '@/components/home/BlogSection';
 import HomeCTA from '@/components/home/HomeCTA';
-import HowItWorksHighlights from '@/components/home/HowItWorksHighlights';
+import HowItWorksSlider from '@/components/home/HowItWorksSlider';
 import DestinationSearch from '@/components/home/DestinationSearch';
-import CommunityPromotion from '@/components/home/CommunityPromotion';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
+import OnboardingModal from '@/components/auth/OnboardingModal';
 
 export default function HomePageClient({ topTours = [], topPromoters = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOnboardingModalOpen, setIsOnboardingModalOpen] = useState(false);
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
+  const handleOpenOnboardingModal = () => setIsOnboardingModalOpen(true);
+  const handleCloseOnboardingModal = () => setIsOnboardingModalOpen(false);
 
   return (
     <>
       <NavigationNext onOpenModal={handleOpenModal} />
       
       <main className="min-h-screen" suppressHydrationWarning>
-        <Hero />
+        <Hero onOpenOnboardingModal={handleOpenOnboardingModal} />
         <DestinationSearch />
-        <HowItWorksHighlights />
-        <CommunityPromotion />
+        <HowItWorksSlider />
         <FeaturedTours onOpenModal={handleOpenModal} topTours={topTours} topPromoters={topPromoters} />
         <AIPlanner />
         <TopDestinations />
-        <HomeCTA onOpenModal={handleOpenModal} />
+        <HomeCTA onOpenModal={handleOpenModal} onOpenOnboardingModal={handleOpenOnboardingModal} />
       </main>
 
       <FooterNext />
@@ -38,6 +40,11 @@ export default function HomePageClient({ topTours = [], topPromoters = [] }) {
       <SmartTourFinder 
         isOpen={isModalOpen} 
         onClose={handleCloseModal}
+      />
+      
+      <OnboardingModal 
+        isOpen={isOnboardingModalOpen} 
+        onClose={handleCloseOnboardingModal}
       />
       
       {/* Schema Markup */}

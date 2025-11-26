@@ -18,6 +18,7 @@ import {
   X,
   TrendingUp,
   Info,
+  Share2,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { getTourUrl } from '@/utils/tourHelpers';
@@ -28,6 +29,7 @@ import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { useToast } from '@/components/ui/use-toast';
 import { Heart } from 'lucide-react';
+import ShareModal from '@/components/sharing/ShareModal';
 
 export default function RestaurantsListClient({ destination, restaurants, trendingTours = [], trendingRestaurants = [], restaurantPromotionScores = {} }) {
   const { isBookmarked, toggle } = useRestaurantBookmarks();
@@ -35,6 +37,7 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
   const { toast } = useToast();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [showStickyButton, setShowStickyButton] = React.useState(true);
+  const [showShareModal, setShowShareModal] = React.useState(false);
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
@@ -112,9 +115,20 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
                   <span className="h-1 w-1 rounded-full bg-white/40" aria-hidden="true" />
                   <span>{destination.fullName}</span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-4 md:mb-6 text-white">
-                  Best Restaurants in {destination.fullName}
-                </h1>
+                <div className="flex items-center gap-3 mb-4 md:mb-6">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white flex-1">
+                    Best Restaurants in {destination.fullName}
+                  </h1>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-white hover:bg-white/20 flex-shrink-0"
+                    onClick={() => setShowShareModal(true)}
+                    title="Share this page"
+                  >
+                    <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </Button>
+                </div>
                 <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8 max-w-2xl">
                   From waterfront seafood shacks to family-run cafés, these six spots capture the flavors and vibes of {destination.fullName}. Reserve a table, soak up the scenery, and plan the rest of your trip with our curated guides.
                 </p>
@@ -641,6 +655,13 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
           </div>
         </div>
       )}
+      
+      <ShareModal
+        isOpen={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title={`Best Restaurants in ${destination.fullName} - TopTours.ai`}
+      />
     </>
   );
 }

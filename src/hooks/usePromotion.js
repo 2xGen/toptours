@@ -3,25 +3,25 @@
 import { useState, useEffect } from 'react';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 
+// Global cache for promotion account to avoid duplicate calls
+let cachedAccount = null;
+let cachedAccountUserId = null;
+let cachedAccountAt = 0;
+let accountInflight = null;
+const ACCOUNT_CACHE_TTL_MS = 60_000; // 60s cache
+
 /**
  * Hook for managing promotion system (daily points, spending, etc.)
  * @param {boolean} lazy - If true, don't load account automatically (load on demand)
  */
 export function usePromotion(lazy = false) {
-  const [account, setAccount] = useState(null);
+  const [account, setAccount] = useState(cachedAccount);
   const [loading, setLoading] = useState(!lazy);
   const [error, setError] = useState(null);
   const supabase = createSupabaseBrowserClient();
 
-  useEffect(() => {
-    if (!lazy) {
-      loadAccount();
-    }
-  }, [lazy]);
-
   const loadAccount = async () => {
     try {
-      setLoading(true);
       const { data: { user } } = await supabase.auth.getUser();
       
       if (!user) {
@@ -30,32 +30,67 @@ export function usePromotion(lazy = false) {
         return;
       }
 
-      const token = (await supabase.auth.getSession()).data.session?.access_token;
-      if (!token) {
-        setAccount(null);
+      // Check cache first
+      const now = Date.now();
+      const canUseCache =
+        cachedAccount &&
+        cachedAccountUserId === user.id &&
+        now - cachedAccountAt < ACCOUNT_CACHE_TTL_MS;
+
+      if (canUseCache) {
+        setAccount(cachedAccount);
         setLoading(false);
         return;
       }
 
-      const response = await fetch('/api/internal/promotion/account', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
+      // Share one inflight request across all hook instances
+      if (!accountInflight) {
+        setLoading(true);
+        const token = (await supabase.auth.getSession()).data.session?.access_token;
+        if (!token) {
+          setAccount(null);
+          setLoading(false);
+          return;
+        }
 
-      if (!response.ok) {
-        throw new Error('Failed to load promotion account');
+        accountInflight = fetch('/api/internal/promotion/account', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Failed to load promotion account');
+            }
+            return response.json();
+          })
+          .then((data) => {
+            cachedAccount = data;
+            cachedAccountUserId = user.id;
+            cachedAccountAt = Date.now();
+            return data;
+          })
+          .finally(() => {
+            accountInflight = null;
+            setLoading(false);
+          });
       }
 
-      const data = await response.json();
-      setAccount(data);
+      const result = await accountInflight;
+      setAccount(result);
     } catch (err) {
       console.error('Error loading promotion account:', err);
       setError(err.message);
-    } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!lazy) {
+      loadAccount();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lazy]);
 
   const spendPoints = async (productId, points, scoreType = 'all', tourData = null) => {
     try {

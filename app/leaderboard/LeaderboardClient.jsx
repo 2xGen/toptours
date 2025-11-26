@@ -246,13 +246,16 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                     
                     // Get image, title, and URL based on type
                     let image, title, itemUrl, itemType;
-                    if (isRestaurant && restaurantData) {
-                      image = restaurantData.image;
-                      title = restaurantData.name || `Restaurant #${boost.restaurant_id}`;
-                      const destSlug = restaurantData.destination_slug || restaurantData.destination_id;
-                      itemUrl = restaurantData.slug && destSlug
+                    if (isRestaurant) {
+                      // Handle restaurant promotions - even if restaurantData is null
+                      image = restaurantData?.image || null;
+                      title = restaurantData?.name || `Restaurant #${boost.restaurant_id}`;
+                      const destSlug = restaurantData?.destination_slug || restaurantData?.destination_id || boost.destination_id;
+                      itemUrl = restaurantData?.slug && destSlug
                         ? `/destinations/${destSlug}/restaurants/${restaurantData.slug}`
-                        : `/destinations/${destSlug}/restaurants`;
+                        : destSlug
+                        ? `/destinations/${destSlug}/restaurants`
+                        : '/restaurants';
                       itemType = 'restaurant';
                     } else {
                       image = getTourImage(tourData);
@@ -314,10 +317,30 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                                 )}
                               </div>
                               <div className="flex-1 min-w-0 w-full relative">
-                                {/* Title - Full width on mobile */}
-                                <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 text-base sm:text-sm pr-0 sm:pr-24">
-                                  {title}
-                                </h3>
+                                {/* Title with Type Badge - Full width on mobile */}
+                                <div className="flex items-center gap-2 mb-2 pr-0 sm:pr-24 flex-wrap">
+                                  {/* Restaurant or Tour Badge */}
+                                  <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold flex-shrink-0 ${
+                                    isRestaurant 
+                                      ? 'bg-orange-100 text-orange-700 border border-orange-200' 
+                                      : 'bg-blue-100 text-blue-700 border border-blue-200'
+                                  }`}>
+                                    {isRestaurant ? (
+                                      <>
+                                        <Star className="w-3 h-3" />
+                                        Restaurant
+                                      </>
+                                    ) : (
+                                      <>
+                                        <Trophy className="w-3 h-3" />
+                                        Tour
+                                      </>
+                                    )}
+                                  </span>
+                                  <h3 className="font-semibold text-gray-900 line-clamp-2 text-base sm:text-sm flex-1 min-w-0">
+                                    {title}
+                                  </h3>
+                                </div>
                                 
                                 {/* User Info - Better styled */}
                                 <div className="space-y-2 pr-0 sm:pr-24">
@@ -652,9 +675,9 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.03 }}
                     >
-                      <Card className="hover:shadow-xl transition-all duration-300 bg-white border border-gray-200">
-                        <CardContent className="p-0">
-                          <div className="flex flex-col md:flex-row">
+                      <Card className="hover:shadow-xl transition-all duration-300 bg-white border border-gray-200 h-full">
+                        <CardContent className="p-0 h-full">
+                          <div className="flex flex-col md:flex-row h-full">
                             {/* Rank Badge */}
                             <div className="flex-shrink-0 flex items-center justify-center md:justify-start p-4 md:p-6 bg-gray-50 md:bg-transparent">
                               {rank <= 3 ? (
@@ -671,7 +694,7 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                             </div>
 
                             {/* Image */}
-                            <div className="flex-shrink-0 w-full md:w-48 h-48 md:h-auto">
+                            <div className="flex-shrink-0 w-full md:w-48 h-48 md:h-48">
                               {image ? (
                                 <img
                                   src={image}
@@ -794,9 +817,9 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.03 }}
                 >
-                  <Card className="hover:shadow-xl transition-all duration-300 bg-white border border-gray-200">
-                    <CardContent className="p-0">
-                      <div className="flex flex-col md:flex-row">
+                  <Card className="hover:shadow-xl transition-all duration-300 bg-white border border-gray-200 h-full">
+                    <CardContent className="p-0 h-full">
+                      <div className="flex flex-col md:flex-row h-full">
                         {/* Rank Badge */}
                         <div className="flex-shrink-0 flex items-center justify-center md:justify-start p-4 md:p-6 bg-gray-50 md:bg-transparent">
                           {rank <= 3 ? (
@@ -813,7 +836,7 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                         </div>
 
                         {/* Image */}
-                        <div className="flex-shrink-0 w-full md:w-48 h-48 md:h-auto">
+                        <div className="flex-shrink-0 w-full md:w-48 h-48 md:h-48">
                           {image ? (
                             <img
                               src={image}

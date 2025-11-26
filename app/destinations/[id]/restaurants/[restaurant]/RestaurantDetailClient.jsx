@@ -14,6 +14,7 @@ import RestaurantPromotionCard from '@/components/promotion/RestaurantPromotionC
 import { getTourUrl } from '@/utils/tourHelpers';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
+import ShareModal from '@/components/sharing/ShareModal';
 import { useToast } from '@/components/ui/use-toast';
 import { extractRestaurantStructuredValues, getRestaurantTimeOfDay } from '@/lib/restaurantMatching';
 import { useRouter } from 'next/navigation';
@@ -47,6 +48,7 @@ import {
   XCircle,
   TrendingUp,
   Heart,
+  Share2,
 } from 'lucide-react';
 
 export default function RestaurantDetailClient({ destination, restaurant, otherRestaurants, initialPromotionScore = null, trendingTours = [], trendingRestaurants = [] }) {
@@ -65,6 +67,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
   const [matchData, setMatchData] = useState(null);
   const [showMatchModal, setShowMatchModal] = useState(false);
   const [matchModalMessage, setMatchModalMessage] = useState('');
+  const [showShareModal, setShowShareModal] = useState(false);
 
   // Check authentication status
   useEffect(() => {
@@ -375,9 +378,19 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                   </span>
                 </div>
                 <div className="flex items-start justify-between gap-4 mb-4 md:mb-6">
-                  <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex-1">
-                    {restaurant.name}
-                  </h1>
+                  <div className="flex items-start gap-3 flex-1">
+                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex-1">
+                      {restaurant.name}
+                    </h1>
+                    <button
+                      onClick={() => setShowShareModal(true)}
+                      className="flex-shrink-0 p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors mt-2"
+                      aria-label="Share this restaurant"
+                      title="Share this restaurant"
+                    >
+                      <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
+                    </button>
+                  </div>
                   <button
                     type="button"
                     aria-label={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
@@ -2253,6 +2266,13 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       <FooterNext />
+      
+      <ShareModal
+        isOpen={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        title={restaurant?.name || 'this restaurant'}
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+      />
     </>
   );
 }

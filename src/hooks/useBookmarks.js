@@ -8,11 +8,12 @@ let cachedAt = 0;
 let inflight = null;
 const CACHE_TTL_MS = 30_000; // 30s
 
-export function useBookmarks() {
+export function useBookmarks(lazy = false) {
   const supabase = createSupabaseBrowserClient();
   const [user, setUser] = useState(null);
   const [bookmarks, setBookmarks] = useState(cachedBookmarks || []);
   const [loading, setLoading] = useState(false);
+  const [hasFetched, setHasFetched] = useState(false);
 
   useEffect(() => {
     let mounted = true;
@@ -65,8 +66,20 @@ export function useBookmarks() {
   }, [user]);
 
   useEffect(() => {
+    if (!lazy || hasFetched) {
+      fetchBookmarks();
+      if (!hasFetched) setHasFetched(true);
+    }
+  }, [fetchBookmarks, lazy, hasFetched]);
+
+  // Expose manual fetch function for lazy loading
+  // Can be called multiple times - it will use cache if available
+  const fetch = useCallback(() => {
+    if (!hasFetched) {
+      setHasFetched(true);
+    }
     fetchBookmarks();
-  }, [fetchBookmarks]);
+  }, [fetchBookmarks, hasFetched]);
 
   const ids = useMemo(() => new Set(bookmarks.map((b) => b.product_id)), [bookmarks]);
 
@@ -104,7 +117,7 @@ export function useBookmarks() {
     [user, ids, bookmarks]
   );
 
-  return { user, bookmarks, isBookmarked, toggle, loading };
+  return { user, bookmarks, isBookmarked, toggle, loading, fetch };
 }
 
 
