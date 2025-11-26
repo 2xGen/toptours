@@ -950,8 +950,12 @@ export default function PlanBuilderClient({ destinationId: initialDestinationId,
                       variant="ghost"
                       size="sm"
                       onClick={() => {
-                        router.push(`/plans/create`);
+                        // Clear destination selection
+                        setDestinationId(null);
+                        setSelectedDestination(null);
                         setDestinationSearch('');
+                        // Update URL to remove destination parameter
+                        window.history.pushState({}, '', '/plans/create');
                       }}
                       className="text-gray-500 hover:text-gray-700"
                     >
