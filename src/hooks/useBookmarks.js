@@ -66,11 +66,44 @@ export function useBookmarks(lazy = false) {
   }, [user]);
 
   useEffect(() => {
-    if (!lazy || hasFetched) {
-      fetchBookmarks();
+    if (!user) return;
+    if (lazy && !hasFetched) return;
+    
+    // Use cache when available and fresh
+    const now = Date.now();
+    const canUseCache =
+      cachedBookmarks &&
+      cachedUserId === user.id &&
+      now - cachedAt < CACHE_TTL_MS;
+
+    if (canUseCache) {
+      setBookmarks(cachedBookmarks);
       if (!hasFetched) setHasFetched(true);
+      return;
     }
-  }, [fetchBookmarks, lazy, hasFetched]);
+
+    // Share one inflight request across all hook instances
+    if (!inflight) {
+      setLoading(true);
+      inflight = fetch(`/api/internal/bookmarks?userId=${encodeURIComponent(user.id)}`)
+        .then((res) => res.json())
+        .then((json) => {
+          cachedBookmarks = json.bookmarks || [];
+          cachedUserId = user.id;
+          cachedAt = Date.now();
+          return cachedBookmarks;
+        })
+        .finally(() => {
+          inflight = null;
+          setLoading(false);
+        });
+    }
+    
+    inflight.then((result) => {
+      setBookmarks(result);
+      if (!hasFetched) setHasFetched(true);
+    });
+  }, [user, lazy, hasFetched]); // Only depend on user, lazy, and hasFetched
 
   // Expose manual fetch function for lazy loading
   // Can be called multiple times - it will use cache if available
