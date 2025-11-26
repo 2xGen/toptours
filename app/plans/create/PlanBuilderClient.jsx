@@ -58,13 +58,14 @@ function generateSlug(name) {
     .replace(/^-|-$/g, '');
 }
 
-export default function PlanBuilderClient({ destinationId, initialPlan = null }) {
+export default function PlanBuilderClient({ destinationId: initialDestinationId, initialPlan = null }) {
   const router = useRouter();
   const supabase = createSupabaseBrowserClient();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [selectedDestination, setSelectedDestination] = useState(null);
+  const [destinationId, setDestinationId] = useState(initialDestinationId || null);
   
   // Plan data
   const [title, setTitle] = useState(initialPlan?.title || '');
@@ -149,6 +150,11 @@ export default function PlanBuilderClient({ destinationId, initialPlan = null })
     };
     if (user) loadSaved();
   }, [user]);
+
+  // Update local destinationId when prop changes
+  useEffect(() => {
+    setDestinationId(initialDestinationId || null);
+  }, [initialDestinationId]);
 
   // Load destination data when destinationId changes
   useEffect(() => {
@@ -919,9 +925,8 @@ export default function PlanBuilderClient({ destinationId, initialPlan = null })
               !destinationId ? 'border-red-300 bg-red-50/50' : 'border-blue-200'
             }`}>
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-1 text-gray-900 flex items-center gap-2">
+                <h3 className="text-xl font-bold mb-1 text-gray-900">
                   Select Destination
-                  <span className="text-red-500 text-sm font-normal">(Required)</span>
                 </h3>
                 {!destinationId && (
                   <p className="text-sm text-red-600 mb-4">Please select a destination to continue.</p>
@@ -976,38 +981,50 @@ export default function PlanBuilderClient({ destinationId, initialPlan = null })
                     {showDestinationDropdown && (
                       <div className="absolute z-50 w-full mt-2 bg-white border-2 border-gray-200 rounded-lg shadow-xl max-h-64 overflow-y-auto">
                         {filteredDestinations.length > 0 ? (
-                          filteredDestinations.map((dest, index) => {
-                            const destId = dest.id;
-                            const destName = dest.name || dest.fullName || '';
-                            const destCountry = dest.country || dest.region || '';
+                          filteredDestinations.map((destItem, index) => {
+                            const destId = destItem.id;
+                            const destName = destItem.name || destItem.fullName || '';
+                            const destCountry = destItem.country || destItem.region || '';
+                            const destRegion = destItem.region || destItem.category || '';
+                            const destImageUrl = destItem.imageUrl || null;
+                            const destIsViator = destItem.isViator || false;
+                            const destViatorId = destItem.viatorId || destItem.destinationId || null;
                             // Use a unique key combining id, name, and index to avoid duplicates
-                            const uniqueKey = `${destId || destName}-${dest.isViator ? 'viator' : 'curated'}-${index}`;
+                            const uniqueKey = `${destId || destName}-${destIsViator ? 'viator' : 'curated'}-${index}`;
                             
                             return (
                               <button
                                 key={uniqueKey}
                                 onClick={(e) => {
                                   e.preventDefault();
-                                  // Update URL without full page reload
-                                  const newUrl = `/plans/create?destination=${destId}`;
+                                  // Update local state and URL without full page reload
+                                  setDestinationId(destId);
+                                  const newUrl = `/plans/create?destination=${encodeURIComponent(destId)}`;
                                   window.history.pushState({}, '', newUrl);
                                   
                                   // Update destination immediately
-                                  let dest = getDestinationById(destId);
-                                  if (!dest) {
-                                    // If not in curated, create from Viator data
-                                    dest = {
+                                  let selectedDest = getDestinationById(destId);
+                                  if (!selectedDest) {
+                                    // If not in curated, create from Viator data using the extracted properties
+                                    selectedDest = {
                                       id: destId,
                                       name: destName,
                                       fullName: destName,
                                       country: destCountry,
-                                      category: dest.region || dest.category,
-                                      imageUrl: dest.imageUrl || null,
-                                      isViator: dest.isViator || false,
-                                      viatorId: dest.viatorId,
+                                      category: destRegion,
+                                      imageUrl: destImageUrl,
+                                      isViator: destIsViator,
+                                      viatorId: destViatorId,
+                                      destinationId: destViatorId || destId,
+                                    };
+                                  } else if (!selectedDest.destinationId) {
+                                    // Ensure destinationId is set even for curated destinations
+                                    selectedDest = {
+                                      ...selectedDest,
+                                      destinationId: selectedDest.viatorId || destViatorId || destId,
                                     };
                                   }
-                                  setSelectedDestination(dest);
+                                  setSelectedDestination(selectedDest);
                                   
                                   // Clear search and close dropdown
                                   setDestinationSearch(destName); // Show selected destination name
@@ -1016,21 +1033,21 @@ export default function PlanBuilderClient({ destinationId, initialPlan = null })
                                 className="w-full text-left p-4 hover:bg-blue-50 transition-colors border-b border-gray-100 last:border-b-0"
                               >
                                 <div className="flex items-center gap-3">
-                                  {dest.imageUrl && (
+                                  {destImageUrl && (
                                     <img
-                                      src={dest.imageUrl}
+                                      src={destImageUrl}
                                       alt={destName}
                                       className="w-10 h-10 object-cover rounded-lg"
                                     />
                                   )}
-                                  {!dest.imageUrl && (
+                                  {!destImageUrl && (
                                     <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
                                       <MapPin className="w-5 h-5 text-blue-600" />
                                     </div>
                                   )}
                                   <div className="flex-1">
                                     <div className="font-semibold text-gray-900">{destName}</div>
-                                    <div className="text-sm text-gray-500">{destCountry || dest.category}</div>
+                                    <div className="text-sm text-gray-500">{destCountry || destRegion}</div>
                                   </div>
                                 </div>
                               </button>
