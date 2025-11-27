@@ -1,6 +1,6 @@
-import { Suspense } from 'react';
 import PlansListingClient from './PlansListingClient';
 import { getPopularPlansByDestination } from '@/lib/travelPlans';
+import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 
 /**
  * Generate metadata for plans listing page
@@ -78,29 +78,31 @@ export async function generateMetadata({ searchParams }) {
 
 export default async function PlansPage({ searchParams }) {
   const resolvedSearchParams = await searchParams;
-  const destinationId = resolvedSearchParams.destination;
-  
+  const destinationId = resolvedSearchParams?.destination || null;
+
   // Fetch popular plans - all public plans if no destination, or filtered by destination
-  const { getPopularPlansByDestination } = await import('@/lib/travelPlans');
-  const { createSupabaseServiceRoleClient } = await import('@/lib/supabaseClient');
-  
   let popularPlans = [];
-  if (destinationId) {
-    popularPlans = await getPopularPlansByDestination(destinationId, 20);
-  } else {
-    // Fetch all public plans when no destination
-    const supabase = createSupabaseServiceRoleClient();
-    const { data, error } = await supabase
-      .from('travel_plans')
-      .select('*')
-      .eq('is_public', true)
-      .order('total_score', { ascending: false })
-      .order('created_at', { ascending: false })
-      .limit(50);
-    
-    if (!error && data) {
-      popularPlans = data;
+  try {
+    if (destinationId) {
+      popularPlans = await getPopularPlansByDestination(destinationId, 20);
+    } else {
+      // Fetch all public plans when no destination
+      const supabase = createSupabaseServiceRoleClient();
+      const { data, error } = await supabase
+        .from('travel_plans')
+        .select('*')
+        .eq('is_public', true)
+        .order('total_score', { ascending: false })
+        .order('created_at', { ascending: false })
+        .limit(50);
+      
+      if (!error && data) {
+        popularPlans = data;
+      }
     }
+  } catch (error) {
+    console.error('Error fetching plans:', error);
+    popularPlans = [];
   }
 
   // Generate Schema.org structured data for CollectionPage

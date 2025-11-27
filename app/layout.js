@@ -140,7 +140,6 @@ export default function RootLayout({ children }) {
                 function handleChunkError() {
                   if (chunkReloadAttempted) return;
                   chunkReloadAttempted = true;
-                  console.warn('Chunk loading error detected, reloading page...');
                   setTimeout(function() {
                     window.location.reload(true);
                   }, 500);
