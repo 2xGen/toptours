@@ -647,18 +647,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
-                    {isClient && user && (
-                      <Button
-                        asChild
-                        variant="outline"
-                        className="border-white text-white hover:bg-white/20 gap-2"
-                      >
-                        <Link href={`/plans/create?destination=${safeDestination.id}`}>
-                          <Calendar className="w-4 h-4" />
-                          Create Plan
-                        </Link>
-                      </Button>
-                    )}
                   </div>
                 </motion.div>
                 

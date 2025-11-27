@@ -6,7 +6,6 @@ import { Toaster } from '@/components/ui/toaster'
 import PageViewTracker from '@/components/PageViewTracker'
 import MobileConsoleViewer from '@/components/MobileConsoleViewer'
 import StreakWelcomePopup from '@/components/StreakWelcomePopup'
-import PWAInstallPrompt from '@/components/PWAInstallPrompt'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -177,7 +176,6 @@ export default function RootLayout({ children }) {
         <Toaster />
         <MobileConsoleViewer />
         <StreakWelcomePopup />
-        <PWAInstallPrompt />
       </body>
     </html>
   )

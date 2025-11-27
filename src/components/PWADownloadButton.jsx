@@ -2,23 +2,18 @@
 
 import { useState, useEffect } from 'react';
 import { Download, Smartphone } from 'lucide-react';
-import PWAInstallModal from './PWAInstallModal';
 
 export default function PWADownloadButton({ variant = 'link' }) {
   const [isStandalone, setIsStandalone] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     // Check if mobile device - strict check based on user agent only
-    // This prevents false positives on desktop browsers with narrow windows
     const checkMobile = () => {
       const userAgentMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      
-      // Only show on actual mobile devices (user agent match)
-      // Don't rely on window width as desktop browsers can be resized
       setIsMobile(userAgentMobile);
     };
 
@@ -31,20 +26,45 @@ export default function PWADownloadButton({ variant = 'link' }) {
     
     setIsStandalone(standalone);
 
+    // Listen for beforeinstallprompt event (Android/Desktop Chrome)
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
     return () => {
       window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     };
   }, []);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (isStandalone) {
       return;
     }
-    setShowModal(true);
+
+    if (deferredPrompt) {
+      // Show the native browser install prompt
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      setDeferredPrompt(null);
+    } else {
+      // Fallback: Show instructions for manual installation
+      alert('To install TopTours.ai:\n\n1. Look for the install icon (⊕) in your browser\'s address bar\n2. Or go to Menu (⋮) > Install TopTours.ai\n3. Click "Install" in the popup');
+    }
   };
 
-  // Only show on mobile devices
-  if (!isMobile || isStandalone) {
+  // Show on mobile devices OR on desktop if install prompt is available
+  // Don't show if already installed
+  if (isStandalone) {
+    return null;
+  }
+
+  // On mobile, always show (if not standalone)
+  // On desktop, only show if deferredPrompt is available (Chrome can install PWAs)
+  if (!isMobile && !deferredPrompt) {
     return null;
   }
 
@@ -62,13 +82,13 @@ export default function PWADownloadButton({ variant = 'link' }) {
       ) : (
         <button
           onClick={handleClick}
-          className="p-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-colors"
+          className="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-colors flex items-center gap-2 text-sm font-medium"
           title="Download TopTours.ai app"
         >
           <Download className="w-4 h-4" />
+          <span>Download App</span>
         </button>
       )}
-      <PWAInstallModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </>
   );
 }
