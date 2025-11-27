@@ -34,6 +34,7 @@ export default function PlansListingClient({ destinationId, initialPlans = [] })
   const [userPlans, setUserPlans] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingUserPlans, setLoadingUserPlans] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('all');
   const [selectedPlanType, setSelectedPlanType] = useState('all');
@@ -71,16 +72,29 @@ export default function PlansListingClient({ destinationId, initialPlans = [] })
         } finally {
           setLoadingUserPlans(false);
         }
+      } else {
+        // If no user and no initial plans, wait a bit before showing empty state
+        if (plans.length === 0) {
+          const timer = setTimeout(() => {
+            setInitialLoading(false);
+          }, 800);
+          return () => clearTimeout(timer);
+        }
       }
     };
     checkAuth();
-  }, [supabase]);
+  }, [supabase, plans.length]);
 
   // Fetch promotion scores and plan details for all plans
   useEffect(() => {
     const fetchPlanData = async () => {
       const allPlanIds = [...userPlans, ...plans].map(p => p.id).filter(Boolean);
-      if (allPlanIds.length === 0) return;
+      
+      // If no plans, set loading to false immediately
+      if (allPlanIds.length === 0) {
+        setInitialLoading(false);
+        return;
+      }
 
       try {
         const scores = {};
@@ -112,11 +126,20 @@ export default function PlansListingClient({ destinationId, initialPlans = [] })
         setPlanDetails(details);
       } catch (error) {
         console.error('Error fetching plan data:', error);
+      } finally {
+        setInitialLoading(false);
       }
     };
 
+    // Only fetch if we have plans or user plans, otherwise just set loading to false
     if (userPlans.length > 0 || plans.length > 0) {
       fetchPlanData();
+    } else {
+      // Wait a bit for auth check to complete before showing empty state
+      const timer = setTimeout(() => {
+        setInitialLoading(false);
+      }, 500);
+      return () => clearTimeout(timer);
     }
   }, [userPlans, plans]);
 
@@ -421,8 +444,18 @@ export default function PlansListingClient({ destinationId, initialPlans = [] })
               </div>
             )}
 
+            {/* Loading State */}
+            {initialLoading && (
+              <Card>
+                <CardContent className="p-12 text-center">
+                  <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
+                  <p className="text-gray-600">Loading plans...</p>
+                </CardContent>
+              </Card>
+            )}
+
             {/* Empty State */}
-            {filteredPlans.length === 0 && (!user || userPlans.length === 0) && (
+            {!initialLoading && filteredPlans.length === 0 && (!user || userPlans.length === 0) && (
               <Card>
                 <CardContent className="p-12 text-center">
                   <Calendar className="w-12 h-12 mx-auto mb-4 text-gray-400" />

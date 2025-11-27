@@ -135,31 +135,101 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                // Global error handler - catches errors before React
+                var chunkReloadAttempted = false;
+                
+                function handleChunkError() {
+                  if (chunkReloadAttempted) return;
+                  chunkReloadAttempted = true;
+                  console.warn('Chunk loading error detected, reloading page...');
+                  setTimeout(function() {
+                    window.location.reload(true);
+                  }, 500);
+                }
+                
+                // Handle script load errors (404s for chunks)
                 window.addEventListener('error', function(e) {
-                  console.error('Global Error:', e.error || e.message, e.filename, e.lineno);
+                  // Check for script tag errors (chunk loading failures)
+                  if (e.target && e.target.tagName === 'SCRIPT' && e.target.src) {
+                    var src = e.target.src || '';
+                    if (src.includes('_next/static/chunks') || src.includes('_next/static/')) {
+                      e.preventDefault();
+                      handleChunkError();
+                      return false;
+                    }
+                  }
+                  
+                  // Check error message
+                  var error = e.error || e.message || '';
+                  var errorString = String(error);
+                  if (errorString.includes('ChunkLoadError') || 
+                      errorString.includes('Loading chunk') ||
+                      errorString.includes('Failed to load resource')) {
+                    e.preventDefault();
+                    handleChunkError();
+                    return false;
+                  }
+                  
+                  // Log other errors
                   if (window.__errorLog) {
                     window.__errorLog.push({
                       type: 'error',
-                      message: e.error ? e.error.toString() : e.message,
-                      stack: e.error ? e.error.stack : null,
+                      message: e.error ? String(e.error) : String(e.message),
+                      stack: e.error && e.error.stack ? e.error.stack : null,
                       filename: e.filename,
                       lineno: e.lineno,
                       timestamp: new Date().toISOString()
                     });
                   }
-                });
+                }, true); // Use capture phase to catch earlier
                 
+                // Handle promise rejections
                 window.addEventListener('unhandledrejection', function(e) {
-                  console.error('Unhandled Promise Rejection:', e.reason);
+                  var reason = e.reason || '';
+                  var reasonString = String(reason);
+                  if (reasonString.includes('ChunkLoadError') || 
+                      reasonString.includes('Loading chunk') ||
+                      (reason && reason.message && String(reason.message).includes('ChunkLoadError'))) {
+                    e.preventDefault();
+                    handleChunkError();
+                    return false;
+                  }
+                  
+                  // Log other rejections
                   if (window.__errorLog) {
                     window.__errorLog.push({
                       type: 'unhandledrejection',
-                      message: e.reason ? e.reason.toString() : 'Unknown',
-                      stack: e.reason && e.reason.stack ? e.reason.stack : null,
+                      message: reason ? String(reason) : 'Unknown',
+                      stack: reason && reason.stack ? reason.stack : null,
                       timestamp: new Date().toISOString()
                     });
                   }
+                });
+                
+                // Monitor for failed resource loads
+                if ('PerformanceObserver' in window) {
+                  try {
+                    var observer = new PerformanceObserver(function(list) {
+                      var entries = list.getEntries();
+                      for (var i = 0; i < entries.length; i++) {
+                        var entry = entries[i];
+                        if (entry.initiatorType === 'script' && 
+                            entry.name && 
+                            entry.name.includes('_next/static/chunks') &&
+                            (entry.responseStatus === 404 || entry.responseStatus === 0)) {
+                          handleChunkError();
+                          break;
+                        }
+                      }
+                    });
+                    observer.observe({entryTypes: ['resource']});
+                  } catch(e) {}
+                }
+                
+                // Clear reload flag after successful load
+                window.addEventListener('load', function() {
+                  setTimeout(function() {
+                    chunkReloadAttempted = false;
+                  }, 5000);
                 });
                 
                 // Initialize error log

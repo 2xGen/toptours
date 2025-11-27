@@ -21,6 +21,18 @@ export function usePromotion(lazy = false) {
   const supabase = createSupabaseBrowserClient();
 
   const loadAccount = async () => {
+    // Prevent multiple simultaneous calls
+    if (accountInflight) {
+      try {
+        const result = await accountInflight;
+        setAccount(result);
+        return;
+      } catch {
+        // Ignore errors from inflight request
+        return;
+      }
+    }
+
     try {
       const { data: { user } } = await supabase.auth.getUser();
       
@@ -44,44 +56,57 @@ export function usePromotion(lazy = false) {
       }
 
       // Share one inflight request across all hook instances
-      if (!accountInflight) {
-        setLoading(true);
-        const token = (await supabase.auth.getSession()).data.session?.access_token;
-        if (!token) {
-          setAccount(null);
-          setLoading(false);
-          return;
-        }
-
-        accountInflight = fetch('/api/internal/promotion/account', {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error('Failed to load promotion account');
-            }
-            return response.json();
-          })
-          .then((data) => {
-            cachedAccount = data;
-            cachedAccountUserId = user.id;
-            cachedAccountAt = Date.now();
-            return data;
-          })
-          .finally(() => {
-            accountInflight = null;
-            setLoading(false);
-          });
+      setLoading(true);
+      const token = (await supabase.auth.getSession()).data.session?.access_token;
+      if (!token) {
+        setAccount(null);
+        setLoading(false);
+        return;
       }
+
+      accountInflight = fetch('/api/internal/promotion/account', {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      })
+        .then(async (response) => {
+          if (!response.ok) {
+            return null;
+          }
+          try {
+            return await response.json();
+          } catch {
+            return null;
+          }
+        })
+        .catch(() => {
+          return null;
+        })
+        .then((data) => {
+          cachedAccount = data;
+          cachedAccountUserId = user.id;
+          cachedAccountAt = Date.now();
+          return data;
+        })
+        .finally(() => {
+          accountInflight = null;
+          setLoading(false);
+        });
 
       const result = await accountInflight;
       setAccount(result);
-    } catch (err) {
-      console.error('Error loading promotion account:', err);
-      setError(err.message);
+      
+      // Update cache even if result is null
+      if (result === null) {
+        cachedAccount = null;
+        cachedAccountUserId = user.id;
+        cachedAccountAt = Date.now();
+      }
+    } catch {
+      // Silently handle all errors - don't log to console
+      setAccount(null);
       setLoading(false);
+      accountInflight = null;
     }
   };
 
@@ -90,7 +115,7 @@ export function usePromotion(lazy = false) {
       loadAccount();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lazy]);
+  }, []);
 
   const spendPoints = async (productId, points, scoreType = 'all', tourData = null) => {
     try {

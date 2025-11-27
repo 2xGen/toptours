@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { Menu, X, UserCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
-import PWADownloadButton from './PWADownloadButton';
 
 const NavigationNext = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -154,7 +153,6 @@ const NavigationNext = () => {
               <Link href="/how-it-works">How It Works</Link>
             </Button>
             <div className="ml-2 flex items-center gap-2">
-              <PWADownloadButton variant="button" />
               {!authLoading && user ? (
                 <Link
                   href="/profile"
@@ -225,12 +223,6 @@ const NavigationNext = () => {
                 How It Works
               </Link>
             </Button>
-            {/* Download App Section */}
-            <div className="mt-4 pt-4 border-t border-white/20">
-              <div className="flex justify-center">
-                <PWADownloadButton variant="button" />
-              </div>
-            </div>
             {/* Auth Section */}
             <div className="mt-4 pt-4 border-t border-white/20">
               {!authLoading && user ? (

@@ -97,12 +97,15 @@ export default function MobileConsoleViewer() {
     
     // Check for pre-existing errors from global handler
     if (typeof window !== 'undefined' && window.__errorLog && window.__errorLog.length > 0) {
-      window.__errorLog.forEach(error => {
-        if (error.type === 'error') {
-          setErrors(prev => [...prev.slice(-9), { message: error.message + (error.stack ? '\n' + error.stack : ''), timestamp: new Date(error.timestamp) }]);
-        }
-      });
-      setIsVisible(true);
+      // Defer setState to avoid React warning about updating during render
+      setTimeout(() => {
+        window.__errorLog.forEach(error => {
+          if (error.type === 'error') {
+            setErrors(prev => [...prev.slice(-9), { message: error.message + (error.stack ? '\n' + error.stack : ''), timestamp: new Date(error.timestamp) }]);
+          }
+        });
+        setIsVisible(true);
+      }, 0);
     }
 
     // Store original console methods
@@ -113,27 +116,33 @@ export default function MobileConsoleViewer() {
     // Override console.error
     console.error = (...args) => {
       originalError.apply(console, args);
-      try {
-        const errorMessage = args.map(arg => safeStringify(arg)).join(' ');
-        setErrors(prev => [...prev.slice(-9), { message: errorMessage, timestamp: new Date() }]);
-        setIsVisible(true);
-      } catch (e) {
-        // Fallback if stringification fails completely
-        setErrors(prev => [...prev.slice(-9), { message: args.map(a => String(a)).join(' '), timestamp: new Date() }]);
-        setIsVisible(true);
-      }
+      // Defer setState to avoid React warning about updating during render
+      setTimeout(() => {
+        try {
+          const errorMessage = args.map(arg => safeStringify(arg)).join(' ');
+          setErrors(prev => [...prev.slice(-9), { message: errorMessage, timestamp: new Date() }]);
+          setIsVisible(true);
+        } catch (e) {
+          // Fallback if stringification fails completely
+          setErrors(prev => [...prev.slice(-9), { message: args.map(a => String(a)).join(' '), timestamp: new Date() }]);
+          setIsVisible(true);
+        }
+      }, 0);
     };
 
     // Override console.warn
     console.warn = (...args) => {
       originalWarn.apply(console, args);
-      try {
-        const warnMessage = args.map(arg => safeStringify(arg)).join(' ');
-        setLogs(prev => [...prev.slice(-9), { message: warnMessage, type: 'warn', timestamp: new Date() }]);
-      } catch (e) {
-        // Fallback if stringification fails completely
-        setLogs(prev => [...prev.slice(-9), { message: args.map(a => String(a)).join(' '), type: 'warn', timestamp: new Date() }]);
-      }
+      // Defer setState to avoid React warning about updating during render
+      setTimeout(() => {
+        try {
+          const warnMessage = args.map(arg => safeStringify(arg)).join(' ');
+          setLogs(prev => [...prev.slice(-9), { message: warnMessage, type: 'warn', timestamp: new Date() }]);
+        } catch (e) {
+          // Fallback if stringification fails completely
+          setLogs(prev => [...prev.slice(-9), { message: args.map(a => String(a)).join(' '), type: 'warn', timestamp: new Date() }]);
+        }
+      }, 0);
     };
 
     // Override console.log (optional, for debugging)
@@ -141,13 +150,16 @@ export default function MobileConsoleViewer() {
       originalLog.apply(console, args);
       // Only log if ?debug=verbose
       if (urlParams.get('debug') === 'verbose') {
-        try {
-          const logMessage = args.map(arg => safeStringify(arg)).join(' ');
-          setLogs(prev => [...prev.slice(-9), { message: logMessage, type: 'log', timestamp: new Date() }]);
-        } catch (e) {
-          // Fallback if stringification fails completely
-          setLogs(prev => [...prev.slice(-9), { message: args.map(a => String(a)).join(' '), type: 'log', timestamp: new Date() }]);
-        }
+        // Defer setState to avoid React warning about updating during render
+        setTimeout(() => {
+          try {
+            const logMessage = args.map(arg => safeStringify(arg)).join(' ');
+            setLogs(prev => [...prev.slice(-9), { message: logMessage, type: 'log', timestamp: new Date() }]);
+          } catch (e) {
+            // Fallback if stringification fails completely
+            setLogs(prev => [...prev.slice(-9), { message: args.map(a => String(a)).join(' '), type: 'log', timestamp: new Date() }]);
+          }
+        }, 0);
       }
     };
 

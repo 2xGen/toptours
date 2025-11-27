@@ -117,7 +117,9 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
   };
 
   const getTourTitle = (tourData, productId) => {
-    if (!tourData) return `Tour #${productId}`;
+    if (!tourData) {
+      return productId ? `Tour #${productId}` : 'Tour';
+    }
     
     // Try multiple possible title fields
     const title = tourData.seo?.title || 
@@ -126,7 +128,7 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                   tourData.productContent?.productName ||
                   tourData.productContent?.name ||
                   tourData.name ||
-                  `Tour #${productId}`;
+                  (productId ? `Tour #${productId}` : 'Tour');
     return title;
   };
 
@@ -238,7 +240,11 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                   className="flex transition-transform duration-300 ease-in-out"
                   style={{ transform: `translateX(-${boostCarouselIndex * 100}%)` }}
                 >
-                  {recentBoosts.map((boost, index) => {
+                  {recentBoosts.filter(boost => {
+                    // Filter out invalid boosts - tour boosts must have product_id
+                    if (boost.plan_id || boost.restaurant_id) return true;
+                    return !!boost.product_id;
+                  }).map((boost, index) => {
                     // Check if this is a plan, restaurant, or tour promotion
                     const isPlan = !!boost.plan_id;
                     const isRestaurant = !!boost.restaurant_id;
@@ -268,11 +274,13 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                         : '/restaurants';
                       itemType = 'restaurant';
                     } else {
+                      // Tour promotion - product_id is guaranteed to exist due to filter
+                      const productId = boost.product_id;
                       image = getTourImage(tourData);
-                      title = getTourTitle(tourData, boost.product_id);
+                      title = getTourTitle(tourData, productId);
                       itemUrl = tourData?.slug 
-                        ? `/tours/${boost.product_id}/${tourData.slug}`
-                        : (tourData ? getTourUrl(boost.product_id, title) : `/tours/${boost.product_id}`);
+                        ? `/tours/${productId}/${tourData.slug}`
+                        : (tourData ? getTourUrl(productId, title) : `/tours/${productId}`);
                       itemType = 'tour';
                     }
                     

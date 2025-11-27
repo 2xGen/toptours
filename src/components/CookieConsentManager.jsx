@@ -2,8 +2,21 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
-import { Analytics } from '@vercel/analytics/react';
 import { ExternalLink } from 'lucide-react';
+
+// Dynamically import Analytics to prevent webpack errors
+let Analytics = null;
+if (typeof window !== 'undefined') {
+  try {
+    const analyticsModule = require('@vercel/analytics/react');
+    Analytics = analyticsModule.Analytics;
+  } catch (e) {
+    // Analytics not available, use fallback
+    Analytics = () => null;
+  }
+} else {
+  Analytics = () => null;
+}
 
 const CONSENT_STORAGE_KEY = 'toptours-cookie-consent';
 const METRICOOL_SCRIPT_ID = 'metricool-tracker';
