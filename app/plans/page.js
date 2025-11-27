@@ -2,6 +2,11 @@ import PlansListingClient from './PlansListingClient';
 import { getPopularPlansByDestination } from '@/lib/travelPlans';
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 
+// Force dynamic rendering to avoid build-time chunk issues
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+// Force fresh build - remove after deployment works
+
 /**
  * Generate metadata for plans listing page
  */
