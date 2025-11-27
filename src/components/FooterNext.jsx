@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Compass, Facebook, Instagram, Youtube } from 'lucide-react';
+import PWADownloadButton from './PWADownloadButton';
 
 const FooterNext = () => {
   return (
@@ -97,6 +98,10 @@ const FooterNext = () => {
             <Link href="/disclosure" className="text-yellow-400 hover:text-yellow-300 ml-1">
               Affiliate Disclosure
             </Link>
+            {' '}|{' '}
+            <span className="inline-flex items-center">
+              <PWADownloadButton variant="link" />
+            </span>
           </p>
           <p className="text-gray-500 text-sm mt-2">
             We may earn a commission from bookings made through our affiliate links at no extra cost to you.

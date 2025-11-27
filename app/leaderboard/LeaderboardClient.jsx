@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, TrendingUp, Calendar, Globe, ArrowLeft, ArrowRight, Star, Clock, Zap, User, ChevronLeft, ChevronRight, Flame, Crown } from 'lucide-react';
+import { Trophy, TrendingUp, Calendar, Globe, ArrowLeft, ArrowRight, Star, Clock, Zap, User, ChevronLeft, ChevronRight, Flame, Crown, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -239,14 +239,24 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                   style={{ transform: `translateX(-${boostCarouselIndex * 100}%)` }}
                 >
                   {recentBoosts.map((boost, index) => {
-                    // Check if this is a restaurant promotion
+                    // Check if this is a plan, restaurant, or tour promotion
+                    const isPlan = !!boost.plan_id;
                     const isRestaurant = !!boost.restaurant_id;
+                    const planData = boost.planData;
                     const restaurantData = boost.restaurantData;
                     const tourData = boost.tourData;
                     
                     // Get image, title, and URL based on type
                     let image, title, itemUrl, itemType;
-                    if (isRestaurant) {
+                    if (isPlan) {
+                      // Handle plan promotions
+                      image = planData?.image || null; // Use plan cover image or first tour image
+                      title = planData?.title || `Plan #${boost.plan_id}`;
+                      itemUrl = planData?.slug 
+                        ? `/plans/${planData.slug}`
+                        : `/plans/${boost.plan_id}`;
+                      itemType = 'plan';
+                    } else if (isRestaurant) {
                       // Handle restaurant promotions - even if restaurantData is null
                       image = restaurantData?.image || null;
                       title = restaurantData?.name || `Restaurant #${boost.restaurant_id}`;
@@ -301,14 +311,18 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                                     alt={title}
                                     className="w-full h-full object-cover"
                                     onError={(e) => {
-                                      e.target.src = isRestaurant 
+                                      e.target.src = isPlan
+                                        ? "https://images.unsplash.com/photo-1488646953014-85cb44e25828"
+                                        : isRestaurant 
                                         ? "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
                                         : "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800";
                                     }}
                                   />
                                 ) : (
                                   <div className="w-full h-full bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
-                                    {isRestaurant ? (
+                                    {isPlan ? (
+                                      <MapPin className="w-8 h-8 text-purple-300" />
+                                    ) : isRestaurant ? (
                                       <Star className="w-8 h-8 text-orange-300" />
                                     ) : (
                                       <Trophy className="w-8 h-8 text-orange-300" />
@@ -319,13 +333,20 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                               <div className="flex-1 min-w-0 w-full relative">
                                 {/* Title with Type Badge - Full width on mobile */}
                                 <div className="flex items-center gap-2 mb-2 pr-0 sm:pr-24 flex-wrap">
-                                  {/* Restaurant or Tour Badge */}
+                                  {/* Plan, Restaurant, or Tour Badge */}
                                   <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold flex-shrink-0 ${
-                                    isRestaurant 
+                                    isPlan
+                                      ? 'bg-purple-100 text-purple-700 border border-purple-200'
+                                      : isRestaurant 
                                       ? 'bg-orange-100 text-orange-700 border border-orange-200' 
                                       : 'bg-blue-100 text-blue-700 border border-blue-200'
                                   }`}>
-                                    {isRestaurant ? (
+                                    {isPlan ? (
+                                      <>
+                                        <MapPin className="w-3 h-3" />
+                                        Plan
+                                      </>
+                                    ) : isRestaurant ? (
                                       <>
                                         <Star className="w-3 h-3" />
                                         Restaurant
@@ -379,7 +400,7 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                                 {/* View Button - Full width on mobile, absolute on desktop */}
                                 <Link href={itemUrl} className="block mt-3 sm:mt-0 sm:absolute sm:top-0 sm:right-0">
                                   <Button variant="outline" size="sm" className="w-full sm:w-auto">
-                                    {isRestaurant ? 'View Restaurant' : 'View Tour'}
+                                    {isPlan ? 'View Plan' : isRestaurant ? 'View Restaurant' : 'View Tour'}
                                     <ArrowRight className="w-4 h-4 ml-1" />
                                   </Button>
                                 </Link>

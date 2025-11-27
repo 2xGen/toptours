@@ -358,8 +358,8 @@ function AuthPageContent() {
     <div className="min-h-screen bg-white">
       {showSplitLayout ? (
         // Split Layout for Sign In/Sign Up
-        <div className="min-h-screen flex">
-          {/* Left Side - Benefits & Explainer */}
+        <div className="min-h-screen flex flex-col lg:flex-row">
+          {/* Left Side - Benefits & Explainer (Desktop only, shows on left) */}
           <div className="hidden lg:flex lg:w-1/2 ocean-gradient p-12 flex-col justify-center relative overflow-hidden">
             <div className="absolute inset-0 bg-black/20" />
             <div className="relative z-10 max-w-lg mx-auto w-full">
@@ -675,6 +675,64 @@ function AuthPageContent() {
           </p>
         )}
               </div>
+            </div>
+          </div>
+
+          {/* Benefits Section - Mobile Only (below form) */}
+          <div className="lg:hidden ocean-gradient p-8 relative overflow-hidden">
+            <div className="absolute inset-0 bg-black/20" />
+            <div className="relative z-10 max-w-lg mx-auto w-full">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="mb-6"
+              >
+                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1.5 mb-4">
+                  <Sparkles className="w-3 h-3 text-yellow-300" />
+                  <span className="text-xs font-semibold text-white">Revolutionary Tour Discovery</span>
+                </div>
+                <h2 className="text-2xl font-bold text-white mb-3">
+                  Discover Amazing Tours & Restaurants
+                </h2>
+                <p className="text-base text-white/90 mb-6">
+                  The first community-driven, AI-powered platform that helps you discover tours and restaurants that actually match your travel style — and lets you boost the ones you love.
+                </p>
+              </motion.div>
+
+              {/* Animated Explainer */}
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 mb-6 border-2 border-white/30 shadow-lg">
+                <AnimatedExplainer autoPlay={true} />
+              </div>
+
+              {/* Quick Benefits */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="grid grid-cols-2 gap-3"
+              >
+                <div className="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-lg p-3 border-2 border-orange-200 shadow-lg">
+                  <Coins className="w-5 h-5 text-orange-600 mb-1.5" />
+                  <p className="text-gray-900 text-xs font-semibold">50 Points/Day</p>
+                  <p className="text-gray-700 text-[10px]">Free daily points</p>
+                </div>
+                <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-3 border-2 border-purple-200 shadow-lg">
+                  <Trophy className="w-5 h-5 text-purple-600 mb-1.5" />
+                  <p className="text-gray-900 text-xs font-semibold">Leaderboard</p>
+                  <p className="text-gray-700 text-[10px]">Compete globally</p>
+                </div>
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-3 border-2 border-blue-200 shadow-lg">
+                  <Sparkles className="w-5 h-5 text-blue-600 mb-1.5" />
+                  <p className="text-gray-900 text-xs font-semibold">AI Matching</p>
+                  <p className="text-gray-700 text-[10px]">1 match per day</p>
+                </div>
+                <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-3 border-2 border-green-200 shadow-lg">
+                  <Bookmark className="w-5 h-5 text-green-600 mb-1.5" />
+                  <p className="text-gray-900 text-xs font-semibold">Save Unlimited</p>
+                  <p className="text-gray-700 text-[10px]">Tours & restaurants</p>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>

@@ -348,57 +348,6 @@ export default function PlanDetailClient({ plan, promotionScore, destination, cr
                     </div>
                   </motion.div>
                 )}
-
-                {/* Boost Section */}
-                {!isOwner && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="mt-12"
-                  >
-                    <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-purple-50">
-                      <CardContent className="p-6 sm:p-8">
-                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                          <div>
-                            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-gray-900">
-                              Love this plan?
-                            </h3>
-                            <p className="text-gray-600 mb-4">
-                              Boost it with your points to help others discover it!
-                            </p>
-                            {promotionScoreState && (
-                              <div className="flex items-center gap-2 text-sm text-gray-600">
-                                <TrendingUp className="w-4 h-4" />
-                                <span>Current score: {promotionScoreState.total_score || 0} points</span>
-                              </div>
-                            )}
-                          </div>
-                          <div className="flex flex-wrap gap-2">
-                            <Button
-                              onClick={() => handleBoost(10)}
-                              className="bg-blue-600 hover:bg-blue-700 text-white"
-                            >
-                              Boost 10
-                            </Button>
-                            <Button
-                              onClick={() => handleBoost(25)}
-                              className="bg-purple-600 hover:bg-purple-700 text-white"
-                            >
-                              Boost 25
-                            </Button>
-                            <Button
-                              onClick={() => handleBoost(50)}
-                              className="bg-indigo-600 hover:bg-indigo-700 text-white"
-                            >
-                              Boost 50
-                            </Button>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                )}
               </div>
 
               {/* Right Sidebar - Destination Card with Promotion */}

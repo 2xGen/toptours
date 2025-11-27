@@ -79,9 +79,10 @@ export default async function LeaderboardPage({ searchParams }) {
   const topPromoters = await getTopPromoters(20);
   
   // Get promotion data for boosts to check for cached metadata
-  // Separate tours and restaurants
+  // Separate tours, restaurants, and plans
   const boostProductIds = recentBoosts.map(b => b.product_id).filter(Boolean);
   const boostRestaurantIds = recentBoosts.map(b => b.restaurant_id).filter(Boolean);
+  const boostPlanIds = recentBoosts.map(b => b.plan_id).filter(Boolean);
   
   const boostScores = await getTourPromotionScoresBatch(boostProductIds);
   
@@ -98,6 +99,24 @@ export default async function LeaderboardPage({ searchParams }) {
     if (!restaurantError && restaurantPromos) {
       restaurantScores = restaurantPromos.reduce((acc, promo) => {
         acc[promo.restaurant_id] = promo;
+        return acc;
+      }, {});
+    }
+  }
+
+  // Fetch plan data if we have plan IDs
+  let planScores = {};
+  if (boostPlanIds.length > 0) {
+    const { createSupabaseServiceRoleClient } = await import('@/lib/supabaseClient');
+    const supabase = createSupabaseServiceRoleClient();
+    const { data: plans, error: plansError } = await supabase
+      .from('travel_plans')
+      .select('id, title, slug, destination_id, created_at')
+      .in('id', boostPlanIds);
+    
+    if (!plansError && plans) {
+      planScores = plans.reduce((acc, plan) => {
+        acc[plan.id] = plan;
         return acc;
       }, {});
     }
@@ -136,6 +155,28 @@ export default async function LeaderboardPage({ searchParams }) {
   
   // Use ONLY cached metadata from Supabase - no Viator API calls!
   const boostsWithDetails = recentBoosts.map((boost) => {
+    // Check if this is a plan promotion
+    if (boost.plan_id) {
+      const planData = planScores[boost.plan_id];
+      const destId = planData?.destination_id || boost.destination_id;
+      const destInfo = destId ? destinationLookup[destId] : null;
+      
+      return {
+        ...boost,
+        planData: {
+          id: planData?.id || boost.plan_id,
+          title: planData?.title || `Plan #${boost.plan_id}`,
+          slug: planData?.slug || null,
+          image: '/favicon-96x96.png', // Use TopTours favicon for plans
+          destination_id: destId,
+          destination_slug: destInfo?.slug || destId,
+          destination_name: destInfo?.name || null,
+        },
+        tourData: null,
+        restaurantData: null,
+      };
+    }
+    
     // Check if this is a restaurant promotion
     if (boost.restaurant_id) {
       const restaurantData = restaurantScores[boost.restaurant_id];
@@ -155,6 +196,7 @@ export default async function LeaderboardPage({ searchParams }) {
           destination_name: destInfo?.name || null,
         },
         tourData: null, // Not a tour
+        planData: null, // Not a plan
       };
     }
     
@@ -187,6 +229,7 @@ export default async function LeaderboardPage({ searchParams }) {
       ...boost,
       tourData: tourData,
       restaurantData: null, // Not a restaurant
+      planData: null, // Not a plan
     };
   });
 

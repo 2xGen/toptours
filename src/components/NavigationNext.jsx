@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Menu, X, UserCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
+import PWADownloadButton from './PWADownloadButton';
 
 const NavigationNext = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -152,20 +153,23 @@ const NavigationNext = () => {
             >
               <Link href="/how-it-works">How It Works</Link>
             </Button>
-            {!authLoading && user ? (
-              <Link
-                href="/profile"
-                className="ml-2 px-3 py-1.5 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors text-sm font-medium"
-                aria-label="Profile"
-                title="Profile"
-              >
-                {displayName}
-              </Link>
-            ) : (
-              <Link href="/auth" aria-label="Sign in" className="ml-2 text-white hover:text-blue-200 transition-colors">
-                <UserCircle2 className="h-7 w-7" />
-              </Link>
-            )}
+            <div className="ml-2 flex items-center gap-2">
+              <PWADownloadButton variant="button" />
+              {!authLoading && user ? (
+                <Link
+                  href="/profile"
+                  className="p-2 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors"
+                  aria-label={`Profile: ${displayName}`}
+                  title={`Profile: ${displayName}`}
+                >
+                  <UserCircle2 className="h-6 w-6" />
+                </Link>
+              ) : (
+                <Link href="/auth" aria-label="Sign in" className="p-2 text-white hover:text-blue-200 transition-colors">
+                  <UserCircle2 className="h-6 w-6" />
+                </Link>
+              )}
+            </div>
           </div>
 
           <div className="md:hidden">
@@ -221,15 +225,23 @@ const NavigationNext = () => {
                 How It Works
               </Link>
             </Button>
+            {/* Download App Section */}
+            <div className="mt-4 pt-4 border-t border-white/20">
+              <div className="flex justify-center">
+                <PWADownloadButton variant="button" />
+              </div>
+            </div>
             {/* Auth Section */}
             <div className="mt-4 pt-4 border-t border-white/20">
               {!authLoading && user ? (
                 <Link
                   href="/profile"
-                  className="block py-2 px-3 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors text-sm font-medium text-center"
+                  className="flex items-center justify-center gap-2 py-2 px-3 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors text-sm font-medium"
                   onClick={() => setIsOpen(false)}
+                  title={`Profile: ${displayName || 'Profile'}`}
                 >
-                  {displayName || 'Profile'}
+                  <UserCircle2 className="w-5 h-5" />
+                  <span>{displayName || 'Profile'}</span>
                 </Link>
               ) : (
                 <Link

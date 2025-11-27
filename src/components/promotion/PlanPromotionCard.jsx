@@ -8,9 +8,9 @@ import { usePromotion } from '@/hooks/usePromotion';
 import { toast } from '@/components/ui/use-toast';
 import confetti from 'canvas-confetti';
 import { A_LA_CARTE_PACKAGES } from '@/lib/promotionSystem';
-import { spendPointsOnPlan } from '@/lib/promotionSystem';
 import PromotionExplainerModal from '@/components/auth/PromotionExplainerModal';
 import BoostShareModal from './BoostShareModal';
+import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 
 export default function PlanPromotionCard({ planId, initialScore = null, compact = false, planData = null }) {
   // Only load account automatically if not in compact mode
@@ -165,7 +165,33 @@ export default function PlanPromotionCard({ planId, initialScore = null, compact
 
     try {
       setIsSpending(true);
-      const result = await spendPointsOnPlan(account.user_id, planId, points);
+      
+      // Get auth token
+      const supabase = createSupabaseBrowserClient();
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        throw new Error('You must be signed in to promote plans');
+      }
+
+      const response = await fetch('/api/internal/promotion/spend-plan', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({
+          planId,
+          points: parseInt(points),
+          scoreType: 'all',
+        }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to spend points');
+      }
+
+      const result = await response.json();
       
       if (result.error) {
         throw new Error(result.error);
@@ -191,6 +217,7 @@ export default function PlanPromotionCard({ planId, initialScore = null, compact
 
       setPointsToSpend('');
       await loadScore(); // Refresh score
+      await refreshAccount(); // Refresh account to update points
       if (compact) {
         setShowModal(false);
       }

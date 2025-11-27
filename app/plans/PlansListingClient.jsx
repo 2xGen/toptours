@@ -305,7 +305,7 @@ export default function PlansListingClient({ destinationId, initialPlans = [] })
       
       <div className="min-h-screen pt-16 overflow-x-hidden bg-gradient-to-b from-blue-50 via-white to-white">
         {/* Hero Section */}
-        <section className="relative py-20 sm:py-24 md:py-28 overflow-hidden -mt-12 sm:-mt-16 ocean-gradient">
+        <section className="relative py-20 sm:py-24 md:py-28 overflow-hidden -mt-16 sm:-mt-20 ocean-gradient">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}

@@ -1230,6 +1230,17 @@ export async function getRecentBoosts(limit = 20) {
       console.warn('Error fetching recent restaurant promotions:', restaurantsError);
     }
 
+    // Get recent plan promotions
+    const { data: recentPlans, error: plansError } = await supabase
+      .from('plan_promotions')
+      .select('id, plan_id, user_id, points, created_at')
+      .order('created_at', { ascending: false })
+      .limit(limit);
+
+    if (plansError) {
+      console.warn('Error fetching recent plan promotions:', plansError);
+    }
+
     // Get transactions for restaurants that were recently promoted
     // This ensures we catch restaurants even if restaurant_id was null in some transactions
     let restaurantTransactions = [];
@@ -1316,15 +1327,27 @@ export async function getRecentBoosts(limit = 20) {
       }
     }
 
-    // Combine all transactions (tours + restaurants)
+    // Combine all transactions (tours + restaurants + plans)
     // Start with tour transactions (those with product_id)
     const tourTransactions = (transactions || []).filter(t => t.product_id && !t.restaurant_id);
     
     // Get restaurant transactions from the main transactions list
     const restaurantTransFromMain = (transactions || []).filter(t => t.restaurant_id);
     
-    // Combine: tours + restaurant transactions from main list + restaurant transactions from restaurant_promotions
-    const allTransactions = [...tourTransactions, ...restaurantTransFromMain];
+    // Convert plan promotions to transaction-like format
+    const planTransactions = (recentPlans || []).map(plan => ({
+      id: plan.id,
+      user_id: plan.user_id,
+      plan_id: plan.plan_id,
+      product_id: null,
+      restaurant_id: null,
+      points_spent: plan.points,
+      created_at: plan.created_at,
+      transaction_type: 'plan_promotion',
+    }));
+    
+    // Combine: tours + restaurant transactions from main list + restaurant transactions from restaurant_promotions + plans
+    const allTransactions = [...tourTransactions, ...restaurantTransFromMain, ...planTransactions];
     
     // Add restaurant transactions from restaurant_promotions that aren't already in the list
     if (restaurantTransactions.length > 0) {
@@ -2089,18 +2112,6 @@ export async function spendPointsOnPlan(userId, planId, pointsToSpend, scoreType
   try {
     const supabase = createSupabaseServiceRoleClient();
     
-    // Check if user already boosted this plan
-    const { data: existingPromo } = await supabase
-      .from('plan_promotions')
-      .select('*')
-      .eq('plan_id', planId)
-      .eq('user_id', userId)
-      .single();
-
-    if (existingPromo) {
-      return { error: 'You have already boosted this plan' };
-    }
-
     // Get user's promotion account
     const account = await getPromotionAccount(userId);
     if (!account) {
@@ -2183,7 +2194,13 @@ export async function spendPointsOnPlan(userId, planId, pointsToSpend, scoreType
           daily_points_available: currentPoints,
         })
         .eq('id', userId);
-      return { error: 'Failed to create plan promotion' };
+      
+      // Provide more specific error message
+      if (promoError.code === '23505' || promoError.message?.includes('unique') || promoError.message?.includes('duplicate')) {
+        return { error: 'You have already boosted this plan. Please remove the unique constraint on plan_promotions table to allow multiple boosts.' };
+      }
+      
+      return { error: `Failed to create plan promotion: ${promoError.message || 'Unknown error'}` };
     }
 
     // Get updated plan with new scores
