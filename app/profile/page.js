@@ -1441,40 +1441,34 @@ export default function ProfilePage() {
                     })}
                     {/* Render saved restaurants */}
                     {savedRestaurants.map(({ restaurantId, restaurant }) => {
-                      const image = restaurant?.heroImage || '';
                       const rating = restaurant?.ratings?.googleRating || 0;
                       const reviewCount = restaurant?.ratings?.reviewCount || 0;
                       const priceRange = restaurant?.pricing?.priceRange || '';
                       const name = restaurant?.name || 'Restaurant';
-                      const tagline = restaurant?.tagline || restaurant?.description || '';
+                      const tagline = restaurant?.metaDescription || restaurant?.tagline || restaurant?.summary || restaurant?.description || '';
                       const destinationId = restaurant?.destinationId || '';
                       const slug = restaurant?.slug || '';
                       const restaurantUrl = slug 
                         ? `/destinations/${destinationId}/restaurants/${slug}`
                         : `/destinations/${destinationId}/restaurants`;
+                      const cuisineLabel = restaurant?.cuisines?.[0] || 'Restaurant';
                       
                       return (
-                        <Card key={restaurantId} className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300">
-                          <Link href={restaurantUrl}>
-                            <div className="relative h-48 overflow-hidden">
-                              {image && (
-                                <img
-                                  src={image}
-                                  alt={name}
-                                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                                />
-                              )}
+                        <Card key={restaurantId} className="bg-white border border-gray-100 shadow-lg h-full flex flex-col hover:shadow-xl transition-all duration-300">
+                          <CardContent className="p-5 flex flex-col flex-grow">
+                            <div className="flex items-center gap-3 mb-3">
+                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center flex-shrink-0">
+                                <UtensilsCrossed className="w-5 h-5 text-white" />
+                              </div>
+                              <span className="text-xs font-semibold uppercase tracking-wider text-orange-600">
+                                {cuisineLabel}
+                              </span>
                               {priceRange && (
-                                <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 z-20">
-                                  <span className="text-sm font-bold text-orange-600">
-                                    {priceRange}
-                                  </span>
-                                </div>
+                                <span className="ml-auto text-sm font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded">
+                                  {priceRange}
+                                </span>
                               )}
                             </div>
-                          </Link>
-
-                          <CardContent className="p-4 flex flex-col flex-grow">
                             <div className="flex items-start justify-between gap-2 mb-2">
                               <Link href={restaurantUrl} className="flex-1">
                                 <h3 className="font-semibold text-lg text-gray-800 line-clamp-2 hover:text-purple-600 transition-colors">

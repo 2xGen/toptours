@@ -1578,7 +1578,10 @@ function PlanItemEditor({ item, onRemove, onUpdateDay, onUpdateTip, maxDay, show
   const suggestedTips = getSuggestedTipsForItem(item.type);
 
   const itemName = item.data?.title || item.data?.name || (item.type === 'tour' ? 'Tour' : 'Restaurant');
-  const itemImage = item.data?.images?.[0]?.variants?.[3]?.url || item.data?.heroImage || '';
+  // Only use images for tours, restaurants use icons instead to avoid Google API costs
+  const itemImage = item.type === 'tour' ? (item.data?.images?.[0]?.variants?.[3]?.url || '') : '';
+  // Get cuisine for restaurant icon display
+  const restaurantCuisine = item.type === 'restaurant' && item.data?.cuisines?.[0] ? item.data.cuisines[0] : null;
 
   // Get current tip count
   const currentTipCount = (item.selected_tips || (item.selected_tip ? [item.selected_tip] : [])).length;
@@ -1608,13 +1611,18 @@ function PlanItemEditor({ item, onRemove, onUpdateDay, onUpdateTip, maxDay, show
     <Card className="border-2 shadow-sm hover:shadow-md transition-shadow">
       <CardContent className="p-4">
         <div className="flex gap-4">
-          {itemImage && (
+          {/* Show image for tours, icon for restaurants */}
+          {item.type === 'tour' && itemImage ? (
             <img
               src={itemImage}
               alt={itemName}
               className="w-20 h-20 object-cover rounded-lg"
             />
-          )}
+          ) : item.type === 'restaurant' ? (
+            <div className="w-20 h-20 rounded-lg bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center flex-shrink-0">
+              <UtensilsCrossed className="w-8 h-8 text-white" />
+            </div>
+          ) : null}
           <div className="flex-1">
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1">
@@ -1628,7 +1636,7 @@ function PlanItemEditor({ item, onRemove, onUpdateDay, onUpdateTip, maxDay, show
                   ) : (
                     <Badge variant="outline" className="text-xs border-orange-200 text-orange-700">
                       <UtensilsCrossed className="w-3 h-3 mr-1" />
-                      Restaurant
+                      {restaurantCuisine || 'Restaurant'}
                     </Badge>
                   )}
                 </div>

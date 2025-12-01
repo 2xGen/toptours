@@ -97,7 +97,7 @@ export async function generateMetadata({ params }) {
       description: metaDescription,
       images: [
         {
-          url: restaurant.heroImage || destination.imageUrl,
+          url: destination.imageUrl, // Always use destination image for OG (restaurant images temporarily unavailable)
           width: 1200,
           height: 630,
           alt: `${restaurant.name} in ${destination.name}`,
@@ -112,7 +112,7 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: restaurant.seoTitle || restaurant.seo?.title || `${restaurant.name} in ${destination.name}`,
       description: metaDescription,
-      images: [restaurant.heroImage || destination.imageUrl],
+      images: [destination.imageUrl], // Always use destination image for Twitter (restaurant images temporarily unavailable)
     },
     alternates: {
       canonical: `https://toptours.ai/destinations/${destinationId}/restaurants/${restaurantSlug}`,

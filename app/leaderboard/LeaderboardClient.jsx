@@ -2,7 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, TrendingUp, Calendar, Globe, ArrowLeft, ArrowRight, Star, Clock, Zap, User, ChevronLeft, ChevronRight, Flame, Crown, MapPin } from 'lucide-react';
+import { Trophy, TrendingUp, Calendar, Globe, ArrowLeft, ArrowRight, Star, Clock, Zap, User, ChevronLeft, ChevronRight, Flame, Crown, MapPin, UtensilsCrossed, Heart } from 'lucide-react';
+import RestaurantPromotionCard from '@/components/promotion/RestaurantPromotionCard';
+import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
+import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
+import { useToast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -25,6 +29,11 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
   const [topPromotersList, setTopPromotersList] = useState(topPromoters);
   const [showAllPromoters, setShowAllPromoters] = useState(false);
   const [boostCarouselIndex, setBoostCarouselIndex] = useState(0);
+  
+  // Restaurant bookmarks
+  const { isBookmarked, toggle: toggleBookmark } = useRestaurantBookmarks();
+  const supabase = createSupabaseBrowserClient();
+  const { toast } = useToast();
 
   const scoreTypeOptions = [
     { value: 'all', label: 'All Time', icon: Trophy },
@@ -311,9 +320,13 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                         <Card className="hover:shadow-lg transition-all bg-white">
                           <CardContent className="p-4">
                             <div className="flex flex-col sm:flex-row items-start gap-4">
-                              {/* Thumbnail */}
-                              <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden">
-                                {image ? (
+                              {/* Thumbnail - Icon for restaurants, image for others */}
+                              <div className="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden">
+                                {isRestaurant ? (
+                                  <div className="w-full h-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                                    <UtensilsCrossed className="w-8 h-8 text-white" />
+                                  </div>
+                                ) : image ? (
                                   <img
                                     src={image}
                                     alt={title}
@@ -321,19 +334,15 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                                     onError={(e) => {
                                       e.target.src = isPlan
                                         ? "https://images.unsplash.com/photo-1488646953014-85cb44e25828"
-                                        : isRestaurant 
-                                        ? "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
                                         : "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800";
                                     }}
                                   />
                                 ) : (
                                   <div className="w-full h-full bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
                                     {isPlan ? (
-                                      <MapPin className="w-8 h-8 text-purple-300" />
-                                    ) : isRestaurant ? (
-                                      <Star className="w-8 h-8 text-orange-300" />
+                                      <MapPin className="w-8 h-8 text-purple-500" />
                                     ) : (
-                                      <Trophy className="w-8 h-8 text-orange-300" />
+                                      <Trophy className="w-8 h-8 text-orange-500" />
                                     )}
                                   </div>
                                 )}
@@ -356,7 +365,7 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                                       </>
                                     ) : isRestaurant ? (
                                       <>
-                                        <Star className="w-3 h-3" />
+                                        <UtensilsCrossed className="w-3 h-3" />
                                         Restaurant
                                       </>
                                     ) : (
@@ -690,80 +699,142 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                   const score = getScoreLabel(restaurant);
                   const rank = index + 1;
                   const restaurantData = restaurant.restaurantData;
-                  const image = restaurantData?.image || null;
                   const name = restaurantData?.name || `Restaurant #${restaurant.restaurant_id}`;
                   const destSlug = restaurantData?.destination_slug || restaurantData?.destination_id || restaurant.destination_id;
                   const restaurantUrl = restaurantData?.slug && destSlug
                     ? `/destinations/${destSlug}/restaurants/${restaurantData.slug}`
                     : `/destinations/${destSlug}/restaurants`;
+                  const restaurantId = restaurant.restaurant_id;
+                  const description = restaurantData?.metaDescription || restaurantData?.tagline || restaurantData?.summary || restaurantData?.description || '';
+                  const cuisines = restaurantData?.cuisines || [];
+                  const destinationName = restaurantData?.destination_name || restaurantData?.destinationName || destSlug?.replace(/-/g, ' ')?.replace(/\b\w/g, l => l.toUpperCase()) || '';
 
                   return (
                     <motion.div
-                      key={restaurant.restaurant_id}
+                      key={restaurantId}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.03 }}
                     >
-                      <Card className="hover:shadow-xl transition-all duration-300 bg-white border border-gray-200 h-full">
-                        <CardContent className="p-0 h-full">
-                          <div className="flex flex-col md:flex-row h-full">
-                            {/* Rank Badge */}
-                            <div className="flex-shrink-0 flex items-center justify-center md:justify-start p-4 md:p-6 bg-gray-50 md:bg-transparent">
+                      <Card className={`hover:shadow-xl transition-all duration-300 border ${
+                        rank === 1 ? 'border-yellow-300 bg-gradient-to-r from-yellow-50/50 to-white' :
+                        rank === 2 ? 'border-gray-300 bg-gradient-to-r from-gray-50/50 to-white' :
+                        rank === 3 ? 'border-orange-300 bg-gradient-to-r from-orange-50/50 to-white' :
+                        'border-gray-200 bg-white'
+                      }`}>
+                        <CardContent className="p-0">
+                          <div className="flex flex-col md:flex-row">
+                            {/* Rank Badge - Left Side */}
+                            <div className="flex-shrink-0 flex items-center justify-center md:justify-start p-4 md:p-6 bg-gray-50 md:bg-transparent md:border-r md:border-gray-100">
                               {rank <= 3 ? (
-                                <Trophy className={`w-12 h-12 ${
-                                  rank === 1 ? 'text-yellow-500' :
-                                  rank === 2 ? 'text-gray-400' :
-                                  'text-orange-500'
-                                }`} />
+                                <div className={`w-14 h-14 rounded-full flex items-center justify-center ${
+                                  rank === 1 ? 'bg-gradient-to-br from-yellow-300 to-yellow-500' :
+                                  rank === 2 ? 'bg-gradient-to-br from-gray-300 to-gray-400' :
+                                  'bg-gradient-to-br from-orange-300 to-orange-500'
+                                }`}>
+                                  <Trophy className="w-7 h-7 text-white" />
+                                </div>
                               ) : (
-                                <div className="w-12 h-12 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center shadow-md">
-                                  <span className="text-xl font-bold text-gray-700">{rank}</span>
+                                <div className="w-14 h-14 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center shadow-md">
+                                  <span className="text-xl font-bold text-gray-700">#{rank}</span>
                                 </div>
                               )}
                             </div>
 
-                            {/* Image */}
-                            <div className="flex-shrink-0 w-full md:w-48 h-48 md:h-48">
-                              {image ? (
-                                <img
-                                  src={image}
-                                  alt={name}
-                                  className="w-full h-full object-cover"
-                                  onError={(e) => {
-                                    e.target.src = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4";
+                            {/* Restaurant Info - Main Content */}
+                            <div className="flex-1 p-5 md:p-6">
+                              {/* Header Row: Icon, Name, Bookmark */}
+                              <div className="flex items-start gap-3 mb-3">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center flex-shrink-0">
+                                  <UtensilsCrossed className="w-5 h-5 text-white" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <Link
+                                    href={restaurantUrl}
+                                    className="text-xl font-bold text-gray-900 hover:text-orange-600 transition-colors block line-clamp-1"
+                                  >
+                                    {name}
+                                  </Link>
+                                  {/* Cuisine & Destination Badges */}
+                                  <div className="flex flex-wrap items-center gap-2 mt-1">
+                                    {cuisines.length > 0 && (
+                                      <Badge variant="outline" className="text-xs border-orange-200 text-orange-700">
+                                        <UtensilsCrossed className="w-3 h-3 mr-1" />
+                                        {cuisines[0]}
+                                      </Badge>
+                                    )}
+                                    {destinationName && (
+                                      <Badge variant="outline" className="text-xs border-blue-200 text-blue-700">
+                                        <MapPin className="w-3 h-3 mr-1" />
+                                        {destinationName}
+                                      </Badge>
+                                    )}
+                                    {restaurant.region && (
+                                      <Badge variant="outline" className="text-xs">
+                                        <Globe className="w-3 h-3 mr-1" />
+                                        {restaurant.region.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                                      </Badge>
+                                    )}
+                                  </div>
+                                </div>
+                                {/* Bookmark Button */}
+                                <button
+                                  type="button"
+                                  aria-label={isBookmarked(restaurantId) ? 'Saved' : 'Save'}
+                                  onClick={async (e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    const { data } = await supabase.auth.getUser();
+                                    if (!data?.user) {
+                                      toast({
+                                        title: 'Sign in required',
+                                        description: 'Create a free account to save restaurants to your favorites.',
+                                      });
+                                      return;
+                                    }
+                                    try {
+                                      const wasBookmarked = isBookmarked(restaurantId);
+                                      await toggleBookmark(restaurantId);
+                                      toast({
+                                        title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
+                                        description: 'You can view your favorites in your profile.',
+                                      });
+                                    } catch (_) {}
                                   }}
-                                />
-                              ) : (
-                                <div className="w-full h-full bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
-                                  <Star className="w-16 h-16 text-orange-300" />
-                                </div>
-                              )}
-                            </div>
-
-                            {/* Restaurant Info */}
-                            <div className="flex-1 p-5 md:p-6 flex flex-col">
-                              <div className="flex-1">
-                                <Link
-                                  href={restaurantUrl}
-                                  className="text-xl font-bold text-gray-900 hover:text-orange-600 transition-colors mb-2 block line-clamp-2"
+                                  className={`flex-shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors ${
+                                    isBookmarked(restaurantId) ? 'text-red-600 bg-red-50' : 'text-gray-400 bg-gray-100 hover:text-red-500'
+                                  }`}
+                                  title={isBookmarked(restaurantId) ? 'Saved' : 'Save'}
                                 >
-                                  {name}
-                                </Link>
-
-                                {restaurant.region && (
-                                  <Badge variant="outline" className="mb-3 w-fit">
-                                    <Globe className="w-3 h-3 mr-1" />
-                                    {restaurant.region.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                                  </Badge>
-                                )}
+                                  <Heart className="w-5 h-5" fill={isBookmarked(restaurantId) ? 'currentColor' : 'none'} />
+                                </button>
                               </div>
 
-                              {/* Actions */}
-                              <div className="flex items-center gap-3 mt-auto">
-                                <Button
-                                  asChild
-                                  className="flex-1 sunset-gradient text-white hover:scale-105 transition-transform duration-200"
-                                >
+                              {/* Meta Description */}
+                              {description && (
+                                <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                                  {description}
+                                </p>
+                              )}
+
+                              {/* Promotion Card & Actions Row */}
+                              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                                {restaurantId && (
+                                  <div className="flex-1">
+                                    <RestaurantPromotionCard 
+                                      restaurantId={restaurantId} 
+                                      compact={true}
+                                      initialScore={{
+                                        restaurant_id: restaurantId,
+                                        total_score: restaurant.total_score || 0,
+                                        monthly_score: restaurant.monthly_score || 0,
+                                        weekly_score: restaurant.weekly_score || 0,
+                                        past_28_days_score: restaurant.past_28_days_score || 0,
+                                      }}
+                                    />
+                                  </div>
+                                )}
+                                <Button asChild variant="outline" className="flex-shrink-0 border-orange-300 text-orange-600 hover:bg-orange-50">
                                   <Link href={restaurantUrl}>
                                     View Restaurant
                                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -772,34 +843,29 @@ export default function LeaderboardClient({ initialTours = [], initialRestaurant
                               </div>
                             </div>
 
-                            {/* Score Badge */}
-                            <div className="flex-shrink-0 p-5 md:p-6 flex items-center justify-center md:justify-end bg-gray-50 md:bg-transparent">
-                              <div className={`rounded-lg px-4 py-3 border-2 shadow-md ${
-                                rank === 1 
-                                  ? 'bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-300'
-                                  : rank === 2
-                                  ? 'bg-gradient-to-br from-gray-50 to-gray-100 border-gray-300'
-                                  : rank === 3
-                                  ? 'bg-gradient-to-br from-orange-50 to-red-50 border-orange-300'
-                                  : 'bg-gradient-to-br from-orange-50 to-yellow-50 border-orange-200'
+                            {/* Score Badge - Right Side */}
+                            <div className="flex-shrink-0 p-4 md:p-6 flex items-center justify-center md:justify-end bg-gray-50 md:bg-transparent md:border-l md:border-gray-100">
+                              <div className={`rounded-xl px-5 py-4 text-center ${
+                                rank === 1 ? 'bg-gradient-to-br from-yellow-100 to-yellow-50 border-2 border-yellow-300' :
+                                rank === 2 ? 'bg-gradient-to-br from-gray-100 to-gray-50 border-2 border-gray-300' :
+                                rank === 3 ? 'bg-gradient-to-br from-orange-100 to-orange-50 border-2 border-orange-300' :
+                                'bg-gradient-to-br from-orange-50 to-white border-2 border-orange-200'
                               }`}>
-                                <div className="flex flex-col items-center">
-                                  <Trophy className={`w-6 h-6 mb-1 ${
-                                    rank === 1 ? 'text-yellow-500' :
-                                    rank === 2 ? 'text-gray-400' :
-                                    rank === 3 ? 'text-orange-500' :
-                                    'text-orange-600'
-                                  }`} />
-                                  <div className={`text-2xl font-bold ${
-                                    rank === 1 ? 'text-yellow-600' :
-                                    rank === 2 ? 'text-gray-700' :
-                                    rank === 3 ? 'text-orange-600' :
-                                    'text-orange-600'
-                                  }`}>
-                                    {score.toLocaleString()}
-                                  </div>
-                                  <div className="text-xs text-gray-500 mt-1">points</div>
+                                <Trophy className={`w-6 h-6 mx-auto mb-1 ${
+                                  rank === 1 ? 'text-yellow-500' :
+                                  rank === 2 ? 'text-gray-400' :
+                                  rank === 3 ? 'text-orange-500' :
+                                  'text-orange-500'
+                                }`} />
+                                <div className={`text-2xl font-bold ${
+                                  rank === 1 ? 'text-yellow-600' :
+                                  rank === 2 ? 'text-gray-700' :
+                                  rank === 3 ? 'text-orange-600' :
+                                  'text-orange-600'
+                                }`}>
+                                  {score.toLocaleString()}
                                 </div>
+                                <div className="text-xs text-gray-500 mt-1">points</div>
                               </div>
                             </div>
                           </div>

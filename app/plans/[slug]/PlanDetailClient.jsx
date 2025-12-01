@@ -572,46 +572,23 @@ function PlanItemCard({ item, index }) {
   if (item.item_type === 'restaurant' && item.restaurantData) {
     const restaurant = item.restaurantData;
     const restaurantUrl = `/destinations/${restaurant.destination_id}/restaurants/${restaurant.slug}`;
-    const image = restaurant.heroImage || restaurant.hero_image_url || '';
     const rating = restaurant.ratings?.googleRating || restaurant.google_rating || 0;
     const reviewCount = restaurant.ratings?.reviewCount || restaurant.review_count || 0;
+    const cuisineLabel = restaurant.cuisines?.[0] || 'Restaurant';
 
     return (
-      <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-        <div className="relative">
-          {image && (
-            <img
-              src={image}
-              alt={restaurant.name}
-              className="w-full h-48 object-cover"
-            />
-          )}
-          {tips.length > 0 && (
-            <div className="absolute top-2 right-2 flex flex-wrap gap-1 justify-end max-w-[60%]">
-              {tips.slice(0, 2).map((tip) => {
-                const TipIcon = tip.icon;
-                return (
-                  <Badge 
-                    key={tip.id}
-                    className="bg-white/90 text-gray-900 flex items-center gap-1 text-xs"
-                  >
-                    {TipIcon && <TipIcon className="w-3 h-3" />}
-                    {tip.label}
-                  </Badge>
-                );
-              })}
-              {tips.length > 2 && (
-                <Badge className="bg-white/90 text-gray-900 text-xs">
-                  +{tips.length - 2}
-                </Badge>
-              )}
+      <Card className="overflow-hidden hover:shadow-lg transition-shadow border border-gray-100">
+        <CardContent className="p-5">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center flex-shrink-0">
+              <UtensilsCrossed className="w-6 h-6 text-white" />
             </div>
-          )}
-        </div>
-        <CardContent className="p-4">
-          <div className="flex items-center gap-2 mb-2">
-            <UtensilsCrossed className="w-4 h-4 text-orange-500" />
-            <h3 className="font-bold text-lg text-gray-900">{restaurant.name}</h3>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-bold text-lg text-gray-900 line-clamp-1">{restaurant.name}</h3>
+              <span className="text-xs font-medium text-orange-600 uppercase tracking-wide">
+                {cuisineLabel}
+              </span>
+            </div>
           </div>
           {rating > 0 && (
             <div className="flex items-center gap-1 text-sm text-gray-600 mb-3">

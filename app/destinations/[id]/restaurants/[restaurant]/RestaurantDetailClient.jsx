@@ -366,127 +366,130 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
         </div>
       )}
 
-      <div className="min-h-screen pt-16 overflow-x-hidden">
-        <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                <div className="flex items-center gap-3 mb-4">
-                  <UtensilsCrossed className="w-5 h-5 text-blue-200" />
-                  <span className="text-white/90 text-sm font-medium uppercase tracking-wide">
-                    {headingCuisine}
-                  </span>
-                </div>
-                <div className="flex items-start justify-between gap-4 mb-4 md:mb-6">
-                  <div className="flex items-start gap-3 flex-1">
-                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex-1">
-                      {restaurant.name}
-                    </h1>
-                    <button
-                      onClick={() => setShowShareModal(true)}
-                      className="flex-shrink-0 p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors mt-2"
-                      aria-label="Share this restaurant"
-                      title="Share this restaurant"
-                    >
-                      <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
-                    </button>
+      <div className="min-h-screen overflow-x-hidden bg-gradient-to-b from-blue-50 via-white to-white">
+        {/* Hero Section - Centered text, no image */}
+        <section className="relative -mt-12 sm:-mt-16 pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 md:pb-20 overflow-hidden ocean-gradient">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
+            >
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <UtensilsCrossed className="w-5 h-5 text-blue-200" />
+                <span className="text-white font-medium">
+                  {headingCuisine} in {destination.name}
+                </span>
+              </div>
+              
+              <div className="flex items-center justify-center gap-3 mb-4 md:mb-6">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white">
+                  {restaurant.name}
+                </h1>
+                <button
+                  onClick={() => setShowShareModal(true)}
+                  className="flex-shrink-0 p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors"
+                  aria-label="Share this restaurant"
+                  title="Share this restaurant"
+                >
+                  <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+              </div>
+
+              <p className="text-lg sm:text-xl text-white/90 mb-6 max-w-3xl mx-auto">
+                {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
+              </p>
+
+              <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+                {restaurant.ratings?.googleRating && (
+                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white">
+                    <Star className="w-5 h-5" />
+                    <span className="font-semibold">{restaurant.ratings.googleRating.toFixed(1)}</span>
+                    {restaurant.ratings.reviewCount && (
+                      <span className="text-white/80 text-sm">
+                        ({restaurant.ratings.reviewCount.toLocaleString()} reviews)
+                      </span>
+                    )}
                   </div>
-                  <button
-                    type="button"
-                    aria-label={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
-                    onClick={async (e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      const { data } = await supabase.auth.getUser();
-                      if (!data?.user) {
-                        toast({
-                          title: 'Sign in required',
-                          description: 'Create a free account to save restaurants to your favorites.',
-                        });
-                        return;
-                      }
-                      try {
-                        const wasBookmarked = isBookmarked(restaurant.id);
-                        await toggle(restaurant.id);
-                        toast({
-                          title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
-                          description: 'You can view your favorites in your profile.',
-                        });
-                      } catch (_) {}
-                    }}
-                    className={`inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full transition-colors bg-white/20 backdrop-blur-sm hover:bg-white/30 ${
-                      isBookmarked(restaurant.id) ? 'text-red-500' : 'text-white'
-                    }`}
-                    title={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
-                  >
-                    <Heart className="w-5 h-5 md:w-6 md:h-6" fill={isBookmarked(restaurant.id) ? 'currentColor' : 'none'} />
-                  </button>
-                </div>
-                <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8">
-                  {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
-                </p>
+                )}
 
-                <div className="flex flex-wrap items-center gap-3">
-                  {restaurant.ratings?.googleRating && (
-                    <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white">
-                      <Star className="w-5 h-5" />
-                      <span className="font-semibold">{restaurant.ratings.googleRating.toFixed(1)}</span>
-                      {restaurant.ratings.reviewCount && (
-                        <span className="text-white/80 text-sm">
-                          ({restaurant.ratings.reviewCount.toLocaleString()} reviews)
-                        </span>
-                      )}
-                    </div>
-                  )}
+                {restaurant.pricing?.priceRange && (
+                  <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm">
+                    {restaurant.pricing.priceRange}
+                  </div>
+                )}
 
-                  {restaurant.pricing?.priceRange && (
-                    <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm">
-                      {restaurant.pricing.priceRange}
-                    </div>
-                  )}
+                {cuisines.length > 0 && (
+                  <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm">
+                    {cuisines.join(' · ')}
+                  </div>
+                )}
+              </div>
 
-                  {cuisines.length > 0 && (
-                    <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm">
-                      {cuisines.join(' · ')}
-                    </div>
-                  )}
-                </div>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <button
+                  type="button"
+                  aria-label={isBookmarked(restaurant.id) ? 'Saved' : 'Save to favorites'}
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const { data } = await supabase.auth.getUser();
+                    if (!data?.user) {
+                      toast({
+                        title: 'Sign in required',
+                        description: 'Create a free account to save restaurants to your favorites.',
+                      });
+                      return;
+                    }
+                    try {
+                      const wasBookmarked = isBookmarked(restaurant.id);
+                      await toggle(restaurant.id);
+                      toast({
+                        title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
+                        description: 'You can view your favorites in your profile.',
+                      });
+                    } catch (_) {}
+                  }}
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full transition-colors bg-white/20 backdrop-blur-sm hover:bg-white/30 ${
+                    isBookmarked(restaurant.id) ? 'text-red-400' : 'text-white'
+                  }`}
+                  title={isBookmarked(restaurant.id) ? 'Saved' : 'Save to favorites'}
+                >
+                  <Heart className="w-5 h-5" fill={isBookmarked(restaurant.id) ? 'currentColor' : 'none'} />
+                  <span className="text-sm font-medium">{isBookmarked(restaurant.id) ? 'Saved' : 'Save'}</span>
+                </button>
 
                 {/* Reserve/Visit Website Button */}
                 {(restaurant.contact?.website || restaurant.booking?.partnerUrl) && (
-                  <div className="mt-6 md:mt-8">
-                    <Button
-                      onClick={() => {
-                        if (user) {
-                          // If signed in, open the website/booking URL
-                          const url = restaurant.booking?.partnerUrl || restaurant.contact?.website;
-                          if (url) {
-                            window.open(url, '_blank', 'noopener,noreferrer');
-                          }
-                        } else {
-                          // If not signed in, show modal
-                          setShowSignInModal(true);
+                  <Button
+                    onClick={() => {
+                      if (user) {
+                        const url = restaurant.booking?.partnerUrl || restaurant.contact?.website;
+                        if (url) {
+                          window.open(url, '_blank', 'noopener,noreferrer');
                         }
-                      }}
-                      className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
-                    >
-                      {restaurant.booking?.partnerUrl ? 'Reserve a Table' : `Visit ${restaurant.name}'s Website`}
-                    </Button>
-                  </div>
+                      } else {
+                        setShowSignInModal(true);
+                      }
+                    }}
+                    className="bg-white text-blue-600 hover:bg-gray-100 font-semibold px-6 py-2"
+                  >
+                    {restaurant.booking?.partnerUrl ? 'Reserve a Table' : 'Visit Website'}
+                  </Button>
                 )}
-              </motion.div>
 
-              <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src={restaurant.heroImage || destination.imageUrl}
-                    alt={restaurant.imageAlt || restaurant.name}
-                    className="w-full h-64 sm:h-80 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                </div>
-              </motion.div>
-            </div>
+                <Button
+                  asChild
+                  className="bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 gap-2"
+                >
+                  <Link href={`/destinations/${destination.id}`}>
+                    Explore {destination.name}
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
           </div>
         </section>
 
@@ -1690,62 +1693,48 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                           transition={{ duration: 0.4, delay: index * 0.1 }}
                           viewport={{ once: true }}
                         >
-                          <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                            <Link href={restaurantUrl}>
-                              <div className="relative h-48 overflow-hidden">
-                                {trending.heroImage || trending.restaurant_image_url ? (
-                                  <img
-                                    src={trending.heroImage || trending.restaurant_image_url}
-                                    alt={trending.name || 'Restaurant'}
-                                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                                    loading="lazy"
-                                  />
-                                ) : (
-                                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                                    <UtensilsCrossed className="w-6 h-6 text-gray-400" />
-                                  </div>
-                                )}
-                                <div className="absolute top-3 left-3">
-                                  <Badge className="adventure-gradient text-white">
-                                    <TrendingUp className="w-3 h-3 mr-1" />
-                                    Trending
-                                  </Badge>
+                          <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <CardContent className="p-5 flex flex-col h-full">
+                              <div className="flex items-center gap-3 mb-3">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                                  <UtensilsCrossed className="w-5 h-5 text-white" />
                                 </div>
+                                <Badge className="adventure-gradient text-white text-xs">
+                                  <TrendingUp className="w-3 h-3 mr-1" />
+                                  Trending
+                                </Badge>
                               </div>
-                            </Link>
-                            <CardContent className="p-4 flex-1 flex flex-col">
+                              
                               <Link href={restaurantUrl}>
-                                <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
                                   {trending.name || trending.restaurant_name || 'Restaurant'}
                                 </h3>
                               </Link>
                               
                               {/* Promotion Score */}
                               {trending.restaurant_id && (
-                              <div className="mb-3">
-                                <RestaurantPromotionCard
-                                  restaurantId={trending.restaurant_id}
-                                  compact={true}
-                                  initialScore={{
-                                    restaurant_id: trending.restaurant_id,
-                                    total_score: trending.total_score || 0,
-                                    monthly_score: trending.monthly_score || 0,
-                                    weekly_score: trending.weekly_score || 0,
-                                    past_28_days_score: trending.past_28_days_score || 0,
-                                  }}
-                                />
-                              </div>
+                                <div className="mb-3 flex-grow">
+                                  <RestaurantPromotionCard
+                                    restaurantId={trending.restaurant_id}
+                                    compact={true}
+                                    initialScore={{
+                                      restaurant_id: trending.restaurant_id,
+                                      total_score: trending.total_score || 0,
+                                      monthly_score: trending.monthly_score || 0,
+                                      weekly_score: trending.weekly_score || 0,
+                                      past_28_days_score: trending.past_28_days_score || 0,
+                                    }}
+                                  />
+                                </div>
                               )}
 
-                              <Button
-                                asChild
-                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                              <Link
+                                href={restaurantUrl}
+                                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
                               >
-                                <Link href={restaurantUrl}>
-                                  View Details
-                                  <ArrowRight className="w-4 h-4 ml-2" />
-                                </Link>
-                              </Button>
+                                View Details
+                                <ArrowRight className="w-4 h-4" />
+                              </Link>
                             </CardContent>
                           </Card>
                         </motion.div>
@@ -1777,36 +1766,69 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
 
             {otherRestaurantsAvailable ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                {otherRestaurants.map((other) => (
-                  <motion.div
-                    key={other.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-shadow">
-                      <CardContent className="p-6">
-                        <div className="flex items-center gap-3 mb-4">
-                          <UtensilsCrossed className="w-5 h-5 text-blue-600" />
-                          <h3 className="text-lg font-semibold text-gray-900">
-                            {other.name}
-                          </h3>
-                        </div>
-                        <p className="text-gray-600 text-sm mb-4">
-                          {other.tagline || other.summary?.slice(0, 120)}
-                        </p>
-                        <Link
-                          href={`/destinations/${destination.id}/restaurants/${other.slug}`}
-                          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold"
-                        >
-                          View Restaurant
-                          <ArrowRight className="w-4 h-4" />
-                        </Link>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
+                {otherRestaurants.map((other) => {
+                  // Build description with multiple fallbacks
+                  const description = other.metaDescription 
+                    || other.tagline 
+                    || other.summary 
+                    || other.description
+                    || (other.cuisines?.length > 0 
+                        ? `Discover ${other.cuisines.join(' & ')} cuisine at ${other.name} in ${destination.name}.`
+                        : `Experience great dining at ${other.name} in ${destination.name}.`);
+                  
+                  return (
+                    <motion.div
+                      key={other.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6 }}
+                      viewport={{ once: true }}
+                    >
+                      <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-shadow">
+                        <CardContent className="p-6 flex flex-col h-full">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+                              <UtensilsCrossed className="w-5 h-5 text-white" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="text-lg font-bold text-gray-900 line-clamp-1">
+                                {other.name}
+                              </h3>
+                              {other.cuisines?.length > 0 && (
+                                <span className="text-xs font-medium text-blue-600 uppercase tracking-wide">
+                                  {other.cuisines[0]}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                          <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">
+                            {description.length > 120 ? description.slice(0, 120) + '...' : description}
+                          </p>
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {other.ratings?.googleRating && (
+                              <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
+                                <Star className="w-3 h-3" />
+                                {other.ratings.googleRating.toFixed(1)}
+                              </span>
+                            )}
+                            {other.pricing?.priceRange && (
+                              <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
+                                {other.pricing.priceRange}
+                              </span>
+                            )}
+                          </div>
+                          <Link
+                            href={`/destinations/${destination.id}/restaurants/${other.slug}`}
+                            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
+                          >
+                            View Restaurant
+                            <ArrowRight className="w-4 h-4" />
+                          </Link>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

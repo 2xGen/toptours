@@ -319,19 +319,39 @@ export default async function DestinationDetailPage({ params }) {
   
   // CRITICAL: Use database as source of truth - query by slug to get correct destination ID
   // This ensures we use the correct ID from the database (id field = Viator destination ID)
-  const { slugToViatorId } = await import('@/data/viatorDestinationMap');
-  const isCuratedDestination = destination.id && slugToViatorId[destination.id];
+  let slugToViatorId = {};
+  let isCuratedDestination = false;
   
+  try {
+    const viatorMap = await import('@/data/viatorDestinationMap');
+    slugToViatorId = viatorMap.slugToViatorId || {};
+    isCuratedDestination = destination.id && slugToViatorId[destination.id];
+  } catch (error) {
+    console.error('Error importing viatorDestinationMap:', error);
+    // Continue without the map - will use database lookup only
+  }
+
   // Query database by slug to get the correct destination ID
   if (isCuratedDestination && !destination.destinationId) {
-    const dbDestination = await getViatorDestinationBySlug(destination.id);
-    if (dbDestination && dbDestination.id) {
-      destination.destinationId = dbDestination.id.toString();
-      console.log(`✅ Destination Detail Page - Added destinationId ${destination.destinationId} from database for ${destination.id} (name: ${dbDestination.name})`);
-    } else {
-      // Fallback to hardcoded map if database lookup fails
-      destination.destinationId = slugToViatorId[destination.id];
-      console.log(`⚠️ Destination Detail Page - Database lookup failed for ${destination.id}, using fallback slugToViatorId = ${destination.destinationId}`);
+    try {
+      const dbDestination = await getViatorDestinationBySlug(destination.id);
+      if (dbDestination && dbDestination.id) {
+        destination.destinationId = dbDestination.id.toString();
+        console.log(`✅ Destination Detail Page - Added destinationId ${destination.destinationId} from database for ${destination.id} (name: ${dbDestination.name})`);
+      } else {
+        // Fallback to hardcoded map if database lookup fails
+        if (slugToViatorId[destination.id]) {
+          destination.destinationId = slugToViatorId[destination.id];
+          console.log(`⚠️ Destination Detail Page - Database lookup failed for ${destination.id}, using fallback slugToViatorId = ${destination.destinationId}`);
+        }
+      }
+    } catch (error) {
+      console.error(`Error looking up destination ${destination.id} in database:`, error);
+      // Fallback to hardcoded map if available
+      if (slugToViatorId[destination.id]) {
+        destination.destinationId = slugToViatorId[destination.id];
+        console.log(`⚠️ Destination Detail Page - Using fallback slugToViatorId = ${destination.destinationId} due to database error`);
+      }
     }
   }
   
@@ -353,20 +373,50 @@ export default async function DestinationDetailPage({ params }) {
     console.log(`⚠️ Destination Page - Using slug ${destinationIdForScores} for promotions (destination.destinationId not set)`);
   }
   
-  // Fetch promotion scores for this destination
-  const promotionScores = await getPromotionScoresByDestination(destinationIdForScores);
+  // Fetch promotion scores for this destination (with error handling)
+  let promotionScores = {};
+  try {
+    promotionScores = await getPromotionScoresByDestination(destinationIdForScores);
+  } catch (error) {
+    console.error('Error fetching promotion scores:', error);
+    // Continue with empty scores - page will still work
+  }
 
   // Fetch trending tours (past 28 days) for this destination - limit to 3
-  const trendingTours = await getTrendingToursByDestination(destinationIdForScores, 3);
+  let trendingTours = [];
+  try {
+    trendingTours = await getTrendingToursByDestination(destinationIdForScores, 3);
+  } catch (error) {
+    console.error('Error fetching trending tours:', error);
+    // Continue with empty array - page will still work
+  }
 
   // Fetch trending restaurants (past 28 days) for this destination - limit to 3
-  const trendingRestaurants = await getTrendingRestaurantsByDestination(destination.id, 3);
+  let trendingRestaurants = [];
+  try {
+    trendingRestaurants = await getTrendingRestaurantsByDestination(destination.id, 3);
+  } catch (error) {
+    console.error('Error fetching trending restaurants:', error);
+    // Continue with empty array - page will still work
+  }
 
   // Fetch restaurant promotion scores for this destination
-  const restaurantPromotionScores = await getRestaurantPromotionScoresByDestination(destination.id);
+  let restaurantPromotionScores = {};
+  try {
+    restaurantPromotionScores = await getRestaurantPromotionScoresByDestination(destination.id);
+  } catch (error) {
+    console.error('Error fetching restaurant promotion scores:', error);
+    // Continue with empty scores - page will still work
+  }
 
   // Fetch hardcoded tours by category (lightweight - no API calls)
-  const hardcodedTours = await getHardcodedToursByDestination(destination.id);
+  let hardcodedTours = {};
+  try {
+    hardcodedTours = await getHardcodedToursByDestination(destination.id);
+  } catch (error) {
+    console.error('Error fetching hardcoded tours:', error);
+    // Continue with empty object - page will still work
+  }
 
   // Fetch restaurants from database for this destination
   // Wrap in try-catch to prevent page crashes if database is unavailable

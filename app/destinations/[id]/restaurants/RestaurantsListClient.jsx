@@ -311,71 +311,54 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
                           transition={{ duration: 0.4, delay: index * 0.1 }}
                           viewport={{ once: true }}
                         >
-                          <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                            <Link href={restaurantUrl}>
-                              <div className="relative h-48 overflow-hidden">
-                                {trending.restaurant_image_url ? (
-                                  <img
-                                    src={trending.restaurant_image_url}
-                                    alt={trending.restaurant_name || 'Restaurant'}
-                                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                                    onError={(e) => {
-                                      e.target.src = destination.imageUrl || '/placeholder-restaurant.jpg';
-                                    }}
-                                  />
-                                ) : (
-                                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                                    <UtensilsCrossed className="w-6 h-6 text-gray-400" />
-                                  </div>
-                                )}
-                                <div className="absolute top-3 left-3">
-                                  <Badge className="adventure-gradient text-white">
-                                    <TrendingUp className="w-3 h-3 mr-1" />
-                                    Trending
-                              </Badge>
-                            </div>
-                          </div>
-                            </Link>
-
-                            <CardContent className="p-4 flex-1 flex flex-col">
+                          <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <CardContent className="p-5 flex flex-col h-full">
+                              <div className="flex items-center gap-3 mb-3">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                                  <UtensilsCrossed className="w-5 h-5 text-white" />
+                                </div>
+                                <Badge className="adventure-gradient text-white text-xs">
+                                  <TrendingUp className="w-3 h-3 mr-1" />
+                                  Trending
+                                </Badge>
+                              </div>
+                              
                               <Link href={restaurantUrl}>
-                                <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
                                   {trending.restaurant_name || `Restaurant #${restaurantId}`}
-                            </h3>
+                                </h3>
                               </Link>
 
                               {/* Promotion Score */}
                               {restaurantId && (
-                              <div className="mb-3">
-                                <RestaurantPromotionCard 
-                                  restaurantId={restaurantId} 
-                                  compact={true}
-                                  initialScore={restaurantPromotionScores[restaurantId] || {
-                                    restaurant_id: restaurantId,
-                                    total_score: trending.total_score || 0,
-                                    monthly_score: trending.monthly_score || 0,
-                                    weekly_score: trending.weekly_score || 0,
-                                    past_28_days_score: trending.past_28_days_score || 0,
-                                  }}
-                                />
-                              </div>
+                                <div className="mb-3 flex-grow">
+                                  <RestaurantPromotionCard 
+                                    restaurantId={restaurantId} 
+                                    compact={true}
+                                    initialScore={restaurantPromotionScores[restaurantId] || {
+                                      restaurant_id: restaurantId,
+                                      total_score: trending.total_score || 0,
+                                      monthly_score: trending.monthly_score || 0,
+                                      weekly_score: trending.weekly_score || 0,
+                                      past_28_days_score: trending.past_28_days_score || 0,
+                                    }}
+                                  />
+                                </div>
                               )}
 
-                              <Button
-                                asChild
-                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                              <Link
+                                href={restaurantUrl}
+                                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
                               >
-                                <Link href={restaurantUrl}>
-                                  View Details
-                                  <ArrowRight className="w-4 h-4 ml-2" />
-                                </Link>
-                              </Button>
-                          </CardContent>
-                      </Card>
-                    </motion.div>
-                  );
-                })}
-              </div>
+                                View Details
+                                <ArrowRight className="w-4 h-4" />
+                              </Link>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
                 </div>
               )}
             </div>
@@ -395,129 +378,119 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
               </p>
             </div>
 
-            <div className="space-y-10">
-            {restaurants.map((restaurant, index) => {
-              const imageFirst = index % 2 === 0;
-              return (
-                <Card
-                  key={restaurant.id}
-                  className="border border-blue-100 shadow-xl overflow-hidden"
-                >
-                  <div className={`flex flex-col lg:flex-row ${imageFirst ? '' : 'lg:flex-row-reverse'}`}>
-                    <div className="relative w-full lg:w-1/2 h-64 lg:min-h-[360px]">
-                      <img
-                        src={restaurant.heroImage || destination.imageUrl}
-                        alt={restaurant.imageAlt || restaurant.name}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
-                      <div className="absolute top-4 left-4 flex gap-2">
-                        {restaurant.ratings?.googleRating && (
-                          <span className="inline-flex items-center gap-1 text-xs font-semibold bg-white/90 text-gray-900 px-3 py-1 rounded-full shadow-sm">
-                            <Star className="w-3.5 h-3.5 text-yellow-500" />
-                            {restaurant.ratings.googleRating.toFixed(1)}
-                          </span>
-                        )}
-                        {restaurant.pricing?.priceRange && (
-                          <span className="inline-flex items-center gap-1 text-xs font-semibold bg-white/80 text-gray-900 px-3 py-1 rounded-full shadow-sm">
-                            {restaurant.pricing.priceRange}
-                          </span>
-                        )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {restaurants.map((restaurant, index) => (
+              <motion.div
+                key={restaurant.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                viewport={{ once: true }}
+              >
+                <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <CardContent className="p-6 flex flex-col h-full">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                        <UtensilsCrossed className="w-5 h-5 text-white" />
                       </div>
-                    </div>
-
-                    <div className="w-full lg:w-1/2 p-6 md:p-8 lg:p-10 flex flex-col gap-4">
-                      <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
-                        {restaurant.cuisines ? `${restaurant.cuisines.join(' · ')} restaurant in ${destination.fullName}` : `Restaurant in ${destination.fullName}`}
+                      <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
+                        {restaurant.cuisines ? restaurant.cuisines[0] : 'Restaurant'}
                       </span>
-                      <div className="flex items-start justify-between gap-2">
-                        <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 flex-1">
-                        {restaurant.name}
-                      </h2>
-                        <button
-                          type="button"
-                          aria-label={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
-                          onClick={async (e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            const { data } = await supabase.auth.getUser();
-                            if (!data?.user) {
-                              toast({
-                                title: 'Sign in required',
-                                description: 'Create a free account to save restaurants to your favorites.',
-                              });
-                              return;
-                            }
-                            try {
-                              const wasBookmarked = isBookmarked(restaurant.id);
-                              await toggle(restaurant.id);
-                              toast({
-                                title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
-                                description: 'You can view your favorites in your profile.',
-                              });
-                            } catch (_) {}
-                          }}
-                          className={`ml-2 inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors ${
-                            isBookmarked(restaurant.id) ? 'text-red-600 bg-white' : 'text-gray-400 bg-white hover:text-red-500'
-                          }`}
-                          title={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
-                        >
-                          <Heart className="w-5 h-5" fill={isBookmarked(restaurant.id) ? 'currentColor' : 'none'} />
-                        </button>
-                      </div>
-                      <p className="text-sm text-gray-600 leading-relaxed">
-                        {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
-                      </p>
-
-                      <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-                        {restaurant.ratings?.reviewCount && (
-                          <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-700 px-3 py-1 rounded-full">
-                            <Star className="w-4 h-4" />
-                            {restaurant.ratings.googleRating?.toFixed(1)} · {restaurant.ratings.reviewCount.toLocaleString('en-US')} reviews
-                          </span>
-                        )}
-                        {restaurant.pricing?.priceRange && (
-                          <span className="inline-flex items-center gap-1 bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
-                            {restaurant.pricing.priceRange}
-                          </span>
-                        )}
-                        {restaurant.cuisines && (
-                          <span className="inline-flex items-center gap-1 bg-orange-50 text-orange-700 px-3 py-1 rounded-full">
-                            {restaurant.cuisines.join(' · ')}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Restaurant Promotion Card */}
-                      {restaurant.id && (
-                        <div className="mt-2">
-                          <RestaurantPromotionCard
-                            restaurantId={restaurant.id}
-                            compact={true}
-                            initialScore={restaurantPromotionScores[restaurant.id] || {
-                              restaurant_id: restaurant.id,
-                              total_score: 0,
-                              monthly_score: 0,
-                              weekly_score: 0,
-                              past_28_days_score: 0,
-                            }}
-                          />
-                        </div>
-                      )}
-
-                      <div className="mt-auto pt-4">
-                        <Button asChild className="sunset-gradient text-white font-semibold gap-2">
-                          <Link href={`/destinations/${destination.id}/restaurants/${restaurant.slug}`}>
-                            View Restaurant
-                            <ArrowRight className="w-4 h-4" />
-                          </Link>
-                        </Button>
-                      </div>
                     </div>
-                  </div>
+                    
+                    <div className="flex items-start justify-between gap-2 mb-3">
+                      <h3 className="text-lg font-bold text-gray-900 line-clamp-2">
+                        {restaurant.name}
+                      </h3>
+                      <button
+                        type="button"
+                        aria-label={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
+                        onClick={async (e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          const { data } = await supabase.auth.getUser();
+                          if (!data?.user) {
+                            toast({
+                              title: 'Sign in required',
+                              description: 'Create a free account to save restaurants to your favorites.',
+                            });
+                            return;
+                          }
+                          try {
+                            const wasBookmarked = isBookmarked(restaurant.id);
+                            await toggle(restaurant.id);
+                            toast({
+                              title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
+                              description: 'You can view your favorites in your profile.',
+                            });
+                          } catch (_) {}
+                        }}
+                        className={`flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full transition-colors ${
+                          isBookmarked(restaurant.id) ? 'text-red-600 bg-red-50' : 'text-gray-400 bg-gray-100 hover:text-red-500'
+                        }`}
+                        title={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
+                      >
+                        <Heart className="w-4 h-4" fill={isBookmarked(restaurant.id) ? 'currentColor' : 'none'} />
+                      </button>
+                    </div>
+
+                    <p className="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
+                      {restaurant.metaDescription 
+                        || restaurant.tagline 
+                        || restaurant.summary 
+                        || restaurant.description
+                        || (restaurant.cuisines?.length > 0 
+                            ? `Discover ${restaurant.cuisines.join(' & ')} cuisine at ${restaurant.name}.`
+                            : `Experience great dining at ${restaurant.name}.`)}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {restaurant.ratings?.googleRating && (
+                        <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
+                          <Star className="w-3 h-3" />
+                          {restaurant.ratings.googleRating.toFixed(1)}
+                        </span>
+                      )}
+                      {restaurant.pricing?.priceRange && (
+                        <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
+                          {restaurant.pricing.priceRange}
+                        </span>
+                      )}
+                      {restaurant.cuisines && restaurant.cuisines.length > 1 && (
+                        <span className="inline-flex items-center text-xs font-medium bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full">
+                          {restaurant.cuisines.slice(0, 2).join(' · ')}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Restaurant Promotion Card */}
+                    {restaurant.id && (
+                      <div className="mb-4">
+                        <RestaurantPromotionCard
+                          restaurantId={restaurant.id}
+                          compact={true}
+                          initialScore={restaurantPromotionScores[restaurant.id] || {
+                            restaurant_id: restaurant.id,
+                            total_score: 0,
+                            monthly_score: 0,
+                            weekly_score: 0,
+                            past_28_days_score: 0,
+                          }}
+                        />
+                      </div>
+                    )}
+
+                    <Link
+                      href={`/destinations/${destination.id}/restaurants/${restaurant.slug}`}
+                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
+                    >
+                      View Restaurant
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </CardContent>
                 </Card>
-              );
-            })}
+              </motion.div>
+            ))}
             </div>
           </div>
         </section>

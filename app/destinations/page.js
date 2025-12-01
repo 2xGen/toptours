@@ -87,6 +87,14 @@ function generateSlug(name) {
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '');
 }
+
+// Helper to truncate destination names for buttons (30 chars max with ellipsis)
+function truncateDestinationName(name, maxLength = 30) {
+  if (!name || name.length <= maxLength) {
+    return name;
+  }
+  return name.substring(0, maxLength).trim() + '...';
+}
 import { Search, MapPin, ArrowRight, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -521,7 +529,7 @@ export default function DestinationsPage() {
                                   onClick={(e) => e.stopPropagation()}
                                 >
                                   <Link href={`/destinations/${destination.id}`}>
-                                    Explore {destination.name}
+                                    Explore {truncateDestinationName(destination.name)}
                                     <ArrowRight className="ml-2 h-5 w-5" />
                                   </Link>
                                 </Button>
@@ -534,7 +542,7 @@ export default function DestinationsPage() {
                                   onClick={(e) => e.stopPropagation()}
                                 >
                                   <Link href={`/destinations/${destination.id}`}>
-                                    Explore {destination.name}
+                                    Explore {truncateDestinationName(destination.name)}
                                     <ArrowRight className="ml-2 h-5 w-5" />
                                   </Link>
                                 </Button>
@@ -546,7 +554,7 @@ export default function DestinationsPage() {
                                 onClick={(e) => e.stopPropagation()}
                               >
                                 <Link href={`/destinations/${destination.id}/tours`}>
-                                  View Top Tours in {destination.name}
+                                  View Top Tours in {truncateDestinationName(destination.name)}
                                   <ArrowRight className="ml-2 h-5 w-5" />
                                 </Link>
                               </Button>
@@ -613,7 +621,7 @@ export default function DestinationsPage() {
                                       className="w-full bg-purple-600 hover:bg-purple-700 text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
                                     >
                                       <Link href={`/destinations/${destination.id}`}>
-                                        Explore {destination.name}
+                                        Explore {truncateDestinationName(destination.name)}
                                         <ArrowRight className="ml-2 h-5 w-5" />
                                       </Link>
                                     </Button>
@@ -624,7 +632,7 @@ export default function DestinationsPage() {
                                     className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
                                   >
                                     <Link href={`/destinations/${destination.id}/tours`}>
-                                      View Top Tours in {destination.name}
+                                      View Top Tours in {truncateDestinationName(destination.name)}
                                       <ArrowRight className="ml-2 h-5 w-5" />
                                     </Link>
                                   </Button>

@@ -84,13 +84,21 @@ export default async function handler(req, res) {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
+        let errorText = '';
+        try {
+          errorText = await response.text();
+        } catch (e) {
+          console.error('Failed to read error response body:', e.message);
+          errorText = `Unable to read error response: ${e.message}`;
+        }
+        
         console.error('Viator products/search API Error Response:', response.status, errorText);
-        return res.status(response.status).json({
+        return res.status(response.status || 500).json({
           error: 'Viator API error',
           status: response.status,
-          details: errorText,
-          payload,
+          statusText: response.statusText,
+          details: errorText || 'Unknown error from Viator API',
+          payload: payload,
         });
       }
 
@@ -184,13 +192,21 @@ export default async function handler(req, res) {
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
+      let errorText = '';
+      try {
+        errorText = await response.text();
+      } catch (e) {
+        console.error('Failed to read error response body:', e.message);
+        errorText = `Unable to read error response: ${e.message}`;
+      }
+      
       console.error('Viator API Error Response:', response.status, errorText);
-      return res.status(response.status).json({
+      return res.status(response.status || 500).json({
         error: 'Viator API error',
         status: response.status,
-        details: errorText,
-        requestBody,
+        statusText: response.statusText,
+        details: errorText || 'Unknown error from Viator API',
+        requestBody: requestBody,
       });
     }
 

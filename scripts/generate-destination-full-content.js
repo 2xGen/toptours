@@ -138,18 +138,57 @@ Return ONLY valid JSON, no markdown.`;
       throw new Error(lastError?.message || 'All Gemini models failed');
     }
 
-    // Parse JSON response
+    // Parse JSON response with multiple fallback strategies
     let jsonData;
     try {
+      // First, try direct parsing
       jsonData = JSON.parse(content);
     } catch (e) {
-      // If parsing fails, try to extract JSON from markdown
-      const jsonMatch = content.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        jsonData = JSON.parse(jsonMatch[0]);
-      } else {
-        throw new Error('Could not parse JSON from response');
+      // Strategy 2: Remove markdown code blocks if present
+      let cleanedContent = content.trim();
+      cleanedContent = cleanedContent.replace(/^```json\s*/i, '');
+      cleanedContent = cleanedContent.replace(/^```\s*/i, '');
+      cleanedContent = cleanedContent.replace(/\s*```$/i, '');
+      
+      try {
+        jsonData = JSON.parse(cleanedContent);
+      } catch (e2) {
+        // Strategy 3: Extract JSON object from text using regex
+        const jsonMatch = cleanedContent.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          try {
+            jsonData = JSON.parse(jsonMatch[0]);
+          } catch (e3) {
+            // Strategy 4: Try to fix common JSON issues
+            let fixedJson = jsonMatch[0]
+              .replace(/,(\s*[}\]])/g, '$1') // Remove trailing commas
+              .replace(/([{,]\s*)(\w+)(\s*:)/g, '$1"$2"$3'); // Quote unquoted keys
+            
+            try {
+              jsonData = JSON.parse(fixedJson);
+            } catch (e4) {
+              // Last resort: log the actual content for debugging
+              console.error(`   ⚠️  Raw response (first 200 chars): ${content.substring(0, 200)}`);
+              throw new Error(`Could not parse JSON from response: ${e4.message}`);
+            }
+          }
+        } else {
+          console.error(`   ⚠️  Raw response (first 200 chars): ${content.substring(0, 200)}`);
+          throw new Error('Could not find JSON object in response');
+        }
       }
+    }
+
+    // Validate that we have the required fields
+    if (!jsonData.weather || !jsonData.bestMonths) {
+      console.warn(`   ⚠️  Incomplete climate data for ${country}, using fallback`);
+      // Return a basic fallback structure
+      return {
+        weather: `${country} has diverse climate conditions across different regions.`,
+        bestMonths: 'Spring and fall typically offer the best weather conditions.',
+        peakSeason: 'Summer months are peak season with warmer weather and more tourists.',
+        offSeason: 'Winter months offer lower prices and fewer crowds.'
+      };
     }
 
     return jsonData;
@@ -187,6 +226,12 @@ Generate JSON:
     "Hidden gem or tip (18-25 words)"
   ],
   "gettingAround": "Transportation advice (60-90 words). Mention specific types, costs if relevant. Include 'getting around ${destName}' naturally.",
+  "bestTimeToVisit": {
+    "weather": "Climate description for ${destName} (2-3 sentences). Describe the typical weather patterns, seasonal variations, and regional climate characteristics specific to this destination.",
+    "bestMonths": "Best months to visit ${destName} with specific reasons (1-2 sentences). Mention actual month names and why those months are ideal (weather, events, fewer crowds, etc.).",
+    "peakSeason": "Peak season details for ${destName} (1-2 sentences). Describe when peak season occurs, what to expect (weather, crowds, prices), and the atmosphere during this time.",
+    "offSeason": "Off-season information for ${destName} (1-2 sentences). Describe off-season months, what conditions to expect (weather, prices, crowds), and benefits of visiting during this time."
+  },
   "tourCategories": [
     { "name": "Location-specific category for ${destName}", "hasGuide": false },
     { "name": "Category matching geography/culture", "hasGuide": false },
@@ -197,7 +242,7 @@ Generate JSON:
   ]
 }
 
-Guidelines: Real person tone, specific place names, natural SEO integration, avoid clichés, location-specific tour categories.
+Guidelines: Real person tone, specific place names, natural SEO integration, avoid clichés, location-specific tour categories. For bestTimeToVisit, be specific about ${destName}'s climate and seasons - mention actual months, weather patterns, and seasonal characteristics unique to this destination.
 Return ONLY valid JSON, no markdown.`;
 
   try {
@@ -222,7 +267,7 @@ Return ONLY valid JSON, no markdown.`;
           generationConfig: {
             temperature: 0.8,
             responseMimeType: 'application/json',
-            maxOutputTokens: 900,
+            maxOutputTokens: 1200, // Increased to accommodate bestTimeToVisit
           }
         });
         
@@ -248,23 +293,61 @@ Return ONLY valid JSON, no markdown.`;
       throw new Error(lastError?.message || 'All Gemini models failed');
     }
 
-    // Parse JSON response
+    // Parse JSON response with improved error handling
     let jsonData;
     try {
+      // First, try direct parsing
       jsonData = JSON.parse(content);
     } catch (e) {
-      // If parsing fails, try to extract JSON from markdown
-      const jsonMatch = content.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        jsonData = JSON.parse(jsonMatch[0]);
-      } else {
-        throw new Error('Could not parse JSON from response');
+      // Strategy 2: Remove markdown code blocks if present
+      let cleanedContent = content.trim();
+      cleanedContent = cleanedContent.replace(/^```json\s*/i, '');
+      cleanedContent = cleanedContent.replace(/^```\s*/i, '');
+      cleanedContent = cleanedContent.replace(/\s*```$/i, '');
+      
+      try {
+        jsonData = JSON.parse(cleanedContent);
+      } catch (e2) {
+        // Strategy 3: Extract JSON object from text using regex
+        const jsonMatch = cleanedContent.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          try {
+            jsonData = JSON.parse(jsonMatch[0]);
+          } catch (e3) {
+            // Strategy 4: Try to fix common JSON issues
+            let fixedJson = jsonMatch[0]
+              .replace(/,(\s*[}\]])/g, '$1') // Remove trailing commas
+              .replace(/([{,]\s*)(\w+)(\s*:)/g, '$1"$2"$3'); // Quote unquoted keys
+            
+            try {
+              jsonData = JSON.parse(fixedJson);
+            } catch (e4) {
+              console.error(`   ⚠️  Raw response (first 200 chars): ${content.substring(0, 200)}`);
+              throw new Error(`Could not parse JSON from response: ${e4.message}`);
+            }
+          }
+        } else {
+          console.error(`   ⚠️  Raw response (first 200 chars): ${content.substring(0, 200)}`);
+          throw new Error('Could not find JSON object in response');
+        }
       }
     }
 
-    // Add country-level bestTimeToVisit
-    if (countryClimateData) {
-      jsonData.bestTimeToVisit = countryClimateData;
+    // Ensure bestTimeToVisit exists (should be in response, but add fallback if missing)
+    if (!jsonData.bestTimeToVisit || !jsonData.bestTimeToVisit.weather) {
+      // Use country climate data if available, otherwise use fallback
+      if (countryClimateData && countryClimateData.weather) {
+        jsonData.bestTimeToVisit = countryClimateData;
+      } else {
+        // Fallback: provide basic bestTimeToVisit structure
+        const country = destination.country || '';
+        jsonData.bestTimeToVisit = {
+          weather: `${destName}${country ? `, ${country}` : ''} has diverse climate conditions that vary by region and season.`,
+          bestMonths: 'Spring and fall typically offer the best combination of pleasant weather and fewer crowds.',
+          peakSeason: 'Summer months are peak season with warmer weather, but also higher prices and more tourists.',
+          offSeason: 'Winter months offer lower prices and fewer crowds, though weather may be cooler in some regions.'
+        };
+      }
     }
 
     return jsonData;
@@ -365,22 +448,15 @@ async function main() {
     }
 
     try {
-      // Get or generate country climate data
-      if (!countryClimateCache[country] && country !== 'Unknown') {
-        console.log(`   Generating climate data for ${country}...`);
-        countryClimateCache[country] = await generateCountryClimateData(
-          country,
-          destinationsByCountry[country] || []
-        );
-        // Small delay to avoid rate limits (reduced for Gemini)
-        await new Promise(resolve => setTimeout(resolve, 200));
-      }
-
-      // Generate destination content
+      // Note: bestTimeToVisit is now generated directly in destination content, 
+      // so country climate data is optional (only used as fallback if needed)
+      // We skip country climate generation to save API calls and time
+      
+      // Generate destination content (includes bestTimeToVisit in the response)
       console.log(`   [${processed + 1}/${total}] Generating content for ${destName}...`);
       const content = await generateDestinationContent(
         destination,
-        countryClimateCache[country] || null
+        null // No longer needed since bestTimeToVisit is in the prompt
       );
 
       if (content) {

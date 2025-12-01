@@ -6,8 +6,9 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
-  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, Info, Share2
+  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, Info, Share2, Heart
 } from 'lucide-react';
+import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -108,6 +109,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const [showStickyButton, setShowStickyButton] = useState(true);
   const [showParentCountryModal, setShowParentCountryModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
+  
+  // Restaurant bookmarks
+  const { isBookmarked, toggle: toggleBookmark } = useRestaurantBookmarks();
+  const supabase = createSupabaseBrowserClient();
   const [user, setUser] = useState(null);
   const { toast } = useToast();
   
@@ -447,25 +452,73 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
       if (!response.ok) {
         let errorData = {};
+        let errorText = '';
+        let readError = null;
+        
+        // Try to read response body
         try {
-          const text = await response.text();
-          try {
-            errorData = JSON.parse(text);
-          } catch {
-            errorData = { error: text || 'Unknown error', raw: text };
+          // Clone the response before reading to avoid consuming it
+          const clonedResponse = response.clone();
+          errorText = await clonedResponse.text();
+          
+          // If we have text, try to parse it as JSON
+          if (errorText && errorText.trim().length > 0) {
+            try {
+              errorData = JSON.parse(errorText);
+            } catch (parseError) {
+              // Not JSON, use as plain text error
+              errorData = { 
+                error: errorText.substring(0, 200), // Limit length
+                raw: errorText.length > 200 ? errorText.substring(0, 200) + '...' : errorText
+              };
+            }
+          } else {
+            // Empty response body
+            errorData = { 
+              error: `HTTP ${response.status} ${response.statusText || 'Error'}`,
+              message: 'The server returned an empty response. This might indicate a network issue or API problem.'
+            };
           }
         } catch (e) {
-          errorData = { error: 'Failed to parse error response', details: e.message };
+          // Failed to read response body - store the error but continue
+          readError = e;
+          errorData = { 
+            error: `HTTP ${response.status} ${response.statusText || 'Error'}`,
+            message: 'Failed to read error response from server',
+            details: e.message 
+          };
         }
         
-        console.error('API Error Response:', {
-          status: response.status,
-          statusText: response.statusText,
-          errorData: errorData
-        });
+        // Build user-friendly error message
+        const errorMessage = errorData.error || errorData.details || errorData.message || `HTTP ${response.status} ${response.statusText || 'Error'}`;
         
-        const errorMessage = errorData.error || errorData.details || errorData.message || `HTTP ${response.status}`;
-        throw new Error(`Failed to fetch tours: ${response.status} - ${errorMessage}`);
+        // Log detailed error for debugging (format as string for better console viewer display)
+        const errorDetails = [
+          `Status: ${response.status} ${response.statusText || ''}`,
+          errorMessage ? `Error: ${errorMessage}` : '',
+          errorText && errorText.length > 0 ? `Response: ${errorText.substring(0, 200)}${errorText.length > 200 ? '...' : ''}` : readError ? `Response: (unable to read - ${readError.message})` : 'Response: (empty)',
+          !viatorDestinationId ? 'Warning: No Viator destination ID found' : `Destination ID: ${viatorDestinationId}`,
+          `URL: ${response.url || 'N/A'}`
+        ].filter(Boolean).join(' | ');
+        
+        console.error('API Error Response:', errorDetails);
+        
+        // If errorData has additional details, log them separately
+        if (errorData && Object.keys(errorData).length > 0 && (errorData.error || errorData.details || errorData.message)) {
+          console.error('Error Details:', JSON.stringify(errorData, null, 2));
+        }
+        
+        // If readError occurred, log it separately
+        if (readError) {
+          console.error('Response Read Error:', readError.message);
+        }
+        
+        // If no destination ID, suggest that might be the issue
+        if (!viatorDestinationId) {
+          throw new Error(`Failed to fetch tours: ${errorMessage}. Note: No Viator destination ID found for this destination.`);
+        }
+        
+        throw new Error(`Failed to fetch tours: ${errorMessage}`);
       }
 
       const data = await response.json();
@@ -503,11 +556,24 @@ export default function DestinationDetailClient({ destination, promotionScores =
       setLoading({ all: false });
     } catch (error) {
       console.error('Error fetching tours:', error);
+      
+      // Extract error message
+      const errorMessage = error.message || 'Failed to load tours';
+      
+      // Show user-friendly error message
       toast({
-        title: 'Error',
-        description: 'Failed to load tours. Please try again later.',
+        title: 'Error Loading Tours',
+        description: errorMessage.includes('No Viator destination ID') 
+          ? 'This destination may not have tours available yet. Please try again later.'
+          : errorMessage.length > 100 
+            ? 'Failed to load tours. Please try again later.'
+            : errorMessage,
         variant: 'destructive',
       });
+      
+      // Set empty tours state so UI shows "no tours found" message
+      setTours({ all: [] });
+      setTotalToursCount(0);
       
       // Set loading to false
       setLoading({ all: false });
@@ -1045,65 +1111,81 @@ export default function DestinationDetailClient({ destination, promotionScores =
                           transition={{ duration: 0.4, delay: index * 0.1 }}
                           viewport={{ once: true }}
                         >
-                          <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                            <Link href={restaurantUrl}>
-                              <div className="relative h-48 overflow-hidden">
-                                {trending.restaurant_image_url ? (
-                                  <img
-                                    src={trending.restaurant_image_url}
-                                    alt={trending.restaurant_name || 'Restaurant'}
-                                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                                    onError={(e) => {
-                                      e.target.src = safeDestination.imageUrl || '/placeholder-restaurant.jpg';
-                                    }}
-                                  />
-                                ) : (
-                                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                                    <UtensilsCrossed className="w-6 h-6 text-gray-400" />
+                          <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <CardContent className="p-6 flex flex-col h-full">
+                              <div className="flex items-center justify-between gap-3 mb-3">
+                                <div className="flex items-center gap-3">
+                                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
+                                    <UtensilsCrossed className="w-5 h-5 text-white" />
                                   </div>
-                                )}
-                                <div className="absolute top-3 left-3">
-                                  <Badge className="adventure-gradient text-white">
+                                  <Badge className="adventure-gradient text-white text-xs">
                                     <TrendingUp className="w-3 h-3 mr-1" />
                                     Trending
                                   </Badge>
                                 </div>
+                                {/* Bookmark Button */}
+                                <button
+                                  type="button"
+                                  aria-label={isBookmarked(restaurantId) ? 'Saved' : 'Save'}
+                                  onClick={async (e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    const { data } = await supabase.auth.getUser();
+                                    if (!data?.user) {
+                                      toast({
+                                        title: 'Sign in required',
+                                        description: 'Create a free account to save restaurants to your favorites.',
+                                      });
+                                      return;
+                                    }
+                                    try {
+                                      const wasBookmarked = isBookmarked(restaurantId);
+                                      await toggleBookmark(restaurantId);
+                                      toast({
+                                        title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
+                                        description: 'You can view your favorites in your profile.',
+                                      });
+                                    } catch (_) {}
+                                  }}
+                                  className={`flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full transition-colors ${
+                                    isBookmarked(restaurantId) ? 'text-red-600 bg-red-50' : 'text-gray-400 bg-gray-100 hover:text-red-500'
+                                  }`}
+                                  title={isBookmarked(restaurantId) ? 'Saved' : 'Save'}
+                                >
+                                  <Heart className="w-4 h-4" fill={isBookmarked(restaurantId) ? 'currentColor' : 'none'} />
+                                </button>
                               </div>
-                            </Link>
-
-                            <CardContent className="p-4 flex-1 flex flex-col">
+                              
                               <Link href={restaurantUrl}>
-                                <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
                                   {trending.restaurant_name || `Restaurant #${restaurantId}`}
                                 </h3>
                               </Link>
 
                               {/* Promotion Score */}
                               {restaurantId && (
-                              <div className="mb-3">
-                                <RestaurantPromotionCard 
-                                  restaurantId={restaurantId} 
-                                  compact={true}
-                                  initialScore={restaurantPromotionScores[restaurantId] || {
-                                    restaurant_id: restaurantId,
-                                    total_score: trending.total_score || 0,
-                                    monthly_score: trending.monthly_score || 0,
-                                    weekly_score: trending.weekly_score || 0,
-                                    past_28_days_score: trending.past_28_days_score || 0,
-                                  }}
-                                />
-                              </div>
+                                <div className="mb-4 flex-grow">
+                                  <RestaurantPromotionCard 
+                                    restaurantId={restaurantId} 
+                                    compact={true}
+                                    initialScore={restaurantPromotionScores[restaurantId] || {
+                                      restaurant_id: restaurantId,
+                                      total_score: trending.total_score || 0,
+                                      monthly_score: trending.monthly_score || 0,
+                                      weekly_score: trending.weekly_score || 0,
+                                      past_28_days_score: trending.past_28_days_score || 0,
+                                    }}
+                                  />
+                                </div>
                               )}
 
-                              <Button
-                                asChild
-                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                              <Link
+                                href={restaurantUrl}
+                                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
                               >
-                                <Link href={restaurantUrl}>
-                                  View Details
-                                  <ArrowRight className="w-4 h-4 ml-2" />
-                                </Link>
-                              </Button>
+                                View Restaurant
+                                <ArrowRight className="w-4 h-4" />
+                              </Link>
                             </CardContent>
                           </Card>
                         </motion.div>
@@ -1356,7 +1438,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </div>
         </section>
 
-        {/* Top Restaurants */}
+        {/* All Restaurants - Unified Section */}
         {hasRestaurants && (
           <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1378,211 +1460,153 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   </div>
                   <Link href={`/destinations/${safeDestination.id}/restaurants`} className="self-center sm:self-end">
                     <Button variant="outline" className="gap-2">
-                      View All Restaurants in {safeDestination.fullName}
+                      View All {safeRestaurants.length} Restaurants
                       <ArrowRight className="w-4 h-4" />
                     </Button>
                   </Link>
                 </div>
               </motion.div>
 
-              {/* Featured Restaurants (first 6) - Card Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mb-8">
-                {safeRestaurants.slice(0, 6).map((restaurant) => {
+              {/* All Restaurants - Unified Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+                {safeRestaurants.map((restaurant, index) => {
                   if (!restaurant || !restaurant.id || !restaurant.slug) return null;
-                  
-                  const addressParts = restaurant.contact?.address
-                    ? restaurant.contact.address.split(',').map(part => part.trim())
-                    : [];
-                  const neighborhood = addressParts.length >= 2
-                    ? addressParts[addressParts.length - 2]
-                    : null;
 
                   const restaurantUrl = `/destinations/${safeDestination.id}/restaurants/${restaurant.slug}`;
+                  const description = restaurant.metaDescription 
+                    || restaurant.tagline 
+                    || restaurant.summary 
+                    || restaurant.description
+                    || (restaurant.cuisines?.length > 0 
+                        ? `Discover ${restaurant.cuisines.filter(c => c).join(' & ')} cuisine at ${restaurant.name}.`
+                        : `Experience great dining at ${restaurant.name}.`);
 
                   return (
                     <motion.article
                       key={restaurant.id}
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6 }}
+                      transition={{ duration: 0.5, delay: (index % 6) * 0.05 }}
                       viewport={{ once: true }}
-                      className="h-full flex flex-col overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                      className="h-full"
                     >
-                      <div className="relative h-52 flex-shrink-0">
-                        <Link href={restaurantUrl} aria-label={`View ${restaurant.name} restaurant details`} className="block h-full">
-                          <img
-                            src={restaurant.heroImage || safeDestination.imageUrl || '/placeholder-restaurant.jpg'}
-                            alt={restaurant.imageAlt || restaurant.name || 'Restaurant'}
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              e.target.src = safeDestination.imageUrl || '/placeholder-restaurant.jpg';
-                            }}
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
-                          <div className="absolute top-4 left-4 flex gap-2">
+                      <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <CardContent className="p-6 flex flex-col h-full">
+                          <div className="flex items-center justify-between gap-3 mb-3">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+                                <UtensilsCrossed className="w-5 h-5 text-white" />
+                              </div>
+                              <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
+                                {restaurant.cuisines && Array.isArray(restaurant.cuisines) && restaurant.cuisines.length > 0
+                                  ? restaurant.cuisines[0]
+                                  : 'Restaurant'}
+                              </span>
+                            </div>
+                            {/* Bookmark Button */}
+                            <button
+                              type="button"
+                              aria-label={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
+                              onClick={async (e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                const { data } = await supabase.auth.getUser();
+                                if (!data?.user) {
+                                  toast({
+                                    title: 'Sign in required',
+                                    description: 'Create a free account to save restaurants to your favorites.',
+                                  });
+                                  return;
+                                }
+                                try {
+                                  const wasBookmarked = isBookmarked(restaurant.id);
+                                  await toggleBookmark(restaurant.id);
+                                  toast({
+                                    title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
+                                    description: 'You can view your favorites in your profile.',
+                                  });
+                                } catch (_) {}
+                              }}
+                              className={`flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full transition-colors ${
+                                isBookmarked(restaurant.id) ? 'text-red-600 bg-red-50' : 'text-gray-400 bg-gray-100 hover:text-red-500'
+                              }`}
+                              title={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
+                            >
+                              <Heart className="w-4 h-4" fill={isBookmarked(restaurant.id) ? 'currentColor' : 'none'} />
+                            </button>
+                          </div>
+                          
+                          <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+                            {restaurant.name || 'Restaurant'}
+                          </h3>
+
+                          <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                            {description.length > 120 ? description.slice(0, 120) + '...' : description}
+                          </p>
+
+                          <div className="flex flex-wrap gap-2 mb-3">
                             {restaurant.ratings?.googleRating && !isNaN(restaurant.ratings.googleRating) && (
-                              <Badge className="bg-white/95 text-gray-900 flex items-center gap-1">
-                                <Star className="w-3.5 h-3.5 text-yellow-500" />
+                              <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
+                                <Star className="w-3 h-3" />
                                 {parseFloat(restaurant.ratings.googleRating).toFixed(1)}
-                              </Badge>
+                              </span>
                             )}
                             {restaurant.pricing?.priceRange && (
-                              <Badge className="bg-white/85 text-gray-900">
+                              <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
                                 {String(restaurant.pricing.priceRange)}
-                              </Badge>
+                              </span>
+                            )}
+                            {restaurant.cuisines && Array.isArray(restaurant.cuisines) && restaurant.cuisines.length > 1 && (
+                              <span className="inline-flex items-center text-xs font-medium bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full">
+                                {restaurant.cuisines.slice(0, 2).filter(c => c).join(' · ')}
+                              </span>
                             )}
                           </div>
-                        </Link>
-                      </div>
 
-                      <div className="p-6 flex flex-col flex-grow space-y-4">
-                        <div className="flex items-start gap-3">
-                          <div className="bg-blue-50 text-blue-600 rounded-lg p-2 shadow-inner flex-shrink-0">
-                            <UtensilsCrossed className="w-5 h-5" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h3 className="text-xl font-semibold text-gray-900 leading-tight">
-                              {restaurant.name || 'Restaurant'}
-                            </h3>
-                            {restaurant.cuisines && Array.isArray(restaurant.cuisines) && restaurant.cuisines.length > 0 && (
-                              <p className="text-xs uppercase tracking-wide text-blue-600 font-semibold">
-                                {restaurant.cuisines.filter(c => c).join(' · ')}
-                              </p>
-                            )}
-                          </div>
-                        </div>
+                          {/* Restaurant Promotion Card */}
+                          {restaurant.id && (
+                            <div className="mb-4">
+                              <RestaurantPromotionCard
+                                restaurantId={restaurant.id}
+                                compact={true}
+                                initialScore={restaurantPromotionScores[restaurant.id] || {
+                                  restaurant_id: restaurant.id,
+                                  total_score: 0,
+                                  monthly_score: 0,
+                                  weekly_score: 0,
+                                  past_28_days_score: 0,
+                                }}
+                              />
+                            </div>
+                          )}
 
-                        <p className="text-sm text-gray-600 leading-relaxed flex-grow">
-                          {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
-                        </p>
-
-                        <Link
-                          href={restaurantUrl}
-                          className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-orange-600"
-                        >
-                          View Restaurant
-                          <ArrowRight className="w-4 h-4" />
-                        </Link>
-                      </div>
+                          <Link
+                            href={restaurantUrl}
+                            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
+                          >
+                            View Restaurant
+                            <ArrowRight className="w-4 h-4" />
+                          </Link>
+                        </CardContent>
+                      </Card>
                     </motion.article>
                   );
                 })}
               </div>
 
-              {/* Remaining Restaurants (7+) - Simple List Format */}
-              {safeRestaurants.length > 6 && (
-                <div className="space-y-6">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="mb-6"
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-xl font-semibold text-gray-800">
-                        More Restaurants in {safeDestination.fullName}
-                      </h3>
-                      <Link href={`/destinations/${safeDestination.id}/restaurants`} className="text-blue-600 hover:text-blue-700 font-medium text-sm flex items-center gap-1">
-                        View All
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </Link>
-                    </div>
-                    <p className="text-sm text-gray-600">
-                      Discover {safeRestaurants.length - 6} more curated dining experiences
-                    </p>
-                  </motion.div>
-
-                  {safeRestaurants.slice(6).map((restaurant, index) => {
-                    if (!restaurant || !restaurant.id || !restaurant.slug) return null;
-                    
-                    const restaurantUrl = `/destinations/${safeDestination.id}/restaurants/${restaurant.slug}`;
-                    const imageFirst = index % 2 === 0;
-
-                    return (
-                      <motion.article
-                        key={restaurant.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        className="border border-blue-100 shadow-lg overflow-hidden rounded-xl bg-white hover:shadow-xl transition-shadow"
-                      >
-                        <div className={`flex flex-col lg:flex-row ${imageFirst ? '' : 'lg:flex-row-reverse'}`}>
-                          {/* Image */}
-                          <div className="relative w-full lg:w-1/3 h-48 lg:min-h-[200px]">
-                            <Link href={restaurantUrl}>
-                              <img
-                                src={restaurant.heroImage || safeDestination.imageUrl || '/placeholder-restaurant.jpg'}
-                                alt={restaurant.imageAlt || restaurant.name || 'Restaurant'}
-                                className="w-full h-full object-cover"
-                                onError={(e) => {
-                                  e.target.src = safeDestination.imageUrl || '/placeholder-restaurant.jpg';
-                                }}
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-                              <div className="absolute top-3 left-3 flex gap-2">
-                                {restaurant.ratings?.googleRating && !isNaN(restaurant.ratings.googleRating) && (
-                                  <Badge className="bg-white/95 text-gray-900 flex items-center gap-1 text-xs">
-                                    <Star className="w-3 h-3 text-yellow-500" />
-                                    {parseFloat(restaurant.ratings.googleRating).toFixed(1)}
-                                  </Badge>
-                                )}
-                                {restaurant.pricing?.priceRange && (
-                                  <Badge className="bg-white/85 text-gray-900 text-xs">
-                                    {String(restaurant.pricing.priceRange)}
-                                  </Badge>
-                                )}
-                              </div>
-                            </Link>
-                          </div>
-
-                          {/* Content */}
-                          <div className="w-full lg:w-2/3 p-5 lg:p-6 flex flex-col gap-3">
-                            <div className="flex items-start justify-between gap-3">
-                              <div className="flex-1">
-                                <Link href={restaurantUrl}>
-                                  <h3 className="text-lg lg:text-xl font-semibold text-gray-900 mb-1 hover:text-purple-600 transition-colors">
-                                    {restaurant.name || 'Restaurant'}
-                                  </h3>
-                                </Link>
-                                {restaurant.cuisines && Array.isArray(restaurant.cuisines) && restaurant.cuisines.length > 0 && (
-                                  <p className="text-xs uppercase tracking-wide text-blue-600 font-semibold mb-2">
-                                    {restaurant.cuisines.filter(c => c).join(' · ')}
-                                  </p>
-                                )}
-                              </div>
-                            </div>
-
-                            <p className="text-sm text-gray-600 line-clamp-2">
-                              {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
-                            </p>
-
-                            <div className="flex items-center justify-between mt-auto pt-2">
-                              <div className="flex items-center gap-4 text-xs text-gray-500">
-                                {restaurant.ratings?.reviewCount && (
-                                  <span>{restaurant.ratings.reviewCount.toLocaleString()} reviews</span>
-                                )}
-                                {restaurant.contact?.address && (
-                                  <span className="truncate max-w-[200px]">
-                                    {restaurant.contact.address.split(',')[0]}
-                                  </span>
-                                )}
-                              </div>
-                              <Link href={restaurantUrl}>
-                                <Button variant="outline" size="sm" className="gap-2">
-                                  View Details
-                                  <ArrowRight className="w-3.5 h-3.5" />
-                                </Button>
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      </motion.article>
-                    );
-                  })}
-                </div>
-              )}
+              {/* View All Button */}
+              <div className="text-center mt-10">
+                <Button
+                  asChild
+                  size="lg"
+                  className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 px-8 py-6"
+                >
+                  <Link href={`/destinations/${safeDestination.id}/restaurants`}>
+                    View All Restaurants in {safeDestination.fullName}
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+              </div>
             </div>
           </section>
         )}
