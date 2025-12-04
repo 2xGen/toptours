@@ -21,6 +21,10 @@ export const STRIPE_PRICE_IDS = {
   '1000_points': process.env.STRIPE_1000_POINTS_PRICE_ID,
   '3000_points': process.env.STRIPE_3000_POINTS_PRICE_ID,
   '5000_points': process.env.STRIPE_5000_POINTS_PRICE_ID,
+  
+  // Restaurant Premium Subscriptions
+  restaurant_premium_monthly: process.env.STRIPE_RESTAURANT_PREMIUM_MONTHLY_PRICE_ID,
+  restaurant_premium_yearly: process.env.STRIPE_RESTAURANT_PREMIUM_YEARLY_PRICE_ID,
 };
 
 // Plan to tier mapping

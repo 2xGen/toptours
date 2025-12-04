@@ -1,6 +1,10 @@
 import { getLeaderboardTours, getTopPromoters } from '@/lib/promotionSystem';
 import HomePageClient from './HomePageClient';
 
+// Revalidate homepage every 60 seconds for fresh leaderboard data
+// This balances cost savings with freshness
+export const revalidate = 60;
+
 export default async function HomePage() {
   let formattedTours = [];
   let topPromoters = [];

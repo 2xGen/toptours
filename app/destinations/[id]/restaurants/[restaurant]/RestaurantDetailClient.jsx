@@ -49,9 +49,19 @@ import {
   TrendingUp,
   Heart,
   Share2,
+  Crown,
 } from 'lucide-react';
+import { 
+  PremiumHeroCTA, 
+  PremiumMidCTA, 
+  PremiumEndCTA, 
+  PremiumStickyCTA,
+  AnimatedPremiumBadge,
+} from '@/components/restaurant/RestaurantPremiumCTAs';
+import { PromoteRestaurantBanner } from '@/components/restaurant/PromoteRestaurantBanner';
+import { isPremiumRestaurant, getPremiumConfig } from '@/lib/restaurantPremium';
 
-export default function RestaurantDetailClient({ destination, restaurant, otherRestaurants, initialPromotionScore = null, trendingTours = [], trendingRestaurants = [] }) {
+export default function RestaurantDetailClient({ destination, restaurant, otherRestaurants, initialPromotionScore = null, trendingTours = [], trendingRestaurants = [], premiumSubscription = null }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showStickyButton, setShowStickyButton] = useState(true);
   const [user, setUser] = useState(null);
@@ -376,57 +386,61 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <UtensilsCrossed className="w-5 h-5 text-blue-200" />
-                <span className="text-white font-medium">
-                  {headingCuisine} in {destination.name}
-                </span>
-              </div>
-              
-              <div className="flex items-center justify-center gap-3 mb-4 md:mb-6">
-                <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white">
-                  {restaurant.name}
-                </h1>
-                <button
-                  onClick={() => setShowShareModal(true)}
-                  className="flex-shrink-0 p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors"
-                  aria-label="Share this restaurant"
-                  title="Share this restaurant"
-                >
-                  <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
-                </button>
-              </div>
+              {/* Restaurant Name */}
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white mb-4 md:mb-6 flex items-center justify-center gap-3">
+                {restaurant.name}
+                {isPremiumRestaurant(premiumSubscription) && (
+                  <AnimatedPremiumBadge subscription={premiumSubscription} />
+                )}
+              </h1>
 
+              {/* Description */}
               <p className="text-lg sm:text-xl text-white/90 mb-6 max-w-3xl mx-auto">
                 {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
               </p>
 
-              <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+              {/* Restaurant Info - styled as subtle text, not buttons */}
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-8 text-white/80 text-sm sm:text-base">
+                {cuisines.length > 0 && (
+                  <span className="flex items-center gap-2">
+                    <UtensilsCrossed className="w-4 h-4" />
+                    {cuisines.join(' · ')}
+                  </span>
+                )}
+                
+                {cuisines.length > 0 && restaurant.pricing?.priceRange && (
+                  <span className="text-white/40">•</span>
+                )}
+                
+                {restaurant.pricing?.priceRange && (
+                  <span>{restaurant.pricing.priceRange}</span>
+                )}
+                
+                {(cuisines.length > 0 || restaurant.pricing?.priceRange) && restaurant.ratings?.googleRating && (
+                  <span className="text-white/40">•</span>
+                )}
+                
                 {restaurant.ratings?.googleRating && (
-                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white">
-                    <Star className="w-5 h-5" />
-                    <span className="font-semibold">{restaurant.ratings.googleRating.toFixed(1)}</span>
+                  <span className="flex items-center gap-1.5">
+                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <span className="font-medium text-white">{restaurant.ratings.googleRating.toFixed(1)}</span>
                     {restaurant.ratings.reviewCount && (
-                      <span className="text-white/80 text-sm">
-                        ({restaurant.ratings.reviewCount.toLocaleString()} reviews)
+                      <span className="text-white/70">
+                        ({restaurant.ratings.reviewCount.toLocaleString()})
                       </span>
                     )}
-                  </div>
+                  </span>
                 )}
-
-                {restaurant.pricing?.priceRange && (
-                  <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm">
-                    {restaurant.pricing.priceRange}
-                  </div>
-                )}
-
-                {cuisines.length > 0 && (
-                  <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm">
-                    {cuisines.join(' · ')}
-                  </div>
-                )}
+                
+                <span className="text-white/40">•</span>
+                
+                <span className="flex items-center gap-1.5">
+                  <MapPin className="w-4 h-4" />
+                  {destination.name}
+                </span>
               </div>
 
+              {/* Action Buttons */}
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <button
                   type="button"
@@ -451,44 +465,50 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                       });
                     } catch (_) {}
                   }}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full transition-colors bg-white/20 backdrop-blur-sm hover:bg-white/30 ${
-                    isBookmarked(restaurant.id) ? 'text-red-400' : 'text-white'
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border transition-all ${
+                    isBookmarked(restaurant.id) 
+                      ? 'bg-red-500/20 border-red-400/50 text-white hover:bg-red-500/30' 
+                      : 'bg-white/10 border-white/30 text-white hover:bg-white/20'
                   }`}
                   title={isBookmarked(restaurant.id) ? 'Saved' : 'Save to favorites'}
                 >
-                  <Heart className="w-5 h-5" fill={isBookmarked(restaurant.id) ? 'currentColor' : 'none'} />
+                  <Heart className="w-4 h-4" fill={isBookmarked(restaurant.id) ? 'currentColor' : 'none'} />
                   <span className="text-sm font-medium">{isBookmarked(restaurant.id) ? 'Saved' : 'Save'}</span>
                 </button>
 
-                {/* Reserve/Visit Website Button */}
-                {(restaurant.contact?.website || restaurant.booking?.partnerUrl) && (
-                  <Button
-                    onClick={() => {
-                      if (user) {
-                        const url = restaurant.booking?.partnerUrl || restaurant.contact?.website;
-                        if (url) {
-                          window.open(url, '_blank', 'noopener,noreferrer');
-                        }
-                      } else {
-                        setShowSignInModal(true);
-                      }
-                    }}
-                    className="bg-white text-blue-600 hover:bg-gray-100 font-semibold px-6 py-2"
-                  >
-                    {restaurant.booking?.partnerUrl ? 'Reserve a Table' : 'Visit Website'}
-                  </Button>
-                )}
+                <button
+                  onClick={() => setShowShareModal(true)}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border bg-white/10 border-white/30 text-white hover:bg-white/20 transition-all"
+                  aria-label="Share this restaurant"
+                  title="Share this restaurant"
+                >
+                  <Share2 className="w-4 h-4" />
+                  <span className="text-sm font-medium">Share</span>
+                </button>
 
                 <Button
                   asChild
-                  className="bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 gap-2"
+                  className="bg-white text-blue-600 hover:bg-white/90 gap-2 font-medium"
                 >
                   <Link href={`/destinations/${destination.id}`}>
+                    <MapPin className="w-4 h-4" />
                     Explore {destination.name}
-                    <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
               </div>
+
+              {/* Premium Hero CTA - Full width below action buttons */}
+              {isPremiumRestaurant(premiumSubscription) && (restaurant.contact?.website || restaurant.booking?.partnerUrl) && (
+                <div className="mt-4 w-full max-w-md mx-auto">
+                  <PremiumHeroCTA 
+                    subscription={premiumSubscription} 
+                    restaurant={restaurant}
+                    user={user}
+                    onAuthRequired={() => setShowSignInModal(true)}
+                    fullWidth
+                  />
+                </div>
+              )}
             </motion.div>
           </div>
         </section>
@@ -944,6 +964,24 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                   </div>
                 </div>
               </motion.section>
+            )}
+
+            {/* Premium Mid-Page CTA or Promote Banner */}
+            {isPremiumRestaurant(premiumSubscription) ? (
+              (restaurant.contact?.website || restaurant.booking?.partnerUrl) && (
+                <PremiumMidCTA 
+                  subscription={premiumSubscription} 
+                  restaurant={restaurant}
+                  user={user}
+                  onAuthRequired={() => setShowSignInModal(true)}
+                />
+              )
+            ) : (
+              <PromoteRestaurantBanner 
+                restaurant={restaurant} 
+                destination={destination}
+                user={user}
+              />
             )}
 
             <motion.div
@@ -1747,6 +1785,16 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
           </section>
         )}
 
+        {/* Premium End CTA - Above Other Restaurants */}
+        {isPremiumRestaurant(premiumSubscription) && (restaurant.contact?.website || restaurant.booking?.partnerUrl) && (
+          <PremiumEndCTA 
+            subscription={premiumSubscription} 
+            restaurant={restaurant}
+            user={user}
+            onAuthRequired={() => setShowSignInModal(true)}
+          />
+        )}
+
         <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -2018,7 +2066,15 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
 
       </div>
 
-      {showStickyButton && (
+      {/* Sticky Button - Premium or Default */}
+      {isPremiumRestaurant(premiumSubscription) && (restaurant.contact?.website || restaurant.booking?.partnerUrl) ? (
+        <PremiumStickyCTA 
+          subscription={premiumSubscription} 
+          restaurant={restaurant}
+          user={user}
+          onAuthRequired={() => setShowSignInModal(true)}
+        />
+      ) : showStickyButton && (
         <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 transition-opacity duration-300">
           <div className="flex flex-col items-end gap-2">
             <button
@@ -2283,6 +2339,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
           </div>
         </div>
       )}
+
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />

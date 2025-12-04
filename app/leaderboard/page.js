@@ -3,6 +3,10 @@ import { getCachedTour, cacheTour } from '@/lib/viatorCache';
 import { getViatorDestinationById } from '@/lib/supabaseCache';
 import LeaderboardClient from './LeaderboardClient';
 
+// Force dynamic rendering to always show fresh leaderboard data
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 // Helper to generate slug from name
 function generateSlug(name) {
   if (!name) return null;

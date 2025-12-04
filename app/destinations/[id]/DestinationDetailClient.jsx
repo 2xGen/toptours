@@ -6,7 +6,7 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
-  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, Info, Share2, Heart
+  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, Info, Share2, Heart, Crown
 } from 'lucide-react';
 import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import { Input } from '@/components/ui/input';
@@ -47,7 +47,7 @@ function getDisplayCategoryName(categoryName) {
   return categoryMap[categoryName] || categoryName;
 }
 
-export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], hardcodedTours = {}, restaurants = [], restaurantPromotionScores = {} }) {
+export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], hardcodedTours = {}, restaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [] }) {
   
   // Ensure destination exists
   if (!destination) {
@@ -1157,8 +1157,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
                               </div>
                               
                               <Link href={restaurantUrl}>
-                                <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2 hover:text-purple-600 transition-colors flex items-center gap-1.5">
                                   {trending.restaurant_name || `Restaurant #${restaurantId}`}
+                                  {(premiumRestaurantIds.includes(restaurantId) || premiumRestaurantIds.includes(Number(restaurantId))) && (
+                                    <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Featured Restaurant" />
+                                  )}
                                 </h3>
                               </Link>
 
@@ -1536,8 +1539,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
                             </button>
                           </div>
                           
-                          <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+                          <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 flex items-center gap-1.5">
                             {restaurant.name || 'Restaurant'}
+                            {(premiumRestaurantIds.includes(restaurant.id) || premiumRestaurantIds.includes(Number(restaurant.id))) && (
+                              <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Featured Restaurant" />
+                            )}
                           </h3>
 
                           <p className="text-sm text-gray-600 mb-4 line-clamp-2">

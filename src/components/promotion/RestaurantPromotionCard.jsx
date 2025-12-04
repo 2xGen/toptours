@@ -63,7 +63,8 @@ export default function RestaurantPromotionCard({ restaurantId, initialScore = n
   const loadScore = async () => {
     try {
       setLoadingScore(true);
-      const response = await fetch(`/api/internal/promotion/restaurant-score?restaurantId=${restaurantId}`);
+      // Use fresh=true to bypass CDN cache for logged-in users
+      const response = await fetch(`/api/internal/promotion/restaurant-score?restaurantId=${restaurantId}&fresh=true`);
       if (response.ok) {
         const data = await response.json();
         setScore(data);

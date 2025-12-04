@@ -96,6 +96,13 @@ export async function POST(request) {
 async function handleCheckoutSessionCompleted(session) {
   const supabase = createSupabaseServiceRoleClient();
   const metadata = session.metadata || {};
+  
+  // Check if this is a restaurant premium subscription
+  if (metadata.type === 'restaurant_premium') {
+    await handleRestaurantPremiumCheckout(session, supabase);
+    return;
+  }
+  
   const userId = metadata.userId;
 
   if (!userId) {
@@ -289,6 +296,7 @@ async function handleCheckoutSessionCompleted(session) {
               tourName: restaurantPromo?.restaurant_name || 'Your selected restaurant',
               points: packageInfo.points,
               tourUrl: restaurantUrl,
+              type: 'restaurant',
             });
             if (emailResult.success) {
               console.log(`✅ Instant boost confirmation email sent to ${user.email}`);
@@ -371,6 +379,13 @@ async function handleCheckoutSessionCompleted(session) {
 async function handleSubscriptionUpdate(subscription) {
   const supabase = createSupabaseServiceRoleClient();
   const metadata = subscription.metadata || {};
+  
+  // Check if this is a restaurant premium subscription
+  if (metadata.type === 'restaurant_premium') {
+    await handleRestaurantPremiumSubscriptionUpdate(subscription, supabase);
+    return;
+  }
+  
   const userId = metadata.userId;
   const plan = metadata.plan;
   const tier = metadata.tier || PLAN_TO_TIER[plan];
@@ -507,6 +522,13 @@ async function handleSubscriptionUpdate(subscription) {
 async function handleSubscriptionDeleted(subscription) {
   const supabase = createSupabaseServiceRoleClient();
   const metadata = subscription.metadata || {};
+  
+  // Check if this is a restaurant premium subscription
+  if (metadata.type === 'restaurant_premium') {
+    await handleRestaurantPremiumSubscriptionDeleted(subscription, supabase);
+    return;
+  }
+  
   const userId = metadata.userId;
 
   if (!userId) {
@@ -577,6 +599,206 @@ async function handleSubscriptionDeleted(subscription) {
       // Don't fail the webhook if email fails
     }
   }
+}
+
+/**
+ * Handle restaurant premium subscription checkout
+ */
+async function handleRestaurantPremiumCheckout(session, supabase) {
+  const metadata = session.metadata || {};
+  const subscriptionId = session.subscription;
+  
+  const restaurantId = parseInt(metadata.restaurantId);
+  const destinationId = metadata.destinationId;
+  const restaurantSlug = metadata.restaurantSlug;
+  const restaurantName = metadata.restaurantName;
+  const planType = metadata.planType || 'monthly';
+  
+  if (!restaurantId || !destinationId || !restaurantSlug || !subscriptionId) {
+    console.error('Missing required fields for restaurant premium checkout:', metadata);
+    return;
+  }
+  
+  // Get subscription details from Stripe
+  let currentPeriodEnd = new Date();
+  currentPeriodEnd.setDate(currentPeriodEnd.getDate() + (planType === 'yearly' ? 365 : 30));
+  
+  try {
+    const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+    if (subscription.current_period_end) {
+      currentPeriodEnd = new Date(subscription.current_period_end * 1000);
+    }
+  } catch (err) {
+    console.error('Error fetching subscription details:', err);
+  }
+  
+  // Update the restaurant premium subscription
+  const { error } = await supabase
+    .from('restaurant_premium_subscriptions')
+    .upsert({
+      restaurant_id: restaurantId,
+      destination_id: destinationId,
+      restaurant_slug: restaurantSlug,
+      restaurant_name: restaurantName || null,
+      stripe_subscription_id: subscriptionId,
+      stripe_customer_id: session.customer,
+      stripe_price_id: session.line_items?.data?.[0]?.price?.id || null,
+      plan_type: planType,
+      status: 'active',
+      current_period_start: new Date().toISOString(),
+      current_period_end: currentPeriodEnd.toISOString(),
+      layout_preset: metadata.layoutPreset || 'ocean',
+      color_scheme: metadata.colorScheme || 'blue',
+      hero_cta_index: parseInt(metadata.heroCTAIndex) || 0,
+      mid_cta_index: parseInt(metadata.midCTAIndex) || 0,
+      end_cta_index: parseInt(metadata.endCTAIndex) || 0,
+      sticky_cta_index: parseInt(metadata.stickyCTAIndex) || 0,
+      user_id: metadata.userId || null, // Link to Supabase user for self-service management
+      purchaser_email: session.customer_email || null,
+    }, {
+      onConflict: 'restaurant_id,destination_id',
+    });
+  
+  if (error) {
+    console.error('Error updating restaurant premium subscription:', error);
+  } else {
+    console.log(`✅ Restaurant premium subscription activated for ${restaurantName || restaurantSlug} (${restaurantId})`);
+    
+    // Send confirmation email
+    const customerEmail = session.customer_email;
+    if (customerEmail) {
+      try {
+        const { sendRestaurantPremiumConfirmationEmail } = await import('@/lib/email');
+        await sendRestaurantPremiumConfirmationEmail({
+          to: customerEmail,
+          restaurantName: restaurantName || restaurantSlug,
+          planType: planType,
+          destinationId: destinationId,
+          restaurantSlug: restaurantSlug,
+          endDate: currentPeriodEnd.toISOString(),
+        });
+        console.log(`✅ Restaurant premium confirmation email sent to ${customerEmail}`);
+      } catch (emailError) {
+        console.error('Error sending restaurant premium confirmation email:', emailError);
+        // Don't fail the webhook if email fails
+      }
+    }
+  }
+}
+
+/**
+ * Handle restaurant premium subscription update
+ */
+async function handleRestaurantPremiumSubscriptionUpdate(subscription, supabase) {
+  const metadata = subscription.metadata || {};
+  
+  if (metadata.type !== 'restaurant_premium') return false;
+  
+  const restaurantId = parseInt(metadata.restaurantId);
+  const destinationId = metadata.destinationId;
+  
+  if (!restaurantId || !destinationId) {
+    console.error('Missing restaurant info in premium subscription metadata');
+    return false;
+  }
+  
+  // Determine status
+  let status = subscription.status === 'active' ? 'active' : 'inactive';
+  if (subscription.status === 'active' && subscription.cancel_at_period_end) {
+    status = 'pending_cancellation';
+  }
+  
+  // Calculate period end
+  let currentPeriodEnd = null;
+  if (subscription.current_period_end) {
+    currentPeriodEnd = new Date(subscription.current_period_end * 1000).toISOString();
+  }
+  
+  const { error } = await supabase
+    .from('restaurant_premium_subscriptions')
+    .update({
+      stripe_subscription_id: subscription.id,
+      stripe_price_id: subscription.items.data[0]?.price?.id,
+      status: status,
+      current_period_end: currentPeriodEnd,
+    })
+    .eq('restaurant_id', restaurantId)
+    .eq('destination_id', destinationId);
+  
+  if (error) {
+    console.error('Error updating restaurant premium subscription:', error);
+  } else {
+    console.log(`Restaurant premium subscription updated for ${restaurantId}: ${status}`);
+  }
+  
+  return true;
+}
+
+/**
+ * Handle restaurant premium subscription deleted/cancelled
+ */
+async function handleRestaurantPremiumSubscriptionDeleted(subscription, supabase) {
+  const metadata = subscription.metadata || {};
+  
+  if (metadata.type !== 'restaurant_premium') return false;
+  
+  const restaurantId = parseInt(metadata.restaurantId);
+  const destinationId = metadata.destinationId;
+  const restaurantSlug = metadata.restaurantSlug;
+  const restaurantName = metadata.restaurantName;
+  
+  if (!restaurantId || !destinationId) {
+    console.error('Missing restaurant info in premium subscription metadata');
+    return false;
+  }
+  
+  // Get the subscription record to find the purchaser email and period end
+  const { data: subRecord } = await supabase
+    .from('restaurant_premium_subscriptions')
+    .select('purchaser_email, current_period_end, restaurant_name, restaurant_slug')
+    .eq('restaurant_id', restaurantId)
+    .eq('destination_id', destinationId)
+    .single();
+  
+  const { error } = await supabase
+    .from('restaurant_premium_subscriptions')
+    .update({
+      status: 'cancelled',
+      stripe_subscription_id: null,
+    })
+    .eq('restaurant_id', restaurantId)
+    .eq('destination_id', destinationId);
+  
+  if (error) {
+    console.error('Error cancelling restaurant premium subscription:', error);
+  } else {
+    console.log(`✅ Restaurant premium subscription cancelled for ${restaurantId}`);
+    
+    // Send cancellation email
+    const customerEmail = subRecord?.purchaser_email;
+    const endDate = subRecord?.current_period_end || new Date().toISOString();
+    const name = restaurantName || subRecord?.restaurant_name || 'Your Restaurant';
+    const slug = restaurantSlug || subRecord?.restaurant_slug;
+    
+    if (customerEmail && slug) {
+      try {
+        const { sendRestaurantPremiumCancellationEmail } = await import('@/lib/email');
+        await sendRestaurantPremiumCancellationEmail({
+          to: customerEmail,
+          restaurantName: name,
+          destinationId: destinationId,
+          restaurantSlug: slug,
+          endDate: endDate,
+        });
+        console.log(`✅ Restaurant premium cancellation email sent to ${customerEmail}`);
+      } catch (emailError) {
+        console.error('Error sending restaurant premium cancellation email:', emailError);
+        // Don't fail the webhook if email fails
+      }
+    }
+  }
+  
+  return true;
 }
 
 /**

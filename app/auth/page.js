@@ -280,6 +280,17 @@ function AuthPageContent() {
           throw profileError;
         }
 
+        // Send welcome email (don't block on failure)
+        try {
+          fetch('/api/internal/send-welcome-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId: user.id }),
+          }).catch(err => console.error('Failed to send welcome email:', err));
+        } catch (e) {
+          console.error('Error triggering welcome email:', e);
+        }
+
         setMessage('Nickname saved! Redirecting...');
         setTimeout(() => {
           window.location.href = '/';

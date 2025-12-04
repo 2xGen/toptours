@@ -19,6 +19,7 @@ import {
   TrendingUp,
   Info,
   Share2,
+  Crown,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { getTourUrl } from '@/utils/tourHelpers';
@@ -31,7 +32,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { Heart } from 'lucide-react';
 import ShareModal from '@/components/sharing/ShareModal';
 
-export default function RestaurantsListClient({ destination, restaurants, trendingTours = [], trendingRestaurants = [], restaurantPromotionScores = {} }) {
+export default function RestaurantsListClient({ destination, restaurants, trendingTours = [], trendingRestaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [] }) {
   const { isBookmarked, toggle } = useRestaurantBookmarks();
   const supabase = createSupabaseBrowserClient();
   const { toast } = useToast();
@@ -324,8 +325,11 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
                               </div>
                               
                               <Link href={restaurantUrl}>
-                                <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2 hover:text-purple-600 transition-colors flex items-center gap-1.5">
                                   {trending.restaurant_name || `Restaurant #${restaurantId}`}
+                                  {(premiumRestaurantIds.includes(restaurantId) || premiumRestaurantIds.includes(Number(restaurantId))) && (
+                                    <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Featured Restaurant" />
+                                  )}
                                 </h3>
                               </Link>
 
@@ -399,8 +403,11 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
                     </div>
                     
                     <div className="flex items-start justify-between gap-2 mb-3">
-                      <h3 className="text-lg font-bold text-gray-900 line-clamp-2">
+                      <h3 className="text-lg font-bold text-gray-900 line-clamp-2 flex items-center gap-1.5">
                         {restaurant.name}
+                        {(premiumRestaurantIds.includes(restaurant.id) || premiumRestaurantIds.includes(Number(restaurant.id))) && (
+                          <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Featured Restaurant" />
+                        )}
                       </h3>
                       <button
                         type="button"

@@ -12,6 +12,7 @@ import {
   getRestaurantsForDestination as getRestaurantsForDestinationFromStatic,
 } from '../restaurantsData';
 import { getRestaurantPromotionScore, getTrendingToursByDestination, getTrendingRestaurantsByDestination } from '@/lib/promotionSystem';
+import { getRestaurantPremiumSubscription } from '@/lib/restaurantPremiumServer';
 
 // Old restaurant slugs with their expected names for fuzzy matching
 const OLD_RESTAURANT_REDIRECTS = {
@@ -241,6 +242,16 @@ export default async function RestaurantPage({ params }) {
     console.error('Error fetching trending restaurants:', error);
   }
 
+  // Get premium subscription status for this restaurant
+  let premiumSubscription = null;
+  if (restaurant.id) {
+    try {
+      premiumSubscription = await getRestaurantPremiumSubscription(restaurant.id, destinationId);
+    } catch (error) {
+      console.error('Error fetching restaurant premium subscription:', error);
+    }
+  }
+
   return (
     <RestaurantDetailClient
       destination={destination}
@@ -249,6 +260,7 @@ export default async function RestaurantPage({ params }) {
       initialPromotionScore={initialPromotionScore}
       trendingTours={trendingTours}
       trendingRestaurants={trendingRestaurants}
+      premiumSubscription={premiumSubscription}
     />
   );
 }

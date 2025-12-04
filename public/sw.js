@@ -1,7 +1,7 @@
 // Service Worker for TopTours.ai PWA
-// Basic caching for offline support
+// Network-first for pages, cache-first for static assets
 
-const CACHE_NAME = 'toptours-ai-v1';
+const CACHE_NAME = 'toptours-ai-v11'; // Added self-service restaurant settings
 const urlsToCache = [
   '/',
   '/tours',
@@ -47,49 +47,92 @@ self.addEventListener('activate', (event) => {
   return self.clients.claim(); // Take control of all pages immediately
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - network first for pages, cache first for static assets
 self.addEventListener('fetch', (event) => {
-  // Only cache GET requests
+  // Only handle GET requests
   if (event.request.method !== 'GET') {
     return;
   }
 
-  // Skip API calls and external resources
+  // Skip API calls and external resources - always network
   if (
     event.request.url.includes('/api/') ||
     event.request.url.includes('viator.com') ||
     event.request.url.includes('supabase.co') ||
     event.request.url.includes('googleapis.com') ||
-    event.request.url.includes('gstatic.com')
+    event.request.url.includes('gstatic.com') ||
+    event.request.url.includes('stripe.com')
   ) {
-    return; // Always fetch from network for API calls
+    return; // Let browser handle normally
   }
 
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        // Return cached version or fetch from network
-        return response || fetch(event.request).then((response) => {
-          // Don't cache if not a valid response
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
+  // For HTML pages (navigation requests): NETWORK FIRST
+  // This ensures you always get fresh content
+  if (event.request.mode === 'navigate' || event.request.destination === 'document') {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          // Cache the fresh response
+          if (response && response.status === 200) {
+            const responseToCache = response.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseToCache);
+            });
           }
-
-          // Clone the response
-          const responseToCache = response.clone();
-
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseToCache);
+          return response;
+        })
+        .catch(() => {
+          // Network failed, try cache
+          return caches.match(event.request).then((cachedResponse) => {
+            return cachedResponse || caches.match('/');
           });
+        })
+    );
+    return;
+  }
 
+  // For static assets (images, CSS, JS): CACHE FIRST with network fallback
+  // This is faster for assets that rarely change
+  if (
+    event.request.destination === 'image' ||
+    event.request.destination === 'style' ||
+    event.request.destination === 'script' ||
+    event.request.destination === 'font' ||
+    event.request.url.includes('/_next/static/')
+  ) {
+    event.respondWith(
+      caches.match(event.request).then((cachedResponse) => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+        return fetch(event.request).then((response) => {
+          if (response && response.status === 200) {
+            const responseToCache = response.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseToCache);
+            });
+          }
           return response;
         });
       })
-      .catch(() => {
-        // If both cache and network fail, return offline page if available
-        if (event.request.destination === 'document') {
-          return caches.match('/');
+    );
+    return;
+  }
+
+  // For everything else: Network first, cache fallback
+  event.respondWith(
+    fetch(event.request)
+      .then((response) => {
+        if (response && response.status === 200 && response.type === 'basic') {
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
         }
+        return response;
+      })
+      .catch(() => {
+        return caches.match(event.request);
       })
   );
 });

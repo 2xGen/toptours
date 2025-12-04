@@ -64,7 +64,8 @@ export default function TourPromotionCard({ productId, initialScore = null, comp
   const loadScore = async () => {
     try {
       setLoadingScore(true);
-      const response = await fetch(`/api/internal/promotion/tour-score?productId=${productId}`);
+      // Use fresh=true to bypass CDN cache for logged-in users
+      const response = await fetch(`/api/internal/promotion/tour-score?productId=${productId}&fresh=true`);
       if (response.ok) {
         const data = await response.json();
         setScore(data);

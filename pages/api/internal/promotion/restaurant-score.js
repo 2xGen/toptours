@@ -6,8 +6,16 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Set cache headers (scores update frequently but can be cached briefly)
-  res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
+  // Check if request is from a logged-in user (has auth cookie or fresh=true param)
+  const wantsFresh = req.query.fresh === 'true' || req.headers.cookie?.includes('sb-');
+  
+  if (wantsFresh) {
+    // Logged-in users get fresh data (no CDN cache)
+    res.setHeader('Cache-Control', 'private, max-age=10, must-revalidate');
+  } else {
+    // Anonymous users get CDN-cached data (cost savings)
+    res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=180');
+  }
 
   try {
     const { restaurantId } = req.query;

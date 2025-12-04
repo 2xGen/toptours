@@ -6,6 +6,7 @@ import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { getRestaurantsForDestination, formatRestaurantForFrontend } from '@/lib/restaurants';
 import { getViatorDestinationById, getViatorDestinationBySlug } from '@/lib/supabaseCache';
+import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { redirect } from 'next/navigation';
 import ErrorBoundary from '@/components/ErrorBoundary';
 
@@ -409,6 +410,16 @@ export default async function DestinationDetailPage({ params }) {
     // Continue with empty scores - page will still work
   }
 
+  // Fetch premium restaurant IDs for this destination (batch query - efficient!)
+  let premiumRestaurantIds = [];
+  try {
+    const premiumSet = await getPremiumRestaurantIds(destination.id);
+    premiumRestaurantIds = Array.from(premiumSet); // Convert Set to Array for JSON serialization
+  } catch (error) {
+    console.error('Error fetching premium restaurant IDs:', error);
+    // Continue with empty array - badges just won't show
+  }
+
   // Fetch hardcoded tours by category (lightweight - no API calls)
   let hardcodedTours = {};
   try {
@@ -584,6 +595,7 @@ export default async function DestinationDetailPage({ params }) {
           hardcodedTours={hardcodedTours}
           restaurants={restaurants}
           restaurantPromotionScores={restaurantPromotionScores}
+          premiumRestaurantIds={premiumRestaurantIds}
         />
       </ErrorBoundary>
     </>

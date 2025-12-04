@@ -7,9 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy, UtensilsCrossed, X } from 'lucide-react';
+import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy, UtensilsCrossed, X, Save, Check } from 'lucide-react';
 import ConfirmDialog from '@/components/ui/ConfirmDialog';
 import { SUBSCRIPTION_PRICING } from '@/lib/promotionSystem';
+import { COLOR_SCHEMES, CTA_OPTIONS } from '@/lib/restaurantPremium';
 import { toast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import NavigationNext from '@/components/NavigationNext';
@@ -47,13 +48,17 @@ export default function ProfilePage() {
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [showDeletePlanConfirm, setShowDeletePlanConfirm] = useState(false);
   const [planToDelete, setPlanToDelete] = useState(null);
+  const [premiumRestaurants, setPremiumRestaurants] = useState([]);
+  const [loadingPortal, setLoadingPortal] = useState(false);
+  const [restaurantEdits, setRestaurantEdits] = useState({}); // Track edits per restaurant
+  const [savingRestaurant, setSavingRestaurant] = useState(null); // Which restaurant is being saved
 
   // Check for tab query parameter
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const tab = params.get('tab');
-      if (tab === 'trip' || tab === 'profile' || tab === 'plan' || tab === 'restaurant') {
+      if (tab === 'trip' || tab === 'profile' || tab === 'plan' || tab === 'restaurant' || tab === 'my-restaurants') {
         setActiveTab(tab);
       }
     }
@@ -146,6 +151,17 @@ export default function ProfilePage() {
               // ignore malformed JSON
             }
           }
+          
+          // Fetch user's premium restaurant subscriptions
+          const { data: premiumSubs } = await supabase
+            .from('restaurant_premium_subscriptions')
+            .select('*')
+            .eq('user_id', currentUser.id)
+            .in('status', ['active', 'pending_cancellation']);
+          
+          if (premiumSubs && premiumSubs.length > 0) {
+            setPremiumRestaurants(premiumSubs);
+          }
         }
       } finally {
         if (mounted) setLoading(false);
@@ -197,7 +213,7 @@ export default function ProfilePage() {
         // Fetch promotion scores for saved tours
         const tourScoresPromises = validTours.map(async ({ productId }) => {
           try {
-            const res = await fetch(`/api/internal/promotion/tour-score?productId=${encodeURIComponent(productId)}`);
+            const res = await fetch(`/api/internal/promotion/tour-score?productId=${encodeURIComponent(productId)}&fresh=true`);
             if (res.ok) {
               const score = await res.json();
               return { productId, score };
@@ -235,7 +251,7 @@ export default function ProfilePage() {
         // Fetch promotion scores for saved restaurants
         const restaurantScoresPromises = validRestaurants.map(async ({ restaurantId }) => {
           try {
-            const res = await fetch(`/api/internal/promotion/restaurant-score?restaurantId=${encodeURIComponent(restaurantId)}`);
+            const res = await fetch(`/api/internal/promotion/restaurant-score?restaurantId=${encodeURIComponent(restaurantId)}&fresh=true`);
             if (res.ok) {
               const score = await res.json();
               return { restaurantId, score };
@@ -622,6 +638,18 @@ export default function ProfilePage() {
               >
                 Plan & Billing
               </button>
+              {premiumRestaurants.length > 0 && (
+                <button
+                  onClick={() => setActiveTab('my-restaurants')}
+                  className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 ${activeTab === 'my-restaurants' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
+                >
+                  <Crown className="w-4 h-4 text-amber-500" />
+                  My Restaurants
+                  <span className="ml-auto bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded-full">
+                    {premiumRestaurants.length}
+                  </span>
+                </button>
+              )}
             </nav>
             <div className="mt-6">
               <Button variant="outline" className="w-full" onClick={async () => { await supabase.auth.signOut(); router.replace('/'); }}>
@@ -1980,6 +2008,251 @@ export default function ProfilePage() {
                     </div>
                   </div>
                 )}
+              </div>
+            )}
+
+            {activeTab === 'my-restaurants' && (
+              <div className="bg-white rounded-xl shadow p-6 space-y-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 rounded-lg bg-amber-100">
+                    <Crown className="w-6 h-6 text-amber-600" />
+                  </div>
+                  <div>
+                    <h1 className="text-2xl font-semibold">My Premium Restaurants</h1>
+                    <p className="text-sm text-gray-600">Manage your restaurant premium listings</p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  {premiumRestaurants.map((restaurant) => {
+                    const key = `${restaurant.restaurant_id}-${restaurant.destination_id}`;
+                    const edits = restaurantEdits[key] || {};
+                    const currentColor = edits.colorScheme ?? restaurant.color_scheme;
+                    const currentHeroCTA = edits.heroCTAIndex ?? restaurant.hero_cta_index ?? 0;
+                    const currentMidCTA = edits.midCTAIndex ?? restaurant.mid_cta_index ?? 0;
+                    const currentStickyCTA = edits.stickyCTAIndex ?? restaurant.sticky_cta_index ?? 0;
+                    const hasChanges = edits.colorScheme !== undefined || edits.heroCTAIndex !== undefined || edits.midCTAIndex !== undefined || edits.stickyCTAIndex !== undefined;
+                    
+                    return (
+                      <div key={key} className="border rounded-xl p-5 hover:shadow-md transition-shadow">
+                        {/* Header row */}
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                          <div>
+                            <div className="flex items-center gap-2 mb-1">
+                              <h3 className="font-semibold text-lg">{restaurant.restaurant_name || restaurant.restaurant_slug}</h3>
+                              <Badge variant="outline" className={restaurant.status === 'active' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-amber-50 text-amber-700 border-amber-200'}>
+                                {restaurant.status === 'active' ? 'Active' : 'Pending Cancellation'}
+                              </Badge>
+                            </div>
+                            <p className="text-sm text-gray-500">
+                              {restaurant.plan_type === 'yearly' ? 'Yearly Plan' : 'Monthly Plan'} • 
+                              Renews {new Date(restaurant.current_period_end).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                            </p>
+                          </div>
+                          <div className="flex gap-2">
+                            <Link
+                              href={`/destinations/${restaurant.destination_id}/restaurants/${restaurant.restaurant_slug}`}
+                              className="inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                              View
+                            </Link>
+                            <Button
+                              onClick={async () => {
+                                setLoadingPortal(true);
+                                try {
+                                  const res = await fetch('/api/internal/restaurant-premium/portal', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ 
+                                      customerId: restaurant.stripe_customer_id,
+                                      returnUrl: window.location.href 
+                                    }),
+                                  });
+                                  const data = await res.json();
+                                  if (data.url) {
+                                    window.location.href = data.url;
+                                  } else {
+                                    throw new Error(data.error || 'Failed to open billing portal');
+                                  }
+                                } catch (error) {
+                                  toast({
+                                    title: 'Error',
+                                    description: error.message,
+                                    variant: 'destructive',
+                                  });
+                                } finally {
+                                  setLoadingPortal(false);
+                                }
+                              }}
+                              disabled={loadingPortal}
+                              variant="outline"
+                              size="sm"
+                            >
+                              Billing
+                            </Button>
+                          </div>
+                        </div>
+
+                        {/* Settings row */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-gray-50 rounded-lg">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Button Color</label>
+                            <div className="flex gap-2">
+                              {Object.entries(COLOR_SCHEMES).map(([schemeKey, scheme]) => {
+                                const colorMap = { blue: '#2563eb', coral: '#f97316', teal: '#0d9488' };
+                                return (
+                                  <button
+                                    key={schemeKey}
+                                    onClick={() => setRestaurantEdits(prev => ({
+                                      ...prev,
+                                      [key]: { ...prev[key], colorScheme: schemeKey }
+                                    }))}
+                                    className={`w-10 h-10 rounded-lg border-2 transition-all ${
+                                      currentColor === schemeKey 
+                                        ? 'border-gray-900 scale-110 shadow-md' 
+                                        : 'border-gray-200 hover:border-gray-400'
+                                    }`}
+                                    style={{ backgroundColor: colorMap[schemeKey] }}
+                                    title={scheme.name}
+                                  >
+                                    {currentColor === schemeKey && (
+                                      <Check className="w-5 h-5 text-white mx-auto" />
+                                    )}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Hero Button</label>
+                            <select
+                              value={currentHeroCTA}
+                              onChange={(e) => setRestaurantEdits(prev => ({
+                                ...prev,
+                                [key]: { ...prev[key], heroCTAIndex: parseInt(e.target.value) }
+                              }))}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                            >
+                              {CTA_OPTIONS.hero.map((option, idx) => (
+                                <option key={idx} value={idx}>{option.text}</option>
+                              ))}
+                            </select>
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Mid-Page Banner</label>
+                            <select
+                              value={currentMidCTA}
+                              onChange={(e) => setRestaurantEdits(prev => ({
+                                ...prev,
+                                [key]: { ...prev[key], midCTAIndex: parseInt(e.target.value) }
+                              }))}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                            >
+                              {CTA_OPTIONS.mid.map((option, idx) => (
+                                <option key={idx} value={idx}>{option.text}</option>
+                              ))}
+                            </select>
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Sticky Button</label>
+                            <select
+                              value={currentStickyCTA}
+                              onChange={(e) => setRestaurantEdits(prev => ({
+                                ...prev,
+                                [key]: { ...prev[key], stickyCTAIndex: parseInt(e.target.value) }
+                              }))}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                            >
+                              {CTA_OPTIONS.sticky.map((option, idx) => (
+                                <option key={idx} value={idx}>{option.text}</option>
+                              ))}
+                            </select>
+                          </div>
+                        </div>
+
+                        {/* Save button - only show if changes */}
+                        {hasChanges && (
+                          <div className="mt-4 flex justify-end">
+                            <Button
+                              onClick={async () => {
+                                setSavingRestaurant(key);
+                                try {
+                                  const res = await fetch('/api/internal/restaurant-premium/update-settings', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({
+                                      restaurantId: restaurant.restaurant_id,
+                                      destinationId: restaurant.destination_id,
+                                      userId: user.id,
+                                      colorScheme: edits.colorScheme,
+                                      heroCTAIndex: edits.heroCTAIndex,
+                                      midCTAIndex: edits.midCTAIndex,
+                                      endCTAIndex: edits.midCTAIndex, // End uses same as mid
+                                      stickyCTAIndex: edits.stickyCTAIndex,
+                                    }),
+                                  });
+                                  const data = await res.json();
+                                  if (data.success) {
+                                    // Update local state
+                                    setPremiumRestaurants(prev => prev.map(r => 
+                                      r.restaurant_id === restaurant.restaurant_id && r.destination_id === restaurant.destination_id
+                                        ? { 
+                                            ...r, 
+                                            color_scheme: edits.colorScheme ?? r.color_scheme,
+                                            hero_cta_index: edits.heroCTAIndex ?? r.hero_cta_index,
+                                            mid_cta_index: edits.midCTAIndex ?? r.mid_cta_index,
+                                            end_cta_index: edits.midCTAIndex ?? r.end_cta_index,
+                                            sticky_cta_index: edits.stickyCTAIndex ?? r.sticky_cta_index,
+                                          }
+                                        : r
+                                    ));
+                                    // Clear edits
+                                    setRestaurantEdits(prev => {
+                                      const newEdits = { ...prev };
+                                      delete newEdits[key];
+                                      return newEdits;
+                                    });
+                                    toast({
+                                      title: 'Settings saved!',
+                                      description: 'Your changes are now live on your restaurant page.',
+                                    });
+                                  } else {
+                                    throw new Error(data.error || 'Failed to save settings');
+                                  }
+                                } catch (error) {
+                                  toast({
+                                    title: 'Error',
+                                    description: error.message,
+                                    variant: 'destructive',
+                                  });
+                                } finally {
+                                  setSavingRestaurant(null);
+                                }
+                              }}
+                              disabled={savingRestaurant === key}
+                              className="bg-green-600 hover:bg-green-700 text-white"
+                            >
+                              {savingRestaurant === key ? (
+                                'Saving...'
+                              ) : (
+                                <>
+                                  <Save className="w-4 h-4 mr-2" />
+                                  Save Changes
+                                </>
+                              )}
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="bg-purple-50 rounded-lg p-4 text-sm text-purple-800">
+                  <p className="font-medium mb-1">💡 Tip</p>
+                  <p>Changes are instant! After saving, refresh your restaurant page to see the updates.</p>
+                </div>
               </div>
             )}
           </section>
