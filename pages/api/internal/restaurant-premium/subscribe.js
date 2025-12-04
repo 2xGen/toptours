@@ -14,6 +14,7 @@
  *   midCTAIndex: number,
  *   endCTAIndex: number,
  *   stickyCTAIndex: number,
+ *   userId: string (optional) - Supabase user ID for subscription management
  *   email: string (optional)
  * }
  * 
@@ -57,6 +58,7 @@ export default async function handler(req, res) {
       midCTAIndex = 0,
       endCTAIndex = 0,
       stickyCTAIndex = 0,
+      userId,
       email,
     } = req.body;
 
@@ -153,7 +155,7 @@ export default async function handler(req, res) {
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
       mode: 'subscription',
-      payment_method_types: ['card', 'ideal', 'bancontact'], // Common EU payment methods
+      payment_method_types: ['card'], // Card payments only
       line_items: [
         {
           price: priceId,
@@ -173,6 +175,7 @@ export default async function handler(req, res) {
         midCTAIndex: String(midCTAIndex),
         endCTAIndex: String(endCTAIndex),
         stickyCTAIndex: String(stickyCTAIndex),
+        userId: userId || '',
       },
       subscription_data: {
         metadata: {
@@ -188,6 +191,7 @@ export default async function handler(req, res) {
           midCTAIndex: String(midCTAIndex),
           endCTAIndex: String(endCTAIndex),
           stickyCTAIndex: String(stickyCTAIndex),
+          userId: userId || '',
         },
       },
       success_url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://toptours.ai'}/destinations/${destinationId}/restaurants/${restaurantSlug}?premium=success`,
@@ -212,6 +216,7 @@ export default async function handler(req, res) {
         mid_cta_index: midCTAIndex,
         end_cta_index: endCTAIndex,
         sticky_cta_index: stickyCTAIndex,
+        user_id: userId || null,
         purchaser_email: email || null,
       }, {
         onConflict: 'restaurant_id,destination_id',

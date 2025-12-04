@@ -76,7 +76,7 @@ export default function TermsOfServicePage() {
                       You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree to use our services in compliance with all applicable laws and regulations.
                     </p>
 
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">5. Promotion Points and Subscriptions</h3>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">5. Promotion Points, Subscriptions, and Premium Services</h3>
                     <p className="mb-6">
                       <strong>Points and Subscriptions:</strong> TopTours.ai<span className="text-xs align-super">™</span> offers promotion points and subscription plans that allow users to boost tours on our platform. All points and subscriptions are sold "as is" and are:
                     </p>
@@ -88,6 +88,15 @@ export default function TermsOfServicePage() {
                     <p className="mb-6">
                       <strong>Promotion Benefits:</strong> By promoting tours on TopTours.ai<span className="text-xs align-super">™</span>, you understand that we increase the visibility of promoted tours to our visitors, which may increase the chances of visitors clicking through to our partner booking sites (such as Viator) to make bookings. However, we cannot and do not guarantee any specific number of bookings, clicks, or revenue as a result of promotion.
                     </p>
+                    <p className="mb-6">
+                      <strong>Restaurant Premium Subscriptions:</strong> TopTours.ai<span className="text-xs align-super">™</span> offers premium subscription plans for restaurant owners and managers to enhance their restaurant's visibility on our platform. Restaurant Premium subscriptions include features such as featured badges, call-to-action buttons, and enhanced placement. These subscriptions are:
+                    </p>
+                    <ul className="list-disc list-inside mb-6 space-y-2 text-gray-600">
+                      <li><strong>Non-refundable:</strong> All Restaurant Premium subscription purchases are final. We do not offer refunds for any reason, including subscription cancellations, unused subscription periods, or account termination.</li>
+                      <li><strong>Non-transferable:</strong> Restaurant Premium subscriptions are tied to a specific restaurant and user account, and cannot be transferred to another restaurant, user, or account.</li>
+                      <li><strong>No Guarantee of Results:</strong> While Restaurant Premium enhances visibility and provides call-to-action features on TopTours.ai<span className="text-xs align-super">™</span>, we do not guarantee that premium status will result in increased reservations, website visits, or revenue. Premium features on TopTours.ai<span className="text-xs align-super">™</span> do not constitute endorsement or promotion on any third-party platform.</li>
+                      <li><strong>Restaurant Verification:</strong> By subscribing to Restaurant Premium, you represent that you are the owner, manager, or authorized representative of the restaurant. TopTours.ai<span className="text-xs align-super">™</span> reserves the right to request verification and to terminate subscriptions for restaurants that cannot be verified or that violate our terms.</li>
+                    </ul>
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">6. Booking and Payments</h3>
                     <p className="mb-6">
@@ -96,7 +105,7 @@ export default function TermsOfServicePage() {
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">7. Cancellation and Refunds</h3>
                     <p className="mb-6">
-                      Cancellation and refund policies are determined by individual tour operators. We recommend reviewing the specific terms for each booking before confirming your reservation. <strong>Note:</strong> This section does not apply to promotion points or subscriptions purchased on TopTours.ai<span className="text-xs align-super">™</span>, which are non-refundable as stated in Section 5.
+                      Cancellation and refund policies are determined by individual tour operators. We recommend reviewing the specific terms for each booking before confirming your reservation. <strong>Note:</strong> This section does not apply to promotion points, subscriptions, or Restaurant Premium subscriptions purchased on TopTours.ai<span className="text-xs align-super">™</span>, which are non-refundable as stated in Section 5.
                     </p>
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">8. Account Deletion</h3>
@@ -108,7 +117,7 @@ export default function TermsOfServicePage() {
                       <li>Your username/display name</li>
                     </ul>
                     <p className="mb-6">
-                      Upon receipt of a valid deletion request, we will process the deletion of your account and associated data in accordance with our privacy policy. Please note that account deletion is permanent and cannot be undone. Any unused points or active subscriptions will be forfeited upon account deletion, as stated in Section 5.
+                      Upon receipt of a valid deletion request, we will process the deletion of your account and associated data in accordance with our privacy policy. Please note that account deletion is permanent and cannot be undone. Any unused points, active subscriptions, or Restaurant Premium subscriptions will be forfeited upon account deletion, as stated in Section 5.
                     </p>
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">9. Intellectual Property</h3>
@@ -118,7 +127,7 @@ export default function TermsOfServicePage() {
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">10. Limitation of Liability</h3>
                     <p className="mb-6">
-                      TopTours.ai<span className="text-xs align-super">™</span> shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the service or any transactions made through our platform. This includes, but is not limited to, any losses related to promotion points, subscriptions, or the failure of promotions to result in bookings or revenue.
+                      TopTours.ai<span className="text-xs align-super">™</span> shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the service or any transactions made through our platform. This includes, but is not limited to, any losses related to promotion points, subscriptions, Restaurant Premium subscriptions, or the failure of promotions or premium features to result in bookings, reservations, or revenue.
                     </p>
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">11. Disclaimers</h3>
