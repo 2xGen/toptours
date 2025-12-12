@@ -235,6 +235,24 @@ export default async function TourDetailPage({ params }) {
         notFound();
       }
 
+      // Sync operator to CRM (lightweight, non-blocking - fire and forget)
+      if (tour && productId) {
+        // Don't await - let it run in background without blocking page render
+        import('@/lib/tourOperatorsCRM')
+          .then(({ syncOperator }) => syncOperator(tour, productId))
+          .then((result) => {
+            if (result && result.success) {
+              console.log('✅ [TOUR PAGE SLUG] Operator synced:', result.operatorName);
+            } else {
+              console.warn('⚠️ [TOUR PAGE SLUG] Sync failed:', result?.error || 'Unknown error');
+            }
+          })
+          .catch((err) => {
+            // Silently handle errors - don't affect page rendering
+            console.error('❌ [TOUR PAGE SLUG] CRM sync error (non-blocking):', err);
+          });
+      }
+
       const primaryDestinationSlug = resolveDestinationSlug(tour);
       const viatorDestinationIdForTour = primaryDestinationSlug ? slugToViatorId[primaryDestinationSlug] : null;
 

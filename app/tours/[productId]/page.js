@@ -167,6 +167,36 @@ export default async function TourDetailPage({ params }) {
       await cacheTour(productId, tour);
     }
 
+    // Sync operator to CRM (lightweight, non-blocking)
+    // Run sync regardless of cache status
+    if (tour && productId) {
+      try {
+        console.log('🔄 [TOUR PAGE] Attempting CRM sync for:', productId);
+        const crmModule = await import('@/lib/tourOperatorsCRM');
+        // Sync operator to CRM (lightweight, non-blocking - fire and forget)
+        if (crmModule.syncOperator) {
+          // Don't await - let it run in background without blocking page render
+          crmModule.syncOperator(tour, productId)
+            .then((result) => {
+              if (result && result.success) {
+                console.log('✅ [TOUR PAGE] Operator synced:', result.operatorName);
+              } else {
+                console.warn('⚠️ [TOUR PAGE] Sync failed:', result?.error || 'Unknown error');
+              }
+            })
+            .catch((err) => {
+              // Silently handle errors - don't affect page rendering
+              console.error('❌ [TOUR PAGE] CRM sync error (non-blocking):', err);
+            });
+        }
+      } catch (err) {
+        console.error('❌ [TOUR PAGE] CRM sync error:', err);
+        console.error('❌ [TOUR PAGE] Error stack:', err.stack);
+      }
+    } else {
+      console.warn('⚠️ [TOUR PAGE] Skipping CRM sync - missing tour or productId', { hasTour: !!tour, productId });
+    }
+
     // Client-side redirect to canonical URL with slug
     // Modern crawlers (Google, Bing) execute JavaScript and will follow the redirect
     // Canonical tag in metadata also signals the preferred URL to search engines
