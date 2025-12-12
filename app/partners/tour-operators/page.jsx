@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { 
@@ -38,7 +38,7 @@ import { toast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 
-export default function TourOperatorsPartnerPage() {
+function TourOperatorsPartnerPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const supabase = createSupabaseBrowserClient();
@@ -1637,6 +1637,21 @@ export default function TourOperatorsPartnerPage() {
       
       <FooterNext />
     </div>
+  );
+}
+
+export default function TourOperatorsPartnerPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-purple-600" />
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <TourOperatorsPartnerPageContent />
+    </Suspense>
   );
 }
 

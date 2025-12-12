@@ -624,7 +624,7 @@ export default async function ToursListingPage({ params }) {
         hasRestaurants = restaurants.length > 0;
       } else {
         // Fallback: check static data
-        const { getRestaurantsForDestination: getRestaurantsForDestinationFromStatic } = await import('./restaurants/restaurantsData');
+        const { getRestaurantsForDestination: getRestaurantsForDestinationFromStatic } = await import('../restaurants/restaurantsData');
         const staticRestaurants = getRestaurantsForDestinationFromStatic(destination.id);
         if (staticRestaurants.length > 0) {
           restaurants = staticRestaurants.slice(0, 8);
