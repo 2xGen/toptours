@@ -7,7 +7,8 @@ import { destinations, getDestinationsByCountry } from '@/data/destinationsData'
 import viatorDestinationsData from '@/data/viatorDestinations.json';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
-import { hasDestinationPage } from '@/data/destinationFullContent';
+import { hasDestinationPage, getDestinationFullContent } from '@/data/destinationFullContent';
+import generatedFullContentData from '../../generated-destination-full-content.json';
 
 // Use classified destinations (has region/country data)
 const viatorDestinationsClassified = Array.isArray(viatorDestinationsClassifiedData) ? viatorDestinationsClassifiedData : null;
@@ -119,7 +120,7 @@ export default function DestinationsPage() {
   
   // Calculate total available destinations
   // The classified destinations already include all destinations, so we just use that count
-  // The 182 destinations with guides are a subset of the classified data
+  // Destinations with guides are a subset of the classified data
   const totalAvailableDestinations = useMemo(() => {
     const classifiedCount = Array.isArray(viatorDestinationsClassified) ? viatorDestinationsClassified.length : 0;
     return classifiedCount;
@@ -144,18 +145,72 @@ export default function DestinationsPage() {
 
   // Combine regular destinations with Viator destinations
   // Include Viator destinations when there's a search term OR when a region filter is selected
-  // Always show the 182 curated destinations
+  // Always show destinations with guides (from destinationsData.js + generated content with guides)
   const allDestinations = useMemo(() => {
     const regularDests = (Array.isArray(destinations) ? destinations : []).map(dest => ({
       ...dest,
       isViator: false,
     }));
     
+    // Also include destinations from generated content that have guides AND an image but aren't in destinationsData.js
+    // Logic: Only show destinations with guides if they have a featured image (for the premium experience)
+    const regularDestIds = new Set(regularDests.map(d => d.id));
+    const generatedDestsWithGuides = Object.keys(generatedFullContentData || {})
+      .filter(slug => {
+        // Skip if already in regular destinations
+        if (regularDestIds.has(slug)) return false;
+        
+        // Check if this destination has any categories with guides
+        const content = generatedFullContentData[slug];
+        if (!content || !content.tourCategories) return false;
+        
+        // Check if any category has hasGuide: true
+        const hasGuides = content.tourCategories.some(cat => 
+          typeof cat === 'object' && cat.hasGuide === true
+        );
+        
+        if (!hasGuides) return false;
+        
+        // Also check if destination has an image (featured image requirement)
+        const seoContent = getDestinationSeoContent(slug);
+        const hasImage = !!(content.imageUrl || seoContent?.imageUrl || seoContent?.ogImage);
+        
+        // Only include if it has both guides AND an image
+        return hasImage;
+      })
+      .map(slug => {
+        const content = generatedFullContentData[slug];
+        const seoContent = getDestinationSeoContent(slug);
+        const classifiedDest = classifiedDataIndex?.bySlug.get(slug)?.[0];
+        
+        return {
+          id: slug,
+          name: content.destinationName || slug,
+          fullName: content.destinationName || slug,
+          category: classifiedDest?.region ? (regionToCategory[classifiedDest.region] || classifiedDest.region) : null,
+          region: classifiedDest?.region || content.region || null,
+          country: classifiedDest?.country || content.country || null,
+          briefDescription: seoContent?.briefDescription || content.briefDescription || `Discover tours and activities in ${content.destinationName || slug}`,
+          heroDescription: seoContent?.heroDescription || content.heroDescription || null,
+          imageUrl: content.imageUrl || seoContent?.imageUrl || seoContent?.ogImage || null,
+          tourCategories: content.tourCategories || [],
+          whyVisit: content.whyVisit || [],
+          highlights: content.highlights || [],
+          gettingAround: content.gettingAround || '',
+          bestTimeToVisit: content.bestTimeToVisit || null,
+          seo: content.seo || seoContent?.seo || null,
+          isViator: false, // These have guides, so they're featured destinations
+        };
+      });
+    
+    // Combine regular destinations with generated destinations that have guides
+    const allFeaturedDests = [...regularDests, ...generatedDestsWithGuides];
+    
     // Include Viator destinations if there's a search term OR if a region filter is selected (not "All")
     const shouldIncludeViator = searchTerm.trim() || (selectedCategory !== 'All');
     
     if (!shouldIncludeViator) {
-      return regularDests;
+      return allFeaturedDests;
     }
     
     // Get classified data - ensure it's available
@@ -166,7 +221,8 @@ export default function DestinationsPage() {
     const curatedBaseNames = new Set();
     const curatedFullNames = new Set();
     
-    regularDests.forEach(dest => {
+    // Include both regular destinations and generated destinations with guides
+    allFeaturedDests.forEach(dest => {
       const name = (dest.name || '').toLowerCase().trim();
       const fullName = (dest.fullName || dest.name || '').toLowerCase().trim();
       
@@ -229,8 +285,10 @@ export default function DestinationsPage() {
         const slug = generateSlug(destName);
         
         // Use region and country directly from classified data (already set by OpenAI script)
-        const region = classifiedDest.region || null;
-        const country = classifiedDest.country || null;
+        // But fallback to generated content if classified data doesn't have it
+        const generatedContent = generatedFullContentData[slug];
+        const region = classifiedDest.region || generatedContent?.region || null;
+        const country = classifiedDest.country || generatedContent?.country || null;
         
         // Map region to category for filtering
         const category = region ? (regionToCategory[region] || region) : null;
@@ -242,8 +300,8 @@ export default function DestinationsPage() {
           id: slug, // Use slug as ID for SEO-friendly URLs
           name: destName,
           fullName: destName,
-          briefDescription: seoContent?.briefDescription || `Discover tours and activities in ${destName}`,
-          heroDescription: seoContent?.heroDescription || null,
+          briefDescription: seoContent?.briefDescription || generatedContent?.briefDescription || `Discover tours and activities in ${destName}`,
+          heroDescription: seoContent?.heroDescription || generatedContent?.heroDescription || null,
           category: category, // Map region to category for filtering
           region: region,
           country: country,
@@ -254,7 +312,7 @@ export default function DestinationsPage() {
         };
       });
     
-    return [...regularDests, ...viatorDests];
+    return [...allFeaturedDests, ...viatorDests];
   }, [destinations, searchTerm, selectedCategory, viatorDestinationsClassified]);
 
   // Deduplicate by ID to ensure unique keys - remove duplicates, keeping curated destinations over Viator ones
@@ -315,7 +373,7 @@ export default function DestinationsPage() {
     return a.name.localeCompare(b.name);
   });
 
-  // Separate featured destinations (182 curated) from other destinations (Viator-only)
+  // Separate featured destinations (with guides) from other destinations (Viator-only)
   const featuredDestinations = allFilteredDestinations.filter(dest => !dest.isViator);
   const otherDestinations = allFilteredDestinations.filter(dest => dest.isViator);
   
@@ -462,10 +520,10 @@ export default function DestinationsPage() {
                     <div className="mb-16">
                       <div className="mb-8">
                         <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                          {searchTerm.trim() ? 'Destinations with Guides' : 'Featured Destinations with Guides'}
+                          Featured Destinations
                         </h2>
                         <p className="text-lg text-gray-600">
-                          Showing {featuredStartIndex + 1}-{Math.min(featuredEndIndex, featuredDestinations.length)} of {featuredDestinations.length} destinations with guides
+                          Showing {featuredStartIndex + 1}-{Math.min(featuredEndIndex, featuredDestinations.length)} of {featuredDestinations.length} featured destinations
                           {searchTerm.trim() && (
                             <span> matching "{searchTerm}"</span>
                           )}
@@ -473,7 +531,7 @@ export default function DestinationsPage() {
                             <span> in {selectedCategory}</span>
                           )}
                           {otherDestinations.length > 0 && (
-                            <span> and {otherDestinations.length} without guides</span>
+                            <span> and {otherDestinations.length} other destinations</span>
                           )}
                           {!searchTerm.trim() && selectedCategory === 'All' && totalAvailableDestinations > featuredDestinations.length + otherDestinations.length && (
                             <span> ({totalAvailableDestinations} destinations in total)</span>
@@ -534,19 +592,6 @@ export default function DestinationsPage() {
                                   </Link>
                                 </Button>
                               )}
-                              {hasDestinationPage(destination.id) && (
-                                <Button
-                                  asChild
-                                  variant="secondary"
-                                  className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
-                                  onClick={(e) => e.stopPropagation()}
-                                >
-                                  <Link href={`/destinations/${destination.id}`}>
-                                    Explore {truncateDestinationName(destination.name)}
-                                    <ArrowRight className="ml-2 h-5 w-5" />
-                                  </Link>
-                                </Button>
-                              )}
                               <Button
                                 asChild
                                 variant="secondary"
@@ -569,9 +614,9 @@ export default function DestinationsPage() {
 
                   {/* Other Destinations Section */}
                   {otherDestinations.length > 0 && (
-                    <div className="mt-16 pt-16 border-t-2 border-gray-200">
+                    <div className={`${paginatedFeaturedDestinations.length > 0 ? 'mt-16 pt-16 border-t-2 border-gray-200' : ''}`}>
                       <div className="mb-8">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-2">Destinations without Guides</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-2">All Destinations</h2>
                         <p className="text-lg text-gray-600">
                           Showing {otherDestinationsStartIndex + 1}-{Math.min(otherDestinationsEndIndex, otherDestinations.length)} of {otherDestinations.length} {otherDestinations.length === 1 ? 'destination' : 'destinations'} with tours and activities
                           {selectedCategory !== 'All' && (
@@ -690,8 +735,8 @@ export default function DestinationsPage() {
                     </div>
                   )}
 
-                  {/* Pagination Controls for Featured Destinations */}
-                  {totalPages > 1 && (
+                  {/* Pagination Controls for Featured Destinations - Only show if there are featured destinations */}
+                  {paginatedFeaturedDestinations.length > 0 && totalPages > 1 && (
                     <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-12 w-full">
                       <Button
                         variant="outline"
@@ -947,6 +992,35 @@ export default function DestinationsPage() {
       <SmartTourFinder
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+      />
+
+      {/* CollectionPage Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Travel Destinations | TopTours.ai",
+            "description": "Discover thousands of destinations worldwide with curated tours, activities, and travel guides. Find your next adventure.",
+            "url": "https://toptours.ai/destinations",
+            "mainEntity": {
+              "@type": "ItemList",
+              "numberOfItems": allDestinations.length,
+              "itemListElement": allDestinations.slice(0, 50).map((dest, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                  "@type": "TouristDestination",
+                  "name": dest.fullName || dest.name,
+                  "url": `https://toptours.ai/destinations/${dest.id}`,
+                  "description": dest.briefDescription || `Explore tours and activities in ${dest.fullName || dest.name}`,
+                  "image": dest.imageUrl || undefined,
+                }
+              }))
+            }
+          })
+        }}
       />
     </>
   );

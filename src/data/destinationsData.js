@@ -1697,6 +1697,61 @@ export const destinations = [
     ]
   },
   {
+    id: 'marbella',
+    name: 'Marbella',
+    fullName: 'Marbella',
+    country: 'Spain',
+    category: 'Europe',
+    briefDescription: 'Luxury resort town, golden beaches, and Andalusian charm — Marbella is the Costa del Sol\'s glamorous heart.',
+    heroDescription: 'Welcome to Marbella, where luxury meets Mediterranean beauty and Andalusian culture thrives. From the charming Old Town to the glamorous Puerto Banús, from pristine beaches to Sierra Blanca mountains, this Costa del Sol gem offers the perfect blend of sophistication, history, and natural beauty. Let our AI-powered planner help you discover the best experiences this stunning destination has to offer.',
+    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/marbella.png',
+    tourCategories: [
+      { name: 'Marbella Old Town Walking Tours', hasGuide: true },
+      { name: 'Costa del Sol Beach & Dune Exploration', hasGuide: true },
+      { name: 'Luxury Puerto Banús Experiences', hasGuide: true },
+      { name: 'Andalusian Culinary & Tapas Trails', hasGuide: true },
+      { name: 'Historical Ruins & Roman Heritage', hasGuide: true },
+      { name: 'Sierra Blanca Nature & Hiking Adventures', hasGuide: true }
+    ],
+    seo: {
+      title: 'Marbella Tours & Excursions - Top-Rated Activities & Adventures',
+      description: 'Discover top-rated Marbella tours, excursions, and activities powered by AI. From Old Town walking tours to Puerto Banús luxury experiences, find the perfect way to explore the Costa del Sol.',
+      keywords: 'Marbella tours, Marbella excursions, Puerto Banús tours, Costa del Sol tours, things to do in Marbella',
+      primaryKeyword: 'Marbella tours',
+      secondaryKeywords: [
+        'Marbella Old Town tours',
+        'Puerto Banús tours',
+        'Costa del Sol beach tours',
+        'Marbella tapas tours',
+        'Sierra Blanca hiking',
+        'Things to do in Marbella'
+      ]
+    },
+    whyVisit: [
+      'Charming Old Town with whitewashed buildings and historic charm',
+      'Glamorous Puerto Banús with luxury yachts and designer boutiques',
+      'Pristine beaches and crystal-clear Mediterranean waters',
+      'Rich Roman history and archaeological sites',
+      'Sierra Blanca mountains offering hiking and nature adventures',
+      'Authentic Andalusian cuisine and vibrant tapas culture'
+    ],
+    bestTimeToVisit: {
+      weather: 'Marbella enjoys a Mediterranean climate with hot summers and mild winters. Summers are hot (75-85°F/24-29°C), winters are mild (55-65°F/13-18°C), and spring/fall offer perfect temperatures.',
+      bestMonths: 'April to June and September to October offer the best weather with warm temperatures, fewer crowds, and perfect conditions for beach and outdoor activities.',
+      peakSeason: 'July to August brings peak tourist season with hot weather, larger crowds, and higher prices.',
+      offSeason: 'November to March offers lower prices and fewer crowds, though with cooler weather and occasional rain.'
+    },
+    gettingAround: 'Excellent public transportation with buses connecting Marbella to nearby towns. Walking is perfect for exploring the Old Town, and taxis are readily available. Car rental is ideal for exploring the Costa del Sol.',
+    highlights: [
+      'Marbella Old Town - Charming historic quarter with whitewashed buildings',
+      'Puerto Banús - Glamorous marina with luxury yachts and designer shopping',
+      'Playa de la Fontanilla - Beautiful golden sand beach',
+      'Bonsai Museum - Unique collection of miniature trees',
+      'Roman Ruins of Ronda la Vieja - Ancient archaeological site',
+      'Sierra Blanca - Scenic mountain range perfect for hiking'
+    ]
+  },
+  {
     id: 'mallorca',
     name: 'Mallorca',
     fullName: 'Mallorca',

@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Sparkles, Globe, ArrowRight, Users, UtensilsCrossed, Ticket } from 'lucide-react';
+import { Sparkles, Globe, ArrowRight, Users, UtensilsCrossed, Ticket, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedHeroBackground from './AnimatedHeroBackground';
 
@@ -88,6 +88,10 @@ const Hero = ({ onOpenOnboardingModal }) => {
                 <div className="flex items-center gap-2">
                   <Ticket className="h-5 w-5 text-purple-200" />
                   <span>10,000+ tours</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <BookOpen className="h-5 w-5 text-cyan-200" />
+                  <span>19,831 Guides</span>
                 </div>
               </div>
             </div>

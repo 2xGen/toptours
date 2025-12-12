@@ -58,6 +58,7 @@ export default async function handler(req, res) {
       midCTAIndex = 0,
       endCTAIndex = 0,
       stickyCTAIndex = 0,
+      website,
       userId,
       email,
     } = req.body;
@@ -66,6 +67,22 @@ export default async function handler(req, res) {
     if (!restaurantId || !destinationId || !restaurantSlug) {
       return res.status(400).json({
         error: 'Missing required fields: restaurantId, destinationId, restaurantSlug'
+      });
+    }
+
+    // Validate website is provided
+    if (!website || website.trim() === '') {
+      return res.status(400).json({
+        error: 'Website or booking URL is required. Please provide your restaurant website or booking/reservation URL.'
+      });
+    }
+
+    // Basic URL validation
+    try {
+      new URL(website.trim());
+    } catch (e) {
+      return res.status(400).json({
+        error: 'Please provide a valid URL (e.g., https://yourrestaurant.com)'
       });
     }
 
@@ -175,6 +192,7 @@ export default async function handler(req, res) {
         midCTAIndex: String(midCTAIndex),
         endCTAIndex: String(endCTAIndex),
         stickyCTAIndex: String(stickyCTAIndex),
+        pendingWebsite: website || '',
         userId: userId || '',
       },
       subscription_data: {
@@ -191,6 +209,7 @@ export default async function handler(req, res) {
           midCTAIndex: String(midCTAIndex),
           endCTAIndex: String(endCTAIndex),
           stickyCTAIndex: String(stickyCTAIndex),
+          pendingWebsite: website || '',
           userId: userId || '',
         },
       },

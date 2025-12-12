@@ -1,0 +1,243 @@
+Destination Name,Country,Region,Image URL,Priority,Notes
+Seattle,United States,North America,,Tier 1,High Viator demand
+Portland,United States,North America,,Tier 1,High Viator demand
+San Diego,United States,North America,,Tier 1,High Viator demand
+San Antonio,United States,North America,,Tier 1,High Viator demand
+Austin,United States,North America,,Tier 1,High Viator demand
+Boston,United States,North America,,Tier 1,High Viator demand
+Philadelphia,United States,North America,,Tier 1,High Viator demand
+Phoenix,United States,North America,,Tier 1,High Viator demand
+Atlanta,United States,North America,,Tier 1,High Viator demand
+Charlotte,United States,North America,,Tier 1,High Viator demand
+Savannah,United States,North America,,Tier 1,Historic charm
+Charleston,United States,North America,,Tier 1,Historic charm
+Key West,United States,North America,,Tier 1,Beach destination
+Napa Valley,United States,North America,,Tier 1,Wine region
+Sonoma,United States,North America,,Tier 1,Wine region
+Lake Tahoe,United States,North America,,Tier 1,Adventure destination
+Aspen,United States,North America,,Tier 1,Ski resort
+Park City,United States,North America,,Tier 1,Ski resort
+Jackson Hole,United States,North America,,Tier 1,Adventure destination
+Santa Fe,United States,North America,,Tier 1,Cultural destination
+Taos,United States,North America,,Tier 1,Cultural destination
+Telluride,United States,North America,,Tier 1,Ski resort
+Calgary,Canada,North America,,Tier 1,City gateway
+Whistler,Canada,North America,,Tier 1,Ski resort
+Victoria,Canada,North America,,Tier 1,Coastal city
+Halifax,Canada,North America,,Tier 1,Coastal city
+San Miguel de Allende,Mexico,North America,,Tier 1,Cultural destination
+Mérida,Mexico,North America,,Tier 1,Cultural destination
+Guadalajara,Mexico,North America,,Tier 1,City destination
+Puebla,Mexico,North America,,Tier 1,Historic city
+Milwaukee,United States,North America,,Tier 2,City destination
+Minneapolis,United States,North America,,Tier 2,City destination
+Kansas City,United States,North America,,Tier 2,City destination
+St. Louis,United States,North America,,Tier 2,City destination
+Indianapolis,United States,North America,,Tier 2,City destination
+Columbus,United States,North America,,Tier 2,City destination
+Cincinnati,United States,North America,,Tier 2,City destination
+Pittsburgh,United States,North America,,Tier 2,City destination
+Buffalo,United States,North America,,Tier 2,City destination
+Providence,United States,North America,,Tier 2,City destination
+Palm Springs,United States,North America,,Tier 2,Desert resort
+Santa Barbara,United States,North America,,Tier 2,Coastal city
+Monterey,United States,North America,,Tier 2,Coastal city
+Carmel-by-the-Sea,United States,North America,,Tier 2,Coastal town
+Big Sur,United States,North America,,Tier 2,Scenic destination
+Yosemite National Park,United States,North America,,Tier 2,National park
+Grand Canyon,United States,North America,,Tier 2,National park
+Zion National Park,United States,North America,,Tier 2,National park
+Bryce Canyon,United States,North America,,Tier 2,National park
+Jasper,Canada,North America,,Tier 2,National park
+Tofino,Canada,North America,,Tier 2,Coastal destination
+Niagara-on-the-Lake,Canada,North America,,Tier 2,Wine region
+Tijuana,Mexico,North America,,Tier 2,Border city
+Ensenada,Mexico,North America,,Tier 2,Coastal city
+La Paz,Mexico,North America,,Tier 2,Coastal city
+Cozumel,Mexico,North America,,Tier 2,Island destination
+Anchorage,United States,North America,,Tier 3,Alaska gateway
+Juneau,United States,North America,,Tier 3,Alaska capital
+Fairbanks,United States,North America,,Tier 3,Alaska destination
+Boise,United States,North America,,Tier 3,City destination
+Salt Lake City,United States,North America,,Tier 3,City destination
+Reno,United States,North America,,Tier 3,City destination
+Tucson,United States,North America,,Tier 3,Desert city
+Albuquerque,United States,North America,,Tier 3,Desert city
+Birmingham,United States,North America,,Tier 3,City destination
+Memphis,United States,North America,,Tier 3,Music city
+Louisville,United States,North America,,Tier 3,City destination
+Richmond,United States,North America,,Tier 3,Historic city
+Annapolis,United States,North America,,Tier 3,Coastal city
+Newport,United States,North America,,Tier 3,Coastal city
+Martha's Vineyard,United States,North America,,Tier 3,Island destination
+Nantucket,United States,North America,,Tier 3,Island destination
+Mackinac Island,United States,North America,,Tier 3,Island destination
+Door County,United States,North America,,Tier 3,Coastal region
+Traverse City,United States,North America,,Tier 3,Wine region
+Wine Country California,United States,North America,,Tier 3,Wine region
+Yellowstone National Park,United States,North America,,Tier 3,National park
+Glacier National Park,United States,North America,,Tier 3,National park
+Arches National Park,United States,North America,,Tier 3,National park
+Moab,United States,North America,,Tier 3,Adventure destination
+Steamboat Springs,United States,North America,,Tier 3,Ski resort
+Vail,United States,North America,,Tier 3,Ski resort
+Breckenridge,United States,North America,,Tier 3,Ski resort
+Durango,United States,North America,,Tier 3,Adventure destination
+Bend,United States,North America,,Tier 3,Adventure destination
+Winnipeg,Canada,North America,,Tier 3,City destination
+Saskatoon,Canada,North America,,Tier 3,City destination
+Regina,Canada,North America,,Tier 3,City destination
+Whitehorse,Canada,North America,,Tier 3,Northern destination
+Yellowknife,Canada,North America,,Tier 3,Northern destination
+St. John's,Canada,North America,,Tier 3,Coastal city
+Charlottetown,Canada,North America,,Tier 3,Coastal city
+Guanajuato,Mexico,North America,,Tier 3,Historic city
+Oaxaca City,Mexico,North America,,Tier 3,Already have Oaxaca - check
+Tulum,Mexico,North America,,Tier 3,Already have - check
+Isla Mujeres,Mexico,North America,,Tier 3,Island destination
+Playa del Carmen,Mexico,North America,,Tier 3,Already have - check
+Tepoztlán,Mexico,North America,,Tier 3,Mountain town
+Valle de Guadalupe,Mexico,North America,,Tier 3,Wine region
+Istanbul,Turkey,Europe,,Global Tier 1,Major city
+Dubai,UAE,Middle East,,Global Tier 1,Already have - check
+Abu Dhabi,UAE,Middle East,,Global Tier 1,Already have - check
+Dublin,Ireland,Europe,,Global Tier 1,Major city
+Copenhagen,Denmark,Europe,,Global Tier 1,Major city
+Stockholm,Sweden,Europe,,Global Tier 1,Major city
+Helsinki,Finland,Europe,,Global Tier 1,Major city
+Brussels,Belgium,Europe,,Global Tier 1,Major city
+Bruges,Belgium,Europe,,Global Tier 1,Historic city
+Luxembourg City,Luxembourg,Europe,,Global Tier 1,Capital city
+Reykjavik,Iceland,Europe,,Global Tier 1,Already have - check
+Oslo,Norway,Europe,,Global Tier 1,Already have - check
+Bergen,Norway,Europe,,Global Tier 2,Coastal city
+Tromsø,Norway,Europe,,Global Tier 2,Northern lights
+Valencia,Spain,Europe,,Global Tier 1,Major city
+Granada,Spain,Europe,,Global Tier 1,Historic city
+Córdoba,Spain,Europe,,Global Tier 1,Historic city
+Bilbao,Spain,Europe,,Global Tier 1,Cultural city
+San Sebastián,Spain,Europe,,Global Tier 1,Coastal city
+Málaga,Spain,Europe,,Global Tier 1,Already have - check
+Marbella,Spain,Europe,,Global Tier 1,Already have - check
+Milan,Italy,Europe,,Global Tier 1,Major city
+Naples,Italy,Europe,,Global Tier 1,Historic city
+Bologna,Italy,Europe,,Global Tier 1,Food city
+Siena,Italy,Europe,,Global Tier 1,Historic city
+Pisa,Italy,Europe,,Global Tier 1,Historic city
+Verona,Italy,Europe,,Global Tier 1,Historic city
+Porto,Portugal,Europe,,Global Tier 1,Already have - check
+Lagos,Portugal,Europe,,Global Tier 2,Coastal town
+Sintra,Portugal,Europe,,Global Tier 2,Historic town
+Salzburg,Austria,Europe,,Global Tier 1,Historic city
+Innsbruck,Austria,Europe,,Global Tier 2,Alpine city
+Krakow,Poland,Europe,,Global Tier 1,Historic city
+Warsaw,Poland,Europe,,Global Tier 1,Capital city
+Gdansk,Poland,Europe,,Global Tier 2,Coastal city
+Budapest,Hungary,Europe,,Global Tier 1,Already have - check
+Bucharest,Romania,Europe,,Global Tier 2,Capital city
+Zagreb,Croatia,Europe,,Global Tier 2,Capital city
+Ljubljana,Slovenia,Europe,,Global Tier 2,Capital city
+Tallinn,Estonia,Europe,,Global Tier 2,Historic city
+Riga,Latvia,Europe,,Global Tier 2,Historic city
+Vilnius,Lithuania,Europe,,Global Tier 2,Historic city
+Kyoto,Japan,Asia-Pacific,,Global Tier 1,Already have - check
+Osaka,Japan,Asia-Pacific,,Global Tier 1,Already have - check
+Tokyo,Japan,Asia-Pacific,,Global Tier 1,Already have - check
+Hiroshima,Japan,Asia-Pacific,,Global Tier 1,Already have - check
+Nara,Japan,Asia-Pacific,,Global Tier 2,Historic city
+Kanazawa,Japan,Asia-Pacific,,Global Tier 2,Historic city
+Takayama,Japan,Asia-Pacific,,Global Tier 2,Historic town
+Hakone,Japan,Asia-Pacific,,Global Tier 2,Hot springs
+Sydney,Australia,Asia-Pacific,,Global Tier 1,Major city
+Brisbane,Australia,Asia-Pacific,,Global Tier 1,Major city
+Adelaide,Australia,Asia-Pacific,,Global Tier 2,City destination
+Darwin,Australia,Asia-Pacific,,Global Tier 2,Northern city
+Hobart,Australia,Asia-Pacific,,Global Tier 2,Coastal city
+Auckland,New Zealand,Asia-Pacific,,Global Tier 1,Already have - check
+Christchurch,New Zealand,Asia-Pacific,,Global Tier 2,City destination
+Dunedin,New Zealand,Asia-Pacific,,Global Tier 2,Coastal city
+Bangkok,Thailand,Asia-Pacific,,Global Tier 1,Already have - check
+Chiang Mai,Thailand,Asia-Pacific,,Global Tier 1,Already have - check
+Phuket,Thailand,Asia-Pacific,,Global Tier 1,Already have - check
+Krabi,Thailand,Asia-Pacific,,Global Tier 1,Already have - check
+Koh Samui,Thailand,Asia-Pacific,,Global Tier 1,Already have - check
+Hanoi,Vietnam,Asia-Pacific,,Global Tier 1,Already have - check
+Ho Chi Minh City,Vietnam,Asia-Pacific,,Global Tier 1,Already have - check
+Hoi An,Vietnam,Asia-Pacific,,Global Tier 1,Already have - check
+Halong Bay,Vietnam,Asia-Pacific,,Global Tier 1,Already have - check
+Singapore,Singapore,Asia-Pacific,,Global Tier 1,Already have - check
+Kuala Lumpur,Malaysia,Asia-Pacific,,Global Tier 1,Already have - check
+Langkawi,Malaysia,Asia-Pacific,,Global Tier 1,Already have - check
+Penang,Malaysia,Asia-Pacific,,Global Tier 1,Already have - check
+Bali,Indonesia,Asia-Pacific,,Global Tier 1,Already have - check
+Jakarta,Indonesia,Asia-Pacific,,Global Tier 1,Already have - check
+Yogyakarta,Indonesia,Asia-Pacific,,Global Tier 1,Already have - check
+Gili Islands,Indonesia,Asia-Pacific,,Global Tier 1,Already have - check
+Seoul,South Korea,Asia-Pacific,,Global Tier 1,Already have - check
+Busan,South Korea,Asia-Pacific,,Global Tier 1,Already have - check
+Jeju Island,South Korea,Asia-Pacific,,Global Tier 1,Already have - check
+Beijing,China,Asia-Pacific,,Global Tier 1,Already have - check
+Shanghai,China,Asia-Pacific,,Global Tier 1,Already have - check
+Xi'an,China,Asia-Pacific,,Global Tier 1,Already have - check
+Guilin,China,Asia-Pacific,,Global Tier 1,Already have - check
+Hong Kong,China,Asia-Pacific,,Global Tier 1,Major city
+Taipei,Taiwan,Asia-Pacific,,Global Tier 1,Major city
+Manila,Philippines,Asia-Pacific,,Global Tier 1,Already have - check
+Cebu,Philippines,Asia-Pacific,,Global Tier 1,Already have - check
+Palawan,Philippines,Asia-Pacific,,Global Tier 1,Already have - check
+Boracay,Philippines,Asia-Pacific,,Global Tier 1,Already have - check
+New Delhi,India,Asia-Pacific,,Global Tier 1,Already have - check
+Jaipur,India,Asia-Pacific,,Global Tier 1,Already have - check
+Mumbai,India,Asia-Pacific,,Global Tier 1,Already have - check
+Goa,India,Asia-Pacific,,Global Tier 1,Already have - check
+Kerala,India,Asia-Pacific,,Global Tier 1,Already have - check
+Agra,India,Asia-Pacific,,Global Tier 2,Taj Mahal
+Varanasi,India,Asia-Pacific,,Global Tier 2,Spiritual city
+Udaipur,India,Asia-Pacific,,Global Tier 2,Historic city
+Cape Town,South Africa,Africa,,Global Tier 1,Already have - check
+Johannesburg,South Africa,Africa,,Global Tier 1,Already have - check
+Kruger National Park,South Africa,Africa,,Global Tier 1,Already have - check
+Marrakech,Morocco,Africa,,Global Tier 1,Already have - check
+Casablanca,Morocco,Africa,,Global Tier 1,Already have - check
+Fez,Morocco,Africa,,Global Tier 2,Historic city
+Essaouira,Morocco,Africa,,Global Tier 2,Coastal city
+Cairo,Egypt,Africa,,Global Tier 1,Already have - check
+Luxor,Egypt,Africa,,Global Tier 1,Already have - check
+Aswan,Egypt,Africa,,Global Tier 1,Already have - check
+Nairobi,Kenya,Africa,,Global Tier 1,Already have - check
+Maasai Mara,Kenya,Africa,,Global Tier 1,Already have - check
+Mombasa,Kenya,Africa,,Global Tier 1,Already have - check
+Arusha,Tanzania,Africa,,Global Tier 1,Already have - check
+Zanzibar,Tanzania,Africa,,Global Tier 1,Already have - check
+Rio de Janeiro,Brazil,South America,,Global Tier 1,Already have - check
+São Paulo,Brazil,South America,,Global Tier 1,Already have - check
+Salvador,Brazil,South America,,Global Tier 1,Already have - check
+Buenos Aires,Argentina,South America,,Global Tier 1,Already have - check
+Mendoza,Argentina,South America,,Global Tier 1,Already have - check
+Bariloche,Argentina,South America,,Global Tier 1,Already have - check
+Santiago,Chile,South America,,Global Tier 1,Already have - check
+Patagonia,Chile,South America,,Global Tier 1,Already have - check
+Lima,Peru,South America,,Global Tier 1,Already have - check
+Cusco,Peru,South America,,Global Tier 1,Already have - check
+Machu Picchu,Peru,South America,,Global Tier 1,Already have - check
+Quito,Ecuador,South America,,Global Tier 1,Already have - check
+Galápagos Islands,Ecuador,South America,,Global Tier 1,Already have - check
+Bogotá,Colombia,South America,,Global Tier 1,Already have - check
+Cartagena,Colombia,South America,,Global Tier 1,Already have - check
+Medellín,Colombia,South America,,Global Tier 1,Already have - check
+Panama City,Panama,Central America,,Global Tier 1,Already have - check
+Bocas del Toro,Panama,Central America,,Global Tier 1,Already have - check
+San José,Costa Rica,Central America,,Global Tier 1,Already have - check
+La Fortuna,Costa Rica,Central America,,Global Tier 1,Already have - check
+Manuel Antonio,Costa Rica,Central America,,Global Tier 1,Already have - check
+Belize City,Belize,Central America,,Global Tier 1,Already have - check
+San Pedro,Belize,Central America,,Global Tier 1,Already have - check
+Antigua,Guatemala,Central America,,Global Tier 1,Already have - check
+Lake Atitlán,Guatemala,Central America,,Global Tier 1,Already have - check
+Tel Aviv,Israel,Middle East,,Global Tier 1,Already have - check
+Amman,Jordan,Middle East,,Global Tier 1,Already have - check
+Beirut,Lebanon,Middle East,,Global Tier 1,Already have - check
+Doha,Qatar,Middle East,,Global Tier 1,Already have - check
+Muscat,Oman,Middle East,,Global Tier 1,Already have - check
+Riyadh,Saudi Arabia,Middle East,,Global Tier 1,Already have - check
+

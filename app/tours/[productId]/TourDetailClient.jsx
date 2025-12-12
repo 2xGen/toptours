@@ -19,7 +19,8 @@ import {
   UtensilsCrossed,
   Bookmark,
   Info,
-  Share2
+  Share2,
+  Crown
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -27,19 +28,47 @@ import { Badge } from '@/components/ui/badge';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import Link from 'next/link';
-import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
+import { getTourUrl, getTourProductId, generateTourSlug } from '@/utils/tourHelpers';
 import { destinations } from '@/data/destinationsData';
 import { viatorRefToSlug } from '@/data/viatorDestinationMap';
 import { getGuidesByCountry } from '@/data/travelGuidesData';
+import { getRestaurantsForDestination } from '../../destinations/[id]/restaurants/restaurantsData';
 import { toast } from '@/components/ui/use-toast';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import ShareModal from '@/components/sharing/ShareModal';
+import { PromoteTourOperatorBanner } from '@/components/tour/PromoteTourOperatorBanner';
 
-export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0 }) {
+export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [] }) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  
+  // DEBUG: Log category guides and destination data
+  useEffect(() => {
+    console.log('🔍 TourDetailClient - categoryGuides:', categoryGuides);
+    console.log('🔍 TourDetailClient - destinationData:', destinationData);
+    console.log('🔍 TourDetailClient - categoryGuides.length:', categoryGuides?.length);
+    console.log('🔍 TourDetailClient - destinationData?.slug:', destinationData?.slug);
+  }, [categoryGuides, destinationData]);
+  
+  // Client-side redirect fallback: if we're on /tours/[productId] without slug, redirect to slugged version
+  useEffect(() => {
+    if (tour && tour.title && typeof window !== 'undefined') {
+      const currentPath = window.location.pathname;
+      // Check if we're on /tours/[productId] without a slug (exact match)
+      const productIdPattern = new RegExp(`^/tours/${productId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`);
+      if (productIdPattern.test(currentPath)) {
+        const slug = generateTourSlug(tour.title);
+        if (slug) {
+          const canonicalUrl = `/tours/${productId}/${slug}`;
+          console.log(`🔄 Client-side redirect: ${currentPath} → ${canonicalUrl}`);
+          // Use replace to avoid adding to browser history (301-like behavior)
+          window.location.replace(canonicalUrl);
+        }
+      }
+    }
+  }, [tour, productId]);
   const [destination, setDestination] = useState(null);
   const [showStickyButton, setShowStickyButton] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -1456,7 +1485,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       <NavigationNext />
       
       {/* Hero Section - Matching Destination Page Style */}
-      <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden ocean-gradient">
+      <section className="relative pt-8 pb-12 sm:pt-10 sm:pb-16 md:pt-12 md:pb-20 overflow-hidden ocean-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             <motion.div
@@ -1542,6 +1571,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   })}
                 </div>
               )}
+
 
               <div className="flex flex-wrap gap-4 items-center">
                 <Button
@@ -1652,7 +1682,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       {/* Main Content */}
       <section className="py-12 sm:py-16 bg-white" style={{ overflowX: 'hidden' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-8 lg:items-start">
+          <div className="flex flex-col lg:flex-row gap-8 lg:items-start lg:relative">
             {/* Main Content Column - 2/3 width */}
             <article className="flex-1 lg:flex-[2] space-y-8 w-full min-w-0">
               {/* Description */}
@@ -2067,25 +2097,63 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.65 }}
-                  className="bg-white rounded-lg shadow-sm p-6 md:p-8 border border-purple-100"
+                  className={`bg-white rounded-lg shadow-sm p-6 md:p-8 border ${operatorPremiumData ? 'border-amber-200 bg-gradient-to-br from-amber-50 to-white' : 'border-purple-100'}`}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.4em] text-purple-500 mb-2">Tour Operator</p>
-                      <h2 className="text-2xl font-bold text-gray-900">{supplierName}</h2>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <p className="text-xs uppercase tracking-[0.4em] text-purple-500">Tour Operator</p>
+                        {operatorPremiumData && (
+                          <Crown className="w-4 h-4 text-amber-500" title="Premium Operator" />
+                        )}
+                      </div>
+                      <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+                        {operatorPremiumData ? 'Premium TopTours Partner' : supplierName}
+                        {operatorPremiumData && (
+                          <Badge className="bg-amber-100 text-amber-700 border-amber-300">
+                            <Crown className="w-3 h-3 mr-1" />
+                            Premium
+                          </Badge>
+                        )}
+                      </h2>
                       <p className="text-gray-600 mt-2">
-                        Official supplier for this experience. Bookings are handled directly through Viator with verified partners.
+                        {operatorPremiumData 
+                          ? 'Premium TopTours Partner. Official supplier for this experience. Bookings are handled directly through Viator with verified partners.'
+                          : 'Official supplier for this experience. Bookings are handled directly through Viator with verified partners.'}
                       </p>
+                      {operatorPremiumData && operatorPremiumData.aggregatedStats && (
+                        <div className="mt-3 flex items-center gap-4 text-sm">
+                          <div className="flex items-center gap-1">
+                            <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+                            <span className="font-semibold text-gray-900">
+                              {operatorPremiumData.aggregatedStats.average_rating?.toFixed(1) || 'N/A'}
+                            </span>
+                            <span className="text-gray-600 ml-1">
+                              ({operatorPremiumData.aggregatedStats.total_reviews?.toLocaleString() || 0} reviews across {operatorPremiumData.aggregatedStats.total_tours_count || 0} tours)
+                            </span>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                    <div className="flex items-center gap-3 bg-purple-50 border border-purple-100 rounded-2xl px-4 py-3 text-purple-700">
-                      <Shield className="w-6 h-6 text-purple-600" />
+                    <div className={`flex items-center gap-3 rounded-2xl px-4 py-3 ${operatorPremiumData ? 'bg-amber-50 border border-amber-200 text-amber-700' : 'bg-purple-50 border border-purple-100 text-purple-700'}`}>
+                      <Shield className={`w-6 h-6 ${operatorPremiumData ? 'text-amber-600' : 'text-purple-600'}`} />
                       <div className="text-sm">
-                        <p className="font-semibold">Viator Certified</p>
-                        <p className="text-xs text-purple-600/80">Trusted local operator</p>
+                        <p className="font-semibold">{operatorPremiumData ? 'Premium TopTours Partner' : 'Viator Certified'}</p>
+                        <p className={`text-xs ${operatorPremiumData ? 'text-amber-600/80' : 'text-purple-600/80'}`}>
+                          {operatorPremiumData ? 'Verified premium operator' : 'Trusted local operator'}
+                        </p>
                       </div>
                     </div>
                   </div>
                 </motion.section>
+              )}
+
+              {/* Promote Tour Operator Banner - Only show if not premium */}
+              {!operatorPremiumData && (
+                <PromoteTourOperatorBanner 
+                  tour={tour} 
+                  destination={destination}
+                />
               )}
 
               {/* Rating Breakdown */}
@@ -2187,11 +2255,11 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               </motion.section>
             </article>
 
-            {/* Sidebar - 1/3 width, sticky */}
-            <aside className="w-full lg:w-auto lg:flex-1 lg:max-w-sm lg:min-w-[320px] lg:sticky lg:top-24 lg:self-start">
+            {/* Sidebar - 1/3 width, sticky on desktop - follows page scroll */}
+            <aside className="w-full lg:w-auto lg:flex-1 lg:max-w-sm lg:min-w-[320px] lg:sticky lg:top-24 lg:self-start lg:z-10 lg:h-fit">
               <div className="space-y-6">
-                {/* Booking Card */}
-                <Card className="bg-white border-2 border-purple-200 shadow-lg">
+                {/* Booking Card - Sticky, stays visible while main content scrolls */}
+                <Card className="bg-white border-2 border-purple-200 shadow-xl">
                   <CardContent className="p-6">
                     <div className="text-center mb-6">
                       {price > 0 && (
@@ -2257,6 +2325,86 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   }
                   initialScore={initialPromotionScore}
                 />
+
+                {/* Other Tours from This Operator */}
+                {operatorPremiumData && operatorTours && operatorTours.length > 0 && (
+                  <Card className="bg-white border-2 border-amber-200 shadow-xl">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <Crown className="w-5 h-5 text-amber-500" />
+                        <h3 className="text-lg font-bold text-gray-900">
+                          Other Tours from {operatorPremiumData.operator_name}
+                        </h3>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-4">
+                        Explore more premium experiences from this operator
+                      </p>
+                      <div className="space-y-3">
+                        {operatorTours.slice(0, 5).map((operatorTour, idx) => (
+                          <Link
+                            key={operatorTour.productId || idx}
+                            href={operatorTour.url || `/tours/${operatorTour.productId}`}
+                            className="block group"
+                          >
+                            <div className="flex gap-3 p-3 rounded-lg border border-gray-200 hover:border-amber-300 hover:bg-amber-50 transition-all duration-200">
+                              {operatorTour.imageUrl && (
+                                <div className="relative w-16 h-16 flex-shrink-0 rounded overflow-hidden">
+                                      <img
+                                        src={operatorTour.imageUrl}
+                                        alt={operatorTour.title || 'Tour'}
+                                        className="w-full h-full object-cover"
+                                        loading="lazy"
+                                        onError={(e) => {
+                                          e.target.src = "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=200&q=80";
+                                        }}
+                                      />
+                                      <div className="absolute top-1 right-1">
+                                        <Crown className="w-3 h-3 text-amber-500" />
+                                      </div>
+                                    </div>
+                              )}
+                              <div className="flex-1 min-w-0">
+                                <h4 className="text-sm font-semibold text-gray-900 group-hover:text-amber-700 line-clamp-2 mb-1">
+                                  {operatorTour.title || 'Tour'}
+                                </h4>
+                                {operatorTour.rating > 0 && (
+                                  <div className="flex items-center gap-1 text-xs text-gray-600">
+                                    <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
+                                    <span>{operatorTour.rating.toFixed(1)}</span>
+                                    {operatorTour.reviewCount > 0 && (
+                                      <span className="text-gray-500">
+                                        ({operatorTour.reviewCount.toLocaleString()})
+                                      </span>
+                                    )}
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                      {operatorPremiumData.aggregatedStats && (
+                        <div className="mt-4 pt-4 border-t border-gray-200">
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-gray-600">Total Reviews</span>
+                            <span className="font-semibold text-gray-900">
+                              {operatorPremiumData.aggregatedStats.total_reviews?.toLocaleString() || 0}
+                            </span>
+                          </div>
+                          <div className="flex items-center justify-between text-sm mt-1">
+                            <span className="text-gray-600">Average Rating</span>
+                            <div className="flex items-center gap-1">
+                              <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
+                              <span className="font-semibold text-gray-900">
+                                {operatorPremiumData.aggregatedStats.average_rating?.toFixed(1) || 'N/A'}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                )}
 
                 {/* Destination Link */}
                 {destination && (
@@ -2348,6 +2496,128 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               </div>
             </aside>
           </div>
+
+          {/* Other Tours from Premium Operator Section */}
+          {operatorPremiumData && operatorTours && operatorTours.length > 0 && (
+            <motion.section
+              id="operator-tours"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-16"
+            >
+              <div className="mb-6 flex items-center gap-3">
+                <Crown className="w-6 h-6 text-amber-500" />
+                <h2 className="text-3xl font-bold text-gray-900">
+                  Other Tours from {operatorPremiumData.operator_name}
+                </h2>
+                <Badge className="bg-amber-100 text-amber-700 border-amber-300">
+                  <Crown className="w-3 h-3 mr-1" />
+                  Premium Partner
+                </Badge>
+              </div>
+              
+              <p className="text-gray-600 mb-6">
+                Explore more premium experiences from this verified TopTours partner
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {operatorTours.map((operatorTour, index) => {
+                  const operatorTourUrl = operatorTour.url || `/tours/${operatorTour.productId}`;
+                  
+                  return (
+                    <Card key={operatorTour.productId || index} className="bg-white border-2 border-amber-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                      <div 
+                        className="relative h-48 bg-gray-200 flex-shrink-0 cursor-pointer" 
+                        onClick={() => router.push(operatorTourUrl)}
+                      >
+                        {operatorTour.imageUrl ? (
+                          <>
+                            <img
+                              src={operatorTour.imageUrl}
+                              alt={operatorTour.title || 'Tour'}
+                              className="w-full h-full object-cover"
+                              loading="lazy"
+                              onError={(e) => {
+                                e.target.src = "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80";
+                              }}
+                            />
+                            <div className="absolute top-3 left-3">
+                              <Crown className="w-5 h-5 text-amber-500 drop-shadow-lg" title="Premium Operator" />
+                            </div>
+                          </>
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                            <MapPin className="w-8 h-8 text-gray-400" />
+                          </div>
+                        )}
+                      </div>
+                      
+                      <CardContent className="p-4 flex-1 flex flex-col">
+                        <h3 
+                          className="font-semibold text-gray-800 mb-2 line-clamp-2 flex-1 cursor-pointer hover:text-amber-700 transition-colors"
+                          onClick={() => router.push(operatorTourUrl)}
+                        >
+                          {operatorTour.title || 'Tour'}
+                        </h3>
+                        
+                        {operatorTour.rating > 0 && (
+                          <div className="flex items-center mb-2">
+                            <Star className="w-4 h-4 text-amber-500 fill-current" />
+                            <span className="font-medium text-gray-700 ml-1 text-sm">
+                              {operatorTour.rating.toFixed(1)}
+                            </span>
+                            {operatorTour.reviewCount > 0 && (
+                              <span className="text-gray-500 text-xs ml-1">
+                                ({operatorTour.reviewCount.toLocaleString('en-US')})
+                              </span>
+                            )}
+                          </div>
+                        )}
+
+                        <Button
+                          asChild
+                          variant="outline"
+                          size="sm"
+                          className="w-full mt-auto border-amber-300 text-amber-700 hover:bg-amber-50"
+                        >
+                          <Link href={operatorTourUrl}>
+                            View Details
+                            <Crown className="w-3 h-3 ml-2 text-amber-500" />
+                          </Link>
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+
+              {operatorPremiumData.aggregatedStats && (
+                <div className="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
+                  <div className="mb-3 pb-3 border-b border-amber-200">
+                    <p className="text-sm font-semibold text-gray-900">{operatorPremiumData.operator_name}</p>
+                    <p className="text-xs text-gray-600 mt-1">Premium TopTours Partner</p>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-600">Total Reviews Across All Tours</span>
+                    <span className="font-semibold text-gray-900">
+                      {operatorPremiumData.aggregatedStats.total_reviews?.toLocaleString() || 0}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm mt-2">
+                    <span className="text-gray-600">Average Rating</span>
+                    <div className="flex items-center gap-1">
+                      <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+                      <span className="font-semibold text-gray-900">
+                        {operatorPremiumData.aggregatedStats.average_rating?.toFixed(1) || 'N/A'}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </motion.section>
+          )}
 
           {/* Similar Tours Section */}
           {similarTours.length > 0 && (
@@ -2455,15 +2725,36 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       </section>
 
       {/* Internal Linking Section */}
-      {destination && (
+      {(destination || effectiveDestinationData || unmatchedDestinationSlug) && (
         <section className="py-12 bg-white border-t">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto space-y-6">
               {/* Get guides and restaurants for this destination */}
               {(() => {
-                const destinationGuides = destination.country ? getGuidesByCountry(destination.country) : [];
-                // Check if restaurants exist for this destination
-                const hasRestaurants = restaurantCount > 0;
+                // Use destination if available (hardcoded), otherwise use effectiveDestinationData
+                // IMPORTANT: Always use slug for links, never the numeric ID
+                const destName = effectiveDestinationData?.destinationName || unmatchedDestinationName || subtleDestinationName || destination?.name || destination?.fullName || '';
+                const destSlugFromServer = effectiveDestinationData?.slug || subtleDestinationSlug || unmatchedDestinationSlug;
+                // If slug is numeric (like "51525"), generate slug from name instead
+                const isNumericSlug = destSlugFromServer && /^\d+$/.test(destSlugFromServer);
+                const finalSlug = isNumericSlug && destName 
+                  ? generateSlugFromName(destName)
+                  : (destSlugFromServer || effectiveDestinationData?.destinationId);
+                
+                const destForDisplay = destination || {
+                  id: finalSlug || effectiveDestinationData?.destinationId,
+                  name: destName,
+                  fullName: destName,
+                  country: effectiveDestinationData?.country || null,
+                };
+                
+                const destinationGuides = destForDisplay.country ? getGuidesByCountry(destForDisplay.country) : [];
+                // Use primaryDestinationSlug (from 182 destinations) or slug from effectiveDestinationData
+                const destinationIdForRestaurants = primaryDestinationSlug || destForDisplay.id || effectiveDestinationData?.slug || effectiveDestinationData?.destinationId;
+                const staticRestaurants = destinationIdForRestaurants ? getRestaurantsForDestination(destinationIdForRestaurants) : [];
+                // Use restaurants from server if available, otherwise use static restaurants
+                const restaurantsToDisplay = (restaurants && restaurants.length > 0) ? restaurants : staticRestaurants;
+                const hasRestaurants = restaurantsToDisplay.length > 0;
                 const hasGuides = destinationGuides && destinationGuides.length > 0;
 
                 return (
@@ -2475,7 +2766,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       viewport={{ once: true }}
                       transition={{ duration: 0.6 }}
                     >
-                      <Link href={`/destinations/${destination.id}`}>
+                      <Link href={`/destinations/${destForDisplay.id}`}>
                         <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200 hover:shadow-lg transition-all duration-300 cursor-pointer">
                           <CardContent className="p-6">
                             <div className="flex items-start gap-4">
@@ -2484,7 +2775,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                               </div>
                               <div className="flex-1">
                                 <h3 className="text-lg font-bold text-gray-900 mb-2">
-                                  {destination.fullName || destination.name} Destination Guide
+                                  {destForDisplay.fullName || destForDisplay.name} Destination Guide
                                 </h3>
                                 <p className="text-sm text-gray-600 mb-4">
                                   Explore the complete destination guide with travel tips, best time to visit, and more.
@@ -2507,7 +2798,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: 0.1 }}
                     >
-                      <Link href={`/destinations/${destination.id}/tours`}>
+                      <Link href={`/destinations/${destForDisplay.id}/tours`}>
                         <Card className="bg-gradient-to-br from-orange-50 to-yellow-50 border-orange-200 hover:shadow-lg transition-all duration-300 cursor-pointer">
                           <CardContent className="p-6">
                             <div className="flex items-start gap-4">
@@ -2516,7 +2807,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                               </div>
                               <div className="flex-1">
                                 <h3 className="text-lg font-bold text-gray-900 mb-2">
-                                  All Tours & Activities in {destination.fullName || destination.name}
+                                  All Tours & Activities in {destForDisplay.fullName || destForDisplay.name}
                                 </h3>
                                 <p className="text-sm text-gray-600 mb-4">
                                   Browse all available tours and activities with filters and search.
@@ -2540,82 +2831,108 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                       >
-                        <Link href={`/destinations/${destination.id}/restaurants`}>
-                          <Card className="bg-gradient-to-br from-red-50 to-pink-50 border-red-200 hover:shadow-lg transition-all duration-300 cursor-pointer">
-                            <CardContent className="p-6">
-                              <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                  <UtensilsCrossed className="w-6 h-6 text-red-600" />
-                                </div>
-                                <div className="flex-1">
-                                  <h3 className="text-lg font-bold text-gray-900 mb-2">
-                                    Explore Top Restaurants in {destination.fullName || destination.name}
-                                  </h3>
-                                  <p className="text-sm text-gray-600 mb-4">
-                                    Discover the best dining experiences and hand-picked restaurants.
-                                  </p>
-                                  <Button variant="outline" className="border-red-300 text-red-700 hover:bg-red-50">
-                                    View Restaurants
-                                    <ArrowRight className="w-4 h-4 ml-2" />
-                                  </Button>
-                                </div>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        </Link>
+                        <div className="mb-6">
+                          <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                            Top Restaurants in {destForDisplay.fullName || destForDisplay.name}
+                          </h3>
+                          <p className="text-sm text-gray-600 mb-6">
+                            Discover the best dining experiences and hand-picked restaurants.
+                          </p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {restaurantsToDisplay.slice(0, 8).map((restaurant, index) => {
+                            const restaurantUrl = `/destinations/${destinationIdForRestaurants || destination.id}/restaurants/${restaurant.slug}`;
+                            const description = restaurant.metaDescription 
+                              || restaurant.tagline 
+                              || restaurant.summary 
+                              || restaurant.description
+                              || (restaurant.cuisines?.length > 0 
+                                  ? `Discover ${restaurant.cuisines.join(' & ')} cuisine at ${restaurant.name} in ${destForDisplay.fullName || destForDisplay.name}.`
+                                  : `Experience great dining at ${restaurant.name} in ${destForDisplay.fullName || destForDisplay.name}.`);
+                            
+                            return (
+                              <motion.div
+                                key={restaurant.id || index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, delay: index * 0.1 }}
+                                viewport={{ once: true }}
+                              >
+                                <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-shadow">
+                                  <CardContent className="p-6 flex flex-col h-full">
+                                    <div className="flex items-center gap-3 mb-3">
+                                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
+                                        <UtensilsCrossed className="w-5 h-5 text-white" />
+                                      </div>
+                                      <div className="flex-1 min-w-0">
+                                        <h4 className="text-lg font-bold text-gray-900 line-clamp-1">
+                                          {restaurant.name}
+                                        </h4>
+                                        {restaurant.cuisines?.length > 0 && (
+                                          <span className="text-xs font-medium text-blue-600 uppercase tracking-wide">
+                                            {restaurant.cuisines[0]}
+                                          </span>
+                                        )}
+                                      </div>
+                                    </div>
+                                    <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">
+                                      {description.length > 120 ? description.slice(0, 120) + '...' : description}
+                                    </p>
+                                    <div className="flex flex-wrap gap-2 mb-4">
+                                      {restaurant.ratings?.googleRating && (
+                                        <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
+                                          <Star className="w-3 h-3" />
+                                          {restaurant.ratings.googleRating.toFixed(1)}
+                                        </span>
+                                      )}
+                                      {restaurant.pricing?.priceRange && (
+                                        <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
+                                          {restaurant.pricing.priceRange}
+                                        </span>
+                                      )}
+                                    </div>
+                                    <Link
+                                      href={restaurantUrl}
+                                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
+                                    >
+                                      View Restaurant
+                                      <ArrowRight className="w-4 h-4" />
+                                    </Link>
+                                  </CardContent>
+                                </Card>
+                              </motion.div>
+                            );
+                          })}
+                          {/* View All Restaurants Card */}
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: 0.7 }}
+                            viewport={{ once: true }}
+                          >
+                            <Link
+                              href={`/destinations/${destForDisplay.id}/restaurants`}
+                              className="block h-full"
+                            >
+                              <Card className="h-full border border-blue-100 bg-white shadow-lg hover:shadow-xl transition-shadow flex flex-col items-center justify-center text-center p-6">
+                                <UtensilsCrossed className="w-8 h-8 text-blue-600 mb-3" />
+                                <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                                  View All Restaurants in {destForDisplay.fullName || destForDisplay.name}
+                                </h4>
+                                <p className="text-sm text-gray-600 mb-4">
+                                  Explore every curated dining spot we recommend across the island.
+                                </p>
+                                <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600">
+                                  Browse the list
+                                  <ArrowRight className="w-4 h-4" />
+                                </span>
+                              </Card>
+                            </Link>
+                          </motion.div>
+                        </div>
                       </motion.div>
                     )}
 
-                    {/* Popular Category Guides */}
-                    {destination.tourCategories && destination.tourCategories.length > 0 && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                      >
-                        <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-green-200 hover:shadow-lg transition-all duration-300">
-                          <CardContent className="p-6">
-                            <div className="flex items-start gap-4">
-                              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                <BookOpen className="w-6 h-6 text-green-600" />
-                              </div>
-                              <div className="flex-1">
-                                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                                  Popular Category Guides for {destination.fullName || destination.name}
-                                </h3>
-                                <p className="text-sm text-gray-600 mb-4">
-                                  Explore detailed guides for popular tour categories.
-                                </p>
-                                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-4">
-                                  {destination.tourCategories.slice(0, 6).map((category) => {
-                                    const categoryName = typeof category === 'object' ? category.name : category;
-                                    const categorySlug = categoryName.toLowerCase().replace(/\s+/g, '-');
-                                    const hasGuide = typeof category === 'object' ? category.hasGuide : false;
-                                    
-                                    if (!hasGuide) return null;
-                                    
-                                    return (
-                                      <Link 
-                                        key={categorySlug}
-                                        href={`/destinations/${destination.id}/guides/${categorySlug}`}
-                                      >
-                                        <Badge 
-                                          variant="secondary" 
-                                          className="w-full justify-center bg-white hover:bg-green-100 cursor-pointer border-green-200"
-                                        >
-                                          {categoryName}
-                                        </Badge>
-                                      </Link>
-                                    );
-                                  })}
-                                </div>
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      </motion.div>
-                    )}
 
                     {/* Travel Guides */}
                     {hasGuides && (
@@ -2633,7 +2950,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                               </div>
                               <div className="flex-1">
                                 <h3 className="text-lg font-bold text-gray-900 mb-2">
-                                  {destination.fullName || destination.name} Travel Guides
+                                  {destForDisplay.fullName || destForDisplay.name} Travel Guides
                                 </h3>
                                 <p className="text-sm text-gray-600 mb-4">
                                   Read comprehensive guides to plan your perfect trip.
@@ -3059,6 +3376,125 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
           </div>
         </div>
       )}
+
+      {/* Related Travel Guides Section - Same style as restaurant page */}
+      {categoryGuides && Array.isArray(categoryGuides) && categoryGuides.length > 0 && (() => {
+        // Use the same logic as Internal Linking Section for consistency
+        const destForDisplay = destination || {
+          id: effectiveDestinationData?.slug || effectiveDestinationData?.destinationId || unmatchedDestinationSlug || subtleDestinationSlug,
+          name: effectiveDestinationData?.destinationName || unmatchedDestinationName || subtleDestinationName || '',
+          fullName: effectiveDestinationData?.destinationName || unmatchedDestinationName || subtleDestinationName || '',
+        };
+        
+        const destSlug = destForDisplay.id;
+        const destName = destForDisplay.fullName || destForDisplay.name || 'this destination';
+        
+        if (!destSlug) {
+          console.warn('⚠️ Related Travel Guides: No destination slug available', {
+            effectiveDestinationData,
+            destination,
+            unmatchedDestinationSlug,
+            subtleDestinationSlug,
+            categoryGuidesLength: categoryGuides.length
+          });
+          return null;
+        }
+        
+        console.log('✅ Related Travel Guides: Displaying guides', {
+          destSlug,
+          destName,
+          categoryGuidesCount: categoryGuides.length
+        });
+        
+        return (
+          <section className="py-12 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="mb-8"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <BookOpen className="w-6 h-6 text-blue-600" />
+                  <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900">
+                    Related Travel Guides for {destName}
+                  </h2>
+                </div>
+                <p className="text-gray-600 mb-6">
+                  Explore comprehensive guides to plan your perfect trip, including food tours, cultural experiences, and more.
+                </p>
+                
+                {/* All category guides in a grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                  {categoryGuides.slice(0, 6).map((guide) => {
+                    const categoryName = guide.category_name || guide.title || '';
+                    const categorySlug = guide.category_slug || '';
+                    const guideUrl = `/destinations/${destSlug}/guides/${categorySlug}`;
+                    
+                    if (!categorySlug) return null;
+                    
+                    // Determine icon based on category name
+                    const isFoodRelated = categoryName.toLowerCase().includes('food') || 
+                                        categoryName.toLowerCase().includes('culinary') || 
+                                        categoryName.toLowerCase().includes('tapas') || 
+                                        categoryName.toLowerCase().includes('tasting') ||
+                                        categoryName.toLowerCase().includes('restaurant');
+                    const Icon = isFoodRelated ? UtensilsCrossed : MapPin;
+                    const iconColor = isFoodRelated ? 'text-orange-600' : 'text-blue-600';
+                    
+                    return (
+                      <Link
+                        key={categorySlug}
+                        href={guideUrl}
+                        className="group"
+                      >
+                        <Card className="h-full border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
+                          <CardContent className="p-5">
+                            <div className="flex items-center gap-3 mb-3">
+                              <Icon className={`w-5 h-5 ${iconColor}`} />
+                              <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                {guide.title || categoryName}
+                              </h3>
+                            </div>
+                            {guide.subtitle && (
+                              <p className="text-sm text-gray-600 mb-3">
+                                {guide.subtitle}
+                              </p>
+                            )}
+                            {!guide.subtitle && (
+                              <p className="text-sm text-gray-600 mb-3">
+                                {isFoodRelated 
+                                  ? `Discover the best ${categoryName.toLowerCase()} experiences in ${destName}.`
+                                  : `Explore ${categoryName.toLowerCase()} in ${destName}.`
+                                }
+                              </p>
+                            )}
+                            <div className="flex items-center text-blue-600 text-sm font-medium group-hover:gap-2 transition-all">
+                              Read Guide
+                              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    );
+                  })}
+                </div>
+                
+                <div className="text-center">
+                  <Button asChild variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                    <Link href={`/destinations/${destSlug}`}>
+                      View All {destName} Guides
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* Subtle destination ID / name display at bottom of page */}
       {(effectiveDestinationData?.destinationId || tour?.destinations?.[0]?.ref) && (

@@ -9536,16 +9536,17 @@
   "rotterdam": {
     "destinationId": "4211",
     "destinationName": "Rotterdam",
-    "country": "",
-    "region": "",
+    "country": "Netherlands",
+    "region": "Europe",
     "type": "CITY",
     "briefDescription": "Modern architecture, bustling port, and vibrant cultural scene — Rotterdam is the Netherlands' architectural gem.",
     "heroDescription": "Discover top-rated Rotterdam tours, excursions, and activities powered by AI. From harbor cruises to Cube House visits, find the perfect way to explore modern Dutch design.",
     "seo": {
       "title": "Rotterdam Tours & Excursions - Top-Rated Activities & Adventures",
       "description": "Modern architecture, bustling port, and vibrant cultural scene — Rotterdam is the Netherlands' architectural gem.",
-      "ogImage": "https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/How%20to%20Choose%20the%20Best%20Tour%20for%20Your%20Next%20Vacation.png"
-    }
+      "ogImage": "https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/rotterdam.jpg"
+    },
+    "imageUrl": "https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/rotterdam.jpg"
   },
   "chongqing": {
     "destinationId": "24779",
@@ -10203,7 +10204,9 @@
       "title": "Malaga Tours & Excursions - Top-Rated Activities & Adventures",
       "description": "Sunny beaches, historic architecture, and vibrant culture — Malaga is Spain's coastal gem.",
       "ogImage": "https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/How%20to%20Choose%20the%20Best%20Tour%20for%20Your%20Next%20Vacation.png"
-    }
+    },
+    "ogImage": "https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/malaga.jpg",
+    "imageUrl": "https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/malaga.jpg"
   },
   "bath": {
     "destinationId": "27175",
@@ -34349,10 +34352,11 @@
     "type": "CITY",
     "briefDescription": "Canal network, medieval charm, and vibrant culture — Utrecht is the Netherlands' hidden gem.",
     "heroDescription": "Discover top-rated Utrecht tours, excursions, and activities powered by AI. From canal cruises to medieval castle visits, find the perfect way to explore Dutch heritage.",
+    "imageUrl": "https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/utrecht.jpg",
     "seo": {
       "title": "Utrecht Tours & Excursions - Top-Rated Activities & Adventures",
       "description": "Canal network, medieval charm, and vibrant culture — Utrecht is the Netherlands' hidden gem.",
-      "ogImage": "https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/How%20to%20Choose%20the%20Best%20Tour%20for%20Your%20Next%20Vacation.png"
+      "ogImage": "https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/utrecht.jpg"
     }
   },
   "kabukicho": {

@@ -103,6 +103,12 @@ async function handleCheckoutSessionCompleted(session) {
     return;
   }
   
+  // Check if this is a tour operator premium subscription
+  if (metadata.type === 'tour_operator_premium') {
+    await handleTourOperatorPremiumCheckout(session, supabase);
+    return;
+  }
+  
   const userId = metadata.userId;
 
   if (!userId) {
@@ -613,6 +619,7 @@ async function handleRestaurantPremiumCheckout(session, supabase) {
   const restaurantSlug = metadata.restaurantSlug;
   const restaurantName = metadata.restaurantName;
   const planType = metadata.planType || 'monthly';
+  const pendingWebsite = metadata.pendingWebsite || null;
   
   if (!restaurantId || !destinationId || !restaurantSlug || !subscriptionId) {
     console.error('Missing required fields for restaurant premium checkout:', metadata);
@@ -653,6 +660,8 @@ async function handleRestaurantPremiumCheckout(session, supabase) {
       mid_cta_index: parseInt(metadata.midCTAIndex) || 0,
       end_cta_index: parseInt(metadata.endCTAIndex) || 0,
       sticky_cta_index: parseInt(metadata.stickyCTAIndex) || 0,
+      pending_website: pendingWebsite || null,
+      website_review_status: pendingWebsite ? 'pending' : null,
       user_id: metadata.userId || null, // Link to Supabase user for self-service management
       purchaser_email: session.customer_email || null,
     }, {
@@ -793,6 +802,277 @@ async function handleRestaurantPremiumSubscriptionDeleted(subscription, supabase
         console.log(`✅ Restaurant premium cancellation email sent to ${customerEmail}`);
       } catch (emailError) {
         console.error('Error sending restaurant premium cancellation email:', emailError);
+        // Don't fail the webhook if email fails
+      }
+    }
+  }
+  
+  return true;
+}
+
+/**
+ * Handle tour operator premium subscription checkout
+ */
+async function handleTourOperatorPremiumCheckout(session, supabase) {
+  const metadata = session.metadata || {};
+  const subscriptionId = session.subscription;
+  
+  const subscriptionDbId = metadata.subscriptionId;
+  const userId = metadata.userId;
+  const operatorName = metadata.operatorName;
+  const operatorEmail = metadata.operatorEmail;
+  const tourCount = parseInt(metadata.tourCount || '5');
+  const billingCycle = metadata.billingCycle || 'monthly';
+  const selectedTourIds = metadata.selectedTourIds ? metadata.selectedTourIds.split(',') : [];
+  
+  if (!subscriptionDbId || !subscriptionId || !userId) {
+    console.error('Missing required fields for tour operator premium checkout:', metadata);
+    return;
+  }
+  
+  // Get subscription details from Stripe
+  let currentPeriodStart = new Date();
+  let currentPeriodEnd = new Date();
+  currentPeriodEnd.setDate(currentPeriodEnd.getDate() + (billingCycle === 'annual' ? 365 : 30));
+  
+  try {
+    const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+    if (subscription.current_period_start) {
+      currentPeriodStart = new Date(subscription.current_period_start * 1000);
+    }
+    if (subscription.current_period_end) {
+      currentPeriodEnd = new Date(subscription.current_period_end * 1000);
+    }
+  } catch (err) {
+    console.error('Error fetching subscription details:', err);
+  }
+  
+  // Get price ID from subscription
+  let priceId = null;
+  try {
+    const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+    priceId = subscription.items.data[0]?.price?.id || null;
+  } catch (err) {
+    console.error('Error fetching subscription price ID:', err);
+  }
+  
+  // Fetch current subscription to check verification status
+  const { data: currentSubscription, error: fetchError } = await supabase
+    .from('tour_operator_subscriptions')
+    .select('verification_status')
+    .eq('id', subscriptionDbId)
+    .single();
+  
+  if (fetchError) {
+    console.error('Error fetching subscription for webhook:', fetchError);
+    // If we can't verify, don't activate
+    return;
+  }
+  
+  // Only activate if verified (all operator names matched)
+  // If not verified, something went wrong - log and don't activate
+  const verificationStatus = currentSubscription?.verification_status;
+  
+  if (verificationStatus !== 'verified') {
+    console.error(`⚠️ Tour operator subscription ${subscriptionDbId} is not verified. Status: ${verificationStatus}. This should not happen if validation worked correctly.`);
+    // Don't activate - subscription should have been rejected at creation time
+    return;
+  }
+  
+  const subscriptionStatus = 'active'; // Only verified subscriptions reach this point
+  
+  // Update the tour operator subscription
+  const { error } = await supabase
+    .from('tour_operator_subscriptions')
+    .update({
+      status: subscriptionStatus,
+      verification_status: verificationStatus,
+      stripe_subscription_id: subscriptionId,
+      stripe_customer_id: session.customer,
+      stripe_price_id: priceId,
+      current_period_start: currentPeriodStart.toISOString(),
+      current_period_end: currentPeriodEnd.toISOString(),
+    })
+    .eq('id', subscriptionDbId);
+  
+  if (error) {
+    console.error('Error updating tour operator subscription:', error);
+  } else {
+    console.log(`✅ Tour operator premium subscription verified and activated for ${operatorName} (${subscriptionDbId}) - All operator names matched`);
+    
+    // Calculate aggregated stats from all selected tours
+    if (selectedTourIds.length > 0) {
+      const { data: operatorTours } = await supabase
+        .from('operator_tours')
+        .select('review_count, rating')
+        .eq('operator_subscription_id', subscriptionDbId)
+        .in('product_id', selectedTourIds)
+        .eq('is_selected', true);
+      
+      if (operatorTours && operatorTours.length > 0) {
+        const totalReviews = operatorTours.reduce((sum, tour) => sum + (tour.review_count || 0), 0);
+        const avgRating = operatorTours.reduce((sum, tour) => sum + (tour.rating || 0), 0) / operatorTours.length;
+        
+        // Cap reviews at 10 tours worth
+        const cappedReviews = Math.min(totalReviews, Math.ceil(totalReviews / selectedTourIds.length) * 10);
+        
+        await supabase
+          .from('tour_operator_subscriptions')
+          .update({
+            total_reviews: cappedReviews,
+            average_rating: Math.round(avgRating * 100) / 100,
+            total_tours_count: selectedTourIds.length,
+          })
+          .eq('id', subscriptionDbId);
+      }
+    }
+    
+    // Send confirmation email
+    const customerEmail = session.customer_email || operatorEmail;
+    if (customerEmail) {
+      try {
+        const { sendTourOperatorPremiumConfirmationEmail } = await import('@/lib/email');
+        await sendTourOperatorPremiumConfirmationEmail({
+          to: customerEmail,
+          operatorName: operatorName,
+          tourCount: tourCount,
+          billingCycle: billingCycle,
+          endDate: currentPeriodEnd.toISOString(),
+        });
+        console.log(`✅ Tour operator premium confirmation email sent to ${customerEmail}`);
+      } catch (emailError) {
+        console.error('Error sending tour operator premium confirmation email:', emailError);
+        // Don't fail the webhook if email fails
+      }
+    }
+  }
+}
+
+/**
+ * Handle tour operator premium subscription update
+ */
+async function handleTourOperatorPremiumSubscriptionUpdate(subscription, supabase) {
+  const metadata = subscription.metadata || {};
+  
+  if (metadata.type !== 'tour_operator_premium') return false;
+  
+  const subscriptionDbId = metadata.subscriptionId;
+  
+  if (!subscriptionDbId) {
+    console.error('Missing subscription ID in premium subscription metadata');
+    return false;
+  }
+  
+  // Get current period dates
+  let currentPeriodStart = new Date();
+  let currentPeriodEnd = new Date();
+  
+  if (subscription.current_period_start) {
+    currentPeriodStart = new Date(subscription.current_period_start * 1000);
+  }
+  if (subscription.current_period_end) {
+    currentPeriodEnd = new Date(subscription.current_period_end * 1000);
+  }
+  
+  // Determine status based on Stripe subscription status
+  let status = 'active';
+  if (subscription.status === 'canceled' || subscription.status === 'unpaid') {
+    status = 'cancelled';
+  } else if (subscription.status === 'past_due') {
+    status = 'expired';
+  }
+  
+  const { error } = await supabase
+    .from('tour_operator_subscriptions')
+    .update({
+      status: status,
+      current_period_start: currentPeriodStart.toISOString(),
+      current_period_end: currentPeriodEnd.toISOString(),
+    })
+    .eq('id', subscriptionDbId);
+  
+  if (error) {
+    console.error('Error updating tour operator subscription:', error);
+    return false;
+  }
+  
+  console.log(`Tour operator premium subscription updated for ${subscriptionDbId}: ${status}`);
+  return true;
+}
+
+/**
+ * Handle tour operator premium subscription deleted/cancelled
+ */
+async function handleTourOperatorPremiumSubscriptionDeleted(subscription, supabase) {
+  const metadata = subscription.metadata || {};
+  
+  if (metadata.type !== 'tour_operator_premium') return false;
+  
+  const subscriptionDbId = metadata.subscriptionId;
+  const operatorName = metadata.operatorName;
+  const operatorEmail = metadata.operatorEmail;
+  
+  if (!subscriptionDbId) {
+    console.error('Missing subscription ID in premium subscription metadata');
+    return false;
+  }
+  
+  // Get subscription record to find email
+  const { data: subRecord } = await supabase
+    .from('tour_operator_subscriptions')
+    .select('operator_email, operator_name')
+    .eq('id', subscriptionDbId)
+    .single();
+  
+  const finalOperatorName = operatorName || subRecord?.operator_name || 'Tour Operator';
+  const finalOperatorEmail = operatorEmail || subRecord?.operator_email;
+  
+  // Update subscription status to cancelled
+  const { error } = await supabase
+    .from('tour_operator_subscriptions')
+    .update({
+      status: 'cancelled',
+    })
+    .eq('id', subscriptionDbId);
+  
+  // Deactivate all operator tours
+  await supabase
+    .from('operator_tours')
+    .update({
+      is_active: false,
+    })
+    .eq('operator_subscription_id', subscriptionDbId);
+  
+  if (error) {
+    console.error('Error cancelling tour operator subscription:', error);
+  } else {
+    console.log(`✅ Tour operator premium subscription cancelled for ${subscriptionDbId}`);
+    
+    // Send cancellation email
+    if (finalOperatorEmail) {
+      try {
+        // Get subscription end date from database
+        const { data: subscriptionData } = await supabase
+          .from('tour_operator_subscriptions')
+          .select('period_end')
+          .eq('id', subscriptionDbId)
+          .single();
+        
+        const endDate = subscriptionData?.period_end 
+          ? new Date(subscriptionData.period_end).toISOString()
+          : subscription.current_period_end
+            ? new Date(subscription.current_period_end * 1000).toISOString()
+            : null;
+        
+        const { sendTourOperatorPremiumCancellationEmail } = await import('@/lib/email');
+        await sendTourOperatorPremiumCancellationEmail({
+          to: finalOperatorEmail,
+          operatorName: finalOperatorName,
+          endDate: endDate,
+        });
+        console.log(`✅ Tour operator premium cancellation email sent to ${finalOperatorEmail}`);
+      } catch (emailError) {
+        console.error('Error sending tour operator premium cancellation email:', emailError);
         // Don't fail the webhook if email fails
       }
     }

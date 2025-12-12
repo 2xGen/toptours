@@ -7,6 +7,7 @@ import {
 import { getRestaurantsForDestination as getRestaurantsForDestinationFromStatic } from './restaurantsData';
 import { getTrendingToursByDestination, getRestaurantPromotionScoresByDestination, getTrendingRestaurantsByDestination } from '@/lib/promotionSystem';
 import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
+import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
 import RestaurantsListClient from './RestaurantsListClient';
 
 export async function generateMetadata({ params }) {
@@ -99,6 +100,14 @@ export default async function RestaurantsIndexPage({ params }) {
     premiumRestaurantIds = Array.from(premiumSet);
   } catch (error) {
     console.error('Error fetching premium restaurant IDs:', error);
+  }
+
+  // Fetch category guides for this destination
+  let categoryGuides = [];
+  try {
+    categoryGuides = await getAllCategoryGuidesForDestination(id);
+  } catch (error) {
+    console.error('Error fetching category guides:', error);
   }
 
   // ItemList schema for restaurant listing page
@@ -238,7 +247,7 @@ export default async function RestaurantsIndexPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <RestaurantsListClient destination={destination} restaurants={restaurants} trendingTours={trendingTours} trendingRestaurants={trendingRestaurants} restaurantPromotionScores={restaurantPromotionScores} premiumRestaurantIds={premiumRestaurantIds} />
+      <RestaurantsListClient destination={destination} restaurants={restaurants} trendingTours={trendingTours} trendingRestaurants={trendingRestaurants} restaurantPromotionScores={restaurantPromotionScores} premiumRestaurantIds={premiumRestaurantIds} categoryGuides={categoryGuides} />
     </>
   );
 }

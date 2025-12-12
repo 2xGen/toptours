@@ -25,6 +25,12 @@ export const STRIPE_PRICE_IDS = {
   // Restaurant Premium Subscriptions
   restaurant_premium_monthly: process.env.STRIPE_RESTAURANT_PREMIUM_MONTHLY_PRICE_ID,
   restaurant_premium_yearly: process.env.STRIPE_RESTAURANT_PREMIUM_YEARLY_PRICE_ID,
+  
+  // Tour Operator Premium Subscriptions
+  tour_operator_5_monthly: process.env.STRIPE_TOUR_OPERATOR_5_MONTHLY_PRICE_ID,
+  tour_operator_5_annual: process.env.STRIPE_TOUR_OPERATOR_5_ANNUAL_PRICE_ID,
+  tour_operator_15_monthly: process.env.STRIPE_TOUR_OPERATOR_15_MONTHLY_PRICE_ID,
+  tour_operator_15_annual: process.env.STRIPE_TOUR_OPERATOR_15_ANNUAL_PRICE_ID,
 };
 
 // Plan to tier mapping

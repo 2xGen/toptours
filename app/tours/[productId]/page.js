@@ -4,10 +4,14 @@ import TourDetailClient from './TourDetailClient';
 import { getTourEnrichment, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
 import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName } from '@/lib/viatorCache';
 import { getTourPromotionScore } from '@/lib/promotionSystem';
-import { getRestaurantCountsByDestination } from '@/lib/restaurants';
+import { getRestaurantCountsByDestination, getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
+import { getRestaurantsForDestination as getRestaurantsForDestinationFromStatic } from '../../destinations/[id]/restaurants/restaurantsData';
 import { destinations } from '@/data/destinationsData';
 import { getDestinationNameById } from '@/lib/destinationIdLookup';
 import { getViatorDestinationById } from '@/lib/supabaseCache';
+import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds, getOperatorAggregatedStats } from '@/lib/tourOperatorPremiumServer';
+import { generateTourSlug } from '@/utils/tourHelpers';
+import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 
 /**
  * Generate metadata for tour detail page
@@ -15,8 +19,8 @@ import { getViatorDestinationById } from '@/lib/supabaseCache';
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   // Extract productId from slug array (first element)
-  const slug = resolvedParams.productId || resolvedParams.slug;
-  const productId = Array.isArray(slug) ? slug[0] : slug;
+  const slugParam = resolvedParams.productId || resolvedParams.slug;
+  const productId = Array.isArray(slugParam) ? slugParam[0] : slugParam;
   
   if (!productId) {
     return {
@@ -79,14 +83,22 @@ export async function generateMetadata({ params }) {
       '';
     const image = tourEnrichment?.custom_og_image_url || fallbackImage;
 
+    // Generate canonical URL with slug for SEO (prevents duplicate content issues)
+    const slug = generateTourSlug(title);
+    const canonicalUrl = slug ? `https://www.toptours.ai/tours/${productId}/${slug}` : `https://www.toptours.ai/tours/${productId}`;
+
     return {
       title: `${title} | TopTours.ai`,
       description: description.substring(0, 160),
+      alternates: {
+        canonical: canonicalUrl,
+      },
       openGraph: {
         title: `${title} | TopTours.ai`,
         description: description.substring(0, 160),
         images: image ? [image] : [],
         type: 'website',
+        url: canonicalUrl,
       },
       twitter: {
         card: 'summary_large_image',
@@ -110,8 +122,10 @@ export async function generateMetadata({ params }) {
 export default async function TourDetailPage({ params }) {
   const resolvedParams = await params;
   // Extract productId from slug array (first element) or direct productId param
-  const slug = resolvedParams.productId || resolvedParams.slug;
-  const productId = Array.isArray(slug) ? slug[0] : slug;
+  const slugParam = resolvedParams.productId || resolvedParams.slug;
+  const productId = Array.isArray(slugParam) ? slugParam[0] : slugParam;
+  
+  console.error(`🚀 [SERVER] TourDetailPage START for productId: ${productId}`);
   
   if (!productId) {
     notFound();
@@ -138,17 +152,40 @@ export default async function TourDetailPage({ params }) {
       });
 
       if (!productResponse.ok) {
+        console.error(`❌ Tour ${productId} not found: ${productResponse.status}`);
         notFound();
       }
 
       tour = await productResponse.json();
       
       if (!tour || tour.error) {
+        console.error(`❌ Tour ${productId} data error:`, tour?.error || 'No tour data');
         notFound();
       }
 
       // Cache the tour data for future requests
       await cacheTour(productId, tour);
+    }
+
+    // Client-side redirect to canonical URL with slug
+    // Modern crawlers (Google, Bing) execute JavaScript and will follow the redirect
+    // Canonical tag in metadata also signals the preferred URL to search engines
+    let redirectScript = null;
+    if (tour && tour.title) {
+      const slug = generateTourSlug(tour.title);
+      if (slug) {
+        const canonicalUrl = `/tours/${productId}/${slug}`;
+        // Immediate redirect script (runs before React hydration)
+        // Escape for JavaScript string (backslash escaping)
+        const escapedUrl = canonicalUrl.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/'/g, "\\'");
+        redirectScript = (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){var p="${escapedUrl}";if(window.location.pathname===p)return;window.location.replace(p);})();`,
+            }}
+          />
+        );
+      }
     }
 
     // Fetch similar tours by searching for tours in the same category/destination
@@ -278,6 +315,25 @@ export default async function TourDetailPage({ params }) {
       };
     }
 
+    // Fetch tour operator premium subscription data
+    let operatorPremiumData = null;
+    let operatorTours = [];
+    try {
+      operatorPremiumData = await getTourOperatorPremiumSubscription(productId);
+      if (operatorPremiumData) {
+        // Get other tours from the same operator
+        operatorTours = await getOperatorPremiumTourIds(productId);
+        // Get aggregated stats
+        const stats = await getOperatorAggregatedStats(operatorPremiumData.id);
+        if (stats) {
+          operatorPremiumData.aggregatedStats = stats;
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching tour operator premium data:', error);
+      // Continue without premium data - not critical
+    }
+
     // Get destination name and country for breadcrumbs/sidebar
     // The tour response only includes destination ID (ref), not the name
     // So we need to fetch it from Viator destinations API if not in our 182 destinations
@@ -340,7 +396,52 @@ export default async function TourDetailPage({ params }) {
             destinationResolved = true;
             console.log(`✅ Destination resolved via Supabase for ID ${normalizedDestinationId}:`, destinationData);
           } else {
-            console.warn(`⚠️ Supabase destination not found for ID ${normalizedDestinationId}`);
+            console.warn(`⚠️ Supabase destination not found for ID ${normalizedDestinationId}, trying destinations table...`);
+            // Try to look up in destinations table by lookup_id or id
+            try {
+              const { createSupabaseServiceRoleClient } = require('@/lib/supabaseClient');
+              const supabase = createSupabaseServiceRoleClient();
+              
+              // Try lookup_id first (most common case)
+              let { data: destData, error: destError } = await supabase
+                .from('destinations')
+                .select('id, name, slug, country')
+                .eq('lookup_id', normalizedDestinationId)
+                .limit(1)
+                .maybeSingle();
+              
+              // If not found by lookup_id, try by id
+              if (destError || !destData) {
+                const { data: destDataById, error: destErrorById } = await supabase
+                  .from('destinations')
+                  .select('id, name, slug, country')
+                  .eq('id', normalizedDestinationId)
+                  .limit(1)
+                  .maybeSingle();
+                
+                if (!destErrorById && destDataById) {
+                  destData = destDataById;
+                  destError = null;
+                }
+              }
+              
+              if (!destError && destData && destData.slug) {
+                destinationData = {
+                  country: destData.country || null,
+                  region: null,
+                  destinationName: destData.name || null,
+                  destinationId: normalizedDestinationId,
+                  slug: destData.slug, // Use the slug from database (e.g., "ajmer")
+                  source: 'supabase_destinations_table',
+                };
+                destinationResolved = true;
+                console.log(`✅ Destination resolved via destinations table for ID ${normalizedDestinationId}:`, destinationData);
+              } else {
+                console.warn(`⚠️ Destinations table lookup found no slug for ID ${normalizedDestinationId}`);
+              }
+            } catch (destTableError) {
+              console.error(`❌ Destinations table lookup failed:`, destTableError?.message || destTableError);
+            }
           }
         } catch (err) {
           console.error('❌ Supabase destination lookup failed:', err?.message || err);
@@ -450,20 +551,45 @@ export default async function TourDetailPage({ params }) {
       if (emergencyDestinationId) {
         console.log(`✅ FALLBACK: Found emergency destination ID: ${emergencyDestinationId}`);
         
-        // Try lookup one more time
+        // Try lookup one more time - first try Supabase destinations table
         try {
-          const emergencyLookup = await getDestinationNameById(emergencyDestinationId);
-          const finalName = emergencyLookup?.destinationName || emergencyDestinationName;
+          // Try Supabase destinations table first (has slug)
+          const { createSupabaseServiceRoleClient } = await import('@/lib/supabaseClient');
+          const supabase = createSupabaseServiceRoleClient();
+          const normalizedEmergencyId = emergencyDestinationId.toString().replace(/^d/i, '');
+          const { data: destData, error: destError } = await supabase
+            .from('destinations')
+            .select('id, name, slug, country')
+            .or(`lookup_id.eq.${normalizedEmergencyId},id.eq.${normalizedEmergencyId}`)
+            .limit(1)
+            .single();
           
-          destinationData = {
-            destinationId: emergencyDestinationId.toString(),
-            destinationName: finalName || null,
-            slug: finalName ? finalName.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '') : emergencyDestinationId.toString(),
-            country: null,
-            source: finalName ? 'emergency_lookup' : 'emergency_id_only',
-          };
-          
-          console.log(`✅ FALLBACK SUCCESS: Set destinationData:`, destinationData);
+          if (!destError && destData) {
+            const slug = destData.slug || destData.id;
+            destinationData = {
+              country: destData.country || null,
+              region: null,
+              destinationName: destData.name || emergencyDestinationName || null,
+              destinationId: normalizedEmergencyId,
+              slug,
+              source: 'emergency_supabase_destinations',
+            };
+            console.log(`✅ FALLBACK SUCCESS: Found in destinations table:`, destinationData);
+          } else {
+            // Fallback to JSON lookup
+            const emergencyLookup = await getDestinationNameById(emergencyDestinationId);
+            const finalName = emergencyLookup?.destinationName || emergencyDestinationName;
+            
+            destinationData = {
+              destinationId: emergencyDestinationId.toString(),
+              destinationName: finalName || null,
+              slug: finalName ? finalName.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '') : emergencyDestinationId.toString(),
+              country: null,
+              source: finalName ? 'emergency_lookup' : 'emergency_id_only',
+            };
+            
+            console.log(`✅ FALLBACK SUCCESS: Set destinationData from JSON:`, destinationData);
+          }
         } catch (fallbackError) {
           console.error(`❌ FALLBACK ERROR:`, fallbackError);
           // Still set it with just the ID
@@ -480,8 +606,179 @@ export default async function TourDetailPage({ params }) {
       }
     }
 
+    // Get category guides for this destination - AFTER all destination data resolution
+    // The database stores guides with destination_id as slug (e.g., "ajmer", "nantes", "gujarat")
+    // We can directly query category_guides table using the slug
+    console.error(`🔍 [SERVER] ===== GUIDE FETCHING CODE REACHED for tour ${productId} =====`);
+    console.log(`🔍 [SERVER] ===== GUIDE FETCHING CODE REACHED for tour ${productId} =====`);
+    let categoryGuides = [];
+    try {
+      console.log(`🔍 [SERVER] Guide Fetching START for tour ${productId}`);
+      console.log(`🔍 destinationData:`, destinationData ? JSON.stringify(destinationData, null, 2) : 'NULL');
+      
+      // Get slug from destinationData (preferred - already resolved)
+      let destinationSlug = destinationData?.slug;
+      let destinationId = destinationData?.destinationId;
+
+      // If destinationData is null, extract ID from tour object
+      if (!destinationId && tour?.destinations && tour.destinations.length > 0) {
+        const primaryDest = tour.destinations.find((d) => d?.primary) || tour.destinations[0];
+        destinationId = primaryDest?.ref || primaryDest?.destinationId || primaryDest?.id;
+        console.log(`🔍 Extracted destinationId from tour object: ${destinationId}`);
+      }
+      
+      console.log(`🔍 Current state - destinationSlug: "${destinationSlug}", destinationId: "${destinationId}"`);
+
+      // If no slug but we have ID, query Supabase viator_destinations table to get slug (same as client does)
+      if (!destinationSlug && destinationId) {
+        try {
+          // First try getViatorDestinationById (same function used elsewhere)
+          const normalizedId = destinationId.toString().replace(/^d/i, '');
+          console.log(`🔍 [SERVER] Calling getViatorDestinationById("${normalizedId}")...`);
+          const viatorDest = await getViatorDestinationById(normalizedId);
+          console.log(`🔍 [SERVER] getViatorDestinationById returned:`, viatorDest ? JSON.stringify(viatorDest, null, 2) : 'NULL');
+          
+          if (viatorDest && viatorDest.slug) {
+            destinationSlug = viatorDest.slug;
+            console.log(`✅ [SERVER] Guide Fetching: Found destination slug "${destinationSlug}" from viator_destinations for ID ${normalizedId}`);
+          } else if (viatorDest && viatorDest.name) {
+            // If no slug but we have name, generate slug from name
+            destinationSlug = viatorDest.name
+              .toLowerCase()
+              .trim()
+              .replace(/[^\w\s-]/g, '')
+              .replace(/\s+/g, '-')
+              .replace(/-+/g, '-')
+              .replace(/^-|-$/g, '');
+            console.log(`✅ Guide Fetching: Generated slug "${destinationSlug}" from viator_destinations name "${viatorDest.name}"`);
+          } else {
+            // Fallback: try destinations table
+            const { createSupabaseServiceRoleClient } = require('@/lib/supabaseClient');
+            const supabase = createSupabaseServiceRoleClient();
+            
+            // Try lookup_id first
+            let { data: destData, error: destError } = await supabase
+              .from('destinations')
+              .select('id, name, slug, country')
+              .eq('lookup_id', normalizedId)
+              .limit(1)
+              .maybeSingle();
+            
+            // If not found, try by id
+            if (destError || !destData) {
+              const { data: destDataById, error: destErrorById } = await supabase
+                .from('destinations')
+                .select('id, name, slug, country')
+                .eq('id', normalizedId)
+                .limit(1)
+                .maybeSingle();
+              
+              if (!destErrorById && destDataById) {
+                destData = destDataById;
+                destError = null;
+              }
+            }
+            
+            if (!destError && destData && destData.slug) {
+              destinationSlug = destData.slug;
+              console.log(`✅ Guide Fetching: Found destination slug "${destinationSlug}" from destinations table for ID ${normalizedId}`);
+            } else if (!destError && destData && destData.name) {
+              // If no slug but we have name, generate slug from name
+              destinationSlug = destData.name
+                .toLowerCase()
+                .trim()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
+              console.log(`✅ Guide Fetching: Generated slug "${destinationSlug}" from destinations table name "${destData.name}"`);
+            }
+          }
+        } catch (supabaseError) {
+          console.warn(`⚠️ Guide Fetching: Supabase query failed:`, supabaseError?.message || supabaseError);
+        }
+      }
+
+      // If still no slug, try to get from destination name
+      if (!destinationSlug && destinationData?.destinationName) {
+        destinationSlug = destinationData.destinationName
+          .toLowerCase()
+          .trim()
+          .replace(/[^\w\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-')
+          .replace(/^-|-$/g, '');
+        console.log(`✅ Guide Fetching: Generated slug "${destinationSlug}" from destinationData.name`);
+      }
+
+      // If still no slug, try tour object (same logic as client)
+      if (!destinationSlug && tour?.destinations && tour.destinations.length > 0) {
+        const primaryDest = tour.destinations.find((d) => d?.primary) || tour.destinations[0];
+        let destName = primaryDest?.destinationName || primaryDest?.name;
+        
+        // If still no name, try extracting from tour title (same as client does)
+        if (!destName && tour?.title) {
+          const titleMatch = tour.title.match(/from\s+([A-Z][a-zA-Z\s]+?)(?:\s|$|,)/i);
+          if (titleMatch && titleMatch[1]) {
+            destName = titleMatch[1].trim();
+            console.log(`🔍 [SERVER] Extracted destination name "${destName}" from tour title`);
+          }
+        }
+        
+        if (destName) {
+          destinationSlug = destName
+            .toLowerCase()
+            .trim()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-')
+            .replace(/^-|-$/g, '');
+          console.log(`✅ [SERVER] Guide Fetching: Generated slug "${destinationSlug}" from tour object/title`);
+        }
+      }
+
+      // Now query guides directly using the slug
+      console.log(`🔍 [SERVER] Final state before query - destinationSlug: "${destinationSlug}"`);
+      
+      if (destinationSlug) {
+        // Check if slug is numeric (like "51525") - if so, we already tried to get real slug above
+        const isNumericSlug = /^\d+$/.test(destinationSlug);
+        console.log(`🔍 [SERVER] Slug is numeric: ${isNumericSlug}`);
+        
+        if (!isNumericSlug) {
+          // Query database directly using the slug
+          console.log(`🔍 [SERVER] Querying getAllCategoryGuidesForDestination("${destinationSlug}")`);
+          categoryGuides = await getAllCategoryGuidesForDestination(destinationSlug);
+          console.log(`📚 [SERVER] Tour Page - Fetched ${categoryGuides.length} category guides for slug: "${destinationSlug}"`);
+          
+          // If no guides found, check if it's a hardcoded destination
+          if (categoryGuides.length === 0) {
+            const matchedDest = destinations.find(d => d.id === destinationSlug);
+            if (matchedDest) {
+              // Try with hardcoded destination ID
+              categoryGuides = await getAllCategoryGuidesForDestination(matchedDest.id);
+              console.log(`📚 [SERVER] Tour Page - Fetched ${categoryGuides.length} category guides using hardcoded destination ID: "${matchedDest.id}"`);
+            }
+          }
+        } else {
+          console.warn(`⚠️ [SERVER] Tour Page - Slug is still numeric "${destinationSlug}" after all lookups. Cannot query guides.`);
+          console.warn(`⚠️ [SERVER] This means getViatorDestinationById did not return a slug for ID ${destinationId}`);
+        }
+      } else {
+        console.warn(`⚠️ [SERVER] Tour Page - No destination slug available for fetching guides (productId: ${productId})`);
+        console.warn(`⚠️ [SERVER] destinationData:`, JSON.stringify(destinationData, null, 2));
+        console.warn(`⚠️ [SERVER] tour.destinations:`, JSON.stringify(tour?.destinations?.[0], null, 2));
+      }
+      
+      console.log(`🔍 [SERVER] Guide Fetching END - categoryGuides.length: ${categoryGuides.length}`);
+    } catch (error) {
+      console.error('❌ [SERVER] Error fetching category guides:', error);
+      console.error('❌ [SERVER] Error stack:', error.stack);
+    }
+
     // Check if destination has restaurants
     let restaurantCount = 0;
+    let restaurants = [];
     try {
       // Try to match destination from our destinationsData
       let matchedDestinationId = null;
@@ -517,18 +814,34 @@ export default async function TourDetailPage({ params }) {
       }
 
       if (matchedDestinationId) {
-        // Fetch restaurant counts for all destinations
-        const restaurantCounts = await getRestaurantCountsByDestination();
-        restaurantCount = restaurantCounts[matchedDestinationId] || 0;
+        // Try to fetch restaurants directly (don't rely on count which might have ID format issues)
+        let fetchedRestaurants = await getRestaurantsForDestinationFromDB(matchedDestinationId);
+        if (fetchedRestaurants.length > 0) {
+          restaurants = fetchedRestaurants.map(r => formatRestaurantForFrontend(r)).slice(0, 8);
+          restaurantCount = fetchedRestaurants.length;
+        } else {
+          // Fallback to static data
+          restaurants = getRestaurantsForDestinationFromStatic(matchedDestinationId).slice(0, 8);
+          if (restaurants.length > 0) {
+            restaurantCount = restaurants.length;
+          } else {
+            // Last resort: check restaurant counts
+            const restaurantCounts = await getRestaurantCountsByDestination();
+            restaurantCount = restaurantCounts[matchedDestinationId] || 0;
+          }
+        }
       }
     } catch (error) {
       // Non-critical - restaurant count is optional
-      console.warn('Could not fetch restaurant count (non-critical):', error.message || error);
+      console.warn('Could not fetch restaurant data (non-critical):', error.message || error);
       restaurantCount = 0;
+      restaurants = [];
     }
 
     return (
-      <Suspense fallback={
+      <>
+        {redirectScript}
+        <Suspense fallback={
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <div className="inline-block w-8 h-8 border-4 border-purple-600 border-t-transparent rounded-full animate-spin mb-4"></div>
@@ -536,8 +849,21 @@ export default async function TourDetailPage({ params }) {
           </div>
         </div>
       }>
-        <TourDetailClient tour={tour} similarTours={similarTours} productId={productId} enrichment={tourEnrichment} initialPromotionScore={promotionScore} destinationData={destinationData} restaurantCount={restaurantCount} />
+        <TourDetailClient 
+          tour={tour} 
+          similarTours={similarTours} 
+          productId={productId} 
+          enrichment={tourEnrichment} 
+          initialPromotionScore={promotionScore} 
+          destinationData={destinationData} 
+          restaurantCount={restaurantCount}
+          restaurants={restaurants}
+          operatorPremiumData={operatorPremiumData}
+          operatorTours={operatorTours}
+          categoryGuides={categoryGuides}
+        />
       </Suspense>
+      </>
     );
   } catch (error) {
     console.error('Error fetching tour:', error);

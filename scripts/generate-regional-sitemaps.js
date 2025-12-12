@@ -1,3 +1,11 @@
+/**
+ * @deprecated This script is deprecated. All guides are now in the database.
+ * Use scripts/generate-guides-sitemap.js instead, which generates a single
+ * sitemap from the database for all guides.
+ * 
+ * This script is kept for reference but should not be used.
+ */
+
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';

@@ -13,6 +13,7 @@ import {
 } from '../restaurantsData';
 import { getRestaurantPromotionScore, getTrendingToursByDestination, getTrendingRestaurantsByDestination } from '@/lib/promotionSystem';
 import { getRestaurantPremiumSubscription } from '@/lib/restaurantPremiumServer';
+import { getAllCategoryGuidesForDestination } from '../../lib/categoryGuides';
 
 // Old restaurant slugs with their expected names for fuzzy matching
 const OLD_RESTAURANT_REDIRECTS = {
@@ -194,10 +195,14 @@ export default async function RestaurantPage({ params }) {
   }
 
   // Get initial promotion score
+  // Only fetch if restaurant.id is a numeric ID (not a slug)
+  // For static restaurants, restaurant.id might be a slug, so check if it's numeric
   let initialPromotionScore = null;
-  if (restaurant.id) {
+  const restaurantId = restaurant.id;
+  const isNumericId = restaurantId && /^\d+$/.test(String(restaurantId));
+  if (isNumericId) {
     try {
-      initialPromotionScore = await getRestaurantPromotionScore(restaurant.id);
+      initialPromotionScore = await getRestaurantPromotionScore(Number(restaurantId));
     } catch (error) {
       console.error('Error fetching restaurant promotion score:', error);
     }
@@ -243,13 +248,22 @@ export default async function RestaurantPage({ params }) {
   }
 
   // Get premium subscription status for this restaurant
+  // Only fetch if restaurant.id is a numeric ID (not a slug)
   let premiumSubscription = null;
-  if (restaurant.id) {
+  if (isNumericId) {
     try {
-      premiumSubscription = await getRestaurantPremiumSubscription(restaurant.id, destinationId);
+      premiumSubscription = await getRestaurantPremiumSubscription(Number(restaurantId), destinationId);
     } catch (error) {
       console.error('Error fetching restaurant premium subscription:', error);
     }
+  }
+
+  // Get all category guides for this destination
+  let categoryGuides = [];
+  try {
+    categoryGuides = await getAllCategoryGuidesForDestination(destinationId);
+  } catch (error) {
+    console.error('Error fetching category guides:', error);
   }
 
   return (
@@ -261,6 +275,7 @@ export default async function RestaurantPage({ params }) {
       trendingTours={trendingTours}
       trendingRestaurants={trendingRestaurants}
       premiumSubscription={premiumSubscription}
+      categoryGuides={categoryGuides}
     />
   );
 }

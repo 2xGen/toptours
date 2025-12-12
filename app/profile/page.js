@@ -52,13 +52,14 @@ export default function ProfilePage() {
   const [loadingPortal, setLoadingPortal] = useState(false);
   const [restaurantEdits, setRestaurantEdits] = useState({}); // Track edits per restaurant
   const [savingRestaurant, setSavingRestaurant] = useState(null); // Which restaurant is being saved
+  const [tourOperatorSubscriptions, setTourOperatorSubscriptions] = useState([]);
 
   // Check for tab query parameter
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const tab = params.get('tab');
-      if (tab === 'trip' || tab === 'profile' || tab === 'plan' || tab === 'restaurant' || tab === 'my-restaurants') {
+      if (tab === 'trip' || tab === 'profile' || tab === 'plan' || tab === 'restaurant' || tab === 'my-restaurants' || tab === 'my-tours') {
         setActiveTab(tab);
       }
     }
@@ -161,6 +162,17 @@ export default function ProfilePage() {
           
           if (premiumSubs && premiumSubs.length > 0) {
             setPremiumRestaurants(premiumSubs);
+          }
+          
+          // Fetch user's tour operator subscriptions
+          const { data: tourOperatorSubs } = await supabase
+            .from('tour_operator_subscriptions')
+            .select('*')
+            .eq('user_id', currentUser.id)
+            .in('status', ['active', 'pending_cancellation']);
+          
+          if (tourOperatorSubs && tourOperatorSubs.length > 0) {
+            setTourOperatorSubscriptions(tourOperatorSubs);
           }
         }
       } finally {
@@ -647,6 +659,18 @@ export default function ProfilePage() {
                   My Restaurants
                   <span className="ml-auto bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded-full">
                     {premiumRestaurants.length}
+                  </span>
+                </button>
+              )}
+              {tourOperatorSubscriptions.length > 0 && (
+                <button
+                  onClick={() => setActiveTab('my-tours')}
+                  className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 ${activeTab === 'my-tours' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
+                >
+                  <Crown className="w-4 h-4 text-amber-500" />
+                  My Tours
+                  <span className="ml-auto bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded-full">
+                    {tourOperatorSubscriptions.length}
                   </span>
                 </button>
               )}
@@ -1660,6 +1684,272 @@ export default function ProfilePage() {
                         </CardContent>
                       </Card>
                     ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {activeTab === 'my-tours' && (
+              <div className="bg-white rounded-xl shadow p-6 space-y-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 rounded-lg bg-amber-100">
+                    <Crown className="w-6 h-6 text-amber-600" />
+                  </div>
+                  <div>
+                    <h1 className="text-2xl font-semibold">My Tour Operator Subscriptions</h1>
+                    <p className="text-sm text-gray-600">Manage your premium tour bundles</p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  {tourOperatorSubscriptions.map((subscription) => {
+                    const planName = subscription.subscription_plan === '5-tours-annual' || subscription.subscription_plan === '5-tours-monthly' 
+                      ? '5 Tours' 
+                      : '15 Tours';
+                    const billingCycle = subscription.subscription_plan.includes('annual') ? 'Yearly' : 'Monthly';
+                    
+                    return (
+                      <div key={subscription.id} className="border rounded-xl p-5 hover:shadow-md transition-shadow">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                          <div>
+                            <div className="flex items-center gap-2 mb-1">
+                              <h3 className="font-semibold text-lg">{subscription.operator_name}</h3>
+                              <Badge variant="outline" className={subscription.status === 'active' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-amber-50 text-amber-700 border-amber-200'}>
+                                {subscription.status === 'active' ? 'Active' : 'Pending Cancellation'}
+                              </Badge>
+                            </div>
+                            <p className="text-sm text-gray-500">
+                              {planName} • {billingCycle} Plan
+                              {subscription.current_period_end && (
+                                <> • Renews {new Date(subscription.current_period_end).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</>
+                              )}
+                            </p>
+                            {subscription.total_tours_count > 0 && (
+                              <p className="text-sm text-gray-600 mt-1">
+                                {subscription.total_tours_count} tour{subscription.total_tours_count !== 1 ? 's' : ''} linked
+                                {subscription.average_rating > 0 && (
+                                  <> • {subscription.average_rating.toFixed(1)} ⭐ ({subscription.total_reviews} reviews)</>
+                                )}
+                              </p>
+                            )}
+                          </div>
+                          <div className="flex gap-2">
+                            <Button
+                              onClick={async () => {
+                                // Open billing portal for subscription management
+                                setLoadingPortal(true);
+                                try {
+                                  const res = await fetch('/api/internal/tour-operator-premium/portal', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({
+                                      subscriptionId: subscription.id,
+                                      userId: user.id,
+                                    }),
+                                  });
+                                  const data = await res.json();
+                                  if (data.url) {
+                                    window.location.href = data.url;
+                                  } else {
+                                    throw new Error(data.error || 'Failed to open billing portal');
+                                  }
+                                } catch (error) {
+                                  toast({
+                                    title: 'Error',
+                                    description: error.message,
+                                    variant: 'destructive',
+                                  });
+                                } finally {
+                                  setLoadingPortal(false);
+                                }
+                              }}
+                              disabled={loadingPortal}
+                              variant="outline"
+                              size="sm"
+                            >
+                              Billing
+                            </Button>
+                          </div>
+                        </div>
+
+                        {/* Linked Tours - Manage Section */}
+                        <div className="mt-4 pt-4 border-t">
+                          <div className="flex items-center justify-between mb-3">
+                            <h4 className="text-sm font-semibold text-gray-700">Linked Tours</h4>
+                            <Badge variant="secondary" className="text-xs">
+                              {subscription.verified_tour_ids?.length || 0} / {subscription.subscription_plan === '5-tours-annual' || subscription.subscription_plan === '5-tours-monthly' ? '5' : '15'}
+                            </Badge>
+                          </div>
+                          
+                          {subscription.verified_tour_ids && subscription.verified_tour_ids.length > 0 ? (
+                            <div className="space-y-2 mb-4">
+                              {subscription.verified_tour_ids.map((productId) => (
+                                <div key={productId} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                                  <div className="flex items-center gap-2 flex-1 min-w-0">
+                                    <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" />
+                                    <Link
+                                      href={`/tours/${productId}`}
+                                      className="text-sm text-gray-700 hover:text-purple-600 truncate flex-1"
+                                    >
+                                      {productId}
+                                    </Link>
+                                    <ExternalLink className="w-3 h-3 text-gray-400 flex-shrink-0" />
+                                  </div>
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={async () => {
+                                      if (!confirm(`Remove tour ${productId} from your subscription?`)) return;
+                                      
+                                      try {
+                                        const res = await fetch('/api/internal/tour-operator-premium/remove-tour', {
+                                          method: 'POST',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({
+                                            subscriptionId: subscription.id,
+                                            productId: productId,
+                                            userId: user.id,
+                                          }),
+                                        });
+                                        const data = await res.json();
+                                        if (data.success) {
+                                          toast({
+                                            title: 'Tour removed',
+                                            description: 'Tour has been removed from your subscription.',
+                                          });
+                                          // Refresh subscriptions
+                                          const { data: updatedSubs } = await supabase
+                                            .from('tour_operator_subscriptions')
+                                            .select('*')
+                                            .eq('user_id', user.id)
+                                            .in('status', ['active', 'pending_cancellation']);
+                                          if (updatedSubs) {
+                                            setTourOperatorSubscriptions(updatedSubs);
+                                          }
+                                        } else {
+                                          throw new Error(data.error || 'Failed to remove tour');
+                                        }
+                                      } catch (error) {
+                                        toast({
+                                          title: 'Error',
+                                          description: error.message,
+                                          variant: 'destructive',
+                                        });
+                                      }
+                                    }}
+                                    className="text-red-600 hover:text-red-700 hover:bg-red-50 ml-2"
+                                  >
+                                    <X className="w-4 h-4" />
+                                  </Button>
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            <p className="text-sm text-gray-500 mb-4">No tours linked yet.</p>
+                          )}
+                          
+                          {/* Add Tour Button */}
+                          {(subscription.verified_tour_ids?.length || 0) < (subscription.subscription_plan === '5-tours-annual' || subscription.subscription_plan === '5-tours-monthly' ? 5 : 15) && (
+                            <div className="mt-4">
+                              <Input
+                                type="text"
+                                placeholder="Enter Viator or TopTours.ai tour URL"
+                                className="mb-2"
+                                onKeyDown={async (e) => {
+                                  if (e.key === 'Enter') {
+                                    const url = e.target.value.trim();
+                                    if (!url) return;
+                                    
+                                    try {
+                                      // Extract product ID from URL
+                                      let productId = null;
+                                      if (url.includes('viator.com')) {
+                                        const match = url.match(/d\d+-([A-Z0-9]+)/);
+                                        if (match) productId = match[1];
+                                      } else if (url.includes('toptours.ai') || url.startsWith('/tours/')) {
+                                        const match = url.match(/\/tours\/([A-Z0-9]+)/i);
+                                        if (match) productId = match[1];
+                                      }
+                                      
+                                      if (!productId) {
+                                        toast({
+                                          title: 'Invalid URL',
+                                          description: 'Please enter a valid Viator or TopTours.ai tour URL.',
+                                          variant: 'destructive',
+                                        });
+                                        return;
+                                      }
+                                      
+                                      // Check if tour is already added
+                                      if (subscription.verified_tour_ids?.includes(productId)) {
+                                        toast({
+                                          title: 'Tour already added',
+                                          description: 'This tour is already in your subscription.',
+                                          variant: 'default',
+                                        });
+                                        e.target.value = '';
+                                        return;
+                                      }
+                                      
+                                      // Add tour
+                                      const res = await fetch('/api/internal/tour-operator-premium/add-tour', {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({
+                                          subscriptionId: subscription.id,
+                                          productId: productId,
+                                          userId: user.id,
+                                        }),
+                                      });
+                                      const data = await res.json();
+                                      if (data.success) {
+                                        toast({
+                                          title: 'Tour added',
+                                          description: 'Tour has been added to your subscription.',
+                                        });
+                                        e.target.value = '';
+                                        // Refresh subscriptions
+                                        const { data: updatedSubs } = await supabase
+                                          .from('tour_operator_subscriptions')
+                                          .select('*')
+                                          .eq('user_id', user.id)
+                                          .in('status', ['active', 'pending_cancellation']);
+                                        if (updatedSubs) {
+                                          setTourOperatorSubscriptions(updatedSubs);
+                                        }
+                                      } else {
+                                        throw new Error(data.error || 'Failed to add tour');
+                                      }
+                                    } catch (error) {
+                                      toast({
+                                        title: 'Error',
+                                        description: error.message,
+                                        variant: 'destructive',
+                                      });
+                                    }
+                                  }
+                                }}
+                              />
+                              <p className="text-xs text-gray-500 mt-1">
+                                Paste a Viator or TopTours.ai tour URL and press Enter to add it
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {tourOperatorSubscriptions.length === 0 && (
+                  <div className="text-center py-12">
+                    <Crown className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+                    <p className="text-gray-500 mb-4">No tour operator subscriptions yet</p>
+                    <Link href="/partners/tour-operators">
+                      <Button className="sunset-gradient text-white">
+                        Subscribe to Premium
+                      </Button>
+                    </Link>
                   </div>
                 )}
               </div>

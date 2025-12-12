@@ -3,6 +3,8 @@ import TourDetailClient from '../[productId]/TourDetailClient';
 import { getTourEnrichment } from '@/lib/tourEnrichment';
 import { destinations as siteDestinations } from '@/data/destinationsData';
 import { slugToViatorId, viatorRefToSlug } from '@/data/viatorDestinationMap';
+import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds, getOperatorAggregatedStats } from '@/lib/tourOperatorPremiumServer';
+import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 
 /**
  * Generate metadata for tour detail page
@@ -404,6 +406,101 @@ export default async function TourDetailPage({ params }) {
 
     const enrichment = await getTourEnrichment(productId);
 
+    // Get category guides for this destination - use slug (same as destination detail page)
+    // For database destinations, the database stores destination_id as the slug (e.g., "ajmer")
+    let categoryGuides = [];
+    let destinationData = null;
+    try {
+      // Step 1: Try to get slug from primaryDestinationSlug (works for hardcoded destinations)
+      let destinationSlug = primaryDestinationSlug;
+      
+      // Step 2: If no slug, resolve from tour destination ID (for database destinations like Ajmer)
+      let resolvedViatorDest = null;
+      if (!destinationSlug && tour?.destinations && tour.destinations.length > 0) {
+        const primaryDest = tour.destinations.find((d) => d?.primary) || tour.destinations[0];
+        const destinationId = primaryDest?.ref || primaryDest?.destinationId || primaryDest?.id;
+        
+        if (destinationId) {
+          // Import getViatorDestinationById to resolve slug from ID
+          const { getViatorDestinationById } = await import('@/lib/supabaseCache');
+          const normalizedId = destinationId.toString().replace(/^d/i, '');
+          resolvedViatorDest = await getViatorDestinationById(normalizedId);
+          
+          if (resolvedViatorDest?.slug) {
+            destinationSlug = resolvedViatorDest.slug;
+            console.log(`✅ [SERVER] Resolved slug "${destinationSlug}" from ID ${normalizedId} for database destination`);
+          } else if (resolvedViatorDest?.name) {
+            // Generate slug from name
+            destinationSlug = resolvedViatorDest.name
+              .toLowerCase()
+              .trim()
+              .replace(/[^\w\s-]/g, '')
+              .replace(/\s+/g, '-')
+              .replace(/-+/g, '-')
+              .replace(/^-|-$/g, '');
+            console.log(`✅ [SERVER] Generated slug "${destinationSlug}" from name "${resolvedViatorDest.name}"`);
+          }
+        }
+      }
+      
+      // Step 3: Fetch guides using the resolved slug
+      if (destinationSlug) {
+        categoryGuides = await getAllCategoryGuidesForDestination(destinationSlug);
+        console.log(`📚 [SERVER] Slugged Tour Page - Fetched ${categoryGuides.length} category guides for slug: ${destinationSlug}`);
+        
+        // Also create destinationData object for the client component
+        const destinationFromSlug = siteDestinations.find((d) => d.id === destinationSlug);
+        if (destinationFromSlug) {
+          destinationData = {
+            slug: destinationSlug,
+            destinationName: destinationFromSlug.fullName || destinationFromSlug.name,
+            destinationId: destinationFromSlug.destinationId || null,
+            country: destinationFromSlug.country || null,
+          };
+        } else {
+          // If not in hardcoded destinations, get name from viator destination or tour
+          let destName = null;
+          // Prefer name from resolved viator destination (most accurate)
+          if (resolvedViatorDest?.name) {
+            destName = resolvedViatorDest.name;
+          } else if (tour?.destinations && tour.destinations.length > 0) {
+            const primaryDest = tour.destinations.find((d) => d?.primary) || tour.destinations[0];
+            destName = primaryDest?.destinationName || primaryDest?.name;
+          }
+          
+          destinationData = {
+            slug: destinationSlug,
+            destinationName: destName || null,
+            destinationId: null,
+            country: resolvedViatorDest?.country || null,
+          };
+        }
+      } else {
+        console.warn(`⚠️ [SERVER] No destination slug resolved for tour ${productId}`);
+      }
+    } catch (error) {
+      console.error('Error fetching category guides:', error);
+    }
+
+    // Fetch tour operator premium subscription data
+    let operatorPremiumData = null;
+    let operatorTours = [];
+    try {
+      operatorPremiumData = await getTourOperatorPremiumSubscription(productId);
+      if (operatorPremiumData) {
+        // Get other tours from the same operator
+        operatorTours = await getOperatorPremiumTourIds(productId);
+        // Get aggregated stats
+        const stats = await getOperatorAggregatedStats(operatorPremiumData.id);
+        if (stats) {
+          operatorPremiumData.aggregatedStats = stats;
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching tour operator premium data:', error);
+      // Continue without premium data - not critical
+    }
+
     // Build JSON-LD for Product/Tour and Breadcrumbs
     const operatorName =
       tour?.supplier?.name ||
@@ -527,6 +624,10 @@ export default async function TourDetailPage({ params }) {
           productId={productId}
           pricing={pricing}
           enrichment={enrichment}
+          operatorPremiumData={operatorPremiumData}
+          operatorTours={operatorTours}
+          destinationData={destinationData}
+          categoryGuides={categoryGuides}
         />
       </>
     );

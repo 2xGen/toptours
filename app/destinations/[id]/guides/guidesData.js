@@ -41477,5 +41477,933 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
     },
   },
 
+  // MARBELLA GUIDES
+  'marbella': {
+    'marbella-old-town-walking-tours': {
+      title: 'Marbella Old Town Walking Tours',
+      subtitle: 'Discover the charming whitewashed streets, historic plazas, and Andalusian architecture of Marbella\'s enchanting Old Town',
+      categoryName: 'Marbella Old Town Walking Tours',
+      heroImage: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/marbella.png',
+      stats: {
+        toursAvailable: 18,
+        priceFrom: 25,
+        duration: '2-3 hours',
+      },
+      introduction: `Step back in time as you wander through Marbella's enchanting Old Town, where narrow cobblestone streets wind past whitewashed buildings adorned with colorful flower pots and wrought-iron balconies. This historic quarter, dating back to Moorish times, offers a perfect blend of Andalusian charm, Spanish culture, and Mediterranean beauty. Marbella Old Town walking tours take you through the Orange Square (Plaza de los Naranjos), past the 15th-century town hall, into charming tapas bars, and through hidden courtyards that reveal centuries of history. Experience the authentic side of Marbella beyond the glitz of Puerto Banús, discover local artisans, taste traditional Andalusian cuisine, and immerse yourself in the laid-back atmosphere that makes this one of the Costa del Sol's most beloved destinations.`,
+      seo: {
+        title: 'Marbella Old Town Walking Tours 2025: Historic Quarter & Culture',
+        description: 'Book the best Old Town walking tours in Marbella. Explore whitewashed streets, Orange Square, historic sites & tapas culture. From €25/person with expert guides.',
+        keywords: 'Marbella Old Town tours, Marbella walking tours, Orange Square Marbella, historic Marbella tours, Andalusian architecture tours, Marbella culture tours',
+      },
+      whyChoose: [
+        {
+          icon: 'Heart',
+          title: 'Authentic Andalusian Charm',
+          description: 'Experience the real Marbella beyond the luxury resorts - discover centuries of history in every whitewashed building and cobblestone street.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Historic Orange Square',
+          description: 'Visit the iconic Plaza de los Naranjos, the heart of Old Town surrounded by orange trees, historic buildings, and charming cafes.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Picture-Perfect Streets',
+          description: 'Capture Instagram-worthy photos of flower-adorned balconies, narrow alleys, and traditional Andalusian architecture at every turn.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Rich Cultural Heritage',
+          description: 'Learn about Marbella\'s Moorish past, Spanish conquest, and evolution into a modern resort town from expert local guides.',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Tapas & Local Cuisine',
+          description: 'Discover authentic tapas bars and traditional restaurants where locals dine, sampling Andalusian specialties and local wines.',
+        },
+        {
+          icon: 'Users',
+          title: 'Small Group Experiences',
+          description: 'Enjoy intimate tours with knowledgeable guides who share insider stories and hidden gems you won\'t find in guidebooks.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Historic Quarter Tours',
+          description: 'Comprehensive walking tours covering Orange Square, town hall, churches, and historic landmarks with detailed cultural context.',
+          features: ['Orange Square visit', '15th-century architecture', 'Moorish heritage sites', 'Historic churches', 'Local history stories'],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Tapas & Culture Tours',
+          description: 'Combine history with culinary experiences, visiting traditional tapas bars and learning about Andalusian food culture.',
+          features: ['3-4 tapas stops', 'Local wine tasting', 'Food culture insights', 'Historic context', 'Small group size'],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Walking Tours',
+          description: 'Guided tours focused on finding the most photogenic spots, with tips for capturing Old Town\'s beauty.',
+          features: ['Best photo locations', 'Lighting tips', 'Architecture focus', 'Hidden courtyards', 'Instagram spots'],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Private Custom Tours',
+          description: 'Personalized experiences tailored to your interests, whether history, architecture, food, or shopping.',
+          features: ['Flexible itinerary', 'Private guide', 'Custom pace', 'Special interests', 'Extended duration'],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Old Town Walking Tour',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Most tours last 2-3 hours, covering the main Old Town area at a comfortable walking pace with frequent stops.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Route',
+            description: 'Tours typically start at Orange Square, wind through narrow streets, visit historic sites, and include tapas stops or shopping time.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Size',
+            description: 'Small groups of 8-15 people ensure personalized attention and the ability to ask questions throughout the tour.',
+          },
+          {
+            icon: 'Shirt',
+            title: 'What to Wear',
+            description: 'Comfortable walking shoes essential - cobblestone streets can be uneven. Light clothing in summer, layers in cooler months.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Guide Expertise',
+            description: 'Local guides share fascinating stories about Marbella\'s history, architecture, and culture with passion and knowledge.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Food & Drinks',
+            description: 'Tapas tours include 3-4 stops with samples. Standard tours may include a coffee break or recommend restaurants.',
+          },
+        ],
+      },
+      expertTips: [
+        'Visit early morning (9-10 AM) or late afternoon (5-6 PM) for best lighting and fewer crowds',
+        'Wear comfortable walking shoes - cobblestones are beautiful but uneven',
+        'Bring cash for small purchases at local artisan shops and tapas bars',
+        'Old Town is compact - you can easily revisit favorite spots after the tour',
+        'Many tours include free time for shopping or dining - plan accordingly',
+        'Book in advance during peak season (July-August) as tours fill quickly',
+        'Combine with a beach visit - Old Town is just 10 minutes from the coast',
+        'Don\'t miss the hidden courtyards and patios - ask your guide to show you',
+      ],
+      faqs: [
+        {
+          question: 'What is Orange Square (Plaza de los Naranjos)?',
+          answer: 'Orange Square is Marbella Old Town\'s historic heart - a charming plaza surrounded by orange trees, 15th-century buildings, cafes, and the town hall. It\'s where locals gather, tourists photograph, and the authentic Andalusian atmosphere comes alive. The square dates to 1485 when Catholic monarchs conquered Marbella. Today it\'s perfect for people-watching, enjoying coffee, or starting your Old Town exploration. Most walking tours begin here. Free to visit, always open, and the centerpiece of any Marbella visit!',
+        },
+        {
+          question: 'How long do Old Town walking tours take?',
+          answer: 'Most tours last 2-3 hours, covering approximately 1-2 kilometers at a leisurely pace with frequent stops for photos, explanations, and rest. Private tours can be customized to 1-4 hours depending on interests. The Old Town is compact - you can see highlights in 1.5 hours, but 2-3 hours allows deeper exploration, tapas stops, and shopping time. Tours typically include free time at the end for independent exploration. Perfect length for most visitors!',
+        },
+        {
+          question: 'Do I need to book in advance?',
+          answer: 'Highly recommended, especially June-September! Old Town tours are popular and groups are limited to 15 people for quality. Booking 2-3 days ahead ensures availability and often better prices. Last-minute bookings possible but risky during peak season. Some operators offer same-day booking if space available. Private tours require advance booking. Online booking usually includes instant confirmation. Don\'t risk disappointment - book ahead!',
+        },
+        {
+          question: 'What should I wear on an Old Town walking tour?',
+          answer: 'Comfortable walking shoes are essential! Cobblestone streets are uneven and can be slippery. Light, breathable clothing in summer (hat and sunscreen recommended). Layers in spring/fall as temperatures vary. Avoid high heels or flip-flops. Bring a small bag for purchases, water bottle, and camera. Tours continue in light rain (umbrellas provided by some operators). Dress comfortably - you\'ll be walking and standing for 2-3 hours. Comfort over fashion!',
+        },
+        {
+          question: 'Are tapas included in the tour price?',
+          answer: 'Depends on tour type! Standard walking tours (€25-35) typically don\'t include food - guide recommends places, you pay separately. Tapas tours (€45-65) include 3-4 tapas stops with samples and drinks. Check tour description carefully. Some tours include one drink or coffee break. Private tours can customize inclusions. Budget €15-25 extra for tapas if not included. Many tours end near restaurants for optional lunch. Always clarify what\'s included when booking!',
+        },
+        {
+          question: 'Is the Old Town accessible for wheelchairs?',
+          answer: 'Partially accessible but challenging. Main Orange Square is accessible, but narrow cobblestone streets (some only 1 meter wide) and uneven surfaces make full exploration difficult. Some operators offer accessible routes avoiding narrowest alleys. Contact tour company in advance to discuss needs - they can customize routes. Many restaurants and shops have steps. Historic preservation limits modifications. Not ideal for full wheelchair access, but partial tours possible with advance planning!',
+        },
+        {
+          question: 'What languages are tours available in?',
+          answer: 'English and Spanish tours most common, available daily. German, French, and Italian tours available with advance booking (minimum group size may apply). Private tours can be arranged in most languages. Check operator\'s website for language options. Many guides are multilingual. Audio guides available in some languages for self-guided options. Book language-specific tours in advance during peak season. Most visitors find English tours excellent quality!',
+        },
+        {
+          question: 'Can I visit Old Town without a tour?',
+          answer: 'Absolutely! Old Town is free to explore independently. Orange Square, streets, and many sites are public. However, tours add context, history, and hidden gems you\'d miss alone. Guides know best photo spots, authentic restaurants, and interesting stories. Self-guided: free but surface-level. Guided: €25-65 but much richer experience. Many visitors do both - tour first for orientation, then explore independently. Maps available at tourist office. Both options valid!',
+        },
+      ],
+    },
+    'costa-del-sol-beach-and-dune-exploration': {
+      title: 'Costa del Sol Beach & Dune Exploration',
+      subtitle: 'Discover pristine beaches, dramatic sand dunes, and hidden coastal gems along Marbella\'s stunning Mediterranean coastline',
+      categoryName: 'Costa del Sol Beach & Dune Exploration',
+      heroImage: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/marbella.png',
+      stats: {
+        toursAvailable: 15,
+        priceFrom: 40,
+        duration: '3-4 hours',
+      },
+      introduction: `The Costa del Sol lives up to its name with over 300 days of sunshine annually and some of Spain's most beautiful beaches stretching along the Mediterranean coast. Marbella's beach and dune exploration tours take you beyond the popular resort beaches to discover pristine stretches of golden sand, dramatic sand dunes, hidden coves, and natural coastal landscapes that showcase the region's stunning beauty. From the famous Playa de la Fontanilla to the protected dunes of Artola, from water sports adventures to peaceful beach walks, these tours offer the perfect blend of relaxation, natural beauty, and coastal exploration. Experience the Mediterranean's crystal-clear waters, learn about coastal ecosystems, enjoy beach activities, and discover why the Costa del Sol has been a beloved destination for generations of travelers seeking sun, sea, and sand.`,
+      seo: {
+        title: 'Costa del Sol Beach & Dune Tours 2025: Best Coastal Exploration',
+        description: 'Book beach and dune exploration tours in Marbella. Discover pristine beaches, sand dunes, hidden coves & water sports. From €40/person with expert guides.',
+        keywords: 'Costa del Sol beach tours, Marbella beach tours, sand dune tours, coastal exploration Marbella, Mediterranean beach tours, Artola dunes',
+      },
+      whyChoose: [
+        {
+          icon: 'Waves',
+          title: 'Pristine Mediterranean Beaches',
+          description: 'Explore beyond resort beaches to discover untouched stretches of golden sand and crystal-clear waters along the Costa del Sol.',
+        },
+        {
+          icon: 'Sun',
+          title: 'Protected Sand Dunes',
+          description: 'Visit the Artola Dunes, a protected natural area showcasing unique coastal ecosystems and dramatic sand formations.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Stunning Coastal Scenery',
+          description: 'Capture breathtaking views of the Mediterranean, dramatic cliffs, hidden coves, and pristine natural landscapes.',
+        },
+        {
+          icon: 'Anchor',
+          title: 'Water Sports Activities',
+          description: 'Many tours include kayaking, paddleboarding, or snorkeling to experience the coast from the water.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Natural Beauty',
+          description: 'Escape the crowds and discover the Costa del Sol\'s authentic coastal beauty away from developed resort areas.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Local Guides',
+          description: 'Learn about coastal ecosystems, local history, and the best spots for swimming, sunbathing, and photography.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Waves',
+          title: 'Beach Walking Tours',
+          description: 'Guided walks along pristine beaches, exploring different coastal areas, learning about local ecosystems, and discovering hidden spots.',
+          features: ['Multiple beach visits', 'Coastal ecology insights', 'Hidden coves', 'Photography opportunities', 'Local history'],
+        },
+        {
+          icon: 'Sun',
+          title: 'Dune Exploration Tours',
+          description: 'Specialized tours focusing on the Artola Dunes and other protected coastal areas, learning about dune ecosystems and conservation.',
+          features: ['Artola Dunes visit', 'Ecosystem education', 'Conservation insights', 'Unique landscapes', 'Guided exploration'],
+        },
+        {
+          icon: 'Anchor',
+          title: 'Beach & Water Sports',
+          description: 'Active tours combining beach exploration with kayaking, paddleboarding, or snorkeling for a complete coastal experience.',
+          features: ['Water sports included', 'Equipment provided', 'Beach time', 'Safety briefing', 'Beginner-friendly'],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Coastal Tours',
+          description: 'Tours designed for photographers, visiting the most scenic spots at optimal times for capturing stunning coastal images.',
+          features: ['Golden hour timing', 'Best viewpoints', 'Composition tips', 'Natural light guidance', 'Scenic locations'],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Beach & Dune Exploration',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last 3-4 hours, including transportation, beach time, exploration, and optional water activities.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Locations',
+            description: 'Visit 2-3 different beach areas, including popular spots like Playa de la Fontanilla and natural areas like Artola Dunes.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Weather',
+            description: 'Tours operate year-round, with best conditions April-October. Summer tours include more water activities, winter focuses on walking and scenery.',
+          },
+          {
+            icon: 'Shirt',
+            title: 'What to Bring',
+            description: 'Swimwear, towel, sunscreen, hat, water bottle, comfortable walking shoes, and camera. Some tours provide equipment.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Size',
+            description: 'Small groups of 8-12 people ensure personalized attention and the ability to explore at your own pace.',
+          },
+          {
+            icon: 'Waves',
+            title: 'Water Activities',
+            description: 'Optional activities like kayaking or paddleboarding are included in some tours, with equipment and safety briefings provided.',
+          },
+        ],
+      },
+      expertTips: [
+        'Visit Artola Dunes early morning or late afternoon for best lighting and fewer people',
+        'Bring reef-safe sunscreen to protect the delicate coastal ecosystem',
+        'Wear water shoes if planning to explore rocky areas or go snorkeling',
+        'Pack a picnic - many tours include time for lunch on the beach',
+        'Check tide times - some beaches and coves are best accessed at low tide',
+        'Book morning tours in summer to avoid midday heat and crowds',
+        'Bring a waterproof camera or phone case for water activities',
+        'Respect protected areas - stay on marked paths in dune conservation zones',
+      ],
+      faqs: [
+        {
+          question: 'What are the Artola Dunes?',
+          answer: 'Artola Dunes are a protected natural area near Marbella featuring unique sand dune ecosystems, rare coastal plants, and important bird habitats. This 200-hectare reserve showcases how coastal dunes form, stabilize, and support specialized wildlife. The dunes reach up to 20 meters high and offer stunning views of the Mediterranean. Protected since 1989, they represent one of the last remaining natural dune systems on the Costa del Sol. Tours explain dune formation, conservation efforts, and the delicate balance of coastal ecosystems. Free to visit, but guided tours provide valuable context. Essential for understanding Costa del Sol\'s natural heritage!',
+        },
+        {
+          question: 'Which beaches are included in the tours?',
+          answer: 'Tours typically visit 2-3 beaches including Playa de la Fontanilla (Marbella\'s main beach with golden sand and facilities), Playa de la Bajadilla (quieter, near port), and natural beaches near Artola. Some tours explore hidden coves accessible only by foot or kayak. Each beach offers different experiences - some have restaurants and facilities, others are completely natural. Guides choose beaches based on weather, tides, and group preferences. Tours balance popular accessible beaches with more secluded natural areas. You\'ll experience the full range of Costa del Sol\'s coastal diversity!',
+        },
+        {
+          question: 'Are water sports included in the price?',
+          answer: 'Depends on tour type! Standard beach walking tours (€40-50) focus on exploration and don\'t include water sports. Active tours (€60-80) include kayaking, paddleboarding, or snorkeling with equipment. Check tour description carefully. Some tours offer water sports as optional add-ons (€15-25 extra). Equipment, safety briefings, and basic instruction included when water sports are part of tour. Beginners welcome - guides provide instruction. If you want water activities, book specifically labeled "beach & water sports" tours. Always confirm inclusions when booking!',
+        },
+        {
+          question: 'What is the best time of year for beach tours?',
+          answer: 'April-October ideal! Summer (June-August) offers warmest water (22-24°C) and most activities, but beaches are crowded. Spring (April-May) and fall (September-October) provide perfect weather (20-25°C air), fewer crowds, and excellent conditions for walking and exploration. Winter (November-March) still pleasant (15-18°C) but water too cold for swimming - tours focus on walking, scenery, and photography. Year-round tours available, but summer best for full beach experience. Shoulder seasons offer best balance of weather and tranquility!',
+        },
+        {
+          question: 'Do I need to be a strong swimmer?',
+          answer: 'Not for most tours! Beach walking and dune exploration require no swimming. Water sports tours include life jackets and are suitable for beginners with basic water confidence. Guides assess conditions and your comfort level. Snorkeling in calm, shallow areas requires minimal swimming ability. Kayaking and paddleboarding don\'t require swimming skills - you\'re on the board. However, if you\'re uncomfortable in water, stick to walking-focused tours. Always inform guides of any concerns. Safety is priority - tours adapt to participants\' abilities!',
+        },
+        {
+          question: 'What should I bring on a beach tour?',
+          answer: 'Essential: swimwear, towel, sunscreen (reef-safe recommended), hat, sunglasses, water bottle, comfortable walking shoes or water shoes, camera. Recommended: change of clothes, snacks, waterproof bag for electronics, first aid basics. Tours provide: transportation, guide, sometimes equipment. Check what\'s included - some tours provide towels, water, or snacks. Pack light but be prepared for sun, sand, and possibly water. Bring cash for optional purchases. Most important: sunscreen and water! Mediterranean sun is strong even in shoulder seasons.',
+        },
+        {
+          question: 'Are the tours suitable for children?',
+          answer: 'Yes, family-friendly! Beach exploration perfect for all ages. Walking tours suitable for children 6+ (younger may find 3-4 hours long). Water sports tours typically require children 8+ for kayaking, 10+ for paddleboarding. Life jackets provided for all water activities. Guides experienced with families and adjust pace accordingly. Some operators offer family-specific tours with more breaks and activities. Check age requirements when booking water sports tours. Beach time and exploration enjoyable for all ages. Great family activity!',
+        },
+        {
+          question: 'Can I combine beach tour with other activities?',
+          answer: 'Absolutely! Many tours are half-day (3-4 hours) leaving afternoon free. Popular combinations: Old Town visit in morning, beach tour afternoon. Or beach tour morning, Puerto Banús visit evening. Some operators offer full-day packages combining beach exploration with other Marbella experiences. Private tours can be customized to include multiple activities. Check with operators about combo packages or create your own itinerary. Beach tours flexible - perfect for building your perfect Marbella day!',
+        },
+      ],
+    },
+    'luxury-puerto-banus-experiences': {
+      title: 'Luxury Puerto Banús Experiences',
+      subtitle: 'Experience the glamour of Puerto Banús - luxury yachts, designer boutiques, fine dining, and the jet-set lifestyle of the Costa del Sol',
+      categoryName: 'Luxury Puerto Banús Experiences',
+      heroImage: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/marbella.png',
+      stats: {
+        toursAvailable: 12,
+        priceFrom: 50,
+        duration: '2-4 hours',
+      },
+      introduction: `Puerto Banús is Marbella's glamorous playground, where luxury yachts line the marina, designer boutiques showcase the world's finest brands, and the jet-set lifestyle comes alive in one of Europe's most exclusive destinations. Built in 1970 to rival Monaco and Saint-Tropez, this purpose-built marina has become synonymous with luxury, attracting celebrities, billionaires, and discerning travelers from around the world. Luxury Puerto Banús experiences take you behind the scenes of this exclusive enclave, from private yacht tours to designer shopping guides, from fine dining experiences to sunset cocktails at waterfront bars. Discover the history of this ambitious project, learn about the superyachts and their owners, explore the high-end shopping district, and experience the sophisticated atmosphere that makes Puerto Banús one of the Mediterranean's most iconic luxury destinations. Whether you're window shopping, dining at Michelin-starred restaurants, or simply soaking in the glamour, these tours offer an unforgettable glimpse into the world of luxury travel.`,
+      seo: {
+        title: 'Puerto Banús Luxury Tours 2025: Yachts, Shopping & Fine Dining',
+        description: 'Book luxury Puerto Banús experiences in Marbella. Private yacht tours, designer shopping, fine dining & marina exploration. From €50/person.',
+        keywords: 'Puerto Banús tours, luxury Marbella tours, yacht tours Marbella, designer shopping Marbella, luxury marina tours, Costa del Sol luxury',
+      },
+      whyChoose: [
+        {
+          icon: 'Ship',
+          title: 'Luxury Yacht Marina',
+          description: 'Explore one of Europe\'s most exclusive marinas, home to superyachts worth millions and frequented by celebrities and billionaires.',
+        },
+        {
+          icon: 'Star',
+          title: 'Designer Shopping',
+          description: 'Discover world-renowned luxury brands including Louis Vuitton, Gucci, Dior, and more in an elegant shopping environment.',
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Fine Dining & Nightlife',
+          description: 'Experience Michelin-starred restaurants, exclusive beach clubs, and sophisticated bars that define the Puerto Banús lifestyle.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Glamorous Atmosphere',
+          description: 'Immerse yourself in the jet-set lifestyle, capturing the elegance and sophistication that makes Puerto Banús world-famous.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Exclusive Access',
+          description: 'Private tours offer behind-the-scenes access and insider knowledge about this exclusive destination.',
+        },
+        {
+          icon: 'Users',
+          title: 'Expert Guides',
+          description: 'Learn about the history, architecture, and stories behind Puerto Banús from knowledgeable local experts.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'Ship',
+          title: 'Marina & Yacht Tours',
+          description: 'Guided walks through the marina learning about superyachts, their owners, and the history of Puerto Banús with optional yacht visits.',
+          features: ['Marina exploration', 'Yacht spotting', 'History & stories', 'Architecture insights', 'Photo opportunities'],
+        },
+        {
+          icon: 'Star',
+          title: 'Designer Shopping Tours',
+          description: 'Expert-guided shopping experiences through luxury boutiques, learning about brands, getting style advice, and discovering hidden gems.',
+          features: ['Boutique visits', 'Style consultation', 'Brand knowledge', 'VIP access', 'Shopping assistance'],
+        },
+        {
+          icon: 'GlassWater',
+          title: 'Fine Dining Experiences',
+          description: 'Culinary tours combining marina exploration with dining at Michelin-starred restaurants or exclusive beach clubs.',
+          features: ['Restaurant visits', 'Wine pairings', 'Chef insights', 'Exclusive venues', 'Gourmet experiences'],
+        },
+        {
+          icon: 'Heart',
+          title: 'Private Luxury Tours',
+          description: 'Bespoke experiences tailored to your interests - shopping, dining, yachting, or comprehensive Puerto Banús exploration.',
+          features: ['Customized itinerary', 'Private guide', 'Flexible timing', 'VIP treatment', 'Personalized service'],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Puerto Banús Experience',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 2-hour walking tours to 4-hour comprehensive experiences including dining or shopping.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Marina Focus',
+            description: 'Explore the marina, luxury boutiques, restaurants, and learn about the architecture and history of Puerto Banús.',
+          },
+          {
+            icon: 'DollarSign',
+            title: 'Luxury Environment',
+            description: 'Experience an exclusive atmosphere with high-end shops, fine dining, and sophisticated venues throughout.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Size',
+            description: 'Small groups (6-10 people) or private tours ensure personalized attention and exclusive experiences.',
+          },
+          {
+            icon: 'Camera',
+            title: 'Photo Opportunities',
+            description: 'Capture the glamour of superyachts, elegant architecture, and the sophisticated Puerto Banús atmosphere.',
+          },
+          {
+            icon: 'Star',
+            title: 'Insider Knowledge',
+            description: 'Learn about the history, famous visitors, and stories behind this exclusive destination from expert guides.',
+          },
+        ],
+      },
+      expertTips: [
+        'Visit late afternoon for best atmosphere - yachts return, restaurants come alive, and sunset creates magical lighting',
+        'Dress smart-casual - while not strictly enforced, upscale venues appreciate appropriate attire',
+        'Bring camera - the marina, yachts, and architecture offer endless photo opportunities',
+        'Budget for shopping - even window shopping is an experience, but boutiques are world-class',
+        'Book restaurant reservations in advance - Michelin-starred venues fill quickly, especially in summer',
+        'Combine with beach club visit - many tours can include time at exclusive beach clubs',
+        'Evening tours offer different atmosphere - restaurants and nightlife come alive after sunset',
+        'Ask guides about celebrity sightings and stories - they often have fascinating insider knowledge',
+      ],
+      faqs: [
+        {
+          question: 'What is Puerto Banús?',
+          answer: 'Puerto Banús is a luxury marina and resort complex in Marbella, built in 1970 by José Banús to rival Monaco and Saint-Tropez. It features 915 berths for yachts up to 50 meters, designer shopping district with 150+ boutiques (Louis Vuitton, Gucci, Dior, etc.), fine dining restaurants, exclusive beach clubs, and sophisticated nightlife. The marina attracts superyachts, celebrities, and the international jet set. It\'s one of Europe\'s most exclusive destinations, combining Andalusian charm with Mediterranean luxury. Free to visit, but experiences reflect the upscale atmosphere. Essential Marbella destination!',
+        },
+        {
+          question: 'Can I visit the yachts?',
+          answer: 'Most yachts are private and not open to public tours. However, some yacht charter companies offer tours of charter yachts (when not in use). Marina walking tours point out notable yachts and share stories about owners and vessels. Some luxury tour operators have relationships with yacht brokers for special access. Annual boat shows (September) offer more yacht access. For most visitors, admiring from the marina walkways is the experience - yachts are impressive even from outside. Private yacht charters available separately. Tours focus on marina exploration and yacht spotting rather than boarding!',
+        },
+        {
+          question: 'Is Puerto Banús expensive?',
+          answer: 'Yes, it\'s a luxury destination! Designer boutiques have international prices (often higher than home countries due to taxes). Fine dining: €80-200+ per person. Beach clubs: €50-150+ for day access. However, visiting is free - walking marina, window shopping, and atmosphere cost nothing. Many visitors enjoy the glamour without spending. Tours (€50-150) provide value through expert guidance and insider access. You can experience Puerto Banús on any budget - from free walking to full luxury experience. Set expectations and budget accordingly!',
+        },
+        {
+          question: 'What should I wear?',
+          answer: 'Smart-casual recommended! While not strictly enforced, upscale venues appreciate appropriate attire. For marina walking: comfortable shoes, stylish casual wear. For restaurants/beach clubs: smart-casual to elegant (no beachwear, flip-flops in restaurants). Designer boutiques welcome all, but dressing up enhances the experience. Evening venues more formal. When in doubt, err on the side of elegance. You\'re in one of Europe\'s most exclusive destinations - dressing appropriately shows respect for the environment. Comfortable but stylish is the key!',
+        },
+        {
+          question: 'Are tours suitable for children?',
+          answer: 'Yes, but with considerations! Marina walking tours fine for all ages - children enjoy spotting yachts and the vibrant atmosphere. Shopping tours less engaging for young children. Fine dining experiences typically not child-focused. Some operators offer family-friendly tours with activities. Children welcome but Puerto Banús is adult-oriented luxury destination. Consider children\'s interests and attention spans. Many families enjoy marina walks and ice cream stops. Older children/teens may appreciate the glamour more. Adjust expectations - it\'s sophisticated rather than theme park!',
+        },
+        {
+          question: 'What is the best time to visit?',
+          answer: 'Late afternoon/evening ideal! Yachts return to marina, restaurants come alive, atmosphere most vibrant. Summer (June-August) busiest with peak glamour but also crowds. Shoulder seasons (April-May, September-October) offer perfect weather, fewer crowds, still vibrant. Winter quieter but still elegant. Sunset time magical - golden light on yachts and marina. Evening perfect for dining and nightlife. Morning visits quieter, good for photography. Any time beautiful, but late afternoon/evening captures the essence of Puerto Banús lifestyle!',
+        },
+        {
+          question: 'Can I book restaurant reservations through tours?',
+          answer: 'Some tour operators can assist with restaurant reservations, especially for Michelin-starred venues that require advance booking. Private luxury tours often include restaurant coordination. Standard tours may recommend restaurants but don\'t always handle reservations. Best approach: book tour, then ask operator about restaurant assistance. Or book restaurants independently (many accept online reservations). Popular restaurants (Nobu, Trocadero, etc.) book weeks in advance during peak season. Tours provide guidance, but restaurant bookings often separate. Plan ahead for fine dining experiences!',
+        },
+        {
+          question: 'Is parking available?',
+          answer: 'Yes, but limited and expensive! Puerto Banús has underground parking (€2-4/hour, €15-20/day). Spaces fill quickly in summer. Public transport: bus from Marbella (15 minutes, €1.50). Taxi: €10-15 from Marbella center. Walking: 30 minutes from Marbella Old Town along beach promenade (pleasant walk). Many visitors combine with beach visit and walk. Tours often include pickup/dropoff or start at accessible locations. Best: arrive by taxi or public transport, avoid driving if possible. Parking stress detracts from luxury experience!',
+        },
+      ],
+    },
+    'andalusian-culinary-and-tapas-trails': {
+      title: 'Andalusian Culinary & Tapas Trails',
+      subtitle: 'Savor authentic Andalusian cuisine, discover traditional tapas culture, and experience the flavors that define southern Spain\'s culinary heritage',
+      categoryName: 'Andalusian Culinary & Tapas Trails',
+      heroImage: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/marbella.png',
+      stats: {
+        toursAvailable: 20,
+        priceFrom: 45,
+        duration: '3-4 hours',
+      },
+      introduction: `Andalusian cuisine is a celebration of fresh Mediterranean ingredients, Moorish influences, and Spanish culinary traditions that have evolved over centuries. Marbella's culinary and tapas trails take you on a delicious journey through the authentic flavors of southern Spain, from traditional tapas bars in the Old Town to modern restaurants showcasing innovative Andalusian cuisine. Experience the social ritual of tapas - small plates meant for sharing, conversation, and enjoying life's simple pleasures. Sample classic dishes like jamón ibérico, gazpacho, fried fish, and local specialties while learning about the history, ingredients, and cultural significance of Andalusian food. Whether you're exploring hidden tapas bars with locals, learning to make traditional dishes in cooking classes, or dining at restaurants that honor regional traditions, these culinary experiences offer an authentic taste of Marbella and the Costa del Sol's rich gastronomic heritage.`,
+      seo: {
+        title: 'Marbella Tapas & Culinary Tours 2025: Authentic Andalusian Food',
+        description: 'Book the best tapas and culinary tours in Marbella. Experience authentic Andalusian cuisine, traditional tapas bars & cooking classes. From €45/person.',
+        keywords: 'Marbella tapas tours, Andalusian food tours, culinary tours Marbella, tapas bars Marbella, Spanish food tours, cooking classes Marbella',
+      },
+      whyChoose: [
+        {
+          icon: 'GlassWater',
+          title: 'Authentic Tapas Culture',
+          description: 'Experience the true Spanish tapas tradition - small plates, social dining, and the art of sharing food with friends and family.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Local Favorites',
+          description: 'Visit hidden tapas bars and restaurants where locals dine, avoiding tourist traps and discovering authentic flavors.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Cultural Education',
+          description: 'Learn about Andalusian culinary history, Moorish influences, and the stories behind traditional dishes from expert guides.',
+        },
+        {
+          icon: 'Star',
+          title: 'Fresh Local Ingredients',
+          description: 'Taste dishes made with fresh Mediterranean seafood, local produce, and traditional ingredients sourced from the region.',
+        },
+        {
+          icon: 'Users',
+          title: 'Social Experience',
+          description: 'Enjoy the convivial atmosphere of tapas culture - sharing food, conversation, and the relaxed Spanish dining pace.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Culinary Photography',
+          description: 'Capture beautiful food presentations and learn about traditional cooking methods and presentation styles.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'GlassWater',
+          title: 'Tapas Bar Hopping',
+          description: 'Visit 4-5 traditional tapas bars in Old Town, sampling classic dishes, local wines, and learning tapas culture from expert guides.',
+          features: ['4-5 bar stops', 'Tapas samples', 'Wine pairings', 'Local favorites', 'Cultural insights'],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Cooking Classes',
+          description: 'Hands-on experiences learning to prepare traditional Andalusian dishes, then enjoying your creations with wine pairings.',
+          features: ['Hands-on cooking', 'Recipe cards', 'Wine included', 'Small groups', 'Take-home skills'],
+        },
+        {
+          icon: 'Star',
+          title: 'Market & Food Tours',
+          description: 'Combine market visits with cooking or dining, learning about ingredients, shopping like locals, and experiencing food culture.',
+          features: ['Market exploration', 'Ingredient education', 'Shopping tips', 'Cooking or dining', 'Local insights'],
+        },
+        {
+          icon: 'Heart',
+          title: 'Fine Dining Experiences',
+          description: 'Upscale culinary tours featuring Michelin-starred restaurants or innovative chefs showcasing modern Andalusian cuisine.',
+          features: ['Fine dining venues', 'Chef interactions', 'Wine pairings', 'Multi-course meals', 'Culinary innovation'],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Culinary & Tapas Trail',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last 3-4 hours, allowing time to visit multiple venues, enjoy each stop, and learn about the cuisine.',
+          },
+          {
+            icon: 'GlassWater',
+            title: 'Food & Drinks',
+            description: 'Tours include 4-6 tapas samples per person, local wines or drinks at each stop, and sometimes dessert or coffee.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Venues',
+            description: 'Visit 4-5 different establishments - traditional tapas bars, modern restaurants, markets, or cooking schools.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Size',
+            description: 'Small groups of 8-12 people ensure personalized attention and the ability to ask questions about food and culture.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Cultural Context',
+            description: 'Learn about Andalusian culinary history, traditional cooking methods, and the social importance of food in Spanish culture.',
+          },
+          {
+            icon: 'Heart',
+            title: 'Dietary Accommodations',
+            description: 'Most tours can accommodate dietary restrictions with advance notice - vegetarian, gluten-free, and other options available.',
+          },
+        ],
+      },
+      expertTips: [
+        'Come hungry but pace yourself - tapas tours include substantial food across multiple stops',
+        'Try local wines - Andalusian wines (especially from nearby Ronda) pair perfectly with tapas',
+        'Ask questions - guides love sharing food knowledge and local culinary secrets',
+        'Bring cash - some traditional tapas bars don\'t accept cards, and tips are appreciated',
+        'Book evening tours (7-11 PM) to experience authentic Spanish dining times',
+        'Don\'t skip the bread - it\'s essential for sopping up sauces and enjoying tapas properly',
+        'Try everything - even if unfamiliar, traditional dishes are worth experiencing',
+        'Learn basic Spanish food terms - it enhances the experience and shows respect for the culture',
+      ],
+      faqs: [
+        {
+          question: 'What are tapas?',
+          answer: 'Tapas are small plates of food served in Spanish bars and restaurants, originally free snacks served with drinks to cover glasses (tapa means "lid"). Today tapas are a social dining tradition - ordering multiple small plates to share, moving between bars, and enjoying conversation over food and drinks. Classic tapas include jamón ibérico (cured ham), patatas bravas (spicy potatoes), croquetas (croquettes), fried fish, olives, cheese, and regional specialties. In Andalusia, tapas are often generous - almost meal-sized portions. The tradition encourages trying many dishes, socializing, and enjoying relaxed dining. Essential Spanish cultural experience!',
+        },
+        {
+          question: 'How much food is included?',
+          answer: 'Substantial! Tapas tours typically include 4-6 tapas per person across 4-5 stops, plus drinks (wine, beer, or soft drinks) at each venue. This equals a full meal - many participants skip dinner afterward. Cooking classes include the meal you prepare plus wine. Market tours may include samples plus a meal. Fine dining tours include multi-course meals. Come hungry but expect to be well-fed. Tours designed to be satisfying meals, not just snacks. Some tours explicitly state "dinner included" - check descriptions. You won\'t leave hungry!',
+        },
+        {
+          question: 'Are drinks included?',
+          answer: 'Yes, typically! Most tapas tours include wine, beer, or soft drinks at each stop (usually 1-2 drinks per venue). Some tours offer unlimited drinks, others include specific pairings. Cooking classes include wine with the meal. Fine dining tours include wine pairings. Always check tour description for specifics. Non-alcoholic options always available. If you want premium wines or cocktails, some tours offer upgrades. Standard tours include house wines and local beers - perfectly adequate and authentic. Drinks enhance the tapas experience!',
+        },
+        {
+          question: 'What if I have dietary restrictions?',
+          answer: 'Most tours accommodate! Vegetarian options widely available - many traditional tapas are naturally vegetarian (patatas bravas, croquetas, cheese, vegetables). Vegan more challenging but possible with advance notice. Gluten-free options available (many tapas naturally gluten-free, but inform guides). Allergies: inform operator when booking - they coordinate with venues. Kosher/halal: limited options, discuss with operator. Most Andalusian cuisine uses pork and seafood extensively. Advance communication essential - operators want you to enjoy the experience. Don\'t hesitate to ask about accommodations!',
+        },
+        {
+          question: 'Do I need to book in advance?',
+          answer: 'Highly recommended! Popular tours fill days in advance, especially June-September and weekends. Small group sizes (8-12 people) mean limited availability. Booking 3-5 days ahead ensures your preferred date and time. Last-minute bookings possible if space available, but risky during peak season. Cooking classes especially need advance booking (ingredients must be prepared). Some operators offer same-day booking for walking tapas tours if not full. Don\'t risk disappointment - book ahead!',
+        },
+        {
+          question: 'What is the best time for tapas tours?',
+          answer: 'Evening ideal! Spanish dining times are later - tapas tours typically 7-11 PM align with local culture when tapas bars are most vibrant. Lunch tapas tours (1-4 PM) also available and less crowded. Evening tours capture authentic atmosphere - locals dining, bars lively, authentic experience. However, lunch tours good for those preferring earlier dining. Some operators offer afternoon tours (5-8 PM) as compromise. Any time enjoyable, but evening tours most authentic to Spanish tapas culture. Book what suits your schedule!',
+        },
+        {
+          question: 'Can I do a self-guided tapas tour?',
+          answer: 'Possible but less rewarding! Old Town has many tapas bars - you can visit independently. However, guided tours provide context, take you to authentic local favorites (not tourist traps), explain dishes and culture, help with ordering, and ensure you try the best options. Self-guided: cheaper but surface-level, risk tourist traps, miss cultural insights. Guided: €45-80 but much richer experience with education and authentic venues. Many visitors do both - guided tour first to learn, then explore independently with knowledge. Both valid approaches!',
+        },
+        {
+          question: 'Are cooking classes suitable for beginners?',
+          answer: 'Absolutely! Cooking classes designed for all skill levels. Chefs provide step-by-step instruction, demonstrate techniques, and ensure everyone succeeds. Classes typically prepare 3-4 traditional dishes - manageable for beginners. Focus is on learning, fun, and cultural experience rather than culinary mastery. Recipes provided to take home. Small groups ensure personal attention. No prior cooking experience needed. Even experienced cooks learn new techniques and cultural context. Great for couples, families, or solo travelers. Very hands-on and engaging - highly recommended!',
+        },
+      ],
+    },
+    'historical-ruins-and-roman-heritage': {
+      title: 'Historical Ruins & Roman Heritage',
+      subtitle: 'Explore ancient Roman ruins, archaeological sites, and the rich historical heritage that reveals Marbella\'s fascinating past',
+      categoryName: 'Historical Ruins & Roman Heritage',
+      heroImage: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/marbella.png',
+      stats: {
+        toursAvailable: 10,
+        priceFrom: 35,
+        duration: '3-5 hours',
+      },
+      introduction: `Long before Marbella became a glamorous resort destination, this region was home to ancient civilizations that left their mark on the landscape. The Costa del Sol's Roman heritage is particularly rich, with archaeological sites revealing a fascinating history of trade, settlement, and cultural exchange. Historical ruins and Roman heritage tours take you beyond the beaches and luxury to discover the ancient past, from Roman villas and baths to archaeological museums, from ancient trade routes to the remains of settlements that once thrived along this strategic Mediterranean coast. Explore sites like the Roman ruins near Marbella, visit archaeological museums showcasing artifacts, learn about the region's importance in the Roman Empire, and discover how ancient history shaped the modern Costa del Sol. These tours offer a fascinating contrast to Marbella's contemporary glamour, revealing layers of history that add depth and context to your visit.`,
+      seo: {
+        title: 'Marbella Roman Ruins Tours 2025: Archaeological Sites & History',
+        description: 'Book historical and Roman heritage tours in Marbella. Explore ancient ruins, archaeological sites & museums. From €35/person with expert guides.',
+        keywords: 'Marbella Roman ruins, archaeological tours Marbella, Roman heritage Costa del Sol, historical tours Marbella, ancient sites Spain',
+      },
+      whyChoose: [
+        {
+          icon: 'BookOpen',
+          title: 'Rich Roman History',
+          description: 'Discover the Costa del Sol\'s importance in the Roman Empire through well-preserved ruins and archaeological sites.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Archaeological Sites',
+          description: 'Visit authentic Roman ruins, villas, baths, and settlements that reveal ancient life along the Mediterranean coast.',
+        },
+        {
+          icon: 'Star',
+          title: 'Expert Historians',
+          description: 'Learn from knowledgeable guides who bring ancient history to life with stories, context, and fascinating insights.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photographic Opportunities',
+          description: 'Capture stunning images of ancient architecture, mosaics, and ruins set against the beautiful Mediterranean landscape.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Cultural Depth',
+          description: 'Gain deeper understanding of Marbella and the Costa del Sol beyond the modern resort image.',
+        },
+        {
+          icon: 'Users',
+          title: 'Small Group Learning',
+          description: 'Enjoy intimate tours with personalized attention and the ability to ask questions about ancient history.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Roman Ruins Tours',
+          description: 'Guided visits to Roman archaeological sites including villas, baths, settlements, and infrastructure remains with historical context.',
+          features: ['Site visits', 'Archaeological insights', 'Historical context', 'Expert guides', 'Photo opportunities'],
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Museum & Site Combos',
+          description: 'Combine archaeological site visits with museum tours, seeing artifacts in context and understanding the complete historical picture.',
+          features: ['Museum visits', 'Artifact viewing', 'Site exploration', 'Complete context', 'Educational focus'],
+        },
+        {
+          icon: 'Star',
+          title: 'Private Historical Tours',
+          description: 'Bespoke experiences tailored to your interests, focusing on specific periods, sites, or aspects of Roman and regional history.',
+          features: ['Customized itinerary', 'Flexible focus', 'Private guide', 'Extended time', 'Personalized learning'],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Historical Tours',
+          description: 'Tours designed for photographers, visiting sites at optimal times and learning about capturing ancient architecture and landscapes.',
+          features: ['Golden hour timing', 'Composition guidance', 'Best viewpoints', 'Historical context', 'Photography tips'],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Historical & Roman Heritage Tour',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours typically last 3-5 hours, including transportation, site visits, museum stops, and time for exploration and questions.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Sites Visited',
+            description: 'Visit 2-3 archaeological sites and possibly museums, with detailed explanations and historical context at each location.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Educational Focus',
+            description: 'Learn about Roman history, archaeology, ancient daily life, and how the region fit into the broader Roman Empire.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Size',
+            description: 'Small groups of 8-12 people ensure personalized attention and the ability to ask questions throughout the tour.',
+          },
+          {
+            icon: 'Shirt',
+            title: 'What to Bring',
+            description: 'Comfortable walking shoes, hat, sunscreen, water bottle, camera, and clothing suitable for outdoor archaeological sites.',
+          },
+          {
+            icon: 'Star',
+            title: 'Expert Guides',
+            description: 'Knowledgeable historians and archaeologists who bring ancient history to life with passion and detailed expertise.',
+          },
+        ],
+      },
+      expertTips: [
+        'Visit early morning or late afternoon for best lighting and cooler temperatures at outdoor sites',
+        'Bring water and snacks - archaeological sites may be remote with limited facilities',
+        'Wear sturdy walking shoes - sites often have uneven terrain and require walking',
+        'Read about Roman history beforehand to enhance your appreciation of the sites',
+        'Ask questions - guides love sharing their knowledge and passion for history',
+        'Respect archaeological sites - don\'t touch ruins or remove anything',
+        'Combine with museum visits to see artifacts in context with the sites',
+        'Photography usually allowed but check rules - some sites restrict flash or tripods',
+      ],
+      faqs: [
+        {
+          question: 'What Roman sites are near Marbella?',
+          answer: 'Several important sites! Ronda la Vieja (near Ronda, 45 minutes) features Roman ruins including an amphitheater and settlement remains. Carteia (near San Roque, 30 minutes) was an important Roman port city with well-preserved ruins. Baelo Claudia (near Tarifa, 1.5 hours) is one of Spain\'s best-preserved Roman towns with forum, temples, baths, and theater. Málaga has Roman theater ruins in city center. Some tours visit multiple sites, others focus on one major site. Distance varies - some require day trips. Tours typically include transportation. Ask operators about specific sites included. Rich Roman heritage throughout the region!',
+        },
+        {
+          question: 'Are the ruins well-preserved?',
+          answer: 'Varies by site! Baelo Claudia exceptionally well-preserved - complete Roman town with visible streets, buildings, and structures. Carteia has substantial remains including walls and foundations. Ronda la Vieja more fragmentary but impressive amphitheater. Málaga theater partially reconstructed. Preservation depends on site importance, excavation history, and conservation efforts. Some sites are ongoing excavations. All sites provide fascinating insights into Roman life. Guides explain what you\'re seeing and help visualize complete structures. Even fragmentary ruins tell compelling stories. Well worth visiting regardless of preservation level!',
+        },
+        {
+          question: 'Do I need historical knowledge to enjoy tours?',
+          answer: 'Not at all! Tours designed for all knowledge levels. Guides explain everything from basics to advanced details. Beginners learn Roman history fundamentals. History enthusiasts get deeper insights and can ask advanced questions. Tours educational but accessible. No prior knowledge needed - guides make history engaging and understandable. However, reading basic Roman history beforehand enhances appreciation. Many visitors discover new passion for ancient history through these tours. Perfect introduction to Roman archaeology and history. Come curious, leave knowledgeable!',
+        },
+        {
+          question: 'How long do tours take?',
+          answer: 'Typically 3-5 hours including transportation! Local sites (within 30 minutes): 3-4 hours total. Distant sites (1+ hour drive): 5-6 hours including travel. Tours balance thorough exploration with practical time constraints. Site visits: 1-2 hours per major site. Museum visits: 30-60 minutes. Transportation: varies by distance. Some operators offer half-day (3 hours) or full-day (6-8 hours) options. Private tours flexible on duration. Check tour descriptions for specific timing. Most visitors find 3-4 hours perfect balance of exploration and time efficiency!',
+        },
+        {
+          question: 'Are tours suitable for children?',
+          answer: 'Yes, with considerations! Children 8+ typically enjoy if interested in history/archaeology. Younger children may find 3-5 hours long and sites less engaging than beaches. However, many children fascinated by "ancient ruins" and Roman stories. Guides adapt explanations for families. Some operators offer family-specific tours with activities. Consider children\'s interests and attention spans. Active children may prefer shorter tours or sites with more visible structures. Teenagers often very engaged. Discuss with operators about family suitability. Not all tours ideal for young children!',
+        },
+        {
+          question: 'What should I bring?',
+          answer: 'Essential: comfortable walking shoes (uneven terrain), hat and sunscreen (outdoor sites), water bottle, camera. Recommended: snacks (sites may be remote), small backpack, light layers (temperature varies), notebook if interested in taking notes. Some sites have limited facilities. Tours may include stops for refreshments. Check with operator about what\'s provided. Most important: comfortable shoes and sun protection. Archaeological sites require walking and are often exposed. Come prepared for outdoor exploration!',
+        },
+        {
+          question: 'Can I visit sites independently?',
+          answer: 'Some sites yes, others challenging! Baelo Claudia has visitor center and marked paths - possible independently. Carteia and Ronda la Vieja less developed, benefit from guides. Museums easily visited independently. However, guided tours provide context, explanations, and access to areas or information not available to independent visitors. Guides bring sites to life with stories and expertise. Self-guided: possible but surface-level. Guided: richer experience with education. Many visitors do both - guided tour for learning, return independently for photography. Both approaches valid!',
+        },
+        {
+          question: 'Is transportation included?',
+          answer: 'Usually yes! Most tours include round-trip transportation from Marbella meeting point. Some operators offer hotel pickup for additional fee. Private tours often include door-to-door service. Check tour descriptions - transportation details clearly stated. Group tours typically use minivans or small buses. Distant sites (Baelo Claudia, etc.) definitely include transportation due to distance. Local sites may be walking tours or include short drives. Always confirm transportation when booking. Most operators very clear about what\'s included. Transportation essential for accessing remote archaeological sites!',
+        },
+      ],
+    },
+    'sierra-blanca-nature-and-hiking-adventures': {
+      title: 'Sierra Blanca Nature & Hiking Adventures',
+      subtitle: 'Explore the stunning Sierra Blanca mountains, discover diverse ecosystems, and experience the natural beauty that surrounds Marbella',
+      categoryName: 'Sierra Blanca Nature & Hiking Adventures',
+      heroImage: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/marbella.png',
+      stats: {
+        toursAvailable: 12,
+        priceFrom: 50,
+        duration: '4-6 hours',
+      },
+      introduction: `Just minutes from Marbella's beaches and luxury resorts, the Sierra Blanca mountains rise dramatically, offering a completely different world of natural beauty, hiking trails, and outdoor adventure. This mountain range, part of the larger Serranía de Ronda, provides stunning contrasts to the coastal glamour - ancient forests, rugged peaks, panoramic views, and diverse ecosystems that showcase Andalusia's wild side. Sierra Blanca nature and hiking adventures take you into this natural playground, from gentle walks through pine forests to challenging summit hikes, from wildlife spotting to learning about local flora and fauna. Experience breathtaking views of the Mediterranean, Marbella, and the Costa del Sol from mountain viewpoints, discover hidden waterfalls and natural pools, and connect with the authentic Andalusian landscape that has inspired artists and travelers for centuries. Whether you're seeking active adventure, peaceful nature immersion, or simply stunning scenery, these mountain experiences offer unforgettable escapes into Marbella's natural heritage.`,
+      seo: {
+        title: 'Sierra Blanca Hiking Tours 2025: Mountain Adventures & Nature',
+        description: 'Book Sierra Blanca hiking and nature tours from Marbella. Mountain trails, wildlife spotting & panoramic views. From €50/person with expert guides.',
+        keywords: 'Sierra Blanca hiking, Marbella mountain tours, nature tours Costa del Sol, hiking tours Spain, mountain adventures Marbella',
+      },
+      whyChoose: [
+        {
+          icon: 'Sun',
+          title: 'Stunning Mountain Views',
+          description: 'Enjoy breathtaking panoramas of the Mediterranean, Marbella, and the Costa del Sol from elevated mountain viewpoints.',
+        },
+        {
+          icon: 'Heart',
+          title: 'Natural Escape',
+          description: 'Experience the authentic Andalusian landscape away from resorts, connecting with nature and mountain ecosystems.',
+        },
+        {
+          icon: 'MapPin',
+          title: 'Diverse Trails',
+          description: 'Choose from gentle nature walks to challenging summit hikes, with options for all fitness levels and interests.',
+        },
+        {
+          icon: 'Camera',
+          title: 'Photographic Paradise',
+          description: 'Capture stunning mountain landscapes, Mediterranean vistas, and diverse flora and fauna in their natural habitat.',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Ecosystem Education',
+          description: 'Learn about local plants, wildlife, geology, and the unique ecosystems of the Sierra Blanca from expert naturalist guides.',
+        },
+        {
+          icon: 'Users',
+          title: 'Small Group Adventures',
+          description: 'Enjoy intimate hiking experiences with knowledgeable guides who share their passion for the mountains and nature.',
+        },
+      ],
+      tourTypes: [
+        {
+          icon: 'MapPin',
+          title: 'Nature Walking Tours',
+          description: 'Gentle walks through pine forests and mountain paths, focusing on nature observation, photography, and enjoying the scenery.',
+          features: ['Easy to moderate trails', 'Nature observation', 'Photography stops', 'Ecosystem education', 'Scenic viewpoints'],
+        },
+        {
+          icon: 'Sun',
+          title: 'Summit Hiking Tours',
+          description: 'Challenging hikes to mountain peaks, offering panoramic views and a sense of accomplishment for experienced hikers.',
+          features: ['Challenging trails', 'Summit views', 'Full-day adventure', 'Fitness required', 'Rewarding experience'],
+        },
+        {
+          icon: 'Camera',
+          title: 'Photography Hiking Tours',
+          description: 'Tours designed for photographers, visiting scenic spots at optimal times and learning techniques for mountain photography.',
+          features: ['Golden hour timing', 'Best viewpoints', 'Photography guidance', 'Composition tips', 'Landscape focus'],
+        },
+        {
+          icon: 'Heart',
+          title: 'Wildlife & Nature Tours',
+          description: 'Specialized tours focusing on spotting local wildlife, identifying plants, and learning about mountain ecosystems.',
+          features: ['Wildlife spotting', 'Plant identification', 'Ecosystem education', 'Binoculars provided', 'Naturalist guide'],
+        },
+      ],
+      whatToExpect: {
+        title: 'What to Expect on Your Sierra Blanca Adventure',
+        items: [
+          {
+            icon: 'Clock',
+            title: 'Duration',
+            description: 'Tours range from 4-hour nature walks to 6-8 hour summit hikes, including transportation, hiking time, and breaks.',
+          },
+          {
+            icon: 'MapPin',
+            title: 'Trail Difficulty',
+            description: 'Options from easy (suitable for most) to challenging (requires good fitness and hiking experience) - choose your level.',
+          },
+          {
+            icon: 'Sun',
+            title: 'Weather Considerations',
+            description: 'Tours operate year-round, with best conditions spring and fall. Summer hikes start early to avoid heat.',
+          },
+          {
+            icon: 'Shirt',
+            title: 'What to Bring',
+            description: 'Sturdy hiking shoes, comfortable clothing, layers for temperature changes, hat, sunscreen, water, snacks, and camera.',
+          },
+          {
+            icon: 'Users',
+            title: 'Group Size',
+            description: 'Small groups of 6-10 people ensure safety, personalized attention, and the ability to maintain appropriate pace.',
+          },
+          {
+            icon: 'BookOpen',
+            title: 'Safety & Guidance',
+            description: 'Experienced guides provide safety briefings, navigation, first aid, and knowledge about trails and conditions.',
+          },
+        ],
+      },
+      expertTips: [
+        'Start early in summer (7-8 AM) to avoid midday heat and enjoy cooler temperatures',
+        'Wear proper hiking shoes - trails can be rocky and uneven, especially on summit hikes',
+        'Bring plenty of water - at least 2 liters per person for full-day hikes',
+        'Layer clothing - temperatures vary significantly with elevation and time of day',
+        'Check weather forecasts - mountain weather can change quickly',
+        'Respect the environment - stay on marked trails and leave no trace',
+        'Bring snacks and lunch - full-day hikes include meal breaks with stunning views',
+        'Inform guides of any health conditions or fitness concerns before starting',
+      ],
+      faqs: [
+        {
+          question: 'What is the Sierra Blanca?',
+          answer: 'Sierra Blanca is a mountain range rising behind Marbella, part of the larger Serranía de Ronda system. Peaks reach over 1,200 meters, offering dramatic contrast to the coastal lowlands. The range features pine forests, Mediterranean scrub, diverse wildlife, and stunning viewpoints. It\'s a protected natural area showcasing Andalusian mountain ecosystems. The name means "White Range" referring to limestone rock. Popular for hiking, nature observation, and escaping coastal crowds. Accessible from Marbella in 15-30 minutes. Offers completely different experience from beaches - authentic mountain Andalusian landscape. Essential for experiencing Marbella\'s natural diversity!',
+        },
+        {
+          question: 'Do I need hiking experience?',
+          answer: 'Depends on tour! Nature walking tours (easy-moderate) suitable for most fitness levels - no prior hiking experience needed. Summit hikes (challenging) require good fitness, hiking experience, and ability to handle steep, rocky terrain. Operators clearly rate difficulty. Beginners should choose easier tours. Intermediate hikers can attempt moderate trails. Experienced hikers enjoy challenging summit hikes. Guides assess group ability and adjust pace. Always be honest about fitness level when booking. Safety is priority - choose appropriate difficulty. Many visitors start with easy nature walks and progress. Something for everyone!',
+        },
+        {
+          question: 'What is the best time of year for hiking?',
+          answer: 'Spring (March-May) and fall (September-November) ideal! Perfect temperatures (15-25°C), wildflowers in spring, comfortable hiking conditions. Summer (June-August) possible but hot - tours start very early (6-7 AM) to avoid midday heat. Winter (December-February) cooler but still pleasant, occasional rain. Year-round hiking available, but shoulder seasons offer best balance of weather and conditions. Summer: early starts essential. Winter: check weather, some trails may be wet. Spring/fall: perfect hiking weather, most popular seasons. Book accordingly!',
+        },
+        {
+          question: 'What should I bring?',
+          answer: 'Essential: sturdy hiking shoes (not sneakers - trails rocky), comfortable clothing, layers (temperature varies), hat, sunscreen, water (2+ liters for full day), snacks, small backpack. Recommended: hiking poles (helpful on steep sections), camera, first aid basics, map (guides provide but good backup), emergency contact info. Tours provide: guide, sometimes water/snacks (check description), first aid kit, navigation. Most important: proper shoes and adequate water. Don\'t underestimate mountain conditions - come prepared. Safety first!',
+        },
+        {
+          question: 'Are tours suitable for children?',
+          answer: 'Easy nature walks: yes, children 8+ typically fine. Moderate hikes: children 10+ with hiking experience. Challenging summit hikes: teenagers 14+ with good fitness. Consider children\'s abilities honestly - mountain hiking requires endurance and focus. Some operators offer family-specific tours with easier routes and more breaks. Children must be able to complete distance safely. Guides experienced with families but safety is priority. Discuss children\'s ages and abilities when booking. Not all tours suitable for young children. Choose appropriate difficulty!',
+        },
+        {
+          question: 'What wildlife might I see?',
+          answer: 'Common sightings: Spanish ibex (mountain goats), wild boar (usually distant), various birds (eagles, vultures, smaller species), reptiles (lizards, snakes - usually harmless). Less common: foxes, badgers, wildcats (rare, mostly nocturnal). Flora: pine forests, Mediterranean scrub, wildflowers (spring), aromatic herbs. Guides help identify species and explain ecosystems. Wildlife spotting not guaranteed but common on nature-focused tours. Bring binoculars if interested (some tours provide). Early morning and late afternoon best for wildlife. Respectful observation - keep distance, don\'t disturb. Nature tours focus on observation and education!',
+        },
+        {
+          question: 'Is transportation included?',
+          answer: 'Usually yes! Most tours include pickup from Marbella meeting point or hotels. Trailheads are 15-30 minutes from Marbella center - transportation essential. Group tours use minivans. Private tours often include door-to-door service. Check tour descriptions - transportation details clearly stated. Some operators charge extra for distant hotel pickups. Always confirm transportation when booking. Most important: tours start from trailheads, not Marbella center - transportation definitely needed. Included in most tour prices!',
+        },
+        {
+          question: 'What if weather is bad?',
+          answer: 'Operators monitor weather and may cancel or modify tours for safety. Light rain usually fine - tours continue with appropriate gear. Heavy rain, storms, or dangerous conditions: tours cancelled with full refund or rescheduling. Mountain weather changes quickly - operators make safety decisions. Some tours offer indoor alternatives (museums, etc.) if hiking impossible. Always contact operator morning of tour if weather questionable. Safety is priority - don\'t attempt dangerous conditions. Flexible cancellation policies for weather-related issues. Check operator policies when booking!',
+        },
+      ],
+    },
+  },
+
 };
 

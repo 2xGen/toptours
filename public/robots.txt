@@ -4,4 +4,5 @@ Disallow: /admin-matthijs
 Disallow: /api/
 
 Sitemap: https://toptours.ai/sitemap.xml
+Sitemap: https://toptours.ai/sitemap-guides.xml
 

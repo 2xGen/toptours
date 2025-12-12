@@ -283,10 +283,19 @@ async function processDestination(destination, index, total) {
 async function main() {
   console.log('🚀 Starting bulk import of hardcoded destination tours...\n');
 
+  // Allow filtering by destination ID(s) via command line argument
+  const filterIds = process.argv[2] ? process.argv[2].split(',') : null;
+  
   // Sort destinations alphabetically
-  const sortedDestinations = [...destinations].sort((a, b) => 
+  let sortedDestinations = [...destinations].sort((a, b) => 
     a.name.localeCompare(b.name)
   );
+  
+  // Filter to specific destinations if provided
+  if (filterIds) {
+    sortedDestinations = sortedDestinations.filter(dest => filterIds.includes(dest.id));
+    console.log(`🎯 Filtering to destinations: ${filterIds.join(', ')}\n`);
+  }
 
   const total = sortedDestinations.length;
   console.log(`📊 Found ${total} destinations to process\n`);

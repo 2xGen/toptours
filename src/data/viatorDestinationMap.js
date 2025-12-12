@@ -30,6 +30,8 @@ export const slugToViatorId = {
   "barcelona": "67",
   "madrid": "67",
   "seville": "556",
+  "marbella": "22304",
+  "malaga": "956",
   "mallorca": "955",
   "ibiza": "67",
   "athens": "496",

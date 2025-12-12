@@ -9,6 +9,7 @@ import { getViatorDestinationById, getViatorDestinationBySlug } from '@/lib/supa
 import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { redirect } from 'next/navigation';
 import ErrorBoundary from '@/components/ErrorBoundary';
+import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 
 // Helper to generate slug
 function generateSlug(name) {
@@ -38,8 +39,9 @@ export async function generateMetadata({ params }) {
       const destinationName = fullContent?.destinationName || seoContent?.destinationName || id;
       const heroDescription = fullContent?.heroDescription || seoContent?.heroDescription || seoContent?.briefDescription || '';
       const seoTitle = fullContent?.seo?.title || seoContent?.seo?.title || `${destinationName} Tours & Activities`;
-      // Use favicon for destinations without images
-      const ogImage = seoContent?.ogImage || (fullContent?.imageUrl || seoContent?.imageUrl || 'https://toptours.ai/favicon.ico');
+      // Use default OG image for destinations without images
+      const defaultOgImage = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png';
+      const ogImage = seoContent?.ogImage || (fullContent?.imageUrl || seoContent?.imageUrl || defaultOgImage);
       
       return {
         title: `${seoTitle} | TopTours.ai`,
@@ -79,8 +81,9 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  // Use favicon for destinations without images
-  const ogImage = destination.imageUrl || 'https://toptours.ai/favicon.ico';
+  // Use default OG image for destinations without images
+  const defaultOgImage = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png';
+  const ogImage = destination.imageUrl || defaultOgImage;
   
   return {
     title: `${destination.fullName} Tours & Activities | TopTours.ai`,
@@ -295,7 +298,7 @@ export default async function DestinationDetailPage({ params }) {
           title: `${destName} Tours & Excursions - Top-Rated Activities & Adventures`,
           description: `Discover top-rated ${destName} tours, excursions, and activities powered by AI.`,
         },
-        imageUrl: null, // No image for generated destinations
+        imageUrl: fullContent?.imageUrl || seoContent?.imageUrl || seoContent?.ogImage || null,
         isViatorDestination: true, // Flag to indicate this is a generated destination
         parentCountryDestination: parentCountryDestination, // For small destinations that belong to a parent country
       };
@@ -427,6 +430,40 @@ export default async function DestinationDetailPage({ params }) {
   } catch (error) {
     console.error('Error fetching hardcoded tours:', error);
     // Continue with empty object - page will still work
+  }
+
+  // Fetch category guides for this destination (database + hardcoded)
+  // This enriches tourCategories with hasGuide property for database destinations
+  let categoryGuides = [];
+  try {
+    // Use destination.id (slug) for fetching guides
+    categoryGuides = await getAllCategoryGuidesForDestination(destination.id);
+    console.log(`📚 Destination Page - Fetched ${categoryGuides.length} category guides for ${destination.id}`);
+    
+    // Enrich tourCategories with hasGuide property based on fetched guides
+    if (destination.tourCategories && Array.isArray(destination.tourCategories) && categoryGuides.length > 0) {
+      const guideSlugs = new Set(categoryGuides.map(g => g.category_slug));
+      destination.tourCategories = destination.tourCategories.map(category => {
+        const categoryName = typeof category === 'string' ? category : category.name;
+        const categorySlug = categoryName.toLowerCase()
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .replace(/&/g, 'and')
+          .replace(/'/g, '')
+          .replace(/\./g, '')
+          .replace(/ /g, '-');
+        
+        const hasGuide = guideSlugs.has(categorySlug);
+        
+        if (typeof category === 'string') {
+          return { name: category, hasGuide };
+        } else {
+          return { ...category, hasGuide };
+        }
+      });
+    }
+  } catch (error) {
+    console.error('Error fetching category guides:', error);
+    // Continue without guides - page will still work
   }
 
   // Fetch restaurants from database for this destination
@@ -596,6 +633,7 @@ export default async function DestinationDetailPage({ params }) {
           restaurants={restaurants}
           restaurantPromotionScores={restaurantPromotionScores}
           premiumRestaurantIds={premiumRestaurantIds}
+          categoryGuides={categoryGuides}
         />
       </ErrorBoundary>
     </>

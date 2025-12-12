@@ -61,7 +61,7 @@ import {
 import { PromoteRestaurantBanner } from '@/components/restaurant/PromoteRestaurantBanner';
 import { isPremiumRestaurant, getPremiumConfig } from '@/lib/restaurantPremium';
 
-export default function RestaurantDetailClient({ destination, restaurant, otherRestaurants, initialPromotionScore = null, trendingTours = [], trendingRestaurants = [], premiumSubscription = null }) {
+export default function RestaurantDetailClient({ destination, restaurant, otherRestaurants, initialPromotionScore = null, trendingTours = [], trendingRestaurants = [], premiumSubscription = null, categoryGuides = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showStickyButton, setShowStickyButton] = useState(true);
   const [user, setUser] = useState(null);
@@ -317,7 +317,17 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
       .replace(/\./g, '')
       .replace(/\s+/g, '-');
 
-  const curatedTourCategories = (Array.isArray(destination.tourCategories) ? destination.tourCategories : [])
+  // Use category guides from database if available, otherwise fallback to tour categories
+  const allCategoryGuides = categoryGuides && categoryGuides.length > 0
+    ? categoryGuides.map(guide => ({
+        name: guide.category_name,
+        slug: guide.category_slug,
+        title: guide.title || guide.category_name,
+        subtitle: guide.subtitle || '',
+        heroImage: guide.hero_image,
+        hasGuide: true,
+      }))
+    : (Array.isArray(destination.tourCategories) ? destination.tourCategories : [])
     .map((category) => (typeof category === 'string' ? { name: category, hasGuide: false } : category))
     .filter((category) => category?.name)
     .slice(0, 6);
@@ -608,11 +618,15 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                   About {restaurant.name}
                 </h2>
                 <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-                  {(restaurant.uniqueContent || restaurant.story || '').includes('<') ? (
-                    <div dangerouslySetInnerHTML={{ __html: restaurant.uniqueContent || restaurant.story }} />
+                  {(() => {
+                    const content = restaurant.uniqueContent || restaurant.story || '';
+                    const contentStr = typeof content === 'string' ? content : String(content || '');
+                    return contentStr.includes('<') ? (
+                      <div dangerouslySetInnerHTML={{ __html: contentStr }} />
                   ) : (
-                    <p className="text-lg mb-4 whitespace-pre-line">{restaurant.uniqueContent || restaurant.story}</p>
-                  )}
+                      <p className="text-lg mb-4 whitespace-pre-line">{contentStr}</p>
+                    );
+                  })()}
                 </div>
               </motion.div>
             )}
@@ -1814,7 +1828,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
 
             {otherRestaurantsAvailable ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                {otherRestaurants.map((other) => {
+                {otherRestaurants.slice(0, 17).map((other) => {
                   // Build description with multiple fallbacks
                   const description = other.metaDescription 
                     || other.tagline 
@@ -2010,56 +2024,92 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
           </div>
         </section>
 
-        {curatedTourCategories.length > 0 && (
-          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
+        {/* Related Guides Section - All Category Guides */}
+        {allCategoryGuides.length > 0 && (
+          <section className="py-12 sm:py-16 bg-white border-t">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="text-center mb-8 sm:mb-12"
+                className="mb-8"
               >
-                <div className="inline-flex items-center gap-2 bg-white border border-blue-200 rounded-full px-4 py-2 mb-4 shadow-sm">
-                  <Badge className="bg-blue-100 text-blue-700 border border-blue-200">Guided Experiences</Badge>
+                <div className="flex items-center gap-3 mb-4">
+                  <BookOpen className="w-6 h-6 text-blue-600" />
+                  <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900">
+                    Related Travel Guides for {destination.name}
+                  </h2>
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-900 mb-3">
-                  Popular Tours in {destination.name}
-                </h2>
-                <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto">
-                  Pair dinner at {restaurant.shortName || restaurant.name} with these top-rated experiences in {destination.name}.
+                <p className="text-gray-600 mb-6">
+                  Explore comprehensive guides to plan your perfect trip, including food tours, cultural experiences, and more.
                 </p>
+                
+                {/* All category guides in a grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                  {allCategoryGuides.map((guide) => {
+                      const categoryName = guide.name;
+                      const categorySlug = guide.slug || formatCategorySlug(categoryName);
+                      const hasGuide = guide.hasGuide !== false;
+                      
+                      if (!hasGuide) return null;
+                      
+                      // Determine icon based on category name
+                      const isFoodRelated = categoryName.toLowerCase().includes('food') || 
+                                          categoryName.toLowerCase().includes('culinary') || 
+                                          categoryName.toLowerCase().includes('tapas') || 
+                                          categoryName.toLowerCase().includes('tasting') ||
+                                          categoryName.toLowerCase().includes('restaurant');
+                      const Icon = isFoodRelated ? UtensilsCrossed : MapPin;
+                      const iconColor = isFoodRelated ? 'text-orange-600' : 'text-blue-600';
+                      
+                      return (
+                        <Link
+                          key={categorySlug}
+                          href={`/destinations/${destination.id}/guides/${categorySlug}`}
+                          className="group"
+                        >
+                          <Card className="h-full border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
+                            <CardContent className="p-5">
+                              <div className="flex items-center gap-3 mb-3">
+                                <Icon className={`w-5 h-5 ${iconColor}`} />
+                                <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                  {guide.title || categoryName}
+                                </h3>
+                              </div>
+                              {guide.subtitle && (
+                              <p className="text-sm text-gray-600 mb-3">
+                                  {guide.subtitle}
+                                </p>
+                              )}
+                              {!guide.subtitle && (
+                              <p className="text-sm text-gray-600 mb-3">
+                                  {isFoodRelated 
+                                    ? `Discover the best ${categoryName.toLowerCase()} experiences in ${destination.name}.`
+                                    : `Explore ${categoryName.toLowerCase()} in ${destination.name}.`
+                                  }
+                              </p>
+                              )}
+                              <div className="flex items-center text-blue-600 text-sm font-medium group-hover:gap-2 transition-all">
+                                Read Guide
+                                <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </Link>
+                      );
+                    })}
+                </div>
+                
+                <div className="text-center">
+                  <Button asChild variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                    <Link href={`/destinations/${destination.id}`}>
+                      View All {destination.name} Guides
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                </div>
               </motion.div>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-                {curatedTourCategories.map((category) => {
-                  const categoryName = category.name;
-                  const categorySlug = formatCategorySlug(categoryName);
-                  return (
-                    <motion.div
-                      key={categorySlug}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      viewport={{ once: true }}
-                    >
-                      <Link
-                        href={`/destinations/${destination.id}/guides/${categorySlug}`}
-                        className="block group"
-                        title={`Explore ${categoryName} in ${destination.name}`}
-                      >
-                        <Card className="bg-white border border-blue-100 shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-1">
-                          <CardContent className="p-5 text-center">
-                            <p className="text-gray-900 font-medium text-base leading-tight group-hover:text-blue-700">
-                              {categoryName}
-                            </p>
-                          </CardContent>
-                        </Card>
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-              </div>
             </div>
           </section>
         )}

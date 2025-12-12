@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { 
   Anchor, MapPin, Clock, Users, DollarSign, Calendar, 
   Camera, Shirt, Sun, Waves, Heart, Star, ArrowRight,
-  BookOpen, ChevronRight, Home, GlassWater, Music, Sailboat, Ship, PartyPopper, HeartHandshake, X, ExternalLink, Search
+  BookOpen, ChevronRight, Home, GlassWater, Music, Sailboat, Ship, PartyPopper, HeartHandshake, X, ExternalLink, Search, UtensilsCrossed
 } from 'lucide-react';
 import Link from 'next/link';
 import NavigationNext from '@/components/NavigationNext';
@@ -21,6 +21,7 @@ import { categoryGuides as categoryGuidesBase } from '../guidesData';
 import { categoryGuidesNorthAmerica } from '../guidesData-north-america';
 import { categoryGuidesAfrica } from '../guidesData-africa';
 import { categoryGuidesMiddleEast } from '../guidesData-middle-east';
+import { getRestaurantsForDestination } from '../../restaurants/restaurantsData';
 
 // Merge all regional guide files
 const categoryGuides = {
@@ -30,15 +31,50 @@ const categoryGuides = {
   ...categoryGuidesMiddleEast,
 };
 
-export default function CategoryGuideClient({ destinationId, categorySlug, guideData, categoryTours = [], promotionScores = {} }) {
+export default function CategoryGuideClient({ destinationId, categorySlug, guideData, categoryTours = [], promotionScores = {}, availableGuideSlugs = [], allAvailableGuides = [], destination: destinationProp }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [showStickyButton, setShowStickyButton] = React.useState(true);
   
-  const destination = destinations.find(d => d.id === destinationId);
+  // Use destination from props if provided, otherwise try to find in destinationsData.js
+  // The server component should ALWAYS pass destination, so this is just a safety fallback
+  let destination = destinationProp || destinations.find(d => d.id === destinationId);
   
+  // Debug logging
+  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+    console.log('CategoryGuideClient - destination:', {
+      hasDestination: !!destination,
+      hasDestinationProp: !!destinationProp,
+      destinationPropKeys: destinationProp ? Object.keys(destinationProp) : [],
+      destinationId,
+      destinationName: destination?.name,
+    });
+  }
   
+  // If no destination, create a minimal one from guide data as absolute last resort
   if (!destination) {
-    return <div>Destination not found</div>;
+    console.error('CategoryGuideClient - No destination found for:', destinationId);
+    console.error('This should not happen - server component should always pass destination');
+    
+    // Create minimal destination from guide data if available
+    if (guideData && guideData.categoryName) {
+      const destinationName = guideData.categoryName.split(' ')[0] || destinationId;
+      destination = {
+        id: destinationId,
+        name: destinationName,
+        fullName: destinationName,
+        imageUrl: guideData.heroImage || null,
+        country: null,
+        category: null,
+        tourCategories: [],
+        bestTimeToVisit: null,
+        gettingAround: null,
+        whyVisit: [],
+        highlights: [],
+      };
+      console.warn('Using minimal destination created from guide data');
+    } else {
+      return <div>Destination not found</div>;
+    }
   }
 
   const handleOpenModal = () => setIsModalOpen(true);
@@ -86,15 +122,75 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
       
       <div className="min-h-screen pt-16 overflow-x-hidden">
       {/* Hero Section - Matching destination page style */}
-      <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
+      <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden ocean-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+          {(guideData.heroImage || destination.imageUrl) ? (
+            // Hero with image - side by side layout
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="flex items-center mb-4">
+                  <MapPin className="w-5 h-5 text-blue-300 mr-2" />
+                  <span className="text-white font-medium">{destination.name} Guide</span>
+                </div>
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold mb-4 md:mb-6 text-white">
+                  {guideData.title}
+                </h1>
+                <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8">
+                  {guideData.subtitle}
+                </p>
+                
+                {/* Quick Stats */}
+                <div className="flex flex-wrap gap-2 sm:gap-4 mb-6">
+                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
+                    <Star className="w-5 h-5 text-white" />
+                    <span className="text-white">{guideData.stats.toursAvailable}+ tours</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
+                    <DollarSign className="w-5 h-5 text-white" />
+                    <span className="text-white">From ${guideData.stats.priceFrom}</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
+                    <Clock className="w-5 h-5 text-white" />
+                    <span className="text-white">{guideData.stats.duration}</span>
+                  </div>
+                </div>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <img
+                    src={guideData.heroImage || destination.imageUrl}
+                    alt={guideData.title}
+                    className="w-full h-64 sm:h-80 object-cover"
+                    onError={(e) => {
+                      // Fallback to destination image if guide image fails
+                      if (destination.imageUrl && e.target.src !== destination.imageUrl) {
+                        e.target.src = destination.imageUrl;
+                      }
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
+              </motion.div>
+            </div>
+          ) : (
+            // Hero without image - centered layout (matching destination page style)
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
+              className="text-center max-w-4xl mx-auto"
             >
-              <div className="flex items-center mb-4">
+              <div className="flex items-center justify-center mb-4">
                 <MapPin className="w-5 h-5 text-blue-300 mr-2" />
                 <span className="text-white font-medium">{destination.name} Guide</span>
               </div>
@@ -105,8 +201,8 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 {guideData.subtitle}
               </p>
               
-              {/* Quick Stats */}
-              <div className="flex flex-wrap gap-2 sm:gap-4 mb-6">
+              {/* Quick Stats - Centered */}
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8">
                 <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
                   <Star className="w-5 h-5 text-white" />
                   <span className="text-white">{guideData.stats.toursAvailable}+ tours</span>
@@ -120,24 +216,21 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                   <span className="text-white">{guideData.stats.duration}</span>
                 </div>
               </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src={guideData.heroImage || destination.imageUrl}
-                  alt={guideData.title}
-                  className="w-full h-64 sm:h-80 object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              
+              {/* CTA Button - Centered */}
+              <div className="flex justify-center">
+                <Button
+                  asChild
+                  className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
+                >
+                  <Link href={`/destinations/${destinationId}/tours`}>
+                    View All Tours & Activities in {destination.name}
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
               </div>
             </motion.div>
-          </div>
+          )}
         </div>
       </section>
 
@@ -170,15 +263,17 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-90"></div>
                 <div className="relative p-6 md:p-8 flex items-center gap-6">
-                  <div className="hidden md:block">
-                    <div className="w-20 h-20 rounded-xl overflow-hidden ring-4 ring-white/30">
-                      <img 
-                        src={destination.imageUrl} 
-                        alt={destination.name}
-                        className="w-full h-full object-cover"
-                      />
+                  {destination?.imageUrl && destination.imageUrl.trim() !== '' && (
+                    <div className="hidden md:block">
+                      <div className="w-20 h-20 rounded-xl overflow-hidden ring-4 ring-white/30">
+                        <img 
+                          src={destination.imageUrl} 
+                          alt={destination.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                     </div>
-                  </div>
+                  )}
                   <div className="flex-1">
                     <div className="flex items-center gap-2 text-blue-100 mb-2">
                       <MapPin className="w-4 h-4" />
@@ -187,7 +282,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                     <h3 className="text-white text-xl md:text-2xl font-bold mb-1">
                       Explore All {destination.name} Tours & Activities
                     </h3>
-                    <p className="text-white/80">Complete destination guide with {destination.tourCategories.length} activity categories</p>
+                    <p className="text-white/80">Complete destination guide with {destination.tourCategories?.length || 6} activity categories</p>
                   </div>
                   <ArrowRight className="w-6 h-6 text-white group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -391,13 +486,13 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           >
             <Card className="bg-gradient-to-r from-blue-600 to-indigo-600 border-none text-white shadow-xl">
               <CardContent className="p-8 text-center">
-                <h3 className="text-2xl md:text-3xl font-bold mb-3">Ready to Book Your {destination.name} {guideData.categoryName}?</h3>
+                <h3 className="text-2xl md:text-3xl font-bold mb-3">Ready to Explore {destination.name}?</h3>
                 <p className="text-blue-100 mb-6 text-lg">
-                  Browse {guideData.stats.toursAvailable}+ available tours with instant booking & best price guarantee
+                  Browse all available tours and activities with instant booking & best price guarantee
                 </p>
                 <Link href={`/destinations/${destinationId}/tours`}>
                   <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-6">
-                    View All Tours & Prices
+                    View All Tours & Activities
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
@@ -470,7 +565,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {guideData.tourTypes.map((type, index) => {
-              const IconComponent = iconMap[type.icon];
+              const IconComponent = iconMap[type.icon] || Star;
               return (
                 <motion.div
                   key={index}
@@ -482,7 +577,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                   <Card className="bg-white border-0 shadow-lg h-full hover:shadow-xl transition-shadow">
                     <CardContent className="p-6">
                       <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl flex items-center justify-center mb-4">
-                        {IconComponent && <IconComponent className="w-8 h-8 text-blue-600" />}
+                        <IconComponent className="w-8 h-8 text-blue-600" />
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 mb-3">{type.title}</h3>
                       <p className="text-gray-600 mb-4 leading-relaxed">{type.description}</p>
@@ -510,7 +605,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           >
             <Link href={`/destinations/${destinationId}/tours`}>
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                Compare All Tour Options
+                View All Tours & Activities
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
@@ -709,7 +804,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">Weather</h3>
-                  <p className="text-gray-600">{destination.bestTimeToVisit.weather}</p>
+                  <p className="text-gray-600">{destination.bestTimeToVisit?.weather || 'Check local weather forecasts for the best time to visit.'}</p>
                 </div>
               </div>
               
@@ -719,7 +814,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">Best Months</h3>
-                  <p className="text-gray-600">{destination.bestTimeToVisit.bestMonths}</p>
+                  <p className="text-gray-600">{destination.bestTimeToVisit?.bestMonths || 'Spring and fall offer the best weather for most destinations.'}</p>
                 </div>
               </div>
             </motion.div>
@@ -734,14 +829,14 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               <Card className="bg-blue-50 border-blue-200">
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-blue-800 mb-2">Peak Season</h3>
-                  <p className="text-blue-700">{destination.bestTimeToVisit.peakSeason}</p>
+                  <p className="text-blue-700">{destination.bestTimeToVisit?.peakSeason || 'Summer months are typically the peak season with higher prices and crowds.'}</p>
                 </CardContent>
               </Card>
               
               <Card className="bg-green-50 border-green-200">
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-green-800 mb-2">Off Season</h3>
-                  <p className="text-green-700">{destination.bestTimeToVisit.offSeason}</p>
+                  <p className="text-green-700">{destination.bestTimeToVisit?.offSeason || 'Winter months offer lower prices and fewer crowds, though weather may be less ideal.'}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -749,64 +844,97 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         </div>
       </section>
 
-      {/* Other Popular Tours in This Destination */}
+      {/* Related Travel Guides Section - Same style as restaurant page */}
       {(() => {
-        // Filter categories that have existing guides and exclude current category
-        const availableCategories = destination.tourCategories
-          .map(cat => typeof cat === 'string' ? cat : cat.name)
-          .filter(catName => catName !== guideData.categoryName)
-          .filter(catName => {
-            const slug = catName.toLowerCase()
-              .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
-              .replace(/&/g, 'and')
-              .replace(/ /g, '-');
-            return categoryGuides[destinationId] && categoryGuides[destinationId][slug];
-          })
-          .slice(0, 5);
+        // Use allAvailableGuides (from database + hardcoded) and exclude current category
+        const availableGuides = (allAvailableGuides || [])
+          .filter(guide => guide.category_slug !== categorySlug)
+          .slice(0, 6);
         
         // Only show section if there are available guides
-        return availableCategories.length > 0 ? (
-          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
+        return availableGuides.length > 0 ? (
+          <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="text-center mb-8 sm:mb-12"
+                className="mb-8"
               >
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
-                  Other Popular Tours in {destination.name}
+                <div className="flex items-center gap-3 mb-4">
+                  <BookOpen className="w-6 h-6 text-blue-600" />
+                  <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900">
+                    Related Travel Guides for {destination.name}
                 </h2>
-              </motion.div>
-              
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
-                {availableCategories.map((category, index) => {
-                  const categorySlug = category.toLowerCase()
-                    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
-                    .replace(/&/g, 'and')
-                    .replace(/ /g, '-');
+                </div>
+                <p className="text-gray-600 mb-6">
+                  Explore comprehensive guides to plan your perfect trip, including food tours, cultural experiences, and more.
+                </p>
+                
+                {/* All category guides in a grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                  {availableGuides.map((guide) => {
+                    const categoryName = guide.category_name || guide.title || '';
+                    const categorySlug = guide.category_slug || '';
+                    const guideUrl = `/destinations/${destinationId}/guides/${categorySlug}`;
+                    
+                    // Determine icon based on category name
+                    const isFoodRelated = categoryName.toLowerCase().includes('food') || 
+                                        categoryName.toLowerCase().includes('culinary') || 
+                                        categoryName.toLowerCase().includes('tapas') || 
+                                        categoryName.toLowerCase().includes('tasting') ||
+                                        categoryName.toLowerCase().includes('restaurant');
+                    const Icon = isFoodRelated ? UtensilsCrossed : MapPin;
+                    const iconColor = isFoodRelated ? 'text-orange-600' : 'text-blue-600';
+                    
                   return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <Link href={`/destinations/${destinationId}/guides/${categorySlug}`}>
-                        <Card className="hover:shadow-xl transition-all hover:scale-105 cursor-pointer h-full bg-white border-0 shadow-lg group">
-                          <CardContent className="p-6">
-                            <h3 className="font-bold text-base text-gray-900 text-center group-hover:text-blue-600 transition-colors">
-                              {category}
+                      <Link
+                        key={categorySlug}
+                        href={guideUrl}
+                        className="group"
+                      >
+                        <Card className="h-full border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
+                          <CardContent className="p-5">
+                            <div className="flex items-center gap-3 mb-3">
+                              <Icon className={`w-5 h-5 ${iconColor}`} />
+                              <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                {guide.title || categoryName}
                             </h3>
+                            </div>
+                            {guide.subtitle && (
+                              <p className="text-sm text-gray-600 mb-3">
+                                {guide.subtitle}
+                              </p>
+                            )}
+                            {!guide.subtitle && (
+                              <p className="text-sm text-gray-600 mb-3">
+                                {isFoodRelated 
+                                  ? `Discover the best ${categoryName.toLowerCase()} experiences in ${destination.name}.`
+                                  : `Explore ${categoryName.toLowerCase()} in ${destination.name}.`
+                                }
+                              </p>
+                            )}
+                            <div className="flex items-center text-blue-600 text-sm font-medium group-hover:gap-2 transition-all">
+                              Read Guide
+                              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                            </div>
                           </CardContent>
                         </Card>
                       </Link>
-                    </motion.div>
                   );
                 })}
               </div>
+                
+                <div className="text-center">
+                  <Button asChild variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                    <Link href={`/destinations/${destinationId}`}>
+                      View All {destination.name} Guides
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                </div>
+              </motion.div>
             </div>
           </section>
         ) : null;
@@ -832,7 +960,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold text-gray-800 mb-4">Transportation Tips</h3>
-                  <p className="text-gray-700 mb-6">{destination.gettingAround}</p>
+                  <p className="text-gray-700 mb-6">{destination.gettingAround || 'Public transportation and walking are typically the best ways to explore this destination.'}</p>
                   <div className="bg-white rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Car Rental Deals in {destination.name}</h4>
                     <p className="text-gray-600 text-sm mb-3">Rent a car for maximum flexibility and explore at your own pace on Expedia USA.</p>
@@ -899,6 +1027,131 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           </motion.div>
         </div>
       </section>
+
+      {/* Top Restaurants Section */}
+      {(() => {
+        const restaurants = getRestaurantsForDestination(destinationId);
+        const hasRestaurants = restaurants && restaurants.length > 0;
+        
+        if (!hasRestaurants) return null;
+        
+        const restaurantsToDisplay = restaurants.slice(0, 8);
+        
+        return (
+          <section className="py-12 bg-white border-t">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <div className="mb-6">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                      Top Restaurants in {destination.fullName || destination.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-6">
+                      Discover the best dining experiences and hand-picked restaurants.
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {restaurantsToDisplay.map((restaurant, index) => {
+                      const restaurantUrl = `/destinations/${destinationId}/restaurants/${restaurant.slug}`;
+                      const description = restaurant.metaDescription 
+                        || restaurant.tagline 
+                        || restaurant.summary 
+                        || restaurant.description
+                        || (restaurant.cuisines?.length > 0 
+                            ? `Discover ${restaurant.cuisines.join(' & ')} cuisine at ${restaurant.name} in ${destination.fullName || destination.name}.`
+                            : `Experience great dining at ${restaurant.name} in ${destination.fullName || destination.name}.`);
+                      
+                      return (
+                        <motion.div
+                          key={restaurant.id || index}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.4, delay: index * 0.1 }}
+                          viewport={{ once: true }}
+                        >
+                          <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-shadow">
+                            <CardContent className="p-6 flex flex-col h-full">
+                              <div className="flex items-center gap-3 mb-3">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
+                                  <UtensilsCrossed className="w-5 h-5 text-white" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <h4 className="text-lg font-bold text-gray-900 line-clamp-1">
+                                    {restaurant.name}
+                                  </h4>
+                                  {restaurant.cuisines?.length > 0 && (
+                                    <span className="text-xs font-medium text-blue-600 uppercase tracking-wide">
+                                      {restaurant.cuisines[0]}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                              <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">
+                                {description.length > 120 ? description.slice(0, 120) + '...' : description}
+                              </p>
+                              <div className="flex flex-wrap gap-2 mb-4">
+                                {restaurant.ratings?.googleRating && (
+                                  <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
+                                    <Star className="w-3 h-3" />
+                                    {restaurant.ratings.googleRating.toFixed(1)}
+                                  </span>
+                                )}
+                                {restaurant.pricing?.priceRange && (
+                                  <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
+                                    {restaurant.pricing.priceRange}
+                                  </span>
+                                )}
+                              </div>
+                              <Link
+                                href={restaurantUrl}
+                                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
+                              >
+                                View Restaurant
+                                <ArrowRight className="w-4 h-4" />
+                              </Link>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      );
+                    })}
+                    {/* View All Restaurants Card */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.8 }}
+                      viewport={{ once: true }}
+                    >
+                      <Link
+                        href={`/destinations/${destinationId}/restaurants`}
+                        className="block h-full"
+                      >
+                        <Card className="h-full border border-blue-100 bg-white shadow-lg hover:shadow-xl transition-shadow flex flex-col items-center justify-center text-center p-6">
+                          <UtensilsCrossed className="w-8 h-8 text-blue-600 mb-3" />
+                          <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                            View All Restaurants in {destination.fullName || destination.name}
+                          </h4>
+                          <p className="text-sm text-gray-600 mb-4">
+                            Explore every curated dining spot we recommend across the island.
+                          </p>
+                          <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600">
+                            Browse the list
+                            <ArrowRight className="w-4 h-4" />
+                          </span>
+                        </Card>
+                      </Link>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* Other Featured Destinations in the Region - Purple Background */}
       <section className="py-12 px-4" style={{ backgroundColor: '#764ba2' }}>
@@ -973,7 +1226,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               size="lg"
               className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
             >
-              <span>See {destination.name} {guideData.categoryName} Options</span>
+              <span>View All Tours In {destination.name}</span>
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>

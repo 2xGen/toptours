@@ -47,7 +47,7 @@ function getDisplayCategoryName(categoryName) {
   return categoryMap[categoryName] || categoryName;
 }
 
-export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], hardcodedTours = {}, restaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [] }) {
+export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], hardcodedTours = {}, restaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [], categoryGuides: categoryGuidesProp = [] }) {
   
   // Ensure destination exists
   if (!destination) {
@@ -299,7 +299,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
     }
     
     // Load guides by category/region (for bottom section)
-    if (safeDestination.category) {
+    // Use prop if provided (for database destinations), otherwise use category lookup
+    if (categoryGuidesProp && categoryGuidesProp.length > 0) {
+      setCategoryGuides(categoryGuidesProp);
+    } else if (safeDestination.category) {
       const guidesByCategory = getGuidesByCategory(safeDestination.category);
       setCategoryGuides(guidesByCategory); // Show all
     }
@@ -1680,79 +1683,93 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </section>
         )}
 
-        {/* Popular Categories */}
-        {safeDestination.tourCategories && Array.isArray(safeDestination.tourCategories) && safeDestination.tourCategories.length > 0 && (
-          <section className="py-12 sm:py-16 bg-white overflow-hidden">
+        {/* Related Travel Guides Section - Category Guides (same style as restaurant page) */}
+        {categoryGuidesProp && categoryGuidesProp.length > 0 && (
+          <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="text-center mb-8 sm:mb-12"
+                className="mb-8"
               >
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
-                  Popular Categories in {safeDestination.fullName}
-                </h2>
-                <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-                  Explore the most popular tour categories in {safeDestination.fullName}
+                <div className="flex items-center gap-3 mb-4">
+                  <BookOpen className="w-6 h-6 text-blue-600" />
+                  <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900">
+                    Related Travel Guides for {safeDestination.fullName || safeDestination.name}
+                  </h2>
+                </div>
+                <p className="text-gray-600 mb-6">
+                  Explore comprehensive guides to plan your perfect trip, including food tours, cultural experiences, and more.
                 </p>
-              </motion.div>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                {safeDestination.tourCategories.slice(0, 6).map((category, index) => {
-                  const categoryName = typeof category === 'string' ? category : category.name;
-                  const displayName = getDisplayCategoryName(categoryName);
-                  const hasGuide = typeof category === 'object' && category.hasGuide;
-                  const categorySlug = categoryName.toLowerCase()
-                    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-                    .replace(/&/g, 'and')
-                    .replace(/'/g, '')
-                    .replace(/\./g, '')
-                    .replace(/ /g, '-');
-                  
-                  // Link to tours page with category filter, or guide if available
-                  const categoryLink = hasGuide 
-                    ? `/destinations/${safeDestination.id}/guides/${categorySlug}`
-                    : `/destinations/${safeDestination.id}/tours`;
-                  
-                  return (
-                    <motion.div
-                      key={categoryName}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <Link href={categoryLink}>
-                        <Card className={`bg-gradient-to-br transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer h-full border-0 ${
-                          hasGuide 
-                            ? 'from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 border-2 border-purple-200' 
-                            : 'from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100'
-                        }`}>
-                          <CardContent className="p-6 text-center flex flex-col items-center justify-center min-h-[120px]">
-                            {hasGuide && (
-                              <BookOpen className="w-5 h-5 text-purple-600 mb-2" />
+                
+                {/* All category guides in a grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                  {categoryGuidesProp.slice(0, 6).map((guide) => {
+                    const categoryName = guide.category_name || guide.title || '';
+                    const categorySlug = guide.category_slug || '';
+                    const guideUrl = `/destinations/${safeDestination.id}/guides/${categorySlug}`;
+                    
+                    // Determine icon based on category name
+                    const isFoodRelated = categoryName.toLowerCase().includes('food') || 
+                                        categoryName.toLowerCase().includes('culinary') || 
+                                        categoryName.toLowerCase().includes('tapas') || 
+                                        categoryName.toLowerCase().includes('tasting') ||
+                                        categoryName.toLowerCase().includes('restaurant');
+                    const Icon = isFoodRelated ? UtensilsCrossed : MapPin;
+                    const iconColor = isFoodRelated ? 'text-orange-600' : 'text-blue-600';
+                    
+                    return (
+                      <Link
+                        key={categorySlug}
+                        href={guideUrl}
+                        className="group"
+                      >
+                        <Card className="h-full border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
+                          <CardContent className="p-5">
+                            <div className="flex items-center gap-3 mb-3">
+                              <Icon className={`w-5 h-5 ${iconColor}`} />
+                              <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                {guide.title || categoryName}
+                              </h3>
+                            </div>
+                            {guide.subtitle && (
+                              <p className="text-sm text-gray-600 mb-3">
+                                {guide.subtitle}
+                              </p>
                             )}
-                            <h3 className="font-poppins font-semibold text-gray-800 text-sm md:text-base mb-1">
-                              {displayName}
-                            </h3>
-                            {hasGuide ? (
-                              <p className="text-xs text-purple-600 font-medium">Read Guide</p>
-                            ) : (
-                              <p className="text-xs text-gray-500">View Tours</p>
+                            {!guide.subtitle && (
+                              <p className="text-sm text-gray-600 mb-3">
+                                {isFoodRelated 
+                                  ? `Discover the best ${categoryName.toLowerCase()} experiences in ${safeDestination.fullName || safeDestination.name}.`
+                                  : `Explore ${categoryName.toLowerCase()} in ${safeDestination.fullName || safeDestination.name}.`
+                                }
+                              </p>
                             )}
+                            <div className="flex items-center text-blue-600 text-sm font-medium group-hover:gap-2 transition-all">
+                              Read Guide
+                              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                            </div>
                           </CardContent>
                         </Card>
                       </Link>
-                    </motion.div>
-                  );
-                })}
-              </div>
+                    );
+                  })}
+                </div>
+                
+                <div className="text-center">
+                  <Button asChild variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                    <Link href={`/destinations/${safeDestination.id}`}>
+                      View All {safeDestination.fullName || safeDestination.name} Guides
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                </div>
+              </motion.div>
             </div>
           </section>
         )}
-
 
         {/* Related Travel Guides Carousel Section */}
         {normalizedRelatedGuides.length > 0 && (
@@ -1995,6 +2012,88 @@ export default function DestinationDetailClient({ destination, promotionScores =
         </section>
 
 
+        {/* FAQ Section - Scalable template-based approach */}
+        {(safeDestination.bestTimeToVisit || safeDestination.gettingAround || safeDestination.whyVisit?.length > 0) && (
+          <section className="py-12 bg-gray-50">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+                  Frequently Asked Questions About {safeDestination.fullName}
+                </h2>
+                <div className="space-y-4">
+                  {safeDestination.bestTimeToVisit?.weather && (
+                    <Card className="border-gray-200">
+                      <CardContent className="p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          What is the best time to visit {safeDestination.fullName}?
+                        </h3>
+                        <p className="text-gray-700">
+                          {safeDestination.bestTimeToVisit.weather}
+                          {safeDestination.bestTimeToVisit.season && ` The best season is typically ${safeDestination.bestTimeToVisit.season}.`}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  )}
+                  
+                  {safeDestination.gettingAround && (
+                    <Card className="border-gray-200">
+                      <CardContent className="p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          How do I get around {safeDestination.fullName}?
+                        </h3>
+                        <p className="text-gray-700">{safeDestination.gettingAround}</p>
+                      </CardContent>
+                    </Card>
+                  )}
+                  
+                  {safeDestination.whyVisit && safeDestination.whyVisit.length > 0 && (
+                    <Card className="border-gray-200">
+                      <CardContent className="p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          Why should I visit {safeDestination.fullName}?
+                        </h3>
+                        <ul className="list-disc list-inside space-y-2 text-gray-700">
+                          {safeDestination.whyVisit.slice(0, 3).map((reason, index) => (
+                            <li key={index}>{reason}</li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  )}
+                  
+                  {safeDestination.tourCategories && safeDestination.tourCategories.length > 0 && (
+                    <Card className="border-gray-200">
+                      <CardContent className="p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          What types of tours are available in {safeDestination.fullName}?
+                        </h3>
+                        <p className="text-gray-700 mb-3">
+                          {safeDestination.fullName} offers a variety of tour experiences including:
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {safeDestination.tourCategories.slice(0, 4).map((category, index) => {
+                            const categoryName = typeof category === 'string' ? category : category.name;
+                            return (
+                              <Badge key={index} variant="secondary" className="bg-blue-50 text-blue-700">
+                                {categoryName}
+                              </Badge>
+                            );
+                          })}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
+              </motion.div>
+            </div>
+          </section>
+        )}
+
         {/* CTA Section */}
         <section className="py-16 adventure-gradient">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -2057,17 +2156,21 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     {safeDestination.category} Travel Guides
                   </h3>
                   <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
-                    {categoryGuides.map((guide) => (
-                      <Link 
-                        key={guide.id}
-                        href={`/travel-guides/${guide.id}`}
-                        className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-lg px-5 py-4 transition-all duration-200 hover:scale-105 w-full max-w-xs"
-                      >
-                        <div className="text-white hover:text-blue-200 font-medium line-clamp-2 h-12 flex items-center">
-                        {guide.title}
-                        </div>
-                      </Link>
-                    ))}
+                    {categoryGuides.map((guide, index) => {
+                      const categorySlug = guide.category_slug || '';
+                      const guideUrl = categorySlug ? `/destinations/${safeDestination.id}/guides/${categorySlug}` : '#';
+                      return (
+                        <Link 
+                          key={categorySlug || `guide-${index}`}
+                          href={guideUrl}
+                          className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-lg px-5 py-4 transition-all duration-200 hover:scale-105 w-full max-w-xs"
+                        >
+                          <div className="text-white hover:text-blue-200 font-medium line-clamp-2 h-12 flex items-center">
+                            {guide.title || guide.category_name || ''}
+                          </div>
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               )}

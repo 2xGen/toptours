@@ -466,6 +466,214 @@ export async function sendRestaurantPremiumCancellationEmail({
 }
 
 /**
+ * Send tour operator premium subscription confirmation email
+ */
+export async function sendTourOperatorPremiumConfirmationEmail({ 
+  to, 
+  operatorName, 
+  tourCount,
+  billingCycle,
+  endDate 
+}) {
+  if (!resend) {
+    console.error('❌ Resend not initialized - RESEND_API_KEY is missing');
+    return { success: false, error: 'Resend not configured' };
+  }
+
+  try {
+    console.log(`📧 Attempting to send tour operator premium confirmation email to: ${to}`);
+    const planLabel = billingCycle === 'yearly' 
+      ? tourCount === 5 ? '$4.99/month (billed yearly)' : '$9.99/month (billed yearly)'
+      : tourCount === 5 ? '$7.99/month' : '$12.99/month';
+    const bundleLabel = tourCount === 5 ? '5 Tours Bundle' : '15 Tours Bundle';
+    
+    const { data, error } = await resend.emails.send({
+      from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      to: [to],
+      subject: `🎉 ${operatorName} - Your Premium Operator subscription is active!`,
+      html: `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          </head>
+          <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
+              <h1 style="color: white; margin: 0; font-size: 28px;">👑 Premium Operator Activated!</h1>
+            </div>
+            
+            <div style="background: #f9fafb; padding: 30px; border-radius: 0 0 10px 10px; border: 2px solid #667eea; border-top: none;">
+              <p style="font-size: 16px; margin-bottom: 20px;">Congratulations! <strong>${operatorName}</strong> is now a Premium Operator on TopTours.ai.</p>
+              
+              <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #667eea;">
+                <h2 style="margin-top: 0; color: #667eea;">What's Active Now</h2>
+                <ul style="padding-left: 20px; margin: 10px 0;">
+                  <li style="margin: 8px 0;">👑 <strong>Premium Operator Badge</strong> - Crown icon and verified badge on all your tours</li>
+                  <li style="margin: 8px 0;">🔗 <strong>Cross-Tour Discovery</strong> - Up to ${tourCount} of your tours appear on each tour page</li>
+                  <li style="margin: 8px 0;">⭐ <strong>Aggregated Reviews</strong> - Combined review counts and ratings build trust</li>
+                  <li style="margin: 8px 0;">📈 <strong>Higher Conversion Rates</strong> - More tour options per page means more bookings</li>
+                  <li style="margin: 8px 0;">🔍 <strong>Up to 15x More Visibility</strong> - Your tours appear across multiple pages</li>
+                </ul>
+              </div>
+              
+              <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h3 style="margin-top: 0; color: #333;">Subscription Details</h3>
+                <p style="margin: 10px 0;"><strong>Operator:</strong> ${operatorName}</p>
+                <p style="margin: 10px 0;"><strong>Plan:</strong> ${bundleLabel} - ${planLabel}</p>
+                <p style="margin: 10px 0;"><strong>Tours Included:</strong> Up to ${tourCount} tours</p>
+                <p style="margin: 10px 0;"><strong>Renews:</strong> ${new Date(endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+              </div>
+              
+              <div style="text-align: center; margin: 30px 0;">
+                <a href="https://toptours.ai/profile?tab=my-tours" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">Manage Your Tours</a>
+              </div>
+              
+              <div style="background: #ecfdf5; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981;">
+                <p style="margin: 0; font-size: 14px; color: #065f46;">
+                  <strong>💡 Tip:</strong> You can add or remove tours from your premium bundle anytime from your <a href="https://toptours.ai/profile?tab=my-tours" style="color: #059669; font-weight: 600;">profile page</a>. Just one extra booking per month covers your subscription cost!
+                </p>
+              </div>
+              
+              <p style="font-size: 14px; color: #666; margin-top: 30px; border-top: 1px solid #e5e7eb; padding-top: 20px;">
+                Questions? Visit <a href="https://toptours.ai/contact" style="color: #667eea;">our contact page</a>.
+              </p>
+              
+              <p style="font-size: 12px; color: #999; margin-top: 20px;">
+                © ${new Date().getFullYear()} TopTours.ai™. All rights reserved.
+              </p>
+            </div>
+          </body>
+        </html>
+      `,
+    });
+
+    if (error) {
+      console.error('❌ Resend API error sending tour operator premium confirmation email:', error);
+      return { success: false, error };
+    }
+
+    console.log('✅ Tour operator premium confirmation email sent successfully:', data?.id);
+    return { success: true, data };
+  } catch (error) {
+    console.error('❌ Exception sending tour operator premium confirmation email:', error);
+    return { success: false, error };
+  }
+}
+
+/**
+ * Send tour operator premium cancellation email
+ */
+export async function sendTourOperatorPremiumCancellationEmail({ 
+  to, 
+  operatorName, 
+  endDate = null 
+}) {
+  if (!resend) {
+    console.error('❌ Resend not initialized - RESEND_API_KEY is missing');
+    return { success: false, error: 'Resend not configured' };
+  }
+
+  try {
+    console.log(`📧 Attempting to send tour operator premium cancellation email to: ${to}`);
+    
+    const { data, error } = await resend.emails.send({
+      from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      to: [to],
+      subject: `Your Premium Operator subscription for ${operatorName} has been cancelled`,
+      html: `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          </head>
+          <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
+              <h1 style="color: white; margin: 0; font-size: 28px;">Premium Operator Subscription Cancelled</h1>
+            </div>
+            
+            <div style="background: #f9fafb; padding: 30px; border-radius: 0 0 10px 10px;">
+              <p style="font-size: 16px; margin-bottom: 20px;">We're sorry to see you go! Your Premium Operator subscription for <strong>${operatorName}</strong> has been cancelled.</p>
+              
+              <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #667eea;">
+                <h2 style="margin-top: 0; color: #667eea;">What Happens Next?</h2>
+                <p style="margin: 10px 0;"><strong>Operator:</strong> ${operatorName}</p>
+                ${endDate ? `
+                <p style="margin: 10px 0;"><strong>Premium Active Until:</strong> ${new Date(endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                <p style="margin: 10px 0; color: #666;">Your premium features will remain active until this date.</p>
+                ` : `
+                <p style="margin: 10px 0; color: #666;">Your premium features will remain active until the end of your current billing period.</p>
+                `}
+              </div>
+              
+              ${endDate ? `
+              <div style="background: #fee2e2; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #ef4444;">
+                <h3 style="margin-top: 0; color: #991b1b;">After ${new Date(endDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}:</h3>
+                <ul style="padding-left: 20px; color: #7f1d1d; margin: 10px 0;">
+                  <li>👑 Premium Operator Badge will be removed</li>
+                  <li>🔗 Cross-tour linking will be removed</li>
+                  <li>⭐ Aggregated reviews will no longer appear</li>
+                  <li>📈 Your tours will return to standard listings</li>
+                </ul>
+                <p style="margin: 10px 0 0 0; color: #991b1b; font-size: 14px;">Your tours will return to the standard listing format.</p>
+              </div>
+              
+              <div style="background: #ecfdf5; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981;">
+                <p style="margin: 0; color: #065f46;">
+                  <strong>Changed your mind?</strong> You can reactivate Premium Operator anytime before ${new Date(endDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} to keep your enhanced visibility. Just one extra booking per month covers the cost!
+                </p>
+              </div>
+              ` : `
+              <div style="background: #fee2e2; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #ef4444;">
+                <h3 style="margin-top: 0; color: #991b1b;">After your subscription ends:</h3>
+                <ul style="padding-left: 20px; color: #7f1d1d; margin: 10px 0;">
+                  <li>👑 Premium Operator Badge will be removed</li>
+                  <li>🔗 Cross-tour linking will be removed</li>
+                  <li>⭐ Aggregated reviews will no longer appear</li>
+                  <li>📈 Your tours will return to standard listings</li>
+                </ul>
+                <p style="margin: 10px 0 0 0; color: #991b1b; font-size: 14px;">Your tours will return to the standard listing format.</p>
+              </div>
+              
+              <div style="background: #ecfdf5; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981;">
+                <p style="margin: 0; color: #065f46;">
+                  <strong>Changed your mind?</strong> You can reactivate Premium Operator anytime to keep your enhanced visibility. Just one extra booking per month covers the cost!
+                </p>
+              </div>
+              `}
+              
+              <div style="text-align: center; margin: 30px 0;">
+                <a href="https://toptours.ai/profile?tab=my-tours" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">Reactivate Premium Operator</a>
+              </div>
+              
+              <p style="font-size: 14px; color: #666; margin-top: 30px; border-top: 1px solid #e5e7eb; padding-top: 20px;">
+                Questions? Visit <a href="https://toptours.ai/contact" style="color: #667eea;">our contact page</a>.
+              </p>
+              
+              <p style="font-size: 12px; color: #999; margin-top: 20px;">
+                © ${new Date().getFullYear()} TopTours.ai™. All rights reserved.
+              </p>
+            </div>
+          </body>
+        </html>
+      `,
+    });
+
+    if (error) {
+      console.error('❌ Resend API error sending tour operator premium cancellation email:', error);
+      return { success: false, error };
+    }
+
+    console.log('✅ Tour operator premium cancellation email sent successfully:', data?.id);
+    return { success: true, data };
+  } catch (error) {
+    console.error('❌ Exception sending tour operator premium cancellation email:', error);
+    return { success: false, error };
+  }
+}
+
+/**
  * Send welcome email to new users
  */
 export async function sendWelcomeEmail({ to, displayName }) {

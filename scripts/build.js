@@ -52,9 +52,9 @@ try {
 
   // Step 3: Generate sitemap (for SEO)
   runCommand('node scripts/generate-sitemap.js', 'Generating sitemap');
-
-  // Step 3.5: Generate regional guide sitemaps
-  runCommand('node scripts/generate-regional-sitemaps.js', 'Generating regional guide sitemaps');
+  
+  // Step 3.5: Generate guides sitemap from database
+  runCommand('node scripts/generate-guides-sitemap.js', 'Generating guides sitemap from database');
 
   // Step 4: Generate favicon
   runCommand('node scripts/generate-favicon.js', 'Generating favicon');

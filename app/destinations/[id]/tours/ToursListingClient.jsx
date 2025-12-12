@@ -32,9 +32,10 @@ import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import Link from 'next/link';
 import { useBookmarks } from '@/hooks/useBookmarks';
+import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import { Heart, Trophy } from 'lucide-react';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
-import { toast } from '@/components/ui/use-toast';
+import { toast, useToast } from '@/components/ui/use-toast';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import { getGuidesByCountry } from '@/data/travelGuidesData';
 import { getRestaurantsForDestination } from '../restaurants/restaurantsData';
@@ -280,8 +281,25 @@ export default function ToursListingClient({
   promotionScores = {}, // Map of productId -> score object
   trendingTours = [], // Tours with highest past_28_days_score for this destination
   trendingRestaurants = [], // Restaurants with highest past_28_days_score for this destination
-  restaurantPromotionScores = {} // Map of restaurantId -> score object
+  restaurantPromotionScores = {}, // Map of restaurantId -> score object
+  premiumOperatorTourIds = [], // Array of product IDs with premium operator status
+  premiumRestaurantIds = [], // Array of restaurant IDs with premium status
+  hasRestaurants = false, // Whether destination has restaurants (from server)
+  restaurants = [], // Restaurants from server (database + static)
+  categoryGuides = [] // Category guides for internal linking (database + hardcoded)
 }) {
+  const supabase = createSupabaseBrowserClient();
+  
+  // DEBUG: Log category guides
+  useEffect(() => {
+    console.log('🔍 ToursListingClient - categoryGuides:', categoryGuides);
+    console.log('🔍 ToursListingClient - categoryGuides.length:', categoryGuides?.length);
+    console.log('🔍 ToursListingClient - destination.id:', destination?.id);
+    console.log('🔍 ToursListingClient - Will show guides section?', categoryGuides && categoryGuides.length > 0);
+  }, [categoryGuides, destination]);
+  const { toast } = useToast();
+  const { isBookmarked: isRestaurantBookmarked, toggle: toggleRestaurantBookmark } = useRestaurantBookmarks();
+  
   // CRITICAL: Use destination.destinationId if available (from classified data), otherwise fall back to prop
   const effectiveDestinationId = destination.destinationId || destination.viatorDestinationId || viatorDestinationId;
   
@@ -294,14 +312,16 @@ export default function ToursListingClient({
     console.log('✅ Using Viator Destination ID for tours page:', effectiveDestinationId, 'for', destination.fullName || destination.name);
   }
   
-  // Get guides and restaurants for internal linking
+  // Get guides for internal linking
   const guides = getGuidesByCountry(destination.country) || [];
-  const restaurants = getRestaurantsForDestination(destination.id);
-  const hasRestaurants = restaurants.length > 0;
+  // hasRestaurants is now passed from server component (checks both database and static data)
   
   // Check if destination has a guide (not a Viator destination without guide)
   const destinationWithGuide = getDestinationById(destination.id);
   const hasDestinationGuide = destinationWithGuide && !isViatorDestination;
+  
+  // Define destinationName at component level for use throughout
+  const destinationName = destination.fullName || destination.name;
   
   // Get other destinations in the same country for internal linking (for all destinations)
   let otherDestinationsInCountry = [];
@@ -1105,7 +1125,6 @@ export default function ToursListingClient({
     return value && value !== '' ? count + 1 : count;
   }, 0);
 
-  const destinationName = destination.fullName || destination.name;
   const heroCategories = (destination.tourCategories || [])
     .map((category) => category?.name)
     .filter(Boolean);
@@ -1787,42 +1806,63 @@ export default function ToursListingClient({
                             transition={{ duration: 0.4, delay: index * 0.1 }}
                             viewport={{ once: true }}
                           >
-                            <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                              <Link href={restaurantUrl}>
-                                <div className="relative h-48 overflow-hidden">
-                                  {trending.restaurant_image_url ? (
-                                    <img
-                                      src={trending.restaurant_image_url}
-                                      alt={trending.restaurant_name || 'Restaurant'}
-                                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                                      onError={(e) => {
-                                        e.target.src = destination.imageUrl || '/placeholder-restaurant.jpg';
-                                      }}
-                                    />
-                                  ) : (
-                                    <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                                      <UtensilsCrossed className="w-6 h-6 text-gray-400" />
+                            <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                              <CardContent className="p-6 flex flex-col h-full">
+                                <div className="flex items-center justify-between gap-3 mb-3">
+                                  <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
+                                      <UtensilsCrossed className="w-5 h-5 text-white" />
                                     </div>
-                                  )}
-                                  <div className="absolute top-3 left-3">
-                                    <Badge className="adventure-gradient text-white">
+                                    <Badge className="adventure-gradient text-white text-xs">
                                       <TrendingUp className="w-3 h-3 mr-1" />
                                       Trending
                                     </Badge>
                                   </div>
+                                  {/* Bookmark Button */}
+                                  <button
+                                    type="button"
+                                    aria-label={isRestaurantBookmarked(restaurantId) ? 'Saved' : 'Save'}
+                                    onClick={async (e) => {
+                                      e.preventDefault();
+                                      e.stopPropagation();
+                                      const { data } = await supabase.auth.getUser();
+                                      if (!data?.user) {
+                                        toast({
+                                          title: 'Sign in required',
+                                          description: 'Create a free account to save restaurants to your favorites.',
+                                        });
+                                        return;
+                                      }
+                                      try {
+                                        const wasBookmarked = isRestaurantBookmarked(restaurantId);
+                                        await toggleRestaurantBookmark(restaurantId);
+                                        toast({
+                                          title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
+                                          description: 'You can view your favorites in your profile.',
+                                        });
+                                      } catch (_) {}
+                                    }}
+                                    className={`flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full transition-colors ${
+                                      isRestaurantBookmarked(restaurantId) ? 'text-red-600 bg-red-50' : 'text-gray-400 bg-gray-100 hover:text-red-500'
+                                    }`}
+                                    title={isRestaurantBookmarked(restaurantId) ? 'Saved' : 'Save'}
+                                  >
+                                    <Heart className="w-4 h-4" fill={isRestaurantBookmarked(restaurantId) ? 'currentColor' : 'none'} />
+                                  </button>
                                 </div>
-                              </Link>
-
-                              <CardContent className="p-4 flex-1 flex flex-col">
+                                
                                 <Link href={restaurantUrl}>
-                                  <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                  <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2 hover:text-purple-600 transition-colors flex items-center gap-1.5">
                                     {trending.restaurant_name || `Restaurant #${restaurantId}`}
+                                    {(premiumRestaurantIds.includes(restaurantId) || premiumRestaurantIds.includes(Number(restaurantId))) && (
+                                      <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Featured Restaurant" />
+                                    )}
                                   </h3>
                                 </Link>
 
                                 {/* Promotion Score */}
                                 {restaurantId && (
-                                  <div className="mb-3">
+                                  <div className="mb-4 flex-grow">
                                     <RestaurantPromotionCard 
                                       restaurantId={restaurantId} 
                                       compact={true}
@@ -1837,15 +1877,13 @@ export default function ToursListingClient({
                                   </div>
                                 )}
 
-                                <Button
-                                  asChild
-                                  className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                                <Link
+                                  href={restaurantUrl}
+                                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
                                 >
-                                  <Link href={restaurantUrl}>
-                                    View Details
-                                    <ArrowRight className="w-4 h-4 ml-2" />
-                                  </Link>
-                                </Button>
+                                  View Restaurant
+                                  <ArrowRight className="w-4 h-4" />
+                                </Link>
                               </CardContent>
                             </Card>
                           </motion.div>
@@ -1906,6 +1944,7 @@ export default function ToursListingClient({
             </div>
           </div>
 
+
           {/* Featured Tours Section */}
           {featuredTours.length > 0 && (
             <div className="mb-12">
@@ -1916,7 +1955,7 @@ export default function ToursListingClient({
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {featuredTours.map((tour, index) => (
-                  <TourCard key={tour.productId || index} tour={tour} isFeatured={true} destination={destination} promotionScores={promotionScores} effectiveDestinationId={effectiveDestinationId} />
+                  <TourCard key={tour.productId || index} tour={tour} isFeatured={true} destination={destination} promotionScores={promotionScores} effectiveDestinationId={effectiveDestinationId} premiumOperatorTourIds={premiumOperatorTourIds} />
                 ))}
               </div>
             </div>
@@ -1930,7 +1969,7 @@ export default function ToursListingClient({
               )}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {regularTours.map((tour, index) => (
-                  <TourCard key={tour.productId || tour.productCode || index} tour={tour} isFeatured={false} destination={destination} promotionScores={promotionScores} effectiveDestinationId={effectiveDestinationId} />
+                  <TourCard key={tour.productId || tour.productCode || index} tour={tour} isFeatured={false} destination={destination} promotionScores={promotionScores} effectiveDestinationId={effectiveDestinationId} premiumOperatorTourIds={premiumOperatorTourIds} />
                 ))}
               </div>
               
@@ -1970,6 +2009,130 @@ export default function ToursListingClient({
           )}
         </div>
       </section>
+
+      {/* Top Restaurants Section */}
+      {hasRestaurants && (() => {
+        // Use restaurants from server if available, otherwise fallback to static data
+        const restaurantsToDisplay = restaurants.length > 0 
+          ? restaurants.slice(0, 8)
+          : getRestaurantsForDestination(destination.id).slice(0, 8);
+        if (restaurantsToDisplay.length === 0) return null;
+        
+        return (
+          <section className="py-12 bg-white border-t">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div className="mb-6">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                      Top Restaurants in {destination.fullName || destination.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-6">
+                      Discover the best dining experiences and hand-picked restaurants.
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {restaurantsToDisplay.map((restaurant, index) => {
+                      const restaurantUrl = `/destinations/${destination.id}/restaurants/${restaurant.slug}`;
+                      const description = restaurant.metaDescription 
+                        || restaurant.tagline 
+                        || restaurant.summary 
+                        || restaurant.description
+                        || (restaurant.cuisines?.length > 0 
+                            ? `Discover ${restaurant.cuisines.join(' & ')} cuisine at ${restaurant.name} in ${destination.fullName || destination.name}.`
+                            : `Experience great dining at ${restaurant.name} in ${destination.fullName || destination.name}.`);
+                      
+                      return (
+                        <motion.div
+                          key={restaurant.id || index}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.4, delay: index * 0.1 }}
+                          viewport={{ once: true }}
+                        >
+                          <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-shadow">
+                            <CardContent className="p-6 flex flex-col h-full">
+                              <div className="flex items-center gap-3 mb-3">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
+                                  <UtensilsCrossed className="w-5 h-5 text-white" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <h4 className="text-lg font-bold text-gray-900 line-clamp-1">
+                                    {restaurant.name}
+                                  </h4>
+                                  {restaurant.cuisines?.length > 0 && (
+                                    <span className="text-xs font-medium text-blue-600 uppercase tracking-wide">
+                                      {restaurant.cuisines[0]}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                              <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">
+                                {description.length > 120 ? description.slice(0, 120) + '...' : description}
+                              </p>
+                              <div className="flex flex-wrap gap-2 mb-4">
+                                {restaurant.ratings?.googleRating && (
+                                  <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
+                                    <Star className="w-3 h-3" />
+                                    {restaurant.ratings.googleRating.toFixed(1)}
+                                  </span>
+                                )}
+                                {restaurant.pricing?.priceRange && (
+                                  <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
+                                    {restaurant.pricing.priceRange}
+                                  </span>
+                                )}
+                              </div>
+                              <Link
+                                href={restaurantUrl}
+                                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
+                              >
+                                View Restaurant
+                                <ArrowRight className="w-4 h-4" />
+                              </Link>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      );
+                    })}
+                    {/* View All Restaurants Card */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.8 }}
+                      viewport={{ once: true }}
+                    >
+                      <Link
+                        href={`/destinations/${destination.id}/restaurants`}
+                        className="block h-full"
+                      >
+                        <Card className="h-full border border-blue-100 bg-white shadow-lg hover:shadow-xl transition-shadow flex flex-col items-center justify-center text-center p-6">
+                          <UtensilsCrossed className="w-8 h-8 text-blue-600 mb-3" />
+                          <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                            View All Restaurants in {destination.fullName || destination.name}
+                          </h4>
+                          <p className="text-sm text-gray-600 mb-4">
+                            Explore every curated dining spot we recommend across the island.
+                          </p>
+                          <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600">
+                            Browse the list
+                            <ArrowRight className="w-4 h-4" />
+                          </span>
+                        </Card>
+                      </Link>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* Internal Linking Section */}
       <section className="py-12 bg-white border-t">
@@ -2133,9 +2296,98 @@ export default function ToursListingClient({
               </Card>
             </div>
           )}
+
         </div>
       </section>
       </div>
+
+      {/* Related Travel Guides Section - Same style as restaurant page */}
+      {categoryGuides && Array.isArray(categoryGuides) && categoryGuides.length > 0 && (
+        <section className="py-12 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-8"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <BookOpen className="w-6 h-6 text-blue-600" />
+                <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900">
+                  Related Travel Guides for {destination.fullName || destination.name}
+                </h2>
+              </div>
+              <p className="text-gray-600 mb-6">
+                Explore comprehensive guides to plan your perfect trip, including food tours, cultural experiences, and more.
+              </p>
+              
+              {/* All category guides in a grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                {categoryGuides.slice(0, 6).map((guide) => {
+                  const categoryName = guide.category_name || guide.title || '';
+                  const categorySlug = guide.category_slug || '';
+                  const guideUrl = `/destinations/${destination.id}/guides/${categorySlug}`;
+                  
+                  // Determine icon based on category name
+                  const isFoodRelated = categoryName.toLowerCase().includes('food') || 
+                                      categoryName.toLowerCase().includes('culinary') || 
+                                      categoryName.toLowerCase().includes('tapas') || 
+                                      categoryName.toLowerCase().includes('tasting') ||
+                                      categoryName.toLowerCase().includes('restaurant');
+                  const Icon = isFoodRelated ? UtensilsCrossed : MapPin;
+                  const iconColor = isFoodRelated ? 'text-orange-600' : 'text-blue-600';
+                  
+                  return (
+                    <Link
+                      key={categorySlug}
+                      href={guideUrl}
+                      className="group"
+                    >
+                      <Card className="h-full border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
+                        <CardContent className="p-5">
+                          <div className="flex items-center gap-3 mb-3">
+                            <Icon className={`w-5 h-5 ${iconColor}`} />
+                            <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                              {guide.title || categoryName}
+                            </h3>
+                          </div>
+                          {guide.subtitle && (
+                            <p className="text-sm text-gray-600 mb-3">
+                              {guide.subtitle}
+                            </p>
+                          )}
+                          {!guide.subtitle && (
+                            <p className="text-sm text-gray-600 mb-3">
+                              {isFoodRelated 
+                                ? `Discover the best ${categoryName.toLowerCase()} experiences in ${destination.fullName || destination.name}.`
+                                : `Explore ${categoryName.toLowerCase()} in ${destination.fullName || destination.name}.`
+                              }
+                            </p>
+                          )}
+                          <div className="flex items-center text-blue-600 text-sm font-medium group-hover:gap-2 transition-all">
+                            Read Guide
+                            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  );
+                })}
+              </div>
+              
+              <div className="text-center">
+                <Button asChild variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                  <Link href={`/destinations/${destination.id}`}>
+                    View All {destination.fullName || destination.name} Guides
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       <FooterNext />
       
@@ -2213,14 +2465,14 @@ export default function ToursListingClient({
         isOpen={showShareModal}
         onClose={() => setShowShareModal(false)}
         url={typeof window !== 'undefined' ? window.location.href : ''}
-        title={`Top Tours & Activities in ${destinationName} - TopTours.ai`}
+        title={`Top Tours and Activities in ${destinationName} - TopTours.ai`}
       />
     </>
   );
 }
 
 // Tour Card Component
-function TourCard({ tour, isFeatured, destination, promotionScores = {}, effectiveDestinationId = null }) {
+function TourCard({ tour, isFeatured, destination, promotionScores = {}, effectiveDestinationId = null, premiumOperatorTourIds = [] }) {
   const productId = tour.productId || tour.productCode;
   const tourUrl = tour.slug 
     ? `/tours/${productId}/${tour.slug}` 
@@ -2238,6 +2490,9 @@ function TourCard({ tour, isFeatured, destination, promotionScores = {}, effecti
   const hasDiscount = originalPrice && originalPrice > price;
   const title = tour.seo?.title || tour.title || 'Tour';
   const description = tour.seo?.description || tour.content?.heroDescription || tour.description || '';
+  
+  // Check if this tour has premium operator status
+  const isPremiumOperator = premiumOperatorTourIds.includes(productId);
   
   // Get flags from tour
   // Flags can be in different locations: tour.flags, tour.specialFlags, etc.
@@ -2308,6 +2563,11 @@ function TourCard({ tour, isFeatured, destination, promotionScores = {}, effecti
                 Featured
               </Badge>
             )}
+            {isPremiumOperator && !isFeatured && (
+              <div className="absolute top-3 left-3 z-20">
+                <Crown className="w-5 h-5 text-amber-500 drop-shadow-lg" title="Premium Operator" />
+              </div>
+            )}
             {price > 0 && (
               <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 z-20">
                 <div className="flex flex-col items-end" suppressHydrationWarning>
@@ -2352,8 +2612,11 @@ function TourCard({ tour, isFeatured, destination, promotionScores = {}, effecti
         <CardContent className="p-4 flex flex-col flex-grow">
           <div className="flex items-start justify-between gap-2 mb-2">
             <Link href={tourUrl} className="flex-1">
-              <h3 className="font-semibold text-lg text-gray-800 line-clamp-2 hover:text-purple-600 transition-colors">
-                {title}
+              <h3 className="font-semibold text-lg text-gray-800 line-clamp-2 hover:text-purple-600 transition-colors flex items-center gap-2">
+                {isPremiumOperator && (
+                  <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Premium Operator" />
+                )}
+                <span>{title}</span>
               </h3>
             </Link>
             <button

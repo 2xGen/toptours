@@ -1966,17 +1966,34 @@ export async function getRestaurantPromotionScore(restaurantId) {
       .single();
 
     if (error && error.code === 'PGRST116') {
-      return null; // Restaurant not promoted yet
+      return null; // Restaurant not promoted yet - this is expected
     }
 
     if (error) {
-      console.error('Error fetching restaurant promotion:', error);
+      // Only log if error has meaningful information
+      if (error.message || error.code || Object.keys(error).length > 0) {
+        console.error('Error fetching restaurant promotion:', {
+          restaurantId,
+          errorCode: error.code,
+          errorMessage: error.message,
+          errorDetails: error,
+        });
+      }
+      // Silently return null for empty errors (likely just "not found")
       return null;
     }
 
     return data;
   } catch (error) {
-    console.error('Error in getRestaurantPromotionScore:', error);
+    // Only log if error has meaningful information
+    if (error?.message || error?.code || (error && Object.keys(error).length > 0)) {
+      console.error('Error in getRestaurantPromotionScore:', {
+        restaurantId,
+        errorMessage: error?.message,
+        errorCode: error?.code,
+        error,
+      });
+    }
     return null;
   }
 }

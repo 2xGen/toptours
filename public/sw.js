@@ -1,7 +1,7 @@
 // Service Worker for TopTours.ai PWA
 // Network-first for pages, cache-first for static assets
 
-const CACHE_NAME = 'toptours-ai-v11'; // Added self-service restaurant settings
+const CACHE_NAME = 'toptours-ai-v12'; // Updated tour operator banner
 const urlsToCache = [
   '/',
   '/tours',

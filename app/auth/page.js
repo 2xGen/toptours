@@ -26,11 +26,25 @@ function AuthPageContent() {
   const [nameAvailable, setNameAvailable] = useState(null); // null = not checked, true = available, false = taken
   const [needsNickname, setNeedsNickname] = useState(false);
 
-  // Check URL params for reset mode
+  // Check URL params for reset mode and handle Supabase recovery token
   useEffect(() => {
     const urlMode = searchParams.get('mode');
     if (urlMode === 'reset') {
       setMode('reset');
+    }
+    
+    // Check for Supabase recovery token in URL hash
+    // Supabase sends tokens in hash fragment like: #access_token=...&type=recovery
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash;
+      if (hash.includes('type=recovery') || hash.includes('access_token')) {
+        setMode('reset');
+        // Supabase will automatically handle the token exchange via detectSessionInUrl
+        // Clear the hash after processing to clean up the URL
+        setTimeout(() => {
+          window.history.replaceState(null, '', window.location.pathname + '?mode=reset');
+        }, 100);
+      }
     }
   }, [searchParams]);
 
@@ -196,7 +210,7 @@ function AuthPageContent() {
         return;
       } else if (mode === 'forgot') {
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: `${window.location.origin}/auth?mode=reset`,
+          redirectTo: `${window.location.origin}/auth`,
         });
         if (error) throw error;
         setMessage('Password reset email sent! Check your inbox for instructions.');
@@ -235,7 +249,11 @@ function AuthPageContent() {
         }
         
         setMessage('Signed in! Redirecting...');
-        window.location.href = '/';
+        // Get redirect URL from query params, default to home
+        const redirectUrl = searchParams.get('redirect') || '/';
+        setTimeout(() => {
+          window.location.href = redirectUrl;
+        }, 500);
       } else if (mode === 'setNickname') {
         // Validate display name
         if (!displayName.trim()) {
@@ -292,8 +310,10 @@ function AuthPageContent() {
         }
 
         setMessage('Nickname saved! Redirecting...');
+        // Get redirect URL from query params, default to home
+        const redirectUrl = searchParams.get('redirect') || '/';
         setTimeout(() => {
-          window.location.href = '/';
+          window.location.href = redirectUrl;
         }, 1000);
         return;
       } else {
@@ -329,7 +349,11 @@ function AuthPageContent() {
           }
           
           setMessage('Account created! Redirecting...');
-          window.location.href = '/';
+          // Get redirect URL from query params, default to home
+          const redirectUrl = searchParams.get('redirect') || '/';
+          setTimeout(() => {
+            window.location.href = redirectUrl;
+          }, 500);
         } else {
           // If confirmation is enabled, no session is returned
           setMessage('Account created. Please check your email to confirm your account, then sign in.');

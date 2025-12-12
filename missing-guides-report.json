@@ -1,0 +1,2147 @@
+[
+  {
+    "destinationId": "cordoba",
+    "destinationName": "Cordoba",
+    "totalCategories": 6,
+    "existingGuides": 0,
+    "missingCategories": [
+      "Mezquita-Cathedral Tours",
+      "Jewish Quarter Walking Tours",
+      "Andalusian History Tours",
+      "Cordoba Patio Tours",
+      "Alcázar and Roman Bridge Tours",
+      "Cordoba Food and Wine Experiences"
+    ]
+  },
+  {
+    "destinationId": "sayulita",
+    "destinationName": "Sayulita",
+    "totalCategories": 6,
+    "existingGuides": 0,
+    "missingCategories": [
+      "Sayulita Surf Lessons & Rentals",
+      "Nayarit Jungle & Waterfall Adventures",
+      "Stand Up Paddleboarding Tours",
+      "Huichol Art & Cultural Experiences",
+      "Birdwatching & Nature Walks",
+      "Sayulita Food & Mezcal Tastings"
+    ]
+  },
+  {
+    "destinationId": "matobo-national-park-the-matopos",
+    "destinationName": "Matobo National Park - The Matopos",
+    "totalCategories": 6,
+    "existingGuides": 0,
+    "missingCategories": [
+      "Matobo Hills Hiking Tours",
+      "Rhino Tracking Safaris",
+      "Cultural Heritage Tours",
+      "Wildlife Viewing Drives",
+      "Ancient Rock Art Expeditions",
+      "Historical Site Visits"
+    ]
+  },
+  {
+    "destinationId": "hassilabied",
+    "destinationName": "Hassilabied",
+    "totalCategories": 6,
+    "existingGuides": 0,
+    "missingCategories": [
+      "Erg Chebbi Dune Adventures",
+      "Sahara Desert Camping Tours",
+      "Camel Trekking Experiences",
+      "Berber Cultural Immersion",
+      "4x4 Desert Excursions",
+      "Gnawa Music & Local Village Visits"
+    ]
+  },
+  {
+    "destinationId": "mole-national-park",
+    "destinationName": "Mole National Park",
+    "totalCategories": 6,
+    "existingGuides": 0,
+    "missingCategories": [
+      "Mole National Park Safaris",
+      "Ghana Wildlife Tours",
+      "Walking Safaris",
+      "Bird Watching Expeditions",
+      "Cultural Village Visits",
+      "Historical Site Exploration"
+    ]
+  },
+  {
+    "destinationId": "kagbeni",
+    "destinationName": "Kagbeni",
+    "totalCategories": 6,
+    "existingGuides": 0,
+    "missingCategories": [
+      "Kagbeni Village Walking Tours",
+      "Upper Mustang Treks from Kagbeni",
+      "Cultural Immersion in Kagbeni",
+      "Muktinath Pilgrimage Tours",
+      "Himalayan Landscape Photography Tours",
+      "Local Homestay Experiences"
+    ]
+  },
+  {
+    "destinationId": "shilin-county",
+    "destinationName": "Shilin County",
+    "totalCategories": 6,
+    "existingGuides": 0,
+    "missingCategories": [
+      "Stone Forest National Park Tours",
+      "Yi Ethnic Culture Immersion",
+      "Geological & Karst Landscape Exploration",
+      "Local Village & Community Visits",
+      "Nature Photography Expeditions",
+      "Culinary & Folk Art Experiences"
+    ]
+  },
+  {
+    "destinationId": "shigar",
+    "destinationName": "Shigar",
+    "totalCategories": 6,
+    "existingGuides": 0,
+    "missingCategories": [
+      "Shigar Fort Tours",
+      "Baltistan Cultural Immersions",
+      "Karakoram Trekking Expeditions",
+      "Balti Cuisine Experiences",
+      "Historical Valley Exploration",
+      "Adventure Sports in Gilgit-Baltistan"
+    ]
+  },
+  {
+    "destinationId": "bayan-olgii-province",
+    "destinationName": "Bayan-Olgii Province",
+    "totalCategories": 6,
+    "existingGuides": 0,
+    "missingCategories": [
+      "Eagle Hunting Tours",
+      "Altai Mountain Trekking",
+      "Nomadic Homestay Experiences",
+      "Cultural Immersion in Olgii",
+      "Ancient Petroglyph Exploration",
+      "Lake Khoton & Khurgan Exploration"
+    ]
+  },
+  {
+    "destinationId": "pacific-harbour",
+    "destinationName": "Pacific Harbour",
+    "totalCategories": 6,
+    "existingGuides": 0,
+    "missingCategories": [
+      "Pacific Harbour Surfing Adventures",
+      "Beqa Lagoon Diving & Snorkeling",
+      "Fijian Cultural Village Tours",
+      "Adventure Sports & Eco-Tours",
+      "River & Rainforest Exploration",
+      "Island Hopping & Boat Trips"
+    ]
+  },
+  {
+    "destinationId": "bovec",
+    "destinationName": "Bovec",
+    "totalCategories": 6,
+    "existingGuides": 1,
+    "missingCategories": [
+      "Soča River Rafting & Kayaking",
+      "Julian Alps Hiking & Trekking",
+      "Bovec Canyoning Adventures",
+      "WWI History Tours",
+      "Triglav National Park Nature Walks"
+    ]
+  },
+  {
+    "destinationId": "skeleton-coast-national-park",
+    "destinationName": "Skeleton Coast National Park",
+    "totalCategories": 6,
+    "existingGuides": 1,
+    "missingCategories": [
+      "Skeleton Coast Shipwreck Tours",
+      "Namib Desert 4x4 Safaris",
+      "Wildlife Photography Expeditions",
+      "Remote Desert Exploration",
+      "Cultural & Historical Site Visits"
+    ]
+  },
+  {
+    "destinationId": "saint-catherine",
+    "destinationName": "Saint Catherine",
+    "totalCategories": 6,
+    "existingGuides": 1,
+    "missingCategories": [
+      "Mount Sinai Sunrise Treks",
+      "Historical Monastery Tours",
+      "Bedouin Cultural Experiences",
+      "Sinai Desert Hiking Adventures",
+      "Religious Pilgrimage Journeys"
+    ]
+  },
+  {
+    "destinationId": "lalibela",
+    "destinationName": "Lalibela",
+    "totalCategories": 6,
+    "existingGuides": 1,
+    "missingCategories": [
+      "Lalibela Rock-Hewn Church Tours",
+      "Ethiopian Orthodox Christianity Pilgrimage",
+      "Historical and Architectural Site Exploration",
+      "Lalibela Cultural Immersion Experiences",
+      "Highland Trekking and Monastery Visits"
+    ]
+  },
+  {
+    "destinationId": "bwindi-impenetrable-national-park",
+    "destinationName": "Bwindi Impenetrable National Park",
+    "totalCategories": 6,
+    "existingGuides": 1,
+    "missingCategories": [
+      "Gorilla Trekking Safaris in Bwindi",
+      "Bird Watching Tours in Bwindi Impenetrable Forest",
+      "Batwa Cultural Experiences",
+      "Nature and Forest Walks",
+      "Primate Tracking Adventures"
+    ]
+  },
+  {
+    "destinationId": "machame",
+    "destinationName": "Machame",
+    "totalCategories": 6,
+    "existingGuides": 1,
+    "missingCategories": [
+      "Kilimanjaro Treks (Machame Route)",
+      "Chagga Cultural Village Tours",
+      "Coffee Plantation Experiences",
+      "Waterfall Hikes & Nature Walks",
+      "Tanzanian Culinary Experiences"
+    ]
+  },
+  {
+    "destinationId": "akagera-national-park",
+    "destinationName": "Akagera National Park",
+    "totalCategories": 6,
+    "existingGuides": 1,
+    "missingCategories": [
+      "Akagera National Park Wildlife Safaris",
+      "Lake Ihema Boat Cruises",
+      "Akagera Birdwatching Tours",
+      "Akagera Night Game Drives",
+      "Cultural Encounters near Akagera"
+    ]
+  },
+  {
+    "destinationId": "mindo",
+    "destinationName": "Mindo",
+    "totalCategories": 6,
+    "existingGuides": 1,
+    "missingCategories": [
+      "Mindo Birdwatching Expeditions",
+      "Cloud Forest Hiking Tours",
+      "Adventure Sports & Ziplining",
+      "Chocolate & Coffee Farm Experiences",
+      "Waterfall & Nature Reserve Visits"
+    ]
+  },
+  {
+    "destinationId": "so-luis-do-maranho",
+    "destinationName": "São Luis do Maranhão",
+    "totalCategories": 6,
+    "existingGuides": 1,
+    "missingCategories": [
+      "Historic Center Walking Tours",
+      "Bumba Meu Boi Cultural Experiences",
+      "Lençóis Maranhenses Day Trips",
+      "Maranhão Gastronomy Tours",
+      "Azulejo Tile and Colonial Architecture Walks"
+    ]
+  },
+  {
+    "destinationId": "boca-raton",
+    "destinationName": "Boca Raton",
+    "totalCategories": 6,
+    "existingGuides": 1,
+    "missingCategories": [
+      "La Boca Street Art Tours",
+      "Tango & Caminito Experience",
+      "Boca Juniors Stadium Tours",
+      "Buenos Aires History Walks",
+      "Argentine Cuisine & Local Bites"
+    ]
+  },
+  {
+    "destinationId": "dharavi",
+    "destinationName": "Dharavi",
+    "totalCategories": 6,
+    "existingGuides": 1,
+    "missingCategories": [
+      "Dharavi Slum Walking Tours",
+      "Mumbai Community Based Tourism",
+      "Artisan Craft Workshops",
+      "Mumbai Social Enterprise Tours",
+      "Local Food & Market Experiences"
+    ]
+  },
+  {
+    "destinationId": "badami",
+    "destinationName": "Badami",
+    "totalCategories": 6,
+    "existingGuides": 1,
+    "missingCategories": [
+      "Badami Cave Temple Tours",
+      "Chalukyan Heritage Trails",
+      "Badami Fort Exploration",
+      "Pattadakal & Aihole Day Trips",
+      "Karnataka Rock-Cut Architecture"
+    ]
+  },
+  {
+    "destinationId": "modena",
+    "destinationName": "Modena",
+    "totalCategories": 6,
+    "existingGuides": 2,
+    "missingCategories": [
+      "Modena Balsamic Vinegar Tours",
+      "Emilia-Romagna Food Experiences",
+      "Historic Modena Walking Tours",
+      "Culinary Delights of Modena"
+    ]
+  },
+  {
+    "destinationId": "sylt",
+    "destinationName": "Sylt",
+    "totalCategories": 6,
+    "existingGuides": 2,
+    "missingCategories": [
+      "Wadden Sea UNESCO World Heritage Tours",
+      "Frisian Culture & History Walks",
+      "Kampen Art & Architecture Tours",
+      "Sylt Culinary & Wine Experiences"
+    ]
+  },
+  {
+    "destinationId": "bayeux",
+    "destinationName": "Bayeux",
+    "totalCategories": 6,
+    "existingGuides": 2,
+    "missingCategories": [
+      "Bayeux Tapestry Tours",
+      "D-Day Landing Beaches Tours",
+      "WWII History Walks",
+      "Calvados & Cider Tasting Tours"
+    ]
+  },
+  {
+    "destinationId": "marne-la-valle",
+    "destinationName": "Marne-la-Vallée",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Disneyland Paris Adventures",
+      "Val d'Europe Shopping & Dining Tours",
+      "Château & Heritage Walks",
+      "Theme Park & Entertainment Experiences"
+    ]
+  },
+  {
+    "destinationId": "crdoba",
+    "destinationName": "Córdoba",
+    "totalCategories": 6,
+    "existingGuides": 2,
+    "missingCategories": [
+      "Mezquita-Cathedral Tours",
+      "Jewish Quarter Walking Tours",
+      "Córdoba Patio Tours",
+      "Alcázar and Roman Bridge Excursions"
+    ]
+  },
+  {
+    "destinationId": "pilsen",
+    "destinationName": "Pilsen",
+    "totalCategories": 6,
+    "existingGuides": 2,
+    "missingCategories": [
+      "Pilsner Urquell Brewery Tours",
+      "West Bohemia Historical Walks",
+      "Pilsen Underground Tours",
+      "Art Nouveau Architecture Tours"
+    ]
+  },
+  {
+    "destinationId": "yellowknife",
+    "destinationName": "Yellowknife",
+    "totalCategories": 6,
+    "existingGuides": 2,
+    "missingCategories": [
+      "Aurora Borealis Tours",
+      "Indigenous Culture Experiences",
+      "Great Slave Lake Excursions",
+      "Arctic Wildlife Viewing"
+    ]
+  },
+  {
+    "destinationId": "st-augustine",
+    "destinationName": "St Augustine",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Augustine Historic Walking Tours",
+      "St. Augustine Ghost Tours",
+      "St. Augustine Fort and History Tours",
+      "St. Augustine Nightlife and Pub Crawls"
+    ]
+  },
+  {
+    "destinationId": "manyara-region",
+    "destinationName": "Manyara Region",
+    "totalCategories": 6,
+    "existingGuides": 2,
+    "missingCategories": [
+      "Lake Manyara National Park Safaris",
+      "Maasai Cultural Village Tours",
+      "Birdwatching Expeditions",
+      "Kolo Rock Art Site Visits"
+    ]
+  },
+  {
+    "destinationId": "morogoro-region",
+    "destinationName": "Morogoro Region",
+    "totalCategories": 6,
+    "existingGuides": 2,
+    "missingCategories": [
+      "Uluguru Mountain Trekking",
+      "Cultural Village Tours",
+      "Wildlife Spotting Safaris",
+      "Agri-tourism and Farm Visits"
+    ]
+  },
+  {
+    "destinationId": "kibale-national-park",
+    "destinationName": "Kibale National Park",
+    "totalCategories": 6,
+    "existingGuides": 2,
+    "missingCategories": [
+      "Chimpanzee Trekking Tours",
+      "Primate Safaris",
+      "Bird Watching Excursions",
+      "Rainforest Nature Walks"
+    ]
+  },
+  {
+    "destinationId": "gulf-of-thailand",
+    "destinationName": "Gulf of Thailand",
+    "totalCategories": 6,
+    "existingGuides": 2,
+    "missingCategories": [
+      "Gulf of Thailand Island Hopping Tours",
+      "Koh Tao Diving & Snorkeling Expeditions",
+      "Ang Thong Marine Park Boat Trips",
+      "Gulf Coast Seafood & Night Market Tours"
+    ]
+  },
+  {
+    "destinationId": "taman-negara-national-park",
+    "destinationName": "Taman Negara National Park",
+    "totalCategories": 6,
+    "existingGuides": 2,
+    "missingCategories": [
+      "Jungle Trekking & Hiking Tours",
+      "Wildlife Spotting & Photography Expeditions",
+      "Orang Asli Cultural Village Visits",
+      "Night Jungle Walks & Safaris"
+    ]
+  },
+  {
+    "destinationId": "chinle",
+    "destinationName": "Chinle",
+    "totalCategories": 6,
+    "existingGuides": 2,
+    "missingCategories": [
+      "Canyon de Chelly Tours",
+      "Navajo Cultural Experiences",
+      "Hiking & Jeep Tours",
+      "Historical Site Exploration"
+    ]
+  },
+  {
+    "destinationId": "st-georges",
+    "destinationName": "St. George's",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Harbor Cruise Tour in St. George's",
+      "Beach Adventure Tour in St. George's",
+      "Local Artisan Experience in St. George's"
+    ]
+  },
+  {
+    "destinationId": "isola-delba",
+    "destinationName": "Isola d'Elba",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Isola d'Elba Beaches & Coves Tours",
+      "Isola d'Elba Hiking & Trekking",
+      "Napoleon's Elba History Tours"
+    ]
+  },
+  {
+    "destinationId": "port-arthur",
+    "destinationName": "Port Arthur",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Port Arthur Historic Site Tours",
+      "Tasman Peninsula Heritage Walks",
+      "Natural Beauty & Geological Tours"
+    ]
+  },
+  {
+    "destinationId": "st-andrews",
+    "destinationName": "St. Andrews",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Andrews Golf Tours",
+      "University of St. Andrews History Walks",
+      "St. Andrews Maritime & Wildlife Experiences"
+    ]
+  },
+  {
+    "destinationId": "bushmills",
+    "destinationName": "Bushmills",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Bushmills Distillery Tours",
+      "Whiskey Tasting Experiences",
+      "Historic Castle & Village Tours"
+    ]
+  },
+  {
+    "destinationId": "lourdes",
+    "destinationName": "Lourdes",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Lourdes Sanctuary Tours",
+      "Pilgrimage and Faith Journeys",
+      "Historical Lourdes Walking Tours"
+    ]
+  },
+  {
+    "destinationId": "us-virgin-islands",
+    "destinationName": "US Virgin Islands",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Thomas Island Tours",
+      "St. John National Park Adventures",
+      "St. Croix Historic Sites"
+    ]
+  },
+  {
+    "destinationId": "whistler",
+    "destinationName": "Whistler",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Whistler Ski & Snowboard Tours",
+      "Indigenous Cultural Experiences",
+      "Culinary & Craft Beer Tours"
+    ]
+  },
+  {
+    "destinationId": "kilimanjaro",
+    "destinationName": "Kilimanjaro",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Kilimanjaro Summit Treks",
+      "Machame Route Expeditions",
+      "Marangu Route Tours"
+    ]
+  },
+  {
+    "destinationId": "gisakura",
+    "destinationName": "Gisakura",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Gorilla Trekking Tours",
+      "Volcanoes National Park Safaris",
+      "Nature Walks & Hiking"
+    ]
+  },
+  {
+    "destinationId": "chefchaouen",
+    "destinationName": "Chefchaouen",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Chefchaouen Blue City Walking Tours",
+      "Rif Mountains Hiking Expeditions",
+      "Kasbah and Medina Historical Tours"
+    ]
+  },
+  {
+    "destinationId": "erg-chebbi",
+    "destinationName": "Erg Chebbi",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Erg Chebbi Camel Treks",
+      "Sahara Desert Camping Tours",
+      "4x4 Desert Excursions"
+    ]
+  },
+  {
+    "destinationId": "kasese",
+    "destinationName": "Kasese",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Rwenzori Mountains Trekking & Hiking",
+      "Queen Elizabeth National Park Safaris",
+      "Bird Watching Excursions"
+    ]
+  },
+  {
+    "destinationId": "paracas",
+    "destinationName": "Paracas",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Ballestas Islands Wildlife Tours",
+      "Paracas National Reserve Excursions",
+      "Coastal Birdwatching Expeditions"
+    ]
+  },
+  {
+    "destinationId": "ba-be",
+    "destinationName": "Ba Be",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Tay Ethnic Homestay Experiences",
+      "National Park Trekking Tours",
+      "Cave Exploration in Ba Be"
+    ]
+  },
+  {
+    "destinationId": "wakayama",
+    "destinationName": "Wakayama",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Kumano Kodo Pilgrimage Tours",
+      "Koyasan Temple Stays & Spiritual Retreats",
+      "Historical Castle & Shrine Exploration"
+    ]
+  },
+  {
+    "destinationId": "luang-namtha",
+    "destinationName": "Luang Namtha",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Trekking and Hiking Tours in Luang Namtha",
+      "Ethnic Village Homestays and Cultural Tours",
+      "Ecotourism and Nature Exploration"
+    ]
+  },
+  {
+    "destinationId": "soldotna",
+    "destinationName": "Soldotna",
+    "totalCategories": 6,
+    "existingGuides": 3,
+    "missingCategories": [
+      "Kenai River Fishing Charters",
+      "Kenai Peninsula Wildlife Tours",
+      "Kenai National Wildlife Refuge Exploration"
+    ]
+  },
+  {
+    "destinationId": "siena",
+    "destinationName": "Siena",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Siena's Medieval Masterpieces Tour",
+      "Siena's Palio & Local Traditions"
+    ]
+  },
+  {
+    "destinationId": "assisi",
+    "destinationName": "Assisi",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Francis of Assisi Heritage Tours",
+      "Assisi's Sacred Sites and Monasteries"
+    ]
+  },
+  {
+    "destinationId": "pisa",
+    "destinationName": "Pisa",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Pisa's Leaning Tower & Piazza dei Miracoli Tours",
+      "Pisa's Medieval Architecture & History Tours"
+    ]
+  },
+  {
+    "destinationId": "santagata-de-goti",
+    "destinationName": "Sant'Agata de' Goti",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Sant'Agata de' Goti Medieval Town Tours",
+      "Underground Sant'Agata: Cave and Castle Tours"
+    ]
+  },
+  {
+    "destinationId": "burano",
+    "destinationName": "Burano",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Burano's Rainbow House Photography Tour",
+      "Lagoon Islands Discovery Tour (incl. Burano)"
+    ]
+  },
+  {
+    "destinationId": "aosta",
+    "destinationName": "Aosta",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Valle d'Aosta Wine and Food Experiences",
+      "Aosta's Medieval Heritage Trails"
+    ]
+  },
+  {
+    "destinationId": "princes-islands",
+    "destinationName": "Princes' Islands",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Princes' Islands Historical Mansions Tour",
+      "Princes' Islands Nature Walks"
+    ]
+  },
+  {
+    "destinationId": "leipzig",
+    "destinationName": "Leipzig",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Leipzig's Music History Tours",
+      "Leipzig's Peaceful Revolution Sites"
+    ]
+  },
+  {
+    "destinationId": "augsburg",
+    "destinationName": "Augsburg",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Augsburg's Renaissance & Fugger History Tours",
+      "Augsburg's UNESCO Water Systems Walks"
+    ]
+  },
+  {
+    "destinationId": "st-moritz",
+    "destinationName": "St Moritz",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Moritz Ski & Snowboard Adventures",
+      "Historical & Architectural St. Moritz"
+    ]
+  },
+  {
+    "destinationId": "la-palma",
+    "destinationName": "La Palma",
+    "totalCategories": 6,
+    "existingGuides": 4,
+    "missingCategories": [
+      "La Palma Stargazing Experiences",
+      "Santa Cruz de La Palma History Walks"
+    ]
+  },
+  {
+    "destinationId": "page",
+    "destinationName": "Page",
+    "totalCategories": 6,
+    "existingGuides": 4,
+    "missingCategories": [
+      "Slot Canyon Tours",
+      "Navajo Cultural Tours"
+    ]
+  },
+  {
+    "destinationId": "st-croix",
+    "destinationName": "St Croix",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Croix National Parks & Preserves",
+      "St. Croix Culinary & Nightlife Experiences"
+    ]
+  },
+  {
+    "destinationId": "marthas-vineyard",
+    "destinationName": "Martha's Vineyard",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Martha's Vineyard Town Tours",
+      "Martha's Vineyard Culinary Trails"
+    ]
+  },
+  {
+    "destinationId": "molokai",
+    "destinationName": "Molokai",
+    "totalCategories": 6,
+    "existingGuides": 4,
+    "missingCategories": [
+      "Kalaupapa Tours",
+      "Halawa Valley Adventures"
+    ]
+  },
+  {
+    "destinationId": "st-maarten",
+    "destinationName": "St Maarten",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Maarten Beach Hopping Tours",
+      "St. Maarten Historical Sites Tours"
+    ]
+  },
+  {
+    "destinationId": "prince-edward-island",
+    "destinationName": "Prince Edward Island",
+    "totalCategories": 6,
+    "existingGuides": 4,
+    "missingCategories": [
+      "Anne of Green Gables Tours",
+      "Historic Charlottetown Walking Tours"
+    ]
+  },
+  {
+    "destinationId": "djanet",
+    "destinationName": "Djanet",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Tassili n'Ajjer Rock Art Tours",
+      "Djanet 4x4 Adventure Treks"
+    ]
+  },
+  {
+    "destinationId": "chiba",
+    "destinationName": "Chiba",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Chiba's Coastal Escapes",
+      "Chiba's Inland Countryside"
+    ]
+  },
+  {
+    "destinationId": "tad-lo",
+    "destinationName": "Tad Lo",
+    "totalCategories": 6,
+    "existingGuides": 4,
+    "missingCategories": [
+      "Bolaven Plateau Coffee Tours",
+      "Jungle Trekking and Nature Walks"
+    ]
+  },
+  {
+    "destinationId": "chandigarh",
+    "destinationName": "Chandigarh",
+    "totalCategories": 6,
+    "existingGuides": 4,
+    "missingCategories": [
+      "Le Corbusier's Architectural Tour",
+      "Heritage Sites of Chandigarh"
+    ]
+  },
+  {
+    "destinationId": "lombok",
+    "destinationName": "Lombok",
+    "totalCategories": 6,
+    "existingGuides": 4,
+    "missingCategories": [
+      "Mount Rinjani Trekking",
+      "Waterfalls and Nature Treks"
+    ]
+  },
+  {
+    "destinationId": "caon-city",
+    "destinationName": "Cañon City",
+    "totalCategories": 6,
+    "existingGuides": 4,
+    "missingCategories": [
+      "Royal Gorge Adventures",
+      "Arkansas River Rafting"
+    ]
+  },
+  {
+    "destinationId": "cape-canaveral",
+    "destinationName": "Cape Canaveral",
+    "totalCategories": 6,
+    "existingGuides": 4,
+    "missingCategories": [
+      "Space Exploration Tours",
+      "Coastal Nature & Wildlife Tours"
+    ]
+  },
+  {
+    "destinationId": "hershey",
+    "destinationName": "Hershey",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Hershey's Chocolate World Tours",
+      "Milton S. Hershey Legacy Tours"
+    ]
+  },
+  {
+    "destinationId": "st-johns",
+    "destinationName": "St John's",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St John's City Walking Tour"
+    ]
+  },
+  {
+    "destinationId": "ocho-rios",
+    "destinationName": "Ocho Rios",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Dunn's River Falls Tour"
+    ]
+  },
+  {
+    "destinationId": "tuscany",
+    "destinationName": "Tuscany",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Val d'Orcia Scenic Drives"
+    ]
+  },
+  {
+    "destinationId": "bologna",
+    "destinationName": "Bologna",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Walking Tours of Bologna's Porticoes"
+    ]
+  },
+  {
+    "destinationId": "verona",
+    "destinationName": "Verona",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Shakespeare's Verona Experiences"
+    ]
+  },
+  {
+    "destinationId": "ostuni",
+    "destinationName": "Ostuni",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Valle d'Itria Trulli Tours"
+    ]
+  },
+  {
+    "destinationId": "umbria",
+    "destinationName": "Umbria",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Assisi & St. Francis Tours"
+    ]
+  },
+  {
+    "destinationId": "ferrara",
+    "destinationName": "Ferrara",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Cycling Ferrara's Ancient Walls"
+    ]
+  },
+  {
+    "destinationId": "campo-de-fiori",
+    "destinationName": "Campo de' Fiori",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Campo de' Fiori Market Tours"
+    ]
+  },
+  {
+    "destinationId": "la-maddalena",
+    "destinationName": "La Maddalena",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Garibaldi's La Maddalena History Walks"
+    ]
+  },
+  {
+    "destinationId": "isola-dischia",
+    "destinationName": "Isola d'Ischia",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Isola d'Ischia Thermal Spa Tours"
+    ]
+  },
+  {
+    "destinationId": "poggibonsi",
+    "destinationName": "Poggibonsi",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Val d'Elsa Wine Region Excursions"
+    ]
+  },
+  {
+    "destinationId": "lucca",
+    "destinationName": "Lucca",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Lucca's Roman History Walks"
+    ]
+  },
+  {
+    "destinationId": "rimini",
+    "destinationName": "Rimini",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Federico Fellini's Rimini"
+    ]
+  },
+  {
+    "destinationId": "calabria",
+    "destinationName": "Calabria",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Culinary & 'Nduja Tasting Experiences"
+    ]
+  },
+  {
+    "destinationId": "montepulciano",
+    "destinationName": "Montepulciano",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Val d'Orcia Scenic Drives"
+    ]
+  },
+  {
+    "destinationId": "san-casciano-dei-bagni",
+    "destinationName": "San Casciano dei Bagni",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Val d'Orcia Discovery Tours"
+    ]
+  },
+  {
+    "destinationId": "corniglia",
+    "destinationName": "Corniglia",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Corniglia's Hidden Gems"
+    ]
+  },
+  {
+    "destinationId": "alghero",
+    "destinationName": "Alghero",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Neptune's Grotto Excursions"
+    ]
+  },
+  {
+    "destinationId": "asti",
+    "destinationName": "Asti",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Barbera d'Asti Tastings"
+    ]
+  },
+  {
+    "destinationId": "procida",
+    "destinationName": "Procida",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Procida's Colorful Harbors Tour"
+    ]
+  },
+  {
+    "destinationId": "hamburg",
+    "destinationName": "Hamburg",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Reeperbahn & St. Pauli Nightlife Tours"
+    ]
+  },
+  {
+    "destinationId": "le-de-france",
+    "destinationName": "Île-de-France",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Giverny & Monet's House Excursions"
+    ]
+  },
+  {
+    "destinationId": "croatia",
+    "destinationName": "Croatia",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Split and Diocletian's Palace Tours"
+    ]
+  },
+  {
+    "destinationId": "potsdam",
+    "destinationName": "Potsdam",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Potsdam's Royal History Walks"
+    ]
+  },
+  {
+    "destinationId": "luxembourg",
+    "destinationName": "Luxembourg",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Müllerthal 'Little Switzerland' Hikes"
+    ]
+  },
+  {
+    "destinationId": "angers",
+    "destinationName": "Angers",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Château d'Angers Tours"
+    ]
+  },
+  {
+    "destinationId": "glasgow",
+    "destinationName": "Glasgow",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Glasgow's Pub and Live Music Crawls"
+    ]
+  },
+  {
+    "destinationId": "dalmatia",
+    "destinationName": "Dalmatia",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Split & Diocletian's Palace Tours"
+    ]
+  },
+  {
+    "destinationId": "avignon",
+    "destinationName": "Avignon",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Pont d'Avignon Sightseeing"
+    ]
+  },
+  {
+    "destinationId": "vatican-city",
+    "destinationName": "Vatican City",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Peter's Basilica & Square Tours"
+    ]
+  },
+  {
+    "destinationId": "vilnius",
+    "destinationName": "Vilnius",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Gediminas' Tower & Castle Hill Views"
+    ]
+  },
+  {
+    "destinationId": "frjus-saint-raphal",
+    "destinationName": "Fréjus Saint-Raphaël",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Côte d'Azur Beach Excursions"
+    ]
+  },
+  {
+    "destinationId": "cap-dagde",
+    "destinationName": "Cap-d'Agde",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Cap-d'Agde Marina Tours"
+    ]
+  },
+  {
+    "destinationId": "paphos",
+    "destinationName": "Paphos",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Aphrodite's Island Adventures"
+    ]
+  },
+  {
+    "destinationId": "kinaliada",
+    "destinationName": "Kinaliada",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Princes' Islands Cycling Tours"
+    ]
+  },
+  {
+    "destinationId": "southern-sweden",
+    "destinationName": "Southern Sweden",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Skåne's Coastal Charm Tours"
+    ]
+  },
+  {
+    "destinationId": "dodecanese",
+    "destinationName": "Dodecanese",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Symi's Neoclassical Charm"
+    ]
+  },
+  {
+    "destinationId": "southern-scotland",
+    "destinationName": "Southern Scotland",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Roman Britain Trail - Hadrian's Wall Extension"
+    ]
+  },
+  {
+    "destinationId": "newcastle-upon-tyne",
+    "destinationName": "Newcastle-upon-Tyne",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Hadrian's Wall History Walks"
+    ]
+  },
+  {
+    "destinationId": "north-east-england",
+    "destinationName": "North East England",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Hadrian's Wall & Roman Britain Tours"
+    ]
+  },
+  {
+    "destinationId": "hastings",
+    "destinationName": "Hastings",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Old Town & Smugglers' Tunnels Tours"
+    ]
+  },
+  {
+    "destinationId": "wrexham",
+    "destinationName": "Wrexham",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St Giles' Church Architectural Tours"
+    ]
+  },
+  {
+    "destinationId": "lefkada",
+    "destinationName": "Lefkada",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Lefkada's Famous Beaches Tours"
+    ]
+  },
+  {
+    "destinationId": "giverny",
+    "destinationName": "Giverny",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Monet's Gardens & House Tours"
+    ]
+  },
+  {
+    "destinationId": "kendal",
+    "destinationName": "Kendal",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Kendal's Industrial Past Walks"
+    ]
+  },
+  {
+    "destinationId": "bristol",
+    "destinationName": "Bristol",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Brunel's Engineering Trail"
+    ]
+  },
+  {
+    "destinationId": "marbella",
+    "destinationName": "Marbella",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Luxury Puerto Banús Experiences"
+    ]
+  },
+  {
+    "destinationId": "alanya",
+    "destinationName": "Alanya",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Historical Site Exploration (e.g., Caves, Towers)"
+    ]
+  },
+  {
+    "destinationId": "east-midlands",
+    "destinationName": "East Midlands",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Literary Trails of D.H. Lawrence"
+    ]
+  },
+  {
+    "destinationId": "mecklenburg-vorpommern",
+    "destinationName": "Mecklenburg-Vorpommern",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Mecklenburg's Baltic Coastline Tours"
+    ]
+  },
+  {
+    "destinationId": "fuerteventura",
+    "destinationName": "Fuerteventura",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Fuerteventura's Best Beaches Tours"
+    ]
+  },
+  {
+    "destinationId": "mechelen",
+    "destinationName": "Mechelen",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Rumbold's Cathedral & Carillon Tours"
+    ]
+  },
+  {
+    "destinationId": "vevey",
+    "destinationName": "Vevey",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Chaplin's World Guided Experiences"
+    ]
+  },
+  {
+    "destinationId": "beaulieu-sur-mer",
+    "destinationName": "Beaulieu-sur-Mer",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Art & History of the Côte d'Azur"
+    ]
+  },
+  {
+    "destinationId": "carlisle",
+    "destinationName": "Carlisle",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Hadrian's Wall Day Trips"
+    ]
+  },
+  {
+    "destinationId": "dundee",
+    "destinationName": "Dundee",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Dundee's UNESCO City of Design Tours"
+    ]
+  },
+  {
+    "destinationId": "warwick",
+    "destinationName": "Warwick",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Shakespeare's England Excursions"
+    ]
+  },
+  {
+    "destinationId": "lanzarote",
+    "destinationName": "Lanzarote",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "César Manrique's Lanzarote Trail"
+    ]
+  },
+  {
+    "destinationId": "malm",
+    "destinationName": "Malmö",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Malmö's Multicultural Neighborhoods"
+    ]
+  },
+  {
+    "destinationId": "leicester",
+    "destinationName": "Leicester",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Leicester's Golden Mile Food & Shopping"
+    ]
+  },
+  {
+    "destinationId": "tarifa",
+    "destinationName": "Tarifa",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Tarifa's Moorish & Medieval History"
+    ]
+  },
+  {
+    "destinationId": "newcastle",
+    "destinationName": "Newcastle",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Newcastle's Industrial Heritage Walks"
+    ]
+  },
+  {
+    "destinationId": "ganja",
+    "destinationName": "Ganja",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Ganja's Green Spaces & Riverfront"
+    ]
+  },
+  {
+    "destinationId": "cala-galdana",
+    "destinationName": "Cala Galdana",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Menorca's Southern Coast Exploration"
+    ]
+  },
+  {
+    "destinationId": "western-romania",
+    "destinationName": "Western Romania",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Timișoara's Cultural Trail"
+    ]
+  },
+  {
+    "destinationId": "nantes",
+    "destinationName": "Nantes",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Machines de l'île Tours"
+    ]
+  },
+  {
+    "destinationId": "sete",
+    "destinationName": "Sete",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Sete Fisherman's Quarter Walks"
+    ]
+  },
+  {
+    "destinationId": "gozo",
+    "destinationName": "Gozo",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Gozo's Natural Landscapes"
+    ]
+  },
+  {
+    "destinationId": "rovinj",
+    "destinationName": "Rovinj",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Historical Rovinj & St. Euphemia Tours"
+    ]
+  },
+  {
+    "destinationId": "mannheim",
+    "destinationName": "Mannheim",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Mannheim's Baroque Palace Tours"
+    ]
+  },
+  {
+    "destinationId": "bonn",
+    "destinationName": "Bonn",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Bonn's Former Government Quarter Walks"
+    ]
+  },
+  {
+    "destinationId": "ohrid",
+    "destinationName": "Ohrid",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Samuel's Fortress & Ancient Sites"
+    ]
+  },
+  {
+    "destinationId": "antibes",
+    "destinationName": "Antibes",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Cap d'Antibes Coastal Hikes"
+    ]
+  },
+  {
+    "destinationId": "sopron",
+    "destinationName": "Sopron",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Sopron's Austro-Hungarian Heritage"
+    ]
+  },
+  {
+    "destinationId": "kiev",
+    "destinationName": "Kiev",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Kiev's Golden Domes & Monasteries Tours"
+    ]
+  },
+  {
+    "destinationId": "poznan",
+    "destinationName": "Poznan",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Martin's Croissant Workshops"
+    ]
+  },
+  {
+    "destinationId": "riviera-maya-the-yucatan",
+    "destinationName": "Riviera Maya & the Yucatan",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Sian Ka'an Eco-Adventures"
+    ]
+  },
+  {
+    "destinationId": "wisconsin",
+    "destinationName": "Wisconsin",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Madison's Capitol Square & Lakes"
+    ]
+  },
+  {
+    "destinationId": "bermuda",
+    "destinationName": "Bermuda",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Historic St. George's Walking Tours"
+    ]
+  },
+  {
+    "destinationId": "florida",
+    "destinationName": "Florida",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Augustine Historical Walks"
+    ]
+  },
+  {
+    "destinationId": "monument-valley",
+    "destinationName": "Monument Valley",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Monument Valley Guided Jeep Tours"
+    ]
+  },
+  {
+    "destinationId": "willamette-valley",
+    "destinationName": "Willamette Valley",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Oregon's Agricultural Heritage Tours"
+    ]
+  },
+  {
+    "destinationId": "missouri",
+    "destinationName": "Missouri",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Louis Brewery & Distillery Tours"
+    ]
+  },
+  {
+    "destinationId": "zion-national-park",
+    "destinationName": "Zion National Park",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Zion's Slot Canyon Adventures"
+    ]
+  },
+  {
+    "destinationId": "gros-islet",
+    "destinationName": "Gros Islet",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Lucia North Island Exploration"
+    ]
+  },
+  {
+    "destinationId": "moshi",
+    "destinationName": "Moshi",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Moshi Local Market & City Tours"
+    ]
+  },
+  {
+    "destinationId": "praslin-island",
+    "destinationName": "Praslin Island",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Seychelles Beach Hopping Experiences"
+    ]
+  },
+  {
+    "destinationId": "ndjamena",
+    "destinationName": "N'Djamena",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "N'Djamena City Exploration"
+    ]
+  },
+  {
+    "destinationId": "mekele",
+    "destinationName": "Mek'ele",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Mek'ele Local Market Visits"
+    ]
+  },
+  {
+    "destinationId": "mhamid",
+    "destinationName": "M'Hamid",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "M'Hamid Nomadic Village Stays"
+    ]
+  },
+  {
+    "destinationId": "naivasha",
+    "destinationName": "Naivasha",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Hell's Gate National Park Tours"
+    ]
+  },
+  {
+    "destinationId": "ghardaia",
+    "destinationName": "Ghardaia",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "M'zab Valley UNESCO World Heritage Tours"
+    ]
+  },
+  {
+    "destinationId": "huacho",
+    "destinationName": "Huacho",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Huacho's Sweet Delicacies"
+    ]
+  },
+  {
+    "destinationId": "valparaso",
+    "destinationName": "Valparaíso",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Pablo Neruda's Houses"
+    ]
+  },
+  {
+    "destinationId": "brasilia",
+    "destinationName": "Brasilia",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Niemeyer's Masterpieces"
+    ]
+  },
+  {
+    "destinationId": "barreirinhas",
+    "destinationName": "Barreirinhas",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Local Village Visits (e.g., Atins, Caburé)"
+    ]
+  },
+  {
+    "destinationId": "arequipa",
+    "destinationName": "Arequipa",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Arequipa's Sillar Architecture Walks"
+    ]
+  },
+  {
+    "destinationId": "bangalore",
+    "destinationName": "Bangalore",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Bangalore's Tech Hub Tours"
+    ]
+  },
+  {
+    "destinationId": "hakone",
+    "destinationName": "Hakone",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Lake Ashi & Mt. Fuji Views"
+    ]
+  },
+  {
+    "destinationId": "fujiyoshida",
+    "destinationName": "Fujiyoshida",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Mt. Fuji View Tours from Fujiyoshida"
+    ]
+  },
+  {
+    "destinationId": "rangiroa",
+    "destinationName": "Rangiroa",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Lagoon Excursions & Boat Trips"
+    ]
+  },
+  {
+    "destinationId": "paro",
+    "destinationName": "Paro",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Tiger's Nest Trekking & Pilgrimage"
+    ]
+  },
+  {
+    "destinationId": "kathmandu",
+    "destinationName": "Kathmandu",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Architectural Marvels Exploration"
+    ]
+  },
+  {
+    "destinationId": "da-lat",
+    "destinationName": "Da Lat",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Da Lat Flower Garden Visits"
+    ]
+  },
+  {
+    "destinationId": "khiva",
+    "destinationName": "Khiva",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Khiva's Ancient City Tours"
+    ]
+  },
+  {
+    "destinationId": "yen-minh",
+    "destinationName": "Yen Minh",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "H'mong Cultural Immersion"
+    ]
+  },
+  {
+    "destinationId": "coxs-bazar",
+    "destinationName": "Cox's Bazar",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Cox's Bazar Beach Tours"
+    ]
+  },
+  {
+    "destinationId": "dharamsala",
+    "destinationName": "Dharamsala",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Spiritual & Buddhist Tours"
+    ]
+  },
+  {
+    "destinationId": "komodo-national-park",
+    "destinationName": "Komodo National Park",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Komodo Dragon Spotting Tours"
+    ]
+  },
+  {
+    "destinationId": "pune",
+    "destinationName": "Pune",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Maratha Empire Heritage Tours"
+    ]
+  },
+  {
+    "destinationId": "malang",
+    "destinationName": "Malang",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "East Java Highland Exploration"
+    ]
+  },
+  {
+    "destinationId": "kaikoura",
+    "destinationName": "Kaikoura",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Kaikoura Whale Watching Tours"
+    ]
+  },
+  {
+    "destinationId": "lingui-county",
+    "destinationName": "Lingui County",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Li River Cruise Tours"
+    ]
+  },
+  {
+    "destinationId": "taian",
+    "destinationName": "Tai'an",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Tai'an Nature Escapes"
+    ]
+  },
+  {
+    "destinationId": "bentota",
+    "destinationName": "Bentota",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Architectural Tours of Geoffrey Bawa's Estates"
+    ]
+  },
+  {
+    "destinationId": "shaoxing",
+    "destinationName": "Shaoxing",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Lu Xun's Hometown Exploration"
+    ]
+  },
+  {
+    "destinationId": "bophut",
+    "destinationName": "Bophut",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Bophut Fisherman's Village Tours"
+    ]
+  },
+  {
+    "destinationId": "shirdi",
+    "destinationName": "Shirdi",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Sai Baba's Life and Teachings"
+    ]
+  },
+  {
+    "destinationId": "fujinomiya",
+    "destinationName": "Fujinomiya",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Mt. Fuji Pilgrimage Routes"
+    ]
+  },
+  {
+    "destinationId": "daegu",
+    "destinationName": "Daegu",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Daegu's Traditional Medicine Heritage"
+    ]
+  },
+  {
+    "destinationId": "diamond-valley",
+    "destinationName": "Diamond Valley",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Local Artisan & Farmers' Market Tours"
+    ]
+  },
+  {
+    "destinationId": "roanoke",
+    "destinationName": "Roanoke",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Virginia's Railroad Heritage Tours"
+    ]
+  },
+  {
+    "destinationId": "killington",
+    "destinationName": "Killington",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Killington Ski & Snowboard Tours"
+    ]
+  },
+  {
+    "destinationId": "kejimkujik-national-park",
+    "destinationName": "Kejimkujik National Park",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Mi'kmaq Heritage Trails"
+    ]
+  },
+  {
+    "destinationId": "winnipeg",
+    "destinationName": "Winnipeg",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Boniface Cultural Tours"
+    ]
+  },
+  {
+    "destinationId": "mccarthy",
+    "destinationName": "McCarthy",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Wrangell-St. Elias National Park Tours"
+    ]
+  },
+  {
+    "destinationId": "iowa",
+    "destinationName": "Iowa",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Iowa's Presidential History"
+    ]
+  },
+  {
+    "destinationId": "golden-isles",
+    "destinationName": "Golden Isles",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Simons Island Historic Tours"
+    ]
+  },
+  {
+    "destinationId": "cocoa-beach",
+    "destinationName": "Cocoa Beach",
+    "totalCategories": 6,
+    "existingGuides": 5,
+    "missingCategories": [
+      "Cocoa Beach Surfing Lessons & Tours"
+    ]
+  },
+  {
+    "destinationId": "delaware",
+    "destinationName": "Delaware",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Wilmington's DuPont Estates & Gardens"
+    ]
+  },
+  {
+    "destinationId": "frederiksted",
+    "destinationName": "Frederiksted",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. Croix South Shore Adventures"
+    ]
+  },
+  {
+    "destinationId": "cruz-bay",
+    "destinationName": "Cruz Bay",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. John Island Tours"
+    ]
+  },
+  {
+    "destinationId": "newfoundland-labrador",
+    "destinationName": "Newfoundland & Labrador",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. John's City & Pub Tours"
+    ]
+  },
+  {
+    "destinationId": "santa-rosa",
+    "destinationName": "Santa Rosa",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Charles M. Schulz & Peanuts Experiences"
+    ]
+  },
+  {
+    "destinationId": "collingwood",
+    "destinationName": "Collingwood",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "Collingwood Culinary & Farmers' Market Tours"
+    ]
+  },
+  {
+    "destinationId": "st-george",
+    "destinationName": "St George",
+    "totalCategories": 6,
+    "existingGuides": 6,
+    "missingCategories": [
+      "St. George City History Walks"
+    ]
+  }
+]

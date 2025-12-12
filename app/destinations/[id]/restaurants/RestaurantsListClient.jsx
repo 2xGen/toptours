@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
@@ -20,6 +20,12 @@ import {
   Info,
   Share2,
   Crown,
+  Filter,
+  SlidersHorizontal,
+  XCircle,
+  DollarSign,
+  Search,
+  BookOpen,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { getTourUrl } from '@/utils/tourHelpers';
@@ -31,14 +37,30 @@ import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { useToast } from '@/components/ui/use-toast';
 import { Heart } from 'lucide-react';
 import ShareModal from '@/components/sharing/ShareModal';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
 
-export default function RestaurantsListClient({ destination, restaurants, trendingTours = [], trendingRestaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [] }) {
+export default function RestaurantsListClient({ destination, restaurants, trendingTours = [], trendingRestaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [], categoryGuides = [] }) {
   const { isBookmarked, toggle } = useRestaurantBookmarks();
   const supabase = createSupabaseBrowserClient();
   const { toast } = useToast();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [showStickyButton, setShowStickyButton] = React.useState(true);
   const [showShareModal, setShowShareModal] = React.useState(false);
+  
+  // Filter and sort state
+  const [sortBy, setSortBy] = useState('rating'); // 'rating', 'name', 'price-low', 'price-high'
+  const [maxPrice, setMaxPrice] = useState('all'); // 'all', '$', '$$', '$$$', '$$$$'
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Check if any filters are active
+  const hasActiveFilters = maxPrice && maxPrice !== 'all';
+
+  // Clear all filters
+  const clearFilters = () => {
+    setMaxPrice('all');
+    setSortBy('rating');
+  };
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
@@ -95,6 +117,90 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
     .map((category) => (typeof category === 'string' ? { name: category } : category))
     .filter((category) => category?.name)
     .slice(0, 6);
+
+  // Price range mapping
+  const priceRangeMap = {
+    '$': 1,
+    '$$': 2,
+    '$$$': 3,
+    '$$$$': 4,
+  };
+
+  // Reverse mapping for display
+  const priceLevelToSymbol = {
+    1: '$',
+    2: '$$',
+    3: '$$$',
+    4: '$$$$',
+  };
+
+  // Price level labels
+  const priceLevelLabels = {
+    1: 'Budget',
+    2: 'Moderate',
+    3: 'Expensive',
+    4: 'Very Expensive',
+  };
+
+  // Max price options
+  const maxPriceOptions = [
+    { value: 'all', label: 'No Max Budget' },
+    { value: '$', label: '$ - Budget' },
+    { value: '$$', label: '$$ - Moderate' },
+    { value: '$$$', label: '$$$ - Expensive' },
+    { value: '$$$$', label: '$$$$ - Very Expensive' },
+  ];
+
+  // Filter and sort restaurants
+  const filteredAndSortedRestaurants = useMemo(() => {
+    let filtered = [...restaurants];
+
+    // Search filter
+    if (searchTerm.trim()) {
+      const searchLower = searchTerm.toLowerCase().trim();
+      filtered = filtered.filter((restaurant) => {
+        const name = (restaurant.name || '').toLowerCase();
+        const cuisines = (restaurant.cuisines || []).join(' ').toLowerCase();
+        const description = (restaurant.metaDescription || restaurant.tagline || restaurant.summary || '').toLowerCase();
+        return name.includes(searchLower) || cuisines.includes(searchLower) || description.includes(searchLower);
+      });
+    }
+
+    // Max price filter
+    if (maxPrice && maxPrice !== 'all') {
+      filtered = filtered.filter((restaurant) => {
+        const priceRangeValue = restaurant.pricing?.priceRange;
+        if (!priceRangeValue) return false;
+        
+        const priceLevel = priceRangeMap[priceRangeValue] || 0;
+        const maxLevel = priceRangeMap[maxPrice] || 999;
+        
+        return priceLevel <= maxLevel;
+      });
+    }
+
+    // Sort
+    filtered.sort((a, b) => {
+      if (sortBy === 'rating') {
+        const ratingA = a.ratings?.googleRating || 0;
+        const ratingB = b.ratings?.googleRating || 0;
+        return ratingB - ratingA;
+      } else if (sortBy === 'name') {
+        return (a.name || '').localeCompare(b.name || '');
+      } else if (sortBy === 'price-low') {
+        const priceA = priceRangeMap[a.pricing?.priceRange] || 999;
+        const priceB = priceRangeMap[b.pricing?.priceRange] || 999;
+        return priceA - priceB;
+      } else if (sortBy === 'price-high') {
+        const priceA = priceRangeMap[a.pricing?.priceRange] || 0;
+        const priceB = priceRangeMap[b.pricing?.priceRange] || 0;
+        return priceB - priceA;
+      }
+      return 0;
+    });
+
+    return filtered;
+  }, [restaurants, sortBy, maxPrice, searchTerm]);
 
   return (
     <>
@@ -375,15 +481,136 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
             {/* Header */}
             <div className="mb-8 sm:mb-10 text-center">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-900 mb-2">
-                View {restaurants.length} of Top Restaurants in {destination.fullName}
+                View {filteredAndSortedRestaurants.length} of Top Restaurants in {destination.fullName}
               </h2>
               <p className="text-gray-600 text-sm sm:text-base">
                 Discover our curated selection of the best dining experiences in {destination.fullName}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {restaurants.map((restaurant, index) => (
+            {/* Search Bar */}
+            <div className="mb-6 max-w-2xl mx-auto">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                <Input
+                  placeholder={`Search restaurants in ${destination.fullName}...`}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 h-12 bg-white border-gray-300 text-gray-800 placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500"
+                />
+                {searchTerm && (
+                  <button
+                    onClick={() => setSearchTerm('')}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Filters and Sort */}
+            <div className="mb-6">
+              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+                {/* Max Budget Filter */}
+                <div className="flex items-center gap-3">
+                  <DollarSign className="w-4 h-4 text-gray-600" />
+                  <div className="flex items-center gap-2">
+                    <label className="text-sm font-medium text-gray-700">Max Budget:</label>
+                    <Select 
+                      value={maxPrice} 
+                      onValueChange={setMaxPrice}
+                    >
+                      <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="No Max Budget" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {maxPriceOptions.map((option) => (
+                          <SelectItem key={option.value} value={option.value}>
+                            {option.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {hasActiveFilters && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={clearFilters}
+                        className="gap-1 h-8 px-2 text-xs text-gray-600 hover:text-gray-900"
+                      >
+                        <XCircle className="w-3 h-3" />
+                        Clear
+                      </Button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Sort Dropdown */}
+                <div className="w-full sm:w-auto sm:min-w-[180px]">
+                  <label className="text-xs text-gray-600 mb-1.5 block sm:hidden">Sort by</label>
+                  <Select value={sortBy} onValueChange={setSortBy}>
+                    <SelectTrigger className="w-full sm:w-[180px]">
+                      <SelectValue placeholder="Sort by" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="rating">Highest Rated</SelectItem>
+                      <SelectItem value="name">Name (A-Z)</SelectItem>
+                      <SelectItem value="price-low">Price: Low to High</SelectItem>
+                      <SelectItem value="price-high">Price: High to Low</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </div>
+
+            {filteredAndSortedRestaurants.length === 0 ? (
+              <div className="max-w-2xl mx-auto text-center py-12">
+                <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 rounded-2xl border-2 border-amber-200 p-8 shadow-sm">
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg">
+                      <UtensilsCrossed className="w-8 h-8 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        No restaurants found
+                      </h3>
+                      <p className="text-gray-600 mb-4">
+                        {searchTerm ? `We couldn't find any restaurants matching "${searchTerm}" in ${destination.fullName}.` : `No restaurants match your current filters in ${destination.fullName}.`}
+                      </p>
+                      {(searchTerm || hasActiveFilters) && (
+                        <Button
+                          onClick={() => {
+                            setSearchTerm('');
+                            clearFilters();
+                          }}
+                          variant="outline"
+                          className="mb-6"
+                        >
+                          Clear search and filters
+                        </Button>
+                      )}
+                    </div>
+                    <div className="bg-white rounded-xl p-6 border border-amber-200 w-full">
+                      <h4 className="font-semibold text-gray-900 mb-2">
+                        Are you a restaurant owner or manager?
+                      </h4>
+                      <p className="text-sm text-gray-600 mb-4">
+                        Isn't your restaurant on TopTours.ai? Partner with us to get your restaurant listed and reach more travelers.
+                      </p>
+                      <Button asChild className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600">
+                        <Link href="/partners/restaurants">
+                          Partner With Us
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredAndSortedRestaurants.map((restaurant, index) => (
               <motion.div
                 key={restaurant.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -497,8 +724,9 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
                   </CardContent>
                 </Card>
               </motion.div>
-            ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
@@ -634,6 +862,57 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
             </Link>
           </div>
         </div>
+      )}
+
+      {/* Category Guides Section - Same style as destination detail page */}
+      {categoryGuides && categoryGuides.length > 0 && (
+        <section className="py-12 sm:py-16 bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-8 sm:mb-12"
+            >
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
+                Popular Category Guides in {destination.fullName || destination.name}
+              </h2>
+              <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+                Explore detailed guides for popular tour categories in {destination.fullName || destination.name}
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {categoryGuides.slice(0, 6).map((guide, index) => {
+                const categoryName = guide.category_name || guide.title || '';
+                const categorySlug = guide.category_slug || '';
+                
+                return (
+                  <motion.div
+                    key={categorySlug || index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <Link href={`/destinations/${destination.id}/guides/${categorySlug}`}>
+                      <Card className="bg-gradient-to-br from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 border-2 border-purple-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer h-full">
+                        <CardContent className="p-6 text-center flex flex-col items-center justify-center min-h-[120px]">
+                          <BookOpen className="w-5 h-5 text-purple-600 mb-2" />
+                          <h3 className="font-poppins font-semibold text-gray-800 text-sm md:text-base mb-1">
+                            {categoryName}
+                          </h3>
+                          <p className="text-xs text-purple-600 font-medium">Read Guide</p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
       )}
       
       <ShareModal

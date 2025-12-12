@@ -4,6 +4,9 @@ import { getPopularToursForDestination } from '@/data/popularTours';
 import ToursListingClient from './ToursListingClient';
 import { slugToViatorId } from '@/data/viatorDestinationMap';
 import { getPromotionScoresByDestination, getTrendingToursByDestination, getTrendingRestaurantsByDestination, getRestaurantPromotionScoresByDestination, getHardcodedToursByDestination } from '@/lib/promotionSystem';
+import { getPremiumOperatorTourIdsForDestination } from '@/lib/tourOperatorPremiumServer';
+import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
+import { getRestaurantCountsByDestination, getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
 import { getDestinationNameById, findDestinationBySlug } from '@/lib/viatorCache';
 import { getViatorDestinationById, getViatorDestinationBySlug } from '@/lib/supabaseCache';
 import { redirect } from 'next/navigation';
@@ -11,6 +14,7 @@ import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { hasDestinationPage } from '@/data/destinationFullContent';
 import { headers } from 'next/headers';
+import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
 
 // Force dynamic rendering for API calls
 export const dynamic = 'force-dynamic';
@@ -608,6 +612,67 @@ export default async function ToursListingPage({ params }) {
   // Fetch restaurant promotion scores for this destination
   const restaurantPromotionScores = destination.id ? await getRestaurantPromotionScoresByDestination(destination.id) : {};
 
+  // Check if destination has restaurants and fetch restaurant data (try database first, then static fallback)
+  let hasRestaurants = false;
+  let restaurants = [];
+  if (destination.id) {
+    try {
+      // Try database first
+      const restaurantsFromDB = await getRestaurantsForDestinationFromDB(destination.id);
+      if (restaurantsFromDB.length > 0) {
+        restaurants = restaurantsFromDB.map(r => formatRestaurantForFrontend(r)).slice(0, 8);
+        hasRestaurants = restaurants.length > 0;
+      } else {
+        // Fallback: check static data
+        const { getRestaurantsForDestination: getRestaurantsForDestinationFromStatic } = await import('./restaurants/restaurantsData');
+        const staticRestaurants = getRestaurantsForDestinationFromStatic(destination.id);
+        if (staticRestaurants.length > 0) {
+          restaurants = staticRestaurants.slice(0, 8);
+          hasRestaurants = restaurants.length > 0;
+        } else {
+          // Last resort: check restaurant counts
+          const restaurantCounts = await getRestaurantCountsByDestination();
+          const restaurantCount = restaurantCounts[destination.id] || 0;
+          hasRestaurants = restaurantCount > 0;
+        }
+      }
+    } catch (error) {
+      console.warn('Could not fetch restaurant data (non-critical):', error.message || error);
+      // Non-critical - continue without restaurants
+    }
+  }
+
+  // Fetch premium operator tour IDs for this destination (for crown icons)
+  const premiumOperatorTourIds = destination.id ? await getPremiumOperatorTourIdsForDestination(destination.id) : [];
+
+  // Fetch premium restaurant IDs for this destination (for crown icons)
+  let premiumRestaurantIds = [];
+  try {
+    const premiumSet = destination.id ? await getPremiumRestaurantIds(destination.id) : new Set();
+    premiumRestaurantIds = Array.from(premiumSet);
+  } catch (error) {
+    console.error('Error fetching premium restaurant IDs:', error);
+  }
+
+  // Get all category guides for this destination (database + hardcoded)
+  // EXACTLY like destination detail page: uses destination.id (slug like "ajmer")
+  let categoryGuides = [];
+  try {
+    if (destination.id) {
+      categoryGuides = await getAllCategoryGuidesForDestination(destination.id);
+      console.log(`📚 Tours Listing Page - Fetched ${categoryGuides.length} category guides for destination.id: "${destination.id}"`);
+      if (categoryGuides.length > 0) {
+        console.log(`📚 Tours Listing Page - Guide categories:`, categoryGuides.map(g => g.category_name || g.category_slug));
+      } else {
+        console.warn(`⚠️ Tours Listing Page - No guides found for "${destination.id}"`);
+      }
+    } else {
+      console.warn(`⚠️ Tours Listing Page - destination.id is missing, cannot fetch guides`);
+    }
+  } catch (error) {
+    console.error('❌ Error fetching category guides:', error);
+  }
+
   // Generate JSON-LD schema for SEO
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -700,6 +765,11 @@ export default async function ToursListingPage({ params }) {
         trendingRestaurants={trendingRestaurants}
         restaurantPromotionScores={restaurantPromotionScores}
         isViatorDestination={isViatorDestination}
+        premiumOperatorTourIds={premiumOperatorTourIds}
+        premiumRestaurantIds={premiumRestaurantIds}
+        hasRestaurants={hasRestaurants}
+        restaurants={restaurants}
+        categoryGuides={categoryGuides}
       />
     </>
   );

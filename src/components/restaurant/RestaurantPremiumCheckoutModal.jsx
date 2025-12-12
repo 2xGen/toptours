@@ -77,6 +77,7 @@ export default function RestaurantPremiumCheckoutModal({
   const [endCTAIndex, setEndCTAIndex] = useState(0);
   const [stickyCTAIndex, setStickyCTAIndex] = useState(0);
   const [email, setEmail] = useState('');
+  const [website, setWebsite] = useState(restaurant?.contact?.website || restaurant?.booking?.partnerUrl || '');
 
   // Get step titles based on login status
   const STEP_TITLES = getStepTitles(!!user);
@@ -130,6 +131,22 @@ export default function RestaurantPremiumCheckoutModal({
     setIsLoading(true);
     setError(null);
 
+    // Validate website is provided
+    if (!website || website.trim() === '') {
+      setError('Please enter your website or booking/reservation URL to continue');
+      setIsLoading(false);
+      return;
+    }
+
+    // Basic URL validation
+    try {
+      new URL(website);
+    } catch (e) {
+      setError('Please enter a valid URL (e.g., https://yourrestaurant.com)');
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const response = await fetch('/api/internal/restaurant-premium/subscribe', {
         method: 'POST',
@@ -146,6 +163,7 @@ export default function RestaurantPremiumCheckoutModal({
           midCTAIndex,
           endCTAIndex,
           stickyCTAIndex,
+          website: website.trim(),
           userId: user?.id,
           email: user?.email || email || undefined,
         }),
@@ -200,6 +218,8 @@ export default function RestaurantPremiumCheckoutModal({
               midCTAIndex={midCTAIndex}
               endCTAIndex={endCTAIndex}
               stickyCTAIndex={stickyCTAIndex}
+              website={website}
+              setWebsite={setWebsite}
               user={user}
             />
           );
@@ -251,6 +271,8 @@ export default function RestaurantPremiumCheckoutModal({
             midCTAIndex={midCTAIndex}
             endCTAIndex={endCTAIndex}
             stickyCTAIndex={stickyCTAIndex}
+            website={website}
+            setWebsite={setWebsite}
             user={user}
           />
         );
@@ -821,11 +843,14 @@ function ReviewStep({
   midCTAIndex,
   endCTAIndex,
   stickyCTAIndex,
+  website,
+  setWebsite,
   user,
 }) {
   const pricing = RESTAURANT_PREMIUM_PRICING[planType];
   const layout = LAYOUT_PRESETS[layoutPreset];
   const color = COLOR_SCHEMES[colorScheme];
+  const currentWebsite = restaurant?.contact?.website || restaurant?.booking?.partnerUrl;
 
   return (
     <div className="space-y-6">
@@ -846,6 +871,55 @@ function ReviewStep({
           </div>
         </div>
       )}
+
+      {/* Website Link Section */}
+      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 space-y-3">
+        <div className="flex items-center gap-2">
+          <ExternalLink className="w-5 h-5 text-blue-600" />
+          <h4 className="font-semibold text-gray-900">Website Link <span className="text-red-500">*</span></h4>
+        </div>
+        <p className="text-sm text-gray-600">
+          This is the link that will be promoted in your premium CTAs. Enter your website or booking/reservation URL.
+        </p>
+        
+        {currentWebsite && (
+          <div className="bg-white rounded-lg p-3 border border-blue-100">
+            <p className="text-xs text-gray-500 mb-1">Current website:</p>
+            <a 
+              href={currentWebsite} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-sm text-blue-600 hover:text-blue-700 underline break-all flex items-center gap-1"
+            >
+              {currentWebsite}
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+        )}
+        
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            {currentWebsite ? 'Website or booking URL' : 'Enter your website or booking URL'} <span className="text-red-500">*</span>
+          </label>
+          <Input
+            type="url"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            placeholder="https://yourrestaurant.com or https://booking.com/yourrestaurant"
+            className="w-full"
+            required
+          />
+          <p className="text-xs text-gray-500 mt-1">
+            You can use your restaurant website or a booking/reservation platform URL
+          </p>
+          {website && website !== currentWebsite && (
+            <p className="text-xs text-amber-600 mt-1 flex items-center gap-1">
+              <Settings className="w-3 h-3" />
+              Website changes require manual review after payment
+            </p>
+          )}
+        </div>
+      </div>
 
       {/* Summary */}
       <div className="bg-gray-50 rounded-xl p-4 space-y-3">
