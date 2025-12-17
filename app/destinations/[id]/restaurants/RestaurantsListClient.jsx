@@ -1301,10 +1301,10 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
               </p>
 
               <div className="pt-4 mt-2 border-t flex flex-col gap-2">
-                <div className="flex gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   <Button
                     variant="ghost"
-                    className="flex-1 text-gray-600 hover:text-gray-900"
+                    className="w-full text-gray-600 hover:text-gray-900"
                     onClick={() =>
                       setLocalRestaurantPreferences({
                         atmosphere: 'any',
@@ -1321,13 +1321,13 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
                   </Button>
                   <Button
                     variant="outline"
-                    className="flex-1"
+                    className="w-full"
                     onClick={() => setShowPreferencesModal(false)}
                   >
                     Done
                   </Button>
                   <Button
-                    className="flex-1 sunset-gradient text-white"
+                    className="w-full min-w-0 sunset-gradient text-white whitespace-normal leading-tight"
                     onClick={handleSavePreferencesToProfile}
                     disabled={savingPreferencesToProfile}
                   >
