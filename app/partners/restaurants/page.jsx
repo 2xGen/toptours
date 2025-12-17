@@ -15,7 +15,6 @@ import {
   Search,
   Loader2,
   Mail,
-  Gift,
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -151,15 +150,6 @@ export default function RestaurantsPartnerPage() {
           <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
             Increase visibility and drive more bookings through our partnership with Google Places
           </p>
-          <div className="mt-4">
-            <Link 
-              href="/partners/invite" 
-              className="inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 text-sm font-medium"
-            >
-              <Gift className="w-4 h-4" />
-              Have an invite code? Redeem it here
-            </Link>
-          </div>
         </motion.div>
 
         {/* About Section - Google Places Partnership */}

@@ -105,6 +105,14 @@ export default async function sitemap() {
     priority: 0.78,
   }));
 
+  // Destination operator listing pages
+  const operatorListingPages = destinations.map((destination) => ({
+    url: `${baseUrl}/destinations/${destination.id}/operators`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly',
+    priority: 0.72,
+  }));
+
   // Individual restaurant pages (fetch from database)
   const supabase = createSupabaseServiceRoleClient();
   const allRestaurants = [];
@@ -151,6 +159,7 @@ export default async function sitemap() {
     ...staticPages,
     ...destinationPages,
     ...tourListingPages,
+    ...operatorListingPages,
     ...restaurantListingPages,
     ...restaurantDetailPages,
     ...travelGuidePages,

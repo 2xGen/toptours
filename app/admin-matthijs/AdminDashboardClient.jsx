@@ -19,7 +19,6 @@ import {
   BookOpen,
   Lock,
   LogOut,
-  Gift
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -207,12 +206,6 @@ export default function AdminDashboardClient() {
               <p className="text-gray-600">Analytics and user statistics</p>
             </div>
             <div className="flex items-center gap-4">
-              <Link href="/admin/partner-invites">
-                <Button variant="outline" size="sm" className="bg-purple-50 hover:bg-purple-100 border-purple-300">
-                  <Gift className="w-4 h-4 mr-2" />
-                  Partner Invites
-                </Button>
-              </Link>
               <select
                 value={dateRange}
                 onChange={(e) => setDateRange(e.target.value)}

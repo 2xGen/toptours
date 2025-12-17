@@ -35,7 +35,7 @@ const Hero = ({ onOpenOnboardingModal }) => {
             </h1>
 
             <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto text-center">
-              <strong className="text-white">Boost the places you love, shape what's trending,</strong> and get AI recommendations tailored to your travel style. See what the community is loving right now.
+              Boost the places you love and see what’s trending—then switch to <strong className="text-white">Best Match</strong> to rank tours and restaurants by your travel style.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-10 justify-center">

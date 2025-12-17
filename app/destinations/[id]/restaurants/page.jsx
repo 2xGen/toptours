@@ -30,7 +30,7 @@ export async function generateMetadata({ params }) {
   const restaurantCount = restaurants?.length || 0;
 
   const ogImage = destination.imageUrl || 'https://toptours.ai/favicon.ico';
-  const description = `Discover ${restaurantCount > 0 ? `${restaurantCount} top-rated` : 'the best'} restaurants in ${destination.fullName}, from waterfront seafood to family-run cafés. Reserve a table, explore menus, and plan where to eat before your next trip.`;
+  const description = `Discover ${restaurantCount > 0 ? `${restaurantCount} top-rated` : 'the best'} restaurants in ${destination.fullName}, from waterfront seafood to family-run cafés. Sort by Best Match to rank restaurants by your taste.`;
 
   return {
     title: `Best Restaurants in ${destination.fullName} | TopTours.ai`,

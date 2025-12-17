@@ -18,8 +18,7 @@ import {
   Zap,
   Search,
   CheckCircle,
-  Settings,
-  Gift
+  Settings
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -616,15 +615,6 @@ function TourOperatorsPartnerPageContent() {
               <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
                 Increase visibility and drive more bookings through our affiliate partnership with Viator
               </p>
-              <div className="mt-4">
-                <Link 
-                  href="/partners/invite" 
-                  className="inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 text-sm font-medium"
-                >
-                  <Gift className="w-4 h-4" />
-                  Have an invite code? Redeem it here
-                </Link>
-              </div>
             </motion.div>
 
             {/* About Section - Viator Partnership */}

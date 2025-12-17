@@ -113,3 +113,5 @@ For even faster processing, consider using Gemini's Batch API:
 
 The current optimization uses the standard API which is simpler and still much faster than before.
 
+
+

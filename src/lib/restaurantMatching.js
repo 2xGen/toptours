@@ -390,6 +390,33 @@ export const calculateRestaurantPreferenceMatch = (userPreferences, restaurantVa
         timeMatch * normalizedWeights.time
       );
 
+  // Optional: Atmosphere matching (Casual / Outdoor / Upscale)
+  // This is intentionally lightweight & deterministic (no AI).
+  let atmosphereMatch = null;
+  if (useRestaurantPrefs && restaurantPrefs.atmosphere && restaurantPrefs.atmosphere !== 'any') {
+    const pref = restaurantPrefs.atmosphere;
+    const hasOutdoor = !!restaurant.outdoorSeating;
+    const price = restaurant.pricing?.priceRange || '';
+    const priceLabel = (restaurant.pricing?.priceRangeLabel || '').toLowerCase();
+    const isUpscale =
+      price.includes('$$$') ||
+      price.includes('$$$$') ||
+      priceLabel.includes('fine') ||
+      priceLabel.includes('upscale') ||
+      !!restaurant.reservable;
+    const isCasual = !isUpscale;
+
+    if (pref === 'outdoor') {
+      atmosphereMatch = hasOutdoor ? 100 : 30;
+    } else if (pref === 'upscale') {
+      atmosphereMatch = isUpscale ? 100 : 40;
+    } else if (pref === 'casual') {
+      atmosphereMatch = isCasual ? 100 : 50;
+    } else {
+      atmosphereMatch = 75;
+    }
+  }
+
   // Generate match summary
   const getMatchLabel = (score) => {
     if (score >= 80) return 'Excellent match';
@@ -416,6 +443,7 @@ export const calculateRestaurantPreferenceMatch = (userPreferences, restaurantVa
     allMatches.groupSize = groupSizeMatch;
     allMatches.diningStyle = matches.structure; // Map structure to diningStyle for clarity
     allMatches.food = matches.food; // Food & drink is still relevant
+    if (atmosphereMatch !== null) allMatches.atmosphere = atmosphereMatch;
   } else {
     // Fallback to tour preferences - include all matches (but still use restaurant-friendly labels)
     allMatches.structure = matches.structure; // Will be labeled as "Dining Style" in UI
@@ -496,13 +524,27 @@ export const calculateRestaurantPreferenceMatch = (userPreferences, restaurantVa
     cons.push(`Meal timing may not align (restaurant focuses on ${timeOfDay})`);
   }
 
+  // Add atmosphere to pros/cons (if set)
+  if (atmosphereMatch !== null) {
+    if (atmosphereMatch >= 75) {
+      pros.push('Atmosphere matches what you prefer');
+    } else if (atmosphereMatch < 50) {
+      cons.push('Atmosphere may not match what you prefer');
+    }
+  }
+
+  // If atmosphere preference is set, blend it into overall score as a small adjustment.
+  // Keeps existing weights stable while still making the preference meaningful.
+  const finalScore =
+    atmosphereMatch !== null ? Math.max(0, Math.min(100, Math.round(overallScore * 0.9 + atmosphereMatch * 0.1))) : overallScore;
+
   return {
-    matchScore: overallScore,
-    fitSummary: `${getMatchLabel(overallScore)}: ${overallScore}% compatibility with your dining preferences.`,
+    matchScore: finalScore,
+    fitSummary: `${getMatchLabel(finalScore)}: ${finalScore}% compatibility with your dining preferences.`,
     matches: allMatches,
     pros: pros.length > 0 ? pros : ['Overall good compatibility'],
     cons: cons.length > 0 ? cons : [],
-    idealFor: overallScore >= 70 ? 'Your dining style' : 'Consider if other factors align',
+    idealFor: finalScore >= 70 ? 'Your dining style' : 'Consider if other factors align',
     timeOfDay: timeOfDay,
   };
 };

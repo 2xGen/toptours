@@ -125,7 +125,7 @@ export default async function TourDetailPage({ params }) {
   const slugParam = resolvedParams.productId || resolvedParams.slug;
   const productId = Array.isArray(slugParam) ? slugParam[0] : slugParam;
   
-  console.error(`🚀 [SERVER] TourDetailPage START for productId: ${productId}`);
+  console.log(`🚀 [SERVER] TourDetailPage START for productId: ${productId}`);
   
   if (!productId) {
     notFound();

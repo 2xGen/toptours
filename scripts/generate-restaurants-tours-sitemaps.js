@@ -14,13 +14,10 @@ dotenv.config({ path: path.join(__dirname, '../.env.local') });
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-  console.error('❌ Missing Supabase environment variables');
-  console.error('Please set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in your .env.local file');
-  process.exit(1);
-}
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+const supabase =
+  SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY
+    ? createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
+    : null;
 
 const baseUrl = 'https://toptours.ai';
 const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
@@ -29,6 +26,7 @@ const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
  * Get restaurant counts per destination
  */
 async function getRestaurantCountsByDestination() {
+  if (!supabase) return {};
   const counts = {};
   const pageSize = 1000;
   let from = 0;
@@ -63,6 +61,11 @@ async function getRestaurantCountsByDestination() {
  * Generate restaurants sitemap
  */
 async function generateRestaurantsSitemap() {
+  if (!supabase) {
+    console.warn('⚠️ Missing Supabase env vars - skipping restaurant detail sitemap generation.');
+    console.warn('   (Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env.local)');
+    return;
+  }
   const allRestaurants = [];
   const pageSize = 1000;
   let from = 0;
@@ -215,12 +218,48 @@ async function generateToursSitemap() {
   console.log(`   📄 Saved to: public/sitemap-tours.xml\n`);
 }
 
+/**
+ * Generate operators sitemap (operator listing pages per destination)
+ */
+async function generateOperatorsSitemap() {
+  const destinations = getAllDestinations();
+
+  const operatorListingPages = destinations.map((destination) => ({
+    url: `${baseUrl}/destinations/${destination.id}/operators`,
+    lastModified: today,
+  }));
+
+  let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Operator Listing Pages -->
+`;
+
+  operatorListingPages.forEach((page) => {
+    sitemap += `  <url>
+    <loc>${page.url}</loc>
+    <lastmod>${page.lastModified}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.72</priority>
+  </url>
+`;
+  });
+
+  sitemap += `</urlset>`;
+
+  const outputPath = path.join(__dirname, '../public/sitemap-operators.xml');
+  fs.writeFileSync(outputPath, sitemap);
+
+  console.log(`✅ Operators sitemap generated: ${operatorListingPages.length} URLs`);
+  console.log(`   📄 Saved to: public/sitemap-operators.xml\n`);
+}
+
 // Main execution
 async function main() {
   console.log('🚀 Generating restaurants and tours sitemaps...\n');
   
   await generateRestaurantsSitemap();
   await generateToursSitemap();
+  await generateOperatorsSitemap();
   
   console.log('✨ All sitemaps generated successfully!');
   console.log('\n📋 Next steps:');
@@ -229,6 +268,7 @@ async function main() {
   console.log('3. Submit to Google Search Console:');
   console.log('   - https://toptours.ai/sitemap-restaurants.xml');
   console.log('   - https://toptours.ai/sitemap-tours.xml');
+  console.log('   - https://toptours.ai/sitemap-operators.xml');
 }
 
 main().catch(console.error);

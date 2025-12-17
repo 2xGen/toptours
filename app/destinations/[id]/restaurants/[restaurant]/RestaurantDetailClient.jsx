@@ -16,7 +16,7 @@ import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import ShareModal from '@/components/sharing/ShareModal';
 import { useToast } from '@/components/ui/use-toast';
-import { extractRestaurantStructuredValues, getRestaurantTimeOfDay } from '@/lib/restaurantMatching';
+import { extractRestaurantStructuredValues, getRestaurantTimeOfDay, calculateRestaurantPreferenceMatch } from '@/lib/restaurantMatching';
 import { useRouter } from 'next/navigation';
 import {
   MapPin,
@@ -78,6 +78,61 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
   const [showMatchModal, setShowMatchModal] = useState(false);
   const [matchModalMessage, setMatchModalMessage] = useState('');
   const [showShareModal, setShowShareModal] = useState(false);
+  const [showPreferencesModal, setShowPreferencesModal] = useState(false);
+  const [localRestaurantPreferences, setLocalRestaurantPreferences] = useState(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      const stored = localStorage.getItem('topTours_restaurant_preferences');
+      if (stored) return JSON.parse(stored);
+    } catch {}
+    return {
+      atmosphere: 'any',
+      diningStyle: 50,
+      features: [],
+      priceRange: 'any',
+      mealTime: 'any',
+      groupSize: 'any',
+    };
+  });
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !localRestaurantPreferences) return;
+    try {
+      localStorage.setItem('topTours_restaurant_preferences', JSON.stringify(localRestaurantPreferences));
+    } catch {}
+  }, [localRestaurantPreferences]);
+
+  const calculateLocalMatch = () => {
+    const prefs = localRestaurantPreferences || {
+      atmosphere: 'any',
+      diningStyle: 50,
+      features: [],
+      priceRange: 'any',
+      mealTime: 'any',
+      groupSize: 'any',
+    };
+
+    const pseudoUserPreferences = {
+      adventureLevel: 50,
+      cultureVsBeach: 50,
+      groupPreference:
+        prefs.groupSize === 'solo' || prefs.groupSize === 'couple'
+          ? 70
+          : prefs.groupSize === 'groups' || prefs.groupSize === 'family'
+          ? 30
+          : 50,
+      budgetComfort:
+        prefs.priceRange === '$' ? 25 : prefs.priceRange === '$$' ? 40 : prefs.priceRange === '$$$' ? 70 : prefs.priceRange === '$$$$' ? 85 : 50,
+      structurePreference: typeof prefs.diningStyle === 'number' ? prefs.diningStyle : 50,
+      foodAndDrinkInterest: 75,
+      timeOfDayPreference: 'no_preference',
+      restaurantPreferences: prefs,
+    };
+
+    const values = extractRestaurantStructuredValues(restaurant);
+    if (values?.error) return { error: values.error };
+    return calculateRestaurantPreferenceMatch(pseudoUserPreferences, values, restaurant);
+  };
 
   // Check authentication status
   useEffect(() => {
@@ -919,38 +974,18 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                 <div className="mt-6 pt-4 border-t border-purple-200">
                   <div className="flex flex-col items-center gap-4">
                     <p className="text-xs text-gray-500 text-center">
-                      Set your restaurant preferences in your profile to see how well this restaurant matches your dining style.
+                      Set your dining preferences to see how well this restaurant matches your taste.
                     </p>
                     <Button
                       onClick={async () => {
-                        if (!user) {
-                          setMatchModalMessage('Please sign in to see how well this restaurant matches your preferences.');
-                          setShowMatchModal(true);
-                          return;
-                        }
-
-                        setIsGeneratingMatch(true);
-                        setMatchError(null);
-
                         try {
-                          const response = await fetch(`/api/internal/restaurant-match/${encodeURIComponent(restaurant.id)}`, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ userId: user.id }),
-                          });
-
-                          if (!response.ok) {
-                            const errorData = await response.json();
-                            if (response.status === 404 && errorData.error?.includes('preferences')) {
-                              setMatchModalMessage('Please set your restaurant preferences in your profile to see match scores.');
-                              setShowMatchModal(true);
-                              return;
-                            }
-                            throw new Error(errorData.error || 'Failed to calculate match');
+                          setIsGeneratingMatch(true);
+                          setMatchError(null);
+                          const localMatch = calculateLocalMatch();
+                          if (localMatch?.error) {
+                            throw new Error(localMatch.error);
                           }
-
-                          const data = await response.json();
-                          setMatchData(data.match);
+                          setMatchData(localMatch);
                           setShowMatchResultsModal(true);
                         } catch (err) {
                           console.error('Error calculating restaurant match:', err);
@@ -973,6 +1008,14 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                       ) : (
                         'See Match with My Preferences'
                       )}
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => setShowPreferencesModal(true)}
+                      className="w-full sm:w-auto"
+                    >
+                      Set Preferences
                     </Button>
                     {matchError && <p className="text-sm text-red-600">{matchError}</p>}
                   </div>
@@ -2402,6 +2445,200 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
         title={restaurant?.name || 'this restaurant'}
         url={typeof window !== 'undefined' ? window.location.href : ''}
       />
+
+      {/* Match to Your Taste Modal (no account required) */}
+      {showPreferencesModal && (
+        <div
+          className="fixed inset-0 bg-black/50 z-[10000] flex items-center justify-center p-4"
+          onClick={() => setShowPreferencesModal(false)}
+        >
+          <div
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[85vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="sticky top-0 bg-white border-b px-4 py-3 flex items-center justify-between z-10">
+              <div className="flex items-center gap-2">
+                <span className="text-purple-600">✨</span>
+                <h2 className="text-lg font-bold text-gray-900">Match to Your Taste</h2>
+              </div>
+              <button
+                onClick={() => setShowPreferencesModal(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5 text-gray-600" />
+              </button>
+            </div>
+
+            <div className="p-4 space-y-4">
+              {/* Atmosphere */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">
+                  What kind of atmosphere do you prefer?
+                </label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 'casual', label: '😌', desc: 'Casual' },
+                    { value: 'outdoor', label: '🌳', desc: 'Outdoor' },
+                    { value: 'upscale', label: '✨', desc: 'Upscale' },
+                  ].map((option) => {
+                    const selected = (localRestaurantPreferences?.atmosphere || 'any') === option.value;
+                    return (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() =>
+                          setLocalRestaurantPreferences((prev) => ({
+                            ...(prev || {}),
+                            atmosphere: selected ? 'any' : option.value,
+                          }))
+                        }
+                        className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                          selected
+                            ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                            : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                        }`}
+                      >
+                        <div className="text-lg mb-0.5">{option.label}</div>
+                        <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                        {selected && (
+                          <div className="absolute top-1 right-1">
+                            <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                              <span className="text-white text-[8px]">✓</span>
+                            </div>
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Dining style */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">
+                  🍽️ Do you prefer casual walk-ins or formal reservations?
+                </label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '🚶', desc: 'Casual' },
+                    { value: 50, label: '⚖️', desc: 'Flexible' },
+                    { value: 75, label: '📋', desc: 'Formal' },
+                  ].map((option) => {
+                    const selected = (localRestaurantPreferences?.diningStyle || 50) === option.value;
+                    return (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() =>
+                          setLocalRestaurantPreferences((prev) => ({
+                            ...(prev || {}),
+                            diningStyle: option.value,
+                          }))
+                        }
+                        className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                          selected
+                            ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                            : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                        }`}
+                      >
+                        <div className="text-lg mb-0.5">{option.label}</div>
+                        <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                        {selected && (
+                          <div className="absolute top-1 right-1">
+                            <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                              <span className="text-white text-[8px]">✓</span>
+                            </div>
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Features */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">
+                  ✨ Features & Amenities (select all that apply)
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { value: 'outdoor_seating', label: '🌳 Outdoor Seating', desc: 'Al fresco dining' },
+                    { value: 'live_music', label: '🎵 Live Music', desc: 'Entertainment' },
+                    { value: 'dog_friendly', label: '🐕 Dog Friendly', desc: 'Bring your pup' },
+                    { value: 'family_friendly', label: '👨‍👩‍👧 Family Friendly', desc: 'Kids welcome' },
+                    { value: 'reservations', label: '📅 Reservations', desc: 'Book ahead' },
+                  ].map((feature) => {
+                    const current = localRestaurantPreferences?.features || [];
+                    const selected = current.includes(feature.value);
+                    return (
+                      <button
+                        key={feature.value}
+                        type="button"
+                        onClick={() =>
+                          setLocalRestaurantPreferences((prev) => {
+                            const prevFeatures = prev?.features || [];
+                            const next = selected
+                              ? prevFeatures.filter((f) => f !== feature.value)
+                              : [...prevFeatures, feature.value];
+                            return { ...(prev || {}), features: next };
+                          })
+                        }
+                        className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 text-left ${
+                          selected
+                            ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                            : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                        }`}
+                      >
+                        <div className="text-xs font-semibold text-gray-800">{feature.label}</div>
+                        <div className="text-[10px] text-gray-500 mt-0.5">{feature.desc}</div>
+                        {selected && (
+                          <div className="absolute top-2 right-2">
+                            <div className="w-4 h-4 rounded-full bg-purple-500 flex items-center justify-center">
+                              <span className="text-white text-[10px]">✓</span>
+                            </div>
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-500 text-center pt-2">
+                Match scores update instantly as you select preferences
+              </p>
+
+              <div className="pt-4 mt-2 border-t flex gap-2">
+                <Button
+                  variant="ghost"
+                  className="flex-1 text-gray-600 hover:text-gray-900"
+                  onClick={() =>
+                    setLocalRestaurantPreferences({
+                      atmosphere: 'any',
+                      diningStyle: 50,
+                      features: [],
+                      priceRange: 'any',
+                      mealTime: 'any',
+                      groupSize: 'any',
+                    })
+                  }
+                >
+                  Reset
+                </Button>
+                <Button
+                  variant="outline"
+                  className="flex-1"
+                  onClick={() => setShowPreferencesModal(false)}
+                >
+                  Done
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

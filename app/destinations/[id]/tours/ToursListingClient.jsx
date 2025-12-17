@@ -22,7 +22,9 @@ import {
   MoveHorizontal,
   TrendingUp,
   Info,
-  Share2
+  Share2,
+  Building2,
+  Sparkles
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -34,6 +36,7 @@ import Link from 'next/link';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import { Heart, Trophy } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { toast, useToast } from '@/components/ui/use-toast';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
@@ -46,6 +49,14 @@ import RestaurantPromotionCard from '@/components/promotion/RestaurantPromotionC
 import { hasDestinationPage } from '@/data/destinationFullContent';
 import PromotionExplainerModal from '@/components/auth/PromotionExplainerModal';
 import ShareModal from '@/components/sharing/ShareModal';
+import TourMatchModal from '@/components/tour/TourMatchModal';
+import { 
+  calculateTourProfile, 
+  getUserPreferenceScores, 
+  calculateMatchScore, 
+  getMatchDisplay,
+  getDefaultPreferences 
+} from '@/lib/tourMatching';
 
 // Helper function to generate slug
 function generateSlug(name) {
@@ -289,28 +300,47 @@ export default function ToursListingClient({
   categoryGuides = [] // Category guides for internal linking (database + hardcoded)
 }) {
   const supabase = createSupabaseBrowserClient();
+  const router = useRouter();
   
-  // DEBUG: Log category guides
+  // Fetch user and preferences for matching
   useEffect(() => {
-    console.log('🔍 ToursListingClient - categoryGuides:', categoryGuides);
-    console.log('🔍 ToursListingClient - categoryGuides.length:', categoryGuides?.length);
-    console.log('🔍 ToursListingClient - destination.id:', destination?.id);
-    console.log('🔍 ToursListingClient - Will show guides section?', categoryGuides && categoryGuides.length > 0);
-  }, [categoryGuides, destination]);
+    const fetchUserPreferences = async () => {
+      try {
+        const { data: { user: authUser } } = await supabase.auth.getUser();
+        setUser(authUser);
+        
+        if (authUser) {
+          // Fetch user preferences
+          const { data: profile, error } = await supabase
+            .from('profiles')
+            .select('trip_preferences')
+            .eq('id', authUser.id)
+            .single();
+          
+          if (!error && profile?.trip_preferences) {
+            setUserPreferences(profile.trip_preferences);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user preferences:', error);
+      } finally {
+        setLoadingPreferences(false);
+      }
+    };
+    
+    fetchUserPreferences();
+  }, [supabase]);
+
+  // Keep production console clean (debug logging removed)
   const { toast } = useToast();
   const { isBookmarked: isRestaurantBookmarked, toggle: toggleRestaurantBookmark } = useRestaurantBookmarks();
   
   // CRITICAL: Use destination.destinationId if available (from classified data), otherwise fall back to prop
   const effectiveDestinationId = destination.destinationId || destination.viatorDestinationId || viatorDestinationId;
   
-  // Debug: Log totalToursAvailable to see what we're receiving
-  console.log('🔍 ToursListingClient - totalToursAvailable prop:', totalToursAvailable, 'type:', typeof totalToursAvailable);
+  // Keep production console clean (debug logging removed)
   
-  if (!effectiveDestinationId) {
-    console.warn('⚠️ No Viator destination ID found for', destination.fullName || destination.name, '- tours may show incorrectly');
-  } else {
-    console.log('✅ Using Viator Destination ID for tours page:', effectiveDestinationId, 'for', destination.fullName || destination.name);
-  }
+  // Keep production console clean (debug logging removed)
   
   // Get guides for internal linking
   const guides = getGuidesByCountry(destination.country) || [];
@@ -380,8 +410,140 @@ export default function ToursListingClient({
     }
   }
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortBy, setSortBy] = useState('rating'); // 'rating', 'reviews', 'price-low', 'price-high'
+  const [sortBy, setSortBy] = useState('rating'); // 'rating', 'reviews', 'price-low', 'price-high', 'best-match'
   const [showMoreDestinations, setShowMoreDestinations] = useState(12); // Show 12 initially (2 rows of 6)
+  const [showPreferencesModal, setShowPreferencesModal] = useState(false);
+  const [savingPreferencesToProfile, setSavingPreferencesToProfile] = useState(false);
+  
+  // User preferences for matching
+  const [user, setUser] = useState(null);
+  const [userPreferences, setUserPreferences] = useState(null);
+  const [matchScores, setMatchScores] = useState({}); // Map of productId -> match score
+  const [loadingPreferences, setLoadingPreferences] = useState(true);
+  
+  // Lightweight localStorage preferences (works for everyone, no sign-in required)
+  const [localPreferences, setLocalPreferences] = useState(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      const stored = localStorage.getItem('topTours_preferences');
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch (e) {
+      console.error('Error loading localStorage preferences:', e);
+    }
+    // Default balanced preferences
+    return {
+      adventureLevel: 50,
+      cultureVsBeach: 50,
+      groupPreference: 50,
+      budgetComfort: 50,
+      structurePreference: 50,
+      foodAndDrinkInterest: 50,
+    };
+  });
+  
+  // Save to localStorage when preferences change
+  useEffect(() => {
+    if (localPreferences && typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('topTours_preferences', JSON.stringify(localPreferences));
+      } catch (e) {
+        console.error('Error saving localStorage preferences:', e);
+      }
+    }
+  }, [localPreferences]);
+
+  // Auto-sync local preferences -> profile once after sign-in (keeps UX frictionless)
+  useEffect(() => {
+    if (!user || !localPreferences) return;
+    if (typeof window === 'undefined') return;
+
+    const syncKey = `topTours_prefs_synced_${user.id}`;
+    let didSync = false;
+    try {
+      didSync = localStorage.getItem(syncKey) === '1';
+    } catch {}
+    if (didSync) return;
+
+    const run = async () => {
+      try {
+        // Only sync if profile doesn't already have a saved preferences object
+        const hasProfilePrefs =
+          userPreferences &&
+          typeof userPreferences === 'object' &&
+          Object.keys(userPreferences).length >= 5;
+
+        if (hasProfilePrefs) {
+          try { localStorage.setItem(syncKey, '1'); } catch {}
+          return;
+        }
+
+        const merged = { ...(userPreferences || {}), ...localPreferences };
+        const { error } = await supabase
+          .from('profiles')
+          .upsert({ id: user.id, trip_preferences: merged });
+        if (error) throw error;
+
+        setUserPreferences(merged);
+        try { localStorage.setItem(syncKey, '1'); } catch {}
+      } catch (e) {
+        // Non-blocking; user can still manually save
+        console.warn('Preference auto-sync failed:', e?.message || e);
+      }
+    };
+
+    run();
+  }, [user, localPreferences, userPreferences, supabase]);
+
+  const handleSavePreferencesToProfile = useCallback(async () => {
+    if (!localPreferences) return;
+
+    // If not signed in, send them to auth (prefs are already in localStorage)
+    if (!user) {
+      try {
+        const redirect = typeof window !== 'undefined' ? window.location.pathname + window.location.search : '/';
+        setShowPreferencesModal(false);
+        router.push(`/auth?mode=signup&redirect=${encodeURIComponent(redirect)}`);
+      } catch {
+        router.push('/auth');
+      }
+      return;
+    }
+
+    setSavingPreferencesToProfile(true);
+    try {
+      const mergedPreferences = {
+        ...(userPreferences || {}),
+        ...localPreferences,
+      };
+
+      const { error } = await supabase
+        .from('profiles')
+        .upsert({
+          id: user.id,
+          trip_preferences: mergedPreferences,
+        });
+
+      if (error) throw error;
+
+      setUserPreferences(mergedPreferences);
+      toast({
+        title: 'Preferences saved',
+        description: 'Saved to your profile (syncs across devices).',
+      });
+      setShowPreferencesModal(false);
+    } catch (e) {
+      console.error('Error saving preferences to profile:', e);
+      toast({
+        title: 'Could not save preferences',
+        description: e?.message || 'Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setSavingPreferencesToProfile(false);
+    }
+  }, [localPreferences, user, userPreferences, supabase, router, toast]);
   const defaultFilterState = {
     category: '',
     priceFrom: '',
@@ -511,6 +673,182 @@ export default function ToursListingClient({
     return uniqueTours;
   }, [popularTours, dynamicTours, moreDynamicTours, filteredToursFromAPI, isFiltered, searchResults, isSearching]);
 
+  // Calculate match scores for tours (async, cached in state)
+  useEffect(() => {
+    if (loadingPreferences || allTours.length === 0) {
+      // Still set default scores even if no tours or loading
+      if (allTours.length === 0) {
+        setMatchScores({});
+      }
+      return;
+    }
+    
+    const calculateMatches = async () => {
+      // Use profile preferences if logged in and set, otherwise use localStorage preferences
+      const preferences = user && userPreferences && Object.keys(userPreferences).length >= 5
+        ? getUserPreferenceScores(userPreferences)
+        : localPreferences
+        ? getUserPreferenceScores(localPreferences)
+        : getDefaultPreferences();
+      
+      // Keep production console clean (debug logging removed)
+      
+      // Initialize all tours with default scores first (so cards show something immediately)
+      const defaultProfile = {
+        adventure_score: 50,
+        relaxation_exploration_score: 50,
+        group_intimacy_score: 50,
+        price_comfort_score: 50,
+        guidance_score: 50,
+        food_drink_score: 50,
+        confidence: 'low',
+        contributing_tags: [],
+        tag_count: 0,
+      };
+      const defaultMatch = calculateMatchScore(defaultProfile, preferences);
+      defaultMatch.tourProfile = defaultProfile;
+      
+      const initialScores = {};
+      for (const tour of allTours) {
+        const productId = tour.productId || tour.productCode;
+        if (productId) {
+          initialScores[productId] = { ...defaultMatch };
+        }
+      }
+      setMatchScores(initialScores); // Show default scores immediately
+      
+      // Step 1: Collect ALL unique tag IDs from all tours (batch fetch)
+      const allTagIds = new Set();
+      const tourTagMap = new Map(); // productId -> tagIds array
+      
+      for (const tour of allTours) {
+        const productId = tour.productId || tour.productCode;
+        if (!productId) continue;
+        
+        const tagIds = tour.tags || tour.tagIds || [];
+        if (Array.isArray(tagIds) && tagIds.length > 0) {
+          tagIds.forEach(id => allTagIds.add(id));
+          tourTagMap.set(productId, tagIds);
+        }
+      }
+      
+      // Step 2: Fetch ALL tag traits in ONE database call
+      const tagTraitsMap = new Map();
+      if (allTagIds.size > 0) {
+        try {
+          const uniqueTagIds = Array.from(allTagIds);
+          const batchSize = 1000;
+          
+          for (let i = 0; i < uniqueTagIds.length; i += batchSize) {
+            const batch = uniqueTagIds.slice(i, i + batchSize);
+            const { data: tagTraits, error } = await supabase
+              .from('viator_tag_traits')
+              .select('*')
+              .in('tag_id', batch);
+            
+            if (!error && tagTraits) {
+              tagTraits.forEach(trait => {
+                tagTraitsMap.set(trait.tag_id, {
+                  tag_id: trait.tag_id,
+                  tagId: trait.tag_id,
+                  tag_name_en: trait.tag_name_en,
+                  tagName: trait.tag_name_en,
+                  adventure_score: trait.adventure_score,
+                  relaxation_exploration_score: trait.relaxation_exploration_score,
+                  group_intimacy_score: trait.group_intimacy_score,
+                  price_comfort_score: trait.price_comfort_score,
+                  guidance_score: trait.guidance_score,
+                  food_drink_score: trait.food_drink_score,
+                  tag_weight: trait.tag_weight,
+                  is_generic: trait.is_generic,
+                });
+              });
+            }
+          }
+          
+          // Keep production console clean (debug logging removed)
+        } catch (error) {
+          console.error('Error fetching tag traits:', error);
+        }
+      }
+      
+      // Step 3: Calculate match scores for all tours (using cached tag traits)
+      const scores = {};
+      
+      for (const tour of allTours) {
+        const productId = tour.productId || tour.productCode;
+        if (!productId) {
+          // Still assign a default score even if no productId
+          continue;
+        }
+        
+        try {
+          // Get tag IDs for this tour
+          const tagIds = tourTagMap.get(productId) || [];
+          
+          // Convert tag IDs to tag objects using cached traits
+          const tourTags = tagIds
+            .map(tagId => tagTraitsMap.get(tagId))
+            .filter(Boolean); // Remove any missing traits
+          
+          // Calculate tour profile from tags (synchronous now - no DB calls)
+          const tourProfile = await calculateTourProfile(tourTags, null, supabase);
+          
+          // Calculate match score (synchronous)
+          const matchResult = calculateMatchScore(tourProfile, preferences);
+          // Store tourProfile in matchResult for modal to use
+          matchResult.tourProfile = tourProfile;
+          scores[productId] = matchResult;
+          
+          // Keep production console clean (debug logging removed)
+        } catch (error) {
+          console.error(`Error calculating match for tour ${productId}:`, error);
+          // Default to balanced match score with default profile
+          const defaultProfile = {
+            adventure_score: 50,
+            relaxation_exploration_score: 50,
+            group_intimacy_score: 50,
+            price_comfort_score: 50,
+            guidance_score: 50,
+            food_drink_score: 50,
+            confidence: 'low',
+            contributing_tags: [],
+            tag_count: 0,
+          };
+          const defaultMatch = calculateMatchScore(defaultProfile, preferences);
+          defaultMatch.tourProfile = defaultProfile;
+          scores[productId] = defaultMatch;
+        }
+      }
+      
+      // Ensure ALL tours have a match score (even if they weren't in the loop)
+      for (const tour of allTours) {
+        const productId = tour.productId || tour.productCode;
+        if (productId && !scores[productId]) {
+          const defaultProfile = {
+            adventure_score: 50,
+            relaxation_exploration_score: 50,
+            group_intimacy_score: 50,
+            price_comfort_score: 50,
+            guidance_score: 50,
+            food_drink_score: 50,
+            confidence: 'low',
+            contributing_tags: [],
+            tag_count: 0,
+          };
+          const defaultMatch = calculateMatchScore(defaultProfile, preferences);
+          defaultMatch.tourProfile = defaultProfile;
+          scores[productId] = defaultMatch;
+        }
+      }
+      
+      // Keep production console clean (debug logging removed)
+      setMatchScores(scores);
+    };
+    
+    calculateMatches();
+  }, [allTours, user, userPreferences, loadingPreferences, localPreferences, supabase]);
+  
   // Calculate min and max prices for slider
   const priceRange = useMemo(() => {
     const prices = allTours
@@ -538,10 +876,7 @@ export default function ToursListingClient({
         const tourFlags = tour.flags || [];
         // Tour must have at least one of the requested flags
         const hasFlag = activeFilters.flags.some(flag => tourFlags.includes(flag));
-        // Debug: Log if we're filtering out the specific tour
-        if (!hasFlag && (tour.productId === '324189P1' || tour.productCode === '324189P1')) {
-          console.log('Filtering out tour 324189P1 in useMemo - flags:', tourFlags, 'requested:', activeFilters.flags);
-        }
+        // Keep production console clean (debug logging removed)
         return hasFlag;
       });
     }
@@ -614,13 +949,20 @@ export default function ToursListingClient({
         const priceA = parseFloat(a.pricing?.summary?.fromPrice || a.price || 0);
         const priceB = parseFloat(b.pricing?.summary?.fromPrice || b.price || 0);
         return priceB - priceA;
+      } else if (sortBy === 'best-match') {
+        // Sort by match score (higher = better)
+        const productIdA = a.productId || a.productCode;
+        const productIdB = b.productId || b.productCode;
+        const matchA = matchScores[productIdA]?.score || 50;
+        const matchB = matchScores[productIdB]?.score || 50;
+        return matchB - matchA; // Higher score first
       }
       
       return 0;
     });
 
     return filtered;
-  }, [allTours, searchTerm, activeFilters, sortBy, isFiltered]);
+  }, [allTours, searchTerm, activeFilters, sortBy, isFiltered, matchScores]);
 
   // Separate featured and regular tours
   const featuredTours = filteredTours.filter(t => t.isFeatured);
@@ -711,7 +1053,7 @@ export default function ToursListingClient({
           // /api/internal/viator-products-search returns: { products: [...], totalCount: number }
           const results = Array.isArray(data?.products) ? data.products : (data?.products?.results || []);
           const totalCount = data?.totalCount || data?.products?.totalCount || 0;
-          console.log('🔍 Special offers totalCount:', totalCount, 'Response:', data);
+          // Keep production console clean (debug logging removed)
           setFilteredToursFromAPI(results);
           setFilteredTotalCount(totalCount);
           setFilteredCurrentPage(1);
@@ -790,7 +1132,7 @@ export default function ToursListingClient({
                   return res.json();
                 } else if (res.status === 404) {
                   // Page doesn't exist, return empty results
-                  console.log(`Page ${page} returned 404 - no more results`);
+                  // Keep production console clean (debug logging removed)
                   return { products: { results: [] } };
                 } else {
                   // Other error, log and return empty
@@ -813,12 +1155,7 @@ export default function ToursListingClient({
           // Extract totalCount from the first response (all pages should have the same totalCount)
           if (allResponses.length > 0 && allResponses[0] && !allResponses[0].error) {
             totalCountFromAPI = allResponses[0].products?.totalCount || allResponses[0].totalCount || 0;
-            console.log('🔍 Filtered totalCount from API:', totalCountFromAPI, 'Response structure:', {
-              hasProducts: !!allResponses[0].products,
-              productsTotalCount: allResponses[0].products?.totalCount,
-              directTotalCount: allResponses[0].totalCount,
-              firstResponse: allResponses[0]
-            });
+            // Keep production console clean (debug logging removed)
           }
           
           for (const data of allResponses) {
@@ -828,6 +1165,9 @@ export default function ToursListingClient({
                 const tourId = tour.productId || tour.productCode;
                 if (tourId && !seenIds.has(tourId)) {
                   seenIds.add(tourId);
+                  
+                  // Keep production console clean (debug logging removed)
+                  
                   // Always add the tour - we'll filter by flags in the useMemo
                   allFetchedTours.push(tour);
                 }
@@ -842,7 +1182,7 @@ export default function ToursListingClient({
             return !popularProductIds.has(tourId);
           });
           
-          console.log(`Fetched ${filtered.length} tours, will filter by flags client-side. Total available: ${totalCountFromAPI}`);
+          // Keep production console clean (debug logging removed)
           setFilteredToursFromAPI(filtered);
           setFilteredTotalCount(totalCountFromAPI);
           setFilteredCurrentPage(pagesNeeded); // Track how many pages we've loaded
@@ -1897,7 +2237,7 @@ export default function ToursListingClient({
           )}
 
           {/* Sort and Results Count - Same Line */}
-          <div className="mb-6 flex items-center justify-between flex-wrap gap-4">
+          <div className="mb-6 flex flex-col gap-4">
             {/* Results Count */}
             {loading ? (
               <div className="flex items-center gap-2">
@@ -1928,20 +2268,42 @@ export default function ToursListingClient({
               </p>
             )}
             
-            {/* Sort Dropdown */}
-            <div className="flex items-center gap-3">
-              <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Sort by:</label>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            {/* Sort and Match to Your Style - Same Line */}
+            <div className="flex items-center justify-between gap-4 flex-wrap">
+              {/* Sort Dropdown */}
+              <div className="flex items-center gap-3">
+                <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Sort by:</label>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                >
+                  <option value="rating">Highest Rated</option>
+                  <option value="reviews">Most Reviewed</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="best-match">Best Match {user ? '(for you)' : ''} ⭐</option>
+                </select>
+              </div>
+              
+              {/* Match to Your Style - Button to open modal */}
+              <button
+                onClick={() => setShowPreferencesModal(true)}
+                className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-lg hover:border-purple-300 hover:shadow-sm transition-all"
               >
-                <option value="rating">Highest Rated</option>
-                <option value="reviews">Most Reviewed</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-              </select>
+                <Sparkles className="w-4 h-4 text-purple-600" />
+                <span className="text-sm font-semibold text-gray-900">
+                  Match to Your Style
+                </span>
+                <span className="text-[10px] font-medium bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">
+                  AI driven
+                </span>
+              </button>
             </div>
+
+            <p className="text-xs sm:text-sm text-gray-500">
+              Tip: switch to <span className="font-semibold text-gray-700">Best Match</span> to rank tours by your travel style.
+            </p>
           </div>
 
 
@@ -1955,7 +2317,19 @@ export default function ToursListingClient({
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {featuredTours.map((tour, index) => (
-                  <TourCard key={tour.productId || index} tour={tour} isFeatured={true} destination={destination} promotionScores={promotionScores} effectiveDestinationId={effectiveDestinationId} premiumOperatorTourIds={premiumOperatorTourIds} />
+                  <TourCard 
+                    key={tour.productId || index} 
+                    tour={tour} 
+                    isFeatured={true} 
+                    destination={destination} 
+                    promotionScores={promotionScores} 
+                    effectiveDestinationId={effectiveDestinationId} 
+                    premiumOperatorTourIds={premiumOperatorTourIds}
+                    matchScore={matchScores[tour.productId || tour.productCode]}
+                    user={user}
+                    userPreferences={userPreferences}
+                    onOpenPreferences={() => setShowPreferencesModal(true)}
+                  />
                 ))}
               </div>
             </div>
@@ -1969,7 +2343,19 @@ export default function ToursListingClient({
               )}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {regularTours.map((tour, index) => (
-                  <TourCard key={tour.productId || tour.productCode || index} tour={tour} isFeatured={false} destination={destination} promotionScores={promotionScores} effectiveDestinationId={effectiveDestinationId} premiumOperatorTourIds={premiumOperatorTourIds} />
+                  <TourCard 
+                    key={tour.productId || tour.productCode || index} 
+                    tour={tour} 
+                    isFeatured={false} 
+                    destination={destination} 
+                    promotionScores={promotionScores} 
+                    effectiveDestinationId={effectiveDestinationId} 
+                    premiumOperatorTourIds={premiumOperatorTourIds}
+                    matchScore={matchScores[tour.productId || tour.productCode]}
+                    user={user}
+                    userPreferences={userPreferences}
+                    onOpenPreferences={() => setShowPreferencesModal(true)}
+                  />
                 ))}
               </div>
               
@@ -2225,6 +2611,33 @@ export default function ToursListingClient({
             </div>
           )}
 
+          {/* Tour Operators */}
+          <div className="mb-6">
+            <Link href={`/destinations/${destination.id}/operators`}>
+              <Card className="bg-gradient-to-br from-purple-50 to-indigo-50 border-purple-200 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Building2 className="w-6 h-6 text-purple-600" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">
+                        Tour Operators in {destination.fullName || destination.name}
+                      </h3>
+                      <p className="text-sm text-gray-600 mb-4">
+                        Browse trusted tour operators offering experiences in {destination.fullName || destination.name}.
+                      </p>
+                      <Button variant="outline" className="border-purple-300 text-purple-700 hover:bg-purple-50">
+                        View Operators
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
+
           {/* Top Restaurants */}
           {hasRestaurants && (
             <div className="mb-6">
@@ -2396,6 +2809,273 @@ export default function ToursListingClient({
         onClose={() => setIsPromotionModalOpen(false)}
       />
 
+      {/* Match to Your Style Modal */}
+      {showPreferencesModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setShowPreferencesModal(false)}>
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="sticky top-0 bg-white border-b px-4 py-3 flex items-center justify-between z-10">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-purple-600" />
+                <h2 className="text-lg font-bold text-gray-900">Match to Your Style</h2>
+              </div>
+              <button
+                onClick={() => setShowPreferencesModal(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X className="w-5 h-5 text-gray-600" />
+              </button>
+            </div>
+            
+            <div className="p-4 space-y-4">
+              {/* Adventure Level */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">🔥 Adventure Level</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '😌', desc: 'Relaxed' },
+                    { value: 50, label: '⚖️', desc: 'Balanced' },
+                    { value: 75, label: '🔥', desc: 'Adventurous' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setLocalPreferences(prev => ({ ...prev, adventureLevel: option.value }))}
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.adventureLevel || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.adventureLevel || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Relaxation vs Exploration */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">🌊 Relaxation vs Exploration</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '😌', desc: 'Relax' },
+                    { value: 50, label: '⚖️', desc: 'Balanced' },
+                    { value: 75, label: '🔍', desc: 'Explore' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setLocalPreferences(prev => ({ ...prev, cultureVsBeach: option.value }))}
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.cultureVsBeach || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.cultureVsBeach || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Group Size */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">👥 Group Size</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '👥', desc: 'Big Groups' },
+                    { value: 50, label: '⚖️', desc: 'Either Way' },
+                    { value: 75, label: '🧑‍🤝‍🧑', desc: 'Private/Small' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setLocalPreferences(prev => ({ ...prev, groupPreference: option.value }))}
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.groupPreference || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.groupPreference || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Budget vs Comfort */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">💰 Budget vs Comfort</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '💰', desc: 'Budget' },
+                    { value: 50, label: '⚖️', desc: 'Balanced' },
+                    { value: 75, label: '✨', desc: 'Comfort' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setLocalPreferences(prev => ({ ...prev, budgetComfort: option.value }))}
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.budgetComfort || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.budgetComfort || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Guided vs Independent */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">📋 Guided vs Independent</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '🕰️', desc: 'Independent' },
+                    { value: 50, label: '⚖️', desc: 'Mixed' },
+                    { value: 75, label: '📋', desc: 'Guided' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setLocalPreferences(prev => ({ ...prev, structurePreference: option.value }))}
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.structurePreference || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.structurePreference || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Food & Drink */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">🍷 Food & Drink Interest</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '🍽️', desc: 'Not Important' },
+                    { value: 50, label: '⚖️', desc: 'Nice to Have' },
+                    { value: 75, label: '🍷', desc: 'Very Important' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setLocalPreferences(prev => ({ ...prev, foodAndDrinkInterest: option.value }))}
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.foodAndDrinkInterest || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.foodAndDrinkInterest || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              <p className="text-xs text-gray-500 text-center pt-2">
+                Match scores update instantly as you select preferences
+              </p>
+
+              <div className="pt-4 mt-2 border-t flex flex-col gap-2">
+                <div className="flex gap-2">
+                    <Button
+                      variant="ghost"
+                      className="flex-1 text-gray-600 hover:text-gray-900"
+                      onClick={() =>
+                        setLocalPreferences({
+                          adventureLevel: 50,
+                          cultureVsBeach: 50,
+                          groupPreference: 50,
+                          budgetComfort: 50,
+                          structurePreference: 50,
+                          foodAndDrinkInterest: 50,
+                        })
+                      }
+                      title="Reset to defaults"
+                    >
+                      Reset
+                    </Button>
+                  <Button
+                    variant="outline"
+                    className="flex-1"
+                    onClick={() => setShowPreferencesModal(false)}
+                  >
+                    Done
+                  </Button>
+                  <Button
+                    className="flex-1 sunset-gradient text-white"
+                    onClick={handleSavePreferencesToProfile}
+                    disabled={savingPreferencesToProfile || loadingPreferences}
+                  >
+                    {savingPreferencesToProfile
+                      ? 'Saving…'
+                      : user
+                      ? 'Save to Profile'
+                      : 'Create account to save'}
+                  </Button>
+                </div>
+                <p className="text-[11px] text-gray-500 text-center">
+                  Your preferences are saved on this device automatically.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Parent Country Modal - Shows after 5 seconds for small destinations */}
       {showParentCountryModal && destination.parentCountryDestination && (
         <div 
@@ -2472,7 +3152,10 @@ export default function ToursListingClient({
 }
 
 // Tour Card Component
-function TourCard({ tour, isFeatured, destination, promotionScores = {}, effectiveDestinationId = null, premiumOperatorTourIds = [] }) {
+function TourCard({ tour, isFeatured, destination, promotionScores = {}, effectiveDestinationId = null, premiumOperatorTourIds = [], matchScore = null, user = null, userPreferences = null, onOpenPreferences = null }) {
+  const router = useRouter();
+  const { toast } = useToast();
+  const [showMatchModal, setShowMatchModal] = useState(false);
   const productId = tour.productId || tour.productCode;
   const tourUrl = tour.slug 
     ? `/tours/${productId}/${tour.slug}` 
@@ -2499,24 +3182,7 @@ function TourCard({ tour, isFeatured, destination, promotionScores = {}, effecti
   const flags = tour.flags || tour.specialFlags || [];
   const displayFlags = flags.filter((flag) => flag !== 'SPECIAL_OFFER');
   
-  // Debug: Log flags to console (remove after testing)
-  // Log even if no flags to see what's happening
-  if (typeof window !== 'undefined') {
-    const productId = tour.productId || tour.productCode;
-    if (productId === '324189P1' || productId === 'd28-324189P1') {
-      console.log('DEBUG Tour 324189P1:', {
-        productId,
-        title,
-        flags,
-        hasFlags: flags.length > 0,
-        tourObjectFlags: tour.flags,
-        fullTour: tour
-      });
-    }
-    if (flags.length > 0) {
-      console.log('Tour flags for', title, ':', flags, 'Product ID:', productId);
-    }
-  }
+  // Keep production console clean (debug logging removed)
   
   // Map flag values to display info
   const getFlagInfo = (flagValue) => {
@@ -2568,6 +3234,38 @@ function TourCard({ tour, isFeatured, destination, promotionScores = {}, effecti
                 <Crown className="w-5 h-5 text-amber-500 drop-shadow-lg" title="Premium Operator" />
               </div>
             )}
+            {/* Match Score Badge - Left side, always visible */}
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setShowMatchModal(true);
+              }}
+              className="absolute top-3 left-3 z-30 bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow-lg border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5"
+              title={matchScore && matchScore.score !== undefined
+                ? `Click to see why this is a ${matchScore.score}% match` 
+                : "Click to see AI match analysis"}
+            >
+              <Sparkles className={`w-3.5 h-3.5 ${
+                user && userPreferences && matchScore && matchScore.score >= 70
+                  ? 'text-purple-600'
+                  : user && userPreferences && matchScore
+                  ? 'text-purple-500'
+                  : 'text-gray-500'
+              }`} />
+              {matchScore && matchScore.score !== undefined ? (
+                <>
+                  <span className="text-xs font-bold text-gray-900">{matchScore.score}%</span>
+                  <span className="text-[10px] text-gray-600">
+                    {user && userPreferences ? 'for You' : 'Match'}
+                  </span>
+                </>
+              ) : (
+                <span className="text-xs text-gray-600">AI Match</span>
+              )}
+            </button>
+            
+            {/* Price Badge - Right side */}
             {price > 0 && (
               <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 z-20">
                 <div className="flex flex-col items-end" suppressHydrationWarning>
@@ -2708,6 +3406,20 @@ function TourCard({ tour, isFeatured, destination, promotionScores = {}, effecti
           </Button>
         </CardContent>
       </Card>
+      
+      {/* Tour Match Modal */}
+          <TourMatchModal
+            isOpen={showMatchModal}
+            onClose={() => setShowMatchModal(false)}
+            tour={tour}
+            matchScore={matchScore}
+            user={user}
+            userPreferences={userPreferences}
+            onOpenPreferences={onOpenPreferences ? () => {
+              setShowMatchModal(false); // Close match modal
+              onOpenPreferences(); // Open preferences modal
+            } : undefined}
+          />
     </motion.div>
   );
 }

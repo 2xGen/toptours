@@ -6,7 +6,7 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
-  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, Info, Share2, Heart, Crown
+  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, Info, Share2, Heart, Crown, Building2
 } from 'lucide-react';
 import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import { Input } from '@/components/ui/input';
@@ -1620,10 +1620,38 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </section>
         )}
 
-        {/* Other Destinations in Same Country */}
-        {countryDestinations.length > 0 && safeDestination.country && (
-          <section className="py-12 bg-white border-t">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Tour Operators & Other Destinations */}
+        <section className="py-12 bg-white border-t">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Tour Operators */}
+            <div className="mb-6">
+              <Link href={`/destinations/${safeDestination.id}/operators`}>
+                <Card className="bg-gradient-to-br from-purple-50 to-indigo-50 border-purple-200 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Building2 className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
+                      </div>
+                      <div className="flex-1 w-full">
+                        <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">
+                          Tour Operators in {safeDestination.fullName || safeDestination.name}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-gray-600 mb-3">
+                          Browse trusted tour operators offering experiences in {safeDestination.fullName || safeDestination.name}.
+                        </p>
+                        <Button variant="outline" size="sm" className="border-purple-300 text-purple-700 hover:bg-purple-50 text-xs px-2 sm:px-3 py-1.5 h-auto">
+                          View Operators
+                          <ArrowRight className="w-3 h-3 ml-1" />
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+
+            {/* Other Destinations in Same Country */}
+            {countryDestinations.length > 0 && safeDestination.country && (
               <div className="mb-6">
                 <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
                   <CardContent className="p-4 sm:p-6">
@@ -1679,9 +1707,9 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   </CardContent>
                 </Card>
               </div>
-            </div>
-          </section>
-        )}
+            )}
+          </div>
+        </section>
 
         {/* Related Travel Guides Section - Category Guides (same style as restaurant page) */}
         {categoryGuidesProp && categoryGuidesProp.length > 0 && (
@@ -1698,7 +1726,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   <BookOpen className="w-6 h-6 text-blue-600" />
                   <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900">
                     Related Travel Guides for {safeDestination.fullName || safeDestination.name}
-                  </h2>
+                </h2>
                 </div>
                 <p className="text-gray-600 mb-6">
                   Explore comprehensive guides to plan your perfect trip, including food tours, cultural experiences, and more.
@@ -1719,8 +1747,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
                                         categoryName.toLowerCase().includes('restaurant');
                     const Icon = isFoodRelated ? UtensilsCrossed : MapPin;
                     const iconColor = isFoodRelated ? 'text-orange-600' : 'text-blue-600';
-                    
-                    return (
+                  
+                  return (
                       <Link
                         key={categorySlug}
                         href={guideUrl}
@@ -1732,7 +1760,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                               <Icon className={`w-5 h-5 ${iconColor}`} />
                               <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
                                 {guide.title || categoryName}
-                              </h3>
+                            </h3>
                             </div>
                             {guide.subtitle && (
                               <p className="text-sm text-gray-600 mb-3">
@@ -1754,9 +1782,9 @@ export default function DestinationDetailClient({ destination, promotionScores =
                           </CardContent>
                         </Card>
                       </Link>
-                    );
-                  })}
-                </div>
+                  );
+                })}
+              </div>
                 
                 <div className="text-center">
                   <Button asChild variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
@@ -2160,15 +2188,15 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       const categorySlug = guide.category_slug || '';
                       const guideUrl = categorySlug ? `/destinations/${safeDestination.id}/guides/${categorySlug}` : '#';
                       return (
-                        <Link 
+                      <Link 
                           key={categorySlug || `guide-${index}`}
                           href={guideUrl}
-                          className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-lg px-5 py-4 transition-all duration-200 hover:scale-105 w-full max-w-xs"
-                        >
-                          <div className="text-white hover:text-blue-200 font-medium line-clamp-2 h-12 flex items-center">
+                        className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-lg px-5 py-4 transition-all duration-200 hover:scale-105 w-full max-w-xs"
+                      >
+                        <div className="text-white hover:text-blue-200 font-medium line-clamp-2 h-12 flex items-center">
                             {guide.title || guide.category_name || ''}
-                          </div>
-                        </Link>
+                        </div>
+                      </Link>
                       );
                     })}
                   </div>

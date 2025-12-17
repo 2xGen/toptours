@@ -36,7 +36,7 @@ const buildSeoCopy = (destination) => {
       topCategories.length
         ? `Top experiences include ${topCategories.join(', ')} and more local-only adventures.`
         : '',
-      `Browse trusted operators, filter by style, and secure instant confirmations for your ${destinationName} plans.`,
+      `Browse trusted operators, then sort by Best Match to rank tours by your travel style in ${destinationName}.`,
     ]
       .filter(Boolean)
       .join(' ');
@@ -554,7 +554,7 @@ export default async function ToursListingPage({ params }) {
       return !popularProductIds.has(tourId);
     });
     
-    console.log(`Fetched ${dynamicTours.length} dynamic tours for ${destinationName} (from ${allToursList.length} total, filtered out ${popularTours.length} popular tours, ${totalToursAvailable} total available)`);
+    // Keep production logs clean (debug logging removed)
   } catch (error) {
     console.error('Error fetching dynamic tours:', error);
   }
@@ -571,15 +571,12 @@ export default async function ToursListingPage({ params }) {
   if (destination.destinationId) {
     // Use the database-derived destination ID (numeric Viator ID)
     destinationIdForScores = destination.destinationId;
-    console.log(`✅ Tours Page - Using destination.destinationId ${destinationIdForScores} for promotions (same as tours)`);
   } else if (viatorDestinationId) {
     // Fallback to viatorDestinationId if destination.destinationId not set
     destinationIdForScores = viatorDestinationId;
-    console.log(`⚠️ Tours Page - Using viatorDestinationId ${destinationIdForScores} for promotions (destination.destinationId not set)`);
   } else {
     // Last resort: use slug, promotion function will look up numeric ID
     destinationIdForScores = id;
-    console.log(`⚠️ Tours Page - Using slug ${destinationIdForScores} for promotions (no destination ID available)`);
   }
   
   let promotionScores = destinationIdForScores ? await getPromotionScoresByDestination(destinationIdForScores) : {};
@@ -660,37 +657,70 @@ export default async function ToursListingPage({ params }) {
   try {
     if (destination.id) {
       categoryGuides = await getAllCategoryGuidesForDestination(destination.id);
-      console.log(`📚 Tours Listing Page - Fetched ${categoryGuides.length} category guides for destination.id: "${destination.id}"`);
-      if (categoryGuides.length > 0) {
-        console.log(`📚 Tours Listing Page - Guide categories:`, categoryGuides.map(g => g.category_name || g.category_slug));
-      } else {
-        console.warn(`⚠️ Tours Listing Page - No guides found for "${destination.id}"`);
-      }
     } else {
-      console.warn(`⚠️ Tours Listing Page - destination.id is missing, cannot fetch guides`);
+      // no destination.id, cannot fetch guides
     }
   } catch (error) {
     console.error('❌ Error fetching category guides:', error);
   }
 
   // Generate JSON-LD schema for SEO
+  const schemaTours = [...(popularTours || []), ...(dynamicTours || [])]
+    .filter(Boolean)
+    .slice(0, 24);
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: `Tours & Activities in ${destination.fullName || destination.name}`,
     description: `Discover the best tours and activities in ${destination.fullName || destination.name}`,
-    itemListElement: [
-      ...popularTours.map((tour, index) => ({
+    numberOfItems: schemaTours.length,
+    itemListElement: schemaTours.map((tour, index) => {
+      const productId = tour.productId || tour.productCode;
+      const title = tour.seo?.title || tour.title || 'Tour';
+      const slug = tour.slug || generateSlug(title);
+      const url = productId ? `https://toptours.ai/tours/${productId}/${slug}` : `https://toptours.ai/destinations/${id}/tours`;
+
+      const item = {
+        '@type': 'TouristAttraction',
+        name: title,
+        url,
+      };
+
+      const image =
+        tour.images?.[0]?.variants?.find((v) => v?.width >= 400)?.url ||
+        tour.images?.[0]?.variants?.[0]?.url ||
+        null;
+      if (image) item.image = image;
+
+      const rating = tour.reviews?.combinedAverageRating;
+      const reviewCount = tour.reviews?.totalReviews;
+      if (typeof rating === 'number' && typeof reviewCount === 'number' && reviewCount > 0) {
+        item.aggregateRating = {
+          '@type': 'AggregateRating',
+          ratingValue: rating,
+          reviewCount,
+        };
+      }
+
+      const price = tour.pricing?.summary?.fromPrice;
+      const currency = tour.pricing?.currency;
+      if (typeof price === 'number' && currency) {
+        item.offers = {
+          '@type': 'Offer',
+          price,
+          priceCurrency: currency,
+          url,
+          availability: 'https://schema.org/InStock',
+        };
+      }
+
+      return {
         '@type': 'ListItem',
         position: index + 1,
-        item: {
-          '@type': 'TouristAttraction',
-          name: tour.seo?.title || tour.content?.heroDescription,
-          description: tour.seo?.description,
-          url: `https://toptours.ai/tours/${tour.productId}/${tour.slug}`
-        }
-      }))
-    ]
+        item,
+      };
+    }),
   };
 
   return (

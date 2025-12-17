@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect, useCallback } from 'react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
@@ -26,6 +26,7 @@ import {
   DollarSign,
   Search,
   BookOpen,
+  Sparkles,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { getTourUrl } from '@/utils/tourHelpers';
@@ -39,19 +40,212 @@ import { Heart } from 'lucide-react';
 import ShareModal from '@/components/sharing/ShareModal';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
+import { useRouter } from 'next/navigation';
+import { extractRestaurantStructuredValues, calculateRestaurantPreferenceMatch } from '@/lib/restaurantMatching';
+import RestaurantMatchModal from '@/components/restaurant/RestaurantMatchModal';
 
 export default function RestaurantsListClient({ destination, restaurants, trendingTours = [], trendingRestaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [], categoryGuides = [] }) {
   const { isBookmarked, toggle } = useRestaurantBookmarks();
   const supabase = createSupabaseBrowserClient();
   const { toast } = useToast();
+  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [showStickyButton, setShowStickyButton] = React.useState(true);
   const [showShareModal, setShowShareModal] = React.useState(false);
+  const [user, setUser] = useState(null);
+  const [userPreferences, setUserPreferences] = useState(null);
+  const [showPreferencesModal, setShowPreferencesModal] = useState(false);
+  const [savingPreferencesToProfile, setSavingPreferencesToProfile] = useState(false);
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [showMatchModal, setShowMatchModal] = useState(false);
   
   // Filter and sort state
-  const [sortBy, setSortBy] = useState('rating'); // 'rating', 'name', 'price-low', 'price-high'
+  const [sortBy, setSortBy] = useState('rating'); // 'rating', 'name', 'price-low', 'price-high', 'best-match'
   const [maxPrice, setMaxPrice] = useState('all'); // 'all', '$', '$$', '$$$', '$$$$'
   const [searchTerm, setSearchTerm] = useState('');
+
+  // Restaurant preferences (no account required) - stored in localStorage
+  const [localRestaurantPreferences, setLocalRestaurantPreferences] = useState(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      const stored = localStorage.getItem('topTours_restaurant_preferences');
+      if (stored) return JSON.parse(stored);
+    } catch {}
+    return {
+      atmosphere: 'any', // 'any' | 'casual' | 'outdoor' | 'upscale'
+      diningStyle: 50, // 0-100: 0 = walk-in, 100 = formal
+      features: [], // ['outdoor_seating','live_music','dog_friendly','family_friendly','reservations']
+      priceRange: 'any',
+      mealTime: 'any',
+      groupSize: 'any',
+    };
+  });
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !localRestaurantPreferences) return;
+    try {
+      localStorage.setItem('topTours_restaurant_preferences', JSON.stringify(localRestaurantPreferences));
+    } catch {}
+  }, [localRestaurantPreferences]);
+
+  // Fetch user + profile (optional; only used for Save to Profile)
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const { data } = await supabase.auth.getUser();
+        if (!mounted) return;
+        setUser(data?.user || null);
+        if (data?.user) {
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('trip_preferences')
+            .eq('id', data.user.id)
+            .single();
+          if (!mounted) return;
+          if (profile?.trip_preferences) setUserPreferences(profile.trip_preferences);
+          // If user has restaurant prefs but localStorage is empty, hydrate local prefs
+          try {
+            const stored = localStorage.getItem('topTours_restaurant_preferences');
+            if (!stored && profile?.trip_preferences?.restaurantPreferences) {
+              setLocalRestaurantPreferences((prev) => ({
+                ...(prev || {}),
+                ...profile.trip_preferences.restaurantPreferences,
+              }));
+            }
+          } catch {}
+        }
+      } catch {}
+    })();
+    return () => {
+      mounted = false;
+    };
+  }, [supabase]);
+
+  // Auto-sync local restaurant preferences -> profile once after sign-in
+  useEffect(() => {
+    if (!user || !localRestaurantPreferences) return;
+    if (typeof window === 'undefined') return;
+
+    const syncKey = `topTours_restaurant_prefs_synced_${user.id}`;
+    let didSync = false;
+    try {
+      didSync = localStorage.getItem(syncKey) === '1';
+    } catch {}
+    if (didSync) return;
+
+    const run = async () => {
+      try {
+        const hasProfileRestaurantPrefs =
+          userPreferences?.restaurantPreferences &&
+          typeof userPreferences.restaurantPreferences === 'object' &&
+          Object.keys(userPreferences.restaurantPreferences).length > 0;
+
+        if (hasProfileRestaurantPrefs) {
+          try { localStorage.setItem(syncKey, '1'); } catch {}
+          return;
+        }
+
+        const mergedTripPreferences = {
+          ...(userPreferences || {}),
+          restaurantPreferences: {
+            ...(userPreferences?.restaurantPreferences || {}),
+            ...localRestaurantPreferences,
+          },
+        };
+
+        const { error } = await supabase
+          .from('profiles')
+          .upsert({ id: user.id, trip_preferences: mergedTripPreferences });
+        if (error) throw error;
+
+        setUserPreferences(mergedTripPreferences);
+        try { localStorage.setItem(syncKey, '1'); } catch {}
+      } catch (e) {
+        console.warn('Restaurant preference auto-sync failed:', e?.message || e);
+      }
+    };
+
+    run();
+  }, [user, localRestaurantPreferences, userPreferences, supabase]);
+
+  const handleSavePreferencesToProfile = useCallback(async () => {
+    if (!localRestaurantPreferences) return;
+    if (!user) {
+      const redirect = typeof window !== 'undefined' ? window.location.pathname + window.location.search : '/';
+      setShowPreferencesModal(false);
+      router.push(`/auth?mode=signup&redirect=${encodeURIComponent(redirect)}`);
+      return;
+    }
+    setSavingPreferencesToProfile(true);
+    try {
+      const mergedTripPreferences = {
+        ...(userPreferences || {}),
+        restaurantPreferences: {
+          ...(userPreferences?.restaurantPreferences || {}),
+          ...localRestaurantPreferences,
+        },
+      };
+      const { error } = await supabase
+        .from('profiles')
+        .upsert({ id: user.id, trip_preferences: mergedTripPreferences });
+      if (error) throw error;
+      setUserPreferences(mergedTripPreferences);
+      toast({ title: 'Preferences saved', description: 'Saved to your profile (syncs across devices).' });
+      setShowPreferencesModal(false);
+    } catch (e) {
+      toast({
+        title: 'Could not save preferences',
+        description: e?.message || 'Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setSavingPreferencesToProfile(false);
+    }
+  }, [localRestaurantPreferences, user, userPreferences, supabase, router, toast]);
+
+  const restaurantMatchById = useMemo(() => {
+    const map = new Map();
+    if (!Array.isArray(restaurants)) return map;
+
+    const prefs = localRestaurantPreferences || {
+      atmosphere: 'any',
+      diningStyle: 50,
+      features: [],
+      priceRange: 'any',
+      mealTime: 'any',
+      groupSize: 'any',
+    };
+
+    // Build a compatible "userPreferences" object expected by the matcher
+    const pseudoUserPreferences = {
+      adventureLevel: 50,
+      cultureVsBeach: 50,
+      groupPreference:
+        prefs.groupSize === 'solo' || prefs.groupSize === 'couple'
+          ? 70
+          : prefs.groupSize === 'groups' || prefs.groupSize === 'family'
+          ? 30
+          : 50,
+      budgetComfort:
+        prefs.priceRange === '$' ? 25 : prefs.priceRange === '$$' ? 40 : prefs.priceRange === '$$$' ? 70 : prefs.priceRange === '$$$$' ? 85 : 50,
+      structurePreference: typeof prefs.diningStyle === 'number' ? prefs.diningStyle : 50,
+      foodAndDrinkInterest: 75,
+      timeOfDayPreference: 'no_preference',
+      restaurantPreferences: prefs,
+    };
+
+    restaurants.forEach((r) => {
+      try {
+        const values = extractRestaurantStructuredValues(r);
+        if (values?.error) return;
+        const match = calculateRestaurantPreferenceMatch(pseudoUserPreferences, values, r);
+        if (match?.error) return;
+        map.set(r.id, match);
+      } catch {}
+    });
+    return map;
+  }, [restaurants, localRestaurantPreferences]);
 
   // Check if any filters are active
   const hasActiveFilters = maxPrice && maxPrice !== 'all';
@@ -68,36 +262,7 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
   const zanzibarRestaurant = restaurants.find((restaurant) => restaurant.slug === 'zanzibar-beach-restaurant-curacao');
   const heroTourText = `Pair dinner at ${zanzibarRestaurant?.shortName || zanzibarRestaurant?.name || destination.fullName} with these top-rated experiences in ${destination.fullName}.`;
 
-  const breadcrumbLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://toptours.ai/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Destinations',
-        item: 'https://toptours.ai/destinations',
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: destination.name,
-        item: `https://toptours.ai/destinations/${destination.id}`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 4,
-        name: `Best Restaurants in ${destination.fullName}`,
-        item: `https://toptours.ai/destinations/${destination.id}/restaurants`,
-      },
-    ],
-  };
+  // Breadcrumb schema is injected server-side in `app/destinations/[id]/restaurants/page.jsx`
 
   const formatCategorySlug = (categoryName) =>
     categoryName
@@ -185,6 +350,10 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
         const ratingA = a.ratings?.googleRating || 0;
         const ratingB = b.ratings?.googleRating || 0;
         return ratingB - ratingA;
+      } else if (sortBy === 'best-match') {
+        const matchA = restaurantMatchById.get(a.id)?.matchScore ?? 0;
+        const matchB = restaurantMatchById.get(b.id)?.matchScore ?? 0;
+        return matchB - matchA;
       } else if (sortBy === 'name') {
         return (a.name || '').localeCompare(b.name || '');
       } else if (sortBy === 'price-low') {
@@ -200,7 +369,7 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
     });
 
     return filtered;
-  }, [restaurants, sortBy, maxPrice, searchTerm]);
+  }, [restaurants, sortBy, maxPrice, searchTerm, restaurantMatchById]);
 
   return (
     <>
@@ -486,6 +655,9 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
               <p className="text-gray-600 text-sm sm:text-base">
                 Discover our curated selection of the best dining experiences in {destination.fullName}
               </p>
+              <p className="text-xs sm:text-sm text-gray-500 mt-2">
+                Tip: switch to <span className="font-semibold text-gray-700">Best Match</span> to rank restaurants by your taste.
+              </p>
             </div>
 
             {/* Search Bar */}
@@ -546,20 +718,35 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
                   </div>
                 </div>
 
-                {/* Sort Dropdown */}
-                <div className="w-full sm:w-auto sm:min-w-[180px]">
-                  <label className="text-xs text-gray-600 mb-1.5 block sm:hidden">Sort by</label>
-                  <Select value={sortBy} onValueChange={setSortBy}>
-                    <SelectTrigger className="w-full sm:w-[180px]">
-                      <SelectValue placeholder="Sort by" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="rating">Highest Rated</SelectItem>
-                      <SelectItem value="name">Name (A-Z)</SelectItem>
-                      <SelectItem value="price-low">Price: Low to High</SelectItem>
-                      <SelectItem value="price-high">Price: High to Low</SelectItem>
-                    </SelectContent>
-                  </Select>
+                {/* Sort + Match to Your Taste */}
+                <div className="w-full sm:w-auto flex flex-col sm:flex-row gap-2 sm:items-center">
+                  <div className="w-full sm:w-auto sm:min-w-[180px]">
+                    <label className="text-xs text-gray-600 mb-1.5 block sm:hidden">Sort by</label>
+                    <Select value={sortBy} onValueChange={setSortBy}>
+                      <SelectTrigger className="w-full sm:w-[200px]">
+                        <SelectValue placeholder="Sort by" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="best-match">Best Match (for you)</SelectItem>
+                        <SelectItem value="rating">Highest Rated</SelectItem>
+                        <SelectItem value="name">Name (A-Z)</SelectItem>
+                        <SelectItem value="price-low">Price: Low to High</SelectItem>
+                        <SelectItem value="price-high">Price: High to Low</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowPreferencesModal(true)}
+                    className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-lg hover:border-purple-300 hover:shadow-sm transition-all w-full sm:w-auto"
+                    title="Set your dining preferences for match scores"
+                  >
+                    <Sparkles className="w-4 h-4 text-purple-600" />
+                    <span className="text-sm font-semibold text-gray-900">Match to Your Taste</span>
+                    <span className="text-[10px] font-medium bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">
+                      AI driven
+                    </span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -620,13 +807,31 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
               >
                 <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <CardContent className="p-6 flex flex-col h-full">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                        <UtensilsCrossed className="w-5 h-5 text-white" />
+                    <div className="flex items-center justify-between gap-3 mb-3">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+                          <UtensilsCrossed className="w-5 h-5 text-white" />
+                        </div>
+                        <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 truncate">
+                          {restaurant.cuisines ? restaurant.cuisines[0] : 'Restaurant'}
+                        </span>
                       </div>
-                      <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
-                        {restaurant.cuisines ? restaurant.cuisines[0] : 'Restaurant'}
-                      </span>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedRestaurant(restaurant);
+                          setShowMatchModal(true);
+                        }}
+                        className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 flex-shrink-0"
+                        title="Click to see why this matches your taste"
+                      >
+                        <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+                        <span className="text-xs font-bold text-gray-900">
+                          {restaurantMatchById.get(restaurant.id)?.matchScore ?? 0}%
+                        </span>
+                        <span className="text-[10px] text-gray-600">Match</span>
+                      </button>
                     </div>
                     
                     <div className="flex items-start justify-between gap-2 mb-3">
@@ -839,7 +1044,7 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
 
       <SmartTourFinder isOpen={isModalOpen} onClose={handleCloseModal} />
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      {/* Breadcrumb schema is injected server-side in `app/destinations/[id]/restaurants/page.jsx` */}
 
       {showStickyButton && (
         <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 transition-opacity duration-300">
@@ -913,6 +1118,229 @@ export default function RestaurantsListClient({ destination, restaurants, trendi
             </div>
           </div>
         </section>
+      )}
+
+      {/* Restaurant Match Modal */}
+      <RestaurantMatchModal
+        isOpen={showMatchModal}
+        onClose={() => setShowMatchModal(false)}
+        restaurant={selectedRestaurant}
+        matchData={selectedRestaurant ? restaurantMatchById.get(selectedRestaurant.id) : null}
+        preferences={localRestaurantPreferences}
+        onOpenPreferences={() => {
+          setShowMatchModal(false);
+          setShowPreferencesModal(true);
+        }}
+      />
+
+      {/* Match to Your Taste Modal (no account required) */}
+      {showPreferencesModal && (
+        <div
+          className="fixed inset-0 bg-black/50 z-[10000] flex items-center justify-center p-4"
+          onClick={() => setShowPreferencesModal(false)}
+        >
+          <div
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[85vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="sticky top-0 bg-white border-b px-4 py-3 flex items-center justify-between z-10">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-purple-600" />
+                <h2 className="text-lg font-bold text-gray-900">Match to Your Taste</h2>
+              </div>
+              <button
+                onClick={() => setShowPreferencesModal(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5 text-gray-600" />
+              </button>
+            </div>
+
+            <div className="p-4 space-y-4">
+              {/* Atmosphere */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">
+                  What kind of atmosphere do you prefer?
+                </label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 'casual', label: '😌', desc: 'Casual' },
+                    { value: 'outdoor', label: '🌳', desc: 'Outdoor' },
+                    { value: 'upscale', label: '✨', desc: 'Upscale' },
+                  ].map((option) => {
+                    const selected = (localRestaurantPreferences?.atmosphere || 'any') === option.value;
+                    return (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() =>
+                          setLocalRestaurantPreferences((prev) => ({
+                            ...(prev || {}),
+                            atmosphere: selected ? 'any' : option.value,
+                          }))
+                        }
+                        className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                          selected
+                            ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                            : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                        }`}
+                      >
+                        <div className="text-lg mb-0.5">{option.label}</div>
+                        <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                        {selected && (
+                          <div className="absolute top-1 right-1">
+                            <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                              <span className="text-white text-[8px]">✓</span>
+                            </div>
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+                <p className="mt-2 text-[11px] text-gray-500">
+                  Tip: click again to clear a selection.
+                </p>
+              </div>
+
+              {/* Dining style */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">
+                  🍽️ Do you prefer casual walk-ins or formal reservations?
+                </label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '🚶', desc: 'Casual' },
+                    { value: 50, label: '⚖️', desc: 'Flexible' },
+                    { value: 75, label: '📋', desc: 'Formal' },
+                  ].map((option) => {
+                    const selected = (localRestaurantPreferences?.diningStyle || 50) === option.value;
+                    return (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() =>
+                          setLocalRestaurantPreferences((prev) => ({
+                            ...(prev || {}),
+                            diningStyle: option.value,
+                          }))
+                        }
+                        className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                          selected
+                            ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                            : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                        }`}
+                      >
+                        <div className="text-lg mb-0.5">{option.label}</div>
+                        <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                        {selected && (
+                          <div className="absolute top-1 right-1">
+                            <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                              <span className="text-white text-[8px]">✓</span>
+                            </div>
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Features */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">
+                  ✨ Features & Amenities (select all that apply)
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { value: 'outdoor_seating', label: '🌳 Outdoor Seating', desc: 'Al fresco dining' },
+                    { value: 'live_music', label: '🎵 Live Music', desc: 'Entertainment' },
+                    { value: 'dog_friendly', label: '🐕 Dog Friendly', desc: 'Bring your pup' },
+                    { value: 'family_friendly', label: '👨‍👩‍👧 Family Friendly', desc: 'Kids welcome' },
+                    { value: 'reservations', label: '📅 Reservations', desc: 'Book ahead' },
+                  ].map((feature) => {
+                    const current = localRestaurantPreferences?.features || [];
+                    const selected = current.includes(feature.value);
+                    return (
+                      <button
+                        key={feature.value}
+                        type="button"
+                        onClick={() =>
+                          setLocalRestaurantPreferences((prev) => {
+                            const prevFeatures = prev?.features || [];
+                            const next = selected
+                              ? prevFeatures.filter((f) => f !== feature.value)
+                              : [...prevFeatures, feature.value];
+                            return { ...(prev || {}), features: next };
+                          })
+                        }
+                        className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 text-left ${
+                          selected
+                            ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                            : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                        }`}
+                      >
+                        <div className="text-xs font-semibold text-gray-800">{feature.label}</div>
+                        <div className="text-[10px] text-gray-500 mt-0.5">{feature.desc}</div>
+                        {selected && (
+                          <div className="absolute top-2 right-2">
+                            <div className="w-4 h-4 rounded-full bg-purple-500 flex items-center justify-center">
+                              <span className="text-white text-[10px]">✓</span>
+                            </div>
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-500 text-center pt-2">
+                Match scores update instantly as you select preferences
+              </p>
+
+              <div className="pt-4 mt-2 border-t flex flex-col gap-2">
+                <div className="flex gap-2">
+                  <Button
+                    variant="ghost"
+                    className="flex-1 text-gray-600 hover:text-gray-900"
+                    onClick={() =>
+                      setLocalRestaurantPreferences({
+                        atmosphere: 'any',
+                        diningStyle: 50,
+                        features: [],
+                        priceRange: 'any',
+                        mealTime: 'any',
+                        groupSize: 'any',
+                      })
+                    }
+                    title="Reset to defaults"
+                  >
+                    Reset
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="flex-1"
+                    onClick={() => setShowPreferencesModal(false)}
+                  >
+                    Done
+                  </Button>
+                  <Button
+                    className="flex-1 sunset-gradient text-white"
+                    onClick={handleSavePreferencesToProfile}
+                    disabled={savingPreferencesToProfile}
+                  >
+                    {savingPreferencesToProfile ? 'Saving…' : user ? 'Save to Profile' : 'Create account to save'}
+                  </Button>
+                </div>
+                <p className="text-[11px] text-gray-500 text-center">
+                  Your preferences are saved on this device automatically.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
       
       <ShareModal

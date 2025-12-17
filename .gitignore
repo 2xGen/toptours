@@ -28,6 +28,11 @@ yarn-error.log*
 .env*.local
 .env
 
+# Local/generated Viator tag dumps (do not commit)
+scripts/viator-tags-raw.json
+scripts/viator-tags-classified.json
+scripts/viator-tag-names.txt
+
 # vercel
 .vercel
 
