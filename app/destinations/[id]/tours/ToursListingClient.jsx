@@ -3056,7 +3056,7 @@ export default function ToursListingClient({
                     Done
                   </Button>
                   <Button
-                    className="w-full min-w-0 sunset-gradient text-white whitespace-normal leading-tight"
+                    className="w-full min-w-0 h-auto py-2 sunset-gradient text-white whitespace-normal break-words leading-tight text-xs"
                     onClick={handleSavePreferencesToProfile}
                     disabled={savingPreferencesToProfile || loadingPreferences}
                   >
