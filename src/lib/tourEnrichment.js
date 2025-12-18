@@ -168,6 +168,36 @@ const stripCodeFences = (text) => {
   return text.replace(/```json|```/gi, '').trim();
 };
 
+// Clean operator name for AI prompts (avoid raw URLs / .com branding)
+const cleanOperatorNameForPrompt = (raw) => {
+  if (!raw) return '';
+  let name = raw.trim();
+
+  // Reduce URLs to hostname
+  if (/^https?:\/\//i.test(name)) {
+    try {
+      const url = new URL(name);
+      name = url.hostname;
+    } catch {
+      // ignore
+    }
+  }
+
+  // Strip leading www.
+  name = name.replace(/^www\./i, '');
+
+  // Strip common TLDs (keep brand root)
+  name = name.replace(
+    /\.(com|net|org|co|io|ai|travel|info|nl|de|fr|it|es|be|uk|us)$/i,
+    ''
+  );
+
+  // Replace dashes/underscores with spaces
+  name = name.replace(/[-_]+/g, ' ').trim();
+
+  return name;
+};
+
 const buildAiPrompt = (tour) => {
   const title = tour.title || 'Unknown tour';
   const destination =
@@ -196,13 +226,14 @@ const buildAiPrompt = (tour) => {
         .filter(Boolean)
         .slice(0, 4)
     : [];
-  const operator =
+  const operator = cleanOperatorNameForPrompt(
     tour.supplier?.name ||
-    tour.supplierName ||
-    tour.operator?.name ||
-    tour.vendor?.name ||
-    tour.partner?.name ||
-    '';
+      tour.supplierName ||
+      tour.operator?.name ||
+      tour.vendor?.name ||
+      tour.partner?.name ||
+      ''
+  );
   const experienceDetail = description ? truncate(description, 220) : '';
   const durationLabel = (() => {
     const minutes =
@@ -232,30 +263,30 @@ const buildAiPrompt = (tour) => {
   ].filter(Boolean);
 
   return `
-You are TopTours.ai, the editorial voice behind our “Why We Recommend This Tour” block. Craft copy that directly answers why this specific experience earns our TopTours Pick—think editorial endorsement, not generic description.
+You are writing a short, helpful “TopTours Insights” block that explains what this tour is like and who it’s actually a good fit for. Use a neutral, human tone—think clear travel writing, not marketing copy.
 
-Summary guidelines (2-3 sentences):
-• Lead with “We love this tour because…” or “We recommend this for…”
-• Mention the vibe + pacing (sunset sail, small-group snorkeling, chef-led tasting, etc.)
-• Call out the type of traveler it suits (families, adventurous couples, photo lovers)
-• Reference a tangible detail (gear included, beach launch, pro guides, rum punch)
-• Name-drop the operator if provided, explaining their edge (“Jolly Pirates keeps groups lively with…”)
-• Avoid ratings, review counts, or price talk
+Summary guidelines (2–3 sentences, max ~60 words total):
+• Start by describing what the traveler will actually experience (boat type, setting, pace, key moments).
+• Explain who this works well for (e.g. couples wanting privacy, families with kids, travelers who prefer calm water over party boats, etc.).
+• Use concrete details from the description (duration, inclusions, locations, timing) rather than vague phrases.
+• If you mention the operator, use the cleaned name below and never include “.com” or a URL.
+• Do NOT mention ratings, review counts, prices, discounts, or booking urgency.
+• Avoid generic fluff like “discerning travelers”, “once-in-a-lifetime”, “unique experience”, “you’ll love this”, or “we highly recommend”. Focus on specifics instead.
 
 Highlight bullets (max 3, ≤12 words each):
-• Reinforce reasons to recommend (small groups, trusted operator, epic location)
-• No generic phrases like “unique experience” or “you’ll love”
+• Optional. If you include bullets, they should highlight concrete advantages (small group size, flexible timing, calm bays, hotel pickup, etc.).
+• Do NOT repeat the same idea in multiple ways.
 
-Key local details to weave in:
+Key local details to weave in if helpful:
 ${uniqueDetails.length ? uniqueDetails.map((detail) => `• ${detail}`).join('\n') : '• N/A'}
 
 Return *valid JSON only*:
 {
-  "summary": "2-3 sentences here",
+  "summary": "2–3 sentences here, under 60 words, neutral but vivid",
   "bullets": ["Highlight 1 (max 12 words)", "Highlight 2", "Highlight 3"]
 }
 
-If you can't extract highlights, return an empty array. Do not invent details not implied by the data.
+If you can't extract strong highlights, return an empty "bullets" array. Do not invent details that are not clearly implied by the data.
 
 Tour Title: ${title}
 Destination: ${destination}
@@ -263,7 +294,7 @@ Description: ${description || 'N/A'}
 Highlights: ${highlights.join('; ') || 'N/A'}
 Inclusions: ${inclusions.join('; ') || 'N/A'}
 Duration: ${durationLabel || 'N/A'}
-Tour Operator: ${operator || 'N/A'}
+Tour Operator (cleaned): ${operator || 'N/A'}
 Notable Hook: ${experienceHook || 'N/A'}
 `;
 };

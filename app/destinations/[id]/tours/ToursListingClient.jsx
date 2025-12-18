@@ -2007,9 +2007,167 @@ export default function ToursListingClient({
       {/* Main Content */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Sort and Results Count - Same Line */}
+          <div className="mb-6 flex flex-col gap-4">
+            {/* Results Count */}
+            {loading ? (
+              <div className="flex items-center gap-2">
+                <Loader2 className="w-4 h-4 animate-spin text-purple-600" />
+                <p className="text-gray-600">
+                  {isSearching ? 'Searching all tours...' : 'Loading filtered tours...'}
+                </p>
+              </div>
+            ) : (
+              <p className="text-gray-600" suppressHydrationWarning>
+                Showing <span className="font-semibold text-gray-800">{filteredTours.length}</span>
+                {!isSearching && !isFiltered && totalToursAvailable > 0 && (
+                  <span> of {totalToursAvailable.toLocaleString()}+</span>
+                )}
+                {' tours'}
+                {isSearching && ' (searched from all available tours)'}
+                {isFiltered && !isSearching && filteredTotalCount > 0 && (
+                  <span> (filtered from {filteredTotalCount.toLocaleString()}+ available tours)</span>
+                )}
+                {isFiltered && !isSearching && filteredTotalCount === 0 && totalToursAvailable > 0 && (
+                  <span> (filtered from {totalToursAvailable.toLocaleString()}+ available tours)</span>
+                )}
+                {isFiltered && !isSearching && filteredTotalCount === 0 && totalToursAvailable === 0 && ' (filtered from all available tours)'}
+                {!isSearching && !isFiltered && hasActiveFilters && ' matching your criteria'}
+                {!isSearching && !isFiltered && !hasActiveFilters && totalToursAvailable > 0 && (
+                  <span className="text-gray-500 text-sm ml-2">(Use search or filters to see more)</span>
+                )}
+              </p>
+            )}
+            
+            {/* Sort and Match to Your Style - Same Line */}
+            <div className="flex items-center justify-between gap-4 flex-wrap">
+              {/* Sort Dropdown */}
+              <div className="flex items-center gap-3">
+                <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Sort by:</label>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                >
+                  <option value="rating">Highest Rated</option>
+                  <option value="reviews">Most Reviewed</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="best-match">Best Match {user ? '(for you)' : ''} ⭐</option>
+                </select>
+              </div>
+              
+              {/* Match to Your Style - Button to open modal */}
+              <button
+                onClick={() => setShowPreferencesModal(true)}
+                className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-lg hover:border-purple-300 hover:shadow-sm transition-all"
+              >
+                <Sparkles className="w-4 h-4 text-purple-600" />
+                <span className="text-sm font-semibold text-gray-900">
+                  Match to Your Style
+                </span>
+                <span className="text-[10px] font-medium bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">
+                  AI driven
+                </span>
+              </button>
+            </div>
+
+            <p className="text-xs sm:text-sm text-gray-500">
+              Tip: switch to <span className="font-semibold text-gray-700">Best Match</span> to rank tours by your travel style.
+            </p>
+          </div>
+
+
+          {/* Featured Tours Section */}
+          {featuredTours.length > 0 && (
+            <div className="mb-12">
+              <div className="flex items-center gap-2 mb-6">
+                <Crown className="w-5 h-5 text-yellow-500" />
+                <h2 className="text-2xl font-bold text-gray-900">Featured Tours</h2>
+                <Badge variant="secondary" className="ml-2">Curated by TopTours.ai</Badge>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {featuredTours.map((tour, index) => (
+                  <TourCard 
+                    key={tour.productId || index} 
+                    tour={tour} 
+                    isFeatured={true} 
+                    destination={destination} 
+                    promotionScores={promotionScores} 
+                    effectiveDestinationId={effectiveDestinationId} 
+                    premiumOperatorTourIds={premiumOperatorTourIds}
+                    matchScore={matchScores[tour.productId || tour.productCode]}
+                    user={user}
+                    userPreferences={userPreferences}
+                    onOpenPreferences={() => setShowPreferencesModal(true)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* More Tours Section */}
+          {regularTours.length > 0 && (
+            <div>
+              {featuredTours.length > 0 && (
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">More Tours</h2>
+              )}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {regularTours.map((tour, index) => (
+                  <TourCard 
+                    key={tour.productId || tour.productCode || index} 
+                    tour={tour} 
+                    isFeatured={false} 
+                    destination={destination} 
+                    promotionScores={promotionScores} 
+                    effectiveDestinationId={effectiveDestinationId} 
+                    premiumOperatorTourIds={premiumOperatorTourIds}
+                    matchScore={matchScores[tour.productId || tour.productCode]}
+                    user={user}
+                    userPreferences={userPreferences}
+                    onOpenPreferences={() => setShowPreferencesModal(true)}
+                  />
+                ))}
+              </div>
+              
+              {/* Load More Button for Filtered Results */}
+              {isFiltered && filteredHasMore && (
+                <div className="mt-8 text-center">
+                  <Button
+                    onClick={handleLoadMoreFiltered}
+                    disabled={loadingMoreFiltered}
+                    className="sunset-gradient text-white px-8 py-6 text-lg"
+                    size="lg"
+                  >
+                    {loadingMoreFiltered ? (
+                      <>
+                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                        Loading more tours...
+                      </>
+                    ) : (
+                      `Load More Tours (${filteredTours.length} of ${filteredTotalCount > 0 ? filteredTotalCount.toLocaleString() : 'many'}+)`
+                    )}
+                  </Button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* No Results */}
+          {filteredTours.length === 0 && (
+            <div className="text-center py-16">
+              <p className="text-gray-600 text-lg">No tours found matching your criteria.</p>
+              {hasActiveFilters && (
+                <Button onClick={handleClearFilters} variant="outline" className="mt-4">
+                  Clear Filters
+                </Button>
+              )}
+            </div>
+          )}
+
           {/* Trending Now Section - Past 28 Days (Combined Tours & Restaurants) */}
           {((trendingTours && trendingTours.length > 0) || (trendingRestaurants && trendingRestaurants.length > 0)) && (
-            <section className="py-12 bg-white mb-12">
+            <section className="py-12 bg-white mt-12">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center gap-2 mb-6">
                   <TrendingUp className="w-5 h-5 text-orange-600" />
@@ -2020,7 +2178,7 @@ export default function ToursListingClient({
                 </div>
                 <div className="flex items-center gap-2 mb-6">
                   <p className="text-sm text-gray-600">
-                    Tours and restaurants that are currently popular based on recent community boosts
+                    Tours and restaurants that are currently popular based on recent community boosts.
                   </p>
                   <button
                     onClick={() => setIsPromotionModalOpen(true)}
@@ -2234,164 +2392,6 @@ export default function ToursListingClient({
                 )}
               </div>
             </section>
-          )}
-
-          {/* Sort and Results Count - Same Line */}
-          <div className="mb-6 flex flex-col gap-4">
-            {/* Results Count */}
-            {loading ? (
-              <div className="flex items-center gap-2">
-                <Loader2 className="w-4 h-4 animate-spin text-purple-600" />
-                <p className="text-gray-600">
-                  {isSearching ? 'Searching all tours...' : 'Loading filtered tours...'}
-                </p>
-              </div>
-            ) : (
-              <p className="text-gray-600" suppressHydrationWarning>
-                Showing <span className="font-semibold text-gray-800">{filteredTours.length}</span>
-                {!isSearching && !isFiltered && totalToursAvailable > 0 && (
-                  <span> of {totalToursAvailable.toLocaleString()}+</span>
-                )}
-                {' tours'}
-                {isSearching && ' (searched from all available tours)'}
-                {isFiltered && !isSearching && filteredTotalCount > 0 && (
-                  <span> (filtered from {filteredTotalCount.toLocaleString()}+ available tours)</span>
-                )}
-                {isFiltered && !isSearching && filteredTotalCount === 0 && totalToursAvailable > 0 && (
-                  <span> (filtered from {totalToursAvailable.toLocaleString()}+ available tours)</span>
-                )}
-                {isFiltered && !isSearching && filteredTotalCount === 0 && totalToursAvailable === 0 && ' (filtered from all available tours)'}
-                {!isSearching && !isFiltered && hasActiveFilters && ' matching your criteria'}
-                {!isSearching && !isFiltered && !hasActiveFilters && totalToursAvailable > 0 && (
-                  <span className="text-gray-500 text-sm ml-2">(Use search or filters to see more)</span>
-                )}
-              </p>
-            )}
-            
-            {/* Sort and Match to Your Style - Same Line */}
-            <div className="flex items-center justify-between gap-4 flex-wrap">
-              {/* Sort Dropdown */}
-              <div className="flex items-center gap-3">
-                <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Sort by:</label>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                >
-                  <option value="rating">Highest Rated</option>
-                  <option value="reviews">Most Reviewed</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                  <option value="best-match">Best Match {user ? '(for you)' : ''} ⭐</option>
-                </select>
-              </div>
-              
-              {/* Match to Your Style - Button to open modal */}
-              <button
-                onClick={() => setShowPreferencesModal(true)}
-                className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-lg hover:border-purple-300 hover:shadow-sm transition-all"
-              >
-                <Sparkles className="w-4 h-4 text-purple-600" />
-                <span className="text-sm font-semibold text-gray-900">
-                  Match to Your Style
-                </span>
-                <span className="text-[10px] font-medium bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">
-                  AI driven
-                </span>
-              </button>
-            </div>
-
-            <p className="text-xs sm:text-sm text-gray-500">
-              Tip: switch to <span className="font-semibold text-gray-700">Best Match</span> to rank tours by your travel style.
-            </p>
-          </div>
-
-
-          {/* Featured Tours Section */}
-          {featuredTours.length > 0 && (
-            <div className="mb-12">
-              <div className="flex items-center gap-2 mb-6">
-                <Crown className="w-5 h-5 text-yellow-500" />
-                <h2 className="text-2xl font-bold text-gray-900">Featured Tours</h2>
-                <Badge variant="secondary" className="ml-2">Curated by TopTours.ai</Badge>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {featuredTours.map((tour, index) => (
-                  <TourCard 
-                    key={tour.productId || index} 
-                    tour={tour} 
-                    isFeatured={true} 
-                    destination={destination} 
-                    promotionScores={promotionScores} 
-                    effectiveDestinationId={effectiveDestinationId} 
-                    premiumOperatorTourIds={premiumOperatorTourIds}
-                    matchScore={matchScores[tour.productId || tour.productCode]}
-                    user={user}
-                    userPreferences={userPreferences}
-                    onOpenPreferences={() => setShowPreferencesModal(true)}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* More Tours Section */}
-          {regularTours.length > 0 && (
-            <div>
-              {featuredTours.length > 0 && (
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">More Tours</h2>
-              )}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {regularTours.map((tour, index) => (
-                  <TourCard 
-                    key={tour.productId || tour.productCode || index} 
-                    tour={tour} 
-                    isFeatured={false} 
-                    destination={destination} 
-                    promotionScores={promotionScores} 
-                    effectiveDestinationId={effectiveDestinationId} 
-                    premiumOperatorTourIds={premiumOperatorTourIds}
-                    matchScore={matchScores[tour.productId || tour.productCode]}
-                    user={user}
-                    userPreferences={userPreferences}
-                    onOpenPreferences={() => setShowPreferencesModal(true)}
-                  />
-                ))}
-              </div>
-              
-              {/* Load More Button for Filtered Results */}
-              {isFiltered && filteredHasMore && (
-                <div className="mt-8 text-center">
-                  <Button
-                    onClick={handleLoadMoreFiltered}
-                    disabled={loadingMoreFiltered}
-                    className="sunset-gradient text-white px-8 py-6 text-lg"
-                    size="lg"
-                  >
-                    {loadingMoreFiltered ? (
-                      <>
-                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                        Loading more tours...
-                      </>
-                    ) : (
-                      `Load More Tours (${filteredTours.length} of ${filteredTotalCount > 0 ? filteredTotalCount.toLocaleString() : 'many'}+)`
-                    )}
-                  </Button>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* No Results */}
-          {filteredTours.length === 0 && (
-            <div className="text-center py-16">
-              <p className="text-gray-600 text-lg">No tours found matching your criteria.</p>
-              {hasActiveFilters && (
-                <Button onClick={handleClearFilters} variant="outline" className="mt-4">
-                  Clear Filters
-                </Button>
-              )}
-            </div>
           )}
         </div>
       </section>
@@ -3215,14 +3215,6 @@ function TourCard({ tour, isFeatured, destination, promotionScores = {}, effecti
                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
               />
             )}
-            {/* price badge stays on right; no save here to avoid overlap */}
-            {hasDiscount && (
-              <div className="absolute top-3 left-3 z-20">
-                <span className="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-rose-600 text-white rounded-full shadow">
-                  <span>💸</span> Special Offer
-                </span>
-              </div>
-            )}
             {isFeatured && (
               <Badge className="absolute top-3 left-3 adventure-gradient text-white z-20">
                 <Crown className="w-3 h-3 mr-1" />
@@ -3265,18 +3257,28 @@ function TourCard({ tour, isFeatured, destination, promotionScores = {}, effecti
               )}
             </button>
             
-            {/* Price Badge - Right side */}
+            {/* Price + Special Offer - Right side (stacked) */}
             {price > 0 && (
-              <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 z-20">
-                <div className="flex flex-col items-end" suppressHydrationWarning>
+              <div className="absolute top-3 right-3 z-20">
+                <div className="flex flex-col items-end gap-1" suppressHydrationWarning>
                   {hasDiscount && (
-                    <span className="text-xs text-gray-400 line-through">
-                      ${typeof originalPrice === 'number' ? originalPrice.toLocaleString('en-US') : originalPrice}
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide bg-rose-600 text-white rounded-full shadow">
+                      <span>💸</span>
+                      <span>Special Offer</span>
                     </span>
                   )}
-                  <span className="text-sm font-bold text-orange-600">
-                    From ${typeof price === 'number' ? price.toLocaleString('en-US') : price}
-                  </span>
+                  <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
+                    <div className="flex flex-col items-end">
+                      {hasDiscount && (
+                        <span className="text-xs text-gray-400 line-through">
+                          ${typeof originalPrice === 'number' ? originalPrice.toLocaleString('en-US') : originalPrice}
+                        </span>
+                      )}
+                      <span className="text-sm font-bold text-orange-600">
+                        From ${typeof price === 'number' ? price.toLocaleString('en-US') : price}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}

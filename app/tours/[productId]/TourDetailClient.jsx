@@ -20,7 +20,8 @@ import {
   Bookmark,
   Info,
   Share2,
-  Crown
+  Crown,
+  Sparkles,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -39,6 +40,12 @@ import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import ShareModal from '@/components/sharing/ShareModal';
 import { PromoteTourOperatorBanner } from '@/components/tour/PromoteTourOperatorBanner';
+import { 
+  calculateTourProfile, 
+  getUserPreferenceScores, 
+  calculateMatchScore, 
+  getDefaultPreferences 
+} from '@/lib/tourMatching';
 
 export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [] }) {
   const router = useRouter();
@@ -74,6 +81,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [showShareModal, setShowShareModal] = useState(false);
+  const [showPreferencesModal, setShowPreferencesModal] = useState(false);
+  const [savingPreferencesToProfile, setSavingPreferencesToProfile] = useState(false);
   const [matchData, setMatchData] = useState(null);
   const [isGeneratingMatch, setIsGeneratingMatch] = useState(false);
   const [matchError, setMatchError] = useState('');
@@ -83,6 +92,35 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   const [showMatchResultsModal, setShowMatchResultsModal] = useState(false);
   const supabase = createSupabaseBrowserClient();
   const [clientDestinationLookup, setClientDestinationLookup] = useState(null);
+  const [user, setUser] = useState(null);
+  const [userPreferences, setUserPreferences] = useState(null);
+  const [tourProfile, setTourProfile] = useState(null);
+  const [matchScore, setMatchScore] = useState(null);
+  const [loadingProfile, setLoadingProfile] = useState(true);
+  const [isGeneratingInsight, setIsGeneratingInsight] = useState(false);
+  const [insightError, setInsightError] = useState('');
+
+  // Local, lightweight preferences (same structure as tours listing page)
+  const [localPreferences, setLocalPreferences] = useState(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      const stored = localStorage.getItem('topTours_preferences');
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch (e) {
+      console.error('Error loading localStorage preferences on tour detail page:', e);
+    }
+    // Default balanced preferences
+    return {
+      adventureLevel: 50,
+      cultureVsBeach: 50,
+      groupPreference: 50,
+      budgetComfort: 50,
+      structurePreference: 50,
+      foodAndDrinkInterest: 50,
+    };
+  });
   const getSlugFromRef = (value) => {
     if (!value) return null;
     const normalized = String(value).replace(/^d/i, '');
@@ -135,6 +173,16 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     return '';
   }, [destination, tour]);
 
+  // Persist local preferences to localStorage
+  useEffect(() => {
+    if (!localPreferences || typeof window === 'undefined') return;
+    try {
+      localStorage.setItem('topTours_preferences', JSON.stringify(localPreferences));
+    } catch (e) {
+      console.error('Error saving localStorage preferences on tour detail page:', e);
+    }
+  }, [localPreferences]);
+
   const similarSectionTitle = derivedDestinationName
     ? `Other Tours in ${derivedDestinationName}`
     : 'Other Tours You Might Like';
@@ -172,6 +220,50 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     }
     return null;
   }, [destinationTourUrl, fallbackDestinationSlugByName]);
+
+  const handleGenerateInsight = useCallback(async () => {
+    if (!productId || isGeneratingInsight) return;
+
+    try {
+      setIsGeneratingInsight(true);
+      setInsightError('');
+
+      const response = await fetch(`/api/internal/tour-enrichment/${productId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        let message = 'Failed to generate insight';
+        try {
+          const errorData = await response.json();
+          message = errorData?.error || message;
+        } catch {
+          // ignore JSON parse errors, fall back to generic message
+        }
+        throw new Error(message);
+      }
+
+      const data = await response.json();
+      const newInsight =
+        data?.enrichment?.ai_summary && typeof data.enrichment.ai_summary === 'string'
+          ? data.enrichment.ai_summary
+          : '';
+
+      if (newInsight) {
+        setEditorialInsight(newInsight);
+      } else {
+        setInsightError('AI did not return a usable insight.');
+      }
+    } catch (error) {
+      console.error('Error generating AI insight:', error);
+      setInsightError(error?.message || 'Could not generate insight. Please try again later.');
+    } finally {
+      setIsGeneratingInsight(false);
+    }
+  }, [productId, isGeneratingInsight]);
 
   // Helper function to generate slug from name
   const generateSlugFromName = (name) => {
@@ -463,6 +555,125 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       console.error('Tour destinations:', tour?.destinations);
     }
   }, [destination, destinationData, fallbackDestinationData, effectiveDestinationData, unmatchedDestinationName, unmatchedDestinationSlug, tour]);
+
+  // Fetch user and preferences for matching
+  useEffect(() => {
+    const fetchUserPreferences = async () => {
+      try {
+        const { data: { user: authUser } } = await supabase.auth.getUser();
+        setUser(authUser);
+        
+        if (authUser) {
+          // Fetch user preferences
+          const { data: profile, error } = await supabase
+            .from('profiles')
+            .select('trip_preferences')
+            .eq('id', authUser.id)
+            .single();
+          
+          if (!error && profile?.trip_preferences) {
+            setUserPreferences(profile.trip_preferences);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user preferences:', error);
+      } finally {
+        setLoadingProfile(false);
+      }
+    };
+    
+    fetchUserPreferences();
+  }, [supabase]);
+
+  // Calculate tour profile from tags
+  useEffect(() => {
+    const calculateProfile = async () => {
+      if (!tour || !tour.tags || tour.tags.length === 0) {
+        setTourProfile(null);
+        setMatchScore(null);
+        return;
+      }
+
+      try {
+        setLoadingProfile(true);
+        const profile = await calculateTourProfile(tour.tags);
+        setTourProfile(profile);
+
+        // Calculate match score if user has preferences
+        if (user && userPreferences) {
+          const preferences = getUserPreferenceScores(userPreferences);
+          const match = calculateMatchScore(profile, preferences);
+          setMatchScore(match);
+        } else {
+          // Default match score
+          const defaultPrefs = getDefaultPreferences();
+          const match = calculateMatchScore(profile, defaultPrefs);
+          setMatchScore(match);
+        }
+      } catch (error) {
+        console.error('Error calculating tour profile:', error);
+        setTourProfile(null);
+        setMatchScore(null);
+      } finally {
+        setLoadingProfile(false);
+      }
+    };
+
+    calculateProfile();
+  }, [tour, user, userPreferences]);
+
+  // Explicit "Save to profile" handler (same behavior as tours listing page)
+  const handleSavePreferencesToProfile = useCallback(async () => {
+    if (!localPreferences) return;
+
+    // If not signed in, send them to auth (prefs are already in localStorage)
+    if (!user) {
+      try {
+        const redirect =
+          typeof window !== 'undefined'
+            ? window.location.pathname + window.location.search
+            : '/';
+        setShowPreferencesModal(false);
+        router.push(`/auth?mode=signup&redirect=${encodeURIComponent(redirect)}`);
+      } catch {
+        router.push('/auth');
+      }
+      return;
+    }
+
+    setSavingPreferencesToProfile(true);
+    try {
+      const mergedPreferences = {
+        ...(userPreferences || {}),
+        ...localPreferences,
+      };
+
+      const { error } = await supabase
+        .from('profiles')
+        .upsert({
+          id: user.id,
+          trip_preferences: mergedPreferences,
+        });
+
+      if (error) throw error;
+
+      setUserPreferences(mergedPreferences);
+      toast({
+        title: 'Preferences saved',
+        description: 'Saved to your profile (syncs across devices).',
+      });
+      setShowPreferencesModal(false);
+    } catch (e) {
+      console.error('Error saving preferences to profile (tour detail):', e);
+      toast({
+        title: 'Could not save preferences',
+        description: e?.message || 'Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setSavingPreferencesToProfile(false);
+    }
+  }, [localPreferences, user, userPreferences, supabase, router, toast]);
 
   // Trigger confetti when returning from instant boost payment
   useEffect(() => {
@@ -1130,6 +1341,23 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   
   // Extract insider tips if available
   const insiderTips = tour.viatorUniqueContent?.insiderTips || '';
+
+  // Short TopTours editorial insight (2–3 sentences) from enrichment, if available.
+  // Start from server-provided enrichment, but allow client-side generation via API.
+  const [editorialInsight, setEditorialInsight] = useState(
+    () =>
+      (enrichment?.ai_summary && typeof enrichment.ai_summary === 'string'
+        ? enrichment.ai_summary
+        : '') || ''
+  );
+
+  useEffect(() => {
+    setEditorialInsight(
+      (enrichment?.ai_summary && typeof enrichment.ai_summary === 'string'
+        ? enrichment.ai_summary
+        : '') || ''
+    );
+  }, [enrichment?.ai_summary]);
   
   const flags = tour.flags || [];
   const supplierName = tour?.supplier?.name ||
@@ -1814,152 +2042,264 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 </motion.section>
               )}
 
-              {/* Tour Characteristics (Extracted Values) */}
-              {enrichment?.structured_values && (
+
+              {/* TopTours Insights - Tour Characteristics */}
                 <motion.section
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.18 }}
-                  className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg shadow-sm p-6 md:p-8 border border-purple-200"
+                className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg shadow-sm p-6 md:p-8 border border-purple-200"
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-white shadow-inner flex items-center justify-center text-purple-600 text-xl font-bold">
-                      📊
-                    </div>
+                <div className="mb-6 space-y-3">
+                  <div className="flex items-center justify-between gap-3">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.4em] text-purple-500">Tour Analysis</p>
-                      <h2 className="text-2xl font-bold text-gray-900">Tour Characteristics</h2>
+                      <div className="flex items-center gap-2 mb-1">
+                        <p className="text-xs uppercase tracking-[0.4em] text-purple-500">TopTours Insights</p>
+                        <Badge variant="secondary" className="bg-purple-50 text-purple-700 border-purple-200 text-xs">
+                          AI Generated
+                        </Badge>
+                      </div>
+                      <h2 className="text-2xl font-bold text-gray-900">
+                        {tour?.seo?.title || tour?.title || 'Tour'}
+                      </h2>
                     </div>
-                    <Badge variant="secondary" className="bg-blue-50 text-blue-700 border-blue-200 text-xs">
-                      Powered by Gemini AI
-                    </Badge>
+                    
+                    {matchScore && typeof matchScore.score === 'number' && (
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-purple-200 shadow-sm">
+                        <Sparkles
+                          className={`w-4 h-4 ${
+                            user && userPreferences && matchScore.score >= 70
+                              ? 'text-purple-600'
+                              : user && userPreferences
+                              ? 'text-purple-500'
+                              : 'text-gray-500'
+                          }`}
+                        />
+                        <span className="text-xs font-bold text-gray-900">
+                          {matchScore.score}%
+                        </span>
+                        <span className="text-[10px] text-gray-600">
+                          {user && userPreferences ? 'Match for You' : 'Match'}
+                        </span>
+                      </div>
+                    )}
                   </div>
-                  <p className="text-gray-600 text-base mb-6">
-                    This tour has been analyzed using Gemini AI to help you understand its key features and match it with your travel preferences.
-                  </p>
-                  <div className="space-y-3">
-                    {[
-                      { key: 'adventureLevel', label: '🔥 Adventure Level', icon: '🔥' },
-                      { key: 'structureLevel', label: '📋 Structure Level', icon: '📋' },
-                      { key: 'foodImportance', label: '🍷 Food & Drink Importance', icon: '🍷' },
-                      { key: 'groupType', label: '👥 Group Type', icon: '👥' },
-                      { key: 'budgetLevel', label: '💰 Budget Level', icon: '💰' },
-                      { key: 'relaxationVsExploration', label: '🌊 Relaxation vs Exploration', icon: '🌊' },
-                    ].map(({ key, label, icon }) => {
-                      const value = enrichment.structured_values[key];
-                      if (value === undefined || value === null) return null;
-                      
-                      // Convert numeric value to descriptive text
-                      const getValueLabel = (val) => {
-                        if (val <= 25) return 'Low';
-                        if (val <= 50) return 'Moderate';
-                        if (val <= 75) return 'High';
-                        return 'Very High';
-                      };
-                      
-                      const getValueColor = (val) => {
-                        if (val <= 25) return 'bg-blue-500';
-                        if (val <= 50) return 'bg-yellow-500';
-                        if (val <= 75) return 'bg-orange-500';
-                        return 'bg-red-500';
-                      };
-                      
-                      return (
-                        <div key={key} className="flex items-center justify-between p-3 bg-white/60 rounded-lg">
-                          <div className="flex items-center gap-2">
-                            <span className="text-lg">{icon}</span>
-                            <span className="text-sm font-medium text-gray-700">{label.replace(/^[^\s]+\s/, '')}</span>
-                          </div>
-                          <div className="flex items-center gap-3">
-                            <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
-                              <div
-                                className={`h-full transition-all duration-500 ${getValueColor(value)}`}
-                                style={{ width: `${value}%` }}
-                              />
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className="text-sm font-semibold text-gray-700 min-w-[3rem] text-right">
-                                {value}%
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  <div className="mt-6 pt-4 border-t border-purple-200">
-                    <div className="flex flex-col items-center gap-4">
-                      <p className="text-xs text-gray-500 text-center">
-                        Set your travel preferences in your profile to see how well this tour matches your style.
+
+                  {editorialInsight ? (
+                    <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                      {editorialInsight}
+                    </p>
+                  ) : (
+                    <div className="space-y-2 text-gray-700 text-sm md:text-base leading-relaxed">
+                      <p>
+                        Let TopTours AI read the full tour details and generate a short insight
+                        about who this experience is best for and what stands out.
                       </p>
                       <Button
-                        onClick={handleGenerateMatch}
-                        disabled={isGeneratingMatch}
-                        className="sunset-gradient text-white font-semibold px-6 py-3"
+                        variant="outline"
+                        size="sm"
+                        className="inline-flex items-center gap-2 border-purple-300 text-purple-700 hover:bg-purple-50"
+                        onClick={handleGenerateInsight}
+                        disabled={isGeneratingInsight}
                       >
-                        {isGeneratingMatch ? (
-                          <span className="flex items-center gap-2">
-                            <span className="relative flex h-4 w-4">
-                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-                              <span className="relative inline-flex rounded-full h-4 w-4 bg-white" />
-                            </span>
-                            Calculating match…
-                          </span>
-                        ) : (
-                          'See Match with My Preferences'
-                        )}
-                      </Button>
-                      {matchError && <p className="text-sm text-red-600">{matchError}</p>}
-                    </div>
-                  </div>
-                </motion.section>
-              )}
-
-              {/* Show button to analyze if values not extracted yet */}
-              {!enrichment?.structured_values && (
-                <motion.section
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.18 }}
-                  className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg shadow-sm p-6 md:p-8 border border-dashed border-purple-200 text-center"
-                >
-                  <div className="flex flex-col items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-white shadow-inner flex items-center justify-center text-purple-600 text-xl font-bold">
-                      📊
-                    </div>
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.4em] text-purple-500">Tour Analysis</p>
-                      <h2 className="text-2xl font-bold text-gray-900">Tour Characteristics</h2>
-                    </div>
-                    <p className="text-gray-600 text-base max-w-3xl">
-                      Analyze this tour to extract its characteristics (adventure level, structure, food importance, etc.). This is a one-time analysis that enables personalized matching.
-                    </p>
-                    <Button
-                      onClick={handleExtractTourValues}
-                      disabled={isGeneratingMatch}
-                      className="sunset-gradient text-white font-semibold px-6 py-3"
-                    >
-                      {isGeneratingMatch ? (
-                        <span className="flex items-center gap-2">
-                          <span className="relative flex h-4 w-4">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-                            <span className="relative inline-flex rounded-full h-4 w-4 bg-white" />
-                          </span>
-                          Analyzing tour…
+                        <Sparkles className="w-4 h-4" />
+                        <span className="text-sm font-semibold">
+                          {isGeneratingInsight ? 'Analyzing with AI…' : 'Generate TopTours Insight'}
                         </span>
-                      ) : (
-                        'Analyze Tour Characteristics'
+                      </Button>
+                      {insightError && (
+                        <p className="text-xs text-red-500">
+                          {insightError}
+                        </p>
                       )}
-                    </Button>
-                    {matchError && <p className="text-sm text-red-600">{matchError}</p>}
-                    <p className="text-xs text-gray-500 mt-2">
-                      One-time analysis • Enables preference matching
+                    </div>
+                  )}
+                </div>
+
+                {loadingProfile ? (
+                  <div className="text-center py-8">
+                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
+                    <p className="text-gray-600 mt-2">Calculating tour characteristics...</p>
+                  </div>
+                ) : tourProfile ? (
+                  <div className="space-y-6">
+                    {/* Tour Characteristics */}
+                    <div>
+                      <h5 className="font-semibold text-gray-900 mb-4">Tour Characteristics:</h5>
+                      <div className="space-y-4">
+                        {/* Adventure Level */}
+                        <div>
+                          <label className="block text-xs font-medium text-gray-600 mb-2">
+                            🔥 Adventure Level
+                          </label>
+                          <div className="grid grid-cols-3 gap-2">
+                            {[
+                              { value: 25, label: '😌', desc: 'Relaxed' },
+                              { value: 50, label: '⚖️', desc: 'Balanced' },
+                              { value: 75, label: '🔥', desc: 'Adventurous' },
+                            ].map((option) => {
+                              const score = tourProfile.adventure_score || 50;
+                              const distances = [25, 50, 75].map(v => Math.abs(score - v));
+                              const isClosest = Math.abs(score - option.value) === Math.min(...distances);
+                              return (
+                                <div
+                                  key={option.value}
+                                  className={`relative p-3 rounded-lg border-2 text-center ${
+                                    isClosest
+                                      ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100'
+                                      : 'border-gray-200 bg-gray-50'
+                                  }`}
+                                >
+                                  <div className="text-xl mb-1">{option.label}</div>
+                                  <div className="text-xs font-semibold text-gray-700">{option.desc}</div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                        {/* Relaxation vs Exploration */}
+                        <div>
+                          <label className="block text-xs font-medium text-gray-600 mb-2">
+                            🌊 Relaxation vs Exploration
+                          </label>
+                          <div className="grid grid-cols-3 gap-2">
+                            {[
+                              { value: 25, label: '😌', desc: 'Relax' },
+                              { value: 50, label: '⚖️', desc: 'Balanced' },
+                              { value: 75, label: '🔍', desc: 'Explore' },
+                            ].map((option) => {
+                              const score = tourProfile.relaxation_exploration_score || 50;
+                              const distances = [25, 50, 75].map(v => Math.abs(score - v));
+                              const isClosest = Math.abs(score - option.value) === Math.min(...distances);
+                              return (
+                                <div
+                                  key={option.value}
+                                  className={`relative p-3 rounded-lg border-2 text-center ${
+                                    isClosest
+                                      ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100'
+                                      : 'border-gray-200 bg-gray-50'
+                                  }`}
+                                >
+                                  <div className="text-xl mb-1">{option.label}</div>
+                                  <div className="text-xs font-semibold text-gray-700">{option.desc}</div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                        {/* Group Size */}
+                        <div>
+                          <label className="block text-xs font-medium text-gray-600 mb-2">
+                            👥 Group Size
+                          </label>
+                          <div className="grid grid-cols-3 gap-2">
+                            {[
+                              { value: 25, label: '👥', desc: 'Big Groups' },
+                              { value: 50, label: '⚖️', desc: 'Either Way' },
+                              { value: 75, label: '🧑‍🤝‍🧑', desc: 'Private/Small' },
+                            ].map((option) => {
+                              const score = tourProfile.group_intimacy_score || 50;
+                              const distances = [25, 50, 75].map(v => Math.abs(score - v));
+                              const isClosest = Math.abs(score - option.value) === Math.min(...distances);
+                              return (
+                                <div
+                                  key={option.value}
+                                  className={`relative p-3 rounded-lg border-2 text-center ${
+                                    isClosest
+                                      ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100'
+                                      : 'border-gray-200 bg-gray-50'
+                                  }`}
+                                >
+                                  <div className="text-xl mb-1">{option.label}</div>
+                                  <div className="text-xs font-semibold text-gray-700">{option.desc}</div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                        {/* Budget vs Comfort */}
+                        <div>
+                          <label className="block text-xs font-medium text-gray-600 mb-2">
+                            💰 Budget vs Comfort
+                          </label>
+                          <div className="grid grid-cols-3 gap-2">
+                            {[
+                              { value: 25, label: '💰', desc: 'Budget' },
+                              { value: 50, label: '⚖️', desc: 'Balanced' },
+                              { value: 75, label: '✨', desc: 'Comfort' },
+                            ].map((option) => {
+                              const score = tourProfile.price_comfort_score || 50;
+                              const distances = [25, 50, 75].map(v => Math.abs(score - v));
+                              const isClosest = Math.abs(score - option.value) === Math.min(...distances);
+                              return (
+                                <div
+                                  key={option.value}
+                                  className={`relative p-3 rounded-lg border-2 text-center ${
+                                    isClosest
+                                      ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100'
+                                      : 'border-gray-200 bg-gray-50'
+                                  }`}
+                                >
+                                  <div className="text-xl mb-1">{option.label}</div>
+                                  <div className="text-xs font-semibold text-gray-700">{option.desc}</div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-4">
+                        {tourProfile.tag_count > 0
+                          ? `Profile calculated from ${tourProfile.tag_count} tour tag${tourProfile.tag_count !== 1 ? 's' : ''}.`
+                          : 'No tag data available.'}
+                      </p>
+                    </div>
+
+                    {/* CTA Row: Viator + Match to Your Style */}
+                    <div className="pt-2 flex flex-wrap items-center justify-between gap-3">
+                      {/* Left: Viator CTA (same label as primary hero button) */}
+                      {viatorUrl && (
+                        <Button
+                          asChild
+                          size="sm"
+                          className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 shadow-md px-4 py-2"
+                        >
+                          <a
+                            href={viatorUrl}
+                            target="_blank"
+                            rel="sponsored noopener noreferrer"
+                          >
+                            View Reviews &amp; Availability
+                            <ExternalLink className="w-4 h-4 ml-1 inline-block" />
+                          </a>
+                        </Button>
+                      )}
+
+                      {/* Right: Open preferences modal (same UX as tours listing page) */}
+                      <Button
+                        variant="outline"
+                        className="inline-flex items-center gap-2 border-purple-300 text-purple-700 hover:bg-purple-50 ml-auto"
+                        onClick={() => setShowPreferencesModal(true)}
+                      >
+                        <Sparkles className="w-4 h-4" />
+                        <span className="text-sm font-semibold">Match to Your Style</span>
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-center py-8">
+                    <p className="text-gray-600">
+                      {tour?.tags && tour.tags.length === 0
+                        ? 'No tour tag data available for analysis.'
+                        : 'Unable to calculate tour characteristics.'}
                     </p>
                   </div>
-                </motion.section>
               )}
+              </motion.section>
 
 
               {/* What's Included */}
@@ -3524,6 +3864,297 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         title={tour?.title || 'this tour'}
         url={typeof window !== 'undefined' ? window.location.href : ''}
       />
+
+      {/* Match to Your Style Modal (same UX as /tours listing page) */}
+      {showPreferencesModal && (
+        <div
+          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+          onClick={() => setShowPreferencesModal(false)}
+        >
+          <div
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[85vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="sticky top-0 bg-white border-b px-4 py-3 flex items-center justify-between z-10">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-purple-600" />
+                <h2 className="text-lg font-bold text-gray-900">Match to Your Style</h2>
+              </div>
+              <button
+                onClick={() => setShowPreferencesModal(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X className="w-5 h-5 text-gray-600" />
+              </button>
+            </div>
+
+            <div className="p-4 space-y-4">
+              {/* Adventure Level */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">🔥 Adventure Level</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '😌', desc: 'Relaxed' },
+                    { value: 50, label: '⚖️', desc: 'Balanced' },
+                    { value: 75, label: '🔥', desc: 'Adventurous' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() =>
+                        setLocalPreferences((prev) => ({ ...(prev || {}), adventureLevel: option.value }))
+                      }
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.adventureLevel || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.adventureLevel || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Relaxation vs Exploration */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">🌊 Relaxation vs Exploration</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '😌', desc: 'Relax' },
+                    { value: 50, label: '⚖️', desc: 'Balanced' },
+                    { value: 75, label: '🔍', desc: 'Explore' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() =>
+                        setLocalPreferences((prev) => ({ ...(prev || {}), cultureVsBeach: option.value }))
+                      }
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.cultureVsBeach || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.cultureVsBeach || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Group Size */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">👥 Group Size</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '👥', desc: 'Big Groups' },
+                    { value: 50, label: '⚖️', desc: 'Either Way' },
+                    { value: 75, label: '🧑‍🤝‍🧑', desc: 'Private/Small' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() =>
+                        setLocalPreferences((prev) => ({ ...(prev || {}), groupPreference: option.value }))
+                      }
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.groupPreference || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.groupPreference || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Budget vs Comfort */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">💰 Budget vs Comfort</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '💰', desc: 'Budget' },
+                    { value: 50, label: '⚖️', desc: 'Balanced' },
+                    { value: 75, label: '✨', desc: 'Comfort' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() =>
+                        setLocalPreferences((prev) => ({ ...(prev || {}), budgetComfort: option.value }))
+                      }
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.budgetComfort || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.budgetComfort || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Guided vs Independent */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">📋 Guided vs Independent</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '🕰️', desc: 'Independent' },
+                    { value: 50, label: '⚖️', desc: 'Mixed' },
+                    { value: 75, label: '📋', desc: 'Guided' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() =>
+                        setLocalPreferences((prev) => ({
+                          ...(prev || {}),
+                          structurePreference: option.value,
+                        }))
+                      }
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.structurePreference || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.structurePreference || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Food & Drink */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">🍷 Food & Drink Interest</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '🍽️', desc: 'Not Important' },
+                    { value: 50, label: '⚖️', desc: 'Nice to Have' },
+                    { value: 75, label: '🍷', desc: 'Very Important' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() =>
+                        setLocalPreferences((prev) => ({
+                          ...(prev || {}),
+                          foodAndDrinkInterest: option.value,
+                        }))
+                      }
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.foodAndDrinkInterest || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.foodAndDrinkInterest || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-500 text-center pt-2">
+                Match scores update instantly as you select preferences
+              </p>
+
+              <div className="pt-4 mt-2 border-t flex flex-col gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <Button
+                    variant="ghost"
+                    className="w-full text-gray-600 hover:text-gray-900"
+                    onClick={() =>
+                      setLocalPreferences({
+                        adventureLevel: 50,
+                        cultureVsBeach: 50,
+                        groupPreference: 50,
+                        budgetComfort: 50,
+                        structurePreference: 50,
+                        foodAndDrinkInterest: 50,
+                      })
+                    }
+                    title="Reset to defaults"
+                  >
+                    Reset
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={() => setShowPreferencesModal(false)}
+                  >
+                    Done
+                  </Button>
+                  <Button
+                    className="w-full min-w-0 h-auto py-2 sunset-gradient text-white whitespace-normal break-words leading-tight text-xs"
+                    onClick={handleSavePreferencesToProfile}
+                    disabled={savingPreferencesToProfile || loadingProfile}
+                  >
+                    {savingPreferencesToProfile
+                      ? 'Saving…'
+                      : user
+                      ? 'Save to Profile'
+                      : 'Create account to save'}
+                  </Button>
+                </div>
+                <p className="text-[11px] text-gray-500 text-center">
+                  Your preferences are saved on this device automatically.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

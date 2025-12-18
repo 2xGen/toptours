@@ -156,8 +156,28 @@ export async function syncOperator(tourData, productId) {
         .select();
 
       if (insertError) {
-        console.error('❌ [CRM] Insert error:', insertError);
-        throw insertError;
+        // This is non-critical and should never break the page.
+        // In practice this is usually a duplicate operator_name or a transient DB issue.
+        const safeError =
+          insertError && typeof insertError === 'object'
+            ? {
+                message: insertError.message,
+                code: insertError.code,
+                details: insertError.details,
+                hint: insertError.hint,
+              }
+            : { message: String(insertError || 'Unknown error') };
+
+        // Log as a warning (not an error) so it doesn't clutter build/runtime error output
+        console.warn('⚠️ [CRM] Insert issue (non-blocking, safe to ignore):', safeError);
+
+        // Treat duplicates as success, everything else as a soft failure
+        if (safeError.code === '23505') {
+          // Operator already exists - this is expected when the same tour/operator is viewed multiple times
+          return { success: true, operatorName, skipped: true };
+        }
+
+        return { success: false, error: safeError.message || 'Unknown CRM insert error' };
       }
       console.log('✅ [CRM] Operator inserted:', inserted);
     }

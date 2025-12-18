@@ -5,8 +5,9 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Sparkles, Star, TrendingUp, User, LogIn, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { useRouter } from 'next/navigation';
-import { getMatchDisplay, calculateTourProfile, calculateMatchScore, getDefaultPreferences, getUserPreferenceScores } from '@/lib/tourMatching';
+import { calculateTourProfile, calculateMatchScore, getMatchDisplay, getDefaultPreferences, getUserPreferenceScores } from '@/lib/tourMatching';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 
 export default function TourMatchModal({ 
@@ -16,12 +17,11 @@ export default function TourMatchModal({
   matchScore = null, 
   user = null, 
   userPreferences = null,
-  onOpenPreferences = null // Callback to open preferences modal
+  onOpenPreferences = null, // Callback to open preferences modal
+  insights = null // AI-generated insights (2-3 sentences)
 }) {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
-  const [tagNames, setTagNames] = useState(new Map());
-  const [loadingTagNames, setLoadingTagNames] = useState(false);
   const [tourProfile, setTourProfile] = useState(null);
   const [calculatedMatchScore, setCalculatedMatchScore] = useState(null);
   
@@ -29,12 +29,11 @@ export default function TourMatchModal({
     setMounted(true);
   }, []);
 
-  // Calculate match score immediately (no async fetching - use what's passed)
+  // Calculate match score and tour profile
   useEffect(() => {
     if (!isOpen || !tour) {
       setTourProfile(null);
       setCalculatedMatchScore(null);
-      setLoadingTagNames(false);
       return;
     }
 
@@ -42,11 +41,10 @@ export default function TourMatchModal({
     if (matchScore && matchScore.tourProfile) {
       setTourProfile(matchScore.tourProfile);
       setCalculatedMatchScore(matchScore);
-      setLoadingTagNames(false);
       return;
     }
 
-    // Otherwise, calculate a default match score immediately (no async)
+    // Otherwise, calculate a default match score
     const defaultProfile = {
       adventure_score: 50,
       relaxation_exploration_score: 50,
@@ -66,7 +64,6 @@ export default function TourMatchModal({
       : getDefaultPreferences();
     const calculatedMatch = calculateMatchScore(defaultProfile, preferences);
     setCalculatedMatchScore(calculatedMatch);
-    setLoadingTagNames(false);
   }, [isOpen, tour, matchScore, user, userPreferences]);
   
   // Check if user has meaningful preferences (not just default/empty object)
@@ -168,10 +165,8 @@ export default function TourMatchModal({
                   <Sparkles className="w-6 h-6" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-xl font-bold">
-                    {hasPreferences ? 'Match for Your Travel Style' : 'AI Tour Match'}
-                  </h3>
-                  <p className="text-white/90 text-sm line-clamp-1 mt-1">{title}</p>
+                  <p className="text-xs uppercase tracking-[0.4em] text-white/80 mb-1">TopTours Insights</p>
+                  <h3 className="text-xl font-bold">{title}</h3>
                 </div>
               </div>
             </div>
@@ -217,44 +212,31 @@ export default function TourMatchModal({
                     <h4 className="text-2xl font-bold text-gray-900 mb-2">
                       {getMatchDisplay(finalMatchScore).label}
                     </h4>
-                  </div>
-                  
-                  {/* Match Description */}
-                  <div className="text-center">
-                    <p className="text-gray-600">
-                      {(() => {
-                        const hasTags = tour.tags && tour.tags.length > 0 && tour.tags.some(tag => 
-                          tag && typeof tag === 'object' && (
-                            tag.adventure_score !== undefined ||
-                            tag.relaxation_exploration_score !== undefined ||
-                            tag.group_intimacy_score !== undefined ||
-                            tag.price_comfort_score !== undefined ||
-                            tag.guidance_score !== undefined ||
-                            tag.food_drink_score !== undefined
-                          )
-                        );
-                        
-                        if (!hasTags) {
-                          return hasPreferences
-                            ? 'Match score based on a default balanced tour profile (no tag data available). This is an estimate - actual match may vary once tour tags are analyzed.'
-                            : 'This score shows how well this tour matches your travel style based on adventure level, group size, budget, and other preferences.';
-                        }
-                        
-                        return hasPreferences 
-                          ? (finalMatchScore && finalMatchScore.confidence === 'high' 
-                              ? 'High confidence match based on your travel preferences and tour tags.' 
-                              : finalMatchScore && finalMatchScore.confidence === 'medium'
-                              ? 'Good match based on your travel style and tour characteristics.'
-                              : 'Estimated match based on available tour information.')
-                          : 'This score shows how well this tour matches your travel style based on adventure level, group size, budget, and other preferences.';
-                      })()}
+                    <p className="text-gray-600 text-sm">
+                      {tour.tags && tour.tags.length > 0
+                        ? `Match score based on tour characteristics. ${hasPreferences ? 'Personalized to your travel style.' : 'Set your preferences for personalized matches.'}`
+                        : 'Match score based on a balanced travel profile. Set your preferences for personalized matches.'}
                     </p>
                   </div>
-
+                  
+                  {/* TopTours Insights */}
+                  {insights && (
+                    <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-4 border border-purple-200">
+                      <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
+                        {insights}
+                      </p>
+                    </div>
+                  )}
+                  
                   {/* Tour Profile Summary */}
                   {tourProfile && (
                     <div className="border-t pt-4">
-                      <h5 className="font-semibold text-gray-900 mb-4">Tour Characteristics:</h5>
+                      <div className="flex items-center justify-between mb-4">
+                        <h5 className="font-semibold text-gray-900">Tour Characteristics:</h5>
+                        <Badge variant="secondary" className="bg-purple-50 text-purple-700 border-purple-200 text-xs">
+                          TopTours AI
+                        </Badge>
+                      </div>
                       <div className="space-y-4">
                         {/* Adventure Level */}
                         <div>
@@ -387,9 +369,7 @@ export default function TourMatchModal({
                         const validTagsCount = Array.isArray(tour.tags) ? tour.tags.length : 0;
                         return (
                           <p className="text-xs text-gray-500 mt-4">
-                            {loadingTagNames ? (
-                              'Calculating tour profile...'
-                            ) : validTagsCount > 0 ? (
+                            {validTagsCount > 0 ? (
                               `Profile calculated from ${validTagsCount} tour tag${validTagsCount !== 1 ? 's' : ''}.`
                             ) : (
                               'No tag data available.'
@@ -400,8 +380,7 @@ export default function TourMatchModal({
                     </div>
                   )}
                   
-                  
-                  {/* General Match Info */}
+                  {/* How matching works */}
                   <div className="border-t pt-4">
                     <h5 className="font-semibold text-gray-900 mb-3">How matching works:</h5>
                     <div className="space-y-2 text-sm text-gray-600">
@@ -421,7 +400,7 @@ export default function TourMatchModal({
                     </div>
                   </div>
                   
-                  {/* CTA for users without preferences (no account required) */}
+                  {/* CTA for users without preferences */}
                   {!hasPreferences && (
                     <div className="border-t pt-4">
                       <Button
@@ -438,12 +417,6 @@ export default function TourMatchModal({
               })()}
             </div>
 
-            {/* Footer */}
-            <div className="border-t p-4 bg-gray-50">
-              <p className="text-xs text-gray-500 text-center">
-                Match scores are based on AI analysis of tour characteristics and your travel preferences.
-              </p>
-            </div>
           </motion.div>
         </div>
       )}
