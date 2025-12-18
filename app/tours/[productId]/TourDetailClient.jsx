@@ -897,36 +897,40 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     );
   }
 
-  // Debug: Log the tour object structure to console
-  useEffect(() => {
-    if (tour) {
-      console.log('Tour object structure:', tour);
-      console.log('Description locations:', {
-        'tour.description?.summary': tour.description?.summary,
-        'tour.description?.shortDescription': tour.description?.shortDescription,
-        'tour.description?.description': tour.description?.description,
-        'tour.productContent?.description': tour.productContent?.description,
-        'tour.description': tour.description,
-      });
-      console.log('Price locations:', {
-        'tour.pricing?.summary?.fromPrice': tour.pricing?.summary?.fromPrice,
-        'tour.pricing?.fromPrice': tour.pricing?.fromPrice,
-        'tour.pricing?.amount': tour.pricing?.amount,
-        'tour.pricing': tour.pricing,
-        'tour.price': tour.price,
-        'tour.pricingInfo': tour.pricingInfo,
-        'tour.bookingInfo': tour.bookingInfo,
-      });
-    }
-  }, [tour]);
+  // Helper: pick an image variant that is large enough for hero, but not oversized
+  const selectBestImageVariant = (variants, targetWidth = 800) => {
+    if (!Array.isArray(variants) || variants.length === 0) return '';
 
-  // Extract data from Viator API response - use higher quality image variants
-  // Try variants in order: [5] (largest), [4], [3], [2], [1], [0]
+    let best = null;
+    let bestWidth = Infinity;
+    let fallback = null;
+    let fallbackWidth = 0;
+
+    for (const variant of variants) {
+      const width = variant?.width;
+      if (!variant?.url || !width) continue;
+
+      // Prefer the smallest variant that is >= targetWidth
+      if (width >= targetWidth && width < bestWidth) {
+        best = variant;
+        bestWidth = width;
+      }
+
+      // Track the largest variant as a fallback
+      if (width > fallbackWidth) {
+        fallback = variant;
+        fallbackWidth = width;
+      }
+    }
+
+    return (best || fallback || variants[variants.length - 1] || variants[0])?.url || '';
+  };
+
+  // Extract data from Viator API response - use a reasonably sized hero image
   const getHighQualityImage = () => {
     if (!tour.images || !tour.images[0] || !tour.images[0].variants) return '';
     const variants = tour.images[0].variants;
-    // Try to get the highest quality variant available
-    return variants[5]?.url || variants[4]?.url || variants[3]?.url || variants[2]?.url || variants[1]?.url || variants[0]?.url || '';
+    return selectBestImageVariant(variants, 800);
   };
   
   const tourImage = getHighQualityImage();
@@ -934,20 +938,16 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   // Get all images for gallery and lightbox (including hero) - use useMemo for performance
   const allImages = useMemo(() => {
     if (!tour?.images || tour.images.length === 0) {
-      console.log('No images found in tour:', tour);
       return [];
     }
-    
+
     const images = tour.images.map((img, idx) => {
       if (!img.variants || !Array.isArray(img.variants)) {
-        console.log(`Image ${idx} has no variants:`, img);
         return null;
       }
-      // Get the best quality variant available
-      const variants = img.variants;
-      const url = variants[5]?.url || variants[4]?.url || variants[3]?.url || variants[2]?.url || variants[1]?.url || variants[0]?.url || '';
+      // Get the best variant for our desired width
+      const url = selectBestImageVariant(img.variants, 800);
       if (!url) {
-        console.log(`Image ${idx} has no valid URL:`, variants);
         return null;
       }
       return {

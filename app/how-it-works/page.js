@@ -12,10 +12,10 @@ export const metadata = {
     locale: 'en_US',
     images: [
       {
-        url: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/how%20it%20works.png',
+        url: 'https://toptours.ai/OG%20Images/how%20top%20tours%20uses%20the%20community%20to%20rank%20tours%20and%20restaurants.jpg',
         width: 1200,
-        height: 630,
-        alt: 'How TopTours.ai™ Works - Community-Driven Tour Discovery',
+        height: 675,
+        alt: 'How TopTours.ai™ uses the community to rank tours and restaurants',
       },
     ],
   },
@@ -23,7 +23,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'How TopTours.ai™ Works | Community-Driven Tour Discovery',
     description: 'Discover how TopTours.ai™ revolutionizes tour discovery with AI-powered matching, community-driven promotion, and personalized recommendations.',
-    images: ['https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/how%20it%20works.png'],
+    images: ['https://toptours.ai/OG%20Images/how%20top%20tours%20uses%20the%20community%20to%20rank%20tours%20and%20restaurants.jpg'],
   },
 };
 

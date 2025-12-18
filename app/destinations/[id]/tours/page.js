@@ -163,8 +163,8 @@ export async function generateMetadata({ params }) {
   // Use SEO content if available, otherwise build from destination
   const seoTitle = destination.seo?.title || `Top Tours & Activities in ${destinationName}`;
   const seoDescription = destination.seo?.description || destination.briefDescription || buildSeoCopy(destination).description;
-  // Use favicon for destinations without images
-  const ogImage = destination.seo?.ogImage || destination.imageUrl || 'https://toptours.ai/favicon.ico';
+  // Always use standardized OG image so dimensions are correct
+  const ogImage = 'https://toptours.ai/OG%20Images/Browse%20Tours%20by%20Best%20Match.jpg';
   
   return {
     title: `${seoTitle} | TopTours.ai`,

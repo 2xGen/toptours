@@ -192,9 +192,9 @@ export async function generateMetadata({ params }) {
       };
     }
 
-    // Use default OG image for guides without images
-    const defaultOgImage = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png';
-    const ogImage = guideData.heroImage || destination.imageUrl || defaultOgImage;
+    // Always use standardized OG image so dimensions are correct
+    const defaultOgImage = 'https://toptours.ai/OG%20Images/TopTours%20Travel%20Guides.jpg';
+    const ogImage = defaultOgImage;
     const seo = guideData.seo || {};
     
     return {

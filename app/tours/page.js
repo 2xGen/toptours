@@ -12,9 +12,9 @@ export async function generateMetadata() {
       description: 'Find the best tours and activities in your favorite travel destinations.',
       images: [
         {
-          url: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/tours%20page.png',
+          url: 'https://toptours.ai/OG%20Images/Discover%20top%20tours%20across%203500%20destinations.jpg',
           width: 1200,
-          height: 630,
+          height: 675,
           alt: 'Best Tours & Activities by Destination',
         },
       ],

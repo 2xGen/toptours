@@ -87,6 +87,9 @@ export async function generateMetadata({ params }) {
   const metaDescription = restaurant.metaDescription || restaurant.seo?.description ||
     `${restaurant.name} is a top-rated restaurant in ${destination.name}${ratingInfo}. Discover signature dishes, hours, and how to plan the perfect meal in ${destination.name}.`;
 
+  // Always use standardized OG image so dimensions are correct
+  const ogImage = 'https://toptours.ai/OG%20Images/The%20best%20restaurants%20globally.jpg';
+
   return {
     title: restaurant.seoTitle || restaurant.seo?.title || `${restaurant.name} in ${destination.name}`,
     description: metaDescription,
@@ -99,9 +102,9 @@ export async function generateMetadata({ params }) {
       description: metaDescription,
       images: [
         {
-          url: destination.imageUrl, // Always use destination image for OG (restaurant images temporarily unavailable)
+          url: ogImage,
           width: 1200,
-          height: 630,
+          height: 675,
           alt: `${restaurant.name} in ${destination.name}`,
         }
       ],
@@ -114,7 +117,7 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: restaurant.seoTitle || restaurant.seo?.title || `${restaurant.name} in ${destination.name}`,
       description: metaDescription,
-      images: [destination.imageUrl], // Always use destination image for Twitter (restaurant images temporarily unavailable)
+      images: [ogImage],
     },
     alternates: {
       canonical: `https://toptours.ai/destinations/${destinationId}/restaurants/${restaurantSlug}`,

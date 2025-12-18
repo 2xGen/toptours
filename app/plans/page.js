@@ -13,8 +13,7 @@ export const revalidate = 0;
 export async function generateMetadata({ searchParams }) {
   const resolvedSearchParams = await searchParams;
   const destinationId = resolvedSearchParams.destination;
-  
-  const ogImage = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/community%20plans.png';
+  const ogImage = 'https://toptours.ai/OG%20Images/create%20and%20find%20itineraries%20for%20all%20destinations%20in%20the%20world.jpg';
   const baseUrl = 'https://toptours.ai/plans';
   
   if (destinationId) {
@@ -61,7 +60,7 @@ export async function generateMetadata({ searchParams }) {
         {
           url: ogImage,
           width: 1200,
-          height: 630,
+          height: 675,
           alt: 'Community Travel Plans on TopTours.ai',
         },
       ],
@@ -111,7 +110,7 @@ export default async function PlansPage({ searchParams }) {
   }
 
   // Generate Schema.org structured data for CollectionPage
-  const ogImage = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/community%20plans.png';
+  const ogImage = 'https://toptours.ai/OG%20Images/create%20and%20find%20itineraries%20for%20all%20destinations%20in%20the%20world.jpg';
   const baseUrl = 'https://toptours.ai/plans';
   const currentUrl = destinationId 
     ? `${baseUrl}?destination=${encodeURIComponent(destinationId)}`

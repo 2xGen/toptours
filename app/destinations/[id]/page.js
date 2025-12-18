@@ -39,9 +39,9 @@ export async function generateMetadata({ params }) {
       const destinationName = fullContent?.destinationName || seoContent?.destinationName || id;
       const heroDescription = fullContent?.heroDescription || seoContent?.heroDescription || seoContent?.briefDescription || '';
       const seoTitle = fullContent?.seo?.title || seoContent?.seo?.title || `${destinationName} Tours & Activities`;
-      // Use default OG image for destinations without images
-      const defaultOgImage = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png';
-      const ogImage = seoContent?.ogImage || (fullContent?.imageUrl || seoContent?.imageUrl || defaultOgImage);
+      // Always use standardized OG image so dimensions are correct
+      const defaultOgImage = 'https://toptours.ai/OG%20Images/TopTours%20Destinations.jpg';
+      const ogImage = defaultOgImage;
       
       return {
         title: `${seoTitle} | TopTours.ai`,
@@ -81,9 +81,9 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  // Use default OG image for destinations without images
-  const defaultOgImage = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png';
-  const ogImage = destination.imageUrl || defaultOgImage;
+  // Always use standardized OG image so dimensions are correct
+  const defaultOgImage = 'https://toptours.ai/OG%20Images/TopTours%20Destinations.jpg';
+  const ogImage = defaultOgImage;
   
   return {
     title: `${destination.fullName} Tours & Activities | TopTours.ai`,

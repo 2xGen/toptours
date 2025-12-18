@@ -14,9 +14,9 @@ export async function generateMetadata() {
       description: 'Find the best restaurants in your favorite travel destinations.',
       images: [
         {
-          url: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/restaurants%20page.png',
+          url: 'https://toptours.ai/OG%20Images/Browse%20through%20more%20then%2050000%20restaurants%20globally.jpg',
           width: 1200,
-          height: 630,
+          height: 675,
           alt: 'Best Restaurants by Destination',
         },
       ],

@@ -39,10 +39,10 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/TopTours%20AI%20Home%20Page.png',
+        url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
         width: 1200,
-        height: 630,
-        alt: 'TopTours.ai™ - Community-Driven, AI-Powered Tour Discovery',
+        height: 675,
+        alt: 'Discover Top Tours and Restaurants with TopTours.ai™',
       },
     ],
   },
@@ -50,7 +50,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'AI-Powered Tour Recommendations | Find the Best Tours & Activities',
     description: 'Discover the best tours and activities with smart AI recommendations tailored to your travel style. Explore destinations, compare top-rated operators, and book directly through trusted partners like Viator.',
-    images: ['https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/TopTours%20AI%20Home%20Page.png'],
+    images: ['https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg'],
   },
   robots: {
     index: true,

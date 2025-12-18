@@ -9,10 +9,10 @@ export const metadata = {
     siteName: 'TopTours.ai',
     images: [
       {
-        url: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/TopToursAI%20About%20Us%20Page.png',
+        url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
         width: 1200,
-        height: 630,
-        alt: 'TopTours.ai - AI-Powered Travel Planning',
+        height: 675,
+        alt: 'Discover Top Tours and Restaurants with TopTours.ai',
       },
     ],
     locale: 'en_US',
@@ -22,7 +22,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'About Us - AI-Powered Travel Planning | TopTours.ai',
     description: 'Learn how TopTours.ai uses AI to revolutionize travel planning. Making personalized trip planning accessible to everyone.',
-    images: ['https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/TopToursAI%20About%20Us%20Page.png'],
+    images: ['https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg'],
   },
   alternates: {
     canonical: 'https://toptours.ai/about',

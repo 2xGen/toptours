@@ -9,10 +9,10 @@ export const metadata = {
     siteName: 'TopTours.ai',
     images: [
       {
-        url: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/toptours%20destinations.png',
+        url: 'https://toptours.ai/OG%20Images/discover%20tours%20guides%20and%20restaurants%20in%20over%203500%20destinations.jpg',
         width: 1200,
-        height: 630,
-        alt: 'TopTours.ai Destinations - Explore the World',
+        height: 675,
+        alt: 'Discover tours, guides and restaurants in over 3,500 destinations',
       },
     ],
     locale: 'en_US',
@@ -22,7 +22,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Discover Top Travel Destinations Worldwide | TopTours.ai',
     description: 'Explore 175+ amazing travel destinations with AI-powered tour recommendations. Find your perfect adventure today!',
-    images: ['https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/toptours%20destinations.png'],
+    images: ['https://toptours.ai/OG%20Images/discover%20tours%20guides%20and%20restaurants%20in%20over%203500%20destinations.jpg'],
   },
   alternates: {
     canonical: 'https://toptours.ai/destinations',

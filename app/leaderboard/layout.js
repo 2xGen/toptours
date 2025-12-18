@@ -12,10 +12,10 @@ export const metadata = {
     siteName: 'TopTours.ai™',
     images: [
       {
-        url: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/how%20it%20works.png',
+        url: 'https://toptours.ai/OG%20Images/best%20tours%20and%20restaurants%20voted%20by%20the%20community.jpg',
         width: 1200,
-        height: 630,
-        alt: 'Leaderboard - TopTours.ai™',
+        height: 675,
+        alt: 'Best tours and restaurants voted by the community',
       },
     ],
     locale: 'en_US',
@@ -25,7 +25,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Leaderboard | TopTours.ai™',
     description: 'Join our growing community competing to promote the best tours and restaurants. Discover the most promoted tours and restaurants and see who\'s leading the competition.',
-    images: ['https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/how%20it%20works.png'],
+    images: ['https://toptours.ai/OG%20Images/best%20tours%20and%20restaurants%20voted%20by%20the%20community.jpg'],
   },
   alternates: {
     canonical: 'https://toptours.ai/leaderboard',

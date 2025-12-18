@@ -29,7 +29,8 @@ export async function generateMetadata({ params }) {
   }
   const restaurantCount = restaurants?.length || 0;
 
-  const ogImage = destination.imageUrl || 'https://toptours.ai/favicon.ico';
+  // Always use standardized OG image so dimensions are correct
+  const ogImage = 'https://toptours.ai/OG%20Images/Browse%20Restaurants%20by%20Best%20Match.jpg';
   const description = `Discover ${restaurantCount > 0 ? `${restaurantCount} top-rated` : 'the best'} restaurants in ${destination.fullName}, from waterfront seafood to family-run cafés. Sort by Best Match to rank restaurants by your taste.`;
 
   return {
