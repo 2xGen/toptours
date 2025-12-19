@@ -591,8 +591,15 @@ export default function ToursListingClient({
   const [isFiltered, setIsFiltered] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const [searchCurrentPage, setSearchCurrentPage] = useState(1);
+  const [searchHasMore, setSearchHasMore] = useState(false);
+  const [searchTotalCount, setSearchTotalCount] = useState(0);
+  const [loadingMoreSearch, setLoadingMoreSearch] = useState(false);
   const [moreDynamicTours, setMoreDynamicTours] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [regularToursCurrentPage, setRegularToursCurrentPage] = useState(1);
+  const [regularToursHasMore, setRegularToursHasMore] = useState(false);
+  const [loadingMoreRegular, setLoadingMoreRegular] = useState(false);
 
   // Combine all tours for filtering (deduplicate by productId)
   // Priority: Search results > Filtered results > Initial tours
@@ -1039,7 +1046,7 @@ export default function ToursListingClient({
             destinationId: effectiveDestinationId ? String(effectiveDestinationId) : null,
             flags: ['SPECIAL_OFFER'],
             start: 1,
-            count: 100,
+            count: 50, // COMPLIANCE: Max 50 products per API call
           }),
         });
 
@@ -1110,68 +1117,45 @@ export default function ToursListingClient({
             requestBody.flags = filters.flags.filter((flag) => flag !== 'SPECIAL_OFFER');
           }
           
-          // Fetch multiple pages to get more results
-          // When filtering by flags, fetch more pages since flags might be sparse
-          const toursPerPage = 20;
-          const pagesNeeded = (hasFlagFilter || hasTagFilter || hasSpecialOffersFilter) ? 10 : 5; // 10 pages = 200 tours when filtering by flags/tags/specials
-          
-          const allToursPromises = [];
-          for (let page = 1; page <= pagesNeeded; page++) {
-            allToursPromises.push(
-              fetch('/api/internal/viator-search', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  ...requestBody,
-                  page: page
-                })
-              }).then(async (res) => {
-                if (res.ok) {
-                  return res.json();
-                } else if (res.status === 404) {
-                  // Page doesn't exist, return empty results
-                  // Keep production console clean (debug logging removed)
-                  return { products: { results: [] } };
-                } else {
-                  // Other error, log and return empty
-                  const errorText = await res.text();
-                  console.error(`Page ${page} error (${res.status}):`, errorText);
-                  return { products: { results: [] } };
-                }
-              }).catch(error => {
-                console.error(`Page ${page} fetch error:`, error);
-                return { products: { results: [] } };
-              })
-            );
+          // COMPLIANCE: Only fetch page 1 on initial filter/tag click (max 50 products per Viator rules)
+          // Additional pages will be fetched when user clicks "Load More" (user-driven pagination)
+          // This ensures we comply with Viator's requirement: "Paginate through the search results
+          // only when the customer wants to move to the next page with search results"
+          const response = await fetch('/api/internal/viator-search', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              ...requestBody,
+              page: 1
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
           }
-          
-          const allResponses = await Promise.all(allToursPromises);
+
+          const data = await response.json();
+          if (data.error) {
+            throw new Error(data.error);
+          }
+
           const allFetchedTours = [];
           const seenIds = new Set();
           let totalCountFromAPI = 0;
           
-          // Extract totalCount from the first response (all pages should have the same totalCount)
-          if (allResponses.length > 0 && allResponses[0] && !allResponses[0].error) {
-            totalCountFromAPI = allResponses[0].products?.totalCount || allResponses[0].totalCount || 0;
-            // Keep production console clean (debug logging removed)
-          }
+          // Extract totalCount from the response
+          totalCountFromAPI = data.products?.totalCount || data.totalCount || 0;
           
-          for (const data of allResponses) {
-            if (data && !data.error) {
-              const tours = data.products?.results || [];
-              for (const tour of tours) {
-                const tourId = tour.productId || tour.productCode;
-                if (tourId && !seenIds.has(tourId)) {
-                  seenIds.add(tourId);
-                  
-                  // Keep production console clean (debug logging removed)
-                  
-                  // Always add the tour - we'll filter by flags in the useMemo
-                  allFetchedTours.push(tour);
-                }
-              }
+          // Process only page 1 results
+          const tours = data.products?.results || [];
+          for (const tour of tours) {
+            const tourId = tour.productId || tour.productCode;
+            if (tourId && !seenIds.has(tourId)) {
+              seenIds.add(tourId);
+              // Always add the tour - we'll filter by flags in the useMemo
+              allFetchedTours.push(tour);
             }
           }
           
@@ -1185,7 +1169,7 @@ export default function ToursListingClient({
           // Keep production console clean (debug logging removed)
           setFilteredToursFromAPI(filtered);
           setFilteredTotalCount(totalCountFromAPI);
-          setFilteredCurrentPage(pagesNeeded); // Track how many pages we've loaded
+          setFilteredCurrentPage(1); // Track that we've loaded page 1
           // Check if there are more tours to load (if totalCount is greater than what we fetched)
           const totalFetched = allFetchedTours.length;
           setFilteredHasMore(totalCountFromAPI > 0 && totalFetched < totalCountFromAPI);
@@ -1274,8 +1258,8 @@ export default function ToursListingClient({
 
       setFilteredCurrentPage(prev => prev + 1);
       
-      // Check if there are more tours (if we got fewer than 20, we're probably at the end)
-      setFilteredHasMore(newTours.length >= 20);
+      // Check if there are more tours (if we got fewer than 48, we're probably at the end)
+      setFilteredHasMore(newTours.length >= 48);
     } catch (error) {
       console.error('Error loading more filtered tours:', error);
       toast({
@@ -1285,6 +1269,91 @@ export default function ToursListingClient({
       });
     } finally {
       setLoadingMoreFiltered(false);
+    }
+  };
+
+  // Calculate if there are more regular tours to load
+  useEffect(() => {
+    // Only show "Load More" for regular tours (not filtered, not searched)
+    if (isFiltered || isSearching) {
+      setRegularToursHasMore(false);
+      return;
+    }
+
+    // Check if we have total count and if we're displaying less than total
+    const totalDisplayed = featuredTours.length + regularTours.length;
+    
+    if (totalToursAvailable > 0) {
+      // We have a total count from API - check if displayed < total
+      const hasMore = totalDisplayed < totalToursAvailable;
+      setRegularToursHasMore(hasMore);
+    } else if (totalDisplayed > 0) {
+      // If no total count but we have tours, assume there might be more if we got a full page (48)
+      // This is a fallback for when totalCount isn't available
+      setRegularToursHasMore(totalDisplayed >= 48);
+    } else {
+      setRegularToursHasMore(false);
+    }
+  }, [isFiltered, isSearching, totalToursAvailable, featuredTours.length, regularTours.length]);
+
+  // Load more regular tours (user-driven pagination)
+  const handleLoadMoreRegular = async () => {
+    if (loadingMoreRegular || !regularToursHasMore || isFiltered || isSearching) return;
+
+    setLoadingMoreRegular(true);
+    try {
+      const nextPage = regularToursCurrentPage + 1;
+      const requestBody = {
+        searchTerm: '',
+        page: nextPage,
+        viatorDestinationId: effectiveDestinationId ? String(effectiveDestinationId) : null,
+        includeDestination: !!effectiveDestinationId,
+      };
+
+      const response = await fetch('/api/internal/viator-search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(requestBody)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      const newTours = data.products?.results || [];
+      const popularProductIds = new Set(popularTours.map(t => t.productId));
+      const filteredNewTours = newTours.filter(tour => {
+        const tourId = tour.productId || tour.productCode;
+        return tourId && !popularProductIds.has(tourId);
+      });
+
+      // Add new tours to moreDynamicTours
+      setMoreDynamicTours(prev => {
+        const seenIds = new Set(prev.map(t => t.productId || t.productCode));
+        const uniqueNewTours = filteredNewTours.filter(t => {
+          const id = t.productId || t.productCode;
+          return id && !seenIds.has(id);
+        });
+        return [...prev, ...uniqueNewTours];
+      });
+
+      setRegularToursCurrentPage(nextPage);
+      const totalAfterLoad = featuredTours.length + regularTours.length + filteredNewTours.length;
+      setRegularToursHasMore(newTours.length >= 48 && totalAfterLoad < totalToursAvailable);
+    } catch (error) {
+      console.error('Error loading more regular tours:', error);
+      toast({
+        title: "Error",
+        description: "Failed to load more tours. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setLoadingMoreRegular(false);
     }
   };
   
@@ -1375,43 +1444,41 @@ export default function ToursListingClient({
           // This uses /search/freetext endpoint with destination filter
           const searchQuery = searchTerm.trim();
           
-          // Fetch multiple pages to get more results
-          const toursPerPage = 20;
-          const pagesNeeded = 5; // 5 pages = 100 tours
-          
-          const allToursPromises = [];
-          for (let page = 1; page <= pagesNeeded; page++) {
-            allToursPromises.push(
-              fetch('/api/internal/viator-search', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  // When searching with a term, still include destination ID filter for accuracy
-                  searchTerm: searchQuery,
-                  page: page,
-                  viatorDestinationId: effectiveDestinationId ? String(effectiveDestinationId) : null,
-                  includeDestination: !!effectiveDestinationId // Use destination ID filter when available
-                })
-              }).then(res => res.ok ? res.json() : null)
-            );
+          // COMPLIANCE: Only fetch page 1 on initial search (max 50 products per Viator rules)
+          // Additional pages will be fetched when user clicks "Load More" (user-driven pagination)
+          const response = await fetch('/api/internal/viator-search', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              // When searching with a term, still include destination ID filter for accuracy
+              searchTerm: searchQuery,
+              page: 1,
+              viatorDestinationId: effectiveDestinationId ? String(effectiveDestinationId) : null,
+              includeDestination: !!effectiveDestinationId // Use destination ID filter when available
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
           }
-          
-          const allResponses = await Promise.all(allToursPromises);
+
+          const data = await response.json();
+          if (data.error) {
+            throw new Error(data.error);
+          }
+
           const allFetchedTours = [];
           const seenIds = new Set();
           
-          for (const data of allResponses) {
-            if (data && !data.error) {
-              const tours = data.products?.results || [];
-              for (const tour of tours) {
-                const tourId = tour.productId || tour.productCode;
-                if (tourId && !seenIds.has(tourId)) {
-                  seenIds.add(tourId);
-                  allFetchedTours.push(tour);
-                }
-              }
+          // Process only page 1 results
+          const tours = data.products?.results || [];
+          for (const tour of tours) {
+            const tourId = tour.productId || tour.productCode;
+            if (tourId && !seenIds.has(tourId)) {
+              seenIds.add(tourId);
+              allFetchedTours.push(tour);
             }
           }
           
@@ -1423,6 +1490,9 @@ export default function ToursListingClient({
           });
           
           setSearchResults(filtered);
+          setSearchTotalCount(data.products?.totalCount || data.totalCount || 0);
+          setSearchCurrentPage(1);
+          setSearchHasMore((data.products?.totalCount || 0) > filtered.length);
         } catch (error) {
           console.error('Error searching tours:', error);
           setSearchResults([]);
@@ -2146,6 +2216,48 @@ export default function ToursListingClient({
                       </>
                     ) : (
                       `Load More Tours (${filteredTours.length} of ${filteredTotalCount > 0 ? filteredTotalCount.toLocaleString() : 'many'}+)`
+                    )}
+                  </Button>
+                </div>
+              )}
+
+              {/* Load More Button for Regular Tours (non-filtered, non-searched) */}
+              {!isFiltered && !isSearching && regularToursHasMore && regularTours.length > 0 && (
+                <div className="mt-8 text-center">
+                  <Button
+                    onClick={handleLoadMoreRegular}
+                    disabled={loadingMoreRegular}
+                    className="sunset-gradient text-white px-8 py-6 text-lg"
+                    size="lg"
+                  >
+                    {loadingMoreRegular ? (
+                      <>
+                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                        Loading more tours...
+                      </>
+                    ) : (
+                      `Load More Tours (${regularTours.length + featuredTours.length} of ${totalToursAvailable > 0 ? totalToursAvailable.toLocaleString() : 'many'}+)`
+                    )}
+                  </Button>
+                </div>
+              )}
+
+              {/* Load More Button for Search Results */}
+              {isSearching && searchHasMore && (
+                <div className="mt-8 text-center">
+                  <Button
+                    onClick={handleLoadMoreSearch}
+                    disabled={loadingMoreSearch}
+                    className="sunset-gradient text-white px-8 py-6 text-lg"
+                    size="lg"
+                  >
+                    {loadingMoreSearch ? (
+                      <>
+                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                        Loading more results...
+                      </>
+                    ) : (
+                      `Load More Results (${searchResults.length} of ${searchTotalCount > 0 ? searchTotalCount.toLocaleString() : 'many'}+)`
                     )}
                   </Button>
                 </div>

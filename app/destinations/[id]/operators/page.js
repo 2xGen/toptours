@@ -227,69 +227,23 @@ export default async function OperatorsListingPage({ params }) {
         console.log(`📊 Destination ${viatorDestinationId} has ${totalCount} total tours`);
       }
 
-      // Calculate how many pages we need to fetch
-      // We want to fetch enough to cover all tours, but cap at 25 pages (500 tours) to avoid too many API calls
-      const toursPerPage = 20;
-      const maxPages = 25; // Cap at 500 tours
-      const pagesNeeded = totalCount > 0 
-        ? Math.min(Math.ceil(totalCount / toursPerPage), maxPages)
-        : 15; // Default to 15 pages (300 tours) if totalCount not available
-      
-      console.log(`📄 Fetching ${pagesNeeded} pages (up to ${pagesNeeded * toursPerPage} tours)`);
-      
-      // Fetch remaining pages (we already have page 1)
-      const allToursPromises = [Promise.resolve({ products: { results: firstPageTours, totalCount } })];
-      
-      for (let page = 2; page <= pagesNeeded; page++) {
-        allToursPromises.push(
-          fetch(`${baseUrl}/api/internal/viator-search`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              searchTerm: '',
-              page: page,
-              viatorDestinationId: String(viatorDestinationId),
-              includeDestination: true,
-            }),
-            cache: 'no-store',
-          }).then(async (res) => {
-            if (res.ok) {
-              const data = await res.json();
-              return { products: { results: data?.products?.results || [] } };
-            } else if (res.status === 404) {
-              // Page doesn't exist, return empty results
-              return { products: { results: [] } };
-            } else {
-              console.error(`Error fetching tours page ${page}:`, res.status);
-              return { products: { results: [] } };
-            }
-          }).catch(error => {
-            console.error(`Error fetching tours page ${page}:`, error);
-            return { products: { results: [] } };
-          })
-        );
-      }
-      
-      const allPagesResults = await Promise.all(allToursPromises);
-      
-      // Flatten all tours and deduplicate by productId
+      // COMPLIANCE: Only fetch page 1 on initial load (max 50 products per Viator rules)
+      // This ensures we comply with Viator's requirement: "Paginate through the search results
+      // only when the customer wants to move to the next page with search results"
+      // For operators page, we only need enough tours to match with operators - page 1 is sufficient
       const seenTourIds = new Set();
       allToursForDestination = [];
       
-      for (const pageResult of allPagesResults) {
-        const tours = pageResult?.products?.results || [];
-        for (const tour of tours) {
-          const productId = tour.productCode || tour.productId || tour.id;
-          if (productId && !seenTourIds.has(String(productId))) {
-            seenTourIds.add(String(productId));
-            allToursForDestination.push(tour);
-          }
+      // Process only the first page (user-driven pagination would happen client-side if needed)
+      for (const tour of firstPageTours) {
+        const productId = tour.productCode || tour.productId || tour.id;
+        if (productId && !seenTourIds.has(String(productId))) {
+          seenTourIds.add(String(productId));
+          allToursForDestination.push(tour);
         }
       }
       
-      console.log(`✅ Fetched ${allToursForDestination.length} unique tours for destination ${viatorDestinationId}`);
+      console.log(`✅ Fetched ${allToursForDestination.length} unique tours for destination ${viatorDestinationId} (page 1 only - compliant with Viator API rules)`);
       
       // Step 3: Match tours with operators
       // Create a map of productId -> tour data for fast lookup

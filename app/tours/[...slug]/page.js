@@ -326,71 +326,56 @@ export default async function TourDetailPage({ params }) {
         })
         .slice(0, 9);
 
-    const fetchToursForDestination = async (searchTerm, destinationId = null, pages = 2) => {
+    const fetchToursForDestination = async (searchTerm, destinationId = null) => {
       if (!searchTerm) return [];
 
-      const toursPerPage = 20;
-      const fetchPromises = [];
+      // COMPLIANCE: Only fetch page 1 (max 50 products) - no automatic pagination
+      // This is for "similar tours" display, which is user-initiated (user viewing a tour)
+      const toursPerPage = 20; // Under 50 limit
+      const start = 1; // Always start at 1, no pagination
 
-      for (let page = 1; page <= pages; page++) {
-        const start = (page - 1) * toursPerPage + 1;
-        fetchPromises.push(
-          fetch('https://api.viator.com/partner/search/freetext', {
-            method: 'POST',
-            headers: {
-              'exp-api-key': apiKey,
-              'Accept': 'application/json;version=2.0',
-              'Accept-Language': 'en-US',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              searchTerm,
-              productFiltering: destinationId
-                ? {
-                    destination: String(destinationId).replace(/^d/, ''), // Remove 'd' prefix if present (e.g., 'd4215' -> '4215')
-                  }
-                : undefined,
-              searchTypes: [
-                {
-                  searchType: 'PRODUCTS',
-                  pagination: {
-                    start,
-                    count: toursPerPage,
-                  },
+      try {
+        const response = await fetch('https://api.viator.com/partner/search/freetext', {
+          method: 'POST',
+          headers: {
+            'exp-api-key': apiKey,
+            'Accept': 'application/json;version=2.0',
+            'Accept-Language': 'en-US',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            searchTerm,
+            productFiltering: destinationId
+              ? {
+                  destination: String(destinationId).replace(/^d/, ''), // Remove 'd' prefix if present (e.g., 'd4215' -> '4215')
+                }
+              : undefined,
+            searchTypes: [
+              {
+                searchType: 'PRODUCTS',
+                pagination: {
+                  start,
+                  count: toursPerPage,
                 },
-              ],
-              currency: 'USD',
-            }),
-            cache: 'no-store',
-          }).then(async (res) => {
-            if (res.ok) {
-              return res.json();
-            }
-            const errorText = await res.text();
-            console.error(`Similar tours page ${page} error:`, res.status, errorText);
-            return null;
-          })
-        );
-      }
+              },
+            ],
+            currency: 'USD',
+          }),
+          next: { revalidate: 3600 }, // Cache for 1 hour (compliant)
+        });
 
-      const responses = await Promise.all(fetchPromises);
-      const tours = [];
-      const seenIds = new Set();
-
-      responses.forEach((data) => {
-        if (data && !data.error) {
-          const results = data.products?.results || [];
-          results.forEach((tourResult) => {
-            const tId = tourResult.productId || tourResult.productCode;
-            if (tId && !seenIds.has(tId)) {
-              seenIds.add(tId);
-              tours.push(tourResult);
-            }
-          });
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error(`Similar tours error:`, response.status, errorText);
+          return [];
         }
-      });
 
-      return tours;
+        const data = await response.json();
+        return data.products?.results || [];
+      } catch (error) {
+        console.error('Error fetching similar tours:', error);
+        return [];
+      }
     };
 
     const destinationNameForSearch = deriveDestinationName() || tour.title || '';
@@ -414,7 +399,7 @@ export default async function TourDetailPage({ params }) {
       }
 
       if (similarTours.length === 0 && destinationNameForSearch) {
-        const finalResults = await fetchToursForDestination(destinationNameForSearch, null, 1);
+        const finalResults = await fetchToursForDestination(destinationNameForSearch, null);
         similarTours = buildSimilarToursList(finalResults);
       }
     } catch (error) {

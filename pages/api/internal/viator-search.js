@@ -29,7 +29,7 @@ export default async function handler(req, res) {
 
     const term = destination || searchTerm;
     const hasSearchTerm = term && term.trim().length > 0;
-    const perPage = 20;
+    const perPage = 48; // 48 = 16 rows × 3 columns (perfect fit for grid, under 50 API limit)
     const start = (page - 1) * perPage + 1;
 
     // Use /products/search when we have destination ID AND no search term (default destination page)
@@ -72,6 +72,10 @@ export default async function handler(req, res) {
         currency: 'USD',
       };
 
+      // COMPLIANCE: 120-second timeout for all Viator API calls
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 120000); // 120 seconds
+
       const response = await fetch('https://api.viator.com/partner/products/search', {
         method: 'POST',
         headers: {
@@ -81,7 +85,10 @@ export default async function handler(req, res) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       });
+
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         let errorText = '';
@@ -180,6 +187,10 @@ export default async function handler(req, res) {
       delete requestBody.productFiltering;
     }
 
+    // COMPLIANCE: 120-second timeout for all Viator API calls
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 120000); // 120 seconds
+
     const response = await fetch('https://api.viator.com/partner/search/freetext', {
       method: 'POST',
       headers: {
@@ -189,7 +200,10 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(requestBody),
+      signal: controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       let errorText = '';
@@ -214,6 +228,9 @@ export default async function handler(req, res) {
     return res.status(200).json(data);
   } catch (error) {
     console.error('Viator API Error:', error);
+    if (error.name === 'AbortError') {
+      return res.status(504).json({ error: 'Request timeout', details: 'Viator API request exceeded 120 second timeout' });
+    }
     return res.status(500).json({ error: 'Failed to fetch tours', details: error.message });
   }
 }

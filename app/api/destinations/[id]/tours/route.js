@@ -137,7 +137,7 @@ export async function GET(request, { params }) {
         searchType: 'PRODUCTS',
         pagination: {
           start: 1,
-          count: 100 // Get up to 100 tours
+          count: 50 // COMPLIANCE: Max 50 products per API call
         }
       }],
       currency: 'USD'
@@ -149,6 +149,10 @@ export async function GET(request, { params }) {
 
     console.log('Viator API Request:', JSON.stringify(requestBody, null, 2));
 
+    // COMPLIANCE: 120-second timeout for all Viator API calls
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 120000); // 120 seconds
+
     const response = await fetch('https://api.viator.com/partner/search/freetext', {
       method: 'POST',
       headers: {
@@ -158,7 +162,10 @@ export async function GET(request, { params }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(requestBody),
+      signal: controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       let errorText = '';
@@ -227,6 +234,12 @@ export async function GET(request, { params }) {
 
   } catch (error) {
     console.error('Error fetching destination tours:', error);
+    if (error.name === 'AbortError') {
+      return NextResponse.json({ 
+        error: 'Request timeout',
+        details: 'Viator API request exceeded 120 second timeout'
+      }, { status: 504 });
+    }
     return NextResponse.json({ 
       error: 'Internal server error',
       details: error.message 

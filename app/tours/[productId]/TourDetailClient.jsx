@@ -1844,6 +1844,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                     src={tourImage}
                     alt={tour.title}
                     className="w-full h-64 sm:h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                    fetchPriority="high"
+                    loading="eager"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent group-hover:from-black/50 transition-colors"></div>
                   {allImages.length > 1 && (
@@ -2509,6 +2511,9 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                     <div>
                       <h2 className="text-2xl font-bold text-gray-900 mb-1">Guest Ratings</h2>
                       <p className="text-sm text-gray-600">
+                        Total review count and overall rating based on Viator and Tripadvisor reviews
+                      </p>
+                      <p className="text-xs text-gray-500 mt-1">
                         Based on {(ratingBreakdownTotal || reviewCount).toLocaleString('en-US')} verified reviews
                       </p>
                     </div>
@@ -3468,30 +3473,42 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
             </div>
           </div>
           
-          {/* Thumbnail Navigation */}
+          {/* Thumbnail Navigation - Lazy load thumbnails for performance */}
           {allImages.length > 1 && (
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 max-w-4xl w-full px-4 z-10">
               <div className="flex gap-2 justify-center overflow-x-auto pb-2 hide-scrollbar">
-                {allImages.map((img, index) => (
-                  <button
-                    key={index}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setLightboxIndex(index);
-                    }}
-                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
-                      index === lightboxIndex 
-                        ? 'border-white scale-110' 
-                        : 'border-white/30 hover:border-white/60'
-                    }`}
-                  >
-                    <img
-                      src={img.url}
-                      alt={img.alt}
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                ))}
+                {allImages.map((img, index) => {
+                  // Only load thumbnails for current image and adjacent ones (performance optimization)
+                  const shouldLoad = Math.abs(index - lightboxIndex) <= 2;
+                  
+                  return (
+                    <button
+                      key={index}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setLightboxIndex(index);
+                      }}
+                      className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                        index === lightboxIndex 
+                          ? 'border-white scale-110' 
+                          : 'border-white/30 hover:border-white/60'
+                      }`}
+                    >
+                      {shouldLoad ? (
+                        <img
+                          src={img.url}
+                          alt={img.alt}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gray-800/50 flex items-center justify-center">
+                          <span className="text-white/50 text-xs">{index + 1}</span>
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}

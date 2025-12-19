@@ -493,56 +493,21 @@ export default async function ToursListingPage({ params }) {
     const allTours = data.products?.results || data.tours || [];
     totalToursAvailable = data.products?.totalCount || allTours.length || 0; // Fix: assign to outer variable, don't declare new one
     
-    // Now fetch additional pages (detail page only fetches page 1, we fetch a few more for initial load)
-    // Client-side can fetch more via pagination/filters if needed
-    // Use the same requestBody that worked (either with or without destination filter)
-    const pagesNeeded = 3; // Reduced from 10 to 3 (60 tours initial load) - client can fetch more via filters
-    const allToursPromises = [Promise.resolve(data)]; // Start with first page we already fetched
-    
-    for (let page = 2; page <= pagesNeeded; page++) {
-      const pageRequestBody = {
-        ...requestBody, // Use the requestBody that worked (may have includeDestination: false if fallback was used)
-        page: page
-      };
-      
-      allToursPromises.push(
-        fetch(`${baseUrl}/api/internal/viator-search`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(pageRequestBody),
-          cache: 'no-store',
-        }).then(async (res) => {
-          if (res.ok) {
-            return res.json();
-          } else {
-            const errorText = await res.text();
-            console.error(`Page ${page} error:`, res.status, errorText);
-            return { products: { results: [] } };
-          }
-        }).catch(error => {
-          console.error(`Page ${page} fetch error:`, error);
-          return { products: { results: [] } };
-        })
-      );
-    }
-    
-    const allResponses = await Promise.all(allToursPromises);
+    // COMPLIANCE: Only fetch page 1 on initial load (max 50 products per Viator rules)
+    // Client-side will handle pagination when users click "Load More" or "Next Page"
+    // This ensures we comply with Viator's requirement: "Paginate through the search results
+    // only when the customer wants to move to the next page with search results"
     const allToursList = [];
     const seenTourIds = new Set();
     
-    // Process all responses and collect tours
-    // totalToursAvailable is already set from the first successful response (either destination filter or text search fallback)
-    for (const responseData of allResponses) {
-      if (responseData && !responseData.error) {
-        const tours = responseData.products?.results || [];
-        for (const tour of tours) {
-          const tourId = tour.productId || tour.productCode;
-          if (tourId && !seenTourIds.has(tourId)) {
-            seenTourIds.add(tourId);
-            allToursList.push(tour);
-          }
+    // Process only the first page (user-driven pagination happens client-side)
+    if (data && !data.error) {
+      const tours = data.products?.results || [];
+      for (const tour of tours) {
+        const tourId = tour.productId || tour.productCode;
+        if (tourId && !seenTourIds.has(tourId)) {
+          seenTourIds.add(tourId);
+          allToursList.push(tour);
         }
       }
     }

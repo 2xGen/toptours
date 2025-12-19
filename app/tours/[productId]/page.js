@@ -255,6 +255,11 @@ export default async function TourDetailPage({ params }) {
       } else {
         // Cache miss - fetch from Viator API
         const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+        
+        // COMPLIANCE: 120-second timeout for all Viator API calls
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 120000); // 120 seconds
+
         const similarResponse = await fetch('https://api.viator.com/partner/search/freetext', {
           method: 'POST',
           headers: {
@@ -274,8 +279,11 @@ export default async function TourDetailPage({ params }) {
             }],
             currency: 'USD'
           }),
-          next: { revalidate: 21600 } // Revalidate every 6 hours
+          next: { revalidate: 3600 }, // Revalidate every hour (compliant with max 1 hour cache rule)
+          signal: controller.signal,
         });
+
+        clearTimeout(timeoutId);
 
         if (similarResponse.ok) {
           const similarData = await similarResponse.json();

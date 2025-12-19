@@ -36,6 +36,10 @@ export default async function handler(req, res) {
       currency,
     };
 
+    // COMPLIANCE: 120-second timeout for all Viator API calls
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 120000); // 120 seconds
+
     const response = await fetch('https://api.viator.com/partner/products/search', {
       method: 'POST',
       headers: {
@@ -45,7 +49,10 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload),
+      signal: controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -59,6 +66,9 @@ export default async function handler(req, res) {
     return res.status(200).json(data);
   } catch (error) {
     console.error('Products search error:', error);
+    if (error.name === 'AbortError') {
+      return res.status(504).json({ error: 'Request timeout', details: 'Viator API request exceeded 120 second timeout' });
+    }
     return res.status(500).json({ error: 'Failed to fetch products', details: error.message });
   }
 }
