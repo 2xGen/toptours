@@ -55,6 +55,7 @@ import {
   getMatchDisplay,
   getDefaultPreferences 
 } from '@/lib/tourMatching';
+import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 
 // Helper function to generate slug
 function generateSlug(name) {
@@ -798,10 +799,10 @@ export default function ToursListingClient({
           // Calculate tour profile from tags (synchronous now - no DB calls)
           const tourProfile = await calculateTourProfile(tourTags, null, supabase);
           
-          // Calculate match score (synchronous)
-          const matchResult = calculateMatchScore(tourProfile, preferences);
-          // Store tourProfile in matchResult for modal to use
-          matchResult.tourProfile = tourProfile;
+          // Calculate enhanced match score (uses full tour object with price, rating, flags, etc.)
+          const matchResult = await calculateEnhancedMatchScore(tour, preferences, tourProfile);
+          // matchResult.tourProfile is already set to the ADJUSTED profile (includes price/flag adjustments)
+          // Don't overwrite it with the original tag-based profile!
           scores[productId] = matchResult;
           
           // Keep production console clean (debug logging removed)

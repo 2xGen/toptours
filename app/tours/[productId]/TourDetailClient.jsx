@@ -45,6 +45,7 @@ import {
   calculateMatchScore, 
   getDefaultPreferences 
 } from '@/lib/tourMatching';
+import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 
 export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [] }) {
   const router = useRouter();
@@ -596,19 +597,56 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       try {
         setLoadingProfile(true);
         const profile = await calculateTourProfile(tour.tags);
-        setTourProfile(profile);
 
-        // Calculate match score if user has preferences
-        if (user && userPreferences) {
-          const preferences = getUserPreferenceScores(userPreferences);
-          const match = calculateMatchScore(profile, preferences);
-          setMatchScore(match);
-        } else {
-          // Default match score
-          const defaultPrefs = getDefaultPreferences();
-          const match = calculateMatchScore(profile, defaultPrefs);
-          setMatchScore(match);
+        // Calculate enhanced match score (uses full tour object with price, rating, flags, etc.)
+        const preferences = user && userPreferences 
+          ? userPreferences 
+          : getDefaultPreferences();
+        
+        // Ensure tour object has pricing in the expected format for enhanced matching
+        // The enhanced matching function expects tour.pricing.summary.fromPrice
+        const tourForMatching = { ...tour };
+        
+        // Normalize pricing - ensure we have a numeric price value
+        const getNumericPrice = (priceValue) => {
+          if (typeof priceValue === 'number') return priceValue;
+          if (typeof priceValue === 'string') {
+            const cleaned = priceValue.replace(/[$,\s]/g, '');
+            const parsed = parseFloat(cleaned);
+            return !isNaN(parsed) && parsed > 0 ? parsed : null;
+          }
+          return null;
+        };
+        
+        // Try to find and normalize the price
+        // Also check the pricing prop passed from server
+        let normalizedPrice = null;
+        if (pricing && typeof pricing === 'number' && pricing > 0) {
+          normalizedPrice = pricing;
+        } else if (tour.pricing?.summary?.fromPrice !== undefined && tour.pricing.summary.fromPrice !== null) {
+          normalizedPrice = getNumericPrice(tour.pricing.summary.fromPrice);
+        } else if (tour.pricing?.fromPrice !== undefined && tour.pricing.fromPrice !== null) {
+          normalizedPrice = getNumericPrice(tour.pricing.fromPrice);
+        } else if (tour.price !== undefined && tour.price !== null) {
+          normalizedPrice = getNumericPrice(tour.price);
         }
+        
+        // Set normalized price in the expected location
+        if (normalizedPrice !== null) {
+          if (!tourForMatching.pricing) {
+            tourForMatching.pricing = {};
+          }
+          if (!tourForMatching.pricing.summary) {
+            tourForMatching.pricing.summary = {};
+          }
+          tourForMatching.pricing.summary.fromPrice = normalizedPrice;
+        }
+        
+        const match = await calculateEnhancedMatchScore(tourForMatching, preferences, profile);
+        
+        // Use the adjusted profile from enhanced matching (includes price/flag adjustments)
+        setTourProfile(match.tourProfile || profile);
+        setMatchScore(match);
       } catch (error) {
         console.error('Error calculating tour profile:', error);
         setTourProfile(null);
@@ -2079,7 +2117,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                     <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
                     <p className="text-gray-600 mt-2">Calculating tour characteristics...</p>
                   </div>
-                ) : tourProfile ? (
+                ) : (matchScore?.tourProfile || tourProfile) ? (
                   <div className="space-y-6">
                     {/* Tour Characteristics */}
                     <div>
@@ -2096,7 +2134,9 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                               { value: 50, label: '⚖️', desc: 'Balanced' },
                               { value: 75, label: '🔥', desc: 'Adventurous' },
                             ].map((option) => {
-                              const score = tourProfile.adventure_score || 50;
+                              // Use adjusted profile from matchScore if available, otherwise fallback to tourProfile
+                              const profile = matchScore?.tourProfile || tourProfile;
+                              const score = profile.adventure_score || 50;
                               const distances = [25, 50, 75].map(v => Math.abs(score - v));
                               const isClosest = Math.abs(score - option.value) === Math.min(...distances);
                               return (
@@ -2127,7 +2167,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                               { value: 50, label: '⚖️', desc: 'Balanced' },
                               { value: 75, label: '🔍', desc: 'Explore' },
                             ].map((option) => {
-                              const score = tourProfile.relaxation_exploration_score || 50;
+                              const profile = matchScore?.tourProfile || tourProfile;
+                              const score = profile.relaxation_exploration_score || 50;
                               const distances = [25, 50, 75].map(v => Math.abs(score - v));
                               const isClosest = Math.abs(score - option.value) === Math.min(...distances);
                               return (
@@ -2158,7 +2199,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                               { value: 50, label: '⚖️', desc: 'Either Way' },
                               { value: 75, label: '🧑‍🤝‍🧑', desc: 'Private/Small' },
                             ].map((option) => {
-                              const score = tourProfile.group_intimacy_score || 50;
+                              const profile = matchScore?.tourProfile || tourProfile;
+                              const score = profile.group_intimacy_score || 50;
                               const distances = [25, 50, 75].map(v => Math.abs(score - v));
                               const isClosest = Math.abs(score - option.value) === Math.min(...distances);
                               return (
@@ -2189,7 +2231,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                               { value: 50, label: '⚖️', desc: 'Balanced' },
                               { value: 75, label: '✨', desc: 'Comfort' },
                             ].map((option) => {
-                              const score = tourProfile.price_comfort_score || 50;
+                              const profile = matchScore?.tourProfile || tourProfile;
+                              const score = profile.price_comfort_score || 50;
                               const distances = [25, 50, 75].map(v => Math.abs(score - v));
                               const isClosest = Math.abs(score - option.value) === Math.min(...distances);
                               return (
@@ -2210,9 +2253,15 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                         </div>
                       </div>
                       <p className="text-xs text-gray-500 mt-4">
-                        {tourProfile.tag_count > 0
-                          ? `Profile calculated from ${tourProfile.tag_count} tour tag${tourProfile.tag_count !== 1 ? 's' : ''}.`
-                          : 'No tag data available.'}
+                        {(() => {
+                          const profile = matchScore?.tourProfile || tourProfile;
+                          const tagCount = profile?.tag_count || 0;
+                          const isAdjusted = profile?.isAdjustedFromTourData;
+                          if (tagCount > 0) {
+                            return `Profile calculated from ${tagCount} tour tag${tagCount !== 1 ? 's' : ''}${isAdjusted ? ' and tour data (price, flags).' : '.'}`;
+                          }
+                          return 'No tag data available.';
+                        })()}
                       </p>
                     </div>
 

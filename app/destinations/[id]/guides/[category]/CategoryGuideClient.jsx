@@ -16,11 +16,12 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import TourCard from '@/components/tour/TourCard';
 import { 
-  calculateTourProfile, 
-  getUserPreferenceScores, 
+  calculateTourProfile,
+  getUserPreferenceScores,
   calculateMatchScore, 
   getDefaultPreferences 
 } from '@/lib/tourMatching';
+import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { destinations } from '../../../../../src/data/destinationsData';
 import { travelGuides } from '../../../../../src/data/travelGuidesData';
@@ -129,9 +130,10 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         ? getUserPreferenceScores(localPreferences)
         : getDefaultPreferences();
       
-      // Calculate default match for tours without tags
+      // Calculate default match for tours without tags (use legacy for fallback)
       const defaultProfile = await calculateTourProfile([]);
-      const defaultMatch = calculateMatchScore(defaultProfile, preferences);
+      const defaultScores = getUserPreferenceScores(rawPreferences);
+      const defaultMatch = calculateMatchScore(defaultProfile, defaultScores);
       defaultMatch.tourProfile = defaultProfile;
       
       const scores = {};
@@ -147,8 +149,9 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                       Array.isArray(tour.productTags) ? tour.productTags :
                       Array.isArray(tour.tagIds) ? tour.tagIds : [];
           const tourProfile = await calculateTourProfile(tags);
-          const matchResult = calculateMatchScore(tourProfile, preferences);
-          matchResult.tourProfile = tourProfile;
+          // Use enhanced matching with full tour object
+          const matchResult = await calculateEnhancedMatchScore(tour, rawPreferences, tourProfile);
+          // matchResult.tourProfile is already set to the adjusted profile
           scores[productId] = matchResult;
         } catch (error) {
           // Fallback to default match if calculation fails

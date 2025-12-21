@@ -367,9 +367,24 @@ export default function TourMatchModal({
                       </div>
                       {(() => {
                         const validTagsCount = Array.isArray(tour.tags) ? tour.tags.length : 0;
+                        // Check if profile was adjusted from tour data (price, flags, etc.)
+                        const flags = (tour.flags || []).map(f => typeof f === 'string' ? f.toUpperCase() : String(f).toUpperCase());
+                        const title = (tour.title || '').toLowerCase();
+                        const pricing = tour.pricing?.summary;
+                        const fromPrice = pricing?.fromPrice;
+                        const isPrivate = flags.includes('PRIVATE_TOUR') || 
+                                        title.includes('private') || 
+                                        title.includes('exclusive') ||
+                                        title.includes('charter') ||
+                                        title.includes('yacht');
+                        const isLuxury = fromPrice && fromPrice >= 300;
+                        const isAdjusted = isPrivate || isLuxury;
+                        
                         return (
                           <p className="text-xs text-gray-500 mt-4">
-                            {validTagsCount > 0 ? (
+                            {isAdjusted ? (
+                              `Profile calculated from ${validTagsCount} tour tag${validTagsCount !== 1 ? 's' : ''} and tour data (price, flags).`
+                            ) : validTagsCount > 0 ? (
                               `Profile calculated from ${validTagsCount} tour tag${validTagsCount !== 1 ? 's' : ''}.`
                             ) : (
                               'No tag data available.'

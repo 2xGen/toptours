@@ -33,6 +33,7 @@ import {
   getMatchDisplay,
   getDefaultPreferences 
 } from '@/lib/tourMatching';
+import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { extractRestaurantStructuredValues, calculateRestaurantPreferenceMatch } from '@/lib/restaurantMatching';
 import RestaurantMatchModal from '@/components/restaurant/RestaurantMatchModal';
@@ -331,19 +332,18 @@ export default function DestinationDetailClient({ destination, promotionScores =
     if (loadingPreferences) return;
     
     const calculateScores = async () => {
-      const preferences = userPreferences || getDefaultPreferences();
+      const rawPreferences = userPreferences || getDefaultPreferences();
       const scores = {};
       
       // Calculate scores for trending tours (async)
       const trendingPromises = safeTrendingTours.map(async (trending) => {
         if (!trending?.product_id) return null;
         try {
-          // Pass tags array, not the whole tour object
+          // Use enhanced matching with full tour object (trending has all tour data)
           const tags = Array.isArray(trending.tags) ? trending.tags : [];
           const tourProfile = await calculateTourProfile(tags);
-          const userScores = getUserPreferenceScores(preferences);
-          const matchScore = calculateMatchScore(tourProfile, userScores);
-          return { productId: trending.product_id, matchScore: { ...matchScore, tourProfile } };
+          const matchScore = await calculateEnhancedMatchScore(trending, rawPreferences, tourProfile);
+          return { productId: trending.product_id, matchScore };
         } catch (e) {
           // Ignore errors for individual tours
           return null;
@@ -363,12 +363,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
           const tourId = getTourProductId(tour);
           if (!tourId || scores[tourId]) return null;
           try {
-            // Pass tags array, not the whole tour object
+            // Use enhanced matching with full tour object
             const tags = Array.isArray(tour.tags) ? tour.tags : [];
             const tourProfile = await calculateTourProfile(tags);
-            const userScores = getUserPreferenceScores(preferences);
-            const matchScore = calculateMatchScore(tourProfile, userScores);
-            return { tourId, matchScore: { ...matchScore, tourProfile } };
+            const matchScore = await calculateEnhancedMatchScore(tour, rawPreferences, tourProfile);
+            return { tourId, matchScore };
           } catch (e) {
             // Ignore errors for individual tours
             return null;
