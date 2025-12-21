@@ -12,7 +12,7 @@ import DestinationSearch from '@/components/home/DestinationSearch';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import OnboardingModal from '@/components/auth/OnboardingModal';
 
-export default function HomePageClient({ topTours = [], topPromoters = [] }) {
+export default function HomePageClient() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOnboardingModalOpen, setIsOnboardingModalOpen] = useState(false);
 
@@ -29,7 +29,7 @@ export default function HomePageClient({ topTours = [], topPromoters = [] }) {
         <Hero onOpenOnboardingModal={handleOpenOnboardingModal} />
         <DestinationSearch />
         <HowItWorksSlider />
-        <FeaturedTours onOpenModal={handleOpenModal} topTours={topTours} topPromoters={topPromoters} />
+        <FeaturedTours onOpenModal={handleOpenModal} />
         <AIPlanner />
         <TopDestinations />
         <HomeCTA onOpenModal={handleOpenModal} onOpenOnboardingModal={handleOpenOnboardingModal} />
@@ -56,7 +56,7 @@ export default function HomePageClient({ topTours = [], topPromoters = [] }) {
             "@type": "WebSite",
             "name": "TopTours.ai",
             "url": "https://toptours.ai",
-            "description": "AI-powered travel planning and tour booking platform",
+            "description": "AI-powered tour and restaurant recommendations that match your travel style with personalized match scores",
             "potentialAction": {
               "@type": "SearchAction",
               "target": "https://toptours.ai/results?searchTerm={search_term_string}",

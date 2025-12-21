@@ -3,7 +3,8 @@ import { getDestinationById } from '@/data/destinationsData';
 import { getPopularToursForDestination } from '@/data/popularTours';
 import ToursListingClient from './ToursListingClient';
 import { slugToViatorId } from '@/data/viatorDestinationMap';
-import { getPromotionScoresByDestination, getTrendingToursByDestination, getTrendingRestaurantsByDestination, getRestaurantPromotionScoresByDestination, getHardcodedToursByDestination } from '@/lib/promotionSystem';
+import { getPromotionScoresByDestination, getRestaurantPromotionScoresByDestination, getHardcodedToursByDestination } from '@/lib/promotionSystem';
+import { getPromotedListings } from '@/lib/promotedListings';
 import { getPremiumOperatorTourIdsForDestination } from '@/lib/tourOperatorPremiumServer';
 import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { getRestaurantCountsByDestination, getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
@@ -564,12 +565,32 @@ export default async function ToursListingPage({ params }) {
     };
   }
 
-  // Fetch trending tours (past 28 days) for this destination
-  // These will be displayed in a "Trending Now" section - limit to top 3
-  const trendingTours = destinationIdForScores ? await getTrendingToursByDestination(destinationIdForScores, 3) : [];
-
-  // Fetch trending restaurants (past 28 days) for this destination - limit to top 3
-  const trendingRestaurants = destination.id ? await getTrendingRestaurantsByDestination(destination.id, 3) : [];
+  // Fetch promoted listings for this destination
+  const promotedListingsTours = destinationIdForScores ? await getPromotedListings(destinationIdForScores, 'tour') : [];
+  const promotedListingsRestaurants = destination.id ? await getPromotedListings(destination.id, 'restaurant') : [];
+  
+  // Match promoted listings with actual tour data (from dynamicTours)
+  const promotedTourProductIds = new Set(promotedListingsTours.map(pl => pl.product_id));
+  const promotedTours = dynamicTours.filter(tour => {
+    const productId = tour.productId || tour.productCode;
+    return productId && promotedTourProductIds.has(productId);
+  });
+  
+  // For restaurants, we'll need to fetch them separately (similar logic)
+  const promotedRestaurantIds = new Set(promotedListingsRestaurants.map(pl => pl.product_id));
+  let promotedRestaurants = [];
+  if (destination.id && promotedRestaurantIds.size > 0) {
+    try {
+      const restaurantsFromDB = await getRestaurantsForDestinationFromDB(destination.id);
+      if (restaurantsFromDB.length > 0) {
+        promotedRestaurants = restaurantsFromDB
+          .map(r => formatRestaurantForFrontend(r))
+          .filter(r => promotedRestaurantIds.has(String(r.id)));
+      }
+    } catch (error) {
+      console.warn('Could not fetch promoted restaurants:', error.message || error);
+    }
+  }
 
   // Fetch restaurant promotion scores for this destination
   const restaurantPromotionScores = destination.id ? await getRestaurantPromotionScoresByDestination(destination.id) : {};
@@ -756,8 +777,8 @@ export default async function ToursListingPage({ params }) {
         viatorDestinationId={viatorDestinationId}
         totalToursAvailable={totalToursAvailable}
         promotionScores={promotionScores}
-        trendingTours={trendingTours}
-        trendingRestaurants={trendingRestaurants}
+        promotedTours={promotedTours}
+        promotedRestaurants={promotedRestaurants}
         restaurantPromotionScores={restaurantPromotionScores}
         isViatorDestination={isViatorDestination}
         premiumOperatorTourIds={premiumOperatorTourIds}

@@ -19,19 +19,9 @@ import Link from 'next/link';
 
 const steps = [
   {
-    icon: Users,
-    title: 'Community-Driven',
-    description: 'You decide which tours and restaurants deserve the spotlight. Boost listings you love with daily points. The most-boosted rise to the top, appearing in "Trending Now" sections across destination pages.',
-    color: 'from-orange-500 to-yellow-500',
-    iconColor: 'text-orange-500',
-    bgGradient: 'from-orange-50 to-yellow-50',
-    borderColor: 'border-orange-200',
-    details: ['You control what\'s trending', 'Boost with daily points', 'Real-time community rankings']
-  },
-  {
     icon: Brain,
-    title: 'AI-Powered Matching',
-    description: 'Get personalized tour and restaurant recommendations that actually fit your travel style. See 0-100% match scores with detailed breakdowns explaining why listings match (or don\'t).',
+    title: 'AI-Powered Best Match',
+    description: 'Get personalized tour and restaurant recommendations that actually fit your travel style. See 0-100% match scores with detailed breakdowns explaining why listings match your preferences.',
     color: 'from-purple-500 to-pink-500',
     iconColor: 'text-purple-500',
     bgGradient: 'from-purple-50 to-pink-50',
@@ -39,54 +29,34 @@ const steps = [
     details: ['Personalized recommendations', '0-100% match scores', 'Detailed breakdowns']
   },
   {
-    icon: Trophy,
-    title: 'Real-Time Rankings',
-    description: 'See which tours and restaurants are trending right now. Climb the global leaderboard based on community preference. Rankings update in real-time as travelers boost their favorites.',
-    color: 'from-yellow-500 to-orange-500',
-    iconColor: 'text-yellow-500',
-    bgGradient: 'from-yellow-50 to-orange-50',
-    borderColor: 'border-yellow-200',
-    details: ['Real-time updates', 'Global leaderboard', 'Community-driven rankings']
-  },
-  {
-    icon: TrendingUp,
-    title: 'Featured in "Trending Now"',
-    description: 'Boosted tours and restaurants appear prominently in "Trending Now" sections on destination pages — the first thing travelers see.',
-    color: 'from-orange-500 to-red-500',
-    iconColor: 'text-orange-500',
-    bgGradient: 'from-orange-50 to-yellow-50',
-    borderColor: 'border-orange-200',
-    details: ['Prominent placement', 'First thing travelers see', 'High visibility']
-  },
-  {
-    icon: Eye,
-    title: 'Massive Visibility',
-    description: 'Get featured across destination pages, tour listing pages, and restaurant pages. Thousands of travelers see your promoted listings daily.',
+    icon: Sparkles,
+    title: 'Set Your Preferences',
+    description: 'Tell us your travel style: adventure level, budget comfort, group size, and more. Our AI uses these preferences to rank tours and restaurants just for you.',
     color: 'from-blue-500 to-indigo-500',
     iconColor: 'text-blue-500',
     bgGradient: 'from-blue-50 to-indigo-50',
     borderColor: 'border-blue-200',
-    details: ['Multiple page placements', 'Thousands of daily views', 'Maximum exposure']
+    details: ['Adventure level', 'Budget & comfort', 'Group preferences']
   },
   {
-    icon: Trophy,
-    title: 'Climb the Leaderboard',
-    description: 'Compete for top rankings on the global leaderboard. Higher scores mean more visibility and more bookings.',
+    icon: TrendingUp,
+    title: 'See Your Perfect Matches',
+    description: 'Every tour and restaurant shows a match score based on your preferences. Sort by "Best Match" to see the most relevant options first.',
+    color: 'from-orange-500 to-yellow-500',
+    iconColor: 'text-orange-500',
+    bgGradient: 'from-orange-50 to-yellow-50',
+    borderColor: 'border-orange-200',
+    details: ['Match scores on every card', 'Sort by Best Match', 'Instant personalization']
+  },
+  {
+    icon: Eye,
+    title: 'Discover 3300+ Destinations',
+    description: 'Explore tours and restaurants across 3300+ destinations worldwide. Find hidden gems and popular spots that match your travel style.',
     color: 'from-green-500 to-emerald-500',
     iconColor: 'text-green-500',
     bgGradient: 'from-green-50 to-emerald-50',
     borderColor: 'border-green-200',
-    details: ['Compete globally', 'Higher visibility', 'More bookings']
-  },
-  {
-    icon: Zap,
-    title: 'Community-Driven Promotion',
-    description: 'Real travelers boost what they love. Listings rise based on actual community preference, not algorithms.',
-    color: 'from-purple-500 to-pink-500',
-    iconColor: 'text-purple-500',
-    bgGradient: 'from-purple-50 to-pink-50',
-    borderColor: 'border-purple-200',
-    details: ['Real traveler preferences', 'No algorithms', 'Authentic rankings']
+    details: ['3300+ destinations', '10,000+ tours', '3500+ restaurants']
   }
 ];
 
@@ -153,7 +123,7 @@ export default function HowItWorksSlider() {
             How TopTours.ai<span className="text-xs align-super">™</span> Works
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            The first platform where <strong>you control what's trending</strong>. Boost tours and restaurants you love, get AI recommendations that match your style, and see real-time rankings based on community preference — not algorithms.
+            The first platform with <strong>AI-powered Best Match</strong>. Get personalized tour and restaurant recommendations based on your travel style, preferences, and budget. See match scores on every listing.
           </p>
         </motion.div>
 

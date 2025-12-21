@@ -9,14 +9,11 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy, UtensilsCrossed, X, Save, Check } from 'lucide-react';
 import ConfirmDialog from '@/components/ui/ConfirmDialog';
-import { SUBSCRIPTION_PRICING } from '@/lib/promotionSystem';
 import { COLOR_SCHEMES, CTA_OPTIONS } from '@/lib/restaurantPremium';
 import { toast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
-import TourPromotionCard from '@/components/promotion/TourPromotionCard';
-import RestaurantPromotionCard from '@/components/promotion/RestaurantPromotionCard';
 
 export default function ProfilePage() {
   const supabase = createSupabaseBrowserClient();
@@ -29,16 +26,10 @@ export default function ProfilePage() {
   const [savedTours, setSavedTours] = useState([]);
   const [savedRestaurants, setSavedRestaurants] = useState([]);
   const [loadingSaved, setLoadingSaved] = useState(false);
-  const [tourPromotionScores, setTourPromotionScores] = useState({});
-  const [restaurantPromotionScores, setRestaurantPromotionScores] = useState({});
   const [activeTab, setActiveTab] = useState('saved'); // 'profile' | 'trip' | 'saved' | 'my-plans' | 'plan'
   const [myPlans, setMyPlans] = useState([]);
   const [loadingMyPlans, setLoadingMyPlans] = useState(false);
   const [planTier, setPlanTier] = useState('free');
-  const [streakDays, setStreakDays] = useState(0);
-  const [dailyPointsAvailable, setDailyPointsAvailable] = useState(0);
-  const [totalPointsSpent, setTotalPointsSpent] = useState(0);
-  const [loadingStreak, setLoadingStreak] = useState(false);
   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
   const [subscriptionPlan, setSubscriptionPlan] = useState(null);
   const [subscriptionStartDate, setSubscriptionStartDate] = useState(null);
@@ -124,16 +115,6 @@ export default function ProfilePage() {
             } catch {}
           }
           if (profile?.plan_tier) setPlanTier(profile.plan_tier);
-          // Initialize daily_points_available if not set (for new users)
-          if (profile && (profile.daily_points_available === null || profile.daily_points_available === undefined)) {
-            await supabase
-              .from('profiles')
-              .update({ daily_points_available: 50 })
-              .eq('id', currentUser.id);
-            setDailyPointsAvailable(50);
-          } else if (profile?.daily_points_available !== undefined) {
-            setDailyPointsAvailable(profile.daily_points_available);
-          }
           if (profile?.trip_preferences) {
             try {
               const prefs = profile.trip_preferences;
@@ -222,23 +203,6 @@ export default function ProfilePage() {
         const validTours = tourItems.filter(Boolean);
         setSavedTours(validTours);
 
-        // Fetch promotion scores for saved tours
-        const tourScoresPromises = validTours.map(async ({ productId }) => {
-          try {
-            const res = await fetch(`/api/internal/promotion/tour-score?productId=${encodeURIComponent(productId)}&fresh=true`);
-            if (res.ok) {
-              const score = await res.json();
-              return { productId, score };
-            }
-          } catch {}
-          return null;
-        });
-        const tourScores = await Promise.all(tourScoresPromises);
-        const scoresMap = {};
-        tourScores.forEach((item) => {
-          if (item) scoresMap[item.productId] = item.score;
-        });
-        setTourPromotionScores(scoresMap);
 
         // Fetch restaurant bookmarks
         const restaurantsRes = await fetch(`/api/internal/restaurant-bookmarks?userId=${encodeURIComponent(user.id)}`);
@@ -260,23 +224,6 @@ export default function ProfilePage() {
         const validRestaurants = restaurantItems.filter(Boolean);
         setSavedRestaurants(validRestaurants);
 
-        // Fetch promotion scores for saved restaurants
-        const restaurantScoresPromises = validRestaurants.map(async ({ restaurantId }) => {
-          try {
-            const res = await fetch(`/api/internal/promotion/restaurant-score?restaurantId=${encodeURIComponent(restaurantId)}&fresh=true`);
-            if (res.ok) {
-              const score = await res.json();
-              return { restaurantId, score };
-            }
-          } catch {}
-          return null;
-        });
-        const restaurantScores = await Promise.all(restaurantScoresPromises);
-        const restaurantScoresMap = {};
-        restaurantScores.forEach((item) => {
-          if (item) restaurantScoresMap[item.restaurantId] = item.score;
-        });
-        setRestaurantPromotionScores(restaurantScoresMap);
       } finally {
         setLoadingSaved(false);
       }
@@ -284,64 +231,6 @@ export default function ProfilePage() {
     if (user) loadSaved();
   }, [user]);
 
-  // Load promotion account data (streak, total points spent, subscription) from promotion_accounts
-  // Daily points are now in profiles table for simplicity and reliability
-  useEffect(() => {
-    const loadPromotionAccount = async () => {
-      if (!user) return;
-      setLoadingStreak(true);
-      try {
-        // Load from promotion_accounts (streak, total points, subscription info)
-        const { data: account, error } = await supabase
-          .from('promotion_accounts')
-          .select('streak_days, total_points_spent_all_time, subscription_status, subscription_plan, subscription_start_date, subscription_end_date, stripe_subscription_id')
-          .eq('user_id', user.id)
-          .single();
-        
-        // If account doesn't exist, create it (lazy initialization for streak/subscription tracking)
-        if (error && error.code === 'PGRST116') {
-          const { data: newAccount, error: createError } = await supabase
-            .from('promotion_accounts')
-            .insert({
-              user_id: user.id,
-              tier: 'explorer',
-              last_daily_reset: new Date().toISOString(),
-              subscription_status: null,
-              subscription_plan: 'free',
-            })
-            .select('streak_days, total_points_spent_all_time, subscription_status, subscription_plan, subscription_start_date, subscription_end_date, stripe_subscription_id')
-            .single();
-          
-          if (!createError && newAccount) {
-            setStreakDays(newAccount.streak_days || 0);
-            setTotalPointsSpent(newAccount.total_points_spent_all_time || 0);
-            setSubscriptionStatus(newAccount.subscription_status);
-            setSubscriptionPlan(newAccount.subscription_plan);
-            setSubscriptionStartDate(newAccount.subscription_start_date);
-            setSubscriptionEndDate(newAccount.subscription_end_date);
-            setStripeSubscriptionId(newAccount.stripe_subscription_id);
-          }
-        } else if (!error && account) {
-          setStreakDays(account.streak_days || 0);
-          setTotalPointsSpent(account.total_points_spent_all_time || 0);
-          setSubscriptionStatus(account.subscription_status);
-          setSubscriptionPlan(account.subscription_plan);
-          setSubscriptionStartDate(account.subscription_start_date);
-          setSubscriptionEndDate(account.subscription_end_date);
-          setStripeSubscriptionId(account.stripe_subscription_id);
-        }
-        
-        // Daily points are loaded from profiles (already done in the init useEffect above)
-      } catch (err) {
-        console.error('Error loading promotion account:', err);
-      } finally {
-        setLoadingStreak(false);
-      }
-    };
-    if (user) {
-      loadPromotionAccount();
-    }
-  }, [user, supabase]);
 
   // Load user's travel plans
   useEffect(() => {
@@ -534,80 +423,6 @@ export default function ProfilePage() {
             View saved tours, update your profile details, and explore upcoming promo tools for your listings — all in one place.
           </p>
           
-          {/* Promotion Stats - Always Visible */}
-          <div className="mt-6 space-y-3 max-w-3xl">
-            {/* Streak Section */}
-            <div className="flex items-start gap-3 px-4 py-3 bg-gradient-to-r from-orange-50 to-yellow-50 border border-orange-200 rounded-lg">
-              <div className="flex-shrink-0">
-                <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
-                  <Flame className="w-5 h-5 text-orange-600" />
-                </div>
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-sm font-semibold text-gray-900">Current Streak:</span>
-                  {loadingStreak ? (
-                    <span className="text-sm text-gray-500">Loading...</span>
-                  ) : (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-sm font-bold bg-orange-100 text-orange-700">
-                      <Flame className="w-3.5 h-3.5" />
-                      {streakDays} {streakDays === 1 ? 'day' : 'days'}
-                    </span>
-                  )}
-                </div>
-                <p className="text-xs text-gray-600 mt-1">
-                  Claim daily points every 24 hours to keep your streak alive. 
-                  <button 
-                    onClick={() => {
-                      const details = document.getElementById('streak-details');
-                      if (details) {
-                        details.classList.toggle('hidden');
-                      }
-                    }}
-                    className="ml-1 text-orange-600 hover:text-orange-700 font-medium underline"
-                  >
-                    How it works
-                  </button>
-                </p>
-                <div id="streak-details" className="hidden mt-2 pt-2 border-t border-orange-200">
-                  <ul className="space-y-1 text-xs text-gray-600">
-                    <li>• Your streak increases by 1 each day you claim points consecutively</li>
-                    <li>• Missing a day resets your streak to 1 when you claim again</li>
-                    <li>• Your streak badge appears on the <Link href="/leaderboard" className="text-orange-600 hover:underline font-semibold">Leaderboard</Link></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Points Stats */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="px-4 py-3 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg">
-                <div className="flex items-center gap-2 mb-1">
-                  <Zap className="w-4 h-4 text-blue-600" />
-                  <span className="text-xs font-medium text-gray-700">Points Available</span>
-                </div>
-                {loadingStreak ? (
-                  <span className="text-sm text-gray-500">Loading...</span>
-                ) : (
-                  <p className="text-2xl font-bold text-gray-900">{dailyPointsAvailable.toLocaleString()}</p>
-                )}
-                <p className="text-xs text-gray-600 mt-1">Reset every 24 hours</p>
-              </div>
-
-              <div className="px-4 py-3 bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-lg">
-                <div className="flex items-center gap-2 mb-1">
-                  <Trophy className="w-4 h-4 text-purple-600" />
-                  <span className="text-xs font-medium text-gray-700">Total Points Spent</span>
-                </div>
-                {loadingStreak ? (
-                  <span className="text-sm text-gray-500">Loading...</span>
-                ) : (
-                  <p className="text-2xl font-bold text-gray-900">{totalPointsSpent.toLocaleString()}</p>
-                )}
-                <p className="text-xs text-gray-600 mt-1">All-time total</p>
-              </div>
-            </div>
-          </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
@@ -1445,22 +1260,6 @@ export default function ProfilePage() {
                               })()}
                             </div>
 
-                            {/* Promotion Score - On its own line */}
-                            <div className="mb-3">
-                              <TourPromotionCard 
-                                productId={productId} 
-                                compact={true}
-                                tourData={tour}
-                                initialScore={tourPromotionScores[productId] || {
-                                  product_id: productId,
-                                  total_score: 0,
-                                  monthly_score: 0,
-                                  weekly_score: 0,
-                                  past_28_days_score: 0,
-                                }}
-                              />
-                            </div>
-
                             <Button
                               asChild
                               className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
@@ -1584,22 +1383,6 @@ export default function ProfilePage() {
                                   <span className="line-clamp-1">{restaurant.cuisines[0]}</span>
                                 </div>
                               )}
-                            </div>
-
-                            {/* Promotion Score - On its own line */}
-                            <div className="mb-3">
-                              <RestaurantPromotionCard 
-                                restaurantId={restaurantId} 
-                                compact={true}
-                                restaurantData={restaurant}
-                                initialScore={restaurantPromotionScores[restaurantId] || {
-                                  restaurant_id: restaurantId,
-                                  total_score: 0,
-                                  monthly_score: 0,
-                                  weekly_score: 0,
-                                  past_28_days_score: 0,
-                                }}
-                              />
                             </div>
 
                             <Button
@@ -1960,7 +1743,7 @@ export default function ProfilePage() {
                 <div>
                   <h1 className="text-2xl font-bold text-gray-900 mb-2">Choose Your Plan</h1>
                   <p className="text-sm text-gray-600">
-                    Boost your favorite tours and unlock AI-powered tour matching. All plans include daily points that reset every 24 hours.
+                    Unlock AI-powered tour matching and personalized recommendations tailored to your travel style.
                   </p>
                 </div>
 

@@ -19,8 +19,8 @@ export default function AboutPage() {
   const values = [
     {
       icon: Users,
-      title: 'Community-Driven Discovery',
-      description: 'You decide which tours deserve the spotlight. Every day, travelers use their points to boost tours they love, creating real-time rankings based on actual community preference—not just algorithms.'
+      title: 'AI-Powered Discovery',
+      description: 'Discover tours that match your travel style. Our AI analyzes your preferences and shows you personalized recommendations with detailed match scores, so you know exactly why a tour fits you perfectly.'
     },
     {
       icon: Brain,
@@ -30,12 +30,12 @@ export default function AboutPage() {
     {
       icon: Trophy,
       title: 'Real-Time Rankings',
-      description: 'See which tours are trending based on community boosts. Tours with the most points appear in "Trending Now" sections and climb the global leaderboard, giving you insight into what travelers actually love.'
+      description: 'See which tours are trending based on real traveler engagement. Popular tours appear in "Trending Now" sections, giving you insight into what travelers actually love.'
     },
     {
       icon: Globe,
       title: '170+ Destinations',
-      description: 'Access to thousands of tours and activities across 170+ destinations worldwide, from popular hotspots to hidden gems, all curated and community-validated.'
+      description: 'Access to thousands of tours and activities across 170+ destinations worldwide, from popular hotspots to hidden gems, all curated and AI-validated.'
     },
     {
       icon: Heart,
@@ -45,7 +45,7 @@ export default function AboutPage() {
     {
       icon: Zap,
       title: 'Transparent & Fair',
-      description: 'Tours rise to the top because travelers boost them, and you see exactly how well each tour matches your preferences with detailed match scores and explanations.'
+      description: 'Tours are ranked based on real traveler engagement, and you see exactly how well each tour matches your preferences with detailed match scores and explanations.'
     }
   ];
 
@@ -77,9 +77,9 @@ export default function AboutPage() {
                 About TopTours.ai<span className="text-xs align-super">™</span>
               </h1>
               <p className="text-xl text-white/90 max-w-3xl mx-auto">
-                We're revolutionizing tour booking by combining the power of community with cutting-edge AI. 
-                The first platform where travelers decide which tours deserve the spotlight, and AI helps you 
-                discover tours that actually match your style.
+                We're revolutionizing tour booking with cutting-edge AI. 
+                The first platform where AI helps you discover tours that actually match your travel style 
+                with personalized recommendations and detailed match scores.
               </p>
             </motion.div>
           </div>
@@ -111,16 +111,14 @@ export default function AboutPage() {
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
                   At TopTours.ai<span className="text-xs align-super">™</span>, we're pioneering a new way to discover and book tours. 
-                  We've built something unique: a platform where the community decides which tours deserve visibility, 
-                  and AI helps you find tours that actually fit your travel preferences. This combination creates a 
-                  more personalized, transparent, and engaging experience for travelers.
+                  We've built something unique: a platform where AI helps you find tours that actually fit your travel preferences. 
+                  This creates a more personalized, transparent, and engaging experience for travelers.
                 </p>
                 <p className="text-lg text-gray-600 mb-6">
                   Our mission is to create the most personalized tour discovery experience ever built by combining 
-                  real community preference with intelligent matching. Every day, travelers use their points to 
-                  boost tours they love, creating real-time rankings based on actual community preference. Meanwhile, 
-                  our AI analyzes your travel style to show you tours with detailed match scores, so you know exactly 
-                  why a tour fits you perfectly.
+                  intelligent AI matching. Popular tours rise to the top based on actual 
+                  traveler engagement. Our AI analyzes your travel style to show you tours with detailed 
+                  match scores, so you know exactly why a tour fits you perfectly.
                 </p>
                 <p className="text-lg text-gray-600">
                   We partner with trusted tour operators worldwide to ensure you have access to authentic, 
@@ -158,7 +156,7 @@ export default function AboutPage() {
                 What Makes Us Different
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                We're the first platform to combine community-driven promotion with AI-powered matching. 
+                We're the first platform to combine AI-powered matching with real traveler data. 
                 This unique approach creates a more transparent, personalized, and fair way to discover tours.
               </p>
             </motion.div>
@@ -260,19 +258,19 @@ export default function AboutPage() {
                   The inspiration behind TopTours.ai<span className="text-xs align-super">™</span> came from a simple question: 
                   What if travelers could shape which tours get discovered, while AI helps them find tours that perfectly 
                   match their style? We saw an opportunity to create something entirely new—a platform that combines the 
-                  collective wisdom of the community with intelligent, personalized matching.
+                  intelligent, personalized matching powered by AI.
                 </p>
                 <p className="text-lg text-gray-600 mb-6">
-                  We realized that the best way to discover great tours is by combining the power of community preference 
-                  with the intelligence of AI. When travelers can boost tours they love, the best experiences naturally rise 
-                  to the top based on real preference. When AI analyzes your travel style and shows you detailed match 
-                  scores, you can make confident decisions with full transparency about why a tour fits you.
+                  We realized that the best way to discover great tours is by combining real traveler data 
+                  with the intelligence of AI. Popular tours naturally rise to the top based on actual engagement. 
+                  When AI analyzes your travel style and shows you detailed match scores, you can make confident decisions 
+                  with full transparency about why a tour fits you.
                 </p>
                 <p className="text-lg text-gray-600">
-                  This combination of community-driven promotion and AI-powered matching creates something entirely new: 
+                  This combination of AI-powered matching and real traveler data creates something entirely new: 
                   a transparent, fair, and personalized way to discover tours. We're passionate about giving travelers 
-                  the power to shape which tours get discovered—and the intelligence to find the ones that match them 
-                  perfectly. That's how we're changing tour booking, one boost and one match at a time.
+                  the intelligence to find tours that match them perfectly. That's how we're changing tour booking, 
+                  one personalized match at a time.
                 </p>
               </motion.div>
             </div>
@@ -292,8 +290,8 @@ export default function AboutPage() {
                 Ready to Start Your Journey?
               </h2>
               <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-                Join our community of travelers and discover your next amazing adventure. Boost tours you love, 
-                get AI-powered matches that fit your style, and be part of how tour discovery works.
+                Discover your next amazing adventure. Get AI-powered matches 
+                that fit your style and find tours personalized just for you.
               </p>
               <Button 
                 asChild

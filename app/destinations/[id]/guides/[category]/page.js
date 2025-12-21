@@ -406,14 +406,11 @@ export default async function CategoryGuidePage({ params }) {
         
         console.log(`🔍 [SERVER] Viator API response: ${products.length} products, totalCount: ${totalCount}`);
           
-        // Format tours to match expected structure (same as hardcoded tours)
+        // Pass full tour objects from Viator API (TourCard expects full structure)
         categoryTours = products.slice(0, maxTours).map(tour => ({
+          ...tour, // Include all fields from Viator API
           productId: tour.productCode || tour.productId,
-          title: tour.title,
-          image: tour.images?.[0]?.variants?.[3]?.url || tour.images?.[0]?.variants?.[0]?.url || null,
-          price: tour.price?.formattedAmount || tour.price?.amount || null,
-          rating: tour.reviews?.combinedAverageRating || null,
-          reviewCount: tour.reviews?.totalReviews || 0,
+          productCode: tour.productCode || tour.productId,
         }));
         
         console.log(`✅ Fetched ${categoryTours.length} live tours for ${destinationId}/${guideData.categoryName} from Viator API (destination ID: ${viatorDestinationId}, searchTerm: "${searchTerm}")`);
@@ -450,13 +447,11 @@ export default async function CategoryGuidePage({ params }) {
             const fallbackProducts = fallbackData.products?.results || [];
             console.log(`🔍 [SERVER] Fallback search returned ${fallbackProducts.length} products`);
             
+            // Pass full tour objects from Viator API (TourCard expects full structure)
             categoryTours = fallbackProducts.slice(0, maxTours).map(tour => ({
-            productId: tour.productCode || tour.productId,
-            title: tour.title,
-            image: tour.images?.[0]?.variants?.[3]?.url || tour.images?.[0]?.variants?.[0]?.url || null,
-              price: tour.price?.formattedAmount || tour.price?.amount || null,
-              rating: tour.reviews?.combinedAverageRating || null,
-              reviewCount: tour.reviews?.totalReviews || 0,
+              ...tour, // Include all fields from Viator API
+              productId: tour.productCode || tour.productId,
+              productCode: tour.productCode || tour.productId,
             }));
             
             console.log(`✅ Fallback search fetched ${categoryTours.length} tours`);

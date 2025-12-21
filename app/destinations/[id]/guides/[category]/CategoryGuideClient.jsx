@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -14,7 +14,14 @@ import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
-import TourPromotionCard from '@/components/promotion/TourPromotionCard';
+import TourCard from '@/components/tour/TourCard';
+import { 
+  calculateTourProfile, 
+  getUserPreferenceScores, 
+  calculateMatchScore, 
+  getDefaultPreferences 
+} from '@/lib/tourMatching';
+import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { destinations } from '../../../../../src/data/destinationsData';
 import { travelGuides } from '../../../../../src/data/travelGuidesData';
 import { categoryGuides as categoryGuidesBase } from '../guidesData';
@@ -34,6 +41,126 @@ const categoryGuides = {
 export default function CategoryGuideClient({ destinationId, categorySlug, guideData, categoryTours = [], promotionScores = {}, availableGuideSlugs = [], allAvailableGuides = [], destination: destinationProp }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [showStickyButton, setShowStickyButton] = React.useState(true);
+  const supabase = createSupabaseBrowserClient();
+  
+  // User preferences for matching
+  const [user, setUser] = React.useState(null);
+  const [userPreferences, setUserPreferences] = React.useState(null);
+  const [matchScores, setMatchScores] = React.useState({}); // Map of productId -> match score
+  const [loadingPreferences, setLoadingPreferences] = React.useState(true);
+  const [showPreferencesModal, setShowPreferencesModal] = React.useState(false);
+  
+  // Lightweight localStorage preferences (works for everyone, no sign-in required)
+  const [localPreferences, setLocalPreferences] = React.useState(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      const stored = localStorage.getItem('topTours_preferences');
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch (e) {
+      console.error('Error loading localStorage preferences:', e);
+    }
+    // Default balanced preferences
+    return {
+      adventureLevel: 50,
+      cultureVsBeach: 50,
+      groupPreference: 50,
+      budgetComfort: 50,
+      structurePreference: 50,
+      foodAndDrinkInterest: 50,
+    };
+  });
+  
+  // Save to localStorage when preferences change
+  React.useEffect(() => {
+    if (localPreferences && typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('topTours_preferences', JSON.stringify(localPreferences));
+      } catch (e) {
+        console.error('Error saving localStorage preferences:', e);
+      }
+    }
+  }, [localPreferences]);
+  
+  // Fetch user and preferences for matching
+  React.useEffect(() => {
+    const fetchUserPreferences = async () => {
+      try {
+        const { data: { user: authUser } } = await supabase.auth.getUser();
+        setUser(authUser);
+        
+        if (authUser) {
+          // Fetch user preferences
+          const { data: profile, error } = await supabase
+            .from('profiles')
+            .select('trip_preferences')
+            .eq('id', authUser.id)
+            .single();
+          
+          if (!error && profile?.trip_preferences) {
+            setUserPreferences(profile.trip_preferences);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user preferences:', error);
+      } finally {
+        setLoadingPreferences(false);
+      }
+    };
+    
+    fetchUserPreferences();
+  }, [supabase]);
+  
+  // Calculate match scores for tours
+  React.useEffect(() => {
+    if (loadingPreferences || categoryTours.length === 0) {
+      if (categoryTours.length === 0) {
+        setMatchScores({});
+      }
+      return;
+    }
+    
+    const calculateMatches = async () => {
+      // Use profile preferences if logged in and set, otherwise use localStorage preferences
+      const preferences = user && userPreferences && Object.keys(userPreferences).length >= 5
+        ? getUserPreferenceScores(userPreferences)
+        : localPreferences
+        ? getUserPreferenceScores(localPreferences)
+        : getDefaultPreferences();
+      
+      // Calculate default match for tours without tags
+      const defaultProfile = await calculateTourProfile([]);
+      const defaultMatch = calculateMatchScore(defaultProfile, preferences);
+      defaultMatch.tourProfile = defaultProfile;
+      
+      const scores = {};
+      
+      // Calculate match scores for each tour
+      for (const tour of categoryTours) {
+        const productId = tour.productId || tour.productCode;
+        if (!productId) continue;
+        
+        try {
+          // Tags can be in different locations in Viator API response
+          const tags = Array.isArray(tour.tags) ? tour.tags : 
+                      Array.isArray(tour.productTags) ? tour.productTags :
+                      Array.isArray(tour.tagIds) ? tour.tagIds : [];
+          const tourProfile = await calculateTourProfile(tags);
+          const matchResult = calculateMatchScore(tourProfile, preferences);
+          matchResult.tourProfile = tourProfile;
+          scores[productId] = matchResult;
+        } catch (error) {
+          // Fallback to default match if calculation fails
+          scores[productId] = { ...defaultMatch };
+        }
+      }
+      
+      setMatchScores(scores);
+    };
+    
+    calculateMatches();
+  }, [categoryTours, user, userPreferences, localPreferences, loadingPreferences]);
   
   // Use destination from props if provided, otherwise try to find in destinationsData.js
   // The server component should ALWAYS pass destination, so this is just a safety fallback
@@ -323,154 +450,24 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 </p>
               </div>
 
-              {/* Mobile grid layout */}
-              <div className="md:hidden grid grid-cols-1 gap-6">
+              {/* Tour Grid - Using TourCard component */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {categoryTours.map((tour, index) => {
-                  const tourId = tour.productId;
-                  const tourUrl = getTourUrl(tourId, tour.title);
+                  const tourId = tour.productId || tour.productCode;
+                  if (!tourId) return null;
                   
                   return (
-                    <Card key={tourId || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
-                      <Link href={tourUrl}>
-                        <div className="relative h-32 bg-gray-200 flex-shrink-0 cursor-pointer">
-                          {tour.image ? (
-                            <img
-                              src={tour.image}
-                              alt={tour.title}
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                              <Search className="w-6 h-6 text-gray-400" />
-                            </div>
-                          )}
-                        </div>
-                      </Link>
-
-                      <CardContent className="p-3 flex-1 flex flex-col">
-                        <Link href={tourUrl}>
-                          <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 h-10 hover:text-purple-600 transition-colors cursor-pointer">
-                            {tour.title}
-                          </h4>
-                        </Link>
-
-                        {/* Promotion Score / Boost Button */}
-                        <div className="mb-2">
-                          <TourPromotionCard 
-                            productId={tourId} 
-                            compact={true}
-                            tourData={{
-                              productId: tourId,
-                              title: tour.title,
-                              images: tour.image ? [{
-                                variants: [
-                                  { url: tour.image },
-                                  { url: tour.image },
-                                  { url: tour.image },
-                                  { url: tour.image }
-                                ]
-                              }] : []
-                            }}
-                            destinationId={destinationId}
-                            initialScore={promotionScores[tourId] || {
-                              product_id: tourId,
-                              total_score: 0,
-                              monthly_score: 0,
-                              weekly_score: 0,
-                              past_28_days_score: 0,
-                            }}
-                          />
-                        </div>
-
-                        {/* View Details Button */}
-                        <Button
-                          asChild
-                          size="sm"
-                          className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
-                        >
-                          <Link href={tourUrl}>
-                            View Details
-                            <ArrowRight className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
-              </div>
-
-              {/* Desktop grid layout - 4 tours per row */}
-              <div className="hidden md:grid md:grid-cols-4 gap-6">
-                {categoryTours.map((tour, index) => {
-                  const tourId = tour.productId;
-                  const tourUrl = getTourUrl(tourId, tour.title);
-                  
-                  return (
-                    <Card key={tourId || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
-                      <Link href={tourUrl}>
-                        <div className="relative h-32 bg-gray-200 flex-shrink-0 cursor-pointer">
-                          {tour.image ? (
-                            <img
-                              src={tour.image}
-                              alt={tour.title}
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                              <Search className="w-6 h-6 text-gray-400" />
-                            </div>
-                          )}
-                        </div>
-                      </Link>
-
-                      <CardContent className="p-3 flex-1 flex flex-col">
-                        <Link href={tourUrl}>
-                          <h4 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 h-10 hover:text-purple-600 transition-colors cursor-pointer">
-                            {tour.title}
-                          </h4>
-                        </Link>
-
-                        {/* Promotion Score / Boost Button */}
-                        <div className="mb-2">
-                          <TourPromotionCard 
-                            productId={tourId} 
-                            compact={true}
-                            tourData={{
-                              productId: tourId,
-                              title: tour.title,
-                              images: tour.image ? [{
-                                variants: [
-                                  { url: tour.image },
-                                  { url: tour.image },
-                                  { url: tour.image },
-                                  { url: tour.image }
-                                ]
-                              }] : []
-                            }}
-                            destinationId={destinationId}
-                            initialScore={promotionScores[tourId] || {
-                              product_id: tourId,
-                              total_score: 0,
-                              monthly_score: 0,
-                              weekly_score: 0,
-                              past_28_days_score: 0,
-                            }}
-                          />
-                        </div>
-
-                        {/* View Details Button */}
-                        <Button
-                          asChild
-                          size="sm"
-                          className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
-                        >
-                          <Link href={tourUrl}>
-                            View Details
-                            <ArrowRight className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
+                    <TourCard
+                      key={tourId}
+                      tour={tour}
+                      destination={destination}
+                      matchScore={matchScores[tourId]}
+                      user={user}
+                      userPreferences={userPreferences || localPreferences}
+                      onOpenPreferences={() => setShowPreferencesModal(true)}
+                      isFeatured={false}
+                      premiumOperatorTourIds={[]}
+                    />
                   );
                 })}
               </div>

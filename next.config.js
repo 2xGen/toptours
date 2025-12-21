@@ -941,6 +941,33 @@ const nextConfig = {
         destination: '/destinations',
         permanent: true,
       },
+      
+      // Removed community features - redirect to homepage
+      {
+        source: '/leaderboard',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/leaderboard/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/plans',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/plans/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/how-it-works',
+        destination: '/',
+        permanent: true,
+      },
     ]
   },
   async rewrites() {

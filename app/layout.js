@@ -11,13 +11,13 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: {
-    default: 'AI-Powered Tour Recommendations | Find the Best Tours & Activities',
+    default: 'Tours & Restaurants That Match Your Style | AI-Powered Best Match',
     template: '%s | TopTours.ai™'
   },
   // Force rebuild v6 - Deploy with all SEO improvements Oct 9 2025
 
-  description: 'Discover the best tours and activities with smart AI recommendations tailored to your travel style. Explore destinations, compare top-rated operators, and book directly through trusted partners like Viator.',
-  keywords: 'tours, activities, travel planning, AI travel, tour booking, travel experiences, city tours, adventure tours, community-driven tours, personalized tour recommendations, tour match score, tour leaderboard',
+  description: 'Get personalized tour and restaurant recommendations that match your travel style, budget, and group preferences with AI-powered Best Match. See 0-100% match scores on every listing.',
+  keywords: 'tours, activities, travel planning, AI travel, tour booking, travel experiences, city tours, adventure tours, AI-powered tours, personalized tour recommendations, tour match score, tour leaderboard',
   authors: [{ name: 'TopTours.ai' }],
   creator: 'TopTours.ai',
   publisher: 'TopTours.ai',
@@ -31,8 +31,8 @@ export const metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'AI-Powered Tour Recommendations | Find the Best Tours & Activities',
-    description: 'Discover the best tours and activities with smart AI recommendations tailored to your travel style. Explore destinations, compare top-rated operators, and book directly through trusted partners like Viator.',
+    title: 'Tours & Restaurants That Match Your Style | AI-Powered Best Match',
+    description: 'Get personalized tour and restaurant recommendations that match your travel style, budget, and group preferences with AI-powered Best Match. See 0-100% match scores on every listing.',
     url: 'https://toptours.ai',
     siteName: 'TopTours.ai™',
     locale: 'en_US',
@@ -48,8 +48,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI-Powered Tour Recommendations | Find the Best Tours & Activities',
-    description: 'Discover the best tours and activities with smart AI recommendations tailored to your travel style. Explore destinations, compare top-rated operators, and book directly through trusted partners like Viator.',
+    title: 'Tours & Restaurants That Match Your Style | AI-Powered Best Match',
+    description: 'Get personalized tour and restaurant recommendations that match your travel style, budget, and group preferences with AI-powered Best Match. See 0-100% match scores on every listing.',
     images: ['https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg'],
   },
   robots: {

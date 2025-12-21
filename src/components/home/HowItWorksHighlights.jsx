@@ -7,31 +7,31 @@ import { Button } from '@/components/ui/button';
 const HowItWorksHighlights = () => {
   const highlights = [
     {
-      icon: Users,
-      title: 'Community-Driven',
-      description: 'You decide which tours and restaurants deserve the spotlight. Boost listings you love with daily points. The most-boosted rise to the top, appearing in "Trending Now" sections across destination pages.',
-      color: 'orange',
-      gradient: 'from-orange-50 to-yellow-50',
-      border: 'border-orange-200',
-      iconBg: 'bg-orange-500'
-    },
-    {
       icon: Brain,
-      title: 'AI-Powered Matching',
-      description: 'Get personalized tour and restaurant recommendations that actually fit your travel style. See 0-100% match scores with detailed breakdowns explaining why listings match (or don\'t).',
+      title: 'AI-Powered Best Match',
+      description: 'Get personalized tour and restaurant recommendations that actually fit your travel style. See 0-100% match scores with detailed breakdowns explaining why listings match your preferences.',
       color: 'purple',
       gradient: 'from-purple-50 to-pink-50',
       border: 'border-purple-200',
       iconBg: 'bg-purple-500'
     },
     {
+      icon: Sparkles,
+      title: 'Set Your Preferences',
+      description: 'Tell us your travel style: adventure level, budget comfort, group size, and more. Our AI uses these preferences to rank tours and restaurants just for you.',
+      color: 'blue',
+      gradient: 'from-blue-50 to-indigo-50',
+      border: 'border-blue-200',
+      iconBg: 'bg-blue-500'
+    },
+    {
       icon: Trophy,
-      title: 'Real-Time Rankings',
-      description: 'See which tours and restaurants are trending right now. Climb the global leaderboard based on community preference. Rankings update in real-time as travelers boost their favorites.',
-      color: 'yellow',
-      gradient: 'from-yellow-50 to-orange-50',
-      border: 'border-yellow-200',
-      iconBg: 'bg-yellow-500'
+      title: 'Discover Perfect Matches',
+      description: 'Every tour and restaurant shows a match score based on your preferences. Sort by "Best Match" to see the most relevant options first, across 3,300+ destinations.',
+      color: 'orange',
+      gradient: 'from-orange-50 to-yellow-50',
+      border: 'border-orange-200',
+      iconBg: 'bg-orange-500'
     }
   ];
 
@@ -53,7 +53,7 @@ const HowItWorksHighlights = () => {
             How TopTours.ai<span className="text-xs align-super">™</span> Works
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            The first platform where <strong>you control what's trending</strong>. Boost tours and restaurants you love, get AI recommendations that match your style, and see real-time rankings based on community preference — not algorithms.
+            The first platform with <strong>AI-powered Best Match</strong>. Get personalized tour and restaurant recommendations based on your travel style, preferences, and budget. See match scores on every listing.
           </p>
         </motion.div>
 

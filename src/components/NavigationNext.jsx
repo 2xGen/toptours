@@ -109,7 +109,6 @@ const NavigationNext = () => {
     { name: 'Destinations', path: '/destinations' },
     { name: 'Tours', path: '/tours' },
     { name: 'Restaurants', path: '/restaurants' },
-    { name: 'Plans', path: '/plans' },
     { name: 'Travel Guides', path: '/travel-guides' },
   ];
 
@@ -138,20 +137,6 @@ const NavigationNext = () => {
                 </Link>
               );
             })}
-            <Link
-              href="/leaderboard"
-              className={`text-white hover:text-blue-200 transition-colors ${
-                pathname === '/leaderboard' ? 'font-semibold text-blue-100' : ''
-              }`}
-            >
-              Leaderboard
-            </Link>
-            <Button
-              asChild
-              className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200"
-            >
-              <Link href="/how-it-works">How It Works</Link>
-            </Button>
             <div className="ml-2 flex items-center gap-2">
               {!authLoading && user ? (
                 <Link
@@ -206,23 +191,6 @@ const NavigationNext = () => {
                 </Link>
               );
             })}
-            <Link
-              href="/leaderboard"
-              className={`block py-2 text-white hover:text-yellow-300 transition-colors duration-200 ${
-                pathname === '/leaderboard' ? 'text-yellow-300 font-semibold' : ''
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              Leaderboard
-            </Link>
-            <Button
-              asChild
-              className="w-full mt-4 sunset-gradient text-white font-semibold"
-            >
-              <Link href="/how-it-works" onClick={() => setIsOpen(false)}>
-                How It Works
-              </Link>
-            </Button>
             {/* Auth Section */}
             <div className="mt-4 pt-4 border-t border-white/20">
               {!authLoading && user ? (

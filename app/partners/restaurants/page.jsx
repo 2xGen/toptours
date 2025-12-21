@@ -179,7 +179,7 @@ export default function RestaurantsPartnerPage() {
                 </p>
                 <p className="bg-purple-50 border-l-4 border-purple-500 p-4 rounded">
                   <strong>Why partner with us?</strong> We help increase visibility and clicks to your restaurant 
-                  listings through two powerful methods: our Boost System and Restaurant Premium Program.
+                  listings through our Restaurant Premium Program, featuring top placement and premium badges.
                 </p>
               </div>
             </CardContent>
@@ -194,200 +194,18 @@ export default function RestaurantsPartnerPage() {
           className="mb-12"
         >
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
-            Two Ways to Increase Visibility
+            Restaurant Premium Program
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
-            {/* Method 1: Boost System */}
-            <Card className="shadow-xl border-2 border-orange-200">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-xl flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900">Method 1: Boost System</h3>
-                </div>
-                
-                <p className="text-gray-700 mb-6">
-                  Increase visibility for individual restaurants using our gamified boost system. Users can boost your 
-                  restaurant with points from their membership accounts or purchase instant boost packages.
-                </p>
-                
-                {/* How It Works */}
-                <div className="bg-orange-50 rounded-lg p-6 mb-6">
-                  <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-orange-600" />
-                    How It Works
-                  </h4>
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">
-                        1
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-gray-900 mb-1">Get Daily Points</h5>
-                        <p className="text-sm text-gray-600">
-                          Users get free points daily. Upgrade to Pro, Pro+, or Enterprise for more points.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">
-                        2
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-gray-900 mb-1">Boost Restaurants</h5>
-                        <p className="text-sm text-gray-600">
-                          Users spend points to boost restaurants that deserve more visibility. Minimum 10 points per boost.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">
-                        3
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-gray-900 mb-1">Instant Boosts</h5>
-                        <p className="text-sm text-gray-600">
-                          Users can also purchase instant boost packages (1,000, 3,000, or 5,000 points) for immediate visibility.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Daily Points Breakdown */}
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 mb-6 border-2 border-blue-200">
-                  <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-blue-600" />
-                    Daily Points by Membership
-                  </h4>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-white rounded-lg p-3 border border-blue-100 text-center">
-                      <div className="text-xs text-gray-500 mb-1">Free</div>
-                      <div className="text-xl font-bold text-gray-900">50</div>
-                      <div className="text-xs text-gray-600">points/day</div>
-                    </div>
-                    <div className="bg-white rounded-lg p-3 border border-blue-100 text-center">
-                      <div className="text-xs text-gray-500 mb-1">Pro</div>
-                      <div className="text-xl font-bold text-blue-600">200</div>
-                      <div className="text-xs text-gray-600">points/day</div>
-                    </div>
-                    <div className="bg-white rounded-lg p-3 border border-blue-100 text-center">
-                      <div className="text-xs text-gray-500 mb-1">Pro+</div>
-                      <div className="text-xl font-bold text-purple-600">600</div>
-                      <div className="text-xs text-gray-600">points/day</div>
-                    </div>
-                    <div className="bg-white rounded-lg p-3 border-2 border-blue-400 text-center">
-                      <div className="text-xs text-gray-500 mb-1">Enterprise</div>
-                      <div className="text-xl font-bold text-indigo-600">2,000</div>
-                      <div className="text-xs text-gray-600">points/day</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Instant Boost Packages */}
-                <div className="bg-purple-50 rounded-lg p-6 mb-6 border-2 border-purple-200">
-                  <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-purple-600" />
-                    Instant Boost Packages
-                  </h4>
-                  <div className="space-y-3">
-                    <div className="bg-white rounded-lg p-3 border border-purple-100">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-semibold text-gray-900">1,000 Points</p>
-                          <p className="text-xs text-gray-500">Quick visibility boost</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-lg font-bold text-purple-600">$7.99</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-white rounded-lg p-3 border border-purple-100">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-semibold text-gray-900">3,000 Points</p>
-                          <p className="text-xs text-gray-500">Better value</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-lg font-bold text-purple-600">$18.99</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-white rounded-lg p-3 border-2 border-purple-400">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-semibold text-gray-900">5,000 Points</p>
-                          <p className="text-xs text-gray-500">Maximum impact</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-lg font-bold text-purple-600">$27.99</p>
-                          <Badge className="mt-1 bg-green-100 text-green-700 text-xs">Best Value</Badge>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Benefits */}
-                <div className="bg-green-50 rounded-lg p-6 mb-6 border-2 border-green-200">
-                  <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-green-600" />
-                    Why It Works
-                  </h4>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="font-semibold text-gray-900 text-sm">Works for Any Restaurant</p>
-                        <p className="text-gray-600 text-xs">No restrictions - any restaurant on the platform can be boosted</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="font-semibold text-gray-900 text-sm">Community-Driven</p>
-                        <p className="text-gray-600 text-xs">Real travelers boost restaurants they love, creating authentic visibility</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="font-semibold text-gray-900 text-sm">No Subscription Required</p>
-                        <p className="text-gray-600 text-xs">Restaurants don't need to pay anything - users boost with their own points</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="font-semibold text-gray-900 text-sm">Immediate Results</p>
-                        <p className="text-gray-600 text-xs">Boosts take effect instantly, increasing visibility right away</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="text-center">
-                  <Link 
-                    href="/how-it-works" 
-                    className="text-purple-600 hover:text-purple-700 hover:underline text-sm font-medium inline-flex items-center gap-1"
-                  >
-                    Learn more about how it works
-                    <ArrowRight className="w-3 h-3" />
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Method 2: Restaurant Premium */}
+          <div className="max-w-4xl mx-auto">
+            {/* Restaurant Premium */}
             <Card className="shadow-xl border-2 border-amber-200">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center">
                     <Crown className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900">Method 2: Restaurant Premium</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">Restaurant Premium</h3>
                 </div>
                 
                 <p className="text-gray-700 mb-6">

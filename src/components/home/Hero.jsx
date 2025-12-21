@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Sparkles, Globe, ArrowRight, Users, UtensilsCrossed, Ticket, BookOpen } from 'lucide-react';
+import { Sparkles, Globe, UtensilsCrossed, Ticket, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedHeroBackground from './AnimatedHeroBackground';
 
@@ -27,27 +27,18 @@ const Hero = ({ onOpenOnboardingModal }) => {
             </div>
             <h1 className="font-poppins font-bold leading-tight mb-6">
               <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl mb-2">
-                Discover Top Tours & Restaurants
+                Tours & Restaurants That Match Your Style
               </span>
-              <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl gradient-text whitespace-nowrap">
-                Powered by Community + AI
+              <span className="block text-xl sm:text-2xl lg:text-3xl xl:text-4xl gradient-text whitespace-nowrap">
+                Powered by AI-driven Best Match
               </span>
             </h1>
 
             <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto text-center">
-              Boost the places you love and see what’s trending—then switch to <strong className="text-white">Best Match</strong> to rank tours and restaurants by your travel style.
+              Get personalized recommendations that match your travel style, budget, and group preferences with <strong className="text-white">AI-powered Best Match</strong>.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-10 justify-center">
-              <Button
-                asChild
-                className="sunset-gradient text-white font-semibold shadow-lg hover:scale-105 transition-transform duration-200 px-8 py-3 text-lg"
-              >
-                <Link href="/how-it-works">
-                  How It Works
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </Link>
-              </Button>
               <Button
                 asChild
                 variant="secondary"
@@ -68,30 +59,26 @@ const Hero = ({ onOpenOnboardingModal }) => {
             <div className="flex flex-col items-center gap-3 text-white/80">
               <div className="flex flex-wrap gap-4 justify-center">
                 <div className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-orange-300" />
-                  <span>Community-driven rankings</span>
-                </div>
-                <div className="flex items-center gap-2">
                   <Sparkles className="h-5 w-5 text-yellow-300" />
-                  <span>AI-powered matching</span>
+                  <span>AI-powered Best Match</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Globe className="h-5 w-5 text-blue-200" />
-                  <span>3300+ destinations</span>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <div className="flex items-center gap-2">
-                  <UtensilsCrossed className="h-5 w-5 text-green-200" />
-                  <span>3500+ restaurants</span>
+                  <span>3,300+ destinations</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Ticket className="h-5 w-5 text-purple-200" />
                   <span>10,000+ tours</span>
                 </div>
+              </div>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <div className="flex items-center gap-2">
+                  <UtensilsCrossed className="h-5 w-5 text-green-200" />
+                  <span>3,500+ restaurants</span>
+                </div>
                 <div className="flex items-center gap-2">
                   <BookOpen className="h-5 w-5 text-cyan-200" />
-                  <span>19,831 Guides</span>
+                  <span>19,000+ travel guides</span>
                 </div>
               </div>
             </div>

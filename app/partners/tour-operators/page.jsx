@@ -644,7 +644,7 @@ function TourOperatorsPartnerPageContent() {
                     </p>
                     <p className="bg-purple-50 border-l-4 border-purple-500 p-4 rounded">
                       <strong>Why partner with us?</strong> We help increase visibility and clicks to your Viator 
-                      listings through two powerful methods: our Boost System and Premium Operator Program.
+                      listings through our Premium Operator Program, featuring top placement and premium badges.
                     </p>
                   </div>
                 </CardContent>
@@ -659,90 +659,18 @@ function TourOperatorsPartnerPageContent() {
               className="mb-12"
             >
               <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
-                Two Ways to Increase Visibility
+                Premium Operator Program
               </h2>
               
-              <div className="grid md:grid-cols-2 gap-8 mb-8">
-                {/* Method 1: Boost System */}
-                <Card className="shadow-xl border-2 border-orange-200">
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-xl flex items-center justify-center">
-                        <TrendingUp className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-900">Method 1: Boost System</h3>
-                    </div>
-                    
-                    <p className="text-gray-700 mb-6">
-                      Increase visibility for individual tours using our gamified boost system. Users can boost your 
-                      tours with points from their membership accounts or purchase instant boost packages.
-                    </p>
-                    
-                    <div className="bg-orange-50 rounded-lg p-6 mb-6">
-                      <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <Zap className="w-5 h-5 text-orange-600" />
-                        How It Works
-                      </h4>
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <div className="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">
-                            1
-                          </div>
-                          <div>
-                            <h5 className="font-semibold text-gray-900 mb-1">Get Daily Points</h5>
-                            <p className="text-sm text-gray-600">
-                              Users get free points daily. Upgrade to Pro, Pro+, or Enterprise for more points.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <div className="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">
-                            2
-                          </div>
-                          <div>
-                            <h5 className="font-semibold text-gray-900 mb-1">Boost Tours</h5>
-                            <p className="text-sm text-gray-600">
-                              Users spend points to boost tours that deserve more visibility. Minimum 10 points per boost.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">
-                            3
-                          </div>
-                          <div>
-                            <h5 className="font-semibold text-gray-900 mb-1">Instant Boosts</h5>
-                            <p className="text-sm text-gray-600">
-                              Users can also purchase instant boost packages (1,000, 3,000, or 5,000 points) for immediate visibility.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="text-sm text-gray-600">
-                      <p className="mb-2">✓ Works for any tour on the platform</p>
-                      <p className="mb-2">✓ Community-driven visibility</p>
-                      <p className="mb-3">✓ No subscription required from operators</p>
-                      <Link 
-                        href="/how-it-works" 
-                        className="text-purple-600 hover:text-purple-700 hover:underline text-sm font-medium inline-flex items-center gap-1"
-                      >
-                        Learn more about how it works
-                        <ArrowRight className="w-3 h-3" />
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Method 2: Premium Operator Program */}
+              <div className="max-w-4xl mx-auto">
+                {/* Premium Operator Program */}
                 <Card className="shadow-xl border-2 border-amber-200">
                   <CardContent className="p-8">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center">
                         <Crown className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900">Method 2: Premium Operator</h3>
+                      <h3 className="text-2xl font-bold text-gray-900">Premium Operator</h3>
                     </div>
                     
                     <p className="text-gray-700 mb-6">

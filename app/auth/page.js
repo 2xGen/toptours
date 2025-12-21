@@ -412,7 +412,7 @@ function AuthPageContent() {
                   Discover Amazing Tours & Restaurants
                 </h2>
                 <p className="text-xl text-white/90 mb-8">
-                  The first community-driven, AI-powered platform that helps you discover tours and restaurants that actually match your travel style — and lets you boost the ones you love.
+                  The first AI-powered platform that helps you discover tours and restaurants that actually match your travel style with personalized recommendations.
                 </p>
               </motion.div>
 
@@ -731,7 +731,7 @@ function AuthPageContent() {
                   Discover Amazing Tours & Restaurants
                 </h2>
                 <p className="text-base text-white/90 mb-6">
-                  The first community-driven, AI-powered platform that helps you discover tours and restaurants that actually match your travel style — and lets you boost the ones you love.
+                  The first AI-powered platform that helps you discover tours and restaurants that actually match your travel style with personalized recommendations.
                 </p>
               </motion.div>
 

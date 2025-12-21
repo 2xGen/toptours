@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import NavigationNext from '@/components/NavigationNext';
@@ -10,9 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
-import RestaurantPromotionCard from '@/components/promotion/RestaurantPromotionCard';
 import { getTourUrl } from '@/utils/tourHelpers';
-import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import ShareModal from '@/components/sharing/ShareModal';
 import { useToast } from '@/components/ui/use-toast';
@@ -46,10 +44,10 @@ import {
   Accessibility,
   CheckCircle2,
   XCircle,
-  TrendingUp,
   Heart,
   Share2,
   Crown,
+  Sparkles,
 } from 'lucide-react';
 import { 
   PremiumHeroCTA, 
@@ -60,8 +58,9 @@ import {
 } from '@/components/restaurant/RestaurantPremiumCTAs';
 import { PromoteRestaurantBanner } from '@/components/restaurant/PromoteRestaurantBanner';
 import { isPremiumRestaurant, getPremiumConfig } from '@/lib/restaurantPremium';
+import RestaurantMatchModal from '@/components/restaurant/RestaurantMatchModal';
 
-export default function RestaurantDetailClient({ destination, restaurant, otherRestaurants, initialPromotionScore = null, trendingTours = [], trendingRestaurants = [], premiumSubscription = null, categoryGuides = [] }) {
+export default function RestaurantDetailClient({ destination, restaurant, otherRestaurants, initialPromotionScore = null, premiumSubscription = null, categoryGuides = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showStickyButton, setShowStickyButton] = useState(true);
   const [user, setUser] = useState(null);
@@ -79,6 +78,8 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
   const [matchModalMessage, setMatchModalMessage] = useState('');
   const [showShareModal, setShowShareModal] = useState(false);
   const [showPreferencesModal, setShowPreferencesModal] = useState(false);
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [showRestaurantMatchModal, setShowRestaurantMatchModal] = useState(false);
   const [localRestaurantPreferences, setLocalRestaurantPreferences] = useState(() => {
     if (typeof window === 'undefined') return null;
     try {
@@ -360,6 +361,50 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
   };
 
   const otherRestaurantsAvailable = otherRestaurants && otherRestaurants.length > 0;
+
+  // Calculate match scores for other restaurants
+  const otherRestaurantsMatchById = useMemo(() => {
+    const map = new Map();
+    if (!Array.isArray(otherRestaurants)) return map;
+
+    const prefs = localRestaurantPreferences || {
+      atmosphere: 'any',
+      diningStyle: 50,
+      features: [],
+      priceRange: 'any',
+      mealTime: 'any',
+      groupSize: 'any',
+    };
+
+    // Build a compatible "userPreferences" object expected by the matcher
+    const pseudoUserPreferences = {
+      adventureLevel: 50,
+      cultureVsBeach: 50,
+      groupPreference:
+        prefs.groupSize === 'solo' || prefs.groupSize === 'couple'
+          ? 70
+          : prefs.groupSize === 'groups' || prefs.groupSize === 'family'
+          ? 30
+          : 50,
+      budgetComfort:
+        prefs.priceRange === '$' ? 25 : prefs.priceRange === '$$' ? 40 : prefs.priceRange === '$$$' ? 70 : prefs.priceRange === '$$$$' ? 85 : 50,
+      structurePreference: typeof prefs.diningStyle === 'number' ? prefs.diningStyle : 50,
+      foodAndDrinkInterest: 75,
+      timeOfDayPreference: 'no_preference',
+      restaurantPreferences: prefs,
+    };
+
+    otherRestaurants.forEach((r) => {
+      try {
+        const values = extractRestaurantStructuredValues(r);
+        if (values?.error) return;
+        const match = calculateRestaurantPreferenceMatch(pseudoUserPreferences, values, r);
+        if (match?.error) return;
+        map.set(r.id, match);
+      } catch {}
+    });
+    return map;
+  }, [otherRestaurants, localRestaurantPreferences]);
 
   const headingCuisine = cuisines.length > 0 ? `${cuisines.join(' & ')} restaurant in ${destination.name}` : `Restaurant in ${destination.name}`;
 
@@ -1224,23 +1269,6 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                   )}
                 </CardContent>
               </Card>
-              
-              {/* Promotion Card */}
-              {restaurant.id && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                >
-                  <RestaurantPromotionCard 
-                    restaurantId={restaurant.id} 
-                    restaurantData={restaurant}
-                    destinationId={destination.id}
-                    initialScore={initialPromotionScore}
-                  />
-                </motion.div>
-              )}
             </motion.div>
           </div>
         </section>
@@ -1669,179 +1697,6 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
           </div>
         </section>
 
-        {/* Trending Now Section - Past 28 Days */}
-        {((trendingTours && trendingTours.length > 0) || (trendingRestaurants && trendingRestaurants.length > 0)) && (
-          <section className="py-12 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center gap-2 mb-6">
-                <TrendingUp className="w-5 h-5 text-orange-600" />
-                <h2 className="text-2xl font-bold text-gray-900">Trending Now in {destination.fullName}</h2>
-                <Badge variant="secondary" className="ml-2 bg-orange-100 text-orange-700 border-orange-300">
-                  Past 28 Days
-                </Badge>
-              </div>
-              <div className="flex items-center gap-2 mb-6">
-                <p className="text-sm text-gray-600">
-                  Tours and restaurants that are currently popular based on recent community boosts
-                </p>
-                <Link 
-                  href="/how-it-works" 
-                  className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 hover:underline transition-colors"
-                  title="Learn how promotions work"
-                >
-                  <Info className="w-3.5 h-3.5" />
-                  <span>Learn more</span>
-                </Link>
-              </div>
-
-              {/* Trending Tours Subsection */}
-              {trendingTours && trendingTours.length > 0 && (
-                <div className="mb-8">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Trending Tours Now in {destination.fullName}</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {trendingTours.map((trending, index) => {
-                      const tourId = trending.product_id;
-                      const tourUrl = trending.tour_slug 
-                        ? `/tours/${tourId}/${trending.tour_slug}` 
-                        : getTourUrl(tourId, trending.tour_name);
-                      
-                      return (
-                        <motion.div
-                          key={tourId || index}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.4, delay: index * 0.1 }}
-                          viewport={{ once: true }}
-                        >
-                          <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                            <Link href={tourUrl}>
-                              <div className="relative h-48 overflow-hidden">
-                                {trending.tour_image_url ? (
-                                  <img
-                                    src={trending.tour_image_url}
-                                    alt={trending.tour_name || 'Tour'}
-                                    className="w-full h-full object-cover"
-                                    loading="lazy"
-                                  />
-                                ) : (
-                                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                                    <UtensilsCrossed className="w-8 h-8 text-gray-400" />
-                                  </div>
-                                )}
-                              </div>
-                            </Link>
-                            <CardContent className="p-4 flex-1 flex flex-col">
-                              <Link href={tourUrl}>
-                                <h4 className="font-semibold text-base text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors cursor-pointer">
-                                  {trending.tour_name || 'Tour'}
-                                </h4>
-                              </Link>
-                              
-                              <div className="mt-auto pt-3">
-                                <TourPromotionCard
-                                  productId={tourId}
-                                  compact={true}
-                                  initialScore={{
-                                    total_score: trending.total_score || 0,
-                                    monthly_score: trending.monthly_score || 0,
-                                    weekly_score: trending.weekly_score || 0,
-                                    past_28_days_score: trending.past_28_days_score || 0,
-                                  }}
-                                />
-                              </div>
-
-                              <Button
-                                asChild
-                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-3"
-                              >
-                                <Link href={tourUrl}>
-                                  View Details
-                                  <ArrowRight className="w-4 h-4 ml-2" />
-                                </Link>
-                              </Button>
-                            </CardContent>
-                          </Card>
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-
-              {/* Trending Restaurants Subsection */}
-              {trendingRestaurants && trendingRestaurants.length > 0 && (
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Trending Restaurants Now in {destination.fullName}</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {trendingRestaurants.map((trending, index) => {
-                      const restaurantUrl = trending.slug
-                        ? `/destinations/${destination.id}/restaurants/${trending.slug}`
-                        : null;
-                      
-                      if (!restaurantUrl) return null;
-                      
-                      return (
-                        <motion.div
-                          key={trending.restaurant_id || index}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.4, delay: index * 0.1 }}
-                          viewport={{ once: true }}
-                        >
-                          <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                            <CardContent className="p-5 flex flex-col h-full">
-                              <div className="flex items-center gap-3 mb-3">
-                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
-                                  <UtensilsCrossed className="w-5 h-5 text-white" />
-                                </div>
-                                <Badge className="adventure-gradient text-white text-xs">
-                                  <TrendingUp className="w-3 h-3 mr-1" />
-                                  Trending
-                                </Badge>
-                              </div>
-                              
-                              <Link href={restaurantUrl}>
-                                <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
-                                  {trending.name || trending.restaurant_name || 'Restaurant'}
-                                </h3>
-                              </Link>
-                              
-                              {/* Promotion Score */}
-                              {trending.restaurant_id && (
-                                <div className="mb-3 flex-grow">
-                                  <RestaurantPromotionCard
-                                    restaurantId={trending.restaurant_id}
-                                    compact={true}
-                                    initialScore={{
-                                      restaurant_id: trending.restaurant_id,
-                                      total_score: trending.total_score || 0,
-                                      monthly_score: trending.monthly_score || 0,
-                                      weekly_score: trending.weekly_score || 0,
-                                      past_28_days_score: trending.past_28_days_score || 0,
-                                    }}
-                                  />
-                                </div>
-                              )}
-
-                              <Link
-                                href={restaurantUrl}
-                                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
-                              >
-                                View Details
-                                <ArrowRight className="w-4 h-4" />
-                              </Link>
-                            </CardContent>
-                          </Card>
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-            </div>
-          </section>
-        )}
-
         {/* Premium End CTA - Above Other Restaurants */}
         {isPremiumRestaurant(premiumSubscription) && (restaurant.contact?.website || restaurant.booking?.partnerUrl) && (
           <PremiumEndCTA 
@@ -1870,49 +1725,82 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
             </motion.div>
 
             {otherRestaurantsAvailable ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                {otherRestaurants.slice(0, 17).map((other) => {
-                  // Build description with multiple fallbacks
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+                {otherRestaurants.slice(0, 17).map((other, index) => {
+                  if (!other || !other.id || !other.slug) return null;
+
+                  const restaurantUrl = `/destinations/${destination.id}/restaurants/${other.slug}`;
                   const description = other.metaDescription 
                     || other.tagline 
                     || other.summary 
                     || other.description
                     || (other.cuisines?.length > 0 
-                        ? `Discover ${other.cuisines.join(' & ')} cuisine at ${other.name} in ${destination.name}.`
-                        : `Experience great dining at ${other.name} in ${destination.name}.`);
+                        ? `Discover ${other.cuisines.filter(c => c).join(' & ')} cuisine at ${other.name}.`
+                        : `Experience great dining at ${other.name}.`);
                   
                   return (
-                    <motion.div
+                    <motion.article
                       key={other.id}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6 }}
+                      transition={{ duration: 0.5, delay: (index % 6) * 0.05 }}
                       viewport={{ once: true }}
+                      className="h-full"
                     >
-                      <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-shadow">
+                      <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                         <CardContent className="p-6 flex flex-col h-full">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
-                              <UtensilsCrossed className="w-5 h-5 text-white" />
+                          <div className="flex items-center justify-between gap-3 mb-3">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+                                <UtensilsCrossed className="w-5 h-5 text-white" />
+                              </div>
+                              <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
+                                {(() => {
+                                  // Filter out generic cuisine types
+                                  const validCuisines = other.cuisines && Array.isArray(other.cuisines)
+                                    ? other.cuisines.filter(c => c && 
+                                        c.toLowerCase() !== 'restaurant' && 
+                                        c.toLowerCase() !== 'food' &&
+                                        c.trim().length > 0)
+                                    : [];
+                                  return validCuisines.length > 0 ? validCuisines[0] : 'Restaurant';
+                                })()}
+                              </span>
                             </div>
-                            <div className="flex-1 min-w-0">
-                              <h3 className="text-lg font-bold text-gray-900 line-clamp-1">
-                                {other.name}
-                              </h3>
-                              {other.cuisines?.length > 0 && (
-                                <span className="text-xs font-medium text-blue-600 uppercase tracking-wide">
-                                  {other.cuisines[0]}
+                            <div className="flex items-center gap-2">
+                              {/* Match Score Badge */}
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  setSelectedRestaurant(other);
+                                  setShowRestaurantMatchModal(true);
+                                }}
+                                className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 flex-shrink-0"
+                                title="Click to see why this matches your taste"
+                              >
+                                <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+                                <span className="text-xs font-bold text-gray-900">
+                                  {otherRestaurantsMatchById.get(other.id)?.matchScore ?? 0}%
                                 </span>
-                              )}
+                                <span className="text-[10px] text-gray-600">Match</span>
+                              </button>
                             </div>
                           </div>
-                          <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">
-                            {description.length > 120 ? description.slice(0, 120) + '...' : description}
+                          
+                          <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 flex items-center gap-1.5">
+                            {other.name || 'Restaurant'}
+                          </h3>
+                          
+                          <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
+                            {description}
                           </p>
-                          <div className="flex flex-wrap gap-2 mb-4">
+                          
+                          <div className="flex flex-wrap items-center gap-2 mb-4">
                             {other.ratings?.googleRating && (
                               <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
-                                <Star className="w-3 h-3" />
+                                <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                                 {other.ratings.googleRating.toFixed(1)}
                               </span>
                             )}
@@ -1921,9 +1809,28 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                                 {other.pricing.priceRange}
                               </span>
                             )}
+                            {(() => {
+                              // Filter out generic cuisine types
+                              const validCuisines = other.cuisines && Array.isArray(other.cuisines)
+                                ? other.cuisines.filter(c => c && 
+                                    c.toLowerCase() !== 'restaurant' && 
+                                    c.toLowerCase() !== 'food' &&
+                                    c.trim().length > 0)
+                                : [];
+                              // Show cuisine badge if there's at least 1 valid cuisine
+                              if (validCuisines.length > 0) {
+                                return (
+                                  <span className="inline-flex items-center text-xs font-medium bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full">
+                                    {validCuisines.slice(0, 2).join(' · ')}
+                                  </span>
+                                );
+                              }
+                              return null;
+                            })()}
                           </div>
+                          
                           <Link
-                            href={`/destinations/${destination.id}/restaurants/${other.slug}`}
+                            href={restaurantUrl}
                             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
                           >
                             View Restaurant
@@ -1931,7 +1838,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                           </Link>
                         </CardContent>
                       </Card>
-                    </motion.div>
+                    </motion.article>
                   );
                 })}
                 <motion.div
@@ -2638,6 +2545,24 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
             </div>
           </div>
         </div>
+      )}
+
+      {/* Restaurant Match Modal */}
+      {showRestaurantMatchModal && selectedRestaurant && (
+        <RestaurantMatchModal
+          isOpen={showRestaurantMatchModal}
+          onClose={() => {
+            setShowRestaurantMatchModal(false);
+            setSelectedRestaurant(null);
+          }}
+          restaurant={selectedRestaurant}
+          matchData={otherRestaurantsMatchById.get(selectedRestaurant.id)}
+          preferences={localRestaurantPreferences}
+          onOpenPreferences={() => {
+            setShowRestaurantMatchModal(false);
+            setShowPreferencesModal(true);
+          }}
+        />
       )}
     </>
   );

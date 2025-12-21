@@ -14,7 +14,6 @@ import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { getTourUrl } from '@/utils/tourHelpers';
-import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import { destinations } from '../../../../../../src/data/destinationsData';
 
 export default function RestaurantGuideClient({ 
@@ -345,17 +344,30 @@ export default function RestaurantGuideClient({
                           </div>
 
                           {/* Cuisines */}
-                          {restaurant.cuisines && restaurant.cuisines.length > 0 && (
-                            <div className="mb-3">
-                              <div className="flex flex-wrap gap-1">
-                                {restaurant.cuisines.slice(0, 2).map((cuisine, i) => (
-                                  <span key={i} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                                    {cuisine}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          )}
+                          {(() => {
+                            // Filter out generic cuisine types
+                            const validCuisines = restaurant.cuisines && Array.isArray(restaurant.cuisines)
+                              ? restaurant.cuisines.filter(c => c && 
+                                  c.toLowerCase() !== 'restaurant' && 
+                                  c.toLowerCase() !== 'food' &&
+                                  c.trim().length > 0)
+                              : [];
+                            
+                            if (validCuisines.length > 0) {
+                              return (
+                                <div className="mb-3">
+                                  <div className="flex flex-wrap gap-1">
+                                    {validCuisines.slice(0, 2).map((cuisine, i) => (
+                                      <span key={i} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                                        {cuisine}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              );
+                            }
+                            return null;
+                          })()}
 
                           {/* View Details Button */}
                           <Button

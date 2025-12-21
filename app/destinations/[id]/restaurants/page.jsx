@@ -5,7 +5,8 @@ import {
   formatRestaurantForFrontend,
 } from '@/lib/restaurants';
 import { getRestaurantsForDestination as getRestaurantsForDestinationFromStatic } from './restaurantsData';
-import { getTrendingToursByDestination, getRestaurantPromotionScoresByDestination, getTrendingRestaurantsByDestination } from '@/lib/promotionSystem';
+import { getRestaurantPromotionScoresByDestination } from '@/lib/promotionSystem';
+import { getPromotedListings } from '@/lib/promotedListings';
 import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
 import RestaurantsListClient from './RestaurantsListClient';
@@ -85,11 +86,17 @@ export default async function RestaurantsIndexPage({ params }) {
     notFound();
   }
 
-  // Fetch trending tours (past 28 days) for this destination - limit to 3
-  const trendingTours = await getTrendingToursByDestination(id, 3);
-
-  // Fetch trending restaurants (past 28 days) for this destination - limit to 3
-  const trendingRestaurants = await getTrendingRestaurantsByDestination(id, 3);
+  // Fetch promoted listings for this destination
+  const promotedListingsTours = await getPromotedListings(id, 'tour');
+  const promotedListingsRestaurants = await getPromotedListings(id, 'restaurant');
+  
+  // Match promoted listings with actual restaurant data
+  const promotedRestaurantIds = new Set(promotedListingsRestaurants.map(pl => pl.product_id));
+  const promotedRestaurants = restaurants.filter(r => promotedRestaurantIds.has(String(r.id)));
+  
+  // For tours, we'd need to fetch them separately (similar to tours page)
+  // For now, we'll pass empty array and let client handle it if needed
+  const promotedTours = [];
 
   // Fetch restaurant promotion scores for this destination
   const restaurantPromotionScores = await getRestaurantPromotionScoresByDestination(id);
@@ -248,7 +255,7 @@ export default async function RestaurantsIndexPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <RestaurantsListClient destination={destination} restaurants={restaurants} trendingTours={trendingTours} trendingRestaurants={trendingRestaurants} restaurantPromotionScores={restaurantPromotionScores} premiumRestaurantIds={premiumRestaurantIds} categoryGuides={categoryGuides} />
+      <RestaurantsListClient destination={destination} restaurants={restaurants} promotedTours={promotedTours} promotedRestaurants={promotedRestaurants} restaurantPromotionScores={restaurantPromotionScores} premiumRestaurantIds={premiumRestaurantIds} categoryGuides={categoryGuides} />
     </>
   );
 }

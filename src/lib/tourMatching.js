@@ -35,7 +35,18 @@ export async function calculateTourProfile(tourTagsOrIds, tagTraitsMap = null, s
   }
   
   // Fallback: treat as tag IDs and fetch from database
-  const tourTagIds = tourTagsOrIds || [];
+  // Ensure it's always an array
+  let tourTagIds = [];
+  if (Array.isArray(tourTagsOrIds)) {
+    tourTagIds = tourTagsOrIds;
+  } else if (tourTagsOrIds && typeof tourTagsOrIds === 'object' && tourTagsOrIds.tags) {
+    // Handle case where tags are in a nested property
+    tourTagIds = Array.isArray(tourTagsOrIds.tags) ? tourTagsOrIds.tags : [];
+  } else if (tourTagsOrIds) {
+    // Single value, wrap in array
+    tourTagIds = [tourTagsOrIds];
+  }
+  
   if (tourTagIds.length === 0) {
     return getDefaultProfile();
   }

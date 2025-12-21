@@ -44,12 +44,10 @@ import { getGuidesByCountry } from '@/data/travelGuidesData';
 import { getRestaurantsForDestination } from '../restaurants/restaurantsData';
 import { getDestinationById, getDestinationsByCountry } from '@/data/destinationsData';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
-import TourPromotionCard from '@/components/promotion/TourPromotionCard';
-import RestaurantPromotionCard from '@/components/promotion/RestaurantPromotionCard';
 import { hasDestinationPage } from '@/data/destinationFullContent';
-import PromotionExplainerModal from '@/components/auth/PromotionExplainerModal';
 import ShareModal from '@/components/sharing/ShareModal';
 import TourMatchModal from '@/components/tour/TourMatchModal';
+import TourCard from '@/components/tour/TourCard';
 import { 
   calculateTourProfile, 
   getUserPreferenceScores, 
@@ -290,8 +288,8 @@ export default function ToursListingClient({
   viatorDestinationId,
   totalToursAvailable = 0,
   promotionScores = {}, // Map of productId -> score object
-  trendingTours = [], // Tours with highest past_28_days_score for this destination
-  trendingRestaurants = [], // Restaurants with highest past_28_days_score for this destination
+  promotedTours = [], // Promoted tour listings for this destination
+  promotedRestaurants = [], // Promoted restaurant listings for this destination
   restaurantPromotionScores = {}, // Map of restaurantId -> score object
   premiumOperatorTourIds = [], // Array of product IDs with premium operator status
   premiumRestaurantIds = [], // Array of restaurant IDs with premium status
@@ -580,7 +578,6 @@ export default function ToursListingClient({
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [activeFilters, setActiveFilters] = useState({});
   const [loading, setLoading] = useState(false);
-  const [isPromotionModalOpen, setIsPromotionModalOpen] = useState(false);
   const [filteredToursFromAPI, setFilteredToursFromAPI] = useState([]);
   const [filteredTotalCount, setFilteredTotalCount] = useState(0); // Total count when filters are applied
   const [filteredCurrentPage, setFilteredCurrentPage] = useState(1); // Current page for filtered results
@@ -934,10 +931,28 @@ export default function ToursListingClient({
       });
     }
 
-    // Sort: Featured first, then by selected sort option
+    // Get promoted product IDs for sorting
+    const promotedProductIds = new Set(
+      promotedTours.map(t => t.productId || t.productCode).filter(Boolean)
+    );
+    
+    // Sort: Promoted first, then Featured, then by selected sort option
     filtered.sort((a, b) => {
-      if (a.isFeatured && !b.isFeatured) return -1;
-      if (!a.isFeatured && b.isFeatured) return 1;
+      const productIdA = a.productId || a.productCode;
+      const productIdB = b.productId || b.productCode;
+      const isPromotedA = productIdA && promotedProductIds.has(productIdA);
+      const isPromotedB = productIdB && promotedProductIds.has(productIdB);
+      
+      // Promoted listings always first
+      if (isPromotedA && !isPromotedB) return -1;
+      if (!isPromotedA && isPromotedB) return 1;
+      
+      // Within promoted group, maintain order (oldest subscription first = loyalty)
+      // Within regular group, featured first
+      if (!isPromotedA && !isPromotedB) {
+        if (a.isFeatured && !b.isFeatured) return -1;
+        if (!a.isFeatured && b.isFeatured) return 1;
+      }
       
       // Apply sorting based on sortBy state
       if (sortBy === 'rating') {
@@ -969,7 +984,7 @@ export default function ToursListingClient({
     });
 
     return filtered;
-  }, [allTours, searchTerm, activeFilters, sortBy, isFiltered, matchScores]);
+  }, [allTours, searchTerm, activeFilters, sortBy, isFiltered, matchScores, promotedTours]);
 
   // Separate featured and regular tours
   const featuredTours = filteredTours.filter(t => t.isFeatured);
@@ -2074,6 +2089,150 @@ export default function ToursListingClient({
         </section>
       )}
 
+      {/* Promoted Listings Section - Above Main Grid */}
+      {((promotedTours && promotedTours.length > 0) || (promotedRestaurants && promotedRestaurants.length > 0)) && (
+        <section className="py-12 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-2 mb-6">
+              <Sparkles className="w-5 h-5 text-purple-600" />
+              <h2 className="text-2xl font-bold text-gray-900">Promoted Listings in {destination.fullName || destination.name}</h2>
+              <Badge variant="secondary" className="ml-2 bg-purple-100 text-purple-700 border-purple-300">
+                Partner
+              </Badge>
+            </div>
+            <p className="text-sm text-gray-600 mb-6">
+              Featured tours and restaurants from our partner operators.
+            </p>
+
+            {/* Promoted Tours */}
+            {promotedTours && promotedTours.length > 0 && (
+              <div className="mb-8">
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">Promoted Tours</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {promotedTours.slice(0, 6).map((tour, index) => {
+                    const productId = tour.productId || tour.productCode;
+                    if (!productId) return null;
+                    
+                    const tourUrl = getTourUrl(productId, tour.title || tour.name);
+                    
+                    return (
+                      <motion.div
+                        key={productId || index}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                        viewport={{ once: true }}
+                      >
+                        <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                          <Link href={tourUrl}>
+                            <div className="relative h-48 overflow-hidden">
+                              {tour.images?.[0]?.variants?.[0]?.url ? (
+                                <img
+                                  src={tour.images[0].variants[0].url}
+                                  alt={tour.title || tour.name}
+                                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                />
+                              ) : (
+                                <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                                  <Search className="w-6 h-6 text-gray-400" />
+                                </div>
+                              )}
+                              <div className="absolute top-3 left-3">
+                                <Badge className="ocean-gradient text-white">
+                                  <Sparkles className="w-3 h-3 mr-1" />
+                                  Promoted
+                                </Badge>
+                              </div>
+                            </div>
+                          </Link>
+
+                          <CardContent className="p-4 flex-1 flex flex-col">
+                            <Link href={tourUrl}>
+                              <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                {tour.title || tour.name}
+                              </h3>
+                            </Link>
+
+                            <Button
+                              asChild
+                              className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                            >
+                              <Link href={tourUrl}>
+                                View Details
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                              </Link>
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Promoted Restaurants */}
+            {promotedRestaurants && promotedRestaurants.length > 0 && (
+              <div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">Promoted Restaurants</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {promotedRestaurants.slice(0, 6).map((restaurant, index) => {
+                    const restaurantId = restaurant.id;
+                    if (!restaurantId) return null;
+                    
+                    const restaurantUrl = restaurant.slug && destination.id
+                      ? `/destinations/${destination.id}/restaurants/${restaurant.slug}`
+                      : `/destinations/${destination.id}/restaurants`;
+                    
+                    return (
+                      <motion.div
+                        key={restaurantId || index}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                        viewport={{ once: true }}
+                      >
+                        <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                          <CardContent className="p-6 flex flex-col h-full">
+                            <div className="flex items-center justify-between gap-3 mb-3">
+                              <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
+                                  <UtensilsCrossed className="w-5 h-5 text-white" />
+                                </div>
+                                <Badge className="ocean-gradient text-white text-xs">
+                                  <Sparkles className="w-3 h-3 mr-1" />
+                                  Promoted
+                                </Badge>
+                              </div>
+                            </div>
+                            
+                            <Link href={restaurantUrl}>
+                              <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                                {restaurant.name}
+                              </h3>
+                            </Link>
+
+                            <Button
+                              asChild
+                              className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                            >
+                              <Link href={restaurantUrl}>
+                                View Details
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                              </Link>
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* Main Content */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2157,21 +2316,26 @@ export default function ToursListingClient({
                 <Badge variant="secondary" className="ml-2">Curated by TopTours.ai</Badge>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {featuredTours.map((tour, index) => (
-                  <TourCard 
-                    key={tour.productId || index} 
-                    tour={tour} 
-                    isFeatured={true} 
-                    destination={destination} 
-                    promotionScores={promotionScores} 
-                    effectiveDestinationId={effectiveDestinationId} 
-                    premiumOperatorTourIds={premiumOperatorTourIds}
-                    matchScore={matchScores[tour.productId || tour.productCode]}
-                    user={user}
-                    userPreferences={userPreferences}
-                    onOpenPreferences={() => setShowPreferencesModal(true)}
-                  />
-                ))}
+                {featuredTours.map((tour, index) => {
+                  const productId = tour.productId || tour.productCode;
+                  const promotedProductIds = new Set(promotedTours.map(t => t.productId || t.productCode).filter(Boolean));
+                  return (
+                    <TourCard 
+                      key={productId || index} 
+                      tour={tour} 
+                      isFeatured={true} 
+                      destination={destination} 
+                      promotionScores={promotionScores} 
+                      effectiveDestinationId={effectiveDestinationId} 
+                      premiumOperatorTourIds={premiumOperatorTourIds}
+                      matchScore={matchScores[productId]}
+                      user={user}
+                      userPreferences={userPreferences}
+                      onOpenPreferences={() => setShowPreferencesModal(true)}
+                      isPromoted={productId && promotedProductIds.has(productId)}
+                    />
+                  );
+                })}
               </div>
             </div>
           )}
@@ -2183,21 +2347,26 @@ export default function ToursListingClient({
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">More Tours</h2>
               )}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {regularTours.map((tour, index) => (
-                  <TourCard 
-                    key={tour.productId || tour.productCode || index} 
-                    tour={tour} 
-                    isFeatured={false} 
-                    destination={destination} 
-                    promotionScores={promotionScores} 
-                    effectiveDestinationId={effectiveDestinationId} 
-                    premiumOperatorTourIds={premiumOperatorTourIds}
-                    matchScore={matchScores[tour.productId || tour.productCode]}
-                    user={user}
-                    userPreferences={userPreferences}
-                    onOpenPreferences={() => setShowPreferencesModal(true)}
-                  />
-                ))}
+                {regularTours.map((tour, index) => {
+                  const productId = tour.productId || tour.productCode;
+                  const promotedProductIds = new Set(promotedTours.map(t => t.productId || t.productCode).filter(Boolean));
+                  return (
+                    <TourCard 
+                      key={productId || index} 
+                      tour={tour} 
+                      isFeatured={false} 
+                      destination={destination} 
+                      promotionScores={promotionScores} 
+                      effectiveDestinationId={effectiveDestinationId} 
+                      premiumOperatorTourIds={premiumOperatorTourIds}
+                      matchScore={matchScores[productId]}
+                      user={user}
+                      userPreferences={userPreferences}
+                      onOpenPreferences={() => setShowPreferencesModal(true)}
+                      isPromoted={productId && promotedProductIds.has(productId)}
+                    />
+                  );
+                })}
               </div>
               
               {/* Load More Button for Filtered Results */}
@@ -2277,234 +2446,6 @@ export default function ToursListingClient({
             </div>
           )}
 
-          {/* Trending Now Section - Past 28 Days (Combined Tours & Restaurants) */}
-          {((trendingTours && trendingTours.length > 0) || (trendingRestaurants && trendingRestaurants.length > 0)) && (
-            <section className="py-12 bg-white mt-12">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center gap-2 mb-6">
-                  <TrendingUp className="w-5 h-5 text-orange-600" />
-                  <h2 className="text-2xl font-bold text-gray-900">Trending Now in {destination.fullName || destination.name}</h2>
-                  <Badge variant="secondary" className="ml-2 bg-orange-100 text-orange-700 border-orange-300">
-                    Past 28 Days
-                  </Badge>
-                </div>
-                <div className="flex items-center gap-2 mb-6">
-                  <p className="text-sm text-gray-600">
-                    Tours and restaurants that are currently popular based on recent community boosts.
-                  </p>
-                  <button
-                    onClick={() => setIsPromotionModalOpen(true)}
-                    className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 hover:underline transition-colors cursor-pointer"
-                    title="Learn how promotions work"
-                  >
-                    <Info className="w-3.5 h-3.5" />
-                    <span>Learn more</span>
-                  </button>
-                </div>
-
-                {/* Trending Tours Subsection */}
-                {trendingTours && trendingTours.length > 0 && (
-                  <div className="mb-8">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Trending Tours Now in {destination.fullName || destination.name}</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {trendingTours.slice(0, 3).map((trending, index) => {
-                        if (!trending || !trending.product_id) return null;
-                        
-                        const tourId = trending.product_id;
-                        let tourUrl = `/tours/${tourId}`;
-                        try {
-                          if (trending.tour_slug) {
-                            tourUrl = `/tours/${tourId}/${trending.tour_slug}`;
-                          } else if (trending.tour_name) {
-                            tourUrl = getTourUrl(tourId, trending.tour_name);
-                          }
-                        } catch (error) {
-                          console.error('Error generating tour URL:', error);
-                        }
-                        
-                        return (
-                          <motion.div
-                            key={tourId || index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                          >
-                            <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                              <Link href={tourUrl}>
-                                <div className="relative h-48 overflow-hidden">
-                                  {trending.tour_image_url ? (
-                                    <img
-                                      src={trending.tour_image_url}
-                                      alt={trending.tour_name}
-                                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                                    />
-                                  ) : (
-                                    <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                                      <Search className="w-6 h-6 text-gray-400" />
-                                    </div>
-                                  )}
-                                  <div className="absolute top-3 left-3">
-                                    <Badge className="adventure-gradient text-white">
-                                      <TrendingUp className="w-3 h-3 mr-1" />
-                                      Trending
-                                    </Badge>
-                                  </div>
-                                </div>
-                              </Link>
-
-                              <CardContent className="p-4 flex-1 flex flex-col">
-                                <Link href={tourUrl}>
-                                  <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
-                                    {trending.tour_name}
-                                  </h3>
-                                </Link>
-
-                                {/* Promotion Score */}
-                                {tourId && (
-                                  <div className="mb-3">
-                                    <TourPromotionCard 
-                                      productId={tourId} 
-                                      compact={true}
-                                      initialScore={promotionScores[tourId] || {
-                                        product_id: tourId,
-                                        total_score: trending.total_score || 0,
-                                        monthly_score: trending.monthly_score || 0,
-                                        weekly_score: trending.weekly_score || 0,
-                                        past_28_days_score: trending.past_28_days_score || 0,
-                                      }}
-                                    />
-                                  </div>
-                                )}
-
-                                <Button
-                                  asChild
-                                  className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
-                                >
-                                  <Link href={tourUrl}>
-                                    View Details
-                                    <ArrowRight className="w-4 h-4 ml-2" />
-                                  </Link>
-                                </Button>
-                              </CardContent>
-                            </Card>
-                          </motion.div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-
-                {/* Trending Restaurants Subsection */}
-                {trendingRestaurants && trendingRestaurants.length > 0 && (
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Trending Restaurants Now in {destination.fullName || destination.name}</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {trendingRestaurants.slice(0, 3).map((trending, index) => {
-                        if (!trending || !trending.restaurant_id) return null;
-                        
-                        const restaurantId = trending.restaurant_id;
-                        const restaurantUrl = trending.restaurant_slug && trending.destination_id
-                          ? `/destinations/${trending.destination_id}/restaurants/${trending.restaurant_slug}`
-                          : `/destinations/${destination.id}/restaurants`;
-                        
-                        return (
-                          <motion.div
-                            key={restaurantId || index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                          >
-                            <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                              <CardContent className="p-6 flex flex-col h-full">
-                                <div className="flex items-center justify-between gap-3 mb-3">
-                                  <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
-                                      <UtensilsCrossed className="w-5 h-5 text-white" />
-                                    </div>
-                                    <Badge className="adventure-gradient text-white text-xs">
-                                      <TrendingUp className="w-3 h-3 mr-1" />
-                                      Trending
-                                    </Badge>
-                                  </div>
-                                  {/* Bookmark Button */}
-                                  <button
-                                    type="button"
-                                    aria-label={isRestaurantBookmarked(restaurantId) ? 'Saved' : 'Save'}
-                                    onClick={async (e) => {
-                                      e.preventDefault();
-                                      e.stopPropagation();
-                                      const { data } = await supabase.auth.getUser();
-                                      if (!data?.user) {
-                                        toast({
-                                          title: 'Sign in required',
-                                          description: 'Create a free account to save restaurants to your favorites.',
-                                        });
-                                        return;
-                                      }
-                                      try {
-                                        const wasBookmarked = isRestaurantBookmarked(restaurantId);
-                                        await toggleRestaurantBookmark(restaurantId);
-                                        toast({
-                                          title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
-                                          description: 'You can view your favorites in your profile.',
-                                        });
-                                      } catch (_) {}
-                                    }}
-                                    className={`flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full transition-colors ${
-                                      isRestaurantBookmarked(restaurantId) ? 'text-red-600 bg-red-50' : 'text-gray-400 bg-gray-100 hover:text-red-500'
-                                    }`}
-                                    title={isRestaurantBookmarked(restaurantId) ? 'Saved' : 'Save'}
-                                  >
-                                    <Heart className="w-4 h-4" fill={isRestaurantBookmarked(restaurantId) ? 'currentColor' : 'none'} />
-                                  </button>
-                                </div>
-                                
-                                <Link href={restaurantUrl}>
-                                  <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2 hover:text-purple-600 transition-colors flex items-center gap-1.5">
-                                    {trending.restaurant_name || `Restaurant #${restaurantId}`}
-                                    {(premiumRestaurantIds.includes(restaurantId) || premiumRestaurantIds.includes(Number(restaurantId))) && (
-                                      <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Featured Restaurant" />
-                                    )}
-                                  </h3>
-                                </Link>
-
-                                {/* Promotion Score */}
-                                {restaurantId && (
-                                  <div className="mb-4 flex-grow">
-                                    <RestaurantPromotionCard 
-                                      restaurantId={restaurantId} 
-                                      compact={true}
-                                      initialScore={restaurantPromotionScores[restaurantId] || {
-                                        restaurant_id: restaurantId,
-                                        total_score: trending.total_score || 0,
-                                        monthly_score: trending.monthly_score || 0,
-                                        weekly_score: trending.weekly_score || 0,
-                                        past_28_days_score: trending.past_28_days_score || 0,
-                                      }}
-                                    />
-                                  </div>
-                                )}
-
-                                <Link
-                                  href={restaurantUrl}
-                                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
-                                >
-                                  View Restaurant
-                                  <ArrowRight className="w-4 h-4" />
-                                </Link>
-                              </CardContent>
-                            </Card>
-                          </motion.div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </section>
-          )}
         </div>
       </section>
 
@@ -2916,10 +2857,6 @@ export default function ToursListingClient({
 
       <FooterNext />
       
-      <PromotionExplainerModal 
-        isOpen={isPromotionModalOpen} 
-        onClose={() => setIsPromotionModalOpen(false)}
-      />
 
       {/* Match to Your Style Modal */}
       {showPreferencesModal && (
@@ -3263,278 +3200,4 @@ export default function ToursListingClient({
   );
 }
 
-// Tour Card Component
-function TourCard({ tour, isFeatured, destination, promotionScores = {}, effectiveDestinationId = null, premiumOperatorTourIds = [], matchScore = null, user = null, userPreferences = null, onOpenPreferences = null }) {
-  const router = useRouter();
-  const { toast } = useToast();
-  const [showMatchModal, setShowMatchModal] = useState(false);
-  const productId = tour.productId || tour.productCode;
-  const tourUrl = tour.slug 
-    ? `/tours/${productId}/${tour.slug}` 
-    : getTourUrl(productId, tour.seo?.title || tour.title);
-  const { isBookmarked, toggle: toggleBookmark } = useBookmarks();
-  const isSaved = isBookmarked(productId);
-  
-  const image = tour.images?.[0]?.variants?.[3]?.url || 
-                tour.images?.[0]?.variants?.[0]?.url || 
-                destination?.imageUrl || '';
-  const rating = tour.reviews?.combinedAverageRating || 0;
-  const reviewCount = tour.reviews?.totalReviews || 0;
-  const price = tour.pricing?.summary?.fromPrice || tour.price || 0;
-  const originalPrice = tour.pricing?.summary?.fromPriceBeforeDiscount || null;
-  const hasDiscount = originalPrice && originalPrice > price;
-  const title = tour.seo?.title || tour.title || 'Tour';
-  const description = tour.seo?.description || tour.content?.heroDescription || tour.description || '';
-  
-  // Check if this tour has premium operator status
-  const isPremiumOperator = premiumOperatorTourIds.includes(productId);
-  
-  // Get flags from tour
-  // Flags can be in different locations: tour.flags, tour.specialFlags, etc.
-  const flags = tour.flags || tour.specialFlags || [];
-  const displayFlags = flags.filter((flag) => flag !== 'SPECIAL_OFFER');
-  
-  // Keep production console clean (debug logging removed)
-  
-  // Map flag values to display info
-  const getFlagInfo = (flagValue) => {
-    const flagMap = {
-      'FREE_CANCELLATION': { label: 'Free Cancellation', icon: '✓', color: 'bg-green-500' },
-      'LIKELY_TO_SELL_OUT': { label: 'Likely to Sell Out', icon: '🔥', color: 'bg-orange-500' },
-      'SKIP_THE_LINE': { label: 'Skip The Line', icon: '⚡', color: 'bg-blue-500' },
-      'PRIVATE_TOUR': { label: 'Private Tour', icon: '👤', color: 'bg-purple-500' },
-      'NEW_ON_VIATOR': { label: 'New', icon: '✨', color: 'bg-pink-500' },
-      'SPECIAL_OFFER': { label: 'Special Offer', icon: '💰', color: 'bg-yellow-500' }
-    };
-    return flagMap[flagValue] || { label: flagValue, icon: '', color: 'bg-gray-500' };
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4 }}
-      whileHover={{ y: -5 }}
-    >
-      <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300">
-        <Link href={tourUrl}>
-          <div className="relative h-48 overflow-hidden">
-            {image && (
-              <img
-                src={image}
-                alt={title}
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-              />
-            )}
-            {isFeatured && (
-              <Badge className="absolute top-3 left-3 adventure-gradient text-white z-20">
-                <Crown className="w-3 h-3 mr-1" />
-                Featured
-              </Badge>
-            )}
-            {isPremiumOperator && !isFeatured && (
-              <div className="absolute top-3 left-3 z-20">
-                <Crown className="w-5 h-5 text-amber-500 drop-shadow-lg" title="Premium Operator" />
-              </div>
-            )}
-            {/* Match Score Badge - Left side, always visible */}
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                setShowMatchModal(true);
-              }}
-              className="absolute top-3 left-3 z-30 bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow-lg border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5"
-              title={matchScore && matchScore.score !== undefined
-                ? `Click to see why this is a ${matchScore.score}% match` 
-                : "Click to see AI match analysis"}
-            >
-              <Sparkles className={`w-3.5 h-3.5 ${
-                user && userPreferences && matchScore && matchScore.score >= 70
-                  ? 'text-purple-600'
-                  : user && userPreferences && matchScore
-                  ? 'text-purple-500'
-                  : 'text-gray-500'
-              }`} />
-              {matchScore && matchScore.score !== undefined ? (
-                <>
-                  <span className="text-xs font-bold text-gray-900">{matchScore.score}%</span>
-                  <span className="text-[10px] text-gray-600">
-                    {user && userPreferences ? 'for You' : 'Match'}
-                  </span>
-                </>
-              ) : (
-                <span className="text-xs text-gray-600">AI Match</span>
-              )}
-            </button>
-            
-            {/* Price + Special Offer - Right side (stacked) */}
-            {price > 0 && (
-              <div className="absolute top-3 right-3 z-20">
-                <div className="flex flex-col items-end gap-1" suppressHydrationWarning>
-                  {hasDiscount && (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide bg-rose-600 text-white rounded-full shadow">
-                      <span>💸</span>
-                      <span>Special Offer</span>
-                    </span>
-                  )}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
-                    <div className="flex flex-col items-end">
-                      {hasDiscount && (
-                        <span className="text-xs text-gray-400 line-through">
-                          ${typeof originalPrice === 'number' ? originalPrice.toLocaleString('en-US') : originalPrice}
-                        </span>
-                      )}
-                      <span className="text-sm font-bold text-orange-600">
-                        From ${typeof price === 'number' ? price.toLocaleString('en-US') : price}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-            {/* Flags Banner */}
-            {displayFlags.length > 0 && (
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2 z-10">
-                <div className="flex flex-wrap gap-1.5">
-                  {displayFlags.slice(0, 3).map((flag, index) => {
-                    const flagInfo = getFlagInfo(flag);
-                    return (
-                      <span
-                        key={index}
-                        className={`${flagInfo.color} text-white text-xs px-2 py-0.5 rounded-full font-medium flex items-center gap-1`}
-                      >
-                        {flagInfo.icon && <span>{flagInfo.icon}</span>}
-                        <span>{flagInfo.label}</span>
-                      </span>
-                    );
-                  })}
-                  {displayFlags.length > 3 && (
-                    <span className="bg-gray-600 text-white text-xs px-2 py-0.5 rounded-full font-medium">
-                      +{displayFlags.length - 3}
-                    </span>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-        </Link>
-        
-        <CardContent className="p-4 flex flex-col flex-grow">
-          <div className="flex items-start justify-between gap-2 mb-2">
-            <Link href={tourUrl} className="flex-1">
-              <h3 className="font-semibold text-lg text-gray-800 line-clamp-2 hover:text-purple-600 transition-colors flex items-center gap-2">
-                {isPremiumOperator && (
-                  <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Premium Operator" />
-                )}
-                <span>{title}</span>
-              </h3>
-            </Link>
-            <button
-              type="button"
-              aria-label={isSaved ? 'Saved' : 'Save'}
-              onClick={async (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                const result = await toggleBookmark(productId);
-                if (result?.error === 'not_signed_in') {
-                  toast({
-                    title: 'Sign in required',
-                    description: 'Create a free account to save tours to your favorites.',
-                  });
-                  return;
-                }
-                if (result?.ok) {
-                  toast({
-                    title: isSaved ? 'Removed from favorites' : 'Saved to favorites',
-                    description: 'You can view your favorites in your profile.',
-                  });
-                }
-              }}
-              className={`ml-2 inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors shadow-sm ${
-                isSaved ? 'text-red-600 bg-red-50 hover:bg-red-100' : 'text-gray-400 bg-white hover:text-red-500 hover:bg-red-50'
-              }`}
-              title={isSaved ? 'Saved' : 'Save'}
-            >
-              <Heart className="w-5 h-5" fill={isSaved ? 'currentColor' : 'none'} />
-            </button>
-          </div>
-          
-          <p className="text-sm text-gray-600 mb-3 line-clamp-2 flex-grow">
-            {description}
-          </p>
-          
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-3">
-              {rating > 0 && (
-                <div className="flex items-center">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <span className="font-medium text-gray-700 ml-1 text-sm" suppressHydrationWarning>
-                    {typeof rating === 'number' ? rating.toFixed(1) : rating}
-                  </span>
-                  <span className="text-gray-500 text-xs ml-1" suppressHydrationWarning>
-                    ({typeof reviewCount === 'number' ? reviewCount.toLocaleString('en-US') : reviewCount})
-                  </span>
-                </div>
-              )}
-            </div>
-            {(() => {
-              const durationMinutes = getTourDurationMinutes(tour);
-              if (!durationMinutes) return null;
-              return (
-                <div className="flex items-center text-gray-600 text-sm">
-                  <Clock className="w-4 h-4 mr-1" />
-                  <span>{formatDurationLabel(durationMinutes)}</span>
-                </div>
-              );
-            })()}
-          </div>
-
-          {/* Promotion Score - On its own line */}
-          <div className="mb-3">
-            <TourPromotionCard 
-              productId={productId} 
-              compact={true}
-              tourData={tour} // Pass tour data so we don't need to fetch from Viator!
-              destinationId={effectiveDestinationId || destination?.destinationId || destination?.id}
-              initialScore={promotionScores[productId] || {
-                product_id: productId,
-                total_score: 0,
-                monthly_score: 0,
-                weekly_score: 0,
-                past_28_days_score: 0,
-              }}
-            />
-          </div>
-
-
-          <Button
-            asChild
-            className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
-          >
-            <Link href={tourUrl}>
-              View Details
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
-          </Button>
-        </CardContent>
-      </Card>
-      
-      {/* Tour Match Modal */}
-          <TourMatchModal
-            isOpen={showMatchModal}
-            onClose={() => setShowMatchModal(false)}
-            tour={tour}
-            matchScore={matchScore}
-            user={user}
-            userPreferences={userPreferences}
-            onOpenPreferences={onOpenPreferences ? () => {
-              setShowMatchModal(false); // Close match modal
-              onOpenPreferences(); // Open preferences modal
-            } : undefined}
-          />
-    </motion.div>
-  );
-}
 

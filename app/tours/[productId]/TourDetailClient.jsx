@@ -37,7 +37,6 @@ import { getRestaurantsForDestination } from '../../destinations/[id]/restaurant
 import { toast } from '@/components/ui/use-toast';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
-import TourPromotionCard from '@/components/promotion/TourPromotionCard';
 import ShareModal from '@/components/sharing/ShareModal';
 import { PromoteTourOperatorBanner } from '@/components/tour/PromoteTourOperatorBanner';
 import { 
@@ -675,50 +674,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     }
   }, [localPreferences, user, userPreferences, supabase, router, toast]);
 
-  // Trigger confetti when returning from instant boost payment
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    const boostSuccess = searchParams.get('boost_success') === 'true';
-    if (boostSuccess) {
-      // Trigger confetti celebration
-      const duration = 3000;
-      const animationEnd = Date.now() + duration;
-      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
-
-      function randomInRange(min, max) {
-        return Math.random() * (max - min) + min;
-      }
-
-      const interval = setInterval(() => {
-        const timeLeft = animationEnd - Date.now();
-
-        if (timeLeft <= 0) {
-          return clearInterval(interval);
-        }
-
-        const particleCount = 50 * (timeLeft / duration);
-        
-        confetti({
-          ...defaults,
-          particleCount,
-          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
-        });
-        confetti({
-          ...defaults,
-          particleCount,
-          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
-        });
-      }, 250);
-
-      // Clean up URL parameter
-      const url = new URL(window.location.href);
-      url.searchParams.delete('boost_success');
-      window.history.replaceState({}, '', url.toString());
-
-      return () => clearInterval(interval);
-    }
-  }, [searchParams]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -2657,19 +2612,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   </CardContent>
                 </Card>
 
-                {/* Promotion Card */}
-                <TourPromotionCard 
-                  productId={productId} 
-                  tourData={tour}
-                  destinationId={
-                    destination?.id || 
-                    effectiveDestinationData?.slug || 
-                    unmatchedDestinationSlug || 
-                    primaryDestinationSlug || 
-                    null
-                  }
-                  initialScore={initialPromotionScore}
-                />
 
                 {/* Other Tours from This Operator */}
                 {operatorPremiumData && operatorTours && operatorTours.length > 0 && (
