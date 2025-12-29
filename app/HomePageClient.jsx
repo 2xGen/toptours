@@ -4,7 +4,6 @@ import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import Hero from '@/components/home/Hero';
 import AIPlanner from '@/components/home/AIPlanner';
-import FeaturedTours from '@/components/home/FeaturedTours';
 import TopDestinations from '@/components/home/BlogSection';
 import HomeCTA from '@/components/home/HomeCTA';
 import HowItWorksSlider from '@/components/home/HowItWorksSlider';
@@ -29,7 +28,6 @@ export default function HomePageClient() {
         <Hero onOpenOnboardingModal={handleOpenOnboardingModal} />
         <DestinationSearch />
         <HowItWorksSlider />
-        <FeaturedTours onOpenModal={handleOpenModal} />
         <AIPlanner />
         <TopDestinations />
         <HomeCTA onOpenModal={handleOpenModal} onOpenOnboardingModal={handleOpenOnboardingModal} />

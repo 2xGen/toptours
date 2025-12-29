@@ -34,12 +34,12 @@ export default function StreakWelcomePopup() {
         // Get user profile for name
         const { data: profile } = await supabase
           .from('profiles')
-          .select('full_name, username')
+          .select('display_name')
           .eq('id', user.id)
           .single();
 
         if (profile) {
-          setUserName(profile.full_name || profile.username || 'Traveler');
+          setUserName(profile.display_name || 'Traveler');
         }
 
         setHasUser(true);

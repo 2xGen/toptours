@@ -599,9 +599,11 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         const profile = await calculateTourProfile(tour.tags);
 
         // Calculate enhanced match score (uses full tour object with price, rating, flags, etc.)
+        // Pass raw preferences - calculateEnhancedMatchScore converts them internally
+        // If no preferences, pass null and it will default to balanced (50) for all dimensions
         const preferences = user && userPreferences 
           ? userPreferences 
-          : getDefaultPreferences();
+          : null;
         
         // Ensure tour object has pricing in the expected format for enhanced matching
         // The enhanced matching function expects tour.pricing.summary.fromPrice

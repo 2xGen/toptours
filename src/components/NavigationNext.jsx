@@ -137,6 +137,16 @@ const NavigationNext = () => {
                 </Link>
               );
             })}
+            <Link
+              href="/match-your-style"
+              className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+                pathname === '/match-your-style'
+                  ? 'sunset-gradient text-white shadow-lg'
+                  : 'sunset-gradient text-white hover:opacity-90 hover:shadow-md'
+              }`}
+            >
+              Match Your Style
+            </Link>
             <div className="ml-2 flex items-center gap-2">
               {!authLoading && user ? (
                 <Link
@@ -191,6 +201,17 @@ const NavigationNext = () => {
                 </Link>
               );
             })}
+            <Link
+              href="/match-your-style"
+              className={`block py-2 px-4 rounded-lg font-semibold text-center transition-all mt-2 ${
+                pathname === '/match-your-style'
+                  ? 'sunset-gradient text-white shadow-lg'
+                  : 'sunset-gradient text-white hover:opacity-90'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              Match Your Style
+            </Link>
             {/* Auth Section */}
             <div className="mt-4 pt-4 border-t border-white/20">
               {!authLoading && user ? (

@@ -9,9 +9,25 @@ const destinationGuidesInFlight = new Map();
  * Get all category guides for a destination (database only)
  * Returns array of { category_slug, category_name, title, subtitle, hero_image }
  */
+// Normalize destination ID: convert special characters to ASCII (e.g., "Curaçao" -> "curacao")
+function normalizeDestinationId(destinationId) {
+  if (!destinationId) return '';
+  
+  return String(destinationId)
+    .toLowerCase()
+    .trim()
+    .normalize('NFD') // Decompose characters (ç -> c + combining mark)
+    .replace(/[\u0300-\u036f]/g, '') // Remove combining diacritical marks
+    .replace(/[^\w\s-]/g, '') // Remove any remaining special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+    .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+}
+
 export async function getAllCategoryGuidesForDestination(destinationId) {
   try {
-    const normalizedDestinationId = String(destinationId || '').toLowerCase().trim();
+    // Normalize destination ID to handle special characters (e.g., Curaçao -> curacao)
+    const normalizedDestinationId = normalizeDestinationId(destinationId);
     if (!normalizedDestinationId) return [];
 
     if (destinationGuidesCache.has(normalizedDestinationId)) {
@@ -60,7 +76,7 @@ export async function getAllCategoryGuidesForDestination(destinationId) {
     console.error(`[getAllCategoryGuidesForDestination] Unexpected error for ${destinationId}: ${error?.message || String(error)}`);
     return [];
   } finally {
-    const normalizedDestinationId = String(destinationId || '').toLowerCase().trim();
+    const normalizedDestinationId = normalizeDestinationId(destinationId);
     if (normalizedDestinationId) destinationGuidesInFlight.delete(normalizedDestinationId);
   }
 }

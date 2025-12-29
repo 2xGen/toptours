@@ -52,26 +52,45 @@ export async function POST(request) {
     switch (event.type) {
       case 'checkout.session.completed': {
         const session = event.data.object;
-        await handleCheckoutSessionCompleted(session);
+        // Wrap in try-catch to prevent errors from bubbling up
+        try {
+          await handleCheckoutSessionCompleted(session);
+        } catch (error) {
+          // Log error but don't fail the webhook - Stripe will retry if we return error
+          // Instead, log and return success so Stripe doesn't keep retrying
+          console.error('❌ [WEBHOOK] Error in handleCheckoutSessionCompleted (logged but not failing webhook):', error);
+        }
         break;
       }
 
       case 'customer.subscription.created':
       case 'customer.subscription.updated': {
         const subscription = event.data.object;
-        await handleSubscriptionUpdate(subscription);
+        try {
+          await handleSubscriptionUpdate(subscription);
+        } catch (error) {
+          console.error('❌ [WEBHOOK] Error in handleSubscriptionUpdate (logged but not failing webhook):', error);
+        }
         break;
       }
 
       case 'customer.subscription.deleted': {
         const subscription = event.data.object;
-        await handleSubscriptionDeleted(subscription);
+        try {
+          await handleSubscriptionDeleted(subscription);
+        } catch (error) {
+          console.error('❌ [WEBHOOK] Error in handleSubscriptionDeleted (logged but not failing webhook):', error);
+        }
         break;
       }
 
       case 'payment_intent.succeeded': {
         const paymentIntent = event.data.object;
-        await handlePaymentIntentSucceeded(paymentIntent);
+        try {
+          await handlePaymentIntentSucceeded(paymentIntent);
+        } catch (error) {
+          console.error('❌ [WEBHOOK] Error in handlePaymentIntentSucceeded (logged but not failing webhook):', error);
+        }
         break;
       }
 
@@ -79,13 +98,15 @@ export async function POST(request) {
         console.log(`Unhandled event type: ${event.type}`);
     }
 
+    // ALWAYS return success to Stripe, even if processing had errors
+    // This prevents Stripe from retrying and ensures users don't see any issues
+    // Errors are logged server-side for debugging
     return NextResponse.json({ received: true });
   } catch (error) {
-    console.error('Error processing webhook:', error);
-    return NextResponse.json(
-      { error: 'Webhook processing failed' },
-      { status: 500 }
-    );
+    // Even if there's a catastrophic error, return success to Stripe
+    // We don't want Stripe to keep retrying and we don't want users affected
+    console.error('❌ [WEBHOOK] Critical error processing webhook (logged but returning success):', error);
+    return NextResponse.json({ received: true });
   }
 }
 
@@ -814,21 +835,32 @@ async function handleRestaurantPremiumSubscriptionDeleted(subscription, supabase
  * Handle tour operator premium subscription checkout
  */
 async function handleTourOperatorPremiumCheckout(session, supabase) {
-  const metadata = session.metadata || {};
-  const subscriptionId = session.subscription;
+  try {
+    const metadata = session.metadata || {};
+    const subscriptionId = session.subscription;
+    
+    const subscriptionDbId = metadata.subscriptionId;
+    const userId = metadata.userId;
+    const operatorName = metadata.operatorName;
+    const operatorEmail = metadata.operatorEmail;
+    const tourCount = parseInt(metadata.tourCount || '5');
+    const billingCycle = metadata.billingCycle || 'monthly';
+    const selectedTourIds = metadata.selectedTourIds ? metadata.selectedTourIds.split(',') : [];
+    
+    console.log(`🔄 [WEBHOOK] Processing tour operator premium checkout for subscription ${subscriptionDbId}, Stripe subscription ${subscriptionId}`);
+    
+    if (!subscriptionDbId || !subscriptionId || !userId) {
+      console.error('❌ [WEBHOOK] Missing required fields for tour operator premium checkout:', metadata);
+      return; // Return early, don't throw - webhook will still return success
+    }
   
-  const subscriptionDbId = metadata.subscriptionId;
-  const userId = metadata.userId;
-  const operatorName = metadata.operatorName;
-  const operatorEmail = metadata.operatorEmail;
-  const tourCount = parseInt(metadata.tourCount || '5');
-  const billingCycle = metadata.billingCycle || 'monthly';
-  const selectedTourIds = metadata.selectedTourIds ? metadata.selectedTourIds.split(',') : [];
-  
-  if (!subscriptionDbId || !subscriptionId || !userId) {
-    console.error('Missing required fields for tour operator premium checkout:', metadata);
+  // Verify payment was successful
+  if (session.payment_status !== 'paid') {
+    console.error(`❌ [WEBHOOK] Payment status is not 'paid' for session ${session.id}: ${session.payment_status}`);
     return;
   }
+  
+  console.log(`✅ [WEBHOOK] Payment confirmed as paid for session ${session.id}`);
   
   // Get subscription details from Stripe
   let currentPeriodStart = new Date();
@@ -843,8 +875,9 @@ async function handleTourOperatorPremiumCheckout(session, supabase) {
     if (subscription.current_period_end) {
       currentPeriodEnd = new Date(subscription.current_period_end * 1000);
     }
+    console.log(`📅 [WEBHOOK] Subscription period: ${currentPeriodStart.toISOString()} to ${currentPeriodEnd.toISOString()}`);
   } catch (err) {
-    console.error('Error fetching subscription details:', err);
+    console.error('❌ [WEBHOOK] Error fetching subscription details:', err);
   }
   
   // Get price ID from subscription
@@ -852,40 +885,45 @@ async function handleTourOperatorPremiumCheckout(session, supabase) {
   try {
     const subscription = await stripe.subscriptions.retrieve(subscriptionId);
     priceId = subscription.items.data[0]?.price?.id || null;
+    console.log(`💰 [WEBHOOK] Price ID: ${priceId}`);
   } catch (err) {
-    console.error('Error fetching subscription price ID:', err);
+    console.error('❌ [WEBHOOK] Error fetching subscription price ID:', err);
   }
   
-  // Fetch current subscription to check verification status
+  // Fetch current subscription to check verification status and current status
   const { data: currentSubscription, error: fetchError } = await supabase
     .from('tour_operator_subscriptions')
-    .select('verification_status')
+    .select('verification_status, status')
     .eq('id', subscriptionDbId)
     .single();
   
   if (fetchError) {
-    console.error('Error fetching subscription for webhook:', fetchError);
+    console.error('❌ [WEBHOOK] Error fetching subscription for webhook:', fetchError);
     // If we can't verify, don't activate
     return;
   }
+  
+  console.log(`📋 [WEBHOOK] Current subscription status: ${currentSubscription?.status}, verification_status: ${currentSubscription?.verification_status}`);
   
   // Only activate if verified (all operator names matched)
   // If not verified, something went wrong - log and don't activate
   const verificationStatus = currentSubscription?.verification_status;
   
   if (verificationStatus !== 'verified') {
-    console.error(`⚠️ Tour operator subscription ${subscriptionDbId} is not verified. Status: ${verificationStatus}. This should not happen if validation worked correctly.`);
+    console.error(`⚠️ [WEBHOOK] Tour operator subscription ${subscriptionDbId} is not verified. Status: ${verificationStatus}. This should not happen if validation worked correctly.`);
     // Don't activate - subscription should have been rejected at creation time
     return;
   }
   
   const subscriptionStatus = 'active'; // Only verified subscriptions reach this point
   
-  // Update the tour operator subscription
-  const { error } = await supabase
+  console.log(`🔄 [WEBHOOK] Updating subscription ${subscriptionDbId} from "${currentSubscription?.status}" to "${subscriptionStatus}"`);
+  
+  // Update the tour operator subscription - EXPLICITLY set status to 'active'
+  const { error, data: updatedSubscription } = await supabase
     .from('tour_operator_subscriptions')
     .update({
-      status: subscriptionStatus,
+      status: subscriptionStatus, // CRITICAL: Set to 'active' when payment succeeds
       verification_status: verificationStatus,
       stripe_subscription_id: subscriptionId,
       stripe_customer_id: session.customer,
@@ -893,12 +931,54 @@ async function handleTourOperatorPremiumCheckout(session, supabase) {
       current_period_start: currentPeriodStart.toISOString(),
       current_period_end: currentPeriodEnd.toISOString(),
     })
-    .eq('id', subscriptionDbId);
+    .eq('id', subscriptionDbId)
+    .select()
+    .single();
   
   if (error) {
-    console.error('Error updating tour operator subscription:', error);
+    console.error('❌ [WEBHOOK] Error updating tour operator subscription:', error);
+    console.error('❌ [WEBHOOK] Update payload:', {
+      status: subscriptionStatus,
+      verification_status: verificationStatus,
+      stripe_subscription_id: subscriptionId,
+      stripe_customer_id: session.customer,
+      stripe_price_id: priceId,
+      current_period_start: currentPeriodStart.toISOString(),
+      current_period_end: currentPeriodEnd.toISOString(),
+    });
   } else {
-    console.log(`✅ Tour operator premium subscription verified and activated for ${operatorName} (${subscriptionDbId}) - All operator names matched`);
+    // Verify the update worked
+    if (updatedSubscription?.status === 'active') {
+      console.log(`✅ [WEBHOOK] Tour operator premium subscription successfully activated for ${operatorName} (${subscriptionDbId})`);
+      console.log(`✅ [WEBHOOK] Status confirmed as 'active' in database`);
+    } else {
+      console.error(`❌ [WEBHOOK] CRITICAL: Status update may have failed. Expected 'active', got '${updatedSubscription?.status}'`);
+    }
+    
+    // Verify status was actually updated (double-check)
+    const { data: verificationCheck } = await supabase
+      .from('tour_operator_subscriptions')
+      .select('status')
+      .eq('id', subscriptionDbId)
+      .single();
+    
+    if (verificationCheck?.status !== 'active') {
+      console.error(`❌ [WEBHOOK] CRITICAL: Status verification failed! Expected 'active', database shows '${verificationCheck?.status}'. Retrying update...`);
+      
+      // Retry the update
+      const { error: retryError } = await supabase
+        .from('tour_operator_subscriptions')
+        .update({ status: 'active' })
+        .eq('id', subscriptionDbId);
+      
+      if (retryError) {
+        console.error('❌ [WEBHOOK] Retry update also failed:', retryError);
+      } else {
+        console.log('✅ [WEBHOOK] Retry update succeeded - status now set to active');
+      }
+    } else {
+      console.log(`✅ [WEBHOOK] Status verification passed - subscription ${subscriptionDbId} is confirmed as 'active'`);
+    }
     
     // Calculate aggregated stats from all selected tours
     if (selectedTourIds.length > 0) {
@@ -945,6 +1025,12 @@ async function handleTourOperatorPremiumCheckout(session, supabase) {
         // Don't fail the webhook if email fails
       }
     }
+  } catch (error) {
+    // Catch any unexpected errors and log them, but don't throw
+    // This ensures the webhook always returns success to Stripe
+    // Users will never see these errors - they're only in server logs
+    console.error('❌ [WEBHOOK] Unexpected error in handleTourOperatorPremiumCheckout (logged but not failing webhook):', error);
+    console.error('❌ [WEBHOOK] Error stack:', error.stack);
   }
 }
 

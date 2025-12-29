@@ -139,12 +139,22 @@ export async function calculateEnhancedMatchScore(tour, userPreferences, tourPro
   const intentKeywordBoost = calculateIntentKeywordBoost(tour, userPrefs);
 
   // Weighted final score
+  // Normalize all components to 0-100 scale, then apply weights
+  // qualityConfidence: 0-25 scale → normalize to 0-100
+  // priceComfortFit: 0-15 scale → normalize to 0-100
+  // convenienceRiskReduction: 0-10 scale → normalize to 0-100
+  // intentKeywordBoost: 0-5 scale → normalize to 0-100
+  const normalizedQuality = (qualityConfidence.score / 25) * 100;
+  const normalizedPrice = (priceComfortFit.score / 15) * 100;
+  const normalizedConvenience = (convenienceRiskReduction.score / 10) * 100;
+  const normalizedIntent = (intentKeywordBoost.score / 5) * 100;
+  
   const finalScore = Math.round(
-    preferenceAlignment.score * 0.45 +      // 45%
-    qualityConfidence.score * 0.25 +         // 25%
-    priceComfortFit.score * 0.15 +           // 15%
-    convenienceRiskReduction.score * 0.10 +   // 10%
-    intentKeywordBoost.score * 0.05          // 5%
+    preferenceAlignment.score * 0.45 +      // 45% (already 0-100 scale)
+    normalizedQuality * 0.25 +              // 25% (normalized to 0-100)
+    normalizedPrice * 0.15 +                 // 15% (normalized to 0-100)
+    normalizedConvenience * 0.10 +           // 10% (normalized to 0-100)
+    normalizedIntent * 0.05                  // 5% (normalized to 0-100)
   );
 
   // Cap at 100

@@ -212,14 +212,14 @@ export default function TourCard({
           </div>
         </Link>
         
-        <CardContent className="p-4 flex flex-col flex-grow">
+        <CardContent className="p-4 flex flex-col flex-grow bg-white">
           <div className="flex items-start justify-between gap-2 mb-2">
             <Link href={tourUrl} className="flex-1">
-              <h3 className="font-semibold text-lg text-gray-800 line-clamp-2 hover:text-purple-600 transition-colors flex items-center gap-2">
+              <h3 className="font-semibold text-lg text-gray-900 line-clamp-2 hover:text-purple-600 transition-colors flex items-center gap-2">
                 {isPremiumOperator && (
                   <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Premium Operator" />
                 )}
-                <span>{title}</span>
+                <span className="text-gray-900">{title}</span>
               </h3>
             </Link>
             <button
@@ -261,10 +261,10 @@ export default function TourCard({
               {rating > 0 && (
                 <div className="flex items-center">
                   <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <span className="font-medium text-gray-700 ml-1 text-sm" suppressHydrationWarning>
+                  <span className="font-medium text-gray-900 ml-1 text-sm" suppressHydrationWarning>
                     {typeof rating === 'number' ? rating.toFixed(1) : rating}
                   </span>
-                  <span className="text-gray-500 text-xs ml-1" suppressHydrationWarning>
+                  <span className="text-gray-600 text-xs ml-1" suppressHydrationWarning>
                     ({typeof reviewCount === 'number' ? reviewCount.toLocaleString('en-US') : reviewCount})
                   </span>
                 </div>
@@ -274,9 +274,9 @@ export default function TourCard({
               const durationMinutes = getTourDurationMinutes(tour);
               if (!durationMinutes) return null;
               return (
-                <div className="flex items-center text-gray-600 text-sm">
-                  <Clock className="w-4 h-4 mr-1" />
-                  <span>{formatDurationLabel(durationMinutes)}</span>
+                <div className="flex items-center text-gray-700 text-sm">
+                  <Clock className="w-4 h-4 mr-1 text-gray-700" />
+                  <span className="text-gray-700">{formatDurationLabel(durationMinutes)}</span>
                 </div>
               );
             })()}

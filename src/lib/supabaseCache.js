@@ -161,6 +161,47 @@ export async function getViatorDestinationById(destinationId) {
 }
 
 /**
+ * Fetch a Viator destination record by name with caching
+ * This is the primary lookup method - query by name to get id (Viator destination ID)
+ */
+export async function getViatorDestinationByName(name) {
+  if (!name) return null;
+
+  const memoryKey = `viator_destination_name_${name.toLowerCase()}`;
+  const cached = getMemoryCache(memoryKey);
+  if (cached) {
+    return cached;
+  }
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    
+    // Query by name (case-insensitive) - name is what we lookup to find id
+    const { data, error } = await supabase
+      .from('viator_destinations')
+      .select('id, name, slug, country, region, type')
+      .ilike('name', name.trim())
+      .maybeSingle();
+
+    if (error) {
+      console.error('Error querying viator_destinations by name:', error.message || error);
+      return null;
+    }
+
+    if (!data) {
+      console.warn(`viator_destinations lookup returned null for name "${name}"`);
+      return null;
+    }
+
+    setMemoryCache(memoryKey, data);
+    return data;
+  } catch (error) {
+    console.error('Error fetching viator destination by name:', error.message || error);
+    return null;
+  }
+}
+
+/**
  * Fetch a Viator destination record by slug with caching
  * This is the source of truth for destination IDs - matches database where id = Viator destination ID
  * Also tries to match by name if slug lookup fails (for destinations where slug might not match exactly)

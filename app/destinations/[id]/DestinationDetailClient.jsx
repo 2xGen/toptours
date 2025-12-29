@@ -49,6 +49,20 @@ function generateSlug(name) {
     .replace(/^-|-$/g, '');
 }
 
+// Normalize slug: convert special characters to ASCII (e.g., "banús" -> "banus")
+function normalizeSlug(slug) {
+  if (!slug) return '';
+  return String(slug)
+    .toLowerCase()
+    .trim()
+    .normalize('NFD') // Decompose characters (ú -> u + combining mark)
+    .replace(/[\u0300-\u036f]/g, '') // Remove combining diacritical marks
+    .replace(/[^\w\s-]/g, '') // Remove any remaining special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+    .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+}
+
 // Map category names for display (e.g., "Culinary Tours" -> "Food Tours")
 function getDisplayCategoryName(categoryName) {
   const categoryMap = {
@@ -332,7 +346,9 @@ export default function DestinationDetailClient({ destination, promotionScores =
     if (loadingPreferences) return;
     
     const calculateScores = async () => {
-      const rawPreferences = userPreferences || getDefaultPreferences();
+      // Pass raw preferences - calculateEnhancedMatchScore converts them internally
+      // If no preferences, pass null and it will default to balanced (50) for all dimensions
+      const rawPreferences = userPreferences || null;
       const scores = {};
       
       // Calculate scores for trending tours (async)
@@ -873,13 +889,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       .slice(0, 3)
                       .map((category, index) => {
                         const categoryName = typeof category === 'string' ? category : category.name;
-                        const categorySlug = categoryName
-                          .toLowerCase()
-                          .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
-                          .replace(/&/g, 'and')
-                          .replace(/'/g, '') // Remove apostrophes
-                          .replace(/\./g, '') // Remove periods
-                          .replace(/\s+/g, '-'); // Replace spaces with hyphens
+                        // Use normalizeSlug function for consistent normalization
+                        const categorySlug = normalizeSlug(categoryName);
                         
                         return (
                           <Link
@@ -1597,7 +1608,9 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   {categoryGuidesProp.slice(0, 6).map((guide) => {
                     const categoryName = guide.category_name || guide.title || '';
                     const categorySlug = guide.category_slug || '';
-                    const guideUrl = `/destinations/${safeDestination.id}/guides/${categorySlug}`;
+                    // Normalize slug to handle special characters (e.g., "banús" -> "banus")
+                    const normalizedSlug = normalizeSlug(categorySlug);
+                    const guideUrl = `/destinations/${safeDestination.id}/guides/${normalizedSlug}`;
                     
                     // Determine icon based on category name
                     const isFoodRelated = categoryName.toLowerCase().includes('food') || 
@@ -2046,7 +2059,9 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
                     {categoryGuides.map((guide, index) => {
                       const categorySlug = guide.category_slug || '';
-                      const guideUrl = categorySlug ? `/destinations/${safeDestination.id}/guides/${categorySlug}` : '#';
+                      // Normalize slug to handle special characters (e.g., "banús" -> "banus")
+                      const normalizedSlug = normalizeSlug(categorySlug);
+                      const guideUrl = normalizedSlug ? `/destinations/${safeDestination.id}/guides/${normalizedSlug}` : '#';
                       return (
                       <Link 
                           key={categorySlug || `guide-${index}`}

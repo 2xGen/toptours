@@ -1,6 +1,6 @@
 import { destinations } from '../../../../../src/data/destinationsData';
 import CategoryGuideClient from './CategoryGuideClient';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { getPromotionScoresByDestination } from '@/lib/promotionSystem';
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
@@ -38,6 +38,20 @@ async function getAllGuidesFromDatabase(destinationId) {
 }
 
 // Function to fetch guide from database
+// Normalize slug: convert special characters to ASCII (e.g., "banús" -> "banus")
+function normalizeSlug(slug) {
+  if (!slug) return '';
+  return String(slug)
+    .toLowerCase()
+    .trim()
+    .normalize('NFD') // Decompose characters (ú -> u + combining mark)
+    .replace(/[\u0300-\u036f]/g, '') // Remove combining diacritical marks
+    .replace(/[^\w\s-]/g, '') // Remove any remaining special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+    .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+}
+
 async function getGuideFromDatabase(destinationId, categorySlug) {
   try {
     // Only try database if we have the required env vars
@@ -45,13 +59,47 @@ async function getGuideFromDatabase(destinationId, categorySlug) {
       return null;
     }
     
+    // Normalize both destination ID and category slug to handle special characters
+    const normalizedDestinationId = normalizeSlug(destinationId);
+    const normalizedCategorySlug = normalizeSlug(categorySlug);
+    
     const supabase = createSupabaseServiceRoleClient();
-    const { data, error } = await supabase
+    
+    // Try exact match first (in case slug is stored with special characters)
+    let { data, error } = await supabase
       .from('category_guides')
       .select('*')
-      .eq('destination_id', destinationId)
-      .eq('category_slug', categorySlug)
+      .eq('destination_id', normalizedDestinationId)
+      .eq('category_slug', normalizedCategorySlug)
       .single();
+    
+    // If not found with normalized slug, try original slug (might be stored with special chars)
+    if (error && error.code === 'PGRST116') {
+      const { data: data2, error: error2 } = await supabase
+        .from('category_guides')
+        .select('*')
+        .eq('destination_id', destinationId) // Try original destination ID too
+        .eq('category_slug', categorySlug) // Try original category slug
+        .single();
+      
+      if (!error2 && data2) {
+        data = data2;
+        error = null;
+      } else {
+        // Try with normalized destination but original category slug
+        const { data: data3, error: error3 } = await supabase
+          .from('category_guides')
+          .select('*')
+          .eq('destination_id', normalizedDestinationId)
+          .eq('category_slug', categorySlug)
+          .single();
+        
+        if (!error3 && data3) {
+          data = data3;
+          error = null;
+        }
+      }
+    }
     
     if (error) {
       // PGRST116 means no rows found - this is expected for guides not in database
@@ -243,6 +291,20 @@ export default async function CategoryGuidePage({ params }) {
   try {
     const { id: destinationId, category: categorySlug } = await params;
     
+    // Check if category slug needs normalization (has special characters)
+    // Normalize the slug and compare - if different, redirect to normalized version
+    const normalizedCategorySlug = normalizeSlug(categorySlug);
+    const originalLower = categorySlug.toLowerCase().trim();
+    
+    // If normalization changed the slug (e.g., "banús" -> "banus"), redirect
+    // This handles URLs with special characters like "ban%C3%BAs" (URL-encoded "banús")
+    // Only redirect if the normalized version is actually different
+    if (normalizedCategorySlug && normalizedCategorySlug !== originalLower) {
+      // Redirect to normalized version
+      // Note: redirect() throws NEXT_REDIRECT error which is expected - Next.js catches it
+      redirect(`/destinations/${destinationId}/guides/${normalizedCategorySlug}`);
+    }
+    
     // STEP 1: Get guide data from database (all guides are now in the database)
     let guideData = await getGuideFromDatabase(destinationId, categorySlug);
     let guideSource = 'database';
@@ -356,16 +418,50 @@ export default async function CategoryGuidePage({ params }) {
   // This replaces the hardcoded tours approach - always use live API calls
   let categoryTours = [];
     try {
-      // Get Viator destination ID
+      // Get Viator destination ID - CRITICAL: Use database as source of truth (same as tours page)
       const { slugToViatorId } = await import('@/data/viatorDestinationMap');
-    const viatorDestinationId = slugToViatorId[destinationId] || destination.destinationId || null;
+      const { getViatorDestinationBySlug } = await import('@/lib/supabaseCache');
       
-    // Build search term: just the category name (destination ID filter handles the destination)
-    // Example: "Historic District Tours" instead of "Amsterdam Historic District Tours"
-    const searchTerm = guideData.categoryName || '';
+      // Try database lookup first (same as tours page line 390-392)
+      let viatorDestinationId = null;
+      const dbDestination = await getViatorDestinationBySlug(destinationId);
+      if (dbDestination && dbDestination.id) {
+        viatorDestinationId = dbDestination.id.toString();
+        console.log(`🔍 Guide Page - Destination "${destinationId}": Using database ID = ${viatorDestinationId} (name: ${dbDestination.name})`);
+      } else {
+        // Fallback to hardcoded map or destination.destinationId
+        viatorDestinationId = slugToViatorId[destinationId] || destination.destinationId || null;
+        if (viatorDestinationId) {
+          console.log(`⚠️ Guide Page - Destination "${destinationId}": Database lookup failed, using fallback = ${viatorDestinationId}`);
+        }
+      }
+      
+    // Build search term: extract just the activity type from category name
+    // Remove destination name prefix (e.g., "Aruba ATV Tours" -> "atv tours")
+    // The destination filter will be applied separately via productFiltering
+    let searchTerm = guideData.categoryName || '';
     
-    // Determine max tours to fetch (same as database guides - 8 tours)
-    const maxTours = 8;
+    // Remove destination name from the beginning of the category name
+    if (searchTerm && destination) {
+      const destinationName = destination.fullName || destination.name || '';
+      // Remove destination name if it appears at the start (case-insensitive)
+      const destinationPrefix = new RegExp(`^${destinationName}\\s+`, 'i');
+      searchTerm = searchTerm.replace(destinationPrefix, '').trim();
+    }
+    
+    // Remove common activity suffixes for better Viator API matching
+    // "adventure tours" -> "adventure", "catamaran cruises" -> "catamaran", "puerto banus experiences" -> "puerto banus"
+    const commonSuffixes = ['tours', 'tour', 'cruises', 'cruise', 'sailing', 'sail', 'tours & activities', 'activities', 'experiences', 'experience', 'trails', 'trail'];
+    for (const suffix of commonSuffixes) {
+      const suffixRegex = new RegExp(`\\s+${suffix}\\s*$`, 'i');
+      searchTerm = searchTerm.replace(suffixRegex, '').trim();
+    }
+    
+    // Convert to lowercase for better matching (same as AI chat search)
+    searchTerm = searchTerm.toLowerCase();
+    
+    // Determine max tours to fetch - increased to show more results (was 8, now 15)
+    const maxTours = 15;
       
     // Call Viator API search endpoint directly (same as database guides)
       const apiKey = process.env.VIATOR_API_KEY;

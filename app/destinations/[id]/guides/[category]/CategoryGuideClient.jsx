@@ -123,16 +123,21 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
     }
     
     const calculateMatches = async () => {
-      // Use profile preferences if logged in and set, otherwise use localStorage preferences
-      const preferences = user && userPreferences && Object.keys(userPreferences).length >= 5
-        ? getUserPreferenceScores(userPreferences)
+      // Get raw preferences (before processing) for enhanced matching
+      // Pass raw preferences - calculateEnhancedMatchScore converts them internally
+      // If no preferences, pass null and it will default to balanced (50) for all dimensions
+      const rawPreferences = user && userPreferences && Object.keys(userPreferences).length >= 5
+        ? userPreferences
         : localPreferences
-        ? getUserPreferenceScores(localPreferences)
-        : getDefaultPreferences();
+        ? localPreferences
+        : null;
+      
+      // Use profile preferences if logged in and set, otherwise use localStorage preferences
+      const preferences = getUserPreferenceScores(rawPreferences);
       
       // Calculate default match for tours without tags (use legacy for fallback)
       const defaultProfile = await calculateTourProfile([]);
-      const defaultScores = getUserPreferenceScores(rawPreferences);
+      const defaultScores = preferences;
       const defaultMatch = calculateMatchScore(defaultProfile, defaultScores);
       defaultMatch.tourProfile = defaultProfile;
       
@@ -149,7 +154,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                       Array.isArray(tour.productTags) ? tour.productTags :
                       Array.isArray(tour.tagIds) ? tour.tagIds : [];
           const tourProfile = await calculateTourProfile(tags);
-          // Use enhanced matching with full tour object
+          // Use enhanced matching with full tour object (needs raw preferences)
           const matchResult = await calculateEnhancedMatchScore(tour, rawPreferences, tourProfile);
           // matchResult.tourProfile is already set to the adjusted profile
           scores[productId] = matchResult;

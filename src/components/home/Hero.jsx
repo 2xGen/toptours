@@ -54,6 +54,14 @@ const Hero = ({ onOpenOnboardingModal }) => {
               >
                 Login / Sign Up Free
               </Button>
+              <Button
+                asChild
+                className="sunset-gradient text-white hover:opacity-90 px-8 py-3 text-lg font-semibold shadow-lg"
+              >
+                <Link href="/match-your-style">
+                  Match Your Style
+                </Link>
+              </Button>
             </div>
 
             <div className="flex flex-col items-center gap-3 text-white/80">

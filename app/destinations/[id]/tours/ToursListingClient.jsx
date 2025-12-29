@@ -127,24 +127,55 @@ const DESTINATION_TAG_OPTIONS = {
   ],
 };
 
-const buildFallbackTagOptions = (destination) => {
+const buildFallbackTagOptions = (destination, categoryGuides = []) => {
   const destinationName = destination.fullName || destination.name;
+  
+  // First try tourCategories from destination data
   const categories = (destination.tourCategories || []).slice(0, 6);
-  return categories
-    .map((category, index) => {
-      if (!category?.name) return null;
-      const label = category.name;
-      return {
-        id: category.tagId || `category-${destination.id}-${index}`,
-        label,
-        description:
-          category.description ||
-          category.heroDescription ||
-          `Plan trusted ${label.toLowerCase()} experiences in ${destinationName}.`,
-        searchTerm: category.searchTerm || label,
-      };
-    })
-    .filter(Boolean);
+  if (categories.length > 0) {
+    return categories
+      .map((category, index) => {
+        if (!category?.name) return null;
+        const label = category.name;
+        return {
+          id: category.tagId || `category-${destination.id}-${index}`,
+          label,
+          description:
+            category.description ||
+            category.heroDescription ||
+            `Plan trusted ${label.toLowerCase()} experiences in ${destinationName}.`,
+          searchTerm: category.searchTerm || label,
+        };
+      })
+      .filter(Boolean);
+  }
+  
+  // Fallback: Use category guides if available
+  if (categoryGuides && categoryGuides.length > 0) {
+    return categoryGuides
+      .slice(0, 6)
+      .map((guide, index) => {
+        const label = guide.title || guide.category_name || '';
+        if (!label) return null;
+        
+        // Extract just the activity type from category name (remove destination prefix)
+        let searchTerm = label;
+        if (destinationName && label.toLowerCase().startsWith(destinationName.toLowerCase())) {
+          searchTerm = label.replace(new RegExp(`^${destinationName}\\s+`, 'i'), '').trim();
+        }
+        
+        return {
+          id: guide.category_slug || guide.slug || `guide-${destination.id}-${index}`,
+          label,
+          description: guide.subtitle || `Plan trusted ${label.toLowerCase()} experiences in ${destinationName}.`,
+          searchTerm: searchTerm,
+        };
+      })
+      .filter(Boolean);
+  }
+  
+  // No tags available
+  return [];
 };
 
 const getTourCategoryIds = (tour) => {
@@ -690,10 +721,16 @@ export default function ToursListingClient({
     
     const calculateMatches = async () => {
       // Use profile preferences if logged in and set, otherwise use localStorage preferences
-      const preferences = user && userPreferences && Object.keys(userPreferences).length >= 5
-        ? getUserPreferenceScores(userPreferences)
+      // Pass raw preferences - calculateEnhancedMatchScore will convert them internally
+      const rawPreferences = user && userPreferences && Object.keys(userPreferences).length >= 5
+        ? userPreferences
         : localPreferences
-        ? getUserPreferenceScores(localPreferences)
+        ? localPreferences
+        : null;
+      
+      // For default match calculation (used for initial scores), we need converted preferences
+      const preferences = rawPreferences
+        ? getUserPreferenceScores(rawPreferences)
         : getDefaultPreferences();
       
       // Keep production console clean (debug logging removed)
@@ -800,7 +837,9 @@ export default function ToursListingClient({
           const tourProfile = await calculateTourProfile(tourTags, null, supabase);
           
           // Calculate enhanced match score (uses full tour object with price, rating, flags, etc.)
-          const matchResult = await calculateEnhancedMatchScore(tour, preferences, tourProfile);
+          // Pass raw preferences - calculateEnhancedMatchScore converts them internally
+          // If no preferences, pass null and it will default to balanced (50) for all dimensions
+          const matchResult = await calculateEnhancedMatchScore(tour, rawPreferences || null, tourProfile);
           // matchResult.tourProfile is already set to the ADJUSTED profile (includes price/flag adjustments)
           // Don't overwrite it with the original tag-based profile!
           scores[productId] = matchResult;
@@ -994,7 +1033,7 @@ export default function ToursListingClient({
   const destinationTagOptions = (() => {
     const customTags = DESTINATION_TAG_OPTIONS[destination.id];
     if (customTags && customTags.length) return customTags;
-    return buildFallbackTagOptions(destination);
+    return buildFallbackTagOptions(destination, categoryGuides);
   })();
 
   const tagScrollRef = useRef(null);
