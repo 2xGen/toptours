@@ -54,7 +54,7 @@ export async function POST(request) {
         const session = event.data.object;
         // Wrap in try-catch to prevent errors from bubbling up
         try {
-          await handleCheckoutSessionCompleted(session);
+        await handleCheckoutSessionCompleted(session);
         } catch (error) {
           // Log error but don't fail the webhook - Stripe will retry if we return error
           // Instead, log and return success so Stripe doesn't keep retrying
@@ -67,7 +67,7 @@ export async function POST(request) {
       case 'customer.subscription.updated': {
         const subscription = event.data.object;
         try {
-          await handleSubscriptionUpdate(subscription);
+        await handleSubscriptionUpdate(subscription);
         } catch (error) {
           console.error('❌ [WEBHOOK] Error in handleSubscriptionUpdate (logged but not failing webhook):', error);
         }
@@ -77,7 +77,7 @@ export async function POST(request) {
       case 'customer.subscription.deleted': {
         const subscription = event.data.object;
         try {
-          await handleSubscriptionDeleted(subscription);
+        await handleSubscriptionDeleted(subscription);
         } catch (error) {
           console.error('❌ [WEBHOOK] Error in handleSubscriptionDeleted (logged but not failing webhook):', error);
         }
@@ -87,7 +87,7 @@ export async function POST(request) {
       case 'payment_intent.succeeded': {
         const paymentIntent = event.data.object;
         try {
-          await handlePaymentIntentSucceeded(paymentIntent);
+        await handlePaymentIntentSucceeded(paymentIntent);
         } catch (error) {
           console.error('❌ [WEBHOOK] Error in handlePaymentIntentSucceeded (logged but not failing webhook):', error);
         }
@@ -836,20 +836,20 @@ async function handleRestaurantPremiumSubscriptionDeleted(subscription, supabase
  */
 async function handleTourOperatorPremiumCheckout(session, supabase) {
   try {
-    const metadata = session.metadata || {};
-    const subscriptionId = session.subscription;
-    
-    const subscriptionDbId = metadata.subscriptionId;
-    const userId = metadata.userId;
-    const operatorName = metadata.operatorName;
-    const operatorEmail = metadata.operatorEmail;
-    const tourCount = parseInt(metadata.tourCount || '5');
-    const billingCycle = metadata.billingCycle || 'monthly';
-    const selectedTourIds = metadata.selectedTourIds ? metadata.selectedTourIds.split(',') : [];
+  const metadata = session.metadata || {};
+  const subscriptionId = session.subscription;
+  
+  const subscriptionDbId = metadata.subscriptionId;
+  const userId = metadata.userId;
+  const operatorName = metadata.operatorName;
+  const operatorEmail = metadata.operatorEmail;
+  const tourCount = parseInt(metadata.tourCount || '5');
+  const billingCycle = metadata.billingCycle || 'monthly';
+  const selectedTourIds = metadata.selectedTourIds ? metadata.selectedTourIds.split(',') : [];
     
     console.log(`🔄 [WEBHOOK] Processing tour operator premium checkout for subscription ${subscriptionDbId}, Stripe subscription ${subscriptionId}`);
-    
-    if (!subscriptionDbId || !subscriptionId || !userId) {
+  
+  if (!subscriptionDbId || !subscriptionId || !userId) {
       console.error('❌ [WEBHOOK] Missing required fields for tour operator premium checkout:', metadata);
       return; // Return early, don't throw - webhook will still return success
     }
@@ -1025,6 +1025,7 @@ async function handleTourOperatorPremiumCheckout(session, supabase) {
         // Don't fail the webhook if email fails
       }
     }
+  }
   } catch (error) {
     // Catch any unexpected errors and log them, but don't throw
     // This ensures the webhook always returns success to Stripe
