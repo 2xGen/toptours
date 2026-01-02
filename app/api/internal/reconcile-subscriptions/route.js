@@ -41,7 +41,7 @@ export async function GET(request) {
     // ===== RESTAURANT SUBSCRIPTIONS =====
     const { data: dbRestaurantSubs, error: dbRestaurantError } = await supabase
       .from('restaurant_subscriptions')
-      .select('id, stripe_subscription_id, status, restaurant_id, user_id, restaurant_name')
+      .select('id, stripe_subscription_id, status, restaurant_id, user_id, restaurant_name, email, restaurant_premium_plan, promoted_listing_plan, current_period_end')
       .in('status', ['active', 'pending']);
 
     if (dbRestaurantError) {
@@ -64,7 +64,11 @@ export async function GET(request) {
           
           const { error: updateError } = await supabase
             .from('restaurant_subscriptions')
-            .update({ status: 'active' })
+            .update({ 
+              status: 'active',
+              current_period_start: stripeSub.current_period_start ? new Date(stripeSub.current_period_start * 1000).toISOString() : null,
+              current_period_end: stripeSub.current_period_end ? new Date(stripeSub.current_period_end * 1000).toISOString() : null,
+            })
             .eq('id', dbSub.id);
 
           if (updateError) {
@@ -72,6 +76,30 @@ export async function GET(request) {
           } else {
             results.fixed++;
             console.log(`✅ [RECONCILE] Fixed restaurant subscription ${dbSub.id}`);
+            
+            // Send confirmation email when status changes from pending to active
+            try {
+              const { sendRestaurantSubscriptionConfirmationEmail } = await import('@/lib/email');
+              const endDate = stripeSub.current_period_end ? new Date(stripeSub.current_period_end * 1000).toISOString() : dbSub.current_period_end;
+              const customerEmail = dbSub.email;
+              
+              if (customerEmail && endDate && dbSub.restaurant_name) {
+                await sendRestaurantSubscriptionConfirmationEmail({
+                  to: customerEmail,
+                  restaurantName: dbSub.restaurant_name,
+                  planType: dbSub.restaurant_premium_plan || 'monthly',
+                  destinationId: null, // Can be fetched if needed
+                  restaurantSlug: null, // Can be fetched if needed
+                  endDate: endDate,
+                });
+                console.log(`✅ [RECONCILE] Sent confirmation email to ${customerEmail} for restaurant subscription ${dbSub.id}`);
+              } else {
+                console.warn(`⚠️ [RECONCILE] Cannot send email for restaurant subscription ${dbSub.id}: missing email, endDate, or restaurant_name`);
+              }
+            } catch (emailError) {
+              console.error(`⚠️ [RECONCILE] Failed to send confirmation email for restaurant subscription ${dbSub.id}:`, emailError);
+              // Don't fail reconciliation if email fails
+            }
           }
         } else if ((stripeSub.status === 'canceled' || stripeSub.status === 'unpaid') && dbSub.status === 'active') {
           console.log(`🔧 [RECONCILE] Fixing restaurant subscription ${dbSub.id}: Stripe=${stripeSub.status}, DB=active`);
@@ -112,7 +140,7 @@ export async function GET(request) {
     // ===== TOUR OPERATOR SUBSCRIPTIONS =====
     const { data: dbTourSubs, error: dbTourError } = await supabase
       .from('tour_operator_subscriptions')
-      .select('id, stripe_subscription_id, status, operator_name, user_id')
+      .select('id, stripe_subscription_id, status, operator_name, operator_email, user_id, subscription_plan, current_period_end')
       .in('status', ['active', 'pending']);
 
     if (dbTourError) {
@@ -134,7 +162,11 @@ export async function GET(request) {
             
             const { error: updateError } = await supabase
               .from('tour_operator_subscriptions')
-              .update({ status: 'active' })
+              .update({ 
+                status: 'active',
+                current_period_start: stripeSub.current_period_start ? new Date(stripeSub.current_period_start * 1000).toISOString() : null,
+                current_period_end: stripeSub.current_period_end ? new Date(stripeSub.current_period_end * 1000).toISOString() : null,
+              })
               .eq('id', dbSub.id);
 
             if (updateError) {
@@ -142,6 +174,30 @@ export async function GET(request) {
             } else {
               results.fixed++;
               console.log(`✅ [RECONCILE] Fixed tour subscription ${dbSub.id}`);
+              
+              // Send confirmation email when status changes from pending to active
+              try {
+                const { sendTourOperatorPremiumConfirmationEmail } = await import('@/lib/email');
+                const tourCount = dbSub.subscription_plan?.includes('5') ? 5 : 15;
+                const billingCycle = dbSub.subscription_plan?.includes('annual') ? 'annual' : 'monthly';
+                const endDate = stripeSub.current_period_end ? new Date(stripeSub.current_period_end * 1000).toISOString() : dbSub.current_period_end;
+                
+                if (dbSub.operator_email && endDate) {
+                  await sendTourOperatorPremiumConfirmationEmail({
+                    to: dbSub.operator_email,
+                    operatorName: dbSub.operator_name || 'Tour Operator',
+                    tourCount: tourCount,
+                    billingCycle: billingCycle,
+                    endDate: endDate,
+                  });
+                  console.log(`✅ [RECONCILE] Sent confirmation email to ${dbSub.operator_email} for subscription ${dbSub.id}`);
+                } else {
+                  console.warn(`⚠️ [RECONCILE] Cannot send email for subscription ${dbSub.id}: missing email or endDate`);
+                }
+              } catch (emailError) {
+                console.error(`⚠️ [RECONCILE] Failed to send confirmation email for subscription ${dbSub.id}:`, emailError);
+                // Don't fail reconciliation if email fails
+              }
             }
           } else if ((stripeSub.status === 'canceled' || stripeSub.status === 'unpaid') && dbSub.status === 'active') {
             console.log(`🔧 [RECONCILE] Fixing tour subscription ${dbSub.id}: Stripe=${stripeSub.status}, DB=active`);
