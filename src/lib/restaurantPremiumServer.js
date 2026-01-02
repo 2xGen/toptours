@@ -84,7 +84,7 @@ export async function getPremiumRestaurantIds(destinationId) {
     // Query with both normalized slug and original destinationId to catch all cases
     const { data, error } = await supabase
       .from('restaurant_premium_subscriptions')
-      .select('restaurant_id')
+      .select('restaurant_id, current_period_end')
       .in('destination_id', [normalizedDestinationId, destinationId].filter(Boolean))
       .in('status', ['active', 'pending_cancellation']);
     
