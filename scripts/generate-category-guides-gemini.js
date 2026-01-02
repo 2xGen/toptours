@@ -159,7 +159,7 @@ Example of good style:
 
 Notice: Natural flow, specific details, varied sentences, no clichés, informative without being salesy.\`,
   seo: {
-    title: 'SEO-optimized title under 60 chars with year 2025',
+    title: 'SEO-optimized title under 60 chars with year 2026',
     description: 'Compelling 150-160 char meta description with keywords and call-to-action',
     keywords: 'Primary keywords, secondary keywords, long-tail keywords'
   },

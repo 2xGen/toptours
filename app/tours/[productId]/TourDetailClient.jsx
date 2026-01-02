@@ -46,6 +46,7 @@ import {
   getDefaultPreferences 
 } from '@/lib/tourMatching';
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
+import { resolveUserPreferences } from '@/lib/preferenceResolution';
 
 export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [] }) {
   const router = useRouter();
@@ -101,25 +102,28 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   const [insightError, setInsightError] = useState('');
 
   // Local, lightweight preferences (same structure as tours listing page)
+  // IMPORTANT: Don't initialize with defaults - use null so all pages behave the same
+  // When null, calculateEnhancedMatchScore will use balanced defaults internally
   const [localPreferences, setLocalPreferences] = useState(() => {
     if (typeof window === 'undefined') return null;
     try {
-      const stored = localStorage.getItem('topTours_preferences');
+      // Check both localStorage keys for backward compatibility
+      let stored = localStorage.getItem('topTours_preferences');
+      if (!stored) {
+        stored = localStorage.getItem('tourPreferences');
+      }
       if (stored) {
-        return JSON.parse(stored);
+        const parsed = JSON.parse(stored);
+        // Only use if it has valid preferences (at least 5 keys)
+        if (parsed && Object.keys(parsed).length >= 5) {
+          return parsed;
+        }
       }
     } catch (e) {
       console.error('Error loading localStorage preferences on tour detail page:', e);
     }
-    // Default balanced preferences
-    return {
-      adventureLevel: 50,
-      cultureVsBeach: 50,
-      groupPreference: 50,
-      budgetComfort: 50,
-      structurePreference: 50,
-      foodAndDrinkInterest: 50,
-    };
+    // Return null (not defaults) - this ensures consistency with other pages
+    return null;
   });
   const getSlugFromRef = (value) => {
     if (!value) return null;
@@ -315,15 +319,26 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   const effectiveDestinationData = destinationData || fallbackDestinationData;
 
   const primaryDestinationId = useMemo(() => {
+    // Priority 1: Use server-provided destinationData (most reliable)
     if (effectiveDestinationData?.destinationId) {
+      console.log(`✅ Using server destinationData ID: ${effectiveDestinationData.destinationId} (${effectiveDestinationData.destinationName})`);
       return effectiveDestinationData.destinationId;
     }
+    
+    // Priority 2: Extract from tour destinations array (prioritize primary)
     if (Array.isArray(tour?.destinations) && tour.destinations.length > 0) {
-      const primary = tour.destinations.find((d) => d?.primary) || tour.destinations[0];
-      return primary?.ref || primary?.destinationId || primary?.id || null;
+      console.log(`🔍 Tour has ${tour.destinations.length} destination(s), finding primary...`);
+      const primary = tour.destinations.find((d) => d?.primary);
+      const selected = primary || tour.destinations[0];
+      const destId = selected?.ref || selected?.destinationId || selected?.id || null;
+      const destName = selected?.destinationName || selected?.name || 'Unknown';
+      console.log(`✅ Selected destination from tour array: ID=${destId}, Name=${destName}, IsPrimary=${!!primary}`);
+      return destId;
     }
+    
+    console.warn(`⚠️ No destination ID found for tour ${productId}`);
     return null;
-  }, [effectiveDestinationData?.destinationId, tour]);
+  }, [effectiveDestinationData?.destinationId, tour, productId]);
 
   const normalizedPrimaryDestinationId = useMemo(() => {
     if (!primaryDestinationId) return null;
@@ -359,7 +374,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         const { data, error } = await supabase
           .from('viator_destinations')
           .select('id, name, slug, country, region')
-          .eq('id', normalizedPrimaryDestinationId)
+          .eq('id', normalizedPrimaryDestinationId.toString()) // Ensure string comparison
           .maybeSingle();
 
         if (!isMounted) return;
@@ -368,6 +383,16 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
           console.warn(`Client destination lookup failed for ID ${normalizedPrimaryDestinationId}:`, error.message || error);
           setClientDestinationLookup(null);
           return;
+        }
+
+        if (data) {
+          // Verify the returned data matches the requested ID
+          if (data.id !== normalizedPrimaryDestinationId.toString() && data.id !== normalizedPrimaryDestinationId) {
+            console.error(`❌ CRITICAL: Client lookup returned wrong destination! Requested: ${normalizedPrimaryDestinationId}, Got: ${data.id} (${data.name})`);
+            setClientDestinationLookup(null);
+            return;
+          }
+          console.log(`✅ Client destination lookup successful for ID ${normalizedPrimaryDestinationId}: ${data.name} (slug: ${data.slug})`);
         }
 
         setClientDestinationLookup(data || null);
@@ -598,12 +623,9 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         setLoadingProfile(true);
         const profile = await calculateTourProfile(tour.tags);
 
-        // Calculate enhanced match score (uses full tour object with price, rating, flags, etc.)
-        // Pass raw preferences - calculateEnhancedMatchScore converts them internally
-        // If no preferences, pass null and it will default to balanced (50) for all dimensions
-        const preferences = user && userPreferences 
-          ? userPreferences 
-          : null;
+        // Use unified preference resolution - ensures consistent match scores across all pages
+        // This uses the exact same logic as all other pages
+        const preferences = resolveUserPreferences({ user, userPreferences, localPreferences });
         
         // Ensure tour object has pricing in the expected format for enhanced matching
         // The enhanced matching function expects tour.pricing.summary.fromPrice
@@ -659,7 +681,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     };
 
     calculateProfile();
-  }, [tour, user, userPreferences]);
+  }, [tour, user, userPreferences, localPreferences]); // Added localPreferences so it recalculates when preferences change
 
   // Explicit "Save to profile" handler (same behavior as tours listing page)
   const handleSavePreferencesToProfile = useCallback(async () => {
@@ -697,6 +719,16 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       if (error) throw error;
 
       setUserPreferences(mergedPreferences);
+      // Also update localPreferences so the match score recalculates immediately
+      setLocalPreferences(mergedPreferences);
+      // Save to localStorage for consistency
+      if (typeof window !== 'undefined') {
+        try {
+          localStorage.setItem('topTours_preferences', JSON.stringify(mergedPreferences));
+        } catch (e) {
+          // Ignore localStorage errors
+        }
+      }
       toast({
         title: 'Preferences saved',
         description: 'Saved to your profile (syncs across devices).',

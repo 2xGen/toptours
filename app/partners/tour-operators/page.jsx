@@ -18,7 +18,9 @@ import {
   Zap,
   Search,
   CheckCircle,
-  Settings
+  Settings,
+  Sparkles,
+  Info
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -43,7 +45,7 @@ function TourOperatorsPartnerPageContent() {
   const supabase = createSupabaseBrowserClient();
   const [user, setUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   
   // URL Converter state
@@ -53,17 +55,48 @@ function TourOperatorsPartnerPageContent() {
   const [tourExists, setTourExists] = useState(null);
   const [tourData, setTourData] = useState(null);
   const [selectedToursForBundle, setSelectedToursForBundle] = useState([]);
+  const [promotedTourIds, setPromotedTourIds] = useState([]); // Product IDs of tours to promote
+  const [promotedBillingCycle, setPromotedBillingCycle] = useState('annual'); // 'monthly' or 'annual'
+  const [wantsPromotion, setWantsPromotion] = useState(false); // Checkbox for promotion
   
-  // Check for success parameter from Stripe redirect
+  // Check for success parameter from Stripe redirect and verify session
   useEffect(() => {
     const success = searchParams.get('success');
     const sessionId = searchParams.get('session_id');
     
     if (success === 'true' && sessionId) {
-      // Payment successful - show confirmation
-      setStep(4); // Step 4 is now the confirmation step
-      // Clean up URL
-      router.replace('/partners/tour-operators', { scroll: false });
+      // Verify the session was actually successful with Stripe
+      const verifySession = async () => {
+        try {
+          const response = await fetch(`/api/internal/verify-checkout-session?session_id=${sessionId}`);
+          const data = await response.json();
+          
+          if (data.verified) {
+            // Payment verified - show confirmation
+            setStep(4); // Step 4 is confirmation
+            toast({
+              title: 'Payment successful!',
+              description: 'Your subscription has been activated. You can see it in your profile.',
+              variant: 'default',
+            });
+          } else {
+            // Session not verified - might be cancelled or failed
+            toast({
+              title: 'Payment verification failed',
+              description: 'We could not verify your payment. Please check your email or contact support.',
+              variant: 'destructive',
+            });
+          }
+          router.replace('/partners/tour-operators', { scroll: false });
+        } catch (error) {
+          console.error('Error verifying checkout session:', error);
+          // Still show success but log the error
+          setStep(4);
+          router.replace('/partners/tour-operators', { scroll: false });
+        }
+      };
+      
+      verifySession();
     } else if (searchParams.get('canceled') === 'true') {
       // Payment was canceled
       toast({
@@ -159,6 +192,13 @@ function TourOperatorsPartnerPageContent() {
   const [tourPackage, setTourPackage] = useState('5-tours'); // '5-tours' or '15-tours'
   const [billingCycle, setBillingCycle] = useState('annual'); // 'annual' or 'monthly'
   
+  // Sync promotion billing cycle with bundle billing cycle to prevent Stripe errors
+  useEffect(() => {
+    if (wantsPromotion) {
+      setPromotedBillingCycle(billingCycle);
+    }
+  }, [billingCycle, wantsPromotion]);
+  
   // Get email from authenticated user (we'll use this in the API call)
   const email = user?.email || '';
   
@@ -166,6 +206,11 @@ function TourOperatorsPartnerPageContent() {
   const [tourUrls, setTourUrls] = useState(['']);
   const [verifiedTours, setVerifiedTours] = useState([]);
   const [selectedTours, setSelectedTours] = useState([]);
+  
+  // Suggested tours from database (by operator name)
+  const [suggestedTours, setSuggestedTours] = useState([]);
+  const [loadingSuggestedTours, setLoadingSuggestedTours] = useState(false);
+  const [currentOperatorName, setCurrentOperatorName] = useState(null);
   
   // Pre-fill tour URLs from bundle selection when moving to step 2
   useEffect(() => {
@@ -251,16 +296,20 @@ function TourOperatorsPartnerPageContent() {
   const canProceedToStep2 = user; // Just need authentication
   // Check if all selected tours have matching operator names (minimum 2 tours)
   const checkOperatorNamesMatch = () => {
-    if (selectedTours.length < 2) return { match: true, message: null };
+    if (selectedTours.length < 2) return { match: false, message: 'Please select at least 2 tours to continue.' };
     
     const selectedTourData = selectedTours
       .map(productId => {
-        const verified = verifiedTours.find(v => v?.productId === productId);
+        // verifiedTours is an array that may contain null values, so filter them out first
+        const verified = verifiedTours.filter(v => v !== null).find(v => v?.productId === productId);
         return verified ? verified.operatorName : null;
       })
       .filter(Boolean);
     
-    if (selectedTourData.length < 2) return { match: true, message: null };
+    if (selectedTourData.length < 2) {
+      // Some selected tours don't have operator names - this shouldn't happen but handle it gracefully
+      return { match: false, message: 'Some selected tours are missing operator information. Please verify all tours.' };
+    }
     
     // Normalize operator names for comparison
     const normalizeName = (name) => name.toLowerCase().trim().replace(/[^\w\s]/g, '');
@@ -449,6 +498,12 @@ function TourOperatorsPartnerPageContent() {
       newVerified[index] = verifiedTour;
       setVerifiedTours(newVerified);
       
+      // If we have an operator name, fetch suggested tours from database
+      if (tourOperator && tourOperator.trim() !== '') {
+        setCurrentOperatorName(tourOperator.trim());
+        fetchSuggestedTours(tourOperator.trim());
+      }
+      
       toast({
         title: 'Tour verified',
         description: 'Tour loaded successfully. Select it to add to your bundle.',
@@ -463,6 +518,135 @@ function TourOperatorsPartnerPageContent() {
     } finally {
       setVerifying(false);
     }
+  };
+  
+  // Fetch suggested tours by operator name
+  const fetchSuggestedTours = async (operatorName) => {
+    if (!operatorName || operatorName.trim() === '') return;
+    
+    setLoadingSuggestedTours(true);
+    try {
+      const response = await fetch(`/api/internal/tours-by-operator-name?operatorName=${encodeURIComponent(operatorName)}`);
+      const data = await response.json();
+      
+      if (data.productIds && data.productIds.length > 0) {
+        // Fetch full tour data for each product ID
+        const tourPromises = data.productIds.slice(0, 20).map(async (productId) => {
+          try {
+            const tourResponse = await fetch(`/api/internal/tour/${productId}`);
+            if (!tourResponse.ok) return null;
+            const tourData = await tourResponse.json();
+            const tour = tourData.tour || tourData;
+            
+            if (!tour || !tour.title) return null;
+            
+            return {
+              productId,
+              title: tour.title || 'Tour',
+              // Use the operatorName from CRM (the one used to fetch suggestions) instead of Viator API
+              // This ensures all suggested tours use the same operator name for validation
+              operatorName: operatorName, // Use the CRM operator name, not Viator's supplier name
+              reviewCount: tour.reviews?.totalReviews || 0,
+              rating: tour.reviews?.combinedAverageRating || 0,
+              imageUrl: tour.images?.[0]?.variants?.[3]?.url || tour.images?.[0]?.variants?.[0]?.url || null,
+              toptoursUrl: `/tours/${productId}`,
+            };
+          } catch (error) {
+            console.error(`Error fetching tour ${productId}:`, error);
+            return null;
+          }
+        });
+        
+        const tours = await Promise.all(tourPromises);
+        const validTours = tours.filter(t => t !== null);
+        
+        // Filter out tours that are already verified/selected
+        // verifiedTours is an array that may contain null values, so we need to filter properly
+        const existingProductIds = new Set([
+          ...verifiedTours.filter(v => v !== null).map(v => v?.productId).filter(Boolean),
+          ...selectedTours
+        ]);
+        
+        setSuggestedTours(validTours.filter(t => !existingProductIds.has(t.productId)));
+      } else {
+        setSuggestedTours([]);
+      }
+    } catch (error) {
+      console.error('Error fetching suggested tours:', error);
+      setSuggestedTours([]);
+    } finally {
+      setLoadingSuggestedTours(false);
+    }
+  };
+  
+  // Add suggested tour to selection
+  const addSuggestedTour = (suggestedTour) => {
+    // Check if already selected (check both selectedTours and verifiedTours)
+    if (selectedTours.includes(suggestedTour.productId)) {
+      toast({
+        title: 'Tour already selected',
+        description: 'This tour is already in your selection.',
+        variant: 'default',
+      });
+      return;
+    }
+    
+    // Also check if it's already verified (even if not selected yet)
+    const isAlreadyVerified = verifiedTours.some(v => v !== null && v?.productId === suggestedTour.productId);
+    if (isAlreadyVerified) {
+      toast({
+        title: 'Tour already verified',
+        description: 'This tour matches one you already pasted above. Please check the checkbox next to the verified tour to select it.',
+        variant: 'default',
+      });
+      return;
+    }
+    
+    // Check max tours limit
+    const maxTours = tourPackage === '5-tours' ? 5 : 15;
+    if (selectedTours.length >= maxTours) {
+      toast({
+        title: 'Maximum reached',
+        description: `You can select up to ${maxTours} tours with your current package.`,
+        variant: 'destructive'
+      });
+      return;
+    }
+    
+    // Ensure suggested tour has all required fields for operator matching
+    const tourToAdd = {
+      ...suggestedTour,
+      // Ensure operatorName is set (use currentOperatorName as fallback)
+      operatorName: suggestedTour.operatorName || currentOperatorName || 'Unknown Operator',
+      // Add viatorUrl and toptoursUrl if missing
+      viatorUrl: suggestedTour.viatorUrl || null,
+      toptoursUrl: suggestedTour.toptoursUrl || `/tours/${suggestedTour.productId}`,
+    };
+    
+    // Add to selected tours (use functional update to ensure state consistency)
+    setSelectedTours(prev => {
+      if (prev.includes(suggestedTour.productId)) {
+        return prev; // Already selected
+      }
+      return [...prev, suggestedTour.productId];
+    });
+    
+    // Also add to verified tours if not already there (use functional update)
+    setVerifiedTours(prev => {
+      const existingIndex = prev.findIndex(v => v?.productId === suggestedTour.productId);
+      if (existingIndex === -1) {
+        return [...prev, tourToAdd];
+      }
+      // Update existing entry to ensure operatorName is set
+      const updated = [...prev];
+      updated[existingIndex] = { ...updated[existingIndex], ...tourToAdd };
+      return updated;
+    });
+    
+    toast({
+      title: 'Tour added',
+      description: `${suggestedTour.title} has been added to your selection.`,
+    });
   };
   
   // Toggle tour selection
@@ -498,6 +682,18 @@ function TourOperatorsPartnerPageContent() {
       return;
     }
     
+    // Stripe doesn't support mixing monthly and annual subscriptions in one checkout
+    // If promotion is selected, it must match the bundle billing cycle
+    if (wantsPromotion && billingCycle !== promotedBillingCycle) {
+      toast({
+        title: 'Billing cycle mismatch',
+        description: 'Promoted listings must use the same billing cycle as your bundle plan. Please select the same billing cycle (monthly or annual) for both.',
+        variant: 'destructive',
+        duration: 10000
+      });
+      return;
+    }
+    
     setLoading(true);
     let errorMessage = 'Failed to create subscription. Please try again.';
     
@@ -514,6 +710,8 @@ function TourOperatorsPartnerPageContent() {
           tourUrls: tourUrls.filter(url => url.trim()),
           selectedTourIds: selectedTours,
           tourPackage: `${tourPackage === '5-tours' ? '5' : '15'}-tours-${billingCycle}`,
+          promotedTourIds: promotedTourIds, // Array of product IDs to promote
+          promotedBillingCycle: promotedBillingCycle, // 'monthly' or 'annual'
         }),
       });
       
@@ -600,8 +798,8 @@ function TourOperatorsPartnerPageContent() {
       <NavigationNext />
       
       <main className="container mx-auto px-4 py-16 md:py-20 max-w-4xl">
-        {/* Header - Only show on step 1 */}
-        {step === 1 && (
+        {/* Header - Landing page with Continue button */}
+        {step === 0 && (
           <>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -612,9 +810,17 @@ function TourOperatorsPartnerPageContent() {
                 <Crown className="w-10 h-10 md:w-12 md:h-12 text-amber-500" />
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Tour Operator Partner Program</h1>
               </div>
-              <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
+              <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto mb-8">
                 Increase visibility and drive more bookings through our affiliate partnership with Viator
               </p>
+              <Button
+                onClick={() => setStep(1)}
+                size="lg"
+                className="sunset-gradient text-white text-lg px-8 py-6"
+              >
+                Get Started
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
             </motion.div>
 
             {/* About Section - Viator Partnership */}
@@ -711,7 +917,7 @@ function TourOperatorsPartnerPageContent() {
                       </ul>
                     </div>
                     
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-4 mb-6">
                       <div className="bg-white border-2 border-amber-200 rounded-lg p-4 text-center">
                         <div className="text-xs text-gray-500 mb-1">From</div>
                         <div className="text-2xl font-bold text-gray-900">$4.99</div>
@@ -726,6 +932,126 @@ function TourOperatorsPartnerPageContent() {
                         <Badge className="mt-2 bg-green-100 text-green-700 text-xs">Best Value</Badge>
                       </div>
                     </div>
+                    
+                    <Button
+                      onClick={() => {
+                        if (!user) {
+                          sessionStorage.setItem('tourOperatorStep', '1');
+                          router.push(`/auth?redirect=${encodeURIComponent('/partners/tour-operators')}`);
+                          return;
+                        }
+                        setStep(1);
+                      }}
+                      size="lg"
+                      className="w-full sunset-gradient text-white"
+                    >
+                      Get Started with Premium Operator
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </motion.section>
+
+            {/* Promoted Listings Section */}
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="mb-12"
+            >
+              <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
+                Promoted Listings
+              </h2>
+              
+              <div className="max-w-4xl mx-auto">
+                <Card className="shadow-xl border-2 border-purple-200">
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center">
+                        <TrendingUp className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900">Get Top Placement</h3>
+                    </div>
+                    
+                    <p className="text-gray-700 mb-6">
+                      Promote individual tours or restaurants to appear at the top of search results and destination pages. 
+                      Your listings will always show first, regardless of filters or sorting, ensuring maximum visibility.
+                    </p>
+                    
+                    <div className="bg-purple-50 rounded-lg p-6 mb-6">
+                      <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                        <Zap className="w-5 h-5 text-purple-600" />
+                        Extra Visibility Benefits
+                      </h4>
+                      <ul className="space-y-3">
+                        <li className="flex items-start gap-2">
+                          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700"><strong>Always First</strong> - Your promoted listings appear at the top of all grids, before any other results</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700"><strong>Filter-Proof</strong> - Promoted listings stay at the top even when users apply filters or change sorting</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700"><strong>Cross-Promotion</strong> - Promoted tours show on restaurant pages, and promoted restaurants show on tour pages</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700"><strong>Promoted Badge</strong> - Eye-catching "Promoted" badge with sparkle icon signals premium placement</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700"><strong>Multiple Pages</strong> - Appears on destination detail pages, tours/restaurants listing pages, and Match Your Style results</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700 font-semibold"><strong>Maximum Exposure</strong> - Get seen by travelers browsing destinations, searching for tours, and using personalized recommendations</span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                      <div className="bg-white border-2 border-purple-200 rounded-lg p-4 text-center">
+                        <div className="text-xs text-gray-500 mb-1">Annual (12 months)</div>
+                        <div className="text-2xl font-bold text-purple-600">$19.99</div>
+                        <div className="text-sm text-gray-600">per month</div>
+                        <div className="text-xs text-gray-400 mt-1">$239.88 paid upfront</div>
+                        <Badge className="mt-2 bg-green-100 text-green-700 text-xs">Save $60/year</Badge>
+                      </div>
+                      <div className="bg-purple-50 border-2 border-purple-400 rounded-lg p-4 text-center">
+                        <div className="text-xs text-gray-500 mb-1">Monthly billing</div>
+                        <div className="text-2xl font-bold text-gray-900">$24.99</div>
+                        <div className="text-sm text-gray-600">per month</div>
+                        <div className="text-xs text-gray-400 mt-1">Billed monthly</div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-blue-50 rounded-lg p-4 border border-blue-200 mb-6">
+                      <p className="text-sm text-gray-700 text-center">
+                        <strong className="text-gray-900">~20% discount</strong> when you commit to 12 months. 
+                        Perfect for operators who want consistent top placement year-round.
+                      </p>
+                    </div>
+                    
+                    <Button
+                      onClick={() => {
+                        if (!user) {
+                          sessionStorage.setItem('tourOperatorStep', '1');
+                          router.push(`/auth?redirect=${encodeURIComponent('/partners/tour-operators')}`);
+                          return;
+                        }
+                        setStep(1);
+                        setWantsPromotion(true);
+                      }}
+                      size="lg"
+                      className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white"
+                    >
+                      <Sparkles className="w-5 h-5 mr-2" />
+                      Get Started with Promoted Listings
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
                   </CardContent>
                 </Card>
               </div>
@@ -1003,6 +1329,7 @@ function TourOperatorsPartnerPageContent() {
           )}
           
           {/* Progress Steps */}
+          {step > 0 && (
           <div className="flex items-center justify-center gap-4 mb-8">
             {[1, 2, 3].map((stepNum) => (
             <React.Fragment key={stepNum}>
@@ -1023,8 +1350,9 @@ function TourOperatorsPartnerPageContent() {
             </React.Fragment>
           ))}
           </div>
+          )}
           
-          {/* Step 1: Package Selection */}
+          {/* Step 1: Select Bundle Package, Billing, and Promotion */}
           {step === 1 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1032,20 +1360,17 @@ function TourOperatorsPartnerPageContent() {
           >
             <Card className="shadow-xl">
               <CardContent className="p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Choose Your Package</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Choose Your Plan</h2>
                 
+                {/* Bundle Package Selection */}
                 <div className="mb-8">
-                  <label className="block text-sm font-medium text-gray-700 mb-4">Number of Tours</label>
-                  <p className="text-sm text-gray-600 mb-4">
-                    Select how many tours you want to bundle together. All selected tours will display the premium crown icon, 
-                    show aggregated reviews, and link to each other for maximum visibility.
-                  </p>
+                  <label className="block text-sm font-medium text-gray-700 mb-4">Bundle Package</label>
                   <div className="grid md:grid-cols-2 gap-4">
                     <Card 
                       className={`cursor-pointer border-2 transition-all ${
                         tourPackage === '5-tours' 
                           ? 'border-purple-600 bg-purple-50' 
-                          : 'border-gray-200'
+                          : 'border-gray-200 hover:border-purple-300'
                       }`}
                       onClick={() => setTourPackage('5-tours')}
                     >
@@ -1056,25 +1381,11 @@ function TourOperatorsPartnerPageContent() {
                             <CheckCircle2 className="w-6 h-6 text-purple-600" />
                           )}
                         </div>
-                        <div className="space-y-2">
-                          <p className="text-sm text-gray-700 font-medium">
-                            Great for starting out or focusing on your best sellers
-                          </p>
-                          <ul className="text-xs text-gray-600 space-y-1">
-                            <li className="flex items-start gap-2">
-                              <CheckCircle2 className="w-3 h-3 text-green-600 flex-shrink-0 mt-0.5" />
-                              <span>Bundle your top 5 performing tours</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <CheckCircle2 className="w-3 h-3 text-green-600 flex-shrink-0 mt-0.5" />
-                              <span>Perfect for niche or specialized operators</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <CheckCircle2 className="w-3 h-3 text-green-600 flex-shrink-0 mt-0.5" />
-                              <span>Lower monthly cost to get started</span>
-                            </li>
-                          </ul>
+                        <div className="text-3xl font-bold text-gray-900 mb-1">
+                          From $4.99
                         </div>
+                        <div className="text-sm text-gray-600 mb-2">per month</div>
+                        <div className="text-xs text-gray-500">5 tours</div>
                       </CardContent>
                     </Card>
                     
@@ -1082,7 +1393,7 @@ function TourOperatorsPartnerPageContent() {
                       className={`cursor-pointer border-2 transition-all ${
                         tourPackage === '15-tours' 
                           ? 'border-purple-600 bg-purple-50' 
-                          : 'border-gray-200'
+                          : 'border-gray-200 hover:border-purple-300'
                       }`}
                       onClick={() => setTourPackage('15-tours')}
                     >
@@ -1093,31 +1404,19 @@ function TourOperatorsPartnerPageContent() {
                             <CheckCircle2 className="w-6 h-6 text-purple-600" />
                           )}
                         </div>
-                        <div className="space-y-2">
-                          <p className="text-sm text-gray-700 font-medium">
-                            Best for established operators with multiple offerings
-                          </p>
-                          <ul className="text-xs text-gray-600 space-y-1">
-                            <li className="flex items-start gap-2">
-                              <CheckCircle2 className="w-3 h-3 text-green-600 flex-shrink-0 mt-0.5" />
-                              <span>Bundle up to 15 tours across categories</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <CheckCircle2 className="w-3 h-3 text-green-600 flex-shrink-0 mt-0.5" />
-                              <span>Maximum internal linking and SEO benefits</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <CheckCircle2 className="w-3 h-3 text-green-600 flex-shrink-0 mt-0.5" />
-                              <span>Better value per tour - only $0.67/tour/month</span>
-                            </li>
-                          </ul>
-                          <Badge className="mt-3 bg-green-100 text-green-700 text-xs font-semibold">Best Value</Badge>
+                        <div className="text-3xl font-bold text-gray-900 mb-1">
+                          From $9.99
                         </div>
+                        <div className="text-sm text-gray-600 mb-2">per month</div>
+                        <div className="text-xs text-gray-500">15 tours</div>
+                        <Badge className="mt-2 bg-green-100 text-green-700 text-xs font-semibold">Best Value</Badge>
                       </CardContent>
                     </Card>
                   </div>
                 </div>
                 
+                {/* Billing Cycle for Bundle */}
+                {tourPackage && (
                 <div className="mb-8">
                   <label className="block text-sm font-medium text-gray-700 mb-4">Billing Cycle</label>
                   <div className="grid md:grid-cols-2 gap-4">
@@ -1125,7 +1424,7 @@ function TourOperatorsPartnerPageContent() {
                       className={`cursor-pointer border-2 transition-all ${
                         billingCycle === 'annual' 
                           ? 'border-purple-600 bg-purple-50' 
-                          : 'border-gray-200'
+                            : 'border-gray-200 hover:border-purple-300'
                       }`}
                       onClick={() => setBillingCycle('annual')}
                     >
@@ -1139,8 +1438,8 @@ function TourOperatorsPartnerPageContent() {
                         <div className="text-3xl font-bold text-gray-900 mb-2">
                           {tourPackage === '5-tours' ? '$4.99' : '$9.99'}
                         </div>
-                        <div className="text-sm text-gray-600">per month (billed annually)</div>
-                        <Badge className="mt-2 bg-green-100 text-green-700 text-xs">Save 37%</Badge>
+                          <div className="text-sm text-gray-600 mb-2">per month (billed annually)</div>
+                          <Badge className="bg-green-100 text-green-700 text-xs">Save 37%</Badge>
                       </CardContent>
                     </Card>
                     
@@ -1148,7 +1447,7 @@ function TourOperatorsPartnerPageContent() {
                       className={`cursor-pointer border-2 transition-all ${
                         billingCycle === 'monthly' 
                           ? 'border-purple-600 bg-purple-50' 
-                          : 'border-gray-200'
+                            : 'border-gray-200 hover:border-purple-300'
                       }`}
                       onClick={() => setBillingCycle('monthly')}
                     >
@@ -1167,37 +1466,98 @@ function TourOperatorsPartnerPageContent() {
                     </Card>
                   </div>
                 </div>
+                )}
                 
-                <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mb-8">
-                  <h3 className="font-semibold text-gray-900 mb-4">What's Included:</h3>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-center gap-2">
-                      <Crown className="w-4 h-4 text-amber-500" />
-                      <span>Crown icon on all linked tours</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Star className="w-4 h-4 text-amber-500" />
-                      <span>Aggregated reviews across all tours</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Shield className="w-4 h-4 text-purple-600" />
-                      <span>Premium operator badge on tour pages</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <ExternalLink className="w-4 h-4 text-purple-600" />
-                      <span>"Other tours from this operator" sidebar section</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <TrendingUp className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="font-semibold">Internal linking between your tours for better SEO and authority</span>
-                    </li>
-                  </ul>
+                {/* Optional Promotion Checkbox */}
+                <div className="mb-8">
+                  <Card className={`border-2 ${wantsPromotion ? 'border-indigo-300 bg-indigo-50' : 'border-gray-200'}`}>
+                    <CardContent className="p-6">
+                      <label className="flex items-start gap-4 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={wantsPromotion}
+                          onChange={(e) => setWantsPromotion(e.target.checked)}
+                          className="mt-1 w-5 h-5 text-indigo-600 rounded"
+                        />
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Sparkles className="w-5 h-5 text-indigo-600" />
+                            <h3 className="text-lg font-bold text-gray-900">Also Promote Tours for Top Placement</h3>
+                          </div>
+                          <p className="text-sm text-gray-600 mb-4">
+                            Get top placement on all pages. Promoted tours appear first, before any other results.
+                          </p>
+                          
+                          {wantsPromotion && (
+                            <div className="mt-4">
+                              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-3">
+                                <p className="text-sm text-blue-800">
+                                  <strong>Note:</strong> Promotion billing cycle matches your bundle plan ({billingCycle === 'annual' ? 'Annual' : 'Monthly'})
+                                </p>
+                              </div>
+                              <label className="block text-sm font-medium text-gray-700 mb-3">Promotion Billing Cycle</label>
+                              <div className="grid grid-cols-2 gap-3">
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setBillingCycle('annual');
+                                    setPromotedBillingCycle('annual');
+                                  }}
+                                  disabled={billingCycle !== 'annual'}
+                                  className={`p-4 rounded-lg border-2 transition-all text-left ${
+                                    promotedBillingCycle === 'annual'
+                                      ? 'border-indigo-600 bg-indigo-100'
+                                      : 'border-gray-200 bg-white hover:border-indigo-300'
+                                  } ${billingCycle !== 'annual' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                >
+                                  <div className="font-semibold text-gray-900 mb-1">Annual (12 months)</div>
+                                  <div className="text-2xl font-bold text-indigo-600 mb-1">$19.99</div>
+                                  <div className="text-sm text-gray-600 mb-1">per month</div>
+                                  <div className="text-xs text-gray-400">$239.88 paid upfront</div>
+                                  <Badge className="mt-2 bg-green-100 text-green-700 text-xs">Save $60/year</Badge>
+                                </button>
+                                
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setBillingCycle('monthly');
+                                    setPromotedBillingCycle('monthly');
+                                  }}
+                                  disabled={billingCycle !== 'monthly'}
+                                  className={`p-4 rounded-lg border-2 transition-all text-left ${
+                                    promotedBillingCycle === 'monthly'
+                                      ? 'border-indigo-600 bg-indigo-100'
+                                      : 'border-gray-200 bg-white hover:border-indigo-300'
+                                  } ${billingCycle !== 'monthly' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                >
+                                  <div className="font-semibold text-gray-900 mb-1">Monthly billing</div>
+                                  <div className="text-2xl font-bold text-gray-900 mb-1">$24.99</div>
+                                  <div className="text-sm text-gray-600 mb-1">per month</div>
+                                  <div className="text-xs text-gray-400">Billed monthly</div>
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </label>
+                    </CardContent>
+                  </Card>
                 </div>
                 
                 <div className="mt-8 flex justify-end">
                   <Button
-                    onClick={handleProceedToStep2}
-                    disabled={!canProceedToStep2}
+                    onClick={() => {
+                      if (!tourPackage) {
+                        toast({
+                          title: 'Please select a bundle package',
+                          description: 'Choose 5 tours or 15 tours.',
+                          variant: 'destructive',
+                        });
+                        return;
+                      }
+                      setStep(2);
+                    }}
+                    disabled={!tourPackage}
                     className="sunset-gradient text-white disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Continue
@@ -1225,8 +1585,24 @@ function TourOperatorsPartnerPageContent() {
           >
             <Card className="shadow-xl">
               <CardContent className="p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-bold text-gray-900">Select Your Tours</h2>
+                <div className="flex items-center gap-2 mb-6">
+                  <Button
+                    onClick={() => setStep(1)}
+                    variant="ghost"
+                    size="sm"
+                  >
+                    <ArrowRight className="w-4 h-4 mr-1 rotate-180" />
+                    Back
+                  </Button>
+                  <div className="flex-1">
+                    <h2 className="text-2xl font-bold text-gray-900">Add Your Tour URLs</h2>
+                    <p className="text-sm text-gray-600 mt-1">
+                      {wantsPromotion 
+                        ? 'Add tours to bundle, then select which ones to promote'
+                        : 'Add tours to bundle together (minimum 2)'
+                      }
+                    </p>
+                  </div>
                   <Badge variant="secondary">
                     {selectedTours.length} / {tourPackage === '5-tours' ? '5' : '15'} selected
                   </Badge>
@@ -1335,12 +1711,268 @@ function TourOperatorsPartnerPageContent() {
                     + Add Another Tour URL
                   </Button>
                 )}
+
+                {/* Suggested Tours Section - Show tours from database matching operator name */}
+                {currentOperatorName && (
+                  <div className="mt-8 p-6 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 border-2 border-blue-300 rounded-xl shadow-lg">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Search className="w-6 h-6 text-blue-600" />
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900">
+                          Suggested Tours from {currentOperatorName}
+                        </h3>
+                        <p className="text-sm text-gray-600">
+                          We found tours from this operator in our database. Select any to add them to your bundle.
+                        </p>
+                        <div className="mt-2 space-y-1">
+                          <p className="text-xs text-gray-500 italic">
+                            💡 If a tour shows "Already Verified Above" when you click Add, it means you already pasted that tour's URL above. Just check the checkbox next to the verified tour to select it.
+                          </p>
+                          <p className="text-xs text-gray-500 italic">
+                            💡 Have more tours on Viator but don't see them here? Paste the Viator links above to add them.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {loadingSuggestedTours ? (
+                      <div className="flex items-center justify-center py-8">
+                        <Loader2 className="w-6 h-6 animate-spin text-purple-600 mr-2" />
+                        <span className="text-gray-600">Loading suggested tours...</span>
+                      </div>
+                    ) : suggestedTours.length > 0 ? (
+                      <div className="space-y-3 max-h-96 overflow-y-auto">
+                        {suggestedTours.map((tour) => {
+                          const isSelected = selectedTours.includes(tour.productId);
+                          const isAlreadyVerified = verifiedTours.some(v => v !== null && v?.productId === tour.productId);
+                          const maxTours = tourPackage === '5-tours' ? 5 : 15;
+                          const canSelect = !isSelected && !isAlreadyVerified && selectedTours.length < maxTours;
+                          
+                          return (
+                            <div
+                              key={tour.productId}
+                              className={`flex items-start gap-3 p-4 bg-white rounded-lg border-2 transition-all ${
+                                isSelected
+                                  ? 'border-green-400 bg-green-50'
+                                  : isAlreadyVerified
+                                    ? 'border-amber-300 bg-amber-50'
+                                    : canSelect
+                                      ? 'border-gray-200 hover:border-purple-300 cursor-pointer'
+                                      : 'border-gray-200 opacity-50'
+                              }`}
+                              onClick={canSelect ? () => addSuggestedTour(tour) : undefined}
+                            >
+                              {tour.imageUrl && (
+                                <img
+                                  src={tour.imageUrl}
+                                  alt={tour.title}
+                                  className="w-16 h-16 rounded object-cover flex-shrink-0"
+                                  onError={(e) => {
+                                    e.target.style.display = 'none';
+                                  }}
+                                />
+                              )}
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-2 mb-1">
+                                  <h4 className="font-semibold text-sm text-gray-900 truncate">
+                                    {tour.title}
+                                  </h4>
+                                  {isSelected && (
+                                    <Badge className="bg-green-600 text-white text-xs">
+                                      <Check className="w-3 h-3 mr-1" />
+                                      Selected
+                                    </Badge>
+                                  )}
+                                  {isAlreadyVerified && !isSelected && (
+                                    <Badge className="bg-amber-500 text-white text-xs">
+                                      <AlertCircle className="w-3 h-3 mr-1" />
+                                      Already Verified Above
+                                    </Badge>
+                                  )}
+                                </div>
+                                <div className="flex items-center gap-4 text-xs text-gray-600">
+                                  {tour.rating > 0 && (
+                                    <div className="flex items-center gap-1">
+                                      <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
+                                      <span>{tour.rating.toFixed(1)}</span>
+                                    </div>
+                                  )}
+                                  {tour.reviewCount > 0 && (
+                                    <span>({tour.reviewCount.toLocaleString()} reviews)</span>
+                                  )}
+                                  <a
+                                    href={tour.toptoursUrl}
+                                    target="_blank"
+                                    rel="noopener"
+                                    className="text-purple-600 hover:underline"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    View Tour
+                                  </a>
+                                </div>
+                              </div>
+                              {canSelect && (
+                                <Button
+                                  size="sm"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    addSuggestedTour(tour);
+                                  }}
+                                  className="flex-shrink-0"
+                                >
+                                  <Check className="w-4 h-4 mr-1" />
+                                  Add
+                                </Button>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <div className="text-center py-6 text-gray-600">
+                        <p className="text-sm">
+                          No additional tours found for this operator in our database.
+                        </p>
+                        <p className="text-xs mt-2 text-gray-500">
+                          You can still add tours by pasting their URLs above.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Promoted Listings Section - Only show if wantsPromotion is true */}
+                {wantsPromotion && selectedTours.length >= 2 && operatorMatchResult.match && (
+                  <div className="mt-8 p-6 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 border-2 border-indigo-300 rounded-xl shadow-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
+                        <Sparkles className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900">Promote Your Tours for Top Placement</h3>
+                        <p className="text-sm text-gray-600">Optional - Get maximum visibility</p>
+                      </div>
+                    </div>
+                    <p className="text-sm text-gray-700 mb-4 bg-white/60 rounded-lg p-3 border border-indigo-200">
+                      <strong className="text-indigo-900">✨ Top placement guarantee:</strong> Promoted tours appear <strong>first on all pages</strong>, 
+                      before any other results, regardless of filters or sorting. Perfect for your best-selling tours!
+                    </p>
+                    
+                    <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Promotion Billing Cycle</label>
+                          <p className="text-xs text-gray-600">
+                            Matches your bundle plan ({billingCycle === 'annual' ? 'Annual' : 'Monthly'})
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-lg font-bold text-purple-600">
+                            {promotedBillingCycle === 'annual' ? '$19.99/month' : '$24.99/month'}
+                          </div>
+                          {promotedBillingCycle === 'annual' && (
+                            <div className="text-xs text-green-600 mt-1">Save $60/year</div>
+                          )}
+                        </div>
+                      </div>
+                      <p className="text-xs text-blue-700 mt-2">
+                        💡 To change billing cycle, go back to Step 1 and update your bundle plan
+                      </p>
+                    </div>
+
+                    <div className="space-y-3 max-h-64 overflow-y-auto">
+                      {selectedTours.map((productId) => {
+                        const verifiedTour = verifiedTours.find(v => v?.productId === productId);
+                        if (!verifiedTour) return null;
+                        
+                        const isPromoted = promotedTourIds.includes(productId);
+                        
+                        return (
+                          <label
+                            key={productId}
+                            className="flex items-start gap-3 p-3 bg-white rounded-lg border-2 cursor-pointer transition-all hover:border-purple-300"
+                            style={{
+                              borderColor: isPromoted ? '#9333ea' : '#e5e7eb',
+                              backgroundColor: isPromoted ? '#faf5ff' : 'white'
+                            }}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={isPromoted}
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  setPromotedTourIds([...promotedTourIds, productId]);
+                                } else {
+                                  setPromotedTourIds(promotedTourIds.filter(id => id !== productId));
+                                }
+                              }}
+                              className="mt-1 w-5 h-5 text-purple-600 rounded"
+                            />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                <span className="font-medium text-sm text-gray-900 truncate">
+                                  {verifiedTour.title}
+                                </span>
+                                {isPromoted && (
+                                  <Badge className="bg-purple-600 text-white text-xs">
+                                    <Sparkles className="w-3 h-3 mr-1" />
+                                    Promoted
+                                  </Badge>
+                                )}
+                              </div>
+                              <div className="text-xs text-gray-600">
+                                {promotedBillingCycle === 'annual' ? '$19.99/month' : '$24.99/month'} per tour
+                              </div>
+                            </div>
+                          </label>
+                        );
+                      })}
+                    </div>
+
+                    {promotedTourIds.length > 0 && (
+                      <div className="mt-4 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg border-2 border-purple-300 shadow-md">
+                        <div className="flex items-center gap-2 mb-3">
+                          <Sparkles className="w-5 h-5 text-purple-600" />
+                          <span className="font-bold text-gray-900">Promotion Summary</span>
+                        </div>
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="text-sm font-medium text-gray-700">
+                            {promotedTourIds.length} tour{promotedTourIds.length !== 1 ? 's' : ''} selected for promotion
+                          </span>
+                          <span className="text-xl font-bold text-purple-600">
+                            {promotedBillingCycle === 'annual' 
+                              ? `$${(promotedTourIds.length * 19.99).toFixed(2)}/month`
+                              : `$${(promotedTourIds.length * 24.99).toFixed(2)}/month`
+                            }
+                          </span>
+                        </div>
+                        {promotedBillingCycle === 'annual' && (
+                          <div className="text-xs text-gray-600 text-right mb-2">
+                            ${(promotedTourIds.length * 239.88).toFixed(2)} billed annually
+                          </div>
+                        )}
+                        <div className="text-xs text-purple-700 bg-white/60 rounded p-2 border border-purple-200">
+                          ✓ These tours will appear <strong>first on all pages</strong>, before any other results
+                        </div>
+                      </div>
+                    )}
+                    
+                    {promotedTourIds.length === 0 && (
+                      <div className="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200 text-center">
+                        <p className="text-xs text-gray-600">
+                          💡 <strong>Tip:</strong> Select tours above to promote them for top placement
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
                 
                 <div className="flex justify-between mt-8">
                   <Button
-                    onClick={() => setStep(2)}
+                    onClick={() => setStep(1)}
                     variant="outline"
                   >
+                    <ArrowRight className="w-4 h-4 mr-1 rotate-180" />
                     Back
                   </Button>
                   <Button
@@ -1393,34 +2025,96 @@ function TourOperatorsPartnerPageContent() {
               )}
 
               {/* Summary */}
-              <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+              <div className="bg-gray-50 rounded-xl p-6 space-y-4">
+                <h4 className="font-semibold text-gray-900 text-lg mb-4">Order Summary</h4>
+                
+                {/* Bundle Plan */}
+                <div className="space-y-2 pb-3 border-b border-gray-200">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Plan</span>
+                    <span className="text-gray-600 font-medium">Bundle Plan</span>
                   <span className="font-medium text-gray-900">
-                    {tourPackage === '5-tours' ? '5 Tours' : '15 Tours'} - {billingCycle === 'annual' ? 'Yearly' : 'Monthly'} Premium
+                      {tourPackage === '5-tours' ? '5 Tours' : '15 Tours'} - {billingCycle === 'annual' ? 'Annual' : 'Monthly'} Premium
                   </span>
                 </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-gray-500">Tours Selected</span>
+                    <span className="text-gray-700">{selectedTours.length} tour{selectedTours.length !== 1 ? 's' : ''}</span>
+                  </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Tours Selected</span>
-                  <span className="font-medium text-gray-900">{selectedTours.length} tour{selectedTours.length !== 1 ? 's' : ''}</span>
+                    <span className="text-gray-600">Bundle Cost</span>
+                    <span className="font-medium text-gray-900">
+                      {billingCycle === 'annual' 
+                        ? `$${tourPackage === '5-tours' ? '4.99' : '9.99'}/month ($${tourPackage === '5-tours' ? '59.88' : '119.88'}/year)`
+                        : `$${tourPackage === '5-tours' ? '7.99' : '12.99'}/month`
+                      }
+                    </span>
+                  </div>
                 </div>
                 
-                <hr className="border-gray-200" />
+                {/* Promotion (if selected) */}
+                {promotedTourIds.length > 0 && (
+                  <div className="space-y-2 pb-3 border-b border-gray-200">
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-600 font-medium flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-purple-600" />
+                        Promoted Listings
+                      </span>
+                      <span className="font-medium text-gray-900">
+                        {promotedTourIds.length} tour{promotedTourIds.length !== 1 ? 's' : ''} ({promotedBillingCycle === 'annual' ? 'Annual' : 'Monthly'})
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-600">Promotion Cost</span>
+                      <span className="font-medium text-purple-700">
+                        {promotedBillingCycle === 'annual' 
+                          ? `$${(promotedTourIds.length * 19.99).toFixed(2)}/month ($${(promotedTourIds.length * 239.88).toFixed(2)}/year)`
+                          : `$${(promotedTourIds.length * 24.99).toFixed(2)}/month`
+                        }
+                      </span>
+                    </div>
+                  </div>
+                )}
                 
-                <div className="flex justify-between items-center text-lg">
-                  <span className="font-semibold text-gray-900">Total</span>
+                {/* Total */}
+                <div className="flex justify-between items-center pt-2">
+                  <span className="font-bold text-lg text-gray-900">Total</span>
                   <div className="text-right">
-                    {billingCycle === 'annual' ? (
-                      <>
-                        <span className="font-bold text-gray-900">
-                          ${tourPackage === '5-tours' ? '59.88' : '119.88'}/year
-                        </span>
-                        <p className="text-xs text-green-600">
-                          Only {tourPackage === '5-tours' ? '$4.99' : '$9.99'}/month
-                        </p>
-                      </>
-                    ) : (
-                      <span className="font-bold text-gray-900">{getPrice()}/month</span>
+                    <div className="font-bold text-xl text-gray-900">
+                      {(() => {
+                        const bundleMonthly = billingCycle === 'annual' 
+                          ? (tourPackage === '5-tours' ? 4.99 : 9.99)
+                          : (tourPackage === '5-tours' ? 7.99 : 12.99);
+                        const promotionMonthly = promotedTourIds.length > 0
+                          ? (promotedBillingCycle === 'annual' 
+                              ? (promotedTourIds.length * 19.99)
+                              : (promotedTourIds.length * 24.99))
+                          : 0;
+                        const totalMonthly = bundleMonthly + promotionMonthly;
+                        
+                        if (billingCycle === 'annual' && promotedBillingCycle === 'annual') {
+                          const bundleYearly = tourPackage === '5-tours' ? 59.88 : 119.88;
+                          const promotionYearly = promotedTourIds.length * 239.88;
+                          const totalYearly = bundleYearly + promotionYearly;
+                          return `$${totalYearly.toFixed(2)}/year`;
+                        } else {
+                          return `$${totalMonthly.toFixed(2)}/month`;
+                        }
+                      })()}
+                    </div>
+                    {(billingCycle === 'annual' || (promotedTourIds.length > 0 && promotedBillingCycle === 'annual')) && (
+                      <p className="text-sm text-gray-600 mt-1">
+                        {(() => {
+                          const bundleMonthly = billingCycle === 'annual' 
+                            ? (tourPackage === '5-tours' ? 4.99 : 9.99)
+                            : (tourPackage === '5-tours' ? 7.99 : 12.99);
+                          const promotionMonthly = promotedTourIds.length > 0
+                            ? (promotedBillingCycle === 'annual' 
+                                ? (promotedTourIds.length * 19.99)
+                                : (promotedTourIds.length * 24.99))
+                            : 0;
+                          return `$${(bundleMonthly + promotionMonthly).toFixed(2)}/month equivalent`;
+                        })()}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -1430,13 +2124,16 @@ function TourOperatorsPartnerPageContent() {
               {selectedTours.length > 0 && (
                 <div className="bg-gray-50 rounded-xl p-4">
                   <h4 className="font-semibold text-gray-900 mb-3">Selected Tours</h4>
-                  <div className="space-y-2 max-h-64 overflow-y-auto">
+                  <div className="space-y-3 max-h-64 overflow-y-auto">
                     {selectedTours.map((productId) => {
                       const verifiedTour = verifiedTours.find(v => v?.productId === productId);
+                      const isPromoted = promotedTourIds.includes(productId);
                       if (!verifiedTour) return null;
                       
                       return (
-                        <div key={productId} className="flex items-start gap-3 p-2 bg-white rounded-lg border border-gray-200">
+                        <div key={productId} className={`flex items-start gap-3 p-3 bg-white rounded-lg border-2 transition-all ${
+                          isPromoted ? 'border-purple-300 bg-purple-50' : 'border-gray-200'
+                        }`}>
                           {verifiedTour.imageUrl && (
                             <img
                               src={verifiedTour.imageUrl}
@@ -1445,7 +2142,15 @@ function TourOperatorsPartnerPageContent() {
                             />
                           )}
                           <div className="flex-1 min-w-0">
-                            <h5 className="text-sm font-medium text-gray-900 truncate">{verifiedTour.title}</h5>
+                            <div className="flex items-start justify-between gap-2 mb-1">
+                              <h5 className="font-medium text-gray-900 text-sm line-clamp-2 flex-1">{verifiedTour.title}</h5>
+                              {isPromoted && (
+                                <Badge className="bg-purple-600 text-white text-xs flex-shrink-0 flex items-center gap-1">
+                                  <Sparkles className="w-3 h-3" />
+                                  Promoted
+                                </Badge>
+                              )}
+                            </div>
                             <div className="flex items-center gap-2 mt-1 text-xs text-gray-600">
                               {verifiedTour.rating > 0 && (
                                 <>
@@ -1531,14 +2236,14 @@ function TourOperatorsPartnerPageContent() {
                 <CheckCircle2 className="w-16 h-16 text-green-600 mx-auto mb-4" />
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Payment Successful!</h2>
                 <p className="text-gray-600 mb-6">
-                  Your tour operator premium subscription is now active! You can manage your subscription and tours in your account profile.
+                  Your subscription has been activated. You can see it in your profile.
                 </p>
                 <div className="flex gap-4 justify-center">
                   <Button
                     onClick={() => router.push('/profile')}
                     variant="outline"
                   >
-                    View Profile
+                    View My Account
                   </Button>
                   <Button
                     onClick={() => router.push('/')}
@@ -1552,6 +2257,32 @@ function TourOperatorsPartnerPageContent() {
           </motion.div>
           )}
       </main>
+
+      {/* Sticky CTA Button - Only show on step 0 (landing page) */}
+      {step === 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 100 }}
+          className="fixed bottom-6 right-6 z-50"
+        >
+          <Button
+            onClick={() => {
+              if (!user) {
+                sessionStorage.setItem('tourOperatorStep', '1');
+                router.push(`/auth?redirect=${encodeURIComponent('/partners/tour-operators')}`);
+                return;
+              }
+              setStep(1);
+            }}
+            size="lg"
+            className="sunset-gradient text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
+          >
+            <span>Promote your tours now</span>
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
+        </motion.div>
+      )}
       
       <FooterNext />
     </div>

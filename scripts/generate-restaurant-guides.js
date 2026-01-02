@@ -286,7 +286,7 @@ TASK: Create a comprehensive, SEO-optimized restaurant guide following this EXAC
   - Creates excitement while being informative
   - Includes at least 2-3 long-tail keyword variations naturally\`,
   seo: {
-    title: '${category.name} in ${destination.fullName || destination.name} 2025 | Top Rated Dining Guide',
+    title: '${category.name} in ${destination.fullName || destination.name} 2026 | Top Rated Dining Guide',
     description: 'Discover the best ${category.name.toLowerCase()} in ${destination.fullName || destination.name}. 20+ top-rated restaurants with 4.5+ star ratings. Find your perfect dining experience!',
     keywords: '${keywordPatterns.slice(0, 8).join(', ')}, ${destination.fullName || destination.name} restaurants, dining ${destination.fullName || destination.name}, where to eat ${destination.fullName || destination.name}, ${destination.fullName || destination.name} dining guide'
   },

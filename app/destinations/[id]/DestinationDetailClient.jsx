@@ -34,6 +34,7 @@ import {
   getDefaultPreferences 
 } from '@/lib/tourMatching';
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
+import { resolveUserPreferences } from '@/lib/preferenceResolution';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { extractRestaurantStructuredValues, calculateRestaurantPreferenceMatch } from '@/lib/restaurantMatching';
 import RestaurantMatchModal from '@/components/restaurant/RestaurantMatchModal';
@@ -72,7 +73,7 @@ function getDisplayCategoryName(categoryName) {
 }
 
 
-export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], hardcodedTours = {}, restaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [], categoryGuides: categoryGuidesProp = [] }) {
+export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], promotedTours = [], promotedRestaurants = [], hardcodedTours = {}, restaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [], categoryGuides: categoryGuidesProp = [] }) {
   
   // Ensure destination exists
   if (!destination) {
@@ -101,6 +102,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
   // Ensure arrays are safe
   const safeTrendingTours = Array.isArray(trendingTours) ? trendingTours : [];
   const safeTrendingRestaurants = Array.isArray(trendingRestaurants) ? trendingRestaurants : [];
+  const safePromotedTours = Array.isArray(promotedTours) ? promotedTours : [];
+  const safePromotedRestaurants = Array.isArray(promotedRestaurants) ? promotedRestaurants : [];
   const safeHardcodedTours = hardcodedTours && typeof hardcodedTours === 'object' ? hardcodedTours : {};
 
   // Debug: Log destination data (remove in production)
@@ -287,8 +290,22 @@ export default function DestinationDetailClient({ destination, promotionScores =
         map.set(r.id, match);
       } catch {}
     });
+    
+    // Also calculate match scores for promoted restaurants
+    if (Array.isArray(safePromotedRestaurants)) {
+      safePromotedRestaurants.forEach((r) => {
+        try {
+          const values = extractRestaurantStructuredValues(r);
+          if (values?.error) return;
+          const match = calculateRestaurantPreferenceMatch(pseudoUserPreferences, values, r);
+          if (match?.error) return;
+          map.set(r.id, match);
+        } catch {}
+      });
+    }
+    
     return map;
-  }, [safeRestaurants, localRestaurantPreferences]);
+  }, [safeRestaurants, safePromotedRestaurants, localRestaurantPreferences]);
   
   // Filter out invalid guides and ensure all required fields exist
   // Must be declared before useEffect that uses it
@@ -322,8 +339,12 @@ export default function DestinationDetailClient({ destination, promotionScores =
           }
         } else {
           // Load from localStorage for anonymous users
+          // Check both keys for backward compatibility
           try {
-            const stored = localStorage.getItem('tourPreferences');
+            let stored = localStorage.getItem('topTours_preferences');
+            if (!stored) {
+              stored = localStorage.getItem('tourPreferences');
+            }
             if (stored) {
               setUserPreferences(JSON.parse(stored));
             }
@@ -346,9 +367,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
     if (loadingPreferences) return;
     
     const calculateScores = async () => {
-      // Pass raw preferences - calculateEnhancedMatchScore converts them internally
-      // If no preferences, pass null and it will default to balanced (50) for all dimensions
-      const rawPreferences = userPreferences || null;
+      // Use unified preference resolution - ensures consistent match scores across all pages
+      const rawPreferences = resolveUserPreferences({ user, userPreferences, localPreferences: null });
       const scores = {};
       
       // Calculate scores for trending tours (async)
@@ -368,6 +388,34 @@ export default function DestinationDetailClient({ destination, promotionScores =
       
       const trendingResults = await Promise.all(trendingPromises);
       trendingResults.forEach(result => {
+        if (result) {
+          scores[result.productId] = result.matchScore;
+        }
+      });
+      
+      // Calculate scores for promoted tours (async)
+      const promotedPromises = safePromotedTours
+        .filter(t => {
+          // Only calculate for tours with full data (title/productContent)
+          return t.title || t.productContent || t.seo || t.productName;
+        })
+        .map(async (tour) => {
+          const productId = getTourProductId(tour) || tour.product_id || tour.productId || tour.productCode;
+          if (!productId || scores[productId]) return null;
+          try {
+            // Use enhanced matching with full tour object
+            const tags = Array.isArray(tour.tags) ? tour.tags : [];
+            const tourProfile = await calculateTourProfile(tags);
+            const matchScore = await calculateEnhancedMatchScore(tour, rawPreferences, tourProfile);
+            return { productId, matchScore };
+          } catch (e) {
+            // Ignore errors for individual tours
+            return null;
+          }
+        });
+      
+      const promotedResults = await Promise.all(promotedPromises);
+      promotedResults.forEach(result => {
         if (result) {
           scores[result.productId] = result.matchScore;
         }
@@ -402,7 +450,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
     };
     
     calculateScores();
-  }, [safeTrendingTours, tours.all, userPreferences, loadingPreferences]);
+  }, [safeTrendingTours, safePromotedTours, tours.all, userPreferences, loadingPreferences]);
   
   // Reset carousel index when guides change or become empty
   useEffect(() => {
@@ -1039,7 +1087,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="bg-white border-0 shadow-sm h-full">
+                    <Card className="bg-blue-50/50 border-0 shadow-sm h-full">
                       <CardContent className="p-4 sm:p-5">
                         <div className="flex items-start gap-3">
                           <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -1076,7 +1124,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="bg-white border-0 shadow-sm h-full">
+                    <Card className="bg-purple-50/50 border-0 shadow-sm h-full">
                       <CardContent className="p-4 sm:p-5">
                         <div className="flex items-start gap-3">
                           <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -1173,6 +1221,240 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </section>
         )}
 
+
+        {/* Promoted Listings Section - Above Main Grid */}
+        {((safePromotedTours && safePromotedTours.length > 0) || (safePromotedRestaurants && safePromotedRestaurants.length > 0)) && (
+          <section className="py-12 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center gap-2 mb-6">
+                <Sparkles className="w-5 h-5 text-purple-600" />
+                <h2 className="text-2xl font-bold text-gray-900">Promoted Listings in {safeDestination.fullName || safeDestination.name}</h2>
+                <Badge variant="secondary" className="ml-2 bg-purple-100 text-purple-700 border-purple-300">
+                  Partner
+                </Badge>
+              </div>
+              <p className="text-sm text-gray-600 mb-6">
+                Featured tours and restaurants from our partner operators.
+              </p>
+
+              {/* Promoted Tours */}
+              {safePromotedTours && safePromotedTours.length > 0 && (() => {
+                // Check if promoted tours have full tour data (from server-side fetch)
+                // If they have title/productContent, they're full tour objects
+                // Otherwise, try to match with tours.all
+                const hasFullTourData = safePromotedTours.some(t => 
+                  t.title || t.productContent || t.seo || t.productName
+                );
+                
+                let promotedToursToDisplay = [];
+                
+                if (hasFullTourData) {
+                  // Use full tour data directly (like trending tours)
+                  promotedToursToDisplay = safePromotedTours
+                    .filter(t => {
+                      const productId = t.product_id || t.productId || t.productCode;
+                      return productId && (t.title || t.productContent || t.seo || t.productName);
+                    })
+                    .slice(0, 6);
+                } else if (tours.all && tours.all.length > 0) {
+                  // Fallback: Match promoted product IDs with actual tour data from tours.all
+                  const promotedProductIds = new Set(safePromotedTours.map(t => t.product_id || t.productId || t.productCode).filter(Boolean));
+                  promotedToursToDisplay = tours.all.filter(tour => {
+                    const tourId = getTourProductId(tour);
+                    return tourId && promotedProductIds.has(tourId);
+                  }).slice(0, 6);
+                }
+
+                if (promotedToursToDisplay.length === 0) return null;
+
+                return (
+                  <div className="mb-8">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Promoted Tours</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {promotedToursToDisplay.map((tour, index) => {
+                        const productId = getTourProductId(tour) || tour.product_id || tour.productId || tour.productCode;
+                        if (!productId) return null;
+                        
+                        // Try multiple product ID formats to find match score
+                        const matchScore = matchScores[productId] || 
+                                          matchScores[tour.productId] || 
+                                          matchScores[tour.productCode] || 
+                                          matchScores[tour.product_id] ||
+                                          null;
+                        
+                        return (
+                          <motion.div
+                            key={productId || index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                          >
+                            <TourCard
+                              tour={tour}
+                              destination={safeDestination}
+                              matchScore={matchScore}
+                              user={user}
+                              userPreferences={userPreferences}
+                              onOpenPreferences={() => setShowPreferencesModal(true)}
+                              isFeatured={false}
+                              premiumOperatorTourIds={[]}
+                              isPromoted={true}
+                            />
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {/* Promoted Restaurants */}
+              {safePromotedRestaurants && safePromotedRestaurants.length > 0 && (() => {
+                const promotedRestaurantsToDisplay = safePromotedRestaurants.slice(0, 6);
+
+                if (promotedRestaurantsToDisplay.length === 0) return null;
+
+                return (
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="text-xl font-semibold text-gray-800">Promoted Restaurants</h3>
+                      <button
+                        type="button"
+                        onClick={() => setShowRestaurantPreferencesModal(true)}
+                        className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-lg hover:border-purple-300 hover:shadow-sm transition-all"
+                        title="Set your dining preferences for match scores"
+                      >
+                        <Sparkles className="w-4 h-4 text-purple-600" />
+                        <span className="text-sm font-semibold text-gray-900">Match to Your Taste</span>
+                        <span className="text-[10px] font-medium bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">
+                          AI driven
+                        </span>
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {promotedRestaurantsToDisplay.map((restaurant, index) => {
+                        const restaurantId = restaurant.id;
+                        if (!restaurantId) return null;
+                        
+                        const restaurantUrl = restaurant.slug && safeDestination.id
+                          ? `/destinations/${safeDestination.id}/restaurants/${restaurant.slug}`
+                          : `/destinations/${safeDestination.id}/restaurants`;
+                        
+                        const description = restaurant.metaDescription 
+                          || restaurant.tagline 
+                          || restaurant.summary 
+                          || restaurant.description
+                          || (restaurant.cuisines?.length > 0 
+                              ? `Discover ${restaurant.cuisines.join(' & ')} cuisine at ${restaurant.name}.`
+                              : `Experience great dining at ${restaurant.name}.`);
+                        
+                        // Get match score
+                        const matchScore = restaurantMatchById.get(restaurantId)?.matchScore ?? 0;
+                        
+                        // Get cuisine for badge
+                        const validCuisines = restaurant.cuisines && Array.isArray(restaurant.cuisines)
+                          ? restaurant.cuisines.filter(c => c && 
+                              c.toLowerCase() !== 'restaurant' && 
+                              c.toLowerCase() !== 'food' &&
+                              c.trim().length > 0)
+                          : [];
+                        const cuisineBadge = validCuisines.length > 0 ? validCuisines[0] : 'Restaurant';
+                        
+                        return (
+                          <motion.div
+                            key={restaurantId || index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: index * 0.05 }}
+                            viewport={{ once: true }}
+                          >
+                            <Card className={`h-full border bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-purple-500 shadow-purple-200/50`}>
+                              <CardContent className="p-6 flex flex-col h-full">
+                                <div className="flex items-center justify-between gap-3 mb-3">
+                                  <div className="flex items-center gap-3 min-w-0">
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+                                      <UtensilsCrossed className="w-5 h-5 text-white" />
+                                    </div>
+                                    <div className="flex items-center gap-2 min-w-0">
+                                      <Badge className="ocean-gradient text-white text-xs flex-shrink-0">
+                                        <Sparkles className="w-3 h-3 mr-1" />
+                                        Promoted
+                                      </Badge>
+                                      <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 truncate">
+                                        {cuisineBadge}
+                                      </span>
+                                    </div>
+                                  </div>
+
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setSelectedRestaurant(restaurant);
+                                      setShowRestaurantMatchModal(true);
+                                    }}
+                                    className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 flex-shrink-0"
+                                    title="Click to see why this matches your taste"
+                                  >
+                                    <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+                                    <span className="text-xs font-bold text-gray-900">
+                                      {matchScore}%
+                                    </span>
+                                    <span className="text-[10px] text-gray-600">Match</span>
+                                  </button>
+                                </div>
+                                
+                                <div className="flex items-start justify-between gap-2 mb-3">
+                                  <h3 className="text-lg font-bold text-gray-900 line-clamp-2 flex items-center gap-1.5">
+                                    {restaurant.name}
+                                    {(premiumRestaurantIds.includes(restaurant.id) || premiumRestaurantIds.includes(Number(restaurant.id))) && (
+                                      <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Featured Restaurant" />
+                                    )}
+                                  </h3>
+                                </div>
+
+                                <p className="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
+                                  {description}
+                                </p>
+
+                                <div className="flex flex-wrap gap-2 mb-4">
+                                  {restaurant.ratings?.googleRating && (
+                                    <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
+                                      <Star className="w-3 h-3" />
+                                      {restaurant.ratings.googleRating.toFixed(1)}
+                                    </span>
+                                  )}
+                                  {restaurant.pricing?.priceRange && (
+                                    <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
+                                      {restaurant.pricing.priceRange}
+                                    </span>
+                                  )}
+                                  {validCuisines.length > 0 && (
+                                    <span className="inline-flex items-center text-xs font-medium bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full">
+                                      {validCuisines.slice(0, 2).join(' · ')}
+                                    </span>
+                                  )}
+                                </div>
+
+                                <Link
+                                  href={restaurantUrl}
+                                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
+                                >
+                                  View Restaurant
+                                  <ArrowRight className="w-4 h-4" />
+                                </Link>
+                              </CardContent>
+                            </Card>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })()}
+            </div>
+          </section>
+        )}
 
         {/* Popular Tours & Activities */}
         <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
@@ -1899,8 +2181,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     </p>
                     <div className="bg-white rounded-lg p-4">
                       <h4 className="font-semibold text-gray-800 mb-2">Best Hotel Deals in {safeDestination.fullName}</h4>
-                      <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers on Expedia USA.</p>
-                      <Button variant="outline" className="w-full flex items-center justify-center gap-2" onClick={() => window.open(`https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk`, '_blank')}>
+                      <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers on Trivago USA.</p>
+                      <Button variant="outline" className="w-full flex items-center justify-center gap-2" onClick={() => window.open(`https://tidd.ly/4snW11u`, '_blank')}>
                         Find Hotel Deals
                         <ExternalLink className="w-4 h-4" />
                       </Button>
@@ -2305,6 +2587,291 @@ export default function DestinationDetailClient({ destination, promotionScores =
           url={typeof window !== 'undefined' ? window.location.href : ''}
           title={`Discover ${safeDestination.fullName} - Top Tours & Restaurants`}
         />
+      )}
+      
+      {/* Match to Your Style Modal (Tour Preferences) */}
+      {showPreferencesModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setShowPreferencesModal(false)}>
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="sticky top-0 bg-white border-b px-4 py-3 flex items-center justify-between z-10">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-purple-600" />
+                <h2 className="text-lg font-bold text-gray-900">Match to Your Style</h2>
+              </div>
+              <button
+                onClick={() => setShowPreferencesModal(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X className="w-5 h-5 text-gray-600" />
+              </button>
+            </div>
+            
+            <div className="p-4 space-y-4">
+              {/* Adventure Level */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">🔥 Adventure Level</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '😌', desc: 'Relaxed' },
+                    { value: 50, label: '⚖️', desc: 'Balanced' },
+                    { value: 75, label: '🔥', desc: 'Adventurous' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setLocalPreferences(prev => ({ ...prev, adventureLevel: option.value }))}
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.adventureLevel || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.adventureLevel || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Relaxation vs Exploration */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">🌊 Relaxation vs Exploration</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '😌', desc: 'Relax' },
+                    { value: 50, label: '⚖️', desc: 'Balanced' },
+                    { value: 75, label: '🔍', desc: 'Explore' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setLocalPreferences(prev => ({ ...prev, cultureVsBeach: option.value }))}
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.cultureVsBeach || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.cultureVsBeach || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Group Size */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">👥 Group Size</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '👥', desc: 'Big Groups' },
+                    { value: 50, label: '⚖️', desc: 'Either Way' },
+                    { value: 75, label: '🧑‍🤝‍🧑', desc: 'Private/Small' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setLocalPreferences(prev => ({ ...prev, groupPreference: option.value }))}
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.groupPreference || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.groupPreference || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Budget vs Comfort */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">💰 Budget vs Comfort</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '💰', desc: 'Budget' },
+                    { value: 50, label: '⚖️', desc: 'Balanced' },
+                    { value: 75, label: '✨', desc: 'Comfort' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setLocalPreferences(prev => ({ ...prev, budgetComfort: option.value }))}
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.budgetComfort || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.budgetComfort || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Guided vs Independent */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">📋 Guided vs Independent</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '🕰️', desc: 'Independent' },
+                    { value: 50, label: '⚖️', desc: 'Mixed' },
+                    { value: 75, label: '📋', desc: 'Guided' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setLocalPreferences(prev => ({ ...prev, structurePreference: option.value }))}
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.structurePreference || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.structurePreference || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Food & Drink */}
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-2">🍷 Food & Drink Interest</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 25, label: '🍽️', desc: 'Not Important' },
+                    { value: 50, label: '⚖️', desc: 'Nice to Have' },
+                    { value: 75, label: '🍷', desc: 'Very Important' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setLocalPreferences(prev => ({ ...prev, foodAndDrinkInterest: option.value }))}
+                      className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                        (localPreferences?.foodAndDrinkInterest || 50) === option.value
+                          ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
+                      }`}
+                    >
+                      <div className="text-lg mb-0.5">{option.label}</div>
+                      <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
+                      {(localPreferences?.foodAndDrinkInterest || 50) === option.value && (
+                        <div className="absolute top-1 right-1">
+                          <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-[8px]">✓</span>
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              <p className="text-xs text-gray-500 text-center pt-2">
+                Match scores update instantly as you select preferences
+              </p>
+
+              <div className="pt-4 mt-2 border-t flex flex-col gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <Button
+                    variant="ghost"
+                    className="w-full text-gray-600 hover:text-gray-900"
+                    onClick={() =>
+                      setLocalPreferences({
+                        adventureLevel: 50,
+                        cultureVsBeach: 50,
+                        groupPreference: 50,
+                        budgetComfort: 50,
+                        structurePreference: 50,
+                        foodAndDrinkInterest: 50,
+                      })
+                    }
+                    title="Reset to defaults"
+                  >
+                    Reset
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={() => setShowPreferencesModal(false)}
+                  >
+                    Done
+                  </Button>
+                  <Button
+                    className="w-full min-w-0 h-auto py-2 sunset-gradient text-white whitespace-normal break-words leading-tight text-xs"
+                    onClick={async () => {
+                      if (!user) {
+                        router.push('/auth?redirect=' + encodeURIComponent(window.location.pathname));
+                        return;
+                      }
+                      try {
+                        const { error } = await supabase
+                          .from('profiles')
+                          .update({ trip_preferences: localPreferences })
+                          .eq('id', user.id);
+                        if (error) throw error;
+                        toast({
+                          title: 'Preferences saved',
+                          description: 'Your tour preferences have been saved to your profile.',
+                        });
+                        setShowPreferencesModal(false);
+                      } catch (error) {
+                        toast({
+                          title: 'Error',
+                          description: error.message || 'Failed to save preferences.',
+                          variant: 'destructive',
+                        });
+                      }
+                    }}
+                  >
+                    {user ? 'Save to Profile' : 'Create account to save'}
+                  </Button>
+                </div>
+                <p className="text-[11px] text-gray-500 text-center">
+                  Your preferences are saved on this device automatically.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
       
       {/* Restaurant Match Modal */}

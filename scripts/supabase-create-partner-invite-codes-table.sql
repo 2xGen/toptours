@@ -4,7 +4,7 @@
 
 CREATE TABLE IF NOT EXISTS partner_invite_codes (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  code TEXT UNIQUE NOT NULL, -- e.g., "PARTNER2025-ABC123"
+  code TEXT UNIQUE NOT NULL, -- e.g., "PARTNER2026-ABC123"
   type TEXT NOT NULL CHECK (type IN ('tour_operator', 'restaurant')),
   duration_months INTEGER NOT NULL CHECK (duration_months IN (1, 3)),
   max_tours INTEGER DEFAULT 15, -- For tour operators only (null for restaurants)

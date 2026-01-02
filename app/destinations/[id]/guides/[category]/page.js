@@ -590,8 +590,8 @@ export default async function CategoryGuidePage({ params }) {
             url: 'https://toptours.ai/logo.png',
           },
         },
-        datePublished: '2025-10-10',
-        dateModified: '2025-10-10',
+        datePublished: '2025-12-31',
+        dateModified: '2025-12-31',
       },
       {
         '@type': 'FAQPage',

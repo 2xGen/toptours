@@ -231,14 +231,61 @@ export default async function RestaurantPage({ params }) {
     console.error('Error fetching category guides:', error);
   }
 
+  // Generate breadcrumb schema for SEO
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://toptours.ai"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Destinations",
+        "item": "https://toptours.ai/destinations"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": destination.fullName || destination.name,
+        "item": `https://toptours.ai/destinations/${destination.id}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Restaurants",
+        "item": `https://toptours.ai/destinations/${destination.id}/restaurants`
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": restaurant.name || restaurant.title || 'Restaurant',
+        "item": `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`
+      }
+    ]
+  };
+
   return (
-    <RestaurantDetailClient
-      destination={destination}
-      restaurant={restaurant}
-      otherRestaurants={otherRestaurants}
-      initialPromotionScore={initialPromotionScore}
-      premiumSubscription={premiumSubscription}
-      categoryGuides={categoryGuides}
-    />
+    <>
+      {/* BreadcrumbList Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema)
+        }}
+      />
+      <RestaurantDetailClient
+        destination={destination}
+        restaurant={restaurant}
+        otherRestaurants={otherRestaurants}
+        initialPromotionScore={initialPromotionScore}
+        premiumSubscription={premiumSubscription}
+        categoryGuides={categoryGuides}
+      />
+    </>
   );
 }

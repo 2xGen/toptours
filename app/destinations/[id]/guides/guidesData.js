@@ -15,7 +15,7 @@ export const categoryGuides = {
       introduction: `There's nothing quite like watching the Caribbean sun dip below the horizon from the deck of a catamaran, cocktail in hand and the turquoise waters of Aruba surrounding you. Aruba sunset cruises offer the perfect blend of relaxation, adventure, and romance, making them one of the island's most sought-after experiences. Whether you're celebrating a special occasion, looking for a romantic evening, or simply want to experience Aruba's legendary sunsets from the water, these cruises provide an unforgettable way to end your day in paradise.`,
 
       seo: {
-        title: 'Aruba Sunset Cruises 2025: Best Tours, Prices & Booking Guide',
+        title: 'Aruba Sunset Cruises 2026: Best Tours, Prices & Booking Guide',
         description: 'Book the best sunset cruises in Aruba. Compare 20+ catamaran tours, private charters & party boats. From $45/person with open bar & snorkeling. Expert tips & reviews.',
         keywords: 'Aruba sunset cruise, Aruba catamaran sunset, Aruba sunset tour, Aruba boat sunset, sunset sailing Aruba, Aruba evening cruise, romantic sunset cruise Aruba, Aruba sunset catamaran tour',
       },
@@ -167,7 +167,7 @@ export const categoryGuides = {
       introduction: `Experience Aruba like never before with an exhilarating ATV adventure across the island's wild and rugged terrain. Beyond the pristine beaches and resort areas lies a dramatic landscape of desert plains, rocky coastlines, and hidden natural pools waiting to be explored. ATV tours offer the perfect combination of adrenaline-pumping excitement and natural beauty, taking you to remote locations that most tourists never see. Whether you're seeking adventure, stunning photo opportunities, or a unique way to explore Aruba's diverse ecosystems, an ATV tour delivers an unforgettable off-road experience.`,
 
       seo: {
-        title: 'Aruba ATV Tours 2025: Best Off-Road Adventures & Natural Pool Excursions',
+        title: 'Aruba ATV Tours 2026: Best Off-Road Adventures & Natural Pool Excursions',
         description: 'Book the best ATV tours in Aruba. Explore desert landscapes, visit Natural Pool, and discover hidden beaches. From $85/person with gear included. Expert guides & top safety.',
         keywords: 'Aruba ATV tours, Aruba off-road adventure, Aruba Natural Pool ATV, Aruba UTV tours, Aruba quad biking, Aruba desert tours, Arikok National Park ATV, Aruba beach ATV tour',
       },
@@ -321,7 +321,7 @@ export const categoryGuides = {
       introduction: `Beneath Aruba's turquoise waters lies an underwater paradise teeming with marine life, vibrant coral reefs, and historic shipwrecks. With year-round warm waters averaging 80°F (27°C) and visibility often exceeding 100 feet, Aruba offers some of the Caribbean's best snorkeling conditions. From the famous Antilla shipwreck to pristine coral gardens at Mangel Halto Beach, snorkeling tours provide access to the island's most spectacular underwater sites. Whether you're a first-time snorkeler or experienced diver, Aruba's calm, clear waters and abundant marine life create perfect conditions for discovering the island's hidden underwater treasures.`,
 
       seo: {
-        title: 'Aruba Snorkeling Tours 2025: Best Reefs, Shipwrecks & Beaches',
+        title: 'Aruba Snorkeling Tours 2026: Best Reefs, Shipwrecks & Beaches',
         description: 'Discover the best snorkeling in Aruba. Explore shipwrecks, coral reefs, and tropical fish. From $40/person with gear included. Beginner-friendly tours with expert guides.',
         keywords: 'Aruba snorkeling tours, Aruba snorkeling beaches, Antilla shipwreck snorkel, Aruba coral reefs, Mangel Halto snorkeling, Aruba boat snorkeling, Boca Catalina snorkel, Aruba sea turtles',
       },
@@ -475,7 +475,7 @@ export const categoryGuides = {
       introduction: `Beyond Aruba's stunning beaches lies a rich tapestry of culture, history, and local traditions waiting to be discovered. From the iconic California Lighthouse and historic Alto Vista Chapel to colorful Oranjestad architecture and authentic countryside villages, cultural tours offer a deeper understanding of what makes Aruba unique. Learn about the island's indigenous Arawak heritage, Dutch colonial influence, and contemporary Caribbean culture while visiting landmarks like the Natural Bridge ruins, Casibari Rock Formations, and local aloe plantations. Whether exploring historic sites, tasting traditional cuisine, or meeting local artisans, cultural tours provide an authentic connection to Aruba's soul beyond the resort experience.`,
 
       seo: {
-        title: 'Aruba Cultural Tours 2025: History, Landmarks & Heritage Experiences',
+        title: 'Aruba Cultural Tours 2026: History, Landmarks & Heritage Experiences',
         description: 'Explore Aruba\'s culture and history. Visit California Lighthouse, Alto Vista Chapel, and local landmarks. From $55/person. Expert guides share island heritage & traditions.',
         keywords: 'Aruba cultural tours, Aruba history tours, California Lighthouse Aruba, Alto Vista Chapel, Aruba landmarks tour, Oranjestad tour, Aruba heritage, Aruba island tour',
       },
@@ -629,7 +629,7 @@ export const categoryGuides = {
       introduction: `Experience the magic of Aruba from the water aboard spacious, modern catamarans designed for comfort and adventure. Catamaran sailing offers the perfect blend of relaxation, excitement, and natural beauty as you glide across crystal-clear Caribbean waters. From morning snorkel excursions to romantic sunset sails, catamaran tours provide stable, comfortable platforms for exploring Aruba's coastline, discovering underwater wonders, and enjoying tropical drinks with the wind in your hair. With open bars, expert crews, and multiple departure times, catamaran sailing represents one of Aruba's most popular and enjoyable ways to experience the island's stunning marine environment while creating unforgettable memories.`,
 
       seo: {
-        title: 'Aruba Catamaran Sailing 2025: Sunset Cruises, Snorkel Tours & Charters',
+        title: 'Aruba Catamaran Sailing 2026: Sunset Cruises, Snorkel Tours & Charters',
         description: 'Book the best catamaran tours in Aruba. Sunset sails, snorkeling excursions & private charters. From $59/person with open bar. Spacious, stable boats & expert crews.',
         keywords: 'Aruba catamaran tours, Aruba sunset sail, Aruba catamaran cruise, Aruba sailing tours, catamaran snorkel Aruba, Aruba boat tours, private catamaran charter Aruba',
       },
@@ -783,7 +783,7 @@ export const categoryGuides = {
       introduction: `Experience Aruba's wild side from the comfort of rugged 4x4 Jeeps designed to conquer the island's most challenging terrain. Jeep off-road tours take you deep into Arikok National Park, across rocky desert landscapes, and to remote natural wonders like the famous Natural Pool (Conchi) and hidden cave pools. With professional drivers navigating the rough trails, you can relax and enjoy the adventure while discovering pristine beaches, dramatic cliff formations, and stunning panoramic views. Whether traveling solo or with family, Jeep tours offer a perfect blend of excitement, natural beauty, and comfort, providing access to Aruba's most spectacular locations without the physical demands of ATV riding.`,
 
       seo: {
-        title: 'Aruba Jeep Off-Road Tours 2025: Natural Pool, Safari & 4x4 Adventures',
+        title: 'Aruba Jeep Off-Road Tours 2026: Natural Pool, Safari & 4x4 Adventures',
         description: 'Book the best Jeep tours in Aruba. Visit Natural Pool, explore Arikok National Park & discover hidden beaches. From $90/person. Expert drivers & comfortable 4x4 vehicles.',
         keywords: 'Aruba Jeep tours, Aruba 4x4 safari, Aruba Natural Pool Jeep, Aruba off-road tours, Arikok National Park Jeep, Aruba UTV tours, Aruba island safari, Aruba adventure tours',
       },
@@ -939,7 +939,7 @@ export const categoryGuides = {
       introduction: `Antigua and Barbuda boasts 365 beaches - one for every day of the year - each offering unique beauty and character. From the world-famous pink sands of Barbuda to the calm turquoise waters of Dickenson Bay, beach tours provide access to the islands' most spectacular coastal treasures. Whether you're seeking pristine snorkeling, romantic sunset views, or simply the perfect spot to relax under swaying palms, beach-hopping tours showcase the best of Caribbean paradise. With expert guides sharing local knowledge and hidden gems, these tours transform beach exploration into unforgettable adventures through some of the world's most beautiful coastlines.`,
 
       seo: {
-        title: 'Antigua and Barbuda Beach Tours 2025: Pink Sand Beach & Island Hopping',
+        title: 'Antigua and Barbuda Beach Tours 2026: Pink Sand Beach & Island Hopping',
         description: 'Explore 365 stunning beaches in Antigua and Barbuda. Visit Pink Sand Beach, Dickenson Bay & hidden coves. From $44/person. Paradise awaits!',
         keywords: 'Antigua beach tours, Barbuda Pink Sand Beach, Antigua island hopping, Dickenson Bay Antigua, Antigua beaches, Barbuda beaches, Caribbean beach tours',
       },
@@ -1093,7 +1093,7 @@ export const categoryGuides = {
       introduction: `Antigua and Barbuda is sailing paradise - home to Antigua Sailing Week, one of the Caribbean's most prestigious regattas, and blessed with steady trade winds and protected harbors. Sailing tours showcase why this nation is beloved by sailors worldwide, offering everything from relaxed catamaran cruises to exhilarating racing experiences. Explore remote coves, uninhabited islands, and historic harbors while learning about the islands' rich maritime heritage. Whether you're an experienced sailor or first-timer, the calm Caribbean waters and expert crews create perfect conditions for unforgettable sailing adventures.`,
 
       seo: {
-        title: 'Antigua and Barbuda Sailing Tours 2025: Catamaran Cruises & Yacht Charters',
+        title: 'Antigua and Barbuda Sailing Tours 2026: Catamaran Cruises & Yacht Charters',
         description: 'Sail the Caribbean\'s premier yachting destination. Catamaran cruises, yacht charters & island hopping. From $80/person. Expert crews & luxury boats.',
         keywords: 'Antigua sailing tours, Barbuda sailing, Antigua catamaran cruise, yacht charter Antigua, Antigua Sailing Week, Caribbean sailing, English Harbour sailing',
       },
@@ -1247,7 +1247,7 @@ export const categoryGuides = {
       introduction: `Antigua and Barbuda's history comes alive through remarkably preserved colonial architecture, fortifications, and naval heritage. Nelson's Dockyard, a UNESCO World Heritage site, stands as the only continuously working Georgian dockyard in the world. Historical tours take you through centuries of Caribbean history - from indigenous settlements and colonial conflicts to the age of sail and sugar plantations. Visit Shirley Heights for panoramic views and Sunday sunset parties, explore Betty's Hope plantation ruins, and walk in Admiral Nelson's footsteps. Expert guides bring the past to life with fascinating stories of naval battles, colonial life, and the journey to independence.`,
 
       seo: {
-        title: 'Antigua Historical Tours 2025: Nelson\'s Dockyard & Heritage Sites',
+        title: 'Antigua Historical Tours 2026: Nelson\'s Dockyard & Heritage Sites',
         description: 'Explore Antigua\'s rich history. Visit Nelson\'s Dockyard UNESCO site, Shirley Heights & colonial landmarks. From $69/person. Expert historical guides.',
         keywords: 'Antigua historical tours, Nelson\'s Dockyard, Shirley Heights Antigua, English Harbour, Betty\'s Hope, Antigua heritage, UNESCO World Heritage Antigua',
       },
@@ -1401,7 +1401,7 @@ export const categoryGuides = {
       introduction: `Antigua and Barbuda's calm bays and steady trade winds create ideal conditions for every type of water sport imaginable. From adrenaline-pumping jet ski tours around the coastline to peaceful kayaking through mangroves, the islands offer water adventures for all skill levels and preferences. The consistent winds make Antigua a kitesurfing and windsurfing hotspot, while protected lagoons provide perfect paddleboarding conditions. Whether you're seeking high-octane thrills or gentle water exploration, professional instructors and pristine conditions ensure safe, exhilarating experiences. Discover the islands from a unique perspective while enjoying the warm Caribbean waters and stunning tropical scenery.`,
 
       seo: {
-        title: 'Antigua Water Sports 2025: Kitesurfing, Jet Ski & Paddleboard Tours',
+        title: 'Antigua Water Sports 2026: Kitesurfing, Jet Ski & Paddleboard Tours',
         description: 'Experience the best water sports in Antigua and Barbuda. Kitesurfing, jet skiing, kayaking & more. From $44/person. Perfect conditions year-round!',
         keywords: 'Antigua water sports, Antigua kitesurfing, jet ski tours Antigua, paddleboard Antigua, kayaking Antigua, windsurfing Antigua, water activities Antigua',
       },
@@ -1555,7 +1555,7 @@ export const categoryGuides = {
       introduction: `Beyond beaches and sailing, Antigua and Barbuda offer heart-pounding adventures for thrill-seekers and nature enthusiasts. Soar through rainforest canopies on ziplines, explore rugged terrain on eco-tours, and discover the islands from breathtaking aerial perspectives. Adventure tours combine natural beauty with exciting activities, from hiking through tropical forests to exploring coastal caves and remote wilderness areas. Whether you're seeking adrenaline rushes, unique perspectives, or active exploration, these adventures showcase Antigua's wild side and create memories that go far beyond typical beach vacations.`,
 
       seo: {
-        title: 'Antigua Adventure Tours 2025: Zipline, Hiking & Aerial Experiences',
+        title: 'Antigua Adventure Tours 2026: Zipline, Hiking & Aerial Experiences',
         description: 'Discover thrilling adventures in Antigua and Barbuda. Ziplines, helicopter tours, hiking & eco-adventures. From $30/person. Professional guides & safety first.',
         keywords: 'Antigua adventure tours, Antigua zipline, rainforest tour Antigua, helicopter tour Antigua, eco tours Antigua, hiking Antigua, adventure activities',
       },
@@ -1709,7 +1709,7 @@ export const categoryGuides = {
       introduction: `Experience the heart and soul of Antigua and Barbuda through authentic cultural encounters that reveal the islands' rich traditions, vibrant communities, and warm hospitality. Cultural tours go beyond tourist attractions, introducing you to local artisans, traditional cuisine, lively markets, and village life. Learn about Caribbean music, taste authentic dishes, visit craft workshops, and engage with locals who share their heritage with pride. From rum distillery tours to cooking classes featuring local ingredients, these immersive experiences provide genuine connections to Antiguan and Barbudan culture, creating meaningful memories and deeper understanding of island life.`,
 
       seo: {
-        title: 'Antigua Cultural Tours 2025: Local Experiences & Caribbean Traditions',
+        title: 'Antigua Cultural Tours 2026: Local Experiences & Caribbean Traditions',
         description: 'Discover authentic Antigua culture. Local cuisine, craft workshops, markets & village tours. From $35/person. Genuine Caribbean experiences with locals.',
         keywords: 'Antigua cultural tours, Antigua local experiences, Antigua food tours, Caribbean culture Antigua, Antigua markets, authentic Antigua, Antigua rum tour',
       },
@@ -1865,7 +1865,7 @@ export const categoryGuides = {
       introduction: `Barbados is the Caribbean's premier surfing destination, home to the legendary Soup Bowl - one of the world's most consistent and challenging reef breaks. The island's Atlantic east coast delivers powerful waves year-round, while the calmer west coast offers perfect conditions for beginners. From professional surf camps to casual lessons, Barbados welcomes surfers of all levels with warm water, consistent swells, and a vibrant surf culture. Whether you're chasing big barrels at Bathsheba or learning your first pop-up at Freights Bay, professional instructors and quality equipment ensure safe, exhilarating experiences riding Caribbean waves.`,
 
       seo: {
-        title: 'Barbados Surfing Tours 2025: Soup Bowl Lessons & East Coast Waves',
+        title: 'Barbados Surfing Tours 2026: Soup Bowl Lessons & East Coast Waves',
         description: 'Learn to surf in Barbados. World-class breaks, professional instruction & equipment. From $36/person. Soup Bowl, Bathsheba & beginner spots.',
         keywords: 'Barbados surfing, Soup Bowl surfing, Bathsheba surf, Barbados surf lessons, Caribbean surfing, Barbados surf camp, east coast surfing Barbados',
       },
@@ -2019,7 +2019,7 @@ export const categoryGuides = {
       introduction: `Barbados offers one of the Caribbean's richest cultural tapestries, with Bridgetown and its Garrison designated as a UNESCO World Heritage Site. Cultural heritage tours reveal the island's fascinating blend of British colonial elegance and vibrant Bajan traditions. Explore colorful chattel houses, historic plantations, local markets bursting with island flavors, and communities where traditional crafts thrive. Learn about Barbados' unique position as one of the Caribbean's longest continuously British colonies and how that shaped its distinct culture. From rum shop culture to gourmet dining, cricket passion to carnival celebrations, these tours provide authentic insights into what makes Barbados truly special.`,
 
       seo: {
-        title: 'Barbados Cultural Tours 2025: UNESCO Sites & Bajan Heritage',
+        title: 'Barbados Cultural Tours 2026: UNESCO Sites & Bajan Heritage',
         description: 'Experience authentic Bajan culture. UNESCO Bridgetown, plantations, local markets & traditions. From $24/person. Cultural immersion with expert guides.',
         keywords: 'Barbados cultural tours, Bridgetown UNESCO, Bajan culture, Barbados heritage, chattel houses Barbados, Barbados plantation tours, Barbados markets',
       },
@@ -2173,7 +2173,7 @@ export const categoryGuides = {
       introduction: `Barbados is the birthplace of rum, and its distilleries tell centuries of Caribbean history through golden spirits. From Mount Gay, the world's oldest commercial rum distillery established in 1703, to boutique producers crafting small-batch artisanal rums, distillery tours offer fascinating insights into rum-making traditions. Learn the entire production process from sugarcane to bottle, taste premium aged rums, and discover why Barbados rum is considered among the world's finest. These immersive experiences blend history, craftsmanship, and of course, delicious sampling, making them essential for spirit enthusiasts and cultural explorers alike.`,
 
       seo: {
-        title: 'Barbados Rum Tours 2025: Mount Gay Distillery & Tasting Experiences',
+        title: 'Barbados Rum Tours 2026: Mount Gay Distillery & Tasting Experiences',
         description: 'Visit Barbados rum distilleries. Mount Gay tours, tastings & rum history. From $45/person. World\'s oldest rum distillery & premium spirits.',
         keywords: 'Barbados rum tours, Mount Gay distillery, Barbados rum tasting, rum distillery tour Barbados, Mount Gay rum, Foursquare distillery, Barbados spirits',
       },
@@ -2327,7 +2327,7 @@ export const categoryGuides = {
       introduction: `Experience Barbados from the water aboard spacious, stable catamarans that combine luxury, adventure, and relaxation. Catamaran cruises along the platinum west coast offer swimming with sea turtles, snorkeling vibrant reefs, exploring shipwrecks, and enjoying open bars as you sail past pristine beaches. From lively party cruises with music and dancing to intimate sunset sails, catamarans provide comfortable platforms for Caribbean adventures. Professional crews ensure safety while delivering exceptional service, making these tours perfect for families, couples, and groups seeking memorable water experiences without the seasickness concerns of smaller boats.`,
 
       seo: {
-        title: 'Barbados Catamaran Cruises 2025: Turtle Tours & Sunset Sails',
+        title: 'Barbados Catamaran Cruises 2026: Turtle Tours & Sunset Sails',
         description: 'Sail Barbados on luxury catamarans. Swim with turtles, snorkel reefs & watch sunsets. From $85/person with open bar. Premium west coast cruises.',
         keywords: 'Barbados catamaran tours, swim with turtles Barbados, Barbados sunset cruise, catamaran cruise Barbados, west coast sailing, Barbados boat tours',
       },
@@ -2481,7 +2481,7 @@ export const categoryGuides = {
       introduction: `Barbados' crystal-clear waters and thriving marine ecosystems create snorkeling paradise for explorers of all ages. The calm west coast features colorful coral reefs, fascinating shipwrecks, and resident sea turtle populations, while marine reserves protect diverse fish species and underwater landscapes. From shore-accessible sites like Folkestone Marine Park to boat-accessed shipwrecks, snorkeling tours reveal the vibrant underwater world that makes Barbados special. Professional guides lead you to the best locations, provide quality equipment, and share knowledge about marine life, ensuring safe, memorable encounters with Caribbean sea creatures in their natural habitat.`,
 
       seo: {
-        title: 'Barbados Snorkeling Tours 2025: Turtles, Reefs & Shipwrecks',
+        title: 'Barbados Snorkeling Tours 2026: Turtles, Reefs & Shipwrecks',
         description: 'Discover the best snorkeling in Barbados. Swim with turtles, explore shipwrecks & coral reefs. From $35/person. Beginner-friendly with expert guides.',
         keywords: 'Barbados snorkeling tours, swim with turtles Barbados, Carlisle Bay snorkeling, Barbados shipwreck snorkel, Folkestone Marine Park, Barbados reefs',
       },
@@ -2635,7 +2635,7 @@ export const categoryGuides = {
       introduction: `Barbados boasts one of the Caribbean's richest colonial histories, with remarkably preserved architecture, fortifications, and heritage sites. Historical tours explore the UNESCO-listed Bridgetown and Garrison, revealing 17th-19th century British naval and colonial heritage. Visit historic plantation great houses like St. Nicholas Abbey and Sunbury, explore the Garrison Savannah where British military regiments once drilled, and discover how sugar, slavery, and naval power shaped the island. Expert historians bring centuries to life through engaging narratives of colonial governors, African heritage, independence struggles, and modern Barbados, providing context that deepens appreciation for this unique Caribbean nation.`,
 
       seo: {
-        title: 'Barbados Historical Tours 2025: UNESCO Bridgetown & Colonial Heritage',
+        title: 'Barbados Historical Tours 2026: UNESCO Bridgetown & Colonial Heritage',
         description: 'Explore Barbados history. UNESCO Bridgetown, Garrison, plantations & colonial landmarks. From $24/person. Expert historical guides & heritage sites.',
         keywords: 'Barbados historical tours, Bridgetown UNESCO, Garrison Savannah, St. Nicholas Abbey, Sunbury Plantation, Barbados history, colonial Barbados',
       },
@@ -2791,7 +2791,7 @@ export const categoryGuides = {
       introduction: `Bonaire is globally recognized as the Caribbean's diving mecca - a pristine underwater paradise where coral reefs remain protected and healthy. With over 80 marked dive sites accessible from shore, crystal-clear waters averaging 80°F, and a commitment to marine conservation, Bonaire offers diving experiences that rival the world's best. From the famous Hilma Hooker shipwreck to vibrant coral walls teeming with sea turtles, eagle rays, and tropical fish, every dive reveals spectacular marine biodiversity. Whether you're earning your first certification or exploring as an experienced diver, Bonaire's easy shore diving, professional dive operators, and protected marine park create ideal conditions for underwater adventures.`,
 
       seo: {
-        title: 'Bonaire Diving Tours 2025: Shore Diving Paradise & Coral Reefs',
+        title: 'Bonaire Diving Tours 2026: Shore Diving Paradise & Coral Reefs',
         description: 'Dive Bonaire\'s pristine reefs. 80+ shore dive sites, Hilma Hooker wreck & marine park. From $59/person. World-class diving with expert guides.',
         keywords: 'Bonaire diving, shore diving Bonaire, Bonaire dive sites, Hilma Hooker wreck, Bonaire marine park diving, Bonaire PADI, Klein Bonaire diving',
       },
@@ -2945,7 +2945,7 @@ export const categoryGuides = {
       introduction: `Bonaire's protected marine park offers snorkeling as spectacular as its world-famous diving. With over 50 shore-accessible snorkeling sites, calm waters, and pristine coral reefs starting just feet from the beach, snorkelers enjoy the same healthy ecosystems that attract divers worldwide. Swim alongside sea turtles, explore vibrant coral gardens, and discover the underwater beauty that made Bonaire a pioneer in marine conservation. From the famous 1000 Steps to the tranquil shores of Lac Bay, snorkeling tours and independent exploration reveal why Bonaire ranks among the Caribbean's best destinations for underwater adventure accessible to all ages and skill levels.`,
 
       seo: {
-        title: 'Bonaire Snorkeling Tours 2025: Reefs, Turtles & Marine Park',
+        title: 'Bonaire Snorkeling Tours 2026: Reefs, Turtles & Marine Park',
         description: 'Snorkel Bonaire\'s pristine reefs. 50+ shore sites, sea turtles & coral gardens. From $59/person. Protected marine park with crystal-clear waters.',
         keywords: 'Bonaire snorkeling, Bonaire snorkel tours, Klein Bonaire snorkel, Bonaire sea turtles, 1000 Steps Bonaire, Lac Bay snorkeling, Bonaire marine park',
       },
@@ -3099,7 +3099,7 @@ export const categoryGuides = {
       introduction: `Bonaire National Marine Park, established in 1979, protects the island's entire coastline and surrounding waters - one of the Caribbean's most successful marine conservation stories. Marine park tours provide educational insights into reef ecology, conservation initiatives, and the delicate balance sustaining Bonaire's underwater paradise. Learn about coral restoration projects, sustainable tourism practices, and marine species protection while exploring pristine ecosystems. From glass-bottom boat tours for non-swimmers to guided snorkel eco-tours with marine biologists, these experiences reveal why Bonaire's commitment to conservation has created such spectacular results visible both above and below the water.`,
 
       seo: {
-        title: 'Bonaire Marine Park Tours 2025: Eco Tours & Conservation Experiences',
+        title: 'Bonaire Marine Park Tours 2026: Eco Tours & Conservation Experiences',
         description: 'Explore Bonaire National Marine Park. Eco-tours, glass-bottom boats & conservation education. From $49/person. Protected Caribbean reef ecosystem.',
         keywords: 'Bonaire Marine Park, Bonaire eco tours, marine conservation Bonaire, glass-bottom boat Bonaire, reef conservation, Bonaire marine life tours',
       },
@@ -3253,7 +3253,7 @@ export const categoryGuides = {
       introduction: `While Bonaire is famous for diving, its beaches offer unique Caribbean beauty from flamingo-dotted salt pans to tranquil white-sand shores perfect for relaxation. Beach tours showcase the island's diverse coastal landscapes - from the protected calm waters of Lac Bay ideal for families to the dramatic east coast scenery at Boka Slagbaai. Unlike crowded Caribbean destinations, Bonaire's beaches remain pristine and uncrowded, offering authentic tropical paradise experiences. Whether seeking perfect snorkeling, windsurfing lagoons, or simply peaceful beach time with stunning natural surroundings, beach tours reveal the island's coastal treasures beyond the underwater world.`,
 
       seo: {
-        title: 'Bonaire Beach Tours 2025: Flamingo Beach & Hidden Coves',
+        title: 'Bonaire Beach Tours 2026: Flamingo Beach & Hidden Coves',
         description: 'Discover Bonaire\'s pristine beaches. Lac Bay, flamingo shores & secluded coves. From $38/person. Uncrowded Caribbean paradise beaches.',
         keywords: 'Bonaire beaches, Lac Bay Bonaire, No Name Beach, Bonaire flamingo beach, Klein Bonaire beaches, Sorobon Beach, Bonaire beach tours',
       },
@@ -3407,7 +3407,7 @@ export const categoryGuides = {
       introduction: `Beyond its underwater fame, Bonaire offers diverse land and water adventures for active travelers. From world-class windsurfing at Lac Bay to mountain biking through Washington Slagbaai National Park, adventure tours showcase the island's rugged beauty and pristine wilderness. Kayak through mangrove forests, explore dramatic coastlines by bike, or windsurf in perfect conditions that attract athletes worldwide. Bonaire's compact size, varied terrain, and commitment to nature preservation create ideal settings for eco-adventures. Whether seeking adrenaline rushes or peaceful nature exploration, professional guides and quality equipment ensure safe, exhilarating experiences discovering Bonaire's wild side beyond the beaches and reefs.`,
 
       seo: {
-        title: 'Bonaire Adventure Tours 2025: Windsurfing, Kayaking & Nature Exploration',
+        title: 'Bonaire Adventure Tours 2026: Windsurfing, Kayaking & Nature Exploration',
         description: 'Discover Bonaire adventures. Windsurfing, kayaking, mountain biking & eco-tours. From $59/person. Pristine wilderness & water sports paradise.',
         keywords: 'Bonaire adventure tours, Lac Bay windsurfing, Bonaire kayaking, mountain biking Bonaire, Washington Slagbaai, Bonaire eco adventures, mangrove kayak',
       },
@@ -3561,7 +3561,7 @@ export const categoryGuides = {
       introduction: `Bonaire's commitment to conservation extends beyond marine protection to encompass the entire island ecosystem. Nature tours reveal diverse landscapes from flamingo-filled salt pans to cacti-studded desert terrain in Washington Slagbaai National Park. Explore mangrove forests vital to coastal health, spot exotic birds, encounter wild iguanas and donkeys, and discover unique flora adapted to arid Caribbean climate. Expert naturalist guides share insights about indigenous species, ecological relationships, and conservation efforts preserving Bonaire's natural heritage. Whether birdwatching, hiking coastal trails, or exploring by 4x4, nature tours provide intimate connections with the island's wild beauty beyond the underwater world.`,
 
       seo: {
-        title: 'Bonaire Nature Tours 2025: Flamingos, National Park & Wildlife',
+        title: 'Bonaire Nature Tours 2026: Flamingos, National Park & Wildlife',
         description: 'Discover Bonaire\'s natural wonders. Flamingo viewing, Washington Slagbaai, mangroves & wildlife. From $49/person. Expert naturalist guides.',
         keywords: 'Bonaire nature tours, Washington Slagbaai National Park, Bonaire flamingos, Bonaire wildlife, mangrove tours Bonaire, Bonaire birdwatching, eco tours',
       },
@@ -3717,7 +3717,7 @@ export const categoryGuides = {
       introduction: `The British Virgin Islands are synonymous with world-class sailing - a tropical archipelago of 60+ islands blessed with steady trade winds, protected waters, and breathtaking anchorages. Sailing tours offer the quintessential BVI experience, gliding between pristine islands, discovering secluded bays, and enjoying the maritime heritage that has made these waters legendary among sailors worldwide. From day sails aboard luxury catamarans to multi-day yacht charters exploring hidden coves, the BVI's calm seas and short distances between islands create perfect sailing conditions. Whether you're an experienced sailor or first-timer, expert crews and spectacular scenery ensure unforgettable voyages through this Caribbean sailing paradise.`,
 
       seo: {
-        title: 'BVI Sailing Tours 2025: Yacht Charters & Catamaran Cruises',
+        title: 'BVI Sailing Tours 2026: Yacht Charters & Catamaran Cruises',
         description: 'Sail the British Virgin Islands. Day tours, yacht charters & island hopping. From $120/person. 60+ islands, perfect winds & expert crews.',
         keywords: 'BVI sailing tours, British Virgin Islands sailing, yacht charter BVI, catamaran cruise BVI, sailing vacations, The Moorings BVI, sailing paradise',
       },
@@ -3871,7 +3871,7 @@ export const categoryGuides = {
       introduction: `Island hopping in the British Virgin Islands offers the ultimate Caribbean adventure - visiting multiple paradisiacal islands, each with unique character and attractions, all in one unforgettable day. With 60+ islands scattered across crystal-clear waters, the BVI's compact geography allows exploring several destinations without long travel times. Experience the famous Baths on Virgin Gorda, sip Pain killers at Jost Van Dyke's legendary beach bars, snorkel pristine reefs, and discover hidden beaches accessible only by boat. Island hopping tours combine the best of Caribbean exploration - sailing, swimming, beach-bar culture, and natural wonders - creating diverse, activity-packed adventures showcasing why the BVI remains the world's premier tropical archipelago.`,
 
       seo: {
-        title: 'BVI Island Hopping Tours 2025: The Baths, Jost Van Dyke & More',
+        title: 'BVI Island Hopping Tours 2026: The Baths, Jost Van Dyke & More',
         description: 'Explore multiple BVI islands in one day. Visit The Baths, Soggy Dollar Bar & pristine beaches. From $100/person. Ultimate island adventure.',
         keywords: 'BVI island hopping, British Virgin Islands day tours, The Baths tour, Jost Van Dyke tours, Virgin Gorda tours, multi-island tours BVI',
       },
@@ -4025,7 +4025,7 @@ export const categoryGuides = {
       introduction: `The British Virgin Islands showcase Caribbean beaches at their finest - pristine white sand, crystal-clear turquoise waters, and dramatic boulder formations creating postcard-perfect tropical scenery. Beach tours provide access to the archipelago's most spectacular shores, from the world-famous Baths on Virgin Gorda to the laid-back paradise of White Bay on Jost Van Dyke. With 60+ islands offering hundreds of beaches, each with unique character, beach hopping reveals the diversity that makes the BVI special. Whether seeking iconic photo opportunities, snorkeling paradise, or simply peaceful relaxation under swaying palms, professional guides lead you to the best beaches while sharing local knowledge and hidden gems.`,
 
       seo: {
-        title: 'BVI Beach Tours 2025: The Baths, White Bay & Island Beaches',
+        title: 'BVI Beach Tours 2026: The Baths, White Bay & Island Beaches',
         description: 'Explore British Virgin Islands beaches. The Baths, White Bay & pristine coves. From $90/person. World-class Caribbean beaches.',
         keywords: 'BVI beaches, The Baths Virgin Gorda, White Bay Jost Van Dyke, British Virgin Islands beaches, Cane Garden Bay, Smuggler\'s Cove, beach tours BVI',
       },
@@ -4179,7 +4179,7 @@ export const categoryGuides = {
       introduction: `The British Virgin Islands offer spectacular diving beyond the archipelago's famous sailing - from the legendary RMS Rhone shipwreck to pristine coral walls and unique underwater rock formations. With warm, clear waters and dive sites suitable for all certification levels, the BVI attracts divers seeking Caribbean beauty without the crowds of more developed destinations. Protected marine parks preserve healthy reefs teeming with tropical fish, sea turtles, and occasional sharks. Whether exploring historic wrecks, drift diving dramatic walls, or discovering coral gardens, professional dive operators and excellent conditions ensure safe, memorable underwater adventures revealing the BVI's spectacular marine world.`,
 
       seo: {
-        title: 'BVI Diving Tours 2025: RMS Rhone Wreck & Coral Reef Dives',
+        title: 'BVI Diving Tours 2026: RMS Rhone Wreck & Coral Reef Dives',
         description: 'Dive the British Virgin Islands. RMS Rhone shipwreck, coral walls & marine parks. From $100/person. World-class Caribbean diving.',
         keywords: 'BVI diving, RMS Rhone wreck, British Virgin Islands diving, wreck diving BVI, Virgin Gorda diving, Anegada diving, BVI dive sites',
       },
@@ -4333,7 +4333,7 @@ export const categoryGuides = {
       introduction: `The British Virgin Islands offer diverse adventures beyond sailing and beaches for active travelers seeking unique experiences. From kayaking through mangroves and hiking to panoramic viewpoints to kiteboarding and paddleboarding pristine waters, adventure tours showcase the archipelago's natural diversity. Explore the Caves at Norman Island where legend says pirates hid treasure, climb to mountaintop vistas revealing multiple islands, or try stand-up paddleboarding in calm Caribbean bays. With professional guides, quality equipment, and spectacular natural settings, BVI adventures combine physical activity with breathtaking scenery, creating active vacations that reveal the islands from perspectives most visitors never experience.`,
 
       seo: {
-        title: 'BVI Adventure Tours 2025: Kayaking, Hiking & Water Sports',
+        title: 'BVI Adventure Tours 2026: Kayaking, Hiking & Water Sports',
         description: 'Discover BVI adventures. Kayaking, paddleboarding, hiking & active tours. From $100/person. Experience islands actively!',
         keywords: 'BVI adventure tours, British Virgin Islands kayaking, BVI hiking, paddleboard BVI, Norman Island caves, adventure activities BVI',
       },
@@ -4487,7 +4487,7 @@ export const categoryGuides = {
       introduction: `Private and premium boat tours offer the ultimate BVI experience - complete flexibility to explore multiple islands at your own pace with luxury amenities and personalized service. From sleek powerboats zipping between destinations to spacious catamarans perfect for groups, boat charters provide exclusive access to the archipelago's best attractions without crowds or rigid schedules. Visit The Baths early before crowds, enjoy extended time at your favorite beaches, discover hidden snorkel spots, and create custom itineraries matching your interests. With expert captains handling navigation while you relax, eat gourmet meals, and sip cocktails, private boat tours deliver VIP Caribbean adventures showcasing the BVI in ultimate comfort and style.`,
 
       seo: {
-        title: 'BVI Private Boat Tours 2025: Luxury Charters & Custom Island Adventures',
+        title: 'BVI Private Boat Tours 2026: Luxury Charters & Custom Island Adventures',
         description: 'Private BVI boat tours. Custom island hopping, luxury powerboats & catamarans. From $200/person. VIP Caribbean experience.',
         keywords: 'BVI private boat tours, British Virgin Islands yacht charter, luxury boat BVI, custom island tours, private powerboat BVI, VIP boat charters',
       },
@@ -4643,7 +4643,7 @@ export const categoryGuides = {
       introduction: `The Cayman Islands rank among the world's top diving destinations with legendary sites like Stingray City, dramatic vertical walls plunging thousands of feet, and vibrant coral reefs in water clarity exceeding 100 feet. From swimming with friendly southern stingrays in shallow sand to exploring the famous USS Kittiwake wreck, Cayman diving offers diverse experiences for all certification levels. Protected marine parks, strict conservation regulations, and world-class dive operators ensure pristine underwater ecosystems. Whether you're earning your first certification in Grand Cayman or exploring Little Cayman's untouched Bloody Bay Wall, exceptional visibility, warm waters, and abundant marine life create unforgettable underwater adventures.`,
 
       seo: {
-        title: 'Cayman Islands Diving 2025: Stingray City & World-Class Reef Dives',
+        title: 'Cayman Islands Diving 2026: Stingray City & World-Class Reef Dives',
         description: 'Dive the Cayman Islands. Stingray City, USS Kittiwake wreck & coral walls. From $75/person. Crystal-clear water & expert dive operators.',
         keywords: 'Cayman Islands diving, Stingray City dive, USS Kittiwake wreck, Grand Cayman diving, Little Cayman diving, Bloody Bay Wall, Cayman dive sites',
       },
@@ -4797,7 +4797,7 @@ export const categoryGuides = {
       introduction: `The Cayman Islands boast some of the Caribbean's most beautiful beaches, from the world-renowned Seven Mile Beach with its powder-soft white sand to hidden coves on Little Cayman offering complete seclusion. Beach tours showcase the archipelago's coastal diversity - calm turquoise waters perfect for families, dramatic East End coastline, and pristine shores where luxury meets natural beauty. Whether seeking the vibrant atmosphere of public beaches with water sports and beach bars or peaceful escapes to remote shores accessible only by boat, expert guides reveal the best coastal experiences. With year-round sunshine, warm waters, and postcard-perfect scenery, Cayman beach tours deliver quintessential tropical paradise.`,
 
       seo: {
-        title: 'Cayman Islands Beach Tours 2025: Seven Mile Beach & Island Shores',
+        title: 'Cayman Islands Beach Tours 2026: Seven Mile Beach & Island Shores',
         description: 'Explore Cayman Islands beaches. Seven Mile Beach, secluded coves & pristine shores. From $75/person. Caribbean beach paradise.',
         keywords: 'Cayman Islands beaches, Seven Mile Beach, Grand Cayman beaches, Cayman beach tours, Rum Point, Starfish Point, Little Cayman beaches',
       },
@@ -4951,7 +4951,7 @@ export const categoryGuides = {
       introduction: `Stingray City ranks among the Caribbean's most iconic attractions - a shallow sandbar in Grand Cayman's North Sound where dozens of gentle southern stingrays gather for magical close encounters. This world-famous experience allows swimming, snorkeling, and diving among friendly rays that glide gracefully around and over you in crystal-clear water. What began as accidental encounters with fishermen has become a must-do Cayman adventure, safe for all ages and creating unforgettable memories. Professional tour operators ensure safe interactions while educating about these fascinating creatures. Whether snorkeling in shallow sand or scuba diving deeper nearby sites, stingray encounters deliver bucket-list moments combining wildlife, natural beauty, and adventure.`,
 
       seo: {
-        title: 'Stingray City Tours 2025: Grand Cayman Stingray Encounters',
+        title: 'Stingray City Tours 2026: Grand Cayman Stingray Encounters',
         description: 'Visit Stingray City Grand Cayman. Swim with friendly stingrays in shallow sandbar. From $123/person. Bucket-list Caribbean experience.',
         keywords: 'Stingray City tours, Grand Cayman stingrays, Stingray City Cayman Islands, swim with stingrays, Cayman stingray sandbar, stingray encounters',
       },
@@ -5105,7 +5105,7 @@ export const categoryGuides = {
       introduction: `The Cayman Islands epitomize Caribbean luxury with world-class resorts, gourmet dining, and exclusive experiences befitting its reputation as the Caribbean's most sophisticated destination. Luxury tours elevate island exploration with private yacht charters, helicopter flights, VIP beach club access, and personalized service ensuring unforgettable indulgence. From sunset champagne cruises to private island picnics, upscale culinary experiences to exclusive dive sites, these premium adventures combine natural beauty with refined elegance. Whether celebrating special occasions or simply demanding the best, Cayman's luxury tourism infrastructure delivers five-star experiences against backdrops of pristine beaches, turquoise waters, and tropical perfection.`,
 
       seo: {
-        title: 'Cayman Islands Luxury Tours 2025: VIP Experiences & Private Charters',
+        title: 'Cayman Islands Luxury Tours 2026: VIP Experiences & Private Charters',
         description: 'Luxury Cayman Islands tours. Private yachts, helicopter flights & VIP experiences. From $75/person. Premium Caribbean adventures.',
         keywords: 'Cayman Islands luxury tours, private yacht Cayman, helicopter tour Cayman, VIP tours Cayman, luxury experiences, premium tours Cayman Islands',
       },
@@ -5259,7 +5259,7 @@ export const categoryGuides = {
       introduction: `Beyond relaxing beaches and diving, the Cayman Islands offer adrenaline-pumping adventures for active travelers seeking excitement. From jet ski tours around the island to kayaking through bioluminescent bays, parasailing high above Seven Mile Beach to kiteboarding in perfect conditions, adventure tours showcase Cayman's dynamic side. Explore mangrove ecosystems by kayak, zip across open water on jet skis, or try stand-up paddleboarding in calm Caribbean waters. With professional instruction, quality equipment, and stunning natural settings, Cayman adventures combine thrills with tropical beauty, creating active vacations that go far beyond typical beach relaxation while maintaining the safety and service standards the islands are known for.`,
 
       seo: {
-        title: 'Cayman Islands Adventure Tours 2025: Jet Ski, Kayak & Water Sports',
+        title: 'Cayman Islands Adventure Tours 2026: Jet Ski, Kayak & Water Sports',
         description: 'Discover Cayman adventures. Jet skiing, kayaking, parasailing & water sports. From $75/person. Thrilling Caribbean activities!',
         keywords: 'Cayman Islands adventure tours, jet ski Grand Cayman, kayaking Cayman, parasailing Cayman, water sports Cayman, bioluminescent bay Cayman',
       },
@@ -5413,7 +5413,7 @@ export const categoryGuides = {
       introduction: `The Cayman Islands' culture reflects unique heritage shaped by maritime traditions, African roots, British influence, and Caribbean warmth. Cultural tours reveal authentic Caymanian life beyond luxury resorts - visiting historic Pedro St. James, exploring George Town's colorful architecture, learning about turtle conservation, and experiencing local cuisine and crafts. Discover how these small islands developed into a sophisticated society while maintaining cultural identity and traditions. From rum cake factories to traditional thatch-weaving demonstrations, historic sites to local markets, cultural experiences provide deeper understanding and appreciation of Caymanian heritage, creating meaningful connections beyond typical tourist activities.`,
 
       seo: {
-        title: 'Cayman Islands Cultural Tours 2025: Heritage Sites & Local Experiences',
+        title: 'Cayman Islands Cultural Tours 2026: Heritage Sites & Local Experiences',
         description: 'Explore Cayman culture. Pedro St. James, local cuisine, heritage sites & traditions. From $95/person. Authentic Caymanian experiences.',
         keywords: 'Cayman Islands cultural tours, Pedro St. James, Caymanian culture, George Town tours, Cayman heritage, local experiences Cayman, Cayman history',
       },
@@ -5571,7 +5571,7 @@ export const categoryGuides = {
       introduction: `Curaçao is a world-renowned diving destination featuring over 65 pristine dive sites, dramatic drop-offs, vibrant coral gardens, and fascinating shipwrecks. The island's location outside the hurricane belt ensures year-round calm conditions with visibility often exceeding 100 feet. From the famous Mushroom Forest to the Blue Room cave, from shallow coral gardens perfect for beginners to challenging wall dives for experts, Curaçao's underwater realm showcases Caribbean marine life at its finest. Shore diving is exceptionally accessible with many spectacular sites just steps from the beach, while boat dives unlock remote locations and dramatic topography. Whether you're earning your certification or logging your 500th dive, Curaçao's warm waters, healthy reefs, and abundant marine life deliver unforgettable underwater adventures.`,
 
       seo: {
-        title: 'Curaçao Diving Tours 2025: Best Reef & Wreck Diving Sites',
+        title: 'Curaçao Diving Tours 2026: Best Reef & Wreck Diving Sites',
         description: 'World-class Curaçao diving tours. 65+ pristine sites, coral walls, shipwrecks. From $135. Perfect visibility year-round.',
         keywords: 'Curaçao diving, Curaçao scuba diving, best diving Curaçao, Mushroom Forest dive, Blue Room Curaçao, Curaçao dive sites',
       },
@@ -5723,7 +5723,7 @@ export const categoryGuides = {
       introduction: `Curaçao's exceptional snorkeling showcases pristine coral reefs teeming with tropical fish, graceful sea turtles, and vibrant marine ecosystems just steps from shore. The island's calm, crystal-clear waters provide perfect conditions for snorkelers of all ages and abilities. From famous spots like Playa Porto Mari and Cas Abao to hidden gems accessible only by boat, Curaçao offers diverse snorkel experiences. Shore snorkeling is remarkably accessible with many spectacular reefs located in shallow protected bays, while boat tours unlock remote locations and provide opportunities for multi-site exploration. Whether floating above colorful coral gardens, swimming with turtles, or exploring the underwater world for the first time, Curaçao's snorkeling adventures deliver unforgettable encounters with Caribbean marine life in warm, welcoming waters.`,
 
       seo: {
-        title: 'Curaçao Snorkeling Tours 2025: Best Beaches & Turtle Encounters',
+        title: 'Curaçao Snorkeling Tours 2026: Best Beaches & Turtle Encounters',
         description: 'Amazing Curaçao snorkeling. Coral reefs, sea turtles, tropical fish. From $100. Crystal-clear water and easy beach access.',
         keywords: 'Curaçao snorkeling, best snorkeling Curaçao, Playa Porto Mari, Cas Abao snorkeling, turtle snorkeling Curaçao',
       },
@@ -5875,7 +5875,7 @@ export const categoryGuides = {
       introduction: `Willemstad, Curaçao's colorful capital, is a UNESCO World Heritage Site showcasing stunning Dutch colonial architecture painted in vibrant Caribbean colors. Walking tours through historic neighborhoods of Punda and Otrobanda reveal centuries of fascinating history, from colonial trading posts to modern cultural fusion. Cross the famous floating Queen Emma Bridge, explore colonial fortifications, discover hidden courtyards, visit local markets, and admire the iconic colorful waterfront facades that make Willemstad one of the Caribbean's most photogenic cities. Expert local guides share stories of Jewish merchants, African heritage, Dutch colonialism, and the multicultural society that shapes modern Curaçao. Whether you're interested in architecture, history, photography, or simply soaking in Caribbean culture, Willemstad walking tours deliver intimate exploration of this charming, walkable capital.`,
 
       seo: {
-        title: 'Willemstad Walking Tours 2025: UNESCO Heritage & Colonial Architecture',
+        title: 'Willemstad Walking Tours 2026: UNESCO Heritage & Colonial Architecture',
         description: 'Explore colorful Willemstad. UNESCO heritage, Dutch architecture, historic Punda & Otrobanda. From $28. Expert local guides.',
         keywords: 'Willemstad walking tours, Curaçao city tours, Punda Otrobanda, Queen Emma Bridge, Willemstad history, Curaçao architecture',
       },
@@ -6027,7 +6027,7 @@ export const categoryGuides = {
       introduction: `Curaçao boasts over 35 spectacular beaches ranging from popular powder-white sand paradises to hidden rocky coves accessible only by foot or boat. Beach tours showcase the island's diverse coastal beauty, from family-friendly Mambo Beach with amenities to remote Playa Kenepa's dramatic cliffs and turquoise water. The island's location outside the hurricane belt ensures year-round sunshine and calm seas. Most beaches feature excellent snorkeling just offshore, while many offer beach clubs, water sports, and dining. Whether hopping between multiple beaches to find your perfect spot, relaxing at an all-inclusive beach club, or discovering secluded coves, Curaçao's beach tours deliver Caribbean paradise with Dutch efficiency and variety unmatched in the region. Crystal-clear water, vibrant coral reefs, and consistent sunshine make Curaçao a beach lover's dream destination.`,
 
       seo: {
-        title: 'Curaçao Beach Tours 2025: Best Beaches & Hidden Coves Guide',
+        title: 'Curaçao Beach Tours 2026: Best Beaches & Hidden Coves Guide',
         description: 'Explore 35+ stunning Curaçao beaches. White sand, turquoise water, snorkeling. From $32. Beach hopping tours.',
         keywords: 'Curaçao beaches, best beaches Curaçao, Cas Abao, Kenepa beach, Mambo Beach, Curaçao beach hopping',
       },
@@ -6179,7 +6179,7 @@ export const categoryGuides = {
       introduction: `Catamarans provide the ultimate way to experience Curaçao's stunning coastline, combining smooth sailing with snorkeling, swimming, and spectacular views of the island. These stable, spacious vessels offer comfortable sailing across calm Caribbean waters to pristine beaches, remote snorkel spots, and scenic coastal attractions. Whether choosing a daytime snorkel cruise visiting multiple locations, a romantic sunset sail with champagne, or a full-day adventure to Klein Curaçao, catamaran tours showcase the island's beauty from unique perspectives. Most cruises include open bars, snorkel equipment, and opportunities to swim in crystal-clear turquoise waters. With smaller group sizes than large tour boats and expert crews sharing local knowledge, catamaran cruises deliver memorable experiences exploring Curaçao's 35+ beaches, vibrant coral reefs, and dramatic coastal landscapes in comfort and style.`,
 
       seo: {
-        title: 'Curaçao Catamaran Cruises 2025: Sunset Sails & Snorkel Tours',
+        title: 'Curaçao Catamaran Cruises 2026: Sunset Sails & Snorkel Tours',
         description: 'Luxury Curaçao catamaran tours. Snorkeling, sunset sails, open bar. From $75. Explore coastline in style.',
         keywords: 'Curaçao catamaran, Curaçao sunset cruise, snorkel sail Curaçao, boat tours Curaçao, sailing Curaçao',
       },
@@ -6331,7 +6331,7 @@ export const categoryGuides = {
       introduction: `Curaçao's cultural heritage reflects a fascinating blend of Dutch colonial history, African roots, Jewish traditions, and Caribbean vibrancy. Cultural heritage tours explore this unique multicultural identity through UNESCO World Heritage sites, historic plantations, museums, traditional neighborhoods, and encounters with local customs. From Willemstad's colorful colonial architecture to centuries-old Jewish synagogues, from African-influenced Tumba music to authentic local cuisine, these tours reveal the rich tapestry of cultures that shaped modern Curaçao. Expert local guides share personal stories, historical context, and insider perspectives that bring the island's heritage to life. Whether exploring grand colonial estates, visiting working plantations, discovering indigenous Arawak history, or experiencing authentic neighborhood life, cultural tours provide deep understanding and appreciation of Curaçao's remarkable multicultural identity rarely found elsewhere in the Caribbean.`,
 
       seo: {
-        title: 'Curaçao Cultural Tours 2025: Heritage Sites & Local Traditions',
+        title: 'Curaçao Cultural Tours 2026: Heritage Sites & Local Traditions',
         description: 'Explore Curaçao culture. Dutch heritage, African roots, historic plantations. From $25. Expert local guides.',
         keywords: 'Curaçao cultural tours, Curaçao heritage, historic Curaçao, plantation tours Curaçao, Willemstad history',
       },
@@ -6486,7 +6486,7 @@ export const categoryGuides = {
       introduction: `Swimming with pigs in Exuma is one of the world's most unique and Instagram-worthy experiences. These friendly pigs live on uninhabited Big Major Cay (Pig Beach) and have become international celebrities, swimming out to greet boats and visitors. Tours range from quick encounters to full-day adventures combining pig swimming with snorkeling, shark encounters, and island hopping. The pigs are surprisingly good swimmers and incredibly photogenic, creating unforgettable memories as they paddle alongside you in crystal-clear Bahamian waters. Whether you choose a fast-track express tour, a luxury private charter, or a comprehensive island-hopping adventure, swimming with these famous pigs is an absolute must-do Exuma experience. Most tours include transportation, guidance on proper pig interaction, and opportunities to feed these adorable animals while respecting their natural habitat.`,
 
       seo: {
-        title: 'Exuma Swimming Pigs Tours 2025: Best Pig Beach Boat Trips',
+        title: 'Exuma Swimming Pigs Tours 2026: Best Pig Beach Boat Trips',
         description: 'Famous Exuma swimming pigs tours. Visit Big Major Cay Pig Beach. From $69. Boat tours, feeding, photos.',
         keywords: 'Exuma swimming pigs, Pig Beach Exuma, swimming pigs tours, Big Major Cay, Exuma pigs boat tour',
       },
@@ -6637,7 +6637,7 @@ export const categoryGuides = {
       introduction: `Exuma boat tours provide the ultimate way to explore the stunning 365 cays of this Bahamian paradise. Powerboat adventures whisk you between turquoise waters visiting famous swimming pigs, Thunderball Grotto, nurse sharks, iguanas, pristine beaches, and hidden sandbars. These comprehensive tours combine multiple top attractions in single adventures, maximizing your Exuma experience. Whether aboard sleek powerboats, luxury yachts, or catamaran charters, boat tours offer access to remote locations unreachable by land. Most tours include snorkeling equipment, lunch, drinks, and expert guides sharing local knowledge. From action-packed powerboat rides to leisurely yacht cruises, from shared adventures to exclusive private charters, Exuma boat tours deliver unforgettable experiences exploring one of the world's most beautiful island chains with crystal-clear water, vibrant marine life, and picture-perfect beaches.`,
 
       seo: {
-        title: 'Exuma Boat Tours 2025: Powerboat Island Hopping Adventures',
+        title: 'Exuma Boat Tours 2026: Powerboat Island Hopping Adventures',
         description: 'Exciting Exuma boat tours. Island hopping, swimming pigs, snorkeling, sharks. From $329. Full-day adventures.',
         keywords: 'Exuma boat tours, Exuma powerboat tours, Exuma island hopping, Exuma yacht charter, Exuma Cays tours',
       },
@@ -6788,7 +6788,7 @@ export const categoryGuides = {
       introduction: `Exuma's snorkeling is world-class, featuring crystal-clear turquoise waters with visibility often exceeding 100 feet, pristine coral reefs teeming with tropical fish, and the famous Thunderball Grotto underwater cave system. Snorkeling tours explore multiple spectacular locations in single adventures, combining reef snorkeling with visits to famous attractions like swimming pigs and nurse sharks. From shallow coral gardens perfect for beginners to dramatic drop-offs and underwater caves for experienced snorkelers, Exuma offers incredible diversity. The warm, calm waters provide ideal conditions year-round. Most tours include all equipment, expert guides, lunch, and transportation between multiple snorkel sites. Whether exploring hidden caves, swimming through crystal-clear grottos, or drifting over vibrant coral reefs surrounded by colorful fish, Exuma snorkeling delivers unforgettable underwater experiences in some of the world's clearest, most beautiful water.`,
 
       seo: {
-        title: 'Exuma Snorkeling Tours 2025: Thunderball Grotto & Coral Reefs',
+        title: 'Exuma Snorkeling Tours 2026: Thunderball Grotto & Coral Reefs',
         description: 'Amazing Exuma snorkeling. Thunderball Grotto, coral reefs, tropical fish. From $329. Crystal-clear water.',
         keywords: 'Exuma snorkeling, Thunderball Grotto snorkeling, Exuma snorkel tours, best snorkeling Exuma, Exuma underwater',
       },
@@ -6939,7 +6939,7 @@ export const categoryGuides = {
       introduction: `Exuma beaches are among the Caribbean's most pristine and beautiful, featuring powder-white sand, crystal-clear turquoise water, and remote island paradise settings. Beach tours explore multiple stunning beaches and sandbars across the 365 cays, from famous locations to hidden gems accessible only by boat. These tours often combine beach visits with snorkeling, swimming pigs, and other activities for comprehensive Exuma experiences. Whether relaxing on deserted beaches, exploring dramatic sandbars that appear at low tide, or beach-hopping between multiple stunning locations, Exuma beach tours deliver ultimate tropical paradise experiences. The calm, warm waters and consistent sunshine create ideal beach conditions year-round. Most tours include transportation, equipment, lunch, and expert guides who know the best beaches, tide schedules, and secret spots. From family-friendly gentle beaches to romantic secluded coves, Exuma offers beach perfection.`,
 
       seo: {
-        title: 'Exuma Beach Tours 2025: Best Beaches & Sandbar Adventures',
+        title: 'Exuma Beach Tours 2026: Best Beaches & Sandbar Adventures',
         description: 'Stunning Exuma beach tours. Pristine white sand, turquoise water, hidden sandbars. From $131. Island paradise.',
         keywords: 'Exuma beaches, best beaches Exuma, Exuma sandbar, Exuma Cays beaches, Exuma beach hopping',
       },
@@ -7090,7 +7090,7 @@ export const categoryGuides = {
       introduction: `Exuma adventure tours combine adrenaline, exploration, and natural beauty for action-packed experiences beyond typical beach vacations. ATV tours traverse rugged landscapes to hidden beaches and scenic viewpoints, kayaking adventures explore mangroves and secluded coves, and powerboat rides deliver high-speed thrills while island hopping. These tours cater to active travelers seeking unique ways to explore Exuma's diverse terrain and coastline. Whether driving ATVs along coastal trails, paddling through calm turquoise waters, exploring caves and grottos, or embarking on comprehensive multi-activity adventures, Exuma offers exciting alternatives to passive relaxation. Most adventure tours combine multiple activities - ATV rides to beaches, snorkeling at grottos, swimming with pigs - maximizing your Exuma experience. Professional guides ensure safety while sharing local knowledge and accessing locations off the typical tourist path for authentic island adventures.`,
 
       seo: {
-        title: 'Exuma Adventure Tours 2025: ATV, Kayaking & Island Exploration',
+        title: 'Exuma Adventure Tours 2026: ATV, Kayaking & Island Exploration',
         description: 'Thrilling Exuma adventures. ATV tours, kayaking, island exploration. From $131. Action-packed experiences.',
         keywords: 'Exuma adventure tours, Exuma ATV tours, Exuma kayaking, adventure activities Exuma, Exuma exploration',
       },
@@ -7241,7 +7241,7 @@ export const categoryGuides = {
       introduction: `Island hopping tours are the ultimate way to experience Exuma, visiting 6-8 different cays and attractions in comprehensive full-day adventures. These all-inclusive excursions combine the region's top highlights - swimming pigs, Thunderball Grotto snorkeling, nurse shark encounters, iguana feeding, pristine beaches, and stunning sandbars - into single unforgettable experiences. Aboard comfortable powerboats or luxury vessels, you'll traverse crystal-clear turquoise waters exploring the 365 islands of the Exuma Cays. Expert guides share local knowledge, ensure safety, and maximize your time at each location. Most tours include all equipment, lunch featuring Bahamian cuisine, drinks, and round-trip transportation. From budget-conscious shared tours to exclusive private charters, from standard powerboat adventures to luxury fly-in experiences, island hopping delivers comprehensive Exuma exploration showcasing the incredible diversity and beauty of this Bahamian paradise in single action-packed days.`,
 
       seo: {
-        title: 'Exuma Island Hopping Tours 2025: Multi-Island Adventures',
+        title: 'Exuma Island Hopping Tours 2026: Multi-Island Adventures',
         description: 'Complete Exuma island hopping. Visit 6-8 cays, pigs, sharks, snorkeling, beaches. From $439. Full-day adventure.',
         keywords: 'Exuma island hopping, Exuma Cays tours, multi-island Exuma, Exuma day trips, comprehensive Exuma tours',
       },
@@ -7396,7 +7396,7 @@ export const categoryGuides = {
       introduction: `Grenada, known as the "Spice Island," produces nearly 20% of the world's nutmeg and offers immersive experiences exploring aromatic spice plantations. Spice tours take you through lush estates where nutmeg, cinnamon, cloves, cocoa, and bay leaves grow naturally, providing sensory journeys through fragrant groves and processing facilities. Learn how spices are harvested, dried, and prepared for export while tasting fresh cocoa, watching traditional processing methods, and understanding the island's spice heritage. Most tours combine spice plantations with chocolate factories, rum distilleries, waterfalls, and Grand Etang National Park for comprehensive experiences. Expert local guides share fascinating stories about Grenada's spice history, colonial past, and agricultural traditions. Whether choosing half-day focused spice tours or full-day adventures combining multiple attractions, these experiences provide authentic insights into the industry that defines Grenada's identity and economy.`,
 
       seo: {
-        title: 'Grenada Spice Tours 2025: Nutmeg, Chocolate & Rum Experiences',
+        title: 'Grenada Spice Tours 2026: Nutmeg, Chocolate & Rum Experiences',
         description: 'Authentic Grenada spice plantation tours. Nutmeg, cinnamon, cocoa, rum. From $67. Explore the Spice Island.',
         keywords: 'Grenada spice tours, nutmeg tours Grenada, chocolate factory Grenada, rum distillery Grenada, spice plantations',
       },
@@ -7547,7 +7547,7 @@ export const categoryGuides = {
       introduction: `Grenada's interior is covered in pristine rainforest with Grand Etang National Park as the centerpiece, featuring a volcanic crater lake, lush hiking trails, magnificent waterfalls, and abundant wildlife. Rainforest tours explore this natural paradise through guided hikes to Seven Sisters Falls, Concord Falls, Annandale Falls, and forest trails where you'll encounter exotic birds, monkeys, iguanas, and diverse tropical flora. The Grand Etang Crater Lake sits 1,900 feet above sea level offering stunning views and wildlife spotting opportunities. Most tours combine rainforest exploration with cultural attractions like spice plantations, chocolate factories, or beach visits for comprehensive experiences. Whether hiking challenging trails to hidden waterfalls, walking gentle paths through botanical gardens, or simply enjoying the cool mountain air and pristine nature, Grenada's rainforest tours deliver authentic tropical wilderness experiences with expert guides sharing ecological knowledge and conservation efforts.`,
 
       seo: {
-        title: 'Grenada Rainforest Tours 2025: Waterfalls, Hiking & Wildlife',
+        title: 'Grenada Rainforest Tours 2026: Waterfalls, Hiking & Wildlife',
         description: 'Explore Grenada rainforest. Grand Etang National Park, waterfalls, hiking, wildlife. From $67. Tropical nature.',
         keywords: 'Grenada rainforest tours, Grand Etang National Park, Seven Sisters Falls Grenada, Concord Falls, hiking Grenada',
       },
@@ -7698,7 +7698,7 @@ export const categoryGuides = {
       introduction: `Grenada boasts stunning Caribbean beaches with Grand Anse consistently rated among the world's best - two miles of powder-white sand, calm turquoise water, and picturesque palm trees. Beach tours explore multiple coastal gems from popular Grand Anse to secluded Magazine Beach, Morne Rouge Bay, and hidden coves accessible by boat. Many tours combine beach relaxation with snorkeling at the famous Underwater Sculpture Park, visiting coastal forts with panoramic views, or exploring fishing villages. The calm Caribbean side offers perfect swimming conditions year-round with gentle waves and warm water. Whether beach hopping between multiple locations, snorkeling pristine reefs, enjoying water sports, or simply relaxing under palm trees with rum punch, Grenada's beach tours deliver ultimate Caribbean paradise experiences. Most tours include transportation, equipment, and expert guides sharing local knowledge about marine life, history, and best beach spots.`,
 
       seo: {
-        title: 'Grenada Beach Tours 2025: Grand Anse & Hidden Cove Adventures',
+        title: 'Grenada Beach Tours 2026: Grand Anse & Hidden Cove Adventures',
         description: 'Stunning Grenada beaches. Grand Anse, underwater sculptures, pristine coves. From $67. Caribbean paradise.',
         keywords: 'Grenada beaches, Grand Anse Beach, best beaches Grenada, Grenada snorkeling, Underwater Sculpture Park',
       },
@@ -7849,7 +7849,7 @@ export const categoryGuides = {
       introduction: `Grenada is a world-class diving destination featuring the famous Underwater Sculpture Park, abundant coral reefs, diverse marine life, and numerous shipwrecks including the massive Bianca C - the Caribbean's largest wreck. The island offers over 50 dive sites with calm Caribbean waters providing excellent visibility year-round. Divers explore unique underwater art installations where sculptures have become artificial reefs colonized by colorful corals and tropical fish. Marine life includes sea turtles, rays, moray eels, octopus, and schools of tropical fish. From shallow snorkel-friendly sites to deep technical wreck dives, Grenada accommodates all experience levels. Most dive operators provide comprehensive services including equipment, boat transportation, expert guides, and multi-dive packages. Whether discovering submerged sculptures, exploring historic shipwrecks, or drifting along pristine wall dives, Grenada's underwater world delivers unforgettable experiences in warm, crystal-clear Caribbean waters.`,
 
       seo: {
-        title: 'Grenada Diving Tours 2025: Underwater Sculptures & Shipwrecks',
+        title: 'Grenada Diving Tours 2026: Underwater Sculptures & Shipwrecks',
         description: 'World-class Grenada diving. Underwater Sculpture Park, Bianca C wreck, coral reefs. From $209. Caribbean diving.',
         keywords: 'Grenada diving, Underwater Sculpture Park diving, Bianca C wreck, Grenada scuba diving, best diving Grenada',
       },
@@ -8000,7 +8000,7 @@ export const categoryGuides = {
       introduction: `Grenada's rich cultural heritage blends African, French, British, and Caribbean influences creating unique island identity. Cultural tours explore this fascinating history through visits to St. George's - the Caribbean's most picturesque capital with colorful colonial architecture, historic Fort George and Fort Frederick offering panoramic views and military history, traditional spice processing facilities, local villages, markets, and cultural demonstrations. Learn about Grenada's colonial past, spice industry development, cultural traditions including music, cuisine, and festivals. Many tours combine cultural sites with natural attractions like spice plantations, waterfalls, and beaches for comprehensive experiences. Expert local guides share personal stories, historical context, and insider perspectives that bring Grenadian culture to life. Whether exploring historic forts, wandering colorful streets, visiting authentic villages, or experiencing traditional crafts and cuisine, cultural tours provide deep understanding of Grenada's identity beyond typical tourist experiences.`,
 
       seo: {
-        title: 'Grenada Cultural Tours 2025: Historic Forts & Local Heritage',
+        title: 'Grenada Cultural Tours 2026: Historic Forts & Local Heritage',
         description: 'Authentic Grenada culture. Historic forts, St. George\'s, spice traditions, local life. From $40. Island heritage.',
         keywords: 'Grenada cultural tours, Fort George Grenada, St. George\'s tours, Grenada history, Grenadian culture',
       },
@@ -8151,7 +8151,7 @@ export const categoryGuides = {
       introduction: `Grenada's diverse landscape creates perfect playground for adventure enthusiasts. Adventure tours combine adrenaline with natural beauty through activities like river tubing down rainforest streams, hiking to remote Seven Sisters Falls, zip-lining through forest canopies, kayaking coastal waters, and exploring challenging trails in Grand Etang National Park. These active experiences showcase Grenada's interior mountains, lush rainforest, rushing rivers, and coastal ecosystems through physical engagement rather than passive sightseeing. Most tours combine multiple activities - tubing followed by waterfall swimming, hiking with snorkeling, or comprehensive multi-activity adventures visiting beaches, waterfalls, and spice plantations. Professional guides ensure safety while sharing ecological knowledge and accessing locations off typical tourist paths. Whether seeking moderate outdoor activities or challenging physical adventures, Grenada offers exciting alternatives to typical beach vacations while immersing you in spectacular natural environments.`,
 
       seo: {
-        title: 'Grenada Adventure Tours 2025: River Tubing, Hiking & Exploration',
+        title: 'Grenada Adventure Tours 2026: River Tubing, Hiking & Exploration',
         description: 'Thrilling Grenada adventures. River tubing, waterfall hiking, zip-lining, kayaking. From $72. Action-packed.',
         keywords: 'Grenada adventure tours, river tubing Grenada, Seven Sisters Falls hike, Grenada hiking, adventure activities',
       },
@@ -8306,7 +8306,7 @@ export const categoryGuides = {
       introduction: `La Soufrière volcano, towering at 4,813 feet, is the highest peak in the Lesser Antilles and Guadeloupe's most dramatic natural attraction. Volcano tours offer challenging hikes through lush tropical rainforest, emerging above the treeline to reach the sulfurous summit crater with panoramic views across the Caribbean. The active volcano features steaming fumaroles, bubbling mud pools, and dramatic lunar-like landscapes near the summit. Most tours combine volcano hiking with visits to nearby hot springs, waterfalls, and botanical sites in Parc National de la Guadeloupe. Expert guides ensure safety while sharing geological knowledge about this active volcanic system. Whether you're a serious hiker seeking summit challenges or nature enthusiast wanting to explore lower volcanic trails, La Soufrière delivers unforgettable experiences showcasing Guadeloupe's volcanic origins and dramatic mountain landscapes with French Caribbean charm.`,
 
       seo: {
-        title: 'Guadeloupe Volcano Tours 2025: La Soufrière Hiking Adventures',
+        title: 'Guadeloupe Volcano Tours 2026: La Soufrière Hiking Adventures',
         description: 'Hike La Soufrière volcano. Active volcano, summit trails, rainforest, hot springs. From $72. Caribbean volcano experience.',
         keywords: 'Guadeloupe volcano tours, La Soufrière hiking, Soufrière volcano Guadeloupe, volcano hikes Caribbean',
       },
@@ -8457,7 +8457,7 @@ export const categoryGuides = {
       introduction: `Guadeloupe's butterfly-shaped archipelago offers incredible beach diversity - from Grande-Terre's powder-white Caribbean beaches to Basse-Terre's dramatic black volcanic sands, from Les Saintes' secluded paradises to Marie-Galante's unspoiled shores. Beach tours explore multiple coastal gems across different islands, each with unique character and beauty. Grande-Terre features popular beaches with amenities and water sports, while Basse-Terre offers wilder, more dramatic coastal landscapes. Les Saintes archipelago showcases some of the Caribbean's most beautiful beaches including Pain de Sucre and Plage de Pompierre. Most tours combine beach hopping with snorkeling, island exploration, and French Caribbean culture. Whether relaxing on white sand, exploring volcanic black beaches, discovering hidden coves, or island hopping to pristine paradises, Guadeloupe's beach tours deliver diverse Caribbean coastal experiences with European sophistication.`,
 
       seo: {
-        title: 'Guadeloupe Beach Tours 2025: White Sand, Black Sand & Island Beaches',
+        title: 'Guadeloupe Beach Tours 2026: White Sand, Black Sand & Island Beaches',
         description: 'Stunning Guadeloupe beaches. Grande-Terre white sand, volcanic black beaches, Les Saintes islands. From $16. Beach paradise.',
         keywords: 'Guadeloupe beaches, best beaches Guadeloupe, Les Saintes beaches, Grande-Terre beaches, black sand beaches',
       },
@@ -8608,7 +8608,7 @@ export const categoryGuides = {
       introduction: `Guadeloupe's unique culture blends French sophistication with Caribbean soul, African heritage, and indigenous Carib influences. Cultural tours explore this fascinating fusion through visits to colorful Creole markets, historic rum distilleries producing agricole rhum, colonial architecture in Pointe-à-Pitre and Basse-Terre, traditional villages, and cultural museums showcasing slavery history and island traditions. Experience authentic Creole cuisine, learn about sugar and rum production that shaped the islands, discover African-influenced music and dance, and explore the French Caribbean lifestyle that makes Guadeloupe distinct. Many tours combine cultural sites with natural attractions, offering comprehensive island experiences. Expert local guides share personal stories and historical context about colonialism, slavery, emancipation, and modern Franco-Caribbean identity. Whether exploring bustling markets, touring historic distilleries, visiting traditional villages, or experiencing Creole festivals, cultural tours provide deep understanding of Guadeloupe's rich multicultural heritage.`,
 
       seo: {
-        title: 'Guadeloupe Cultural Tours 2025: Creole Heritage & Rum Distilleries',
+        title: 'Guadeloupe Cultural Tours 2026: Creole Heritage & Rum Distilleries',
         description: 'Authentic Guadeloupe culture. Creole traditions, rum distilleries, colonial history, local markets. From $10. French Caribbean heritage.',
         keywords: 'Guadeloupe cultural tours, Guadeloupe rum tours, Creole culture, Guadeloupe history, French Caribbean culture',
       },
@@ -8759,7 +8759,7 @@ export const categoryGuides = {
       introduction: `Guadeloupe's diverse landscapes create perfect adventure playground combining rainforest, rivers, coastlines, and mountains. Adventure tours offer thrilling experiences through canyoning down waterfalls and gorges, zip-lining through forest canopies, kayaking pristine mangrove ecosystems, hiking challenging mountain trails, and exploring dramatic coastal cliffs. Basse-Terre's volcanic interior provides spectacular settings for waterfall rappelling and river adventures, while mangrove channels offer calm kayaking through unique ecosystems. Most adventures combine multiple activities showcasing different aspects of Guadeloupe's natural beauty through physical engagement rather than passive sightseeing. Professional guides ensure safety while sharing ecological knowledge about rainforest biodiversity, volcanic landscapes, and marine ecosystems. Whether seeking adrenaline rushes through extreme canyoning or moderate outdoor activities exploring nature, Guadeloupe delivers varied adventure experiences in pristine French Caribbean wilderness.`,
 
       seo: {
-        title: 'Guadeloupe Adventure Tours 2025: Canyoning, Zip-Lining & Kayaking',
+        title: 'Guadeloupe Adventure Tours 2026: Canyoning, Zip-Lining & Kayaking',
         description: 'Thrilling Guadeloupe adventures. Canyoning, zip-lining, kayaking, rainforest hiking. From $70. Action-packed nature.',
         keywords: 'Guadeloupe adventure tours, canyoning Guadeloupe, zip-lining, mangrove kayaking Guadeloupe, adventure activities',
       },
@@ -8910,7 +8910,7 @@ export const categoryGuides = {
       introduction: `Guadeloupe's natural beauty is spectacular - from the lush rainforests of Parc National de la Guadeloupe covering Basse-Terre to pristine mangrove ecosystems, from the dramatic Chutes du Carbet waterfalls to diverse wildlife habitats. Nature tours explore this ecological paradise through guided hikes to magnificent waterfalls, walks through cloud forests, wildlife spotting in mangroves, botanical garden visits showcasing tropical flora, and exploration of volcanic landscapes. The National Park protects 17,300 hectares of pristine rainforest with endemic species, rare birds, and diverse ecosystems from coastal mangroves to mountain cloud forests. Expert naturalist guides share ecological knowledge about tropical biodiversity, volcanic origins, conservation efforts, and unique Caribbean ecosystems. Whether hiking to multi-tiered waterfalls, exploring botanical gardens, discovering mangrove wildlife, or learning about rainforest ecology, nature tours deliver immersive experiences in Guadeloupe's spectacular natural environments.`,
 
       seo: {
-        title: 'Guadeloupe Nature Tours 2025: Rainforest, Waterfalls & Wildlife',
+        title: 'Guadeloupe Nature Tours 2026: Rainforest, Waterfalls & Wildlife',
         description: 'Explore Guadeloupe nature. Rainforest hikes, waterfalls, Parc National, mangroves, wildlife. From $70. Pristine ecosystems.',
         keywords: 'Guadeloupe nature tours, Parc National Guadeloupe, Chutes du Carbet, rainforest hikes, Guadeloupe wildlife',
       },
@@ -9061,7 +9061,7 @@ export const categoryGuides = {
       introduction: `Guadeloupe's cuisine beautifully merges French culinary sophistication with Caribbean spices, African influences, and Creole traditions creating unique gastronomy. Food tours explore this delicious fusion through visits to colorful spice markets overflowing with tropical produce, hands-on Creole cooking classes learning traditional recipes, rum distillery tastings sampling world-class agricole rhums, street food experiences discovering local favorites, and dining at authentic Creole restaurants. Learn to prepare accras (cod fritters), colombo curry, boudin créole (blood sausage), and other Caribbean specialties while understanding the cultural influences that shaped island cuisine. Many tours combine cooking instruction with market shopping and cultural storytelling. Expert local chefs and food guides share culinary traditions, ingredient knowledge, and the history of Caribbean-French fusion cuisine. Whether learning to cook authentic Creole dishes, discovering exotic spices, or tasting premium rums, food tours deliver delicious immersion into Guadeloupe's rich gastronomic heritage.`,
 
       seo: {
-        title: 'Guadeloupe Food Tours 2025: Creole Cooking & Culinary Experiences',
+        title: 'Guadeloupe Food Tours 2026: Creole Cooking & Culinary Experiences',
         description: 'Authentic Guadeloupe cuisine. Creole cooking classes, market tours, rum tastings. From $64. French Caribbean gastronomy.',
         keywords: 'Guadeloupe food tours, Creole cooking classes, Guadeloupe cuisine, rum tastings, Caribbean food tours',
       },
@@ -9216,7 +9216,7 @@ export const categoryGuides = {
       introduction: `Jamaica's waterfalls are legendary, with Dunn's River Falls as the crown jewel - a stunning 600-foot cascading waterfall you can actually climb from beach to summit. Waterfall tours explore this natural wonder plus hidden gems like YS Falls, Reach Falls, Blue Hole, and Konoko Falls through guided adventures combining climbing, swimming, and nature appreciation. The unique experience of climbing Dunn's River hand-in-hand with other visitors creates unforgettable memories, while more secluded waterfalls offer serene natural pools surrounded by lush tropical vegetation. Most tours include transportation, entrance fees, and professional guides ensuring safety while sharing local knowledge. Whether climbing the famous terraced limestone of Dunn's River, swinging on rope swings at Blue Hole, or swimming in pristine pools at hidden waterfalls, Jamaica's waterfall adventures deliver quintessential Caribbean experiences showcasing the island's spectacular natural beauty.`,
 
       seo: {
-        title: 'Jamaica Waterfall Tours 2025: Dunn\'s River Falls & Hidden Cascades',
+        title: 'Jamaica Waterfall Tours 2026: Dunn\'s River Falls & Hidden Cascades',
         description: 'Iconic Jamaica waterfall tours. Climb Dunn\'s River Falls, YS Falls, Blue Hole. From $58. Natural pool swimming.',
         keywords: 'Jamaica waterfall tours, Dunn\'s River Falls, YS Falls Jamaica, Blue Hole Jamaica, Reach Falls',
       },
@@ -9367,7 +9367,7 @@ export const categoryGuides = {
       introduction: `Jamaica is the birthplace of reggae music, and tours dedicated to this cultural phenomenon offer deep dives into Bob Marley's life, reggae history, and the vibrant music scene that shaped generations. Visit the Bob Marley Museum in his former home, explore Trench Town where reggae was born, tour recording studios where legends recorded hits, and experience live performances at authentic venues. Learn about the Rastafarian movement's influence on reggae, understand the social commentary in the lyrics, and discover how this small island created a globally influential musical genre. Most tours combine museum visits with cultural neighborhoods, live music experiences, and insights into modern reggae artists continuing the tradition. Whether you're a devoted reggae fan or curious about this iconic Jamaican contribution to world culture, reggae tours deliver authentic musical experiences with knowledgeable guides sharing personal stories and historical context.`,
 
       seo: {
-        title: 'Jamaica Reggae Tours 2025: Bob Marley Museum & Music Heritage',
+        title: 'Jamaica Reggae Tours 2026: Bob Marley Museum & Music Heritage',
         description: 'Authentic reggae music tours. Bob Marley Museum, Trench Town, live music, reggae culture. From $41. Music history.',
         keywords: 'Jamaica reggae tours, Bob Marley Museum, Trench Town tour, reggae music Jamaica, Bob Marley tours',
       },
@@ -9518,7 +9518,7 @@ export const categoryGuides = {
       introduction: `Jamaica's diverse terrain creates perfect adventure playground offering thrilling experiences from zip-lining through rainforest canopies to ATV rides along coastal trails, from bamboo river rafting to bobsledding through jungle, from horseback riding to dune buggy adventures. These active tours showcase Jamaica's mountains, forests, rivers, and coastlines through physical engagement and adrenaline rushes. Mystic Mountain adventure park features Jamaica's first bobsled ride inspired by the Olympic team, while rope courses and zip-lines deliver jungle thrills. River rafting on bamboo rafts offers serene yet adventurous experiences, and ATV tours access hidden beaches and rural areas. Professional guides ensure safety while sharing local knowledge about Jamaica's ecology and culture. Whether seeking extreme adrenaline or moderate outdoor activities, Jamaica's adventure tours deliver exciting alternatives to beach relaxation while immersing you in spectacular natural environments.`,
 
       seo: {
-        title: 'Jamaica Adventure Tours 2025: Zip-Lining, ATV & Jungle Thrills',
+        title: 'Jamaica Adventure Tours 2026: Zip-Lining, ATV & Jungle Thrills',
         description: 'Exciting Jamaica adventures. Zip-lining, ATVs, bobsled, river rafting, jungle exploration. From $50. Action-packed.',
         keywords: 'Jamaica adventure tours, zip-lining Jamaica, Jamaica ATV tours, bobsled Jamaica, river rafting Jamaica',
       },
@@ -9666,7 +9666,7 @@ export const categoryGuides = {
       },
       introduction: `Jamaica's cultural heritage reflects a powerful blend of African, British colonial, indigenous Taino, and Maroon influences. Cultural tours explore this complex history through visits to historic plantation estates, Maroon communities preserving African traditions, colonial architecture, cultural museums, and authentic rural villages. Learn about Jamaica's slavery history and emancipation, discover how Maroons maintained African culture in mountain communities, experience traditional music and dance, and understand the island's journey to independence. Most tours combine historical sites with natural attractions and authentic interactions with local communities. Expert guides share personal stories and historical context about resistance, resilience, and the vibrant culture that emerged from difficult history. Whether visiting grand plantation estates, exploring Maroon villages, or experiencing authentic Jamaican rural life, cultural heritage tours provide deep understanding beyond resort experiences.`,
       seo: {
-        title: 'Jamaica Cultural Heritage Tours 2025: Plantation History & Maroon Culture',
+        title: 'Jamaica Cultural Heritage Tours 2026: Plantation History & Maroon Culture',
         description: 'Authentic Jamaica heritage. Plantation tours, Maroon villages, colonial history, local culture. From $40.',
         keywords: 'Jamaica cultural tours, Jamaica plantation tours, Maroon culture Jamaica, Jamaica heritage, cultural Jamaica',
       },
@@ -9725,7 +9725,7 @@ export const categoryGuides = {
       },
       introduction: `Jamaica boasts stunning Caribbean beaches from the famous Seven Mile Beach in Negril to hidden coves in Treasure Beach, from party atmospheres at Doctor's Cave to serene Frenchman's Cove. Beach tours explore multiple coastal gems showcasing powdery white sand, turquoise water, and laid-back Jamaican vibes. Negril's sunset strip offers beach bars and water sports, while quieter beaches provide relaxation away from crowds. Many tours combine beach hopping with snorkeling, cliff diving at Rick's Cafe, or cultural experiences. The warm Caribbean waters and year-round sunshine create perfect beach conditions. Whether seeking party atmosphere, romantic seclusion, family-friendly facilities, or adventure sports, Jamaica's diverse beaches deliver ultimate tropical paradise experiences with reggae music, jerk chicken, and authentic island hospitality.`,
       seo: {
-        title: 'Jamaica Beach Tours 2025: Seven Mile Beach & Hidden Coves',
+        title: 'Jamaica Beach Tours 2026: Seven Mile Beach & Hidden Coves',
         description: 'Stunning Jamaica beaches. Seven Mile Beach Negril, Doctor\'s Cave, Treasure Beach. From $29. Caribbean paradise.',
         keywords: 'Jamaica beaches, Seven Mile Beach, Negril beach, Doctor\'s Cave Beach, best beaches Jamaica',
       },
@@ -9784,7 +9784,7 @@ export const categoryGuides = {
       },
       introduction: `Jamaica's rich history spans indigenous Taino civilization, Spanish colonization, British rule, pirate havens, slavery and emancipation, and independence. Historical tours explore this complex past through visits to preserved colonial forts, UNESCO World Heritage sites, historic towns, museums, and archaeological sites. Explore Port Royal - once the "wickedest city on Earth" and pirate capital, visit Georgian architecture in Falmouth, tour defensive fortifications like Fort Charles, and discover Spanish colonial remnants. Learn about Admiral Nelson's Caribbean naval campaigns, Henry Morgan's pirate exploits, and Jamaica's strategic importance in colonial Caribbean. Expert historians share fascinating stories bringing centuries of history alive through preserved buildings, artifacts, and historic locations. Whether interested in military history, pirate lore, colonial architecture, or understanding Jamaica's journey from colony to independent nation, historical tours provide educational exploration beyond beach vacations.`,
       seo: {
-        title: 'Jamaica Historical Tours 2025: Colonial Forts & Pirate History',
+        title: 'Jamaica Historical Tours 2026: Colonial Forts & Pirate History',
         description: 'Jamaica historical tours. Colonial forts, Port Royal pirates, UNESCO sites, Georgian architecture. From $60.',
         keywords: 'Jamaica historical tours, Port Royal Jamaica, Fort Charles, Falmouth Jamaica, Jamaica pirate history',
       },
@@ -9843,7 +9843,7 @@ export const categoryGuides = {
       stats: { toursAvailable: 15, priceFrom: 81, duration: '3-6 hours' },
       introduction: `Martinique produces some of the world's finest agricole rhum - premium rum made from fresh sugarcane juice rather than molasses. Rum tours explore historic and modern distilleries showcasing traditional production methods, aging facilities, and the AOC-protected rhum agricole process. Visit famous estates like Habitation Clément, Distillerie Depaz with Mount Pelée backdrop, and working plantations where sugarcane is grown and processed. Learn the difference between agricole and traditional rum, taste vintage aged varieties, and understand why Martinique rhum is considered finest in Caribbean. Most tours combine distillery visits with plantation history, tastings of multiple varieties, and insights into French Caribbean rum culture. Expert guides share production techniques, history, and the importance of terroir in rum-making similar to wine.`,
       seo: {
-        title: 'Martinique Rum Tours 2025: Agricole Rhum Distillery Tastings',
+        title: 'Martinique Rum Tours 2026: Agricole Rhum Distillery Tastings',
         description: 'Premium Martinique rum tours. Agricole rhum distilleries, tastings, sugarcane plantations. From $81. World-class rhum.',
         keywords: 'Martinique rum tours, agricole rhum, Martinique distilleries, rhum tastings Martinique, Habitation Clément',
       },
@@ -9897,7 +9897,7 @@ export const categoryGuides = {
       categoryName: 'Volcano Tours',
       stats: { toursAvailable: 10, priceFrom: 129, duration: '6-10 hours' },
       introduction: `Mount Pelée volcano dominates Martinique's northern landscape and holds infamous history as site of the Caribbean's deadliest eruption in 1902 that destroyed St. Pierre. Volcano tours offer challenging hikes to the 4,583-foot summit through rainforest, crater rim exploration, and visits to volcanic landscapes with fumaroles and dramatic terrain. Most tours combine volcano hiking with visits to St. Pierre ruins, Depaz Distillery at volcano base, and hot springs. The challenging summit hike rewards with panoramic views across Martinique and neighboring islands on clear days. Less strenuous options explore lower volcanic terrain and historic St. Pierre "Pompeii of Caribbean." Expert guides share volcanic geology, eruption history, current monitoring, and ecological recovery creating comprehensive volcano experiences.`,
-      seo: { title: 'Martinique Volcano Tours 2025: Mount Pelée Hiking Adventures', description: 'Hike Mount Pelée volcano. Historic eruption site, summit trails, St. Pierre ruins. From $129. Caribbean volcano.', keywords: 'Martinique volcano, Mount Pelée hiking, St. Pierre Martinique, volcano tours Martinique' },
+      seo: { title: 'Martinique Volcano Tours 2026: Mount Pelée Hiking Adventures', description: 'Hike Mount Pelée volcano. Historic eruption site, summit trails, St. Pierre ruins. From $129. Caribbean volcano.', keywords: 'Martinique volcano, Mount Pelée hiking, St. Pierre Martinique, volcano tours Martinique' },
       whyChoose: [
         { icon: 'MapPin', title: 'Historic Mount Pelée', description: 'Hike Caribbean\'s most notorious volcano - site of deadliest eruption that destroyed St. Pierre 1902.' },
         { icon: 'Star', title: 'Dramatic Summit Views', description: 'Panoramic vistas across Martinique, neighboring islands, and Caribbean from 4,583-foot peak.' },
@@ -9948,7 +9948,7 @@ export const categoryGuides = {
       categoryName: 'Beach Tours',
       stats: { toursAvailable: 16, priceFrom: 81, duration: '4-8 hours' },
       introduction: `Martinique offers stunning beach diversity from the calm Caribbean coast's white sand bays to dramatic Atlantic-facing black volcanic beaches. Beach tours explore multiple coastal gems including Les Salines with powder-white sand and turquoise water, Anse Dufour where turtles frequent, Grande Anse d'Arlet with fishing village charm, and unique black sand beaches on the volcanic north coast. Each coast offers distinct character - Caribbean side calm and gentle, Atlantic side dramatic with stronger surf. Most tours combine beach hopping with snorkeling, village visits, and French Caribbean culture. Whether relaxing at pristine bays, exploring dramatic volcanic coastlines, or discovering secluded coves, Martinique beach tours deliver diverse Caribbean coastal experiences with European sophistication.`,
-      seo: { title: 'Martinique Beach Tours 2025: White Sand, Black Sand & Hidden Coves', description: 'Beautiful Martinique beaches. Les Salines, black volcanic sands, snorkeling. From $81. Beach paradise.', keywords: 'Martinique beaches, Les Salines beach, best beaches Martinique, black sand beaches, Martinique snorkeling' },
+      seo: { title: 'Martinique Beach Tours 2026: White Sand, Black Sand & Hidden Coves', description: 'Beautiful Martinique beaches. Les Salines, black volcanic sands, snorkeling. From $81. Beach paradise.', keywords: 'Martinique beaches, Les Salines beach, best beaches Martinique, black sand beaches, Martinique snorkeling' },
       whyChoose: [
         { icon: 'Waves', title: 'Beach Diversity', description: 'White powder sand, dramatic black volcanic beaches, calm bays, Atlantic surf - incredible variety.' },
         { icon: 'Sun', title: 'Les Salines Paradise', description: 'Martinique\'s most famous beach with pristine white sand and crystal-clear turquoise water.' },
@@ -9999,7 +9999,7 @@ export const categoryGuides = {
       categoryName: 'Cultural Tours',
       stats: { toursAvailable: 14, priceFrom: 76, duration: '3-8 hours' },
       introduction: `Martinique's culture uniquely blends French sophistication with Caribbean soul, African heritage, and Creole traditions. Cultural tours explore this fusion through colorful markets, historic sites, traditional villages, museums, and authentic cultural experiences. Visit Fort-de-France capital with Creole markets and colonial architecture, explore St. Pierre ruins learning volcanic history, discover traditional fishing villages, and experience Creole music, dance, and cuisine. Learn about colonial plantation history, African cultural preservation, French Caribbean identity, and modern Martiniquan life. Most tours combine cultural sites with natural attractions providing comprehensive island understanding. Expert local guides share personal stories and historical context about this fascinating cultural melting pot.`,
-      seo: { title: 'Martinique Cultural Tours 2025: Creole Heritage & French Caribbean', description: 'Authentic Martinique culture. Creole traditions, colonial history, Fort-de-France, local villages. From $76.', keywords: 'Martinique cultural tours, Creole culture Martinique, Fort-de-France tours, Martinique history' },
+      seo: { title: 'Martinique Cultural Tours 2026: Creole Heritage & French Caribbean', description: 'Authentic Martinique culture. Creole traditions, colonial history, Fort-de-France, local villages. From $76.', keywords: 'Martinique cultural tours, Creole culture Martinique, Fort-de-France tours, Martinique history' },
       whyChoose: [
         { icon: 'Heart', title: 'French Caribbean Fusion', description: 'Unique blend of French sophistication and Caribbean warmth with African heritage.' },
         { icon: 'MapPin', title: 'Vibrant Fort-de-France', description: 'Colorful capital with Creole markets, colonial architecture, and bustling Caribbean energy.' },
@@ -10050,7 +10050,7 @@ export const categoryGuides = {
       categoryName: 'Adventure Tours',
       stats: { toursAvailable: 12, priceFrom: 81, duration: '3-8 hours' },
       introduction: `Martinique's volcanic terrain and coastal beauty create ideal adventure playground. Adventure tours offer canyoning through rainforest gorges, sea kayaking along dramatic coastlines, kitesurfing at premier spots, mountain biking volcanic trails, and active exploration beyond typical tourist experiences. Northern volcanic landscapes provide spectacular canyoning with waterfalls and natural pools, while southern coastlines offer excellent kayaking and wind sports. Professional guides ensure safety while sharing ecological knowledge. Whether rappelling waterfalls, paddling turquoise bays, or hiking challenging mountain trails, Martinique adventures deliver adrenaline and natural beauty.`,
-      seo: { title: 'Martinique Adventure Tours 2025: Canyoning, Kayaking & Exploration', description: 'Thrilling Martinique adventures. Canyoning, sea kayaking, kitesurfing, volcanic trails. From $81.', keywords: 'Martinique adventure, canyoning Martinique, kayaking Martinique, kitesurfing, adventure tours' },
+      seo: { title: 'Martinique Adventure Tours 2026: Canyoning, Kayaking & Exploration', description: 'Thrilling Martinique adventures. Canyoning, sea kayaking, kitesurfing, volcanic trails. From $81.', keywords: 'Martinique adventure, canyoning Martinique, kayaking Martinique, kitesurfing, adventure tours' },
       whyChoose: [
         { icon: 'Waves', title: 'Spectacular Canyoning', description: 'Rappel waterfalls and navigate gorges in pristine volcanic rainforest.' },
         { icon: 'Anchor', title: 'Diverse Activities', description: 'Canyoning, kayaking, kitesurfing, mountain biking, hiking - multiple options.' },
@@ -10101,7 +10101,7 @@ export const categoryGuides = {
       categoryName: 'Food Tours',
       stats: { toursAvailable: 10, priceFrom: 69, duration: '3-6 hours' },
       introduction: `Martinique cuisine represents French Caribbean gastronomy at its finest - French culinary techniques meet Caribbean ingredients, African influences, and Creole spices. Food tours explore this delicious fusion through hands-on cooking classes, vibrant market visits, rum distillery tastings, street food experiences, and dining at authentic Creole restaurants. Learn to prepare accras, colombo curry, boudin créole, and other specialties while understanding cultural influences. Visit colorful Fort-de-France market overflowing with tropical produce, spices, and fresh seafood. Taste world-class agricole rhums paired with local dishes. Expert chefs and food guides share culinary traditions, techniques, and the history of French Caribbean fusion creating Martinique's unique gastronomy.`,
-      seo: { title: 'Martinique Food Tours 2025: Creole Cooking & Culinary Adventures', description: 'Authentic Martinique cuisine. Cooking classes, market tours, rum tastings, Creole food. From $69.', keywords: 'Martinique food tours, Creole cooking Martinique, culinary tours, Martinique cuisine, cooking classes' },
+      seo: { title: 'Martinique Food Tours 2026: Creole Cooking & Culinary Adventures', description: 'Authentic Martinique cuisine. Cooking classes, market tours, rum tastings, Creole food. From $69.', keywords: 'Martinique food tours, Creole cooking Martinique, culinary tours, Martinique cuisine, cooking classes' },
       whyChoose: [
         { icon: 'GlassWater', title: 'French Culinary Excellence', description: 'French techniques with Caribbean ingredients create sophisticated unique gastronomy.' },
         { icon: 'Heart', title: 'Hands-On Cooking', description: 'Learn authentic Creole recipes in interactive cooking classes with local chefs.' },
@@ -10156,7 +10156,7 @@ export const categoryGuides = {
       categoryName: 'Historical Tours',
       stats: { toursAvailable: 14, priceFrom: 75, duration: '3-6 hours' },
       introduction: `Nassau's rich history spans colonial conflicts, infamous pirate era, British rule, and Bahamian independence. Historical tours explore this fascinating past through Fort Fincastle, Fort Charlotte, Queen's Staircase, colonial architecture in downtown Nassau, and museums documenting pirate legends and royal heritage. Learn about Blackbeard and other notorious pirates who used Nassau as base, discover British colonial defensive strategies, and understand the Bahamas' journey to independence. Expert guides bring history alive through storytelling at preserved forts, historic buildings, and significant sites creating engaging educational experiences.`,
-      seo: { title: 'Nassau Historical Tours 2025: Colonial Forts & Pirate Heritage', description: 'Nassau historical tours. Colonial forts, pirate history, Queen\'s Staircase, heritage sites. From $75.', keywords: 'Nassau historical tours, Fort Fincastle, Nassau forts, pirate history Nassau, Bahamas history' },
+      seo: { title: 'Nassau Historical Tours 2026: Colonial Forts & Pirate Heritage', description: 'Nassau historical tours. Colonial forts, pirate history, Queen\'s Staircase, heritage sites. From $75.', keywords: 'Nassau historical tours, Fort Fincastle, Nassau forts, pirate history Nassau, Bahamas history' },
       whyChoose: [
         { icon: 'Anchor', title: 'Famous Pirate History', description: 'Nassau was Caribbean pirate republic headquarters - explore Blackbeard and pirate golden age.' },
         { icon: 'MapPin', title: 'Well-Preserved Forts', description: 'Fort Fincastle and Fort Charlotte offer military history with panoramic harbor views.' },
@@ -10207,7 +10207,7 @@ export const categoryGuides = {
       categoryName: 'Beach Tours',
       stats: { toursAvailable: 16, priceFrom: 85, duration: '3-8 hours' },
       introduction: `Nassau offers stunning Caribbean beaches with powder-white sand and crystal-clear turquoise water. Beach tours explore Cable Beach with resort amenities, Paradise Island beaches including famous Atlantis, and hidden coves accessible by boat. Many tours combine beach relaxation with snorkeling coral reefs, visiting offshore cays, or island hopping. The warm calm waters and consistent sunshine create year-round beach paradise. Whether enjoying resort beach facilities, discovering secluded sandbars, or snorkeling pristine reefs, Nassau beach tours deliver classic Bahamian coastal experiences with turquoise waters, white sand, and Caribbean hospitality.`,
-      seo: { title: 'Nassau Beach Tours 2025: Cable Beach, Paradise Island & Hidden Coves', description: 'Beautiful Nassau beaches. Cable Beach, Paradise Island, snorkeling, beach hopping. From $85.', keywords: 'Nassau beaches, Cable Beach, Paradise Island beach, best beaches Nassau, Bahamas beaches' },
+      seo: { title: 'Nassau Beach Tours 2026: Cable Beach, Paradise Island & Hidden Coves', description: 'Beautiful Nassau beaches. Cable Beach, Paradise Island, snorkeling, beach hopping. From $85.', keywords: 'Nassau beaches, Cable Beach, Paradise Island beach, best beaches Nassau, Bahamas beaches' },
       whyChoose: [
         { icon: 'Sun', title: 'Pristine White Sand Beaches', description: 'Powder-soft white sand and crystal-clear turquoise water - classic Bahamas beauty.' },
         { icon: 'Waves', title: 'Multiple Beach Options', description: 'Cable Beach, Paradise Island, Love Beach, and remote cays - variety for all preferences.' },
@@ -10258,7 +10258,7 @@ export const categoryGuides = {
       categoryName: 'Water Sports',
       stats: { toursAvailable: 20, priceFrom: 40, duration: '1-4 hours' },
       introduction: `Nassau's calm turquoise waters and consistent weather create perfect conditions for water sports year-round. Activities range from jet skiing across crystal-clear bays to parasailing above stunning coastlines, from kayaking through mangroves to paddleboarding in calm lagoons. Cable Beach and Paradise Island offer comprehensive water sports with professional operators, quality equipment, and safety instruction. Whether seeking adrenaline through jet skis and parasailing or peaceful paddling experiences, Nassau delivers diverse water activities for all ages and thrill levels in spectacular Caribbean settings.`,
-      seo: { title: 'Nassau Water Sports 2025: Jet Skiing, Parasailing & Water Activities', description: 'Exciting Nassau water sports. Jet skis, parasailing, kayaking, paddleboarding. From $40. Bahamas water fun.', keywords: 'Nassau water sports, jet skiing Nassau, parasailing Bahamas, kayaking Nassau, water activities' },
+      seo: { title: 'Nassau Water Sports 2026: Jet Skiing, Parasailing & Water Activities', description: 'Exciting Nassau water sports. Jet skis, parasailing, kayaking, paddleboarding. From $40. Bahamas water fun.', keywords: 'Nassau water sports, jet skiing Nassau, parasailing Bahamas, kayaking Nassau, water activities' },
       whyChoose: [
         { icon: 'Waves', title: 'Perfect Water Conditions', description: 'Calm clear waters, warm temperatures, and gentle conditions ideal for all water sports.' },
         { icon: 'Star', title: 'Variety of Activities', description: 'Jet skis, parasailing, kayaking, paddleboarding, banana boats - options for everyone.' },
@@ -10309,7 +10309,7 @@ export const categoryGuides = {
       categoryName: 'Cultural Tours',
       stats: { toursAvailable: 12, priceFrom: 55, duration: '3-6 hours' },
       introduction: `Nassau's vibrant culture showcases authentic Bahamian traditions through Junkanoo celebrations, straw markets, local cuisine, music, and community experiences. Cultural tours explore this rich heritage visiting the Junkanoo Museum to learn about famous Carnival-style parade, Nassau Straw Market for traditional crafts, local neighborhoods experiencing authentic island life, and cultural centers preserving Bahamian traditions. Learn about African heritage influences, British colonial impact, and modern Bahamian identity through engaging local guides. Whether discovering traditional straw weaving, tasting authentic Bahamian cuisine, or experiencing local music and dance, cultural tours provide meaningful connections beyond typical tourist experiences.`,
-      seo: { title: 'Nassau Cultural Tours 2025: Junkanoo, Markets & Bahamian Heritage', description: 'Authentic Nassau culture. Junkanoo, Straw Market, local traditions, Bahamian heritage. From $55.', keywords: 'Nassau cultural tours, Junkanoo Nassau, Nassau Straw Market, Bahamian culture, cultural Nassau' },
+      seo: { title: 'Nassau Cultural Tours 2026: Junkanoo, Markets & Bahamian Heritage', description: 'Authentic Nassau culture. Junkanoo, Straw Market, local traditions, Bahamian heritage. From $55.', keywords: 'Nassau cultural tours, Junkanoo Nassau, Nassau Straw Market, Bahamian culture, cultural Nassau' },
       whyChoose: [
         { icon: 'Music', title: 'Famous Junkanoo Culture', description: 'Learn about spectacular Junkanoo parade - Bahamas\' vibrant Carnival celebration.' },
         { icon: 'Heart', title: 'Authentic Local Experiences', description: 'Visit traditional markets, meet artisans, experience real Bahamian life beyond resorts.' },
@@ -10360,7 +10360,7 @@ export const categoryGuides = {
       categoryName: 'Adventure Tours',
       stats: { toursAvailable: 18, priceFrom: 80, duration: '4-8 hours' },
       introduction: `Nassau adventure tours offer thrilling experiences from swimming with pigs in Exuma to snorkeling with sharks, from ATV rides through island terrain to zip-lining and water-based adventures. Full-day excursions to Exuma swimming pigs combine boat rides, snorkeling, shark encounters, and island hopping. Closer adventures include ATV tours exploring off-road trails, snorkeling pristine reefs, and visiting nearby cays. Professional guides ensure safety while maximizing adventure and fun. Whether seeking Instagram-worthy pig encounters, adrenaline through ATVs, or comprehensive island-hopping adventures, Nassau provides gateway to Bahamas' most exciting experiences.`,
-      seo: { title: 'Nassau Adventure Tours 2025: Swimming Pigs, Sharks & Island Adventures', description: 'Thrilling Nassau adventures. Swimming pigs, shark encounters, ATVs, snorkeling. From $80.', keywords: 'Nassau adventure tours, swimming pigs Nassau, Nassau shark snorkeling, ATV tours Nassau' },
+      seo: { title: 'Nassau Adventure Tours 2026: Swimming Pigs, Sharks & Island Adventures', description: 'Thrilling Nassau adventures. Swimming pigs, shark encounters, ATVs, snorkeling. From $80.', keywords: 'Nassau adventure tours, swimming pigs Nassau, Nassau shark snorkeling, ATV tours Nassau' },
       whyChoose: [
         { icon: 'Heart', title: 'Famous Swimming Pigs', description: 'Day trips from Nassau to Exuma swimming pigs - bucket-list Bahamas experience.' },
         { icon: 'Anchor', title: 'Shark Encounters', description: 'Snorkel with friendly Caribbean reef sharks in safe controlled environments.' },
@@ -10411,7 +10411,7 @@ export const categoryGuides = {
       categoryName: 'Boat Tours',
       stats: { toursAvailable: 22, priceFrom: 129, duration: '3-10 hours' },
       introduction: `Nassau boat tours provide access to the spectacular Exuma Cays, offshore islands, pristine coral reefs, and hidden beaches unreachable by land. From half-day snorkel trips to nearby reefs to full-day adventures visiting swimming pigs, from sunset cruises to private yacht charters, boat tours showcase the Bahamas' crystal-clear waters and island beauty. Popular tours combine multiple activities - snorkeling, beach visits, shark encounters, sandbar stops - in comprehensive experiences. Whether aboard catamarans, powerboats, or luxury yachts, boat tours deliver quintessential Bahamian experiences with professional crews, all equipment, and often including lunch and drinks.`,
-      seo: { title: 'Nassau Boat Tours 2025: Island Hopping, Snorkeling & Sailing Adventures', description: 'Exciting Nassau boat tours. Island hopping, snorkeling, swimming pigs, catamarans. From $129.', keywords: 'Nassau boat tours, Nassau snorkeling tours, catamaran Nassau, island hopping Bahamas, boat trips Nassau' },
+      seo: { title: 'Nassau Boat Tours 2026: Island Hopping, Snorkeling & Sailing Adventures', description: 'Exciting Nassau boat tours. Island hopping, snorkeling, swimming pigs, catamarans. From $129.', keywords: 'Nassau boat tours, Nassau snorkeling tours, catamaran Nassau, island hopping Bahamas, boat trips Nassau' },
       whyChoose: [
         { icon: 'Ship', title: 'Access Remote Islands', description: 'Reach pristine cays, hidden beaches, and snorkel sites only accessible by boat.' },
         { icon: 'Waves', title: 'Crystal-Clear Waters', description: 'Bahamas\' famous water clarity perfect for snorkeling, swimming, and marine life viewing.' },
@@ -10466,7 +10466,7 @@ export const categoryGuides = {
       categoryName: 'Historical Tours',
       stats: { toursAvailable: 20, priceFrom: 35, duration: '2-6 hours' },
       introduction: `Puerto Rico's history spans 500+ years from Spanish colonization to American territory, creating rich historical tapestry. Historical tours explore Old San Juan - a UNESCO World Heritage Site with cobblestone streets, colorful colonial buildings, and impressive Spanish fortifications. Visit El Morro and San Cristóbal forts defending against centuries of attacks, walk through perfectly preserved colonial neighborhoods, and discover museums documenting indigenous Taino culture, Spanish rule, and Puerto Rican identity. Expert guides share fascinating stories about pirates, military conflicts, colonial life, and the island's unique political status creating engaging educational experiences in one of the Caribbean's most historically significant cities.`,
-      seo: { title: 'Puerto Rico Historical Tours 2025: Old San Juan Forts & Colonial Heritage', description: 'Historic Puerto Rico tours. Old San Juan, El Morro fort, Spanish colonial sites, UNESCO heritage. From $35.', keywords: 'Puerto Rico historical tours, Old San Juan tours, El Morro fort, San Juan history, colonial Puerto Rico' },
+      seo: { title: 'Puerto Rico Historical Tours 2026: Old San Juan Forts & Colonial Heritage', description: 'Historic Puerto Rico tours. Old San Juan, El Morro fort, Spanish colonial sites, UNESCO heritage. From $35.', keywords: 'Puerto Rico historical tours, Old San Juan tours, El Morro fort, San Juan history, colonial Puerto Rico' },
       whyChoose: [
         { icon: 'Anchor', title: 'UNESCO World Heritage Site', description: 'Old San Juan globally recognized for exceptional colonial architecture and historical significance.' },
         { icon: 'MapPin', title: 'Massive Spanish Forts', description: 'El Morro and San Cristóbal among Caribbean\'s largest most impressive fortifications.' },
@@ -10517,7 +10517,7 @@ export const categoryGuides = {
       categoryName: 'Rainforest Tours',
       stats: { toursAvailable: 18, priceFrom: 63, duration: '4-8 hours' },
       introduction: `El Yunque National Forest is Puerto Rico's crown natural jewel - the only tropical rainforest in the US National Forest System covering 28,000 acres of lush biodiversity. Rainforest tours explore this ecological paradise through guided hikes to stunning waterfalls like La Mina Falls, walks along forest trails spotting rare coquí frogs and tropical birds, swimming in natural pools, and learning about diverse ecosystems from coastal lowlands to cloud forest peaks. The rainforest receives 240+ inches of rain annually creating verdant landscapes with giant ferns, bamboo groves, and misty mountain vistas. Expert naturalist guides share ecological knowledge about endemic species, conservation, and the importance of tropical rainforests creating educational immersive experiences in this spectacular natural wonderland.`,
-      seo: { title: 'Puerto Rico Rainforest Tours 2025: El Yunque Waterfalls & Hiking', description: 'Explore El Yunque rainforest. Waterfalls, hiking trails, tropical wildlife, swimming. From $63. Only US tropical rainforest.', keywords: 'El Yunque tours, Puerto Rico rainforest, La Mina Falls, El Yunque hiking, rainforest tours Puerto Rico' },
+      seo: { title: 'Puerto Rico Rainforest Tours 2026: El Yunque Waterfalls & Hiking', description: 'Explore El Yunque rainforest. Waterfalls, hiking trails, tropical wildlife, swimming. From $63. Only US tropical rainforest.', keywords: 'El Yunque tours, Puerto Rico rainforest, La Mina Falls, El Yunque hiking, rainforest tours Puerto Rico' },
       whyChoose: [
         { icon: 'Sun', title: 'Only US Tropical Rainforest', description: 'El Yunque is unique - the only tropical rainforest in the US National Forest System.' },
         { icon: 'Waves', title: 'Spectacular Waterfalls', description: 'La Mina Falls, Juan Diego Falls, and hidden cascades with natural pool swimming.' },
@@ -10568,7 +10568,7 @@ export const categoryGuides = {
       categoryName: 'Beach Tours',
       stats: { toursAvailable: 16, priceFrom: 35, duration: '3-10 hours' },
       introduction: `Puerto Rico offers spectacular beach diversity from the vibrant Isla Verde near San Juan to family-friendly Luquillo with calm waters and facilities, from surfer paradise Rincón to pristine Flamenco Beach on Culebra Island, and unique bioluminescent bays glowing with microorganisms. Beach tours explore multiple coastal gems, some combining beach relaxation with kayaking bioluminescent bays for magical nighttime experiences. The warm Caribbean waters, year-round sunshine, and variety of beach types ensure perfect coastal experiences for every preference. Whether enjoying resort beaches, discovering hidden coves, island hopping to Culebra or Vieques, or kayaking glowing waters, Puerto Rico beach tours deliver ultimate tropical paradise with easy US accessibility.`,
-      seo: { title: 'Puerto Rico Beach Tours 2025: Bioluminescent Bays & Island Beaches', description: 'Stunning PR beaches. Bioluminescent bay kayaking, Culebra, Luquillo, Isla Verde. From $35. Paradise beaches.', keywords: 'Puerto Rico beaches, bioluminescent bay Puerto Rico, Culebra beach, Luquillo beach, best beaches PR' },
+      seo: { title: 'Puerto Rico Beach Tours 2026: Bioluminescent Bays & Island Beaches', description: 'Stunning PR beaches. Bioluminescent bay kayaking, Culebra, Luquillo, Isla Verde. From $35. Paradise beaches.', keywords: 'Puerto Rico beaches, bioluminescent bay Puerto Rico, Culebra beach, Luquillo beach, best beaches PR' },
       whyChoose: [
         { icon: 'Star', title: 'Bioluminescent Bays', description: 'Kayak through glowing bioluminescent waters - one of world\'s most magical natural phenomena.' },
         { icon: 'Sun', title: 'Beach Diversity', description: 'Calm family beaches, surfer spots, pristine island paradises, and unique bio bays.' },
@@ -10619,7 +10619,7 @@ export const categoryGuides = {
       categoryName: 'Cultural Tours',
       stats: { toursAvailable: 14, priceFrom: 63, duration: '3-8 hours' },
       introduction: `Puerto Rico's culture reflects rich blend of Taino indigenous, Spanish colonial, African, and American influences creating unique Caribbean-Latin American identity. Cultural tours explore this vibrant heritage through bomba y plena music and dance experiences, coffee plantation visits in mountain towns, artisan craft workshops, traditional festivals, and authentic neighborhood experiences. Learn about Puerto Rican resilience, Afro-Caribbean traditions, jíbaro mountain culture, and modern island life. Visit coffee haciendas understanding historic agricultural importance, experience traditional music with African roots, discover local crafts, and taste authentic Puerto Rican cuisine beyond typical tourist venues. Expert local guides share personal stories and cultural insights creating meaningful connections to the island's soul.`,
-      seo: { title: 'Puerto Rico Cultural Tours 2025: Bomba Music, Coffee Plantations & Heritage', description: 'Authentic PR culture. Bomba y plena music, coffee plantations, local traditions, heritage. From $63.', keywords: 'Puerto Rico cultural tours, bomba y plena, coffee plantation tours, Puerto Rican culture, cultural PR' },
+      seo: { title: 'Puerto Rico Cultural Tours 2026: Bomba Music, Coffee Plantations & Heritage', description: 'Authentic PR culture. Bomba y plena music, coffee plantations, local traditions, heritage. From $63.', keywords: 'Puerto Rico cultural tours, bomba y plena, coffee plantation tours, Puerto Rican culture, cultural PR' },
       whyChoose: [
         { icon: 'Music', title: 'Bomba y Plena Traditions', description: 'Experience Afro-Puerto Rican music and dance with roots in African slave culture.' },
         { icon: 'Heart', title: 'Coffee Plantation Heritage', description: 'Visit mountain haciendas learning about Puerto Rico\'s famous coffee industry and jíbaro culture.' },
@@ -10670,7 +10670,7 @@ export const categoryGuides = {
       categoryName: 'Adventure Tours',
       stats: { toursAvailable: 16, priceFrom: 63, duration: '3-8 hours' },
       introduction: `Puerto Rico's diverse terrain creates adventure playground from rainforest zip-lines to cave explorations, from ATV rides to canyoning adventures. Toro Verde offers some of world's longest zip-lines soaring over forests and valleys, while Rio Camuy caves provide underground exploration through massive cavern systems. ATV tours traverse mountains and coasts, rappelling adventures descend waterfalls, and multi-activity tours combine various thrills. Professional guides ensure safety while delivering adrenaline and showcasing Puerto Rico's spectacular natural beauty through active engagement. Whether seeking extreme zip-line speeds, mysterious cave exploration, or comprehensive multi-activity adventures, Puerto Rico delivers exciting experiences in stunning settings.`,
-      seo: { title: 'Puerto Rico Adventure Tours 2025: Zip-Lining, Caves & ATV Adventures', description: 'Thrilling PR adventures. Zip-lining, cave exploration, ATVs, canyoning, rainforest. From $63.', keywords: 'Puerto Rico adventure tours, zip-lining Puerto Rico, Rio Camuy caves, ATV tours PR, adventure PR' },
+      seo: { title: 'Puerto Rico Adventure Tours 2026: Zip-Lining, Caves & ATV Adventures', description: 'Thrilling PR adventures. Zip-lining, cave exploration, ATVs, canyoning, rainforest. From $63.', keywords: 'Puerto Rico adventure tours, zip-lining Puerto Rico, Rio Camuy caves, ATV tours PR, adventure PR' },
       whyChoose: [
         { icon: 'Star', title: 'World-Class Zip-Lines', description: 'Toro Verde features "Monster" - one of world\'s longest zip-lines at 2,530 meters.' },
         { icon: 'Anchor', title: 'Massive Cave Systems', description: 'Rio Camuy caves among world\'s largest underground river systems - spectacular exploration.' },
@@ -10721,7 +10721,7 @@ export const categoryGuides = {
       categoryName: 'Food Tours',
       stats: { toursAvailable: 12, priceFrom: 35, duration: '3-6 hours' },
       introduction: `Puerto Rican cuisine showcases flavorful blend of Spanish, African, Taino, and American influences creating distinctive island gastronomy. Food tours explore this delicious heritage through Old San Juan culinary walks sampling mofongo, tostones, and alcapurrias, cooking classes learning traditional recipes, visits to local food markets and kiosks, rum distillery tours, and authentic restaurant experiences. Discover what makes Puerto Rican food unique - sofrito bases, plantain versatility, crispy chicharrón, and refreshing piraguas. Expert local food guides share culinary traditions, family recipes, and the cultural significance of food in Puerto Rican life creating delicious educational experiences beyond typical tourist dining.`,
-      seo: { title: 'Puerto Rico Food Tours 2025: Mofongo, Local Cuisine & Culinary Walks', description: 'Authentic PR food tours. Mofongo, local cuisine, cooking classes, food walks. From $35. Puerto Rican gastronomy.', keywords: 'Puerto Rico food tours, Old San Juan food tour, mofongo Puerto Rico, PR cooking classes, culinary tours' },
+      seo: { title: 'Puerto Rico Food Tours 2026: Mofongo, Local Cuisine & Culinary Walks', description: 'Authentic PR food tours. Mofongo, local cuisine, cooking classes, food walks. From $35. Puerto Rican gastronomy.', keywords: 'Puerto Rico food tours, Old San Juan food tour, mofongo Puerto Rico, PR cooking classes, culinary tours' },
       whyChoose: [
         { icon: 'Heart', title: 'Unique Island Cuisine', description: 'Distinctive flavors different from Mexican/Cuban - authentic Puerto Rican culinary traditions.' },
         { icon: 'Star', title: 'Old San Juan Culinary Scene', description: 'Historic setting with excellent restaurants, cafés, and street food in charming colonial city.' },
@@ -10776,7 +10776,7 @@ export const categoryGuides = {
       categoryName: 'Beach Tours',
       stats: { toursAvailable: 18, priceFrom: 47, duration: '3-8 hours' },
       introduction: `Punta Cana beaches are world-famous for powder-white sand, crystal-clear turquoise water, and palm-lined shores stretching for miles. Beach tours explore multiple coastal gems from popular Bavaro Beach with water sports and amenities to secluded Macao Beach with dramatic waves, from Juanillo Beach tranquility to Cabeza de Toro snorkeling. Many tours combine beach hopping with snorkeling coral reefs, visiting Saona Island paradise, or catamaran cruises. The consistent sunshine, warm waters, and variety of beach types create year-round tropical paradise. Whether relaxing at resort beaches, discovering hidden coves, or sailing to offshore islands, Punta Cana beach tours deliver classic Caribbean coastal perfection.`,
-      seo: { title: 'Punta Cana Beach Tours 2025: Bavaro Beach & Island Hopping', description: 'Stunning Punta Cana beaches. Bavaro, Macao, Saona Island, beach hopping. From $47. Caribbean paradise.', keywords: 'Punta Cana beaches, Bavaro Beach, Saona Island, best beaches Punta Cana, beach tours DR' },
+      seo: { title: 'Punta Cana Beach Tours 2026: Bavaro Beach & Island Hopping', description: 'Stunning Punta Cana beaches. Bavaro, Macao, Saona Island, beach hopping. From $47. Caribbean paradise.', keywords: 'Punta Cana beaches, Bavaro Beach, Saona Island, best beaches Punta Cana, beach tours DR' },
       whyChoose: [
         { icon: 'Sun', title: 'World-Class Beaches', description: 'Miles of pristine powder-white sand and turquoise Caribbean water.' },
         { icon: 'Waves', title: 'Year-Round Sunshine', description: 'Consistent sunshine and warm temperatures create perfect beach conditions always.' },
@@ -10827,7 +10827,7 @@ export const categoryGuides = {
       categoryName: 'Water Sports',
       stats: { toursAvailable: 24, priceFrom: 27, duration: '1-4 hours' },
       introduction: `Punta Cana's calm turquoise waters, consistent trade winds, and year-round sunshine create ideal conditions for water sports of all types. From adrenaline-pumping jet skis and parasailing to peaceful paddleboarding and kayaking, from world-class kitesurfing spots to beginner-friendly windsurfing, the variety is exceptional. Most all-inclusive resorts include non-motorized water sports, while independent operators offer motorized activities, lessons, and equipment rental. Professional instruction available for beginners in kitesurfing, windsurfing, and other sports. Whether seeking extreme water sports or leisurely paddling, Punta Cana delivers perfect conditions and professional services.`,
-      seo: { title: 'Punta Cana Water Sports 2025: Kitesurfing, Jet Skiing & Activities', description: 'Exciting Punta Cana water sports. Kitesurfing, jet skis, parasailing, windsurfing. From $27.', keywords: 'Punta Cana water sports, kitesurfing Punta Cana, jet skiing DR, water activities Punta Cana' },
+      seo: { title: 'Punta Cana Water Sports 2026: Kitesurfing, Jet Skiing & Activities', description: 'Exciting Punta Cana water sports. Kitesurfing, jet skis, parasailing, windsurfing. From $27.', keywords: 'Punta Cana water sports, kitesurfing Punta Cana, jet skiing DR, water activities Punta Cana' },
       whyChoose: [
         { icon: 'Waves', title: 'Perfect Conditions', description: 'Calm waters, consistent winds, and warm temperatures ideal for all water sports year-round.' },
         { icon: 'Star', title: 'World-Class Kitesurfing', description: 'Consistent trade winds make Punta Cana premier kitesurfing destination in Caribbean.' },
@@ -10878,7 +10878,7 @@ export const categoryGuides = {
       categoryName: 'Golf Tours',
       stats: { toursAvailable: 8, priceFrom: 80, duration: '4-6 hours' },
       introduction: `Punta Cana is Caribbean's premier golf destination featuring world-class championship courses designed by golf legends like Jack Nicklaus, Tom Fazio, and Nick Price. Golf tours offer access to stunning oceanfront courses with dramatic coastal holes, lush tropical landscaping, and impeccable conditions year-round. Courses like Punta Espada (host to PGA Champions Tour), Corales Golf Club with oceanfront holes, and La Cana showcase spectacular Caribbean settings combined with challenging layouts. Most packages include green fees, cart, and often club rentals. Professional instruction available for improving your game. Whether serious golfer seeking championship courses or casual player wanting to golf in paradise, Punta Cana delivers exceptional experiences with ocean views and tropical beauty.`,
-      seo: { title: 'Punta Cana Golf Tours 2025: Championship Courses & Ocean Views', description: 'World-class Punta Cana golf. Jack Nicklaus courses, oceanfront holes, championship golf. From $80.', keywords: 'Punta Cana golf, Punta Espada golf, golf courses Punta Cana, Caribbean golf, Corales Golf Club' },
+      seo: { title: 'Punta Cana Golf Tours 2026: Championship Courses & Ocean Views', description: 'World-class Punta Cana golf. Jack Nicklaus courses, oceanfront holes, championship golf. From $80.', keywords: 'Punta Cana golf, Punta Espada golf, golf courses Punta Cana, Caribbean golf, Corales Golf Club' },
       whyChoose: [
         { icon: 'Star', title: 'Championship Courses', description: 'Courses designed by Jack Nicklaus, Tom Fazio, Nick Price - world-class layouts and conditions.' },
         { icon: 'Waves', title: 'Spectacular Ocean Views', description: 'Dramatic coastal holes with Caribbean Sea views on multiple courses.' },
@@ -10929,7 +10929,7 @@ export const categoryGuides = {
       categoryName: 'Cultural Tours',
       stats: { toursAvailable: 10, priceFrom: 55, duration: '4-8 hours' },
       introduction: `Beyond Punta Cana's resorts lies authentic Dominican culture waiting to be discovered. Cultural tours explore local villages experiencing traditional life, visit Altos de Chavón - replica 16th century Mediterranean village, discover cigar and rum production, interact with local families, and learn about Dominican traditions, music, and cuisine. These experiences provide meaningful connections to real Dominican life beyond all-inclusive bubbles. Visit sugar cane plantations understanding historical industry, watch cigar rollers demonstrating traditional techniques, experience merengue and bachata music, and taste authentic Dominican food in local settings. Expert guides share cultural insights and facilitate authentic interactions creating enriching experiences showcasing the warm hospitality and vibrant culture of the Dominican people.`,
-      seo: { title: 'Punta Cana Cultural Tours 2025: Local Villages & Dominican Heritage', description: 'Authentic Dominican culture. Local villages, Altos de Chavón, cigars, rum, traditions. From $55.', keywords: 'Punta Cana cultural tours, Dominican culture, Altos de Chavón, cultural Punta Cana, village tours' },
+      seo: { title: 'Punta Cana Cultural Tours 2026: Local Villages & Dominican Heritage', description: 'Authentic Dominican culture. Local villages, Altos de Chavón, cigars, rum, traditions. From $55.', keywords: 'Punta Cana cultural tours, Dominican culture, Altos de Chavón, cultural Punta Cana, village tours' },
       whyChoose: [
         { icon: 'Heart', title: 'Authentic Village Experiences', description: 'Visit real Dominican villages experiencing traditional life beyond tourist resorts.' },
         { icon: 'MapPin', title: 'Altos de Chavón', description: 'Beautiful replica Mediterranean village with artisan workshops, amphitheater, and art galleries.' },
@@ -10980,7 +10980,7 @@ export const categoryGuides = {
       categoryName: 'Adventure Tours',
       stats: { toursAvailable: 20, priceFrom: 40, duration: '3-8 hours' },
       introduction: `Punta Cana adventure tours deliver adrenaline beyond beaches through zip-lining rainforest canopies, ATV rides through countryside and beaches, dune buggy expeditions, cenote swimming, cave exploration, and multi-activity combinations. Popular adventures include racing through sugar cane fields on ATVs, zip-lining across jungle valleys, exploring limestone caves with underground rivers, and visiting hidden cenotes for swimming. Most tours combine multiple activities maximizing adventure in single experiences - buggy rides to beaches, zip-lines with cenote swimming, ATVs through villages. Professional guides ensure safety while delivering thrills and showcasing Dominican landscapes beyond resort areas. Whether seeking extreme speeds or moderate outdoor activities, Punta Cana adventures provide exciting alternatives to beach relaxation.`,
-      seo: { title: 'Punta Cana Adventure Tours 2025: ATVs, Zip-Lining & Buggy Rides', description: 'Thrilling Punta Cana adventures. ATVs, dune buggies, zip-lining, caves, cenotes. From $40.', keywords: 'Punta Cana adventure tours, ATV Punta Cana, dune buggy tours, zip-lining DR, adventure Punta Cana' },
+      seo: { title: 'Punta Cana Adventure Tours 2026: ATVs, Zip-Lining & Buggy Rides', description: 'Thrilling Punta Cana adventures. ATVs, dune buggies, zip-lining, caves, cenotes. From $40.', keywords: 'Punta Cana adventure tours, ATV Punta Cana, dune buggy tours, zip-lining DR, adventure Punta Cana' },
       whyChoose: [
         { icon: 'Star', title: 'Diverse Adventures', description: 'ATVs, dune buggies, zip-lines, caves, cenotes - multiple exciting options available.' },
         { icon: 'Waves', title: 'Countryside Exploration', description: 'Venture beyond resorts exploring rural Dominican landscapes, villages, and natural areas.' },
@@ -11031,7 +11031,7 @@ export const categoryGuides = {
       categoryName: 'Catamaran Cruises',
       stats: { toursAvailable: 14, priceFrom: 50, duration: '3-8 hours' },
       introduction: `Catamaran cruises provide ultimate way to experience Punta Cana's stunning coastline and offshore islands. Sail smooth stable catamarans to Saona Island paradise, snorkel pristine reefs, visit natural pool sandbars, and enjoy open bars with Caribbean rum drinks. From half-day snorkel sails to full-day island adventures, from sunset romantic cruises to party boat experiences, catamarans offer diverse Caribbean sailing experiences. Most cruises include all equipment, lunch or snacks, unlimited drinks, snorkeling gear, and professional crews ensuring safety and fun. Whether seeking romantic sunset sails, family-friendly island trips, or party atmosphere with music and dancing, Punta Cana catamaran cruises deliver memorable experiences on turquoise Caribbean waters.`,
-      seo: { title: 'Punta Cana Catamaran Cruises 2025: Saona Island & Sunset Sails', description: 'Luxury Punta Cana catamarans. Saona Island, snorkeling, sunset cruises, open bar. From $50.', keywords: 'Punta Cana catamaran, Saona Island tours, sunset cruise Punta Cana, sailing tours DR' },
+      seo: { title: 'Punta Cana Catamaran Cruises 2026: Saona Island & Sunset Sails', description: 'Luxury Punta Cana catamarans. Saona Island, snorkeling, sunset cruises, open bar. From $50.', keywords: 'Punta Cana catamaran, Saona Island tours, sunset cruise Punta Cana, sailing tours DR' },
       whyChoose: [
         { icon: 'Sailboat', title: 'Smooth Sailing', description: 'Catamaran stability provides comfortable sailing even for those concerned about seasickness.' },
         { icon: 'Star', title: 'Saona Island Access', description: 'Most popular excursion - sail to pristine island paradise with white sand beaches.' },
@@ -11088,7 +11088,7 @@ export const categoryGuides = {
       introduction: `Santo Domingo is the oldest continuously inhabited European settlement in the Americas, founded 1496, creating unparalleled historical significance. Historical tours explore the UNESCO World Heritage Colonial Zone (Zona Colonial) featuring cobblestone streets, first cathedral in Americas, Alcázar de Colón palace, fortresses, museums, and perfectly preserved Spanish colonial architecture. Walk streets where Christopher Columbus, Diego Columbus, and Spanish conquistadors lived, visit the first university, first hospital, and first monastery in the New World. Expert historians share fascinati
 
 ng stories about Spanish colonization, colonial power, pirate attacks, and Santo Domingo's role as gateway to Americas creating deeply educational experiences in this living museum of colonial history.`,
-      seo: { title: 'Santo Domingo Historical Tours 2025: Colonial Zone & UNESCO Heritage', description: 'Historic Santo Domingo tours. Colonial Zone UNESCO site, first cathedral Americas, colonial history. From $45.', keywords: 'Santo Domingo historical tours, Zona Colonial, Santo Domingo UNESCO, colonial Santo Domingo, DR history' },
+      seo: { title: 'Santo Domingo Historical Tours 2026: Colonial Zone & UNESCO Heritage', description: 'Historic Santo Domingo tours. Colonial Zone UNESCO site, first cathedral Americas, colonial history. From $45.', keywords: 'Santo Domingo historical tours, Zona Colonial, Santo Domingo UNESCO, colonial Santo Domingo, DR history' },
       whyChoose: [
         { icon: 'BookOpen', title: 'First City of Americas', description: 'Oldest European settlement in New World - unparalleled historical significance and "firsts."' },
         { icon: 'Anchor', title: 'UNESCO World Heritage', description: 'Colonial Zone globally recognized for exceptional preservation and historical importance.' },
@@ -11139,7 +11139,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Cultural Tours',
       stats: { toursAvailable: 12, priceFrom: 50, duration: '3-6 hours' },
       introduction: `Santo Domingo's vibrant culture blends Spanish colonial heritage, African influences, and modern Dominican identity. Cultural tours explore this rich tapestry through merengue and bachata music experiences, visits to authentic neighborhoods, local markets, cultural centers, and interactions with Dominicans. Discover the birthplace of merengue, experience traditional dance, taste authentic Dominican cuisine in local spots, and explore neighborhoods beyond tourist zones. Learn about Dominican resilience, cultural traditions, and the warm hospitality that defines the capital. Expert local guides share personal stories and cultural insights creating meaningful connections to real Dominican life beyond colonial history.`,
-      seo: { title: 'Santo Domingo Cultural Tours 2025: Merengue, Local Life & Dominican Heritage', description: 'Authentic Santo Domingo culture. Merengue music, local neighborhoods, markets, Dominican traditions. From $50.', keywords: 'Santo Domingo cultural tours, merengue Santo Domingo, Dominican culture, cultural tours DR' },
+      seo: { title: 'Santo Domingo Cultural Tours 2026: Merengue, Local Life & Dominican Heritage', description: 'Authentic Santo Domingo culture. Merengue music, local neighborhoods, markets, Dominican traditions. From $50.', keywords: 'Santo Domingo cultural tours, merengue Santo Domingo, Dominican culture, cultural tours DR' },
       whyChoose: [
         { icon: 'Music', title: 'Birthplace of Merengue', description: 'Experience merengue music and dance at its source - Dominican national music.' },
         { icon: 'Heart', title: 'Authentic Neighborhoods', description: 'Visit real Dominican neighborhoods experiencing daily life beyond tourist zones.' },
@@ -11190,7 +11190,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Food Tours',
       stats: { toursAvailable: 10, priceFrom: 55, duration: '3-5 hours' },
       introduction: `Santo Domingo's culinary scene showcases authentic Dominican flavors - hearty, flavorful, and deeply rooted in Spanish, African, and Taino traditions. Food tours explore this delicious heritage through Colonial Zone restaurant walks, visits to local markets overflowing with tropical produce, cooking classes learning traditional recipes, and authentic neighborhood food spots. Discover la bandera (the national dish), master making mofongo and mangu, taste fresh tropical fruits, and experience street food culture. Expert food guides share culinary traditions, family recipes, and the cultural significance of food in Dominican life creating delicious educational experiences showcasing real Dominican gastronomy beyond resort dining.`,
-      seo: { title: 'Santo Domingo Food Tours 2025: Dominican Cuisine & Culinary Adventures', description: 'Authentic Dominican food tours. Local cuisine, cooking classes, market visits, street food. From $55.', keywords: 'Santo Domingo food tours, Dominican cuisine, culinary tours Santo Domingo, cooking classes DR' },
+      seo: { title: 'Santo Domingo Food Tours 2026: Dominican Cuisine & Culinary Adventures', description: 'Authentic Dominican food tours. Local cuisine, cooking classes, market visits, street food. From $55.', keywords: 'Santo Domingo food tours, Dominican cuisine, culinary tours Santo Domingo, cooking classes DR' },
       whyChoose: [
         { icon: 'Heart', title: 'Authentic Dominican Flavors', description: 'Experience real Dominican cuisine different from resort food - hearty, flavorful, traditional.' },
         { icon: 'MapPin', title: 'Colonial Zone Culinary Scene', description: 'Historic setting with excellent mix of traditional and modern Dominican restaurants.' },
@@ -11241,7 +11241,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Architecture Tours',
       stats: { toursAvailable: 8, priceFrom: 50, duration: '2-4 hours' },
       introduction: `Santo Domingo showcases exceptional Spanish colonial architecture spanning over 500 years - the finest collection of colonial buildings in the Caribbean. Architecture tours explore Gothic cathedrals, Renaissance palaces, baroque churches, fortifications, and beautifully preserved colonial homes that tell the story of Spanish Empire's first American foothold. See the first cathedral in the Americas (Catedral Primada), Diego Columbus's Alcázar palace, Ozama Fortress, colonial mansions, and cobblestone streets lined with colorful buildings. Expert guides explain architectural styles, construction techniques, historical context, and restoration efforts preserving this UNESCO World Heritage treasure showcasing architectural evolution from 15th to 21st century.`,
-      seo: { title: 'Santo Domingo Architecture Tours 2025: Colonial Buildings & Heritage Sites', description: 'Spanish colonial architecture tours. UNESCO heritage buildings, cathedrals, palaces, fortresses. From $50.', keywords: 'Santo Domingo architecture, colonial architecture Santo Domingo, architectural tours DR, UNESCO heritage' },
+      seo: { title: 'Santo Domingo Architecture Tours 2026: Colonial Buildings & Heritage Sites', description: 'Spanish colonial architecture tours. UNESCO heritage buildings, cathedrals, palaces, fortresses. From $50.', keywords: 'Santo Domingo architecture, colonial architecture Santo Domingo, architectural tours DR, UNESCO heritage' },
       whyChoose: [
         { icon: 'Star', title: 'Oldest Colonial Architecture', description: 'First European city in Americas with unparalleled concentration of 15th-16th century buildings.' },
         { icon: 'Heart', title: 'UNESCO World Heritage', description: 'Colonial Zone designated for outstanding universal value and preservation.' },
@@ -11292,7 +11292,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Museum Tours',
       stats: { toursAvailable: 10, priceFrom: 45, duration: '2-4 hours' },
       introduction: `Santo Domingo's museums showcase 500+ years of history from Taino indigenous culture through Spanish colonial period to modern Dominican Republic. Museum tours explore exceptional collections in beautifully restored colonial buildings - Museo de las Casas Reales (colonial history), Museo del Hombre Dominicano (Taino artifacts), Alcázar de Colón (Columbus family palace), museums of colonial art, amber, larimar, and more. Expert guides bring exhibits to life explaining indigenous cultures, Spanish conquest, colonial society, Dominican independence, cultural evolution creating comprehensive understanding of Dominican heritage beyond surface-level tourism showcasing world-class museum collections in stunning historic settings.`,
-      seo: { title: 'Santo Domingo Museum Tours 2025: Colonial History & Cultural Museums', description: 'Expert-guided museum tours. Colonial history, Taino culture, Dominican art, heritage museums. From $45.', keywords: 'Santo Domingo museums, Colonial Zone museums, museum tours DR, Dominican history museums' },
+      seo: { title: 'Santo Domingo Museum Tours 2026: Colonial History & Cultural Museums', description: 'Expert-guided museum tours. Colonial history, Taino culture, Dominican art, heritage museums. From $45.', keywords: 'Santo Domingo museums, Colonial Zone museums, museum tours DR, Dominican history museums' },
       whyChoose: [
         { icon: 'BookOpen', title: 'World-Class Collections', description: 'Exceptional Taino artifacts, colonial era objects, art, and historical treasures.' },
         { icon: 'Star', title: 'Historic Buildings', description: 'Museums housed in beautifully restored Spanish colonial palaces and mansions.' },
@@ -11343,7 +11343,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Walking Tours',
       stats: { toursAvailable: 15, priceFrom: 40, duration: '2-4 hours' },
       introduction: `Walking tours offer the best way to experience Santo Domingo's Colonial Zone - a compact UNESCO World Heritage district packed with history, architecture, culture, and charm. Stroll cobblestone streets discovering hidden plazas, peek into colonial courtyards, visit historic churches and palaces, experience local life, and uncover stories of 500+ years of history. From comprehensive historical walks to food-focused strolls, photography walks, and sunset tours, walking tours reveal Colonial Zone's layers often missed when rushing between major sights. Expert local guides share insider knowledge, neighborhood secrets, and historical context creating intimate engaging experiences showcasing why Santo Domingo is Caribbean's most historically significant city perfect for exploring on foot.`,
-      seo: { title: 'Santo Domingo Walking Tours 2025: Colonial Zone Guided Walks', description: 'Expert Colonial Zone walking tours. Historic sites, hidden gems, local culture, guided walks. From $40.', keywords: 'Santo Domingo walking tours, Colonial Zone walks, guided walking tours DR, Colonial Zone tours' },
+      seo: { title: 'Santo Domingo Walking Tours 2026: Colonial Zone Guided Walks', description: 'Expert Colonial Zone walking tours. Historic sites, hidden gems, local culture, guided walks. From $40.', keywords: 'Santo Domingo walking tours, Colonial Zone walks, guided walking tours DR, Colonial Zone tours' },
       whyChoose: [
         { icon: 'MapPin', title: 'Perfect Walkable City', description: 'Compact Colonial Zone ideal for walking - most sites within 15 minutes of each other.' },
         { icon: 'Heart', title: 'Hidden Gems', description: 'Local guides reveal secret spots, hidden courtyards, and lesser-known historical sites.' },
@@ -11398,7 +11398,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Historical Tours',
       stats: { toursAvailable: 14, priceFrom: 69, duration: '3-6 hours' },
       introduction: `St. Kitts and Nevis boast exceptional Caribbean historical heritage - Brimstone Hill Fortress (UNESCO World Heritage "Gibraltar of the West Indies"), colonial sugar plantations, military fortifications, and fascinating British colonial history. Historical tours explore this rich past through guided visits to the massive 17th-century fortress with panoramic views, beautifully restored plantation great houses showcasing colonial life, historic Basseterre town with Georgian architecture, and Romney Manor ruins. Learn about sugar industry dominance, military strategic importance, slave history and emancipation, colonial conflicts, and independence journey. Expert historian guides bring centuries to life sharing stories, architectural details, and historical context creating immersive educational experiences showcasing why these twin islands played outsized roles in Caribbean colonial history.`,
-      seo: { title: 'St. Kitts Historical Tours 2025: Brimstone Hill Fortress & Colonial Heritage', description: 'UNESCO historical sites. Brimstone Hill, plantations, forts, colonial history. From $69.', keywords: 'St. Kitts historical tours, Brimstone Hill Fortress, colonial St. Kitts, historical sites' },
+      seo: { title: 'St. Kitts Historical Tours 2026: Brimstone Hill Fortress & Colonial Heritage', description: 'UNESCO historical sites. Brimstone Hill, plantations, forts, colonial history. From $69.', keywords: 'St. Kitts historical tours, Brimstone Hill Fortress, colonial St. Kitts, historical sites' },
       whyChoose: [
         { icon: 'Star', title: 'UNESCO World Heritage', description: 'Brimstone Hill Fortress - best-preserved British colonial fortress in Americas.' },
         { icon: 'BookOpen', title: 'Rich Colonial History', description: 'Strategic location made St. Kitts "Mother Colony" with fascinating military and sugar history.' },
@@ -11449,7 +11449,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Hiking Tours',
       stats: { toursAvailable: 10, priceFrom: 85, duration: '4-8 hours' },
       introduction: `St. Kitts and Nevis offer exceptional Caribbean hiking through lush rainforest to volcanic crater summits. Mount Liamuiga (3,792 ft) on St. Kitts features challenging hikes through cloud forest to dormant volcano crater with stunning views, while Nevis Peak (3,232 ft) provides equally rewarding summit adventures. Hiking tours range from moderate rainforest trails exploring tropical flora and fauna, to strenuous summit climbs requiring fitness and determination, guided by experienced local guides who ensure safety while sharing botanical knowledge and geological insights. Experience dramatic landscapes transitioning from tropical rainforest through cloud forest to volcanic peaks, encounter unique endemic species, and enjoy panoramic Caribbean views from summit perspectives creating unforgettable hiking adventures showcasing the islands' volcanic natural beauty.`,
-      seo: { title: 'St. Kitts Hiking Tours 2025: Mount Liamuiga Volcano & Rainforest Trails', description: 'Volcano summit hikes. Mount Liamuiga crater, Nevis Peak, rainforest trails, guided treks. From $85.', keywords: 'St. Kitts hiking, Mount Liamuiga hike, volcano hiking, rainforest trails St. Kitts' },
+      seo: { title: 'St. Kitts Hiking Tours 2026: Mount Liamuiga Volcano & Rainforest Trails', description: 'Volcano summit hikes. Mount Liamuiga crater, Nevis Peak, rainforest trails, guided treks. From $85.', keywords: 'St. Kitts hiking, Mount Liamuiga hike, volcano hiking, rainforest trails St. Kitts' },
       whyChoose: [
         { icon: 'Sun', title: 'Volcanic Summit Hiking', description: 'Climb to dormant volcano craters with spectacular panoramic Caribbean views.' },
         { icon: 'Star', title: 'Pristine Rainforest', description: 'Hike through lush tropical rainforest and cloud forest with diverse ecosystems.' },
@@ -11500,7 +11500,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Beach Tours',
       stats: { toursAvailable: 12, priceFrom: 45, duration: '3-6 hours' },
       introduction: `St. Kitts and Nevis offer stunning Caribbean beach diversity - from the famous golden sand Frigate Bay beaches to secluded volcanic black sand beaches on Southeast Peninsula, and Nevis's pristine Pinney's Beach. Beach tours showcase this coastal beauty through beach hopping adventures visiting multiple beaches, boat excursions to remote coves, sunset beach experiences, and water sports combinations. Discover the popular South Frigate Bay Beach with its beach bars and water sports, explore untouched Southeast Peninsula beaches accessible only by boat or hiking, experience Nevis's laid-back Pinney's Beach stretching 3 miles, and enjoy secluded intimate beaches perfect for romantic getaways. Expert guides share beach ecology, local culture, and insider knowledge creating comprehensive beach experiences showcasing the islands' diverse coastline.`,
-      seo: { title: 'St. Kitts Beach Tours 2025: Frigate Bay, Peninsula Beaches & Island Hopping', description: 'Beautiful Caribbean beaches. Frigate Bay, Peninsula, Nevis beaches, boat tours, beach hopping. From $45.', keywords: 'St. Kitts beaches, beach tours St. Kitts, Frigate Bay, Nevis beaches, Caribbean beaches' },
+      seo: { title: 'St. Kitts Beach Tours 2026: Frigate Bay, Peninsula Beaches & Island Hopping', description: 'Beautiful Caribbean beaches. Frigate Bay, Peninsula, Nevis beaches, boat tours, beach hopping. From $45.', keywords: 'St. Kitts beaches, beach tours St. Kitts, Frigate Bay, Nevis beaches, Caribbean beaches' },
       whyChoose: [
         { icon: 'Waves', title: 'Beach Diversity', description: 'Golden sand, black volcanic sand, secluded coves - varied Caribbean beach experiences.' },
         { icon: 'Sun', title: 'Less Crowded', description: 'Peaceful beaches without mass tourism - authentic Caribbean tranquility.' },
@@ -11551,7 +11551,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Cultural Tours',
       stats: { toursAvailable: 11, priceFrom: 65, duration: '3-6 hours' },
       introduction: `St. Kitts and Nevis cultural heritage reflects rich sugar plantation history, African heritage, British colonial influence, and vibrant Caribbean traditions. Cultural tours explore this legacy through visits to Basseterre's colorful markets and Georgian architecture, traditional villages showcasing local life, rum distilleries, cultural centers celebrating music and art, and interactions with friendly Kittitians and Nevisians. Learn about sugar industry's dominance, slavery and emancipation history, independence journey, traditional music including calypso and soca, local crafts including batik and pottery, and the warm island culture. Expert guides share personal stories, historical context, and cultural insights creating authentic connections to island life beyond resort experiences showcasing twin-island cultural identity.`,
-      seo: { title: 'St. Kitts Cultural Tours 2025: Caribbean Heritage & Island Traditions', description: 'Authentic island culture. Markets, rum tours, local villages, cultural heritage, traditions. From $65.', keywords: 'St. Kitts cultural tours, Caribbean culture, cultural experiences St. Kitts, island traditions' },
+      seo: { title: 'St. Kitts Cultural Tours 2026: Caribbean Heritage & Island Traditions', description: 'Authentic island culture. Markets, rum tours, local villages, cultural heritage, traditions. From $65.', keywords: 'St. Kitts cultural tours, Caribbean culture, cultural experiences St. Kitts, island traditions' },
       whyChoose: [
         { icon: 'Heart', title: 'Authentic Caribbean Culture', description: 'Experience genuine island life and warm Caribbean hospitality beyond tourist areas.' },
         { icon: 'BookOpen', title: 'Rich Sugar Heritage', description: 'Learn about sugar industry that shaped islands\' history and culture profoundly.' },
@@ -11602,7 +11602,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Adventure Tours',
       stats: { toursAvailable: 13, priceFrom: 75, duration: '2-6 hours' },
       introduction: `St. Kitts and Nevis offer exciting Caribbean adventure opportunities beyond hiking - exhilarating rainforest zip-lining soaring through jungle canopy, rugged ATV tours exploring off-road trails and beaches, sea kayaking along dramatic coastlines, scuba diving pristine reefs, and catamaran sailing adventures. Adventure tours range from adrenaline-pumping zip-line canopy tours with multiple lines and platforms, to muddy ATV expeditions traversing plantations and mountains, snorkeling hidden coves, and multi-activity combination tours. Expert adventure guides ensure safety while maximizing thrills creating unforgettable experiences for active travelers wanting to experience the islands' natural beauty from adventurous perspectives showcasing volcanic landscapes, tropical forests, and Caribbean waters through exciting outdoor pursuits.`,
-      seo: { title: 'St. Kitts Adventure Tours 2025: Zip-Lining, ATV, Water Sports & Outdoor Thrills', description: 'Adrenaline adventures. Zip-lining, ATV tours, kayaking, diving, adventure activities. From $75.', keywords: 'St. Kitts adventure tours, zip-lining St. Kitts, ATV tours, adventure activities, outdoor adventures' },
+      seo: { title: 'St. Kitts Adventure Tours 2026: Zip-Lining, ATV, Water Sports & Outdoor Thrills', description: 'Adrenaline adventures. Zip-lining, ATV tours, kayaking, diving, adventure activities. From $75.', keywords: 'St. Kitts adventure tours, zip-lining St. Kitts, ATV tours, adventure activities, outdoor adventures' },
       whyChoose: [
         { icon: 'Star', title: 'Diverse Adventures', description: 'Rainforest zip-lining, mountain ATV rides, water sports - varied adventure options.' },
         { icon: 'Heart', title: 'Volcanic Terrain', description: 'Dramatic landscapes from volcanic mountains to coastal waters create exciting settings.' },
@@ -11653,7 +11653,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Railway Tours',
       stats: { toursAvailable: 4, priceFrom: 95, duration: '3-4 hours' },
       introduction: `The St. Kitts Scenic Railway offers a unique Caribbean experience - riding the last operating sugar train through breathtaking coastal landscapes, lush valleys, and former plantation areas. Built 1912-1926 to transport sugarcane, this narrow-gauge railway now provides 18-mile scenic tours around northern St. Kitts with double-decker railcars featuring open-air upper observation decks and enclosed lower climate-controlled lounges. Experience dramatic coastline views, rainforest panoramas, historic sugar estates, local villages, and engineering marvels like tunnels and bridges while learning about sugar industry history and island culture through narration and local musicians. The railway journey combines nostalgia, history, spectacular scenery, and cultural immersion creating relaxed memorable experiences perfect for all ages showcasing St. Kitts from a unique railway perspective impossible to see otherwise.`,
-      seo: { title: 'St. Kitts Scenic Railway 2025: Historic Sugar Train Coastal Journey', description: 'Unique railway experience. Last sugar train, coastal views, historical journey, scenic tour. From $95.', keywords: 'St. Kitts Scenic Railway, sugar train, railway tour St. Kitts, scenic train ride' },
+      seo: { title: 'St. Kitts Scenic Railway 2026: Historic Sugar Train Coastal Journey', description: 'Unique railway experience. Last sugar train, coastal views, historical journey, scenic tour. From $95.', keywords: 'St. Kitts Scenic Railway, sugar train, railway tour St. Kitts, scenic train ride' },
       whyChoose: [
         { icon: 'Star', title: 'Unique Caribbean Experience', description: 'Only operational historical sugar train in Caribbean - truly one-of-a-kind attraction.' },
         { icon: 'Camera', title: 'Spectacular Scenery', description: 'Coastal panoramas, rainforest views, villages - perspectives impossible from roads.' },
@@ -11708,7 +11708,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Piton Hiking Tours',
       stats: { toursAvailable: 8, priceFrom: 90, duration: '4-6 hours' },
       introduction: `The Pitons - Gros Piton and Petit Piton - are St. Lucia's most iconic landmarks and UNESCO World Heritage volcanic peaks rising dramatically from the sea. Gros Piton hiking tours offer challenging but rewarding climbs to 2,619-foot summit through tropical forest with local guides ensuring safety while sharing botanical and geological knowledge. The steep ascent takes 2-3 hours up well-maintained trails with rest stops, rewarding hikers with spectacular 360-degree Caribbean views from the summit. Experience diverse ecosystems from coastal vegetation through tropical forest to windswept peak, encounter unique flora and fauna, learn about volcanic geology, and achieve the accomplishment of summiting one of Caribbean's most recognizable natural wonders creating unforgettable hiking adventures showcasing St. Lucia's dramatic volcanic beauty.`,
-      seo: { title: 'St. Lucia Piton Hiking 2025: Gros Piton Summit Trek & UNESCO Views', description: 'Iconic Piton hikes. Gros Piton summit, UNESCO site, guided treks, volcanic hiking. From $90.', keywords: 'St. Lucia Pitons, Gros Piton hike, Piton hiking tours, UNESCO World Heritage hiking' },
+      seo: { title: 'St. Lucia Piton Hiking 2026: Gros Piton Summit Trek & UNESCO Views', description: 'Iconic Piton hikes. Gros Piton summit, UNESCO site, guided treks, volcanic hiking. From $90.', keywords: 'St. Lucia Pitons, Gros Piton hike, Piton hiking tours, UNESCO World Heritage hiking' },
       whyChoose: [
         { icon: 'Star', title: 'UNESCO World Heritage', description: 'Climb one of Caribbean\'s most iconic landmarks with exceptional geological significance.' },
         { icon: 'Camera', title: 'Spectacular Summit Views', description: '360-degree panoramic Caribbean views including Petit Piton, coastline, and neighboring islands.' },
@@ -11759,7 +11759,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Rainforest Tours',
       stats: { toursAvailable: 15, priceFrom: 65, duration: '3-6 hours' },
       introduction: `St. Lucia's pristine rainforest covering interior mountains offers exceptional tropical nature experiences through diverse ecosystems, endemic species, and adventure activities. Rainforest tours range from gentle nature walks learning about medicinal plants and wildlife, to exhilarating aerial tram rides gliding through canopy, zip-lining adventures soaring between trees, and comprehensive eco-tours combining multiple rainforest experiences. Explore the rainforest reserve with naturalist guides sharing botanical knowledge, spot colorful tropical birds and unique wildlife, experience the rainforest from ground to canopy perspectives, and learn about conservation efforts protecting this vital ecosystem. Discover cascading waterfalls hidden in jungle, encounter rare orchids and heliconia flowers, and immerse in the symphony of rainforest sounds creating educational inspiring adventures showcasing St. Lucia's natural biodiversity and ecological importance.`,
-      seo: { title: 'St. Lucia Rainforest Tours 2025: Nature Walks, Zip-Lining & Eco Adventures', description: 'Pristine rainforest experiences. Nature walks, aerial trams, zip-lining, wildlife, eco-tours. From $65.', keywords: 'St. Lucia rainforest, rainforest tours St. Lucia, nature tours, eco-tourism, zip-lining' },
+      seo: { title: 'St. Lucia Rainforest Tours 2026: Nature Walks, Zip-Lining & Eco Adventures', description: 'Pristine rainforest experiences. Nature walks, aerial trams, zip-lining, wildlife, eco-tours. From $65.', keywords: 'St. Lucia rainforest, rainforest tours St. Lucia, nature tours, eco-tourism, zip-lining' },
       whyChoose: [
         { icon: 'Heart', title: 'Pristine Tropical Rainforest', description: 'Lush primary rainforest with exceptional biodiversity and endemic species.' },
         { icon: 'Star', title: 'Multiple Perspectives', description: 'Experience rainforest from ground level nature walks to aerial tram canopy views.' },
@@ -11810,7 +11810,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Volcanic Mud Bath Tours',
       stats: { toursAvailable: 12, priceFrom: 70, duration: '2-4 hours' },
       introduction: `St. Lucia's unique volcanic mud baths near Soufrière offer therapeutic and fun experiences bathing in warm mineral-rich volcanic mud at the only "drive-in volcano" in the world. The geothermal area features bubbling sulfur springs where visitors coat themselves in rejuvenating volcanic mud believed to have healing properties, relax in natural thermal pools, and rinse in beautiful waterfall pools. Mud bath tours provide this quintessential St. Lucia experience combining wellness, geology, and adventure - from quick dips to comprehensive spa experiences with massages and additional treatments. Learn about volcanic activity creating these geothermal wonders, experience the unique sensation of volcanic mud coating your skin, enjoy the therapeutic benefits of mineral-rich waters, and create memorable photos covered in gray mud creating relaxing entertaining experiences showcasing St. Lucia's active volcanic geology in accessible tourist-friendly way.`,
-      seo: { title: 'St. Lucia Mud Baths 2025: Volcanic Sulfur Springs & Therapeutic Spa', description: 'Famous volcanic mud baths. Soufrière springs, mineral baths, therapeutic mud, wellness. From $70.', keywords: 'St. Lucia mud baths, Soufrière volcano, sulfur springs, volcanic baths, spa tours' },
+      seo: { title: 'St. Lucia Mud Baths 2026: Volcanic Sulfur Springs & Therapeutic Spa', description: 'Famous volcanic mud baths. Soufrière springs, mineral baths, therapeutic mud, wellness. From $70.', keywords: 'St. Lucia mud baths, Soufrière volcano, sulfur springs, volcanic baths, spa tours' },
       whyChoose: [
         { icon: 'Heart', title: 'Unique Volcanic Experience', description: 'Only "drive-in volcano" where tourists can safely experience active geothermal features.' },
         { icon: 'Star', title: 'Therapeutic Benefits', description: 'Mineral-rich volcanic mud believed to improve skin, circulation, and overall wellness.' },
@@ -11861,7 +11861,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Catamaran Cruises',
       stats: { toursAvailable: 18, priceFrom: 85, duration: '4-8 hours' },
       introduction: `St. Lucia catamaran cruises offer the perfect way to experience the island's dramatic coastline, pristine waters, and iconic Pitons from the sea. Modern spacious catamarans provide comfortable sailing along the west coast visiting secluded beaches, snorkeling coral reefs teeming with marine life, and enjoying the Pitons from water perspectives. Cruises range from romantic sunset sails with champagne, to full-day adventures with swimming, snorkeling, lunch, and open bars, private charters for exclusive experiences, and specialized tours like whale watching. Experience the Caribbean breeze while sailing, snorkel vibrant reefs, swim in crystal-clear waters, enjoy gourmet meals and drinks, see the Pitons from stunning angles, and relax on spacious decks creating memorable sailing adventures showcasing St. Lucia's coastal beauty from the best perspective - the water itself.`,
-      seo: { title: 'St. Lucia Catamaran Cruises 2025: Pitons Sailing, Snorkeling & Sunset Tours', description: 'Luxury catamaran sailing. Pitons views, snorkeling, sunset cruises, beach stops, sailing tours. From $85.', keywords: 'St. Lucia catamaran, sailing tours St. Lucia, Pitons cruise, sunset sail, snorkel tours' },
+      seo: { title: 'St. Lucia Catamaran Cruises 2026: Pitons Sailing, Snorkeling & Sunset Tours', description: 'Luxury catamaran sailing. Pitons views, snorkeling, sunset cruises, beach stops, sailing tours. From $85.', keywords: 'St. Lucia catamaran, sailing tours St. Lucia, Pitons cruise, sunset sail, snorkel tours' },
       whyChoose: [
         { icon: 'Sailboat', title: 'Best Pitons Views', description: 'See iconic Pitons from water - most dramatic perspective and perfect photo angles.' },
         { icon: 'Waves', title: 'Pristine Snorkeling', description: 'Access best reef sites and secluded bays only reachable by boat.' },
@@ -11912,7 +11912,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Snorkeling Tours',
       stats: { toursAvailable: 16, priceFrom: 60, duration: '2-5 hours' },
       introduction: `St. Lucia's pristine west coast offers exceptional snorkeling with vibrant coral reefs, diverse tropical fish, and frequent sea turtle encounters in crystal-clear Caribbean waters. Snorkeling tours explore multiple reef sites from boats accessing areas unreachable from shore, providing equipment and expert guides ensuring safe enjoyable underwater experiences. Popular sites include Anse Chastanet with its protected reef teeming with marine life, the coral gardens near Soufrière, shipwreck sites, and secluded bays only accessible by boat. Experience swimming with sea turtles, spotting colorful parrotfish and angelfish, exploring healthy coral formations, and floating in warm turquoise waters creating memorable underwater adventures showcasing St. Lucia's thriving marine ecosystems perfect for both beginner and experienced snorkelers discovering Caribbean underwater beauty.`,
-      seo: { title: 'St. Lucia Snorkeling Tours 2025: Coral Reefs, Sea Turtles & Marine Life', description: 'Best snorkeling sites. Coral reefs, sea turtles, tropical fish, boat tours, snorkel excursions. From $60.', keywords: 'St. Lucia snorkeling, snorkel tours St. Lucia, sea turtles, coral reefs, marine life' },
+      seo: { title: 'St. Lucia Snorkeling Tours 2026: Coral Reefs, Sea Turtles & Marine Life', description: 'Best snorkeling sites. Coral reefs, sea turtles, tropical fish, boat tours, snorkel excursions. From $60.', keywords: 'St. Lucia snorkeling, snorkel tours St. Lucia, sea turtles, coral reefs, marine life' },
       whyChoose: [
         { icon: 'Waves', title: 'Pristine Coral Reefs', description: 'Healthy vibrant reefs with exceptional biodiversity and clear visibility.' },
         { icon: 'Heart', title: 'Sea Turtle Encounters', description: 'Frequent green and hawksbill turtle sightings - swimming with turtles common.' },
@@ -11963,7 +11963,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Cultural Heritage Tours',
       stats: { toursAvailable: 10, priceFrom: 75, duration: '3-6 hours' },
       introduction: `St. Lucia's rich cultural heritage blends French, British, African, and Caribbean influences creating unique Creole identity expressed through language, music, cuisine, traditions, and warm island character. Cultural tours explore this vibrant heritage through visits to Castries Market's colorful chaos, traditional fishing villages showcasing authentic life, cultural centers celebrating music and dance, historic sites revealing colonial past, and interactions with friendly Lucians. Experience Creole patois language mixing French and African roots, taste authentic local cuisine beyond resort food, learn traditional crafts, hear local music from reggae to calypso, and understand the cultural resilience of islanders. Expert guides share personal stories, historical context, and cultural insights creating authentic connections to real St. Lucian life beyond tourist areas showcasing the soul of this beautiful island through its people and traditions.`,
-      seo: { title: 'St. Lucia Cultural Tours 2025: Creole Heritage, Local Life & Island Traditions', description: 'Authentic island culture. Markets, villages, Creole traditions, local life, cultural heritage. From $75.', keywords: 'St. Lucia culture, cultural tours St. Lucia, Creole culture, local villages, cultural experiences' },
+      seo: { title: 'St. Lucia Cultural Tours 2026: Creole Heritage, Local Life & Island Traditions', description: 'Authentic island culture. Markets, villages, Creole traditions, local life, cultural heritage. From $75.', keywords: 'St. Lucia culture, cultural tours St. Lucia, Creole culture, local villages, cultural experiences' },
       whyChoose: [
         { icon: 'Heart', title: 'Vibrant Creole Culture', description: 'Unique blend of French, British, African influences creating distinct Caribbean identity.' },
         { icon: 'Star', title: 'Authentic Interactions', description: 'Meet friendly locals in villages, markets, and communities - genuine cultural exchanges.' },
@@ -12018,7 +12018,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Beach Tours',
       stats: { toursAvailable: 20, priceFrom: 55, duration: '3-7 hours' },
       introduction: `St. Martin/Sint Maarten boasts 37 stunning beaches spanning both French and Dutch sides - from Orient Bay's water sports paradise to Maho Beach's famous airplane landings, Grand Case's calm waters to Mullet Bay's perfect sand. Beach hopping tours showcase this incredible coastal diversity visiting multiple beaches experiencing different vibes, from clothing-optional French beaches to family-friendly Dutch shores, secluded coves to bustling beach clubs. Explore both sides of the island discovering each beach's unique character, enjoy water activities from jet skiing to paddleboarding, experience beach bar culture, and create memories at this dual-nation Caribbean paradise. Expert guides share insider knowledge about best beaches for different preferences creating comprehensive beach adventures showcasing why St. Martin is called the "Friendly Island" with beaches for every taste and style.`,
-      seo: { title: 'St. Martin Beach Tours 2025: 37 Beaches, French & Dutch Island Hopping', description: 'Best Caribbean beaches. Orient Bay, Maho Beach, beach hopping, French & Dutch sides. From $55.', keywords: 'St. Martin beaches, beach tours St. Martin, Orient Bay, Maho Beach, best beaches' },
+      seo: { title: 'St. Martin Beach Tours 2026: 37 Beaches, French & Dutch Island Hopping', description: 'Best Caribbean beaches. Orient Bay, Maho Beach, beach hopping, French & Dutch sides. From $55.', keywords: 'St. Martin beaches, beach tours St. Martin, Orient Bay, Maho Beach, best beaches' },
       whyChoose: [
         { icon: 'Waves', title: '37 Diverse Beaches', description: 'More beaches than any Caribbean island this size - incredible variety and choice.' },
         { icon: 'Star', title: 'French & Dutch Cultures', description: 'Experience European sophistication and Caribbean warmth on one small island.' },
@@ -12069,7 +12069,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Food Tours',
       stats: { toursAvailable: 14, priceFrom: 85, duration: '3-5 hours' },
       introduction: `St. Martin/Sint Maarten is the Caribbean's culinary capital offering exceptional dining from French haute cuisine to Caribbean soul food, with over 400 restaurants on this tiny island. Food tours explore this gastronomic paradise through French side gourmet experiences in Grand Case (Caribbean's Restaurant Capital), Dutch side local eateries serving authentic Caribbean dishes, food markets showcasing fresh ingredients, and diverse international cuisines. Taste French pastries and wine, sample Johnny cakes and conch fritters, experience fusion Caribbean-French cuisine, visit local rum distilleries, and understand how dual-nation identity creates unique culinary scene. Expert food guides share culinary history, chef stories, and insider tips creating delicious educational adventures showcasing why food lovers worldwide consider St. Martin a must-visit destination for serious dining beyond typical Caribbean resort food.`,
-      seo: { title: 'St. Martin Food Tours 2025: French Cuisine, Caribbean Flavors & Culinary Capital', description: 'World-class dining tours. French restaurants, Caribbean food, Grand Case, culinary experiences. From $85.', keywords: 'St. Martin food tours, Grand Case restaurants, French Caribbean cuisine, culinary tours' },
+      seo: { title: 'St. Martin Food Tours 2026: French Cuisine, Caribbean Flavors & Culinary Capital', description: 'World-class dining tours. French restaurants, Caribbean food, Grand Case, culinary experiences. From $85.', keywords: 'St. Martin food tours, Grand Case restaurants, French Caribbean cuisine, culinary tours' },
       whyChoose: [
         { icon: 'Star', title: 'Caribbean Culinary Capital', description: '400+ restaurants on 37-square-mile island - highest restaurant density in Caribbean.' },
         { icon: 'Heart', title: 'French Gourmet Excellence', description: 'Authentic French cuisine from trained chefs - European quality in Caribbean setting.' },
@@ -12120,7 +12120,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Cultural Tours',
       stats: { toursAvailable: 12, priceFrom: 70, duration: '3-6 hours' },
       introduction: `St. Martin/Sint Maarten offers unique cultural experiences from its fascinating dual-nation status - one small Caribbean island shared peacefully between France and the Netherlands since 1648. Cultural tours explore this distinctive heritage through visits to both sides experiencing European cultures in Caribbean setting, colorful local markets, historic sites, traditional villages, and interactions with friendly multilingual locals. Discover French sophistication in Marigot with its outdoor cafés and boutiques, experience Dutch influence in Philipsburg's colorful architecture and duty-free shopping, learn about Caribbean traditions, understand how three cultures coexist harmoniously, and experience the "Friendly Island" hospitality. Expert guides share historical context of the unique border, cultural differences and similarities, local traditions, and insider knowledge creating educational entertaining adventures showcasing this one-of-a-kind Caribbean cultural destination where Europe meets the tropics.`,
-      seo: { title: 'St. Martin Cultural Tours 2025: French-Dutch Heritage & Caribbean Traditions', description: 'Unique dual-nation culture. French & Dutch sides, markets, heritage, local traditions. From $70.', keywords: 'St. Martin culture, cultural tours, French Dutch heritage, Marigot, Philipsburg' },
+      seo: { title: 'St. Martin Cultural Tours 2026: French-Dutch Heritage & Caribbean Traditions', description: 'Unique dual-nation culture. French & Dutch sides, markets, heritage, local traditions. From $70.', keywords: 'St. Martin culture, cultural tours, French Dutch heritage, Marigot, Philipsburg' },
       whyChoose: [
         { icon: 'Heart', title: 'Unique Dual-Nation Status', description: 'Only island in world shared between two nations - fascinating cultural experiment.' },
         { icon: 'Star', title: 'European in Caribbean', description: 'Experience French and Dutch cultures without leaving the tropics - unique combination.' },
@@ -12171,7 +12171,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Water Sports',
       stats: { toursAvailable: 25, priceFrom: 50, duration: '1-4 hours' },
       introduction: `St. Martin's calm turquoise waters and consistent trade winds create perfect conditions for diverse water sports from beginner-friendly to advanced activities. Water sports options include jet skiing along dramatic coastlines, parasailing high above Caribbean waters for panoramic views, kiteboarding and windsurfing harnessing trade winds, paddleboarding and kayaking exploring quiet bays, flyboarding and hoverboarding for futuristic thrills, and snuba combining snorkeling and diving. Orient Bay offers the highest concentration of water sports with rentals and instruction, while various beaches provide different activities. Professional operators ensure safety while maximizing fun creating exciting water adventures for all skill levels from first-timers to experienced enthusiasts showcasing St. Martin's exceptional marine playground perfect for active water-loving travelers.`,
-      seo: { title: 'St. Martin Water Sports 2025: Jet Ski, Parasailing, Kiteboarding & Activities', description: 'Thrilling water activities. Jet skiing, parasailing, kiteboarding, paddleboarding, water adventures. From $50.', keywords: 'St. Martin water sports, jet ski, parasailing, kiteboarding, water activities' },
+      seo: { title: 'St. Martin Water Sports 2026: Jet Ski, Parasailing, Kiteboarding & Activities', description: 'Thrilling water activities. Jet skiing, parasailing, kiteboarding, paddleboarding, water adventures. From $50.', keywords: 'St. Martin water sports, jet ski, parasailing, kiteboarding, water activities' },
       whyChoose: [
         { icon: 'Waves', title: 'Perfect Water Conditions', description: 'Calm protected bays for beginners, consistent winds for kiteboarding - ideal variety.' },
         { icon: 'Star', title: 'Orient Bay Water Sports Hub', description: 'Caribbean\'s premier water sports beach with everything available in one location.' },
@@ -12222,7 +12222,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Adventure Tours',
       stats: { toursAvailable: 15, priceFrom: 75, duration: '2-6 hours' },
       introduction: `St. Martin offers diverse adventure activities beyond water sports - from exhilarating zip-lining through tropical forest canopy, to rugged ATV and buggy tours exploring off-road trails and hidden beaches, hiking scenic coastal paths and hills, eco-kayaking through pristine mangroves and lagoons, and sailing adventures to neighboring islands. Adventure tours provide adrenaline and exploration for active travelers wanting to experience the island's natural beauty through exciting pursuits. Soar on zip-lines with ocean views, drive ATVs through muddy jungle trails reaching remote beaches, hike to panoramic viewpoints, paddle mangrove ecosystems spotting wildlife, and combine multiple activities for comprehensive adventure days. Professional guides ensure safety while maximizing thrills creating memorable active experiences showcasing St. Martin's adventurous side for thrill-seekers and outdoor enthusiasts.`,
-      seo: { title: 'St. Martin Adventure Tours 2025: Zip-Lining, ATV, Hiking & Outdoor Thrills', description: 'Exciting adventures. Zip-lining, ATV tours, hiking, eco-kayaking, outdoor activities. From $75.', keywords: 'St. Martin adventures, zip-lining, ATV tours, adventure activities, outdoor tours' },
+      seo: { title: 'St. Martin Adventure Tours 2026: Zip-Lining, ATV, Hiking & Outdoor Thrills', description: 'Exciting adventures. Zip-lining, ATV tours, hiking, eco-kayaking, outdoor activities. From $75.', keywords: 'St. Martin adventures, zip-lining, ATV tours, adventure activities, outdoor tours' },
       whyChoose: [
         { icon: 'Star', title: 'Diverse Adventures', description: 'Zip-lining, ATV riding, hiking, kayaking, sailing - varied adventure options on small island.' },
         { icon: 'Heart', title: 'Scenic Settings', description: 'Tropical forests, coastal trails, mangroves, remote beaches - beautiful adventure backdrops.' },
@@ -12273,7 +12273,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Shopping Tours',
       stats: { toursAvailable: 10, priceFrom: 60, duration: '3-5 hours' },
       introduction: `St. Martin/Sint Maarten is the Caribbean's premier duty-free shopping destination offering exceptional deals on jewelry, watches, electronics, liquor, perfume, designer fashion, and local crafts. Shopping tours provide guided experiences through Philipsburg's Front Street (Dutch side shopping mecca), Marigot's boutique French shops, jewelry stores with expert assistance, local markets for authentic souvenirs, and insider knowledge about best deals and reputable stores. Discover savings of 20-50% off US retail on luxury goods, learn about diamond and gemstone quality, find unique Caribbean art and handicrafts, experience both European and Caribbean shopping cultures, and navigate the overwhelming options efficiently. Expert shopping guides share insider tips, negotiate abilities, and store recommendations creating productive shopping adventures helping visitors maximize savings and find perfect treasures from designer brands to authentic local crafts.`,
-      seo: { title: 'St. Martin Shopping Tours 2025: Duty-Free Jewelry, Designer Brands & Deals', description: 'Caribbean shopping paradise. Duty-free jewelry, designer brands, shopping tours, best deals. From $60.', keywords: 'St. Martin shopping, duty-free shopping, Philipsburg, jewelry shopping, shopping tours' },
+      seo: { title: 'St. Martin Shopping Tours 2026: Duty-Free Jewelry, Designer Brands & Deals', description: 'Caribbean shopping paradise. Duty-free jewelry, designer brands, shopping tours, best deals. From $60.', keywords: 'St. Martin shopping, duty-free shopping, Philipsburg, jewelry shopping, shopping tours' },
       whyChoose: [
         { icon: 'Star', title: 'True Duty-Free Status', description: 'Legitimate duty-free prices - 20-50% savings on jewelry, watches, electronics, luxury goods.' },
         { icon: 'Heart', title: 'Philipsburg Front Street', description: 'Caribbean\'s premier shopping street with endless jewelry and designer stores.' },
@@ -12328,7 +12328,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Carnival Tours',
       stats: { toursAvailable: 8, priceFrom: 150, duration: '4-10 hours' },
       introduction: `Trinidad Carnival is the Caribbean's most spectacular cultural celebration - a explosion of color, music, and energy culminating the Monday and Tuesday before Ash Wednesday. Carnival tours provide immersive experiences in this world-famous festival featuring elaborate costumes, pulsating soca music, massive street parades (J'Ouvert, Parade of the Bands), all-inclusive fetes (parties), and authentic Caribbean celebration. Experience jumping and wining with thousands in the streets, witness breathtaking costume bands with intricate designs, party at legendary fetes with top soca artists, learn Carnival history and cultural significance, and feel the infectious energy that makes Trinidad Carnival bucket-list worthy. Expert Carnival guides ensure you experience highlights safely and authentically creating unforgettable festival adventures showcasing Trinidad's cultural soul and the joy, creativity, and spirit that defines Caribbean carnival culture at its absolute finest.`,
-      seo: { title: 'Trinidad Carnival Tours 2025: Ultimate Carnival Experience & Soca Celebration', description: 'World\'s best Carnival. Costume bands, J\'Ouvert, fetes, soca music, Caribbean celebration. From $150.', keywords: 'Trinidad Carnival, Carnival tours, Trinidad soca, J\'Ouvert, Carnival costumes' },
+      seo: { title: 'Trinidad Carnival Tours 2026: Ultimate Carnival Experience & Soca Celebration', description: 'World\'s best Carnival. Costume bands, J\'Ouvert, fetes, soca music, Caribbean celebration. From $150.', keywords: 'Trinidad Carnival, Carnival tours, Trinidad soca, J\'Ouvert, Carnival costumes' },
       whyChoose: [
         { icon: 'PartyPopper', title: 'World\'s Greatest Carnival', description: 'Trinidad Carnival widely considered best in world - authentic, massive, culturally significant.' },
         { icon: 'Music', title: 'Birthplace of Soca', description: 'Experience soca music at its source with live performances from legendary artists.' },
@@ -12379,7 +12379,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Beach Tours',
       stats: { toursAvailable: 16, priceFrom: 50, duration: '3-7 hours' },
       introduction: `Trinidad and Tobago offer spectacular beach diversity - Tobago features some of Caribbean's most pristine beaches with powdery white sand and calm turquoise waters, while Trinidad offers hidden beach gems and unique coastal experiences. Beach tours showcase this variety from famous Pigeon Point on Tobago (postcard-perfect with palm-thatched jetty), to secluded Englishman's Bay, Maracas Bay on Trinidad famous for "bake and shark," and numerous untouched coves. Experience beach hopping visiting multiple shores, boat excursions to remote beaches, snorkeling vibrant reefs, enjoying local beach culture with food vendors and music, and discovering both islands' coastal beauty. Expert guides share beach ecology, local traditions, and insider knowledge creating comprehensive beach adventures showcasing why Tobago beaches consistently rank among Caribbean's finest while Trinidad offers authentic local beach culture.`,
-      seo: { title: 'Trinidad Tobago Beach Tours 2025: Pigeon Point, Paradise Beaches & Island Hopping', description: 'Pristine Caribbean beaches. Pigeon Point, Maracas Bay, beach hopping, paradise shores. From $50.', keywords: 'Tobago beaches, Trinidad beaches, Pigeon Point, Maracas Bay, beach tours' },
+      seo: { title: 'Trinidad Tobago Beach Tours 2026: Pigeon Point, Paradise Beaches & Island Hopping', description: 'Pristine Caribbean beaches. Pigeon Point, Maracas Bay, beach hopping, paradise shores. From $50.', keywords: 'Tobago beaches, Trinidad beaches, Pigeon Point, Maracas Bay, beach tours' },
       whyChoose: [
         { icon: 'Waves', title: 'Tobago Paradise Beaches', description: 'Consistently ranked among Caribbean\'s best - pristine, uncrowded, spectacular.' },
         { icon: 'Sun', title: 'Beach Diversity', description: 'White sand, golden sand, calm bays, surf beaches - variety across two islands.' },
@@ -12430,7 +12430,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Cultural Tours',
       stats: { toursAvailable: 12, priceFrom: 65, duration: '3-6 hours' },
       introduction: `Trinidad and Tobago's rich cultural tapestry weaves African, Indian, European, and Caribbean influences creating one of the most culturally diverse nations in the Caribbean. Cultural tours explore this vibrant heritage through visits to steelpan yards experiencing Trinidad's musical invention, colorful Hindu temples reflecting large Indo-Trinidadian population, historic sites revealing colonial past, bustling markets showcasing multicultural ingredients, and authentic neighborhoods experiencing diverse communities. Discover the birthplace of steelpan and calypso music, experience Carnival culture year-round, taste fusion cuisine blending Indian and Caribbean flavors, learn about harmonious multicultural coexistence, and meet friendly Trinbagonians sharing their proud cultural identity. Expert guides share historical context, cultural insights, and personal stories creating educational entertaining adventures showcasing this unique cultural melting pot where diversity is celebrated and culture thrives authentically.`,
-      seo: { title: 'Trinidad Cultural Tours 2025: Steelpan, Carnival Heritage & Multicultural Experiences', description: 'Vibrant island culture. Steelpan music, temples, markets, Carnival culture, diverse heritage. From $65.', keywords: 'Trinidad culture, cultural tours Trinidad, steelpan music, Carnival culture, multicultural' },
+      seo: { title: 'Trinidad Cultural Tours 2026: Steelpan, Carnival Heritage & Multicultural Experiences', description: 'Vibrant island culture. Steelpan music, temples, markets, Carnival culture, diverse heritage. From $65.', keywords: 'Trinidad culture, cultural tours Trinidad, steelpan music, Carnival culture, multicultural' },
       whyChoose: [
         { icon: 'Music', title: 'Birthplace of Steelpan', description: 'Trinidad invented steelpan - the only acoustic instrument invented in 20th century.' },
         { icon: 'Heart', title: 'Exceptional Diversity', description: 'African, Indian, European, Chinese, Syrian - harmonious multicultural society.' },
@@ -12481,7 +12481,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Nature Tours',
       stats: { toursAvailable: 18, priceFrom: 60, duration: '3-8 hours' },
       introduction: `Trinidad and Tobago showcase exceptional Caribbean biodiversity with pristine rainforests, mangrove swamps, coral reefs, and world-renowned wildlife - especially birds with over 470 species recorded. Nature tours explore these rich ecosystems through guided rainforest hikes discovering rare species, birdwatching expeditions seeking scarlet ibis and tropical birds, snorkeling vibrant Buccoo Reef, visiting Asa Wright Nature Centre (legendary birding site), kayaking mangroves, and experiencing leatherback turtle nesting. Tobago offers pristine Main Ridge Forest Reserve (oldest protected rainforest in Western Hemisphere), while Trinidad provides Caroni Swamp with scarlet ibis spectacle and exceptional diversity. Expert naturalist guides share botanical knowledge, wildlife identification, ecological insights, and conservation importance creating educational inspiring adventures showcasing these islands as nature lover paradise and eco-tourism destination of highest caliber.`,
-      seo: { title: 'Trinidad Tobago Nature Tours 2025: Rainforest, Wildlife & Scarlet Ibis Eco-Tours', description: 'Rich biodiversity. Rainforest hikes, scarlet ibis, birdwatching, coral reefs, nature tours. From $60.', keywords: 'Trinidad nature tours, Tobago rainforest, scarlet ibis, birdwatching, wildlife tours' },
+      seo: { title: 'Trinidad Tobago Nature Tours 2026: Rainforest, Wildlife & Scarlet Ibis Eco-Tours', description: 'Rich biodiversity. Rainforest hikes, scarlet ibis, birdwatching, coral reefs, nature tours. From $60.', keywords: 'Trinidad nature tours, Tobago rainforest, scarlet ibis, birdwatching, wildlife tours' },
       whyChoose: [
         { icon: 'Heart', title: 'Exceptional Biodiversity', description: 'Over 470 bird species, pristine rainforests, vibrant reefs - nature lover paradise.' },
         { icon: 'Star', title: 'Scarlet Ibis Spectacle', description: 'Witness thousands of brilliant red scarlet ibis returning to roost - unforgettable natural phenomenon.' },
@@ -12532,7 +12532,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Adventure Tours',
       stats: { toursAvailable: 14, priceFrom: 70, duration: '3-7 hours' },
       introduction: `Trinidad and Tobago offer diverse Caribbean adventure opportunities from adrenaline-pumping activities to nature-based adventures. Adventure tours include rainforest zip-lining through Tobago's lush canopy, challenging rainforest hikes, world-class scuba diving Tobago's pristine reefs, kayaking mangroves and coastlines, waterfall rappelling and swimming, ATV off-road tours, and sailing to remote islands. Tobago provides the adventure base with its pristine natural environments, while Trinidad offers unique experiences like Pitch Lake exploration and cave adventures. Expert adventure guides ensure safety while maximizing thrills creating memorable active experiences for adventurous travelers wanting to experience the islands through exciting outdoor pursuits showcasing dramatic landscapes, rich marine environments, and untouched wilderness perfect for those seeking Caribbean adventures beyond typical beach relaxation.`,
-      seo: { title: 'Trinidad Tobago Adventure Tours 2025: Zip-Lining, Diving & Outdoor Thrills', description: 'Exciting adventures. Zip-lining, diving, kayaking, hiking, waterfall tours, outdoor activities. From $70.', keywords: 'Trinidad Tobago adventures, zip-lining, diving Tobago, adventure tours, outdoor activities' },
+      seo: { title: 'Trinidad Tobago Adventure Tours 2026: Zip-Lining, Diving & Outdoor Thrills', description: 'Exciting adventures. Zip-lining, diving, kayaking, hiking, waterfall tours, outdoor activities. From $70.', keywords: 'Trinidad Tobago adventures, zip-lining, diving Tobago, adventure tours, outdoor activities' },
       whyChoose: [
         { icon: 'Star', title: 'World-Class Diving', description: 'Tobago offers some of Caribbean\'s best diving - pristine reefs, manta rays, drift diving.' },
         { icon: 'Heart', title: 'Pristine Wilderness', description: 'Less developed than other islands - more authentic wilderness adventure experiences.' },
@@ -12583,7 +12583,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Food Tours',
       stats: { toursAvailable: 11, priceFrom: 60, duration: '3-5 hours' },
       introduction: `Trinidad and Tobago's cuisine represents unique Caribbean fusion - Indian curries and roti meet African-influenced stews and Caribbean ingredients creating distinctive flavorful food culture unlike anywhere else. Food tours explore this delicious heritage through bustling markets filled with tropical produce and spices, authentic street food vendors serving doubles and roti, traditional restaurants showcasing Trinidadian specialties, rum distilleries, and home-cooked meals with local families. Discover how Indian indentured laborers brought curry traditions creating nationally beloved dishes, taste African-influenced pelau and callaloo, experience doubles as breakfast of champions, learn about Angostura bitters origins, and understand how multicultural heritage manifests deliciously in food. Expert food guides share culinary history, cooking techniques, and cultural context creating tasty educational adventures showcasing Trinidad as unexpected Caribbean food destination with seriously good unique cuisine.`,
-      seo: { title: 'Trinidad Tobago Food Tours 2025: Indian-Caribbean Fusion & Street Food', description: 'Unique cuisine tours. Doubles, roti, Caribbean-Indian fusion, street food, culinary experiences. From $60.', keywords: 'Trinidad food tours, doubles Trinidad, roti, Caribbean cuisine, street food tours' },
+      seo: { title: 'Trinidad Tobago Food Tours 2026: Indian-Caribbean Fusion & Street Food', description: 'Unique cuisine tours. Doubles, roti, Caribbean-Indian fusion, street food, culinary experiences. From $60.', keywords: 'Trinidad food tours, doubles Trinidad, roti, Caribbean cuisine, street food tours' },
       whyChoose: [
         { icon: 'Heart', title: 'Unique Fusion Cuisine', description: 'Indian-Caribbean blend found nowhere else - curries meet Caribbean in delicious harmony.' },
         { icon: 'Star', title: 'Famous Street Food', description: 'Doubles (curry sandwich) and roti national treasures - authentic street food culture.' },
@@ -12638,7 +12638,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Diving Tours',
       stats: { toursAvailable: 22, priceFrom: 75, duration: '3-5 hours' },
       introduction: `Turks and Caicos offers some of the world's finest diving with the third-largest barrier reef system, dramatic wall dives, pristine coral formations, and exceptional marine life in crystal-clear waters with visibility often exceeding 100 feet. Diving tours explore this underwater paradise from beginner-friendly reef dives to advanced wall diving, encountering humpback whales (seasonal), eagle rays, reef sharks, sea turtles, and vibrant tropical fish. Grace Bay and West Caicos provide accessible reef diving, while Providenciales' northwest point offers spectacular wall diving, and Salt Cay delivers intimate encounters with migrating humpback whales. Expert dive operators with PADI/SSI certification ensure safety while showcasing the incredible underwater biodiversity creating unforgettable diving adventures for all certification levels from discover diving to technical divers showcasing why serious divers worldwide consider Turks and Caicos a top Caribbean diving destination.`,
-      seo: { title: 'Turks Caicos Diving 2025: World-Class Reefs, Walls & Humpback Whales', description: 'Premier Caribbean diving. Third-largest reef, wall diving, humpback whales, pristine sites. From $75.', keywords: 'Turks and Caicos diving, scuba diving, reef diving, humpback whales, wall diving' },
+      seo: { title: 'Turks Caicos Diving 2026: World-Class Reefs, Walls & Humpback Whales', description: 'Premier Caribbean diving. Third-largest reef, wall diving, humpback whales, pristine sites. From $75.', keywords: 'Turks and Caicos diving, scuba diving, reef diving, humpback whales, wall diving' },
       whyChoose: [
         { icon: 'Waves', title: 'Third-Largest Reef System', description: 'Massive barrier reef with pristine coral formations and exceptional biodiversity.' },
         { icon: 'Star', title: 'Crystal-Clear Waters', description: 'Visibility often 100-150 feet - see everything in stunning clarity year-round.' },
@@ -12689,7 +12689,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Beach Tours',
       stats: { toursAvailable: 18, priceFrom: 65, duration: '3-7 hours' },
       introduction: `Turks and Caicos boasts some of the world's most beautiful beaches - Grace Bay Beach consistently ranked #1 globally with impossibly soft powder-white sand and luminous turquoise waters. Beach tours showcase this coastal perfection visiting multiple pristine shores from famous Grace Bay to secluded Long Bay Beach, Half Moon Bay's remote beauty, and the stunning beaches of outer islands. Experience beach hopping boat tours accessing hidden coves, sunset beach experiences, luxury beach club days with premium amenities, snorkeling off beach shores, and discovering why TCI beaches set the global standard. Each beach offers its own character from calm protected bays perfect for swimming to windswept shores ideal for kiteboarding. Expert guides share beach ecology, local knowledge, and insider tips creating comprehensive beach adventures showcasing the archipelago's greatest natural asset - absolutely world-class beaches with some of Caribbean's most beautiful waters.`,
-      seo: { title: 'Turks Caicos Beach Tours 2025: Grace Bay & World\'s Best Beaches', description: 'World-class beaches. Grace Bay, powder-white sand, turquoise waters, beach hopping. From $65.', keywords: 'Turks and Caicos beaches, Grace Bay Beach, best beaches world, beach tours TCI' },
+      seo: { title: 'Turks Caicos Beach Tours 2026: Grace Bay & World\'s Best Beaches', description: 'World-class beaches. Grace Bay, powder-white sand, turquoise waters, beach hopping. From $65.', keywords: 'Turks and Caicos beaches, Grace Bay Beach, best beaches world, beach tours TCI' },
       whyChoose: [
         { icon: 'Waves', title: 'World\'s Best Beaches', description: 'Grace Bay consistently ranked #1 beach worldwide - powder-white sand, turquoise perfection.' },
         { icon: 'Sun', title: 'Pristine Uncrowded', description: 'Low-density tourism means peaceful beaches without crowds - private paradise feeling.' },
@@ -12740,7 +12740,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Snorkeling Tours',
       stats: { toursAvailable: 20, priceFrom: 60, duration: '2-5 hours' },
       introduction: `Turks and Caicos offers world-class snorkeling with the third-largest barrier reef system providing pristine coral gardens, vibrant tropical fish, and frequent sea turtle encounters in crystal-clear waters. Snorkeling tours explore multiple reef sites from boats accessing the best locations unreachable from shore, visiting Smith's Reef (excellent shore snorkeling), Bight Reef off Grace Bay, the Coral Gardens, and remote cays with untouched reefs. Experience swimming with green and hawksbill sea turtles, spotting colorful parrotfish and angelfish, exploring healthy coral formations, floating in water so clear you'll see 100+ feet, and discovering why TCI snorkeling rivals the diving in quality. Professional guides ensure safety, identify marine life, and lead you to the best spots creating memorable underwater adventures showcasing the incredible marine biodiversity making Turks and Caicos a snorkeler's paradise perfect for all skill levels from first-timers to experienced snorkelers.`,
-      seo: { title: 'Turks Caicos Snorkeling 2025: Coral Reefs, Sea Turtles & Pristine Waters', description: 'World-class snorkeling. Coral reefs, sea turtles, tropical fish, clear waters, snorkel tours. From $60.', keywords: 'Turks and Caicos snorkeling, snorkel tours, sea turtles, coral reefs, Smith\'s Reef' },
+      seo: { title: 'Turks Caicos Snorkeling 2026: Coral Reefs, Sea Turtles & Pristine Waters', description: 'World-class snorkeling. Coral reefs, sea turtles, tropical fish, clear waters, snorkel tours. From $60.', keywords: 'Turks and Caicos snorkeling, snorkel tours, sea turtles, coral reefs, Smith\'s Reef' },
       whyChoose: [
         { icon: 'Waves', title: 'Crystal-Clear Waters', description: 'Visibility 100+ feet typical - see underwater world in stunning clarity year-round.' },
         { icon: 'Heart', title: 'Abundant Sea Turtles', description: 'Green and hawksbill turtles common - swimming with turtles on most tours.' },
@@ -12791,7 +12791,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Boat Tours',
       stats: { toursAvailable: 25, priceFrom: 90, duration: '3-8 hours' },
       introduction: `Turks and Caicos boat tours provide the best way to experience the archipelago's scattered cays, pristine beaches, and impossibly turquoise waters. Modern luxury boats explore remote uninhabited islands, hidden beaches accessible only by water, dramatic coastlines, vibrant snorkel sites, and unique natural wonders like the Conch Bar Caves and tidal pools. Tours range from romantic sunset cruises, to full-day island hopping adventures visiting multiple cays, private charters for exclusive experiences, fishing trips, and specialty tours like swimming with stingrays at Gibbs Cay or exploring the famous sandbar at Iguana Island. Experience the freedom of island hopping, discover secluded beaches, snorkel pristine reefs, enjoy gourmet catered lunches on deserted beaches, and see TCI's stunning beauty from the water creating unforgettable boat adventures showcasing the archipelago's scattered island paradise accessible only by sea.`,
-      seo: { title: 'Turks Caicos Boat Tours 2025: Island Hopping, Cays & Luxury Excursions', description: 'Luxury boat adventures. Island hopping, remote cays, snorkeling, private charters, excursions. From $90.', keywords: 'Turks and Caicos boat tours, island hopping, yacht charters, boat excursions, cay tours' },
+      seo: { title: 'Turks Caicos Boat Tours 2026: Island Hopping, Cays & Luxury Excursions', description: 'Luxury boat adventures. Island hopping, remote cays, snorkeling, private charters, excursions. From $90.', keywords: 'Turks and Caicos boat tours, island hopping, yacht charters, boat excursions, cay tours' },
       whyChoose: [
         { icon: 'Ship', title: 'Best Way to Explore', description: 'Scattered archipelago best experienced by boat - access remote cays and hidden beaches.' },
         { icon: 'Waves', title: 'Turquoise Paradise', description: 'Impossibly clear turquoise waters creating stunning boat cruising through liquid sapphire.' },
@@ -12842,7 +12842,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Adventure Tours',
       stats: { toursAvailable: 15, priceFrom: 75, duration: '2-6 hours' },
       introduction: `Turks and Caicos offers excellent adventure activities leveraging pristine environments - from world-class kiteboarding on Long Bay's shallow waters and consistent trade winds, to eco-kayaking through mangrove wetlands, ATV and buggy off-road tours exploring island interiors, stand-up paddleboarding on calm turquoise waters, parasailing for aerial views, jet skiing along dramatic coastlines, and exploring underwater via submarine tours. Adventure tours cater to thrill-seekers and active travelers wanting to experience TCI's natural beauty through exciting pursuits beyond beach lounging. Professional operators provide quality equipment, expert instruction, and safety focus creating memorable active experiences from learning kiteboarding with perfect conditions to exploring hidden mangrove channels spotting wildlife showcasing Turks and Caicos as adventure destination offering water sports paradise and eco-adventures in world-class settings for all skill levels.`,
-      seo: { title: 'Turks Caicos Adventure Tours 2025: Kiteboarding, Kayaking & Water Sports', description: 'Exciting adventures. Kiteboarding, eco-kayaking, ATV tours, water sports, outdoor activities. From $75.', keywords: 'Turks and Caicos adventures, kiteboarding, kayaking, water sports, adventure tours' },
+      seo: { title: 'Turks Caicos Adventure Tours 2026: Kiteboarding, Kayaking & Water Sports', description: 'Exciting adventures. Kiteboarding, eco-kayaking, ATV tours, water sports, outdoor activities. From $75.', keywords: 'Turks and Caicos adventures, kiteboarding, kayaking, water sports, adventure tours' },
       whyChoose: [
         { icon: 'Waves', title: 'World-Class Kiteboarding', description: 'Long Bay offers perfect kiteboarding conditions - shallow water, consistent winds, soft sand.' },
         { icon: 'Star', title: 'Pristine Ecosystems', description: 'Mangrove wetlands and marine environments offer exceptional eco-adventure settings.' },
@@ -12893,7 +12893,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Luxury Tours',
       stats: { toursAvailable: 12, priceFrom: 200, duration: '3-8 hours' },
       introduction: `Turks and Caicos epitomizes Caribbean luxury with upscale resorts, pristine environments, and exclusive experiences befitting sophisticated travelers seeking premium adventures. Luxury tours provide VIP treatment from private yacht charters with gourmet catering and champagne, to helicopter tours offering aerial perspectives of impossibly turquoise waters, exclusive access to uninhabited private islands for beach picnics, luxury catamaran sunset sails, private villa experiences, and bespoke multi-day packages. Experience arriving at remote cays via private boat, enjoying Michelin-quality beachside dining, helicopter transfers between islands, private diving with dedicated guides, exclusive spa experiences, and personalized service creating extraordinary luxury adventures. Expert concierge-level tour operators craft unforgettable VIP experiences showcasing Turks and Caicos as premier luxury Caribbean destination where pristine natural beauty meets world-class sophisticated service.`,
-      seo: { title: 'Turks Caicos Luxury Tours 2025: Private Yachts, VIP Experiences & Exclusive Adventures', description: 'Ultra-premium experiences. Private yachts, helicopter tours, exclusive islands, luxury adventures. From $200.', keywords: 'Turks and Caicos luxury, private yacht charters, luxury tours, VIP experiences, exclusive' },
+      seo: { title: 'Turks Caicos Luxury Tours 2026: Private Yachts, VIP Experiences & Exclusive Adventures', description: 'Ultra-premium experiences. Private yachts, helicopter tours, exclusive islands, luxury adventures. From $200.', keywords: 'Turks and Caicos luxury, private yacht charters, luxury tours, VIP experiences, exclusive' },
       whyChoose: [
         { icon: 'Star', title: 'Ultra-Luxury Destination', description: 'TCI specializes in high-end tourism - world-class resorts, exclusive experiences, sophisticated service.' },
         { icon: 'Heart', title: 'Pristine Exclusivity', description: 'Low-density development means private paradise - luxury without crowds.' },
@@ -12948,7 +12948,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Coastal Boat Tours',
       stats: { toursAvailable: 25, priceFrom: 75, duration: '2-8 hours' },
       introduction: `Amalfi Coast boat tours offer the absolute best way to experience this UNESCO World Heritage coastline - from the water, the dramatic cliffs, pastel villages cascading to the sea, hidden grottos, and turquoise Mediterranean waters reveal themselves in breathtaking panoramas impossible to appreciate from land. Boat tours range from romantic sunset cruises with prosecco and Mediterranean breezes, to full-day adventures visiting Positano, Amalfi, Capri's Blue Grotto, private yacht charters for luxury experiences, and swimming stops at secluded coves. Glide past Positano's colorful homes perched on cliffs, explore the famous Emerald Grotto with its green-hued waters, visit charming fishing villages like Praiano and Atrani, cruise to glamorous Capri, and experience the coastline from the perspective that makes it legendary. Expert local captains share stories, insider knowledge, and navigate you to the most spectacular viewpoints creating unforgettable maritime adventures showcasing why the Amalfi Coast captivates travelers worldwide as one of Earth's most beautiful coastlines.`,
-      seo: { title: 'Amalfi Coast Boat Tours 2025: Positano, Capri & Coastal Cruises', description: 'Best Amalfi Coast boat tours. Positano cruises, Capri excursions, grottos, coastal sailing. From €75.', keywords: 'Amalfi Coast boat tours, Positano boat tours, Capri excursions, coastal cruises Italy' },
+      seo: { title: 'Amalfi Coast Boat Tours 2026: Positano, Capri & Coastal Cruises', description: 'Best Amalfi Coast boat tours. Positano cruises, Capri excursions, grottos, coastal sailing. From €75.', keywords: 'Amalfi Coast boat tours, Positano boat tours, Capri excursions, coastal cruises Italy' },
       whyChoose: [
         { icon: 'Waves', title: 'Best Coastal Views', description: 'See the Amalfi Coast from the sea - the only way to truly appreciate the dramatic cliffs and villages.' },
         { icon: 'Heart', title: 'Access Hidden Spots', description: 'Discover secluded coves, grottos, and beaches accessible only by boat - miss these from land.' },
@@ -12999,7 +12999,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Positano Tours',
       stats: { toursAvailable: 20, priceFrom: 50, duration: '2-6 hours' },
       introduction: `Positano is the Amalfi Coast's most iconic and photogenic village - a vertical cascade of pastel-colored houses tumbling down dramatic cliffs to pebble beaches and the azure Mediterranean Sea. Positano tours explore this enchanting setting through walking tours of steep pedestrian streets lined with boutiques and bougainvillea, boat arrivals revealing the village's stunning clifftop position, visits to the majolica-domed Church of Santa Maria Assunta, leisurely beach time at Spiaggia Grande, shopping for handmade sandals and linen clothing, dining at romantic cliffside restaurants, and experiencing the sophisticated yet laid-back dolce vita atmosphere. Discover hidden staircases connecting neighborhoods, browse artisan galleries, taste local limoncello, hike the Path of the Gods for panoramic views, and understand why Positano became the jewel of the Amalfi Coast attracting artists, celebrities, and romantics. Expert local guides share history, insider shopping tips, and best photo spots creating memorable experiences showcasing this vertical village that defines Mediterranean coastal beauty.`,
-      seo: { title: 'Positano Tours 2025: Walking, Boat Tours & Amalfi Coast Village Guide', description: 'Best Positano tours. Village walks, boat arrivals, shopping, beaches, restaurants. From €50.', keywords: 'Positano tours, Positano Italy, Amalfi Coast villages, Positano walking tours' },
+      seo: { title: 'Positano Tours 2026: Walking, Boat Tours & Amalfi Coast Village Guide', description: 'Best Positano tours. Village walks, boat arrivals, shopping, beaches, restaurants. From €50.', keywords: 'Positano tours, Positano Italy, Amalfi Coast villages, Positano walking tours' },
       whyChoose: [
         { icon: 'Heart', title: 'Most Photogenic Village', description: 'Positano\'s cascading pastel houses and dramatic cliffs create the iconic Amalfi Coast image.' },
         { icon: 'Star', title: 'Boutique Shopping Paradise', description: 'Handmade Positano sandals, linen clothing, ceramics, local crafts - shopping heaven.' },
@@ -13050,7 +13050,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Ravello Gardens Tours',
       stats: { toursAvailable: 12, priceFrom: 45, duration: '2-4 hours' },
       introduction: `Ravello perches high above the Amalfi Coast offering some of Italy's most spectacular gardens and panoramic views - Villa Cimbrone's Terrace of Infinity and Villa Rufolo's romantic gardens have inspired artists, musicians, and writers for centuries. Ravello garden tours explore these magnificent estates with their sculpted terraces, exotic plants, classical statues, and breathtaking viewpoints overlooking the Mediterranean 365 meters below. Experience the Terrace of Infinity's marble busts framing endless sea views, wander Villa Rufolo's gardens where Wagner found inspiration for Parsifal, discover hidden corners bursting with wisteria and roses, attend open-air concerts in summer, and understand why Ravello became the cultural heart of the Amalfi Coast. Expert guides share garden history, botanical knowledge, musical heritage, and the aristocratic families who created these paradises creating refined cultural experiences showcasing Ravello's unique position as the coast's elegant hilltop sanctuary combining horticultural beauty with artistic legacy.`,
-      seo: { title: 'Ravello Gardens 2025: Villa Cimbrone, Villa Rufolo & Terrace of Infinity', description: 'Ravello garden tours. Villa Cimbrone, Villa Rufolo, Terrace of Infinity, coastal views. From €45.', keywords: 'Ravello gardens, Villa Cimbrone, Villa Rufolo, Terrace of Infinity, Amalfi Coast' },
+      seo: { title: 'Ravello Gardens 2026: Villa Cimbrone, Villa Rufolo & Terrace of Infinity', description: 'Ravello garden tours. Villa Cimbrone, Villa Rufolo, Terrace of Infinity, coastal views. From €45.', keywords: 'Ravello gardens, Villa Cimbrone, Villa Rufolo, Terrace of Infinity, Amalfi Coast' },
       whyChoose: [
         { icon: 'Star', title: 'Terrace of Infinity', description: 'Villa Cimbrone\'s iconic viewpoint - one of the world\'s most photographed terraces with endless panoramas.' },
         { icon: 'Heart', title: 'Wagner\'s Inspiration', description: 'Villa Rufolo gardens inspired Wagner\'s Parsifal - musical and artistic heritage alive.' },
@@ -13101,7 +13101,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Amalfi Town Tours',
       stats: { toursAvailable: 15, priceFrom: 40, duration: '2-5 hours' },
       introduction: `Amalfi town is the historic heart of the Amalfi Coast - once a powerful maritime republic rivaling Venice and Genoa, now a charming coastal town centered around its magnificent Arab-Norman cathedral with stunning facade and cloister. Amalfi town tours explore this historic center through walking tours of the picturesque Piazza del Duomo, visits to the spectacular Cathedral of Sant'Andrea with its golden mosaics, the peaceful Chiostro del Paradiso cloister, the Museum of Paper (Amalfi's medieval paper-making heritage), authentic local restaurants away from tourist traps, and the atmospheric medieval streets revealing layers of maritime history. Experience the town's authentic Italian character, browse local shops selling limoncello and ceramics, taste fresh seafood at harbourside trattorias, learn about Amalfi's role as one of Italy's four ancient maritime republics, and discover why this town gave its name to the entire coast creating cultural historical experiences showcasing Amalfi's proud heritage and vibrant local life.`,
-      seo: { title: 'Amalfi Town Tours 2025: Cathedral, Historic Center & Maritime Heritage', description: 'Amalfi town tours. Cathedral visits, historic center, paper museum, authentic dining. From €40.', keywords: 'Amalfi town tours, Amalfi Cathedral, Amalfi Coast Italy, historic Amalfi' },
+      seo: { title: 'Amalfi Town Tours 2026: Cathedral, Historic Center & Maritime Heritage', description: 'Amalfi town tours. Cathedral visits, historic center, paper museum, authentic dining. From €40.', keywords: 'Amalfi town tours, Amalfi Cathedral, Amalfi Coast Italy, historic Amalfi' },
       whyChoose: [
         { icon: 'Star', title: 'Spectacular Cathedral', description: 'Arab-Norman cathedral with golden Byzantine mosaics - one of Italy\'s most beautiful churches.' },
         { icon: 'BookOpen', title: 'Maritime Republic History', description: 'Learn about Amalfi\'s powerful past as one of Italy\'s four great maritime republics.' },
@@ -13152,7 +13152,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Capri Island Tours',
       stats: { toursAvailable: 22, priceFrom: 75, duration: '4-8 hours' },
       introduction: `Capri is the Mediterranean's most glamorous island - a legendary destination where dramatic Faraglioni rock formations rise from azure waters, the magical Blue Grotto glows with otherworldly light, and the chic Piazzetta serves as the outdoor living room for international jet-setters. Capri tours from the Amalfi Coast offer day trips exploring this captivating island through boat circumnavigations viewing the coastline from water, visits to the famous Blue Grotto sea cave, chairlift rides to Monte Solaro summit for panoramic views, strolls through Capri town and Anacapri, shopping for handmade leather goods and perfumes, exploring Emperor Tiberius's Villa Jovis ruins, and experiencing the sophisticated dolce vita atmosphere. Discover the Gardens of Augustus with Faraglioni views, browse Via Camerelle's luxury boutiques, taste limoncello at hillside cafes, hike to the Natural Arch, and understand why Capri has captivated emperors, artists, and travelers for millennia creating unforgettable island adventures showcasing Mediterranean beauty and glamour at their finest.`,
-      seo: { title: 'Capri Island Tours 2025: Blue Grotto, Day Trips & Amalfi Coast Excursions', description: 'Best Capri island tours. Blue Grotto, boat trips, Faraglioni, day excursions from Amalfi. From €75.', keywords: 'Capri island tours, Blue Grotto Capri, Capri day trips, Capri from Amalfi Coast' },
+      seo: { title: 'Capri Island Tours 2026: Blue Grotto, Day Trips & Amalfi Coast Excursions', description: 'Best Capri island tours. Blue Grotto, boat trips, Faraglioni, day excursions from Amalfi. From €75.', keywords: 'Capri island tours, Blue Grotto Capri, Capri day trips, Capri from Amalfi Coast' },
       whyChoose: [
         { icon: 'Waves', title: 'Blue Grotto Magic', description: 'Experience the ethereal blue-glowing sea cave - one of Italy\'s most iconic natural wonders.' },
         { icon: 'Camera', title: 'Faraglioni Rocks', description: 'See the legendary limestone sea stacks rising from azure waters - Capri\'s defining image.' },
@@ -13203,7 +13203,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Coastal Hiking Tours',
       stats: { toursAvailable: 14, priceFrom: 55, duration: '3-6 hours' },
       introduction: `Amalfi Coast hiking offers some of Europe's most spectacular coastal trails - the legendary Sentiero degli Dei (Path of the Gods) traverses mountains high above the sea with jaw-dropping views, while numerous ancient trails connect cliffside villages through terraced lemon groves and Mediterranean vegetation. Coastal hiking tours range from moderate Path of the Gods treks between Positano and Praiano/Agerola, to challenging Valle delle Ferriere hikes through lush gorges and waterfalls, easier village-to-village walks along historic mule tracks, and full-day adventures combining multiple trails. Experience hiking hundreds of meters above the turquoise Mediterranean with panoramic vistas stretching from Positano to Capri, pass through ancient terraced farmland with lemon trees, discover hidden monasteries and mountain villages, and understand why these trails have connected Amalfi Coast communities for centuries. Expert hiking guides ensure safe navigation, share historical knowledge, identify Mediterranean flora, and lead you to the most breathtaking viewpoints creating unforgettable active adventures showcasing the coast's dramatic beauty from elevated perspectives.`,
-      seo: { title: 'Amalfi Coast Hiking 2025: Path of the Gods & Coastal Trail Tours', description: 'Best Amalfi Coast hiking. Path of the Gods, coastal trails, guided treks, panoramic views. From €55.', keywords: 'Amalfi Coast hiking, Path of the Gods, Sentiero degli Dei, coastal trails Italy' },
+      seo: { title: 'Amalfi Coast Hiking 2026: Path of the Gods & Coastal Trail Tours', description: 'Best Amalfi Coast hiking. Path of the Gods, coastal trails, guided treks, panoramic views. From €55.', keywords: 'Amalfi Coast hiking, Path of the Gods, Sentiero degli Dei, coastal trails Italy' },
       whyChoose: [
         { icon: 'Sun', title: 'Path of the Gods', description: 'Europe\'s most scenic coastal trail - legendary hike with unparalleled Mediterranean panoramas.' },
         { icon: 'Star', title: 'Breathtaking Views', description: 'Hike high above the sea with 180-degree coastal vistas from Positano to Capri.' },
@@ -13258,7 +13258,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Sagrada Familia Tours',
       stats: { toursAvailable: 30, priceFrom: 35, duration: '1-3 hours' },
       introduction: `The Sagrada Familia is Barcelona's most iconic landmark and Antoni Gaudí's unfinished masterpiece - a breathtaking basilica combining Gothic and Art Nouveau forms in ways never seen before with soaring towers, intricate facades depicting Christ's life, and an interior like being inside a forest of stone columns creating ethereal light effects. Sagrada Familia tours provide skip-the-line access to this UNESCO World Heritage site with expert guides explaining Gaudí's revolutionary vision, the symbolism embedded in every detail, ongoing construction approaching completion (estimated 2026), and the mathematical precision behind the organic designs. Experience the Nativity and Passion facades' sculptural narratives, marvel at the kaleidoscopic stained glass flooding the interior with color, optionally climb towers for city panoramas, and understand why this unprecedented basilica took over 140 years to build creating profound architectural experiences showcasing human creativity and spiritual vision at their most ambitious in Barcelona's defining monument.`,
-      seo: { title: 'Sagrada Familia Tours 2025: Skip-the-Line Tickets & Guided Visits', description: 'Best Sagrada Familia tours. Skip-the-line, expert guides, tower access, Gaudí masterpiece. From €35.', keywords: 'Sagrada Familia tours, Barcelona cathedral, Gaudí basilica, skip the line tickets' },
+      seo: { title: 'Sagrada Familia Tours 2026: Skip-the-Line Tickets & Guided Visits', description: 'Best Sagrada Familia tours. Skip-the-line, expert guides, tower access, Gaudí masterpiece. From €35.', keywords: 'Sagrada Familia tours, Barcelona cathedral, Gaudí basilica, skip the line tickets' },
       whyChoose: [
         { icon: 'Star', title: 'Gaudí\'s Masterpiece', description: 'Witness the culmination of genius architect\'s life work - unprecedented basilica design.' },
         { icon: 'Heart', title: 'Skip-the-Line Access', description: 'Avoid 2-3 hour queues with priority entrance - maximize your Barcelona time.' },
@@ -13310,7 +13310,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Park Güell Tours',
       stats: { toursAvailable: 25, priceFrom: 30, duration: '1.5-2.5 hours' },
       introduction: `Park Güell is Gaudí's fantastical public park - a UNESCO World Heritage site where colorful trencadís mosaics, organic architecture, and whimsical design blend with nature creating one of Barcelona's most enchanting spaces. Originally conceived as a luxury housing development inspired by English garden cities, only the park infrastructure was completed, leaving extraordinary architectural elements scattered across hillside gardens with sweeping Barcelona views. Park Güell tours explore the Monumental Zone with its iconic mosaic dragon salamander (El Drac), the undulating serpentine bench covered in vibrant broken ceramics, the Hypostyle Hall with 86 tilted Doric columns, Gaudí's former residence (now museum), and the viaducts integrating seamlessly with landscape. Experience Gaudí's vision of harmonizing architecture with nature, understand the failed housing project's history, capture Instagram-worthy photo opportunities at every turn, and enjoy panoramic city vistas creating magical experiences showcasing Gaudí's playful genius in Barcelona's most photogenic park.`,
-      seo: { title: 'Park Güell Tours 2025: Skip-the-Line Tickets & Gaudí Gardens', description: 'Best Park Güell tours. Skip-the-line, guided visits, mosaic dragon, serpentine bench. From €30.', keywords: 'Park Güell tours, Barcelona Gaudí park, Park Guell tickets, mosaic park Barcelona' },
+      seo: { title: 'Park Güell Tours 2026: Skip-the-Line Tickets & Gaudí Gardens', description: 'Best Park Güell tours. Skip-the-line, guided visits, mosaic dragon, serpentine bench. From €30.', keywords: 'Park Güell tours, Barcelona Gaudí park, Park Guell tickets, mosaic park Barcelona' },
       whyChoose: [
         { icon: 'Heart', title: 'Whimsical Architecture', description: 'Experience Gaudí\'s most playful and colorful designs in natural garden setting.' },
         { icon: 'Camera', title: 'Instagram Paradise', description: 'Mosaic dragon, serpentine bench, gingerbread houses - endless photo opportunities.' },
@@ -13361,7 +13361,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Gothic Quarter Tours',
       stats: { toursAvailable: 35, priceFrom: 25, duration: '2-3 hours' },
       introduction: `The Gothic Quarter (Barri Gòtic) is Barcelona's historic heart - a mesmerizing labyrinth of narrow medieval streets, hidden plazas, Roman ruins, and Gothic architecture spanning 2,000 years of history in the city's oldest neighborhood. Gothic Quarter tours guide you through atmospheric alleyways revealing Barcelona Cathedral with its stunning cloister, remnants of Roman Barcino walls and temple, the elegant Plaça Reial with palm trees and Gaudí lampposts, the Jewish Quarter (El Call) with its ancient synagogue, Plaça Sant Jaume (government seat), and countless hidden corners filled with artisan shops, tapas bars, and local life. Experience the medieval atmosphere with Gothic facades and flying buttresses, discover Roman foundations beneath your feet, hear stories of kings and inquisitions, understand Barcelona's evolution from Roman colony to medieval trading power, and immerse in authentic Catalan culture away from tourist traps creating captivating historical experiences in Barcelona's most atmospheric and historically rich neighborhood perfect for history lovers and culture seekers.`,
-      seo: { title: 'Gothic Quarter Tours 2025: Barcelona Medieval Walking Tours', description: 'Best Gothic Quarter tours. Medieval streets, Roman ruins, cathedral, hidden plazas. From €25.', keywords: 'Gothic Quarter Barcelona, Barri Gotic tours, medieval Barcelona, walking tours' },
+      seo: { title: 'Gothic Quarter Tours 2026: Barcelona Medieval Walking Tours', description: 'Best Gothic Quarter tours. Medieval streets, Roman ruins, cathedral, hidden plazas. From €25.', keywords: 'Gothic Quarter Barcelona, Barri Gotic tours, medieval Barcelona, walking tours' },
       whyChoose: [
         { icon: 'BookOpen', title: '2,000 Years of History', description: 'Roman ruins, medieval streets, Gothic architecture - layers of Barcelona\'s past in one neighborhood.' },
         { icon: 'Heart', title: 'Authentic Atmosphere', description: 'Experience real Barcelona away from tourist crowds in atmospheric medieval alleyways.' },
@@ -13412,7 +13412,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'La Rambla Tours',
       stats: { toursAvailable: 20, priceFrom: 20, duration: '1.5-3 hours' },
       introduction: `La Rambla is Barcelona's legendary tree-lined pedestrian boulevard - a vibrant 1.2km promenade connecting Plaça Catalunya to the Mediterranean waterfront, packed with street performers, flower stalls, historic buildings, and the famous La Boqueria market. La Rambla tours guide you along this iconic street explaining its transformation from medieval stream to Barcelona's beating heart, visiting La Boqueria's colorful food stalls, exploring side streets leading into Gothic Quarter and El Raval, discovering the Liceu opera house, admiring Miró's mosaic pavement, and reaching the Columbus Monument at the waterfront. Experience Barcelona's most atmospheric promenade where locals and visitors converge, taste traditional Catalan products at the market, learn about the street's cultural significance, navigate safely (watching for pickpockets), and understand why this boulevard has defined Barcelona street life for centuries creating authentic Barcelona experiences along the city's most famous and historically significant thoroughfare connecting mountains to Mediterranean.`,
-      seo: { title: 'La Rambla Tours 2025: Barcelona Walking Tours & Boqueria Market', description: 'Best La Rambla tours. Famous boulevard, Boqueria market, street culture, waterfront. From €20.', keywords: 'La Rambla Barcelona, Boqueria market tours, Barcelona walking tours, Ramblas' },
+      seo: { title: 'La Rambla Tours 2026: Barcelona Walking Tours & Boqueria Market', description: 'Best La Rambla tours. Famous boulevard, Boqueria market, street culture, waterfront. From €20.', keywords: 'La Rambla Barcelona, Boqueria market tours, Barcelona walking tours, Ramblas' },
       whyChoose: [
         { icon: 'Heart', title: 'Iconic Boulevard', description: 'Walk Barcelona\'s most famous street - tree-lined promenade where city life unfolds.' },
         { icon: 'Star', title: 'La Boqueria Market', description: 'Explore legendary food market with colorful stalls and traditional Catalan products.' },
@@ -13463,7 +13463,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Casa Batlló Tours',
       stats: { toursAvailable: 18, priceFrom: 35, duration: '1-1.5 hours' },
       introduction: `Casa Batlló is Antoni Gaudí's most fantastical residential building - a UNESCO World Heritage site on Passeig de Gràcia where every surface, curve, and detail reflects organic nature through revolutionary modernist architecture. This remodeled 1904-1906 townhouse transforms a conventional building into a living organism with a skeletal facade, dragon-scale roof, mushroom-shaped fireplace, undulating walls, and marine-inspired spaces creating Barcelona's most surreal interior. Casa Batlló tours provide skip-the-line access with innovative augmented reality guides revealing Gaudí's creative process, exploring the Noble Floor where the wealthy family lived, ascending the skeletal attic with catenary arches, and accessing the colorful trencadís-covered rooftop terrace with its dragon-back chimney. Experience Gaudí's nature-inspired genius where nothing is straight, understand the symbolism (St. George and the dragon legend), marvel at engineering innovation disguised as art, and immerse in Barcelona's most Instagram-worthy modernist interior creating unforgettable architectural experiences.`,
-      seo: { title: 'Casa Batlló Tours 2025: Skip-the-Line Tickets & Gaudí House', description: 'Best Casa Batlló tours. Skip-the-line, AR guides, Gaudí interiors, rooftop terrace. From €35.', keywords: 'Casa Batlló tours, Gaudí house Barcelona, skip the line tickets, Casa Batllo' },
+      seo: { title: 'Casa Batlló Tours 2026: Skip-the-Line Tickets & Gaudí House', description: 'Best Casa Batlló tours. Skip-the-line, AR guides, Gaudí interiors, rooftop terrace. From €35.', keywords: 'Casa Batlló tours, Gaudí house Barcelona, skip the line tickets, Casa Batllo' },
       whyChoose: [
         { icon: 'Star', title: 'Gaudí\'s Masterpiece Interior', description: 'Most spectacular Gaudí interior accessible to public - surreal organic architecture throughout.' },
         { icon: 'Camera', title: 'Instagram Paradise', description: 'Every room photogenic - undulating walls, colorful details, unique spaces throughout.' },
@@ -13514,7 +13514,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Tapas & Food Tours',
       stats: { toursAvailable: 40, priceFrom: 60, duration: '3-4 hours' },
       introduction: `Barcelona food tours immerse you in authentic Catalan and Spanish culinary culture through guided tapas crawls visiting traditional bars, local markets, and family-run establishments where Catalans actually eat. These gastronomic adventures explore Barcelona's diverse food scene from La Boqueria market's vibrant stalls to Gothic Quarter tapas bars serving patatas bravas and jamón ibérico, from Poble Sec's vermuteries to El Born's pintxos spots, tasting traditional dishes like pan con tomate, escalivada, bombas, croquetas, and fresh seafood paired with regional wines, cava, and vermouth. Experience Barcelona's social tapas culture where small plates encourage sharing and conversation, learn about Catalan culinary traditions distinct from broader Spanish cuisine, discover hidden local favorites tourists miss, and understand Barcelona's food evolution from maritime city to culinary capital creating delicious cultural experiences perfect for food lovers seeking authentic flavors beyond tourist restaurants in Barcelona's most flavorful neighborhoods.`,
-      seo: { title: 'Barcelona Tapas Tours 2025: Food Walking Tours & Market Visits', description: 'Best Barcelona food tours. Authentic tapas, local markets, wine, Catalan cuisine. From €60.', keywords: 'Barcelona tapas tours, food tours Barcelona, La Boqueria, Spanish food tours' },
+      seo: { title: 'Barcelona Tapas Tours 2026: Food Walking Tours & Market Visits', description: 'Best Barcelona food tours. Authentic tapas, local markets, wine, Catalan cuisine. From €60.', keywords: 'Barcelona tapas tours, food tours Barcelona, La Boqueria, Spanish food tours' },
       whyChoose: [
         { icon: 'Heart', title: 'Authentic Local Food', description: 'Eat where Catalans eat - family-run bars and traditional establishments tourists never find.' },
         { icon: 'Star', title: 'Market Experiences', description: 'Explore La Boqueria and neighborhood markets with insider knowledge and tastings.' },
@@ -13569,7 +13569,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Acropolis Tours',
       stats: { toursAvailable: 35, priceFrom: 30, duration: '2-3 hours' },
       introduction: `The Acropolis is ancient Athens' crowning glory - a sacred hilltop citadel crowned by the Parthenon, one of the world's most recognizable monuments and the ultimate symbol of classical Greek civilization. Acropolis tours provide skip-the-line access to this UNESCO World Heritage site exploring the magnificent Parthenon temple dedicated to Athena, the Erechtheion with its iconic Caryatid maidens, the Temple of Athena Nike, the Propylaea monumental gateway, and the ancient Theater of Dionysus where Greek drama was born. Expert guides bring 2,500 years of history alive explaining classical architecture, Greek mythology, the golden age of Pericles, archaeological discoveries, and the Acropolis's enduring influence on Western civilization while you enjoy panoramic Athens views stretching to the Aegean Sea. Experience walking where Socrates and Plato walked, understand the engineering genius behind Parthenon's optical illusions, and immerse in ancient Greek culture creating profound historical experiences at civilization's birthplace perfect for history enthusiasts and culture seekers.`,
-      seo: { title: 'Acropolis Tours 2025: Skip-the-Line Tickets & Parthenon Guided Visits', description: 'Best Acropolis tours. Skip-the-line, expert guides, Parthenon, ancient Athens. From €30.', keywords: 'Acropolis tours, Parthenon Athens, skip the line tickets, ancient Greece tours' },
+      seo: { title: 'Acropolis Tours 2026: Skip-the-Line Tickets & Parthenon Guided Visits', description: 'Best Acropolis tours. Skip-the-line, expert guides, Parthenon, ancient Athens. From €30.', keywords: 'Acropolis tours, Parthenon Athens, skip the line tickets, ancient Greece tours' },
       whyChoose: [
         { icon: 'Star', title: 'Ancient Wonder', description: 'Visit the Parthenon - one of history\'s most influential buildings and symbol of democracy.' },
         { icon: 'BookOpen', title: 'Skip-the-Line Access', description: 'Avoid 2+ hour queues in scorching sun with priority entrance to Acropolis.' },
@@ -13620,7 +13620,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Ancient Greece Tours',
       stats: { toursAvailable: 28, priceFrom: 35, duration: '3-5 hours' },
       introduction: `Athens ancient Greece tours immerse you in the birthplace of Western civilization through comprehensive explorations of multiple archaeological sites beyond the Acropolis - the Ancient Agora where Socrates taught and democracy was practiced, the Temple of Olympian Zeus with its towering columns, the Panathenaic Stadium (first modern Olympics venue), Hadrian's Arch, the Roman Agora, and ancient Kerameikos cemetery. These tours combine history, mythology, and archaeology with expert guides (often archaeologists) revealing how ancient Athenians lived, governed, worshipped, and created the philosophical and political foundations of modern society. Experience standing where Socrates was sentenced, walking the path of ancient Panathenaic processions, understanding Greek religious practices, and connecting architectural ruins to the vibrant civilization that created them creating comprehensive historical experiences perfect for those seeking deep understanding of classical Greek culture and its lasting impact on humanity.`,
-      seo: { title: 'Ancient Greece Tours 2025: Athens Archaeological Sites & History', description: 'Best ancient Athens tours. Archaeological sites, Ancient Agora, temples, expert guides. From €35.', keywords: 'ancient Greece tours, Athens archaeology, Ancient Agora tours, Greek history' },
+      seo: { title: 'Ancient Greece Tours 2026: Athens Archaeological Sites & History', description: 'Best ancient Athens tours. Archaeological sites, Ancient Agora, temples, expert guides. From €35.', keywords: 'ancient Greece tours, Athens archaeology, Ancient Agora tours, Greek history' },
       whyChoose: [
         { icon: 'BookOpen', title: 'Birthplace of Democracy', description: 'Stand where ancient democracy was born and Socrates taught in the Ancient Agora.' },
         { icon: 'Star', title: 'Multiple Sites', description: 'Explore numerous archaeological treasures beyond the famous Acropolis.' },
@@ -13671,7 +13671,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Museum Tours',
       stats: { toursAvailable: 22, priceFrom: 25, duration: '2-4 hours' },
       introduction: `Athens museum tours showcase some of the world's most important archaeological and art collections housed in world-class institutions - the Acropolis Museum displaying Parthenon sculptures and archaeological treasures with Acropolis views, the National Archaeological Museum containing Greece's finest ancient artifacts spanning millennia, the Benaki Museum revealing Greek culture from prehistory to modern times, and the Byzantine and Christian Museum preserving medieval religious art. Expert guides contextualize artifacts within Greek history, explain archaeological discoveries, reveal stories behind masterpieces, and connect museum pieces to the ancient sites you visit. Experience seeing original Parthenon frieze sculptures up close, marveling at golden Mycenaean treasures, understanding ancient Greek daily life through pottery and tools, and appreciating Byzantine icons creating enriching cultural experiences perfect for history and art enthusiasts seeking deeper understanding of Greek civilization through its preserved material culture in Athens' exceptional museum collections.`,
-      seo: { title: 'Athens Museum Tours 2025: Acropolis Museum & Archaeological Tours', description: 'Best Athens museum tours. Acropolis Museum, National Archaeological Museum, expert guides. From €25.', keywords: 'Athens museums, Acropolis Museum tours, National Archaeological Museum, Greek art' },
+      seo: { title: 'Athens Museum Tours 2026: Acropolis Museum & Archaeological Tours', description: 'Best Athens museum tours. Acropolis Museum, National Archaeological Museum, expert guides. From €25.', keywords: 'Athens museums, Acropolis Museum tours, National Archaeological Museum, Greek art' },
       whyChoose: [
         { icon: 'Star', title: 'World-Class Collections', description: 'See Greece\'s finest ancient artifacts and Parthenon sculptures in exceptional museums.' },
         { icon: 'BookOpen', title: 'Expert Interpretation', description: 'Archaeologists and art historians reveal stories and significance behind artifacts.' },
@@ -13722,7 +13722,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Food & Wine Tours',
       stats: { toursAvailable: 32, priceFrom: 55, duration: '3-4 hours' },
       introduction: `Athens food and wine tours immerse you in authentic Greek culinary culture through guided tastings visiting traditional markets, family-run tavernas, specialty food shops, and local neighborhoods where Athenians actually eat. These gastronomic adventures explore Greece's diverse food scene from Central Market's vibrant stalls displaying fresh seafood and produce, to traditional mezze spreads in historic neighborhoods, from street food tastings (souvl aki, bougatsa, koulouri) to wine bars showcasing Greek varietals, tasting iconic dishes like moussaka, spanakopita, Greek salad with real feta, grilled octopus, dolmades, and baklava paired with ouzo, wine, and Greek coffee. Experience Athens' social dining culture where food brings people together, learn about ingredients central to Greek cuisine (olive oil, feta, honey, oregano), discover regional wine renaissance making waves internationally, and understand culinary traditions dating back millennia creating delicious cultural experiences perfect for food lovers seeking authentic flavors beyond tourist restaurants in Athens' most flavorful neighborhoods.`,
-      seo: { title: 'Athens Food Tours 2025: Greek Cuisine, Wine & Market Tours', description: 'Best Athens food tours. Authentic Greek cuisine, wine tastings, local markets, tavernas. From €55.', keywords: 'Athens food tours, Greek food tours, Athens wine tastings, Central Market Athens' },
+      seo: { title: 'Athens Food Tours 2026: Greek Cuisine, Wine & Market Tours', description: 'Best Athens food tours. Authentic Greek cuisine, wine tastings, local markets, tavernas. From €55.', keywords: 'Athens food tours, Greek food tours, Athens wine tastings, Central Market Athens' },
       whyChoose: [
         { icon: 'Heart', title: 'Authentic Greek Flavors', description: 'Taste real Greek cuisine at family tavernas and markets where locals eat daily.' },
         { icon: 'Star', title: 'Market Experiences', description: 'Explore Athens Central Market with insider knowledge of Greek ingredients and traditions.' },
@@ -13773,7 +13773,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Historic District Tours',
       stats: { toursAvailable: 30, priceFrom: 28, duration: '2-4 hours' },
       introduction: `Athens historic district tours explore the city's most atmospheric neighborhoods where ancient, Byzantine, and modern Athens converge - primarily Plaka (the oldest continuously inhabited area), Anafiotika's whitewashed houses resembling Greek islands, Monastiraki's flea markets and Ottoman heritage, and the charming streets surrounding the Acropolis base. These walking tours reveal hidden Byzantine churches tucked between buildings, neoclassical architecture from 19th-century independence, traditional tavernas serving Greek cuisine, artisan workshops, and the layers of Athenian life spanning millennia. Experience the charm of narrow pedestrian streets shaded by bougainvillea, discover architectural details tourists miss rushing between monuments, hear stories of Ottoman occupation and Greek independence, understand how neighborhoods evolved, and feel authentic Athens atmosphere away from major sites creating leisurely cultural experiences perfect for those seeking to understand Athens beyond ruins through its living historic neighborhoods where past and present beautifully coexist.`,
-      seo: { title: 'Athens Historic District Tours 2025: Plaka, Monastiraki & Walking Tours', description: 'Best Athens historic district tours. Plaka walking tours, Anafiotika, Monastiraki. From €28.', keywords: 'Athens Plaka tours, historic district Athens, Monastiraki tours, Athens walking tours' },
+      seo: { title: 'Athens Historic District Tours 2026: Plaka, Monastiraki & Walking Tours', description: 'Best Athens historic district tours. Plaka walking tours, Anafiotika, Monastiraki. From €28.', keywords: 'Athens Plaka tours, historic district Athens, Monastiraki tours, Athens walking tours' },
       whyChoose: [
         { icon: 'Heart', title: 'Charming Atmosphere', description: 'Wander picturesque pedestrian streets with neoclassical architecture and Greek charm.' },
         { icon: 'BookOpen', title: 'Living History', description: 'Experience neighborhoods continuously inhabited for 3,000+ years with visible historical layers.' },
@@ -13824,7 +13824,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Archaeological Site Tours',
       stats: { toursAvailable: 25, priceFrom: 40, duration: '3-5 hours' },
       introduction: `Athens archaeological site tours provide comprehensive explorations of the city's numerous ancient ruins beyond the famous Acropolis - visiting sites that shaped Western civilization where philosophy, democracy, drama, and classical culture flourished. Expert archaeologist guides lead you through the Ancient Agora (marketplace and civic center), Roman Agora, Kerameikos ancient cemetery, Hadrian's Library, Temple of Olympian Zeus, Aristotle's Lyceum, and lesser-known excavations revealing daily ancient Greek life. These tours connect archaeological evidence to historical events, explain excavation techniques revealing Athens' development across millennia, show how Greeks lived beyond just temples, and help you understand the complete ancient city layout creating immersive educational experiences perfect for archaeology enthusiasts and history lovers seeking deep understanding of classical Athens through its material remains and the stories they tell about one of history's most influential civilizations.`,
-      seo: { title: 'Athens Archaeological Tours 2025: Ancient Sites & Excavation Tours', description: 'Best Athens archaeology tours. Ancient sites, expert archaeologists, excavations. From €40.', keywords: 'Athens archaeology tours, ancient sites Athens, archaeological tours, excavation tours' },
+      seo: { title: 'Athens Archaeological Tours 2026: Ancient Sites & Excavation Tours', description: 'Best Athens archaeology tours. Ancient sites, expert archaeologists, excavations. From €40.', keywords: 'Athens archaeology tours, ancient sites Athens, archaeological tours, excavation tours' },
       whyChoose: [
         { icon: 'BookOpen', title: 'Expert Archaeologists', description: 'Learn from specialists who excavate and study these sites professionally.' },
         { icon: 'Star', title: 'Multiple Ancient Sites', description: 'Explore numerous archaeological treasures beyond the famous Acropolis.' },
@@ -13879,7 +13879,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Canal Boat Tours',
       stats: { toursAvailable: 45, priceFrom: 18, duration: '1-3 hours' },
       introduction: `Amsterdam canal tours offer the quintessential way to experience the Venice of the North - cruising the city's UNESCO World Heritage canals past 17th-century Golden Age merchant houses, under picturesque bridges, along tree-lined waterways revealing Amsterdam's unique relationship with water. These boat tours range from open-topped sightseeing cruises narrating city history, to romantic candlelit dinner cruises with wine, pizza boats, cocktail cruises, private charters, and themed experiences. Experience Amsterdam's architectural beauty from canal perspective seeing elegant gabled houses, historic warehouses converted to apartments, Anne Frank House from water, Seven Bridges view, and understanding how Dutch hydraulic engineering created this floating city. Expert captains share Amsterdam stories, point out hidden details, and reveal why these 165 canals defining Amsterdam earned UNESCO status creating relaxing cultural experiences perfect for first-time visitors seeking iconic Amsterdam perspective and photography opportunities throughout the picturesque canal ring.`,
-      seo: { title: 'Amsterdam Canal Tours 2025: Boat Cruises & Canal Ring Tours', description: 'Best Amsterdam canal tours. Boat cruises, UNESCO canals, sightseeing, dinner cruises. From €18.', keywords: 'Amsterdam canal tours, canal boat cruise, canal ring tours, Amsterdam boat tours' },
+      seo: { title: 'Amsterdam Canal Tours 2026: Boat Cruises & Canal Ring Tours', description: 'Best Amsterdam canal tours. Boat cruises, UNESCO canals, sightseeing, dinner cruises. From €18.', keywords: 'Amsterdam canal tours, canal boat cruise, canal ring tours, Amsterdam boat tours' },
       whyChoose: [
         { icon: 'Waves', title: 'UNESCO World Heritage', description: 'Cruise canals recognized for outstanding architectural and engineering significance.' },
         { icon: 'Camera', title: 'Best Photo Opportunities', description: 'Unique water-level perspectives of canal houses, bridges, and Amsterdam\'s beauty.' },
@@ -13930,7 +13930,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Van Gogh Museum Tours',
       stats: { toursAvailable: 18, priceFrom: 22, duration: '1.5-2.5 hours' },
       introduction: `Van Gogh Museum tours provide intimate access to the world's most comprehensive Vincent van Gogh collection - over 200 paintings, 500 drawings, and 700 letters revealing the tortured genius behind Post-Impressionist masterpieces. Located on Amsterdam's Museum Square, this purpose-built museum showcases Van Gogh's artistic evolution from dark Dutch peasant scenes to vibrant French landscapes through chronological exhibitions. Expert guides contextualize iconic works like Sunflowers, The Bedroom, Almond Blossoms, and Wheatfield with Crows within Van Gogh's tumultuous life story, explain his revolutionary techniques, reveal relationships with fellow artists (Gauguin, Toulouse-Lautrec), and demonstrate how mental illness and passion intertwined creating art that transformed modern painting. Experience standing before authentic Van Goghs understanding the man behind legends, seeing brushwork details impossible in reproductions, and connecting emotionally to works revealing humanity's struggles creating profound art experiences perfect for art lovers and curious visitors discovering why Van Gogh remains one of history's most beloved artists.`,
-      seo: { title: 'Van Gogh Museum Tours 2025: Skip-the-Line Tickets & Guided Tours', description: 'Best Van Gogh Museum tours. Skip-the-line, expert guides, Sunflowers, masterpieces. From €22.', keywords: 'Van Gogh Museum tours, Amsterdam Van Gogh, skip the line tickets, Sunflowers painting' },
+      seo: { title: 'Van Gogh Museum Tours 2026: Skip-the-Line Tickets & Guided Tours', description: 'Best Van Gogh Museum tours. Skip-the-line, expert guides, Sunflowers, masterpieces. From €22.', keywords: 'Van Gogh Museum tours, Amsterdam Van Gogh, skip the line tickets, Sunflowers painting' },
       whyChoose: [
         { icon: 'Star', title: 'World\'s Largest Collection', description: 'See more Van Goghs here than anywhere else - comprehensive artistic journey.' },
         { icon: 'Heart', title: 'Iconic Masterpieces', description: 'Stand before Sunflowers, Bedroom in Arles, Almond Blossoms - works you know from posters.' },
@@ -13981,7 +13981,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Anne Frank House Tours',
       stats: { toursAvailable: 12, priceFrom: 16, duration: '1-1.5 hours' },
       introduction: `Anne Frank House tours provide deeply moving access to the actual secret annex where 13-year-old Anne Frank, her family, and four others hid from Nazi persecution for over two years (1942-1944) before tragic discovery and deportation. This preserved canal house on Prinsengracht contains the hidden rooms where Anne wrote her now-famous diary, original artifacts, quotes on walls, and exhibits explaining the Holocaust, discrimination, and Anne's lasting legacy. Experience walking through the revolving bookcase hiding the annex entrance, seeing the tiny cramped spaces where eight people lived in constant fear, viewing Anne's original diary and her movie star photo collection on bedroom walls, and understanding through powerful storytelling how one girl's words became one of history's most important documents creating profoundly emotional historical experiences that connect WWII's horrors to personal human stories ensuring "never again" remains meaningful for future generations.`,
-      seo: { title: 'Anne Frank House Tours 2025: Secret Annex Tickets & Guided Tours', description: 'Best Anne Frank House tours. Secret annex, diary, WWII history, skip-the-line. From €16.', keywords: 'Anne Frank House tours, secret annex Amsterdam, Anne Frank diary, WWII Amsterdam' },
+      seo: { title: 'Anne Frank House Tours 2026: Secret Annex Tickets & Guided Tours', description: 'Best Anne Frank House tours. Secret annex, diary, WWII history, skip-the-line. From €16.', keywords: 'Anne Frank House tours, secret annex Amsterdam, Anne Frank diary, WWII Amsterdam' },
       whyChoose: [
         { icon: 'BookOpen', title: 'Historic Significance', description: 'Stand where Anne Frank wrote one of history\'s most important documents during WWII.' },
         { icon: 'Heart', title: 'Deeply Moving', description: 'Connect emotionally to Holocaust through one girl\'s personal story and preserved spaces.' },
@@ -14032,7 +14032,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Food & Beer Tours',
       stats: { toursAvailable: 35, priceFrom: 65, duration: '3-4 hours' },
       introduction: `Amsterdam food and beer tours immerse you in Dutch culinary culture through guided tastings visiting traditional brown cafes, craft breweries, cheese shops, and local markets where Amsterdammers actually eat and drink. These gastronomic adventures explore Netherlands' diverse food scene from stroopwafels and bitterballen at authentic pubs, to craft beer tastings at innovative Amsterdam breweries, cheese tastings at centuries-old shops, herring stands, Indonesian rijsttafel (colonial legacy), and traditional Dutch pancakes. Experience Amsterdam's beer culture understanding why Netherlands rivals Belgium for brewing excellence, learn about Dutch Golden Age spice trade influencing cuisine, discover cheese-making traditions, taste jenever (Dutch gin), and understand how tolerant Amsterdam culture extends to food scene creating delicious cultural experiences perfect for food lovers seeking authentic flavors beyond tourist restaurants in Amsterdam's most flavorful neighborhoods revealing Dutch cuisine's surprising depth and beer craftsmanship.`,
-      seo: { title: 'Amsterdam Food Tours 2025: Dutch Cuisine & Craft Beer Tastings', description: 'Best Amsterdam food tours. Dutch cuisine, craft beer, cheese tastings, local markets. From €65.', keywords: 'Amsterdam food tours, Dutch food tours, Amsterdam beer tours, cheese tasting' },
+      seo: { title: 'Amsterdam Food Tours 2026: Dutch Cuisine & Craft Beer Tastings', description: 'Best Amsterdam food tours. Dutch cuisine, craft beer, cheese tastings, local markets. From €65.', keywords: 'Amsterdam food tours, Dutch food tours, Amsterdam beer tours, cheese tasting' },
       whyChoose: [
         { icon: 'Heart', title: 'Authentic Dutch Food', description: 'Discover real Dutch cuisine beyond tourist restaurants - stroopwafels, bitterballen, herring, cheese.' },
         { icon: 'GlassWater', title: 'Craft Beer Scene', description: 'Netherlands\' booming craft beer movement rivals Belgium - taste innovative local breweries.' },
@@ -14083,7 +14083,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Historic District Tours',
       stats: { toursAvailable: 28, priceFrom: 22, duration: '2-3 hours' },
       introduction: `Amsterdam historic district tours reveal the city's most atmospheric neighborhoods where Golden Age history, canal culture, and modern Amsterdam converge - exploring the charming Jordaan with its brown cafes and art galleries, the historic Red Light District beyond stereotypes understanding its complex history, the elegant Canal Ring (Grachtengordel) with merchant houses, and the Nine Streets boutique area. These walking tours uncover hidden courtyards (hofjes), explain Dutch tolerance traditions, reveal canal house architectural details, share stories of Jewish Quarter history, and show how Amsterdam evolved from fishing village to global trading power creating leisurely cultural experiences perfect for understanding Amsterdam beyond major museums through its living neighborhoods where history and contemporary life beautifully intertwine revealing authentic local character tourists often miss rushing between attractions.`,
-      seo: { title: 'Amsterdam Historic District Tours 2025: Jordaan, Canal Ring & Walking Tours', description: 'Best Amsterdam historic tours. Jordaan, Red Light District, canal ring, walking tours. From €22.', keywords: 'Amsterdam historic tours, Jordaan tours, Red Light District tours, canal ring walks' },
+      seo: { title: 'Amsterdam Historic District Tours 2026: Jordaan, Canal Ring & Walking Tours', description: 'Best Amsterdam historic tours. Jordaan, Red Light District, canal ring, walking tours. From €22.', keywords: 'Amsterdam historic tours, Jordaan tours, Red Light District tours, canal ring walks' },
       whyChoose: [
         { icon: 'Heart', title: 'Charming Neighborhoods', description: 'Discover picturesque Jordaan, elegant canals, and authentic Amsterdam beyond tourist crowds.' },
         { icon: 'BookOpen', title: 'Golden Age History', description: 'Understand how 17th-century trading wealth created Amsterdam\'s unique character.' },
@@ -14134,7 +14134,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Art & Culture Tours',
       stats: { toursAvailable: 20, priceFrom: 32, duration: '2-4 hours' },
       introduction: `Amsterdam art and culture tours showcase the Netherlands' extraordinary artistic heritage from Dutch Golden Age masters to contemporary innovations - exploring the Rijksmuseum's Rembrandt and Vermeer masterpieces, Stedelijk Museum's modern art collections, plus cultural experiences revealing Amsterdam's creative character. These tours combine world-class art museums with neighborhood explorations, explaining how Dutch painting traditions influenced art history, connecting Old Masters to modern movements, and revealing Amsterdam's ongoing role as European cultural capital. Expert art historians contextualize works within Dutch history, explain artistic techniques and symbolism, show cultural institutions shaping creativity, and demonstrate how 17th-century prosperity funded unprecedented artistic flourishing creating enriching educational experiences perfect for art enthusiasts and curious visitors discovering why tiny Netherlands produced disproportionate artistic influence through masterpieces housed in Amsterdam's exceptional museums and vibrant contemporary scene.`,
-      seo: { title: 'Amsterdam Art Tours 2025: Rijksmuseum, Museums & Culture', description: 'Best Amsterdam art tours. Rijksmuseum, Dutch masters, art museums, cultural tours. From €32.', keywords: 'Amsterdam art tours, Rijksmuseum tours, Dutch masters, Amsterdam museums' },
+      seo: { title: 'Amsterdam Art Tours 2026: Rijksmuseum, Museums & Culture', description: 'Best Amsterdam art tours. Rijksmuseum, Dutch masters, art museums, cultural tours. From €32.', keywords: 'Amsterdam art tours, Rijksmuseum tours, Dutch masters, Amsterdam museums' },
       whyChoose: [
         { icon: 'Star', title: 'Dutch Masters', description: 'See Rembrandt\'s Night Watch, Vermeer, and Golden Age paintings in world-class museums.' },
         { icon: 'BookOpen', title: 'Art Expert Guides', description: 'Learn from art historians revealing techniques, symbolism, and stories behind masterpieces.' },
@@ -14189,7 +14189,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Brandenburg Gate Tours',
       stats: { toursAvailable: 25, priceFrom: 20, duration: '1.5-3 hours' },
       introduction: `Brandenburg Gate tours explore Berlin's most iconic neoclassical monument - the 18th-century triumphal arch that witnessed Prussia's glory, Nazi parades, Cold War division, and German reunification becoming the ultimate symbol of German history's tumultuous journey. These tours explain the Gate's evolution from Prussian royal entrance to symbol of divided Berlin (in no-man's-land between East and West) to reunification icon, explore surrounding Pariser Platz with embassies and Holocaust Memorial nearby, and contextualize the Gate within Berlin's broader historical narrative. Expert guides share stories of historical events that occurred here, explain the quadriga (chariot sculpture) history, reveal how the Gate transformed from divisive symbol to unity representation, and help you understand modern German identity forged through confronting difficult past creating powerful historical experiences at ground zero of 20th-century European history perfect for those seeking to understand Germany's complex journey.`,
-      seo: { title: 'Brandenburg Gate Tours 2025: Berlin Historic Landmark Tours', description: 'Best Brandenburg Gate tours. Berlin history, Cold War, German reunification. From €20.', keywords: 'Brandenburg Gate tours, Berlin tours, German history, Cold War tours Berlin' },
+      seo: { title: 'Brandenburg Gate Tours 2026: Berlin Historic Landmark Tours', description: 'Best Brandenburg Gate tours. Berlin history, Cold War, German reunification. From €20.', keywords: 'Brandenburg Gate tours, Berlin tours, German history, Cold War tours Berlin' },
       whyChoose: [
         { icon: 'Star', title: 'Iconic Symbol', description: 'Germany\'s most recognizable landmark - witnessed 250+ years of dramatic history.' },
         { icon: 'BookOpen', title: 'Historical Significance', description: 'From Prussian glory through Nazi era to Cold War and reunification - pivotal moments all here.' },
@@ -14240,7 +14240,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Berlin Wall Tours',
       stats: { toursAvailable: 30, priceFrom: 18, duration: '2-4 hours' },
       introduction: `Berlin Wall tours reveal the powerful story of the concrete barrier that divided Berlin for 28 years (1961-1989) - exploring remaining Wall sections at East Side Gallery with its famous murals, the Berlin Wall Memorial with preserved death strip and watchtower, Checkpoint Charlie crossing point, and numerous locations explaining life in divided city. Expert guides who often experienced division firsthand share personal stories of families separated, escape attempts, daily life restrictions, and the euphoria of reunification night November 9, 1989. Experience seeing the graffiti-covered East Side Gallery (world's longest open-air gallery), understanding the Wall's brutal effectiveness (140km encircling West Berlin), hearing  harrowing escape stories, and contemplating how recent history (many guides remember it!) transformed from oppressive division to symbol of freedom's triumph creating moving educational experiences essential for understanding Cold War reality and Germany's remarkable reunification journey.`,
-      seo: { title: 'Berlin Wall Tours 2025: Cold War History & Memorial Tours', description: 'Best Berlin Wall tours. East Side Gallery, memorials, Cold War history, Checkpoint Charlie. From €18.', keywords: 'Berlin Wall tours, East Side Gallery, Cold War tours, Checkpoint Charlie tours' },
+      seo: { title: 'Berlin Wall Tours 2026: Cold War History & Memorial Tours', description: 'Best Berlin Wall tours. East Side Gallery, memorials, Cold War history, Checkpoint Charlie. From €18.', keywords: 'Berlin Wall tours, East Side Gallery, Cold War tours, Checkpoint Charlie tours' },
       whyChoose: [
         { icon: 'BookOpen', title: 'Living History', description: 'Learn from guides who experienced division - personal stories bring Wall history alive.' },
         { icon: 'Star', title: 'East Side Gallery', description: 'See world\'s longest open-air gallery - 105 murals on remaining 1.3km Wall section.' },
@@ -14290,7 +14290,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Museum Island Tours',
       stats: { toursAvailable: 22, priceFrom: 28, duration: '2-5 hours' },
       introduction: `Museum Island tours showcase Berlin's extraordinary UNESCO World Heritage museum complex on the Spree River - five world-class museums housing treasures spanning 6,000 years from ancient civilizations to 19th-century art. These comprehensive tours explore the Pergamon Museum with its monumental architecture (Pergamon Altar, Ishtar Gate), Neues Museum displaying Egyptian Queen Nefertiti's bust, Altes Museum with Greek/Roman antiquities, Bode Museum's sculpture collection, and Alte Nationalgalerie's 19th-century masterpieces. Expert art historians and archaeologists contextualize artifacts within world history, explain how Prussian collecting created these remarkable holdings, reveal restoration stories post-WWII damage, and demonstrate why this museum concentration ranks among Europe's finest creating enriching cultural experiences perfect for history and art enthusiasts seeking world-class collections in stunning architecture on Berlin's most beautiful island revealing civilizations from Babylon to Berlin.`,
-      seo: { title: 'Museum Island Tours 2025: Pergamon, Nefertiti & Berlin Museums', description: 'Best Museum Island tours. Pergamon Museum, Nefertiti, world-class art, UNESCO site. From €28.', keywords: 'Museum Island Berlin, Pergamon Museum tours, Nefertiti bust, Berlin museums' },
+      seo: { title: 'Museum Island Tours 2026: Pergamon, Nefertiti & Berlin Museums', description: 'Best Museum Island tours. Pergamon Museum, Nefertiti, world-class art, UNESCO site. From €28.', keywords: 'Museum Island Berlin, Pergamon Museum tours, Nefertiti bust, Berlin museums' },
       whyChoose: [
         { icon: 'Star', title: 'UNESCO World Heritage', description: 'Five world-class museums on single island - unprecedented cultural concentration.' },
         { icon: 'Heart', title: 'Iconic Treasures', description: 'See Nefertiti\'s bust, Pergamon Altar, Ishtar Gate, and ancient civilizations\' masterpieces.' },
@@ -14341,7 +14341,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Food & Beer Tours',
       stats: { toursAvailable: 38, priceFrom: 60, duration: '3-4 hours' },
       introduction: `Berlin food and beer tours immerse you in Germany's diverse culinary scene through guided tastings visiting traditional beer halls, Turkish döner shops, currywurst stands, food markets, and craft breweries revealing Berlin's evolution from traditional German cuisine to Europe's most multicultural food city. These gastronomic adventures explore German classics like bratwurst, schnitzel, and pretzels alongside Turkish, Vietnamese, and international influences, taste craft beers at innovative Berlin breweries challenging Bavaria's monopoly, visit vibrant street food markets (Markthalle Neun, Turkish Market), and experience Berlin's unique food culture shaped by immigration, reunification, and creative energy. Understand beer purity law (Reinheitsgebot) traditions while discovering modern craft innovations, learn about Turkish immigration shaping Berlin cuisine, taste authentic currywurst (Berlin invention!), and explore how affordable Berlin attracted international chefs creating exciting culinary capital perfect for food lovers seeking authentic flavors in Europe's most dynamic food scene.`,
-      seo: { title: 'Berlin Food Tours 2025: German Cuisine & Craft Beer Tastings', description: 'Best Berlin food tours. German cuisine, craft beer, street food, markets. From €60.', keywords: 'Berlin food tours, German food tours, Berlin beer tours, currywurst tours' },
+      seo: { title: 'Berlin Food Tours 2026: German Cuisine & Craft Beer Tastings', description: 'Best Berlin food tours. German cuisine, craft beer, street food, markets. From €60.', keywords: 'Berlin food tours, German food tours, Berlin beer tours, currywurst tours' },
       whyChoose: [
         { icon: 'Heart', title: 'Multicultural Cuisine', description: 'Europe\'s most diverse food scene - German, Turkish, Vietnamese, international fusion.' },
         { icon: 'GlassWater', title: 'Craft Beer Revolution', description: 'Berlin challenging Bavaria with innovative craft breweries and beer culture.' },
@@ -14391,7 +14391,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Historic District Tours',
       stats: { toursAvailable: 26, priceFrom: 24, duration: '2-4 hours' },
       introduction: `Berlin historic district tours reveal the city's diverse neighborhoods each telling different chapters of Berlin's dramatic story - from grand Prussian Mitte with Unter den Linden and Museum Island, to former East Berlin's Prenzlauer Berg with DDR architecture and hipster cafes, to multicultural Kreuzberg showing Turkish influence and alternative culture, and Charlottenburg's West Berlin elegance. These walking tours explain how Berlin's unique history created neighborhood divisions visible today, show architectural contrasts between restored Prussian grandeur and concrete East German blocks, reveal street art covering Communist-era buildings, and demonstrate how reunification transformed districts creating fascinating urban experiences perfect for understanding Berlin beyond major monuments through its living neighborhoods where history layers remain visible and modern creative energy thrives making Berlin Europe's most dynamic constantly-evolving capital attracting artists, entrepreneurs, and free spirits worldwide.`,
-      seo: { title: 'Berlin Historic District Tours 2025: Neighborhood Walking Tours', description: 'Best Berlin district tours. Mitte, Kreuzberg, Prenzlauer Berg, neighborhood walks. From €24.', keywords: 'Berlin neighborhood tours, Kreuzberg tours, Mitte walking tours, Berlin districts' },
+      seo: { title: 'Berlin Historic District Tours 2026: Neighborhood Walking Tours', description: 'Best Berlin district tours. Mitte, Kreuzberg, Prenzlauer Berg, neighborhood walks. From €24.', keywords: 'Berlin neighborhood tours, Kreuzberg tours, Mitte walking tours, Berlin districts' },
       whyChoose: [
         { icon: 'Heart', title: 'Diverse Neighborhoods', description: 'Each district different - Prussian elegance, East German blocks, hipster culture, Turkish life.' },
         { icon: 'BookOpen', title: 'Visible History', description: 'See how division, reunification, and immigration shaped neighborhoods visibly today.' },
@@ -14441,7 +14441,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Art & Culture Tours',
       stats: { toursAvailable: 24, priceFrom: 30, duration: '2-4 hours' },
       introduction: `Berlin art and culture tours showcase Germany's capital as Europe's most dynamic creative hub - exploring world-class museums on Museum Island, cutting-edge contemporary galleries, legendary street art scenes, cultural venues, and understanding how Berlin's unique history created unprecedented creative freedom attracting artists worldwide. These tours combine historical art (Museum Island's Old Masters) with contemporary innovations (galleries, street art), explain how affordable rents and cultural tolerance made Berlin the art capital, visit alternative venues and project spaces, and reveal the creative energy transforming former industrial spaces into cultural centers. Expert guides contextualize Berlin's artistic evolution from Prussian collecting to Cold War division to reunified creative explosion, show both established institutions and underground scenes, and demonstrate why Berlin replaced Paris as Europe's artistic center creating inspiring cultural experiences perfect for art lovers and creatives discovering why Berlin attracts more artists than any European city.`,
-      seo: { title: 'Berlin Art Tours 2025: Museums, Galleries & Street Art Tours', description: 'Best Berlin art tours. Museums, contemporary galleries, street art, cultural scene. From €30.', keywords: 'Berlin art tours, Berlin galleries, street art tours Berlin, Museum Island' },
+      seo: { title: 'Berlin Art Tours 2026: Museums, Galleries & Street Art Tours', description: 'Best Berlin art tours. Museums, contemporary galleries, street art, cultural scene. From €30.', keywords: 'Berlin art tours, Berlin galleries, street art tours Berlin, Museum Island' },
       whyChoose: [
         { icon: 'Star', title: 'Dynamic Art Scene', description: 'Europe\'s most vibrant contemporary art capital with galleries, museums, street art.' },
         { icon: 'Heart', title: 'World-Class Museums', description: 'Museum Island UNESCO site plus cutting-edge contemporary venues.' },
@@ -14496,7 +14496,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Parliament Building Tours',
       stats: { toursAvailable: 20, priceFrom: 25, duration: '1-1.5 hours' },
       introduction: `Budapest Parliament Building tours provide access to Hungary's most iconic landmark - a magnificent Neo-Gothic masterpiece dominating the Danube riverbank with its 96-meter dome, 691 rooms, and ornate interiors rivaling any European palace. These guided tours explore the grand staircase with red carpet and gold details, the stunning Dome Hall housing Hungary's Holy Crown and coronation jewels, the elegant Old Upper House chamber with intricate woodwork, and the breathtaking architecture combining Gothic Revival, Renaissance, and Baroque elements. Expert guides explain Hungarian history from Austro-Hungarian Empire through Communist era to modern democracy, reveal the building's symbolism (96 meters = founding year 896 AD), share stories of political upheavals, and showcase architectural details making this Europe's third-largest parliament creating awe-inspiring experiences perfect for architecture and history enthusiasts discovering Budapest's crown jewel through its most photographed and historically significant building.`,
-      seo: { title: 'Budapest Parliament Tours 2025: Skip-the-Line Guided Building Tours', description: 'Best Parliament Building tours. Skip-the-line, Holy Crown, guided tours, Gothic architecture. From €25.', keywords: 'Budapest Parliament tours, Hungarian Parliament Building, skip the line tickets' },
+      seo: { title: 'Budapest Parliament Tours 2026: Skip-the-Line Guided Building Tours', description: 'Best Parliament Building tours. Skip-the-line, Holy Crown, guided tours, Gothic architecture. From €25.', keywords: 'Budapest Parliament tours, Hungarian Parliament Building, skip the line tickets' },
       whyChoose: [
         { icon: 'Star', title: 'Architectural Masterpiece', description: 'Europe\'s most stunning parliament building with breathtaking Gothic Revival details.' },
         { icon: 'Heart', title: 'Holy Crown of Hungary', description: 'See the 1,000-year-old coronation crown and royal jewels in the Dome Hall.' },
@@ -14548,7 +14548,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Thermal Bath Tours',
       stats: { toursAvailable: 25, priceFrom: 30, duration: '2-4 hours' },
       introduction: `Budapest thermal bath tours immerse you in the city's unique spa culture - built on natural hot springs that have attracted bathers for 2,000 years from Romans to Ottomans to modern wellness seekers. These experiences explore legendary bathhouses like Széchenyi (Europe's largest thermal bath complex with outdoor pools), Gellért (Art Nouveau masterpiece), Rudas (authentic Ottoman Turkish bath with rooftop pool), and Király (16th-century Turkish dome). Experience soaking in mineral-rich thermal waters (38-40°C) with locals practicing this daily ritual, enjoying architectural beauty while bathing, trying traditional treatments (massages, mud wraps), understanding the therapeutic benefits of different pools, and learning how thermal culture defines Budapest as the "City of Spas" creating relaxing cultural experiences perfect for wellness travelers discovering why Budapest has more thermal springs than any capital city offering authentic Hungarian spa traditions in stunning historical settings.`,
-      seo: { title: 'Budapest Thermal Bath Tours 2025: Széchenyi, Gellért & Spa Experiences', description: 'Best Budapest thermal bath tours. Széchenyi, Gellért, Turkish baths, spa experiences. From €30.', keywords: 'Budapest thermal baths, Szechenyi Baths, Gellert Spa, Hungarian spa tours' },
+      seo: { title: 'Budapest Thermal Bath Tours 2026: Széchenyi, Gellért & Spa Experiences', description: 'Best Budapest thermal bath tours. Széchenyi, Gellért, Turkish baths, spa experiences. From €30.', keywords: 'Budapest thermal baths, Szechenyi Baths, Gellert Spa, Hungarian spa tours' },
       whyChoose: [
         { icon: 'Waves', title: 'Natural Thermal Springs', description: 'Genuine healing thermal waters from underground springs - not heated pool water.' },
         { icon: 'Star', title: 'Historic Bathhouses', description: 'Bathe in stunning Ottoman, Art Nouveau, and Neo-Baroque architectural masterpieces.' },
@@ -14600,7 +14600,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Buda Castle Tours',
       stats: { toursAvailable: 30, priceFrom: 22, duration: '2-4 hours' },
       introduction: `Buda Castle tours explore Budapest's historic royal palace complex crowning Castle Hill - a UNESCO World Heritage site housing museums, panoramic terraces, and centuries of Hungarian history from medieval origins through Habsburg glory to modern museums. These comprehensive tours visit the Hungarian National Gallery showcasing Hungarian art, Budapest History Museum revealing the castle's evolution, the stunning courtyards and terraces with breathtaking Danube and Pest panoramas, Matthias Church with colorful Zsolnay roof tiles, and Fisherman's Bastion's fairy-tale turrets. Expert guides explain Hungarian royal history, the castle's destruction and reconstruction cycles, architectural styles spanning medieval to Baroque, and how this hilltop citadel symbolizes Hungarian resilience creating enriching cultural experiences perfect for history lovers and architecture enthusiasts discovering Budapest from its most historically significant and visually spectacular elevated position offering unforgettable city views.`,
-      seo: { title: 'Buda Castle Tours 2025: Royal Palace, Museums & Fisherman\'s Bastion', description: 'Best Buda Castle tours. Royal palace, museums, panoramic views, Matthias Church. From €22.', keywords: 'Buda Castle tours, Budapest castle, Fisherman\'s Bastion, royal palace Budapest' },
+      seo: { title: 'Buda Castle Tours 2026: Royal Palace, Museums & Fisherman\'s Bastion', description: 'Best Buda Castle tours. Royal palace, museums, panoramic views, Matthias Church. From €22.', keywords: 'Buda Castle tours, Budapest castle, Fisherman\'s Bastion, royal palace Budapest' },
       whyChoose: [
         { icon: 'Star', title: 'UNESCO World Heritage', description: 'Historic royal complex with museums, churches, and architectural treasures.' },
         { icon: 'Camera', title: 'Panoramic Views', description: 'Stunning Danube, Parliament, and Pest vistas from multiple viewpoints.' },
@@ -14651,7 +14651,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Danube River Tours',
       stats: { toursAvailable: 40, priceFrom: 18, duration: '1-3 hours' },
       introduction: `Budapest Danube River tours offer the most romantic way to experience the city - cruising Europe's second-longest river past the illuminated Parliament Building, under iconic Chain Bridge, along the UNESCO-listed riverbanks showcasing both Buda and Pest sides. These cruises range from daytime sightseeing tours explaining Budapest's development along the Danube, to romantic evening cruises with dinner and live music, cocktail cruises, and special themed experiences. Experience Budapest's architectural beauty from water perspective seeing Buda Castle hilltop position, Parliament's Neo-Gothic splendor, Margaret Island greenery, the nine historic bridges connecting Buda and Pest, and understanding how the Danube shaped Budapest's identity. Expert captains and guides share Hungarian history, point out architectural details, and reveal why Budapest earned its reputation as the "Pearl of the Danube" creating magical experiences perfect for couples, photographers, and first-time visitors seeking Budapest's most romantic and photogenic perspective.`,
-      seo: { title: 'Budapest Danube River Cruises 2025: Dinner Cruises & Boat Tours', description: 'Best Danube River cruises. Dinner cruises, sightseeing, evening lights, romantic tours. From €18.', keywords: 'Budapest Danube cruise, river cruise Budapest, dinner cruise, boat tours' },
+      seo: { title: 'Budapest Danube River Cruises 2026: Dinner Cruises & Boat Tours', description: 'Best Danube River cruises. Dinner cruises, sightseeing, evening lights, romantic tours. From €18.', keywords: 'Budapest Danube cruise, river cruise Budapest, dinner cruise, boat tours' },
       whyChoose: [
         { icon: 'Waves', title: 'Iconic River Views', description: 'See Parliament, Buda Castle, and bridges from most photogenic perspective.' },
         { icon: 'Heart', title: 'Romantic Evening Cruises', description: 'Budapest illuminated at night creates magical atmosphere - perfect for couples.' },
@@ -14702,7 +14702,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Food Wine Tours',
       stats: { toursAvailable: 35, priceFrom: 60, duration: '3-4 hours' },
       introduction: `Budapest food and wine tours immerse you in authentic Hungarian culinary culture through guided tastings visiting traditional markets, historic cafes, ruin bars, and family-run restaurants where locals actually eat. These gastronomic adventures explore Hungarian classics like goulash, lángos, chimney cake, paprika-spiced dishes, and traditional stews paired with world-renowned Hungarian wines (Tokaji, Egri Bikavér) and pálinka fruit brandy. Experience the Great Market Hall's vibrant stalls, discover Jewish Quarter's culinary renaissance in converted ruins, learn about paprika's central role in Hungarian cooking, understand Austro-Hungarian influences, and taste dishes dating back centuries creating delicious cultural experiences perfect for food lovers seeking authentic flavors beyond tourist restaurants in Budapest's most flavorful neighborhoods revealing Hungarian cuisine's surprising depth and wine region excellence often overlooked internationally.`,
-      seo: { title: 'Budapest Food Tours 2025: Hungarian Cuisine & Wine Tastings', description: 'Best Budapest food tours. Goulash, Hungarian wine, ruin bars, Great Market Hall. From €60.', keywords: 'Budapest food tours, Hungarian food tours, Tokaji wine, Budapest wine tastings' },
+      seo: { title: 'Budapest Food Tours 2026: Hungarian Cuisine & Wine Tastings', description: 'Best Budapest food tours. Goulash, Hungarian wine, ruin bars, Great Market Hall. From €60.', keywords: 'Budapest food tours, Hungarian food tours, Tokaji wine, Budapest wine tastings' },
       whyChoose: [
         { icon: 'Heart', title: 'Authentic Hungarian Flavors', description: 'Taste real Hungarian cuisine - goulash, lángos, paprika dishes, chimney cake at local spots.' },
         { icon: 'GlassWater', title: 'World-Class Wines', description: 'Discover Tokaji (noble rot wine), Egri Bikavér (Bull\'s Blood), underrated Hungarian wine regions.' },
@@ -14753,7 +14753,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Historic District Tours',
       stats: { toursAvailable: 28, priceFrom: 24, duration: '2-4 hours' },
       introduction: `Budapest historic district tours reveal the city's most atmospheric neighborhoods telling stories of Habsburg grandeur, Jewish heritage, Communist era, and post-1989 renaissance - exploring the elegant downtown Pest with grand boulevards and coffee houses, the Jewish Quarter preserving Europe's largest synagogue and tragic Holocaust history, the Castle District's medieval streets, and Andrássy Avenue's UNESCO-listed boulevard. These walking tours uncover architectural layers from Art Nouveau masterpieces to bullet holes from 1956 Revolution, explain Hungarian history through neighborhood evolution, visit historic cafes where writers and artists gathered, and show how Budapest transformed from imperial capital to Communist city to modern European metropolis creating enriching cultural experiences perfect for understanding Budapest beyond major monuments through its living neighborhoods where history remains visible and local character thrives.`,
-      seo: { title: 'Budapest Historic District Tours 2025: Jewish Quarter & Walking Tours', description: 'Best Budapest historic tours. Jewish Quarter, downtown Pest, walking tours, neighborhoods. From €24.', keywords: 'Budapest historic tours, Jewish Quarter Budapest, Pest walking tours, Budapest neighborhoods' },
+      seo: { title: 'Budapest Historic District Tours 2026: Jewish Quarter & Walking Tours', description: 'Best Budapest historic tours. Jewish Quarter, downtown Pest, walking tours, neighborhoods. From €24.', keywords: 'Budapest historic tours, Jewish Quarter Budapest, Pest walking tours, Budapest neighborhoods' },
       whyChoose: [
         { icon: 'BookOpen', title: 'Jewish Heritage', description: 'Explore Europe\'s largest synagogue and moving Holocaust history in Jewish Quarter.' },
         { icon: 'Heart', title: 'Grand Boulevards', description: 'Walk UNESCO-listed Andrássy Avenue with elegant buildings and café culture.' },
@@ -14808,7 +14808,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Knossos Palace Tours',
       stats: { toursAvailable: 25, priceFrom: 28, duration: '2-3 hours' },
       introduction: `Knossos Palace tours reveal Europe's oldest advanced civilization - the legendary Minoan palace complex where King Minos ruled, the Minotaur supposedly lurked in the labyrinth, and Bronze Age culture flourished 4,000 years ago. These archaeological tours explore the partially reconstructed palace with its vibrant frescoes (including the famous Prince of Lilies), multi-story buildings with advanced plumbing, throne room where ancient kings sat, ceremonial spaces, and storage magazines revealing sophisticated Minoan society. Expert archaeologist guides separate myth from reality explaining Sir Arthur Evans' controversial reconstructions, reveal Minoan culture's advanced nature (indoor plumbing, multi-story architecture), connect archaeological evidence to Greek mythology, and demonstrate why this site revolutionized understanding of European prehistory creating fascinating historical experiences perfect for archaeology enthusiasts and mythology lovers discovering Bronze Age civilization at its magnificent palace predating classical Greece by 1,500 years.`,
-      seo: { title: 'Knossos Palace Tours 2025: Minoan Civilization & Archaeological Tours', description: 'Best Knossos Palace tours. Minoan ruins, mythology, archaeology, expert guides. From €28.', keywords: 'Knossos Palace tours, Minoan civilization, Crete archaeology, Knossos Crete' },
+      seo: { title: 'Knossos Palace Tours 2026: Minoan Civilization & Archaeological Tours', description: 'Best Knossos Palace tours. Minoan ruins, mythology, archaeology, expert guides. From €28.', keywords: 'Knossos Palace tours, Minoan civilization, Crete archaeology, Knossos Crete' },
       whyChoose: [
         { icon: 'BookOpen', title: 'Europe\'s Oldest Civilization', description: 'Visit Bronze Age palace from 2000-1400 BC - predates classical Greece by millennia.' },
         { icon: 'Star', title: 'Mythology & Reality', description: 'Explore the legendary labyrinth linked to Minotaur, Theseus, and Greek myths.' },
@@ -14859,7 +14859,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Samaria Gorge Tours',
       stats: { toursAvailable: 18, priceFrom: 45, duration: '8-10 hours' },
       introduction: `Samaria Gorge tours offer Crete's most spectacular hiking adventure - trekking 16km through Europe's longest gorge within the White Mountains National Park, descending from 1,250m elevation through dramatic cliffs towering 300m overhead at the famous "Iron Gates" narrow passage, crossing wooden bridges over streams, spotting Cretan wild goats (kri-kri), and emerging at the Libyan Sea. These full-day guided hikes explore pristine wilderness designated as UNESCO Biosphere Reserve and National Park, revealing Cretan flora and fauna, abandoned mountain villages, ancient cypress forests, and geological formations while guides ensure safe navigation and share natural history. Experience one of Greece's most iconic hikes walking 5-7 hours through breathtaking scenery, understanding why Samaria attracts over 200,000 hikers annually, and immersing in raw Cretan nature creating unforgettable active adventures perfect for hikers seeking dramatic landscapes and wilderness experiences in Crete's mountainous heart.`,
-      seo: { title: 'Samaria Gorge Tours 2025: Hiking Tours & National Park Experiences', description: 'Best Samaria Gorge tours. 16km hiking, Iron Gates, guided treks, Crete nature. From €45.', keywords: 'Samaria Gorge tours, Crete hiking, Samaria Gorge hike, White Mountains Crete' },
+      seo: { title: 'Samaria Gorge Tours 2026: Hiking Tours & National Park Experiences', description: 'Best Samaria Gorge tours. 16km hiking, Iron Gates, guided treks, Crete nature. From €45.', keywords: 'Samaria Gorge tours, Crete hiking, Samaria Gorge hike, White Mountains Crete' },
       whyChoose: [
         { icon: 'Sun', title: 'Europe\'s Longest Gorge', description: 'Trek 16km through dramatic canyon with cliffs towering 300 meters overhead.' },
         { icon: 'Star', title: 'Iron Gates Passage', description: 'Walk through the narrowest section - just 3 meters wide with 300m cliffs both sides!' },
@@ -14910,7 +14910,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Beach Coastal Tours',
       stats: { toursAvailable: 35, priceFrom: 40, duration: '4-8 hours' },
       introduction: `Crete beach and coastal tours showcase the island's spectacular Mediterranean coastline - from the famous pink sand of Elafonissi and Balos Lagoon's turquoise waters, to dramatic southern coast beaches accessible only by boat, hidden coves, and coastal villages. These tours range from boat trips to remote beaches visiting Balos Lagoon with its exotic Caribbean-like colors, Elafonissi's unique pink sand created by crushed shells, Chania boat tours exploring Venetian harbor and sea caves, snorkeling excursions in crystal-clear waters, and beach-hopping adventures along either coast. Experience swimming in pristine Mediterranean coves, understanding how Cretan geography creates diverse beach types (sandy/pebble/pink), discovering beaches tourists miss, and soaking in the island's coastal beauty creating perfect beach day experiences for sun-seekers and nature lovers discovering why Crete offers some of Greece's most beautiful and diverse beaches beyond typical Greek island beach scenes.`,
-      seo: { title: 'Crete Beach Tours 2025: Balos, Elafonissi & Coastal Boat Tours', description: 'Best Crete beach tours. Balos Lagoon, Elafonissi pink beach, boat tours, snorkeling. From €40.', keywords: 'Crete beach tours, Balos Lagoon, Elafonissi beach, Crete boat tours' },
+      seo: { title: 'Crete Beach Tours 2026: Balos, Elafonissi & Coastal Boat Tours', description: 'Best Crete beach tours. Balos Lagoon, Elafonissi pink beach, boat tours, snorkeling. From €40.', keywords: 'Crete beach tours, Balos Lagoon, Elafonissi beach, Crete boat tours' },
       whyChoose: [
         { icon: 'Waves', title: 'Exotic Beaches', description: 'Balos turquoise lagoon and Elafonissi pink sand rival Caribbean beauty.' },
         { icon: 'Star', title: 'Boat Access', description: 'Reach remote pristine beaches inaccessible by road - exclusive swimming spots.' },
@@ -14960,7 +14960,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Food Wine Tours',
       stats: { toursAvailable: 30, priceFrom: 55, duration: '4-6 hours' },
       introduction: `Crete food and wine tours immerse you in the Mediterranean diet's birthplace - the island producing Greece's finest olive oil, distinctive wines, traditional cheeses, and authentic cuisine shaped by 4,000 years of history. These gastronomic adventures visit family-run olive oil mills tasting liquid gold, traditional wineries in mountain villages, local tavernas serving dakos and moussaka, cheese-makers crafting graviera, and markets displaying Cretan produce. Experience the legendary Cretan hospitality (filoxenia), learn about Cretan diet's health benefits (one of world's healthiest), taste raki (strong spirit) with locals, understand how geography influences flavors, and discover dishes unchanged since Minoan times creating delicious cultural experiences perfect for food lovers seeking authentic flavors in Crete's villages where culinary traditions remain vibrant and meals last hours accompanied by music, conversation, and generous portions.`,
-      seo: { title: 'Crete Food Tours 2025: Cretan Cuisine, Olive Oil & Wine Tastings', description: 'Best Crete food tours. Cretan cuisine, olive oil tastings, wine, traditional food. From €55.', keywords: 'Crete food tours, Cretan cuisine, olive oil tasting Crete, Crete wine tours' },
+      seo: { title: 'Crete Food Tours 2026: Cretan Cuisine, Olive Oil & Wine Tastings', description: 'Best Crete food tours. Cretan cuisine, olive oil tastings, wine, traditional food. From €55.', keywords: 'Crete food tours, Cretan cuisine, olive oil tasting Crete, Crete wine tours' },
       whyChoose: [
         { icon: 'Heart', title: 'Mediterranean Diet Origin', description: 'Taste the world\'s healthiest diet where it was born - pure ingredients, olive oil, fresh vegetables.' },
         { icon: 'GlassWater', title: 'Award-Winning Olive Oil', description: 'Crete produces Greece\'s finest extra virgin olive oil - taste directly from mills.' },
@@ -15011,7 +15011,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Archaeological Site Tours',
       stats: { toursAvailable: 20, priceFrom: 35, duration: '3-5 hours' },
       introduction: `Crete archaeological site tours reveal the island's extraordinary ancient heritage beyond famous Knossos - visiting Phaistos Palace with un-reconstructed Minoan ruins and Messara Plain views, Malia Palace near the coast, Gortyna with Roman ruins and Cretan law code, Zakros Palace in eastern Crete, ancient cities, and numerous archaeological treasures. Expert archaeologist guides explain Minoan civilization's extent across Crete, compare different palace sites, reveal how Bronze Age culture thrived island-wide, and demonstrate archaeological evidence showing trade networks, religious practices, and daily life. Experience seeing authentic un-restored ruins at Phaistos (contrasting Knossos reconstructions), walking Roman Gortyna, understanding Crete as cradle of European civilization, and discovering lesser-known sites tourists miss creating comprehensive archaeological experiences perfect for history enthusiasts seeking deep understanding of Minoan and later Greek, Roman, and Byzantine Crete through its abundant ruins.`,
-      seo: { title: 'Crete Archaeological Tours 2025: Minoan Palaces & Ancient Sites', description: 'Best Crete archaeology tours. Phaistos, Minoan palaces, ancient sites, expert guides. From €35.', keywords: 'Crete archaeology tours, Phaistos Palace, Minoan sites Crete, ancient Crete' },
+      seo: { title: 'Crete Archaeological Tours 2026: Minoan Palaces & Ancient Sites', description: 'Best Crete archaeology tours. Phaistos, Minoan palaces, ancient sites, expert guides. From €35.', keywords: 'Crete archaeology tours, Phaistos Palace, Minoan sites Crete, ancient Crete' },
       whyChoose: [
         { icon: 'BookOpen', title: 'Multiple Minoan Palaces', description: 'Explore Phaistos, Malia, Zakros - each unique, less crowded than Knossos.' },
         { icon: 'Star', title: 'Unrestored Authenticity', description: 'Phaistos shows original ruins without Evans\' controversial reconstructions.' },
@@ -15062,7 +15062,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Mountain Village Tours',
       stats: { toursAvailable: 22, priceFrom: 50, duration: '5-8 hours' },
       introduction: `Crete mountain and village tours reveal authentic island life in traditional settlements perched on White Mountains and Lasithi Plateau - visiting villages where Cretan culture, hospitality, and traditions remain vibrant away from coastal tourism. These immersive experiences explore mountain villages like Anogia (shepherd culture and music), Archanes (wine region), Spili (fountain squares), and plateau villages, meeting locals preserving traditional crafts (weaving, pottery), visiting family tavernas serving home-cooked Cretan food, learning about shepherd life and cheese-making, understanding Cretan resistance history, and experiencing the slow pace and genuine hospitality defining mountain Crete. Discover dramatic mountain scenery, ancient olive groves, stone villages unchanged for centuries, and why mountain Cretans maintained island traditions during centuries of occupation creating authentic cultural experiences perfect for travelers seeking real Crete beyond beaches and tourist areas.`,
-      seo: { title: 'Crete Mountain Village Tours 2025: Traditional Villages & Culture', description: 'Best Crete mountain tours. Traditional villages, authentic culture, local life. From €50.', keywords: 'Crete mountain tours, traditional villages Crete, Cretan culture, mountain villages' },
+      seo: { title: 'Crete Mountain Village Tours 2026: Traditional Villages & Culture', description: 'Best Crete mountain tours. Traditional villages, authentic culture, local life. From €50.', keywords: 'Crete mountain tours, traditional villages Crete, Cretan culture, mountain villages' },
       whyChoose: [
         { icon: 'Heart', title: 'Authentic Cretan Culture', description: 'Experience real island life where traditions, hospitality, and customs remain vibrant.' },
         { icon: 'Sun', title: 'Dramatic Landscapes', description: 'White Mountains, Lasithi Plateau, gorges - spectacular highland scenery.' },
@@ -15117,7 +15117,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'City Walls Tours',
       stats: { toursAvailable: 22, priceFrom: 30, duration: '1.5-2.5 hours' },
       introduction: `Dubrovnik City Walls tours offer the quintessential way to experience the "Pearl of the Adriatic" - walking atop 2km of magnificent medieval fortifications that protected the independent Republic of Ragusa for centuries, with panoramic views of terracotta rooftops, azure Adriatic waters, and dramatic coastal scenery. These walking tours explore the complete wall circuit including Minceta Tower (highest point), Bokar Fortress, St. John's Fortress, and bastions, revealing defensive architecture, restoration after 1990s siege damage, and understanding how these UNESCO-listed walls preserved Dubrovnik's independence. Experience walking where Game of Thrones filmed King's Landing scenes, enjoying breathtaking photo opportunities at every turn, learning about the Republic of Ragusa's fascinating maritime history, and appreciating the massive walls (up to 25m high, 6m thick) creating unforgettable experiences perfect for photographers and history lovers discovering Dubrovnik from its most iconic and spectacular perspective.`,
-      seo: { title: 'Dubrovnik City Walls Tours 2025: Walking Tours & Tickets', description: 'Best Dubrovnik City Walls tours. Medieval fortifications, panoramic views, Old Town. From €30.', keywords: 'Dubrovnik City Walls, city walls tours, Dubrovnik fortifications, medieval walls' },
+      seo: { title: 'Dubrovnik City Walls Tours 2026: Walking Tours & Tickets', description: 'Best Dubrovnik City Walls tours. Medieval fortifications, panoramic views, Old Town. From €30.', keywords: 'Dubrovnik City Walls, city walls tours, Dubrovnik fortifications, medieval walls' },
       whyChoose: [
         { icon: 'Star', title: 'Iconic Experience', description: 'Dubrovnik\'s must-do activity - walk where medieval guards patrolled for centuries.' },
         { icon: 'Camera', title: 'Breathtaking Views', description: 'Panoramic vistas of terracotta rooftops, Adriatic Sea, islands - photographer\'s paradise.' },
@@ -15168,7 +15168,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Old Town Tours',
       stats: { toursAvailable: 30, priceFrom: 25, duration: '2-3 hours' },
       introduction: `Dubrovnik Old Town tours immerse you in the perfectly preserved medieval city center - a UNESCO World Heritage site where marble-paved Stradun street, Baroque churches, Renaissance palaces, and centuries of history converge within protective walls. These walking tours explore Rector's Palace revealing Republic governance, the Cathedral with its Baroque splendor and treasury, Sponza Palace's Gothic-Renaissance elegance, Orlando's Column marking city center, historic fountains, and atmospheric narrow streets revealing layers of Venetian, Slavic, and Mediterranean influences. Expert guides share stories of Dubrovnik's golden age as powerful maritime republic rivaling Venice, explain the devastating 1667 earthquake reshaping architecture, reveal 1991-92 siege damage and remarkable restoration, and demonstrate how this small city-state maintained independence for 450 years creating enriching historical experiences perfect for culture lovers discovering authentic Dubrovnik beyond crowds through its architectural treasures and fascinating republican history.`,
-      seo: { title: 'Dubrovnik Old Town Tours 2025: Walking Tours & Historic Center', description: 'Best Dubrovnik Old Town tours. Stradun, historic sites, walking tours, medieval city. From €25.', keywords: 'Dubrovnik Old Town tours, Stradun Dubrovnik, historic Dubrovnik, walking tours' },
+      seo: { title: 'Dubrovnik Old Town Tours 2026: Walking Tours & Historic Center', description: 'Best Dubrovnik Old Town tours. Stradun, historic sites, walking tours, medieval city. From €25.', keywords: 'Dubrovnik Old Town tours, Stradun Dubrovnik, historic Dubrovnik, walking tours' },
       whyChoose: [
         { icon: 'Star', title: 'UNESCO Perfection', description: 'Perfectly preserved medieval city - marble streets, Baroque churches, Renaissance palaces.' },
         { icon: 'BookOpen', title: 'Republic History', description: 'Learn about independent Ragusa - rival to Venice for 450 years of autonomy.' },
@@ -15219,7 +15219,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Adriatic Boat Tours',
       stats: { toursAvailable: 35, priceFrom: 35, duration: '3-8 hours' },
       introduction: `Dubrovnik Adriatic boat tours reveal the stunning coastline from water perspective - cruising turquoise waters visiting nearby islands (Lokrum, Elafiti Islands), exploring sea caves, swimming in secluded coves, and viewing Dubrovnik's walls from the sea. These boat excursions range from half-day island-hopping trips to full-day adventures visiting three Elafiti Islands (Koločep, Lopud, Šipan), sunset cruises along the coast, kayaking tours paddling to hidden beaches, and private boat charters for intimate experiences. Experience the crystal-clear Adriatic perfect for snorkeling, discover car-free islands with pine forests and sandy beaches, see Dubrovnik's fortifications from sea perspective understanding their defensive purpose, and enjoy Croatian coastal beauty creating perfect Mediterranean boat day experiences for those seeking relaxation, swimming, and scenic cruising discovering the Adriatic's pristine waters and island charm.`,
-      seo: { title: 'Dubrovnik Boat Tours 2025: Island Hopping, Elafiti & Adriatic Cruises', description: 'Best Dubrovnik boat tours. Island hopping, Elafiti Islands, sea kayaking, cruises. From €35.', keywords: 'Dubrovnik boat tours, Elafiti Islands, Adriatic cruises, island hopping Dubrovnik' },
+      seo: { title: 'Dubrovnik Boat Tours 2026: Island Hopping, Elafiti & Adriatic Cruises', description: 'Best Dubrovnik boat tours. Island hopping, Elafiti Islands, sea kayaking, cruises. From €35.', keywords: 'Dubrovnik boat tours, Elafiti Islands, Adriatic cruises, island hopping Dubrovnik' },
       whyChoose: [
         { icon: 'Waves', title: 'Crystal-Clear Waters', description: 'Adriatic clarity perfect for swimming and snorkeling - see bottom at 10+ meters depth.' },
         { icon: 'Star', title: 'Island Paradise', description: 'Car-free Elafiti Islands with pine forests, sandy beaches, and Mediterranean charm.' },
@@ -15269,7 +15269,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Food Wine Tours',
       stats: { toursAvailable: 28, priceFrom: 65, duration: '3-4 hours' },
       introduction: `Dubrovnik food and wine tours immerse you in Croatian and Dalmatian culinary culture through guided tastings visiting local markets, family-run konobas (tavernas), wine bars, and authentic eateries where Croatians actually eat beyond touristy Old Town restaurants. These gastronomic adventures explore Croatian coastal cuisine from fresh Adriatic seafood to peka (slow-cooked meat under bell), black risotto, fresh oysters from nearby Ston, traditional pastries, and Pelješac peninsula wines. Experience Croatian dining culture, learn about regional wine revival producing excellent reds and whites, taste rakija (Croatian brandy), discover hidden culinary gems, and understand how Mediterranean location and Dalmatian traditions shape flavors creating delicious cultural experiences perfect for food lovers seeking authentic tastes beyond tourist traps in Dubrovnik's most flavorful spots revealing Croatian cuisine's depth and quality local wines competing internationally.`,
-      seo: { title: 'Dubrovnik Food Tours 2025: Croatian Cuisine & Wine Tastings', description: 'Best Dubrovnik food tours. Croatian cuisine, wine tastings, local food, markets. From €65.', keywords: 'Dubrovnik food tours, Croatian food tours, Dalmatian wine, Dubrovnik restaurants' },
+      seo: { title: 'Dubrovnik Food Tours 2026: Croatian Cuisine & Wine Tastings', description: 'Best Dubrovnik food tours. Croatian cuisine, wine tastings, local food, markets. From €65.', keywords: 'Dubrovnik food tours, Croatian food tours, Dalmatian wine, Dubrovnik restaurants' },
       whyChoose: [
         { icon: 'Heart', title: 'Fresh Adriatic Seafood', description: 'Taste the freshest fish, oysters, and coastal dishes from local fishermen.' },
         { icon: 'GlassWater', title: 'Dalmatian Wines', description: 'Discover Croatian wine renaissance - Pelješac reds, Korčula whites, underrated quality.' },
@@ -15320,7 +15320,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Game of Thrones Tours',
       stats: { toursAvailable: 20, priceFrom: 30, duration: '2-3 hours' },
       introduction: `Dubrovnik Game of Thrones tours take fans through the real-world King's Landing - exploring iconic filming locations where Cersei's Walk of Shame occurred, the Red Keep stood, and Joffrey's wedding took place throughout Dubrovnik's Old Town and city walls. These themed tours reveal behind-the-scenes filming stories, show exact locations recreating famous scenes with photos, explain how Dubrovnik's medieval architecture perfectly embodied George R.R. Martin's vision, and guide you to Fort Lovrijenac (Red Keep exterior) and other recognizable spots. Expert guides (often GOT superfans) share production anecdotes, compare show scenes to real locations, reveal which areas got CGI enhancement, and help fans relive their favorite moments creating immersive experiences perfect for series devotees discovering how Dubrovnik became synonymous with Westeros while appreciating the city's actual history beyond the fantasy series.`,
-      seo: { title: 'Game of Thrones Tours Dubrovnik 2025: King\'s Landing Filming Locations', description: 'Best Game of Thrones tours. King\'s Landing locations, filming sites, GOT walking tours. From €30.', keywords: 'Game of Thrones Dubrovnik, Kings Landing tour, GOT filming locations, Dubrovnik GOT' },
+      seo: { title: 'Game of Thrones Tours Dubrovnik 2026: King\'s Landing Filming Locations', description: 'Best Game of Thrones tours. King\'s Landing locations, filming sites, GOT walking tours. From €30.', keywords: 'Game of Thrones Dubrovnik, Kings Landing tour, GOT filming locations, Dubrovnik GOT' },
       whyChoose: [
         { icon: 'Star', title: 'Iconic Filming Location', description: 'Walk through King\'s Landing seeing where major scenes from multiple seasons filmed.' },
         { icon: 'Camera', title: 'Scene Recreation', description: 'Guides show exact locations with photo comparisons - relive favorite moments.' },
@@ -15370,7 +15370,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       categoryName: 'Island Hopping Tours',
       stats: { toursAvailable: 25, priceFrom: 45, duration: '6-10 hours' },
       introduction: `Dubrovnik island hopping tours explore the stunning Croatian islands dotting the Adriatic near Dubrovnik - from the nearby Elafiti Islands (Koločep, Lopud, Šipan) to Korčula, Mljet National Park, and Lokrum, each offering distinct character from nature reserves to wine regions to car-free villages. These full-day boat excursions visit multiple islands combining swimming in crystal-clear coves, exploring traditional fishing villages, tasting local wines and seafood, walking through pine forests, and enjoying Mediterranean island life. Experience the peaceful car-free environments where locals maintain traditions, discover sandy beaches (rare in Croatia!), see ancient monasteries and olive groves, and understand how island culture differs from mainland creating perfect island day experiences for those seeking Croatian authenticity, pristine nature, and relaxation discovering the Adriatic's hidden island gems beyond crowded Dubrovnik.`,
-      seo: { title: 'Dubrovnik Island Hopping 2025: Elafiti, Korčula & Island Tours', description: 'Best Dubrovnik island tours. Elafiti Islands, Korčula, Mljet, island hopping. From €45.', keywords: 'Dubrovnik island hopping, Elafiti Islands tours, Korčula tours, Croatian islands' },
+      seo: { title: 'Dubrovnik Island Hopping 2026: Elafiti, Korčula & Island Tours', description: 'Best Dubrovnik island tours. Elafiti Islands, Korčula, Mljet, island hopping. From €45.', keywords: 'Dubrovnik island hopping, Elafiti Islands tours, Korčula tours, Croatian islands' },
       whyChoose: [
         { icon: 'Waves', title: 'Car-Free Paradise', description: 'Escape to peaceful islands where cars don\'t exist - pure Mediterranean tranquility.' },
         { icon: 'Star', title: 'Sandy Beaches', description: 'Find rare sandy beaches (Šunj on Lopud) - most Croatia is pebble!' },
@@ -15425,7 +15425,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       heroImage: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Edinburgh.jpeg',
       stats: { toursAvailable: 35, priceFrom: 28, duration: '1.5-3 hours' },
       introduction: `Edinburgh Castle tours bring Scotland's most iconic fortress to life - perched dramatically atop volcanic Castle Rock dominating the Edinburgh skyline for over 900 years, housing the Scottish Crown Jewels, Stone of Destiny, and centuries of turbulent history from royal residence to military stronghold. These guided tours explore the castle's dramatic past including Mary Queen of Scots' chambers, the Great Hall with medieval weaponry, St. Margaret's Chapel (Edinburgh's oldest building), the National War Museum, and the One O'Clock Gun fired daily since 1861. Expert guides reveal stories of sieges and battles, explain Scotland's complex relationship with England, showcase stunning panoramic views across Edinburgh, and bring royal Scottish history alive creating enriching historical experiences perfect for history buffs discovering Scotland's national symbol while understanding how this fortress shaped Scottish identity and Edinburgh's character through centuries of dramatic events.`,
-      seo: { title: 'Edinburgh Castle Tours 2025: Guided Tours, Tickets & History', description: 'Best Edinburgh Castle tours. Crown Jewels, Scottish history, guided tours, tickets. From £28.', keywords: 'Edinburgh Castle tours, Edinburgh Castle tickets, Scottish Crown Jewels, Castle Rock' },
+      seo: { title: 'Edinburgh Castle Tours 2026: Guided Tours, Tickets & History', description: 'Best Edinburgh Castle tours. Crown Jewels, Scottish history, guided tours, tickets. From £28.', keywords: 'Edinburgh Castle tours, Edinburgh Castle tickets, Scottish Crown Jewels, Castle Rock' },
       whyChoose: [
         { icon: 'Castle', title: 'Scotland\'s Icon', description: 'Most visited paid attraction in Scotland - absolutely essential Edinburgh experience.' },
         { icon: 'Crown', title: 'Crown Jewels & Stone of Destiny', description: 'See Scotland\'s regalia and ancient coronation stone of Scottish kings.' },
@@ -15477,7 +15477,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       heroImage: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Edinburgh.jpeg',
       stats: { toursAvailable: 45, priceFrom: 18, duration: '1.5-3 hours' },
       introduction: `Edinburgh Royal Mile tours explore Scotland's most famous street - the atmospheric medieval thoroughfare stretching one Scots mile from Edinburgh Castle to Holyrood Palace, revealing Edinburgh's Old Town heart through historic closes (narrow alleys), St. Giles' Cathedral, John Knox House, and centuries of layered history. These walking tours delve into medieval Edinburgh life, explain the Reformation's impact, explore underground vaults and Mary King's Close revealing plague-era secrets, discover historic pubs where literati gathered, and showcase stunning architecture from medieval tenements to Georgian facades. Expert guides bring characters alive from Mary Queen of Scots to Robert Burns, explain how Edinburgh's unique geography shaped development, reveal hidden courtyards and atmospheric closes, and demonstrate why this UNESCO World Heritage street remains Edinburgh's vibrant cultural spine creating enriching historical experiences perfect for culture lovers discovering authentic Edinburgh beyond tourist shops.`,
-      seo: { title: 'Royal Mile Tours Edinburgh 2025: Walking Tours, History & Old Town', description: 'Best Royal Mile tours. Historic Edinburgh, Old Town walking tours, closes, history. From £18.', keywords: 'Royal Mile tours Edinburgh, Old Town Edinburgh, Edinburgh walking tours, historic Edinburgh' },
+      seo: { title: 'Royal Mile Tours Edinburgh 2026: Walking Tours, History & Old Town', description: 'Best Royal Mile tours. Historic Edinburgh, Old Town walking tours, closes, history. From £18.', keywords: 'Royal Mile tours Edinburgh, Old Town Edinburgh, Edinburgh walking tours, historic Edinburgh' },
       whyChoose: [
         { icon: 'BookOpen', title: 'Medieval Heart', description: 'Walk Edinburgh\'s spine - atmospheric medieval street preserving Old Town character.' },
         { icon: 'Star', title: 'Layered History', description: 'Every close and building reveals stories from medieval to Georgian eras.' },
@@ -15529,7 +15529,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       heroImage: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Edinburgh.jpeg',
       stats: { toursAvailable: 40, priceFrom: 55, duration: '2-4 hours' },
       introduction: `Edinburgh whisky and food tours immerse you in authentic Scottish culinary culture - from tasting world-famous single malt whiskies at specialized bars and distillery experiences to savoring traditional dishes like haggis, neeps and tatties, Scottish salmon, and Cullen skink through historic pubs and modern eateries. These gastronomic adventures explore Scotland's whisky regions (Highlands, Islay, Speyside) through guided tastings with expert explanations, discover Edinburgh's food scene from traditional to contemporary Scottish cuisine, learn whisky production from malting to aging, and experience Scottish pub culture where locals gather. Experience how terroir affects whisky flavors, understand peat smoke and cask influence, taste properly paired Scottish fare, and discover hidden culinary gems creating delicious cultural experiences perfect for food and whisky enthusiasts seeking authentic Scottish flavors while understanding how whisky defines Scottish identity and Edinburgh's food scene reflects tradition and innovation.`,
-      seo: { title: 'Edinburgh Whisky Tours 2025: Tastings, Food Tours & Scottish Cuisine', description: 'Best Edinburgh whisky tours. Scotch tastings, Scottish food, distillery tours, culinary experiences. From £55.', keywords: 'Edinburgh whisky tours, Scotch whisky tasting, Edinburgh food tours, Scottish cuisine' },
+      seo: { title: 'Edinburgh Whisky Tours 2026: Tastings, Food Tours & Scottish Cuisine', description: 'Best Edinburgh whisky tours. Scotch tastings, Scottish food, distillery tours, culinary experiences. From £55.', keywords: 'Edinburgh whisky tours, Scotch whisky tasting, Edinburgh food tours, Scottish cuisine' },
       whyChoose: [
         { icon: 'GlassWater', title: 'World-Class Whisky', description: 'Scotland\'s national drink - taste single malts from legendary distilleries with expert guidance.' },
         { icon: 'Heart', title: 'Traditional Scottish Fare', description: 'Experience haggis, Scottish salmon, beef, shortbread - authentic flavors beyond stereotypes.' },
@@ -15581,7 +15581,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       heroImage: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Edinburgh.jpeg',
       stats: { toursAvailable: 50, priceFrom: 15, duration: '1-2 hours' },
       introduction: `Edinburgh ghost and history tours delve into Scotland's capital's dark past - exploring haunted underground vaults beneath South Bridge, atmospheric graveyards including Greyfriars Kirkyard (home of the MacKenzie Poltergeist), plague-era closes revealing 17th-century horrors, and sinister stories from Burke and Hare body snatchers to witch trials and executions. These theatrical evening tours blend genuine history with supernatural folklore, taking you into candlelit vaults where Edinburgh's poorest lived in squalor, through medieval graveyards where bodysnatchers operated, and along shadowy closes where plague victims were sealed. Costumed guides share documented historical events alongside ghost stories, explain how Edinburgh's layered underground city creates eerie atmosphere, reveal execution sites and their gruesome tales, and demonstrate why Edinburgh is considered one of Europe's most haunted cities creating spine-tingling experiences perfect for history buffs and thrill-seekers discovering Edinburgh's darker side while understanding the harsh realities of historical Edinburgh life.`,
-      seo: { title: 'Edinburgh Ghost Tours 2025: Haunted Vaults, Underground & History', description: 'Best Edinburgh ghost tours. Haunted vaults, underground Edinburgh, ghost walks, dark history. From £15.', keywords: 'Edinburgh ghost tours, haunted vaults Edinburgh, Edinburgh underground, ghost walks' },
+      seo: { title: 'Edinburgh Ghost Tours 2026: Haunted Vaults, Underground & History', description: 'Best Edinburgh ghost tours. Haunted vaults, underground Edinburgh, ghost walks, dark history. From £15.', keywords: 'Edinburgh ghost tours, haunted vaults Edinburgh, Edinburgh underground, ghost walks' },
       whyChoose: [
         { icon: 'Ghost', title: 'Haunted Reputation', description: 'Edinburgh officially one of Europe\'s most haunted cities - documented paranormal activity.' },
         { icon: 'BookOpen', title: 'Dark History', description: 'Real stories: plague, body snatchers, executions, witch trials - not invented folklore.' },
@@ -15633,7 +15633,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       heroImage: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Edinburgh.jpeg',
       stats: { toursAvailable: 25, priceFrom: 30, duration: '2-4 hours' },
       introduction: `Arthur's Seat tours explore Edinburgh's dramatic extinct volcano - the 251-meter peak dominating Holyrood Park offering panoramic views across Edinburgh, the Firth of Forth, and surrounding Highlands just 15 minutes from the city center. These hiking experiences range from guided sunrise climbs witnessing spectacular dawns over Scotland's capital to historical geology tours explaining volcanic formation 350 million years ago, photography walks capturing Edinburgh from above, and challenging trail runs for active travelers. Experience wild highland landscape within city limits, discover Iron Age hillfort ruins near the summit, learn about King Arthur legends and royal hunting grounds, enjoy diverse trails from easy walks to scrambles, and understand Edinburgh's unique volcanic geology creating perfect outdoor experiences for nature lovers and photographers seeking breathtaking views while escaping urban Edinburgh into Scotland's wild beauty without leaving the city.`,
-      seo: { title: 'Arthur\'s Seat Tours Edinburgh 2025: Hiking, Sunrise & Volcano Views', description: 'Best Arthur\'s Seat tours. Edinburgh volcano hike, sunrise climbs, panoramic views. From £30.', keywords: 'Arthurs Seat Edinburgh, Edinburgh volcano, Arthurs Seat hike, Holyrood Park' },
+      seo: { title: 'Arthur\'s Seat Tours Edinburgh 2026: Hiking, Sunrise & Volcano Views', description: 'Best Arthur\'s Seat tours. Edinburgh volcano hike, sunrise climbs, panoramic views. From £30.', keywords: 'Arthurs Seat Edinburgh, Edinburgh volcano, Arthurs Seat hike, Holyrood Park' },
       whyChoose: [
         { icon: 'Mountain', title: 'Extinct Volcano', description: 'Climb 350-million-year-old volcanic peak - Edinburgh\'s natural wonder.' },
         { icon: 'Star', title: 'Panoramic Views', description: 'Breathtaking 360-degree Edinburgh views - castle, old town, Firth of Forth, Highlands.' },
@@ -15685,7 +15685,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       heroImage: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Edinburgh.jpeg',
       stats: { toursAvailable: 30, priceFrom: 45, duration: '2-6 hours' },
       introduction: `Edinburgh Scottish culture tours immerse you in authentic Scottish heritage - from learning clan tartans and Highland dress at specialty shops to experiencing traditional bagpipe music, understanding Scotland's complex relationship with England, discovering Robert Burns poetry, and participating in ceilidh dances with live Scottish folk music. These cultural experiences explore Scotland's identity through Edinburgh's museums (Scottish National Museum), historic sites revealing Scottish resilience, tartan weaving demonstrations showing centuries-old patterns, whisky culture representing Scottish craftsmanship, and literary heritage from Burns to Scott to Stevenson. Expert guides explain clan systems, reveal how Scots preserved culture despite English suppression, teach Scottish Gaelic phrases, demonstrate Highland dancing, and share traditions from Hogmanay to Burns Night creating enriching cultural experiences perfect for travelers seeking authentic Scotland beyond tourist stereotypes while understanding Scottish pride, resilience, and unique cultural identity shaping modern Scotland.`,
-      seo: { title: 'Edinburgh Scottish Culture Tours 2025: Heritage, Tartans & Traditions', description: 'Best Scottish culture tours. Highland heritage, tartan, bagpipes, ceilidh dancing, traditions. From £45.', keywords: 'Scottish culture tours Edinburgh, Highland heritage, tartan Edinburgh, Scottish traditions' },
+      seo: { title: 'Edinburgh Scottish Culture Tours 2026: Heritage, Tartans & Traditions', description: 'Best Scottish culture tours. Highland heritage, tartan, bagpipes, ceilidh dancing, traditions. From £45.', keywords: 'Scottish culture tours Edinburgh, Highland heritage, tartan Edinburgh, Scottish traditions' },
       whyChoose: [
         { icon: 'Heart', title: 'Authentic Heritage', description: 'Genuine Scottish culture beyond tourist stereotypes - clan history, language, traditions.' },
         { icon: 'Star', title: 'Tartan & Clan History', description: 'Understand clan systems, tartan patterns, Highland dress - Scotland\'s visual identity.' },
@@ -15743,8 +15743,8 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Discover the heart of the Renaissance with Uffizi Gallery Tours in Florence, offering an unparalleled journey through time! The Uffizi houses iconic works by masters like Botticelli, Michelangelo, and Leonardo da Vinci. Whether you're an art aficionado or a casual traveler, these tours provide a fascinating dive into Italy's rich artistic heritage. From guided tours with art historians to exclusive small group experiences, there's something for everyone. Marvel at the Birth of Venus or the Adoration of the Magi, and learn the intriguing stories behind these masterpieces. With options ranging from express tours to in-depth explorations, the Uffizi Gallery caters to all schedules and interests. Perfect for families, solo travelers, and art lovers alike, these tours promise an unforgettable cultural immersion in the cradle of the Renaissance.`,
       seo: {
-        title: 'Uffizi Gallery Tours in Florence 2025',
-        description: 'Discover Florence\'s Uffizi Gallery in 2025! Book your tour now and explore Renaissance masterpieces!',
+        title: 'Uffizi Gallery Tours in Florence 2026',
+        description: 'Discover Florence\'s Uffizi Gallery in 2026! Book your tour now and explore Renaissance masterpieces!',
         keywords: 'Uffizi Gallery tours, Florence art tours, Renaissance art, Italian museums, Florence attractions',
       },
       whyChoose: [
@@ -15910,9 +15910,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Explore the heart of Renaissance art and architecture with our Florence Duomo Tours! As you stand before the breathtaking facade of the Cathedral of Santa Maria del Fiore, you'll be struck by the sheer grandeur of Brunelleschi's dome. Our tours offer a range of experiences, from fast-track access to in-depth historical explorations. Discover the stunning frescoes inside, climb to the top for panoramic views of Florence, and learn about the cathedral's fascinating history from expert guides. Whether you're a history buff, an art aficionado, or simply a curious traveler, the Duomo is a must-see. With options ranging from private tours to small group experiences, there's something for everyone. Unveil the secrets of this architectural masterpiece, feel the pulse of Florentine culture, and make your trip unforgettable!`,
       seo: {
-        title: 'Florence Duomo Tours 2025: Best Experiences & Tips',
-        description: 'Discover Florence\'s iconic Duomo with top tours in 2025. Expert guides, stunning views, book now!',
-        keywords: 'Florence Duomo tours, Cathedral of Santa Maria del Fiore, Brunelleschi dome tours, best Duomo tours Florence, 2025 Florence attractions',
+        title: 'Florence Duomo Tours 2026: Best Experiences & Tips',
+        description: 'Discover Florence\'s iconic Duomo with top tours in 2026. Expert guides, stunning views, book now!',
+        keywords: 'Florence Duomo tours, Cathedral of Santa Maria del Fiore, Brunelleschi dome tours, best Duomo tours Florence, 2026 Florence attractions',
       },
       whyChoose: [
         {
@@ -16077,9 +16077,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Florence, the cradle of the Renaissance, is your gateway to the enchanting world of Tuscan wine tours! Imagine winding through the rolling hills of Chianti, sampling robust reds and delicate whites, each sip telling a story of centuries-old vineyards and masterful craftsmanship. Florence's proximity to world-renowned wine regions like Chianti, Montalcino, and Montepulciano makes it an ideal starting point for wine enthusiasts. Whether you're a seasoned connoisseur or a curious novice, these tours offer a variety of experiences, from intimate cellar tastings and vineyard picnics to guided tours through historical estates. You'll discover the secrets of Sangiovese grapes and the art of traditional winemaking, all set against a backdrop of breathtaking landscapes. Perfect for couples seeking romance, groups of friends, or solo adventurers looking to delve into the heart of Tuscany's wine culture, these tours promise unforgettable memories and flavors.`,
       seo: {
-        title: 'Top Florence Tuscan Wine Tours 2025',
-        description: 'Discover Florence\'s best Tuscan wine tours in 2025. Explore vineyards, taste wines, and enjoy Tuscany\'s beauty!',
-        keywords: 'Florence wine tours, Tuscan vineyards, Chianti wine tasting, Tuscany trips, wine tours Florence 2025',
+        title: 'Top Florence Tuscan Wine Tours 2026',
+        description: 'Discover Florence\'s best Tuscan wine tours in 2026. Explore vineyards, taste wines, and enjoy Tuscany\'s beauty!',
+        keywords: 'Florence wine tours, Tuscan vineyards, Chianti wine tasting, Tuscany trips, wine tours Florence 2026',
       },
       whyChoose: [
         {
@@ -16244,8 +16244,8 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Florence, the birthplace of the Renaissance, offers a captivating journey through art and history that will leave you spellbound! Discover the grandeur of the Medici's legacy as you walk through the magnificent halls of Palazzo Vecchio, stand in awe before Michelangelo's David at the Accademia Gallery, and explore the historic Piazza della Signoria. From the frescoes of Santa Croce to the architectural marvel of Brunelleschi's Dome at the Duomo, each tour unveils a new layer of Florence's rich tapestry. Whether you're an art aficionado, a history buff, or a curious traveler, Florence's art and history tours cater to all, offering guided experiences that bring the past to life with passionate storytelling. Get ready to be inspired by masterpieces that have shaped the world and discover the stories behind the city's most iconic landmarks!`,
       seo: {
-        title: 'Florence Art & History Tours 2025',
-        description: 'Discover Florence\'s Renaissance art and history with our expert-guided tours! Book now for 2025!',
+        title: 'Florence Art & History Tours 2026',
+        description: 'Discover Florence\'s Renaissance art and history with our expert-guided tours! Book now for 2026!',
         keywords: 'Florence art tours, Renaissance history tours, Medici family tours, Florence sightseeing, guided Florence tours',
       },
       whyChoose: [
@@ -16411,8 +16411,8 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Florence, the heart of Tuscany, offers a culinary journey that is as rich and nuanced as its art history. Dive into Florentine food culture with tours that blend hands-on cooking classes, market visits, and tastings of local delicacies like ribollita and cantuccini. From mastering the art of pasta making to indulging in the finest Chianti wines, these tours provide both novices and gourmet enthusiasts a taste of Italy's gastronomic treasures. Explore the bustling Mercato Centrale or enjoy a rustic meal in the rolling Tuscan hills. Whether you're a solo traveler, a couple, or a family, Florence's food and cooking tours promise an unforgettable feast for all senses, where every bite tells a story of tradition and passion. Get ready to discover why Florentine cuisine is a beloved part of the Italian experience!`,
       seo: {
-        title: 'Florence Food Tours 2025: Taste Tuscany',
-        description: 'Explore Florence through its flavors in 2025! Book food & cooking tours to taste authentic Tuscany now!',
+        title: 'Florence Food Tours 2026: Taste Tuscany',
+        description: 'Explore Florence through its flavors in 2026! Book food & cooking tours to taste authentic Tuscany now!',
         keywords: 'Florence food tours, Tuscany cooking classes, Italian cuisine experiences',
       },
       whyChoose: [
@@ -16578,7 +16578,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Step into the world of Michelangelo Buonarroti, where art and history intertwine in the captivating city of Florence. Known as the cradle of the Renaissance, Florence offers travelers the chance to explore Michelangelo's genius through a variety of immersive tours. From the towering David at the Accademia Gallery to the breathtaking frescoes of the Sistine Chapel (located in Rome but influential in his Florence works), these tours are a journey through time and creativity. Whether you're an art aficionado, a history buff, or simply captivated by the beauty of the Renaissance, Michelangelo Tours offer something for everyone. Wander through the city's cobblestone streets and discover hidden gems, like the Medici Chapels or the Laurentian Library, each echoing with the legacy of one of history's greatest artists. Join a tour and experience the magic of Florence through the eyes of Michelangelo himself!`,
       seo: {
-        title: 'Michelangelo Tours in Florence 2025',
+        title: 'Michelangelo Tours in Florence 2026',
         description: 'Discover Michelangelo\'s masterpieces in Florence with expert-led tours. Book now for an unforgettable experience!',
         keywords: 'Michelangelo tours, Florence art tours, Renaissance Florence, Accademia Gallery tours, Florence cultural tours',
       },
@@ -16747,9 +16747,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Dive into the world of luxury and thrill with Monaco & Monte Carlo Tours! Nestled in the heart of the French Riviera, these tours offer a blend of opulence and adventure. Travelers will explore the lavish Monte Carlo Casino, stroll through the exotic gardens of the Prince's Palace, and enjoy the breathtaking views from the Oceanographic Museum. Whether you're a high-roller seeking the adrenaline rush of Grand Prix tracks or a culture enthusiast eager to explore the rich history of this storied principality, there's something for everyone. Families can enjoy leisurely yacht cruises while couples revel in the romantic allure of sunset dinners overlooking the Mediterranean. Each tour promises a unique glimpse into the glamorous lifestyle of one of Europe's most iconic destinations!`,
       seo: {
-        title: 'Monaco & Monte Carlo Tours 2025',
-        description: 'Discover luxury and excitement in Monaco & Monte Carlo with our exclusive 2025 tours. Book now!',
-        keywords: 'Monaco tours, Monte Carlo excursions, luxury travel, French Riviera tours, 2025 travel',
+        title: 'Monaco & Monte Carlo Tours 2026',
+        description: 'Discover luxury and excitement in Monaco & Monte Carlo with our exclusive 2026 tours. Book now!',
+        keywords: 'Monaco tours, Monte Carlo excursions, luxury travel, French Riviera tours, 2026 travel',
       },
       whyChoose: [
         {
@@ -16914,7 +16914,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Embark on an unforgettable journey through the opulent beaches of Saint-Tropez, where the azure waters of the Mediterranean meet the vibrant energy of the French Riviera. Known for its luxurious lifestyle, Saint-Tropez offers a diverse range of beach tours, from serene mornings on Pampelonne Beach to exhilarating yacht excursions along the coastline. Travelers can bask in the sun at chic beach clubs, explore hidden coves, or indulge in gourmet dining with a view of the sparkling sea. Whether you're a luxury seeker, a family adventurer, or a couple seeking romance, Saint-Tropez's beach tours promise a captivating experience filled with elegance and charm. Discover iconic spots like Tahiti Beach and enjoy the perfect blend of relaxation and excitement that only the French Riviera can provide!`,
       seo: {
-        title: 'Saint-Tropez Beach Tours 2025',
+        title: 'Saint-Tropez Beach Tours 2026',
         description: 'Discover luxurious beach tours in Saint-Tropez. Enjoy sun, sea, and glamour on the French Riviera!',
         keywords: 'Saint-Tropez beach tours, French Riviera beaches, luxury beach tours, Mediterranean beaches, Pampelonne Beach tours',
       },
@@ -17081,9 +17081,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Immerse yourself in the unparalleled luxury and beauty of the French Riviera with our Antibes & Cannes Tours! Discover the allure of the Mediterranean as you stroll through the cobblestone streets of Antibes, home to the captivating Picasso Museum and the vibrant Provençal markets. In Cannes, revel in the glitz and glamour of the iconic Croisette Boulevard and the famed Palais des Festivals, where the world-renowned Cannes Film Festival takes place. Whether you're a history buff, a sun-seeker, or a lover of the finer things in life, these tours offer a dynamic range of experiences tailored just for you. From luxurious yacht cruises to intimate guided walking tours, each adventure promises breathtaking views, rich history, and a touch of Riviera sophistication. Prepare to be enchanted by the French Riviera's timeless charm!`,
       seo: {
-        title: 'Antibes & Cannes Tours 2025: Explore the French Riviera',
+        title: 'Antibes & Cannes Tours 2026: Explore the French Riviera',
         description: 'Discover luxury and glamour on Antibes & Cannes Tours. Book your unforgettable French Riviera journey now!',
-        keywords: 'Antibes tours, Cannes tours, French Riviera tours, luxury tours, 2025 travel',
+        keywords: 'Antibes tours, Cannes tours, French Riviera tours, luxury tours, 2026 travel',
       },
       whyChoose: [
         {
@@ -17248,7 +17248,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Embark on an unforgettable journey through the sun-drenched vineyards of Provence on the glamorous French Riviera. Known for its luxurious coastal charm, this region offers wine tours that are as sophisticated as the surroundings. From the renowned rosés of Côtes de Provence to the rich reds of Bandol, each tour promises a taste of the region's distinct terroir. Whether you're a seasoned sommelier or a casual wine enthusiast, these tours provide a unique opportunity to explore picturesque estates, sample exquisite wines, and learn the art of winemaking from passionate local producers. Highlights include visits to the historic Château de Berne and breathtaking Domaine de la Source. Ideal for families, couples, and solo travelers alike, Provence wine tours offer a blend of education and indulgence, perfectly complemented by the region's stunning landscapes. Discover the heart of Provence, where every sip tells a story!`,
       seo: {
-        title: 'Provence Wine Tours French Riviera 2025',
+        title: 'Provence Wine Tours French Riviera 2026',
         description: 'Explore Provence wine tours on the French Riviera. Taste exquisite wines and enjoy stunning vineyard views!',
         keywords: 'Provence wine tours, French Riviera wine tasting, Côtes de Provence vineyards',
       },
@@ -17415,8 +17415,8 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Discover the enchanting world of fragrances in Grasse, the perfume capital nestled in the heart of the French Riviera. Known for its rich history and exquisite scents, Grasse offers a sensory journey like no other. Engage in behind-the-scenes tours of prestigious perfume houses like Fragonard, Galimard, and Molinard, where you can craft your own signature scent. These tours unravel the artistry and science behind perfumery, offering insights into the meticulous process of fragrance creation. Ideal for solo adventurers, couples, and families alike, these experiences blend education with the allure of luxurious scents. Dive into the aromatic fields of jasmine and rose, and let the allure of the Côte d'Azur enhance your senses. Whether you're a fragrance aficionado or a curious traveler, Grasse perfume tours promise an unforgettable journey through the olfactory wonders of Provence.`,
       seo: {
-        title: 'Grasse Perfume Tours 2025: Unveil the Secrets',
-        description: 'Explore Grasse perfume tours in 2025! Discover, create, and cherish fragrances in the heart of Provence.',
+        title: 'Grasse Perfume Tours 2026: Unveil the Secrets',
+        description: 'Explore Grasse perfume tours in 2026! Discover, create, and cherish fragrances in the heart of Provence.',
         keywords: 'Grasse perfume tours, French Riviera scents, fragrance workshops, Provence perfumery, olfactory experiences',
       },
       whyChoose: [
@@ -17582,9 +17582,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Nestled on a hilltop overlooking the sparkling Mediterranean, Eze Village is a must-see on the French Riviera. This medieval gem enchants with its narrow cobblestone streets, vibrant gardens, and panoramic views that will leave you breathless. Eze Village tours offer a delightful mix of history, art, and nature. Wander through the Jardin Exotique, explore the Fragonard Perfume Factory, or admire the ancient architecture of the Chapelle de la Sainte Croix. Whether you're an art lover, history buff, or nature enthusiast, Eze promises a memorable experience. With its charming boutiques and cafes, this picturesque village caters to all traveler types, from solo explorers to families seeking a cultural escape. Come and discover the magic of Eze!`,
       seo: {
-        title: 'Eze Village Tours 2025: Explore French Riviera',
-        description: 'Discover Eze Village in 2025: stunning views, rich history, and vibrant gardens await! Book your tour now.',
-        keywords: 'Eze Village tours, French Riviera, medieval village tours, Eze attractions, Eze travel 2025',
+        title: 'Eze Village Tours 2026: Explore French Riviera',
+        description: 'Discover Eze Village in 2026: stunning views, rich history, and vibrant gardens await! Book your tour now.',
+        keywords: 'Eze Village tours, French Riviera, medieval village tours, Eze attractions, Eze travel 2026',
       },
       whyChoose: [
         {
@@ -17751,9 +17751,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Perched majestically over the Mediterranean, Dalt Vila is Ibiza's stunning fortified old town, a UNESCO World Heritage site. Dive into the island's rich tapestry of history and culture with our captivating Dalt Vila tours. Traverse cobblestone streets and explore ancient battlements that whisper stories of yore. Marvel at the Cathedral of Our Lady of the Snows and lose yourself in the quaint charm of its winding alleys. From panoramic views atop the ancient walls to discovering hidden gems like the Archaeological Museum, every corner offers a new adventure. Whether you're a history enthusiast, a photography lover, or simply a curious traveler, Dalt Vila promises a mesmerizing journey back in time. Join us as we unveil the secrets of Ibiza's past and soak in the vibrant culture that pulses through its veins. Ideal for solo explorers, couples, and families alike, these tours offer a unique perspective on Ibiza beyond its beaches and nightlife.`,
       seo: {
-        title: 'Discover Dalt Vila Tours in Ibiza 2025',
+        title: 'Discover Dalt Vila Tours in Ibiza 2026',
         description: 'Experience Ibiza\'s heritage with Dalt Vila tours. Explore history, culture, and breathtaking views!',
-        keywords: 'Dalt Vila tours, Ibiza history tours, Ibiza 2025, cultural tours Ibiza, UNESCO sites Ibiza',
+        keywords: 'Dalt Vila tours, Ibiza history tours, Ibiza 2026, cultural tours Ibiza, UNESCO sites Ibiza',
       },
       whyChoose: [
         {
@@ -17918,9 +17918,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Ibiza isn't just a party hotspot; it's a paradise for beach and boat enthusiasts! With a coastline that boasts crystal-clear waters and hidden coves, Ibiza's beach and boat tours are the best way to experience the island's natural beauty and vibrant energy. Whether you're lounging on Playa d'en Bossa or exploring the mystical Es Vedrà by boat, these tours promise a blend of relaxation and adventure. Feel the thrill as you snorkel in Cala Comte, or dance under the stars on a sunset cruise. Perfect for families, couples, and solo adventurers, these tours offer a unique glimpse into Ibiza's soul, with something for everyone—from tranquil beaches to lively party boats. Discover the magic of the Mediterranean with local guides who know every secret spot!`,
       seo: {
-        title: 'Ibiza Beach & Boat Tours 2025: Unmissable Adventures!',
-        description: 'Explore Ibiza\'s stunning beaches and thrilling boat tours in 2025. Book now for unforgettable adventures!',
-        keywords: 'Ibiza beach tours, Ibiza boat tours, Mediterranean adventures, 2025 travel',
+        title: 'Ibiza Beach & Boat Tours 2026: Unmissable Adventures!',
+        description: 'Explore Ibiza\'s stunning beaches and thrilling boat tours in 2026. Book now for unforgettable adventures!',
+        keywords: 'Ibiza beach tours, Ibiza boat tours, Mediterranean adventures, 2026 travel',
       },
       whyChoose: [
         {
@@ -18085,9 +18085,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Ibiza's sunset party tours offer an electrifying blend of music, dance, and breathtaking sunsets over the Mediterranean. Known for its vibrant nightlife, Ibiza transforms its golden beaches into pulsating hubs of energy as the sun dips below the horizon. Travelers can experience everything from intimate boat parties with live DJs to grand beach gatherings at iconic spots like Café del Mar and Mambo Ibiza. Whether you're a dance enthusiast, a music lover, or just seeking a unique social experience, Ibiza's sunset tours promise unforgettable memories. Each tour captures the island's essence, offering a magical atmosphere where every sunset is celebrated with rhythm and color. Perfect for solo travelers, couples, and groups, these tours provide a captivating way to engage with Ibiza's legendary party scene.`,
       seo: {
-        title: 'Ibiza Sunset Party Tours 2025',
-        description: 'Join Ibiza sunset party tours in 2025 for vibrant music, stunning views, and unforgettable nights!',
-        keywords: 'Ibiza sunset parties, Ibiza tours 2025, sunset party tours in Ibiza, Mediterranean sunset parties',
+        title: 'Ibiza Sunset Party Tours 2026',
+        description: 'Join Ibiza sunset party tours in 2026 for vibrant music, stunning views, and unforgettable nights!',
+        keywords: 'Ibiza sunset parties, Ibiza tours 2026, sunset party tours in Ibiza, Mediterranean sunset parties',
       },
       whyChoose: [
         {
@@ -18252,9 +18252,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Embark on an exhilarating journey through Ibiza's azure waters, where water sports enthusiasts find their paradise. Known as the Mediterranean's party haven, Ibiza surprises with its captivating aquatic adventures. Whether you're slicing through waves on a jet ski, exploring vibrant marine life while snorkeling, or sailing into the sunset, the island offers an array of unforgettable experiences. Adventurers can navigate hidden coves and majestic cliffs while those seeking serenity can enjoy peaceful paddleboarding sessions. Perfect for thrill-seekers, families, and solo travelers alike, Ibiza's water sports tours promise endless excitement and breathtaking beauty. From the iconic Es Vedrà rock to the pristine Cala Salada beach, discover the island's hidden gems from a whole new perspective. Let Ibiza's enchanting waters captivate you!`,
       seo: {
-        title: 'Best Ibiza Water Sports Tours 2025',
-        description: 'Discover thrilling water sports tours in Ibiza for 2025! Book now for unforgettable aquatic adventures.',
-        keywords: 'Ibiza water sports, Ibiza tours 2025, water sports adventures Ibiza',
+        title: 'Best Ibiza Water Sports Tours 2026',
+        description: 'Discover thrilling water sports tours in Ibiza for 2026! Book now for unforgettable aquatic adventures.',
+        keywords: 'Ibiza water sports, Ibiza tours 2026, water sports adventures Ibiza',
       },
       whyChoose: [
         {
@@ -18419,8 +18419,8 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Ibiza is renowned for its vibrant nightlife, but its culinary scene is equally intoxicating! From sunlit vineyards producing exceptional wines to rustic farm-to-table experiences, Ibiza offers a rich tapestry of gastronomic delights. Food and wine tours here promise unique encounters with local producers, where travelers can taste everything from fresh seafood paella by the beach to sumptuous wines amidst scenic vineyards. Whether you're a gourmet enthusiast or a casual diner, these tours cater to all palates, offering a chance to uncover Ibiza's hidden culinary gems. Explore the charming streets of Dalt Vila for traditional tapas or venture into the countryside for a taste of rural Ibiza. These tours are perfect for those who seek authentic experiences and wish to savor the heart of the Mediterranean!`,
       seo: {
-        title: 'Best Ibiza Food & Wine Tours 2025',
-        description: 'Explore Ibiza\'s culinary wonders with top food & wine tours in 2025. Taste, sip, and savor!',
+        title: 'Best Ibiza Food & Wine Tours 2026',
+        description: 'Explore Ibiza\'s culinary wonders with top food & wine tours in 2026. Taste, sip, and savor!',
         keywords: 'Ibiza food tours, wine tours Ibiza, culinary experiences Ibiza, tapas tours, Ibiza vineyards',
       },
       whyChoose: [
@@ -18586,9 +18586,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Ibiza, the Mediterranean's most famous island, is not just about wild parties and nightlife. Its Island Exploration Tours open up a world of pristine beaches, breathtaking cliffs, and charming villages. Imagine sailing around Ibiza's rugged coastline, where each cove tells its own story. Explore the mystical Es Vedrà rock, believed to be the third most magnetic spot on Earth, or meander through the quaint streets of Dalt Vila, a UNESCO World Heritage Site. Whether you're a nature lover, history buff, or an adventure seeker, Ibiza's island tours cater to all. Experience the vibrant local culture, taste authentic Balearic cuisine, and capture stunning vistas that will leave you in awe. These tours offer a unique opportunity to see a different side of Ibiza, making them perfect for families, solo travelers, and groups alike. Get ready to fall in love with Ibiza's enchanting landscapes and hidden secrets!`,
       seo: {
-        title: 'Explore Ibiza Island Tours 2025',
+        title: 'Explore Ibiza Island Tours 2026',
         description: 'Uncover Ibiza\'s secrets with our island tours. Book now for unforgettable adventures! Prices from $50.',
-        keywords: 'Ibiza tours, island exploration, Ibiza 2025 tours',
+        keywords: 'Ibiza tours, island exploration, Ibiza 2026 tours',
       },
       whyChoose: [
         {
@@ -18755,9 +18755,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Nestled between Lake Thun and Lake Brienz, Interlaken is your gateway to the stunning Jungfrau Region. A breathtaking spectacle of soaring peaks and verdant valleys awaits, offering adventures for every type of traveler. Whether you're ascending the majestic Jungfraujoch, Europe's highest railway station, or embarking on a thrilling hike through the Lauterbrunnen Valley, the natural beauty here is unparalleled. Adventurers can ski or paraglide from the heights, while those seeking tranquility can meander through charming alpine villages like Grindelwald and Wengen. With each tour, discover the heart of Swiss culture and the grandeur of the Alps. From adrenaline-pumping experiences to serene landscapes, the Jungfrau Region promises memories that will last a lifetime!`,
       seo: {
-        title: 'Top Jungfrau Region Tours in Interlaken 2025',
+        title: 'Top Jungfrau Region Tours in Interlaken 2026',
         description: 'Discover thrilling adventures in Interlaken\'s Jungfrau Region. Book your unforgettable Swiss Alpine tour now!',
-        keywords: 'Interlaken tours, Jungfrau Region, Swiss Alps tours, adventure tours Switzerland, Interlaken travel 2025',
+        keywords: 'Interlaken tours, Jungfrau Region, Swiss Alps tours, adventure tours Switzerland, Interlaken travel 2026',
       },
       whyChoose: [
         {
@@ -18922,8 +18922,8 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Interlaken, nestled between Lake Thun and Lake Brienz, is Switzerland's ultimate adventure sports hub! With the majestic Swiss Alps and the iconic Jungfrau region as your backdrop, experience heart-pounding activities like paragliding, skydiving, bungee jumping, and canyoning. Each adventure offers a unique way to explore this alpine paradise, whether you're soaring through the skies or navigating cascading waterfalls. Interlaken's diverse tours promise unforgettable experiences for thrill-seekers and nature lovers alike, revealing hidden gems of the region. Whether you're a solo traveler seeking adrenaline or a family looking for excitement, Interlaken's adventure sports tours promise an exhilarating journey into the heart of the Swiss Alps. Get ready to discover why Interlaken is known as Switzerland's outdoor playground!`,
       seo: {
-        title: 'Interlaken Adventure Sports 2025',
-        description: 'Explore thrilling Interlaken adventures in 2025! Paragliding, skydiving, and more await in the Swiss Alps.',
+        title: 'Interlaken Adventure Sports 2026',
+        description: 'Explore thrilling Interlaken adventures in 2026! Paragliding, skydiving, and more await in the Swiss Alps.',
         keywords: 'Interlaken adventure sports, Swiss Alps tours, paragliding Interlaken, skydiving Switzerland, canyoning tours',
       },
       whyChoose: [
@@ -19089,7 +19089,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Interlaken, nestled between Lake Thun and Lake Brienz, is your gateway to Switzerland's majestic mountains. This alpine paradise offers an array of hiking tours that cater to both casual walkers and seasoned mountaineers. From the awe-inspiring views atop Harder Kulm to the serene paths of the Schynige Platte, hikers will discover diverse landscapes teeming with wildflowers and panoramic vistas. The Eiger Trail, shadowed by the famous North Face, offers a challenging adventure for thrill-seekers, while families can enjoy leisurely hikes through lush meadows and enchanting forests. These tours promise an unforgettable journey through the heart of the Swiss Alps, making them a must for nature lovers and adventurers alike!`,
       seo: {
-        title: 'Interlaken Mountain Hiking Tours 2025',
+        title: 'Interlaken Mountain Hiking Tours 2026',
         description: 'Discover breathtaking alpine trails in Interlaken. Join a tour and explore Switzerland\'s mountain beauty!',
         keywords: 'Interlaken hiking tours, Swiss Alps hiking, mountain trails Interlaken, adventure tours Switzerland',
       },
@@ -19256,7 +19256,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Interlaken, nestled between the shimmering lakes of Thun and Brienz, is a water lover's haven. Lake & Boat Tours here offer an idyllic escape into Switzerland's natural beauty. As you glide across these pristine waters, surrounded by dramatic mountain peaks, you'll uncover hidden gems like the mesmerizing Giessbach Falls or the charming town of Spiez. Whether you're a family looking for a leisurely cruise or an adrenaline junkie seeking a speedboat adventure, there's something for everyone. Marvel at the crystal-clear waters, explore secluded coves, and capture stunning panoramas. Interlaken's boat tours offer a unique perspective of the Swiss Alps, making them a must for photographers and nature enthusiasts alike!`,
       seo: {
-        title: 'Interlaken Lake & Boat Tours 2025',
+        title: 'Interlaken Lake & Boat Tours 2026',
         description: 'Explore Interlaken\'s stunning lakes with our captivating boat tours. Book now for unforgettable Alpine adventures!',
         keywords: 'Interlaken boat tours, Swiss lakes, Alpine cruises, Lake Thun, Lake Brienz',
       },
@@ -19423,9 +19423,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Interlaken, the heart of the Swiss Alps, offers an enchanting gateway to idyllic Alpine village tours. Imagine yourself strolling through picturesque hamlets like Grindelwald and Lauterbrunnen, where time seems to stand still amidst the breathtaking backdrop of snow-capped peaks. These tours offer a delightful mix of culture, nature, and adventure, allowing travelers to discover charming chalets, quaint local shops, and vibrant green meadows. Perfect for nature lovers, culture enthusiasts, and adventure seekers alike, these tours provide a unique glimpse into the traditional Swiss village life. Whether you're sipping hot chocolate while gazing at the Eiger mountain or exploring the spectacular Staubbach Falls, every moment in these villages is a story waiting to be told. Get ready to immerse yourself in the serenity and beauty of Switzerland's alpine heartland!`,
       seo: {
-        title: 'Interlaken Alpine Village Tours 2025',
-        description: 'Discover charming Swiss villages on alpine tours from Interlaken. Book now for 2025 adventures!',
-        keywords: 'Interlaken tours, Alpine village tours, Swiss Alps tours, Interlaken 2025, Switzerland travel',
+        title: 'Interlaken Alpine Village Tours 2026',
+        description: 'Discover charming Swiss villages on alpine tours from Interlaken. Book now for 2026 adventures!',
+        keywords: 'Interlaken tours, Alpine village tours, Swiss Alps tours, Interlaken 2026, Switzerland travel',
       },
       whyChoose: [
         {
@@ -19590,7 +19590,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Interlaken, nestled between Lakes Thun and Brienz and framed by the iconic peaks of the Eiger, Mönch, and Jungfrau, is a gateway to some of the most stunning scenic train tours in the world. These journeys offer a unique window into Switzerland's Alpine splendor, whisking travelers through lush valleys, past cascading waterfalls, and to the doorsteps of quaint mountain villages. Whether you're a nature enthusiast, a photographer, or simply seeking a tranquil escape, these train tours cater to all. Highlights include the Jungfrau Railway, which takes you to Europe's highest train station, and the GoldenPass Line, offering panoramic views of the Swiss Riviera. Each trip promises a blend of adventure, serenity, and awe-inspiring beauty, making it an essential experience for anyone visiting Interlaken.`,
       seo: {
-        title: 'Interlaken Scenic Train Tours 2025',
+        title: 'Interlaken Scenic Train Tours 2026',
         description: 'Discover the breathtaking beauty of Interlaken with stunning scenic train tours. Book your adventure now!',
         keywords: 'Interlaken train tours, scenic train rides, Swiss Alps train tours, Jungfrau Railway, GoldenPass Line',
       },
@@ -19759,9 +19759,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Dive into the rich tapestry of Portuguese history with Belém Tower Tours in Lisbon! This UNESCO World Heritage site stands as a testament to Portugal's Age of Discoveries, offering you a glimpse into the past with its breathtaking Manueline architecture and maritime relics. Whether you're a history buff, architecture enthusiast, or casual traveler, these tours offer something for everyone. As you explore the tower's battlements and climb its narrow spiral staircase, you'll be treated to panoramic views of the Tagus River and the surrounding Belém district, home to other iconic landmarks like the Jerónimos Monastery and the Monument to the Discoveries. With a variety of guided experiences ranging from basic historical tours to in-depth explorations focusing on Lisbon's maritime heritage, there's a perfect tour for every interest. Get ready to be captivated by tales of explorers, knights, and the golden age of navigation!`,
       seo: {
-        title: 'Belém Tower Tours in Lisbon 2025',
-        description: 'Discover the iconic Belém Tower in Lisbon with our engaging tours. Book now for 2025 adventures!',
-        keywords: 'Belém Tower tours, Lisbon tourism, historical tours Lisbon, Lisbon 2025 tours, UNESCO sites Lisbon',
+        title: 'Belém Tower Tours in Lisbon 2026',
+        description: 'Discover the iconic Belém Tower in Lisbon with our engaging tours. Book now for 2026 adventures!',
+        keywords: 'Belém Tower tours, Lisbon tourism, historical tours Lisbon, Lisbon 2026 tours, UNESCO sites Lisbon',
       },
       whyChoose: [
         {
@@ -19926,7 +19926,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Step into the heart of Lisbon with an Alfama District tour, where history and culture intertwine. As the city's oldest neighborhood, Alfama offers a unique glimpse into Lisbon's past with its labyrinth of narrow streets, colorful azulejos, and breathtaking views from the Miradouro de Santa Luzia. Immerse yourself in the soulful sounds of fado echoing through traditional taverns, and discover iconic landmarks like the Lisbon Cathedral and the National Pantheon. Whether you're a history buff, a culture enthusiast, or a curious traveler, Alfama's blend of old-world charm and vibrant local life promises an unforgettable experience. Join guided walking tours, indulge in local delicacies, or capture the essence of Lisbon with your camera. Each corner of Alfama holds a story waiting to be uncovered!`,
       seo: {
-        title: 'Best Alfama District Tours in Lisbon 2025',
+        title: 'Best Alfama District Tours in Lisbon 2026',
         description: 'Discover Lisbon\'s Alfama: historic tours, vibrant culture, and fado music. Book your adventure now!',
         keywords: 'Alfama tours, Lisbon walking tours, fado music Lisbon, historic Lisbon, Lisbon sightseeing',
       },
@@ -20093,7 +20093,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Hop aboard Lisbon's iconic trams and explore the city like never before! These tram tours offer a unique vantage point of Portugal's vibrant capital, traversing its steep hills and narrow streets. As you glide through Lisbon's charming neighborhoods, you'll uncover the city's rich history, from the medieval quarter of Alfama to the bustling streets of Baixa. Perfect for travelers of all types, these tours provide an authentic taste of Lisbon's daily life, complete with views of its famous azulejos tiles and stunning vistas of the Atlantic. Whether you're a history buff, a culture enthusiast, or simply seeking a relaxed way to see the city, Lisbon's tram tours cater to all. Don't miss out on the chance to hop on Tram 28, the city's most famous route, for an unforgettable journey through time and tradition!`,
       seo: {
-        title: 'Lisbon Tram Tours 2025: Explore by Tram!',
+        title: 'Lisbon Tram Tours 2026: Explore by Tram!',
         description: 'Experience Lisbon like a local with tram tours! Discover historic sites and vibrant neighborhoods. Book now!',
         keywords: 'Lisbon tram tours, Lisbon trams, explore Lisbon by tram, Lisbon sightseeing, Tram 28',
       },
@@ -20260,8 +20260,8 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `In Lisbon, food and wine tours are a feast for the senses! From the aromatic alleys of Alfama to the bustling Mercado da Ribeira, each tour offers a unique taste of Portuguese culture. Travelers will discover the secrets of making the perfect pastel de nata, sip world-renowned Port wine, and explore the rich flavors of Lisbon's seafood. Whether you're a gourmet enthusiast or a casual diner, the city's vibrant culinary scene promises an unforgettable experience. With expert guides leading the way, discover hidden gems like A Ginjinha, famed for its cherry liqueur, and savor authentic bacalhau at traditional tasquinhas. Perfect for foodies, history buffs, and culture seekers alike, Lisbon's food and wine tours are a delightful journey through Portugal's culinary heart.`,
       seo: {
-        title: 'Lisbon Food & Wine Tours 2025',
-        description: 'Explore Lisbon\'s best food and wine tours in 2025. Savor local flavors and history. Book now!',
+        title: 'Lisbon Food & Wine Tours 2026',
+        description: 'Explore Lisbon\'s best food and wine tours in 2026. Savor local flavors and history. Book now!',
         keywords: 'Lisbon food tours, wine tours Lisbon, culinary experiences Lisbon',
       },
       whyChoose: [
@@ -20427,9 +20427,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Dive into the heart of Portuguese culture with Lisbon's Fado Music Tours! Fado, the soulful and melancholic music, is an integral part of Lisbon's vibrant cultural tapestry. As you wander through the labyrinthine streets of Alfama and Bairro Alto, you'll encounter the haunting melodies in intimate taverns and historic casas de fado. These tours offer a unique glimpse into the local life, where storytelling through song has been passed down through generations. Whether you're a music aficionado or a curious traveler, these tours promise an emotional journey. Discover hidden gems like Clube de Fado and Tasca do Chico, where passionate performances will leave you spellbound. Perfect for solo explorers, romantic couples, or families eager to immerse in authentic Portuguese traditions!`,
       seo: {
-        title: 'Best Lisbon Fado Music Tours 2025',
+        title: 'Best Lisbon Fado Music Tours 2026',
         description: 'Explore Lisbon with enchanting Fado music tours. Discover hidden gems and soulful performances. Book now!',
-        keywords: 'Lisbon Fado tours, Fado music Lisbon, best Fado tours 2025, Lisbon music experience, authentic Fado',
+        keywords: 'Lisbon Fado tours, Fado music Lisbon, best Fado tours 2026, Lisbon music experience, authentic Fado',
       },
       whyChoose: [
         {
@@ -20594,9 +20594,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Embark on a journey through time in Lisbon's historic quarters, where the past and present blend seamlessly! From the cobblestone streets of Alfama to the majestic grandeur of Belém, each tour offers a unique glimpse into Portugal's rich history. Discover the enchanting stories behind landmarks like the Jerónimos Monastery and São Jorge Castle, marvel at the intricate azulejos adorning ancient buildings, and feel the pulse of Fado music echoing through the alleys. Whether you're a history buff, a cultural enthusiast, or a curious traveler, these tours promise an unforgettable adventure. With knowledgeable guides leading the way, you'll uncover hidden gems and fascinating tales that make Lisbon a timeless treasure trove. Excitement awaits around every corner!`,
       seo: {
-        title: 'Explore Lisbon\'s Historic Quarters 2025',
-        description: 'Discover Lisbon\'s historic charm in 2025! Join guided tours to iconic sites like Alfama and Belém. Book now!',
-        keywords: 'Lisbon tours, historic quarter tours, Lisbon 2025, Alfama, Belém, Lisbon history',
+        title: 'Explore Lisbon\'s Historic Quarters 2026',
+        description: 'Discover Lisbon\'s historic charm in 2026! Join guided tours to iconic sites like Alfama and Belém. Book now!',
+        keywords: 'Lisbon tours, historic quarter tours, Lisbon 2026, Alfama, Belém, Lisbon history',
       },
       whyChoose: [
         {
@@ -20767,9 +20767,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Embark on a journey through the Lofoten Islands' enchanting fishing villages, where Arctic beauty meets rich maritime heritage. These tours offer an intimate glimpse into the traditional Norwegian lifestyle, surrounded by dramatic landscapes and crystal-clear waters. From the iconic red rorbu cabins of Reine to the picturesque harbor of Henningsvær, each village tells its own story. Delight in fresh seafood delicacies, learn about the rich history of cod fishing, and capture unforgettable views of the Northern Lights. Perfect for history enthusiasts, nature lovers, and cultural explorers alike, these tours reveal the hidden gems of Norway's northern paradise. With diverse experiences ranging from guided walking tours to immersive cultural workshops, there's something for every traveler to discover!`,
 
       seo: {
-        title: 'Lofoten Islands Fishing Village Tours 2025',
-        description: 'Discover charming fishing villages in Lofoten Islands with our 2025 tours. Book your unforgettable adventure today!',
-        keywords: 'Lofoten fishing village tours, Arctic tours, Norway travel 2025, cultural experiences Lofoten',
+        title: 'Lofoten Islands Fishing Village Tours 2026',
+        description: 'Discover charming fishing villages in Lofoten Islands with our 2026 tours. Book your unforgettable adventure today!',
+        keywords: 'Lofoten fishing village tours, Arctic tours, Norway travel 2026, cultural experiences Lofoten',
       },
 
       whyChoose: [
@@ -20943,9 +20943,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Embark on an unforgettable Northern Lights journey in the enchanting Lofoten Islands, where the Arctic beauty and dramatic landscapes set the perfect stage for this celestial spectacle. Known for its picturesque fishing villages and towering fjords, Lofoten offers a variety of Northern Lights tours that cater to every adventurer's spirit. Whether you're a thrill-seeker or a serenity lover, you'll find options ranging from snowshoe hikes to cozy, guided van tours. Imagine standing on the shores of a quiet bay, like those near Svolvær, as the auroras dance across the night sky in hues of green and purple. These tours not only promise awe-inspiring views but also insights into local Sami culture and Arctic wildlife. Ideal for photographers, families, and solo travelers, a Northern Lights tour in Lofoten is your ticket to a magical winter wonderland. Don't miss the chance to witness one of nature's most mesmerizing phenomena!`,
 
       seo: {
-        title: 'Lofoten Northern Lights Tours 2025',
+        title: 'Lofoten Northern Lights Tours 2026',
         description: 'Discover Lofoten\'s Northern Lights magic with expert-guided tours. Book now for an unforgettable Arctic adventure!',
-        keywords: 'Lofoten Northern Lights, Arctic tours, Norway aurora tours, winter adventures, Lofoten travel 2025',
+        keywords: 'Lofoten Northern Lights, Arctic tours, Norway aurora tours, winter adventures, Lofoten travel 2026',
       },
 
       whyChoose: [
@@ -21302,9 +21302,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Embark on a journey through the enchanting Lofoten Islands, where rugged peaks touch the Arctic sky, and quaint fishing villages cradle the coastline. These hiking and nature tours offer an unparalleled experience to explore Norway's northern paradise. Whether you're scaling the dramatic heights of Reinebringen or wandering through the serene valleys of Henningsvær, each trail unveils breathtaking vistas and diverse wildlife. Travelers will discover hidden gems like the isolated beach of Kvalvika or the majestic Trollfjord. Perfect for adventurers, nature enthusiasts, and photographers, the Lofoten Islands promise unforgettable memories. From challenging hikes to leisurely nature walks, these tours cater to all levels of explorers, ensuring an incredible Arctic adventure!`,
 
       seo: {
-        title: 'Lofoten Islands Hiking & Nature Tours 2025',
+        title: 'Lofoten Islands Hiking & Nature Tours 2026',
         description: 'Explore Lofoten Islands with stunning hikes and serene nature tours. Book your Arctic adventure now!',
-        keywords: 'Lofoten hiking, nature tours Norway, Arctic adventure, Reinebringen hike, Lofoten Islands 2025',
+        keywords: 'Lofoten hiking, nature tours Norway, Arctic adventure, Reinebringen hike, Lofoten Islands 2026',
       },
 
       whyChoose: [
@@ -21478,9 +21478,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Embark on an unforgettable journey through the fjords of the Lofoten Islands, where dramatic peaks rise from the sea, vibrant fishing villages cling to rocky shores, and wildlife thrives. This unique destination offers a diverse range of fjord and boat tours that allow travelers to experience the Arctic's raw beauty from the water. Whether you're navigating the serene waters of Trollfjord, spotting sea eagles, or exploring the historic village of Henningsvær, each tour offers a new perspective. Perfect for adventurers, nature lovers, and photographers alike, these tours reveal the hidden gems of Norway's northern paradise. From intimate kayak excursions to larger boat trips with local guides, there's a perfect tour for every traveler. Discover secluded beaches, watch playful seals, and feel the magic of the Midnight Sun or Northern Lights dancing across the sky. Join us on a boat tour in Lofoten and create memories that will last a lifetime!`,
 
       seo: {
-        title: 'Lofoten Islands Fjord & Boat Tours 2025',
-        description: 'Explore Lofoten\'s fjords in 2025! Book now for stunning landscapes, wildlife spotting, and Arctic adventures.',
-        keywords: 'Lofoten Islands tours, fjord tours Norway, boat tours Lofoten, Arctic boat trips, Lofoten travel 2025',
+        title: 'Lofoten Islands Fjord & Boat Tours 2026',
+        description: 'Explore Lofoten\'s fjords in 2026! Book now for stunning landscapes, wildlife spotting, and Arctic adventures.',
+        keywords: 'Lofoten Islands tours, fjord tours Norway, boat tours Lofoten, Arctic boat trips, Lofoten travel 2026',
       },
 
       whyChoose: [
@@ -21654,8 +21654,8 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Lofoten Islands Photography Tours offer an unparalleled opportunity to capture the raw beauty of Norway's northern paradise. As you navigate through the dramatic peaks, pristine fjords, and charming fishing villages, your camera will become a window to the soul of the Arctic. These tours cater to both amateur and professional photographers, offering a range of experiences from capturing the magical Northern Lights to the sun-drenched midnight sun. Discover iconic locations such as Reine and Hamnøy, where red cabins contrast against the azure waters, and hike up Ryten for panoramic views of Kvalvika Beach. Whether you're enchanted by the serene beauty of Nusfjord or the rugged peaks of Moskenesøya, Lofoten's landscapes promise to inspire. Ideal for nature lovers, adventurers, and those seeking a unique Arctic experience, these tours also provide in-depth guidance from local photography experts to enhance your skills and capture the perfect shot.`,
 
       seo: {
-        title: 'Lofoten Islands Photography Tours 2025',
-        description: 'Explore Lofoten through photography tours in 2025. Capture Northern Lights & fjords. Book now!',
+        title: 'Lofoten Islands Photography Tours 2026',
+        description: 'Explore Lofoten through photography tours in 2026. Capture Northern Lights & fjords. Book now!',
         keywords: 'Lofoten photography tours, Northern Lights photography, Arctic landscapes photography tours',
       },
 
@@ -21832,9 +21832,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Step into the regal world of British royalty with a tour of Buckingham Palace, the epicenter of the British monarchy! Nestled in the heart of London, this iconic residence offers visitors a unique glimpse into royal life, showcasing grand architecture, opulent State Rooms, and the breathtaking Changing of the Guard ceremony. Whether you're a history buff, architecture enthusiast, or culture seeker, these tours cater to all. Marvel at the exquisite art collections, wander through the lush gardens, and uncover the stories behind the throne. From guided tours that delve into royal history to self-paced audio tours that allow for exploration at your own rhythm, the variety is as vast as it is exciting. Perfect for families, solo travelers, or couples, a visit to Buckingham Palace is an unforgettable highlight of any London adventure!`,
 
       seo: {
-        title: 'Buckingham Palace Tours 2025 | Explore Royal London',
-        description: 'Discover the grandeur of Buckingham Palace in 2025 with exclusive tours. Book your royal experience now!',
-        keywords: 'Buckingham Palace tours, London royal tours, 2025 London attractions, Buckingham Palace tickets, London sightseeing',
+        title: 'Buckingham Palace Tours 2026 | Explore Royal London',
+        description: 'Discover the grandeur of Buckingham Palace in 2026 with exclusive tours. Book your royal experience now!',
+        keywords: 'Buckingham Palace tours, London royal tours, 2026 London attractions, Buckingham Palace tickets, London sightseeing',
       },
 
       whyChoose: [
@@ -22008,8 +22008,8 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Dive into the captivating world of the Tower of London, where history comes alive! This iconic fortress, once a royal palace and notorious prison, offers an array of tours that cater to history buffs, families, and curious travelers alike. Marvel at the dazzling Crown Jewels, stand in the footsteps of Anne Boleyn, and hear tales from the Yeoman Warders, also known as Beefeaters. Each tour promises a unique glimpse into this UNESCO World Heritage Site's rich past, from its ancient walls to its modern-day ceremonial role. Whether you prefer a guided walk, an audio tour, or a night-time adventure, the Tower of London never ceases to enthrall with its tales of intrigue, betrayal, and power. Perfect for solo adventurers, families, and history enthusiasts, these tours promise a memorable experience steeped in the splendor and mystery of British heritage.`,
 
       seo: {
-        title: 'Tower of London Tours 2025: Discover Iconic History',
-        description: 'Explore the Tower of London in 2025! Book now for exclusive tours, history, and royal artifacts.',
+        title: 'Tower of London Tours 2026: Discover Iconic History',
+        description: 'Explore the Tower of London in 2026! Book now for exclusive tours, history, and royal artifacts.',
         keywords: 'Tower of London tours, London history tours, Crown Jewels tours, Beefeater tours, London attractions',
       },
 
@@ -22184,9 +22184,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover the very heart of London where history meets grandeur — Big Ben and the Houses of Parliament! These tours offer an unparalleled glimpse into the UK's political epicenter. Wander through the majestic corridors of Parliament, famous for their rich history and stunning Gothic architecture. Hear the chimes of Big Ben that have marked London's time for over a century. Whether you're a history buff eager to delve into British politics or a cultural enthusiast keen on architectural wonders, there's a tour for you. Experience the iconic Westminster Bridge and capture the perfect shot of the Thames River. From guided tours with expert historians to self-paced audio explorations, the variety ensures every traveler finds their perfect fit. Feel the pulse of British democracy and soak in the stories that shaped a nation!`,
 
       seo: {
-        title: 'Big Ben & Parliament Tours London 2025',
-        description: 'Explore London\'s iconic Big Ben and Parliament with our top tours in 2025! Book now.',
-        keywords: 'Big Ben tours, Parliament tours, London sightseeing, iconic London tours, London 2025',
+        title: 'Big Ben & Parliament Tours London 2026',
+        description: 'Explore London\'s iconic Big Ben and Parliament with our top tours in 2026! Book now.',
+        keywords: 'Big Ben tours, Parliament tours, London sightseeing, iconic London tours, London 2026',
       },
 
       whyChoose: [
@@ -22360,8 +22360,8 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Embark on a culinary journey through the heart of London, where rich history and a diverse food culture intertwine. London Food & Pub Tours offer an incredible opportunity to taste your way through iconic neighborhoods like Soho and Covent Garden, while sipping pints in historic pubs where literary greats once gathered. Discover the bustling food markets of Borough and Camden, and indulge in everything from traditional fish and chips to gourmet street food. Whether you're a foodie eager to uncover hidden gastronomic gems or a history buff thrilled by the tales of centuries-old taverns, these tours promise an immersive experience. With expert guides leading the way, you'll delve into local traditions, meet passionate makers, and savor the vibrant flavors that make London a global culinary capital. Join us for an adventure that delights the senses and connects you with the city's soul!`,
 
       seo: {
-        title: 'Top Food & Pub Tours in London 2025',
-        description: 'Discover London\'s best food and pub tours in 2025. Taste local flavors, explore historic pubs. Book now!',
+        title: 'Top Food & Pub Tours in London 2026',
+        description: 'Discover London\'s best food and pub tours in 2026. Taste local flavors, explore historic pubs. Book now!',
         keywords: 'London food tours, London pub tours, London culinary experiences, historic pubs London',
       },
 
@@ -22724,7 +22724,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Step into the grandeur of British royalty with London's Royal London Tours! Discover the majestic allure of Buckingham Palace, witness the Changing of the Guard, and explore the historic Tower of London where the Crown Jewels reside. These tours offer a fascinating glimpse into centuries of royal history and tradition, perfect for history buffs, culture enthusiasts, or anyone dreaming of a royal adventure. Visitors can experience the opulence of Westminster Abbey, the venue for royal coronations and weddings, and stroll through the regal parks of Kensington Palace. Whether you're a solo traveler, a family on vacation, or a couple seeking a romantic escape, Royal London Tours promise an unforgettable journey through time. Feel the excitement as you walk the same paths as kings and queens, and let the stories of the monarchy captivate your imagination!`,
 
       seo: {
-        title: 'Royal London Tours 2025 | Explore Iconic Landmarks',
+        title: 'Royal London Tours 2026 | Explore Iconic Landmarks',
         description: 'Discover London\'s royal heritage with expert-led tours to Buckingham Palace, Tower of London & more.',
         keywords: 'Royal London tours, London attractions, British monarchy, Buckingham Palace tours, Tower of London',
       },
@@ -22902,9 +22902,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Madeira, the floating garden of Portugal, invites you to explore its breathtaking beauty through Levada Walking Tours. These enchanting paths, originally created for irrigation, offer an unparalleled glimpse into the island's lush landscapes, vibrant flora, and dramatic vistas. Whether you're an avid hiker, a nature enthusiast, or a casual traveler, there's a levada walk tailored for you. Discover the awe-inspiring Laurel Forests, a UNESCO World Heritage site, or marvel at the cascading waterfalls of the Rabaçal Valley. From easy strolls for beginners to challenging trails for seasoned trekkers, each route promises a unique adventure. Experience the serenity of Madeira's natural wonders while enjoying the island's perfect climate. These tours are not just walks; they're journeys into the heart of Madeira's rich ecological tapestry. Get ready for an unforgettable adventure!`,
 
       seo: {
-        title: 'Top Madeira Levada Walks 2025',
+        title: 'Top Madeira Levada Walks 2026',
         description: 'Discover Madeira\'s levada walks: lush trails, breathtaking vistas, and unforgettable adventures. Book your tour now!',
-        keywords: 'Madeira levada walks, hiking tours Madeira, levada trails 2025, Madeira hiking, best levada tours',
+        keywords: 'Madeira levada walks, hiking tours Madeira, levada trails 2026, Madeira hiking, best levada tours',
       },
 
       whyChoose: [
@@ -23078,9 +23078,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover the heart of Madeira with Funchal City Tours, where every corner tells a story of culture, history, and breathtaking beauty. This vibrant city is a haven for travelers seeking to explore lush botanical gardens, such as the Monte Palace Tropical Garden, and historical sites like the 15th-century Sé Cathedral. Unveil the secrets of the island's famous wine on a tasting tour, or wander through the bustling Mercado dos Lavradores, where fresh produce and local crafts abound. From art enthusiasts to history buffs, there's something for everyone. Let the quaint streets and friendly locals guide you through an unforgettable journey that captures the true essence of Madeira. Whether you're a solo traveler, a couple, or a family, Funchal offers a unique blend of experiences that cater to every traveler's whim!`,
 
       seo: {
-        title: 'Top Funchal City Tours 2025',
-        description: 'Explore Funchal in 2025 with guided city tours! Discover gardens, history, and local flavors. Book now!',
-        keywords: 'Funchal city tours, Madeira tours, 2025 travel, Funchal attractions, Madeira sightseeing',
+        title: 'Top Funchal City Tours 2026',
+        description: 'Explore Funchal in 2026 with guided city tours! Discover gardens, history, and local flavors. Book now!',
+        keywords: 'Funchal city tours, Madeira tours, 2026 travel, Funchal attractions, Madeira sightseeing',
       },
 
       whyChoose: [
@@ -23442,7 +23442,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Madeira's Mountain & Valley Tours offer a captivating journey through the island's awe-inspiring landscapes. As you traverse the rugged peaks of Pico Ruivo and Pico do Arieiro, you'll be mesmerized by panoramic views of the Atlantic Ocean and verdant valleys below. These tours are a haven for adventure seekers and nature lovers, providing a diverse array of experiences from exhilarating hikes to peaceful strolls through the Laurisilva Forest, a UNESCO World Heritage Site. Discover the vibrant flora and fauna, ancient levadas, and charming mountain villages like Curral das Freiras. Whether you're an avid hiker or a casual explorer, Madeira's mountainous terrains promise breathtaking vistas and unforgettable memories. Get ready to immerse yourself in the natural beauty and cultural richness of this Portuguese paradise!`,
 
       seo: {
-        title: 'Madeira Mountain & Valley Tours 2025',
+        title: 'Madeira Mountain & Valley Tours 2026',
         description: 'Discover Madeira\'s stunning peaks and valleys with our specialized tours! Book your adventure today!',
         keywords: 'Madeira tours, mountain tours, valley tours, Madeira hiking, Madeira adventure tours, scenic tours',
       },
@@ -23618,9 +23618,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Madeira, Portugal's floating garden, offers more than breathtaking landscapes; its coastal boat tours reveal a marine wonderland waiting to be explored! Imagine gliding over cerulean waters, surrounded by towering cliffs and vibrant sea life. These tours cater to all: from adrenaline-seekers eager to spot dolphins and whales near Cabo Girão to romantics yearning for a sunset sail around Porto Moniz. Adventurers can dive into the crystal-clear waters at Ponta de São Lourenço, while culture enthusiasts explore the historic charm of Funchal's harbor. Whether you're a solo traveler, a family, or a group of friends, Madeira's boat tours promise unforgettable memories. Each excursion unveils unique vistas and experiences, ensuring that every traveler leaves with stories of the Atlantic's enchanting beauty!`,
 
       seo: {
-        title: 'Madeira Coastal Boat Tours 2025',
+        title: 'Madeira Coastal Boat Tours 2026',
         description: 'Discover Madeira\'s scenic coastlines and vibrant marine life on exciting boat tours. Book your adventure now!',
-        keywords: 'Madeira boat tours, coastal adventures, marine life excursions, Atlantic boat trips, Madeira 2025',
+        keywords: 'Madeira boat tours, coastal adventures, marine life excursions, Atlantic boat trips, Madeira 2026',
       },
 
       whyChoose: [
@@ -23794,8 +23794,8 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Welcome to Madeira, Portugal's enchanting island paradise, where nature blooms in stunning diversity! Embark on garden and nature tours to explore the island's lush botanical gardens, such as the Monte Palace Tropical Garden, and the breathtaking Laurisilva Forest, a UNESCO World Heritage site. Discover a world where exotic plants thrive, waterfalls cascade, and panoramic views captivate every visitor. Whether you're a nature lover, a photography enthusiast, or a family seeking adventure, these tours offer something for everyone. Trek along the famous Levada trails, experience the rugged beauty of Cabo Girão, or simply lose yourself in the vibrant colors of Madeira's flora. These experiences promise to connect you deeply with the island's natural beauty and leave you inspired!`,
 
       seo: {
-        title: 'Best Madeira Garden & Nature Tours 2025',
-        description: 'Discover Madeira\'s stunning gardens & nature tours! Explore lush landscapes. Book your 2025 adventure now!',
+        title: 'Best Madeira Garden & Nature Tours 2026',
+        description: 'Discover Madeira\'s stunning gardens & nature tours! Explore lush landscapes. Book your 2026 adventure now!',
         keywords: 'Madeira garden tours, nature tours Madeira, Madeira Levada walks, Madeira botanical gardens',
       },
 
@@ -24160,8 +24160,8 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Embark on an enchanting journey through the heart of Spain's royal heritage with a tour of the Royal Palace of Madrid! This grand residence, known as Palacio Real, is one of the largest palaces in Europe, boasting over 3,400 rooms adorned with opulent tapestries, exquisite frescoes, and an unparalleled collection of art and historical artifacts. Whether you're an art enthusiast, history buff, or simply captivated by royal architecture, these tours offer a variety of experiences tailored for different interests. Marvel at the Throne Room's gilded grandeur, explore the Royal Armory's impressive collection, or stroll through the serene Sabatini Gardens. Perfect for families, solo travelers, and history lovers alike, these tours provide an insightful glimpse into the lives of Spanish royalty and the cultural tapestry of Madrid. Get ready to be amazed by the splendor and stories that await you!`,
 
       seo: {
-        title: 'Explore Madrid Royal Palace Tours 2025',
-        description: 'Discover Madrid\'s Royal Palace in 2025 with exclusive tours. Book now for an unforgettable regal experience!',
+        title: 'Explore Madrid Royal Palace Tours 2026',
+        description: 'Discover Madrid\'s Royal Palace in 2026 with exclusive tours. Book now for an unforgettable regal experience!',
         keywords: 'Madrid Royal Palace tours, Palacio Real tour, Madrid history tours, Spanish royal tours',
       },
 
@@ -24336,9 +24336,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Madrid's historic plaza tours offer an enchanting journey through the city's iconic squares, each brimming with tales of royalty, rebellion, and revelry. From the majestic Plaza Mayor with its grand arcades and vibrant atmosphere to the picturesque Plaza de la Villa, a step back into medieval times, these tours promise a deep dive into Madrid's rich past. Discover the charm of Plaza de Oriente with its stunning views of the Royal Palace or the lively buzz of Puerta del Sol, the city's bustling heart. These tours cater to history buffs, cultural enthusiasts, and casual travelers alike, offering a variety of experiences from guided walks to immersive storytelling sessions. Whether you're savoring traditional tapas in Plaza Santa Ana or exploring the artistic legacy of Plaza del Cascorro, each plaza reveals a unique facet of Madrid's dynamic spirit. Get ready to uncover hidden gems and soak up the vibrant culture of Spain's capital!`,
 
       seo: {
-        title: 'Madrid Historic Plaza Tours 2025',
+        title: 'Madrid Historic Plaza Tours 2026',
         description: 'Discover Madrid\'s historic plazas on guided tours. Explore iconic sites with rich history. Book now!',
-        keywords: 'Madrid plaza tours, historic tours Madrid, Madrid plazas, guided tours Madrid, 2025 travel',
+        keywords: 'Madrid plaza tours, historic tours Madrid, Madrid plazas, guided tours Madrid, 2026 travel',
       },
 
       whyChoose: [
@@ -24512,7 +24512,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Embark on a gastronomic adventure in Madrid, a city where traditional flavors meet contemporary cuisine! Our food and tapas tours are your gateway to taste the city's vibrant culinary scene. Wander through bustling markets like Mercado de San Miguel, savor delicious tapas in hidden taverns, and sip on exquisite Spanish wines. With every bite, you'll uncover the history and culture that have shaped Madrid's palate. Whether you're a foodie craving authentic experiences or a traveler seeking to deepen your cultural journey, these tours offer a delectable slice of Madrid life. Delight in churros con chocolate, discover the secrets of Iberian ham, and enjoy the lively atmosphere in every corner. These experiences are perfect for families, solo travelers, and groups alike, promising a flavorful adventure in Spain's dynamic heart!`,
 
       seo: {
-        title: 'Best Madrid Food & Tapas Tours 2025',
+        title: 'Best Madrid Food & Tapas Tours 2026',
         description: 'Explore Madrid\'s culinary scene with our top food & tapas tours. Book your delicious adventure today!',
         keywords: 'Madrid food tours, tapas tours, culinary tours Madrid, Spanish cuisine, food tasting Madrid',
       },
@@ -24688,7 +24688,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Madrid, the pulsating heart of Spain, is a paradise for art enthusiasts and culture lovers! This iconic city offers a plethora of art and culture tours that take you deep into its soul, showcasing world-renowned museums like the Prado and Reina Sofia, vibrant local art scenes, and historic neighborhoods. Whether you want to marvel at the masterpieces of Velázquez and Picasso, or explore the bohemian streets of Malasaña, these tours provide a comprehensive look at Madrid's artistic legacy and cultural vibrancy. With options ranging from private gallery tours to immersive flamenco experiences, there's something for every traveler, whether you're an art aficionado, history buff, or curious explorer. Get ready to uncover the hidden stories behind Madrid's artistic gems and cultural landmarks, all while enjoying the warm hospitality and passionate spirit of the locals!`,
 
       seo: {
-        title: 'Madrid Art & Culture Tours 2025',
+        title: 'Madrid Art & Culture Tours 2026',
         description: 'Explore Madrid\'s art and culture with top tours! Discover museums, local art, and historic sites.',
         keywords: 'Madrid art tours, culture tours Madrid, Prado Museum tours, Madrid cultural experiences',
       },
@@ -24864,9 +24864,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Immerse yourself in the enchanting beauty of Madrid's Retiro Park, a verdant oasis in the heart of the city. Spanning over 350 acres, this historic park offers a delightful retreat from the urban hustle, featuring elegant sculptures, tranquil boating lakes, and the stunning Crystal Palace. Whether you're a nature lover, a history buff, or simply seeking a peaceful escape, Retiro Park tours cater to all. Discover hidden gems like the Rosaleda rose garden, bask in the vibrant life of the park's bustling pathways, or indulge in a serene boat ride on the Estanque Grande. Perfect for families, solo travelers, or romantic escapades, these tours offer a perfect blend of relaxation and exploration, ensuring an unforgettable Madrid experience!`,
 
       seo: {
-        title: 'Top Retiro Park Tours in Madrid 2025',
+        title: 'Top Retiro Park Tours in Madrid 2026',
         description: 'Discover Madrid\'s Retiro Park with guided tours. Book now for an unforgettable experience!',
-        keywords: 'Retiro Park tours, Madrid tours, Madrid 2025, guided park tours, Retiro Park guide',
+        keywords: 'Retiro Park tours, Madrid tours, Madrid 2026, guided park tours, Retiro Park guide',
       },
 
       whyChoose: [
@@ -25042,8 +25042,8 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience the awe-inspiring Palma Cathedral, also known as La Seu, a must-see gem in Mallorca. This architectural marvel boasts stunning Gothic design and an impressive altarpiece by Gaudí. While exploring, you'll discover intricate stained-glass windows, including one of the largest rose windows in the world. Tours offer a peek into the cathedral's unique history, from its 13th-century origins to its modern-day significance. Whether you're a history buff, architecture enthusiast, or simply seeking breathtaking views of Palma Bay, these tours offer something for everyone. Dive into the stories behind its towering columns and chapels, and witness the serene beauty of the Mediterranean light filtering through colored glass. Get ready for an unforgettable journey through time and art, right in the heart of Mallorca!`,
 
       seo: {
-        title: 'Palma Cathedral Tours in Mallorca 2025',
-        description: 'Discover La Seu\'s Gothic splendor in Mallorca. Book your 2025 tour now for an unforgettable experience!',
+        title: 'Palma Cathedral Tours in Mallorca 2026',
+        description: 'Discover La Seu\'s Gothic splendor in Mallorca. Book your 2026 tour now for an unforgettable experience!',
         keywords: 'Palma Cathedral tours, Mallorca tours, La Seu tours, Gothic architecture, Mallorca sightseeing',
       },
 
@@ -25218,9 +25218,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Embark on a thrilling journey through Mallorca's mesmerizing coastlines with our coastal boat tours! As Spain's largest island, Mallorca boasts an array of breathtaking beaches, secluded coves, and charming fishing villages waiting to be discovered. Whether you're a sun-seeker, nature lover, or history buff, these tours offer something truly special. Navigate the sparkling Mediterranean waters to the stunning Sa Calobra, explore the ancient Dragonera Island, or simply relax as you pass the iconic Cap de Formentor. With options ranging from intimate sailing trips to lively party boats, these tours cater to families, couples, and solo adventurers alike. Experience the Balearic beauty from a unique perspective and create unforgettable memories that will last a lifetime!`,
 
       seo: {
-        title: 'Mallorca Coastal Boat Tours 2025',
+        title: 'Mallorca Coastal Boat Tours 2026',
         description: 'Discover Mallorca\'s stunning coastlines with our boat tours. Book now for an unforgettable adventure!',
-        keywords: 'Mallorca boat tours, coastal tours Mallorca, Mallorca sailing trips, Balearic boat excursions, Mallorca 2025 tours',
+        keywords: 'Mallorca boat tours, coastal tours Mallorca, Mallorca sailing trips, Balearic boat excursions, Mallorca 2026 tours',
       },
 
       whyChoose: [
@@ -25394,7 +25394,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Mallorca, with its stunning Tramuntana mountain range, offers a hiker's paradise that blends breathtaking landscapes with rich cultural history. Known for its UNESCO World Heritage status, the Tramuntana mountains provide a variety of trails, from gentle walks to challenging climbs, catering to all levels of hiking enthusiasts. Traverse through ancient olive groves, discover hidden monasteries, and soak in panoramic views of the Mediterranean. Whether you're a solo adventurer, a family with kids, or a group of friends, Mallorca's hiking tours promise an invigorating escape into nature. Highlights include the dramatic Torrent de Pareis gorge and the picturesque village of Deià. Prepare to be enchanted by the island's natural beauty and cultural treasures!`,
 
       seo: {
-        title: 'Mallorca Mountain Hiking Tours 2025',
+        title: 'Mallorca Mountain Hiking Tours 2026',
         description: 'Discover Mallorca\'s scenic trails and majestic mountains. Book your unforgettable hiking tour today!',
         keywords: 'Mallorca hiking, Tramuntana mountains, Mallorca tours, hiking in Spain, scenic trails',
       },
@@ -25570,9 +25570,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Mallorca, the largest of Spain's Balearic Islands, offers an idyllic setting for beach and water sports enthusiasts. With its crystal-clear Mediterranean waters and stunning coastline, the island is a haven for those seeking sun, sand, and sea adventures. From the serene beaches of Cala Mesquida to the lively shores of Playa de Palma, there's a perfect spot for every beach lover. Water sports aficionados can dive into experiences like windsurfing in Pollença Bay, snorkeling in the vibrant marine life of Cala d'Or, or sailing the azure waters off Port de Sóller. Whether you're a thrill-seeker wanting to try cliff diving at Cala Varques or a family looking for a relaxing beach day at Alcudia, Mallorca caters to all. The island's diverse offerings make it a must-visit for anyone eager to explore the Mediterranean's aquatic wonders.`,
 
       seo: {
-        title: 'Mallorca Beach & Water Sports Tours 2025',
-        description: 'Explore Mallorca\'s stunning beaches and thrilling water sports in 2025. Book your adventure today!',
-        keywords: 'Mallorca beach tours, water sports Mallorca, Mallorca 2025 adventures',
+        title: 'Mallorca Beach & Water Sports Tours 2026',
+        description: 'Explore Mallorca\'s stunning beaches and thrilling water sports in 2026. Book your adventure today!',
+        keywords: 'Mallorca beach tours, water sports Mallorca, Mallorca 2026 adventures',
       },
 
       whyChoose: [
@@ -25746,7 +25746,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Explore Mallorca through its tantalizing wine and food tours! This Mediterranean jewel offers more than just sun-kissed beaches; it's a culinary haven where you can discover the island's rich gastronomic heritage. From the robust reds and crisp whites of Binissalem to the delectable sobrasada and ensaimada pastries, there's a flavor for every palate. Journey through lush vineyards, partake in olive oil tastings, and enjoy a tapas crawl in Palma's vibrant markets. Whether you're a seasoned foodie or an eager novice, these tours cater to all, promising a feast for the senses. Discover hidden gems and local favorites as you sip and savor your way through Mallorca's culinary landscape!`,
 
       seo: {
-        title: 'Mallorca Wine & Food Tours 2025',
+        title: 'Mallorca Wine & Food Tours 2026',
         description: 'Explore Mallorca\'s wine and food tours. Discover local flavors, vineyards, and culinary delights today!',
         keywords: 'Mallorca wine tours, food tours Mallorca, Mallorca culinary experiences',
       },
@@ -25922,9 +25922,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Dive into the heart of Mallorca and travel back in time with our Historic Village Tours! Nestled in the Mediterranean, Mallorca is not just about stunning beaches; it boasts a tapestry of charming villages, each with its own story to tell. Wander the cobbled streets of Valldemossa, where the famous composer Chopin found inspiration, or explore the medieval allure of Alcúdia's ancient walls. These tours offer a captivating blend of history, culture, and breathtaking landscapes. Whether you're an avid historian, a photography enthusiast, or a curious traveler, there's something magical for everyone. Discover hidden gems like the mountain village of Deià, known for its artistic legacy, and Soller with its iconic tram line. Experience the warmth of local hospitality and the island's rich tapestry of traditions and tales. Get ready for an unforgettable journey through time!`,
 
       seo: {
-        title: 'Mallorca Historic Village Tours 2025',
+        title: 'Mallorca Historic Village Tours 2026',
         description: 'Discover Mallorca\'s historic charm with our village tours. Book now for an unforgettable journey!',
-        keywords: 'Mallorca tours, historic village tours, Mallorca travel 2025, Valldemossa, Alcúdia, Soller tours',
+        keywords: 'Mallorca tours, historic village tours, Mallorca travel 2026, Valldemossa, Alcúdia, Soller tours',
       },
 
       whyChoose: [
@@ -26097,7 +26097,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Experience the iconic Promenade des Anglais, Nice's legendary seafront boulevard that perfectly captures the essence of the French Riviera! This stunning 7-kilometer stretch along the Baie des Anges offers breathtaking Mediterranean views, Belle Époque architecture, and the glamorous atmosphere that has attracted visitors for over a century. From leisurely walks along the blue chairs to guided tours revealing hidden history, these experiences showcase why Nice is called the Queen of the Riviera. Discover the Negresco Hotel's grandeur, learn about the promenade's English origins, and feel the warm sea breeze as you explore this UNESCO World Heritage site. Whether you're a history enthusiast, architecture lover, or simply seeking that perfect French Riviera moment, these tours offer an unforgettable journey through Nice's most famous landmark!",
       "seo": {
-        "title": "Nice Promenade des Anglais Tours 2025",
+        "title": "Nice Promenade des Anglais Tours 2026",
         "description": "Explore the iconic Promenade des Anglais in Nice with expert-guided tours. Discover Mediterranean beauty and French Riviera elegance!",
         "keywords": "Nice Promenade tours, Promenade des Anglais, Nice waterfront, French Riviera tours, Nice walking tours"
       },
@@ -26264,7 +26264,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Step into the enchanting labyrinth of Vieux Nice (Old Town), where narrow medieval streets burst with colorful buildings, baroque architecture, and authentic Provençal atmosphere! This historic quarter preserves centuries of Nice's rich heritage, from Italian influences to Belle Époque elegance. Wander through Cours Saleya's vibrant flower market, discover hidden chapels with stunning baroque art, and taste local specialties like socca and pissaladière. The Old Town's ochre and pastel buildings create a photographer's paradise, while intimate squares invite you to experience la dolce vita French-style. From food lovers exploring local markets to history buffs uncovering Nice's past as part of the Kingdom of Sardinia, these walking tours reveal the soul of the Côte d'Azur. Perfect for families, couples, and solo travelers seeking authentic French Riviera culture!",
       "seo": {
-        "title": "Nice Old Town Walking Tours 2025",
+        "title": "Nice Old Town Walking Tours 2026",
         "description": "Explore Vieux Nice with expert guides. Discover baroque churches, local markets, and authentic Provençal charm!",
         "keywords": "Nice Old Town tours, Vieux Nice, Nice walking tours, Cours Saleya, Nice historic center"
       },
@@ -26431,7 +26431,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Discover the stunning Mediterranean coastline of Nice, where azure waters meet iconic pebble beaches backed by the glamorous Promenade des Anglais! Nice's beaches offer the quintessential French Riviera experience - from lively public beaches perfect for families to exclusive beach clubs where you can lounge in luxury. Experience the unique charm of galets (pebble beaches), enjoy water sports in crystal-clear waters, and soak up the legendary Côte d'Azur sunshine. Whether you're swimming in the warm Mediterranean, trying paddleboarding, or simply relaxing with a cocktail at a beach club, Nice's coastline delivers unforgettable moments. These tours showcase everything from snorkeling adventures discovering marine life to sunset beach experiences with champagne. Perfect for beach lovers, water sports enthusiasts, and anyone seeking that iconic French Riviera beach lifestyle!",
       "seo": {
-        "title": "Nice Beach Tours 2025 - Mediterranean Coast",
+        "title": "Nice Beach Tours 2026 - Mediterranean Coast",
         "description": "Experience Nice's stunning Mediterranean beaches with expert tours. Swimming, water sports, and French Riviera beach culture!",
         "keywords": "Nice beaches, Mediterranean tours, French Riviera beaches, Nice water sports, Côte d'Azur beaches"
       },
@@ -26598,7 +26598,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Discover the legendary French Riviera with unforgettable day trips from Nice to the Côte d'Azur's most glamorous destinations! From the glittering principality of Monaco with its famous casino and royal palace, to Cannes' film festival glory and designer boutiques, to medieval hilltop villages like Èze with breathtaking views - these tours showcase the best of the Mediterranean coast. Experience the artistic charm of Antibes where Picasso worked, explore Saint-Paul-de-Vence's galleries and cobblestone streets, or visit the perfume capital of Grasse. Each destination offers unique attractions, from luxurious yacht harbors to authentic Provençal markets, Belle Époque architecture to contemporary art. Perfect for culture enthusiasts, photography lovers, and anyone wanting to experience the diverse beauty and sophistication of the French Riviera beyond Nice!",
       "seo": {
-        "title": "Nice Day Trips 2025 - French Riviera Tours",
+        "title": "Nice Day Trips 2026 - French Riviera Tours",
         "description": "Explore Monaco, Cannes, Èze, and the French Riviera from Nice. Expert-guided day trips to Côte d'Azur highlights!",
         "keywords": "Nice day trips, French Riviera tours, Monaco from Nice, Cannes tours, Èze village, Côte d'Azur excursions"
       },
@@ -26765,7 +26765,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Ascend to Castle Hill (Colline du Château), Nice's spectacular elevated park offering the most breathtaking 360-degree views of the entire French Riviera! This historic site, where a medieval fortress once stood, now features lush Mediterranean gardens, cascading waterfalls, ancient ruins, and panoramic terraces overlooking the Baie des Anges, Old Town, and coastline extending to Monaco. Whether you hike the scenic paths, take the free elevator, or join a guided tour, reaching the summit rewards you with unforgettable vistas perfect for photography. Explore archaeological remains, discover hidden viewpoints, relax in shaded gardens, and understand Nice's strategic history. The site offers something for everyone - from romantic sunset viewing to family-friendly exploration, historical discovery to peaceful nature walks. Castle Hill is absolutely essential for capturing that perfect Nice moment!",
       "seo": {
-        "title": "Nice Castle Hill Tours 2025 - Colline du Château",
+        "title": "Nice Castle Hill Tours 2026 - Colline du Château",
         "description": "Explore Castle Hill in Nice with panoramic views, gardens, and historic ruins. Guided tours and hiking options!",
         "keywords": "Castle Hill Nice, Colline du Château, Nice viewpoints, Nice panoramic views, Castle Hill tours"
       },
@@ -26932,7 +26932,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Discover the legendary Principality of Monaco, the world's second-smallest country packed with extraordinary luxury, glamour, and Mediterranean beauty! Just 20 minutes from Nice, Monaco offers unforgettable experiences - from the royal palace perched on the rock to the legendary Monte Carlo Casino, from Formula 1's famous circuit to Port Hercule filled with superyachts. Explore Monaco-Ville's old town with narrow streets and stunning views, visit the impressive Oceanographic Museum, and feel the excitement around Casino Square where Ferraris and Lamborghinis are everyday sights. Whether you're interested in royal history, automotive passion, architectural beauty, or simply experiencing one of the world's most exclusive destinations, Monaco excursions offer the ultimate French Riviera glamour. Perfect for luxury lovers, history enthusiasts, and anyone wanting to experience genuine Riviera sophistication!",
       "seo": {
-        "title": "Monaco Tours from Nice 2025 - Monte Carlo Excursions",
+        "title": "Monaco Tours from Nice 2026 - Monte Carlo Excursions",
         "description": "Visit Monaco from Nice! Explore Monte Carlo Casino, Royal Palace, and luxury harbor. Expert-guided excursions!",
         "keywords": "Monaco tours from Nice, Monte Carlo tours, Monaco day trips, Monaco excursions, Royal Palace Monaco"
       },
@@ -27102,9 +27102,9 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Experience Oktoberfest, the world's most legendary beer festival held annually in Munich from late September through early October! This iconic celebration attracts over 6 million visitors who come to enjoy traditional Bavarian beer in massive tents, authentic German food, lively folk music, and the unique atmosphere that makes Oktoberfest a bucket-list experience. From navigating the bustling Theresienwiese grounds with expert guides to securing coveted seats in famous tents like Hofbräu, Augustiner, and Schottenhamel, these tours make your Oktoberfest experience unforgettable. Learn the traditions, toast with locals, wear traditional lederhosen or dirndl, and immerse yourself in centuries-old Bavarian culture. Whether you're a beer enthusiast, culture lover, or party-goer, Oktoberfest tours provide insider access to this extraordinary festival. Perfect for groups, solo travelers, and anyone wanting the ultimate Munich experience!",
       "seo": {
-        "title": "Munich Oktoberfest Tours 2025 - Best Beer Festival",
+        "title": "Munich Oktoberfest Tours 2026 - Best Beer Festival",
         "description": "Experience authentic Oktoberfest in Munich with expert-guided tours. Reserved seats, beer tastings, and Bavarian culture!",
-        "keywords": "Oktoberfest tours Munich, Munich beer festival, Oktoberfest 2025, Munich Oktoberfest tickets, beer tent reservations"
+        "keywords": "Oktoberfest tours Munich, Munich beer festival, Oktoberfest 2026, Munich Oktoberfest tickets, beer tent reservations"
       },
       "whyChoose": [
         {
@@ -27226,7 +27226,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       "faqs": [
         {
           "question": "When is Oktoberfest held?",
-          "answer": "Oktoberfest runs for 16-18 days from late September through the first Sunday in October. The 2025 dates are typically announced a year in advance. Despite the name, most of Oktoberfest actually takes place in September! The festival starts on a Saturday with the ceremonial keg tapping (\"O'zapft is!\") by Munich's mayor. Opening weekend is the busiest but most exciting time. Weekdays, especially Monday-Thursday, are less crowded and easier for tent access. The final Sunday is family-friendly. Book tours as soon as dates are announced for best selection!"
+          "answer": "Oktoberfest runs for 16-18 days from late September through the first Sunday in October. The 2026 dates are typically announced a year in advance. Despite the name, most of Oktoberfest actually takes place in September! The festival starts on a Saturday with the ceremonial keg tapping (\"O'zapft is!\") by Munich's mayor. Opening weekend is the busiest but most exciting time. Weekdays, especially Monday-Thursday, are less crowded and easier for tent access. The final Sunday is family-friendly. Book tours as soon as dates are announced for best selection!"
         },
         {
           "question": "How much does Oktoberfest cost?",
@@ -27269,7 +27269,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Experience Munich's legendary beer garden culture, a cherished Bavarian tradition dating back centuries! Munich boasts over 100 beer gardens (Biergärten), from massive venues like the 8,000-seat Hirschgarten to intimate neighborhood favorites hidden throughout the city. These outdoor gathering spaces under shady chestnut trees offer more than just excellent beer - they're social institutions where strangers become friends, families gather, and the Bavarian concept of gemütlichkeit (cozy conviviality) comes alive. Discover the unique bring-your-own-food tradition, taste beer straight from Munich's famous breweries, and learn why beer gardens are protected cultural landmarks. Whether touring historic gardens like Augustiner-Bräu or hidden local favorites, you'll experience authentic Munich life at its best. Perfect for beer enthusiasts, culture seekers, and anyone wanting genuine Bavarian atmosphere!",
       "seo": {
-        "title": "Munich Beer Garden Tours 2025 - Bavarian Biergarten",
+        "title": "Munich Beer Garden Tours 2026 - Bavarian Biergarten",
         "description": "Explore authentic Munich beer gardens with local guides. Traditional biergärten, local brews, and Bavarian culture!",
         "keywords": "Munich beer gardens, Biergarten Munich, Munich brewery tours, Bavarian beer culture, Hirschgarten Munich"
       },
@@ -27436,7 +27436,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Discover Bavaria's magnificent royal heritage with tours of Germany's most spectacular palaces and castles! From the fairy-tale Neuschwanstein Castle that inspired Disney, to Munich's opulent Residenz palace with 130 rooms of Bavarian royal splendor, to the stunning baroque beauty of Nymphenburg Palace with its expansive gardens - these tours showcase centuries of royal history and architectural brilliance. Explore King Ludwig II's romantic castles, learn about the Wittelsbach dynasty that ruled Bavaria for 738 years, and marvel at throne rooms, royal apartments, and treasure-filled galleries. Whether you're interested in medieval fortresses, baroque grandeur, or romantic 19th-century fantasies, Bavaria's palaces offer unforgettable journeys through European royal history. Perfect for history enthusiasts, architecture lovers, and anyone captivated by royal splendor!",
       "seo": {
-        "title": "Munich Palace & Castle Tours 2025 - Neuschwanstein",
+        "title": "Munich Palace & Castle Tours 2026 - Neuschwanstein",
         "description": "Visit Neuschwanstein Castle, Nymphenburg Palace, and Munich Residenz. Expert-guided royal heritage tours!",
         "keywords": "Neuschwanstein Castle tours, Munich Residenz, Nymphenburg Palace, Bavaria castles, Munich royal tours"
       },
@@ -27603,7 +27603,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Embark on a delicious journey through Munich's rich culinary heritage where centuries-old beer culture meets hearty Bavarian cuisine! These food and beer tours showcase the best of Munich's gastronomic scene - from traditional beer halls serving Weißwurst with sweet mustard, to hidden gems where locals enjoy Schnitzel and Spätzle, to the famous Viktualienmarkt where fresh produce and local specialties abound. Taste Munich's legendary beers directly from historic breweries, learn the art of pretzel-making, and discover why Bavarian food culture is so much more than beer and sausages. Expert guides share the stories behind regional dishes, beer purity laws, and eating customs that make Munich a food lover's paradise. Perfect for culinary enthusiasts, beer lovers, and anyone wanting to eat and drink like a true Münchner!",
       "seo": {
-        "title": "Munich Food & Beer Tours 2025 - Bavarian Cuisine",
+        "title": "Munich Food & Beer Tours 2026 - Bavarian Cuisine",
         "description": "Explore Munich's culinary scene with expert food tours. Traditional Bavarian dishes, local beer, and market visits!",
         "keywords": "Munich food tours, Munich beer tours, Bavarian cuisine, Viktualienmarkt tours, Munich culinary experiences"
       },
@@ -27770,7 +27770,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Step into Munich's enchanting Altstadt (Old Town), where medieval streets tell stories of 850 years of Bavarian history! The historic district centers around the magnificent Marienplatz, where the famous Glockenspiel chimes daily, drawing crowds to watch its animated figures. Wander through pedestrian streets lined with Gothic churches, Renaissance buildings, and baroque facades that survived wars and centuries. Discover St. Peter's Church with breathtaking city views, the twin-domed Frauenkirche that symbolizes Munich, and hidden courtyards where history whispers from every corner. Learn about the city's founding by Benedictine monks, its role in Bavaria's royal heritage, darker chapters of the 20th century, and its remarkable post-war renaissance. These walking tours bring Munich's past alive through fascinating stories, architectural wonders, and insights only locals know. Perfect for history buffs, architecture lovers, and first-time visitors!",
       "seo": {
-        "title": "Munich Historic District Tours 2025 - Altstadt Walking",
+        "title": "Munich Historic District Tours 2026 - Altstadt Walking",
         "description": "Explore Munich's Old Town with expert guides. Marienplatz, historic churches, and Bavarian heritage!",
         "keywords": "Munich Old Town tours, Marienplatz tours, Munich walking tours, Altstadt Munich, Munich historic center"
       },
@@ -27937,7 +27937,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Discover the heart of Bavarian culture beyond beer and lederhosen! These immersive tours explore the traditions, customs, and unique way of life that make Bavaria distinct from the rest of Germany. Experience the concept of gemütlichkeit (cozy conviviality), learn about traditional costume significance, understand the deep connection between Bavarians and their folk music, and discover why local pride runs so strong. Visit folk museums showcasing rural life, attend traditional music performances, explore craft workshops making authentic products, and meet locals who passionately preserve centuries-old customs. Learn about Bavarian dialect, religious traditions, seasonal festivals, and the strong regional identity that makes Bavaria feel like its own country. Perfect for culture enthusiasts, anthropology lovers, and travelers seeking authentic experiences beyond typical tourist attractions!",
       "seo": {
-        "title": "Munich Bavarian Culture Tours 2025 - Traditional",
+        "title": "Munich Bavarian Culture Tours 2026 - Traditional",
         "description": "Experience authentic Bavarian culture, traditions, and customs. Folk museums, music, crafts, and local lifestyle!",
         "keywords": "Bavarian culture tours, Munich traditions, folk museums Munich, Bavarian customs, gemütlichkeit experience"
       },
@@ -28107,7 +28107,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Discover Mykonos' most iconic landmarks - the legendary windmills that have become symbols of the Greek islands! These brilliant white windmills, perched above Mykonos Town with the Aegean Sea as backdrop, have graced the island since the 16th century when they ground wheat for the entire Cyclades. The Kato Mili windmills in Little Venice offer spectacular sunset photography, while the windmills in Chora create postcard-perfect scenes that define Greek island beauty. Learn about their fascinating history as vital agricultural tools, understand the engineering behind these remarkable structures, and discover why they've become Instagram sensations. Whether you're capturing sunset photos, learning historical significance, or simply soaking in the views, windmill tours showcase Mykonos at its most photogenic. Perfect for photographers, romantics, and anyone seeking that quintessential Greek island experience!",
       "seo": {
-        "title": "Mykonos Windmill Tours 2025 - Iconic Photo Spots",
+        "title": "Mykonos Windmill Tours 2026 - Iconic Photo Spots",
         "description": "Visit Mykonos' famous windmills with expert guides. Sunset views, photography tips, and island history!",
         "keywords": "Mykonos windmills, Kato Mili, Mykonos photography, Little Venice windmills, Mykonos sunset tours"
       },
@@ -28270,7 +28270,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Experience Mykonos' spectacular coastline where golden beaches meet turquoise Aegean waters in postcard-perfect beauty! The island boasts some of Greece's finest beaches - from the famous party atmosphere of Paradise and Super Paradise to the serene beauty of Agios Sostis and Fokos. Boat tours reveal hidden coves accessible only by sea, pristine waters perfect for snorkeling, and coastal views showcasing Mykonos' stunning landscape. Sail on traditional Greek boats or luxury catamarans, swim in crystal-clear waters, enjoy beachside lunch at tavernas, and discover why Mykonos beaches are legendary. Whether you're seeking beach club glamour, secluded swimming spots, water sports excitement, or sunset sailing romance, these tours deliver unforgettable Aegean experiences. Perfect for beach lovers, snorkeling enthusiasts, party-goers, and anyone wanting the ultimate Greek island beach experience!",
       "seo": {
-        "title": "Mykonos Beach & Boat Tours 2025 - Aegean Coast",
+        "title": "Mykonos Beach & Boat Tours 2026 - Aegean Coast",
         "description": "Explore Mykonos' stunning beaches and coastline with boat tours. Swimming, snorkeling, and island beauty!",
         "keywords": "Mykonos beaches, Mykonos boat tours, Paradise Beach, Greek island beaches, Mykonos sailing tours"
       },
@@ -28433,7 +28433,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Discover the magical Cyclades archipelago with island-hopping adventures from Mykonos! These tours unlock the Aegean's treasures - from the sacred archaeological site of Delos (birthplace of Apollo) to the deserted beaches of Rhenia, from the religious pilgrimage island of Tinos to the authentic charm of neighboring islands. Experience each island's unique character: Delos' ancient ruins and mythological significance, Rhenia's pristine swimming coves, Tinos' marble villages and miraculous church, or Paros' traditional Cycladic beauty. Travel on traditional wooden boats or modern catamarans, swim in multiple locations, enjoy Greek island hospitality, and understand how each island contributes to Cycladic culture. These tours showcase Mediterranean island magic at its finest - combining history, natural beauty, local culture, and adventure. Perfect for history lovers, beach enthusiasts, photographers, and explorers!",
       "seo": {
-        "title": "Mykonos Island Hopping Tours 2025 - Cyclades Islands",
+        "title": "Mykonos Island Hopping Tours 2026 - Cyclades Islands",
         "description": "Visit Delos, Rhenia, Tinos, and nearby Greek islands from Mykonos. Archaeological sites, beaches, and island culture!",
         "keywords": "Mykonos island hopping, Delos tours, Rhenia island, Cyclades tours, Greek island tours from Mykonos"
       },
@@ -28596,7 +28596,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Embark on a delicious journey through Mykonos' rich culinary heritage where fresh Aegean ingredients meet traditional Cycladic recipes! These food and wine tours showcase the best of Greek island cuisine - from fresh seafood caught daily to traditional kopanisti cheese, from sunset dinners overlooking Little Venice to market tours revealing local ingredients. Taste Mykonos' growing wine scene featuring indigenous varieties, sample meze at authentic tavernas locals frequent, learn about Greek olive oil production, and discover why simple ingredients create extraordinary flavors. Visit family-run restaurants, meet local producers, and understand the Mediterranean diet that's sustained islanders for millennia. Whether you're a foodie seeking authentic experiences, a wine enthusiast exploring Greek varieties, or anyone who believes food tells cultural stories, these tours deliver unforgettable culinary memories. Perfect for couples, food lovers, and cultural explorers!",
       "seo": {
-        "title": "Mykonos Food & Wine Tours 2025 - Greek Cuisine",
+        "title": "Mykonos Food & Wine Tours 2026 - Greek Cuisine",
         "description": "Explore Mykonos culinary scene with expert food tours. Greek tavernas, local wine, and island flavors!",
         "keywords": "Mykonos food tours, Greek wine tours, Mykonos culinary experiences, Greek food tours, Cyclades cuisine"
       },
@@ -28759,7 +28759,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Unleash your adventurous spirit with Mykonos' exciting water sports in the crystal-clear Aegean Sea! The island's coastline and reliable Meltemi winds create perfect conditions for everything from jet skiing and parasailing to windsurfing and kitesurfing. Experience the thrill of flying over turquoise waters on a jet ski, try stand-up paddleboarding in calm bays, learn windsurfing at dedicated spots, or get your adrenaline pumping with wakeboarding. Mykonos offers water sports for all skill levels - from complete beginners with professional instruction to advanced athletes seeking challenging conditions. The warm, clear waters and stunning coastal scenery make every activity more spectacular. Whether you're seeking thrills, trying something new, or pursuing your favorite water sport, Mykonos delivers world-class conditions and experiences. Perfect for adventure lovers, active travelers, and anyone wanting more than just beach lounging!",
       "seo": {
-        "title": "Mykonos Water Sports Tours 2025 - Jet Ski & More",
+        "title": "Mykonos Water Sports Tours 2026 - Jet Ski & More",
         "description": "Experience exciting water sports in Mykonos! Jet skiing, windsurfing, paddleboarding, and more in Aegean waters!",
         "keywords": "Mykonos water sports, jet ski Mykonos, windsurfing Mykonos, paddleboarding Greece, Mykonos activities"
       },
@@ -28922,7 +28922,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Escape the crowds and discover authentic Mykonos in the island's charming traditional villages! Beyond the cosmopolitan energy of Mykonos Town lies a different world - peaceful villages where traditional Cycladic life continues, whitewashed churches dot hillsides, and locals maintain centuries-old customs. Explore Ano Mera with its historic monastery and authentic tavernas, wander through tiny settlements like Marathi with its fishing boat harbor, discover inland villages rarely visited by tourists, and experience the agricultural traditions that sustained the island for millennia. These tours reveal Mykonos' soul - the authentic island beneath the glamorous reputation. Learn about traditional architecture, meet local families, taste home-cooked specialties, and understand life on a Greek island away from the party scene. Perfect for culture enthusiasts, photographers seeking authenticity, and travelers wanting genuine connections!",
       "seo": {
-        "title": "Mykonos Village Tours 2025 - Authentic Island Life",
+        "title": "Mykonos Village Tours 2026 - Authentic Island Life",
         "description": "Explore traditional Mykonos villages beyond the crowds. Ano Mera, local culture, and authentic Greek island experiences!",
         "keywords": "Mykonos villages, Ano Mera Mykonos, authentic Mykonos, traditional villages, Mykonos cultural tours"
       },
@@ -29088,7 +29088,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Step into the Viking Age at Oslo's extraordinary Viking Ship Museum, home to the world's best-preserved Viking ships! These magnificent vessels - the Oseberg, Gokstad, and Tune ships - are over 1,100 years old and represent the pinnacle of Viking craftsmanship. Discovered in burial mounds, they were interred with chieftains and queens along with treasures, tools, and everyday items that illuminate Viking life. Walk around actual ships that sailed Norwegian fjords and crossed the North Sea, marvel at intricate wood carvings, see the artifacts buried for the afterlife, and understand the seafaring culture that shaped Scandinavia. Expert guides bring Norse history alive with tales of exploration, burial customs, ship construction, and daily Viking life. Perfect for history enthusiasts, families, archaeology lovers, and anyone fascinated by Vikings!",
       "seo": {
-        "title": "Oslo Viking Ship Museum Tours 2025 - Norse Heritage",
+        "title": "Oslo Viking Ship Museum Tours 2026 - Norse Heritage",
         "description": "Visit Oslo's Viking Ship Museum with authentic 9th-century vessels. Expert-guided tours of Norse history and culture!",
         "keywords": "Viking Ship Museum Oslo, Oslo Viking tours, Norse heritage, Oseberg ship, Viking history Norway"
       },
@@ -29236,7 +29236,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
         },
         {
           "question": "Is the museum currently open?",
-          "answer": "IMPORTANT: The Viking Ship Museum is currently undergoing major renovation and expansion! The ships may be on display in a temporary location or the museum might be closed. The new museum is expected to open around 2025-2026 with a spectacular modern building designed to better preserve and display the ships. Check the official website (khm.uio.no) for current status before planning your visit! When open, hours are typically 10 AM-5 PM daily (9 AM-6 PM summer). This renovation will create one of the world's premier Viking museums. Tours are booking for when it reopens - stay updated!"
+          "answer": "IMPORTANT: The Viking Ship Museum is currently undergoing major renovation and expansion! The ships may be on display in a temporary location or the museum might be closed. The new museum is expected to open around 2026-2026 with a spectacular modern building designed to better preserve and display the ships. Check the official website (khm.uio.no) for current status before planning your visit! When open, hours are typically 10 AM-5 PM daily (9 AM-6 PM summer). This renovation will create one of the world's premier Viking museums. Tours are booking for when it reopens - stay updated!"
         }
       ]
     },
@@ -29251,7 +29251,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Discover the breathtaking beauty of the Oslo Fjord, where Norway's capital meets pristine Nordic waters dotted with islands, forests, and charming coastal villages! These fjord cruises showcase Oslo from its most scenic perspective - sailing past the iconic Opera House, through hundreds of islands in the inner archipelago, and along coastlines where summer cabins nestle among pine trees. Experience everything from short sightseeing cruises perfect for all ages to full-day adventures including swimming stops, island visits, and traditional Norwegian seafood lunches. See Oslo's modern waterfront architecture from the water, cruise past historic fortresses like Akershus, discover islands accessible only by boat, and understand why Norwegians have such deep connection to the sea. Whether seeking relaxation, photography opportunities, wildlife spotting, or simply experiencing Nordic nature, Oslo Fjord tours deliver unforgettable Norwegian maritime beauty!",
       "seo": {
-        "title": "Oslo Fjord Tours 2025 - Island Cruises & Boat Tours",
+        "title": "Oslo Fjord Tours 2026 - Island Cruises & Boat Tours",
         "description": "Explore the Oslo Fjord with scenic cruises, island hopping, and Norwegian nature. Expert-guided boat tours!",
         "keywords": "Oslo Fjord tours, Oslo boat tours, Oslo island cruises, Oslo archipelago, Norway fjord tours"
       },
@@ -29414,7 +29414,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Board the legendary Fram, the strongest wooden ship ever built and the vessel that sailed farther north and farther south than any other ship in history! The Fram Museum houses this extraordinary polar exploration ship that carried Norwegian heroes Fridtjof Nansen, Otto Sverdrup, and Roald Amundsen on groundbreaking Arctic and Antarctic expeditions. Walk on the actual decks where explorers lived in polar darkness, explore the cramped quarters where crews endured years in pack ice, see the equipment used to survive extreme conditions, and understand the courage and innovation that made Norwegian polar exploration legendary. The museum brings these dramatic adventures alive through interactive displays, original artifacts, and the awe-inspiring ship itself. Perfect for adventure enthusiasts, history lovers, families, and anyone inspired by human exploration and endurance!",
       "seo": {
-        "title": "Oslo Fram Museum Tours 2025 - Polar Exploration",
+        "title": "Oslo Fram Museum Tours 2026 - Polar Exploration",
         "description": "Visit the Fram polar ship and explore Norwegian exploration history. Expert-guided museum tours!",
         "keywords": "Fram Museum Oslo, polar exploration Norway, Roald Amundsen, Norwegian explorers, Oslo museums"
       },
@@ -29577,7 +29577,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Discover Oslo's exciting culinary revolution where traditional Norwegian ingredients meet innovative Nordic cuisine! These food tours showcase the transformation of Oslo into a serious food destination - from Michelin-starred restaurants pioneering New Nordic cuisine to traditional cafes serving rakfisk and brown cheese, from the bustling Mathallen food hall to historic harbors where fresh seafood arrives daily. Taste Norwegian specialties like smoked salmon, reindeer, cloudberry desserts, and the infamous brown cheese. Learn about foraging culture, seasonal eating, and why Norwegian ingredients are considered among the world's finest. Explore neighborhoods like Grünerløkka with hip eateries, visit traditional markets, and understand how Norwegian food culture balances ancient traditions with modern innovation. Perfect for foodies, culture enthusiasts, and anyone curious about Nordic cuisine beyond meatballs!",
       "seo": {
-        "title": "Oslo Food Tours 2025 - Nordic Cuisine & Culture",
+        "title": "Oslo Food Tours 2026 - Nordic Cuisine & Culture",
         "description": "Explore Oslo's food scene with expert culinary tours. Norwegian specialties, Nordic cuisine, and food culture!",
         "keywords": "Oslo food tours, Nordic cuisine, Norwegian food, Oslo culinary tours, Mathallen Oslo"
       },
@@ -29740,7 +29740,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Walk through 1,000 years of Norwegian history in Oslo's historic districts where medieval fortresses stand beside modern architecture and royal palaces overlook the city! Discover Oslo's founding around 1048, explore Akershus Fortress where medieval walls protect the harbor, visit the Royal Palace where Norway's monarchy resides, and wander Karl Johans Gate - the grand boulevard connecting palace to train station. Learn about Norway's journey from medieval kingdom through Danish/Swedish rule to independence in 1905, and see how Oslo transformed from small medieval town to modern capital. Explore the old Kvadraturen district with grid streets dating to 1624, discover churches surviving 800+ years, and understand the dramatic history that shaped Norway. Perfect for history enthusiasts, architecture lovers, and anyone wanting to understand Norwegian heritage!",
       "seo": {
-        "title": "Oslo Historic District Tours 2025 - Medieval to Modern",
+        "title": "Oslo Historic District Tours 2026 - Medieval to Modern",
         "description": "Explore Oslo's historic landmarks with expert guides. Akershus Fortress, Royal Palace, and Norwegian history!",
         "keywords": "Oslo historic tours, Akershus Fortress, Oslo Royal Palace, Oslo walking tours, Norwegian history"
       },
@@ -29903,7 +29903,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Discover why Norwegians are famous outdoor enthusiasts with Oslo's incredible nature access right from the city! The Marka forest surrounds Oslo with 1,700 kilometers of hiking trails, pristine lakes for swimming, and winter skiing just 30 minutes from downtown. Experience the Norwegian concept of friluftsliv (outdoor life) through forest hikes reaching panoramic viewpoints like Vettakollen, island kayaking in the Oslo Fjord, cross-country skiing on illuminated trails, or cycling through Nordic landscapes. From summer midnight sun hikes to winter Northern Lights snowshoe treks, Oslo offers authentic Norwegian outdoor experiences without leaving the capital region. Expert guides share local knowledge about nature, teach outdoor skills, and show why Norwegians believe outdoor life is essential to wellbeing. Perfect for active travelers, nature lovers, and anyone wanting genuine Norwegian outdoor experiences!",
       "seo": {
-        "title": "Oslo Outdoor Adventure Tours 2025 - Hiking & Nature",
+        "title": "Oslo Outdoor Adventure Tours 2026 - Hiking & Nature",
         "description": "Experience Norwegian nature near Oslo! Hiking, kayaking, skiing, and outdoor adventures with expert guides!",
         "keywords": "Oslo hiking tours, Oslo outdoor activities, Nordmarka Oslo, Oslo nature tours, friluftsliv Norway"
       },
@@ -30069,7 +30069,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Stand atop the world's most iconic monument - the magnificent Eiffel Tower, the Iron Lady that defines Paris! Built in 1889 for the World's Fair, this 330-meter engineering marvel offers breathtaking 360-degree views of Paris from multiple levels. Skip the notorious lines with priority access, ascend via glass elevator while learning fascinating history, and experience Paris spread before you - from Arc de Triomphe to Sacré-Cœur, from the Seine's curves to Montparnasse Tower. Whether visiting the first level's glass floor, the second level's restaurants, or the summit champagne bar at 276 meters, the Eiffel Tower delivers unforgettable moments. Learn about Gustave Eiffel's engineering genius, discover the tower's near-demolition story, and understand why this temporary exhibition became Paris's eternal symbol. Perfect for first-time visitors, romantics, photographers, and anyone seeking THE quintessential Paris experience!",
       "seo": {
-        "title": "Eiffel Tower Tours 2025 - Skip-the-Line Paris",
+        "title": "Eiffel Tower Tours 2026 - Skip-the-Line Paris",
         "description": "Visit the Eiffel Tower with skip-the-line access and expert guides. Panoramic views and Paris icon experience!",
         "keywords": "Eiffel Tower tours, Paris Eiffel Tower, skip-the-line Eiffel Tower, Paris tours, Eiffel Tower tickets"
       },
@@ -30232,7 +30232,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Enter the magnificent Louvre, the world's largest and most visited art museum, housed in a stunning royal palace! With 72,735 square meters of galleries containing 35,000 artworks spanning 9,000 years, the Louvre is overwhelming - which is precisely why guided tours are invaluable! See the Mona Lisa (you won't miss her enigmatic smile!), marvel at the Venus de Milo's timeless beauty, admire the Winged Victory of Samothrace, and discover masterpieces by Da Vinci, Michelangelo, Raphael, and Vermeer. Expert guides navigate the labyrinthine palace, share captivating stories behind artworks, and ensure you see highlights efficiently without wandering lost for hours. From ancient Egyptian treasures to Renaissance masterpieces to Napoleon's apartments, the Louvre contains humanity's greatest artistic achievements. Perfect for art lovers, history enthusiasts, families, and anyone wanting to experience the world's premier art museum!",
       "seo": {
-        "title": "Louvre Museum Tours 2025 - Skip-the-Line Paris",
+        "title": "Louvre Museum Tours 2026 - Skip-the-Line Paris",
         "description": "Visit the Louvre with expert guides and skip-the-line access. See Mona Lisa, Venus de Milo, and art masterpieces!",
         "keywords": "Louvre tours, Louvre Museum Paris, Mona Lisa tours, skip-the-line Louvre, Paris art museum tours"
       },
@@ -30395,7 +30395,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Experience Paris from its most romantic perspective - gliding along the Seine River past the city's most iconic landmarks! These river cruises offer unique views of Notre-Dame's Gothic spires, the Eiffel Tower rising majestically, the Louvre's elegant facade, and dozens of beautiful bridges dating back centuries. From classic one-hour sightseeing cruises with audio commentary to romantic dinner cruises with champagne and live music, the Seine provides the perfect way to see Paris while resting weary feet! Float past the Musée d'Orsay, under the ornate Pont Alexandre III, alongside the charming Île de la Cité, and through the heart of a city shaped by this legendary river. Whether taking a daytime cruise learning Parisian history or a magical evening cruise seeing the city of lights illuminated, Seine cruises deliver unforgettable perspectives. Perfect for romantics, photographers, first-time visitors, and anyone seeking classic Parisian charm!",
       "seo": {
-        "title": "Paris Seine River Cruises 2025 - Boat Tours",
+        "title": "Paris Seine River Cruises 2026 - Boat Tours",
         "description": "Experience Paris from the water with Seine River cruises. Romantic boat tours past Eiffel Tower, Notre-Dame, and landmarks!",
         "keywords": "Seine River cruises, Paris boat tours, Seine dinner cruises, Bateaux Parisiens, Paris river tours"
       },
@@ -30558,7 +30558,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Indulge in Paris's legendary culinary scene where world-class cuisine, artisan traditions, and gastronomic excellence create food lover's paradise! These food and wine tours guide you through charming neighborhoods discovering authentic boulangeries with perfect croissants, fromageries offering 400+ cheese varieties, wine caves with expert sommeliers, chocolate ateliers, gourmet markets, and bistros serving classic French dishes. Taste your way through Le Marais' Jewish quarter with its falafel and pastries, explore Saint-Germain's elegant food shops, discover Latin Quarter's village atmosphere, or tour Montmartre's artistic cafes. Learn about French bread-making traditions (baguette is serious business!), cheese aging processes, wine regions and varietals, and the cultural importance of proper meals. Expert guides share insider knowledge, introduce you to artisan producers, and reveal Paris beyond tourist restaurants. Perfect for foodies, wine enthusiasts, culture lovers, and anyone believing food tells cultural stories!",
       "seo": {
-        "title": "Paris Food & Wine Tours 2025 - Culinary Adventures",
+        "title": "Paris Food & Wine Tours 2026 - Culinary Adventures",
         "description": "Explore Paris culinary scene with expert food tours. French cuisine, wine tastings, cheese, and pastries!",
         "keywords": "Paris food tours, Paris wine tours, French cuisine tours, Paris cheese tasting, Marais food tours"
       },
@@ -30721,7 +30721,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Climb to Montmartre, the legendary hilltop village where Paris's greatest artistic revolution unfolded! This bohemian neighborhood was home to Picasso, Renoir, Van Gogh, Toulouse-Lautrec, Modigliani, and countless artists who created modern art movements in studios and cafes that still exist today. Wander cobblestone streets where impressionism and cubism were born, visit the iconic Sacré-Cœur Basilica with panoramic Paris views, discover Place du Tertre where artists paint portraits, explore the Moulin Rouge cabaret district, and see actual studios where masterpieces emerged. Learn about the artistic community that made Montmartre synonymous with creativity, visit sites painted by famous artists, and understand why this hilltop quarter attracted bohemians and rebels. Perfect for art lovers, history enthusiasts, romantics, and anyone seeking Paris's most charming neighborhood!",
       "seo": {
-        "title": "Paris Montmartre Art Tours 2025 - Artistic Quarter",
+        "title": "Paris Montmartre Art Tours 2026 - Artistic Quarter",
         "description": "Explore Montmartre with expert guides. Sacré-Cœur, artist studios, bohemian history, and Parisian art heritage!",
         "keywords": "Montmartre tours Paris, Sacré-Cœur tours, Paris art tours, Moulin Rouge, Montmartre walking tours"
       },
@@ -30884,7 +30884,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Discover Notre-Dame Cathedral, the Gothic masterpiece that has stood at Paris's heart for over 850 years! While the cathedral remains closed following the 2019 fire (reopening planned late 2024), tours of the exterior, archaeological crypt, surrounding Île de la Cité, and the remarkable reconstruction provide fascinating experiences. Learn about the cathedral's medieval construction, its role in French history (Napoleon's coronation happened here!), Victor Hugo's novel that saved it from demolition, the devastating 2019 fire, and the incredible restoration effort. Explore the île de la Cité where Paris was founded, see Notre-Dame's magnificent Gothic facade, visit Sainte-Chapelle's stunning stained glass nearby, and understand how this cathedral symbolizes French history and resilience. Perfect for history lovers, architecture enthusiasts, and anyone fascinated by this immortal monument!",
       "seo": {
-        "title": "Paris Notre-Dame Tours 2025 - Gothic Cathedral",
+        "title": "Paris Notre-Dame Tours 2026 - Gothic Cathedral",
         "description": "Explore Notre-Dame Cathedral and Île de la Cité with expert guides. Gothic architecture, French history, and restoration!",
         "keywords": "Notre-Dame Paris, Notre-Dame tours, Île de la Cité, Sainte-Chapelle, Gothic architecture Paris"
       },
@@ -30996,7 +30996,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
         ]
       },
       "expertTips": [
-        "Notre-Dame's interior reopens in late 2024/early 2025 - check current status when visiting!",
+        "Notre-Dame's interior reopens in late 2024/early 2026 - check current status when visiting!",
         "Sainte-Chapelle (nearby) has even more stunning stained glass and is open - don't miss it!",
         "Visit on sunny days - the rose windows and Sainte-Chapelle glass need sunlight to shine!",
         "The archaeological crypt under square shows Paris's Roman and medieval foundations.",
@@ -31008,7 +31008,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       "faqs": [
         {
           "question": "Is Notre-Dame open after the fire?",
-          "answer": "Notre-Dame's interior has been closed since the devastating April 15, 2019 fire that destroyed the spire and roof. The cathedral is undergoing massive restoration with reopening targeted for December 2024 or early 2025! The exterior is visible (though with construction barriers), and you can visit the surrounding Île de la Cité and nearby monuments. Sainte-Chapelle and Conciergerie are fully open. Tours currently focus on exterior, fire story, restoration progress, and island history. When it reopens, expect enormous crowds initially! Check official updates before visiting. The restoration is a triumph - the cathedral will be more beautiful than ever!"
+          "answer": "Notre-Dame's interior has been closed since the devastating April 15, 2019 fire that destroyed the spire and roof. The cathedral is undergoing massive restoration with reopening targeted for December 2024 or early 2026! The exterior is visible (though with construction barriers), and you can visit the surrounding Île de la Cité and nearby monuments. Sainte-Chapelle and Conciergerie are fully open. Tours currently focus on exterior, fire story, restoration progress, and island history. When it reopens, expect enormous crowds initially! Check official updates before visiting. The restoration is a triumph - the cathedral will be more beautiful than ever!"
         },
         {
           "question": "What happened in the Notre-Dame fire?",
@@ -31024,7 +31024,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
         },
         {
           "question": "Can you climb Notre-Dame towers?",
-          "answer": "The towers have been closed since the 2019 fire and will remain closed during restoration. Before the fire, you could climb 387 steps to the towers for close-up gargoyle viewing and panoramic Paris views (€10, long waits typical). The famous gargoyles and chimera overlook the city from here - the Hunchback of Notre-Dame's domain! Tower access might resume after full reopening (late 2024/2025 estimated) but this isn't confirmed. Check official updates. The exterior viewing and surrounding area are accessible now. When towers reopen, expect high demand and long waits initially! The experience was worth the climb - incredible views and meeting the gargoyles face-to-face!"
+          "answer": "The towers have been closed since the 2019 fire and will remain closed during restoration. Before the fire, you could climb 387 steps to the towers for close-up gargoyle viewing and panoramic Paris views (€10, long waits typical). The famous gargoyles and chimera overlook the city from here - the Hunchback of Notre-Dame's domain! Tower access might resume after full reopening (late 2024/2026 estimated) but this isn't confirmed. Check official updates. The exterior viewing and surrounding area are accessible now. When towers reopen, expect high demand and long waits initially! The experience was worth the climb - incredible views and meeting the gargoyles face-to-face!"
         },
         {
           "question": "What else should I see on Île de la Cité?",
@@ -31050,7 +31050,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Discover Prague Castle, the world's largest ancient castle complex and the crown jewel of Czech architecture! This UNESCO World Heritage site sprawls across hilltops overlooking the Vltava River, encompassing palaces, churches, gardens, and towers dating back to the 9th century. Marvel at St. Vitus Cathedral's Gothic spires, explore the medieval Golden Lane where alchemists once worked, visit royal chambers where Czech kings ruled, and enjoy breathtaking views over Prague's terracotta rooftops. The castle complex tells 1,100 years of Czech history through Romanesque, Gothic, Renaissance, and Baroque architecture. From the dramatic changing of the guard ceremony to the stunning stained glass by Alphonse Mucha, every corner reveals treasures. Expert guides bring centuries of royal intrigue, architectural evolution, and Czech heritage alive. Perfect for history enthusiasts, architecture lovers, photographers, and first-time Prague visitors!",
       "seo": {
-        "title": "Prague Castle Tours 2025 - Skip-the-Line Access",
+        "title": "Prague Castle Tours 2026 - Skip-the-Line Access",
         "description": "Visit Prague Castle with expert guides. St. Vitus Cathedral, Golden Lane, and Czech royal history with skip-the-line tickets!",
         "keywords": "Prague Castle tours, St. Vitus Cathedral, Golden Lane Prague, Prague Castle tickets, Czech castle tours"
       },
@@ -31213,7 +31213,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Cross Charles Bridge, Prague's most iconic landmark and one of Europe's most beautiful medieval bridges! Built in 1357 under King Charles IV, this magnificent stone bridge connects Old Town with Lesser Town across the Vltava River, lined with 30 baroque statues creating an open-air sculpture gallery. Experience the bridge at different times - sunrise when it's peaceful and golden, daytime when street artists and musicians perform, or evening when castle lights reflect in the river. Touch the famous statue of St. John of Nepomuk for good luck, admire views of Prague Castle rising above, photograph the stunning bridge towers, and understand the legends and history that make Charles Bridge magical. These walking tours explore the bridge, surrounding neighborhoods, and riverside areas revealing Prague's medieval character. Perfect for photographers, romantics, history lovers, and everyone visiting Prague!",
       "seo": {
-        "title": "Prague Charles Bridge Tours 2025 - Medieval Landmark",
+        "title": "Prague Charles Bridge Tours 2026 - Medieval Landmark",
         "description": "Explore Charles Bridge with expert guides. Baroque statues, Prague Castle views, and medieval history!",
         "keywords": "Charles Bridge Prague, Prague walking tours, Charles Bridge tours, medieval bridge Prague, baroque statues"
       },
@@ -31376,7 +31376,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Explore Prague's enchanting Old Town (Staré Město), a UNESCO World Heritage wonderland of medieval streets, Gothic spires, and baroque facades! At its heart lies Old Town Square where the famous Astronomical Clock has marked time since 1410, drawing crowds for its hourly show. Wander through the labyrinth of narrow cobblestone lanes discovering hidden courtyards, centuries-old churches, charming cafes in cellars dating to the 1200s, and buildings in rainbow colors telling stories from medieval to Art Nouveau times. Learn about Prague's golden age under Charles IV, explore the Powder Tower gateway, visit the beautiful Estates Theatre where Mozart conducted, and understand how this perfectly preserved medieval center survived wars and communism. These tours reveal Prague's soul through architecture, history, legends, and the irresistible charm that makes it one of Europe's most magical cities. Perfect for history enthusiasts, architecture lovers, photographers, and first-time visitors!",
       "seo": {
-        "title": "Prague Old Town Tours 2025 - Medieval Historic Center",
+        "title": "Prague Old Town Tours 2026 - Medieval Historic Center",
         "description": "Explore Prague Old Town with expert guides. Astronomical Clock, medieval streets, and Gothic architecture!",
         "keywords": "Prague Old Town tours, Prague Astronomical Clock, Old Town Square Prague, Prague medieval tours, Staré Město"
       },
@@ -31539,7 +31539,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Immerse yourself in Czech beer culture - the nation that drinks more beer per capita than anywhere on Earth! These beer and food tours showcase Prague's legendary brewing heritage where pilsner was invented, traditional pubs serve beer fresh from tanks, and hearty Czech cuisine provides perfect accompaniment. Visit historic beer halls like U Fleků (operating since 1499!), discover microbreweries revolutionizing Czech beer, taste varieties from pilsner to dark lagers, and learn beer-making traditions dating back centuries. Pair excellent beer with traditional dishes like svíčková, goulash, and bramboráky while expert guides share Czech drinking customs, toast properly (\"Na zdraví!\"), and reveal hidden beer gems tourists miss. Perfect for beer enthusiasts, food lovers, and anyone wanting authentic Czech cultural immersion!",
       "seo": {
-        "title": "Prague Beer Tours 2025 - Czech Beer & Food Culture",
+        "title": "Prague Beer Tours 2026 - Czech Beer & Food Culture",
         "description": "Experience Prague's legendary beer culture with expert tours. Czech beer, traditional pubs, and local cuisine!",
         "keywords": "Prague beer tours, Czech beer, Prague food tours, Prague pub crawl, traditional Czech cuisine"
       },
@@ -31702,7 +31702,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Walk through Prague's magnificent historic district where every street corner reveals centuries of Czech history! This UNESCO World Heritage area encompasses the Old Town, New Town, Lesser Town, and Castle District - together forming one of Europe's most beautifully preserved medieval city centers. Explore winding cobblestone streets that survived wars and revolutions, discover baroque churches with golden interiors, visit Gothic cellars now housing restaurants and jazz clubs, and learn how Prague transitioned from medieval kingdom through Habsburg rule, Nazi occupation, communist era, to today's vibrant democracy. See Wenceslas Square where the Velvet Revolution began, walk the Royal Way kings took to coronations, discover Jan Hus's reformation legacy, and understand the layered history visible in architecture spanning Romanesque to Art Nouveau. Perfect for history enthusiasts, architecture lovers, and anyone wanting comprehensive Prague understanding!",
       "seo": {
-        "title": "Prague Historic District Tours 2025 - UNESCO Heritage",
+        "title": "Prague Historic District Tours 2026 - UNESCO Heritage",
         "description": "Explore Prague's historic center with expert guides. Medieval streets, Gothic architecture, and Czech history!",
         "keywords": "Prague historic tours, Prague UNESCO tours, Prague walking tours, medieval Prague, Wenceslas Square tours"
       },
@@ -31865,7 +31865,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       "introduction": "Immerse yourself in Prague's extraordinary architectural heritage spanning 1,000 years and multiple styles! From Romanesque rotundas to Gothic cathedrals, from Renaissance palaces to baroque churches, from Art Nouveau masterpieces to Cubist buildings unique to Prague - the city is an architectural museum where every era left magnificent marks. Discover Alphonse Mucha's Art Nouveau decorations, explore the Dancing House's modern deconstructivist design, visit the Municipal House's stunning Art Nouveau interior, and understand architectural movements that shaped European style. These tours also explore Czech cultural identity - Kafka's literary legacy, classical music heritage (Dvořák, Smetana), puppet theatre traditions, and the resilience that preserved culture through occupations. Expert guides trained in art history and architecture reveal details tourists miss. Perfect for architecture enthusiasts, culture lovers, design students, and intellectually curious travelers!",
       "seo": {
-        "title": "Prague Architecture Tours 2025 - Art Nouveau & Culture",
+        "title": "Prague Architecture Tours 2026 - Art Nouveau & Culture",
         "description": "Explore Prague's stunning architecture from Gothic to Art Nouveau. Expert cultural tours of Czech heritage!",
         "keywords": "Prague architecture tours, Prague Art Nouveau, Prague culture tours, Municipal House Prague, Gothic architecture"
       },
@@ -32030,7 +32030,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience the world-famous Port wine in its birthplace - Porto, where centuries-old cellars line the Vila Nova de Gaia riverbank! Port wine, Portugal's most celebrated export, is a fortified wine produced exclusively in the Douro Valley and aged in Porto's historic lodges. These tours take you through atmospheric cellars where thousands of oak barrels hold aging Port, from Ruby and Tawny to vintage treasures worth hundreds. Learn the fascinating production process, understand the difference between styles, taste premium Ports paired with Portuguese cheese and chocolate, and discover why this sweet fortified wine has captivated the world since the 1600s. Visit famous houses like Graham's, Taylor's, and Sandeman, or explore smaller family-run quintas. Perfect for wine enthusiasts, culture lovers, and anyone wanting authentic Portuguese experiences!`,
 
       seo: {
-        title: 'Porto Port Wine Tours 2025 - Wine Cellar Tastings',
+        title: 'Porto Port Wine Tours 2026 - Wine Cellar Tastings',
         description: 'Experience authentic Port wine tours in Porto. Historic cellars, wine tastings, and Portuguese wine heritage!',
         keywords: 'Porto wine tours, Port wine tastings, Vila Nova de Gaia, Porto wine cellars, Portuguese wine tours',
       },
@@ -32202,7 +32202,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover the Ribeira district, Porto's heart and soul! This UNESCO World Heritage waterfront neighborhood is Porto's most photographed area, where colorful medieval buildings cascade down to the Douro River creating Portugal's most iconic view. Narrow cobblestone streets wind between 14th-century houses, traditional azulejo tiles adorn facades, and riverside cafes buzz with life. The Ribeira has been Porto's commercial center since medieval times - once a bustling port where wine, fish, and goods were traded. Today it's a vibrant mix of history and modern life with restaurants, street performers, and stunning views of the Dom Luís Bridge. Walking tours reveal hidden courtyards, explain the district's fascinating history, and guide you to the best viewpoints, local taverns, and photo spots!`,
 
       seo: {
-        title: 'Porto Ribeira District Tours 2025 - UNESCO Heritage Walks',
+        title: 'Porto Ribeira District Tours 2026 - UNESCO Heritage Walks',
         description: 'Explore Porto\'s UNESCO Ribeira district. Colorful waterfront, medieval streets, and Portuguese culture!',
         keywords: 'Ribeira Porto, Porto walking tours, Porto riverside, Porto UNESCO, Porto historic district',
       },
@@ -32378,7 +32378,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience the magnificent Douro River, Portugal's most beautiful waterway and the heart of Porto's identity! The Douro flows from Spain through Portugal's stunning wine valleys to Porto and the Atlantic, creating one of Europe's most scenic river journeys. River cruises offer unique perspectives of Porto's six bridges (including the iconic Dom Luís), the colorful Ribeira district, Vila Nova de Gaia wine cellars, and centuries-old architecture from water level. Options range from 50-minute city cruises under the bridges to full-day trips through the terraced Douro Valley vineyards (UNESCO World Heritage) with wine tastings and traditional lunch. Sunset cruises are magical, dinner cruises combine gastronomy with views, and multi-day river cruises explore the entire valley. It's Porto's most relaxing and photogenic experience!`,
 
       seo: {
-        title: 'Porto Douro River Tours 2025 - Cruise & Boat Tours',
+        title: 'Porto Douro River Tours 2026 - Cruise & Boat Tours',
         description: 'Experience Porto Douro River cruises. Scenic boat tours, wine valley trips, and sunset cruises!',
         keywords: 'Douro River cruise, Porto boat tours, Douro Valley cruise, Porto river cruise, Portugal river tours',
       },
@@ -32554,7 +32554,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Porto's incredible culinary scene combining centuries-old traditions with modern Portuguese creativity! These food and wine tours take you beyond tourist restaurants to authentic tascas (taverns), historic markets, family-run bakeries, and wine cellars where locals actually eat and drink. Taste Porto's famous francesinha (decadent sandwich), petiscos (Portuguese tapas), bacalhau (salted cod prepared 1000 ways!), pastéis de nata (custard tarts), queijo (Portuguese cheese), and of course, Port wine paired perfectly with each dish. Expert food guides explain Portuguese culinary traditions, introduce you to passionate local producers, and share the stories behind dishes passed through generations. From market tours to progressive dinners across neighborhoods, these experiences feed your stomach AND your Porto knowledge!`,
 
       seo: {
-        title: 'Porto Food & Wine Tours 2025 - Portuguese Culinary Experiences',
+        title: 'Porto Food & Wine Tours 2026 - Portuguese Culinary Experiences',
         description: 'Experience authentic Porto food and wine tours. Taste Portuguese cuisine, Port wine, and local specialties!',
         keywords: 'Porto food tours, Portuguese food, Porto wine tours, Porto gastronomy, Portuguese cuisine tours',
       },
@@ -32730,7 +32730,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Porto's incredible bridges that define the city's skyline and engineering heritage! Porto has six spectacular bridges spanning the Douro River, connecting the city to Vila Nova de Gaia. The most famous is the Dom Luís I Bridge (1886) - a stunning double-deck iron structure designed by Eiffel's partner, with upper and lower levels both walkable! Bridge tours combine walking across these architectural marvels with historical context about their construction, engineering innovations, and importance to Porto's development. You'll learn about Gustave Eiffel's connection to Porto, compare different bridge styles from 19th-century iron to modern concrete, and capture incredible photos from various vantage points. The upper level of Dom Luís at 85 meters high offers vertiginous thrills and unmatched Porto panoramas!`,
 
       seo: {
-        title: 'Porto Bridge Tours 2025 - Dom Luís Bridge Walks & History',
+        title: 'Porto Bridge Tours 2026 - Dom Luís Bridge Walks & History',
         description: 'Explore Porto\'s iconic bridges including Dom Luís I. Walking tours, history, and spectacular views!',
         keywords: 'Porto bridges, Dom Luís Bridge, Porto walking tours, Porto architecture, Porto engineering',
       },
@@ -32906,7 +32906,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Step into the atmospheric Port wine cellars of Vila Nova de Gaia, where centuries of Portuguese winemaking tradition comes alive! These historic lodges line the Douro River's south bank, housing thousands of oak barrels filled with aging Port wine from Ruby to Tawny to precious vintage bottles worth hundreds. Wine cellar tours take you deep into these cool, dimly-lit spaces where Port has been aged since the 1600s. Learn about the fortification process that creates Port's distinctive sweetness and strength, understand the differences between Port styles, discover why wines aged in Gaia rather than the Douro Valley, and taste premium Ports guided by expert sommeliers. Visit famous houses like Graham's, Taylor's, Sandeman, or smaller family-run operations. Perfect for wine lovers and anyone curious about Portugal's liquid gold!`,
 
       seo: {
-        title: 'Porto Wine Cellar Tours 2025 - Port Wine Lodge Visits & Tastings',
+        title: 'Porto Wine Cellar Tours 2026 - Port Wine Lodge Visits & Tastings',
         description: 'Tour Porto\'s historic wine cellars in Vila Nova de Gaia. Port wine tastings, barrel aging, Portuguese wine heritage!',
         keywords: 'Porto wine cellars, Port wine lodges, Vila Nova de Gaia, wine tastings Porto, Portuguese wine tours',
       },
@@ -33084,7 +33084,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience one of nature's most spectacular phenomena - the Aurora Borealis dancing across Iceland's dark winter skies! Northern Lights tours from Reykjavik take you away from city light pollution to prime viewing locations where green, pink, purple, and red curtains of light ripple overhead in a mesmerizing celestial display. Expert guides use real-time aurora forecasts, cloud cover data, and years of experience to maximize your chances of witnessing this bucket-list phenomenon. Tours include warm clothing, hot chocolate, photography tips, and scientific explanations of what causes these magical lights. Options range from minibus excursions to luxury coaches, boat tours, and multi-day packages combining northern lights with Iceland's natural wonders. The season runs September to April when Iceland's long dark nights provide perfect viewing conditions!`,
 
       seo: {
-        title: 'Reykjavik Northern Lights Tours 2025 - Aurora Borealis Viewing',
+        title: 'Reykjavik Northern Lights Tours 2026 - Aurora Borealis Viewing',
         description: 'See the Northern Lights from Reykjavik! Aurora Borealis tours, expert guides, and Iceland winter magic!',
         keywords: 'Northern Lights Iceland, Aurora Borealis Reykjavik, Iceland Northern Lights tours, Reykjavik aurora tours',
       },
@@ -33260,7 +33260,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Iceland's most iconic route - the Golden Circle, a 300km loop showcasing the country's most spectacular natural wonders! This legendary circuit visits three UNESCO-recognized sites: Þingvellir National Park (where North American and Eurasian tectonic plates meet visibly), Geysir geothermal area (home to Strokkur geyser erupting 100ft every 5-10 minutes), and Gullfoss waterfall (massive two-tier cascade plunging 105ft into a canyon). Tours range from basic 6-hour bus trips to luxury super jeep adventures combining Golden Circle with glacier hiking, snorkeling between continents, Secret Lagoon bathing, or Northern Lights hunting. It's Iceland's most popular tour for excellent reason - nowhere else on Earth can you stand between tectonic plates, watch a geyser erupt, and feel waterfall spray all in one incredible day!`,
 
       seo: {
-        title: 'Reykjavik Golden Circle Tours 2025 - Geysers & Waterfalls',
+        title: 'Reykjavik Golden Circle Tours 2026 - Geysers & Waterfalls',
         description: 'Experience Iceland\'s Golden Circle! Geysers, Gullfoss waterfall, tectonic plates, and Iceland wonders!',
         keywords: 'Golden Circle Iceland, Reykjavik tours, Gullfoss waterfall, Geysir Iceland, Thingvellir tours',
       },
@@ -33436,7 +33436,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Iceland's most famous attraction - the Blue Lagoon, a stunning geothermal spa with milky-blue waters set in dramatic black lava fields! This world-renowned spa near Reykjavik features warm waters (37-39°C/98-102°F) rich in silica, algae, and minerals that nourish and exfoliate skin. Float in the surreal blue waters, apply free silica mud masks, enjoy in-water bars, and soak surrounded by volcanic landscape creating an otherworldly atmosphere. Tours include Blue Lagoon admission (various comfort levels from Standard to Premium to Luxury), transportation from Reykjavik, and often combine with airport transfers or nearby attractions. The lagoon is man-made (fed by nearby geothermal power plant) but the experience is authentically Icelandic and utterly magical - voted one of National Geographic's 25 Wonders of the World!`,
 
       seo: {
-        title: 'Reykjavik Blue Lagoon Tours 2025 - Iceland Geothermal Spa',
+        title: 'Reykjavik Blue Lagoon Tours 2026 - Iceland Geothermal Spa',
         description: 'Visit Iceland\'s Blue Lagoon! Geothermal spa, milky-blue waters, and Icelandic relaxation!',
         keywords: 'Blue Lagoon Iceland, Blue Lagoon tours Reykjavik, Iceland geothermal spa, Blue Lagoon tickets',
       },
@@ -33612,7 +33612,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Iceland's incredible geothermal power - one of the world's most volcanically active regions where Earth's energy erupts through hot springs, geysers, mud pots, and steaming vents! Geothermal tours showcase Iceland's unique geology visiting geothermal power plants (learning how Icelanders harness Earth's heat for electricity and heating), natural hot spring areas (Geysir, Hveragerði, Krýsuvík), volcanic craters, and geothermal bathing spots from the famous Blue Lagoon to hidden hot rivers. Tours explain the science behind Iceland's position on the Mid-Atlantic Ridge where tectonic plates meet, creating volcanic activity, earthquakes, and abundant geothermal resources. Watch Strokkur geyser erupt, explore bubbling mud pools, feel the power of volcanic steam, and understand how geothermal energy powers Iceland sustainably. It's geology in action!`,
 
       seo: {
-        title: 'Reykjavik Geothermal Tours 2025 - Hot Springs & Geysers',
+        title: 'Reykjavik Geothermal Tours 2026 - Hot Springs & Geysers',
         description: 'Explore Iceland\'s geothermal wonders! Geysers, hot springs, volcanic activity, and Earth\'s power!',
         keywords: 'Iceland geothermal tours, Reykjavik hot springs, geysers Iceland, geothermal energy tours',
       },
@@ -33788,7 +33788,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Reykjavik's vibrant food scene and rich Icelandic culture combining Nordic traditions with modern creativity! Food and culture tours take you beyond tourist restaurants to authentic Icelandic eateries, local markets, traditional bakeries, and cultural landmarks where you'll taste unique Icelandic specialties - fresh seafood, lamb, skyr (yogurt), rye bread, hot dogs (pylsur), dried fish, and yes, adventurous options like fermented shark! Learn about Iceland's Viking heritage, Saga literature, independence history, and modern culture while sampling food that sustained Icelanders through centuries in harsh Arctic conditions. Expert guides share stories of Icelandic traditions, language quirks, and contemporary Nordic lifestyle. From Reykjavik's colorful streets to hidden food gems, these tours feed both stomach and curiosity!`,
 
       seo: {
-        title: 'Reykjavik Food & Culture Tours 2025 - Icelandic Cuisine',
+        title: 'Reykjavik Food & Culture Tours 2026 - Icelandic Cuisine',
         description: 'Experience Reykjavik food and culture! Icelandic cuisine, local specialties, and Nordic traditions!',
         keywords: 'Reykjavik food tours, Iceland cuisine, Icelandic food, Reykjavik culture tours, Nordic food',
       },
@@ -33964,7 +33964,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Iceland's incredible adventure opportunities - from glacier hiking with crampons to exploring crystal-blue ice caves, from snorkeling between tectonic plates to snowmobiling across ancient ice caps! Adventure tours from Reykjavik showcase Iceland's dramatic landscape through active exploration combining physical activity with geological wonders. Walk on glaciers that are thousands of years old, descend into volcanic craters, explore lava tubes formed by ancient eruptions, snorkel in the world's clearest water between continents, or ride super jeeps to remote highlands inaccessible to regular vehicles. Iceland offers year-round adventures - summer brings midnight sun hiking and highland access, winter adds Northern Lights, ice caves, and snow adventures. Expert guides ensure safety while sharing geological knowledge. It's outdoor adventure in one of Earth's most spectacular natural playgrounds!`,
 
       seo: {
-        title: 'Reykjavik Adventure Tours 2025 - Glacier & Ice Cave Exploration',
+        title: 'Reykjavik Adventure Tours 2026 - Glacier & Ice Cave Exploration',
         description: 'Experience Iceland adventure tours! Glacier hiking, ice caves, snorkeling, and Arctic exploration!',
         keywords: 'Iceland adventure tours, glacier hiking Iceland, ice caves Reykjavik, Iceland outdoor activities',
       },
@@ -34142,7 +34142,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience the Colosseum, Rome's most iconic monument and the largest amphitheater ever built! This 2,000-year-old marvel once hosted gladiatorial contests, animal hunts, and mock naval battles entertaining up to 50,000 Romans. Colosseum tours reveal the engineering genius behind this ancient structure - underground chambers where gladiators prepared for battle, the complex system of pulleys and trap doors, and the incredible architecture that inspired modern stadiums worldwide. Skip-the-line tours bypass notorious queues (often 2+ hours!), expert guides bring ancient Rome to life with stories of emperors, gladiators, and spectacles, and special access tours explore restricted areas like the arena floor and underground hypogeum. Combined tours include the Roman Forum and Palatine Hill where Rome was founded. It's the ultimate journey into ancient civilization!`,
 
       seo: {
-        title: 'Rome Colosseum Tours 2025 - Skip the Line Tickets & Guides',
+        title: 'Rome Colosseum Tours 2026 - Skip the Line Tickets & Guides',
         description: 'Experience Rome\'s Colosseum with skip-the-line tours! Gladiator stories, arena floor access, and ancient history!',
         keywords: 'Colosseum tours Rome, Colosseum tickets, skip the line Colosseum, Rome gladiator tours, Colosseum underground',
       },
@@ -34318,7 +34318,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Vatican City, the world's smallest independent state and center of the Catholic Church! Vatican tours showcase humanity's greatest artistic achievements - Michelangelo's Sistine Chapel ceiling (one of history's most famous artworks), St. Peter's Basilica (world's largest church with Michelangelo's Pietà), and the Vatican Museums housing 54 galleries including Raphael's Rooms, ancient Roman sculptures, and Renaissance masterpieces collected by popes over centuries. Skip-the-line tours bypass 3+ hour queues, expert art historians explain the symbolism and history behind priceless works, and early-morning or after-hours tours offer exclusive access avoiding daytime crowds. Combined tours include climbing St. Peter's Dome for Rome panoramas. It's an unmissable journey through art, history, and spirituality in the heart of Rome!`,
 
       seo: {
-        title: 'Rome Vatican Tours 2025 - Sistine Chapel & St. Peter\'s Basilica',
+        title: 'Rome Vatican Tours 2026 - Sistine Chapel & St. Peter\'s Basilica',
         description: 'Experience Vatican tours with skip-the-line access! Sistine Chapel, Vatican Museums, and St. Peter\'s Basilica!',
         keywords: 'Vatican tours Rome, Sistine Chapel tours, Vatican Museums, St Peter\'s Basilica, Vatican skip the line',
       },
@@ -34494,7 +34494,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Step back 2,000 years exploring Ancient Rome's heart - the Roman Forum and Palatine Hill where emperors ruled and Roman civilization flourished! The Forum was ancient Rome's bustling center - marketplace, political hub, religious site, and social gathering place where Julius Caesar walked, Marc Antony delivered speeches, and Roman law was debated. Palatine Hill is where Rome was founded (753 BC legend) and where emperors built lavish palaces with stunning views over the Forum. Ancient Rome tours reveal temples, basilicas, triumphal arches, and the Via Sacra (Sacred Way) where victorious generals paraded. Expert archaeologist guides bring ruins to life explaining Roman politics, daily life, architecture, and the rise and fall of history's greatest empire. Combined with Colosseum tickets for complete ancient experience!`,
 
       seo: {
-        title: 'Rome Ancient Rome Tours 2025 - Roman Forum & Palatine Hill',
+        title: 'Rome Ancient Rome Tours 2026 - Roman Forum & Palatine Hill',
         description: 'Explore Ancient Rome! Roman Forum, Palatine Hill, emperor palaces, and 2,000 years of history!',
         keywords: 'Ancient Rome tours, Roman Forum tours, Palatine Hill Rome, ancient Rome history, Roman ruins tours',
       },
@@ -34670,7 +34670,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Rome's incredible food scene beyond tourist traps - authentic trattorias, historic markets, family bakeries, and wine bars where Romans actually eat! Roman cuisine is simple but spectacular: pasta carbonara (invented here!), cacio e pepe (cheese and pepper perfection), pizza al taglio (Roman-style rectangular pizza), supplì (fried rice balls), Jewish-Roman specialties from the Ghetto, and gelato from artisan shops. Food tours take you through vibrant neighborhoods like Trastevere, Testaccio, and Campo de' Fiori Market tasting Rome's culinary traditions passed through generations. Expert local guides share stories of Roman food culture, introduce passionate producers, and explain why certain dishes taste better in Rome than anywhere else. From market visits to progressive dinners, these tours feed both stomach and soul!`,
 
       seo: {
-        title: 'Rome Food & Wine Tours 2025 - Italian Cuisine & Local Tastings',
+        title: 'Rome Food & Wine Tours 2026 - Italian Cuisine & Local Tastings',
         description: 'Experience Rome food tours! Authentic pasta, pizza, gelato, and Italian wine in local neighborhoods!',
         keywords: 'Rome food tours, Italian cuisine Rome, Rome wine tours, Trastevere food tours, Roman food tastings',
       },
@@ -34846,7 +34846,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Rome's incredible artistic and architectural heritage spanning 2,000 years from ancient Roman engineering to Renaissance genius to Baroque extravagance! Rome is an open-air museum where every street reveals masterpieces - Michelangelo's Sistine Chapel, Bernini's Baroque fountains, Caravaggio's revolutionary paintings, ancient Pantheon's perfect dome, and Raphael's frescoes. Art and architecture tours explore world-class museums (Borghese Gallery with Bernini sculptures and Caravaggio paintings), historic churches hiding Renaissance treasures, Baroque squares designed by master architects, and architectural marvels that revolutionized building. Expert art historians explain symbolism, techniques, patron stories, and artistic movements that shaped Western art. From ancient Roman innovation to Renaissance rebirth to Baroque drama, Rome holds humanity's greatest artistic achievements!`,
 
       seo: {
-        title: 'Rome Art & Architecture Tours 2025 - Renaissance & Baroque Masterpieces',
+        title: 'Rome Art & Architecture Tours 2026 - Renaissance & Baroque Masterpieces',
         description: 'Explore Rome\'s art and architecture! Michelangelo, Bernini, Caravaggio, and 2,000 years of masterpieces!',
         keywords: 'Rome art tours, Rome architecture tours, Borghese Gallery, Baroque Rome, Renaissance art tours',
       },
@@ -35018,7 +35018,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience the Trevi Fountain, Rome's largest and most spectacular Baroque fountain - an architectural masterpiece where tradition says tossing a coin ensures your return to Rome! Built 1732-1762, this stunning 26-meter-high fountain depicts Neptune (god of sea) with tritons and horses emerging from Palazzo Poli's facade in dramatic Baroque style. The fountain attracts millions annually, all tossing coins into its waters (€3,000 collected daily going to charity!). Trevi Fountain tours explore the surrounding historic quarter with narrow medieval streets, hidden piazzas, charming cafes, and architectural gems tourists miss. Expert guides share the fountain's history, Roman water engineering (it marks the endpoint of ancient Aqua Virgo aqueduct!), and legends surrounding the coin toss. Visit at different times - crowded but magical by day, illuminated and romantic at night!`,
 
       seo: {
-        title: 'Rome Trevi Fountain Tours 2025 - Baroque Fountains & Historic Quarter',
+        title: 'Rome Trevi Fountain Tours 2026 - Baroque Fountains & Historic Quarter',
         description: 'Experience Rome\'s Trevi Fountain! Baroque masterpiece, coin toss tradition, and historic Trevi district!',
         keywords: 'Trevi Fountain Rome, Trevi Fountain tours, Rome fountains, Baroque Rome, Trevi district',
       },
@@ -35192,7 +35192,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Santorini's breathtaking caldera, one of the world's most spectacular volcanic landscapes! The caldera was formed by a massive volcanic eruption around 1600 BC that shaped the island's dramatic crescent form. Caldera tours explore this geological wonder by boat, hiking, or viewing platforms showcasing the 300-meter-high cliffs, deep blue waters, volcanic islands, and the iconic white-washed villages of Oia and Fira perched dramatically on the rim. Boat tours sail across the caldera visiting hot springs, volcanic beaches, and sunset viewpoints. Hiking tours follow clifftop paths connecting villages with stunning views at every turn. Photography tours capture the caldera's beauty at golden hour. It's Santorini's defining feature creating the dramatic scenery that makes this Greek island world-famous!`,
 
       seo: {
-        title: 'Santorini Caldera Tours 2025 - Volcanic Cliffs & Boat Tours',
+        title: 'Santorini Caldera Tours 2026 - Volcanic Cliffs & Boat Tours',
         description: 'Experience Santorini\'s stunning caldera! Boat tours, volcanic cliffs, and dramatic Aegean views!',
         keywords: 'Santorini caldera tours, Santorini boat tours, caldera cruise, Santorini volcanic tours',
       },
@@ -35368,7 +35368,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Santorini's legendary sunset - consistently ranked among the world's most beautiful! Watching the sun sink into the Aegean Sea behind volcanic cliffs while whitewashed villages glow golden creates magical moments that define the Santorini experience. Sunset tours offer various perspectives: sailing cruises position you on the water for unobstructed sunset views with dinner and wine, Oia village tours secure prime viewing spots avoiding crushing crowds, helicopter tours provide aerial sunset perspectives, and private terraces offer exclusive romantic settings. The best sunsets occur April through October when clear skies and warm colors dominate. Tours include photography tips, Greek wine, traditional meals, and the expertise of locals who know exactly where and when to position for perfection. It's the sunset that launched a thousand Instagram posts!`,
 
       seo: {
-        title: 'Santorini Sunset Tours 2025 - Oia Sunset & Sailing Cruises',
+        title: 'Santorini Sunset Tours 2026 - Oia Sunset & Sailing Cruises',
         description: 'Experience Santorini\'s famous sunset! Oia viewpoints, sunset cruises, and romantic Greek evenings!',
         keywords: 'Santorini sunset tours, Oia sunset, Santorini sunset cruise, Greece sunset sailing',
       },
@@ -35532,7 +35532,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Explore Santorini's volcanic origins hiking on an active volcano in the caldera center! Nea Kameni island is an active volcanic formation where you can walk on hardened black lava, see steaming volcanic vents, peer into craters, and smell sulfur while standing on ground that last erupted in 1950. Volcano tours combine boat transfers with 30-45 minute hikes across the otherworldly landscape, followed by swimming in nearby Palea Kameni's therapeutic hot springs where volcanic warmth heats the water. Expert guides explain the catastrophic 1600 BC eruption that formed today's caldera, ongoing volcanic activity (seismologists monitor constantly!), and Santorini's position on the South Aegean Volcanic Arc. It's rare opportunity to explore an active volcano safely with stunning caldera views surrounding you. Geology brought to life!`,
 
       seo: {
-        title: 'Santorini Volcano Tours 2025 - Nea Kameni Hiking & Hot Springs',
+        title: 'Santorini Volcano Tours 2026 - Nea Kameni Hiking & Hot Springs',
         description: 'Hike Santorini\'s active volcano! Nea Kameni tours, volcanic hot springs, and geological wonders!',
         keywords: 'Santorini volcano tours, Nea Kameni tours, volcanic hot springs, Santorini geology tours',
       },
@@ -35696,7 +35696,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Santorini's exceptional wine and food scene shaped by volcanic soil and Aegean traditions! Santorini produces unique wines - crisp Assyrtiko white wines grown in volcanic ash, sweet Vinsanto dessert wine, and distinctive cultivation methods where vines grow in basket shapes (kouloura) protecting grapes from winds. Wine tours visit family-run wineries with caldera views, underground cave wineries carved into volcanic rock, and vineyards where ancient grape varieties thrive in mineral-rich soil. Food tours showcase Greek island cuisine - fresh seafood, fava (yellow split pea puree), tomatokeftedes (tomato fritters), white eggplant, capers, and local cheeses paired perfectly with Santorini wines. Sunset wine tastings overlooking the caldera combine stunning views with exceptional wines creating unforgettable experiences!`,
 
       seo: {
-        title: 'Santorini Wine & Food Tours 2025 - Winery Tastings & Greek Cuisine',
+        title: 'Santorini Wine & Food Tours 2026 - Winery Tastings & Greek Cuisine',
         description: 'Experience Santorini wine and food tours! Volcanic wines, Greek cuisine, and caldera winery views!',
         keywords: 'Santorini wine tours, Santorini food tours, Greek wine tasting, Assyrtiko wine, Santorini wineries',
       },
@@ -35868,7 +35868,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Santorini's unique volcanic beaches and stunning coastline! Unlike typical Greek islands with white sand, Santorini's beaches feature dramatic black, red, and white volcanic sand created by ancient eruptions. Beach and boat tours explore Red Beach (dramatic crimson cliffs), Perissa and Kamari (black sand beaches with crystal-clear waters), White Beach (accessible only by boat with stunning white cliffs), and hidden coves around the island. Boat tours combine beach stops with swimming, snorkeling, caldera sailing, and coastal cliff views. Catamaran cruises visit multiple beaches with BBQ lunch and drinks. Water sports include jet skiing, paddleboarding, and diving. It's Santorini beyond the caldera showcasing the island's complete coastal beauty!`,
 
       seo: {
-        title: 'Santorini Beach & Boat Tours 2025 - Volcanic Beaches & Coastal Cruises',
+        title: 'Santorini Beach & Boat Tours 2026 - Volcanic Beaches & Coastal Cruises',
         description: 'Explore Santorini beaches and boat tours! Red Beach, black sand, coastal cruises, and Aegean swimming!',
         keywords: 'Santorini beaches, Red Beach Santorini, Santorini boat tours, black sand beaches, Santorini sailing',
       },
@@ -36032,7 +36032,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Santorini's enchanting villages beyond the iconic Oia - each offering unique character, stunning architecture, and authentic Greek island experiences! Village tours explore whitewashed cube houses with blue-domed churches, narrow cobblestone paths, traditional Cycladic architecture, local artisan shops, and breathtaking caldera or sea views. Visit Oia (most photographed village with sunset fame), Fira (capital with caldera views and vibrant energy), Imerovigli (quieter "balcony to the Aegean"), Pyrgos (highest village with Venetian castle), and traditional inland villages like Megalochori and Emporio preserving authentic Greek life. Walking tours reveal hidden churches, explain volcanic architecture, introduce local residents, and guide you away from tourist masses to quieter authentic corners. It's Santorini's soul beyond the Instagram photos!`,
 
       seo: {
-        title: 'Santorini Village Tours 2025 - Oia, Fira & Traditional Villages',
+        title: 'Santorini Village Tours 2026 - Oia, Fira & Traditional Villages',
         description: 'Explore Santorini\'s beautiful villages! Oia, Fira, traditional Greek towns, and island culture!',
         keywords: 'Santorini village tours, Oia tours, Fira tours, Santorini walking tours, Greek island villages',
       },
@@ -36202,7 +36202,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience the Royal Alcázar of Seville, a breathtaking palace complex showcasing 1,000 years of architectural evolution from Moorish fortress to royal residence! This UNESCO World Heritage site is Spain's oldest royal palace still in use - the Spanish royal family stays here when visiting Seville. The Alcázar blends Mudéjar, Gothic, Renaissance, and Baroque styles with intricate tilework, carved ceilings, horseshoe arches, and stunning courtyards. The palace gardens feature fountains, orange trees, peacocks, and hidden pavilions creating an oasis in the city. Skip-the-line tours bypass notorious queues, expert guides explain the rich history and Game of Thrones filming locations, and special evening visits offer magical atmosphere. It's Seville's crown jewel combining Moorish artistry with Spanish royal heritage!`,
 
       seo: {
-        title: 'Seville Alcázar Tours 2025 - Skip the Line Royal Palace Tickets',
+        title: 'Seville Alcázar Tours 2026 - Skip the Line Royal Palace Tickets',
         description: 'Explore Seville\'s Royal Alcázar! Moorish palace, stunning gardens, and skip-the-line tours!',
         keywords: 'Alcázar Seville, Seville palace tours, Royal Alcázar tickets, Seville skip the line, Mudéjar architecture',
       },
@@ -36378,7 +36378,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Seville Cathedral, the world's largest Gothic cathedral and third-largest church overall! Built on the site of a grand mosque, this UNESCO World Heritage masterpiece took over a century to complete (1401-1528). The cathedral houses Christopher Columbus's tomb, the stunning Giralda tower (former minaret offering panoramic city views), the largest altarpiece in Christianity with gold-covered carvings, beautiful chapels, and priceless art treasures. Skip-the-line tours bypass long queues, expert guides explain the rich history and artistic details, and climbing the Giralda's 34 ramps (originally designed for horses!) rewards you with spectacular Seville views. It's an architectural marvel combining Gothic grandeur with Moorish heritage!`,
 
       seo: {
-        title: 'Seville Cathedral Tours 2025 - Giralda Tower & Skip the Line',
+        title: 'Seville Cathedral Tours 2026 - Giralda Tower & Skip the Line',
         description: 'Visit Seville Cathedral! World\'s largest Gothic cathedral, Giralda tower, and Columbus tomb!',
         keywords: 'Seville Cathedral tours, Giralda tower Seville, Cathedral skip the line, Seville church tours',
       },
@@ -36554,7 +36554,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience authentic flamenco in its birthplace - Seville, the heart of Andalusian flamenco culture! Flamenco is passionate art combining guitar, singing (cante), dance, and rhythm expressing deep emotion through movement and music. Seville's tablaos (flamenco venues) range from intimate traditional spaces to grand theaters, all showcasing world-class performers. Shows feature professional dancers in colorful dresses, virtuoso guitarists, and powerful singers creating an emotional, unforgettable performance. Options include traditional tablaos with drinks, dinner shows pairing flamenco with tapas or full meals, small intimate performances, and flamenco museums explaining the art form's history. It's Spain's soul expressed through dance - seeing flamenco in Seville is essential!`,
 
       seo: {
-        title: 'Seville Flamenco Shows 2025 - Authentic Tablao Performances',
+        title: 'Seville Flamenco Shows 2026 - Authentic Tablao Performances',
         description: 'Experience authentic flamenco in Seville! Traditional shows, dinner tablaos, and Andalusian passion!',
         keywords: 'Seville flamenco shows, Seville tablao, flamenco Seville, Spanish flamenco, authentic flamenco',
       },
@@ -36730,7 +36730,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Seville's incredible tapas culture - an essential part of Andalusian life! Tapas tours take you beyond tourist restaurants to authentic bars and taverns where locals gather for small plates, wine, and conversation. Taste Spanish classics - jamón ibérico (acorn-fed ham), gazpacho (cold tomato soup), salmorejo (thick tomato cream), fried fish from Cádiz, montaditos (small sandwiches), tortilla española, and local Seville specialties paired with Spanish wines and sherry from nearby Jerez. Expert local guides share the tapas tradition, explain Spanish food culture, introduce passionate owners, and reveal the best spots in neighborhoods like Triana, Alameda, and the historic center. From market tours to progressive tapas crawls, these experiences showcase why eating in Seville is a social, joyful ritual!`,
 
       seo: {
-        title: 'Seville Tapas Tours 2025 - Spanish Food & Wine Experiences',
+        title: 'Seville Tapas Tours 2026 - Spanish Food & Wine Experiences',
         description: 'Experience Seville tapas tours! Authentic Spanish food, local bars, and Andalusian cuisine!',
         keywords: 'Seville tapas tours, Seville food tours, Spanish tapas, Seville gastronomy, Andalusian food tours',
       },
@@ -36906,7 +36906,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Seville's enchanting historic quarter (Barrio Santa Cruz) - the former Jewish quarter with labyrinthine medieval streets, flower-filled courtyards, hidden plazas, and whitewashed buildings! This charming neighborhood surrounds the Cathedral and Alcázar with narrow alleys designed to provide shade from Andalusian heat. Walking tours reveal Seville's Moorish and Jewish heritage, explain the area's transformation over centuries, visit beautiful patios (traditional courtyards), and share stories of famous Sevillanos. Expert guides navigate the maze-like streets showing hidden corners, romantic squares, traditional azulejo tiles, orange trees, and authentic tapas bars. Evening tours capture magical atmosphere when streets glow with lantern light. It's Seville's most atmospheric district!`,
 
       seo: {
-        title: 'Seville Historic Quarter Tours 2025 - Santa Cruz Walking Tours',
+        title: 'Seville Historic Quarter Tours 2026 - Santa Cruz Walking Tours',
         description: 'Explore Seville\'s Santa Cruz quarter! Medieval streets, hidden plazas, and Andalusian charm!',
         keywords: 'Seville walking tours, Santa Cruz Seville, Seville historic quarter, Barrio Santa Cruz tours',
       },
@@ -37082,7 +37082,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Plaza de España, Seville's most magnificent square and one of Spain's most impressive architectural achievements! Built for the 1929 Ibero-American Exposition, this stunning semicircular plaza features Renaissance/Neo-Mudéjar architecture, a beautiful canal with ceramic bridges, elaborate tilework representing Spanish provinces, and grand colonnades creating spectacular symmetry. The plaza starred in Star Wars (Attack of the Clones filmed here!) and Lawrence of Arabia. Tours explore the architectural details, explain the 1929 Exposition history, offer boat rides on the canal, and guide photography at best angles. The adjacent María Luisa Park provides lush gardens perfect for strolling. It's Seville's most photogenic spot combining grand architecture with romantic atmosphere!`,
 
       seo: {
-        title: 'Seville Plaza de España Tours 2025 - Architecture & Canal Boats',
+        title: 'Seville Plaza de España Tours 2026 - Architecture & Canal Boats',
         description: 'Explore Plaza de España in Seville! Stunning architecture, canal boats, and beautiful park!',
         keywords: 'Plaza de España Seville, Seville architecture tours, Maria Luisa Park, Seville attractions',
       },
@@ -37260,7 +37260,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Diocletian's Palace, one of the world's most impressive Roman monuments and Split's beating heart! Built AD 295-305 by Roman Emperor Diocletian as his retirement residence, this UNESCO World Heritage palace is unique because 3,000 people live within its ancient walls today - shops, restaurants, and homes occupy rooms where emperors once walked! The palace blends Roman architecture with medieval and Renaissance additions creating a living museum. Tours explore underground cellars (basement chambers that supported the palace), the Peristyle (central square), Jupiter's Temple, cathedral built into the mausoleum, narrow streets, and ancient walls. Game of Thrones fans will recognize filming locations! It's ancient Rome brought to life in modern Split!`,
 
       seo: {
-        title: 'Split Diocletian\'s Palace Tours 2025 - Roman Palace & Game of Thrones',
+        title: 'Split Diocletian\'s Palace Tours 2026 - Roman Palace & Game of Thrones',
         description: 'Explore Diocletian\'s Palace in Split! Roman ruins, underground cellars, and Croatian history!',
         keywords: 'Diocletian Palace Split, Split tours, Roman palace Croatia, Split Game of Thrones, Split walking tours',
       },
@@ -37436,7 +37436,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Split's spectacular Dalmatian coastline by boat - crystal-clear Adriatic waters, hidden beaches, sea caves, and dramatic coastal scenery! Boat tours from Split explore nearby islands, secluded coves, the famous Blue Cave with ethereal blue light, Green Cave, sandy beaches like Zlatni Rat, and charming coastal towns. Options range from speedboat adventures to luxury yacht charters, from sunset cruises to full-day excursions combining swimming, snorkeling, and sightseeing. The Adriatic is pristine with visibility often exceeding 20 meters perfect for swimming and snorkeling. Tours include Croatian hospitality, local wine, fresh seafood lunches, and spectacular coastal views. It's Croatia at its most beautiful!`,
 
       seo: {
-        title: 'Split Boat Tours 2025 - Dalmatian Coast & Island Cruises',
+        title: 'Split Boat Tours 2026 - Dalmatian Coast & Island Cruises',
         description: 'Explore Split coastal boat tours! Blue Cave, island cruises, and Adriatic swimming!',
         keywords: 'Split boat tours, Dalmatian coast tours, Split Blue Cave, Croatia sailing, Split island tours',
       },
@@ -37612,7 +37612,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Croatia's stunning Dalmatian islands on island-hopping tours from Split! The Central Dalmatian archipelago features over 1,000 islands with Hvar (lavender fields and nightlife), Brač (famous Zlatni Rat beach), Vis (unspoiled fishing villages), and countless hidden gems. Island hopping tours combine boat cruising with beach stops, village exploration, wine tasting at island vineyards, swimming in secluded bays, and traditional Dalmatian lunches at waterfront tavernas. Speedboat tours pack multiple islands into one day; ferry-based tours allow longer island stays. Visit Blue Cave, Green Cave, Stiniva Cove, charming harbor towns, and pristine beaches. It's the best way to experience Croatia's island paradise!`,
 
       seo: {
-        title: 'Split Island Hopping Tours 2025 - Hvar, Brač & Croatian Islands',
+        title: 'Split Island Hopping Tours 2026 - Hvar, Brač & Croatian Islands',
         description: 'Explore Croatian islands from Split! Hvar, Brač, Vis island tours, beaches, and Adriatic paradise!',
         keywords: 'Split island hopping, Hvar tours, Croatian islands, Brač island, Split island tours',
       },
@@ -37788,7 +37788,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Split's delicious Dalmatian food scene blending Mediterranean and Balkan influences! Food tours take you to authentic konobas (taverns), bustling markets, family bakeries, and wine bars where locals gather. Taste Croatian specialties - peka (slow-cooked meat under iron bell), black risotto, fresh Adriatic fish, pršut (Croatian prosciutto), Pag cheese, and dalmatinska pašticada (beef stew). Wine tours showcase excellent Croatian wines - Plavac Mali reds, Pošip whites, and sweet Prošek dessert wine from Dalmatian vineyards. Expert local guides share food traditions, introduce passionate producers, and reveal the best spots in neighborhoods like Varoš. From market tours to progressive tastings, these experiences feed your stomach and Croatian knowledge!`,
 
       seo: {
-        title: 'Split Food & Wine Tours 2025 - Dalmatian Cuisine & Croatian Wines',
+        title: 'Split Food & Wine Tours 2026 - Dalmatian Cuisine & Croatian Wines',
         description: 'Experience Split food tours! Dalmatian cuisine, Croatian wine, and fresh Adriatic seafood!',
         keywords: 'Split food tours, Croatian food, Dalmatian cuisine, Split wine tours, Croatia gastronomy',
       },
@@ -37964,7 +37964,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Explore Split's historic district beyond Diocletian's Palace - charming neighborhoods, medieval streets, the vibrant Riva waterfront, and authentic Croatian life! Walking tours reveal the Varoš district (old fishermen's quarter with narrow alleys and local konobas), Marjan Hill viewpoints, People's Square (Narodni Trg), historic churches, and the bustling harbor. The Riva promenade is Split's social heart where locals stroll, cafes buzz, and palm trees sway. Guides share stories of Split's evolution from Roman palace town to modern Croatian city, explain Venetian and Austrian influences, and navigate to hidden corners tourists miss. Evening tours capture magical atmosphere when Split comes alive with lights, music, and Mediterranean energy!`,
 
       seo: {
-        title: 'Split Walking Tours 2025 - Historic District & Riva Waterfront',
+        title: 'Split Walking Tours 2026 - Historic District & Riva Waterfront',
         description: 'Explore Split\'s historic district! Walking tours, medieval streets, and Croatian culture!',
         keywords: 'Split walking tours, Split historic district, Riva Split, Split old town tours, Croatia walking tours',
       },
@@ -38140,7 +38140,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Split's stunning beaches and exciting water sports on the beautiful Dalmatian coast! Split offers diverse beach experiences - Bačvice (famous sandy beach with picigin tradition), Kašjuni (pebble beach on Marjan), Žnjan (long pebbly beach), and nearby Ćiovo island beaches all with crystal-clear Adriatic waters. Water sports include jet skiing, parasailing, stand-up paddleboarding, kayaking, scuba diving, and windsurfing. Beach clubs provide sunbeds, music, and vibrant atmosphere. Tours combine beach time with water activities, snorkeling excursions, coastal kayaking, or SUP tours exploring caves and coves. The Adriatic temperature reaches 25°C (77°F) in summer - perfect for swimming and water sports paradise!`,
 
       seo: {
-        title: 'Split Beaches & Water Sports 2025 - Adriatic Swimming & Activities',
+        title: 'Split Beaches & Water Sports 2026 - Adriatic Swimming & Activities',
         description: 'Experience Split beaches and water sports! Jet skiing, paddleboarding, and Adriatic fun!',
         keywords: 'Split beaches, Split water sports, Bačvice beach, Split jet ski, Croatia beach activities',
       },
@@ -38318,7 +38318,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Venice's most iconic activity - a gondola ride through the city's enchanting canals! Gondolas have been Venice's transportation for over 1,000 years, and these sleek black boats navigating narrow waterways offer the quintessential Venetian experience. Gondola tours glide past historic palaces, under romantic bridges (including the famous Bridge of Sighs), through quiet backwater canals away from crowds, and sometimes include singing gondoliers serenading you with Italian classics. Tours range from shared rides (budget-friendly option) to private romantic gondolas for couples, from daytime exploration to magical evening rides. While expensive, it's the experience that defines Venice - floating through a UNESCO World Heritage city unchanged for centuries!`,
 
       seo: {
-        title: 'Venice Gondola Tours 2025 - Romantic Canal Rides & Serenades',
+        title: 'Venice Gondola Tours 2026 - Romantic Canal Rides & Serenades',
         description: 'Experience Venice gondola rides! Romantic canals, singing gondoliers, and iconic Venetian experience!',
         keywords: 'Venice gondola tours, gondola rides Venice, Venice canals, romantic gondola, Venice gondolier',
       },
@@ -38494,7 +38494,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience St. Mark's Basilica, Venice's most spectacular church and a Byzantine architectural masterpiece! Built in the 11th century to house St. Mark's relics, this stunning cathedral features over 8,000 square meters of golden mosaics, marble floors, ornate domes, and the famous Pala d'Oro golden altarpiece encrusted with precious gems. The basilica combines Byzantine, Gothic, and Islamic influences creating unique Venetian style. Skip-the-line tours bypass notorious queues, expert guides explain the mosaics' biblical stories and symbolism, and terrace access provides close views of the bronze horses (copies - originals in museum) and St. Mark's Square panoramas. Combined tours include Doge's Palace connected via Bridge of Sighs. It's Venice's spiritual heart!`,
 
       seo: {
-        title: 'Venice St. Mark\'s Basilica Tours 2025 - Skip the Line & Mosaics',
+        title: 'Venice St. Mark\'s Basilica Tours 2026 - Skip the Line & Mosaics',
         description: 'Explore St. Mark\'s Basilica in Venice! Golden mosaics, skip-the-line tours, and Byzantine beauty!',
         keywords: 'St Mark\'s Basilica Venice, Venice basilica tours, St Mark\'s skip the line, Doge\'s Palace Venice',
       },
@@ -38670,7 +38670,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Venice's extensive canal network - over 150 canals threading through the city creating the unique "floating city" character! Canal tours explore the famous Grand Canal (Venice's main waterway lined with palaces), smaller side canals revealing hidden Venice, and backwater routes away from crowds. Travel by vaporetto (water bus), private water taxi, canal cruise boat, or traditional Venetian boats seeing the city as Venetians have for centuries. Tours showcase over 400 bridges, historic palaces with waterside facades, quiet residential areas, colorful Burano island, glassmaking Murano island, and authentic Venetian life. It's the best way to understand how Venice works as a city built entirely on water!`,
 
       seo: {
-        title: 'Venice Canal Tours 2025 - Grand Canal & Waterway Cruises',
+        title: 'Venice Canal Tours 2026 - Grand Canal & Waterway Cruises',
         description: 'Explore Venice canals! Grand Canal cruises, water taxis, and hidden waterway tours!',
         keywords: 'Venice canal tours, Grand Canal Venice, Venice water taxi, Venice boat tours, vaporetto Venice',
       },
@@ -38846,7 +38846,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Murano island, world-famous for Venetian glassmaking dating back to 1291! Murano glass tours combine boat transfers from Venice with visits to glass furnaces where master artisans demonstrate the ancient craft of glass blowing - watching molten glass transform into delicate vases, chandeliers, and sculptures is mesmerizing. Tours include Glass Museum explaining 700+ years of glassmaking history, factory showrooms with stunning pieces, and free time to explore the charming island with canals, churches, and cafes. Learn why Venetian glass became legendary (techniques were trade secrets!), see contemporary artists pushing boundaries, and shop for authentic pieces (certificates guarantee genuine Murano glass). It's living art and centuries-old tradition!`,
 
       seo: {
-        title: 'Venice Murano Glass Tours 2025 - Glass Blowing & Factory Visits',
+        title: 'Venice Murano Glass Tours 2026 - Glass Blowing & Factory Visits',
         description: 'Visit Murano island! Watch glass blowing demonstrations, explore factories, and authentic Venetian glass!',
         keywords: 'Murano glass tours, Venice glass factory, Murano island tours, Venetian glass, glass blowing Venice',
       },
@@ -39022,7 +39022,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Venice's delicious food scene beyond tourist restaurants - authentic bacari (wine bars), traditional osterias, Rialto Market, and neighborhoods where Venetians actually eat! Venetian cuisine emphasizes fresh Adriatic seafood, risotto, polenta, and cicchetti (Venetian tapas) - small plates paired with wine creating a social dining tradition. Food tours explore Cannaregio (local neighborhood), Rialto Market (morning produce and fish market), Dorsoduro (university district), and hidden bacari serving moeche (soft-shell crab), sarde in saor (sweet-sour sardines), baccalà mantecato (creamed cod), and spritz! Expert local guides share Venetian culinary traditions, introduce passionate producers, and explain why certain dishes taste better in Venice than anywhere else!`,
 
       seo: {
-        title: 'Venice Food & Wine Tours 2025 - Cicchetti & Venetian Cuisine',
+        title: 'Venice Food & Wine Tours 2026 - Cicchetti & Venetian Cuisine',
         description: 'Experience Venice food tours! Cicchetti, fresh seafood, Italian wine, and local bacari!',
         keywords: 'Venice food tours, Venice cicchetti, Venetian cuisine, Venice wine tours, bacari Venice',
       },
@@ -39198,7 +39198,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Venice's incredible artistic and historical heritage as a maritime superpower for 1,000 years! Art and history tours explore the Doge's Palace (seat of Venetian government with Tintoretto masterpieces), Accademia Gallery (world's best Venetian painting collection), historic churches hiding Titian and Bellini works, the Bridge of Sighs, secret itineraries revealing hidden rooms, and the Jewish Ghetto (world's first ghetto with fascinating history). Learn about the Venetian Republic's power, doges (elected leaders), maritime trade empire, art patronage, and slow decline. Expert art historians bring Venice to life explaining how this impossible city built on water became one of history's wealthiest and most cultured civilizations!`,
 
       seo: {
-        title: 'Venice Art & History Tours 2025 - Doge\'s Palace & Venetian Masters',
+        title: 'Venice Art & History Tours 2026 - Doge\'s Palace & Venetian Masters',
         description: 'Explore Venice art and history! Doge\'s Palace, Tintoretto, Titian, and Venetian Republic!',
         keywords: 'Venice art tours, Doge\'s Palace Venice, Venice history tours, Venetian art, Venice museums',
       },
@@ -39376,7 +39376,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Schönbrunn Palace, Vienna's most visited attraction and a UNESCO World Heritage masterpiece! Built as the Habsburg summer residence, this stunning baroque palace features 1,441 rooms (40 open to visitors), lavish imperial apartments where Empress Elisabeth (Sisi) lived, the magnificent Great Gallery where Mozart performed as a child, and spectacular gardens spanning 1.2 km with fountains, sculptures, and the Gloriette monument offering panoramic Vienna views. Tours explore Maria Theresa's opulent state rooms, Franz Joseph's surprisingly modest apartments, the world's oldest zoo (established 1752), Palm House with tropical plants, and seasonal highlights like Christmas markets. Skip-the-line tours bypass notorious queues, while combo tickets include the maze, carriage museum, and gardens. It's Habsburg grandeur at its finest!`,
 
       seo: {
-        title: 'Vienna Schönbrunn Palace Tours 2025 - Habsburg Palace & Gardens',
+        title: 'Vienna Schönbrunn Palace Tours 2026 - Habsburg Palace & Gardens',
         description: 'Explore Schönbrunn Palace in Vienna! Imperial apartments, baroque gardens, and Habsburg history!',
         keywords: 'Schönbrunn Palace Vienna, Vienna palace tours, Schönbrunn gardens, Habsburg palace, Vienna attractions',
       },
@@ -39552,7 +39552,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover the Hofburg Palace, the massive Habsburg winter residence in Vienna's historic center where emperors ruled for 640 years! This sprawling complex covers 59 acres with 2,600 rooms housing multiple museums: the Imperial Apartments where Franz Joseph and Sisi lived, the Sisi Museum dedicated to Empress Elisabeth's fascinating life, the Imperial Treasury with the Habsburg Crown Jewels, the Spanish Riding School with Lipizzaner stallions, and the impressive Neue Burg museums. Tours reveal opulent state rooms, Sisi's gymnastics room, Franz Joseph's modest sleeping quarters, ceremonial halls, and the world's most important collection of imperial regalia. The palace complex also includes the Hofburg Chapel where the Vienna Boys' Choir sings Sunday mass. It's Vienna's power center for centuries!`,
 
       seo: {
-        title: 'Vienna Hofburg Palace Tours 2025 - Imperial Apartments & Sisi Museum',
+        title: 'Vienna Hofburg Palace Tours 2026 - Imperial Apartments & Sisi Museum',
         description: 'Explore Hofburg Palace in Vienna! Imperial apartments, Sisi Museum, and Habsburg treasures!',
         keywords: 'Hofburg Palace Vienna, Vienna imperial apartments, Sisi Museum, Habsburg palace, Vienna attractions',
       },
@@ -39728,7 +39728,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Vienna's legendary classical music scene - the city of Mozart, Beethoven, Strauss, and Brahms! Vienna's musical heritage comes alive nightly with concerts in historic venues: the golden Musikverein (home of Vienna Philharmonic's New Year Concert), State Opera House (one of world's finest opera houses), intimate Kursalon (where Johann Strauss himself performed), Mozart House, and Schönbrunn Palace Orangery. Concerts feature waltz music, opera highlights, full symphonies, chamber music, and even costumed Mozart performances. Many tours combine concerts with palace visits or Viennese dinners. The Vienna Boys' Choir performs Sunday masses at Hofburg Chapel. From budget-friendly church concerts to premium opera performances, Vienna offers classical music for every taste and budget. It's the world's classical music capital!`,
 
       seo: {
-        title: 'Vienna Classical Music Tours 2025 - Mozart, Opera & Concerts',
+        title: 'Vienna Classical Music Tours 2026 - Mozart, Opera & Concerts',
         description: 'Experience Vienna classical music! Mozart concerts, State Opera, Musikverein, and historic venues!',
         keywords: 'Vienna concerts, Vienna classical music, Mozart Vienna, Vienna opera, Musikverein, Vienna Philharmonic',
       },
@@ -39904,7 +39904,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Vienna's legendary coffee house culture - a UNESCO Intangible Cultural Heritage tradition dating to the 1683 Ottoman siege! Viennese coffee houses are not just cafés but institutions where intellectuals debated, artists created, and time stands still. Tours visit iconic establishments like Café Central (frequented by Freud, Trotsky, and Einstein), Café Sacher (home of Sachertorte chocolate cake), Café Sperl (unchanged since 1880), and Café Demel (k.u.k. Hofzuckerbäcker - Imperial Court Pastry Shop). Learn to order Melange, Einspänner, and Kapuziner, understand coffee house etiquette (newspapers on wooden poles!), taste Apfelstrudel and Sachertorte, and discover why Viennese spend hours in these "living rooms" of the city. It's coffee elevated to art form!`,
 
       seo: {
-        title: 'Vienna Coffee House Tours 2025 - Café Culture & Sachertorte',
+        title: 'Vienna Coffee House Tours 2026 - Café Culture & Sachertorte',
         description: 'Experience Vienna coffee houses! Historic cafés, Sachertorte, and legendary coffee culture!',
         keywords: 'Vienna coffee houses, Cafe Central Vienna, Sachertorte, Vienna café culture, Viennese coffee',
       },
@@ -40080,7 +40080,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Vienna's magnificent historic center (Innere Stadt), a UNESCO World Heritage site showcasing 2,000 years of history! The Ringstrasse boulevard encircles the first district with grand buildings from Vienna's 19th-century golden age: Parliament, City Hall, Opera House, Museums, and Burgtheater. Walking tours explore St. Stephen's Cathedral (Stephansdom - Vienna's Gothic masterpiece), the Jewish Quarter with cobblestone streets, Spanish Riding School, imperial Hofburg Palace complex, elegant Kohlmarkt shopping street, and hidden courtyards. Learn about Habsburg emperors, Mozart's performances, Vienna's siege history, WWII scars, and modern Austrian life. Evening tours reveal illuminated monuments creating magical atmosphere. The compact historic center combines imperial grandeur with vibrant café culture!`,
 
       seo: {
-        title: 'Vienna Historic District Tours 2025 - Ringstrasse & Innere Stadt',
+        title: 'Vienna Historic District Tours 2026 - Ringstrasse & Innere Stadt',
         description: 'Explore Vienna\'s historic district! Ringstrasse, St. Stephen\'s Cathedral, and UNESCO heritage!',
         keywords: 'Vienna historic district, Vienna walking tours, Ringstrasse Vienna, St Stephen\'s Cathedral, Vienna old town',
       },
@@ -40256,7 +40256,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Vienna's extraordinary art and culture scene rivaling Paris and Florence! The museum quarter houses world-class collections: Kunsthistorisches Museum (Old Masters - Bruegel, Vermeer, Caravaggio), Belvedere Palace (Klimt's "The Kiss" and largest Klimt collection), Albertina (drawings by Dürer, Michelangelo, and Impressionists), Leopold Museum (Schiele and Viennese Modernism), and Museum Quarter (MuseumsQuartier - contemporary art hub). Tours reveal Vienna Secession art movement, Art Nouveau architecture, imperial collections amassed by Habsburgs, and vibrant contemporary scene. Special exhibitions, evening tours, and combination tickets make experiencing Vienna's cultural treasures accessible. From medieval altarpieces to Klimt's golden period to cutting-edge installations, Vienna offers art for every taste!`,
 
       seo: {
-        title: 'Vienna Art & Culture Tours 2025 - Klimt, Museums & Belvedere',
+        title: 'Vienna Art & Culture Tours 2026 - Klimt, Museums & Belvedere',
         description: 'Explore Vienna\'s art scene! Klimt\'s Kiss, Belvedere Palace, and world-class museums!',
         keywords: 'Vienna art museums, Klimt Vienna, Belvedere Palace, Vienna culture, Kunsthistorisches Museum',
       },
@@ -40434,7 +40434,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Zurich's charming Old Town (Altstadt) - a beautifully preserved medieval quarter with over 2,000 years of history! The compact historic center straddles both sides of the Limmat River: east side Niederdorf (lively pedestrian zone with shops, restaurants, and nightlife) and west side with upscale Bahnhofstrasse shopping street. Walking tours explore Grossmünster (Zurich's iconic twin-towered cathedral), Fraumünster (famous for Chagall stained glass windows), Lindenhof (elevated plaza with Roman ruins and city views), cobblestone lanes lined with medieval guild houses, trendy Zurich West district (former industrial area), and the charming waterfront. Learn about Zurich's evolution from Roman settlement to financial capital, Reformation history led by Zwingli, and modern Swiss culture. The Old Town combines historical charm with contemporary Swiss lifestyle!`,
 
       seo: {
-        title: 'Zurich Old Town Tours 2025 - Medieval Altstadt & Walking Tours',
+        title: 'Zurich Old Town Tours 2026 - Medieval Altstadt & Walking Tours',
         description: 'Explore Zurich Old Town! Medieval streets, Grossmünster, Fraumünster, and historic Altstadt!',
         keywords: 'Zurich Old Town, Zurich walking tours, Altstadt Zurich, Grossmünster, Zurich historic center',
       },
@@ -40610,7 +40610,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Lake Zurich (Zürichsee), the stunning alpine lake that defines Zurich's character! This 40km-long glacial lake offers crystal-clear waters backed by snow-capped Alps creating postcard-perfect scenery. Lake cruises explore from Zurich city to charming lakeside villages like Rapperswil (medieval "town of roses"), passing vineyards, elegant villas, and swimming beaches. Tours range from 1-hour city cruises to 4-hour grand tours, sunset dinner cruises, and paddle steamer rides on historic Belle Époque boats. The lake promenades (Quaibrücke, Bürkliplatz) are perfect for strolls, cycling, or swimming at public lidos (Strandbad). In summer, locals swim in the lake right in the city center! It's Swiss natural beauty combined with urban sophistication.`,
 
       seo: {
-        title: 'Zurich Lake Zurich Tours 2025 - Lake Cruises & Boat Tours',
+        title: 'Zurich Lake Zurich Tours 2026 - Lake Cruises & Boat Tours',
         description: 'Explore Lake Zurich! Scenic lake cruises, alpine views, and Swiss waterfront beauty!',
         keywords: 'Lake Zurich tours, Zurich boat tours, Lake Zurich cruises, Zürichsee, Zurich lake activities',
       },
@@ -40786,7 +40786,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience the Swiss Alps from Zurich - stunning mountain day trips to Europe's most spectacular peaks! Popular tours visit Jungfraujoch ("Top of Europe" at 3,454m with snow year-round), Mount Titlis (revolving cable car and glacier cave), Pilatus (world's steepest cogwheel railway), Rigi ("Queen of the Mountains"), and Interlaken nestled between turquoise lakes. Tours combine scenic train journeys through alpine valleys, cable car rides offering panoramic views, glacier experiences, charming mountain villages like Grindelwald and Lauterbrunnen (valley of 72 waterfalls), and Swiss culture. Many include cheese factories, chocolate stops, and traditional Swiss lunch. It's the quintessential Swiss Alps experience accessible as day trips from Zurich!`,
 
       seo: {
-        title: 'Zurich Swiss Alps Tours 2025 - Jungfraujoch & Mountain Day Trips',
+        title: 'Zurich Swiss Alps Tours 2026 - Jungfraujoch & Mountain Day Trips',
         description: 'Explore Swiss Alps from Zurich! Jungfraujoch, Mount Titlis, and spectacular mountain tours!',
         keywords: 'Swiss Alps tours Zurich, Jungfraujoch day trip, Mount Titlis, Zurich mountain tours, Alps from Zurich',
       },
@@ -40962,7 +40962,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Discover Zurich's exceptional food scene combining Swiss traditions with international sophistication! Food tours explore traditional dishes like fondue (melted cheese with bread), raclette (melted cheese scraped onto potatoes), Zürcher Geschnetzeltes (veal in cream sauce), and Rösti (crispy potato cake). But the highlight is Swiss chocolate - tours visit legendary chocolatiers like Sprüngli, Läderach, and Lindt, with tastings of pralines, truffles, and Swiss chocolate specialties. Learn about Swiss chocolate-making traditions, visit Lindt Chocolate Museum (Lindt Home of Chocolate) with world's largest chocolate fountain, explore vibrant Zurich food markets, and dine at traditional restaurants. Many tours include cheese fondue experiences, wine pairings, and insights into Swiss culinary culture. It's delicious introduction to Swiss gastronomy!`,
 
       seo: {
-        title: 'Zurich Food & Chocolate Tours 2025 - Swiss Cuisine & Chocolate',
+        title: 'Zurich Food & Chocolate Tours 2026 - Swiss Cuisine & Chocolate',
         description: 'Experience Zurich food tours! Swiss chocolate, fondue, and authentic Swiss cuisine!',
         keywords: 'Zurich food tours, Swiss chocolate, Zurich chocolate tours, Swiss fondue, Lindt chocolate Zurich',
       },
@@ -41138,7 +41138,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Explore Zurich's historic districts revealing layers of Swiss history from Roman Turicum to modern global financial center! Tours cover the medieval Old Town (Altstadt), elegant Bahnhofstrasse (one of world's most expensive shopping streets), Lindenhof hill (Roman fort site), historic guild houses along Limmat River, and diverse neighborhoods like Seefeld, Zürich West (transformed industrial area), and university district. Learn about Swiss Reformation led by Zwingli, guild traditions shaping city governance, banking history that made Zurich a financial powerhouse, and the surprising progressive culture (first European city to elect female mayor in 1970). Guides explain how Zurich balanced tradition with innovation, maintained Swiss neutrality, and became one of world's most livable cities!`,
 
       seo: {
-        title: 'Zurich Historic District Tours 2025 - Walking Tours & Swiss History',
+        title: 'Zurich Historic District Tours 2026 - Walking Tours & Swiss History',
         description: 'Explore Zurich historic districts! Roman ruins, medieval Altstadt, and Swiss history!',
         keywords: 'Zurich historic tours, Zurich history, Altstadt Zurich, Roman Zurich, Zurich walking tours',
       },
@@ -41314,7 +41314,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       introduction: `Experience Zurich as a luxury shopping and cultural destination! Bahnhofstrasse, one of world's most expensive shopping streets, features flagship stores of Swiss watchmakers (Rolex, Patek Philippe, Omega), luxury brands (Chanel, Prada, Louis Vuitton), and Swiss specialty shops. Tours explore Swiss watch culture, visit traditional shops selling Swiss Army knives and textiles, discover emerging designers in Niederdorf, and explore art galleries and museums. The cultural scene includes Kunsthaus Zurich (Swiss art museum), Museum Rietberg (Asian art), FIFA World Football Museum, and vibrant street art in Zürich West. Learn about Swiss craftsmanship, precision engineering, and how Zurich balances luxury with progressive culture. Some tours include personal shopping experiences and tax-free shopping guidance!`,
 
       seo: {
-        title: 'Zurich Shopping & Culture Tours 2025 - Bahnhofstrasse & Luxury',
+        title: 'Zurich Shopping & Culture Tours 2026 - Bahnhofstrasse & Luxury',
         description: 'Explore Zurich shopping! Bahnhofstrasse, Swiss watches, luxury boutiques, and culture!',
         keywords: 'Zurich shopping, Bahnhofstrasse, Swiss watches Zurich, luxury shopping Zurich, Zurich culture',
       },
@@ -41491,7 +41491,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Step back in time as you wander through Marbella's enchanting Old Town, where narrow cobblestone streets wind past whitewashed buildings adorned with colorful flower pots and wrought-iron balconies. This historic quarter, dating back to Moorish times, offers a perfect blend of Andalusian charm, Spanish culture, and Mediterranean beauty. Marbella Old Town walking tours take you through the Orange Square (Plaza de los Naranjos), past the 15th-century town hall, into charming tapas bars, and through hidden courtyards that reveal centuries of history. Experience the authentic side of Marbella beyond the glitz of Puerto Banús, discover local artisans, taste traditional Andalusian cuisine, and immerse yourself in the laid-back atmosphere that makes this one of the Costa del Sol's most beloved destinations.`,
       seo: {
-        title: 'Marbella Old Town Walking Tours 2025: Historic Quarter & Culture',
+        title: 'Marbella Old Town Walking Tours 2026: Historic Quarter & Culture',
         description: 'Book the best Old Town walking tours in Marbella. Explore whitewashed streets, Orange Square, historic sites & tapas culture. From €25/person with expert guides.',
         keywords: 'Marbella Old Town tours, Marbella walking tours, Orange Square Marbella, historic Marbella tours, Andalusian architecture tours, Marbella culture tours',
       },
@@ -41645,7 +41645,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `The Costa del Sol lives up to its name with over 300 days of sunshine annually and some of Spain's most beautiful beaches stretching along the Mediterranean coast. Marbella's beach and dune exploration tours take you beyond the popular resort beaches to discover pristine stretches of golden sand, dramatic sand dunes, hidden coves, and natural coastal landscapes that showcase the region's stunning beauty. From the famous Playa de la Fontanilla to the protected dunes of Artola, from water sports adventures to peaceful beach walks, these tours offer the perfect blend of relaxation, natural beauty, and coastal exploration. Experience the Mediterranean's crystal-clear waters, learn about coastal ecosystems, enjoy beach activities, and discover why the Costa del Sol has been a beloved destination for generations of travelers seeking sun, sea, and sand.`,
       seo: {
-        title: 'Costa del Sol Beach & Dune Tours 2025: Best Coastal Exploration',
+        title: 'Costa del Sol Beach & Dune Tours 2026: Best Coastal Exploration',
         description: 'Book beach and dune exploration tours in Marbella. Discover pristine beaches, sand dunes, hidden coves & water sports. From €40/person with expert guides.',
         keywords: 'Costa del Sol beach tours, Marbella beach tours, sand dune tours, coastal exploration Marbella, Mediterranean beach tours, Artola dunes',
       },
@@ -41799,7 +41799,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Puerto Banús is Marbella's glamorous playground, where luxury yachts line the marina, designer boutiques showcase the world's finest brands, and the jet-set lifestyle comes alive in one of Europe's most exclusive destinations. Built in 1970 to rival Monaco and Saint-Tropez, this purpose-built marina has become synonymous with luxury, attracting celebrities, billionaires, and discerning travelers from around the world. Luxury Puerto Banús experiences take you behind the scenes of this exclusive enclave, from private yacht tours to designer shopping guides, from fine dining experiences to sunset cocktails at waterfront bars. Discover the history of this ambitious project, learn about the superyachts and their owners, explore the high-end shopping district, and experience the sophisticated atmosphere that makes Puerto Banús one of the Mediterranean's most iconic luxury destinations. Whether you're window shopping, dining at Michelin-starred restaurants, or simply soaking in the glamour, these tours offer an unforgettable glimpse into the world of luxury travel.`,
       seo: {
-        title: 'Puerto Banús Luxury Tours 2025: Yachts, Shopping & Fine Dining',
+        title: 'Puerto Banús Luxury Tours 2026: Yachts, Shopping & Fine Dining',
         description: 'Book luxury Puerto Banús experiences in Marbella. Private yacht tours, designer shopping, fine dining & marina exploration. From €50/person.',
         keywords: 'Puerto Banús tours, luxury Marbella tours, yacht tours Marbella, designer shopping Marbella, luxury marina tours, Costa del Sol luxury',
       },
@@ -41953,7 +41953,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Andalusian cuisine is a celebration of fresh Mediterranean ingredients, Moorish influences, and Spanish culinary traditions that have evolved over centuries. Marbella's culinary and tapas trails take you on a delicious journey through the authentic flavors of southern Spain, from traditional tapas bars in the Old Town to modern restaurants showcasing innovative Andalusian cuisine. Experience the social ritual of tapas - small plates meant for sharing, conversation, and enjoying life's simple pleasures. Sample classic dishes like jamón ibérico, gazpacho, fried fish, and local specialties while learning about the history, ingredients, and cultural significance of Andalusian food. Whether you're exploring hidden tapas bars with locals, learning to make traditional dishes in cooking classes, or dining at restaurants that honor regional traditions, these culinary experiences offer an authentic taste of Marbella and the Costa del Sol's rich gastronomic heritage.`,
       seo: {
-        title: 'Marbella Tapas & Culinary Tours 2025: Authentic Andalusian Food',
+        title: 'Marbella Tapas & Culinary Tours 2026: Authentic Andalusian Food',
         description: 'Book the best tapas and culinary tours in Marbella. Experience authentic Andalusian cuisine, traditional tapas bars & cooking classes. From €45/person.',
         keywords: 'Marbella tapas tours, Andalusian food tours, culinary tours Marbella, tapas bars Marbella, Spanish food tours, cooking classes Marbella',
       },
@@ -42107,7 +42107,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Long before Marbella became a glamorous resort destination, this region was home to ancient civilizations that left their mark on the landscape. The Costa del Sol's Roman heritage is particularly rich, with archaeological sites revealing a fascinating history of trade, settlement, and cultural exchange. Historical ruins and Roman heritage tours take you beyond the beaches and luxury to discover the ancient past, from Roman villas and baths to archaeological museums, from ancient trade routes to the remains of settlements that once thrived along this strategic Mediterranean coast. Explore sites like the Roman ruins near Marbella, visit archaeological museums showcasing artifacts, learn about the region's importance in the Roman Empire, and discover how ancient history shaped the modern Costa del Sol. These tours offer a fascinating contrast to Marbella's contemporary glamour, revealing layers of history that add depth and context to your visit.`,
       seo: {
-        title: 'Marbella Roman Ruins Tours 2025: Archaeological Sites & History',
+        title: 'Marbella Roman Ruins Tours 2026: Archaeological Sites & History',
         description: 'Book historical and Roman heritage tours in Marbella. Explore ancient ruins, archaeological sites & museums. From €35/person with expert guides.',
         keywords: 'Marbella Roman ruins, archaeological tours Marbella, Roman heritage Costa del Sol, historical tours Marbella, ancient sites Spain',
       },
@@ -42261,7 +42261,7 @@ ng stories about Spanish colonization, colonial power, pirate attacks, and Santo
       },
       introduction: `Just minutes from Marbella's beaches and luxury resorts, the Sierra Blanca mountains rise dramatically, offering a completely different world of natural beauty, hiking trails, and outdoor adventure. This mountain range, part of the larger Serranía de Ronda, provides stunning contrasts to the coastal glamour - ancient forests, rugged peaks, panoramic views, and diverse ecosystems that showcase Andalusia's wild side. Sierra Blanca nature and hiking adventures take you into this natural playground, from gentle walks through pine forests to challenging summit hikes, from wildlife spotting to learning about local flora and fauna. Experience breathtaking views of the Mediterranean, Marbella, and the Costa del Sol from mountain viewpoints, discover hidden waterfalls and natural pools, and connect with the authentic Andalusian landscape that has inspired artists and travelers for centuries. Whether you're seeking active adventure, peaceful nature immersion, or simply stunning scenery, these mountain experiences offer unforgettable escapes into Marbella's natural heritage.`,
       seo: {
-        title: 'Sierra Blanca Hiking Tours 2025: Mountain Adventures & Nature',
+        title: 'Sierra Blanca Hiking Tours 2026: Mountain Adventures & Nature',
         description: 'Book Sierra Blanca hiking and nature tours from Marbella. Mountain trails, wildlife spotting & panoramic views. From €50/person with expert guides.',
         keywords: 'Sierra Blanca hiking, Marbella mountain tours, nature tours Costa del Sol, hiking tours Spain, mountain adventures Marbella',
       },

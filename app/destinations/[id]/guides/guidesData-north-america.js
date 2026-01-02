@@ -17,7 +17,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Lake Louise, one of the world's most photographed lakes and Banff's crown jewel! This stunning glacial lake sits at 1,750m elevation surrounded by towering peaks and the massive Victoria Glacier, creating the iconic turquoise color from glacial rock flour. Tours explore the lakefront trails, Fairmont Chateau Lake Louise (historic luxury hotel), canoeing on the pristine waters, hiking to teahouses (Lake Agnes Tea House and Plain of Six Glaciers), winter ice skating and ice sculptures, and Moraine Lake (equally stunning nearby with Valley of Ten Peaks). Learn about Indigenous history, how glaciers created this landscape, and why the water appears that magical turquoise color. Summer brings wildflowers and hiking; winter transforms it into a frozen wonderland. It's the quintessential Canadian Rockies experience!`,
 
       seo: {
-        title: 'Banff Lake Louise Tours 2025 - Turquoise Lake & Victoria Glacier',
+        title: 'Banff Lake Louise Tours 2026 - Turquoise Lake & Victoria Glacier',
         description: 'Explore Lake Louise in Banff! Turquoise waters, Victoria Glacier, canoeing, and mountain beauty!',
         keywords: 'Lake Louise tours, Banff Lake Louise, Lake Louise canoeing, Victoria Glacier, Moraine Lake',
       },
@@ -193,7 +193,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Banff's incredible hiking and adventure opportunities in the heart of the Canadian Rockies! With over 1,600km of trails ranging from easy lakeside strolls to challenging mountain summits, Banff offers adventures for every level. Popular hikes include Johnston Canyon (suspended walkways), Tunnel Mountain (360° views), Sulphur Mountain (ridge walk), Plain of Six Glaciers, and challenging scrambles like Ha Ling Peak. Summer adventures include via ferrata, rock climbing, mountain biking, and whitewater rafting. Winter brings backcountry skiing, snowshoeing, and ice climbing. Guided tours provide safety, wildlife knowledge, geological insights, and access to remote areas. Learn about alpine ecosystems, bear safety, and why the Canadian Rockies are UNESCO World Heritage sites. It's outdoor paradise!`,
 
       seo: {
-        title: 'Banff Hiking & Adventure Tours 2025 - Canadian Rockies Trails',
+        title: 'Banff Hiking & Adventure Tours 2026 - Canadian Rockies Trails',
         description: 'Experience Banff hiking tours! Alpine trails, mountain summits, and adventure in the Rockies!',
         keywords: 'Banff hiking tours, Banff trails, Canadian Rockies hiking, Johnston Canyon, Banff adventures',
       },
@@ -369,7 +369,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Banff's incredible wildlife in one of North America's best wildlife viewing destinations! Banff National Park is home to grizzly bears, black bears, elk, bighorn sheep, mountain goats, wolves, cougars, moose, deer, and countless bird species. Wildlife tours venture to prime viewing areas during peak activity times (dawn and dusk) with expert guides who know animal behavior, seasonal patterns, and safe viewing practices. Spring brings newborn elk calves and bear emergence; fall features elk rutting season with bugling bulls; winter offers easier wildlife spotting against snow. Learn about conservation efforts protecting these species, how animals adapt to harsh mountain climates, and Parks Canada's wildlife corridors. Tours include spotting scopes, binoculars, and photography tips. It's safari-style wildlife viewing in the Canadian Rockies!`,
 
       seo: {
-        title: 'Banff Wildlife Tours 2025 - Bear Watching & Elk Viewing',
+        title: 'Banff Wildlife Tours 2026 - Bear Watching & Elk Viewing',
         description: 'Experience Banff wildlife tours! Spot bears, elk, bighorn sheep, and Rockies animals!',
         keywords: 'Banff wildlife tours, Banff bear watching, Banff elk, Canadian Rockies wildlife, grizzly bears',
       },
@@ -545,7 +545,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Banff's majestic mountain landscapes - some of the most spectacular peaks in North America! Mountain tours explore the iconic Rockies including Cascade Mountain, Mount Rundle (Banff's most photographed peak), Mount Norquay, and the famous Icefields Parkway drive to Columbia Icefield. Adventures range from scenic drives with photo stops to gondola rides (Banff Gondola, Lake Louise Gondola), glacier walks on Athabasca Glacier, and challenging mountaineering expeditions. Learn about geological forces that built these mountains 80 million years ago, glacial processes shaping landscapes today, and Indigenous peoples' spiritual connections to these peaks. Tours include interpretive stops, wildlife viewing opportunities, and access to viewpoints showcasing the Continental Divide. It's the ultimate Canadian Rockies mountain experience!`,
 
       seo: {
-        title: 'Banff Mountain Tours 2025 - Canadian Rockies Peaks & Glaciers',
+        title: 'Banff Mountain Tours 2026 - Canadian Rockies Peaks & Glaciers',
         description: 'Explore Banff mountains! Iconic peaks, Icefields Parkway, glaciers, and Rockies scenery!',
         keywords: 'Banff mountain tours, Canadian Rockies, Icefields Parkway, Columbia Icefield, Banff Gondola',
       },
@@ -721,7 +721,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Banff through your lens with specialized photography tours designed for capturing the Canadian Rockies' beauty! Expert photographer guides lead you to iconic locations like Moraine Lake, Lake Louise, Vermillion Lakes, and Peyto Lake during optimal lighting conditions (golden hour, blue hour, and sunrise/sunset). Learn composition techniques, camera settings for landscapes, long exposure for waterfalls, wildlife photography ethics, and how to capture the turquoise lake colors. Tours range from sunrise shoots at famous spots to multi-day photography workshops covering advanced techniques. Whether you're shooting with smartphone, DSLR, or mirrorless camera, guides help you capture postcard-worthy images. Seasonal tours include fall colors, winter aurora borealis, spring wildflowers, and summer alpenglow. It's photographer's paradise with world-class scenery!`,
 
       seo: {
-        title: 'Banff Photography Tours 2025 - Landscape & Wildlife Photo Workshops',
+        title: 'Banff Photography Tours 2026 - Landscape & Wildlife Photo Workshops',
         description: 'Capture Banff\'s beauty! Photography tours, sunrise shoots, and expert guidance in the Rockies!',
         keywords: 'Banff photography tours, Banff photo workshops, Moraine Lake photography, Canadian Rockies photos',
       },
@@ -897,7 +897,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Immerse yourself in Banff's extraordinary natural ecosystems with expert naturalist guides! Nature tours explore diverse habitats from montane valleys to alpine tundra, showcasing wildflowers (July-August peak), ancient forests, pristine lakes, glaciers, and geological wonders. Learn about plant adaptations to harsh mountain climates, how glaciers carved the landscape, predator-prey relationships in wildlife communities, and Indigenous traditional ecological knowledge. Tours include interpretive hikes to alpine meadows, lake ecosystems, forest ecology walks, and geological interpretation. Discover why Banff is a UNESCO World Heritage Site, understand conservation challenges, and witness nature's resilience. Seasonal highlights include spring wildflowers, summer alpine blooms, fall colors, and winter ecology. It's nature education combined with breathtaking Canadian Rockies scenery!`,
 
       seo: {
-        title: 'Banff Nature Tours 2025 - Wildflowers, Ecosystems & Guided Hikes',
+        title: 'Banff Nature Tours 2026 - Wildflowers, Ecosystems & Guided Hikes',
         description: 'Experience Banff nature tours! Wildflowers, alpine ecology, and naturalist-guided adventures!',
         keywords: 'Banff nature tours, Banff wildflowers, Banff ecology, Canadian Rockies nature, naturalist tours',
       },
@@ -1075,7 +1075,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience El Arco (The Arch), Cabo San Lucas's most iconic landmark where the Pacific Ocean meets the Sea of Cortez! This stunning natural rock formation at Land's End has become Mexico's most photographed arch and Cabo's symbol. Tours include glass-bottom boat rides showing tropical fish below, water taxi access to Lover's Beach (calm Sea of Cortez side) and Divorce Beach (rough Pacific side), kayaking adventures paddling to the arch, snorkeling around the rock formations, and sunset cruises with the arch as backdrop. See sea lion colonies sunbathing on nearby rocks, pelicans diving, and sometimes migrating whales! Learn about geological forces creating this limestone arch over millions of years and why it marks the southern tip of Baja California. It's the quintessential Cabo experience!`,
 
       seo: {
-        title: 'Cabo San Lucas Arch Tours 2025 - El Arco & Lover\'s Beach',
+        title: 'Cabo San Lucas Arch Tours 2026 - El Arco & Lover\'s Beach',
         description: 'Visit Cabo\'s famous Arch! El Arco boat tours, Lover\'s Beach, and iconic rock formations!',
         keywords: 'Cabo Arch tours, El Arco Cabo, Arch of Cabo, Lover\'s Beach, Cabo San Lucas landmark',
       },
@@ -1251,7 +1251,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience world-class sport fishing in Cabo San Lucas, the legendary "Marlin Capital of the World"! The waters off Cabo's coast offer incredible fishing year-round with marlin (blue, black, striped), dorado (mahi-mahi), tuna (yellowfin, bluefin), wahoo, and sailfish. Fishing charters depart from Cabo's marina exploring the Pacific, Sea of Cortez, and the famous underwater canyon just minutes offshore where warm and cold currents meet creating nutrient-rich waters attracting fish. Charters range from shared pangas (small boats) to luxury yachts with experienced captains and crews, all equipment, bait, and often catch-and-release practices for marlin conservation. The fishing season peaks May-November for marlin but something bites year-round. It's bucket-list fishing!`,
 
       seo: {
-        title: 'Cabo San Lucas Fishing Tours 2025 - Marlin & Sport Fishing Charters',
+        title: 'Cabo San Lucas Fishing Tours 2026 - Marlin & Sport Fishing Charters',
         description: 'Fish in Cabo San Lucas! Marlin, tuna, dorado, and world-class sport fishing charters!',
         keywords: 'Cabo fishing, Cabo sport fishing, marlin fishing Cabo, Cabo fishing charters, deep sea fishing',
       },
@@ -1427,7 +1427,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Explore Cabo's stunning beaches from touristy Médano Beach (Cabo's party beach) to secluded Santa Maria (calm snorkeling bay), Chileno Beach (family-friendly with gentle waves), and Lover's Beach accessible only by boat! Beach tours include beach-hopping boat excursions visiting multiple beaches, snorkeling at protected coves, beach clubs with water sports, and exploring the famous Cabo Corridor (Tourist Corridor) connecting Cabo San Lucas to San José del Cabo. Each beach offers unique character - some with beach clubs and activities, others completely natural and peaceful. The Sea of Cortez side offers calm, swimmable waters while Pacific beaches showcase dramatic waves. Learn about marine ecosystems, protected areas, and local beach culture while enjoying Mexico's finest coastal scenery!`,
 
       seo: {
-        title: 'Cabo San Lucas Beach Tours 2025 - Beach Hopping & Hidden Coves',
+        title: 'Cabo San Lucas Beach Tours 2026 - Beach Hopping & Hidden Coves',
         description: 'Explore Cabo beaches! Santa Maria, Chileno, Médano Beach, and pristine coves!',
         keywords: 'Cabo beaches, Santa Maria Beach, Chileno Beach, Medano Beach, Cabo beach tours',
       },
@@ -1603,7 +1603,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience incredible whale watching in Cabo San Lucas where thousands of whales migrate annually to Baja California's warm waters! December-April brings humpback whales and gray whales traveling from Alaska to calve and nurse in protected bays. Whale watching tours explore the Sea of Cortez and Pacific waters where these majestic mammals breach, tail-slap, spy-hop, and care for newborn calves. See mothers teaching babies to swim, males competing for females, and spectacular acrobatic displays. Tours combine whale watching with visits to El Arco, sea lion colonies, and sometimes dolphins! Expert naturalist guides explain whale behavior, migration patterns, and conservation efforts. Many operators guarantee sightings (100% success rate in peak season). It's one of nature's greatest spectacles!`,
 
       seo: {
-        title: 'Cabo San Lucas Whale Watching Tours 2025 - Humpback & Gray Whales',
+        title: 'Cabo San Lucas Whale Watching Tours 2026 - Humpback & Gray Whales',
         description: 'Watch whales in Cabo! Humpback whales, gray whales, and incredible marine life!',
         keywords: 'Cabo whale watching, Cabo whales, humpback whales Cabo, gray whales, Cabo marine tours',
       },
@@ -1779,7 +1779,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience thrilling water sports in Cabo San Lucas - the Sea of Cortez's adventure playground! Cabo's warm, clear waters offer every water activity imaginable: jet skiing to El Arco, parasailing over the bay, paddleboarding calm coves, scuba diving with sea lions, snorkeling coral reefs, banana boat rides, flyboarding (water jet packs!), and kayaking rock formations. Popular spots include Médano Beach (main water sports hub), Santa Maria Bay (snorkeling), Chileno Beach (diving), and the Arch area. Rentals and tours cater to all skill levels from beginners to advanced. Learn to surf at Cerritos Beach, kitesurf at Los Barriles, or simply float peacefully on a paddleboard. The warm water (72-84°F year-round) and reliable weather make Cabo perfect for water sports!`,
 
       seo: {
-        title: 'Cabo San Lucas Water Sports 2025 - Jet Ski, Parasailing & Diving',
+        title: 'Cabo San Lucas Water Sports 2026 - Jet Ski, Parasailing & Diving',
         description: 'Experience Cabo water sports! Jet skiing, parasailing, diving, and Sea of Cortez adventures!',
         keywords: 'Cabo water sports, Cabo jet ski, parasailing Cabo, Cabo diving, Cabo snorkeling',
       },
@@ -1955,7 +1955,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Indulge in Cabo San Lucas luxury - world-class resorts, private yacht charters, and exclusive experiences! Cabo attracts celebrities and luxury travelers with its stunning coastal beauty and sophisticated amenities. Luxury tours include private yacht charters to secluded beaches with gourmet catering, helicopter tours over Baja, spa treatments at five-star resorts, private fishing charters, VIP beach club access, sunset sailing with premium open bar, and fine dining at award-winning restaurants. Experience Los Cabos' famous resorts like One&Only Palmilla, Las Ventanas al Paraíso, and The Resort at Pedregal. Activities include swimming pool parties, private golf at championship courses, couples' spa experiences, and customized adventures. It's Mexico's premier luxury destination combining natural beauty with world-class service!`,
 
       seo: {
-        title: 'Cabo San Lucas Luxury Tours 2025 - Private Yachts & VIP Experiences',
+        title: 'Cabo San Lucas Luxury Tours 2026 - Private Yachts & VIP Experiences',
         description: 'Experience Cabo luxury! Private yacht charters, exclusive resorts, and VIP treatments!',
         keywords: 'Cabo luxury tours, Cabo private yacht, luxury resorts Cabo, VIP Cabo, Los Cabos luxury',
       },
@@ -2133,7 +2133,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Cancun's spectacular beaches along the famous Hotel Zone (Zona Hotelera) - 14 miles of pristine white sand lining the turquoise Caribbean! Beach tours explore Playa Delfines (Dolphin Beach with dramatic waves and iconic CANCUN sign), Playa Tortugas (calm family beach with water sports), Isla Mujeres beaches (Playa Norte ranked among world's best), and hidden gems like Playa Maroma and Puerto Morelos. Tours include beach hopping by boat or bus, beach club day passes with infinity pools and gourmet dining, catamaran sails to secluded coves, and snorkeling in crystal-clear waters. Learn about sea turtle conservation (beaches are nesting sites!), coral reef protection, and Mayan connection to the Caribbean. Whether partying at beach clubs or relaxing at quiet stretches, Cancun offers beach perfection!`,
 
       seo: {
-        title: 'Cancun Beach Tours 2025 - White Sand Beaches & Caribbean Paradise',
+        title: 'Cancun Beach Tours 2026 - White Sand Beaches & Caribbean Paradise',
         description: 'Explore Cancun beaches! Playa Delfines, Isla Mujeres, beach clubs, and turquoise waters!',
         keywords: 'Cancun beaches, Playa Delfines, Cancun beach tours, Isla Mujeres beaches, Cancun beach clubs',
       },
@@ -2309,7 +2309,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover the incredible Mayan ruins near Cancun - archaeological treasures revealing one of history's most advanced civilizations! Tours visit Chichen Itza (New Wonder of the World with iconic El Castillo pyramid), Tulum (stunning clifftop ruins overlooking Caribbean), Coba (climb 138 steps of Nohoch Mul pyramid), and lesser-known sites like Ek Balam and El Rey. Learn about Mayan astronomy, mathematics, hieroglyphics, ball games, sacrificial ceremonies, and the mysterious collapse. Expert archaeologist guides explain architectural significance, decode temple carvings, and share theories about Mayan culture. Many tours combine ruins with cenote swimming (sacred sinkholes), traditional Mayan villages, and authentic Mexican lunch. It's time travel to ancient Mesoamerica!`,
 
       seo: {
-        title: 'Cancun Mayan Ruins Tours 2025 - Chichen Itza, Tulum & Pyramids',
+        title: 'Cancun Mayan Ruins Tours 2026 - Chichen Itza, Tulum & Pyramids',
         description: 'Explore Mayan ruins from Cancun! Chichen Itza, Tulum, Coba, and ancient pyramids!',
         keywords: 'Cancun Mayan ruins, Chichen Itza tours, Tulum ruins, Coba pyramid, Mayan tours Cancun',
       },
@@ -2485,7 +2485,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience thrilling water sports in Cancun's Caribbean playground! The warm, crystal-clear waters offer every adventure imaginable: jet skiing across Nichupte Lagoon, parasailing over turquoise Caribbean with aerial Hotel Zone views, zip-lining into cenotes, scuba diving the Mesoamerican Reef (world's second-largest), kayaking through mangroves, flyboarding with water jets, banana boat rides, and wakeboarding. Popular spots include Hotel Zone beaches, Xel-Há park (natural aquarium), Xplor adventure park (underground rivers), and Isla Mujeres waters. Activities cater to all levels with safety equipment, instruction, and guides. The year-round warm water (78-84°F), calm lagoon areas, and reliable weather make Cancun perfect for water sports. Combine beach relaxation with adrenaline adventures!`,
 
       seo: {
-        title: 'Cancun Water Sports 2025 - Jet Ski, Parasailing & Caribbean Adventures',
+        title: 'Cancun Water Sports 2026 - Jet Ski, Parasailing & Caribbean Adventures',
         description: 'Experience Cancun water sports! Jet skiing, parasailing, diving, and Caribbean fun!',
         keywords: 'Cancun water sports, Cancun jet ski, parasailing Cancun, Cancun diving, Xel-Ha park',
       },
@@ -2661,7 +2661,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Isla Mujeres, the tropical island paradise just 13km off Cancun's coast! This charming 7km-long island offers a relaxed alternative to Cancun's bustle with Playa Norte (rated among world's top beaches), colorful downtown with golf cart transportation, underwater snorkeling at Garrafón Park, swimming with whale sharks (May-September), and dramatic Punta Sur cliffs with temple ruins and views. Island tours include catamaran sails with open bar, snorkeling at coral reefs, beach club access, downtown exploration, dolphin encounters, and sunset cruises. Learn about island's pirate history, sea turtle conservation (major nesting site), and local fishing traditions. The island's name means "Island of Women" from Mayan goddess Ixchel temple. It's Cancun's perfect day trip escape!`,
 
       seo: {
-        title: 'Cancun Isla Mujeres Tours 2025 - Island Paradise & Playa Norte',
+        title: 'Cancun Isla Mujeres Tours 2026 - Island Paradise & Playa Norte',
         description: 'Explore Isla Mujeres from Cancun! Playa Norte, snorkeling, catamaran, and island paradise!',
         keywords: 'Isla Mujeres tours, Cancun island tours, Playa Norte, Isla Mujeres catamaran, Cancun day trips',
       },
@@ -2837,7 +2837,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience world-class snorkeling in Cancun waters along the Mesoamerican Barrier Reef - the second-largest coral reef system in the world! Snorkeling tours explore vibrant coral gardens teeming with tropical fish, sea turtles, rays, and colorful marine life. Popular spots include Puerto Morelos National Park (pristine reef), Isla Mujeres reefs, Akumal Bay (guaranteed sea turtle encounters!), cenotes (freshwater sinkholes), and the famous MUSA underwater museum with 500+ submerged sculptures. Tours range from beginner-friendly lagoon snorkeling to advanced reef expeditions. Learn about coral reef ecosystems, conservation efforts, sea turtle protection, and why the Caribbean's clarity creates perfect snorkeling conditions. Guides ensure safety and point out camouflaged creatures you'd miss solo. It's aquatic wonderland!`,
 
       seo: {
-        title: 'Cancun Snorkeling Tours 2025 - Coral Reefs & Sea Turtles',
+        title: 'Cancun Snorkeling Tours 2026 - Coral Reefs & Sea Turtles',
         description: 'Experience Cancun snorkeling! Coral reefs, sea turtles, MUSA museum, and Caribbean marine life!',
         keywords: 'Cancun snorkeling, Cancun sea turtles, MUSA Cancun, coral reef snorkeling, Akumal turtles',
       },
@@ -3013,7 +3013,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover authentic Mexican and Mayan culture beyond Cancun's resort facade! Cultural tours explore traditional Mayan villages where indigenous communities maintain ancestral traditions, participate in temazcal (Mayan sweat lodge ceremonies), learn ancient cooking techniques preparing cochinita pibil and tortillas, visit local markets bursting with produce and spices, and experience Mexican fiestas with mariachi music and folkloric dancing. Tours include Xcaret Park (eco-archaeological park showcasing Mexican culture), Coba's Mayan community, artisan workshops making traditional crafts, cenote ceremonies honoring Mayan water gods, and downtown Cancun neighborhoods where locals live. Learn about Day of the Dead traditions, Mayan cosmology, Mexican history, and the fascinating blend of indigenous and Spanish cultures. It's the real Mexico!`,
 
       seo: {
-        title: 'Cancun Cultural Tours 2025 - Mayan Traditions & Mexican Culture',
+        title: 'Cancun Cultural Tours 2026 - Mayan Traditions & Mexican Culture',
         description: 'Experience Cancun culture! Mayan villages, Mexican traditions, and authentic experiences!',
         keywords: 'Cancun cultural tours, Mayan culture, Xcaret Park, Mexican traditions, authentic Cancun',
       },
@@ -3191,7 +3191,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Chicago's legendary architecture - the city that invented the skyscraper and revolutionized modern design! Architecture tours explore iconic buildings like Willis Tower (formerly Sears Tower with 103rd-floor Skydeck), John Hancock Center, Tribune Tower, Wrigley Building, and Cloud Gate (The Bean) at Millennium Park. The famous Chicago Architecture River Cruise navigates the Chicago River showcasing 50+ buildings while expert docents explain architectural styles: Chicago School, Art Deco, International Style, and contemporary designs by Frank Lloyd Wright, Mies van der Rohe, and Santiago Calatrava. Walking tours cover the Loop's historic skyscrapers, Frank Lloyd Wright's Oak Park houses, and cutting-edge modern towers. Learn why the 1871 Great Chicago Fire created opportunity for architectural innovation and how Chicago became the world's architecture capital!`,
 
       seo: {
-        title: 'Chicago Architecture Tours 2025 - River Cruise & Skyscraper Tours',
+        title: 'Chicago Architecture Tours 2026 - River Cruise & Skyscraper Tours',
         description: 'Explore Chicago architecture! River cruise, Willis Tower, skyscrapers, and iconic buildings!',
         keywords: 'Chicago architecture tours, Chicago river cruise, Willis Tower, Chicago architecture boat tour',
       },
@@ -3367,7 +3367,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Chicago's exceptional museums rivaling the world's finest institutions! The Museum Campus along Lake Michigan houses three world-class museums: Field Museum (Sue the T-Rex and natural history), Shedd Aquarium (32,000 aquatic animals), and Adler Planetarium (space and astronomy). The Art Institute of Chicago features iconic works like Grant Wood's "American Gothic," Georges Seurat's "A Sunday on La Grande Jatte," and extensive Impressionist collections. Other highlights include Museum of Science and Industry (massive interactive exhibits in historic building), Chicago History Museum, and contemporary art at MCA. Tours provide skip-the-line access, expert guides explaining masterpieces, and thematic explorations. Learn about Chicago's cultural contributions, see dinosaur fossils, interact with science exhibits, and admire world-class art. It's museum paradise!`,
 
       seo: {
-        title: 'Chicago Museum Tours 2025 - Art Institute, Field Museum & More',
+        title: 'Chicago Museum Tours 2026 - Art Institute, Field Museum & More',
         description: 'Explore Chicago museums! Art Institute, Field Museum, science exhibits, and world-class collections!',
         keywords: 'Chicago museums, Art Institute Chicago, Field Museum, Shedd Aquarium, Chicago museum tours',
       },
@@ -3543,7 +3543,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Chicago's incredible food scene - from deep-dish pizza to Chicago-style hot dogs to innovative fine dining! Food tours explore iconic pizza institutions like Lou Malnati's, Giordano's, and Pequod's (caramelized crust!), try authentic Chicago hot dogs (never ketchup!), visit diverse neighborhoods like Pilsen (Mexican), Chinatown, Little Italy, and vibrant West Loop restaurant district. Sample Italian beef sandwiches, Garrett Popcorn (cheese + caramel mix), Polish sausages, and cutting-edge cuisine from Michelin-starred chefs. Walking food tours combine 6-8 tastings with neighborhood history, while pizza tours compare different styles (deep-dish vs. tavern-style thin crust). Learn why Chicago became a culinary capital, how immigration shaped food culture, and where locals actually eat. It's delicious cultural education!`,
 
       seo: {
-        title: 'Chicago Food & Pizza Tours 2025 - Deep Dish & Culinary Adventures',
+        title: 'Chicago Food & Pizza Tours 2026 - Deep Dish & Culinary Adventures',
         description: 'Experience Chicago food tours! Deep-dish pizza, Chicago hot dogs, and diverse cuisine!',
         keywords: 'Chicago food tours, Chicago pizza tours, deep dish pizza, Chicago hot dog, Chicago food scene',
       },
@@ -3719,7 +3719,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Chicago's stunning Lake Michigan waterfront - 28 miles of beaches, parks, and recreation right in the city! Lake tours include scenic cruises seeing Chicago's skyline from water, Navy Pier attractions (150-foot Ferris wheel, parks, restaurants), Lakefront Trail cycling (18-mile path), North Avenue Beach activities, and sunset sails. The lakefront features Museum Campus, Grant Park, Millennium Park, Oak Street Beach, and Lincoln Park - all accessible and beautiful. Summer brings beach culture with swimming, volleyball, and outdoor concerts. Learn about Lake Michigan's role in Chicago's development, the reversal of Chicago River, and how "the Lake" defines Chicago living. Boat tours offer unique skyline perspectives while beach activities provide urban recreation. It's Chicago's natural playground!`,
 
       seo: {
-        title: 'Chicago Lake Michigan Tours 2025 - Lake Cruises & Waterfront',
+        title: 'Chicago Lake Michigan Tours 2026 - Lake Cruises & Waterfront',
         description: 'Explore Lake Michigan in Chicago! Lake cruises, Navy Pier, beaches, and waterfront beauty!',
         keywords: 'Lake Michigan Chicago, Chicago lake cruises, Navy Pier, Chicago beaches, lakefront tours',
       },
@@ -3895,7 +3895,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Chicago's vibrant neighborhoods - each with unique character, history, and culture! Chicago is famously a "city of neighborhoods" with 77 distinct communities beyond downtown. Tours explore trendy Wicker Park/Bucktown (hipster cafes, vintage shops, street art), historic Pilsen (Mexican murals, taquerías, art galleries), upscale Lincoln Park (zoo, boutiques, brownstones), Andersonville (Swedish heritage, LGBTQ+ friendly), Chinatown (authentic dim sum and culture), and Bronzeville (African American history and jazz). Walking tours combine local history, architecture, food stops, and insider perspectives. Learn about immigration waves shaping Chicago, ethnic enclaves preserving traditions, gentrification dynamics, and neighborhood pride. Guides share stories mainstream tours miss. It's authentic Chicago beyond the Loop!`,
 
       seo: {
-        title: 'Chicago Neighborhood Tours 2025 - Wicker Park, Pilsen & Local Culture',
+        title: 'Chicago Neighborhood Tours 2026 - Wicker Park, Pilsen & Local Culture',
         description: 'Explore Chicago neighborhoods! Wicker Park, Pilsen, ethnic enclaves, and authentic Chicago!',
         keywords: 'Chicago neighborhood tours, Wicker Park, Pilsen Chicago, Chicago cultural tours, local Chicago',
       },
@@ -4071,7 +4071,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Immerse yourself in Chicago's extraordinary cultural scene - from blues and jazz to world-class theater! Cultural tours explore Chicago's musical legacy visiting historic blues clubs on South Side (Buddy Guy's Legends, Kingston Mines), Chicago Theatre District, Millennium Park's public art (Cloud Gate, Crown Fountain), renowned theaters hosting Broadway shows, and cultural institutions. Experience live blues music where legends like Muddy Waters and Howlin' Wolf performed, visit Second City comedy club (launched SNL stars), explore street art in Pilsen and Logan Square, and attend Chicago Symphony Orchestra performances. Learn about Chicago's role in blues history, improv comedy birth, and vibrant arts scene. Tours combine cultural sites with performances, museum visits, and insider access. It's Chicago's creative soul!`,
 
       seo: {
-        title: 'Chicago Cultural Tours 2025 - Blues Music, Theater & Public Art',
+        title: 'Chicago Cultural Tours 2026 - Blues Music, Theater & Public Art',
         description: 'Experience Chicago culture! Blues clubs, theater, Millennium Park, and cultural heritage!',
         keywords: 'Chicago cultural tours, Chicago blues tours, Chicago theater, Millennium Park, Chicago music',
       },
@@ -4249,7 +4249,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience the spectacular Rocky Mountains just 30 minutes from Denver! Mountain tours explore Rocky Mountain National Park (415 square miles of alpine wilderness), historic mountain towns like Georgetown and Idaho Springs, scenic drives along Trail Ridge Road (highest continuous paved road in US at 12,183 feet), alpine lakes, hiking trails, and wildlife viewing. Adventures include visiting Estes Park gateway town, seeing massive elk herds, exploring old mining towns, riding historic Georgetown Loop Railroad, relaxing in hot springs, and photographing iconic peaks like Longs Peak (14,259 feet). Winter brings skiing/snowboarding at world-class resorts. Learn about gold rush history, mountain ecology, Continental Divide, and why Denver earned its "Mile High" nickname. It's Colorado mountain magic!`,
 
       seo: {
-        title: 'Denver Rocky Mountain Tours 2025 - National Park & Mountain Adventures',
+        title: 'Denver Rocky Mountain Tours 2026 - National Park & Mountain Adventures',
         description: 'Explore Rocky Mountains from Denver! National Park, alpine lakes, and Colorado peaks!',
         keywords: 'Denver mountain tours, Rocky Mountain National Park, Denver to mountains, Estes Park, Colorado tours',
       },
@@ -4425,7 +4425,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Denver's legendary craft beer scene - the city has more breweries than any US city! With over 150 breweries, Denver earned the title "Napa Valley of Beer." Brewery tours explore iconic breweries like Great Divide, Wynkoop (Denver's first brewpub in historic building), Ratio Beerworks, Denver Beer Co., and RiNo (River North Art District) brewery cluster. Tours visit 3-5 breweries sampling diverse styles from IPAs to sours to stouts, learn brewing processes, meet brewmasters, and explore beer-centric neighborhoods. The LoHi (Lower Highlands) and RiNo districts are brewery meccas with walkable clusters. Many tours include food pairings and transportation. Learn about Colorado's hops, high-altitude brewing challenges, and how Denver became craft beer capital. It's beer lover's paradise!`,
 
       seo: {
-        title: 'Denver Brewery Tours 2025 - Craft Beer & Brewery Tastings',
+        title: 'Denver Brewery Tours 2026 - Craft Beer & Brewery Tastings',
         description: 'Experience Denver breweries! Craft beer tastings, brewery tours, and Colorado beer culture!',
         keywords: 'Denver brewery tours, Denver craft beer, Colorado breweries, Denver beer tours, RiNo breweries',
       },
@@ -4601,7 +4601,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Denver's excellent museum scene showcasing Western heritage, natural history, and contemporary art! The Denver Art Museum features striking Daniel Libeskind architecture and extensive American Indian art, Western art, and contemporary collections. Denver Museum of Nature & Science offers dinosaur fossils, space exhibits, IMAX theater, and planetarium. Other highlights include History Colorado Center (interactive Colorado history), Molly Brown House (Titanic survivor's home), Buffalo Bill Museum, and Kirkland Museum (decorative arts). Golden's museums include Colorado School of Mines Geology Museum and Coors Brewery tours. Learn about Wild West history, gold rush, Western expansion, and Colorado's role in American development. Many museums offer hands-on exhibits perfect for families. It's educational Denver!`,
 
       seo: {
-        title: 'Denver Museum Tours 2025 - Art Museum, Nature & Science Museums',
+        title: 'Denver Museum Tours 2026 - Art Museum, Nature & Science Museums',
         description: 'Explore Denver museums! Denver Art Museum, Natural History, and Western heritage!',
         keywords: 'Denver museums, Denver Art Museum, Nature Science Museum Denver, Colorado museums',
       },
@@ -4777,7 +4777,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Denver's incredible outdoor adventure scene - Colorado is the ultimate adventure playground! Denver's proximity to mountains enables whitewater rafting on Clear Creek and Arkansas River (Class II-V rapids!), mountain biking trails, rock climbing in Garden of the Gods, zip-lining through mountain forests, ATV tours, horseback riding through Rocky Mountain valleys, and winter skiing/snowboarding at world-class resorts. Adventure tours cater to all levels from beginner-friendly to extreme challenges. Explore Red Rocks Park (stunning geological formations), hike flatirons near Boulder, or try via ferrata on mountain faces. The high altitude, dry climate (300+ days of sunshine!), and mountain access make Denver perfect for year-round outdoor pursuits. Guides ensure safety while maximizing thrills!`,
 
       seo: {
-        title: 'Denver Outdoor Adventure Tours 2025 - Rafting, Biking & Adventures',
+        title: 'Denver Outdoor Adventure Tours 2026 - Rafting, Biking & Adventures',
         description: 'Experience Denver adventures! Whitewater rafting, mountain biking, and Colorado outdoor thrills!',
         keywords: 'Denver adventure tours, whitewater rafting Denver, Colorado outdoor activities, Denver hiking',
       },
@@ -4953,7 +4953,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Denver's exciting food scene combining Rocky Mountain ingredients with global influences! Food tours explore trendy neighborhoods like RiNo (River North Art District with food halls and restaurants), Santa Fe Arts District (galleries and eateries), LoHi (Lower Highlands with rooftop dining), and historic Larimer Square (Denver's oldest block). Sample Colorado specialties like green chile (smothering everything!), bison burgers, Rocky Mountain oysters (if brave!), craft cocktails, farm-to-table cuisine, and innovative fusion food. Tours visit food halls (Denver Central Market, Avanti), taco spots, New American restaurants, and local breweries. Learn about Denver's evolution from cowboy town to culinary capital, how altitude affects cooking, and where locals eat. It's delicious cultural exploration!`,
 
       seo: {
-        title: 'Denver Food & Culture Tours 2025 - Green Chile & Colorado Cuisine',
+        title: 'Denver Food & Culture Tours 2026 - Green Chile & Colorado Cuisine',
         description: 'Experience Denver food tours! Green chile, craft dining, and Colorado culinary scene!',
         keywords: 'Denver food tours, Denver green chile, RiNo Denver, Colorado cuisine, Denver restaurants',
       },
@@ -5129,7 +5129,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Denver's fascinating Wild West history from frontier settlement to modern Mile High City! Historical tours explore the 1859 Pikes Peak Gold Rush that founded Denver, visit historic Larimer Square (oldest block), tour State Capitol building (mile-high marker on 13th step!), explore LoDo (Lower Downtown) with 19th-century warehouses, and learn about Colorado's cowboy culture, mining heritage, and Native American history. Tours include Buffalo Bill's grave on Lookout Mountain, ghost tours in haunted hotels, Brown Palace Hotel (historic luxury), and Capitol Hill Victorian mansions. Learn about Molly Brown (Titanic survivor), silver boom, prohibition gangsters, and Denver's evolution from lawless Wild West town to sophisticated city. It's American West history brought to life!`,
 
       seo: {
-        title: 'Denver Historical Tours 2025 - Wild West, Gold Rush & Colorado History',
+        title: 'Denver Historical Tours 2026 - Wild West, Gold Rush & Colorado History',
         description: 'Explore Denver history! Wild West, gold rush, Capitol tours, and frontier heritage!',
         keywords: 'Denver historical tours, Denver Wild West, Colorado gold rush, Denver Capitol, Buffalo Bill',
       },
@@ -5307,7 +5307,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Pearl Harbor, one of America's most significant historical sites commemorating the December 7, 1941 attack! Pearl Harbor tours include the USS Arizona Memorial (built over sunken battleship where 1,177 sailors remain entombed), Battleship Missouri (where WWII surrender was signed), USS Bowfin Submarine Museum, and Pacific Aviation Museum. Watch documentary footage of the attack, see bullet holes still visible on buildings, view recovered artifacts, and learn about that day's events that changed history. Tours combine multiple memorials with expert historical interpretation. Some include USS Oklahoma Memorial, walking through actual submarine, and exploring aircraft from the war. It's powerful, moving, and essential American history. Guides share stories of heroism, loss, and resilience!`,
 
       seo: {
-        title: 'Honolulu Pearl Harbor Tours 2025 - USS Arizona & WWII Memorials',
+        title: 'Honolulu Pearl Harbor Tours 2026 - USS Arizona & WWII Memorials',
         description: 'Visit Pearl Harbor in Honolulu! USS Arizona Memorial, Battleship Missouri, and WWII history!',
         keywords: 'Pearl Harbor tours, USS Arizona Memorial, Honolulu WWII tours, Pearl Harbor tickets, Battleship Missouri',
       },
@@ -5483,7 +5483,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Waikiki Beach, one of world's most famous beaches and Honolulu's iconic shoreline! This 2-mile crescent of golden sand offers perfect beginner surfing (where modern surfing was revived!), swimming in calm reef-protected waters, outrigger canoe rides, stand-up paddleboarding, and spectacular Diamond Head crater backdrop. Beach tours include surf lessons on gentle Waikiki waves (Duke Kahanamoku learned here!), catamaran sails along the coast, beachfront walks, sunset viewing from beach bars, and water sports. Explore Waikiki's evolution from Hawaiian royalty playground to international resort destination. The beach culture combines Hawaiian traditions with modern resort amenities. It's where Hawaii's beach lifestyle shines!`,
 
       seo: {
-        title: 'Honolulu Waikiki Beach Tours 2025 - Surfing & Diamond Head',
+        title: 'Honolulu Waikiki Beach Tours 2026 - Surfing & Diamond Head',
         description: 'Experience Waikiki Beach! Surf lessons, beach activities, and world-famous Hawaiian shoreline!',
         keywords: 'Waikiki Beach, Honolulu surfing, Waikiki surf lessons, Diamond Head, Honolulu beaches',
       },
@@ -5659,7 +5659,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Immerse yourself in authentic Hawaiian culture beyond tourist shows! Cultural tours explore Polynesian Cultural Center (living museum with six Pacific island villages), historic sites like Iolani Palace (only royal palace in US), Bishop Museum (premier Hawaiian cultural institution), traditional luaus with hula and fire dancing, lei-making workshops, ukulele lessons, and visits to sacred sites. Learn about ancient Hawaiian navigation (star wayfinding!), kapu (sacred laws), ali'i (royalty), overthrow of Hawaiian Kingdom, and Native Hawaiian cultural renaissance. Tours include traditional crafts, Hawaiian language lessons, taro farming demonstrations, and storytelling by cultural practitioners. Experience the real Hawaii - not just resort version. It's cultural immersion and education!`,
 
       seo: {
-        title: 'Honolulu Hawaiian Culture Tours 2025 - Luaus, Traditions & Heritage',
+        title: 'Honolulu Hawaiian Culture Tours 2026 - Luaus, Traditions & Heritage',
         description: 'Experience Hawaiian culture! Traditional luaus, Polynesian Cultural Center, and authentic Hawaii!',
         keywords: 'Hawaiian culture tours, Honolulu luau, Polynesian Cultural Center, Bishop Museum, Iolani Palace',
       },
@@ -5835,7 +5835,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Honolulu's incredible water sports and beach activities in Hawaii's aquatic paradise! Warm, crystal-clear waters offer snorkeling at Hanauma Bay (volcanic crater turned marine preserve with 400+ fish species), scuba diving with sea turtles and rays, kayaking to Mokulua Islands (Lanikai), stand-up paddleboarding, jet skiing, parasailing, and surfing at various skill-level beaches. Popular spots include Hanauma Bay (best snorkeling), Lanikai Beach (ranked world's most beautiful), Kailua Beach (calm kayaking), North Shore (pro surfing winter), and Waikiki (beginner surfing). Activities include swimming with dolphins, shark cage diving, submarine tours, and catamaran sails. The year-round warm water (75-85°F), diverse marine life, and reliable trade winds make Honolulu perfect for water sports!`,
 
       seo: {
-        title: 'Honolulu Beach & Water Sports 2025 - Snorkeling, Diving & Activities',
+        title: 'Honolulu Beach & Water Sports 2026 - Snorkeling, Diving & Activities',
         description: 'Experience Honolulu water sports! Hanauma Bay snorkeling, surfing, diving, and beach activities!',
         keywords: 'Honolulu water sports, Hanauma Bay, Honolulu snorkeling, Oahu beaches, Honolulu diving',
       },
@@ -6011,7 +6011,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Honolulu's incredible food scene blending Hawaiian, Asian, and American influences! Food tours explore local favorites like poke (raw fish salad - Hawaii's signature dish), loco moco (rice, burger, gravy, egg), plate lunch (two-scoop rice, macaroni salad, protein), shave ice, malasadas (Portuguese donuts), and spam musubi. Visit Chinatown with lei vendors and dim sum, KCC Farmers Market (Saturday mornings), Leonard's Bakery (original malasadas), and food trucks. Combine with traditional luaus featuring kalua pig from imu (underground oven), poi, lomi salmon, and Hawaiian feast. Learn about plantation-era food fusion, local vs. tourist restaurants, and where Hawaiians actually eat. It's delicious cultural education!`,
 
       seo: {
-        title: 'Honolulu Food & Luau Tours 2025 - Poke, Shave Ice & Hawaiian Cuisine',
+        title: 'Honolulu Food & Luau Tours 2026 - Poke, Shave Ice & Hawaiian Cuisine',
         description: 'Experience Honolulu food tours! Poke, luaus, shave ice, and authentic Hawaiian flavors!',
         keywords: 'Honolulu food tours, Hawaiian luau, Honolulu poke, shave ice, Hawaiian cuisine',
       },
@@ -6187,7 +6187,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Oahu's complete beauty with island circle tours showcasing diverse landscapes beyond Honolulu! Circle island tours explore famous North Shore (big wave surfing, Sunset Beach, Banzai Pipeline), windward coast with Kailua and Lanikai beaches (turquoise perfection), historic sites, scenic lookouts, and hidden gems. Stops include Dole Plantation (pineapple history and maze), Haleiwa town (surf culture and shrimp trucks!), Nu'uanu Pali Lookout (dramatic windward views), Byodo-In Temple (Japanese temple replica), tropical botanical gardens, and sea turtle beach. Learn about Hawaiian geography, how volcanic island formed, traditional ahupua'a land divisions, and cultural sites. Some tours include snorkeling stops, hiking, or beach time. It's complete Oahu in one day!`,
 
       seo: {
-        title: 'Honolulu Island Tours 2025 - Oahu Circle Tour & North Shore',
+        title: 'Honolulu Island Tours 2026 - Oahu Circle Tour & North Shore',
         description: 'Explore Oahu island! Circle tours, North Shore, beaches, and complete island highlights!',
         keywords: 'Oahu island tours, Oahu circle tour, North Shore Oahu, Honolulu day tours, Oahu highlights',
       },
@@ -6365,7 +6365,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience the legendary Las Vegas Strip - 4.2 miles of neon lights, mega-resorts, and entertainment! Strip tours explore iconic casino-hotels like Bellagio (fountains and conservatory), Caesars Palace (ancient Rome theming), Venetian (indoor canals with gondolas), Luxor (pyramid and sphinx), Paris (half-scale Eiffel Tower), and New York-New York (mini skyline and roller coaster). Tours showcase the famous Bellagio Fountains choreographed water show, Fremont Street Experience (original Vegas with LED canopy), High Roller observation wheel (550 feet tall!), and themed attractions. Learn about Vegas history from mob-run gambling town to family destination, see architectural excess, and understand how casinos are designed to keep you inside. Walking tours, hop-on-hop-off buses, and evening tours capture the Strip's magic!`,
 
       seo: {
-        title: 'Las Vegas Strip Tours 2025 - Casino Hotels & Neon Lights',
+        title: 'Las Vegas Strip Tours 2026 - Casino Hotels & Neon Lights',
         description: 'Explore Las Vegas Strip! Bellagio Fountains, iconic casinos, and Vegas Boulevard highlights!',
         keywords: 'Las Vegas Strip tours, Bellagio Fountains, Las Vegas casinos, Vegas tours, Fremont Street',
       },
@@ -6541,7 +6541,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Las Vegas entertainment - the greatest concentration of shows in the world! Las Vegas hosts Cirque du Soleil residencies (O, Mystère, KÀ, Michael Jackson ONE), celebrity headliners, magic shows (David Copperfield, Penn & Teller), tribute acts, adult revues, comedy shows, and Broadway productions. The Strip's theaters range from intimate clubs to massive arenas. Shows feature cutting-edge technology, elaborate costumes, acrobatic performances, and production values unmatched anywhere. Tours include show tickets combined with dinner packages, backstage tours, VIP seating, and show-hopping options. Learn about Vegas evolution into entertainment capital, how productions are created, and insider theater tips. From family-friendly Cirque to adults-only burlesque, Vegas shows cater to every taste. It's Broadway meets Circus Maximus!`,
 
       seo: {
-        title: 'Las Vegas Show Tours 2025 - Cirque du Soleil, Magic & Entertainment',
+        title: 'Las Vegas Show Tours 2026 - Cirque du Soleil, Magic & Entertainment',
         description: 'Experience Las Vegas shows! Cirque du Soleil, magic shows, and world-class entertainment!',
         keywords: 'Las Vegas shows, Cirque du Soleil Vegas, Las Vegas entertainment, Vegas magic shows, Vegas tickets',
       },
@@ -6717,7 +6717,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Las Vegas casinos beyond the slot machines - from gaming lessons to high-stakes poker rooms! Casino tours teach blackjack, craps, roulette, and poker basics with professional dealers in low-pressure settings. Explore casino design psychology (no clocks, maze layouts, oxygen pumping myths!), visit high-limit rooms, learn card counting history, and understand how odds work. Tours include the World Series of Poker room at Horseshoe, vintage casinos preserving old Vegas charm, sports books during big games, and exclusive gaming lounges. Some tours offer gambling bankrolls for practice. Learn about Vegas gaming history, famous casino heists, professional gamblers, and why "the house always wins." It's gambling education and entertainment!`,
 
       seo: {
-        title: 'Las Vegas Casino Tours 2025 - Gaming Lessons & Poker Rooms',
+        title: 'Las Vegas Casino Tours 2026 - Gaming Lessons & Poker Rooms',
         description: 'Experience Las Vegas casinos! Gaming lessons, poker rooms, and casino culture!',
         keywords: 'Las Vegas casinos, Vegas gaming lessons, poker rooms Las Vegas, blackjack lessons, Vegas gambling',
       },
@@ -6893,7 +6893,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Las Vegas's extraordinary culinary scene - celebrity chefs, innovative cuisine, and legendary buffets! Once known for cheap buffets, Vegas now rivals culinary capitals with restaurants by Gordon Ramsay, Wolfgang Puck, Joël Robuchon (3 Michelin stars!), Nobu, and Bobby Flay. Food tours explore diverse options from classic Vegas buffets (Bacchanal, Wicked Spoon) to Chinatown's authentic Asian cuisine, food halls like Circa's Legacy Club, high-end steakhouses, and secret local spots. Sample international cuisines, molecular gastronomy, farm-to-table desert ingredients, and fusion creations. Learn about Vegas culinary evolution, how casinos lure celebrity chefs, and where locals eat off-Strip. It's world-class dining in the desert!`,
 
       seo: {
-        title: 'Las Vegas Food & Dining Tours 2025 - Celebrity Chefs & Buffets',
+        title: 'Las Vegas Food & Dining Tours 2026 - Celebrity Chefs & Buffets',
         description: 'Experience Las Vegas dining! Celebrity chef restaurants, legendary buffets, and culinary tours!',
         keywords: 'Las Vegas food tours, Vegas buffets, celebrity chef restaurants Vegas, Las Vegas dining, Vegas food',
       },
@@ -7069,7 +7069,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Escape Las Vegas for incredible desert and canyon adventures! Las Vegas's location enables day trips to Grand Canyon (South Rim 4.5 hours, West Rim/Skywalk 2.5 hours), Red Rock Canyon (stunning red sandstone just 30 minutes away), Valley of Fire (ancient petroglyphs and dramatic formations), Hoover Dam (engineering marvel), and Lake Mead recreation. Adventures include Grand Canyon helicopter tours, Hoover Dam tours, ATV desert rides, zip-lining over canyons, rock climbing, kayaking Colorado River, horseback riding, and sandboarding dunes. Some tours combine multiple sites or add Skywalk glass bridge experiences. The Mojave Desert surroundings offer completely different scenery from Strip. It's natural wonder just outside Sin City!`,
 
       seo: {
-        title: 'Las Vegas Adventure Tours 2025 - Grand Canyon & Desert Excursions',
+        title: 'Las Vegas Adventure Tours 2026 - Grand Canyon & Desert Excursions',
         description: 'Experience Vegas adventures! Grand Canyon, Red Rock Canyon, Hoover Dam, and desert tours!',
         keywords: 'Las Vegas Grand Canyon tours, Red Rock Canyon, Hoover Dam tours, Vegas adventures, Valley of Fire',
       },
@@ -7245,7 +7245,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Las Vegas from above with spectacular helicopter tours! Vegas helicopter adventures range from 12-minute nighttime Strip flights seeing neon lights from above to 4-hour Grand Canyon excursions landing on canyon floor. Popular tours include the Vegas Night Flight (Strip and Downtown illuminated), Grand Canyon West with Skywalk and champagne landing, Valley of Fire aerial tour, Hoover Dam flyover, and sunset flights over desert. Helicopter tours offer unique perspectives on Vegas's architectural excess, desert landscapes, and natural wonders. See the entire Strip lit up, fly through Grand Canyon, hover over Hoover Dam, and land in remote desert locations. Some tours include ground activities, meals, or champagne. It's ultimate Vegas luxury!`,
 
       seo: {
-        title: 'Las Vegas Helicopter Tours 2025 - Strip Flights & Grand Canyon',
+        title: 'Las Vegas Helicopter Tours 2026 - Strip Flights & Grand Canyon',
         description: 'Experience Vegas helicopter tours! Strip night flights, Grand Canyon, and aerial adventures!',
         keywords: 'Las Vegas helicopter tours, Vegas Strip helicopter, Grand Canyon helicopter, Vegas aerial tours',
       },
@@ -7423,7 +7423,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Hollywood - the entertainment capital of the world! Hollywood tours explore the famous Walk of Fame (2,700+ star-embedded stars), TCL Chinese Theatre (handprints and footprints of legends), Dolby Theatre (where Oscars are held), Hollywood Sign (iconic 45-foot letters on Mount Lee), and historic landmarks. Tours include Hollywood Boulevard walking tours, celebrity homes tours in Beverly Hills, movie studio visits (Warner Bros., Paramount, Universal), Griffith Observatory views, and themed experiences. Learn about Golden Age of Hollywood, current film industry, celebrity culture, and behind-the-scenes entertainment business. See where movies are made, stars live, and Hollywood magic happens. It's cinema history come alive!`,
 
       seo: {
-        title: 'Los Angeles Hollywood Tours 2025 - Walk of Fame & Movie Studios',
+        title: 'Los Angeles Hollywood Tours 2026 - Walk of Fame & Movie Studios',
         description: 'Explore Hollywood! Walk of Fame, celebrity homes, movie studios, and entertainment tours!',
         keywords: 'Hollywood tours, Walk of Fame, Hollywood Sign, LA movie studios, celebrity homes tours',
       },
@@ -7599,7 +7599,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience LA's incredible beaches - 75 miles of Pacific coastline! Beach tours explore iconic Santa Monica with its historic Pier (1909 amusement park and Pacific Park), Venice Beach (eclectic Boardwalk, Muscle Beach, street performers), Malibu (celebrity beach homes and surf culture), Manhattan Beach (volleyball capital), and hidden gems. Activities include beach walks, bike rentals on Strand path (22 miles of oceanfront bikeway!), pier exploration, boardwalk people-watching, surfing lessons, and coastal dining. Learn about SoCal beach culture, surf history, and coastal ecology. See where Baywatch was filmed, celebrities live, and quintessential California beach lifestyle thrives. It's sun, sand, and Southern California cool!`,
 
       seo: {
-        title: 'Los Angeles Beach Tours 2025 - Santa Monica, Venice & Malibu',
+        title: 'Los Angeles Beach Tours 2026 - Santa Monica, Venice & Malibu',
         description: 'Experience LA beaches! Santa Monica Pier, Venice Boardwalk, and Pacific coastline!',
         keywords: 'LA beach tours, Santa Monica Pier, Venice Beach, Malibu beaches, Los Angeles coastline',
       },
@@ -7775,7 +7775,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Hollywood's working movie studios where actual films and TV shows are made! Studio tours offer exclusive behind-the-scenes access to Warner Bros (most comprehensive tour visiting sound stages, backlots, prop departments), Paramount (only major studio still in Hollywood), Sony Pictures, and Universal Studios (theme park with studio tour). See active sound stages, famous backlots (New York streets, suburban houses used in countless productions), prop warehouses, costume departments, and possibly witness filming! Tours vary from intimate walking experiences to tram rides through massive lots. Learn about filmmaking process, special effects, production design, and entertainment business. It's real Hollywood magic!`,
 
       seo: {
-        title: 'Los Angeles Movie Studio Tours 2025 - Warner Bros & Hollywood Studios',
+        title: 'Los Angeles Movie Studio Tours 2026 - Warner Bros & Hollywood Studios',
         description: 'Experience Hollywood studios! Behind-the-scenes tours at Warner Bros, Paramount, and more!',
         keywords: 'LA movie studio tours, Warner Bros tour, Paramount Studios, Hollywood studio tours, Universal Studios',
       },
@@ -7951,7 +7951,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Los Angeles's incredible food diversity - a global culinary capital! LA food tours explore diverse neighborhoods: Koreatown (best Korean BBQ outside Seoul), Olvera Street (historic Mexican marketplace), Thai Town, Little Tokyo, Little Armenia, Grand Central Market (iconic food hall since 1917), and trendy food scenes. Sample tacos from food trucks (LA invented gourmet food trucks!), Korean BBQ, Japanese ramen, Ethiopian cuisine, and fusion creations. Tours include farmer's markets, celebrity chef restaurants, ethnic enclaves, and street food. LA has more restaurants than any US city reflecting immigration from 140+ countries. Learn about food truck culture, ethnic neighborhoods, and how Hollywood influences dining. It's culinary world tour in one city!`,
 
       seo: {
-        title: 'Los Angeles Food & Culture Tours 2025 - Tacos, Food Trucks & Diversity',
+        title: 'Los Angeles Food & Culture Tours 2026 - Tacos, Food Trucks & Diversity',
         description: 'Experience LA food tours! Diverse cuisines, food trucks, and multicultural culinary scene!',
         keywords: 'LA food tours, Los Angeles food trucks, Koreatown, LA tacos, Grand Central Market, LA cuisine',
       },
@@ -8127,7 +8127,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Los Angeles's exceptional museum scene rivaling any world capital! LA museums include The Getty Center (stunning architecture, European art, gardens with city views - FREE!), LACMA (largest art museum in western US with iconic Urban Light installation), The Broad (contemporary art), Natural History Museum (dinosaurs and gems), California Science Center (Space Shuttle Endeavour!), Grammy Museum, Petersen Automotive Museum, and Museum of Tolerance. Tours provide expert guides, skip-the-line access, and thematic explorations. LA's museums showcase everything from ancient artifacts to contemporary art, Hollywood history to natural science. Many museums are free or low-cost. It's cultural wealth often overlooked!`,
 
       seo: {
-        title: 'Los Angeles Museum Tours 2025 - Getty Center, LACMA & LA Museums',
+        title: 'Los Angeles Museum Tours 2026 - Getty Center, LACMA & LA Museums',
         description: 'Explore LA museums! Getty Center, LACMA, contemporary art, and cultural institutions!',
         keywords: 'LA museums, Getty Center, LACMA, The Broad, Los Angeles museums, Getty Villa',
       },
@@ -8303,7 +8303,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience celebrity Los Angeles - where stars live, dine, and play! Celebrity tours explore Beverly Hills mansions (drive past celebrity homes - exteriors only), Rodeo Drive luxury shopping, West Hollywood nightlife, celebrity restaurants (Craig's, Catch LA, Nobu Malibu), famous filming locations, and star hotspots. Tours visit neighborhoods like Bel Air, Holmby Hills, Malibu Colony, and Hollywood Hills where celebrities own estates. See homes of current and past stars (tour guides share who lives where!), visit celebrity-owned businesses, explore TMZ Hollywood, and learn about LA's celebrity culture. Some tours include opportunities for celebrity sightings at restaurants, studios, or events. It's glamorous, gossipy, and quintessentially LA!`,
 
       seo: {
-        title: 'Los Angeles Celebrity Tours 2025 - Beverly Hills Mansions & Star Homes',
+        title: 'Los Angeles Celebrity Tours 2026 - Beverly Hills Mansions & Star Homes',
         description: 'Experience LA celebrity tours! Beverly Hills mansions, Rodeo Drive, and celebrity hotspots!',
         keywords: 'LA celebrity tours, Beverly Hills homes tours, celebrity homes LA, Rodeo Drive, celebrity sightings',
       },
@@ -8481,7 +8481,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Mexico City's Historic Center (Centro Histórico) - a UNESCO World Heritage Site built atop ancient Tenochtitlan! Historic tours explore the massive Zócalo plaza (one of world's largest), Metropolitan Cathedral (largest in the Americas), National Palace with Diego Rivera murals, Templo Mayor (Aztec temple ruins discovered 1978), Palacio de Bellas Artes (stunning Art Nouveau/Art Deco), and colonial-era buildings. Walk cobblestone streets where Aztec and Spanish histories collide, see archaeological excavations revealing ancient city beneath, visit markets, and explore charming plazas. Learn about Aztec empire, Spanish conquest, Mexican independence, and how modern Mexico City sits atop layers of history. It's 700 years of civilization in one walkable area!`,
 
       seo: {
-        title: 'Mexico City Historic Center Tours 2025 - Zócalo, Aztec Ruins & Colonial Heritage',
+        title: 'Mexico City Historic Center Tours 2026 - Zócalo, Aztec Ruins & Colonial Heritage',
         description: 'Explore Mexico City Centro! Zócalo plaza, Templo Mayor, Diego Rivera murals, and UNESCO sites!',
         keywords: 'Mexico City historic center, Zócalo, Templo Mayor, Centro Historico, CDMX tours, colonial Mexico City',
       },
@@ -8657,7 +8657,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Mexico City's exceptional museums - some of world's finest! The National Museum of Anthropology houses unparalleled pre-Hispanic artifacts including the Aztec Sun Stone, Frida Kahlo Museum (Casa Azul where she lived and painted), Diego Rivera Anahuacalli Museum, Soumaya Museum (free, stunning architecture by Carlos Slim), National Palace murals, Dolores Olmedo Museum, and Museum of Modern Art. Tours explore Mexico's indigenous cultures (Aztec, Maya, Olmec), revolutionary art movement, and contemporary scene. Museums showcase everything from ancient Mesoamerican treasures to Frida's personal belongings to colonial art. Learn about Mexican history, pre-Hispanic civilizations, artistic legacy, and cultural identity. It's museum paradise!`,
 
       seo: {
-        title: 'Mexico City Museum Tours 2025 - Anthropology, Frida Kahlo & Art Museums',
+        title: 'Mexico City Museum Tours 2026 - Anthropology, Frida Kahlo & Art Museums',
         description: 'Explore Mexico City museums! Anthropology Museum, Frida Kahlo Casa Azul, and Mexican art!',
         keywords: 'Mexico City museums, Anthropology Museum, Frida Kahlo Museum, Casa Azul, CDMX museums, Soumaya',
       },
@@ -8833,7 +8833,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Mexico City's extraordinary food scene - one of world's great culinary capitals! Food tours explore vibrant street food culture with tacos al pastor, tamales, tortas, quesadillas, tostadas, and countless antojitos (street snacks). Visit markets like Mercado de San Juan (exotic ingredients), Mercado Roma (food hall), street stands in Condesa and Roma neighborhoods, traditional cantinas, and innovative modern Mexican restaurants. Sample mole (complex sauce with 30+ ingredients), chiles en nogada, fresh ceviche, and end with churros or tres leches cake. Learn about indigenous ingredients (corn, chili, cacao), regional variations, and culinary innovation. Mexico City offers authentic Mexican cuisine in all its glory!`,
 
       seo: {
-        title: 'Mexico City Food & Street Food Tours 2025 - Tacos, Markets & Mexican Cuisine',
+        title: 'Mexico City Food & Street Food Tours 2026 - Tacos, Markets & Mexican Cuisine',
         description: 'Experience Mexico City food! Street tacos, markets, and authentic Mexican culinary tours!',
         keywords: 'Mexico City food tours, CDMX street food, Mexico City tacos, Mexican food tours, Mercado Roma',
       },
@@ -9009,7 +9009,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Teotihuacan, the mysterious ancient city 30 miles from Mexico City! These archaeological tours explore one of Mesoamerica's largest ancient cities (200,000 inhabitants at peak!) featuring the massive Pyramid of the Sun (third-largest pyramid in world), Pyramid of the Moon, Avenue of the Dead, Palace of Quetzalpapalotl, and Temple of the Feathered Serpent. Climb pyramids for panoramic views, see original murals, explore residential complexes, and learn about this enigmatic civilization that predates Aztecs by 1,000 years! Tours often include stops at nearby craft villages, pulque tastings, obsidian workshops, and sometimes hot air balloon rides over the pyramids at sunrise. It's Mexico's most visited archaeological site!`,
 
       seo: {
-        title: 'Mexico City Teotihuacan Tours 2025 - Pyramid Tours & Ancient Ruins',
+        title: 'Mexico City Teotihuacan Tours 2026 - Pyramid Tours & Ancient Ruins',
         description: 'Experience Teotihuacan from Mexico City! Pyramid of the Sun, ancient ruins, and archaeological tours!',
         keywords: 'Teotihuacan tours, Pyramid of the Sun, Mexico City day trips, Teotihuacan pyramids, CDMX archaeological tours',
       },
@@ -9185,7 +9185,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Mexico City's diverse neighborhoods (colonias) - each with unique character and culture! Neighborhood tours explore charming Coyoacán (cobblestone streets, Frida Kahlo's house, colonial plazas), trendy Roma and Condesa (Art Nouveau architecture, cafes, galleries), upscale Polanco (luxury shopping, museums), bohemian San Ángel (Saturday art market, colonial charm), and historic Xochimilco (floating gardens and trajineras). Walk tree-lined streets, visit local markets, see street art, explore parks, and discover where chilangos (Mexico City residents) actually live. Learn about neighborhood histories, architectural styles, gentrification, and local culture. It's authentic Mexico City beyond Centro!`,
 
       seo: {
-        title: 'Mexico City Neighborhood Tours 2025 - Coyoacán, Roma, Condesa & Local Culture',
+        title: 'Mexico City Neighborhood Tours 2026 - Coyoacán, Roma, Condesa & Local Culture',
         description: 'Explore Mexico City neighborhoods! Coyoacán, Roma, Condesa, and authentic colonias!',
         keywords: 'Mexico City neighborhoods, Coyoacán tours, Roma Condesa, CDMX colonias, Mexico City walking tours',
       },
@@ -9361,7 +9361,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Immerse yourself in Mexico City's vibrant cultural scene beyond museums! Cultural tours experience authentic traditions like lucha libre wrestling (masked luchadores in spectacular matches!), mariachi music at Plaza Garibaldi, folkloric ballet at Bellas Artes, Day of the Dead celebrations, traditional markets, artisan workshops (pottery, textiles, silver), and mezcal tastings. Learn about Mexican holidays, music traditions, indigenous crafts, religious festivals, and contemporary culture. Tours include attending lucha libre matches with crowd energy, hearing mariachi in historic plaza, visiting artisan cooperatives, and experiencing traditions passed through generations. See dance performances, witness tequila/mezcal production, and participate in cultural activities. It's Mexico's soul!`,
 
       seo: {
-        title: 'Mexico City Cultural Tours 2025 - Lucha Libre, Mariachi & Mexican Traditions',
+        title: 'Mexico City Cultural Tours 2026 - Lucha Libre, Mariachi & Mexican Traditions',
         description: 'Experience Mexico City culture! Lucha libre, mariachi, traditions, and authentic Mexican heritage!',
         keywords: 'Mexico City cultural tours, lucha libre, Plaza Garibaldi mariachi, CDMX traditions, Mexican culture',
       },
@@ -9539,7 +9539,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience South Beach (SoBe) - Miami's most iconic neighborhood with Art Deco architecture, white-sand beaches, and legendary Ocean Drive! South Beach tours explore the famous Art Deco Historic District (800+ pastel buildings from 1920s-40s), Lincoln Road pedestrian mall, Ocean Drive with sidewalk cafes, pristine beaches, and vibrant nightlife scene. Walk past hotels where celebrities stay, see where Miami Vice was filmed, visit Versace Mansion, and experience the energy that defines Miami. Tours include architectural walks, beach time, food stops, and photo opportunities at iconic spots. Learn about Miami Beach's transformation from mangrove swamps to international glamour destination. It's tropical sophistication and beach culture combined!`,
 
       seo: {
-        title: 'Miami South Beach Tours 2025 - Ocean Drive & Art Deco District',
+        title: 'Miami South Beach Tours 2026 - Ocean Drive & Art Deco District',
         description: 'Experience Miami South Beach! Art Deco architecture, Ocean Drive, beaches, and SoBe culture!',
         keywords: 'South Beach tours, Miami Beach, Ocean Drive, Art Deco Miami, SoBe tours, Miami beaches',
       },
@@ -9715,7 +9715,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Miami Beach's Art Deco Historic District - the world's largest collection of Art Deco architecture! With 800+ buildings from the 1920s-40s, this National Register district showcases Streamline Moderne, Mediterranean Revival, and tropical Art Deco styles. Tours explore iconic hotels like The Carlyle, Colony, and Breakwater with their pastel facades, porthole windows, neon signs, and nautical themes. Learn about preservation efforts that saved these buildings from demolition in 1970s-80s, architectural elements (eyebrows, fins, terrazzo floors), and how Miami Beach became synonymous with Art Deco glamour. Expert guides share stories of Miami's boom era, famous architects, and ongoing restoration. It's architecture and history lesson combined!`,
 
       seo: {
-        title: 'Miami Art Deco Tours 2025 - Historic District & 1930s Architecture',
+        title: 'Miami Art Deco Tours 2026 - Historic District & 1930s Architecture',
         description: 'Explore Miami Art Deco! Historic district walking tours, pastel buildings, and architectural heritage!',
         keywords: 'Miami Art Deco tours, Art Deco District Miami Beach, Miami architecture tours, SoBe Art Deco',
       },
@@ -9891,7 +9891,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Little Havana - Miami's vibrant Cuban neighborhood pulsing with Latin culture! Little Havana tours explore Calle Ocho (SW 8th Street), the heart of Cuban Miami, with cigar shops, domino parks (Máximo Gómez Park where locals play dominoes), Cuban restaurants, art galleries, and Latin music venues. Experience Cuban coffee at ventanitas (walk-up windows), watch cigars being hand-rolled, hear live salsa music, see colorful murals, and visit memorials to Cuban heroes. Tours include food tastings (Cuban sandwiches, empanadas, pastelitos), cultural insights, and visits to Ball & Chain (historic bar with live music). Learn about Cuban exile history, how Miami became second Cuban capital, and traditions preserved in this community. It's cultural immersion!`,
 
       seo: {
-        title: 'Miami Little Havana Tours 2025 - Cuban Culture & Calle Ocho',
+        title: 'Miami Little Havana Tours 2026 - Cuban Culture & Calle Ocho',
         description: 'Experience Little Havana! Cuban culture, food, cigars, and authentic Miami Latin neighborhood!',
         keywords: 'Little Havana tours, Miami Cuban culture, Calle Ocho, Little Havana Miami, Cuban food tours',
       },
@@ -10067,7 +10067,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Miami's incredible water sports in warm Atlantic waters and Biscayne Bay! Miami offers year-round water activities including jet skiing (rent or tours), parasailing over South Beach, snorkeling/diving at Biscayne National Park (coral reefs and shipwrecks), paddleboarding, kayaking through mangroves, windsurfing, kiteboarding (Miami is North American capital!), and boat rentals. Popular spots include South Beach, Key Biscayne, Virginia Key, and Haulover Beach. Water temperature stays 75-85°F enabling swimming, snorkeling, and watersports 365 days! Activities range from relaxing beach paddleboarding to high-energy jet ski adventures. The tropical climate, warm water, and coastal setting make Miami a water sports paradise!`,
 
       seo: {
-        title: 'Miami Beach & Water Sports 2025 - Jet Ski, Snorkeling & Activities',
+        title: 'Miami Beach & Water Sports 2026 - Jet Ski, Snorkeling & Activities',
         description: 'Experience Miami water sports! Jet skiing, snorkeling, parasailing, and tropical beach activities!',
         keywords: 'Miami water sports, Miami jet ski, Miami Beach activities, Miami snorkeling, Miami parasailing',
       },
@@ -10243,7 +10243,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Miami's incredible culinary diversity - a Latin American and Caribbean fusion! Food tours explore Miami's multicultural neighborhoods sampling Cuban, Haitian, Peruvian, Colombian, Venezuelan, and Argentinian cuisines. Visit Little Havana for Cuban sandwiches, Wynwood for food halls and street food, Design District for upscale dining, Coconut Grove, and ethnic enclaves. Sample stone crabs (Miami specialty!), ceviche, empanadas, arepas, fresh tropical fruits, and innovative fusion creations. The food scene reflects Miami's immigration creating authentic Latin flavors. Tours include markets, food trucks, waterfront dining, and trendy restaurants. Learn about cultural communities, immigration stories, and how Caribbean-Latin influence defines Miami food. It's culinary passport to Americas!`,
 
       seo: {
-        title: 'Miami Food & Culture Tours 2025 - Latin Cuisine & Multicultural Dining',
+        title: 'Miami Food & Culture Tours 2026 - Latin Cuisine & Multicultural Dining',
         description: 'Experience Miami food! Cuban, Latin American cuisines, stone crabs, and diverse culinary tours!',
         keywords: 'Miami food tours, Miami Cuban food, Miami stone crab, Wynwood food, Miami Latin cuisine',
       },
@@ -10419,7 +10419,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Miami from the water - the best way to see the city! Boat tours cruise Biscayne Bay seeing Miami skyline, celebrity homes on Star Island and Fisher Island, luxury yachts, cruise ship terminals, and waterfront mansions. Options include sightseeing cruises (narrated tours of Millionaire's Row), sunset cruises, party boats, yacht rentals, speedboat thrill rides, and island-hopping adventures. See mansions owned by celebrities (guides point out who lives where!), cruise past Port of Miami, view South Beach from water, and explore Miami's extensive waterways. Learn about Miami's development as port city, real estate boom, and how water defines the city. It's Miami from the best vantage point!`,
 
       seo: {
-        title: 'Miami Boat Tours 2025 - Biscayne Bay Cruises & Celebrity Island Homes',
+        title: 'Miami Boat Tours 2026 - Biscayne Bay Cruises & Celebrity Island Homes',
         description: 'Experience Miami boat tours! Biscayne Bay cruises, celebrity homes, and waterfront sightseeing!',
         keywords: 'Miami boat tours, Biscayne Bay cruises, Miami celebrity homes, Miami yacht tours, millionaire row',
       },
@@ -10597,7 +10597,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Old Montreal (Vieux-Montréal) - a beautifully preserved 17th-century neighborhood! Old Montreal tours explore cobblestone streets, French colonial architecture, Notre-Dame Basilica (stunning Gothic Revival interior), Place Jacques-Cartier (lively plaza with street performers), Old Port waterfront, Bonsecours Market, and Pointe-à-Callière archaeology museum. Walk streets dating to 1642 when Montreal was founded, see fortification remains, visit charming squares, and explore buildings where history unfolded. Tours include architectural insights, historical narratives, food stops at French bistros, and waterfront walks. Learn about New France, French Canadian heritage, Montreal's role in North American history, and preservation efforts. It's European charm in North America!`,
 
       seo: {
-        title: 'Montreal Old Montreal Tours 2025 - Vieux-Montréal & French Colonial History',
+        title: 'Montreal Old Montreal Tours 2026 - Vieux-Montréal & French Colonial History',
         description: 'Explore Old Montreal! Cobblestone streets, Notre-Dame Basilica, and French colonial heritage!',
         keywords: 'Old Montreal tours, Vieux-Montréal, Notre-Dame Basilica Montreal, Old Port Montreal, Montreal history',
       },
@@ -10773,7 +10773,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Montreal's exceptional food scene - French technique meets North American ingredients! Food tours explore Montreal specialties like poutine (fries, gravy, cheese curds), Montreal-style bagels (sweeter than New York!), smoked meat sandwiches (Schwartz's Deli institution since 1928), tourtière (meat pie), maple syrup treats, and French bistro cuisine. Visit Jean-Talon Market (best in North America!), Mile End neighborhood (bagel bakeries and cafes), Plateau Mont-Royal (trendy eateries), and Little Italy. Sample French pastries, Quebec cheeses, craft beer, and innovative contemporary cuisine. Learn about French-Canadian food traditions, market culture, and Montreal's culinary innovation. It's delicious cultural exploration!`,
 
       seo: {
-        title: 'Montreal Food & Culture Tours 2025 - Poutine, Bagels & Smoked Meat',
+        title: 'Montreal Food & Culture Tours 2026 - Poutine, Bagels & Smoked Meat',
         description: 'Experience Montreal food! Poutine, Montreal bagels, smoked meat, and French-Canadian cuisine!',
         keywords: 'Montreal food tours, poutine Montreal, Montreal bagels, Schwartz Deli, Jean-Talon Market, Quebec food',
       },
@@ -10949,7 +10949,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Montreal's incredible festival scene - the city hosts over 100 festivals annually! Major festivals include Just for Laughs (world's largest comedy festival, July), Montreal International Jazz Festival (free outdoor concerts, July), Osheaga music festival, Montreal World Film Festival, and seasonal celebrations. Festival tours provide tickets, VIP access, behind-the-scenes experiences, and cultural context. Even without major festivals, Montreal celebrates constantly: winter Fête des Neiges, spring maple festivals, summer terraces, fall harvest events, and Nuit Blanche (all-night arts). Learn about Montreal's cultural calendar, how festivals define the city, and Quebec's joie de vivre. The festival atmosphere makes summer Montreal magical!`,
 
       seo: {
-        title: 'Montreal Festival Tours 2025 - Just for Laughs, Jazz & Cultural Events',
+        title: 'Montreal Festival Tours 2026 - Just for Laughs, Jazz & Cultural Events',
         description: 'Experience Montreal festivals! Jazz Fest, Just for Laughs, and year-round celebrations!',
         keywords: 'Montreal festivals, Just for Laughs, Montreal Jazz Festival, Montreal events, Osheaga',
       },
@@ -11125,7 +11125,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Montreal's fascinating 380-year history from French colony to modern metropolis! Historical tours explore founding in 1642 by French settlers, British conquest aftermath, Notre-Dame Basilica, Mount Royal Park (designed by Olmsted who designed Central Park!), Olympic Stadium from 1976 Olympics, historical museums, and cultural heritage. Visit sites commemorating French explorers, learn about French-English tensions, see how Montreal preserved French language and culture, and understand Quebec independence movement. Tours include McGill University area, Victorian architecture, St. Joseph's Oratory (massive basilica), and neighborhoods showing evolution. It's complex, fascinating history of bicultural city!`,
 
       seo: {
-        title: 'Montreal Historical Tours 2025 - French Canadian Heritage & City History',
+        title: 'Montreal Historical Tours 2026 - French Canadian Heritage & City History',
         description: 'Explore Montreal history! French colonial heritage, Notre-Dame, Mount Royal, and 380 years of culture!',
         keywords: 'Montreal history tours, Montreal heritage, Mount Royal, Olympic Stadium Montreal, Quebec history',
       },
@@ -11301,7 +11301,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Montreal's vibrant neighborhoods beyond downtown - each with distinct character! Neighborhood tours explore trendy Plateau Mont-Royal (Victorian triplex homes, murals, cafes), hipster Mile End (bagel shops, multicultural, Arcade Fire neighborhood!), Little Italy (Jean-Talon Market, Italian heritage), Gay Village (Rainbow flags, nightlife), Outremont (upscale French Montrealers), and diverse ethnic enclaves. Walk residential streets seeing how Montrealers actually live, visit local shops, sample neighborhood specialties, and experience authentic culture. Learn about immigration waves, gentrification, language dynamics, and neighborhood pride. It's real Montreal beyond tourist zones!`,
 
       seo: {
-        title: 'Montreal Neighborhood Tours 2025 - Plateau, Mile End & Local Culture',
+        title: 'Montreal Neighborhood Tours 2026 - Plateau, Mile End & Local Culture',
         description: 'Explore Montreal neighborhoods! Plateau, Mile End, Little Italy, and authentic Montreal!',
         keywords: 'Montreal neighborhoods, Plateau Mont-Royal, Mile End Montreal, Little Italy Montreal, Montreal walking tours',
       },
@@ -11477,7 +11477,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Montreal's exceptional architecture blending European and North American styles! Architecture tours explore diverse periods: French colonial (Old Montreal), Gothic Revival (Notre-Dame Basilica), Victorian (Plateau triplexes), Art Deco, Brutalist (Habitat 67!), and contemporary designs. See iconic Montreal buildings like Place Ville Marie, Olympic Stadium (controversial design), underground city RÉSO, Montreal Museum of Fine Arts, and innovative modern structures. Unique features include outdoor staircases, church spires dominating skylines, and bilingual signage. Tours explain how climate, French heritage, and cosmopolitan character shaped architecture. It's architectural diversity!`,
 
       seo: {
-        title: 'Montreal Architecture Tours 2025 - Art Deco, Victorian & Habitat 67',
+        title: 'Montreal Architecture Tours 2026 - Art Deco, Victorian & Habitat 67',
         description: 'Explore Montreal architecture! Colonial buildings, Victorian homes, Habitat 67, and diverse styles!',
         keywords: 'Montreal architecture tours, Habitat 67, Montreal buildings, Victorian Montreal, Montreal design',
       },
@@ -11655,7 +11655,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Nashville - Music City USA and the heart of country music! Country music tours explore legendary sites like the Grand Ole Opry (country music's most famous venue since 1925), RCA Studio B (where Elvis recorded), Music Row (recording studios and labels), Country Music Hall of Fame, Ryman Auditorium (Mother Church of Country Music), and historic honky-tonks on Broadway. Tours include behind-the-scenes studio access, museum visits, live music experiences, and stories of country legends. Learn about Nashville's evolution from Southern city to music capital, hear about Johnny Cash, Dolly Parton, and current stars, and understand why Nashville dominates American music. It's country music mecca!`,
 
       seo: {
-        title: 'Nashville Country Music Tours 2025 - Grand Ole Opry & Music Row',
+        title: 'Nashville Country Music Tours 2026 - Grand Ole Opry & Music Row',
         description: 'Experience Nashville country music! Grand Ole Opry, honky-tonks, Music Row, and Music City!',
         keywords: 'Nashville country music tours, Grand Ole Opry, Music Row Nashville, Ryman Auditorium, Nashville music',
       },
@@ -11831,7 +11831,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Broadway - Nashville's legendary honky-tonk highway! This 5-block stretch (Lower Broadway from 1st to 5th Avenue) features 40+ bars with FREE live country music playing all day, every day from noon to 3 AM! Broadway tours explore iconic venues like Tootsie's Orchid Lounge (where legends launched careers), Robert's Western World (still has original stage where Brazilton Brothers played), Rippy's, Layla's, and newer additions. Neon signs light up the street creating vibrant nightlife atmosphere. Tours include bar hopping, music history, behind-the-scenes stories, and sometimes drink packages. Learn about honky-tonk culture, Nashville's music business, and where tomorrow's stars perform today. It's Music City's beating heart!`,
 
       seo: {
-        title: 'Nashville Broadway Tours 2025 - Honky-Tonks & Live Music',
+        title: 'Nashville Broadway Tours 2026 - Honky-Tonks & Live Music',
         description: 'Experience Nashville Broadway! Honky-tonks, FREE live music, and Music City nightlife!',
         keywords: 'Nashville Broadway, honky-tonks Nashville, Tootsies Nashville, Broadway bars, Nashville nightlife',
       },
@@ -12007,7 +12007,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Nashville's delicious food scene - Southern comfort meets spicy innovation! Nashville food tours explore the city's signature dish: Nashville hot chicken (fried chicken coated in cayenne pepper paste - originated at Prince's Hot Chicken Shack!), alongside Southern staples like biscuits and gravy, meat-and-three plates, banana pudding, and Tennessee BBQ. Visit iconic joints like Hattie B's (tourist favorite), Prince's (original!), Bolton's (locals' choice), farm-to-table restaurants, food halls, and trendy 12South neighborhood eateries. Sample hot chicken at various heat levels (mild to "shut the cluck up"!), taste classic Southern sides, and explore Nashville's culinary evolution. It's spicy, soul-satisfying Southern food!`,
 
       seo: {
-        title: 'Nashville Food & Hot Chicken Tours 2025 - Hot Chicken & Southern Cuisine',
+        title: 'Nashville Food & Hot Chicken Tours 2026 - Hot Chicken & Southern Cuisine',
         description: 'Experience Nashville food! Hot chicken, Southern comfort food, BBQ, and culinary tours!',
         keywords: 'Nashville hot chicken, Nashville food tours, Hattie B hot chicken, Prince hot chicken, Nashville BBQ',
       },
@@ -12183,7 +12183,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Nashville's rich history beyond music! Historical tours explore Civil War sites (Battle of Nashville,Nashville National Cemetery), historic plantations (Belle Meade, Andrew Jackson's Hermitage), State Capitol building, historic Germantown neighborhood, and museums documenting Tennessee heritage. Learn about Nashville's role in Civil War (changing hands multiple times!), antebellum South, Reconstruction era, Civil Rights movement, and growth into modern city. Tours include plantation visits explaining complex histories, battlefield tours, architecture walks, and cultural heritage sites. Understand Tennessee's evolution, Southern history's difficult legacy, and how Nashville balanced preservation with progress. It's American South history!`,
 
       seo: {
-        title: 'Nashville Historical Tours 2025 - Civil War, Plantations & Tennessee Heritage',
+        title: 'Nashville Historical Tours 2026 - Civil War, Plantations & Tennessee Heritage',
         description: 'Explore Nashville history! Civil War sites, historic plantations, and Tennessee heritage!',
         keywords: 'Nashville history tours, Nashville Civil War, Hermitage plantation, Belle Meade Nashville, Nashville heritage',
       },
@@ -12359,7 +12359,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Nashville's legendary music venues beyond Broadway honky-tonks! Venue tours explore intimate listening rooms like Bluebird Cafe (where songwriters perform their hits), Station Inn (bluegrass mecca), Third Man Records (Jack White's vinyl pressing plant and venue), Exit/In (indie/rock since 1971), and historic theaters. Tours include venue visits with performances, backstage access, music industry insights, and stories of iconic shows. See where Taylor Swift was discovered, witness songwriter rounds (multiple writers sharing songs), experience "in the round" performances, and visit venues shaping music history. It's Music City beyond the mainstream!`,
 
       seo: {
-        title: 'Nashville Music Venue Tours 2025 - Bluebird Cafe & Performance Halls',
+        title: 'Nashville Music Venue Tours 2026 - Bluebird Cafe & Performance Halls',
         description: 'Experience Nashville venues! Bluebird Cafe, Station Inn, Third Man Records, and music halls!',
         keywords: 'Bluebird Cafe Nashville, Nashville music venues, Station Inn, Third Man Records, Nashville concerts',
       },
@@ -12535,7 +12535,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Immerse yourself in Nashville's vibrant culture beyond country music! Cultural tours experience authentic Southern hospitality, explore the "Athens of the South" (Nashville has Parthenon replica!), visit Fisk University (historically Black university with Jubilee Singers legacy), discover street art in Gulch and Wedgewood-Houston, attend Gospel brunch, tour whiskey distilleries, and explore local traditions. Learn about Nashville's nicknames, Civil Rights history, cultural diversity, and modern identity balancing heritage with progressive values. Tours include cultural institutions, neighborhood explorations, food traditions, and community stories. It's Nashville's soul beyond the sequins!`,
 
       seo: {
-        title: 'Nashville Cultural Tours 2025 - Southern Hospitality & Local Culture',
+        title: 'Nashville Cultural Tours 2026 - Southern Hospitality & Local Culture',
         description: 'Experience Nashville culture! Southern traditions, Parthenon, street art, and authentic Nashville!',
         keywords: 'Nashville cultural tours, Nashville Parthenon, Fisk University, Nashville culture, Southern hospitality',
       },
@@ -12713,7 +12713,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience the French Quarter (Vieux Carré) - America's most historic and atmospheric neighborhood! French Quarter tours explore iconic Bourbon Street (legendary nightlife and music), Royal Street (antique shops and art galleries), Jackson Square (heart of the Quarter with street performers), St. Louis Cathedral (oldest continuously active cathedral in US), beautiful wrought-iron balconies, hidden courtyards, and historic buildings dating to 1700s. Walk cobblestone streets where Tennessee Williams wrote, pirates once roamed, and jazz was born. Tours include architectural insights, ghost stories, history of French and Spanish colonial periods, and cultural heritage. Learn about Creole culture, voodoo traditions, devastating Hurricane Katrina, and resilience of New Orleans. It's living history!`,
 
       seo: {
-        title: 'New Orleans French Quarter Tours 2025 - Bourbon Street & Vieux Carré',
+        title: 'New Orleans French Quarter Tours 2026 - Bourbon Street & Vieux Carré',
         description: 'Explore French Quarter! Bourbon Street, Jackson Square, historic NOLA, and Creole heritage!',
         keywords: 'French Quarter tours, New Orleans Bourbon Street, Jackson Square, Vieux Carre, NOLA history',
       },
@@ -12889,7 +12889,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover New Orleans - the birthplace of jazz music! Jazz tours explore legendary Frenchmen Street (better than Bourbon for authentic music!), historic Preservation Hall (intimate jazz venue since 1961), Congo Square (where slaves gathered creating jazz foundations), old jazz clubs, brass band culture, and music venues throughout the city. Experience live jazz in intimate settings, learn about Louis Armstrong, Jelly Roll Morton, and jazz legends, visit Louis Armstrong Park, and understand how African, Caribbean, and European musical traditions fused creating jazz. Tours include club hopping, second-line parades (if lucky!), music history lessons, and possibly catching street musicians. It's jazz immersion!`,
 
       seo: {
-        title: 'New Orleans Jazz Tours 2025 - Frenchmen Street & Live Music',
+        title: 'New Orleans Jazz Tours 2026 - Frenchmen Street & Live Music',
         description: 'Experience New Orleans jazz! Frenchmen Street, Preservation Hall, live music, and jazz history!',
         keywords: 'New Orleans jazz tours, Frenchmen Street, Preservation Hall, NOLA jazz, New Orleans music',
       },
@@ -13065,7 +13065,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover New Orleans' legendary food scene - Creole and Cajun cuisine at its finest! Food tours sample iconic dishes like gumbo (rice and rich stew), jambalaya, po-boy sandwiches (fried seafood on French bread), beignets at Café Du Monde, crawfish étouffée, red beans and rice, muffuletta, and bananas foster. Visit historic restaurants (Commander's Palace, Antoine's since 1840), neighborhood joints, French Market, and food halls. Learn differences between Creole (city cooking, tomatoes, refined) and Cajun (country cooking, spicier, rustic), sample chicory coffee, taste pralines, and experience food culture shaped by French, Spanish, African, and Caribbean influences. It's America's most unique culinary tradition!`,
 
       seo: {
-        title: 'New Orleans Food & Creole Tours 2025 - Gumbo, Beignets & Cajun Cuisine',
+        title: 'New Orleans Food & Creole Tours 2026 - Gumbo, Beignets & Cajun Cuisine',
         description: 'Experience NOLA food! Gumbo, beignets, po-boys, and authentic Creole-Cajun culinary tours!',
         keywords: 'New Orleans food tours, NOLA Creole food, beignets, gumbo, New Orleans cuisine, Cajun food',
       },
@@ -13241,7 +13241,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover New Orleans' fascinating 300-year history! Historical tours explore French colonial founding (1718), Spanish rule period, Louisiana Purchase, Civil War significance, Reconstruction, devastating Hurricane Katrina (2005), and resilient recovery. Visit historic sites like Cabildo museum (Louisiana Purchase signed here!), old Ursuline Convent (oldest building in Mississippi Valley), Garden District mansions, above-ground cemeteries ("Cities of the Dead"), plantations on River Road, and Civil War forts. Learn about Creole culture, voodoo queen Marie Laveau, pirate Jean Lafitte, and how multicultural influences created unique NOLA identity. It's complex, colorful American history!`,
 
       seo: {
-        title: 'New Orleans Historical Tours 2025 - French Colonial & NOLA Heritage',
+        title: 'New Orleans Historical Tours 2026 - French Colonial & NOLA Heritage',
         description: 'Explore NOLA history! French Quarter heritage, cemeteries, Civil War, and New Orleans culture!',
         keywords: 'New Orleans history tours, French Quarter history, NOLA cemeteries, New Orleans heritage, Louisiana history',
       },
@@ -13417,7 +13417,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Louisiana's mysterious swamps and bayous - ecosystem unlike anywhere! Swamp tours cruise through cypress forests draped with Spanish moss, see wild alligators (guides sometimes feed them - they jump!), spot herons, egrets, turtles, and diverse wetland wildlife. Tours explore Honey Island Swamp (least altered swamp in Louisiana), Jean Lafitte National Park, Lake Pontchartrain, and bayou communities. Airboat tours offer high-speed thrills while pontoon boats provide relaxed nature viewing. Learn about wetland ecology, Cajun bayou culture, how swamps protect New Orleans from hurricanes, and threats facing Louisiana wetlands (losing football field of land hourly!). It's wild Louisiana!`,
 
       seo: {
-        title: 'New Orleans Swamp Tours 2025 - Alligator Tours & Louisiana Bayous',
+        title: 'New Orleans Swamp Tours 2026 - Alligator Tours & Louisiana Bayous',
         description: 'Experience Louisiana swamps! Alligator tours, bayou cruises, and wetland wildlife near NOLA!',
         keywords: 'New Orleans swamp tours, Louisiana bayou tours, alligator tours NOLA, Honey Island Swamp, swamp boat tours',
       },
@@ -13593,7 +13593,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Immerse yourself in New Orleans' unique culture - a magical blend unlike anywhere else! Cultural tours explore voodoo history (Marie Laveau, rituals, misconceptions), Mardi Gras traditions (krewe culture, bead throws, second-lines), Creole heritage, jazz funerals (celebration of life!), cemetery customs, street car culture, and local traditions. Visit voodoo shops, learn about Creole vs. Cajun identities, attend cultural events, explore African American heritage, and understand "joie de vivre" (joy of living) philosophy. Tours include mask-making workshops (Mardi Gras), voodoo museum visits, cultural performances, and authentic experiences beyond tourist shows. It's NOLA's soul!`,
 
       seo: {
-        title: 'New Orleans Cultural Tours 2025 - Voodoo, Mardi Gras & Creole Traditions',
+        title: 'New Orleans Cultural Tours 2026 - Voodoo, Mardi Gras & Creole Traditions',
         description: 'Experience NOLA culture! Voodoo, Mardi Gras, Creole heritage, and authentic New Orleans!',
         keywords: 'New Orleans culture tours, voodoo tours NOLA, Mardi Gras, Creole culture, New Orleans traditions',
       },
@@ -13771,7 +13771,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Times Square - the most visited tourist attraction in the world (50 million annually)! Times Square tours explore the iconic intersection of Broadway and 7th Avenue with massive LED billboards, Broadway theaters, street performers (naked Cowboy, Elmos), TKTS discount booth, New Year's Eve ball drop site, and vibrant pedestrian plazas. Walk through Midtown Manhattan seeing nearby attractions like Rockefeller Center, Bryant Park, and Theater District. Tours explain Times Square's transformation from seedy 1970s-80s to family-friendly today, advertising history, Broadway show culture, and why it's called "Crossroads of the World." It's sensory overload and quintessential NYC!`,
 
       seo: {
-        title: 'New York City Times Square Tours 2025 - Broadway & The Crossroads',
+        title: 'New York City Times Square Tours 2026 - Broadway & The Crossroads',
         description: 'Experience NYC Times Square! Broadway theaters, billboards, and iconic New York energy!',
         keywords: 'Times Square tours, NYC Broadway, New York City tours, Times Square NYC, Broadway tours',
       },
@@ -13947,7 +13947,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Central Park - the green heart of Manhattan and America's first landscaped public park! Central Park tours explore 843 acres of meadows, lakes, bridges, and famous landmarks like Bethesda Fountain, Bow Bridge, Strawberry Fields (John Lennon memorial), Belvedere Castle, and The Mall tree-lined promenade. Tours by foot, bike, pedicab, or horse-drawn carriage show you iconic filming locations (Home Alone, When Harry Met Sally, Avengers), hidden gems, seasonal beauty, and the park's fascinating history. Learn about Frederick Law Olmsted's visionary design, how the park transformed Manhattan, wildlife that calls it home, and free activities. It's an 840-acre escape from urban chaos!`,
 
       seo: {
-        title: 'New York City Central Park Tours 2025 - NYC\'s Urban Oasis',
+        title: 'New York City Central Park Tours 2026 - NYC\'s Urban Oasis',
         description: 'Explore Central Park! Bethesda Fountain, bike tours, iconic NYC landmarks, and green escape!',
         keywords: 'Central Park tours NYC, New York Central Park, Central Park bike tours, Bethesda Fountain, NYC parks',
       },
@@ -14123,7 +14123,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience NYC's incredible museums - world's greatest concentration of art and culture! Museum tours explore The Metropolitan Museum of Art (MET - largest art museum in Americas with 2 million works!), Museum of Modern Art (MoMA - Starry Night, Picasso, Warhol), American Museum of Natural History (dinosaurs, planetarium, 45 million specimens!), Guggenheim (Frank Lloyd Wright spiral building), 9/11 Memorial Museum (moving tribute), Whitney, Frick Collection, and countless specialized museums. Tours provide skip-the-line access, expert art historians explaining masterpieces, hidden gems, must-see highlights, and historical context. NYC has 100+ museums - you could spend weeks exploring!`,
 
       seo: {
-        title: 'New York City Museum Tours 2025 - MET, MoMA & World-Class Art',
+        title: 'New York City Museum Tours 2026 - MET, MoMA & World-Class Art',
         description: 'Explore NYC museums! MET, MoMA, Natural History, and world-class art with expert guides!',
         keywords: 'NYC museum tours, Metropolitan Museum, MoMA tours, New York museums, museum tickets NYC',
       },
@@ -14299,7 +14299,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover NYC's legendary food scene - global capital of cuisine! Food tours explore diverse neighborhoods tasting authentic pizza (Brooklyn coal-oven!), bagels with lox, pastrami sandwiches at Katz's Deli, street food (halal carts, hot dogs), Chinatown dumplings, Little Italy cannoli, Chelsea Market, Smorgasburg, and ethnic enclaves. Experience cultural neighborhoods like Harlem (soul food), Flushing (Chinese/Korean), Arthur Avenue (Bronx's "real" Little Italy), Jackson Heights (South Asian/Latin), and Brooklyn food scene. Tours combine food with cultural history - immigration stories, neighborhood evolution, and NYC's role as melting pot. It's edible anthropology!`,
 
       seo: {
-        title: 'New York City Food & Culture Tours 2025 - Pizza, Bagels & NYC Eats',
+        title: 'New York City Food & Culture Tours 2026 - Pizza, Bagels & NYC Eats',
         description: 'Taste NYC! Authentic pizza, bagels, ethnic neighborhoods, and global food culture tours!',
         keywords: 'NYC food tours, New York pizza tours, bagels NYC, food culture, New York food walking tours',
       },
@@ -14475,7 +14475,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Broadway - the pinnacle of live theater! Broadway shows feature world-class performances in historic theaters of Times Square's Theater District. See blockbuster musicals like Hamilton, Wicked, The Lion King, Phantom of the Opera (longest-running show!), plus new hits and classic plays. Tours include backstage theater tours (see dressing rooms, stage machinery, learn theater history), show ticket packages, dinner-and-show combos, and insider experiences. Learn about Broadway history, how shows are produced, theater architecture, and legendary performers. It's live entertainment at its finest - nowhere does theater like Broadway!`,
 
       seo: {
-        title: 'New York City Broadway Shows 2025 - Theater Tickets & Backstage Tours',
+        title: 'New York City Broadway Shows 2026 - Theater Tickets & Backstage Tours',
         description: 'Experience Broadway! Show tickets, backstage tours, and world-class NYC theater!',
         keywords: 'Broadway shows NYC, Broadway tickets, New York theater, Broadway tours, Hamilton tickets',
       },
@@ -14651,7 +14651,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover NYC's architectural wonders - from soaring skyscrapers to historic brownstones! Architecture tours explore iconic buildings like Empire State Building, Chrysler Building (Art Deco masterpiece!), One World Trade Center, Flatiron Building (oldest!), Grand Central Terminal, Brooklyn Bridge, and historic neighborhoods. Learn about different architectural styles (Art Deco, Beaux-Arts, International, Gothic Revival), legendary architects (Frank Lloyd Wright's Guggenheim!), construction techniques, and how architecture shaped NYC's skyline. Tours by foot, boat, or bus show you building details you'd miss, engineering marvels, and preservation stories. It's vertical city at its finest!`,
 
       seo: {
-        title: 'New York City Architecture Tours 2025 - Skyscrapers & Historic Buildings',
+        title: 'New York City Architecture Tours 2026 - Skyscrapers & Historic Buildings',
         description: 'Explore NYC architecture! Empire State, Art Deco, skyscrapers, and iconic building tours!',
         keywords: 'NYC architecture tours, New York skyscrapers, Empire State Building, architectural tours NYC, Art Deco',
       },
@@ -14829,7 +14829,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Oaxaca's Historic Center - UNESCO World Heritage Site preserving Spanish colonial splendor! Historic center tours explore the magnificent Zocalo (main square bustling with life!), Santo Domingo Church (most beautiful baroque church in Mexico!), Cathedral of Oaxaca, colonial mansions with stunning courtyards, historic museums, vibrant arcades with artisan shops, and cobblestone streets lined with colorful buildings. Walk where Zapotec civilization meets Spanish colonial architecture - see indigenous influences in buildings, learn about Benito Juárez (Mexico's first indigenous president born near Oaxaca), colonial history, and preservation efforts. It's living history at its finest!`,
 
       seo: {
-        title: 'Oaxaca Historic Center Tours 2025 - Colonial Architecture & Zocalo',
+        title: 'Oaxaca Historic Center Tours 2026 - Colonial Architecture & Zocalo',
         description: 'Explore Oaxaca historic center! UNESCO site, Santo Domingo Church, and colonial beauty!',
         keywords: 'Oaxaca historic center, Oaxaca Zocalo, Santo Domingo Church Oaxaca, colonial Oaxaca tours',
       },
@@ -15005,7 +15005,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Monte Alban - ancient Zapotec capital perched on flattened mountaintop! Monte Alban tours explore one of Mesoamerica's most important archaeological sites (UNESCO World Heritage) with massive pyramids, ball court, observ observatory, carved stone monuments (danzantes - "dancers"), and panoramic views of Oaxaca Valley. Built 500 BC and abandoned 750 AD, this pre-Columbian city housed 25,000 people at its peak! Learn about Zapotec civilization, astronomical alignment of buildings, hieroglyphic writing, conquest by Mixtecs, and archaeological discoveries. Tours include transportation from Oaxaca City (20 minutes), expert guides explaining history, and time to explore independently. It's ancient wonder!`,
 
       seo: {
-        title: 'Oaxaca Monte Alban Tours 2025 - Ancient Zapotec Ruins & Archaeology',
+        title: 'Oaxaca Monte Alban Tours 2026 - Ancient Zapotec Ruins & Archaeology',
         description: 'Explore Monte Alban! Ancient Zapotec ruins, pyramids, and archaeological wonders near Oaxaca!',
         keywords: 'Monte Alban tours, Oaxaca ruins, Zapotec ruins, Monte Alban Oaxaca, ancient ruins Mexico',
       },
@@ -15183,7 +15183,7 @@ export const categoryGuidesNorthAmerica = {
 ías tasting traditional mezcal (artisanal agave spirit smoky and complex!). Tours include market tours, cooking classes, street food adventures, mezcal tastings at palenques (distilleries), and visits to mole-making families. Learn about seven moles of Oaxaca, indigenous ingredients, and food traditions passed down generations. It's culinary paradise!`,
 
       seo: {
-        title: 'Oaxaca Food & Mezcal Tours 2025 - Mole, Tlayudas & Authentic Cuisine',
+        title: 'Oaxaca Food & Mezcal Tours 2026 - Mole, Tlayudas & Authentic Cuisine',
         description: 'Taste Oaxaca! Mole, mezcal, markets, and authentic Mexican culinary experiences!',
         keywords: 'Oaxaca food tours, mezcal tasting Oaxaca, Oaxaca mole, tlayudas, Oaxaca cuisine',
       },
@@ -15359,7 +15359,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Oaxaca's legendary markets - sensory explosion of colors, aromas, and flavors! Market tours explore Benito Juárez Market (shopping and food), 20 de Noviembre Market (grilled meats and tlayudas), Tlacolula Market (Sunday only, most authentic!), Abastos (wholesale madness!), and specialty markets. See pyramids of colorful chiles, exotic fruits, fresh flowers, handmade tortillas, traditional textiles, carved alebrijes, quesillo being stretched, insects for eating, and indigenous vendors. Learn about ingredients, haggling etiquette, seasonal specialties, and market culture. Sample street food, taste fresh juices, and shop for artisan crafts. It's living tradition!`,
 
       seo: {
-        title: 'Oaxaca Market Tours 2025 - Benito Juárez & Traditional Markets',
+        title: 'Oaxaca Market Tours 2026 - Benito Juárez & Traditional Markets',
         description: 'Explore Oaxaca markets! Food, crafts, culture, and authentic market experiences!',
         keywords: 'Oaxaca markets, Benito Juarez Market, 20 de Noviembre Market, Tlacolula market, Oaxaca shopping',
       },
@@ -15535,7 +15535,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Immerse yourself in Oaxaca's rich indigenous culture - where Zapotec traditions thrive! Cultural tours explore indigenous communities, traditional festivals, textile weaving demonstrations, mezcal-making ceremonies, Day of the Dead celebrations, Guelaguetza folk dance festival, and cultural museums. Visit Teotitlán del Valle (weavers using natural dyes), Mitla (Zapotec archaeological site), hierve el agua (petrified waterfalls), and artisan workshops. Learn about indigenous languages still spoken, traditional clothing, pre-Hispanic rituals, and how 16 indigenous groups maintain ancestral traditions. Experience authentic culture beyond tourism - it's living heritage!`,
 
       seo: {
-        title: 'Oaxaca Cultural Tours 2025 - Indigenous Heritage & Zapotec Traditions',
+        title: 'Oaxaca Cultural Tours 2026 - Indigenous Heritage & Zapotec Traditions',
         description: 'Experience Oaxaca culture! Zapotec heritage, traditional villages, and authentic experiences!',
         keywords: 'Oaxaca cultural tours, Zapotec culture, Guelaguetza, indigenous Oaxaca, Day of the Dead Oaxaca',
       },
@@ -15711,7 +15711,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Oaxaca's legendary artisan traditions - where ancient crafts thrive! Artisan tours visit specialized villages: Teotitlán del Valle (hand-woven textiles with natural dyes from cochineal, indigo, marigold), Arrazola & San Martín (carved alebrijes painted with intricate designs), San Bartolo Coyotepec (black pottery burnished to shine), Santo Tomás Jalieza (backstrap loom weaving), and more. Meet master artisans in their workshops, watch creation processes, learn traditional techniques passed through generations, and purchase directly from makers. Tours include demonstrations, hands-on workshops, cultural context, and shopping opportunities. It's living art!`,
 
       seo: {
-        title: 'Oaxaca Artisan Tours 2025 - Textiles, Alebrijes & Traditional Crafts',
+        title: 'Oaxaca Artisan Tours 2026 - Textiles, Alebrijes & Traditional Crafts',
         description: 'Meet Oaxaca artisans! Weavers, alebrije carvers, and traditional craft workshops!',
         keywords: 'Oaxaca artisan tours, Teotitlan weaving, alebrijes Oaxaca, black pottery, traditional crafts',
       },
@@ -15889,7 +15889,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Walt Disney World - the most magical place on Earth! Disney World tours explore four massive theme parks: Magic Kingdom (Cinderella Castle, classic rides!), EPCOT (futuristic attractions and World Showcase), Hollywood Studios (Star Wars, Toy Story!), and Animal Kingdom (Avatar, real animals!). Tours include skip-the-line access, expert planning, character meet-and-greets, dining reservations, and insider tips for maximizing your day. Learn about FastPass strategy, park hopping, best times to visit attractions, hidden Mickeys, and Disney magic. With 25+ hotels, two water parks, Disney Springs shopping, and countless experiences, Disney World requires serious planning - tours help navigate the overwhelming options. It's where dreams come true!`,
 
       seo: {
-        title: 'Orlando Disney World Tours 2025 - Magic Kingdom & Theme Park Tickets',
+        title: 'Orlando Disney World Tours 2026 - Magic Kingdom & Theme Park Tickets',
         description: 'Experience Disney World! Four theme parks, character experiences, and magical tours!',
         keywords: 'Disney World tours, Orlando Disney, Magic Kingdom, EPCOT, Disney tickets, Disney World vacation',
       },
@@ -16065,7 +16065,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Universal Orlando Resort - three incredible theme parks with movie magic! Universal Studios tours explore Universal Studios Florida (Wizarding World - Diagon Alley, Transformers!), Islands of Adventure (Hogsmeade, Marvel Super Hero Island, Jurassic Park!), and Volcano Bay water park. Tours include Express Pass (skip-the-line!), park-to-park tickets (ride Hogwarts Express between parks!), early park admission, and expert planning. Visit Wizarding World of Harry Potter (most popular!), experience thrilling rides like Hagrid's Motorbike, Velocicoaster (best coaster in Florida!), and enjoy Universal CityWalk dining/entertainment. Universal is smaller than Disney (easier to navigate!), more thrill-focused, and incredible for Harry Potter fans. It's movie magic come alive!`,
 
       seo: {
-        title: 'Orlando Universal Studios Tours 2025 - Harry Potter & Theme Park Tickets',
+        title: 'Orlando Universal Studios Tours 2026 - Harry Potter & Theme Park Tickets',
         description: 'Experience Universal Orlando! Wizarding World, thrilling rides, and park tickets!',
         keywords: 'Universal Studios Orlando, Harry Potter World, Universal tickets, Islands of Adventure, theme parks',
       },
@@ -16241,7 +16241,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Orlando - the theme park capital of the world! Theme park tours explore Disney World (4 parks), Universal Orlando (3 parks), SeaWorld Orlando (marine life and coasters!), Legoland (perfect for young kids!), Fun Spot (go-karts and coasters), and more. Tours include multi-park tickets, skip-the-line options, transportation between parks, expert planning, and insider tips. Learn about best park combinations, money-saving strategies, when to visit which parks, and how to maximize limited time. With 20+ parks and attractions, Orlando offers endless entertainment options - tours help navigate overwhelming choices and create efficient itineraries. It's thrill-seeker paradise!`,
 
       seo: {
-        title: 'Orlando Theme Park Tours 2025 - Disney, Universal & Multi-Park Tickets',
+        title: 'Orlando Theme Park Tours 2026 - Disney, Universal & Multi-Park Tickets',
         description: 'Explore Orlando theme parks! Multi-park tickets, combos, and expert planning!',
         keywords: 'Orlando theme parks, Orlando attractions, Disney Universal combo, theme park tickets Orlando',
       },
@@ -16417,7 +16417,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Orlando's family-friendly adventures beyond theme parks! Family tours explore Kennedy Space Center (real rockets and astronauts!), Gatorland (alligator shows and ziplines over gators!), WonderWorks (upside-down building with interactive exhibits), Icon Park (400ft Wheel observation!), mini-golf courses, trampoline parks, and interactive museums. Experience airboat rides seeing wild gators, visit SEA LIFE Aquarium, explore Madame Tussauds wax museum, and enjoy educational attractions. Tours combine fun with learning - science, nature, space exploration, and wildlife. Perfect for families wanting variety beyond theme parks or rest days between Disney/Universal. It's Orlando diversity!`,
 
       seo: {
-        title: 'Orlando Family Adventure Tours 2025 - Kennedy Space Center & Family Fun',
+        title: 'Orlando Family Adventure Tours 2026 - Kennedy Space Center & Family Fun',
         description: 'Family-friendly Orlando! Kennedy Space Center, Gatorland, and kid adventures!',
         keywords: 'Orlando family tours, Kennedy Space Center, Gatorland, family activities Orlando, kids Orlando',
       },
@@ -16593,7 +16593,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Orlando's incredible water parks - perfect Florida escape! Water park tours explore Volcano Bay (Universal - amazing theming!), Disney's Typhoon Lagoon (wave pool and lazy river), Disney's Blizzard Beach (ski resort theme!), Aquatica (SeaWorld - dolphin viewing while sliding!), Discovery Cove (swim with dolphins!), and more. Experience wave pools, lazy rivers, water slides, surf simulators, private cabanas, and tropical theming. Tours include tickets, cabana rentals, skip-the-line options, and transportation. Florida's heat makes water parks essential! Perfect for theme park breaks, summer visits, or full water park vacation. It's splashing fun!`,
 
       seo: {
-        title: 'Orlando Water Park Tours 2025 - Volcano Bay, Typhoon Lagoon & Aquatic Fun',
+        title: 'Orlando Water Park Tours 2026 - Volcano Bay, Typhoon Lagoon & Aquatic Fun',
         description: 'Experience Orlando water parks! Volcano Bay, Disney water parks, and aquatic adventures!',
         keywords: 'Orlando water parks, Volcano Bay, Typhoon Lagoon, Aquatica Orlando, water park tickets',
       },
@@ -16769,7 +16769,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Florida's natural beauty beyond theme parks! Nature tours explore crystal-clear springs (Blue Spring, Wekiwa Springs - swim in 72°F natural pools!), airboat rides through wetlands seeing wild alligators and birds, kayaking eco-tours, manatee encounters (winter!), Everglades day trips, and state parks. Visit Orlando Wetlands Park (birding paradise!), Lake Eola (downtown oasis), and natural areas preserving "real Florida." Tours include wildlife viewing, swimming in springs, hiking trails, and education about Florida ecology. Learn about endangered species, wetland importance, and escape Orlando's tourist crowds. It's wild Florida!`,
 
       seo: {
-        title: 'Orlando Nature Tours 2025 - Springs, Airboats & Florida Wildlife',
+        title: 'Orlando Nature Tours 2026 - Springs, Airboats & Florida Wildlife',
         description: 'Explore Orlando nature! Crystal springs, airboat rides, manatees, and Florida wildlife!',
         keywords: 'Orlando nature tours, Florida springs, airboat tours Orlando, manatee tours, Blue Spring',
       },
@@ -16947,7 +16947,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Quinta Avenida (Fifth Avenue) - Playa del Carmen's beating heart! Fifth Avenue tours explore the famous pedestrian street stretching 20+ blocks parallel to Caribbean Sea with boutique shops, international restaurants, rooftop bars, beach clubs, street performers, and vibrant nightlife. Walk from Calle 1 (beach) to Calle Corazón (northern end) discovering artisan markets, luxury shopping, authentic Mexican restaurants, beach access points, and local culture. Tours include shopping guidance, best restaurant recommendations, cultural insights, and evening experiences. Learn about Playa's transformation from fishing village to cosmopolitan destination. It's Riviera Maya's social scene!`,
 
       seo: {
-        title: 'Playa del Carmen Fifth Avenue Tours 2025 - Quinta Avenida Shopping & Dining',
+        title: 'Playa del Carmen Fifth Avenue Tours 2026 - Quinta Avenida Shopping & Dining',
         description: 'Explore Fifth Avenue! Quinta Avenida shopping, dining, and Playa del Carmen\'s vibrant street!',
         keywords: 'Quinta Avenida Playa del Carmen, Fifth Avenue Mexico, Playa shopping, Playa del Carmen nightlife',
       },
@@ -17123,7 +17123,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Playa del Carmen's stunning Caribbean beaches - powder-white sand and turquoise water! Beach tours explore iconic beaches like Mamita's Beach Club (trendy!), Playacar (quieter southern beach), Punta Esmeralda (local favorite with cenote!), and nearby islands. Experience beach club culture with DJ music and cocktails, snorkeling in coral reefs, sailing catamarans, paddleboarding, and beach yoga. Tours include day passes to exclusive beach clubs, snorkel equipment, boat trips to Cozumel or Isla Mujeres, and sunset cruises. Learn about Mesoamerican Reef (second-largest globally!), sea turtle conservation, and beach culture. It's Caribbean paradise!`,
 
       seo: {
-        title: 'Playa del Carmen Beach Tours 2025 - Caribbean Beaches & Beach Clubs',
+        title: 'Playa del Carmen Beach Tours 2026 - Caribbean Beaches & Beach Clubs',
         description: 'Experience Playa beaches! Beach clubs, snorkeling, and turquoise Caribbean waters!',
         keywords: 'Playa del Carmen beaches, Mamitas Beach Club, Playa snorkeling, Caribbean beaches Mexico',
       },
@@ -17299,7 +17299,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover cenotes - mystical natural sinkholes unique to Yucatan Peninsula! Cenote tours explore stunning freshwater pools like Gran Cenote (famous snorkeling!), Dos Ojos (two connected caverns), Ik Kil (near Chichen Itza), Cenote Azul, and countless hidden gems. Swim in crystal-clear water (visibility 100+ feet!), snorkel among stalactites, dive into open-air pools, explore underwater cave systems, and experience magical light beams. Tours include transportation, entrance fees, snorkel equipment, and expert guides explaining cenote formation and Mayan sacred significance. Learn about limestone geology, underground river systems, and ancient rituals. It's otherworldly swimming!`,
 
       seo: {
-        title: 'Playa del Carmen Cenote Tours 2025 - Swim in Mystical Underwater Caves',
+        title: 'Playa del Carmen Cenote Tours 2026 - Swim in Mystical Underwater Caves',
         description: 'Explore cenotes! Gran Cenote, Dos Ojos, and magical freshwater swimming!',
         keywords: 'cenote tours Playa del Carmen, Gran Cenote, Dos Ojos, cenote swimming, Tulum cenotes',
       },
@@ -17475,7 +17475,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Playa del Carmen's diverse food scene - authentic Mexican to international fusion! Food tours explore local taco stands, cevicherías, traditional Yucatecan restaurants, street food markets, cocktail bars, and chef-driven establishments. Sample cochinita pibil (slow-roasted pork), fresh ceviche, fish tacos, sopes, quesadillas, and regional specialties. Visit local neighborhoods beyond tourist zones, experience mezcal/tequila tastings, learn cooking techniques, and understand cultural significance of food. Tours combine tastings with cultural education - Mayan heritage, fishing village history, and modern cosmopolitan blend. It's culinary and cultural immersion!`,
 
       seo: {
-        title: 'Playa del Carmen Food & Culture Tours 2025 - Tacos, Ceviche & Mexican Cuisine',
+        title: 'Playa del Carmen Food & Culture Tours 2026 - Tacos, Ceviche & Mexican Cuisine',
         description: 'Taste Playa! Authentic tacos, ceviche, and cultural culinary experiences!',
         keywords: 'Playa del Carmen food tours, Playa tacos, ceviche, Yucatan food, Mexican cuisine tours',
       },
@@ -17651,7 +17651,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Playa del Carmen's incredible water sports - perfect conditions year-round! Water sports tours offer kitesurfing lessons (steady winds!), stand-up paddleboarding, jet skiing, parasailing, flyboarding, windsurfing, and sea kayaking. Explore Caribbean waters with professional instruction, rent equipment, join group activities, or book private lessons. Visit dedicated kitesurf beaches north of Playa, paddleboard calm waters, jet ski along coastline, or parasail for aerial views. Tours include equipment, safety gear, instruction, and insurance. Learn about ocean conditions, safety protocols, and progress from beginner to confident. It's aquatic adventure!`,
 
       seo: {
-        title: 'Playa del Carmen Water Sports 2025 - Kitesurfing, Paddleboarding & Caribbean Action',
+        title: 'Playa del Carmen Water Sports 2026 - Kitesurfing, Paddleboarding & Caribbean Action',
         description: 'Experience Playa water sports! Kitesurfing, jet skiing, and Caribbean aquatic adventures!',
         keywords: 'Playa del Carmen water sports, kitesurfing Playa, paddleboarding, jet ski Playa, parasailing',
       },
@@ -17827,7 +17827,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Riviera Maya's adventure parks and jungle experiences! Adventure tours explore jungle zip-lining (soar through canopy!), ATV rides through Mayan villages, underground river swimming, rappelling into cenotes, jungle hiking, and adrenaline-packed eco-parks. Visit parks like Xplor (zip-lines, amphibious vehicles, rafts!), Selvatica (longest zip-line in Riviera Maya!), Aventuras Mayas, and jungle reserves. Tours combine multiple activities - zip-lining, cenote swimming, Mayan village visits, authentic lunch, and cultural experiences. Learn about jungle ecology, Mayan culture, sustainable tourism, and wildlife. It's adrenaline and nature combined!`,
 
       seo: {
-        title: 'Playa del Carmen Adventure Tours 2025 - Zip-Lining, ATVs & Jungle Expeditions',
+        title: 'Playa del Carmen Adventure Tours 2026 - Zip-Lining, ATVs & Jungle Expeditions',
         description: 'Experience Playa adventure! Zip-lining, ATV jungle rides, and adrenaline tours!',
         keywords: 'Playa del Carmen adventure tours, zip-lining Playa, ATV tours, Xplor, jungle tours',
       },
@@ -18005,7 +18005,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience El Malecón - Puerto Vallarta's iconic mile-long oceanfront promenade! Malecon tours explore the beautiful boardwalk stretching from Hotel Zone to Old Town (Zona Romántica) with famous sculptures (seahorse statue, Los Arcos symbol), street performers, artisan vendors, restaurants with Pacific views, and stunning sunsets. Walk along cobblestone promenade, watch cliff divers at Los Muertos Pier, visit Playa de los Muertos beach, and experience vibrant atmosphere. Evening brings live music, street food, families strolling - it's PV's social heart! Learn about sculptures and artists, boardwalk history, and beachfront culture. It's romantic Pacific paradise!`,
 
       seo: {
-        title: 'Puerto Vallarta Malecon Tours 2025 - Oceanfront Boardwalk & Sunsets',
+        title: 'Puerto Vallarta Malecon Tours 2026 - Oceanfront Boardwalk & Sunsets',
         description: 'Explore Puerto Vallarta Malecon! Iconic boardwalk, sculptures, and Pacific sunsets!',
         keywords: 'Puerto Vallarta Malecon, El Malecon, Puerto Vallarta boardwalk, PV sunsets, Los Muertos beach',
       },
@@ -18181,7 +18181,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Puerto Vallarta's charming Old Town (Centro Historico and Zona Romántica)! Old Town tours explore cobblestone streets, iconic Our Lady of Guadalupe church (crowned tower!), historic plaza, colonial architecture, hidden courtyards, art galleries, traditional markets, and authentic neighborhoods. Visit Isla Cuale (river island with shops!), Los Arcos amphitheater, colorful hillside homes, and local cantinas. Tours include cultural insights, architectural history, shopping guidance, and authentic restaurant recommendations. Learn about Puerto Vallarta's evolution from small fishing village to beloved resort, preserving Mexican charm while welcoming international visitors. It's romantic Mexico!`,
 
       seo: {
-        title: 'Puerto Vallarta Old Town Tours 2025 - Colonial Streets & Historic Centro',
+        title: 'Puerto Vallarta Old Town Tours 2026 - Colonial Streets & Historic Centro',
         description: 'Explore PV Old Town! Guadalupe church, cobblestone streets, and colonial charm!',
         keywords: 'Puerto Vallarta Old Town, Centro Historico, Zona Romantica, Guadalupe church, PV historic',
       },
@@ -18357,7 +18357,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Puerto Vallarta's diverse beaches - from bustling Los Muertos to secluded coves! Beach tours explore Playa de los Muertos (most famous!), Conchas Chinas (snorkeling paradise!), Las Gemelas (twins beaches), Playa Camarones, and remote beaches accessible only by boat like Yelapa, Majahuitas, and Quimixto. Enjoy beach clubs, snorkeling vibrant reefs, boat trips to hidden coves, paddleboarding, and sunset cruises. Tours include boat transportation, snorkel gear, lunch, open bar, and beach time. Learn about Los Arcos Marine Park (protected rocks with diverse marine life!), sea turtle conservation, and coastal ecology. It's Pacific beach perfection!`,
 
       seo: {
-        title: 'Puerto Vallarta Beach Tours 2025 - Los Muertos, Hidden Coves & Pacific Beaches',
+        title: 'Puerto Vallarta Beach Tours 2026 - Los Muertos, Hidden Coves & Pacific Beaches',
         description: 'Explore PV beaches! Los Muertos, Conchas Chinas, and boat-access hidden coves!',
         keywords: 'Puerto Vallarta beaches, Los Muertos beach, Conchas Chinas, Yelapa, PV beach tours',
       },
@@ -18533,7 +18533,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Puerto Vallarta's incredible food scene - fresh Pacific seafood and authentic Mexican flavors! Food tours explore local markets, street taco stands, traditional seafood restaurants, upscale dining, and hidden gems. Sample fish tacos (caught daily!), ceviche, aguachile (spicy shrimp), grilled octopus, pescado zarandeado (butterflied grilled fish), and regional specialties. Visit Municipal Market, experience tequila tastings, learn cooking techniques, and explore neighborhoods beyond tourist zones. Tours combine food with cultural education - fishing heritage, Huichol indigenous art, and local traditions. It's Pacific culinary paradise!`,
 
       seo: {
-        title: 'Puerto Vallarta Food & Culture Tours 2025 - Seafood, Tacos & Mexican Cuisine',
+        title: 'Puerto Vallarta Food & Culture Tours 2026 - Seafood, Tacos & Mexican Cuisine',
         description: 'Taste Puerto Vallarta! Fresh seafood, authentic tacos, and culinary tours!',
         keywords: 'Puerto Vallarta food tours, PV seafood, fish tacos, Mexican food tours, tequila tasting',
       },
@@ -18709,7 +18709,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Puerto Vallarta's incredible whale watching - December through March spectacle! Whale tours explore Banderas Bay where 300+ humpback whales migrate annually for breeding and calving. Watch mothers with calves, breaching whales (jumping!), tail slapping, and hear whale songs via hydrophone. Tours include dolphin sightings (spinner, bottlenose!), manta rays, sea turtles, and diverse marine life. Cruise on boats with expert naturalist guides explaining whale behavior, migration patterns, and conservation efforts. Tours range from large boats to intimate pangas (small boats - closer encounters!). It's nature's greatest show!`,
 
       seo: {
-        title: 'Puerto Vallarta Whale Watching Tours 2025 - Humpback Whales & Marine Life',
+        title: 'Puerto Vallarta Whale Watching Tours 2026 - Humpback Whales & Marine Life',
         description: 'See humpback whales in PV! December-March whale watching in Banderas Bay!',
         keywords: 'Puerto Vallarta whale watching, humpback whales, Banderas Bay whales, PV dolphins, whale tours',
       },
@@ -18885,7 +18885,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Sierra Madre mountains and jungle adventures around Puerto Vallarta! Adventure tours explore canopy zip-lining through tropical forest, ATV rides to waterfalls, horseback riding in mountains, river rapids, jungle hiking, and adrenaline parks. Visit destinations like Canopy River (longest zip-line circuit!), Las Caletas (hidden beach eco-adventure!), Sierra Madre foothills, El Eden waterfall (Predator movie location!), and remote villages. Tours combine multiple activities - zip-lining, waterfall rappelling, tequila tasting, authentic lunch, and cultural experiences. Learn about tropical ecology, local communities, and sustainable adventure tourism. It's mountains meet ocean!`,
 
       seo: {
-        title: 'Puerto Vallarta Adventure Tours 2025 - Zip-Lining, ATVs & Jungle Expeditions',
+        title: 'Puerto Vallarta Adventure Tours 2026 - Zip-Lining, ATVs & Jungle Expeditions',
         description: 'Experience PV adventure! Zip-lining, jungle tours, and Sierra Madre excitement!',
         keywords: 'Puerto Vallarta adventure tours, PV zip-lining, ATV tours, jungle tours, Sierra Madre',
       },
@@ -19063,7 +19063,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Old Quebec - only fortified city north of Mexico and UNESCO World Heritage Site! Old Quebec tours explore Upper Town (Haute-Ville with Château Frontenac!) and Lower Town (Basse-Ville with Place Royale), cobblestone streets, 400-year-old buildings, historic gates, charming squares, and French colonial architecture. Walk through Quartier Petit Champlain (oldest commercial district in North America!), visit Notre-Dame de Québec Basilica-Cathedral, explore ramparts, and experience living European history. Tours include French heritage stories, British conquest history, and modern Quebec identity. It's Europe in North America!`,
 
       seo: {
-        title: 'Quebec City Old Quebec Tours 2025 - UNESCO Heritage & Historic Walled City',
+        title: 'Quebec City Old Quebec Tours 2026 - UNESCO Heritage & Historic Walled City',
         description: 'Explore Old Quebec! Walled city, cobblestone streets, and European charm in Canada!',
         keywords: 'Old Quebec tours, Quebec City historic, UNESCO Quebec, Petit Champlain, walled city Quebec',
       },
@@ -19239,7 +19239,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Château Frontenac - Quebec City's crown jewel and most photographed hotel globally! Château tours explore this magnificent castle-hotel perched on Cap Diamant overlooking St. Lawrence River. Built 1893 by Canadian Pacific Railway, this Fairmont property features grand architecture, luxurious interiors, historic ballrooms, and stunning views. Tours include guided history walks, afternoon tea experiences, architecture appreciation, and access to areas usually restricted. Learn about famous guests (Churchill, Roosevelt met here!), hotel's role in Quebec history, stunning Château-style architecture, and restoration efforts. Even if not staying, it's essential to visit!`,
 
       seo: {
-        title: 'Quebec City Château Frontenac Tours 2025 - Iconic Castle Hotel & History',
+        title: 'Quebec City Château Frontenac Tours 2026 - Iconic Castle Hotel & History',
         description: 'Explore Château Frontenac! Historic castle-hotel tours and Quebec City icon!',
         keywords: 'Château Frontenac, Quebec City castle, Fairmont Quebec, historic hotels, Chateau Frontenac tours',
       },
@@ -19415,7 +19415,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Quebec City's fascinating 400-year history! Historical tours explore founding of New France (1608 by Samuel de Champlain), French colonial era, British conquest (Plains of Abraham battle!), Quebec's role in both World Wars, and evolution to modern French-Canadian cultural capital. Visit battlefields, historic sites, museums (Museum of Civilization, Citadelle!), and monuments. Learn about French-English tensions, Quebec independence movement, preservation of French language, and unique identity. Tours include Citadelle fortress (still active military base!), Plains of Abraham park, and historic neighborhoods. It's living history!`,
 
       seo: {
-        title: 'Quebec City Historical Tours 2025 - New France Heritage & Canadian History',
+        title: 'Quebec City Historical Tours 2026 - New France Heritage & Canadian History',
         description: 'Explore Quebec history! Citadelle, Plains of Abraham, and 400 years of stories!',
         keywords: 'Quebec City history tours, Citadelle Quebec, Plains of Abraham, New France, Quebec historical sites',
       },
@@ -19591,7 +19591,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Quebec City's French-Canadian cuisine - European elegance meets North American hearty! Food tours sample iconic dishes like poutine (fries, gravy, cheese curds!), tourtière (meat pie), pea soup, sugar pie, maple syrup treats, and French bistro classics. Visit historic restaurants, local markets, artisan cheese shops, maple sugar shacks (cabanes à sucre), and traditional creperies. Experience French culinary techniques with Canadian ingredients, sample ice cider and Quebec wine, learn cooking traditions, and explore food culture. Tours include Old Quebec dining, Lower Town bistros, and neighborhood eateries. It's French gastronomy in Canada!`,
 
       seo: {
-        title: 'Quebec City Food & Culture Tours 2025 - Poutine, French Cuisine & Culinary Experiences',
+        title: 'Quebec City Food & Culture Tours 2026 - Poutine, French Cuisine & Culinary Experiences',
         description: 'Taste Quebec! Poutine, tourtière, maple syrup, and French-Canadian culinary tours!',
         keywords: 'Quebec City food tours, poutine Quebec, French-Canadian cuisine, Quebec restaurants, food tours',
       },
@@ -19767,7 +19767,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Quebec City's unique fortifications - only remaining walled city in North America north of Mexico! Fortification tours walk 4.6 km of ramparts surrounding Upper Town, explore four historic gates (St. Louis, St. Jean, Kent, Prescott), visit fortification interpretation centers, and climb observation points. Learn about French colonial defenses, British military engineering, star fortress design (Citadelle!), and preservation efforts. Tours include panoramic city views, military history, UNESCO significance, and architectural details. Walk where soldiers patrolled for centuries protecting New France. It's defensive architecture marvel!`,
 
       seo: {
-        title: 'Quebec City Fortification Tours 2025 - Historic Ramparts & City Walls',
+        title: 'Quebec City Fortification Tours 2026 - Historic Ramparts & City Walls',
         description: 'Explore Quebec fortifications! Walk ramparts, historic gates, and defensive walls!',
         keywords: 'Quebec fortifications, Quebec ramparts, Quebec City walls, fortification tours, city gates Quebec',
       },
@@ -19943,7 +19943,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Quebec City's architectural treasures - four centuries of stunning buildings! Architecture tours explore French colonial (17th-18th century stone houses), British Victorian elegance, Château-style grandeur (Frontenac!), Art Deco gems, and modern preservation. Visit Upper Town mansions, Lower Town merchant houses, religious buildings (Notre-Dame Basilica-Cathedral!), Parliament Building, and historic neighborhoods. Learn about different architectural periods, European influences, traditional Quebec building techniques (steep roofs for snow!), and UNESCO preservation standards. Tours include exterior and interior access to significant buildings. It's architectural time travel!`,
 
       seo: {
-        title: 'Quebec City Architecture Tours 2025 - Colonial Buildings & Historic Preservation',
+        title: 'Quebec City Architecture Tours 2026 - Colonial Buildings & Historic Preservation',
         description: 'Explore Quebec architecture! French colonial, Château Frontenac, and historic buildings!',
         keywords: 'Quebec City architecture, French colonial architecture, Chateau style, Quebec buildings, architectural tours',
       },
@@ -20121,7 +20121,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience the Golden Gate Bridge - engineering marvel and SF icon! Golden Gate tours explore this 1.7-mile suspension bridge spanning Golden Gate strait with International Orange color, Art Deco towers, and stunning views. Walk across (free!), bike to Sausalito, cruise underneath on bay tours, visit vista points (Battery Spencer best photos!), and learn bridge history. Tours include bike rentals with Sausalito ferry return, guided walks explaining engineering, historical photo exhibits, and Fort Point exploration (underneath bridge!). Learn about 1937 construction, why it\'s orange (visibility in fog!), suicide prevention efforts, and cultural significance. It\'s Golden Gate City icon!`,
 
       seo: {
-        title: 'San Francisco Golden Gate Bridge Tours 2025 - Walk, Bike & Bay Views',
+        title: 'San Francisco Golden Gate Bridge Tours 2026 - Walk, Bike & Bay Views',
         description: 'Experience Golden Gate Bridge! Walk across, bike to Sausalito, and iconic SF tours!',
         keywords: 'Golden Gate Bridge tours, San Francisco bridge, bike Golden Gate, Sausalito, SF iconic',
       },
@@ -20297,7 +20297,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Alcatraz - America's most infamous prison on island in San Francisco Bay! Alcatraz tours ferry to "The Rock" exploring maximum-security prison (1934-1963) that held Al Capone, Machine Gun Kelly, and "Birdman" Robert Stroud. Experience award-winning audio tour with former inmates and guards narrating, see tiny cells, visit solitary confinement, explore cellhouse, and learn about famous escape attempts (Frank Morris and Anglin brothers!). Tours include ferry, audio tour, island exploration, and stunning SF skyline views. Learn about Native American occupation (1969-1971), lighthouse, and military fort history. It's haunting and fascinating!`,
 
       seo: {
-        title: 'San Francisco Alcatraz Tours 2025 - Island Prison Tickets & Ferry',
+        title: 'San Francisco Alcatraz Tours 2026 - Island Prison Tickets & Ferry',
         description: 'Visit Alcatraz! Island prison tours, audio tour, and SF Bay views!',
         keywords: 'Alcatraz tours, San Francisco Alcatraz, Alcatraz tickets, Alcatraz prison, SF island prison',
       },
@@ -20473,7 +20473,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience San Francisco's iconic cable cars - last manually operated system in the world! Cable car tours ride three historic lines (Powell-Hyde, Powell-Mason, California Street) climbing SF's famously steep hills with vintage wooden cars pulled by underground cables. Experience gripman operating cars, ride outside running boards, hear bells clanging, pass landmarks like Lombard Street and Fisherman's Wharf, and enjoy thrilling hill descents. Tours include all-day passes, hop-on-hop-off flexibility, cable car museum visits, and expert guidance. Learn about 1873 invention, how cable system works, preservation efforts, and cultural icon status. It's mobile National Historic Landmark!`,
 
       seo: {
-        title: 'San Francisco Cable Car Tours 2025 - Historic Rides & SF Hills',
+        title: 'San Francisco Cable Car Tours 2026 - Historic Rides & SF Hills',
         description: 'Ride SF cable cars! Historic transportation, steep hills, and iconic San Francisco!',
         keywords: 'San Francisco cable cars, SF cable car rides, Powell-Hyde, cable car tours, historic transportation',
       },
@@ -20649,7 +20649,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover San Francisco's legendary food scene - culinary capital with diverse global cuisines! Food tours explore Fisherman's Wharf (clam chowder in sourdough bowls!), Chinatown (oldest in North America with amazing dim sum!), Mission District (burritos, taquerias!), Ferry Building Marketplace (artisan foods!), North Beach (Italian heritage!), and innovative restaurant scene. Sample Dungeness crab, sourdough bread, dim sum, Mission-style burritos, cioppino (seafood stew), and Ghirardelli chocolate. Tours include neighborhood exploration, cultural education, chef-led experiences, and wine country excursions. It's farm-to-table pioneer!`,
 
       seo: {
-        title: 'San Francisco Food & Culture Tours 2025 - Sourdough, Dim Sum & SF Cuisine',
+        title: 'San Francisco Food & Culture Tours 2026 - Sourdough, Dim Sum & SF Cuisine',
         description: 'Taste San Francisco! Food tours, dim sum, sourdough, and culinary experiences!',
         keywords: 'San Francisco food tours, SF dim sum, sourdough, Fisherman Wharf food, Mission burritos',
       },
@@ -20825,7 +20825,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover San Francisco's distinct neighborhoods - each with unique character! Neighborhood tours explore Mission District (Latino culture, street art!), Haight-Ashbury (hippie history!), Castro (LGBTQ+ mecca!), Chinatown (oldest in North America!), North Beach (Little Italy!), Pacific Heights (mansions and Painted Ladies!), and more. Experience local culture, historic significance, street art murals, Victorian architecture, diverse communities, and authentic neighborhood life beyond tourist areas. Tours include cultural education, food tastings, historical context, and local insights. It's San Francisco diversity!`,
 
       seo: {
-        title: 'San Francisco Neighborhood Tours 2025 - Mission, Castro, Haight & SF Districts',
+        title: 'San Francisco Neighborhood Tours 2026 - Mission, Castro, Haight & SF Districts',
         description: 'Explore SF neighborhoods! Mission murals, Castro history, and diverse San Francisco districts!',
         keywords: 'San Francisco neighborhoods, Mission District, Castro SF, Haight-Ashbury, Chinatown SF, SF districts',
       },
@@ -21001,7 +21001,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience San Francisco Bay from water - best city views! Bay tours cruise under Golden Gate Bridge, circle Alcatraz Island, pass Angel Island, see SF skyline, and explore bay's maritime heritage. Tours range from 1-hour basic cruises to sunset champagne sails, whale watching excursions (winter!), and full-day Sausalito combinations. Experience narrated history, photograph iconic landmarks from unique perspectives, possibly spot sea lions and dolphins, and understand bay's geographic significance. Tours include indoor/outdoor seating, bar service, and audio commentary. It's San Francisco from best vantage point!`,
 
       seo: {
-        title: 'San Francisco Bay Tours 2025 - Bay Cruises, Golden Gate & Alcatraz Views',
+        title: 'San Francisco Bay Tours 2026 - Bay Cruises, Golden Gate & Alcatraz Views',
         description: 'Experience SF Bay! Cruise under Golden Gate, around Alcatraz, and see stunning skyline!',
         keywords: 'San Francisco Bay cruises, SF boat tours, Golden Gate cruise, bay tours, Alcatraz cruise',
       },
@@ -21179,7 +21179,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Sedona's legendary red rocks - Arizona's most spectacular natural wonder! Red rock tours explore iconic formations like Cathedral Rock (most photographed!), Bell Rock (vortex site!), Chapel of the Holy Cross (built into rocks!), Devil's Bridge (largest natural arch!), and countless stunning vistas. Experience jeep tours through rugged terrain, scenic drives, hiking to formations, photography stops, and sunset viewing. Tours include Red Rock Scenic Byway (SR 179), Oak Creek Canyon, viewpoint stops, and geological education. Learn about iron oxide creating red color, 300-million-year-old Schnebly Hill Formation, and how erosion sculpted masterpieces. It's red rock paradise!`,
 
       seo: {
-        title: 'Sedona Red Rock Tours 2025 - Cathedral Rock, Bell Rock & Jeep Tours',
+        title: 'Sedona Red Rock Tours 2026 - Cathedral Rock, Bell Rock & Jeep Tours',
         description: 'Explore Sedona red rocks! Jeep tours, Cathedral Rock, and stunning red formations!',
         keywords: 'Sedona red rocks, Cathedral Rock, Bell Rock, Sedona jeep tours, red rock formations',
       },
@@ -21355,7 +21355,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Sedona's legendary spiritual energy - vortex capital of the world! Spiritual tours explore four main vortex sites (Bell Rock, Airport Mesa, Cathedral Rock, Boynton Canyon) where earth's electromagnetic energy supposedly concentrates. Experience guided meditation, energy readings, chakra balancing, sound healing, and consciousness expansion. Visit Chapel of the Holy Cross (spiritual architecture!), metaphysical shops, healing centers, and sacred Native American sites. Tours include experienced spiritual guides, meditation instruction, vortex education, and personal energy experiences. Whether believer or skeptic, Sedona's spiritual atmosphere is palpable. It's mystical Arizona!`,
 
       seo: {
-        title: 'Sedona Spiritual Tours 2025 - Vortex Sites, Meditation & Energy Healing',
+        title: 'Sedona Spiritual Tours 2026 - Vortex Sites, Meditation & Energy Healing',
         description: 'Experience Sedona vortexes! Spiritual tours, energy sites, and meditation in mystical Sedona!',
         keywords: 'Sedona vortex tours, Sedona spiritual, vortex sites, Sedona meditation, energy healing Sedona',
       },
@@ -21531,7 +21531,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Sedona's incredible hiking - red rock paradise for outdoor enthusiasts! Hiking tours explore legendary trails like Devil's Bridge (largest natural arch requiring moderate climb!), West Fork Trail (creek crossings in canyon!), Cathedral Rock (steep but rewarding!), Soldier Pass (seven sacred pools!), and countless desert paths. Experience guided hikes with naturalists, rock scrambling, slot canyons, swimming holes, and panoramic vista rewards. Tours include transportation, expert guides explaining flora/fauna/geology, safety equipment, and trail navigation. Learn about desert ecosystem, proper hiking techniques, Leave No Trace principles, and best photography spots. It's high-desert hiking heaven!`,
 
       seo: {
-        title: 'Sedona Hiking & Adventure Tours 2025 - Devil\'s Bridge, West Fork & Red Rock Trails',
+        title: 'Sedona Hiking & Adventure Tours 2026 - Devil\'s Bridge, West Fork & Red Rock Trails',
         description: 'Hike Sedona! Guided trails, Devil\'s Bridge, and red rock adventures!',
         keywords: 'Sedona hiking tours, Devil\'s Bridge, West Fork Trail, Sedona trails, guided hikes Sedona',
       },
@@ -21707,7 +21707,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Sedona's rich Native American heritage - sacred land for millennia! Native American tours visit ancient Sinagua cliff dwellings (Montezuma Castle, Palatki!), Hohokam and Sinagua rock art (pictographs and petroglyphs!), sacred sites, and archaeological ruins. Experience guided tours with Native American guides sharing cultural traditions, visit Honanki Heritage Site, explore V-Bar-V Petroglyph Site (1,000+ rock carvings!), and learn about indigenous connection to red rocks. Tours include respectful cultural education, archaeology insights, traditional stories, and understanding of ongoing Native presence. It's ancient Arizona!`,
 
       seo: {
-        title: 'Sedona Native American Tours 2025 - Ancient Ruins, Rock Art & Indigenous Heritage',
+        title: 'Sedona Native American Tours 2026 - Ancient Ruins, Rock Art & Indigenous Heritage',
         description: 'Explore Sedona Native American sites! Ancient ruins, petroglyphs, and cultural tours!',
         keywords: 'Sedona Native American tours, Palatki ruins, Montezuma Castle, petroglyphs Sedona, ancient ruins',
       },
@@ -21883,7 +21883,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Sedona through the lens - photographer's ultimate paradise! Photography tours visit iconic locations at optimal light with professional photographers guiding composition, settings, and techniques. Capture Cathedral Rock at sunrise, Bell Rock at golden hour, Chapel of the Holy Cross, Airport Mesa sunset, Oak Creek reflections, and hidden photogenic spots. Tours include private locations, timing for best light, post-processing tips, and expert guidance. Learn about landscape photography, long exposure techniques, composition rules, and how to photograph dramatic red rock formations. It's Instagram gold and portfolio builder!`,
 
       seo: {
-        title: 'Sedona Photography Tours 2025 - Red Rock Photos & Landscape Photography',
+        title: 'Sedona Photography Tours 2026 - Red Rock Photos & Landscape Photography',
         description: 'Capture Sedona! Photography tours, golden hour, and expert landscape photography guidance!',
         keywords: 'Sedona photography tours, red rock photography, Sedona photo spots, landscape photography, photo tours',
       },
@@ -22059,7 +22059,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Sedona's diverse natural ecosystem - more than just red rocks! Nature tours explore Oak Creek (lush riparian corridor!), Slide Rock State Park (natural water slide!), desert flora (agave, juniper, prickly pear), wildlife (javelina, eagles, elk!), and ecological diversity. Experience guided naturalist hikes, creek swimming, waterfall visits, bird watching, and ecology education. Visit Red Rock State Park (nature center and easy trails!), Secret Canyon, and pristine natural areas. Tours include expert naturalists explaining desert adaptations, water sources, wildlife behavior, and conservation. Learn about high-desert ecosystems thriving at 4,500 ft elevation. It's Arizona biodiversity!`,
 
       seo: {
-        title: 'Sedona Nature Tours 2025 - Oak Creek, Desert Wildlife & Natural Wonders',
+        title: 'Sedona Nature Tours 2026 - Oak Creek, Desert Wildlife & Natural Wonders',
         description: 'Explore Sedona nature! Oak Creek, desert ecology, wildlife, and natural tours!',
         keywords: 'Sedona nature tours, Oak Creek, Slide Rock, desert wildlife, Sedona ecology, naturalist tours',
       },
@@ -22237,7 +22237,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience the CN Tower - Toronto's most iconic landmark and engineering marvel! CN Tower tours explore this 553-meter (1,815 ft) communications tower with glass floor (courage required!), 360 Restaurant (revolving dining!), SkyPod observation deck (447m high!), and thrilling EdgeWalk (hands-free walk around outside edge!). Visit observation decks with panoramic city views, Lake Ontario, and Toronto Islands. Tours include skip-the-line access, multimedia experiences, and photo opportunities. Learn about 1976 construction, tallest free-standing structure record (held until 2007), and engineering innovations. It's Toronto's must-see attraction!`,
 
       seo: {
-        title: 'Toronto CN Tower Tours 2025 - Observation Deck, EdgeWalk & Glass Floor',
+        title: 'Toronto CN Tower Tours 2026 - Observation Deck, EdgeWalk & Glass Floor',
         description: 'Visit CN Tower! Observation decks, glass floor, EdgeWalk, and iconic Toronto views!',
         keywords: 'CN Tower tours, Toronto CN Tower, EdgeWalk, glass floor Toronto, CN Tower tickets',
       },
@@ -22413,7 +22413,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Toronto's incredible museums - world-class collections and architecture! Museum tours explore Royal Ontario Museum (ROM - Canada's largest!), Art Gallery of Ontario (AGO - 95,000 works!), Casa Loma (castle museum!), Bata Shoe Museum (seriously!), Hockey Hall of Fame (Canadian passion!), and more. Experience dinosaur fossils, Group of Seven paintings, contemporary art, historical artifacts, and interactive exhibits. Tours include skip-the-line access, guided experiences, and expert insights. Learn about Canadian history, natural sciences, art movements, and cultural heritage. It's rainy-day paradise!`,
 
       seo: {
-        title: 'Toronto Museum Tours 2025 - ROM, AGO & World-Class Collections',
+        title: 'Toronto Museum Tours 2026 - ROM, AGO & World-Class Collections',
         description: 'Explore Toronto museums! ROM, Art Gallery of Ontario, and incredible exhibits!',
         keywords: 'Toronto museums, ROM Toronto, Art Gallery Ontario, museum tours Toronto, Casa Loma',
       },
@@ -22589,7 +22589,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Toronto's incredible food diversity - most multicultural city in world! Food tours explore Kensington Market (bohemian foodie paradise!), St. Lawrence Market (historic since 1803!), Chinatown (authentic dim sum!), Little Italy (pasta perfection!), Greek Town (Danforth Avenue!), and countless ethnic neighborhoods. Sample peameal bacon sandwiches (Toronto classic!), butter tarts (Canadian tradition!), BeaverTails (fried dough!), poutine, international cuisines, craft breweries, and diverse street food. Tours include neighborhood exploration, cultural education, chef-led experiences, and market visits. It's global cuisine without leaving city!`,
 
       seo: {
-        title: 'Toronto Food & Culture Tours 2025 - Markets, Neighborhoods & Diverse Cuisine',
+        title: 'Toronto Food & Culture Tours 2026 - Markets, Neighborhoods & Diverse Cuisine',
         description: 'Taste Toronto! Food tours, St. Lawrence Market, and multicultural cuisine!',
         keywords: 'Toronto food tours, St. Lawrence Market, Kensington Market, Toronto restaurants, food tours',
       },
@@ -22765,7 +22765,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Toronto's distinct neighborhoods - mosaic of cultures and communities! Neighborhood tours explore Kensington Market (bohemian charm!), Distillery District (Victorian industrial chic!), Yorkville (luxury and elegance!), Queen West (arts and culture!), Graffiti Alley (street art!), Little Italy, Chinatown, Greektown, and The Beaches. Experience local culture, historic significance, street art, diverse communities, and authentic neighborhood life beyond tourist areas. Tours include cultural education, food tastings, historical context, and local insights. It's Toronto diversity!`,
 
       seo: {
-        title: 'Toronto Neighborhood Tours 2025 - Kensington, Distillery & Diverse Districts',
+        title: 'Toronto Neighborhood Tours 2026 - Kensington, Distillery & Diverse Districts',
         description: 'Explore Toronto neighborhoods! Kensington Market, Distillery District, and diverse communities!',
         keywords: 'Toronto neighborhoods, Kensington Market, Distillery District, Queen West, Toronto districts',
       },
@@ -22941,7 +22941,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Toronto's stunning waterfront - Lake Ontario defines the city! Lake tours explore Toronto Islands (car-free oasis!), harbour cruises, waterfront trails, Harbourfront Centre (festivals and culture!), and beaches. Take ferry to Toronto Islands for skyline views, bike paths, Centre Island amusement park, and sandy beaches. Cruise harbour seeing CN Tower from water, explore Harbourfront cultural venues, walk Martin Goodman Trail, and enjoy lakeside dining. Tours include ferry tickets, boat cruises, and waterfront exploration. It's urban beach paradise!`,
 
       seo: {
-        title: 'Toronto Lake Ontario Tours 2025 - Toronto Islands, Harbour Cruises & Waterfront',
+        title: 'Toronto Lake Ontario Tours 2026 - Toronto Islands, Harbour Cruises & Waterfront',
         description: 'Explore Toronto waterfront! Toronto Islands, lake cruises, and harbourfront activities!',
         keywords: 'Toronto Islands, Lake Ontario tours, Toronto harbour cruises, waterfront Toronto, Toronto ferry',
       },
@@ -23117,7 +23117,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Toronto's architectural evolution - historic to ultra-modern! Architecture tours explore CN Tower (engineering icon!), ROM Crystal (Daniel Libeskind!), City Hall (Oscar Niemeyer-influenced!), Financial District skyscrapers, Gooderham Building (Flatiron!), Casa Loma (Gothic castle!), St. Lawrence Hall, and diverse building styles. Experience walking tours through architectural eras, Distillery District Victorian industrial, modern condo towers, heritage buildings, and innovative contemporary design. Tours include expert architects explaining styles, heritage preservation, and urban development. It's architectural time travel!`,
 
       seo: {
-        title: 'Toronto Architecture Tours 2025 - Modern Design, Historic Buildings & Landmarks',
+        title: 'Toronto Architecture Tours 2026 - Modern Design, Historic Buildings & Landmarks',
         description: 'Explore Toronto architecture! CN Tower, ROM Crystal, and diverse building styles!',
         keywords: 'Toronto architecture tours, CN Tower architecture, ROM Crystal, Toronto buildings, architectural tours',
       },
@@ -23295,7 +23295,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Tulum's spectacular Mayan ruins - only archaeological site on Caribbean coast! Tulum ruins tours explore El Castillo (clifftop pyramid!), Temple of the Frescoes (ancient murals!), Temple of the Descending God, and city walls. Experience ancient Mayan civilization (1200-1521 AD) with turquoise waters backdrop, learn about Tulum as major trading port, explore well-preserved structures, and access beach below ruins. Tours include expert guides explaining history, archaeology insights, and photo opportunities. Learn about Mayan astronomy, architecture, and decline. It's paradise meets history!`,
 
       seo: {
-        title: 'Tulum Mayan Ruins Tours 2025 - Ancient Temples & Caribbean Beach',
+        title: 'Tulum Mayan Ruins Tours 2026 - Ancient Temples & Caribbean Beach',
         description: 'Explore Tulum ruins! Clifftop temples, Mayan history, and stunning Caribbean views!',
         keywords: 'Tulum ruins tours, Tulum Mayan ruins, Tulum archaeological site, Tulum temples, Mayan ruins',
       },
@@ -23471,7 +23471,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Tulum's magical cenotes - natural sinkholes with crystal-clear water! Cenote tours explore Gran Cenote (most popular!), Dos Ojos (two eyes system!), Cenote Calavera (skull-shaped!), Casa Cenote (mangrove mixing!), and hidden jungle cenotes. Experience swimming, snorkeling, diving in freshwater pools, see stalactites and stalagmites, encounter freshwater turtles, and explore underground cave systems. Tours include equipment, transportation, multiple cenote visits, and safety briefings. Learn about Mayan significance (sacred to Mayans!), geology, and underground rivers. It's natural swimming pools paradise!`,
 
       seo: {
-        title: 'Tulum Cenote Tours 2025 - Gran Cenote, Dos Ojos & Cave Swimming',
+        title: 'Tulum Cenote Tours 2026 - Gran Cenote, Dos Ojos & Cave Swimming',
         description: 'Explore Tulum cenotes! Gran Cenote, cave swimming, and crystal-clear sinkholes!',
         keywords: 'Tulum cenotes, Gran Cenote, Dos Ojos, cenote tours Tulum, cenote swimming, cave diving',
       },
@@ -23647,7 +23647,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Tulum's stunning beaches - powdery white sand and turquoise Caribbean! Beach tours explore Playa Paraiso (paradise beach!), Playa Ruinas (ruins beach!), Xcaanan Beach, Las Palmas, and hidden coves. Enjoy beach clubs with daybeds, snorkeling from shore, kiteboarding, paddleboarding, and pure relaxation. Visit eco-chic beach clubs, experience bohemian Tulum vibes, enjoy fresh seafood, and watch spectacular sunsets. Tours include beach access, equipment rental, beach club experiences, and water activities. It's Caribbean paradise!`,
 
       seo: {
-        title: 'Tulum Beach Tours 2025 - Beach Clubs, White Sand & Caribbean Paradise',
+        title: 'Tulum Beach Tours 2026 - Beach Clubs, White Sand & Caribbean Paradise',
         description: 'Explore Tulum beaches! Beach clubs, water sports, and turquoise Caribbean!',
         keywords: 'Tulum beaches, Playa Paraiso, Tulum beach clubs, Tulum white sand, Caribbean beaches',
       },
@@ -23823,7 +23823,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Tulum's incredible ecosystems - UNESCO Biosphere Reserve and beyond! Eco tours explore Sian Ka'an Biosphere (1.3 million acres!), mangrove channels, lagoons, wildlife spotting (dolphins, manatees, crocodiles!), bird watching (350+ species!), and pristine nature. Experience boat tours through lagoons, snorkeling in reef channels, floating down lazy rivers, spotting wildlife, and learning about conservation. Tours include expert naturalist guides, sustainable practices, wildlife encounters, and environmental education. It's nature paradise!`,
 
       seo: {
-        title: 'Tulum Eco Tours 2025 - Sian Ka\'an, Wildlife & Biosphere Reserve',
+        title: 'Tulum Eco Tours 2026 - Sian Ka\'an, Wildlife & Biosphere Reserve',
         description: 'Explore Tulum nature! Sian Ka\'an Biosphere, wildlife, and eco adventures!',
         keywords: 'Tulum eco tours, Sian Ka\'an, Tulum wildlife, biosphere reserve, nature tours Tulum',
       },
@@ -23999,7 +23999,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Tulum's culinary scene and Mayan heritage! Food tours explore authentic Mexican cuisine, street tacos, Mayan cooking traditions, farm-to-table restaurants, mezcal tastings, and local markets. Visit taco stands, traditional restaurants, contemporary fusion spots, learn tortilla making, taste regional Yucatecan dishes, and explore Mayan cultural experiences. Tours include food tastings, cooking classes, market visits, mezcal education, and cultural insights. Learn about Mayan descendants, traditional cooking methods, and modern Tulum food scene. It's flavor and culture!`,
 
       seo: {
-        title: 'Tulum Food & Culture Tours 2025 - Tacos, Mayan Cuisine & Culinary Experiences',
+        title: 'Tulum Food & Culture Tours 2026 - Tacos, Mayan Cuisine & Culinary Experiences',
         description: 'Taste Tulum! Food tours, authentic Mexican cuisine, and Mayan culture!',
         keywords: 'Tulum food tours, Tulum tacos, Mexican cuisine Tulum, Mayan culture, Tulum restaurants',
       },
@@ -24175,7 +24175,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Tulum's adventure activities - jungle thrills and adrenaline! Adventure tours include zip-lining through jungle canopy, ATV rides, rappelling into cenotes, jungle trekking, cave exploration, kiteboarding, and multi-activity combos. Visit adventure parks with zip lines, rope swings, cenote swims, explore hidden caves, ride ATVs through jungle trails, and experience extreme activities. Tours include safety equipment, expert guides, transportation, and multiple activities. Combine ruins, cenotes, and adventure for full Tulum experience. It's adrenaline paradise!`,
 
       seo: {
-        title: 'Tulum Adventure Tours 2025 - Zip-Line, ATV, Cenote Rappelling & Jungle Tours',
+        title: 'Tulum Adventure Tours 2026 - Zip-Line, ATV, Cenote Rappelling & Jungle Tours',
         description: 'Adventure in Tulum! Zip-lines, ATVs, jungle tours, and extreme activities!',
         keywords: 'Tulum adventure tours, Tulum zip-line, ATV tours Tulum, adventure activities, Tulum extreme',
       },
@@ -24353,7 +24353,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Stanley Park - Vancouver's crown jewel and urban paradise! Stanley Park tours explore 1,000-acre park with seawall (10km scenic path!), totem poles at Brockton Point, old-growth forest, beaches, Vancouver Aquarium, and stunning views. Bike or walk the seawall, visit Prospect Point (best views!), see First Nations totem poles, explore forest trails, and enjoy outdoor spaces. Tours include bike rentals, guided walks, Indigenous cultural experiences, and nature education. Learn about park history (1888), conservation efforts, and cultural significance. It's urban forest heaven!`,
 
       seo: {
-        title: 'Vancouver Stanley Park Tours 2025 - Seawall, Totem Poles & Urban Forest',
+        title: 'Vancouver Stanley Park Tours 2026 - Seawall, Totem Poles & Urban Forest',
         description: 'Explore Stanley Park! Seawall bike rides, totem poles, and Vancouver\'s iconic park!',
         keywords: 'Stanley Park tours, Vancouver seawall, Stanley Park bikes, totem poles Vancouver, Vancouver park',
       },
@@ -24529,7 +24529,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Granville Island - Vancouver's beloved public market and cultural hub! Granville Island tours explore Public Market (local produce, artisan foods!), craft studios, theatres, galleries, waterfront walkways, and vibrant atmosphere. Sample fresh foods, watch artists at work, browse handmade crafts, enjoy street performers, and experience local culture. Visit breweries, Granville Island Brewing (Canada's first micro-brewery!), Kids Market, and waterfront dining. Tours include market tastings, artisan visits, and cultural insights. Accessible by foot, water taxi, or Aquabus ferry. It's foodie and culture paradise!`,
 
       seo: {
-        title: 'Vancouver Granville Island Tours 2025 - Public Market, Artisans & Food',
+        title: 'Vancouver Granville Island Tours 2026 - Public Market, Artisans & Food',
         description: 'Explore Granville Island! Public Market, artisan studios, and Vancouver culture!',
         keywords: 'Granville Island, Vancouver Public Market, Granville Island tours, Vancouver food market, artisan',
       },
@@ -24705,7 +24705,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Vancouver's outdoor playground - mountains meet ocean! Adventure tours explore hiking Grouse Mountain, kayaking Indian Arm fjord, mountain biking North Shore, skiing/snowboarding local mountains (Grouse, Cypress, Seymour!), zip-lining through rainforest, and coastal adventures. Visit Capilano Suspension Bridge, Lynn Canyon, Lighthouse Park, and pristine wilderness within city limits. Tours include equipment, expert guides, transportation, and safety briefings. Learn about temperate rainforest ecosystem, coastal geography, and outdoor culture. It's adventure capital!`,
 
       seo: {
-        title: 'Vancouver Outdoor Adventure Tours 2025 - Hiking, Kayaking, Skiing & Mountain Tours',
+        title: 'Vancouver Outdoor Adventure Tours 2026 - Hiking, Kayaking, Skiing & Mountain Tours',
         description: 'Adventure in Vancouver! Mountain hiking, kayaking, skiing, and outdoor activities!',
         keywords: 'Vancouver outdoor tours, Grouse Mountain, Vancouver kayaking, North Shore hiking, skiing Vancouver',
       },
@@ -24881,7 +24881,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Vancouver's incredible food scene - Asian fusion capital and seafood paradise! Food tours explore Chinatown (oldest in Canada!), Richmond (Asian food mecca!), Granville Island Market, Commercial Drive (Little Italy/Latin!), and innovative restaurants. Sample sushi, dim sum, seafood (salmon, Dungeness crab!), pho, Japanese ramen, farm-to-table Pacific Northwest cuisine, and craft breweries. Tours include neighborhood exploration, cultural education, chef-led experiences, and market visits. Learn about multicultural influences, sustainable seafood, and Vancouver's culinary innovation. It's Pacific Rim cuisine!`,
 
       seo: {
-        title: 'Vancouver Food & Culture Tours 2025 - Asian Fusion, Seafood & Diverse Cuisine',
+        title: 'Vancouver Food & Culture Tours 2026 - Asian Fusion, Seafood & Diverse Cuisine',
         description: 'Taste Vancouver! Food tours, Asian cuisine, fresh seafood, and culinary experiences!',
         keywords: 'Vancouver food tours, Vancouver sushi, Granville Island Market, Richmond food, Vancouver restaurants',
       },
@@ -25057,7 +25057,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Vancouver Harbor - one of world's most scenic urban waterfronts! Harbor tours cruise Burrard Inlet, False Creek, English Bay with mountains backdrop, city skyline, and seaplane activity (world's busiest seaplane terminal!). Visit Canada Place (cruise ship terminal!), Coal Harbour, Stanley Park from water, and North Shore views. Tours include narrated cruises, sunset sails, dinner cruises, and water taxi experiences. Learn about port history, maritime activity, and coastal geography. It's Vancouver from best perspective!`,
 
       seo: {
-        title: 'Vancouver Harbor Tours 2025 - Burrard Inlet Cruises & Seaplane Views',
+        title: 'Vancouver Harbor Tours 2026 - Burrard Inlet Cruises & Seaplane Views',
         description: 'Explore Vancouver Harbor! Bay cruises, seaplanes, and stunning waterfront views!',
         keywords: 'Vancouver harbor tours, Burrard Inlet cruises, Vancouver boat tours, seaplanes Vancouver, harbor cruises',
       },
@@ -25233,7 +25233,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Vancouver's mountain playground - peaks meet city! Mountain tours explore Grouse Mountain (Peak of Vancouver!), Whistler (world-class resort 2 hours away!), Cypress Mountain, Mount Seymour, and alpine environments. Experience gondola rides, winter skiing/snowboarding, summer hiking, mountain biking, wildlife viewing (grizzly bears!), and stunning alpine vistas. Visit Peak 2 Peak gondola (Whistler!), mountain lodges, and backcountry areas. Tours include transportation, equipment, expert guides, and mountain access. It's urban mountains paradise!`,
 
       seo: {
-        title: 'Vancouver Mountain Tours 2025 - Grouse, Whistler & North Shore Adventures',
+        title: 'Vancouver Mountain Tours 2026 - Grouse, Whistler & North Shore Adventures',
         description: 'Explore Vancouver mountains! Grouse Mountain, Whistler day trips, and alpine tours!',
         keywords: 'Vancouver mountain tours, Grouse Mountain, Whistler day trip, North Shore mountains, skiing Vancouver',
       },
@@ -25411,7 +25411,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover the National Mall - America's front yard and iconic heart of Washington D.C.! National Mall tours explore 2-mile stretch from Capitol to Lincoln Memorial with Washington Monument, WWII Memorial, Vietnam Veterans Memorial, Korean War Memorial, and reflecting pools. Walk historic grounds where MLK spoke, protests happened, and history was made. Visit Smithsonian museums lining the Mall, experience powerful memorials, and understand American democracy. Tours include guided walks, tram rides, bike tours, and segway experiences. It's American history concentrated!`,
 
       seo: {
-        title: 'Washington D.C. National Mall Tours 2025 - Monuments, Memorials & Smithsonian',
+        title: 'Washington D.C. National Mall Tours 2026 - Monuments, Memorials & Smithsonian',
         description: 'Explore National Mall! Monuments, memorials, museums, and D.C. history tours!',
         keywords: 'National Mall tours, Washington DC monuments, National Mall, DC memorials, Smithsonian tours',
       },
@@ -25587,7 +25587,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Washington D.C.'s incredible museums - world's largest museum complex, all FREE! Museum tours explore Smithsonian institutions including Air & Space (most visited!), Natural History (Hope Diamond!), American History, African American History & Culture, National Gallery of Art, Holocaust Memorial Museum, and more. Experience iconic artifacts (Wright Brothers plane, Apollo 11, dinosaurs!), art masterpieces, interactive exhibits, and American cultural heritage. Tours include skip-the-line tips, guided experiences, and curator insights. Learn about collections, history, and significance. It's museum paradise!`,
 
       seo: {
-        title: 'Washington D.C. Museum Tours 2025 - Smithsonian, Air & Space & Free Museums',
+        title: 'Washington D.C. Museum Tours 2026 - Smithsonian, Air & Space & Free Museums',
         description: 'Explore D.C. museums! Smithsonian, Air & Space, Natural History, all FREE!',
         keywords: 'Smithsonian museums, Air and Space Museum, DC museums free, Natural History Museum, Washington museums',
       },
@@ -25763,7 +25763,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Experience Washington D.C.'s iconic monuments - symbols of American democracy! Monument tours explore Washington Monument (555-foot obelisk!), Lincoln Memorial (where MLK spoke!), Jefferson Memorial (Tidal Basin!), Vietnam Veterans Memorial (The Wall), Korean War Memorial, WWII Memorial, FDR Memorial, and MLK Memorial. Visit monuments by day or illuminated at night, learn stories behind each memorial, understand historical context, and experience powerful tributes. Tours include guided experiences, photo opportunities, and historical education. All monuments FREE to visit!`,
 
       seo: {
-        title: 'Washington D.C. Monument Tours 2025 - Lincoln, Washington & Memorial Tours',
+        title: 'Washington D.C. Monument Tours 2026 - Lincoln, Washington & Memorial Tours',
         description: 'Explore D.C. monuments! Washington Monument, Lincoln Memorial, and iconic tributes!',
         keywords: 'DC monuments, Washington Monument, Lincoln Memorial, Vietnam Memorial, DC monument tours',
       },
@@ -25939,7 +25939,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Capitol Hill - seat of American legislative power! Capitol Hill tours explore U.S. Capitol Building (dome and Rotunda!), Supreme Court (highest court!), Library of Congress (largest library in world!), and surrounding historic district. Tour Capitol interior seeing Rotunda, National Statuary Hall, Crypt, and learning about legislative process. Visit Supreme Court chamber (when court not in session!), explore Jefferson Building with stunning architecture, and walk historic Capitol Hill neighborhood. Tours include free Capitol tours (advanced booking!), building access, and civic education. It's American government center!`,
 
       seo: {
-        title: 'Washington D.C. Capitol Hill Tours 2025 - U.S. Capitol, Supreme Court & Congress',
+        title: 'Washington D.C. Capitol Hill Tours 2026 - U.S. Capitol, Supreme Court & Congress',
         description: 'Tour Capitol Hill! U.S. Capitol Building, Supreme Court, Library of Congress, FREE!',
         keywords: 'U.S. Capitol tours, Capitol Hill, Supreme Court DC, Library of Congress, Capitol Building tours',
       },
@@ -26115,7 +26115,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Washington D.C.'s dynamic food scene - diplomatic diversity meets Southern charm! Food tours explore historic neighborhoods like Georgetown (upscale dining!), U Street Corridor (Ethiopian food capital of America!), Eastern Market (historic since 1873!), Adams Morgan (international cuisine!), and The Wharf (seafood waterfront!). Sample half-smokes (D.C. sausage!), Chesapeake Bay blue crabs, Ethiopian injera, international embassy cuisines, and innovative restaurants. Tours include neighborhood exploration, market visits, cultural education, and diverse tastings. It's diplomatic dining!`,
 
       seo: {
-        title: 'Washington D.C. Food & Culture Tours 2025 - Eastern Market, Half-Smokes & Diverse Cuisine',
+        title: 'Washington D.C. Food & Culture Tours 2026 - Eastern Market, Half-Smokes & Diverse Cuisine',
         description: 'Taste D.C.! Food tours, Eastern Market, Ethiopian food, and culinary experiences!',
         keywords: 'DC food tours, Eastern Market, half-smoke, Ethiopian food DC, Washington DC restaurants',
       },
@@ -26291,7 +26291,7 @@ export const categoryGuidesNorthAmerica = {
       introduction: `Discover Washington D.C.'s rich American history - capital since 1790! Historical tours explore founding of the city, Civil War sites (Ford's Theatre where Lincoln shot!), civil rights landmarks (MLK Memorial, African American Museum!), presidential history, and political evolution. Visit Arlington National Cemetery, Ford's Theatre, Frederick Douglass House, historic Georgetown, and countless monuments telling America's story. Tours include expert historians, primary source locations, and comprehensive context. Learn about democracy, struggles, triumphs, and ongoing American experiment. It's living history!`,
 
       seo: {
-        title: 'Washington D.C. Historical Tours 2025 - Civil War, Lincoln & American History',
+        title: 'Washington D.C. Historical Tours 2026 - Civil War, Lincoln & American History',
         description: 'Explore D.C. history! Ford\'s Theatre, Arlington, civil rights, and American heritage!',
         keywords: 'DC historical tours, Ford\'s Theatre, Arlington Cemetery, DC history, Lincoln assassination, civil rights',
       },

@@ -7,9 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy, UtensilsCrossed, X, Save, Check } from 'lucide-react';
+import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy, UtensilsCrossed, X, Save, Check, Sparkles, CheckCircle2, Loader2 } from 'lucide-react';
 import ConfirmDialog from '@/components/ui/ConfirmDialog';
 import { COLOR_SCHEMES, CTA_OPTIONS } from '@/lib/restaurantPremium';
+import { SUBSCRIPTION_PRICING } from '@/lib/promotionSystem';
 import { toast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import NavigationNext from '@/components/NavigationNext';
@@ -40,10 +41,16 @@ export default function ProfilePage() {
   const [showDeletePlanConfirm, setShowDeletePlanConfirm] = useState(false);
   const [planToDelete, setPlanToDelete] = useState(null);
   const [premiumRestaurants, setPremiumRestaurants] = useState([]);
+  const [restaurantSubscriptions, setRestaurantSubscriptions] = useState([]); // New restaurant_subscriptions table
   const [loadingPortal, setLoadingPortal] = useState(false);
   const [restaurantEdits, setRestaurantEdits] = useState({}); // Track edits per restaurant
   const [savingRestaurant, setSavingRestaurant] = useState(null); // Which restaurant is being saved
   const [tourOperatorSubscriptions, setTourOperatorSubscriptions] = useState([]);
+  const [showPromoteModal, setShowPromoteModal] = useState(false);
+  const [selectedSubscriptionForPromotion, setSelectedSubscriptionForPromotion] = useState(null);
+  const [selectedToursToPromote, setSelectedToursToPromote] = useState([]);
+  const [promotingTours, setPromotingTours] = useState(false);
+  const [promotedBillingCycle, setPromotedBillingCycle] = useState('annual'); // 'annual' or 'monthly'
 
   // Check for tab query parameter
   useEffect(() => {
@@ -134,7 +141,7 @@ export default function ProfilePage() {
             }
           }
           
-          // Fetch user's premium restaurant subscriptions
+          // Fetch user's premium restaurant subscriptions (old table)
           const { data: premiumSubs } = await supabase
             .from('restaurant_premium_subscriptions')
             .select('*')
@@ -145,6 +152,105 @@ export default function ProfilePage() {
             setPremiumRestaurants(premiumSubs);
           }
           
+          // Fetch user's restaurant subscriptions (new table - includes premium and promoted)
+          // IMPORTANT: Include 'pending' status to show subscriptions that are being processed
+          const { data: restaurantSubs } = await supabase
+            .from('restaurant_subscriptions')
+            .select('*')
+            .eq('user_id', currentUser.id)
+            .in('status', ['active', 'pending_cancellation', 'pending']);
+          
+          // Also fetch promoted restaurants to check promotion status
+          // Fetch promoted restaurants for this user
+          // Now we can query directly by user_id - much more reliable!
+          const { data: promotedRestaurants } = await supabase
+            .from('promoted_restaurants')
+            .select('restaurant_id, restaurant_subscription_id, status, promotion_plan, destination_id, restaurant_slug, restaurant_name, user_id, email')
+            .eq('user_id', currentUser.id) // Direct query by user_id - simple and reliable!
+            .in('status', ['active', 'pending'])
+            .order('requested_at', { ascending: false });
+          
+          // Initialize the subscriptions array
+          let allSubscriptions = [];
+          
+          // Map promoted restaurants to subscriptions
+          if (restaurantSubs && restaurantSubs.length > 0) {
+            const subscriptionsWithPromoted = restaurantSubs.map(sub => {
+              // Find matching promoted restaurant by subscription ID or restaurant ID
+              const promoted = promotedRestaurants?.find(pr => 
+                (pr.restaurant_subscription_id && pr.restaurant_subscription_id === sub.id) ||
+                (!pr.restaurant_subscription_id && pr.restaurant_id === sub.restaurant_id && pr.user_id === currentUser.id)
+              );
+              
+              return {
+                ...sub,
+                // Override promoted_listing_plan if we have an active promotion
+                // Always use the promotion_plan from promoted_restaurants if it exists and is active/pending
+                promoted_listing_plan: promoted && (promoted.status === 'active' || promoted.status === 'pending') 
+                  ? promoted.promotion_plan 
+                  : (sub.promoted_listing_plan || null),
+                // Add promotion status - this is critical for detecting promotions
+                promotion_status: promoted?.status || null,
+              };
+            });
+            
+            allSubscriptions = subscriptionsWithPromoted;
+          } else if (restaurantSubs) {
+            allSubscriptions = restaurantSubs;
+          }
+          
+          // Also handle promoted restaurants that don't have a subscription
+          // (standalone promotions created directly)
+          // These are promotions where restaurant_subscription_id is null
+          if (promotedRestaurants && promotedRestaurants.length > 0) {
+            // Get list of restaurant IDs from user's subscriptions (if any)
+            const userRestaurantIds = restaurantSubs?.map(sub => sub.restaurant_id) || [];
+            const existingSubscriptionIds = new Set(allSubscriptions.map(s => s.restaurant_id));
+            
+            const standalonePromoted = promotedRestaurants.filter(pr => {
+              // Include if:
+              // 1. No subscription ID linked, AND
+              // 2. Either: (a) matches a subscription's restaurant_id, OR (b) is a standalone promotion
+              return !pr.restaurant_subscription_id && 
+                     (userRestaurantIds.includes(pr.restaurant_id) || !existingSubscriptionIds.has(pr.restaurant_id));
+            });
+            
+            // Add standalone promoted restaurants to the list
+            if (standalonePromoted.length > 0) {
+              const standaloneSubs = standalonePromoted.map(pr => {
+                // Find the matching subscription to get user info (if exists)
+                const matchingSub = restaurantSubs?.find(sub => sub.restaurant_id === pr.restaurant_id);
+                
+                return {
+                  id: matchingSub?.id || `promoted-${pr.restaurant_id}`, // Use subscription ID if available
+                  restaurant_id: pr.restaurant_id,
+                  restaurant_name: pr.restaurant_name,
+                  restaurant_slug: pr.restaurant_slug,
+                  destination_id: pr.destination_id,
+                  restaurant_premium_plan: matchingSub?.restaurant_premium_plan || null,
+                  promoted_listing_plan: pr.promotion_plan,
+                  promotion_status: pr.status,
+                  status: pr.status === 'active' ? 'active' : 'pending',
+                  current_period_end: matchingSub?.current_period_end || null,
+                  stripe_customer_id: matchingSub?.stripe_customer_id || null,
+                  color_scheme: matchingSub?.color_scheme || 'blue',
+                  hero_cta_index: matchingSub?.hero_cta_index || 0,
+                  mid_cta_index: matchingSub?.mid_cta_index || 0,
+                  sticky_cta_index: matchingSub?.sticky_cta_index || 0,
+                };
+              });
+              
+              // Merge with existing subscriptions, avoiding duplicates
+              const existingIds = new Set(allSubscriptions.map(s => s.id));
+              const newSubs = standaloneSubs.filter(s => !existingIds.has(s.id));
+              allSubscriptions = [...allSubscriptions, ...newSubs];
+            }
+          }
+          
+          // Set the final subscriptions array
+          console.log('[Profile] Setting restaurant subscriptions:', allSubscriptions.length, allSubscriptions);
+          setRestaurantSubscriptions(allSubscriptions);
+          
           // Fetch user's tour operator subscriptions
           const { data: tourOperatorSubs } = await supabase
             .from('tour_operator_subscriptions')
@@ -152,8 +258,64 @@ export default function ProfilePage() {
             .eq('user_id', currentUser.id)
             .in('status', ['active', 'pending_cancellation']);
           
+          // Fetch promoted tours directly by user_id (same as restaurants - simple and reliable!)
+          const { data: promotedTours } = await supabase
+            .from('promoted_tours')
+            .select('product_id, operator_subscription_id, status, promotion_plan, user_id')
+            .eq('user_id', currentUser.id)
+            .in('status', ['active', 'pending'])
+            .order('requested_at', { ascending: false });
+          
           if (tourOperatorSubs && tourOperatorSubs.length > 0) {
-            setTourOperatorSubscriptions(tourOperatorSubs);
+            // Fetch operator tours data for all subscriptions
+            const subscriptionsWithPromoted = tourOperatorSubs.map((sub) => {
+              // Find promoted tours for this subscription
+              const subscriptionPromotedTours = promotedTours?.filter(pt => 
+                pt.operator_subscription_id === sub.id
+              ) || [];
+              
+              const promotedTourIds = subscriptionPromotedTours.map(pt => pt.product_id);
+              
+              return {
+                ...sub,
+                promotedTourIds: promotedTourIds,
+                tourDataMap: {}, // Will be populated below
+                verified_tour_ids: sub.verified_tour_ids || []
+              };
+            });
+            
+            // Fetch operator tours data for all subscriptions in one query
+            const subscriptionIds = subscriptionsWithPromoted.map(s => s.id);
+            const { data: operatorTours } = await supabase
+              .from('operator_tours')
+              .select('product_id, tour_title, tour_image_url, rating, review_count, operator_subscription_id')
+              .in('operator_subscription_id', subscriptionIds)
+              .eq('is_selected', true);
+            
+            // Build tour data maps for each subscription
+            const subscriptionsWithTours = subscriptionsWithPromoted.map(sub => {
+              const subscriptionTours = operatorTours?.filter(ot => 
+                ot.operator_subscription_id === sub.id
+              ) || [];
+              
+              const tourDataMap = {};
+              subscriptionTours.forEach(tour => {
+                tourDataMap[tour.product_id] = {
+                  title: tour.tour_title || '',
+                  imageUrl: tour.tour_image_url || null,
+                  rating: tour.rating || 0,
+                  reviewCount: tour.review_count || 0,
+                };
+              });
+              
+              return {
+                ...sub,
+                tourDataMap: tourDataMap,
+                verified_tour_ids: subscriptionTours.map(t => t.product_id)
+              };
+            });
+            
+            setTourOperatorSubscriptions(subscriptionsWithTours);
           }
         }
       } finally {
@@ -232,30 +394,8 @@ export default function ProfilePage() {
   }, [user]);
 
 
-  // Load user's travel plans
-  useEffect(() => {
-    const loadMyPlans = async () => {
-      if (!user) return;
-      setLoadingMyPlans(true);
-      try {
-        const response = await fetch(`/api/internal/user-plans?userId=${encodeURIComponent(user.id)}`);
-        if (response.ok) {
-          const data = await response.json();
-          console.log('User plans response:', data);
-          setMyPlans(data.plans || []);
-        } else {
-          console.error('Failed to fetch user plans:', response.status);
-        }
-      } catch (error) {
-        console.error('Error fetching my plans:', error);
-      } finally {
-        setLoadingMyPlans(false);
-      }
-    };
-    if (user) {
-      loadMyPlans();
-    }
-  }, [user]);
+  // Travel plans feature removed - no longer loading plans
+  // useEffect removed for travel plans loading
 
   const handleSave = async () => {
     if (!user) return;
@@ -459,13 +599,7 @@ export default function ProfilePage() {
               >
                 My Travel Plans
               </button>
-              <button
-                onClick={() => setActiveTab('plan')}
-                className={`w-full text-left px-3 py-2 rounded-lg ${activeTab === 'plan' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
-              >
-                Plan & Billing
-              </button>
-              {premiumRestaurants.length > 0 && (
+              {(premiumRestaurants.length > 0 || restaurantSubscriptions.length > 0) && (
                 <button
                   onClick={() => setActiveTab('my-restaurants')}
                   className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 ${activeTab === 'my-restaurants' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
@@ -473,7 +607,7 @@ export default function ProfilePage() {
                   <Crown className="w-4 h-4 text-amber-500" />
                   My Restaurants
                   <span className="ml-auto bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded-full">
-                    {premiumRestaurants.length}
+                    {premiumRestaurants.length + restaurantSubscriptions.length}
                   </span>
                 </button>
               )}
@@ -1503,6 +1637,9 @@ export default function ProfilePage() {
                             </div>
                             <p className="text-sm text-gray-500">
                               {planName} • {billingCycle} Plan
+                              {subscription.promotedTourIds && subscription.promotedTourIds.length > 0 && (
+                                <> • {subscription.promotedTourIds.length} promoted tour{subscription.promotedTourIds.length !== 1 ? 's' : ''}</>
+                              )}
                               {subscription.current_period_end && (
                                 <> • Renews {new Date(subscription.current_period_end).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</>
                               )}
@@ -1555,6 +1692,49 @@ export default function ProfilePage() {
                           </div>
                         </div>
 
+                        {/* Upgrade to Promoted Section */}
+                        {subscription.verified_tour_ids && subscription.verified_tour_ids.length > 0 && 
+                         (!subscription.promotedTourIds || subscription.promotedTourIds.length < subscription.verified_tour_ids.length) && (
+                          <div className="mt-4 pt-4 border-t">
+                            <div className="flex items-center justify-between mb-3">
+                              <div>
+                                <h4 className="text-sm font-semibold text-gray-700 mb-1">Upgrade to Promoted</h4>
+                                <p className="text-xs text-gray-500">
+                                  Promote tours for top placement
+                                </p>
+                              </div>
+                            </div>
+                            <Button
+                              onClick={() => {
+                                // Get tours that are not yet promoted
+                                const nonPromotedTours = subscription.verified_tour_ids.filter(
+                                  id => !subscription.promotedTourIds || !subscription.promotedTourIds.includes(id)
+                                );
+                                
+                                if (nonPromotedTours.length === 0) {
+                                  toast({
+                                    title: 'All tours are already promoted',
+                                    description: 'All your tours are already promoted.',
+                                  });
+                                  return;
+                                }
+                                
+                                setSelectedSubscriptionForPromotion(subscription);
+                                setSelectedToursToPromote(nonPromotedTours);
+                                // Initialize billing cycle based on subscription plan (default to annual for savings)
+                                setPromotedBillingCycle(subscription.subscription_plan.includes('annual') ? 'annual' : 'annual');
+                                setShowPromoteModal(true);
+                              }}
+                              disabled={loadingPortal}
+                              className="bg-purple-600 hover:bg-purple-700 text-white"
+                              size="sm"
+                            >
+                              <Sparkles className="w-4 h-4 mr-1" />
+                              Promote Tours
+                            </Button>
+                          </div>
+                        )}
+
                         {/* Linked Tours - Manage Section */}
                         <div className="mt-4 pt-4 border-t">
                           <div className="flex items-center justify-between mb-3">
@@ -1565,67 +1745,112 @@ export default function ProfilePage() {
                           </div>
                           
                           {subscription.verified_tour_ids && subscription.verified_tour_ids.length > 0 ? (
-                            <div className="space-y-2 mb-4">
-                              {subscription.verified_tour_ids.map((productId) => (
-                                <div key={productId} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
-                                  <div className="flex items-center gap-2 flex-1 min-w-0">
-                                    <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" />
-                                    <Link
-                                      href={`/tours/${productId}`}
-                                      className="text-sm text-gray-700 hover:text-purple-600 truncate flex-1"
-                                    >
-                                      {productId}
-                                    </Link>
-                                    <ExternalLink className="w-3 h-3 text-gray-400 flex-shrink-0" />
-                                  </div>
-                                  <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={async () => {
-                                      if (!confirm(`Remove tour ${productId} from your subscription?`)) return;
-                                      
-                                      try {
-                                        const res = await fetch('/api/internal/tour-operator-premium/remove-tour', {
-                                          method: 'POST',
-                                          headers: { 'Content-Type': 'application/json' },
-                                          body: JSON.stringify({
-                                            subscriptionId: subscription.id,
-                                            productId: productId,
-                                            userId: user.id,
-                                          }),
-                                        });
-                                        const data = await res.json();
-                                        if (data.success) {
-                                          toast({
-                                            title: 'Tour removed',
-                                            description: 'Tour has been removed from your subscription.',
+                            <div className="space-y-3 mb-4">
+                              {subscription.verified_tour_ids.map((productId) => {
+                                const isPromoted = subscription.promotedTourIds && subscription.promotedTourIds.includes(productId);
+                                const tourData = subscription.tourDataMap?.[productId] || {};
+                                const tourTitle = tourData.title || productId;
+                                
+                                return (
+                                  <div key={productId} className={`flex items-start gap-3 p-3 bg-white rounded-lg border-2 transition-all ${
+                                    isPromoted ? 'border-purple-300 bg-purple-50' : 'border-gray-200'
+                                  }`}>
+                                    {tourData.imageUrl && (
+                                      <img
+                                        src={tourData.imageUrl}
+                                        alt={tourTitle}
+                                        className="w-16 h-16 object-cover rounded flex-shrink-0"
+                                        onError={(e) => {
+                                          e.target.style.display = 'none';
+                                        }}
+                                      />
+                                    )}
+                                    <div className="flex-1 min-w-0">
+                                      <div className="flex items-start justify-between gap-2 mb-1">
+                                        <Link
+                                          href={`/tours/${productId}`}
+                                          className="font-medium text-gray-900 text-sm line-clamp-2 flex-1 hover:text-purple-600"
+                                        >
+                                          {tourTitle}
+                                        </Link>
+                                        {isPromoted && (
+                                          <Badge className="bg-purple-600 text-white text-xs flex-shrink-0 flex items-center gap-1">
+                                            <Sparkles className="w-3 h-3" />
+                                            Promoted
+                                          </Badge>
+                                        )}
+                                      </div>
+                                      <div className="flex items-center gap-2 mt-1 text-xs text-gray-600">
+                                        {tourData.rating > 0 && (
+                                          <>
+                                            <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                                            <span>{tourData.rating.toFixed(1)}</span>
+                                          </>
+                                        )}
+                                        {tourData.reviewCount > 0 && (
+                                          <span>({tourData.reviewCount} reviews)</span>
+                                        )}
+                                        {!isPromoted && (
+                                          <Button
+                                            variant="ghost"
+                                            size="sm"
+                                            className="h-6 text-xs ml-auto"
+                                            onClick={() => {
+                                              // Open promote modal for this specific tour
+                                              setSelectedSubscriptionForPromotion(subscription);
+                                              setSelectedToursToPromote([productId]);
+                                              setPromotedBillingCycle(subscription.subscription_plan.includes('annual') ? 'annual' : 'annual');
+                                              setShowPromoteModal(true);
+                                            }}
+                                          >
+                                            <Sparkles className="w-3 h-3 mr-1" />
+                                            Promote
+                                          </Button>
+                                        )}
+                                      </div>
+                                    </div>
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={async () => {
+                                        if (!confirm(`Remove tour "${tourTitle}" from your subscription?`)) return;
+                                        
+                                        try {
+                                          const res = await fetch('/api/internal/tour-operator-premium/remove-tour', {
+                                            method: 'POST',
+                                            headers: { 'Content-Type': 'application/json' },
+                                            body: JSON.stringify({
+                                              subscriptionId: subscription.id,
+                                              productId: productId,
+                                              userId: user.id,
+                                            }),
                                           });
-                                          // Refresh subscriptions
-                                          const { data: updatedSubs } = await supabase
-                                            .from('tour_operator_subscriptions')
-                                            .select('*')
-                                            .eq('user_id', user.id)
-                                            .in('status', ['active', 'pending_cancellation']);
-                                          if (updatedSubs) {
-                                            setTourOperatorSubscriptions(updatedSubs);
+                                          const data = await res.json();
+                                          if (data.success) {
+                                            toast({
+                                              title: 'Tour removed',
+                                              description: 'Tour has been removed from your subscription.',
+                                            });
+                                            // Refresh subscriptions
+                                            window.location.reload();
+                                          } else {
+                                            throw new Error(data.error || 'Failed to remove tour');
                                           }
-                                        } else {
-                                          throw new Error(data.error || 'Failed to remove tour');
+                                        } catch (error) {
+                                          toast({
+                                            title: 'Error',
+                                            description: error.message,
+                                            variant: 'destructive',
+                                          });
                                         }
-                                      } catch (error) {
-                                        toast({
-                                          title: 'Error',
-                                          description: error.message,
-                                          variant: 'destructive',
-                                        });
-                                      }
-                                    }}
-                                    className="text-red-600 hover:text-red-700 hover:bg-red-50 ml-2"
-                                  >
-                                    <X className="w-4 h-4" />
-                                  </Button>
-                                </div>
-                              ))}
+                                      }}
+                                      className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                                    >
+                                      <X className="w-4 h-4" />
+                                    </Button>
+                                  </div>
+                                );
+                              })}
                             </div>
                           ) : (
                             <p className="text-sm text-gray-500 mb-4">No tours linked yet.</p>
@@ -1738,221 +1963,355 @@ export default function ProfilePage() {
               </div>
             )}
 
-            {activeTab === 'plan' && (
-              <div className="bg-white rounded-xl shadow-lg p-6 space-y-6">
-                <div>
-                  <h1 className="text-2xl font-bold text-gray-900 mb-2">Choose Your Plan</h1>
-                  <p className="text-sm text-gray-600">
-                    Unlock AI-powered tour matching and personalized recommendations tailored to your travel style.
-                  </p>
-                </div>
+            {/* Plan tab removed - no longer used */}
 
-                {/* Current Subscription Info */}
-                {(subscriptionStatus === 'active' || subscriptionStatus === 'pending_cancellation') && subscriptionPlan && subscriptionPlan !== 'free' && (
-                  <Card className={`bg-gradient-to-r from-blue-50 to-purple-50 border-2 ${subscriptionStatus === 'pending_cancellation' ? 'border-orange-300' : 'border-blue-200'}`}>
-                    <CardContent className="p-6">
+            {activeTab === 'my-restaurants' && (
+              <div className="bg-white rounded-xl shadow p-6 space-y-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 rounded-lg bg-amber-100">
+                    <Crown className="w-6 h-6 text-amber-600" />
+                  </div>
                       <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <h3 className="text-lg font-bold text-gray-900">Current Subscription</h3>
-                          {subscriptionStatus === 'pending_cancellation' && (
-                            <Badge className="bg-orange-500 text-white hover:bg-orange-600">
-                              Cancelling
-                            </Badge>
-                          )}
+                    <h1 className="text-2xl font-semibold">My Premium Restaurants</h1>
+                    <p className="text-sm text-gray-600">Manage your restaurant premium listings</p>
                         </div>
-                        <div className="space-y-1 text-sm">
-                          <p className="text-gray-700">
-                            <span className="font-semibold">Plan:</span> {subscriptionPlan === 'pro' ? 'Pro' : subscriptionPlan === 'pro_plus' ? 'Pro+' : subscriptionPlan === 'enterprise' ? 'Enterprise' : subscriptionPlan}
-                          </p>
-                          {subscriptionStartDate && (
-                            <p className="text-gray-700">
-                              <span className="font-semibold">Started:</span> {new Date(subscriptionStartDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                            </p>
-                          )}
-                          {subscriptionEndDate && (
-                            <p className="text-gray-700">
-                              <span className="font-semibold">{subscriptionStatus === 'pending_cancellation' ? 'Expires:' : 'Renews:'}</span> {new Date(subscriptionEndDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                            </p>
-                          )}
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                )}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {Object.entries(SUBSCRIPTION_PRICING).map(([planKey, plan]) => {
-                    const isCurrentPlan = planTier === planKey;
-                    const monthlyPrice = plan.monthlyPriceCents / 100;
-                    const monthlyPoints = plan.dailyPoints * 30;
-                    const proPrice = SUBSCRIPTION_PRICING.pro.monthlyPriceCents / 100;
-                    const proPoints = SUBSCRIPTION_PRICING.pro.dailyPoints;
-                    
-                    // Calculate comparison to Pro plan
-                    const pointsMultiplier = plan.dailyPoints / proPoints;
-                    const priceMultiplier = monthlyPrice > 0 ? monthlyPrice / proPrice : 0;
-                    const valueVsPro = monthlyPrice > 0 && planKey !== 'pro' 
-                      ? pointsMultiplier > priceMultiplier 
-                        ? `${Math.round((pointsMultiplier / priceMultiplier - 1) * 100)}% more points per $`
-                        : null
-                      : null;
-                    
-                    const isMostPopular = planKey === 'pro_plus';
-                    const isBestValue = planKey === 'enterprise';
-                    
-                    const planEmojis = {
-                      free: '🎯',
-                      pro: '🚀',
-                      pro_plus: '👑',
-                      enterprise: '⚡',
-                    };
+                <div className="space-y-4">
+                  {/* New restaurant subscriptions (includes premium and promoted) */}
+                  {restaurantSubscriptions.map((subscription) => {
+                    const hasPremium = subscription.restaurant_premium_plan && subscription.restaurant_premium_plan !== '';
+                    // Check both promoted_listing_plan and promotion_status (from promoted_restaurants table)
+                    // If promotion_status is active/pending, the restaurant is promoted even if promoted_listing_plan is null
+                    const hasPromoted = (subscription.promoted_listing_plan && subscription.promoted_listing_plan !== '') || 
+                                      (subscription.promotion_status === 'active' || subscription.promotion_status === 'pending');
+                    // Get the promotion plan - use promoted_listing_plan if available, otherwise try to get it from the mapping
+                    const promotionPlan = subscription.promoted_listing_plan || (hasPromoted ? 'monthly' : null);
 
                     return (
-                      <div
-                        key={planKey}
-                        className={`relative rounded-xl border-2 transition-all duration-200 transform hover:scale-105 ${
-                          isCurrentPlan
-                            ? 'border-orange-500 bg-gradient-to-br from-orange-50 to-orange-100 shadow-lg scale-105'
-                            : 'border-gray-200 bg-white hover:border-orange-300 hover:bg-orange-50'
-                        } ${isMostPopular ? 'lg:border-orange-400 lg:shadow-md' : ''} flex flex-col`}
-                      >
-                        {/* Badge */}
-                        {isMostPopular && (
-                          <div className="absolute -top-2 left-4 px-2 py-0.5 bg-gradient-to-r from-orange-500 to-yellow-500 text-white text-xs font-bold rounded-full">
-                            ⭐ Most Popular
+                      <div key={subscription.id} className="border rounded-xl p-5 hover:shadow-md transition-shadow">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                      <div>
+                            <div className="flex items-center gap-2 mb-1">
+                              <h3 className="font-semibold text-lg">{subscription.restaurant_name}</h3>
+                              <Badge variant="outline" className={subscription.status === 'active' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-amber-50 text-amber-700 border-amber-200'}>
+                                {subscription.status === 'active' ? 'Active' : 'Pending'}
+                              </Badge>
+                              {hasPromoted && (
+                                <Badge className="bg-purple-600 text-white text-xs flex items-center gap-1">
+                                  <Sparkles className="w-3 h-3" />
+                                  Promoted
+                            </Badge>
+                          )}
                           </div>
-                        )}
-                        {isBestValue && (
-                          <div className="absolute -top-2 left-4 px-2 py-0.5 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-bold rounded-full">
-                            💎 Best Value
+                            <p className="text-sm text-gray-500">
+                              {hasPremium && (
+                                <>Premium ({subscription.restaurant_premium_plan === 'annual' ? 'Annual' : 'Monthly'})</>
+                              )}
+                              {hasPremium && hasPromoted && ' • '}
+                              {hasPromoted && (
+                                <>Promoted ({promotionPlan === 'annual' || promotionPlan === 'yearly' ? 'Annual' : 'Monthly'})</>
+                              )}
+                              {subscription.current_period_end && (
+                                <> • Renews {new Date(subscription.current_period_end).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</>
+                              )}
+                            </p>
                           </div>
-                        )}
-                        {isCurrentPlan && !isMostPopular && !isBestValue && (
-                          <div className="absolute -top-2 left-4 px-2 py-0.5 bg-orange-500 text-white text-xs font-bold rounded-full">
-                            ✓ Current
-                          </div>
-                        )}
-
-                        <div className="p-5 flex-1 flex flex-col">
-                          {/* Header */}
-                          <div className="text-center mb-4">
-                            <div className="text-4xl mb-2">{planEmojis[planKey]}</div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-1">{plan.planName}</h3>
-                            <p className="text-xs text-gray-600">{plan.dailyPoints.toLocaleString()} points/day</p>
-                          </div>
-
-                          {/* Pricing */}
-                          <div className="text-center mb-4 pb-4 border-b border-gray-200">
-                            {monthlyPrice > 0 ? (
-                              <>
-                                <div className="flex items-baseline justify-center gap-1 mb-2">
-                                  <span className="text-3xl font-extrabold text-gray-900">${monthlyPrice.toFixed(2)}</span>
-                                  <span className="text-sm text-gray-600">/mo</span>
-                                </div>
-                                {valueVsPro && planKey !== 'pro' && (
-                                  <div className="text-xs text-green-700 font-semibold">
-                                    {valueVsPro} vs Pro
-                                  </div>
-                                )}
-                              </>
-                            ) : (
-                              <div className="text-3xl font-extrabold text-gray-900">Free</div>
-                            )}
-                          </div>
-
-                          {/* Features */}
-                          <ul className="space-y-2.5 mb-4 flex-1 text-sm">
-                            <li className="flex items-start gap-2">
-                              <span className="text-orange-600 font-bold mt-0.5">✓</span>
-                              <span className="text-gray-700">
-                                <strong className="text-gray-900">{plan.dailyPoints.toLocaleString()} points/day</strong>
-                              </span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-purple-600 font-bold mt-0.5">✓</span>
-                              <span className="text-gray-700">
-                                <strong className="text-gray-900">{plan.aiMatchesPerDay} AI matches/day</strong>
-                              </span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-blue-600 font-bold mt-0.5">✓</span>
-                              <span className="text-gray-700">
-                                Badge on <strong className="text-gray-900">/leaderboard</strong>
-                              </span>
-                            </li>
-                            {planKey !== 'free' && (
-                              <li className="flex items-start gap-2">
-                                <span className="text-green-600 font-bold mt-0.5">✓</span>
-                                <span className="text-gray-700">Points reset daily</span>
-                              </li>
-                            )}
-                          </ul>
-
-                          {/* CTA Button */}
-                          {!isCurrentPlan && planKey !== 'free' && (
-                            <button
+                          <div className="flex gap-2">
+                            <Link
+                              href={`/destinations/${subscription.destination_id}/restaurants/${subscription.restaurant_slug}`}
+                              className="inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                              View
+                            </Link>
+                            {hasPremium && !hasPromoted && (
+                              <Button
                               onClick={async () => {
-                                if (!user?.id) {
-                                  toast({
-                                    title: 'Authentication required',
-                                    description: 'Please log in to subscribe',
-                                    variant: 'destructive',
-                                  });
-                                  router.push('/auth');
-                                  return;
-                                }
-
+                                  // Open upgrade modal or redirect to upgrade flow
+                                  const upgradeBillingCycle = subscription.restaurant_premium_plan; // Match premium billing cycle
+                                  setLoadingPortal(true);
+                                  try {
+                                    const res = await fetch('/api/partners/restaurants/upgrade', {
+                                      method: 'POST',
+                                      headers: { 'Content-Type': 'application/json' },
+                                      body: JSON.stringify({
+                                        userId: user.id,
+                                        subscriptionId: subscription.id,
+                                        promotedBillingCycle: upgradeBillingCycle,
+                                      }),
+                                    });
+                                    if (!res.ok) {
+                                      const errorData = await res.json().catch(() => ({ error: 'Network error' }));
+                                      throw new Error(errorData.error || `HTTP ${res.status}: ${res.statusText}`);
+                                    }
+                                    
+                                    const data = await res.json();
+                                    console.log('Restaurant upgrade response:', data);
+                                    
+                                    if (data.success) {
+                                      toast({
+                                        title: 'Upgrade successful!',
+                                        description: 'Promotion has been added to your subscription.',
+                                      });
+                                      setLoadingPortal(false);
+                                      // Refresh subscriptions
+                                      setTimeout(() => {
+                                        window.location.reload();
+                                      }, 1000);
+                                    } else if (data.requiresCheckout && data.checkoutUrl) {
+                                      // Redirect to Stripe checkout
+                                      console.log('Redirecting to checkout:', data.checkoutUrl);
+                                      window.location.href = data.checkoutUrl;
+                                    } else {
+                                      throw new Error(data.error || data.message || 'Failed to upgrade');
+                                    }
+                                  } catch (error) {
+                                    console.error('Restaurant upgrade error:', error);
+                                    toast({
+                                      title: 'Upgrade failed',
+                                      description: error.message || 'An unexpected error occurred. Please try again.',
+                                      variant: 'destructive',
+                                    });
+                                    setLoadingPortal(false);
+                                  }
+                                }}
+                                disabled={loadingPortal}
+                                className="bg-purple-600 hover:bg-purple-700 text-white"
+                                size="sm"
+                              >
+                                <Sparkles className="w-4 h-4 mr-1" />
+                                Upgrade to Promoted
+                              </Button>
+                            )}
+                            <Button
+                              onClick={async () => {
+                                setLoadingPortal(true);
                                 try {
-                                  const response = await fetch('/api/internal/promotion/subscribe', {
+                                  const res = await fetch('/api/internal/restaurant-premium/portal', {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify({
-                                      plan: planKey,
-                                      userId: user.id,
+                                      customerId: subscription.stripe_customer_id,
+                                      returnUrl: window.location.href 
                                     }),
                                   });
-
-                                  const data = await response.json();
-
-                                  if (!response.ok) {
-                                    throw new Error(data.error || 'Failed to create subscription');
-                                  }
-
-                                  // Redirect to Stripe checkout
-                                  if (data.checkoutUrl) {
-                                    window.location.href = data.checkoutUrl;
+                                  const data = await res.json();
+                                  if (data.url) {
+                                    window.location.href = data.url;
                                   } else {
-                                    throw new Error('No checkout URL received');
+                                    throw new Error(data.error || 'Failed to open billing portal');
                                   }
                                 } catch (error) {
-                                  console.error('Error subscribing:', error);
                                   toast({
-                                    title: 'Subscription failed',
-                                    description: error.message || 'Failed to initiate subscription. Please try again.',
+                                    title: 'Error',
+                                    description: error.message,
                                     variant: 'destructive',
                                   });
+                                } finally {
+                                  setLoadingPortal(false);
                                 }
                               }}
-                              className="w-full py-2.5 px-4 rounded-lg font-semibold text-sm sunset-gradient text-white shadow-md hover:shadow-lg transition-all duration-200 mt-auto"
+                              disabled={loadingPortal}
+                              variant="outline"
+                              size="sm"
                             >
-                              Subscribe
-                            </button>
-                          )}
-                          {isCurrentPlan && (
-                            <div className="w-full py-2.5 px-4 rounded-lg font-semibold text-sm text-center bg-gray-100 text-gray-600 border-2 border-gray-300">
-                              Current Plan
+                              Billing
+                            </Button>
                             </div>
-                          )}
-                          {planKey === 'free' && !isCurrentPlan && (
-                            <div className="w-full py-2.5 px-4 rounded-lg font-semibold text-sm text-center bg-gray-100 text-gray-600 border-2 border-gray-300">
-                              Free Forever
-                            </div>
-                          )}
                         </div>
+
+                        {/* Settings row - Show if has premium subscription OR promoted listing (both allow customization) */}
+                        {(hasPremium || hasPromoted) && (
+                          <>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-gray-50 rounded-lg mt-4">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Button Color</label>
+                                <div className="flex gap-2">
+                                  {Object.entries(COLOR_SCHEMES).map(([schemeKey, scheme]) => {
+                                    const colorMap = { blue: '#2563eb', coral: '#f97316', teal: '#0d9488' };
+                                    const key = `sub-${subscription.id}`;
+                                    const edits = restaurantEdits[key] || {};
+                                    const currentColor = edits.colorScheme ?? subscription.color_scheme ?? 'blue';
+                                    return (
+                                      <button
+                                        key={schemeKey}
+                                        onClick={() => setRestaurantEdits(prev => ({
+                                          ...prev,
+                                          [key]: { ...prev[key], colorScheme: schemeKey }
+                                        }))}
+                                        className={`w-10 h-10 rounded-lg border-2 transition-all ${
+                                          currentColor === schemeKey 
+                                            ? 'border-gray-900 scale-110 shadow-md' 
+                                            : 'border-gray-200 hover:border-gray-400'
+                                        }`}
+                                        style={{ backgroundColor: colorMap[schemeKey] }}
+                                        title={scheme.name}
+                                      >
+                                        {currentColor === schemeKey && (
+                                          <Check className="w-5 h-5 text-white mx-auto" />
+                                        )}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Hero Button</label>
+                                <select
+                                  value={restaurantEdits[`sub-${subscription.id}`]?.heroCTAIndex ?? subscription.hero_cta_index ?? 0}
+                                  onChange={(e) => setRestaurantEdits(prev => ({
+                                    ...prev,
+                                    [`sub-${subscription.id}`]: { ...prev[`sub-${subscription.id}`], heroCTAIndex: parseInt(e.target.value) }
+                                  }))}
+                                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                >
+                                  {CTA_OPTIONS.hero.map((option, idx) => (
+                                    <option key={idx} value={idx}>{option.text}</option>
+                                  ))}
+                                </select>
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Mid-Page Banner</label>
+                                <select
+                                  value={restaurantEdits[`sub-${subscription.id}`]?.midCTAIndex ?? subscription.mid_cta_index ?? 0}
+                                  onChange={(e) => setRestaurantEdits(prev => ({
+                                    ...prev,
+                                    [`sub-${subscription.id}`]: { ...prev[`sub-${subscription.id}`], midCTAIndex: parseInt(e.target.value) }
+                                  }))}
+                                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                >
+                                  {CTA_OPTIONS.mid.map((option, idx) => (
+                                    <option key={idx} value={idx}>{option.text}</option>
+                                  ))}
+                                </select>
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Sticky Button</label>
+                                <select
+                                  value={restaurantEdits[`sub-${subscription.id}`]?.stickyCTAIndex ?? subscription.sticky_cta_index ?? 0}
+                                  onChange={(e) => setRestaurantEdits(prev => ({
+                                    ...prev,
+                                    [`sub-${subscription.id}`]: { ...prev[`sub-${subscription.id}`], stickyCTAIndex: parseInt(e.target.value) }
+                                  }))}
+                                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                >
+                                  {CTA_OPTIONS.sticky.map((option, idx) => (
+                                    <option key={idx} value={idx}>{option.text}</option>
+                                  ))}
+                                </select>
+                              </div>
+                            </div>
+
+                            {/* Save button - only show if changes */}
+                            {(() => {
+                              const key = `sub-${subscription.id}`;
+                              const edits = restaurantEdits[key] || {};
+                              const hasChanges = edits.colorScheme !== undefined || edits.heroCTAIndex !== undefined || edits.midCTAIndex !== undefined || edits.stickyCTAIndex !== undefined;
+                              
+                              if (!hasChanges) return null;
+                              
+                              return (
+                                <div className="mt-4 flex justify-end">
+                                  <Button
+                                    onClick={async () => {
+                                      setSavingRestaurant(key);
+                                      try {
+                                        const res = await fetch('/api/internal/restaurant-premium/update-settings', {
+                                          method: 'POST',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({
+                                            restaurantId: subscription.restaurant_id,
+                                            destinationId: subscription.destination_id,
+                                            userId: user.id,
+                                            subscriptionId: subscription.id, // Include subscription ID for new table
+                                            colorScheme: edits.colorScheme,
+                                            heroCTAIndex: edits.heroCTAIndex,
+                                            midCTAIndex: edits.midCTAIndex,
+                                            endCTAIndex: edits.midCTAIndex, // End uses same as mid
+                                            stickyCTAIndex: edits.stickyCTAIndex,
+                                          }),
+                                        });
+                                        const data = await res.json();
+                                        if (data.success) {
+                                          // Update local state
+                                          setRestaurantSubscriptions(prev => prev.map(s => 
+                                            s.id === subscription.id
+                                              ? { 
+                                                  ...s, 
+                                                  color_scheme: edits.colorScheme ?? s.color_scheme,
+                                                  hero_cta_index: edits.heroCTAIndex ?? s.hero_cta_index,
+                                                  mid_cta_index: edits.midCTAIndex ?? s.mid_cta_index,
+                                                  end_cta_index: edits.midCTAIndex ?? s.end_cta_index,
+                                                  sticky_cta_index: edits.stickyCTAIndex ?? s.sticky_cta_index,
+                                                }
+                                              : s
+                                          ));
+                                          // Clear edits
+                                          setRestaurantEdits(prev => {
+                                            const newEdits = { ...prev };
+                                            delete newEdits[key];
+                                            return newEdits;
+                                          });
+                                          toast({
+                                            title: 'Settings saved!',
+                                            description: 'Your changes are now live on your restaurant page.',
+                                          });
+                                        } else {
+                                          throw new Error(data.error || 'Failed to save settings');
+                                        }
+                                      } catch (error) {
+                                        toast({
+                                          title: 'Error',
+                                          description: error.message,
+                                          variant: 'destructive',
+                                        });
+                                      } finally {
+                                        setSavingRestaurant(null);
+                                      }
+                                    }}
+                                    disabled={savingRestaurant === key}
+                                    className="bg-green-600 hover:bg-green-700 text-white"
+                                  >
+                                    {savingRestaurant === key ? (
+                                      'Saving...'
+                                    ) : (
+                                      <>
+                                        <Save className="w-4 h-4 mr-2" />
+                                        Save Changes
+                                      </>
+                                    )}
+                                  </Button>
+                                </div>
+                              );
+                            })()}
+                          </>
+                        )}
                       </div>
                     );
                   })}
+                  
+                  {/* Show message if no subscriptions */}
+                  {restaurantSubscriptions.length === 0 && (
+                    <div className="text-center py-12">
+                      <Crown className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+                      <p className="text-gray-500 mb-4">No restaurant subscriptions yet</p>
+                      <Link href="/partners/restaurants">
+                        <Button className="sunset-gradient text-white">
+                          Subscribe to Premium
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
                 </div>
+
+                {/* Tip section */}
+                {restaurantSubscriptions.length > 0 && (
+                  <div className="bg-purple-50 rounded-lg p-4 text-sm text-purple-800">
+                    <p className="font-medium mb-1">💡 Tip</p>
+                    <p>Changes are instant! After saving, refresh your restaurant page to see the updates.</p>
+                  </div>
+                )}
 
                 {/* Cancel Subscription Button - Only show if user has active subscription */}
                 {subscriptionStatus === 'active' && subscriptionPlan && subscriptionPlan !== 'free' && (
@@ -2036,18 +2395,21 @@ export default function ProfilePage() {
                               });
 
                               // Reload subscription data to show updated status
-                              const { data: account } = await supabase
-                                .from('promotion_accounts')
-                                .select('subscription_status, subscription_plan, subscription_start_date, subscription_end_date, stripe_subscription_id')
-                                .eq('user_id', user.id)
-                                .single();
-                              
-                              if (account) {
-                                setSubscriptionStatus(account.subscription_status);
-                                setSubscriptionPlan(account.subscription_plan);
-                                setSubscriptionStartDate(account.subscription_start_date);
-                                setSubscriptionEndDate(account.subscription_end_date);
-                                setStripeSubscriptionId(account.stripe_subscription_id);
+                              // NOTE: promotion_accounts table removed - get subscription info from profiles instead
+                              try {
+                                const { data: profile } = await supabase
+                                  .from('profiles')
+                                  .select('plan_tier')
+                                  .eq('id', user.id)
+                                  .maybeSingle();
+                                
+                                if (profile) {
+                                  // Set basic subscription info from profile
+                                  setSubscriptionPlan(profile.plan_tier || 'free');
+                                  setSubscriptionStatus(profile.plan_tier && profile.plan_tier !== 'free' ? 'active' : 'cancelled');
+                                }
+                              } catch (error) {
+                                console.warn('Error fetching subscription status from profiles:', error);
                               }
                               
                               // Also refresh from profiles to get updated plan_tier
@@ -2081,251 +2443,6 @@ export default function ProfilePage() {
                     </div>
                   </div>
                 )}
-              </div>
-            )}
-
-            {activeTab === 'my-restaurants' && (
-              <div className="bg-white rounded-xl shadow p-6 space-y-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 rounded-lg bg-amber-100">
-                    <Crown className="w-6 h-6 text-amber-600" />
-                  </div>
-                  <div>
-                    <h1 className="text-2xl font-semibold">My Premium Restaurants</h1>
-                    <p className="text-sm text-gray-600">Manage your restaurant premium listings</p>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  {premiumRestaurants.map((restaurant) => {
-                    const key = `${restaurant.restaurant_id}-${restaurant.destination_id}`;
-                    const edits = restaurantEdits[key] || {};
-                    const currentColor = edits.colorScheme ?? restaurant.color_scheme;
-                    const currentHeroCTA = edits.heroCTAIndex ?? restaurant.hero_cta_index ?? 0;
-                    const currentMidCTA = edits.midCTAIndex ?? restaurant.mid_cta_index ?? 0;
-                    const currentStickyCTA = edits.stickyCTAIndex ?? restaurant.sticky_cta_index ?? 0;
-                    const hasChanges = edits.colorScheme !== undefined || edits.heroCTAIndex !== undefined || edits.midCTAIndex !== undefined || edits.stickyCTAIndex !== undefined;
-                    
-                    return (
-                      <div key={key} className="border rounded-xl p-5 hover:shadow-md transition-shadow">
-                        {/* Header row */}
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-                          <div>
-                            <div className="flex items-center gap-2 mb-1">
-                              <h3 className="font-semibold text-lg">{restaurant.restaurant_name || restaurant.restaurant_slug}</h3>
-                              <Badge variant="outline" className={restaurant.status === 'active' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-amber-50 text-amber-700 border-amber-200'}>
-                                {restaurant.status === 'active' ? 'Active' : 'Pending Cancellation'}
-                              </Badge>
-                            </div>
-                            <p className="text-sm text-gray-500">
-                              {restaurant.plan_type === 'yearly' ? 'Yearly Plan' : 'Monthly Plan'} • 
-                              Renews {new Date(restaurant.current_period_end).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                            </p>
-                          </div>
-                          <div className="flex gap-2">
-                            <Link
-                              href={`/destinations/${restaurant.destination_id}/restaurants/${restaurant.restaurant_slug}`}
-                              className="inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-                            >
-                              <ExternalLink className="w-4 h-4" />
-                              View
-                            </Link>
-                            <Button
-                              onClick={async () => {
-                                setLoadingPortal(true);
-                                try {
-                                  const res = await fetch('/api/internal/restaurant-premium/portal', {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify({ 
-                                      customerId: restaurant.stripe_customer_id,
-                                      returnUrl: window.location.href 
-                                    }),
-                                  });
-                                  const data = await res.json();
-                                  if (data.url) {
-                                    window.location.href = data.url;
-                                  } else {
-                                    throw new Error(data.error || 'Failed to open billing portal');
-                                  }
-                                } catch (error) {
-                                  toast({
-                                    title: 'Error',
-                                    description: error.message,
-                                    variant: 'destructive',
-                                  });
-                                } finally {
-                                  setLoadingPortal(false);
-                                }
-                              }}
-                              disabled={loadingPortal}
-                              variant="outline"
-                              size="sm"
-                            >
-                              Billing
-                            </Button>
-                          </div>
-                        </div>
-
-                        {/* Settings row */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-gray-50 rounded-lg">
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Button Color</label>
-                            <div className="flex gap-2">
-                              {Object.entries(COLOR_SCHEMES).map(([schemeKey, scheme]) => {
-                                const colorMap = { blue: '#2563eb', coral: '#f97316', teal: '#0d9488' };
-                                return (
-                                  <button
-                                    key={schemeKey}
-                                    onClick={() => setRestaurantEdits(prev => ({
-                                      ...prev,
-                                      [key]: { ...prev[key], colorScheme: schemeKey }
-                                    }))}
-                                    className={`w-10 h-10 rounded-lg border-2 transition-all ${
-                                      currentColor === schemeKey 
-                                        ? 'border-gray-900 scale-110 shadow-md' 
-                                        : 'border-gray-200 hover:border-gray-400'
-                                    }`}
-                                    style={{ backgroundColor: colorMap[schemeKey] }}
-                                    title={scheme.name}
-                                  >
-                                    {currentColor === schemeKey && (
-                                      <Check className="w-5 h-5 text-white mx-auto" />
-                                    )}
-                                  </button>
-                                );
-                              })}
-                            </div>
-                          </div>
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Hero Button</label>
-                            <select
-                              value={currentHeroCTA}
-                              onChange={(e) => setRestaurantEdits(prev => ({
-                                ...prev,
-                                [key]: { ...prev[key], heroCTAIndex: parseInt(e.target.value) }
-                              }))}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                            >
-                              {CTA_OPTIONS.hero.map((option, idx) => (
-                                <option key={idx} value={idx}>{option.text}</option>
-                              ))}
-                            </select>
-                          </div>
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Mid-Page Banner</label>
-                            <select
-                              value={currentMidCTA}
-                              onChange={(e) => setRestaurantEdits(prev => ({
-                                ...prev,
-                                [key]: { ...prev[key], midCTAIndex: parseInt(e.target.value) }
-                              }))}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                            >
-                              {CTA_OPTIONS.mid.map((option, idx) => (
-                                <option key={idx} value={idx}>{option.text}</option>
-                              ))}
-                            </select>
-                          </div>
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Sticky Button</label>
-                            <select
-                              value={currentStickyCTA}
-                              onChange={(e) => setRestaurantEdits(prev => ({
-                                ...prev,
-                                [key]: { ...prev[key], stickyCTAIndex: parseInt(e.target.value) }
-                              }))}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                            >
-                              {CTA_OPTIONS.sticky.map((option, idx) => (
-                                <option key={idx} value={idx}>{option.text}</option>
-                              ))}
-                            </select>
-                          </div>
-                        </div>
-
-                        {/* Save button - only show if changes */}
-                        {hasChanges && (
-                          <div className="mt-4 flex justify-end">
-                            <Button
-                              onClick={async () => {
-                                setSavingRestaurant(key);
-                                try {
-                                  const res = await fetch('/api/internal/restaurant-premium/update-settings', {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify({
-                                      restaurantId: restaurant.restaurant_id,
-                                      destinationId: restaurant.destination_id,
-                                      userId: user.id,
-                                      colorScheme: edits.colorScheme,
-                                      heroCTAIndex: edits.heroCTAIndex,
-                                      midCTAIndex: edits.midCTAIndex,
-                                      endCTAIndex: edits.midCTAIndex, // End uses same as mid
-                                      stickyCTAIndex: edits.stickyCTAIndex,
-                                    }),
-                                  });
-                                  const data = await res.json();
-                                  if (data.success) {
-                                    // Update local state
-                                    setPremiumRestaurants(prev => prev.map(r => 
-                                      r.restaurant_id === restaurant.restaurant_id && r.destination_id === restaurant.destination_id
-                                        ? { 
-                                            ...r, 
-                                            color_scheme: edits.colorScheme ?? r.color_scheme,
-                                            hero_cta_index: edits.heroCTAIndex ?? r.hero_cta_index,
-                                            mid_cta_index: edits.midCTAIndex ?? r.mid_cta_index,
-                                            end_cta_index: edits.midCTAIndex ?? r.end_cta_index,
-                                            sticky_cta_index: edits.stickyCTAIndex ?? r.sticky_cta_index,
-                                          }
-                                        : r
-                                    ));
-                                    // Clear edits
-                                    setRestaurantEdits(prev => {
-                                      const newEdits = { ...prev };
-                                      delete newEdits[key];
-                                      return newEdits;
-                                    });
-                                    toast({
-                                      title: 'Settings saved!',
-                                      description: 'Your changes are now live on your restaurant page.',
-                                    });
-                                  } else {
-                                    throw new Error(data.error || 'Failed to save settings');
-                                  }
-                                } catch (error) {
-                                  toast({
-                                    title: 'Error',
-                                    description: error.message,
-                                    variant: 'destructive',
-                                  });
-                                } finally {
-                                  setSavingRestaurant(null);
-                                }
-                              }}
-                              disabled={savingRestaurant === key}
-                              className="bg-green-600 hover:bg-green-700 text-white"
-                            >
-                              {savingRestaurant === key ? (
-                                'Saving...'
-                              ) : (
-                                <>
-                                  <Save className="w-4 h-4 mr-2" />
-                                  Save Changes
-                                </>
-                              )}
-                            </Button>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-
-                <div className="bg-purple-50 rounded-lg p-4 text-sm text-purple-800">
-                  <p className="font-medium mb-1">💡 Tip</p>
-                  <p>Changes are instant! After saving, refresh your restaurant page to see the updates.</p>
-                </div>
               </div>
             )}
           </section>
@@ -2373,6 +2490,243 @@ export default function ProfilePage() {
         cancelText="Cancel"
         variant="destructive"
       />
+
+      {/* Promote Tours Modal */}
+      {showPromoteModal && selectedSubscriptionForPromotion && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                    <Sparkles className="w-5 h-5 text-white" />
+    </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-900">Promote Tours for Top Placement</h2>
+                    <p className="text-sm text-gray-600">Select which tours to promote</p>
+                  </div>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    setShowPromoteModal(false);
+                    setSelectedSubscriptionForPromotion(null);
+                    setSelectedToursToPromote([]);
+                  }}
+                >
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
+
+              <div className="mb-6 p-4 bg-gradient-to-br from-purple-50 via-indigo-50 to-pink-50 border-2 border-purple-300 rounded-xl">
+                <p className="text-sm text-gray-700 mb-4">
+                  <strong className="text-purple-900">✨ Top placement guarantee:</strong> Promoted tours appear <strong>first on all pages</strong>, 
+                  before any other results, regardless of filters or sorting.
+                </p>
+                
+                <label className="block text-sm font-medium text-gray-700 mb-3">Select Billing Cycle</label>
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setPromotedBillingCycle('annual')}
+                    className={`p-4 rounded-lg border-2 transition-all text-left ${
+                      promotedBillingCycle === 'annual'
+                        ? 'border-purple-600 bg-purple-100'
+                        : 'border-gray-200 bg-white hover:border-purple-300'
+                    }`}
+                  >
+                    <div className="font-semibold text-gray-900 mb-1">Annual (12 months)</div>
+                    <div className="text-2xl font-bold text-purple-600 mb-1">$19.99</div>
+                    <div className="text-sm text-gray-600 mb-1">per month</div>
+                    <div className="text-xs text-gray-400">$239.88 paid upfront</div>
+                    <Badge className="mt-2 bg-green-100 text-green-700 text-xs">Save $60/year</Badge>
+                  </button>
+                  
+                  <button
+                    type="button"
+                    onClick={() => setPromotedBillingCycle('monthly')}
+                    className={`p-4 rounded-lg border-2 transition-all text-left ${
+                      promotedBillingCycle === 'monthly'
+                        ? 'border-purple-600 bg-purple-100'
+                        : 'border-gray-200 bg-white hover:border-purple-300'
+                    }`}
+                  >
+                    <div className="font-semibold text-gray-900 mb-1">Monthly billing</div>
+                    <div className="text-2xl font-bold text-gray-900 mb-1">$24.99</div>
+                    <div className="text-sm text-gray-600 mb-1">per month</div>
+                    <div className="text-xs text-gray-400">Billed monthly</div>
+                  </button>
+                </div>
+              </div>
+
+              <div className="space-y-3 mb-6 max-h-64 overflow-y-auto">
+                {selectedSubscriptionForPromotion.verified_tour_ids
+                  .filter(id => !selectedSubscriptionForPromotion.promotedTourIds || !selectedSubscriptionForPromotion.promotedTourIds.includes(id))
+                  .map((productId) => {
+                    const isSelected = selectedToursToPromote.includes(productId);
+                    return (
+                      <label
+                        key={productId}
+                        className={`flex items-start gap-3 p-3 rounded-lg border-2 cursor-pointer transition-all ${
+                          isSelected
+                            ? 'border-purple-600 bg-purple-50'
+                            : 'border-gray-200 bg-white hover:border-purple-300'
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setSelectedToursToPromote([...selectedToursToPromote, productId]);
+                            } else {
+                              setSelectedToursToPromote(selectedToursToPromote.filter(id => id !== productId));
+                            }
+                          }}
+                          className="mt-1 w-5 h-5 text-purple-600 rounded"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="font-medium text-sm text-gray-900 truncate">
+                              {productId}
+                            </span>
+                            {isSelected && (
+                              <Badge className="bg-purple-600 text-white text-xs">
+                                <Sparkles className="w-3 h-3 mr-1" />
+                                Selected
+                              </Badge>
+                            )}
+                          </div>
+                          <div className="text-xs text-gray-600">
+                            {promotedBillingCycle === 'annual' ? '$19.99/month' : '$24.99/month'} per tour
+                          </div>
+                        </div>
+                      </label>
+                    );
+                  })}
+              </div>
+
+              {selectedToursToPromote.length > 0 && (
+                <div className="mb-6 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg border-2 border-purple-300">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-gray-700">
+                      {selectedToursToPromote.length} tour{selectedToursToPromote.length !== 1 ? 's' : ''} selected
+                    </span>
+                    <span className="text-lg font-bold text-purple-600">
+                      ${(selectedToursToPromote.length * (promotedBillingCycle === 'annual' ? 19.99 : 24.99)).toFixed(2)}/month
+                    </span>
+                  </div>
+                  {promotedBillingCycle === 'annual' && (
+                    <div className="text-xs text-gray-600">
+                      ${(selectedToursToPromote.length * 239.88).toFixed(2)} paid upfront (12 months)
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div className="flex gap-3 justify-end">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setShowPromoteModal(false);
+                    setSelectedSubscriptionForPromotion(null);
+                    setSelectedToursToPromote([]);
+                  }}
+                  disabled={promotingTours}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={async () => {
+                    if (selectedToursToPromote.length === 0) {
+                      toast({
+                        title: 'No tours selected',
+                        description: 'Please select at least one tour to promote.',
+                        variant: 'destructive',
+                      });
+                      return;
+                    }
+
+                    setPromotingTours(true);
+                    try {
+                      console.log('Sending upgrade request:', {
+                        userId: user.id,
+                        subscriptionId: selectedSubscriptionForPromotion.id,
+                        promotedTourIds: selectedToursToPromote,
+                        promotedBillingCycle: promotedBillingCycle,
+                      });
+                      
+                      const res = await fetch('/api/partners/tour-operators/upgrade', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          userId: user.id,
+                          subscriptionId: selectedSubscriptionForPromotion.id,
+                          promotedTourIds: selectedToursToPromote,
+                          promotedBillingCycle: promotedBillingCycle, // Use the state variable
+                        }),
+                      });
+                      
+                      if (!res.ok) {
+                        const errorData = await res.json().catch(() => ({ error: 'Network error' }));
+                        throw new Error(errorData.error || `HTTP ${res.status}: ${res.statusText}`);
+                      }
+                      
+                      const data = await res.json();
+                      console.log('Upgrade response:', data);
+                      
+                      if (data.success) {
+                        toast({
+                          title: 'Upgrade successful!',
+                          description: `Promotion has been added to ${selectedToursToPromote.length} tour${selectedToursToPromote.length !== 1 ? 's' : ''}.`,
+                        });
+                        setShowPromoteModal(false);
+                        setSelectedSubscriptionForPromotion(null);
+                        setSelectedToursToPromote([]);
+                        // Refresh subscriptions
+                        setTimeout(() => {
+                          window.location.reload();
+                        }, 1000);
+                      } else if (data.requiresCheckout && data.checkoutUrl) {
+                        // Redirect to Stripe checkout
+                        console.log('Redirecting to checkout:', data.checkoutUrl);
+                        window.location.href = data.checkoutUrl;
+                      } else {
+                        console.error('Upgrade failed:', data);
+                        throw new Error(data.error || data.message || 'Failed to upgrade');
+                      }
+                    } catch (error) {
+                      console.error('Upgrade error:', error);
+                      toast({
+                        title: 'Upgrade failed',
+                        description: error.message || 'An unexpected error occurred. Please try again.',
+                        variant: 'destructive',
+                      });
+                    } finally {
+                      setPromotingTours(false);
+                    }
+                  }}
+                  disabled={promotingTours || selectedToursToPromote.length === 0}
+                  className="bg-purple-600 hover:bg-purple-700 text-white"
+                >
+                  {promotingTours ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Processing...
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="w-4 h-4 mr-2" />
+                      Promote Selected Tours
+                    </>
+                  )}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   );
 }

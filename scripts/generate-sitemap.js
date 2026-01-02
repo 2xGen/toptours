@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 const generateSitemap = () => {
   const destinations = getAllDestinations();
   const baseUrl = 'https://toptours.ai';
-  const today = '2025-10-07'; // October 7, 2025
+  const today = '2025-12-31'; // December 31, 2025
   
   // Travel guide slugs from the travel-guides directory
   const travelGuides = [

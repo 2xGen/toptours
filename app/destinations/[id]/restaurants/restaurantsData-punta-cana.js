@@ -54,7 +54,7 @@ export const restaurantsPuntaCana = {
         googleRating: 4.6,
         reviewCount: 2318,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Palm-lined beachfront setting inside Puntacana Resort & Club',
@@ -125,8 +125,8 @@ export const restaurantsPuntaCana = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -231,7 +231,7 @@ export const restaurantsPuntaCana = {
         googleRating: 4.6,
         reviewCount: 2711,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Ranked #1 restaurant in the Macarfi Guide (Eastern Dominican Republic, 2025)',
@@ -299,8 +299,8 @@ export const restaurantsPuntaCana = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -387,7 +387,7 @@ export const restaurantsPuntaCana = {
         googleRating: 4.4,
         reviewCount: 3748,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Iconic beachfront architecture with multi-level decks and palm-framed views',
@@ -457,8 +457,8 @@ export const restaurantsPuntaCana = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -563,7 +563,7 @@ export const restaurantsPuntaCana = {
         googleRating: 4.6,
         reviewCount: 1967,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Smokehouse specializing in pork and slow-cooked meats with signature glazes',
@@ -633,8 +633,8 @@ export const restaurantsPuntaCana = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -723,7 +723,7 @@ export const restaurantsPuntaCana = {
         googleRating: 4.5,
         reviewCount: 2104,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Private beachfront location with infinity pool, cabanas, and daybeds',
@@ -794,8 +794,8 @@ export const restaurantsPuntaCana = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -884,7 +884,7 @@ export const restaurantsPuntaCana = {
         googleRating: 4.2,
         reviewCount: 2594,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Daily catch and premium seafood prepared in seven signature styles',
@@ -952,8 +952,8 @@ export const restaurantsPuntaCana = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',

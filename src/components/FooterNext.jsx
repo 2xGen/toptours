@@ -103,7 +103,7 @@ const FooterNext = () => {
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © 2025 TopTours.ai<span className="text-xs align-super ml-1">™</span>. All rights reserved. | 
+            © 2026 TopTours.ai<span className="text-xs align-super ml-1">™</span>. All rights reserved. | 
             <Link href="/disclosure" className="text-yellow-400 hover:text-yellow-300 ml-1">
               Affiliate Disclosure
             </Link>

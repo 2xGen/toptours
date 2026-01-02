@@ -1,6 +1,6 @@
 import { getDestinationById } from '@/data/destinationsData';
 import DestinationDetailClient from './DestinationDetailClient';
-import { getPromotionScoresByDestination, getTrendingToursByDestination, getHardcodedToursByDestination, getTrendingRestaurantsByDestination, getRestaurantPromotionScoresByDestination } from '@/lib/promotionSystem';
+import { getPromotionScoresByDestination, getTrendingToursByDestination, getHardcodedToursByDestination, getTrendingRestaurantsByDestination, getRestaurantPromotionScoresByDestination, getPromotedToursByDestination, getPromotedRestaurantsByDestination } from '@/lib/promotionSystem';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
@@ -404,6 +404,115 @@ export default async function DestinationDetailPage({ params }) {
     // Continue with empty array - page will still work
   }
 
+  // Fetch promoted tours for this destination
+  // Fetch full tour data from Viator API (similar to trending tours)
+  let promotedTours = [];
+  try {
+    const promotedTourData = await getPromotedToursByDestination(destinationIdForScores, 6);
+    
+    if (promotedTourData.length > 0) {
+      console.log(`✅ Destination Page - Found ${promotedTourData.length} promoted tour product ID(s) for ${destination.id}`);
+      
+      // Fetch full tour data for each promoted tour
+      const { getCachedTour } = await import('@/lib/viatorCache');
+      const fetchPromises = promotedTourData.map(async (promoted) => {
+        const productId = promoted.product_id || promoted.productId || promoted.productCode;
+        if (!productId) return null;
+        
+        try {
+          // Try to get cached tour first
+          let tour = await getCachedTour(productId);
+          
+          // If not cached, fetch from Viator API
+          if (!tour) {
+            const apiKey = process.env.VIATOR_API_KEY;
+            if (!apiKey) {
+              console.warn(`No API key for fetching promoted tour ${productId}`);
+              return null;
+            }
+            
+            const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
+            const response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                'exp-api-key': apiKey,
+                'Accept': 'application/json;version=2.0',
+                'Accept-Language': 'en-US',
+                'Content-Type': 'application/json'
+              },
+              cache: 'no-store'
+            });
+            
+            if (response.ok) {
+              tour = await response.json();
+            } else {
+              console.warn(`Failed to fetch promoted tour ${productId}: ${response.status}`);
+              return null;
+            }
+          }
+          
+          // Return tour with product_id for matching
+          return {
+            ...tour,
+            productId: productId,
+            productCode: productId,
+            product_id: productId,
+          };
+        } catch (error) {
+          console.error(`Error fetching promoted tour ${productId}:`, error);
+          return null;
+        }
+      });
+      
+      const fetchedTours = await Promise.all(fetchPromises);
+      promotedTours = fetchedTours.filter(t => t !== null);
+      
+      if (promotedTours.length > 0) {
+        console.log(`✅ Destination Page - Successfully fetched ${promotedTours.length} promoted tour(s) with full data`);
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching promoted tours:', error);
+    // Continue with empty array - page will still work
+  }
+
+  // Fetch promoted restaurants for this destination
+  let promotedRestaurants = [];
+  try {
+    const promotedRestaurantData = await getPromotedRestaurantsByDestination(destination.id, 6);
+    if (promotedRestaurantData.length > 0) {
+      // Fetch full restaurant data for promoted restaurants
+      const dbRestaurants = await getRestaurantsForDestination(destination.id);
+      const formattedRestaurants = (dbRestaurants || [])
+        .map(restaurant => {
+          try {
+            return formatRestaurantForFrontend(restaurant);
+          } catch (err) {
+            console.error('Error formatting restaurant:', err, restaurant?.id);
+            return null;
+          }
+        })
+        .filter(Boolean);
+      
+      // Match promoted restaurant IDs with full restaurant data
+      // Convert both to strings for consistent comparison
+      const promotedRestaurantIds = new Set(
+        promotedRestaurantData.map(pr => String(pr.id || pr.restaurant_id)).filter(Boolean)
+      );
+      promotedRestaurants = formattedRestaurants.filter(r => 
+        r.id && promotedRestaurantIds.has(String(r.id))
+      );
+      
+      console.log(`🔍 [Destination Page] Matching promoted restaurants:`);
+      console.log(`  - Promoted restaurant IDs from DB:`, Array.from(promotedRestaurantIds));
+      console.log(`  - Available restaurant IDs:`, formattedRestaurants.map(r => String(r.id)).slice(0, 5));
+      console.log(`  - Matched ${promotedRestaurants.length} promoted restaurant(s)`);
+    }
+  } catch (error) {
+    console.error('Error fetching promoted restaurants:', error);
+    // Continue with empty array - page will still work
+  }
+
   // Fetch restaurant promotion scores for this destination
   let restaurantPromotionScores = {};
   try {
@@ -537,8 +646,8 @@ export default async function DestinationDetailPage({ params }) {
             "headline": `${destination.fullName} Tours & Activities Guide`,
             "description": destination.seo?.description || destination.heroDescription,
             "image": destination.imageUrl,
-            "datePublished": "2025-10-07",
-            "dateModified": "2025-10-07",
+            "datePublished": "2025-12-31",
+            "dateModified": "2025-12-31",
             "author": {
               "@type": "Organization",
               "name": "TopTours.ai"
@@ -629,6 +738,8 @@ export default async function DestinationDetailPage({ params }) {
           promotionScores={promotionScores}
           trendingTours={trendingTours}
           trendingRestaurants={trendingRestaurants}
+          promotedTours={promotedTours}
+          promotedRestaurants={promotedRestaurants}
           hardcodedTours={hardcodedTours}
           restaurants={restaurants}
           restaurantPromotionScores={restaurantPromotionScores}

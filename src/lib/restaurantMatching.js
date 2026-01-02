@@ -117,6 +117,7 @@ export const extractRestaurantStructuredValues = (restaurant) => {
  * Returns: 'breakfast', 'lunch', 'dinner', or 'any'
  */
 export const getRestaurantTimeOfDay = (restaurant) => {
+  if (!restaurant) return 'any';
   // Try multiple field names (frontend format uses 'hours', schema uses 'openingHoursSpecification')
   const openingHours = restaurant.hours || restaurant.openingHours || restaurant.openingHoursSpecification || [];
   

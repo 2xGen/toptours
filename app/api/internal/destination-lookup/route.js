@@ -42,11 +42,14 @@ export async function GET(request) {
         console.error('Error fetching Viator destination:', error);
       }
 
+      // For hardcoded destinations, id is already the slug (e.g., "bali")
+      // This matches how restaurants are stored (destination_id = "bali")
       return NextResponse.json({
-        id: hardcodedDest.id,
+        id: hardcodedDest.id, // This is the slug (e.g., "bali") - matches restaurant destination_id
         name: hardcodedDest.name,
         fullName: hardcodedDest.fullName || hardcodedDest.name,
-        destinationId: hardcodedDest.destinationId || viatorDest?.id || null,
+        destinationId: hardcodedDest.destinationId || viatorDest?.id || null, // Numeric ID for Viator API
+        slug: hardcodedDest.id, // Explicitly include slug (same as id for hardcoded)
         isHardcoded: true,
         // Include full destination info
         category: hardcodedDest.category,
@@ -62,18 +65,26 @@ export async function GET(request) {
     }
 
     // Try database lookup
+    // First try by slug (preferred for restaurant matching)
     let dest = null;
     try {
-      if (name) {
-        dest = await getViatorDestinationByName(name);
-      } else if (slug) {
+      if (slug) {
         dest = await getViatorDestinationBySlug(slug);
+      } else if (name) {
+        // Try to find by slug first (convert name to slug)
+        const nameSlug = name.toLowerCase().trim().replace(/\s+/g, '-');
+        dest = await getViatorDestinationBySlug(nameSlug);
+        // If not found by slug, try by name
+        if (!dest) {
+          dest = await getViatorDestinationByName(name);
+        }
       }
     } catch (error) {
       console.error('Error fetching Viator destination:', error);
     }
 
     if (dest) {
+      // Prefer slug as the ID (for restaurant matching)
       const destId = dest.slug || dest.id;
       
       // Try to get full content for database destinations
@@ -81,10 +92,11 @@ export async function GET(request) {
       const seoContent = getDestinationSeoContent(destId);
       
       return NextResponse.json({
-        id: destId,
+        id: destId, // Use slug as ID for restaurant matching
         name: dest.name,
         fullName: dest.name,
-        destinationId: dest.id,
+        destinationId: dest.id, // Keep numeric ID for Viator API
+        slug: dest.slug, // Include slug explicitly
         isHardcoded: false,
         category: dest.region || null,
         country: dest.country || null,

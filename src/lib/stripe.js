@@ -31,6 +31,10 @@ export const STRIPE_PRICE_IDS = {
   tour_operator_5_annual: process.env.STRIPE_TOUR_OPERATOR_5_ANNUAL_PRICE_ID,
   tour_operator_15_monthly: process.env.STRIPE_TOUR_OPERATOR_15_MONTHLY_PRICE_ID,
   tour_operator_15_annual: process.env.STRIPE_TOUR_OPERATOR_15_ANNUAL_PRICE_ID,
+  
+  // Promoted Listings (Tours & Restaurants)
+  promoted_listing_monthly: process.env.STRIPE_PROMOTED_LISTING_MONTHLY_PRICE_ID,
+  promoted_listing_annual: process.env.STRIPE_PROMOTED_LISTING_ANNUAL_PRICE_ID,
 };
 
 // Plan to tier mapping

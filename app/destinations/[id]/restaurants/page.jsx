@@ -6,7 +6,7 @@ import {
 } from '@/lib/restaurants';
 import { getRestaurantsForDestination as getRestaurantsForDestinationFromStatic } from './restaurantsData';
 import { getRestaurantPromotionScoresByDestination } from '@/lib/promotionSystem';
-import { getPromotedListings } from '@/lib/promotedListings';
+import { getPromotedToursByDestination, getPromotedRestaurantsByDestination } from '@/lib/promotionSystem';
 import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
 import RestaurantsListClient from './RestaurantsListClient';
@@ -86,17 +86,99 @@ export default async function RestaurantsIndexPage({ params }) {
     notFound();
   }
 
-  // Fetch promoted listings for this destination
-  const promotedListingsTours = await getPromotedListings(id, 'tour');
-  const promotedListingsRestaurants = await getPromotedListings(id, 'restaurant');
+  // Fetch promoted restaurants for this destination
+  let promotedRestaurants = [];
+  try {
+    const promotedRestaurantData = await getPromotedRestaurantsByDestination(id, 20);
+    if (promotedRestaurantData.length > 0) {
+      // Convert both to strings for consistent comparison
+      const promotedRestaurantIds = new Set(
+        promotedRestaurantData.map(pr => String(pr.id || pr.restaurant_id)).filter(Boolean)
+      );
+      promotedRestaurants = restaurants.filter(r => 
+        r.id && promotedRestaurantIds.has(String(r.id))
+      );
+    }
+  } catch (error) {
+    console.error('Error fetching promoted restaurants:', error);
+    // Continue with empty array - page will still work
+  }
   
-  // Match promoted listings with actual restaurant data
-  const promotedRestaurantIds = new Set(promotedListingsRestaurants.map(pl => pl.product_id));
-  const promotedRestaurants = restaurants.filter(r => promotedRestaurantIds.has(String(r.id)));
-  
-  // For tours, we'd need to fetch them separately (similar to tours page)
-  // For now, we'll pass empty array and let client handle it if needed
-  const promotedTours = [];
+  // Fetch promoted tours for this destination (for cross-promotion on restaurant pages)
+  // Fetch full tour data from Viator API (similar to destination detail page)
+  let promotedTours = [];
+  try {
+    // Get destination ID for Viator (needed for tour queries)
+    const destinationIdForScores = destination.destinationId || destination.viatorDestinationId;
+    if (destinationIdForScores) {
+      const promotedTourData = await getPromotedToursByDestination(destinationIdForScores, 6);
+      
+      if (promotedTourData.length > 0) {
+        console.log(`✅ Restaurants Page - Found ${promotedTourData.length} promoted tour product ID(s) for ${id}`);
+        
+        // Fetch full tour data for each promoted tour
+        const { getCachedTour } = await import('@/lib/viatorCache');
+        const fetchPromises = promotedTourData.map(async (promoted) => {
+          const productId = promoted.product_id || promoted.productId || promoted.productCode;
+          if (!productId) return null;
+          
+          try {
+            // Try to get cached tour first
+            let tour = await getCachedTour(productId);
+            
+            // If not cached, fetch from Viator API
+            if (!tour) {
+              const apiKey = process.env.VIATOR_API_KEY;
+              if (!apiKey) {
+                console.warn(`No API key for fetching promoted tour ${productId}`);
+                return null;
+              }
+              
+              const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
+              const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                  'exp-api-key': apiKey,
+                  'Accept': 'application/json;version=2.0',
+                  'Accept-Language': 'en-US',
+                  'Content-Type': 'application/json'
+                },
+                cache: 'no-store'
+              });
+              
+              if (response.ok) {
+                tour = await response.json();
+              } else {
+                console.warn(`Failed to fetch promoted tour ${productId}: ${response.status}`);
+                return null;
+              }
+            }
+            
+            // Return tour with product_id for matching
+            return {
+              ...tour,
+              productId: productId,
+              productCode: productId,
+              product_id: productId,
+            };
+          } catch (error) {
+            console.error(`Error fetching promoted tour ${productId}:`, error);
+            return null;
+          }
+        });
+        
+        const fetchedTours = await Promise.all(fetchPromises);
+        promotedTours = fetchedTours.filter(t => t !== null);
+        
+        if (promotedTours.length > 0) {
+          console.log(`✅ Restaurants Page - Successfully fetched ${promotedTours.length} promoted tour(s) with full data`);
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching promoted tours:', error);
+    // Continue with empty array - page will still work
+  }
 
   // Fetch restaurant promotion scores for this destination
   const restaurantPromotionScores = await getRestaurantPromotionScoresByDestination(id);

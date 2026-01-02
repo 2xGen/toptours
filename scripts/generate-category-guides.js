@@ -74,7 +74,7 @@ TASK: Create a comprehensive guide for "${destination.fullName} ${category.name}
   },
   introduction: \`Write comprehensive 150-200 word introduction covering: what this category offers, why it's special in this destination, variety of experiences available, what travelers will discover, and appeal to different traveler types. Use engaging storytelling. Mention specific attractions/features. Create excitement.\`,
   seo: {
-    title: 'SEO-optimized title under 60 chars with year 2025',
+    title: 'SEO-optimized title under 60 chars with year 2026',
     description: 'Compelling 150-160 char meta description with keywords and call-to-action',
     keywords: 'Primary keywords, secondary keywords, long-tail keywords'
   },

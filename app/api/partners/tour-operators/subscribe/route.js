@@ -16,7 +16,9 @@ export async function POST(request) {
       email,
       tourUrls,
       selectedTourIds,
-      tourPackage // e.g., '5-tours-monthly', '5-tours-annual', '15-tours-monthly', '15-tours-annual'
+      tourPackage, // e.g., '5-tours-monthly', '5-tours-annual', '15-tours-monthly', '15-tours-annual'
+      promotedTourIds = [], // Array of product IDs to promote (optional)
+      promotedBillingCycle = 'monthly' // 'monthly' or 'annual' for promoted listings
     } = body;
     
     // Require authentication
@@ -181,6 +183,50 @@ export async function POST(request) {
     
     // Create operator_tours records
     // Match tours to product IDs by index (since we fetched them in the same order as selectedTourIds)
+    // Helper function to extract destination_id from tour data
+    const extractDestinationId = (tourData) => {
+      if (!tourData) return null;
+      
+      // Try to get from destinations array
+      if (Array.isArray(tourData.destinations) && tourData.destinations.length > 0) {
+        const destination = tourData.destinations.find(d => d?.primary) || tourData.destinations[0];
+        
+        // Try destinationId, id, or ref
+        const destId = destination?.destinationId || destination?.id || destination?.ref;
+        if (destId) {
+          // Remove 'd' prefix if present and return as string
+          return destId.toString().replace(/^d/i, '');
+        }
+        
+        // Try to get slug from destination name
+        const destName = destination?.destinationName || destination?.name;
+        if (destName) {
+          // Try to match with known destinations
+          try {
+            const { slugToViatorId } = require('@/data/viatorDestinationMap');
+            // Reverse lookup: find slug by matching name
+            const { destinations } = require('@/data/destinationsData');
+            const matched = destinations.find(d => 
+              d.name?.toLowerCase() === destName.toLowerCase() ||
+              d.fullName?.toLowerCase() === destName.toLowerCase()
+            );
+            if (matched?.id) {
+              return matched.id;
+            }
+          } catch (e) {
+            // Ignore if imports fail
+          }
+        }
+      }
+      
+      // Try _destinationId if available
+      if (tourData._destinationId) {
+        return tourData._destinationId.toString().replace(/^d/i, '');
+      }
+      
+      return null;
+    };
+    
     const operatorTours = validTours.map((tourData, index) => {
       // Get productId from the selectedTourIds array at the same index
       const productId = selectedTourIds[index] || tourData.productCode;
@@ -189,6 +235,10 @@ export async function POST(request) {
         console.error('Could not find productId for tour at index:', index, tourData);
         return null;
       }
+      
+      // Extract destination_id from tour data
+      const destinationId = extractDestinationId(tourData);
+      
       // Find URL - could be Viator or TopTours
       let viatorUrl = '';
       let toptoursUrl = '';
@@ -221,33 +271,164 @@ export async function POST(request) {
         rating: tourData.reviews?.combinedAverageRating || 0,
         is_selected: true,
         is_active: true,
+        destination_id: destinationId, // Store destination_id for efficient querying
       };
     });
     
     // Filter out any null entries
     const validOperatorTours = operatorTours.filter(tour => tour !== null);
     
+    // Insert operator_tours records and get their IDs for promoted_tours
+    let operatorTourIds = {}; // Map productId -> operator_tours.id
     if (validOperatorTours.length > 0) {
-      const { error: toursError } = await supabase
+      const { data: insertedTours, error: toursError } = await supabase
         .from('operator_tours')
-        .insert(validOperatorTours);
+        .insert(validOperatorTours)
+        .select('id, product_id');
       
       if (toursError) {
         console.error('Error creating operator tours:', toursError);
         // Don't fail - subscription is created, tours can be added later
+      } else if (insertedTours) {
+        // Build map of productId -> operator_tours.id for promoted_tours
+        insertedTours.forEach(tour => {
+          operatorTourIds[tour.product_id] = tour.id;
+        });
+        console.log(`✅ Created ${insertedTours.length} operator_tours records`);
       }
     } else {
       console.warn('No valid operator tours to insert');
     }
     
+    // Create pending promoted_tours records BEFORE Stripe checkout (like restaurants)
+    // This ensures we have records even if webhook fails
+    if (promotedTourIds && promotedTourIds.length > 0) {
+      console.log(`📝 Creating ${promotedTourIds.length} pending promoted_tours records...`);
+      
+      for (const productId of promotedTourIds) {
+        // Get operator_tours.id for this productId
+        const operatorTourId = operatorTourIds[productId];
+        
+        if (!operatorTourId) {
+          console.warn(`⚠️ Could not find operator_tours.id for productId ${productId}, skipping promoted_tours record`);
+          continue;
+        }
+        
+        // Get destination_id and tour name from operator_tours
+        const operatorTour = validOperatorTours.find(t => t.product_id === productId);
+        let destinationId = operatorTour?.destination_id || null;
+        
+        // Normalize destination_id to slug format (like restaurants)
+        if (destinationId) {
+          try {
+            const { normalizeDestinationIdToSlug } = await import('@/lib/destinationIdHelper');
+            const normalizedSlug = await normalizeDestinationIdToSlug(destinationId);
+            if (normalizedSlug) {
+              destinationId = normalizedSlug;
+            }
+          } catch (e) {
+            console.warn(`Could not normalize destination_id ${destinationId} to slug:`, e);
+            // Keep original destinationId if normalization fails
+          }
+        }
+        
+        // Get tour name from operator_tours or fetch from API
+        let tourName = '';
+        if (operatorTour?.tour_title) {
+          tourName = operatorTour.tour_title;
+        } else {
+          // Fallback: try to fetch from API
+          try {
+            const tourResponse = await fetch(`https://api.viator.com/partner/products/${productId}`, {
+              headers: {
+                'exp-api-key': process.env.VIATOR_API_KEY,
+                'Accept': 'application/json;version=2.0'
+              }
+            });
+            if (tourResponse.ok) {
+              const tourData = await tourResponse.json();
+              tourName = tourData.title || '';
+            }
+          } catch (e) {
+            console.warn(`Could not fetch tour name for ${productId}:`, e);
+          }
+        }
+        
+        // Check if pending record already exists (for retry scenarios)
+        const { data: existingPending } = await supabase
+          .from('promoted_tours')
+          .select('id')
+          .eq('product_id', productId)
+          .eq('operator_subscription_id', subscription.id)
+          .eq('status', 'pending')
+          .maybeSingle();
+        
+        if (existingPending) {
+          // Update existing pending record
+          const { error: updateError } = await supabase
+            .from('promoted_tours')
+            .update({
+              operator_id: operatorTourId,
+              promotion_plan: promotedBillingCycle,
+              requested_at: new Date().toISOString(),
+              stripe_subscription_id: null, // Reset in case of retry
+              start_date: null,
+              end_date: null,
+              cancelled_at: null,
+              destination_id: destinationId,
+              tour_name: tourName,
+              email: email,
+              user_id: userId,
+            })
+            .eq('id', existingPending.id);
+          
+          if (updateError) {
+            console.error(`❌ Error updating pending promoted_tours for ${productId}:`, updateError);
+          } else {
+            console.log(`✅ Updated pending promoted_tours record for ${productId}`);
+          }
+        } else {
+          // Create new pending record
+          const { data: newRecord, error: insertError } = await supabase
+            .from('promoted_tours')
+            .insert({
+              product_id: productId,
+              operator_id: operatorTourId, // Use operator_tours.id
+              operator_subscription_id: subscription.id,
+              stripe_subscription_id: null, // Will be set by webhook
+              promotion_plan: promotedBillingCycle,
+              status: 'pending',
+              requested_at: new Date().toISOString(),
+              start_date: null, // Will be set by webhook
+              end_date: null, // Will be set by webhook
+              destination_id: destinationId,
+              tour_name: tourName,
+              email: email,
+              user_id: userId,
+            })
+            .select('id')
+            .single();
+          
+          if (insertError) {
+            console.error(`❌ Error creating pending promoted_tours for ${productId}:`, insertError);
+            // Don't fail - webhook can create it if needed
+          } else {
+            console.log(`✅ Created pending promoted_tours record for ${productId} (ID: ${newRecord.id})`);
+          }
+        }
+      }
+    }
+    
     // Get or create Stripe customer
-    let { data: account } = await supabase
-      .from('promotion_accounts')
+    // Check existing tour operator subscriptions for this user to get Stripe customer ID
+    let { data: existingSub } = await supabase
+      .from('tour_operator_subscriptions')
       .select('stripe_customer_id')
       .eq('user_id', userId)
-      .maybeSingle(); // Use maybeSingle to avoid error if not found
+      .not('stripe_customer_id', 'is', null)
+      .maybeSingle();
     
-    let customerId = account?.stripe_customer_id;
+    let customerId = existingSub?.stripe_customer_id;
     let customerExists = false;
     
     // Verify customer exists in Stripe if we have a customer ID
@@ -273,20 +454,8 @@ export async function POST(request) {
         });
         customerId = customer.id;
         
-        // Save customer ID to database
-        const { error: upsertError } = await supabase
-          .from('promotion_accounts')
-          .upsert({
-            user_id: userId,
-            stripe_customer_id: customerId,
-          }, {
-            onConflict: 'user_id',
-          });
-        
-        if (upsertError) {
-          console.error('Error saving Stripe customer ID:', upsertError);
-          // Continue anyway - customer is created in Stripe
-        }
+        // Note: stripe_customer_id will be saved in tour_operator_subscriptions when the subscription is created
+        // No need to save to a separate table
       } catch (stripeError) {
         console.error('Error creating Stripe customer:', stripeError);
         return NextResponse.json(
@@ -296,7 +465,7 @@ export async function POST(request) {
       }
     }
     
-    // Determine Stripe price ID
+    // Determine Stripe price ID for premium subscription
     const priceIdKey = `tour_operator_${tourCount}_${billingCycle}`;
     const priceId = STRIPE_PRICE_IDS[priceIdKey];
     
@@ -308,6 +477,35 @@ export async function POST(request) {
       }, { status: 500 });
     }
     
+    // Build line items: premium subscription + promoted listings
+    const lineItems = [
+      {
+        price: priceId,
+        quantity: 1,
+      },
+    ];
+    
+    // Add promoted listings if any are selected
+    if (promotedTourIds && promotedTourIds.length > 0) {
+      const promotedPriceIdKey = `promoted_listing_${promotedBillingCycle}`;
+      const promotedPriceId = STRIPE_PRICE_IDS[promotedPriceIdKey];
+      
+      if (!promotedPriceId) {
+        console.error(`Price ID not found for ${promotedPriceIdKey}. Available promoted listing keys:`, Object.keys(STRIPE_PRICE_IDS).filter(k => k.includes('promoted')));
+        return NextResponse.json({
+          error: `Stripe price ID not configured for promoted listings. Please add STRIPE_PROMOTED_LISTING_${promotedBillingCycle.toUpperCase()}_PRICE_ID to your .env.local file.`,
+        }, { status: 500 });
+      }
+      
+      // Add one line item per promoted tour
+      promotedTourIds.forEach(() => {
+        lineItems.push({
+          price: promotedPriceId,
+          quantity: 1,
+        });
+      });
+    }
+    
     // Create Stripe checkout session
     let session;
     try {
@@ -315,12 +513,7 @@ export async function POST(request) {
         customer: customerId,
         mode: 'subscription',
         payment_method_types: ['card'],
-        line_items: [
-          {
-            price: priceId,
-            quantity: 1,
-          },
-        ],
+        line_items: lineItems,
         metadata: {
           type: 'tour_operator_premium',
           subscriptionId: subscription.id,
@@ -330,6 +523,8 @@ export async function POST(request) {
           tourCount: tourCount.toString(),
           billingCycle: billingCycle,
           selectedTourIds: selectedTourIds.join(','),
+          promotedTourIds: promotedTourIds.length > 0 ? promotedTourIds.join(',') : '',
+          promotedBillingCycle: promotedBillingCycle,
         },
         success_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://toptours.ai'}/partners/tour-operators?success=true&session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://toptours.ai'}/partners/tour-operators?canceled=true`,

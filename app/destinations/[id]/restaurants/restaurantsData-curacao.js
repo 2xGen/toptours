@@ -56,7 +56,7 @@ export const restaurantsCuracao = {
         googleRating: 4.6,
         reviewCount: 1286,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Wood-fired grill and custom smoker delivering bold island flavors',
@@ -124,8 +124,8 @@ export const restaurantsCuracao = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-10',
-        articleModified: '2025-11-10',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -211,7 +211,7 @@ export const restaurantsCuracao = {
         googleRating: 4.5,
         reviewCount: 2824,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Waterfront deck with unobstructed Caracas Bay sunsets',
@@ -275,8 +275,8 @@ export const restaurantsCuracao = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -361,7 +361,7 @@ export const restaurantsCuracao = {
         googleRating: 4.7,
         reviewCount: 2894,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Daily catch bought directly from Piscadera fishermen',
@@ -417,8 +417,8 @@ export const restaurantsCuracao = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-13',
-        articleModified: '2025-11-13',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -501,7 +501,7 @@ export const restaurantsCuracao = {
         googleRating: 4.5,
         reviewCount: 1453,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Family-owned Chilean café blending South American and Caribbean flavors',
@@ -557,8 +557,8 @@ export const restaurantsCuracao = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-14',
-        articleModified: '2025-11-14',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -645,7 +645,7 @@ export const restaurantsCuracao = {
         googleRating: 4.6,
         reviewCount: 2332,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Panoramic views of the floating bridge and UNESCO Handelskade',
@@ -709,8 +709,8 @@ export const restaurantsCuracao = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-15',
-        articleModified: '2025-11-15',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -796,7 +796,7 @@ export const restaurantsCuracao = {
         googleRating: 4.3,
         reviewCount: 3818,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Beachfront setting with daybeds, palapas, and live music nights',
@@ -860,8 +860,8 @@ export const restaurantsCuracao = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-16',
-        articleModified: '2025-11-16',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',

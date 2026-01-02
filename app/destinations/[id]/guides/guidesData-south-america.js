@@ -17,7 +17,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Antigua is one of the Americas' most beautifully preserved colonial cities, a UNESCO World Heritage site where 16th-century Spanish colonial architecture has been meticulously maintained, creating an enchanting historic atmosphere! Historic tours take you through Antigua's fascinating past, from the stunning churches and convents that dot the city to the cobblestone streets that echo with centuries of history, from the ruins that tell stories of earthquakes and resilience to the beautifully restored buildings that showcase colonial splendor. Experience the grandeur of Spanish colonial architecture, understand how Antigua became Guatemala's colonial capital, learn about the city's survival through devastating earthquakes, and discover why this historic gem remains one of Latin America's most captivating destinations. Whether you're visiting the iconic Santa Catalina Arch, exploring church ruins, or simply wandering through perfectly preserved streets, Antigua historic tours offer unforgettable journeys through a living colonial museum!`,
 
       seo: {
-        title: 'Antigua Historic Tours 2025: UNESCO Colonial Architecture & Heritage',
+        title: 'Antigua Historic Tours 2026: UNESCO Colonial Architecture & Heritage',
         description: 'Book Antigua historic tours! Explore UNESCO World Heritage site, colonial churches & preserved architecture. Discover Guatemala\'s colonial gem. From $45.',
         keywords: 'Antigua historic tours, UNESCO Antigua, colonial architecture Antigua, Guatemala historic tours, Antigua heritage tours',
       },
@@ -169,7 +169,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Antigua offers rich opportunities to experience authentic Guatemalan culture, where Mayan traditions blend with Spanish colonial heritage creating a unique and vibrant cultural tapestry! Cultural tours take you beyond the colonial architecture to explore living Guatemalan culture, from visiting nearby Mayan villages to learning about traditional crafts, from understanding the blend of Mayan and Ladino cultures to experiencing authentic Guatemalan hospitality. Learn about Mayan textiles and weaving traditions, see traditional crafts being made, visit local markets, understand the role of religion in Guatemalan culture, and discover the arts, music, and traditions that make Antigua culturally rich. These tours provide genuine insights into Guatemalan culture, support local communities, and offer travelers authentic understanding of how modern Guatemalans live while maintaining their rich heritage. From villages to markets, from craft workshops to cultural centers, cultural tours offer essential understanding of the living culture that makes Antigua more than just historic architecture!`,
 
       seo: {
-        title: 'Antigua Cultural Tours 2025: Mayan Villages & Traditional Guatemalan Culture',
+        title: 'Antigua Cultural Tours 2026: Mayan Villages & Traditional Guatemalan Culture',
         description: 'Book Antigua cultural tours! Experience Mayan villages, traditional crafts & authentic Guatemalan culture. Discover Guatemala\'s cultural heritage. From $50.',
         keywords: 'Antigua cultural tours, Mayan villages Antigua, Guatemalan culture tours, traditional crafts Antigua, cultural heritage Guatemala',
       },
@@ -321,7 +321,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Antigua is located in one of Guatemala's premier coffee-growing regions, producing some of the world's finest coffee, and coffee tours offer fascinating journeys into the world of coffee cultivation, processing, and tasting! Coffee tours take you to working coffee farms and plantations surrounding Antigua, where you'll learn about Guatemala's coffee heritage, see how coffee is grown and harvested, understand the complex process from bean to cup, and taste some of the world's best coffee. Experience the incredible aromas of coffee plantations, learn about traditional and modern coffee processing methods, see coffee plants growing at altitude, and discover why Guatemalan coffee, especially from Antigua region, is prized by coffee connoisseurs worldwide. Expert guides explain each step of the coffee process, the characteristics that make Antigua coffee special, and the role of coffee in Guatemala's economy. Whether you're a coffee enthusiast or simply curious about coffee production, Antigua coffee tours provide sensory-rich experiences that showcase why this region is celebrated for its exceptional coffee!`,
 
       seo: {
-        title: 'Antigua Coffee Tours 2025: Coffee Plantations & Premium Guatemalan Coffee',
+        title: 'Antigua Coffee Tours 2026: Coffee Plantations & Premium Guatemalan Coffee',
         description: 'Book Antigua coffee tours! Visit coffee plantations, learn coffee process & taste premium Guatemalan coffee. Discover world-famous Antigua coffee. From $55.',
         keywords: 'Antigua coffee tours, coffee plantations Antigua, Guatemalan coffee tours, Antigua coffee, coffee tours Guatemala',
       },
@@ -473,7 +473,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Antigua is surrounded by three impressive volcanoes - Volcán de Agua, Volcán de Fuego, and Acatenango - creating a dramatic backdrop and offering incredible opportunities for volcano adventures! Volcano tours take you into these volcanic landscapes, from challenging hikes up Acatenango (with views of active Fuego volcano) to easier walks around volcanic areas, from sunrise hikes to overnight camping experiences, and from observing active volcanic activity to enjoying spectacular views of Antigua and surrounding valleys. Whether you're seeking the challenge of climbing Acatenango or prefer easier volcanic area exploration, these tours provide access to Guatemala's dramatic volcanic terrain. Expert guides ensure safety, provide equipment when needed, and share knowledge about volcanic activity and geology. From sunrise hikes to overnight adventures, from challenging climbs to scenic walks, Antigua volcano tours offer unforgettable experiences that showcase the power and beauty of Guatemala's volcanic landscapes!`,
 
       seo: {
-        title: 'Antigua Volcano Tours 2025: Acatenango Hikes & Volcanic Adventures',
+        title: 'Antigua Volcano Tours 2026: Acatenango Hikes & Volcanic Adventures',
         description: 'Book Antigua volcano tours! Hike Acatenango, see active Fuego volcano & experience Guatemala\'s dramatic volcanic landscapes. Sunrise hikes & overnight adventures. From $85.',
         keywords: 'Antigua volcano tours, Acatenango hike, Fuego volcano tours, volcano hiking Antigua, Guatemala volcano tours',
       },
@@ -625,7 +625,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Antigua's architecture is its crown jewel - perfectly preserved Spanish colonial buildings that showcase 16th-century design, baroque churches with ornate facades, and a unified architectural style that earned the city UNESCO World Heritage status! Architecture tours take you through this incredible architectural heritage, from the ornate baroque facades of churches like La Merced to the beautifully preserved colonial houses, from the iconic Santa Catalina Arch to the impressive cathedral ruins, and from detailed architectural analysis to understanding how Spanish colonial design was adapted to local conditions. Experience the craftsmanship of colonial builders, see how different architectural styles blend, understand the significance of architectural details, and discover why Antigua is considered one of the finest examples of colonial architecture in the Americas. Whether you're an architecture enthusiast or simply appreciate beautiful buildings, Antigua architecture tours offer fascinating journeys through architectural history!`,
 
       seo: {
-        title: 'Antigua Architecture Tours 2025: Colonial Architecture & Baroque Churches',
+        title: 'Antigua Architecture Tours 2026: Colonial Architecture & Baroque Churches',
         description: 'Book Antigua architecture tours! Explore Spanish colonial architecture, baroque churches & UNESCO heritage buildings. Discover Guatemala\'s architectural gem. From $50.',
         keywords: 'Antigua architecture tours, colonial architecture Antigua, baroque churches Antigua, Spanish colonial architecture, architecture tours Guatemala',
       },
@@ -777,7 +777,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Antigua's markets are vibrant hubs of local life, where colorful textiles, fresh produce, traditional crafts, and authentic Guatemalan culture come together in bustling, sensory-rich experiences! Market tours take you through these lively markets, from the main market with its maze of stalls to artisan markets showcasing traditional crafts, from food markets where locals shop to specialized textile markets featuring Mayan weavings. Experience the vibrant atmosphere, learn about traditional products, see how locals shop and trade, understand the role of markets in Guatemalan culture, and discover authentic souvenirs and crafts. Whether you're shopping for textiles, sampling local foods, or simply experiencing the market atmosphere, Antigua market tours offer authentic glimpses into daily Guatemalan life and provide opportunities to support local artisans and vendors. From textiles to crafts, from food to souvenirs, market tours showcase an essential part of Antigua's living culture!`,
 
       seo: {
-        title: 'Antigua Market Tours 2025: Local Markets & Traditional Crafts',
+        title: 'Antigua Market Tours 2026: Local Markets & Traditional Crafts',
         description: 'Book Antigua market tours! Explore local markets, traditional crafts & authentic Guatemalan shopping. Discover Mayan textiles & local culture. From $45.',
         keywords: 'Antigua market tours, local markets Antigua, traditional crafts Antigua, Mayan textiles, market tours Guatemala',
       },
@@ -931,7 +931,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bariloche is Argentina's premier ski destination, offering world-class skiing on Cerro Catedral and surrounding peaks, with incredible snow conditions, diverse terrain, and stunning Patagonian mountain scenery! Ski tours provide access to the best ski areas, equipment rental, lessons for all levels, and expert guidance for navigating the slopes. Whether you're a beginner wanting to learn or an expert seeking challenging runs, these tours ensure you experience the best of Bariloche's legendary skiing. Experience the thrill of skiing in the Andes, enjoy breathtaking mountain views, access terrain for every skill level, and discover why Bariloche is considered one of South America's top ski destinations. Expert guides know the mountain, help you find the best conditions, and ensure you have an unforgettable skiing experience. From groomed runs to off-piste adventures, from family-friendly slopes to expert terrain, Bariloche ski tours offer incredible skiing experiences in one of the world's most beautiful mountain settings!`,
 
       seo: {
-        title: 'Bariloche Ski Tours 2025: Cerro Catedral & World-Class Skiing',
+        title: 'Bariloche Ski Tours 2026: Cerro Catedral & World-Class Skiing',
         description: 'Book Bariloche ski tours! Experience world-class skiing on Cerro Catedral. Ski lessons, equipment & Patagonian mountain adventures. Argentina\'s premier ski destination. From $120.',
         keywords: 'Bariloche ski tours, Cerro Catedral skiing, Argentina ski tours, Patagonia skiing, Bariloche ski lessons',
       },
@@ -1083,7 +1083,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bariloche sits on the shores of the stunning Nahuel Huapi Lake, and the surrounding lake district is one of Argentina's most beautiful regions, with crystal-clear lakes, snow-capped peaks, and pristine Patagonian wilderness! Lake tours take you across these incredible waterways, from scenic cruises on Nahuel Huapi to excursions to nearby lakes, from boat trips with mountain views to island visits and wildlife viewing. Experience the tranquility of Patagonian lakes, see the stunning mountain backdrops, visit islands and peninsulas, understand the unique lake district ecosystem, and discover why Bariloche's lakes are considered among the world's most beautiful. Whether you're seeking a relaxing cruise, an active lake adventure, or simply stunning scenery, Bariloche lake tours offer unforgettable experiences that showcase the incredible natural beauty of Argentina's lake district!`,
 
       seo: {
-        title: 'Bariloche Lake Tours 2025: Nahuel Huapi & Scenic Lake Cruises',
+        title: 'Bariloche Lake Tours 2026: Nahuel Huapi & Scenic Lake Cruises',
         description: 'Book Bariloche lake tours! Cruise Nahuel Huapi Lake, explore islands & experience Argentina\'s stunning Patagonian lake district. Scenic cruises & mountain views. From $70.',
         keywords: 'Bariloche lake tours, Nahuel Huapi Lake cruises, Patagonian lakes, lake tours Argentina, Bariloche boat tours',
       },
@@ -1235,7 +1235,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bariloche is an adventure enthusiast's paradise, offering incredible opportunities for outdoor activities in the stunning Patagonian landscape, from mountain biking through forests to rafting down rivers, from rock climbing to hiking, and from zip-lining to horseback riding! Adventure tours provide access to Bariloche's diverse outdoor activities, equipment when needed, expert instruction, and professional guides who know the best routes and locations. Whether you're seeking adrenaline-pumping activities or active exploration of nature, these tours showcase Bariloche's incredible terrain and provide unforgettable outdoor experiences. Experience the thrill of mountain adventures, enjoy breathtaking natural scenery, access terrain suited for various activities, and discover why Bariloche is considered one of South America's premier adventure destinations. From mountains to rivers, from forests to lakes, Bariloche adventure tours offer thrilling experiences for all adventure levels!`,
 
       seo: {
-        title: 'Bariloche Adventure Tours 2025: Mountain Biking, Rafting & Outdoor Adventures',
+        title: 'Bariloche Adventure Tours 2026: Mountain Biking, Rafting & Outdoor Adventures',
         description: 'Book Bariloche adventure tours! Experience mountain biking, rafting, rock climbing & hiking in Patagonia. Argentina\'s adventure playground. From $95.',
         keywords: 'Bariloche adventure tours, mountain biking Bariloche, rafting Bariloche, adventure activities Argentina, Patagonia adventure tours',
       },
@@ -1387,7 +1387,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bariloche is surrounded by the majestic Andes Mountains, offering incredible opportunities to explore dramatic peaks, pristine alpine landscapes, and stunning Patagonian mountain scenery! Mountain tours take you into this breathtaking terrain, from scenic hikes with panoramic views to challenging mountain climbs, from viewpoints overlooking lakes and valleys to alpine meadows, and from easy walks accessible to all to strenuous adventures for experienced hikers. Experience the grandeur of the Andes, see snow-capped peaks, enjoy breathtaking vistas, understand the unique mountain ecosystem, and discover why Bariloche's mountains are considered among Patagonia's most beautiful. Whether you're seeking easy scenic walks, moderate hikes, or challenging mountain adventures, these tours provide access to the best mountain experiences with expert guides who know the trails and terrain. From gentle slopes to high peaks, from forest trails to alpine zones, Bariloche mountain tours offer unforgettable experiences in one of the world's most spectacular mountain ranges!`,
 
       seo: {
-        title: 'Bariloche Mountain Tours 2025: Hiking & Patagonian Mountain Adventures',
+        title: 'Bariloche Mountain Tours 2026: Hiking & Patagonian Mountain Adventures',
         description: 'Book Bariloche mountain tours! Hike scenic trails, explore Andes peaks & experience Argentina\'s stunning Patagonian mountains. Mountain viewpoints & alpine landscapes. From $80.',
         keywords: 'Bariloche mountain tours, hiking Bariloche, Andes mountains Argentina, mountain hiking Patagonia, Bariloche trails',
       },
@@ -1539,7 +1539,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bariloche is blessed with some of Argentina's most spectacular scenery, where snow-capped mountains, crystal-clear lakes, pristine forests, and stunning Patagonian landscapes create picture-perfect views at every turn! Scenic tours take you to the best viewpoints and scenic routes, from the famous Circuito Chico with its iconic viewpoints to panoramic mountain vistas, from lakeside promenades to scenic drives through the lake district. Experience the breathtaking beauty of Nahuel Huapi Lake, see the stunning mountain backdrops, visit iconic viewpoints like Cerro Campanario, understand the unique Patagonian ecosystem, and discover why Bariloche is considered one of the world's most beautiful destinations. Whether you're seeking easy scenic drives, moderate walks to viewpoints, or simply soaking in the incredible landscapes, Bariloche scenic tours offer unforgettable experiences that showcase the region's natural splendor. From viewpoints to scenic routes, from lakes to mountains, these tours ensure you don't miss any of Bariloche's incredible beauty!`,
 
       seo: {
-        title: 'Bariloche Scenic Tours 2025: Circuito Chico & Panoramic Mountain Views',
+        title: 'Bariloche Scenic Tours 2026: Circuito Chico & Panoramic Mountain Views',
         description: 'Book Bariloche scenic tours! Explore Circuito Chico, panoramic viewpoints & stunning Patagonian landscapes. Lakes, mountains & Argentina\'s most beautiful scenery. From $65.',
         keywords: 'Bariloche scenic tours, Circuito Chico, panoramic views Bariloche, scenic drives Argentina, Patagonian landscapes',
       },
@@ -1691,7 +1691,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bariloche is Argentina's chocolate capital, famous for its artisanal chocolate shops, Swiss-influenced chocolate-making traditions, and incredible variety of high-quality chocolates! Chocolate tours take you through Bariloche's chocolate culture, from visiting renowned chocolate shops to learning about chocolate-making techniques, from tasting different chocolate varieties to understanding why Bariloche became Argentina's chocolate capital. Experience the sweet side of Bariloche, see master chocolatiers at work, learn about Swiss chocolate traditions brought by European immigrants, and discover the incredible variety of chocolates available. Whether you're a chocolate connoisseur or simply love sweets, Bariloche chocolate tours offer delightful experiences that showcase why this mountain town is celebrated for its chocolate heritage. From artisanal shops to chocolate factories, from traditional recipes to innovative flavors, chocolate tours provide sweet journeys through Bariloche's delicious culture!`,
 
       seo: {
-        title: 'Bariloche Chocolate Tours 2025: Artisanal Chocolates & Chocolate Making',
+        title: 'Bariloche Chocolate Tours 2026: Artisanal Chocolates & Chocolate Making',
         description: 'Book Bariloche chocolate tours! Visit chocolate shops, learn chocolate making & taste Argentina\'s finest chocolates. Discover Bariloche\'s famous chocolate culture. From $50.',
         keywords: 'Bariloche chocolate tours, chocolate shops Bariloche, artisanal chocolate, chocolate making Bariloche, Argentina chocolate',
       },
@@ -1845,7 +1845,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Belize City is Belize's historic coastal capital, where colonial architecture, Caribbean influences, and Central American heritage create a unique cultural tapestry! Historic tours take you through the city's fascinating past, from the iconic Swing Bridge (oldest in Central America) to historic buildings, from colonial structures to landmarks that tell stories of Belize's complex history. Experience the blend of British colonial heritage and Caribbean culture, understand how Belize City developed as a trading port, learn about the city's role in Belize's independence, and discover why this coastal city remains culturally significant. Whether you're exploring the historic downtown, visiting colonial buildings, or learning about local history, Belize City historic tours offer engaging journeys through a city that has played a crucial role in Belize's development. From colonial architecture to cultural landmarks, from trading history to modern Belize, historic tours showcase the layers of history that make Belize City fascinating!`,
 
       seo: {
-        title: 'Belize City Historic Tours 2025: Colonial Architecture & Heritage',
+        title: 'Belize City Historic Tours 2026: Colonial Architecture & Heritage',
         description: 'Book Belize City historic tours! Explore colonial architecture, historic landmarks & cultural heritage. Discover Belize\'s historic coastal capital. From $45.',
         keywords: 'Belize City historic tours, colonial architecture Belize, historic landmarks Belize City, Belize heritage tours',
       },
@@ -1997,7 +1997,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Belize City offers rich opportunities to experience authentic Belizean culture, where Caribbean influences blend with Central American heritage creating a unique and vibrant cultural tapestry! Cultural tours take you beyond the historic architecture to explore living Belizean culture, from understanding the blend of cultures (Creole, Garifuna, Mestizo, Maya, and more) to experiencing local music and traditions, from visiting cultural centers to learning about Belizean cuisine and lifestyle. Learn about the diverse ethnic groups that contribute to Belize's multicultural identity, see how different cultures coexist, understand the role of Caribbean culture in Belize, and discover the arts, music, and traditions that make Belize culturally rich. These tours provide genuine insights into Belizean culture, support local communities, and offer travelers authentic understanding of how modern Belizeans live while maintaining their rich heritage. From communities to cultural centers, from markets to neighborhoods, cultural tours offer essential understanding of the living culture that makes Belize City culturally fascinating!`,
 
       seo: {
-        title: 'Belize City Cultural Tours 2025: Authentic Belizean Culture & Caribbean Heritage',
+        title: 'Belize City Cultural Tours 2026: Authentic Belizean Culture & Caribbean Heritage',
         description: 'Book Belize City cultural tours! Experience authentic Belizean culture, Caribbean influences & multicultural heritage. Discover Belize\'s cultural diversity. From $50.',
         keywords: 'Belize City cultural tours, Belizean culture, Caribbean culture Belize, multicultural tours Belize',
       },
@@ -2149,7 +2149,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Belize City is the perfect gateway to Belize's incredible attractions, serving as the main entry point and connection hub for exploring this amazing country! Gateway tours help you plan, prepare, and seamlessly connect to Belize's top experiences, from the world-famous barrier reef to ancient Maya ruins, from jungle adventures to island escapes. Expert guides share insider knowledge about best ways to reach attractions, what to pack, transportation options, and help you choose the perfect itinerary. Tours include visits to tour operators, cultural briefings about Belize, orientation sessions about what to expect, and seamless connections to your chosen adventures. Whether you're planning reef diving, jungle tours, Maya site visits, or island hopping, these gateway tours ensure you start your Belize journey informed, prepared, and excited for the incredible experiences ahead. From planning assistance to transportation connections, from reef adventures to jungle expeditions, Belize City gateway tours are essential for making the most of your Belize adventure!`,
 
       seo: {
-        title: 'Belize City Gateway Tours 2025: Expert Planning & Belize Connections',
+        title: 'Belize City Gateway Tours 2026: Expert Planning & Belize Connections',
         description: 'Book Belize City gateway tours! Expert planning, reef connections & insider tips for barrier reef, Maya ruins & jungle adventures. From $60.',
         keywords: 'Belize City gateway tours, Belize planning, barrier reef tours, Maya ruins Belize, jungle tours Belize',
       },
@@ -2301,7 +2301,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Belize City's markets are vibrant hubs of local life, where fresh produce, local crafts, authentic Belizean goods, and Caribbean culture come together in bustling, sensory-rich experiences! Market tours take you through these lively markets, from the main market with its maze of stalls to specialized markets, from food markets where locals shop to artisan markets featuring traditional crafts. Experience the vibrant atmosphere, learn about local products, see how locals shop and trade, understand the role of markets in Belizean culture, and discover authentic souvenirs and goods. Whether you're shopping for crafts, sampling local foods, or simply experiencing the market atmosphere, Belize City market tours offer authentic glimpses into daily Belizean life and provide opportunities to support local vendors and artisans. From food to crafts, from produce to souvenirs, market tours showcase an essential part of Belize City's living culture!`,
 
       seo: {
-        title: 'Belize City Market Tours 2025: Local Markets & Traditional Crafts',
+        title: 'Belize City Market Tours 2026: Local Markets & Traditional Crafts',
         description: 'Book Belize City market tours! Explore local markets, traditional crafts & authentic Belizean shopping. Discover Belizean goods & local culture. From $45.',
         keywords: 'Belize City market tours, local markets Belize, traditional crafts Belize, Belizean shopping',
       },
@@ -2453,7 +2453,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Belize City's architecture reflects its unique cultural blend, where British colonial buildings, Caribbean-style houses, and Central American influences create a distinctive architectural character! Architecture tours take you through this fascinating architectural heritage, from colonial structures to Caribbean-style raised houses, from historic buildings to modern architecture, and from detailed architectural analysis to understanding how different cultural influences shaped the city's built environment. Experience the craftsmanship of different eras, see how architectural styles blend, understand the significance of architectural details, and discover why Belize City's architecture is uniquely interesting. Whether you're an architecture enthusiast or simply appreciate interesting buildings, Belize City architecture tours offer fascinating journeys through architectural history that tell the story of Belize's cultural evolution. From colonial to Caribbean styles, from historic to modern, architecture tours showcase the architectural diversity that makes Belize City architecturally distinctive!`,
 
       seo: {
-        title: 'Belize City Architecture Tours 2025: Colonial & Caribbean Architecture',
+        title: 'Belize City Architecture Tours 2026: Colonial & Caribbean Architecture',
         description: 'Book Belize City architecture tours! Explore colonial buildings, Caribbean-style architecture & cultural heritage. Discover Belize\'s architectural blend. From $50.',
         keywords: 'Belize City architecture tours, colonial architecture Belize, Caribbean architecture, architecture tours Belize',
       },
@@ -2605,7 +2605,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Belize City offers a delicious culinary journey where Central American flavors meet Caribbean cuisine, creating a unique fusion that reflects Belize's multicultural heritage! Food tours take you through the city's culinary scene, from traditional Belizean dishes like rice and beans with stewed chicken to Caribbean favorites, from local street food to restaurants serving authentic cuisine, and from food markets to eateries where locals dine. Experience the vibrant flavors of Belizean cuisine, learn about traditional cooking methods, understand how different cultures contribute to Belizean food, and discover why Belizean cuisine is considered among the most flavorful in Central America. Whether you're a food enthusiast or simply love trying new flavors, Belize City food tours offer delicious journeys through a cuisine that combines the best of Central American and Caribbean cooking. From street food to restaurants, from markets to local eateries, food tours showcase the culinary diversity that makes Belizean cuisine so special!`,
 
       seo: {
-        title: 'Belize City Food Tours 2025: Traditional Belizean & Caribbean Cuisine',
+        title: 'Belize City Food Tours 2026: Traditional Belizean & Caribbean Cuisine',
         description: 'Book Belize City food tours! Experience traditional Belizean dishes, Caribbean flavors & authentic cuisine. Discover Belize\'s delicious culinary fusion. From $65.',
         keywords: 'Belize City food tours, Belizean cuisine, Caribbean food Belize, traditional food Belize, food tours Belize',
       },
@@ -2759,7 +2759,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bocas del Toro is an archipelago of stunning Caribbean islands, and island hopping tours are the perfect way to explore this tropical paradise, visiting multiple islands, each with its own unique character and beauty! Island hopping tours take you from Bocas Town to surrounding islands, from pristine beaches to snorkeling spots, from laid-back islands to adventurous destinations, and from popular spots to hidden gems. Experience the incredible diversity of the archipelago, see different beaches and landscapes, understand the unique character of each island, and discover why Bocas del Toro is considered one of Panama's most beautiful destinations. Whether you're seeking beach relaxation, snorkeling adventures, or simply exploring the islands, island hopping tours offer comprehensive experiences that showcase the best of this Caribbean paradise. From Isla Colón to Isla Bastimentos, from Zapatilla Cays to Red Frog Beach, island hopping tours ensure you don't miss any of Bocas del Toro's incredible island beauty!`,
 
       seo: {
-        title: 'Bocas del Toro Island Hopping Tours 2025: Caribbean Islands & Beaches',
+        title: 'Bocas del Toro Island Hopping Tours 2026: Caribbean Islands & Beaches',
         description: 'Book Bocas del Toro island hopping tours! Explore pristine Caribbean islands, beaches & snorkeling spots. Discover Panama\'s island paradise. From $75.',
         keywords: 'Bocas del Toro island hopping, Caribbean islands Panama, island tours Bocas, beach tours Bocas',
       },
@@ -2911,7 +2911,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bocas del Toro offers some of Panama's best snorkeling, with vibrant coral reefs, diverse marine life, and crystal-clear Caribbean waters creating incredible underwater experiences! Snorkeling tours take you to the best snorkeling spots around the archipelago, from coral reefs teeming with tropical fish to underwater caves, from shallow lagoons perfect for beginners to deeper reefs for experienced snorkelers. Experience the incredible biodiversity of Caribbean waters, see colorful coral formations, encounter tropical fish, and discover why Bocas del Toro is considered one of Central America's premier snorkeling destinations. Whether you're a first-time snorkeler or experienced diver, these tours provide access to spectacular underwater environments with professional guides who ensure safety and maximize your marine life viewing. From coral reefs to seagrass beds, from fish watching to reef exploration, Bocas del Toro snorkeling tours offer unforgettable underwater adventures in Panama's Caribbean paradise!`,
 
       seo: {
-        title: 'Bocas del Toro Snorkeling Tours 2025: Coral Reefs & Marine Life',
+        title: 'Bocas del Toro Snorkeling Tours 2026: Coral Reefs & Marine Life',
         description: 'Book Bocas del Toro snorkeling tours! Explore vibrant coral reefs, diverse marine life & crystal-clear Caribbean waters. Panama\'s best snorkeling. From $70.',
         keywords: 'Bocas del Toro snorkeling, snorkeling Panama, coral reefs Bocas, marine life Bocas, underwater tours',
       },
@@ -3063,7 +3063,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bocas del Toro is blessed with some of Panama's most beautiful beaches, where white sand, turquoise waters, and palm trees create picture-perfect Caribbean paradise! Beach tours take you to the archipelago's best beaches, from popular spots like Red Frog Beach to secluded hidden gems, from beaches perfect for swimming to those ideal for relaxation, and from easily accessible beaches to those requiring boat access. Experience the incredible diversity of Bocas del Toro's beaches, see different landscapes and settings, understand the unique character of each beach, and discover why these island beaches are considered among Central America's most beautiful. Whether you're seeking active beach activities, peaceful relaxation, or simply stunning scenery, beach tours offer comprehensive experiences that showcase the best of Bocas del Toro's coastal beauty. From Red Frog Beach to Zapatilla Cays, from Playa Bluff to Starfish Beach, beach tours ensure you experience the full range of Bocas del Toro's incredible beach paradise!`,
 
       seo: {
-        title: 'Bocas del Toro Beach Tours 2025: Pristine Caribbean Beaches & Islands',
+        title: 'Bocas del Toro Beach Tours 2026: Pristine Caribbean Beaches & Islands',
         description: 'Book Bocas del Toro beach tours! Explore pristine Caribbean beaches, white sand & turquoise waters. Discover Panama\'s most beautiful island beaches. From $65.',
         keywords: 'Bocas del Toro beaches, Caribbean beaches Panama, beach tours Bocas, Red Frog Beach, Zapatilla Cays',
       },
@@ -3215,7 +3215,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bocas del Toro is a water sports paradise, offering incredible opportunities for various water activities in its pristine Caribbean waters! Water activity tours provide access to diverse adventures, from kayaking through mangroves to paddleboarding in calm lagoons, from surfing at Playa Bluff to diving deeper reefs, and from stand-up paddleboarding to windsurfing. Experience the thrill of water sports, explore different areas from water perspective, understand the unique marine environment, and discover why Bocas del Toro is considered one of Central America's premier water sports destinations. Whether you're seeking adrenaline-pumping activities like surfing, peaceful exploration like kayaking, or learning new skills, water activity tours offer diverse experiences that showcase the best of Bocas del Toro's aquatic playground. From calm lagoons to surf breaks, from mangroves to open water, water activity tours ensure you experience the full range of Bocas del Toro's incredible water adventures!`,
 
       seo: {
-        title: 'Bocas del Toro Water Activities 2025: Kayaking, Surfing & Water Sports',
+        title: 'Bocas del Toro Water Activities 2026: Kayaking, Surfing & Water Sports',
         description: 'Book Bocas del Toro water activities! Experience kayaking, paddleboarding, surfing & diving in Panama\'s Caribbean water sports paradise. From $75.',
         keywords: 'Bocas del Toro water activities, kayaking Bocas, surfing Bocas, paddleboarding Panama, water sports Bocas',
       },
@@ -3367,7 +3367,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bocas del Toro is home to incredible wildlife, both on land and in water, creating fantastic opportunities for wildlife viewing and nature experiences! Wildlife tours take you to the best spots for observing local fauna, from dolphin watching in Caribbean waters to spotting sloths in jungle habitats, from bird watching to exploring mangrove ecosystems teeming with life. Experience the incredible biodiversity of Bocas del Toro, see diverse species in their natural habitats, understand the unique ecosystems, and discover why this archipelago is considered one of Panama's best destinations for wildlife viewing. Whether you're interested in marine mammals, jungle wildlife, or birdlife, wildlife tours offer engaging experiences that showcase the natural wonders of Bocas del Toro. From dolphins to sloths, from birds to marine life, wildlife tours provide opportunities to encounter the incredible fauna that calls Bocas del Toro home!`,
 
       seo: {
-        title: 'Bocas del Toro Wildlife Tours 2025: Dolphins, Sloths & Caribbean Wildlife',
+        title: 'Bocas del Toro Wildlife Tours 2026: Dolphins, Sloths & Caribbean Wildlife',
         description: 'Book Bocas del Toro wildlife tours! Experience dolphin watching, sloth spotting & diverse wildlife. Discover Panama\'s Caribbean biodiversity. From $70.',
         keywords: 'Bocas del Toro wildlife, dolphin watching Bocas, sloths Bocas, wildlife tours Panama, bird watching Bocas',
       },
@@ -3519,7 +3519,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bocas del Toro offers spectacular sunsets over the Caribbean, where the sky transforms with incredible colors creating magical evening experiences! Sunset tours take you to the best spots for sunset viewing, from romantic sunset boat cruises to beach sunset experiences, from island viewpoints to open water viewing, and from relaxing cruises to sunset activities. Experience the breathtaking beauty of Caribbean sunsets, see the sky painted with vibrant colors, enjoy peaceful evening atmosphere, and discover why Bocas del Toro sunsets are considered among Panama's most beautiful. Whether you're seeking a romantic sunset cruise, a beach sunset experience, or simply stunning evening scenery, sunset tours offer memorable experiences that showcase the natural beauty of Bocas del Toro at dusk. From boat cruises to beach viewing, from island perspectives to open water, sunset tours ensure you don't miss the magical daily transformation of Bocas del Toro's Caribbean sky!`,
 
       seo: {
-        title: 'Bocas del Toro Sunset Tours 2025: Caribbean Sunsets & Evening Cruises',
+        title: 'Bocas del Toro Sunset Tours 2026: Caribbean Sunsets & Evening Cruises',
         description: 'Book Bocas del Toro sunset tours! Experience magical Caribbean sunsets on boat cruises & beach viewing. Witness Panama\'s stunning sunset skies. From $65.',
         keywords: 'Bocas del Toro sunset, sunset cruises Bocas, Caribbean sunsets Panama, sunset tours Bocas, evening tours',
       },
@@ -3673,7 +3673,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `La Candelaria is Bogotá's historic heart, where colonial architecture, cobblestone streets, and centuries of Colombian history create an enchanting atmosphere in the capital's most important neighborhood! La Candelaria tours take you through this beautifully preserved historic district, from colonial buildings and churches to plazas that witnessed key moments in Colombian history, from museums to cultural sites, and from architectural gems to places where Colombian independence was born. Experience the charm of narrow cobblestone streets, see perfectly preserved colonial architecture, understand Bogotá's colonial past, and discover why La Candelaria is considered the soul of Bogotá. Whether you're exploring historic plazas, visiting museums, or simply wandering through atmospheric streets, La Candelaria tours offer engaging journeys through Colombia's colonial heritage and modern cultural identity. From Bolívar Square to colonial churches, from historic houses to cultural landmarks, La Candelaria tours showcase the neighborhood that tells the story of Bogotá and Colombia!`,
 
       seo: {
-        title: 'Bogotá La Candelaria Tours 2025: Historic Colonial Neighborhood & Culture',
+        title: 'Bogotá La Candelaria Tours 2026: Historic Colonial Neighborhood & Culture',
         description: 'Book Bogotá La Candelaria tours! Explore historic colonial neighborhood, colonial architecture & cultural landmarks. Discover Bogotá\'s historic heart. From $45.',
         keywords: 'Bogotá La Candelaria tours, historic Bogotá, colonial architecture Bogotá, La Candelaria neighborhood tours',
       },
@@ -3825,7 +3825,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bogotá is home to some of Latin America's finest museums, showcasing Colombia's incredible cultural heritage, artistic treasures, and historical collections! Museum tours take you to the city's world-class institutions, from the world-famous Gold Museum with its pre-Columbian gold collection to art museums featuring Colombian and international works, from history museums telling Colombia's story to specialized collections. Experience the richness of Colombian culture, see incredible artifacts and artworks, understand Colombia's complex history, and discover why Bogotá is considered one of Latin America's great museum cities. Whether you're interested in pre-Columbian gold, modern art, or Colombian history, museum tours offer fascinating journeys through collections that tell the story of Colombia and its people. From the Gold Museum to the Botero Museum, from history to contemporary art, museum tours showcase the cultural treasures that make Bogotá a cultural destination!`,
 
       seo: {
-        title: 'Bogotá Museum Tours 2025: Gold Museum & World-Class Collections',
+        title: 'Bogotá Museum Tours 2026: Gold Museum & World-Class Collections',
         description: 'Book Bogotá museum tours! Explore Gold Museum, art collections & cultural heritage. Discover Colombia\'s world-class museums. From $50.',
         keywords: 'Bogotá museum tours, Gold Museum Bogotá, museum tours Colombia, Bogotá cultural tours',
       },
@@ -3977,7 +3977,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bogotá offers a delicious journey through Colombian cuisine and culture, where traditional dishes, modern culinary innovation, and rich cultural heritage come together in vibrant food experiences! Food & Culture tours take you through the city's culinary scene and cultural identity, from traditional Colombian dishes like ajiaco and bandeja paisa to modern fusion cuisine, from local markets to restaurants where Bogotanos dine, and from street food to fine dining. Experience the flavors of Colombia, learn about traditional cooking methods, understand how food reflects Colombian culture, and discover why Bogotá is considered one of Latin America's emerging food destinations. Whether you're sampling traditional dishes, exploring food markets, or learning about Colombian food culture, these tours offer delicious journeys that showcase the culinary diversity and cultural richness of Bogotá and Colombia. From markets to restaurants, from street food to cultural experiences, Food & Culture tours provide authentic insights into what makes Bogotá and Colombian cuisine so special!`,
 
       seo: {
-        title: 'Bogotá Food & Culture Tours 2025: Traditional Colombian Cuisine & Culture',
+        title: 'Bogotá Food & Culture Tours 2026: Traditional Colombian Cuisine & Culture',
         description: 'Book Bogotá food & culture tours! Experience traditional Colombian dishes, food markets & cultural experiences. Discover Bogotá\'s culinary scene. From $65.',
         keywords: 'Bogotá food tours, Colombian cuisine, food culture tours Bogotá, traditional food Colombia',
       },
@@ -4129,7 +4129,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bogotá has emerged as one of Latin America's premier street art destinations, where vibrant murals, creative graffiti, and urban expressions transform neighborhoods into open-air galleries! Street Art tours take you through the city's dynamic art scene, from colorful murals in La Candelaria to graffiti-covered walls in neighborhoods like Chapinero, from political statements to artistic expressions, and from renowned artists to emerging talents. Experience the creativity and energy of Bogotá's street art, see incredible works by local and international artists, understand the social and cultural messages, and discover why Bogotá is considered a world-class destination for street art enthusiasts. Whether you're an art lover, photographer, or simply curious about urban culture, street art tours offer engaging journeys through neighborhoods where art tells stories of Colombia, its people, and contemporary urban life. From La Candelaria to Chapinero, from political murals to artistic expressions, street art tours showcase the creativity that makes Bogotá's streets come alive with color and meaning!`,
 
       seo: {
-        title: 'Bogotá Street Art Tours 2025: Vibrant Murals & Graffiti Art',
+        title: 'Bogotá Street Art Tours 2026: Vibrant Murals & Graffiti Art',
         description: 'Book Bogotá street art tours! Explore colorful murals, graffiti art & urban expressions. Discover Bogotá\'s vibrant street art scene. From $45.',
         keywords: 'Bogotá street art, graffiti tours Bogotá, street art tours Colombia, urban art Bogotá',
       },
@@ -4281,7 +4281,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bogotá is surrounded by the majestic Andes Mountains, offering incredible opportunities to explore stunning peaks, scenic viewpoints, and natural beauty just outside Colombia's capital! Mountain tours take you into the Andean landscape, from the iconic Monserrate with its views over Bogotá to hiking trails in surrounding mountains, from easy accessible viewpoints to challenging mountain adventures, and from scenic cable car rides to strenuous hikes. Experience the grandeur of the Andes, see breathtaking views of Bogotá and surrounding valleys, enjoy fresh mountain air, and discover why the mountains surrounding Bogotá are a natural treasure. Whether you're seeking an easy cable car ride to Monserrate, moderate hiking, or challenging mountain adventures, these tours provide access to incredible mountain experiences with stunning views of Colombia's capital and the Andean landscape. From Monserrate to hiking trails, from viewpoints to mountain peaks, mountain tours showcase the natural beauty that surrounds Bogotá!`,
 
       seo: {
-        title: 'Bogotá Mountain Tours 2025: Monserrate & Andean Mountain Adventures',
+        title: 'Bogotá Mountain Tours 2026: Monserrate & Andean Mountain Adventures',
         description: 'Book Bogotá mountain tours! Experience Monserrate, mountain hiking & stunning Andean views. Discover mountains surrounding Colombia\'s capital. From $70.',
         keywords: 'Bogotá mountain tours, Monserrate Bogotá, mountain hiking Colombia, Andean mountains Bogotá',
       },
@@ -4433,7 +4433,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Bogotá comes alive at night with a vibrant nightlife scene where salsa rhythms, trendy bars, and Colombian party culture create an exciting evening atmosphere! Nightlife tours take you through the city's evening scene, from salsa clubs where locals dance to trendy bars in neighborhoods like Zona Rosa and Chapinero, from traditional Colombian music to modern nightlife venues, and from authentic local experiences to sophisticated cocktail bars. Experience the energy of Bogotá's nightlife, learn to dance salsa, taste Colombian drinks, and discover why Bogotá is considered one of Latin America's great nightlife destinations. Whether you're seeking salsa dancing, trendy bars, or simply experiencing Bogotá after dark, nightlife tours offer exciting journeys through the city's evening culture. From Zona Rosa to La Candelaria, from salsa clubs to rooftop bars, nightlife tours showcase the vibrant energy that makes Bogotá's nights unforgettable!`,
 
       seo: {
-        title: 'Bogotá Nightlife Tours 2025: Salsa Dancing & Vibrant Nightlife',
+        title: 'Bogotá Nightlife Tours 2026: Salsa Dancing & Vibrant Nightlife',
         description: 'Book Bogotá nightlife tours! Experience salsa dancing, trendy bars & Colombian nightlife. Discover Bogotá\'s vibrant evening scene. From $75.',
         keywords: 'Bogotá nightlife, salsa dancing Bogotá, nightlife tours Colombia, Bogotá bars and clubs',
       },
@@ -4587,7 +4587,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Buenos Aires is the tango capital of the world, where this passionate dance was born and continues to thrive as an essential expression of Argentine culture! Tango tours take you into the heart of tango culture, from world-class tango shows in traditional milongas (tango dance halls) to tango lessons where you can learn this iconic dance, from historic tango neighborhoods to modern tango venues, and from watching professionals perform to experiencing tango yourself. Experience the passion and emotion of tango, learn about tango's history and cultural significance, understand why tango is so important to Argentine identity, and discover why Buenos Aires is considered the ultimate tango destination. Whether you're seeking a spectacular tango show, wanting to learn to dance, or simply experiencing tango culture, tango tours offer unforgettable journeys into the soul of Buenos Aires and Argentine culture. From traditional milongas to modern shows, from dance lessons to cultural experiences, tango tours showcase why tango is Buenos Aires' most iconic cultural expression!`,
 
       seo: {
-        title: 'Buenos Aires Tango Tours 2025: Tango Shows & Dance Lessons',
+        title: 'Buenos Aires Tango Tours 2026: Tango Shows & Dance Lessons',
         description: 'Book Buenos Aires tango tours! Experience tango shows, dance lessons & authentic tango culture. Discover Argentina\'s iconic dance. From $85.',
         keywords: 'Buenos Aires tango, tango shows Buenos Aires, tango tours Argentina, tango lessons Buenos Aires',
       },
@@ -4739,7 +4739,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Buenos Aires is a city with a rich and fascinating history, where European elegance, Argentine independence, and urban development have created a unique architectural and cultural heritage! Historic tours take you through the city's past, from the historic neighborhoods where Buenos Aires was founded to landmarks that witnessed Argentina's independence, from colonial architecture to grand European-style buildings, and from historic plazas to monuments that tell the story of Argentina. Experience the layers of Buenos Aires' history, see how European immigrants shaped the city, understand the role of Buenos Aires in Argentine history, and discover why this city is considered one of Latin America's most beautiful capitals. Whether you're exploring San Telmo, visiting historic plazas, or learning about Argentina's independence, historic tours offer engaging journeys through the history that has shaped Buenos Aires and Argentina. From colonial roots to European elegance, from independence to modern Buenos Aires, historic tours showcase the rich heritage that makes this city fascinating!`,
 
       seo: {
-        title: 'Buenos Aires Historic Tours 2025: Colonial Architecture & Historic Landmarks',
+        title: 'Buenos Aires Historic Tours 2026: Colonial Architecture & Historic Landmarks',
         description: 'Book Buenos Aires historic tours! Explore historic neighborhoods, colonial architecture & landmarks. Discover Argentina\'s capital history. From $50.',
         keywords: 'Buenos Aires historic tours, historic neighborhoods Buenos Aires, colonial architecture, Argentina history tours',
       },
@@ -4891,7 +4891,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Buenos Aires is a world-class food and wine destination, where exceptional Argentine cuisine, world-renowned steaks, and outstanding Malbec wines create unforgettable culinary experiences! Food & Wine tours take you through the city's vibrant culinary scene, from traditional parrillas (steakhouses) serving Argentina's famous beef to wine tastings featuring Malbec and other Argentine wines, from local markets to fine dining restaurants, and from traditional Argentine dishes to modern culinary innovation. Experience the flavors that make Buenos Aires a food capital, learn about Argentine wine culture, understand the role of food and wine in Argentine society, and discover why Buenos Aires is considered one of the world's great food cities. Whether you're seeking a traditional steak dinner, wine tasting, or exploring Buenos Aires' diverse culinary scene, Food & Wine tours offer delicious journeys that showcase why Argentina is celebrated for its cuisine and wines. From parrillas to wine bars, from traditional to modern, Food & Wine tours showcase the culinary excellence that makes Buenos Aires a gastronomic paradise!`,
 
       seo: {
-        title: 'Buenos Aires Food & Wine Tours 2025: Argentine Steaks & Malbec Wine',
+        title: 'Buenos Aires Food & Wine Tours 2026: Argentine Steaks & Malbec Wine',
         description: 'Book Buenos Aires food & wine tours! Experience Argentine steaks, Malbec wines & world-class cuisine. Discover Argentina\'s exceptional food & wine. From $85.',
         keywords: 'Buenos Aires food tours, Argentine steak, Malbec wine, food and wine tours Buenos Aires, Argentina cuisine',
       },
@@ -5043,7 +5043,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Buenos Aires is a city rich in culture, where European elegance meets Latin American passion, creating a unique cultural identity that defines Argentina's capital! Cultural tours take you into the heart of Buenos Aires' cultural life, from understanding the blend of European and Argentine cultures to experiencing tango culture, from visiting cultural centers to exploring neighborhoods that showcase different cultural influences, and from learning about Argentine traditions to experiencing contemporary cultural expressions. Experience the vibrant cultural scene, see how European immigrants shaped Buenos Aires, understand the role of culture in Argentine identity, and discover why Buenos Aires is considered one of Latin America's great cultural capitals. Whether you're interested in tango culture, European influences, or contemporary arts, cultural tours offer engaging journeys that showcase the cultural richness that makes Buenos Aires culturally fascinating. From neighborhoods to cultural centers, from traditions to modern expressions, cultural tours provide authentic insights into what makes Buenos Aires a cultural destination!`,
 
       seo: {
-        title: 'Buenos Aires Cultural Tours 2025: Argentine Culture & European Heritage',
+        title: 'Buenos Aires Cultural Tours 2026: Argentine Culture & European Heritage',
         description: 'Book Buenos Aires cultural tours! Experience authentic Argentine culture, tango culture & European influences. Discover Buenos Aires\' cultural heritage. From $55.',
         keywords: 'Buenos Aires cultural tours, Argentine culture, tango culture Buenos Aires, cultural heritage Argentina',
       },
@@ -5195,7 +5195,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Buenos Aires is renowned for its stunning architecture, where European elegance, art nouveau, and modern designs create a cityscape considered among Latin America's most beautiful! Architecture tours take you through the city's architectural heritage, from grand European-style buildings to art nouveau masterpieces, from colonial architecture to modern skyscrapers, and from detailed architectural analysis to understanding how European immigrants shaped Buenos Aires' built environment. Experience the craftsmanship of different eras, see how architectural styles blend, understand the significance of architectural details, and discover why Buenos Aires is considered one of the world's great architectural cities. Whether you're an architecture enthusiast or simply appreciate beautiful buildings, Buenos Aires architecture tours offer fascinating journeys through architectural history that showcase why this city is celebrated for its beauty. From European elegance to art nouveau, from historic to modern, architecture tours showcase the architectural diversity that makes Buenos Aires architecturally stunning!`,
 
       seo: {
-        title: 'Buenos Aires Architecture Tours 2025: European Architecture & Art Nouveau',
+        title: 'Buenos Aires Architecture Tours 2026: European Architecture & Art Nouveau',
         description: 'Book Buenos Aires architecture tours! Explore European-style buildings, art nouveau architecture & stunning designs. Discover Buenos Aires\' architectural beauty. From $55.',
         keywords: 'Buenos Aires architecture tours, European architecture Buenos Aires, art nouveau Buenos Aires, architecture tours Argentina',
       },
@@ -5347,7 +5347,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Buenos Aires is a city of distinct neighborhoods (barrios), each with its own unique character, culture, and atmosphere, creating a fascinating urban mosaic that makes exploring different areas an essential Buenos Aires experience! Neighborhood tours take you through the city's diverse barrios, from trendy Palermo with its parks and restaurants to historic San Telmo with its colonial charm, from colorful La Boca to elegant Recoleta, and from bohemian neighborhoods to upscale districts. Experience the incredible diversity of Buenos Aires, see how each neighborhood tells a different story, understand the unique character of each barrio, and discover why exploring neighborhoods is essential to understanding Buenos Aires. Whether you're seeking trendy dining, historic charm, or simply experiencing the city's diverse character, neighborhood tours offer engaging journeys that showcase why Buenos Aires is considered one of Latin America's most fascinating cities. From Palermo to San Telmo, from La Boca to Recoleta, neighborhood tours ensure you experience the full diversity of Buenos Aires' urban character!`,
 
       seo: {
-        title: 'Buenos Aires Neighborhood Tours 2025: Palermo, San Telmo & City Barrios',
+        title: 'Buenos Aires Neighborhood Tours 2026: Palermo, San Telmo & City Barrios',
         description: 'Book Buenos Aires neighborhood tours! Explore diverse barrios from Palermo to San Telmo. Discover unique character of each neighborhood. From $50.',
         keywords: 'Buenos Aires neighborhood tours, Palermo tours, San Telmo tours, Buenos Aires barrios, city tours Buenos Aires',
       },
@@ -5501,7 +5501,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Cartagena's Old Town (Ciudad Amurallada) is one of Latin America's most beautiful and well-preserved colonial cities, where colorful buildings, cobblestone streets, and centuries of history create an enchanting atmosphere! Old Town tours take you through this UNESCO World Heritage site, from the impressive city walls to historic plazas, from colorful colonial houses to iconic landmarks, from vibrant streets to hidden corners that tell stories of pirates, conquistadors, and colonial life. Experience the charm of Cartagena's walled city, see perfectly preserved colonial architecture, understand why this fortress city was so important, and discover why Cartagena's Old Town is considered one of the world's most beautiful historic centers. Whether you're exploring historic plazas, walking the city walls, or simply wandering through atmospheric streets, Old Town tours offer unforgettable journeys through Cartagena's colonial heritage and Caribbean charm. From Plaza de Bolívar to the city walls, from colorful streets to historic churches, Old Town tours showcase the beauty that makes Cartagena's historic center so special!`,
 
       seo: {
-        title: 'Cartagena Old Town Tours 2025: Walled City & Colonial Architecture',
+        title: 'Cartagena Old Town Tours 2026: Walled City & Colonial Architecture',
         description: 'Book Cartagena Old Town tours! Explore UNESCO walled Old Town, colonial architecture & historic charm. Discover Colombia\'s most beautiful colonial city. From $50.',
         keywords: 'Cartagena Old Town tours, walled city Cartagena, colonial Cartagena, UNESCO Cartagena, Old Town tours',
       },
@@ -5653,7 +5653,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Cartagena has a fascinating and dramatic history, from its founding as a Spanish colonial port to its role in the slave trade, from pirate attacks to independence struggles, creating a rich historical tapestry that makes understanding the city's past essential! Historic tours take you through Cartagena's historical journey, from the impressive fortifications built to defend against pirates to historic landmarks that witnessed key moments, from colonial architecture to sites related to Cartagena's independence, and from the city's role as a major port to its cultural significance. Experience the layers of Cartagena's history, see how the city's strategic location shaped its destiny, understand the role of Cartagena in Colombian and Caribbean history, and discover why this city was so important to Spanish colonial interests. Whether you're exploring fortifications, visiting historic landmarks, or learning about colonial life, historic tours offer engaging journeys through the history that has shaped Cartagena and Colombia. From colonial conquest to independence, from pirate attacks to modern Cartagena, historic tours showcase the rich heritage that makes this city historically fascinating!`,
 
       seo: {
-        title: 'Cartagena Historic Tours 2025: Colonial History & Historic Landmarks',
+        title: 'Cartagena Historic Tours 2026: Colonial History & Historic Landmarks',
         description: 'Book Cartagena historic tours! Explore colonial history, historic landmarks & fortress city. Discover Cartagena\'s rich historical heritage. From $50.',
         keywords: 'Cartagena historic tours, colonial history Cartagena, historic landmarks, Cartagena history',
       },
@@ -5805,7 +5805,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Cartagena is blessed with access to beautiful Caribbean beaches, where white sand, turquoise waters, and tropical paradise await just minutes from the historic walled city! Beach tours take you to Cartagena's best beaches, from the nearby Rosario Islands to resort beaches, from day trips to island beaches to mainland beach experiences, and from pristine tropical settings to beach activities. Experience the Caribbean side of Cartagena, enjoy pristine beach settings, understand why Cartagena is a perfect combination of history and beach paradise, and discover why these beaches are among Colombia's most beautiful. Whether you're seeking a day trip to tropical islands, relaxing on resort beaches, or enjoying beach activities, beach tours offer perfect escapes that showcase the Caribbean paradise that complements Cartagena's historic charm. From Rosario Islands to resort beaches, from snorkeling to relaxation, beach tours ensure you experience both sides of Cartagena - the historic and the tropical!`,
 
       seo: {
-        title: 'Cartagena Beach Tours 2025: Caribbean Beaches & Tropical Islands',
+        title: 'Cartagena Beach Tours 2026: Caribbean Beaches & Tropical Islands',
         description: 'Book Cartagena beach tours! Explore Caribbean beaches, Rosario Islands & tropical paradise. Discover Colombia\'s beautiful beach destinations. From $65.',
         keywords: 'Cartagena beach tours, Caribbean beaches Cartagena, Rosario Islands, beach tours Colombia',
       },
@@ -5957,7 +5957,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Cartagena offers a delicious journey through Colombian and Caribbean cuisine, where traditional Colombian dishes blend with Caribbean flavors, creating a unique culinary experience in Colombia's coastal gem! Food & Culture tours take you through the city's culinary scene and cultural identity, from traditional Colombian dishes to Caribbean-influenced cuisine, from local markets to restaurants where Cartageneros dine, and from street food to fine dining. Experience the flavors that make Cartagena special, learn about traditional cooking methods, understand how food reflects Cartagena's cultural heritage, and discover why Cartagena is considered one of Colombia's great food destinations. Whether you're sampling traditional dishes, exploring food markets, or learning about Cartagena's food culture, Food & Culture tours offer delicious journeys that showcase the culinary diversity and cultural richness of Cartagena and the Caribbean coast. From markets to restaurants, from street food to cultural experiences, Food & Culture tours provide authentic insights into what makes Cartagena's cuisine and culture so special!`,
 
       seo: {
-        title: 'Cartagena Food & Culture Tours 2025: Colombian Cuisine & Caribbean Flavors',
+        title: 'Cartagena Food & Culture Tours 2026: Colombian Cuisine & Caribbean Flavors',
         description: 'Book Cartagena food & culture tours! Experience traditional Colombian dishes, Caribbean flavors & cultural heritage. Discover Cartagena\'s culinary scene. From $70.',
         keywords: 'Cartagena food tours, Colombian cuisine, Caribbean food Cartagena, food culture tours Colombia',
       },
@@ -6109,7 +6109,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Cartagena is renowned for its stunning colonial architecture, where colorful buildings, historic churches, and perfectly preserved colonial structures create a cityscape considered among Latin America's most beautiful! Architecture tours take you through the city's architectural heritage, from the colorful colonial houses of the Old Town to impressive churches and cathedrals, from colonial architecture to modern buildings, and from detailed architectural analysis to understanding how Spanish colonial architecture was adapted to the Caribbean setting. Experience the craftsmanship of different eras, see how architectural styles blend with Caribbean influences, understand the significance of architectural details, and discover why Cartagena is considered one of the world's great architectural cities. Whether you're an architecture enthusiast or simply appreciate beautiful buildings, Cartagena architecture tours offer fascinating journeys through architectural history that showcase why this city is celebrated for its beauty. From colorful colonial facades to historic churches, from Old Town to Getsemaní, architecture tours showcase the architectural diversity that makes Cartagena architecturally stunning!`,
 
       seo: {
-        title: 'Cartagena Architecture Tours 2025: Colonial Architecture & Historic Buildings',
+        title: 'Cartagena Architecture Tours 2026: Colonial Architecture & Historic Buildings',
         description: 'Book Cartagena architecture tours! Explore colonial architecture, colorful buildings & historic churches. Discover Cartagena\'s architectural beauty. From $55.',
         keywords: 'Cartagena architecture tours, colonial architecture Cartagena, architecture tours Colombia, historic buildings Cartagena',
       },
@@ -6261,7 +6261,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Cartagena offers spectacular sunsets over the Caribbean, where the sky transforms with incredible colors creating magical evening experiences against the backdrop of the historic walled city! Sunset tours take you to the best spots for sunset viewing, from romantic sunset boat cruises on Caribbean waters to viewing from the city walls, from rooftop experiences to beach sunset viewing, and from relaxing cruises to sunset activities. Experience the breathtaking beauty of Caribbean sunsets, see the sky painted with vibrant colors, enjoy peaceful evening atmosphere with historic city views, and discover why Cartagena sunsets are considered among Colombia's most beautiful. Whether you're seeking a romantic sunset cruise, a city walls viewing experience, or simply stunning evening scenery, sunset tours offer memorable experiences that showcase the natural beauty of Cartagena at dusk. From boat cruises to city walls, from rooftop views to beach viewing, sunset tours ensure you don't miss the magical daily transformation of Cartagena's Caribbean sky!`,
 
       seo: {
-        title: 'Cartagena Sunset Tours 2025: Caribbean Sunsets & Evening Cruises',
+        title: 'Cartagena Sunset Tours 2026: Caribbean Sunsets & Evening Cruises',
         description: 'Book Cartagena sunset tours! Experience magical Caribbean sunsets on boat cruises & city walls viewing. Witness Cartagena\'s stunning sunset skies. From $65.',
         keywords: 'Cartagena sunset, sunset cruises Cartagena, Caribbean sunsets Colombia, sunset tours Cartagena, evening tours',
       },
@@ -6415,7 +6415,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Cusco's historic center is a fascinating blend of Inca and Spanish colonial architecture, where ancient stonework meets colonial buildings creating a unique UNESCO World Heritage city that serves as the gateway to Machu Picchu! Historic Center tours take you through Cusco's central district, from the impressive Plaza de Armas to historic churches, from Inca stone foundations to Spanish colonial structures built on top, from narrow streets that follow ancient Inca layouts to important landmarks that tell the story of Cusco's transformation from Inca capital to Spanish colonial city. Experience the layers of Cusco's history, see how Inca and Spanish architecture coexist, understand the role of Cusco in both Inca and Spanish empires, and discover why this city is considered the archaeological capital of the Americas. Whether you're exploring the main plaza, visiting historic churches, or simply wandering through atmospheric streets, Historic Center tours offer engaging journeys through the history that makes Cusco so special. From Plaza de Armas to San Blas, from Inca walls to colonial churches, Historic Center tours showcase the unique blend that makes Cusco historically fascinating!`,
 
       seo: {
-        title: 'Cusco Historic Center Tours 2025: Inca & Colonial Architecture',
+        title: 'Cusco Historic Center Tours 2026: Inca & Colonial Architecture',
         description: 'Book Cusco historic center tours! Explore UNESCO historic center, Inca & colonial architecture. Discover Peru\'s former Inca capital. From $50.',
         keywords: 'Cusco historic center, Inca architecture Cusco, colonial Cusco, UNESCO Cusco, historic center tours',
       },
@@ -6567,7 +6567,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Cusco is surrounded by incredible Inca ruins that showcase the engineering genius and architectural mastery of the Inca Empire, making these archaeological sites essential for understanding Inca culture! Inca Ruins tours take you to the impressive ruins surrounding Cusco, from the massive fortress of Sacsayhuamán to the water temple of Tambomachay, from Q'enqo's carved rock formations to Puka Pukara's military fortress, and from incredible stonework to understanding how the Incas built without mortar. Experience the grandeur of Inca architecture, see mind-blowing stonework precision, understand the significance of these sites to Inca culture, and discover why these ruins are considered among Peru's most important archaeological sites. Whether you're exploring Sacsayhuamán's massive stones, visiting sacred sites, or learning about Inca engineering, Inca Ruins tours offer fascinating journeys into the world of the Incas. From Sacsayhuamán to Tambomachay, from Q'enqo to Puka Pukara, Inca Ruins tours showcase the incredible achievements of the Inca Empire that continue to amaze visitors today!`,
 
       seo: {
-        title: 'Cusco Inca Ruins Tours 2025: Sacsayhuamán & Ancient Inca Sites',
+        title: 'Cusco Inca Ruins Tours 2026: Sacsayhuamán & Ancient Inca Sites',
         description: 'Book Cusco Inca ruins tours! Explore Sacsayhuamán, Tambomachay & ancient Inca sites. Discover Inca engineering marvels near Cusco. From $60.',
         keywords: 'Cusco Inca ruins, Sacsayhuamán, Inca ruins tours Cusco, ancient Inca sites Peru',
       },
@@ -6719,7 +6719,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `The Sacred Valley (Valle Sagrado) is one of Peru's most beautiful and historically significant regions, where ancient Inca sites, traditional Andean villages, and stunning mountain landscapes create an unforgettable experience! Sacred Valley tours take you through this incredible valley, from the impressive ruins of Pisac and Ollantaytambo to traditional markets, from ancient terraces to Inca fortresses, and from scenic Andean landscapes to understanding why this valley was so important to the Incas. Experience the beauty of the Sacred Valley, see incredible Inca sites, understand the agricultural importance of this fertile valley, and discover why the Sacred Valley is considered essential for anyone visiting Cusco and Machu Picchu. Whether you're exploring ruins, visiting markets, or simply enjoying the scenery, Sacred Valley tours offer comprehensive journeys that showcase why this valley is considered sacred and why it remains one of Peru's most beautiful destinations. From Pisac to Ollantaytambo, from ruins to markets, Sacred Valley tours ensure you experience the incredible beauty and history of the Sacred Valley of the Incas!`,
 
       seo: {
-        title: 'Cusco Sacred Valley Tours 2025: Pisac, Ollantaytambo & Inca Sites',
+        title: 'Cusco Sacred Valley Tours 2026: Pisac, Ollantaytambo & Inca Sites',
         description: 'Book Cusco Sacred Valley tours! Explore Pisac, Ollantaytambo & stunning Sacred Valley. Discover ancient Inca sites & Andean landscapes. From $75.',
         keywords: 'Cusco Sacred Valley tours, Sacred Valley Peru, Pisac tours, Ollantaytambo tours, Inca sites Sacred Valley',
       },
@@ -6871,7 +6871,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Cusco is a living cultural center where ancient Andean traditions blend with Spanish colonial influences, creating a unique cultural identity that makes understanding local culture essential to the Cusco experience! Cultural tours take you into the heart of Andean culture, from visiting traditional communities to experiencing local traditions, from understanding Quechua culture to seeing how ancient customs continue today, and from learning about textile weaving to experiencing traditional ceremonies. Experience the vibrant cultural scene, see how ancient traditions are preserved, understand the role of culture in Andean identity, and discover why Cusco is considered one of Peru's great cultural destinations. Whether you're interested in traditional textiles, Quechua culture, or contemporary Andean expressions, cultural tours offer engaging journeys that showcase the cultural richness that makes Cusco culturally fascinating. From communities to cultural centers, from traditions to modern expressions, cultural tours provide authentic insights into what makes Cusco a cultural destination!`,
 
       seo: {
-        title: 'Cusco Cultural Tours 2025: Andean Culture & Traditional Communities',
+        title: 'Cusco Cultural Tours 2026: Andean Culture & Traditional Communities',
         description: 'Book Cusco cultural tours! Experience authentic Andean culture, traditional communities & local traditions. Discover Cusco\'s rich cultural heritage. From $55.',
         keywords: 'Cusco cultural tours, Andean culture, Quechua culture, traditional communities Cusco, cultural tours Peru',
       },
@@ -7023,7 +7023,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Cusco's markets are vibrant hubs of Andean life, where traditional goods, fresh produce, artisan crafts, and local culture come together in bustling, colorful experiences! Market tours take you through these lively markets, from the famous San Pedro Market to artisan markets, from food markets where locals shop to craft markets featuring traditional textiles and goods, and from understanding market culture to supporting local artisans. Experience the vibrant atmosphere, learn about local products, see how locals shop and trade, understand the role of markets in Andean culture, and discover authentic souvenirs and goods. Whether you're shopping for textiles, sampling local foods, or simply experiencing the market atmosphere, Cusco market tours offer authentic glimpses into daily Andean life and provide opportunities to support local vendors and artisans. From food to crafts, from produce to textiles, market tours showcase an essential part of Cusco's living culture!`,
 
       seo: {
-        title: 'Cusco Market Tours 2025: Traditional Markets & Artisan Crafts',
+        title: 'Cusco Market Tours 2026: Traditional Markets & Artisan Crafts',
         description: 'Book Cusco market tours! Explore traditional markets, artisan crafts & authentic Peruvian shopping. Discover Andean goods & local culture. From $45.',
         keywords: 'Cusco market tours, San Pedro Market, traditional markets Cusco, artisan markets Peru, market tours',
       },
@@ -7175,7 +7175,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Cusco is surrounded by the majestic Andes Mountains, offering incredible opportunities to explore stunning peaks, colorful landscapes, and natural beauty that make the highlands one of Peru's most spectacular regions! Mountain tours take you into the Andean landscape, from the famous Rainbow Mountain (Vinicunca) with its incredible colors to other mountain peaks, from challenging high-altitude hikes to accessible viewpoints, and from scenic mountain landscapes to understanding the unique Andean environment. Experience the grandeur of the Andes, see breathtaking mountain scenery, enjoy pristine highland landscapes, and discover why the mountains surrounding Cusco are considered among Peru's most beautiful natural destinations. Whether you're seeking Rainbow Mountain, challenging high-altitude hikes, or scenic mountain views, mountain tours provide access to incredible mountain experiences with stunning views of the Andean landscape. From Rainbow Mountain to other peaks, from hikes to viewpoints, mountain tours showcase the natural beauty that surrounds Cusco!`,
 
       seo: {
-        title: 'Cusco Mountain Tours 2025: Rainbow Mountain & Andean Peaks',
+        title: 'Cusco Mountain Tours 2026: Rainbow Mountain & Andean Peaks',
         description: 'Book Cusco mountain tours! Experience Rainbow Mountain, mountain hiking & stunning Andean views. Discover mountains surrounding Cusco. From $80.',
         keywords: 'Cusco mountain tours, Rainbow Mountain Peru, Vinicunca, mountain hiking Cusco, Andean mountains',
       },
@@ -7329,7 +7329,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `The Galápagos Islands are a wildlife paradise like nowhere else on Earth, where unique species evolved in isolation and fearless animals allow close encounters, making wildlife observation the ultimate Galápagos experience! Wildlife tours take you to the best locations for encountering the islands' incredible fauna, from giant tortoises in their natural habitat to marine iguanas basking on lava rocks, from blue-footed boobies performing courtship dances to sea lions lounging on beaches, and from finches demonstrating evolution to penguins swimming in tropical waters. Experience the wonder of Darwin's laboratory, see animals found nowhere else on Earth, understand how isolation led to unique evolution, and discover why the Galápagos Islands are considered one of the world's greatest wildlife destinations. Whether you're seeking giant tortoises, unique bird species, or marine life, wildlife tours offer unforgettable encounters that showcase the incredible biodiversity that makes the Galápagos so special. From tortoise reserves to bird colonies, from lava fields to beaches, wildlife tours ensure you experience the animals that make the Galápagos a living laboratory of evolution!`,
 
       seo: {
-        title: 'Galápagos Islands Wildlife Tours 2025: Giant Tortoises & Unique Wildlife',
+        title: 'Galápagos Islands Wildlife Tours 2026: Giant Tortoises & Unique Wildlife',
         description: 'Book Galápagos wildlife tours! See giant tortoises, marine iguanas & unique species. Experience Darwin\'s living laboratory. From $120.',
         keywords: 'Galápagos wildlife tours, giant tortoises, marine iguanas, Galápagos animals, wildlife tours Ecuador',
       },
@@ -7481,7 +7481,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `The Galápagos Islands offer some of the world's most incredible snorkeling, where crystal-clear waters teem with marine life and unique species that make underwater exploration unforgettable! Snorkeling tours take you to the best snorkeling spots around the islands, from swimming with playful sea lions to observing marine iguanas feeding underwater, from encountering colorful tropical fish to seeing reef sharks and rays, and from experiencing diverse marine ecosystems to understanding why Galápagos waters are so special. Experience the underwater world of the Galápagos, encounter marine animals up close, enjoy pristine visibility in protected waters, and discover why snorkeling in the Galápagos is considered among the world's best underwater experiences. Whether you're seeking sea lion encounters, colorful fish, or unique marine species, snorkeling tours offer incredible opportunities to explore the underwater side of Darwin's laboratory. From shallow bays to deeper sites, from calm waters to more adventurous spots, snorkeling tours ensure you experience the marine wonders that complement the islands' terrestrial wildlife!`,
 
       seo: {
-        title: 'Galápagos Islands Snorkeling Tours 2025: Sea Lions & Marine Life',
+        title: 'Galápagos Islands Snorkeling Tours 2026: Sea Lions & Marine Life',
         description: 'Book Galápagos snorkeling tours! Swim with sea lions, marine iguanas & tropical fish. Experience world-class snorkeling in Galápagos. From $130.',
         keywords: 'Galápagos snorkeling, snorkeling tours Galápagos, sea lions snorkeling, marine life Galápagos, snorkeling Ecuador',
       },
@@ -7633,7 +7633,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `The Galápagos archipelago consists of 13 major islands, each with unique ecosystems, landscapes, and wildlife, making island exploration essential to understanding the Galápagos! Island tours take you to different islands, from volcanic landscapes to pristine beaches, from unique wildlife habitats to diverse ecosystems, and from understanding how isolation created different species to seeing why each island offers something special. Experience the diversity of the Galápagos, see how islands differ from each other, encounter island-specific wildlife, and discover why visiting multiple islands provides the complete Galápagos experience. Whether you're exploring volcanic craters, pristine beaches, or unique habitats, island tours offer comprehensive journeys that showcase the incredible diversity of the archipelago. From day trips to multi-island adventures, from land exploration to coastal areas, island tours ensure you experience the full range of what makes each Galápagos island unique and special!`,
 
       seo: {
-        title: 'Galápagos Islands Island Tours 2025: Multi-Island Exploration & Wildlife',
+        title: 'Galápagos Islands Island Tours 2026: Multi-Island Exploration & Wildlife',
         description: 'Book Galápagos island tours! Explore diverse islands, unique wildlife & ecosystems. Discover different islands of Galápagos archipelago. From $150.',
         keywords: 'Galápagos island tours, Galápagos islands exploration, island tours Ecuador, multi-island Galápagos tours',
       },
@@ -7785,7 +7785,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Galápagos cruises offer the ultimate way to explore the archipelago, combining comfortable accommodations with expert naturalist guides and access to multiple islands that make cruise tours the most comprehensive Galápagos experience! Cruise tours take you through the islands aboard comfortable vessels, from day cruises to extended multi-day adventures, from small intimate yachts to larger ships, and from focused island exploration to comprehensive archipelago tours. Experience multiple islands in comfort, enjoy expert naturalist guidance, access remote islands difficult to reach otherwise, and discover why cruises are considered the best way to experience the complete Galápagos. Whether you're seeking a 3-day introduction or a week-long comprehensive exploration, Galápagos cruise tours offer unparalleled access to the islands' diversity with the comfort and convenience of cruise accommodations. From luxury cruises to intimate yachts, from island hopping to wildlife encounters, cruise tours ensure you experience the full range of what the Galápagos has to offer!`,
 
       seo: {
-        title: 'Galápagos Islands Cruise Tours 2025: Multi-Day Island Cruises',
+        title: 'Galápagos Islands Cruise Tours 2026: Multi-Day Island Cruises',
         description: 'Book Galápagos cruise tours! Explore multiple islands by cruise with expert guides. Experience comprehensive Galápagos adventures. From $800.',
         keywords: 'Galápagos cruises, Galápagos cruise tours, island cruises Ecuador, multi-day Galápagos tours, Galápagos yacht tours',
       },
@@ -7937,7 +7937,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `The Galápagos Islands offer incredible adventure opportunities beyond wildlife observation, where active exploration reveals stunning landscapes, volcanic formations, and unique environments that make adventure tours an exciting way to experience the islands! Adventure tours take you on active journeys through the Galápagos, from hiking volcanic craters to kayaking along coastlines, from mountain biking to paddleboarding, and from challenging treks to discovering hidden natural wonders. Experience the islands through adventure, explore diverse landscapes actively, enjoy thrilling outdoor activities, and discover why the Galápagos offers incredible adventure beyond wildlife encounters. Whether you're seeking challenging hikes, water sports, or active exploration, adventure tours provide exciting ways to experience the natural beauty of the Galápagos through outdoor activities. From hiking to kayaking, from biking to exploring, adventure tours ensure you experience the active side of the Galápagos!`,
 
       seo: {
-        title: 'Galápagos Islands Adventure Tours 2025: Hiking, Kayaking & Outdoor Activities',
+        title: 'Galápagos Islands Adventure Tours 2026: Hiking, Kayaking & Outdoor Activities',
         description: 'Book Galápagos adventure tours! Experience hiking, kayaking & outdoor adventures. Explore Galápagos through active adventures. From $140.',
         keywords: 'Galápagos adventure tours, hiking Galápagos, kayaking Galápagos, outdoor activities Galápagos, adventure Ecuador',
       },
@@ -8089,7 +8089,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `The Galápagos Islands are a photographer's paradise, where fearless wildlife, stunning landscapes, and unique natural formations create endless opportunities for incredible photographs that make photography tours essential for serious photographers! Photography tours take you to the best locations with expert guidance, from optimal wildlife viewing times to perfect lighting conditions, from composition tips to technical photography advice, and from accessing prime locations to understanding how to capture the Galápagos' unique beauty. Experience the islands through photography, learn from expert photographers, access the best spots at optimal times, and discover why the Galápagos offers some of the world's best wildlife and nature photography. Whether you're a serious photographer or enthusiastic amateur, photography tours provide specialized guidance that helps you capture stunning images of the Galápagos. From wildlife photography to landscape shots, from technical guidance to location scouting, photography tours ensure you return with incredible photographs!`,
 
       seo: {
-        title: 'Galápagos Islands Photography Tours 2025: Wildlife & Landscape Photography',
+        title: 'Galápagos Islands Photography Tours 2026: Wildlife & Landscape Photography',
         description: 'Book Galápagos photography tours! Capture incredible wildlife & landscapes with expert guidance. Experience photographer\'s paradise. From $200.',
         keywords: 'Galápagos photography tours, wildlife photography Galápagos, photography tours Ecuador, nature photography tours',
       },
@@ -8243,7 +8243,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Arenal Volcano is Costa Rica's most iconic natural wonder, where the perfectly cone-shaped volcano rises dramatically above the landscape, creating one of Central America's most spectacular natural sights! Arenal Volcano tours take you to explore this magnificent volcano, from viewing the impressive cone from observation points to learning about its volcanic activity, from exploring lava fields and volcanic formations to understanding Arenal's geological significance, and from witnessing incredible natural beauty to experiencing why this volcano is considered Costa Rica's crown jewel. Experience the majesty of Arenal Volcano, see incredible volcanic landscapes, learn about Costa Rica's volcanic history, and discover why Arenal is considered one of the world's most beautiful volcanoes. Whether you're seeking volcano viewpoints, geological exploration, or simply stunning natural scenery, Arenal Volcano tours offer unforgettable experiences that showcase the incredible power and beauty of nature. From observation decks to lava trails, from geological sites to scenic viewpoints, Arenal Volcano tours ensure you witness one of Central America's most spectacular natural wonders!`,
 
       seo: {
-        title: 'La Fortuna Arenal Volcano Tours 2025: Costa Rica\'s Iconic Volcano',
+        title: 'La Fortuna Arenal Volcano Tours 2026: Costa Rica\'s Iconic Volcano',
         description: 'Book La Fortuna Arenal Volcano tours! Experience majestic Arenal Volcano, volcanic landscapes & incredible views. Discover Costa Rica\'s iconic volcano. From $70.',
         keywords: 'Arenal Volcano tours, Arenal Volcano Costa Rica, volcano tours La Fortuna, Arenal tours',
       },
@@ -8395,7 +8395,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `La Fortuna's natural hot springs are heated by Arenal Volcano's geothermal activity, creating perfect relaxation experiences in beautiful rainforest settings that make hot springs one of Costa Rica's most popular attractions! Hot Springs tours take you to the region's best thermal waters, from natural hot spring pools to luxurious spa resorts, from simple rustic pools to elaborate thermal complexes, and from therapeutic relaxation to romantic evening experiences. Experience the healing warmth of volcanic hot springs, enjoy beautiful natural settings, relax in therapeutic thermal waters, and discover why Costa Rica's hot springs are considered among the world's best. Whether you're seeking natural pools, luxury spa experiences, or romantic evening soaks, hot springs tours offer perfect relaxation that complements La Fortuna's adventure activities. From natural springs to resort pools, from day visits to evening experiences, hot springs tours ensure you experience the perfect way to unwind in Costa Rica!`,
 
       seo: {
-        title: 'La Fortuna Arenal Hot Springs Tours 2025: Natural Thermal Springs & Spas',
+        title: 'La Fortuna Arenal Hot Springs Tours 2026: Natural Thermal Springs & Spas',
         description: 'Book La Fortuna hot springs tours! Relax in natural hot springs, thermal pools & luxury spas. Experience volcanic thermal waters. From $60.',
         keywords: 'La Fortuna hot springs, Arenal hot springs, thermal springs Costa Rica, hot springs tours La Fortuna',
       },
@@ -8547,7 +8547,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `La Fortuna is Costa Rica's adventure capital, where thrilling activities await in stunning natural settings, making adventure tours the perfect way to experience the excitement and beauty of Costa Rica! Adventure tours take you on exciting journeys, from zip-lining through rainforest canopies to whitewater rafting on rushing rivers, from rappelling down waterfalls to mountain biking through trails, and from thrilling canopy tours to discovering why La Fortuna is considered one of the world's best adventure destinations. Experience the thrill of Costa Rican adventures, enjoy activities in beautiful natural settings, challenge yourself with exciting pursuits, and discover why adventure is such an integral part of the La Fortuna experience. Whether you're seeking zip-lining, rafting, rappelling, or multiple adventures, adventure tours offer exciting ways to experience Costa Rica's incredible natural playground. From canopy tours to water sports, from aerial adventures to ground activities, adventure tours ensure you experience the thrill of Costa Rica!`,
 
       seo: {
-        title: 'La Fortuna Arenal Adventure Tours 2025: Zip-Lining, Rafting & Thrilling Activities',
+        title: 'La Fortuna Arenal Adventure Tours 2026: Zip-Lining, Rafting & Thrilling Activities',
         description: 'Book La Fortuna adventure tours! Experience zip-lining, whitewater rafting & thrilling adventures. Discover Costa Rica\'s adventure paradise. From $75.',
         keywords: 'La Fortuna adventure tours, zip-lining La Fortuna, whitewater rafting Costa Rica, adventure tours La Fortuna',
       },
@@ -8699,7 +8699,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `La Fortuna is surrounded by rich rainforest teeming with incredible Costa Rican wildlife, where sloths hang from trees, monkeys swing through canopies, and colorful birds fill the skies, making wildlife observation a highlight of any La Fortuna visit! Wildlife tours take you into the rainforest to encounter Costa Rica's amazing fauna, from spotting three-toed and two-toed sloths to observing howler monkeys and white-faced capuchins, from identifying colorful toucans and parrots to learning about Costa Rica's incredible biodiversity, and from understanding rainforest ecosystems to discovering why Costa Rica is considered one of the world's most biodiverse countries. Experience the wonder of Costa Rican wildlife, see animals in their natural habitat, learn about rainforest ecology, and discover why wildlife tours are essential for understanding Costa Rica's natural heritage. Whether you're seeking sloths, monkeys, birds, or comprehensive wildlife encounters, wildlife tours offer fascinating journeys into Costa Rica's incredible natural world. From guided walks to night tours, from canopy observations to ground-level encounters, wildlife tours ensure you experience the amazing animals that make Costa Rica special!`,
 
       seo: {
-        title: 'La Fortuna Arenal Wildlife Tours 2025: Sloths, Monkeys & Rainforest Animals',
+        title: 'La Fortuna Arenal Wildlife Tours 2026: Sloths, Monkeys & Rainforest Animals',
         description: 'Book La Fortuna wildlife tours! See sloths, monkeys, toucans & Costa Rican wildlife. Experience rainforest animals in natural habitat. From $65.',
         keywords: 'La Fortuna wildlife tours, sloths Costa Rica, wildlife tours La Fortuna, rainforest animals Costa Rica',
       },
@@ -8851,7 +8851,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `La Fortuna is home to some of Costa Rica's most beautiful waterfalls, where cascading waters create stunning natural features that make waterfall visits a highlight of any La Fortuna adventure! Waterfall tours take you to the region's most spectacular waterfalls, from the iconic La Fortuna Waterfall with its impressive drop to hidden cascades in the rainforest, from accessible viewpoints to challenging hikes leading to secluded falls, and from swimming opportunities to photography at these natural wonders. Experience the beauty of Costa Rican waterfalls, enjoy refreshing swims in natural pools, witness incredible water features, and discover why waterfalls are such a special part of La Fortuna's natural attractions. Whether you're seeking the famous La Fortuna Waterfall, hidden cascades, or comprehensive waterfall exploration, waterfall tours offer beautiful journeys that showcase Costa Rica's stunning water features. From easy access to adventurous hikes, from swimming to photography, waterfall tours ensure you experience the natural beauty of Costa Rican waterfalls!`,
 
       seo: {
-        title: 'La Fortuna Arenal Waterfall Tours 2025: La Fortuna Waterfall & Cascades',
+        title: 'La Fortuna Arenal Waterfall Tours 2026: La Fortuna Waterfall & Cascades',
         description: 'Book La Fortuna waterfall tours! See La Fortuna Waterfall, hidden cascades & beautiful falls. Experience Costa Rica\'s stunning waterfalls. From $55.',
         keywords: 'La Fortuna waterfall, La Fortuna Waterfall tours, waterfall tours Costa Rica, cascades La Fortuna',
       },
@@ -9003,7 +9003,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `La Fortuna is surrounded by lush rainforests that represent some of Costa Rica's most biodiverse ecosystems, where incredible wildlife, diverse plant life, and rich ecosystems create unforgettable rainforest experiences! Rainforest tours take you into these incredible natural environments, from guided walks through rainforest trails to canopy exploration, from learning about rainforest ecology to understanding Costa Rica's incredible biodiversity, and from spotting wildlife to discovering why Costa Rica's rainforests are considered among the world's most important ecosystems. Experience the wonder of Costa Rican rainforests, see incredible biodiversity, learn about rainforest ecosystems, and discover why rainforest tours are essential for understanding Costa Rica's natural heritage. Whether you're seeking wildlife observation, plant identification, or comprehensive rainforest exploration, rainforest tours offer fascinating journeys into one of the world's most biodiverse environments. From trail walks to canopy tours, from day exploration to night tours, rainforest tours ensure you experience the incredible diversity that makes Costa Rican rainforests so special!`,
 
       seo: {
-        title: 'La Fortuna Arenal Rainforest Tours 2025: Rainforest Exploration & Wildlife',
+        title: 'La Fortuna Arenal Rainforest Tours 2026: Rainforest Exploration & Wildlife',
         description: 'Book La Fortuna rainforest tours! Explore Costa Rican rainforests, wildlife & biodiversity. Experience incredible rainforest ecosystems. From $60.',
         keywords: 'La Fortuna rainforest tours, Costa Rica rainforest, rainforest tours La Fortuna, biodiversity Costa Rica',
       },
@@ -9157,7 +9157,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Lake Atitlán is considered one of the world's most beautiful lakes, where three majestic volcanoes frame the pristine highland waters, creating a stunning natural setting that makes lake exploration essential! Lake tours take you across the beautiful lake, from scenic boat rides between villages to water activities, from admiring the dramatic volcano backdrop to experiencing the lake's serene beauty, and from visiting lakeside villages to understanding why Lake Atitlán is considered Guatemala's natural jewel. Experience the stunning beauty of the lake, enjoy scenic boat rides with incredible views, witness the dramatic volcano backdrop, and discover why Lake Atitlán is considered among the world's most beautiful lakes. Whether you're seeking scenic cruises, village hopping, or water activities, lake tours offer beautiful journeys that showcase the incredible natural beauty of Lake Atitlán. From boat tours to water sports, from scenic views to village visits, lake tours ensure you experience the stunning beauty that makes Lake Atitlán so special!`,
 
       seo: {
-        title: 'Lake Atitlán Lake Tours 2025: Scenic Boat Tours & Water Activities',
+        title: 'Lake Atitlán Lake Tours 2026: Scenic Boat Tours & Water Activities',
         description: 'Book Lake Atitlán lake tours! Experience stunning lake, scenic boat rides & volcano views. Discover Guatemala\'s most beautiful lake. From $50.',
         keywords: 'Lake Atitlán tours, Lake Atitlán boat tours, lake tours Guatemala, scenic lake tours',
       },
@@ -9309,7 +9309,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Lake Atitlán is surrounded by traditional Mayan villages where ancient customs and traditions thrive, creating authentic cultural experiences that make understanding Mayan culture essential to the Lake Atitlán visit! Cultural tours take you into the heart of Mayan communities, from visiting traditional villages to learning about Mayan customs, from experiencing traditional ceremonies to understanding Mayan language and traditions, and from meeting local artisans to discovering how Mayan culture has been preserved around the lake. Experience authentic Mayan culture, see traditional ways of life, learn about Mayan heritage, and discover why Lake Atitlán is considered one of Guatemala's great cultural destinations. Whether you're interested in traditional textiles, Mayan ceremonies, or village life, cultural tours offer engaging journeys that showcase the cultural richness that makes Lake Atitlán culturally fascinating. From villages to cultural centers, from traditions to modern expressions, cultural tours provide authentic insights into what makes Mayan culture around Lake Atitlán so special!`,
 
       seo: {
-        title: 'Lake Atitlán Cultural Tours 2025: Mayan Culture & Traditional Villages',
+        title: 'Lake Atitlán Cultural Tours 2026: Mayan Culture & Traditional Villages',
         description: 'Book Lake Atitlán cultural tours! Experience authentic Mayan culture, traditional villages & Mayan traditions. Discover Guatemala\'s rich cultural heritage. From $55.',
         keywords: 'Lake Atitlán cultural tours, Mayan culture Guatemala, traditional villages Lake Atitlán, cultural tours Guatemala',
       },
@@ -9461,7 +9461,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Lake Atitlán is surrounded by traditional Mayan villages, each with its own unique character and culture, making village exploration essential to understanding the diversity of life around the lake! Village tours take you through these traditional communities, from visiting popular villages like San Pedro and Panajachel to exploring authentic communities like Santiago Atitlán, from understanding each village's unique identity to experiencing Mayan culture, and from learning about village traditions to discovering why each village offers something different. Experience the diversity of village life, see how each village has developed its own character, understand the cultural differences between villages, and discover why village tours are essential for experiencing the complete Lake Atitlán. Whether you're seeking authentic cultural experiences, popular tourist villages, or comprehensive village exploration, village tours offer fascinating journeys that showcase the diversity of communities around the lake. From backpacker-friendly villages to traditional communities, from wellness centers to cultural hubs, village tours ensure you experience the full range of what makes each Lake Atitlán village unique!`,
 
       seo: {
-        title: 'Lake Atitlán Village Tours 2025: Traditional Mayan Villages & Culture',
+        title: 'Lake Atitlán Village Tours 2026: Traditional Mayan Villages & Culture',
         description: 'Book Lake Atitlán village tours! Explore traditional Mayan villages, unique village characters & Mayan culture. Discover diverse communities around lake. From $55.',
         keywords: 'Lake Atitlán village tours, Mayan villages Guatemala, San Pedro La Laguna, Santiago Atitlán tours',
       },
@@ -9613,7 +9613,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Lake Atitlán offers incredible hiking opportunities, where trails lead through stunning landscapes, up volcanoes, and along lakeside paths, making hiking an exciting way to experience the natural beauty of the region! Hiking tours take you on trails around Lake Atitlán, from challenging volcano climbs with spectacular views to easier lakeside walks, from hiking between villages to reaching stunning viewpoints, and from experiencing diverse landscapes to understanding why hiking is such a popular way to explore the area. Experience the stunning natural beauty, enjoy incredible volcano and lake views, challenge yourself with rewarding hikes, and discover why hiking tours offer some of the best ways to experience Lake Atitlán's landscapes. Whether you're seeking volcano climbs, village-to-village hikes, or scenic viewpoint trails, hiking tours provide active ways to explore the incredible natural setting of Lake Atitlán. From challenging climbs to easier walks, from volcano summits to lakeside paths, hiking tours ensure you experience the diverse landscapes that surround the lake!`,
 
       seo: {
-        title: 'Lake Atitlán Hiking Tours 2025: Volcano Climbs & Scenic Trails',
+        title: 'Lake Atitlán Hiking Tours 2026: Volcano Climbs & Scenic Trails',
         description: 'Book Lake Atitlán hiking tours! Hike volcanoes, scenic trails & lakeside paths. Discover stunning landscapes and incredible views. From $60.',
         keywords: 'Lake Atitlán hiking, volcano hiking Guatemala, hiking tours Lake Atitlán, San Pedro volcano hike',
       },
@@ -9765,7 +9765,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Boat tours are the essential way to experience Lake Atitlán, where scenic boat rides connect villages and showcase the stunning beauty of the lake surrounded by three majestic volcanoes! Boat tours take you across the beautiful lake, from scenic rides between villages to dedicated lake cruises, from admiring the dramatic volcano backdrop to visiting lakeside communities, and from enjoying the serene beauty of the lake to understanding why Lake Atitlán is considered one of the world's most beautiful lakes. Experience the stunning beauty of the lake from the water, enjoy scenic boat rides with incredible views, visit villages accessible by boat, and discover why boat tours are the perfect way to explore Lake Atitlán. Whether you're seeking village connections, scenic cruises, or comprehensive lake exploration, boat tours offer beautiful journeys that showcase the incredible natural setting of Lake Atitlán. From public boats to private tours, from scenic rides to village hopping, boat tours ensure you experience the stunning beauty of the lake!`,
 
       seo: {
-        title: 'Lake Atitlán Boat Tours 2025: Scenic Boat Rides & Village Visits',
+        title: 'Lake Atitlán Boat Tours 2026: Scenic Boat Rides & Village Visits',
         description: 'Book Lake Atitlán boat tours! Enjoy scenic boat rides, visit lakeside villages & experience stunning lake beauty. Discover Guatemala\'s beautiful lake. From $50.',
         keywords: 'Lake Atitlán boat tours, boat tours Guatemala, scenic lake tours, village boat tours Lake Atitlán',
       },
@@ -9917,7 +9917,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Lake Atitlán's markets are vibrant hubs of Mayan culture, where traditional goods, artisan crafts, fresh produce, and local culture come together in bustling, colorful experiences! Market tours take you through these lively markets, from traditional Mayan markets to artisan shops, from food markets where locals shop to craft markets featuring traditional textiles and goods, and from understanding market culture to supporting local artisans. Experience the vibrant atmosphere, learn about local products, see how locals shop and trade, understand the role of markets in Mayan culture, and discover authentic souvenirs and goods. Whether you're shopping for textiles, sampling local foods, or simply experiencing the market atmosphere, Lake Atitlán market tours offer authentic glimpses into daily Mayan life and provide opportunities to support local vendors and artisans. From food to crafts, from produce to textiles, market tours showcase an essential part of Lake Atitlán's living culture!`,
 
       seo: {
-        title: 'Lake Atitlán Market Tours 2025: Traditional Markets & Artisan Crafts',
+        title: 'Lake Atitlán Market Tours 2026: Traditional Markets & Artisan Crafts',
         description: 'Book Lake Atitlán market tours! Explore traditional markets, artisan crafts & authentic shopping. Discover Mayan goods & local culture. From $45.',
         keywords: 'Lake Atitlán market tours, traditional markets Guatemala, artisan markets Lake Atitlán, market tours Guatemala',
       },
@@ -10071,7 +10071,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Lima's historic center is a UNESCO World Heritage site featuring beautifully preserved colonial architecture, historic plazas, and centuries of Peruvian history that make exploring the historic center essential to understanding Lima! Historic Center tours take you through Lima's central district, from the impressive Plaza Mayor to colonial churches and monasteries, from historic buildings to important landmarks that tell the story of Lima's role as the capital of Spanish South America, and from colonial architecture to understanding how Lima became Peru's most important city. Experience the layers of Lima's history, see perfectly preserved colonial architecture, understand the role of Lima in Peruvian and Spanish American history, and discover why the historic center is considered one of Latin America's most important colonial districts. Whether you're exploring plazas, visiting churches, or simply wandering through atmospheric streets, Historic Center tours offer engaging journeys through the history that makes Lima historically fascinating. From Plaza Mayor to colonial churches, from historic buildings to cultural sites, Historic Center tours showcase the rich heritage that makes Lima's historic center so special!`,
 
       seo: {
-        title: 'Lima Historic Center Tours 2025: UNESCO Heritage & Colonial Architecture',
+        title: 'Lima Historic Center Tours 2026: UNESCO Heritage & Colonial Architecture',
         description: 'Book Lima historic center tours! Explore UNESCO historic center, colonial architecture & historic plazas. Discover Peru\'s capital history. From $50.',
         keywords: 'Lima historic center, UNESCO Lima, colonial Lima, historic center tours Peru, Lima history',
       },
@@ -10223,7 +10223,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Lima is considered one of the world's great food cities, where world-class restaurants, innovative cuisine, and exceptional Peruvian dishes create a culinary scene that makes food tours essential to the Lima experience! Food & Culinary tours take you through Lima's incredible culinary landscape, from tasting world-famous ceviche to experiencing innovative Nikkei and Novoandina cuisine, from visiting award-winning restaurants to exploring local markets, and from understanding Peruvian food culture to discovering why Lima has become a global culinary destination. Experience the flavors that make Lima special, learn about Peruvian culinary traditions, understand how different cultures have influenced Lima's cuisine, and discover why Lima is considered one of the world's best food cities. Whether you're seeking fine dining experiences, market visits, or comprehensive culinary exploration, Food & Culinary tours offer delicious journeys that showcase the culinary excellence that makes Lima a food lover's paradise. From ceviche to innovative dishes, from markets to restaurants, Food & Culinary tours ensure you experience the incredible flavors that define Lima's culinary scene!`,
 
       seo: {
-        title: 'Lima Food & Culinary Tours 2025: World-Class Cuisine & Ceviche',
+        title: 'Lima Food & Culinary Tours 2026: World-Class Cuisine & Ceviche',
         description: 'Book Lima food & culinary tours! Experience world-class cuisine, ceviche & innovative Peruvian dishes. Discover Lima\'s culinary excellence. From $75.',
         keywords: 'Lima food tours, Lima culinary tours, ceviche Lima, Peruvian cuisine, food tours Peru',
       },
@@ -10375,7 +10375,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Lima is home to exceptional museums that showcase Peru's incredible history, from ancient pre-Columbian civilizations to Spanish colonial period, making museum visits essential for understanding Peru's rich cultural heritage! Museum tours take you through Lima's finest museums, from the Larco Museum with its impressive pre-Columbian collection to the National Museum of Archaeology, from gold museums to religious art collections, and from understanding ancient Peruvian cultures to learning about colonial history. Experience Peru's incredible heritage, see world-class collections, learn about ancient civilizations, and discover why Lima's museums are considered among Latin America's finest. Whether you're interested in pre-Columbian art, colonial history, or comprehensive museum exploration, museum tours offer fascinating journeys that showcase the rich cultural heritage that makes Peru historically fascinating. From ancient artifacts to colonial treasures, from archaeological discoveries to cultural exhibitions, museum tours ensure you experience the incredible history and culture that defines Peru!`,
 
       seo: {
-        title: 'Lima Museum Tours 2025: Pre-Columbian Art & Cultural Heritage',
+        title: 'Lima Museum Tours 2026: Pre-Columbian Art & Cultural Heritage',
         description: 'Book Lima museum tours! Explore world-class museums, pre-Columbian art & Peruvian history. Discover Lima\'s exceptional museums. From $60.',
         keywords: 'Lima museum tours, Larco Museum Lima, museums Lima Peru, pre-Columbian art Lima',
       },
@@ -10527,7 +10527,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Lima stretches along Peru's Pacific coast, where coastal districts, waterfront areas, and scenic views of the ocean create beautiful coastal experiences that complement Lima's urban attractions! Coastal tours take you along Lima's coastline, from exploring modern coastal districts like Miraflores to visiting historic coastal areas, from enjoying scenic ocean views to understanding how the Pacific has influenced Lima, and from waterfront walks to experiencing the coastal lifestyle of Lima. Experience the beauty of Lima's coastline, enjoy scenic ocean views, explore coastal neighborhoods, and discover why Lima's coastal areas are such an important part of the city's character. Whether you're seeking scenic views, coastal walks, or district exploration, coastal tours offer beautiful journeys that showcase the Pacific side of Lima. From Miraflores to Barranco, from waterfront parks to coastal cliffs, coastal tours ensure you experience the stunning coastal beauty that makes Lima unique!`,
 
       seo: {
-        title: 'Lima Coastal Tours 2025: Pacific Coast & Waterfront Districts',
+        title: 'Lima Coastal Tours 2026: Pacific Coast & Waterfront Districts',
         description: 'Book Lima coastal tours! Experience Pacific coast, coastal districts & scenic ocean views. Discover Lima\'s beautiful coastline. From $55.',
         keywords: 'Lima coastal tours, Miraflores Lima, coastal Lima Peru, waterfront tours Lima',
       },
@@ -10679,7 +10679,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Lima showcases a fascinating mix of architectural styles, from beautifully preserved colonial architecture in the historic center to modern buildings in coastal districts, creating an architectural journey through Peru's capital that makes architecture tours fascinating! Architecture tours take you through Lima's diverse architectural landscape, from colonial buildings and churches to modern structures, from the historic center's UNESCO heritage to contemporary districts, and from understanding architectural evolution to seeing how different periods have shaped Lima. Experience the architectural diversity, see how styles blend throughout the city, understand the significance of different architectural periods, and discover why Lima's architecture tells the story of Peru's capital. Whether you're an architecture enthusiast or simply appreciate beautiful buildings, Lima architecture tours offer fascinating journeys through architectural history that showcase why Lima is architecturally interesting. From colonial to modern, from historic center to coastal districts, architecture tours showcase the architectural diversity that makes Lima architecturally fascinating!`,
 
       seo: {
-        title: 'Lima Architecture Tours 2025: Colonial & Modern Architecture',
+        title: 'Lima Architecture Tours 2026: Colonial & Modern Architecture',
         description: 'Book Lima architecture tours! Explore colonial architecture, modern buildings & architectural evolution. Discover Lima\'s diverse architecture. From $55.',
         keywords: 'Lima architecture tours, colonial architecture Lima, architecture tours Peru, Lima buildings',
       },
@@ -10831,7 +10831,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Lima offers a vibrant nightlife scene, where trendy bars, live music venues, and exciting evening experiences create memorable nights that make exploring Lima after dark essential! Nightlife tours take you through Lima's evening scene, from trendy bars in Miraflores to live music venues in Barranco, from experiencing Peruvian nightlife culture to discovering why Lima's nightlife is considered among Latin America's best, and from enjoying cocktails and music to understanding how evening culture reflects Lima's modern identity. Experience the energy of Lima at night, enjoy diverse nightlife options, discover trendy venues and local favorites, and explore why nightlife tours are perfect for experiencing Lima's modern side. Whether you're seeking bars, live music, dancing, or comprehensive nightlife exploration, nightlife tours offer exciting evening journeys that showcase the vibrant side of Lima. From Miraflores to Barranco, from bars to clubs, nightlife tours ensure you experience the exciting evening atmosphere that makes Lima come alive at night!`,
 
       seo: {
-        title: 'Lima Nightlife Tours 2025: Bars, Live Music & Evening Entertainment',
+        title: 'Lima Nightlife Tours 2026: Bars, Live Music & Evening Entertainment',
         description: 'Book Lima nightlife tours! Experience vibrant nightlife, trendy bars & live music venues. Discover Lima\'s exciting evening scene. From $70.',
         keywords: 'Lima nightlife, Lima bars, nightlife tours Lima, live music Lima, evening tours Peru',
       },
@@ -10985,7 +10985,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Machu Picchu is one of the world's most iconic archaeological sites, where perfectly preserved Inca ruins stand in breathtaking mountain setting, making exploring the citadel the ultimate Peru experience! Citadel tours take you through the ancient Inca city, from the main terraces to the Temple of the Sun, from the Intihuatana stone to understanding the mysteries of Machu Picchu, and from witnessing incredible architecture to discovering why this lost city is considered one of the New Seven Wonders of the World. Experience the wonder of Machu Picchu, see incredible Inca engineering, learn about the ancient civilization that built this masterpiece, and discover why the citadel continues to captivate visitors from around the world. Whether you're exploring the main ruins, learning about Inca history, or simply absorbing the incredible atmosphere, Citadel tours offer unforgettable journeys that showcase why Machu Picchu is considered the world's most spectacular archaeological site. From the terraces to the temples, from the mysteries to the views, Citadel tours ensure you experience the incredible wonder that is Machu Picchu!`,
 
       seo: {
-        title: 'Machu Picchu Citadel Tours 2025: Ancient Inca Ruins & Archaeological Wonder',
+        title: 'Machu Picchu Citadel Tours 2026: Ancient Inca Ruins & Archaeological Wonder',
         description: 'Book Machu Picchu citadel tours! Explore ancient Inca citadel, ruins & archaeological wonder. Discover Peru\'s crown jewel. From $120.',
         keywords: 'Machu Picchu citadel tours, Machu Picchu tours, Inca ruins Machu Picchu, citadel tours Peru',
       },
@@ -11137,7 +11137,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `The Inca Trail is one of the world's most famous treks, where a 4-day journey through spectacular Andean landscapes leads to Machu Picchu, making the Inca Trail the ultimate adventure for reaching the ancient citadel! Inca Trail tours take you on this legendary trek, from hiking through diverse ecosystems to crossing high mountain passes, from exploring ancient Inca ruins along the trail to understanding the significance of this ancient path, and from experiencing Andean culture to arriving at Machu Picchu through the Sun Gate with breathtaking sunrise views. Experience the adventure of a lifetime, challenge yourself with rewarding trekking, see incredible mountain scenery, and discover why the Inca Trail is considered one of the world's greatest treks. Whether you're seeking the classic 4-day trek or shorter alternatives, Inca Trail tours offer unforgettable journeys that showcase the incredible landscapes and ancient paths that lead to Machu Picchu. From mountain passes to cloud forests, from Inca ruins to the final arrival, Inca Trail tours ensure you experience the legendary trek to Machu Picchu!`,
 
       seo: {
-        title: 'Machu Picchu Inca Trail Tours 2025: Legendary 4-Day Trek to Ancient Citadel',
+        title: 'Machu Picchu Inca Trail Tours 2026: Legendary 4-Day Trek to Ancient Citadel',
         description: 'Book Machu Picchu Inca Trail tours! Experience legendary 4-day trek, Andean landscapes & sunrise arrival. Discover world\'s greatest trek. From $600.',
         keywords: 'Inca Trail tours, Machu Picchu Inca Trail, 4-day trek Peru, Inca Trail hike, classic Inca Trail',
       },
@@ -11289,7 +11289,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Machu Picchu Mountain and Huayna Picchu offer spectacular viewpoints above the citadel, where challenging climbs reward with breathtaking panoramic views of Machu Picchu and the surrounding Andes, making mountain climbs an unforgettable way to experience the wonder from above! Mountain tours take you to these incredible viewpoints, from climbing Huayna Picchu (the iconic peak behind the citadel) to ascending Machu Picchu Mountain (higher, longer climb), from experiencing challenging but rewarding hikes to witnessing the citadel from incredible aerial perspectives, and from understanding why these peaks were important to the Incas to discovering views that few visitors experience. Experience the thrill of climbing above Machu Picchu, challenge yourself with rewarding ascents, see the citadel from spectacular viewpoints, and discover why mountain climbs offer some of the best views of this world wonder. Whether you're climbing Huayna Picchu or Machu Picchu Mountain, mountain tours offer unforgettable experiences that showcase Machu Picchu from incredible perspectives. From challenging ascents to rewarding views, from citadel vistas to mountain panoramas, mountain tours ensure you see Machu Picchu from above!`,
 
       seo: {
-        title: 'Machu Picchu Mountain Tours 2025: Huayna Picchu & Spectacular Views',
+        title: 'Machu Picchu Mountain Tours 2026: Huayna Picchu & Spectacular Views',
         description: 'Book Machu Picchu mountain tours! Climb Huayna Picchu or Machu Picchu Mountain for spectacular citadel views. Discover breathtaking viewpoints. From $140.',
         keywords: 'Huayna Picchu, Machu Picchu Mountain, mountain tours Machu Picchu, Huayna Picchu climb',
       },
@@ -11441,7 +11441,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Machu Picchu is not just an archaeological wonder but also a place of deep cultural and spiritual significance, where understanding the Inca civilization, sacred meaning, and cultural context makes cultural tours essential for truly appreciating this ancient site! Cultural tours take you beyond the ruins to understand the deeper meaning, from learning about Inca civilization and their achievements to understanding Machu Picchu's spiritual significance, from discovering the mysteries surrounding the site to learning about Andean cosmology and beliefs, and from understanding how the Incas built this masterpiece to discovering why Machu Picchu continues to hold cultural importance today. Experience the cultural richness, learn about Inca traditions and beliefs, understand the spiritual dimensions, and discover why cultural tours provide deeper insights into what makes Machu Picchu so special. Whether you're interested in Inca history, spiritual significance, or cultural context, cultural tours offer engaging journeys that showcase the cultural heritage that surrounds Machu Picchu. From ancient traditions to modern interpretations, from historical context to spiritual meaning, cultural tours ensure you understand the cultural significance that makes Machu Picchu culturally fascinating!`,
 
       seo: {
-        title: 'Machu Picchu Cultural Tours 2025: Inca Civilization & Spiritual Significance',
+        title: 'Machu Picchu Cultural Tours 2026: Inca Civilization & Spiritual Significance',
         description: 'Book Machu Picchu cultural tours! Learn about Inca civilization, spiritual meaning & cultural significance. Discover deeper meaning of ancient site. From $130.',
         keywords: 'Machu Picchu cultural tours, Inca culture Machu Picchu, spiritual Machu Picchu, Inca civilization tours',
       },
@@ -11593,7 +11593,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Machu Picchu is one of the world's most photogenic sites, where incredible Inca architecture, stunning mountain settings, and perfect lighting conditions create photography opportunities that make photography tours perfect for capturing this world wonder! Photography tours take you to the best viewpoints and angles, from learning photography techniques for capturing the citadel to finding optimal lighting conditions, from understanding composition for iconic shots to exploring less-photographed areas, and from receiving expert photography guidance to discovering why Machu Picchu is considered a photographer's dream destination. Experience the challenge of photographing this iconic site, learn techniques for capturing the best shots, see Machu Picchu through a photographer's lens, and discover why photography tours offer unique ways to experience and document this world wonder. Whether you're an experienced photographer or seeking better travel photos, photography tours provide expert guidance for capturing stunning images of Machu Picchu. From golden hour shots to architectural details, from panoramic views to intimate compositions, photography tours ensure you capture the incredible beauty of Machu Picchu!`,
 
       seo: {
-        title: 'Machu Picchu Photography Tours 2025: Expert Photography & Best Viewpoints',
+        title: 'Machu Picchu Photography Tours 2026: Expert Photography & Best Viewpoints',
         description: 'Book Machu Picchu photography tours! Learn photography techniques, find best viewpoints & capture stunning shots. Discover photographer\'s dream destination. From $150.',
         keywords: 'Machu Picchu photography tours, photography Machu Picchu, best viewpoints Machu Picchu, photography tours Peru',
       },
@@ -11745,7 +11745,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Machu Picchu at sunrise is one of the world's most magical experiences, where the ancient citadel emerges from morning mist as the sun rises over the Andes, creating breathtaking moments that make sunrise tours the ultimate way to experience this world wonder! Sunrise tours take you to Machu Picchu in the early morning hours, from arriving before sunrise to witness the citadel in morning light, from experiencing the magical transformation as mist clears to seeing the first rays illuminate the ancient stones, from enjoying fewer crowds in the morning to capturing spectacular sunrise photographs, and from understanding why sunrise holds special significance to discovering why this morning experience is considered unforgettable. Experience the magic of Machu Picchu at sunrise, witness the citadel come alive with morning light, enjoy peaceful morning atmosphere with fewer visitors, and discover why sunrise tours offer the most special way to experience this world wonder. Whether you're seeking the iconic sunrise moment, better photography conditions, or a more peaceful visit, sunrise tours provide unforgettable morning experiences that showcase Machu Picchu at its most magical. From misty mornings to golden illumination, from peaceful atmosphere to iconic moments, sunrise tours ensure you experience Machu Picchu at sunrise!`,
 
       seo: {
-        title: 'Machu Picchu Sunrise Tours 2025: Magical Sunrise & Early Morning Experience',
+        title: 'Machu Picchu Sunrise Tours 2026: Magical Sunrise & Early Morning Experience',
         description: 'Book Machu Picchu sunrise tours! Witness magical sunrise, citadel at dawn & spectacular morning light. Experience unforgettable sunrise moment. From $160.',
         keywords: 'Machu Picchu sunrise tours, sunrise Machu Picchu, early morning Machu Picchu, sunrise experience Peru',
       },
@@ -11899,7 +11899,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Manuel Antonio National Park is Costa Rica's smallest national park but one of its most popular, where pristine beaches meet lush rainforest and incredible wildlife thrives, making park exploration essential to experiencing this coastal paradise! National Park tours take you through this beautiful protected area, from hiking rainforest trails to discovering pristine beaches, from spotting sloths and monkeys to seeing colorful birds and diverse wildlife, from understanding the park's conservation efforts to experiencing why Manuel Antonio is considered one of Costa Rica's most beautiful parks. Experience the incredible biodiversity, enjoy beautiful beaches within the park, see wildlife in natural habitat, and discover why National Park tours are the perfect way to experience Manuel Antonio's natural beauty. Whether you're seeking wildlife observation, beach time, or rainforest exploration, National Park tours offer diverse experiences that showcase the incredible natural environment that makes Manuel Antonio so special. From trails to beaches, from wildlife to conservation, National Park tours ensure you experience the natural wonder of Manuel Antonio!`,
 
       seo: {
-        title: 'Manuel Antonio National Park Tours 2025: Rainforest, Beaches & Wildlife',
+        title: 'Manuel Antonio National Park Tours 2026: Rainforest, Beaches & Wildlife',
         description: 'Book Manuel Antonio National Park tours! Explore rainforest, pristine beaches & incredible wildlife. Discover Costa Rica\'s beautiful park. From $50.',
         keywords: 'Manuel Antonio National Park tours, Manuel Antonio park tours, national park tours Costa Rica',
       },
@@ -12051,7 +12051,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Manuel Antonio is home to incredible Costa Rican wildlife, where sloths hang from trees, monkeys swing through canopies, and colorful birds fill the rainforest, making wildlife observation a highlight of any Manuel Antonio visit! Wildlife tours take you into the rainforest to encounter Costa Rica's amazing fauna, from spotting three-toed sloths to observing white-faced capuchin and howler monkeys, from identifying colorful toucans and parrots to learning about Costa Rica's incredible biodiversity, and from understanding rainforest ecosystems to discovering why Manuel Antonio is considered one of Costa Rica's best wildlife destinations. Experience the wonder of Costa Rican wildlife, see animals in their natural habitat, learn about rainforest ecology, and discover why wildlife tours are essential for understanding Manuel Antonio's natural heritage. Whether you're seeking sloths, monkeys, birds, or comprehensive wildlife encounters, wildlife tours offer fascinating journeys into Costa Rica's incredible natural world. From guided walks to specialized wildlife tours, from park trails to observation techniques, wildlife tours ensure you experience the amazing animals that make Manuel Antonio special!`,
 
       seo: {
-        title: 'Manuel Antonio Wildlife Tours 2025: Sloths, Monkeys & Rainforest Animals',
+        title: 'Manuel Antonio Wildlife Tours 2026: Sloths, Monkeys & Rainforest Animals',
         description: 'Book Manuel Antonio wildlife tours! See sloths, monkeys, toucans & Costa Rican wildlife. Experience rainforest animals in natural habitat. From $55.',
         keywords: 'Manuel Antonio wildlife tours, sloths Manuel Antonio, wildlife tours Costa Rica, Manuel Antonio animals',
       },
@@ -12203,7 +12203,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Manuel Antonio is home to some of Costa Rica's most beautiful beaches, where pristine white sand, clear turquoise waters, and stunning coastal scenery create perfect beach experiences that complement the area's natural beauty! Beach tours take you to Manuel Antonio's best beaches, from the stunning beaches within the national park to beautiful coastal areas outside, from enjoying perfect swimming conditions to relaxing on pristine sand, and from experiencing why Manuel Antonio's beaches are considered among Costa Rica's finest to discovering the perfect blend of beach and nature. Experience the beauty of Manuel Antonio's beaches, enjoy crystal-clear waters perfect for swimming, relax on pristine sand, and discover why beach tours are the perfect way to combine relaxation with the area's natural attractions. Whether you're seeking park beaches, coastal exploration, or comprehensive beach experiences, beach tours offer beautiful journeys that showcase the stunning coastal beauty of Manuel Antonio. From swimming to sunbathing, from beach activities to coastal walks, beach tours ensure you experience the beautiful beaches that make Manuel Antonio special!`,
 
       seo: {
-        title: 'Manuel Antonio Beach Tours 2025: Pristine Beaches & Coastal Beauty',
+        title: 'Manuel Antonio Beach Tours 2026: Pristine Beaches & Coastal Beauty',
         description: 'Book Manuel Antonio beach tours! Enjoy pristine beaches, crystal-clear waters & stunning coastal scenery. Discover Costa Rica\'s beautiful beaches. From $45.',
         keywords: 'Manuel Antonio beach tours, Manuel Antonio beaches, beach tours Costa Rica, Manuel Antonio coastal tours',
       },
@@ -12355,7 +12355,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Manuel Antonio's beautiful Pacific waters offer exciting water activities, where snorkeling, kayaking, and boat tours provide ways to experience the area's marine life and coastal beauty, making water activities perfect complements to the beach and wildlife experiences! Water Activities tours take you onto the ocean, from snorkeling in clear waters to kayaking along the coast, from boat tours observing marine life to understanding the area's ocean ecosystems, and from enjoying water sports to discovering why Manuel Antonio's waters are so special. Experience the excitement of water activities, explore marine environments, see marine life in their natural habitat, and discover why water activities add adventure to the Manuel Antonio experience. Whether you're seeking snorkeling, kayaking, boat tours, or comprehensive water experiences, water activities tours offer exciting ways to experience Manuel Antonio from the water. From ocean exploration to marine encounters, from active adventures to scenic boat rides, water activities ensure you experience the beautiful Pacific waters of Manuel Antonio!`,
 
       seo: {
-        title: 'Manuel Antonio Water Activities 2025: Snorkeling, Kayaking & Boat Tours',
+        title: 'Manuel Antonio Water Activities 2026: Snorkeling, Kayaking & Boat Tours',
         description: 'Book Manuel Antonio water activities! Enjoy snorkeling, kayaking & boat tours. Experience Pacific waters & marine life. From $60.',
         keywords: 'Manuel Antonio water activities, snorkeling Manuel Antonio, kayaking Costa Rica, Manuel Antonio boat tours',
       },
@@ -12507,7 +12507,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Manuel Antonio offers beautiful hiking opportunities, where rainforest trails lead through diverse ecosystems, to scenic viewpoints, and past incredible wildlife, making hiking an excellent way to experience the area's natural beauty! Hiking tours take you on trails through Manuel Antonio's landscapes, from walking rainforest trails within the national park to exploring coastal paths, from reaching scenic viewpoints with ocean views to understanding the area's diverse ecosystems, and from observing wildlife along the trails to discovering why hiking is such a rewarding way to explore Manuel Antonio. Experience the beauty of rainforest hiking, enjoy scenic trails with wildlife encounters, challenge yourself with rewarding hikes, and discover why hiking tours offer intimate ways to experience Manuel Antonio's natural environment. Whether you're seeking easy nature walks, moderate hikes, or comprehensive trail exploration, hiking tours provide active ways to explore the incredible natural setting of Manuel Antonio. From rainforest trails to coastal paths, from wildlife encounters to scenic views, hiking tours ensure you experience the diverse landscapes that make Manuel Antonio special!`,
 
       seo: {
-        title: 'Manuel Antonio Hiking Tours 2025: Rainforest Trails & Scenic Viewpoints',
+        title: 'Manuel Antonio Hiking Tours 2026: Rainforest Trails & Scenic Viewpoints',
         description: 'Book Manuel Antonio hiking tours! Hike rainforest trails, scenic viewpoints & diverse ecosystems. Discover beautiful hiking opportunities. From $50.',
         keywords: 'Manuel Antonio hiking tours, hiking Manuel Antonio, rainforest trails Costa Rica, Manuel Antonio trails',
       },
@@ -12659,7 +12659,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Manuel Antonio offers spectacular sunsets over the Pacific Ocean, where evening light paints the sky and ocean in beautiful colors, making sunset experiences perfect ways to end days in this tropical paradise! Sunset tours take you to the best sunset viewing spots, from scenic viewpoints overlooking the ocean to beach areas perfect for sunset watching, from boat tours with sunset views to romantic sunset experiences, and from capturing spectacular sunset photographs to understanding why Manuel Antonio sunsets are considered among Costa Rica's most beautiful. Experience the beauty of Pacific sunsets, enjoy romantic evening atmosphere, witness spectacular sunset colors, and discover why sunset tours offer perfect endings to Manuel Antonio days. Whether you're seeking scenic viewpoints, beach sunsets, or sunset boat tours, sunset tours provide beautiful evening experiences that showcase the stunning coastal beauty of Manuel Antonio. From golden hour to twilight, from ocean views to romantic moments, sunset tours ensure you experience the beautiful sunsets that make Manuel Antonio evenings special!`,
 
       seo: {
-        title: 'Manuel Antonio Sunset Tours 2025: Spectacular Sunsets & Evening Views',
+        title: 'Manuel Antonio Sunset Tours 2026: Spectacular Sunsets & Evening Views',
         description: 'Book Manuel Antonio sunset tours! Experience beautiful sunsets, Pacific views & romantic evening moments. Discover spectacular sunset experiences. From $55.',
         keywords: 'Manuel Antonio sunset tours, sunset Manuel Antonio, sunset tours Costa Rica, Manuel Antonio evening tours',
       },
@@ -12813,7 +12813,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Medellín is Colombia's most dynamic city, where innovative urban transformation, modern architecture, and vibrant culture come together in a city that has reinvented itself as one of Latin America's most progressive destinations! City tours take you through Medellín's diverse neighborhoods, from exploring the innovative transformation projects to experiencing the city's modern innovations, from understanding the city's remarkable journey to discovering why Medellín is called the City of Eternal Spring, and from seeing cutting-edge architecture to experiencing the vibrant energy that defines modern Medellín. Experience the innovation that makes Medellín special, learn about the city's transformation, understand how urban planning has changed the city, and discover why Medellín is considered a model of urban innovation. Whether you're exploring downtown, visiting innovation projects, or simply experiencing the city's vibrant atmosphere, City tours offer engaging journeys that showcase why Medellín is such a fascinating and inspiring city. From transformation projects to modern districts, from innovation to culture, City tours ensure you experience the dynamic city that is modern Medellín!`,
 
       seo: {
-        title: 'Medellín City Tours 2025: Urban Innovation & City Transformation',
+        title: 'Medellín City Tours 2026: Urban Innovation & City Transformation',
         description: 'Book Medellín city tours! Explore vibrant city, urban innovation & transformation projects. Discover Colombia\'s City of Eternal Spring. From $45.',
         keywords: 'Medellín city tours, Medellín tours Colombia, city tours Medellín, urban innovation tours',
       },
@@ -12965,7 +12965,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Medellín's Metrocable system is one of the world's most innovative urban transportation projects, where cable cars connect hillside neighborhoods to the city, providing both transportation and incredible views, making cable car tours a unique way to experience Medellín! Cable Car tours take you on this innovative transportation system, from riding the Metrocable above the city to visiting hillside neighborhoods, from enjoying spectacular city views from above to understanding how the cable car system transformed communities, and from experiencing innovative urban planning to discovering why the Metrocable is considered one of Medellín's most significant innovations. Experience the innovation of the Metrocable, see the city from unique aerial perspectives, visit hillside communities, and discover why cable car tours offer unique insights into both Medellín's geography and its social transformation. Whether you're seeking spectacular views, community visits, or understanding urban innovation, cable car tours provide unique journeys that showcase the innovative transportation that connects Medellín. From city views to hillside neighborhoods, from transportation innovation to community transformation, cable car tours ensure you experience the Metrocable system that has become a symbol of Medellín's innovation!`,
 
       seo: {
-        title: 'Medellín Cable Car Tours 2025: Metrocable & Spectacular City Views',
+        title: 'Medellín Cable Car Tours 2026: Metrocable & Spectacular City Views',
         description: 'Book Medellín cable car tours! Ride innovative Metrocable, see city from above & visit hillside neighborhoods. Experience unique transportation system. From $40.',
         keywords: 'Medellín cable car tours, Metrocable Medellín, cable car tours Colombia, Medellín Metrocable',
       },
@@ -13117,7 +13117,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Medellín offers a vibrant food scene where traditional Colombian cuisine meets modern culinary innovation, creating delicious food experiences that showcase both the city's culinary heritage and its contemporary culture! Food & Culture tours take you through Medellín's gastronomic landscape, from tasting traditional dishes like bandeja paisa to experiencing modern Colombian cuisine, from visiting local markets to understanding food traditions, and from learning about Colombian culture through food to discovering why Medellín's food scene is considered among Colombia's best. Experience the flavors that make Medellín special, learn about Colombian culinary traditions, understand how food reflects culture, and discover why Food & Culture tours are essential for experiencing the authentic Medellín. Whether you're seeking traditional food, modern cuisine, or comprehensive culinary exploration, Food & Culture tours offer delicious journeys that showcase the culinary richness that makes Medellín culturally fascinating. From markets to restaurants, from traditional to modern, Food & Culture tours ensure you experience the incredible flavors that define Medellín!`,
 
       seo: {
-        title: 'Medellín Food & Culture Tours 2025: Colombian Cuisine & Cultural Experiences',
+        title: 'Medellín Food & Culture Tours 2026: Colombian Cuisine & Cultural Experiences',
         description: 'Book Medellín food & culture tours! Discover Colombian cuisine, traditional dishes & cultural experiences. Experience authentic flavors of Medellín. From $60.',
         keywords: 'Medellín food tours, Medellín food & culture tours, Colombian cuisine Medellín, food tours Colombia',
       },
@@ -13269,7 +13269,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Medellín has emerged as one of Latin America's great art destinations, where street art, galleries, and cultural spaces showcase artistic expression that reflects the city's transformation and vibrant culture, making art tours essential for understanding Medellín's creative identity! Art tours take you through Medellín's artistic landscape, from exploring world-class street art and murals to visiting galleries and cultural centers, from understanding how art has been part of the city's transformation to discovering why Medellín's art scene is considered among Latin America's most vibrant, and from seeing works by local and international artists to experiencing how art tells the story of Medellín. Experience the creativity that defines Medellín, see incredible street art and murals, visit galleries showcasing contemporary art, and discover why art tours offer unique insights into both Medellín's transformation and its cultural identity. Whether you're interested in street art, contemporary galleries, or comprehensive art exploration, art tours provide engaging journeys that showcase the artistic richness that makes Medellín culturally fascinating. From street murals to gallery exhibitions, from urban art to contemporary works, art tours ensure you experience the incredible art scene that makes Medellín an art destination!`,
 
       seo: {
-        title: 'Medellín Art Tours 2025: Street Art, Murals & Contemporary Art Scene',
+        title: 'Medellín Art Tours 2026: Street Art, Murals & Contemporary Art Scene',
         description: 'Book Medellín art tours! Explore street art, murals & contemporary art scene. Discover vibrant art culture reflecting city transformation. From $50.',
         keywords: 'Medellín art tours, street art Medellín, Medellín murals, art tours Colombia, Medellín galleries',
       },
@@ -13421,7 +13421,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Medellín is a city of diverse neighborhoods, each with its own unique character, history, and culture, making neighborhood exploration essential to understanding the full story of Medellín's transformation! Neighborhood tours take you through Medellín's distinct communities, from visiting transformed hillside neighborhoods to exploring modern districts, from understanding how different areas have developed to experiencing the diverse character of each neighborhood, and from learning about community transformation to discovering why each neighborhood offers something different. Experience the diversity of Medellín's neighborhoods, see how transformation has affected different areas, understand the unique character of each community, and discover why neighborhood tours are essential for experiencing the complete Medellín. Whether you're seeking transformed communities, modern districts, or comprehensive neighborhood exploration, neighborhood tours offer fascinating journeys that showcase the diversity of communities that make up Medellín. From hillside neighborhoods to downtown areas, from transformation projects to cultural districts, neighborhood tours ensure you experience the full range of what makes each Medellín neighborhood unique!`,
 
       seo: {
-        title: 'Medellín Neighborhood Tours 2025: Transformed Communities & Cultural Districts',
+        title: 'Medellín Neighborhood Tours 2026: Transformed Communities & Cultural Districts',
         description: 'Book Medellín neighborhood tours! Explore diverse neighborhoods, transformed communities & cultural districts. Discover unique character of each area. From $50.',
         keywords: 'Medellín neighborhood tours, Medellín neighborhoods, neighborhood tours Colombia, Medellín community tours',
       },
@@ -13573,7 +13573,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Medellín offers an exciting nightlife scene, where trendy bars, dance clubs, and vibrant evening experiences create memorable nights that make exploring Medellín after dark essential! Nightlife tours take you through Medellín's evening scene, from visiting trendy bars in El Poblado to experiencing dance clubs with salsa and reggaeton, from discovering local nightlife favorites to understanding why Medellín's nightlife is considered among Colombia's best, and from enjoying cocktails and music to experiencing how evening culture reflects Medellín's modern, dynamic identity. Experience the energy of Medellín at night, enjoy diverse nightlife options, discover trendy venues and local favorites, and explore why nightlife tours are perfect for experiencing Medellín's vibrant modern side. Whether you're seeking bars, dance clubs, live music, or comprehensive nightlife exploration, nightlife tours offer exciting evening journeys that showcase the vibrant side of Medellín. From El Poblado to downtown, from bars to clubs, nightlife tours ensure you experience the exciting evening atmosphere that makes Medellín come alive at night!`,
 
       seo: {
-        title: 'Medellín Nightlife Tours 2025: Bars, Dance Clubs & Evening Entertainment',
+        title: 'Medellín Nightlife Tours 2026: Bars, Dance Clubs & Evening Entertainment',
         description: 'Book Medellín nightlife tours! Experience exciting nightlife, trendy bars & dance clubs. Discover vibrant evening scene in City of Eternal Spring. From $65.',
         keywords: 'Medellín nightlife, Medellín bars, nightlife tours Medellín, dance clubs Medellín, evening tours Colombia',
       },
@@ -13727,7 +13727,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Mendoza is Argentina's premier wine region and one of the world's great wine destinations, where exceptional Malbec wines, prestigious wineries, and stunning Andean landscapes create unforgettable wine experiences that make wine tours essential to the Mendoza visit! Wine tours take you through Mendoza's wine country, from visiting prestigious wineries to tasting world-class Malbec wines, from learning about winemaking to understanding Mendoza's wine heritage, and from experiencing beautiful vineyard settings to discovering why Mendoza is considered among the world's best wine regions. Experience the excellence of Mendoza wines, taste exceptional Malbec and other varietals, visit beautiful wineries, and discover why wine tours are the highlight of any Mendoza visit. Whether you're a wine enthusiast or simply enjoy good wine, Mendoza wine tours offer delightful journeys that showcase the wine excellence that makes Mendoza famous. From winery visits to tastings, from Malbec to other varietals, wine tours ensure you experience the incredible wines that define Mendoza!`,
 
       seo: {
-        title: 'Mendoza Wine Tours 2025: World-Class Malbec & Prestigious Wineries',
+        title: 'Mendoza Wine Tours 2026: World-Class Malbec & Prestigious Wineries',
         description: 'Book Mendoza wine tours! Taste world-class Malbec wines, visit prestigious wineries & experience Argentina\'s premier wine region. Discover exceptional wines. From $85.',
         keywords: 'Mendoza wine tours, Malbec wine tours, Mendoza wineries, wine tours Argentina, Mendoza wine region',
       },
@@ -13879,7 +13879,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Mendoza's vineyards stretch across stunning landscapes with the Andes as backdrop, where rows of grapevines create beautiful scenery and provide the foundation for world-class wines, making vineyard tours perfect for understanding the winemaking process from grape to bottle! Vineyard tours take you into the heart of Mendoza's wine country, from exploring beautiful vineyards to learning about grape cultivation, from understanding different grape varieties to seeing how terroir and altitude affect wine, and from experiencing the vineyard landscape to discovering why Mendoza's high-altitude vineyards produce such exceptional wines. Experience the beauty of Mendoza's vineyards, learn about viticulture and winemaking, understand the relationship between vineyard and wine, and discover why vineyard tours offer unique insights into the winemaking process. Whether you're interested in viticulture, winemaking techniques, or simply enjoying beautiful vineyard scenery, vineyard tours provide fascinating journeys that showcase the agricultural foundation that makes Mendoza wines so special. From vineyard walks to winery processes, from grape varieties to terroir, vineyard tours ensure you understand how Mendoza's vineyards create world-class wines!`,
 
       seo: {
-        title: 'Mendoza Vineyard Tours 2025: Beautiful Vineyards & Winemaking Process',
+        title: 'Mendoza Vineyard Tours 2026: Beautiful Vineyards & Winemaking Process',
         description: 'Book Mendoza vineyard tours! Explore beautiful vineyards, learn winemaking & experience vineyard landscapes. Discover process behind world-class wines. From $90.',
         keywords: 'Mendoza vineyard tours, Mendoza vineyards, vineyard tours Argentina, Mendoza winemaking',
       },
@@ -14031,7 +14031,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Mendoza offers exciting adventure activities, where outdoor adventures complement the wine experiences, making Mendoza a destination for both wine enthusiasts and adventure seekers! Adventure tours take you into Mendoza's outdoor playground, from whitewater rafting on rushing rivers to hiking in the Andes, from mountain biking to understanding how adventure sports thrive in Mendoza's mountain setting, and from experiencing thrilling activities to discovering why Mendoza is considered both a wine paradise and an adventure destination. Experience the thrill of Mendoza adventures, enjoy activities in stunning mountain settings, challenge yourself with exciting pursuits, and discover why adventure tours add excitement to the Mendoza experience. Whether you're seeking rafting, hiking, biking, or multiple adventures, adventure tours offer exciting ways to experience Mendoza's natural playground. From water sports to mountain activities, from adrenaline-pumping to scenic adventures, adventure tours ensure you experience the thrill of outdoor activities in Mendoza!`,
 
       seo: {
-        title: 'Mendoza Adventure Tours 2025: Rafting, Hiking & Outdoor Activities',
+        title: 'Mendoza Adventure Tours 2026: Rafting, Hiking & Outdoor Activities',
         description: 'Book Mendoza adventure tours! Experience rafting, hiking & outdoor adventures. Discover thrilling activities in wine paradise. From $75.',
         keywords: 'Mendoza adventure tours, rafting Mendoza, adventure tours Argentina, Mendoza outdoor activities',
       },
@@ -14183,7 +14183,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Mendoza is framed by the spectacular Andes Mountains, where snow-capped peaks, mountain landscapes, and high-altitude vistas create stunning scenery that provides the dramatic backdrop to the wine region, making mountain tours essential for experiencing Mendoza's complete natural beauty! Mountain tours take you into the Andes, from scenic drives with spectacular mountain views to mountain excursions exploring high-altitude landscapes, from visiting Aconcagua (the highest peak in the Americas) to understanding how mountains influence Mendoza's wine, and from experiencing incredible mountain scenery to discovering why the Andes are such an important part of Mendoza's identity. Experience the majesty of the Andes, see spectacular mountain peaks and landscapes, learn about mountain ecology and geology, and discover why mountain tours offer stunning ways to experience the natural setting that surrounds Mendoza. Whether you're seeking scenic mountain drives, Aconcagua visits, or comprehensive mountain exploration, mountain tours provide beautiful journeys that showcase the incredible Andes that frame Mendoza. From mountain passes to peaks, from scenic viewpoints to mountain landscapes, mountain tours ensure you experience the spectacular mountains that define Mendoza's setting!`,
 
       seo: {
-        title: 'Mendoza Mountain Tours 2025: Andes Mountains & Aconcagua Views',
+        title: 'Mendoza Mountain Tours 2026: Andes Mountains & Aconcagua Views',
         description: 'Book Mendoza mountain tours! Explore Andes Mountains, Aconcagua views & spectacular mountain landscapes. Discover stunning mountain scenery. From $80.',
         keywords: 'Mendoza mountain tours, Andes Mountains Mendoza, Aconcagua tours, mountain tours Argentina',
       },
@@ -14335,7 +14335,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Mendoza offers exceptional food and wine experiences, where traditional Argentine cuisine meets world-class Malbec wines, creating perfect food and wine pairings that make Food & Wine tours essential to the Mendoza experience! Food & Wine tours take you through Mendoza's gastronomic scene, from pairing traditional Argentine steaks with Malbec to experiencing gourmet dining, from learning about wine and food pairing to understanding how Mendoza's cuisine complements its wines, and from tasting exceptional combinations to discovering why Mendoza is considered one of Argentina's great food and wine destinations. Experience the perfect harmony of food and wine, taste exceptional pairings, learn about Argentine cuisine, and discover why Food & Wine tours are the highlight of any Mendoza visit. Whether you're seeking traditional pairings, gourmet experiences, or comprehensive food and wine exploration, Food & Wine tours offer delightful journeys that showcase the culinary excellence that makes Mendoza famous. From steak and Malbec to gourmet cuisine, from traditional to modern, Food & Wine tours ensure you experience the incredible food and wine combinations that define Mendoza!`,
 
       seo: {
-        title: 'Mendoza Food & Wine Tours 2025: Argentine Cuisine & Wine Pairings',
+        title: 'Mendoza Food & Wine Tours 2026: Argentine Cuisine & Wine Pairings',
         description: 'Book Mendoza food & wine tours! Experience exceptional food, wine pairings & gourmet dining. Discover perfect pairing of Argentine cuisine and Malbec. From $100.',
         keywords: 'Mendoza food & wine tours, food and wine tours Argentina, Mendoza dining tours, Argentine cuisine Mendoza',
       },
@@ -14487,7 +14487,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Mendoza offers spectacular scenic beauty, where vineyards stretch beneath snow-capped Andean peaks, creating stunning landscapes that make scenic tours perfect for appreciating the natural beauty of the wine region! Scenic tours take you through Mendoza's beautiful countryside, from driving through vineyard landscapes to enjoying mountain vistas, from experiencing the dramatic contrast between vineyards and mountains to understanding why Mendoza's scenery is considered among Argentina's most beautiful, and from capturing scenic photographs to discovering why the landscape itself is as impressive as the wines. Experience the beauty of Mendoza's scenery, enjoy scenic drives through wine country, see spectacular mountain backdrops, and discover why scenic tours offer peaceful ways to appreciate the natural setting that makes Mendoza special. Whether you're seeking vineyard scenery, mountain views, or comprehensive landscape appreciation, scenic tours provide beautiful journeys that showcase the stunning natural beauty of Mendoza. From vineyards to mountains, from rural landscapes to scenic viewpoints, scenic tours ensure you experience the incredible scenery that frames Mendoza!`,
 
       seo: {
-        title: 'Mendoza Scenic Tours 2025: Vineyard Landscapes & Mountain Vistas',
+        title: 'Mendoza Scenic Tours 2026: Vineyard Landscapes & Mountain Vistas',
         description: 'Book Mendoza scenic tours! Enjoy scenic drives, vineyard landscapes & mountain vistas. Discover stunning natural beauty of wine region. From $70.',
         keywords: 'Mendoza scenic tours, scenic Mendoza, vineyard landscapes, mountain views Mendoza',
       },
@@ -14641,7 +14641,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `The Panama Canal is one of the world's greatest engineering achievements, where this iconic waterway connects the Atlantic and Pacific Oceans through a system of locks, making canal tours essential for understanding this incredible feat of human ingenuity! Panama Canal tours take you to witness this engineering marvel, from watching massive ships navigate through locks to learning about the canal's history and operation, from understanding how ships cross the continent to discovering why the Panama Canal is considered one of humanity's greatest achievements, and from experiencing the canal's operation to appreciating the engineering brilliance that makes it possible. Experience the wonder of the Panama Canal, watch as ships are raised and lowered through locks, learn about the canal's fascinating history, and discover why Panama Canal tours offer unforgettable experiences that showcase human achievement. Whether you're interested in engineering, history, or simply witnessing this incredible operation, Panama Canal tours provide fascinating journeys that showcase the marvel that is the Panama Canal. From lock operations to canal history, from engineering brilliance to maritime operations, Panama Canal tours ensure you experience one of the world's most impressive engineering achievements!`,
 
       seo: {
-        title: 'Panama City Panama Canal Tours 2025: Engineering Marvel & Lock Operations',
+        title: 'Panama City Panama Canal Tours 2026: Engineering Marvel & Lock Operations',
         description: 'Book Panama Canal tours! Witness engineering marvel, ships passing through locks & learn about historic waterway. Experience world\'s greatest engineering achievement. From $60.',
         keywords: 'Panama Canal tours, Panama Canal Panama City, canal tours, engineering tours Panama',
       },
@@ -14793,7 +14793,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Casco Viejo is Panama City's beautiful historic district, where colonial architecture, charming cobblestone streets, and historic squares create a UNESCO World Heritage site that contrasts dramatically with the modern skyline, making Casco Viejo tours essential for experiencing Panama City's historic heart! Casco Viejo tours take you through this historic old town, from exploring beautifully restored colonial buildings to wandering through atmospheric streets, from visiting historic squares to understanding the area's transformation, and from experiencing the contrast between old and new to discovering why Casco Viejo is considered one of Latin America's most charming historic districts. Experience the charm of historic Panama, see perfectly restored colonial architecture, enjoy atmospheric streets and plazas, and discover why Casco Viejo tours offer beautiful journeys through Panama City's historic heart. Whether you're interested in history, architecture, or simply experiencing the charming atmosphere, Casco Viejo tours provide engaging ways to discover the historic side of Panama City. From colonial buildings to historic plazas, from restoration to cultural heritage, Casco Viejo tours ensure you experience the beautiful historic district that is Casco Viejo!`,
 
       seo: {
-        title: 'Panama City Casco Viejo Tours 2025: Colonial Architecture & Historic Old Town',
+        title: 'Panama City Casco Viejo Tours 2026: Colonial Architecture & Historic Old Town',
         description: 'Book Casco Viejo tours! Explore historic old town, colonial architecture & UNESCO World Heritage site. Discover charming historic district. From $45.',
         keywords: 'Casco Viejo tours Panama City, Casco Viejo Panama, colonial Panama City, historic Panama City tours',
       },
@@ -14945,7 +14945,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Panama City is a dynamic metropolis where a modern skyline with impressive skyscrapers contrasts with historic Casco Viejo, creating a fascinating city that serves as a bridge between continents and cultures, making city tours essential for experiencing this vibrant capital! City tours take you through Panama City's diverse neighborhoods, from marveling at the impressive skyline to exploring historic Casco Viejo, from experiencing the contrast between old and new to understanding why Panama City is considered one of Latin America's most dynamic capitals, and from seeing modern developments to discovering the vibrant culture that defines this cosmopolitan city. Experience the energy of Panama City, see the impressive skyline that rivals Miami, understand how historic and modern coexist, and discover why city tours are perfect for experiencing the full character of this fascinating metropolis. Whether you're interested in the skyline, historic areas, or comprehensive city exploration, City tours offer engaging journeys that showcase the vibrant city that is Panama City. From modern skyscrapers to historic districts, from downtown to neighborhoods, City tours ensure you experience the dynamic metropolis that bridges North and South America!`,
 
       seo: {
-        title: 'Panama City City Tours 2025: Dynamic Metropolis & Skyline Views',
+        title: 'Panama City City Tours 2026: Dynamic Metropolis & Skyline Views',
         description: 'Book Panama City city tours! Explore dynamic metropolis, modern skyline & vibrant neighborhoods. Discover bridge between North and South America. From $50.',
         keywords: 'Panama City tours, city tours Panama, Panama City skyline, Panama City travel',
       },
@@ -15097,7 +15097,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Panama City offers a diverse and vibrant food scene, where traditional Panamanian cuisine meets international influences, creating delicious food experiences that reflect the city's cosmopolitan culture and strategic location as a crossroads of the Americas! Food & Culture tours take you through Panama City's gastronomic landscape, from tasting traditional dishes like sancocho and ceviche to experiencing international cuisine, from visiting local markets to understanding food traditions, and from learning about Panamanian culture through food to discovering why Panama City's food scene is considered among the region's most diverse. Experience the flavors that make Panama City special, learn about Panamanian culinary traditions, understand how food reflects the city's cosmopolitan culture, and discover why Food & Culture tours are essential for experiencing authentic Panama City. Whether you're seeking traditional food, international cuisine, or comprehensive culinary exploration, Food & Culture tours offer delicious journeys that showcase the culinary richness that makes Panama City culturally fascinating. From markets to restaurants, from traditional to international, Food & Culture tours ensure you experience the incredible flavors that define Panama City!`,
 
       seo: {
-        title: 'Panama City Food & Culture Tours 2025: Panamanian Cuisine & Cultural Experiences',
+        title: 'Panama City Food & Culture Tours 2026: Panamanian Cuisine & Cultural Experiences',
         description: 'Book Panama City food & culture tours! Discover Panamanian cuisine, traditional dishes & cultural experiences. Experience diverse culinary scene. From $55.',
         keywords: 'Panama City food tours, Panamanian cuisine, food tours Panama, Panama City cultural tours',
       },
@@ -15249,7 +15249,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Panama City showcases fascinating architectural evolution, where beautifully preserved colonial buildings in Casco Viejo contrast dramatically with gleaming modern skyscrapers, creating architectural diversity that makes architecture tours essential for appreciating the city's built heritage! Architecture tours take you through Panama City's architectural landscape, from exploring colonial architecture in Casco Viejo to marveling at the impressive modern skyline, from understanding the restoration of historic buildings to discovering contemporary architectural innovations, and from experiencing the contrast between eras to learning why Panama City's architecture tells the story of its growth. Experience the architectural richness that defines Panama City, see how different periods coexist, understand the restoration work in Casco Viejo, and discover why architecture tours offer unique insights into both Panama City's history and its modern development. Whether you're interested in colonial architecture, modern buildings, or comprehensive architectural exploration, architecture tours provide engaging journeys that showcase the architectural evolution that makes Panama City architecturally fascinating. From colonial to contemporary, from restoration to innovation, architecture tours ensure you experience the diverse architectural heritage that defines Panama City!`,
 
       seo: {
-        title: 'Panama City Architecture Tours 2025: Colonial & Modern Architectural Heritage',
+        title: 'Panama City Architecture Tours 2026: Colonial & Modern Architectural Heritage',
         description: 'Book Panama City architecture tours! Explore colonial Casco Viejo, modern skyscrapers & architectural evolution. Discover diverse architectural heritage. From $50.',
         keywords: 'Panama City architecture tours, colonial architecture Panama, modern Panama City, architecture tours Panama',
       },
@@ -15401,7 +15401,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Panama City offers an exciting nightlife scene, where trendy bars, dance clubs, and vibrant evening experiences create memorable nights that make exploring Panama City after dark essential! Nightlife tours take you through Panama City's evening scene, from visiting trendy bars and cocktail lounges to experiencing dance clubs with Latin rhythms, from discovering local nightlife favorites to understanding why Panama City's nightlife is considered among the region's best, and from enjoying drinks and music to experiencing how evening culture reflects Panama City's cosmopolitan identity. Experience the energy of Panama City at night, enjoy diverse nightlife options, discover trendy venues and local favorites, and explore why nightlife tours are perfect for experiencing Panama City's vibrant side. Whether you're seeking bars, clubs, live music, or comprehensive nightlife exploration, nightlife tours offer exciting evening journeys that showcase the vibrant nightlife that makes Panama City come alive at night. From Casco Viejo to modern districts, from bars to clubs, nightlife tours ensure you experience the exciting evening atmosphere of cosmopolitan Panama City!`,
 
       seo: {
-        title: 'Panama City Nightlife Tours 2025: Bars, Dance Clubs & Evening Entertainment',
+        title: 'Panama City Nightlife Tours 2026: Bars, Dance Clubs & Evening Entertainment',
         description: 'Book Panama City nightlife tours! Experience exciting nightlife, trendy bars & dance clubs. Discover vibrant evening scene in cosmopolitan capital. From $65.',
         keywords: 'Panama City nightlife, bars Panama City, nightlife tours Panama, dance clubs Panama City',
       },
@@ -15555,7 +15555,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Patagonia offers some of the world's most spectacular hiking, where epic trails wind through pristine wilderness, past glaciers, mountains, and lakes, creating hiking experiences that make Patagonia a world-renowned trekking destination! Hiking tours take you into Patagonia's wilderness, from trekking famous routes like the W Trek and Torres del Paine to exploring remote trails, from witnessing breathtaking mountain scenery to experiencing pristine glacial landscapes, and from challenging your limits to discovering why Patagonia is considered one of the planet's ultimate hiking destinations. Experience the adventure of Patagonia hiking, challenge yourself with rewarding treks, see incredible wilderness scenery, and discover why hiking tours are the essence of the Patagonia experience. Whether you're seeking iconic routes, multi-day treks, or day hikes, hiking tours offer unforgettable journeys that showcase the spectacular wilderness that defines Patagonia. From Torres del Paine to Los Glaciares National Park, from easy walks to epic challenges, hiking tours ensure you experience the incredible hiking that makes Patagonia legendary!`,
 
       seo: {
-        title: 'Patagonia Hiking Tours 2025: Torres del Paine & Epic Wilderness Trails',
+        title: 'Patagonia Hiking Tours 2026: Torres del Paine & Epic Wilderness Trails',
         description: 'Book Patagonia hiking tours! Hike Torres del Paine, W Trek & epic wilderness trails. Experience world\'s most spectacular hiking. From $120.',
         keywords: 'Patagonia hiking tours, Torres del Paine hiking, W Trek Patagonia, hiking tours Chile Argentina',
       },
@@ -15711,7 +15711,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Patagonia is home to some of the world's most spectacular glaciers, where massive ice fields, calving glaciers, and pristine glacial landscapes create breathtaking experiences that showcase the power and beauty of glacial ice, making glacier tours essential for witnessing these incredible natural phenomena! Glacier tours take you to Patagonia's glacial wonders, from viewing massive Perito Moreno Glacier to experiencing ice trekking on glaciers, from witnessing glacier calving to understanding glacial processes, and from exploring glacial landscapes to discovering why Patagonia's glaciers are considered among the world's most spectacular. Experience the majesty of Patagonia's glaciers, see massive walls of ice, witness glacier calving events, and discover why glacier tours offer unforgettable experiences that showcase the incredible glacial heritage of Patagonia. Whether you're seeking glacier viewing, ice trekking, or comprehensive glacial exploration, glacier tours provide stunning journeys that showcase the spectacular ice landscapes that define this region. From Perito Moreno to ice trekking, from glacier boats to viewing platforms, glacier tours ensure you experience the incredible glacial wonders of Patagonia!`,
 
       seo: {
-        title: 'Patagonia Glacier Tours 2025: Perito Moreno & Spectacular Ice Fields',
+        title: 'Patagonia Glacier Tours 2026: Perito Moreno & Spectacular Ice Fields',
         description: 'Book Patagonia glacier tours! Experience spectacular glaciers, Perito Moreno & ice trekking. Witness impressive glacial landscapes. From $140.',
         keywords: 'Patagonia glacier tours, Perito Moreno Glacier, glacier tours Argentina Chile, ice trekking Patagonia',
       },
@@ -15863,7 +15863,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Patagonia is home to diverse and fascinating wildlife, where guanacos, Andean condors, pumas, and foxes thrive in pristine wilderness, making wildlife encounters an essential part of the Patagonia experience! Wildlife tours take you into Patagonia's wilderness to encounter its amazing fauna, from spotting guanacos grazing on grasslands to observing Andean condors soaring overhead, from searching for pumas and foxes to learning about Patagonia's unique ecosystems, and from experiencing wildlife in natural habitats to discovering why Patagonia is considered one of South America's premier wildlife destinations. Experience the wonder of Patagonian wildlife, see animals in their natural wilderness habitats, learn about conservation efforts, and discover why wildlife tours offer unforgettable encounters with Patagonia's fascinating fauna. Whether you're seeking guanacos, birds of prey, or comprehensive wildlife observation, wildlife tours provide fascinating journeys that showcase the incredible animals that call Patagonia home. From grasslands to mountains, from birds to mammals, wildlife tours ensure you experience the amazing wildlife that makes Patagonia special!`,
 
       seo: {
-        title: 'Patagonia Wildlife Tours 2025: Guanacos, Condors & Wilderness Encounters',
+        title: 'Patagonia Wildlife Tours 2026: Guanacos, Condors & Wilderness Encounters',
         description: 'Book Patagonia wildlife tours! See guanacos, Andean condors & Patagonian wildlife. Experience wildlife encounters in pristine wilderness. From $100.',
         keywords: 'Patagonia wildlife tours, guanacos Patagonia, Andean condors, wildlife tours Chile Argentina',
       },
@@ -16015,7 +16015,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Patagonia is one of the world's ultimate adventure playgrounds, where extreme outdoor activities in spectacular wilderness settings create adrenaline-pumping experiences that make adventure tours perfect for thrill-seekers! Adventure tours take you into Patagonia's wilderness for exciting activities, from ice climbing on glaciers to kayaking among icebergs, from rock climbing to multi-sport adventures, and from experiencing extreme sports to discovering why Patagonia is considered an adventure enthusiast's paradise. Experience the thrill of Patagonia adventures, challenge yourself with exciting activities, enjoy spectacular adventure settings, and discover why adventure tours add adrenaline to the Patagonia experience. Whether you're seeking ice climbing, kayaking, rock climbing, or comprehensive adventure experiences, adventure tours offer exciting ways to experience Patagonia's wilderness. From glaciers to mountains, from extreme sports to multi-adventure, adventure tours ensure you experience the thrilling adventures that make Patagonia legendary!`,
 
       seo: {
-        title: 'Patagonia Adventure Tours 2025: Ice Climbing, Kayaking & Extreme Sports',
+        title: 'Patagonia Adventure Tours 2026: Ice Climbing, Kayaking & Extreme Sports',
         description: 'Book Patagonia adventure tours! Experience ice climbing, kayaking & extreme adventures. Discover thrilling activities in wilderness playground. From $140.',
         keywords: 'Patagonia adventure tours, ice climbing Patagonia, kayaking Patagonia, adventure tours Chile Argentina',
       },
@@ -16167,7 +16167,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Patagonia offers some of the world's most spectacular scenic beauty, where jagged peaks, glaciers, pristine lakes, and vast wilderness create breathtaking landscapes that make scenic tours perfect for appreciating this legendary region's natural beauty! Scenic tours take you through Patagonia's most beautiful areas, from Torres del Paine's iconic towers to glacial valleys, from pristine lakes to mountain vistas, and from experiencing the epic scale of Patagonia's wilderness to discovering why the region is considered one of the planet's most beautiful destinations. Experience the majesty of Patagonia's landscapes, enjoy scenic drives and boat rides through spectacular settings, see breathtaking mountain and glacial scenery, and discover why scenic tours offer unforgettable ways to appreciate Patagonia's natural beauty. Whether you're seeking Torres del Paine, glacial landscapes, or comprehensive scenic exploration, scenic tours provide beautiful journeys that showcase the spectacular wilderness that defines Patagonia. From mountains to glaciers, from lakes to valleys, scenic tours ensure you experience the breathtaking scenery that makes Patagonia legendary!`,
 
       seo: {
-        title: 'Patagonia Scenic Tours 2025: Torres del Paine & Spectacular Landscapes',
+        title: 'Patagonia Scenic Tours 2026: Torres del Paine & Spectacular Landscapes',
         description: 'Book Patagonia scenic tours! Enjoy Torres del Paine, glacial landscapes & spectacular vistas. Experience breathtaking natural beauty. From $120.',
         keywords: 'Patagonia scenic tours, Torres del Paine scenic, scenic tours Patagonia, Patagonia landscapes',
       },
@@ -16319,7 +16319,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Patagonia is one of the world's most photogenic regions, where spectacular mountains, glaciers, lakes, and wilderness create incredible photography opportunities that make photography tours perfect for capturing this legendary landscape! Photography tours take you to the best viewpoints and angles, from learning photography techniques for capturing Torres del Paine to finding optimal lighting conditions, from understanding composition for epic landscape shots to exploring diverse scenic areas, and from receiving expert photography guidance to discovering why Patagonia is considered a photographer's paradise. Experience the challenge of photographing Patagonia, learn techniques for capturing the best shots, see Patagonia through a photographer's lens, and discover why photography tours offer unique ways to experience and document this spectacular region. Whether you're an experienced photographer or seeking better travel photos, photography tours provide expert guidance for capturing stunning images of Patagonia. From mountain peaks to glacial landscapes, from golden hour to dramatic weather, photography tours ensure you capture the incredible beauty of Patagonia!`,
 
       seo: {
-        title: 'Patagonia Photography Tours 2025: Expert Photography & Torres del Paine Views',
+        title: 'Patagonia Photography Tours 2026: Expert Photography & Torres del Paine Views',
         description: 'Book Patagonia photography tours! Learn techniques, find best viewpoints & capture spectacular shots. Discover photographer\'s paradise. From $150.',
         keywords: 'Patagonia photography tours, Torres del Paine photography, photography tours Patagonia, landscape photography Patagonia',
       },
@@ -16473,7 +16473,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Quito's Old Town is one of the best-preserved historic centers in Latin America, where beautifully preserved colonial architecture, historic plazas, and centuries of Ecuadorian history create a UNESCO World Heritage site that makes exploring the historic center essential to understanding Quito! Historic tours take you through the Old Town, from the impressive Independence Plaza to colonial churches and monasteries, from historic streets to understanding how Quito developed as the capital of Spanish Ecuador, and from seeing perfectly preserved architecture to discovering why the Old Town is considered among Latin America's most beautiful historic districts. Experience the layers of Quito's history, see perfectly preserved colonial buildings, understand the city's role in Ecuadorian history, and discover why historic tours are the foundation of any Quito visit. Whether you're exploring plazas, visiting historic sites, or simply wandering through atmospheric streets, Historic tours offer engaging journeys that showcase the rich heritage that makes Quito historically fascinating. From Independence Plaza to colonial churches, from historic streets to cultural landmarks, Historic tours ensure you experience the incredible historic center that is Quito's Old Town!`,
 
       seo: {
-        title: 'Quito Historic Tours 2025: UNESCO Old Town & Colonial Architecture',
+        title: 'Quito Historic Tours 2026: UNESCO Old Town & Colonial Architecture',
         description: 'Book Quito historic tours! Explore UNESCO Old Town, colonial architecture & historic plazas. Discover Ecuador\'s best-preserved historic center. From $40.',
         keywords: 'Quito historic tours, Quito Old Town tours, colonial Quito tours, UNESCO Quito tours',
       },
@@ -16625,7 +16625,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Quito is a city of rich Ecuadorian culture, where Andean traditions, colonial heritage, and vibrant local life come together in a cultural tapestry that makes cultural tours essential for experiencing the authentic Quito! Cultural tours take you through Quito's cultural landscape, from visiting traditional markets to exploring cultural sites, from understanding Ecuadorian traditions to experiencing local life, and from learning about Quito's cultural heritage to discovering why this Andean capital is considered among South America's most culturally rich cities. Experience the vibrancy of Quito's culture, learn about Ecuadorian traditions, understand how different cultural influences shape the city, and discover why cultural tours offer fascinating insights into Quito's cultural identity. Whether you're seeking traditional markets, cultural sites, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural richness that makes Quito culturally fascinating. From markets to traditions, from heritage to contemporary culture, cultural tours ensure you experience the vibrant cultural tapestry that defines Quito!`,
 
       seo: {
-        title: 'Quito Cultural Tours 2025: Ecuadorian Culture & Traditional Markets',
+        title: 'Quito Cultural Tours 2026: Ecuadorian Culture & Traditional Markets',
         description: 'Book Quito cultural tours! Discover Ecuadorian culture, traditional markets & cultural heritage. Experience vibrant Andean traditions. From $45.',
         keywords: 'Quito cultural tours, Ecuadorian culture Quito, traditional markets Quito, cultural tours Ecuador',
       },
@@ -16777,7 +16777,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Quito's proximity to the Equator offers a unique opportunity to visit the Middle of the World, where you can literally stand with one foot in each hemisphere, making Equator tours a special and memorable Quito experience! Equator tours take you to the Equator monument and surrounding area, from standing on the Equator line to witnessing interesting scientific demonstrations, from learning about the significance of this geographic location to experiencing unique attractions, and from understanding how the Equator affects Ecuador to discovering why the Middle of the World is such a popular Quito destination. Experience the thrill of standing on the Equator, learn about geographic and scientific phenomena, see the famous monument, and discover why Equator tours offer unique experiences that showcase this special geographic feature. Whether you're interested in geography, science, or simply want this unique experience, Equator tours provide fascinating journeys that highlight Quito's special location. From the monument to demonstrations, from geography to science, Equator tours ensure you experience the Middle of the World!`,
 
       seo: {
-        title: 'Quito Equator Tours 2025: Middle of the World & Equator Monument',
+        title: 'Quito Equator Tours 2026: Middle of the World & Equator Monument',
         description: 'Book Quito Equator tours! Visit Middle of the World, stand on Equator line & unique geographic location. Discover world\'s highest capital special feature. From $50.',
         keywords: 'Quito Equator tours, Middle of the World tours, Equator monument Quito, Equator line tours',
       },
@@ -16929,7 +16929,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Quito is home to spectacular churches and religious architecture, where ornate baroque churches, historic monasteries, and impressive religious art showcase centuries of Catholic heritage, making church tours essential for appreciating Quito's religious architectural treasures! Church tours take you through Quito's sacred sites, from visiting ornate baroque churches to exploring historic monasteries, from admiring impressive religious art to learning about Catholic heritage, and from seeing spectacular architecture to understanding why Quito's churches are considered among Latin America's finest. Experience the beauty of Quito's religious architecture, see ornate churches decorated with gold leaf, learn about religious heritage and colonial era, and discover why church tours offer fascinating insights into Quito's Catholic traditions. Whether you're interested in architecture, religious art, or simply appreciating beautiful churches, church tours provide engaging journeys that showcase the spectacular religious architecture that makes Quito architecturally impressive. From Compañía to San Francisco, from monasteries to chapels, church tours ensure you experience the incredible religious architecture that defines Quito!`,
 
       seo: {
-        title: 'Quito Church Tours 2025: Baroque Churches & Religious Architecture',
+        title: 'Quito Church Tours 2026: Baroque Churches & Religious Architecture',
         description: 'Book Quito church tours! Explore spectacular churches, baroque architecture & historic monasteries. Discover Catholic heritage & religious art. From $40.',
         keywords: 'Quito church tours, baroque churches Quito, Quito religious tours, church architecture Quito',
       },
@@ -17081,7 +17081,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Quito's markets are vibrant centers of local life, where traditional indigenous markets, artisan fairs, and local commerce showcase authentic Ecuadorian culture, making market tours perfect for experiencing Quito's authentic local life! Market tours take you through Quito's markets, from browsing traditional textiles and crafts to experiencing local commerce, from tasting fresh produce to learning about Ecuadorian traditions, and from interacting with vendors to discovering why markets are essential to understanding Quito culture. Experience the vibrancy of Quito's markets, shop for authentic Ecuadorian crafts, learn about local traditions and products, and discover why market tours offer fascinating insights into everyday Quito life. Whether you're seeking traditional crafts, fresh produce, or comprehensive market experiences, market tours provide engaging journeys that showcase the vibrant commerce that makes Quito culturally authentic. From textiles to handicrafts, from food to traditions, market tours ensure you experience the authentic local life that defines Quito!`,
 
       seo: {
-        title: 'Quito Market Tours 2025: Traditional Markets & Ecuadorian Crafts',
+        title: 'Quito Market Tours 2026: Traditional Markets & Ecuadorian Crafts',
         description: 'Book Quito market tours! Experience traditional markets, local crafts & authentic Ecuadorian culture. Discover vibrant local commerce. From $35.',
         keywords: 'Quito market tours, traditional markets Quito, Ecuadorian crafts, market tours Ecuador',
       },
@@ -17233,7 +17233,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Quito showcases fascinating architectural evolution, where colonial Spanish buildings, ornate baroque churches, and contemporary architecture create architectural diversity that makes architecture tours perfect for appreciating Quito's built heritage! Architecture tours take you through Quito's architectural landscape, from exploring colonial architecture in the Old Town to understanding architectural preservation, from seeing ornate baroque churches to appreciating how different architectural periods coexist, and from learning about architectural history to discovering why Quito's architecture tells the story of Ecuadorian heritage. Experience the architectural richness that defines Quito, see how colonial and contemporary styles coexist, understand preservation efforts, and discover why architecture tours offer unique insights into both Quito's history and its architectural significance. Whether you're interested in colonial architecture, religious buildings, or comprehensive architectural exploration, architecture tours provide engaging journeys that showcase the architectural evolution that makes Quito architecturally fascinating. From colonial to baroque, from preservation to contemporary, architecture tours ensure you experience the diverse architectural heritage that defines Quito!`,
 
       seo: {
-        title: 'Quito Architecture Tours 2025: Colonial & Baroque Architectural Heritage',
+        title: 'Quito Architecture Tours 2026: Colonial & Baroque Architectural Heritage',
         description: 'Book Quito architecture tours! Explore colonial architecture, baroque churches & architectural evolution. Discover Ecuadorian architectural heritage. From $40.',
         keywords: 'Quito architecture tours, colonial Quito, baroque architecture Quito, Quito architectural tours',
       },
@@ -17387,7 +17387,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Christ the Redeemer is Rio de Janeiro's most iconic symbol and one of the New Seven Wonders of the World, where this magnificent statue standing atop Corcovado Mountain offers not only religious significance but also absolutely spectacular panoramic views of Rio, making Christ the Redeemer tours essential for every Rio visitor! Christ the Redeemer tours take you to this world-famous attraction, from riding the scenic train up Corcovado to standing at the base of the impressive statue, from enjoying spectacular views of Rio to learning about the statue's history and significance, and from capturing iconic photographs to discovering why Christ the Redeemer is considered Rio's most important symbol. Experience the majesty of Christ the Redeemer, witness one of the world's most famous monuments, enjoy breathtaking views of beaches, mountains, and the city below, and discover why Christ the Redeemer tours offer unforgettable experiences that showcase Rio at its most spectacular. Whether you're seeking iconic views, religious significance, or simply this world-famous attraction, Christ the Redeemer tours provide essential journeys that showcase why this is one of the planet's most beloved monuments. From the statue to the views, from history to symbolism, Christ the Redeemer tours ensure you experience Rio's iconic heart!`,
 
       seo: {
-        title: 'Rio Christ the Redeemer Tours 2025: Iconic Statue & Spectacular Views',
+        title: 'Rio Christ the Redeemer Tours 2026: Iconic Statue & Spectacular Views',
         description: 'Book Christ the Redeemer tours! Visit iconic statue, one of New Seven Wonders & spectacular Rio views. Experience Rio\'s most famous attraction. From $60.',
         keywords: 'Christ the Redeemer tours, Rio Christ statue, Corcovado tours, Rio de Janeiro tours',
       },
@@ -17539,7 +17539,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Rio de Janeiro's beaches are legendary, where Copacabana and Ipanema have become synonymous with Brazilian beach culture, creating a vibrant coastal experience that makes beach tours essential for experiencing Rio at its most characteristic! Beach tours take you to Rio's iconic beaches, from exploring the famous Copacabana promenade to visiting sophisticated Ipanema, from experiencing the vibrant beach culture to understanding why Rio's beaches are so celebrated worldwide, and from enjoying the stunning coastal scenery to discovering the unique rhythm of Brazilian beach life. Experience the energy of Rio's beaches, see why these beaches are world-famous, learn about beach culture and local life, and discover why beach tours offer perfect ways to experience the Cidade Maravilhosa. Whether you're seeking sun and sand, beach culture, or simply iconic beach experiences, beach tours provide enjoyable journeys that showcase the beautiful beaches that define Rio. From Copacabana to Ipanema, from beach volleyball to sunbathing, beach tours ensure you experience the legendary beach culture that is Rio!`,
 
       seo: {
-        title: 'Rio Beach Tours 2025: Copacabana, Ipanema & Iconic Beach Culture',
+        title: 'Rio Beach Tours 2026: Copacabana, Ipanema & Iconic Beach Culture',
         description: 'Book Rio beach tours! Experience Copacabana, Ipanema & world-famous beaches. Discover iconic Brazilian beach culture. From $45.',
         keywords: 'Rio beach tours, Copacabana tours, Ipanema tours, beach tours Rio de Janeiro',
       },
@@ -17691,7 +17691,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Sugarloaf Mountain is one of Rio's most spectacular attractions, where two-stage cable car rides take you to the summit offering absolutely breathtaking panoramic views of Guanabara Bay, Copacabana, and the entire city, making Sugarloaf tours essential for experiencing Rio at its most spectacular! Sugarloaf tours take you to this iconic granite peak, from riding the cable cars to witnessing the stunning views, from seeing Christ the Redeemer in the distance to learning about Sugarloaf's geology and history, and from capturing spectacular photographs to discovering why Sugarloaf is considered one of the world's most beautiful viewpoints. Experience the majesty of Sugarloaf Mountain, witness absolutely spectacular Rio views, enjoy the scenic cable car ride, and discover why Sugarloaf tours offer unforgettable experiences that showcase Rio at its most beautiful. Whether you're seeking spectacular views, cable car excitement, or simply this iconic attraction, Sugarloaf tours provide essential journeys that showcase why this is one of Rio's must-visit destinations. From the cable cars to the summit, from sunrise to sunset, Sugarloaf tours ensure you experience Rio's spectacular peak!`,
 
       seo: {
-        title: 'Rio Sugarloaf Mountain Tours 2025: Cable Cars & Spectacular Views',
+        title: 'Rio Sugarloaf Mountain Tours 2026: Cable Cars & Spectacular Views',
         description: 'Book Sugarloaf Mountain tours! Ride cable cars, enjoy spectacular views & iconic Rio attraction. Experience world-class viewpoint. From $70.',
         keywords: 'Sugarloaf Mountain tours, Rio cable car tours, Sugarloaf Rio, Rio de Janeiro mountain tours',
       },
@@ -17843,7 +17843,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Rio de Janeiro is a city of rich Brazilian culture, where samba rhythms, vibrant neighborhoods, and diverse cultural influences come together creating cultural experiences that make cultural tours essential for understanding the authentic Cidade Maravilhosa! Cultural tours take you through Rio's cultural landscape, from experiencing samba and bossa nova to visiting cultural centers, from understanding Brazilian traditions to learning about Rio's diverse heritage, and from experiencing local culture to discovering why Rio is considered one of South America's most culturally vibrant cities. Experience the energy of Rio's culture, learn about Brazilian traditions, understand the city's diverse heritage, and discover why cultural tours offer fascinating insights into Rio's cultural identity. Whether you're seeking music and dance, historic neighborhoods, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural richness that makes Rio culturally fascinating. From samba schools to cultural centers, from traditions to contemporary culture, cultural tours ensure you experience the vibrant cultural tapestry that defines Rio!`,
 
       seo: {
-        title: 'Rio Cultural Tours 2025: Samba, Brazilian Culture & Vibrant Heritage',
+        title: 'Rio Cultural Tours 2026: Samba, Brazilian Culture & Vibrant Heritage',
         description: 'Book Rio cultural tours! Discover Brazilian culture, samba & vibrant heritage. Experience Cidade Maravilhosa cultural richness. From $50.',
         keywords: 'Rio cultural tours, Brazilian culture Rio, samba tours Rio, cultural tours Rio de Janeiro',
       },
@@ -17995,7 +17995,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Rio's favelas represent a complex and important aspect of the city, where responsible community-led tours offer opportunities to understand this side of Rio while supporting local communities, making responsible favela tours educational and meaningful experiences! Favela tours, when conducted responsibly with community involvement, take you into Rio's favelas, from visiting communities to learning about daily life, from understanding challenges to seeing community projects, and from supporting local initiatives to gaining insight into this important part of Rio. Experience responsible tourism that supports communities, learn about favela life and culture, understand the complexities of these neighborhoods, and discover why responsible favela tours can offer educational experiences when conducted with respect and community involvement. Whether you're seeking to understand Rio's social complexity, support communities, or gain cultural insight, responsible favela tours provide educational journeys when properly conducted. From community projects to local life, from challenges to hope, responsible favela tours ensure educational experiences with community benefit!`,
 
       seo: {
-        title: 'Rio Favela Tours 2025: Responsible Community-Led Tours & Local Support',
+        title: 'Rio Favela Tours 2026: Responsible Community-Led Tours & Local Support',
         description: 'Book responsible favela tours! Visit communities with community-led tours supporting local initiatives. Educational & meaningful experiences. From $60.',
         keywords: 'Rio favela tours, favela tours Rio, community tours Rio, responsible tourism Rio',
       },
@@ -18147,7 +18147,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Rio de Janeiro's Carnival is the world's most famous carnival celebration, where spectacular samba school parades, vibrant street parties, and infectious rhythms create an unforgettable festival experience that makes Carnival tours essential during Carnival season! Carnival tours take you into the heart of Rio's Carnival, from attending spectacular Sambadrome parades to joining vibrant street blocos, from experiencing samba schools to understanding Carnival traditions, and from witnessing the spectacle to discovering why Rio's Carnival is considered the world's greatest celebration. Experience the energy of Rio's Carnival, see spectacular samba school parades, join street celebrations, and discover why Carnival tours offer once-in-a-lifetime experiences that showcase Rio at its most vibrant. Whether you're seeking Sambadrome seats, street blocos, or comprehensive Carnival experiences, Carnival tours provide spectacular journeys during the world's most famous carnival. From parades to parties, from samba to spectacle, Carnival tours ensure you experience the incredible celebration that is Rio's Carnival!`,
 
       seo: {
-        title: 'Rio Carnival Tours 2025: Samba School Parades & Spectacular Celebration',
+        title: 'Rio Carnival Tours 2026: Samba School Parades & Spectacular Celebration',
         description: 'Book Rio Carnival tours! Experience world\'s most famous carnival, samba parades & spectacular celebration. Discover iconic Brazilian festival. From $150.',
         keywords: 'Rio Carnival tours, samba school tours, Carnival Rio, Rio de Janeiro Carnival tours',
       },
@@ -18301,7 +18301,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Salvador's Pelourinho is one of Brazil's most beautiful and culturally rich historic districts, where colorful colonial buildings, baroque churches, and vibrant Afro-Brazilian culture create a UNESCO World Heritage site that makes Pelourinho tours essential for experiencing Salvador! Pelourinho tours take you through this historic heart of Salvador, from exploring colorful colonial buildings to visiting stunning baroque churches, from understanding the area's history to experiencing vibrant culture, and from seeing beautifully preserved architecture to discovering why Pelourinho is considered among Latin America's most beautiful historic districts. Experience the vibrancy of Pelourinho, see colorful colonial architecture, learn about Afro-Brazilian heritage, and discover why Pelourinho tours offer unforgettable journeys through Salvador's historic and cultural heart. Whether you're exploring colonial buildings, visiting churches, or simply experiencing the vibrant atmosphere, Pelourinho tours provide engaging ways to discover the UNESCO heritage that defines Salvador. From colorful streets to historic churches, from culture to architecture, Pelourinho tours ensure you experience the beautiful historic district that is Pelourinho!`,
 
       seo: {
-        title: 'Salvador Pelourinho Tours 2025: UNESCO Heritage & Colonial Architecture',
+        title: 'Salvador Pelourinho Tours 2026: UNESCO Heritage & Colonial Architecture',
         description: 'Book Pelourinho tours! Explore UNESCO World Heritage district, colorful colonial architecture & Afro-Brazilian culture. Discover Salvador\'s historic heart. From $45.',
         keywords: 'Pelourinho tours Salvador, Pelourinho Salvador, UNESCO Salvador, colonial Salvador tours',
       },
@@ -18453,7 +18453,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Salvador was Brazil's first capital and remains a treasure trove of colonial history, where historic churches, monuments, and colonial architecture tell the story of Brazil's early development, making historic tours essential for understanding Salvador's role in Brazilian history! Historic tours take you through Salvador's past, from visiting historic churches to exploring colonial monuments, from understanding Salvador's role as Brazil's first capital to learning about its significance in Brazilian history, and from seeing historic sites to discovering why Salvador is considered one of Brazil's most historically important cities. Experience the layers of Salvador's history, see historic churches and monuments, understand the city's colonial heritage, and discover why historic tours are the foundation of any Salvador visit. Whether you're exploring historic churches, visiting monuments, or simply learning about Brazil's colonial past, Historic tours offer engaging journeys that showcase the rich heritage that makes Salvador historically fascinating. From historic churches to colonial monuments, from first capital to Brazilian heritage, Historic tours ensure you experience the incredible historic legacy that is Salvador!`,
 
       seo: {
-        title: 'Salvador Historic Tours 2025: Colonial Heritage & Brazil\'s First Capital',
+        title: 'Salvador Historic Tours 2026: Colonial Heritage & Brazil\'s First Capital',
         description: 'Book Salvador historic tours! Explore Brazil\'s first capital, colonial churches & historic monuments. Discover centuries of Brazilian heritage. From $40.',
         keywords: 'Salvador historic tours, colonial Salvador, historic churches Salvador, Brazil first capital tours',
       },
@@ -18605,7 +18605,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Salvador is Brazil's Afro-Brazilian cultural capital, where African heritage, Bahian traditions, and vibrant local culture come together creating cultural experiences that make cultural tours essential for understanding the authentic Salvador! Cultural tours take you through Salvador's cultural landscape, from experiencing Afro-Brazilian traditions to visiting cultural centers, from understanding Bahian culture to learning about Salvador's diverse heritage, and from experiencing local culture to discovering why Salvador is considered Brazil's most culturally rich city. Experience the vibrancy of Salvador's culture, learn about Afro-Brazilian traditions, understand the city's cultural heritage, and discover why cultural tours offer fascinating insights into Salvador's cultural identity. Whether you're seeking music and dance, cultural centers, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural richness that makes Salvador culturally fascinating. From traditions to contemporary culture, from heritage to local life, cultural tours ensure you experience the vibrant cultural tapestry that defines Salvador!`,
 
       seo: {
-        title: 'Salvador Cultural Tours 2025: Afro-Brazilian Culture & Bahian Traditions',
+        title: 'Salvador Cultural Tours 2026: Afro-Brazilian Culture & Bahian Traditions',
         description: 'Book Salvador cultural tours! Discover Afro-Brazilian culture, Bahian traditions & vibrant heritage. Experience Brazil\'s cultural capital. From $45.',
         keywords: 'Salvador cultural tours, Afro-Brazilian culture Salvador, Bahian culture, cultural tours Salvador',
       },
@@ -18757,7 +18757,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Salvador is famous for its exceptional Bahian cuisine, where African-influenced dishes, traditional recipes, and vibrant flavors create delicious food experiences that reflect the city's Afro-Brazilian heritage, making food tours essential for experiencing authentic Salvador! Food & Culinary tours take you through Salvador's gastronomic landscape, from tasting traditional Bahian dishes like acarajé and moqueca to experiencing street food culture, from visiting local markets to understanding food traditions, and from learning about Salvador's culinary heritage to discovering why Bahian cuisine is considered among Brazil's most distinctive. Experience the flavors that make Salvador special, learn about Bahian culinary traditions, understand how food reflects Afro-Brazilian culture, and discover why Food & Culinary tours are essential for experiencing authentic Salvador. Whether you're seeking traditional Bahian food, street food, or comprehensive culinary exploration, Food & Culinary tours offer delicious journeys that showcase the culinary richness that makes Salvador a food lover's paradise. From markets to restaurants, from traditional to street food, Food & Culinary tours ensure you experience the incredible flavors that define Salvador!`,
 
       seo: {
-        title: 'Salvador Food & Culinary Tours 2025: Bahian Cuisine & Traditional Dishes',
+        title: 'Salvador Food & Culinary Tours 2026: Bahian Cuisine & Traditional Dishes',
         description: 'Book Salvador food & culinary tours! Discover Bahian cuisine, traditional dishes & street food. Experience Brazil\'s food capital. From $50.',
         keywords: 'Salvador food tours, Bahian cuisine, Salvador culinary tours, traditional food Salvador',
       },
@@ -18909,7 +18909,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Salvador is the birthplace of capoeira, where this unique Afro-Brazilian martial art combining dance, acrobatics, and music originated, making capoeira tours essential for experiencing this iconic Brazilian cultural tradition! Capoeira tours take you into the world of capoeira, from watching spectacular performances to learning about its history and significance, from understanding capoeira's African roots to experiencing its role in Afro-Brazilian culture, and from seeing skilled practitioners to discovering why capoeira is considered one of Brazil's most important cultural contributions. Experience the energy of capoeira, see spectacular performances, learn about this unique martial art, and discover why capoeira tours offer fascinating insights into Afro-Brazilian culture. Whether you're watching performances, learning about history, or seeking to understand this cultural tradition, capoeira tours provide engaging journeys that showcase the unique martial art that originated in Salvador. From performances to history, from culture to tradition, capoeira tours ensure you experience the incredible martial art that is capoeira!`,
 
       seo: {
-        title: 'Salvador Capoeira Tours 2025: Afro-Brazilian Martial Art & Performances',
+        title: 'Salvador Capoeira Tours 2026: Afro-Brazilian Martial Art & Performances',
         description: 'Book Salvador capoeira tours! Experience capoeira performances & learn about Afro-Brazilian martial art. Discover cultural tradition. From $40.',
         keywords: 'Salvador capoeira tours, capoeira Salvador, capoeira performances, Afro-Brazilian martial art',
       },
@@ -19061,7 +19061,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Salvador offers beautiful beaches along its coastline, where urban beaches, coastal escapes, and tropical settings create beach experiences that complement the historic city, making beach tours perfect for relaxing after exploring Salvador! Beach tours take you to Salvador's coastal areas, from visiting popular urban beaches to discovering quieter coastal escapes, from enjoying tropical beach settings to experiencing local beach culture, and from relaxing on beautiful sands to discovering why Salvador's beaches offer perfect coastal experiences. Experience the beauty of Salvador's coastline, see beautiful beaches, enjoy tropical beach settings, and discover why beach tours offer perfect ways to relax and enjoy Salvador's coastal side. Whether you're seeking sun and sand, beach culture, or simply beautiful beach experiences, beach tours provide enjoyable journeys that showcase the beautiful beaches that complement Salvador. From urban beaches to coastal escapes, from relaxation to beach activities, beach tours ensure you experience the beautiful coastal side of Salvador!`,
 
       seo: {
-        title: 'Salvador Beach Tours 2025: Beautiful Beaches & Coastal Escapes',
+        title: 'Salvador Beach Tours 2026: Beautiful Beaches & Coastal Escapes',
         description: 'Book Salvador beach tours! Experience beautiful beaches, coastal escapes & tropical settings. Discover Salvador\'s coastal beauty. From $45.',
         keywords: 'Salvador beach tours, beaches Salvador, coastal tours Salvador, Salvador beaches',
       },
@@ -19215,7 +19215,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `San José's historic center offers a glimpse into Costa Rica's colonial past and capital development, where historic buildings, colonial architecture, and cultural landmarks create a historic experience that makes exploring the historic center essential for understanding San José! Historic Center tours take you through San José's downtown, from visiting historic buildings to exploring colonial architecture, from understanding San José's development to learning about Costa Rican history, and from seeing cultural landmarks to discovering why the historic center tells the story of Costa Rica's capital. Experience the layers of San José's history, see historic buildings and architecture, understand the city's role as Costa Rica's capital, and discover why Historic Center tours offer engaging ways to understand San José. Whether you're exploring historic buildings, visiting landmarks, or simply learning about Costa Rican history, Historic Center tours provide engaging journeys that showcase the historic heritage that makes San José historically interesting. From colonial buildings to historic landmarks, from capital development to Costa Rican history, Historic Center tours ensure you experience the historic center that is San José!`,
 
       seo: {
-        title: 'San José Historic Center Tours 2025: Colonial Architecture & Capital Heritage',
+        title: 'San José Historic Center Tours 2026: Colonial Architecture & Capital Heritage',
         description: 'Book San José historic center tours! Explore colonial architecture, historic buildings & Costa Rica\'s capital heritage. Discover historic downtown. From $40.',
         keywords: 'San José historic center tours, San José downtown tours, colonial San José, Costa Rica capital tours',
       },
@@ -19367,7 +19367,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Costa Rica is famous for its exceptional coffee, and San José provides the perfect gateway to coffee country, where coffee plantation tours offer fascinating insights into coffee production, from bean to cup, making coffee tours essential for understanding Costa Rica's most famous export! Coffee Plantation tours take you to working coffee farms and plantations, from touring coffee fields to learning about the coffee production process, from witnessing harvesting and processing to tasting freshly roasted coffee, and from understanding coffee cultivation to discovering why Costa Rican coffee is considered among the world's best. Experience the world of coffee production, see coffee cultivation in action, learn about sustainable coffee farming, and discover why coffee plantation tours offer educational and delicious experiences that showcase Costa Rica's coffee heritage. Whether you're a coffee enthusiast or simply curious about coffee production, coffee plantation tours provide engaging journeys that showcase the fascinating process behind Costa Rica's world-famous coffee. From plantations to processing, from cultivation to tasting, coffee plantation tours ensure you experience the complete coffee journey!`,
 
       seo: {
-        title: 'San José Coffee Plantation Tours 2025: Costa Rican Coffee & Bean to Cup Experience',
+        title: 'San José Coffee Plantation Tours 2026: Costa Rican Coffee & Bean to Cup Experience',
         description: 'Book San José coffee plantation tours! Visit coffee farms, learn production process & taste Costa Rican coffee. Experience world-famous coffee culture. From $60.',
         keywords: 'San José coffee tours, Costa Rica coffee plantation tours, coffee tours San José, coffee plantation Costa Rica',
       },
@@ -19519,7 +19519,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `San José is home to excellent museums showcasing Costa Rica's rich cultural and historical heritage, where pre-Columbian gold, contemporary art, and diverse collections create museum experiences that make museum tours perfect for understanding Costa Rica! Museum tours take you through San José's museum scene, from visiting the famous Gold Museum to exploring contemporary art museums, from learning about pre-Columbian history to understanding Costa Rican culture, and from seeing impressive collections to discovering why San José's museums are considered among Central America's finest. Experience the richness of Costa Rican heritage, see impressive pre-Columbian artifacts, learn about Costa Rican history and culture, and discover why museum tours offer fascinating insights into Costa Rica. Whether you're interested in pre-Columbian art, contemporary exhibitions, or comprehensive museum exploration, museum tours provide engaging journeys that showcase the cultural richness that makes San José culturally fascinating. From gold to art, from history to culture, museum tours ensure you experience the incredible museums that define San José!`,
 
       seo: {
-        title: 'San José Museum Tours 2025: Pre-Columbian Gold & Cultural Heritage',
+        title: 'San José Museum Tours 2026: Pre-Columbian Gold & Cultural Heritage',
         description: 'Book San José museum tours! Explore museums, pre-Columbian gold & Costa Rican heritage. Discover excellent museum collections. From $45.',
         keywords: 'San José museum tours, Gold Museum San José, Costa Rica museums, museum tours San José',
       },
@@ -19671,7 +19671,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `San José offers authentic Costa Rican cuisine and culture, where traditional dishes, local markets, and culinary traditions create food experiences that reflect Costa Rican heritage, making food & culture tours essential for experiencing authentic San José! Food & Culture tours take you through San José's gastronomic and cultural landscape, from tasting traditional Costa Rican dishes to visiting local markets, from experiencing food culture to understanding Costa Rican traditions, and from learning about culinary heritage to discovering why San José's food scene showcases authentic Costa Rican culture. Experience the flavors that make San José special, learn about Costa Rican culinary traditions, understand how food reflects Costa Rican culture, and discover why Food & Culture tours are essential for experiencing authentic San José. Whether you're seeking traditional food, local markets, or comprehensive culinary and cultural exploration, Food & Culture tours offer engaging journeys that showcase the cultural richness that makes San José culturally fascinating. From markets to restaurants, from food to traditions, Food & Culture tours ensure you experience the authentic flavors and culture that define San José!`,
 
       seo: {
-        title: 'San José Food & Culture Tours 2025: Costa Rican Cuisine & Local Markets',
+        title: 'San José Food & Culture Tours 2026: Costa Rican Cuisine & Local Markets',
         description: 'Book San José food & culture tours! Discover Costa Rican cuisine, traditional dishes & local markets. Experience authentic Costa Rican culture. From $50.',
         keywords: 'San José food tours, Costa Rican cuisine, food tours San José, San José cultural tours',
       },
@@ -19823,7 +19823,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `San José's markets are vibrant centers of local life, where the famous Central Market, local markets, and authentic commerce showcase Costa Rican daily life, making market tours perfect for experiencing authentic San José! Market tours take you through San José's market scene, from browsing the bustling Central Market to exploring local markets, from seeing fresh produce to discovering local crafts, and from experiencing authentic commerce to understanding why markets are essential to understanding San José culture. Experience the vibrancy of San José's markets, shop for authentic Costa Rican products, learn about local commerce and traditions, and discover why market tours offer fascinating insights into everyday San José life. Whether you're seeking fresh produce, local crafts, or comprehensive market experiences, market tours provide engaging journeys that showcase the vibrant commerce that makes San José culturally authentic. From Central Market to local markets, from produce to crafts, market tours ensure you experience the authentic local life that defines San José!`,
 
       seo: {
-        title: 'San José Market Tours 2025: Central Market & Local Commerce',
+        title: 'San José Market Tours 2026: Central Market & Local Commerce',
         description: 'Book San José market tours! Experience Central Market, local markets & authentic Costa Rican commerce. Discover vibrant local life. From $35.',
         keywords: 'San José market tours, Central Market San José, Costa Rica markets, market tours San José',
       },
@@ -19975,7 +19975,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `San José showcases fascinating architectural evolution, where colonial buildings, historic structures, and contemporary architecture create architectural diversity that makes architecture tours perfect for appreciating San José's built heritage! Architecture tours take you through San José's architectural landscape, from exploring colonial architecture to understanding architectural preservation, from seeing historic buildings to appreciating how different architectural periods coexist, and from learning about architectural history to discovering why San José's architecture tells the story of Costa Rican capital development. Experience the architectural richness that defines San José, see how colonial and contemporary styles coexist, understand preservation efforts, and discover why architecture tours offer unique insights into both San José's history and its architectural significance. Whether you're interested in colonial architecture, historic buildings, or comprehensive architectural exploration, architecture tours provide engaging journeys that showcase the architectural evolution that makes San José architecturally interesting. From colonial to contemporary, from preservation to development, architecture tours ensure you experience the diverse architectural heritage that defines San José!`,
 
       seo: {
-        title: 'San José Architecture Tours 2025: Colonial & Contemporary Architectural Heritage',
+        title: 'San José Architecture Tours 2026: Colonial & Contemporary Architectural Heritage',
         description: 'Book San José architecture tours! Explore colonial architecture, historic buildings & architectural evolution. Discover Costa Rican capital heritage. From $40.',
         keywords: 'San José architecture tours, colonial San José, San José architectural tours, Costa Rica architecture',
       },
@@ -20129,7 +20129,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `San Pedro's beaches are among the Caribbean's most beautiful, where pristine white sands, crystal-clear turquoise waters, and laid-back island atmosphere create perfect beach experiences that make beach tours essential for experiencing San Pedro! Beach tours take you to San Pedro's stunning coastline, from visiting beautiful beaches to experiencing perfect Caribbean waters, from discovering beach hotspots to learning about beach culture, and from relaxing on pristine sands to discovering why San Pedro's beaches are considered among Belize's finest. Experience the beach paradise that defines San Pedro, see why visitors return for beach experiences, and discover why beach tours are the foundation of any San Pedro visit. Whether you're seeking sun and sand, beach activities, or simply pristine beach experiences, beach tours provide perfect ways to experience the incredible beaches that define San Pedro. From white sands to turquoise waters, from relaxation to beach activities, beach tours ensure you experience the beach paradise that is San Pedro!`,
 
       seo: {
-        title: 'San Pedro Beach Tours 2025: Pristine Caribbean Beaches & Crystal Waters',
+        title: 'San Pedro Beach Tours 2026: Pristine Caribbean Beaches & Crystal Waters',
         description: 'Book San Pedro beach tours! Experience pristine beaches, crystal-clear Caribbean waters & white sands. Discover Belize\'s beach paradise. From $40.',
         keywords: 'San Pedro beach tours, San Pedro beaches, Belize beaches, Caribbean beaches San Pedro',
       },
@@ -20281,7 +20281,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `San Pedro's crystal-clear Caribbean waters offer incredible marine environments, where boat tours, water activities, and exploration showcase the pristine waters that make this island special! Water tours take you onto San Pedro's waters, from boat tours exploring the coastline to discovering nearby islands and cays, from experiencing marine environments to understanding why these waters are considered among Belize's most beautiful. Experience the marine beauty that defines San Pedro, see why the Caribbean waters are so special, and discover why water tours offer perfect ways to explore beyond the beaches. Whether you're seeking scenic boat rides, water exploration, or comprehensive marine experiences, water tours provide engaging journeys that showcase the incredible marine environments around San Pedro. From boat tours to water activities, from exploration to marine appreciation, water tours ensure you experience the pristine waters that surround San Pedro!`,
 
       seo: {
-        title: 'San Pedro Water Tours 2025: Caribbean Waters & Marine Exploration',
+        title: 'San Pedro Water Tours 2026: Caribbean Waters & Marine Exploration',
         description: 'Book San Pedro water tours! Explore crystal-clear Caribbean waters, boat tours & marine environments. Discover pristine waters. From $60.',
         keywords: 'San Pedro water tours, Belize water tours, Caribbean waters San Pedro, boat tours San Pedro',
       },
@@ -20433,7 +20433,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `The islands and cays around San Pedro create an archipelago paradise, where pristine islets, tropical cays, and untouched islands offer exploration opportunities that make island tours perfect for discovering the broader island environment! Island tours take you beyond San Pedro to nearby islands and cays, from visiting pristine cays with perfect beaches to exploring untouched tropical islands, from discovering island ecosystems to understanding the broader archipelago, and from experiencing island beauty to discovering why the surrounding islands are worth exploring. Experience the archipelago paradise around San Pedro, see pristine islands and cays, understand island ecosystems, and discover why island tours offer fascinating journeys through tropical paradise. Whether you're seeking remote islands, pristine beaches, or comprehensive island exploration, island tours provide engaging ways to explore the island archipelago around San Pedro. From cays to islands, from beaches to ecosystems, island tours ensure you experience the incredible islands that surround San Pedro!`,
 
       seo: {
-        title: 'San Pedro Island Tours 2025: Tropical Islands & Caribbean Cays',
+        title: 'San Pedro Island Tours 2026: Tropical Islands & Caribbean Cays',
         description: 'Book San Pedro island tours! Explore tropical islands, pristine cays & archipelago paradise. Discover island destinations around San Pedro. From $85.',
         keywords: 'San Pedro island tours, Belize islands, Caribbean cays, island tours San Pedro',
       },
@@ -20585,7 +20585,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `San Pedro offers some of Belize's best snorkeling, with access to the famous Belize Barrier Reef, vibrant coral reefs, diverse marine life, and crystal-clear Caribbean waters creating incredible underwater experiences! Snorkeling tours take you to the best snorkeling spots around Ambergris Caye and the Belize Barrier Reef, from coral reefs teeming with tropical fish to the famous Hol Chan Marine Reserve, from shallow sites perfect for beginners to deeper reefs for experienced snorkelers, and from encountering diverse marine life to discovering why this is considered one of the Caribbean's premier snorkeling destinations. Experience the incredible biodiversity of Caribbean waters, see colorful coral formations, encounter tropical fish, rays, and other marine animals, and discover why San Pedro snorkeling is among the world's finest. Whether you're a first-time snorkeler or experienced diver, these tours provide access to spectacular underwater environments with professional guides who ensure safety and maximize your marine life viewing. From coral reefs to seagrass beds, from fish watching to reef exploration, San Pedro snorkeling tours offer unforgettable underwater adventures!`,
 
       seo: {
-        title: 'San Pedro Snorkeling Tours 2025: Belize Barrier Reef & Coral Reefs',
+        title: 'San Pedro Snorkeling Tours 2026: Belize Barrier Reef & Coral Reefs',
         description: 'Book San Pedro snorkeling tours! Explore Belize Barrier Reef, vibrant coral reefs & diverse marine life. World-class snorkeling experiences. From $90.',
         keywords: 'San Pedro snorkeling, Belize snorkeling, Belize Barrier Reef, coral reefs San Pedro, snorkeling tours Belize',
       },
@@ -20737,7 +20737,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `San Pedro offers exciting adventure experiences beyond beautiful beaches, where water activities, land excursions, and outdoor adventures create thrilling experiences that make adventure tours perfect for those seeking excitement! Adventure tours take you into the adventurous side of San Pedro, from water sports and activities to jungle excursions, from exciting outdoor adventures to discovering the diverse activities available, and from experiencing adrenaline-pumping activities to discovering why San Pedro offers more than just relaxation. Experience the excitement that San Pedro can offer, try different adventure activities, understand the range of adventures available, and discover why adventure tours provide perfect ways to add excitement to your San Pedro visit. Whether you're seeking water sports, land adventures, or comprehensive adventure experiences, adventure tours offer engaging journeys that showcase the adventurous side of the island. From water to land, from excitement to outdoor adventures, adventure tours ensure you experience the thrilling side of San Pedro!`,
 
       seo: {
-        title: 'San Pedro Adventure Tours 2025: Water Sports & Outdoor Adventures',
+        title: 'San Pedro Adventure Tours 2026: Water Sports & Outdoor Adventures',
         description: 'Book San Pedro adventure tours! Experience water sports, outdoor adventures & exciting activities. Discover the adventurous side of San Pedro. From $75.',
         keywords: 'San Pedro adventure tours, water sports San Pedro, outdoor adventures Belize, adventure activities San Pedro',
       },
@@ -20889,7 +20889,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `San Pedro offers authentic island culture beyond its beaches, where local life, fishing traditions, and Caribbean culture create cultural experiences that make cultural tours perfect for understanding the real San Pedro! Cultural tours take you into authentic island life, from visiting fishing areas to experiencing local culture, from learning about island traditions to understanding local heritage, and from meeting locals to discovering why San Pedro has rich cultural traditions. Experience the authentic culture that defines San Pedro, learn about island life and traditions, understand local heritage, and discover why cultural tours offer fascinating insights into Caribbean island culture. Whether you're seeking local experiences, fishing culture, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural richness that makes San Pedro culturally interesting. From fishing to traditions, from local life to heritage, cultural tours ensure you experience the authentic culture that defines San Pedro!`,
 
       seo: {
-        title: 'San Pedro Cultural Tours 2025: Island Culture & Local Life',
+        title: 'San Pedro Cultural Tours 2026: Island Culture & Local Life',
         description: 'Book San Pedro cultural tours! Discover island culture, fishing traditions & local life. Experience authentic Caribbean island culture. From $45.',
         keywords: 'San Pedro cultural tours, island culture Belize, local life San Pedro, cultural tours Belize',
       },
@@ -21043,7 +21043,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Santiago is Chile's dynamic capital, where modern skyscrapers meet historic neighborhoods, trendy districts, and the majestic Andes backdrop create vibrant city experiences that make city tours essential for understanding this cosmopolitan destination! City tours take you through Santiago's diverse neighborhoods, from exploring historic Plaza de Armas to discovering trendy Bellavista, from visiting cultural landmarks to experiencing modern Santiago, and from seeing architectural contrasts to discovering why Santiago is considered one of South America's most sophisticated capitals. Experience the cosmopolitan energy that defines Santiago, see how historic and modern coexist, understand the city's role as Chile's capital, and discover why city tours are the foundation of any Santiago visit. Whether you're exploring historic centers, trendy neighborhoods, or simply experiencing the city's energy, city tours provide engaging ways to discover the vibrant city that is Santiago. From plazas to neighborhoods, from historic to modern, city tours ensure you experience the dynamic capital that is Santiago!`,
 
       seo: {
-        title: 'Santiago City Tours 2025: Historic Plazas & Trendy Neighborhoods',
+        title: 'Santiago City Tours 2026: Historic Plazas & Trendy Neighborhoods',
         description: 'Book Santiago city tours! Explore historic plazas, trendy neighborhoods & cosmopolitan Santiago. Discover Chile\'s dynamic capital. From $45.',
         keywords: 'Santiago city tours, Plaza de Armas tours, Bellavista Santiago, Santiago neighborhoods tours',
       },
@@ -21195,7 +21195,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Santiago is the perfect gateway to Chile's world-famous wine regions, where renowned wine valleys, exceptional Chilean wines, and beautiful vineyards create wine experiences that make wine tours essential for wine enthusiasts visiting Chile! Wine tours take you to nearby wine regions like Maipo Valley and Casablanca Valley, from touring prestigious wineries to tasting exceptional Chilean wines, from learning about winemaking to understanding Chilean wine culture, and from experiencing vineyard beauty to discovering why Chilean wines are considered among the world's finest. Experience the wine excellence that surrounds Santiago, taste exceptional wines, learn about Chilean winemaking traditions, and discover why wine tours are among Santiago's most popular experiences. Whether you're a wine connoisseur or casual enthusiast, wine tours offer engaging journeys that showcase why Chile is a world-class wine destination. From vineyards to tastings, from winemaking to wine culture, wine tours ensure you experience the exceptional wines that make Chile famous!`,
 
       seo: {
-        title: 'Santiago Wine Tours 2025: Chilean Wine Regions & Vineyards',
+        title: 'Santiago Wine Tours 2026: Chilean Wine Regions & Vineyards',
         description: 'Book Santiago wine tours! Discover Maipo Valley, Casablanca & exceptional Chilean wines. Experience world-famous wine regions. From $80.',
         keywords: 'Santiago wine tours, Chilean wine tours, Maipo Valley tours, wine tours Chile, Santiago vineyards',
       },
@@ -21347,7 +21347,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `The majestic Andes mountains surround Santiago, creating stunning backdrops and offering incredible mountain experiences that make mountain tours perfect for appreciating the natural beauty that frames Chile's capital! Mountain tours take you into the Andes, from visiting viewpoints like Cerro San Cristóbal for panoramic city views to exploring mountain landscapes, from experiencing Andean scenery to understanding the mountain's role in shaping Santiago, and from seeing stunning peaks to discovering why the Andes are central to Santiago's identity. Experience the mountain majesty that defines Santiago, see why the Andes backdrop is so spectacular, learn about mountain environments, and discover why mountain tours offer perfect ways to appreciate Santiago's natural setting. Whether you're seeking viewpoints, hiking, or comprehensive mountain exploration, mountain tours provide engaging journeys that showcase the incredible Andes that surround the capital. From viewpoints to peaks, from scenery to adventures, mountain tours ensure you experience the majestic mountains that frame Santiago!`,
 
       seo: {
-        title: 'Santiago Mountain Tours 2025: Andes Mountains & Scenic Viewpoints',
+        title: 'Santiago Mountain Tours 2026: Andes Mountains & Scenic Viewpoints',
         description: 'Book Santiago mountain tours! Experience Andes mountains, Cerro San Cristóbal & scenic viewpoints. Discover majestic peaks framing Santiago. From $70.',
         keywords: 'Santiago mountain tours, Andes tours Santiago, Cerro San Cristóbal, mountain tours Chile',
       },
@@ -21499,7 +21499,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Santiago offers a vibrant cultural scene, where museums, contemporary arts, cultural neighborhoods, and Chilean traditions create cultural experiences that make cultural tours perfect for understanding the cultural side of Chile's capital! Cultural tours take you through Santiago's cultural landscape, from visiting excellent museums to exploring cultural neighborhoods, from experiencing contemporary arts to learning about Chilean traditions, and from understanding cultural heritage to discovering why Santiago is considered a cultural hub. Experience the cultural richness that defines Santiago, learn about Chilean culture and arts, understand the city's cultural heritage, and discover why cultural tours offer fascinating insights into Santiago's cultural identity. Whether you're seeking museums, arts, neighborhoods, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural richness that makes Santiago culturally fascinating. From museums to arts, from traditions to contemporary culture, cultural tours ensure you experience the vibrant cultural scene that defines Santiago!`,
 
       seo: {
-        title: 'Santiago Cultural Tours 2025: Museums & Cultural Neighborhoods',
+        title: 'Santiago Cultural Tours 2026: Museums & Cultural Neighborhoods',
         description: 'Book Santiago cultural tours! Discover museums, cultural neighborhoods & Chilean arts. Experience vibrant cultural scene. From $45.',
         keywords: 'Santiago cultural tours, museums Santiago, cultural neighborhoods Santiago, Chilean culture tours',
       },
@@ -21651,7 +21651,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Santiago offers excellent Chilean cuisine, where traditional dishes, contemporary restaurants, and diverse flavors create food experiences that reflect Chilean culinary culture, making food tours essential for experiencing authentic Santiago! Food tours take you through Santiago's gastronomic landscape, from tasting traditional Chilean dishes to experiencing contemporary cuisine, from visiting local markets to understanding food culture, and from learning about culinary heritage to discovering why Santiago's food scene showcases Chilean cuisine. Experience the flavors that make Santiago special, learn about Chilean culinary traditions, understand how food reflects Chilean culture, and discover why Food tours are essential for experiencing authentic Santiago. Whether you're seeking traditional food, contemporary cuisine, or comprehensive culinary exploration, Food tours offer engaging journeys that showcase the culinary richness that makes Santiago a food lover's destination. From markets to restaurants, from traditional to contemporary, Food tours ensure you experience the incredible flavors that define Santiago!`,
 
       seo: {
-        title: 'Santiago Food Tours 2025: Chilean Cuisine & Traditional Dishes',
+        title: 'Santiago Food Tours 2026: Chilean Cuisine & Traditional Dishes',
         description: 'Book Santiago food tours! Discover Chilean cuisine, traditional dishes & contemporary restaurants. Experience authentic Chilean flavors. From $50.',
         keywords: 'Santiago food tours, Chilean cuisine, food tours Santiago, traditional food Chile',
       },
@@ -21803,7 +21803,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `Santiago has a rich colonial and republican history, where historic plazas, colonial architecture, and historic landmarks tell the story of Chile's capital development, making historic tours essential for understanding Santiago's past! Historic tours take you through Santiago's history, from visiting historic Plaza de Armas to exploring colonial buildings, from understanding Santiago's founding to learning about Chile's independence and development, and from seeing historic sites to discovering why Santiago is historically significant. Experience the layers of Santiago's history, see historic plazas and buildings, understand the city's role in Chilean history, and discover why historic tours are the foundation of any Santiago visit. Whether you're exploring historic plazas, visiting colonial buildings, or simply learning about Chilean history, Historic tours offer engaging journeys that showcase the rich heritage that makes Santiago historically fascinating. From plazas to buildings, from colonial to republican history, Historic tours ensure you experience the incredible historic legacy that is Santiago!`,
 
       seo: {
-        title: 'Santiago Historic Tours 2025: Colonial History & Historic Plazas',
+        title: 'Santiago Historic Tours 2026: Colonial History & Historic Plazas',
         description: 'Book Santiago historic tours! Explore historic plazas, colonial buildings & Chile\'s capital heritage. Discover centuries of history. From $40.',
         keywords: 'Santiago historic tours, colonial Santiago, historic plazas Santiago, Chile capital tours',
       },
@@ -21957,7 +21957,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `São Paulo is Brazil's massive metropolis and economic powerhouse, where skyscrapers meet cultural diversity, vibrant neighborhoods, and urban energy create dynamic city experiences that make city tours essential for understanding this incredible metropolis! City tours take you through São Paulo's diverse areas, from exploring business districts to discovering cultural neighborhoods, from visiting iconic landmarks to experiencing the city's energy, and from seeing architectural contrasts to discovering why São Paulo is considered one of the world's most dynamic cities. Experience the urban energy that defines São Paulo, see how diverse neighborhoods coexist, understand the city's role as Brazil's economic center, and discover why city tours are the foundation of any São Paulo visit. Whether you're exploring business districts, cultural areas, or simply experiencing the city's energy, city tours provide engaging ways to discover the vibrant metropolis that is São Paulo. From skyscrapers to neighborhoods, from business to culture, city tours ensure you experience the dynamic city that is São Paulo!`,
 
       seo: {
-        title: 'São Paulo City Tours 2025: Vibrant Metropolis & Cultural Neighborhoods',
+        title: 'São Paulo City Tours 2026: Vibrant Metropolis & Cultural Neighborhoods',
         description: 'Book São Paulo city tours! Explore vibrant metropolis, business districts & cultural neighborhoods. Discover Brazil\'s largest city. From $50.',
         keywords: 'São Paulo city tours, São Paulo metropolis, city tours São Paulo, Brazil city tours',
       },
@@ -22109,7 +22109,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `São Paulo is home to world-class museums showcasing diverse collections, from Brazilian art to international exhibitions, where excellent cultural institutions create museum experiences that make museum tours perfect for understanding the city's cultural richness! Museum tours take you through São Paulo's museum scene, from visiting famous museums like MASP and Pinacoteca to exploring diverse exhibitions, from experiencing Brazilian art to understanding international collections, and from seeing impressive galleries to discovering why São Paulo's museums are considered among Latin America's finest. Experience the cultural excellence that defines São Paulo, see world-class collections, learn about Brazilian and international arts, and discover why museum tours offer fascinating insights into culture. Whether you're interested in art, history, or comprehensive museum exploration, museum tours provide engaging journeys that showcase the cultural richness that makes São Paulo culturally fascinating. From art to history, from Brazilian to international, museum tours ensure you experience the incredible museums that define São Paulo!`,
 
       seo: {
-        title: 'São Paulo Museum Tours 2025: World-Class Museums & Cultural Institutions',
+        title: 'São Paulo Museum Tours 2026: World-Class Museums & Cultural Institutions',
         description: 'Book São Paulo museum tours! Explore world-class museums, MASP & Pinacoteca. Discover excellent cultural institutions. From $55.',
         keywords: 'São Paulo museum tours, MASP São Paulo, Pinacoteca São Paulo, Brazil museum tours',
       },
@@ -22261,7 +22261,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `São Paulo is a culinary melting pot, where diverse cuisines, traditional Brazilian dishes, and international flavors come together creating food experiences that reflect the city's cultural diversity, making food & culture tours essential for experiencing authentic São Paulo! Food & Culture tours take you through São Paulo's gastronomic and cultural landscape, from tasting diverse Brazilian dishes to experiencing international cuisines, from visiting cultural neighborhoods to understanding how food reflects the city's diversity, and from learning about culinary heritage to discovering why São Paulo's food scene is considered among Brazil's finest. Experience the flavors that make São Paulo special, learn about diverse culinary traditions, understand how food reflects cultural diversity, and discover why Food & Culture tours are essential for experiencing authentic São Paulo. Whether you're seeking traditional food, international cuisine, or comprehensive culinary and cultural exploration, Food & Culture tours offer engaging journeys that showcase the cultural richness that makes São Paulo culturally fascinating. From markets to restaurants, from food to traditions, Food & Culture tours ensure you experience the authentic flavors and culture that define São Paulo!`,
 
       seo: {
-        title: 'São Paulo Food & Culture Tours 2025: Diverse Cuisines & Culinary Melting Pot',
+        title: 'São Paulo Food & Culture Tours 2026: Diverse Cuisines & Culinary Melting Pot',
         description: 'Book São Paulo food & culture tours! Discover diverse cuisines, Brazilian dishes & international flavors. Experience culinary melting pot. From $60.',
         keywords: 'São Paulo food tours, Brazilian cuisine, food tours São Paulo, São Paulo cultural tours',
       },
@@ -22413,7 +22413,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `São Paulo showcases fascinating architectural diversity, where modern skyscrapers, historic buildings, and contemporary architecture create architectural contrasts that make architecture tours perfect for appreciating São Paulo's built heritage! Architecture tours take you through São Paulo's architectural landscape, from exploring impressive skyscrapers to understanding architectural preservation, from seeing historic buildings to appreciating how different architectural periods coexist, and from learning about architectural history to discovering why São Paulo's architecture tells the story of metropolis development. Experience the architectural richness that defines São Paulo, see how modern and historic styles coexist, understand architectural evolution, and discover why architecture tours offer unique insights into both São Paulo's history and its architectural significance. Whether you're interested in modern skyscrapers, historic buildings, or comprehensive architectural exploration, architecture tours provide engaging journeys that showcase the architectural evolution that makes São Paulo architecturally fascinating. From skyscrapers to preservation, from modern to historic, architecture tours ensure you experience the diverse architectural heritage that defines São Paulo!`,
 
       seo: {
-        title: 'São Paulo Architecture Tours 2025: Skyscrapers & Architectural Diversity',
+        title: 'São Paulo Architecture Tours 2026: Skyscrapers & Architectural Diversity',
         description: 'Book São Paulo architecture tours! Explore skyscrapers, historic buildings & architectural evolution. Discover metropolis architectural heritage. From $45.',
         keywords: 'São Paulo architecture tours, São Paulo skyscrapers, architecture São Paulo, Brazil architecture',
       },
@@ -22565,7 +22565,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `São Paulo's neighborhoods are the city's cultural heart, where each district has its own unique character, culture, and atmosphere creating diverse neighborhood experiences that make neighborhood tours perfect for understanding the real São Paulo! Neighborhood tours take you through São Paulo's diverse districts, from exploring trendy Vila Madalena to visiting culturally rich Liberdade, from experiencing bohemian atmosphere to understanding neighborhood heritage, and from discovering local character to learning why each neighborhood is unique. Experience the neighborhood diversity that defines São Paulo, see how each district has its own identity, understand local culture and traditions, and discover why neighborhood tours offer fascinating insights into the city's character. Whether you're seeking trendy areas, cultural districts, or comprehensive neighborhood exploration, neighborhood tours provide engaging journeys that showcase the diverse neighborhoods that make São Paulo culturally rich. From bohemian to business, from artistic to residential, neighborhood tours ensure you experience the unique neighborhoods that define São Paulo!`,
 
       seo: {
-        title: 'São Paulo Neighborhood Tours 2025: Vila Madalena & Diverse Districts',
+        title: 'São Paulo Neighborhood Tours 2026: Vila Madalena & Diverse Districts',
         description: 'Book São Paulo neighborhood tours! Explore diverse neighborhoods, Vila Madalena & Liberdade. Discover unique district culture. From $50.',
         keywords: 'São Paulo neighborhood tours, Vila Madalena tours, Liberdade São Paulo, São Paulo districts tours',
       },
@@ -22717,7 +22717,7 @@ export const categoryGuidesSouthAmerica = {
       introduction: `São Paulo comes alive at night, where samba clubs, trendy bars, live music venues, and energetic nightlife create exciting evening experiences that make nightlife tours perfect for experiencing the city's vibrant night scene! Nightlife tours take you through São Paulo's nightlife, from visiting samba clubs to exploring trendy bars, from experiencing live music to understanding the city's night culture, and from discovering the best nightspots to learning why São Paulo's nightlife is considered among Brazil's most vibrant. Experience the energy that defines São Paulo's nights, see why the city is famous for nightlife, enjoy diverse evening entertainment, and discover why nightlife tours offer perfect ways to experience São Paulo after dark. Whether you're seeking samba, live music, trendy bars, or comprehensive nightlife experiences, nightlife tours provide engaging journeys that showcase the vibrant nightlife that makes São Paulo nightlife exciting. From samba to bars, from music to dancing, nightlife tours ensure you experience the incredible nightlife that defines São Paulo!`,
 
       seo: {
-        title: 'São Paulo Nightlife Tours 2025: Samba Clubs & Vibrant Night Scene',
+        title: 'São Paulo Nightlife Tours 2026: Samba Clubs & Vibrant Night Scene',
         description: 'Book São Paulo nightlife tours! Experience samba clubs, trendy bars & vibrant nightlife. Discover energetic night scene. From $70.',
         keywords: 'São Paulo nightlife tours, samba São Paulo, nightlife São Paulo, São Paulo bars tours',
       },

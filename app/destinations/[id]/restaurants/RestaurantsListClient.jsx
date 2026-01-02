@@ -43,6 +43,17 @@ import { useRouter } from 'next/navigation';
 import { extractRestaurantStructuredValues, calculateRestaurantPreferenceMatch } from '@/lib/restaurantMatching';
 import RestaurantMatchModal from '@/components/restaurant/RestaurantMatchModal';
 import { STANDARD_CUISINE_TYPES } from '@/data/standardCuisineTypes';
+import TourCard from '@/components/tour/TourCard';
+import TourMatchModal from '@/components/tour/TourMatchModal';
+import { getTourProductId } from '@/utils/tourHelpers';
+import { 
+  calculateTourProfile, 
+  getUserPreferenceScores, 
+  calculateMatchScore, 
+  getMatchDisplay,
+  getDefaultPreferences 
+} from '@/lib/tourMatching';
+import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 
 export default function RestaurantsListClient({ destination, restaurants, promotedTours = [], promotedRestaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [], categoryGuides = [] }) {
   const { isBookmarked, toggle } = useRestaurantBookmarks();
@@ -55,9 +66,12 @@ export default function RestaurantsListClient({ destination, restaurants, promot
   const [user, setUser] = useState(null);
   const [userPreferences, setUserPreferences] = useState(null);
   const [showPreferencesModal, setShowPreferencesModal] = useState(false);
+  const [showTourPreferencesModal, setShowTourPreferencesModal] = useState(false);
   const [savingPreferencesToProfile, setSavingPreferencesToProfile] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [showMatchModal, setShowMatchModal] = useState(false);
+  const [matchScores, setMatchScores] = useState({}); // Map of productId -> match score
+  const [loadingPreferences, setLoadingPreferences] = useState(true);
   
   // Filter and sort state
   const [sortBy, setSortBy] = useState('rating'); // 'rating', 'name', 'price-low', 'price-high', 'best-match'
@@ -121,11 +135,80 @@ export default function RestaurantsListClient({ destination, restaurants, promot
           } catch {}
         }
       } catch {}
+      finally {
+        if (mounted) {
+          setLoadingPreferences(false);
+        }
+      }
     })();
     return () => {
       mounted = false;
     };
   }, [supabase]);
+  
+  // Lightweight localStorage preferences for tours (works for everyone, no sign-in required)
+  const [localPreferences, setLocalPreferences] = useState(() => {
+    if (typeof window === 'undefined') return getDefaultPreferences();
+    try {
+      const stored = localStorage.getItem('tourPreferences');
+      return stored ? JSON.parse(stored) : getDefaultPreferences();
+    } catch {
+      return getDefaultPreferences();
+    }
+  });
+  
+  // Calculate match scores for promoted tours
+  useEffect(() => {
+    if (loadingPreferences || !promotedTours || promotedTours.length === 0) {
+      if (!promotedTours || promotedTours.length === 0) {
+        setMatchScores({});
+      }
+      return;
+    }
+    
+    const calculateScores = async () => {
+      // Pass raw preferences - calculateEnhancedMatchScore converts them internally
+      const rawPreferences = user && userPreferences && Object.keys(userPreferences).length >= 5
+        ? userPreferences
+        : localPreferences
+        ? localPreferences
+        : null;
+      
+      const scores = {};
+      
+      // Calculate scores for promoted tours (async)
+      const promotedPromises = promotedTours
+        .filter(t => {
+          // Only calculate for tours with full data (title/productContent)
+          return t.title || t.productContent || t.seo || t.productName;
+        })
+        .map(async (tour) => {
+          const productId = getTourProductId(tour) || tour.product_id || tour.productId || tour.productCode;
+          if (!productId || scores[productId]) return null;
+          try {
+            // Use enhanced matching with full tour object
+            const tags = Array.isArray(tour.tags) ? tour.tags : [];
+            const tourProfile = await calculateTourProfile(tags);
+            const matchScore = await calculateEnhancedMatchScore(tour, rawPreferences, tourProfile);
+            return { productId, matchScore };
+          } catch (e) {
+            // Ignore errors for individual tours
+            return null;
+          }
+        });
+      
+      const promotedResults = await Promise.all(promotedPromises);
+      promotedResults.forEach(result => {
+        if (result) {
+          scores[result.productId] = result.matchScore;
+        }
+      });
+      
+      setMatchScores(scores);
+    };
+    
+    calculateScores();
+  }, [promotedTours, user, userPreferences, loadingPreferences, localPreferences]);
 
   // Auto-sync local restaurant preferences -> profile once after sign-in
   useEffect(() => {
@@ -249,8 +332,22 @@ export default function RestaurantsListClient({ destination, restaurants, promot
         map.set(r.id, match);
       } catch {}
     });
+    
+    // Also calculate match scores for promoted restaurants
+    if (Array.isArray(promotedRestaurants)) {
+      promotedRestaurants.forEach((r) => {
+        try {
+          const values = extractRestaurantStructuredValues(r);
+          if (values?.error) return;
+          const match = calculateRestaurantPreferenceMatch(pseudoUserPreferences, values, r);
+          if (match?.error) return;
+          map.set(r.id, match);
+        } catch {}
+      });
+    }
+    
     return map;
-  }, [restaurants, localRestaurantPreferences]);
+  }, [restaurants, promotedRestaurants, localRestaurantPreferences]);
 
   // Get available cuisine types from restaurants in this destination
   const availableCuisines = useMemo(() => {
@@ -559,9 +656,47 @@ export default function RestaurantsListClient({ destination, restaurants, promot
                 Featured tours and restaurants from our partner operators.
               </p>
 
+              {/* Promoted Tours (Cross-promotion on restaurant pages) */}
+              {promotedTours && promotedTours.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Promoted Tours</h3>
+                  <p className="text-sm text-gray-600 mb-4">
+                    Discover top-rated tours and activities in {destination.fullName || destination.name}
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {promotedTours.slice(0, 6).map((tour, index) => {
+                      const productId = getTourProductId(tour) || tour.product_id || tour.productId || tour.productCode;
+                      if (!productId) return null;
+                      
+                      // Try multiple product ID formats to find match score
+                      const matchScore = matchScores[productId] || 
+                                        matchScores[tour.productId] || 
+                                        matchScores[tour.productCode] || 
+                                        matchScores[tour.product_id] ||
+                                        null;
+                      
+                      return (
+                        <TourCard
+                          key={productId || index}
+                          tour={tour}
+                          destination={destination}
+                          matchScore={matchScore}
+                          user={user}
+                          userPreferences={userPreferences}
+                          onOpenPreferences={() => setShowTourPreferencesModal(true)}
+                          isFeatured={false}
+                          premiumOperatorTourIds={[]}
+                          isPromoted={true}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
               {/* Promoted Restaurants */}
               {promotedRestaurants && promotedRestaurants.length > 0 && (
-                <div className="mb-8">
+                <div>
                   <h3 className="text-xl font-semibold text-gray-800 mb-4">Promoted Restaurants</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {promotedRestaurants.slice(0, 6).map((restaurant, index) => {
@@ -572,43 +707,108 @@ export default function RestaurantsListClient({ destination, restaurants, promot
                         ? `/destinations/${destination.id}/restaurants/${restaurant.slug}`
                         : `/destinations/${destination.id}/restaurants`;
                       
+                      const description = restaurant.metaDescription 
+                        || restaurant.tagline 
+                        || restaurant.summary 
+                        || restaurant.description
+                        || (restaurant.cuisines?.length > 0 
+                            ? `Discover ${restaurant.cuisines.join(' & ')} cuisine at ${restaurant.name}.`
+                            : `Experience great dining at ${restaurant.name}.`);
+                      
+                      // Get match score
+                      const matchScore = restaurantMatchById.get(restaurantId)?.matchScore ?? 0;
+                      
+                      // Get cuisine for badge
+                      const validCuisines = restaurant.cuisines && Array.isArray(restaurant.cuisines)
+                        ? restaurant.cuisines.filter(c => c && 
+                            c.toLowerCase() !== 'restaurant' && 
+                            c.toLowerCase() !== 'food' &&
+                            c.trim().length > 0)
+                        : [];
+                      const cuisineBadge = validCuisines.length > 0 ? validCuisines[0] : 'Restaurant';
+                      
                       return (
                         <motion.div
                           key={restaurantId || index}
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.4, delay: index * 0.1 }}
+                          transition={{ duration: 0.4, delay: index * 0.05 }}
                           viewport={{ once: true }}
                         >
-                          <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                          <Card className={`h-full border bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-purple-500 shadow-purple-200/50`}>
                             <CardContent className="p-6 flex flex-col h-full">
                               <div className="flex items-center justify-between gap-3 mb-3">
-                                <div className="flex items-center gap-3">
-                                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
+                                <div className="flex items-center gap-3 min-w-0">
+                                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
                                     <UtensilsCrossed className="w-5 h-5 text-white" />
                                   </div>
-                                  <Badge className="ocean-gradient text-white text-xs">
-                                    <Sparkles className="w-3 h-3 mr-1" />
-                                    Promoted
-                                  </Badge>
+                                  <div className="flex items-center gap-2 min-w-0">
+                                    <Badge className="ocean-gradient text-white text-xs flex-shrink-0">
+                                      <Sparkles className="w-3 h-3 mr-1" />
+                                      Promoted
+                                    </Badge>
+                                    <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 truncate">
+                                      {cuisineBadge}
+                                    </span>
+                                  </div>
                                 </div>
+
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setSelectedRestaurant(restaurant);
+                                    setShowMatchModal(true);
+                                  }}
+                                  className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 flex-shrink-0"
+                                  title="Click to see why this matches your taste"
+                                >
+                                  <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+                                  <span className="text-xs font-bold text-gray-900">
+                                    {matchScore}%
+                                  </span>
+                                  <span className="text-[10px] text-gray-600">Match</span>
+                                </button>
                               </div>
                               
-                              <Link href={restaurantUrl}>
-                                <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+                              <div className="flex items-start justify-between gap-2 mb-3">
+                                <h3 className="text-lg font-bold text-gray-900 line-clamp-2 flex items-center gap-1.5">
                                   {restaurant.name}
+                                  {(premiumRestaurantIds.includes(restaurant.id) || premiumRestaurantIds.includes(Number(restaurant.id))) && (
+                                    <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Featured Restaurant" />
+                                  )}
                                 </h3>
-                              </Link>
+                              </div>
 
-                              <Button
-                                asChild
-                                className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
+                              <p className="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
+                                {description}
+                              </p>
+
+                              <div className="flex flex-wrap gap-2 mb-4">
+                                {restaurant.ratings?.googleRating && (
+                                  <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
+                                    <Star className="w-3 h-3" />
+                                    {restaurant.ratings.googleRating.toFixed(1)}
+                                  </span>
+                                )}
+                                {restaurant.pricing?.priceRange && (
+                                  <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
+                                    {restaurant.pricing.priceRange}
+                                  </span>
+                                )}
+                                {validCuisines.length > 0 && (
+                                  <span className="inline-flex items-center text-xs font-medium bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full">
+                                    {validCuisines.slice(0, 2).join(' · ')}
+                                  </span>
+                                )}
+                              </div>
+
+                              <Link
+                                href={restaurantUrl}
+                                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
                               >
-                                <Link href={restaurantUrl}>
-                                  View Details
-                                  <ArrowRight className="w-4 h-4 ml-2" />
-                                </Link>
-                              </Button>
+                                View Restaurant
+                                <ArrowRight className="w-4 h-4" />
+                              </Link>
                             </CardContent>
                           </Card>
                         </motion.div>
@@ -858,7 +1058,11 @@ export default function RestaurantsListClient({ destination, restaurants, promot
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <Card className={`h-full border bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${
+                  promotedRestaurants.some(r => r.id === restaurant.id) 
+                    ? 'border-2 border-purple-500 shadow-purple-200/50' 
+                    : 'border border-gray-100'
+                }`}>
                   <CardContent className="p-6 flex flex-col h-full">
                     <div className="flex items-center justify-between gap-3 mb-3">
                       <div className="flex items-center gap-3 min-w-0">
@@ -1064,11 +1268,11 @@ export default function RestaurantsListClient({ destination, restaurants, promot
                   </p>
                   <div className="bg-white rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Best Hotel Deals in {destination.fullName}</h4>
-                    <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers on Expedia USA.</p>
+                    <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers on Trivago USA.</p>
                     <Button
                       variant="outline"
                       className="w-full flex items-center justify-center gap-2"
-                      onClick={() => window.open('https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk', '_blank')}
+                      onClick={() => window.open('https://tidd.ly/4snW11u', '_blank')}
                     >
                       Find Hotel Deals
                       <ExternalLink className="w-4 h-4" />
@@ -1433,6 +1637,35 @@ export default function RestaurantsListClient({ destination, restaurants, promot
         onClose={() => setShowShareModal(false)}
         url={typeof window !== 'undefined' ? window.location.href : ''}
         title={`Best Restaurants in ${destination.fullName} - TopTours.ai`}
+      />
+      
+      {/* Tour Match Modal for promoted tours */}
+      <TourMatchModal
+        isOpen={showTourPreferencesModal}
+        onClose={() => setShowTourPreferencesModal(false)}
+        user={user}
+        userPreferences={userPreferences || localPreferences}
+        onSavePreferences={async (prefs) => {
+          setLocalPreferences(prefs);
+          if (user) {
+            try {
+              const { error } = await supabase
+                .from('profiles')
+                .update({ trip_preferences: { ...userPreferences, ...prefs } })
+                .eq('id', user.id);
+              if (!error) {
+                setUserPreferences({ ...userPreferences, ...prefs });
+                toast({
+                  title: 'Preferences saved',
+                  description: 'Saved to your profile.',
+                });
+              }
+            } catch (e) {
+              console.error('Error saving preferences:', e);
+            }
+          }
+        }}
+        destination={destination}
       />
     </>
   );

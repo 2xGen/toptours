@@ -114,18 +114,50 @@ const getDestinationSlugFromArray = (tour) => {
   const primary = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
   if (!primary) return null;
 
+  // CRITICAL: If we have a hardcoded destination slug, use it
   if (typeof primary.id === 'string' && slugToViatorId[primary.id]) {
     return primary.id;
   }
 
+  // CRITICAL: Try to get slug from ref/ID mapping (only for hardcoded destinations)
   const slugFromRef =
     getSlugFromRef(primary.destinationId) ||
     getSlugFromRef(primary.id) ||
     getSlugFromRef(primary.ref);
+  
+  // CRITICAL: Only use slugFromRef if it's NOT "new-york-city" for ID 60448
+  // This prevents wrong matches from the hardcoded map
   if (slugFromRef) {
-    return slugFromRef;
+    const refId = primary.ref || primary.destinationId || primary.id;
+    if (refId) {
+      const normalizedRefId = String(refId).replace(/^d/i, '');
+      // If destination ID is 60448 but slug is "new-york-city", it's WRONG - don't use it
+      if (normalizedRefId === '60448' && slugFromRef === 'new-york-city') {
+        console.error(`❌ CRITICAL: getDestinationSlugFromArray rejected wrong slug "new-york-city" for ID 60448`);
+        // Don't return wrong slug - let it fall through to database lookup
+      } else {
+        return slugFromRef;
+      }
+    } else {
+      return slugFromRef;
+    }
   }
 
+  // CRITICAL: Don't use name matching for database destinations (like 60448)
+  // Name matching can incorrectly match to wrong destinations
+  // Instead, return null and let the database lookup handle it
+  const refId = primary.ref || primary.destinationId || primary.id;
+  if (refId) {
+    const normalizedRefId = String(refId).replace(/^d/i, '');
+    // If we have a numeric ID that's not in the hardcoded map, it's a database destination
+    // Don't use name matching - let database lookup handle it
+    if (!isNaN(parseInt(normalizedRefId)) && !viatorRefToSlug[normalizedRefId] && !viatorRefToSlug[`d${normalizedRefId}`]) {
+      console.log(`🔍 [getDestinationSlugFromArray] ID ${normalizedRefId} not in hardcoded map, skipping name matching (will use database lookup)`);
+      return null; // Force database lookup
+    }
+  }
+
+  // Only use name matching for destinations without IDs or if ID is in hardcoded map
   const name = normalizeString(primary.destinationName || primary.name);
   if (name) {
     const matched = siteDestinations.find((dest) => {
@@ -145,6 +177,23 @@ const getDestinationSlugFromArray = (tour) => {
 };
 
 const matchDestinationSlugByName = (tour) => {
+  // CRITICAL: NEVER use name matching if we have a destination ID from Viator
+  // Name matching is unreliable and can match to wrong destinations
+  // If we have a destination ID, we MUST use database lookup
+  if (Array.isArray(tour?.destinations) && tour.destinations.length > 0) {
+    const primary = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
+    const destinationId = primary?.ref || primary?.destinationId || primary?.id;
+    if (destinationId) {
+      const normalizedId = String(destinationId).replace(/^d/i, '');
+      // If we have a numeric ID, it's a Viator destination - use database lookup, not name matching
+      if (!isNaN(parseInt(normalizedId))) {
+        console.log(`🔍 [matchDestinationSlugByName] Skipping name matching for destination ID ${normalizedId} - will use database lookup`);
+        return null; // Force database lookup
+      }
+    }
+  }
+
+  // Only use name matching if we have NO destination ID from Viator
   const candidateStrings = [
     tour.destinationName,
     tour.title,
@@ -186,7 +235,27 @@ const matchDestinationSlugByName = (tour) => {
 };
 
 const resolveDestinationSlug = (tour) => {
-  return getDestinationSlugFromArray(tour) || matchDestinationSlugByName(tour);
+  const slugFromArray = getDestinationSlugFromArray(tour);
+  
+  // CRITICAL: If getDestinationSlugFromArray returns null (database destination not in hardcoded map),
+  // NEVER fall back to name matching - it's unreliable and causes wrong matches
+  // Return null so database lookup code runs instead
+  if (slugFromArray === null && Array.isArray(tour?.destinations) && tour.destinations.length > 0) {
+    const primary = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
+    const destinationId = primary?.ref || primary?.destinationId || primary?.id;
+    if (destinationId) {
+      const normalizedId = String(destinationId).replace(/^d/i, '');
+      // If we have a numeric ID that's not in the hardcoded map, it's a database destination
+      // Don't use name matching - force database lookup
+      if (!isNaN(parseInt(normalizedId)) && !viatorRefToSlug[normalizedId] && !viatorRefToSlug[`d${normalizedId}`]) {
+        console.log(`🔍 [resolveDestinationSlug] Destination ID ${normalizedId} not in hardcoded map - returning null to force database lookup`);
+        return null; // Force database lookup - don't use unreliable name matching
+      }
+    }
+  }
+  
+  // Only use name matching if we have NO destination ID from Viator
+  return slugFromArray || matchDestinationSlugByName(tour);
 };
 
 /**
@@ -253,8 +322,65 @@ export default async function TourDetailPage({ params }) {
           });
       }
 
-      const primaryDestinationSlug = resolveDestinationSlug(tour);
-      const viatorDestinationIdForTour = primaryDestinationSlug ? slugToViatorId[primaryDestinationSlug] : null;
+      // CRITICAL: Extract destination ID directly from Viator API response (100% accurate)
+      // Then query our database to get the correct destination name and slug
+      // NO MORE name matching or hardcoded map guessing - database is source of truth
+      let primaryDestinationSlug = null;
+      let viatorDestinationIdForTour = null;
+      
+      if (tour?.destinations && tour.destinations.length > 0) {
+        const primaryDest = tour.destinations.find((d) => d?.primary) || tour.destinations[0];
+        const destinationId = primaryDest?.ref || primaryDest?.destinationId || primaryDest?.id;
+        
+        if (destinationId) {
+          const normalizedId = destinationId.toString().replace(/^d/i, '');
+          viatorDestinationIdForTour = normalizedId;
+          
+          // Query database directly - this is 100% accurate
+          try {
+            const { getViatorDestinationById, clearMemoryCache } = await import('@/lib/supabaseCache');
+            
+            // Clear cache to ensure fresh lookup
+            if (clearMemoryCache && typeof clearMemoryCache === 'function') {
+              clearMemoryCache(`viator_destination_${normalizedId}`);
+            }
+            
+            const dbDestination = await getViatorDestinationById(normalizedId);
+            
+            if (dbDestination) {
+              // Use slug from database (most accurate)
+              if (dbDestination.slug) {
+                primaryDestinationSlug = dbDestination.slug;
+                console.log(`✅ [SLUG PAGE] Got destination slug "${primaryDestinationSlug}" from database for ID ${normalizedId}`);
+              } else if (dbDestination.name) {
+                // Generate slug from name if no slug in database
+                primaryDestinationSlug = dbDestination.name
+                  .toLowerCase()
+                  .trim()
+                  .replace(/[^\w\s-]/g, '')
+                  .replace(/\s+/g, '-')
+                  .replace(/-+/g, '-')
+                  .replace(/^-|-$/g, '');
+                console.log(`✅ [SLUG PAGE] Generated slug "${primaryDestinationSlug}" from database name "${dbDestination.name}" for ID ${normalizedId}`);
+              }
+            } else {
+              console.warn(`⚠️ [SLUG PAGE] Database lookup returned null for destination ID ${normalizedId}`);
+            }
+          } catch (error) {
+            console.error(`❌ [SLUG PAGE] Error querying database for destination ID ${normalizedId}:`, error);
+          }
+        }
+      }
+      
+      // Fallback: Only use hardcoded map if we have a slug but no database result
+      // This is for hardcoded destinations only (like "aruba", "bali", etc.)
+      if (!primaryDestinationSlug && viatorDestinationIdForTour) {
+        const hardcodedSlug = viatorRefToSlug[viatorDestinationIdForTour] || viatorRefToSlug[`d${viatorDestinationIdForTour}`];
+        if (hardcodedSlug) {
+          primaryDestinationSlug = hardcodedSlug;
+          console.log(`✅ [SLUG PAGE] Using hardcoded slug "${primaryDestinationSlug}" for ID ${viatorDestinationIdForTour}`);
+        }
+      }
 
     // Try to fetch pricing from search API (search results include pricing)
     let pricing = null;
@@ -414,10 +540,17 @@ export default async function TourDetailPage({ params }) {
     let categoryGuides = [];
     let destinationData = null;
     try {
-      // Step 1: Try to get slug from primaryDestinationSlug (works for hardcoded destinations)
+      // Use primaryDestinationSlug that we got from database lookup above
+      // This is 100% accurate because it comes directly from the database using Viator's destination ID
       let destinationSlug = primaryDestinationSlug;
       
-      // Step 2: If no slug, resolve from tour destination ID (for database destinations like Ajmer)
+      // If we still don't have a slug, it means database lookup failed
+      // This should rarely happen, but log it for debugging
+      if (!destinationSlug && viatorDestinationIdForTour) {
+        console.warn(`⚠️ [SLUG PAGE] No destination slug found for ID ${viatorDestinationIdForTour} - database lookup may have failed`);
+      }
+      
+      // Fallback database lookup (shouldn't be needed if above worked)
       let resolvedViatorDest = null;
       if (!destinationSlug && tour?.destinations && tour.destinations.length > 0) {
         const primaryDest = tour.destinations.find((d) => d?.primary) || tour.destinations[0];
@@ -425,23 +558,103 @@ export default async function TourDetailPage({ params }) {
         
         if (destinationId) {
           // Import getViatorDestinationById to resolve slug from ID
-          const { getViatorDestinationById } = await import('@/lib/supabaseCache');
+          const { getViatorDestinationById, clearMemoryCache } = await import('@/lib/supabaseCache');
           const normalizedId = destinationId.toString().replace(/^d/i, '');
-          resolvedViatorDest = await getViatorDestinationById(normalizedId);
+          
+          // CRITICAL: Clear cache to ensure fresh lookup
+          if (clearMemoryCache && typeof clearMemoryCache === 'function') {
+            clearMemoryCache(`viator_destination_${normalizedId}`);
+          } else {
+            console.warn(`⚠️ [SLUG PAGE] clearMemoryCache not available, skipping cache clear`);
+          }
+          
+          console.log(`🔍 [SLUG PAGE] Querying database for destination ID: "${normalizedId}" (original: ${destinationId})`);
+          
+          // CRITICAL: Also do direct database query to verify
+          const { createSupabaseServiceRoleClient } = await import('@/lib/supabaseClient');
+          const supabase = createSupabaseServiceRoleClient();
+          const { data: directQueryResult, error: directQueryError } = await supabase
+            .from('viator_destinations')
+            .select('id, name, slug, country, region, type, parent_destination_id')
+            .eq('id', normalizedId.toString())
+            .maybeSingle();
+          
+          if (directQueryError) {
+            console.error(`❌ [SLUG PAGE] Direct query error for ID ${normalizedId}:`, directQueryError);
+          } else if (directQueryResult) {
+            console.log(`✅ [SLUG PAGE] Direct database query for ID ${normalizedId}:`, {
+              id: directQueryResult.id,
+              name: directQueryResult.name,
+              slug: directQueryResult.slug,
+              matchesRequested: directQueryResult.id?.toString() === normalizedId.toString()
+            });
+            
+            // CRITICAL VALIDATION: Reject wrong destinations
+            if (directQueryResult.name && directQueryResult.name.toLowerCase().includes('new york')) {
+              console.error(`❌ CRITICAL ERROR: Database returned "New York" for ID ${normalizedId}!`);
+              console.error(`Expected: Nusa Penida or Bali region`);
+              console.error(`This is a DATABASE DATA ERROR - ID ${normalizedId} should NOT point to New York!`);
+              // Don't use wrong data - this will cause booking errors!
+            } else {
+              // Use direct query result (most reliable)
+              resolvedViatorDest = directQueryResult;
+            }
+          } else {
+            console.warn(`⚠️ [SLUG PAGE] Direct query returned null for ID: ${normalizedId}`);
+          }
+          
+          // Also try cache function (but validate it)
+          const cachedResult = await getViatorDestinationById(normalizedId);
+          if (cachedResult) {
+            console.log(`🔍 [SLUG PAGE] Cache function returned:`, {
+              id: cachedResult.id,
+              name: cachedResult.name,
+              slug: cachedResult.slug,
+              matchesDirectQuery: directQueryResult ? cachedResult.id === directQueryResult.id : 'N/A'
+            });
+            
+            // Use cached result only if it matches direct query OR if direct query failed
+            if (!directQueryResult || cachedResult.id === directQueryResult.id) {
+              resolvedViatorDest = cachedResult;
+            } else {
+              console.error(`❌ [SLUG PAGE] Cache function returned different result than direct query!`);
+              console.error(`Direct query: ${directQueryResult.id} (${directQueryResult.name})`);
+              console.error(`Cache function: ${cachedResult.id} (${cachedResult.name})`);
+              // Use direct query result (more reliable)
+            }
+          }
           
           if (resolvedViatorDest?.slug) {
-            destinationSlug = resolvedViatorDest.slug;
-            console.log(`✅ [SERVER] Resolved slug "${destinationSlug}" from ID ${normalizedId} for database destination`);
+            // CRITICAL: Validate slug is not "new-york-city" for ID 60448
+            if (normalizedId === '60448' && resolvedViatorDest.slug === 'new-york-city') {
+              console.error(`❌ CRITICAL: Slug "new-york-city" returned for ID 60448! This is WRONG!`);
+              console.error(`Expected: "nusa-penida" or "bali"`);
+              // Don't use wrong slug
+              destinationSlug = null;
+            } else {
+              destinationSlug = resolvedViatorDest.slug;
+              console.log(`✅ [SERVER] Resolved slug "${destinationSlug}" from ID ${normalizedId} for database destination`);
+            }
           } else if (resolvedViatorDest?.name) {
             // Generate slug from name
-            destinationSlug = resolvedViatorDest.name
+            const generatedSlug = resolvedViatorDest.name
               .toLowerCase()
               .trim()
               .replace(/[^\w\s-]/g, '')
               .replace(/\s+/g, '-')
               .replace(/-+/g, '-')
               .replace(/^-|-$/g, '');
-            console.log(`✅ [SERVER] Generated slug "${destinationSlug}" from name "${resolvedViatorDest.name}"`);
+            
+            // CRITICAL: Validate generated slug
+            if (normalizedId === '60448' && (generatedSlug === 'new-york-city' || resolvedViatorDest.name.toLowerCase().includes('new york'))) {
+              console.error(`❌ CRITICAL: Generated slug "new-york-city" for ID 60448! This is WRONG!`);
+              console.error(`Name: ${resolvedViatorDest.name}`);
+              // Don't use wrong slug
+              destinationSlug = null;
+            } else {
+              destinationSlug = generatedSlug;
+              console.log(`✅ [SERVER] Generated slug "${destinationSlug}" from name "${resolvedViatorDest.name}"`);
+            }
           }
         }
       }

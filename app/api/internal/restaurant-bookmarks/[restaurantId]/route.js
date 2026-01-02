@@ -19,10 +19,22 @@ export async function DELETE(request, { params }) {
       .eq('user_id', userId)
       .eq('restaurant_id', restaurantId);
 
-    if (error) throw error;
+    if (error) {
+      console.error('Error deleting restaurant bookmark:', error);
+      // If table doesn't exist, return success (graceful degradation)
+      if (error.code === '42P01' || error.message?.includes('does not exist')) {
+        console.warn('restaurant_bookmarks table does not exist, skipping delete');
+        return NextResponse.json({ ok: true, skipped: true });
+      }
+      throw error;
+    }
     return NextResponse.json({ ok: true });
   } catch (err) {
-    return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
+    console.error('Error in restaurant-bookmarks DELETE:', err);
+    return NextResponse.json({ 
+      error: err.message || 'Server error',
+      details: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    }, { status: 500 });
   }
 }
 

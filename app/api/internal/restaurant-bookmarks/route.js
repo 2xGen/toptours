@@ -17,10 +17,22 @@ export async function GET(request) {
       .eq('user_id', userId)
       .order('created_at', { ascending: false });
 
-    if (error) throw error;
+    if (error) {
+      console.error('Error fetching restaurant bookmarks:', error);
+      // If table doesn't exist, return empty array instead of error
+      if (error.code === '42P01' || error.message?.includes('does not exist')) {
+        console.warn('restaurant_bookmarks table does not exist, returning empty array');
+        return NextResponse.json({ bookmarks: [] });
+      }
+      throw error;
+    }
     return NextResponse.json({ bookmarks: data || [] });
   } catch (err) {
-    return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
+    console.error('Error in restaurant-bookmarks GET:', err);
+    return NextResponse.json({ 
+      error: err.message || 'Server error',
+      details: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    }, { status: 500 });
   }
 }
 
@@ -39,10 +51,22 @@ export async function POST(request) {
       .from('restaurant_bookmarks')
       .upsert({ user_id: userId, restaurant_id: restaurantId });
 
-    if (error) throw error;
+    if (error) {
+      console.error('Error upserting restaurant bookmark:', error);
+      // If table doesn't exist, return success (graceful degradation)
+      if (error.code === '42P01' || error.message?.includes('does not exist')) {
+        console.warn('restaurant_bookmarks table does not exist, skipping bookmark');
+        return NextResponse.json({ ok: true, skipped: true });
+      }
+      throw error;
+    }
     return NextResponse.json({ ok: true });
   } catch (err) {
-    return NextResponse.json({ error: err.message || 'Server error' }, { status: 500 });
+    console.error('Error in restaurant-bookmarks POST:', err);
+    return NextResponse.json({ 
+      error: err.message || 'Server error',
+      details: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    }, { status: 500 });
   }
 }
 

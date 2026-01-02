@@ -4,7 +4,7 @@ import { getPopularToursForDestination } from '@/data/popularTours';
 import ToursListingClient from './ToursListingClient';
 import { slugToViatorId } from '@/data/viatorDestinationMap';
 import { getPromotionScoresByDestination, getRestaurantPromotionScoresByDestination, getHardcodedToursByDestination } from '@/lib/promotionSystem';
-import { getPromotedListings } from '@/lib/promotedListings';
+import { getPromotedToursByDestination, getPromotedRestaurantsByDestination } from '@/lib/promotionSystem';
 import { getPremiumOperatorTourIdsForDestination } from '@/lib/tourOperatorPremiumServer';
 import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { getRestaurantCountsByDestination, getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
@@ -565,31 +565,89 @@ export default async function ToursListingPage({ params }) {
     };
   }
 
-  // Fetch promoted listings for this destination
-  const promotedListingsTours = destinationIdForScores ? await getPromotedListings(destinationIdForScores, 'tour') : [];
-  const promotedListingsRestaurants = destination.id ? await getPromotedListings(destination.id, 'restaurant') : [];
+  // Fetch promoted tours for this destination
+  let promotedTours = [];
+  try {
+    const promotedTourData = destinationIdForScores ? await getPromotedToursByDestination(destinationIdForScores, 20) : [];
+    // Match promoted product IDs with actual tour data (from both dynamicTours and popularTours)
+    const promotedTourProductIds = new Set(promotedTourData.map(pt => pt.product_id || pt.productId || pt.productCode).filter(Boolean));
+    
+    // First, try to find promoted tours in dynamicTours and popularTours
+    const allAvailableTours = [...dynamicTours, ...popularTours];
+    const foundPromotedTours = allAvailableTours.filter(tour => {
+      const productId = tour.productId || tour.productCode;
+      return productId && promotedTourProductIds.has(productId);
+    });
+    
+    // Find which promoted tours are missing
+    const foundProductIds = new Set(foundPromotedTours.map(t => t.productId || t.productCode).filter(Boolean));
+    const missingProductIds = Array.from(promotedTourProductIds).filter(id => !foundProductIds.has(id));
+    
+    // Fetch missing promoted tours directly from Viator API
+    if (missingProductIds.length > 0) {
+      console.log(`📥 Fetching ${missingProductIds.length} missing promoted tours from Viator API`);
+      const apiKey = process.env.VIATOR_API_KEY;
+      if (apiKey) {
+        const fetchPromises = missingProductIds.slice(0, 6).map(async (productId) => {
+          try {
+            const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
+            const response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                'exp-api-key': apiKey,
+                'Accept': 'application/json;version=2.0',
+                'Accept-Language': 'en-US',
+                'Content-Type': 'application/json'
+              },
+              cache: 'no-store'
+            });
+            
+            if (response.ok) {
+              const tour = await response.json();
+              return tour;
+            } else {
+              console.warn(`Failed to fetch promoted tour ${productId}: ${response.status}`);
+              return null;
+            }
+          } catch (error) {
+            console.error(`Error fetching promoted tour ${productId}:`, error);
+            return null;
+          }
+        });
+        
+        const fetchedTours = await Promise.all(fetchPromises);
+        const validFetchedTours = fetchedTours.filter(t => t !== null);
+        promotedTours = [...foundPromotedTours, ...validFetchedTours];
+      } else {
+        promotedTours = foundPromotedTours;
+      }
+    } else {
+      promotedTours = foundPromotedTours;
+    }
+  } catch (error) {
+    console.error('Error fetching promoted tours:', error);
+    // Continue with empty array - page will still work
+  }
   
-  // Match promoted listings with actual tour data (from dynamicTours)
-  const promotedTourProductIds = new Set(promotedListingsTours.map(pl => pl.product_id));
-  const promotedTours = dynamicTours.filter(tour => {
-    const productId = tour.productId || tour.productCode;
-    return productId && promotedTourProductIds.has(productId);
-  });
-  
-  // For restaurants, we'll need to fetch them separately (similar logic)
-  const promotedRestaurantIds = new Set(promotedListingsRestaurants.map(pl => pl.product_id));
+  // Fetch promoted restaurants for this destination
   let promotedRestaurants = [];
-  if (destination.id && promotedRestaurantIds.size > 0) {
-    try {
+  try {
+    const promotedRestaurantData = destination.id ? await getPromotedRestaurantsByDestination(destination.id, 20) : [];
+    if (promotedRestaurantData.length > 0) {
+      // Convert both to strings for consistent comparison
+      const promotedRestaurantIds = new Set(
+        promotedRestaurantData.map(pr => String(pr.id || pr.restaurant_id)).filter(Boolean)
+      );
       const restaurantsFromDB = await getRestaurantsForDestinationFromDB(destination.id);
       if (restaurantsFromDB.length > 0) {
         promotedRestaurants = restaurantsFromDB
           .map(r => formatRestaurantForFrontend(r))
-          .filter(r => promotedRestaurantIds.has(String(r.id)));
+          .filter(r => r.id && promotedRestaurantIds.has(String(r.id)));
       }
-    } catch (error) {
-      console.warn('Could not fetch promoted restaurants:', error.message || error);
     }
+  } catch (error) {
+    console.error('Error fetching promoted restaurants:', error);
+    // Continue with empty array - page will still work
   }
 
   // Fetch restaurant promotion scores for this destination

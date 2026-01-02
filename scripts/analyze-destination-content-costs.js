@@ -3,7 +3,7 @@
  * Comparing gpt-3.5-turbo vs gpt-4o-mini (OpenAI's cheaper alternative)
  */
 
-// API Pricing (as of January 2025)
+// API Pricing (as of January 2026)
 const PRICING = {
   'gpt-3.5-turbo': {
     input: 0.50,   // $0.50 per 1M input tokens

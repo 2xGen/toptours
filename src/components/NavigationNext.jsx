@@ -7,6 +7,15 @@ import { Menu, X, UserCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 
+// Define navItems outside component to prevent hydration mismatches
+const navItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Destinations', path: '/destinations' },
+  { name: 'Tours', path: '/tours' },
+  { name: 'Restaurants', path: '/restaurants' },
+  { name: 'Travel Guides', path: '/travel-guides' },
+];
+
 const NavigationNext = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
@@ -103,14 +112,6 @@ const NavigationNext = () => {
       document.removeEventListener('touchstart', handleClickOutside);
     };
   }, [isOpen]);
-
-  const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Destinations', path: '/destinations' },
-    { name: 'Tours', path: '/tours' },
-    { name: 'Restaurants', path: '/restaurants' },
-    { name: 'Travel Guides', path: '/travel-guides' },
-  ];
 
   return (
     <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50 glass-effect">

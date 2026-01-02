@@ -393,10 +393,51 @@ export default async function TourDetailPage({ params }) {
       let destinationNameFromTour = null;
       
       // Try to extract destination from tour.destinations array
+      // IMPORTANT: Prioritize primary destination, but also log all destinations for debugging
       if (tour?.destinations && tour.destinations.length > 0) {
-        const primaryDestination = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
-        destinationId = primaryDestination?.ref || primaryDestination?.destinationId || primaryDestination?.id;
-        destinationNameFromTour = primaryDestination?.destinationName || primaryDestination?.name;
+        console.log(`🔍 Tour ${productId} has ${tour.destinations.length} destination(s):`, 
+          tour.destinations.map(d => ({
+            ref: d?.ref,
+            destinationId: d?.destinationId,
+            id: d?.id,
+            name: d?.destinationName || d?.name,
+            primary: d?.primary
+          }))
+        );
+        
+        // Find primary destination first
+        const primaryDestination = tour.destinations.find((dest) => dest?.primary);
+        // If no primary, use first destination
+        const selectedDestination = primaryDestination || tour.destinations[0];
+        
+        // CRITICAL: Use ref first (this is what Viator API provides), then fallback to other fields
+        // The 'ref' field is the most reliable source of destination ID from Viator API
+        destinationId = selectedDestination?.ref || selectedDestination?.destinationId || selectedDestination?.id;
+        destinationNameFromTour = selectedDestination?.destinationName || selectedDestination?.name;
+        
+        // CRITICAL VALIDATION: Log the exact values we're extracting
+        console.log(`✅ Selected destination for tour ${productId}:`, {
+          destinationId,
+          destinationIdType: typeof destinationId,
+          destinationName: destinationNameFromTour,
+          isPrimary: !!primaryDestination,
+          totalDestinations: tour.destinations.length,
+          rawDestination: {
+            ref: selectedDestination?.ref,
+            destinationId: selectedDestination?.destinationId,
+            id: selectedDestination?.id,
+            destinationName: selectedDestination?.destinationName,
+            name: selectedDestination?.name
+          }
+        });
+        
+        // CRITICAL: Validate that we have a destination ID
+        if (!destinationId) {
+          console.error(`❌ CRITICAL: No destination ID extracted from tour ${productId}!`, {
+            destinations: tour.destinations,
+            selectedDestination
+          });
+        }
       }
       
       // Fallback: Try to extract from other tour fields if destinations array is empty
@@ -418,21 +459,131 @@ export default async function TourDetailPage({ params }) {
         const normalizedDestinationId = destinationIdString.replace(/^d/i, '');
         let destinationResolved = false;
 
+        // CRITICAL: Log what we're about to query
+        console.log(`🔍 [DESTINATION LOOKUP] Starting lookup for tour ${productId}:`, {
+          originalDestinationId: destinationId,
+          destinationIdString,
+          normalizedDestinationId,
+          destinationNameFromTour
+        });
+
         // 1) Preferred: Supabase (viator_destinations table)
         try {
+          // Clear cache for this ID to ensure fresh lookup (prevents wrong cached data)
+          const { clearMemoryCache } = await import('@/lib/supabaseCache');
+          clearMemoryCache(`viator_destination_${normalizedDestinationId}`);
+          
+          console.log(`🔍 [DESTINATION LOOKUP] Querying database for ID: "${normalizedDestinationId}"`);
+          
+          // CRITICAL: Also do a direct database query to verify
+          const { createSupabaseServiceRoleClient } = await import('@/lib/supabaseClient');
+          const supabase = createSupabaseServiceRoleClient();
+          const { data: directQueryResult, error: directQueryError } = await supabase
+            .from('viator_destinations')
+            .select('id, name, slug, country, region, type, parent_destination_id')
+            .eq('id', normalizedDestinationId.toString())
+            .maybeSingle();
+          
+          if (directQueryError) {
+            console.error(`❌ [DESTINATION LOOKUP] Direct query error:`, directQueryError);
+          } else if (directQueryResult) {
+            console.log(`✅ [DESTINATION LOOKUP] Direct database query result:`, {
+              id: directQueryResult.id,
+              name: directQueryResult.name,
+              slug: directQueryResult.slug,
+              requestedId: normalizedDestinationId,
+              matches: directQueryResult.id?.toString() === normalizedDestinationId.toString()
+            });
+            
+            // CRITICAL: If direct query returns wrong destination, log error
+            if (directQueryResult.name && directQueryResult.name.toLowerCase().includes('new york')) {
+              console.error(`❌ CRITICAL: Direct database query returned "New York" for ID ${normalizedDestinationId}!`);
+              console.error(`This means the database has wrong data or the ID is incorrect!`);
+            }
+          } else {
+            console.warn(`⚠️ [DESTINATION LOOKUP] Direct query returned null for ID: ${normalizedDestinationId}`);
+          }
+          
           const supabaseDestination = await getViatorDestinationById(normalizedDestinationId);
+          
+          console.log(`🔍 [DESTINATION LOOKUP] Cache function returned:`, supabaseDestination ? {
+            id: supabaseDestination.id,
+            name: supabaseDestination.name,
+            slug: supabaseDestination.slug,
+            matchesRequested: supabaseDestination.id?.toString() === normalizedDestinationId,
+            matchesDirectQuery: directQueryResult ? supabaseDestination.id === directQueryResult.id : 'N/A'
+          } : 'null');
           if (supabaseDestination) {
-            const slug = supabaseDestination.slug || generateSlug(supabaseDestination.name) || normalizedDestinationId;
-            destinationData = {
-              country: supabaseDestination.country || supabaseDestination.region || null,
-              region: supabaseDestination.region || null,
-              destinationName: supabaseDestination.name || null,
-              destinationId: supabaseDestination.id || normalizedDestinationId,
-              slug,
-              source: 'supabase',
-            };
-            destinationResolved = true;
-            console.log(`✅ Destination resolved via Supabase for ID ${normalizedDestinationId}:`, destinationData);
+            // CRITICAL: Verify the returned destination matches the requested ID
+            const returnedId = supabaseDestination.id?.toString();
+            const requestedId = normalizedDestinationId.toString();
+            if (returnedId !== requestedId) {
+              console.error(`❌ CRITICAL: getViatorDestinationById returned wrong ID! Requested: ${requestedId}, Got: ${returnedId} (${supabaseDestination.name})`);
+              // Don't use wrong data - fall through to next lookup method
+              destinationResolved = false;
+            } else {
+              // Check if this is a child destination (has parent_destination_id)
+              // If so, try to get the parent destination for better context
+              let finalDestination = supabaseDestination;
+              let finalDestinationId = normalizedDestinationId;
+              
+              if (supabaseDestination.parent_destination_id) {
+                try {
+                  const { createSupabaseServiceRoleClient } = await import('@/lib/supabaseClient');
+                  const supabase = createSupabaseServiceRoleClient();
+                  const { data: parentDest } = await supabase
+                    .from('viator_destinations')
+                    .select('id, name, slug, country, region, type')
+                    .eq('id', supabaseDestination.parent_destination_id.toString())
+                    .maybeSingle();
+                  
+                  if (parentDest) {
+                    // Use parent destination if it's a major destination (COUNTRY, REGION, or well-known CITY)
+                    // This ensures "Bali" shows instead of "Ubud" or "Seminyak"
+                    const isMajorDestination = parentDest.type === 'COUNTRY' || 
+                                              parentDest.type === 'REGION' || 
+                                              parentDest.type === 'CITY' ||
+                                              parentDest.name?.toLowerCase() === 'bali';
+                    
+                    if (isMajorDestination) {
+                      console.log(`✅ Using parent destination ${parentDest.name} instead of child ${supabaseDestination.name}`);
+                      finalDestination = parentDest;
+                      finalDestinationId = parentDest.id.toString();
+                    }
+                  }
+                } catch (parentError) {
+                  console.warn('Could not fetch parent destination:', parentError);
+                }
+              }
+              
+              const slug = finalDestination.slug || generateSlug(finalDestination.name) || finalDestinationId;
+              destinationData = {
+                country: finalDestination.country || finalDestination.region || null,
+                region: finalDestination.region || null,
+                destinationName: finalDestination.name || null,
+                destinationId: finalDestinationId,
+                slug,
+                source: 'supabase',
+              };
+              destinationResolved = true;
+              console.log(`✅ [DESTINATION LOOKUP] Destination resolved via Supabase for ID ${normalizedDestinationId}:`, {
+                requestedId: normalizedDestinationId,
+                returnedId: finalDestinationId,
+                name: finalDestination.name,
+                slug: destinationData.slug,
+                matches: finalDestinationId === normalizedDestinationId
+              });
+              
+              // CRITICAL VALIDATION: Double-check the destination name matches what we expect
+              if (finalDestination.name && finalDestination.name.toLowerCase().includes('new york')) {
+                console.error(`❌ CRITICAL ERROR: Destination lookup returned "New York" for ID ${normalizedDestinationId}! This is WRONG!`);
+                console.error(`Expected: Nusa Penida or Bali region`);
+                console.error(`Got: ${finalDestination.name}`);
+                // Don't use wrong data - this will cause booking errors!
+                destinationResolved = false;
+                destinationData = null;
+              }
+            }
           } else {
             console.warn(`⚠️ Supabase destination not found for ID ${normalizedDestinationId}, trying destinations table...`);
             // Try to look up in destinations table by lookup_id or id
@@ -876,9 +1027,61 @@ export default async function TourDetailPage({ params }) {
       restaurants = [];
     }
 
+    // Generate breadcrumb schema for SEO
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://toptours.ai"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tours",
+          "item": "https://toptours.ai/tours"
+        }
+      ]
+    };
+
+    // Add destination to breadcrumb if available
+    if (destinationData?.slug || destinationData?.name) {
+      const destinationName = destinationData.name || destinationData.slug || 'Destination';
+      const destinationSlug = destinationData.slug || destinationData.id;
+      breadcrumbSchema.itemListElement.push({
+        "@type": "ListItem",
+        "position": 2,
+        "name": destinationName,
+        "item": `https://toptours.ai/destinations/${destinationSlug}`
+      });
+      breadcrumbSchema.itemListElement.push({
+        "@type": "ListItem",
+        "position": 3,
+        "name": tour?.title || 'Tour',
+        "item": `https://toptours.ai/tours/${productId}`
+      });
+    } else {
+      breadcrumbSchema.itemListElement.push({
+        "@type": "ListItem",
+        "position": 2,
+        "name": tour?.title || 'Tour',
+        "item": `https://toptours.ai/tours/${productId}`
+      });
+    }
+
     return (
       <>
         {redirectScript}
+        {/* BreadcrumbList Schema for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbSchema)
+          }}
+        />
         <Suspense fallback={
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">

@@ -7,7 +7,27 @@ const __dirname = dirname(__filename);
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    unoptimized: true
+    // Note: Supabase storage URLs may not work with Next.js optimization
+    // If images are from Supabase storage, keep unoptimized: true
+    // If images are from other sources (Viator, local), enable optimization
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.supabase.co',
+        pathname: '/storage/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.viator.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.viator.com',
+      },
+    ],
+    // Enable optimization for non-Supabase images
+    // Supabase images will be served as-is (unoptimized)
+    unoptimized: false, // Changed to false - Next.js will optimize where possible
   },
   async redirects() {
     return [

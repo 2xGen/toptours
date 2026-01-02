@@ -101,7 +101,9 @@ export default function TourCard({
       transition={{ duration: 0.4 }}
       whileHover={{ y: -5 }}
     >
-      <Card className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300">
+      <Card className={`bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 relative ${
+        isPromoted ? 'border-2 border-purple-500 shadow-purple-200/50' : ''
+      }`}>
         <Link href={tourUrl}>
           <div className="relative h-48 overflow-hidden">
             {image && (
@@ -110,13 +112,6 @@ export default function TourCard({
                 alt={title}
                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
               />
-            )}
-            {/* Promoted Badge - Highest priority */}
-            {isPromoted && (
-              <Badge className="absolute top-3 left-3 ocean-gradient text-white z-20">
-                <Sparkles className="w-3 h-3 mr-1" />
-                Promoted
-              </Badge>
             )}
             {isFeatured && !isPromoted && (
               <Badge className="absolute top-3 left-3 adventure-gradient text-white z-20">
@@ -129,14 +124,14 @@ export default function TourCard({
                 <Crown className="w-5 h-5 text-amber-500 drop-shadow-lg" title="Premium Operator" />
               </div>
             )}
-            {/* Match Score Badge - Left side, always visible (below promoted badge if present) */}
+            {/* Match Score Badge - Left side, always visible */}
             <button
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 setShowMatchModal(true);
               }}
-              className={`absolute ${isPromoted ? 'top-12' : 'top-3'} left-3 z-30 bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow-lg border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5`}
+              className="absolute top-3 left-3 z-20 bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow-lg border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5"
               title={matchScore && matchScore.score !== undefined
                 ? `Click to see why this is a ${matchScore.score}% match` 
                 : "Click to see AI match analysis"}
@@ -213,6 +208,15 @@ export default function TourCard({
         </Link>
         
         <CardContent className="p-4 flex flex-col flex-grow bg-white">
+          {/* Promoted Badge - Below image in content area */}
+          {isPromoted && (
+            <div className="mb-2">
+              <Badge className="ocean-gradient text-white shadow-lg text-[10px] px-1.5 py-0.5 inline-flex items-center">
+                <Sparkles className="w-2.5 h-2.5 mr-0.5 flex-shrink-0" />
+                Promoted
+              </Badge>
+            </div>
+          )}
           <div className="flex items-start justify-between gap-2 mb-2">
             <Link href={tourUrl} className="flex-1">
               <h3 className="font-semibold text-lg text-gray-900 line-clamp-2 hover:text-purple-600 transition-colors flex items-center gap-2">

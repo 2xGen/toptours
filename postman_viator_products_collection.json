@@ -1,0 +1,145 @@
+{
+  "info": {
+    "name": "Viator Products API - Destination Testing",
+    "description": "Test Viator Products API to verify destination IDs in responses",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Product - Nusa Penida Tour (144258P1)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "exp-api-key",
+            "value": "{{VIATOR_API_KEY}}",
+            "type": "text",
+            "description": "Your Viator API key"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json;version=2.0",
+            "type": "text"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://api.viator.com/partner/products/144258P1?currency=USD",
+          "protocol": "https",
+          "host": ["api", "viator", "com"],
+          "path": ["partner", "products", "144258P1"],
+          "query": [
+            {
+              "key": "currency",
+              "value": "USD",
+              "description": "Currency code"
+            }
+          ]
+        },
+        "description": "Test case for Nusa Penida tour. Expected destination ID: 60448"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Product - Bali Tour (110505P1)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "exp-api-key",
+            "value": "{{VIATOR_API_KEY}}",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json;version=2.0",
+            "type": "text"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://api.viator.com/partner/products/110505P1?currency=USD",
+          "protocol": "https",
+          "host": ["api", "viator", "com"],
+          "path": ["partner", "products", "110505P1"],
+          "query": [
+            {
+              "key": "currency",
+              "value": "USD"
+            }
+          ]
+        },
+        "description": "Test case for Bali tour. Expected destination IDs: 34198 (Seminyak), 5467 (Bali)"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Product - Aruba Tour (119085P5)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "exp-api-key",
+            "value": "{{VIATOR_API_KEY}}",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json;version=2.0",
+            "type": "text"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://api.viator.com/partner/products/119085P5?currency=USD",
+          "protocol": "https",
+          "host": ["api", "viator", "com"],
+          "path": ["partner", "products", "119085P5"],
+          "query": [
+            {
+              "key": "currency",
+              "value": "USD"
+            }
+          ]
+        },
+        "description": "Test case for Aruba tour"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "VIATOR_API_KEY",
+      "value": "282a363f-5d60-456a-a6a0-774ec4832b07",
+      "type": "string"
+    }
+  ]
+}
+

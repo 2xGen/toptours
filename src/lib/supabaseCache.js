@@ -36,6 +36,13 @@ function setMemoryCache(key, data) {
 }
 
 /**
+ * Clear cached data from memory
+ */
+export function clearMemoryCache(key) {
+  memoryCache.delete(key);
+}
+
+/**
  * Get tour enrichment with caching
  * Enrichment data changes rarely, so we can cache it aggressively
  */
@@ -131,27 +138,71 @@ export async function getViatorDestinationById(destinationId) {
   const memoryKey = `viator_destination_${normalizedId}`;
   const cached = getMemoryCache(memoryKey);
   if (cached) {
-    return cached;
+    // Verify cached data is correct (sanity check)
+    if (cached.id === normalizedId || cached.id === destinationId.toString()) {
+      return cached;
+    } else {
+      // Cache mismatch - clear and re-fetch
+      console.warn(`⚠️ Cache mismatch for destination ID ${normalizedId}: cached.id=${cached.id}, expected=${normalizedId}. Clearing cache.`);
+      clearMemoryCache(memoryKey);
+    }
   }
 
   try {
     const supabase = createSupabaseServiceRoleClient();
+    // Ensure ID is treated as TEXT (database stores as TEXT)
+    // Include parent_destination_id to check for parent destinations
+    const queryId = normalizedId.toString();
+    console.log(`🔍 [CACHE] Querying viator_destinations for ID: "${queryId}" (type: ${typeof queryId}, original: ${destinationId})`);
+    
     const { data, error } = await supabase
       .from('viator_destinations')
-      .select('id, name, slug, country, region, type')
-      .eq('id', normalizedId)
+      .select('id, name, slug, country, region, type, parent_destination_id')
+      .eq('id', queryId) // Explicitly convert to string
       .maybeSingle();
 
     if (error) {
-      console.error('Error querying viator_destinations:', error.message || error);
+      console.error(`❌ Error querying viator_destinations for ID ${queryId}:`, error.message || error);
       return null;
     }
 
     if (!data) {
-      console.warn(`viator_destinations lookup returned null for ID ${normalizedId}`);
+      console.warn(`⚠️ viator_destinations lookup returned null for ID ${queryId}`);
+      // Try to see if there's a similar ID in the database (for debugging)
+      const { data: allSimilar } = await supabase
+        .from('viator_destinations')
+        .select('id, name')
+        .ilike('id', `%${queryId}%`)
+        .limit(5);
+      if (allSimilar && allSimilar.length > 0) {
+        console.warn(`⚠️ Found similar IDs:`, allSimilar.map(d => `${d.id} (${d.name})`));
+      }
+      return null;
+    }
+    
+    console.log(`🔍 [CACHE] Database returned: ID="${data.id}" (type: ${typeof data.id}), Name="${data.name}"`);
+
+    // Verify the returned data matches the requested ID
+    // Convert both to strings for comparison to avoid type mismatches
+    const dataIdStr = data.id?.toString();
+    const normalizedIdStr = normalizedId.toString();
+    const destinationIdStr = destinationId.toString();
+    
+    if (dataIdStr !== normalizedIdStr && dataIdStr !== destinationIdStr) {
+      console.error(`❌ CRITICAL: Database returned wrong destination! Requested ID: ${normalizedIdStr}, Got ID: ${dataIdStr}, Name: ${data.name}`);
+      // Clear any potentially corrupted cache
+      clearMemoryCache(memoryKey);
       return null;
     }
 
+    // Double-check: ensure we're not returning cached wrong data
+    if (dataIdStr !== normalizedIdStr) {
+      console.error(`❌ CRITICAL: ID mismatch after normalization! Requested: ${normalizedIdStr}, Got: ${dataIdStr}`);
+      clearMemoryCache(memoryKey);
+      return null;
+    }
+
+    console.log(`✅ Found destination for ID ${normalizedIdStr}: ${data.name} (slug: ${data.slug})`);
     setMemoryCache(memoryKey, data);
     return data;
   } catch (error) {

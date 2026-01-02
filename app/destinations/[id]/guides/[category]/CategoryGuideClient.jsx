@@ -990,11 +990,11 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                   </p>
                   <div className="bg-white rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Best Hotel Deals in {destination.name}</h4>
-                    <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers on Expedia USA.</p>
+                    <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers on Trivago USA.</p>
                     <Button 
                       variant="outline" 
                       className="w-full flex items-center justify-center gap-2" 
-                      onClick={() => window.open('https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk', '_blank')}
+                      onClick={() => window.open('https://tidd.ly/4snW11u', '_blank')}
                     >
                       Find Hotel Deals
                       <ExternalLink className="w-4 h-4" />

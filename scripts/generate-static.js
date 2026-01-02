@@ -82,8 +82,8 @@ const createDestinationHTML = (destination) => {
           "url": "https://toptours.ai/logo.png"
         }
       },
-      "datePublished": "2025-10-07",
-      "dateModified": "2025-10-07",
+      "datePublished": "2025-12-31",
+      "dateModified": "2025-12-31",
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://toptours.ai/destinations/${destination.id}"

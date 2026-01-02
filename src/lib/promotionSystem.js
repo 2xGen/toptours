@@ -66,10 +66,16 @@ export { TIER_POINTS, A_LA_CARTE_PACKAGES, SUBSCRIPTION_PRICING };
 
 /**
  * Get or create promotion account for user
+ * NOTE: promotion_accounts table has been removed (old boost system)
+ * This function now returns null for backward compatibility
  */
 export async function getPromotionAccount(userId) {
   if (!userId) return null;
-
+  
+  // Old boost system removed - return null
+  return null;
+  
+  /* OLD CODE - promotion_accounts table removed
   try {
     const supabase = createSupabaseServiceRoleClient();
     
@@ -106,78 +112,13 @@ export async function getPromotionAccount(userId) {
       return null;
     }
 
-    // Check if daily reset is needed
-    const lastReset = new Date(account.last_daily_reset);
-    const now = new Date();
-    const hoursSinceReset = (now - lastReset) / (1000 * 60 * 60);
-
-    if (hoursSinceReset >= 24) {
-      // Reset daily points based on tier
-      let pointsToReset = TIER_POINTS.explorer;
-      if (account.subscription_status === 'active') {
-        if (account.tier === 'enterprise') {
-          pointsToReset = TIER_POINTS.enterprise;
-        } else if (account.tier === 'pro_plus') {
-          pointsToReset = TIER_POINTS.pro_plus;
-        } else if (account.tier === 'pro_booster') {
-          pointsToReset = TIER_POINTS.pro_booster;
-        }
-      }
-
-      // Calculate streak: increment if claimed yesterday, reset if missed
-      const lastClaimDate = account.last_claim_date ? new Date(account.last_claim_date) : null;
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      const yesterday = new Date(today);
-      yesterday.setDate(yesterday.getDate() - 1);
-      
-      let newStreak = 1;
-      if (lastClaimDate) {
-        lastClaimDate.setHours(0, 0, 0, 0);
-        if (lastClaimDate.getTime() === yesterday.getTime()) {
-          // Claimed yesterday - increment streak
-          newStreak = (account.streak_days || 0) + 1;
-        } else if (lastClaimDate.getTime() === today.getTime()) {
-          // Already claimed today - keep streak
-          newStreak = account.streak_days || 0;
-        }
-        // Otherwise missed a day - reset to 1 (already set)
-      }
-
-      // Update both promotion_accounts and profiles tables for reliability
-      const { data: updatedAccount, error: updateError } = await supabase
-        .from('promotion_accounts')
-        .update({
-          daily_points_available: pointsToReset, // Keep for backward compatibility
-          last_daily_reset: now.toISOString(),
-          streak_days: newStreak,
-          last_claim_date: today.toISOString().split('T')[0], // Store as date only
-        })
-        .eq('user_id', userId)
-        .select()
-        .single();
-
-      // Also update profiles table (primary source of truth for daily points)
-      await supabase
-        .from('profiles')
-        .update({
-          daily_points_available: pointsToReset,
-        })
-        .eq('id', userId);
-
-      if (updateError) {
-        console.error('Error resetting daily points:', updateError);
-        return account; // Return old account if update fails
-      }
-
-      return updatedAccount;
-    }
-
-    return account;
+    // OLD CODE CONTINUED - promotion_accounts table removed
+    return null;
   } catch (error) {
     console.error('Error in getPromotionAccount:', error);
     return null;
   }
+  */
 }
 
 /**
@@ -835,46 +776,27 @@ export async function getTrendingToursByDestination(destinationId, limit = 6) {
  * Returns scores with cached metadata (name, image, region) if available
  * NOTE: For destination pages, use getPromotionScoresByDestination() instead - it's more efficient
  */
+/**
+ * Get tour promotion scores batch
+ * NOTE: tour_promotions table has been removed (old boost system)
+ * This function now returns empty scores for backward compatibility
+ */
 export async function getTourPromotionScoresBatch(productIds) {
   if (!productIds || productIds.length === 0) return {};
 
-  try {
-    const supabase = createSupabaseServiceRoleClient();
-    const { data, error } = await supabase
-      .from('tour_promotions')
-      .select('*')
-      .in('product_id', productIds);
+  // Old boost system removed - return empty scores
+  const result = {};
+  productIds.forEach(productId => {
+    result[productId] = {
+      product_id: productId,
+      total_score: 0,
+      monthly_score: 0,
+      weekly_score: 0,
+      past_28_days_score: 0,
+    };
+  });
 
-    if (error) {
-      console.error('Error batch fetching tour promotions:', error);
-      return {};
-    }
-
-    // Convert array to map for easy lookup
-    const scoresMap = {};
-    if (data) {
-      data.forEach(score => {
-        scoresMap[score.product_id] = score;
-      });
-    }
-
-    // Return map with all productIds (including those with no score = 0)
-    const result = {};
-    productIds.forEach(productId => {
-      result[productId] = scoresMap[productId] || {
-        product_id: productId,
-        total_score: 0,
-        monthly_score: 0,
-        weekly_score: 0,
-        past_28_days_score: 0,
-      };
-    });
-
-    return result;
-  } catch (error) {
-    console.error('Error in getTourPromotionScoresBatch:', error);
-    return {};
-  }
+  return result;
 }
 
 /**
@@ -1394,25 +1316,9 @@ export async function getRecentBoosts(limit = 20) {
         console.error('Error fetching profiles for recent boosts:', profilesError);
       }
       
-      // Fetch promotion accounts for tier and streak
-      const { data: accounts, error: accountsError } = await supabase
-        .from('promotion_accounts')
-        .select('user_id, tier, streak_days')
-        .in('user_id', userIds);
-
-      if (accountsError) {
-        console.error('Error fetching promotion accounts for recent boosts:', accountsError);
-      }
-      
-      if (accounts && accounts.length > 0) {
-        accountsMap = accounts.reduce((acc, account) => {
-          acc[account.user_id] = {
-            tier: account.tier,
-            streak_days: account.streak_days || 0,
-          };
-          return acc;
-        }, {});
-      }
+      // NOTE: promotion_accounts table has been removed (old boost system)
+      // Skip fetching promotion accounts - always use empty map
+      const accountsMap = {};
       
       if (profiles && profiles.length > 0) {
         // Get emails from auth.users for these user IDs
@@ -1953,110 +1859,236 @@ export async function updateRestaurantMetadata(restaurantId, restaurantData) {
 
 /**
  * Get restaurant promotion score
+ * NOTE: restaurant_promotions table has been removed (old boost system)
+ * This function now returns null for backward compatibility
  */
 export async function getRestaurantPromotionScore(restaurantId) {
   if (!restaurantId) return null;
-
-  try {
-    const supabase = createSupabaseServiceRoleClient();
-    const { data, error } = await supabase
-      .from('restaurant_promotions')
-      .select('*')
-      .eq('restaurant_id', restaurantId)
-      .single();
-
-    if (error && error.code === 'PGRST116') {
-      return null; // Restaurant not promoted yet - this is expected
-    }
-
-    if (error) {
-      // Only log if error has meaningful information
-      if (error.message || error.code || Object.keys(error).length > 0) {
-        console.error('Error fetching restaurant promotion:', {
-          restaurantId,
-          errorCode: error.code,
-          errorMessage: error.message,
-          errorDetails: error,
-        });
-      }
-      // Silently return null for empty errors (likely just "not found")
-      return null;
-    }
-
-    return data;
-  } catch (error) {
-    // Only log if error has meaningful information
-    if (error?.message || error?.code || (error && Object.keys(error).length > 0)) {
-      console.error('Error in getRestaurantPromotionScore:', {
-        restaurantId,
-        errorMessage: error?.message,
-        errorCode: error?.code,
-        error,
-      });
-    }
-    return null;
-  }
+  
+  // Old boost system removed - return null
+  return null;
 }
 
 /**
  * Fetch all promotion scores for restaurants in a specific destination
+ * NOTE: restaurant_promotions table has been removed (old boost system)
+ * This function now returns empty object for backward compatibility
  */
 export async function getRestaurantPromotionScoresByDestination(destinationId) {
   if (!destinationId) return {};
-
-  try {
-    const supabase = createSupabaseServiceRoleClient();
-    const { data, error } = await supabase
-      .from('restaurant_promotions')
-      .select('*')
-      .eq('destination_id', destinationId)
-      .gt('total_score', 0); // Only restaurants with points
-
-    if (error) {
-      console.error('Error fetching restaurant promotion scores by destination:', error);
-      return {};
-    }
-
-    // Convert array to map for easy lookup
-    const scoresMap = {};
-    if (data) {
-      data.forEach(score => {
-        scoresMap[score.restaurant_id] = score;
-      });
-    }
-
-    return scoresMap;
-  } catch (error) {
-    console.error('Error in getRestaurantPromotionScoresByDestination:', error);
-    return {};
-  }
+  
+  // Old boost system removed - return empty scores
+  return {};
 }
 
 /**
  * Get trending restaurants for a destination (past 28 days score)
- * Returns restaurants sorted by past_28_days_score, with full metadata
+ * NOTE: restaurant_promotions table has been removed (old boost system)
+ * This function now returns empty array for backward compatibility
  */
 export async function getTrendingRestaurantsByDestination(destinationId, limit = 6) {
+  if (!destinationId) return [];
+  
+  // Old boost system removed - return empty array
+  return [];
+}
+
+/**
+ * Get promoted tours for a destination
+ * Queries operator_tours where is_promoted = true and matches with destination
+ * Returns array of product IDs that are promoted for this destination
+ */
+/**
+ * Get promoted tours for a destination
+ * Uses the new promoted_tours table for better tracking
+ */
+export async function getPromotedToursByDestination(destinationId, limit = 6) {
   if (!destinationId) return [];
 
   try {
     const supabase = createSupabaseServiceRoleClient();
-    const { data, error } = await supabase
-      .from('restaurant_promotions')
-      .select('*')
-      .eq('destination_id', destinationId)
-      .gt('past_28_days_score', 0) // Only restaurants with points in last 28 days
-      .order('past_28_days_score', { ascending: false })
-      .limit(limit);
-
-    if (error) {
-      console.error('Error fetching trending restaurants by destination:', error);
+    const { normalizeDestinationIdToSlug } = await import('./destinationIdHelper');
+    
+    // Normalize to slug format (simple, reliable)
+    const slug = await normalizeDestinationIdToSlug(destinationId);
+    if (!slug) {
+      console.warn(`Could not normalize destination ID ${destinationId} to slug`);
       return [];
     }
-
-    return data || [];
+    
+    // Get numeric ID if destinationId is numeric, or lookup numeric ID from slug
+    let numericId = null;
+    const idString = destinationId.toString().trim();
+    if (/^\d+$/.test(idString)) {
+      // Already numeric
+      numericId = idString;
+    } else {
+      // Lookup numeric ID from slug
+      const { data: destInfo } = await supabase
+        .from('viator_destinations')
+        .select('id')
+        .eq('slug', slug)
+        .maybeSingle();
+      numericId = destInfo?.id?.toString();
+    }
+    
+    // Query by both slug and numeric ID (handle both cases)
+    // Some records might have slug, others might have numeric ID
+    const now = new Date().toISOString();
+    
+    // Build array of possible destination_id values (slug and numeric)
+    const destinationIds = [slug];
+    if (numericId) {
+      destinationIds.push(numericId);
+    }
+    
+    // Also include child destinations (e.g., if viewing "bali", also show "ubud", "seminyak", etc.)
+    try {
+      // Query viator_destinations to find child destinations
+      const { data: currentDest } = await supabase
+        .from('viator_destinations')
+        .select('id')
+        .or(`slug.eq.${slug}${numericId ? `,id.eq.${numericId}` : ''}`)
+        .maybeSingle();
+      
+      if (currentDest?.id) {
+        // Find all child destinations (where parent_destination_id matches current destination)
+        const { data: childDests } = await supabase
+          .from('viator_destinations')
+          .select('slug, id')
+          .eq('parent_destination_id', currentDest.id);
+        
+        if (childDests && childDests.length > 0) {
+          childDests.forEach(child => {
+            if (child.slug && !destinationIds.includes(child.slug)) {
+              destinationIds.push(child.slug);
+            }
+            // Also add numeric ID if available
+            if (child.id && !destinationIds.includes(child.id.toString())) {
+              destinationIds.push(child.id.toString());
+            }
+          });
+        }
+      }
+    } catch (error) {
+      console.warn('Could not query child destinations:', error);
+    }
+    
+    const { data: promotedTours, error } = await supabase
+      .from('promoted_tours')
+      .select('product_id, status, start_date, end_date, promotion_plan, destination_id')
+      .eq('status', 'active')
+      .in('destination_id', destinationIds) // Match slug, numeric ID, or child destinations
+      .or(`end_date.is.null,end_date.gte.${now}`)
+      .order('start_date', { ascending: true })
+      .limit(limit);
+    
+    if (error) {
+      console.error('Error fetching promoted tours:', error);
+      return [];
+    }
+    
+    if (!promotedTours || promotedTours.length === 0) {
+      return [];
+    }
+    
+    // Return product IDs - the calling code will match these with actual tour data
+    return promotedTours.map(item => ({
+      product_id: item.product_id,
+      productId: item.product_id,
+      productCode: item.product_id,
+      promoted_until: item.end_date,
+      promotion_plan: item.promotion_plan,
+    }));
   } catch (error) {
-    console.error('Error in getTrendingRestaurantsByDestination:', error);
+    console.error('Error in getPromotedToursByDestination:', error);
+    return [];
+  }
+}
+
+/**
+ * Get promoted restaurants for a destination
+ * Uses the new promoted_restaurants table for better tracking
+ */
+export async function getPromotedRestaurantsByDestination(destinationId, limit = 6) {
+  if (!destinationId) return [];
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    const { normalizeDestinationIdToSlug } = await import('./destinationIdHelper');
+    
+    // Normalize to slug format (simple, reliable)
+    const slug = await normalizeDestinationIdToSlug(destinationId);
+    if (!slug) {
+      console.warn(`Could not normalize destination ID ${destinationId} to slug`);
+      return [];
+    }
+    
+    // Build array of destination slugs (including child destinations)
+    const destinationSlugs = [slug];
+    
+    // Also include child destinations (e.g., if viewing "bali", also show "ubud", "seminyak", etc.)
+    try {
+      // Query viator_destinations to find child destinations
+      const { data: currentDest } = await supabase
+        .from('viator_destinations')
+        .select('id')
+        .eq('slug', slug)
+        .maybeSingle();
+      
+      if (currentDest?.id) {
+        // Find all child destinations (where parent_destination_id matches current destination)
+        const { data: childDests } = await supabase
+          .from('viator_destinations')
+          .select('slug')
+          .eq('parent_destination_id', currentDest.id);
+        
+        if (childDests && childDests.length > 0) {
+          childDests.forEach(child => {
+            if (child.slug && !destinationSlugs.includes(child.slug)) {
+              destinationSlugs.push(child.slug);
+            }
+          });
+        }
+      }
+    } catch (error) {
+      console.warn('Could not query child destinations:', error);
+    }
+    
+    // Query by slug (including child destinations)
+    const now = new Date().toISOString();
+    const { data: promotedRestaurants, error } = await supabase
+      .from('promoted_restaurants')
+      .select('restaurant_id, status, start_date, end_date, promotion_plan, destination_id, restaurant_slug, restaurant_name')
+      .eq('status', 'active')
+      .in('destination_id', destinationSlugs) // Match slug or child destination slugs
+      .or(`end_date.is.null,end_date.gte.${now}`)
+      .order('start_date', { ascending: true, nullsFirst: true })
+      .limit(limit);
+    
+    if (error) {
+      console.error(`❌ [getPromotedRestaurantsByDestination] Error fetching for ${destinationId} (slug: ${slug}):`, error);
+      return [];
+    }
+    
+    if (!promotedRestaurants || promotedRestaurants.length === 0) {
+      console.log(`ℹ️ [getPromotedRestaurantsByDestination] No promoted restaurants found for ${destinationId} (slug: ${slug})`);
+      return [];
+    }
+    
+    console.log(`✅ [getPromotedRestaurantsByDestination] Found ${promotedRestaurants.length} promoted restaurant(s) for ${destinationId} (slug: ${slug})`);
+    
+    // Return simple, clean data
+    return promotedRestaurants.map(item => ({
+      id: item.restaurant_id,
+      restaurant_id: item.restaurant_id,
+      slug: item.restaurant_slug,
+      name: item.restaurant_name,
+      promoted_until: item.end_date,
+      promotion_plan: item.promotion_plan,
+    }));
+  } catch (error) {
+    console.error('Error in getPromotedRestaurantsByDestination:', error);
     return [];
   }
 }

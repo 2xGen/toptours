@@ -8,6 +8,7 @@ import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassifie
 import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
 import { headers } from 'next/headers';
 import OperatorsListClient from './OperatorsListClient';
+import { getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
 
 // Helper to generate slug
 function generateSlug(name) {
@@ -154,7 +155,26 @@ export default async function OperatorsListingPage({ params }) {
       }
     }
 
-    // Create destination object
+    // Get country and region from classified data (matching destination page)
+    let country = null;
+    let region = null;
+    try {
+      if (Array.isArray(viatorDestinationsClassifiedData)) {
+        const classifiedDest = viatorDestinationsClassifiedData.find(dest => {
+          const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
+          const searchName = (fullContent?.destinationName || seoContent?.destinationName || id).toLowerCase().trim();
+          return destName === searchName || generateSlug(destName) === id;
+        });
+        if (classifiedDest) {
+          country = classifiedDest.country || null;
+          region = classifiedDest.region || null;
+        }
+      }
+    } catch (error) {
+      console.error('Error processing viatorDestinationsClassifiedData:', error);
+    }
+
+    // Create destination object with all fields (matching destination page)
     const destinationName = fullContent?.destinationName || seoContent?.destinationName || id;
     destination = {
       id: id,
@@ -162,6 +182,14 @@ export default async function OperatorsListingPage({ params }) {
       fullName: destinationName,
       imageUrl: seoContent?.ogImage || fullContent?.imageUrl || seoContent?.imageUrl || 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png',
       destinationId: viatorDestinationId,
+      briefDescription: fullContent?.briefDescription || seoContent?.briefDescription || null,
+      heroDescription: fullContent?.heroDescription || seoContent?.heroDescription || null,
+      whyVisit: fullContent?.whyVisit || [],
+      highlights: fullContent?.highlights || [],
+      gettingAround: fullContent?.gettingAround || '',
+      bestTimeToVisit: fullContent?.bestTimeToVisit || null,
+      country: country,
+      category: region || null,
     };
   } else {
     // For curated destinations, get Viator ID from classified data or destination object
@@ -183,143 +211,90 @@ export default async function OperatorsListingPage({ params }) {
     notFound();
   }
 
-  // Fetch operators for this destination
+  // Fetch operators for this destination (just the list, no tour matching)
   let operators = [];
-  let allToursForDestination = [];
-  
   if (viatorDestinationId) {
-    // Step 1: Fetch operators
     const result = await getOperatorsForDestination(viatorDestinationId);
     if (result.success) {
       operators = result.data || [];
     }
-    
-    // Step 2: Fetch all tours for this destination (one API call)
-    // Same approach as /destinations/[id]/tours page
+  }
+
+  // Fetch top 12 tours for this destination (one API call, same as destination page)
+  // This makes the page SEO-friendly and shows popular tours
+  let topTours = [];
+  if (viatorDestinationId) {
     try {
       const headersList = await headers();
       const host = headersList.get('host') || 'localhost:3000';
       const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
       const baseUrl = `${protocol}://${host}`;
       
-      // Fetch first page to get totalCount
-      const firstPageResponse = await fetch(`${baseUrl}/api/internal/viator-search`, {
+      // Fetch first page (top 12 tours) - compliant with Viator API rules
+      const toursResponse = await fetch(`${baseUrl}/api/internal/viator-search`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          searchTerm: '', // No search term - use /products/search endpoint
+          searchTerm: '',
           page: 1,
           viatorDestinationId: String(viatorDestinationId),
-          includeDestination: true, // Use /products/search when destination ID is available
+          includeDestination: true,
         }),
         cache: 'no-store',
       });
 
-      let totalCount = 0;
-      let firstPageTours = [];
-      
-      if (firstPageResponse.ok) {
-        const firstPageData = await firstPageResponse.json();
-        firstPageTours = firstPageData?.products?.results || [];
-        totalCount = firstPageData?.products?.totalCount || firstPageData?.totalCount || 0;
-        console.log(`📊 Destination ${viatorDestinationId} has ${totalCount} total tours`);
+      if (toursResponse.ok) {
+        const toursData = await toursResponse.json();
+        const allTours = toursData?.products?.results || [];
+        // Take top 12 tours (sorted by rating/reviews by Viator API)
+        topTours = allTours.slice(0, 12);
       }
-
-      // COMPLIANCE: Only fetch page 1 on initial load (max 50 products per Viator rules)
-      // This ensures we comply with Viator's requirement: "Paginate through the search results
-      // only when the customer wants to move to the next page with search results"
-      // For operators page, we only need enough tours to match with operators - page 1 is sufficient
-      const seenTourIds = new Set();
-      allToursForDestination = [];
-      
-      // Process only the first page (user-driven pagination would happen client-side if needed)
-      for (const tour of firstPageTours) {
-        const productId = tour.productCode || tour.productId || tour.id;
-        if (productId && !seenTourIds.has(String(productId))) {
-          seenTourIds.add(String(productId));
-          allToursForDestination.push(tour);
-        }
-      }
-      
-      console.log(`✅ Fetched ${allToursForDestination.length} unique tours for destination ${viatorDestinationId} (page 1 only - compliant with Viator API rules)`);
-      
-      // Step 3: Match tours with operators
-      // Create a map of productId -> tour data for fast lookup
-      const tourMap = new Map();
-      allToursForDestination.forEach(tour => {
-        // Try multiple possible productId fields
-        const productId = tour.productCode || tour.productId || tour.id;
-        if (productId) {
-          const productIdString = String(productId);
-          tourMap.set(productIdString, {
-            productId: productIdString,
-            name: tour.title || tour.productName || tour.name || null,
-            slug: tour.seo?.slug || tour.slug || null,
-            image: tour.images?.[0]?.variants?.[3]?.url || 
-                   tour.images?.[0]?.variants?.[0]?.url || 
-                   tour.imageUrl || null,
-            rating: tour.reviews?.combinedAverageRating || 
-                   tour.reviews?.averageRating || 
-                   tour.reviewSummary?.averageRating || null,
-            reviewCount: tour.reviews?.totalReviews || 
-                        tour.reviews?.totalCount || 
-                        tour.reviewSummary?.totalReviews || null,
-            price: tour.pricing?.summary?.fromPrice || null,
-          });
-        }
-      });
-      
-      console.log(`🗺️ Created tour map with ${tourMap.size} tours`);
-      
-      // Step 4: Enrich operators with matched tours
-      operators = operators.map(op => {
-        const matchedTours = [];
-        const unmatchedIds = [];
-        
-        (op.tour_product_ids || []).forEach(productId => {
-          const productIdString = String(productId);
-          const tourData = tourMap.get(productIdString);
-          
-          if (tourData) {
-            matchedTours.push(tourData);
-          } else {
-            unmatchedIds.push(productIdString);
-          }
-        });
-        
-        if (unmatchedIds.length > 0 && matchedTours.length > 0) {
-          // Only log if we found some tours but not all (to avoid spam)
-          console.log(`⚠️ Operator "${op.operator_name}": Found ${matchedTours.length}/${op.tour_product_ids?.length || 0} tours. Missing: ${unmatchedIds.slice(0, 3).join(', ')}${unmatchedIds.length > 3 ? '...' : ''}`);
-        }
-        
-        return {
-          ...op,
-          tours: matchedTours, // Only include tours we found in API
-        };
-      });
-      
-      console.log(`✅ Enriched ${operators.length} operators with tour data`);
     } catch (error) {
-      console.error('Error fetching tours for destination:', error);
-      // If API call fails, operators will still be shown but without tour details
+      console.error('Error fetching top tours for operators page:', error);
+      // Continue without tours - page will still work
     }
   }
 
-  // Fetch category guides for this destination
+  // Fetch category guides for this destination (limit to 6 for internal linking)
   let categoryGuides = [];
   try {
-    categoryGuides = await getAllCategoryGuidesForDestination(id);
+    const allGuides = await getAllCategoryGuidesForDestination(id);
+    categoryGuides = allGuides.slice(0, 6);
   } catch (error) {
     console.error('Error fetching category guides:', error);
+  }
+
+  // Fetch restaurants for this destination (for internal linking)
+  let restaurants = [];
+  try {
+    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      const dbRestaurants = await getRestaurantsForDestinationFromDB(id);
+      restaurants = (dbRestaurants || [])
+        .map(restaurant => {
+          try {
+            return formatRestaurantForFrontend(restaurant);
+          } catch (err) {
+            console.error('Error formatting restaurant:', err, restaurant?.id);
+            return null;
+          }
+        })
+        .filter(restaurant => restaurant !== null && restaurant !== undefined)
+        .slice(0, 6); // Limit to 6 for display
+    }
+  } catch (error) {
+    console.error('Error fetching restaurants:', error);
+    // Continue without restaurants - page will still work
   }
 
   return (
     <OperatorsListClient
       destination={destination}
       operators={operators}
+      topTours={topTours}
       categoryGuides={categoryGuides}
+      restaurants={restaurants}
     />
   );
 }

@@ -15,7 +15,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `There's nothing quite like the thrill of racing across golden sand dunes in a 4x4 vehicle, watching the sun set over the endless Arabian Desert, and experiencing authentic Bedouin culture under a starlit sky. Dubai desert safaris are among the most iconic and unforgettable experiences in the UAE, offering the perfect blend of adventure, culture, and natural beauty. Whether you're seeking adrenaline-pumping dune bashing, peaceful camel rides, traditional entertainment, or simply the serenity of the desert at sunset, these safaris provide an authentic glimpse into the region's heritage while delivering world-class hospitality and unforgettable memories.`,
 
       seo: {
-        title: 'Dubai Desert Safaris 2025: Best Tours, Prices & Booking Guide',
+        title: 'Dubai Desert Safaris 2026: Best Tours, Prices & Booking Guide',
         description: 'Book the best desert safaris in Dubai. Compare 50+ tours with dune bashing, camel rides, BBQ dinner & shows. From $35/person. Morning, evening & overnight options. Expert tips & reviews.',
         keywords: 'Dubai desert safari, Dubai dune bashing, Dubai camel ride, Dubai desert tour, Dubai evening safari, Dubai desert camp, Dubai quad biking, Dubai desert adventure',
       },
@@ -169,7 +169,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Dubai is a city of contrasts where ancient traditions meet futuristic innovation, creating a skyline that defies imagination. From the world's tallest building to traditional souks, from man-made islands to historic neighborhoods, Dubai city tours offer the perfect introduction to this dynamic metropolis. Whether you're a first-time visitor wanting to see the iconic landmarks or a returning traveler seeking hidden gems, these comprehensive tours showcase the best of what makes Dubai truly extraordinary. Experience the perfect blend of luxury, culture, and innovation that defines this remarkable city.`,
 
       seo: {
-        title: 'Dubai City Tours 2025: Best Sightseeing Tours & Landmarks Guide',
+        title: 'Dubai City Tours 2026: Best Sightseeing Tours & Landmarks Guide',
         description: 'Book the best city tours in Dubai. Visit Burj Khalifa, Burj Al Arab, Dubai Marina, Palm Jumeirah & more. From $25/person. Half-day, full-day & private tours. Expert guides.',
         keywords: 'Dubai city tour, Dubai sightseeing, Dubai landmarks tour, Dubai hop on hop off, Dubai bus tour, Dubai private tour, Dubai highlights tour, Dubai attractions',
       },
@@ -323,7 +323,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Standing at an awe-inspiring 828 meters (2,717 feet), the Burj Khalifa is not just the world's tallest building—it's a symbol of Dubai's ambition and innovation. Visiting this architectural marvel is a bucket-list experience that offers unparalleled panoramic views of the city, desert, and Persian Gulf. Whether you choose to visit during the day for crystal-clear vistas, at sunset for golden hour magic, or at night for a glittering cityscape, a trip to the Burj Khalifa's observation decks is an unforgettable highlight of any Dubai visit. Experience the engineering marvel that redefined what's possible in architecture.`,
 
       seo: {
-        title: 'Burj Khalifa Tours 2025: Tickets, Best Times & Observation Deck Guide',
+        title: 'Burj Khalifa Tours 2026: Tickets, Best Times & Observation Deck Guide',
         description: 'Book Burj Khalifa tickets & tours. Visit At The Top (124th & 148th floors). Skip-the-line access, sunset slots & combo deals. From $45. Expert tips for best experience.',
         keywords: 'Burj Khalifa tickets, Burj Khalifa tour, At The Top Burj Khalifa, Burj Khalifa observation deck, Burj Khalifa 124th floor, Burj Khalifa 148th floor, Dubai Burj Khalifa visit',
       },
@@ -477,7 +477,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Dubai's culinary landscape is as diverse as its population, offering an extraordinary fusion of flavors from across the Middle East, Asia, and the world. From traditional Emirati dishes passed down through generations to innovative fusion cuisine, from bustling street food markets to Michelin-starred restaurants, Dubai food tours provide an authentic taste of the city's rich gastronomic culture. Whether you're a food enthusiast seeking hidden gems, a curious traveler wanting to try local specialties, or a culinary adventurer ready to explore diverse neighborhoods, these tours offer the perfect way to experience Dubai through its food.`,
 
       seo: {
-        title: 'Dubai Food Tours 2025: Best Culinary Experiences & Street Food Guide',
+        title: 'Dubai Food Tours 2026: Best Culinary Experiences & Street Food Guide',
         description: 'Book the best food tours in Dubai. Taste traditional Emirati cuisine, Middle Eastern dishes & international flavors. From $55/person. Walking tours, market visits & fine dining.',
         keywords: 'Dubai food tour, Dubai culinary tour, Dubai street food, Emirati food tour, Dubai food walk, Dubai restaurant tour, Middle Eastern food Dubai, Dubai food experience',
       },
@@ -631,7 +631,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Beyond the glittering skyscrapers and luxury malls lies the authentic heart of Dubai—a city with deep roots in Bedouin traditions, pearl diving heritage, and centuries of trade. Dubai cultural tours offer a fascinating journey into the emirate's rich history and traditions, from the narrow alleys of Al Fahidi Historical Neighborhood to the bustling souks of Deira, from traditional wind-tower architecture to modern museums preserving Emirati heritage. These tours provide essential context for understanding how Dubai transformed from a small fishing village to a global metropolis while maintaining its cultural identity and traditions.`,
 
       seo: {
-        title: 'Dubai Cultural Tours 2025: Heritage, Museums & Traditional Experiences',
+        title: 'Dubai Cultural Tours 2026: Heritage, Museums & Traditional Experiences',
         description: 'Book cultural tours in Dubai. Visit Al Fahidi, Dubai Museum, traditional souks, mosques & heritage sites. From $40/person. Learn about Emirati culture & history. Expert guides.',
         keywords: 'Dubai cultural tour, Dubai heritage tour, Al Fahidi tour, Dubai Museum, traditional Dubai, Emirati culture tour, Dubai history tour, Dubai souks tour',
       },
@@ -785,7 +785,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Dubai is an adventure playground offering heart-pounding experiences that push boundaries and create unforgettable memories. From skydiving over the iconic Palm Jumeirah to helicopter tours showcasing the city's stunning skyline, from jet skiing in the Persian Gulf to zip-lining across Dubai Marina, the city offers adrenaline-pumping activities for every thrill-seeker. Whether you're looking to conquer your fears, experience Dubai from unique perspectives, or simply add some excitement to your trip, these adventure tours deliver world-class experiences with professional safety standards and breathtaking views.`,
 
       seo: {
-        title: 'Dubai Adventure Tours 2025: Skydiving, Helicopter Rides & Extreme Activities',
+        title: 'Dubai Adventure Tours 2026: Skydiving, Helicopter Rides & Extreme Activities',
         description: 'Book adventure tours in Dubai. Skydiving, helicopter tours, jet skiing, zip-lining & more. From $60/person. Professional operators & safety certified. Expert guides.',
         keywords: 'Dubai skydiving, Dubai helicopter tour, Dubai jet ski, Dubai zip line, Dubai adventure activities, Dubai extreme sports, Dubai water sports, Dubai thrill activities',
       },
@@ -941,7 +941,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `The Sheikh Zayed Grand Mosque stands as one of the world's most breathtaking architectural marvels, a masterpiece of Islamic design that welcomes visitors from all faiths and backgrounds. With its pristine white marble, intricate floral patterns, gold-plated chandeliers, and the world's largest hand-knotted carpet, this mosque represents the pinnacle of Islamic artistry and Emirati cultural pride. Visiting this sacred site is not just a tour—it's a profound cultural and spiritual experience that offers insight into Islamic traditions, Emirati values, and the vision of the UAE's founding father. Whether you're seeking architectural inspiration, cultural understanding, or simply the beauty of this magnificent structure, a visit to the Grand Mosque is an essential Abu Dhabi experience.`,
 
       seo: {
-        title: 'Sheikh Zayed Grand Mosque Tours 2025: Best Visits, Times & Guide',
+        title: 'Sheikh Zayed Grand Mosque Tours 2026: Best Visits, Times & Guide',
         description: 'Book tours to Sheikh Zayed Grand Mosque in Abu Dhabi. Skip-the-line access, guided tours & cultural insights. From $30/person. Best times, dress code & photography tips.',
         keywords: 'Sheikh Zayed Grand Mosque tour, Abu Dhabi Grand Mosque, Grand Mosque Abu Dhabi visit, Sheikh Zayed Mosque tour, Abu Dhabi mosque tour, Grand Mosque guided tour',
       },
@@ -1095,7 +1095,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Abu Dhabi is a city where ancient traditions meet world-class cultural institutions, creating a unique destination that celebrates both Emirati heritage and global art. From the groundbreaking Louvre Abu Dhabi to the magnificent Qasr Al Watan Presidential Palace, from traditional heritage villages to contemporary art galleries, Abu Dhabi's cultural scene reflects the emirate's commitment to preserving its identity while embracing global perspectives. These cultural tours offer deep insights into the UAE's history, the vision of its leaders, and the rich traditions that continue to shape modern Emirati society. Experience the sophisticated cultural landscape that makes Abu Dhabi a true capital of arts and heritage.`,
 
       seo: {
-        title: 'Abu Dhabi Cultural Tours 2025: Museums, Heritage Sites & Cultural Experiences',
+        title: 'Abu Dhabi Cultural Tours 2026: Museums, Heritage Sites & Cultural Experiences',
         description: 'Book cultural tours in Abu Dhabi. Visit Louvre Abu Dhabi, Qasr Al Watan, Heritage Village & museums. From $45/person. Learn about Emirati culture & history. Expert guides.',
         keywords: 'Abu Dhabi cultural tour, Abu Dhabi museums, Louvre Abu Dhabi tour, Qasr Al Watan tour, Abu Dhabi heritage tour, Emirati culture tour, Abu Dhabi history tour',
       },
@@ -1249,7 +1249,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `The vast Arabian Desert surrounding Abu Dhabi offers an authentic escape into a world of golden dunes, endless horizons, and traditional Bedouin culture. Abu Dhabi desert safaris provide the perfect blend of adventure and cultural immersion, taking you from the modern city into the timeless beauty of the desert. Whether you're seeking the thrill of dune bashing in powerful 4x4 vehicles, the tranquility of a camel ride at sunset, or the warmth of traditional Emirati hospitality under starlit skies, these safaris offer unforgettable experiences that connect you with the region's heritage. Experience the desert as the Bedouins have for centuries, while enjoying modern comforts and world-class service.`,
 
       seo: {
-        title: 'Abu Dhabi Desert Safaris 2025: Best Tours, Prices & Booking Guide',
+        title: 'Abu Dhabi Desert Safaris 2026: Best Tours, Prices & Booking Guide',
         description: 'Book the best desert safaris in Abu Dhabi. Compare 40+ tours with dune bashing, camel rides, BBQ dinner & shows. From $35/person. Morning, evening & overnight options.',
         keywords: 'Abu Dhabi desert safari, Abu Dhabi dune bashing, Abu Dhabi camel ride, Abu Dhabi desert tour, Abu Dhabi evening safari, Abu Dhabi desert camp, Abu Dhabi quad biking',
       },
@@ -1403,7 +1403,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Yas Island is Abu Dhabi's ultimate entertainment destination, a man-made paradise that combines world-class theme parks, luxury resorts, championship golf courses, and thrilling attractions all in one spectacular location. Home to Ferrari World Abu Dhabi, Warner Bros. World, Yas Waterworld, and the iconic Yas Marina Circuit, this island offers non-stop excitement for families, thrill-seekers, and entertainment enthusiasts. Whether you're racing on the world's fastest roller coaster, meeting your favorite cartoon characters, splashing in water parks, or watching Formula 1 racing, Yas Island delivers unforgettable experiences that showcase Abu Dhabi's commitment to world-class entertainment and innovation.`,
 
       seo: {
-        title: 'Yas Island Tours 2025: Theme Parks, Tickets & Best Experiences Guide',
+        title: 'Yas Island Tours 2026: Theme Parks, Tickets & Best Experiences Guide',
         description: 'Book Yas Island tours in Abu Dhabi. Visit Ferrari World, Warner Bros. World, Yas Waterworld & Yas Marina Circuit. From $50/person. Skip-the-line tickets & combo deals.',
         keywords: 'Yas Island tour, Ferrari World Abu Dhabi, Warner Bros World Abu Dhabi, Yas Waterworld, Yas Marina Circuit, Abu Dhabi theme parks, Yas Island tickets',
       },
@@ -1557,7 +1557,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Long before Abu Dhabi became a global capital, it was a small fishing and pearl diving village with deep roots in Bedouin traditions and maritime trade. Heritage tours in Abu Dhabi offer a fascinating journey back in time, exploring the emirate's transformation from a humble settlement to a modern metropolis while preserving its cultural identity. From the authentic Heritage Village to historic forts, from traditional souks to the stories of pearl divers and traders, these tours provide essential context for understanding how Abu Dhabi evolved while maintaining its connection to Emirati traditions and values. Experience the authentic heritage that forms the foundation of modern Abu Dhabi.`,
 
       seo: {
-        title: 'Abu Dhabi Heritage Tours 2025: Historic Sites & Traditional Experiences',
+        title: 'Abu Dhabi Heritage Tours 2026: Historic Sites & Traditional Experiences',
         description: 'Book heritage tours in Abu Dhabi. Visit Heritage Village, historic forts, traditional souks & cultural sites. From $40/person. Learn about Emirati history & traditions.',
         keywords: 'Abu Dhabi heritage tour, Heritage Village Abu Dhabi, Abu Dhabi history tour, traditional Abu Dhabi, Emirati heritage, Abu Dhabi cultural heritage, historic Abu Dhabi',
       },
@@ -1711,7 +1711,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Abu Dhabi's stunning coastline along the Persian Gulf offers some of the region's most beautiful beaches, from the pristine 8-kilometer Corniche Beach to exclusive resort beaches and natural island escapes. Beach tours in Abu Dhabi provide the perfect way to experience the emirate's coastal beauty, whether you're seeking relaxation on soft white sand, water sports adventures, or luxury beachfront experiences. With year-round sunshine, crystal-clear waters, and world-class facilities, Abu Dhabi's beaches offer something for everyone—from families looking for safe swimming areas to adventure seekers wanting to try water sports, to couples seeking romantic beachfront dining. Discover the coastal paradise that complements Abu Dhabi's desert and urban attractions.`,
 
       seo: {
-        title: 'Abu Dhabi Beach Tours 2025: Best Beaches, Water Sports & Beachfront Experiences',
+        title: 'Abu Dhabi Beach Tours 2026: Best Beaches, Water Sports & Beachfront Experiences',
         description: 'Book beach tours in Abu Dhabi. Visit Corniche Beach, resort beaches & islands. From $30/person. Water sports, beach activities & luxury experiences. Expert guides.',
         keywords: 'Abu Dhabi beach tour, Corniche Beach Abu Dhabi, Abu Dhabi beaches, Abu Dhabi water sports, Abu Dhabi beach activities, Persian Gulf beaches, Abu Dhabi coastal tours',
       },
@@ -1867,7 +1867,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Doha is a city where ancient Islamic traditions meet world-class cultural institutions, creating a unique destination that celebrates both Qatari heritage and global perspectives. From the magnificent Museum of Islamic Art to the traditional Souq Waqif, from the modern Katara Cultural Village to historic forts, Doha's cultural scene reflects the emirate's commitment to preserving its identity while embracing contemporary arts and culture. These cultural tours offer deep insights into Qatar's history, the vision of its leaders, and the rich traditions that continue to shape modern Qatari society. Experience the sophisticated cultural landscape that makes Doha a true capital of arts and heritage in the Arabian Gulf.`,
 
       seo: {
-        title: 'Doha Cultural Tours 2025: Museums, Heritage Sites & Cultural Experiences',
+        title: 'Doha Cultural Tours 2026: Museums, Heritage Sites & Cultural Experiences',
         description: 'Book cultural tours in Doha. Visit Museum of Islamic Art, Souq Waqif, Katara Cultural Village & heritage sites. From $45/person. Learn about Qatari culture & history.',
         keywords: 'Doha cultural tour, Doha museums, Museum of Islamic Art tour, Souq Waqif tour, Doha heritage tour, Qatari culture tour, Doha history tour, Katara Cultural Village',
       },
@@ -2021,7 +2021,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Doha is home to some of the world's most exceptional museums, each telling a unique story of Islamic art, Qatari heritage, and cultural excellence. The Museum of Islamic Art, designed by I.M. Pei, stands as an architectural masterpiece housing one of the world's most comprehensive collections of Islamic artifacts spanning 1,400 years. The National Museum of Qatar, with its stunning desert rose-inspired design, chronicles Qatar's journey from ancient times to modern prosperity. These museum tours offer profound insights into Islamic civilization, Qatari culture, and the region's rich history through world-class collections, innovative exhibitions, and expert guidance. Experience the cultural treasures that make Doha a global destination for art and heritage enthusiasts.`,
 
       seo: {
-        title: 'Doha Museum Tours 2025: Museum of Islamic Art & National Museum Guide',
+        title: 'Doha Museum Tours 2026: Museum of Islamic Art & National Museum Guide',
         description: 'Book museum tours in Doha. Visit Museum of Islamic Art, National Museum of Qatar & more. From $40/person. Skip-the-line access & expert guides.',
         keywords: 'Doha museum tour, Museum of Islamic Art Doha, National Museum Qatar, Doha museums, Islamic art museum, Qatar museum tours, Doha art galleries',
       },
@@ -2175,7 +2175,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `The vast Qatari desert offers an authentic escape into a world of golden dunes, endless horizons, and traditional Bedouin culture. Doha desert safaris provide the perfect blend of adventure and cultural immersion, taking you from the modern city into the timeless beauty of the desert. Whether you're seeking the thrill of dune bashing in powerful 4x4 vehicles, the tranquility of a camel ride at sunset, or the warmth of traditional Qatari hospitality under starlit skies, these safaris offer unforgettable experiences that connect you with the region's heritage. Experience the desert as the Bedouins have for centuries, while enjoying modern comforts and world-class service.`,
 
       seo: {
-        title: 'Doha Desert Safaris 2025: Best Tours, Prices & Booking Guide',
+        title: 'Doha Desert Safaris 2026: Best Tours, Prices & Booking Guide',
         description: 'Book the best desert safaris in Doha. Compare 35+ tours with dune bashing, camel rides, BBQ dinner & shows. From $35/person. Morning, evening & overnight options.',
         keywords: 'Doha desert safari, Doha dune bashing, Doha camel ride, Doha desert tour, Doha evening safari, Doha desert camp, Qatar desert safari',
       },
@@ -2329,7 +2329,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Souq Waqif stands as the beating heart of traditional Doha, a vibrant marketplace that has been the center of Qatari commerce and culture for over a century. This authentic souk, beautifully restored to preserve its traditional architecture, offers visitors an immersive journey into Qatari life, from aromatic spice stalls to traditional handicrafts, from falcon shops to authentic restaurants. Walking through Souq Waqif is like stepping back in time while experiencing the warmth of modern Qatari hospitality. Whether you're seeking authentic souvenirs, traditional Qatari cuisine, cultural insights, or simply the atmosphere of a traditional Middle Eastern market, Souq Waqif tours provide an essential Doha experience that connects you with the soul of Qatari culture.`,
 
       seo: {
-        title: 'Souq Waqif Tours 2025: Traditional Market, Shopping & Cultural Guide',
+        title: 'Souq Waqif Tours 2026: Traditional Market, Shopping & Cultural Guide',
         description: 'Book Souq Waqif tours in Doha. Explore traditional market, local crafts, spices & Qatari culture. From $30/person. Shopping tips & authentic experiences.',
         keywords: 'Souq Waqif tour, Doha souq, traditional market Doha, Souq Waqif shopping, Doha traditional market, Qatari souq, Doha market tour',
       },
@@ -2483,7 +2483,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Doha's culinary landscape reflects its position as a global crossroads, offering an extraordinary fusion of flavors from across the Middle East, Asia, and the world. From traditional Qatari dishes like machboos and harees to innovative fusion cuisine, from bustling street food stalls in Souq Waqif to Michelin-starred restaurants, Doha food tours provide an authentic taste of the city's rich gastronomic culture. Whether you're a food enthusiast seeking hidden gems, a curious traveler wanting to try local specialties, or a culinary adventurer ready to explore diverse neighborhoods, these tours offer the perfect way to experience Doha through its food. Discover the flavors that make Doha a true culinary destination.`,
 
       seo: {
-        title: 'Doha Food Tours 2025: Best Culinary Experiences & Traditional Qatari Food',
+        title: 'Doha Food Tours 2026: Best Culinary Experiences & Traditional Qatari Food',
         description: 'Book the best food tours in Doha. Taste traditional Qatari cuisine, Middle Eastern dishes & international flavors. From $55/person. Walking tours & market visits.',
         keywords: 'Doha food tour, Doha culinary tour, Doha street food, Qatari food tour, Doha food walk, Doha restaurant tour, Middle Eastern food Doha, traditional Qatari food',
       },
@@ -2637,7 +2637,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Doha is a city of remarkable contrasts where ancient traditions meet futuristic innovation, creating a skyline that showcases Qatar's vision and ambition. From the stunning Museum of Islamic Art to the traditional Souq Waqif, from the modern Pearl-Qatar to the historic Al Zubarah Fort, Doha city tours offer the perfect introduction to this dynamic capital. Whether you're a first-time visitor wanting to see the iconic landmarks or a returning traveler seeking hidden gems, these comprehensive tours showcase the best of what makes Doha truly extraordinary. Experience the perfect blend of heritage, culture, and innovation that defines this remarkable city.`,
 
       seo: {
-        title: 'Doha City Tours 2025: Best Sightseeing Tours & Landmarks Guide',
+        title: 'Doha City Tours 2026: Best Sightseeing Tours & Landmarks Guide',
         description: 'Book the best city tours in Doha. Visit Museum of Islamic Art, Souq Waqif, The Pearl-Qatar & more. From $35/person. Half-day, full-day & private tours.',
         keywords: 'Doha city tour, Doha sightseeing, Doha landmarks tour, Doha hop on hop off, Doha bus tour, Doha private tour, Doha highlights tour, Doha attractions',
       },
@@ -2793,7 +2793,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Muscat is a city where ancient Omani traditions thrive alongside modern development, creating a unique cultural destination that celebrates authentic Arabian heritage. From the magnificent Sultan Qaboos Grand Mosque to the bustling Mutrah Souq, from historic forts to traditional Omani villages, Muscat's cultural scene reflects centuries of maritime history, Bedouin traditions, and Islamic heritage. These cultural tours offer deep insights into Omani life, the vision of Sultan Qaboos, and the rich traditions that continue to shape modern Omani society. Experience the warm hospitality, authentic crafts, and cultural treasures that make Muscat a true gem of the Arabian Peninsula.`,
 
       seo: {
-        title: 'Muscat Cultural Tours 2025: Heritage Sites, Souks & Omani Culture',
+        title: 'Muscat Cultural Tours 2026: Heritage Sites, Souks & Omani Culture',
         description: 'Book cultural tours in Muscat. Visit Sultan Qaboos Grand Mosque, Mutrah Souq, historic forts & heritage sites. From $40/person. Learn about Omani culture & traditions.',
         keywords: 'Muscat cultural tour, Muscat heritage tour, Omani culture tour, Muscat souq tour, Sultan Qaboos Grand Mosque tour, Muscat traditional tour, Omani heritage',
       },
@@ -2947,7 +2947,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `The Wahiba Sands, also known as Sharqiya Sands, is one of Oman's most spectacular natural wonders - a vast sea of golden dunes stretching as far as the eye can see. Located just a few hours from Muscat, this pristine desert offers an authentic escape into traditional Bedouin life and the timeless beauty of the Arabian desert. Whether you're seeking the thrill of dune bashing in powerful 4x4 vehicles, the tranquility of a camel ride at sunset, or the warmth of traditional Omani hospitality under starlit skies, Wahiba Sands safaris provide unforgettable experiences that connect you with the region's heritage. Experience the desert as the Bedouins have for centuries, while enjoying modern comforts and world-class service.`,
 
       seo: {
-        title: 'Muscat Desert Safaris 2025: Wahiba Sands Tours, Prices & Booking',
+        title: 'Muscat Desert Safaris 2026: Wahiba Sands Tours, Prices & Booking',
         description: 'Book the best desert safaris from Muscat to Wahiba Sands. Compare 30+ tours with dune bashing, camel rides, BBQ dinner & Bedouin camps. From $50/person. Day trips & overnight options.',
         keywords: 'Muscat desert safari, Wahiba Sands tour, Muscat dune bashing, Omani desert safari, Muscat camel ride, Wahiba Sands camping, Sharqiya Sands tour',
       },
@@ -3101,7 +3101,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Muscat is a city of remarkable beauty where ancient forts guard a stunning natural harbor, traditional architecture blends with modern development, and pristine beaches meet dramatic mountains. From the magnificent Sultan Qaboos Grand Mosque to the historic Mutrah Souq, from the Royal Opera House to the traditional forts, Muscat city tours offer the perfect introduction to this enchanting capital. Whether you're a first-time visitor wanting to see the iconic landmarks or a returning traveler seeking hidden gems, these comprehensive tours showcase the best of what makes Muscat truly extraordinary. Experience the perfect blend of heritage, culture, and natural beauty that defines this remarkable Omani capital.`,
 
       seo: {
-        title: 'Muscat City Tours 2025: Best Sightseeing Tours & Landmarks Guide',
+        title: 'Muscat City Tours 2026: Best Sightseeing Tours & Landmarks Guide',
         description: 'Book the best city tours in Muscat. Visit Sultan Qaboos Grand Mosque, Mutrah Souq, historic forts & more. From $35/person. Half-day, full-day & private tours.',
         keywords: 'Muscat city tour, Muscat sightseeing, Muscat landmarks tour, Muscat private tour, Muscat highlights tour, Muscat attractions, Omani capital tour',
       },
@@ -3255,7 +3255,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Oman's wadis (valleys) are among the country's most spectacular natural wonders - dramatic canyons carved by ancient rivers, filled with crystal-clear pools, cascading waterfalls, and lush vegetation. These hidden oases offer perfect escapes from the desert heat, providing opportunities for swimming, hiking, and connecting with nature. From the famous Wadi Shab with its emerald pools and secret cave to Wadi Bani Khalid with its palm-fringed pools, wadi tours from Muscat showcase the incredible diversity of Oman's landscapes. Whether you're seeking adventure, relaxation, or simply the beauty of untouched nature, these tours offer unforgettable experiences that reveal a side of Oman few visitors expect.`,
 
       seo: {
-        title: 'Muscat Wadi Tours 2025: Wadi Shab, Wadi Bani Khalid & Adventure Guide',
+        title: 'Muscat Wadi Tours 2026: Wadi Shab, Wadi Bani Khalid & Adventure Guide',
         description: 'Book wadi tours from Muscat. Explore Wadi Shab, Wadi Bani Khalid & other stunning valleys with natural pools & waterfalls. From $45/person. Swimming, hiking & adventure.',
         keywords: 'Muscat wadi tour, Wadi Shab tour, Wadi Bani Khalid tour, Oman wadi tours, Muscat valley tours, wadi swimming, Oman natural pools',
       },
@@ -3409,7 +3409,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Muscat's heritage tells the story of a strategic trading port that has been a crossroads of civilizations for centuries. From the imposing forts that guarded the harbor to the traditional architecture of Old Muscat, from ancient watchtowers to historic palaces, Muscat's heritage sites showcase the rich history and strategic importance of this Omani capital. These heritage tours offer deep insights into Oman's maritime history, the role of Muscat in regional trade, and the architectural traditions that have shaped the city. Experience the legacy of sultans, traders, and seafarers that makes Muscat a living museum of Omani heritage.`,
 
       seo: {
-        title: 'Muscat Heritage Tours 2025: Historic Forts, Old Muscat & Cultural Sites',
+        title: 'Muscat Heritage Tours 2026: Historic Forts, Old Muscat & Cultural Sites',
         description: 'Book heritage tours in Muscat. Visit historic forts, Old Muscat, traditional architecture & heritage sites. From $40/person. Learn about Omani history & culture.',
         keywords: 'Muscat heritage tour, Muscat historic forts, Old Muscat tour, Omani heritage, Muscat cultural sites, Al Jalali Fort, Al Mirani Fort, Muscat history tour',
       },
@@ -3563,7 +3563,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Muscat and its surrounding areas offer incredible opportunities for adventure enthusiasts, from dramatic mountain ranges to pristine coastlines, from desert dunes to crystal-clear waters. Whether you're seeking the thrill of mountain hiking with panoramic views, the excitement of diving in rich marine environments, the challenge of rock climbing, or the adventure of off-road exploration, Muscat adventure tours provide unforgettable experiences for all levels of adventurers. Experience the natural beauty and diverse landscapes that make Oman a paradise for outdoor enthusiasts, all while enjoying the safety and expertise of professional guides.`,
 
       seo: {
-        title: 'Muscat Adventure Tours 2025: Hiking, Diving, Rock Climbing & Outdoor Activities',
+        title: 'Muscat Adventure Tours 2026: Hiking, Diving, Rock Climbing & Outdoor Activities',
         description: 'Book adventure tours in Muscat. Experience mountain hiking, diving, snorkeling, rock climbing & outdoor activities. From $55/person. All skill levels welcome.',
         keywords: 'Muscat adventure tour, Muscat hiking, Muscat diving, Muscat rock climbing, Oman adventure activities, Muscat outdoor tours, Muscat snorkeling',
       },
@@ -3719,7 +3719,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Riyadh is a city where ancient Najdi traditions thrive alongside visionary modern development, creating a unique cultural destination that celebrates authentic Saudi heritage while embracing the future. From the UNESCO World Heritage Site of Diriyah to the modern National Museum, from traditional souks to contemporary art galleries, Riyadh's cultural scene reflects the Kingdom's rich history, rapid transformation, and commitment to preserving its identity. These cultural tours offer deep insights into Saudi life, the vision of Vision 2030, and the rich traditions that continue to shape modern Saudi society. Experience the warm hospitality, authentic crafts, and cultural treasures that make Riyadh a fascinating destination for cultural exploration.`,
 
       seo: {
-        title: 'Riyadh Cultural Tours 2025: Heritage Sites, Museums & Saudi Culture',
+        title: 'Riyadh Cultural Tours 2026: Heritage Sites, Museums & Saudi Culture',
         description: 'Book cultural tours in Riyadh. Visit Diriyah UNESCO site, National Museum, traditional souks & cultural centers. From $45/person. Learn about Saudi culture & heritage.',
         keywords: 'Riyadh cultural tour, Riyadh heritage tour, Saudi culture tour, Diriyah tour, Riyadh museums, Riyadh traditional souk, Saudi Arabia cultural tours',
       },
@@ -3873,7 +3873,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `The vast Arabian Desert surrounding Riyadh offers an authentic escape into a world of golden dunes, endless horizons, and traditional Bedouin culture. These desert safaris provide the perfect blend of adventure and cultural immersion, taking you from the modern city into the timeless beauty of the desert. Whether you're seeking the thrill of dune bashing in powerful 4x4 vehicles, the tranquility of a camel ride at sunset, or the warmth of traditional Saudi hospitality under starlit skies, these safaris offer unforgettable experiences that connect you with the region's heritage. Experience the desert as the Bedouins have for centuries, while enjoying modern comforts and world-class service.`,
 
       seo: {
-        title: 'Riyadh Desert Safaris 2025: Best Tours, Prices & Booking Guide',
+        title: 'Riyadh Desert Safaris 2026: Best Tours, Prices & Booking Guide',
         description: 'Book the best desert safaris from Riyadh. Compare 32+ tours with dune bashing, camel rides, BBQ dinner & Bedouin camps. From $55/person. Day trips & overnight options.',
         keywords: 'Riyadh desert safari, Riyadh dune bashing, Riyadh camel ride, Saudi desert safari, Riyadh desert tour, Arabian desert tour, Riyadh desert camp',
       },
@@ -4027,7 +4027,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Riyadh is a city of remarkable contrasts where ancient Najdi heritage meets futuristic innovation, creating a skyline that showcases Saudi Arabia's vision and ambition. From the UNESCO World Heritage Site of Diriyah to the modern Kingdom Centre Tower, from traditional souks to the King Abdullah Financial District, Riyadh city tours offer the perfect introduction to this dynamic capital. Whether you're a first-time visitor wanting to see the iconic landmarks or a returning traveler seeking hidden gems, these comprehensive tours showcase the best of what makes Riyadh truly extraordinary. Experience the perfect blend of heritage, culture, and innovation that defines this remarkable Saudi capital.`,
 
       seo: {
-        title: 'Riyadh City Tours 2025: Best Sightseeing Tours & Landmarks Guide',
+        title: 'Riyadh City Tours 2026: Best Sightseeing Tours & Landmarks Guide',
         description: 'Book the best city tours in Riyadh. Visit Diriyah, Kingdom Centre, National Museum, historic sites & more. From $40/person. Half-day, full-day & private tours.',
         keywords: 'Riyadh city tour, Riyadh sightseeing, Riyadh landmarks tour, Riyadh private tour, Riyadh highlights tour, Riyadh attractions, Saudi Arabia capital tour',
       },
@@ -4181,7 +4181,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Riyadh's history tells the story of the unification of Saudi Arabia and the rise of the modern Kingdom from its ancient Najdi roots. From the UNESCO World Heritage Site of Diriyah, the birthplace of the Saudi state, to the Masmak Fortress where the Kingdom was unified, from ancient watchtowers to historic palaces, Riyadh's historical sites showcase the rich heritage and strategic importance of this Saudi capital. These historical tours offer deep insights into Saudi Arabia's formation, the role of the Al Saud dynasty, and the architectural traditions that have shaped the region. Experience the legacy of kings, warriors, and visionaries that makes Riyadh a living museum of Saudi history.`,
 
       seo: {
-        title: 'Riyadh Historical Tours 2025: Diriyah, Masmak Fortress & Heritage Sites',
+        title: 'Riyadh Historical Tours 2026: Diriyah, Masmak Fortress & Heritage Sites',
         description: 'Book historical tours in Riyadh. Visit Diriyah UNESCO site, Masmak Fortress, historic palaces & heritage locations. From $45/person. Learn about Saudi Arabia\'s history.',
         keywords: 'Riyadh historical tour, Diriyah tour, Masmak Fortress tour, Saudi Arabia history, Riyadh heritage tour, Diriyah UNESCO site, Saudi unification history',
       },
@@ -4335,7 +4335,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Riyadh's culinary landscape reflects its position as the capital of Saudi Arabia, offering an extraordinary fusion of flavors from across the Kingdom, the Middle East, and the world. From traditional Najdi dishes like kabsa and jareesh to modern Saudi fusion cuisine, from bustling street food stalls to Michelin-starred restaurants, Riyadh food tours provide an authentic taste of the city's rich gastronomic culture. Whether you're a food enthusiast seeking hidden gems, a curious traveler wanting to try local specialties, or a culinary adventurer ready to explore diverse neighborhoods, these tours offer the perfect way to experience Riyadh through its food. Discover the flavors that make Riyadh a true culinary destination.`,
 
       seo: {
-        title: 'Riyadh Food Tours 2025: Best Culinary Experiences & Traditional Saudi Food',
+        title: 'Riyadh Food Tours 2026: Best Culinary Experiences & Traditional Saudi Food',
         description: 'Book the best food tours in Riyadh. Taste traditional Saudi cuisine, Middle Eastern dishes & international flavors. From $60/person. Walking tours & market visits.',
         keywords: 'Riyadh food tour, Riyadh culinary tour, Riyadh street food, Saudi food tour, Riyadh food walk, Riyadh restaurant tour, Middle Eastern food Riyadh, traditional Saudi food',
       },
@@ -4489,7 +4489,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Riyadh and its surrounding areas offer incredible opportunities for adventure enthusiasts, from dramatic desert landscapes to rocky outcrops, from vast dunes to hidden canyons. Whether you're seeking the thrill of quad biking across desert dunes, the excitement of rock climbing, the challenge of desert hiking, or the adventure of off-road exploration, Riyadh adventure tours provide unforgettable experiences for all levels of adventurers. Experience the natural beauty and diverse landscapes that make Saudi Arabia a paradise for outdoor enthusiasts, all while enjoying the safety and expertise of professional guides.`,
 
       seo: {
-        title: 'Riyadh Adventure Tours 2025: Quad Biking, Rock Climbing & Outdoor Activities',
+        title: 'Riyadh Adventure Tours 2026: Quad Biking, Rock Climbing & Outdoor Activities',
         description: 'Book adventure tours in Riyadh. Experience quad biking, rock climbing, desert hiking & outdoor activities. From $65/person. All skill levels welcome.',
         keywords: 'Riyadh adventure tour, Riyadh quad biking, Riyadh rock climbing, Saudi Arabia adventure activities, Riyadh outdoor tours, Riyadh desert activities',
       },
@@ -4645,7 +4645,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Tel Aviv is a cultural powerhouse where contemporary Israeli creativity meets diverse international influences, creating a vibrant arts scene that rivals the world's great cultural capitals. From world-class museums and galleries to street art and cultural centers, from the historic Jaffa to the modern White City, Tel Aviv's cultural landscape reflects the dynamic spirit of Israeli society. These cultural tours offer deep insights into Israeli art, history, and contemporary culture through visits to museums, galleries, cultural neighborhoods, and artistic spaces. Experience the creativity, innovation, and cultural richness that make Tel Aviv a true destination for art and culture enthusiasts.`,
 
       seo: {
-        title: 'Tel Aviv Cultural Tours 2025: Museums, Galleries & Arts Scene',
+        title: 'Tel Aviv Cultural Tours 2026: Museums, Galleries & Arts Scene',
         description: 'Book cultural tours in Tel Aviv. Visit Tel Aviv Museum of Art, galleries, Jaffa & cultural centers. From $45/person. Learn about Israeli art & culture.',
         keywords: 'Tel Aviv cultural tour, Tel Aviv museums, Tel Aviv art galleries, Israeli culture tour, Tel Aviv Museum of Art, Jaffa cultural tour, Tel Aviv arts scene',
       },
@@ -4799,7 +4799,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Tel Aviv is a culinary paradise where Middle Eastern flavors meet Mediterranean cuisine, creating one of the world's most exciting food scenes. From bustling markets like Carmel Market and Levinsky Market to world-class restaurants, from traditional hummus joints to innovative fine dining, Tel Aviv food tours provide an authentic taste of the city's rich gastronomic culture. Whether you're a food enthusiast seeking hidden gems, a curious traveler wanting to try local specialties, or a culinary adventurer ready to explore diverse neighborhoods, these tours offer the perfect way to experience Tel Aviv through its food. Discover the flavors that make Tel Aviv a true destination for food lovers.`,
 
       seo: {
-        title: 'Tel Aviv Food Tours 2025: Best Culinary Experiences & Israeli Food',
+        title: 'Tel Aviv Food Tours 2026: Best Culinary Experiences & Israeli Food',
         description: 'Book the best food tours in Tel Aviv. Taste Israeli cuisine, Middle Eastern dishes & international flavors. From $65/person. Market tours & restaurant visits.',
         keywords: 'Tel Aviv food tour, Tel Aviv culinary tour, Tel Aviv street food, Israeli food tour, Tel Aviv food walk, Carmel Market tour, Tel Aviv restaurant tour, Middle Eastern food Tel Aviv',
       },
@@ -4953,7 +4953,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Tel Aviv is a city of remarkable contrasts where ancient Jaffa meets modern innovation, where Bauhaus architecture stands alongside contemporary skyscrapers, and where Mediterranean beaches border vibrant urban neighborhoods. From the historic port of Jaffa to the modern White City, from Rothschild Boulevard to Carmel Market, Tel Aviv city tours offer the perfect introduction to this dynamic metropolis. Whether you're a first-time visitor wanting to see the iconic landmarks or a returning traveler seeking hidden gems, these comprehensive tours showcase the best of what makes Tel Aviv truly extraordinary. Experience the perfect blend of history, culture, and modern energy that defines this remarkable city.`,
 
       seo: {
-        title: 'Tel Aviv City Tours 2025: Best Sightseeing Tours & Landmarks Guide',
+        title: 'Tel Aviv City Tours 2026: Best Sightseeing Tours & Landmarks Guide',
         description: 'Book the best city tours in Tel Aviv. Visit Jaffa, White City, Rothschild Boulevard, markets & more. From $40/person. Half-day, full-day & private tours.',
         keywords: 'Tel Aviv city tour, Tel Aviv sightseeing, Tel Aviv landmarks tour, Jaffa tour, Tel Aviv private tour, Tel Aviv highlights tour, Tel Aviv attractions, Israel tours',
       },
@@ -5107,7 +5107,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Tel Aviv's history tells the story of a modern city built on ancient foundations, from the 4,000-year-old port of Jaffa to the founding of Tel Aviv in 1909, from the Bauhaus architecture of the 1930s to the vibrant metropolis of today. These historical tours offer deep insights into the city's formation, the vision of its founders, the architectural movements that shaped it, and the events that transformed it into Israel's cultural and economic center. Experience the legacy of pioneers, architects, and visionaries that makes Tel Aviv a living museum of modern Israeli history.`,
 
       seo: {
-        title: 'Tel Aviv Historical Tours 2025: Jaffa, Old Tel Aviv & Heritage Sites',
+        title: 'Tel Aviv Historical Tours 2026: Jaffa, Old Tel Aviv & Heritage Sites',
         description: 'Book historical tours in Tel Aviv. Visit Jaffa, historic neighborhoods, Bauhaus architecture & heritage sites. From $45/person. Learn about Tel Aviv\'s history.',
         keywords: 'Tel Aviv historical tour, Jaffa tour, Tel Aviv history, Old Tel Aviv tour, Tel Aviv heritage tour, Jaffa history, Tel Aviv founding history',
       },
@@ -5261,7 +5261,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Tel Aviv's Mediterranean coastline is one of the city's greatest treasures, offering 14 kilometers of beautiful beaches with golden sand, clear blue water, and a vibrant beach culture. From popular beaches like Gordon and Frishman to quieter stretches, from water sports to beach volleyball, from beachfront cafes to sunset views, Tel Aviv beach tours showcase the best of the city's coastal lifestyle. Whether you're seeking relaxation, water sports, beach activities, or simply the beauty of the Mediterranean, these tours offer the perfect way to experience Tel Aviv's famous beach scene.`,
 
       seo: {
-        title: 'Tel Aviv Beach Tours 2025: Beach Activities, Water Sports & Coastal Adventures',
+        title: 'Tel Aviv Beach Tours 2026: Beach Activities, Water Sports & Coastal Adventures',
         description: 'Book beach tours in Tel Aviv. Experience Mediterranean beaches, water sports, beach activities & coastal fun. From $50/person. Swimming, surfing & beach relaxation.',
         keywords: 'Tel Aviv beach tour, Tel Aviv beaches, Tel Aviv water sports, Tel Aviv surfing, Tel Aviv beach activities, Mediterranean beaches Tel Aviv, Tel Aviv coastal tours',
       },
@@ -5415,7 +5415,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Tel Aviv is renowned for its legendary nightlife, offering one of the world's most vibrant after-dark scenes with world-class bars, clubs, and entertainment venues. From trendy rooftop bars to underground clubs, from beachfront venues to neighborhood hotspots, Tel Aviv nightlife tours provide the perfect way to experience the city's famous party scene. Whether you're seeking craft cocktails, electronic music, live performances, or simply the energy of Tel Aviv after dark, these tours offer unforgettable experiences that showcase why Tel Aviv is considered one of the world's great nightlife destinations.`,
 
       seo: {
-        title: 'Tel Aviv Nightlife Tours 2025: Bar Crawls, Clubs & Entertainment Guide',
+        title: 'Tel Aviv Nightlife Tours 2026: Bar Crawls, Clubs & Entertainment Guide',
         description: 'Book nightlife tours in Tel Aviv. Experience bars, clubs, rooftop venues & Tel Aviv\'s legendary nightlife. From $55/person. Bar crawls & entertainment tours.',
         keywords: 'Tel Aviv nightlife tour, Tel Aviv bar crawl, Tel Aviv clubs, Tel Aviv bars, Tel Aviv nightlife, Tel Aviv entertainment, Tel Aviv party tour',
       },
@@ -5571,7 +5571,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Amman is a city where ancient traditions meet modern Jordanian culture, creating a unique destination that celebrates authentic Middle Eastern heritage. From world-class museums to traditional souks, from cultural centers to vibrant neighborhoods, Amman's cultural scene reflects Jordan's rich history, warm hospitality, and contemporary creativity. These cultural tours offer deep insights into Jordanian life, traditions, and the cultural significance of this historic capital. Experience the warmth of Jordanian hospitality, authentic crafts, and cultural treasures that make Amman a fascinating destination for cultural exploration.`,
 
       seo: {
-        title: 'Amman Cultural Tours 2025: Museums, Souks & Jordanian Culture',
+        title: 'Amman Cultural Tours 2026: Museums, Souks & Jordanian Culture',
         description: 'Book cultural tours in Amman. Visit Jordan Museum, traditional souks, cultural centers & heritage sites. From $45/person. Learn about Jordanian culture & traditions.',
         keywords: 'Amman cultural tour, Amman heritage tour, Jordanian culture tour, Amman souk tour, Jordan Museum tour, Amman traditional tour, Jordan cultural tours',
       },
@@ -5725,7 +5725,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Amman's history spans thousands of years, from the ancient Ammonite civilization to Roman rule, from Byzantine churches to Umayyad palaces. The city's historical sites tell the story of civilizations that have called this region home, creating a rich archaeological heritage that makes Amman one of the Middle East's most historically significant cities. These historical tours offer deep insights into Jordan's ancient past, the role of Amman in regional history, and the archaeological treasures that continue to be discovered. Experience the legacy of ancient civilizations that makes Amman a living museum of Middle Eastern history.`,
 
       seo: {
-        title: 'Amman Historical Tours 2025: Citadel, Roman Theater & Archaeological Sites',
+        title: 'Amman Historical Tours 2026: Citadel, Roman Theater & Archaeological Sites',
         description: 'Book historical tours in Amman. Visit Amman Citadel, Roman Theater, archaeological sites & heritage locations. From $40/person. Learn about Jordan\'s ancient history.',
         keywords: 'Amman historical tour, Amman Citadel tour, Roman Theater Amman, Jordan history, Amman archaeology, Amman heritage tour, Jordan ancient history',
       },
@@ -5879,7 +5879,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Amman's culinary scene reflects Jordan's position at the crossroads of the Middle East, offering an extraordinary fusion of flavors from across the region. From traditional Jordanian dishes like mansaf and maqluba to street food favorites like falafel and shawarma, from bustling markets to authentic restaurants, Amman food tours provide an authentic taste of the city's rich gastronomic culture. Whether you're a food enthusiast seeking hidden gems, a curious traveler wanting to try local specialties, or a culinary adventurer ready to explore diverse neighborhoods, these tours offer the perfect way to experience Amman through its food. Discover the flavors that make Amman a true destination for food lovers.`,
 
       seo: {
-        title: 'Amman Food Tours 2025: Best Culinary Experiences & Traditional Jordanian Food',
+        title: 'Amman Food Tours 2026: Best Culinary Experiences & Traditional Jordanian Food',
         description: 'Book the best food tours in Amman. Taste Jordanian cuisine, Middle Eastern dishes & street food. From $55/person. Market tours & restaurant visits.',
         keywords: 'Amman food tour, Amman culinary tour, Amman street food, Jordanian food tour, Amman food walk, Amman restaurant tour, Middle Eastern food Amman, traditional Jordanian food',
       },
@@ -6033,7 +6033,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Amman is a city of remarkable contrasts where ancient history meets modern development, creating a fascinating destination that showcases Jordan's past and present. From the historic Citadel to the modern downtown, from traditional souks to contemporary neighborhoods, Amman city tours offer the perfect introduction to this dynamic capital. Whether you're a first-time visitor wanting to see the iconic landmarks or a returning traveler seeking hidden gems, these comprehensive tours showcase the best of what makes Amman truly extraordinary. Experience the perfect blend of history, culture, and modern energy that defines this remarkable Jordanian capital.`,
 
       seo: {
-        title: 'Amman City Tours 2025: Best Sightseeing Tours & Landmarks Guide',
+        title: 'Amman City Tours 2026: Best Sightseeing Tours & Landmarks Guide',
         description: 'Book the best city tours in Amman. Visit Citadel, Roman Theater, downtown souks & more. From $35/person. Half-day, full-day & private tours.',
         keywords: 'Amman city tour, Amman sightseeing, Amman landmarks tour, Amman private tour, Amman highlights tour, Amman attractions, Jordan capital tour',
       },
@@ -6187,7 +6187,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Wadi Rum, also known as the Valley of the Moon, is one of Jordan's most spectacular natural wonders - a vast desert landscape of red sand, dramatic rock formations, and ancient petroglyphs. Located about 4 hours from Amman, Wadi Rum offers an authentic escape into traditional Bedouin culture and the timeless beauty of the desert. Whether you're seeking the thrill of 4x4 desert exploration, the tranquility of a camel ride at sunset, or the warmth of traditional Bedouin hospitality under starlit skies, Wadi Rum safaris from Amman provide unforgettable experiences that connect you with the region's heritage. Experience the desert as the Bedouins have for centuries, while enjoying modern comforts and world-class service.`,
 
       seo: {
-        title: 'Amman Desert Safaris 2025: Wadi Rum Tours, Prices & Booking Guide',
+        title: 'Amman Desert Safaris 2026: Wadi Rum Tours, Prices & Booking Guide',
         description: 'Book the best desert safaris from Amman to Wadi Rum. Compare 26+ tours with 4x4 exploration, camel rides, Bedouin camps & stargazing. From $80/person. Day trips & overnight options.',
         keywords: 'Amman desert safari, Wadi Rum tour from Amman, Amman Wadi Rum, Jordan desert safari, Wadi Rum day trip, Amman desert tour, Wadi Rum camping',
       },
@@ -6341,7 +6341,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Amman serves as the perfect gateway to Jordan's most iconic destinations, making it an ideal base for exploring the country's wonders. From the ancient rose-red city of Petra, one of the New Seven Wonders of the World, to the therapeutic waters of the Dead Sea, from the well-preserved Roman ruins of Jerash to the dramatic landscapes of Wadi Rum, day trips from Amman offer unforgettable experiences that showcase Jordan's incredible diversity. Whether you're seeking ancient history, natural wonders, or cultural experiences, these comprehensive day trips provide the perfect way to explore Jordan's most famous attractions while staying in the comfort of Amman.`,
 
       seo: {
-        title: 'Amman Day Trips 2025: Petra, Dead Sea, Jerash & Jordan Tours',
+        title: 'Amman Day Trips 2026: Petra, Dead Sea, Jerash & Jordan Tours',
         description: 'Book day trips from Amman. Visit Petra, Dead Sea, Jerash & other Jordan attractions. From $60/person. Full-day tours with hotel pickup.',
         keywords: 'Amman day trips, Petra day trip from Amman, Dead Sea tour from Amman, Jerash tour, Jordan day trips, Amman to Petra, Amman to Dead Sea',
       },
@@ -6497,7 +6497,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Beirut is a cultural crossroads where Middle Eastern traditions meet Mediterranean influences, creating a unique destination that celebrates authentic Lebanese heritage and contemporary creativity. From world-class museums to vibrant galleries, from cultural centers to historic neighborhoods, Beirut's cultural scene reflects Lebanon's rich history, diverse communities, and artistic innovation. These cultural tours offer deep insights into Lebanese life, traditions, and the cultural significance of this historic Mediterranean capital. Experience the warmth of Lebanese hospitality, authentic arts, and cultural treasures that make Beirut a fascinating destination for cultural exploration.`,
 
       seo: {
-        title: 'Beirut Cultural Tours 2025: Museums, Galleries & Lebanese Culture',
+        title: 'Beirut Cultural Tours 2026: Museums, Galleries & Lebanese Culture',
         description: 'Book cultural tours in Beirut. Visit National Museum, galleries, cultural centers & heritage sites. From $45/person. Learn about Lebanese culture & arts.',
         keywords: 'Beirut cultural tour, Beirut heritage tour, Lebanese culture tour, Beirut museum tour, Beirut galleries, Beirut traditional tour, Lebanon cultural tours',
       },
@@ -6651,7 +6651,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Beirut is a culinary paradise where Middle Eastern flavors meet Mediterranean cuisine, creating one of the world's most exciting food scenes. From bustling markets to world-class restaurants, from traditional mezze to innovative fusion cuisine, Beirut food tours provide an authentic taste of the city's rich gastronomic culture. Whether you're a food enthusiast seeking hidden gems, a curious traveler wanting to try local specialties, or a culinary adventurer ready to explore diverse neighborhoods, these tours offer the perfect way to experience Beirut through its food. Discover the flavors that make Beirut a true destination for food lovers.`,
 
       seo: {
-        title: 'Beirut Food Tours 2025: Best Culinary Experiences & Lebanese Food',
+        title: 'Beirut Food Tours 2026: Best Culinary Experiences & Lebanese Food',
         description: 'Book the best food tours in Beirut. Taste Lebanese cuisine, Middle Eastern dishes & international flavors. From $65/person. Market tours & restaurant visits.',
         keywords: 'Beirut food tour, Beirut culinary tour, Beirut street food, Lebanese food tour, Beirut food walk, Beirut restaurant tour, Middle Eastern food Beirut, traditional Lebanese food',
       },
@@ -6805,7 +6805,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Beirut is a city of remarkable contrasts where ancient history meets modern development, where Roman ruins stand alongside contemporary architecture, and where traditional neighborhoods border trendy districts. From the historic downtown with its restored buildings to the vibrant neighborhoods of Gemmayze and Mar Mikhael, from the Mediterranean Corniche to Pigeon Rocks, Beirut city tours offer the perfect introduction to this dynamic capital. Whether you're a first-time visitor wanting to see the iconic landmarks or a returning traveler seeking hidden gems, these comprehensive tours showcase the best of what makes Beirut truly extraordinary. Experience the perfect blend of history, culture, and modern energy that defines this remarkable Mediterranean capital.`,
 
       seo: {
-        title: 'Beirut City Tours 2025: Best Sightseeing Tours & Landmarks Guide',
+        title: 'Beirut City Tours 2026: Best Sightseeing Tours & Landmarks Guide',
         description: 'Book the best city tours in Beirut. Visit downtown, Pigeon Rocks, Corniche, neighborhoods & more. From $40/person. Half-day, full-day & private tours.',
         keywords: 'Beirut city tour, Beirut sightseeing, Beirut landmarks tour, Beirut private tour, Beirut highlights tour, Beirut attractions, Lebanon capital tour',
       },
@@ -6959,7 +6959,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Beirut's history spans thousands of years, from ancient Phoenician times to Roman rule, from Ottoman period to modern Lebanon. The city's historical sites tell the story of civilizations that have called this region home, creating a rich archaeological heritage that makes Beirut one of the Middle East's most historically significant cities. These historical tours offer deep insights into Lebanon's ancient past, the role of Beirut in regional history, and the archaeological treasures that continue to be discovered. Experience the legacy of ancient civilizations that makes Beirut a living museum of Middle Eastern history.`,
 
       seo: {
-        title: 'Beirut Historical Tours 2025: Roman Ruins, Downtown & Archaeological Sites',
+        title: 'Beirut Historical Tours 2026: Roman Ruins, Downtown & Archaeological Sites',
         description: 'Book historical tours in Beirut. Visit Roman ruins, historic downtown, archaeological sites & heritage locations. From $45/person. Learn about Lebanon\'s ancient history.',
         keywords: 'Beirut historical tour, Beirut Roman ruins, Beirut archaeology, Lebanon history, Beirut heritage tour, Beirut ancient history, Roman Beirut',
       },
@@ -7113,7 +7113,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Beirut is renowned for its legendary nightlife, offering one of the Middle East's most vibrant after-dark scenes with world-class bars, clubs, and entertainment venues. From trendy rooftop bars to underground clubs, from beachfront venues to neighborhood hotspots, Beirut nightlife tours provide the perfect way to experience the city's famous party scene. Whether you're seeking craft cocktails, live music, electronic beats, or simply the energy of Beirut after dark, these tours offer unforgettable experiences that showcase why Beirut is considered one of the world's great nightlife destinations.`,
 
       seo: {
-        title: 'Beirut Nightlife Tours 2025: Bar Crawls, Clubs & Entertainment Guide',
+        title: 'Beirut Nightlife Tours 2026: Bar Crawls, Clubs & Entertainment Guide',
         description: 'Book nightlife tours in Beirut. Experience bars, clubs, rooftop venues & Beirut\'s legendary nightlife. From $60/person. Bar crawls & entertainment tours.',
         keywords: 'Beirut nightlife tour, Beirut bar crawl, Beirut clubs, Beirut bars, Beirut nightlife, Beirut entertainment, Beirut party tour',
       },
@@ -7267,7 +7267,7 @@ export const categoryGuidesMiddleEast = {
       introduction: `Beirut serves as the perfect gateway to Lebanon's most iconic destinations, making it an ideal base for exploring the country's wonders. From the ancient Phoenician city of Byblos, one of the world's oldest continuously inhabited cities, to the magnificent Roman ruins of Baalbek, from the stunning Jeita Grotto to the beautiful mountain villages, day trips from Beirut offer unforgettable experiences that showcase Lebanon's incredible diversity. Whether you're seeking ancient history, natural wonders, or cultural experiences, these comprehensive day trips provide the perfect way to explore Lebanon's most famous attractions while staying in the comfort of Beirut.`,
 
       seo: {
-        title: 'Beirut Day Trips 2025: Byblos, Baalbek, Jeita Grotto & Lebanon Tours',
+        title: 'Beirut Day Trips 2026: Byblos, Baalbek, Jeita Grotto & Lebanon Tours',
         description: 'Book day trips from Beirut. Visit Byblos, Baalbek, Jeita Grotto & other Lebanon attractions. From $55/person. Full-day tours with hotel pickup.',
         keywords: 'Beirut day trips, Byblos day trip from Beirut, Baalbek tour from Beirut, Jeita Grotto tour, Lebanon day trips, Beirut to Byblos, Beirut to Baalbek',
       },

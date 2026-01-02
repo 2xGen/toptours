@@ -54,7 +54,7 @@ export const restaurantsJamaica = {
         googleRating: 4.7,
         reviewCount: 1171,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Cliffside dining pavilions carved into volcanic rock overlooking Pristine Cove',
@@ -122,8 +122,8 @@ export const restaurantsJamaica = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -212,7 +212,7 @@ export const restaurantsJamaica = {
         googleRating: 4.3,
         reviewCount: 1384,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Rooftop terrace with Kingston skyline and sunset views',
@@ -282,8 +282,8 @@ export const restaurantsJamaica = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -372,7 +372,7 @@ export const restaurantsJamaica = {
         googleRating: 4.4,
         reviewCount: 3103,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Home to the beloved Devon House patties with flaky pastry and rich fillings',
@@ -438,8 +438,8 @@ export const restaurantsJamaica = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -528,7 +528,7 @@ export const restaurantsJamaica = {
         googleRating: 4.1,
         reviewCount: 3051,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Prime grilled meats inspired by South American outdoor grilling',
@@ -596,8 +596,8 @@ export const restaurantsJamaica = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -686,7 +686,7 @@ export const restaurantsJamaica = {
         googleRating: 4.2,
         reviewCount: 1680,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Chef-driven homestyle recipes featuring locally sourced produce and herbs',
@@ -754,8 +754,8 @@ export const restaurantsJamaica = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -844,7 +844,7 @@ export const restaurantsJamaica = {
         googleRating: 4.2,
         reviewCount: 2586,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Pick-your-fish counter with daily catches from south coast fishermen',
@@ -910,8 +910,8 @@ export const restaurantsJamaica = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',

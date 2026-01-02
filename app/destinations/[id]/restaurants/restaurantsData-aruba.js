@@ -55,7 +55,7 @@ export const restaurantsAruba = {
         googleRating: 4.3,
         reviewCount: 576,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Barefoot tables directly on Palm Beach with unobstructed sunset views',
@@ -123,8 +123,8 @@ export const restaurantsAruba = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -231,7 +231,7 @@ export const restaurantsAruba = {
         googleRating: 4.4,
         reviewCount: 2151,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Candlelit tables directly on the sand of Eagle Beach',
@@ -300,8 +300,8 @@ export const restaurantsAruba = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -405,7 +405,7 @@ export const restaurantsAruba = {
         googleRating: 4.4,
         reviewCount: 2151,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Original pioneer of beachfront dining in Aruba’s fishing village of Savaneta',
@@ -476,8 +476,8 @@ export const restaurantsAruba = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -582,7 +582,7 @@ export const restaurantsAruba = {
         googleRating: 4.6,
         reviewCount: 7212,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Fisherman-owned dock where the catch is cleaned and fried on-site',
@@ -650,8 +650,8 @@ export const restaurantsAruba = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -752,7 +752,7 @@ export const restaurantsAruba = {
         googleRating: 4.4,
         reviewCount: 659,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Signature Spaghetti al Formaggio Parmigiano flambéed tableside',
@@ -823,8 +823,8 @@ export const restaurantsAruba = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -928,7 +928,7 @@ export const restaurantsAruba = {
         googleRating: 4.7,
         reviewCount: 1549,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Daily catch straight from the owners’ boats to the open kitchen',
@@ -996,8 +996,8 @@ export const restaurantsAruba = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',

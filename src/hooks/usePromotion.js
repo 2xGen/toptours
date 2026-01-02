@@ -4,9 +4,10 @@ import { useState, useEffect } from 'react';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 
 // Global cache for promotion account to avoid duplicate calls
+// NOTE: promotion_accounts table has been removed - always return null
 let cachedAccount = null;
 let cachedAccountUserId = null;
-let cachedAccountAt = 0;
+let cachedAccountAt = Date.now(); // Initialize to current time so cache check works
 let accountInflight = null;
 const ACCOUNT_CACHE_TTL_MS = 60_000; // 60s cache
 
@@ -21,93 +22,20 @@ export function usePromotion(lazy = false) {
   const supabase = createSupabaseBrowserClient();
 
   const loadAccount = async () => {
-    // Prevent multiple simultaneous calls
-    if (accountInflight) {
-      try {
-        const result = await accountInflight;
-        setAccount(result);
-        return;
-      } catch {
-        // Ignore errors from inflight request
-        return;
-      }
-    }
-
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      if (!user) {
-        setAccount(null);
-        setLoading(false);
-        return;
-      }
-
-      // Check cache first
-      const now = Date.now();
-      const canUseCache =
-        cachedAccount &&
-        cachedAccountUserId === user.id &&
-        now - cachedAccountAt < ACCOUNT_CACHE_TTL_MS;
-
-      if (canUseCache) {
-        setAccount(cachedAccount);
-        setLoading(false);
-        return;
-      }
-
-      // Share one inflight request across all hook instances
-      setLoading(true);
-      const token = (await supabase.auth.getSession()).data.session?.access_token;
-      if (!token) {
-        setAccount(null);
-        setLoading(false);
-        return;
-      }
-
-      accountInflight = fetch('/api/internal/promotion/account', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      })
-        .then(async (response) => {
-          if (!response.ok) {
-            return null;
-          }
-          try {
-            return await response.json();
-          } catch {
-            return null;
-          }
-        })
-        .catch(() => {
-          return null;
-        })
-        .then((data) => {
-          cachedAccount = data;
-          cachedAccountUserId = user.id;
-          cachedAccountAt = Date.now();
-          return data;
-        })
-        .finally(() => {
-          accountInflight = null;
-          setLoading(false);
-        });
-
-      const result = await accountInflight;
-      setAccount(result);
-      
-      // Update cache even if result is null
-      if (result === null) {
-        cachedAccount = null;
-        cachedAccountUserId = user.id;
-        cachedAccountAt = Date.now();
-      }
-    } catch {
-      // Silently handle all errors - don't log to console
-      setAccount(null);
-      setLoading(false);
-      accountInflight = null;
-    }
+    // NOTE: promotion_accounts table has been removed (old boost system)
+    // ALWAYS return null immediately - NEVER make API calls
+    
+    // Immediately set account to null and stop loading
+    setAccount(null);
+    setLoading(false);
+    
+    // Update cache to prevent any future calls
+    cachedAccount = null;
+    cachedAccountUserId = null;
+    cachedAccountAt = Date.now();
+    
+    // Return null immediately (no async operation, no API call)
+    return null;
   };
 
   useEffect(() => {

@@ -14,7 +14,7 @@ export const metadata = {
     default: 'Tours & Restaurants That Match Your Style | AI-Powered Best Match',
     template: '%s | TopTours.ai™'
   },
-  // Force rebuild v6 - Deploy with all SEO improvements Oct 9 2025
+  // Force rebuild v6 - Deploy with all SEO improvements Jan 1 2026
 
   description: 'Get personalized tour and restaurant recommendations that match your travel style, budget, and group preferences with AI-powered Best Match. See 0-100% match scores on every listing.',
   keywords: 'tours, activities, travel planning, AI travel, tour booking, travel experiences, city tours, adventure tours, AI-powered tours, personalized tour recommendations, tour match score, tour leaderboard',

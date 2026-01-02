@@ -54,7 +54,7 @@ export const restaurantsNassau = {
         googleRating: 4.9,
         reviewCount: 1437,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Live guava duff steaming and tasting in an observation kitchen',
@@ -121,8 +121,8 @@ export const restaurantsNassau = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -211,7 +211,7 @@ export const restaurantsNassau = {
         googleRating: 4.1,
         reviewCount: 1276,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Over 20 years serving fresh seafood, burgers, and island favorites',
@@ -281,8 +281,8 @@ export const restaurantsNassau = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -371,7 +371,7 @@ export const restaurantsNassau = {
         googleRating: 4.0,
         reviewCount: 5632,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Fan-favorite cracked conch dinner and seafood platters',
@@ -437,8 +437,8 @@ export const restaurantsNassau = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -527,7 +527,7 @@ export const restaurantsNassau = {
         googleRating: 4.1,
         reviewCount: 1143,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Known for fresh conch salad, cracked conch, and lobster linguine',
@@ -595,8 +595,8 @@ export const restaurantsNassau = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -686,7 +686,7 @@ export const restaurantsNassau = {
         googleRating: 4.2,
         reviewCount: 1300,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Pick-your-catch seafood prepared grilled, fried, steamed, or blackened',
@@ -753,8 +753,8 @@ export const restaurantsNassau = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',
@@ -844,7 +844,7 @@ export const restaurantsNassau = {
         googleRating: 4.5,
         reviewCount: 846,
         source: 'Google Reviews',
-        updated: '2025-01-15',
+        updated: '2025-12-31',
       },
       highlights: [
         'Greek-inspired menu featuring gyros, souvlaki, and grilled meats',
@@ -912,8 +912,8 @@ export const restaurantsNassau = {
         },
       ],
       meta: {
-        articlePublished: '2025-11-12',
-        articleModified: '2025-11-12',
+        articlePublished: '2025-12-31',
+        articleModified: '2025-12-31',
       },
       schema: {
         '@context': 'https://schema.org',

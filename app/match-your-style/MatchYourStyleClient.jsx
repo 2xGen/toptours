@@ -15,10 +15,13 @@ import { Search, MapPin, ArrowRight, UtensilsCrossed, Sparkles, Settings, Star, 
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { calculateTourProfile, getUserPreferenceScores } from '@/lib/tourMatching';
+import { resolveUserPreferences } from '@/lib/preferenceResolution';
 import { extractRestaurantStructuredValues, calculateRestaurantPreferenceMatch } from '@/lib/restaurantMatching';
-import { destinations } from '@/data/destinationsData';
+import RestaurantMatchModal from '@/components/restaurant/RestaurantMatchModal';
+import { destinations, getDestinationById } from '@/data/destinationsData';
 import { useToast } from '@/components/ui/use-toast';
 import { useCallback } from 'react';
+import { getTourProductId } from '@/utils/tourHelpers';
 
 export default function MatchYourStyleClient() {
   const router = useRouter();
@@ -30,6 +33,9 @@ export default function MatchYourStyleClient() {
   const [loading, setLoading] = useState(false);
   const [tours, setTours] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
+  const [promotedTours, setPromotedTours] = useState([]); // Full tour data for promoted tours
+  const [promotedRestaurants, setPromotedRestaurants] = useState([]); // Promoted restaurants
+  const [promotedToursMatchScores, setPromotedToursMatchScores] = useState({}); // Match scores for promoted tours
   const [hasRestaurants, setHasRestaurants] = useState(false);
   const [checkingRestaurants, setCheckingRestaurants] = useState(false);
   const [showAllTours, setShowAllTours] = useState(false);
@@ -40,6 +46,8 @@ export default function MatchYourStyleClient() {
   const [showDestinationDropdown, setShowDestinationDropdown] = useState(false);
   const [categoryGuides, setCategoryGuides] = useState([]);
   const [loadingGuides, setLoadingGuides] = useState(false);
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [showRestaurantMatchModal, setShowRestaurantMatchModal] = useState(false);
   const supabase = createSupabaseBrowserClient();
   const { toast } = useToast();
   
@@ -47,22 +55,24 @@ export default function MatchYourStyleClient() {
   const [localPreferences, setLocalPreferences] = useState(() => {
     if (typeof window === 'undefined') return null;
     try {
-      const stored = localStorage.getItem('topTours_preferences');
+      // Check both localStorage keys for backward compatibility
+      let stored = localStorage.getItem('topTours_preferences');
+      if (!stored) {
+        stored = localStorage.getItem('tourPreferences');
+      }
       if (stored) {
-        return JSON.parse(stored);
+        const parsed = JSON.parse(stored);
+        // Only use if it has valid preferences (at least 5 keys)
+        if (parsed && Object.keys(parsed).length >= 5) {
+          return parsed;
+        }
       }
     } catch (e) {
       console.error('Error loading localStorage preferences:', e);
     }
-    // Default balanced preferences
-    return {
-      adventureLevel: 50,
-      cultureVsBeach: 50,
-      groupPreference: 50,
-      budgetComfort: 50,
-      structurePreference: 50,
-      foodAndDrinkInterest: 50,
-    };
+    // Return null (not defaults) - this ensures consistency across all pages
+    // calculateEnhancedMatchScore will use balanced defaults internally when null
+    return null;
   });
   
   // Restaurant preferences (separate from tour preferences)
@@ -311,8 +321,58 @@ export default function MatchYourStyleClient() {
 
     fetchGuides();
   }, [destinationData]);
+  
+  // Calculate match scores for promoted tours
+  useEffect(() => {
+    if (!promotedTours || promotedTours.length === 0) {
+      setPromotedToursMatchScores({});
+      return;
+    }
+    
+    const calculateScores = async () => {
+      // Pass raw preferences - calculateEnhancedMatchScore converts them internally
+      const rawPreferences = userPreferences || localPreferences || null;
+      const scores = {};
+      
+      // Calculate scores for promoted tours (async)
+      const promotedPromises = promotedTours
+        .filter(t => {
+          // Only calculate for tours with full data (title/productContent)
+          return t.title || t.productContent || t.seo || t.productName;
+        })
+        .map(async (tour) => {
+          const productId = getTourProductId(tour) || tour.product_id || tour.productId || tour.productCode;
+          if (!productId || scores[productId]) return null;
+          try {
+            // Use enhanced matching with full tour object
+            const tags = Array.isArray(tour.tags) ? tour.tags : [];
+            const tourProfile = await calculateTourProfile(tags);
+            const matchScore = await calculateEnhancedMatchScore(tour, rawPreferences, tourProfile);
+            return { productId, matchScore };
+          } catch (e) {
+            // Ignore errors for individual tours
+            return null;
+          }
+        });
+      
+      const promotedResults = await Promise.all(promotedPromises);
+      promotedResults.forEach(result => {
+        if (result) {
+          scores[result.productId] = result.matchScore;
+        }
+      });
+      
+      setPromotedToursMatchScores(scores);
+    };
+    
+    calculateScores();
+  }, [promotedTours, userPreferences, localPreferences]);
 
-  const handleDestinationSelect = async (destName) => {
+  const handleDestinationSelect = async (dest) => {
+    // dest can be either a string (name) or an object (full destination)
+    const destName = typeof dest === 'string' ? dest : dest.name;
+    const destId = typeof dest === 'object' ? (dest.id || dest.slug || dest.destination_id) : null;
+    
     setDestination(destName);
     setShowDestinationDropdown(false);
     
@@ -326,79 +386,89 @@ export default function MatchYourStyleClient() {
     setShowAllTours(false);
     setShowAllRestaurants(false);
     
-    // Look up destination data via API
-    try {
-      const response = await fetch(`/api/internal/destination-lookup?name=${encodeURIComponent(destName)}`);
-      if (response.ok) {
-        const dest = await response.json();
-        setDestinationData({
-          id: dest.id,
-          name: dest.name,
-          fullName: dest.fullName || dest.name,
-          destinationId: dest.destinationId,
-          // Store full destination info
-          category: dest.category,
-          country: dest.country,
-          heroDescription: dest.heroDescription,
-          briefDescription: dest.briefDescription,
-          whyVisit: dest.whyVisit,
-          highlights: dest.highlights,
-          gettingAround: dest.gettingAround,
-          bestTimeToVisit: dest.bestTimeToVisit,
-          imageUrl: dest.imageUrl,
-        });
-      } else {
-        // Fallback: try to find in hardcoded destinations
-        const hardcodedDest = destinations.find(d => 
-          d.name.toLowerCase() === destName.toLowerCase() ||
-          d.fullName?.toLowerCase() === destName.toLowerCase()
-        );
-        
-        if (hardcodedDest) {
-          setDestinationData({
-            id: hardcodedDest.id,
-            name: hardcodedDest.name,
-            fullName: hardcodedDest.fullName || hardcodedDest.name,
-            destinationId: hardcodedDest.destinationId || null,
-            // Include full destination info from hardcoded data
-            category: hardcodedDest.category,
-            country: hardcodedDest.country,
-            heroDescription: hardcodedDest.heroDescription,
-            briefDescription: hardcodedDest.briefDescription,
-            whyVisit: hardcodedDest.whyVisit,
-            highlights: hardcodedDest.highlights,
-            gettingAround: hardcodedDest.gettingAround,
-            bestTimeToVisit: hardcodedDest.bestTimeToVisit,
-            imageUrl: hardcodedDest.imageUrl,
-          });
-        }
-      }
-    } catch (error) {
-      console.error('Error looking up destination:', error);
-      // Fallback: try to find in hardcoded destinations
-      const hardcodedDest = destinations.find(d => 
+    // CRITICAL: Check hardcoded destinations FIRST (same as /destinations/[id] page)
+    // This ensures we get the correct destination with all content fields
+    let hardcodedDest = null;
+    if (destId) {
+      // Try by ID/slug first
+      hardcodedDest = getDestinationById(destId);
+    }
+    if (!hardcodedDest) {
+      // Try by name
+      hardcodedDest = destinations.find(d => 
         d.name.toLowerCase() === destName.toLowerCase() ||
         d.fullName?.toLowerCase() === destName.toLowerCase()
       );
+    }
+    
+    if (hardcodedDest) {
+      // Get Viator destination ID from API (client-safe)
+      let viatorDestinationId = hardcodedDest.destinationId || null;
       
-      if (hardcodedDest) {
+      // If no destinationId in hardcoded data, look it up via API
+      if (!viatorDestinationId) {
+        try {
+          const response = await fetch(`/api/internal/destination-lookup?slug=${encodeURIComponent(hardcodedDest.id)}`);
+          if (response.ok) {
+            const destData = await response.json();
+            viatorDestinationId = destData.destinationId || null;
+          }
+        } catch (error) {
+          console.warn('Could not lookup Viator destination ID for', hardcodedDest.id, error);
+        }
+      }
+      
+      // Use hardcoded destination directly (same as destinations page)
+      setDestinationData({
+        id: hardcodedDest.id, // This is the slug (e.g., "bali") - matches restaurant destination_id
+        name: hardcodedDest.name,
+        fullName: hardcodedDest.fullName || hardcodedDest.name,
+        destinationId: viatorDestinationId, // Numeric ID for Viator API (looked up from API)
+        slug: hardcodedDest.id, // Explicit slug
+        // Include full destination info from hardcoded data
+        category: hardcodedDest.category,
+        country: hardcodedDest.country,
+        heroDescription: hardcodedDest.heroDescription,
+        briefDescription: hardcodedDest.briefDescription,
+        whyVisit: hardcodedDest.whyVisit,
+        highlights: hardcodedDest.highlights,
+        gettingAround: hardcodedDest.gettingAround,
+        bestTimeToVisit: hardcodedDest.bestTimeToVisit,
+        imageUrl: hardcodedDest.imageUrl,
+      });
+      return; // Don't call API if we found it in hardcoded destinations
+    }
+    
+    // Fallback: Look up destination data via API (for destinations not in hardcoded list)
+    try {
+      const lookupParam = typeof dest === 'object' && dest.slug 
+        ? `slug=${encodeURIComponent(dest.slug)}` 
+        : `name=${encodeURIComponent(destName)}`;
+      const response = await fetch(`/api/internal/destination-lookup?${lookupParam}`);
+      if (response.ok) {
+        const destData = await response.json();
+        // Ensure id is the slug format (for restaurant matching)
+        const destinationId = destData.slug || destData.id;
         setDestinationData({
-          id: hardcodedDest.id,
-          name: hardcodedDest.name,
-          fullName: hardcodedDest.fullName || hardcodedDest.name,
-          destinationId: hardcodedDest.destinationId || null,
-          // Include full destination info from hardcoded data
-          category: hardcodedDest.category,
-          country: hardcodedDest.country,
-          heroDescription: hardcodedDest.heroDescription,
-          briefDescription: hardcodedDest.briefDescription,
-          whyVisit: hardcodedDest.whyVisit,
-          highlights: hardcodedDest.highlights,
-          gettingAround: hardcodedDest.gettingAround,
-          bestTimeToVisit: hardcodedDest.bestTimeToVisit,
-          imageUrl: hardcodedDest.imageUrl,
+          id: destinationId, // Use slug format for restaurant matching (e.g., "bali")
+          name: destData.name,
+          fullName: destData.fullName || destData.name,
+          destinationId: destData.destinationId, // Numeric ID for Viator API
+          slug: destData.slug || destData.id, // Explicit slug
+          // Store full destination info
+          category: destData.category,
+          country: destData.country,
+          heroDescription: destData.heroDescription,
+          briefDescription: destData.briefDescription,
+          whyVisit: destData.whyVisit,
+          highlights: destData.highlights,
+          gettingAround: destData.gettingAround,
+          bestTimeToVisit: destData.bestTimeToVisit,
+          imageUrl: destData.imageUrl,
         });
       }
+    } catch (error) {
+      console.error('Error looking up destination:', error);
     }
   };
 
@@ -418,6 +488,141 @@ export default function MatchYourStyleClient() {
     try {
       const destinationId = destinationData.destinationId;
       const destinationName = destinationData.name;
+
+      // Fetch promoted tours and restaurants for this destination
+      let promotedTourProductIds = new Set();
+      let promotedRestaurantIds = new Set();
+      let promotedToursWithData = []; // Full tour data for promoted tours
+      
+      try {
+        if (destinationId) {
+          // Fetch promoted tours via API route (server-side)
+          const promotedToursResponse = await fetch(`/api/internal/promoted-tours-by-destination?destinationId=${encodeURIComponent(destinationId)}&limit=20`);
+          if (promotedToursResponse.ok) {
+            const promotedToursData = await promotedToursResponse.json();
+            const promotedToursList = promotedToursData.promotedTours || [];
+            promotedTourProductIds = new Set(promotedToursList.map(pt => pt.product_id || pt.productId || pt.productCode).filter(Boolean));
+            
+            // Fetch full tour data for promoted tours
+            if (promotedToursList.length > 0) {
+              const { getCachedTour } = await import('@/lib/viatorCache');
+              const fetchPromises = promotedToursList.map(async (promoted) => {
+                const productId = promoted.product_id || promoted.productId || promoted.productCode;
+                if (!productId) return null;
+                
+                try {
+                  // Try to get cached tour first
+                  let tour = await getCachedTour(productId);
+                  
+                  // If not cached, fetch from internal API route (server-side)
+                  if (!tour) {
+                    try {
+                      const response = await fetch(`/api/internal/tour/${productId}`);
+                      if (response.ok) {
+                        const data = await response.json();
+                        tour = data.tour || data;
+                      } else {
+                        console.warn(`Failed to fetch promoted tour ${productId}: ${response.status}`);
+                        return null;
+                      }
+                    } catch (error) {
+                      console.error(`Error fetching promoted tour ${productId} from API:`, error);
+                      return null;
+                    }
+                  }
+                  
+                  // Return tour with product_id for matching
+                  return {
+                    ...tour,
+                    productId: productId,
+                    productCode: productId,
+                    product_id: productId,
+                  };
+                } catch (error) {
+                  console.error(`Error fetching promoted tour ${productId}:`, error);
+                  return null;
+                }
+              });
+              
+              const fetchedTours = await Promise.all(fetchPromises);
+              promotedToursWithData = fetchedTours.filter(t => t !== null);
+              setPromotedTours(promotedToursWithData);
+            }
+          }
+        }
+        if (destinationData.id) {
+          // Fetch promoted restaurants via API route (server-side)
+          try {
+            const promotedRestaurantsResponse = await fetch(`/api/internal/promoted-restaurants-by-destination?destinationId=${encodeURIComponent(destinationData.id)}&limit=20`);
+            if (promotedRestaurantsResponse.ok) {
+              const promotedRestaurantsData = await promotedRestaurantsResponse.json();
+              console.log('[MatchYourStyle] Promoted restaurants API response:', promotedRestaurantsData);
+              const promotedRestaurantsList = promotedRestaurantsData.promotedRestaurants || [];
+              console.log('[MatchYourStyle] Promoted restaurants list:', promotedRestaurantsList);
+              promotedRestaurantIds = new Set(promotedRestaurantsList.map(pr => String(pr.restaurant_id || pr.id)).filter(Boolean));
+              console.log('[MatchYourStyle] Promoted restaurant IDs:', Array.from(promotedRestaurantIds));
+              
+              // Fetch full restaurant data for promoted restaurants
+              if (promotedRestaurantsList.length > 0) {
+                console.log(`[MatchYourStyle] Found ${promotedRestaurantsList.length} promoted restaurants, fetching full data...`);
+                const fetchPromises = promotedRestaurantsList.map(async (promoted) => {
+                  const restaurantId = promoted.restaurant_id || promoted.id;
+                  if (!restaurantId) {
+                    console.warn('[MatchYourStyle] Promoted restaurant missing ID:', promoted);
+                    return null;
+                  }
+                  
+                  try {
+                    // Fetch full restaurant data from API
+                    const response = await fetch(`/api/internal/restaurant/${restaurantId}`);
+                    if (response.ok) {
+                      const data = await response.json();
+                      const restaurant = data.restaurant || data;
+                      console.log(`[MatchYourStyle] Successfully fetched restaurant ${restaurantId}:`, restaurant.name);
+                      return {
+                        ...restaurant,
+                        id: restaurantId,
+                        isPromoted: true,
+                      };
+                    } else {
+                      console.warn(`[MatchYourStyle] Failed to fetch promoted restaurant ${restaurantId}: ${response.status}`);
+                      // Return basic data if full fetch fails
+                      return {
+                        id: restaurantId,
+                        name: promoted.name || 'Restaurant',
+                        slug: promoted.slug,
+                        isPromoted: true,
+                      };
+                    }
+                  } catch (error) {
+                    console.error(`[MatchYourStyle] Error fetching promoted restaurant ${restaurantId}:`, error);
+                    // Return basic data if fetch fails
+                    return {
+                      id: restaurantId,
+                      name: promoted.name || 'Restaurant',
+                      slug: promoted.slug,
+                      isPromoted: true,
+                    };
+                  }
+                });
+                
+                const fetchedRestaurants = await Promise.all(fetchPromises);
+                const validRestaurants = fetchedRestaurants.filter(r => r !== null);
+                console.log(`[MatchYourStyle] Setting ${validRestaurants.length} promoted restaurants`);
+                setPromotedRestaurants(validRestaurants);
+              } else {
+                console.log('[MatchYourStyle] No promoted restaurants found in list');
+                setPromotedRestaurants([]);
+              }
+            }
+          } catch (error) {
+            console.error('Error fetching promoted restaurants:', error);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching promoted items:', error);
+        // Continue without promoted items
+      }
 
       // Search tours if needed
       if (searchType === 'tours' || searchType === 'both') {
@@ -439,9 +644,12 @@ export default function MatchYourStyleClient() {
           // Limit to 50 as requested
           toursList = toursList.slice(0, 50);
 
-          // Calculate match scores if preferences exist
-          const effectivePreferences = userPreferences || localPreferences;
-          if (effectivePreferences && Object.keys(effectivePreferences).length > 0 && toursList.length > 0) {
+          // Get current user for preference resolution
+          const { data: { user } } = await supabase.auth.getUser();
+
+          // Use unified preference resolution - ensures consistent match scores across all pages
+          const effectivePreferences = resolveUserPreferences({ user: user || null, userPreferences, localPreferences });
+          if (effectivePreferences && toursList.length > 0) {
             // Pass raw preferences - calculateEnhancedMatchScore will convert them internally
             // Step 1: Collect all tag IDs from tours
             const allTagIds = new Set();
@@ -502,8 +710,11 @@ export default function MatchYourStyleClient() {
                 try {
                   const productId = tour.productId || tour.productCode;
                   if (!productId) {
-                    return { ...tour, matchScore: { score: 50, confidence: 'low' } };
+                    return { ...tour, matchScore: { score: 50, confidence: 'low' }, isPromoted: false };
                   }
+                  
+                  // Don't set isPromoted in main grid - badge only shows in "Promoted Tours" section above
+                  // Tours in main grid are sorted by match score only
                   
                   // Get tag IDs for this tour
                   const tagIds = tourTagMap.get(productId) || [];
@@ -522,24 +733,35 @@ export default function MatchYourStyleClient() {
                   
                   return {
                     ...tour,
-                    matchScore: matchResult // TourCard expects object with score property
+                    matchScore: matchResult, // TourCard expects object with score property
+                    isPromoted: false // No badge in main grid - only in "Promoted Tours" section
                   };
                 } catch (error) {
                   console.error('Error calculating match score:', error);
                   return { 
                     ...tour, 
-                    matchScore: { score: 50, confidence: 'low' } // Default balanced score
+                    matchScore: { score: 50, confidence: 'low' }, // Default balanced score
+                    isPromoted: false
                   };
                 }
               })
             );
 
-            // Sort by match score (highest first)
-            toursWithScores.sort((a, b) => (b.matchScore?.score || 50) - (a.matchScore?.score || 50));
+            // Sort by match score only (highest first)
+            // Promoted tours will show with badge but sorted by match score
+            toursWithScores.sort((a, b) => {
+              return (b.matchScore?.score || 50) - (a.matchScore?.score || 50);
+            });
             setTours(toursWithScores.slice(0, 15)); // Top 15
           } else {
-            // No preferences, just sort by rating
+            // No preferences, sort by rating only
+            // Don't set isPromoted in main grid - badge only shows in "Promoted Tours" section above
+            toursList.forEach(tour => {
+              const productId = tour.productId || tour.productCode;
+              tour.isPromoted = false; // No badge in main grid - only in "Promoted Tours" section
+            });
             toursList.sort((a, b) => {
+              // Sort by rating (highest first)
               const ratingA = a.reviews?.combinedAverageRating || 0;
               const ratingB = b.reviews?.combinedAverageRating || 0;
               return ratingB - ratingA;
@@ -582,37 +804,63 @@ export default function MatchYourStyleClient() {
               if (combinedPreferences && Object.keys(combinedPreferences).length > 0 && restaurantsList.length > 0) {
                 const restaurantsWithScores = restaurantsList.map((restaurant) => {
                   try {
+                    // Check if this restaurant is promoted
+                    const isPromoted = promotedRestaurantIds.has(String(restaurant.id));
+                    
                     const restaurantValues = extractRestaurantStructuredValues(restaurant);
                     if (restaurantValues?.error) {
-                      return { ...restaurant, matchScore: 0 };
+                      return { ...restaurant, matchScore: 0, isPromoted: isPromoted };
                     }
                     const match = calculateRestaurantPreferenceMatch(combinedPreferences, restaurantValues, restaurant);
                     const score = match?.matchScore || 0;
                     return {
                       ...restaurant,
-                      matchScore: Math.round(score) // Restaurant cards use number directly
+                      matchScore: Math.round(score), // Restaurant cards use number directly
+                      isPromoted: isPromoted
                     };
                   } catch (error) {
                     console.error('Error calculating restaurant match score:', error);
-                    return { ...restaurant, matchScore: 0 };
+                    return { ...restaurant, matchScore: 0, isPromoted: false };
                   }
                 });
 
-                // Sort by match score (highest first)
-                restaurantsWithScores.sort((a, b) => (b.matchScore || 0) - (a.matchScore || 0));
-                setRestaurants(restaurantsWithScores.slice(0, 15)); // Top 15
+                // Sort: Promoted first, then by match score (highest first)
+                restaurantsWithScores.sort((a, b) => {
+                  // Promoted listings always first
+                  if (a.isPromoted && !b.isPromoted) return -1;
+                  if (!a.isPromoted && b.isPromoted) return 1;
+                  // Within each group, sort by match score
+                  return (b.matchScore || 0) - (a.matchScore || 0);
+                });
+                const restaurantsToSet = restaurantsWithScores.slice(0, 15);
+                setRestaurants(restaurantsToSet);
+                // Set promoted restaurants
+                const promotedRestaurantsList = restaurantsToSet.filter(r => promotedRestaurantIds.has(String(r.id)));
+                setPromotedRestaurants(promotedRestaurantsList);
               } else {
-                // No preferences, sort by rating
+                // No preferences, sort: Promoted first, then by rating
+                restaurantsList.forEach(restaurant => {
+                  restaurant.isPromoted = promotedRestaurantIds.has(String(restaurant.id));
+                });
                 restaurantsList.sort((a, b) => {
+                  // Promoted listings always first
+                  if (a.isPromoted && !b.isPromoted) return -1;
+                  if (!a.isPromoted && b.isPromoted) return 1;
+                  // Within each group, sort by rating
                   const ratingA = a.google_rating || a.rating || 0;
                   const ratingB = b.google_rating || b.rating || 0;
                   return ratingB - ratingA;
                 });
-                setRestaurants(restaurantsList.slice(0, 15));
+                const restaurantsToSet = restaurantsList.slice(0, 15);
+                setRestaurants(restaurantsToSet);
+                // Set promoted restaurants
+                const promotedRestaurantsList = restaurantsToSet.filter(r => promotedRestaurantIds.has(String(r.id)));
+                setPromotedRestaurants(promotedRestaurantsList);
               }
             } else {
               // No restaurants found for this destination
               setRestaurants([]);
+              setPromotedRestaurants([]);
             }
           } else {
             console.error('Failed to fetch restaurants:', restaurantsResponse.status);
@@ -638,12 +886,42 @@ export default function MatchYourStyleClient() {
   const filteredDestinations = useMemo(() => {
     if (!destination.trim()) return [];
     const searchLower = destination.toLowerCase();
-    return destinationOptions
+    const filtered = destinationOptions
       .filter(dest => 
         dest.name?.toLowerCase().includes(searchLower) ||
         dest.fullName?.toLowerCase().includes(searchLower)
-      )
-      .slice(0, 8);
+      );
+    
+    // Group by name (case-insensitive) and merge/prioritize
+    const grouped = new Map();
+    filtered.forEach(dest => {
+      const nameKey = dest.name?.toLowerCase();
+      if (!nameKey) return;
+      
+      if (!grouped.has(nameKey)) {
+        grouped.set(nameKey, []);
+      }
+      grouped.get(nameKey).push(dest);
+    });
+    
+    // For each group, prefer the one with a slug (more likely to have restaurants)
+    // or merge data from multiple entries
+    const unique = Array.from(grouped.values()).map(group => {
+      if (group.length === 1) return group[0];
+      
+      // Prefer entry with slug (more likely to match restaurants)
+      const withSlug = group.find(d => d.slug);
+      if (withSlug) return withSlug;
+      
+      // Prefer entry with destination_id (numeric ID for Viator)
+      const withDestId = group.find(d => d.destination_id || d.id);
+      if (withDestId) return withDestId;
+      
+      // Otherwise, use first one
+      return group[0];
+    });
+    
+    return unique.slice(0, 8);
   }, [destination, destinationOptions]);
 
   // Close dropdown when clicking outside
@@ -720,13 +998,16 @@ export default function MatchYourStyleClient() {
                     <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
                       {filteredDestinations.map((dest) => (
                         <button
-                          key={dest.id || dest.slug}
+                          key={dest.id || dest.slug || dest.destination_id}
                           type="button"
-                          onClick={() => handleDestinationSelect(dest.name)}
+                          onClick={() => handleDestinationSelect(dest)}
                           className="w-full text-left px-4 py-2 hover:bg-gray-50 flex items-center gap-2"
                         >
                           <MapPin className="w-4 h-4 text-gray-400" />
                           <span>{dest.name}</span>
+                          {dest.country && (
+                            <span className="text-xs text-gray-400">({dest.country})</span>
+                          )}
                         </button>
                       ))}
                     </div>
@@ -823,14 +1104,20 @@ export default function MatchYourStyleClient() {
                           Your Preferences
                         </h3>
                       </div>
-                      <button
+                      <Button
                         onClick={() => setShowPreferencesModal(true)}
-                        className="text-sm font-medium text-purple-600 hover:text-purple-700 flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-purple-100 transition-colors"
+                        variant="outline"
+                        size="sm"
+                        className="border-purple-300 text-purple-700 hover:bg-purple-50 hover:border-purple-400 flex items-center gap-1.5 font-semibold"
                       >
                         <Settings className="w-4 h-4" />
-                        Edit
-                      </button>
+                        Edit Preferences
+                      </Button>
                     </div>
+                    <p className="text-xs text-gray-500 mb-3 flex items-center gap-1">
+                      <span>💡</span>
+                      <span>Click "Edit Preferences" above to customize your travel style</span>
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       {((userPreferences || localPreferences)?.budgetComfort !== undefined) && (
                         <Badge className="px-3 py-1.5 bg-white border-purple-200 text-purple-700 hover:bg-purple-50 transition-colors">
@@ -933,9 +1220,194 @@ export default function MatchYourStyleClient() {
         )}
 
         {/* Results Section - Only show if results match current destination */}
-        {!loading && searchedDestinationId === destinationData?.id && (tours.length > 0 || restaurants.length > 0) && (
+        {!loading && searchedDestinationId === destinationData?.id && (tours.length > 0 || restaurants.length > 0 || promotedTours.length > 0 || promotedRestaurants.length > 0) && (
           <section className="py-12 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Promoted Listings Section */}
+              {(promotedTours && promotedTours.length > 0) || (promotedRestaurants && promotedRestaurants.length > 0) ? (
+                <div className="mb-12">
+                  <div className="mb-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Sparkles className="w-5 h-5 text-purple-600" />
+                      <h2 className="text-2xl font-bold text-gray-900">Promoted Listings in {destinationData?.name}</h2>
+                      <Badge variant="secondary" className="ml-2 bg-purple-100 text-purple-700 border-purple-300">
+                        Partner
+                      </Badge>
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      Featured tours and restaurants from our partner operators.
+                    </p>
+                  </div>
+                  
+                  {/* Promoted Tours */}
+                  {promotedTours && promotedTours.length > 0 && (
+                    <div className="mb-8">
+                      <h3 className="text-xl font-semibold text-gray-800 mb-4">Promoted Tours</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {promotedTours.slice(0, 6).map((tour, index) => {
+                          const productId = getTourProductId(tour) || tour.product_id || tour.productId || tour.productCode;
+                          if (!productId) return null;
+                          
+                          // Try multiple product ID formats to find match score
+                          const matchScore = promotedToursMatchScores[productId] || 
+                                            promotedToursMatchScores[tour.productId] || 
+                                            promotedToursMatchScores[tour.productCode] || 
+                                            promotedToursMatchScores[tour.product_id] ||
+                                            null;
+                          
+                          return (
+                            <TourCard
+                              key={productId || index}
+                              tour={tour}
+                              destination={destinationData}
+                              matchScore={matchScore}
+                              user={null}
+                              userPreferences={userPreferences || localPreferences}
+                              onOpenPreferences={() => setShowPreferencesModal(true)}
+                              isFeatured={false}
+                              premiumOperatorTourIds={[]}
+                              isPromoted={true}
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Promoted Restaurants */}
+                  {promotedRestaurants && promotedRestaurants.length > 0 && (
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-4">Promoted Restaurants</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {promotedRestaurants.slice(0, 6).map((restaurant, index) => {
+                          const restaurantId = restaurant.id;
+                          if (!restaurantId) return null;
+                          
+                          const restaurantUrl = restaurant.slug && destinationData?.id
+                            ? `/destinations/${destinationData.id}/restaurants/${restaurant.slug}`
+                            : `/destinations/${destinationData?.id}/restaurants`;
+                          
+                          const description = restaurant.metaDescription 
+                            || restaurant.tagline 
+                            || restaurant.summary 
+                            || restaurant.description
+                            || (restaurant.cuisines?.length > 0 
+                                ? `Discover ${restaurant.cuisines.join(' & ')} cuisine at ${restaurant.name}.`
+                                : `Experience great dining at ${restaurant.name}.`);
+                          
+                          // Calculate match score for restaurant
+                          let matchScore = 0;
+                          if (localRestaurantPreferences && restaurant) {
+                            try {
+                              const structuredValues = extractRestaurantStructuredValues(restaurant);
+                              if (structuredValues && !structuredValues.error) {
+                                const matchData = calculateRestaurantPreferenceMatch(structuredValues, localRestaurantPreferences);
+                                matchScore = matchData?.matchScore || 0;
+                              }
+                            } catch (e) {
+                              console.error('Error calculating restaurant match:', e);
+                            }
+                          }
+                          
+                          // Get cuisine for badge
+                          const validCuisines = restaurant.cuisines && Array.isArray(restaurant.cuisines)
+                            ? restaurant.cuisines.filter(c => c && 
+                                c.toLowerCase() !== 'restaurant' && 
+                                c.toLowerCase() !== 'food' &&
+                                c.trim().length > 0)
+                            : [];
+                          const cuisineBadge = validCuisines.length > 0 ? validCuisines[0] : 'Restaurant';
+                          
+                          return (
+                            <motion.div
+                              key={restaurantId || index}
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.4, delay: index * 0.05 }}
+                              viewport={{ once: true }}
+                            >
+                              <Card className={`h-full border bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-purple-500 shadow-purple-200/50`}>
+                                <CardContent className="p-6 flex flex-col h-full">
+                                  <div className="flex items-center justify-between gap-3 mb-3">
+                                    <div className="flex items-center gap-3 min-w-0">
+                                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+                                        <UtensilsCrossed className="w-5 h-5 text-white" />
+                                      </div>
+                                      <div className="flex items-center gap-2 min-w-0">
+                                        <Badge className="ocean-gradient text-white text-xs flex-shrink-0">
+                                          <Sparkles className="w-3 h-3 mr-1" />
+                                          Promoted
+                                        </Badge>
+                                        <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 truncate">
+                                          {cuisineBadge}
+                                        </span>
+                                      </div>
+                                    </div>
+
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        setSelectedRestaurant(restaurant);
+                                        setShowRestaurantMatchModal(true);
+                                      }}
+                                      className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 flex-shrink-0"
+                                      title="Click to see why this matches your taste"
+                                    >
+                                      <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+                                      <span className="text-xs font-bold text-gray-900">
+                                        {matchScore}%
+                                      </span>
+                                      <span className="text-[10px] text-gray-600">Match</span>
+                                    </button>
+                                  </div>
+                                  
+                                  <div className="flex items-start justify-between gap-2 mb-3">
+                                    <h3 className="text-lg font-bold text-gray-900 line-clamp-2 flex items-center gap-1.5">
+                                      {restaurant.name}
+                                    </h3>
+                                  </div>
+
+                                  <p className="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
+                                    {description}
+                                  </p>
+
+                                  <div className="flex flex-wrap gap-2 mb-4">
+                                    {restaurant.ratings?.googleRating && (
+                                      <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
+                                        <Star className="w-3 h-3" />
+                                        {restaurant.ratings.googleRating.toFixed(1)}
+                                      </span>
+                                    )}
+                                    {restaurant.pricing?.priceRange && (
+                                      <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
+                                        {restaurant.pricing.priceRange}
+                                      </span>
+                                    )}
+                                    {validCuisines.length > 0 && (
+                                      <span className="inline-flex items-center text-xs font-medium bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full">
+                                        {validCuisines.slice(0, 2).join(' · ')}
+                                      </span>
+                                    )}
+                                  </div>
+
+                                  <Link
+                                    href={restaurantUrl}
+                                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
+                                  >
+                                    View Restaurant
+                                    <ArrowRight className="w-4 h-4" />
+                                  </Link>
+                                </CardContent>
+                              </Card>
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : null}
+              
               {/* Tours Results */}
               {tours.length > 0 && (
                 <div className="mb-12">
@@ -972,6 +1444,7 @@ export default function MatchYourStyleClient() {
                               userPreferences={userPreferences || localPreferences}
                               onOpenPreferences={() => setShowPreferencesModal(true)}
                               isFeatured={isTopMatch}
+                              isPromoted={false}
                             />
                           </div>
                         </div>
@@ -1215,7 +1688,7 @@ export default function MatchYourStyleClient() {
                           transition={{ duration: 0.5 }}
                           viewport={{ once: true }}
                         >
-                          <Card className="bg-white border-0 shadow-sm h-full">
+                          <Card className="bg-blue-50/50 border-0 shadow-sm h-full">
                             <CardContent className="p-5">
                               <div className="flex items-start gap-3">
                                 <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -1252,7 +1725,7 @@ export default function MatchYourStyleClient() {
                           transition={{ duration: 0.5 }}
                           viewport={{ once: true }}
                         >
-                          <Card className="bg-white border-0 shadow-sm h-full">
+                          <Card className="bg-purple-50/50 border-0 shadow-sm h-full">
                             <CardContent className="p-5">
                               <div className="flex items-start gap-3">
                                 <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -1972,6 +2445,31 @@ export default function MatchYourStyleClient() {
           </div>
         </div>
       )}
+      
+      {/* Restaurant Match Modal */}
+      <RestaurantMatchModal
+        isOpen={showRestaurantMatchModal}
+        onClose={() => setShowRestaurantMatchModal(false)}
+        restaurant={selectedRestaurant}
+        matchData={selectedRestaurant ? (() => {
+          // Calculate match data on the fly
+          try {
+            if (!selectedRestaurant) return null;
+            const structuredValues = extractRestaurantStructuredValues(selectedRestaurant);
+            if (!structuredValues || structuredValues.error) return null;
+            return calculateRestaurantPreferenceMatch(structuredValues, localRestaurantPreferences);
+          } catch (e) {
+            console.error('Error calculating match data for modal:', e);
+            return null;
+          }
+        })() : null}
+        preferences={localRestaurantPreferences}
+        onOpenPreferences={() => {
+          setShowRestaurantMatchModal(false);
+          setShowPreferencesModal(true);
+          setPreferencesTab('restaurants');
+        }}
+      />
     </>
   );
 }

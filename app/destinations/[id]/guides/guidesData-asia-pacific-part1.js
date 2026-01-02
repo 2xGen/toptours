@@ -14,7 +14,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Auckland is the City of Sails, where stunning harbors, beautiful waterways, and maritime culture create harbor experiences that make harbor tours essential for experiencing this coastal metropolis! Harbor tours take you onto Auckland's beautiful waters, from sailing the Hauraki Gulf to exploring harbor islands, from experiencing maritime beauty to understanding why Auckland is famous for sailing, and from seeing coastal landmarks to discovering the harbor scenery that defines the city. Experience the maritime beauty that surrounds Auckland, see why the harbor is so spectacular, learn about sailing culture, and discover why harbor tours offer perfect ways to appreciate Auckland's coastal setting. Whether you're seeking sailing experiences, harbor cruises, or comprehensive maritime exploration, harbor tours provide engaging journeys that showcase the beautiful harbors that define Auckland. From sailing to cruises, from islands to coastline, harbor tours ensure you experience the maritime beauty that surrounds Auckland!`,
 
       seo: {
-        title: 'Auckland Harbor Tours 2025: Sailing & Harbor Cruises',
+        title: 'Auckland Harbor Tours 2026: Sailing & Harbor Cruises',
         description: 'Book Auckland harbor tours! Sail Hauraki Gulf, experience harbor cruises & coastal beauty. Discover City of Sails maritime culture. From $85.',
         keywords: 'Auckland harbor tours, sailing Auckland, Hauraki Gulf tours, harbor tours Auckland',
       },
@@ -170,7 +170,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Auckland sits on a volcanic field, where dormant volcanoes, volcanic cones, and unique geology create volcanic experiences that make volcanic tours perfect for appreciating Auckland's dramatic landscape! Volcanic tours take you to Auckland's volcanic features, from climbing volcanic cones with panoramic views to visiting volcanic islands like Rangitoto, from learning about volcanic history to understanding the geological forces that shaped the city, and from seeing evidence of volcanic activity to discovering why Auckland's volcanoes are significant. Experience the unique geology that defines Auckland, see dormant volcanoes up close, learn about volcanic history and Maori connections, and discover why volcanic tours offer fascinating journeys through Auckland's geological heritage. Whether you're seeking volcano hikes, island visits, or comprehensive volcanic exploration, volcanic tours provide engaging ways to explore the volcanic landscape that makes Auckland unique. From cones to islands, from hikes to geology, volcanic tours ensure you experience the incredible volcanic features that shape Auckland!`,
 
       seo: {
-        title: 'Auckland Volcanic Tours 2025: Volcano Hikes & Rangitoto Island',
+        title: 'Auckland Volcanic Tours 2026: Volcano Hikes & Rangitoto Island',
         description: 'Book Auckland volcanic tours! Explore volcanic cones, Rangitoto Island & dramatic geology. Discover unique volcanic landscape. From $90.',
         keywords: 'Auckland volcanic tours, Rangitoto tours, volcano hikes Auckland, volcanic Auckland tours',
       },
@@ -322,7 +322,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Auckland offers rich Maori cultural experiences, where traditional culture, contemporary Maori arts, and indigenous heritage create cultural insights that make cultural tours essential for understanding New Zealand's cultural identity! Cultural tours take you into Maori culture, from visiting cultural centers to experiencing traditional performances, from learning about Maori history to understanding indigenous traditions, and from seeing Maori arts to discovering why Maori culture is central to New Zealand's identity. Experience the cultural richness that defines New Zealand, learn about Maori traditions and heritage, understand the indigenous perspective, and discover why cultural tours offer fascinating insights into New Zealand's cultural landscape. Whether you're seeking cultural performances, traditional arts, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural richness that makes Auckland culturally fascinating. From traditional to contemporary, from history to arts, cultural tours ensure you experience the vibrant Maori culture that defines New Zealand!`,
 
       seo: {
-        title: 'Auckland Cultural Tours 2025: Maori Culture & Traditional Performances',
+        title: 'Auckland Cultural Tours 2026: Maori Culture & Traditional Performances',
         description: 'Book Auckland cultural tours! Discover Maori culture, traditional performances & indigenous heritage. Experience New Zealand\'s cultural identity. From $70.',
         keywords: 'Auckland cultural tours, Maori culture Auckland, New Zealand cultural tours, cultural tours Auckland',
       },
@@ -474,7 +474,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Auckland is New Zealand's largest city, where modern waterfront, cultural districts, volcanic backdrop, and urban sophistication create city experiences that make city tours essential for understanding this dynamic metropolis! City tours take you through Auckland's diverse areas, from exploring the waterfront to discovering cultural neighborhoods, from visiting iconic landmarks to experiencing the city's energy, and from seeing modern architecture to understanding how the city balances urban life with natural beauty. Experience the urban energy that defines Auckland, see how the city has developed, understand Auckland's role as New Zealand's gateway, and discover why city tours are the foundation of any Auckland visit. Whether you're exploring downtown, waterfront, cultural areas, or simply experiencing the city's energy, city tours provide engaging ways to discover the vibrant metropolis that is Auckland. From waterfront to neighborhoods, from modern to traditional, city tours ensure you experience the dynamic city that is Auckland!`,
 
       seo: {
-        title: 'Auckland City Tours 2025: Vibrant Metropolis & Waterfront',
+        title: 'Auckland City Tours 2026: Vibrant Metropolis & Waterfront',
         description: 'Book Auckland city tours! Explore vibrant metropolis, waterfront & cultural districts. Discover New Zealand\'s largest city. From $50.',
         keywords: 'Auckland city tours, Auckland metropolis, city tours Auckland, New Zealand city tours',
       },
@@ -626,7 +626,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Auckland offers exciting adventures beyond its urban appeal, where outdoor activities, water sports, and adrenaline experiences create adventure opportunities that make adventure tours perfect for those seeking excitement! Adventure tours take you into the adventurous side of Auckland, from water sports in the harbors to outdoor adventures, from exciting activities to discovering the diverse adventures available, and from experiencing adrenaline-pumping experiences to discovering why Auckland offers more than just city life. Experience the excitement that Auckland can offer, try different adventure activities, understand the range of adventures available, and discover why adventure tours provide perfect ways to add excitement to your Auckland visit. Whether you're seeking water sports, outdoor adventures, or comprehensive adventure experiences, adventure tours offer engaging journeys that showcase the adventurous side of Auckland. From water to land, from excitement to outdoor adventures, adventure tours ensure you experience the thrilling side of Auckland!`,
 
       seo: {
-        title: 'Auckland Adventure Tours 2025: Water Sports & Outdoor Adventures',
+        title: 'Auckland Adventure Tours 2026: Water Sports & Outdoor Adventures',
         description: 'Book Auckland adventure tours! Experience water sports, outdoor adventures & adrenaline experiences. Discover adventurous Auckland. From $85.',
         keywords: 'Auckland adventure tours, water sports Auckland, outdoor adventures Auckland, adventure tours New Zealand',
       },
@@ -778,7 +778,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Hauraki Gulf surrounding Auckland is dotted with beautiful islands, where stunning Waiheke Island, tropical escapes, and pristine beaches create island experiences that make island tours perfect for discovering the island paradise near Auckland! Island tours take you to the beautiful Gulf islands, from visiting famous Waiheke with its wineries and beaches to exploring other stunning islands, from experiencing island life to understanding the island ecosystems, and from discovering pristine beaches to learning why these islands are popular escapes. Experience the island paradise that surrounds Auckland, see why visitors return to these islands, understand island beauty, and discover why island tours offer perfect ways to escape the city. Whether you're seeking wineries and beaches, snorkeling, or comprehensive island exploration, island tours provide engaging ways to explore the beautiful islands near Auckland. From Waiheke to other islands, from beaches to wineries, island tours ensure you experience the incredible islands that surround Auckland!`,
 
       seo: {
-        title: 'Auckland Island Tours 2025: Waiheke Island & Hauraki Gulf Islands',
+        title: 'Auckland Island Tours 2026: Waiheke Island & Hauraki Gulf Islands',
         description: 'Book Auckland island tours! Visit Waiheke Island, beautiful Gulf islands & island paradise. Discover stunning island escapes. From $95.',
         keywords: 'Auckland island tours, Waiheke Island tours, Hauraki Gulf islands, island tours Auckland',
       },
@@ -932,7 +932,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Bali is the Island of the Gods with over 20,000 temples, where sacred Hindu temples, ancient shrines, and spiritual sanctuaries create temple experiences that make temple tours essential for understanding Bali's spiritual heritage! Temple tours take you to Bali's most sacred and beautiful temples, from visiting iconic temples like Tanah Lot and Uluwatu to exploring ancient temple complexes, from understanding Hindu ceremonies to learning about temple architecture, and from experiencing spiritual atmosphere to discovering why temples are central to Balinese life. Experience the spiritual richness that defines Bali, see why temples are so significant, learn about Hindu culture, and discover why temple tours are the foundation of any Bali visit. Whether you're seeking iconic temples, temple ceremonies, or comprehensive temple exploration, temple tours provide engaging journeys that showcase the sacred heritage that makes Bali spiritually fascinating. From clifftop shrines to water temples, from ancient to modern, temple tours ensure you experience the incredible temples that define Bali!`,
 
       seo: {
-        title: 'Bali Temple Tours 2025: Sacred Temples & Hindu Sanctuaries',
+        title: 'Bali Temple Tours 2026: Sacred Temples & Hindu Sanctuaries',
         description: 'Book Bali temple tours! Visit Tanah Lot, Uluwatu & sacred temples. Discover Island of the Gods spiritual heritage. From $55.',
         keywords: 'Bali temple tours, Tanah Lot tours, Uluwatu temple, Hindu temples Bali, temple tours Bali',
       },
@@ -1084,7 +1084,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Bali offers rich cultural experiences, where traditional arts, village life, ceremonies, and cultural heritage create authentic cultural insights that make cultural tours essential for understanding the Island of the Gods! Cultural tours take you into authentic Balinese culture, from visiting traditional villages to experiencing local arts, from learning about ceremonies to understanding village life, and from seeing traditional crafts to discovering why Balinese culture is so vibrant. Experience the cultural richness that defines Bali, learn about traditions and heritage, understand village life, and discover why cultural tours offer fascinating insights into Balinese culture. Whether you're seeking village visits, traditional arts, ceremonies, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural richness that makes Bali culturally fascinating. From villages to arts, from traditions to contemporary culture, cultural tours ensure you experience the vibrant culture that defines Bali!`,
 
       seo: {
-        title: 'Bali Cultural Tours 2025: Traditional Villages & Arts',
+        title: 'Bali Cultural Tours 2026: Traditional Villages & Arts',
         description: 'Book Bali cultural tours! Visit traditional villages, experience local arts & Balinese culture. Discover Island of the Gods heritage. From $60.',
         keywords: 'Bali cultural tours, Balinese culture, village tours Bali, cultural tours Bali',
       },
@@ -1236,7 +1236,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Bali offers beautiful beaches along its coastline, where surf paradises, pristine sands, and stunning scenery create beach experiences that make beach tours essential for experiencing the Island of the Gods' coastal beauty! Beach tours take you to Bali's best beaches, from visiting famous surf beaches to discovering quieter escapes, from experiencing beach activities to learning about beach culture, and from seeing stunning coastlines to discovering why Bali's beaches are world-famous. Experience the beach paradise that defines Bali, see why surfers love these beaches, enjoy pristine sands, and discover why beach tours are perfect ways to relax and appreciate Bali's coastline. Whether you're seeking surf beaches, quiet escapes, or comprehensive beach exploration, beach tours provide engaging ways to discover the beautiful beaches that make Bali special. From surf to relaxation, from famous to hidden, beach tours ensure you experience the incredible beaches that define Bali!`,
 
       seo: {
-        title: 'Bali Beach Tours 2025: Surf Beaches & Pristine Sands',
+        title: 'Bali Beach Tours 2026: Surf Beaches & Pristine Sands',
         description: 'Book Bali beach tours! Visit famous surf beaches, pristine sands & stunning coastline. Discover Island of the Gods beach paradise. From $45.',
         keywords: 'Bali beach tours, surf beaches Bali, beach tours Bali, Bali beaches',
       },
@@ -1388,7 +1388,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Bali is a renowned wellness destination, where yoga retreats, spa experiences, healing traditions, and holistic wellness create rejuvenating experiences that make wellness tours perfect for relaxation and renewal! Wellness tours take you into Bali's wellness culture, from experiencing traditional spa treatments to joining yoga sessions, from learning about healing traditions to understanding holistic wellness, and from visiting wellness centers to discovering why Bali is considered a wellness paradise. Experience the healing atmosphere that defines Bali, see why the island attracts wellness seekers, learn about traditional healing, and discover why wellness tours offer perfect ways to rejuvenate. Whether you're seeking yoga, spa experiences, traditional healing, or comprehensive wellness exploration, wellness tours provide engaging journeys that showcase the wellness culture that makes Bali a retreat destination. From yoga to spas, from traditional to modern, wellness tours ensure you experience the healing traditions that define Bali!`,
 
       seo: {
-        title: 'Bali Wellness Tours 2025: Yoga Retreats & Spa Experiences',
+        title: 'Bali Wellness Tours 2026: Yoga Retreats & Spa Experiences',
         description: 'Book Bali wellness tours! Experience yoga retreats, spa treatments & healing traditions. Discover Island of the Gods wellness paradise. From $70.',
         keywords: 'Bali wellness tours, yoga Bali, spa Bali, wellness retreats Bali, wellness tours Bali',
       },
@@ -1540,7 +1540,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Bali offers exciting adventures beyond its beaches and temples, where water sports, jungle excursions, and outdoor activities create thrilling experiences that make adventure tours perfect for those seeking excitement! Adventure tours take you into the adventurous side of Bali, from water sports like surfing and diving to jungle adventures, from outdoor activities to discovering diverse adventures, and from experiencing adrenaline-pumping activities to understanding why Bali offers so many adventure opportunities. Experience the excitement that Bali can offer, try different adventure activities, understand the range of adventures available, and discover why adventure tours provide perfect ways to add excitement to your Bali visit. Whether you're seeking water sports, jungle adventures, or comprehensive adventure experiences, adventure tours offer engaging journeys that showcase the adventurous side of the Island of the Gods. From water to jungle, from excitement to outdoor adventures, adventure tours ensure you experience the thrilling side of Bali!`,
 
       seo: {
-        title: 'Bali Adventure Tours 2025: Water Sports & Jungle Adventures',
+        title: 'Bali Adventure Tours 2026: Water Sports & Jungle Adventures',
         description: 'Book Bali adventure tours! Experience water sports, jungle adventures & exciting activities. Discover adventurous Island of the Gods. From $70.',
         keywords: 'Bali adventure tours, water sports Bali, jungle tours Bali, adventure tours Bali',
       },
@@ -1692,7 +1692,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Bali's rice terraces are among the world's most beautiful agricultural landscapes, where emerald-green terraces, UNESCO World Heritage sites, and ancient irrigation systems create stunning scenery that makes rice terrace tours perfect for appreciating the island's agricultural heritage! Rice terrace tours take you to Bali's most spectacular terraces, from visiting famous Tegalalang to exploring other stunning terraced fields, from learning about Subak irrigation to understanding traditional farming, and from seeing agricultural artistry to discovering why Bali's rice terraces are considered engineering marvels. Experience the agricultural beauty that defines Bali, see why terraces are so stunning, learn about traditional farming methods, and discover why rice terrace tours offer perfect ways to appreciate the island's countryside. Whether you're seeking UNESCO heritage, village experiences, or comprehensive agricultural exploration, rice terrace tours provide engaging journeys that showcase the incredible rice terraces that make Bali unique. From terraces to irrigation, from villages to farming, rice terrace tours ensure you experience the stunning agricultural landscapes that define Bali!`,
 
       seo: {
-        title: 'Bali Rice Terrace Tours 2025: Tegalalang & UNESCO Heritage',
+        title: 'Bali Rice Terrace Tours 2026: Tegalalang & UNESCO Heritage',
         description: 'Book Bali rice terrace tours! Visit Tegalalang, UNESCO terraces & stunning agricultural landscapes. Discover Island of the Gods heritage. From $50.',
         keywords: 'Bali rice terrace tours, Tegalalang tours, rice terraces Bali, UNESCO terraces Bali',
       },
@@ -1846,7 +1846,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Bangkok is home to some of Thailand's most magnificent temples, where golden stupas, sacred Buddha images, and ornate architecture create temple experiences that make temple tours essential for understanding the spiritual heritage of Thailand's capital! Temple tours take you to Bangkok's most sacred and beautiful temples, from visiting the iconic Wat Phra Kaew (Temple of the Emerald Buddha) and Grand Palace to exploring ancient temple complexes, from understanding Buddhist ceremonies to learning about temple architecture, and from experiencing spiritual atmosphere to discovering why temples are central to Thai life. Experience the spiritual richness that defines Bangkok, see why temples are so significant, learn about Buddhism and Thai culture, and discover why temple tours are the foundation of any Bangkok visit. Whether you're seeking iconic temples, Buddhist rituals, or comprehensive temple exploration, temple tours provide engaging journeys that showcase the sacred heritage that makes Bangkok spiritually fascinating. From golden temples to reclining Buddhas, from ancient to modern, temple tours ensure you experience the incredible temples that define Bangkok!`,
 
       seo: {
-        title: 'Bangkok Temple Tours 2025: Grand Palace & Sacred Temples',
+        title: 'Bangkok Temple Tours 2026: Grand Palace & Sacred Temples',
         description: 'Book Bangkok temple tours! Visit Grand Palace, Wat Phra Kaew & sacred temples. Discover Thailand\'s spiritual heritage. From $50.',
         keywords: 'Bangkok temple tours, Grand Palace Bangkok, Wat Phra Kaew, Buddhist temples Bangkok, temple tours Bangkok',
       },
@@ -1998,7 +1998,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Bangkok is a street food paradise, where spicy street stalls, incredible local cuisine, and diverse flavors create food experiences that make food tours essential for experiencing the culinary diversity of Thailand's capital! Food tours take you through Bangkok's food scene, from exploring street food markets to visiting local food stalls, from trying authentic Thai dishes to learning about culinary traditions, and from experiencing diverse flavors to discovering why Bangkok's food is world-famous. Experience the incredible variety of Thai cuisine, see why Bangkok is considered a food capital, taste diverse dishes from sweet to spicy, and discover why food tours are perfect ways to appreciate Bangkok's culinary culture. Whether you're seeking street food, local markets, authentic restaurants, or comprehensive food exploration, food tours provide engaging journeys that showcase the flavors that make Bangkok a food paradise. From pad thai to tom yum, from street stalls to local favorites, food tours ensure you experience the incredible food that defines Bangkok!`,
 
       seo: {
-        title: 'Bangkok Food Tours 2025: Street Food Paradise & Authentic Thai Cuisine',
+        title: 'Bangkok Food Tours 2026: Street Food Paradise & Authentic Thai Cuisine',
         description: 'Book Bangkok food tours! Experience street food, local markets & authentic Thai cuisine. Discover Thailand\'s food paradise. From $45.',
         keywords: 'Bangkok food tours, street food Bangkok, Thai food tours, food tours Bangkok',
       },
@@ -2150,7 +2150,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Bangkok offers rich cultural experiences, where traditional arts, Thai customs, ceremonies, and cultural heritage create authentic cultural insights that make cultural tours essential for understanding Thailand's capital! Cultural tours take you into authentic Thai culture, from visiting cultural centers to experiencing traditional arts, from learning about Thai customs to understanding local life, and from seeing traditional crafts to discovering why Thai culture is so vibrant. Experience the cultural richness that defines Bangkok, learn about traditions and heritage, understand Thai customs, and discover why cultural tours offer fascinating insights into Thai culture. Whether you're seeking traditional arts, local customs, ceremonies, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural richness that makes Bangkok culturally fascinating. From traditional to contemporary, from history to arts, cultural tours ensure you experience the vibrant culture that defines Bangkok!`,
 
       seo: {
-        title: 'Bangkok Cultural Tours 2025: Traditional Arts & Thai Customs',
+        title: 'Bangkok Cultural Tours 2026: Traditional Arts & Thai Customs',
         description: 'Book Bangkok cultural tours! Visit cultural centers, experience traditional arts & Thai customs. Discover Thailand\'s cultural heritage. From $55.',
         keywords: 'Bangkok cultural tours, Thai culture, cultural tours Bangkok, traditional arts Bangkok',
       },
@@ -2302,7 +2302,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Bangkok's markets are among the world's most vibrant, where floating markets, street bazaars, and bustling commerce create market experiences that make market tours essential for experiencing the commercial life of Thailand's capital! Market tours take you to Bangkok's most famous markets, from visiting iconic floating markets to exploring street bazaars, from experiencing local commerce to learning about market culture, and from seeing vendors in action to discovering why Bangkok's markets are so famous. Experience the vibrant energy that defines Bangkok markets, see why tourists flock to these markets, enjoy bargaining and shopping, and discover why market tours are perfect ways to appreciate Bangkok's commercial culture. Whether you're seeking floating markets, street bazaars, or comprehensive market exploration, market tours provide engaging ways to discover the lively markets that make Bangkok special. From floating to street, from food to crafts, market tours ensure you experience the incredible markets that define Bangkok!`,
 
       seo: {
-        title: 'Bangkok Market Tours 2025: Floating Markets & Street Bazaars',
+        title: 'Bangkok Market Tours 2026: Floating Markets & Street Bazaars',
         description: 'Book Bangkok market tours! Visit floating markets, street bazaars & vibrant commerce. Discover Thailand\'s market paradise. From $60.',
         keywords: 'Bangkok market tours, floating markets Bangkok, street markets Bangkok, market tours Bangkok',
       },
@@ -2454,7 +2454,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Chao Phraya River is Bangkok's lifeline, where river cruises, temple views, and waterway travel create river experiences that make river tours essential for seeing Bangkok from its iconic waterway! River tours take you along the Chao Phraya River, from cruising past temples to exploring riverside areas, from experiencing river transport to learning about the river's significance, and from seeing waterway life to discovering why the river is central to Bangkok's history. Experience the unique perspective that river travel offers, see Bangkok's landmarks from the water, understand the river's role in city life, and discover why river tours are perfect ways to appreciate Bangkok from a different angle. Whether you're seeking river cruises, temple visits, or comprehensive river exploration, river tours provide engaging journeys that showcase the river that defines Bangkok. From Chao Phraya to temples, from cruises to exploration, river tours ensure you experience the incredible waterway that is central to Bangkok!`,
 
       seo: {
-        title: 'Bangkok River Tours 2025: Chao Phraya River Cruises',
+        title: 'Bangkok River Tours 2026: Chao Phraya River Cruises',
         description: 'Book Bangkok river tours! Cruise Chao Phraya River, see temples & experience waterway views. Discover Bangkok from water. From $50.',
         keywords: 'Bangkok river tours, Chao Phraya tours, river cruises Bangkok, river tours Bangkok',
       },
@@ -2606,7 +2606,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Bangkok is a shopping paradise, where luxury malls, bargain markets, and incredible variety create shopping experiences that make shopping tours perfect for those seeking retail therapy! Shopping tours take you to Bangkok's best shopping destinations, from visiting luxury malls to exploring bargain markets, from experiencing diverse shopping to learning about shopping culture, and from finding deals to discovering why Bangkok is considered a shopping capital. Experience the shopping paradise that defines Bangkok, see why tourists shop here, enjoy diverse shopping options, and discover why shopping tours offer perfect ways to appreciate Bangkok's retail culture. Whether you're seeking luxury shopping, bargains, local products, or comprehensive shopping exploration, shopping tours provide engaging journeys that showcase the incredible shopping that makes Bangkok special. From malls to markets, from luxury to bargains, shopping tours ensure you experience the retail paradise that defines Bangkok!`,
 
       seo: {
-        title: 'Bangkok Shopping Tours 2025: Luxury Malls & Bargain Markets',
+        title: 'Bangkok Shopping Tours 2026: Luxury Malls & Bargain Markets',
         description: 'Book Bangkok shopping tours! Visit luxury malls, bargain markets & shopping paradise. Discover Thailand\'s retail culture. From $40.',
         keywords: 'Bangkok shopping tours, luxury malls Bangkok, shopping markets Bangkok, shopping tours Bangkok',
       },
@@ -2756,7 +2756,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Beijing is China's ancient capital with over 3,000 years of history, where imperial palaces, ancient monuments, and historic sites create historic experiences that make historic tours essential for understanding China's cultural heritage! Historic tours take you to Beijing's most important historic sites, from visiting the iconic Forbidden City to exploring ancient temples and palaces, from understanding imperial history to learning about Chinese civilization, and from seeing ancient architecture to discovering why Beijing is historically significant. Experience the historic grandeur that defines Beijing, see why the city is so historically important, learn about imperial China, and discover why historic tours are the foundation of any Beijing visit. Whether you're seeking imperial palaces, ancient monuments, or comprehensive historic exploration, historic tours provide engaging journeys that showcase the incredible history that makes Beijing fascinating. From Forbidden City to Hutongs, from imperial to ancient, historic tours ensure you experience the historical legacy that defines Beijing!`,
 
       seo: {
-        title: 'Beijing Historic Tours 2025: Forbidden City & Imperial History',
+        title: 'Beijing Historic Tours 2026: Forbidden City & Imperial History',
         description: 'Book Beijing historic tours! Visit Forbidden City, imperial palaces & ancient monuments. Discover China\'s historic capital. From $60.',
         keywords: 'Beijing historic tours, Forbidden City tours, imperial Beijing, historic tours Beijing',
       },
@@ -2908,7 +2908,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Beijing offers rich cultural experiences, where traditional arts, Chinese customs, ancient culture, and cultural heritage create authentic cultural insights that make cultural tours essential for understanding China's capital! Cultural tours take you into authentic Chinese culture, from visiting cultural centers to experiencing traditional arts, from learning about Chinese customs to understanding local life, and from seeing traditional crafts to discovering why Beijing's culture is so fascinating. Experience the cultural richness that defines Beijing, learn about traditions and heritage, understand Chinese customs, and discover why cultural tours offer fascinating insights into Chinese culture. Whether you're seeking traditional arts, local customs, tea ceremonies, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural richness that makes Beijing culturally fascinating. From traditional to contemporary, from history to arts, cultural tours ensure you experience the vibrant culture that defines Beijing!`,
 
       seo: {
-        title: 'Beijing Cultural Tours 2025: Traditional Arts & Chinese Culture',
+        title: 'Beijing Cultural Tours 2026: Traditional Arts & Chinese Culture',
         description: 'Book Beijing cultural tours! Visit cultural centers, experience traditional arts & Chinese customs. Discover China\'s cultural heritage. From $55.',
         keywords: 'Beijing cultural tours, Chinese culture, cultural tours Beijing, traditional arts Beijing',
       },
@@ -3060,7 +3060,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Great Wall of China is one of the world's most iconic landmarks, where ancient fortification, stunning scenery, and engineering marvels create memorable experiences that make Great Wall tours essential for any Beijing visit! Great Wall tours take you to sections of this incredible wonder, from visiting the restored Badaling and Mutianyu sections to exploring less-crowded sections, from understanding the Wall's history to learning about its significance, and from experiencing the ancient fortification to discovering why the Great Wall is considered one of humanity's greatest achievements. Experience the awe-inspiring sight of the Great Wall, see why it's a world wonder, learn about Chinese engineering and history, and discover why Great Wall tours are the highlight of any Beijing trip. Whether you're seeking restored sections, hiking adventures, or comprehensive Wall exploration, Great Wall tours provide unforgettable journeys that showcase this incredible wonder. From Badaling to Mutianyu, from accessible to challenging, Great Wall tours ensure you experience the spectacular Great Wall!`,
 
       seo: {
-        title: 'Beijing Great Wall Tours 2025: Badaling & Mutianyu Sections',
+        title: 'Beijing Great Wall Tours 2026: Badaling & Mutianyu Sections',
         description: 'Book Beijing Great Wall tours! Visit Badaling, Mutianyu & world wonder. Experience ancient Chinese fortification. From $70.',
         keywords: 'Beijing Great Wall tours, Great Wall tours, Badaling tours, Mutianyu tours, Great Wall China',
       },
@@ -3212,7 +3212,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Beijing is home to some of China's most magnificent temples, where imperial temples, Buddhist sanctuaries, and ancient architecture create temple experiences that make temple tours essential for understanding the spiritual heritage of China's capital! Temple tours take you to Beijing's most sacred and beautiful temples, from visiting the iconic Temple of Heaven to exploring ancient Buddhist temples, from understanding religious ceremonies to learning about temple architecture, and from experiencing spiritual atmosphere to discovering why temples are central to Chinese culture. Experience the spiritual richness that defines Beijing, see why temples are so significant, learn about Buddhism and Chinese culture, and discover why temple tours are important parts of any Beijing visit. Whether you're seeking imperial temples, Buddhist sanctuaries, or comprehensive temple exploration, temple tours provide engaging journeys that showcase the sacred heritage that makes Beijing spiritually fascinating. From Temple of Heaven to Buddhist temples, from imperial to ancient, temple tours ensure you experience the incredible temples that define Beijing!`,
 
       seo: {
-        title: 'Beijing Temple Tours 2025: Temple of Heaven & Sacred Temples',
+        title: 'Beijing Temple Tours 2026: Temple of Heaven & Sacred Temples',
         description: 'Book Beijing temple tours! Visit Temple of Heaven, Buddhist temples & sacred sites. Discover China\'s spiritual heritage. From $50.',
         keywords: 'Beijing temple tours, Temple of Heaven tours, Buddhist temples Beijing, temple tours Beijing',
       },
@@ -3364,7 +3364,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Beijing is a food capital, where Peking duck, incredible street food, and diverse Chinese cuisine create food experiences that make food tours essential for experiencing the culinary diversity of China's capital! Food tours take you through Beijing's food scene, from trying the famous Peking duck to exploring street food markets, from tasting authentic Chinese dishes to learning about culinary traditions, and from experiencing diverse flavors to discovering why Beijing's food is world-famous. Experience the incredible variety of Chinese cuisine, see why Beijing is considered a food capital, taste diverse dishes from traditional to modern, and discover why food tours are perfect ways to appreciate Beijing's culinary culture. Whether you're seeking Peking duck, street food, authentic restaurants, or comprehensive food exploration, food tours provide engaging journeys that showcase the flavors that make Beijing a food paradise. From Peking duck to dumplings, from street stalls to local favorites, food tours ensure you experience the incredible food that defines Beijing!`,
 
       seo: {
-        title: 'Beijing Food Tours 2025: Peking Duck & Chinese Street Food',
+        title: 'Beijing Food Tours 2026: Peking Duck & Chinese Street Food',
         description: 'Book Beijing food tours! Experience Peking duck, street food & authentic Chinese cuisine. Discover China\'s food capital. From $55.',
         keywords: 'Beijing food tours, Peking duck tours, street food Beijing, food tours Beijing',
       },
@@ -3516,7 +3516,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Beijing showcases China's architectural evolution, where imperial palaces, traditional courtyards, ancient temples, and modern skyscrapers create architectural experiences that make architecture tours perfect for appreciating the capital's diverse building heritage! Architecture tours take you through Beijing's architectural landscape, from visiting imperial Forbidden City to exploring traditional hutongs, from seeing ancient temples to understanding modern development, and from experiencing architectural diversity to learning why Beijing's architecture is so fascinating. Experience the architectural richness that defines Beijing, see how architecture has evolved, understand different architectural styles, and discover why architecture tours offer perfect ways to appreciate Beijing's building heritage. Whether you're seeking imperial architecture, traditional neighborhoods, modern buildings, or comprehensive architectural exploration, architecture tours provide engaging journeys that showcase the incredible architecture that makes Beijing unique. From Forbidden City to skyscrapers, from ancient to modern, architecture tours ensure you experience the diverse architecture that defines Beijing!`,
 
       seo: {
-        title: 'Beijing Architecture Tours 2025: Imperial Palaces & Modern Skyscrapers',
+        title: 'Beijing Architecture Tours 2026: Imperial Palaces & Modern Skyscrapers',
         description: 'Book Beijing architecture tours! Visit Forbidden City, traditional hutongs & modern architecture. Discover China\'s architectural heritage. From $60.',
         keywords: 'Beijing architecture tours, imperial architecture Beijing, traditional architecture Beijing, architecture tours Beijing',
       },
@@ -3670,7 +3670,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Bora Bora is the world's ultimate luxury destination, where overwater bungalows, private excursions, and world-class amenities create unparalleled luxury experiences that define tropical paradise! Luxury tours take you into the exclusive world of Bora Bora's luxury resorts, from staying in iconic overwater bungalows to enjoying private yacht charters, from world-class spa treatments to gourmet dining experiences, and from personalized service to discovering why Bora Bora sets the gold standard for tropical paradise luxury. Experience the ultimate in tropical luxury, see why the island is synonymous with romance and paradise, indulge in unparalleled amenities, and discover why luxury tours offer the perfect way to experience the world's most beautiful island. Whether you're seeking overwater accommodations, private excursions, or comprehensive luxury experiences, luxury tours provide memorable journeys that showcase the extraordinary luxury that makes Bora Bora legendary. From bungalows to yachts, from spas to dining, luxury tours ensure you experience the ultimate paradise luxury!`,
 
       seo: {
-        title: 'Bora Bora Luxury Tours 2025: Overwater Bungalows & Private Paradise',
+        title: 'Bora Bora Luxury Tours 2026: Overwater Bungalows & Private Paradise',
         description: 'Book Bora Bora luxury tours! Experience overwater bungalows, private excursions & ultimate paradise luxury. Discover world\'s most romantic island. From $500.',
         keywords: 'Bora Bora luxury tours, overwater bungalows, luxury Bora Bora, private tours Bora Bora',
       },
@@ -3814,7 +3814,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       categoryName: 'Snorkeling Tours',
       stats: { toursAvailable: 30, priceFrom: 120, duration: 'Half day' },
       introduction: `Bora Bora\'s turquoise lagoon offers world-class snorkeling, where vibrant coral gardens, diverse marine life, and crystal-clear waters create incredible snorkeling experiences that make snorkeling tours essential for exploring the underwater paradise! Snorkeling tours take you into the lagoon\'s beautiful waters, from discovering vibrant coral gardens to swimming with tropical fish, from seeing eagle rays to experiencing the lagoon\'s stunning underwater world, and from learning about marine ecosystems to discovering why Bora Bora snorkeling is world-famous. Experience the underwater beauty that defines Bora Bora, see why the lagoon is so spectacular, learn about marine life, and discover why snorkeling tours offer perfect ways to appreciate the island\'s aquatic paradise. Whether you\'re seeking coral gardens, ray encounters, or comprehensive lagoon exploration, snorkeling tours provide engaging journeys that showcase the incredible underwater world that makes Bora Bora special. From coral to fish, from lagoon to motus, snorkeling tours ensure you experience the spectacular marine life that defines Bora Bora!`,
-      seo: { title: 'Bora Bora Snorkeling Tours 2025: Coral Gardens & Lagoon Paradise', description: 'Book Bora Bora snorkeling tours! Discover vibrant coral gardens, marine life & lagoon paradise. Experience world-class snorkeling. From $120.', keywords: 'Bora Bora snorkeling tours, coral gardens Bora Bora, snorkeling tours Bora Bora, Bora Bora lagoon tours' },
+      seo: { title: 'Bora Bora Snorkeling Tours 2026: Coral Gardens & Lagoon Paradise', description: 'Book Bora Bora snorkeling tours! Discover vibrant coral gardens, marine life & lagoon paradise. Experience world-class snorkeling. From $120.', keywords: 'Bora Bora snorkeling tours, coral gardens Bora Bora, snorkeling tours Bora Bora, Bora Bora lagoon tours' },
       whyChoose: [{ icon: 'Star', title: 'Coral Gardens', description: 'Discover vibrant coral reef ecosystems!' }, { icon: 'Heart', title: 'Marine Life', description: 'Swim with tropical fish and rays.' }, { icon: 'Users', title: 'Crystal Waters', description: 'Experience world\'s clearest lagoon waters.' }, { icon: 'MapPin', title: 'Underwater Paradise', description: 'Explore stunning underwater world.' }],
       tourTypes: [{ icon: 'Star', title: 'Coral Garden Tours', description: 'Tours visiting vibrant coral gardens.', features: ['Coral gardens', 'Reefs', 'Vibrant', 'Beautiful', 'Essential'] }, { icon: 'Heart', title: 'Ray Encounters', description: 'Tours featuring eagle ray experiences.', features: ['Ray encounters', 'Eagle rays', 'Unique', 'Exciting', 'Memorable'] }, { icon: 'Users', title: 'Lagoon Snorkeling Tours', description: 'Comprehensive lagoon snorkeling experiences.', features: ['Full lagoon', 'Comprehensive', 'Diverse', 'Complete', 'Beautiful'] }, { icon: 'MapPin', title: 'Private Snorkeling', description: 'Private tours with personalized snorkeling.', features: ['Private', 'Personalized', 'Flexible', 'Intimate', 'Exclusive'] }],
       whatToExpect: { title: 'What to Expect on Your Snorkeling Tour', items: [{ icon: 'Clock', title: 'Duration', description: 'Snorkeling tours: 3-4 hours. Extended tours: 4-6 hours with more sites.' }, { icon: 'Star', title: 'Underwater Exploration', description: 'Snorkel vibrant coral gardens and lagoons.' }, { icon: 'Heart', title: 'Marine Life Viewing', description: 'See tropical fish, rays, and colorful corals.' }, { icon: 'Users', title: 'Expert Guidance', description: 'Professional guides provide snorkeling instruction.' }, { icon: 'BookOpen', title: 'Marine Education', description: 'Learn about coral reef ecosystems.' }, { icon: 'Camera', title: 'Underwater Photography', description: 'Photograph stunning underwater scenery.' }] },
@@ -3828,7 +3828,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       categoryName: 'Romantic Tours',
       stats: { toursAvailable: 22, priceFrom: 180, duration: 'Half day to full day' },
       introduction: `Bora Bora is the world's most romantic destination, where sunset cruises, overwater experiences, and intimate moments create romantic adventures that make romantic tours perfect for couples in paradise! Romantic tours take you into the romantic side of Bora Bora, from enjoying sunset cruises to experiencing overwater dinners, from private beach experiences to watching sunsets together, and from celebrating romance to discovering why Bora Bora is the ultimate couples destination. Experience the romantic atmosphere that defines Bora Bora, see why couples flock to this island, enjoy intimate experiences together, and discover why romantic tours offer perfect ways to celebrate love in paradise. Whether you're seeking sunset cruises, romantic dinners, beach experiences, or comprehensive romantic exploration, romantic tours provide memorable journeys that showcase the romantic magic that makes Bora Bora legendary. From sunsets to dinners, from beaches to overwater moments, romantic tours ensure you experience the ultimate romance that defines Bora Bora!`,
-      seo: { title: 'Bora Bora Romantic Tours 2025: Sunset Cruises & Paradise Romance', description: 'Book Bora Bora romantic tours! Experience sunset cruises, overwater dinners & ultimate paradise romance. Discover world\'s most romantic island. From $180.', keywords: 'Bora Bora romantic tours, sunset cruises Bora Bora, romantic Bora Bora, couples tours Bora Bora' },
+      seo: { title: 'Bora Bora Romantic Tours 2026: Sunset Cruises & Paradise Romance', description: 'Book Bora Bora romantic tours! Experience sunset cruises, overwater dinners & ultimate paradise romance. Discover world\'s most romantic island. From $180.', keywords: 'Bora Bora romantic tours, sunset cruises Bora Bora, romantic Bora Bora, couples tours Bora Bora' },
       whyChoose: [{ icon: 'Star', title: 'Ultimate Romance', description: 'Experience world\'s most romantic destination!' }, { icon: 'Heart', title: 'Sunset Cruises', description: 'Enjoy magical sunset lagoon cruises.' }, { icon: 'Users', title: 'Intimate Experiences', description: 'Celebrate romance in paradise.' }, { icon: 'MapPin', title: 'Couples Paradise', description: 'Discover perfect couples destination.' }],
       tourTypes: [{ icon: 'Star', title: 'Sunset Cruise Tours', description: 'Tours featuring romantic sunset lagoon cruises.', features: ['Sunset cruises', 'Romantic', 'Magical', 'Classic', 'Essential'] }, { icon: 'Heart', title: 'Overwater Dining Tours', description: 'Romantic overwater dinner experiences.', features: ['Overwater dinners', 'Romantic', 'Intimate', 'Gourmet', 'Exclusive'] }, { icon: 'Users', title: 'Private Beach Tours', description: 'Private beach experiences for couples.', features: ['Private beaches', 'Intimate', 'Exclusive', 'Romantic', 'Secluded'] }, { icon: 'MapPin', title: 'Comprehensive Romance Tours', description: 'Full romantic packages and experiences.', features: ['Multiple experiences', 'Complete romance', 'Comprehensive', 'All-inclusive', 'Perfect'] }],
       whatToExpect: { title: 'What to Expect on Your Romantic Tour', items: [{ icon: 'Clock', title: 'Duration', description: 'Romantic experiences: Half day to full day intimate moments.' }, { icon: 'Star', title: 'Romantic Experiences', description: 'Enjoy sunset cruises, dinners, and intimate moments.' }, { icon: 'Heart', title: 'Intimate Atmosphere', description: 'Celebrate romance in paradise setting.' }, { icon: 'Users', title: 'Couples Focus', description: 'Experiences designed specifically for couples.' }, { icon: 'BookOpen', title: 'Paradise Romance', description: 'Learn why Bora Bora is romantic destination.' }, { icon: 'Camera', title: 'Photography', description: 'Capture romantic paradise moments.' }] },
@@ -3860,7 +3860,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       categoryName: 'Island Tours',
       stats: { toursAvailable: 28, priceFrom: 100, duration: 'Half day' },
       introduction: `Bora Bora showcases stunning natural beauty beyond its lagoon, where volcanic peaks, pristine beaches, and lush landscapes create island experiences that make island tours perfect for discovering the paradise island! Island tours take you around Bora Bora's scenic wonders, from visiting volcanic peaks to exploring pristine beaches, from learning about local culture to seeing wartime history, and from discovering hidden spots to understanding why the island is so captivating. Experience the natural beauty that defines Bora Bora beyond the water, see why visitors fall in love with the island, enjoy diverse landscapes, and discover why island tours offer perfect ways to appreciate the complete paradise. Whether you're seeking mountain views, beach exploration, cultural sites, or comprehensive island discovery, island tours provide engaging journeys that showcase the incredible island that makes Bora Bora complete. From peaks to beaches, from history to nature, island tours ensure you experience the full island paradise!`,
-      seo: { title: 'Bora Bora Island Tours 2025: Volcanic Peaks & Island Paradise', description: 'Book Bora Bora island tours! Explore volcanic peaks, pristine beaches & island paradise. Discover natural beauty beyond lagoon. From $100.', keywords: 'Bora Bora island tours, island tours Bora Bora, Bora Bora exploration, Bora Bora sightseeing' },
+      seo: { title: 'Bora Bora Island Tours 2026: Volcanic Peaks & Island Paradise', description: 'Book Bora Bora island tours! Explore volcanic peaks, pristine beaches & island paradise. Discover natural beauty beyond lagoon. From $100.', keywords: 'Bora Bora island tours, island tours Bora Bora, Bora Bora exploration, Bora Bora sightseeing' },
       whyChoose: [{ icon: 'Star', title: 'Island Beauty', description: 'Discover stunning natural landscapes!' }, { icon: 'Heart', title: 'Volcanic Peaks', description: 'See dramatic volcanic mountain views.' }, { icon: 'Users', title: 'Pristine Beaches', description: 'Explore beautiful island beaches.' }, { icon: 'MapPin', title: 'Complete Paradise', description: 'Experience full island experience.' }],
       tourTypes: [{ icon: 'Star', title: 'Mountain View Tours', description: 'Tours featuring volcanic peak viewpoints.', features: ['Peak views', 'Scenic', 'Stunning', 'Dramatic', 'Essential'] }, { icon: 'Heart', title: 'Beach Exploration Tours', description: 'Tours visiting pristine island beaches.', features: ['Beaches', 'Pristine', 'Beautiful', 'Scenic', 'Peaceful'] }, { icon: 'Users', title: 'Cultural Island Tours', description: 'Island tours with cultural experiences.', features: ['Culture', 'Local life', 'Combined', 'Educational', 'Comprehensive'] }, { icon: 'MapPin', title: 'Comprehensive Island Tours', description: 'Full island exploration covering all highlights.', features: ['Complete tour', 'All highlights', 'Comprehensive', 'Full day', 'Everything'] }],
       whatToExpect: { title: 'What to Expect on Your Island Tour', items: [{ icon: 'Clock', title: 'Duration', description: 'Island tours: 3-4 hours. Extended tours: 4-6 hours with more exploration.' }, { icon: 'Star', title: 'Island Exploration', description: 'Visit volcanic peaks, beaches, and scenic spots.' }, { icon: 'Heart', title: 'Natural Beauty', description: 'See diverse island landscapes.' }, { icon: 'Users', title: 'Expert Commentary', description: 'Guides explain island geography and culture.' }, { icon: 'BookOpen', title: 'Island Context', description: 'Learn about Bora Bora history and culture.' }, { icon: 'Camera', title: 'Photography', description: 'Photograph stunning island scenery.' }] },
@@ -3892,7 +3892,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       categoryName: 'Water Sports',
       stats: { toursAvailable: 24, priceFrom: 85, duration: 'Half day' },
       introduction: `Bora Bora's beautiful lagoon offers exciting water sports, where jet skiing, paddleboarding, kayaking, and aquatic adventures create thrilling experiences that make water sports perfect for active enjoyment! Water sports take you onto the lagoon's waters in exciting ways, from jet skiing across open waters to paddleboarding through calm areas, from kayaking around motus to trying various aquatic activities, and from experiencing speed to enjoying peaceful paddling. Experience the excitement that the lagoon can offer, try different water activities, understand the range of options available, and discover why water sports provide perfect ways to add adventure to your Bora Bora visit. Whether you're seeking high-speed thrills, peaceful paddling, comprehensive activities, or just enjoying the lagoon, water sports offer engaging journeys that showcase the adventurous side of Bora Bora. From jet skis to paddleboards, from exciting to peaceful, water sports ensure you experience the thrilling aquatic paradise!`,
-      seo: { title: 'Bora Bora Water Sports 2025: Jet Skiing & Lagoon Adventures', description: 'Book Bora Bora water sports! Experience jet skiing, paddleboarding & lagoon adventures. Discover exciting aquatic activities. From $85.', keywords: 'Bora Bora water sports, jet skiing Bora Bora, paddleboarding Bora Bora, water sports tours Bora Bora' },
+      seo: { title: 'Bora Bora Water Sports 2026: Jet Skiing & Lagoon Adventures', description: 'Book Bora Bora water sports! Experience jet skiing, paddleboarding & lagoon adventures. Discover exciting aquatic activities. From $85.', keywords: 'Bora Bora water sports, jet skiing Bora Bora, paddleboarding Bora Bora, water sports tours Bora Bora' },
       whyChoose: [{ icon: 'Star', title: 'Lagoon Adventures', description: 'Experience exciting aquatic activities!' }, { icon: 'Heart', title: 'Jet Skiing', description: 'Try high-speed lagoon adventures.' }, { icon: 'Users', title: 'Paddleboarding', description: 'Enjoy peaceful lagoon paddling.' }, { icon: 'MapPin', title: 'Diverse Activities', description: 'Discover range of water sports available.' }],
       tourTypes: [{ icon: 'Star', title: 'Jet Ski Tours', description: 'Tours featuring high-speed jet ski adventures.', features: ['Jet skiing', 'High-speed', 'Thrilling', 'Exciting', 'Fun'] }, { icon: 'Heart', title: 'Paddleboard Tours', description: 'Peaceful paddleboard lagoon experiences.', features: ['Paddleboarding', 'Peaceful', 'Calm', 'Scenic', 'Relaxing'] }, { icon: 'Users', title: 'Comprehensive Water Sports', description: 'Tours combining multiple water activities.', features: ['Multiple activities', 'Combined', 'Comprehensive', 'Diverse', 'Full day'] }, { icon: 'MapPin', title: 'Private Water Sports', description: 'Private tours with personalized water activities.', features: ['Private', 'Personalized', 'Flexible', 'Customized', 'Exclusive'] }],
       whatToExpect: { title: 'What to Expect on Your Water Sports Tour', items: [{ icon: 'Clock', title: 'Duration', description: 'Water sports: 2-4 hours. Extended tours: 4-6 hours with multiple activities.' }, { icon: 'Star', title: 'Aquatic Activities', description: 'Experience various exciting water sports.' }, { icon: 'Heart', title: 'Equipment Provided', description: 'Professional equipment and safety gear included.' }, { icon: 'Users', title: 'Expert Instruction', description: 'Receive instruction and support for all activities.' }, { icon: 'BookOpen', title: 'Safety First', description: 'Safety briefings and protocols ensured.' }, { icon: 'Camera', title: 'Photography', description: 'Photography opportunities for water activities.' }] },
@@ -3924,7 +3924,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       categoryName: 'Cultural Tours',
       stats: { toursAvailable: 20, priceFrom: 75, duration: 'Half day' },
       introduction: `Bora Bora offers rich Polynesian cultural experiences beyond its natural beauty, where traditional culture, local life, island history, and cultural heritage create authentic insights that make cultural tours perfect for understanding the island's spirit! Cultural tours take you into authentic island culture, from visiting local villages to learning about Polynesian traditions, from understanding island history to experiencing local crafts, and from seeing daily life to discovering why Bora Bora culture is so welcoming. Experience the cultural richness that defines the island, learn about traditions and heritage, understand local way of life, and discover why cultural tours offer fascinating insights into Polynesian culture. Whether you're seeking village visits, traditional crafts, history, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Bora Bora complete. From traditions to villages, from crafts to history, cultural tours ensure you experience the authentic culture that defines Bora Bora!`,
-      seo: { title: 'Bora Bora Cultural Tours 2025: Polynesian Culture & Island Life', description: 'Book Bora Bora cultural tours! Discover Polynesian culture, local villages & island life. Experience authentic island culture. From $75.', keywords: 'Bora Bora cultural tours, Polynesian culture, cultural tours Bora Bora, Bora Bora island culture' },
+      seo: { title: 'Bora Bora Cultural Tours 2026: Polynesian Culture & Island Life', description: 'Book Bora Bora cultural tours! Discover Polynesian culture, local villages & island life. Experience authentic island culture. From $75.', keywords: 'Bora Bora cultural tours, Polynesian culture, cultural tours Bora Bora, Bora Bora island culture' },
       whyChoose: [{ icon: 'Star', title: 'Polynesian Culture', description: 'Experience authentic Polynesian traditions!' }, { icon: 'Heart', title: 'Local Life', description: 'Learn about island daily life.' }, { icon: 'Users', title: 'Cultural Heritage', description: 'Discover rich cultural traditions.' }, { icon: 'MapPin', title: 'Island Spirit', description: 'Understand authentic island culture.' }],
       tourTypes: [{ icon: 'Star', title: 'Village Cultural Tours', description: 'Tours visiting local villages and communities.', features: ['Villages', 'Local life', 'Traditional', 'Authentic', 'Educational'] }, { icon: 'Heart', title: 'Craft & Heritage Tours', description: 'Tours featuring traditional crafts and arts.', features: ['Crafts', 'Traditional arts', 'Cultural', 'Local', 'Heritage'] }, { icon: 'Users', title: 'Historical Cultural Tours', description: 'Tours exploring island history and culture.', features: ['History', 'Cultural', 'Educational', 'Heritage', 'Traditional'] }, { icon: 'MapPin', title: 'Comprehensive Cultural Tours', description: 'Full tours covering villages, crafts, and heritage.', features: ['Multiple experiences', 'Complete overview', 'Comprehensive', 'Diverse', 'Full day'] }],
       whatToExpect: { title: 'What to Expect on Your Cultural Tour', items: [{ icon: 'Clock', title: 'Duration', description: 'Cultural tours: 2-3 hours. Extended tours: 3-4 hours with more exploration.' }, { icon: 'Star', title: 'Cultural Experiences', description: 'Experience villages, crafts, and traditions.' }, { icon: 'Heart', title: 'Village Visits', description: 'Visit local communities and see daily life.' }, { icon: 'Users', title: 'Expert Commentary', description: 'Guides explain culture, traditions, and local life.' }, { icon: 'BookOpen', title: 'Cultural Context', description: 'Learn about Polynesian culture and heritage.' }, { icon: 'Camera', title: 'Photography', description: 'Photography opportunities for cultural scenes.' }] },
@@ -3958,7 +3958,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       categoryName: 'Beach Tours',
       stats: { toursAvailable: 32, priceFrom: 45, duration: 'Half day' },
       introduction: `Boracay is famous for its stunning beaches, where powdery white sand, crystal-clear waters, and beautiful coastline create beach experiences that make beach tours essential for enjoying the island's beach paradise! Beach tours take you to Boracay's best beaches, from visiting the famous White Beach to discovering quieter beach areas, from experiencing beach activities to learning about different beach vibes, and from seeing beautiful coastlines to discovering why Boracay beaches are world-renowned. Experience the beach paradise that defines Boracay, see why the island is famous for beaches, enjoy pristine sands and clear waters, and discover why beach tours are perfect ways to appreciate the island's coastal beauty. Whether you're seeking White Beach, quiet escapes, or comprehensive beach exploration, beach tours provide engaging ways to discover the beautiful beaches that make Boracay special. From White to Bulabog, from famous to hidden, beach tours ensure you experience the incredible beaches that define Boracay!`,
-      seo: { title: 'Boracay Beach Tours 2025: White Beach & Pristine Sands', description: 'Book Boracay beach tours! Visit White Beach, pristine sands & beautiful coastline. Discover beach paradise. From $45.', keywords: 'Boracay beach tours, White Beach tours, beach tours Boracay, Boracay beaches' },
+      seo: { title: 'Boracay Beach Tours 2026: White Beach & Pristine Sands', description: 'Book Boracay beach tours! Visit White Beach, pristine sands & beautiful coastline. Discover beach paradise. From $45.', keywords: 'Boracay beach tours, White Beach tours, beach tours Boracay, Boracay beaches' },
       whyChoose: [{ icon: 'Star', title: 'White Beach', description: 'Visit world-famous White Beach!' }, { icon: 'Heart', title: 'Pristine Sands', description: 'Enjoy powdery white sand beaches.' }, { icon: 'Users', title: 'Crystal Waters', description: 'Experience clear turquoise waters.' }, { icon: 'MapPin', title: 'Beach Paradise', description: 'Discover stunning beach coastline.' }],
       tourTypes: [{ icon: 'Star', title: 'White Beach Tours', description: 'Tours visiting famous White Beach.', features: ['White Beach', 'Famous', 'Iconic', 'Essential', 'Must-see'] }, { icon: 'Heart', title: 'Beach Hopping Tours', description: 'Tours visiting multiple beaches for diverse experience.', features: ['Multiple beaches', 'Comprehensive', 'Diverse', 'Beautiful', 'Complete'] }, { icon: 'Users', title: 'Quiet Beach Tours', description: 'Tours discovering quieter beach areas.', features: ['Quiet beaches', 'Secluded', 'Peaceful', 'Beautiful', 'Relaxing'] }, { icon: 'MapPin', title: 'Private Beach Tours', description: 'Private tours with personalized beach exploration.', features: ['Private', 'Personalized', 'Flexible', 'Exclusive', 'Intimate'] }],
       whatToExpect: { title: 'What to Expect on Your Beach Tour', items: [{ icon: 'Clock', title: 'Duration', description: 'Beach tours: 2-4 hours. Extended tours: 4-6 hours visiting multiple beaches.' }, { icon: 'Star', title: 'Beach Exploration', description: 'Visit Boracay\'s most beautiful beaches.' }, { icon: 'Heart', title: 'Beach Activities', description: 'Enjoy beach time and activities.' }, { icon: 'Users', title: 'Expert Commentary', description: 'Guides explain beaches and local area.' }, { icon: 'BookOpen', title: 'Beach Culture', description: 'Learn about Boracay beach culture.' }, { icon: 'Camera', title: 'Photography', description: 'Photograph beautiful beaches.' }] },
@@ -3990,7 +3990,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       categoryName: 'Water Sports Tours',
       stats: { toursAvailable: 28, priceFrom: 60, duration: 'Half day to full day' },
       introduction: `Boracay offers exciting water sports, where parasailing, scuba diving, windsurfing, and aquatic adventures create thrilling experiences that make water sports tours perfect for active enjoyment! Water sports tours take you onto the waters in exciting ways, from parasailing with stunning views to scuba diving vibrant reefs, from windsurfing at Bulabog to trying various activities, and from experiencing thrills to discovering why Boracay is a water sports paradise. Experience the excitement that Boracay can offer, try different water activities, understand the range of adventures available, and discover why water sports tours provide perfect ways to add adventure to your Boracay visit. Whether you're seeking parasailing, diving, windsurfing, or comprehensive water activities, water sports tours offer engaging journeys that showcase the adventurous side of Boracay. From air to water, from exciting to peaceful, water sports tours ensure you experience the thrilling aquatic paradise!`,
-      seo: { title: 'Boracay Water Sports Tours 2025: Parasailing & Aquatic Adventures', description: 'Book Boracay water sports tours! Experience parasailing, diving & aquatic adventures. Discover water sports paradise. From $60.', keywords: 'Boracay water sports tours, parasailing Boracay, diving Boracay, water sports tours Boracay' },
+      seo: { title: 'Boracay Water Sports Tours 2026: Parasailing & Aquatic Adventures', description: 'Book Boracay water sports tours! Experience parasailing, diving & aquatic adventures. Discover water sports paradise. From $60.', keywords: 'Boracay water sports tours, parasailing Boracay, diving Boracay, water sports tours Boracay' },
       whyChoose: [{ icon: 'Star', title: 'Aquatic Adventures', description: 'Experience exciting water activities!' }, { icon: 'Heart', title: 'Parasailing', description: 'Try thrilling parasailing with views.' }, { icon: 'Users', title: 'Scuba Diving', description: 'Explore vibrant underwater reefs.' }, { icon: 'MapPin', title: 'Diverse Activities', description: 'Discover range of water sports.' }],
       tourTypes: [{ icon: 'Star', title: 'Parasailing Tours', description: 'Tours featuring thrilling parasailing adventures.', features: ['Parasailing', 'Thrilling', 'Views', 'Exciting', 'Memorable'] }, { icon: 'Heart', title: 'Scuba Diving Tours', description: 'Diving tours exploring vibrant reefs.', features: ['Scuba diving', 'Reefs', 'Underwater', 'Vibrant', 'Beautiful'] }, { icon: 'Users', title: 'Comprehensive Water Sports', description: 'Tours combining multiple water activities.', features: ['Multiple activities', 'Combined', 'Comprehensive', 'Diverse', 'Full day'] }, { icon: 'MapPin', title: 'Private Water Sports', description: 'Private tours with personalized activities.', features: ['Private', 'Personalized', 'Flexible', 'Exclusive', 'Customized'] }],
       whatToExpect: { title: 'What to Expect on Your Water Sports Tour', items: [{ icon: 'Clock', title: 'Duration', description: 'Water sports: 2-4 hours. Extended tours: 4-6 hours with multiple activities.' }, { icon: 'Star', title: 'Aquatic Activities', description: 'Experience various exciting water sports.' }, { icon: 'Heart', title: 'Equipment & Guidance', description: 'Professional equipment and instruction provided.' }, { icon: 'Users', title: 'Safety First', description: 'Safety briefings and protocols ensured.' }, { icon: 'BookOpen', title: 'Expert Instruction', description: 'Receive instruction and support.' }, { icon: 'Camera', title: 'Photography', description: 'Photography opportunities for activities.' }] },
@@ -4022,7 +4022,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       categoryName: 'Sunset Tours',
       stats: { toursAvailable: 24, priceFrom: 50, duration: '1-2 hours' },
       introduction: `Boracay offers spectacular sunset views, where evening skies, beautiful sunsets, and magical moments create sunset experiences that make sunset tours perfect for enjoying the island's evening beauty! Sunset tours take you to prime sunset viewing spots, from watching sunsets on White Beach to experiencing sunset cruises, from enjoying evening vibes to seeing spectacular evening colors, and from celebrating sunsets to discovering why Boracay sunsets are world-famous. Experience the sunset beauty that defines Boracay evenings, see why the island is known for sunsets, enjoy evening atmosphere, and discover why sunset tours are perfect ways to appreciate the island's magical evenings. Whether you're seeking beach sunsets, sunset cruises, or evening experiences, sunset tours provide memorable journeys that showcase the beautiful sunsets that make Boracay special. From White Beach to ocean, from cruises to beach views, sunset tours ensure you experience the spectacular sunsets that define Boracay!`,
-      seo: { title: 'Boracay Sunset Tours 2025: Spectacular Sunsets & Evening Beauty', description: 'Book Boracay sunset tours! Watch spectacular sunsets, sunset cruises & evening beauty. Experience magical evening moments. From $50.', keywords: 'Boracay sunset tours, sunset viewing Boracay, sunset cruises Boracay, sunset tours Boracay' },
+      seo: { title: 'Boracay Sunset Tours 2026: Spectacular Sunsets & Evening Beauty', description: 'Book Boracay sunset tours! Watch spectacular sunsets, sunset cruises & evening beauty. Experience magical evening moments. From $50.', keywords: 'Boracay sunset tours, sunset viewing Boracay, sunset cruises Boracay, sunset tours Boracay' },
       whyChoose: [{ icon: 'Star', title: 'Spectacular Sunsets', description: 'Watch world-famous beautiful sunsets!' }, { icon: 'Heart', title: 'Sunset Cruises', description: 'Experience magical sunset cruises.' }, { icon: 'Users', title: 'Evening Beauty', description: 'Enjoy magical evening atmosphere.' }, { icon: 'MapPin', title: 'Island Tradition', description: 'Experience classic Boracay tradition.' }],
       tourTypes: [{ icon: 'Star', title: 'Beach Sunset Tours', description: 'Tours watching sunsets on White Beach.', features: ['Beach sunsets', 'White Beach', 'Classic', 'Traditional', 'Essential'] }, { icon: 'Heart', title: 'Sunset Cruise Tours', description: 'Tours featuring sunset cruises on waters.', features: ['Sunset cruises', 'Scenic', 'Magical', 'Romantic', 'Beautiful'] }, { icon: 'Users', title: 'Sunset Dining Tours', description: 'Sunset viewing with dinner experiences.', features: ['Dining', 'Sunset views', 'Combined', 'Romantic', 'Complete'] }, { icon: 'MapPin', title: 'Private Sunset Tours', description: 'Private tours with personalized sunset viewing.', features: ['Private', 'Personalized', 'Exclusive', 'Intimate', 'Customized'] }],
       whatToExpect: { title: 'What to Expect on Your Sunset Tour', items: [{ icon: 'Clock', title: 'Duration', description: 'Sunset experiences: 1-2 hours. Extended tours: 2-3 hours with dining.' }, { icon: 'Star', title: 'Sunset Viewing', description: 'Watch spectacular sunsets over waters.' }, { icon: 'Heart', title: 'Evening Atmosphere', description: 'Enjoy magical evening vibes.' }, { icon: 'Users', title: 'Prime Locations', description: 'Visit best sunset viewing spots.' }, { icon: 'BookOpen', title: 'Island Tradition', description: 'Learn about Boracay sunset culture.' }, { icon: 'Camera', title: 'Photography', description: 'Photograph spectacular sunsets.' }] },
@@ -4054,7 +4054,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       categoryName: 'Island Tours',
       stats: { toursAvailable: 26, priceFrom: 55, duration: 'Half day' },
       introduction: `Boracay showcases beautiful island scenery beyond its beaches, where scenic viewpoints, local villages, and island landscapes create island experiences that make island tours perfect for discovering the complete paradise! Island tours take you around Boracay's scenic wonders, from visiting viewpoints to exploring local areas, from learning about island history to seeing diverse landscapes, and from discovering hidden spots to understanding why the island is so captivating. Experience the island beauty that defines Boracay beyond the beach, see why visitors fall in love with the island, enjoy diverse landscapes, and discover why island tours offer perfect ways to appreciate the complete paradise. Whether you're seeking viewpoints, village visits, or comprehensive island discovery, island tours provide engaging journeys that showcase the incredible island that makes Boracay complete. From viewpoints to villages, from history to nature, island tours ensure you experience the full island paradise!`,
-      seo: { title: 'Boracay Island Tours 2025: Scenic Views & Island Exploration', description: 'Book Boracay island tours! Explore scenic viewpoints, island areas & complete paradise. Discover island beyond beaches. From $55.', keywords: 'Boracay island tours, island tours Boracay, Boracay exploration, Boracay sightseeing' },
+      seo: { title: 'Boracay Island Tours 2026: Scenic Views & Island Exploration', description: 'Book Boracay island tours! Explore scenic viewpoints, island areas & complete paradise. Discover island beyond beaches. From $55.', keywords: 'Boracay island tours, island tours Boracay, Boracay exploration, Boracay sightseeing' },
       whyChoose: [{ icon: 'Star', title: 'Island Beauty', description: 'Discover stunning island landscapes!' }, { icon: 'Heart', title: 'Scenic Viewpoints', description: 'See dramatic island views.' }, { icon: 'Users', title: 'Local Areas', description: 'Explore island villages and life.' }, { icon: 'MapPin', title: 'Complete Paradise', description: 'Experience full island experience.' }],
       tourTypes: [{ icon: 'Star', title: 'Viewpoint Tours', description: 'Tours visiting scenic island viewpoints.', features: ['Viewpoints', 'Scenic', 'Stunning', 'Beautiful', 'Essential'] }, { icon: 'Heart', title: 'Village Exploration Tours', description: 'Tours visiting local villages and areas.', features: ['Villages', 'Local life', 'Traditional', 'Cultural', 'Authentic'] }, { icon: 'Users', title: 'Comprehensive Island Tours', description: 'Full island exploration covering all highlights.', features: ['Complete tour', 'All highlights', 'Comprehensive', 'Full day', 'Everything'] }, { icon: 'MapPin', title: 'Private Island Tours', description: 'Private tours with personalized exploration.', features: ['Private', 'Personalized', 'Flexible', 'Exclusive', 'Customized'] }],
       whatToExpect: { title: 'What to Expect on Your Island Tour', items: [{ icon: 'Clock', title: 'Duration', description: 'Island tours: 3-4 hours. Extended tours: 4-6 hours with more exploration.' }, { icon: 'Star', title: 'Island Exploration', description: 'Visit viewpoints, villages, and scenic spots.' }, { icon: 'Heart', title: 'Natural Beauty', description: 'See diverse island landscapes.' }, { icon: 'Users', title: 'Expert Commentary', description: 'Guides explain island geography and culture.' }, { icon: 'BookOpen', title: 'Island Context', description: 'Learn about Boracay history and culture.' }, { icon: 'Camera', title: 'Photography', description: 'Photograph stunning island scenery.' }] },
@@ -4086,7 +4086,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       categoryName: 'Adventure Tours',
       stats: { toursAvailable: 24, priceFrom: 70, duration: 'Half day' },
       introduction: `Boracay offers exciting adventures beyond its beaches, where cliff jumping, ATV rides, hiking, and outdoor activities create thrilling experiences that make adventure tours perfect for those seeking excitement! Adventure tours take you into the adventurous side of Boracay, from cliff jumping into waters to ATV rides through trails, from hiking to scenic spots to trying various outdoor adventures, and from experiencing thrills to discovering why Boracay offers diverse adventures. Experience the excitement that Boracay can offer, try different adventure activities, understand the range of adventures available, and discover why adventure tours provide perfect ways to add adventure to your Boracay visit. Whether you're seeking cliff jumping, ATV adventures, hiking, or comprehensive outdoor activities, adventure tours offer engaging journeys that showcase the adventurous side of Boracay. From cliffs to trails, from exciting to challenging, adventure tours ensure you experience the thrilling island!`,
-      seo: { title: 'Boracay Adventure Tours 2025: Cliff Jumping & ATV Adventures', description: 'Book Boracay adventure tours! Experience cliff jumping, ATV rides & outdoor adventures. Discover adventurous island. From $70.', keywords: 'Boracay adventure tours, cliff jumping Boracay, ATV tours Boracay, adventure tours Boracay' },
+      seo: { title: 'Boracay Adventure Tours 2026: Cliff Jumping & ATV Adventures', description: 'Book Boracay adventure tours! Experience cliff jumping, ATV rides & outdoor adventures. Discover adventurous island. From $70.', keywords: 'Boracay adventure tours, cliff jumping Boracay, ATV tours Boracay, adventure tours Boracay' },
       whyChoose: [{ icon: 'Star', title: 'Thrilling Adventures', description: 'Experience exciting outdoor activities!' }, { icon: 'Heart', title: 'Cliff Jumping', description: 'Try exhilarating cliff jumping.' }, { icon: 'Users', title: 'ATV Adventures', description: 'Explore island on ATV rides.' }, { icon: 'MapPin', title: 'Diverse Activities', description: 'Discover range of adventures available.' }],
       tourTypes: [{ icon: 'Star', title: 'Cliff Jumping Tours', description: 'Tours featuring exciting cliff jumping.', features: ['Cliff jumping', 'Exciting', 'Thrilling', 'Adrenaline', 'Memorable'] }, { icon: 'Heart', title: 'ATV Adventure Tours', description: 'ATV rides through island trails.', features: ['ATV rides', 'Trails', 'Exploration', 'Fun', 'Active'] }, { icon: 'Users', title: 'Hiking Adventure Tours', description: 'Hiking tours to scenic island spots.', features: ['Hiking', 'Scenic', 'Active', 'Beautiful', 'Healthy'] }, { icon: 'MapPin', title: 'Comprehensive Adventure Tours', description: 'Tours combining multiple adventure activities.', features: ['Multiple activities', 'Combined', 'Comprehensive', 'Diverse', 'Full day'] }],
       whatToExpect: { title: 'What to Expect on Your Adventure Tour', items: [{ icon: 'Clock', title: 'Duration', description: 'Adventure tours: 3-4 hours. Extended tours: 4-6 hours with multiple activities.' }, { icon: 'Star', title: 'Adventure Activities', description: 'Experience various exciting adventures.' }, { icon: 'Heart', title: 'Equipment & Safety', description: 'Professional equipment and safety measures.' }, { icon: 'Users', title: 'Expert Guidance', description: 'Receive instruction and support.' }, { icon: 'BookOpen', title: 'Safety First', description: 'Safety briefings and protocols ensured.' }, { icon: 'Camera', title: 'Photography', description: 'Photography opportunities for activities.' }] },
@@ -4118,7 +4118,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       categoryName: 'Nightlife Tours',
       stats: { toursAvailable: 20, priceFrom: 60, duration: 'Evening' },
       introduction: `Boracay comes alive at night, where beach bars, live music, dance clubs, and energetic evening entertainment create nightlife experiences that make nightlife tours perfect for experiencing the island's vibrant night scene! Nightlife tours take you through Boracay's evening entertainment, from visiting famous beach bars to experiencing live music venues, from exploring dance clubs to understanding the island's night culture, and from celebrating evenings to learning why Boracay's nightlife is considered among the Philippines' most vibrant. Experience the energy that defines Boracay nights, see why the island is famous for nightlife, enjoy diverse evening entertainment, and discover why nightlife tours offer perfect ways to experience Boracay after dark. Whether you're seeking beach bars, live music, dance clubs, or comprehensive nightlife experiences, nightlife tours provide engaging journeys that showcase the vibrant evening scene that makes Boracay nightlife exciting. From bars to clubs, from music to dancing, nightlife tours ensure you experience the incredible nightlife that defines Boracay!`,
-      seo: { title: 'Boracay Nightlife Tours 2025: Beach Bars & Vibrant Evening Scene', description: 'Book Boracay nightlife tours! Experience beach bars, live music & vibrant nightlife. Discover energetic evening scene. From $60.', keywords: 'Boracay nightlife tours, nightlife Boracay, beach bars Boracay, nightlife tours Boracay' },
+      seo: { title: 'Boracay Nightlife Tours 2026: Beach Bars & Vibrant Evening Scene', description: 'Book Boracay nightlife tours! Experience beach bars, live music & vibrant nightlife. Discover energetic evening scene. From $60.', keywords: 'Boracay nightlife tours, nightlife Boracay, beach bars Boracay, nightlife tours Boracay' },
       whyChoose: [{ icon: 'Star', title: 'Vibrant Nightlife', description: 'Experience energetic evening entertainment!' }, { icon: 'Heart', title: 'Beach Bars', description: 'Visit famous beachfront bars.' }, { icon: 'Users', title: 'Live Music', description: 'Enjoy live music performances.' }, { icon: 'MapPin', title: 'Night Culture', description: 'Discover island night culture.' }],
       tourTypes: [{ icon: 'Star', title: 'Beach Bar Tours', description: 'Tours visiting famous beachfront bars.', features: ['Beach bars', 'Famous', 'Scenic', 'Fun', 'Essential'] }, { icon: 'Heart', title: 'Live Music Tours', description: 'Tours featuring live music venues.', features: ['Live music', 'Performances', 'Entertaining', 'Cultural', 'Fun'] }, { icon: 'Users', title: 'Dance Club Tours', description: 'Tours exploring dance clubs and venues.', features: ['Dance clubs', 'Dancing', 'Energetic', 'Fun', 'Active'] }, { icon: 'MapPin', title: 'Comprehensive Nightlife Tours', description: 'Full tours covering bars, music, and clubs.', features: ['Multiple venues', 'Complete overview', 'Comprehensive', 'Diverse', 'Full night'] }],
       whatToExpect: { title: 'What to Expect on Your Nightlife Tour', items: [{ icon: 'Clock', title: 'Duration', description: 'Nightlife tours: 3-5 hours. Extended tours: 5-8 hours covering multiple venues.' }, { icon: 'Star', title: 'Evening Entertainment', description: 'Experience bars, music, and clubs.' }, { icon: 'Heart', title: 'Beach Vibes', description: 'Enjoy energetic beachfront atmosphere.' }, { icon: 'Users', title: 'Expert Guidance', description: 'Guides explain nightlife and evening culture.' }, { icon: 'BookOpen', title: 'Night Culture', description: 'Learn about Boracay nightlife scene.' }, { icon: 'Camera', title: 'Photography', description: 'Limited photography in venues.' }] },
@@ -4160,7 +4160,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Busan offers fascinating Korean cultural experiences beyond its beaches, where traditional villages, modern districts, historic sites, and cultural heritage create authentic insights that make cultural tours perfect for understanding Korean culture! Cultural tours take you into authentic Busan culture, from visiting preserved traditional villages to exploring modern cultural districts, from understanding Korean traditions to experiencing local life, and from seeing historic sites to discovering why Busan culture is so distinct. Experience the cultural richness that defines Busan, learn about Korean customs and heritage, understand local way of life, and discover why cultural tours offer perfect insights into Korean culture. Whether you're seeking traditional villages, cultural districts, historical sites, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Busan unique. From traditions to villages, from history to modern life, cultural tours ensure you experience the authentic culture that defines Busan!`,
 
       seo: {
-        title: 'Busan Cultural Tours 2025: Traditional Villages & Korean Heritage',
+        title: 'Busan Cultural Tours 2026: Traditional Villages & Korean Heritage',
         description: 'Book Busan cultural tours! Visit traditional villages, explore cultural districts & discover Korean heritage. Experience authentic Busan culture. From $60.',
         keywords: 'Busan cultural tours, Korean culture Busan, traditional village tours, cultural tours Busan',
       },
@@ -4312,7 +4312,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Busan is famous for its beautiful beaches, where pristine sands, clear waters, and vibrant beach culture create beach experiences that make beach tours essential for enjoying Korea's coastal paradise! Beach tours take you to Busan's best beaches, from visiting the famous Haeundae Beach to exploring Gwangalli Beach with its bridge views, from experiencing beach activities to learning about Korean beach culture, and from seeing stunning coastlines to discovering why Busan beaches are beloved. Experience the beach paradise that defines Busan, see why the beaches are so popular with Koreans, enjoy pristine sands and coastal beauty, and discover why beach tours are perfect ways to appreciate Busan's coastal setting. Whether you're seeking famous beaches, beach activities, or comprehensive beach exploration, beach tours provide engaging ways to discover the beautiful beaches that make Busan special. From Haeundae to Songdo, from popular to serene, beach tours ensure you experience the incredible beaches that define Busan!`,
 
       seo: {
-        title: 'Busan Beach Tours 2025: Haeundae & Gwangalli Beach Paradise',
+        title: 'Busan Beach Tours 2026: Haeundae & Gwangalli Beach Paradise',
         description: 'Book Busan beach tours! Visit Haeundae Beach, Gwangalli Beach & stunning coastline. Discover Korea\'s beach paradise. From $50.',
         keywords: 'Busan beach tours, Haeundae Beach, Gwangalli Beach tours, beach tours Busan',
       },
@@ -4464,7 +4464,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Busan is Korea's food paradise, where fresh seafood, Korean street food, and culinary specialties create food experiences that make food tours essential for understanding Korean cuisine! Food tours take you through Busan's incredible food scene, from tasting fresh seafood at Jagalchi Fish Market to trying traditional Korean dishes, from experiencing street food culture to understanding local food traditions, and from savoring famous dishes to discovering why Busan food is legendary. Experience the culinary richness that defines Busan, see why the city is famous for food, learn about Korean cuisine and seafood culture, and discover why food tours offer perfect ways to taste authentic Korean flavors. Whether you're seeking seafood experiences, street food, traditional dishes, or comprehensive culinary exploration, food tours provide delicious journeys that showcase the incredible food that makes Busan special. From markets to restaurants, from seafood to street food, food tours ensure you taste the flavors that define Busan!`,
 
       seo: {
-        title: 'Busan Food Tours 2025: Seafood & Korean Culinary Delights',
+        title: 'Busan Food Tours 2026: Seafood & Korean Culinary Delights',
         description: 'Book Busan food tours! Taste fresh seafood, Korean street food & culinary specialties. Discover Korea\'s food capital. From $70.',
         keywords: 'Busan food tours, Korean food Busan, Jagalchi Fish Market, food tours Busan',
       },
@@ -4616,7 +4616,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Busan showcases beautiful Korean Buddhist temples, where ancient monasteries, mountain spirituality, and Buddhist heritage create temple experiences that make temple tours perfect for experiencing Korean religious culture! Temple tours take you to Busan's most beautiful temples, from visiting historic Beomeosa Temple to exploring seaside Haedong Yonggungsa Temple, from learning about Buddhism to experiencing temple life, and from seeing spectacular mountain views to discovering why Korean temples are significant. Experience the spiritual beauty that defines Busan temples, see why temple architecture is so beautiful, learn about Buddhist traditions and Korean spirituality, and discover why temple tours offer peaceful journeys through Korean heritage. Whether you're seeking mountain temples, seaside temples, or comprehensive temple exploration, temple tours provide serene ways to explore the spiritual heart that makes Busan special. From mountains to coast, from ancient to scenic, temple tours ensure you experience the beautiful temples that define Busan!`,
 
       seo: {
-        title: 'Busan Temple Tours 2025: Beomeosa & Haedong Yonggungsa Temples',
+        title: 'Busan Temple Tours 2026: Beomeosa & Haedong Yonggungsa Temples',
         description: 'Book Busan temple tours! Visit Beomeosa Temple, Haedong Yonggungsa & Korean Buddhist heritage. Experience mountain spirituality. From $55.',
         keywords: 'Busan temple tours, Beomeosa Temple, Haedong Yonggungsa, temple tours Busan',
       },
@@ -4768,7 +4768,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Busan boasts vibrant traditional markets, where fresh seafood, local produce, and market culture create market experiences that make market tours perfect for experiencing authentic Korean market life! Market tours take you through Busan's bustling markets, from exploring the famous Jagalchi Fish Market to browsing Gukje Traditional Market, from tasting street food to learning about market traditions, and from seeing fresh catches to discovering why Busan markets are legendary. Experience the market vitality that defines Busan, see why markets are central to Korean culture, learn about market life and local commerce, and discover why market tours offer authentic insights into Korean daily life. Whether you're seeking fish markets, traditional markets, street food, or comprehensive market exploration, market tours provide engaging ways to experience the bustling markets that make Busan special. From Jagalchi to Gukje, from seafood to textiles, market tours ensure you experience the authentic markets that define Busan!`,
 
       seo: {
-        title: 'Busan Market Tours 2025: Jagalchi Fish Market & Traditional Markets',
+        title: 'Busan Market Tours 2026: Jagalchi Fish Market & Traditional Markets',
         description: 'Book Busan market tours! Explore Jagalchi Fish Market, Gukje Market & traditional market culture. Experience authentic Korean markets. From $50.',
         keywords: 'Busan market tours, Jagalchi Fish Market, Gukje Market, market tours Busan',
       },
@@ -4920,7 +4920,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Busan offers spectacular photography opportunities, where colorful villages, scenic coastline, temples, and urban landscapes create photography experiences that make photography tours perfect for capturing Korea's photogenic city! Photography tours take you to Busan's most beautiful locations, from photographing the colorful Gamcheon Culture Village to capturing scenic beaches and temples, from learning photography techniques to getting expert guidance, and from shooting at golden hour to discovering why Busan is a photographer's paradise. Experience the photographic beauty that defines Busan, see why the city is so photogenic, learn about composition and techniques, and discover why photography tours offer perfect ways to capture stunning images. Whether you're seeking village photography, coastal scenery, temple shots, or comprehensive photographic exploration, photography tours provide inspiring journeys that showcase the incredible beauty that makes Busan special. From villages to beaches, from sunrise to sunset, photography tours ensure you capture the stunning scenes that define Busan!`,
 
       seo: {
-        title: 'Busan Photography Tours 2025: Gamcheon Village & Scenic Photography',
+        title: 'Busan Photography Tours 2026: Gamcheon Village & Scenic Photography',
         description: 'Book Busan photography tours! Capture Gamcheon Culture Village, beaches & temples with expert guidance. Discover Korea\'s most photogenic city. From $80.',
         keywords: 'Busan photography tours, Gamcheon Culture Village photography, photography tours Busan',
       },
@@ -5074,7 +5074,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Cairns is the gateway to the Great Barrier Reef, where spectacular coral reefs, diverse marine life, and world-class diving create reef experiences that make reef tours essential for experiencing Australia's natural wonder! Reef tours take you to the Great Barrier Reef, from snorkeling vibrant coral gardens to diving with tropical fish, from viewing coral formations to learning about reef ecosystems, and from discovering marine biodiversity to understanding why the reef is a UNESCO World Heritage site. Experience the underwater beauty that defines the Great Barrier Reef, see why the reef is so spectacular, learn about marine conservation and reef health, and discover why reef tours offer unforgettable journeys through one of the world's most extraordinary natural wonders. Whether you're seeking snorkeling, diving, reef education, or comprehensive reef exploration, reef tours provide remarkable ways to experience the incredible underwater world that makes the Great Barrier Reef legendary. From corals to fish, from snorkelers to divers, reef tours ensure you experience the spectacular reef that defines Cairns!`,
 
       seo: {
-        title: 'Cairns Reef Tours 2025: Great Barrier Reef Snorkeling & Diving',
+        title: 'Cairns Reef Tours 2026: Great Barrier Reef Snorkeling & Diving',
         description: 'Book Cairns reef tours! Experience Great Barrier Reef snorkeling, diving & coral reefs. Discover world\'s largest reef system. From $180.',
         keywords: 'Cairns reef tours, Great Barrier Reef tours, snorkeling Cairns, diving Cairns',
       },
@@ -5226,7 +5226,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Cairns offers access to spectacular tropical rainforests, where ancient forests, diverse wildlife, and indigenous culture create rainforest experiences that make rainforest tours perfect for experiencing Queensland's natural heritage! Rainforest tours take you into tropical rainforest ecosystems, from exploring Daintree Rainforest (World Heritage listed) to visiting Kuranda village, from seeing rare wildlife to learning about indigenous culture, and from discovering ancient vegetation to understanding why these forests are globally significant. Experience the rainforest beauty that surrounds Cairns, see why the forests are so unique, learn about biodiversity and conservation, and discover why rainforest tours offer fascinating journeys through one of the world's oldest rainforest ecosystems. Whether you're seeking jungle walks, wildlife spotting, cultural experiences, or comprehensive rainforest exploration, rainforest tours provide engaging ways to experience the incredible forests that make the Cairns region special. From Daintree to Kuranda, from walks to Skyrail, rainforest tours ensure you experience the spectacular rainforests that define the region!`,
 
       seo: {
-        title: 'Cairns Rainforest Tours 2025: Daintree & Kuranda Jungle Adventures',
+        title: 'Cairns Rainforest Tours 2026: Daintree & Kuranda Jungle Adventures',
         description: 'Book Cairns rainforest tours! Explore Daintree Rainforest, Kuranda & tropical jungle. Discover ancient rainforest ecosystems. From $120.',
         keywords: 'Cairns rainforest tours, Daintree Rainforest, Kuranda tours, rainforest tours Cairns',
       },
@@ -5378,7 +5378,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Cairns is Australia's adventure capital, where thrilling activities, extreme sports, and outdoor adventures create adventure experiences that make adventure tours perfect for adrenaline seekers! Adventure tours take you into Cairns' exciting adventure scene, from bungy jumping at AJ Hackett to white water rafting on Tully River, from jungle surfing to abseiling, and from experiencing extreme thrills to discovering why Cairns is an adventure paradise. Experience the excitement that defines Cairns adventures, see why the region attracts adventure enthusiasts, try different extreme activities, and discover why adventure tours provide perfect ways to add thrills to your Cairns visit. Whether you're seeking bungy jumping, white water rafting, jungle adventures, or comprehensive adventure exploration, adventure tours offer heart-pounding journeys that showcase the adventurous side that makes Cairns special. From heights to rapids, from skydiving to ATV rides, adventure tours ensure you experience the thrilling adventures that define Cairns!`,
 
       seo: {
-        title: 'Cairns Adventure Tours 2025: Bungy Jumping & White Water Rafting',
+        title: 'Cairns Adventure Tours 2026: Bungy Jumping & White Water Rafting',
         description: 'Book Cairns adventure tours! Experience bungy jumping, white water rafting & extreme adventures. Discover Australia\'s adventure capital. From $95.',
         keywords: 'Cairns adventure tours, bungy jumping Cairns, white water rafting Cairns, adventure tours Cairns',
       },
@@ -5530,7 +5530,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Cairns offers access to rich indigenous culture, where Aboriginal heritage, Dreamtime stories, and traditional practices create cultural experiences that make cultural tours perfect for understanding Australia's ancient culture! Cultural tours take you into Aboriginal culture, from visiting indigenous communities to learning about Dreamtime stories, from experiencing traditional activities to understanding connection to land, and from seeing cultural sites to discovering why indigenous culture is significant. Experience the cultural richness that defines the region, learn about Aboriginal traditions and heritage, understand connection to country, and discover why cultural tours offer respectful insights into Australia's oldest living culture. Whether you're seeking indigenous experiences, cultural performances, traditional activities, or comprehensive cultural exploration, cultural tours provide meaningful journeys that showcase the cultural heart that makes the Cairns region special. From Dreamtime to didgeridoo, from bush tucker to traditional dance, cultural tours ensure you experience the authentic culture that defines ancient Australia!`,
 
       seo: {
-        title: 'Cairns Cultural Tours 2025: Aboriginal Heritage & Dreamtime Stories',
+        title: 'Cairns Cultural Tours 2026: Aboriginal Heritage & Dreamtime Stories',
         description: 'Book Cairns cultural tours! Experience Aboriginal culture, Dreamtime stories & indigenous heritage. Discover ancient Australian culture. From $85.',
         keywords: 'Cairns cultural tours, Aboriginal culture Cairns, Dreamtime tours, cultural tours Cairns',
       },
@@ -5682,7 +5682,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Cairns offers incredible wildlife encounters, where unique Australian animals, natural habitats, and wildlife sanctuaries create wildlife experiences that make wildlife tours perfect for experiencing Australia's iconic fauna! Wildlife tours take you to see Australian wildlife, from spotting crocodiles in their natural habitat to encountering kangaroos and wallabies, from seeing birdlife to learning about native species, and from visiting sanctuaries to understanding why Australian wildlife is so unique. Experience the wildlife diversity that surrounds Cairns, see why Australia's animals are fascinating, learn about conservation and animal behavior, and discover why wildlife tours offer remarkable ways to experience unique fauna. Whether you're seeking crocodile spotting, sanctuary visits, bird watching, or comprehensive wildlife exploration, wildlife tours provide engaging journeys that showcase the incredible animals that make Australia special. From crocodiles to koalas, from wild rivers to sanctuaries, wildlife tours ensure you experience the extraordinary wildlife that defines Australia!`,
 
       seo: {
-        title: 'Cairns Wildlife Tours 2025: Crocodiles & Australian Animals',
+        title: 'Cairns Wildlife Tours 2026: Crocodiles & Australian Animals',
         description: 'Book Cairns wildlife tours! See crocodiles, kangaroos & native wildlife. Discover unique Australian animals. From $75.',
         keywords: 'Cairns wildlife tours, crocodile tours Cairns, Australian wildlife, wildlife tours Cairns',
       },
@@ -5834,7 +5834,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Cairns offers exciting water sports beyond reef experiences, where jet skiing, parasailing, kayaking, and aquatic adventures create water sports experiences that make water sports perfect for active enjoyment! Water sports take you onto Cairns waters, from jet skiing across bays to parasailing with stunning views, from kayaking calm waters to trying various aquatic activities, and from experiencing water thrills to discovering why Cairns offers diverse water sports. Experience the excitement that Cairns waters can offer, try different water activities, understand the range of adventures available, and discover why water sports provide perfect ways to add variety to your Cairns visit. Whether you're seeking jet skiing, parasailing, kayaking, or comprehensive water activities, water sports offer engaging journeys that showcase the adventurous waters that make Cairns special. From jet skis to kayaks, from exciting to peaceful, water sports ensure you experience the thrilling aquatic adventures beyond the reef!`,
 
       seo: {
-        title: 'Cairns Water Sports 2025: Jet Skiing & Aquatic Adventures',
+        title: 'Cairns Water Sports 2026: Jet Skiing & Aquatic Adventures',
         description: 'Book Cairns water sports! Experience jet skiing, parasailing & water activities. Discover aquatic adventures beyond reef. From $70.',
         keywords: 'Cairns water sports, jet skiing Cairns, parasailing Cairns, water sports Cairns',
       },
@@ -5988,7 +5988,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Cebu is the Philippines' adventure capital, where canyoneering, whale shark encounters, cliff diving, and extreme activities create adventure experiences that make adventure tours perfect for thrill seekers! Adventure tours take you into Cebu's exciting adventure scene, from canyoneering through Kawasan Falls to swimming with whale sharks in Oslob, from cliff diving at Kawasan to trying various extreme activities, and from experiencing adrenaline rushes to discovering why Cebu is an adventure paradise. Experience the excitement that defines Cebu adventures, see why the island attracts adventure enthusiasts, try different extreme activities, and discover why adventure tours provide perfect ways to add thrills to your Cebu visit. Whether you're seeking canyoneering, whale shark encounters, cliff diving, or comprehensive adventure exploration, adventure tours offer heart-pounding journeys that showcase the adventurous side that makes Cebu special. From canyons to oceans, from heights to depths, adventure tours ensure you experience the thrilling adventures that define Cebu!`,
 
       seo: {
-        title: 'Cebu Adventure Tours 2025: Canyoneering & Whale Shark Encounters',
+        title: 'Cebu Adventure Tours 2026: Canyoneering & Whale Shark Encounters',
         description: 'Book Cebu adventure tours! Experience canyoneering, whale shark watching & extreme adventures. Discover Philippines\' adventure capital. From $85.',
         keywords: 'Cebu adventure tours, canyoneering Cebu, whale shark Cebu, adventure tours Cebu',
       },
@@ -6140,7 +6140,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Cebu offers stunning beaches, where pristine white sands, crystal-clear waters, and tropical beauty create beach experiences that make beach tours essential for enjoying the Philippines' coastal paradise! Beach tours take you to Cebu's best beaches, from visiting Bantayan Island's beautiful shores to exploring Malapascua's pristine beaches, from experiencing beach activities to learning about beach culture, and from seeing stunning coastlines to discovering why Cebu beaches are beloved. Experience the beach paradise that defines Cebu, see why the beaches are so beautiful, enjoy pristine sands and clear waters, and discover why beach tours are perfect ways to appreciate Cebu's coastal setting. Whether you're seeking island beaches, beach activities, or comprehensive beach exploration, beach tours provide relaxing ways to discover the beautiful beaches that make Cebu special. From Bantayan to Malapascua, from popular to hidden, beach tours ensure you experience the incredible beaches that define Cebu!`,
 
       seo: {
-        title: 'Cebu Beach Tours 2025: Bantayan Island & Malapascua Beach Paradise',
+        title: 'Cebu Beach Tours 2026: Bantayan Island & Malapascua Beach Paradise',
         description: 'Book Cebu beach tours! Visit Bantayan Island, Malapascua & pristine beaches. Discover Philippines\' beach paradise. From $60.',
         keywords: 'Cebu beach tours, Bantayan Island, Malapascua beach, beach tours Cebu',
       },
@@ -6292,7 +6292,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Cebu offers world-class diving, where thresher sharks, sardine runs, vibrant coral reefs, and diverse marine life create diving experiences that make diving tours essential for underwater enthusiasts! Diving tours take you to Cebu's best dive sites, from encountering thresher sharks in Malapascua to witnessing sardine runs in Moalboal, from exploring coral reefs to learning about marine ecosystems, and from discovering underwater beauty to understanding why Cebu diving is legendary. Experience the underwater world that defines Cebu diving, see why the dive sites are so spectacular, learn about marine conservation and reef health, and discover why diving tours offer unforgettable journeys through one of the Philippines' most extraordinary diving destinations. Whether you're seeking shark encounters, reef diving, underwater photography, or comprehensive diving exploration, diving tours provide remarkable ways to experience the incredible underwater world that makes Cebu special. From sharks to sardines, from beginners to advanced, diving tours ensure you experience the spectacular diving that defines Cebu!`,
 
       seo: {
-        title: 'Cebu Diving Tours 2025: Thresher Sharks & Sardine Runs',
+        title: 'Cebu Diving Tours 2026: Thresher Sharks & Sardine Runs',
         description: 'Book Cebu diving tours! Dive with thresher sharks, see sardine runs & explore coral reefs. Discover world-class Philippine diving. From $100.',
         keywords: 'Cebu diving tours, thresher shark diving, sardine run Moalboal, diving tours Cebu',
       },
@@ -6444,7 +6444,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Cebu showcases rich Filipino and Spanish colonial heritage, where historic sites, cultural landmarks, and traditional practices create cultural experiences that make cultural tours perfect for understanding Philippine culture! Cultural tours take you through Cebu's cultural heritage, from visiting Magellan's Cross to exploring colonial churches, from learning about Spanish history to experiencing Filipino traditions, and from seeing historic landmarks to discovering why Cebu culture is significant. Experience the cultural richness that defines Cebu, learn about Filipino customs and heritage, understand Spanish colonial influence, and discover why cultural tours offer fascinating insights into Philippine culture. Whether you're seeking historic sites, colonial architecture, cultural performances, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Cebu special. From history to traditions, from churches to markets, cultural tours ensure you experience the authentic culture that defines Cebu!`,
 
       seo: {
-        title: 'Cebu Cultural Tours 2025: Magellan\'s Cross & Colonial Heritage',
+        title: 'Cebu Cultural Tours 2026: Magellan\'s Cross & Colonial Heritage',
         description: 'Book Cebu cultural tours! Visit Magellan\'s Cross, colonial churches & discover Filipino culture. Experience Spanish colonial legacy. From $50.',
         keywords: 'Cebu cultural tours, Magellan\'s Cross, Filipino culture, cultural tours Cebu',
       },
@@ -6596,7 +6596,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Cebu offers stunning waterfalls, where cascading waters, natural pools, and tropical settings create waterfall experiences that make waterfall tours perfect for nature lovers! Waterfall tours take you to Cebu's most beautiful waterfalls, from visiting the famous Kawasan Falls to exploring Tumalog Falls, from swimming in natural pools to learning about waterfall ecosystems, and from seeing spectacular cascades to discovering why Cebu waterfalls are beloved. Experience the natural beauty that defines Cebu waterfalls, see why the falls are so popular, enjoy refreshing swimming, and discover why waterfall tours offer perfect ways to appreciate Cebu's natural setting. Whether you're seeking famous falls, hidden waterfalls, swimming experiences, or comprehensive waterfall exploration, waterfall tours provide refreshing journeys that showcase the beautiful waterfalls that make Cebu special. From Kawasan to Tumalog, from popular to secluded, waterfall tours ensure you experience the incredible waterfalls that define Cebu!`,
 
       seo: {
-        title: 'Cebu Waterfall Tours 2025: Kawasan Falls & Natural Swimming',
+        title: 'Cebu Waterfall Tours 2026: Kawasan Falls & Natural Swimming',
         description: 'Book Cebu waterfall tours! Visit Kawasan Falls, Tumalog Falls & natural pools. Discover beautiful Philippine waterfalls. From $70.',
         keywords: 'Cebu waterfall tours, Kawasan Falls, Tumalog Falls, waterfall tours Cebu',
       },
@@ -6748,7 +6748,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Cebu offers beautiful island destinations, where pristine beaches, crystal-clear waters, and island charm create island experiences that make island tours perfect for discovering the Philippines' island paradise! Island tours take you to Cebu's best islands, from visiting Bantayan Island to exploring Camotes Islands, from experiencing island beaches to learning about island life, and from seeing stunning coastlines to discovering why Cebu islands are beloved. Experience the island beauty that defines Cebu, see why the islands are so captivating, enjoy pristine sands and clear waters, and discover why island tours offer perfect ways to appreciate Cebu's island setting. Whether you're seeking famous islands, hidden gems, beach activities, or comprehensive island exploration, island tours provide relaxing journeys that showcase the beautiful islands that make Cebu special. From Bantayan to Camotes, from popular to secluded, island tours ensure you experience the incredible islands that define Cebu!`,
 
       seo: {
-        title: 'Cebu Island Tours 2025: Bantayan & Camotes Island Paradise',
+        title: 'Cebu Island Tours 2026: Bantayan & Camotes Island Paradise',
         description: 'Book Cebu island tours! Visit Bantayan Island, Camotes Islands & pristine beaches. Discover Philippines\' island paradise. From $80.',
         keywords: 'Cebu island tours, Bantayan Island, Camotes Islands, island tours Cebu',
       },
@@ -6902,7 +6902,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Chiang Mai showcases beautiful Thai Buddhist temples, where ancient wats, golden chedis, and Buddhist heritage create temple experiences that make temple tours perfect for experiencing Northern Thailand's spiritual culture! Temple tours take you to Chiang Mai's most beautiful temples, from visiting the famous Wat Phra That Doi Suthep on the mountain to exploring ancient city temples, from learning about Buddhism to experiencing temple ceremonies, and from seeing spectacular architecture to discovering why Thai temples are significant. Experience the spiritual beauty that defines Chiang Mai temples, see why the temples are so revered, learn about Buddhist traditions and Thai spirituality, and discover why temple tours offer peaceful journeys through Thai heritage. Whether you're seeking mountain temples, city temples, temple architecture, or comprehensive temple exploration, temple tours provide serene ways to explore the spiritual heart that makes Chiang Mai special. From Doi Suthep to Old City, from ancient to golden, temple tours ensure you experience the beautiful temples that define Chiang Mai!`,
 
       seo: {
-        title: 'Chiang Mai Temple Tours 2025: Wat Doi Suthep & Ancient Temples',
+        title: 'Chiang Mai Temple Tours 2026: Wat Doi Suthep & Ancient Temples',
         description: 'Book Chiang Mai temple tours! Visit Wat Doi Suthep, ancient city temples & Thai Buddhist heritage. Experience mountain spirituality. From $60.',
         keywords: 'Chiang Mai temple tours, Wat Doi Suthep, Thai temples, temple tours Chiang Mai',
       },
@@ -7054,7 +7054,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Chiang Mai offers fascinating Northern Thai cultural experiences, where hill tribes, traditional crafts, local customs, and cultural heritage create authentic insights that make cultural tours perfect for understanding Thai culture! Cultural tours take you into authentic Chiang Mai culture, from visiting hill tribe villages to exploring traditional craft workshops, from understanding Northern Thai traditions to experiencing local life, and from seeing cultural performances to discovering why Chiang Mai culture is so distinct. Experience the cultural richness that defines Chiang Mai, learn about hill tribe communities and traditional crafts, understand local way of life, and discover why cultural tours offer fascinating insights into Northern Thai culture. Whether you're seeking hill tribe visits, craft workshops, cultural performances, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Chiang Mai unique. From villages to workshops, from traditions to modern life, cultural tours ensure you experience the authentic culture that defines Chiang Mai!`,
 
       seo: {
-        title: 'Chiang Mai Cultural Tours 2025: Hill Tribes & Traditional Crafts',
+        title: 'Chiang Mai Cultural Tours 2026: Hill Tribes & Traditional Crafts',
         description: 'Book Chiang Mai cultural tours! Visit hill tribes, traditional crafts & Northern Thai culture. Experience unique cultural heritage. From $65.',
         keywords: 'Chiang Mai cultural tours, hill tribe tours, traditional crafts, cultural tours Chiang Mai',
       },
@@ -7206,7 +7206,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Chiang Mai is surrounded by beautiful mountains, where scenic peaks, mountain villages, and elevated viewpoints create mountain experiences that make mountain tours perfect for nature lovers! Mountain tours take you into Chiang Mai's mountain areas, from visiting Doi Inthanon (Thailand's highest peak) to exploring Doi Suthep mountain, from seeing mountain villages to learning about highland culture, and from experiencing cool mountain air to discovering why the mountains are significant. Experience the mountain beauty that surrounds Chiang Mai, see why the peaks are so popular, learn about highland ecosystems and mountain life, and discover why mountain tours offer refreshing journeys through Northern Thailand's highlands. Whether you're seeking peak visits, mountain villages, scenic viewpoints, or comprehensive mountain exploration, mountain tours provide engaging ways to experience the incredible mountains that surround Chiang Mai. From Doi Inthanon to Doi Suthep, from peaks to villages, mountain tours ensure you experience the spectacular mountains that define the region!`,
 
       seo: {
-        title: 'Chiang Mai Mountain Tours 2025: Doi Inthanon & Scenic Peaks',
+        title: 'Chiang Mai Mountain Tours 2026: Doi Inthanon & Scenic Peaks',
         description: 'Book Chiang Mai mountain tours! Visit Doi Inthanon, Doi Suthep & mountain villages. Discover scenic peaks and cool mountain air. From $75.',
         keywords: 'Chiang Mai mountain tours, Doi Inthanon, Doi Suthep, mountain tours Chiang Mai',
       },
@@ -7358,7 +7358,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Chiang Mai offers ethical elephant experiences, where elephant sanctuaries, responsible tourism, and elephant encounters create meaningful experiences that make elephant tours perfect for animal lovers! Elephant tours take you to ethical elephant facilities, from visiting elephant sanctuaries to learning about elephant conservation, from feeding elephants to understanding responsible tourism, and from seeing elephants in natural settings to discovering why ethical elephant tourism is important. Experience the meaningful encounters that define ethical elephant tourism, see why responsible sanctuaries matter, learn about elephant behavior and conservation, and discover why elephant tours offer educational journeys through elephant care and protection. Whether you're seeking sanctuary visits, feeding experiences, jungle walks, or comprehensive elephant exploration, elephant tours provide responsible ways to experience these gentle giants that make Chiang Mai special. From feeding to bathing, from sanctuaries to education, elephant tours ensure you experience ethical elephant encounters that define responsible tourism!`,
 
       seo: {
-        title: 'Chiang Mai Elephant Tours 2025: Ethical Sanctuaries & Responsible Tourism',
+        title: 'Chiang Mai Elephant Tours 2026: Ethical Sanctuaries & Responsible Tourism',
         description: 'Book Chiang Mai elephant tours! Visit ethical elephant sanctuaries, learn about conservation & responsible elephant tourism. Support animal welfare. From $90.',
         keywords: 'Chiang Mai elephant tours, elephant sanctuary, ethical elephant tours, elephant tours Chiang Mai',
       },
@@ -7510,7 +7510,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Chiang Mai boasts vibrant markets, where local crafts, street food, traditional goods, and market culture create market experiences that make market tours perfect for experiencing authentic Thai market life! Market tours take you through Chiang Mai's bustling markets, from exploring the famous Night Bazaar to browsing Sunday Walking Street, from tasting street food to learning about local crafts, and from seeing traditional goods to discovering why Chiang Mai markets are beloved. Experience the market vitality that defines Chiang Mai, see why markets are central to Thai culture, learn about market life and local commerce, and discover why market tours offer authentic insights into Thai daily life. Whether you're seeking night markets, walking streets, food markets, or comprehensive market exploration, market tours provide engaging ways to experience the bustling markets that make Chiang Mai special. From Night Bazaar to Sunday Market, from crafts to food, market tours ensure you experience the authentic markets that define Chiang Mai!`,
 
       seo: {
-        title: 'Chiang Mai Market Tours 2025: Night Bazaar & Sunday Walking Street',
+        title: 'Chiang Mai Market Tours 2026: Night Bazaar & Sunday Walking Street',
         description: 'Book Chiang Mai market tours! Explore Night Bazaar, Sunday Walking Street & local markets. Discover authentic Thai market culture. From $45.',
         keywords: 'Chiang Mai market tours, Night Bazaar, Sunday Walking Street, market tours Chiang Mai',
       },
@@ -7662,7 +7662,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Chiang Mai offers exciting adventures, where ziplining, ATV rides, jungle activities, and outdoor adventures create adventure experiences that make adventure tours perfect for thrill seekers! Adventure tours take you into Chiang Mai's exciting adventure scene, from ziplining through jungle canopies to ATV rides through trails, from white water rafting to trying various outdoor activities, and from experiencing thrills to discovering why Chiang Mai is an adventure destination. Experience the excitement that defines Chiang Mai adventures, see why the region attracts adventure enthusiasts, try different outdoor activities, and discover why adventure tours provide perfect ways to add thrills to your Chiang Mai visit. Whether you're seeking ziplining, ATV adventures, rafting, or comprehensive adventure exploration, adventure tours offer heart-pounding journeys that showcase the adventurous side that makes Chiang Mai special. From heights to trails, from water to land, adventure tours ensure you experience the thrilling adventures that define Chiang Mai!`,
 
       seo: {
-        title: 'Chiang Mai Adventure Tours 2025: Ziplining & ATV Jungle Adventures',
+        title: 'Chiang Mai Adventure Tours 2026: Ziplining & ATV Jungle Adventures',
         description: 'Book Chiang Mai adventure tours! Experience ziplining, ATV rides & outdoor adventures. Discover exciting jungle activities. From $80.',
         keywords: 'Chiang Mai adventure tours, ziplining Chiang Mai, ATV tours, adventure tours Chiang Mai',
       },
@@ -7816,7 +7816,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Denarau Island is Fiji's premier luxury destination, where luxury resorts, exclusive experiences, and world-class amenities create unparalleled luxury experiences that make luxury tours perfect for indulgence! Luxury tours take you into Denarau's luxury resort world, from staying in world-class resorts to enjoying private yacht charters, from indulging in spa treatments to experiencing gourmet dining, and from personalized service to discovering why Denarau sets the standard for tropical luxury. Experience the ultimate in tropical luxury, see why the island is Fiji's luxury capital, enjoy exclusive amenities and services, and discover why luxury tours offer perfect ways to experience Fiji's finest. Whether you're seeking resort luxury, private excursions, spa experiences, or comprehensive luxury exploration, luxury tours provide indulgent journeys that showcase the extraordinary luxury that makes Denarau special. From resorts to yachts, from spas to dining, luxury tours ensure you experience the ultimate tropical luxury!`,
 
       seo: {
-        title: 'Denarau Island Luxury Tours 2025: Luxury Resorts & Exclusive Paradise',
+        title: 'Denarau Island Luxury Tours 2026: Luxury Resorts & Exclusive Paradise',
         description: 'Book Denarau Island luxury tours! Experience luxury resorts, private excursions & ultimate tropical luxury. Discover Fiji\'s luxury capital. From $200.',
         keywords: 'Denarau Island luxury tours, luxury resorts Fiji, Denarau luxury, luxury tours Denarau',
       },
@@ -7968,7 +7968,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Denarau Island offers world-class golf, where championship courses, ocean views, and golf resort packages create exceptional golf experiences that make golf tours perfect for golf enthusiasts! Golf tours take you to Denarau's premier golf facilities, from playing championship courses to enjoying ocean-view fairways, from golf resort packages to learning about course design, and from experiencing tropical golf to discovering why Denarau is Fiji's golf capital. Experience the golf excellence that defines Denarau, see why the courses are so acclaimed, enjoy challenging layouts and beautiful settings, and discover why golf tours offer perfect ways to combine golf with tropical paradise. Whether you're seeking championship play, resort golf packages, ocean-view courses, or comprehensive golf exploration, golf tours provide memorable rounds that showcase the exceptional golf that makes Denarau special. From fairways to greens, from challenges to relaxation, golf tours ensure you experience the world-class golf that defines Denarau!`,
 
       seo: {
-        title: 'Denarau Island Golf Tours 2025: Championship Courses & Ocean Views',
+        title: 'Denarau Island Golf Tours 2026: Championship Courses & Ocean Views',
         description: 'Book Denarau Island golf tours! Play championship courses, ocean-view fairways & Fiji\'s premier golf. Discover world-class tropical golf. From $150.',
         keywords: 'Denarau Island golf tours, Fiji golf, championship golf courses, golf tours Denarau',
       },
@@ -8120,7 +8120,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Denarau Island offers world-class spa experiences, where luxury resort spas, traditional Fijian treatments, and wellness therapies create rejuvenating spa experiences that make spa tours perfect for relaxation! Spa tours take you to Denarau's premier spa facilities, from enjoying luxury resort spas to experiencing traditional Fijian treatments, from wellness therapies to learning about spa culture, and from experiencing ultimate relaxation to discovering why Denarau is Fiji's spa capital. Experience the spa excellence that defines Denarau, see why the spas are so renowned, enjoy luxurious treatments and beautiful settings, and discover why spa tours offer perfect ways to combine relaxation with tropical paradise. Whether you're seeking resort spas, traditional treatments, wellness therapies, or comprehensive spa exploration, spa tours provide rejuvenating journeys that showcase the exceptional spa experiences that make Denarau special. From massages to facials, from relaxation to wellness, spa tours ensure you experience the ultimate spa luxury!`,
 
       seo: {
-        title: 'Denarau Island Spa Tours 2025: Luxury Resort Spas & Wellness Treatments',
+        title: 'Denarau Island Spa Tours 2026: Luxury Resort Spas & Wellness Treatments',
         description: 'Book Denarau Island spa tours! Experience luxury resort spas, traditional Fijian treatments & wellness therapies. Discover Fiji\'s premier spa destination. From $120.',
         keywords: 'Denarau Island spa tours, Fiji spa, resort spas, spa tours Denarau',
       },
@@ -8272,7 +8272,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Denarau Island offers beautiful beaches, where pristine sands, tropical waters, and resort beachfronts create beach experiences that make beach tours perfect for coastal enjoyment! Beach tours take you to Denarau's best beach areas, from enjoying resort beaches to exploring coastal activities, from beach relaxation to learning about beach culture, and from seeing stunning coastlines to discovering why Denarau beaches are beloved. Experience the beach paradise that defines Denarau, see why the beaches are so popular, enjoy pristine sands and clear waters, and discover why beach tours offer perfect ways to appreciate Denarau's coastal setting. Whether you're seeking resort beaches, beach activities, water sports, or comprehensive beach exploration, beach tours provide relaxing ways to discover the beautiful beaches that make Denarau special. From sands to waters, from relaxation to activities, beach tours ensure you experience the incredible beaches that define Denarau!`,
 
       seo: {
-        title: 'Denarau Island Beach Tours 2025: Resort Beaches & Tropical Paradise',
+        title: 'Denarau Island Beach Tours 2026: Resort Beaches & Tropical Paradise',
         description: 'Book Denarau Island beach tours! Visit resort beaches, enjoy coastal activities & pristine sands. Discover beautiful Fijian beaches. From $60.',
         keywords: 'Denarau Island beach tours, Fiji beaches, resort beaches, beach tours Denarau',
       },
@@ -8424,7 +8424,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Denarau Island offers exciting water sports, where jet skiing, snorkeling, kayaking, and aquatic adventures create thrilling water experiences that make water sports tours perfect for adventure seekers! Water sports tours take you into Denarau's exciting aquatic scene, from jet skiing on crystal waters to snorkeling vibrant reefs, from kayaking coastal areas to trying various water activities, and from experiencing water thrills to discovering why Denarau is perfect for water sports. Experience the excitement that defines Denarau water sports, see why the activities are so popular, try different aquatic adventures, and discover why water sports tours provide perfect ways to add thrills to your Denarau visit. Whether you're seeking jet skiing, snorkeling, kayaking, or comprehensive water sports exploration, water sports tours offer heart-pounding journeys that showcase the adventurous aquatic side that makes Denarau special. From speeds to depths, from thrills to exploration, water sports tours ensure you experience the exciting water activities that define Denarau!`,
 
       seo: {
-        title: 'Denarau Island Water Sports 2025: Jet Skiing & Snorkeling Adventures',
+        title: 'Denarau Island Water Sports 2026: Jet Skiing & Snorkeling Adventures',
         description: 'Book Denarau Island water sports! Experience jet skiing, snorkeling & aquatic adventures. Discover thrilling Fijian water activities. From $80.',
         keywords: 'Denarau Island water sports, Fiji water sports, jet skiing, snorkeling Denarau',
       },
@@ -8576,7 +8576,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Denarau Island offers authentic Fijian cultural experiences, where village visits, traditional performances, and cultural heritage create meaningful cultural insights that make cultural tours perfect for understanding Fijian culture! Cultural tours take you into authentic Fijian culture, from visiting local villages to experiencing traditional performances, from learning about Fijian customs to understanding cultural heritage, and from seeing cultural demonstrations to discovering why Fijian culture is so vibrant. Experience the cultural richness that defines Fiji, learn about Fijian traditions and customs, understand local way of life, and discover why cultural tours offer fascinating insights into Fijian culture. Whether you're seeking village visits, cultural performances, traditional crafts, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Fiji special. From villages to performances, from traditions to modern life, cultural tours ensure you experience the authentic culture that defines Fiji!`,
 
       seo: {
-        title: 'Denarau Island Cultural Tours 2025: Village Visits & Fijian Heritage',
+        title: 'Denarau Island Cultural Tours 2026: Village Visits & Fijian Heritage',
         description: 'Book Denarau Island cultural tours! Visit Fijian villages, traditional performances & cultural heritage. Experience authentic Fijian culture. From $70.',
         keywords: 'Denarau Island cultural tours, Fijian culture, village visits, cultural tours Denarau',
       },
@@ -8730,7 +8730,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Gili Islands offer beautiful island destinations, where pristine beaches, crystal-clear waters, and island charm create island experiences that make island tours perfect for discovering Indonesia's island paradise! Island tours take you through the three Gili Islands, from visiting Gili Trawangan (largest, most developed) to exploring Gili Meno (peaceful, romantic), from experiencing Gili Air (balanced, laid-back) to learning about island life, and from seeing stunning coastlines to discovering why the Gili Islands are beloved. Experience the island beauty that defines the Gilis, see why the islands are so captivating, enjoy pristine sands and clear waters, and discover why island tours offer perfect ways to appreciate this Indonesian paradise. Whether you're seeking island hopping, beach activities, or comprehensive island exploration, island tours provide relaxing journeys that showcase the beautiful islands that make the Gilis special. From Trawangan to Meno, from popular to peaceful, island tours ensure you experience the incredible islands that define this paradise!`,
 
       seo: {
-        title: 'Gili Islands Island Tours 2025: Gili Trawangan, Meno & Air Paradise',
+        title: 'Gili Islands Island Tours 2026: Gili Trawangan, Meno & Air Paradise',
         description: 'Book Gili Islands island tours! Visit Gili Trawangan, Gili Meno & Gili Air. Discover pristine beaches & island paradise. From $50.',
         keywords: 'Gili Islands island tours, Gili Trawangan, Gili Meno, island tours Gili Islands',
       },
@@ -8882,7 +8882,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Gili Islands offer world-class snorkeling, where sea turtles, vibrant coral reefs, and diverse marine life create snorkeling experiences that make snorkeling tours essential for underwater enthusiasts! Snorkeling tours take you to the Gilis' best snorkeling spots, from encountering sea turtles to exploring coral gardens, from snorkeling around all three islands to learning about marine ecosystems, and from discovering underwater beauty to understanding why Gili snorkeling is legendary. Experience the underwater world that defines Gili snorkeling, see why the snorkeling sites are so spectacular, learn about marine conservation and reef health, and discover why snorkeling tours offer unforgettable journeys through one of Indonesia's most extraordinary snorkeling destinations. Whether you're seeking turtle encounters, reef snorkeling, underwater photography, or comprehensive snorkeling exploration, snorkeling tours provide remarkable ways to experience the incredible underwater world that makes the Gilis special. From turtles to corals, from beginners to advanced, snorkeling tours ensure you experience the spectacular snorkeling that defines the Gili Islands!`,
 
       seo: {
-        title: 'Gili Islands Snorkeling Tours 2025: Sea Turtles & Coral Reefs',
+        title: 'Gili Islands Snorkeling Tours 2026: Sea Turtles & Coral Reefs',
         description: 'Book Gili Islands snorkeling tours! Snorkel with sea turtles, explore coral reefs & vibrant marine life. Discover world-class Indonesian snorkeling. From $35.',
         keywords: 'Gili Islands snorkeling tours, sea turtle snorkeling, coral reefs, snorkeling tours Gili Islands',
       },
@@ -9034,7 +9034,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Gili Islands offer stunning beaches, where pristine white sands, crystal-clear waters, and tropical beauty create beach experiences that make beach tours essential for enjoying Indonesia's coastal paradise! Beach tours take you to the Gilis' best beaches, from visiting Gili Trawangan's popular beaches to exploring Gili Meno's peaceful shores, from experiencing Gili Air's beautiful beaches to learning about beach culture, and from seeing stunning coastlines to discovering why Gili beaches are beloved. Experience the beach paradise that defines the Gilis, see why the beaches are so beautiful, enjoy pristine sands and clear waters, and discover why beach tours are perfect ways to appreciate this Indonesian island setting. Whether you're seeking popular beaches, secluded shores, beach activities, or comprehensive beach exploration, beach tours provide relaxing ways to discover the beautiful beaches that make the Gilis special. From Trawangan to Meno, from popular to peaceful, beach tours ensure you experience the incredible beaches that define the Gili Islands!`,
 
       seo: {
-        title: 'Gili Islands Beach Tours 2025: Pristine Beaches & Tropical Paradise',
+        title: 'Gili Islands Beach Tours 2026: Pristine Beaches & Tropical Paradise',
         description: 'Book Gili Islands beach tours! Visit Gili Trawangan, Gili Meno beaches & pristine sands. Discover beautiful Indonesian beaches. From $40.',
         keywords: 'Gili Islands beach tours, Gili Trawangan beach, Gili Meno beach, beach tours Gili Islands',
       },
@@ -9186,7 +9186,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Gili Islands offer exciting water experiences, where boat tours, water sports, and aquatic activities create water adventures that make water tours perfect for exploring Indonesia's island waters! Water tours take you into the Gilis' exciting aquatic scene, from boat tours around the islands to water sports activities, from exploring coastal waters to learning about marine ecosystems, and from experiencing water thrills to discovering why the Gili waters are perfect for adventures. Experience the excitement that defines Gili water activities, see why the waters are so popular, try different aquatic experiences, and discover why water tours provide perfect ways to explore the islands from the water. Whether you're seeking boat tours, water sports, snorkeling adventures, or comprehensive water exploration, water tours offer engaging journeys that showcase the adventurous aquatic side that makes the Gilis special. From boats to activities, from exploration to thrills, water tours ensure you experience the exciting water activities that define the Gili Islands!`,
 
       seo: {
-        title: 'Gili Islands Water Tours 2025: Boat Tours & Water Sports Adventures',
+        title: 'Gili Islands Water Tours 2026: Boat Tours & Water Sports Adventures',
         description: 'Book Gili Islands water tours! Experience boat tours, water sports & aquatic adventures. Discover exciting Indonesian water activities. From $45.',
         keywords: 'Gili Islands water tours, boat tours Gili Islands, water sports, water tours Gili Islands',
       },
@@ -9338,7 +9338,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Gili Islands offer exciting adventures, where diving, cycling, water activities, and outdoor adventures create adventure experiences that make adventure tours perfect for thrill seekers! Adventure tours take you into the Gilis' exciting adventure scene, from diving vibrant reefs to cycling around islands, from water sports to trying various outdoor activities, and from experiencing thrills to discovering why the Gili Islands are perfect for adventures. Experience the excitement that defines Gili adventures, see why the activities are so popular, try different outdoor experiences, and discover why adventure tours provide perfect ways to add thrills to your Gili Islands visit. Whether you're seeking diving, cycling, water sports, or comprehensive adventure exploration, adventure tours offer heart-pounding journeys that showcase the adventurous side that makes the Gilis special. From depths to heights, from water to land, adventure tours ensure you experience the thrilling adventures that define the Gili Islands!`,
 
       seo: {
-        title: 'Gili Islands Adventure Tours 2025: Diving & Cycling Adventures',
+        title: 'Gili Islands Adventure Tours 2026: Diving & Cycling Adventures',
         description: 'Book Gili Islands adventure tours! Experience diving, cycling & outdoor adventures. Discover exciting Indonesian island activities. From $55.',
         keywords: 'Gili Islands adventure tours, diving Gili Islands, cycling tours, adventure tours Gili Islands',
       },
@@ -9490,7 +9490,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Gili Islands offer perfect relaxation, where spa treatments, beach lounging, peaceful atmosphere, and wellness experiences create relaxation experiences that make relaxation tours perfect for unwinding! Relaxation tours take you into the Gilis' tranquil world, from enjoying spa treatments to beach relaxation, from wellness experiences to learning about island tranquility, and from experiencing peace to discovering why the Gili Islands are perfect for relaxation. Experience the tranquility that defines Gili relaxation, see why the islands are so peaceful, enjoy spa treatments and beach lounging, and discover why relaxation tours offer perfect ways to unwind in paradise. Whether you're seeking spa experiences, beach relaxation, wellness treatments, or comprehensive relaxation exploration, relaxation tours provide rejuvenating journeys that showcase the peaceful side that makes the Gilis special. From spas to beaches, from treatments to tranquility, relaxation tours ensure you experience the ultimate relaxation that defines the Gili Islands!`,
 
       seo: {
-        title: 'Gili Islands Relaxation Tours 2025: Spa Treatments & Beach Relaxation',
+        title: 'Gili Islands Relaxation Tours 2026: Spa Treatments & Beach Relaxation',
         description: 'Book Gili Islands relaxation tours! Experience spa treatments, beach lounging & island tranquility. Discover peaceful Indonesian paradise. From $60.',
         keywords: 'Gili Islands relaxation tours, spa treatments, beach relaxation, relaxation tours Gili Islands',
       },
@@ -9644,7 +9644,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Goa offers stunning beaches along India's west coast, where pristine sands, clear waters, and coastal beauty create beach experiences that make beach tours essential for enjoying India's coastal paradise! Beach tours take you to Goa's best beaches, from visiting Baga Beach's popular shores to exploring Anjuna's laid-back vibe, from experiencing Calangute's golden sands to learning about beach culture, and from seeing stunning coastlines to discovering why Goa beaches are beloved. Experience the beach paradise that defines Goa, see why the beaches are so popular, enjoy pristine sands and palm trees, and discover why beach tours are perfect ways to appreciate Goa's coastal setting. Whether you're seeking popular beaches, secluded coves, beach activities, or comprehensive beach exploration, beach tours provide relaxing ways to discover the beautiful beaches that make Goa special. From Baga to Anjuna, from north to south, beach tours ensure you experience the incredible beaches that define Goa!`,
 
       seo: {
-        title: 'Goa Beach Tours 2025: Baga & Anjuna Beach Paradise',
+        title: 'Goa Beach Tours 2026: Baga & Anjuna Beach Paradise',
         description: 'Book Goa beach tours! Visit Baga Beach, Anjuna & pristine beaches. Discover India\'s beautiful coastal paradise. From $45.',
         keywords: 'Goa beach tours, Baga Beach, Anjuna Beach, beach tours Goa',
       },
@@ -9796,7 +9796,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Goa showcases fascinating cultural fusion, where Portuguese colonial heritage, Hindu temples, and vibrant local traditions create cultural experiences that make cultural tours perfect for understanding Goa's unique identity! Cultural tours take you through Goa's cultural heritage, from visiting Portuguese churches to exploring Hindu temples, from learning about colonial history to experiencing local customs, and from seeing architectural wonders to discovering why Goa culture is so unique. Experience the cultural richness that defines Goa, learn about Indo-Portuguese traditions and customs, understand colonial and local influences, and discover why cultural tours offer fascinating insights into Goa's distinctive culture. Whether you're seeking heritage sites, temple visits, colonial architecture, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Goa special. From churches to temples, from history to traditions, cultural tours ensure you experience the authentic culture that defines Goa!`,
 
       seo: {
-        title: 'Goa Cultural Tours 2025: Portuguese Heritage & Hindu Temples',
+        title: 'Goa Cultural Tours 2026: Portuguese Heritage & Hindu Temples',
         description: 'Book Goa cultural tours! Visit Portuguese churches, Hindu temples & colonial heritage. Experience Indo-Portuguese culture. From $50.',
         keywords: 'Goa cultural tours, Portuguese heritage Goa, Hindu temples, cultural tours Goa',
       },
@@ -9948,7 +9948,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Goa offers delicious cuisine, where Indo-Portuguese fusion, fresh seafood, and local specialties create culinary experiences that make food tours perfect for food lovers! Food tours take you through Goa's culinary scene, from tasting authentic Goan fish curry to trying Portuguese-inspired dishes, from experiencing beachside dining to learning about local ingredients, and from discovering food traditions to understanding why Goan cuisine is so distinctive. Experience the culinary richness that defines Goa, learn about Indo-Portuguese flavors and techniques, understand local food culture, and discover why food tours offer delightful insights into Goa's unique cuisine. Whether you're seeking seafood tours, street food experiences, cooking classes, or comprehensive culinary exploration, food tours provide flavorful journeys that showcase the delicious side that makes Goa special. From beach shacks to restaurants, from traditional to modern, food tours ensure you experience the authentic flavors that define Goa!`,
 
       seo: {
-        title: 'Goa Food Tours 2025: Indo-Portuguese Cuisine & Seafood Delights',
+        title: 'Goa Food Tours 2026: Indo-Portuguese Cuisine & Seafood Delights',
         description: 'Book Goa food tours! Taste authentic Goan fish curry, Indo-Portuguese dishes & seafood specialties. Discover delicious Goan cuisine. From $60.',
         keywords: 'Goa food tours, Goan cuisine, Indo-Portuguese food, food tours Goa',
       },
@@ -10100,7 +10100,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Goa offers exciting adventures, where water sports, jungle activities, and outdoor adventures create adventure experiences that make adventure tours perfect for thrill seekers! Adventure tours take you into Goa's exciting adventure scene, from parasailing on beaches to white water rafting, from jungle trekking to trying various outdoor activities, and from experiencing thrills to discovering why Goa is perfect for adventures. Experience the excitement that defines Goa adventures, see why the activities are so popular, try different outdoor experiences, and discover why adventure tours provide perfect ways to add thrills to your Goa visit. Whether you're seeking water sports, jungle adventures, or comprehensive adventure exploration, adventure tours offer heart-pounding journeys that showcase the adventurous side that makes Goa special. From water to jungle, from heights to depths, adventure tours ensure you experience the thrilling adventures that define Goa!`,
 
       seo: {
-        title: 'Goa Adventure Tours 2025: Water Sports & Jungle Adventures',
+        title: 'Goa Adventure Tours 2026: Water Sports & Jungle Adventures',
         description: 'Book Goa adventure tours! Experience parasailing, jungle trekking & outdoor adventures. Discover exciting Indian coastal activities. From $55.',
         keywords: 'Goa adventure tours, water sports Goa, jungle adventures, adventure tours Goa',
       },
@@ -10252,7 +10252,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Goa showcases rich historical heritage, where Portuguese colonial buildings, ancient temples, and heritage architecture create heritage experiences that make heritage tours perfect for history enthusiasts! Heritage tours take you through Goa's historical legacy, from visiting Old Goa's colonial churches to exploring ancient temples, from learning about Portuguese influence to experiencing architectural wonders, and from seeing UNESCO sites to discovering why Goa heritage is significant. Experience the historical richness that defines Goa, learn about Indo-Portuguese architecture and culture, understand colonial and ancient influences, and discover why heritage tours offer fascinating insights into Goa's past. Whether you're seeking UNESCO sites, colonial buildings, ancient temples, or comprehensive heritage exploration, heritage tours provide engaging journeys that showcase the historical heart that makes Goa special. From churches to temples, from colonial to ancient, heritage tours ensure you experience the remarkable heritage that defines Goa!`,
 
       seo: {
-        title: 'Goa Heritage Tours 2025: Colonial Churches & UNESCO Heritage',
+        title: 'Goa Heritage Tours 2026: Colonial Churches & UNESCO Heritage',
         description: 'Book Goa heritage tours! Visit Old Goa, UNESCO churches & colonial heritage. Explore Indo-Portuguese historical legacy. From $50.',
         keywords: 'Goa heritage tours, Old Goa, UNESCO heritage, heritage tours Goa',
       },
@@ -10404,7 +10404,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Goa offers exciting water sports along India's west coast, where parasailing, jet skiing, banana rides, and aquatic activities create thrilling water experiences that make water sports tours perfect for adventure seekers! Water sports tours take you into Goa's exciting aquatic scene, from parasailing above beaches to jet skiing on waves, from banana rides to trying various water activities, and from experiencing water thrills to discovering why Goa beaches are perfect for water sports. Experience the excitement that defines Goa water sports, see why the activities are so popular, try different aquatic adventures, and discover why water sports tours provide perfect ways to add thrills to your Goa visit. Whether you're seeking parasailing, jet skiing, banana rides, or comprehensive water sports exploration, water sports tours offer heart-pounding journeys that showcase the adventurous aquatic side that makes Goa special. From heights to speeds, from thrills to fun, water sports tours ensure you experience the exciting water activities that define Goa!`,
 
       seo: {
-        title: 'Goa Water Sports Tours 2025: Parasailing & Jet Skiing Adventures',
+        title: 'Goa Water Sports Tours 2026: Parasailing & Jet Skiing Adventures',
         description: 'Book Goa water sports tours! Experience parasailing, jet skiing & aquatic adventures. Discover thrilling Indian beach activities. From $50.',
         keywords: 'Goa water sports tours, parasailing Goa, jet skiing Goa, water sports tours Goa',
       },
@@ -10558,7 +10558,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Gold Coast is Australia's surfing capital, where world-class waves, iconic surf breaks, and surf culture create surfing experiences that make surfing tours essential for surf enthusiasts! Surfing tours take you to the Gold Coast's legendary breaks, from riding famous waves to learning surf techniques, from experiencing surf culture to understanding wave conditions, and from catching perfect waves to discovering why the Gold Coast is a surfing paradise. Experience the wave riding excellence that defines Gold Coast surfing, see why the breaks are so acclaimed, enjoy perfect conditions and surf culture, and discover why surfing tours offer perfect ways to experience Australia's premier surfing destination. Whether you're seeking famous breaks, surf lessons, surf culture tours, or comprehensive surfing exploration, surfing tours provide memorable sessions that showcase the world-class surfing that makes the Gold Coast special. From barrels to beach breaks, from beginners to advanced, surfing tours ensure you experience the perfect surfing that defines the Gold Coast!`,
 
       seo: {
-        title: 'Gold Coast Surfing Tours 2025: Iconic Surf Breaks & Lessons',
+        title: 'Gold Coast Surfing Tours 2026: Iconic Surf Breaks & Lessons',
         description: 'Book Gold Coast surfing tours! Ride world-class waves, learn to surf & experience surf culture. Discover Australia\'s surfing capital. From $60.',
         keywords: 'Gold Coast surfing tours, surf lessons Gold Coast, surfing breaks, surfing tours Gold Coast',
       },
@@ -10710,7 +10710,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Gold Coast boasts world-class theme parks, where thrilling rides, entertainment, and family fun create theme park experiences that make theme park tours essential for families and thrill seekers! Theme park tours take you to the Gold Coast's amazing parks, from Warner Bros. Movie World to Dreamworld, from Sea World to Wet'n'Wild, from experiencing roller coasters to meeting characters, and from enjoying entertainment to discovering why the Gold Coast is a theme park paradise. Experience the excitement that defines Gold Coast theme parks, see why the parks are so beloved, enjoy thrilling rides and entertainment, and discover why theme park tours offer perfect ways to experience Australia's best theme parks. Whether you're seeking roller coasters, water parks, entertainment, or comprehensive theme park exploration, theme park tours provide unforgettable adventures that showcase the thrilling theme parks that make the Gold Coast special. From coasters to characters, from thrills to fun, theme park tours ensure you experience the incredible theme parks that define the Gold Coast!`,
 
       seo: {
-        title: 'Gold Coast Theme Park Tours 2025: Movie World & Dreamworld Fun',
+        title: 'Gold Coast Theme Park Tours 2026: Movie World & Dreamworld Fun',
         description: 'Book Gold Coast theme park tours! Visit Movie World, Dreamworld & world-class parks. Discover Australia\'s theme park capital. From $100.',
         keywords: 'Gold Coast theme park tours, Movie World, Dreamworld, theme park tours Gold Coast',
       },
@@ -10862,7 +10862,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Gold Coast offers stunning beaches, where pristine sands, perfect waves, and coastal beauty create beach experiences that make beach tours essential for enjoying Australia's coastal paradise! Beach tours take you to the Gold Coast's best beaches, from visiting Surfers Paradise's iconic shores to exploring Burleigh Heads' natural beauty, from experiencing beautiful coastlines to learning about beach culture, and from seeing stunning surf breaks to discovering why Gold Coast beaches are legendary. Experience the beach paradise that defines the Gold Coast, see why the beaches are so popular, enjoy pristine sands and perfect waves, and discover why beach tours are perfect ways to appreciate Australia's beach capital. Whether you're seeking famous beaches, surf beaches, hidden coves, or comprehensive beach exploration, beach tours provide relaxing ways to discover the beautiful beaches that make the Gold Coast special. From Surfers Paradise to Burleigh, from popular to natural, beach tours ensure you experience the incredible beaches that define the Gold Coast!`,
 
       seo: {
-        title: 'Gold Coast Beach Tours 2025: Surfers Paradise & Burleigh Heads',
+        title: 'Gold Coast Beach Tours 2026: Surfers Paradise & Burleigh Heads',
         description: 'Book Gold Coast beach tours! Visit Surfers Paradise, Burleigh Heads & pristine beaches. Discover Australia\'s beach paradise. From $55.',
         keywords: 'Gold Coast beach tours, Surfers Paradise beach, Burleigh Heads, beach tours Gold Coast',
       },
@@ -11014,7 +11014,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Gold Coast offers exciting adventures, where ziplining, jet boating, skydiving, and outdoor activities create adventure experiences that make adventure tours perfect for thrill seekers! Adventure tours take you into the Gold Coast's exciting adventure scene, from ziplining through treetops to jet boating on rivers, from skydiving to trying various outdoor activities, and from experiencing thrills to discovering why the Gold Coast is perfect for adventures. Experience the excitement that defines Gold Coast adventures, see why the activities are so popular, try different outdoor experiences, and discover why adventure tours provide perfect ways to add thrills to your Gold Coast visit. Whether you're seeking skydiving, ziplining, jet boating, or comprehensive adventure exploration, adventure tours offer heart-pounding journeys that showcase the adventurous side that makes the Gold Coast special. From heights to speeds, from air to water, adventure tours ensure you experience the thrilling adventures that define the Gold Coast!`,
 
       seo: {
-        title: 'Gold Coast Adventure Tours 2025: Skydiving & Ziplining Adventures',
+        title: 'Gold Coast Adventure Tours 2026: Skydiving & Ziplining Adventures',
         description: 'Book Gold Coast adventure tours! Experience skydiving, ziplining & outdoor adventures. Discover exciting Australian activities. From $85.',
         keywords: 'Gold Coast adventure tours, skydiving Gold Coast, ziplining, adventure tours Gold Coast',
       },
@@ -11166,7 +11166,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Gold Coast offers vibrant nightlife, where clubs, beach bars, live music, and entertainment create nightlife experiences that make nightlife tours perfect for party enthusiasts! Nightlife tours take you through the Gold Coast's exciting night scene, from dancing at Surfers Paradise clubs to enjoying beachside bars, from experiencing live music to discovering night spots, and from seeing the city lights to understanding why the Gold Coast is Australia's party capital. Experience the energy that defines Gold Coast nightlife, see why the scene is so popular, enjoy diverse venues and entertainment, and discover why nightlife tours offer perfect ways to experience the vibrant night culture. Whether you're seeking clubs, beach bars, live music, or comprehensive nightlife exploration, nightlife tours provide energetic journeys that showcase the exciting night scene that makes the Gold Coast special. From clubs to bars, from music to dancing, nightlife tours ensure you experience the vibrant nightlife that defines the Gold Coast!`,
 
       seo: {
-        title: 'Gold Coast Nightlife Tours 2025: Clubs & Beach Bars',
+        title: 'Gold Coast Nightlife Tours 2026: Clubs & Beach Bars',
         description: 'Book Gold Coast nightlife tours! Experience Surfers Paradise clubs, beach bars & vibrant nightlife. Discover Australia\'s party capital. From $75.',
         keywords: 'Gold Coast nightlife tours, Surfers Paradise clubs, beach bars, nightlife tours Gold Coast',
       },
@@ -11318,7 +11318,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `The Gold Coast showcases stunning natural beauty, where rainforests, national parks, and wildlife create nature experiences that make nature tours perfect for nature lovers! Nature tours take you into the Gold Coast's beautiful natural areas, from exploring Lamington National Park's ancient rainforests to spotting wildlife, from hiking scenic trails to learning about ecosystems, and from seeing spectacular landscapes to discovering why the region's nature is significant. Experience the natural beauty that surrounds the Gold Coast, see why the landscapes are so renowned, learn about Australian flora and fauna, and discover why nature tours offer refreshing journeys through remarkable natural areas. Whether you're seeking rainforest walks, wildlife spotting, scenic viewpoints, or comprehensive nature exploration, nature tours provide engaging ways to experience the incredible natural beauty that surrounds the Gold Coast. From forests to mountains, from birds to animals, nature tours ensure you experience the spectacular nature that defines the region!`,
 
       seo: {
-        title: 'Gold Coast Nature Tours 2025: Rainforests & Wildlife Spotting',
+        title: 'Gold Coast Nature Tours 2026: Rainforests & Wildlife Spotting',
         description: 'Book Gold Coast nature tours! Explore rainforests, spot wildlife & discover natural beauty. Experience Australian landscapes. From $65.',
         keywords: 'Gold Coast nature tours, Lamington National Park, wildlife tours, nature tours Gold Coast',
       },
@@ -11472,7 +11472,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Guilin showcases China's most spectacular natural scenery, where karst mountains, Li River, and dramatic landscapes create nature experiences that make nature tours essential for experiencing China's natural beauty! Nature tours take you through Guilin's stunning natural areas, from cruising the iconic Li River to exploring karst formations, from seeing breathtaking landscapes to learning about geology, and from experiencing scenic viewpoints to discovering why Guilin is celebrated for its natural beauty. Experience the natural wonder that defines Guilin, see why the landscapes are so renowned, enjoy stunning mountain and river scenery, and discover why nature tours offer memorable journeys through one of China's most beautiful destinations. Whether you're seeking Li River cruises, mountain viewpoints, karst exploration, or comprehensive nature exploration, nature tours provide peaceful ways to experience the incredible natural beauty that makes Guilin special. From river to mountains, from karst to countryside, nature tours ensure you experience the spectacular nature that defines Guilin!`,
 
       seo: {
-        title: 'Guilin Nature Tours 2025: Li River & Karst Landscapes',
+        title: 'Guilin Nature Tours 2026: Li River & Karst Landscapes',
         description: 'Book Guilin nature tours! Cruise Li River, explore karst mountains & discover China\'s most beautiful scenery. Experience stunning landscapes. From $60.',
         keywords: 'Guilin nature tours, Li River cruise, karst mountains, nature tours Guilin',
       },
@@ -11624,7 +11624,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Guilin offers spectacular river experiences, where Li River cruises, scenic waterways, and dramatic river landscapes create river experiences that make river tours essential for experiencing Guilin! River tours take you along Guilin's iconic waterways, from cruising the famous Li River to navigating scenic tributaries, from seeing breathtaking karst scenery to learning about river culture, and from experiencing rural villages to discovering why river cruises are Guilin's signature experience. Experience the river beauty that defines Guilin, see why river cruises are so beloved, enjoy stunning mountain views along waterways, and discover why river tours offer peaceful journeys through China's most beautiful river scenery. Whether you're seeking Li River cruises, traditional bamboo raft rides, or comprehensive river exploration, river tours provide serene ways to experience the iconic waterways that make Guilin legendary. From cruises to rafts, from main river to tributaries, river tours ensure you experience the spectacular rivers that define Guilin!`,
 
       seo: {
-        title: 'Guilin River Tours 2025: Li River Cruises & Scenic Waterways',
+        title: 'Guilin River Tours 2026: Li River Cruises & Scenic Waterways',
         description: 'Book Guilin river tours! Cruise Li River, enjoy scenic waterways & discover China\'s most beautiful river scenery. Experience iconic cruises. From $70.',
         keywords: 'Guilin river tours, Li River cruise, bamboo raft tours, river tours Guilin',
       },
@@ -11776,7 +11776,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Guilin features dramatic karst mountains, where towering limestone peaks, scenic viewpoints, and spectacular landscapes create mountain experiences that make mountain tours perfect for experiencing China's iconic mountains! Mountain tours take you to Guilin's stunning mountain areas, from climbing scenic peaks to exploring karst formations, from seeing breathtaking viewpoints to learning about geology, and from experiencing mountain beauty to discovering why these mountains are world-famous. Experience the mountain majesty that defines Guilin, see why the peaks are so celebrated, enjoy stunning elevated views and unique geology, and discover why mountain tours offer memorable journeys through one of China's most spectacular mountain regions. Whether you're seeking scenic viewpoints, karst exploration, mountain hiking, or comprehensive mountain exploration, mountain tours provide engaging ways to experience the dramatic mountains that make Guilin special. From viewpoints to peaks, from geology to views, mountain tours ensure you experience the spectacular mountains that define Guilin!`,
 
       seo: {
-        title: 'Guilin Mountain Tours 2025: Karst Peaks & Scenic Viewpoints',
+        title: 'Guilin Mountain Tours 2026: Karst Peaks & Scenic Viewpoints',
         description: 'Book Guilin mountain tours! Explore karst mountains, scenic viewpoints & dramatic landscapes. Discover China\'s iconic mountain scenery. From $65.',
         keywords: 'Guilin mountain tours, karst mountains, scenic viewpoints, mountain tours Guilin',
       },
@@ -11928,7 +11928,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Guilin offers authentic cultural experiences, where traditional villages, local life, and cultural heritage create cultural insights that make cultural tours perfect for understanding Chinese culture! Cultural tours take you into Guilin's cultural world, from visiting traditional villages to experiencing local customs, from learning about rural life to understanding local traditions, and from seeing authentic culture to discovering why Guilin culture is significant. Experience the cultural richness that defines Guilin, learn about traditional ways of life and customs, understand rural Chinese culture, and discover why cultural tours offer fascinating insights into authentic Chinese life. Whether you're seeking village visits, traditional crafts, local performances, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Guilin special. From villages to traditions, from rural to modern, cultural tours ensure you experience the authentic culture that defines Guilin!`,
 
       seo: {
-        title: 'Guilin Cultural Tours 2025: Traditional Villages & Local Culture',
+        title: 'Guilin Cultural Tours 2026: Traditional Villages & Local Culture',
         description: 'Book Guilin cultural tours! Visit traditional villages, experience local customs & authentic Chinese culture. Discover rural traditions. From $55.',
         keywords: 'Guilin cultural tours, traditional villages, Chinese culture, cultural tours Guilin',
       },
@@ -12080,7 +12080,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Guilin offers spectacular photography opportunities, where iconic landscapes, dramatic scenery, and photogenic locations create photography experiences that make photography tours perfect for capturing China's beauty! Photography tours take you to Guilin's most photogenic spots, from photographing iconic Li River to capturing karst mountains, from framing dramatic landscapes to learning composition techniques, and from shooting sunrise/sunset to discovering why Guilin is a photographer's paradise. Experience the photographic excellence that defines Guilin, see why the landscapes are so photogenic, enjoy stunning locations and optimal timing, and discover why photography tours offer perfect ways to capture China's most beautiful scenery. Whether you're seeking landscape photography, golden hour shoots, iconic viewpoint captures, or comprehensive photo exploration, photography tours provide memorable sessions that showcase the photographic wonders that make Guilin special. From river to mountains, from sunrise to sunset, photography tours ensure you capture the spectacular scenes that define Guilin!`,
 
       seo: {
-        title: 'Guilin Photography Tours 2025: Karst Landscapes & Li River',
+        title: 'Guilin Photography Tours 2026: Karst Landscapes & Li River',
         description: 'Book Guilin photography tours! Capture iconic karst mountains, Li River scenery & dramatic landscapes. Discover China\'s most photogenic destination. From $85.',
         keywords: 'Guilin photography tours, photography spots, karst photography, photography tours Guilin',
       },
@@ -12232,7 +12232,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Guilin offers exciting adventures, where mountain hiking, countryside cycling, and outdoor activities create adventure experiences that make adventure tours perfect for active travelers! Adventure tours take you into Guilin's exciting adventure scene, from hiking karst mountains to cycling scenic routes, from exploring countryside to trying various outdoor activities, and from experiencing natural thrills to discovering why Guilin is perfect for adventures. Experience the excitement that defines Guilin adventures, see why the activities are so popular, try different outdoor experiences, and discover why adventure tours provide perfect ways to add excitement to your Guilin visit. Whether you're seeking hiking, cycling, outdoor exploration, or comprehensive adventure exploration, adventure tours offer engaging journeys that showcase the adventurous side that makes Guilin special. From mountains to countryside, from trails to bikes, adventure tours ensure you experience the thrilling adventures that define Guilin!`,
 
       seo: {
-        title: 'Guilin Adventure Tours 2025: Hiking & Cycling Adventures',
+        title: 'Guilin Adventure Tours 2026: Hiking & Cycling Adventures',
         description: 'Book Guilin adventure tours! Experience mountain hiking, countryside cycling & outdoor adventures. Discover exciting Chinese activities. From $70.',
         keywords: 'Guilin adventure tours, hiking Guilin, cycling tours, adventure tours Guilin',
       },
@@ -12386,7 +12386,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Halong Bay offers spectacular cruise experiences, where limestone karsts, emerald waters, and traditional junks create cruise experiences that make cruise tours essential for experiencing Vietnam's most beautiful destination! Cruise tours take you through Halong Bay's iconic waters, from sailing past towering karst formations to exploring hidden lagoons, from staying on luxury cruise boats to experiencing authentic traditions, and from seeing breathtaking seascapes to discovering why Halong Bay cruises are Vietnam's signature experience. Experience the seascape beauty that defines Halong Bay, see why the bay is UNESCO World Heritage, enjoy stunning karst views and peaceful waters, and discover why cruise tours offer memorable journeys through one of Asia's most spectacular destinations. Whether you're seeking luxury cruises, traditional junks, overnight stays, or comprehensive bay exploration, cruise tours provide serene ways to experience the iconic seascape that makes Halong Bay legendary. From karsts to islands, from cruises to overnight, cruise tours ensure you experience the spectacular bay that defines Halong Bay!`,
 
       seo: {
-        title: 'Halong Bay Cruise Tours 2025: Luxury Boats & Traditional Junks',
+        title: 'Halong Bay Cruise Tours 2026: Luxury Boats & Traditional Junks',
         description: 'Book Halong Bay cruise tours! Experience luxury cruises, traditional junks & UNESCO seascape. Discover Vietnam\'s most beautiful bay. From $100.',
         keywords: 'Halong Bay cruise tours, Halong Bay cruises, luxury cruises, cruise tours Halong Bay',
       },
@@ -12538,7 +12538,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Halong Bay offers spectacular kayaking experiences, where hidden lagoons, limestone caves, and up-close seascape exploration create kayaking experiences that make kayaking tours perfect for active exploration! Kayaking tours take you through Halong Bay's sheltered waters, from paddling into hidden lagoons to exploring limestone caves, from seeing karst formations up-close to experiencing peaceful paddling, and from discovering secret spots to understanding why kayaking reveals Halong Bay's intimate beauty. Experience the intimate exploration that kayaking provides, see why paddling is so popular, enjoy close-up views and peaceful waterways, and discover why kayaking tours offer perfect ways to discover the bay's hidden treasures. Whether you're seeking lagoon paddling, cave exploration, island circumnavigation, or comprehensive kayaking adventure, kayaking tours provide memorable ways to experience the spectacular seascape that makes Halong Bay special. From lagoons to caves, from up-close to intimate, kayaking tours ensure you experience the spectacular bay from water level!`,
 
       seo: {
-        title: 'Halong Bay Kayaking Tours 2025: Hidden Lagoons & Cave Exploration',
+        title: 'Halong Bay Kayaking Tours 2026: Hidden Lagoons & Cave Exploration',
         description: 'Book Halong Bay kayaking tours! Paddle hidden lagoons, explore caves & discover intimate bay beauty. Experience up-close exploration. From $45.',
         keywords: 'Halong Bay kayaking tours, kayaking Halong Bay, lagoon paddling, kayaking tours Halong Bay',
       },
@@ -12690,7 +12690,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Halong Bay features spectacular limestone caves, where ancient chambers, stunning formations, and underground wonders create cave experiences that make cave tours perfect for discovering geological beauty! Cave tours take you into Halong Bay's limestone formations, from exploring massive chambers to seeing impressive stalactites, from learning about cave geology to understanding formations, and from experiencing underground beauty to discovering why caves are UNESCO heritage highlights. Experience the underground wonder that defines Halong Bay caves, see why the chambers are so impressive, enjoy spectacular formations and lighting, and discover why cave tours offer fascinating journeys through geological treasures. Whether you're seeking spectacular caves, illuminated chambers, cave formations, or comprehensive cave exploration, cave tours provide engaging ways to experience the underground beauty that makes Halong Bay special. From chambers to formations, from geology to beauty, cave tours ensure you experience the spectacular caves that define the bay!`,
 
       seo: {
-        title: 'Halong Bay Cave Tours 2025: Limestone Chambers & Formations',
+        title: 'Halong Bay Cave Tours 2026: Limestone Chambers & Formations',
         description: 'Book Halong Bay cave tours! Explore limestone caves, spectacular chambers & underground wonders. Discover UNESCO cave heritage. From $40.',
         keywords: 'Halong Bay cave tours, limestone caves, cave exploration, cave tours Halong Bay',
       },
@@ -12842,7 +12842,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Halong Bay showcases spectacular limestone islands, where towering karsts, hidden beaches, and diverse landscapes create island experiences that make island tours perfect for discovering bay diversity! Island tours take you to Halong Bay's iconic karst formations, from visiting famous islands to exploring hidden spots, from climbing scenic viewpoints to relaxing on beaches, and from seeing diverse landscapes to understanding why islands are UNESCO heritage highlights. Experience the island beauty that defines Halong Bay, see why the karsts are so iconic, enjoy stunning seascapes and sandy beaches, and discover why island tours offer memorable journeys through spectacular island landscapes. Whether you're seeking famous islands, hidden beaches, scenic viewpoints, or comprehensive island exploration, island tours provide engaging ways to experience the island diversity that makes Halong Bay special. From karsts to beaches, from viewpoints to hidden, island tours ensure you experience the spectacular islands that define the bay!`,
 
       seo: {
-        title: 'Halong Bay Island Tours 2025: Karst Islands & Sandy Beaches',
+        title: 'Halong Bay Island Tours 2026: Karst Islands & Sandy Beaches',
         description: 'Book Halong Bay island tours! Explore limestone islands, sandy beaches & karst landscapes. Discover UNESCO island heritage. From $50.',
         keywords: 'Halong Bay island tours, karst islands, limestone islands, island tours Halong Bay',
       },
@@ -12994,7 +12994,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Halong Bay offers spectacular photography opportunities, where limestone karsts, emerald waters, and golden light create photography experiences that make photography tours perfect for capturing UNESCO heritage beauty! Photography tours take you to Halong Bay's most photogenic spots, from photographing iconic karst formations to capturing golden hour light, from framing dramatic seascapes to learning composition techniques, and from shooting sunrise/sunset to discovering why Halong Bay is a photographer's paradise. Experience the photographic excellence that defines Halong Bay, see why the seascape is so photogenic, enjoy stunning locations and optimal timing, and discover why photography tours offer perfect ways to capture Vietnam's most beautiful destination. Whether you're seeking seascape photography, golden hour shoots, iconic viewpoint captures, or comprehensive photo exploration, photography tours provide memorable sessions that showcase the photographic wonders that make Halong Bay special. From karsts to waters, from sunrise to sunset, photography tours ensure you capture the spectacular scenes that define the bay!`,
 
       seo: {
-        title: 'Halong Bay Photography Tours 2025: Karst Seascape & Golden Hour',
+        title: 'Halong Bay Photography Tours 2026: Karst Seascape & Golden Hour',
         description: 'Book Halong Bay photography tours! Capture UNESCO karst seascape, golden hour & iconic landscapes. Discover Vietnam\'s most photogenic destination. From $90.',
         keywords: 'Halong Bay photography tours, photography Halong Bay, UNESCO photography, photography tours Halong Bay',
       },
@@ -13146,7 +13146,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Halong Bay offers exciting adventures, where rock climbing, island hiking, and outdoor activities create adventure experiences that make adventure tours perfect for active exploration! Adventure tours take you into Halong Bay's adventure scene, from rock climbing karst cliffs to hiking island peaks, from exploring challenging terrain to trying various outdoor activities, and from experiencing natural thrills to discovering why Halong Bay offers unique adventure opportunities. Experience the excitement that defines Halong Bay adventures, see why the activities are so popular, try different outdoor experiences, and discover why adventure tours provide perfect ways to add excitement to your Halong Bay visit. Whether you're seeking rock climbing, island hiking, outdoor exploration, or comprehensive adventure exploration, adventure tours offer engaging journeys that showcase the adventurous side that makes Halong Bay special. From cliffs to peaks, from heights to challenges, adventure tours ensure you experience the thrilling adventures that define the bay!`,
 
       seo: {
-        title: 'Halong Bay Adventure Tours 2025: Rock Climbing & Island Hiking',
+        title: 'Halong Bay Adventure Tours 2026: Rock Climbing & Island Hiking',
         description: 'Book Halong Bay adventure tours! Experience rock climbing, island hiking & outdoor adventures. Discover exciting UNESCO activities. From $80.',
         keywords: 'Halong Bay adventure tours, rock climbing Halong Bay, island hiking, adventure tours Halong Bay',
       },
@@ -13300,7 +13300,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hanoi showcases Vietnam's rich cultural heritage, where ancient traditions, colonial influences, and vibrant local life create cultural experiences that make cultural tours perfect for understanding Vietnamese culture! Cultural tours take you through Hanoi's cultural world, from visiting the historic Old Quarter to experiencing traditional water puppets, from learning about local customs to understanding Vietnamese traditions, and from seeing ancient architecture to discovering why Hanoi culture is so significant. Experience the cultural richness that defines Hanoi, learn about traditional ways of life and customs, understand Vietnamese heritage, and discover why cultural tours offer fascinating insights into authentic Vietnamese culture. Whether you're seeking Old Quarter walks, water puppet shows, temple visits, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Hanoi special. From traditions to modern life, from ancient to contemporary, cultural tours ensure you experience the authentic culture that defines Hanoi!`,
 
       seo: {
-        title: 'Hanoi Cultural Tours 2025: Old Quarter & Water Puppets',
+        title: 'Hanoi Cultural Tours 2026: Old Quarter & Water Puppets',
         description: 'Book Hanoi cultural tours! Visit Old Quarter, water puppets & Vietnamese traditions. Discover authentic Vietnamese culture. From $55.',
         keywords: 'Hanoi cultural tours, Old Quarter Hanoi, water puppets, cultural tours Hanoi',
       },
@@ -13452,7 +13452,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hanoi offers incredible cuisine, where phở, bánh mì, street food, and local specialties create culinary experiences that make food tours perfect for food lovers! Food tours take you through Hanoi's vibrant food scene, from tasting authentic phở to trying delicious street food, from experiencing local markets to learning about ingredients, and from discovering food traditions to understanding why Vietnamese cuisine is so beloved. Experience the culinary richness that defines Hanoi, learn about Vietnamese flavors and techniques, understand local food culture, and discover why food tours offer delightful insights into Hanoi's delicious food. Whether you're seeking phở tours, street food walks, cooking classes, or comprehensive culinary exploration, food tours provide flavorful journeys that showcase the delicious side that makes Hanoi special. From phở to bánh mì, from street to restaurants, food tours ensure you experience the authentic flavors that define Hanoi!`,
 
       seo: {
-        title: 'Hanoi Food Tours 2025: Phở & Street Food Delights',
+        title: 'Hanoi Food Tours 2026: Phở & Street Food Delights',
         description: 'Book Hanoi food tours! Taste authentic phở, street food & Vietnamese dishes. Discover delicious Hanoi cuisine. From $50.',
         keywords: 'Hanoi food tours, phở Hanoi, street food, food tours Hanoi',
       },
@@ -13604,7 +13604,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hanoi showcases Vietnam's fascinating history, where French colonial buildings, ancient temples, and historic sites create historic experiences that make historic tours perfect for history enthusiasts! Historic tours take you through Hanoi's historical legacy, from visiting French colonial architecture to exploring ancient temples, from learning about Vietnamese history to understanding colonial influences, and from seeing historic landmarks to discovering why Hanoi's history is significant. Experience the historical richness that defines Hanoi, learn about centuries of Vietnamese heritage and colonial past, understand ancient and modern history, and discover why historic tours offer fascinating insights into Vietnam's past. Whether you're seeking colonial architecture, ancient temples, historic landmarks, or comprehensive historic exploration, historic tours provide engaging journeys that showcase the historical heart that makes Hanoi special. From temples to colonial, from ancient to modern, historic tours ensure you experience the remarkable history that defines Hanoi!`,
 
       seo: {
-        title: 'Hanoi Historic Tours 2025: Colonial Architecture & Ancient Sites',
+        title: 'Hanoi Historic Tours 2026: Colonial Architecture & Ancient Sites',
         description: 'Book Hanoi historic tours! Visit colonial buildings, ancient temples & historic landmarks. Explore Vietnam\'s historical legacy. From $50.',
         keywords: 'Hanoi historic tours, colonial architecture Hanoi, Vietnamese history, historic tours Hanoi',
       },
@@ -13756,7 +13756,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hanoi offers vibrant city experiences, where ancient traditions, modern life, and dynamic energy create city experiences that make city tours essential for experiencing Vietnam's capital! City tours take you through Hanoi's urban landscape, from exploring the historic Old Quarter to visiting modern landmarks, from seeing cultural sites to experiencing city life, and from discovering hidden gems to understanding why Hanoi is Vietnam's cultural capital. Experience the city energy that defines Hanoi, see why the capital is so beloved, enjoy diverse neighborhoods and vibrant streets, and discover why city tours offer perfect ways to explore Vietnam's dynamic city. Whether you're seeking Old Quarter exploration, landmark visits, cultural immersion, or comprehensive city exploration, city tours provide engaging journeys that showcase the vibrant side that makes Hanoi special. From historic to modern, from temples to markets, city tours ensure you experience the incredible city that defines Hanoi!`,
 
       seo: {
-        title: 'Hanoi City Tours 2025: Old Quarter & City Landmarks',
+        title: 'Hanoi City Tours 2026: Old Quarter & City Landmarks',
         description: 'Book Hanoi city tours! Explore Old Quarter, visit landmarks & discover Vietnam\'s vibrant capital. Experience dynamic city life. From $50.',
         keywords: 'Hanoi city tours, Old Quarter, city landmarks, city tours Hanoi',
       },
@@ -13908,7 +13908,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hanoi features beautiful temples and pagodas, where ancient architecture, spiritual traditions, and sacred sites create temple experiences that make temple tours perfect for experiencing Vietnamese spirituality! Temple tours take you to Hanoi's most significant temples, from visiting historic pagodas to exploring ancient sites, from learning about Buddhism to understanding spiritual traditions, and from seeing beautiful architecture to discovering why these temples are culturally important. Experience the spiritual richness that defines Hanoi's temples, see why the sites are so revered, learn about Buddhist traditions and local customs, and discover why temple tours offer peaceful journeys through sacred spaces. Whether you're seeking ancient pagodas, historic temples, spiritual sites, or comprehensive temple exploration, temple tours provide engaging ways to experience the sacred side that makes Hanoi special. From ancient to historic, from large to intimate, temple tours ensure you experience the beautiful temples that define Hanoi!`,
 
       seo: {
-        title: 'Hanoi Temple Tours 2025: Ancient Pagodas & Sacred Sites',
+        title: 'Hanoi Temple Tours 2026: Ancient Pagodas & Sacred Sites',
         description: 'Book Hanoi temple tours! Visit ancient pagodas, historic temples & sacred sites. Experience Vietnamese spirituality. From $45.',
         keywords: 'Hanoi temple tours, pagodas Hanoi, Buddhist temples, temple tours Hanoi',
       },
@@ -14060,7 +14060,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hanoi offers vibrant market experiences, where traditional markets, night bazaars, and local shopping create market experiences that make market tours perfect for experiencing authentic local life! Market tours take you through Hanoi's bustling shopping scene, from visiting traditional Dong Xuan Market to exploring night markets, from experiencing local commerce to learning about Vietnamese goods, and from seeing vibrant market life to discovering why markets are cultural hubs. Experience the shopping energy that defines Hanoi markets, see why the markets are so vibrant, enjoy authentic goods and local interactions, and discover why market tours offer perfect ways to experience Vietnamese daily life. Whether you're seeking traditional markets, night markets, local shopping, or comprehensive market exploration, market tours provide engaging journeys that showcase the commercial heart that makes Hanoi special. From food to crafts, from day to night, market tours ensure you experience the vibrant markets that define Hanoi!`,
 
       seo: {
-        title: 'Hanoi Market Tours 2025: Dong Xuan & Night Markets',
+        title: 'Hanoi Market Tours 2026: Dong Xuan & Night Markets',
         description: 'Book Hanoi market tours! Visit Dong Xuan Market, explore night markets & discover local shopping. Experience vibrant Vietnamese markets. From $40.',
         keywords: 'Hanoi market tours, Dong Xuan Market, night markets, market tours Hanoi',
       },
@@ -14214,7 +14214,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hiroshima stands as a symbol of peace and hope, where powerful memorials, peace education, and remembrance create peace experiences that make peace tours essential for understanding the atomic bombing's impact and lessons! Peace tours take you through Hiroshima's peace legacy, from visiting the Peace Memorial Park to seeing the A-Bomb Dome, from learning about historical tragedy to understanding peace movement, and from experiencing moving memorials to discovering why Hiroshima is a beacon of hope. Experience the powerful peace message that defines Hiroshima, see why the city is dedicated to peace education, learn about atomic bombing and recovery, and discover why peace tours offer profound journeys through lessons of war and peace. Whether you're seeking Peace Memorial Park, A-Bomb Dome, peace museums, or comprehensive peace exploration, peace tours provide meaningful experiences that showcase the peace movement that makes Hiroshima significant. From memorials to museums, from tragedy to hope, peace tours ensure you experience the powerful peace legacy that defines Hiroshima!`,
 
       seo: {
-        title: 'Hiroshima Peace Tours 2025: Peace Memorial & A-Bomb Dome',
+        title: 'Hiroshima Peace Tours 2026: Peace Memorial & A-Bomb Dome',
         description: 'Book Hiroshima peace tours! Visit Peace Memorial Park, A-Bomb Dome & peace museums. Experience powerful peace legacy. From $40.',
         keywords: 'Hiroshima peace tours, Peace Memorial Park, A-Bomb Dome, peace tours Hiroshima',
       },
@@ -14366,7 +14366,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hiroshima showcases fascinating history, where ancient origins, tragic events, and remarkable recovery create historic experiences that make historic tours perfect for understanding the city's complete history! Historic tours take you through Hiroshima's historical legacy, from visiting pre-war historic sites to learning about atomic bombing, from understanding recovery to seeing modern city development, and from experiencing historical significance to discovering why Hiroshima's history is so important. Experience the historical richness that defines Hiroshima, learn about city origins and tragic events, understand recovery and modern development, and discover why historic tours offer comprehensive insights into Hiroshima's past. Whether you're seeking pre-war sites, post-war recovery, modern history, or comprehensive historic exploration, historic tours provide engaging journeys that showcase the historical heart that makes Hiroshima significant. From ancient to modern, from tragedy to recovery, historic tours ensure you experience the remarkable history that defines Hiroshima!`,
 
       seo: {
-        title: 'Hiroshima Historic Tours 2025: History & Recovery Story',
+        title: 'Hiroshima Historic Tours 2026: History & Recovery Story',
         description: 'Book Hiroshima historic tours! Explore city history, recovery story & historical sites. Discover fascinating Hiroshima past. From $45.',
         keywords: 'Hiroshima historic tours, Hiroshima history, city recovery, historic tours Hiroshima',
       },
@@ -14518,7 +14518,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hiroshima offers rich cultural experiences, where local cuisine, traditional sites, and modern culture create cultural insights that make cultural tours perfect for experiencing authentic Japanese culture! Cultural tours take you through Hiroshima's cultural world, from tasting famous okonomiyaki to visiting temples, from learning about local traditions to understanding Japanese customs, and from seeing cultural sites to discovering why Hiroshima culture is significant. Experience the cultural richness that defines Hiroshima, learn about local traditions and cuisine, understand Japanese culture, and discover why cultural tours offer fascinating insights into authentic regional culture. Whether you're seeking cuisine tours, temple visits, traditional experiences, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Hiroshima special. From food to traditions, from ancient to modern, cultural tours ensure you experience the authentic culture that defines Hiroshima!`,
 
       seo: {
-        title: 'Hiroshima Cultural Tours 2025: Okonomiyaki & Japanese Culture',
+        title: 'Hiroshima Cultural Tours 2026: Okonomiyaki & Japanese Culture',
         description: 'Book Hiroshima cultural tours! Taste okonomiyaki, visit temples & experience Japanese culture. Discover authentic Hiroshima culture. From $50.',
         keywords: 'Hiroshima cultural tours, okonomiyaki Hiroshima, Japanese culture, cultural tours Hiroshima',
       },
@@ -14670,7 +14670,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hiroshima features beautiful Shinto shrines, where sacred architecture, spiritual traditions, and island shrines create shrine experiences that make shrine tours perfect for experiencing Japanese spirituality! Shrine tours take you to Hiroshima's most significant shrines, from visiting the iconic Itsukushima Shrine on Miyajima to exploring local shrines, from learning about Shintoism to understanding spiritual traditions, and from seeing stunning torii gates to discovering why these shrines are culturally important. Experience the spiritual richness that defines Hiroshima's shrines, see why the sites are so revered, learn about Shinto traditions and local customs, and discover why shrine tours offer peaceful journeys through sacred spaces. Whether you're seeking Itsukushima Shrine, island shrines, torii gates, or comprehensive shrine exploration, shrine tours provide engaging ways to experience the sacred side that makes Hiroshima special. From island to mainland, from iconic to local, shrine tours ensure you experience the beautiful shrines that define Hiroshima!`,
 
       seo: {
-        title: 'Hiroshima Shrine Tours 2025: Itsukushima Shrine & Shinto Traditions',
+        title: 'Hiroshima Shrine Tours 2026: Itsukushima Shrine & Shinto Traditions',
         description: 'Book Hiroshima shrine tours! Visit Itsukushima Shrine, torii gates & sacred sites. Experience Japanese spirituality. From $50.',
         keywords: 'Hiroshima shrine tours, Itsukushima Shrine, Miyajima, shrine tours Hiroshima',
       },
@@ -14822,7 +14822,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hiroshima contains powerful memorials, where peace monuments, historical markers, and remembrance sites create memorial experiences that make memorial tours essential for honoring history and hope! Memorial tours take you through Hiroshima's remembrance sites, from visiting the A-Bomb Dome to seeing peace monuments, from learning about tragic history to understanding peace movement, and from experiencing moving memorials to discovering why these sites are so significant. Experience the powerful remembrance that defines Hiroshima memorials, see why the monuments are so important, learn about historical tragedy and peace message, and discover why memorial tours offer profound journeys through lessons of war and peace. Whether you're seeking Peace Memorial Park, A-Bomb Dome, Children's Peace Monument, or comprehensive memorial exploration, memorial tours provide meaningful experiences that showcase the remembrance that makes Hiroshima significant. From monuments to markers, from tragedy to hope, memorial tours ensure you experience the powerful memorials that define Hiroshima!`,
 
       seo: {
-        title: 'Hiroshima Memorial Tours 2025: A-Bomb Dome & Peace Monuments',
+        title: 'Hiroshima Memorial Tours 2026: A-Bomb Dome & Peace Monuments',
         description: 'Book Hiroshima memorial tours! Visit A-Bomb Dome, Peace Memorial Park & monuments. Honor history and hope. From $40.',
         keywords: 'Hiroshima memorial tours, A-Bomb Dome, peace monuments, memorial tours Hiroshima',
       },
@@ -14974,7 +14974,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hiroshima offers beautiful island experiences, where sacred Miyajima, coastal islands, and natural beauty create island experiences that make island tours perfect for discovering Japanese island charm! Island tours take you to Hiroshima's stunning islands, from visiting the sacred Miyajima to exploring smaller islands, from seeing itsukushima shrine to experiencing natural beauty, and from discovering island culture to understanding why these islands are so beloved. Experience the island beauty that defines Hiroshima's islands, see why Miyajima is so renowned, enjoy stunning nature and sacred sites, and discover why island tours offer peaceful journeys through Japan's island heritage. Whether you're seeking Miyajima tours, coastal island exploration, nature walks, or comprehensive island exploration, island tours provide engaging ways to experience the island charm that makes Hiroshima special. From sacred to scenic, from shrines to nature, island tours ensure you experience the beautiful islands that define Hiroshima!`,
 
       seo: {
-        title: 'Hiroshima Island Tours 2025: Miyajima & Coastal Islands',
+        title: 'Hiroshima Island Tours 2026: Miyajima & Coastal Islands',
         description: 'Book Hiroshima island tours! Visit sacred Miyajima, explore islands & discover Japanese beauty. Experience island heritage. From $55.',
         keywords: 'Hiroshima island tours, Miyajima tours, Itsukushima Island, island tours Hiroshima',
       },
@@ -15128,7 +15128,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Ho Chi Minh City (Saigon) offers dynamic urban experiences, where modern skyline, colonial architecture, and vibrant energy create city experiences that make city tours essential for experiencing Vietnam's economic capital! City tours take you through Ho Chi Minh City's urban landscape, from exploring modern districts to visiting historic landmarks, from seeing French colonial architecture to experiencing lively streets, and from discovering city culture to understanding why Saigon is Vietnam's most energetic metropolis. Experience the city energy that defines Ho Chi Minh City, see why the capital is so beloved, enjoy diverse neighborhoods and bustling streets, and discover why city tours offer perfect ways to explore Vietnam's dynamic city. Whether you're seeking colonial architecture, modern landmarks, cultural immersion, or comprehensive city exploration, city tours provide engaging journeys that showcase the vibrant side that makes Ho Chi Minh City special. From historic to modern, from quiet to bustling, city tours ensure you experience the incredible city that defines Vietnam's southern capital!`,
 
       seo: {
-        title: 'Ho Chi Minh City Tours 2025: Saigon Districts & Landmarks',
+        title: 'Ho Chi Minh City Tours 2026: Saigon Districts & Landmarks',
         description: 'Book Ho Chi Minh City tours! Explore modern districts, colonial architecture & city landmarks. Discover Vietnam\'s dynamic metropolis. From $50.',
         keywords: 'Ho Chi Minh City tours, Saigon tours, city tours Vietnam, city tours Ho Chi Minh City',
       },
@@ -15280,7 +15280,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Ho Chi Minh City showcases rich historical significance, where French colonial heritage, wartime legacy, and modern transformation create historic experiences that make historic tours perfect for understanding Vietnam's complex history! Historic tours take you through Ho Chi Minh City's historical legacy, from visiting colonial architecture to learning about wartime history, from exploring Cu Chi Tunnels to understanding city transformation, and from seeing historic landmarks to discovering why Saigon's history is so important. Experience the historical richness that defines Ho Chi Minh City, learn about colonial era, wartime, and modern developments, understand complex historical narratives, and discover why historic tours offer fascinating insights into Vietnam's past. Whether you're seeking colonial sites, wartime history, Cu Chi Tunnels, or comprehensive historic exploration, historic tours provide engaging journeys that showcase the historical heart that makes Ho Chi Minh City significant. From colonial to wartime, from tunnels to museums, historic tours ensure you experience the remarkable history that defines Saigon!`,
 
       seo: {
-        title: 'Ho Chi Minh City Historic Tours 2025: Colonial Heritage & War Legacy',
+        title: 'Ho Chi Minh City Historic Tours 2026: Colonial Heritage & War Legacy',
         description: 'Book Ho Chi Minh City historic tours! Visit colonial sites, Cu Chi Tunnels & wartime museums. Explore Vietnam\'s historical significance. From $45.',
         keywords: 'Ho Chi Minh City historic tours, Cu Chi Tunnels, colonial architecture, historic tours Ho Chi Minh City',
       },
@@ -15432,7 +15432,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Ho Chi Minh City offers incredible Vietnamese cuisine, where phở, bánh mì, street food, and local specialties create culinary experiences that make food tours perfect for food lovers! Food tours take you through Ho Chi Minh City's vibrant food scene, from tasting authentic phở to trying delicious street food, from experiencing local markets to learning about ingredients, and from discovering food traditions to understanding why Vietnamese cuisine is so beloved. Experience the culinary richness that defines Ho Chi Minh City, learn about Vietnamese flavors and techniques, understand local food culture, and discover why food tours offer delightful insights into Saigon's delicious food. Whether you're seeking phở tours, street food walks, cooking classes, or comprehensive culinary exploration, food tours provide flavorful journeys that showcase the delicious side that makes Ho Chi Minh City special. From phở to bánh mì, from street to restaurants, food tours ensure you experience the authentic flavors that define Saigon!`,
 
       seo: {
-        title: 'Ho Chi Minh City Food Tours 2025: Phở & Street Food Delights',
+        title: 'Ho Chi Minh City Food Tours 2026: Phở & Street Food Delights',
         description: 'Book Ho Chi Minh City food tours! Taste authentic phở, street food & Vietnamese dishes. Discover delicious Saigon cuisine. From $50.',
         keywords: 'Ho Chi Minh City food tours, Saigon street food, phở, food tours Ho Chi Minh City',
       },
@@ -15584,7 +15584,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Ho Chi Minh City offers rich cultural experiences, where temples, local traditions, and cultural sites create cultural insights that make cultural tours perfect for experiencing authentic Vietnamese culture! Cultural tours take you through Ho Chi Minh City's cultural world, from visiting Buddhist temples to experiencing local customs, from learning about traditions to understanding Vietnamese culture, and from seeing cultural sites to discovering why Saigon culture is significant. Experience the cultural richness that defines Ho Chi Minh City, learn about local traditions and customs, understand Vietnamese culture, and discover why cultural tours offer fascinating insights into authentic regional culture. Whether you're seeking temple visits, cultural experiences, traditional activities, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Ho Chi Minh City special. From temples to traditions, from ancient to modern, cultural tours ensure you experience the authentic culture that defines Saigon!`,
 
       seo: {
-        title: 'Ho Chi Minh City Cultural Tours 2025: Temples & Vietnamese Culture',
+        title: 'Ho Chi Minh City Cultural Tours 2026: Temples & Vietnamese Culture',
         description: 'Book Ho Chi Minh City cultural tours! Visit temples, experience traditions & Vietnamese culture. Discover authentic Saigon culture. From $50.',
         keywords: 'Ho Chi Minh City cultural tours, Vietnamese culture, temples, cultural tours Ho Chi Minh City',
       },
@@ -15736,7 +15736,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Ho Chi Minh City offers vibrant market experiences, where traditional markets, local shopping, and bustling commerce create market experiences that make market tours perfect for experiencing authentic local life! Market tours take you through Ho Chi Minh City's bustling shopping scene, from visiting Ben Thanh Market to exploring local markets, from experiencing Vietnamese commerce to learning about local goods, and from seeing vibrant market life to discovering why markets are cultural hubs. Experience the shopping energy that defines Ho Chi Minh City markets, see why the markets are so vibrant, enjoy authentic goods and local interactions, and discover why market tours offer perfect ways to experience Vietnamese daily life. Whether you're seeking traditional markets, local shopping, Vietnamese products, or comprehensive market exploration, market tours provide engaging journeys that showcase the commercial heart that makes Ho Chi Minh City special. From food to textiles, from day to night, market tours ensure you experience the vibrant markets that define Saigon!`,
 
       seo: {
-        title: 'Ho Chi Minh City Market Tours 2025: Ben Thanh & Local Markets',
+        title: 'Ho Chi Minh City Market Tours 2026: Ben Thanh & Local Markets',
         description: 'Book Ho Chi Minh City market tours! Visit Ben Thanh Market, explore local markets & discover Vietnamese shopping. Experience vibrant markets. From $40.',
         keywords: 'Ho Chi Minh City market tours, Ben Thanh Market, Saigon markets, market tours Ho Chi Minh City',
       },
@@ -15888,7 +15888,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Ho Chi Minh City offers vibrant nightlife, where rooftop bars, local clubs, and evening entertainment create nightlife experiences that make nightlife tours perfect for experiencing Saigon after dark! Nightlife tours take you through Ho Chi Minh City's exciting night scene, from visiting rooftop bars with city views to exploring local nightlife spots, from experiencing live music to discovering evening venues, and from seeing the city lights to understanding why Saigon comes alive at night. Experience the energy that defines Ho Chi Minh City nightlife, see why the scene is so popular, enjoy diverse venues and evening entertainment, and discover why nightlife tours offer perfect ways to experience the vibrant night culture. Whether you're seeking rooftop bars, local clubs, live music, or comprehensive nightlife exploration, nightlife tours provide energetic journeys that showcase the exciting night scene that makes Ho Chi Minh City special. From bars to clubs, from music to dancing, nightlife tours ensure you experience the vibrant nightlife that defines Saigon!`,
 
       seo: {
-        title: 'Ho Chi Minh City Nightlife Tours 2025: Rooftop Bars & Evening Scene',
+        title: 'Ho Chi Minh City Nightlife Tours 2026: Rooftop Bars & Evening Scene',
         description: 'Book Ho Chi Minh City nightlife tours! Experience rooftop bars, local clubs & vibrant nightlife. Discover Saigon\'s evening scene. From $60.',
         keywords: 'Ho Chi Minh City nightlife tours, Saigon nightlife, rooftop bars, nightlife tours Ho Chi Minh City',
       },
@@ -16042,7 +16042,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hoi An showcases remarkable Vietnamese cultural heritage, where ancient architecture, traditional crafts, and living history create cultural experiences that make cultural tours essential for experiencing UNESCO World Heritage! Cultural tours take you through Hoi An's cultural world, from visiting the ancient Old Town to experiencing traditional crafts, from learning about local customs to understanding Vietnamese heritage, and from seeing lantern-lit streets to discovering why Hoi An culture is so significant. Experience the cultural richness that defines Hoi An, learn about traditional ways of life and customs, understand ancient and modern heritage, and discover why cultural tours offer fascinating insights into authentic Vietnamese culture. Whether you're seeking Old Town walks, lantern experiences, craft workshops, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Hoi An special. From ancient to traditions, from day to night, cultural tours ensure you experience the authentic culture that defines Hoi An!`,
 
       seo: {
-        title: 'Hoi An Cultural Tours 2025: Old Town & Vietnamese Heritage',
+        title: 'Hoi An Cultural Tours 2026: Old Town & Vietnamese Heritage',
         description: 'Book Hoi An cultural tours! Visit ancient Old Town, experience traditions & Vietnamese heritage. Discover UNESCO cultural site. From $45.',
         keywords: 'Hoi An cultural tours, Hoi An Old Town, Vietnamese heritage, cultural tours Hoi An',
       },
@@ -16194,7 +16194,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hoi An showcases remarkable historic significance, where ancient trading port heritage, beautifully preserved architecture, and living history create historic experiences that make historic tours perfect for understanding UNESCO World Heritage! Historic tours take you through Hoi An's historical legacy, from visiting ancient trading buildings to exploring historic sites, from learning about the town's trading past to understanding preservation efforts, and from seeing architectural fusion to discovering why Hoi An's history is so important. Experience the historical richness that defines Hoi An, learn about trading port heritage and architectural fusion, understand preservation and heritage significance, and discover why historic tours offer fascinating insights into Vietnam's past. Whether you're seeking ancient buildings, trading port history, architectural discovery, or comprehensive historic exploration, historic tours provide engaging journeys that showcase the historical heart that makes Hoi An significant. From ancient to modern preservation, from trading to heritage, historic tours ensure you experience the remarkable history that defines Hoi An!`,
 
       seo: {
-        title: 'Hoi An Historic Tours 2025: Ancient Trading Port & Heritage',
+        title: 'Hoi An Historic Tours 2026: Ancient Trading Port & Heritage',
         description: 'Book Hoi An historic tours! Visit ancient trading buildings, explore heritage & UNESCO sites. Discover trading port history. From $40.',
         keywords: 'Hoi An historic tours, ancient trading port, UNESCO heritage, historic tours Hoi An',
       },
@@ -16346,7 +16346,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hoi An offers incredible cuisine, where cao lầu, local specialties, street food, and fresh ingredients create culinary experiences that make food tours perfect for food lovers! Food tours take you through Hoi An's vibrant food scene, from tasting unique local dishes to trying delicious street food, from experiencing local markets to learning about ingredients, and from discovering food traditions to understanding why Vietnamese cuisine is so beloved. Experience the culinary richness that defines Hoi An, learn about local flavors and techniques, understand food culture, and discover why food tours offer delightful insights into Hoi An's delicious food. Whether you're seeking cao lầu tours, street food walks, cooking classes, or comprehensive culinary exploration, food tours provide flavorful journeys that showcase the delicious side that makes Hoi An special. From cao lầu to street food, from markets to restaurants, food tours ensure you experience the authentic flavors that define Hoi An!`,
 
       seo: {
-        title: 'Hoi An Food Tours 2025: Cao Lầu & Local Delicacies',
+        title: 'Hoi An Food Tours 2026: Cao Lầu & Local Delicacies',
         description: 'Book Hoi An food tours! Taste cao lầu, local dishes & Vietnamese street food. Discover delicious Hoi An cuisine. From $45.',
         keywords: 'Hoi An food tours, cao lầu, Vietnamese food, food tours Hoi An',
       },
@@ -16498,7 +16498,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hoi An offers beautiful beach experiences, where sandy beaches, clear waters, and coastal relaxation create beach experiences that make beach tours perfect for coastal enjoyment! Beach tours take you to Hoi An's stunning beaches, from visiting An Bang Beach to exploring Cua Dai, from experiencing beach life to enjoying water activities, and from discovering coastal beauty to understanding why Hoi An's beaches are so beloved. Experience the coastal beauty that defines Hoi An, see why the beaches are so popular, enjoy sandy shores and clear waters, and discover why beach tours offer perfect ways to relax and enjoy the coast. Whether you're seeking sandy beaches, water sports, beach relaxation, or comprehensive coastal exploration, beach tours provide enjoyable journeys that showcase the coastal side that makes Hoi An special. From An Bang to Cua Dai, from relaxation to activities, beach tours ensure you experience the beautiful beaches that define Hoi An!`,
 
       seo: {
-        title: 'Hoi An Beach Tours 2025: An Bang & Cua Dai Beaches',
+        title: 'Hoi An Beach Tours 2026: An Bang & Cua Dai Beaches',
         description: 'Book Hoi An beach tours! Visit An Bang Beach, Cua Dai & coastal beauty. Discover beautiful Hoi An beaches. From $35.',
         keywords: 'Hoi An beach tours, An Bang Beach, Cua Dai Beach, beach tours Hoi An',
       },
@@ -16650,7 +16650,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hoi An showcases beautiful traditional crafts, where artisan workshops, handmade skills, and cultural traditions create craft experiences that make craft tours perfect for experiencing authentic Vietnamese craftsmanship! Craft tours take you through Hoi An's artisanal world, from learning to make lanterns to creating pottery, from experiencing traditional workshops to understanding craftsmanship, and from seeing skilled artisans to discovering why Hoi An's crafts are so special. Experience the artisanal richness that defines Hoi An, learn about traditional techniques and skills, understand craft culture, and discover why craft tours offer fascinating insights into authentic Vietnamese craftsmanship. Whether you're seeking lantern making, pottery workshops, textile crafts, or comprehensive craft exploration, craft tours provide engaging journeys that showcase the artisanal side that makes Hoi An special. From lanterns to pottery, from hands-on to observation, craft tours ensure you experience the beautiful crafts that define Hoi An!`,
 
       seo: {
-        title: 'Hoi An Craft Tours 2025: Lantern Making & Traditional Crafts',
+        title: 'Hoi An Craft Tours 2026: Lantern Making & Traditional Crafts',
         description: 'Book Hoi An craft tours! Learn lantern making, pottery & traditional crafts. Experience authentic Vietnamese craftsmanship. From $50.',
         keywords: 'Hoi An craft tours, lantern making, pottery workshops, craft tours Hoi An',
       },
@@ -16802,7 +16802,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hoi An offers incredible photographic opportunities, where ancient architecture, lantern-lit streets, and vibrant culture create photo experiences that make photography tours perfect for capturing UNESCO World Heritage! Photography tours take you to Hoi An's most photogenic locations, from photographing the ancient Old Town to capturing lantern displays, from experiencing golden hour lighting to understanding composition techniques, and from seeing colorful architecture to discovering why Hoi An is a photographer's paradise. Experience the visual beauty that defines Hoi An, see why the town is so photogenic, learn photography techniques and timing, and discover why photography tours offer perfect ways to capture Hoi An's beauty. Whether you're seeking golden hour photography, lantern displays, architecture shots, or comprehensive photography exploration, photography tours provide engaging journeys that showcase the photogenic side that makes Hoi An special. From dawn to dusk, from architecture to people, photography tours ensure you capture the beautiful images that define Hoi An!`,
 
       seo: {
-        title: 'Hoi An Photography Tours 2025: Old Town & Lantern Displays',
+        title: 'Hoi An Photography Tours 2026: Old Town & Lantern Displays',
         description: 'Book Hoi An photography tours! Photograph Old Town, lanterns & UNESCO heritage. Capture beautiful Hoi An images. From $55.',
         keywords: 'Hoi An photography tours, Hoi An photography, lantern photography, photography tours Hoi An',
       },
@@ -16956,7 +16956,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hokkaido offers world-class skiing experiences, where legendary powder snow, famous ski resorts, and breathtaking mountains create ski experiences that make ski tours essential for experiencing Japan's premier winter destination! Ski tours take you to Hokkaido's renowned ski areas, from experiencing legendary powder snow to visiting famous resorts like Niseko, from enjoying perfect ski conditions to understanding why Hokkaido is famous for winter sports, and from discovering varied terrain to experiencing the ski culture that defines the region. Experience the skiing excellence that defines Hokkaido, see why the powder snow is legendary, learn about winter sports and resort culture, and discover why ski tours offer perfect ways to experience Japan's best skiing. Whether you're seeking powder skiing, resort experiences, backcountry adventures, or comprehensive ski exploration, ski tours provide thrilling journeys that showcase the winter sports paradise that makes Hokkaido special. From Niseko to Rusutsu, from beginner to expert, ski tours ensure you experience the incredible skiing that defines Hokkaido!`,
 
       seo: {
-        title: 'Hokkaido Ski Tours 2025: Powder Snow & Niseko Skiing',
+        title: 'Hokkaido Ski Tours 2026: Powder Snow & Niseko Skiing',
         description: 'Book Hokkaido ski tours! Experience legendary powder snow, Niseko skiing & world-class resorts. Discover Japan\'s premier ski destination. From $120.',
         keywords: 'Hokkaido ski tours, Niseko skiing, powder snow, Hokkaido winter sports',
       },
@@ -17108,7 +17108,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hokkaido showcases spectacular natural wilderness, where national parks, volcanic mountains, and pristine landscapes create nature experiences that make nature tours essential for experiencing Japan's incredible wilderness! Nature tours take you through Hokkaido's stunning natural beauty, from exploring Daisetsuzan National Park to visiting Shiretoko Peninsula, from experiencing volcanic landscapes to understanding wildlife ecosystems, and from seeing diverse flora to discovering why Hokkaido's nature is so remarkable. Experience the natural richness that defines Hokkaido, see why the wilderness is so beloved, enjoy pristine landscapes and diverse wildlife, and discover why nature tours offer perfect ways to explore Japan's largest island. Whether you're seeking national parks, volcano exploration, wildlife viewing, or comprehensive nature exploration, nature tours provide engaging journeys that showcase the wilderness paradise that makes Hokkaido special. From mountains to coasts, from summer to winter, nature tours ensure you experience the incredible nature that defines Hokkaido!`,
 
       seo: {
-        title: 'Hokkaido Nature Tours 2025: National Parks & Wilderness',
+        title: 'Hokkaido Nature Tours 2026: National Parks & Wilderness',
         description: 'Book Hokkaido nature tours! Explore Daisetsuzan, Shiretoko Peninsula & pristine wilderness. Discover Japan\'s incredible nature. From $90.',
         keywords: 'Hokkaido nature tours, Daisetsuzan National Park, Shiretoko Peninsula, nature tours Hokkaido',
       },
@@ -17260,7 +17260,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hokkaido offers remarkable hot spring experiences, where natural onsens, traditional baths, and relaxing waters create hot spring experiences that make hot spring tours perfect for experiencing Japanese bathing culture! Hot spring tours take you to Hokkaido's renowned onsens, from experiencing natural thermal baths to visiting traditional ryokan, from enjoying mineral-rich waters to understanding onsen culture, and from discovering varied hot springs to seeing why Hokkaido's onsens are so beloved. Experience the relaxation that defines Hokkaido hot springs, see why the onsens are so popular, learn about bathing traditions and etiquette, and discover why hot spring tours offer perfect ways to relax and unwind. Whether you're seeking natural onsens, traditional baths, luxury resorts, or comprehensive hot spring exploration, hot spring tours provide rejuvenating journeys that showcase the onsen paradise that makes Hokkaido special. From rustic to luxurious, from outdoor to indoor, hot spring tours ensure you experience the incredible hot springs that define Hokkaido!`,
 
       seo: {
-        title: 'Hokkaido Hot Spring Tours 2025: Onsen Resorts & Natural Baths',
+        title: 'Hokkaido Hot Spring Tours 2026: Onsen Resorts & Natural Baths',
         description: 'Book Hokkaido hot spring tours! Experience natural onsens, traditional baths & Japanese hot spring culture. Discover onsen relaxation. From $70.',
         keywords: 'Hokkaido hot spring tours, onsen Hokkaido, Japanese hot springs, hot spring tours Hokkaido',
       },
@@ -17412,7 +17412,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hokkaido showcases incredible wildlife diversity, where brown bears, red foxes, deer, and unique species create wildlife experiences that make wildlife tours perfect for animal lovers! Wildlife tours take you through Hokkaido's natural habitats, from viewing brown bears to spotting red foxes, from observing deer to discovering diverse birds, and from understanding animal behavior to seeing why Hokkaido's wildlife is so special. Experience the wildlife richness that defines Hokkaido, see why the animals are so beloved, learn about ecosystems and conservation, and discover why wildlife tours offer perfect ways to observe Japan's incredible fauna. Whether you're seeking bear watching, fox encounters, bird watching, or comprehensive wildlife exploration, wildlife tours provide engaging journeys that showcase the animal diversity that makes Hokkaido special. From Shiretoko to Daisetsuzan, from summer to winter, wildlife tours ensure you experience the incredible wildlife that defines Hokkaido!`,
 
       seo: {
-        title: 'Hokkaido Wildlife Tours 2025: Brown Bears & Animal Encounters',
+        title: 'Hokkaido Wildlife Tours 2026: Brown Bears & Animal Encounters',
         description: 'Book Hokkaido wildlife tours! View brown bears, red foxes & diverse wildlife. Discover incredible animal encounters. From $85.',
         keywords: 'Hokkaido wildlife tours, brown bears Hokkaido, wildlife viewing, wildlife tours Hokkaido',
       },
@@ -17564,7 +17564,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hokkaido offers thrilling adventure activities, where mountain hiking, water sports, and outdoor challenges create adventure experiences that make adventure tours perfect for thrill seekers! Adventure tours take you through Hokkaido's exciting outdoor activities, from hiking volcanic mountains to white-water rafting, from kayaking lakes to mountain biking, and from discovering varied adventures to experiencing why Hokkaido is an adventure paradise. Experience the thrill that defines Hokkaido adventure, see why the activities are so exciting, learn about outdoor sports and nature, and discover why adventure tours offer perfect ways to experience Hokkaido's wild side. Whether you're seeking mountain hiking, water sports, cycling adventures, or comprehensive adventure exploration, adventure tours provide exhilarating journeys that showcase the outdoor activities that make Hokkaido special. From mountains to rivers, from summer to winter, adventure tours ensure you experience the incredible adventures that define Hokkaido!`,
 
       seo: {
-        title: 'Hokkaido Adventure Tours 2025: Hiking & Outdoor Activities',
+        title: 'Hokkaido Adventure Tours 2026: Hiking & Outdoor Activities',
         description: 'Book Hokkaido adventure tours! Experience mountain hiking, water sports & thrilling adventures. Discover outdoor activities. From $95.',
         keywords: 'Hokkaido adventure tours, hiking Hokkaido, outdoor activities, adventure tours Hokkaido',
       },
@@ -17716,7 +17716,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Hokkaido showcases breathtaking scenic beauty, where volcanic mountains, pristine lakes, and spectacular coastlines create scenic experiences that make scenic tours perfect for landscape lovers! Scenic tours take you through Hokkaido's most beautiful areas, from viewing dramatic volcanic scenery to seeing pristine lakes, from experiencing coastal vistas to understanding geological features, and from discovering varied landscapes to appreciating why Hokkaido's scenery is so remarkable. Experience the scenic richness that defines Hokkaido, see why the landscapes are so beloved, enjoy picturesque views and natural beauty, and discover why scenic tours offer perfect ways to appreciate Japan's largest island. Whether you're seeking mountain vistas, lake views, coastal panoramas, or comprehensive scenic exploration, scenic tours provide beautiful journeys that showcase the natural beauty that makes Hokkaido special. From national parks to coastlines, from summer blooms to autumn colors, scenic tours ensure you experience the incredible scenery that defines Hokkaido!`,
 
       seo: {
-        title: 'Hokkaido Scenic Tours 2025: National Parks & Coastal Vistas',
+        title: 'Hokkaido Scenic Tours 2026: National Parks & Coastal Vistas',
         description: 'Book Hokkaido scenic tours! Experience volcanic mountains, pristine lakes & coastal views. Discover beautiful landscapes. From $80.',
         keywords: 'Hokkaido scenic tours, Hokkaido nature, scenic viewpoints, scenic tours Hokkaido',
       },
@@ -17870,7 +17870,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jaipur showcases remarkable Rajasthani cultural heritage, where royal traditions, artisan crafts, and vibrant festivals create cultural experiences that make cultural tours essential for experiencing India's Pink City! Cultural tours take you through Jaipur's cultural world, from visiting traditional communities to experiencing Rajasthani customs, from learning about heritage crafts to understanding cultural festivals, and from seeing colorful traditions to discovering why Jaipur culture is so significant. Experience the cultural richness that defines Jaipur, learn about Rajasthani ways of life and customs, understand heritage and modern culture, and discover why cultural tours offer fascinating insights into authentic Indian culture. Whether you're seeking traditional villages, craft workshops, festival experiences, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Jaipur special. From royal to rural, from ancient to contemporary, cultural tours ensure you experience the authentic culture that defines the Pink City!`,
 
       seo: {
-        title: 'Jaipur Cultural Tours 2025: Rajasthani Traditions & Heritage',
+        title: 'Jaipur Cultural Tours 2026: Rajasthani Traditions & Heritage',
         description: 'Book Jaipur cultural tours! Experience Rajasthani traditions, heritage crafts & Pink City culture. Discover authentic Indian culture. From $50.',
         keywords: 'Jaipur cultural tours, Rajasthani culture, Pink City traditions, cultural tours Jaipur',
       },
@@ -18022,7 +18022,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jaipur showcases magnificent royal palaces, where intricate architecture, royal heritage, and historic significance create palace experiences that make palace tours essential for experiencing the Pink City's royal past! Palace tours take you through Jaipur's royal world, from visiting the City Palace to seeing Hawa Mahal, from learning about maharajas to understanding palace architecture, and from experiencing royal grandeur to discovering why Jaipur's palaces are so significant. Experience the royal richness that defines Jaipur, see why the palaces are so admired, learn about royal history and heritage, and discover why palace tours offer fascinating insights into India's royal past. Whether you're seeking City Palace, Hawa Mahal, royal museums, or comprehensive palace exploration, palace tours provide engaging journeys that showcase the royal heart that makes Jaipur special. From architecture to history, from grandeur to detail, palace tours ensure you experience the magnificent palaces that define the Pink City!`,
 
       seo: {
-        title: 'Jaipur Palace Tours 2025: City Palace & Hawa Mahal',
+        title: 'Jaipur Palace Tours 2026: City Palace & Hawa Mahal',
         description: 'Book Jaipur palace tours! Visit City Palace, Hawa Mahal & royal heritage. Discover magnificent royal palaces. From $55.',
         keywords: 'Jaipur palace tours, City Palace Jaipur, Hawa Mahal, palace tours Jaipur',
       },
@@ -18174,7 +18174,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jaipur showcases magnificent historic forts, where hilltop fortresses, impressive fortifications, and royal strongholds create fort experiences that make fort tours essential for experiencing Rajasthan's military heritage! Fort tours take you to Jaipur's impressive forts, from visiting the hilltop Amber Fort to exploring Nahargarh and Jaigarh, from learning about fortifications to understanding military history, and from experiencing fort grandeur to discovering why Jaipur's forts are so significant. Experience the military richness that defines Jaipur, see why the forts are so admired, learn about Rajasthani defensive architecture, and discover why fort tours offer fascinating insights into India's military past. Whether you're seeking Amber Fort, Nahargarh Fort, Jaigarh Fort, or comprehensive fort exploration, fort tours provide engaging journeys that showcase the fortifications that make Jaipur special. From hilltops to valleys, from massive to intimate, fort tours ensure you experience the magnificent forts that define Rajasthan!`,
 
       seo: {
-        title: 'Jaipur Fort Tours 2025: Amber Fort & Historic Fortifications',
+        title: 'Jaipur Fort Tours 2026: Amber Fort & Historic Fortifications',
         description: 'Book Jaipur fort tours! Visit Amber Fort, Nahargarh & historic fortifications. Discover magnificent Rajasthan forts. From $60.',
         keywords: 'Jaipur fort tours, Amber Fort Jaipur, Rajasthan forts, fort tours Jaipur',
       },
@@ -18326,7 +18326,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jaipur offers vibrant shopping experiences, where traditional bazaars, gemstones, handicrafts, and Rajasthani products create shopping experiences that make shopping tours perfect for discovering India's shopping paradise! Shopping tours take you through Jaipur's bustling markets, from visiting Johari Bazaar to exploring Gem Palace, from experiencing traditional shopping to learning about products, and from discovering local crafts to understanding why Jaipur is famous for gems and textiles. Experience the shopping energy that defines Jaipur markets, see why the products are so beloved, enjoy authentic goods and local interactions, and discover why shopping tours offer perfect ways to experience Rajasthani culture. Whether you're seeking traditional bazaars, gem shopping, textile markets, or comprehensive shopping exploration, shopping tours provide engaging journeys that showcase the commercial heart that makes Jaipur special. From gems to textiles, from bazaars to showrooms, shopping tours ensure you experience the vibrant shopping that defines the Pink City!`,
 
       seo: {
-        title: 'Jaipur Shopping Tours 2025: Traditional Bazaars & Gemstones',
+        title: 'Jaipur Shopping Tours 2026: Traditional Bazaars & Gemstones',
         description: 'Book Jaipur shopping tours! Visit Johari Bazaar, Gem Palace & traditional markets. Discover shopping paradise. From $40.',
         keywords: 'Jaipur shopping tours, Johari Bazaar, Jaipur gemstones, shopping tours Jaipur',
       },
@@ -18478,7 +18478,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jaipur offers delicious Rajasthani cuisine, where flavorful thalis, spicy curries, street food, and local specialties create culinary experiences that make food tours perfect for food lovers! Food tours take you through Jaipur's vibrant food scene, from tasting authentic Rajasthani thalis to trying delicious street food, from experiencing local sweets to learning about ingredients, and from discovering food traditions to understanding why Rajasthani cuisine is so beloved. Experience the culinary richness that defines Jaipur, learn about Rajasthani flavors and techniques, understand local food culture, and discover why food tours offer delightful insights into Jaipur's delicious food. Whether you're seeking thali experiences, street food walks, sweet shops, or comprehensive culinary exploration, food tours provide flavorful journeys that showcase the delicious side that makes Jaipur special. From vegetarian to non-vegetarian, from mild to spicy, food tours ensure you experience the authentic flavors that define the Pink City!`,
 
       seo: {
-        title: 'Jaipur Food Tours 2025: Rajasthani Thali & Street Food',
+        title: 'Jaipur Food Tours 2026: Rajasthani Thali & Street Food',
         description: 'Book Jaipur food tours! Taste authentic Rajasthani thali, street food & Indian dishes. Discover delicious Jaipur cuisine. From $45.',
         keywords: 'Jaipur food tours, Rajasthani cuisine, Jaipur street food, food tours Jaipur',
       },
@@ -18630,7 +18630,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jaipur showcases remarkable heritage significance, where UNESCO sites, historic architecture, and cultural traditions create heritage experiences that make heritage tours perfect for understanding India's Pink City! Heritage tours take you through Jaipur's historical legacy, from visiting UNESCO World Heritage sites to exploring traditional architecture, from learning about Jantar Mantar to understanding city planning, and from seeing historic landmarks to discovering why Jaipur's heritage is so important. Experience the heritage richness that defines Jaipur, learn about royal foundations and architectural genius, understand conservation and modern significance, and discover why heritage tours offer fascinating insights into India's past. Whether you're seeking UNESCO sites, Jantar Mantar, old city architecture, or comprehensive heritage exploration, heritage tours provide engaging journeys that showcase the historical heart that makes Jaipur significant. From observatories to bazaars, from royal to civic, heritage tours ensure you experience the remarkable heritage that defines the Pink City!`,
 
       seo: {
-        title: 'Jaipur Heritage Tours 2025: UNESCO Sites & Architecture',
+        title: 'Jaipur Heritage Tours 2026: UNESCO Sites & Architecture',
         description: 'Book Jaipur heritage tours! Visit UNESCO sites, Jantar Mantar & historic architecture. Discover Pink City heritage. From $50.',
         keywords: 'Jaipur heritage tours, UNESCO Jaipur, Jantar Mantar, heritage tours Jaipur',
       },
@@ -18784,7 +18784,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jakarta offers dynamic urban experiences, where modern skyline, diverse neighborhoods, and energetic city life create city experiences that make city tours essential for experiencing Indonesia's capital! City tours take you through Jakarta's urban landscape, from exploring modern districts to visiting cultural areas, from seeing colonial heritage to experiencing city life, and from discovering hidden gems to understanding why Jakarta is Indonesia's most vibrant metropolis. Experience the city energy that defines Jakarta, see why the capital is so beloved, enjoy diverse neighborhoods and bustling streets, and discover why city tours offer perfect ways to explore Indonesia's dynamic city. Whether you're seeking colonial architecture, modern landmarks, cultural immersion, or comprehensive city exploration, city tours provide engaging journeys that showcase the vibrant side that makes Jakarta special. From historic to modern, from business to cultural, city tours ensure you experience the incredible city that defines Indonesia's capital!`,
 
       seo: {
-        title: 'Jakarta City Tours 2025: Modern Metropolis & Cultural Districts',
+        title: 'Jakarta City Tours 2026: Modern Metropolis & Cultural Districts',
         description: 'Book Jakarta city tours! Explore modern districts, colonial heritage & city landmarks. Discover Indonesia\'s dynamic capital. From $45.',
         keywords: 'Jakarta city tours, Indonesia capital, Jakarta landmarks, city tours Jakarta',
       },
@@ -18936,7 +18936,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jakarta offers rich cultural experiences, where traditional villages, museums, and diverse heritage create cultural insights that make cultural tours perfect for experiencing Indonesian culture! Cultural tours take you through Jakarta's cultural world, from visiting traditional villages to experiencing cultural performances, from learning about Indonesian diversity to understanding local customs, and from seeing cultural sites to discovering why Jakarta culture is so significant. Experience the cultural richness that defines Jakarta, learn about Indonesian traditions and customs, understand ethnic diversity and heritage, and discover why cultural tours offer fascinating insights into authentic Indonesian culture. Whether you're seeking traditional villages, museum visits, cultural performances, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Jakarta special. From traditional to modern, from ethnic diversity to unity, cultural tours ensure you experience the authentic culture that defines Jakarta!`,
 
       seo: {
-        title: 'Jakarta Cultural Tours 2025: Traditional Villages & Museums',
+        title: 'Jakarta Cultural Tours 2026: Traditional Villages & Museums',
         description: 'Book Jakarta cultural tours! Visit traditional villages, museums & cultural performances. Discover authentic Indonesian culture. From $50.',
         keywords: 'Jakarta cultural tours, Indonesian culture, cultural tours Jakarta, traditional villages',
       },
@@ -19087,7 +19087,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jakarta offers incredible Indonesian cuisine, where street food, warungs, and local specialties create culinary experiences that make food tours perfect for food lovers! Food tours take you through Jakarta's vibrant food scene, from tasting authentic street food to trying restaurant dishes, from experiencing local markets to learning about ingredients, and from discovering food traditions to understanding why Indonesian cuisine is so beloved. Experience the culinary richness that defines Jakarta, learn about Indonesian flavors and techniques, understand local food culture, and discover why food tours offer delightful insights into Jakarta's delicious food. Whether you're seeking street food walks, warung visits, market tours, or comprehensive culinary exploration, food tours provide flavorful journeys that showcase the delicious side that makes Jakarta special. From nasi goreng to sate, from spicy to mild, food tours ensure you experience the authentic flavors that define Jakarta!`,
 
       seo: {
-        title: 'Jakarta Food Tours 2025: Street Food & Indonesian Cuisine',
+        title: 'Jakarta Food Tours 2026: Street Food & Indonesian Cuisine',
         description: 'Book Jakarta food tours! Taste authentic street food, Indonesian dishes & local cuisine. Discover delicious Jakarta food. From $45.',
         keywords: 'Jakarta food tours, Indonesian street food, Jakarta cuisine, food tours Jakarta',
       },
@@ -19239,7 +19239,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jakarta showcases rich historical significance, where colonial heritage, independence movement, and cultural foundations create historic experiences that make historic tours perfect for understanding Indonesia's capital! Historic tours take you through Jakarta's historical legacy, from visiting colonial buildings to learning about independence, from exploring Old Town to understanding Indonesia's struggle for freedom, and from seeing historic landmarks to discovering why Jakarta's history is so important. Experience the historical richness that defines Jakarta, learn about Dutch colonial era, independence movement, and modern developments, understand complex historical narratives, and discover why historic tours offer fascinating insights into Indonesia's past. Whether you're seeking colonial sites, independence monuments, old town exploration, or comprehensive historic exploration, historic tours provide engaging journeys that showcase the historical heart that makes Jakarta significant. From colonial to independence, from monuments to buildings, historic tours ensure you experience the remarkable history that defines Jakarta!`,
 
       seo: {
-        title: 'Jakarta Historic Tours 2025: Colonial Heritage & Independence',
+        title: 'Jakarta Historic Tours 2026: Colonial Heritage & Independence',
         description: 'Book Jakarta historic tours! Visit colonial sites, independence monuments & historical landmarks. Explore Jakarta\'s historical significance. From $40.',
         keywords: 'Jakarta historic tours, colonial Jakarta, Indonesian history, historic tours Jakarta',
       },
@@ -19391,7 +19391,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jakarta offers vibrant market experiences, where traditional markets, local products, and bustling commerce create market experiences that make market tours perfect for experiencing authentic Indonesian life! Market tours take you through Jakarta's bustling shopping scene, from visiting traditional markets to exploring modern shopping centers, from experiencing Indonesian commerce to learning about local goods, and from seeing vibrant market life to discovering why markets are cultural hubs. Experience the shopping energy that defines Jakarta markets, see why the markets are so vibrant, enjoy authentic goods and local interactions, and discover why market tours offer perfect ways to experience Indonesian daily life. Whether you're seeking traditional markets, shopping malls, local products, or comprehensive market exploration, market tours provide engaging journeys that showcase the commercial heart that makes Jakarta special. From traditional to modern, from food to textiles, market tours ensure you experience the vibrant markets that define Jakarta!`,
 
       seo: {
-        title: 'Jakarta Market Tours 2025: Traditional Markets & Shopping',
+        title: 'Jakarta Market Tours 2026: Traditional Markets & Shopping',
         description: 'Book Jakarta market tours! Visit traditional markets, explore shopping centers & discover Indonesian shopping. Experience vibrant markets. From $35.',
         keywords: 'Jakarta market tours, traditional markets, Jakarta shopping, market tours Jakarta',
       },
@@ -19543,7 +19543,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jakarta offers diverse shopping experiences, where traditional handicrafts, modern malls, and Indonesian products create shopping experiences that make shopping tours perfect for discovering Indonesia's shopping culture! Shopping tours take you through Jakarta's shopping world, from visiting traditional markets to exploring modern shopping centers, from experiencing Indonesian crafts to understanding local products, and from discovering shopping gems to seeing why Jakarta is a shopping paradise. Experience the shopping diversity that defines Jakarta, see why the shopping is so varied, enjoy authentic goods and modern conveniences, and discover why shopping tours offer perfect ways to experience Indonesian commerce. Whether you're seeking traditional handicrafts, modern brands, local specialties, or comprehensive shopping exploration, shopping tours provide engaging journeys that showcase the shopping heart that makes Jakarta special. From traditional to modern, from crafts to electronics, shopping tours ensure you experience the diverse shopping that defines Jakarta!`,
 
       seo: {
-        title: 'Jakarta Shopping Tours 2025: Traditional Crafts & Modern Malls',
+        title: 'Jakarta Shopping Tours 2026: Traditional Crafts & Modern Malls',
         description: 'Book Jakarta shopping tours! Visit traditional markets, modern malls & discover Indonesian shopping. Experience shopping paradise. From $40.',
         keywords: 'Jakarta shopping tours, traditional handicrafts, Jakarta malls, shopping tours Jakarta',
       },
@@ -19697,7 +19697,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jeju Island showcases spectacular natural beauty, where volcanic formations, pristine forests, and diverse ecosystems create nature experiences that make nature tours perfect for nature lovers! Nature tours take you through Jeju Island's stunning natural world, from exploring Hallasan Mountain to visiting waterfalls, from experiencing volcanic landscapes to understanding ecosystems, and from seeing diverse flora to discovering why Jeju Island's nature is so remarkable. Experience the natural richness that defines Jeju Island, see why the wilderness is so beloved, enjoy pristine landscapes and diverse wildlife, and discover why nature tours offer perfect ways to explore Korea's natural paradise. Whether you're seeking volcanic parks, forest hikes, waterfall experiences, or comprehensive nature exploration, nature tours provide engaging journeys that showcase the wilderness paradise that makes Jeju Island special. From mountains to coasts, from active to dormant, nature tours ensure you experience the incredible nature that defines Jeju Island!`,
 
       seo: {
-        title: 'Jeju Island Nature Tours 2025: Volcanic Landscapes & Forests',
+        title: 'Jeju Island Nature Tours 2026: Volcanic Landscapes & Forests',
         description: 'Book Jeju Island nature tours! Explore Hallasan Mountain, volcanic parks & pristine nature. Discover Korea\'s natural paradise. From $70.',
         keywords: 'Jeju Island nature tours, Jeju Island hiking, Hallasan Mountain, nature tours Jeju',
       },
@@ -19849,7 +19849,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jeju Island showcases spectacular volcanic features, where Hallasan Mountain, lava tubes, and UNESCO World Heritage sites create volcanic experiences that make volcano tours perfect for geology enthusiasts! Volcano tours take you through Jeju Island's volcanic world, from climbing Hallasan to exploring lava tubes, from learning about volcanic formation to understanding geological significance, and from seeing dramatic landscapes to discovering why Jeju Island's volcanoes are so significant. Experience the geological richness that defines Jeju Island, see why the volcanic features are so admired, learn about volcanic activity and formation, and discover why volcano tours offer fascinating insights into Korea's volcanic history. Whether you're seeking mountain climbs, lava tube exploration, volcanic park visits, or comprehensive volcanic exploration, volcano tours provide engaging journeys that showcase the geological heart that makes Jeju Island special. From Hallasan to lava tubes, from active to dormant, volcano tours ensure you experience the incredible volcanoes that define Jeju Island!`,
 
       seo: {
-        title: 'Jeju Island Volcano Tours 2025: Hallasan & Lava Tubes',
+        title: 'Jeju Island Volcano Tours 2026: Hallasan & Lava Tubes',
         description: 'Book Jeju Island volcano tours! Explore Hallasan Mountain, lava tubes & UNESCO volcanic sites. Discover volcanic wonders. From $65.',
         keywords: 'Jeju Island volcano tours, Hallasan Mountain, lava tubes Jeju, volcano tours Jeju',
       },
@@ -20001,7 +20001,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jeju Island showcases beautiful coastal scenery, where pristine beaches, scenic coves, and tropical waters create beach experiences that make beach tours perfect for relaxation lovers! Beach tours take you to Jeju Island's stunning coastline, from relaxing on sandy beaches to exploring scenic coves, from enjoying clear waters to discovering coastal features, and from seeing volcanic formations to understanding why Jeju Island's beaches are so beloved. Experience the coastal beauty that defines Jeju Island, see why the beaches are so pristine, enjoy watersports and relaxation, and discover why beach tours offer perfect ways to unwind. Whether you're seeking sandy beaches, scenic coves, coastal walks, or comprehensive beach exploration, beach tours provide relaxing journeys that showcase the coastal paradise that makes Jeju Island special. From swimming to relaxing, from popular to secluded, beach tours ensure you experience the beautiful beaches that define Korea's island paradise!`,
 
       seo: {
-        title: 'Jeju Island Beach Tours 2025: Pristine Coastlines & Scenic Coves',
+        title: 'Jeju Island Beach Tours 2026: Pristine Coastlines & Scenic Coves',
         description: 'Book Jeju Island beach tours! Relax on pristine beaches, scenic coves & tropical waters. Discover Korea\'s coastal paradise. From $50.',
         keywords: 'Jeju Island beach tours, Jeju beaches, coastal Jeju, beach tours Jeju Island',
       },
@@ -20153,7 +20153,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jeju Island offers exciting adventure activities, where mountain hikes, water sports, and outdoor challenges create adventure experiences that make adventure tours perfect for thrill seekers! Adventure tours take you through Jeju Island's exciting outdoor activities, from hiking Hallasan to coastal kayaking, from lava tube exploration to waterfall rappelling, and from discovering varied adventures to experiencing why Jeju Island is an adventure paradise. Experience the thrill that defines Jeju Island adventure, see why the activities are so exciting, learn about outdoor sports and nature, and discover why adventure tours offer perfect ways to experience Jeju Island's wild side. Whether you're seeking mountain hikes, water sports, cave exploration, or comprehensive adventure exploration, adventure tours provide exhilarating journeys that showcase the outdoor activities that make Jeju Island special. From mountains to coastlines, from challenging to moderate, adventure tours ensure you experience the incredible adventures that define Jeju Island!`,
 
       seo: {
-        title: 'Jeju Island Adventure Tours 2025: Hiking & Water Sports',
+        title: 'Jeju Island Adventure Tours 2026: Hiking & Water Sports',
         description: 'Book Jeju Island adventure tours! Experience mountain hiking, water sports & thrilling adventures. Discover outdoor activities. From $85.',
         keywords: 'Jeju Island adventure tours, hiking Jeju, adventure activities Jeju, adventure tours Jeju Island',
       },
@@ -20305,7 +20305,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jeju Island showcases unique island culture, where traditional villages, UNESCO sites, and distinctive heritage create cultural insights that make cultural tours perfect for experiencing Korean island culture! Cultural tours take you through Jeju Island's cultural world, from visiting traditional haenyeo villages to experiencing folk performances, from learning about island life to understanding Jeju traditions, and from seeing cultural sites to discovering why Jeju Island culture is so distinctive. Experience the cultural richness that defines Jeju Island, learn about island traditions and customs, understand haenyeo culture and heritage, and discover why cultural tours offer fascinating insights into authentic Korean island culture. Whether you're seeking traditional villages, folk museums, cultural performances, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Jeju Island special. From haenyeo to folklore, from traditional to modern, cultural tours ensure you experience the unique culture that defines Jeju Island!`,
 
       seo: {
-        title: 'Jeju Island Cultural Tours 2025: Traditional Villages & UNESCO Sites',
+        title: 'Jeju Island Cultural Tours 2026: Traditional Villages & UNESCO Sites',
         description: 'Book Jeju Island cultural tours! Visit traditional villages, haenyeo culture & folk museums. Discover Korean island heritage. From $60.',
         keywords: 'Jeju Island cultural tours, Jeju culture, haenyeo Jeju, cultural tours Jeju Island',
       },
@@ -20456,7 +20456,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Jeju Island offers spectacular photography opportunities, where volcanic landscapes, pristine coastlines, and diverse scenery create photography experiences that make photography tours perfect for photographers and nature lovers! Photography tours take you to Jeju Island's most photogenic locations, from capturing Hallasan views to photographing coastal scenes, from experiencing sunrise to understanding lighting, and from seeing varied landscapes to discovering why Jeju Island is Korea's most beautiful destination. Experience the photographic richness that defines Jeju Island, see why the scenery is so photogenic, learn about composition and timing, and discover why photography tours offer perfect ways to capture Korea's island paradise. Whether you're seeking sunrise photography, landscape shots, coastal scenes, or comprehensive photographic exploration, photography tours provide engaging journeys that showcase the beautiful side that makes Jeju Island special. From golden hour to blue hour, from mountains to coastlines, photography tours ensure you capture the incredible scenery that defines Jeju Island!`,
 
       seo: {
-        title: 'Jeju Island Photography Tours 2025: Volcanic Peaks & Coastal Scenes',
+        title: 'Jeju Island Photography Tours 2026: Volcanic Peaks & Coastal Scenes',
         description: 'Book Jeju Island photography tours! Capture volcanic landscapes, pristine coastlines & stunning scenery. Discover photogenic paradise. From $80.',
         keywords: 'Jeju Island photography tours, photography Jeju, scenic photography, photography tours Jeju',
       },
@@ -20610,7 +20610,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Kerala showcases serene backwater experiences, where tranquil canals, traditional houseboats, and peaceful waterways create backwater experiences that make backwater tours essential for experiencing Kerala's most iconic attraction! Backwater tours take you through Kerala's peaceful waterways, from cruising on traditional houseboats to exploring tranquil canals, from experiencing rural Kerala life to understanding backwater ecosystems, and from seeing palm-fringed shores to discovering why Kerala's backwaters are so beloved. Experience the tranquility that defines Kerala backwaters, see why the waterways are so serene, enjoy houseboat journeys and canal explorations, and discover why backwater tours offer perfect ways to experience India's most peaceful waterways. Whether you're seeking houseboat cruises, canal tours, rural village visits, or comprehensive backwater exploration, backwater tours provide relaxing journeys that showcase the peaceful side that makes Kerala special. From Alleppey to Kumarakom, from day trips to overnight, backwater tours ensure you experience the incredible backwaters that define Kerala!`,
 
       seo: {
-        title: 'Kerala Backwater Tours 2025: Houseboat Cruises & Canals',
+        title: 'Kerala Backwater Tours 2026: Houseboat Cruises & Canals',
         description: 'Book Kerala backwater tours! Experience houseboat cruises, tranquil canals & peaceful waterways. Discover serene backwaters. From $80.',
         keywords: 'Kerala backwater tours, Kerala houseboats, backwater cruises, backwater tours Kerala',
       },
@@ -20762,7 +20762,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Kerala showcases spectacular natural beauty, where Western Ghats mountains, spice gardens, and pristine forests create nature experiences that make nature tours perfect for nature lovers! Nature tours take you through Kerala's stunning natural world, from exploring Western Ghats to visiting spice plantations, from experiencing tea gardens to understanding biodiversity, and from seeing diverse flora to discovering why Kerala is God's Own Country. Experience the natural richness that defines Kerala, see why the landscapes are so beautiful, enjoy mountain views and plantation tours, and discover why nature tours offer perfect ways to explore Kerala's green paradise. Whether you're seeking mountain treks, spice gardens, tea plantations, or comprehensive nature exploration, nature tours provide engaging journeys that showcase the natural beauty that makes Kerala special. From mountains to plantations, from forests to gardens, nature tours ensure you experience the incredible nature that defines Kerala!`,
 
       seo: {
-        title: 'Kerala Nature Tours 2025: Western Ghats & Spice Gardens',
+        title: 'Kerala Nature Tours 2026: Western Ghats & Spice Gardens',
         description: 'Book Kerala nature tours! Explore Western Ghats, spice plantations & tea gardens. Discover green paradise. From $65.',
         keywords: 'Kerala nature tours, Western Ghats, spice gardens Kerala, nature tours Kerala',
       },
@@ -20914,7 +20914,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Kerala showcases rich cultural heritage, where traditional Kathakali dance, temple architecture, and vibrant festivals create cultural experiences that make cultural tours perfect for experiencing South Indian culture! Cultural tours take you through Kerala's cultural world, from watching Kathakali performances to visiting ancient temples, from experiencing temple festivals to learning about traditions, and from seeing cultural sites to discovering why Kerala culture is so significant. Experience the cultural richness that defines Kerala, learn about South Indian traditions and customs, understand temple culture and festivals, and discover why cultural tours offer fascinating insights into authentic Kerala culture. Whether you're seeking Kathakali shows, temple visits, festival experiences, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Kerala special. From classical arts to temples, from ancient to modern, cultural tours ensure you experience the authentic culture that defines Kerala!`,
 
       seo: {
-        title: 'Kerala Cultural Tours 2025: Kathakali & Temple Festivals',
+        title: 'Kerala Cultural Tours 2026: Kathakali & Temple Festivals',
         description: 'Book Kerala cultural tours! Experience Kathakali dance, temple festivals & South Indian culture. Discover authentic heritage. From $55.',
         keywords: 'Kerala cultural tours, Kathakali Kerala, temple festivals, cultural tours Kerala',
       },
@@ -21066,7 +21066,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Kerala offers authentic Ayurvedic wellness experiences, where traditional treatments, yoga practices, and healing therapies create wellness experiences that make wellness tours perfect for relaxation and rejuvenation! Wellness tours take you through Kerala's wellness world, from experiencing Ayurvedic treatments to practicing yoga, from learning about holistic healing to understanding wellness traditions, and from enjoying spa therapies to discovering why Kerala is India's wellness capital. Experience the wellness richness that defines Kerala, learn about Ayurvedic principles and treatments, understand traditional healing and modern wellness, and discover why wellness tours offer perfect ways to rejuvenate. Whether you're seeking Ayurvedic treatments, yoga retreats, spa therapies, or comprehensive wellness exploration, wellness tours provide rejuvenating journeys that showcase the wellness side that makes Kerala special. From treatments to meditation, from ancient to modern, wellness tours ensure you experience the authentic wellness that defines Kerala!`,
 
       seo: {
-        title: 'Kerala Wellness Tours 2025: Ayurvedic Treatments & Yoga',
+        title: 'Kerala Wellness Tours 2026: Ayurvedic Treatments & Yoga',
         description: 'Book Kerala wellness tours! Experience Ayurvedic treatments, yoga & holistic healing. Discover wellness paradise. From $90.',
         keywords: 'Kerala wellness tours, Ayurvedic Kerala, yoga retreats Kerala, wellness tours Kerala',
       },
@@ -21218,7 +21218,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Kerala showcases beautiful tea plantations, where rolling hills, tea gardens, and scenic landscapes create plantation experiences that make tea plantation tours perfect for tea lovers and nature enthusiasts! Tea plantation tours take you through Kerala's tea-growing regions, from visiting Munnar tea gardens to learning about tea cultivation, from experiencing tea processing to understanding tea culture, and from seeing scenic plantations to discovering why Kerala's tea is so renowned. Experience the tea richness that defines Kerala, see why the plantations are so scenic, enjoy garden walks and tea tastings, and discover why tea plantation tours offer perfect ways to experience India's tea culture. Whether you're seeking Munnar plantations, tea factory visits, garden walks, or comprehensive plantation exploration, tea plantation tours provide engaging journeys that showcase the tea-growing side that makes Kerala special. From cultivation to tasting, from scenic to educational, tea plantation tours ensure you experience the incredible tea plantations that define Kerala!`,
 
       seo: {
-        title: 'Kerala Tea Plantation Tours 2025: Munnar Tea Gardens',
+        title: 'Kerala Tea Plantation Tours 2026: Munnar Tea Gardens',
         description: 'Book Kerala tea plantation tours! Visit Munnar tea gardens, learn tea cultivation & enjoy scenic plantations. Discover tea culture. From $60.',
         keywords: 'Kerala tea plantation tours, Munnar tea gardens, tea tours Kerala, plantation tours Kerala',
       },
@@ -21370,7 +21370,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Kerala showcases incredible wildlife diversity, where Periyar Tiger Reserve, bird sanctuaries, and diverse ecosystems create wildlife experiences that make wildlife tours perfect for animal lovers! Wildlife tours take you through Kerala's natural habitats, from viewing elephants to spotting birds, from observing diverse animals to understanding ecosystems, and from seeing wildlife sanctuaries to discovering why Kerala's biodiversity is so significant. Experience the wildlife richness that defines Kerala, see why the animals are so diverse, learn about conservation and habitats, and discover why wildlife tours offer perfect ways to observe India's incredible fauna. Whether you're seeking elephant encounters, bird watching, tiger reserves, or comprehensive wildlife exploration, wildlife tours provide engaging journeys that showcase the animal diversity that makes Kerala special. From mammals to birds, from reserves to sanctuaries, wildlife tours ensure you experience the incredible wildlife that defines Kerala!`,
 
       seo: {
-        title: 'Kerala Wildlife Tours 2025: Periyar Reserve & Bird Sanctuaries',
+        title: 'Kerala Wildlife Tours 2026: Periyar Reserve & Bird Sanctuaries',
         description: 'Book Kerala wildlife tours! Visit Periyar Tiger Reserve, bird sanctuaries & diverse wildlife. Discover natural biodiversity. From $75.',
         keywords: 'Kerala wildlife tours, Periyar Tiger Reserve, wildlife Kerala, wildlife tours Kerala',
       },
@@ -21524,7 +21524,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Koh Samui showcases beautiful tropical beaches, where pristine sands, clear waters, and palm-fringed coastlines create beach experiences that make beach tours perfect for relaxation lovers! Beach tours take you to Koh Samui's stunning coastline, from relaxing on popular beaches to discovering hidden coves, from enjoying clear waters to experiencing beach activities, and from seeing beautiful scenery to discovering why Koh Samui's beaches are so beloved. Experience the beach beauty that defines Koh Samui, see why the beaches are so pristine, enjoy swimming, sunbathing, and watersports, and discover why beach tours offer perfect ways to unwind on Thailand's tropical island. Whether you're seeking popular beaches, secluded coves, beach activities, or comprehensive beach exploration, beach tours provide relaxing journeys that showcase the coastal paradise that makes Koh Samui special. From Chaweng to Lamai, from active to peaceful, beach tours ensure you experience the beautiful beaches that define this tropical island!`,
 
       seo: {
-        title: 'Koh Samui Beach Tours 2025: Tropical Beaches & Pristine Sands',
+        title: 'Koh Samui Beach Tours 2026: Tropical Beaches & Pristine Sands',
         description: 'Book Koh Samui beach tours! Relax on stunning beaches, clear waters & tropical coastline. Discover beach paradise. From $45.',
         keywords: 'Koh Samui beach tours, Koh Samui beaches, beach tours Koh Samui, tropical beaches',
       },
@@ -21676,7 +21676,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Koh Samui offers beautiful island exploration, where Ang Thong Marine Park, scenic viewpoints, and tropical landscapes create island experiences that make island tours perfect for discovering Thailand's tropical paradise! Island tours take you around Koh Samui and nearby islands, from visiting Ang Thong Marine Park to exploring scenic viewpoints, from experiencing island culture to understanding natural beauty, and from seeing diverse attractions to discovering why Koh Samui is such a beloved island destination. Experience the island richness that defines Koh Samui, see why the island is so beautiful, enjoy diverse attractions and scenic views, and discover why island tours offer perfect ways to explore this tropical paradise. Whether you're seeking marine park visits, viewpoint tours, island hopping, or comprehensive island exploration, island tours provide engaging journeys that showcase the island beauty that makes Koh Samui special. From main island to nearby islands, from beaches to viewpoints, island tours ensure you experience the incredible island that defines Koh Samui!`,
 
       seo: {
-        title: 'Koh Samui Island Tours 2025: Ang Thong Marine Park & Viewpoints',
+        title: 'Koh Samui Island Tours 2026: Ang Thong Marine Park & Viewpoints',
         description: 'Book Koh Samui island tours! Explore Ang Thong Marine Park, scenic viewpoints & island attractions. Discover tropical paradise. From $70.',
         keywords: 'Koh Samui island tours, Ang Thong Marine Park, island tours Koh Samui, Koh Samui attractions',
       },
@@ -21828,7 +21828,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Koh Samui offers exciting water activities, where snorkeling, diving, boat tours, and marine adventures create water experiences that make water tours perfect for ocean lovers! Water tours take you through Koh Samui's aquatic world, from snorkeling in clear waters to diving vibrant reefs, from boat tours to fishing experiences, and from discovering marine life to understanding why Koh Samui's waters are so special. Experience the aquatic richness that defines Koh Samui, see why the waters are so clear, enjoy diverse water activities and marine encounters, and discover why water tours offer perfect ways to experience Thailand's tropical waters. Whether you're seeking snorkeling, diving, boat tours, or comprehensive water exploration, water tours provide engaging journeys that showcase the aquatic paradise that makes Koh Samui special. From surface to underwater, from calm to adventure, water tours ensure you experience the incredible waters that define this tropical island!`,
 
       seo: {
-        title: 'Koh Samui Water Tours 2025: Snorkeling & Marine Adventures',
+        title: 'Koh Samui Water Tours 2026: Snorkeling & Marine Adventures',
         description: 'Book Koh Samui water tours! Experience snorkeling, diving & boat tours. Discover aquatic paradise. From $60.',
         keywords: 'Koh Samui water tours, Koh Samui snorkeling, diving Koh Samui, water tours Koh Samui',
       },
@@ -21980,7 +21980,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Koh Samui offers exceptional wellness experiences, where spa treatments, yoga retreats, and relaxation therapies create wellness experiences that make wellness tours perfect for rejuvenation! Wellness tours take you through Koh Samui's wellness world, from experiencing traditional Thai massages to practicing yoga, from enjoying spa treatments to understanding wellness culture, and from discovering healing therapies to seeing why Koh Samui is Thailand's wellness paradise. Experience the wellness richness that defines Koh Samui, learn about Thai wellness traditions, understand spa culture and modern wellness, and discover why wellness tours offer perfect ways to relax and rejuvenate. Whether you're seeking spa treatments, yoga sessions, massage therapies, or comprehensive wellness exploration, wellness tours provide rejuvenating journeys that showcase the wellness side that makes Koh Samui special. From traditional to modern, from treatments to meditation, wellness tours ensure you experience the authentic wellness that defines this tropical island!`,
 
       seo: {
-        title: 'Koh Samui Wellness Tours 2025: Spa Treatments & Yoga Retreats',
+        title: 'Koh Samui Wellness Tours 2026: Spa Treatments & Yoga Retreats',
         description: 'Book Koh Samui wellness tours! Experience spa treatments, yoga & Thai massages. Discover wellness paradise. From $85.',
         keywords: 'Koh Samui wellness tours, spa Koh Samui, yoga Koh Samui, wellness tours Koh Samui',
       },
@@ -22132,7 +22132,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Koh Samui showcases authentic Thai island culture, where Buddhist temples, local markets, and traditional life create cultural experiences that make cultural tours perfect for experiencing Thailand's island heritage! Cultural tours take you through Koh Samui's cultural world, from visiting Big Buddha Temple to exploring local markets, from experiencing temple culture to learning about traditions, and from seeing cultural sites to discovering why Koh Samui culture is so significant. Experience the cultural richness that defines Koh Samui, learn about Thai Buddhist traditions, understand island life and customs, and discover why cultural tours offer fascinating insights into authentic Thai island culture. Whether you're seeking temple visits, market tours, cultural performances, or comprehensive cultural exploration, cultural tours provide engaging journeys that showcase the cultural heart that makes Koh Samui special. From temples to markets, from ancient to modern, cultural tours ensure you experience the authentic culture that defines this Thai island!`,
 
       seo: {
-        title: 'Koh Samui Cultural Tours 2025: Temples & Local Life',
+        title: 'Koh Samui Cultural Tours 2026: Temples & Local Life',
         description: 'Book Koh Samui cultural tours! Visit Big Buddha Temple, local markets & experience Thai island culture. Discover authentic heritage. From $50.',
         keywords: 'Koh Samui cultural tours, Big Buddha Koh Samui, temple tours, cultural tours Koh Samui',
       },
@@ -22284,7 +22284,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Koh Samui offers exciting adventure activities, where ziplining, ATV rides, and outdoor challenges create adventure experiences that make adventure tours perfect for thrill seekers! Adventure tours take you through Koh Samui's exciting activities, from ziplining through jungle to ATV riding, from hiking to water sports, and from discovering varied adventures to experiencing why Koh Samui is an adventure destination. Experience the thrill that defines Koh Samui adventure, see why the activities are so exciting, learn about outdoor sports and nature, and discover why adventure tours offer perfect ways to experience the island's wild side. Whether you're seeking ziplining, ATV tours, hiking adventures, or comprehensive adventure exploration, adventure tours provide exhilarating journeys that showcase the outdoor activities that make Koh Samui special. From jungle to coast, from heights to trails, adventure tours ensure you experience the incredible adventures that define this tropical island!`,
 
       seo: {
-        title: 'Koh Samui Adventure Tours 2025: Ziplining & ATV Rides',
+        title: 'Koh Samui Adventure Tours 2026: Ziplining & ATV Rides',
         description: 'Book Koh Samui adventure tours! Experience ziplining, ATV rides & thrilling adventures. Discover outdoor activities. From $75.',
         keywords: 'Koh Samui adventure tours, ziplining Koh Samui, ATV tours Koh Samui, adventure tours Koh Samui',
       },
@@ -22438,7 +22438,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Krabi offers exciting adventure activities, where rock climbing, jungle treks, and outdoor challenges create adventure experiences that make adventure tours perfect for thrill seekers! Adventure tours take you through Krabi's exciting activities, from rock climbing limestone cliffs to jungle trekking, from kayaking to ziplining, and from discovering varied adventures to experiencing why Krabi is Thailand's adventure capital. Experience the thrill that defines Krabi adventure, see why the activities are so exciting, learn about outdoor sports and nature, and discover why adventure tours offer perfect ways to experience the region's wild side. Whether you're seeking rock climbing, jungle trekking, kayaking adventures, or comprehensive adventure exploration, adventure tours provide exhilarating journeys that showcase the outdoor activities that make Krabi special. From cliffs to jungles, from heights to trails, adventure tours ensure you experience the incredible adventures that define Krabi!`,
 
       seo: {
-        title: 'Krabi Adventure Tours 2025: Rock Climbing & Jungle Treks',
+        title: 'Krabi Adventure Tours 2026: Rock Climbing & Jungle Treks',
         description: 'Book Krabi adventure tours! Experience rock climbing, jungle treks & thrilling adventures. Discover adventure paradise. From $80.',
         keywords: 'Krabi adventure tours, rock climbing Krabi, adventure activities Krabi, adventure tours Krabi',
       },
@@ -22590,7 +22590,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Krabi showcases beautiful tropical beaches, where pristine sands, clear waters, and dramatic limestone backdrops create beach experiences that make beach tours perfect for relaxation lovers! Beach tours take you to Krabi's stunning coastline, from relaxing on Railay Beach to exploring Ao Nang, from enjoying clear waters to experiencing beach activities, and from seeing beautiful scenery to discovering why Krabi's beaches are so beloved. Experience the beach beauty that defines Krabi, see why the beaches are so pristine, enjoy swimming, sunbathing, and watersports, and discover why beach tours offer perfect ways to unwind on Thailand's beautiful coast. Whether you're seeking popular beaches, secluded coves, beach activities, or comprehensive beach exploration, beach tours provide relaxing journeys that showcase the coastal paradise that makes Krabi special. From Railay to Ao Nang, from accessible to remote, beach tours ensure you experience the beautiful beaches that define Krabi!`,
 
       seo: {
-        title: 'Krabi Beach Tours 2025: Railay Beach & Pristine Coastline',
+        title: 'Krabi Beach Tours 2026: Railay Beach & Pristine Coastline',
         description: 'Book Krabi beach tours! Relax on stunning beaches, clear waters & dramatic coastline. Discover beach paradise. From $50.',
         keywords: 'Krabi beach tours, Railay Beach Krabi, beach tours Krabi, Krabi beaches',
       },
@@ -22742,7 +22742,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Krabi offers spectacular island exploration, where Phi Phi Islands, Hong Islands, and pristine beaches create island experiences that make island tours perfect for discovering Thailand's island paradise! Island tours take you around Krabi's stunning islands, from visiting Phi Phi Islands to exploring Hong Islands, from experiencing pristine beaches to understanding natural beauty, and from seeing diverse attractions to discovering why Krabi's islands are so beloved. Experience the island richness that defines Krabi, see why the islands are so beautiful, enjoy diverse attractions and scenic views, and discover why island tours offer perfect ways to explore this coastal paradise. Whether you're seeking Phi Phi visits, Hong Island tours, island hopping, or comprehensive island exploration, island tours provide engaging journeys that showcase the island beauty that makes Krabi special. From famous to hidden, from beaches to lagoons, island tours ensure you experience the incredible islands that define Krabi!`,
 
       seo: {
-        title: 'Krabi Island Tours 2025: Phi Phi Islands & Hong Islands',
+        title: 'Krabi Island Tours 2026: Phi Phi Islands & Hong Islands',
         description: 'Book Krabi island tours! Explore Phi Phi Islands, Hong Islands & pristine beaches. Discover island paradise. From $75.',
         keywords: 'Krabi island tours, Phi Phi Islands, Hong Islands Krabi, island tours Krabi',
       },
@@ -22894,7 +22894,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Krabi showcases world-class rock climbing, where dramatic limestone cliffs, diverse routes, and stunning coastal views create climbing experiences that make rock climbing tours perfect for climbers and adventure enthusiasts! Rock climbing tours take you to Krabi's renowned climbing areas, from scaling Railay cliffs to trying beginner routes, from learning climbing techniques to experiencing world-class climbing, and from seeing stunning views to discovering why Krabi is Asia's premier rock climbing destination. Experience the climbing excellence that defines Krabi, see why the cliffs are so famous, enjoy diverse routes and stunning scenery, and discover why rock climbing tours offer perfect ways to experience Thailand's climbing capital. Whether you're seeking beginner routes, advanced climbs, deep water soloing, or comprehensive climbing exploration, rock climbing tours provide exhilarating journeys that showcase the climbing paradise that makes Krabi special. From Railay to Tonsai, from beginners to experts, rock climbing tours ensure you experience the incredible climbing that defines Krabi!`,
 
       seo: {
-        title: 'Krabi Rock Climbing Tours 2025: Limestone Cliffs & World-Class Routes',
+        title: 'Krabi Rock Climbing Tours 2026: Limestone Cliffs & World-Class Routes',
         description: 'Book Krabi rock climbing tours! Experience world-class limestone climbing, Railay cliffs & climbing paradise. Discover climbing capital. From $90.',
         keywords: 'Krabi rock climbing tours, Railay rock climbing, climbing Krabi, rock climbing tours Krabi',
       },
@@ -23046,7 +23046,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Krabi showcases spectacular natural beauty, where mangrove forests, hot springs, and pristine landscapes create nature experiences that make nature tours perfect for nature lovers! Nature tours take you through Krabi's stunning natural world, from exploring mangrove forests to visiting hot springs, from experiencing jungle trails to understanding ecosystems, and from seeing diverse flora to discovering why Krabi's nature is so remarkable. Experience the natural richness that defines Krabi, see why the wilderness is so beautiful, enjoy pristine landscapes and diverse wildlife, and discover why nature tours offer perfect ways to explore Thailand's natural paradise. Whether you're seeking mangrove kayaking, hot spring visits, jungle treks, or comprehensive nature exploration, nature tours provide engaging journeys that showcase the wilderness paradise that makes Krabi special. From forests to springs, from coast to inland, nature tours ensure you experience the incredible nature that defines Krabi!`,
 
       seo: {
-        title: 'Krabi Nature Tours 2025: Mangrove Forests & Hot Springs',
+        title: 'Krabi Nature Tours 2026: Mangrove Forests & Hot Springs',
         description: 'Book Krabi nature tours! Explore mangrove forests, hot springs & pristine nature. Discover natural paradise. From $65.',
         keywords: 'Krabi nature tours, mangrove forests Krabi, hot springs Krabi, nature tours Krabi',
       },
@@ -23198,7 +23198,7 @@ export const categoryGuidesAsiaPacificPart1 = {
       introduction: `Krabi offers exciting water activities, where snorkeling, diving, boat tours, and marine adventures create water experiences that make water tours perfect for ocean lovers! Water tours take you through Krabi's aquatic world, from snorkeling in clear waters to diving vibrant reefs, from boat tours to kayaking through mangroves, and from discovering marine life to understanding why Krabi's waters are so special. Experience the aquatic richness that defines Krabi, see why the waters are so clear, enjoy diverse water activities and marine encounters, and discover why water tours offer perfect ways to experience Thailand's tropical waters. Whether you're seeking snorkeling, diving, boat tours, or comprehensive water exploration, water tours provide engaging journeys that showcase the aquatic paradise that makes Krabi special. From surface to underwater, from calm to adventure, water tours ensure you experience the incredible waters that define Krabi!`,
 
       seo: {
-        title: 'Krabi Water Tours 2025: Snorkeling & Marine Adventures',
+        title: 'Krabi Water Tours 2026: Snorkeling & Marine Adventures',
         description: 'Book Krabi water tours! Experience snorkeling, diving & boat tours. Discover aquatic paradise. From $70.',
         keywords: 'Krabi water tours, snorkeling Krabi, diving Krabi, water tours Krabi',
       },
