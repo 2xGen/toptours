@@ -2092,7 +2092,9 @@ export default function ProfilePage() {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify({
-                                      customerId: subscription.stripe_customer_id,
+                                      customerId: subscription.stripe_customer_id, // Try direct customer ID first
+                                      subscriptionId: subscription.id, // Fallback: fetch from DB if customerId is null
+                                      userId: user.id, // Required for fetching subscription
                                       returnUrl: window.location.href 
                                     }),
                                   });

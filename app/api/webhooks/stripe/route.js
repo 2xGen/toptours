@@ -830,17 +830,24 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
   // Handle Premium subscription if selected
   // Update pending restaurant_premium_subscriptions record to active (like restaurant_subscriptions)
   if (premiumPlan) {
+    // Normalize destination_id to slug format BEFORE querying for pending records
+    // The subscribe route creates pending records with slug format, so we need to match that
+    const { normalizeDestinationIdToSlug } = await import('@/lib/destinationIdHelper');
+    const normalizedDestinationId = await normalizeDestinationIdToSlug(destinationId);
+    
     // First, check if there's a pending record (created before checkout)
+    // Try both normalized slug and original destinationId to catch all cases
     const { data: existingPremiumPending } = await supabase
       .from('restaurant_premium_subscriptions')
-      .select('id, status')
+      .select('id, status, destination_id')
       .eq('restaurant_id', restaurantId)
-      .eq('destination_id', destinationId)
+      .in('destination_id', [normalizedDestinationId, destinationId].filter(Boolean))
       .eq('status', 'pending')
       .maybeSingle();
     
     if (existingPremiumPending) {
       // Update pending record to active (preserves customization settings from pending record)
+      // Also update destination_id to normalized slug for consistency
       const { error: updateError } = await supabase
         .from('restaurant_premium_subscriptions')
         .update({
@@ -851,6 +858,7 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
           status: 'active',
           current_period_start: new Date().toISOString(),
           current_period_end: currentPeriodEnd.toISOString(),
+          destination_id: normalizedDestinationId || destinationId, // Normalize to slug for consistency
           // Note: Customization settings (color_scheme, hero_cta_index, etc.) are preserved from pending record
           // They were set in the subscribe route before checkout
         })
@@ -860,14 +868,29 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
         console.error(`❌ [WEBHOOK] Error updating pending restaurant_premium_subscriptions to active:`, updateError);
       } else {
         console.log(`✅ [WEBHOOK] Updated pending restaurant_premium_subscriptions to active (ID: ${existingPremiumPending.id})`);
+        
+        // Clean up any other pending records for this restaurant (prevent duplicates)
+        const { error: cleanupError } = await supabase
+          .from('restaurant_premium_subscriptions')
+          .delete()
+          .eq('restaurant_id', restaurantId)
+          .eq('status', 'pending')
+          .neq('id', existingPremiumPending.id);
+        
+        if (cleanupError) {
+          console.warn(`⚠️ [WEBHOOK] Error cleaning up duplicate pending records:`, cleanupError);
+        } else {
+          console.log(`✅ [WEBHOOK] Cleaned up duplicate pending records for restaurant ${restaurantId}`);
+        }
       }
     } else {
       // Fallback: Use upsert if no pending record exists (shouldn't happen, but handle gracefully)
+      // Use normalized destination_id for consistency
       const { error } = await supabase
         .from('restaurant_premium_subscriptions')
         .upsert({
           restaurant_id: restaurantId,
-          destination_id: destinationId,
+          destination_id: normalizedDestinationId || destinationId, // Use normalized slug
           restaurant_slug: restaurantSlug,
           restaurant_name: restaurantName || null,
           stripe_subscription_id: subscriptionId,
@@ -1145,16 +1168,23 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
   }
   
   // Send confirmation emails
-  const customerEmail = session.customer_email;
+  const customerEmail = session.customer_email || metadata.email;
   if (customerEmail) {
     try {
+      // Normalize destination_id to slug format for email URLs
+      const { normalizeDestinationIdToSlug } = await import('@/lib/destinationIdHelper');
+      const emailDestinationId = await normalizeDestinationIdToSlug(destinationId) || destinationId;
+      
       // Send premium confirmation email if premium plan is selected
       if (premiumPlan) {
+        // Convert 'annual' to 'yearly' for email function
+        const emailPlanType = premiumPlan === 'annual' ? 'yearly' : 'monthly';
+        
         await sendRestaurantPremiumConfirmationEmail({
           to: customerEmail,
           restaurantName: restaurantName || restaurantSlug,
-          planType: planType,
-          destinationId: destinationId,
+          planType: emailPlanType,
+          destinationId: emailDestinationId,
           restaurantSlug: restaurantSlug,
           endDate: currentPeriodEnd.toISOString(),
         });
@@ -1175,7 +1205,7 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
           restaurantName: restaurantName || restaurantSlug,
           billingCycle: promotedPlan,
           endDate: promotionEndDate.toISOString(),
-          destinationId: destinationId,
+          destinationId: emailDestinationId,
           restaurantSlug: restaurantSlug
         });
         console.log(`✅ Restaurant promotion confirmation email sent to ${customerEmail}`);
@@ -1183,6 +1213,8 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
     } catch (emailError) {
       console.error('Error sending restaurant confirmation emails:', emailError);
     }
+  } else {
+    console.warn('⚠️ [WEBHOOK] No customer email found for restaurant subscription checkout - cannot send confirmation emails');
   }
 }
 
@@ -1253,15 +1285,22 @@ async function handleRestaurantPremiumCheckout(session, supabase) {
     console.log(`✅ Restaurant premium subscription activated for ${restaurantName || restaurantSlug} (${restaurantId})`);
     
     // Send confirmation email
-    const customerEmail = session.customer_email;
+    const customerEmail = session.customer_email || metadata.email;
     if (customerEmail) {
       try {
+        // Normalize destination_id to slug format for email URLs
+        const { normalizeDestinationIdToSlug } = await import('@/lib/destinationIdHelper');
+        const emailDestinationId = await normalizeDestinationIdToSlug(destinationId) || destinationId;
+        
+        // Convert planType to 'yearly' if it's 'annual' or ensure it's 'yearly'/'monthly'
+        const emailPlanType = planType === 'annual' ? 'yearly' : (planType === 'yearly' ? 'yearly' : 'monthly');
+        
         const { sendRestaurantPremiumConfirmationEmail } = await import('@/lib/email');
         await sendRestaurantPremiumConfirmationEmail({
           to: customerEmail,
           restaurantName: restaurantName || restaurantSlug,
-          planType: planType,
-          destinationId: destinationId,
+          planType: emailPlanType,
+          destinationId: emailDestinationId,
           restaurantSlug: restaurantSlug,
           endDate: currentPeriodEnd.toISOString(),
         });
@@ -1270,6 +1309,8 @@ async function handleRestaurantPremiumCheckout(session, supabase) {
         console.error('Error sending restaurant premium confirmation email:', emailError);
         // Don't fail the webhook if email fails
       }
+    } else {
+      console.warn('⚠️ [WEBHOOK] No customer email found for restaurant premium checkout - cannot send confirmation email');
     }
   }
 }
