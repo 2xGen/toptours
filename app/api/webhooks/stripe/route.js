@@ -1403,7 +1403,6 @@ async function handleRestaurantPremiumSubscriptionDeleted(subscription, supabase
   const destinationId = metadata.destinationId;
   const restaurantSlug = metadata.restaurantSlug;
   const restaurantName = metadata.restaurantName;
-  const promotedPlan = metadata.promotedPlan || '';
   
   if (!restaurantId || !destinationId) {
     console.error('Missing restaurant info in subscription metadata');
@@ -1577,29 +1576,29 @@ async function handleTourOperatorPremiumCheckout(session, supabase) {
   try {
     const metadata = session.metadata || {};
     const subscriptionId = session.subscription;
-  
-  const subscriptionDbId = metadata.subscriptionId;
-  const userId = metadata.userId;
-  const operatorName = metadata.operatorName;
-  const operatorEmail = metadata.operatorEmail;
-  const tourCount = parseInt(metadata.tourCount || '5');
-  const billingCycle = metadata.billingCycle || 'monthly';
-  const selectedTourIds = metadata.selectedTourIds ? metadata.selectedTourIds.split(',') : [];
+    
+    const subscriptionDbId = metadata.subscriptionId;
+    const userId = metadata.userId;
+    const operatorName = metadata.operatorName;
+    const operatorEmail = metadata.operatorEmail;
+    const tourCount = parseInt(metadata.tourCount || '5');
+    const billingCycle = metadata.billingCycle || 'monthly';
+    const selectedTourIds = metadata.selectedTourIds ? metadata.selectedTourIds.split(',') : [];
     
     console.log(`🔄 [WEBHOOK] Processing tour operator premium checkout for subscription ${subscriptionDbId}, Stripe subscription ${subscriptionId}`);
   
-  if (!subscriptionDbId || !subscriptionId || !userId) {
+    if (!subscriptionDbId || !subscriptionId || !userId) {
       console.error('❌ [WEBHOOK] Missing required fields for tour operator premium checkout:', metadata);
       return; // Return early, don't throw - webhook will still return success
     }
   
-  // Verify payment was successful
-  if (session.payment_status !== 'paid') {
-    console.error(`❌ [WEBHOOK] Payment status is not 'paid' for session ${session.id}: ${session.payment_status}`);
-    return;
-  }
+    // Verify payment was successful
+    if (session.payment_status !== 'paid') {
+      console.error(`❌ [WEBHOOK] Payment status is not 'paid' for session ${session.id}: ${session.payment_status}`);
+      return;
+    }
   
-  console.log(`✅ [WEBHOOK] Payment confirmed as paid for session ${session.id}`);
+    console.log(`✅ [WEBHOOK] Payment confirmed as paid for session ${session.id}`);
   
   // CRITICAL: Verify Stripe subscription status before activating
   // This ensures we only activate if payment was actually successful
@@ -1917,22 +1916,23 @@ async function handleTourOperatorPremiumCheckout(session, supabase) {
       }
     }
     
-    // Send confirmation email
-    const customerEmail = session.customer_email || operatorEmail;
-    if (customerEmail) {
-      try {
-        const { sendTourOperatorPremiumConfirmationEmail } = await import('@/lib/email');
-        await sendTourOperatorPremiumConfirmationEmail({
-          to: customerEmail,
-          operatorName: operatorName,
-          tourCount: tourCount,
-          billingCycle: billingCycle,
-          endDate: currentPeriodEnd.toISOString(),
-        });
-        console.log(`✅ Tour operator premium confirmation email sent to ${customerEmail}`);
-      } catch (emailError) {
-        console.error('Error sending tour operator premium confirmation email:', emailError);
-        // Don't fail the webhook if email fails
+      // Send confirmation email
+      const customerEmail = session.customer_email || operatorEmail;
+      if (customerEmail) {
+        try {
+          const { sendTourOperatorPremiumConfirmationEmail } = await import('@/lib/email');
+          await sendTourOperatorPremiumConfirmationEmail({
+            to: customerEmail,
+            operatorName: operatorName,
+            tourCount: tourCount,
+            billingCycle: billingCycle,
+            endDate: currentPeriodEnd.toISOString(),
+          });
+          console.log(`✅ Tour operator premium confirmation email sent to ${customerEmail}`);
+        } catch (emailError) {
+          console.error('Error sending tour operator premium confirmation email:', emailError);
+          // Don't fail the webhook if email fails
+        }
       }
     }
   } catch (error) {
