@@ -138,8 +138,8 @@ export async function POST(request) {
       } else {
         // Generate a new operator_id (UUID) if none exists
         // This can happen for older subscriptions created before operator_id was required
-        const { v4: uuidv4 } = await import('uuid');
-        operatorId = uuidv4();
+        // Use crypto.randomUUID() instead of uuid package
+        operatorId = crypto.randomUUID();
         // Update subscription with new operator_id
         await supabase
           .from('tour_operator_subscriptions')

@@ -1947,9 +1947,9 @@ async function handleTourOperatorPremiumCheckout(session, supabase) {
 /**
  * Handle tour operator promotion upgrade checkout
  * This handles when users add promotion to existing tours via checkout
- * Exported for use in manual processing endpoint
+ * Internal function (not exported - Next.js routes can only export HTTP methods)
  */
-export async function handleTourOperatorPromotionUpgrade(session, supabase) {
+async function handleTourOperatorPromotionUpgrade(session, supabase) {
   try {
     const metadata = session.metadata || {};
     const subscriptionId = session.subscription;
