@@ -2150,7 +2150,7 @@ async function handleTourOperatorPromotionUpgrade(session, supabase) {
  * This handles when users add promotion to existing restaurants via checkout
  * Exported for use in manual processing endpoint
  */
-export async function handleRestaurantPromotionUpgrade(session, supabase) {
+async function handleRestaurantPromotionUpgrade(session, supabase) {
   try {
     const metadata = session.metadata || {};
     const subscriptionId = session.subscription;
