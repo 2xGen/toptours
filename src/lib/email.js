@@ -746,3 +746,203 @@ export async function sendWelcomeEmail({ to, displayName }) {
   }
 }
 
+/**
+ * Send tour promotion confirmation email
+ */
+export async function sendTourPromotionConfirmationEmail({ 
+  to, 
+  tourName, 
+  tourCount,
+  billingCycle,
+  endDate,
+  destinationId,
+  tourUrl
+}) {
+  if (!resend) {
+    console.error('❌ Resend not initialized - RESEND_API_KEY is missing');
+    return { success: false, error: 'Resend not configured' };
+  }
+
+  try {
+    console.log(`📧 Attempting to send tour promotion confirmation email to: ${to}`);
+    const priceLabel = billingCycle === 'annual' ? '$239.88/year' : '$19.99/month';
+    const billingLabel = billingCycle === 'annual' ? 'Yearly' : 'Monthly';
+    
+    const { data, error } = await resend.emails.send({
+      from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      to: [to],
+      subject: `🎉 Your tour${tourCount > 1 ? 's are' : ' is'} now promoted on TopTours.ai!`,
+      html: `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          </head>
+          <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
+              <h1 style="color: white; margin: 0; font-size: 28px;">🚀 Promotion Activated!</h1>
+            </div>
+            
+            <div style="background: #f0fdf4; padding: 30px; border-radius: 0 0 10px 10px; border: 2px solid #10b981; border-top: none;">
+              <p style="font-size: 16px; margin-bottom: 20px;">Congratulations! Your tour${tourCount > 1 ? 's are' : ' is'} now promoted on TopTours.ai and will appear at the top of search results.</p>
+              
+              <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981;">
+                <h2 style="margin-top: 0; color: #10b981;">What's Active Now</h2>
+                <ul style="padding-left: 20px; margin: 10px 0;">
+                  <li style="margin: 8px 0;">⭐ <strong>Top Placement</strong> - Your tour${tourCount > 1 ? 's appear' : ' appears'} in the "Promoted Listings" section</li>
+                  <li style="margin: 8px 0;">🏆 <strong>Promoted Badge</strong> - Eye-catching badge on tour cards</li>
+                  <li style="margin: 8px 0;">📈 <strong>Higher Visibility</strong> - Appears above regular search results</li>
+                  <li style="margin: 8px 0;">🎯 <strong>Better Conversion</strong> - More clicks and bookings</li>
+                  <li style="margin: 8px 0;">🔍 <strong>Multiple Destinations</strong> - Visible across all relevant destination pages</li>
+                </ul>
+              </div>
+              
+              <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h3 style="margin-top: 0; color: #333;">Promotion Details</h3>
+                <p style="margin: 10px 0;"><strong>Tour${tourCount > 1 ? 's' : ''}:</strong> ${tourName || `${tourCount} tour${tourCount > 1 ? 's' : ''}`}</p>
+                <p style="margin: 10px 0;"><strong>Plan:</strong> ${billingLabel} - ${priceLabel}</p>
+                <p style="margin: 10px 0;"><strong>Active Until:</strong> ${new Date(endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+              </div>
+              
+              ${tourUrl ? `
+              <div style="text-align: center; margin: 30px 0;">
+                <a href="${tourUrl}" style="display: inline-block; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">View Promoted Tour${tourCount > 1 ? 's' : ''}</a>
+              </div>
+              ` : ''}
+              
+              <div style="text-align: center; margin: 30px 0;">
+                <a href="https://toptours.ai/profile?tab=my-tours" style="display: inline-block; background: white; color: #10b981; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; border: 2px solid #10b981;">Manage Promotions</a>
+              </div>
+              
+              <div style="background: #d1fae5; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981;">
+                <p style="margin: 0; font-size: 14px; color: #065f46;">
+                  <strong>💡 Tip:</strong> Promoted tours get 3-5x more visibility and bookings. You can manage all your promotions from your <a href="https://toptours.ai/profile?tab=my-tours" style="color: #059669; font-weight: 600;">profile page</a>.
+                </p>
+              </div>
+              
+              <p style="font-size: 14px; color: #666; margin-top: 30px; border-top: 1px solid #e5e7eb; padding-top: 20px;">
+                Questions? Visit <a href="https://toptours.ai/contact" style="color: #10b981;">our contact page</a>.
+              </p>
+              
+              <p style="font-size: 12px; color: #999; margin-top: 20px;">
+                © ${new Date().getFullYear()} TopTours.ai™. All rights reserved.
+              </p>
+            </div>
+          </body>
+        </html>
+      `,
+    });
+
+    if (error) {
+      console.error('❌ Resend API error sending tour promotion confirmation email:', error);
+      return { success: false, error };
+    }
+
+    console.log('✅ Tour promotion confirmation email sent successfully:', data?.id);
+    return { success: true, data };
+  } catch (error) {
+    console.error('❌ Exception sending tour promotion confirmation email:', error);
+    return { success: false, error };
+  }
+}
+
+/**
+ * Send restaurant promotion confirmation email
+ */
+export async function sendRestaurantPromotionConfirmationEmail({ 
+  to, 
+  restaurantName, 
+  billingCycle,
+  endDate,
+  destinationId,
+  restaurantSlug
+}) {
+  if (!resend) {
+    console.error('❌ Resend not initialized - RESEND_API_KEY is missing');
+    return { success: false, error: 'Resend not configured' };
+  }
+
+  try {
+    console.log(`📧 Attempting to send restaurant promotion confirmation email to: ${to}`);
+    const restaurantUrl = `https://toptours.ai/destinations/${destinationId}/restaurants/${restaurantSlug}`;
+    const priceLabel = billingCycle === 'annual' ? '$239.88/year' : '$19.99/month';
+    const billingLabel = billingCycle === 'annual' ? 'Yearly' : 'Monthly';
+    
+    const { data, error } = await resend.emails.send({
+      from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      to: [to],
+      subject: `🎉 ${restaurantName} is now promoted on TopTours.ai!`,
+      html: `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          </head>
+          <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <div style="background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
+              <h1 style="color: white; margin: 0; font-size: 28px;">🚀 Promotion Activated!</h1>
+            </div>
+            
+            <div style="background: #fffbeb; padding: 30px; border-radius: 0 0 10px 10px; border: 2px solid #f59e0b; border-top: none;">
+              <p style="font-size: 16px; margin-bottom: 20px;">Congratulations! <strong>${restaurantName}</strong> is now promoted on TopTours.ai and will appear at the top of search results.</p>
+              
+              <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #f59e0b;">
+                <h2 style="margin-top: 0; color: #f59e0b;">What's Active Now</h2>
+                <ul style="padding-left: 20px; margin: 10px 0;">
+                  <li style="margin: 8px 0;">⭐ <strong>Top Placement</strong> - Your restaurant appears in the "Promoted Listings" section</li>
+                  <li style="margin: 8px 0;">🏆 <strong>Promoted Badge</strong> - Eye-catching badge on restaurant cards</li>
+                  <li style="margin: 8px 0;">📈 <strong>Higher Visibility</strong> - Appears above regular search results</li>
+                  <li style="margin: 8px 0;">🎯 <strong>Better Conversion</strong> - More clicks and reservations</li>
+                  <li style="margin: 8px 0;">🔍 <strong>Multiple Pages</strong> - Visible across destination pages and match-your-style</li>
+                </ul>
+              </div>
+              
+              <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h3 style="margin-top: 0; color: #333;">Promotion Details</h3>
+                <p style="margin: 10px 0;"><strong>Restaurant:</strong> ${restaurantName}</p>
+                <p style="margin: 10px 0;"><strong>Plan:</strong> ${billingLabel} - ${priceLabel}</p>
+                <p style="margin: 10px 0;"><strong>Active Until:</strong> ${new Date(endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+              </div>
+              
+              <div style="text-align: center; margin: 30px 0;">
+                <a href="${restaurantUrl}" style="display: inline-block; background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">View Promoted Restaurant</a>
+              </div>
+              
+              <div style="text-align: center; margin: 30px 0;">
+                <a href="https://toptours.ai/profile?tab=my-restaurants" style="display: inline-block; background: white; color: #f59e0b; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; border: 2px solid #f59e0b;">Manage Promotions</a>
+              </div>
+              
+              <div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #f59e0b;">
+                <p style="margin: 0; font-size: 14px; color: #92400e;">
+                  <strong>💡 Tip:</strong> Promoted restaurants get 3-5x more visibility and reservations. You can manage all your promotions from your <a href="https://toptours.ai/profile?tab=my-restaurants" style="color: #d97706; font-weight: 600;">profile page</a>.
+                </p>
+              </div>
+              
+              <p style="font-size: 14px; color: #666; margin-top: 30px; border-top: 1px solid #e5e7eb; padding-top: 20px;">
+                Questions? Visit <a href="https://toptours.ai/contact" style="color: #f59e0b;">our contact page</a>.
+              </p>
+              
+              <p style="font-size: 12px; color: #999; margin-top: 20px;">
+                © ${new Date().getFullYear()} TopTours.ai™. All rights reserved.
+              </p>
+            </div>
+          </body>
+        </html>
+      `,
+    });
+
+    if (error) {
+      console.error('❌ Resend API error sending restaurant promotion confirmation email:', error);
+      return { success: false, error };
+    }
+
+    console.log('✅ Restaurant promotion confirmation email sent successfully:', data?.id);
+    return { success: true, data };
+  } catch (error) {
+    console.error('❌ Exception sending restaurant promotion confirmation email:', error);
+    return { success: false, error };
+  }
+}
+

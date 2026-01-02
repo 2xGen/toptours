@@ -19,7 +19,11 @@ import { TIER_POINTS } from '@/lib/promotionSystem';
 import { 
   sendSubscriptionConfirmationEmail, 
   sendInstantBoostConfirmationEmail,
-  sendSubscriptionCancellationEmail 
+  sendSubscriptionCancellationEmail,
+  sendTourOperatorPremiumConfirmationEmail,
+  sendRestaurantPremiumConfirmationEmail,
+  sendTourPromotionConfirmationEmail,
+  sendRestaurantPromotionConfirmationEmail
 } from '@/lib/email';
 import { checkWebhookProcessed, markWebhookProcessed } from './idempotency';
 
@@ -1140,22 +1144,44 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
     }
   }
   
-  // Send confirmation email
+  // Send confirmation emails
   const customerEmail = session.customer_email;
   if (customerEmail) {
     try {
-      const { sendRestaurantPremiumConfirmationEmail } = await import('@/lib/email');
-      await sendRestaurantPremiumConfirmationEmail({
-        to: customerEmail,
-        restaurantName: restaurantName || restaurantSlug,
-        planType: planType,
-        destinationId: destinationId,
-        restaurantSlug: restaurantSlug,
-        endDate: currentPeriodEnd.toISOString(),
-      });
-      console.log(`✅ Restaurant subscription confirmation email sent to ${customerEmail}`);
+      // Send premium confirmation email if premium plan is selected
+      if (premiumPlan) {
+        await sendRestaurantPremiumConfirmationEmail({
+          to: customerEmail,
+          restaurantName: restaurantName || restaurantSlug,
+          planType: planType,
+          destinationId: destinationId,
+          restaurantSlug: restaurantSlug,
+          endDate: currentPeriodEnd.toISOString(),
+        });
+        console.log(`✅ Restaurant premium confirmation email sent to ${customerEmail}`);
+      }
+      
+      // Send promotion confirmation email if promotion plan is selected
+      if (promotedPlan) {
+        const promotionEndDate = new Date();
+        if (promotedPlan === 'annual') {
+          promotionEndDate.setFullYear(promotionEndDate.getFullYear() + 1);
+        } else {
+          promotionEndDate.setMonth(promotionEndDate.getMonth() + 1);
+        }
+        
+        await sendRestaurantPromotionConfirmationEmail({
+          to: customerEmail,
+          restaurantName: restaurantName || restaurantSlug,
+          billingCycle: promotedPlan,
+          endDate: promotionEndDate.toISOString(),
+          destinationId: destinationId,
+          restaurantSlug: restaurantSlug
+        });
+        console.log(`✅ Restaurant promotion confirmation email sent to ${customerEmail}`);
+      }
     } catch (emailError) {
-      console.error('Error sending restaurant subscription confirmation email:', emailError);
+      console.error('Error sending restaurant confirmation emails:', emailError);
     }
   }
 }
@@ -1917,11 +1943,11 @@ async function handleTourOperatorPremiumCheckout(session, supabase) {
       }
     }
     
-      // Send confirmation email
+      // Send confirmation emails
       const customerEmail = session.customer_email || operatorEmail;
       if (customerEmail) {
         try {
-          const { sendTourOperatorPremiumConfirmationEmail } = await import('@/lib/email');
+          // Send premium confirmation email
           await sendTourOperatorPremiumConfirmationEmail({
             to: customerEmail,
             operatorName: operatorName,
@@ -1930,8 +1956,46 @@ async function handleTourOperatorPremiumCheckout(session, supabase) {
             endDate: currentPeriodEnd.toISOString(),
           });
           console.log(`✅ Tour operator premium confirmation email sent to ${customerEmail}`);
+          
+          // Send promotion confirmation email if promotions are included
+          if (promotedTourIdsStr && promotedTourIdsStr.length > 0) {
+            const promotedTourIds = promotedTourIdsStr.split(',').filter(Boolean);
+            if (promotedTourIds.length > 0) {
+              // Get tour names from promoted_tours
+              const { data: promotedToursData } = await supabase
+                .from('promoted_tours')
+                .select('tour_name, destination_id, product_id')
+                .eq('operator_subscription_id', subscriptionDbId)
+                .in('product_id', promotedTourIds)
+                .eq('status', 'active')
+                .limit(5);
+              
+              const tourNames = promotedToursData?.map(pt => pt.tour_name).filter(Boolean) || [];
+              const firstDestination = promotedToursData?.[0]?.destination_id || null;
+              const firstTourId = promotedToursData?.[0]?.product_id || promotedTourIds[0];
+              const tourUrl = firstTourId ? `https://toptours.ai/tours/${firstTourId}` : null;
+              
+              const promotionEndDate = new Date();
+              if (promotedBillingCycle === 'annual') {
+                promotionEndDate.setFullYear(promotionEndDate.getFullYear() + 1);
+              } else {
+                promotionEndDate.setMonth(promotionEndDate.getMonth() + 1);
+              }
+              
+              await sendTourPromotionConfirmationEmail({
+                to: customerEmail,
+                tourName: tourNames.length > 0 ? (tourNames.length === 1 ? tourNames[0] : `${tourNames.length} tours`) : `${promotedTourIds.length} tour${promotedTourIds.length > 1 ? 's' : ''}`,
+                tourCount: promotedTourIds.length,
+                billingCycle: promotedBillingCycle,
+                endDate: promotionEndDate.toISOString(),
+                destinationId: firstDestination,
+                tourUrl: tourUrl
+              });
+              console.log(`✅ Tour promotion confirmation email sent to ${customerEmail}`);
+            }
+          }
         } catch (emailError) {
-          console.error('Error sending tour operator premium confirmation email:', emailError);
+          console.error('Error sending confirmation emails:', emailError);
           // Don't fail the webhook if email fails
         }
       }
@@ -2106,6 +2170,8 @@ async function handleTourOperatorPromotionUpgrade(session, supabase) {
             start_date: promotionStartDate.toISOString(),
             end_date: promotionEndDate.toISOString(),
             destination_id: destinationId, // Update destination_id if available
+            user_id: userId, // Ensure user_id is set for reliable querying
+            email: session.customer_email || metadata.email || null, // Ensure email is set
           })
           .eq('id', existingPending.id);
         
@@ -2128,6 +2194,8 @@ async function handleTourOperatorPromotionUpgrade(session, supabase) {
             start_date: promotionStartDate.toISOString(),
             end_date: promotionEndDate.toISOString(),
             destination_id: destinationId, // Use destinationId (already normalized to slug if needed)
+            user_id: userId, // Ensure user_id is set for reliable querying
+            email: session.customer_email || metadata.email || null, // Ensure email is set
           });
         
         if (insertError) {
@@ -2139,6 +2207,44 @@ async function handleTourOperatorPromotionUpgrade(session, supabase) {
     }
     
     console.log(`✅ [WEBHOOK] Promotion upgrade completed for ${promotedTourIds.length} tour(s)`);
+    
+    // Send promotion confirmation email
+    try {
+      const { data: { user } } = await supabase.auth.admin.getUserById(userId);
+      if (user?.email) {
+        // Get tour names from promoted_tours
+        const { data: promotedToursData } = await supabase
+          .from('promoted_tours')
+          .select('tour_name, destination_id, product_id')
+          .eq('operator_subscription_id', subscriptionDbId)
+          .in('product_id', promotedTourIds)
+          .eq('status', 'active')
+          .limit(5);
+        
+        const tourNames = promotedToursData?.map(pt => pt.tour_name).filter(Boolean) || [];
+        const firstDestination = promotedToursData?.[0]?.destination_id || null;
+        const firstTourId = promotedToursData?.[0]?.product_id || promotedTourIds[0];
+        const tourUrl = firstTourId ? `https://toptours.ai/tours/${firstTourId}` : null;
+        
+        const emailResult = await sendTourPromotionConfirmationEmail({
+          to: user.email,
+          tourName: tourNames.length > 0 ? (tourNames.length === 1 ? tourNames[0] : `${tourNames.length} tours`) : `${promotedTourIds.length} tour${promotedTourIds.length > 1 ? 's' : ''}`,
+          tourCount: promotedTourIds.length,
+          billingCycle: promotedBillingCycle,
+          endDate: promotionEndDate.toISOString(),
+          destinationId: firstDestination,
+          tourUrl: tourUrl
+        });
+        
+        if (emailResult.success) {
+          console.log(`✅ [WEBHOOK] Tour promotion confirmation email sent to ${user.email}`);
+        } else {
+          console.error(`❌ [WEBHOOK] Failed to send tour promotion confirmation email:`, emailResult.error);
+        }
+      }
+    } catch (emailError) {
+      console.error('❌ [WEBHOOK] Exception sending tour promotion confirmation email:', emailError);
+    }
     
   } catch (error) {
     console.error('❌ [WEBHOOK] Unexpected error in handleTourOperatorPromotionUpgrade (logged but not failing webhook):', error);
@@ -2342,6 +2448,29 @@ async function handleRestaurantPromotionUpgrade(session, supabase) {
       } else {
         console.log(`✅ [WEBHOOK] Created promoted_restaurants record (active until ${promotionEndDate.toISOString()})`);
       }
+    }
+    
+    // Send promotion confirmation email
+    try {
+      const { data: { user } } = await supabase.auth.admin.getUserById(userId);
+      if (user?.email) {
+        const emailResult = await sendRestaurantPromotionConfirmationEmail({
+          to: user.email,
+          restaurantName: subscription.restaurant_name,
+          billingCycle: promotedBillingCycle,
+          endDate: promotionEndDate.toISOString(),
+          destinationId: destinationSlug,
+          restaurantSlug: subscription.restaurant_slug
+        });
+        
+        if (emailResult.success) {
+          console.log(`✅ [WEBHOOK] Restaurant promotion confirmation email sent to ${user.email}`);
+        } else {
+          console.error(`❌ [WEBHOOK] Failed to send restaurant promotion confirmation email:`, emailResult.error);
+        }
+      }
+    } catch (emailError) {
+      console.error('❌ [WEBHOOK] Exception sending restaurant promotion confirmation email:', emailError);
     }
     
     // Also update restaurants table for backward compatibility

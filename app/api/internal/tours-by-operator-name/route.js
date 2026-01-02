@@ -78,9 +78,17 @@ export async function GET(request) {
 
     // Remove duplicates and return
     const uniqueProductIds = [...new Set(productIds)].filter(Boolean);
+    
+    // Return the CRM operator name (canonical name) so frontend can use it for validation
+    // This ensures all tours use the same operator name, even if Viator API returns different names
+    const canonicalOperatorName = crmEntry?.operator_name || 
+                                  (fuzzyMatches && fuzzyMatches.length > 0 ? fuzzyMatches[0].operator_name : null) ||
+                                  (subscriptions && subscriptions.length > 0 ? subscriptions[0].operator_name : null) ||
+                                  operatorName.trim();
 
     return NextResponse.json({
-      operatorName: operatorName.trim(),
+      operatorName: operatorName.trim(), // Original search term
+      canonicalOperatorName: canonicalOperatorName, // CRM's stored operator name (use this for validation)
       productIds: uniqueProductIds,
       count: uniqueProductIds.length,
       found: uniqueProductIds.length > 0

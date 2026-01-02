@@ -497,12 +497,11 @@ export async function POST(request) {
         }, { status: 500 });
       }
       
-      // Add one line item per promoted tour
-      promotedTourIds.forEach(() => {
-        lineItems.push({
-          price: promotedPriceId,
-          quantity: 1,
-        });
+      // IMPORTANT: Use a single line item with quantity instead of multiple line items
+      // Stripe doesn't allow duplicate recurring prices in subscription checkout
+      lineItems.push({
+        price: promotedPriceId,
+        quantity: promotedTourIds.length, // Use quantity for multiple tours
       });
     }
     

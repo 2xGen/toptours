@@ -501,7 +501,21 @@ function TourOperatorsPartnerPageContent() {
       // If we have an operator name, fetch suggested tours from database
       if (tourOperator && tourOperator.trim() !== '') {
         setCurrentOperatorName(tourOperator.trim());
-        fetchSuggestedTours(tourOperator.trim());
+        // Fetch suggested tours and update operator name if CRM has a canonical name
+        const canonicalOperatorName = await fetchSuggestedTours(tourOperator.trim());
+        // If CRM returned a canonical operator name, update the pasted tour to use it
+        // This ensures all tours (pasted + suggested) use the same operator name for validation
+        if (canonicalOperatorName && canonicalOperatorName !== tourOperator.trim()) {
+          const updatedVerified = [...verifiedTours];
+          if (updatedVerified[index]) {
+            updatedVerified[index] = {
+              ...updatedVerified[index],
+              operatorName: canonicalOperatorName
+            };
+            setVerifiedTours(updatedVerified);
+            setCurrentOperatorName(canonicalOperatorName);
+          }
+        }
       }
       
       toast({
@@ -522,7 +536,7 @@ function TourOperatorsPartnerPageContent() {
   
   // Fetch suggested tours by operator name
   const fetchSuggestedTours = async (operatorName) => {
-    if (!operatorName || operatorName.trim() === '') return;
+    if (!operatorName || operatorName.trim() === '') return null;
     
     setLoadingSuggestedTours(true);
     try {
@@ -530,6 +544,11 @@ function TourOperatorsPartnerPageContent() {
       const data = await response.json();
       
       if (data.productIds && data.productIds.length > 0) {
+        // Use the canonical operator name from CRM (the one stored in database)
+        // This ensures all suggested tours use the same operator name for validation
+        // even if Viator API returns different operator names
+        const canonicalOperatorName = data.canonicalOperatorName || operatorName;
+        
         // Fetch full tour data for each product ID
         const tourPromises = data.productIds.slice(0, 20).map(async (productId) => {
           try {
@@ -543,9 +562,9 @@ function TourOperatorsPartnerPageContent() {
             return {
               productId,
               title: tour.title || 'Tour',
-              // Use the operatorName from CRM (the one used to fetch suggestions) instead of Viator API
+              // Use the canonical operator name from CRM, not Viator's supplier name
               // This ensures all suggested tours use the same operator name for validation
-              operatorName: operatorName, // Use the CRM operator name, not Viator's supplier name
+              operatorName: canonicalOperatorName,
               reviewCount: tour.reviews?.totalReviews || 0,
               rating: tour.reviews?.combinedAverageRating || 0,
               imageUrl: tour.images?.[0]?.variants?.[3]?.url || tour.images?.[0]?.variants?.[0]?.url || null,
@@ -568,12 +587,16 @@ function TourOperatorsPartnerPageContent() {
         ]);
         
         setSuggestedTours(validTours.filter(t => !existingProductIds.has(t.productId)));
+        // Return canonical operator name so caller can update pasted tour
+        return canonicalOperatorName;
       } else {
         setSuggestedTours([]);
+        return null;
       }
     } catch (error) {
       console.error('Error fetching suggested tours:', error);
       setSuggestedTours([]);
+      return null;
     } finally {
       setLoadingSuggestedTours(false);
     }
