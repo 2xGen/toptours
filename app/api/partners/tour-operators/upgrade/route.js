@@ -342,13 +342,15 @@ export async function POST(request) {
     
     try {
       // Build checkout session params
+      // IMPORTANT: Use a single line item with quantity instead of multiple line items
+      // Stripe doesn't allow duplicate recurring prices in subscription checkout
       const checkoutParams = {
         mode: 'subscription',
         payment_method_types: ['card'],
-        line_items: promotedTourIds.map(() => ({
+        line_items: [{
           price: promotedPriceId,
-          quantity: 1,
-        })),
+          quantity: promotedTourIds.length, // Use quantity for multiple tours
+        }],
         metadata: {
           type: 'tour_operator_promotion_upgrade',
           subscriptionId: subscriptionId,

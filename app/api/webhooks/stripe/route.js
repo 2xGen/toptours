@@ -21,6 +21,7 @@ import {
   sendInstantBoostConfirmationEmail,
   sendSubscriptionCancellationEmail 
 } from '@/lib/email';
+import { checkWebhookProcessed, markWebhookProcessed } from './idempotency';
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -2126,7 +2127,7 @@ async function handleTourOperatorPromotionUpgrade(session, supabase) {
             status: 'active',
             start_date: promotionStartDate.toISOString(),
             end_date: promotionEndDate.toISOString(),
-            destination_id: destinationSlug, // Normalize to slug
+            destination_id: destinationId, // Use destinationId (already normalized to slug if needed)
           });
         
         if (insertError) {

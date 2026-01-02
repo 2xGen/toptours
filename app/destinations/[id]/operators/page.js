@@ -219,7 +219,7 @@ export default async function OperatorsListingPage({ params }) {
       operators = result.data || [];
     }
   }
-
+    
   // Fetch top 12 tours for this destination (one API call, same as destination page)
   // This makes the page SEO-friendly and shows popular tours
   let topTours = [];
@@ -250,7 +250,7 @@ export default async function OperatorsListingPage({ params }) {
         const allTours = toursData?.products?.results || [];
         // Take top 12 tours (sorted by rating/reviews by Viator API)
         topTours = allTours.slice(0, 12);
-      }
+        }
     } catch (error) {
       console.error('Error fetching top tours for operators page:', error);
       // Continue without tours - page will still work
