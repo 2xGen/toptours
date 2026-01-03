@@ -62,22 +62,7 @@ export async function POST(request) {
       }
     }
 
-    // Fallback: Update old restaurant_premium_subscriptions table
-    const updateData = {};
-    
-    if (colorScheme !== undefined) updateData.color_scheme = colorScheme;
-    if (heroCTAIndex !== undefined) updateData.hero_cta_index = heroCTAIndex;
-    if (midCTAIndex !== undefined) updateData.mid_cta_index = midCTAIndex;
-    if (endCTAIndex !== undefined) updateData.end_cta_index = endCTAIndex;
-    if (stickyCTAIndex !== undefined) updateData.sticky_cta_index = stickyCTAIndex;
-
-    if (Object.keys(updateData).length === 0) {
-      return NextResponse.json(
-        { error: 'No settings provided to update' },
-        { status: 400 }
-      );
-    }
-
+    // Fallback: Update by restaurant_id + destination_id if subscriptionId update failed
     const { error } = await supabase
       .from('restaurant_premium_subscriptions')
       .update(updateData)
