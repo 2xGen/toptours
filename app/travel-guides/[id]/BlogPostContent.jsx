@@ -11419,7 +11419,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Related Guides</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {post.relatedPosts.slice(0, 3).map((relatedSlug) => {
-                  const relatedPost = blogPosts[relatedSlug];
+                  const relatedPost = blogPosts[relatedSlug] || travelGuides.find(g => g.id === relatedSlug);
                   if (!relatedPost) return null;
                   
                   return (
