@@ -27,9 +27,7 @@ export default function ProfilePage() {
   const [savedTours, setSavedTours] = useState([]);
   const [savedRestaurants, setSavedRestaurants] = useState([]);
   const [loadingSaved, setLoadingSaved] = useState(false);
-  const [activeTab, setActiveTab] = useState('saved'); // 'profile' | 'trip' | 'saved' | 'my-plans' | 'plan'
-  const [myPlans, setMyPlans] = useState([]);
-  const [loadingMyPlans, setLoadingMyPlans] = useState(false);
+  const [activeTab, setActiveTab] = useState('saved'); // 'profile' | 'trip' | 'saved' | 'plan'
   const [planTier, setPlanTier] = useState('free');
   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
   const [subscriptionPlan, setSubscriptionPlan] = useState(null);
@@ -38,8 +36,6 @@ export default function ProfilePage() {
   const [stripeSubscriptionId, setStripeSubscriptionId] = useState(null);
   const [cancelling, setCancelling] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
-  const [showDeletePlanConfirm, setShowDeletePlanConfirm] = useState(false);
-  const [planToDelete, setPlanToDelete] = useState(null);
   const [premiumRestaurants, setPremiumRestaurants] = useState([]);
   const [restaurantSubscriptions, setRestaurantSubscriptions] = useState([]); // New restaurant_subscriptions table
   const [loadingPortal, setLoadingPortal] = useState(false);
@@ -459,46 +455,6 @@ export default function ProfilePage() {
         </main>
       <FooterNext />
 
-      {/* Delete Plan Confirmation Dialog */}
-      <ConfirmDialog
-        isOpen={showDeletePlanConfirm}
-        onClose={() => {
-          setShowDeletePlanConfirm(false);
-          setPlanToDelete(null);
-        }}
-        onConfirm={async () => {
-          if (!planToDelete || !user) return;
-          try {
-            const response = await fetch(`/api/plans`, {
-              method: 'DELETE',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ planId: planToDelete.id, userId: user.id }),
-            });
-            if (response.ok) {
-              setMyPlans((prev) => prev.filter((p) => p.id !== planToDelete.id));
-              toast({
-                title: 'Plan deleted',
-                description: 'Your travel plan has been removed.',
-              });
-            } else {
-              const data = await response.json();
-              throw new Error(data.error || 'Failed to delete plan');
-            }
-          } catch (error) {
-            console.error('Error deleting plan:', error);
-            toast({
-              title: 'Failed to delete plan',
-              description: error.message || 'Please try again.',
-              variant: 'destructive',
-            });
-          }
-        }}
-        title="Delete Travel Plan?"
-        message="Are you sure you want to delete this plan? This action cannot be undone."
-        confirmText="Delete Plan"
-        cancelText="Cancel"
-        variant="destructive"
-      />
     </div>
   );
 }
@@ -583,12 +539,6 @@ export default function ProfilePage() {
                 className={`w-full text-left px-3 py-2 rounded-lg ${activeTab === 'saved' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
               >
                 Saved Tours & Restaurants
-              </button>
-              <button
-                onClick={() => setActiveTab('my-plans')}
-                className={`w-full text-left px-3 py-2 rounded-lg ${activeTab === 'my-plans' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
-              >
-                My Travel Plans
               </button>
               {(premiumRestaurants.length > 0 || restaurantSubscriptions.length > 0) && (
                 <button
@@ -1528,74 +1478,6 @@ export default function ProfilePage() {
               </div>
             )}
 
-            {activeTab === 'my-plans' && (
-              <div>
-                <div className="mb-4 flex items-center justify-between">
-                  <h1 className="text-2xl font-semibold">My Travel Plans</h1>
-                  {myPlans.length > 0 && (
-                    <span className="text-sm text-gray-500">
-                      {myPlans.length} plan{myPlans.length > 1 ? 's' : ''}
-                    </span>
-                  )}
-                </div>
-                {loadingMyPlans ? (
-                  <p className="text-gray-600">Loading your plans…</p>
-                ) : myPlans.length === 0 ? (
-                  <div className="text-gray-600 bg-white rounded-xl shadow p-6">
-                    You haven't created any travel plans yet. <Link href="/plans/create" className="text-blue-600 hover:underline">Create your first plan</Link> to share with the community.
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {myPlans.map((plan) => (
-                      <Card key={plan.id} className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300">
-                        <Link href={`/plans/${plan.slug}`}>
-                          <div className="relative h-48 overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600">
-                            {plan.cover_image_url && (
-                              <img
-                                src={plan.cover_image_url}
-                                alt={plan.title}
-                                className="w-full h-full object-cover"
-                              />
-                            )}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
-                              <h3 className="font-semibold text-lg text-white line-clamp-2">
-                                {plan.title}
-                              </h3>
-                            </div>
-                          </div>
-                        </Link>
-                        <CardContent className="p-4 flex flex-col flex-grow">
-                          {plan.description && (
-                            <p className="text-sm text-gray-600 mb-3 line-clamp-2 flex-grow">
-                              {plan.description}
-                            </p>
-                          )}
-                          <div className="flex items-center justify-between mt-auto">
-                            <Link href={`/plans/${plan.slug}`}>
-                              <Button className="sunset-gradient text-white">
-                                View Plan
-                                <ArrowRight className="w-4 h-4 ml-2" />
-                              </Button>
-                            </Link>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => {
-                                setPlanToDelete(plan);
-                                setShowDeletePlanConfirm(true);
-                              }}
-                              className="text-red-600 hover:text-red-700 hover:bg-red-50"
-                            >
-                              <X className="w-4 h-4" />
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
 
             {activeTab === 'my-tours' && (
               <div className="bg-white rounded-xl shadow p-6 space-y-6">
@@ -2509,46 +2391,6 @@ export default function ProfilePage() {
       </main>
       <FooterNext />
 
-      {/* Delete Plan Confirmation Dialog */}
-      <ConfirmDialog
-        isOpen={showDeletePlanConfirm}
-        onClose={() => {
-          setShowDeletePlanConfirm(false);
-          setPlanToDelete(null);
-        }}
-        onConfirm={async () => {
-          if (!planToDelete || !user) return;
-          try {
-            const response = await fetch(`/api/plans`, {
-              method: 'DELETE',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ planId: planToDelete.id, userId: user.id }),
-            });
-            if (response.ok) {
-              setMyPlans((prev) => prev.filter((p) => p.id !== planToDelete.id));
-              toast({
-                title: 'Plan deleted',
-                description: 'Your travel plan has been removed.',
-              });
-            } else {
-              const data = await response.json();
-              throw new Error(data.error || 'Failed to delete plan');
-            }
-          } catch (error) {
-            console.error('Error deleting plan:', error);
-            toast({
-              title: 'Failed to delete plan',
-              description: error.message || 'Please try again.',
-              variant: 'destructive',
-            });
-          }
-        }}
-        title="Delete Travel Plan?"
-        message="Are you sure you want to delete this plan? This action cannot be undone."
-        confirmText="Delete Plan"
-        cancelText="Cancel"
-        variant="destructive"
-      />
 
       {/* Promote Tours Modal */}
       {showPromoteModal && selectedSubscriptionForPromotion && (

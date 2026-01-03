@@ -837,13 +837,16 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
     
     // First, check if there's a pending record (created before checkout)
     // Try both normalized slug and original destinationId to catch all cases
+    // Get full record including purchaser_email to use for email
     const { data: existingPremiumPending } = await supabase
       .from('restaurant_premium_subscriptions')
-      .select('id, status, destination_id')
+      .select('id, status, destination_id, restaurant_name, restaurant_slug, plan_type, purchaser_email')
       .eq('restaurant_id', restaurantId)
       .in('destination_id', [normalizedDestinationId, destinationId].filter(Boolean))
       .eq('status', 'pending')
       .maybeSingle();
+    
+    const wasPending = existingPremiumPending && existingPremiumPending.status === 'pending';
     
     if (existingPremiumPending) {
       // Update pending record to active (preserves customization settings from pending record)
@@ -869,25 +872,38 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
       } else {
         console.log(`✅ [WEBHOOK] Updated pending restaurant_premium_subscriptions to active (ID: ${existingPremiumPending.id})`);
         
-        // Send premium confirmation email when status changes from pending to active (like promotions)
-        const customerEmail = session.customer_email || metadata.email;
-        if (customerEmail && premiumPlan) {
+        // Send premium confirmation email when status changes from pending to active (EXACTLY like promotions)
+        // Use purchaser_email from database record (like promotions use user email from subscription)
+        if (wasPending && premiumPlan) {
           try {
-            // Normalize destination_id to slug format for email URLs
-            const emailDestinationId = normalizedDestinationId || destinationId;
-            const emailPlanType = premiumPlan === 'annual' ? 'yearly' : 'monthly';
+            const customerEmail = existingPremiumPending.purchaser_email || session.customer_email || metadata.email;
             
-            await sendRestaurantPremiumConfirmationEmail({
-              to: customerEmail,
-              restaurantName: restaurantName || restaurantSlug,
-              planType: emailPlanType,
-              destinationId: emailDestinationId,
-              restaurantSlug: restaurantSlug,
-              endDate: currentPeriodEnd.toISOString(),
-            });
-            console.log(`✅ [WEBHOOK] Restaurant premium confirmation email sent to ${customerEmail} (status changed from pending to active)`);
+            if (customerEmail) {
+              // Normalize destination_id to slug format for email URLs
+              const emailDestinationId = normalizedDestinationId || destinationId;
+              const emailPlanType = premiumPlan === 'annual' ? 'yearly' : 'monthly';
+              const emailRestaurantName = existingPremiumPending.restaurant_name || restaurantName || restaurantSlug;
+              const emailRestaurantSlug = existingPremiumPending.restaurant_slug || restaurantSlug;
+              
+              const emailResult = await sendRestaurantPremiumConfirmationEmail({
+                to: customerEmail,
+                restaurantName: emailRestaurantName,
+                planType: emailPlanType,
+                destinationId: emailDestinationId,
+                restaurantSlug: emailRestaurantSlug,
+                endDate: currentPeriodEnd.toISOString(),
+              });
+              
+              if (emailResult.success) {
+                console.log(`✅ [WEBHOOK] Restaurant premium confirmation email sent to ${customerEmail} (status changed from pending to active)`);
+              } else {
+                console.error(`❌ [WEBHOOK] Failed to send restaurant premium confirmation email:`, emailResult.error);
+              }
+            } else {
+              console.warn(`⚠️ [WEBHOOK] No email found for restaurant premium subscription - cannot send confirmation email`);
+            }
           } catch (emailError) {
-            console.error('❌ [WEBHOOK] Error sending restaurant premium confirmation email:', emailError);
+            console.error('❌ [WEBHOOK] Exception sending restaurant premium confirmation email:', emailError);
             // Don't fail the webhook if email fails
           }
         }
@@ -1287,17 +1303,17 @@ async function handleRestaurantPremiumSubscriptionUpdate(subscription, supabase)
     } else {
       console.log(`✅ Updated restaurant_premium_subscriptions for subscription ${subscription.id}`);
       
-      // Send confirmation email when status changes from pending to active (like tours)
+      // Send confirmation email when status changes from pending to active (EXACTLY like promotions)
       if (wasPending && isNowActive) {
         try {
-          const customerEmail = existingSub.purchaser_email || 
-                               (existingSub.user_id ? (await supabase.auth.admin.getUserById(existingSub.user_id)).data?.user?.email : null);
+          // Use purchaser_email from database record (like promotions use subscription data)
+          const customerEmail = existingSub.purchaser_email;
           
           if (customerEmail) {
             const emailPlanType = existingSub.plan_type === 'yearly' ? 'yearly' : 'monthly';
             const emailDestinationId = existingSub.destination_id || destinationSlug;
             
-            await sendRestaurantPremiumConfirmationEmail({
+            const emailResult = await sendRestaurantPremiumConfirmationEmail({
               to: customerEmail,
               restaurantName: existingSub.restaurant_name || 'Your Restaurant',
               planType: emailPlanType,
@@ -1305,12 +1321,17 @@ async function handleRestaurantPremiumSubscriptionUpdate(subscription, supabase)
               restaurantSlug: existingSub.restaurant_slug || '',
               endDate: currentPeriodEnd || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
             });
-            console.log(`✅ Restaurant premium confirmation email sent to ${customerEmail} (status changed from pending to active)`);
+            
+            if (emailResult.success) {
+              console.log(`✅ [WEBHOOK] Restaurant premium confirmation email sent to ${customerEmail} (status changed from pending to active)`);
+            } else {
+              console.error(`❌ [WEBHOOK] Failed to send restaurant premium confirmation email:`, emailResult.error);
+            }
           } else {
-            console.warn('⚠️ [WEBHOOK] No customer email found for restaurant premium subscription - cannot send confirmation email');
+            console.warn('⚠️ [WEBHOOK] No purchaser_email found for restaurant premium subscription - cannot send confirmation email');
           }
         } catch (emailError) {
-          console.error('Error sending restaurant premium confirmation email:', emailError);
+          console.error('❌ [WEBHOOK] Exception sending restaurant premium confirmation email:', emailError);
           // Don't fail the webhook if email fails
         }
       }
