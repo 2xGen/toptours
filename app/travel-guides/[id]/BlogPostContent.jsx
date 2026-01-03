@@ -9224,7 +9224,209 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                         </p>
                       </div>
                     </>
-                  ) : null}
+                  ) : slug === 'aruba-flight-disruptions-venezuela-tensions' || slug === 'curacao-flight-disruptions-venezuela-tensions' || slug === 'bonaire-flight-disruptions-venezuela-tensions' || slug === 'sint-maarten-flight-disruptions-venezuela-tensions' ? (
+                    <>
+                      <div className="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-500 rounded-lg p-6 mb-8">
+                        <div className="flex items-start">
+                          <div className="flex-shrink-0">
+                            <svg className="h-6 w-6 text-red-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                          </div>
+                          <div className="ml-3">
+                            <h3 className="text-lg font-semibold text-red-900 mb-2">Travel Alert</h3>
+                            <p className="text-sm text-red-800">
+                              <strong>Last updated:</strong> January 3, 2026 | 16:53 AST
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div 
+                        className="prose prose-lg max-w-none"
+                        dangerouslySetInnerHTML={{ 
+                          __html: post.content
+                            .replace(/^### (.*$)/gim, '<h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">$1</h3>')
+                            .replace(/^## (.*$)/gim, '<h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">$1</h2>')
+                            .replace(/^# (.*$)/gim, '<h1 class="text-4xl font-bold text-gray-900 mb-6 mt-8">$1</h1>')
+                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-blue-600 hover:underline font-semibold">$1</a>')
+                            .replace(/^- (.*$)/gim, '<li class="ml-6 mb-2 text-gray-700">$1</li>')
+                            .replace(/^\* (.*$)/gim, '<li class="ml-6 mb-2 text-gray-700">$1</li>')
+                            .replace(/(<li[^>]*>.*?<\/li>\n?)+/g, (match) => '<ul class="list-disc mb-6 space-y-2">' + match + '</ul>')
+                            .split(/\n\n+/)
+                            .map(p => {
+                              p = p.trim();
+                              if (!p) return '';
+                              if (p.startsWith('<')) return p;
+                              return `<p class="text-gray-700 leading-relaxed mb-4">${p}</p>`;
+                            })
+                            .join('\n')
+                        }}
+                      />
+
+                      <div className="bg-gradient-to-r from-blue-50 to-teal-50 border border-blue-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                          Make the Most of Your Extended Stay in {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao' : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire' : 'Sint Maarten'}
+                        </h3>
+                        <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                          While flight disruptions can be frustrating, {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao' : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire' : 'Sint Maarten'} offers plenty of ways to make your extended stay enjoyable. The island's restaurants, tours, and activities remain fully operational, giving you more time to explore everything {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao' : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire' : 'Sint Maarten'} has to offer.
+                        </p>
+                        <div className="flex flex-wrap gap-4">
+                          {(slug === 'aruba-flight-disruptions-venezuela-tensions' || slug === 'curacao-flight-disruptions-venezuela-tensions') && (
+                            <>
+                              <Button 
+                                asChild
+                                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-base font-semibold"
+                              >
+                                <Link href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "/destinations/aruba/restaurants" : "/destinations/curacao/restaurants"}>
+                                  Find Restaurants in {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : 'Curaçao'} →
+                                </Link>
+                              </Button>
+                              <Button 
+                                asChild
+                                className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 text-base font-semibold"
+                              >
+                                <Link href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "/destinations/aruba/tours" : "/destinations/curacao/tours"}>
+                                  Explore Tours & Activities →
+                                </Link>
+                              </Button>
+                              <Button 
+                                asChild
+                                variant="outline"
+                                className="border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 text-base font-semibold"
+                              >
+                                <Link href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "/destinations/aruba" : "/destinations/curacao"}>
+                                  View {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : 'Curaçao'} Destination Guide →
+                                </Link>
+                              </Button>
+                            </>
+                          )}
+                          {slug === 'bonaire-flight-disruptions-venezuela-tensions' && (
+                            <>
+                              <Button 
+                                asChild
+                                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-base font-semibold"
+                              >
+                                <Link href="/destinations/bonaire/restaurants">
+                                  Find Restaurants in Bonaire →
+                                </Link>
+                              </Button>
+                              <Button 
+                                asChild
+                                className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 text-base font-semibold"
+                              >
+                                <Link href="/destinations/bonaire/tours">
+                                  Explore Tours & Activities →
+                                </Link>
+                              </Button>
+                              <Button 
+                                asChild
+                                variant="outline"
+                                className="border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 text-base font-semibold"
+                              >
+                                <Link href="/destinations/bonaire">
+                                  View Bonaire Destination Guide →
+                                </Link>
+                              </Button>
+                            </>
+                          )}
+                          {slug === 'sint-maarten-flight-disruptions-venezuela-tensions' && (
+                            <>
+                              <Button 
+                                asChild
+                                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-base font-semibold"
+                              >
+                                <Link href="/destinations/st-martin/restaurants">
+                                  Find Restaurants in St. Martin →
+                                </Link>
+                              </Button>
+                              <Button 
+                                asChild
+                                className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 text-base font-semibold"
+                              >
+                                <Link href="/destinations/st-martin/tours">
+                                  Explore Tours & Activities →
+                                </Link>
+                              </Button>
+                              <Button 
+                                asChild
+                                variant="outline"
+                                className="border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 text-base font-semibold"
+                              >
+                                <Link href="/destinations/st-martin">
+                                  View St. Martin Destination Guide →
+                                </Link>
+                              </Button>
+                            </>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="bg-gradient-to-r from-gray-50 to-slate-50 border border-gray-200 rounded-lg p-8 my-8">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Live Flight Status</h3>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                          For the most up-to-date flight information, check the official {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao' : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire' : 'Sint Maarten'} Airport departure board:
+                        </p>
+                        <Button 
+                          asChild
+                          className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 text-base font-semibold"
+                        >
+                          <a 
+                            href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "https://www.airportaruba.com/live-departure-times" : slug === 'curacao-flight-disruptions-venezuela-tensions' ? "https://curacao-airport.com/flights/" : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? "https://bonaireinternationalairport.com/flight-information/departures/" : "https://www.sxmairport.com/flights-info.php"} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                          >
+                            View Live {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao' : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire' : 'Sint Maarten'} Departure Times →
+                          </a>
+                        </Button>
+                      </div>
+                    </>
+                  ) : post?.content ? (() => {
+                    // Simple markdown to HTML converter
+                    const convertMarkdown = (text) => {
+                      let html = text;
+                      
+                      // Headers
+                      html = html.replace(/^### (.*$)/gim, '<h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">$1</h3>');
+                      html = html.replace(/^## (.*$)/gim, '<h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">$1</h2>');
+                      html = html.replace(/^# (.*$)/gim, '<h1 class="text-4xl font-bold text-gray-900 mb-6 mt-8">$1</h1>');
+                      
+                      // Bold
+                      html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                      
+                      // Links
+                      html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-blue-600 hover:underline font-semibold">$1</a>');
+                      
+                      // Lists - handle both - and * 
+                      html = html.replace(/^- (.*$)/gim, '<li class="ml-6 mb-2 text-gray-700">$1</li>');
+                      html = html.replace(/^\* (.*$)/gim, '<li class="ml-6 mb-2 text-gray-700">$1</li>');
+                      
+                      // Wrap consecutive list items in ul
+                      html = html.replace(/(<li[^>]*>.*?<\/li>\n?)+/g, (match) => {
+                        return '<ul class="list-disc mb-6 space-y-2">' + match + '</ul>';
+                      });
+                      
+                      // Paragraphs - split by double newlines
+                      const paragraphs = html.split(/\n\n+/);
+                      html = paragraphs.map(p => {
+                        p = p.trim();
+                        if (!p) return '';
+                        // Don't wrap if it's already a tag
+                        if (p.startsWith('<')) return p;
+                        return `<p class="text-gray-700 leading-relaxed mb-4">${p}</p>`;
+                      }).join('\n');
+                      
+                      return html;
+                    };
+                    
+                    return (
+                      <div 
+                        className="prose prose-lg max-w-none"
+                        dangerouslySetInnerHTML={{ __html: convertMarkdown(post.content) }}
+                      />
+                    );
+                  })() : null}
                 </div>
               </div>
             </article>
@@ -11390,7 +11592,173 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                       </p>
                     </div>
                   </>
-                ) : (
+                ) : slug === 'aruba-flight-disruptions-venezuela-tensions' || slug === 'curacao-flight-disruptions-venezuela-tensions' || slug === 'bonaire-flight-disruptions-venezuela-tensions' || slug === 'sint-maarten-flight-disruptions-venezuela-tensions' ? (() => {
+                  const islandName = slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : 
+                                    slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao' : 
+                                    slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire' : 'Sint Maarten';
+                  const airportName = slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Queen Beatrix International Airport (AUA)' : 
+                                     slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao International Airport (CUR)' : 
+                                     slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire International Airport (BON - Flamingo Airport)' : 
+                                     'Princess Juliana International Airport (SXM)';
+                  const airportUrl = slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'https://www.airportaruba.com/live-departure-times' : 
+                                    slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'https://curacao-airport.com/flights/' : 
+                                    slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'https://bonaireinternationalairport.com/flight-information/departures/' : 
+                                    'https://www.sxmairport.com/flights-info.php';
+                  
+                  return (
+                  <>
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Is {islandName} safe right now despite the flight cancellations?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Yes, {islandName} itself is completely safe and operating normally. There are no local security incidents, curfews, or restrictions on the island. Hotels, restaurants, tours, and beaches are all open and functioning as usual. The flight disruptions are related to regional airspace concerns, not conditions on the ground in {islandName}.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        How long will the flight disruptions last?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Airlines have not provided a firm timeline, but historically, situations like this resolve in stages. Travelers should expect continued disruption over the next 24–72 hours, with schedules changing frequently. Airlines are reassessing crew routing, aircraft positioning, and airspace safety as the situation evolves.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        What should I do if my flight is cancelled?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Do not go to the airport without checking your flight status first. Monitor your airline's app and email closely for updates. Rebooking is usually handled automatically during mass disruptions. Keep screenshots of cancellation notices for insurance or claims. Contact your airline directly for rebooking options and check the <a href={airportUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">official {islandName} airport departure board</a> for real-time updates.
+                      </p>
+                    </div>
+                    
+                    {slug === 'aruba-flight-disruptions-venezuela-tensions' && (
+                      <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                          <span className="text-blue-600 mr-3">Q:</span>
+                          Which airlines and routes are most affected?
+                        </h3>
+                        <p className="text-gray-700 ml-8 leading-relaxed">
+                          <span className="font-semibold text-green-600">A:</span> Cancellations affect flights operated by JetBlue, American Airlines, Delta, United, Southwest, Air Canada, WestJet, LATAM, Avianca, KLM, Frontier, and Spirit. Most cancellations affect U.S., Canada, and South America routes. A limited number of short regional flights (e.g., to Curaçao) are still operating.
+                        </p>
+                      </div>
+                    )}
+                    
+                    {slug === 'aruba-flight-disruptions-venezuela-tensions' && (
+                      <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                          <span className="text-blue-600 mr-3">Q:</span>
+                          What can I do while waiting for my flight in Aruba?
+                        </h3>
+                        <p className="text-gray-700 ml-8 leading-relaxed">
+                          <span className="font-semibold text-green-600">A:</span> Aruba offers plenty of ways to make your extended stay enjoyable. Explore the island's restaurants, book tours and activities like snorkeling, sunset cruises, and ATV adventures. Visit <a href="/destinations/aruba/restaurants" className="text-blue-600 hover:underline">Aruba restaurants</a> and <a href="/destinations/aruba/tours" className="text-blue-600 hover:underline">Aruba tours</a> to discover options. The island's infrastructure is strong, and all services remain fully operational.
+                        </p>
+                      </div>
+                    )}
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Will more flights be cancelled?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> It's possible. Airlines often cancel flights in rolling waves as they reassess crew duty limits, aircraft locations, and updated airspace guidance. Even flights still listed as "on time" may change. Your best sources of information are your airline directly and the <a href={airportUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">live {islandName} airport departure board</a>.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <span className="text-blue-600 mr-3">Q:</span>
+                        Is the airport in {islandName} still open?
+                      </h3>
+                      <p className="text-gray-700 ml-8 leading-relaxed">
+                        <span className="font-semibold text-green-600">A:</span> Yes, {airportName} remains fully operational. The airport infrastructure is functioning as usual. The issue is airline operations and airspace logistics, not airport operations. However, do not go to the airport without checking your flight status first.
+                      </p>
+                    </div>
+                    
+                    {(slug === 'curacao-flight-disruptions-venezuela-tensions' || slug === 'bonaire-flight-disruptions-venezuela-tensions' || slug === 'sint-maarten-flight-disruptions-venezuela-tensions') && (
+                      <>
+                        {slug === 'curacao-flight-disruptions-venezuela-tensions' && (
+                          <>
+                            <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                                <span className="text-blue-600 mr-3">Q:</span>
+                                Which airlines and routes are most affected in Curaçao?
+                              </h3>
+                              <p className="text-gray-700 ml-8 leading-relaxed">
+                                <span className="font-semibold text-green-600">A:</span> Cancellations affect flights operated by JetBlue, American Airlines, Delta, United, Air Canada, KLM, Copa Airlines, Avianca, TUI, Corendon, and Wingo. Most cancellations affect U.S., Canada, and South America routes. A limited number of short regional flights (e.g., to Aruba and Bonaire) are still operating.
+                              </p>
+                            </div>
+                            
+                            <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                                <span className="text-blue-600 mr-3">Q:</span>
+                                What can I do while waiting for my flight in Curaçao?
+                              </h3>
+                              <p className="text-gray-700 ml-8 leading-relaxed">
+                                <span className="font-semibold text-green-600">A:</span> Curaçao offers plenty of ways to make your extended stay enjoyable. Explore the island's restaurants, book tours and activities like diving, snorkeling, and exploring Willemstad's historic architecture. Visit <a href="/destinations/curacao/restaurants" className="text-blue-600 hover:underline">Curaçao restaurants</a> and <a href="/destinations/curacao/tours" className="text-blue-600 hover:underline">Curaçao tours</a> to discover options. The island's infrastructure is strong, and all services remain fully operational.
+                              </p>
+                            </div>
+                          </>
+                        )}
+                        
+                        {slug === 'bonaire-flight-disruptions-venezuela-tensions' && (
+                          <>
+                            <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                                <span className="text-blue-600 mr-3">Q:</span>
+                                Which airlines and routes are most affected in Bonaire?
+                              </h3>
+                              <p className="text-gray-700 ml-8 leading-relaxed">
+                                <span className="font-semibold text-green-600">A:</span> Cancellations affect flights operated by American Airlines, United, Delta, KLM, TUI, and Corendon. Most cancellations affect U.S. and European routes (Miami, Newark, Atlanta, Houston, Amsterdam). A limited number of short regional flights (e.g., to Curaçao) are still operating.
+                              </p>
+                            </div>
+                            
+                            <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                                <span className="text-blue-600 mr-3">Q:</span>
+                                What can I do while waiting for my flight in Bonaire?
+                              </h3>
+                              <p className="text-gray-700 ml-8 leading-relaxed">
+                                <span className="font-semibold text-green-600">A:</span> Bonaire offers world-class diving and snorkeling, beautiful beaches, and nature reserves. The island is a diver's paradise with pristine reefs and marine life. Explore the Washington Slagbaai National Park, enjoy the beaches, and take advantage of the extended stay to experience Bonaire's natural beauty. The island's infrastructure is strong, and all services remain fully operational.
+                              </p>
+                            </div>
+                          </>
+                        )}
+                        
+                        {slug === 'sint-maarten-flight-disruptions-venezuela-tensions' && (
+                          <>
+                            <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                                <span className="text-blue-600 mr-3">Q:</span>
+                                Which airlines and routes are most affected in Sint Maarten?
+                              </h3>
+                              <p className="text-gray-700 ml-8 leading-relaxed">
+                                <span className="font-semibold text-green-600">A:</span> Cancellations affect flights operated by JetBlue, American Airlines, Delta, United, Air France, KLM, Air Canada, Air Transat, Frontier, and Spirit. Most cancellations affect U.S., Canadian, and European routes (New York, Miami, Boston, Atlanta, Philadelphia, Charlotte, Chicago, Toronto, Montreal, Paris, Amsterdam). A limited number of short regional flights (e.g., to St. Barthelemy, Saba, Anguilla) are still operating.
+                              </p>
+                            </div>
+                            
+                            <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                                <span className="text-blue-600 mr-3">Q:</span>
+                                What can I do while waiting for my flight in Sint Maarten?
+                              </h3>
+                              <p className="text-gray-700 ml-8 leading-relaxed">
+                                <span className="font-semibold text-green-600">A:</span> Sint Maarten offers beautiful beaches on both the Dutch and French sides, world-class dining, shopping, and vibrant nightlife. Explore Maho Beach, enjoy the French side's cuisine, visit the capital Philipsburg, or take a day trip to nearby islands. The island's infrastructure is strong, and all services remain fully operational.
+                              </p>
+                            </div>
+                          </>
+                        )}
+                      </>
+                    )}
+                  </>
+                  );
+                })() : (
                   <div className="text-center py-12">
                     <p className="text-gray-600">FAQ not available for this blog post.</p>
                   </div>

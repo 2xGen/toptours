@@ -1056,23 +1056,7 @@ Your best source of truth remains:
 - Disruptions are airline-driven, not Aruba-driven
 - Travelers should expect short-term uncertainty and plan accordingly
 
-This page will be updated as new information becomes available.
-
-## Making the Most of Your Extended Stay
-
-If your flight has been cancelled and you find yourself with extra time in Aruba, the island offers plenty of ways to make your extended stay enjoyable. While we understand this situation is frustrating, Aruba's restaurants, tours, and activities remain fully operational.
-
-### Explore Aruba While You Wait
-
-- **[Find Restaurants in Aruba](/destinations/aruba/restaurants)** - Discover dining options across the island, from beachfront cafes to fine dining establishments
-- **[Explore Tours & Activities](/destinations/aruba/tours)** - Make the most of your extended stay with snorkeling, sunset cruises, ATV adventures, and more
-
-## Helpful Links
-
-- **[Live Aruba Departure Times](https://www.airportaruba.com/live-departure-times)** - Official Aruba Airport real-time flight status
-- **[Aruba Destination Guide](/destinations/aruba)** - Complete guide to Aruba including tours, restaurants, and activities
-- **[Aruba Restaurants](/destinations/aruba/restaurants)** - Discover the best dining options on the island
-- **[Aruba Tours](/destinations/aruba/tours)** - Book tours and activities to make the most of your stay`,
+This page will be updated as new information becomes available.`,
     category: 'Caribbean',
     country: 'Aruba',
     readTime: '8 min read',
@@ -1087,6 +1071,453 @@ If your flight has been cancelled and you find yourself with extra time in Aruba
     relatedDestination: '/destinations/aruba',
     relatedDestinationLabel: 'Aruba',
     relatedPosts: ['best-time-to-visit-aruba', '3-day-aruba-itinerary', 'aruba-packing-list']
+  },
+  {
+    id: 'curacao-flight-disruptions-venezuela-tensions',
+    title: 'Curaçao Flight Disruptions: Travel Guide for Venezuela-Related Cancellations',
+    excerpt: 'Current flight status at Curaçao International Airport, what travelers should know about Venezuela-related disruptions, and how to make the most of your extended stay in Curaçao.',
+    content: `# Travel To or From Curaçao Affected by Venezuela Tensions?
+
+## Live Flight Status, What's Happening, and What Travelers Should Do
+
+**Travel Alert**  
+Last updated: January 3, 2026 | 16:53 AST
+
+### Live Flight Status
+
+If you're currently in Curaçao or planning to fly out today or in the coming days, you may have noticed mass flight cancellations across nearly all major airlines. This is not a weather issue, nor an airport operations problem.
+
+The disruptions are directly linked to escalating geopolitical tensions involving Venezuela, which have impacted regional airspace operations and airline routing decisions throughout the Caribbean and northern South America.
+
+Below is a clear breakdown of what's happening, what we're seeing at Curaçao International Airport (CUR), and what travelers should do right now.
+
+## What's Happening at Curaçao Airport Right Now?
+
+Curaçao International Airport remains fully operational. However, airlines are cancelling flights en masse as a precaution due to regional airspace and operational concerns tied to the Venezuela situation.
+
+As of this afternoon:
+
+- Dozens of outbound flights are cancelled
+- Most cancellations affect U.S., Canada, and South America routes
+- A limited number of short regional flights (e.g. Aruba, Bonaire) are still operating
+- Airlines are reassessing crew routing, aircraft positioning, and airspace safety
+
+### Live Flight Status
+
+You can view the live, continuously updated departure board:
+
+**[View Live Curaçao Departure Times](https://curacao-airport.com/flights/)**
+
+## Airlines and Routes Most Affected
+
+Based on today's live data, cancellations include flights operated by:
+
+- JetBlue
+- American Airlines
+- Delta Air Lines
+- United Airlines
+- Air Canada
+- KLM
+- Copa Airlines
+- Avianca
+- TUI
+- Corendon
+- Wingo
+
+Cancelled destinations include (but are not limited to):
+
+- New York (JFK)
+- Newark
+- Chicago
+- Atlanta
+- Charlotte
+- Miami
+- Toronto
+- Amsterdam
+- Bogotá
+- Medellin
+- Panama City
+
+This wide geographic spread strongly indicates a regional operational issue, not a localized Curaçao problem.
+
+## Is Curaçao Unsafe Right Now?
+
+**No. Curaçao itself is calm, safe, and operating normally.**
+
+- No local security incidents
+- No curfews or restrictions on the island
+- Hotels, restaurants, tours, and beaches are open
+- Airport infrastructure is functioning as usual
+
+The issue is airline operations and airspace logistics, not conditions on the ground in Curaçao.
+
+## How Long Will This Last?
+
+At this moment, airlines have not provided a firm timeline. Historically, situations like this resolve in stages:
+
+1. Initial mass cancellations (what we're seeing now)
+2. Limited resumption of flights on select routes
+3. Gradual normalization as airlines adjust routing and approvals
+
+Travelers should expect continued disruption over the next 24–72 hours, with schedules changing frequently.
+
+## What Should Travelers Do Right Now?
+
+### If You're Flying Out of Curaçao
+
+- **Do not go to the airport without checking your flight status**
+- Monitor your airline's app and email closely
+- Rebooking is usually handled automatically during mass disruptions
+- Keep screenshots of cancellation notices for insurance or claims
+- Check the [official Curaçao airport departure board](https://curacao-airport.com/flights/) for real-time updates
+
+### If You're Stuck in Curaçao
+
+While inconvenient, Curaçao is one of the better places to be temporarily delayed:
+
+- Wide range of hotels and resorts
+- Strong infrastructure
+- Safe and stable environment
+- Plenty of activities to extend your stay comfortably
+
+**Make the most of your extended stay:**
+
+- **[Find Restaurants in Curaçao](/destinations/curacao/restaurants)** - Discover dining options across the island
+- **[Explore Tours & Activities](/destinations/curacao/tours)** - Things to do while you wait
+
+### If You're Flying To Curaçao
+
+- Expect incoming delays or cancellations
+- Avoid tight connection windows
+- Monitor your departure airport closely
+- Contact your airline directly for rebooking options
+
+## Will More Flights Be Cancelled?
+
+It's possible.
+
+Airlines often cancel flights in rolling waves as they reassess crew duty limits, aircraft locations, and updated airspace guidance. Even flights still listed as "on time" may change.
+
+Your best source of truth remains:
+
+- Your airline directly
+- The [live Curaçao airport departure board](https://curacao-airport.com/flights/)
+
+## Bottom Line
+
+- Curaçao is not experiencing a local emergency
+- The airport is open and operational
+- Flight cancellations are directly related to Venezuela-related regional tensions
+- Disruptions are airline-driven, not Curaçao-driven
+- Travelers should expect short-term uncertainty and plan accordingly
+
+This page will be updated as new information becomes available.`,
+    category: 'Caribbean',
+    country: 'Curaçao',
+    readTime: '8 min read',
+    publishDate: '2026-01-03',
+    author: 'TopTours.ai Travel Team',
+    image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/cancelled%20flights.png',
+    tags: ['Curaçao Travel', 'Flight Cancellations', 'Curaçao Airport', 'Travel Alerts', 'Venezuela Tensions', 'Curaçao Guide'],
+    featured: true,
+    type: 'alert',
+    wordCount: 1200,
+    internalLinks: ['/destinations/curacao', '/destinations/curacao/restaurants', '/destinations/curacao/tours'],
+    relatedDestination: '/destinations/curacao',
+    relatedDestinationLabel: 'Curaçao',
+    relatedPosts: ['best-time-to-visit-curacao', '3-day-curacao-itinerary', 'curacao-packing-list']
+  },
+  {
+    id: 'bonaire-flight-disruptions-venezuela-tensions',
+    title: 'Bonaire Flight Disruptions: Travel Guide for Venezuela-Related Cancellations',
+    excerpt: 'Current flight status at Bonaire International Airport, what travelers should know about Venezuela-related disruptions, and how to make the most of your extended stay in Bonaire.',
+    content: `# Travel To or From Bonaire Affected by Venezuela Tensions?
+
+## Live Flight Status, What's Happening, and What Travelers Should Do
+
+**Travel Alert**  
+Last updated: January 3, 2026 | 17:25 AST
+
+### Live Flight Status
+
+If you're currently in Bonaire or planning to fly out today or in the coming days, you may have noticed mass flight cancellations across nearly all major airlines. This is not a weather issue, nor an airport operations problem.
+
+The disruptions are directly linked to escalating geopolitical tensions involving Venezuela, which have impacted regional airspace operations and airline routing decisions throughout the Caribbean and northern South America.
+
+Below is a clear breakdown of what's happening, what we're seeing at Bonaire International Airport (BON), and what travelers should do right now.
+
+## What's Happening at Bonaire Airport Right Now?
+
+Bonaire International Airport (Flamingo Airport) remains fully operational. However, airlines are cancelling flights en masse as a precaution due to regional airspace and operational concerns tied to the Venezuela situation.
+
+As of this afternoon:
+
+- Multiple outbound flights are cancelled
+- Most cancellations affect U.S. and European routes
+- A limited number of short regional flights (e.g. Curaçao) are still operating
+- Airlines are reassessing crew routing, aircraft positioning, and airspace safety
+
+### Live Flight Status
+
+You can view the live, continuously updated departure board:
+
+**[View Live Bonaire Departure Times](https://bonaireinternationalairport.com/flight-information/departures/)**
+
+## Airlines and Routes Most Affected
+
+Based on today's live data, cancellations include flights operated by:
+
+- American Airlines
+- United Airlines
+- Delta Air Lines
+- KLM
+- TUI
+- Corendon
+
+Cancelled destinations include (but are not limited to):
+
+- Miami
+- Newark
+- Atlanta
+- Houston
+- Amsterdam
+
+This wide geographic spread strongly indicates a regional operational issue, not a localized Bonaire problem.
+
+## Is Bonaire Unsafe Right Now?
+
+**No. Bonaire itself is calm, safe, and operating normally.**
+
+- No local security incidents
+- No curfews or restrictions on the island
+- Hotels, restaurants, tours, and dive sites are open
+- Airport infrastructure is functioning as usual
+
+The issue is airline operations and airspace logistics, not conditions on the ground in Bonaire.
+
+## How Long Will This Last?
+
+At this moment, airlines have not provided a firm timeline. Historically, situations like this resolve in stages:
+
+1. Initial mass cancellations (what we're seeing now)
+2. Limited resumption of flights on select routes
+3. Gradual normalization as airlines adjust routing and approvals
+
+Travelers should expect continued disruption over the next 24–72 hours, with schedules changing frequently.
+
+## What Should Travelers Do Right Now?
+
+### If You're Flying Out of Bonaire
+
+- **Do not go to the airport without checking your flight status**
+- Monitor your airline's app and email closely
+- Rebooking is usually handled automatically during mass disruptions
+- Keep screenshots of cancellation notices for insurance or claims
+- Check the [official Bonaire airport departure board](https://bonaireinternationalairport.com/flight-information/departures/) for real-time updates
+
+### If You're Stuck in Bonaire
+
+While inconvenient, Bonaire is one of the better places to be temporarily delayed:
+
+- World-class diving and snorkeling
+- Beautiful beaches and nature reserves
+- Strong infrastructure
+- Safe and stable environment
+- Plenty of activities to extend your stay comfortably
+
+### If You're Flying To Bonaire
+
+- Expect incoming delays or cancellations
+- Avoid tight connection windows
+- Monitor your departure airport closely
+- Contact your airline directly for rebooking options
+
+## Will More Flights Be Cancelled?
+
+It's possible.
+
+Airlines often cancel flights in rolling waves as they reassess crew duty limits, aircraft locations, and updated airspace guidance. Even flights still listed as "on time" may change.
+
+Your best source of truth remains:
+
+- Your airline directly
+- The [live Bonaire airport departure board](https://bonaireinternationalairport.com/flight-information/departures/)
+
+## Bottom Line
+
+- Bonaire is not experiencing a local emergency
+- The airport is open and operational
+- Flight cancellations are directly related to Venezuela-related regional tensions
+- Disruptions are airline-driven, not Bonaire-driven
+- Travelers should expect short-term uncertainty and plan accordingly
+
+This page will be updated as new information becomes available.`,
+    category: 'Caribbean',
+    country: 'Bonaire',
+    readTime: '8 min read',
+    publishDate: '2026-01-03',
+    author: 'TopTours.ai Travel Team',
+    image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/cancelled%20flights.png',
+    tags: ['Bonaire Travel', 'Flight Cancellations', 'Bonaire Airport', 'Travel Alerts', 'Venezuela Tensions', 'Bonaire Guide'],
+    featured: true,
+    type: 'alert',
+    wordCount: 1200,
+    internalLinks: ['/destinations', '/destinations/curacao'],
+    relatedDestination: null,
+    relatedDestinationLabel: null,
+    relatedPosts: ['best-time-to-visit-curacao', 'curacao-packing-list']
+  },
+  {
+    id: 'sint-maarten-flight-disruptions-venezuela-tensions',
+    title: 'Sint Maarten Flight Disruptions: Travel Guide for Venezuela-Related Cancellations',
+    excerpt: 'Current flight status at Princess Juliana International Airport, what travelers should know about Venezuela-related disruptions, and how to make the most of your extended stay in Sint Maarten.',
+    content: `# Travel To or From Sint Maarten Affected by Venezuela Tensions?
+
+## Live Flight Status, What's Happening, and What Travelers Should Do
+
+**Travel Alert**  
+Last updated: January 3, 2026 | 17:25 AST
+
+### Live Flight Status
+
+If you're currently in Sint Maarten or planning to fly out today or in the coming days, you may have noticed mass flight cancellations across nearly all major airlines. This is not a weather issue, nor an airport operations problem.
+
+The disruptions are directly linked to escalating geopolitical tensions involving Venezuela, which have impacted regional airspace operations and airline routing decisions throughout the Caribbean and northern South America.
+
+Below is a clear breakdown of what's happening, what we're seeing at Princess Juliana International Airport (SXM), and what travelers should do right now.
+
+## What's Happening at Sint Maarten Airport Right Now?
+
+Princess Juliana International Airport remains fully operational. However, airlines are cancelling flights en masse as a precaution due to regional airspace and operational concerns tied to the Venezuela situation.
+
+As of this afternoon:
+
+- Multiple outbound flights are cancelled
+- Most cancellations affect U.S., Canada, and European routes
+- A limited number of short regional flights (e.g. St. Barthelemy, Saba, Anguilla) are still operating
+- Airlines are reassessing crew routing, aircraft positioning, and airspace safety
+
+### Live Flight Status
+
+You can view the live, continuously updated departure board:
+
+**[View Live Sint Maarten Departure Times](https://www.sxmairport.com/flights-info.php)**
+
+## Airlines and Routes Most Affected
+
+Based on today's live data, cancellations include flights operated by:
+
+- JetBlue
+- American Airlines
+- Delta Air Lines
+- United Airlines
+- Air France
+- KLM
+- Air Canada
+- Air Transat
+- Frontier Airlines
+- Spirit Airlines
+
+Cancelled destinations include (but are not limited to):
+
+- New York (JFK)
+- Miami
+- Boston
+- Atlanta
+- Philadelphia
+- Charlotte
+- Chicago
+- Newark
+- Washington
+- Toronto
+- Montreal
+- Paris (CDG)
+- Amsterdam
+
+This wide geographic spread strongly indicates a regional operational issue, not a localized Sint Maarten problem.
+
+## Is Sint Maarten Unsafe Right Now?
+
+**No. Sint Maarten itself is calm, safe, and operating normally.**
+
+- No local security incidents
+- No curfews or restrictions on the island
+- Hotels, restaurants, tours, and beaches are open
+- Airport infrastructure is functioning as usual
+
+The issue is airline operations and airspace logistics, not conditions on the ground in Sint Maarten.
+
+## How Long Will This Last?
+
+At this moment, airlines have not provided a firm timeline. Historically, situations like this resolve in stages:
+
+1. Initial mass cancellations (what we're seeing now)
+2. Limited resumption of flights on select routes
+3. Gradual normalization as airlines adjust routing and approvals
+
+Travelers should expect continued disruption over the next 24–72 hours, with schedules changing frequently.
+
+## What Should Travelers Do Right Now?
+
+### If You're Flying Out of Sint Maarten
+
+- **Do not go to the airport without checking your flight status**
+- Monitor your airline's app and email closely
+- Rebooking is usually handled automatically during mass disruptions
+- Keep screenshots of cancellation notices for insurance or claims
+- Check the [official Sint Maarten airport departure board](https://www.sxmairport.com/flights-info.php) for real-time updates
+
+### If You're Stuck in Sint Maarten
+
+While inconvenient, Sint Maarten is one of the better places to be temporarily delayed:
+
+- Beautiful beaches on both Dutch and French sides
+- World-class dining and shopping
+- Strong infrastructure
+- Safe and stable environment
+- Plenty of activities to extend your stay comfortably
+
+### If You're Flying To Sint Maarten
+
+- Expect incoming delays or cancellations
+- Avoid tight connection windows
+- Monitor your departure airport closely
+- Contact your airline directly for rebooking options
+
+## Will More Flights Be Cancelled?
+
+It's possible.
+
+Airlines often cancel flights in rolling waves as they reassess crew duty limits, aircraft locations, and updated airspace guidance. Even flights still listed as "on time" may change.
+
+Your best source of truth remains:
+
+- Your airline directly
+- The [live Sint Maarten airport departure board](https://www.sxmairport.com/flights-info.php)
+
+## Bottom Line
+
+- Sint Maarten is not experiencing a local emergency
+- The airport is open and operational
+- Flight cancellations are directly related to Venezuela-related regional tensions
+- Disruptions are airline-driven, not Sint Maarten-driven
+- Travelers should expect short-term uncertainty and plan accordingly
+
+This page will be updated as new information becomes available.`,
+    category: 'Caribbean',
+    country: 'Sint Maarten',
+    readTime: '8 min read',
+    publishDate: '2026-01-03',
+    author: 'TopTours.ai Travel Team',
+    image: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/cancelled%20flights.png',
+    tags: ['Sint Maarten Travel', 'Flight Cancellations', 'Sint Maarten Airport', 'Travel Alerts', 'Venezuela Tensions', 'Sint Maarten Guide'],
+    featured: true,
+    type: 'alert',
+    wordCount: 1200,
+    internalLinks: ['/destinations'],
+    relatedDestination: null,
+    relatedDestinationLabel: null,
+    relatedPosts: ['best-time-to-visit-curacao', 'curacao-packing-list']
   }
 ];
 
