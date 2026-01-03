@@ -2287,11 +2287,12 @@ async function handleRestaurantPromotionUpgrade(session, supabase) {
     
     // Update existing pending record to active (created before checkout)
     // If no pending record exists, create a new one (fallback)
+    // Query by user_id and restaurant_id (not restaurant_subscription_id since FK points to old table)
     const { data: existingPending } = await supabase
       .from('promoted_restaurants')
-      .select('id')
+      .select('id, status')
       .eq('restaurant_id', parseInt(restaurantId))
-      .eq('restaurant_subscription_id', subscriptionDbId)
+      .eq('user_id', userId)
       .eq('status', 'pending')
       .maybeSingle();
     
@@ -2299,12 +2300,17 @@ async function handleRestaurantPromotionUpgrade(session, supabase) {
     const { normalizeDestinationIdToSlug } = await import('@/lib/destinationIdHelper');
     const destinationSlug = await normalizeDestinationIdToSlug(subscription.destination_id);
     
+    const wasPending = existingPending && existingPending.status === 'pending';
+    
     if (existingPending) {
       // Update pending record to active
+      // NOTE: restaurant_subscription_id foreign key points to restaurant_subscriptions (old table)
+      // Since we use restaurant_premium_subscriptions now, set it to NULL to avoid FK constraint error
       const { error: updateError } = await supabase
         .from('promoted_restaurants')
         .update({
           user_id: userId, // Ensure user_id is set
+          restaurant_subscription_id: null, // Set to NULL - FK points to old table, we use restaurant_premium_subscriptions
           stripe_subscription_id: subscriptionId,
           status: 'active',
           start_date: promotionStartDate.toISOString(),
@@ -2320,12 +2326,14 @@ async function handleRestaurantPromotionUpgrade(session, supabase) {
       }
     } else {
       // Fallback: Create new record if no pending record exists (shouldn't happen, but safety net)
+      // NOTE: restaurant_subscription_id foreign key points to restaurant_subscriptions (old table)
+      // Since we use restaurant_premium_subscriptions now, set it to NULL to avoid FK constraint error
       const { error: insertError } = await supabase
         .from('promoted_restaurants')
         .insert({
           restaurant_id: parseInt(restaurantId),
           user_id: userId, // Direct link to user for reliable querying
-          restaurant_subscription_id: subscriptionDbId,
+          restaurant_subscription_id: null, // Set to NULL - FK points to old table, we use restaurant_premium_subscriptions
           stripe_subscription_id: subscriptionId,
           promotion_plan: promotedBillingCycle,
           status: 'active',
@@ -2343,27 +2351,60 @@ async function handleRestaurantPromotionUpgrade(session, supabase) {
       }
     }
     
-    // Send promotion confirmation email
-    try {
-      const { data: { user } } = await supabase.auth.admin.getUserById(userId);
-      if (user?.email) {
-        const emailResult = await sendRestaurantPromotionConfirmationEmail({
-          to: user.email,
-          restaurantName: subscription.restaurant_name,
-          billingCycle: promotedBillingCycle,
-          endDate: promotionEndDate.toISOString(),
-          destinationId: destinationSlug,
-          restaurantSlug: subscription.restaurant_slug
-        });
-        
-        if (emailResult.success) {
-          console.log(`✅ [WEBHOOK] Restaurant promotion confirmation email sent to ${user.email}`);
+    // Send promotion confirmation email when status changes from pending to active (like tours)
+    // Only send if it was actually pending (not if it was already active or newly created)
+    if (wasPending) {
+    
+      // Send promotion confirmation email when status changes from pending to active
+      try {
+        const { data: { user } } = await supabase.auth.admin.getUserById(userId);
+        if (user?.email) {
+          const emailResult = await sendRestaurantPromotionConfirmationEmail({
+            to: user.email,
+            restaurantName: subscription.restaurant_name,
+            billingCycle: promotedBillingCycle,
+            endDate: promotionEndDate.toISOString(),
+            destinationId: destinationSlug,
+            restaurantSlug: subscription.restaurant_slug
+          });
+          
+          if (emailResult.success) {
+            console.log(`✅ [WEBHOOK] Restaurant promotion confirmation email sent to ${user.email} (status changed from pending to active)`);
+          } else {
+            console.error(`❌ [WEBHOOK] Failed to send restaurant promotion confirmation email:`, emailResult.error);
+          }
         } else {
-          console.error(`❌ [WEBHOOK] Failed to send restaurant promotion confirmation email:`, emailResult.error);
+          console.warn(`⚠️ [WEBHOOK] No email found for user ${userId}, skipping promotion confirmation email`);
         }
+      } catch (emailError) {
+        console.error('❌ [WEBHOOK] Exception sending restaurant promotion confirmation email:', emailError);
+        // Don't fail the webhook if email fails
       }
-    } catch (emailError) {
-      console.error('❌ [WEBHOOK] Exception sending restaurant promotion confirmation email:', emailError);
+    }
+    
+    // Also send email if this is a new promotion (not from pending)
+    if (!wasPending) {
+      try {
+        const { data: { user } } = await supabase.auth.admin.getUserById(userId);
+        if (user?.email) {
+          const emailResult = await sendRestaurantPromotionConfirmationEmail({
+            to: user.email,
+            restaurantName: subscription.restaurant_name,
+            billingCycle: promotedBillingCycle,
+            endDate: promotionEndDate.toISOString(),
+            destinationId: destinationSlug,
+            restaurantSlug: subscription.restaurant_slug
+          });
+          
+          if (emailResult.success) {
+            console.log(`✅ [WEBHOOK] Restaurant promotion confirmation email sent to ${user.email}`);
+          } else {
+            console.error(`❌ [WEBHOOK] Failed to send restaurant promotion confirmation email:`, emailResult.error);
+          }
+        }
+      } catch (emailError) {
+        console.error('❌ [WEBHOOK] Exception sending restaurant promotion confirmation email:', emailError);
+      }
     }
     
     // Also update restaurants table for backward compatibility

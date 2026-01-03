@@ -142,17 +142,14 @@ export async function POST(request) {
     const destinationSlug = await normalizeDestinationIdToSlug(subscription.destination_id);
     
     // Check if a pending or active promotion already exists
-    let existingActiveQuery = supabase
+    // Query by user_id and restaurant_id (not restaurant_subscription_id since FK points to old table)
+    const { data: existingActive } = await supabase
       .from('promoted_restaurants')
       .select('id, status')
       .eq('restaurant_id', subscription.restaurant_id)
-      .eq('status', 'active');
-    
-    if (actualSubscriptionId) {
-      existingActiveQuery = existingActiveQuery.eq('restaurant_subscription_id', actualSubscriptionId);
-    }
-    
-    const { data: existingActive } = await existingActiveQuery.maybeSingle();
+      .eq('user_id', subscription.user_id)
+      .eq('status', 'active')
+      .maybeSingle();
     
     if (existingActive) {
       return NextResponse.json({
@@ -161,17 +158,14 @@ export async function POST(request) {
     }
     
     // Check if a pending promotion exists (we'll update it)
-    let existingPendingQuery = supabase
+    // Query by user_id and restaurant_id (not restaurant_subscription_id since FK points to old table)
+    const { data: existingPending } = await supabase
       .from('promoted_restaurants')
       .select('id, status')
       .eq('restaurant_id', subscription.restaurant_id)
-      .eq('status', 'pending');
-    
-    if (actualSubscriptionId) {
-      existingPendingQuery = existingPendingQuery.eq('restaurant_subscription_id', actualSubscriptionId);
-    }
-    
-    const { data: existingPending } = await existingPendingQuery.maybeSingle();
+      .eq('user_id', subscription.user_id)
+      .eq('status', 'pending')
+      .maybeSingle();
     
     let pendingRecordId;
     
