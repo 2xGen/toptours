@@ -152,13 +152,9 @@ export default function ProfilePage() {
             setPremiumRestaurants(premiumSubs);
           }
           
-          // Fetch user's restaurant subscriptions (new table - includes premium and promoted)
-          // IMPORTANT: Include 'pending' status to show subscriptions that are being processed
-          const { data: restaurantSubs } = await supabase
-            .from('restaurant_subscriptions')
-            .select('*')
-            .eq('user_id', currentUser.id)
-            .in('status', ['active', 'pending_cancellation', 'pending']);
+          // Fetch user's restaurant subscriptions from restaurant_premium_subscriptions
+          // Note: restaurant_subscriptions table is not used - all data is in restaurant_premium_subscriptions
+          const restaurantSubs = premiumSubs || [];
           
           // Also fetch promoted restaurants to check promotion status
           // Fetch promoted restaurants for this user

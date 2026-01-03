@@ -33,48 +33,38 @@ export async function POST(request) {
     
     const supabase = createSupabaseServiceRoleClient();
     
-    // Try new table first, then old table
-    let { data: subscription, error: subError } = await supabase
-      .from('restaurant_subscriptions')
+    // Query restaurant_premium_subscriptions (only table used)
+    const { data: subscription, error: subError } = await supabase
+      .from('restaurant_premium_subscriptions')
       .select('*')
       .eq('id', subscriptionId)
       .eq('user_id', userId)
       .in('status', ['active', 'pending_cancellation'])
       .maybeSingle();
     
-    let isOldSubscription = false;
-    
-    // If not found in new table, try old table
     if (subError || !subscription) {
-      const { data: oldSub, error: oldSubError } = await supabase
-        .from('restaurant_premium_subscriptions')
-        .select('*')
-        .eq('id', subscriptionId)
-        .eq('user_id', userId)
-        .in('status', ['active', 'pending_cancellation'])
-        .maybeSingle();
-      
-      if (oldSubError || !oldSub) {
-        return NextResponse.json(
-          { error: 'Subscription not found or you do not have permission to modify it.' },
-          { status: 404 }
-        );
-      }
-      
-      // Convert old subscription format to new format
-      subscription = {
-        ...oldSub,
-        restaurant_premium_plan: oldSub.plan_type === 'yearly' ? 'annual' : 'monthly',
-        restaurant_id: oldSub.restaurant_id,
-        destination_id: oldSub.destination_id,
-        restaurant_slug: oldSub.restaurant_slug,
-        restaurant_name: oldSub.restaurant_name,
-      };
-      isOldSubscription = true;
+      return NextResponse.json(
+        { error: 'Subscription not found or you do not have permission to modify it.' },
+        { status: 404 }
+      );
     }
     
-    // Check if already has promotion
-    if (subscription.promoted_listing_plan && subscription.promoted_listing_plan !== '') {
+    // Convert subscription format
+    const subscriptionFormatted = {
+      ...subscription,
+      restaurant_premium_plan: subscription.plan_type === 'yearly' ? 'annual' : 'monthly',
+    };
+    
+    // Check if already has promotion (check promoted_restaurants table)
+    const { data: existingPromotion } = await supabase
+      .from('promoted_restaurants')
+      .select('id, status')
+      .eq('restaurant_id', subscription.restaurant_id)
+      .eq('user_id', userId)
+      .in('status', ['active', 'pending'])
+      .maybeSingle();
+    
+    if (existingPromotion) {
       return NextResponse.json(
         { error: 'This restaurant already has a promoted listing. Use the billing portal to manage it.' },
         { status: 400 }
@@ -82,7 +72,7 @@ export async function POST(request) {
     }
     
     // Check if has premium (required for promotion)
-    if (!subscription.restaurant_premium_plan || subscription.restaurant_premium_plan === '') {
+    if (!subscriptionFormatted.restaurant_premium_plan || subscriptionFormatted.restaurant_premium_plan === '') {
       return NextResponse.json(
         { error: 'Premium subscription is required before adding promotion. Please subscribe to premium first.' },
         { status: 400 }
@@ -101,7 +91,7 @@ export async function POST(request) {
     if (!customerId) {
       // Try to get from other restaurant subscriptions for this user
       const { data: otherSub } = await supabase
-        .from('restaurant_subscriptions')
+        .from('restaurant_premium_subscriptions')
         .select('stripe_customer_id')
         .eq('user_id', userId)
         .not('stripe_customer_id', 'is', null)
@@ -141,49 +131,8 @@ export async function POST(request) {
       promotionEndDate.setMonth(promotionEndDate.getMonth() + 1);
     }
     
-    // If this is an old subscription, create a record in the new table first
-    let actualSubscriptionId = subscriptionId;
-    if (isOldSubscription) {
-      // Check if record already exists in new table
-      const { data: existingNewSub } = await supabase
-        .from('restaurant_subscriptions')
-        .select('id')
-        .eq('user_id', userId)
-        .eq('restaurant_id', subscription.restaurant_id)
-        .maybeSingle();
-      
-      if (existingNewSub) {
-        actualSubscriptionId = existingNewSub.id;
-        console.log(`✅ Using existing restaurant_subscriptions record: ${actualSubscriptionId}`);
-      } else {
-        // Create a record in restaurant_subscriptions for the old subscription
-        const { data: newSub, error: createSubError } = await supabase
-          .from('restaurant_subscriptions')
-          .insert({
-            user_id: userId,
-            restaurant_id: subscription.restaurant_id,
-            destination_id: subscription.destination_id,
-            restaurant_slug: subscription.restaurant_slug,
-            restaurant_name: subscription.restaurant_name,
-            restaurant_premium_plan: subscription.restaurant_premium_plan || 'monthly',
-            stripe_subscription_id: subscription.stripe_subscription_id,
-            stripe_customer_id: customerId, // Use the verified customer ID (not test ID)
-            status: subscription.status || 'active',
-            current_period_end: subscription.current_period_end,
-          })
-          .select('id')
-          .single();
-        
-        if (createSubError) {
-          console.error('Error creating restaurant_subscriptions record:', createSubError);
-          // Continue anyway - we'll use NULL for restaurant_subscription_id
-          actualSubscriptionId = null;
-        } else {
-          actualSubscriptionId = newSub.id;
-          console.log(`✅ Created restaurant_subscriptions record for old subscription: ${actualSubscriptionId}`);
-        }
-      }
-    }
+    // Use the subscription ID from restaurant_premium_subscriptions
+    const actualSubscriptionId = subscriptionId;
     
     // Create pending record in promoted_restaurants table BEFORE redirecting to Stripe
     // This allows tracking of pending promotions and manual activation if needed
@@ -310,7 +259,7 @@ export async function POST(request) {
           userId: userId,
           restaurantId: subscription.restaurant_id.toString(),
           promotedBillingCycle: promotedBillingCycle,
-          isOldSubscription: isOldSubscription ? 'true' : 'false', // Flag for webhook
+          isOldSubscription: 'false', // Always false - we only use restaurant_premium_subscriptions
         },
         success_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://toptours.ai'}/profile?tab=my-restaurants&promotion_success=true`,
         cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://toptours.ai'}/profile?tab=my-restaurants&promotion_canceled=true`,

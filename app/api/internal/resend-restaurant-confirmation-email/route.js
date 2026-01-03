@@ -28,7 +28,7 @@ export async function POST(request) {
 
     // Find the subscription
     let query = supabase
-      .from('restaurant_subscriptions')
+      .from('restaurant_premium_subscriptions')
       .select('*, restaurants:restaurant_id(name, slug, destination_id)')
       .eq('status', 'active');
 
@@ -52,7 +52,7 @@ export async function POST(request) {
     }
 
     // Get user email
-    let userEmail = subscription.email;
+    let userEmail = subscription.purchaser_email;
     if (!userEmail && userId) {
       try {
         const { data: { user } } = await supabase.auth.admin.getUserById(userId);
@@ -73,7 +73,7 @@ export async function POST(request) {
     const restaurantName = subscription.restaurant_name || 'Your Restaurant';
     const restaurantSlug = subscription.restaurant_slug || '';
     const destinationId = subscription.destination_id || '';
-    const planType = subscription.restaurant_premium_plan || 'monthly';
+    const planType = subscription.plan_type === 'yearly' ? 'annual' : 'monthly';
     const endDate = subscription.current_period_end || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
 
     // Send confirmation email

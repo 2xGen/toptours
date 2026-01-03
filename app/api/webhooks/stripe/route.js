@@ -926,129 +926,16 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
   const { normalizeDestinationIdToSlug } = await import('@/lib/destinationIdHelper');
   const destinationSlug = await normalizeDestinationIdToSlug(destinationId);
   
-  // Update restaurant_subscriptions record from pending to active
+  // Get subscription ID from restaurant_premium_subscriptions (only table used)
   // The record should already exist as "pending" from the subscribe route
-  const { data: existingSub } = await supabase
-    .from('restaurant_subscriptions')
+  const { data: existingPremiumSub } = await supabase
+    .from('restaurant_premium_subscriptions')
     .select('id, status')
     .eq('restaurant_id', restaurantId)
     .eq('user_id', metadata.userId)
     .maybeSingle();
   
-  let subscriptionDbId = existingSub?.id;
-  
-  if (existingSub && existingSub.status === 'pending') {
-    // Update pending record to active (preserves customization settings)
-    const updateData = {
-      stripe_subscription_id: subscriptionId,
-      stripe_customer_id: session.customer,
-      status: 'active',
-      current_period_start: new Date().toISOString(),
-      current_period_end: currentPeriodEnd.toISOString(),
-      // Ensure user_id and email are set (may have been missing in old records)
-      user_id: metadata.userId,
-      email: session.customer_email || metadata.email || null,
-    };
-    
-    // Only update premium plan if it was provided (may have changed)
-    if (premiumPlan) {
-      updateData.restaurant_premium_plan = premiumPlan;
-    }
-    
-    // Only update promoted plan if it was provided (may have changed)
-    if (promotedPlan) {
-      updateData.promoted_listing_plan = promotedPlan;
-      const promotionEndDate = new Date();
-      if (promotedPlan === 'annual') {
-        promotionEndDate.setFullYear(promotionEndDate.getFullYear() + 1);
-      } else {
-        promotionEndDate.setMonth(promotionEndDate.getMonth() + 1);
-      }
-      updateData.promoted_until = promotionEndDate.toISOString();
-    }
-    
-    // Note: Customization settings (color_scheme, hero_cta_index, etc.) are preserved from pending record
-    // They were set in the subscribe route before checkout
-    
-    const { error: subUpdateError } = await supabase
-      .from('restaurant_subscriptions')
-      .update(updateData)
-      .eq('id', subscriptionDbId);
-    
-    if (subUpdateError) {
-      console.error(`❌ [WEBHOOK] Error updating restaurant_subscriptions from pending to active:`, subUpdateError);
-    } else {
-      console.log(`✅ [WEBHOOK] Updated restaurant_subscriptions from pending to active (ID: ${subscriptionDbId})`);
-    }
-  } else if (!existingSub) {
-    // Fallback: Create new record if pending record doesn't exist (shouldn't happen, but handle gracefully)
-    console.warn(`⚠️ [WEBHOOK] No pending restaurant_subscriptions record found, creating new one...`);
-    const { data: newSub, error: subInsertError } = await supabase
-      .from('restaurant_subscriptions')
-      .insert({
-        user_id: metadata.userId,
-        email: session.customer_email || metadata.email || null, // Save email for easy reference
-        restaurant_id: restaurantId,
-        destination_id: destinationSlug,
-        restaurant_slug: restaurantSlug,
-        restaurant_name: restaurantName,
-        restaurant_premium_plan: premiumPlan || '',
-        promoted_listing_plan: promotedPlan || '',
-        stripe_subscription_id: subscriptionId,
-        stripe_customer_id: session.customer,
-        status: 'active',
-        current_period_start: new Date().toISOString(),
-        current_period_end: currentPeriodEnd.toISOString(),
-        // Customization options from metadata (fallback if pending record missing)
-        color_scheme: metadata.colorScheme || 'blue',
-        hero_cta_index: parseInt(metadata.heroCTAIndex || '0'),
-        mid_cta_index: parseInt(metadata.midCTAIndex || '0'),
-        end_cta_index: parseInt(metadata.midCTAIndex || '0'),
-        sticky_cta_index: parseInt(metadata.stickyCTAIndex || '0'),
-      })
-      .select('id')
-      .single();
-    
-    if (subInsertError) {
-      console.error(`❌ [WEBHOOK] Error creating restaurant_subscriptions record:`, subInsertError);
-    } else {
-      subscriptionDbId = newSub.id;
-      console.log(`✅ [WEBHOOK] Created restaurant_subscriptions record (fallback): ${subscriptionDbId}`);
-    }
-  } else {
-    // Record exists but is already active - just update subscription details
-    const updateData = {
-      stripe_subscription_id: subscriptionId,
-      stripe_customer_id: session.customer,
-      current_period_end: currentPeriodEnd.toISOString(),
-      // Ensure user_id and email are set (may have been missing in old records)
-      user_id: metadata.userId,
-      email: session.customer_email || metadata.email || null,
-    };
-    
-    if (premiumPlan) updateData.restaurant_premium_plan = premiumPlan;
-    if (promotedPlan) {
-      updateData.promoted_listing_plan = promotedPlan;
-      const promotionEndDate = new Date();
-      if (promotedPlan === 'annual') {
-        promotionEndDate.setFullYear(promotionEndDate.getFullYear() + 1);
-      } else {
-        promotionEndDate.setMonth(promotionEndDate.getMonth() + 1);
-      }
-      updateData.promoted_until = promotionEndDate.toISOString();
-    }
-    
-    const { error: subUpdateError } = await supabase
-      .from('restaurant_subscriptions')
-      .update(updateData)
-      .eq('id', subscriptionDbId);
-    
-    if (subUpdateError) {
-      console.error(`❌ [WEBHOOK] Error updating active restaurant_subscriptions:`, subUpdateError);
-    } else {
-      console.log(`✅ [WEBHOOK] Updated active restaurant_subscriptions record: ${subscriptionDbId}`);
-    }
-  }
+  let subscriptionDbId = existingPremiumSub?.id;
   
   // Handle Promoted listing if selected
   if (promotedPlan) {
@@ -1126,7 +1013,7 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
           if (linkError) {
             console.error(`❌ [WEBHOOK] Error linking new promoted_restaurants to subscription:`, linkError);
           } else {
-            console.log(`✅ [WEBHOOK] Linked new promoted_restaurants to restaurant_subscriptions (ID: ${subscriptionDbId})`);
+            console.log(`✅ [WEBHOOK] Linked new promoted_restaurants to restaurant_premium_subscriptions (ID: ${subscriptionDbId})`);
           }
         }
       }
@@ -1145,7 +1032,7 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
       if (linkError) {
         console.error(`❌ [WEBHOOK] Error linking promoted_restaurants to subscription:`, linkError);
       } else {
-        console.log(`✅ [WEBHOOK] Linked promoted_restaurants to restaurant_subscriptions (ID: ${subscriptionDbId})`);
+        console.log(`✅ [WEBHOOK] Linked promoted_restaurants to restaurant_premium_subscriptions (ID: ${subscriptionDbId})`);
       }
     }
     
@@ -1369,16 +1256,16 @@ async function handleRestaurantPremiumSubscriptionUpdate(subscription, supabase)
   const { normalizeDestinationIdToSlug } = await import('@/lib/destinationIdHelper');
   const destinationSlug = await normalizeDestinationIdToSlug(destinationId);
   
-  // Update restaurant_subscriptions record
+  // Update restaurant_premium_subscriptions record
   const { data: existingSub } = await supabase
-    .from('restaurant_subscriptions')
+    .from('restaurant_premium_subscriptions')
     .select('id')
     .eq('stripe_subscription_id', subscription.id)
     .maybeSingle();
   
   if (existingSub) {
     const { error: subUpdateError } = await supabase
-      .from('restaurant_subscriptions')
+      .from('restaurant_premium_subscriptions')
       .update({
         status: status,
         current_period_end: currentPeriodEnd,
@@ -1386,9 +1273,9 @@ async function handleRestaurantPremiumSubscriptionUpdate(subscription, supabase)
       .eq('id', existingSub.id);
     
     if (subUpdateError) {
-      console.error('Error updating restaurant_subscriptions:', subUpdateError);
+      console.error('Error updating restaurant_premium_subscriptions:', subUpdateError);
     } else {
-      console.log(`✅ Updated restaurant_subscriptions for subscription ${subscription.id}`);
+      console.log(`✅ Updated restaurant_premium_subscriptions for subscription ${subscription.id}`);
     }
   }
   
@@ -1481,30 +1368,20 @@ async function handleRestaurantPremiumSubscriptionDeleted(subscription, supabase
   const { normalizeDestinationIdToSlug } = await import('@/lib/destinationIdHelper');
   const destinationSlug = await normalizeDestinationIdToSlug(destinationId);
   
-  // Cancel restaurant_subscriptions record (ALWAYS update this table)
+  // Cancel restaurant_premium_subscriptions record
   // Find by stripe_subscription_id to ensure we get the right record
   const { data: existingSub } = await supabase
-    .from('restaurant_subscriptions')
-    .select('id, status, user_id, email, current_period_end, restaurant_name, restaurant_slug')
+    .from('restaurant_premium_subscriptions')
+    .select('id, status, user_id, purchaser_email, current_period_end, restaurant_name, restaurant_slug')
     .eq('stripe_subscription_id', subscription.id)
     .maybeSingle();
   
   // Get the subscription record to find the purchaser email and period end
-  // Use restaurant_subscriptions first (primary table), then fallback to restaurant_premium_subscriptions
-  let subRecord = existingSub;
-  if (!subRecord) {
-    const { data: premiumSubRecord } = await supabase
-      .from('restaurant_premium_subscriptions')
-      .select('purchaser_email, current_period_end, restaurant_name, restaurant_slug')
-      .eq('restaurant_id', restaurantId)
-      .eq('destination_id', destinationSlug)
-      .maybeSingle();
-    subRecord = premiumSubRecord;
-  }
+  const subRecord = existingSub;
   
   if (existingSub) {
     const { error: subCancelError } = await supabase
-      .from('restaurant_subscriptions')
+      .from('restaurant_premium_subscriptions')
       .update({
         status: 'cancelled',
         stripe_subscription_id: null, // Clear Stripe subscription ID
@@ -1513,16 +1390,16 @@ async function handleRestaurantPremiumSubscriptionDeleted(subscription, supabase
       .eq('id', existingSub.id);
     
     if (subCancelError) {
-      console.error(`❌ [WEBHOOK] Error cancelling restaurant_subscriptions:`, subCancelError);
+      console.error(`❌ [WEBHOOK] Error cancelling restaurant_premium_subscriptions:`, subCancelError);
     } else {
-      console.log(`✅ [WEBHOOK] Cancelled restaurant_subscriptions (ID: ${existingSub.id})`);
+      console.log(`✅ [WEBHOOK] Cancelled restaurant_premium_subscriptions (ID: ${existingSub.id})`);
     }
   } else {
     // Fallback: Try to find by restaurant_id and user_id if stripe_subscription_id not found
     const userId = metadata.userId;
     if (userId) {
       const { data: fallbackSub } = await supabase
-        .from('restaurant_subscriptions')
+        .from('restaurant_premium_subscriptions')
         .select('id')
         .eq('restaurant_id', restaurantId)
         .eq('user_id', userId)
@@ -1531,7 +1408,7 @@ async function handleRestaurantPremiumSubscriptionDeleted(subscription, supabase
       
       if (fallbackSub) {
         const { error: fallbackError } = await supabase
-          .from('restaurant_subscriptions')
+          .from('restaurant_premium_subscriptions')
           .update({
             status: 'cancelled',
             stripe_subscription_id: null,
@@ -1539,9 +1416,9 @@ async function handleRestaurantPremiumSubscriptionDeleted(subscription, supabase
           .eq('id', fallbackSub.id);
         
         if (fallbackError) {
-          console.error(`❌ [WEBHOOK] Error cancelling restaurant_subscriptions (fallback):`, fallbackError);
+          console.error(`❌ [WEBHOOK] Error cancelling restaurant_premium_subscriptions (fallback):`, fallbackError);
         } else {
-          console.log(`✅ [WEBHOOK] Cancelled restaurant_subscriptions (fallback, ID: ${fallbackSub.id})`);
+          console.log(`✅ [WEBHOOK] Cancelled restaurant_premium_subscriptions (fallback, ID: ${fallbackSub.id})`);
         }
       }
     }
@@ -2322,79 +2199,23 @@ async function handleRestaurantPromotionUpgrade(session, supabase) {
     
     console.log(`✅ [WEBHOOK] Payment confirmed as paid for restaurant promotion upgrade session ${session.id}`);
     
-    // Get subscription details from database (try new table first, then old table)
-    let { data: subscription, error: subError } = await supabase
-      .from('restaurant_subscriptions')
+    // Get subscription details from database (only restaurant_premium_subscriptions is used)
+    const { data: subscription, error: subError } = await supabase
+      .from('restaurant_premium_subscriptions')
       .select('*')
       .eq('id', subscriptionDbId)
       .eq('user_id', userId)
       .maybeSingle();
     
-    let isOldSubscription = false;
-    
-    // If not found in new table, try old table
     if (subError || !subscription) {
-      const { data: oldSub, error: oldSubError } = await supabase
-        .from('restaurant_premium_subscriptions')
-        .select('*')
-        .eq('id', subscriptionDbId)
-        .eq('user_id', userId)
-        .maybeSingle();
-      
-      if (oldSubError || !oldSub) {
-        console.error('❌ [WEBHOOK] Restaurant subscription not found:', oldSubError || subError);
-        return;
-      }
-      
-      // Convert old subscription format
-      subscription = {
-        ...oldSub,
-        restaurant_premium_plan: oldSub.plan_type === 'yearly' ? 'annual' : 'monthly',
-        restaurant_id: oldSub.restaurant_id,
-        destination_id: oldSub.destination_id,
-        restaurant_slug: oldSub.restaurant_slug,
-        restaurant_name: oldSub.restaurant_name,
-      };
-      isOldSubscription = true;
-      
-      // Create record in new table if it doesn't exist
-      const { data: existingNewSub } = await supabase
-        .from('restaurant_subscriptions')
-        .select('id')
-        .eq('user_id', userId)
-        .eq('restaurant_id', subscription.restaurant_id)
-        .maybeSingle();
-      
-      if (!existingNewSub) {
-        const { data: newSub } = await supabase
-          .from('restaurant_subscriptions')
-          .insert({
-            user_id: userId,
-            restaurant_id: subscription.restaurant_id,
-            destination_id: subscription.destination_id,
-            restaurant_slug: subscription.restaurant_slug,
-            restaurant_name: subscription.restaurant_name,
-            restaurant_premium_plan: subscription.restaurant_premium_plan,
-            stripe_subscription_id: subscription.stripe_subscription_id,
-            stripe_customer_id: subscription.stripe_customer_id,
-            status: subscription.status || 'active',
-          })
-          .select('id')
-          .single();
-        
-        if (newSub) {
-          subscriptionDbId = newSub.id; // Update to use new subscription ID
-          console.log(`✅ [WEBHOOK] Created restaurant_subscriptions record for old subscription: ${newSub.id}`);
-        }
-      } else {
-        subscriptionDbId = existingNewSub.id; // Use existing new subscription ID
-      }
+      console.error('❌ [WEBHOOK] Restaurant subscription not found:', subError);
+      return;
     }
     
     // Update subscription with new Stripe subscription ID if it's different
     if (subscription.stripe_subscription_id !== subscriptionId) {
       const { error: updateError } = await supabase
-        .from('restaurant_subscriptions')
+        .from('restaurant_premium_subscriptions')
         .update({ stripe_subscription_id: subscriptionId })
         .eq('id', subscriptionDbId);
       
@@ -2531,20 +2352,7 @@ async function handleRestaurantPromotionUpgrade(session, supabase) {
       console.log(`✅ [WEBHOOK] Updated restaurants table for restaurant ${restaurantId}`);
     }
     
-    // Update restaurant_subscriptions table
-    const { error: subUpdateError } = await supabase
-      .from('restaurant_subscriptions')
-      .update({
-        promoted_listing_plan: promotedBillingCycle,
-        promoted_until: promotionEndDate.toISOString(),
-      })
-      .eq('id', subscriptionDbId);
-    
-    if (subUpdateError) {
-      console.error(`❌ [WEBHOOK] Error updating restaurant_subscriptions table:`, subUpdateError);
-    } else {
-      console.log(`✅ [WEBHOOK] Updated restaurant_subscriptions table`);
-    }
+    // Note: Promoted listings are tracked in promoted_restaurants table, not in subscription table
     
     console.log(`✅ [WEBHOOK] Restaurant promotion upgrade completed`);
     

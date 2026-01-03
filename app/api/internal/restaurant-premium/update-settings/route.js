@@ -4,7 +4,7 @@ import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 /**
  * POST /api/internal/restaurant-premium/update-settings
  * Updates restaurant premium settings (button colors, CTA text, etc.)
- * Supports both old restaurant_premium_subscriptions and new restaurant_subscriptions tables
+ * Uses restaurant_premium_subscriptions table
  */
 export async function POST(request) {
   try {
@@ -13,7 +13,7 @@ export async function POST(request) {
       restaurantId,
       destinationId,
       userId,
-      subscriptionId, // Optional: if provided, update restaurant_subscriptions table
+      subscriptionId, // Optional: if provided, update by subscription ID
       colorScheme,
       heroCTAIndex,
       midCTAIndex,
@@ -47,8 +47,6 @@ export async function POST(request) {
 
     // If subscriptionId is provided, try to update by ID first (more reliable)
     if (subscriptionId) {
-      // Try restaurant_premium_subscriptions first (where the data actually is)
-      let updated = false;
       const { error: premiumError } = await supabase
         .from('restaurant_premium_subscriptions')
         .update(updateData)
@@ -56,31 +54,12 @@ export async function POST(request) {
         .eq('user_id', userId); // Security: ensure user owns this subscription
 
       if (!premiumError) {
-        updated = true;
         console.log(`✅ Updated restaurant_premium_subscriptions settings for subscription ${subscriptionId}`);
+        return NextResponse.json({ success: true });
       } else {
         console.warn('Could not update restaurant_premium_subscriptions by ID:', premiumError);
+        // Fall through to update by restaurant_id + destination_id
       }
-
-      // Also try restaurant_subscriptions (new unified table) if it exists
-      const { error: unifiedError } = await supabase
-        .from('restaurant_subscriptions')
-        .update(updateData)
-        .eq('id', subscriptionId)
-        .eq('user_id', userId);
-
-      if (!unifiedError) {
-        updated = true;
-        console.log(`✅ Updated restaurant_subscriptions settings for subscription ${subscriptionId}`);
-      } else if (unifiedError.code !== 'PGRST116') {
-        // PGRST116 = no rows found, which is fine if table doesn't have this record
-        console.warn('Could not update restaurant_subscriptions:', unifiedError);
-      }
-
-      if (updated) {
-        return NextResponse.json({ success: true });
-      }
-      // If both failed, fall through to update by restaurant_id + destination_id
     }
 
     // Fallback: Update old restaurant_premium_subscriptions table

@@ -40,8 +40,8 @@ export async function GET(request) {
   try {
     // ===== RESTAURANT SUBSCRIPTIONS =====
     const { data: dbRestaurantSubs, error: dbRestaurantError } = await supabase
-      .from('restaurant_subscriptions')
-      .select('id, stripe_subscription_id, status, restaurant_id, user_id, restaurant_name, email, restaurant_premium_plan, promoted_listing_plan, current_period_end')
+      .from('restaurant_premium_subscriptions')
+      .select('id, stripe_subscription_id, status, restaurant_id, user_id, restaurant_name, purchaser_email, plan_type, current_period_end')
       .in('status', ['active', 'pending']);
 
     if (dbRestaurantError) {
@@ -63,7 +63,7 @@ export async function GET(request) {
           console.log(`🔧 [RECONCILE] Fixing restaurant subscription ${dbSub.id}: Stripe=active, DB=${dbSub.status}`);
           
           const { error: updateError } = await supabase
-            .from('restaurant_subscriptions')
+            .from('restaurant_premium_subscriptions')
             .update({ 
               status: 'active',
               current_period_start: stripeSub.current_period_start ? new Date(stripeSub.current_period_start * 1000).toISOString() : null,
@@ -81,13 +81,13 @@ export async function GET(request) {
             try {
               const { sendRestaurantSubscriptionConfirmationEmail } = await import('@/lib/email');
               const endDate = stripeSub.current_period_end ? new Date(stripeSub.current_period_end * 1000).toISOString() : dbSub.current_period_end;
-              const customerEmail = dbSub.email;
+              const customerEmail = dbSub.purchaser_email;
               
               if (customerEmail && endDate && dbSub.restaurant_name) {
                 await sendRestaurantSubscriptionConfirmationEmail({
                   to: customerEmail,
                   restaurantName: dbSub.restaurant_name,
-                  planType: dbSub.restaurant_premium_plan || 'monthly',
+                  planType: dbSub.plan_type === 'yearly' ? 'annual' : 'monthly',
                   destinationId: null, // Can be fetched if needed
                   restaurantSlug: null, // Can be fetched if needed
                   endDate: endDate,
@@ -105,7 +105,7 @@ export async function GET(request) {
           console.log(`🔧 [RECONCILE] Fixing restaurant subscription ${dbSub.id}: Stripe=${stripeSub.status}, DB=active`);
           
           const { error: updateError } = await supabase
-            .from('restaurant_subscriptions')
+            .from('restaurant_premium_subscriptions')
             .update({ status: 'cancelled' })
             .eq('id', dbSub.id);
 
@@ -121,7 +121,7 @@ export async function GET(request) {
           console.log(`🔧 [RECONCILE] Restaurant subscription ${dbSub.stripe_subscription_id} not found in Stripe, marking as cancelled`);
           
           const { error: updateError } = await supabase
-            .from('restaurant_subscriptions')
+            .from('restaurant_premium_subscriptions')
             .update({ status: 'cancelled' })
             .eq('id', dbSub.id);
 

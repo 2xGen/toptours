@@ -18,26 +18,16 @@ export async function POST(request) {
       // Fetch customer ID from subscription if not provided directly
       const supabase = createSupabaseServiceRoleClient();
       
-      // Try restaurant_premium_subscriptions first (where the data actually is)
-      let { data: subscription, error: subError } = await supabase
+      // Query restaurant_premium_subscriptions (only table used)
+      const { data: subscription, error: subError } = await supabase
         .from('restaurant_premium_subscriptions')
         .select('stripe_customer_id, stripe_subscription_id')
         .eq('id', subscriptionId)
         .eq('user_id', userId)
         .maybeSingle();
       
-      // If not found, try restaurant_subscriptions (new unified table)
-      if (subError || !subscription) {
-        const { data: unifiedSub, error: unifiedError } = await supabase
-          .from('restaurant_subscriptions')
-          .select('stripe_customer_id, stripe_subscription_id')
-          .eq('id', subscriptionId)
-          .eq('user_id', userId)
-          .maybeSingle();
-        
-        if (!unifiedError && unifiedSub) {
-          subscription = unifiedSub;
-        }
+      if (subError && subError.code !== 'PGRST116') {
+        console.error('Error fetching subscription:', subError);
       }
       
       if (subscription?.stripe_customer_id) {

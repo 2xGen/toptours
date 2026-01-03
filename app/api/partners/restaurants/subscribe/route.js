@@ -82,7 +82,7 @@ export async function POST(request) {
     // Get or create Stripe customer
     // Check existing restaurant subscriptions for this user to get Stripe customer ID
     let { data: existingSub } = await supabase
-      .from('restaurant_subscriptions')
+      .from('restaurant_premium_subscriptions')
       .select('stripe_customer_id')
       .eq('user_id', userId)
       .not('stripe_customer_id', 'is', null)
@@ -254,137 +254,7 @@ export async function POST(request) {
       }
     }
     
-    // ALWAYS create pending restaurant_subscriptions record (like promoted_restaurants)
-    // This ensures we have a record BEFORE Stripe checkout, regardless of what was selected
-    console.log(`📝 Creating pending restaurant subscription record for restaurant ${restaurantId}...`);
-    
-    // Check if a pending or active subscription already exists
-    const { data: existingActive } = await supabase
-      .from('restaurant_subscriptions')
-      .select('id, status')
-      .eq('restaurant_id', restaurantId)
-      .eq('user_id', userId)
-      .eq('status', 'active')
-      .maybeSingle();
-    
-    if (existingActive) {
-      // Update existing active subscription instead of creating new one
-      const { error: updateError } = await supabase
-        .from('restaurant_subscriptions')
-        .update({
-          restaurant_premium_plan: isPremiumSelected && premiumBillingCycle ? premiumBillingCycle : existingActive.restaurant_premium_plan,
-          promoted_listing_plan: isPromotedSelected && promotedBillingCycle ? promotedBillingCycle : existingActive.promoted_listing_plan,
-          // Customization settings from request body
-          color_scheme: body.colorScheme || 'blue',
-          hero_cta_index: body.heroCTAIndex || 0,
-          mid_cta_index: body.midCTAIndex || 0,
-          end_cta_index: body.midCTAIndex || 0, // End uses same as mid
-          sticky_cta_index: body.stickyCTAIndex || 0,
-        })
-        .eq('id', existingActive.id);
-      
-      if (updateError) {
-        console.error(`❌ Error updating existing subscription:`, updateError);
-      } else {
-        console.log(`✅ Updated existing subscription record (ID: ${existingActive.id})`);
-      }
-    } else {
-      // Check if a pending subscription exists (we'll update it)
-      const { data: existingPending } = await supabase
-        .from('restaurant_subscriptions')
-        .select('id, status')
-        .eq('restaurant_id', restaurantId)
-        .eq('user_id', userId)
-        .eq('status', 'pending')
-        .maybeSingle();
-      
-      if (existingPending) {
-        // Update existing pending record (allows retry of failed checkout)
-        const updateData = {
-          user_id: userId, // Ensure user_id is set
-          email: email, // Save email for easy reference
-          destination_id: destinationSlug,
-          restaurant_slug: restaurantSlug || restaurant.slug,
-          restaurant_name: restaurantName || restaurant.name,
-          // Customization settings from request body
-          color_scheme: body.colorScheme || 'blue',
-          hero_cta_index: body.heroCTAIndex || 0,
-          mid_cta_index: body.midCTAIndex || 0,
-          end_cta_index: body.midCTAIndex || 0, // End uses same as mid
-          sticky_cta_index: body.stickyCTAIndex || 0,
-          stripe_subscription_id: null, // Reset in case of retry
-        };
-        
-        // Only update plans if they're provided
-        if (isPremiumSelected && premiumBillingCycle) {
-          updateData.restaurant_premium_plan = premiumBillingCycle;
-        }
-        if (isPromotedSelected && promotedBillingCycle) {
-          updateData.promoted_listing_plan = promotedBillingCycle;
-        }
-        
-        const { error: updateError } = await supabase
-          .from('restaurant_subscriptions')
-          .update(updateData)
-          .eq('id', existingPending.id);
-        
-        if (updateError) {
-          console.error(`❌ Error updating pending subscription:`, updateError);
-        } else {
-          console.log(`✅ Updated pending subscription record (ID: ${existingPending.id})`);
-        }
-      } else {
-        // Create new pending record (ALWAYS create, regardless of what was selected)
-        const insertData = {
-          user_id: userId, // Direct link to user for reliable querying
-          email: email, // Save email for easy reference
-          restaurant_id: restaurantId,
-          destination_id: destinationSlug,
-          restaurant_slug: restaurantSlug || restaurant.slug,
-          restaurant_name: restaurantName || restaurant.name,
-          stripe_subscription_id: null, // Will be set by webhook
-          stripe_customer_id: null, // Will be set by webhook
-          status: 'pending', // Pending until payment confirmed
-          current_period_start: null, // Will be set by webhook
-          current_period_end: null, // Will be set by webhook
-          // Customization settings from request body
-          color_scheme: body.colorScheme || 'blue',
-          hero_cta_index: body.heroCTAIndex || 0,
-          mid_cta_index: body.midCTAIndex || 0,
-          end_cta_index: body.midCTAIndex || 0, // End uses same as mid
-          sticky_cta_index: body.stickyCTAIndex || 0,
-        };
-        
-        // Only set plans if they're provided
-        if (isPremiumSelected && premiumBillingCycle) {
-          insertData.restaurant_premium_plan = premiumBillingCycle;
-        } else {
-          insertData.restaurant_premium_plan = null; // Explicitly set to null if not selected
-        }
-        
-        if (isPromotedSelected && promotedBillingCycle) {
-          insertData.promoted_listing_plan = promotedBillingCycle;
-        } else {
-          insertData.promoted_listing_plan = null; // Explicitly set to null if not selected
-        }
-        
-        const { data: newRecord, error: insertError } = await supabase
-          .from('restaurant_subscriptions')
-          .insert(insertData)
-          .select('id')
-          .single();
-        
-        if (insertError) {
-          console.error(`❌ Error creating pending subscription:`, insertError);
-          // Don't fail - just log, continue with checkout
-          // The webhook can create it if needed
-        } else {
-          console.log(`✅ Created pending subscription record (ID: ${newRecord.id})`);
-        }
-      }
-    }
-    
-    // ALSO create pending restaurant_premium_subscriptions record if premium is selected
+    // Create pending restaurant_premium_subscriptions record if premium is selected
     // This ensures backward compatibility and matches the promoted_restaurants pattern
     if (isPremiumSelected && premiumBillingCycle) {
       console.log(`📝 Creating pending restaurant_premium_subscriptions record for restaurant ${restaurantId}...`);
