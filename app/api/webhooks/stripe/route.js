@@ -2288,13 +2288,10 @@ async function handleRestaurantPromotionUpgrade(session, supabase) {
     
     if (existingPending) {
       // Update pending record to active
-      // NOTE: restaurant_subscription_id foreign key points to restaurant_subscriptions (old table)
-      // Since we use restaurant_premium_subscriptions now, set it to NULL to avoid FK constraint error
       const { error: updateError } = await supabase
         .from('promoted_restaurants')
         .update({
           user_id: userId, // Ensure user_id is set
-          restaurant_subscription_id: null, // Set to NULL - FK points to old table, we use restaurant_premium_subscriptions
           stripe_subscription_id: subscriptionId,
           status: 'active',
           start_date: promotionStartDate.toISOString(),
