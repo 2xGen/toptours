@@ -985,7 +985,6 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
           restaurant_id: restaurantId,
           user_id: metadata.userId, // Direct link to user for reliable querying
           email: session.customer_email || metadata.email || null, // Save email for easy reference
-          restaurant_subscription_id: subscriptionDbId || null, // Link to subscription if available
           stripe_subscription_id: subscriptionId,
           promotion_plan: promotedPlan,
           status: 'active',
@@ -1002,37 +1001,22 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
         console.error(`❌ [WEBHOOK] Error creating promoted_restaurants record:`, insertError);
       } else {
         console.log(`✅ [WEBHOOK] Created promoted_restaurants record (active until ${promotionEndDate.toISOString()})`);
-        
-        // If subscription wasn't available when creating, link it now
-        if (subscriptionDbId && !newPromoted.restaurant_subscription_id) {
-          const { error: linkError } = await supabase
-            .from('promoted_restaurants')
-            .update({ restaurant_subscription_id: subscriptionDbId })
-            .eq('id', newPromoted.id);
-          
-          if (linkError) {
-            console.error(`❌ [WEBHOOK] Error linking new promoted_restaurants to subscription:`, linkError);
-          } else {
-            console.log(`✅ [WEBHOOK] Linked new promoted_restaurants to restaurant_premium_subscriptions (ID: ${subscriptionDbId})`);
-          }
-        }
       }
     }
     
-    // Update promoted_restaurants with subscription ID and user_id (if subscription was created/updated above)
-    if (subscriptionDbId && existingPending) {
+    // Ensure user_id is set on existing pending record
+    if (existingPending && metadata.userId) {
       const { error: linkError } = await supabase
         .from('promoted_restaurants')
         .update({ 
-          restaurant_subscription_id: subscriptionDbId,
           user_id: metadata.userId // Ensure user_id is set
         })
         .eq('id', existingPending.id);
       
       if (linkError) {
-        console.error(`❌ [WEBHOOK] Error linking promoted_restaurants to subscription:`, linkError);
+        console.error(`❌ [WEBHOOK] Error updating user_id on promoted_restaurants:`, linkError);
       } else {
-        console.log(`✅ [WEBHOOK] Linked promoted_restaurants to restaurant_premium_subscriptions (ID: ${subscriptionDbId})`);
+        console.log(`✅ [WEBHOOK] Updated user_id on promoted_restaurants`);
       }
     }
     
@@ -2287,7 +2271,7 @@ async function handleRestaurantPromotionUpgrade(session, supabase) {
     
     // Update existing pending record to active (created before checkout)
     // If no pending record exists, create a new one (fallback)
-    // Query by user_id and restaurant_id (not restaurant_subscription_id since FK points to old table)
+    // Query by user_id and restaurant_id
     const { data: existingPending } = await supabase
       .from('promoted_restaurants')
       .select('id, status')
@@ -2326,14 +2310,11 @@ async function handleRestaurantPromotionUpgrade(session, supabase) {
       }
     } else {
       // Fallback: Create new record if no pending record exists (shouldn't happen, but safety net)
-      // NOTE: restaurant_subscription_id foreign key points to restaurant_subscriptions (old table)
-      // Since we use restaurant_premium_subscriptions now, set it to NULL to avoid FK constraint error
       const { error: insertError } = await supabase
         .from('promoted_restaurants')
         .insert({
           restaurant_id: parseInt(restaurantId),
           user_id: userId, // Direct link to user for reliable querying
-          restaurant_subscription_id: null, // Set to NULL - FK points to old table, we use restaurant_premium_subscriptions
           stripe_subscription_id: subscriptionId,
           promotion_plan: promotedBillingCycle,
           status: 'active',

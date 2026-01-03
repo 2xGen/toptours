@@ -223,14 +223,13 @@ export async function POST(request) {
           console.log(`✅ Updated pending promotion record (ID: ${existingPending.id})`);
         }
       } else {
-        // Create new pending record (restaurant_subscription_id will be set by webhook after subscription is created)
+        // Create new pending record
         const { data: newRecord, error: insertError } = await supabase
           .from('promoted_restaurants')
           .insert({
             restaurant_id: restaurantId,
             user_id: userId, // Direct link to user for reliable querying
             email: email, // Save email for easy reference
-            restaurant_subscription_id: null, // Will be set by webhook after subscription is created
             stripe_subscription_id: null, // Will be set by webhook
             promotion_plan: promotedBillingCycle,
             status: 'pending',

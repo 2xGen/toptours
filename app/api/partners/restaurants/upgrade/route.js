@@ -142,7 +142,7 @@ export async function POST(request) {
     const destinationSlug = await normalizeDestinationIdToSlug(subscription.destination_id);
     
     // Check if a pending or active promotion already exists
-    // Query by user_id and restaurant_id (not restaurant_subscription_id since FK points to old table)
+    // Query by user_id and restaurant_id
     const { data: existingActive } = await supabase
       .from('promoted_restaurants')
       .select('id, status')
@@ -158,7 +158,7 @@ export async function POST(request) {
     }
     
     // Check if a pending promotion exists (we'll update it)
-    // Query by user_id and restaurant_id (not restaurant_subscription_id since FK points to old table)
+    // Query by user_id and restaurant_id
     const { data: existingPending } = await supabase
       .from('promoted_restaurants')
       .select('id, status')
@@ -171,13 +171,10 @@ export async function POST(request) {
     
     if (existingPending) {
       // Update existing pending record (allows retry of failed checkout)
-      // NOTE: restaurant_subscription_id foreign key points to restaurant_subscriptions (old table)
-      // Since we use restaurant_premium_subscriptions now, set it to NULL to avoid FK constraint error
       const { error: updateError } = await supabase
         .from('promoted_restaurants')
         .update({
           user_id: subscription.user_id, // Ensure user_id is set
-          restaurant_subscription_id: null, // Set to NULL - FK points to old table, we use restaurant_premium_subscriptions
           promotion_plan: promotedBillingCycle,
           requested_at: new Date().toISOString(),
           stripe_subscription_id: null, // Reset in case of retry
@@ -201,14 +198,11 @@ export async function POST(request) {
       console.log(`✅ Updated pending promotion record (ID: ${pendingRecordId})`);
     } else {
       // Create new pending record
-      // NOTE: restaurant_subscription_id foreign key points to restaurant_subscriptions (old table)
-      // Since we use restaurant_premium_subscriptions now, set it to NULL to avoid FK constraint error
       const { data: newRecord, error: insertError } = await supabase
         .from('promoted_restaurants')
         .insert({
           restaurant_id: subscription.restaurant_id,
           user_id: subscription.user_id, // Direct link to user for reliable querying
-          restaurant_subscription_id: null, // Set to NULL - FK points to old table, we use restaurant_premium_subscriptions
           stripe_subscription_id: null, // Will be set by webhook
           promotion_plan: promotedBillingCycle,
           status: 'pending',

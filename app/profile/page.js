@@ -161,7 +161,7 @@ export default function ProfilePage() {
           // Now we can query directly by user_id - much more reliable!
           const { data: promotedRestaurants } = await supabase
             .from('promoted_restaurants')
-            .select('restaurant_id, restaurant_subscription_id, status, promotion_plan, destination_id, restaurant_slug, restaurant_name, user_id, email')
+            .select('restaurant_id, status, promotion_plan, destination_id, restaurant_slug, restaurant_name, user_id, email')
             .eq('user_id', currentUser.id) // Direct query by user_id - simple and reliable!
             .in('status', ['active', 'pending'])
             .order('requested_at', { ascending: false });
@@ -172,10 +172,9 @@ export default function ProfilePage() {
           // Map promoted restaurants to subscriptions
           if (restaurantSubs && restaurantSubs.length > 0) {
             const subscriptionsWithPromoted = restaurantSubs.map(sub => {
-              // Find matching promoted restaurant by subscription ID or restaurant ID
+              // Find matching promoted restaurant by restaurant ID and user ID
               const promoted = promotedRestaurants?.find(pr => 
-                (pr.restaurant_subscription_id && pr.restaurant_subscription_id === sub.id) ||
-                (!pr.restaurant_subscription_id && pr.restaurant_id === sub.restaurant_id && pr.user_id === currentUser.id)
+                pr.restaurant_id === sub.restaurant_id && pr.user_id === currentUser.id
               );
               
               return {
@@ -197,18 +196,14 @@ export default function ProfilePage() {
           
           // Also handle promoted restaurants that don't have a subscription
           // (standalone promotions created directly)
-          // These are promotions where restaurant_subscription_id is null
           if (promotedRestaurants && promotedRestaurants.length > 0) {
             // Get list of restaurant IDs from user's subscriptions (if any)
             const userRestaurantIds = restaurantSubs?.map(sub => sub.restaurant_id) || [];
             const existingSubscriptionIds = new Set(allSubscriptions.map(s => s.restaurant_id));
             
             const standalonePromoted = promotedRestaurants.filter(pr => {
-              // Include if:
-              // 1. No subscription ID linked, AND
-              // 2. Either: (a) matches a subscription's restaurant_id, OR (b) is a standalone promotion
-              return !pr.restaurant_subscription_id && 
-                     (userRestaurantIds.includes(pr.restaurant_id) || !existingSubscriptionIds.has(pr.restaurant_id));
+              // Include if it doesn't match an existing subscription's restaurant_id
+              return !existingSubscriptionIds.has(pr.restaurant_id);
             });
             
             // Add standalone promoted restaurants to the list
