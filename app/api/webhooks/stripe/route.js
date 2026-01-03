@@ -869,6 +869,29 @@ async function handleRestaurantSubscriptionCheckout(session, supabase) {
       } else {
         console.log(`✅ [WEBHOOK] Updated pending restaurant_premium_subscriptions to active (ID: ${existingPremiumPending.id})`);
         
+        // Send premium confirmation email when status changes from pending to active (like promotions)
+        const customerEmail = session.customer_email || metadata.email;
+        if (customerEmail && premiumPlan) {
+          try {
+            // Normalize destination_id to slug format for email URLs
+            const emailDestinationId = normalizedDestinationId || destinationId;
+            const emailPlanType = premiumPlan === 'annual' ? 'yearly' : 'monthly';
+            
+            await sendRestaurantPremiumConfirmationEmail({
+              to: customerEmail,
+              restaurantName: restaurantName || restaurantSlug,
+              planType: emailPlanType,
+              destinationId: emailDestinationId,
+              restaurantSlug: restaurantSlug,
+              endDate: currentPeriodEnd.toISOString(),
+            });
+            console.log(`✅ [WEBHOOK] Restaurant premium confirmation email sent to ${customerEmail} (status changed from pending to active)`);
+          } catch (emailError) {
+            console.error('❌ [WEBHOOK] Error sending restaurant premium confirmation email:', emailError);
+            // Don't fail the webhook if email fails
+          }
+        }
+        
         // Clean up any other pending records for this restaurant (prevent duplicates)
         const { error: cleanupError } = await supabase
           .from('restaurant_premium_subscriptions')
