@@ -103,14 +103,9 @@ function SuccessPageContent() {
                   <Link href={returnUrl}>Return to Tour</Link>
                 </Button>
               ) : (
-                <>
-                  <Button asChild className="w-full">
-                    <Link href="/profile?tab=plan">View My Account</Link>
-                  </Button>
-                  <Button asChild variant="outline" className="w-full">
-                    <Link href="/toptours">Explore Top Tours</Link>
-                  </Button>
-                </>
+                <Button asChild className="w-full">
+                  <Link href="/profile">View My Account</Link>
+                </Button>
               )}
             </div>
           </>

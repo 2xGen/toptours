@@ -1363,20 +1363,6 @@ function RestaurantsPartnerPageContent() {
                 </p>
                 <div className="flex gap-4 justify-center">
                   <Button
-                    onClick={() => {
-                      setStep(0);
-                      setSelectedRestaurant(null);
-                      setSelectedDestinationId('');
-                      setSelectedDestination(null);
-                        setPremiumPlan(null);
-                        setWantsPromotion(false);
-                        setPromotedBillingCycle('annual');
-                      }}
-                    variant="outline"
-                  >
-                    Start Over
-                  </Button>
-                  <Button
                     onClick={() => router.push('/profile')}
                     className="sunset-gradient text-white"
                   >

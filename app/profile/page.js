@@ -1976,13 +1976,20 @@ export default function ProfilePage() {
                 <div className="space-y-4">
                   {/* New restaurant subscriptions (includes premium and promoted) */}
                   {restaurantSubscriptions.map((subscription) => {
-                    const hasPremium = subscription.restaurant_premium_plan && subscription.restaurant_premium_plan !== '';
+                    // Check if premium: use plan_type (yearly/monthly) or restaurant_premium_plan (annual/monthly)
+                    const hasPremium = (subscription.plan_type && (subscription.plan_type === 'yearly' || subscription.plan_type === 'monthly')) ||
+                                      (subscription.restaurant_premium_plan && subscription.restaurant_premium_plan !== '');
                     // Check both promoted_listing_plan and promotion_status (from promoted_restaurants table)
                     // If promotion_status is active/pending, the restaurant is promoted even if promoted_listing_plan is null
                     const hasPromoted = (subscription.promoted_listing_plan && subscription.promoted_listing_plan !== '') || 
                                       (subscription.promotion_status === 'active' || subscription.promotion_status === 'pending');
                     // Get the promotion plan - use promoted_listing_plan if available, otherwise try to get it from the mapping
                     const promotionPlan = subscription.promoted_listing_plan || (hasPromoted ? 'monthly' : null);
+                    // Get premium plan display
+                    const premiumPlanDisplay = subscription.plan_type === 'yearly' ? 'Annual' : 
+                                               subscription.plan_type === 'monthly' ? 'Monthly' :
+                                               subscription.restaurant_premium_plan === 'annual' ? 'Annual' : 
+                                               subscription.restaurant_premium_plan === 'monthly' ? 'Monthly' : null;
 
                     return (
                       <div key={subscription.id} className="border rounded-xl p-5 hover:shadow-md transition-shadow">
@@ -2001,8 +2008,8 @@ export default function ProfilePage() {
                           )}
                           </div>
                             <p className="text-sm text-gray-500">
-                              {hasPremium && (
-                                <>Premium ({subscription.restaurant_premium_plan === 'annual' ? 'Annual' : 'Monthly'})</>
+                              {hasPremium && premiumPlanDisplay && (
+                                <>Premium ({premiumPlanDisplay})</>
                               )}
                               {hasPremium && hasPromoted && ' • '}
                               {hasPromoted && (
@@ -2021,65 +2028,6 @@ export default function ProfilePage() {
                               <ExternalLink className="w-4 h-4" />
                               View
                             </Link>
-                            {hasPremium && !hasPromoted && (
-                              <Button
-                              onClick={async () => {
-                                  // Open upgrade modal or redirect to upgrade flow
-                                  const upgradeBillingCycle = subscription.restaurant_premium_plan; // Match premium billing cycle
-                                  setLoadingPortal(true);
-                                  try {
-                                    const res = await fetch('/api/partners/restaurants/upgrade', {
-                                      method: 'POST',
-                                      headers: { 'Content-Type': 'application/json' },
-                                      body: JSON.stringify({
-                                        userId: user.id,
-                                        subscriptionId: subscription.id,
-                                        promotedBillingCycle: upgradeBillingCycle,
-                                      }),
-                                    });
-                                    if (!res.ok) {
-                                      const errorData = await res.json().catch(() => ({ error: 'Network error' }));
-                                      throw new Error(errorData.error || `HTTP ${res.status}: ${res.statusText}`);
-                                    }
-                                    
-                                    const data = await res.json();
-                                    console.log('Restaurant upgrade response:', data);
-                                    
-                                    if (data.success) {
-                                      toast({
-                                        title: 'Upgrade successful!',
-                                        description: 'Promotion has been added to your subscription.',
-                                      });
-                                      setLoadingPortal(false);
-                                      // Refresh subscriptions
-                                      setTimeout(() => {
-                                        window.location.reload();
-                                      }, 1000);
-                                    } else if (data.requiresCheckout && data.checkoutUrl) {
-                                      // Redirect to Stripe checkout
-                                      console.log('Redirecting to checkout:', data.checkoutUrl);
-                                      window.location.href = data.checkoutUrl;
-                                    } else {
-                                      throw new Error(data.error || data.message || 'Failed to upgrade');
-                                    }
-                                  } catch (error) {
-                                    console.error('Restaurant upgrade error:', error);
-                                    toast({
-                                      title: 'Upgrade failed',
-                                      description: error.message || 'An unexpected error occurred. Please try again.',
-                                      variant: 'destructive',
-                                    });
-                                    setLoadingPortal(false);
-                                  }
-                                }}
-                                disabled={loadingPortal}
-                                className="bg-purple-600 hover:bg-purple-700 text-white"
-                                size="sm"
-                              >
-                                <Sparkles className="w-4 h-4 mr-1" />
-                                Upgrade to Promoted
-                              </Button>
-                            )}
                             <Button
                               onClick={async () => {
                                 setLoadingPortal(true);
@@ -2204,6 +2152,84 @@ export default function ProfilePage() {
                             </Button>
                             </div>
                         </div>
+
+                        {/* Promote Restaurant Section - Always show if has premium subscription */}
+                        {hasPremium && (
+                          <div className="mt-4 pt-4 border-t">
+                            <div className="flex items-center justify-between mb-3">
+                              <div>
+                                <h4 className="text-sm font-semibold text-gray-700 mb-1">Upgrade to Promoted</h4>
+                                <p className="text-xs text-gray-500">
+                                  Promote your restaurant for top placement
+                                </p>
+                              </div>
+                            </div>
+                            {!hasPromoted ? (
+                              <Button
+                                onClick={async () => {
+                                  // Determine billing cycle from premium subscription
+                                  const upgradeBillingCycle = subscription.plan_type === 'yearly' ? 'yearly' :
+                                                             subscription.plan_type === 'monthly' ? 'monthly' :
+                                                             subscription.restaurant_premium_plan === 'annual' ? 'yearly' :
+                                                             subscription.restaurant_premium_plan === 'monthly' ? 'monthly' : 'yearly';
+                                  setLoadingPortal(true);
+                                  try {
+                                    const res = await fetch('/api/partners/restaurants/upgrade', {
+                                      method: 'POST',
+                                      headers: { 'Content-Type': 'application/json' },
+                                      body: JSON.stringify({
+                                        userId: user.id,
+                                        subscriptionId: subscription.id,
+                                        promotedBillingCycle: upgradeBillingCycle,
+                                      }),
+                                    });
+                                    if (!res.ok) {
+                                      const errorData = await res.json().catch(() => ({ error: 'Network error' }));
+                                      throw new Error(errorData.error || `HTTP ${res.status}: ${res.statusText}`);
+                                    }
+                                    
+                                    const data = await res.json();
+                                    console.log('Restaurant upgrade response:', data);
+                                    
+                                    if (data.success) {
+                                      toast({
+                                        title: 'Upgrade successful!',
+                                        description: 'Promotion has been added to your subscription.',
+                                      });
+                                      setLoadingPortal(false);
+                                      // Refresh subscriptions
+                                      setTimeout(() => {
+                                        window.location.reload();
+                                      }, 1000);
+                                    } else if (data.requiresCheckout && data.checkoutUrl) {
+                                      // Redirect to Stripe checkout
+                                      console.log('Redirecting to checkout:', data.checkoutUrl);
+                                      window.location.href = data.checkoutUrl;
+                                    } else {
+                                      throw new Error(data.error || data.message || 'Failed to upgrade');
+                                    }
+                                  } catch (error) {
+                                    console.error('Restaurant upgrade error:', error);
+                                    toast({
+                                      title: 'Upgrade failed',
+                                      description: error.message || 'An unexpected error occurred. Please try again.',
+                                      variant: 'destructive',
+                                    });
+                                    setLoadingPortal(false);
+                                  }
+                                }}
+                                disabled={loadingPortal}
+                                className="bg-purple-600 hover:bg-purple-700 text-white"
+                                size="sm"
+                              >
+                                <Sparkles className="w-4 h-4 mr-1" />
+                                Promote Restaurant
+                              </Button>
+                            ) : (
+                              <p className="text-sm text-gray-600">Your restaurant is already promoted!</p>
+                            )}
+                          </div>
+                        )}
 
                         {/* Settings row - Show if has premium subscription OR promoted listing (both allow customization) */}
                         {(hasPremium || hasPromoted) && (

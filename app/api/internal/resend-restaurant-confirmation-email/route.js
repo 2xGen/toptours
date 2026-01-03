@@ -29,8 +29,8 @@ export async function POST(request) {
     // Find the subscription
     let query = supabase
       .from('restaurant_premium_subscriptions')
-      .select('*, restaurants:restaurant_id(name, slug, destination_id)')
-      .eq('status', 'active');
+      .select('*')
+      .in('status', ['active', 'pending_cancellation']);
 
     if (subscriptionId) {
       query = query.eq('id', subscriptionId);
