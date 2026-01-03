@@ -11,6 +11,10 @@ import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
 import RestaurantsListClient from './RestaurantsListClient';
 
+// Force dynamic rendering to ensure premium restaurant data is always fresh
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function generateMetadata({ params }) {
   const { id } = await params;
   const destination = destinations.find((d) => d.id === id);
