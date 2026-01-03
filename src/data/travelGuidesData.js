@@ -1085,7 +1085,8 @@ If your flight has been cancelled and you find yourself with extra time in Aruba
     wordCount: 1200,
     internalLinks: ['/destinations/aruba', '/destinations/aruba/restaurants', '/destinations/aruba/tours'],
     relatedDestination: '/destinations/aruba',
-    relatedDestinationLabel: 'Aruba'
+    relatedDestinationLabel: 'Aruba',
+    relatedPosts: ['best-time-to-visit-aruba', '3-day-aruba-itinerary', 'aruba-packing-list']
   }
 ];
 

@@ -11414,6 +11414,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
             </div>
 
             {/* Related Posts */}
+            {post.relatedPosts && post.relatedPosts.length > 0 && (
             <div className="mb-12">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Related Guides</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -11445,6 +11446,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                 })}
               </div>
             </div>
+            )}
 
             {/* CTA Section */}
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-white text-center">
