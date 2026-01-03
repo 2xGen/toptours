@@ -2064,53 +2064,6 @@ export default function ProfilePage() {
                             >
                               Billing
                             </Button>
-                            {hasPromoted && (
-                              <Button
-                                onClick={async () => {
-                                  if (!confirm('Are you sure you want to cancel the promoted listing? This will cancel only the promotion, not your premium subscription.')) {
-                                    return;
-                                  }
-                                  setLoadingPortal(true);
-                                  try {
-                                    const res = await fetch('/api/internal/restaurant-premium/cancel-promoted', {
-                                      method: 'POST',
-                                      headers: { 'Content-Type': 'application/json' },
-                                      body: JSON.stringify({
-                                        restaurantId: subscription.restaurant_id,
-                                        userId: user.id,
-                                        destinationId: subscription.destination_id,
-                                      }),
-                                    });
-                                    const data = await res.json();
-                                    if (data.success) {
-                                      toast({
-                                        title: 'Promoted listing cancelled',
-                                        description: data.message || 'Your promoted listing will be cancelled at the end of the billing period.',
-                                      });
-                                      setTimeout(() => {
-                                        window.location.reload();
-                                      }, 1000);
-                                    } else {
-                                      throw new Error(data.error || 'Failed to cancel promoted listing');
-                                    }
-                                  } catch (error) {
-                                    toast({
-                                      title: 'Error',
-                                      description: error.message,
-                                      variant: 'destructive',
-                                    });
-                                  } finally {
-                                    setLoadingPortal(false);
-                                  }
-                                }}
-                                disabled={loadingPortal}
-                                variant="outline"
-                                size="sm"
-                                className="text-red-600 border-red-300 hover:bg-red-50"
-                              >
-                                Cancel Promoted
-                              </Button>
-                            )}
                             <Button
                               onClick={async () => {
                                 setLoadingPortal(true);
@@ -2168,10 +2121,11 @@ export default function ProfilePage() {
                               <Button
                                 onClick={async () => {
                                   // Determine billing cycle from premium subscription
-                                  const upgradeBillingCycle = subscription.plan_type === 'yearly' ? 'yearly' :
+                                  // Convert to 'annual' or 'monthly' (not 'yearly')
+                                  const upgradeBillingCycle = subscription.plan_type === 'yearly' ? 'annual' :
                                                              subscription.plan_type === 'monthly' ? 'monthly' :
-                                                             subscription.restaurant_premium_plan === 'annual' ? 'yearly' :
-                                                             subscription.restaurant_premium_plan === 'monthly' ? 'monthly' : 'yearly';
+                                                             subscription.restaurant_premium_plan === 'annual' ? 'annual' :
+                                                             subscription.restaurant_premium_plan === 'monthly' ? 'monthly' : 'annual';
                                   setLoadingPortal(true);
                                   try {
                                     const res = await fetch('/api/partners/restaurants/upgrade', {
