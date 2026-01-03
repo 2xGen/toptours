@@ -59,6 +59,10 @@ const OLD_RESTAURANT_REDIRECTS = {
   },
 };
 
+// Force dynamic rendering to ensure premium restaurant features are always fresh
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function generateMetadata({ params }) {
   const { id: destinationId, restaurant: restaurantSlug } = await params;
   const destination = destinations.find((d) => d.id === destinationId);

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy, UtensilsCrossed, X, Save, Check, Sparkles, CheckCircle2, Loader2 } from 'lucide-react';
+import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy, UtensilsCrossed, X, Save, Check, Sparkles, CheckCircle2, Loader2, Mail } from 'lucide-react';
 import ConfirmDialog from '@/components/ui/ConfirmDialog';
 import { COLOR_SCHEMES, CTA_OPTIONS } from '@/lib/restaurantPremium';
 import { SUBSCRIPTION_PRICING } from '@/lib/promotionSystem';
@@ -2115,6 +2115,92 @@ export default function ProfilePage() {
                               size="sm"
                             >
                               Billing
+                            </Button>
+                            {hasPromoted && (
+                              <Button
+                                onClick={async () => {
+                                  if (!confirm('Are you sure you want to cancel the promoted listing? This will cancel only the promotion, not your premium subscription.')) {
+                                    return;
+                                  }
+                                  setLoadingPortal(true);
+                                  try {
+                                    const res = await fetch('/api/internal/restaurant-premium/cancel-promoted', {
+                                      method: 'POST',
+                                      headers: { 'Content-Type': 'application/json' },
+                                      body: JSON.stringify({
+                                        restaurantId: subscription.restaurant_id,
+                                        userId: user.id,
+                                        destinationId: subscription.destination_id,
+                                      }),
+                                    });
+                                    const data = await res.json();
+                                    if (data.success) {
+                                      toast({
+                                        title: 'Promoted listing cancelled',
+                                        description: data.message || 'Your promoted listing will be cancelled at the end of the billing period.',
+                                      });
+                                      setTimeout(() => {
+                                        window.location.reload();
+                                      }, 1000);
+                                    } else {
+                                      throw new Error(data.error || 'Failed to cancel promoted listing');
+                                    }
+                                  } catch (error) {
+                                    toast({
+                                      title: 'Error',
+                                      description: error.message,
+                                      variant: 'destructive',
+                                    });
+                                  } finally {
+                                    setLoadingPortal(false);
+                                  }
+                                }}
+                                disabled={loadingPortal}
+                                variant="outline"
+                                size="sm"
+                                className="text-red-600 border-red-300 hover:bg-red-50"
+                              >
+                                Cancel Promoted
+                              </Button>
+                            )}
+                            <Button
+                              onClick={async () => {
+                                setLoadingPortal(true);
+                                try {
+                                  const res = await fetch('/api/internal/resend-restaurant-confirmation-email', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({
+                                      subscriptionId: subscription.id,
+                                      restaurantId: subscription.restaurant_id,
+                                      userId: user.id,
+                                    }),
+                                  });
+                                  const data = await res.json();
+                                  if (data.success) {
+                                    toast({
+                                      title: 'Email sent',
+                                      description: 'Confirmation email has been sent to your email address.',
+                                    });
+                                  } else {
+                                    throw new Error(data.error || 'Failed to send email');
+                                  }
+                                } catch (error) {
+                                  toast({
+                                    title: 'Error',
+                                    description: error.message,
+                                    variant: 'destructive',
+                                  });
+                                } finally {
+                                  setLoadingPortal(false);
+                                }
+                              }}
+                              disabled={loadingPortal}
+                              variant="ghost"
+                              size="sm"
+                              title="Resend confirmation email"
+                            >
+                              <Mail className="w-4 h-4" />
                             </Button>
                             </div>
                         </div>
