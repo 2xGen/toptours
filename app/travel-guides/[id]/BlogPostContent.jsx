@@ -9226,160 +9226,414 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                     </>
                   ) : slug === 'aruba-flight-disruptions-venezuela-tensions' || slug === 'curacao-flight-disruptions-venezuela-tensions' || slug === 'bonaire-flight-disruptions-venezuela-tensions' || slug === 'sint-maarten-flight-disruptions-venezuela-tensions' ? (
                     <>
-                      <div className="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-500 rounded-lg p-6 mb-8">
-                        <div className="flex items-start">
-                          <div className="flex-shrink-0">
-                            <svg className="h-6 w-6 text-red-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                            </svg>
-                          </div>
-                          <div className="ml-3">
-                            <h3 className="text-lg font-semibold text-red-900 mb-2">Travel Alert</h3>
-                            <p className="text-sm text-red-800">
-                              <strong>Last updated:</strong> January 3, 2026 | 16:53 AST
-                            </p>
+                      {(slug === 'aruba-flight-disruptions-venezuela-tensions' || slug === 'curacao-flight-disruptions-venezuela-tensions' || slug === 'bonaire-flight-disruptions-venezuela-tensions' || slug === 'sint-maarten-flight-disruptions-venezuela-tensions') ? (
+                        <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-6 mb-8 shadow-sm">
+                          <div className="flex items-start">
+                            <div className="flex-shrink-0">
+                              <div className="bg-emerald-100 rounded-full p-2">
+                                <svg className="h-5 w-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="ml-4">
+                              <h3 className="text-lg font-semibold text-emerald-900 mb-2">Good News: Flights Resuming!</h3>
+                              <p className="text-sm text-emerald-800 mb-2">
+                                <strong>Last updated:</strong> Sunday, January 4, 2026 | 06:08 AST (GMT-4)
+                              </p>
+                              <p className="text-sm text-emerald-800">
+                                Air travel in the Caribbean and Puerto Rico resumes at midnight January 4, 2026. Airlines are updating schedules quickly.
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      ) : (
+                        <div className="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-500 rounded-lg p-6 mb-8">
+                          <div className="flex items-start">
+                            <div className="flex-shrink-0">
+                              <svg className="h-6 w-6 text-red-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                              </svg>
+                            </div>
+                            <div className="ml-3">
+                              <h3 className="text-lg font-semibold text-red-900 mb-2">Travel Alert</h3>
+                              <p className="text-sm text-red-800">
+                                <strong>Last updated:</strong> January 3, 2026 | 16:53 AST
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
 
                       <div 
                         className="prose prose-lg max-w-none"
                         dangerouslySetInnerHTML={{ 
                           __html: post.content
-                            .replace(/^### (.*$)/gim, '<h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">$1</h3>')
-                            .replace(/^## (.*$)/gim, '<h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">$1</h2>')
-                            .replace(/^# (.*$)/gim, '<h1 class="text-4xl font-bold text-gray-900 mb-6 mt-8">$1</h1>')
-                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-blue-600 hover:underline font-semibold">$1</a>')
-                            .replace(/^- (.*$)/gim, '<li class="ml-6 mb-2 text-gray-700">$1</li>')
-                            .replace(/^\* (.*$)/gim, '<li class="ml-6 mb-2 text-gray-700">$1</li>')
-                            .replace(/(<li[^>]*>.*?<\/li>\n?)+/g, (match) => '<ul class="list-disc mb-6 space-y-2">' + match + '</ul>')
+                            // Process headings first
+                            .replace(/^### (.*$)/gim, '<h3 class="text-2xl font-bold text-gray-900 mt-10 mb-5 pb-2 border-b border-gray-200">$1</h3>')
+                            .replace(/^## (.*$)/gim, '<h2 class="text-3xl font-bold text-gray-900 mt-14 mb-7 pb-3 border-b-2 border-gray-300">$1</h2>')
+                            .replace(/^# (.*$)/gim, '<h1 class="text-4xl font-bold text-gray-900 mb-8 mt-10 pb-4 border-b-2 border-gray-300">$1</h1>')
+                            // Process bold text with highlight
+                            .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-gray-900">$1</strong>')
+                            // Process links with icon
+                            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-blue-600 hover:text-blue-700 underline font-medium transition-colors inline-flex items-center gap-1"><span>$1</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>')
+                            // Process list items
+                            .replace(/^- (.*$)/gim, '<li class="ml-6 mb-3 text-gray-700 leading-relaxed flex items-start"><span class="text-blue-600 mr-3 mt-1.5 font-bold text-lg">▸</span><span>$1</span></li>')
+                            .replace(/^\* (.*$)/gim, '<li class="ml-6 mb-3 text-gray-700 leading-relaxed flex items-start"><span class="text-blue-600 mr-3 mt-1.5 font-bold text-lg">▸</span><span>$1</span></li>')
+                            // Wrap lists in styled containers
+                            .replace(/(<li[^>]*>.*?<\/li>\n?)+/g, (match) => '<ul class="list-none mb-8 space-y-3 bg-gray-50 border-l-4 border-blue-500 rounded-r-lg p-6 shadow-sm">' + match + '</ul>')
+                            // Split into paragraphs
                             .split(/\n\n+/)
                             .map(p => {
                               p = p.trim();
                               if (!p) return '';
                               if (p.startsWith('<')) return p;
-                              return `<p class="text-gray-700 leading-relaxed mb-4">${p}</p>`;
+                              // Check if it's a list item (already processed)
+                              if (p.includes('<li')) return p;
+                              // Check if it's a heading (already processed)
+                              if (p.startsWith('<h')) return p;
+                              // Check if paragraph starts with ✅
+                              if (p.startsWith('✅')) {
+                                const text = p.replace(/^✅\s*/, '');
+                                return `<div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-r-lg p-5 mb-6 shadow-sm"><p class="text-gray-800 leading-relaxed mb-0 text-lg flex items-start gap-3"><span class="text-emerald-600 font-bold text-xl flex-shrink-0">✓</span><span>${text}</span></p></div>`;
+                              }
+                              // Check if paragraph starts with **Rebooking Options:**
+                              if (p.includes('**Rebooking Options:**')) {
+                                return `<div class="bg-amber-50 border-l-4 border-amber-400 rounded-r-lg p-5 mb-6 shadow-sm"><p class="text-gray-800 leading-relaxed mb-0 text-lg font-semibold">${p}</p></div>`;
+                              }
+                              // Regular paragraphs with better styling
+                              return `<p class="text-gray-800 leading-relaxed mb-6 text-lg">${p}</p>`;
                             })
                             .join('\n')
+                            // Remove "Making the Most" section from content (we'll render it separately with buttons)
+                            .replace(/(<h2[^>]*>Making the Most of Your Time in (Aruba|Curaçao|Bonaire|Sint Maarten)<\/h2>)([\s\S]*?)(?=<h2|$)/g, '')
                         }}
                       />
 
-                      <div className="bg-gradient-to-r from-blue-50 to-teal-50 border border-blue-200 rounded-lg p-8 my-8">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                          Make the Most of Your Extended Stay in {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao' : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire' : 'Sint Maarten'}
-                        </h3>
-                        <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                          While flight disruptions can be frustrating, {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao' : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire' : 'Sint Maarten'} offers plenty of ways to make your extended stay enjoyable. The island's restaurants, tours, and activities remain fully operational, giving you more time to explore everything {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao' : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire' : 'Sint Maarten'} has to offer.
-                        </p>
-                        <div className="flex flex-wrap gap-4">
-                          {(slug === 'aruba-flight-disruptions-venezuela-tensions' || slug === 'curacao-flight-disruptions-venezuela-tensions') && (
-                            <>
+                      {slug === 'aruba-flight-disruptions-venezuela-tensions' && (
+                        <div className="bg-blue-50 border-l-4 border-blue-400 rounded-r-lg p-6 mb-8 shadow-sm">
+                          <h2 className="text-3xl font-bold text-gray-900 mt-14 mb-7 pb-3 border-b-2 border-gray-300">Making the Most of Your Time in Aruba</h2>
+                          <p className="text-gray-800 leading-relaxed mb-6 text-lg">
+                            Whether you're waiting for your rescheduled flight or planning your visit, Aruba offers incredible experiences to enjoy. Here's how to make the most of your time on the island:
+                          </p>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div className="bg-amber-50 border border-amber-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Discover Aruba's Best Restaurants</h3>
+                              <p className="text-gray-700 mb-4">From beachfront dining to local Caribbean cuisine, Aruba's restaurant scene is thriving.</p>
                               <Button 
                                 asChild
-                                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-base font-semibold"
+                                className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
                               >
-                                <Link href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "/destinations/aruba/restaurants" : "/destinations/curacao/restaurants"}>
-                                  Find Restaurants in {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : 'Curaçao'} →
-                                </Link>
+                                <Link href="/destinations/aruba/restaurants">Find Restaurants in Aruba →</Link>
                               </Button>
+                            </div>
+                            
+                            <div className="bg-teal-50 border border-teal-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Explore Tours & Activities</h3>
+                              <p className="text-gray-700 mb-4">Aruba is packed with amazing tours and activities for every interest.</p>
                               <Button 
                                 asChild
-                                className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 text-base font-semibold"
+                                className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
                               >
-                                <Link href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "/destinations/aruba/tours" : "/destinations/curacao/tours"}>
-                                  Explore Tours & Activities →
-                                </Link>
+                                <Link href="/destinations/aruba/tours">Explore Tours & Activities →</Link>
                               </Button>
+                            </div>
+                            
+                            <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Plan Your Perfect Aruba Experience</h3>
+                              <p className="text-gray-700 mb-4">Let our AI help you discover tours tailored to your preferences.</p>
                               <Button 
                                 asChild
-                                variant="outline"
-                                className="border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 text-base font-semibold"
+                                className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
                               >
-                                <Link href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "/destinations/aruba" : "/destinations/curacao"}>
-                                  View {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : 'Curaçao'} Destination Guide →
-                                </Link>
+                                <Link href="/match-your-style">Match Your Style →</Link>
                               </Button>
-                            </>
-                          )}
-                          {slug === 'bonaire-flight-disruptions-venezuela-tensions' && (
-                            <>
+                            </div>
+                            
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Explore Aruba's Destination Guide</h3>
+                              <p className="text-gray-700 mb-4">Get comprehensive information about Aruba, including the best time to visit.</p>
                               <Button 
                                 asChild
-                                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-base font-semibold"
+                                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
                               >
-                                <Link href="/destinations/bonaire/restaurants">
-                                  Find Restaurants in Bonaire →
-                                </Link>
+                                <Link href="/destinations/aruba">View Aruba Destination Guide →</Link>
                               </Button>
-                              <Button 
-                                asChild
-                                className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 text-base font-semibold"
-                              >
-                                <Link href="/destinations/bonaire/tours">
-                                  Explore Tours & Activities →
-                                </Link>
-                              </Button>
-                              <Button 
-                                asChild
-                                variant="outline"
-                                className="border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 text-base font-semibold"
-                              >
-                                <Link href="/destinations/bonaire">
-                                  View Bonaire Destination Guide →
-                                </Link>
-                              </Button>
-                            </>
-                          )}
-                          {slug === 'sint-maarten-flight-disruptions-venezuela-tensions' && (
-                            <>
-                              <Button 
-                                asChild
-                                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-base font-semibold"
-                              >
-                                <Link href="/destinations/st-martin/restaurants">
-                                  Find Restaurants in St. Martin →
-                                </Link>
-                              </Button>
-                              <Button 
-                                asChild
-                                className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 text-base font-semibold"
-                              >
-                                <Link href="/destinations/st-martin/tours">
-                                  Explore Tours & Activities →
-                                </Link>
-                              </Button>
-                              <Button 
-                                asChild
-                                variant="outline"
-                                className="border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 text-base font-semibold"
-                              >
-                                <Link href="/destinations/st-martin">
-                                  View St. Martin Destination Guide →
-                                </Link>
-                              </Button>
-                            </>
-                          )}
+                            </div>
+                          </div>
+                          
                         </div>
-                      </div>
+                      )}
 
-                      <div className="bg-gradient-to-r from-gray-50 to-slate-50 border border-gray-200 rounded-lg p-8 my-8">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Live Flight Status</h3>
-                        <p className="text-gray-700 leading-relaxed mb-4">
+                      {slug === 'curacao-flight-disruptions-venezuela-tensions' && (
+                        <div className="bg-blue-50 border-l-4 border-blue-400 rounded-r-lg p-6 mb-8 shadow-sm">
+                          <h2 className="text-3xl font-bold text-gray-900 mt-14 mb-7 pb-3 border-b-2 border-gray-300">Making the Most of Your Time in Curaçao</h2>
+                          <p className="text-gray-800 leading-relaxed mb-6 text-lg">
+                            Whether you're waiting for your rescheduled flight or planning your visit, Curaçao offers incredible experiences to enjoy. Here's how to make the most of your time on the island:
+                          </p>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div className="bg-amber-50 border border-amber-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Discover Curaçao's Best Restaurants</h3>
+                              <p className="text-gray-700 mb-4">From waterfront dining to local Caribbean cuisine, Curaçao's restaurant scene is thriving.</p>
+                              <Button 
+                                asChild
+                                className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                              >
+                                <Link href="/destinations/curacao/restaurants">Find Restaurants in Curaçao →</Link>
+                              </Button>
+                            </div>
+                            
+                            <div className="bg-teal-50 border border-teal-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Explore Tours & Activities</h3>
+                              <p className="text-gray-700 mb-4">Curaçao is packed with amazing tours and activities for every interest.</p>
+                              <Button 
+                                asChild
+                                className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                              >
+                                <Link href="/destinations/curacao/tours">Explore Tours & Activities →</Link>
+                              </Button>
+                            </div>
+                            
+                            <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Plan Your Perfect Curaçao Experience</h3>
+                              <p className="text-gray-700 mb-4">Let our AI help you discover tours tailored to your preferences.</p>
+                              <Button 
+                                asChild
+                                className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                              >
+                                <Link href="/match-your-style">Match Your Style →</Link>
+                              </Button>
+                            </div>
+                            
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Explore Curaçao's Destination Guide</h3>
+                              <p className="text-gray-700 mb-4">Get comprehensive information about Curaçao, including the best time to visit.</p>
+                              <Button 
+                                asChild
+                                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                              >
+                                <Link href="/destinations/curacao">View Curaçao Destination Guide →</Link>
+                              </Button>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      )}
+
+                      {(slug === 'aruba-flight-disruptions-venezuela-tensions' || slug === 'curacao-flight-disruptions-venezuela-tensions' || slug === 'bonaire-flight-disruptions-venezuela-tensions' || slug === 'sint-maarten-flight-disruptions-venezuela-tensions') && (
+                        <div className="bg-slate-50 border border-slate-200 rounded-xl p-8 my-8 shadow-sm">
+                          <div className="flex items-center gap-3 mb-4">
+                            <div className="bg-indigo-100 rounded-lg p-2">
+                              <svg className="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                              </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold text-gray-900">
+                              Find Tours That Match Your Travel Style
+                            </h3>
+                          </div>
+                          <p className="text-gray-700 leading-relaxed mb-6 pl-12">
+                            Not sure what activities in {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao' : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire' : 'Sint Maarten'} are right for you? Let our AI help you discover the perfect tours and experiences tailored to your interests, travel style, and preferences.
+                          </p>
+                          <div className="pl-12">
+                            <Button 
+                              asChild
+                              className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 text-base font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                            >
+                              <Link href="/match-your-style">
+                                Match Your Style →
+                              </Link>
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+
+                      {(slug === 'aruba-flight-disruptions-venezuela-tensions' || slug === 'curacao-flight-disruptions-venezuela-tensions') && (
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-8 my-8 shadow-sm">
+                          <div className="flex items-center gap-3 mb-4">
+                            <div className="bg-blue-100 rounded-lg p-2">
+                              <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                              </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold text-gray-900">
+                              {slug === 'aruba-flight-disruptions-venezuela-tensions' 
+                                ? 'Explore Aruba While You Wait or Plan Your Visit' 
+                                : 'Making the Most of Your Time in Curaçao'}
+                            </h3>
+                          </div>
+                          <p className="text-gray-700 leading-relaxed mb-6 pl-12">
+                            {slug === 'aruba-flight-disruptions-venezuela-tensions' 
+                              ? 'Whether you\'re waiting for your rescheduled flight or planning your Aruba visit, the island offers incredible experiences to enjoy. Aruba\'s restaurants, tours, and activities are fully operational and ready to welcome you.'
+                              : 'Whether you\'re waiting for your rescheduled flight or planning your visit, Curaçao offers incredible experiences to enjoy. Here\'s how to make the most of your time on the island:'}
+                          </p>
+                          <div className="flex flex-wrap gap-3 pl-12">
+                            <Button 
+                              asChild
+                              className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 text-base font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                            >
+                              <Link href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "/destinations/aruba/restaurants" : "/destinations/curacao/restaurants"}>
+                                Find Restaurants in {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : 'Curaçao'} →
+                              </Link>
+                            </Button>
+                            <Button 
+                              asChild
+                              className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 text-base font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                            >
+                              <Link href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "/destinations/aruba/tours" : "/destinations/curacao/tours"}>
+                                Explore Tours & Activities →
+                              </Link>
+                            </Button>
+                            <Button 
+                              asChild
+                              className="bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 text-base font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+                            >
+                              <Link href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "/destinations/aruba" : "/destinations/curacao"}>
+                                View {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : 'Curaçao'} Destination Guide →
+                              </Link>
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+
+                      {slug === 'bonaire-flight-disruptions-venezuela-tensions' && (
+                        <div className="bg-blue-50 border-l-4 border-blue-400 rounded-r-lg p-6 mb-8 shadow-sm">
+                          <h2 className="text-3xl font-bold text-gray-900 mt-14 mb-7 pb-3 border-b-2 border-gray-300">Making the Most of Your Time in Bonaire</h2>
+                          <p className="text-gray-800 leading-relaxed mb-6 text-lg">
+                            Whether you're waiting for your rescheduled flight or planning your visit, Bonaire offers incredible experiences to enjoy. Here's how to make the most of your time on the island:
+                          </p>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div className="bg-amber-50 border border-amber-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Discover Restaurants in Bonaire</h3>
+                              <p className="text-gray-700 mb-4">Explore Bonaire's vibrant restaurant scene and local Caribbean cuisine.</p>
+                              <Button 
+                                asChild
+                                className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                              >
+                                <Link href="/destinations/bonaire/restaurants">Find Restaurants in Bonaire →</Link>
+                              </Button>
+                            </div>
+                            
+                            <div className="bg-teal-50 border border-teal-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Explore Tours & Activities</h3>
+                              <p className="text-gray-700 mb-4">Discover amazing tours and activities in Bonaire, from diving to nature tours.</p>
+                              <Button 
+                                asChild
+                                className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                              >
+                                <Link href="/destinations/bonaire/tours">Explore Tours & Activities →</Link>
+                              </Button>
+                            </div>
+                            
+                            <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Plan Your Perfect Experience</h3>
+                              <p className="text-gray-700 mb-4">Let our AI help you discover tours tailored to your preferences.</p>
+                              <Button 
+                                asChild
+                                className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                              >
+                                <Link href="/match-your-style">Match Your Style →</Link>
+                              </Button>
+                            </div>
+                            
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Explore Bonaire's Destination Guide</h3>
+                              <p className="text-gray-700 mb-4">Get comprehensive information about Bonaire, including the best time to visit.</p>
+                              <Button 
+                                asChild
+                                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                              >
+                                <Link href="/destinations/bonaire">View Bonaire Destination Guide →</Link>
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {slug === 'sint-maarten-flight-disruptions-venezuela-tensions' && (
+                        <div className="bg-blue-50 border-l-4 border-blue-400 rounded-r-lg p-6 mb-8 shadow-sm">
+                          <h2 className="text-3xl font-bold text-gray-900 mt-14 mb-7 pb-3 border-b-2 border-gray-300">Making the Most of Your Time in Sint Maarten</h2>
+                          <p className="text-gray-800 leading-relaxed mb-6 text-lg">
+                            Whether you're waiting for your rescheduled flight or planning your visit, Sint Maarten offers incredible experiences to enjoy. Here's how to make the most of your time on the island:
+                          </p>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div className="bg-amber-50 border border-amber-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Discover Restaurants in St. Martin</h3>
+                              <p className="text-gray-700 mb-4">Explore St. Martin's vibrant restaurant scene on both the Dutch and French sides.</p>
+                              <Button 
+                                asChild
+                                className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                              >
+                                <Link href="/destinations/st-martin/restaurants">Find Restaurants in St. Martin →</Link>
+                              </Button>
+                            </div>
+                            
+                            <div className="bg-teal-50 border border-teal-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Explore Tours & Activities</h3>
+                              <p className="text-gray-700 mb-4">Discover amazing tours and activities in St. Martin, from beaches to water sports.</p>
+                              <Button 
+                                asChild
+                                className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                              >
+                                <Link href="/destinations/st-martin/tours">Explore Tours & Activities →</Link>
+                              </Button>
+                            </div>
+                            
+                            <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Plan Your Perfect Experience</h3>
+                              <p className="text-gray-700 mb-4">Let our AI help you discover tours tailored to your preferences.</p>
+                              <Button 
+                                asChild
+                                className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                              >
+                                <Link href="/match-your-style">Match Your Style →</Link>
+                              </Button>
+                            </div>
+                            
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 shadow-sm">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Explore St. Martin's Destination Guide</h3>
+                              <p className="text-gray-700 mb-4">Get comprehensive information about St. Martin, including the best time to visit.</p>
+                              <Button 
+                                asChild
+                                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                              >
+                                <Link href="/destinations/st-martin">View St. Martin Destination Guide →</Link>
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="bg-slate-50 border border-slate-200 rounded-xl p-8 my-8 shadow-sm">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="bg-slate-100 rounded-lg p-2">
+                            <svg className="h-6 w-6 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                          <h3 className="text-2xl font-bold text-gray-900">Live Flight Status</h3>
+                        </div>
+                        <p className="text-gray-700 leading-relaxed mb-6 pl-12">
                           For the most up-to-date flight information, check the official {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao' : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire' : 'Sint Maarten'} Airport departure board:
                         </p>
-                        <Button 
-                          asChild
-                          className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 text-base font-semibold"
-                        >
-                          <a 
-                            href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "https://www.airportaruba.com/live-departure-times" : slug === 'curacao-flight-disruptions-venezuela-tensions' ? "https://curacao-airport.com/flights/" : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? "https://bonaireinternationalairport.com/flight-information/departures/" : "https://www.sxmairport.com/flights-info.php"} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
+                        <div className="pl-12">
+                          <Button 
+                            asChild
+                            className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-3 text-base font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
                           >
-                            View Live {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao' : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire' : 'Sint Maarten'} Departure Times →
-                          </a>
-                        </Button>
+                            <a 
+                              href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "https://www.airportaruba.com/live-departure-times" : slug === 'curacao-flight-disruptions-venezuela-tensions' ? "https://curacao-airport.com/flights/" : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? "https://bonaireinternationalairport.com/flight-information/departures/" : "https://www.sxmairport.com/flights-info.php"} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                            >
+                              View Live {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : slug === 'curacao-flight-disruptions-venezuela-tensions' ? 'Curaçao' : slug === 'bonaire-flight-disruptions-venezuela-tensions' ? 'Bonaire' : 'Sint Maarten'} Departure Times →
+                            </a>
+                          </Button>
+                        </div>
                       </div>
                     </>
                   ) : post?.content ? (() => {
