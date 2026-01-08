@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import TourDetailClient from './TourDetailClient';
 import { getTourEnrichment, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
+import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
 import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName } from '@/lib/viatorCache';
 import { getTourPromotionScore } from '@/lib/promotionSystem';
 import { getRestaurantCountsByDestination, getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
@@ -12,6 +13,7 @@ import { getViatorDestinationById } from '@/lib/supabaseCache';
 import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds, getOperatorAggregatedStats } from '@/lib/tourOperatorPremiumServer';
 import { generateTourSlug } from '@/utils/tourHelpers';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
+import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
 
 /**
  * Generate metadata for tour detail page
@@ -69,9 +71,18 @@ export async function generateMetadata({ params }) {
       await cacheTour(productId, tour);
     }
     const tourEnrichment = await getTourEnrichment(productId);
-    const title = tour.title || 'Tour';
-    const baseDescription = tour.description?.summary || tour.description?.shortDescription || `Book ${title} and discover amazing experiences.`;
-    const description = tourEnrichment?.ai_summary ? cleanText(tourEnrichment.ai_summary).slice(0, 300) : baseDescription;
+    
+    // Extract destination name from tour for metadata
+    let destinationNameForMeta = null;
+    if (Array.isArray(tour.destinations) && tour.destinations.length > 0) {
+      const primary = tour.destinations.find(d => d.primary) || tour.destinations[0];
+      destinationNameForMeta = primary.destinationName || primary.name || null;
+    }
+    
+    // Build enhanced title and description
+    const title = buildEnhancedTitle(tour, { destinationName: destinationNameForMeta }, tourEnrichment);
+    const description = buildEnhancedMetaDescription(tour, { destinationName: destinationNameForMeta }, tourEnrichment);
+    
     const imageVariants = tour.images?.[0]?.variants || [];
     const fallbackImage =
       tour.images?.[1]?.variants?.[3]?.url ||
@@ -84,26 +95,27 @@ export async function generateMetadata({ params }) {
     const image = tourEnrichment?.custom_og_image_url || fallbackImage;
 
     // Generate canonical URL with slug for SEO (prevents duplicate content issues)
-    const slug = generateTourSlug(title);
+    const tourTitle = tour.title || 'Tour';
+    const slug = generateTourSlug(tourTitle);
     const canonicalUrl = slug ? `https://www.toptours.ai/tours/${productId}/${slug}` : `https://www.toptours.ai/tours/${productId}`;
 
     return {
-      title: `${title} | TopTours.ai`,
-      description: description.substring(0, 160),
+      title: title,
+      description: description,
       alternates: {
         canonical: canonicalUrl,
       },
       openGraph: {
-        title: `${title} | TopTours.ai`,
-        description: description.substring(0, 160),
+        title: title,
+        description: description,
         images: image ? [image] : [],
         type: 'website',
         url: canonicalUrl,
       },
       twitter: {
         card: 'summary_large_image',
-        title: `${title} | TopTours.ai`,
-        description: description.substring(0, 160),
+        title: title,
+        description: description,
         images: image ? [image] : [],
       },
     };
@@ -1027,6 +1039,19 @@ export default async function TourDetailPage({ params }) {
       restaurants = [];
     }
 
+    // Generate FAQs for SEO and user value
+    let faqs = [];
+    let faqSchema = null;
+    try {
+      faqs = await generateTourFAQs(tour, destinationData, productId);
+      if (faqs && faqs.length > 0) {
+        faqSchema = generateFAQSchema(faqs);
+      }
+    } catch (error) {
+      console.error('Error generating FAQs:', error);
+      // Continue without FAQs - not critical
+    }
+
     // Generate breadcrumb schema for SEO
     const breadcrumbSchema = {
       "@context": "https://schema.org",
@@ -1082,6 +1107,15 @@ export default async function TourDetailPage({ params }) {
             __html: JSON.stringify(breadcrumbSchema)
           }}
         />
+        {/* FAQPage Schema for SEO */}
+        {faqSchema && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(faqSchema)
+            }}
+          />
+        )}
         <Suspense fallback={
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
@@ -1102,6 +1136,7 @@ export default async function TourDetailPage({ params }) {
           operatorPremiumData={operatorPremiumData}
           operatorTours={operatorTours}
           categoryGuides={categoryGuides}
+          faqs={faqs}
         />
       </Suspense>
       </>

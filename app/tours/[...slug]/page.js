@@ -5,6 +5,8 @@ import { destinations as siteDestinations } from '@/data/destinationsData';
 import { slugToViatorId, viatorRefToSlug } from '@/data/viatorDestinationMap';
 import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds, getOperatorAggregatedStats } from '@/lib/tourOperatorPremiumServer';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
+import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
+import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
 
 /**
  * Generate metadata for tour detail page
@@ -53,31 +55,40 @@ export async function generateMetadata({ params }) {
         description: 'The tour you are looking for could not be found.'
       };
     }
-    const title = tour.title || 'Tour';
-    const operatorName =
-      tour?.supplier?.name ||
-      tour?.supplierName ||
-      tour?.operator?.name ||
-      tour?.vendor?.name ||
-      tour?.partner?.name ||
-      '';
-    const metaTitle = operatorName ? `${operatorName} – ${title}` : title;
-    const description = tour.description?.summary || tour.description?.shortDescription || `Book ${title} and discover amazing experiences.`;
+    // Extract destination name from tour for metadata
+    let destinationNameForMeta = null;
+    if (Array.isArray(tour.destinations) && tour.destinations.length > 0) {
+      const primary = tour.destinations.find(d => d.primary) || tour.destinations[0];
+      destinationNameForMeta = primary.destinationName || primary.name || null;
+    }
+    
+    // Get enrichment for enhanced meta description (optional, don't block on error)
+    let enrichment = null;
+    try {
+      enrichment = await getTourEnrichment(productId);
+    } catch (error) {
+      // Non-critical, continue without enrichment
+      console.warn('Could not fetch enrichment for metadata:', error);
+    }
+    
+    // Build enhanced title and description
+    const title = buildEnhancedTitle(tour, { destinationName: destinationNameForMeta }, enrichment);
+    const description = buildEnhancedMetaDescription(tour, { destinationName: destinationNameForMeta }, enrichment);
     const image = tour.images?.[0]?.variants?.[3]?.url || tour.images?.[0]?.variants?.[0]?.url || '';
 
     return {
-      title: metaTitle,
-      description: description.substring(0, 160),
+      title: title,
+      description: description,
       openGraph: {
-        title: metaTitle,
-        description: description.substring(0, 160),
+        title: title,
+        description: description,
         images: image ? [image] : [],
         type: 'website',
       },
       twitter: {
         card: 'summary_large_image',
-        title: metaTitle,
-        description: description.substring(0, 160),
+        title: title,
+        description: description,
         images: image ? [image] : [],
       },
     };
@@ -824,6 +835,26 @@ export default async function TourDetailPage({ params }) {
       })),
     };
 
+    // Generate FAQs for SEO and user value
+    let faqs = [];
+    let faqSchema = null;
+    try {
+      console.log(`🔍 [FAQ] Generating FAQs for tour ${productId}...`);
+      console.log(`🔍 [FAQ] Destination data:`, destinationData);
+      faqs = await generateTourFAQs(tour, destinationData, productId);
+      console.log(`✅ [FAQ] Generated ${faqs?.length || 0} FAQs for tour ${productId}`);
+      if (faqs && faqs.length > 0) {
+        faqSchema = generateFAQSchema(faqs);
+        console.log(`✅ [FAQ] FAQ schema generated`);
+      } else {
+        console.warn(`⚠️ [FAQ] No FAQs generated for tour ${productId}`);
+      }
+    } catch (error) {
+      console.error('❌ [FAQ] Error generating FAQs:', error);
+      console.error('❌ [FAQ] Error stack:', error.stack);
+      // Continue without FAQs - not critical
+    }
+
     return (
       <>
         <script
@@ -834,6 +865,13 @@ export default async function TourDetailPage({ params }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
+        {/* FAQPage Schema for SEO */}
+        {faqSchema && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+          />
+        )}
         <TourDetailClient
           tour={tour}
           similarTours={similarTours}
@@ -844,6 +882,7 @@ export default async function TourDetailPage({ params }) {
           operatorTours={operatorTours}
           destinationData={destinationData}
           categoryGuides={categoryGuides}
+          faqs={faqs}
         />
       </>
     );

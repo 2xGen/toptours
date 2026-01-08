@@ -48,7 +48,7 @@ import {
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { resolveUserPreferences } from '@/lib/preferenceResolution';
 
-export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [] }) {
+export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], faqs = [] }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   
@@ -58,7 +58,9 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     console.log('🔍 TourDetailClient - destinationData:', destinationData);
     console.log('🔍 TourDetailClient - categoryGuides.length:', categoryGuides?.length);
     console.log('🔍 TourDetailClient - destinationData?.slug:', destinationData?.slug);
-  }, [categoryGuides, destinationData]);
+    console.log('🔍 TourDetailClient - faqs:', faqs);
+    console.log('🔍 TourDetailClient - faqs.length:', faqs?.length);
+  }, [categoryGuides, destinationData, faqs]);
   
   // Client-side redirect fallback: if we're on /tours/[productId] without slug, redirect to slugged version
   useEffect(() => {
@@ -2534,6 +2536,41 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   tour={tour} 
                   destination={destination}
                 />
+              )}
+
+              {/* Frequently Asked Questions */}
+              {faqs && faqs.length > 0 && (
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.65 }}
+                  className="bg-white rounded-lg shadow-sm p-6 md:p-8"
+                >
+                  <div className="mb-6">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
+                    <p className="text-gray-600 text-sm">
+                      Common questions about {tour.title || 'this tour'}
+                      {derivedDestinationName ? ` in ${derivedDestinationName}` : ''}
+                    </p>
+                  </div>
+                  <div className="space-y-4">
+                    {faqs.map((faq, index) => (
+                      <details
+                        key={index}
+                        className="group border border-gray-200 rounded-lg overflow-hidden hover:border-purple-300 transition-colors"
+                      >
+                        <summary className="px-5 py-4 cursor-pointer bg-gray-50 hover:bg-purple-50 transition-colors flex items-center justify-between">
+                          <span className="font-semibold text-gray-900 pr-4">{faq.question}</span>
+                          <ArrowRight className="w-5 h-5 text-gray-400 group-open:rotate-90 transition-transform flex-shrink-0" />
+                        </summary>
+                        <div className="px-5 py-4 bg-white border-t border-gray-200">
+                          <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </motion.section>
               )}
 
               {/* Rating Breakdown */}
