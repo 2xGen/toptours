@@ -1103,10 +1103,25 @@ export default async function TourDetailPage({ params }) {
     // Fetch reviews (lazy loading on page visit)
     // Enable in development, Vercel preview deployments, or when explicitly enabled
     // Vercel sets VERCEL_ENV to 'preview' for preview deployments
+    // Also check VERCEL (boolean) and NEXT_PUBLIC_VERCEL_ENV
     let reviews = null;
     const isPreviewMode = process.env.ENABLE_REVIEW_SNIPPETS === 'true' || 
                           process.env.NODE_ENV === 'development' ||
-                          process.env.VERCEL_ENV === 'preview';
+                          process.env.VERCEL_ENV === 'preview' ||
+                          process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview' ||
+                          (process.env.VERCEL === '1' && process.env.VERCEL_ENV !== 'production');
+    
+    // Debug logging for preview mode detection
+    if (process.env.NODE_ENV !== 'production' || process.env.VERCEL_ENV === 'preview') {
+      console.log(`🔍 [PREVIEW MODE] Detection:`, {
+        ENABLE_REVIEW_SNIPPETS: process.env.ENABLE_REVIEW_SNIPPETS,
+        NODE_ENV: process.env.NODE_ENV,
+        VERCEL_ENV: process.env.VERCEL_ENV,
+        NEXT_PUBLIC_VERCEL_ENV: process.env.NEXT_PUBLIC_VERCEL_ENV,
+        VERCEL: process.env.VERCEL,
+        isPreviewMode
+      });
+    }
     
     if (isPreviewMode) {
       try {
