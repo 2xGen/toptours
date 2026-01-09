@@ -3721,7 +3721,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
           matchScore={matchScore}
           travelers={sharedTravelers}
           setTravelers={setSharedTravelers}
-          setTravelers={setSharedTravelers}
         />
       )}
 
