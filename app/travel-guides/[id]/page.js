@@ -34,6 +34,8 @@ export async function generateMetadata({ params }) {
       type: 'article',
       publishedTime: guide.publishDate,
       authors: [guide.author],
+      siteName: 'TopTours.ai',
+      locale: 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
@@ -43,6 +45,17 @@ export async function generateMetadata({ params }) {
     },
     alternates: {
       canonical: `https://toptours.ai/travel-guides/${guide.id}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }

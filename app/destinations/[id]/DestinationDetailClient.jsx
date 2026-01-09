@@ -2196,7 +2196,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
 
         {/* FAQ Section - Scalable template-based approach */}
-        {(safeDestination.bestTimeToVisit || safeDestination.gettingAround || safeDestination.whyVisit?.length > 0) && (
+        {(safeDestination.bestTimeToVisit || safeDestination.gettingAround || safeDestination.whyVisit?.length > 0 || (safeDestination.highlights && safeDestination.highlights.length > 0) || (safeDestination.tourCategories && safeDestination.tourCategories.length > 0) || (categoryGuidesProp && categoryGuidesProp.length > 0)) && (
           <section className="py-12 bg-gray-50">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
@@ -2268,6 +2268,74 @@ export default function DestinationDetailClient({ destination, promotionScores =
                             );
                           })}
                         </div>
+                      </CardContent>
+                    </Card>
+                  )}
+
+                  {/* Popular Tours Question with Category Guides */}
+                  {categoryGuidesProp && categoryGuidesProp.length > 0 && (
+                    <Card className="border-gray-200">
+                      <CardContent className="p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          What are the most popular tours in {safeDestination.fullName}?
+                        </h3>
+                        <p className="text-gray-700 mb-4">
+                          Discover the top-rated tour categories in {safeDestination.fullName} with our comprehensive guides:
+                        </p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                          {categoryGuidesProp.slice(0, 6).map((guide) => {
+                            const categoryName = guide.category_name || guide.title || '';
+                            const categorySlug = guide.category_slug || '';
+                            const normalizedSlug = normalizeSlug(categorySlug);
+                            const guideUrl = `/destinations/${safeDestination.id}/guides/${normalizedSlug}`;
+                            
+                            return (
+                              <Link
+                                key={categorySlug}
+                                href={guideUrl}
+                                className="group"
+                              >
+                                <div className="border border-gray-200 rounded-lg p-3 hover:border-blue-300 hover:shadow-md transition-all duration-200 bg-white">
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <BookOpen className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                    <h4 className="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-1">
+                                      {guide.title || categoryName}
+                                    </h4>
+                                  </div>
+                                  {guide.subtitle && (
+                                    <p className="text-xs text-gray-600 line-clamp-2 mt-1">
+                                      {guide.subtitle}
+                                    </p>
+                                  )}
+                                </div>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                        <div className="mt-4">
+                          <Link href={`/destinations/${safeDestination.id}/tours`}>
+                            <Button variant="outline" size="sm" className="text-blue-600 border-blue-300 hover:bg-blue-50">
+                              View All Tours in {safeDestination.fullName}
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
+                          </Link>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  )}
+
+                  {/* Must-See Attractions Question */}
+                  {safeDestination.highlights && safeDestination.highlights.length > 0 && (
+                    <Card className="border-gray-200">
+                      <CardContent className="p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          What are the must-see attractions in {safeDestination.fullName}?
+                        </h3>
+                        <ul className="list-disc list-inside space-y-2 text-gray-700">
+                          {safeDestination.highlights.map((highlight, index) => (
+                            <li key={index}>{highlight}</li>
+                          ))}
+                        </ul>
                       </CardContent>
                     </Card>
                   )}

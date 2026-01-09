@@ -100,7 +100,7 @@ export async function generateMetadata({ params }) {
     // Generate canonical URL with slug for SEO (prevents duplicate content issues)
     const tourTitle = tour.title || 'Tour';
     const slug = generateTourSlug(tourTitle);
-    const canonicalUrl = slug ? `https://www.toptours.ai/tours/${productId}/${slug}` : `https://www.toptours.ai/tours/${productId}`;
+    const canonicalUrl = slug ? `https://toptours.ai/tours/${productId}/${slug}` : `https://toptours.ai/tours/${productId}`;
 
     return {
       title: title,
@@ -114,12 +114,25 @@ export async function generateMetadata({ params }) {
         images: image ? [image] : [],
         type: 'website',
         url: canonicalUrl,
+        siteName: 'TopTours.ai',
+        locale: 'en_US',
       },
       twitter: {
         card: 'summary_large_image',
         title: title,
         description: description,
         images: image ? [image] : [],
+      },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          'max-video-preview': -1,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
+        },
       },
     };
   } catch (error) {

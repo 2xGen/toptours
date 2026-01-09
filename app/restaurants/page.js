@@ -3,15 +3,19 @@ import { getRestaurantCountsByDestination } from '@/lib/restaurants';
 import RestaurantsHubClient from './RestaurantsHubClient';
 
 export async function generateMetadata() {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://toptours.ai';
+  
   return {
     title: 'Best Restaurants by Destination | TopTours.ai',
     description: 'Discover top-rated restaurants in popular travel destinations. Browse restaurants by location and find the perfect dining experience for your trip.',
     alternates: {
-      canonical: '/restaurants',
+      canonical: `${baseUrl}/restaurants`,
     },
     openGraph: {
       title: 'Best Restaurants by Destination',
       description: 'Find the best restaurants in your favorite travel destinations.',
+      url: `${baseUrl}/restaurants`,
+      siteName: 'TopTours.ai',
       images: [
         {
           url: 'https://toptours.ai/OG%20Images/Browse%20through%20more%20then%2050000%20restaurants%20globally.jpg',
@@ -20,6 +24,25 @@ export async function generateMetadata() {
           alt: 'Best Restaurants by Destination',
         },
       ],
+      type: 'website',
+      locale: 'en_US',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Best Restaurants by Destination',
+      description: 'Find the best restaurants in your favorite travel destinations.',
+      images: ['https://toptours.ai/OG%20Images/Browse%20through%20more%20then%2050000%20restaurants%20globally.jpg'],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }

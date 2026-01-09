@@ -73,6 +73,17 @@ export async function generateMetadata({ params }) {
         description,
         images: [ogImage],
       },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          'max-video-preview': -1,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
+        },
+      },
     };
   }
 
@@ -80,36 +91,47 @@ export async function generateMetadata({ params }) {
   const ogImage = destination.imageUrl || defaultOgImage;
   const description = `Discover trusted tour operators in ${destination.fullName}. Browse operators offering tours and activities with instant booking and free cancellation.`;
 
-  return {
-    title: `Tour Operators in ${destination.fullName} | TopTours.ai`,
-    description,
-    keywords: `tour operators ${destination.fullName}, ${destination.fullName} tour companies, ${destination.fullName} tour providers`,
-    alternates: {
-      canonical: `https://toptours.ai/destinations/${destination.id}/operators`,
-    },
-    openGraph: {
-      title: `Tour Operators in ${destination.fullName}`,
+    return {
+      title: `Tour Operators in ${destination.fullName} | TopTours.ai`,
       description,
-      url: `https://toptours.ai/destinations/${destination.id}/operators`,
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: `Tour Operators in ${destination.fullName}`,
+      keywords: `tour operators ${destination.fullName}, ${destination.fullName} tour companies, ${destination.fullName} tour providers`,
+      alternates: {
+        canonical: `https://toptours.ai/destinations/${destination.id}/operators`,
+      },
+      openGraph: {
+        title: `Tour Operators in ${destination.fullName}`,
+        description,
+        url: `https://toptours.ai/destinations/${destination.id}/operators`,
+        images: [
+          {
+            url: ogImage,
+            width: 1200,
+            height: 630,
+            alt: `Tour Operators in ${destination.fullName}`,
+          },
+        ],
+        type: 'website',
+        siteName: 'TopTours.ai',
+        locale: 'en_US',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: `Tour Operators in ${destination.fullName}`,
+        description,
+        images: [ogImage],
+      },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          'max-video-preview': -1,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
         },
-      ],
-      type: 'website',
-      siteName: 'TopTours.ai',
-      locale: 'en_US',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `Tour Operators in ${destination.fullName}`,
-      description,
-      images: [ogImage],
-    },
-  };
+      },
+    };
 }
 
 export default async function OperatorsListingPage({ params }) {

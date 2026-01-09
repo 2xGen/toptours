@@ -79,20 +79,42 @@ export async function generateMetadata({ params }) {
     const description = buildEnhancedMetaDescription(tour, { destinationName: destinationNameForMeta }, enrichment);
     const image = tour.images?.[0]?.variants?.[3]?.url || tour.images?.[0]?.variants?.[0]?.url || '';
 
+    // Generate canonical URL
+    const tourTitle = tour.title || 'Tour';
+    const tourSlug = tour.slug || (tourTitle ? tourTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') : '');
+    const canonicalUrl = tourSlug ? `https://toptours.ai/tours/${productId}/${tourSlug}` : `https://toptours.ai/tours/${productId}`;
+
     return {
       title: title,
       description: description,
+      alternates: {
+        canonical: canonicalUrl,
+      },
       openGraph: {
         title: title,
         description: description,
         images: image ? [image] : [],
         type: 'website',
+        url: canonicalUrl,
+        siteName: 'TopTours.ai',
+        locale: 'en_US',
       },
       twitter: {
         card: 'summary_large_image',
         title: title,
         description: description,
         images: image ? [image] : [],
+      },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          'max-video-preview': -1,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
+        },
       },
     };
   } catch (error) {

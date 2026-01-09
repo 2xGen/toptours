@@ -184,6 +184,8 @@ export async function generateMetadata({ params }) {
         },
       ],
       type: 'website',
+      siteName: 'TopTours.ai',
+      locale: 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
@@ -193,6 +195,17 @@ export async function generateMetadata({ params }) {
     },
     alternates: {
       canonical: `https://toptours.ai/destinations/${id}/tours`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }

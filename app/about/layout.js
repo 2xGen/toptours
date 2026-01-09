@@ -27,6 +27,17 @@ export const metadata = {
   alternates: {
     canonical: 'https://toptours.ai/about',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function AboutLayout({ children }) {

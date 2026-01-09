@@ -249,32 +249,43 @@ export async function generateMetadata({ params }) {
       title: seo.title || guideData.title,
       description: seo.description || guideData.subtitle,
       keywords: seo.keywords || '',
-    openGraph: {
-      title: seo.title || guideData.title,
-      description: seo.description || guideData.subtitle,
-      url: `https://toptours.ai/destinations/${destinationId}/guides/${categorySlug}`,
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: `${guideData.title} - ${destination.fullName || destination.name}`,
+      openGraph: {
+        title: seo.title || guideData.title,
+        description: seo.description || guideData.subtitle,
+        url: `https://toptours.ai/destinations/${destinationId}/guides/${categorySlug}`,
+        images: [
+          {
+            url: ogImage,
+            width: 1200,
+            height: 630,
+            alt: `${guideData.title} - ${destination.fullName || destination.name}`,
+          },
+        ],
+        type: 'article',
+        siteName: 'TopTours.ai',
+        locale: 'en_US',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: seo.title || guideData.title,
+        description: seo.description || guideData.subtitle,
+        images: [ogImage],
+      },
+      alternates: {
+        canonical: `https://toptours.ai/destinations/${destinationId}/guides/${categorySlug}`,
+      },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          'max-video-preview': -1,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
         },
-      ],
-      type: 'article',
-      siteName: 'TopTours.ai',
-      locale: 'en_US',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: seo.title || guideData.title,
-      description: seo.description || guideData.subtitle,
-      images: [ogImage],
-    },
-    alternates: {
-      canonical: `https://toptours.ai/destinations/${destinationId}/guides/${categorySlug}`,
-    },
-  };
+      },
+    };
   } catch (error) {
     console.error('Error in generateMetadata:', error);
     return {

@@ -72,6 +72,17 @@ export async function generateMetadata({ params }) {
         alternates: {
           canonical: `https://toptours.ai/destinations/${id}`,
         },
+        robots: {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+          },
+        },
       };
     }
     
@@ -113,6 +124,17 @@ export async function generateMetadata({ params }) {
     },
     alternates: {
       canonical: `https://toptours.ai/destinations/${destination.id}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }
@@ -731,6 +753,130 @@ export default async function DestinationDetailPage({ params }) {
           }}
         />
       )}
+      
+      {/* FAQPage Schema */}
+      {(() => {
+        // Build FAQ questions array
+        const faqQuestions = [];
+        
+        // Best time to visit
+        if (destination.bestTimeToVisit?.weather) {
+          let answerText = destination.bestTimeToVisit.weather;
+          if (destination.bestTimeToVisit.bestMonths) {
+            answerText += ` ${destination.bestTimeToVisit.bestMonths}`;
+          }
+          if (destination.bestTimeToVisit.peakSeason) {
+            answerText += ` Peak season: ${destination.bestTimeToVisit.peakSeason}.`;
+          }
+          if (destination.bestTimeToVisit.offSeason) {
+            answerText += ` Off season: ${destination.bestTimeToVisit.offSeason}.`;
+          }
+          
+          faqQuestions.push({
+            "@type": "Question",
+            "name": `What is the best time to visit ${destination.fullName}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": answerText
+            }
+          });
+        }
+        
+        // Getting around
+        if (destination.gettingAround) {
+          faqQuestions.push({
+            "@type": "Question",
+            "name": `How do I get around ${destination.fullName}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": destination.gettingAround
+            }
+          });
+        }
+        
+        // Why visit
+        if (destination.whyVisit && destination.whyVisit.length > 0) {
+          const whyVisitText = destination.whyVisit.slice(0, 3).join(' ');
+          faqQuestions.push({
+            "@type": "Question",
+            "name": `Why should I visit ${destination.fullName}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": whyVisitText
+            }
+          });
+        }
+        
+        // Must-see attractions
+        if (destination.highlights && destination.highlights.length > 0) {
+          const highlightsText = destination.highlights.map(h => `• ${h}`).join(' ');
+          faqQuestions.push({
+            "@type": "Question",
+            "name": `What are the must-see attractions in ${destination.fullName}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": highlightsText
+            }
+          });
+        }
+        
+        // Tour types available
+        if (destination.tourCategories && destination.tourCategories.length > 0) {
+          const categoryNames = destination.tourCategories
+            .slice(0, 4)
+            .map(cat => typeof cat === 'string' ? cat : cat.name)
+            .filter(Boolean);
+          
+          if (categoryNames.length > 0) {
+            faqQuestions.push({
+              "@type": "Question",
+              "name": `What types of tours are available in ${destination.fullName}?`,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": `${destination.fullName} offers a variety of tour experiences including: ${categoryNames.join(', ')}.`
+              }
+            });
+          }
+        }
+        
+        // Popular tours (from category guides)
+        if (categoryGuides && categoryGuides.length > 0) {
+          const popularToursText = categoryGuides
+            .slice(0, 6)
+            .map(guide => guide.title || guide.category_name || '')
+            .filter(Boolean)
+            .join(', ');
+          
+          if (popularToursText) {
+            faqQuestions.push({
+              "@type": "Question",
+              "name": `What are the most popular tours in ${destination.fullName}?`,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": `The most popular tours in ${destination.fullName} include: ${popularToursText}. Discover comprehensive guides for each tour category to plan your perfect trip.`
+              }
+            });
+          }
+        }
+        
+        // Only render schema if we have at least one question
+        if (faqQuestions.length > 0) {
+          return (
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "mainEntity": faqQuestions
+                }, null, 2)
+              }}
+            />
+          );
+        }
+        
+        return null;
+      })()}
       
       <ErrorBoundary>
         <DestinationDetailClient 

@@ -230,49 +230,71 @@ function StickyPriceBar({ tour, pricing, pricingPerAgeBand = null, viatorUrl, ma
             )}
           </div>
 
-          {/* Mobile: Show price + travelers selector */}
+          {/* Mobile: Show dynamic price (estimated total) when travelers > 0, or base price if group pricing */}
           <div className="md:hidden flex items-center gap-3 flex-shrink-0">
-            <div className="flex-shrink-0">
-              <div className="text-base font-bold text-gray-900 whitespace-nowrap">
-                From ${fromPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            {isGroupPricing ? (
+              // Group pricing: show fixed price
+              <div className="flex-shrink-0">
+                <div className="text-base font-bold text-gray-900 whitespace-nowrap">
+                  From ${fromPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                </div>
+                <div className="text-xs text-gray-600">group</div>
               </div>
-              <div className="text-xs text-gray-600">
-                {isGroupPricing ? 'group' : 'per person'}
-              </div>
-            </div>
-            
-            {/* Travelers Selector - Mobile only, compact */}
-            {!isGroupPricing && validAgeBands.length > 0 && (
-              <div className="flex items-center gap-1.5 flex-shrink-0">
-                {(() => {
-                  const adultBand = validAgeBands.find(b => b.ageBand === 'ADULT') || validAgeBands[0];
-                  if (!adultBand) return null;
-                  
-                  const count = travelers && typeof travelers === 'object' ? (travelers[adultBand.ageBand] || 0) : 0;
-                  const min = adultBand.minTravelersPerBooking || 0;
-                  const max = adultBand.maxTravelersPerBooking || 9;
-
-                  return (
-                    <div className="flex items-center gap-1 px-1.5 py-0.5 border border-gray-200 rounded bg-gray-50">
-                      <button
-                        onClick={() => updateTravelers(adultBand.ageBand, -1)}
-                        disabled={count <= min}
-                        className="w-5 h-5 rounded border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-xs leading-none"
-                      >
-                        −
-                      </button>
-                      <span className="w-5 text-center font-semibold text-gray-900 text-xs">{count}</span>
-                      <button
-                        onClick={() => updateTravelers(adultBand.ageBand, 1)}
-                        disabled={count >= max}
-                        className="w-5 h-5 rounded border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-xs leading-none"
-                      >
-                        +
-                      </button>
+            ) : (
+              // Per person pricing: show dynamic estimated total if travelers > 0, otherwise base price
+              <>
+                {totalTravelers > 0 && estimatedTotal > 0 ? (
+                  <div className="flex-shrink-0">
+                    <div className="text-base font-bold text-gray-900 whitespace-nowrap">
+                      ${estimatedTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </div>
-                  );
-                })()}
-              </div>
+                    <div className="text-xs text-gray-600">
+                      {totalTravelers} {totalTravelers === 1 ? 'person' : 'people'}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex-shrink-0">
+                    <div className="text-base font-bold text-gray-900 whitespace-nowrap">
+                      From ${fromPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    </div>
+                    <div className="text-xs text-gray-600">per person</div>
+                  </div>
+                )}
+                
+                {/* Travelers Selector - Mobile only, compact */}
+                {validAgeBands.length > 0 && (
+                  <div className="flex items-center gap-1.5 flex-shrink-0">
+                    {(() => {
+                      const adultBand = validAgeBands.find(b => b.ageBand === 'ADULT') || validAgeBands[0];
+                      if (!adultBand) return null;
+                      
+                      const count = travelers && typeof travelers === 'object' ? (travelers[adultBand.ageBand] || 0) : 0;
+                      const min = adultBand.minTravelersPerBooking || 0;
+                      const max = adultBand.maxTravelersPerBooking || 9;
+
+                      return (
+                        <div className="flex items-center gap-1 px-1.5 py-0.5 border border-gray-200 rounded bg-gray-50">
+                          <button
+                            onClick={() => updateTravelers(adultBand.ageBand, -1)}
+                            disabled={count <= min}
+                            className="w-5 h-5 rounded border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-xs leading-none"
+                          >
+                            −
+                          </button>
+                          <span className="w-5 text-center font-semibold text-gray-900 text-xs">{count}</span>
+                          <button
+                            onClick={() => updateTravelers(adultBand.ageBand, 1)}
+                            disabled={count >= max}
+                            className="w-5 h-5 rounded border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-xs leading-none"
+                          >
+                            +
+                          </button>
+                        </div>
+                      );
+                    })()}
+                  </div>
+                )}
+              </>
             )}
           </div>
 

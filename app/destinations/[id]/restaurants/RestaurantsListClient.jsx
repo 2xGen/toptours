@@ -423,9 +423,6 @@ export default function RestaurantsListClient({ destination, restaurants, promot
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
 
-  const zanzibarRestaurant = restaurants.find((restaurant) => restaurant.slug === 'zanzibar-beach-restaurant-curacao');
-  const heroTourText = `Pair dinner at ${zanzibarRestaurant?.shortName || zanzibarRestaurant?.name || destination.fullName} with these top-rated experiences in ${destination.fullName}.`;
-
   // Breadcrumb schema is injected server-side in `app/destinations/[id]/restaurants/page.jsx`
 
   const formatCategorySlug = (categoryName) =>
@@ -441,11 +438,6 @@ export default function RestaurantsListClient({ destination, restaurants, promot
       .replace(/'/g, '')
       .replace(/\./g, '')
       .replace(/\s+/g, '-');
-
-  const curatedTourCategories = (Array.isArray(destination.tourCategories) ? destination.tourCategories : [])
-    .map((category) => (typeof category === 'string' ? { name: category } : category))
-    .filter((category) => category?.name)
-    .slice(0, 6);
 
   // Price range mapping
   const priceRangeMap = {
@@ -558,11 +550,25 @@ export default function RestaurantsListClient({ destination, restaurants, promot
     return filtered;
   }, [restaurants, sortBy, maxPrice, searchTerm, selectedCuisine, restaurantMatchById, promotedRestaurants]);
 
+  // Normalize slug: convert special characters to ASCII (e.g., "banús" -> "banus")
+  const normalizeSlug = (slug) => {
+    if (!slug) return '';
+    return String(slug)
+      .toLowerCase()
+      .trim()
+      .normalize('NFD') // Decompose characters (ú -> u + combining mark)
+      .replace(/[\u0300-\u036f]/g, '') // Remove combining diacritical marks
+      .replace(/[^\w\s-]/g, '') // Remove any remaining special characters
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+      .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+  };
+
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <NavigationNext onOpenModal={handleOpenModal} />
 
-      <div className="min-h-screen pt-16 overflow-x-hidden bg-gradient-to-b from-blue-50 via-white to-white">
+      <div className="flex-1 pt-16 overflow-x-hidden bg-gradient-to-b from-blue-50 via-white to-white">
         {/* Hero */}
         <section
           className="relative py-20 sm:py-24 md:py-28 overflow-hidden -mt-12 sm:-mt-16 ocean-gradient"
@@ -1284,30 +1290,6 @@ export default function RestaurantsListClient({ destination, restaurants, promot
           </div>
         </section>
 
-        {/* Related guides replaced with tours */}
-        <section className="py-12 sm:py-16 bg-gray-50">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900 mb-6">
-              Popular Tours in {destination.fullName}
-            </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto mb-8">
-              {heroTourText}
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {curatedTourCategories.map((category) => (
-                <Link
-                  key={category.name}
-                  href={`/destinations/${destination.id}/guides/${formatCategorySlug(category.name)}`}
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-full bg-white border border-blue-200 text-blue-600 hover:bg-blue-50"
-                >
-                  {category.name}
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* CTA block */}
         <section className="py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -1327,6 +1309,96 @@ export default function RestaurantsListClient({ destination, restaurants, promot
             </div>
           </div>
         </section>
+
+        {/* Related Travel Guides Section - Same style as destination detail page */}
+        {categoryGuides && categoryGuides.length > 0 && (
+          <section className="py-12 bg-white border-t">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="mb-8"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <BookOpen className="w-6 h-6 text-blue-600" />
+                  <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900">
+                    Related Travel Guides for {destination.fullName || destination.name}
+                  </h2>
+                </div>
+                <p className="text-gray-600 mb-6">
+                  Explore comprehensive guides to plan your perfect trip, including food tours, cultural experiences, and more.
+                </p>
+                
+                {/* All category guides in a grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                  {categoryGuides.slice(0, 6).map((guide) => {
+                    const categoryName = guide.category_name || guide.title || '';
+                    const categorySlug = guide.category_slug || '';
+                    // Normalize slug to handle special characters (e.g., "banús" -> "banus")
+                    const normalizedSlug = normalizeSlug(categorySlug);
+                    const guideUrl = `/destinations/${destination.id}/guides/${normalizedSlug}`;
+                    
+                    // Determine icon based on category name
+                    const isFoodRelated = categoryName.toLowerCase().includes('food') || 
+                                        categoryName.toLowerCase().includes('culinary') || 
+                                        categoryName.toLowerCase().includes('tapas') || 
+                                        categoryName.toLowerCase().includes('tasting') ||
+                                        categoryName.toLowerCase().includes('restaurant');
+                    const Icon = isFoodRelated ? UtensilsCrossed : MapPin;
+                    const iconColor = isFoodRelated ? 'text-orange-600' : 'text-blue-600';
+                  
+                    return (
+                      <Link
+                        key={categorySlug}
+                        href={guideUrl}
+                        className="group"
+                      >
+                        <Card className="h-full border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
+                          <CardContent className="p-5">
+                            <div className="flex items-center gap-3 mb-3">
+                              <Icon className={`w-5 h-5 ${iconColor}`} />
+                              <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                {destination.fullName || destination.name} {guide.title || categoryName}
+                              </h3>
+                            </div>
+                            {guide.subtitle && (
+                              <p className="text-sm text-gray-600 mb-3">
+                                {guide.subtitle}
+                              </p>
+                            )}
+                            {!guide.subtitle && (
+                              <p className="text-sm text-gray-600 mb-3">
+                                {isFoodRelated 
+                                  ? `Discover the best ${categoryName.toLowerCase()} experiences in ${destination.fullName || destination.name}.`
+                                  : `Explore ${categoryName.toLowerCase()} in ${destination.fullName || destination.name}.`
+                                }
+                              </p>
+                            )}
+                            <div className="flex items-center text-blue-600 text-sm font-medium group-hover:gap-2 transition-all">
+                              Read Guide
+                              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    );
+                  })}
+                </div>
+                
+                <div className="text-center">
+                  <Button asChild variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                    <Link href={`/destinations/${destination.id}`}>
+                      View All {destination.fullName || destination.name} Guides
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+        )}
       </div>
 
       <FooterNext />
@@ -1356,57 +1428,6 @@ export default function RestaurantsListClient({ destination, restaurants, promot
             </Link>
           </div>
         </div>
-      )}
-
-      {/* Category Guides Section - Same style as destination detail page */}
-      {categoryGuides && categoryGuides.length > 0 && (
-        <section className="py-12 sm:py-16 bg-white overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-8 sm:mb-12"
-            >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
-                Popular Category Guides in {destination.fullName || destination.name}
-              </h2>
-              <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-                Explore detailed guides for popular tour categories in {destination.fullName || destination.name}
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {categoryGuides.slice(0, 6).map((guide, index) => {
-                const categoryName = guide.category_name || guide.title || '';
-                const categorySlug = guide.category_slug || '';
-                
-                return (
-                  <motion.div
-                    key={categorySlug || index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <Link href={`/destinations/${destination.id}/guides/${categorySlug}`}>
-                      <Card className="bg-gradient-to-br from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 border-2 border-purple-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer h-full">
-                        <CardContent className="p-6 text-center flex flex-col items-center justify-center min-h-[120px]">
-                          <BookOpen className="w-5 h-5 text-purple-600 mb-2" />
-                          <h3 className="font-poppins font-semibold text-gray-800 text-sm md:text-base mb-1">
-                            {categoryName}
-                          </h3>
-                          <p className="text-xs text-purple-600 font-medium">Read Guide</p>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
       )}
 
       {/* Restaurant Match Modal */}
@@ -1667,6 +1688,6 @@ export default function RestaurantsListClient({ destination, restaurants, promot
         }}
         destination={destination}
       />
-    </>
+    </div>
   );
 }
