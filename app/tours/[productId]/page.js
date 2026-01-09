@@ -1101,29 +1101,12 @@ export default async function TourDetailPage({ params }) {
     }
 
     // Fetch reviews (lazy loading on page visit)
-    // Enable in development, Vercel preview deployments, or when explicitly enabled
-    // Vercel sets VERCEL_ENV to 'preview' for preview deployments
-    // Also check VERCEL (boolean) and NEXT_PUBLIC_VERCEL_ENV
+    // Only enable for specific Viator test tours
+    const viatorTestTourIds = ['446074P1', '103020P7'];
+    const isViatorTestTour = viatorTestTourIds.includes(productId);
+    
     let reviews = null;
-    const isPreviewMode = process.env.ENABLE_REVIEW_SNIPPETS === 'true' || 
-                          process.env.NODE_ENV === 'development' ||
-                          process.env.VERCEL_ENV === 'preview' ||
-                          process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview' ||
-                          (process.env.VERCEL === '1' && process.env.VERCEL_ENV !== 'production');
-    
-    // Debug logging for preview mode detection
-    if (process.env.NODE_ENV !== 'production' || process.env.VERCEL_ENV === 'preview') {
-      console.log(`🔍 [PREVIEW MODE] Detection:`, {
-        ENABLE_REVIEW_SNIPPETS: process.env.ENABLE_REVIEW_SNIPPETS,
-        NODE_ENV: process.env.NODE_ENV,
-        VERCEL_ENV: process.env.VERCEL_ENV,
-        NEXT_PUBLIC_VERCEL_ENV: process.env.NEXT_PUBLIC_VERCEL_ENV,
-        VERCEL: process.env.VERCEL,
-        isPreviewMode
-      });
-    }
-    
-    if (isPreviewMode) {
+    if (isViatorTestTour) {
       try {
         const currentReviewCount = tour.reviews?.totalReviews || 0;
         console.log(`🔍 [REVIEWS] Fetching reviews for tour ${productId} (count: ${currentReviewCount})...`);
@@ -1136,8 +1119,9 @@ export default async function TourDetailPage({ params }) {
     }
 
     // Fetch recommended tours using recommendations API
+    // Only enable for specific Viator test tours
     let recommendedTours = [];
-    if (isPreviewMode) {
+    if (isViatorTestTour) {
       try {
         console.log(`🔍 [RECOMMENDATIONS] Fetching recommendations for tour ${productId}...`);
         const recommendedProductCodes = await fetchProductRecommendations(productId);

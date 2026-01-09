@@ -146,8 +146,8 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, travelers: exter
     >
       <div className="container mx-auto px-4 py-3 max-w-6xl">
         <div className="flex items-center justify-between gap-4">
-          {/* Left: Rating + Match Score + Price */}
-          <div className="flex items-center gap-6 flex-shrink-0">
+          {/* Left: Rating + Match Score + Price (hidden on mobile, show on tablet+) */}
+          <div className="hidden md:flex items-center gap-6 flex-shrink-0">
             {/* Rating/Reviews (show if available) */}
             {hasRating && (
               <div className="flex items-center gap-1.5 px-2 py-1 bg-yellow-50 border border-yellow-200 rounded-lg">
@@ -217,6 +217,52 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, travelers: exter
             )}
           </div>
 
+          {/* Mobile: Show price + travelers selector */}
+          <div className="md:hidden flex items-center gap-3 flex-shrink-0">
+            <div className="flex-shrink-0">
+              <div className="text-base font-bold text-gray-900 whitespace-nowrap">
+                From ${fromPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              </div>
+              <div className="text-xs text-gray-600">
+                {isGroupPricing ? 'group' : 'per person'}
+              </div>
+            </div>
+            
+            {/* Travelers Selector - Mobile only, compact */}
+            {!isGroupPricing && validAgeBands.length > 0 && (
+              <div className="flex items-center gap-1.5 flex-shrink-0">
+                {(() => {
+                  const adultBand = validAgeBands.find(b => b.ageBand === 'ADULT') || validAgeBands[0];
+                  if (!adultBand) return null;
+                  
+                  const count = travelers && typeof travelers === 'object' ? (travelers[adultBand.ageBand] || 0) : 0;
+                  const min = adultBand.minTravelersPerBooking || 0;
+                  const max = adultBand.maxTravelersPerBooking || 9;
+
+                  return (
+                    <div className="flex items-center gap-1 px-1.5 py-0.5 border border-gray-200 rounded bg-gray-50">
+                      <button
+                        onClick={() => updateTravelers(adultBand.ageBand, -1)}
+                        disabled={count <= min}
+                        className="w-5 h-5 rounded border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-xs leading-none"
+                      >
+                        −
+                      </button>
+                      <span className="w-5 text-center font-semibold text-gray-900 text-xs">{count}</span>
+                      <button
+                        onClick={() => updateTravelers(adultBand.ageBand, 1)}
+                        disabled={count >= max}
+                        className="w-5 h-5 rounded border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-xs leading-none"
+                      >
+                        +
+                      </button>
+                    </div>
+                  );
+                })()}
+              </div>
+            )}
+          </div>
+
           {/* Right: Estimated Total & CTA */}
           <div className="flex items-center gap-6 flex-shrink-0">
             {/* Estimated Total */}
@@ -229,11 +275,11 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, travelers: exter
               </div>
             )}
 
-            {/* CTA Button - Extra Wide, aligned right */}
+            {/* CTA Button - Smaller on mobile to fit travelers selector, full width on desktop */}
             <Button
               asChild
               size="lg"
-              className="bg-[#00AA6C] hover:bg-[#008855] text-white font-semibold px-10 py-3 whitespace-nowrap text-base md:text-lg min-w-[280px]"
+              className="bg-[#00AA6C] hover:bg-[#008855] text-white font-semibold px-4 md:px-10 py-2.5 md:py-3 whitespace-nowrap text-sm md:text-lg flex-shrink-0 md:min-w-[280px]"
             >
               <a
                 href={viatorUrl}
