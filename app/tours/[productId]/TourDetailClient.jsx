@@ -22,6 +22,7 @@ import {
   Share2,
   Crown,
   Sparkles,
+  Users,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -39,6 +40,8 @@ import { useBookmarks } from '@/hooks/useBookmarks';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import ShareModal from '@/components/sharing/ShareModal';
 import { PromoteTourOperatorBanner } from '@/components/tour/PromoteTourOperatorBanner';
+import ReviewSnippets from '@/components/tours/ReviewSnippets';
+import PriceCalculator from '@/components/tours/PriceCalculator';
 import { 
   calculateTourProfile, 
   getUserPreferenceScores, 
@@ -48,7 +51,208 @@ import {
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { resolveUserPreferences } from '@/lib/preferenceResolution';
 
-export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], faqs = [] }) {
+// Sticky Price Bar Component - Smart: Shows match score if available, otherwise shows rating/reviews
+function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, travelers: externalTravelers = undefined, setTravelers: externalSetTravelers = undefined }) {
+  const pricingInfo = tour?.pricingInfo;
+  const ageBands = pricingInfo?.ageBands || [];
+  const pricingType = pricingInfo?.type || 'PER_PERSON';
+  const isGroupPricing = pricingType === 'UNIT';
+
+  // Filter valid age bands (exclude TRAVELER and weird ranges)
+  const validAgeBands = ageBands.filter(band => {
+    if (band.ageBand === 'TRAVELER') return false;
+    const endAge = band.endAge || 99;
+    const startAge = band.startAge || 0;
+    return (endAge - startAge) <= 50 && endAge < 100;
+  });
+
+  // Get base price
+  const fromPrice = pricing || tour?.pricing?.summary?.fromPrice || tour?.pricingInfo?.fromPrice || tour?.pricing?.fromPrice || tour?.price || 0;
+
+  // Get rating and review data for Option 3 (Value-focused)
+  const rating = tour?.reviews?.combinedAverageRating || tour?.reviews?.averageRating || 0;
+  const reviewCount = tour?.reviews?.totalReviews || tour?.reviews?.totalCount || 0;
+  const hasRating = rating > 0 && reviewCount > 0;
+
+  // Get match score for Option 2 (Personalized)
+  // matchScore can have: score, matchScore, matchPercentage, or percentage
+  const matchPercentage = matchScore?.matchScore || matchScore?.score || matchScore?.matchPercentage || matchScore?.percentage || null;
+  const hasMatchScore = matchPercentage !== null && matchPercentage > 0;
+
+  // Use shared travelers state if provided, otherwise use local state
+  const [localTravelers, setLocalTravelers] = useState(() => {
+    if (isGroupPricing) return {};
+    const initial = {};
+    validAgeBands.forEach((band) => {
+      initial[band.ageBand] = band.ageBand === 'ADULT' ? 1 : 0;
+    });
+    return initial;
+  });
+
+  // Use external travelers if provided (for synchronization), otherwise use local
+  const travelers = externalTravelers !== undefined ? externalTravelers : localTravelers;
+  const setTravelers = externalSetTravelers || setLocalTravelers;
+
+  // Calculate total travelers
+  const totalTravelers = useMemo(() => {
+    const total = Object.values(travelers || {}).reduce((sum, count) => sum + (count || 0), 0);
+    return total;
+  }, [travelers]);
+
+  // Calculate estimated total
+  const estimatedTotal = useMemo(() => {
+    if (isGroupPricing) return fromPrice;
+    if (totalTravelers === 0) return 0;
+    return fromPrice * totalTravelers;
+  }, [fromPrice, totalTravelers, isGroupPricing]);
+
+  // Update travelers
+  const updateTravelers = (ageBand, delta) => {
+    setTravelers((prev) => {
+      const current = prev[ageBand] || 0;
+      const band = validAgeBands.find((b) => b.ageBand === ageBand);
+      if (!band) return prev;
+      const newCount = Math.max(
+        band.minTravelersPerBooking || 0,
+        Math.min(band.maxTravelersPerBooking || 9, current + delta)
+      );
+      return { ...prev, [ageBand]: newCount };
+    });
+  };
+
+  // Get age range text
+  const getAgeRangeText = (band) => {
+    const startAge = band.startAge || 0;
+    const endAge = band.endAge || 99;
+    if (endAge >= 100) return `${startAge}+ years`;
+    if (band.ageBand === 'ADULT' && startAge >= 16 && endAge >= 99) return '16+ years';
+    return `${startAge}-${endAge} years`;
+  };
+
+  const getAgeBandLabel = (ageBand) => {
+    const labels = { INFANT: 'Infant', CHILD: 'Child', ADULT: 'Adult' };
+    return labels[ageBand] || ageBand;
+  };
+
+  // Only show if we have price
+  if (!fromPrice || fromPrice === 0) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 100 }}
+      className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-2xl"
+    >
+      <div className="container mx-auto px-4 py-3 max-w-6xl">
+        <div className="flex items-center justify-between gap-4">
+          {/* Left: Rating + Match Score + Price */}
+          <div className="flex items-center gap-6 flex-shrink-0">
+            {/* Rating/Reviews (show if available) */}
+            {hasRating && (
+              <div className="flex items-center gap-1.5 px-2 py-1 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <span className="text-xs font-semibold text-yellow-700">
+                  {rating.toFixed(1)}★
+                </span>
+                <span className="text-xs text-gray-600">
+                  {reviewCount > 1000 ? `${(reviewCount / 1000).toFixed(1)}k` : reviewCount.toLocaleString()}
+                </span>
+              </div>
+            )}
+            
+            {/* AI Match Score (show if available) */}
+            {hasMatchScore && (
+              <div className="flex items-center gap-1.5 px-2 py-1 bg-purple-50 border border-purple-200 rounded-lg">
+                <span className="text-xs font-semibold text-purple-700">
+                  {Math.round(matchPercentage)}% Match
+                </span>
+              </div>
+            )}
+
+            {/* Base Price */}
+            <div className="flex-shrink-0">
+              <div className="text-sm md:text-base font-bold text-gray-900 whitespace-nowrap">
+                From ${fromPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              </div>
+              <div className="text-xs text-gray-600">
+                {isGroupPricing ? 'group' : 'per person'}
+              </div>
+            </div>
+
+            {/* Travelers Selector - Ultra compact, only show Adult by default */}
+            {!isGroupPricing && validAgeBands.length > 0 && (
+              <div className="flex items-center gap-1.5 flex-shrink-0">
+                {/* Only show Adult age band in sticky bar to save space */}
+                {(() => {
+                  const adultBand = validAgeBands.find(b => b.ageBand === 'ADULT') || validAgeBands[0];
+                  if (!adultBand) return null;
+                  
+                  // Get count from travelers object - ensure we're reading from the correct state
+                  // The travelers object should have keys like 'ADULT', 'CHILD', 'INFANT', etc.
+                  const count = travelers && typeof travelers === 'object' ? (travelers[adultBand.ageBand] || 0) : 0;
+                  const min = adultBand.minTravelersPerBooking || 0;
+                  const max = adultBand.maxTravelersPerBooking || 9;
+
+                  return (
+                    <div className="flex items-center gap-1 px-1.5 py-0.5 border border-gray-200 rounded bg-gray-50">
+                      <button
+                        onClick={() => updateTravelers(adultBand.ageBand, -1)}
+                        disabled={count <= min}
+                        className="w-5 h-5 rounded border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-xs leading-none"
+                      >
+                        −
+                      </button>
+                      <span className="w-5 text-center font-semibold text-gray-900 text-xs">{count}</span>
+                      <button
+                        onClick={() => updateTravelers(adultBand.ageBand, 1)}
+                        disabled={count >= max}
+                        className="w-5 h-5 rounded border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-xs leading-none"
+                      >
+                        +
+                      </button>
+                    </div>
+                  );
+                })()}
+              </div>
+            )}
+          </div>
+
+          {/* Right: Estimated Total & CTA */}
+          <div className="flex items-center gap-6 flex-shrink-0">
+            {/* Estimated Total */}
+            {!isGroupPricing && totalTravelers > 0 && estimatedTotal > 0 && (
+              <div className="text-right hidden lg:block flex-shrink-0">
+                <div className="text-xs text-gray-600">Est. Total:</div>
+                <div className="text-sm md:text-base font-bold text-gray-900">
+                  ${estimatedTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                </div>
+              </div>
+            )}
+
+            {/* CTA Button - Extra Wide, aligned right */}
+            <Button
+              asChild
+              size="lg"
+              className="bg-[#00AA6C] hover:bg-[#008855] text-white font-semibold px-10 py-3 whitespace-nowrap text-base md:text-lg min-w-[280px]"
+            >
+              <a
+                href={viatorUrl}
+                target="_blank"
+                rel="sponsored noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full"
+              >
+                Check Availability
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], faqs = [], reviews = null, recommendedTours = [] }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   
@@ -60,7 +264,11 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     console.log('🔍 TourDetailClient - destinationData?.slug:', destinationData?.slug);
     console.log('🔍 TourDetailClient - faqs:', faqs);
     console.log('🔍 TourDetailClient - faqs.length:', faqs?.length);
-  }, [categoryGuides, destinationData, faqs]);
+    console.log('🔍 TourDetailClient - reviews:', reviews);
+    console.log('🔍 TourDetailClient - reviews?.reviews?.length:', reviews?.reviews?.length);
+    console.log('🔍 TourDetailClient - recommendedTours:', recommendedTours);
+    console.log('🔍 TourDetailClient - recommendedTours.length:', recommendedTours?.length);
+  }, [categoryGuides, destinationData, faqs, reviews, recommendedTours]);
   
   // Client-side redirect fallback: if we're on /tours/[productId] without slug, redirect to slugged version
   useEffect(() => {
@@ -925,6 +1133,32 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       </div>
     );
   }
+
+  // Shared travelers state for all price calculators (sidebar, middle, sticky bar)
+  const pricingInfo = tour?.pricingInfo;
+  const ageBands = pricingInfo?.ageBands || [];
+  const pricingType = pricingInfo?.type || 'PER_PERSON';
+  const isGroupPricing = pricingType === 'UNIT';
+
+  // Filter valid age bands (exclude TRAVELER and weird ranges)
+  const validAgeBands = useMemo(() => {
+    return ageBands.filter(band => {
+      if (band.ageBand === 'TRAVELER') return false;
+      const endAge = band.endAge || 99;
+      const startAge = band.startAge || 0;
+      return (endAge - startAge) <= 50 && endAge < 100;
+    });
+  }, [ageBands]);
+
+  // Initialize shared travelers state
+  const [sharedTravelers, setSharedTravelers] = useState(() => {
+    if (isGroupPricing) return {};
+    const initial = {};
+    validAgeBands.forEach((band) => {
+      initial[band.ageBand] = band.ageBand === 'ADULT' ? 1 : 0; // Default: 1 adult
+    });
+    return initial;
+  });
 
   // Helper: pick an image variant that is large enough for hero, but not oversized
   const selectBestImageVariant = (variants, targetWidth = 800) => {
@@ -1960,6 +2194,17 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 </motion.section>
               ) : null}
 
+              {/* Price Calculator - Below About This Tour (Mobile only) */}
+              <div className="lg:hidden">
+                <PriceCalculator 
+                  tour={tour} 
+                  viatorBookingUrl={viatorUrl} 
+                  pricing={pricing}
+                  travelers={sharedTravelers}
+                  setTravelers={setSharedTravelers}
+                />
+              </div>
+
               {/* Image Gallery */}
               {additionalImages.length > 0 && (
                 <motion.section
@@ -2055,6 +2300,22 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   </div>
                 </motion.section>
               )}
+
+              {/* Price Calculator - In Middle of Content (Desktop & Mobile) */}
+              <motion.section
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.12 }}
+              >
+                <PriceCalculator 
+                  tour={tour} 
+                  viatorBookingUrl={viatorUrl} 
+                  pricing={pricing}
+                  travelers={sharedTravelers}
+                  setTravelers={setSharedTravelers}
+                />
+              </motion.section>
 
               {/* Insider Tips */}
               {insiderTips && (
@@ -2538,48 +2799,13 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 />
               )}
 
-              {/* Frequently Asked Questions */}
-              {faqs && faqs.length > 0 && (
-                <motion.section
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.65 }}
-                  className="bg-white rounded-lg shadow-sm p-6 md:p-8"
-                >
-                  <div className="mb-6">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
-                    <p className="text-gray-600 text-sm">
-                      Common questions about {tour.title || 'this tour'}
-                      {derivedDestinationName ? ` in ${derivedDestinationName}` : ''}
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    {faqs.map((faq, index) => (
-                      <details
-                        key={index}
-                        className="group border border-gray-200 rounded-lg overflow-hidden hover:border-purple-300 transition-colors"
-                      >
-                        <summary className="px-5 py-4 cursor-pointer bg-gray-50 hover:bg-purple-50 transition-colors flex items-center justify-between">
-                          <span className="font-semibold text-gray-900 pr-4">{faq.question}</span>
-                          <ArrowRight className="w-5 h-5 text-gray-400 group-open:rotate-90 transition-transform flex-shrink-0" />
-                        </summary>
-                        <div className="px-5 py-4 bg-white border-t border-gray-200">
-                          <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
-                        </div>
-                      </details>
-                    ))}
-                  </div>
-                </motion.section>
-              )}
-
-              {/* Rating Breakdown */}
+              {/* Rating Breakdown (Before Reviews) */}
               {ratingBreakdown.length > 0 && (
                 <motion.section
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.7 }}
+                  transition={{ duration: 0.6, delay: 0.65 }}
                   className="bg-white rounded-lg shadow-sm p-6 md:p-8"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
@@ -2622,6 +2848,59 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                     ))}
                   </div>
 
+                </motion.section>
+              )}
+
+              {/* Review Snippets Section (After Ratings, Before FAQs) */}
+              {reviews && reviews.reviews && reviews.reviews.length > 0 && (
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                  className="mt-8"
+                >
+                  <ReviewSnippets 
+                    reviews={reviews}
+                    tour={tour}
+                    productId={productId}
+                    viatorBookingUrl={viatorUrl}
+                  />
+                </motion.section>
+              )}
+
+              {/* Frequently Asked Questions */}
+              {faqs && faqs.length > 0 && (
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                  className="bg-white rounded-lg shadow-sm p-6 md:p-8"
+                >
+                  <div className="mb-6">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
+                    <p className="text-gray-600 text-sm">
+                      Common questions about {tour.title || 'this tour'}
+                      {derivedDestinationName ? ` in ${derivedDestinationName}` : ''}
+                    </p>
+                  </div>
+                  <div className="space-y-4">
+                    {faqs.map((faq, index) => (
+                      <details
+                        key={index}
+                        className="group border border-gray-200 rounded-lg overflow-hidden hover:border-purple-300 transition-colors"
+                      >
+                        <summary className="px-5 py-4 cursor-pointer bg-gray-50 hover:bg-purple-50 transition-colors flex items-center justify-between">
+                          <span className="font-semibold text-gray-900 pr-4">{faq.question}</span>
+                          <ArrowRight className="w-5 h-5 text-gray-400 group-open:rotate-90 transition-transform flex-shrink-0" />
+                        </summary>
+                        <div className="px-5 py-4 bg-white border-t border-gray-200">
+                          <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                        </div>
+                      </details>
+                    ))}
+                  </div>
                 </motion.section>
               )}
 
@@ -2678,60 +2957,14 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
             {/* Sidebar - 1/3 width, sticky on desktop - follows page scroll */}
             <aside className="w-full lg:w-auto lg:flex-1 lg:max-w-sm lg:min-w-[320px] lg:sticky lg:top-24 lg:self-start lg:z-10 lg:h-fit">
               <div className="space-y-6">
-                {/* Booking Card - Sticky, stays visible while main content scrolls */}
-                <Card className="bg-white border-2 border-purple-200 shadow-xl">
-                  <CardContent className="p-6">
-                    <div className="text-center mb-6">
-                      {price > 0 && (
-                        <div className="text-3xl font-bold text-orange-600 mb-2">
-                          From ${price.toLocaleString('en-US')}
-                        </div>
-                      )}
-                      {duration && (
-                        <div className="text-gray-600 flex items-center justify-center gap-2">
-                          <Clock className="w-4 h-4" />
-                          <span>{formatDuration(duration)}</span>
-                        </div>
-                      )}
-                    </div>
-                    
-                    <div className="relative">
-                      <Button
-                        asChild
-                        size="lg"
-                        className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 font-semibold py-6"
-                      >
-                        <a
-                          href={viatorUrl}
-                          target="_blank"
-                          rel="sponsored noopener noreferrer"
-                        >
-                          View Reviews & Availability
-                          <ExternalLink className="w-5 h-5 ml-2" />
-                        </a>
-                      </Button>
-                      <div className="absolute top-2 right-2 group">
-                        <Info className="w-3.5 h-3.5 text-white/70 cursor-help" />
-                        <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
-                          Opens Viator, our trusted affiliate partner
-                          <div className="absolute top-full right-4 border-4 border-transparent border-t-gray-900"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-xs text-gray-400 mt-2 text-center flex items-center justify-center gap-1">
-                      Opens Viator, our trusted affiliate partner
-                      <ExternalLink className="w-3 h-3" />
-                    </p>
-
-                    {flags.includes('FREE_CANCELLATION') && (
-                      <div className="mt-4 flex items-center justify-center gap-2 text-sm text-green-600">
-                        <Shield className="w-4 h-4" />
-                        <span>Free cancellation available</span>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-
+                {/* Price Calculator - Replaces Booking Card */}
+                <PriceCalculator 
+                  tour={tour} 
+                  viatorBookingUrl={viatorUrl} 
+                  pricing={pricing}
+                  travelers={sharedTravelers}
+                  setTravelers={setSharedTravelers}
+                />
 
                 {/* Other Tours from This Operator */}
                 {operatorPremiumData && operatorTours && operatorTours.length > 0 && (
@@ -3023,6 +3256,95 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   </div>
                 </div>
               )}
+            </motion.section>
+          )}
+
+          {/* Recommended Tours Section (from Recommendations API) */}
+          {recommendedTours.length > 0 && (
+            <motion.section
+              id="recommended-tours"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-16"
+            >
+              <div className="mb-6">
+                <h2 className="text-3xl font-bold text-gray-900">
+                  Similar tours to {tour.title || 'this tour'}
+                </h2>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {recommendedTours.map((recommendedTour, index) => {
+                  const recommendedTourId = recommendedTour.productId || recommendedTour.productCode;
+                  const recommendedTourUrl = getTourUrl(recommendedTourId, recommendedTour.title);
+                  const recommendedImage = recommendedTour.images?.[0]?.variants?.[5]?.url || 
+                                          recommendedTour.images?.[0]?.variants?.[4]?.url || 
+                                          recommendedTour.images?.[0]?.variants?.[3]?.url || 
+                                          recommendedTour.images?.[0]?.variants?.[0]?.url || '';
+                  const recommendedRating = recommendedTour.reviews?.combinedAverageRating || 0;
+                  const recommendedReviewCount = recommendedTour.reviews?.totalReviews || 0;
+                  const recommendedPrice = recommendedTour.pricing?.summary?.fromPrice || 0;
+
+                  return (
+                    <Card key={recommendedTourId || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                      <div 
+                        className="relative h-48 bg-gray-200 flex-shrink-0 cursor-pointer" 
+                        onClick={() => router.push(recommendedTourUrl)}
+                      >
+                        {recommendedImage ? (
+                          <img
+                            src={recommendedImage}
+                            alt={recommendedTour.title}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                            <MapPin className="w-8 h-8 text-gray-400" />
+                          </div>
+                        )}
+                      </div>
+                      
+                      <CardContent className="p-4 flex-1 flex flex-col">
+                        <h3 
+                          className="font-semibold text-gray-800 mb-2 line-clamp-2 flex-1 cursor-pointer hover:text-purple-600 transition-colors"
+                          onClick={() => router.push(recommendedTourUrl)}
+                        >
+                          {recommendedTour.title}
+                        </h3>
+                        
+                        {recommendedRating > 0 && (
+                          <div className="flex items-center mb-2">
+                            <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                            <span className="font-medium text-gray-700 ml-1 text-sm">
+                              {recommendedRating.toFixed(1)}
+                            </span>
+                            <span className="text-gray-500 text-xs ml-1">
+                              ({recommendedReviewCount.toLocaleString('en-US')})
+                            </span>
+                          </div>
+                        )}
+
+                        <div className="text-lg font-bold text-orange-600 mb-3">
+                          From ${recommendedPrice}
+                        </div>
+
+                        <Button
+                          asChild
+                          variant="outline"
+                          size="sm"
+                          className="w-full mt-auto border-purple-300 text-purple-700 hover:bg-purple-50"
+                        >
+                          <Link href={recommendedTourUrl}>
+                            View Details
+                          </Link>
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
             </motion.section>
           )}
 
@@ -3390,38 +3712,17 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         </section>
       )}
 
-      {/* Sticky CTA Button */}
+      {/* Sticky Full-Width Price Bar - Smart: Match Score or Rating/Reviews */}
       {showStickyButton && (
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 100 }}
-          className="fixed bottom-6 right-6 z-50"
-        >
-          <div className="relative">
-            <Button
-              asChild
-              size="lg"
-              className="sunset-gradient text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
-            >
-              <a
-                href={viatorUrl}
-                target="_blank"
-                rel="sponsored noopener noreferrer"
-              >
-                <span>View Reviews & Availability</span>
-                <ExternalLink className="ml-2 w-5 h-5" />
-              </a>
-            </Button>
-            <div className="absolute -top-0.5 -right-0.5 group">
-              <Info className="w-3 h-3 text-gray-600 cursor-help bg-white/90 rounded-full p-0.5 shadow-sm" />
-              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
-                Opens Viator, our trusted affiliate partner
-                <div className="absolute top-full right-4 border-4 border-transparent border-t-gray-900"></div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+        <StickyPriceBar 
+          tour={tour} 
+          pricing={pricing} 
+          viatorUrl={viatorUrl} 
+          matchScore={matchScore}
+          travelers={sharedTravelers}
+          setTravelers={setSharedTravelers}
+          setTravelers={setSharedTravelers}
+        />
       )}
 
       {/* Lightbox Modal */}

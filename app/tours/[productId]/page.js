@@ -14,6 +14,8 @@ import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds, getOpera
 import { generateTourSlug } from '@/utils/tourHelpers';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
+import { getCachedReviews } from '@/lib/viatorReviews';
+import { fetchProductRecommendations, fetchRecommendedTours } from '@/lib/viatorRecommendations';
 
 /**
  * Generate metadata for tour detail page
@@ -177,6 +179,52 @@ export default async function TourDetailPage({ params }) {
 
       // Cache the tour data for future requests
       await cacheTour(productId, tour);
+    }
+
+    // Fetch pricing from search API (has pricing.summary.fromPrice)
+    // This is more reliable than the product endpoint for pricing
+    let pricing = null;
+    try {
+      const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+      const searchResponse = await fetch('https://api.viator.com/partner/search/freetext', {
+        method: 'POST',
+        headers: {
+          'exp-api-key': apiKey,
+          'Accept': 'application/json;version=2.0',
+          'Accept-Language': 'en-US',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          searchTerm: productId,
+          searchTypes: [
+            {
+              searchType: 'PRODUCTS',
+              pagination: { start: 1, count: 1 }
+            }
+          ],
+          currency: 'USD'
+        }),
+        next: { revalidate: 3600 } // Cache for 1 hour
+      });
+
+      if (searchResponse.ok) {
+        const searchData = await searchResponse.json();
+        const products = searchData?.products?.results || [];
+        const foundProduct = products.find(p => 
+          (p.productId || p.productCode) === productId
+        );
+        
+        if (foundProduct?.pricing?.summary?.fromPrice) {
+          pricing = foundProduct.pricing.summary.fromPrice;
+        }
+      }
+    } catch (error) {
+      console.warn('⚠️ Could not fetch pricing from search API:', error.message);
+      // Fallback: try to extract from tour object
+      pricing = tour?.pricing?.summary?.fromPrice || 
+                tour?.pricing?.fromPrice || 
+                tour?.pricingInfo?.fromPrice || 
+                null;
     }
 
     // Sync operator to CRM (lightweight, non-blocking)
@@ -1052,6 +1100,51 @@ export default async function TourDetailPage({ params }) {
       // Continue without FAQs - not critical
     }
 
+    // Fetch reviews (lazy loading on page visit)
+    // Enable in development, Vercel preview deployments, or when explicitly enabled
+    // Vercel sets VERCEL_ENV to 'preview' for preview deployments
+    let reviews = null;
+    const isPreviewMode = process.env.ENABLE_REVIEW_SNIPPETS === 'true' || 
+                          process.env.NODE_ENV === 'development' ||
+                          process.env.VERCEL_ENV === 'preview';
+    
+    if (isPreviewMode) {
+      try {
+        const currentReviewCount = tour.reviews?.totalReviews || 0;
+        console.log(`🔍 [REVIEWS] Fetching reviews for tour ${productId} (count: ${currentReviewCount})...`);
+        reviews = await getCachedReviews(productId, currentReviewCount);
+        console.log(`✅ [REVIEWS] Fetched ${reviews?.reviews?.length || 0} reviews for tour ${productId}`);
+      } catch (error) {
+        console.error('❌ [REVIEWS] Error fetching reviews:', error);
+        // Continue without reviews - not critical
+      }
+    }
+
+    // Fetch recommended tours using recommendations API
+    let recommendedTours = [];
+    if (isPreviewMode) {
+      try {
+        console.log(`🔍 [RECOMMENDATIONS] Fetching recommendations for tour ${productId}...`);
+        const recommendedProductCodes = await fetchProductRecommendations(productId);
+        console.log(`🔍 [RECOMMENDATIONS] Received product codes:`, recommendedProductCodes);
+        
+        if (recommendedProductCodes && recommendedProductCodes.length > 0) {
+          console.log(`🔍 [RECOMMENDATIONS] Fetching full tour data for ${recommendedProductCodes.length} recommended tours...`);
+          recommendedTours = await fetchRecommendedTours(recommendedProductCodes.slice(0, 6)); // Limit to 6 tours
+          console.log(`✅ [RECOMMENDATIONS] Fetched ${recommendedTours.length} recommended tours`);
+          console.log(`✅ [RECOMMENDATIONS] Tour IDs:`, recommendedTours.map(t => t.productId || t.productCode));
+        } else {
+          console.warn(`⚠️ [RECOMMENDATIONS] No recommended product codes returned`);
+        }
+      } catch (error) {
+        console.error('❌ [RECOMMENDATIONS] Error fetching recommendations:', error);
+        console.error('❌ [RECOMMENDATIONS] Error stack:', error.stack);
+        // Continue without recommendations - not critical
+      }
+    } else {
+      console.log(`ℹ️ [RECOMMENDATIONS] Preview mode disabled, skipping recommendations`);
+    }
+
     // Generate breadcrumb schema for SEO
     const breadcrumbSchema = {
       "@context": "https://schema.org",
@@ -1128,6 +1221,7 @@ export default async function TourDetailPage({ params }) {
           tour={tour} 
           similarTours={similarTours} 
           productId={productId} 
+          pricing={pricing}
           enrichment={tourEnrichment} 
           initialPromotionScore={promotionScore} 
           destinationData={destinationData} 
@@ -1137,6 +1231,8 @@ export default async function TourDetailPage({ params }) {
           operatorTours={operatorTours}
           categoryGuides={categoryGuides}
           faqs={faqs}
+          reviews={reviews}
+          recommendedTours={recommendedTours}
         />
       </Suspense>
       </>

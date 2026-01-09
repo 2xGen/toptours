@@ -267,7 +267,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
     const categoryContext = enhancedCategory ? `, a local ${enhancedCategory.toLowerCase()} provider` : '';
     const locationContext = destinationName ? ` in ${destinationName}` : '';
     faqs.push({
-      question: `Who operates ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+      question: `Who operates this experience?`,
       answer: `This experience is operated by ${operatorName}${categoryContext}${locationContext}.`
     });
   }
@@ -285,7 +285,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
       : '';
     
     faqs.push({
-      question: `What's included in ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+      question: `What's included?`,
       answer: `This tour includes ${inclusionList}.${additionalNote} All inclusions are provided by the tour operator.`
     });
   }
@@ -296,8 +296,8 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
     // Deterministic based on productId to ensure consistency
     const useAlternative = productId ? (parseInt(productId.replace(/\D/g, '')) % 2 === 0) : false;
     const durationQuestion = useAlternative
-      ? `How long does ${tourTitle}${destinationName ? ` in ${destinationName}` : ''} take?`
-      : `How long is ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`;
+      ? `How long does this experience take?`
+      : `How long is this tour?`;
     
     faqs.push({
       question: durationQuestion,
@@ -360,7 +360,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
     }
     
     faqs.push({
-      question: `Can I cancel ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+      question: `Can I cancel this tour?`,
       answer: cancellationAnswer
     });
   }
@@ -372,7 +372,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
     
     if (meetingDescription && meetingDescription.length > 20) {
       faqs.push({
-        question: `Where does ${tourTitle}${destinationName ? ` in ${destinationName}` : ''} start?`,
+        question: `Where does this tour start?`,
         answer: `The meeting point is ${meetingDescription}. Exact location details will be confirmed upon booking.`
       });
     }
@@ -381,7 +381,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
   // FAQ 6: Private vs Group
   if (tour.logistics?.groupType) {
     faqs.push({
-      question: `Is ${tourTitle}${destinationName ? ` in ${destinationName}` : ''} a private or group tour?`,
+      question: `Is this a private or group tour?`,
       answer: isPrivate
         ? `This is a private tour, meaning it's exclusively for you and your party.`
         : `This is a group tour where you'll join other travelers.`
@@ -391,7 +391,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
   // FAQ 7: Family-Friendly
   if (familyFriendly || tour.logistics?.isFamilyFriendly) {
     faqs.push({
-      question: `Is ${tourTitle}${destinationName ? ` in ${destinationName}` : ''} good for families?`,
+      question: `Is this tour good for families?`,
       answer: `Yes, this experience is family-friendly and suitable for travelers of all ages.`
     });
   }
@@ -413,7 +413,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
     
     if (whatToBring) {
       faqs.push({
-        question: `What should I bring for ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+        question: `What should I bring?`,
         answer: whatToBring
       });
     }
@@ -422,7 +422,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
   // FAQ 9: Weather Policy (only if bad weather cancellation exists but wasn't mentioned in cancellation FAQ)
   if (hasBadWeatherCancellation && !badWeatherMentionedInCancellation) {
     faqs.push({
-      question: `What happens if the weather is bad for ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+      question: `What happens if the weather is bad?`,
       answer: `If weather conditions are unsafe, the tour may be canceled by the operator. In such cases, you'll be offered a refund or reschedule.`
     });
   }
@@ -435,7 +435,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
   
   if (hasTransportation) {
     faqs.push({
-      question: `Is transportation included in ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+      question: `Is transportation included?`,
       answer: `Yes, transportation is included. Hotel pickup and drop-off are typically provided.`
     });
   }
@@ -455,7 +455,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
     
     if (ageAnswer) {
       faqs.push({
-        question: `Are there age restrictions for ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+        question: `Are there age restrictions?`,
         answer: `${ageAnswer} Please check the full tour details when booking.`
       });
     }
@@ -464,7 +464,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
   // FAQ 12: Instant Confirmation (if available)
   if (tour.bookingConfirmationSettings?.confirmationType === 'INSTANT' || tour.instantConfirmation) {
     faqs.push({
-      question: `Will I receive instant confirmation for ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+      question: `Will I receive instant confirmation?`,
       answer: `Yes, you'll receive instant confirmation when you book.`
     });
   }
@@ -474,7 +474,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
   const reviewCount = tour.reviews?.totalReviews || tour.reviews?.totalCount || 0;
   if (rating && rating >= 4.0 && reviewCount >= 50) {
     faqs.push({
-      question: `Is ${tourTitle}${destinationName ? ` in ${destinationName}` : ''} worth it?`,
+      question: `Is this tour worth it?`,
       answer: `Yes, this experience has a ${rating.toFixed(1)}-star rating based on ${formatNumber(reviewCount) || reviewCount}+ reviews, making it a highly rated option${destinationName ? ` in ${destinationName}` : ''}.`
     });
   }
@@ -483,7 +483,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
   if (topInclusions.length > 0 || tour.description?.summary) {
     const inclusionHint = topInclusions.length > 0 ? ` You'll have access to ${topInclusions[0]}${topInclusions.length > 1 ? ` and more` : ''}.` : '';
     faqs.push({
-      question: `What to expect on ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+      question: `What to expect on this tour?`,
       answer: `This ${enhancedCategory ? enhancedCategory.toLowerCase() : 'tour'} experience${duration ? ` lasts approximately ${duration}` : ''} and includes all necessary equipment and guidance.${inclusionHint}`
     });
   }
@@ -493,17 +493,17 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
     const categoryLower = enhancedCategory.toLowerCase();
     if (categoryLower.includes('water') || categoryLower.includes('snorkel') || categoryLower.includes('dive') || categoryLower.includes('boat')) {
       faqs.push({
-        question: `What's the best time to do ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+        question: `What's the best time to do this tour?`,
         answer: `Morning and early afternoon are typically the best times for water activities, as conditions are usually calmer and visibility is better.`
       });
     } else if (categoryLower.includes('sunset') || categoryLower.includes('evening')) {
       faqs.push({
-        question: `What's the best time to do ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+        question: `What's the best time to do this tour?`,
         answer: `This experience is designed for sunset or evening hours to provide the best views and atmosphere.`
       });
     } else if (categoryLower.includes('food') || categoryLower.includes('culinary')) {
       faqs.push({
-        question: `What's the best time to do ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+        question: `What's the best time to do this tour?`,
         answer: `This culinary experience is typically best enjoyed during meal times, allowing you to fully appreciate the local food culture.`
       });
     }
@@ -514,7 +514,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
     const categoryLower = enhancedCategory.toLowerCase();
     if (categoryLower.includes('water') || categoryLower.includes('snorkel') || categoryLower.includes('dive') || categoryLower.includes('swim') || categoryLower.includes('kayak') || categoryLower.includes('paddle')) {
       faqs.push({
-        question: `Do I need to know how to swim for ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+        question: `Do I need to know how to swim?`,
         answer: `Swimming ability requirements vary. Life jackets and safety equipment are provided. Please check the tour details or contact the operator if you have concerns about swimming requirements.`
       });
     }
@@ -525,7 +525,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
     const categoryLower = enhancedCategory.toLowerCase();
     if (categoryLower.includes('food') || categoryLower.includes('culinary') || categoryLower.includes('dining') || categoryLower.includes('cooking')) {
       faqs.push({
-        question: `Are dietary restrictions accommodated for ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+        question: `Are dietary restrictions accommodated?`,
         answer: `Dietary restrictions may be accommodated depending on the tour. Please inform the operator of any dietary requirements when booking so they can make appropriate arrangements.`
       });
     }
@@ -536,7 +536,7 @@ export async function generateTourFAQs(tour, destinationData = null, productId =
     const categoryLower = enhancedCategory.toLowerCase();
     if (categoryLower.includes('adventure') || categoryLower.includes('hiking') || categoryLower.includes('climbing') || categoryLower.includes('biking') || categoryLower.includes('atv')) {
       faqs.push({
-        question: `What fitness level is required for ${tourTitle}${destinationName ? ` in ${destinationName}` : ''}?`,
+        question: `What fitness level is required?`,
         answer: `This adventure activity requires a moderate level of physical fitness. Please review the tour details for specific requirements, or contact the operator if you have concerns about your fitness level.`
       });
     }

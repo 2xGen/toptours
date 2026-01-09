@@ -76,7 +76,7 @@ const Hero = ({ onOpenOnboardingModal }) => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Ticket className="h-5 w-5 text-purple-200" />
-                  <span>10,000+ tours</span>
+                  <span>300,000+ tours</span>
                 </div>
               </div>
               <div className="flex flex-wrap gap-4 justify-center">

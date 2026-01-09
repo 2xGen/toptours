@@ -7,6 +7,8 @@ import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds, getOpera
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
 import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
+import { getCachedReviews } from '@/lib/viatorReviews';
+import { fetchProductRecommendations, fetchRecommendedTours } from '@/lib/viatorRecommendations';
 
 /**
  * Generate metadata for tour detail page
@@ -405,17 +407,17 @@ export default async function TourDetailPage({ params }) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          searchTerm: tour.title || productId,
+          searchTerm: productId, // Search by productId for more reliable results
           searchTypes: [{
             searchType: 'PRODUCTS',
             pagination: {
               start: 1,
-              count: 10
+              count: 1 // Only need 1 result since we're searching by productId
             }
           }],
           currency: 'USD'
         }),
-        cache: 'no-store'
+        next: { revalidate: 3600 } // Cache for 1 hour
       });
 
       if (searchResponse.ok) {
@@ -855,6 +857,44 @@ export default async function TourDetailPage({ params }) {
       // Continue without FAQs - not critical
     }
 
+    // Fetch reviews (lazy loading on page visit)
+    // Enable in development, Vercel preview deployments, or when explicitly enabled
+    // Vercel sets VERCEL_ENV to 'preview' for preview deployments
+    let reviews = null;
+    const isPreviewMode = process.env.ENABLE_REVIEW_SNIPPETS === 'true' || 
+                          process.env.NODE_ENV === 'development' ||
+                          process.env.VERCEL_ENV === 'preview';
+    
+    if (isPreviewMode) {
+      try {
+        const currentReviewCount = tour.reviews?.totalReviews || 0;
+        console.log(`🔍 [REVIEWS] Fetching reviews for tour ${productId} (count: ${currentReviewCount})...`);
+        reviews = await getCachedReviews(productId, currentReviewCount);
+        console.log(`✅ [REVIEWS] Fetched ${reviews?.reviews?.length || 0} reviews for tour ${productId}`);
+      } catch (error) {
+        console.error('❌ [REVIEWS] Error fetching reviews:', error);
+        // Continue without reviews - not critical
+      }
+    }
+
+    // Fetch recommended tours using recommendations API
+    let recommendedTours = [];
+    if (isPreviewMode) {
+      try {
+        console.log(`🔍 [RECOMMENDATIONS] Fetching recommendations for tour ${productId}...`);
+        const recommendedProductCodes = await fetchProductRecommendations(productId);
+        
+        if (recommendedProductCodes && recommendedProductCodes.length > 0) {
+          console.log(`🔍 [RECOMMENDATIONS] Fetching full tour data for ${recommendedProductCodes.length} recommended tours...`);
+          recommendedTours = await fetchRecommendedTours(recommendedProductCodes.slice(0, 6)); // Limit to 6 tours
+          console.log(`✅ [RECOMMENDATIONS] Fetched ${recommendedTours.length} recommended tours`);
+        }
+      } catch (error) {
+        console.error('❌ [RECOMMENDATIONS] Error fetching recommendations:', error);
+        // Continue without recommendations - not critical
+      }
+    }
+
     return (
       <>
         <script
@@ -883,6 +923,8 @@ export default async function TourDetailPage({ params }) {
           destinationData={destinationData}
           categoryGuides={categoryGuides}
           faqs={faqs}
+          reviews={reviews}
+          recommendedTours={recommendedTours}
         />
       </>
     );

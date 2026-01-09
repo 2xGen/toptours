@@ -155,6 +155,10 @@ export default async function sitemap() {
     priority: 0.8,
   }));
 
+  // Tour sitemap index reference (for 300k+ tours, we use sitemap indexing)
+  // Individual tour pages are in separate sitemap files (sitemap-tours-1.xml, etc.)
+  // This is referenced in robots.txt
+  
   return [
     ...staticPages,
     ...destinationPages,
@@ -163,6 +167,8 @@ export default async function sitemap() {
     ...restaurantListingPages,
     ...restaurantDetailPages,
     ...travelGuidePages,
+    // Note: Individual tour pages are in sitemap-tours-[index].xml files
+    // See app/sitemap-tours-[index]/route.js for dynamic tour sitemap generation
   ];
 }
 
