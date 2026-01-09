@@ -96,7 +96,8 @@ function truncateDestinationName(name, maxLength = 30) {
   }
   return name.substring(0, maxLength).trim() + '...';
 }
-import { Search, MapPin, ArrowRight, Globe } from 'lucide-react';
+import { Search, MapPin, ArrowRight, Globe, Ticket, UtensilsCrossed } from 'lucide-react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -540,75 +541,76 @@ export default function DestinationsPage() {
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {paginatedFeaturedDestinations.map((destination, index) => (
-                      <motion.div
-                        key={`featured-${destination.id}-${index}`}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, delay: index * 0.05 }}
-                        viewport={{ once: true }}
-                        whileHover={{ y: -5 }}
-                        className={destination.isViator ? "" : "cursor-pointer"}
-                        onClick={destination.isViator ? undefined : () => router.push(`/destinations/${destination.id}`)}
-                      >
-                        <Card className="bg-white border-0 shadow-xl overflow-hidden h-full flex flex-col hover:shadow-2xl transition-all duration-300">
-                          {!destination.isViator && destination.imageUrl && (
-                            <div className="relative h-48 overflow-hidden">
-                              <img 
-                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" 
-                                alt={destination.name}
-                                src={destination.imageUrl}
-                                loading="lazy"
-                                onError={(e) => {
-                                  e.target.src = "https://images.unsplash.com/photo-1595872018818-97555653a011";
-                                }}
-                              />
-                              <Badge className="absolute top-4 left-4 adventure-gradient text-white">
-                                {destination.category}
-                              </Badge>
-                              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
-                                <span className="text-sm font-medium text-gray-800">{destination.country || destination.fullName}</span>
-                              </div>
-                            </div>
-                          )}
-                          <CardContent className={`p-6 flex flex-col flex-grow ${destination.isViator ? 'pt-6' : ''}`}>
-                            <div className="flex items-center text-gray-600 mb-2">
-                              <MapPin className="h-4 w-4 mr-1" />
-                              <span className="font-semibold">{destination.name}</span>
-                            </div>
-                            <p className="text-gray-700 mb-4 flex-grow">
-                              {destination.briefDescription}
-                            </p>
-                            
-                            <div className="mt-auto pt-4 space-y-3">
-                              {!destination.isViator && (
-                                <Button 
-                                  asChild
-                                  className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
-                                  onClick={(e) => e.stopPropagation()}
-                                >
-                                  <Link href={`/destinations/${destination.id}`}>
-                                    Explore {truncateDestinationName(destination.name)}
-                                    <ArrowRight className="ml-2 h-5 w-5" />
-                                  </Link>
-                                </Button>
+                          <motion.div
+                            key={`featured-${destination.id}-${index}`}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: index * 0.05 }}
+                            viewport={{ once: true }}
+                            whileHover={{ y: -5 }}
+                            className="cursor-pointer"
+                            onClick={() => router.push(`/destinations/${destination.id}`)}
+                          >
+                            <Card className="bg-white border-0 shadow-xl overflow-hidden h-full flex flex-col hover:shadow-2xl transition-all duration-300">
+                              {destination.imageUrl && (
+                                <div className="relative h-48 overflow-hidden">
+                                  <Image
+                                    src={destination.imageUrl}
+                                    alt={destination.fullName || destination.name}
+                                    fill
+                                    className="object-cover transition-transform duration-300 hover:scale-105"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    loading="lazy"
+                                  />
+                                  {destination.category && (
+                                    <Badge className="absolute top-4 left-4 adventure-gradient text-white">
+                                      {destination.category}
+                                    </Badge>
+                                  )}
+                                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
+                                    <span className="text-sm font-medium text-gray-800">{destination.country || destination.fullName || destination.name}</span>
+                                  </div>
+                                </div>
                               )}
-                              <Button
-                                asChild
-                                variant="secondary"
-                                className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                <Link href={`/destinations/${destination.id}/tours`}>
-                                  View Top Tours in {truncateDestinationName(destination.name)}
-                                  <ArrowRight className="ml-2 h-5 w-5" />
-                                </Link>
-                              </Button>
-                            </div>
-                          </CardContent>
-                        </Card>
-                        </motion.div>
-                      ))}
-                    </div>
+                              <CardContent className="p-6 flex flex-col flex-grow">
+                                <div className="flex items-center text-gray-600 mb-2">
+                                  <MapPin className="h-4 w-4 mr-1" />
+                                  <span className="font-semibold">{destination.name}</span>
+                                </div>
+                                <p className="text-gray-700 mb-4 flex-grow">
+                                  {destination.briefDescription}
+                                </p>
+                                
+                                <div className="mt-auto pt-4 space-y-3">
+                                  {hasDestinationPage(destination.id) && (
+                                    <Button
+                                      asChild
+                                      className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
+                                      onClick={(e) => e.stopPropagation()}
+                                    >
+                                      <Link href={`/destinations/${destination.id}`}>
+                                        Explore {truncateDestinationName(destination.name)}
+                                        <ArrowRight className="ml-2 h-5 w-5" />
+                                      </Link>
+                                    </Button>
+                                  )}
+                                  <Button
+                                    asChild
+                                    variant="secondary"
+                                    className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    <Link href={`/destinations/${destination.id}/tours`}>
+                                      View Top Tours in {truncateDestinationName(destination.name)}
+                                      <ArrowRight className="ml-2 h-5 w-5" />
+                                    </Link>
+                                  </Button>
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </motion.div>
+                        ))}
+                      </div>
                   </div>
                   )}
 

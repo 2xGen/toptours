@@ -1,14 +1,156 @@
 "use client";
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Sparkles, Globe, UtensilsCrossed, Ticket, BookOpen } from 'lucide-react';
+import { Search, MapPin, Globe, UtensilsCrossed, Ticket, BookOpen, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import AnimatedHeroBackground from './AnimatedHeroBackground';
+import { destinations } from '@/data/destinationsData';
+import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
+
+const SPOTLIGHT_DESTINATIONS = [
+  { id: 'aruba', label: 'Aruba' },
+  { id: 'curacao', label: 'Curaçao' },
+  { id: 'punta-cana', label: 'Punta Cana' },
+  { id: 'lisbon', label: 'Lisbon' },
+  { id: 'bali', label: 'Bali' },
+  { id: 'amsterdam', label: 'Amsterdam' },
+  { id: 'tokyo', label: 'Tokyo' },
+  { id: 'new-york-city', label: 'New York' },
+  { id: 'rome', label: 'Rome' },
+  { label: 'Sydney', search: 'Sydney' },
+];
 
 const Hero = ({ onOpenOnboardingModal }) => {
+  const router = useRouter();
+  const [query, setQuery] = useState('');
+  const [isInputFocused, setIsInputFocused] = useState(false);
+
+  const generateSlug = (name) => {
+    return name
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
+  };
+
+  const DESTINATION_LOOKUP = useMemo(() => {
+    const regular = destinations.map((destination) => ({
+      id: destination.id,
+      name: destination.name,
+      fullName: destination.fullName || destination.name,
+      country: destination.country || destination.category || '',
+      isViator: false,
+    }));
+
+    const allClassifiedDestinations = Array.isArray(viatorDestinationsClassifiedData) 
+      ? viatorDestinationsClassifiedData 
+      : [];
+
+    const curatedSlugs = new Set(
+      destinations.map(d => d.id.toLowerCase())
+    );
+
+    const curatedBaseNames = new Set();
+    const curatedFullNames = new Set();
+    
+    destinations.forEach(dest => {
+      const name = (dest.name || '').toLowerCase().trim();
+      const fullName = (dest.fullName || dest.name || '').toLowerCase().trim();
+      curatedBaseNames.add(name);
+      curatedFullNames.add(fullName);
+      const baseName = fullName.split(',')[0].trim();
+      if (baseName && baseName !== fullName) {
+        curatedBaseNames.add(baseName);
+      }
+    });
+    
+    const matchesCurated = (destName, destSlug) => {
+      const normalized = destName.toLowerCase().trim();
+      const baseName = normalized.split(',')[0].trim();
+      if (destSlug && curatedSlugs.has(destSlug.toLowerCase())) {
+        return true;
+      }
+      if (curatedBaseNames.has(normalized) || curatedFullNames.has(normalized)) {
+        return true;
+      }
+      if (curatedBaseNames.has(baseName) || curatedFullNames.has(baseName)) {
+        return true;
+      }
+      return false;
+    };
+
+    const viator = allClassifiedDestinations
+      .filter(dest => {
+        const destName = dest.destinationName || '';
+        const destSlug = dest.slug || '';
+        return !matchesCurated(destName, destSlug);
+      })
+      .map((dest) => ({
+        id: dest.slug || generateSlug(dest.destinationName || ''),
+        name: dest.destinationName || '',
+        fullName: dest.destinationName || '',
+        country: dest.country || '',
+        isViator: true,
+      }));
+
+    return [...regular, ...viator];
+  }, []);
+
+  const filteredDestinations = useMemo(() => {
+    if (!query.trim()) return [];
+    const searchTerm = query.toLowerCase().trim();
+    return DESTINATION_LOOKUP.filter((dest) => {
+      const nameMatch = dest.name.toLowerCase().includes(searchTerm);
+      const fullNameMatch = dest.fullName.toLowerCase().includes(searchTerm);
+      const countryMatch = dest.country.toLowerCase().includes(searchTerm);
+      return nameMatch || fullNameMatch || countryMatch;
+    }).slice(0, 8);
+  }, [query, DESTINATION_LOOKUP]);
+
+  const hasValidDestination = filteredDestinations.length > 0;
+  const showSuggestions = isInputFocused && filteredDestinations.length > 0;
+
+  const handleDestinationSelect = (destination, tab = null) => {
+    if (destination.isViator) {
+      router.push(`/destinations?search=${encodeURIComponent(destination.fullName)}`);
+    } else {
+      const path = tab === 'tours' 
+        ? `/destinations/${destination.id}/tours`
+        : `/destinations/${destination.id}`;
+      router.push(path);
+    }
+    setQuery('');
+    setIsInputFocused(false);
+  };
+
+  const handleSpotlightClick = (destination) => {
+    if (destination.id) {
+      router.push(`/destinations/${destination.id}`);
+    } else if (destination.search) {
+      router.push(`/destinations?search=${encodeURIComponent(destination.search)}`);
+    }
+    setQuery('');
+    setIsInputFocused(false);
+  };
+
+  const handleSearch = () => {
+    if (!query.trim()) return;
+    if (filteredDestinations.length > 0) {
+      handleDestinationSelect(filteredDestinations[0]);
+      return;
+    }
+    router.push(`/destinations?search=${encodeURIComponent(query.trim())}`);
+    setQuery('');
+    setIsInputFocused(false);
+  };
+
   return (
-    <section className="relative overflow-hidden pt-24 pb-20">
+    <section className="relative overflow-hidden pt-20 pb-16">
       <div className="absolute inset-0 ocean-gradient" />
       <AnimatedHeroBackground />
       <div className="absolute inset-0 bg-black/30" />
@@ -38,56 +180,110 @@ const Hero = ({ onOpenOnboardingModal }) => {
               Get personalized recommendations that match your travel style, budget, and group preferences with <strong className="text-white">AI-powered Best Match</strong>.
             </p>
 
-            <div className="flex flex-wrap gap-4 mb-10 justify-center">
-              <Button
-                asChild
-                variant="secondary"
-                className="bg-white/90 text-purple-700 border border-purple-100 hover:bg-white px-8 py-3 text-lg font-semibold"
-              >
-                <Link href="/destinations">
-                  Explore Destinations
-                </Link>
-              </Button>
-              <Button
-                onClick={onOpenOnboardingModal}
-                className="bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white/30 px-8 py-3 text-lg font-semibold"
-              >
-                Login / Sign Up Free
-              </Button>
-              <Button
-                asChild
-                className="sunset-gradient text-white hover:opacity-90 px-8 py-3 text-lg font-semibold shadow-lg"
-              >
-                <Link href="/match-your-style">
-                  Match Your Style
-                </Link>
-              </Button>
-            </div>
+            {/* Search Bar - Prominent in Hero */}
+            <div className="mb-8 max-w-3xl mx-auto">
+              <div className="relative">
+                <div className="bg-white rounded-2xl shadow-2xl p-2 flex gap-2">
+                  <div className="relative flex-1">
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
+                    <Input
+                      placeholder='Search destinations... Try "Aruba", "Lisbon", "Tokyo"'
+                      value={query}
+                      onChange={(event) => setQuery(event.target.value)}
+                      onFocus={() => setIsInputFocused(true)}
+                      onBlur={() => setTimeout(() => setIsInputFocused(false), 200)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter') handleSearch();
+                      }}
+                      className="pl-12 h-14 border-0 text-lg text-gray-900 placeholder:text-gray-400 focus-visible:ring-0 shadow-none"
+                    />
+                  </div>
+                  <Button
+                    onClick={handleSearch}
+                    disabled={!query.trim()}
+                    className="h-14 px-8 bg-[#00AA6C] hover:bg-[#008855] text-white font-semibold transition-all disabled:opacity-60"
+                  >
+                    Search
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </div>
 
-            <div className="flex flex-col items-center gap-3 text-white/80">
-              <div className="flex flex-wrap gap-4 justify-center">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="h-5 w-5 text-yellow-300" />
-                  <span>AI-powered Best Match</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Globe className="h-5 w-5 text-blue-200" />
-                  <span>3,300+ destinations</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Ticket className="h-5 w-5 text-purple-200" />
-                  <span>300,000+ tours</span>
+                {/* Search Suggestions Dropdown */}
+                {showSuggestions && (
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-200 divide-y max-h-96 overflow-y-auto z-50">
+                    {filteredDestinations.map((destination) => (
+                      <div
+                        key={destination.id}
+                        className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors"
+                      >
+                        <button
+                          type="button"
+                          onMouseDown={(event) => {
+                            event.preventDefault();
+                            handleDestinationSelect(destination);
+                          }}
+                          className="flex items-center gap-3 text-left flex-1"
+                        >
+                          <div className="rounded-full bg-purple-100 text-purple-600 w-10 h-10 flex items-center justify-center">
+                            <MapPin className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <p className="font-semibold text-gray-900">
+                              {destination.fullName}
+                            </p>
+                            {destination.country && (
+                              <p className="text-sm text-gray-500">{destination.country}</p>
+                            )}
+                          </div>
+                        </button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onMouseDown={(event) => {
+                            event.preventDefault();
+                            handleDestinationSelect(destination, 'tours');
+                          }}
+                          className="text-purple-600 hover:text-purple-800"
+                        >
+                          Tours
+                        </Button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Popular Destinations */}
+              <div className="mt-6">
+                <p className="text-sm text-white/80 mb-3">Popular destinations:</p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {SPOTLIGHT_DESTINATIONS.slice(0, 8).map((destination) => (
+                    <button
+                      key={destination.id || destination.label}
+                      type="button"
+                      onClick={() => handleSpotlightClick(destination)}
+                      className="px-4 py-2 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm text-white text-sm font-medium hover:bg-white/20 transition-colors"
+                    >
+                      {destination.label}
+                    </button>
+                  ))}
                 </div>
               </div>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <div className="flex items-center gap-2">
-                  <UtensilsCrossed className="h-5 w-5 text-green-200" />
-                  <span>3,500+ restaurants</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <BookOpen className="h-5 w-5 text-cyan-200" />
-                  <span>19,000+ travel guides</span>
-                </div>
+            </div>
+
+            {/* Stats - Real numbers only */}
+            <div className="flex flex-wrap gap-6 justify-center text-white/90 text-sm">
+              <div className="flex items-center gap-2">
+                <Ticket className="h-5 w-5 text-yellow-300" />
+                <span>300,000+ tours</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Globe className="h-5 w-5 text-blue-200" />
+                <span>3,300+ destinations</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <UtensilsCrossed className="h-5 w-5 text-green-200" />
+                <span>3,500+ restaurants</span>
               </div>
             </div>
           </motion.div>

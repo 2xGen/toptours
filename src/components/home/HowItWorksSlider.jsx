@@ -21,7 +21,7 @@ const steps = [
   {
     icon: Brain,
     title: 'AI-Powered Best Match',
-    description: 'Get personalized tour and restaurant recommendations that actually fit your travel style. See 0-100% match scores with detailed breakdowns explaining why listings match your preferences.',
+    description: 'See 0-100% match scores on every tour and restaurant with detailed breakdowns explaining why each listing matches your preferences.',
     color: 'from-purple-500 to-pink-500',
     iconColor: 'text-purple-500',
     bgGradient: 'from-purple-50 to-pink-50',
@@ -105,7 +105,7 @@ export default function HowItWorksSlider() {
   const Icon = currentStepData.icon;
 
   return (
-    <section className="py-20 bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-white via-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -113,25 +113,25 @@ export default function HowItWorksSlider() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
             <Sparkles className="w-4 h-4 text-purple-600" />
             <span className="text-sm font-semibold text-gray-700">How It Works</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             How TopTours.ai<span className="text-xs align-super">™</span> Works
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            The first platform with <strong>AI-powered Best Match</strong>. Get personalized tour and restaurant recommendations based on your travel style, preferences, and budget. See match scores on every listing.
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            The first platform with <strong className="text-gray-900">AI-powered Best Match</strong>. Get personalized recommendations that fit your travel style, budget, and group preferences.
           </p>
         </motion.div>
 
         {/* Slider Container */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border-2 border-white/50 overflow-hidden">
-          <div className="relative bg-gradient-to-br from-white via-purple-50/30 to-blue-50/30 p-4 sm:p-6 md:p-8 lg:p-12">
+        <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
+          <div className="relative bg-gradient-to-br from-white via-purple-50/20 to-blue-50/20 p-6 sm:p-8 md:p-12 lg:p-16">
             {/* Step Content */}
-            <div className="min-h-[300px] sm:min-h-[350px] md:min-h-[400px] flex flex-col items-center justify-center">
+            <div className="min-h-[320px] sm:min-h-[380px] md:min-h-[420px] flex flex-col items-center justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentStep}
@@ -165,26 +165,26 @@ export default function HowItWorksSlider() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
                     {currentStepData.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed px-2">
+                  <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed px-2">
                     {currentStepData.description}
                   </p>
 
                   {/* Details */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6 md:mb-8 w-full px-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 mb-6 sm:mb-8 w-full max-w-2xl mx-auto px-2">
                     {currentStepData.details.map((detail, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 + index * 0.1 }}
-                        className={`bg-gradient-to-br ${currentStepData.bgGradient} rounded-xl p-3 sm:p-4 border-2 ${currentStepData.borderColor} shadow-md`}
+                        className={`bg-gradient-to-br ${currentStepData.bgGradient} rounded-lg p-4 sm:p-5 border ${currentStepData.borderColor} shadow-sm hover:shadow-md transition-shadow`}
                       >
-                        <p className="text-xs sm:text-sm font-semibold text-gray-800">{detail}</p>
+                        <p className="text-sm sm:text-base font-semibold text-gray-800 text-center">{detail}</p>
                       </motion.div>
                     ))}
                   </div>
