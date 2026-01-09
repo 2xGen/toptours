@@ -52,22 +52,34 @@ import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { resolveUserPreferences } from '@/lib/preferenceResolution';
 
 // Sticky Price Bar Component - Smart: Shows match score if available, otherwise shows rating/reviews
-function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, travelers: externalTravelers = undefined, setTravelers: externalSetTravelers = undefined }) {
+function StickyPriceBar({ tour, pricing, pricingPerAgeBand = null, viatorUrl, matchScore, travelers: externalTravelers = undefined, setTravelers: externalSetTravelers = undefined }) {
   const pricingInfo = tour?.pricingInfo;
   const ageBands = pricingInfo?.ageBands || [];
   const pricingType = pricingInfo?.type || 'PER_PERSON';
   const isGroupPricing = pricingType === 'UNIT';
 
   // Filter valid age bands (exclude TRAVELER and weird ranges)
+  // Always allow ADULT bands (they often have wide ranges like 18-100)
   const validAgeBands = ageBands.filter(band => {
     if (band.ageBand === 'TRAVELER') return false;
+    
+    // Always allow ADULT age bands (they often have wide ranges like 18-100 or 16-100)
+    if (band.ageBand === 'ADULT') return true;
+    
     const endAge = band.endAge || 99;
     const startAge = band.startAge || 0;
-    return (endAge - startAge) <= 50 && endAge < 100;
+    
+    // Filter out bands with unrealistic ranges (but allow up to 100 for other bands too)
+    return (endAge - startAge) <= 50 && endAge <= 100;
   });
 
-  // Get base price
-  const fromPrice = pricing || tour?.pricing?.summary?.fromPrice || tour?.pricingInfo?.fromPrice || tour?.pricing?.fromPrice || tour?.price || 0;
+  // Get base price - use original pricing from product/search API
+  const fromPrice = pricing || 
+                    tour?.pricing?.summary?.fromPrice || 
+                    tour?.pricingInfo?.fromPrice || 
+                    tour?.pricing?.fromPrice || 
+                    tour?.price || 
+                    0;
 
   // Get rating and review data for Option 3 (Value-focused)
   const rating = tour?.reviews?.combinedAverageRating || tour?.reviews?.averageRating || 0;
@@ -184,7 +196,8 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, travelers: exter
               <div className="flex items-center gap-1.5 flex-shrink-0">
                 {/* Only show Adult age band in sticky bar to save space */}
                 {(() => {
-                  const adultBand = validAgeBands.find(b => b.ageBand === 'ADULT') || validAgeBands[0];
+                  // Always use ADULT band - don't fallback to first band (could be INFANT)
+                  const adultBand = validAgeBands.find(b => b.ageBand === 'ADULT');
                   if (!adultBand) return null;
                   
                   // Get count from travelers object - ensure we're reading from the correct state
@@ -298,7 +311,7 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, travelers: exter
   );
 }
 
-export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], faqs = [], reviews = null, recommendedTours = [] }) {
+export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, pricingPerAgeBand = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], faqs = [], reviews = null, recommendedTours = [] }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   
@@ -2246,6 +2259,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   tour={tour} 
                   viatorBookingUrl={viatorUrl} 
                   pricing={pricing}
+                  pricingPerAgeBand={pricingPerAgeBand}
                   travelers={sharedTravelers}
                   setTravelers={setSharedTravelers}
                 />
@@ -2358,6 +2372,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   tour={tour} 
                   viatorBookingUrl={viatorUrl} 
                   pricing={pricing}
+                  pricingPerAgeBand={pricingPerAgeBand}
                   travelers={sharedTravelers}
                   setTravelers={setSharedTravelers}
                 />
@@ -3008,6 +3023,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   tour={tour} 
                   viatorBookingUrl={viatorUrl} 
                   pricing={pricing}
+                  pricingPerAgeBand={pricingPerAgeBand}
                   travelers={sharedTravelers}
                   setTravelers={setSharedTravelers}
                 />
@@ -3763,6 +3779,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         <StickyPriceBar 
           tour={tour} 
           pricing={pricing} 
+          pricingPerAgeBand={pricingPerAgeBand}
           viatorUrl={viatorUrl} 
           matchScore={matchScore}
           travelers={sharedTravelers}

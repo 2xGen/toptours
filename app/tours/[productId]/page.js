@@ -16,6 +16,7 @@ import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
 import { getCachedReviews } from '@/lib/viatorReviews';
 import { fetchProductRecommendations, fetchRecommendedTours } from '@/lib/viatorRecommendations';
+import { getPricingPerAgeBand } from '@/lib/viatorPricing';
 
 /**
  * Generate metadata for tour detail page
@@ -1144,6 +1145,21 @@ export default async function TourDetailPage({ params }) {
       console.log(`ℹ️ [RECOMMENDATIONS] Preview mode disabled, skipping recommendations`);
     }
 
+    // Fetch accurate pricing per age band from schedules API
+    let pricingPerAgeBand = null;
+    try {
+      console.log(`🔍 [PRICING] Fetching pricing per age band for tour ${productId}...`);
+      pricingPerAgeBand = await getPricingPerAgeBand(productId);
+      if (pricingPerAgeBand && Object.keys(pricingPerAgeBand).length > 0) {
+        console.log(`✅ [PRICING] Fetched pricing for age bands:`, Object.keys(pricingPerAgeBand));
+      } else {
+        console.log(`⚠️ [PRICING] No pricing data available for tour ${productId}`);
+      }
+    } catch (error) {
+      console.error('❌ [PRICING] Error fetching pricing per age band:', error);
+      // Continue without pricing - will use estimates
+    }
+
     // Generate breadcrumb schema for SEO
     const breadcrumbSchema = {
       "@context": "https://schema.org",
@@ -1221,6 +1237,7 @@ export default async function TourDetailPage({ params }) {
           similarTours={similarTours} 
           productId={productId} 
           pricing={pricing}
+          pricingPerAgeBand={pricingPerAgeBand}
           enrichment={tourEnrichment} 
           initialPromotionScore={promotionScore} 
           destinationData={destinationData} 

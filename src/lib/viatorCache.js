@@ -54,17 +54,23 @@ export async function cacheTour(productId, tourData) {
     // Check if tour already exists (with cache_type = 'tour')
     const { data: existing, error: checkError } = await supabase
       .from('viator_cache')
-      .select('id')
+      .select('*')
       .eq('product_id', productId)
       .eq('cache_type', 'tour')
       .maybeSingle(); // Use maybeSingle() instead of single() to avoid error if not found
 
     if (existing) {
+      // Preserve pricingPerAgeBand if it exists in the old cache
+      const existingPricing = existing.tour_data?.pricingPerAgeBand;
+      const updatedTourData = existingPricing 
+        ? { ...tourData, pricingPerAgeBand: existingPricing }
+        : tourData;
+      
       // Update existing record
       const { error } = await supabase
         .from('viator_cache')
         .update({
-          tour_data: tourData,
+          tour_data: updatedTourData,
           cached_at: new Date().toISOString(),
         })
         .eq('product_id', productId)
@@ -88,10 +94,23 @@ export async function cacheTour(productId, tourData) {
       if (error) {
         // If duplicate key error, try updating instead
         if (error.message && error.message.includes('duplicate key') && error.message.includes('idx_viator_cache_product_id_unique')) {
+          // Get existing data to preserve pricingPerAgeBand
+          const { data: existingData } = await supabase
+            .from('viator_cache')
+            .select('tour_data')
+            .eq('product_id', productId)
+            .eq('cache_type', 'tour')
+            .maybeSingle();
+          
+          const existingPricing = existingData?.tour_data?.pricingPerAgeBand;
+          const updatedTourData = existingPricing 
+            ? { ...tourData, pricingPerAgeBand: existingPricing }
+            : tourData;
+          
           const { error: updateError } = await supabase
             .from('viator_cache')
             .update({
-              tour_data: tourData,
+              tour_data: updatedTourData,
               cached_at: new Date().toISOString(),
             })
             .eq('product_id', productId)
