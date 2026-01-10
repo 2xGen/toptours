@@ -2,17 +2,6 @@
   "framework": "nextjs",
   "redirects": [
     {
-      "source": "/(.*)",
-      "destination": "https://toptours.ai/$1",
-      "permanent": true,
-      "has": [
-        {
-          "type": "host",
-          "value": "www.toptours.ai"
-        }
-      ]
-    },
-    {
       "source": "/blog",
       "destination": "/travel-guides",
       "permanent": true
