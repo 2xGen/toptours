@@ -48,14 +48,23 @@ const destinationsWithGuides = new Set(
 
 // Filter destinations without guides
 // Include ALL destination types (CITY, REGION, COUNTRY, etc.) to match the 3,200 total
+// IMPORTANT: Exclude destinations that have full content pages (even if they don't have category guides)
 const destinationsWithoutGuides = viatorDestinationsClassifiedData.filter(dest => {
   const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
   const slug = generateSlug(destName);
   
-  // Include all destination types (not just CITY)
-  // Exclude destinations that have guides
-  return !destinationsWithGuides.has(slug) &&
-         destName.length > 0;
+  // Exclude destinations that have category guides (main destinations)
+  if (destinationsWithGuides.has(slug)) {
+    return false;
+  }
+  
+  // CRITICAL: Exclude destinations that have full content pages
+  // These should be in the main sitemap, not in "destinations-without-guides"
+  if (hasDestinationPage(slug)) {
+    return false;
+  }
+  
+  return destName.length > 0;
 });
 
 console.log(`📊 Total destinations without guides: ${destinationsWithoutGuides.length}`);
@@ -68,21 +77,15 @@ destinationsWithoutGuides.forEach(dest => {
   const destName = dest.destinationName || dest.name;
   const slug = generateSlug(destName);
   
-  // Always include tours page
-  sitemapEntries.push({
-    loc: `https://toptours.ai/destinations/${slug}/tours`,
-    lastmod: today,
-    changefreq: 'weekly',
-    priority: '0.7'
-  });
-  
-  // Include destination page if it exists
-  if (hasDestinationPage(slug)) {
+  // For destinations without guides, ONLY include tours page
+  // DO NOT include main destination page here - those should be in main sitemap
+  // The hasDestinationPage check above already filters these out, but double-check here
+  if (!hasDestinationPage(slug)) {
     sitemapEntries.push({
-      loc: `https://toptours.ai/destinations/${slug}`,
+      loc: `https://toptours.ai/destinations/${slug}/tours`,
       lastmod: today,
       changefreq: 'weekly',
-      priority: '0.8'
+      priority: '0.7'
     });
   }
 });

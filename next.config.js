@@ -31,6 +31,19 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // CRITICAL: Redirect www to non-www to fix canonical URL mismatches
+      // This prevents "Redirect error" and "Alternate page" issues in Google Search Console
+      {
+        source: '/:path*',
+        destination: 'https://toptours.ai/:path*',
+        permanent: true,
+        has: [
+          {
+            type: 'host',
+            value: 'www.toptours.ai',
+          },
+        ],
+      },
       // Redirect old blog subdomain to travel-guides
       {
         source: '/blog',

@@ -1,0 +1,536 @@
+[
+  {
+    "id": "birmingham",
+    "name": "Birmingham",
+    "country": "United States",
+    "state": "AL"
+  },
+  {
+    "id": "gulf-shores",
+    "name": "Gulf Shores",
+    "country": "United States",
+    "state": "AL"
+  },
+  {
+    "id": "huntsville",
+    "name": "Huntsville",
+    "country": "United States",
+    "state": "AL"
+  },
+  {
+    "id": "madison",
+    "name": "Madison",
+    "country": "United States",
+    "state": "AL"
+  },
+  {
+    "id": "mobile",
+    "name": "Mobile",
+    "country": "United States",
+    "state": "AL"
+  },
+  {
+    "id": "montgomery",
+    "name": "Montgomery",
+    "country": "United States",
+    "state": "AL"
+  },
+  {
+    "id": "orange-beach",
+    "name": "Orange Beach",
+    "country": "United States",
+    "state": "AL"
+  },
+  {
+    "id": "anchorage",
+    "name": "Anchorage",
+    "country": "United States",
+    "state": "AK"
+  },
+  {
+    "id": "juneau",
+    "name": "Juneau",
+    "country": "United States",
+    "state": "AK"
+  },
+  {
+    "id": "flagstaff",
+    "name": "Flagstaff",
+    "country": "United States",
+    "state": "AZ"
+  },
+  {
+    "id": "phoenix",
+    "name": "Phoenix",
+    "country": "United States",
+    "state": "AZ"
+  },
+  {
+    "id": "prescott",
+    "name": "Prescott",
+    "country": "United States",
+    "state": "AZ"
+  },
+  {
+    "id": "scottsdale",
+    "name": "Scottsdale",
+    "country": "United States",
+    "state": "AZ"
+  },
+  {
+    "id": "sedona",
+    "name": "Sedona",
+    "country": "United States",
+    "state": "AZ"
+  },
+  {
+    "id": "tucson",
+    "name": "Tucson",
+    "country": "United States",
+    "state": "AZ"
+  },
+  {
+    "id": "fayetteville",
+    "name": "Fayetteville",
+    "country": "United States",
+    "state": "AR"
+  },
+  {
+    "id": "hot-springs",
+    "name": "Hot Springs",
+    "country": "United States",
+    "state": "AR"
+  },
+  {
+    "id": "little-rock",
+    "name": "Little Rock",
+    "country": "United States",
+    "state": "AR"
+  },
+  {
+    "id": "los-angeles",
+    "name": "Los Angeles",
+    "country": "United States",
+    "state": "CA"
+  },
+  {
+    "id": "san-francisco",
+    "name": "San Francisco",
+    "country": "United States",
+    "state": "CA"
+  },
+  {
+    "id": "san-diego",
+    "name": "San Diego",
+    "country": "United States",
+    "state": "CA"
+  },
+  {
+    "id": "sacramento",
+    "name": "Sacramento",
+    "country": "United States",
+    "state": "CA"
+  },
+  {
+    "id": "oakland",
+    "name": "Oakland",
+    "country": "United States",
+    "state": "CA"
+  },
+  {
+    "id": "santa-barbara",
+    "name": "Santa Barbara",
+    "country": "United States",
+    "state": "CA"
+  },
+  {
+    "id": "santa-monica",
+    "name": "Santa Monica",
+    "country": "United States",
+    "state": "CA"
+  },
+  {
+    "id": "palm-springs",
+    "name": "Palm Springs",
+    "country": "United States",
+    "state": "CA"
+  },
+  {
+    "id": "lake-tahoe",
+    "name": "Lake Tahoe",
+    "country": "United States",
+    "state": "CA"
+  },
+  {
+    "id": "denver",
+    "name": "Denver",
+    "country": "United States",
+    "state": "CO"
+  },
+  {
+    "id": "colorado-springs",
+    "name": "Colorado Springs",
+    "country": "United States",
+    "state": "CO"
+  },
+  {
+    "id": "aspen",
+    "name": "Aspen",
+    "country": "United States",
+    "state": "CO"
+  },
+  {
+    "id": "vail",
+    "name": "Vail",
+    "country": "United States",
+    "state": "CO"
+  },
+  {
+    "id": "breckenridge",
+    "name": "Breckenridge",
+    "country": "United States",
+    "state": "CO"
+  },
+  {
+    "id": "boulder",
+    "name": "Boulder",
+    "country": "United States",
+    "state": "CO"
+  },
+  {
+    "id": "estes-park",
+    "name": "Estes Park",
+    "country": "United States",
+    "state": "CO"
+  },
+  {
+    "id": "miami",
+    "name": "Miami",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "orlando",
+    "name": "Orlando",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "tampa",
+    "name": "Tampa",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "jacksonville",
+    "name": "Jacksonville",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "fort-lauderdale",
+    "name": "Fort Lauderdale",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "key-west",
+    "name": "Key West",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "key-largo",
+    "name": "Key Largo",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "naples",
+    "name": "Naples",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "sarasota",
+    "name": "Sarasota",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "st-petersburg",
+    "name": "St. Petersburg",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "west-palm-beach",
+    "name": "West Palm Beach",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "destin",
+    "name": "Destin",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "pensacola",
+    "name": "Pensacola",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "daytona-beach",
+    "name": "Daytona Beach",
+    "country": "United States",
+    "state": "FL"
+  },
+  {
+    "id": "atlanta",
+    "name": "Atlanta",
+    "country": "United States",
+    "state": "GA"
+  },
+  {
+    "id": "savannah",
+    "name": "Savannah",
+    "country": "United States",
+    "state": "GA"
+  },
+  {
+    "id": "honolulu",
+    "name": "Honolulu",
+    "country": "United States",
+    "state": "HI"
+  },
+  {
+    "id": "maui",
+    "name": "Maui",
+    "country": "United States",
+    "state": "HI"
+  },
+  {
+    "id": "kauai",
+    "name": "Kauai",
+    "country": "United States",
+    "state": "HI"
+  },
+  {
+    "id": "oahu",
+    "name": "Oahu",
+    "country": "United States",
+    "state": "HI"
+  },
+  {
+    "id": "chicago",
+    "name": "Chicago",
+    "country": "United States",
+    "state": "IL"
+  },
+  {
+    "id": "new-orleans",
+    "name": "New Orleans",
+    "country": "United States",
+    "state": "LA"
+  },
+  {
+    "id": "boston",
+    "name": "Boston",
+    "country": "United States",
+    "state": "MA"
+  },
+  {
+    "id": "cape-cod",
+    "name": "Cape Cod",
+    "country": "United States",
+    "state": "MA"
+  },
+  {
+    "id": "las-vegas",
+    "name": "Las Vegas",
+    "country": "United States",
+    "state": "NV"
+  },
+  {
+    "id": "reno",
+    "name": "Reno",
+    "country": "United States",
+    "state": "NV"
+  },
+  {
+    "id": "new-york-city",
+    "name": "New York",
+    "country": "United States",
+    "state": "NY"
+  },
+  {
+    "id": "brooklyn",
+    "name": "Brooklyn",
+    "country": "United States",
+    "state": "NY"
+  },
+  {
+    "id": "buffalo",
+    "name": "Buffalo",
+    "country": "United States",
+    "state": "NY"
+  },
+  {
+    "id": "rochester",
+    "name": "Rochester",
+    "country": "United States",
+    "state": "NY"
+  },
+  {
+    "id": "albany",
+    "name": "Albany",
+    "country": "United States",
+    "state": "NY"
+  },
+  {
+    "id": "syracuse",
+    "name": "Syracuse",
+    "country": "United States",
+    "state": "NY"
+  },
+  {
+    "id": "niagara-falls",
+    "name": "Niagara Falls",
+    "country": "United States",
+    "state": "NY"
+  },
+  {
+    "id": "charlotte",
+    "name": "Charlotte",
+    "country": "United States",
+    "state": "NC"
+  },
+  {
+    "id": "asheville",
+    "name": "Asheville",
+    "country": "United States",
+    "state": "NC"
+  },
+  {
+    "id": "raleigh",
+    "name": "Raleigh",
+    "country": "United States",
+    "state": "NC"
+  },
+  {
+    "id": "outer-banks",
+    "name": "Outer Banks",
+    "country": "United States",
+    "state": "NC"
+  },
+  {
+    "id": "portland",
+    "name": "Portland",
+    "country": "United States",
+    "state": "OR"
+  },
+  {
+    "id": "bend",
+    "name": "Bend",
+    "country": "United States",
+    "state": "OR"
+  },
+  {
+    "id": "eugene",
+    "name": "Eugene",
+    "country": "United States",
+    "state": "OR"
+  },
+  {
+    "id": "philadelphia",
+    "name": "Philadelphia",
+    "country": "United States",
+    "state": "PA"
+  },
+  {
+    "id": "pittsburgh",
+    "name": "Pittsburgh",
+    "country": "United States",
+    "state": "PA"
+  },
+  {
+    "id": "houston",
+    "name": "Houston",
+    "country": "United States",
+    "state": "TX"
+  },
+  {
+    "id": "dallas",
+    "name": "Dallas",
+    "country": "United States",
+    "state": "TX"
+  },
+  {
+    "id": "austin",
+    "name": "Austin",
+    "country": "United States",
+    "state": "TX"
+  },
+  {
+    "id": "san-antonio",
+    "name": "San Antonio",
+    "country": "United States",
+    "state": "TX"
+  },
+  {
+    "id": "fort-worth",
+    "name": "Fort Worth",
+    "country": "United States",
+    "state": "TX"
+  },
+  {
+    "id": "galveston",
+    "name": "Galveston",
+    "country": "United States",
+    "state": "TX"
+  },
+  {
+    "id": "el-paso",
+    "name": "El Paso",
+    "country": "United States",
+    "state": "TX"
+  },
+  {
+    "id": "salt-lake-city",
+    "name": "Salt Lake City",
+    "country": "United States",
+    "state": "UT"
+  },
+  {
+    "id": "park-city",
+    "name": "Park City",
+    "country": "United States",
+    "state": "UT"
+  },
+  {
+    "id": "moab",
+    "name": "Moab",
+    "country": "United States",
+    "state": "UT"
+  },
+  {
+    "id": "zion-national-park",
+    "name": "Zion National Park",
+    "country": "United States",
+    "state": "UT"
+  },
+  {
+    "id": "seattle",
+    "name": "Seattle",
+    "country": "United States",
+    "state": "WA"
+  },
+  {
+    "id": "washington-dc",
+    "name": "Washington",
+    "country": "United States",
+    "state": "DC"
+  }
+]

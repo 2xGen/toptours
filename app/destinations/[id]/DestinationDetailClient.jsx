@@ -6,7 +6,7 @@ import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
-  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, Info, Share2, Heart, Crown, Building2, Sparkles, TrendingUp
+  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, Info, Share2, Heart, Crown, Building2, Sparkles, TrendingUp, Baby
 } from 'lucide-react';
 import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import { useRouter } from 'next/navigation';
@@ -73,7 +73,7 @@ function getDisplayCategoryName(categoryName) {
 }
 
 
-export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], promotedTours = [], promotedRestaurants = [], hardcodedTours = {}, restaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [], categoryGuides: categoryGuidesProp = [] }) {
+export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], promotedTours = [], promotedRestaurants = [], hardcodedTours = {}, restaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [], categoryGuides: categoryGuidesProp = [], hasBabyEquipmentRentals = false }) {
   
   // Ensure destination exists
   if (!destination) {
@@ -2194,6 +2194,49 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </div>
         </section>
 
+        {/* Traveling with Kids Section - Only show for destinations with baby equipment rentals */}
+        {hasBabyEquipmentRentals && (
+          <section className="py-12 sm:py-16 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <Card className="bg-white border-2 border-purple-200 shadow-lg">
+                  <CardContent className="p-8">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-4">
+                          <Baby className="w-8 h-8 text-purple-600" />
+                          <h3 className="text-2xl font-bold text-gray-800">Traveling with Kids?</h3>
+                        </div>
+                        <p className="text-gray-700 mb-4 leading-relaxed">
+                          Make traveling with little ones easy! Rent baby equipment in {safeDestination.fullName} - strollers, car seats, cribs, and more delivered directly to your hotel or vacation rental. Save on baggage fees and travel light with BabyQuip.
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          <Badge variant="secondary" className="bg-blue-50 text-blue-700">90,000+ 5-Star Reviews</Badge>
+                          <Badge variant="secondary" className="bg-green-50 text-green-700">Clean & Insured</Badge>
+                          <Badge variant="secondary" className="bg-purple-50 text-purple-700">2,000+ Locations</Badge>
+                        </div>
+                      </div>
+                      <Link href={`/destinations/${safeDestination.id}/baby-equipment-rentals`}>
+                        <Button
+                          size="lg"
+                          className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-8 py-6 text-lg font-semibold whitespace-nowrap"
+                        >
+                          Browse Baby Equipment Rentals
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
+          </section>
+        )}
 
         {/* FAQ Section - Scalable template-based approach */}
         {(safeDestination.bestTimeToVisit || safeDestination.gettingAround || safeDestination.whyVisit?.length > 0 || (safeDestination.highlights && safeDestination.highlights.length > 0) || (safeDestination.tourCategories && safeDestination.tourCategories.length > 0) || (categoryGuidesProp && categoryGuidesProp.length > 0)) && (

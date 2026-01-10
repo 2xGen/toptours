@@ -7,7 +7,7 @@ import { destinations, getDestinationsByCountry } from '@/data/destinationsData'
 import viatorDestinationsData from '@/data/viatorDestinations.json';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
-import { hasDestinationPage, getDestinationFullContent } from '@/data/destinationFullContent';
+import { getDestinationFullContent } from '@/data/destinationFullContent';
 import generatedFullContentData from '../../generated-destination-full-content.json';
 
 // Use classified destinations (has region/country data)
@@ -582,18 +582,16 @@ export default function DestinationsPage() {
                                 </p>
                                 
                                 <div className="mt-auto pt-4 space-y-3">
-                                  {hasDestinationPage(destination.id) && (
-                                    <Button
-                                      asChild
-                                      className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
-                                      onClick={(e) => e.stopPropagation()}
-                                    >
-                                      <Link href={`/destinations/${destination.id}`}>
-                                        Explore {truncateDestinationName(destination.name)}
-                                        <ArrowRight className="ml-2 h-5 w-5" />
-                                      </Link>
-                                    </Button>
-                                  )}
+                                  <Button
+                                    asChild
+                                    className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    <Link href={`/destinations/${destination.id}`}>
+                                      Explore {truncateDestinationName(destination.name)}
+                                      <ArrowRight className="ml-2 h-5 w-5" />
+                                    </Link>
+                                  </Button>
                                   <Button
                                     asChild
                                     variant="secondary"
@@ -662,17 +660,15 @@ export default function DestinationsPage() {
                                 </p>
                                 
                                 <div className="mt-auto pt-4 space-y-3">
-                                  {hasDestinationPage(destination.id) && (
-                                    <Button
-                                      asChild
-                                      className="w-full bg-purple-600 hover:bg-purple-700 text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
-                                    >
-                                      <Link href={`/destinations/${destination.id}`}>
-                                        Explore {truncateDestinationName(destination.name)}
-                                        <ArrowRight className="ml-2 h-5 w-5" />
-                                      </Link>
-                                    </Button>
-                                  )}
+                                  <Button
+                                    asChild
+                                    className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
+                                  >
+                                    <Link href={`/destinations/${destination.id}`}>
+                                      Explore {truncateDestinationName(destination.name)}
+                                      <ArrowRight className="ml-2 h-5 w-5" />
+                                    </Link>
+                                  </Button>
                                   <Button
                                     asChild
                                     variant="secondary"

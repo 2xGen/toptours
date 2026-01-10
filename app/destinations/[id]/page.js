@@ -1,5 +1,5 @@
+import { notFound } from 'next/navigation';
 import { getDestinationById } from '@/data/destinationsData';
-import DestinationDetailClient from './DestinationDetailClient';
 import { getPromotionScoresByDestination, getTrendingToursByDestination, getHardcodedToursByDestination, getTrendingRestaurantsByDestination, getRestaurantPromotionScoresByDestination, getPromotedToursByDestination, getPromotedRestaurantsByDestination } from '@/lib/promotionSystem';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
@@ -10,6 +10,19 @@ import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { redirect } from 'next/navigation';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
+import { getBabyEquipmentRentalsByDestination } from '@/lib/babyEquipmentRentals';
+import DestinationDetailClient from './DestinationDetailClient';
+
+// Helper function to check if destination has baby equipment rentals page
+async function checkBabyEquipmentRentals(destinationId) {
+  try {
+    const pageData = await getBabyEquipmentRentalsByDestination(destinationId);
+    return !!pageData; // Return true if page exists, false otherwise
+  } catch (error) {
+    console.error('Error checking baby equipment rentals:', error);
+    return false;
+  }
+}
 
 // Helper to generate slug
 function generateSlug(name) {
@@ -891,6 +904,7 @@ export default async function DestinationDetailPage({ params }) {
           restaurantPromotionScores={restaurantPromotionScores}
           premiumRestaurantIds={premiumRestaurantIds}
           categoryGuides={categoryGuides}
+          hasBabyEquipmentRentals={await checkBabyEquipmentRentals(destination.id)}
         />
       </ErrorBoundary>
     </>

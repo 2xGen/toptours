@@ -2,6 +2,20 @@ import { getAllDestinations } from '../src/data/destinationsData.js';
 import { travelGuides } from '../src/data/travelGuidesData.js';
 import { getRestaurantCountsByDestination } from '../src/lib/restaurants.js';
 import { createSupabaseServiceRoleClient } from '../src/lib/supabaseClient.js';
+import { hasDestinationPage } from '../src/data/destinationFullContent.js';
+import { getAllBabyEquipmentRentalsDestinations } from '../src/lib/babyEquipmentRentals.js';
+import viatorDestinationsClassifiedData from '../src/data/viatorDestinationsClassified.json';
+
+// Helper to generate slug
+function generateSlug(name) {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
 
 export default async function sitemap() {
   const baseUrl = 'https://toptours.ai';
@@ -86,6 +100,31 @@ export default async function sitemap() {
     priority: 0.8,
   }));
 
+  // Add destinations with full content (but not in curated destinations list)
+  // These should be in the main sitemap, not in "destinations-without-guides"
+  const destinationsWithFullContent = [];
+  if (Array.isArray(viatorDestinationsClassifiedData)) {
+    const curatedSlugs = new Set(destinations.map(d => d.id.toLowerCase()));
+    
+    for (const dest of viatorDestinationsClassifiedData) {
+      if (!dest || !dest.destinationName) continue;
+      const slug = generateSlug(dest.destinationName || dest.name || '');
+      
+      // Skip if already in curated destinations
+      if (curatedSlugs.has(slug)) continue;
+      
+      // Include if has full content page
+      if (hasDestinationPage(slug)) {
+        destinationsWithFullContent.push({
+          url: `${baseUrl}/destinations/${slug}`,
+          lastModified: currentDate,
+          changeFrequency: 'weekly',
+          priority: 0.8,
+        });
+      }
+    }
+  }
+
   // Restaurant listing pages per destination (fetch from database)
   const restaurantCounts = await getRestaurantCountsByDestination();
   const restaurantListingPages = destinations
@@ -155,6 +194,15 @@ export default async function sitemap() {
     priority: 0.8,
   }));
 
+  // Baby equipment rental pages (fetch from database)
+  const babyEquipmentRentalDestinations = await getAllBabyEquipmentRentalsDestinations();
+  const babyEquipmentRentalPages = babyEquipmentRentalDestinations.map((page) => ({
+    url: `${baseUrl}/destinations/${page.destination_id}/baby-equipment-rentals`,
+    lastModified: page.updated_at || currentDate,
+    changeFrequency: 'monthly',
+    priority: 0.75,
+  }));
+
   // Tour sitemap index reference (for 300k+ tours, we use sitemap indexing)
   // Individual tour pages are in separate sitemap files (sitemap-tours-1.xml, etc.)
   // This is referenced in robots.txt
@@ -162,10 +210,12 @@ export default async function sitemap() {
   return [
     ...staticPages,
     ...destinationPages,
+    ...destinationsWithFullContent, // Destinations with full content but not in curated list
     ...tourListingPages,
     ...operatorListingPages,
     ...restaurantListingPages,
     ...restaurantDetailPages,
+    ...babyEquipmentRentalPages, // Baby equipment rental pages
     ...travelGuidePages,
     // Note: Individual tour pages are in sitemap-tours-[index].xml files
     // See app/sitemap-tours-[index]/route.js for dynamic tour sitemap generation

@@ -231,34 +231,44 @@ Redirect 301 /destination/victoria/ https://toptours.ai/
 # ==========================================
 # OPENGRAPH & SEO REWRITE RULES
 # ==========================================
+# NOTE: Static HTML files in dist/ are legacy and should NOT be served
+# Next.js handles all routing and SEO through its own system
+# Removing these rules to prevent redirect loops
+# 
+# DISABLED - Let Next.js handle all routing:
+# # Serve static HTML for social media crawlers and SEO bots - DESTINATIONS
+# RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver|rich-results-test|google-rich-results|search-console) [NC]
+# RewriteCond %{REQUEST_URI} ^/destinations/([^/]+)$
+# RewriteCond %{DOCUMENT_ROOT}/destinations/$1.html -f
+# RewriteRule ^destinations/([^/]+)$ /destinations/$1.html [L]
+#
+# # Serve static HTML for social media crawlers and SEO bots - TRAVEL GUIDES
+# RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver|rich-results-test|google-rich-results|search-console) [NC]
+# RewriteCond %{REQUEST_URI} ^/travel-guides/([^/]+)$
+# RewriteCond %{DOCUMENT_ROOT}/travel-guides/$1.html -f
+# RewriteRule ^travel-guides/([^/]+)$ /travel-guides/$1.html [L]
+#
+# # Serve static HTML for destinations listing page for crawlers
+# RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver) [NC]
+# RewriteCond %{REQUEST_URI} ^/destinations/?$
+# RewriteCond %{DOCUMENT_ROOT}/destinations.html -f
+# RewriteRule ^destinations/?$ /destinations.html [L]
+#
+# # Serve static HTML for travel guides listing page for crawlers
+# RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver) [NC]
+# RewriteCond %{REQUEST_URI} ^/travel-guides/?$
+# RewriteCond %{DOCUMENT_ROOT}/travel-guides.html -f
+# RewriteRule ^travel-guides/?$ /travel-guides.html [L]
 
-# Serve static HTML for social media crawlers and SEO bots - DESTINATIONS
-RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver|rich-results-test|google-rich-results|search-console) [NC]
-RewriteCond %{REQUEST_URI} ^/destinations/([^/]+)$
-RewriteCond %{DOCUMENT_ROOT}/destinations/$1.html -f
-RewriteRule ^destinations/([^/]+)$ /destinations/$1.html [L]
+# CRITICAL: Block access to legacy static HTML files in dist/destinations/ that cause redirect loops
+# These files should NOT be accessible - Next.js handles all routing
+RewriteCond %{REQUEST_URI} ^/destinations/([^/]+)\.html$
+RewriteRule ^destinations/([^/]+)\.html$ - [F,L]
 
-# Serve static HTML for social media crawlers and SEO bots - TRAVEL GUIDES
-RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver|rich-results-test|google-rich-results|search-console) [NC]
-RewriteCond %{REQUEST_URI} ^/travel-guides/([^/]+)$
-RewriteCond %{DOCUMENT_ROOT}/travel-guides/$1.html -f
-RewriteRule ^travel-guides/([^/]+)$ /travel-guides/$1.html [L]
-
-# Serve static HTML for destinations listing page for crawlers
-RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver) [NC]
-RewriteCond %{REQUEST_URI} ^/destinations/?$
-RewriteCond %{DOCUMENT_ROOT}/destinations.html -f
-RewriteRule ^destinations/?$ /destinations.html [L]
-
-# Serve static HTML for travel guides listing page for crawlers
-RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Telegram|Slack|Discord|Skype|Viber|Line|Kik|WeChat|QQ|Baiduspider|Googlebot|bingbot|YandexBot|DuckDuckBot|Slurp|ia_archiver) [NC]
-RewriteCond %{REQUEST_URI} ^/travel-guides/?$
-RewriteCond %{DOCUMENT_ROOT}/travel-guides.html -f
-RewriteRule ^travel-guides/?$ /travel-guides.html [L]
-
-# Handle individual destination pages for users - serve React app (must come after bot rules)
-RewriteCond %{REQUEST_URI} ^/destinations/([^/]+)$
-RewriteRule ^destinations/([^/]+)$ index.html [L]
+# Handle individual destination pages - let Next.js handle this (DO NOT route to index.html for Next.js)
+# Next.js will handle this through its own routing system
+# RewriteCond %{REQUEST_URI} ^/destinations/([^/]+)$
+# RewriteRule ^destinations/([^/]+)$ index.html [L]
 
 # Handle individual travel guide pages for users - serve React app (must come after bot rules)
 RewriteCond %{REQUEST_URI} ^/travel-guides/([^/]+)$
