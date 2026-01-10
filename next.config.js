@@ -32,7 +32,7 @@ const nextConfig = {
   async redirects() {
     return [
       // Redirect old blog subdomain to travel-guides
-      // NOTE: www to non-www redirect is handled in vercel.json (edge-level redirect)
+      // NOTE: www to non-www redirect should be configured in Vercel domain settings, not in code
       {
         source: '/blog',
         destination: '/travel-guides',
