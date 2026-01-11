@@ -76,6 +76,7 @@ const FooterNext = () => {
             <ul className="space-y-2">
               <li><Link href="/partners/tour-operators" className="text-gray-300 hover:text-white transition-colors">Tour Operators</Link></li>
               <li><Link href="/partners/restaurants" className="text-gray-300 hover:text-white transition-colors">Restaurants</Link></li>
+              <li><Link href="/affiliates" className="text-gray-300 hover:text-white transition-colors">Affiliate Program</Link></li>
             </ul>
           </div>
 
