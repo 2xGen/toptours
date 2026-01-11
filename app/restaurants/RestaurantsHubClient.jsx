@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
@@ -10,15 +10,23 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Search, MapPin, ArrowRight, UtensilsCrossed } from 'lucide-react';
+import { Search, MapPin, ArrowRight } from 'lucide-react';
 
-export default function RestaurantsHubClient({ destinations, totalRestaurants = 0 }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
-  const handleOpenModal = () => setIsModalOpen(true);
-  const handleCloseModal = () => setIsModalOpen(false);
+export default function RestaurantsHubClient({ 
+  destinations, 
+  totalDestinations = 0,
+  totalRestaurants = 0,
+  currentPage = 1,
+  totalPages = 1,
+  onPageChange,
+  searchTerm = '',
+  selectedCategory = 'All',
+  onSearchChange,
+  onCategoryChange,
+  onOpenModal,
+  onCloseModal,
+  isModalOpen
+}) {
 
   // Get unique categories from destinations in specific order
   const categories = useMemo(() => {
@@ -43,35 +51,6 @@ export default function RestaurantsHubClient({ destinations, totalRestaurants = 
     });
   }, [destinations]);
 
-  // Filter destinations
-  const filteredDestinations = useMemo(() => {
-    return destinations
-      .filter((dest) => {
-        const matchesSearch =
-          !searchTerm.trim() ||
-          dest.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          dest.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          dest.country?.toLowerCase().includes(searchTerm.toLowerCase());
-
-        const matchesCategory =
-          selectedCategory === 'All' || dest.category === selectedCategory;
-
-        return matchesSearch && matchesCategory;
-      })
-      .sort((a, b) => {
-        // Sort alphabetically by name (A to Z)
-        return a.name.localeCompare(b.name);
-      });
-  }, [destinations, searchTerm, selectedCategory]);
-
-  // Calculate total destinations count for the selected category (before search filter)
-  const totalDestinationsInCategory = useMemo(() => {
-    if (selectedCategory === 'All') {
-      return destinations.length;
-    }
-    return destinations.filter((dest) => dest.category === selectedCategory).length;
-  }, [destinations, selectedCategory]);
-
   // Calculate total restaurants for the selected category
   const totalRestaurantsInCategory = useMemo(() => {
     if (selectedCategory === 'All') {
@@ -82,20 +61,9 @@ export default function RestaurantsHubClient({ destinations, totalRestaurants = 
       .reduce((sum, dest) => sum + (dest.restaurantCount || 0), 0);
   }, [destinations, selectedCategory, totalRestaurants]);
 
-  const handleSearchChange = (value) => {
-    setSearchTerm(value);
-    if (value.trim() && selectedCategory !== 'All') {
-      setSelectedCategory('All');
-    }
-  };
-
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-  };
-
   return (
     <>
-      <NavigationNext onOpenModal={handleOpenModal} />
+      <NavigationNext onOpenModal={onOpenModal} />
 
       <div className="min-h-screen flex flex-col bg-gray-50" suppressHydrationWarning>
         <main className="flex-grow">
@@ -122,7 +90,7 @@ export default function RestaurantsHubClient({ destinations, totalRestaurants = 
                         <Input
                           placeholder="Search destinations..."
                           value={searchTerm}
-                          onChange={(e) => handleSearchChange(e.target.value)}
+                          onChange={(e) => onSearchChange(e.target.value)}
                           className="pl-10 h-12 bg-white/90 border-0 text-gray-800 placeholder:text-gray-500"
                         />
                       </div>
@@ -155,7 +123,7 @@ export default function RestaurantsHubClient({ destinations, totalRestaurants = 
                   <Button
                     key={category}
                     variant={selectedCategory === category ? 'default' : 'outline'}
-                    onClick={() => handleCategoryChange(category)}
+                    onClick={() => onCategoryChange(category)}
                     className={
                       selectedCategory === category
                         ? 'sunset-gradient text-white'
@@ -171,7 +139,7 @@ export default function RestaurantsHubClient({ destinations, totalRestaurants = 
 
           <section className="py-20 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              {filteredDestinations.length > 0 ? (
+              {destinations.length > 0 ? (
                 <>
                   <div className="mb-8">
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">
@@ -182,8 +150,8 @@ export default function RestaurantsHubClient({ destinations, totalRestaurants = 
                     <p className="text-lg text-gray-600">
                       {searchTerm.trim() ? (
                         <>
-                          Showing {filteredDestinations.length}{' '}
-                          {filteredDestinations.length === 1
+                          Showing {destinations.length} of {totalDestinations}{' '}
+                          {destinations.length === 1
                             ? 'destination'
                             : 'destinations'}{' '}
                           matching "{searchTerm}"
@@ -192,13 +160,13 @@ export default function RestaurantsHubClient({ destinations, totalRestaurants = 
                           )}
                           {' • '}
                           <span className="font-semibold text-gray-900">
-                            {filteredDestinations.reduce((sum, dest) => sum + (dest.restaurantCount || 0), 0).toLocaleString()} restaurants
+                            {destinations.reduce((sum, dest) => sum + (dest.restaurantCount || 0), 0).toLocaleString()} restaurants
                           </span>
                         </>
                       ) : (
                         <>
-                          Showing {filteredDestinations.length}{' '}
-                          {filteredDestinations.length === 1
+                          Showing {destinations.length} of {totalDestinations}{' '}
+                          {destinations.length === 1
                             ? 'destination'
                             : 'destinations'}
                           {selectedCategory !== 'All' && (
@@ -214,7 +182,7 @@ export default function RestaurantsHubClient({ destinations, totalRestaurants = 
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {filteredDestinations.map((destination, index) => (
+                    {destinations.map((destination, index) => (
                       <motion.div
                         key={`${destination.id}-${index}-${destination.restaurantCount || 0}`}
                         initial={{ opacity: 0, y: 30 }}
@@ -286,6 +254,54 @@ export default function RestaurantsHubClient({ destinations, totalRestaurants = 
                       </motion.div>
                     ))}
                   </div>
+
+                  {/* Pagination */}
+                  {totalPages > 1 && (
+                    <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-12 w-full">
+                      <Button
+                        variant="outline"
+                        onClick={() => onPageChange(Math.max(1, currentPage - 1))}
+                        disabled={currentPage === 1}
+                        className="bg-white disabled:opacity-50 w-full sm:w-auto"
+                      >
+                        Previous
+                      </Button>
+
+                      <div className="flex flex-wrap justify-center gap-2 max-w-full">
+                        {Array.from({ length: Math.min(totalPages, 10) }, (_, i) => i + 1).map(page => (
+                          <Button
+                            key={page}
+                            variant={currentPage === page ? "default" : "outline"}
+                            onClick={() => onPageChange(page)}
+                            className={`${currentPage === page ? "sunset-gradient text-white" : "bg-white"} min-w-[48px]`}
+                          >
+                            {page}
+                          </Button>
+                        ))}
+                        {totalPages > 10 && (
+                          <>
+                            <span className="px-2 text-gray-500">...</span>
+                            <Button
+                              variant={currentPage === totalPages ? "default" : "outline"}
+                              onClick={() => onPageChange(totalPages)}
+                              className={`${currentPage === totalPages ? "sunset-gradient text-white" : "bg-white"} min-w-[48px]`}
+                            >
+                              {totalPages}
+                            </Button>
+                          </>
+                        )}
+                      </div>
+
+                      <Button
+                        variant="outline"
+                        onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
+                        disabled={currentPage === totalPages}
+                        className="bg-white disabled:opacity-50 w-full sm:w-auto"
+                      >
+                        Next
+                      </Button>
+                    </div>
+                  )}
                 </>
               ) : (
                 <div className="text-center py-20">
@@ -296,8 +312,8 @@ export default function RestaurantsHubClient({ destinations, totalRestaurants = 
                   </p>
                   <Button
                     onClick={() => {
-                      setSearchTerm('');
-                      setSelectedCategory('All');
+                      onSearchChange('');
+                      onCategoryChange('All');
                     }}
                     variant="outline"
                   >
@@ -312,7 +328,7 @@ export default function RestaurantsHubClient({ destinations, totalRestaurants = 
 
       <FooterNext />
 
-      <SmartTourFinder isOpen={isModalOpen} onClose={handleCloseModal} />
+      <SmartTourFinder isOpen={isModalOpen} onClose={onCloseModal} />
     </>
   );
 }

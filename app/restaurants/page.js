@@ -1,6 +1,6 @@
 import { destinations } from '@/data/destinationsData';
 import { getRestaurantCountsByDestination } from '@/lib/restaurants';
-import RestaurantsHubClient from './RestaurantsHubClient';
+import RestaurantsPageClient from './RestaurantsPageClient';
 
 export async function generateMetadata() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://toptours.ai';
@@ -66,6 +66,6 @@ export default async function RestaurantsPage() {
     0
   );
 
-  return <RestaurantsHubClient destinations={destinationsWithRestaurants} totalRestaurants={totalRestaurants} />;
+  return <RestaurantsPageClient destinations={destinationsWithRestaurants} totalRestaurants={totalRestaurants} />;
 }
 
