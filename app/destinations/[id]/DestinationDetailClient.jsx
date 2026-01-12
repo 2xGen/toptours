@@ -2205,29 +2205,30 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 viewport={{ once: true }}
               >
                 <Card className="bg-white border-2 border-purple-200 shadow-lg">
-                  <CardContent className="p-8">
-                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-4">
-                          <Baby className="w-8 h-8 text-purple-600" />
-                          <h3 className="text-2xl font-bold text-gray-800">Traveling with Kids?</h3>
+                  <CardContent className="p-4 sm:p-6 lg:p-8">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
+                      <div className="flex-1 w-full md:w-auto">
+                        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                          <Baby className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600 flex-shrink-0" />
+                          <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Traveling with Kids?</h3>
                         </div>
-                        <p className="text-gray-700 mb-4 leading-relaxed">
+                        <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4 leading-relaxed">
                           Make traveling with little ones easy! Rent baby equipment in {safeDestination.fullName} - strollers, car seats, cribs, and more delivered directly to your hotel or vacation rental. Save on baggage fees and travel light with BabyQuip.
                         </p>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          <Badge variant="secondary" className="bg-blue-50 text-blue-700">90,000+ 5-Star Reviews</Badge>
-                          <Badge variant="secondary" className="bg-green-50 text-green-700">Clean & Insured</Badge>
-                          <Badge variant="secondary" className="bg-purple-50 text-purple-700">2,000+ Locations</Badge>
+                        <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
+                          <Badge variant="secondary" className="bg-blue-50 text-blue-700 text-xs sm:text-sm">90,000+ 5-Star Reviews</Badge>
+                          <Badge variant="secondary" className="bg-green-50 text-green-700 text-xs sm:text-sm">Clean & Insured</Badge>
+                          <Badge variant="secondary" className="bg-purple-50 text-purple-700 text-xs sm:text-sm">2,000+ Locations</Badge>
                         </div>
                       </div>
-                      <Link href={`/destinations/${safeDestination.id}/baby-equipment-rentals`}>
+                      <Link href={`/destinations/${safeDestination.id}/baby-equipment-rentals`} className="w-full md:w-auto">
                         <Button
                           size="lg"
-                          className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-8 py-6 text-lg font-semibold whitespace-nowrap"
+                          className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 w-full md:w-auto md:px-8 px-4 py-4 sm:py-6 text-sm sm:text-base md:text-lg font-semibold"
                         >
-                          Browse Baby Equipment Rentals
-                          <ArrowRight className="ml-2 h-5 w-5" />
+                          <span className="hidden sm:inline">Browse Baby Equipment Rentals</span>
+                          <span className="sm:hidden">Browse Rentals</span>
+                          <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                         </Button>
                       </Link>
                     </div>
