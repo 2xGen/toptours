@@ -25,58 +25,31 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
     hasBabyEquipmentRentals
   ] = await Promise.allSettled([
     // Promotion scores
-    getPromotionScoresByDestination(destinationIdForScores).catch(error => {
-      console.error('Error fetching promotion scores:', error);
-      return {};
-    }),
+    getPromotionScoresByDestination(destinationIdForScores).catch(() => ({})),
     
     // Trending tours
-    getTrendingToursByDestination(destinationIdForScores, 3).catch(error => {
-      console.error('Error fetching trending tours:', error);
-      return [];
-    }),
+    getTrendingToursByDestination(destinationIdForScores, 3).catch(() => []),
     
     // Trending restaurants
-    getTrendingRestaurantsByDestination(destination.id, 3).catch(error => {
-      console.error('Error fetching trending restaurants:', error);
-      return [];
-    }),
+    getTrendingRestaurantsByDestination(destination.id, 3).catch(() => []),
     
     // Promoted tour data (just IDs first)
-    getPromotedToursByDestination(destinationIdForScores, 6).catch(error => {
-      console.error('Error fetching promoted tour data:', error);
-      return [];
-    }),
+    getPromotedToursByDestination(destinationIdForScores, 6).catch(() => []),
     
     // Promoted restaurant data
-    getPromotedRestaurantsByDestination(destination.id, 6).catch(error => {
-      console.error('Error fetching promoted restaurant data:', error);
-      return [];
-    }),
+    getPromotedRestaurantsByDestination(destination.id, 6).catch(() => []),
     
     // Restaurant promotion scores
-    getRestaurantPromotionScoresByDestination(destination.id).catch(error => {
-      console.error('Error fetching restaurant promotion scores:', error);
-      return {};
-    }),
+    getRestaurantPromotionScoresByDestination(destination.id).catch(() => ({})),
     
     // Premium restaurant IDs
-    getPremiumRestaurantIds(destination.id).then(set => Array.from(set)).catch(error => {
-      console.error('Error fetching premium restaurant IDs:', error);
-      return [];
-    }),
+    getPremiumRestaurantIds(destination.id).then(set => Array.from(set)).catch(() => []),
     
     // Hardcoded tours (lightweight - no API calls)
-    getHardcodedToursByDestination(destination.id).catch(error => {
-      console.error('Error fetching hardcoded tours:', error);
-      return {};
-    }),
+    getHardcodedToursByDestination(destination.id).catch(() => ({})),
     
     // Category guides
-    getAllCategoryGuidesForDestination(destination.id).catch(error => {
-      console.error('Error fetching category guides:', error);
-      return [];
-    }),
+    getAllCategoryGuidesForDestination(destination.id).catch(() => []),
     
     // Restaurants (only if env vars are available)
     (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -86,16 +59,12 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
               try {
                 return formatRestaurantForFrontend(restaurant);
               } catch (err) {
-                console.error('Error formatting restaurant:', err, restaurant?.id);
                 return null;
               }
             })
             .filter(Boolean)
           )
-          .catch(error => {
-            console.error('Error fetching restaurants (non-fatal):', error.message);
-            return [];
-          })
+          .catch(() => [])
       : Promise.resolve([])
     ),
     
@@ -191,7 +160,6 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
             if (response.ok) {
               tour = await response.json();
             } else {
-              console.warn(`Failed to fetch promoted tour ${productId}: ${response.status}`);
               return null;
             }
           }
@@ -206,7 +174,6 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
             product_id: productId,
           };
         } catch (error) {
-          console.error(`Error fetching promoted tour ${productId}:`, error);
           return null;
         }
       });
@@ -214,11 +181,8 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
       const fetchedTours = await Promise.all(fetchPromises);
       promotedTours = fetchedTours.filter(t => t !== null);
       
-      if (promotedTours.length > 0) {
-        console.log(`✅ Destination Page - Successfully fetched ${promotedTours.length} promoted tour(s) with full data`);
-      }
     } catch (error) {
-      console.error('Error fetching promoted tours:', error);
+      // Silently continue - promoted tours are optional
     }
   }
 
@@ -231,10 +195,6 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
     promotedRestaurants = result.restaurants.filter(r => 
       r.id && promotedRestaurantIds.has(String(r.id))
     );
-    
-    console.log(`🔍 [Destination Page] Matching promoted restaurants:`);
-    console.log(`  - Promoted restaurant IDs from DB:`, Array.from(promotedRestaurantIds));
-    console.log(`  - Matched ${promotedRestaurants.length} promoted restaurant(s)`);
   }
 
   return {

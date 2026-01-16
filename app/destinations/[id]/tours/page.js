@@ -254,7 +254,7 @@ export default async function ToursListingPage({ params }) {
           redirect(`/destinations/${slug}/tours`);
         }
       } catch (error) {
-        console.warn(`Supabase lookup failed for ${viatorDestinationId}, trying fallback:`, error);
+        // Continue with fallback
       }
       
       // Fallback to JSON file lookup
@@ -405,11 +405,9 @@ export default async function ToursListingPage({ params }) {
     const dbDestination = await getViatorDestinationBySlug(id);
     if (dbDestination && dbDestination.id) {
       viatorDestinationId = dbDestination.id.toString();
-      console.log(`🔍 Tours Page - Curated destination "${id}": Using database ID = ${viatorDestinationId} (name: ${dbDestination.name})`);
     } else {
       // Fallback to hardcoded map if database lookup fails
       viatorDestinationId = slugToViatorId[id] || null;
-      console.log(`⚠️ Tours Page - Curated destination "${id}": Database lookup failed, using fallback slugToViatorId = ${viatorDestinationId}`);
     }
     // CRITICAL: Add destinationId to destination object for 182 destinations
     // This ensures consistency with destination detail page
@@ -429,8 +427,6 @@ export default async function ToursListingPage({ params }) {
       });
       if (classifiedDest?.destinationId) {
         viatorDestinationId = classifiedDest.destinationId;
-        console.log(`🔍 Tours Page - Viator destination "${id}": Using classified data ID = ${viatorDestinationId}`);
-        // Also update destination object
         if (!destination.destinationId) {
           destination.destinationId = viatorDestinationId;
         }
@@ -494,12 +490,6 @@ export default async function ToursListingPage({ params }) {
         errorData = { error: 'Failed to parse error response', details: e.message };
       }
       
-      console.error('API Error Response:', {
-        status: response.status,
-        statusText: response.statusText,
-        errorData: errorData
-      });
-      
       const errorMessage = errorData.error || errorData.details || errorData.message || `HTTP ${response.status}`;
       throw new Error(`Failed to fetch tours: ${response.status} - ${errorMessage}`);
     }
@@ -537,7 +527,7 @@ export default async function ToursListingPage({ params }) {
     
     // Keep production logs clean (debug logging removed)
   } catch (error) {
-    console.error('Error fetching dynamic tours:', error);
+    // Continue with empty dynamic tours
   }
 
   // Fetch all promotion scores for this destination
@@ -651,7 +641,6 @@ export default async function ToursListingPage({ params }) {
     
     // Fetch missing promoted tours directly from Viator API
     if (missingProductIds.length > 0) {
-      console.log(`📥 Fetching ${missingProductIds.length} missing promoted tours from Viator API`);
       const apiKey = process.env.VIATOR_API_KEY;
       if (apiKey) {
         const fetchPromises = missingProductIds.slice(0, 6).map(async (productId) => {
@@ -669,21 +658,16 @@ export default async function ToursListingPage({ params }) {
             });
             
             if (response.ok) {
-              const tour = await response.json();
-              return tour;
-            } else {
-              console.warn(`Failed to fetch promoted tour ${productId}: ${response.status}`);
-              return null;
+              return await response.json();
             }
+            return null;
           } catch (error) {
-            console.error(`Error fetching promoted tour ${productId}:`, error);
             return null;
           }
         });
         
         const fetchedTours = await Promise.all(fetchPromises);
-        const validFetchedTours = fetchedTours.filter(t => t !== null);
-        promotedTours = [...foundPromotedTours, ...validFetchedTours];
+        promotedTours = [...foundPromotedTours, ...fetchedTours.filter(Boolean)];
       } else {
         promotedTours = foundPromotedTours;
       }
@@ -691,8 +675,7 @@ export default async function ToursListingPage({ params }) {
       promotedTours = foundPromotedTours;
     }
   } catch (error) {
-    console.error('Error fetching promoted tours:', error);
-    // Continue with empty array - page will still work
+    // Continue with empty array
   }
   
   // Process promoted restaurants (using data fetched in parallel above)
@@ -711,7 +694,7 @@ export default async function ToursListingPage({ params }) {
       }
     }
   } catch (error) {
-    console.error('Error processing promoted restaurants:', error);
+    // Continue with empty promoted restaurants
     // Continue with empty array - page will still work
   }
 
@@ -740,7 +723,7 @@ export default async function ToursListingPage({ params }) {
         }
       }
     } catch (error) {
-      console.warn('Could not fetch restaurant data (non-critical):', error.message || error);
+      // Continue with empty restaurants
       // Non-critical - continue without restaurants
     }
   }

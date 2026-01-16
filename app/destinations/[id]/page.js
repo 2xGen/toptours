@@ -151,7 +151,7 @@ export default async function DestinationDetailPage({ params }) {
         redirect(`/destinations/${slug}`);
       }
     } catch (error) {
-      console.warn(`Failed to lookup destination ${id} from Supabase:`, error);
+      // Continue without database lookup - fallback to static data
     }
   }
   
@@ -223,13 +223,6 @@ export default async function DestinationDetailPage({ params }) {
               // Fallback to first match
               classifiedDest = bestMatch || matches[0];
               
-              // Log warning if we had to choose between multiple matches
-              if (matches.length > 1 && !bestMatch) {
-                console.warn(`⚠️ Multiple destination IDs found for "${searchName}":`, 
-                  matches.map(m => `${m.destinationId} (${m.type}, ${m.country})`).join(', '),
-                  '- Using:', classifiedDest.destinationId
-                );
-              }
             }
           }
           
@@ -253,13 +246,12 @@ export default async function DestinationDetailPage({ params }) {
                   region = parentDest.region;
                 }
               } catch (error) {
-                console.error('Error finding parent destination:', error);
+                // Continue without parent destination data
               }
             }
           }
         }
       } catch (error) {
-        console.error('Error processing viatorDestinationsClassifiedData:', error);
         // Continue without classified data - not critical
       }
       
@@ -269,9 +261,6 @@ export default async function DestinationDetailPage({ params }) {
       // CRITICAL: Get destinationId from classified data (100% available as user confirmed)
       const viatorDestinationId = classifiedDest?.destinationId || fullContent?.destinationId;
       
-      if (!viatorDestinationId) {
-        console.warn(`⚠️ No destinationId found for ${destName} (slug: ${id}). Tours may show incorrectly.`);
-      }
       
       // Check if this is a small destination with a parent country (especially Caribbean)
       let parentCountryDestination = null;
@@ -297,7 +286,6 @@ export default async function DestinationDetailPage({ params }) {
           }
         }
       } catch (error) {
-        console.error('Error finding parent country destination:', error);
         // Continue without parent country - not critical
       }
       
@@ -352,7 +340,6 @@ export default async function DestinationDetailPage({ params }) {
     slugToViatorId = viatorMap.slugToViatorId || {};
     isCuratedDestination = destination.id && slugToViatorId[destination.id];
   } catch (error) {
-    console.error('Error importing viatorDestinationMap:', error);
     // Continue without the map - will use database lookup only
   }
 
@@ -362,41 +349,18 @@ export default async function DestinationDetailPage({ params }) {
       const dbDestination = await getViatorDestinationBySlug(destination.id);
       if (dbDestination && dbDestination.id) {
         destination.destinationId = dbDestination.id.toString();
-        console.log(`✅ Destination Detail Page - Added destinationId ${destination.destinationId} from database for ${destination.id} (name: ${dbDestination.name})`);
-      } else {
-        // Fallback to hardcoded map if database lookup fails
-        if (slugToViatorId[destination.id]) {
-          destination.destinationId = slugToViatorId[destination.id];
-          console.log(`⚠️ Destination Detail Page - Database lookup failed for ${destination.id}, using fallback slugToViatorId = ${destination.destinationId}`);
-        }
+      } else if (slugToViatorId[destination.id]) {
+        destination.destinationId = slugToViatorId[destination.id];
       }
     } catch (error) {
-      console.error(`Error looking up destination ${destination.id} in database:`, error);
-      // Fallback to hardcoded map if available
       if (slugToViatorId[destination.id]) {
         destination.destinationId = slugToViatorId[destination.id];
-        console.log(`⚠️ Destination Detail Page - Using fallback slugToViatorId = ${destination.destinationId} due to database error`);
       }
     }
   }
   
-  // CRITICAL: Use the SAME destination ID that we use for fetching tours
-  // This ensures promotions match the tours being displayed
-  // destination.destinationId is set from database lookup (getViatorDestinationBySlug) above
-  // This ensures consistency between tours and promotions
-  let destinationIdForScores;
-  
-  // Use the destinationId from destination object (set from database lookup above)
-  // This is the same ID we use for fetching tours, ensuring consistency
-  if (destination.destinationId) {
-    // Use the database-derived destination ID (numeric Viator ID)
-    destinationIdForScores = destination.destinationId;
-    console.log(`✅ Destination Page - Using destination.destinationId ${destinationIdForScores} for promotions (same as tours)`);
-  } else {
-    // Fallback: use slug, promotion function will look up numeric ID
-    destinationIdForScores = destination.id;
-    console.log(`⚠️ Destination Page - Using slug ${destinationIdForScores} for promotions (destination.destinationId not set)`);
-  }
+  // Use the same destination ID for promotions as we use for tours
+  const destinationIdForScores = destination.destinationId || destination.id;
   
   // Fetch all destination data in parallel for better performance
   const {

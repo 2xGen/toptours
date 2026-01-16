@@ -157,17 +157,13 @@ export default async function RestaurantsIndexPage({ params }) {
       );
     }
   } catch (error) {
-    console.error('Error processing promoted restaurants:', error);
-    // Continue with empty array - page will still work
+    // Continue with empty promoted restaurants
   }
   
   // Fetch full promoted tour data (after we have the IDs)
   let promotedTours = [];
   try {
     if (promotedTourData.length > 0 && destinationIdForScores) {
-      console.log(`✅ Restaurants Page - Found ${promotedTourData.length} promoted tour product ID(s) for ${id}`);
-      
-      // Fetch full tour data for each promoted tour
       const { getCachedTour } = await import('@/lib/viatorCache');
       const apiKey = process.env.VIATOR_API_KEY;
       
@@ -176,10 +172,8 @@ export default async function RestaurantsIndexPage({ params }) {
         if (!productId) return null;
         
         try {
-          // Try to get cached tour first
           let tour = await getCachedTour(productId);
           
-          // If not cached, fetch from Viator API
           if (!tour && apiKey) {
             const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
             const response = await fetch(url, {
@@ -196,14 +190,12 @@ export default async function RestaurantsIndexPage({ params }) {
             if (response.ok) {
               tour = await response.json();
             } else {
-              console.warn(`Failed to fetch promoted tour ${productId}: ${response.status}`);
               return null;
             }
           }
           
           if (!tour) return null;
           
-          // Return tour with product_id for matching
           return {
             ...tour,
             productId: productId,
@@ -211,21 +203,14 @@ export default async function RestaurantsIndexPage({ params }) {
             product_id: productId,
           };
         } catch (error) {
-          console.error(`Error fetching promoted tour ${productId}:`, error);
           return null;
         }
       });
       
-      const fetchedTours = await Promise.all(fetchPromises);
-      promotedTours = fetchedTours.filter(t => t !== null);
-      
-      if (promotedTours.length > 0) {
-        console.log(`✅ Restaurants Page - Successfully fetched ${promotedTours.length} promoted tour(s) with full data`);
-      }
+      promotedTours = (await Promise.all(fetchPromises)).filter(Boolean);
     }
   } catch (error) {
-    console.error('Error fetching promoted tours:', error);
-    // Continue with empty array - page will still work
+    // Continue with empty promoted tours
   }
 
   // ItemList schema for restaurant listing page
