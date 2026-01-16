@@ -615,7 +615,7 @@ export default function DestinationsPageClient({
                             className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
                             onClick={(e) => e.stopPropagation()}
                           >
-                            <Link href={`/destinations/${destination.id}`}>
+                            <Link href={`/destinations/${destination.id}`} prefetch={true}>
                               Explore {truncateDestinationName(destination.name)}
                               <ArrowRight className="ml-2 h-5 w-5" />
                             </Link>
@@ -626,7 +626,7 @@ export default function DestinationsPageClient({
                             className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
                             onClick={(e) => e.stopPropagation()}
                           >
-                            <Link href={`/destinations/${destination.id}/tours`}>
+                            <Link href={`/destinations/${destination.id}/tours`} prefetch={true}>
                               View Top Tours in {truncateDestinationName(destination.name)}
                               <ArrowRight className="ml-2 h-5 w-5" />
                             </Link>
@@ -694,7 +694,7 @@ export default function DestinationsPageClient({
                             asChild
                             className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
                           >
-                            <Link href={`/destinations/${destination.id}`}>
+                            <Link href={`/destinations/${destination.id}`} prefetch={true}>
                               Explore {truncateDestinationName(destination.name)}
                               <ArrowRight className="ml-2 h-5 w-5" />
                             </Link>
@@ -704,7 +704,7 @@ export default function DestinationsPageClient({
                             variant="secondary"
                             className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
                           >
-                            <Link href={`/destinations/${destination.id}/tours`}>
+                            <Link href={`/destinations/${destination.id}/tours`} prefetch={true}>
                               View Top Tours in {truncateDestinationName(destination.name)}
                               <ArrowRight className="ml-2 h-5 w-5" />
                             </Link>
@@ -935,7 +935,7 @@ export default function DestinationsPageClient({
                           </p>
                           <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 mb-3">
                             {otherDestinationsInCountry.slice(0, showMoreCountryDestinations).map((otherDest) => (
-                              <Link key={otherDest.id} href={`/destinations/${otherDest.id}/tours`}>
+                              <Link key={otherDest.id} href={`/destinations/${otherDest.id}/tours`} prefetch={true}>
                                 <Button 
                                   variant="outline" 
                                   size="sm"

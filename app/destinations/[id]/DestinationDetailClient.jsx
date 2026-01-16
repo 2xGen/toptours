@@ -958,7 +958,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       asChild
                       className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
                     >
-                      <Link href={`/destinations/${safeDestination.id}/tours`}>
+                      <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
                         View All Tours & Activities in {safeDestination.fullName || safeDestination.name}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
@@ -1016,7 +1016,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     asChild
                     className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
                   >
-                    <Link href={`/destinations/${safeDestination.id}/tours`}>
+                    <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
                       View All Tours & Activities in {safeDestination.fullName || safeDestination.name}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
@@ -1526,7 +1526,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     size="lg"
                     className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 px-8 py-6"
                   >
-                    <Link href={`/destinations/${safeDestination.id}/tours`}>
+                    <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
                       {totalToursCount !== null && totalToursCount > 0 
                         ? `View All ${totalToursCount} Tours & Activities in ${safeDestination.fullName}`
                         : `View All Tours & Activities in ${safeDestination.fullName}`
@@ -1548,7 +1548,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   size="lg"
                   className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200"
                 >
-                  <Link href={`/destinations/${safeDestination.id}/tours`}>
+                  <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
                     Browse All Tours & Activities
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
@@ -1578,7 +1578,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       Reserve a table at our hand-picked local favorites and plan dinner around your tours in {safeDestination.fullName}.
                     </p>
                   </div>
-                  <Link href={`/destinations/${safeDestination.id}/restaurants`} className="self-center sm:self-end">
+                  <Link href={`/destinations/${safeDestination.id}/restaurants`} prefetch={true} className="self-center sm:self-end">
                     <Button variant="outline" className="gap-2">
                       View All {safeRestaurants.length} Restaurants
                       <ArrowRight className="w-4 h-4" />
@@ -1763,7 +1763,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   size="lg"
                   className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 px-8 py-6"
                 >
-                  <Link href={`/destinations/${safeDestination.id}/restaurants`}>
+                  <Link href={`/destinations/${safeDestination.id}/restaurants`} prefetch={true}>
                     View All Restaurants in {safeDestination.fullName}
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
@@ -1821,7 +1821,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                         </p>
                         <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 mb-3">
                           {countryDestinations.slice(0, showMoreCountryDestinations).map((otherDest, index) => (
-                            <Link key={`${otherDest.id}-${index}`} href={`/destinations/${otherDest.id}/tours`}>
+                            <Link key={`${otherDest.id}-${index}`} href={`/destinations/${otherDest.id}/tours`} prefetch={true}>
                               <Button 
                                 variant="outline" 
                                 size="sm"
@@ -2357,7 +2357,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                           })}
                         </div>
                         <div className="mt-4">
-                          <Link href={`/destinations/${safeDestination.id}/tours`}>
+                          <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
                             <Button variant="outline" size="sm" className="text-blue-600 border-blue-300 hover:bg-blue-50">
                               View All Tours in {safeDestination.fullName}
                               <ArrowRight className="w-4 h-4 ml-2" />
@@ -2410,7 +2410,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   size="lg"
                   className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-8 py-6 text-lg font-semibold"
                 >
-                  <Link href={`/destinations/${safeDestination.id}/tours`}>
+                  <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
                     View All Tours & Activities in {safeDestination.fullName}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
@@ -2487,7 +2487,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
             >
               <X className="w-6 h-6 text-gray-900 stroke-2" />
             </button>
-            <Link href={`/destinations/${safeDestination.id}/tours`}>
+            <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
               <Button 
                 size="lg"
                 className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
@@ -2555,7 +2555,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 asChild
                 className="flex-1 sunset-gradient text-white hover:scale-105 transition-transform duration-200 font-semibold"
               >
-                <Link href={`/destinations/${safeDestination.parentCountryDestination.id}/tours`}>
+                <Link href={`/destinations/${safeDestination.parentCountryDestination.id}/tours`} prefetch={true}>
                   View All Tours in {safeDestination.parentCountryDestination.fullName}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
