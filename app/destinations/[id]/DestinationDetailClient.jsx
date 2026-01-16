@@ -106,17 +106,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const safePromotedRestaurants = Array.isArray(promotedRestaurants) ? promotedRestaurants : [];
   const safeHardcodedTours = hardcodedTours && typeof hardcodedTours === 'object' ? hardcodedTours : {};
 
-  // Debug: Log destination data (remove in production)
-  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
-    console.log('Destination data:', {
-      id: safeDestination.id,
-      name: safeDestination.name,
-      whyVisit: safeDestination.whyVisit,
-      highlights: safeDestination.highlights,
-      gettingAround: safeDestination.gettingAround,
-      bestTimeToVisit: safeDestination.bestTimeToVisit,
-    });
-  }
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tours, setTours] = useState({ all: [] });
@@ -678,24 +667,12 @@ export default function DestinationDetailClient({ destination, promotionScores =
       const viatorDestinationId = safeDestination.destinationId || safeDestination.viatorDestinationId;
       
       // CRITICAL: If we have a destination ID, use it for filtering instead of text search
-      // This prevents matching tours by name (e.g., "Main" matching "Main Sights" tours)
-      if (!viatorDestinationId) {
-        console.error('❌ No Viator destination ID found for', destinationName, '- falling back to text search (may show irrelevant tours)');
-        console.error('Destination object:', safeDestination);
-      } else {
-        console.log('✅ Using Viator Destination ID for filtering:', viatorDestinationId, 'for', destinationName);
-      }
-      
       const requestBody = {
-        // Use /products/search endpoint when we have destination ID (standard approach, 100% accurate)
-        // No search term needed - the destination ID filter handles everything
-        searchTerm: '', // No search term - use /products/search endpoint
+        searchTerm: '',
         page: 1,
-        viatorDestinationId: viatorDestinationId ? String(viatorDestinationId) : null, // Ensure it's a string
-        includeDestination: !!viatorDestinationId // Use /products/search when destination ID is available
+        viatorDestinationId: viatorDestinationId ? String(viatorDestinationId) : null,
+        includeDestination: !!viatorDestinationId
       };
-      
-      console.log('API Request Body:', JSON.stringify(requestBody, null, 2));
       
       const response = await fetch('/api/internal/viator-search', {
         method: 'POST',
@@ -755,18 +732,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
           !viatorDestinationId ? 'Warning: No Viator destination ID found' : `Destination ID: ${viatorDestinationId}`,
           `URL: ${response.url || 'N/A'}`
         ].filter(Boolean).join(' | ');
-        
-        console.error('API Error Response:', errorDetails);
-        
-        // If errorData has additional details, log them separately
-        if (errorData && Object.keys(errorData).length > 0 && (errorData.error || errorData.details || errorData.message)) {
-          console.error('Error Details:', JSON.stringify(errorData, null, 2));
-        }
-        
-        // If readError occurred, log it separately
-        if (readError) {
-          console.error('Response Read Error:', readError.message);
-        }
         
         // If no destination ID, suggest that might be the issue
         if (!viatorDestinationId) {
@@ -838,7 +803,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const fetchToursForCategory = async (destinationName, category) => {
     // This function is kept for backward compatibility but shouldn't be used
     // All tours are now fetched in one call via fetchAllToursForDestination
-    console.warn('fetchToursForCategory is deprecated. Use fetchAllToursForDestination instead.');
+    // Deprecated - use fetchAllToursForDestination instead
     setLoading(prev => ({ ...prev, [category]: true }));
     try {
       const searchTerm = `${destinationName} ${category}`;

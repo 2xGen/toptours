@@ -393,7 +393,6 @@ export default function TourDetailClient({ tour, similarTours: initialSimilarTou
   }, [productId, tour?.title, destinationData?.destinationName, initialRecommendedTours.length, initialSimilarTours.length]);
   
   // Debug logging removed for production - uncomment for debugging
-  // useEffect(() => { console.log('TourDetailClient props:', { categoryGuides, destinationData, faqs, reviews, recommendedTours }); }, [categoryGuides, destinationData, faqs, reviews, recommendedTours]);
   
   // Client-side redirect fallback: if we're on /tours/[productId] without slug, redirect to slugged version
   useEffect(() => {
@@ -631,7 +630,6 @@ export default function TourDetailClient({ tour, similarTours: initialSimilarTou
         const titleMatch = tour.title.match(/from\s+([A-Z][a-zA-Z\s]+?)(?:\s|$|,)/i);
         if (titleMatch && titleMatch[1]) {
           destName = titleMatch[1].trim();
-          console.log('🔧 CLIENT FALLBACK: Extracted destination name from tour title:', destName);
         }
       }
       
@@ -1311,9 +1309,7 @@ export default function TourDetailClient({ tour, similarTours: initialSimilarTou
   
   // Lightbox functions
   const openLightbox = useCallback((index) => {
-    console.log('Opening lightbox at index:', index, 'Total images:', allImages.length);
     if (allImages.length === 0) {
-      console.warn('Cannot open lightbox: no images available');
       return;
     }
     const validIndex = Math.max(0, Math.min(index, allImages.length - 1));
@@ -1752,15 +1748,12 @@ export default function TourDetailClient({ tour, similarTours: initialSimilarTou
         try {
           const errorData = await response.json();
           errorMessage = errorData?.error || errorMessage;
-          console.error('API Error Response:', { status, error: errorData });
         } catch (e) {
-          // If response is not JSON, try to get text
           try {
             const errorText = await response.text();
             errorMessage = errorText || errorMessage;
-            console.error('API Error Text:', { status, error: errorText });
           } catch (textError) {
-            console.error('API Error (could not parse):', { status, error: textError });
+            // Could not parse error response
           }
         }
         throw new Error(`[${status}] ${errorMessage}`);
@@ -2180,7 +2173,6 @@ export default function TourDetailClient({ tour, similarTours: initialSimilarTou
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  console.log('Hero image clicked, opening lightbox at index 0, Total images:', allImages.length);
                   openLightbox(0);
                 }}
               >
@@ -2314,7 +2306,6 @@ export default function TourDetailClient({ tour, similarTours: initialSimilarTou
                           onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            console.log('Gallery image clicked:', imageIndexInAll, 'Total images:', allImages.length);
                             openLightbox(imageIndexInAll);
                           }}
                         >
@@ -4234,21 +4225,8 @@ export default function TourDetailClient({ tour, similarTours: initialSimilarTou
         const destName = destForDisplay.fullName || destForDisplay.name || 'this destination';
         
         if (!destSlug) {
-          console.warn('⚠️ Related Travel Guides: No destination slug available', {
-            effectiveDestinationData,
-            destination,
-            unmatchedDestinationSlug,
-            subtleDestinationSlug,
-            categoryGuidesLength: categoryGuides.length
-          });
           return null;
         }
-        
-        console.log('✅ Related Travel Guides: Displaying guides', {
-          destSlug,
-          destName,
-          categoryGuidesCount: categoryGuides.length
-        });
         
         return (
           <section className="py-12 bg-white">
