@@ -237,10 +237,14 @@ export default async function TourDetailPage({ params }) {
       ? destinationDataResult.value 
       : { destinationData: null, restaurantCount: 0, restaurants: [], categoryGuides: [] };
 
-    // Generate FAQs
+    // Generate FAQs for SEO
     let faqs = [];
+    let faqSchema = null;
     try {
       faqs = await generateTourFAQs(tour, tourData.tourEnrichment);
+      if (faqs && faqs.length > 0) {
+        faqSchema = generateFAQSchema(faqs);
+      }
     } catch (error) {
       console.error('Error generating FAQs:', error);
     }
@@ -799,20 +803,6 @@ export default async function TourDetailPage({ params }) {
       restaurantCount = 0;
       restaurants = [];
     }
-
-    // Generate FAQs for SEO and user value
-    let faqs = [];
-    let faqSchema = null;
-    try {
-      faqs = await generateTourFAQs(tour, destinationData, productId);
-      if (faqs && faqs.length > 0) {
-        faqSchema = generateFAQSchema(faqs);
-      }
-    } catch (error) {
-      console.error('Error generating FAQs:', error);
-      // Continue without FAQs - not critical
-    }
-
 
     // Generate breadcrumb schema for SEO
     const breadcrumbSchema = {
