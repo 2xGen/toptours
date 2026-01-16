@@ -3343,8 +3343,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
             </motion.section>
           )}
 
-          {/* Recommended Tours Section (from Recommendations API) */}
-          {recommendedTours.length > 0 && (
+          {/* Recommended and Similar Tours are now loaded separately via Suspense for faster page load */}
+          {false && recommendedTours.length > 0 && (
             <motion.section
               id="recommended-tours"
               initial={{ opacity: 0, y: 20 }}
@@ -3439,8 +3439,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
             </motion.section>
           )}
 
-          {/* Similar Tours Section */}
-          {similarTours.length > 0 && (
+          {false && similarTours.length > 0 && (
             <motion.section
               id="similar-tours"
               initial={{ opacity: 0, y: 20 }}

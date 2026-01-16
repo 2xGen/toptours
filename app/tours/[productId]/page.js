@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import TourDetailClient from './TourDetailClient';
+import RecommendedToursSection from './RecommendedToursSection';
+import SimilarToursSection from './SimilarToursSection';
 import { getTourEnrichment, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
 import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
 import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName } from '@/lib/viatorCache';
@@ -356,21 +358,8 @@ export default async function TourDetailPage({ params }) {
       }
     }
 
-    // Fetch full tour data for recommended tours (after we have the product codes)
-    let recommendedTours = [];
-    if (recommendedProductCodes && recommendedProductCodes.length > 0) {
-      try {
-        console.log(`🔍 [RECOMMENDATIONS] Fetching full tour data for ${recommendedProductCodes.length} recommended tours...`);
-        recommendedTours = await fetchRecommendedTours(recommendedProductCodes.slice(0, 6)); // Limit to 6 tours
-        console.log(`✅ [RECOMMENDATIONS] Fetched ${recommendedTours.length} recommended tours`);
-        console.log(`✅ [RECOMMENDATIONS] Tour IDs:`, recommendedTours.map(t => t.productId || t.productCode));
-      } catch (error) {
-        console.error('❌ [RECOMMENDATIONS] Error fetching recommended tour data:', error);
-        // Continue without recommendations - not critical
-      }
-    } else {
-      console.log(`ℹ️ [RECOMMENDATIONS] No recommended product codes returned for tour ${productId}`);
-    }
+    // Recommended tours are now fetched separately via Suspense for faster page load
+    // (See RecommendedToursSection component)
 
     // Sync operator to CRM (lightweight, non-blocking)
     // Run sync regardless of cache status
@@ -423,96 +412,8 @@ export default async function TourDetailPage({ params }) {
       }
     }
 
-    // Fetch similar tours by searching for tours in the same category/destination
-    // Extract destination and category from tour title
-    let similarTours = [];
-    try {
-      // Try to extract destination name from title (first word or common destination names)
-      const destinationKeywords = ['Aruba', 'Curaçao', 'Jamaica', 'Punta Cana', 'Nassau', 'Barbados', 'St. Lucia', 'Amalfi', 'Italy', 'Rome', 'Florence', 'Venice'];
-      let searchTerm = tour.title || '';
-      
-      // If we can identify a destination, search for tours in that destination
-      for (const dest of destinationKeywords) {
-        if (tour.title?.includes(dest)) {
-          // Search for tours in this destination with similar keywords
-          const categoryKeywords = ['Sunset', 'Cruise', 'ATV', 'Snorkel', 'Dive', 'Catamaran', 'Cultural', 'Beach', 'Boat', 'Tour', 'Aperitif'];
-          for (const keyword of categoryKeywords) {
-            if (tour.title?.includes(keyword)) {
-              searchTerm = `${dest} ${keyword}`;
-              break;
-            }
-          }
-          if (searchTerm === tour.title) {
-            searchTerm = dest; // Fallback to just destination
-          }
-          break;
-        }
-      }
-      
-      // Generate cache key for similar tours
-      const cacheKey = generateSimilarToursCacheKey(productId, searchTerm);
-      
-      // Try to get cached similar tours first
-      const cachedSimilarTours = await getCachedSimilarTours(cacheKey);
-      
-      if (cachedSimilarTours) {
-        similarTours = cachedSimilarTours;
-      } else {
-        // Cache miss - fetch from Viator API
-        const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
-        
-        // COMPLIANCE: 120-second timeout for all Viator API calls
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 120000); // 120 seconds
-
-        const similarResponse = await fetch('https://api.viator.com/partner/search/freetext', {
-          method: 'POST',
-          headers: {
-            'exp-api-key': apiKey,
-            'Accept': 'application/json;version=2.0',
-            'Accept-Language': 'en-US',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            searchTerm: searchTerm,
-            searchTypes: [{
-              searchType: 'PRODUCTS',
-              pagination: {
-                start: 1,
-                count: 20
-              }
-            }],
-            currency: 'USD'
-          }),
-          next: { revalidate: 3600 }, // Revalidate every hour (compliant with max 1 hour cache rule)
-          signal: controller.signal,
-        });
-
-        clearTimeout(timeoutId);
-
-        if (similarResponse.ok) {
-          const similarData = await similarResponse.json();
-          const allTours = similarData.products?.results || [];
-          // Filter out current tour and get top 6 similar ones (sorted by rating)
-          similarTours = allTours
-            .filter(t => {
-              const tId = t.productId || t.productCode;
-              return tId && tId !== productId;
-            })
-            .sort((a, b) => {
-              const ratingA = a.reviews?.combinedAverageRating || 0;
-              const ratingB = b.reviews?.combinedAverageRating || 0;
-              return ratingB - ratingA;
-            })
-            .slice(0, 6);
-          
-          // Cache the similar tours for future requests
-          await cacheSimilarTours(cacheKey, similarTours);
-        }
-      }
-    } catch (error) {
-      console.error('Error fetching similar tours:', error);
-    }
+    // Similar tours are now fetched separately via Suspense for faster page load
+    // (See SimilarToursSection component)
 
 
     // Get destination name and country for breadcrumbs/sidebar
@@ -1266,7 +1167,7 @@ export default async function TourDetailPage({ params }) {
       }>
         <TourDetailClient 
           tour={tour} 
-          similarTours={similarTours} 
+          similarTours={[]} 
           productId={productId} 
           pricing={pricing}
           pricingPerAgeBand={pricingPerAgeBand}
@@ -1280,9 +1181,21 @@ export default async function TourDetailPage({ params }) {
           categoryGuides={categoryGuides}
           faqs={faqs}
           reviews={reviews}
-          recommendedTours={recommendedTours}
+          recommendedTours={[]}
         />
       </Suspense>
+      
+      {/* Stream recommended and similar tours separately for faster page load */}
+      <RecommendedToursSection 
+        productId={productId}
+        tour={tour}
+        destinationData={destinationData}
+      />
+      <SimilarToursSection 
+        productId={productId}
+        tour={tour}
+        destinationData={destinationData}
+      />
       </>
     );
   } catch (error) {

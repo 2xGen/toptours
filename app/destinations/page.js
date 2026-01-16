@@ -1,4 +1,6 @@
 import DestinationsPageClient from './DestinationsPageClient';
+import viatorDestinationsData from '@/data/viatorDestinations.json';
+import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 
 // Revalidate every hour for fresh data
 export const revalidate = 3600;
@@ -25,16 +27,8 @@ export async function generateMetadata() {
   };
 }
 
-export default async function DestinationsPage() {
-  // Dynamically import large JSON files only on server
-  const [
-    viatorDestinationsData,
-    viatorDestinationsClassifiedData
-  ] = await Promise.all([
-    import('@/data/viatorDestinations.json').then(m => m.default).catch(() => []),
-    import('@/data/viatorDestinationsClassified.json').then(m => m.default).catch(() => [])
-  ]);
-
+export default function DestinationsPage() {
+  // Use static imports - Next.js will tree-shake and optimize these
   const viatorDestinations = Array.isArray(viatorDestinationsData) ? viatorDestinationsData : [];
   const viatorDestinationsClassified = Array.isArray(viatorDestinationsClassifiedData) ? viatorDestinationsClassifiedData : [];
   const totalAvailableDestinations = viatorDestinationsClassified.length;

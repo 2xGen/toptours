@@ -4,6 +4,9 @@ import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { destinations, getDestinationsByCountry } from '@/data/destinationsData';
+import { getDestinationSeoContent } from '@/data/destinationSeoContent';
+import { getDestinationFullContent } from '@/data/destinationFullContent';
+import generatedFullContentData from '../../generated-destination-full-content.json';
 import { Search, MapPin, ArrowRight, Globe, Ticket, UtensilsCrossed } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -116,11 +119,6 @@ export default function DestinationsPageClient({
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage, otherDestinationsPage]);
-  
-  // Reset other destinations page when filters change
-  useEffect(() => {
-    setOtherDestinationsPage(1);
-  }, [searchTerm, selectedCategory]);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -129,44 +127,176 @@ export default function DestinationsPageClient({
   const categories = ['All', 'Europe', 'North America', 'Caribbean', 'Asia-Pacific', 'Africa', 'South America', 'Middle East'];
 
   // Combine regular destinations with Viator destinations
+  // Include Viator destinations when there's a search term OR when a region filter is selected
+  // Always show destinations with guides (from destinationsData.js + generated content with guides)
   const allDestinations = useMemo(() => {
-    const result = [...destinations];
-
-    // Add Viator destinations when there's a search term OR when a region filter is selected
-    if (searchTerm || (selectedCategory !== 'All')) {
-      if (viatorDestinationsClassified && Array.isArray(viatorDestinationsClassified)) {
-        viatorDestinationsClassified.forEach(vd => {
-          const destinationName = vd.destinationName || vd.name || '';
-          const slug = generateSlug(destinationName);
-          
-          // Check if already in destinations (by slug or name)
-          const exists = destinations.some(d => 
-            d.id === slug || 
-            d.name?.toLowerCase() === destinationName.toLowerCase() ||
-            d.fullName?.toLowerCase() === destinationName.toLowerCase()
-          );
-
-          if (!exists && destinationName) {
-            const region = vd.region || '';
-            const category = regionToCategory[region] || 'Other';
-            
-            result.push({
-              id: slug,
-              name: destinationName,
-              fullName: destinationName,
-              category: category,
-              country: vd.country || '',
-              region: region,
-              imageUrl: null,
-              briefDescription: `Explore tours and activities in ${destinationName}`,
-            });
-          }
-        });
-      }
+    const regularDests = (Array.isArray(destinations) ? destinations : []).map(dest => ({
+      ...dest,
+      isViator: false,
+    }));
+    
+    // Also include destinations from generated content that have guides AND an image but aren't in destinationsData.js
+    // Logic: Only show destinations with guides if they have a featured image (for the premium experience)
+    const regularDestIds = new Set(regularDests.map(d => d.id));
+    const generatedDestsWithGuides = Object.keys(generatedFullContentData || {})
+      .filter(slug => {
+        // Skip if already in regular destinations
+        if (regularDestIds.has(slug)) return false;
+        
+        // Check if this destination has any categories with guides
+        const content = generatedFullContentData[slug];
+        if (!content || !content.tourCategories) return false;
+        
+        // Check if any category has hasGuide: true
+        const hasGuides = content.tourCategories.some(cat => 
+          typeof cat === 'object' && cat.hasGuide === true
+        );
+        
+        if (!hasGuides) return false;
+        
+        // Also check if destination has an image (featured image requirement)
+        const seoContent = getDestinationSeoContent(slug);
+        const hasImage = !!(content.imageUrl || seoContent?.imageUrl || seoContent?.ogImage);
+        
+        // Only include if it has both guides AND an image
+        return hasImage;
+      })
+      .map(slug => {
+        const content = generatedFullContentData[slug];
+        const seoContent = getDestinationSeoContent(slug);
+        const classifiedDest = classifiedDataIndex?.bySlug.get(slug)?.[0];
+        
+        return {
+          id: slug,
+          name: content.destinationName || slug,
+          fullName: content.destinationName || slug,
+          category: classifiedDest?.region ? (regionToCategory[classifiedDest.region] || classifiedDest.region) : null,
+          region: classifiedDest?.region || content.region || null,
+          country: classifiedDest?.country || content.country || null,
+          briefDescription: seoContent?.briefDescription || content.briefDescription || `Discover tours and activities in ${content.destinationName || slug}`,
+          heroDescription: seoContent?.heroDescription || content.heroDescription || null,
+          imageUrl: content.imageUrl || seoContent?.imageUrl || seoContent?.ogImage || null,
+          tourCategories: content.tourCategories || [],
+          whyVisit: content.whyVisit || [],
+          highlights: content.highlights || [],
+          gettingAround: content.gettingAround || '',
+          bestTimeToVisit: content.bestTimeToVisit || null,
+          seo: content.seo || seoContent?.seo || null,
+          isViator: false, // These have guides, so they're featured destinations
+        };
+      });
+    
+    // Combine regular destinations with generated destinations that have guides
+    const allFeaturedDests = [...regularDests, ...generatedDestsWithGuides];
+    
+    // Include Viator destinations if there's a search term OR if a region filter is selected (not "All")
+    const shouldIncludeViator = searchTerm.trim() || (selectedCategory !== 'All');
+    
+    if (!shouldIncludeViator) {
+      return allFeaturedDests;
     }
-
-    return result;
-  }, [destinations, viatorDestinationsClassified, searchTerm, selectedCategory]);
+    
+    // Get classified data - ensure it's available
+    const classifiedData = Array.isArray(viatorDestinationsClassified) ? viatorDestinationsClassified : [];
+    
+    // Create normalized names from our curated destinations for matching
+    // Extract base names (remove country suffixes like ", UAE", ", Italy", etc.)
+    const curatedBaseNames = new Set();
+    const curatedFullNames = new Set();
+    
+    // Include both regular destinations and generated destinations with guides
+    allFeaturedDests.forEach(dest => {
+      const name = (dest.name || '').toLowerCase().trim();
+      const fullName = (dest.fullName || dest.name || '').toLowerCase().trim();
+      
+      curatedBaseNames.add(name);
+      curatedFullNames.add(fullName);
+      
+      // Extract base name (remove country suffix)
+      const baseName = fullName.split(',')[0].trim();
+      if (baseName && baseName !== fullName) {
+        curatedBaseNames.add(baseName);
+      }
+    });
+    
+    // Helper function to check if a Viator destination matches any curated destination
+    const matchesCurated = (viatorName) => {
+      const normalized = viatorName.toLowerCase().trim();
+      const baseName = normalized.split(',')[0].trim();
+      
+      // Check exact matches
+      if (curatedBaseNames.has(normalized) || curatedFullNames.has(normalized)) {
+        return true;
+      }
+      
+      // Check base name matches (e.g., "Abu Dhabi" matches "Abu Dhabi, UAE")
+      if (curatedBaseNames.has(baseName) || curatedFullNames.has(baseName)) {
+        return true;
+      }
+      
+      return false;
+    };
+    
+    // Use classified data directly as the source for destinations without guides
+    // This file already has destinationId, destinationName, region, and country
+    const seenViatorNames = new Set();
+    
+    const viatorDests = classifiedData
+      .filter(classifiedDest => {
+        const destName = classifiedDest.destinationName || classifiedDest.name || '';
+        if (!destName) return false; // Skip entries without a name
+        
+        const normalized = destName.toLowerCase().trim();
+        
+        // Skip if it matches a curated destination
+        if (matchesCurated(destName)) {
+          return false;
+        }
+        
+        // Skip if we've already seen this exact name with the same country
+        const country = (classifiedDest.country || '').toLowerCase();
+        const nameCountryKey = `${normalized}|${country}`;
+        if (seenViatorNames.has(nameCountryKey)) {
+          return false;
+        }
+        
+        seenViatorNames.add(nameCountryKey);
+        return true;
+      })
+      .map(classifiedDest => {
+        const destName = classifiedDest.destinationName || classifiedDest.name || '';
+        const slug = generateSlug(destName);
+        
+        // Use region and country directly from classified data (already set by OpenAI script)
+        // But fallback to generated content if classified data doesn't have it
+        const generatedContent = generatedFullContentData[slug];
+        const region = classifiedDest.region || generatedContent?.region || null;
+        const country = classifiedDest.country || generatedContent?.country || null;
+        
+        // Map region to category for filtering
+        const category = region ? (regionToCategory[region] || region) : null;
+        
+        // Get SEO content if available
+        const seoContent = getDestinationSeoContent(slug);
+        
+        return {
+          id: slug, // Use slug as ID for SEO-friendly URLs
+          name: destName,
+          fullName: destName,
+          briefDescription: seoContent?.briefDescription || generatedContent?.briefDescription || `Discover tours and activities in ${destName}`,
+          heroDescription: seoContent?.heroDescription || generatedContent?.heroDescription || null,
+          category: category, // Map region to category for filtering
+          region: region,
+          country: country,
+          imageUrl: null, // No image for Viator destinations
+          isViator: true,
+          viatorId: classifiedDest.destinationId || classifiedDest.id, // Store original Viator ID for API calls
+          seo: seoContent?.seo || null,
+        };
+      });
+    
+    return [...allFeaturedDests, ...viatorDests];
+  }, [destinations, searchTerm, selectedCategory, viatorDestinationsClassified, classifiedDataIndex]);
 
   // Filter destinations based on search and category
   const filteredDestinations = useMemo(() => {
@@ -194,34 +324,125 @@ export default function DestinationsPageClient({
     return filtered;
   }, [allDestinations, searchTerm, selectedCategory]);
 
-  // Separate destinations with guides from others
-  const destinationsWithGuides = useMemo(() => {
-    return filteredDestinations.filter(dest => {
-      // Check if destination has full content (guide)
-      try {
-        const { getDestinationFullContent } = require('@/data/destinationFullContent');
-        return getDestinationFullContent(dest.id) !== null;
-      } catch {
-        return false;
+  // Deduplicate by ID to ensure unique keys - remove duplicates, keeping curated destinations over Viator ones
+  const uniqueDestinations = useMemo(() => {
+    const seen = new Map();
+    allDestinations.forEach(dest => {
+      const existing = seen.get(dest.id);
+      if (!existing) {
+        seen.set(dest.id, dest);
+      } else if (!existing.isViator && dest.isViator) {
+        // Keep curated over Viator if duplicate
+        return;
+      } else if (existing.isViator && !dest.isViator) {
+        // Replace Viator with curated if duplicate
+        seen.set(dest.id, dest);
       }
     });
-  }, [filteredDestinations]);
+    return Array.from(seen.values());
+  }, [allDestinations]);
 
-  const otherDestinations = useMemo(() => {
-    const guideIds = new Set(destinationsWithGuides.map(d => d.id));
-    return filteredDestinations.filter(d => !guideIds.has(d.id));
-  }, [filteredDestinations, destinationsWithGuides]);
+  const allFilteredDestinations = uniqueDestinations.filter(dest => {
+    if (!searchTerm.trim() && selectedCategory === 'All') {
+      // No filters, show all
+      return true;
+    }
+    
+    const searchLower = searchTerm.toLowerCase();
+    
+    // Search in name, fullName, briefDescription, and country
+    const matchesSearch = !searchTerm.trim() || 
+                         dest.name.toLowerCase().includes(searchLower) ||
+                         (dest.fullName && dest.fullName.toLowerCase().includes(searchLower)) ||
+                         (dest.briefDescription && dest.briefDescription.toLowerCase().includes(searchLower)) ||
+                         // Also search in country field (for both curated and Viator destinations)
+                         (dest.country && dest.country.toLowerCase().includes(searchLower));
+    
+    const matchesCategory = selectedCategory === 'All' || 
+                           (dest.category && dest.category === selectedCategory) ||
+                           // Also check region field and map it to category
+                           (dest.region && regionToCategory[dest.region] === selectedCategory) ||
+                           (dest.region && dest.region === selectedCategory);
+    return matchesSearch && matchesCategory;
+  }).sort((a, b) => {
+    // When "All" is selected, sort alphabetically by name only (no grouping by region)
+    if (selectedCategory === 'All') {
+      return a.name.localeCompare(b.name);
+    }
+    
+    // When a specific category is selected, sort by category first, then by name
+    if (a.category !== b.category) {
+      const categoryOrder = ['Europe', 'North America', 'Caribbean', 'Asia-Pacific', 'Africa', 'South America', 'Middle East'];
+      const aIndex = categoryOrder.indexOf(a.category || '');
+      const bIndex = categoryOrder.indexOf(b.category || '');
+      if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+      if (aIndex !== -1) return -1;
+      if (bIndex !== -1) return 1;
+    }
+    return a.name.localeCompare(b.name);
+  });
 
+  // Separate featured destinations (with guides) from other destinations (Viator-only)
+  const featuredDestinations = allFilteredDestinations.filter(dest => !dest.isViator);
+  const otherDestinations = allFilteredDestinations.filter(dest => dest.isViator);
+  
   // Pagination for featured destinations
-  const featuredStartIndex = 0;
-  const featuredEndIndex = featuredStartIndex + 6;
-  const featuredDestinations = destinationsWithGuides.slice(featuredStartIndex, featuredEndIndex);
+  const featuredTotalPages = Math.ceil(featuredDestinations.length / itemsPerPage);
+  const featuredStartIndex = (currentPage - 1) * itemsPerPage;
+  const featuredEndIndex = featuredStartIndex + itemsPerPage;
+  const paginatedFeaturedDestinations = featuredDestinations.slice(featuredStartIndex, featuredEndIndex);
 
-  // Pagination for other destinations
-  const otherStartIndex = (otherDestinationsPage - 1) * itemsPerPage;
-  const otherEndIndex = otherStartIndex + itemsPerPage;
-  const paginatedOtherDestinations = otherDestinations.slice(otherStartIndex, otherEndIndex);
-  const totalOtherPages = Math.ceil(otherDestinations.length / itemsPerPage);
+  // Pagination for other destinations (without guides)
+  const otherDestinationsTotalPages = Math.ceil(otherDestinations.length / itemsPerPage);
+  const otherDestinationsStartIndex = (otherDestinationsPage - 1) * itemsPerPage;
+  const otherDestinationsEndIndex = otherDestinationsStartIndex + itemsPerPage;
+  const paginatedOtherDestinations = otherDestinations.slice(otherDestinationsStartIndex, otherDestinationsEndIndex);
+  
+  // Total pages for pagination controls (based on featured destinations)
+  const totalPages = featuredTotalPages;
+  
+  // Reset other destinations page when filters change
+  useEffect(() => {
+    setOtherDestinationsPage(1);
+  }, [searchTerm, selectedCategory]);
+
+  // Reset to page 1 when filters change
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (value) => {
+    setSearchTerm(value);
+    setCurrentPage(1);
+    // Reset category filter to 'All' when user starts typing
+    if (value.trim() && selectedCategory !== 'All') {
+      setSelectedCategory('All');
+    }
+  };
+
+  // Helper function to generate simple pagination numbers: 1, 2 ... 41, 42
+  const getPaginationNumbers = (currentPage, totalPages) => {
+    const pages = [];
+    
+    if (totalPages <= 4) {
+      // Show all pages if total is 4 or less
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Always show: 1, 2 ... (last-1), (last)
+      pages.push(1);
+      pages.push(2);
+      if (totalPages > 4) {
+        pages.push('ellipsis');
+      }
+      pages.push(totalPages - 1);
+      pages.push(totalPages);
+    }
+    
+    return pages;
+  };
 
   // Group destinations by country for "Other destinations in country" section
   const destinationsByCountry = useMemo(() => {
@@ -266,44 +487,54 @@ export default function DestinationsPageClient({
                 transition={{ duration: 0.6 }}
                 className="text-center"
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6">
-                  Discover {totalAvailableDestinations.toLocaleString()}+ Destinations
+                <h1 className="text-4xl md:text-6xl font-poppins font-bold text-white mb-6">
+                  Popular Destinations
                 </h1>
-                <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-                  Find your perfect adventure with AI-powered tour recommendations across {totalAvailableDestinations.toLocaleString()}+ destinations worldwide.
+                <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
+                  Discover incredible tours and activities in the world's most captivating destinations.
                 </p>
                 
-                {/* Search Bar */}
                 <div className="max-w-2xl mx-auto">
-                  <div className="relative">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                    <Input
-                      type="text"
-                      placeholder="Search destinations..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-12 pr-4 py-6 text-lg bg-white/95 backdrop-blur-sm border-0 shadow-lg"
-                    />
+                  <div className="glass-effect rounded-2xl p-4">
+                    <div className="flex gap-4">
+                      <div className="flex-1 relative">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                        <Input
+                          placeholder="Search destinations..."
+                          value={searchTerm}
+                          onChange={(e) => handleSearchChange(e.target.value)}
+                          className="pl-10 h-12 bg-white/90 border-0 text-gray-800 placeholder:text-gray-500"
+                        />
+                      </div>
+                      <Button className="h-12 px-6 sunset-gradient text-white font-semibold">
+                        Search
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </motion.div>
             </div>
           </section>
 
-          {/* Category Filters */}
-          <section className="bg-white border-b py-8 sticky top-16 z-40 backdrop-blur-sm bg-white/95">
+          <section className="bg-white border-b">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+              <nav className="flex items-center space-x-2 text-xs sm:text-sm text-gray-500">
+                <Link href="/" className="hover:text-gray-700">Home</Link>
+                <span className="text-gray-400">/</span>
+                <span className="text-gray-900 font-medium">Destinations</span>
+              </nav>
+            </div>
+          </section>
+
+          <section className="py-8 bg-white border-b">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-wrap justify-center gap-3">
+              <div className="flex flex-wrap justify-center gap-4">
                 {categories.map((category) => (
                   <Button
                     key={category}
                     variant={selectedCategory === category ? "default" : "outline"}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`px-6 py-2 rounded-full transition-all ${
-                      selectedCategory === category
-                        ? 'bg-purple-600 text-white shadow-md'
-                        : 'bg-white text-gray-700 hover:bg-purple-50 border-gray-200'
-                    }`}
+                    onClick={() => handleCategoryChange(category)}
+                    className={selectedCategory === category ? 'sunset-gradient text-white' : ''}
                   >
                     {category}
                   </Button>
@@ -312,189 +543,440 @@ export default function DestinationsPageClient({
             </div>
           </section>
 
-          {/* Featured Destinations (with guides) */}
-          {featuredDestinations.length > 0 && (
+          {/* Featured Destinations Section */}
+          {paginatedFeaturedDestinations.length > 0 && (
             <section className="py-20 bg-gray-50">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-12 text-center">
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                <div className="mb-8">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-2">
                     Featured Destinations
                   </h2>
                   <p className="text-lg text-gray-600">
-                    Curated travel guides with detailed information, tours, and local insights
+                    Showing {featuredStartIndex + 1}-{Math.min(featuredEndIndex, featuredDestinations.length)} of {featuredDestinations.length} featured destinations
+                    {searchTerm.trim() && (
+                      <span> matching "{searchTerm}"</span>
+                    )}
+                    {selectedCategory !== 'All' && (
+                      <span> in {selectedCategory}</span>
+                    )}
+                    {otherDestinations.length > 0 && (
+                      <span> and {otherDestinations.length} other destinations</span>
+                    )}
+                    {!searchTerm.trim() && selectedCategory === 'All' && totalAvailableDestinations > featuredDestinations.length + otherDestinations.length && (
+                      <span> ({totalAvailableDestinations} destinations in total)</span>
+                    )}
                   </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {featuredDestinations.map((destination) => (
-                    <Card key={destination.id} className="bg-white overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                      <Link href={`/destinations/${destination.id}`}>
-                        <div className="relative h-64 bg-gradient-to-br from-purple-400 to-blue-500">
-                          {destination.imageUrl ? (
-                            <Image
-                              src={destination.imageUrl}
-                              alt={destination.fullName || destination.name}
-                              fill
-                              className="object-cover"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center">
-                              <MapPin className="w-16 h-16 text-white/50" />
-                            </div>
+                {paginatedFeaturedDestinations.map((destination, index) => (
+                  <motion.div
+                    key={`featured-${destination.id}-${index}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -5 }}
+                    className="cursor-pointer"
+                    onClick={() => router.push(`/destinations/${destination.id}`)}
+                  >
+                    <Card className="bg-white border-0 shadow-xl overflow-hidden h-full flex flex-col hover:shadow-2xl transition-all duration-300">
+                      {destination.imageUrl && (
+                        <div className="relative h-48 overflow-hidden">
+                          <Image
+                            src={destination.imageUrl}
+                            alt={destination.fullName || destination.name}
+                            fill
+                            className="object-cover transition-transform duration-300 hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            loading="lazy"
+                          />
+                          {destination.category && (
+                            <Badge className="absolute top-4 left-4 adventure-gradient text-white">
+                              {destination.category}
+                            </Badge>
                           )}
-                          <div className="absolute top-4 right-4">
-                            <Badge className="bg-white/90 text-purple-700">Featured</Badge>
+                          <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
+                            <span className="text-sm font-medium text-gray-800">{destination.country || destination.fullName || destination.name}</span>
                           </div>
                         </div>
-                        <CardContent className="p-6">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">
-                            {destination.fullName || destination.name}
-                          </h3>
-                          {destination.briefDescription && (
-                            <p className="text-gray-600 mb-4 line-clamp-2">
-                              {destination.briefDescription}
-                            </p>
-                          )}
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2 text-sm text-gray-500">
-                              <Globe className="w-4 h-4" />
-                              <span>{destination.country || destination.category}</span>
-                            </div>
-                            <Button variant="ghost" size="sm" className="text-purple-600">
-                              Explore <ArrowRight className="w-4 h-4 ml-1" />
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Link>
+                      )}
+                      <CardContent className="p-6 flex flex-col flex-grow">
+                        <div className="flex items-center text-gray-600 mb-2">
+                          <MapPin className="h-4 w-4 mr-1" />
+                          <span className="font-semibold">{destination.name}</span>
+                        </div>
+                        <p className="text-gray-700 mb-4 flex-grow">
+                          {destination.briefDescription}
+                        </p>
+                        
+                        <div className="mt-auto pt-4 space-y-3">
+                          <Button
+                            asChild
+                            className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Link href={`/destinations/${destination.id}`}>
+                              Explore {truncateDestinationName(destination.name)}
+                              <ArrowRight className="ml-2 h-5 w-5" />
+                            </Link>
+                          </Button>
+                          <Button
+                            asChild
+                            variant="secondary"
+                            className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Link href={`/destinations/${destination.id}/tours`}>
+                              View Top Tours in {truncateDestinationName(destination.name)}
+                              <ArrowRight className="ml-2 h-5 w-5" />
+                            </Link>
+                          </Button>
+                        </div>
+                      </CardContent>
                     </Card>
-                  ))}
+                  </motion.div>
+                ))}
                 </div>
               </div>
             </section>
           )}
 
-          {/* Other Destinations */}
-          {paginatedOtherDestinations.length > 0 && (
-            <section className="py-20 bg-white">
+          {/* Other Destinations Section */}
+          {otherDestinations.length > 0 && (
+            <section className={`py-20 bg-white ${paginatedFeaturedDestinations.length > 0 ? '' : ''}`}>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-12">
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                    All Destinations
-                  </h2>
+                <div className="mb-8">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-2">All Destinations</h2>
                   <p className="text-lg text-gray-600">
-                    {otherDestinations.length.toLocaleString()} destinations available
+                    Showing {otherDestinationsStartIndex + 1}-{Math.min(otherDestinationsEndIndex, otherDestinations.length)} of {otherDestinations.length} {otherDestinations.length === 1 ? 'destination' : 'destinations'} with tours and activities
+                    {selectedCategory !== 'All' && (
+                      <span> in {selectedCategory}</span>
+                    )}
+                    {searchTerm.trim() && (
+                      <span> matching "{searchTerm}"</span>
+                    )}
                   </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {paginatedOtherDestinations.map((destination) => (
-                    <Card key={destination.id} className="bg-white hover:shadow-lg transition-all duration-300">
-                      <Link href={`/destinations/${destination.id}/tours`}>
-                        <CardContent className="p-6">
-                          <div className="flex items-start justify-between mb-3">
-                            <h3 className="text-lg font-semibold text-gray-900 flex-1">
-                              {destination.fullName || destination.name}
-                            </h3>
-                            <Ticket className="w-5 h-5 text-purple-600 flex-shrink-0 ml-2" />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {paginatedOtherDestinations.map((destination, index) => (
+                  <motion.div
+                    key={`other-${destination.id}-${index}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -5 }}
+                  >
+                    <Card className="bg-white border border-gray-200 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300">
+                      <CardContent className="p-6 flex flex-col flex-grow">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center text-gray-600">
+                            <MapPin className="h-4 w-4 mr-1" />
+                            <span className="font-semibold">{destination.name}</span>
                           </div>
-                          <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-                            <MapPin className="w-4 h-4" />
-                            <span>{destination.country || destination.category || 'Worldwide'}</span>
-                          </div>
-                          <Button variant="outline" size="sm" className="w-full border-purple-300 text-purple-700 hover:bg-purple-50">
-                            View Tours
+                          {(destination.category || destination.region) && (
+                            <Badge className="adventure-gradient text-white text-xs">
+                              {destination.category || destination.region}
+                            </Badge>
+                          )}
+                        </div>
+                        {destination.country && (
+                          <p className="text-sm text-gray-500 mb-2">
+                            {destination.country}
+                          </p>
+                        )}
+                        <p className="text-gray-700 mb-4 flex-grow">
+                          {destination.briefDescription}
+                        </p>
+                        
+                        <div className="mt-auto pt-4 space-y-3">
+                          <Button
+                            asChild
+                            className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
+                          >
+                            <Link href={`/destinations/${destination.id}`}>
+                              Explore {truncateDestinationName(destination.name)}
+                              <ArrowRight className="ml-2 h-5 w-5" />
+                            </Link>
                           </Button>
-                        </CardContent>
-                      </Link>
+                          <Button
+                            asChild
+                            variant="secondary"
+                            className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
+                          >
+                            <Link href={`/destinations/${destination.id}/tours`}>
+                              View Top Tours in {truncateDestinationName(destination.name)}
+                              <ArrowRight className="ml-2 h-5 w-5" />
+                            </Link>
+                          </Button>
+                        </div>
+                      </CardContent>
                     </Card>
-                  ))}
+                  </motion.div>
+                ))}
                 </div>
+                
+                {/* Pagination Controls for Other Destinations */}
+                {otherDestinationsTotalPages > 1 && (
+                  <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-12 w-full">
+                  <Button
+                    variant="outline"
+                    onClick={() => setOtherDestinationsPage(prev => Math.max(1, prev - 1))}
+                    disabled={otherDestinationsPage === 1}
+                    className="bg-white disabled:opacity-50 w-full sm:w-auto"
+                  >
+                    Previous
+                  </Button>
 
-                {/* Pagination */}
-                {totalOtherPages > 1 && (
-                  <div className="mt-12 flex justify-center gap-2">
-                    <Button
-                      variant="outline"
-                      onClick={() => setOtherDestinationsPage(prev => Math.max(1, prev - 1))}
-                      disabled={otherDestinationsPage === 1}
-                    >
-                      Previous
-                    </Button>
-                    <span className="flex items-center px-4 text-gray-600">
-                      Page {otherDestinationsPage} of {totalOtherPages}
-                    </span>
-                    <Button
-                      variant="outline"
-                      onClick={() => setOtherDestinationsPage(prev => Math.min(totalOtherPages, prev + 1))}
-                      disabled={otherDestinationsPage === totalOtherPages}
-                    >
-                      Next
-                    </Button>
+                  <div className="flex flex-wrap justify-center gap-2 max-w-full">
+                    {getPaginationNumbers(otherDestinationsPage, otherDestinationsTotalPages).map((page, index) => {
+                      if (page === 'ellipsis') {
+                        return (
+                          <span key={`ellipsis-${index}`} className="px-2 text-gray-500">
+                            ...
+                          </span>
+                        );
+                      }
+                      return (
+                        <Button
+                          key={page}
+                          variant={otherDestinationsPage === page ? "default" : "outline"}
+                          onClick={() => setOtherDestinationsPage(page)}
+                          className={`${otherDestinationsPage === page ? "bg-purple-600 text-white hover:bg-purple-700" : "bg-white"} min-w-[48px]`}
+                        >
+                          {page}
+                        </Button>
+                      );
+                    })}
+                  </div>
+
+                  <Button
+                    variant="outline"
+                    onClick={() => setOtherDestinationsPage(prev => Math.min(otherDestinationsTotalPages, prev + 1))}
+                    disabled={otherDestinationsPage === otherDestinationsTotalPages}
+                    className="bg-white disabled:opacity-50 w-full sm:w-auto"
+                  >
+                    Next
+                  </Button>
                   </div>
                 )}
               </div>
             </section>
           )}
 
-          {/* Other Destinations in Country Section */}
-          {detectedCountry && otherDestinationsInCountry.length > 0 && (
-            <section className="py-12 bg-gradient-to-br from-purple-50 to-blue-50 border-t-2 border-gray-200">
+          {/* Pagination Controls for Featured Destinations - Only show if there are featured destinations */}
+          {paginatedFeaturedDestinations.length > 0 && totalPages > 1 && (
+            <section className="py-8 bg-gray-50">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
-                      </div>
-                      <div className="flex-1 w-full">
-                        <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">
-                          Top Tours in Other {detectedCountry} Destinations
-                        </h3>
-                        <p className="text-xs sm:text-sm text-gray-600 mb-3">
-                          Explore top-rated tours and activities in other amazing destinations across {detectedCountry}.
-                        </p>
-                        <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 mb-3">
-                          {otherDestinationsInCountry.slice(0, showMoreCountryDestinations).map((otherDest) => (
-                            <Link key={otherDest.id} href={`/destinations/${otherDest.id}/tours`}>
-                              <Button 
-                                variant="outline" 
-                                size="sm"
-                                className="w-full sm:w-auto border-purple-300 text-purple-700 hover:bg-purple-50 text-xs px-2 sm:px-3 py-1.5 h-auto whitespace-nowrap justify-center"
-                              >
-                                {otherDest.name}
-                              </Button>
-                            </Link>
-                          ))}
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          {otherDestinationsInCountry.length > showMoreCountryDestinations && (
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => setShowMoreCountryDestinations(otherDestinationsInCountry.length)}
-                              className="text-purple-700 hover:text-purple-800 hover:bg-purple-50 text-xs"
-                            >
-                              View All ({otherDestinationsInCountry.length} destinations)
-                              <ArrowRight className="w-3 h-3 ml-1" />
-                            </Button>
-                          )}
-                          {showMoreCountryDestinations > 12 && (
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => setShowMoreCountryDestinations(12)}
-                              className="text-gray-600 hover:text-gray-800 hover:bg-gray-50 text-xs"
-                            >
-                              Show Less
-                            </Button>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <div className="flex flex-col md:flex-row justify-center items-center gap-4 w-full">
+              <Button
+                variant="outline"
+                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                disabled={currentPage === 1}
+                className="bg-white disabled:opacity-50 w-full sm:w-auto"
+              >
+                Previous
+              </Button>
+              
+              <div className="flex flex-wrap justify-center gap-2 max-w-full">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                  <Button
+                    key={page}
+                    variant={currentPage === page ? "default" : "outline"}
+                    onClick={() => setCurrentPage(page)}
+                    className={`${currentPage === page ? "sunset-gradient text-white" : "bg-white"} min-w-[48px]`}
+                  >
+                    {page}
+                  </Button>
+                ))}
               </div>
-            </section>
+
+              <Button
+                variant="outline"
+                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                disabled={currentPage === totalPages}
+                className="bg-white disabled:opacity-50 w-full sm:w-auto"
+              >
+                Next
+              </Button>
+              </div>
+            </div>
+          </section>
           )}
+
+          {/* Other Destinations in Country Section */}
+          {(() => {
+            // Detect if we're showing destinations from a specific country
+            const detectedCountry = useMemo(() => {
+              if (allFilteredDestinations.length === 0) return null;
+              
+              // Check if search term is a country name
+              const searchLower = searchTerm.toLowerCase().trim();
+              const commonCountries = ['netherlands', 'france', 'italy', 'spain', 'germany', 'greece', 'portugal', 'turkey', 'croatia', 'poland', 'czech republic', 'austria', 'switzerland', 'belgium', 'norway', 'sweden', 'denmark', 'finland', 'ireland', 'united kingdom', 'uk', 'united states', 'usa', 'canada', 'mexico', 'japan', 'china', 'thailand', 'vietnam', 'indonesia', 'philippines', 'india', 'australia', 'new zealand', 'south africa', 'egypt', 'morocco', 'kenya', 'brazil', 'argentina', 'chile', 'peru', 'colombia'];
+              
+              // Check if search matches a country
+              for (const country of commonCountries) {
+                if (searchLower === country || searchLower.includes(country)) {
+                  // Find the actual country name from destinations
+                  const matchingDest = allFilteredDestinations.find(d => 
+                    d.country && d.country.toLowerCase().includes(country)
+                  );
+                  if (matchingDest && matchingDest.country) {
+                    return matchingDest.country;
+                  }
+                }
+              }
+              
+              // If no country match in search, check if all filtered destinations share the same country
+              if (allFilteredDestinations.length > 0) {
+                const countries = new Set();
+                allFilteredDestinations.forEach(dest => {
+                  if (dest.country) {
+                    countries.add(dest.country);
+                  }
+                });
+                
+                // If all destinations share the same country and we have multiple destinations
+                if (countries.size === 1 && allFilteredDestinations.length > 1) {
+                  return Array.from(countries)[0];
+                }
+              }
+              
+              return null;
+            }, [searchTerm, allFilteredDestinations]);
+            
+            // Get other destinations in the detected country
+            const otherDestinationsInCountry = useMemo(() => {
+              if (!detectedCountry) return [];
+              
+              // Get all destinations in this country (excluding current filtered ones)
+              const allCountryDests = [];
+              
+              // From curated destinations
+              const curatedDests = getDestinationsByCountry(detectedCountry);
+              curatedDests.forEach(dest => {
+                if (!allFilteredDestinations.find(d => d.id === dest.id)) {
+                  allCountryDests.push({
+                    id: dest.id,
+                    name: dest.name || dest.fullName,
+                    fullName: dest.fullName || dest.name,
+                    briefDescription: dest.briefDescription,
+                    imageUrl: dest.imageUrl,
+                    country: dest.country
+                  });
+                }
+              });
+              
+              // From classified data
+              if (viatorDestinationsClassified) {
+                const classifiedDests = viatorDestinationsClassified.filter(dest => {
+                  const destCountry = (dest.country || '').toLowerCase().trim();
+                  const targetCountry = detectedCountry.toLowerCase().trim();
+                  return destCountry === targetCountry && 
+                         dest.type === 'CITY' && // Only cities
+                         !allFilteredDestinations.find(d => {
+                           const dName = (d.name || '').toLowerCase().trim();
+                           const destName = (dest.destinationName || dest.name || '').toLowerCase().trim();
+                           return dName === destName || generateSlug(dName) === generateSlug(destName);
+                         });
+                });
+                
+                classifiedDests.forEach(dest => {
+                  const slug = generateSlug(dest.destinationName || dest.name || '');
+                  const seoContent = getDestinationSeoContent(slug);
+                  
+                  allCountryDests.push({
+                    id: slug,
+                    name: dest.destinationName || dest.name,
+                    fullName: dest.destinationName || dest.name,
+                    briefDescription: seoContent?.briefDescription || seoContent?.heroDescription || `Explore tours and activities in ${dest.destinationName || dest.name}`,
+                    imageUrl: null,
+                    country: dest.country
+                  });
+                });
+              }
+              
+              // Remove duplicates and sort alphabetically
+              const uniqueDests = [];
+              const seenNames = new Set();
+              
+              allCountryDests.forEach(dest => {
+                const nameKey = (dest.name || '').toLowerCase().trim();
+                if (!seenNames.has(nameKey)) {
+                  seenNames.add(nameKey);
+                  uniqueDests.push(dest);
+                }
+              });
+              
+              return uniqueDests.sort((a, b) => 
+                (a.name || '').localeCompare(b.name || '')
+              );
+            }, [detectedCountry, allFilteredDestinations]);
+            
+            if (!detectedCountry || otherDestinationsInCountry.length === 0) {
+              return null;
+            }
+            
+            return (
+              <section className="py-12 bg-gradient-to-br from-purple-50 to-blue-50 border-t-2 border-gray-200">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                          <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
+                        </div>
+                        <div className="flex-1 w-full">
+                          <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">
+                            Top Tours in Other {detectedCountry} Destinations
+                          </h3>
+                          <p className="text-xs sm:text-sm text-gray-600 mb-3">
+                            Explore top-rated tours and activities in other amazing destinations across {detectedCountry}.
+                          </p>
+                          <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 mb-3">
+                            {otherDestinationsInCountry.slice(0, showMoreCountryDestinations).map((otherDest) => (
+                              <Link key={otherDest.id} href={`/destinations/${otherDest.id}/tours`}>
+                                <Button 
+                                  variant="outline" 
+                                  size="sm"
+                                  className="w-full sm:w-auto border-purple-300 text-purple-700 hover:bg-purple-50 text-xs px-2 sm:px-3 py-1.5 h-auto whitespace-nowrap justify-center"
+                                >
+                                  {otherDest.name}
+                                </Button>
+                              </Link>
+                            ))}
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {otherDestinationsInCountry.length > showMoreCountryDestinations && (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => setShowMoreCountryDestinations(otherDestinationsInCountry.length)}
+                                className="text-purple-700 hover:text-purple-800 hover:bg-purple-50 text-xs"
+                              >
+                                View All ({otherDestinationsInCountry.length} destinations)
+                                <ArrowRight className="w-3 h-3 ml-1" />
+                              </Button>
+                            )}
+                            {showMoreCountryDestinations > 12 && (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => setShowMoreCountryDestinations(12)}
+                                className="text-gray-600 hover:text-gray-800 hover:bg-gray-50 text-xs"
+                              >
+                                Show Less
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </section>
+            );
+          })()}
 
           {/* CTA Section */}
           <section className="py-20 adventure-gradient">
@@ -543,7 +1025,7 @@ export default function DestinationsPageClient({
             "mainEntity": {
               "@type": "ItemList",
               "numberOfItems": allDestinations.length,
-              "itemListElement": allDestinations.slice(0, 50).map((dest, index) => ({
+              "itemListElement": uniqueDestinations.slice(0, 50).map((dest, index) => ({
                 "@type": "ListItem",
                 "position": index + 1,
                 "item": {
