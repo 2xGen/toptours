@@ -15,10 +15,12 @@ import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { hasDestinationPage } from '@/data/destinationFullContent';
 import { headers } from 'next/headers';
-import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
+import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
+import { trackToursForSitemap } from '@/lib/tourSitemap';
 
 // Force dynamic rendering for API calls
-export const dynamic = 'force-dynamic';
+// Revalidate every hour for fresh data
+export const revalidate = 3600;
 
 /**
  * Generate metadata for SEO
@@ -558,15 +560,67 @@ export default async function ToursListingPage({ params }) {
     destinationIdForScores = id;
   }
   
-  let promotionScores = destinationIdForScores ? await getPromotionScoresByDestination(destinationIdForScores) : {};
-
-  // CRITICAL: Also fetch scores by product IDs as a fallback
-  // This ensures we find scores even if destination_id format doesn't match (slug vs numeric ID)
+  // Parallelize independent data fetching operations
   const allProductIds = [
     ...popularTours.map(t => t.productId).filter(Boolean),
     ...dynamicTours.map(t => t.productId || t.productCode).filter(Boolean),
   ];
-  
+
+  // Fetch promotion scores and promoted tour data in parallel
+  const [
+    promotionScoresResult,
+    promotedTourDataResult,
+    promotedRestaurantDataResult,
+    restaurantPromotionScoresResult,
+    premiumOperatorTourIdsResult,
+    premiumRestaurantIdsResult,
+    categoryGuidesResult
+  ] = await Promise.allSettled([
+    // Promotion scores by destination
+    destinationIdForScores 
+      ? getPromotionScoresByDestination(destinationIdForScores).catch(() => ({}))
+      : Promise.resolve({}),
+    
+    // Promoted tour data
+    destinationIdForScores 
+      ? getPromotedToursByDestination(destinationIdForScores, 20).catch(() => [])
+      : Promise.resolve([]),
+    
+    // Promoted restaurant data
+    destination.id 
+      ? getPromotedRestaurantsByDestination(destination.id, 20).catch(() => [])
+      : Promise.resolve([]),
+    
+    // Restaurant promotion scores
+    destination.id 
+      ? getRestaurantPromotionScoresByDestination(destination.id).catch(() => ({}))
+      : Promise.resolve({}),
+    
+    // Premium operator tour IDs
+    destination.id 
+      ? getPremiumOperatorTourIdsForDestination(destination.id).catch(() => [])
+      : Promise.resolve([]),
+    
+    // Premium restaurant IDs
+    destination.id 
+      ? getPremiumRestaurantIds(destination.id).then(set => Array.from(set)).catch(() => [])
+      : Promise.resolve([]),
+    
+    // Category guides
+    getAllCategoryGuidesForDestination(destination.id).catch(() => [])
+  ]);
+
+  // Extract results
+  let promotionScores = promotionScoresResult.status === 'fulfilled' ? promotionScoresResult.value : {};
+  const promotedTourData = promotedTourDataResult.status === 'fulfilled' ? promotedTourDataResult.value : [];
+  const promotedRestaurantData = promotedRestaurantDataResult.status === 'fulfilled' ? promotedRestaurantDataResult.value : [];
+  const restaurantPromotionScores = restaurantPromotionScoresResult.status === 'fulfilled' ? restaurantPromotionScoresResult.value : {};
+  const premiumOperatorTourIds = premiumOperatorTourIdsResult.status === 'fulfilled' ? premiumOperatorTourIdsResult.value : [];
+  const premiumRestaurantIds = premiumRestaurantIdsResult.status === 'fulfilled' ? premiumRestaurantIdsResult.value : [];
+  let categoryGuides = categoryGuidesResult.status === 'fulfilled' ? categoryGuidesResult.value : [];
+
+  // CRITICAL: Also fetch scores by product IDs as a fallback (after we have product IDs)
+  // This ensures we find scores even if destination_id format doesn't match (slug vs numeric ID)
   if (allProductIds.length > 0) {
     const { getTourPromotionScoresBatch } = await import('@/lib/promotionSystem');
     const scoresByProductId = await getTourPromotionScoresBatch(allProductIds);
@@ -581,7 +635,6 @@ export default async function ToursListingPage({ params }) {
   // Fetch promoted tours for this destination
   let promotedTours = [];
   try {
-    const promotedTourData = destinationIdForScores ? await getPromotedToursByDestination(destinationIdForScores, 20) : [];
     // Match promoted product IDs with actual tour data (from both dynamicTours and popularTours)
     const promotedTourProductIds = new Set(promotedTourData.map(pt => pt.product_id || pt.productId || pt.productCode).filter(Boolean));
     
@@ -642,10 +695,9 @@ export default async function ToursListingPage({ params }) {
     // Continue with empty array - page will still work
   }
   
-  // Fetch promoted restaurants for this destination
+  // Process promoted restaurants (using data fetched in parallel above)
   let promotedRestaurants = [];
   try {
-    const promotedRestaurantData = destination.id ? await getPromotedRestaurantsByDestination(destination.id, 20) : [];
     if (promotedRestaurantData.length > 0) {
       // Convert both to strings for consistent comparison
       const promotedRestaurantIds = new Set(
@@ -659,12 +711,9 @@ export default async function ToursListingPage({ params }) {
       }
     }
   } catch (error) {
-    console.error('Error fetching promoted restaurants:', error);
+    console.error('Error processing promoted restaurants:', error);
     // Continue with empty array - page will still work
   }
-
-  // Fetch restaurant promotion scores for this destination
-  const restaurantPromotionScores = destination.id ? await getRestaurantPromotionScoresByDestination(destination.id) : {};
 
   // Check if destination has restaurants and fetch restaurant data (try database first, then static fallback)
   let hasRestaurants = false;
@@ -696,30 +745,8 @@ export default async function ToursListingPage({ params }) {
     }
   }
 
-  // Fetch premium operator tour IDs for this destination (for crown icons)
-  const premiumOperatorTourIds = destination.id ? await getPremiumOperatorTourIdsForDestination(destination.id) : [];
-
-  // Fetch premium restaurant IDs for this destination (for crown icons)
-  let premiumRestaurantIds = [];
-  try {
-    const premiumSet = destination.id ? await getPremiumRestaurantIds(destination.id) : new Set();
-    premiumRestaurantIds = Array.from(premiumSet);
-  } catch (error) {
-    console.error('Error fetching premium restaurant IDs:', error);
-  }
-
-  // Get all category guides for this destination (database + hardcoded)
-  // EXACTLY like destination detail page: uses destination.id (slug like "ajmer")
-  let categoryGuides = [];
-  try {
-    if (destination.id) {
-      categoryGuides = await getAllCategoryGuidesForDestination(destination.id);
-    } else {
-      // no destination.id, cannot fetch guides
-    }
-  } catch (error) {
-    console.error('❌ Error fetching category guides:', error);
-  }
+  // Note: premiumOperatorTourIds, premiumRestaurantIds, and categoryGuides 
+  // are already fetched in parallel above
 
   // Generate JSON-LD schema for SEO
   const schemaTours = [...(popularTours || []), ...(dynamicTours || [])]
@@ -840,6 +867,19 @@ export default async function ToursListingPage({ params }) {
           })
         }}
       />
+      
+      {/* Track tours for sitemap (non-blocking) */}
+      {(() => {
+        const allTours = [
+          ...(popularTours || []),
+          ...(dynamicTours || []),
+          ...(promotedTours || [])
+        ];
+        if (allTours.length > 0) {
+          trackToursForSitemap(allTours, { id: destination.id, slug: destination.id });
+        }
+        return null;
+      })()}
       
       <ToursListingClient 
         destination={destination}

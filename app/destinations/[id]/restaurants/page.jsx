@@ -11,9 +11,19 @@ import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
 import RestaurantsListClient from './RestaurantsListClient';
 
-// Force dynamic rendering to ensure premium restaurant data is always fresh
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+// Revalidate every hour for fresh data
+export const revalidate = 3600;
+
+// Shared function to fetch restaurants (used by both metadata and page)
+async function getRestaurantsForPage(destinationId) {
+  let restaurants = await getRestaurantsForDestinationFromDB(destinationId);
+  if (restaurants.length > 0) {
+    restaurants = restaurants.map(r => formatRestaurantForFrontend(r));
+  } else {
+    restaurants = getRestaurantsForDestinationFromStatic(destinationId);
+  }
+  return restaurants;
+}
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
@@ -25,13 +35,8 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  // Get restaurant count for better description
-  let restaurants = await getRestaurantsForDestinationFromDB(id);
-  if (restaurants.length > 0) {
-    restaurants = restaurants.map(r => formatRestaurantForFrontend(r));
-  } else {
-    restaurants = getRestaurantsForDestinationFromStatic(id);
-  }
+  // Get restaurant count for better description (use shared function)
+  const restaurants = await getRestaurantsForPage(id);
   const restaurantCount = restaurants?.length || 0;
 
   // Always use standardized OG image so dimensions are correct
@@ -101,10 +106,47 @@ export default async function RestaurantsIndexPage({ params }) {
     notFound();
   }
 
-  // Fetch promoted restaurants for this destination
+  // Get destination ID for Viator (needed for tour queries)
+  const destinationIdForScores = destination.destinationId || destination.viatorDestinationId;
+
+  // Parallelize all independent data fetching operations
+  const [
+    promotedRestaurantDataResult,
+    promotedTourDataResult,
+    restaurantPromotionScoresResult,
+    premiumRestaurantIdsResult,
+    categoryGuidesResult
+  ] = await Promise.allSettled([
+    // Promoted restaurant data
+    getPromotedRestaurantsByDestination(id, 20).catch(() => []),
+    
+    // Promoted tour data (just IDs first)
+    destinationIdForScores 
+      ? getPromotedToursByDestination(destinationIdForScores, 6).catch(() => [])
+      : Promise.resolve([]),
+    
+    // Restaurant promotion scores
+    getRestaurantPromotionScoresByDestination(id).catch(() => ({})),
+    
+    // Premium restaurant IDs
+    getPremiumRestaurantIds(id)
+      .then(set => Array.from(set))
+      .catch(() => []),
+    
+    // Category guides
+    getAllCategoryGuidesForDestination(id).catch(() => [])
+  ]);
+
+  // Extract results
+  const promotedRestaurantData = promotedRestaurantDataResult.status === 'fulfilled' ? promotedRestaurantDataResult.value : [];
+  const promotedTourData = promotedTourDataResult.status === 'fulfilled' ? promotedTourDataResult.value : [];
+  const restaurantPromotionScores = restaurantPromotionScoresResult.status === 'fulfilled' ? restaurantPromotionScoresResult.value : {};
+  const premiumRestaurantIds = premiumRestaurantIdsResult.status === 'fulfilled' ? premiumRestaurantIdsResult.value : [];
+  const categoryGuides = categoryGuidesResult.status === 'fulfilled' ? categoryGuidesResult.value : [];
+
+  // Process promoted restaurants (using data fetched in parallel above)
   let promotedRestaurants = [];
   try {
-    const promotedRestaurantData = await getPromotedRestaurantsByDestination(id, 20);
     if (promotedRestaurantData.length > 0) {
       // Convert both to strings for consistent comparison
       const promotedRestaurantIds = new Set(
@@ -115,104 +157,75 @@ export default async function RestaurantsIndexPage({ params }) {
       );
     }
   } catch (error) {
-    console.error('Error fetching promoted restaurants:', error);
+    console.error('Error processing promoted restaurants:', error);
     // Continue with empty array - page will still work
   }
   
-  // Fetch promoted tours for this destination (for cross-promotion on restaurant pages)
-  // Fetch full tour data from Viator API (similar to destination detail page)
+  // Fetch full promoted tour data (after we have the IDs)
   let promotedTours = [];
   try {
-    // Get destination ID for Viator (needed for tour queries)
-    const destinationIdForScores = destination.destinationId || destination.viatorDestinationId;
-    if (destinationIdForScores) {
-      const promotedTourData = await getPromotedToursByDestination(destinationIdForScores, 6);
+    if (promotedTourData.length > 0 && destinationIdForScores) {
+      console.log(`✅ Restaurants Page - Found ${promotedTourData.length} promoted tour product ID(s) for ${id}`);
       
-      if (promotedTourData.length > 0) {
-        console.log(`✅ Restaurants Page - Found ${promotedTourData.length} promoted tour product ID(s) for ${id}`);
+      // Fetch full tour data for each promoted tour
+      const { getCachedTour } = await import('@/lib/viatorCache');
+      const apiKey = process.env.VIATOR_API_KEY;
+      
+      const fetchPromises = promotedTourData.map(async (promoted) => {
+        const productId = promoted.product_id || promoted.productId || promoted.productCode;
+        if (!productId) return null;
         
-        // Fetch full tour data for each promoted tour
-        const { getCachedTour } = await import('@/lib/viatorCache');
-        const fetchPromises = promotedTourData.map(async (promoted) => {
-          const productId = promoted.product_id || promoted.productId || promoted.productCode;
-          if (!productId) return null;
+        try {
+          // Try to get cached tour first
+          let tour = await getCachedTour(productId);
           
-          try {
-            // Try to get cached tour first
-            let tour = await getCachedTour(productId);
+          // If not cached, fetch from Viator API
+          if (!tour && apiKey) {
+            const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
+            const response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                'exp-api-key': apiKey,
+                'Accept': 'application/json;version=2.0',
+                'Accept-Language': 'en-US',
+                'Content-Type': 'application/json'
+              },
+              cache: 'no-store'
+            });
             
-            // If not cached, fetch from Viator API
-            if (!tour) {
-              const apiKey = process.env.VIATOR_API_KEY;
-              if (!apiKey) {
-                console.warn(`No API key for fetching promoted tour ${productId}`);
-                return null;
-              }
-              
-              const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
-              const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                  'exp-api-key': apiKey,
-                  'Accept': 'application/json;version=2.0',
-                  'Accept-Language': 'en-US',
-                  'Content-Type': 'application/json'
-                },
-                cache: 'no-store'
-              });
-              
-              if (response.ok) {
-                tour = await response.json();
-              } else {
-                console.warn(`Failed to fetch promoted tour ${productId}: ${response.status}`);
-                return null;
-              }
+            if (response.ok) {
+              tour = await response.json();
+            } else {
+              console.warn(`Failed to fetch promoted tour ${productId}: ${response.status}`);
+              return null;
             }
-            
-            // Return tour with product_id for matching
-            return {
-              ...tour,
-              productId: productId,
-              productCode: productId,
-              product_id: productId,
-            };
-          } catch (error) {
-            console.error(`Error fetching promoted tour ${productId}:`, error);
-            return null;
           }
-        });
-        
-        const fetchedTours = await Promise.all(fetchPromises);
-        promotedTours = fetchedTours.filter(t => t !== null);
-        
-        if (promotedTours.length > 0) {
-          console.log(`✅ Restaurants Page - Successfully fetched ${promotedTours.length} promoted tour(s) with full data`);
+          
+          if (!tour) return null;
+          
+          // Return tour with product_id for matching
+          return {
+            ...tour,
+            productId: productId,
+            productCode: productId,
+            product_id: productId,
+          };
+        } catch (error) {
+          console.error(`Error fetching promoted tour ${productId}:`, error);
+          return null;
         }
+      });
+      
+      const fetchedTours = await Promise.all(fetchPromises);
+      promotedTours = fetchedTours.filter(t => t !== null);
+      
+      if (promotedTours.length > 0) {
+        console.log(`✅ Restaurants Page - Successfully fetched ${promotedTours.length} promoted tour(s) with full data`);
       }
     }
   } catch (error) {
     console.error('Error fetching promoted tours:', error);
     // Continue with empty array - page will still work
-  }
-
-  // Fetch restaurant promotion scores for this destination
-  const restaurantPromotionScores = await getRestaurantPromotionScoresByDestination(id);
-
-  // Fetch premium restaurant IDs for this destination (batch query - efficient!)
-  let premiumRestaurantIds = [];
-  try {
-    const premiumSet = await getPremiumRestaurantIds(id);
-    premiumRestaurantIds = Array.from(premiumSet);
-  } catch (error) {
-    console.error('Error fetching premium restaurant IDs:', error);
-  }
-
-  // Fetch category guides for this destination
-  let categoryGuides = [];
-  try {
-    categoryGuides = await getAllCategoryGuidesForDestination(id);
-  } catch (error) {
-    console.error('Error fetching category guides:', error);
   }
 
   // ItemList schema for restaurant listing page

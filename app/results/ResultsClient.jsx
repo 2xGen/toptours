@@ -153,25 +153,38 @@ const Results = () => {
     "description": "AI-powered tour and activity recommendations based on your search criteria. Find the perfect tours for your next adventure.",
     "url": "https://toptours.ai/results",
     "numberOfItems": tours.length,
-    "itemListElement": tours.map((tour, index) => ({
-      "@type": "TouristAttraction",
-      "position": index + 1,
-      "name": tour.title,
-      "description": tour.description,
-      "url": tour.bookingLink,
-      "image": tour.imageUrl,
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": tour.rating,
-        "reviewCount": tour.reviewCount
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": tour.price,
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
+    "itemListElement": tours.map((tour, index) => {
+      // Build the TouristAttraction item
+      const item = {
+        "@type": "TouristAttraction",
+        "name": tour.title,
+        "description": tour.description,
+        "url": tour.bookingLink,
+        "image": tour.imageUrl,
+        "offers": {
+          "@type": "Offer",
+          "price": tour.price,
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        }
+      };
+
+      // Only add aggregateRating if rating and reviewCount are valid
+      if (tour.rating && tour.reviewCount && tour.rating > 0 && tour.reviewCount > 0) {
+        item.aggregateRating = {
+          "@type": "AggregateRating",
+          "ratingValue": tour.rating,
+          "reviewCount": tour.reviewCount
+        };
       }
-    }))
+
+      // Return ListItem with item property
+      return {
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": item
+      };
+    })
   };
 
   useEffect(() => {

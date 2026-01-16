@@ -24,23 +24,12 @@ function hashReviewCount(count) {
  * Fetch reviews from Viator API
  */
 export async function fetchProductReviews(productId, options = {}) {
-  // Use sandbox key for sandbox API, production key for production API
-  const apiBaseUrl = process.env.VIATOR_API_BASE_URL || 'https://api.sandbox.viator.com';
-  const isSandbox = apiBaseUrl.includes('sandbox');
-  const apiKey = isSandbox 
-    ? (process.env.VIATOR_SANDBOX_API_KEY || process.env.VIATOR_API_KEY)
-    : process.env.VIATOR_API_KEY;
+  // Use the same API key as other Viator API calls (production)
+  const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
   
   if (!apiKey) {
-    throw new Error(`VIATOR_API_KEY not configured${isSandbox ? ' (sandbox)' : ''}`);
+    throw new Error('VIATOR_API_KEY not configured');
   }
-
-  // Debug: Log which key is being used (masked for security)
-  const maskedKey = apiKey ? `${apiKey.substring(0, 8)}...${apiKey.substring(apiKey.length - 4)}` : 'NOT SET';
-  console.log(`🔑 [REVIEWS] Using ${isSandbox ? 'SANDBOX' : 'PRODUCTION'} API key: ${maskedKey}`);
-  console.log(`🔑 [REVIEWS] API key length: ${apiKey?.length || 0} characters`);
-  console.log(`🔑 [REVIEWS] VIATOR_SANDBOX_API_KEY exists: ${!!process.env.VIATOR_SANDBOX_API_KEY}`);
-  console.log(`🔑 [REVIEWS] VIATOR_API_KEY exists: ${!!process.env.VIATOR_API_KEY}`);
 
   const requestBody = {
     productCode: productId,
@@ -57,11 +46,10 @@ export async function fetchProductReviews(productId, options = {}) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
 
-    // Use sandbox API for testing, production API when certified
-    const reviewsEndpoint = `${apiBaseUrl}/partner/reviews/product`;
+    // Use production API (full access approved)
+    const reviewsEndpoint = 'https://api.viator.com/partner/reviews/product';
 
     console.log(`🔍 [REVIEWS] Fetching from: ${reviewsEndpoint}`);
-    console.log(`🔍 [REVIEWS] Using ${isSandbox ? 'SANDBOX' : 'PRODUCTION'} API key`);
     console.log(`🔍 [REVIEWS] Request body:`, JSON.stringify(requestBody, null, 2));
 
     const response = await fetch(reviewsEndpoint, {

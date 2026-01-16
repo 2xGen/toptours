@@ -25,19 +25,7 @@ import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { destinations } from '../../../../../src/data/destinationsData';
 import { travelGuides } from '../../../../../src/data/travelGuidesData';
-import { categoryGuides as categoryGuidesBase } from '../guidesData';
-import { categoryGuidesNorthAmerica } from '../guidesData-north-america';
-import { categoryGuidesAfrica } from '../guidesData-africa';
-import { categoryGuidesMiddleEast } from '../guidesData-middle-east';
 import { getRestaurantsForDestination } from '../../restaurants/restaurantsData';
-
-// Merge all regional guide files
-const categoryGuides = {
-  ...categoryGuidesBase,
-  ...categoryGuidesNorthAmerica,
-  ...categoryGuidesAfrica,
-  ...categoryGuidesMiddleEast,
-};
 
 export default function CategoryGuideClient({ destinationId, categorySlug, guideData, categoryTours = [], promotionScores = {}, availableGuideSlugs = [], allAvailableGuides = [], destination: destinationProp }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);

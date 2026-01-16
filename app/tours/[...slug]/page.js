@@ -10,6 +10,7 @@ import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDesc
 import { getCachedReviews } from '@/lib/viatorReviews';
 import { fetchProductRecommendations, fetchRecommendedTours } from '@/lib/viatorRecommendations';
 import { getPricingPerAgeBand } from '@/lib/viatorPricing';
+import { trackTourForSitemap, trackToursForSitemap } from '@/lib/tourSitemap'; '@/lib/viatorPricing';
 
 /**
  * Generate metadata for tour detail page
@@ -880,41 +881,50 @@ export default async function TourDetailPage({ params }) {
       // Continue without FAQs - not critical
     }
 
-    // Fetch reviews (lazy loading on page visit)
-    // Only enable for specific Viator test tours
-    const viatorTestTourIds = ['446074P1', '103020P7'];
-    const isViatorTestTour = viatorTestTourIds.includes(productId);
-    
-    let reviews = null;
-    if (isViatorTestTour) {
-      try {
-        const currentReviewCount = tour.reviews?.totalReviews || 0;
-        console.log(`🔍 [REVIEWS] Fetching reviews for tour ${productId} (count: ${currentReviewCount})...`);
-        reviews = await getCachedReviews(productId, currentReviewCount);
-        console.log(`✅ [REVIEWS] Fetched ${reviews?.reviews?.length || 0} reviews for tour ${productId}`);
-      } catch (error) {
-        console.error('❌ [REVIEWS] Error fetching reviews:', error);
-        // Continue without reviews - not critical
-      }
-    }
-
-    // Fetch recommended tours using recommendations API
-    // Only enable for specific Viator test tours
-    let recommendedTours = [];
-    if (isViatorTestTour) {
-      try {
-        console.log(`🔍 [RECOMMENDATIONS] Fetching recommendations for tour ${productId}...`);
-        const recommendedProductCodes = await fetchProductRecommendations(productId);
-        
-        if (recommendedProductCodes && recommendedProductCodes.length > 0) {
-          console.log(`🔍 [RECOMMENDATIONS] Fetching full tour data for ${recommendedProductCodes.length} recommended tours...`);
-          recommendedTours = await fetchRecommendedTours(recommendedProductCodes.slice(0, 6)); // Limit to 6 tours
-          console.log(`✅ [RECOMMENDATIONS] Fetched ${recommendedTours.length} recommended tours`);
+    // Fetch reviews and recommendations in parallel (now enabled for all tours with production API access)
+    const [
+      reviewsResult,
+      recommendedProductCodesResult
+    ] = await Promise.allSettled([
+      // Fetch reviews (lazy loading on page visit)
+      (async () => {
+        try {
+          const currentReviewCount = tour.reviews?.totalReviews || 0;
+          console.log(`🔍 [REVIEWS] Fetching reviews for tour ${productId} (count: ${currentReviewCount})...`);
+          const reviewsData = await getCachedReviews(productId, currentReviewCount);
+          console.log(`✅ [REVIEWS] Fetched ${reviewsData?.reviews?.length || 0} reviews for tour ${productId}`);
+          return reviewsData;
+        } catch (error) {
+          console.error('❌ [REVIEWS] Error fetching reviews:', error);
+          return null;
         }
+      })(),
+      
+      // Fetch recommended product codes
+      fetchProductRecommendations(productId)
+        .catch(error => {
+          console.error('❌ [RECOMMENDATIONS] Error fetching recommendations:', error);
+          return [];
+        })
+    ]);
+
+    // Extract results
+    const reviews = reviewsResult.status === 'fulfilled' ? reviewsResult.value : null;
+    const recommendedProductCodes = recommendedProductCodesResult.status === 'fulfilled' ? recommendedProductCodesResult.value : [];
+
+    // Fetch full tour data for recommended tours (after we have the product codes)
+    let recommendedTours = [];
+    if (recommendedProductCodes && recommendedProductCodes.length > 0) {
+      try {
+        console.log(`🔍 [RECOMMENDATIONS] Fetching full tour data for ${recommendedProductCodes.length} recommended tours...`);
+        recommendedTours = await fetchRecommendedTours(recommendedProductCodes.slice(0, 6)); // Limit to 6 tours
+        console.log(`✅ [RECOMMENDATIONS] Fetched ${recommendedTours.length} recommended tours`);
       } catch (error) {
-        console.error('❌ [RECOMMENDATIONS] Error fetching recommendations:', error);
+        console.error('❌ [RECOMMENDATIONS] Error fetching recommended tour data:', error);
         // Continue without recommendations - not critical
       }
+    } else {
+      console.log(`ℹ️ [RECOMMENDATIONS] No recommended product codes returned for tour ${productId}`);
     }
 
     // Fetch accurate pricing per age band from schedules API
@@ -949,6 +959,21 @@ export default async function TourDetailPage({ params }) {
             dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
           />
         )}
+        {/* Track tour for sitemap (non-blocking, fire and forget) */}
+        {(() => {
+          trackTourForSitemap(productId, tour, destinationData);
+          
+          // Track recommended and similar tours for sitemap
+          const allRelatedTours = [
+            ...(recommendedTours || []),
+            ...(similarTours || [])
+          ];
+          if (allRelatedTours.length > 0) {
+            trackToursForSitemap(allRelatedTours, destinationData);
+          }
+          
+          return null;
+        })()}
         <TourDetailClient
           tour={tour}
           similarTours={similarTours}

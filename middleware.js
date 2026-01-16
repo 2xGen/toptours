@@ -1,7 +1,15 @@
 import { NextResponse } from 'next/server';
 
 export function middleware(request) {
-  const { pathname } = request.nextUrl;
+  const { pathname, search } = request.nextUrl;
+  const hostname = request.headers.get('host') || '';
+  
+  // Redirect www to non-www (301 permanent redirect for SEO)
+  if (hostname.startsWith('www.')) {
+    const newUrl = new URL(request.url);
+    newUrl.hostname = hostname.replace(/^www\./, '');
+    return NextResponse.redirect(newUrl, 301);
+  }
   
   // Let API routes through without modification
   if (pathname.startsWith('/api/')) {

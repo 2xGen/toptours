@@ -8,8 +8,8 @@ import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassifie
 import BabyEquipmentClient from './BabyEquipmentClient';
 
 // Force dynamic rendering
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+// Revalidate every hour for fresh data
+export const revalidate = 3600;
 
 // Helper function to generate slug (same as used in destination detail page)
 function generateSlug(name) {

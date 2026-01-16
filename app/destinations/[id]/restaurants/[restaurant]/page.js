@@ -59,9 +59,8 @@ const OLD_RESTAURANT_REDIRECTS = {
   },
 };
 
-// Force dynamic rendering to ensure premium restaurant features are always fresh
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+// Revalidate every hour for fresh data
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }) {
   const { id: destinationId, restaurant: restaurantSlug } = await params;
@@ -200,51 +199,52 @@ export default async function RestaurantPage({ params }) {
     notFound();
   }
 
-  // Get other restaurants
-  let otherRestaurants = await getRestaurantsForDestinationFromDB(destinationId);
-  if (otherRestaurants.length > 0) {
-    otherRestaurants = otherRestaurants
-      .map(r => formatRestaurantForFrontend(r))
-      .filter((item) => item.slug !== restaurant.slug);
-  } else {
-    otherRestaurants = getRestaurantsForDestinationFromStatic(destinationId).filter(
-      (item) => item.slug !== restaurant.slug,
-    );
-  }
-
-  // Get initial promotion score
-  // Only fetch if restaurant.id is a numeric ID (not a slug)
-  // For static restaurants, restaurant.id might be a slug, so check if it's numeric
-  let initialPromotionScore = null;
+  // Parallelize independent data fetching operations
   const restaurantId = restaurant.id;
   const isNumericId = restaurantId && /^\d+$/.test(String(restaurantId));
-  if (isNumericId) {
-    try {
-      initialPromotionScore = await getRestaurantPromotionScore(Number(restaurantId));
-    } catch (error) {
-      console.error('Error fetching restaurant promotion score:', error);
-    }
-  }
 
+  const [
+    otherRestaurantsResult,
+    initialPromotionScoreResult,
+    premiumSubscriptionResult,
+    categoryGuidesResult
+  ] = await Promise.allSettled([
+    // Other restaurants (database first, fallback to static)
+    getRestaurantsForDestinationFromDB(destinationId)
+      .then(restaurants => {
+        if (restaurants.length > 0) {
+          return restaurants
+            .map(r => formatRestaurantForFrontend(r))
+            .filter((item) => item.slug !== restaurant.slug);
+        } else {
+          return getRestaurantsForDestinationFromStatic(destinationId).filter(
+            (item) => item.slug !== restaurant.slug,
+          );
+        }
+      })
+      .catch(() => getRestaurantsForDestinationFromStatic(destinationId).filter(
+        (item) => item.slug !== restaurant.slug,
+      )),
+    
+    // Initial promotion score (only if numeric ID)
+    isNumericId 
+      ? getRestaurantPromotionScore(Number(restaurantId)).catch(() => null)
+      : Promise.resolve(null),
+    
+    // Premium subscription (only if numeric ID)
+    isNumericId 
+      ? getRestaurantPremiumSubscription(Number(restaurantId), destinationId).catch(() => null)
+      : Promise.resolve(null),
+    
+    // Category guides
+    getAllCategoryGuidesForDestination(destinationId).catch(() => [])
+  ]);
 
-  // Get premium subscription status for this restaurant
-  // Only fetch if restaurant.id is a numeric ID (not a slug)
-  let premiumSubscription = null;
-  if (isNumericId) {
-    try {
-      premiumSubscription = await getRestaurantPremiumSubscription(Number(restaurantId), destinationId);
-    } catch (error) {
-      console.error('Error fetching restaurant premium subscription:', error);
-    }
-  }
-
-  // Get all category guides for this destination
-  let categoryGuides = [];
-  try {
-    categoryGuides = await getAllCategoryGuidesForDestination(destinationId);
-  } catch (error) {
-    console.error('Error fetching category guides:', error);
-  }
+  // Extract results
+  const otherRestaurants = otherRestaurantsResult.status === 'fulfilled' ? otherRestaurantsResult.value : [];
+  const initialPromotionScore = initialPromotionScoreResult.status === 'fulfilled' ? initialPromotionScoreResult.value : null;
+  const premiumSubscription = premiumSubscriptionResult.status === 'fulfilled' ? premiumSubscriptionResult.value : null;
+  const categoryGuides = categoryGuidesResult.status === 'fulfilled' ? categoryGuidesResult.value : [];
 
   // Generate breadcrumb schema for SEO
   const breadcrumbSchema = {

@@ -1,28 +1,14 @@
 import { notFound } from 'next/navigation';
 import { getDestinationById } from '@/data/destinationsData';
-import { getPromotionScoresByDestination, getTrendingToursByDestination, getHardcodedToursByDestination, getTrendingRestaurantsByDestination, getRestaurantPromotionScoresByDestination, getPromotedToursByDestination, getPromotedRestaurantsByDestination } from '@/lib/promotionSystem';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
-import { getRestaurantsForDestination, formatRestaurantForFrontend } from '@/lib/restaurants';
 import { getViatorDestinationById, getViatorDestinationBySlug } from '@/lib/supabaseCache';
-import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { redirect } from 'next/navigation';
 import ErrorBoundary from '@/components/ErrorBoundary';
-import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
-import { getBabyEquipmentRentalsByDestination } from '@/lib/babyEquipmentRentals';
 import DestinationDetailClient from './DestinationDetailClient';
-
-// Helper function to check if destination has baby equipment rentals page
-async function checkBabyEquipmentRentals(destinationId) {
-  try {
-    const pageData = await getBabyEquipmentRentalsByDestination(destinationId);
-    return !!pageData; // Return true if page exists, false otherwise
-  } catch (error) {
-    console.error('Error checking baby equipment rentals:', error);
-    return false;
-  }
-}
+import { fetchDestinationData } from './DestinationDataLoader';
+import { trackToursForSitemap } from '@/lib/tourSitemap';
 
 // Helper to generate slug
 function generateSlug(name) {
@@ -35,8 +21,8 @@ function generateSlug(name) {
     .replace(/^-|-$/g, '');
 }
 
-// Force dynamic rendering to avoid build-time errors
-export const dynamic = 'force-dynamic';
+// Revalidate every hour for fresh data
+export const revalidate = 3600;
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
@@ -412,246 +398,20 @@ export default async function DestinationDetailPage({ params }) {
     console.log(`⚠️ Destination Page - Using slug ${destinationIdForScores} for promotions (destination.destinationId not set)`);
   }
   
-  // Fetch promotion scores for this destination (with error handling)
-  let promotionScores = {};
-  try {
-    promotionScores = await getPromotionScoresByDestination(destinationIdForScores);
-  } catch (error) {
-    console.error('Error fetching promotion scores:', error);
-    // Continue with empty scores - page will still work
-  }
-
-  // Fetch trending tours (past 28 days) for this destination - limit to 3
-  let trendingTours = [];
-  try {
-    trendingTours = await getTrendingToursByDestination(destinationIdForScores, 3);
-  } catch (error) {
-    console.error('Error fetching trending tours:', error);
-    // Continue with empty array - page will still work
-  }
-
-  // Fetch trending restaurants (past 28 days) for this destination - limit to 3
-  let trendingRestaurants = [];
-  try {
-    trendingRestaurants = await getTrendingRestaurantsByDestination(destination.id, 3);
-  } catch (error) {
-    console.error('Error fetching trending restaurants:', error);
-    // Continue with empty array - page will still work
-  }
-
-  // Fetch promoted tours for this destination
-  // Fetch full tour data from Viator API (similar to trending tours)
-  let promotedTours = [];
-  try {
-    const promotedTourData = await getPromotedToursByDestination(destinationIdForScores, 6);
-    
-    if (promotedTourData.length > 0) {
-      console.log(`✅ Destination Page - Found ${promotedTourData.length} promoted tour product ID(s) for ${destination.id}`);
-      
-      // Fetch full tour data for each promoted tour
-      const { getCachedTour } = await import('@/lib/viatorCache');
-      const fetchPromises = promotedTourData.map(async (promoted) => {
-        const productId = promoted.product_id || promoted.productId || promoted.productCode;
-        if (!productId) return null;
-        
-        try {
-          // Try to get cached tour first
-          let tour = await getCachedTour(productId);
-          
-          // If not cached, fetch from Viator API
-          if (!tour) {
-            const apiKey = process.env.VIATOR_API_KEY;
-            if (!apiKey) {
-              console.warn(`No API key for fetching promoted tour ${productId}`);
-              return null;
-            }
-            
-            const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
-            const response = await fetch(url, {
-              method: 'GET',
-              headers: {
-                'exp-api-key': apiKey,
-                'Accept': 'application/json;version=2.0',
-                'Accept-Language': 'en-US',
-                'Content-Type': 'application/json'
-              },
-              cache: 'no-store'
-            });
-            
-            if (response.ok) {
-              tour = await response.json();
-            } else {
-              console.warn(`Failed to fetch promoted tour ${productId}: ${response.status}`);
-              return null;
-            }
-          }
-          
-          // Return tour with product_id for matching
-          return {
-            ...tour,
-            productId: productId,
-            productCode: productId,
-            product_id: productId,
-          };
-        } catch (error) {
-          console.error(`Error fetching promoted tour ${productId}:`, error);
-          return null;
-        }
-      });
-      
-      const fetchedTours = await Promise.all(fetchPromises);
-      promotedTours = fetchedTours.filter(t => t !== null);
-      
-      if (promotedTours.length > 0) {
-        console.log(`✅ Destination Page - Successfully fetched ${promotedTours.length} promoted tour(s) with full data`);
-      }
-    }
-  } catch (error) {
-    console.error('Error fetching promoted tours:', error);
-    // Continue with empty array - page will still work
-  }
-
-  // Fetch promoted restaurants for this destination
-  let promotedRestaurants = [];
-  try {
-    const promotedRestaurantData = await getPromotedRestaurantsByDestination(destination.id, 6);
-    if (promotedRestaurantData.length > 0) {
-      // Fetch full restaurant data for promoted restaurants
-      const dbRestaurants = await getRestaurantsForDestination(destination.id);
-      const formattedRestaurants = (dbRestaurants || [])
-        .map(restaurant => {
-          try {
-            return formatRestaurantForFrontend(restaurant);
-          } catch (err) {
-            console.error('Error formatting restaurant:', err, restaurant?.id);
-            return null;
-          }
-        })
-        .filter(Boolean);
-      
-      // Match promoted restaurant IDs with full restaurant data
-      // Convert both to strings for consistent comparison
-      const promotedRestaurantIds = new Set(
-        promotedRestaurantData.map(pr => String(pr.id || pr.restaurant_id)).filter(Boolean)
-      );
-      promotedRestaurants = formattedRestaurants.filter(r => 
-        r.id && promotedRestaurantIds.has(String(r.id))
-      );
-      
-      console.log(`🔍 [Destination Page] Matching promoted restaurants:`);
-      console.log(`  - Promoted restaurant IDs from DB:`, Array.from(promotedRestaurantIds));
-      console.log(`  - Available restaurant IDs:`, formattedRestaurants.map(r => String(r.id)).slice(0, 5));
-      console.log(`  - Matched ${promotedRestaurants.length} promoted restaurant(s)`);
-    }
-  } catch (error) {
-    console.error('Error fetching promoted restaurants:', error);
-    // Continue with empty array - page will still work
-  }
-
-  // Fetch restaurant promotion scores for this destination
-  let restaurantPromotionScores = {};
-  try {
-    restaurantPromotionScores = await getRestaurantPromotionScoresByDestination(destination.id);
-  } catch (error) {
-    console.error('Error fetching restaurant promotion scores:', error);
-    // Continue with empty scores - page will still work
-  }
-
-  // Fetch premium restaurant IDs for this destination (batch query - efficient!)
-  let premiumRestaurantIds = [];
-  try {
-    const premiumSet = await getPremiumRestaurantIds(destination.id);
-    premiumRestaurantIds = Array.from(premiumSet); // Convert Set to Array for JSON serialization
-  } catch (error) {
-    console.error('Error fetching premium restaurant IDs:', error);
-    // Continue with empty array - badges just won't show
-  }
-
-  // Fetch hardcoded tours by category (lightweight - no API calls)
-  let hardcodedTours = {};
-  try {
-    hardcodedTours = await getHardcodedToursByDestination(destination.id);
-  } catch (error) {
-    console.error('Error fetching hardcoded tours:', error);
-    // Continue with empty object - page will still work
-  }
-
-  // Fetch category guides for this destination (database + hardcoded)
-  // This enriches tourCategories with hasGuide property for database destinations
-  let categoryGuides = [];
-  try {
-    // Use destination.id (slug) for fetching guides
-    categoryGuides = await getAllCategoryGuidesForDestination(destination.id);
-    console.log(`📚 Destination Page - Fetched ${categoryGuides.length} category guides for ${destination.id}`);
-    
-    // Enrich tourCategories with hasGuide property based on fetched guides
-    if (destination.tourCategories && Array.isArray(destination.tourCategories) && categoryGuides.length > 0) {
-      const guideSlugs = new Set(categoryGuides.map(g => g.category_slug));
-      destination.tourCategories = destination.tourCategories.map(category => {
-        const categoryName = typeof category === 'string' ? category : category.name;
-        const categorySlug = categoryName.toLowerCase()
-          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-          .replace(/&/g, 'and')
-          .replace(/'/g, '')
-          .replace(/\./g, '')
-          .replace(/ /g, '-');
-        
-        const hasGuide = guideSlugs.has(categorySlug);
-        
-        if (typeof category === 'string') {
-          return { name: category, hasGuide };
-        } else {
-          return { ...category, hasGuide };
-        }
-      });
-    }
-  } catch (error) {
-    console.error('Error fetching category guides:', error);
-    // Continue without guides - page will still work
-  }
-
-  // Fetch restaurants from database for this destination
-  // Wrap in try-catch to prevent page crashes if database is unavailable
-  let restaurants = [];
-  try {
-    // Only fetch if we have the required environment variables
-    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
-      const dbRestaurants = await getRestaurantsForDestination(destination.id);
-      // Format restaurants for frontend - show all (no limit, will display 6 as cards + rest as list)
-      // Add extra error handling for each restaurant
-      restaurants = (dbRestaurants || [])
-        .map(restaurant => {
-          try {
-            return formatRestaurantForFrontend(restaurant);
-          } catch (err) {
-            console.error('Error formatting restaurant:', err, restaurant?.id);
-            return null;
-          }
-        })
-        .filter(restaurant => restaurant !== null && restaurant !== undefined);
-    }
-  } catch (error) {
-    // Silently fail - don't crash the page if restaurants can't be loaded
-    console.error('Error fetching restaurants (non-fatal):', error.message);
-    restaurants = [];
-  }
-
-  // Merge hardcoded tour scores into promotionScores
-  if (hardcodedTours && Object.keys(hardcodedTours).length > 0) {
-    Object.values(hardcodedTours).forEach(categoryTours => {
-      categoryTours.forEach(tour => {
-        if (tour.productId && !promotionScores[tour.productId]) {
-          promotionScores[tour.productId] = {
-            product_id: tour.productId,
-            total_score: tour.totalScore || 0,
-            monthly_score: 0,
-            weekly_score: 0,
-            past_28_days_score: tour.lastMonthScore || 0,
-          };
-        }
-      });
-    });
-  }
+  // Fetch all destination data in parallel for better performance
+  const {
+    promotionScores,
+    trendingTours,
+    trendingRestaurants,
+    promotedTours,
+    promotedRestaurants,
+    hardcodedTours,
+    restaurants,
+    restaurantPromotionScores,
+    premiumRestaurantIds,
+    categoryGuides,
+    hasBabyEquipmentRentals
+  } = await fetchDestinationData(destination, destinationIdForScores);
 
   return (
     <>
@@ -891,6 +651,19 @@ export default async function DestinationDetailPage({ params }) {
         return null;
       })()}
       
+      {/* Track tours for sitemap (non-blocking) */}
+      {(() => {
+        const allTours = [
+          ...(promotedTours || []),
+          ...(trendingTours || []),
+          ...Object.values(hardcodedTours || {}).flat()
+        ];
+        if (allTours.length > 0) {
+          trackToursForSitemap(allTours, { id: destination.id, slug: destination.id });
+        }
+        return null;
+      })()}
+      
       <ErrorBoundary>
         <DestinationDetailClient 
           destination={destination} 
@@ -904,7 +677,7 @@ export default async function DestinationDetailPage({ params }) {
           restaurantPromotionScores={restaurantPromotionScores}
           premiumRestaurantIds={premiumRestaurantIds}
           categoryGuides={categoryGuides}
-          hasBabyEquipmentRentals={await checkBabyEquipmentRentals(destination.id)}
+          hasBabyEquipmentRentals={hasBabyEquipmentRentals}
         />
       </ErrorBoundary>
     </>

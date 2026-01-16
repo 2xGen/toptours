@@ -4,6 +4,7 @@ import { getRestaurantCountsByDestination } from '../src/lib/restaurants.js';
 import { createSupabaseServiceRoleClient } from '../src/lib/supabaseClient.js';
 import { hasDestinationPage } from '../src/data/destinationFullContent.js';
 import { getAllBabyEquipmentRentalsDestinations } from '../src/lib/babyEquipmentRentals.js';
+import { getAllCategoryGuidesForDestination } from '../src/lib/categoryGuides.js';
 import viatorDestinationsClassifiedData from '../src/data/viatorDestinationsClassified.json';
 
 // Helper to generate slug
@@ -203,6 +204,32 @@ export default async function sitemap() {
     priority: 0.75,
   }));
 
+  // Category guide pages (fetch from database - batch fetch all guides at once)
+  const categoryGuidePages = [];
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    const { data: allGuides, error: guidesError } = await supabase
+      .from('category_guides')
+      .select('destination_id, category_slug')
+      .order('destination_id', { ascending: true });
+    
+    if (!guidesError && Array.isArray(allGuides)) {
+      allGuides.forEach((guide) => {
+        if (guide.destination_id && guide.category_slug) {
+          categoryGuidePages.push({
+            url: `${baseUrl}/destinations/${guide.destination_id}/guides/${guide.category_slug}`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.7,
+          });
+        }
+      });
+    }
+  } catch (error) {
+    // Silently fail - category guides are optional for sitemap
+    console.warn('Failed to fetch category guides for sitemap:', error.message);
+  }
+
   // Tour sitemap index reference (for 300k+ tours, we use sitemap indexing)
   // Individual tour pages are in separate sitemap files (sitemap-tours-1.xml, etc.)
   // This is referenced in robots.txt
@@ -217,6 +244,7 @@ export default async function sitemap() {
     ...restaurantDetailPages,
     ...babyEquipmentRentalPages, // Baby equipment rental pages
     ...travelGuidePages,
+    ...categoryGuidePages, // Category guide pages (destination-specific guides)
     // Note: Individual tour pages are in sitemap-tours-[index].xml files
     // See app/sitemap-tours-[index]/route.js for dynamic tour sitemap generation
   ];

@@ -5,9 +5,10 @@ import { getPromotionScoresByDestination } from '@/lib/promotionSystem';
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
+import { trackToursForSitemap } from '@/lib/tourSitemap';
 
-// Force dynamic rendering since we're querying the database
-export const dynamic = 'force-dynamic';
+// Revalidate every hour for fresh data
+export const revalidate = 3600;
 
 // Function to fetch all guides for a destination from database
 // NOTE: This function is no longer used - we use getAllCategoryGuidesForDestination instead
@@ -703,6 +704,14 @@ export default async function CategoryGuidePage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {/* Track tours for sitemap (non-blocking) */}
+      {(() => {
+        if (categoryTours && categoryTours.length > 0) {
+          trackToursForSitemap(categoryTours, { id: destination.id, slug: destination.id });
+        }
+        return null;
+      })()}
+      
       <CategoryGuideClient 
         destinationId={destinationId} 
         categorySlug={categorySlug}

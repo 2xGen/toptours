@@ -3,21 +3,88 @@
  * 
  * Fetches product recommendations from Viator API
  * Uses the /partner/products/recommendations endpoint
+ * Includes caching to reduce API calls
  */
 
+import { createSupabaseServiceRoleClient } from './supabaseClient';
+
+const RECOMMENDATIONS_CACHE_TTL_HOURS = 6; // Cache recommendations for 6 hours
+
 /**
- * Fetch product recommendations from Viator API
+ * Get cached recommendations from Supabase
+ */
+async function getCachedRecommendations(productId) {
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    const { data, error } = await supabase
+      .from('viator_cache')
+      .select('*')
+      .eq('product_id', productId)
+      .eq('cache_type', 'recommendations')
+      .single();
+
+    if (error || !data) {
+      return null;
+    }
+
+    // Check if cache is still valid
+    const cachedAt = new Date(data.cached_at);
+    const now = new Date();
+    const hoursSinceCache = (now - cachedAt) / (1000 * 60 * 60);
+
+    if (hoursSinceCache > RECOMMENDATIONS_CACHE_TTL_HOURS) {
+      // Cache expired, delete it
+      await supabase.from('viator_cache').delete().eq('product_id', productId).eq('cache_type', 'recommendations');
+      return null;
+    }
+
+    return data.tour_data; // Store product codes in tour_data field
+  } catch (error) {
+    console.error('Error getting cached recommendations:', error.message || error);
+    return null;
+  }
+}
+
+/**
+ * Cache recommendations in Supabase
+ */
+async function cacheRecommendations(productId, recommendedCodes) {
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    const expiresAt = new Date();
+    expiresAt.setHours(expiresAt.getHours() + RECOMMENDATIONS_CACHE_TTL_HOURS);
+
+    await supabase.from('viator_cache').upsert({
+      product_id: productId,
+      cache_type: 'recommendations',
+      tour_data: recommendedCodes, // Store product codes array
+      cached_at: new Date().toISOString(),
+      expires_at: expiresAt.toISOString(),
+    }, {
+      onConflict: 'product_id,cache_type',
+    });
+  } catch (error) {
+    console.error('Error caching recommendations:', error.message || error);
+    // Non-critical - continue without caching
+  }
+}
+
+/**
+ * Fetch product recommendations from Viator API (with caching)
  */
 export async function fetchProductRecommendations(productId, options = {}) {
-  // Use sandbox key for sandbox API, production key for production API
-  const apiBaseUrl = process.env.VIATOR_API_BASE_URL || 'https://api.sandbox.viator.com';
-  const isSandbox = apiBaseUrl.includes('sandbox');
-  const apiKey = isSandbox 
-    ? (process.env.VIATOR_SANDBOX_API_KEY || process.env.VIATOR_API_KEY)
-    : process.env.VIATOR_API_KEY;
+  // Check cache first
+  const cached = await getCachedRecommendations(productId);
+  if (cached && Array.isArray(cached) && cached.length > 0) {
+    console.log(`✅ [RECOMMENDATIONS] Using cached recommendations for ${productId} (${cached.length} tours)`);
+    return cached;
+  }
+
+  // Use the same API key as other Viator API calls (production)
+  const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
   
   if (!apiKey) {
-    throw new Error(`VIATOR_API_KEY not configured${isSandbox ? ' (sandbox)' : ''}`);
+    throw new Error('VIATOR_API_KEY not configured');
   }
 
   const requestBody = {
@@ -29,10 +96,10 @@ export async function fetchProductRecommendations(productId, options = {}) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
 
-    const recommendationsEndpoint = `${apiBaseUrl}/partner/products/recommendations`;
+    // Use production API (full access approved)
+    const recommendationsEndpoint = 'https://api.viator.com/partner/products/recommendations';
 
     console.log(`🔍 [RECOMMENDATIONS] Fetching from: ${recommendationsEndpoint}`);
-    console.log(`🔍 [RECOMMENDATIONS] Request body:`, JSON.stringify(requestBody, null, 2));
 
     const response = await fetch(recommendationsEndpoint, {
       method: 'POST',
@@ -57,13 +124,18 @@ export async function fetchProductRecommendations(productId, options = {}) {
     console.log(`✅ [RECOMMENDATIONS] Received recommendations for ${productId}`);
     
     // Extract recommended product codes
+    let recommendedCodes = [];
     if (data && data.length > 0 && data[0].recommendations) {
-      const recommendedCodes = data[0].recommendations.IS_SIMILAR_TO || [];
+      recommendedCodes = data[0].recommendations.IS_SIMILAR_TO || [];
       console.log(`✅ [RECOMMENDATIONS] Found ${recommendedCodes.length} similar tours`);
-      return recommendedCodes;
+    }
+
+    // Cache the product codes
+    if (recommendedCodes.length > 0) {
+      await cacheRecommendations(productId, recommendedCodes);
     }
     
-    return [];
+    return recommendedCodes;
   } catch (error) {
     if (error.name === 'AbortError') {
       throw new Error('Request timeout - Viator API took too long to respond');
@@ -90,15 +162,11 @@ export async function fetchRecommendedTours(recommendedProductCodes) {
   // Import the tour caching functions
   const { getCachedTour, cacheTour } = await import('./viatorCache');
   
-  // Use sandbox key for sandbox API, production key for production API
-  const apiBaseUrl = process.env.VIATOR_API_BASE_URL || 'https://api.sandbox.viator.com';
-  const isSandbox = apiBaseUrl.includes('sandbox');
-  const apiKey = isSandbox 
-    ? (process.env.VIATOR_SANDBOX_API_KEY || process.env.VIATOR_API_KEY)
-    : process.env.VIATOR_API_KEY;
+  // Use the same API key as other Viator API calls (production)
+  const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
   
   if (!apiKey) {
-    throw new Error(`VIATOR_API_KEY not configured${isSandbox ? ' (sandbox)' : ''}`);
+    throw new Error('VIATOR_API_KEY not configured');
   }
 
   try {
@@ -115,7 +183,8 @@ export async function fetchRecommendedTours(recommendedProductCodes) {
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), 30000);
 
-          const productEndpoint = `${apiBaseUrl}/partner/products/${productCode}?currency=USD`;
+          // Use production API (full access approved)
+          const productEndpoint = `https://api.viator.com/partner/products/${productCode}?currency=USD`;
           
           console.log(`🔍 [RECOMMENDATIONS] Fetching tour ${productCode} from: ${productEndpoint}`);
           

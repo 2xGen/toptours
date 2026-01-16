@@ -3369,7 +3369,12 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                                           recommendedTour.images?.[0]?.variants?.[0]?.url || '';
                   const recommendedRating = recommendedTour.reviews?.combinedAverageRating || 0;
                   const recommendedReviewCount = recommendedTour.reviews?.totalReviews || 0;
-                  const recommendedPrice = recommendedTour.pricing?.summary?.fromPrice || 0;
+                  // Try multiple pricing fields (product endpoint may not have pricing.summary.fromPrice)
+                  const recommendedPrice = recommendedTour.pricing?.summary?.fromPrice || 
+                                          recommendedTour.pricingInfo?.fromPrice || 
+                                          recommendedTour.pricing?.fromPrice || 
+                                          recommendedTour.price || 
+                                          null;
 
                   return (
                     <Card key={recommendedTourId || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
@@ -3410,9 +3415,11 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                           </div>
                         )}
 
-                        <div className="text-lg font-bold text-orange-600 mb-3">
-                          From ${recommendedPrice}
-                        </div>
+                        {recommendedPrice && recommendedPrice > 0 && (
+                          <div className="text-lg font-bold text-orange-600 mb-3">
+                            From ${recommendedPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                          </div>
+                        )}
 
                         <Button
                           asChild

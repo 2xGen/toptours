@@ -17,6 +17,10 @@ import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
 import { getCachedReviews } from '@/lib/viatorReviews';
 import { fetchProductRecommendations, fetchRecommendedTours } from '@/lib/viatorRecommendations';
 import { getPricingPerAgeBand } from '@/lib/viatorPricing';
+import { trackTourForSitemap, trackToursForSitemap } from '@/lib/tourSitemap';
+
+// Revalidate every hour for fresh data
+export const revalidate = 3600;
 
 /**
  * Generate metadata for tour detail page
@@ -195,50 +199,177 @@ export default async function TourDetailPage({ params }) {
       await cacheTour(productId, tour);
     }
 
-    // Fetch pricing from search API (has pricing.summary.fromPrice)
-    // This is more reliable than the product endpoint for pricing
-    let pricing = null;
-    try {
-      const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
-      const searchResponse = await fetch('https://api.viator.com/partner/search/freetext', {
-        method: 'POST',
-        headers: {
-          'exp-api-key': apiKey,
-          'Accept': 'application/json;version=2.0',
-          'Accept-Language': 'en-US',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          searchTerm: productId,
-          searchTypes: [
-            {
-              searchType: 'PRODUCTS',
-              pagination: { start: 1, count: 1 }
-            }
-          ],
-          currency: 'USD'
-        }),
-        next: { revalidate: 3600 } // Cache for 1 hour
-      });
+    // Parallelize independent data fetching operations after tour is loaded
+    const [
+      pricingResult,
+      promotionScoreResult,
+      tourEnrichmentResult,
+      operatorPremiumDataResult,
+      reviewsResult,
+      recommendedProductCodesResult,
+      pricingPerAgeBandResult
+    ] = await Promise.allSettled([
+      // Fetch pricing from search API (has pricing.summary.fromPrice)
+      (async () => {
+        try {
+          const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+          const searchResponse = await fetch('https://api.viator.com/partner/search/freetext', {
+            method: 'POST',
+            headers: {
+              'exp-api-key': apiKey,
+              'Accept': 'application/json;version=2.0',
+              'Accept-Language': 'en-US',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              searchTerm: productId,
+              searchTypes: [
+                {
+                  searchType: 'PRODUCTS',
+                  pagination: { start: 1, count: 1 }
+                }
+              ],
+              currency: 'USD'
+            }),
+            next: { revalidate: 3600 } // Cache for 1 hour
+          });
 
-      if (searchResponse.ok) {
-        const searchData = await searchResponse.json();
-        const products = searchData?.products?.results || [];
-        const foundProduct = products.find(p => 
-          (p.productId || p.productCode) === productId
-        );
-        
-        if (foundProduct?.pricing?.summary?.fromPrice) {
-          pricing = foundProduct.pricing.summary.fromPrice;
+          if (searchResponse.ok) {
+            const searchData = await searchResponse.json();
+            const products = searchData?.products?.results || [];
+            const foundProduct = products.find(p => 
+              (p.productId || p.productCode) === productId
+            );
+            
+            if (foundProduct?.pricing?.summary?.fromPrice) {
+              return foundProduct.pricing.summary.fromPrice;
+            }
+          }
+        } catch (error) {
+          console.warn('⚠️ Could not fetch pricing from search API:', error.message);
         }
+        // Fallback: try to extract from tour object
+        return tour?.pricing?.summary?.fromPrice || 
+               tour?.pricing?.fromPrice || 
+               tour?.pricingInfo?.fromPrice || 
+               null;
+      })(),
+      
+      // Fetch promotion score
+      getTourPromotionScore(productId)
+        .then(score => {
+          // If tour doesn't exist in database, return 0 scores (fast, no API call needed)
+          if (!score) {
+            return {
+              product_id: productId,
+              total_score: 0,
+              monthly_score: 0,
+              weekly_score: 0,
+              past_28_days_score: 0,
+            };
+          }
+          return score;
+        })
+        .catch(() => ({
+          product_id: productId,
+          total_score: 0,
+          monthly_score: 0,
+          weekly_score: 0,
+          past_28_days_score: 0,
+        })),
+      
+      // Fetch tour enrichment
+      getTourEnrichment(productId)
+        .catch(() => null),
+      
+      // Fetch tour operator premium subscription data
+      getTourOperatorPremiumSubscription(productId)
+        .catch(() => null),
+      
+      // Fetch reviews (lazy loading on page visit) - now enabled for all tours
+      (async () => {
+        try {
+          const currentReviewCount = tour.reviews?.totalReviews || 0;
+          console.log(`🔍 [REVIEWS] Fetching reviews for tour ${productId} (count: ${currentReviewCount})...`);
+          const reviewsData = await getCachedReviews(productId, currentReviewCount);
+          console.log(`✅ [REVIEWS] Fetched ${reviewsData?.reviews?.length || 0} reviews for tour ${productId}`);
+          return reviewsData;
+        } catch (error) {
+          console.error('❌ [REVIEWS] Error fetching reviews:', error);
+          return null;
+        }
+      })(),
+      
+      // Fetch recommended product codes
+      fetchProductRecommendations(productId)
+        .catch(error => {
+          console.error('❌ [RECOMMENDATIONS] Error fetching recommendations:', error);
+          return [];
+        }),
+      
+      // Fetch accurate pricing per age band from schedules API
+      getPricingPerAgeBand(productId)
+        .catch(error => {
+          console.error('❌ [PRICING] Error fetching pricing per age band:', error);
+          return null;
+        })
+    ]);
+
+    // Extract results
+    let pricing = pricingResult.status === 'fulfilled' ? pricingResult.value : null;
+    let promotionScore = promotionScoreResult.status === 'fulfilled' ? promotionScoreResult.value : {
+      product_id: productId,
+      total_score: 0,
+      monthly_score: 0,
+      weekly_score: 0,
+      past_28_days_score: 0,
+    };
+    let tourEnrichment = tourEnrichmentResult.status === 'fulfilled' ? tourEnrichmentResult.value : null;
+    let operatorPremiumData = operatorPremiumDataResult.status === 'fulfilled' ? operatorPremiumDataResult.value : null;
+    const reviews = reviewsResult.status === 'fulfilled' ? reviewsResult.value : null;
+    const recommendedProductCodes = recommendedProductCodesResult.status === 'fulfilled' ? recommendedProductCodesResult.value : [];
+    let pricingPerAgeBand = pricingPerAgeBandResult.status === 'fulfilled' ? pricingPerAgeBandResult.value : null;
+
+    // Generate enrichment if not found
+    if (!tourEnrichment || !tourEnrichment.ai_summary) {
+      try {
+        const generated = await generateTourEnrichment(productId, tour);
+        if (!generated.error) {
+          tourEnrichment = generated.data;
+        }
+      } catch (error) {
+        console.error('Error generating tour enrichment server-side:', error);
       }
-    } catch (error) {
-      console.warn('⚠️ Could not fetch pricing from search API:', error.message);
-      // Fallback: try to extract from tour object
-      pricing = tour?.pricing?.summary?.fromPrice || 
-                tour?.pricing?.fromPrice || 
-                tour?.pricingInfo?.fromPrice || 
-                null;
+    }
+
+    // Fetch operator tours and stats if premium data exists
+    let operatorTours = [];
+    if (operatorPremiumData) {
+      try {
+        operatorTours = await getOperatorPremiumTourIds(productId);
+        const stats = await getOperatorAggregatedStats(operatorPremiumData.id);
+        if (stats) {
+          operatorPremiumData.aggregatedStats = stats;
+        }
+      } catch (error) {
+        console.error('Error fetching operator tours/stats:', error);
+      }
+    }
+
+    // Fetch full tour data for recommended tours (after we have the product codes)
+    let recommendedTours = [];
+    if (recommendedProductCodes && recommendedProductCodes.length > 0) {
+      try {
+        console.log(`🔍 [RECOMMENDATIONS] Fetching full tour data for ${recommendedProductCodes.length} recommended tours...`);
+        recommendedTours = await fetchRecommendedTours(recommendedProductCodes.slice(0, 6)); // Limit to 6 tours
+        console.log(`✅ [RECOMMENDATIONS] Fetched ${recommendedTours.length} recommended tours`);
+        console.log(`✅ [RECOMMENDATIONS] Tour IDs:`, recommendedTours.map(t => t.productId || t.productCode));
+      } catch (error) {
+        console.error('❌ [RECOMMENDATIONS] Error fetching recommended tour data:', error);
+        // Continue without recommendations - not critical
+      }
+    } else {
+      console.log(`ℹ️ [RECOMMENDATIONS] No recommended product codes returned for tour ${productId}`);
     }
 
     // Sync operator to CRM (lightweight, non-blocking)
@@ -383,68 +514,6 @@ export default async function TourDetailPage({ params }) {
       console.error('Error fetching similar tours:', error);
     }
 
-    let tourEnrichment = null;
-    try {
-      tourEnrichment = await getTourEnrichment(productId);
-    } catch (error) {
-      console.error('Error fetching tour enrichment:', error);
-    }
-
-    if (!tourEnrichment || !tourEnrichment.ai_summary) {
-      try {
-        const generated = await generateTourEnrichment(productId, tour);
-        if (!generated.error) {
-          tourEnrichment = generated.data;
-        }
-      } catch (error) {
-        console.error('Error generating tour enrichment server-side:', error);
-      }
-    }
-
-    // Fetch promotion score server-side for fast display (returns 0 if not found)
-    let promotionScore = null;
-    try {
-      promotionScore = await getTourPromotionScore(productId);
-      // If tour doesn't exist in database, return 0 scores (fast, no API call needed)
-      if (!promotionScore) {
-        promotionScore = {
-          product_id: productId,
-          total_score: 0,
-          monthly_score: 0,
-          weekly_score: 0,
-          past_28_days_score: 0,
-        };
-      }
-    } catch (error) {
-      console.error('Error fetching promotion score:', error);
-      // Default to 0 if error
-      promotionScore = {
-        product_id: productId,
-        total_score: 0,
-        monthly_score: 0,
-        weekly_score: 0,
-        past_28_days_score: 0,
-      };
-    }
-
-    // Fetch tour operator premium subscription data
-    let operatorPremiumData = null;
-    let operatorTours = [];
-    try {
-      operatorPremiumData = await getTourOperatorPremiumSubscription(productId);
-      if (operatorPremiumData) {
-        // Get other tours from the same operator
-        operatorTours = await getOperatorPremiumTourIds(productId);
-        // Get aggregated stats
-        const stats = await getOperatorAggregatedStats(operatorPremiumData.id);
-        if (stats) {
-          operatorPremiumData.aggregatedStats = stats;
-        }
-      }
-    } catch (error) {
-      console.error('Error fetching tour operator premium data:', error);
-      // Continue without premium data - not critical
-    }
 
     // Get destination name and country for breadcrumbs/sidebar
     // The tour response only includes destination ID (ref), not the name
@@ -1114,64 +1183,6 @@ export default async function TourDetailPage({ params }) {
       // Continue without FAQs - not critical
     }
 
-    // Fetch reviews (lazy loading on page visit)
-    // Only enable for specific Viator test tours
-    const viatorTestTourIds = ['446074P1', '103020P7'];
-    const isViatorTestTour = viatorTestTourIds.includes(productId);
-    
-    let reviews = null;
-    if (isViatorTestTour) {
-      try {
-        const currentReviewCount = tour.reviews?.totalReviews || 0;
-        console.log(`🔍 [REVIEWS] Fetching reviews for tour ${productId} (count: ${currentReviewCount})...`);
-        reviews = await getCachedReviews(productId, currentReviewCount);
-        console.log(`✅ [REVIEWS] Fetched ${reviews?.reviews?.length || 0} reviews for tour ${productId}`);
-      } catch (error) {
-        console.error('❌ [REVIEWS] Error fetching reviews:', error);
-        // Continue without reviews - not critical
-      }
-    }
-
-    // Fetch recommended tours using recommendations API
-    // Only enable for specific Viator test tours
-    let recommendedTours = [];
-    if (isViatorTestTour) {
-      try {
-        console.log(`🔍 [RECOMMENDATIONS] Fetching recommendations for tour ${productId}...`);
-        const recommendedProductCodes = await fetchProductRecommendations(productId);
-        console.log(`🔍 [RECOMMENDATIONS] Received product codes:`, recommendedProductCodes);
-        
-        if (recommendedProductCodes && recommendedProductCodes.length > 0) {
-          console.log(`🔍 [RECOMMENDATIONS] Fetching full tour data for ${recommendedProductCodes.length} recommended tours...`);
-          recommendedTours = await fetchRecommendedTours(recommendedProductCodes.slice(0, 6)); // Limit to 6 tours
-          console.log(`✅ [RECOMMENDATIONS] Fetched ${recommendedTours.length} recommended tours`);
-          console.log(`✅ [RECOMMENDATIONS] Tour IDs:`, recommendedTours.map(t => t.productId || t.productCode));
-        } else {
-          console.warn(`⚠️ [RECOMMENDATIONS] No recommended product codes returned`);
-        }
-      } catch (error) {
-        console.error('❌ [RECOMMENDATIONS] Error fetching recommendations:', error);
-        console.error('❌ [RECOMMENDATIONS] Error stack:', error.stack);
-        // Continue without recommendations - not critical
-      }
-    } else {
-      console.log(`ℹ️ [RECOMMENDATIONS] Preview mode disabled, skipping recommendations`);
-    }
-
-    // Fetch accurate pricing per age band from schedules API
-    let pricingPerAgeBand = null;
-    try {
-      console.log(`🔍 [PRICING] Fetching pricing per age band for tour ${productId}...`);
-      pricingPerAgeBand = await getPricingPerAgeBand(productId);
-      if (pricingPerAgeBand && Object.keys(pricingPerAgeBand).length > 0) {
-        console.log(`✅ [PRICING] Fetched pricing for age bands:`, Object.keys(pricingPerAgeBand));
-      } else {
-        console.log(`⚠️ [PRICING] No pricing data available for tour ${productId}`);
-      }
-    } catch (error) {
-      console.error('❌ [PRICING] Error fetching pricing per age band:', error);
-      // Continue without pricing - will use estimates
-    }
 
     // Generate breadcrumb schema for SEO
     const breadcrumbSchema = {
@@ -1216,6 +1227,14 @@ export default async function TourDetailPage({ params }) {
         "name": tour?.title || 'Tour',
         "item": `https://toptours.ai/tours/${productId}`
       });
+    }
+
+    // Track tour for sitemap (non-blocking, fire and forget)
+    trackTourForSitemap(productId, tour, destinationData);
+    
+    // Track recommended/similar tours for sitemap
+    if (recommendedTours && recommendedTours.length > 0) {
+      trackToursForSitemap(recommendedTours, destinationData);
     }
 
     return (
