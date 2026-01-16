@@ -117,7 +117,7 @@ const NavigationNext = () => {
     <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50 glass-effect">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center">
+          <Link href="/" prefetch={true} className="flex items-center">
             <span className="font-poppins font-bold text-xl text-white">TopTours.ai<span className="text-xs align-super ml-1">™</span></span>
           </Link>
 
@@ -130,6 +130,7 @@ const NavigationNext = () => {
                 <Link
                   key={item.name}
                   href={item.path}
+                  prefetch={true}
                   className={`text-white hover:text-blue-200 transition-colors ${
                     isActive ? 'font-semibold text-blue-100' : ''
                   }`}
@@ -140,6 +141,7 @@ const NavigationNext = () => {
             })}
             <Link
               href="/match-your-style"
+              prefetch={true}
               className={`px-4 py-2 rounded-lg font-semibold transition-all ${
                 pathname === '/match-your-style'
                   ? 'sunset-gradient text-white shadow-lg'
@@ -152,6 +154,7 @@ const NavigationNext = () => {
               {!authLoading && user ? (
                 <Link
                   href="/profile"
+                  prefetch={true}
                   className="p-2 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors"
                   aria-label={`Profile: ${displayName}`}
                   title={`Profile: ${displayName}`}
@@ -159,7 +162,7 @@ const NavigationNext = () => {
                   <UserCircle2 className="h-6 w-6" />
                 </Link>
               ) : (
-                <Link href="/auth" aria-label="Sign in" className="p-2 text-white hover:text-blue-200 transition-colors">
+                <Link href="/auth" prefetch={true} aria-label="Sign in" className="p-2 text-white hover:text-blue-200 transition-colors">
                   <UserCircle2 className="h-6 w-6" />
                 </Link>
               )}
@@ -193,6 +196,7 @@ const NavigationNext = () => {
                 <Link
                   key={item.name}
                   href={item.path}
+                  prefetch={true}
                   className={`block py-2 text-white hover:text-yellow-300 transition-colors duration-200 ${
                     isActive ? 'text-yellow-300 font-semibold' : ''
                   }`}
@@ -204,6 +208,7 @@ const NavigationNext = () => {
             })}
             <Link
               href="/match-your-style"
+              prefetch={true}
               className={`block py-2 px-4 rounded-lg font-semibold text-center transition-all mt-2 ${
                 pathname === '/match-your-style'
                   ? 'sunset-gradient text-white shadow-lg'
@@ -218,6 +223,7 @@ const NavigationNext = () => {
               {!authLoading && user ? (
                 <Link
                   href="/profile"
+                  prefetch={true}
                   className="flex items-center justify-center gap-2 py-2 px-3 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors text-sm font-medium"
                   onClick={() => setIsOpen(false)}
                   title={`Profile: ${displayName || 'Profile'}`}
@@ -228,6 +234,7 @@ const NavigationNext = () => {
               ) : (
                 <Link
                   href="/auth"
+                  prefetch={true}
                   className="block py-2 px-3 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors text-sm font-medium text-center"
                   onClick={() => setIsOpen(false)}
                 >
