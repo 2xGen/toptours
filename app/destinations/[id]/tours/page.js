@@ -765,11 +765,18 @@ export default async function ToursListingPage({ params }) {
       const slug = tour.slug || generateSlug(title);
       const url = productId ? `https://toptours.ai/tours/${productId}/${slug}` : `https://toptours.ai/destinations/${id}/tours`;
 
+      // Use Product type for tours (supports offers and aggregateRating properly)
+      // TouristAttraction doesn't support offers property according to Schema.org
+      const price = tour.pricing?.summary?.fromPrice;
+      const currency = tour.pricing?.currency;
+      
       const item = {
-        '@type': 'TouristAttraction',
+        '@type': 'Product',
         name: title,
         description: tour.description || tour.seo?.description || `Experience ${title} in ${destination.fullName || destination.name}`,
         url,
+        category: 'Tour',
+        additionalType: 'https://schema.org/TouristAttraction', // Indicate it's also a tourist attraction
       };
 
       const image =
@@ -788,8 +795,7 @@ export default async function ToursListingPage({ params }) {
         };
       }
 
-      const price = tour.pricing?.summary?.fromPrice;
-      const currency = tour.pricing?.currency;
+      // Product type supports offers property
       if (typeof price === 'number' && currency) {
         item.offers = {
           '@type': 'Offer',
