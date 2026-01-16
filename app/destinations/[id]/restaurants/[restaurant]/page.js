@@ -284,6 +284,30 @@ export default async function RestaurantPage({ params }) {
     ]
   };
 
+  // Restaurant Schema for rich results
+  const restaurantSchema = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": restaurant.name || restaurant.title,
+    "description": restaurant.description || restaurant.summary || `${restaurant.name} in ${destination.fullName || destination.name}`,
+    "url": `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`,
+    "image": restaurant.image || restaurant.imageUrl || restaurant.images?.[0],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": destination.fullName || destination.name,
+      "addressCountry": destination.country || "Unknown"
+    },
+    ...(restaurant.cuisine && { "servesCuisine": restaurant.cuisine }),
+    ...(restaurant.priceRange && { "priceRange": restaurant.priceRange }),
+    ...(restaurant.rating && restaurant.reviewCount && {
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": restaurant.rating,
+        "reviewCount": restaurant.reviewCount
+      }
+    })
+  };
+
   return (
     <>
       {/* BreadcrumbList Schema for SEO */}
@@ -291,6 +315,13 @@ export default async function RestaurantPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema)
+        }}
+      />
+      {/* Restaurant Schema for rich results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(restaurantSchema)
         }}
       />
       <RestaurantDetailClient

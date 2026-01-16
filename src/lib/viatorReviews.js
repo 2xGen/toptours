@@ -49,8 +49,7 @@ export async function fetchProductReviews(productId, options = {}) {
     // Use production API (full access approved)
     const reviewsEndpoint = 'https://api.viator.com/partner/reviews/product';
 
-    console.log(`🔍 [REVIEWS] Fetching from: ${reviewsEndpoint}`);
-    console.log(`🔍 [REVIEWS] Request body:`, JSON.stringify(requestBody, null, 2));
+    // Silent fetch - reduce console noise
 
     const response = await fetch(reviewsEndpoint, {
       method: 'POST',
@@ -107,7 +106,6 @@ export async function getCachedReviews(productId, currentReviewCount = null) {
         const currentHash = hashReviewCount(currentReviewCount);
         if (cached.review_count_hash !== currentHash) {
           // Review count changed - refresh cache
-          console.log(`🔄 Review count changed for ${productId}, refreshing cache...`);
           return await refreshReviewsCache(productId, currentReviewCount);
         }
       }
@@ -117,15 +115,12 @@ export async function getCachedReviews(productId, currentReviewCount = null) {
     }
 
     // Cache expired or doesn't exist - fetch from API (lazy loading on page visit)
-    console.log(`📥 Cache miss for ${productId}, fetching from API...`);
     return await refreshReviewsCache(productId, currentReviewCount);
   } catch (error) {
-    console.error('Error getting cached reviews:', error);
-    // On error, try to fetch from API as fallback
+    // On error, try to fetch from API as fallback (silent)
     try {
       return await refreshReviewsCache(productId, currentReviewCount);
     } catch (fetchError) {
-      console.error('Error fetching reviews from API:', fetchError);
       return null;
     }
   }
@@ -177,11 +172,8 @@ async function refreshReviewsCache(productId, currentReviewCount = null) {
       throw upsertError;
     }
 
-    console.log(`✅ Reviews cached for ${productId} (expires: ${expiresAt.toISOString()})`);
-    
     return reviewsData;
   } catch (error) {
-    console.error('Error refreshing reviews cache:', error);
     throw error;
   }
 }

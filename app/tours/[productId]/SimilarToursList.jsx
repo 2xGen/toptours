@@ -5,11 +5,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Star, MapPin } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 
 export default function SimilarToursList({ similarTours, tour, destinationData }) {
-  const router = useRouter();
 
   if (!similarTours || similarTours.length === 0) {
     return null;
@@ -48,10 +46,8 @@ export default function SimilarToursList({ similarTours, tour, destinationData }
 
           return (
             <Card key={similarTourId || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
-              <div 
-                className="relative h-48 bg-gray-200 flex-shrink-0 cursor-pointer" 
-                onClick={() => router.push(similarTourUrl)}
-              >
+              <Link href={similarTourUrl} prefetch={true}>
+                <div className="relative h-48 bg-gray-200 flex-shrink-0 cursor-pointer">
                 {similarImage ? (
                   <img
                     src={similarImage}
@@ -64,15 +60,15 @@ export default function SimilarToursList({ similarTours, tour, destinationData }
                     <MapPin className="w-8 h-8 text-gray-400" />
                   </div>
                 )}
-              </div>
+                </div>
+              </Link>
               
               <CardContent className="p-4 flex-1 flex flex-col">
-                <h3 
-                  className="font-semibold text-gray-800 mb-2 line-clamp-2 flex-1 cursor-pointer hover:text-purple-600 transition-colors"
-                  onClick={() => router.push(similarTourUrl)}
-                >
-                  {similarTour.title}
-                </h3>
+                <Link href={similarTourUrl} prefetch={true}>
+                  <h3 className="font-semibold text-gray-800 mb-2 line-clamp-2 flex-1 cursor-pointer hover:text-purple-600 transition-colors">
+                    {similarTour.title}
+                  </h3>
+                </Link>
                 
                 {similarRating > 0 && (
                   <div className="flex items-center mb-2">
@@ -98,7 +94,7 @@ export default function SimilarToursList({ similarTours, tour, destinationData }
                   size="sm"
                   className="w-full mt-auto border-purple-300 text-purple-700 hover:bg-purple-50"
                 >
-                  <Link href={similarTourUrl}>
+                  <Link href={similarTourUrl} prefetch={true}>
                     View Details
                   </Link>
                 </Button>

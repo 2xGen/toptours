@@ -21,9 +21,7 @@ function loadDestinationsCache() {
       const jsonPath = path.join(process.cwd(), 'src', 'data', 'viatorDestinationsClassified.json');
       const fileContent = fs.readFileSync(jsonPath, 'utf8');
       destinationsCache = JSON.parse(fileContent);
-      console.log(`✅ Loaded ${destinationsCache.length} destinations into cache`);
     } catch (error) {
-      console.error('❌ Error loading destinations cache:', error.message);
       destinationsCache = [];
     }
   }
@@ -32,7 +30,6 @@ function loadDestinationsCache() {
 
 export async function getDestinationNameById(destinationId) {
   if (!destinationId) {
-    console.warn('⚠️ getDestinationNameById called with no destinationId');
     return null;
   }
   
@@ -41,7 +38,6 @@ export async function getDestinationNameById(destinationId) {
     const destinations = loadDestinationsCache();
     
     if (!destinations || destinations.length === 0) {
-      console.error('❌ Destinations cache is empty!');
       return null;
     }
     
@@ -49,7 +45,7 @@ export async function getDestinationNameById(destinationId) {
     const searchId = destinationId.toString().replace(/^d/i, '');
     const searchIdNum = parseInt(searchId, 10);
     
-    console.log(`🔍 Searching for destination ID: ${destinationId} (normalized: ${searchId}, numeric: ${searchIdNum})`);
+    // Silent lookup - no need to log every search
     
     // Direct search - try multiple formats
     const destination = destinations.find((dest) => {
@@ -67,15 +63,11 @@ export async function getDestinationNameById(destinationId) {
     });
     
     if (destination && destination.destinationName) {
-      console.log(`✅ Found destination: "${destination.destinationName}" for ID ${destinationId}`);
       return { destinationName: destination.destinationName };
     }
     
-    console.warn(`⚠️ No destination found for ID ${destinationId} in ${destinations.length} destinations`);
     return null;
   } catch (error) {
-    console.error('❌ Error in destinationIdLookup:', error.message || error);
-    console.error('Stack:', error.stack);
     return null;
   }
 }

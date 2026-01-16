@@ -536,17 +536,11 @@ export async function getDestinationNameById(destinationId) {
         if (destination && destination.destinationName) {
           // Cache this specific destination for faster future lookups
           await cacheDestination(destinationId, { destinationName: destination.destinationName });
-          console.log(`✅ Found and returning destination: ${destination.destinationName} (ID: ${destination.destinationId}) for lookup ID: ${destinationId}`);
           return { destinationName: destination.destinationName };
-        } else {
-          console.warn(`⚠️ Destination not found in viatorDestinationsClassified.json for ID: ${destinationId}. Searched ${viatorDestinationsClassified.length} destinations. Normalized: ${normalizedId}, searchId: ${searchId}`);
         }
-      } else {
-        console.warn(`⚠️ viatorDestinationsClassified.json is not an array. Type: ${typeof viatorDestinationsClassified}`);
       }
     } catch (jsonError) {
-      // JSON file not available, try fallback
-      console.error('❌ Could not load viatorDestinationsClassified.json:', jsonError.message || jsonError);
+      // JSON file not available, try fallback silently
     }
 
     // Fallback: Try viatorDestinations.json if it exists

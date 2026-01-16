@@ -104,7 +104,7 @@ export default function TourCard({
       <Card className={`bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 relative ${
         isPromoted ? 'border-2 border-purple-500 shadow-purple-200/50' : ''
       }`}>
-        <Link href={tourUrl}>
+        <Link href={tourUrl} prefetch={true}>
           <div className="relative h-48 overflow-hidden">
             {image && (
               <img
@@ -218,7 +218,7 @@ export default function TourCard({
             </div>
           )}
           <div className="flex items-start justify-between gap-2 mb-2">
-            <Link href={tourUrl} className="flex-1">
+            <Link href={tourUrl} className="flex-1" prefetch={true}>
               <h3 className="font-semibold text-lg text-gray-900 line-clamp-2 hover:text-purple-600 transition-colors flex items-center gap-2">
                 {isPremiumOperator && (
                   <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Premium Operator" />
@@ -290,7 +290,7 @@ export default function TourCard({
             asChild
             className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
           >
-            <Link href={tourUrl}>
+            <Link href={tourUrl} prefetch={true}>
               View Details
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>

@@ -48,23 +48,13 @@ function extractOperatorName(tourData) {
  * Sync operator to CRM when tour is viewed
  */
 export async function syncOperator(tourData, productId) {
-  console.log('🔄 [CRM] syncOperator called', { productId, hasTourData: !!tourData });
-  
   if (!tourData || !productId) {
-    console.warn('🔄 [CRM] Missing data', { hasTourData: !!tourData, productId });
     return { success: false, error: 'Missing data' };
   }
 
   const operatorName = extractOperatorName(tourData);
-  console.log('🔄 [CRM] Extracted operator name:', operatorName);
   
   if (!operatorName) {
-    console.warn('🔄 [CRM] No operator name found', { 
-      productId,
-      hasSupplier: !!tourData.supplier,
-      hasTitle: !!tourData.title,
-      hasSeo: !!tourData.seo
-    });
     return { success: false, error: 'No operator name found' };
   }
 
@@ -82,11 +72,9 @@ export async function syncOperator(tourData, productId) {
       }
     });
   }
-  console.log('🔄 [CRM] Extracted destination IDs:', destinationIds);
 
   try {
     const supabase = createSupabaseServiceRoleClient();
-    console.log('🔄 [CRM] Database connection created');
     
     // Normalize operator name for lookup (case-insensitive, space-normalized)
     const normalizedName = normalizeOperatorName(operatorName);
@@ -98,7 +86,6 @@ export async function syncOperator(tourData, productId) {
       .select('id, operator_name, tour_product_ids, destination_ids');
     
     if (fetchError) {
-      console.error('❌ [CRM] Error fetching operators:', fetchError);
       throw fetchError;
     }
     
@@ -144,7 +131,6 @@ export async function syncOperator(tourData, productId) {
       }
     } else {
       // Insert: Create new operator
-      console.log('🔄 [CRM] Inserting new operator:', { operatorName, productId, destinationIds });
       const { data: inserted, error: insertError } = await supabase
         .from('tour_operators_crm')
         .insert({
@@ -168,10 +154,7 @@ export async function syncOperator(tourData, productId) {
               }
             : { message: String(insertError || 'Unknown error') };
 
-        // Log as a warning (not an error) so it doesn't clutter build/runtime error output
-        console.warn('⚠️ [CRM] Insert issue (non-blocking, safe to ignore):', safeError);
-
-        // Treat duplicates as success, everything else as a soft failure
+        // Treat duplicates as success (non-blocking)
         if (safeError.code === '23505') {
           // Operator already exists - this is expected when the same tour/operator is viewed multiple times
           return { success: true, operatorName, skipped: true };
@@ -179,13 +162,10 @@ export async function syncOperator(tourData, productId) {
 
         return { success: false, error: safeError.message || 'Unknown CRM insert error' };
       }
-      console.log('✅ [CRM] Operator inserted:', inserted);
     }
 
-    console.log('✅ [CRM] Sync successful:', { operatorName, productId });
     return { success: true, operatorName };
   } catch (error) {
-    console.error('CRM sync error:', error);
     return { success: false, error: error.message };
   }
 }

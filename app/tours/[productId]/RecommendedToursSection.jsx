@@ -4,18 +4,38 @@ import RecommendedToursList from './RecommendedToursList';
 
 async function RecommendedToursContent({ productId, tour, destinationData }) {
   let recommendedTours = [];
+  let error = null;
   
   try {
+    console.log(`[RecommendedTours] Fetching recommendations for ${productId}...`);
     const recommendedProductCodes = await fetchProductRecommendations(productId);
+    console.log(`[RecommendedTours] Got ${recommendedProductCodes?.length || 0} product codes`);
+    
     if (recommendedProductCodes && recommendedProductCodes.length > 0) {
       recommendedTours = await fetchRecommendedTours(recommendedProductCodes.slice(0, 6));
+      console.log(`[RecommendedTours] Fetched ${recommendedTours.length} tours`);
+    } else {
+      console.log(`[RecommendedTours] No product codes returned`);
     }
-  } catch (error) {
-    console.error('Error fetching recommended tours:', error);
+  } catch (err) {
+    console.error('[RecommendedTours] Error fetching recommended tours:', err);
+    error = err;
   }
 
-  if (recommendedTours.length === 0) {
-    return null;
+  // Always render something - show message if no tours or error
+  if (error || recommendedTours.length === 0) {
+    return (
+      <section className="mt-16">
+        <div className="mb-6">
+          <h2 className="text-3xl font-bold text-gray-900">
+            Similar tours to {tour?.title || 'this tour'}
+          </h2>
+        </div>
+        <p className="text-gray-600">
+          {error ? 'Unable to load recommended tours at this time.' : 'No recommended tours available at this time.'}
+        </p>
+      </section>
+    );
   }
   
   return (
@@ -49,6 +69,11 @@ function RecommendedToursSkeleton() {
 }
 
 export default function RecommendedToursSection({ productId, tour, destinationData }) {
+  // Always render - show skeleton while loading
+  if (!productId || !tour) {
+    return null;
+  }
+  
   return (
     <Suspense fallback={<RecommendedToursSkeleton />}>
       <RecommendedToursContent 

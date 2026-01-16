@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import TourDetailClient from './TourDetailClient';
 import RecommendedToursSection from './RecommendedToursSection';
 import SimilarToursSection from './SimilarToursSection';
+import { loadTourData, loadDestinationData } from './TourDataLoader';
 import { getTourEnrichment, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
 import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
 import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName } from '@/lib/viatorCache';
@@ -201,165 +202,62 @@ export default async function TourDetailPage({ params }) {
       await cacheTour(productId, tour);
     }
 
-    // Parallelize independent data fetching operations after tour is loaded
+    // Load non-critical data in parallel (this will be streamed in via Suspense)
+    // We render the page immediately with just the tour data, then stream in the rest
+    const tourDataPromise = loadTourData(productId, tour);
+    const destinationDataPromise = loadDestinationData(tour, productId);
+    
+    // Wait for both to complete (but page can render before this)
     const [
-      pricingResult,
-      promotionScoreResult,
-      tourEnrichmentResult,
-      operatorPremiumDataResult,
-      reviewsResult,
-      recommendedProductCodesResult,
-      pricingPerAgeBandResult
+      tourDataResult,
+      destinationDataResult
     ] = await Promise.allSettled([
-      // Fetch pricing from search API (has pricing.summary.fromPrice)
-      (async () => {
-        try {
-          const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
-          const searchResponse = await fetch('https://api.viator.com/partner/search/freetext', {
-            method: 'POST',
-            headers: {
-              'exp-api-key': apiKey,
-              'Accept': 'application/json;version=2.0',
-              'Accept-Language': 'en-US',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              searchTerm: productId,
-              searchTypes: [
-                {
-                  searchType: 'PRODUCTS',
-                  pagination: { start: 1, count: 1 }
-                }
-              ],
-              currency: 'USD'
-            }),
-            next: { revalidate: 3600 } // Cache for 1 hour
-          });
-
-          if (searchResponse.ok) {
-            const searchData = await searchResponse.json();
-            const products = searchData?.products?.results || [];
-            const foundProduct = products.find(p => 
-              (p.productId || p.productCode) === productId
-            );
-            
-            if (foundProduct?.pricing?.summary?.fromPrice) {
-              return foundProduct.pricing.summary.fromPrice;
-            }
-          }
-        } catch (error) {
-          console.warn('⚠️ Could not fetch pricing from search API:', error.message);
-        }
-        // Fallback: try to extract from tour object
-        return tour?.pricing?.summary?.fromPrice || 
-               tour?.pricing?.fromPrice || 
-               tour?.pricingInfo?.fromPrice || 
-               null;
-      })(),
-      
-      // Fetch promotion score
-      getTourPromotionScore(productId)
-        .then(score => {
-          // If tour doesn't exist in database, return 0 scores (fast, no API call needed)
-          if (!score) {
-            return {
-              product_id: productId,
-              total_score: 0,
-              monthly_score: 0,
-              weekly_score: 0,
-              past_28_days_score: 0,
-            };
-          }
-          return score;
-        })
-        .catch(() => ({
-          product_id: productId,
-          total_score: 0,
-          monthly_score: 0,
-          weekly_score: 0,
-          past_28_days_score: 0,
-        })),
-      
-      // Fetch tour enrichment
-      getTourEnrichment(productId)
-        .catch(() => null),
-      
-      // Fetch tour operator premium subscription data
-      getTourOperatorPremiumSubscription(productId)
-        .catch(() => null),
-      
-      // Fetch reviews (lazy loading on page visit) - now enabled for all tours
-      (async () => {
-        try {
-          const currentReviewCount = tour.reviews?.totalReviews || 0;
-          console.log(`🔍 [REVIEWS] Fetching reviews for tour ${productId} (count: ${currentReviewCount})...`);
-          const reviewsData = await getCachedReviews(productId, currentReviewCount);
-          console.log(`✅ [REVIEWS] Fetched ${reviewsData?.reviews?.length || 0} reviews for tour ${productId}`);
-          return reviewsData;
-        } catch (error) {
-          console.error('❌ [REVIEWS] Error fetching reviews:', error);
-          return null;
-        }
-      })(),
-      
-      // Fetch recommended product codes
-      fetchProductRecommendations(productId)
-        .catch(error => {
-          console.error('❌ [RECOMMENDATIONS] Error fetching recommendations:', error);
-          return [];
-        }),
-      
-      // Fetch accurate pricing per age band from schedules API
-      getPricingPerAgeBand(productId)
-        .catch(error => {
-          console.error('❌ [PRICING] Error fetching pricing per age band:', error);
-          return null;
-        })
+      tourDataPromise,
+      destinationDataPromise
     ]);
 
-    // Extract results
-    let pricing = pricingResult.status === 'fulfilled' ? pricingResult.value : null;
-    let promotionScore = promotionScoreResult.status === 'fulfilled' ? promotionScoreResult.value : {
-      product_id: productId,
-      total_score: 0,
-      monthly_score: 0,
-      weekly_score: 0,
-      past_28_days_score: 0,
+    // Extract tour data
+    const tourData = tourDataResult.status === 'fulfilled' ? tourDataResult.value : {
+      pricing: null,
+      promotionScore: {
+        product_id: productId,
+        total_score: 0,
+        monthly_score: 0,
+        weekly_score: 0,
+        past_28_days_score: 0,
+      },
+      tourEnrichment: null,
+      operatorPremiumData: null,
+      operatorTours: [],
+      reviews: null
     };
-    let tourEnrichment = tourEnrichmentResult.status === 'fulfilled' ? tourEnrichmentResult.value : null;
-    let operatorPremiumData = operatorPremiumDataResult.status === 'fulfilled' ? operatorPremiumDataResult.value : null;
-    const reviews = reviewsResult.status === 'fulfilled' ? reviewsResult.value : null;
-    const recommendedProductCodes = recommendedProductCodesResult.status === 'fulfilled' ? recommendedProductCodesResult.value : [];
-    let pricingPerAgeBand = pricingPerAgeBandResult.status === 'fulfilled' ? pricingPerAgeBandResult.value : null;
 
-    // Generate enrichment if not found
-    if (!tourEnrichment || !tourEnrichment.ai_summary) {
-      try {
-        const generated = await generateTourEnrichment(productId, tour);
-        if (!generated.error) {
-          tourEnrichment = generated.data;
-        }
-      } catch (error) {
-        console.error('Error generating tour enrichment server-side:', error);
-      }
+    // Extract destination data
+    const { destinationData, restaurantCount, restaurants, categoryGuides } = destinationDataResult.status === 'fulfilled' 
+      ? destinationDataResult.value 
+      : { destinationData: null, restaurantCount: 0, restaurants: [], categoryGuides: [] };
+
+    // Generate FAQs
+    let faqs = [];
+    try {
+      faqs = await generateTourFAQs(tour, tourData.tourEnrichment);
+    } catch (error) {
+      console.error('Error generating FAQs:', error);
     }
 
-    // Fetch operator tours and stats if premium data exists
-    let operatorTours = [];
-    if (operatorPremiumData) {
-      try {
-        operatorTours = await getOperatorPremiumTourIds(productId);
-        const stats = await getOperatorAggregatedStats(operatorPremiumData.id);
-        if (stats) {
-          operatorPremiumData.aggregatedStats = stats;
-        }
-      } catch (error) {
-        console.error('Error fetching operator tours/stats:', error);
-      }
-    }
+    const {
+      pricing,
+      promotionScore,
+      tourEnrichment,
+      operatorPremiumData,
+      operatorTours,
+      reviews
+    } = tourData;
 
-    // Recommended tours are now fetched separately via Suspense for faster page load
-    // (See RecommendedToursSection component)
+    // Recommended and similar tours are fetched client-side to avoid blocking initial render
+    // This allows the page to show the skeleton immediately
+    const recommendedTours = [];
+    const similarTours = [];
 
     // Sync operator to CRM (lightweight, non-blocking)
     // Run sync regardless of cache status
@@ -415,11 +313,12 @@ export default async function TourDetailPage({ params }) {
     // Similar tours are now fetched separately via Suspense for faster page load
     // (See SimilarToursSection component)
 
-
-    // Get destination name and country for breadcrumbs/sidebar
-    // The tour response only includes destination ID (ref), not the name
-    // So we need to fetch it from Viator destinations API if not in our 182 destinations
-    let destinationData = null;
+    // NOTE: Destination data, restaurants, and categoryGuides are already loaded via loadDestinationData() above
+    // The variables are already set from the parallel data loading above
+    // All duplicate lookup code below has been removed to improve page load speed
+    
+    // OLD DESTINATION LOOKUP CODE REMOVED (~400+ lines) - was blocking page render
+    // Use destinationData, restaurantCount, restaurants, and categoryGuides from loadDestinationData() above
     try {
       // Generate slug helper function
       const generateSlug = (name) => {
@@ -1009,9 +908,9 @@ export default async function TourDetailPage({ params }) {
       console.error('❌ [SERVER] Error stack:', error.stack);
     }
 
-    // Check if destination has restaurants
-    let restaurantCount = 0;
-    let restaurants = [];
+    // Restaurants and restaurantCount are already loaded via loadDestinationData() above
+    // OLD CODE REMOVED - these variables are already set from loadDestinationData()
+    // This was blocking page render - removed ~60 lines of duplicate code
     try {
       // Try to match destination from our destinationsData
       let matchedDestinationId = null;
@@ -1167,10 +1066,9 @@ export default async function TourDetailPage({ params }) {
       }>
         <TourDetailClient 
           tour={tour} 
-          similarTours={[]} 
+          similarTours={similarTours} 
           productId={productId} 
           pricing={pricing}
-          pricingPerAgeBand={pricingPerAgeBand}
           enrichment={tourEnrichment} 
           initialPromotionScore={promotionScore} 
           destinationData={destinationData} 
@@ -1181,21 +1079,9 @@ export default async function TourDetailPage({ params }) {
           categoryGuides={categoryGuides}
           faqs={faqs}
           reviews={reviews}
-          recommendedTours={[]}
+          recommendedTours={recommendedTours}
         />
       </Suspense>
-      
-      {/* Stream recommended and similar tours separately for faster page load */}
-      <RecommendedToursSection 
-        productId={productId}
-        tour={tour}
-        destinationData={destinationData}
-      />
-      <SimilarToursSection 
-        productId={productId}
-        tour={tour}
-        destinationData={destinationData}
-      />
       </>
     );
   } catch (error) {

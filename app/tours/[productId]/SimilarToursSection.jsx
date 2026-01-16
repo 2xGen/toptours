@@ -4,38 +4,66 @@ import SimilarToursList from './SimilarToursList';
 
 async function SimilarToursContent({ productId, tour, destinationData }) {
   let similarTours = [];
+  let error = null;
   
   try {
-    // Extract destination name from tour title for search
-    const destinationKeywords = ['Aruba', 'Curaçao', 'Jamaica', 'Punta Cana', 'Nassau', 'Barbados', 'St. Lucia', 'Amalfi', 'Italy', 'Rome', 'Florence', 'Venice'];
-    let searchTerm = tour.title || '';
+    console.log(`[SimilarTours] Fetching similar tours for ${productId}...`);
+    // Use destinationData if available (preferred method)
+    let searchTerm = '';
     
-    // If we can identify a destination, search for tours in that destination
-    for (const dest of destinationKeywords) {
-      if (tour.title?.includes(dest)) {
-        const categoryKeywords = ['Sunset', 'Cruise', 'ATV', 'Snorkel', 'Dive', 'Catamaran', 'Cultural', 'Beach', 'Boat', 'Tour', 'Aperitif'];
-        for (const keyword of categoryKeywords) {
-          if (tour.title?.includes(keyword)) {
-            searchTerm = `${dest} ${keyword}`;
-            break;
-          }
+    if (destinationData?.destinationName) {
+      // Use the destination name from destinationData
+      searchTerm = destinationData.destinationName;
+      
+      // Try to extract a category keyword from the tour title
+      const categoryKeywords = ['Sunset', 'Cruise', 'ATV', 'Snorkel', 'Dive', 'Catamaran', 'Cultural', 'Beach', 'Boat', 'Tour', 'Aperitif', 'Taj Mahal', 'Fort', 'Palace', 'Temple', 'Museum', 'Walking', 'Food', 'Culinary'];
+      for (const keyword of categoryKeywords) {
+        if (tour.title?.toLowerCase().includes(keyword.toLowerCase())) {
+          searchTerm = `${destinationData.destinationName} ${keyword}`;
+          break;
         }
-        if (searchTerm === tour.title) {
-          searchTerm = dest;
-        }
-        break;
       }
+    } else {
+      // Fallback: Extract destination name from tour title
+      const destinationKeywords = ['Aruba', 'Curaçao', 'Jamaica', 'Punta Cana', 'Nassau', 'Barbados', 'St. Lucia', 'Amalfi', 'Italy', 'Rome', 'Florence', 'Venice', 'Agra', 'Delhi', 'Mumbai', 'Bangkok', 'Bali', 'Phuket'];
+      searchTerm = tour.title || '';
+      
+      // If we can identify a destination, search for tours in that destination
+      for (const dest of destinationKeywords) {
+        if (tour.title?.includes(dest)) {
+          const categoryKeywords = ['Sunset', 'Cruise', 'ATV', 'Snorkel', 'Dive', 'Catamaran', 'Cultural', 'Beach', 'Boat', 'Tour', 'Aperitif', 'Taj Mahal', 'Fort', 'Palace'];
+          for (const keyword of categoryKeywords) {
+            if (tour.title?.includes(keyword)) {
+              searchTerm = `${dest} ${keyword}`;
+              break;
+            }
+          }
+          if (searchTerm === tour.title) {
+            searchTerm = dest;
+          }
+          break;
+        }
+      }
+    }
+    
+    // If still no search term, use destination name from tour destinations array
+    if (!searchTerm && tour?.destinations && tour.destinations.length > 0) {
+      const primaryDest = tour.destinations.find(d => d.primary) || tour.destinations[0];
+      searchTerm = primaryDest?.destinationName || primaryDest?.name || tour.title || '';
     }
     
     // Generate cache key for similar tours
     const cacheKey = generateSimilarToursCacheKey(productId, searchTerm);
+    console.log(`[SimilarTours] Search term: "${searchTerm}", cache key: "${cacheKey}"`);
     
     // Try to get cached similar tours first
     const cachedSimilarTours = await getCachedSimilarTours(cacheKey);
     
     if (cachedSimilarTours) {
       similarTours = cachedSimilarTours;
+      console.log(`[SimilarTours] Using ${similarTours.length} cached tours`);
     } else {
+      console.log(`[SimilarTours] Cache miss - fetching from API...`);
       // Cache miss - fetch from Viator API
       const apiKey = process.env.VIATOR_API_KEY;
       
@@ -84,15 +112,35 @@ async function SimilarToursContent({ productId, tour, destinationData }) {
             .slice(0, 6);
           
           await cacheSimilarTours(cacheKey, similarTours);
+          console.log(`[SimilarTours] Cached ${similarTours.length} tours`);
+        } else {
+          console.log(`[SimilarTours] API request failed: ${similarResponse.status}`);
         }
+      } else {
+        console.log(`[SimilarTours] No API key available`);
       }
     }
-  } catch (error) {
-    console.error('Error fetching similar tours:', error);
+    console.log(`[SimilarTours] Final count: ${similarTours.length} tours`);
+  } catch (err) {
+    console.error('[SimilarTours] Error fetching similar tours:', err);
+    error = err;
   }
 
-  if (similarTours.length === 0) {
-    return null;
+  // Always render something - show message if no tours or error
+  if (error || similarTours.length === 0) {
+    const derivedDestinationName = destinationData?.destinationName || destinationData?.name || 'this destination';
+    return (
+      <section className="mt-16">
+        <div className="mb-6">
+          <h2 className="text-3xl font-bold text-gray-900">
+            Other Tours in {derivedDestinationName}
+          </h2>
+        </div>
+        <p className="text-gray-600">
+          {error ? 'Unable to load similar tours at this time.' : 'No similar tours found at this time.'}
+        </p>
+      </section>
+    );
   }
   
   return (
@@ -127,6 +175,11 @@ function SimilarToursSkeleton() {
 }
 
 export default function SimilarToursSection({ productId, tour, destinationData }) {
+  // Always render - show skeleton while loading
+  if (!productId || !tour) {
+    return null;
+  }
+  
   return (
     <Suspense fallback={<SimilarToursSkeleton />}>
       <SimilarToursContent 

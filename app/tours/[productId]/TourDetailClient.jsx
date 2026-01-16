@@ -52,7 +52,7 @@ import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { resolveUserPreferences } from '@/lib/preferenceResolution';
 
 // Sticky Price Bar Component - Smart: Shows match score if available, otherwise shows rating/reviews
-function StickyPriceBar({ tour, pricing, pricingPerAgeBand = null, viatorUrl, matchScore, travelers: externalTravelers = undefined, setTravelers: externalSetTravelers = undefined }) {
+function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, travelers: externalTravelers = undefined, setTravelers: externalSetTravelers = undefined }) {
   const pricingInfo = tour?.pricingInfo;
   const ageBands = pricingInfo?.ageBands || [];
   const pricingType = pricingInfo?.type || 'PER_PERSON';
@@ -73,7 +73,7 @@ function StickyPriceBar({ tour, pricing, pricingPerAgeBand = null, viatorUrl, ma
     return (endAge - startAge) <= 50 && endAge <= 100;
   });
 
-  // Get base price - use original pricing from product/search API
+  // Get base price - use pricing prop from server (from search API)
   const fromPrice = pricing || 
                     tour?.pricing?.summary?.fromPrice || 
                     tour?.pricingInfo?.fromPrice || 
@@ -333,23 +333,67 @@ function StickyPriceBar({ tour, pricing, pricingPerAgeBand = null, viatorUrl, ma
   );
 }
 
-export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, pricingPerAgeBand = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], faqs = [], reviews = null, recommendedTours = [] }) {
+export default function TourDetailClient({ tour, similarTours: initialSimilarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], faqs = [], reviews = null, recommendedTours: initialRecommendedTours = [] }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   
-  // DEBUG: Log category guides and destination data
+  // Client-side state for recommended and similar tours (fetched lazily)
+  const [recommendedTours, setRecommendedTours] = useState(initialRecommendedTours);
+  const [similarTours, setSimilarTours] = useState(initialSimilarTours);
+  const [loadingRelatedTours, setLoadingRelatedTours] = useState(initialRecommendedTours.length === 0 && initialSimilarTours.length === 0);
+
+  // Fetch recommended and similar tours client-side (lazy loading for faster initial render)
   useEffect(() => {
-    console.log('🔍 TourDetailClient - categoryGuides:', categoryGuides);
-    console.log('🔍 TourDetailClient - destinationData:', destinationData);
-    console.log('🔍 TourDetailClient - categoryGuides.length:', categoryGuides?.length);
-    console.log('🔍 TourDetailClient - destinationData?.slug:', destinationData?.slug);
-    console.log('🔍 TourDetailClient - faqs:', faqs);
-    console.log('🔍 TourDetailClient - faqs.length:', faqs?.length);
-    console.log('🔍 TourDetailClient - reviews:', reviews);
-    console.log('🔍 TourDetailClient - reviews?.reviews?.length:', reviews?.reviews?.length);
-    console.log('🔍 TourDetailClient - recommendedTours:', recommendedTours);
-    console.log('🔍 TourDetailClient - recommendedTours.length:', recommendedTours?.length);
-  }, [categoryGuides, destinationData, faqs, reviews, recommendedTours]);
+    if (initialRecommendedTours.length > 0 && initialSimilarTours.length > 0) {
+      // Already have data from server, no need to fetch
+      return;
+    }
+    
+    const fetchRelatedTours = async () => {
+      try {
+        setLoadingRelatedTours(true);
+        
+        // Fetch both in parallel
+        const [recommendedResponse, similarResponse] = await Promise.allSettled([
+          // Fetch recommended tours
+          fetch('/api/tours/recommendations', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ productId })
+          }).then(res => res.ok ? res.json() : { tours: [] }),
+          
+          // Fetch similar tours
+          fetch('/api/tours/similar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+              productId,
+              searchTerm: destinationData?.destinationName || tour?.title || ''
+            })
+          }).then(res => res.ok ? res.json() : { tours: [] })
+        ]);
+        
+        if (recommendedResponse.status === 'fulfilled' && recommendedResponse.value?.tours) {
+          setRecommendedTours(recommendedResponse.value.tours);
+        }
+        
+        if (similarResponse.status === 'fulfilled' && similarResponse.value?.tours) {
+          setSimilarTours(similarResponse.value.tours);
+        }
+      } catch (error) {
+        console.error('Error fetching related tours:', error);
+      } finally {
+        setLoadingRelatedTours(false);
+      }
+    };
+    
+    // Delay fetch to prioritize main content render
+    const timeoutId = setTimeout(fetchRelatedTours, 500);
+    return () => clearTimeout(timeoutId);
+  }, [productId, tour?.title, destinationData?.destinationName, initialRecommendedTours.length, initialSimilarTours.length]);
+  
+  // Debug logging removed for production - uncomment for debugging
+  // useEffect(() => { console.log('TourDetailClient props:', { categoryGuides, destinationData, faqs, reviews, recommendedTours }); }, [categoryGuides, destinationData, faqs, reviews, recommendedTours]);
   
   // Client-side redirect fallback: if we're on /tours/[productId] without slug, redirect to slugged version
   useEffect(() => {
@@ -361,7 +405,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         const slug = generateTourSlug(tour.title);
         if (slug) {
           const canonicalUrl = `/tours/${productId}/${slug}`;
-          console.log(`🔄 Client-side redirect: ${currentPath} → ${canonicalUrl}`);
           // Use replace to avoid adding to browser history (301-like behavior)
           window.location.replace(canonicalUrl);
         }
@@ -593,7 +636,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       }
       
       if (destId) {
-        console.log('🔧 CLIENT FALLBACK: Extracted destination from tour:', { destId, destName });
         return {
           destinationId: destId.toString(),
           destinationName: destName || null,
@@ -612,22 +654,17 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   const primaryDestinationId = useMemo(() => {
     // Priority 1: Use server-provided destinationData (most reliable)
     if (effectiveDestinationData?.destinationId) {
-      console.log(`✅ Using server destinationData ID: ${effectiveDestinationData.destinationId} (${effectiveDestinationData.destinationName})`);
       return effectiveDestinationData.destinationId;
     }
     
     // Priority 2: Extract from tour destinations array (prioritize primary)
     if (Array.isArray(tour?.destinations) && tour.destinations.length > 0) {
-      console.log(`🔍 Tour has ${tour.destinations.length} destination(s), finding primary...`);
       const primary = tour.destinations.find((d) => d?.primary);
       const selected = primary || tour.destinations[0];
       const destId = selected?.ref || selected?.destinationId || selected?.id || null;
-      const destName = selected?.destinationName || selected?.name || 'Unknown';
-      console.log(`✅ Selected destination from tour array: ID=${destId}, Name=${destName}, IsPrimary=${!!primary}`);
       return destId;
     }
     
-    console.warn(`⚠️ No destination ID found for tour ${productId}`);
     return null;
   }, [effectiveDestinationData?.destinationId, tour, productId]);
 
@@ -671,7 +708,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         if (!isMounted) return;
 
         if (error) {
-          console.warn(`Client destination lookup failed for ID ${normalizedPrimaryDestinationId}:`, error.message || error);
           setClientDestinationLookup(null);
           return;
         }
@@ -679,17 +715,14 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         if (data) {
           // Verify the returned data matches the requested ID
           if (data.id !== normalizedPrimaryDestinationId.toString() && data.id !== normalizedPrimaryDestinationId) {
-            console.error(`❌ CRITICAL: Client lookup returned wrong destination! Requested: ${normalizedPrimaryDestinationId}, Got: ${data.id} (${data.name})`);
             setClientDestinationLookup(null);
             return;
           }
-          console.log(`✅ Client destination lookup successful for ID ${normalizedPrimaryDestinationId}: ${data.name} (slug: ${data.slug})`);
         }
 
         setClientDestinationLookup(data || null);
       } catch (err) {
         if (!isMounted) return;
-        console.error(`Client destination lookup error for ID ${normalizedPrimaryDestinationId}:`, err);
         setClientDestinationLookup(null);
       }
     };
@@ -839,38 +872,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     return effectiveDestinationData?.slug || effectiveDestinationData?.destinationId || null;
   }, [effectiveDestinationData, destinationSlugFromClientLookup, unmatchedDestinationSlug, destinationNameFromClientLookup, unmatchedDestinationName]);
 
-  // Debug: Log destination data to help troubleshoot
-  useEffect(() => {
-    const debugInfo = {
-      hasDestination: !!destination,
-      destinationId: destination?.id,
-      hasDestinationData: !!destinationData,
-      destinationData: destinationData,
-      hasFallbackDestinationData: !!fallbackDestinationData,
-      fallbackDestinationData: fallbackDestinationData,
-      effectiveDestinationData: effectiveDestinationData,
-      unmatchedDestinationName,
-      unmatchedDestinationSlug,
-      tourDestinations: tour?.destinations?.[0],
-      extractedDestinationId: tour?.destinations?.[0]?.ref || tour?.destinations?.[0]?.destinationId || tour?.destinations?.[0]?.id,
-      breadcrumbCondition: !destination && (effectiveDestinationData?.destinationName || unmatchedDestinationName || effectiveDestinationData?.destinationId),
-    };
-    console.log('🔍 TourDetailClient Debug:', JSON.stringify(debugInfo, null, 2));
-    
-    // If we have effectiveDestinationData but no destination, we should be using it
-    if (effectiveDestinationData && !destination) {
-      console.log('✅ effectiveDestinationData is available (this is expected for non-curated destinations):', JSON.stringify({
-        source: destinationData ? 'server' : 'client fallback',
-        effectiveDestinationData,
-        unmatchedDestinationName,
-        unmatchedDestinationSlug,
-        willShowInBreadcrumbs: !!(effectiveDestinationData?.destinationName || unmatchedDestinationName || effectiveDestinationData?.destinationId),
-      }, null, 2));
-    } else if (!effectiveDestinationData && !destination) {
-      console.error('❌ CRITICAL: No effectiveDestinationData and no destination - breadcrumbs will be broken!');
-      console.error('Tour destinations:', tour?.destinations);
-    }
-  }, [destination, destinationData, fallbackDestinationData, effectiveDestinationData, unmatchedDestinationName, unmatchedDestinationSlug, tour]);
+  // Debug logging removed for production - enable in development if needed
 
   // Fetch user and preferences for matching
   useEffect(() => {
@@ -1301,7 +1303,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       };
     }).filter(Boolean);
     
-    console.log(`Found ${images.length} images for tour:`, images);
     return images;
   }, [tour]);
   
@@ -1460,19 +1461,23 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   }, [tour, reviewCount]);
   
   // Extract price from multiple possible locations
-  // Viator API might return price in different formats
+  // Get price - prioritize pricing prop from server (from search API)
   const getPrice = () => {
     // First try the pricing prop passed from server (from search API)
     if (pricing && pricing > 0) {
       return pricing;
     }
-    // Try pricing.summary.fromPrice first (most common)
+    // Try pricing.summary.fromPrice (search API format)
     if (tour.pricing?.summary?.fromPrice) {
       return tour.pricing.summary.fromPrice;
     }
     // Try pricing.fromPrice
     if (tour.pricing?.fromPrice) {
       return tour.pricing.fromPrice;
+    }
+    // Try pricingInfo.fromPrice
+    if (tour.pricingInfo?.fromPrice) {
+      return tour.pricingInfo.fromPrice;
     }
     // Try pricing.amount
     if (tour.pricing?.amount) {
@@ -1487,10 +1492,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     }
     if (typeof tour.price === 'number') {
       return tour.price;
-    }
-    // Try pricingInfo
-    if (tour.pricingInfo?.fromPrice) {
-      return tour.pricingInfo.fromPrice;
     }
     // Try bookingInfo
     if (tour.bookingInfo?.price) {
@@ -2281,7 +2282,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   tour={tour} 
                   viatorBookingUrl={viatorUrl} 
                   pricing={pricing}
-                  pricingPerAgeBand={pricingPerAgeBand}
                   travelers={sharedTravelers}
                   setTravelers={setSharedTravelers}
                 />
@@ -2394,7 +2394,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   tour={tour} 
                   viatorBookingUrl={viatorUrl} 
                   pricing={pricing}
-                  pricingPerAgeBand={pricingPerAgeBand}
                   travelers={sharedTravelers}
                   setTravelers={setSharedTravelers}
                 />
@@ -3045,7 +3044,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   tour={tour} 
                   viatorBookingUrl={viatorUrl} 
                   pricing={pricing}
-                  pricingPerAgeBand={pricingPerAgeBand}
                   travelers={sharedTravelers}
                   setTravelers={setSharedTravelers}
                 />
@@ -3343,8 +3341,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
             </motion.section>
           )}
 
-          {/* Recommended and Similar Tours are now loaded separately via Suspense for faster page load */}
-          {false && recommendedTours.length > 0 && (
+          {/* Recommended Tours Section */}
+          {(loadingRelatedTours || (recommendedTours && recommendedTours.length > 0)) && (
             <motion.section
               id="recommended-tours"
               initial={{ opacity: 0, y: 20 }}
@@ -3359,6 +3357,23 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 </h2>
               </div>
               
+              {/* Loading skeleton */}
+              {loadingRelatedTours && recommendedTours.length === 0 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[1, 2, 3, 4, 5, 6].map((i) => (
+                    <div key={i} className="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                      <div className="h-48 bg-gray-200" />
+                      <div className="p-4 space-y-3">
+                        <div className="h-5 bg-gray-200 rounded w-3/4" />
+                        <div className="h-4 bg-gray-200 rounded w-1/2" />
+                        <div className="h-6 bg-gray-200 rounded w-24" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              
+              {recommendedTours.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {recommendedTours.map((recommendedTour, index) => {
                   const recommendedTourId = recommendedTour.productId || recommendedTour.productCode;
@@ -3436,10 +3451,12 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   );
                 })}
               </div>
+              )}
             </motion.section>
           )}
 
-          {false && similarTours.length > 0 && (
+          {/* Similar Tours Section */}
+          {(loadingRelatedTours || (similarTours && similarTours.length > 0)) && (
             <motion.section
               id="similar-tours"
               initial={{ opacity: 0, y: 20 }}
@@ -3452,6 +3469,23 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 <h2 className="text-3xl font-bold text-gray-900">{similarSectionTitle}</h2>
               </div>
               
+              {/* Loading skeleton */}
+              {loadingRelatedTours && similarTours.length === 0 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[1, 2, 3, 4, 5, 6].map((i) => (
+                    <div key={i} className="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                      <div className="h-48 bg-gray-200" />
+                      <div className="p-4 space-y-3">
+                        <div className="h-5 bg-gray-200 rounded w-3/4" />
+                        <div className="h-4 bg-gray-200 rounded w-1/2" />
+                        <div className="h-6 bg-gray-200 rounded w-24" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              
+              {similarTours.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {similarTours.map((similarTour, index) => {
                   const similarTourId = getTourProductId(similarTour);
@@ -3522,6 +3556,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   );
                 })}
               </div>
+              )}
 
               {finalDestinationTourUrl && (
                 <div className="mt-10 text-center">
@@ -3807,7 +3842,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         <StickyPriceBar 
           tour={tour} 
           pricing={pricing} 
-          pricingPerAgeBand={pricingPerAgeBand}
           viatorUrl={viatorUrl} 
           matchScore={matchScore}
           travelers={sharedTravelers}

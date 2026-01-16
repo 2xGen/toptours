@@ -76,7 +76,6 @@ export async function fetchProductRecommendations(productId, options = {}) {
   // Check cache first
   const cached = await getCachedRecommendations(productId);
   if (cached && Array.isArray(cached) && cached.length > 0) {
-    console.log(`✅ [RECOMMENDATIONS] Using cached recommendations for ${productId} (${cached.length} tours)`);
     return cached;
   }
 
@@ -99,8 +98,6 @@ export async function fetchProductRecommendations(productId, options = {}) {
     // Use production API (full access approved)
     const recommendationsEndpoint = 'https://api.viator.com/partner/products/recommendations';
 
-    console.log(`🔍 [RECOMMENDATIONS] Fetching from: ${recommendationsEndpoint}`);
-
     const response = await fetch(recommendationsEndpoint, {
       method: 'POST',
       headers: {
@@ -121,13 +118,11 @@ export async function fetchProductRecommendations(productId, options = {}) {
     }
 
     const data = await response.json();
-    console.log(`✅ [RECOMMENDATIONS] Received recommendations for ${productId}`);
     
     // Extract recommended product codes
     let recommendedCodes = [];
     if (data && data.length > 0 && data[0].recommendations) {
       recommendedCodes = data[0].recommendations.IS_SIMILAR_TO || [];
-      console.log(`✅ [RECOMMENDATIONS] Found ${recommendedCodes.length} similar tours`);
     }
 
     // Cache the product codes
@@ -140,7 +135,6 @@ export async function fetchProductRecommendations(productId, options = {}) {
     if (error.name === 'AbortError') {
       throw new Error('Request timeout - Viator API took too long to respond');
     }
-    console.error('Error fetching recommendations:', error);
     throw error;
   }
 }
@@ -186,8 +180,6 @@ export async function fetchRecommendedTours(recommendedProductCodes) {
           // Use production API (full access approved)
           const productEndpoint = `https://api.viator.com/partner/products/${productCode}?currency=USD`;
           
-          console.log(`🔍 [RECOMMENDATIONS] Fetching tour ${productCode} from: ${productEndpoint}`);
-          
           const response = await fetch(productEndpoint, {
             method: 'GET',
             headers: {
@@ -207,31 +199,20 @@ export async function fetchRecommendedTours(recommendedProductCodes) {
             if (tour && !tour.error) {
               // Cache it for future use
               await cacheTour(productCode, tour);
-              console.log(`✅ [RECOMMENDATIONS] Fetched and cached tour ${productCode}`);
-            } else {
-              console.warn(`⚠️ [RECOMMENDATIONS] Tour ${productCode} returned error:`, tour?.error);
             }
-          } else {
-            const errorText = await response.text();
-            console.error(`❌ [RECOMMENDATIONS] API error for ${productCode}: ${response.status} - ${errorText}`);
           }
-        } else {
-          console.log(`✅ [RECOMMENDATIONS] Using cached tour ${productCode}`);
         }
         
         if (tour && !tour.error) {
           allTours.push(tour);
         }
       } catch (error) {
-        console.error(`❌ [RECOMMENDATIONS] Error fetching tour ${productCode}:`, error);
         // Continue with next tour
       }
     }
 
-    console.log(`✅ [RECOMMENDATIONS] Fetched ${allTours.length} recommended tours`);
     return allTours;
   } catch (error) {
-    console.error('Error fetching recommended tours:', error);
     return [];
   }
 }

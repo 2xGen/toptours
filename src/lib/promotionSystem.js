@@ -326,17 +326,17 @@ export async function getTourPromotionScore(productId) {
       .single();
 
     if (error && error.code === 'PGRST116') {
-      return null; // Tour not promoted yet
+      return null; // Tour not promoted yet - this is normal
     }
 
     if (error) {
-      console.error('Error fetching tour promotion:', error);
+      // Silently return null - promotion is optional and table may not exist
       return null;
     }
 
     return data;
   } catch (error) {
-    console.error('Error in getTourPromotionScore:', error);
+    // Silently return null - promotion score is optional
     return null;
   }
 }

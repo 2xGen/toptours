@@ -143,7 +143,6 @@ export async function getViatorDestinationById(destinationId) {
       return cached;
     } else {
       // Cache mismatch - clear and re-fetch
-      console.warn(`⚠️ Cache mismatch for destination ID ${normalizedId}: cached.id=${cached.id}, expected=${normalizedId}. Clearing cache.`);
       clearMemoryCache(memoryKey);
     }
   }
@@ -151,9 +150,7 @@ export async function getViatorDestinationById(destinationId) {
   try {
     const supabase = createSupabaseServiceRoleClient();
     // Ensure ID is treated as TEXT (database stores as TEXT)
-    // Include parent_destination_id to check for parent destinations
     const queryId = normalizedId.toString();
-    console.log(`🔍 [CACHE] Querying viator_destinations for ID: "${queryId}" (type: ${typeof queryId}, original: ${destinationId})`);
     
     const { data, error } = await supabase
       .from('viator_destinations')
@@ -161,26 +158,9 @@ export async function getViatorDestinationById(destinationId) {
       .eq('id', queryId) // Explicitly convert to string
       .maybeSingle();
 
-    if (error) {
-      console.error(`❌ Error querying viator_destinations for ID ${queryId}:`, error.message || error);
+    if (error || !data) {
       return null;
     }
-
-    if (!data) {
-      console.warn(`⚠️ viator_destinations lookup returned null for ID ${queryId}`);
-      // Try to see if there's a similar ID in the database (for debugging)
-      const { data: allSimilar } = await supabase
-        .from('viator_destinations')
-        .select('id, name')
-        .ilike('id', `%${queryId}%`)
-        .limit(5);
-      if (allSimilar && allSimilar.length > 0) {
-        console.warn(`⚠️ Found similar IDs:`, allSimilar.map(d => `${d.id} (${d.name})`));
-      }
-      return null;
-    }
-    
-    console.log(`🔍 [CACHE] Database returned: ID="${data.id}" (type: ${typeof data.id}), Name="${data.name}"`);
 
     // Verify the returned data matches the requested ID
     // Convert both to strings for comparison to avoid type mismatches
@@ -189,24 +169,18 @@ export async function getViatorDestinationById(destinationId) {
     const destinationIdStr = destinationId.toString();
     
     if (dataIdStr !== normalizedIdStr && dataIdStr !== destinationIdStr) {
-      console.error(`❌ CRITICAL: Database returned wrong destination! Requested ID: ${normalizedIdStr}, Got ID: ${dataIdStr}, Name: ${data.name}`);
-      // Clear any potentially corrupted cache
       clearMemoryCache(memoryKey);
       return null;
     }
 
-    // Double-check: ensure we're not returning cached wrong data
     if (dataIdStr !== normalizedIdStr) {
-      console.error(`❌ CRITICAL: ID mismatch after normalization! Requested: ${normalizedIdStr}, Got: ${dataIdStr}`);
       clearMemoryCache(memoryKey);
       return null;
     }
 
-    console.log(`✅ Found destination for ID ${normalizedIdStr}: ${data.name} (slug: ${data.slug})`);
     setMemoryCache(memoryKey, data);
     return data;
   } catch (error) {
-    console.error('Error fetching viator destination:', error.message || error);
     return null;
   }
 }
@@ -240,14 +214,12 @@ export async function getViatorDestinationByName(name) {
     }
 
     if (!data) {
-      console.warn(`viator_destinations lookup returned null for name "${name}"`);
       return null;
     }
 
     setMemoryCache(memoryKey, data);
     return data;
   } catch (error) {
-    console.error('Error fetching viator destination by name:', error.message || error);
     return null;
   }
 }
@@ -277,13 +249,11 @@ export async function getViatorDestinationBySlug(slug) {
       .maybeSingle();
 
     if (error) {
-      console.error('Error querying viator_destinations by slug:', error.message || error);
       return null;
     }
 
     // If not found by slug, try matching by name (case-insensitive)
     if (!data) {
-      // Convert slug to name format (e.g., "bali" -> "Bali", "new-york-city" -> "New York City")
       const nameFromSlug = slug
         .split('-')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
@@ -297,9 +267,7 @@ export async function getViatorDestinationBySlug(slug) {
 
       if (!nameError && nameData) {
         data = nameData;
-        console.log(`✅ Found destination by name match: "${nameFromSlug}" -> ID ${nameData.id}`);
       } else {
-        console.warn(`viator_destinations lookup returned null for slug ${slug} and name ${nameFromSlug}`);
         return null;
       }
     }
@@ -307,7 +275,6 @@ export async function getViatorDestinationBySlug(slug) {
     setMemoryCache(memoryKey, data);
     return data;
   } catch (error) {
-    console.error('Error fetching viator destination by slug:', error.message || error);
     return null;
   }
 }
@@ -399,11 +366,8 @@ async function flushPageViewsQueue() {
       if (pageViewsQueue.length < 100) {
         pageViewsQueue.unshift(...viewsToInsert);
       }
-    } else {
-      console.log(`✅ Inserted ${viewsToInsert.length} page views`);
     }
   } catch (error) {
-    console.error('Error flushing page views queue:', error);
     // Re-queue on error (up to a limit)
     if (pageViewsQueue.length < 100) {
       pageViewsQueue.unshift(...viewsToInsert);

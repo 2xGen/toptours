@@ -48,5 +48,50 @@ export async function generateMetadata() {
 }
 
 export default async function HomePage() {
-  return <HomePageClient />;
+  const baseUrl = 'https://toptours.ai';
+  
+  // Organization Schema
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'TopTours.ai',
+    url: baseUrl,
+    logo: `${baseUrl}/logo.png`,
+    description: 'AI-powered tour and restaurant discovery platform with personalized recommendations across 300,000+ tours worldwide.',
+    sameAs: [
+      'https://twitter.com/toptoursai',
+      'https://facebook.com/toptoursai'
+    ]
+  };
+
+  // WebSite Schema with SearchAction
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'TopTours.ai',
+    url: baseUrl,
+    description: 'Tours & Restaurants That Match Your Style',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${baseUrl}/results?query={search_term_string}`
+      },
+      'query-input': 'required name=search_term_string'
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <HomePageClient />
+    </>
+  );
 }
