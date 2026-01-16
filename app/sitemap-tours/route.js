@@ -1,65 +1,56 @@
 import { NextResponse } from 'next/server';
-import { getToursForSitemap } from '@/lib/tourSitemap';
-import { generateTourSlug } from '@/utils/tourHelpers';
+import { getTourSitemapCount } from '@/lib/tourSitemap';
 
 /**
- * Generate sitemap for visited tours
- * Lightweight solution: Only includes tours that have been visited/rendered
- * Similar to tour_operators_crm approach but for sitemap generation
+ * Sitemap INDEX for tours
+ * Lists all tour sitemap files (sitemap-tours-0, sitemap-tours-1, etc.)
+ * 
+ * With 140k+ tours and 45k per sitemap = 4 sitemap files
  */
+
+const URLS_PER_SITEMAP = 45000; // Keep under Google's 50k limit
+
 export async function GET() {
   try {
     const baseUrl = 'https://toptours.ai';
-    const currentDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+    const totalTours = await getTourSitemapCount();
+    const numSitemaps = Math.ceil(totalTours / URLS_PER_SITEMAP);
     
-    // Fetch tours from tour_sitemap table (max 50k for sitemap limit)
-    const tours = await getToursForSitemap(50000);
-    
-    // Generate sitemap XML
-    let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Visited Tours Sitemap (${tours.length} tours) -->
-  <!-- Generated from tour_sitemap table - only includes tours that have been visited/rendered -->
+    // Generate sitemap index XML
+    let sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Tour Sitemap Index -->
+  <!-- Total Tours: ${totalTours.toLocaleString()} -->
+  <!-- Sitemaps: ${numSitemaps} (${URLS_PER_SITEMAP.toLocaleString()} URLs each) -->
 `;
 
-    tours.forEach((tour) => {
-      const productId = tour.product_id;
-      if (!productId) return;
-      
-      // Generate URL with slug if available, otherwise just productId
-      const slug = tour.tour_slug || (tour.tour_title ? generateTourSlug(tour.tour_title) : null);
-      const url = slug 
-        ? `${baseUrl}/tours/${productId}/${slug}`
-        : `${baseUrl}/tours/${productId}`;
-      
-      sitemap += `
-  <url>
-    <loc>${url}</loc>
-    <lastmod>${tour.last_visited_at ? new Date(tour.last_visited_at).toISOString().split('T')[0] : currentDate}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>`;
-    });
+    for (let i = 0; i < numSitemaps; i++) {
+      sitemapIndex += `
+  <sitemap>
+    <loc>${baseUrl}/sitemap-tours/${i}</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+  </sitemap>`;
+    }
 
-    sitemap += `
-</urlset>`;
+    sitemapIndex += `
+</sitemapindex>`;
 
-    return new NextResponse(sitemap, {
+    return new NextResponse(sitemapIndex, {
       status: 200,
       headers: {
         'Content-Type': 'application/xml',
-        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400', // Cache for 1 hour, stale for 24 hours
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
       },
     });
   } catch (error) {
-    console.error('Error generating tours sitemap:', error);
+    console.error('Error generating tours sitemap index:', error);
     
-    // Return empty sitemap on error (better than failing)
-    const emptySitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-</urlset>`;
+    // Return empty index on error
+    const emptyIndex = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+</sitemapindex>`;
     
-    return new NextResponse(emptySitemap, {
+    return new NextResponse(emptyIndex, {
       status: 200,
       headers: {
         'Content-Type': 'application/xml',

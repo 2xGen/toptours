@@ -126,28 +126,89 @@ export async function trackToursForSitemap(tours, destinationData = null) {
 }
 
 /**
- * Get all tours for sitemap generation
- * Returns tours sorted by visit count and last visited date
+ * Get total count of tours in sitemap table
  */
-export async function getToursForSitemap(limit = 50000) {
+export async function getTourSitemapCount() {
   try {
     const supabase = createSupabaseServiceRoleClient();
     
-    const { data, error } = await supabase
+    const { count, error } = await supabase
       .from('tour_sitemap')
-      .select('product_id, tour_title, tour_slug, destination_id, destination_slug, last_visited_at, visit_count')
-      .order('visit_count', { ascending: false })
-      .order('last_visited_at', { ascending: false })
-      .limit(limit);
+      .select('*', { count: 'exact', head: true });
     
     if (error) {
-      console.error('[tourSitemap] Error fetching tours:', error);
-      return [];
+      console.error('[tourSitemap] Error getting count:', error);
+      return 0;
     }
     
-    return data || [];
+    return count || 0;
+  } catch (error) {
+    console.error('[tourSitemap] Unexpected error getting count:', error);
+    return 0;
+  }
+}
+
+/**
+ * Get tours for a specific sitemap page (paginated)
+ * Google allows max 50,000 URLs per sitemap
+ * Supabase allows max 1000 rows per query, so we paginate
+ * 
+ * @param {number} page - Page number (0-indexed)
+ * @param {number} pageSize - URLs per sitemap file (max 50000)
+ */
+export async function getToursForSitemapPage(page = 0, pageSize = 45000) {
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    const SUPABASE_BATCH_SIZE = 1000;
+    
+    // Calculate offset for this sitemap page
+    const startOffset = page * pageSize;
+    const endOffset = startOffset + pageSize;
+    
+    // Fetch in batches of 1000 (Supabase limit)
+    let allTours = [];
+    let currentOffset = startOffset;
+    
+    while (currentOffset < endOffset) {
+      const batchSize = Math.min(SUPABASE_BATCH_SIZE, endOffset - currentOffset);
+      
+      const { data, error } = await supabase
+        .from('tour_sitemap')
+        .select('product_id, tour_title, tour_slug, destination_id, destination_slug, last_visited_at, visit_count')
+        .order('visit_count', { ascending: false })
+        .order('last_visited_at', { ascending: false })
+        .range(currentOffset, currentOffset + batchSize - 1);
+      
+      if (error) {
+        console.error('[tourSitemap] Error fetching batch:', error);
+        break;
+      }
+      
+      if (!data || data.length === 0) {
+        break; // No more data
+      }
+      
+      allTours = allTours.concat(data);
+      currentOffset += data.length;
+      
+      // If we got less than requested, there's no more data
+      if (data.length < batchSize) {
+        break;
+      }
+    }
+    
+    return allTours;
   } catch (error) {
     console.error('[tourSitemap] Unexpected error fetching tours:', error);
     return [];
   }
+}
+
+/**
+ * Get all tours for sitemap generation (legacy - uses pagination internally)
+ * Returns tours sorted by visit count and last visited date
+ * @deprecated Use getToursForSitemapPage for paginated access
+ */
+export async function getToursForSitemap(limit = 50000) {
+  return getToursForSitemapPage(0, limit);
 }

@@ -5,7 +5,6 @@ Disallow: /api/
 
 Sitemap: https://toptours.ai/sitemap.xml
 Sitemap: https://toptours.ai/sitemap-guides.xml
-Sitemap: https://toptours.ai/sitemap-tours.xml
 Sitemap: https://toptours.ai/sitemap-restaurants.xml
 Sitemap: https://toptours.ai/sitemap-operators.xml
 Sitemap: https://toptours.ai/sitemap-destinations-without-guides.xml
