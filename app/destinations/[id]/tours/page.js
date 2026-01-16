@@ -768,6 +768,7 @@ export default async function ToursListingPage({ params }) {
       const item = {
         '@type': 'TouristAttraction',
         name: title,
+        description: tour.description || tour.seo?.description || `Experience ${title} in ${destination.fullName || destination.name}`,
         url,
       };
 
@@ -779,7 +780,7 @@ export default async function ToursListingPage({ params }) {
 
       const rating = tour.reviews?.combinedAverageRating;
       const reviewCount = tour.reviews?.totalReviews;
-      if (typeof rating === 'number' && typeof reviewCount === 'number' && reviewCount > 0) {
+      if (typeof rating === 'number' && typeof reviewCount === 'number' && reviewCount > 0 && rating > 0) {
         item.aggregateRating = {
           '@type': 'AggregateRating',
           ratingValue: rating,
