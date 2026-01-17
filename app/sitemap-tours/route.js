@@ -5,10 +5,11 @@ import { getTourSitemapCount } from '@/lib/tourSitemap';
  * Sitemap INDEX for tours
  * Lists all tour sitemap files (sitemap-tours-0, sitemap-tours-1, etc.)
  * 
- * With 140k+ tours and 45k per sitemap = 4 sitemap files
+ * With 140k+ tours and 10k per sitemap = ~15 sitemap files
+ * Reduced from 45k to prevent Vercel timeout on large queries
  */
 
-const URLS_PER_SITEMAP = 45000; // Keep under Google's 50k limit
+const URLS_PER_SITEMAP = 10000; // Reduced from 45k to prevent Vercel timeout
 
 export async function GET() {
   try {

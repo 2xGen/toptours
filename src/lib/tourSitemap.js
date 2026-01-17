@@ -151,12 +151,12 @@ export async function getTourSitemapCount() {
 /**
  * Get tours for a specific sitemap page (paginated)
  * Google allows max 50,000 URLs per sitemap
- * Supabase allows max 1000 rows per query, so we paginate
+ * Using smaller page size (10k) to prevent Vercel timeout
  * 
  * @param {number} page - Page number (0-indexed)
- * @param {number} pageSize - URLs per sitemap file (max 50000)
+ * @param {number} pageSize - URLs per sitemap file (default 10000)
  */
-export async function getToursForSitemapPage(page = 0, pageSize = 45000) {
+export async function getToursForSitemapPage(page = 0, pageSize = 10000) {
   try {
     const supabase = createSupabaseServiceRoleClient();
     const SUPABASE_BATCH_SIZE = 1000;
@@ -166,33 +166,42 @@ export async function getToursForSitemapPage(page = 0, pageSize = 45000) {
     const endOffset = startOffset + pageSize;
     
     // Fetch in batches of 1000 (Supabase limit)
-    let allTours = [];
-    let currentOffset = startOffset;
+    // Run batches in parallel (5 at a time) for speed
+    const batches = [];
+    for (let offset = startOffset; offset < endOffset; offset += SUPABASE_BATCH_SIZE) {
+      batches.push({ offset, size: Math.min(SUPABASE_BATCH_SIZE, endOffset - offset) });
+    }
     
-    while (currentOffset < endOffset) {
-      const batchSize = Math.min(SUPABASE_BATCH_SIZE, endOffset - currentOffset);
+    // Process in parallel chunks of 5 to avoid overwhelming the database
+    const PARALLEL_LIMIT = 5;
+    let allTours = [];
+    
+    for (let i = 0; i < batches.length; i += PARALLEL_LIMIT) {
+      const chunk = batches.slice(i, i + PARALLEL_LIMIT);
       
-      const { data, error } = await supabase
-        .from('tour_sitemap')
-        .select('product_id, tour_title, tour_slug, destination_id, destination_slug, last_visited_at, visit_count')
-        .order('visit_count', { ascending: false })
-        .order('last_visited_at', { ascending: false })
-        .range(currentOffset, currentOffset + batchSize - 1);
+      const results = await Promise.all(
+        chunk.map(async ({ offset, size }) => {
+          const { data, error } = await supabase
+            .from('tour_sitemap')
+            .select('product_id, tour_title, tour_slug, last_visited_at')
+            .order('visit_count', { ascending: false })
+            .range(offset, offset + size - 1);
+          
+          if (error) {
+            console.error('[tourSitemap] Error fetching batch:', error);
+            return [];
+          }
+          
+          return data || [];
+        })
+      );
       
-      if (error) {
-        console.error('[tourSitemap] Error fetching batch:', error);
-        break;
-      }
+      results.forEach(data => {
+        allTours = allTours.concat(data);
+      });
       
-      if (!data || data.length === 0) {
-        break; // No more data
-      }
-      
-      allTours = allTours.concat(data);
-      currentOffset += data.length;
-      
-      // If we got less than requested, there's no more data
-      if (data.length < batchSize) {
+      // If any batch returned less than expected, we've hit the end
+      if (results.some(data => data.length === 0)) {
         break;
       }
     }

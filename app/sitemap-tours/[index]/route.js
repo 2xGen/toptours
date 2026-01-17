@@ -6,10 +6,10 @@ import { generateTourSlug } from '@/utils/tourHelpers';
  * Individual tour sitemap (paginated)
  * /sitemap-tours/0, /sitemap-tours/1, etc.
  * 
- * Each sitemap contains up to 45,000 URLs
+ * Each sitemap contains up to 10,000 URLs (reduced to prevent timeout)
  */
 
-const URLS_PER_SITEMAP = 45000;
+const URLS_PER_SITEMAP = 10000; // Reduced from 45k to prevent Vercel timeout
 
 export async function GET(request, { params }) {
   try {
