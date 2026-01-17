@@ -2925,6 +2925,7 @@ export default function TourDetailClient({ tour, similarTours: initialSimilarTou
               )}
 
               {/* Review Snippets Section (After Ratings, Before FAQs) */}
+              {/* data-nosnippet prevents Google from using review content per Viator guidelines */}
               {reviews && reviews.reviews && reviews.reviews.length > 0 && (
                 <motion.section
                   initial={{ opacity: 0, y: 20 }}
@@ -2932,6 +2933,7 @@ export default function TourDetailClient({ tour, similarTours: initialSimilarTou
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.7 }}
                   className="mt-8"
+                  data-nosnippet="true"
                 >
                   <ReviewSnippets 
                     reviews={reviews}
