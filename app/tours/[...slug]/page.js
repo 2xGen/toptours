@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+import { unstable_cache } from 'next/cache';
 import TourDetailClient from '../[productId]/TourDetailClient';
 import { loadTourData, loadDestinationData } from '../[productId]/TourDataLoader';
 import { getCachedTour, cacheTour } from '@/lib/viatorCache';
@@ -12,24 +13,9 @@ import { trackTourForSitemap } from '@/lib/tourSitemap';
 // Revalidate every hour for fresh data
 export const revalidate = 3600;
 
-/**
- * Generate metadata for tour detail page
- */
-export async function generateMetadata({ params }) {
-  const resolvedParams = await params;
-  const slug = resolvedParams.slug || [];
-  const productId = Array.isArray(slug) ? slug[0] : slug;
-  
-  if (!productId) {
-    return {
-      title: 'Tour Not Found | TopTours.ai',
-      description: 'The tour you are looking for could not be found.',
-      robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
-    };
-  }
-
-  try {
-    // Try to get cached tour data first
+// Cache tour data fetching at Next.js level (1 hour)
+const getCachedTourData = unstable_cache(
+  async (productId) => {
     let tour = await getCachedTour(productId);
     
     if (!tour) {
@@ -48,22 +34,75 @@ export async function generateMetadata({ params }) {
       });
 
       if (!productResponse.ok) {
-        return {
-          title: 'Tour Not Found | TopTours.ai',
-          description: 'The tour you are looking for could not be found.',
-          robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
-        };
+        return null;
       }
 
       tour = await productResponse.json();
       if (!tour || tour.error) {
-        return {
-          title: 'Tour Not Found | TopTours.ai',
-          description: 'The tour you are looking for could not be found.',
-          robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
-        };
+        return null;
       }
       await cacheTour(productId, tour);
+    }
+    
+    return tour;
+  },
+  ['tour-data'],
+  { revalidate: 3600, tags: ['tours'] }
+);
+
+// Cache non-critical data loading (1 hour)
+const getCachedTourExtras = unstable_cache(
+  async (productId, tour) => {
+    const [tourDataResult, destinationDataResult] = await Promise.allSettled([
+      loadTourData(productId, tour),
+      loadDestinationData(tour, productId)
+    ]);
+
+    const tourData = tourDataResult.status === 'fulfilled' ? tourDataResult.value : {
+      pricing: null,
+      promotionScore: { product_id: productId, total_score: 0, monthly_score: 0, weekly_score: 0, past_28_days_score: 0 },
+      tourEnrichment: null,
+      operatorPremiumData: null,
+      operatorTours: [],
+      reviews: null
+    };
+
+    const destData = destinationDataResult.status === 'fulfilled' 
+      ? destinationDataResult.value 
+      : { destinationData: null, restaurantCount: 0, restaurants: [], categoryGuides: [] };
+
+    return { tourData, destData };
+  },
+  ['tour-extras'],
+  { revalidate: 3600, tags: ['tours'] }
+);
+
+/**
+ * Generate metadata for tour detail page
+ */
+export async function generateMetadata({ params }) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug || [];
+  const productId = Array.isArray(slug) ? slug[0] : slug;
+  
+  if (!productId) {
+    return {
+      title: 'Tour Not Found | TopTours.ai',
+      description: 'The tour you are looking for could not be found.',
+      robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+    };
+  }
+
+  try {
+    // Use cached tour data (Next.js level caching)
+    const tour = await getCachedTourData(productId);
+    
+    if (!tour) {
+      return {
+        title: 'Tour Not Found | TopTours.ai',
+        description: 'The tour you are looking for could not be found.',
+        robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+      };
     }
 
     // Extract destination name for metadata
@@ -146,56 +185,16 @@ export default async function TourDetailPage({ params }) {
   }
 
   try {
-    // Try to get cached tour data first (fast)
-    let tour = await getCachedTour(productId);
+    // Use Next.js level caching for tour data
+    const tour = await getCachedTourData(productId);
     
     if (!tour) {
-      // Cache miss - fetch from Viator API
-      const apiKey = process.env.VIATOR_API_KEY;
-      const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
-      
-      const productResponse = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'exp-api-key': apiKey,
-          'Accept': 'application/json;version=2.0',
-          'Accept-Language': 'en-US',
-          'Content-Type': 'application/json'
-        },
-        next: { revalidate: 3600 }
-      });
-
-      if (!productResponse.ok) {
-        notFound();
-      }
-
-      tour = await productResponse.json();
-      if (!tour || tour.error) {
-        notFound();
-      }
-      await cacheTour(productId, tour);
+      notFound();
     }
 
-    // Load non-critical data in parallel
-    const [tourDataResult, destinationDataResult] = await Promise.allSettled([
-      loadTourData(productId, tour),
-      loadDestinationData(tour, productId)
-    ]);
-
-    // Extract tour data with defaults
-    const tourData = tourDataResult.status === 'fulfilled' ? tourDataResult.value : {
-      pricing: null,
-      promotionScore: { product_id: productId, total_score: 0, monthly_score: 0, weekly_score: 0, past_28_days_score: 0 },
-      tourEnrichment: null,
-      operatorPremiumData: null,
-      operatorTours: [],
-      reviews: null
-    };
-
-    // Extract destination data with defaults
-    const { destinationData, restaurantCount, restaurants, categoryGuides } = destinationDataResult.status === 'fulfilled' 
-      ? destinationDataResult.value 
-      : { destinationData: null, restaurantCount: 0, restaurants: [], categoryGuides: [] };
+    // Use Next.js level caching for extras (pricing, reviews, etc.)
+    const { tourData, destData } = await getCachedTourExtras(productId, tour);
+    const { destinationData, restaurantCount, restaurants, categoryGuides } = destData;
 
     // Generate FAQs (quick, doesn't make API calls)
     let faqs = [];
