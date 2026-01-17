@@ -37,7 +37,8 @@ export async function generateMetadata({ params }) {
   if (!productId) {
     return {
       title: 'Tour Not Found | TopTours.ai',
-      description: 'The tour you are looking for could not be found.'
+      description: 'The tour you are looking for could not be found.',
+      robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
     };
   }
 
@@ -64,7 +65,8 @@ export async function generateMetadata({ params }) {
       if (!productResponse.ok) {
         return {
           title: 'Tour Not Found | TopTours.ai',
-          description: 'The tour you are looking for could not be found.'
+          description: 'The tour you are looking for could not be found.',
+          robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
         };
       }
 
@@ -73,7 +75,8 @@ export async function generateMetadata({ params }) {
       if (!tour || tour.error) {
         return {
           title: 'Tour Not Found | TopTours.ai',
-          description: 'The tour you are looking for could not be found.'
+          description: 'The tour you are looking for could not be found.',
+          robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
         };
       }
 
@@ -146,7 +149,8 @@ export async function generateMetadata({ params }) {
     console.error('Error generating metadata:', error);
     return {
       title: 'Tour | TopTours.ai',
-      description: 'Discover amazing tours and experiences.'
+      description: 'Discover amazing tours and experiences.',
+      robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
     };
   }
 }

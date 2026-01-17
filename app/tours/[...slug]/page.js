@@ -23,7 +23,8 @@ export async function generateMetadata({ params }) {
   if (!productId) {
     return {
       title: 'Tour Not Found | TopTours.ai',
-      description: 'The tour you are looking for could not be found.'
+      description: 'The tour you are looking for could not be found.',
+      robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
     };
   }
 
@@ -49,7 +50,8 @@ export async function generateMetadata({ params }) {
       if (!productResponse.ok) {
         return {
           title: 'Tour Not Found | TopTours.ai',
-          description: 'The tour you are looking for could not be found.'
+          description: 'The tour you are looking for could not be found.',
+          robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
         };
       }
 
@@ -57,7 +59,8 @@ export async function generateMetadata({ params }) {
       if (!tour || tour.error) {
         return {
           title: 'Tour Not Found | TopTours.ai',
-          description: 'The tour you are looking for could not be found.'
+          description: 'The tour you are looking for could not be found.',
+          robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
         };
       }
       await cacheTour(productId, tour);
@@ -102,12 +105,30 @@ export async function generateMetadata({ params }) {
         description,
         images: image ? [image] : [],
       },
-      robots: { index: true, follow: true },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          'max-video-preview': -1,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
+        },
+      },
     };
   } catch (error) {
     return {
       title: 'Tour Not Found | TopTours.ai',
-      description: 'The tour you are looking for could not be found.'
+      description: 'The tour you are looking for could not be found.',
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+        },
+      },
     };
   }
 }

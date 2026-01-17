@@ -1,7 +1,11 @@
 User-agent: *
 Allow: /
 Disallow: /admin-matthijs
-Disallow: /api/
+Disallow: /api/internal/
+Disallow: /api/admin/
+
+# Allow tour-related API routes for client-side functionality
+Allow: /api/tours/
 
 Sitemap: https://toptours.ai/sitemap.xml
 Sitemap: https://toptours.ai/sitemap-guides.xml
