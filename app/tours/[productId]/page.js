@@ -828,6 +828,35 @@ export default async function TourDetailPage({ params }) {
       });
     }
 
+    // Build Product schema - only include if at least offers OR aggregateRating is available
+    const hasOffers = pricing && pricing > 0;
+    const hasRating = tour.reviews?.combinedAverageRating && tour.reviews?.totalReviews;
+    const tourSlug = generateTourSlug(tour.title);
+    const canonicalUrl = tourSlug ? `https://toptours.ai/tours/${productId}/${tourSlug}` : `https://toptours.ai/tours/${productId}`;
+    const mainImage = tour.images?.[0]?.variants?.[3]?.url || tour.images?.[0]?.variants?.[0]?.url;
+    
+    // Only create Product schema if valid (Google requires offers, review, or aggregateRating)
+    const productSchema = (hasOffers || hasRating) ? {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": tour.title,
+      "description": tour.description?.summary || tour.description?.shortDescription || '',
+      "image": mainImage ? [mainImage] : undefined,
+      "sku": productId,
+      "offers": hasOffers ? {
+        "@type": "Offer",
+        "url": canonicalUrl,
+        "priceCurrency": "USD",
+        "price": pricing,
+        "availability": "https://schema.org/InStock"
+      } : undefined,
+      "aggregateRating": hasRating ? {
+        "@type": "AggregateRating",
+        "ratingValue": tour.reviews.combinedAverageRating,
+        "reviewCount": tour.reviews.totalReviews
+      } : undefined
+    } : null;
+
     // Track tour for sitemap (non-blocking, fire and forget)
     trackTourForSitemap(productId, tour, destinationData);
     
@@ -839,6 +868,15 @@ export default async function TourDetailPage({ params }) {
     return (
       <>
         {redirectScript}
+        {/* Product Schema for SEO - only if valid */}
+        {productSchema && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(productSchema)
+            }}
+          />
+        )}
         {/* BreadcrumbList Schema for SEO */}
         <script
           type="application/ld+json"

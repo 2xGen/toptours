@@ -232,26 +232,31 @@ export default async function TourDetailPage({ params }) {
     const canonicalUrl = tourSlug ? `https://toptours.ai/tours/${productId}/${tourSlug}` : `https://toptours.ai/tours/${productId}`;
     const mainImage = tour.images?.[0]?.variants?.[3]?.url || tour.images?.[0]?.variants?.[0]?.url;
     
-    const productJsonLd = {
+    // Build Product schema - only include if at least offers OR aggregateRating is available
+    const hasOffers = pricing && pricing > 0;
+    const hasRating = tour.reviews?.combinedAverageRating && tour.reviews?.totalReviews;
+    
+    // Only create Product schema if valid (Google requires offers, review, or aggregateRating)
+    const productJsonLd = (hasOffers || hasRating) ? {
       '@context': 'https://schema.org',
       '@type': 'Product',
       name: tour.title,
       description: tour.description?.summary || tour.description?.shortDescription || '',
       image: mainImage ? [mainImage] : undefined,
       sku: productId,
-      offers: pricing ? {
+      offers: hasOffers ? {
         '@type': 'Offer',
         url: canonicalUrl,
         priceCurrency: 'USD',
         price: pricing,
         availability: 'https://schema.org/InStock',
       } : undefined,
-      aggregateRating: tour.reviews?.combinedAverageRating && tour.reviews?.totalReviews ? {
+      aggregateRating: hasRating ? {
         '@type': 'AggregateRating',
         ratingValue: tour.reviews.combinedAverageRating,
         reviewCount: tour.reviews.totalReviews,
       } : undefined,
-    };
+    } : null;
 
     const breadcrumbJsonLd = {
       '@context': 'https://schema.org',
@@ -267,7 +272,7 @@ export default async function TourDetailPage({ params }) {
 
     return (
       <>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
+        {productJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
         {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
         
