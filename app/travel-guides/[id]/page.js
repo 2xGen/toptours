@@ -1,8 +1,8 @@
 import { travelGuides } from '@/data/travelGuidesData';
 import TravelGuideClient from './TravelGuideClient';
 
-// Force dynamic rendering to avoid build-time errors
-export const dynamic = 'force-dynamic';
+// Revalidate every 24 hours - travel guides are mostly static content
+export const revalidate = 86400; // 24 hours
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {

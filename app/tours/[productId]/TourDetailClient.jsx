@@ -3443,7 +3443,7 @@ export default function TourDetailClient({ tour, similarTours: initialSimilarTou
                     </Card>
                   );
                 })}
-              </div>
+                </div>
               )}
             </motion.section>
           )}

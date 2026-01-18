@@ -154,7 +154,7 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
                 'Accept-Language': 'en-US',
                 'Content-Type': 'application/json'
               },
-              cache: 'no-store'
+              next: { revalidate: 3600 }, // Cache for 1 hour - we also use getCachedTour for Supabase caching
             });
             
             if (response.ok) {

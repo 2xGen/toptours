@@ -40,6 +40,9 @@ export const metadata = {
   },
 };
 
+// Static page - cache for 7 days (rarely changes)
+export const revalidate = 604800; // 7 days
+
 export default function CookiePolicyLayout({ children }) {
   return children;
 }

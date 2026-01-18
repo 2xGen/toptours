@@ -12,7 +12,8 @@ import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
 import RestaurantsListClient from './RestaurantsListClient';
 
 // Revalidate every hour for fresh data
-export const revalidate = 3600;
+// Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
+export const revalidate = 86400; // 24 hours
 
 // Shared function to fetch restaurants (used by both metadata and page)
 async function getRestaurantsForPage(destinationId) {
@@ -184,7 +185,7 @@ export default async function RestaurantsIndexPage({ params }) {
                 'Accept-Language': 'en-US',
                 'Content-Type': 'application/json'
               },
-              cache: 'no-store'
+              next: { revalidate: 3600 }, // Cache for 1 hour - we also use getCachedTour
             });
             
             if (response.ok) {

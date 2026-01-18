@@ -2,8 +2,8 @@ import DestinationsPageClient from './DestinationsPageClient';
 import viatorDestinationsData from '@/data/viatorDestinations.json';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 
-// Revalidate every hour for fresh data
-export const revalidate = 3600;
+// Revalidate every 24 hours - listing page with mostly static data
+export const revalidate = 86400; // 24 hours
 
 export async function generateMetadata() {
   return {

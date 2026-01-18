@@ -21,8 +21,8 @@ function generateSlug(name) {
     .replace(/^-|-$/g, '');
 }
 
-// Force dynamic rendering
-export const dynamic = 'force-dynamic';
+// Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
+export const revalidate = 86400; // 24 hours
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
@@ -264,7 +264,7 @@ export default async function OperatorsListingPage({ params }) {
           viatorDestinationId: String(viatorDestinationId),
           includeDestination: true,
         }),
-        cache: 'no-store',
+        next: { revalidate: 3600 }, // Cache for 1 hour - our API route has cache headers
       });
 
       if (toursResponse.ok) {

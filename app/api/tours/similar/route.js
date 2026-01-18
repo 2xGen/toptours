@@ -1,16 +1,27 @@
 import { getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey } from '@/lib/viatorCache';
 
+// Cache for 1 hour (3600 seconds) - reduces API calls from crawlers
+export const dynamic = 'force-dynamic'; // POST routes are dynamic, but we cache responses
+
 export async function POST(request) {
   try {
     const { productId, searchTerm } = await request.json();
     
     if (!productId || !searchTerm) {
-      return Response.json({ tours: [] });
+      return Response.json({ tours: [] }, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+        },
+      });
     }
     
     const apiKey = process.env.VIATOR_API_KEY;
     if (!apiKey) {
-      return Response.json({ tours: [] });
+      return Response.json({ tours: [] }, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+        },
+      });
     }
     
     // Check cache first
@@ -18,7 +29,11 @@ export async function POST(request) {
     const cachedSimilar = await getCachedSimilarTours(cacheKey);
     
     if (cachedSimilar && cachedSimilar.length > 0) {
-      return Response.json({ tours: cachedSimilar });
+      return Response.json({ tours: cachedSimilar }, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+        },
+      });
     }
     
     // Fetch from Viator API
@@ -39,7 +54,11 @@ export async function POST(request) {
     
     if (!similarResponse.ok) {
       console.error('Viator API error:', similarResponse.status);
-      return Response.json({ tours: [] });
+      return Response.json({ tours: [] }, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=3600', // Shorter cache on errors
+        },
+      });
     }
     
     const similarData = await similarResponse.json();
@@ -55,9 +74,17 @@ export async function POST(request) {
       await cacheSimilarTours(cacheKey, similarTours);
     }
     
-    return Response.json({ tours: similarTours });
+    return Response.json({ tours: similarTours }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
   } catch (error) {
     console.error('Error fetching similar tours:', error);
-    return Response.json({ tours: [], error: error.message });
+    return Response.json({ tours: [], error: error.message }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=3600', // Shorter cache on errors
+      },
+    });
   }
 }

@@ -60,7 +60,8 @@ const OLD_RESTAURANT_REDIRECTS = {
 };
 
 // Revalidate every hour for fresh data
-export const revalidate = 3600;
+// Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
+export const revalidate = 86400; // 24 hours
 
 export async function generateMetadata({ params }) {
   const { id: destinationId, restaurant: restaurantSlug } = await params;

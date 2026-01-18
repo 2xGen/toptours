@@ -10,10 +10,10 @@ import { getTourEnrichment } from '@/lib/tourEnrichment';
 import { generateTourSlug } from '@/utils/tourHelpers';
 import { trackTourForSitemap } from '@/lib/tourSitemap';
 
-// Revalidate every hour for fresh data
-export const revalidate = 3600;
+// Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
+export const revalidate = 86400; // 24 hours
 
-// Cache tour data fetching at Next.js level (1 hour)
+// Cache tour data fetching at Next.js level (24 hours - matches page cache)
 const getCachedTourData = unstable_cache(
   async (productId) => {
     let tour = await getCachedTour(productId);
@@ -30,7 +30,7 @@ const getCachedTourData = unstable_cache(
           'Accept-Language': 'en-US',
           'Content-Type': 'application/json'
         },
-        next: { revalidate: 3600 }
+        next: { revalidate: 3600 } // 1 hour for fetch cache - Supabase cache handles longer-term
       });
 
       if (!productResponse.ok) {
@@ -47,10 +47,10 @@ const getCachedTourData = unstable_cache(
     return tour;
   },
   ['tour-data'],
-  { revalidate: 3600, tags: ['tours'] }
+  { revalidate: 86400, tags: ['tours'] } // 24 hours to match page cache
 );
 
-// Cache non-critical data loading (1 hour)
+// Cache non-critical data loading (24 hours - matches page cache)
 const getCachedTourExtras = unstable_cache(
   async (productId, tour) => {
     const [tourDataResult, destinationDataResult] = await Promise.allSettled([
@@ -74,7 +74,7 @@ const getCachedTourExtras = unstable_cache(
     return { tourData, destData };
   },
   ['tour-extras'],
-  { revalidate: 3600, tags: ['tours'] }
+  { revalidate: 86400, tags: ['tours'] } // 24 hours to match page cache
 );
 
 /**
@@ -245,14 +245,14 @@ export default async function TourDetailPage({ params }) {
       image: mainImage ? [mainImage] : undefined,
       sku: productId,
       offers: hasOffers ? {
-        '@type': 'Offer',
-        url: canonicalUrl,
-        priceCurrency: 'USD',
+            '@type': 'Offer',
+            url: canonicalUrl,
+            priceCurrency: 'USD',
         price: pricing,
-        availability: 'https://schema.org/InStock',
+            availability: 'https://schema.org/InStock',
       } : undefined,
       aggregateRating: hasRating ? {
-        '@type': 'AggregateRating',
+              '@type': 'AggregateRating',
         ratingValue: tour.reviews.combinedAverageRating,
         reviewCount: tour.reviews.totalReviews,
       } : undefined,

@@ -18,9 +18,8 @@ import { headers } from 'next/headers';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { trackToursForSitemap } from '@/lib/tourSitemap';
 
-// Force dynamic rendering for API calls
-// Revalidate every hour for fresh data
-export const revalidate = 3600;
+// Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
+export const revalidate = 86400; // 24 hours
 
 /**
  * Generate metadata for SEO
@@ -468,13 +467,14 @@ export default async function ToursListingPage({ params }) {
     };
     
     // EXACT same fetch call as DestinationDetailClient.jsx line 423-429
+    // Cache allowed - our API route has 1h cache headers, and page has 24h cache
     let response = await fetch(`${baseUrl}/api/internal/viator-search`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(requestBody),
-      cache: 'no-store',
+      next: { revalidate: 3600 }, // Cache for 1 hour (matches API route cache)
     });
 
     if (!response.ok) {
@@ -654,7 +654,7 @@ export default async function ToursListingPage({ params }) {
                 'Accept-Language': 'en-US',
                 'Content-Type': 'application/json'
               },
-              cache: 'no-store'
+              next: { revalidate: 3600 }, // Cache for 1 hour - wrapped by unstable_cache anyway
             });
             
             if (response.ok) {

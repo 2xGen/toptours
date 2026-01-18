@@ -88,13 +88,9 @@ export default function ReviewSnippets({ reviews, tour, productId, viatorBooking
 
   return (
     <>
-      {/* Non-indexing meta tag for reviews section */}
-      <meta name="robots" content="noindex, nofollow" data-review-section="true" />
-      
       <section
         className="review-snippets-section"
-        data-noindex="true"
-        data-robots="noindex, nofollow"
+        data-nosnippet="true"
         data-viator-content="review-snippets"
       >
         <div className="bg-white rounded-lg shadow-sm p-6 md:p-8">

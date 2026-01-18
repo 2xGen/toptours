@@ -23,10 +23,10 @@ import { fetchProductRecommendations, fetchRecommendedTours } from '@/lib/viator
 import { getPricingPerAgeBand } from '@/lib/viatorPricing';
 import { trackTourForSitemap, trackToursForSitemap } from '@/lib/tourSitemap';
 
-// Revalidate every hour for fresh data
-export const revalidate = 3600;
+// Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
+export const revalidate = 86400; // 24 hours
 
-// Cache tour data fetching at Next.js level (1 hour)
+// Cache tour data fetching at Next.js level (24 hours - matches page cache)
 const getCachedTourData = unstable_cache(
   async (productId) => {
     let tour = await getCachedTour(productId);
@@ -43,7 +43,7 @@ const getCachedTourData = unstable_cache(
           'Accept-Language': 'en-US',
           'Content-Type': 'application/json'
         },
-        next: { revalidate: 3600 }
+        next: { revalidate: 3600 } // 1 hour for fetch cache - Supabase cache handles longer-term
       });
 
       if (!productResponse.ok) {
@@ -60,10 +60,10 @@ const getCachedTourData = unstable_cache(
     return tour;
   },
   ['tour-data-productid'],
-  { revalidate: 3600, tags: ['tours'] }
+  { revalidate: 86400, tags: ['tours'] } // 24 hours to match page cache
 );
 
-// Cache non-critical data loading (1 hour)
+// Cache non-critical data loading (24 hours - matches page cache)
 const getCachedTourExtras = unstable_cache(
   async (productId, tour) => {
     const [tourDataResult, destinationDataResult] = await Promise.allSettled([
@@ -87,7 +87,7 @@ const getCachedTourExtras = unstable_cache(
     return { tourData, destData };
   },
   ['tour-extras-productid'],
-  { revalidate: 3600, tags: ['tours'] }
+  { revalidate: 86400, tags: ['tours'] } // 24 hours to match page cache
 );
 
 /**
@@ -100,25 +100,25 @@ export async function generateMetadata({ params }) {
   const productId = Array.isArray(slugParam) ? slugParam[0] : slugParam;
   
   if (!productId) {
-    return {
-      title: 'Tour Not Found | TopTours.ai',
+        return {
+          title: 'Tour Not Found | TopTours.ai',
       description: 'The tour you are looking for could not be found.',
       robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
-    };
-  }
+        };
+      }
 
   try {
     // Use Next.js level caching for tour data
     const tour = await getCachedTourData(productId);
-    
+      
     if (!tour) {
-      return {
-        title: 'Tour Not Found | TopTours.ai',
+        return {
+          title: 'Tour Not Found | TopTours.ai',
         description: 'The tour you are looking for could not be found.',
         robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
-      };
-    }
-    
+        };
+      }
+
     const tourEnrichment = await getTourEnrichment(productId);
     
     // Extract destination name from tour for metadata
@@ -209,8 +209,8 @@ export default async function TourDetailPage({ params }) {
     const tour = await getCachedTourData(productId);
     
     if (!tour) {
-      notFound();
-    }
+        notFound();
+      }
 
     // Use Next.js level caching for extras (pricing, reviews, etc.)
     const { tourData, destData } = await getCachedTourExtras(productId, tour);

@@ -21,8 +21,8 @@ function generateSlug(name) {
     .replace(/^-|-$/g, '');
 }
 
-// Revalidate every hour for fresh data
-export const revalidate = 3600;
+// Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
+export const revalidate = 86400; // 24 hours
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
@@ -350,7 +350,7 @@ export default async function DestinationDetailPage({ params }) {
       if (dbDestination && dbDestination.id) {
         destination.destinationId = dbDestination.id.toString();
       } else if (slugToViatorId[destination.id]) {
-        destination.destinationId = slugToViatorId[destination.id];
+          destination.destinationId = slugToViatorId[destination.id];
       }
     } catch (error) {
       if (slugToViatorId[destination.id]) {

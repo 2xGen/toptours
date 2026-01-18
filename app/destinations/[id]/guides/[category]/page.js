@@ -7,8 +7,8 @@ import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { trackToursForSitemap } from '@/lib/tourSitemap';
 
-// Revalidate every hour for fresh data
-export const revalidate = 3600;
+// Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
+export const revalidate = 86400; // 24 hours
 
 // Function to fetch all guides for a destination from database
 // NOTE: This function is no longer used - we use getAllCategoryGuidesForDestination instead
