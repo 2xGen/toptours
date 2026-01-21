@@ -10,7 +10,7 @@ export async function POST(request) {
     if (!productId || !searchTerm) {
       return Response.json({ tours: [] }, {
         headers: {
-          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+          'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=604800',
         },
       });
     }
@@ -19,7 +19,7 @@ export async function POST(request) {
     if (!apiKey) {
       return Response.json({ tours: [] }, {
         headers: {
-          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+          'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=604800',
         },
       });
     }
@@ -31,7 +31,7 @@ export async function POST(request) {
     if (cachedSimilar && cachedSimilar.length > 0) {
       return Response.json({ tours: cachedSimilar }, {
         headers: {
-          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+          'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=604800',
         },
       });
     }
@@ -56,7 +56,7 @@ export async function POST(request) {
       console.error('Viator API error:', similarResponse.status);
       return Response.json({ tours: [] }, {
         headers: {
-          'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=3600', // Shorter cache on errors
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400', // Cache errors too to reduce calls
         },
       });
     }
@@ -76,14 +76,14 @@ export async function POST(request) {
     
     return Response.json({ tours: similarTours }, {
       headers: {
-        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+        'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=604800',
       },
     });
   } catch (error) {
     console.error('Error fetching similar tours:', error);
     return Response.json({ tours: [], error: error.message }, {
       headers: {
-        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=3600', // Shorter cache on errors
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400', // Cache errors too to reduce calls
       },
     });
   }

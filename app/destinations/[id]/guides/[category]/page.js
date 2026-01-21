@@ -8,7 +8,7 @@ import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { trackToursForSitemap } from '@/lib/tourSitemap';
 
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
-export const revalidate = 86400; // 24 hours
+export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
 
 // Function to fetch all guides for a destination from database
 // NOTE: This function is no longer used - we use getAllCategoryGuidesForDestination instead
@@ -504,7 +504,7 @@ export default async function CategoryGuidePage({ params }) {
             'Content-Type': 'application/json'
           },
         body: JSON.stringify(requestBody),
-        next: { revalidate: 3600 } // Cache for 1 hour
+        next: { revalidate: 86400 } // Cache for 24 hours - reduced to cut costs
         });
         
         if (viatorResponse.ok) {

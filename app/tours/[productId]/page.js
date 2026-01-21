@@ -21,8 +21,16 @@ import { getCachedReviews } from '@/lib/viatorReviews';
 import { getPricingPerAgeBand } from '@/lib/viatorPricing';
 import { trackTourForSitemap, trackToursForSitemap } from '@/lib/tourSitemap';
 
-// Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
-export const revalidate = 86400; // 24 hours
+// Revalidate every 7 days - page-level cache (not API JSON cache, so Viator compliant)
+// Increased from 24h to 7 days to reduce ISR writes during Google reindexing
+export const revalidate = 604800; // 7 days
+
+// Add HTTP cache headers to serve from edge cache (reduces function invocations for crawlers)
+export async function headers() {
+  return {
+    'Cache-Control': 'public, s-maxage=604800, stale-while-revalidate=2592000', // 7 days cache, 30 days stale
+  };
+}
 
 // Cache tour data fetching at Next.js level (24 hours - matches page cache)
 const getCachedTourData = unstable_cache(
@@ -41,7 +49,7 @@ const getCachedTourData = unstable_cache(
           'Accept-Language': 'en-US',
           'Content-Type': 'application/json'
         },
-        next: { revalidate: 3600 } // 1 hour for fetch cache - Supabase cache handles longer-term
+        next: { revalidate: 86400 } // 24 hours - Supabase cache handles longer-term, this reduces fetch calls
       });
 
       if (!productResponse.ok) {
@@ -58,7 +66,7 @@ const getCachedTourData = unstable_cache(
     return tour;
   },
   ['tour-data-productid'],
-  { revalidate: 86400, tags: ['tours'] } // 24 hours to match page cache
+  { revalidate: 604800, tags: ['tours'] } // 7 days to match page cache
 );
 
 // Cache non-critical data loading (24 hours - matches page cache)
@@ -85,7 +93,7 @@ const getCachedTourExtras = unstable_cache(
     return { tourData, destData };
   },
   ['tour-extras-productid'],
-  { revalidate: 86400, tags: ['tours'] } // 24 hours to match page cache
+  { revalidate: 604800, tags: ['tours'] } // 7 days to match page cache
 );
 
 /**

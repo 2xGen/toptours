@@ -9,7 +9,7 @@ import BabyEquipmentClient from './BabyEquipmentClient';
 
 // Force dynamic rendering
 // Revalidate every hour for fresh data
-export const revalidate = 3600;
+export const revalidate = 604800; // 7 days - increased to reduce ISR writes
 
 // Helper function to generate slug (same as used in destination detail page)
 function generateSlug(name) {

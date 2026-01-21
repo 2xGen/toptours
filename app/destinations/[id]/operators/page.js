@@ -22,7 +22,7 @@ function generateSlug(name) {
 }
 
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
-export const revalidate = 86400; // 24 hours
+export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
@@ -264,7 +264,7 @@ export default async function OperatorsListingPage({ params }) {
           viatorDestinationId: String(viatorDestinationId),
           includeDestination: true,
         }),
-        next: { revalidate: 3600 }, // Cache for 1 hour - our API route has cache headers
+        next: { revalidate: 86400 }, // Cache for 24 hours - our API route has cache headers, this reduces fetch calls
       });
 
       if (toursResponse.ok) {

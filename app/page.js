@@ -1,7 +1,7 @@
 import HomePageClient from './HomePageClient';
 
 // Revalidate homepage every hour
-export const revalidate = 3600;
+export const revalidate = 86400; // 24 hours - increased to reduce ISR writes
 
 export async function generateMetadata() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://toptours.ai';

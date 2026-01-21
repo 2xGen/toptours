@@ -19,7 +19,14 @@ import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { trackToursForSitemap } from '@/lib/tourSitemap';
 
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
-export const revalidate = 86400; // 24 hours
+export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
+
+// Add HTTP cache headers to serve from edge cache (reduces function invocations for crawlers)
+export async function headers() {
+  return {
+    'Cache-Control': 'public, s-maxage=604800, stale-while-revalidate=2592000', // 7 days cache, 30 days stale
+  };
+}
 
 /**
  * Generate metadata for SEO
@@ -474,7 +481,7 @@ export default async function ToursListingPage({ params }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(requestBody),
-      next: { revalidate: 3600 }, // Cache for 1 hour (matches API route cache)
+      next: { revalidate: 86400 }, // Cache for 24 hours - increased to reduce costs
     });
 
     if (!response.ok) {
@@ -654,7 +661,7 @@ export default async function ToursListingPage({ params }) {
                 'Accept-Language': 'en-US',
                 'Content-Type': 'application/json'
               },
-              next: { revalidate: 3600 }, // Cache for 1 hour - wrapped by unstable_cache anyway
+              next: { revalidate: 86400 }, // Cache for 24 hours - wrapped by unstable_cache anyway, this reduces fetch calls
             });
             
             if (response.ok) {

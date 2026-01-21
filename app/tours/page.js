@@ -46,7 +46,7 @@ export async function generateMetadata() {
 }
 
 // Revalidate every 24 hours - listing page with mostly static data
-export const revalidate = 86400; // 24 hours
+export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
 
 export default function ToursPage() {
   return <ToursPageClient />;

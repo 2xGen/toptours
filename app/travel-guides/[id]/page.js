@@ -2,7 +2,7 @@ import { travelGuides } from '@/data/travelGuidesData';
 import TravelGuideClient from './TravelGuideClient';
 
 // Revalidate every 24 hours - travel guides are mostly static content
-export const revalidate = 86400; // 24 hours
+export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {

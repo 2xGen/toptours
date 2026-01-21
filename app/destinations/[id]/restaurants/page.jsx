@@ -13,7 +13,7 @@ import RestaurantsListClient from './RestaurantsListClient';
 
 // Revalidate every hour for fresh data
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
-export const revalidate = 86400; // 24 hours
+export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
 
 // Shared function to fetch restaurants (used by both metadata and page)
 async function getRestaurantsForPage(destinationId) {
@@ -185,7 +185,7 @@ export default async function RestaurantsIndexPage({ params }) {
                 'Accept-Language': 'en-US',
                 'Content-Type': 'application/json'
               },
-              next: { revalidate: 3600 }, // Cache for 1 hour - we also use getCachedTour
+              next: { revalidate: 86400 }, // Cache for 24 hours - we also use getCachedTour, this reduces fetch calls
             });
             
             if (response.ok) {

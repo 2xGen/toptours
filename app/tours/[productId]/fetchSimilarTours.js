@@ -84,7 +84,7 @@ export async function fetchSimilarToursServer(productId, tour, destinationData) 
             }],
             currency: 'USD'
           }),
-          next: { revalidate: 3600 },
+          next: { revalidate: 86400 }, // 24 hours - increased to reduce API calls
           signal: controller.signal,
         });
 

@@ -31,7 +31,7 @@ export async function GET(request, { params }) {
           'Accept-Language': 'en-US',
           'Content-Type': 'application/json'
         },
-        next: { revalidate: 3600 }, // Cache for 1 hour - we also use getCachedTour for Supabase caching
+        next: { revalidate: 86400 }, // Cache for 24 hours - we also use getCachedTour for Supabase caching, this reduces fetch calls
       });
 
       if (!productResponse.ok) {
