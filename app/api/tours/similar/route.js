@@ -47,7 +47,7 @@ export async function POST(request) {
       },
       body: JSON.stringify({
         searchTerm: searchTerm,
-        searchTypes: [{ searchType: 'PRODUCTS', pagination: { start: 1, count: 20 } }],
+        searchTypes: [{ searchType: 'PRODUCTS', pagination: { start: 1, count: 12 } }],
         currency: 'USD'
       })
     });
@@ -67,7 +67,7 @@ export async function POST(request) {
     const similarTours = allTours
       .filter(t => (t.productId || t.productCode) !== productId)
       .sort((a, b) => (b.reviews?.combinedAverageRating || 0) - (a.reviews?.combinedAverageRating || 0))
-      .slice(0, 6);
+      .slice(0, 12);
     
     // Cache for future requests
     if (similarTours.length > 0) {

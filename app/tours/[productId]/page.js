@@ -237,10 +237,11 @@ export default async function TourDetailPage({ params }) {
       reviews
     } = tourData;
 
-    // Recommended and similar tours are fetched client-side to avoid blocking initial render
-    // This allows the page to show the skeleton immediately
+    // Similar tours are fetched server-side via Suspense (for SEO - crawlers can see it)
+    // This is just 1 API call and returns 12 tours with full data
+    // Recommended tours removed to reduce API calls
     const recommendedTours = [];
-    const similarTours = [];
+    // similarTours will be fetched server-side via SimilarToursSection Suspense component
 
     // Sync operator to CRM (lightweight, non-blocking)
     // Run sync regardless of cache status
@@ -919,6 +920,13 @@ export default async function TourDetailPage({ params }) {
           recommendedTours={recommendedTours}
         />
       </Suspense>
+      
+      {/* Similar Tours Section - Server-side rendered for SEO (crawlers can see it) */}
+      <SimilarToursSection 
+        productId={productId}
+        tour={tour}
+        destinationData={destinationData}
+      />
       </>
     );
   } catch (error) {

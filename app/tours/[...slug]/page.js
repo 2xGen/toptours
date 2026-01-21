@@ -213,9 +213,10 @@ export default async function TourDetailPage({ params }) {
       reviews
     } = tourData;
 
-    // Recommended and similar tours are fetched client-side for faster initial render
+    // Recommended tours are fetched client-side (lazy load) for faster initial render
+    // Similar tours removed to reduce API calls - now showing 12 recommended tours instead of 6
     const recommendedTours = [];
-    const similarTours = [];
+    const similarTours = []; // Deprecated - kept for backward compatibility but not used
 
     // CRM sync (non-blocking)
     if (tour && productId) {

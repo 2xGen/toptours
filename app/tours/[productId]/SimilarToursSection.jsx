@@ -83,10 +83,10 @@ async function SimilarToursContent({ productId, tour, destinationData }) {
             searchTerm: searchTerm,
             searchTypes: [{
               searchType: 'PRODUCTS',
-              pagination: {
-                start: 1,
-                count: 20
-              }
+            pagination: {
+              start: 1,
+              count: 12
+            }
             }],
             currency: 'USD'
           }),
@@ -109,7 +109,7 @@ async function SimilarToursContent({ productId, tour, destinationData }) {
               const ratingB = b.reviews?.combinedAverageRating || 0;
               return ratingB - ratingA;
             })
-            .slice(0, 6);
+            .slice(0, 12);
           
           await cacheSimilarTours(cacheKey, similarTours);
           console.log(`[SimilarTours] Cached ${similarTours.length} tours`);

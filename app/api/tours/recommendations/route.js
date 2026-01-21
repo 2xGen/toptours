@@ -26,8 +26,8 @@ export async function POST(request) {
       });
     }
     
-    // Fetch full tour data for recommended tours (limit to 6)
-    const recommendedTours = await fetchRecommendedTours(recommendedProductCodes.slice(0, 6));
+    // Fetch full tour data for recommended tours (limit to 12 for better internal linking)
+    const recommendedTours = await fetchRecommendedTours(recommendedProductCodes.slice(0, 12));
     
     return Response.json({ tours: recommendedTours || [] }, {
       headers: {

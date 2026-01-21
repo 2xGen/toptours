@@ -8,7 +8,7 @@
 
 import { createSupabaseServiceRoleClient } from './supabaseClient';
 
-const RECOMMENDATIONS_CACHE_TTL_HOURS = 6; // Cache recommendations for 6 hours
+const RECOMMENDATIONS_CACHE_TTL_HOURS = 24; // Cache recommendations for 24 hours (increased from 6h to reduce API calls during Google crawl)
 
 /**
  * Get cached recommendations from Supabase
@@ -150,8 +150,8 @@ export async function fetchRecommendedTours(recommendedProductCodes) {
     return [];
   }
 
-  // Cap at maximum 6 tours
-  const limitedCodes = recommendedProductCodes.slice(0, 6);
+  // Cap at maximum 12 tours (increased from 6 for better internal linking)
+  const limitedCodes = recommendedProductCodes.slice(0, 12);
 
   // Import the tour caching functions
   const { getCachedTour, cacheTour } = await import('./viatorCache');
@@ -164,52 +164,80 @@ export async function fetchRecommendedTours(recommendedProductCodes) {
   }
 
   try {
-    const allTours = [];
+    // OPTIMIZATION: Check cache for ALL tours first (parallel), then fetch only uncached ones in parallel
+    // This reduces API calls from 6 sequential calls to 1-6 parallel calls (only for uncached tours)
     
-    // Fetch each tour individually using GET /partner/products/{productId}
-    for (const productCode of limitedCodes) {
+    // Step 1: Check cache for all tours in parallel
+    const cacheChecks = await Promise.allSettled(
+      limitedCodes.map(code => getCachedTour(code))
+    );
+    
+    const cachedTours = [];
+    const uncachedCodes = [];
+    
+    cacheChecks.forEach((result, index) => {
+      if (result.status === 'fulfilled' && result.value && !result.value.error) {
+        cachedTours.push({ tour: result.value, code: limitedCodes[index] });
+      } else {
+        uncachedCodes.push(limitedCodes[index]);
+      }
+    });
+    
+    // Step 2: Fetch uncached tours in parallel (not sequential!)
+    const fetchPromises = uncachedCodes.map(async (productCode) => {
       try {
-        // First check cache
-        let tour = await getCachedTour(productCode);
-        
-        if (!tour) {
-          // Cache miss - fetch from API using GET endpoint (same as tour detail page)
-          const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 30000);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000);
 
-          // Use production API (full access approved)
-          const productEndpoint = `https://api.viator.com/partner/products/${productCode}?currency=USD`;
+        const productEndpoint = `https://api.viator.com/partner/products/${productCode}?currency=USD`;
+        
+        const response = await fetch(productEndpoint, {
+          method: 'GET',
+          headers: {
+            'exp-api-key': apiKey,
+            'Accept': 'application/json;version=2.0',
+            'Accept-Language': 'en-US',
+            'Content-Type': 'application/json',
+          },
+          signal: controller.signal,
+        });
+
+        clearTimeout(timeoutId);
+
+        if (response.ok) {
+          const tour = await response.json();
           
-          const response = await fetch(productEndpoint, {
-            method: 'GET',
-            headers: {
-              'exp-api-key': apiKey,
-              'Accept': 'application/json;version=2.0',
-              'Accept-Language': 'en-US',
-              'Content-Type': 'application/json',
-            },
-            signal: controller.signal,
-          });
-
-          clearTimeout(timeoutId);
-
-          if (response.ok) {
-            tour = await response.json();
-            
-            if (tour && !tour.error) {
-              // Cache it for future use
-              await cacheTour(productCode, tour);
-            }
+          if (tour && !tour.error) {
+            // Cache it for future use (fire and forget)
+            cacheTour(productCode, tour).catch(() => {});
+            return { tour, code: productCode };
           }
-        }
-        
-        if (tour && !tour.error) {
-          allTours.push(tour);
         }
       } catch (error) {
         // Continue with next tour
       }
-    }
+      return null;
+    });
+    
+    // Wait for all fetches to complete
+    const fetchedResults = await Promise.allSettled(fetchPromises);
+    
+    // Combine cached and fetched tours
+    const allTours = [];
+    
+    // Add cached tours
+    cachedTours.forEach(({ tour }) => {
+      if (tour && !tour.error) {
+        allTours.push(tour);
+      }
+    });
+    
+    // Add fetched tours
+    fetchedResults.forEach((result) => {
+      if (result.status === 'fulfilled' && result.value && result.value.tour) {
+        allTours.push(result.value.tour);
+      }
+    });
 
     return allTours;
   } catch (error) {

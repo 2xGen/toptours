@@ -6,7 +6,7 @@
 import { createSupabaseServiceRoleClient } from './supabaseClient';
 
 const CACHE_TTL_HOURS = 24; // Cache tour data for 24 hours
-const SIMILAR_TOURS_CACHE_TTL_HOURS = 6; // Cache similar tours for 6 hours
+const SIMILAR_TOURS_CACHE_TTL_HOURS = 24; // Cache similar tours for 24 hours (increased from 6h to reduce API calls during Google crawl)
 const DESTINATION_CACHE_TTL_DAYS = 90; // Cache destination data for 90 days (destinations rarely change)
 
 /**
