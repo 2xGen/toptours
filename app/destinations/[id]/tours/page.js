@@ -14,7 +14,7 @@ import { redirect } from 'next/navigation';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { hasDestinationPage } from '@/data/destinationFullContent';
-import { headers } from 'next/headers';
+import { headers as getHeaders } from 'next/headers';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { trackToursForSitemap } from '@/lib/tourSitemap';
 
@@ -459,7 +459,7 @@ export default async function ToursListingPage({ params }) {
     const viatorDestinationId = destination.destinationId || destination.viatorDestinationId;
     
     // Get base URL for server-side fetch (must await headers in Next.js 15)
-    const headersList = await headers();
+    const headersList = await getHeaders();
     const host = headersList.get('host') || 'localhost:3000';
     const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
     const baseUrl = `${protocol}://${host}`;
