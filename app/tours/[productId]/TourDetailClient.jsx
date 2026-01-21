@@ -42,6 +42,7 @@ import ShareModal from '@/components/sharing/ShareModal';
 import { PromoteTourOperatorBanner } from '@/components/tour/PromoteTourOperatorBanner';
 import ReviewSnippets from '@/components/tours/ReviewSnippets';
 import PriceCalculator from '@/components/tours/PriceCalculator';
+import SimilarToursListWrapper from './SimilarToursListWrapper';
 import { 
   calculateTourProfile, 
   getUserPreferenceScores, 
@@ -333,7 +334,7 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, travelers: exter
   );
 }
 
-export default function TourDetailClient({ tour, similarTours: initialSimilarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], faqs = [], reviews = null, recommendedTours: initialRecommendedTours = [] }) {
+export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], faqs = [], reviews = null, recommendedTours: initialRecommendedTours = [] }) {
   // Note: recommendedTours prop kept for backward compatibility but not used (removed to reduce API calls)
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -3283,8 +3284,16 @@ export default function TourDetailClient({ tour, similarTours: initialSimilarTou
             </motion.section>
           )}
 
-          {/* Similar Tours is now rendered server-side via SimilarToursSection component (for SEO) */}
-          {/* Client-side rendering removed to avoid duplication */}
+          {/* Similar Tours Section - Server-side rendered for SEO */}
+          {similarTours && similarTours.length > 0 && (
+            <div className="mt-16 w-full">
+              <SimilarToursListWrapper 
+                similarTours={similarTours}
+                tour={tour}
+                destinationData={destinationData}
+              />
+            </div>
+          )}
         </div>
       </section>
 

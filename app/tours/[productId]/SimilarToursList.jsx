@@ -13,11 +13,8 @@ export default function SimilarToursList({ similarTours, tour, destinationData }
     return null;
   }
 
-  // Determine section title
-  const derivedDestinationName = destinationData?.destinationName || destinationData?.name || null;
-  const similarSectionTitle = derivedDestinationName
-    ? `Other Tours in ${derivedDestinationName}`
-    : 'Other Tours You Might Like';
+  // Section title - "Similar tours to {Tour Name}"
+  const similarSectionTitle = `Similar tours to ${tour?.title || 'this tour'}`;
 
   return (
     <motion.section
@@ -32,7 +29,7 @@ export default function SimilarToursList({ similarTours, tour, destinationData }
         <h2 className="text-3xl font-bold text-gray-900">{similarSectionTitle}</h2>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {similarTours.map((similarTour, index) => {
           const similarTourId = getTourProductId(similarTour);
           const similarTourUrl = getTourUrl(similarTourId, similarTour.title);

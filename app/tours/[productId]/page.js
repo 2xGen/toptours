@@ -2,8 +2,7 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { unstable_cache } from 'next/cache';
 import TourDetailClient from './TourDetailClient';
-import RecommendedToursSection from './RecommendedToursSection';
-import SimilarToursSection from './SimilarToursSection';
+import { fetchSimilarToursServer } from './fetchSimilarTours';
 import { loadTourData, loadDestinationData } from './TourDataLoader';
 import { getTourEnrichment, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
 import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
@@ -19,7 +18,6 @@ import { generateTourSlug } from '@/utils/tourHelpers';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
 import { getCachedReviews } from '@/lib/viatorReviews';
-import { fetchProductRecommendations, fetchRecommendedTours } from '@/lib/viatorRecommendations';
 import { getPricingPerAgeBand } from '@/lib/viatorPricing';
 import { trackTourForSitemap, trackToursForSitemap } from '@/lib/tourSitemap';
 
@@ -240,7 +238,6 @@ export default async function TourDetailPage({ params }) {
     // Similar tours are fetched server-side via Suspense (for SEO - crawlers can see it)
     // This is just 1 API call and returns 12 tours with full data
     // Recommended tours removed to reduce API calls
-    const recommendedTours = [];
     // similarTours will be fetched server-side via SimilarToursSection Suspense component
 
     // Sync operator to CRM (lightweight, non-blocking)
@@ -294,8 +291,9 @@ export default async function TourDetailPage({ params }) {
       }
     }
 
-    // Similar tours are now fetched separately via Suspense for faster page load
-    // (See SimilarToursSection component)
+    // Fetch similar tours server-side (for SEO - crawlers can see it)
+    const { similarTours: fetchedSimilarTours } = await fetchSimilarToursServer(productId, tour, destinationData);
+    const similarTours = fetchedSimilarTours || [];
 
     // NOTE: Destination data, restaurants, and categoryGuides are already loaded via loadDestinationData() above
     // The variables are already set from the parallel data loading above
@@ -862,9 +860,6 @@ export default async function TourDetailPage({ params }) {
     trackTourForSitemap(productId, tour, destinationData);
     
     // Track recommended/similar tours for sitemap
-    if (recommendedTours && recommendedTours.length > 0) {
-      trackToursForSitemap(recommendedTours, destinationData);
-    }
 
     return (
       <>
@@ -917,16 +912,8 @@ export default async function TourDetailPage({ params }) {
           categoryGuides={categoryGuides}
           faqs={faqs}
           reviews={reviews}
-          recommendedTours={recommendedTours}
         />
       </Suspense>
-      
-      {/* Similar Tours Section - Server-side rendered for SEO (crawlers can see it) */}
-      <SimilarToursSection 
-        productId={productId}
-        tour={tour}
-        destinationData={destinationData}
-      />
       </>
     );
   } catch (error) {

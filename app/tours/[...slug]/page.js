@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { unstable_cache } from 'next/cache';
 import TourDetailClient from '../[productId]/TourDetailClient';
+import { fetchSimilarToursServer } from '../[productId]/fetchSimilarTours';
 import { loadTourData, loadDestinationData } from '../[productId]/TourDataLoader';
 import { getCachedTour, cacheTour } from '@/lib/viatorCache';
 import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
@@ -213,10 +214,9 @@ export default async function TourDetailPage({ params }) {
       reviews
     } = tourData;
 
-    // Recommended tours are fetched client-side (lazy load) for faster initial render
-    // Similar tours removed to reduce API calls - now showing 12 recommended tours instead of 6
-    const recommendedTours = [];
-    const similarTours = []; // Deprecated - kept for backward compatibility but not used
+    // Fetch similar tours server-side (for SEO - crawlers can see it)
+    const { similarTours: fetchedSimilarTours } = await fetchSimilarToursServer(productId, tour, destinationData);
+    const similarTours = fetchedSimilarTours || [];
 
     // CRM sync (non-blocking)
     if (tour && productId) {
@@ -292,7 +292,6 @@ export default async function TourDetailPage({ params }) {
           categoryGuides={categoryGuides}
           faqs={faqs}
           reviews={reviews}
-          recommendedTours={recommendedTours}
         />
       </>
     );
