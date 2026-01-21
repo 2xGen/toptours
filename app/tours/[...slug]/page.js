@@ -15,13 +15,6 @@ import { trackTourForSitemap } from '@/lib/tourSitemap';
 // Increased from 24h to 7 days to reduce ISR writes during Google reindexing
 export const revalidate = 604800; // 7 days
 
-// Add HTTP cache headers to serve from edge cache (reduces function invocations for crawlers)
-export async function headers() {
-  return {
-    'Cache-Control': 'public, s-maxage=604800, stale-while-revalidate=2592000', // 7 days cache, 30 days stale
-  };
-}
-
 // Cache tour data fetching at Next.js level (24 hours - matches page cache)
 const getCachedTourData = unstable_cache(
   async (productId) => {

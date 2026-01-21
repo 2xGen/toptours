@@ -24,13 +24,6 @@ function generateSlug(name) {
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
 
-// Add HTTP cache headers to serve from edge cache (reduces function invocations for crawlers)
-export async function headers() {
-  return {
-    'Cache-Control': 'public, s-maxage=604800, stale-while-revalidate=2592000', // 7 days cache, 30 days stale
-  };
-}
-
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
   const { id } = await params;
