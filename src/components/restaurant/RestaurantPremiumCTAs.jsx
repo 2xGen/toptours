@@ -33,7 +33,7 @@ const ICON_MAP = {
  * Premium Hero CTA Button
  * Displayed in the hero section for premium restaurants
  */
-export function PremiumHeroCTA({ subscription, restaurant, user, onAuthRequired, fullWidth = false }) {
+export function PremiumHeroCTA({ subscription, restaurant, user, onAuthRequired, fullWidth = false, bookingUrl = null }) {
   const config = getPremiumConfig(subscription);
   if (!config) return null;
 
@@ -46,7 +46,7 @@ export function PremiumHeroCTA({ subscription, restaurant, user, onAuthRequired,
       onAuthRequired?.();
       return;
     }
-    const url = restaurant.booking?.partnerUrl || restaurant.contact?.website;
+    const url = bookingUrl || restaurant.booking?.partnerUrl || restaurant.contact?.website;
     if (url) {
       window.open(url, '_blank', 'noopener,noreferrer');
     }
@@ -76,7 +76,7 @@ export function PremiumHeroCTA({ subscription, restaurant, user, onAuthRequired,
  * Premium Mid-Page CTA Banner
  * Displayed in the middle of the page for premium restaurants
  */
-export function PremiumMidCTA({ subscription, restaurant, user, onAuthRequired }) {
+export function PremiumMidCTA({ subscription, restaurant, user, onAuthRequired, bookingUrl = null }) {
   const config = getPremiumConfig(subscription);
   if (!config) return null;
 
@@ -88,7 +88,7 @@ export function PremiumMidCTA({ subscription, restaurant, user, onAuthRequired }
       onAuthRequired?.();
       return;
     }
-    const url = restaurant.booking?.partnerUrl || restaurant.contact?.website;
+    const url = bookingUrl || restaurant.booking?.partnerUrl || restaurant.contact?.website;
     if (url) {
       window.open(url, '_blank', 'noopener,noreferrer');
     }
@@ -124,7 +124,7 @@ export function PremiumMidCTA({ subscription, restaurant, user, onAuthRequired }
  * Premium End CTA Section
  * Displayed at the end of the page for premium restaurants
  */
-export function PremiumEndCTA({ subscription, restaurant, user, onAuthRequired }) {
+export function PremiumEndCTA({ subscription, restaurant, user, onAuthRequired, bookingUrl = null }) {
   const config = getPremiumConfig(subscription);
   if (!config) return null;
 
@@ -137,7 +137,7 @@ export function PremiumEndCTA({ subscription, restaurant, user, onAuthRequired }
       onAuthRequired?.();
       return;
     }
-    const url = restaurant.booking?.partnerUrl || restaurant.contact?.website;
+    const url = bookingUrl || restaurant.booking?.partnerUrl || restaurant.contact?.website;
     if (url) {
       window.open(url, '_blank', 'noopener,noreferrer');
     }

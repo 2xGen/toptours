@@ -49,8 +49,8 @@ export function PromoteRestaurantBanner({ restaurant, destination, user }) {
                 Own or manage this restaurant?
               </h3>
               <p className="text-gray-600 mb-3">
-                Get <strong className="text-amber-700">5-12× more clicks</strong> with prominent CTAs, 
-                a sticky button, and a TOP badge. Starting at just{' '}
+                <strong className="text-amber-700">Customize your booking link</strong> to your own website or booking platform, 
+                plus get customizable CTAs, premium badge, and full control. Starting at just{' '}
                 <strong className="text-amber-700">${RESTAURANT_PREMIUM_PRICING.yearly.price}/month</strong>.
               </p>
 
@@ -207,78 +207,52 @@ function PremiumExplainerModal({ isOpen, onClose, onGetStarted }) {
                   <div>
                     <p className="text-sm text-white/80">Restaurant Premium</p>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-3xl md:text-4xl font-black">5-12×</span>
-                      <span className="text-lg font-semibold">more clicks</span>
+                      <span className="text-2xl md:text-3xl font-black">Custom Booking Link</span>
                     </div>
                   </div>
                 </div>
                 <div className="text-right text-sm text-white/70">
-                  vs. standard listings
+                  Full control
                 </div>
               </div>
             </div>
 
             {/* Content */}
             <div className="flex-1 overflow-y-auto p-4 md:p-6">
-              {/* Visual CTR Comparison */}
-              <div className="bg-white rounded-xl p-4 border-2 border-orange-200 shadow-sm mb-4">
+              {/* Custom Booking Link - Primary Feature */}
+              <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-4 border-2 border-amber-300 shadow-sm mb-4">
                 <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-orange-600" />
-                  Real Click-Through Rates
+                  <Crown className="w-5 h-5 text-amber-600" />
+                  Custom Booking Link
                 </h3>
-                
-                <div className="space-y-4">
-                  {/* Without Premium */}
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-gray-600 text-sm">Without Premium</span>
-                      <span className="font-mono text-gray-900 text-sm">~1%</span>
-                    </div>
-                    <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        animate={{ width: '8%' }}
-                        transition={{ delay: 0.3, duration: 0.5 }}
-                        className="h-full bg-gray-400 rounded-full" 
-                      />
-                    </div>
-                  </div>
-                  
-                  {/* With Premium */}
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-orange-600 font-semibold text-sm">With Premium</span>
-                      <span className="font-mono text-orange-600 font-bold">5-12%</span>
-                    </div>
-                    <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        animate={{ width: '70%' }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-                        className="h-full bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full" 
-                      />
+                <p className="text-gray-700 mb-4 text-sm">
+                  <strong>The main benefit of Premium:</strong> Change your booking link from the default BiteReserve* link 
+                  to your own website, OpenTable, Resy, Tock, or any booking platform you use.
+                </p>
+                <div className="bg-white rounded-lg p-4 border border-amber-200">
+                  <div className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold text-gray-900 mb-2">How it works:</p>
+                      <ol className="text-xs text-gray-700 space-y-1 list-decimal list-inside">
+                        <li>Subscribe to Restaurant Premium</li>
+                        <li>Contact us at <a href="mailto:mail@toptours.ai" className="text-amber-700 hover:underline font-medium">mail@toptours.ai</a> with your desired booking link</li>
+                        <li>We verify ownership and update your link</li>
+                        <li>All your CTAs now link directly to your booking platform</li>
+                      </ol>
                     </div>
                   </div>
                 </div>
-
-                {/* Multiplier callout */}
-                <div className="mt-4 p-4 bg-gradient-to-r from-orange-100 to-yellow-100 rounded-xl border border-orange-200">
-                  <div className="flex items-center gap-3">
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <span className="text-lg font-black text-white">5-12×</span>
-                    </div>
-                    <p className="text-gray-700 text-sm">
-                      <strong className="text-gray-900">Up to 1,100% more engagement.</strong> That's the difference between 1 click and 12 clicks for every 100 visitors.
-                    </p>
-                  </div>
-                </div>
+                <p className="text-xs text-gray-500 mt-3">
+                  *BiteReserve is a demand-tracking platform for restaurants that helps you see where your guests actually come from.
+                </p>
               </div>
 
               {/* Customization Section */}
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4 border-2 border-purple-200 shadow-sm mb-4">
                 <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-purple-600" />
-                  Fully Customizable
+                  Additional Premium Features
                 </h3>
                 <div className="grid grid-cols-3 gap-3">
                   <div className="flex flex-col items-center gap-2 bg-white rounded-lg p-3 border border-purple-100 text-center">

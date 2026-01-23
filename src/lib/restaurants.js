@@ -272,6 +272,9 @@ export function formatRestaurantForFrontend(dbRestaurant) {
         website: dbRestaurant.website || null,
         googleMapsUrl: dbRestaurant.google_maps_url || null,
       },
+      // BiteReserve fields
+      countryIsoCode: dbRestaurant.country_iso_code || null,
+      bitereserveCode: dbRestaurant.bitereserve_code || null,
       pricing: {
         priceRangeLabel: dbRestaurant.price_range_label || null,
         priceRange: dbRestaurant.price_range || null,

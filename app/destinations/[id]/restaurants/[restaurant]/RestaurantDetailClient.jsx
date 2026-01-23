@@ -57,8 +57,27 @@ import {
   AnimatedPremiumBadge,
 } from '@/components/restaurant/RestaurantPremiumCTAs';
 import { PromoteRestaurantBanner } from '@/components/restaurant/PromoteRestaurantBanner';
-import { isPremiumRestaurant, getPremiumConfig } from '@/lib/restaurantPremium';
+import { isPremiumRestaurant, getPremiumConfig, COLOR_SCHEMES } from '@/lib/restaurantPremium';
 import RestaurantMatchModal from '@/components/restaurant/RestaurantMatchModal';
+
+/**
+ * Get booking URL for restaurant
+ * Premium restaurants with custom website use that, otherwise use BiteReserve link
+ */
+function getRestaurantBookingUrl(restaurant, premiumSubscription) {
+  // Premium restaurants can have custom website link
+  if (isPremiumRestaurant(premiumSubscription) && restaurant.contact?.website) {
+    return restaurant.contact.website;
+  }
+  
+  // Default: BiteReserve link
+  if (restaurant.countryIsoCode && restaurant.bitereserveCode) {
+    return `https://bitereserve.com/r/${restaurant.countryIsoCode}/${restaurant.bitereserveCode}`;
+  }
+  
+  // Fallback to existing website or booking URL
+  return restaurant.booking?.partnerUrl || restaurant.contact?.website || null;
+}
 
 export default function RestaurantDetailClient({ destination, restaurant, otherRestaurants, initialPromotionScore = null, premiumSubscription = null, categoryGuides = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -70,6 +89,10 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
   const { isBookmarked, toggle } = useRestaurantBookmarks();
   const { toast } = useToast();
   const router = useRouter();
+  
+  // Get booking URL (BiteReserve for all, or custom for premium)
+  const bookingUrl = useMemo(() => getRestaurantBookingUrl(restaurant, premiumSubscription), [restaurant, premiumSubscription]);
+  const isPremium = isPremiumRestaurant(premiumSubscription);
   const [isGeneratingMatch, setIsGeneratingMatch] = useState(false);
   const [matchError, setMatchError] = useState(null);
   const [showMatchResultsModal, setShowMatchResultsModal] = useState(false);
@@ -607,16 +630,40 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                 </Button>
               </div>
 
-              {/* Premium Hero CTA - Full width below action buttons */}
-              {isPremiumRestaurant(premiumSubscription) && (restaurant.contact?.website || restaurant.booking?.partnerUrl) && (
+              {/* Hero CTA - Show for all restaurants with booking URL */}
+              {bookingUrl && (
                 <div className="mt-4 w-full max-w-md mx-auto">
-                  <PremiumHeroCTA 
-                    subscription={premiumSubscription} 
-                    restaurant={restaurant}
-                    user={user}
-                    onAuthRequired={() => setShowSignInModal(true)}
-                    fullWidth
-                  />
+                  {isPremium ? (
+                    <PremiumHeroCTA 
+                      subscription={premiumSubscription} 
+                      restaurant={restaurant}
+                      user={user}
+                      onAuthRequired={() => setShowSignInModal(true)}
+                      fullWidth
+                      bookingUrl={bookingUrl}
+                    />
+                  ) : (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.2 }}
+                      className="w-full"
+                    >
+                      <Button
+                        onClick={() => {
+                          if (!user) {
+                            setShowSignInModal(true);
+                            return;
+                          }
+                          window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+                        }}
+                        className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 py-4 text-lg"
+                      >
+                        <Calendar className="w-5 h-5 mr-2" />
+                        Reserve Your Table
+                      </Button>
+                    </motion.div>
+                  )}
                 </div>
               )}
             </motion.div>
@@ -1068,15 +1115,49 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
               </motion.section>
             )}
 
-            {/* Premium Mid-Page CTA or Promote Banner */}
-            {isPremiumRestaurant(premiumSubscription) ? (
-              (restaurant.contact?.website || restaurant.booking?.partnerUrl) && (
+            {/* Mid-Page CTA - Show for all restaurants with booking URL, or Promote Banner for non-premium without URL */}
+            {bookingUrl ? (
+              isPremium ? (
                 <PremiumMidCTA 
                   subscription={premiumSubscription} 
                   restaurant={restaurant}
                   user={user}
                   onAuthRequired={() => setShowSignInModal(true)}
+                  bookingUrl={bookingUrl}
                 />
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="my-8"
+                >
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border-2 border-blue-200 p-6 md:p-8 shadow-sm">
+                    <div className="text-center">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                        Ready to Reserve?
+                      </h3>
+                      <p className="text-gray-600 mb-4">
+                        Book your table through BiteReserve
+                      </p>
+                      <Button
+                        onClick={() => {
+                          if (!user) {
+                            setShowSignInModal(true);
+                            return;
+                          }
+                          window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+                        }}
+                        className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-8 py-3 shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                      >
+                        <Calendar className="w-5 h-5 mr-2" />
+                        Reserve Your Table
+                        <ExternalLink className="w-4 h-4 ml-2" />
+                      </Button>
+                    </div>
+                  </div>
+                </motion.div>
               )
             ) : (
               <PromoteRestaurantBanner 
@@ -1227,6 +1308,11 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     )}
+                    
+                    {/* Google Places API Attribution */}
+                    <p className="text-xs text-gray-500 mt-4">
+                      Restaurant data powered by Google Places API
+                    </p>
                   </div>
                   
                   {/* Opening Hours with Open Now Status */}
@@ -1697,13 +1783,14 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
           </div>
         </section>
 
-        {/* Premium End CTA - Above Other Restaurants */}
-        {isPremiumRestaurant(premiumSubscription) && (restaurant.contact?.website || restaurant.booking?.partnerUrl) && (
+        {/* End CTA - Above Other Restaurants (only for premium) */}
+        {isPremium && bookingUrl && (
           <PremiumEndCTA 
             subscription={premiumSubscription} 
             restaurant={restaurant}
             user={user}
             onAuthRequired={() => setShowSignInModal(true)}
+            bookingUrl={bookingUrl}
           />
         )}
 
@@ -2066,14 +2153,43 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
 
       </div>
 
-      {/* Sticky Button - Premium or Default */}
-      {isPremiumRestaurant(premiumSubscription) && (restaurant.contact?.website || restaurant.booking?.partnerUrl) ? (
-        <PremiumStickyCTA 
-          subscription={premiumSubscription} 
-          restaurant={restaurant}
-          user={user}
-          onAuthRequired={() => setShowSignInModal(true)}
-        />
+      {/* Sticky Button - Show for all restaurants with booking URL */}
+      {bookingUrl ? (
+        isPremium ? (
+          <PremiumStickyCTA 
+            subscription={premiumSubscription} 
+            restaurant={restaurant}
+            user={user}
+            onAuthRequired={() => setShowSignInModal(true)}
+            bookingUrl={bookingUrl}
+          />
+        ) : showStickyButton && (
+          <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 transition-opacity duration-300">
+            <div className="flex flex-col items-end gap-2">
+              <button
+                onClick={() => setShowStickyButton(false)}
+                className="w-10 h-10 bg-white hover:bg-gray-100 rounded-full flex items-center justify-center shadow-xl border-2 border-gray-300 transition-all duration-200 hover:scale-110"
+                aria-label="Close"
+              >
+                <X className="w-6 h-6 text-gray-900 stroke-2" />
+              </button>
+              <Button
+                onClick={() => {
+                  if (!user) {
+                    setShowSignInModal(true);
+                    return;
+                  }
+                  window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+                }}
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-6 py-4 rounded-full"
+              >
+                <Calendar className="w-5 h-5 mr-2" />
+                Reserve Table
+              </Button>
+            </div>
+          </div>
+        )
       ) : showStickyButton && (
         <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 transition-opacity duration-300">
           <div className="flex flex-col items-end gap-2">
@@ -2268,17 +2384,17 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                 <Heart className={`w-4 h-4 mr-2 ${isBookmarked(restaurant.id) ? 'text-red-600 fill-red-600' : 'text-gray-600'}`} />
                 {isBookmarked(restaurant.id) ? 'Saved to Favorites' : 'Save to Favorites'}
               </Button>
-              {(restaurant.contact?.website || restaurant.booking?.partnerUrl) && (
+              {bookingUrl && (
                 <Button
                   asChild
                   className="sunset-gradient text-white font-semibold px-6 py-3 flex-1"
                 >
                   <a
-                    href={restaurant.booking?.partnerUrl || restaurant.contact?.website}
+                    href={bookingUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {restaurant.booking?.partnerUrl ? 'Reserve a Table' : 'Visit Website'}
+                    Reserve Your Table
                     <ExternalLink className="w-5 h-5 ml-2 inline" />
                   </a>
                 </Button>
