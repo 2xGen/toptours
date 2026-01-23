@@ -84,7 +84,6 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
   const [showStickyButton, setShowStickyButton] = useState(true);
   const [user, setUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
-  const [showSignInModal, setShowSignInModal] = useState(false);
   const supabase = createSupabaseBrowserClient();
   const { isBookmarked, toggle } = useRestaurantBookmarks();
   const { toast } = useToast();
@@ -184,24 +183,6 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
     };
   }, [supabase]);
 
-  // Close sign-in modal when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (showSignInModal && event.target.classList.contains('bg-black/50')) {
-        setShowSignInModal(false);
-      }
-    };
-
-    if (showSignInModal) {
-      document.addEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'hidden';
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'unset';
-    };
-  }, [showSignInModal]);
 
   if (!destination || !restaurant) {
     return null;
@@ -463,52 +444,6 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
         <SmartTourFinder isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       )}
 
-      {/* Sign In Modal */}
-      {showSignInModal && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            className="bg-white rounded-2xl max-w-md w-full shadow-2xl"
-          >
-            <div className="flex items-center justify-between p-6 border-b">
-              <h2 className="text-xl font-bold text-gray-800">Account Required</h2>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowSignInModal(false)}
-                className="text-gray-400 hover:text-gray-600"
-              >
-                <X className="h-5 w-5" />
-              </Button>
-            </div>
-            <div className="p-6">
-              <p className="text-gray-700 mb-6">
-                Sign in to access restaurant reservations and website links. Create a free account to continue.
-              </p>
-              <div className="flex gap-3">
-                <Button
-                  asChild
-                  className="flex-1 sunset-gradient text-white hover:scale-105 transition-transform"
-                >
-                  <Link href="/auth" onClick={() => setShowSignInModal(false)}>
-                    Sign In / Sign Up
-                  </Link>
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => setShowSignInModal(false)}
-                  className="flex-1"
-                >
-                  Cancel
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      )}
-
       <div className="min-h-screen overflow-x-hidden bg-gradient-to-b from-blue-50 via-white to-white">
         {/* Hero Section - Centered text, no image */}
         <section className="relative -mt-12 sm:-mt-16 pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 md:pb-20 overflow-hidden ocean-gradient">
@@ -638,7 +573,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                       subscription={premiumSubscription} 
                       restaurant={restaurant}
                       user={user}
-                      onAuthRequired={() => setShowSignInModal(true)}
+                      onAuthRequired={() => {}}
                       fullWidth
                       bookingUrl={bookingUrl}
                     />
@@ -651,11 +586,9 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                     >
                       <Button
                         onClick={() => {
-                          if (!user) {
-                            setShowSignInModal(true);
-                            return;
+                          if (bookingUrl) {
+                            window.open(bookingUrl, '_blank', 'noopener,noreferrer');
                           }
-                          window.open(bookingUrl, '_blank', 'noopener,noreferrer');
                         }}
                         className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 py-4 text-lg"
                       >
@@ -1122,7 +1055,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                   subscription={premiumSubscription} 
                   restaurant={restaurant}
                   user={user}
-                  onAuthRequired={() => setShowSignInModal(true)}
+                  onAuthRequired={() => {}}
                   bookingUrl={bookingUrl}
                 />
               ) : (
@@ -1143,11 +1076,9 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                       </p>
                       <Button
                         onClick={() => {
-                          if (!user) {
-                            setShowSignInModal(true);
-                            return;
+                          if (bookingUrl) {
+                            window.open(bookingUrl, '_blank', 'noopener,noreferrer');
                           }
-                          window.open(bookingUrl, '_blank', 'noopener,noreferrer');
                         }}
                         className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-8 py-3 shadow-lg hover:shadow-xl transition-all hover:scale-105"
                       >
@@ -1789,7 +1720,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
             subscription={premiumSubscription} 
             restaurant={restaurant}
             user={user}
-            onAuthRequired={() => setShowSignInModal(true)}
+            onAuthRequired={() => {}}
             bookingUrl={bookingUrl}
           />
         )}
@@ -2160,7 +2091,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
             subscription={premiumSubscription} 
             restaurant={restaurant}
             user={user}
-            onAuthRequired={() => setShowSignInModal(true)}
+            onAuthRequired={() => {}}
             bookingUrl={bookingUrl}
           />
         ) : showStickyButton && (
@@ -2175,11 +2106,9 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
               </button>
               <Button
                 onClick={() => {
-                  if (!user) {
-                    setShowSignInModal(true);
-                    return;
+                  if (bookingUrl) {
+                    window.open(bookingUrl, '_blank', 'noopener,noreferrer');
                   }
-                  window.open(bookingUrl, '_blank', 'noopener,noreferrer');
                 }}
                 size="lg"
                 className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-6 py-4 rounded-full"
