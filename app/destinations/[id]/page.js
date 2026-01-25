@@ -88,6 +88,12 @@ export async function generateMetadata({ params }) {
     // If still not found, return not found metadata
     return {
       title: 'Destination Not Found | TopTours.ai',
+      robots: {
+        index: false,
+        follow: false,
+        noindex: true,
+        nofollow: true,
+      },
     };
   }
 

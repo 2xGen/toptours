@@ -17,6 +17,12 @@ export async function generateMetadata({ params }) {
   if (!destination) {
     return {
       title: 'Restaurant Guide Not Found | TopTours.ai',
+      robots: {
+        index: false,
+        follow: false,
+        noindex: true,
+        nofollow: true,
+      },
     };
   }
   
@@ -24,6 +30,10 @@ export async function generateMetadata({ params }) {
   if (!guide) {
     return {
       title: `${category} in ${destination.fullName} | TopTours.ai`,
+      robots: {
+        index: true,
+        follow: true,
+      },
     };
   }
   
@@ -62,6 +72,17 @@ export async function generateMetadata({ params }) {
       title,
       description,
       images: [ogImage],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }

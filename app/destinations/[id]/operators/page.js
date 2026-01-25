@@ -26,63 +26,178 @@ export const revalidate = 604800; // 7 days - increased to reduce ISR writes dur
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
-  const destination = getDestinationById(id);
+  let destination = getDestinationById(id);
 
   if (!destination) {
-    // Try to get from generated content
+    // Try to get from generated content (JSON files)
     const fullContent = getDestinationFullContent(id);
     const seoContent = getDestinationSeoContent(id);
     
-    if (!fullContent && !seoContent) {
+    if (fullContent || seoContent) {
+      const destinationName = fullContent?.destinationName || seoContent?.destinationName || id;
+      const defaultOgImage = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png';
+      const ogImage = seoContent?.ogImage || fullContent?.imageUrl || seoContent?.imageUrl || defaultOgImage;
+      const description = `Discover trusted tour operators in ${destinationName}. Browse operators offering tours and activities with instant booking and free cancellation.`;
+
       return {
-        title: 'Tour Operators | TopTours.ai',
+        title: `Tour Operators in ${destinationName} | TopTours.ai`,
+        description,
+        keywords: `tour operators ${destinationName}, ${destinationName} tour companies, ${destinationName} tour providers`,
+        alternates: {
+          canonical: `https://toptours.ai/destinations/${id}/operators`,
+        },
+        openGraph: {
+          title: `Tour Operators in ${destinationName}`,
+          description,
+          url: `https://toptours.ai/destinations/${id}/operators`,
+          images: [
+            {
+              url: ogImage,
+              width: 1200,
+              height: 630,
+              alt: `Tour Operators in ${destinationName}`,
+            },
+          ],
+          type: 'website',
+          siteName: 'TopTours.ai',
+          locale: 'en_US',
+        },
+        twitter: {
+          card: 'summary_large_image',
+          title: `Tour Operators in ${destinationName}`,
+          description,
+          images: [ogImage],
+        },
+        robots: {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+          },
+        },
       };
     }
-
-    const destinationName = fullContent?.destinationName || seoContent?.destinationName || id;
-    const defaultOgImage = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png';
-    const ogImage = seoContent?.ogImage || fullContent?.imageUrl || seoContent?.imageUrl || defaultOgImage;
-    const description = `Discover trusted tour operators in ${destinationName}. Browse operators offering tours and activities with instant booking and free cancellation.`;
-
-    return {
-      title: `Tour Operators in ${destinationName} | TopTours.ai`,
-      description,
-      keywords: `tour operators ${destinationName}, ${destinationName} tour companies, ${destinationName} tour providers`,
-      alternates: {
-        canonical: `https://toptours.ai/destinations/${id}/operators`,
-      },
-      openGraph: {
-        title: `Tour Operators in ${destinationName}`,
-        description,
-        url: `https://toptours.ai/destinations/${id}/operators`,
-        images: [
-          {
-            url: ogImage,
-            width: 1200,
-            height: 630,
-            alt: `Tour Operators in ${destinationName}`,
+    
+    // Try database lookups (for 3,382+ destinations not in static/JSON files)
+    // Check if id is a Viator destination ID (numeric or starts with 'd')
+    if (/^d?\d+$/.test(id)) {
+      const viatorDestinationId = id.startsWith('d') ? id.replace(/^d/i, '') : id;
+      try {
+        const destInfo = await getViatorDestinationById(viatorDestinationId);
+        if (destInfo && destInfo.name) {
+          const defaultOgImage = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png';
+          const description = `Discover trusted tour operators in ${destInfo.name}. Browse operators offering tours and activities with instant booking and free cancellation.`;
+          
+          return {
+            title: `Tour Operators in ${destInfo.name} | TopTours.ai`,
+            description,
+            keywords: `tour operators ${destInfo.name}, ${destInfo.name} tour companies, ${destInfo.name} tour providers`,
+            alternates: {
+              canonical: `https://toptours.ai/destinations/${id}/operators`,
+            },
+            openGraph: {
+              title: `Tour Operators in ${destInfo.name}`,
+              description,
+              url: `https://toptours.ai/destinations/${id}/operators`,
+              images: [
+                {
+                  url: defaultOgImage,
+                  width: 1200,
+                  height: 630,
+                  alt: `Tour Operators in ${destInfo.name}`,
+                },
+              ],
+              type: 'website',
+              siteName: 'TopTours.ai',
+              locale: 'en_US',
+            },
+            twitter: {
+              card: 'summary_large_image',
+              title: `Tour Operators in ${destInfo.name}`,
+              description,
+              images: [defaultOgImage],
+            },
+            robots: {
+              index: true,
+              follow: true,
+              googleBot: {
+                index: true,
+                follow: true,
+                'max-video-preview': -1,
+                'max-image-preview': 'large',
+                'max-snippet': -1,
+              },
+            },
+          };
+        }
+      } catch (error) {
+        // Continue with fallback
+      }
+    }
+    
+    // Try slug lookup using database (same as destination page)
+    try {
+      const destInfo = await getViatorDestinationBySlug(id);
+      if (destInfo && destInfo.name) {
+        const defaultOgImage = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png';
+        const description = `Discover trusted tour operators in ${destInfo.name}. Browse operators offering tours and activities with instant booking and free cancellation.`;
+        
+        return {
+          title: `Tour Operators in ${destInfo.name} | TopTours.ai`,
+          description,
+          keywords: `tour operators ${destInfo.name}, ${destInfo.name} tour companies, ${destInfo.name} tour providers`,
+          alternates: {
+            canonical: `https://toptours.ai/destinations/${id}/operators`,
           },
-        ],
-        type: 'website',
-        siteName: 'TopTours.ai',
-        locale: 'en_US',
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: `Tour Operators in ${destinationName}`,
-        description,
-        images: [ogImage],
-      },
+          openGraph: {
+            title: `Tour Operators in ${destInfo.name}`,
+            description,
+            url: `https://toptours.ai/destinations/${id}/operators`,
+            images: [
+              {
+                url: defaultOgImage,
+                width: 1200,
+                height: 630,
+                alt: `Tour Operators in ${destInfo.name}`,
+              },
+            ],
+            type: 'website',
+            siteName: 'TopTours.ai',
+            locale: 'en_US',
+          },
+          twitter: {
+            card: 'summary_large_image',
+            title: `Tour Operators in ${destInfo.name}`,
+            description,
+            images: [defaultOgImage],
+          },
+          robots: {
+            index: true,
+            follow: true,
+            googleBot: {
+              index: true,
+              follow: true,
+              'max-video-preview': -1,
+              'max-image-preview': 'large',
+              'max-snippet': -1,
+            },
+          },
+        };
+      }
+    } catch (error) {
+      // Continue
+    }
+    
+    // If all lookups fail, return generic metadata (but still indexable)
+    return {
+      title: 'Tour Operators | TopTours.ai',
       robots: {
         index: true,
         follow: true,
-        googleBot: {
-          index: true,
-          follow: true,
-          'max-video-preview': -1,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
-        },
       },
     };
   }

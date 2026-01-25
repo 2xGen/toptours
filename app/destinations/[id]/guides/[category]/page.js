@@ -205,7 +205,7 @@ export async function generateMetadata({ params }) {
     let guideData = await getGuideFromDatabase(destinationId, categorySlug);
     let destination = destinations.find(d => d.id === destinationId);
     
-    // If not in destinationsData.js, check generated content
+    // If not in destinationsData.js, check generated content (JSON files)
     if (!destination) {
       try {
         const fullContent = getDestinationFullContent(destinationId);
@@ -222,9 +222,47 @@ export async function generateMetadata({ params }) {
       }
     }
     
-    // All guides are now in the database - no hardcoded fallback
+    // Try database lookups (for 3,382+ destinations not in static/JSON files)
+    if (!destination) {
+      // Check if id is a Viator destination ID (numeric or starts with 'd')
+      if (/^d?\d+$/.test(destinationId)) {
+        const viatorDestinationId = destinationId.startsWith('d') ? destinationId.replace(/^d/i, '') : destinationId;
+        try {
+          const { getViatorDestinationById } = await import('@/lib/supabaseCache');
+          const destInfo = await getViatorDestinationById(viatorDestinationId);
+          if (destInfo && destInfo.name) {
+            destination = {
+              id: destinationId,
+              name: destInfo.name,
+              fullName: destInfo.name,
+              imageUrl: null,
+            };
+          }
+        } catch (error) {
+          // Continue with fallback
+        }
+      }
+      
+      // Try slug lookup using database (same as destination page)
+      if (!destination) {
+        try {
+          const { getViatorDestinationBySlug } = await import('@/lib/supabaseCache');
+          const destInfo = await getViatorDestinationBySlug(destinationId);
+          if (destInfo && destInfo.name) {
+            destination = {
+              id: destinationId,
+              name: destInfo.name,
+              fullName: destInfo.name,
+              imageUrl: null,
+            };
+          }
+        } catch (error) {
+          // Continue
+        }
+      }
+    }
     
-    // If we have guide data but no destination, create minimal destination
+    // If we have guide data but no destination, create minimal destination (last resort)
     if (guideData && !destination) {
       const destinationName = destinationId.charAt(0).toUpperCase() + destinationId.slice(1).replace(/-/g, ' ');
       destination = {
@@ -238,6 +276,12 @@ export async function generateMetadata({ params }) {
     if (!destination || !guideData) {
       return {
         title: 'Guide Not Found',
+        robots: {
+          index: false,
+          follow: false,
+          noindex: true,
+          nofollow: true,
+        },
       };
     }
 
@@ -291,6 +335,12 @@ export async function generateMetadata({ params }) {
     console.error('Error in generateMetadata:', error);
     return {
       title: 'Guide Not Found',
+      robots: {
+        index: false,
+        follow: false,
+        noindex: true,
+        nofollow: true,
+      },
     };
   }
 }

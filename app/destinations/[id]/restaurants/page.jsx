@@ -33,6 +33,10 @@ export async function generateMetadata({ params }) {
   if (!destination) {
     return {
       title: 'Best Restaurants | TopTours.ai',
+      robots: {
+        index: true,
+        follow: true,
+      },
     };
   }
 

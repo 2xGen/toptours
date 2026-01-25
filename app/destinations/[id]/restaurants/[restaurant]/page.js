@@ -78,6 +78,12 @@ export async function generateMetadata({ params }) {
   if (!destination || !restaurant) {
     return {
       title: 'Restaurant Not Found',
+      robots: {
+        index: false,
+        follow: false,
+        noindex: true,
+        nofollow: true,
+      },
     };
   }
 

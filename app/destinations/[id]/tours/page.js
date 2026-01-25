@@ -8,7 +8,7 @@ import { getPromotedToursByDestination, getPromotedRestaurantsByDestination } fr
 import { getPremiumOperatorTourIdsForDestination } from '@/lib/tourOperatorPremiumServer';
 import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { getRestaurantCountsByDestination, getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
-import { getDestinationNameById, findDestinationBySlug } from '@/lib/viatorCache';
+import { getDestinationNameById } from '@/lib/viatorCache';
 import { getViatorDestinationById, getViatorDestinationBySlug } from '@/lib/supabaseCache';
 import { redirect } from 'next/navigation';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
@@ -134,22 +134,74 @@ export async function generateMetadata({ params }) {
       };
     } else {
       // Check if id is a Viator destination ID (numeric or starts with 'd')
-      const viatorId = id.startsWith('d') ? id : `d${id}`;
-      const destinationInfo = await getDestinationNameById(viatorId);
+      if (/^d?\d+$/.test(id)) {
+        // It's a numeric ID - try Supabase lookup first (same as page component)
+        const viatorDestinationId = id.startsWith('d') ? id.replace(/^d/i, '') : id;
+        try {
+          const destInfo = await getViatorDestinationById(viatorDestinationId);
+          if (destInfo && destInfo.name) {
+            const slug = destInfo.slug || generateSlug(destInfo.name);
+            // Don't redirect in metadata - just use the info we have
+            destination = {
+              id: id,
+              name: destInfo.name,
+              fullName: destInfo.name,
+              imageUrl: 'https://toptours.ai/favicon.ico',
+              seo: {
+                description: `Discover the best tours and activities in ${destInfo.name}. Browse trusted operators and secure instant confirmations.`,
+              },
+              briefDescription: `Explore ${destInfo.name} with curated tours and activities.`,
+              tourCategories: [],
+            };
+          }
+        } catch (error) {
+          // Continue with fallback
+        }
+      }
       
-      if (destinationInfo && destinationInfo.destinationName) {
-        // Create a minimal destination object for metadata
-        destination = {
-          id: id,
-          name: destinationInfo.destinationName,
-          fullName: destinationInfo.destinationName,
-          imageUrl: 'https://toptours.ai/favicon.ico',
-          seo: {
-            description: `Discover the best tours and activities in ${destinationInfo.destinationName}. Browse trusted operators and secure instant confirmations.`,
-          },
-          briefDescription: `Explore ${destinationInfo.destinationName} with curated tours and activities.`,
-          tourCategories: [],
-        };
+      // Try slug lookup using database (same as page component line 458)
+      if (!destination) {
+        try {
+          const destInfo = await getViatorDestinationBySlug(id);
+          if (destInfo && destInfo.name) {
+            destination = {
+              id: id,
+              name: destInfo.name,
+              fullName: destInfo.name,
+              destinationId: destInfo.id, // Use id from database (Viator destination ID)
+              imageUrl: 'https://toptours.ai/favicon.ico',
+              seo: {
+                description: `Discover the best tours and activities in ${destInfo.name}. Browse trusted operators and secure instant confirmations.`,
+              },
+              briefDescription: `Explore ${destInfo.name} with curated tours and activities.`,
+              tourCategories: [],
+            };
+          }
+        } catch (error) {
+          // Continue with fallback
+        }
+      }
+      
+      // Final fallback: JSON file lookup (same as page component line 267)
+      if (!destination) {
+        const viatorId = id.startsWith('d') ? id : `d${id}`;
+        const destinationInfo = await getDestinationNameById(viatorId);
+        
+        if (destinationInfo && destinationInfo.destinationName) {
+          // Create a minimal destination object for metadata
+          destination = {
+            id: id,
+            name: destinationInfo.destinationName,
+            fullName: destinationInfo.destinationName,
+            destinationId: destinationInfo.destinationId,
+            imageUrl: 'https://toptours.ai/favicon.ico',
+            seo: {
+              description: `Discover the best tours and activities in ${destinationInfo.destinationName}. Browse trusted operators and secure instant confirmations.`,
+            },
+            briefDescription: `Explore ${destinationInfo.destinationName} with curated tours and activities.`,
+            tourCategories: [],
+          };
+        }
       }
     }
   }
@@ -157,6 +209,12 @@ export async function generateMetadata({ params }) {
   if (!destination) {
     return {
       title: 'Tours Not Found | TopTours.ai',
+      robots: {
+        index: false,
+        follow: false,
+        noindex: true,
+        nofollow: true,
+      },
     };
   }
 
