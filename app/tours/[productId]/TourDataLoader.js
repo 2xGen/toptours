@@ -74,17 +74,10 @@ export async function loadTourData(productId, tour) {
   let operatorPremiumData = operatorPremiumDataResult.status === 'fulfilled' ? operatorPremiumDataResult.value : null;
   const reviews = reviewsResult.status === 'fulfilled' ? reviewsResult.value : null;
 
-  // Generate enrichment if not found
-  if (!tourEnrichment || !tourEnrichment.ai_summary) {
-    try {
-      const generated = await generateTourEnrichment(productId, tour);
-      if (!generated.error) {
-        tourEnrichment = generated.data;
-      }
-    } catch (error) {
-      // Silently continue - enrichment is optional
-    }
-  }
+  // OPTIMIZED: Don't auto-generate enrichment on every page load (expensive AI calls)
+  // Enrichment is only generated when user explicitly clicks "Generate Insight" button
+  // This prevents expensive AI API calls during crawls
+  // tourEnrichment will be null if not cached, which is fine - the UI handles it gracefully
 
   // Fetch operator tours and stats if premium data exists
   let operatorTours = [];

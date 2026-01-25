@@ -18,7 +18,7 @@ export async function generateMetadata() {
         {
           url: 'https://toptours.ai/OG%20Images/Discover%20top%20tours%20across%203500%20destinations.jpg',
           width: 1200,
-          height: 675,
+          height: 630,
           alt: 'Best Tours & Activities by Destination',
         },
       ],

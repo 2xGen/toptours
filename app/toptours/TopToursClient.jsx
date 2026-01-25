@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Trophy, TrendingUp, Calendar, Globe, ArrowLeft, ArrowRight, Star, Clock, Zap, User, ChevronLeft, ChevronRight, Flame, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -266,15 +267,14 @@ export default function TopToursClient({ initialTours = [], initialRestaurants =
                           <CardContent className="p-4">
                             <div className="flex flex-col sm:flex-row items-start gap-4">
                               {/* Thumbnail */}
-                              <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden">
+                              <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden relative">
                                 {image ? (
-                                  <img
+                                  <Image
                                     src={image}
                                     alt={title}
-                                    className="w-full h-full object-cover"
-                                    onError={(e) => {
-                                      e.target.src = "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800";
-                                    }}
+                                    fill
+                                    sizes="80px"
+                                    className="object-cover"
                                   />
                                 ) : (
                                   <div className="w-full h-full bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
@@ -639,15 +639,14 @@ export default function TopToursClient({ initialTours = [], initialRestaurants =
                             </div>
 
                             {/* Image */}
-                            <div className="flex-shrink-0 w-full md:w-48 h-48 md:h-auto">
+                            <div className="flex-shrink-0 w-full md:w-48 h-48 md:h-auto relative">
                               {image ? (
-                                <img
+                                <Image
                                   src={image}
                                   alt={name}
-                                  className="w-full h-full object-cover"
-                                  onError={(e) => {
-                                    e.target.src = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4";
-                                  }}
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, 192px"
+                                  className="object-cover"
                                 />
                               ) : (
                                 <div className="w-full h-full bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
@@ -781,15 +780,14 @@ export default function TopToursClient({ initialTours = [], initialRestaurants =
                         </div>
 
                         {/* Image */}
-                        <div className="flex-shrink-0 w-full md:w-48 h-48 md:h-auto">
+                        <div className="flex-shrink-0 w-full md:w-48 h-48 md:h-auto relative">
                           {image ? (
-                            <img
+                            <Image
                               src={image}
                               alt={title}
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                e.target.src = "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800";
-                              }}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 192px"
+                              className="object-cover"
                             />
                           ) : (
                             <div className="w-full h-full bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">

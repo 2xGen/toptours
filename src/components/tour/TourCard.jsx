@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { 
   Star, Clock, ArrowRight, Heart, Crown, Sparkles
@@ -37,7 +38,7 @@ const formatDurationLabel = (minutes) => {
   return `${hours}h ${mins}m`;
 };
 
-export default function TourCard({ 
+function TourCard({ 
   tour, 
   isFeatured = false, 
   destination, 
@@ -48,7 +49,8 @@ export default function TourCard({
   user = null, 
   userPreferences = null, 
   onOpenPreferences = null, 
-  isPromoted = false 
+  isPromoted = false,
+  priority = false // OPTIMIZED: Allow priority loading for above-fold images
 }) {
   const router = useRouter();
   const { toast } = useToast();
@@ -107,10 +109,15 @@ export default function TourCard({
         <Link href={tourUrl} prefetch={true}>
           <div className="relative h-48 overflow-hidden">
             {image && (
-              <img
+              <Image
                 src={image}
                 alt={title}
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover transition-transform duration-300 hover:scale-105"
+                priority={priority}
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
               />
             )}
             {isFeatured && !isPromoted && (
@@ -314,4 +321,20 @@ export default function TourCard({
     </motion.div>
   );
 }
+
+// OPTIMIZED: Memoize TourCard to prevent unnecessary re-renders when parent re-renders
+// Only re-renders when props actually change
+export default memo(TourCard, (prevProps, nextProps) => {
+  // Custom comparison function for better performance
+  // Only re-render if these key props change
+  return (
+    prevProps.tour?.productId === nextProps.tour?.productId &&
+    prevProps.tour?.productCode === nextProps.tour?.productCode &&
+    prevProps.isFeatured === nextProps.isFeatured &&
+    prevProps.isPromoted === nextProps.isPromoted &&
+    prevProps.matchScore?.score === nextProps.matchScore?.score &&
+    prevProps.user?.id === nextProps.user?.id &&
+    JSON.stringify(prevProps.premiumOperatorTourIds) === JSON.stringify(nextProps.premiumOperatorTourIds)
+  );
+});
 

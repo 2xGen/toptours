@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { ArrowRight, Camera } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -38,10 +39,14 @@ const TravelTips = () => {
             >
               <Card className="bg-white border-0 shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="relative h-48 overflow-hidden">
-                  <img 
-                    className="w-full h-full object-cover" 
+                  <Image 
+                    src="https://images.unsplash.com/photo-1595872018818-97555653a011"
                     alt={tip.image}
-                   src="https://images.unsplash.com/photo-1595872018818-97555653a011" />
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover"
+                    loading="lazy"
+                  />
                 </div>
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-3">

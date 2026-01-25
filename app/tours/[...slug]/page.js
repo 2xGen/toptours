@@ -124,6 +124,74 @@ export async function generateMetadata({ params }) {
     
     const title = buildEnhancedTitle(tour, { destinationName }, enrichment);
     const description = buildEnhancedMetaDescription(tour, { destinationName }, enrichment);
+    
+    // OPTIMIZED: Generate unique, dynamic keywords per tour (not one-size-fits-all)
+    // Based on tour title, destination, operator name, category, and activity type for better SEO
+    const generateUniqueKeywords = () => {
+      const keywords = new Set();
+      const tourTitle = tour.title || '';
+      const destination = destinationName || '';
+      
+      // Extract operator/supplier name (same logic as buildEnhancedTitle)
+      const operatorName = tour.supplier?.name || tour.supplierName || tour.operator?.name || tour.vendor?.name || tour.partner?.name || '';
+      
+      // Extract key terms from tour title (remove common words)
+      const titleWords = tourTitle
+        .toLowerCase()
+        .split(/\s+/)
+        .filter(word => word.length > 3 && !['tour', 'tours', 'from', 'with', 'the', 'and', 'for'].includes(word))
+        .slice(0, 3); // Top 3 meaningful words
+      
+      titleWords.forEach(word => keywords.add(word));
+      
+      // Add operator name keywords (for brand searches)
+      if (operatorName) {
+        const cleanOperatorName = operatorName.toLowerCase().trim();
+        keywords.add(cleanOperatorName);
+        if (destination) {
+          keywords.add(`${cleanOperatorName} ${destination}`);
+          keywords.add(`${destination} ${cleanOperatorName} tours`);
+        }
+        keywords.add(`${cleanOperatorName} tours`);
+      }
+      
+      // Add destination-specific long-tail keywords
+      if (destination) {
+        keywords.add(`${destination} tours`);
+        keywords.add(`book ${tourTitle.toLowerCase()} ${destination}`);
+        keywords.add(`${destination} activities`);
+        keywords.add(`things to do ${destination}`);
+      }
+      
+      // Extract category/type from title (common tour types)
+      const tourTypes = ['sunset', 'cruise', 'snorkel', 'dive', 'atv', 'hiking', 'walking', 'food', 'culinary', 'cultural', 'adventure', 'sightseeing', 'day trip', 'half day', 'full day'];
+      tourTypes.forEach(type => {
+        if (tourTitle.toLowerCase().includes(type)) {
+          keywords.add(`${type} tour`);
+          if (destination) {
+            keywords.add(`${destination} ${type} tours`);
+          }
+        }
+      });
+      
+      // Add booking-related long-tail keywords
+      keywords.add('book tour online');
+      keywords.add('tour booking');
+      if (destination) {
+        keywords.add(`best tours ${destination}`);
+      }
+      
+      // Add review/rating keywords if available
+      if (tour.reviews?.combinedAverageRating) {
+        keywords.add('rated tour');
+        keywords.add('top rated experience');
+      }
+      
+      return Array.from(keywords).slice(0, 15).join(', '); // Limit to 15 keywords
+    };
+    
+    const uniqueKeywords = generateUniqueKeywords();
+    
     const image = tour.images?.[0]?.variants?.[3]?.url || tour.images?.[0]?.variants?.[0]?.url || '';
     const tourSlug = generateTourSlug(tour.title);
     const canonicalUrl = tourSlug ? `https://toptours.ai/tours/${productId}/${tourSlug}` : `https://toptours.ai/tours/${productId}`;
@@ -131,14 +199,21 @@ export async function generateMetadata({ params }) {
     return {
       title,
       description,
+      keywords: uniqueKeywords, // Unique keywords per tour based on actual tour data
       alternates: { canonical: canonicalUrl },
       openGraph: {
         title,
         description,
-        images: image ? [image] : [],
+        images: image ? [{
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: title,
+        }] : [],
         type: 'website',
         url: canonicalUrl,
         siteName: 'TopTours.ai',
+        locale: 'en_US',
       },
       twitter: {
         card: 'summary_large_image',
@@ -257,7 +332,38 @@ export default async function TourDetailPage({ params }) {
               '@type': 'AggregateRating',
         ratingValue: tour.reviews.combinedAverageRating,
         reviewCount: tour.reviews.totalReviews,
+        bestRating: '5',
+        worstRating: '1',
       } : undefined,
+    } : null;
+
+    // Review Schema for SEO - aggregated rating/review count only (not individual review content)
+    // This helps with rich snippets while respecting Viator's no-index requirement for review content
+    const reviewJsonLd = hasRating ? {
+      '@context': 'https://schema.org',
+      '@type': 'Review',
+      itemReviewed: {
+        '@type': 'Product',
+        name: tour.title,
+        sku: productId
+      },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: tour.reviews.combinedAverageRating,
+        bestRating: '5',
+        worstRating: '1'
+      },
+      author: {
+        '@type': 'Organization',
+        name: 'TopTours.ai'
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: tour.reviews.combinedAverageRating,
+        reviewCount: tour.reviews.totalReviews,
+        bestRating: '5',
+        worstRating: '1'
+      }
     } : null;
 
     const breadcrumbJsonLd = {
@@ -275,8 +381,50 @@ export default async function TourDetailPage({ params }) {
     return (
       <>
         {productJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />}
+        {/* Review Schema for SEO - aggregated rating/review count only (not individual review content) */}
+        {reviewJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd) }} />}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
         {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+        {/* HowTo Schema for AI Optimization - shows booking process */}
+        {hasOffers && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                "name": `How to Book ${tour.title}`,
+                "description": `Learn how to book ${tour.title} on TopTours.ai`,
+                "step": [
+                  {
+                    "@type": "HowToStep",
+                    "name": "Search for Tours",
+                    "text": "Visit TopTours.ai and search for tours in your destination",
+                    "url": "https://toptours.ai/tours"
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Select Your Tour",
+                    "text": `Choose "${tour.title}" from the search results`,
+                    "url": canonicalUrl
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Review Tour Details",
+                    "text": "Review the tour description, pricing, and reviews",
+                    "url": canonicalUrl
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Book Your Tour",
+                    "text": "Click the booking button to complete your reservation",
+                    "url": canonicalUrl
+                  }
+                ]
+              })
+            }}
+          />
+        )}
         
         <TourDetailClient
           tour={tour}

@@ -20,6 +20,7 @@ function generateSlug(name) {
 
 export default async function sitemap() {
   const baseUrl = 'https://toptours.ai';
+  // OPTIMIZED: Use actual date for better SEO - search engines prefer real lastModified dates
   const currentDate = new Date().toISOString();
 
   // Static pages
@@ -92,13 +93,13 @@ export default async function sitemap() {
     },
   ];
 
-  // Destination pages
+  // OPTIMIZED: Destination pages - high priority for SEO (these are key landing pages)
   const destinations = getAllDestinations();
   const destinationPages = destinations.map((destination) => ({
     url: `${baseUrl}/destinations/${destination.id}`,
     lastModified: currentDate,
-    changeFrequency: 'weekly',
-    priority: 0.8,
+    changeFrequency: 'weekly', // Destinations update weekly with new tours/restaurants
+    priority: 0.9, // Increased from 0.8 - destinations are high-value SEO pages
   }));
 
   // Add destinations with full content (but not in curated destinations list)
@@ -137,12 +138,12 @@ export default async function sitemap() {
       priority: 0.75,
     }));
 
-  // Destination tour listing pages
+  // OPTIMIZED: Destination tour listing pages - high priority for SEO
   const tourListingPages = destinations.map((destination) => ({
     url: `${baseUrl}/destinations/${destination.id}/tours`,
     lastModified: currentDate,
-    changeFrequency: 'weekly',
-    priority: 0.78,
+    changeFrequency: 'daily', // Tour listings change daily with new tours
+    priority: 0.85, // Increased from 0.78 - tour listing pages are high-value for SEO
   }));
 
   // Destination operator listing pages
@@ -180,19 +181,20 @@ export default async function sitemap() {
     from += pageSize;
   }
 
+  // OPTIMIZED: Restaurant detail pages - use actual updated_at dates for better SEO
   const restaurantDetailPages = allRestaurants.map((restaurant) => ({
     url: `${baseUrl}/destinations/${restaurant.destination_id}/restaurants/${restaurant.slug}`,
-    lastModified: restaurant.updated_at || currentDate,
-    changeFrequency: 'monthly',
-    priority: 0.7,
+    lastModified: restaurant.updated_at || currentDate, // Use actual update date for better SEO
+    changeFrequency: 'monthly', // Restaurant details change monthly
+    priority: 0.75, // Increased from 0.7 - individual restaurant pages are valuable for SEO
   }));
 
-  // Travel guide pages
+  // OPTIMIZED: Travel guide pages - high priority for SEO (content marketing)
   const travelGuidePages = travelGuides.map((guide) => ({
     url: `${baseUrl}/travel-guides/${guide.id}`,
-    lastModified: guide.publishDate || currentDate,
-    changeFrequency: 'monthly',
-    priority: 0.8,
+    lastModified: guide.publishDate || guide.updatedAt || currentDate, // Use actual dates
+    changeFrequency: 'monthly', // Travel guides update monthly
+    priority: 0.85, // Increased from 0.8 - travel guides are high-value SEO content
   }));
 
   // Baby equipment rental pages (fetch from database)

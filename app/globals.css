@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* OPTIMIZED: Removed duplicate font import - using next/font/google in layout.js instead */
+/* Fonts are now loaded via Next.js font optimization for better performance */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

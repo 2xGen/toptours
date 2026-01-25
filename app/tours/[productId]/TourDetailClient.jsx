@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import confetti from 'canvas-confetti';
@@ -38,11 +38,13 @@ import { getRestaurantsForDestination } from '../../destinations/[id]/restaurant
 import { toast } from '@/components/ui/use-toast';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
-import ShareModal from '@/components/sharing/ShareModal';
-import { PromoteTourOperatorBanner } from '@/components/tour/PromoteTourOperatorBanner';
-import ReviewSnippets from '@/components/tours/ReviewSnippets';
-import PriceCalculator from '@/components/tours/PriceCalculator';
 import SimilarToursListWrapper from './SimilarToursListWrapper';
+
+// OPTIMIZED: Lazy load heavy components for better initial page load
+const ShareModal = lazy(() => import('@/components/sharing/ShareModal'));
+const PromoteTourOperatorBanner = lazy(() => import('@/components/tour/PromoteTourOperatorBanner').then(m => ({ default: m.PromoteTourOperatorBanner })));
+const ReviewSnippets = lazy(() => import('@/components/tours/ReviewSnippets'));
+const PriceCalculator = lazy(() => import('@/components/tours/PriceCalculator'));
 import { 
   calculateTourProfile, 
   getUserPreferenceScores, 
@@ -624,14 +626,9 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   const clientDestinationLookupId = clientDestinationLookup?.id || null;
   const hasClientDestinationLookup = !!clientDestinationLookup;
 
+  // OPTIMIZED: Only fetch destination name if server didn't provide it
   useEffect(() => {
-    if (!supabase || !normalizedPrimaryDestinationId) {
-      if (!effectiveDestinationData?.destinationName && hasClientDestinationLookup) {
-        setClientDestinationLookup(null);
-      }
-      return;
-    }
-
+    // Skip if server already provided destinationData
     if (effectiveDestinationData?.destinationName) {
       if (hasClientDestinationLookup) {
         setClientDestinationLookup(null);
@@ -639,6 +636,14 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       return;
     }
 
+    if (!supabase || !normalizedPrimaryDestinationId) {
+      if (hasClientDestinationLookup) {
+        setClientDestinationLookup(null);
+      }
+      return;
+    }
+
+    // Skip if we already have the lookup for this ID
     if (clientDestinationLookupId === normalizedPrimaryDestinationId) {
       return;
     }
@@ -822,7 +827,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
 
   // Debug logging removed for production - enable in development if needed
 
-  // Fetch user and preferences for matching
+  // OPTIMIZED: Fetch user and preferences for matching (only if needed)
   useEffect(() => {
     const fetchUserPreferences = async () => {
       try {
@@ -830,7 +835,28 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         setUser(authUser);
         
         if (authUser) {
-          // Fetch user preferences
+          // OPTIMIZED: Check localStorage cache first (5-minute TTL)
+          if (typeof window !== 'undefined') {
+            try {
+              const cacheKey = `user_prefs_${authUser.id}`;
+              const cached = localStorage.getItem(cacheKey);
+              if (cached) {
+                const { data: cachedData, timestamp } = JSON.parse(cached);
+                const cacheAge = Date.now() - timestamp;
+                const cacheTTL = 5 * 60 * 1000; // 5 minutes
+                
+                if (cacheAge < cacheTTL && cachedData) {
+                  setUserPreferences(cachedData);
+                  setLoadingProfile(false);
+                  return; // Use cached data
+                }
+              }
+            } catch (e) {
+              // Ignore cache errors, continue with fetch
+            }
+          }
+
+          // Fetch user preferences from database
           const { data: profile, error } = await supabase
             .from('profiles')
             .select('trip_preferences')
@@ -839,10 +865,25 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
           
           if (!error && profile?.trip_preferences) {
             setUserPreferences(profile.trip_preferences);
+            // Cache in localStorage
+            if (typeof window !== 'undefined') {
+              try {
+                const cacheKey = `user_prefs_${authUser.id}`;
+                localStorage.setItem(cacheKey, JSON.stringify({
+                  data: profile.trip_preferences,
+                  timestamp: Date.now()
+                }));
+              } catch (e) {
+                // Ignore localStorage errors
+              }
+            }
           }
         }
       } catch (error) {
-        console.error('Error fetching user preferences:', error);
+        // Only log errors in development
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Error fetching user preferences:', error);
+        }
       } finally {
         setLoadingProfile(false);
       }
@@ -2220,13 +2261,15 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
 
               {/* Price Calculator - Below About This Tour (Mobile only) */}
               <div className="lg:hidden">
-                <PriceCalculator 
-                  tour={tour} 
-                  viatorBookingUrl={viatorUrl} 
-                  pricing={pricing}
-                  travelers={sharedTravelers}
-                  setTravelers={setSharedTravelers}
-                />
+                <Suspense fallback={<div className="min-h-[200px] flex items-center justify-center"><div className="spinner"></div></div>}>
+                  <PriceCalculator 
+                    tour={tour} 
+                    viatorBookingUrl={viatorUrl} 
+                    pricing={pricing}
+                    travelers={sharedTravelers}
+                    setTravelers={setSharedTravelers}
+                  />
+                </Suspense>
               </div>
 
               {/* Image Gallery */}
@@ -2331,13 +2374,15 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.12 }}
               >
-                <PriceCalculator 
-                  tour={tour} 
-                  viatorBookingUrl={viatorUrl} 
-                  pricing={pricing}
-                  travelers={sharedTravelers}
-                  setTravelers={setSharedTravelers}
-                />
+                <Suspense fallback={<div className="min-h-[200px] flex items-center justify-center"><div className="spinner"></div></div>}>
+                  <PriceCalculator 
+                    tour={tour} 
+                    viatorBookingUrl={viatorUrl} 
+                    pricing={pricing}
+                    travelers={sharedTravelers}
+                    setTravelers={setSharedTravelers}
+                  />
+                </Suspense>
               </motion.section>
 
               {/* Insider Tips */}
@@ -2816,10 +2861,12 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
 
               {/* Promote Tour Operator Banner - Only show if not premium */}
               {!operatorPremiumData && (
-                <PromoteTourOperatorBanner 
-                  tour={tour} 
-                  destination={destination}
-                />
+                <Suspense fallback={null}>
+                  <PromoteTourOperatorBanner 
+                    tour={tour} 
+                    destination={destination}
+                  />
+                </Suspense>
               )}
 
               {/* Rating Breakdown (Before Reviews) */}
@@ -2983,13 +3030,15 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
             <aside className="w-full lg:w-auto lg:flex-1 lg:max-w-sm lg:min-w-[320px] lg:sticky lg:top-24 lg:self-start lg:z-10 lg:h-fit">
               <div className="space-y-6">
                 {/* Price Calculator - Replaces Booking Card */}
-                <PriceCalculator 
-                  tour={tour} 
-                  viatorBookingUrl={viatorUrl} 
-                  pricing={pricing}
-                  travelers={sharedTravelers}
-                  setTravelers={setSharedTravelers}
-                />
+                <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="spinner"></div></div>}>
+                  <PriceCalculator 
+                    tour={tour} 
+                    viatorBookingUrl={viatorUrl} 
+                    pricing={pricing}
+                    travelers={sharedTravelers}
+                    setTravelers={setSharedTravelers}
+                  />
+                </Suspense>
 
                 {/* Other Tours from This Operator */}
                 {operatorPremiumData && operatorTours && operatorTours.length > 0 && (
@@ -4068,12 +4117,17 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
 
       <FooterNext />
       
-      <ShareModal
-        isOpen={showShareModal}
-        onClose={() => setShowShareModal(false)}
-        title={tour?.title || 'this tour'}
-        url={typeof window !== 'undefined' ? window.location.href : ''}
-      />
+      {/* OPTIMIZED: Lazy load ShareModal - only loads when opened */}
+      {showShareModal && (
+        <Suspense fallback={null}>
+          <ShareModal
+            isOpen={showShareModal}
+            onClose={() => setShowShareModal(false)}
+            title={tour?.title || 'this tour'}
+            url={typeof window !== 'undefined' ? window.location.href : ''}
+          />
+        </Suspense>
+      )}
 
       {/* Match to Your Style Modal (same UX as /tours listing page) */}
       {showPreferencesModal && (

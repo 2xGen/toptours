@@ -64,8 +64,10 @@ const FooterNext = () => {
             <span className="font-semibold text-lg mb-4 block">Quick Links</span>
             <ul className="space-y-2">
               <li><Link href="/" className="text-gray-300 hover:text-white transition-colors">Home</Link></li>
-              <li><Link href="/how-it-works" className="text-gray-300 hover:text-white transition-colors">How It Works</Link></li>
+              <li><Link href="/destinations" className="text-gray-300 hover:text-white transition-colors">Destinations</Link></li>
+              <li><Link href="/tours" className="text-gray-300 hover:text-white transition-colors">Tours</Link></li>
               <li><Link href="/travel-guides" className="text-gray-300 hover:text-white transition-colors">Travel Guides</Link></li>
+              <li><Link href="/how-it-works" className="text-gray-300 hover:text-white transition-colors">How It Works</Link></li>
               <li><Link href="/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
             </ul>
           </div>
@@ -76,6 +78,7 @@ const FooterNext = () => {
             <ul className="space-y-2">
               <li><Link href="/partners/tour-operators" className="text-gray-300 hover:text-white transition-colors">Tour Operators</Link></li>
               <li><Link href="/partners/restaurants" className="text-gray-300 hover:text-white transition-colors">Restaurants</Link></li>
+              <li><Link href="/partner-guides" className="text-gray-300 hover:text-white transition-colors">Partner Guides</Link></li>
               <li><Link href="/affiliates" className="text-gray-300 hover:text-white transition-colors">Affiliate Program</Link></li>
             </ul>
           </div>

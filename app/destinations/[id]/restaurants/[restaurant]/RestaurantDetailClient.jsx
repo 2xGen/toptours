@@ -1,18 +1,19 @@
 "use client";
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
-import SmartTourFinder from '@/components/home/SmartTourFinder';
+// OPTIMIZED: Lazy load modals - they're only shown conditionally
+const SmartTourFinder = lazy(() => import('@/components/home/SmartTourFinder'));
+const ShareModal = lazy(() => import('@/components/sharing/ShareModal'));
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { getTourUrl } from '@/utils/tourHelpers';
 import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
-import ShareModal from '@/components/sharing/ShareModal';
 import { useToast } from '@/components/ui/use-toast';
 import { extractRestaurantStructuredValues, getRestaurantTimeOfDay, calculateRestaurantPreferenceMatch } from '@/lib/restaurantMatching';
 import { useRouter } from 'next/navigation';
@@ -70,9 +71,9 @@ function getRestaurantBookingUrl(restaurant, premiumSubscription) {
     return restaurant.contact.website;
   }
   
-  // Default: BiteReserve link
+  // Default: BiteReserve link with tracking parameter
   if (restaurant.countryIsoCode && restaurant.bitereserveCode) {
-    return `https://bitereserve.com/r/${restaurant.countryIsoCode}/${restaurant.bitereserveCode}`;
+    return `https://bitereserve.com/r/${restaurant.countryIsoCode}/${restaurant.bitereserveCode}?ref=toptours`;
   }
   
   // Fallback to existing website or booking URL
@@ -266,10 +267,10 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
     if (restaurant.accessibilityOptions.wheelchairAccessibleParking) accessibilityFeatures.push('Wheelchair Accessible Parking');
   }
 
-  // Generate Schema.org structured data for SEO
+  // OPTIMIZED: Enhanced Restaurant/LocalBusiness Schema for better SEO and rich results
   const jsonLd = restaurant.schema || {
     '@context': 'https://schema.org',
-    '@type': 'Restaurant',
+    '@type': 'Restaurant', // Restaurant extends LocalBusiness, so this is correct
     name: restaurant.name,
     description: restaurant.metaDescription || restaurant.description || restaurant.summary || restaurant.tagline || '',
     image: restaurant.heroImage || destination.imageUrl,
@@ -440,8 +441,11 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
     <>
       <NavigationNext onOpenModal={() => setIsModalOpen(true)} />
 
+      {/* OPTIMIZED: Lazy load SmartTourFinder modal */}
       {isModalOpen && (
-        <SmartTourFinder isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        <Suspense fallback={null}>
+          <SmartTourFinder isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        </Suspense>
       )}
 
       <div className="min-h-screen overflow-x-hidden bg-gradient-to-b from-blue-50 via-white to-white">
@@ -2391,12 +2395,17 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
 
       <FooterNext />
       
-      <ShareModal
-        isOpen={showShareModal}
-        onClose={() => setShowShareModal(false)}
-        title={restaurant?.name || 'this restaurant'}
-        url={typeof window !== 'undefined' ? window.location.href : ''}
-      />
+      {/* OPTIMIZED: Lazy load ShareModal */}
+      {showShareModal && (
+        <Suspense fallback={null}>
+          <ShareModal
+            isOpen={showShareModal}
+            onClose={() => setShowShareModal(false)}
+            title={restaurant?.name || 'this restaurant'}
+            url={typeof window !== 'undefined' ? window.location.href : ''}
+          />
+        </Suspense>
+      )}
 
       {/* Match to Your Taste Modal (no account required) */}
       {showPreferencesModal && (

@@ -171,7 +171,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${seoTitle} | TopTours.ai`,
     description: seoDescription,
-    keywords: `${destinationName} tours, ${destinationName} activities, ${destinationName} excursions, things to do in ${destinationName}`,
+    keywords: `${destinationName} tours, ${destinationName} activities, ${destinationName} excursions, things to do in ${destinationName}, book tours ${destinationName}, ${destinationName} travel experiences, ${destinationName} day trips, ${destinationName} sightseeing, ${destinationName} adventure tours, ${destinationName} travel guide`,
     openGraph: {
       title: seoTitle,
       description: seoDescription,
@@ -799,7 +799,7 @@ export default async function ToursListingPage({ params }) {
 
   return (
     <>
-      {/* TouristDestination Schema */}
+      {/* OPTIMIZED: Enhanced TouristDestination Schema for better SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -810,7 +810,17 @@ export default async function ToursListingPage({ params }) {
             "description": destination.seo?.description || destination.briefDescription,
             "image": destination.imageUrl,
             "url": `https://toptours.ai/destinations/${id}/tours`,
-            "touristType": "Leisure travelers, Adventure seekers, Culture enthusiasts"
+            "touristType": ["Leisure travelers", "Adventure seekers", "Culture enthusiasts", "Family travelers"],
+            "containsPlace": {
+              "@type": "Place",
+              "name": destination.fullName || destination.name,
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": destination.name || destination.fullName,
+                "addressCountry": destination.country || undefined,
+                "addressRegion": destination.category || undefined
+              }
+            }
           })
         }}
       />

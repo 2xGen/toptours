@@ -25,7 +25,10 @@ export default async function handler(req, res) {
   try {
     // Check if Stripe is configured
     if (!process.env.STRIPE_SECRET_KEY) {
-      console.error('STRIPE_SECRET_KEY is not set in environment variables');
+      // Only log errors in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.error('STRIPE_SECRET_KEY is not set in environment variables');
+      }
       return res.status(500).json({
         error: 'Stripe is not configured. Please set STRIPE_SECRET_KEY in environment variables.'
       });
@@ -57,8 +60,11 @@ export default async function handler(req, res) {
 
     const priceId = STRIPE_PRICE_IDS[packageName];
     if (!priceId) {
-      console.error(`Price ID not found for package: ${packageName}`);
-      console.error('Available price IDs:', Object.keys(STRIPE_PRICE_IDS).map(key => `${key}: ${STRIPE_PRICE_IDS[key] || 'NOT SET'}`));
+      // Only log errors in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`Price ID not found for package: ${packageName}`);
+        console.error('Available price IDs:', Object.keys(STRIPE_PRICE_IDS).map(key => `${key}: ${STRIPE_PRICE_IDS[key] || 'NOT SET'}`));
+      }
       return res.status(500).json({
         error: `Stripe price ID not configured for package: ${packageName}. Please set STRIPE_${packageName.toUpperCase()}_PRICE_ID in environment variables.`
       });
@@ -86,7 +92,10 @@ export default async function handler(req, res) {
           userEmail = user.email;
         }
       } catch (err) {
-        console.error('Error fetching user email from auth:', err);
+        // Only log errors in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Error fetching user email from auth:', err);
+        }
         // Continue without email - Stripe will still work
       }
     }
@@ -95,33 +104,54 @@ export default async function handler(req, res) {
     // This uses the data already available, no API call needed!
     if (type === 'restaurant' && restaurantData) {
       try {
-        console.log(`📦 Attempting to save metadata for restaurant ${restaurantId} with restaurantData:`, {
-          hasName: !!restaurantData.name,
-          hasImage: !!restaurantData.hero_image_url || !!restaurantData.heroImage,
-          hasDestinationId: !!restaurantData.destination_id,
-        });
+        // Only log in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`📦 Attempting to save metadata for restaurant ${restaurantId} with restaurantData:`, {
+            hasName: !!restaurantData.name,
+            hasImage: !!restaurantData.hero_image_url || !!restaurantData.heroImage,
+            hasDestinationId: !!restaurantData.destination_id,
+          });
+        }
         await updateRestaurantMetadata(parseInt(restaurantId), restaurantData);
-        console.log(`✅ Metadata saved from page data for restaurant ${restaurantId} (instant boost)`);
+        // Only log in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`✅ Metadata saved from page data for restaurant ${restaurantId} (instant boost)`);
+        }
       } catch (metadataError) {
-        console.error(`❌ Error saving restaurant metadata for ${restaurantId}:`, metadataError);
+        // Only log errors in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.error(`❌ Error saving restaurant metadata for ${restaurantId}:`, metadataError);
+        }
         // Continue even if metadata save fails
       }
     } else if (type === 'tour' && tourData) {
       try {
-        console.log(`📦 Attempting to save metadata for ${productId} with tourData:`, {
-          hasTitle: !!(tourData.title || tourData.seo?.title || tourData.productContent?.title),
-          hasImages: !!tourData.images,
-          hasDestinations: !!tourData.destinations,
-          hasDestinationId: !!tourData._destinationId || !!tourData.destinationId,
-        });
+        // Only log in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`📦 Attempting to save metadata for ${productId} with tourData:`, {
+            hasTitle: !!(tourData.title || tourData.seo?.title || tourData.productContent?.title),
+            hasImages: !!tourData.images,
+            hasDestinations: !!tourData.destinations,
+            hasDestinationId: !!tourData._destinationId || !!tourData.destinationId,
+          });
+        }
         await updateTourMetadata(productId, tourData);
-        console.log(`✅ Metadata saved from page data for ${productId} (instant boost)`);
+        // Only log in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`✅ Metadata saved from page data for ${productId} (instant boost)`);
+        }
       } catch (metadataError) {
-        console.error(`❌ Error saving tour metadata for ${productId}:`, metadataError);
+        // Only log errors in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.error(`❌ Error saving tour metadata for ${productId}:`, metadataError);
+        }
         // Continue even if metadata save fails
       }
     } else {
-      console.log(`⚠️ No ${type}Data provided for ${entityId}, metadata will be fetched from cache/API later`);
+      // Only log in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`⚠️ No ${type}Data provided for ${entityId}, metadata will be fetched from cache/API later`);
+      }
     }
 
     // Get or create Stripe customer
@@ -157,9 +187,15 @@ export default async function handler(req, res) {
     // Verify price exists in Stripe before creating checkout
     try {
       const price = await stripe.prices.retrieve(priceId);
-      console.log(`Price verified: ${price.id} for package ${packageName}`);
+      // Only log in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`Price verified: ${price.id} for package ${packageName}`);
+      }
     } catch (priceError) {
-      console.error(`Price ID ${priceId} not found in Stripe:`, priceError);
+      // Only log errors in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`Price ID ${priceId} not found in Stripe:`, priceError);
+      }
       return res.status(500).json({
         error: `Price ID "${priceId}" not found in Stripe. Please verify the price ID is correct and exists in your Stripe account (check if you're using test vs live mode).`
       });
@@ -213,8 +249,11 @@ export default async function handler(req, res) {
       priceCents: packageInfo.priceCents,
     });
   } catch (error) {
-    console.error('Error in purchase-a-la-carte endpoint:', error);
-    console.error('Error stack:', error.stack);
+    // Only log errors in development to reduce I/O during crawls
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error in purchase-a-la-carte endpoint:', error);
+      console.error('Error stack:', error.stack);
+    }
     return res.status(500).json({
       error: error.message || 'Failed to create purchase session',
       details: process.env.NODE_ENV === 'development' ? error.stack : undefined

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -103,11 +104,15 @@ const TopDestinations = () => {
               >
                 <Card className="bg-white border-0 shadow-lg group-hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col hover:-translate-y-1 rounded-3xl">
                   <div className="relative w-full h-56 overflow-hidden">
-                    <img
+                    <Image
                       src={destination.imageUrl}
                       alt={destination.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      priority={index < 3}
+                      fetchPriority={index < 3 ? 'high' : 'auto'}
+                      unoptimized={destination.imageUrl.includes('supabase.co')}
                     />
                     <Badge className="absolute top-4 left-4 adventure-gradient text-white">
                       {destination.category}

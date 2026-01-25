@@ -12,6 +12,7 @@ import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
+import Image from 'next/image';
 import { destinations } from '@/data/destinationsData';
 import { travelGuides } from '@/data/travelGuidesData';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
@@ -1306,10 +1307,12 @@ const Results = () => {
             {/* Tour Image */}
             <div className="relative h-48 bg-gray-200">
               {selectedTour.images?.[0]?.variants?.[3]?.url ? (
-                <img
+                <Image
                   src={selectedTour.images[0].variants[3].url}
                   alt={selectedTour.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 400px"
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-gray-200">

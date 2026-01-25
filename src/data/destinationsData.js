@@ -9044,7 +9044,7 @@ export const destinations = [
     category: 'Asia-Pacific',
     briefDescription: 'Culturally rich city with world-class arts, sports, and food scenes — Melbourne is Australia\'s vibrant capital.',
     heroDescription: 'Welcome to Melbourne, where the arts and culture thrive, sports are celebrated, and the food scene is unmatched. From exploring the National Gallery of Victoria to discovering the Royal Botanic Gardens, from cheering on the Melbourne Cricket Ground to indulging in the city\'s famous laneway cafes, this culturally rich city offers the perfect blend of sophistication and laid-back charm. Let our AI-powered planner help you discover the best experiences this incredible destination has to offer.',
-    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations//Melbourne.jpg',
+    imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/Melbourne.jpg',
     tourCategories: [
       { name: 'City Tours', hasGuide: true },
       { name: 'Art Tours', hasGuide: true },

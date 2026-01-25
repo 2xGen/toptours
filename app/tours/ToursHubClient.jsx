@@ -1,8 +1,10 @@
 'use client';
 
+import { lazy, Suspense } from 'react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
-import SmartTourFinder from '@/components/home/SmartTourFinder';
+// OPTIMIZED: Lazy load SmartTourFinder - it's only used in a modal
+const SmartTourFinder = lazy(() => import('@/components/home/SmartTourFinder'));
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -52,20 +54,39 @@ export default function ToursHubClient({
 
                 <div className="max-w-2xl mx-auto">
                   <div className="glass-effect rounded-2xl p-4">
-                    <div className="flex gap-4">
+                    <form 
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        // Ensure search is triggered on form submit
+                        const formData = new FormData(e.target);
+                        const searchValue = formData.get('search') || searchTerm;
+                        onSearchChange(searchValue);
+                      }}
+                      className="flex gap-4"
+                    >
                       <div className="flex-1 relative">
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
                         <Input
+                          name="search"
                           placeholder="Search destinations..."
                           value={searchTerm}
                           onChange={(e) => onSearchChange(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault();
+                              onSearchChange(e.target.value);
+                            }
+                          }}
                           className="pl-10 h-12 bg-white/90 border-0 text-gray-800 placeholder:text-gray-500"
                         />
                       </div>
-                      <Button className="h-12 px-6 sunset-gradient text-white font-semibold">
+                      <Button 
+                        type="submit"
+                        className="h-12 px-6 sunset-gradient text-white font-semibold"
+                      >
                         Search
                       </Button>
-                    </div>
+                    </form>
                   </div>
                 </div>
               </motion.div>
@@ -271,7 +292,12 @@ export default function ToursHubClient({
 
       <FooterNext />
 
-      <SmartTourFinder isOpen={isModalOpen} onClose={onCloseModal} />
+      {/* OPTIMIZED: Lazy load SmartTourFinder modal */}
+      {isModalOpen && (
+        <Suspense fallback={null}>
+          <SmartTourFinder isOpen={isModalOpen} onClose={onCloseModal} />
+        </Suspense>
+      )}
     </>
   );
 }

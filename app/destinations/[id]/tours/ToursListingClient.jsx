@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Search, 
@@ -45,8 +45,9 @@ import { getRestaurantsForDestination } from '../restaurants/restaurantsData';
 import { getDestinationById, getDestinationsByCountry } from '@/data/destinationsData';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { hasDestinationPage } from '@/data/destinationFullContent';
-import ShareModal from '@/components/sharing/ShareModal';
-import TourMatchModal from '@/components/tour/TourMatchModal';
+// OPTIMIZED: Lazy load modals - they're only shown conditionally
+const ShareModal = lazy(() => import('@/components/sharing/ShareModal'));
+const TourMatchModal = lazy(() => import('@/components/tour/TourMatchModal'));
 import TourCard from '@/components/tour/TourCard';
 import { 
   calculateTourProfile, 
@@ -58,7 +59,8 @@ import {
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { resolveUserPreferences } from '@/lib/preferenceResolution';
 import { extractRestaurantStructuredValues, calculateRestaurantPreferenceMatch } from '@/lib/restaurantMatching';
-import RestaurantMatchModal from '@/components/restaurant/RestaurantMatchModal';
+// OPTIMIZED: Lazy load RestaurantMatchModal - it's only shown conditionally
+const RestaurantMatchModal = lazy(() => import('@/components/restaurant/RestaurantMatchModal'));
 
 // Helper function to generate slug
 function generateSlug(name) {
@@ -332,7 +334,8 @@ export default function ToursListingClient({
   restaurants = [], // Restaurants from server (database + static)
   categoryGuides = [] // Category guides for internal linking (database + hardcoded)
 }) {
-  const supabase = createSupabaseBrowserClient();
+  // OPTIMIZED: Memoize supabase client to ensure stable reference (it's a singleton, but function call creates new reference)
+  const supabase = useMemo(() => createSupabaseBrowserClient(), []);
   const router = useRouter();
   
   // Fetch user and preferences for matching
@@ -387,8 +390,10 @@ export default function ToursListingClient({
   const destinationName = destination.fullName || destination.name;
   
   // Get other destinations in the same country for internal linking (for all destinations)
-  let otherDestinationsInCountry = [];
-  if (destination.country) {
+  // OPTIMIZED: Memoized to prevent recalculation on every render
+  const otherDestinationsInCountry = useMemo(() => {
+    if (!destination.country) return [];
+    
     // First try to get from destinationsData (182 destinations with guides)
     const destinationsFromData = getDestinationsByCountry(destination.country, destination.id);
     
@@ -432,16 +437,16 @@ export default function ToursListingClient({
       });
       
       // Sort alphabetically by name
-      otherDestinationsInCountry = uniqueDestinations.sort((a, b) => 
+      return uniqueDestinations.sort((a, b) => 
         (a.name || a.fullName || '').localeCompare(b.name || b.fullName || '')
       );
     } else {
       // Sort alphabetically
-      otherDestinationsInCountry = destinationsFromData.sort((a, b) => 
+      return destinationsFromData.sort((a, b) => 
         (a.name || a.fullName || '').localeCompare(b.name || b.fullName || '')
       );
     }
-  }
+  }, [destination.country, destination.id, destination.name, destination.fullName]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('rating'); // 'rating', 'reviews', 'price-low', 'price-high', 'best-match'
   const [showMoreDestinations, setShowMoreDestinations] = useState(12); // Show 12 initially (2 rows of 6)
@@ -705,8 +710,8 @@ export default function ToursListingClient({
   // Combine all tours for filtering (deduplicate by productId)
   // Priority: Search results > Filtered results > Initial tours
   const allTours = useMemo(() => {
-    // If we have search results, use those (searched from all Viator tours)
-    if (isSearching && searchResults.length > 0) {
+    // If we are searching (isSearching is true), use search results (even if empty to show "no results")
+    if (isSearching) {
       // Still include popular tours and promoted tours if they match the search
       const popularWithPricing = popularTours.map(tour => ({
         ...tour,
@@ -1094,15 +1099,19 @@ export default function ToursListingClient({
     return filtered;
   }, [allTours, searchTerm, activeFilters, sortBy, isFiltered, matchScores, promotedTours]);
 
-  // Separate featured and regular tours
-  const featuredTours = filteredTours.filter(t => t.isFeatured);
-  const regularTours = filteredTours.filter(t => !t.isFeatured);
+  // OPTIMIZED: Memoize featured/regular tour separation to avoid recalculation
+  const { featuredTours, regularTours } = useMemo(() => {
+    const featured = filteredTours.filter(t => t.isFeatured);
+    const regular = filteredTours.filter(t => !t.isFeatured);
+    return { featuredTours: featured, regularTours: regular };
+  }, [filteredTours]);
 
-  const destinationTagOptions = (() => {
+  // OPTIMIZED: Memoize destination tag options to avoid recalculation
+  const destinationTagOptions = useMemo(() => {
     const customTags = DESTINATION_TAG_OPTIONS[destination.id];
     if (customTags && customTags.length) return customTags;
     return buildFallbackTagOptions(destination, categoryGuides);
-  })();
+  }, [destination.id, categoryGuides]);
 
   const tagScrollRef = useRef(null);
   const [tagScrollState, setTagScrollState] = useState({
@@ -1479,6 +1488,71 @@ export default function ToursListingClient({
       setLoadingMoreRegular(false);
     }
   };
+
+  // Load more search results (user-driven pagination)
+  const handleLoadMoreSearch = useCallback(async () => {
+    if (loadingMoreSearch || !searchHasMore || !isSearching) return;
+
+    setLoadingMoreSearch(true);
+    try {
+      const nextPage = searchCurrentPage + 1;
+      const requestBody = {
+        searchTerm: searchTerm.trim(),
+        page: nextPage,
+        viatorDestinationId: effectiveDestinationId ? String(effectiveDestinationId) : null,
+        includeDestination: !!effectiveDestinationId
+      };
+
+      const response = await fetch('/api/internal/viator-search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(requestBody)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      const newTours = data.products?.results || [];
+      const popularProductIds = new Set(popularTours.map(t => t.productId));
+      const filteredNewTours = newTours.filter(tour => {
+        const tourId = tour.productId || tour.productCode;
+        return tourId && !popularProductIds.has(tourId);
+      });
+
+      // Add new tours to searchResults and calculate if there are more
+      let updatedResultsLength = 0;
+      setSearchResults(prev => {
+        const seenIds = new Set(prev.map(t => t.productId || t.productCode));
+        const uniqueNewTours = filteredNewTours.filter(t => {
+          const id = t.productId || t.productCode;
+          return id && !seenIds.has(id);
+        });
+        const updated = [...prev, ...uniqueNewTours];
+        updatedResultsLength = updated.length;
+        return updated;
+      });
+
+      setSearchCurrentPage(nextPage);
+      const totalCount = data.products?.totalCount || data.totalCount || 0;
+      // Update searchHasMore based on whether we got a full page and if there are more results
+      setSearchHasMore(updatedResultsLength < totalCount && newTours.length >= 48);
+    } catch (error) {
+      console.error('Error loading more search results:', error);
+      toast({
+        title: "Error",
+        description: "Failed to load more search results. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setLoadingMoreSearch(false);
+    }
+  }, [loadingMoreSearch, searchHasMore, isSearching, searchCurrentPage, searchTerm, effectiveDestinationId, popularTours]);
   
   const handleFlagToggle = (flagValue) => {
     setFilters(prev => {
@@ -1553,84 +1627,97 @@ export default function ToursListingClient({
     setSearchResults([]);
   };
 
-  // Search functionality - query Viator API when user types
-  useEffect(() => {
-    const searchTimeout = setTimeout(async () => {
-      if (searchTerm.trim().length >= 2) {
-        // Search Viator API for tours matching the search term
-        setLoading(true);
-        setIsSearching(true);
-        
-        try {
-          // Search term should be JUST what the user typed (e.g., "snorkeling")
-          // NOT including destination name - the destination ID filter handles that
-          // This uses /search/freetext endpoint with destination filter
-          const searchQuery = searchTerm.trim();
-          
-          // COMPLIANCE: Only fetch page 1 on initial search (max 50 products per Viator rules)
-          // Additional pages will be fetched when user clicks "Load More" (user-driven pagination)
-          const response = await fetch('/api/internal/viator-search', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              // When searching with a term, still include destination ID filter for accuracy
-              searchTerm: searchQuery,
-              page: 1,
-              viatorDestinationId: effectiveDestinationId ? String(effectiveDestinationId) : null,
-              includeDestination: !!effectiveDestinationId // Use destination ID filter when available
-            })
-          });
+  // Search function - manually triggered on Enter or Search button press
+  const performSearch = useCallback(async (searchQuery) => {
+    // Only search if we have at least 2 characters
+    if (!searchQuery || searchQuery.trim().length < 2) {
+      setIsSearching(false);
+      setSearchResults([]);
+      setSearchTotalCount(0);
+      setSearchCurrentPage(1);
+      setSearchHasMore(false);
+      return;
+    }
 
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
+    // Search Viator API for tours matching the search term
+    setLoading(true);
+    setIsSearching(true);
+    
+    try {
+      // Search term should be JUST what the user typed (e.g., "snorkeling")
+      // NOT including destination name - the destination ID filter handles that
+      // This uses /search/freetext endpoint with destination filter
+      const trimmedQuery = searchQuery.trim();
+      
+      // COMPLIANCE: Only fetch page 1 on initial search (max 50 products per Viator rules)
+      // Additional pages will be fetched when user clicks "Load More" (user-driven pagination)
+      const response = await fetch('/api/internal/viator-search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          // When searching with a term, still include destination ID filter for accuracy
+          searchTerm: trimmedQuery,
+          page: 1,
+          viatorDestinationId: effectiveDestinationId ? String(effectiveDestinationId) : null,
+          includeDestination: !!effectiveDestinationId // Use destination ID filter when available
+        })
+      });
 
-          const data = await response.json();
-          if (data.error) {
-            throw new Error(data.error);
-          }
-
-          const allFetchedTours = [];
-          const seenIds = new Set();
-          
-          // Process only page 1 results
-          const tours = data.products?.results || [];
-          for (const tour of tours) {
-            const tourId = tour.productId || tour.productCode;
-            if (tourId && !seenIds.has(tourId)) {
-              seenIds.add(tourId);
-              allFetchedTours.push(tour);
-            }
-          }
-          
-          // Filter out popular tours
-          const popularProductIds = new Set(popularTours.map(t => t.productId));
-          const filtered = allFetchedTours.filter(tour => {
-            const tourId = tour.productId || tour.productCode;
-            return !popularProductIds.has(tourId);
-          });
-          
-          setSearchResults(filtered);
-          setSearchTotalCount(data.products?.totalCount || data.totalCount || 0);
-          setSearchCurrentPage(1);
-          setSearchHasMore((data.products?.totalCount || 0) > filtered.length);
-        } catch (error) {
-          console.error('Error searching tours:', error);
-          setSearchResults([]);
-        } finally {
-          setLoading(false);
-        }
-      } else if (searchTerm.trim().length === 0) {
-        // Clear search results when search is empty
-        setIsSearching(false);
-        setSearchResults([]);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    }, 500); // Debounce: wait 500ms after user stops typing
 
-    return () => clearTimeout(searchTimeout);
-  }, [searchTerm, destination.fullName, destination.name, popularTours]);
+      const data = await response.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      const allFetchedTours = [];
+      const seenIds = new Set();
+      
+      // Process only page 1 results
+      const tours = data.products?.results || [];
+      for (const tour of tours) {
+        const tourId = tour.productId || tour.productCode;
+        if (tourId && !seenIds.has(tourId)) {
+          seenIds.add(tourId);
+          allFetchedTours.push(tour);
+        }
+      }
+      
+      // Filter out popular tours
+      const popularProductIds = new Set(popularTours.map(t => t.productId));
+      const filtered = allFetchedTours.filter(tour => {
+        const tourId = tour.productId || tour.productCode;
+        return !popularProductIds.has(tourId);
+      });
+      
+      setSearchResults(filtered);
+      setSearchTotalCount(data.products?.totalCount || data.totalCount || 0);
+      setSearchCurrentPage(1);
+      setSearchHasMore((data.products?.totalCount || 0) > filtered.length);
+    } catch (error) {
+      console.error('Error searching tours:', error);
+      setSearchResults([]);
+      setSearchTotalCount(0);
+      setIsSearching(false); // Set to false on error so we show default tours
+    } finally {
+      setLoading(false);
+    }
+  }, [effectiveDestinationId, popularTours]);
+
+  // Clear search when search term is cleared
+  useEffect(() => {
+    if (searchTerm.trim().length === 0) {
+      setIsSearching(false);
+      setSearchResults([]);
+      setSearchTotalCount(0);
+      setSearchCurrentPage(1);
+      setSearchHasMore(false);
+    }
+  }, [searchTerm]);
 
   const hasAutoTagFetchRun = useRef(false);
   useEffect(() => {
@@ -1643,36 +1730,47 @@ export default function ToursListingClient({
   }, [filters.tags, filters.specialOffersOnly]);
 
 
-  const activeFilterEntries = Object.entries(activeFilters || {});
-  const hasActiveFilters = activeFilterEntries.some(([_, value]) => {
-    if (Array.isArray(value)) {
-      return value.length > 0;
-    }
-    return value && value !== '';
-  }) || searchTerm;
+  // OPTIMIZED: Memoize active filter calculations to prevent recalculation on every render
+  const activeFilterEntries = useMemo(() => Object.entries(activeFilters || {}), [activeFilters]);
+  
+  const hasActiveFilters = useMemo(() => {
+    return activeFilterEntries.some(([_, value]) => {
+      if (Array.isArray(value)) {
+        return value.length > 0;
+      }
+      return value && value !== '';
+    }) || searchTerm;
+  }, [activeFilterEntries, searchTerm]);
 
-  const activeFilterTypeCount = activeFilterEntries.reduce((count, [_, value]) => {
-    if (Array.isArray(value)) {
-      return count + (value.length > 0 ? 1 : 0);
-    }
-    return value && value !== '' ? count + 1 : count;
-  }, 0);
+  const activeFilterTypeCount = useMemo(() => {
+    return activeFilterEntries.reduce((count, [_, value]) => {
+      if (Array.isArray(value)) {
+        return count + (value.length > 0 ? 1 : 0);
+      }
+      return value && value !== '' ? count + 1 : count;
+    }, 0);
+  }, [activeFilterEntries]);
 
-  const heroCategories = (destination.tourCategories || [])
-    .map((category) => category?.name)
-    .filter(Boolean);
-  const heroDescription =
-    destination.seo?.description ||
-    destination.heroDescription ||
-    [
-      destination.briefDescription,
-      heroCategories.length
-        ? `Plan ${heroCategories.slice(0, 3).join(', ')} and more local-only experiences with instant confirmation.`
-        : 'Filter by style, price, and traveler type to build your perfect itinerary.',
-    ]
-      .filter(Boolean)
-      .join(' ') ||
-    `Discover the best tours and experiences in ${destinationName}.`;
+  // OPTIMIZED: Memoize hero categories and description to prevent recalculation on every render
+  const heroCategories = useMemo(() => {
+    return (destination.tourCategories || [])
+      .map((category) => category?.name)
+      .filter(Boolean);
+  }, [destination.tourCategories]);
+  
+  const heroDescription = useMemo(() => {
+    return destination.seo?.description ||
+      destination.heroDescription ||
+      [
+        destination.briefDescription,
+        heroCategories.length
+          ? `Plan ${heroCategories.slice(0, 3).join(', ')} and more local-only experiences with instant confirmation.`
+          : 'Filter by style, price, and traveler type to build your perfect itinerary.',
+      ]
+        .filter(Boolean)
+        .join(' ') ||
+      `Discover the best tours and experiences in ${destinationName}.`;
+  }, [destination.seo?.description, destination.heroDescription, destination.briefDescription, heroCategories, destinationName]);
 
   return (
     <>
@@ -1713,21 +1811,46 @@ export default function ToursListingClient({
             {/* Search Bar */}
             <div className="max-w-2xl mx-auto">
               <div className="glass-effect rounded-2xl p-4">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                  <Input
-                    placeholder={`Search tours in ${destinationName}...`}
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10 h-12 bg-white/90 border-0 text-gray-800 placeholder:text-gray-500"
-                  />
-                </div>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    // Trigger search explicitly on form submit (Enter key or button click)
+                    const formData = new FormData(e.target);
+                    const searchValue = formData.get('search') || searchTerm;
+                    performSearch(searchValue);
+                  }}
+                  className="flex gap-4"
+                >
+                  <div className="flex-1 relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                    <Input
+                      name="search"
+                      placeholder={`Search tours in ${destinationName}...`}
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          // Trigger search on Enter key
+                          performSearch(searchTerm);
+                        }
+                      }}
+                      className="pl-10 h-12 bg-white/90 border-0 text-gray-800 placeholder:text-gray-500"
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    className="h-12 px-6 sunset-gradient text-white font-semibold"
+                  >
+                    Search
+                  </Button>
+                </form>
               </div>
               {/* Find tours in other destinations link */}
               <div className="mt-3 text-center">
                 <Link 
-                  href="/tours" 
-                  className="text-white/80 hover:text-white text-sm transition-colors"
+                  href="/results" 
+                  className="text-white/80 hover:text-white text-sm transition-colors underline"
                 >
                   Looking for tours in other destinations?
                 </Link>
@@ -2474,6 +2597,7 @@ export default function ToursListingClient({
                       userPreferences={userPreferences}
                       onOpenPreferences={() => setShowPreferencesModal(true)}
                       isPromoted={productId && promotedProductIds.has(productId)}
+                      priority={index < 6} // OPTIMIZED: Priority loading for first 6 featured tours (above fold)
                     />
                   );
                 })}
@@ -2505,6 +2629,7 @@ export default function ToursListingClient({
                       userPreferences={userPreferences}
                       onOpenPreferences={() => setShowPreferencesModal(true)}
                       isPromoted={productId && promotedProductIds.has(productId)}
+                      priority={featuredTours.length === 0 && index < 6} // OPTIMIZED: Priority loading for first 6 regular tours if no featured tours (above fold)
                     />
                   );
                 })}
@@ -3331,24 +3456,33 @@ export default function ToursListingClient({
         </div>
       )}
       
-      <ShareModal
-        isOpen={showShareModal}
-        onClose={() => setShowShareModal(false)}
-        url={typeof window !== 'undefined' ? window.location.href : ''}
-        title={`Top Tours and Activities in ${destinationName} - TopTours.ai`}
-      />
+      {/* OPTIMIZED: Lazy load modals */}
+      {showShareModal && (
+        <Suspense fallback={null}>
+          <ShareModal
+            isOpen={showShareModal}
+            onClose={() => setShowShareModal(false)}
+            url={typeof window !== 'undefined' ? window.location.href : ''}
+            title={`Top Tours and Activities in ${destinationName} - TopTours.ai`}
+          />
+        </Suspense>
+      )}
       
-      <RestaurantMatchModal
-        isOpen={showRestaurantMatchModal}
-        onClose={() => setShowRestaurantMatchModal(false)}
-        restaurant={selectedRestaurant}
-        matchData={selectedRestaurant ? restaurantMatchById.get(selectedRestaurant.id) : null}
-        preferences={localRestaurantPreferences}
-        onOpenPreferences={() => {
-          setShowRestaurantMatchModal(false);
-          // Note: You may want to add a restaurant preferences modal here
-        }}
-      />
+      {showRestaurantMatchModal && (
+        <Suspense fallback={null}>
+          <RestaurantMatchModal
+            isOpen={showRestaurantMatchModal}
+            onClose={() => setShowRestaurantMatchModal(false)}
+            restaurant={selectedRestaurant}
+            matchData={selectedRestaurant ? restaurantMatchById.get(selectedRestaurant.id) : null}
+            preferences={localRestaurantPreferences}
+            onOpenPreferences={() => {
+              setShowRestaurantMatchModal(false);
+              // Note: You may want to add a restaurant preferences modal here
+            }}
+          />
+        </Suspense>
+      )}
     </>
   );
 }

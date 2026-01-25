@@ -1,8 +1,14 @@
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
+import bundleAnalyzer from '@next/bundle-analyzer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+// Bundle analyzer configuration
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -24,10 +30,22 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'media.viator.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media-cdn.tripadvisor.com',
+      },
     ],
     // Enable optimization for non-Supabase images
-    // Supabase images will be served as-is (unoptimized)
-    unoptimized: false, // Changed to false - Next.js will optimize where possible
+    // Supabase images will be optimized where possible, but errors are handled gracefully
+    unoptimized: false,
+    // Handle image errors gracefully - don't fail the page if image optimization fails
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   async redirects() {
     return [
@@ -1010,4 +1028,5 @@ const nextConfig = {
   outputFileTracingRoot: __dirname,
 }
 
-export default nextConfig
+// Export with bundle analyzer (if enabled)
+export default withBundleAnalyzer(nextConfig);

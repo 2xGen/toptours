@@ -1,13 +1,21 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { Suspense } from 'react'
-import CookieConsentManager from '@/components/CookieConsentManager'
+import { Suspense, lazy } from 'react'
 import { Toaster } from '@/components/ui/toaster'
 import PageViewTracker from '@/components/PageViewTracker'
-import MobileConsoleViewer from '@/components/MobileConsoleViewer'
-import StreakWelcomePopup from '@/components/StreakWelcomePopup'
 
-const inter = Inter({ subsets: ['latin'] })
+// OPTIMIZED: Lazy load non-critical components for better initial page load
+const CookieConsentManager = lazy(() => import('@/components/CookieConsentManager'));
+const MobileConsoleViewer = lazy(() => import('@/components/MobileConsoleViewer'));
+const StreakWelcomePopup = lazy(() => import('@/components/StreakWelcomePopup'));
+
+// OPTIMIZED: Font loading with display swap to prevent FOIT (Flash of Invisible Text)
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap', // Show fallback font immediately, swap when Inter loads
+  preload: true, // Preload critical font files
+  variable: '--font-inter', // CSS variable for use in Tailwind
+})
 
 export const metadata = {
   title: {
@@ -41,7 +49,7 @@ export const metadata = {
       {
         url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
         width: 1200,
-        height: 675,
+        height: 630,
         alt: 'Discover Top Tours and Restaurants with TopTours.ai™',
       },
     ],
@@ -70,8 +78,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
+        {/* OPTIMIZED: Resource hints for better performance - Critical for LCP */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://api.viator.com" />
+        <link rel="dns-prefetch" href="https://media.viator.com" />
+        <link rel="dns-prefetch" href="https://ouqeoizufbofdqbuiwvx.supabase.co" />
+        <link rel="preconnect" href="https://ouqeoizufbofdqbuiwvx.supabase.co" crossOrigin="anonymous" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -86,18 +101,21 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#667eea" />
         <meta name="msapplication-TileColor" content="#667eea" />
         
-        {/* Service Worker Registration */}
+        {/* OPTIMIZED: Service Worker Registration - Deferred to not block initial render */}
         <script
+          defer
           dangerouslySetInnerHTML={{
             __html: `
               if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
                   navigator.serviceWorker.register('/sw.js')
                     .then(function(registration) {
-                      console.log('Service Worker registered:', registration.scope);
+                      if (process.env.NODE_ENV === 'development') {
+                        console.log('Service Worker registered:', registration.scope);
+                      }
                     })
                     .catch(function(error) {
-                      console.log('Service Worker registration failed:', error);
+                      // Silently fail - service worker is non-critical
                     });
                 });
               }
@@ -105,7 +123,7 @@ export default function RootLayout({ children }) {
           }}
         />
         
-        {/* Organization Schema */}
+        {/* OPTIMIZED: Enhanced Organization Schema for better SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -113,21 +131,66 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "TopTours.ai",
+              "alternateName": "TopTours",
               "url": "https://toptours.ai",
-              "logo": "https://toptours.ai/logo.png",
-              "description": "AI-powered travel planning and tour booking platform",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://toptours.ai/logo.png",
+                "width": 512,
+                "height": 512
+              },
+              "description": "AI-powered travel planning platform offering personalized tour and restaurant recommendations. Discover 300,000+ tours, 3,500+ restaurants, and 19,000+ travel guides across 3,300+ destinations worldwide.",
+              "foundingDate": "2024",
+              "slogan": "Tours & Restaurants That Match Your Style",
+              "knowsAbout": [
+                "Travel Planning",
+                "Tour Booking",
+                "Restaurant Discovery",
+                "Destination Guides",
+                "AI-Powered Recommendations",
+                "Travel Experiences"
+              ],
               "sameAs": [
                 "https://www.facebook.com/profile.php?id=61573639234569",
                 "https://www.instagram.com/toptours.ai/?hl=en",
                 "https://www.tiktok.com/@toptours.ai",
                 "https://www.youtube.com/@toptoursai"
-              ]
+              ],
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://toptours.ai/results?q={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+        
+        {/* OPTIMIZED: WebSite Schema with SearchAction for better SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "TopTours.ai",
+              "url": "https://toptours.ai",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://toptours.ai/results?q={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+              }
             })
           }}
         />
       </head>
       <body 
-        className={`${inter.className} min-h-screen`} 
+        className={`${inter.className} ${inter.variable} min-h-screen`} 
         style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', backgroundAttachment: 'fixed' }}
         suppressHydrationWarning
       >
@@ -241,10 +304,17 @@ export default function RootLayout({ children }) {
           <PageViewTracker />
         </Suspense>
         {children}
-        <CookieConsentManager />
+        {/* OPTIMIZED: Lazy load non-critical components */}
+        <Suspense fallback={null}>
+          <CookieConsentManager />
+        </Suspense>
         <Toaster />
-        <MobileConsoleViewer />
-        <StreakWelcomePopup />
+        <Suspense fallback={null}>
+          <MobileConsoleViewer />
+        </Suspense>
+        <Suspense fallback={null}>
+          <StreakWelcomePopup />
+        </Suspense>
       </body>
     </html>
   )

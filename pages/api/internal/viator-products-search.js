@@ -56,7 +56,10 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Viator products search error:', response.status, errorText);
+      // Only log errors in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Viator products search error:', response.status, errorText);
+      }
       return res
         .status(response.status)
         .json({ error: 'Viator API error', status: response.status, details: errorText });
@@ -65,7 +68,10 @@ export default async function handler(req, res) {
     const data = await response.json();
     return res.status(200).json(data);
   } catch (error) {
-    console.error('Products search error:', error);
+    // Only log errors in development to reduce I/O during crawls
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Products search error:', error);
+    }
     if (error.name === 'AbortError') {
       return res.status(504).json({ error: 'Request timeout', details: 'Viator API request exceeded 120 second timeout' });
     }

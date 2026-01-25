@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
       return {
         title: `${seoTitle} | TopTours.ai`,
         description: heroDescription || `Discover the best tours and activities in ${destinationName}. Find top-rated experiences, book instantly, and explore ${destinationName} with AI-powered recommendations.`,
-        keywords: `${destinationName} tours, ${destinationName} activities, ${destinationName} experiences, things to do in ${destinationName}`,
+        keywords: `${destinationName} tours, ${destinationName} activities, ${destinationName} experiences, things to do in ${destinationName}, ${destinationName} travel guide, book tours ${destinationName}, ${destinationName} excursions, ${destinationName} attractions, ${destinationName} vacation, ${destinationName} travel planning`,
         openGraph: {
           title: seoTitle,
           description: heroDescription || `Discover the best tours and activities in ${destinationName}.`,
@@ -98,7 +98,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${destination.fullName} Tours & Activities | TopTours.ai`,
     description: destination.seo?.description || destination.heroDescription,
-    keywords: `${destination.fullName} tours, ${destination.fullName} activities, ${destination.fullName} experiences, things to do in ${destination.fullName}`,
+    keywords: `${destination.fullName} tours, ${destination.fullName} activities, ${destination.fullName} experiences, things to do in ${destination.fullName}, ${destination.fullName} travel guide, book tours ${destination.fullName}, ${destination.fullName} excursions, ${destination.fullName} attractions, ${destination.fullName} vacation, ${destination.fullName} travel planning`,
     openGraph: {
       title: `${destination.fullName} Tours & Activities`,
       description: destination.seo?.description || destination.heroDescription,
@@ -379,18 +379,34 @@ export default async function DestinationDetailPage({ params }) {
 
   return (
     <>
-      {/* TouristDestination Schema */}
+      {/* OPTIMIZED: Enhanced TouristDestination Schema for better SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "TouristDestination",
-            "name": destination.fullName,
-            "description": destination.seo?.description || destination.heroDescription,
+            "name": destination.fullName || destination.name,
+            "alternateName": destination.name !== destination.fullName ? destination.name : undefined,
+            "description": destination.seo?.description || destination.heroDescription || destination.briefDescription || `Discover the best tours, activities, and restaurants in ${destination.fullName || destination.name}`,
             "image": destination.imageUrl,
             "url": `https://toptours.ai/destinations/${destination.id}`,
-            "touristType": "Leisure travelers, Adventure seekers, Culture enthusiasts"
+            "touristType": ["Leisure travelers", "Adventure seekers", "Culture enthusiasts", "Family travelers"],
+            "containsPlace": {
+              "@type": "Place",
+              "name": destination.fullName || destination.name,
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": destination.name,
+                "addressCountry": destination.country || undefined,
+                "addressRegion": destination.category || undefined
+              }
+            },
+            "geo": destination.coordinates ? {
+              "@type": "GeoCoordinates",
+              "latitude": destination.coordinates.latitude,
+              "longitude": destination.coordinates.longitude
+            } : undefined
           })
         }}
       />

@@ -100,7 +100,13 @@ export async function generateMetadata({ params }) {
     keywords: restaurant.seo?.keywords || [
       `${restaurant.name} ${destination.name}`,
       `restaurant in ${destination.name}`,
-    ],
+      `${destination.name} restaurants`,
+      `best restaurants ${destination.name}`,
+      `${restaurant.name} reviews`,
+      `dining ${destination.name}`,
+      `${destination.name} food`,
+      `where to eat ${destination.name}`,
+    ].join(', '),
     openGraph: {
       title: restaurant.seoTitle || restaurant.seo?.title || `${restaurant.name} in ${destination.name}`,
       description: metaDescription,
@@ -108,7 +114,7 @@ export async function generateMetadata({ params }) {
         {
           url: ogImage,
           width: 1200,
-          height: 675,
+          height: 630,
           alt: `${restaurant.name} in ${destination.name}`,
         }
       ],
@@ -285,10 +291,10 @@ export default async function RestaurantPage({ params }) {
     ]
   };
 
-  // Restaurant Schema for rich results
+  // OPTIMIZED: Enhanced Restaurant Schema (Restaurant extends LocalBusiness) for better SEO
   const restaurantSchema = {
     "@context": "https://schema.org",
-    "@type": "Restaurant",
+    "@type": "Restaurant", // Restaurant extends LocalBusiness automatically
     "name": restaurant.name || restaurant.title,
     "description": restaurant.description || restaurant.summary || `${restaurant.name} in ${destination.fullName || destination.name}`,
     "url": `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`,

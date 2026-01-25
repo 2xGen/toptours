@@ -1,9 +1,10 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, lazy, Suspense } from 'react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
-import SmartTourFinder from '@/components/home/SmartTourFinder';
+// OPTIMIZED: Lazy load SmartTourFinder - it's only used in a modal
+const SmartTourFinder = lazy(() => import('@/components/home/SmartTourFinder'));
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -328,7 +329,12 @@ export default function RestaurantsHubClient({
 
       <FooterNext />
 
-      <SmartTourFinder isOpen={isModalOpen} onClose={onCloseModal} />
+      {/* OPTIMIZED: Lazy load SmartTourFinder modal */}
+      {isModalOpen && (
+        <Suspense fallback={null}>
+          <SmartTourFinder isOpen={isModalOpen} onClose={onCloseModal} />
+        </Suspense>
+      )}
     </>
   );
 }

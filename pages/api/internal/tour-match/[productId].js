@@ -66,11 +66,17 @@ export default async function handler(req, res) {
     let tour = null;
     if (req.body && typeof req.body === 'object' && req.body.tour) {
       tour = req.body.tour;
-      console.log('Using tour data from request body');
+      // Only log in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Using tour data from request body');
+      }
     }
 
     if (!tour) {
-      console.log('Fetching tour from Viator API...');
+      // Only log in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Fetching tour from Viator API...');
+      }
       const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
       const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
 
@@ -87,16 +93,25 @@ export default async function handler(req, res) {
 
       if (!productResponse.ok) {
         const errorText = await productResponse.text();
-        console.error('Failed to fetch tour from Viator:', productResponse.status, errorText);
+        // Only log errors in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Failed to fetch tour from Viator:', productResponse.status, errorText);
+        }
         return res.status(500).json({ error: `Unable to fetch tour details from Viator: ${productResponse.status} ${errorText}` });
       }
 
       tour = await productResponse.json();
-      console.log('Tour fetched from Viator successfully');
+      // Only log in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Tour fetched from Viator successfully');
+      }
     }
 
     if (!tour || tour.error) {
-      console.error('Tour data invalid:', { hasTour: !!tour, tourError: tour?.error });
+      // Only log errors in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Tour data invalid:', { hasTour: !!tour, tourError: tour?.error });
+      }
       return res.status(404).json({ error: 'Tour not found or invalid tour data' });
     }
 
@@ -109,14 +124,23 @@ export default async function handler(req, res) {
     // If structured values exist, use them
     if (enrichment?.structured_values && typeof enrichment.structured_values === 'object') {
       tourValues = enrichment.structured_values;
-      console.log('Using existing structured values from database');
+      // Only log in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Using existing structured values from database');
+      }
     } else {
       // Extract structured values using AI (one-time)
-      console.log('Starting tour value extraction...');
+      // Only log in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Starting tour value extraction...');
+      }
       const extractionResult = await extractTourStructuredValues(tour);
       
       if (extractionResult.error) {
-        console.error('Tour extraction error:', extractionResult.error);
+        // Only log errors in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Tour extraction error:', extractionResult.error);
+        }
         // Provide more specific error message
         let errorMessage = extractionResult.error;
         if (extractionResult.error === 'Missing Gemini API key') {
@@ -127,10 +151,12 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: errorMessage });
       }
       
-      // Log which AI provider was used (for verification)
-      console.log('✅ Tour analysis completed using Gemini AI');
-      
-      console.log('Tour values extracted successfully:', Object.keys(extractionResult.values || {}));
+      // Only log in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        // Log which AI provider was used (for verification)
+        console.log('✅ Tour analysis completed using Gemini AI');
+        console.log('Tour values extracted successfully:', Object.keys(extractionResult.values || {}));
+      }
 
       tourValues = extractionResult.values;
 
@@ -146,13 +172,22 @@ export default async function handler(req, res) {
           });
 
         if (upsertError) {
-          console.error('Error saving structured values to database:', upsertError);
+          // Only log errors in development to reduce I/O during crawls
+          if (process.env.NODE_ENV === 'development') {
+            console.error('Error saving structured values to database:', upsertError);
+          }
           // Continue anyway - we have the values in memory
         } else {
-          console.log('Tour values saved to database successfully');
+          // Only log in development to reduce I/O during crawls
+          if (process.env.NODE_ENV === 'development') {
+            console.log('Tour values saved to database successfully');
+          }
         }
       } catch (dbError) {
-        console.error('Database error saving structured values:', dbError);
+        // Only log errors in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Database error saving structured values:', dbError);
+        }
         // Continue anyway - we have the values in memory
       }
     }
@@ -160,17 +195,26 @@ export default async function handler(req, res) {
     // If extractOnly mode, just return that values were extracted
     if (extractOnly) {
       if (!tourValues) {
-        console.error('Tour values are null/undefined in extractOnly mode');
+        // Only log errors in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Tour values are null/undefined in extractOnly mode');
+        }
         return res.status(500).json({ error: 'Failed to extract tour values - no values returned' });
       }
-      console.log('Returning extracted values (extractOnly mode)');
+      // Only log in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Returning extracted values (extractOnly mode)');
+      }
       try {
         return res.status(200).json({ 
           valuesExtracted: true,
           structuredValues: tourValues 
         });
       } catch (jsonError) {
-        console.error('Error serializing JSON response:', jsonError);
+        // Only log errors in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Error serializing JSON response:', jsonError);
+        }
         return res.status(500).json({ error: 'Failed to serialize response' });
       }
     }
@@ -184,9 +228,12 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ match: matchResult });
   } catch (error) {
-    console.error('Error generating tour match:', error);
-    console.error('Error stack:', error.stack);
-    console.error('Error message:', error.message);
+    // Only log errors in development to reduce I/O during crawls
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error generating tour match:', error);
+      console.error('Error stack:', error.stack);
+      console.error('Error message:', error.message);
+    }
     return res.status(500).json({ 
       error: error.message || 'Failed to generate tour match',
       details: process.env.NODE_ENV === 'development' ? error.stack : undefined

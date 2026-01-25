@@ -1,8 +1,7 @@
 "use client";
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
-import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
@@ -22,9 +21,7 @@ import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import { groupToursByCategory } from '@/lib/tourCategorization';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
-import ShareModal from '@/components/sharing/ShareModal';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
-import TourMatchModal from '@/components/tour/TourMatchModal';
 import TourCard from '@/components/tour/TourCard';
 import { 
   calculateTourProfile, 
@@ -37,7 +34,12 @@ import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { resolveUserPreferences } from '@/lib/preferenceResolution';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { extractRestaurantStructuredValues, calculateRestaurantPreferenceMatch } from '@/lib/restaurantMatching';
-import RestaurantMatchModal from '@/components/restaurant/RestaurantMatchModal';
+
+// OPTIMIZED: Lazy load modals - only load when opened
+const ShareModal = lazy(() => import('@/components/sharing/ShareModal'));
+const SmartTourFinder = lazy(() => import('@/components/home/SmartTourFinder'));
+const TourMatchModal = lazy(() => import('@/components/tour/TourMatchModal'));
+const RestaurantMatchModal = lazy(() => import('@/components/restaurant/RestaurantMatchModal'));
 
 // Helper to generate slug
 function generateSlug(name) {
@@ -128,7 +130,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
   
   // Restaurant bookmarks
   const { isBookmarked, toggle: toggleBookmark } = useRestaurantBookmarks();
-  const supabase = createSupabaseBrowserClient();
+  // OPTIMIZED: Memoize supabase client to ensure stable reference (it's a singleton, but function call creates new reference)
+  const supabase = useMemo(() => createSupabaseBrowserClient(), []);
   const [user, setUser] = useState(null);
   const [userPreferences, setUserPreferences] = useState(null);
   const [loadingPreferences, setLoadingPreferences] = useState(true);
@@ -237,6 +240,41 @@ export default function DestinationDetailClient({ destination, promotionScores =
   // Ensure restaurants is always an array
   const safeRestaurants = Array.isArray(restaurants) ? restaurants : [];
   const hasRestaurants = safeRestaurants.length > 0;
+  
+  // OPTIMIZED: Memoize promoted tours calculation to prevent recalculation on every render
+  const promotedToursToDisplay = useMemo(() => {
+    if (!safePromotedTours || safePromotedTours.length === 0) return [];
+    
+    // Check if promoted tours have full tour data (from server-side fetch)
+    const hasFullTourData = safePromotedTours.some(t => 
+      t.title || t.productContent || t.seo || t.productName
+    );
+    
+    if (hasFullTourData) {
+      // Use full tour data directly
+      return safePromotedTours
+        .filter(t => {
+          const productId = t.product_id || t.productId || t.productCode;
+          return productId && (t.title || t.productContent || t.seo || t.productName);
+        })
+        .slice(0, 6);
+    } else if (tours.all && tours.all.length > 0) {
+      // Fallback: Match promoted product IDs with actual tour data from tours.all
+      const promotedProductIds = new Set(safePromotedTours.map(t => t.product_id || t.productId || t.productCode).filter(Boolean));
+      return tours.all.filter(tour => {
+        const tourId = getTourProductId(tour);
+        return tourId && promotedProductIds.has(tourId);
+      }).slice(0, 6);
+    }
+    
+    return [];
+  }, [safePromotedTours, tours.all]);
+  
+  // OPTIMIZED: Memoize promoted restaurants calculation
+  const promotedRestaurantsToDisplay = useMemo(() => {
+    if (!safePromotedRestaurants || safePromotedRestaurants.length === 0) return [];
+    return safePromotedRestaurants.slice(0, 6);
+  }, [safePromotedRestaurants]);
   
   // Calculate restaurant match scores (must be after safeRestaurants is declared)
   const restaurantMatchById = useMemo(() => {
@@ -1203,102 +1241,69 @@ export default function DestinationDetailClient({ destination, promotionScores =
               </p>
 
               {/* Promoted Tours */}
-              {safePromotedTours && safePromotedTours.length > 0 && (() => {
-                // Check if promoted tours have full tour data (from server-side fetch)
-                // If they have title/productContent, they're full tour objects
-                // Otherwise, try to match with tours.all
-                const hasFullTourData = safePromotedTours.some(t => 
-                  t.title || t.productContent || t.seo || t.productName
-                );
-                
-                let promotedToursToDisplay = [];
-                
-                if (hasFullTourData) {
-                  // Use full tour data directly (like trending tours)
-                  promotedToursToDisplay = safePromotedTours
-                    .filter(t => {
-                      const productId = t.product_id || t.productId || t.productCode;
-                      return productId && (t.title || t.productContent || t.seo || t.productName);
-                    })
-                    .slice(0, 6);
-                } else if (tours.all && tours.all.length > 0) {
-                  // Fallback: Match promoted product IDs with actual tour data from tours.all
-                  const promotedProductIds = new Set(safePromotedTours.map(t => t.product_id || t.productId || t.productCode).filter(Boolean));
-                  promotedToursToDisplay = tours.all.filter(tour => {
-                    const tourId = getTourProductId(tour);
-                    return tourId && promotedProductIds.has(tourId);
-                  }).slice(0, 6);
-                }
+              {promotedToursToDisplay.length > 0 && (
 
-                if (promotedToursToDisplay.length === 0) return null;
-
-                return (
-                  <div className="mb-8">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Promoted Tours</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {promotedToursToDisplay.map((tour, index) => {
-                        const productId = getTourProductId(tour) || tour.product_id || tour.productId || tour.productCode;
-                        if (!productId) return null;
-                        
-                        // Try multiple product ID formats to find match score
-                        const matchScore = matchScores[productId] || 
-                                          matchScores[tour.productId] || 
-                                          matchScores[tour.productCode] || 
-                                          matchScores[tour.product_id] ||
-                                          null;
-                        
-                        return (
-                          <motion.div
-                            key={productId || index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                          >
-                            <TourCard
-                              tour={tour}
-                              destination={safeDestination}
-                              matchScore={matchScore}
-                              user={user}
-                              userPreferences={userPreferences}
-                              onOpenPreferences={() => setShowPreferencesModal(true)}
-                              isFeatured={false}
-                              premiumOperatorTourIds={[]}
-                              isPromoted={true}
-                            />
-                          </motion.div>
-                        );
-                      })}
-                    </div>
+                <div className="mb-8">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Promoted Tours</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {promotedToursToDisplay.map((tour, index) => {
+                      const productId = getTourProductId(tour) || tour.product_id || tour.productId || tour.productCode;
+                      if (!productId) return null;
+                      
+                      // Try multiple product ID formats to find match score
+                      const matchScore = matchScores[productId] || 
+                                        matchScores[tour.productId] || 
+                                        matchScores[tour.productCode] || 
+                                        matchScores[tour.product_id] ||
+                                        null;
+                      
+                      return (
+                        <motion.div
+                          key={productId || index}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.4, delay: index * 0.1 }}
+                          viewport={{ once: true }}
+                        >
+                          <TourCard
+                            tour={tour}
+                            destination={safeDestination}
+                            matchScore={matchScore}
+                            user={user}
+                            userPreferences={userPreferences}
+                            onOpenPreferences={() => setShowPreferencesModal(true)}
+                            isFeatured={false}
+                            premiumOperatorTourIds={[]}
+                            isPromoted={true}
+                            priority={index < 3} // OPTIMIZED: Priority loading for first 3 promoted tours
+                          />
+                        </motion.div>
+                      );
+                    })}
                   </div>
-                );
-              })()}
+                </div>
+              )}
 
               {/* Promoted Restaurants */}
-              {safePromotedRestaurants && safePromotedRestaurants.length > 0 && (() => {
-                const promotedRestaurantsToDisplay = safePromotedRestaurants.slice(0, 6);
-
-                if (promotedRestaurantsToDisplay.length === 0) return null;
-
-                return (
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-xl font-semibold text-gray-800">Promoted Restaurants</h3>
-                      <button
-                        type="button"
-                        onClick={() => setShowRestaurantPreferencesModal(true)}
-                        className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-lg hover:border-purple-300 hover:shadow-sm transition-all"
-                        title="Set your dining preferences for match scores"
-                      >
-                        <Sparkles className="w-4 h-4 text-purple-600" />
-                        <span className="text-sm font-semibold text-gray-900">Match to Your Taste</span>
-                        <span className="text-[10px] font-medium bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">
-                          AI driven
-                        </span>
-                      </button>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {promotedRestaurantsToDisplay.map((restaurant, index) => {
+              {promotedRestaurantsToDisplay.length > 0 && (
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-semibold text-gray-800">Promoted Restaurants</h3>
+                    <button
+                      type="button"
+                      onClick={() => setShowRestaurantPreferencesModal(true)}
+                      className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-lg hover:border-purple-300 hover:shadow-sm transition-all"
+                      title="Set your dining preferences for match scores"
+                    >
+                      <Sparkles className="w-4 h-4 text-purple-600" />
+                      <span className="text-sm font-semibold text-gray-900">Match to Your Taste</span>
+                      <span className="text-[10px] font-medium bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">
+                        AI driven
+                      </span>
+                    </button>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {promotedRestaurantsToDisplay.map((restaurant, index) => {
                         const restaurantId = restaurant.id;
                         if (!restaurantId) return null;
                         
@@ -1412,11 +1417,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
                             </Card>
                           </motion.div>
                         );
-                      })}
-                    </div>
+                    })}
                   </div>
-                );
-              })()}
+                </div>
+              )}
             </div>
           </section>
         )}
@@ -2467,10 +2471,15 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
       <FooterNext />
       
-      <SmartTourFinder
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+      {/* OPTIMIZED: Lazy load SmartTourFinder - only loads when opened */}
+      {isModalOpen && (
+        <Suspense fallback={null}>
+          <SmartTourFinder
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
+        </Suspense>
+      )}
 
       {/* Parent Country Modal - Shows after 5 seconds for small destinations */}
       {showParentCountryModal && safeDestination.parentCountryDestination && (
@@ -2657,13 +2666,16 @@ export default function DestinationDetailClient({ destination, promotionScores =
       )}
       
       
-      {isClient && (
-        <ShareModal
-          isOpen={showShareModal}
-          onClose={() => setShowShareModal(false)}
-          url={typeof window !== 'undefined' ? window.location.href : ''}
-          title={`Discover ${safeDestination.fullName} - Top Tours & Restaurants`}
-        />
+      {/* OPTIMIZED: Lazy load ShareModal - only loads when opened */}
+      {isClient && showShareModal && (
+        <Suspense fallback={null}>
+          <ShareModal
+            isOpen={showShareModal}
+            onClose={() => setShowShareModal(false)}
+            url={typeof window !== 'undefined' ? window.location.href : ''}
+            title={`Discover ${safeDestination.fullName} - Top Tours & Restaurants`}
+          />
+        </Suspense>
       )}
       
       {/* Match to Your Style Modal (Tour Preferences) */}
@@ -2951,18 +2963,22 @@ export default function DestinationDetailClient({ destination, promotionScores =
         </div>
       )}
       
-      {/* Restaurant Match Modal */}
-      <RestaurantMatchModal
-        isOpen={showRestaurantMatchModal}
-        onClose={() => setShowRestaurantMatchModal(false)}
-        restaurant={selectedRestaurant}
-        matchData={selectedRestaurant ? restaurantMatchById.get(selectedRestaurant.id) : null}
-        preferences={localRestaurantPreferences}
-        onOpenPreferences={() => {
-          setShowRestaurantMatchModal(false);
-          setShowRestaurantPreferencesModal(true);
-        }}
-      />
+      {/* OPTIMIZED: Lazy load RestaurantMatchModal - only loads when opened */}
+      {showRestaurantMatchModal && (
+        <Suspense fallback={null}>
+          <RestaurantMatchModal
+            isOpen={showRestaurantMatchModal}
+            onClose={() => setShowRestaurantMatchModal(false)}
+            restaurant={selectedRestaurant}
+            matchData={selectedRestaurant ? restaurantMatchById.get(selectedRestaurant.id) : null}
+            preferences={localRestaurantPreferences}
+            onOpenPreferences={() => {
+              setShowRestaurantMatchModal(false);
+              setShowRestaurantPreferencesModal(true);
+            }}
+          />
+        </Suspense>
+      )}
       
       {/* Match to Your Taste Modal (no account required) */}
       {showRestaurantPreferencesModal && (

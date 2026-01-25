@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
@@ -7,8 +7,8 @@ import { Search, MapPin, Globe, UtensilsCrossed, Ticket, BookOpen, ArrowRight, S
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import AnimatedHeroBackground from './AnimatedHeroBackground';
-import { destinations } from '@/data/destinationsData';
-import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
+// OPTIMIZED: Lazy load large destination data - only load when user starts typing
+// This prevents blocking LCP with 1.27 MB of data processing
 
 const SPOTLIGHT_DESTINATIONS = [
   { id: 'aruba', label: 'Aruba' },
@@ -27,6 +27,9 @@ const Hero = ({ onOpenOnboardingModal }) => {
   const router = useRouter();
   const [query, setQuery] = useState('');
   const [isInputFocused, setIsInputFocused] = useState(false);
+  // OPTIMIZED: Lazy load destination data - only load when user starts typing
+  const [destinationDataLoaded, setDestinationDataLoaded] = useState(false);
+  const [destinationLookup, setDestinationLookup] = useState([]);
 
   const generateSlug = (name) => {
     return name
@@ -38,79 +41,105 @@ const Hero = ({ onOpenOnboardingModal }) => {
       .replace(/^-|-$/g, '');
   };
 
-  const DESTINATION_LOOKUP = useMemo(() => {
-    const regular = destinations.map((destination) => ({
-      id: destination.id,
-      name: destination.name,
-      fullName: destination.fullName || destination.name,
-      country: destination.country || destination.category || '',
-      isViator: false,
-    }));
-
-    const allClassifiedDestinations = Array.isArray(viatorDestinationsClassifiedData) 
-      ? viatorDestinationsClassifiedData 
-      : [];
-
-    const curatedSlugs = new Set(
-      destinations.map(d => d.id.toLowerCase())
-    );
-
-    const curatedBaseNames = new Set();
-    const curatedFullNames = new Set();
+  // OPTIMIZED: Load destination data only when user starts typing (lazy load)
+  // This prevents blocking LCP with 1.27 MB of data processing
+  const loadDestinationData = useCallback(async () => {
+    if (destinationDataLoaded) return;
     
-    destinations.forEach(dest => {
-      const name = (dest.name || '').toLowerCase().trim();
-      const fullName = (dest.fullName || dest.name || '').toLowerCase().trim();
-      curatedBaseNames.add(name);
-      curatedFullNames.add(fullName);
-      const baseName = fullName.split(',')[0].trim();
-      if (baseName && baseName !== fullName) {
-        curatedBaseNames.add(baseName);
-      }
-    });
-    
-    const matchesCurated = (destName, destSlug) => {
-      const normalized = destName.toLowerCase().trim();
-      const baseName = normalized.split(',')[0].trim();
-      if (destSlug && curatedSlugs.has(destSlug.toLowerCase())) {
-        return true;
-      }
-      if (curatedBaseNames.has(normalized) || curatedFullNames.has(normalized)) {
-        return true;
-      }
-      if (curatedBaseNames.has(baseName) || curatedFullNames.has(baseName)) {
-        return true;
-      }
-      return false;
-    };
+    try {
+      // Dynamically import large data files only when needed
+      const [destinationsModule, viatorDataModule] = await Promise.all([
+        import('@/data/destinationsData'),
+        import('@/data/viatorDestinationsClassified.json')
+      ]);
+      
+      const destinations = destinationsModule.destinations;
+      const viatorDestinationsClassifiedData = viatorDataModule.default;
 
-    const viator = allClassifiedDestinations
-      .filter(dest => {
-        const destName = dest.destinationName || '';
-        const destSlug = dest.slug || '';
-        return !matchesCurated(destName, destSlug);
-      })
-      .map((dest) => ({
-        id: dest.slug || generateSlug(dest.destinationName || ''),
-        name: dest.destinationName || '',
-        fullName: dest.destinationName || '',
-        country: dest.country || '',
-        isViator: true,
+      const regular = destinations.map((destination) => ({
+        id: destination.id,
+        name: destination.name,
+        fullName: destination.fullName || destination.name,
+        country: destination.country || destination.category || '',
+        isViator: false,
       }));
 
-    return [...regular, ...viator];
-  }, []);
+      const allClassifiedDestinations = Array.isArray(viatorDestinationsClassifiedData) 
+        ? viatorDestinationsClassifiedData 
+        : [];
+
+      const curatedSlugs = new Set(
+        destinations.map(d => d.id.toLowerCase())
+      );
+
+      const curatedBaseNames = new Set();
+      const curatedFullNames = new Set();
+      
+      destinations.forEach(dest => {
+        const name = (dest.name || '').toLowerCase().trim();
+        const fullName = (dest.fullName || dest.name || '').toLowerCase().trim();
+        curatedBaseNames.add(name);
+        curatedFullNames.add(fullName);
+        const baseName = fullName.split(',')[0].trim();
+        if (baseName && baseName !== fullName) {
+          curatedBaseNames.add(baseName);
+        }
+      });
+      
+      const matchesCurated = (destName, destSlug) => {
+        const normalized = destName.toLowerCase().trim();
+        const baseName = normalized.split(',')[0].trim();
+        if (destSlug && curatedSlugs.has(destSlug.toLowerCase())) {
+          return true;
+        }
+        if (curatedBaseNames.has(normalized) || curatedFullNames.has(normalized)) {
+          return true;
+        }
+        if (curatedBaseNames.has(baseName) || curatedFullNames.has(baseName)) {
+          return true;
+        }
+        return false;
+      };
+
+      const viator = allClassifiedDestinations
+        .filter(dest => {
+          const destName = dest.destinationName || '';
+          const destSlug = dest.slug || '';
+          return !matchesCurated(destName, destSlug);
+        })
+        .map((dest) => ({
+          id: dest.slug || generateSlug(dest.destinationName || ''),
+          name: dest.destinationName || '',
+          fullName: dest.destinationName || '',
+          country: dest.country || '',
+          isViator: true,
+        }));
+
+      setDestinationLookup([...regular, ...viator]);
+      setDestinationDataLoaded(true);
+    } catch (error) {
+      console.error('Error loading destination data:', error);
+      setDestinationDataLoaded(true); // Prevent retry loops
+    }
+  }, [destinationDataLoaded]);
+
+  // Load data when user starts typing (query.length > 0)
+  React.useEffect(() => {
+    if (query.trim().length > 0 && !destinationDataLoaded) {
+      loadDestinationData();
+    }
+  }, [query, destinationDataLoaded, loadDestinationData]);
 
   const filteredDestinations = useMemo(() => {
-    if (!query.trim()) return [];
+    if (!query.trim() || !destinationDataLoaded) return [];
     const searchTerm = query.toLowerCase().trim();
-    return DESTINATION_LOOKUP.filter((dest) => {
+    return destinationLookup.filter((dest) => {
       const nameMatch = dest.name.toLowerCase().includes(searchTerm);
       const fullNameMatch = dest.fullName.toLowerCase().includes(searchTerm);
       const countryMatch = dest.country.toLowerCase().includes(searchTerm);
       return nameMatch || fullNameMatch || countryMatch;
     }).slice(0, 8);
-  }, [query, DESTINATION_LOOKUP]);
+  }, [query, destinationLookup, destinationDataLoaded]);
 
   const hasValidDestination = filteredDestinations.length > 0;
   const showSuggestions = isInputFocused && filteredDestinations.length > 0;

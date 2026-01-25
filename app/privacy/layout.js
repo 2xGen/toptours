@@ -11,7 +11,7 @@ export const metadata = {
       {
         url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
         width: 1200,
-        height: 675,
+        height: 630,
         alt: 'TopTours.ai Privacy Policy',
       },
     ],

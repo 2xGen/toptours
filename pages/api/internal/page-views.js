@@ -37,7 +37,10 @@ export default async function handler(req, res) {
     // Return immediately - don't wait for database write
     return res.status(200).json({ success: true, queued: true });
   } catch (error) {
-    console.error('Error queueing page view:', error);
+    // Only log errors in development to reduce I/O during crawls
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error queueing page view:', error);
+    }
     // Don't fail the request if tracking fails
     return res.status(200).json({ success: true, queued: false });
   }

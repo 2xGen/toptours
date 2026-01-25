@@ -20,7 +20,7 @@ export async function generateMetadata() {
         {
           url: 'https://toptours.ai/OG%20Images/Browse%20through%20more%20then%2050000%20restaurants%20globally.jpg',
           width: 1200,
-          height: 675,
+          height: 630,
           alt: 'Best Restaurants by Destination',
         },
       ],

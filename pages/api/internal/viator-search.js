@@ -4,11 +4,20 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Set cache headers for Vercel Edge Network (shorter cache for search results)
-  res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=3600');
-
   try {
     const body = req.body || {};
+    
+    // Set cache headers for Vercel Edge Network
+    // For search requests (with searchTerm), disable caching to ensure fresh results
+    // For destination-only requests (no searchTerm), allow caching for performance
+    const hasSearchTerm = (body.searchTerm || body.destination || '').trim().length > 0;
+    if (hasSearchTerm) {
+      // No caching for search requests - always get fresh results
+      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+    } else {
+      // Cache destination-only requests (initial page load) for performance
+      res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=3600');
+    }
     const {
       destination,
       searchTerm,
@@ -28,7 +37,7 @@ export default async function handler(req, res) {
     }
 
     const term = destination || searchTerm;
-    const hasSearchTerm = term && term.trim().length > 0;
+    // Reuse hasSearchTerm from above (already calculated for cache headers)
     const perPage = 48; // 48 = 16 rows × 3 columns (perfect fit for grid, under 50 API limit)
     const start = (page - 1) * perPage + 1;
 
@@ -95,11 +104,17 @@ export default async function handler(req, res) {
         try {
           errorText = await response.text();
         } catch (e) {
-          console.error('Failed to read error response body:', e.message);
+          // Only log errors in development to reduce I/O during crawls
+          if (process.env.NODE_ENV === 'development') {
+            console.error('Failed to read error response body:', e.message);
+          }
           errorText = `Unable to read error response: ${e.message}`;
         }
         
-        console.error('Viator products/search API Error Response:', response.status, errorText);
+        // Only log errors in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Viator products/search API Error Response:', response.status, errorText);
+        }
         return res.status(response.status || 500).json({
           error: 'Viator API error',
           status: response.status,
@@ -210,11 +225,17 @@ export default async function handler(req, res) {
       try {
         errorText = await response.text();
       } catch (e) {
-        console.error('Failed to read error response body:', e.message);
+        // Only log errors in development to reduce I/O during crawls
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Failed to read error response body:', e.message);
+        }
         errorText = `Unable to read error response: ${e.message}`;
       }
       
-      console.error('Viator API Error Response:', response.status, errorText);
+      // Only log errors in development to reduce I/O during crawls
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Viator API Error Response:', response.status, errorText);
+      }
       return res.status(response.status || 500).json({
         error: 'Viator API error',
         status: response.status,
@@ -227,7 +248,10 @@ export default async function handler(req, res) {
     const data = await response.json();
     return res.status(200).json(data);
   } catch (error) {
-    console.error('Viator API Error:', error);
+    // Only log errors in development to reduce I/O during crawls
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Viator API Error:', error);
+    }
     if (error.name === 'AbortError') {
       return res.status(504).json({ error: 'Request timeout', details: 'Viator API request exceeded 120 second timeout' });
     }

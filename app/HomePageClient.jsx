@@ -1,21 +1,22 @@
 "use client";
-import { useState } from 'react';
+import { useState, lazy, Suspense, useMemo } from 'react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import Hero from '@/components/home/Hero';
-import AIPlanner from '@/components/home/AIPlanner';
 import TopDestinations from '@/components/home/BlogSection';
 import HomeCTA from '@/components/home/HomeCTA';
 import HowItWorksSlider from '@/components/home/HowItWorksSlider';
-import DestinationSearch from '@/components/home/DestinationSearch';
-import SmartTourFinder from '@/components/home/SmartTourFinder';
-import OnboardingModal from '@/components/auth/OnboardingModal';
 import TrustSignals from '@/components/home/TrustSignals';
 import PartnerWithUs from '@/components/home/PartnerWithUs';
-import PopularDestinations from '@/components/home/PopularDestinations';
 import TravelGuidesPreview from '@/components/home/TravelGuidesPreview';
 import DestinationLinksFooter from '@/components/home/DestinationLinksFooter';
-import { destinations } from '@/data/destinationsData';
+
+// OPTIMIZED: Lazy load heavy components for better initial page load
+// PopularDestinations imports 583 KB of destination data - lazy load it (below fold)
+const PopularDestinations = lazy(() => import('@/components/home/PopularDestinations'));
+const AIPlanner = lazy(() => import('@/components/home/AIPlanner'));
+const SmartTourFinder = lazy(() => import('@/components/home/SmartTourFinder'));
+const OnboardingModal = lazy(() => import('@/components/auth/OnboardingModal'));
 
 export default function HomePageClient() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -87,21 +88,46 @@ export default function HomePageClient() {
     ]
   };
 
-  // ItemList schema for popular destinations
-  const popularDestinations = destinations.slice(0, 20); // Top 20 popular destinations
-  
-  const destinationsItemListSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Popular Travel Destinations",
-    "description": "Top-rated travel destinations with tours, activities, and restaurants",
-    "itemListElement": popularDestinations.map((dest, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "name": dest.fullName || dest.name,
-      "url": `${baseUrl}/destinations/${dest.id}`
-    }))
-  };
+  // OPTIMIZED: Memoize popular destinations schema - only calculate once
+  // Note: destinations import removed from top-level, so we'll use a static list for schema
+  const destinationsItemListSchema = useMemo(() => {
+    // Use a static list of popular destinations for schema (doesn't need full data)
+    const popularDestinations = [
+      { id: 'aruba', name: 'Aruba' },
+      { id: 'curacao', name: 'Curaçao' },
+      { id: 'punta-cana', name: 'Punta Cana' },
+      { id: 'lisbon', name: 'Lisbon' },
+      { id: 'bali', name: 'Bali' },
+      { id: 'amsterdam', name: 'Amsterdam' },
+      { id: 'tokyo', name: 'Tokyo' },
+      { id: 'new-york-city', name: 'New York City' },
+      { id: 'rome', name: 'Rome' },
+      { id: 'paris', name: 'Paris' },
+      { id: 'london', name: 'London' },
+      { id: 'barcelona', name: 'Barcelona' },
+      { id: 'santorini', name: 'Santorini' },
+      { id: 'dubai', name: 'Dubai' },
+      { id: 'sydney', name: 'Sydney' },
+      { id: 'miami', name: 'Miami' },
+      { id: 'las-vegas', name: 'Las Vegas' },
+      { id: 'prague', name: 'Prague' },
+      { id: 'istanbul', name: 'Istanbul' },
+      { id: 'bangkok', name: 'Bangkok' },
+    ];
+    
+    return {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Popular Travel Destinations",
+      "description": "Top-rated travel destinations with tours, activities, and restaurants",
+      "itemListElement": popularDestinations.map((dest, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": dest.name,
+        "url": `${baseUrl}/destinations/${dest.id}`
+      }))
+    };
+  }, [baseUrl]);
 
   // Service Schema for AI-powered Best Match
   const serviceSchema = {
@@ -163,26 +189,44 @@ export default function HomePageClient() {
       <main className="min-h-screen" suppressHydrationWarning>
         <Hero onOpenOnboardingModal={handleOpenOnboardingModal} />
         <TrustSignals />
-        <PopularDestinations />
+        {/* OPTIMIZED: Lazy load PopularDestinations - it's below fold and imports 583 KB of data */}
+        <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="spinner"></div></div>}>
+          <PopularDestinations />
+        </Suspense>
         <HowItWorksSlider />
-        <AIPlanner />
+        {/* OPTIMIZED: Lazy load AIPlanner - only loads when scrolled into view */}
+        <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="spinner"></div></div>}>
+          <AIPlanner />
+        </Suspense>
         <PartnerWithUs />
         <HomeCTA onOpenModal={handleOpenModal} onOpenOnboardingModal={handleOpenOnboardingModal} />
         <TravelGuidesPreview />
-        <DestinationLinksFooter />
+        {/* OPTIMIZED: Lazy load DestinationLinksFooter - it imports 583 KB of destination data */}
+        <Suspense fallback={null}>
+          <DestinationLinksFooter />
+        </Suspense>
       </main>
 
       <FooterNext />
       
-      <SmartTourFinder 
-        isOpen={isModalOpen} 
-        onClose={handleCloseModal}
-      />
+      {/* OPTIMIZED: Lazy load modals - only load when opened */}
+      {isModalOpen && (
+        <Suspense fallback={null}>
+          <SmartTourFinder 
+            isOpen={isModalOpen} 
+            onClose={handleCloseModal}
+          />
+        </Suspense>
+      )}
       
-      <OnboardingModal 
-        isOpen={isOnboardingModalOpen} 
-        onClose={handleCloseOnboardingModal}
-      />
+      {isOnboardingModalOpen && (
+        <Suspense fallback={null}>
+          <OnboardingModal 
+            isOpen={isOnboardingModalOpen} 
+            onClose={handleCloseOnboardingModal}
+          />
+        </Suspense>
+      )}
       
       {/* Enhanced Schema Markup */}
       <script

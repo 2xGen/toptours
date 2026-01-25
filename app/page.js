@@ -8,8 +8,8 @@ export async function generateMetadata() {
   
   return {
     title: 'TopTours.ai - AI-Powered Tour & Restaurant Discovery | 300,000+ Tours Worldwide',
-    description: 'Tours & Restaurants That Match Your Style. Get personalized recommendations with AI-powered Best Match. Explore 300,000+ tours, 3,500+ restaurants, and 19,000+ travel guides across 3,300+ destinations worldwide. See match scores on every listing.',
-    keywords: 'tours, activities, restaurants, travel planning, AI travel recommendations, destination guides, book tours online, travel experiences, vacation activities, personalized travel, best match tours, travel style matching',
+    description: 'Tours & Restaurants That Match Your Style. Get personalized recommendations with AI-powered Best Match. Explore 300,000+ tours, 3,500+ restaurants, and 19,000+ travel guides across 3,300+ destinations worldwide. See match scores on every listing. Book tours, find restaurants, and discover travel experiences.',
+    keywords: 'tours, activities, restaurants, travel planning, AI travel recommendations, destination guides, book tours online, travel experiences, vacation activities, personalized travel, best match tours, travel style matching, things to do, travel booking, tour booking, restaurant finder, travel guide, destination guide, travel recommendations, AI travel planner',
     alternates: {
       canonical: baseUrl,
     },

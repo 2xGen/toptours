@@ -7,14 +7,14 @@ export const metadata = {
     description: 'Learn how TopTours.ai uses artificial intelligence to revolutionize travel planning. Making personalized trip planning accessible to everyone.',
     url: 'https://toptours.ai/about',
     siteName: 'TopTours.ai',
-    images: [
-      {
-        url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
-        width: 1200,
-        height: 675,
-        alt: 'Discover Top Tours and Restaurants with TopTours.ai',
-      },
-    ],
+      images: [
+        {
+          url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'Discover Top Tours and Restaurants with TopTours.ai',
+        },
+      ],
     locale: 'en_US',
     type: 'website',
   },
