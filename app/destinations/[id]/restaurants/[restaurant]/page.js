@@ -15,7 +15,6 @@ import { getRestaurantPromotionScore } from '@/lib/promotionSystem';
 import { getRestaurantPremiumSubscription } from '@/lib/restaurantPremiumServer';
 import { getAllCategoryGuidesForDestination } from '../../lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
-import { getDestinationFeatures } from '@/lib/destinationFeatures';
 
 // Old restaurant slugs with their expected names for fuzzy matching
 const OLD_RESTAURANT_REDIRECTS = {
