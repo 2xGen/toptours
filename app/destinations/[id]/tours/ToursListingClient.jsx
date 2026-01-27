@@ -37,7 +37,7 @@ import Link from 'next/link';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import { Heart, Trophy } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { toast, useToast } from '@/components/ui/use-toast';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
@@ -339,6 +339,8 @@ export default function ToursListingClient({
   // OPTIMIZED: Memoize supabase client to ensure stable reference (it's a singleton, but function call creates new reference)
   const supabase = useMemo(() => createSupabaseBrowserClient(), []);
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   
   // Fetch user and preferences for matching
   useEffect(() => {
@@ -449,7 +451,14 @@ export default function ToursListingClient({
       );
     }
   }, [destination.country, destination.id, destination.name, destination.fullName]);
-  const [searchTerm, setSearchTerm] = useState('');
+  // Initialize search term from URL query parameter if present
+  const [searchTerm, setSearchTerm] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const urlSearch = searchParams.get('search');
+      return urlSearch || '';
+    }
+    return '';
+  });
   const [sortBy, setSortBy] = useState('rating'); // 'rating', 'reviews', 'price-low', 'price-high', 'best-match'
   const [showMoreDestinations, setShowMoreDestinations] = useState(12); // Show 12 initially (2 rows of 6)
   const [showPreferencesModal, setShowPreferencesModal] = useState(false);
@@ -1638,7 +1647,19 @@ export default function ToursListingClient({
       setSearchTotalCount(0);
       setSearchCurrentPage(1);
       setSearchHasMore(false);
+      // Clear search from URL
+      router.replace(pathname, { scroll: false });
       return;
+    }
+
+    // Update URL with search query parameter (for shareable links)
+    const trimmedQuery = searchQuery.trim();
+    const currentUrlSearch = searchParams.get('search');
+    // Only update URL if it's different (avoid redundant updates)
+    if (currentUrlSearch !== trimmedQuery) {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set('search', trimmedQuery);
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     }
 
     // Search Viator API for tours matching the search term
@@ -1649,7 +1670,6 @@ export default function ToursListingClient({
       // Search term should be JUST what the user typed (e.g., "snorkeling")
       // NOT including destination name - the destination ID filter handles that
       // This uses /search/freetext endpoint with destination filter
-      const trimmedQuery = searchQuery.trim();
       
       // COMPLIANCE: Only fetch page 1 on initial search (max 50 products per Viator rules)
       // Additional pages will be fetched when user clicks "Load More" (user-driven pagination)
@@ -1708,18 +1728,35 @@ export default function ToursListingClient({
     } finally {
       setLoading(false);
     }
-  }, [effectiveDestinationId, popularTours]);
+  }, [effectiveDestinationId, popularTours, router, pathname, searchParams]);
 
-  // Clear search when search term is cleared
+  // Clear search when search term is cleared (but not on initial mount)
+  const hasInitialized = useRef(false);
   useEffect(() => {
+    if (!hasInitialized.current) {
+      hasInitialized.current = true;
+      // On mount, check if URL has search param and initialize search
+      const urlSearch = searchParams.get('search');
+      if (urlSearch && urlSearch.trim().length >= 2) {
+        // Only auto-search if we have a valid search term in URL
+        performSearch(urlSearch);
+      }
+      return;
+    }
+    
+    // After initialization, clear search state and URL when search term is cleared
     if (searchTerm.trim().length === 0) {
       setIsSearching(false);
       setSearchResults([]);
       setSearchTotalCount(0);
       setSearchCurrentPage(1);
       setSearchHasMore(false);
+      // Clear search from URL only if it exists
+      if (searchParams.get('search')) {
+        router.replace(pathname, { scroll: false });
+      }
     }
-  }, [searchTerm]);
+  }, [searchTerm, router, pathname, searchParams, performSearch]);
 
   const hasAutoTagFetchRun = useRef(false);
   useEffect(() => {

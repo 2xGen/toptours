@@ -178,12 +178,31 @@ export default async function handler(req, res) {
       productFiltering.flags = specialFeatures;
     }
 
+    // Clean up empty filter objects/arrays before sending to API
+    if (Object.keys(productFiltering.dateRange).length === 0) {
+      delete productFiltering.dateRange;
+    }
+    if (Object.keys(productFiltering.price).length === 0) {
+      delete productFiltering.price;
+    }
+    if (Object.keys(productFiltering.rating).length === 0) {
+      delete productFiltering.rating;
+    }
+    if (Object.keys(productFiltering.durationInMinutes).length === 0) {
+      delete productFiltering.durationInMinutes;
+    }
+    if (!Array.isArray(productFiltering.tags) || productFiltering.tags.length === 0) {
+      delete productFiltering.tags;
+    }
+    if (!Array.isArray(productFiltering.flags) || productFiltering.flags.length === 0) {
+      delete productFiltering.flags;
+    }
+
     const requestBody = {
       searchTerm: term ? term.trim() : '',
       productFiltering: Object.keys(productFiltering).length > 0 ? productFiltering : undefined,
       productSorting: {
-        sort: 'PRICE',
-        order: 'DESCENDING',
+        sort: 'DEFAULT', // Sort by relevancy (best matches first) - order field must be omitted for DEFAULT
       },
       searchTypes: [
         {

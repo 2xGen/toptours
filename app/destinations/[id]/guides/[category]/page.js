@@ -616,6 +616,9 @@ export default async function CategoryGuidePage({ params }) {
         productFiltering: {
           destination: viatorDestinationId.toString() // Filter by destination ID
         },
+        productSorting: {
+          sort: 'DEFAULT', // Sort by relevancy (best matches first) - order field must be omitted for DEFAULT
+        },
           currency: 'USD'
         };
       
@@ -661,6 +664,9 @@ export default async function CategoryGuidePage({ params }) {
                 count: maxTours
               }
             }],
+            productSorting: {
+              sort: 'DEFAULT', // Sort by relevancy (best matches first) - order field must be omitted for DEFAULT
+            },
             currency: 'USD'
           };
           
