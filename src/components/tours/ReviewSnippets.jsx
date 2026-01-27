@@ -92,6 +92,9 @@ export default function ReviewSnippets({ reviews, tour, productId, viatorBooking
         className="review-snippets-section"
         data-nosnippet="true"
         data-viator-content="review-snippets"
+        // Explicitly prevent Google from auto-detecting Review schema
+        // This section is for display only, not structured data
+        // data-nosnippet already prevents Google from using this content
       >
         <div className="bg-white rounded-lg shadow-sm p-6 md:p-8">
           {/* Header */}

@@ -29,6 +29,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
+import DestinationStickyNav from '@/components/DestinationStickyNav';
 import Link from 'next/link';
 import { getTourUrl, getTourProductId, generateTourSlug } from '@/utils/tourHelpers';
 import { destinations } from '@/data/destinationsData';
@@ -336,7 +337,7 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, travelers: exter
   );
 }
 
-export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], faqs = [], reviews = null, recommendedTours: initialRecommendedTours = [] }) {
+export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }, faqs = [], reviews = null, recommendedTours: initialRecommendedTours = [] }) {
   // Note: recommendedTours prop kept for backward compatibility but not used (removed to reduce API calls)
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -2237,6 +2238,21 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         </div>
       </section>
 
+      {/* Destination Sticky Navigation */}
+      {(() => {
+        const destId = destination?.id || subtleDestinationSlug || unmatchedDestinationSlug || effectiveDestinationData?.slug || effectiveDestinationData?.destinationId;
+        if (!destId) return null;
+        return (
+          <DestinationStickyNav
+            destinationId={destId}
+            destinationName={destination?.fullName || destination?.name || effectiveDestinationData?.destinationName || unmatchedDestinationName}
+            hasRestaurants={destinationFeatures.hasRestaurants}
+            hasAirportTransfers={destinationFeatures.hasAirportTransfers}
+            hasBabyEquipment={destinationFeatures.hasBabyEquipment}
+          />
+        );
+      })()}
+
       {/* Main Content */}
       <section className="py-12 sm:py-16 bg-white" style={{ overflowX: 'hidden' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2923,6 +2939,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
 
               {/* Review Snippets Section (After Ratings, Before FAQs) */}
               {/* data-nosnippet prevents Google from using review content per Viator guidelines */}
+              {/* No Review schema - only aggregateRating in Product schema (which is correct) */}
               {reviews && reviews.reviews && reviews.reviews.length > 0 && (
                 <motion.section
                   initial={{ opacity: 0, y: 20 }}

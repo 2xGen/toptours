@@ -13,52 +13,56 @@ import { getViatorDestinationById, getViatorDestinationBySlug } from '@/lib/supa
 import { redirect } from 'next/navigation';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
-import { hasDestinationPage } from '@/data/destinationFullContent';
+import { hasDestinationPage, getDestinationFullContent } from '@/data/destinationFullContent';
 import { headers as getHeaders } from 'next/headers';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
+import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import { trackToursForSitemap } from '@/lib/tourSitemap';
+import { DESTINATIONS_WITH_RESTAURANTS } from '@/data/destinationsWithRestaurants';
+import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
 
-/**
- * Generate metadata for SEO
- */
-const buildSeoCopy = (destination) => {
-  const destinationName = destination.fullName || destination.name;
-  const categoryNames = (destination.tourCategories || [])
-    .map((category) => category?.name)
-    .filter(Boolean);
-  const topCategories = categoryNames.slice(0, 4);
+// Lightweight function to check if destination has restaurants (for metadata)
+// OPTIMIZED: For 183 curated destinations, uses static Set (instant, zero DB calls)
+async function checkHasRestaurants(destinationId) {
+  const normalizedId = destinationId.toLowerCase();
+  
+  // First check static Set (instant, zero DB calls for 183 curated destinations)
+  if (DESTINATIONS_WITH_RESTAURANTS.has(normalizedId)) {
+    return { hasRestaurants: true };
+  }
+  
+  // For destinations NOT in the 183 curated list, check database (lightweight check only)
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    const { count, error } = await supabase
+      .from('restaurants')
+      .select('*', { count: 'exact', head: true })
+      .eq('destination_id', destinationId)
+      .eq('is_active', true)
+      .limit(1);
+    
+    if (!error && count && count > 0) {
+      return { hasRestaurants: true };
+    }
+  } catch (error) {
+    // If DB check fails, return false (don't block metadata generation)
+  }
+  
+  return { hasRestaurants: false };
+}
 
-  const description =
-    destination.seo?.description ||
-    [
-      destination.briefDescription,
-      topCategories.length
-        ? `Top experiences include ${topCategories.join(', ')} and more local-only adventures.`
-        : '',
-      `Browse trusted operators, then sort by Best Match to rank tours by your travel style in ${destinationName}.`,
-    ]
-      .filter(Boolean)
-      .join(' ');
-
-  const keywordSet = new Set([
-    `${destinationName} tours`,
-    `${destinationName} activities`,
-    `Top things to do in ${destinationName}`,
-    `${destinationName} excursions`,
-  ]);
-  topCategories.forEach((category) => {
-    keywordSet.add(`${destinationName} ${category.toLowerCase()} tours`);
-  });
-
-  return {
-    title: `Top Tours & Activities in ${destinationName}`,
-    description: description || `Discover curated tours and activities in ${destinationName}.`,
-    keywords: Array.from(keywordSet).join(', '),
-  };
-};
+// Lightweight function to get guide count (for metadata)
+async function getGuideCountForMetadata(destinationId) {
+  try {
+    const guides = await getAllCategoryGuidesForDestination(destinationId);
+    return guides?.length || 0;
+  } catch (error) {
+    return 0;
+  }
+}
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
@@ -119,7 +123,7 @@ export async function generateMetadata({ params }) {
         }
       }
       
-      // Use SEO content to create destination object
+      // Use SEO content to create destination object (with full content)
       destination = {
         id: id,
         name: seoContent.destinationName,
@@ -128,7 +132,10 @@ export async function generateMetadata({ params }) {
         seo: seoContent.seo,
         briefDescription: seoContent.briefDescription,
         heroDescription: seoContent.heroDescription,
-        tourCategories: [],
+        whyVisit: seoContent.whyVisit || [],
+        highlights: seoContent.highlights || [],
+        bestTimeToVisit: seoContent.bestTimeToVisit,
+        tourCategories: seoContent.tourCategories || [],
         country: country, // Get from classified data (same as destinations page)
         region: region,
       };
@@ -220,19 +227,199 @@ export async function generateMetadata({ params }) {
 
   const destinationName = destination.fullName || destination.name;
   
-  // Use SEO content if available, otherwise build from destination
-  const seoTitle = destination.seo?.title || `Top Tours & Activities in ${destinationName}`;
-  const seoDescription = destination.seo?.description || destination.briefDescription || buildSeoCopy(destination).description;
+  // Get full content if available (for 182 curated destinations)
+  const fullContent = getDestinationFullContent(destination.id || id);
+  
+  // Check if destination has restaurants and guides (lightweight checks for metadata)
+  const [restaurantCheck, guideCount] = await Promise.all([
+    checkHasRestaurants(destination.id || id),
+    getGuideCountForMetadata(destination.id || id),
+  ]);
+  
+  const hasRestaurants = restaurantCheck.hasRestaurants;
+  const hasGuides = guideCount > 0;
+  const region = destination.category || destination.region || fullContent?.region || fullContent?.category;
+  
+  // Use ALL available content from destination (prioritize fullContent for 182 curated destinations)
+  const briefDescription = fullContent?.briefDescription || destination.briefDescription || '';
+  const heroDescription = fullContent?.heroDescription || destination.heroDescription || '';
+  const whyVisit = fullContent?.whyVisit || destination.whyVisit || [];
+  const highlights = fullContent?.highlights || destination.highlights || [];
+  const bestTimeToVisit = fullContent?.bestTimeToVisit || destination.bestTimeToVisit;
+  const tourCategories = fullContent?.tourCategories || destination.tourCategories || [];
+  
+  // Generate title optimized for tour/excursion searches (NO brand name - better for SEO)
+  // OPTIMIZED FOR 2026 SEO: Focus on search intent - tours, activities, excursions
+  // Simple, consistent format - this page shows ALL tours, not just one category
+  // Use "Explore" instead of "Book" - we're a referral/affiliate site, not a booking platform
+  let title = `${destinationName} Tours & Activities: Explore Top-Rated Excursions`;
+  
+  // Ensure title is optimal length (50-60 chars is ideal for 2026 SEO)
+  // If too short, add region or year for better keyword coverage
+  if (title.length < 45 && region) {
+    title = `${destinationName} ${region} Tours & Activities`;
+  }
+  if (title.length < 45) {
+    title = `${destinationName} Tours & Activities 2026`;
+  }
+  
+  // If too long, trim intelligently
+  if (title.length > 60) {
+    // Remove "Explore Top-Rated Excursions" if present and too long
+    title = title.replace(': Explore Top-Rated Excursions', '');
+    if (title.length > 60) {
+      // Trim to last complete phrase
+      const trimmed = title.substring(0, 57);
+      const lastSpace = trimmed.lastIndexOf(' ');
+      if (lastSpace > 30) {
+        title = trimmed.substring(0, lastSpace) + '...';
+      } else {
+        title = trimmed + '...';
+      }
+    }
+  }
+  
+  // Build RICH description using ALL available content
+  // OPTIMIZED: Prioritize most important content, respect 155 char limit (safe for mobile 120 + desktop 158)
+  let description = '';
+  const MAX_DESC_LENGTH = 155; // Safe limit: works on mobile (120) and desktop (158)
+  
+  // Priority 1: Start with briefDescription or heroDescription (core value prop)
+  if (briefDescription) {
+    const firstSentence = briefDescription.split(/[.!?]+/)[0].trim();
+    if (firstSentence.length <= MAX_DESC_LENGTH) {
+      description = briefDescription.length <= MAX_DESC_LENGTH ? briefDescription : firstSentence + '.';
+    } else {
+      description = firstSentence.substring(0, MAX_DESC_LENGTH - 3).trim() + '...';
+    }
+  } else if (heroDescription) {
+    const sentences = heroDescription.split(/[.!?]+/).filter(s => s.trim().length > 0);
+    const firstSentence = sentences[0]?.trim() || '';
+    if (firstSentence.length <= MAX_DESC_LENGTH) {
+      description = firstSentence + (firstSentence.endsWith('.') ? '' : '.');
+    } else {
+      description = firstSentence.substring(0, MAX_DESC_LENGTH - 3).trim() + '...';
+    }
+  }
+  
+  // Priority 2: Add highlights (must-see places) if we have room
+  if (highlights.length > 0 && description.length < MAX_DESC_LENGTH - 40) {
+    const highlightText = highlights.slice(0, 2)
+      .map(h => {
+        const name = typeof h === 'string' ? h.split(/[-]/)[0].trim().split(/[.,]/)[0].trim() : h;
+        return name;
+      })
+      .filter(Boolean)
+      .join(', ');
+    
+    if (highlightText) {
+      const addition = ` Must-see: ${highlightText}.`;
+      if (description.length + addition.length <= MAX_DESC_LENGTH) {
+        description += addition;
+      }
+    }
+  }
+  
+  // Priority 3: Add tour-specific info (this is a tours page, not restaurants)
+  // Focus on tours, activities, excursions - what people search for
+  if (description.length < MAX_DESC_LENGTH - 30 && tourCategories.length > 0) {
+    const topCategories = tourCategories.slice(0, 2)
+      .map(cat => typeof cat === 'string' ? cat : cat.name)
+      .filter(Boolean)
+      .join(', ');
+    if (topCategories) {
+      const addition = ` Popular: ${topCategories}.`;
+      if (description.length + addition.length <= MAX_DESC_LENGTH) {
+        description += addition;
+      }
+    }
+  }
+  
+  // Priority 4: Add best time to visit if we have room (very concise)
+  if (bestTimeToVisit?.bestMonths && description.length < MAX_DESC_LENGTH - 25) {
+    const bestMonths = bestTimeToVisit.bestMonths.split(/[.,]/)[0].trim();
+    if (bestMonths) {
+      const addition = ` Best: ${bestMonths}.`;
+      if (description.length + addition.length <= MAX_DESC_LENGTH) {
+        description += addition;
+      }
+    }
+  }
+  
+  // Fallback if we still don't have a good description
+  if (!description || description.length < 50) {
+    description = `Discover top-rated ${destinationName} tours, excursions, and activities. ${highlights.length > 0 ? `Explore ${highlights[0]}` : 'Explore options'} and experience the best of ${destinationName}.`;
+  }
+  
+  // Final trim: Ensure description is optimal length (155 chars max for 2026 SEO)
+  if (description.length > MAX_DESC_LENGTH) {
+    const trimmed = description.substring(0, MAX_DESC_LENGTH - 3);
+    const lastPeriod = trimmed.lastIndexOf('.');
+    const lastExclamation = trimmed.lastIndexOf('!');
+    const lastQuestion = trimmed.lastIndexOf('?');
+    const lastPunctuation = Math.max(lastPeriod, lastExclamation, lastQuestion);
+    
+    if (lastPunctuation > 80) {
+      description = trimmed.substring(0, lastPunctuation + 1);
+    } else {
+      const lastSpace = trimmed.lastIndexOf(' ');
+      if (lastSpace > 100) {
+        description = trimmed.substring(0, lastSpace) + '...';
+      } else {
+        description = trimmed + '...';
+      }
+    }
+  }
+  
+  // Generate enhanced keywords using ALL available content
+  let keywords = `${destinationName} tours, ${destinationName} activities, ${destinationName} experiences, things to do in ${destinationName}, ${destinationName} travel guide, explore tours ${destinationName}, ${destinationName} excursions, ${destinationName} attractions, ${destinationName} vacation, ${destinationName} travel planning`;
+  
+  // Add intent keywords
+  keywords += `, best ${destinationName}, top ${destinationName}, popular ${destinationName}, where to visit ${destinationName}`;
+  
+  // Add highlight keywords (must-see places)
+  if (highlights.length > 0) {
+    const highlightKeywords = highlights.slice(0, 3)
+      .map(h => {
+        const name = typeof h === 'string' ? h.split(/[-]/)[0].trim().split(/[.,]/)[0].trim() : h;
+        return name ? `${name} ${destinationName}` : null;
+      })
+      .filter(Boolean)
+      .join(', ');
+    if (highlightKeywords) {
+      keywords += `, ${highlightKeywords}`;
+    }
+  }
+  
+  // Focus keywords on tours, activities, excursions (this is a tours listing page)
+  // Add tour-specific intent keywords (use "explore" and "view" instead of "book")
+  keywords += `, ${destinationName} excursions, ${destinationName} day trips, ${destinationName} sightseeing tours, ${destinationName} guided tours, explore ${destinationName} tours, ${destinationName} tour operators, ${destinationName} activities, view ${destinationName} tours`;
+  
+  // Add tour category keywords
+  if (tourCategories.length > 0) {
+    const categoryKeywords = tourCategories
+      .slice(0, 4)
+      .map(cat => {
+        const name = typeof cat === 'string' ? cat : cat.name;
+        return name ? `${name} ${destinationName}` : null;
+      })
+      .filter(Boolean)
+      .join(', ');
+    if (categoryKeywords) {
+      keywords += `, ${categoryKeywords}`;
+    }
+  }
+  
   // Always use standardized OG image so dimensions are correct
   const ogImage = 'https://toptours.ai/OG%20Images/Browse%20Tours%20by%20Best%20Match.jpg';
   
   return {
-    title: `${seoTitle} | TopTours.ai`,
-    description: seoDescription,
-    keywords: `${destinationName} tours, ${destinationName} activities, ${destinationName} excursions, things to do in ${destinationName}, book tours ${destinationName}, ${destinationName} travel experiences, ${destinationName} day trips, ${destinationName} sightseeing, ${destinationName} adventure tours, ${destinationName} travel guide`,
+    title: title, // NO brand name - better for SEO rankings
+    description: description,
+    keywords,
     openGraph: {
-      title: seoTitle,
-      description: seoDescription,
+      title: title,
+      description: description.length > 200 ? description.substring(0, 197) + '...' : description,
       url: `https://toptours.ai/destinations/${id}/tours`,
       images: [
         {
@@ -248,8 +435,8 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: seoTitle,
-      description: seoDescription,
+      title: title,
+      description: description.length > 200 ? description.substring(0, 197) + '...' : description,
       images: [ogImage],
     },
     alternates: {
@@ -332,10 +519,17 @@ export default async function ToursListingPage({ params }) {
       }
     } else {
       // It's a slug - find the destination by slug
-      destinationInfo = await findDestinationBySlug(id);
-      
-      if (destinationInfo) {
-        viatorDestinationId = destinationInfo.destinationId;
+      try {
+        const destInfo = await getViatorDestinationBySlug(id);
+        if (destInfo && destInfo.name) {
+          destinationInfo = {
+            destinationName: destInfo.name,
+            destinationId: destInfo.id,
+          };
+          viatorDestinationId = destInfo.id;
+        }
+      } catch (error) {
+        // Continue with fallback
       }
     }
     
@@ -622,7 +816,8 @@ export default async function ToursListingPage({ params }) {
     restaurantPromotionScoresResult,
     premiumOperatorTourIdsResult,
     premiumRestaurantIdsResult,
-    categoryGuidesResult
+    categoryGuidesResult,
+    destinationFeaturesResult
   ] = await Promise.allSettled([
     // Promotion scores by destination
     destinationIdForScores 
@@ -655,7 +850,12 @@ export default async function ToursListingPage({ params }) {
       : Promise.resolve([]),
     
     // Category guides
-    getAllCategoryGuidesForDestination(destination.id).catch(() => [])
+    getAllCategoryGuidesForDestination(destination.id).catch(() => []),
+    
+    // Destination features (lightweight checks for sticky nav)
+    destination.id 
+      ? getDestinationFeatures(destination.id).catch(() => ({ hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }))
+      : Promise.resolve({ hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false })
   ]);
 
   // Extract results
@@ -666,6 +866,7 @@ export default async function ToursListingPage({ params }) {
   const premiumOperatorTourIds = premiumOperatorTourIdsResult.status === 'fulfilled' ? premiumOperatorTourIdsResult.value : [];
   const premiumRestaurantIds = premiumRestaurantIdsResult.status === 'fulfilled' ? premiumRestaurantIdsResult.value : [];
   let categoryGuides = categoryGuidesResult.status === 'fulfilled' ? categoryGuidesResult.value : [];
+  const destinationFeatures = destinationFeaturesResult.status === 'fulfilled' ? destinationFeaturesResult.value : { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false };
 
   // CRITICAL: Also fetch scores by product IDs as a fallback (after we have product IDs)
   // This ensures we find scores even if destination_id format doesn't match (slug vs numeric ID)
@@ -955,6 +1156,7 @@ export default async function ToursListingPage({ params }) {
         hasRestaurants={hasRestaurants}
         restaurants={restaurants}
         categoryGuides={categoryGuides}
+        destinationFeatures={destinationFeatures}
       />
     </>
   );

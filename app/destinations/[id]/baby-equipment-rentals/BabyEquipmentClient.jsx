@@ -35,6 +35,7 @@
 import { useState, useEffect } from 'react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
+import DestinationStickyNav from '@/components/DestinationStickyNav';
 import { motion } from 'framer-motion';
 import { 
   ExternalLink, ArrowRight, Car, Hotel, Shield, Star, CheckCircle, 
@@ -116,7 +117,7 @@ const UNIVERSAL_PRODUCT_CATEGORIES = [
   },
 ];
 
-export default function BabyEquipmentClient({ destination, categoryGuides = [], pageData = null }) {
+export default function BabyEquipmentClient({ destination, destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }, pageData = null }) {
   const [showStickyButton, setShowStickyButton] = useState(false);
   
   useEffect(() => {
@@ -259,6 +260,15 @@ export default function BabyEquipmentClient({ destination, categoryGuides = [], 
             </nav>
           </div>
         </section>
+
+        {/* Destination Sticky Navigation */}
+        <DestinationStickyNav
+          destinationId={destination.id}
+          destinationName={destinationName}
+          hasRestaurants={destinationFeatures.hasRestaurants}
+          hasAirportTransfers={destinationFeatures.hasAirportTransfers}
+          hasBabyEquipment={destinationFeatures.hasBabyEquipment}
+        />
 
       {/* Popular Baby Equipment Rentals Section */}
       <section className="py-12 sm:py-16 bg-gray-50">
@@ -575,10 +585,12 @@ export default function BabyEquipmentClient({ destination, categoryGuides = [], 
                   <div className="bg-gray-50 rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Car Rental Deals in {destinationName}</h4>
                     <p className="text-gray-600 text-sm mb-3">Rent a car for maximum flexibility and explore at your own pace on Expedia USA.</p>
-                    <Button variant="outline" className="w-full flex items-center justify-center gap-2" onClick={() => window.open(`https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk`, '_blank')}>
-                      Find Car Rental Deals
-                      <ExternalLink className="w-4 h-4" />
-                    </Button>
+                    <Link href={`/destinations/${destination.id}/car-rentals`} className="block">
+                      <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+                        Find Car Rental Deals
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>

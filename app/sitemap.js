@@ -4,7 +4,6 @@ import { getRestaurantCountsByDestination } from '../src/lib/restaurants.js';
 import { createSupabaseServiceRoleClient } from '../src/lib/supabaseClient.js';
 import { hasDestinationPage } from '../src/data/destinationFullContent.js';
 import { getAllBabyEquipmentRentalsDestinations } from '../src/lib/babyEquipmentRentals.js';
-import { getAllCategoryGuidesForDestination } from '../src/lib/categoryGuides.js';
 import viatorDestinationsClassifiedData from '../src/data/viatorDestinationsClassified.json';
 
 // Helper to generate slug
@@ -22,6 +21,8 @@ export default async function sitemap() {
   const baseUrl = 'https://toptours.ai';
   // OPTIMIZED: Use actual date for better SEO - search engines prefer real lastModified dates
   const currentDate = new Date().toISOString();
+  // lastmod for newly added guide/car-rental/airport-transfer pages (26 Jan 2026)
+  const addedPageDate = new Date('2026-01-26').toISOString();
 
   // Static pages
   const staticPages = [
@@ -105,6 +106,7 @@ export default async function sitemap() {
   // Add destinations with full content (but not in curated destinations list)
   // These should be in the main sitemap, not in "destinations-without-guides"
   const destinationsWithFullContent = [];
+  const fullContentSlugs = [];
   if (Array.isArray(viatorDestinationsClassifiedData)) {
     const curatedSlugs = new Set(destinations.map(d => d.id.toLowerCase()));
     
@@ -117,6 +119,7 @@ export default async function sitemap() {
       
       // Include if has full content page
       if (hasDestinationPage(slug)) {
+        fullContentSlugs.push(slug);
         destinationsWithFullContent.push({
           url: `${baseUrl}/destinations/${slug}`,
           lastModified: currentDate,
@@ -126,6 +129,12 @@ export default async function sitemap() {
       }
     }
   }
+
+  // All destination IDs we have pages for (curated + full content) — used for guides, car rentals, airport transfers
+  const allDestinationIds = [
+    ...destinations.map((d) => d.id),
+    ...fullContentSlugs,
+  ];
 
   // Restaurant listing pages per destination (fetch from database)
   const restaurantCounts = await getRestaurantCountsByDestination();
@@ -208,6 +217,7 @@ export default async function sitemap() {
 
   // Category guide pages (fetch from database - batch fetch all guides at once)
   const categoryGuidePages = [];
+  const airportTransferInDb = new Set();
   try {
     const supabase = createSupabaseServiceRoleClient();
     const { data: allGuides, error: guidesError } = await supabase
@@ -218,6 +228,9 @@ export default async function sitemap() {
     if (!guidesError && Array.isArray(allGuides)) {
       allGuides.forEach((guide) => {
         if (guide.destination_id && guide.category_slug) {
+          if (guide.category_slug === 'airport-transfers') {
+            airportTransferInDb.add(guide.destination_id.toLowerCase());
+          }
           categoryGuidePages.push({
             url: `${baseUrl}/destinations/${guide.destination_id}/guides/${guide.category_slug}`,
             lastModified: currentDate,
@@ -231,6 +244,33 @@ export default async function sitemap() {
     // Silently fail - category guides are optional for sitemap
     console.warn('Failed to fetch category guides for sitemap:', error.message);
   }
+
+  // Destination guides listing pages: /destinations/[id]/guides (26 Jan 2026)
+  const guidesListingPages = allDestinationIds.map((id) => ({
+    url: `${baseUrl}/destinations/${id}/guides`,
+    lastModified: addedPageDate,
+    changeFrequency: 'weekly',
+    priority: 0.85,
+  }));
+
+  // Car rental pages: /destinations/[id]/car-rentals (26 Jan 2026)
+  const carRentalPages = allDestinationIds.map((id) => ({
+    url: `${baseUrl}/destinations/${id}/car-rentals`,
+    lastModified: addedPageDate,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
+
+  // Airport transfer pages: /destinations/[id]/guides/airport-transfers (26 Jan 2026)
+  // Include only for destinations not already in category_guides (default/on-the-fly pages)
+  const airportTransferPages = allDestinationIds
+    .filter((id) => !airportTransferInDb.has(String(id).toLowerCase()))
+    .map((id) => ({
+      url: `${baseUrl}/destinations/${id}/guides/airport-transfers`,
+      lastModified: addedPageDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    }));
 
   // Tour sitemap index reference (for 300k+ tours, we use sitemap indexing)
   // Individual tour pages are in separate sitemap files (sitemap-tours-1.xml, etc.)
@@ -246,7 +286,10 @@ export default async function sitemap() {
     ...restaurantDetailPages,
     ...babyEquipmentRentalPages, // Baby equipment rental pages
     ...travelGuidePages,
+    ...guidesListingPages, // /destinations/[id]/guides (26 Jan 2026)
+    ...carRentalPages, // /destinations/[id]/car-rentals (26 Jan 2026)
     ...categoryGuidePages, // Category guide pages (destination-specific guides)
+    ...airportTransferPages, // /destinations/[id]/guides/airport-transfers not in DB (26 Jan 2026)
     // Note: Individual tour pages are in sitemap-tours-[index].xml files
     // See app/sitemap-tours-[index]/route.js for dynamic tour sitemap generation
   ];

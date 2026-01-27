@@ -3,6 +3,7 @@ import { getDestinationById } from '@/data/destinationsData';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
+import { slugToViatorId as slugToViatorIdMap } from '@/data/viatorDestinationMap';
 import { getViatorDestinationById, getViatorDestinationBySlug } from '@/lib/supabaseCache';
 import { redirect } from 'next/navigation';
 import ErrorBoundary from '@/components/ErrorBoundary';
@@ -338,16 +339,8 @@ export default async function DestinationDetailPage({ params }) {
   
   // CRITICAL: Use database as source of truth - query by slug to get correct destination ID
   // This ensures we use the correct ID from the database (id field = Viator destination ID)
-  let slugToViatorId = {};
-  let isCuratedDestination = false;
-  
-  try {
-    const viatorMap = await import('@/data/viatorDestinationMap');
-    slugToViatorId = viatorMap.slugToViatorId || {};
-    isCuratedDestination = destination.id && slugToViatorId[destination.id];
-  } catch (error) {
-    // Continue without the map - will use database lookup only
-  }
+  const slugToViatorId = slugToViatorIdMap || {};
+  const isCuratedDestination = !!(destination.id && slugToViatorId[destination.id]);
 
   // Query database by slug to get the correct destination ID
   if (isCuratedDestination && !destination.destinationId) {

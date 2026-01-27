@@ -158,7 +158,7 @@ export async function generateMetadata({ params }) {
       // Add destination-specific long-tail keywords
       if (destination) {
         keywords.add(`${destination} tours`);
-        keywords.add(`book ${tourTitle.toLowerCase()} ${destination}`);
+        keywords.add(`explore ${tourTitle.toLowerCase()} ${destination}`);
         keywords.add(`${destination} activities`);
         keywords.add(`things to do ${destination}`);
       }
@@ -174,11 +174,12 @@ export async function generateMetadata({ params }) {
         }
       });
       
-      // Add booking-related long-tail keywords
-      keywords.add('book tour online');
-      keywords.add('tour booking');
+      // Add exploration/viewing-related long-tail keywords (we're affiliate, not booking platform)
+      keywords.add('explore tour');
+      keywords.add('view tour');
       if (destination) {
         keywords.add(`best tours ${destination}`);
+        keywords.add(`explore ${destination} tours`);
       }
       
       // Add review/rating keywords if available
@@ -310,61 +311,68 @@ export default async function TourDetailPage({ params }) {
     const mainImage = tour.images?.[0]?.variants?.[3]?.url || tour.images?.[0]?.variants?.[0]?.url;
     
     // Build Product schema - only include if at least offers OR aggregateRating is available
-    const hasOffers = pricing && pricing > 0;
-    const hasRating = tour.reviews?.combinedAverageRating && tour.reviews?.totalReviews;
+    // CRITICAL: Check BOTH pricing prop AND tour object for pricing (Viator API has multiple locations)
+    const pricingFromProp = pricing && typeof pricing === 'number' && pricing > 0 ? pricing : null;
+    const pricingFromTour = tour.pricing?.summary?.fromPrice || 
+                           tour.pricing?.fromPrice || 
+                           tour.pricingInfo?.fromPrice || 
+                           tour.price?.fromPrice ||
+                           (typeof tour.price === 'number' && tour.price > 0 ? tour.price : null);
+    const finalPricing = pricingFromProp || pricingFromTour;
+    const hasOffers = finalPricing && finalPricing > 0;
+    
+    // Check reviews - Viator API always includes reviews object, but values might be 0
+    const hasRating = tour.reviews?.combinedAverageRating && 
+                     tour.reviews?.combinedAverageRating > 0 &&
+                     tour.reviews?.totalReviews && 
+                     tour.reviews?.totalReviews > 0;
     
     // Only create Product schema if valid (Google requires offers, review, or aggregateRating)
-    const productJsonLd = (hasOffers || hasRating) ? {
-      '@context': 'https://schema.org',
-      '@type': 'Product',
-      name: tour.title,
-      description: tour.description?.summary || tour.description?.shortDescription || '',
-      image: mainImage ? [mainImage] : undefined,
-      sku: productId,
-      offers: hasOffers ? {
-            '@type': 'Offer',
-            url: canonicalUrl,
-            priceCurrency: 'USD',
-        price: pricing,
-            availability: 'https://schema.org/InStock',
-      } : undefined,
-      aggregateRating: hasRating ? {
-              '@type': 'AggregateRating',
-        ratingValue: tour.reviews.combinedAverageRating,
-        reviewCount: tour.reviews.totalReviews,
-        bestRating: '5',
-        worstRating: '1',
-      } : undefined,
-    } : null;
-
-    // Review Schema for SEO - aggregated rating/review count only (not individual review content)
-    // This helps with rich snippets while respecting Viator's no-index requirement for review content
-    const reviewJsonLd = hasRating ? {
-      '@context': 'https://schema.org',
-      '@type': 'Review',
-      itemReviewed: {
+    // CRITICAL: Only include properties that exist - don't set undefined values
+    const productJsonLd = (hasOffers || hasRating) ? (() => {
+      const schema = {
+        '@context': 'https://schema.org',
         '@type': 'Product',
         name: tour.title,
+        description: tour.description?.summary || tour.description?.shortDescription || '',
         sku: productId
-      },
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: tour.reviews.combinedAverageRating,
-        bestRating: '5',
-        worstRating: '1'
-      },
-      author: {
-        '@type': 'Organization',
-        name: 'TopTours.ai'
-      },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: tour.reviews.combinedAverageRating,
-        reviewCount: tour.reviews.totalReviews,
-        bestRating: '5',
-        worstRating: '1'
+      };
+      
+      // Only add image if available
+      if (mainImage) {
+        schema.image = [mainImage];
       }
-    } : null;
+      
+      // Only add offers if available (Google requirement)
+      if (hasOffers && finalPricing) {
+        schema.offers = {
+          '@type': 'Offer',
+          url: canonicalUrl,
+          priceCurrency: 'USD',
+          price: finalPricing,
+          availability: 'https://schema.org/InStock'
+        };
+      }
+      
+      // Only add aggregateRating if available (Google requirement)
+      if (hasRating) {
+        schema.aggregateRating = {
+          '@type': 'AggregateRating',
+          ratingValue: tour.reviews.combinedAverageRating,
+          reviewCount: tour.reviews.totalReviews,
+          bestRating: '5',
+          worstRating: '1'
+        };
+      }
+      
+      return schema;
+    })() : null;
+
+    // REMOVED: Separate Review schema - not needed for aggregated reviews
+    // Google's "You rated a review, rather than an item" error occurs when Review schema
+    // is used incorrectly. For aggregated reviews (no individual review content),
+    // we only need aggregateRating in the Product schema (which we already have above).
+    // The Product schema's aggregateRating is sufficient for rich snippets.
 
     const breadcrumbJsonLd = {
       '@context': 'https://schema.org',
@@ -381,8 +389,7 @@ export default async function TourDetailPage({ params }) {
     return (
       <>
         {productJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />}
-        {/* Review Schema for SEO - aggregated rating/review count only (not individual review content) */}
-        {reviewJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd) }} />}
+        {/* Review Schema removed - using aggregateRating in Product schema instead */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
         {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
         {/* HowTo Schema for AI Optimization - shows booking process */}

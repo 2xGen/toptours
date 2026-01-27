@@ -1012,6 +1012,31 @@ export default function DestinationsPageClient({
         onClose={() => setIsModalOpen(false)}
       />
 
+      {/* BreadcrumbList Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://toptours.ai"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Destinations",
+                "item": "https://toptours.ai/destinations"
+              }
+            ]
+          })
+        }}
+      />
+
       {/* CollectionPage Schema for SEO */}
       <script
         type="application/ld+json"
@@ -1019,13 +1044,14 @@ export default function DestinationsPageClient({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": "Travel Destinations | TopTours.ai",
-            "description": "Discover thousands of destinations worldwide with curated tours, activities, and travel guides. Find your next adventure.",
+            "name": "Best Travel Destinations 2026",
+            "description": "Discover 3,500+ top-rated travel destinations worldwide with curated tours, activities, and travel guides.",
             "url": "https://toptours.ai/destinations",
+            "numberOfItems": totalAvailableDestinations || 3564,
             "mainEntity": {
               "@type": "ItemList",
-              "numberOfItems": allDestinations.length,
-              "itemListElement": uniqueDestinations.slice(0, 50).map((dest, index) => ({
+              "numberOfItems": totalAvailableDestinations || 3564,
+              "itemListElement": uniqueDestinations.slice(0, 100).map((dest, index) => ({
                 "@type": "ListItem",
                 "position": index + 1,
                 "item": {
@@ -1034,6 +1060,11 @@ export default function DestinationsPageClient({
                   "url": `https://toptours.ai/destinations/${dest.id}`,
                   "description": dest.briefDescription || `Explore tours and activities in ${dest.fullName || dest.name}`,
                   "image": dest.imageUrl || undefined,
+                  "address": dest.country ? {
+                    "@type": "PostalAddress",
+                    "addressLocality": dest.name,
+                    "addressCountry": dest.country,
+                  } : undefined,
                 }
               }))
             }

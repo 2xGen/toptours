@@ -9,6 +9,7 @@ import { getRestaurantPromotionScoresByDestination } from '@/lib/promotionSystem
 import { getPromotedToursByDestination, getPromotedRestaurantsByDestination } from '@/lib/promotionSystem';
 import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
+import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import RestaurantsListClient from './RestaurantsListClient';
 
 // Revalidate every hour for fresh data
@@ -120,7 +121,8 @@ export default async function RestaurantsIndexPage({ params }) {
     promotedTourDataResult,
     restaurantPromotionScoresResult,
     premiumRestaurantIdsResult,
-    categoryGuidesResult
+    categoryGuidesResult,
+    destinationFeaturesResult
   ] = await Promise.allSettled([
     // Promoted restaurant data
     getPromotedRestaurantsByDestination(id, 20).catch(() => []),
@@ -139,7 +141,10 @@ export default async function RestaurantsIndexPage({ params }) {
       .catch(() => []),
     
     // Category guides
-    getAllCategoryGuidesForDestination(id).catch(() => [])
+    getAllCategoryGuidesForDestination(id).catch(() => []),
+    
+    // Destination features (lightweight checks for sticky nav)
+    getDestinationFeatures(id).catch(() => ({ hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }))
   ]);
 
   // Extract results
@@ -148,6 +153,7 @@ export default async function RestaurantsIndexPage({ params }) {
   const restaurantPromotionScores = restaurantPromotionScoresResult.status === 'fulfilled' ? restaurantPromotionScoresResult.value : {};
   const premiumRestaurantIds = premiumRestaurantIdsResult.status === 'fulfilled' ? premiumRestaurantIdsResult.value : [];
   const categoryGuides = categoryGuidesResult.status === 'fulfilled' ? categoryGuidesResult.value : [];
+  const destinationFeatures = destinationFeaturesResult.status === 'fulfilled' ? destinationFeaturesResult.value : { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false };
 
   // Process promoted restaurants (using data fetched in parallel above)
   let promotedRestaurants = [];
@@ -355,7 +361,7 @@ export default async function RestaurantsIndexPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <RestaurantsListClient destination={destination} restaurants={restaurants} promotedTours={promotedTours} promotedRestaurants={promotedRestaurants} restaurantPromotionScores={restaurantPromotionScores} premiumRestaurantIds={premiumRestaurantIds} categoryGuides={categoryGuides} />
+      <RestaurantsListClient destination={destination} restaurants={restaurants} promotedTours={promotedTours} promotedRestaurants={promotedRestaurants} restaurantPromotionScores={restaurantPromotionScores} premiumRestaurantIds={premiumRestaurantIds} categoryGuides={categoryGuides} destinationFeatures={destinationFeatures} />
     </>
   );
 }

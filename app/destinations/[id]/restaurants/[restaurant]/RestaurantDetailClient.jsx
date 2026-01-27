@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
+import DestinationStickyNav from '@/components/DestinationStickyNav';
 // OPTIMIZED: Lazy load modals - they're only shown conditionally
 const SmartTourFinder = lazy(() => import('@/components/home/SmartTourFinder'));
 const ShareModal = lazy(() => import('@/components/sharing/ShareModal'));
@@ -80,7 +81,7 @@ function getRestaurantBookingUrl(restaurant, premiumSubscription) {
   return restaurant.booking?.partnerUrl || restaurant.contact?.website || null;
 }
 
-export default function RestaurantDetailClient({ destination, restaurant, otherRestaurants, initialPromotionScore = null, premiumSubscription = null, categoryGuides = [] }) {
+export default function RestaurantDetailClient({ destination, restaurant, otherRestaurants, initialPromotionScore = null, premiumSubscription = null, categoryGuides = [], destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false } }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showStickyButton, setShowStickyButton] = useState(true);
   const [user, setUser] = useState(null);
@@ -630,6 +631,15 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
             </nav>
           </div>
         </section>
+
+        {/* Destination Sticky Navigation */}
+        <DestinationStickyNav
+          destinationId={destination.id}
+          destinationName={destination.fullName || destination.name}
+          hasRestaurants={true}
+          hasAirportTransfers={destinationFeatures.hasAirportTransfers}
+          hasBabyEquipment={destinationFeatures.hasBabyEquipment}
+        />
 
         <section className="py-12 sm:py-16 bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1955,14 +1965,12 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                     <p className="text-gray-600 text-sm mb-3">
                       Rent a car for maximum flexibility and explore at your own pace on Expedia USA.
                     </p>
-                    <Button
-                      variant="outline"
-                      className="w-full flex items-center justify-center gap-2"
-                      onClick={() => window.open('https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk', '_blank')}
-                    >
-                      Find Car Rental Deals
-                      <ExternalLink className="w-4 h-4" />
-                    </Button>
+                    <Link href={`/destinations/${destination.id}/car-rentals`} className="block">
+                      <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+                        Find Car Rental Deals
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>

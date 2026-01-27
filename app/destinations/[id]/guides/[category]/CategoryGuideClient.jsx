@@ -10,8 +10,10 @@ import {
   BookOpen, ChevronRight, Home, GlassWater, Music, Sailboat, Ship, PartyPopper, HeartHandshake, X, ExternalLink, Search, UtensilsCrossed
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
+import DestinationStickyNav from '@/components/DestinationStickyNav';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import TourCard from '@/components/tour/TourCard';
@@ -27,10 +29,26 @@ import { destinations } from '../../../../../src/data/destinationsData';
 import { travelGuides } from '../../../../../src/data/travelGuidesData';
 import { getRestaurantsForDestination } from '../../restaurants/restaurantsData';
 
-export default function CategoryGuideClient({ destinationId, categorySlug, guideData, categoryTours = [], promotionScores = {}, availableGuideSlugs = [], allAvailableGuides = [], destination: destinationProp }) {
+const AIRPORT_TRANSFERS_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/airport%20transfers.png';
+
+export default function CategoryGuideClient({ destinationId, categorySlug, guideData, categoryTours = [], promotionScores = {}, availableGuideSlugs = [], allAvailableGuides = [], destination: destinationProp, destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false } }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [showStickyButton, setShowStickyButton] = React.useState(true);
   const supabase = createSupabaseBrowserClient();
+
+  // Hero image: prefer guide/destination; for airport-transfers with no image, use dedicated OG image
+  const heroImageUrl = guideData?.heroImage || destinationProp?.imageUrl
+    || (categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : null);
+  
+  // Calculate stats from actual tours for hero display
+  const heroStats = React.useMemo(() => {
+    const tourCount = categoryTours?.length || 0;
+    const prices = categoryTours
+      .map(t => parseFloat(t.pricing?.summary?.fromPrice || t.pricing?.fromPrice || t.price || 0))
+      .filter(p => p > 0);
+    const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
+    return { tourCount, minPrice };
+  }, [categoryTours]);
   
   // User preferences for matching
   const [user, setUser] = React.useState(null);
@@ -244,43 +262,43 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
       )}
       
       <div className="min-h-screen pt-16 overflow-x-hidden">
-      {/* Hero Section - Matching destination page style */}
-      <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden ocean-gradient">
+      {/* Hero Section - Enhanced Compact Layout */}
+      <section className="relative py-10 sm:py-12 md:py-16 overflow-hidden ocean-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {(guideData.heroImage || destination.imageUrl) ? (
+          {heroImageUrl ? (
             // Hero with image - side by side layout
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <div className="flex items-center mb-4">
-                  <MapPin className="w-5 h-5 text-blue-300 mr-2" />
-                  <span className="text-white font-medium">{destination.name} Guide</span>
+                <div className="flex items-center mb-3">
+                  <MapPin className="w-4 h-4 text-blue-300 mr-2" />
+                  <span className="text-white/90 text-sm font-medium">{destination.name}</span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold mb-4 md:mb-6 text-white">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold mb-3 text-white leading-tight">
                   {guideData.title}
                 </h1>
-                <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8">
+                <p className="text-base sm:text-lg text-white/90 mb-4 leading-relaxed">
                   {guideData.subtitle}
                 </p>
                 
-                {/* Quick Stats */}
-                <div className="flex flex-wrap gap-2 sm:gap-4 mb-6">
-                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <Star className="w-5 h-5 text-white" />
-                    <span className="text-white">{guideData.stats.toursAvailable}+ tours</span>
+                {/* Quick Stats - Compact */}
+                {heroStats.tourCount > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm">
+                      <Star className="w-4 h-4 text-white" />
+                      <span className="text-white font-medium">{heroStats.tourCount}+ tours</span>
+                    </div>
+                    {heroStats.minPrice > 0 && (
+                      <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm">
+                        <DollarSign className="w-4 h-4 text-white" />
+                        <span className="text-white font-medium">From ${Math.round(heroStats.minPrice)}</span>
+                      </div>
+                    )}
                   </div>
-                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <DollarSign className="w-5 h-5 text-white" />
-                    <span className="text-white">From ${guideData.stats.priceFrom}</span>
-                  </div>
-                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <Clock className="w-5 h-5 text-white" />
-                    <span className="text-white">{guideData.stats.duration}</span>
-                  </div>
-                </div>
+                )}
               </motion.div>
               
               <motion.div
@@ -289,69 +307,53 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="relative"
               >
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src={guideData.heroImage || destination.imageUrl}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full h-64 sm:h-80">
+                  <Image
+                    src={heroImageUrl}
                     alt={guideData.title}
-                    className="w-full h-64 sm:h-80 object-cover"
-                    onError={(e) => {
-                      // Fallback to destination image if guide image fails
-                      if (destination.imageUrl && e.target.src !== destination.imageUrl) {
-                        e.target.src = destination.imageUrl;
-                      }
-                    }}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                    priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
                 </div>
               </motion.div>
             </div>
           ) : (
-            // Hero without image - centered layout (matching destination page style)
+            // Hero without image - centered compact layout
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center max-w-4xl mx-auto"
+              className="text-center max-w-3xl mx-auto"
             >
-              <div className="flex items-center justify-center mb-4">
-                <MapPin className="w-5 h-5 text-blue-300 mr-2" />
-                <span className="text-white font-medium">{destination.name} Guide</span>
+              <div className="flex items-center justify-center mb-3">
+                <MapPin className="w-4 h-4 text-blue-300 mr-2" />
+                <span className="text-white/90 text-sm font-medium">{destination.name}</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold mb-4 md:mb-6 text-white">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold mb-3 text-white leading-tight">
                 {guideData.title}
               </h1>
-              <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8">
+              <p className="text-base sm:text-lg text-white/90 mb-4 leading-relaxed">
                 {guideData.subtitle}
               </p>
               
-              {/* Quick Stats - Centered */}
-              <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8">
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
-                  <Star className="w-5 h-5 text-white" />
-                  <span className="text-white">{guideData.stats.toursAvailable}+ tours</span>
+              {/* Quick Stats - Centered Compact */}
+              {heroStats.tourCount > 0 && (
+                <div className="flex flex-wrap justify-center gap-2 mb-4">
+                  <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm">
+                    <Star className="w-4 h-4 text-white" />
+                    <span className="text-white font-medium">{heroStats.tourCount}+ tours</span>
+                  </div>
+                  {heroStats.minPrice > 0 && (
+                    <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm">
+                      <DollarSign className="w-4 h-4 text-white" />
+                      <span className="text-white font-medium">From ${Math.round(heroStats.minPrice)}</span>
+                    </div>
+                  )}
                 </div>
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
-                  <DollarSign className="w-5 h-5 text-white" />
-                  <span className="text-white">From ${guideData.stats.priceFrom}</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
-                  <Clock className="w-5 h-5 text-white" />
-                  <span className="text-white">{guideData.stats.duration}</span>
-                </div>
-              </div>
-              
-              {/* CTA Button - Centered */}
-              <div className="flex justify-center">
-                <Button
-                  asChild
-                  className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
-                >
-                  <Link href={`/destinations/${destinationId}/tours`}>
-                    View All Tours & Activities in {destination.name}
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Link>
-                </Button>
-              </div>
+              )}
             </motion.div>
           )}
         </div>
@@ -372,6 +374,15 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         </div>
       </section>
 
+      {/* Destination Sticky Navigation */}
+      <DestinationStickyNav
+        destinationId={destinationId}
+        destinationName={destination.fullName || destination.name}
+        hasRestaurants={destinationFeatures.hasRestaurants}
+        hasAirportTransfers={destinationFeatures.hasAirportTransfers}
+        hasBabyEquipment={destinationFeatures.hasBabyEquipment}
+      />
+
       {/* Introduction Section with Background */}
       <section className="py-12 sm:py-16 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -387,14 +398,14 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-90"></div>
                 <div className="relative p-6 md:p-8 flex items-center gap-6">
                   {destination?.imageUrl && destination.imageUrl.trim() !== '' && (
-                    <div className="hidden md:block">
-                      <div className="w-20 h-20 rounded-xl overflow-hidden ring-4 ring-white/30">
-                        <img 
-                          src={destination.imageUrl} 
-                          alt={destination.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+                    <div className="hidden md:block relative w-20 h-20 rounded-xl overflow-hidden ring-4 ring-white/30 flex-shrink-0">
+                      <Image
+                        src={destination.imageUrl}
+                        alt={destination.name}
+                        fill
+                        sizes="80px"
+                        className="object-cover"
+                      />
                     </div>
                   )}
                   <div className="flex-1">
@@ -495,7 +506,8 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         </div>
       </section>
 
-      {/* Why Choose Section */}
+      {/* Why Choose Section - Only show if there's content */}
+      {guideData.whyChoose && Array.isArray(guideData.whyChoose) && guideData.whyChoose.length > 0 && (
       <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -512,7 +524,12 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {guideData.whyChoose.map((reason, index) => {
-              const IconComponent = iconMap[reason.icon];
+              // Handle both string format and object format
+              const isString = typeof reason === 'string';
+              const reasonTitle = isString ? reason : reason.title;
+              const reasonDescription = isString ? null : reason.description;
+              const reasonIcon = isString ? 'Star' : reason.icon;
+              const IconComponent = iconMap[reasonIcon];
               return (
                 <motion.div
                   key={index}
@@ -528,8 +545,8 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                           {IconComponent && <IconComponent className="w-6 h-6 text-blue-600" />}
                         </div>
                         <div>
-                          <h3 className="font-bold text-lg text-gray-900 mb-2">{reason.title}</h3>
-                          <p className="text-gray-600">{reason.description}</p>
+                          <h3 className="font-bold text-lg text-gray-900 mb-2">{reasonTitle}</h3>
+                          {reasonDescription && <p className="text-gray-600">{reasonDescription}</p>}
                         </div>
                       </div>
                     </CardContent>
@@ -540,8 +557,10 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           </div>
         </div>
       </section>
+      )}
 
-      {/* Types of Tours */}
+      {/* Types of Tours - Only show if there's content */}
+      {guideData.tourTypes && Array.isArray(guideData.tourTypes) && guideData.tourTypes.length > 0 && (
       <section className="py-12 sm:py-16 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -589,6 +608,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           </div>
 
           {/* Mid-page CTA */}
+          {guideData.tourTypes && guideData.tourTypes.length > 0 && (
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -603,8 +623,10 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               </Button>
             </Link>
           </motion.div>
+          )}
         </div>
       </section>
+      )}
 
       {/* What to Expect */}
       <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
@@ -621,7 +643,18 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           <Card>
             <CardContent className="p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {(guideData.whatToExpect?.items || guideData.whatToExpect || []).map((item, index) => {
+                {(() => {
+                  // Safely get items array - handle both object.items and direct array
+                  let items = [];
+                  if (guideData.whatToExpect) {
+                    if (Array.isArray(guideData.whatToExpect)) {
+                      items = guideData.whatToExpect;
+                    } else if (Array.isArray(guideData.whatToExpect.items)) {
+                      items = guideData.whatToExpect.items;
+                    }
+                  }
+                  return items;
+                })().map((item, index) => {
                   const IconComponent = iconMap[item.icon];
                   return (
                     <div key={index} className="flex items-start gap-3">
@@ -957,14 +990,12 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                   <div className="bg-white rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Car Rental Deals in {destination.name}</h4>
                     <p className="text-gray-600 text-sm mb-3">Rent a car for maximum flexibility and explore at your own pace on Expedia USA.</p>
-                    <Button 
-                      variant="outline" 
-                      className="w-full flex items-center justify-center gap-2" 
-                      onClick={() => window.open('https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk', '_blank')}
-                    >
-                      Find Car Rental Deals
-                      <ExternalLink className="w-4 h-4" />
-                    </Button>
+                    <Link href={`/destinations/${destinationId}/car-rentals`} className="block">
+                      <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+                        Find Car Rental Deals
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>

@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { getDestinationById } from '@/data/destinationsData';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
-import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
+import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import { getBabyEquipmentRentalsByDestination } from '@/lib/babyEquipmentRentals';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import BabyEquipmentClient from './BabyEquipmentClient';
@@ -182,15 +182,8 @@ export default async function BabyEquipmentPage({ params }) {
     notFound(); // Page doesn't exist for this destination yet
   }
 
-  // Get category guides for this destination (for related content section)
-  // Note: Destinations without guides may not have category guides
-  let categoryGuides = [];
-  try {
-    categoryGuides = await getAllCategoryGuidesForDestination(id);
-  } catch (error) {
-    console.error('Error fetching category guides:', error);
-    // Continue with empty array - page will still work
-  }
+  // Fetch destination features (lightweight checks)
+  const features = await getDestinationFeatures(id);
 
   const pageUrl = `https://toptours.ai/destinations/${id}/baby-equipment-rentals`;
   const destinationUrl = `https://toptours.ai/destinations/${id}`;
@@ -310,7 +303,7 @@ export default async function BabyEquipmentPage({ params }) {
 
       <BabyEquipmentClient 
         destination={destination}
-        categoryGuides={categoryGuides}
+        destinationFeatures={features}
         pageData={pageData}
       />
     </>

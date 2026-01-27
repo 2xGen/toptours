@@ -32,6 +32,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
+import DestinationStickyNav from '@/components/DestinationStickyNav';
 import Link from 'next/link';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
@@ -332,7 +333,8 @@ export default function ToursListingClient({
   premiumRestaurantIds = [], // Array of restaurant IDs with premium status
   hasRestaurants = false, // Whether destination has restaurants (from server)
   restaurants = [], // Restaurants from server (database + static)
-  categoryGuides = [] // Category guides for internal linking (database + hardcoded)
+  categoryGuides = [], // Category guides for internal linking (database + hardcoded)
+  destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false } // Destination features for sticky nav
 }) {
   // OPTIMIZED: Memoize supabase client to ensure stable reference (it's a singleton, but function call creates new reference)
   const supabase = useMemo(() => createSupabaseBrowserClient(), []);
@@ -1876,6 +1878,15 @@ export default function ToursListingClient({
           </nav>
         </div>
       </section>
+
+      {/* Destination Sticky Navigation */}
+      <DestinationStickyNav
+        destinationId={destination.id}
+        destinationName={destination.fullName || destination.name}
+        hasRestaurants={destinationFeatures.hasRestaurants}
+        hasAirportTransfers={destinationFeatures.hasAirportTransfers}
+        hasBabyEquipment={destinationFeatures.hasBabyEquipment}
+      />
 
       {/* Promoted Listings Section - Above Filters */}
       {((promotedTours && promotedTours.length > 0) || (promotedRestaurants && promotedRestaurants.length > 0)) && (

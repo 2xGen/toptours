@@ -14,6 +14,8 @@ import {
 import { getRestaurantPromotionScore } from '@/lib/promotionSystem';
 import { getRestaurantPremiumSubscription } from '@/lib/restaurantPremiumServer';
 import { getAllCategoryGuidesForDestination } from '../../lib/categoryGuides';
+import { getDestinationFeatures } from '@/lib/destinationFeatures';
+import { getDestinationFeatures } from '@/lib/destinationFeatures';
 
 // Old restaurant slugs with their expected names for fuzzy matching
 const OLD_RESTAURANT_REDIRECTS = {
@@ -220,7 +222,8 @@ export default async function RestaurantPage({ params }) {
     otherRestaurantsResult,
     initialPromotionScoreResult,
     premiumSubscriptionResult,
-    categoryGuidesResult
+    categoryGuidesResult,
+    destinationFeaturesResult
   ] = await Promise.allSettled([
     // Other restaurants (database first, fallback to static)
     getRestaurantsForDestinationFromDB(destinationId)
@@ -250,7 +253,10 @@ export default async function RestaurantPage({ params }) {
       : Promise.resolve(null),
     
     // Category guides
-    getAllCategoryGuidesForDestination(destinationId).catch(() => [])
+    getAllCategoryGuidesForDestination(destinationId).catch(() => []),
+    
+    // Destination features (lightweight checks for sticky nav)
+    getDestinationFeatures(destinationId).catch(() => ({ hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }))
   ]);
 
   // Extract results
@@ -258,6 +264,8 @@ export default async function RestaurantPage({ params }) {
   const initialPromotionScore = initialPromotionScoreResult.status === 'fulfilled' ? initialPromotionScoreResult.value : null;
   const premiumSubscription = premiumSubscriptionResult.status === 'fulfilled' ? premiumSubscriptionResult.value : null;
   const categoryGuides = categoryGuidesResult.status === 'fulfilled' ? categoryGuidesResult.value : [];
+  const features = destinationFeaturesResult.status === 'fulfilled' ? destinationFeaturesResult.value : { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false };
+  const features = destinationFeaturesResult.status === 'fulfilled' ? destinationFeaturesResult.value : { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false };
 
   // Generate breadcrumb schema for SEO
   const breadcrumbSchema = {
@@ -344,6 +352,7 @@ export default async function RestaurantPage({ params }) {
         initialPromotionScore={initialPromotionScore}
         premiumSubscription={premiumSubscription}
         categoryGuides={categoryGuides}
+        destinationFeatures={features}
       />
     </>
   );

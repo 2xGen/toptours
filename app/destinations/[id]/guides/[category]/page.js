@@ -5,7 +5,9 @@ import { getPromotionScoresByDestination } from '@/lib/promotionSystem';
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
+import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import { trackToursForSitemap } from '@/lib/tourSitemap';
+import { slugToViatorId as slugToViatorIdMap } from '@/data/viatorDestinationMap';
 
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
@@ -285,11 +287,11 @@ export async function generateMetadata({ params }) {
       };
     }
 
-    // Always use standardized OG image so dimensions are correct
-    const defaultOgImage = 'https://toptours.ai/OG%20Images/TopTours%20Travel%20Guides.jpg';
-    const ogImage = defaultOgImage;
+    const TRAVEL_GUIDE_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/travel%20guides.png';
+    const AIRPORT_TRANSFERS_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/airport%20transfers.png';
+    const ogImage = categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : TRAVEL_GUIDE_OG_IMAGE;
     const seo = guideData.seo || {};
-    
+
     return {
       title: seo.title || guideData.title,
       description: seo.description || guideData.subtitle,
@@ -377,12 +379,6 @@ export default async function CategoryGuidePage({ params }) {
       console.log(`✅ [SERVER] Found guide in database for ${destinationId}/${categorySlug}`);
     }
     
-    // If no guide data at all, show not found
-    if (!guideData) {
-      console.error(`❌ No guide data found for ${destinationId}/${categorySlug}`);
-      notFound();
-    }
-    
     // STEP 2: Try to get destination (destinationsData.js first, then generated content)
     let destination = destinations.find(d => d.id === destinationId);
     
@@ -444,6 +440,77 @@ export default async function CategoryGuidePage({ params }) {
       console.log(`⚠️ Created minimal destination for ${destinationId}: ${destinationName} (no generated content found)`);
     }
     
+    // Special case: airport-transfers - create default guide if not in database
+    if (!guideData && categorySlug === 'airport-transfers') {
+      const destinationName = destination?.fullName || destination?.name || 'Destination';
+      guideData = {
+        title: `${destinationName} Airport Transfers`,
+        subtitle: `Find reliable airport transfer services to and from ${destinationName}. Compare shared and private transfers, book in advance, and start your trip stress-free.`,
+        categoryName: 'Airport Transfers',
+        heroImage: destination?.imageUrl || null,
+        stats: {},
+        introduction: `Planning your arrival or departure? Book your airport transfer in advance for a smooth start to your ${destinationName} adventure.`,
+        seo: {
+          title: `${destinationName} Airport Transfer: Shared & Private Transfers`,
+          description: `Book reliable airport transfers to and from ${destinationName}. Compare shared and private transfer options, prices, and durations.`,
+          keywords: `airport transfer, airport shuttle, airport taxi, private transfer, shared transfer, ${destinationName} airport`
+        },
+        whyChoose: [
+          'Pre-booked transfers for peace of mind',
+          'Compare shared and private options',
+          'Fixed prices, no surprises',
+          'Meet and greet service available'
+        ],
+        tourTypes: [],
+        whatToExpect: {
+          items: [
+            {
+              icon: 'Clock',
+              title: 'Duration',
+              description: 'Transfer times typically range from 30-60 minutes depending on traffic and distance'
+            },
+            {
+              icon: 'Users',
+              title: 'Group Size',
+              description: 'Choose between private transfers (1-8 people) or shared transfers (multiple passengers)'
+            },
+            {
+              icon: 'DollarSign',
+              title: 'Pricing',
+              description: 'Fixed prices with no hidden fees. Shared transfers are more economical, private transfers offer exclusivity'
+            },
+            {
+              icon: 'MapPin',
+              title: 'Pickup Location',
+              description: 'Meet at the airport terminal or hotel lobby. Some services offer meet-and-greet at arrivals'
+            }
+          ]
+        },
+        expertTips: [
+          'Book in advance for better prices and availability',
+          'Private transfers offer more flexibility and comfort',
+          'Shared transfers are more budget-friendly',
+          'Check if your hotel offers transfer services'
+        ],
+        faqs: [
+          {
+            question: `How do I get from the airport to ${destinationName}?`,
+            answer: `You can book a private or shared transfer in advance, take a taxi, or use public transportation. Pre-booking a transfer ensures a smooth arrival with fixed pricing.`
+          },
+          {
+            question: 'What is the difference between shared and private transfers?',
+            answer: 'Shared transfers are more economical and may include stops at multiple hotels. Private transfers offer direct service to your destination with more flexibility and comfort.'
+          },
+          {
+            question: 'How long does an airport transfer take?',
+            answer: 'Transfer times vary by destination and traffic. Most transfers take 30-60 minutes, but this can vary. Check the specific transfer details when booking.'
+          }
+        ]
+      };
+      guideSource = 'default';
+      console.log(`✅ [SERVER] Created default airport transfers guide for ${destinationId}`);
+    }
+    
     // Final check
     if (!destination || !guideData) {
       console.error(`❌ Cannot render page: destination=${!!destination}, guideData=${!!guideData}`);
@@ -476,12 +543,14 @@ export default async function CategoryGuidePage({ params }) {
   // Also create slugs array for backward compatibility
   const allAvailableGuideSlugs = allAvailableGuides.map(g => g.category_slug).filter(Boolean);
 
+  // Fetch destination features (lightweight checks for sticky nav)
+  const features = await getDestinationFeatures(destinationId);
+
   // Fetch tours from Viator API using destination ID and category name (same as database guides)
   // This replaces the hardcoded tours approach - always use live API calls
   let categoryTours = [];
     try {
       // Get Viator destination ID - CRITICAL: Use database as source of truth (same as tours page)
-      const { slugToViatorId } = await import('@/data/viatorDestinationMap');
       const { getViatorDestinationBySlug } = await import('@/lib/supabaseCache');
       
       // Try database lookup first (same as tours page line 390-392)
@@ -492,35 +561,42 @@ export default async function CategoryGuidePage({ params }) {
         console.log(`🔍 Guide Page - Destination "${destinationId}": Using database ID = ${viatorDestinationId} (name: ${dbDestination.name})`);
       } else {
         // Fallback to hardcoded map or destination.destinationId
-        viatorDestinationId = slugToViatorId[destinationId] || destination.destinationId || null;
+        viatorDestinationId = slugToViatorIdMap[destinationId] || destination.destinationId || null;
         if (viatorDestinationId) {
           console.log(`⚠️ Guide Page - Destination "${destinationId}": Database lookup failed, using fallback = ${viatorDestinationId}`);
         }
       }
       
     // Build search term: extract just the activity type from category name
-    // Remove destination name prefix (e.g., "Aruba ATV Tours" -> "atv tours")
-    // The destination filter will be applied separately via productFiltering
-    let searchTerm = guideData.categoryName || '';
+    // Special handling for airport-transfers: use "airport transfers" as search term
+    let searchTerm = '';
     
-    // Remove destination name from the beginning of the category name
-    if (searchTerm && destination) {
-      const destinationName = destination.fullName || destination.name || '';
-      // Remove destination name if it appears at the start (case-insensitive)
-      const destinationPrefix = new RegExp(`^${destinationName}\\s+`, 'i');
-      searchTerm = searchTerm.replace(destinationPrefix, '').trim();
+    if (categorySlug === 'airport-transfers') {
+      // Special case: airport transfers page
+      searchTerm = 'airport transfers';
+    } else {
+      // Default: extract from category name
+      searchTerm = guideData.categoryName || '';
+      
+      // Remove destination name from the beginning of the category name
+      if (searchTerm && destination) {
+        const destinationName = destination.fullName || destination.name || '';
+        // Remove destination name if it appears at the start (case-insensitive)
+        const destinationPrefix = new RegExp(`^${destinationName}\\s+`, 'i');
+        searchTerm = searchTerm.replace(destinationPrefix, '').trim();
+      }
+      
+      // Remove common activity suffixes for better Viator API matching
+      // "adventure tours" -> "adventure", "catamaran cruises" -> "catamaran", "puerto banus experiences" -> "puerto banus"
+      const commonSuffixes = ['tours', 'tour', 'cruises', 'cruise', 'sailing', 'sail', 'tours & activities', 'activities', 'experiences', 'experience', 'trails', 'trail'];
+      for (const suffix of commonSuffixes) {
+        const suffixRegex = new RegExp(`\\s+${suffix}\\s*$`, 'i');
+        searchTerm = searchTerm.replace(suffixRegex, '').trim();
+      }
+      
+      // Convert to lowercase for better matching (same as AI chat search)
+      searchTerm = searchTerm.toLowerCase();
     }
-    
-    // Remove common activity suffixes for better Viator API matching
-    // "adventure tours" -> "adventure", "catamaran cruises" -> "catamaran", "puerto banus experiences" -> "puerto banus"
-    const commonSuffixes = ['tours', 'tour', 'cruises', 'cruise', 'sailing', 'sail', 'tours & activities', 'activities', 'experiences', 'experience', 'trails', 'trail'];
-    for (const suffix of commonSuffixes) {
-      const suffixRegex = new RegExp(`\\s+${suffix}\\s*$`, 'i');
-      searchTerm = searchTerm.replace(suffixRegex, '').trim();
-    }
-    
-    // Convert to lowercase for better matching (same as AI chat search)
-    searchTerm = searchTerm.toLowerCase();
     
     // Determine max tours to fetch - increased to show more results (was 8, now 15)
     const maxTours = 15;
@@ -631,15 +707,37 @@ export default async function CategoryGuidePage({ params }) {
   // Fetch promotion scores for these tours
   const promotionScores = await getPromotionScoresByDestination(destinationId);
 
-  // JSON-LD Schema for SEO
+  // OG image: airport-transfers use dedicated image; other guides use travel guide OG
+  const TRAVEL_GUIDE_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/travel%20guides.png';
+  const AIRPORT_TRANSFERS_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/airport%20transfers.png';
+  const categoryOgImage = categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : TRAVEL_GUIDE_OG_IMAGE;
+  const schemaImage = categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : (guideData.heroImage || destination.imageUrl);
+  const pageUrl = `https://toptours.ai/destinations/${destinationId}/guides/${categorySlug}`;
+
+  // JSON-LD Schema for SEO: WebPage, Article, FAQPage, BreadcrumbList, TouristAttraction, ItemList(s)
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
       {
+        '@type': 'WebPage',
+        '@id': `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: guideData.title,
+        description: guideData.subtitle || guideData.seo?.description,
+        primaryImageOfPage: {
+          '@type': 'ImageObject',
+          url: categoryOgImage,
+          width: 1200,
+          height: 630,
+        },
+        isPartOf: { '@type': 'WebSite', '@id': 'https://toptours.ai/#website', name: 'TopTours.ai', url: 'https://toptours.ai' },
+        publisher: { '@type': 'Organization', name: 'TopTours.ai', logo: { '@type': 'ImageObject', url: 'https://toptours.ai/logo.png' } },
+      },
+      {
         '@type': 'Article',
         headline: guideData.title,
         description: guideData.subtitle,
-        image: guideData.heroImage || destination.imageUrl,
+        image: schemaImage,
         author: {
           '@type': 'Organization',
           name: 'TopTours AI',
@@ -699,11 +797,8 @@ export default async function CategoryGuidePage({ params }) {
         '@type': 'TouristAttraction',
         name: `${guideData.categoryName} in ${destination.name}`,
         description: guideData.subtitle,
-        image: guideData.heroImage || destination.imageUrl,
-        address: {
-          '@type': 'PostalAddress',
-          addressCountry: destination.category,
-        },
+        image: schemaImage,
+        ...(destination.category ? { address: { '@type': 'PostalAddress', addressCountry: destination.category } } : {}),
       },
       // Tour List Schema - Featured tours for this category (max 8 tours)
       ...(categoryTours && categoryTours.length > 0 ? [{
@@ -770,6 +865,7 @@ export default async function CategoryGuidePage({ params }) {
         promotionScores={promotionScores}
         availableGuideSlugs={allAvailableGuideSlugs}
         allAvailableGuides={allAvailableGuides}
+        destinationFeatures={features}
         destination={{
           id: destination.id,
           name: destination.name,

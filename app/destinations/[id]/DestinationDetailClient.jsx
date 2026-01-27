@@ -5,7 +5,7 @@ import FooterNext from '@/components/FooterNext';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
-  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, Info, Share2, Heart, Crown, Building2, Sparkles, TrendingUp, Baby
+  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, ChevronDown, Info, Share2, Heart, Crown, Building2, Sparkles, TrendingUp, Baby, Plane, Waves
 } from 'lucide-react';
 import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import { useRouter } from 'next/navigation';
@@ -74,6 +74,7 @@ function getDisplayCategoryName(categoryName) {
   return categoryMap[categoryName] || categoryName;
 }
 
+const DISCOVER_CARS_URL = 'https://www.discovercars.com/?a_aid=toptours&a_cid=65100b9c';
 
 export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], promotedTours = [], promotedRestaurants = [], hardcodedTours = {}, restaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [], categoryGuides: categoryGuidesProp = [], hasBabyEquipmentRentals = false }) {
   
@@ -170,6 +171,23 @@ export default function DestinationDetailClient({ destination, promotionScores =
       groupSize: 'any',
     };
   });
+  
+  // Accordion state for informational sections
+  const [expandedSections, setExpandedSections] = useState({
+    whyVisit: false,
+    gettingAround: false,
+    travelingWithBaby: false,
+    mustSee: false,
+    bestTime: false,
+    tourCategories: false,
+  });
+  
+  const toggleSection = (section) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
   
   // Sync local restaurant preferences to localStorage
   useEffect(() => {
@@ -333,7 +351,137 @@ export default function DestinationDetailClient({ destination, promotionScores =
     
     return map;
   }, [safeRestaurants, safePromotedRestaurants, localRestaurantPreferences]);
-  
+
+  // Popular Pages: always show 6 cards. Main cards (Tours, Restaurants, Travel Guides, Car Rentals, Airport Transfers, Baby Equipment); fill remaining with category-guide substitutes.
+  const popularPageCards = useMemo(() => {
+    const destName = safeDestination.fullName || safeDestination.name;
+    const destId = safeDestination.id;
+    const cards = [];
+
+    // 1. Tours (always)
+    cards.push({
+      type: 'tours',
+      href: `/destinations/${destId}/tours`,
+      icon: MapPin,
+      iconGradient: 'from-blue-500 to-blue-600',
+      title: 'Tours & Activities',
+      description: `Discover ${totalToursCount ? `${totalToursCount.toLocaleString()}+` : '1,900+'} top-rated tours and activities in ${destName}. From cultural experiences to adventure tours, find the perfect activity for your trip.`,
+      badge: totalToursCount ? `${totalToursCount.toLocaleString()}+ tours` : null,
+      ctaText: 'Explore Tours',
+      ctaColorClass: 'text-blue-600',
+    });
+
+    // 2. Restaurants (if hasRestaurants)
+    if (hasRestaurants) {
+      cards.push({
+        type: 'restaurants',
+        href: `/destinations/${destId}/restaurants`,
+        icon: UtensilsCrossed,
+        iconGradient: 'from-purple-500 to-pink-600',
+        title: 'Restaurants',
+        description: `Find ${safeRestaurants.length}+ top-rated restaurants in ${destName}. Discover local favorites, fine dining, and hidden gems with our curated restaurant guide.`,
+        badge: `${safeRestaurants.length}+ restaurants`,
+        ctaText: 'Find Restaurants',
+        ctaColorClass: 'text-purple-600',
+      });
+    }
+
+    // 3. Travel Guides (if any category guides)
+    if (categoryGuidesProp.length > 0) {
+      cards.push({
+        type: 'travel-guides',
+        href: '#guides',
+        icon: BookOpen,
+        iconGradient: 'from-indigo-500 to-blue-600',
+        title: 'Travel Guides',
+        description: `Comprehensive travel guides for ${destName}. Plan your perfect trip with detailed guides covering tours, dining, transportation, and local insights.`,
+        badge: `${categoryGuidesProp.length}+ guides`,
+        ctaText: 'Read Guides',
+        ctaColorClass: 'text-indigo-600',
+      });
+    }
+
+    // 4. Car Rentals (always)
+    cards.push({
+      type: 'car-rentals',
+      href: `/destinations/${destId}/car-rentals`,
+      icon: Car,
+      iconGradient: 'from-green-500 to-emerald-600',
+      title: 'Car Rentals',
+      description: `Find the best car rental deals in ${destName}. Compare prices, book in advance, and explore at your own pace with flexible rental options.`,
+      badge: null,
+      ctaText: 'Find Car Rentals',
+      ctaColorClass: 'text-green-600',
+    });
+
+    // 5. Airport Transfers (if guide exists)
+    if (categoryGuidesProp.some((g) => (g.category_slug || '') === 'airport-transfers')) {
+      cards.push({
+        type: 'airport-transfers',
+        href: `/destinations/${destId}/guides/airport-transfers`,
+        icon: Plane,
+        iconGradient: 'from-cyan-500 to-blue-600',
+        title: 'Airport Transfers',
+        description: `Compare shared and private airport transfer options to and from ${destName}. Book in advance for fixed pricing and a stress-free arrival.`,
+        badge: null,
+        ctaText: 'Book Transfers',
+        ctaColorClass: 'text-cyan-600',
+      });
+    }
+
+    // 6. Baby Equipment (if available)
+    if (hasBabyEquipmentRentals) {
+      cards.push({
+        type: 'baby-equipment',
+        href: '#baby-equipment',
+        icon: Baby,
+        iconGradient: 'from-pink-500 to-rose-600',
+        title: 'Baby Equipment Rentals',
+        description: `Make traveling with little ones easy! Rent baby equipment in ${destName} - strollers, car seats, cribs, and more delivered to your hotel.`,
+        badge: null,
+        ctaText: 'Browse Rentals',
+        ctaColorClass: 'text-pink-600',
+      });
+    }
+
+    // Fill to 6 with category-guide substitutes (exclude airport-transfers, already a main card)
+    const substitutes = (categoryGuidesProp || [])
+      .filter((g) => (g.category_slug || '') !== 'airport-transfers')
+      .map((g) => {
+        const slug = normalizeSlug(g.category_slug || '');
+        const name = g.category_name || g.title || 'Guide';
+        const sub = g.subtitle || `Explore ${name} in ${destName}.`;
+        return {
+          type: 'guide',
+          href: `/destinations/${destId}/guides/${slug}`,
+          icon: BookOpen,
+          iconGradient: 'from-amber-500 to-orange-600',
+          title: name,
+          description: sub.length > 120 ? sub.slice(0, 117).trim() + '…' : sub,
+          badge: null,
+          ctaText: 'Read Guide',
+          ctaColorClass: 'text-amber-600',
+        };
+      });
+
+    let i = 0;
+    while (cards.length < 6 && i < substitutes.length) {
+      cards.push(substitutes[i]);
+      i++;
+    }
+
+    return cards;
+  }, [
+    safeDestination.id,
+    safeDestination.fullName,
+    safeDestination.name,
+    totalToursCount,
+    hasRestaurants,
+    safeRestaurants.length,
+    categoryGuidesProp,
+    hasBabyEquipmentRentals,
+  ]);
+
   // Filter out invalid guides and ensure all required fields exist
   // Must be declared before useEffect that uses it
   const normalizedRelatedGuides = Array.isArray(relatedGuides) 
@@ -895,7 +1043,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
       
       <div className="min-h-screen pt-16 overflow-x-hidden" suppressHydrationWarning>
         {/* Hero Section */}
-        <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden ocean-gradient">
+        <section className="relative pt-4 pb-12 sm:pt-6 sm:pb-16 md:pt-8 md:pb-20 overflow-hidden ocean-gradient">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {safeDestination.imageUrl ? (
               // Hero with image - side by side layout (original style)
@@ -905,13 +1053,17 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
                 >
-                  <div className="flex items-center mb-4">
-                    <MapPin className="w-5 h-5 text-blue-600 mr-2" />
-                    <span className="text-white font-medium">{safeDestination.category || safeDestination.region}</span>
-                  </div>
                   <div className="flex items-center gap-3 mb-4 md:mb-6">
                     <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex-1">
-                      {safeDestination.fullName}
+                      <span className="flex items-center gap-3 flex-wrap">
+                        <span>{safeDestination.fullName}</span>
+                        {(safeDestination.category || safeDestination.region) && (
+                          <span className="flex items-center text-base sm:text-lg font-medium text-white">
+                            <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 text-white" />
+                            {safeDestination.category || safeDestination.region}
+                          </span>
+                        )}
+                      </span>
                     </h1>
                     <Button
                       variant="ghost"
@@ -926,46 +1078,77 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8">
                     {safeDestination.heroDescription}
                   </p>
-                  <div className="flex flex-wrap gap-2 sm:gap-4 mb-6">
-                    {safeDestination.tourCategories
-                      .filter(category => {
-                        // Only show categories that have guides
-                        if (typeof category === 'object' && category.hasGuide) return true;
-                        // If it's a string, check if there's a guide for it
-                        const categoryName = typeof category === 'string' ? category : category.name;
-                        return safeDestination.tourCategories.some(c => 
-                          typeof c === 'object' && c.name === categoryName && c.hasGuide
-                        );
-                      })
-                      .slice(0, 3)
-                      .map((category, index) => {
-                        const categoryName = typeof category === 'string' ? category : category.name;
-                        // Use normalizeSlug function for consistent normalization
-                        const categorySlug = normalizeSlug(categoryName);
-                        
-                        return (
+                  
+                  {/* Quick Stats Bar - Hub Style */}
+                  <div className="grid grid-cols-3 gap-4 mb-6">
                           <Link
-                            key={index}
-                            href={`/destinations/${safeDestination.id}/guides/${categorySlug}`}
-                            className="inline-block"
-                          >
-                            <Badge variant="outline" className="bg-white/20 text-white border-white/30 text-sm hover:bg-white/30 hover:border-white/40 transition-colors cursor-pointer">
-                              {categoryName}
-                            </Badge>
+                      href={`/destinations/${safeDestination.id}/tours`}
+                      className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all group"
+                    >
+                      <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
+                        {totalToursCount ? `${totalToursCount.toLocaleString()}+` : '1,900+'}
+                      </div>
+                      <div className="text-xs sm:text-sm text-white/80">Tours</div>
                           </Link>
-                        );
-                      })}
+                    {hasRestaurants && (
+                      <Link 
+                        href={`/destinations/${safeDestination.id}/restaurants`}
+                        className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all group"
+                      >
+                        <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
+                          {safeRestaurants.length}+
                   </div>
-                  <div className="flex flex-wrap gap-3">
+                        <div className="text-xs sm:text-sm text-white/80">Restaurants</div>
+                      </Link>
+                    )}
+                    {categoryGuidesProp.length > 0 && (
+                      <Link 
+                        href={`#guides`}
+                        className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all group"
+                      >
+                        <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
+                          {categoryGuidesProp.length}+
+                        </div>
+                        <div className="text-xs sm:text-sm text-white/80">Guides</div>
+                      </Link>
+                    )}
+                  </div>
+                  
+                  {/* Multiple CTAs - Hub Style */}
+                  <div className="flex flex-wrap gap-3 mb-6">
                     <Button
                       asChild
                       className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
                     >
                       <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
-                        View All Tours & Activities in {safeDestination.fullName || safeDestination.name}
+                        Explore Tours
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
+                    {hasRestaurants && (
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold px-6 py-3"
+                      >
+                        <Link href={`/destinations/${safeDestination.id}/restaurants`} prefetch={true}>
+                          Find Restaurants
+                          <UtensilsCrossed className="w-4 h-4 ml-2" />
+                        </Link>
+                      </Button>
+                    )}
+                    {categoryGuidesProp.length > 0 && (
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold px-6 py-3"
+                      >
+                        <Link href={`#guides`}>
+                          Read Guides
+                          <BookOpen className="w-4 h-4 ml-2" />
+                        </Link>
+                      </Button>
+                    )}
                   </div>
                 </motion.div>
                 
@@ -993,13 +1176,17 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 transition={{ duration: 0.8 }}
                 className="text-center"
               >
-                <div className="flex items-center justify-center mb-4">
-                  <MapPin className="w-5 h-5 text-blue-200 mr-2" />
-                  <span className="text-white font-medium">{safeDestination.category || safeDestination.region}</span>
-                </div>
                 <div className="flex items-center justify-center gap-3 mb-4 md:mb-6">
                   <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white">
-                    {safeDestination.fullName}
+                    <span className="flex items-center gap-3 flex-wrap justify-center">
+                      <span>{safeDestination.fullName}</span>
+                      {(safeDestination.category || safeDestination.region) && (
+                        <span className="flex items-center text-base sm:text-lg font-medium text-white">
+                          <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 text-white" />
+                          {safeDestination.category || safeDestination.region}
+                        </span>
+                      )}
+                    </span>
                   </h1>
                   <Button
                     variant="ghost"
@@ -1014,16 +1201,77 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
                   {safeDestination.heroDescription}
                 </p>
+                
+                {/* Quick Stats Bar - Hub Style */}
+                <div className="flex justify-center gap-4 mb-6 max-w-2xl mx-auto">
+                  <Link 
+                    href={`/destinations/${safeDestination.id}/tours`}
+                    className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all group text-center w-[140px]"
+                  >
+                    <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
+                      {totalToursCount ? `${totalToursCount.toLocaleString()}+` : '1,900+'}
+                    </div>
+                    <div className="text-xs sm:text-sm text-white/80">Tours</div>
+                  </Link>
+                  {hasRestaurants && (
+                    <Link 
+                      href={`/destinations/${safeDestination.id}/restaurants`}
+                      className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all group text-center w-[140px]"
+                    >
+                      <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
+                        {safeRestaurants.length}+
+                      </div>
+                      <div className="text-xs sm:text-sm text-white/80">Restaurants</div>
+                    </Link>
+                  )}
+                  {categoryGuidesProp.length > 0 && (
+                    <Link 
+                      href={`#guides`}
+                      className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all group text-center w-[140px]"
+                    >
+                      <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
+                        {categoryGuidesProp.length}+
+                      </div>
+                      <div className="text-xs sm:text-sm text-white/80">Guides</div>
+                    </Link>
+                  )}
+                </div>
+                
+                {/* Multiple CTAs - Hub Style */}
                 <div className="flex flex-wrap justify-center gap-3">
                   <Button
                     asChild
                     className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
                   >
                     <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
-                      View All Tours & Activities in {safeDestination.fullName || safeDestination.name}
+                      Explore Tours
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
                   </Button>
+                  {hasRestaurants && (
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold px-6 py-3"
+                    >
+                      <Link href={`/destinations/${safeDestination.id}/restaurants`} prefetch={true}>
+                        Find Restaurants
+                        <UtensilsCrossed className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
+                  )}
+                  {categoryGuidesProp.length > 0 && (
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold px-6 py-3"
+                    >
+                      <Link href={`#guides`}>
+                        Read Guides
+                        <BookOpen className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
+                  )}
                 </div>
               </motion.div>
             )}
@@ -1043,189 +1291,76 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </div>
         </section>
 
-        {/* Why Visit Section */}
-        {safeDestination.whyVisit && safeDestination.whyVisit.length > 0 && (
-          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
+        {/* Sticky Navigation Hub - Quick Access */}
+        <section className="sticky top-16 z-40 bg-white border-b shadow-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="text-center mb-8 sm:mb-12"
+            <nav className="flex items-center gap-6 py-4 overflow-x-auto hide-scrollbar">
+              <Link 
+                href={`/destinations/${safeDestination.id}/tours`}
+                className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1"
               >
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
-                  Why Visit {safeDestination.fullName}?
-                </h2>
-              </motion.div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8">
-                {safeDestination.whyVisit.map((reason, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card className="bg-white border-0 shadow-lg h-full">
-                      <CardContent className="p-6">
-                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                          <Star className="w-6 h-6 text-blue-600" />
-                        </div>
-                        <p className="text-gray-700 leading-relaxed">{reason}</p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Getting Around & Must-See Attractions - Combined */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
-                {/* Getting Around - Compact */}
-                {safeDestination.gettingAround && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card className="bg-blue-50/50 border-0 shadow-sm h-full">
-                      <CardContent className="p-4 sm:p-5">
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <Car className="w-5 h-5 text-blue-600" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-lg font-semibold text-gray-800 mb-2">Getting Around</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed mb-3">{safeDestination.gettingAround}</p>
-                            <div className="pt-2 border-t border-gray-100">
-                              <p className="text-gray-600 text-xs mb-2">Prefer renting a car? See options here.</p>
-                              <Button 
-                                variant="outline" 
-                                size="sm"
-                                className="w-full text-xs"
-                                onClick={() => window.open(`https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk`, '_blank')}
-                              >
-                                <Car className="w-3 h-3 mr-1.5" />
-                                Find Car Rental Deals
-                                <ExternalLink className="w-3 h-3 ml-1.5" />
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                )}
-
-                {/* Must-See Attractions - Compact List */}
-                {safeDestination.highlights && safeDestination.highlights.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card className="bg-purple-50/50 border-0 shadow-sm h-full">
-                      <CardContent className="p-4 sm:p-5">
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <MapPin className="w-5 h-5 text-purple-600" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-lg font-semibold text-gray-800 mb-3">Must-See Attractions</h3>
-                            <ul className="space-y-2">
-                              {safeDestination.highlights.map((highlight, index) => (
-                                <li key={index} className="flex items-start gap-2">
-                                  <span className="text-purple-600 mt-1">•</span>
-                                  <span className="text-gray-600 text-sm leading-relaxed">{highlight}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                )}
-              </div>
+                <span>Tours</span>
+                <Badge variant="secondary" className="bg-blue-100 text-blue-700">
+                  {totalToursCount ? `${totalToursCount.toLocaleString()}+` : '1,900+'}
+                </Badge>
+              </Link>
+              {hasRestaurants && (
+                <Link 
+                  href={`/destinations/${safeDestination.id}/restaurants`}
+                  className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-purple-600 transition-colors border-b-2 border-transparent hover:border-purple-600 pb-1"
+                >
+                  <UtensilsCrossed className="w-4 h-4" />
+                  <span>Restaurants</span>
+                  <Badge variant="secondary" className="bg-purple-100 text-purple-700">
+                    {safeRestaurants.length}+
+                  </Badge>
+                </Link>
+              )}
+              {categoryGuidesProp.length > 0 && (
+                <Link 
+                  href={`#guides`}
+                  className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-indigo-600 transition-colors border-b-2 border-transparent hover:border-indigo-600 pb-1"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>Travel Guides</span>
+                  <Badge variant="secondary" className="bg-indigo-100 text-indigo-700">
+                    {categoryGuidesProp.length}+
+                  </Badge>
+                </Link>
+              )}
+              {/* Car Rentals - Always available */}
+              <Link 
+                href={`/destinations/${safeDestination.id}/car-rentals`}
+                className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-green-600 transition-colors border-b-2 border-transparent hover:border-green-600 pb-1"
+              >
+                <Car className="w-4 h-4" />
+                <span>Car Rentals</span>
+              </Link>
+              {/* Airport Transfers - Check if guide exists */}
+              {categoryGuidesProp.some(guide => guide.category_slug === 'airport-transfers') && (
+                <Link 
+                  href={`/destinations/${safeDestination.id}/guides/airport-transfers`}
+                  className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-cyan-600 transition-colors border-b-2 border-transparent hover:border-cyan-600 pb-1"
+                >
+                  <Plane className="w-4 h-4" />
+                  <span>Airport Transfers</span>
+                </Link>
+              )}
+              {/* Baby Equipment Rentals - Only if available */}
+              {hasBabyEquipmentRentals && (
+                <Link 
+                  href={`#baby-equipment`}
+                  className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-pink-600 transition-colors border-b-2 border-transparent hover:border-pink-600 pb-1"
+                >
+                  <Baby className="w-4 h-4" />
+                  <span>Baby Equipment Rentals</span>
+                </Link>
+              )}
+            </nav>
             </div>
           </section>
-        )}
 
-        {/* Best Time to Visit */}
-        {safeDestination.bestTimeToVisit && (
-          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="text-center mb-8 sm:mb-12"
-              >
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
-                  Best Time to Visit
-                </h2>
-              </motion.div>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="flex items-start mb-6">
-                    <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
-                      <Calendar className="w-6 h-6 text-orange-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2">Weather</h3>
-                      <p className="text-gray-600">{safeDestination.bestTimeToVisit.weather}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start mb-6">
-                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                      <Clock className="w-6 h-6 text-green-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2">Best Months</h3>
-                      <p className="text-gray-600">{safeDestination.bestTimeToVisit.bestMonths}</p>
-                    </div>
-                  </div>
-                </motion.div>
-                
-                <motion.div
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                  className="space-y-6"
-                >
-                  <Card className="bg-blue-50 border-blue-200">
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-semibold text-blue-800 mb-2">Peak Season</h3>
-                      <p className="text-blue-700">{safeDestination.bestTimeToVisit.peakSeason}</p>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card className="bg-green-50 border-green-200">
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-semibold text-green-800 mb-2">Off Season</h3>
-                      <p className="text-green-700">{safeDestination.bestTimeToVisit.offSeason}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </div>
-            </div>
-          </section>
-        )}
-
-
-        {/* Promoted Listings Section - Above Main Grid */}
+        {/* Promoted Listings Section - Moved Higher for Hub Style */}
         {((safePromotedTours && safePromotedTours.length > 0) || (safePromotedRestaurants && safePromotedRestaurants.length > 0)) && (
           <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1399,19 +1534,16 @@ export default function DestinationDetailClient({ destination, promotionScores =
                                       {restaurant.pricing.priceRange}
                                     </span>
                                   )}
-                                  {validCuisines.length > 0 && (
-                                    <span className="inline-flex items-center text-xs font-medium bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full">
-                                      {validCuisines.slice(0, 2).join(' · ')}
-                                    </span>
-                                  )}
                                 </div>
 
                                 <Link
                                   href={restaurantUrl}
-                                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
+                                  className="mt-auto"
                                 >
-                                  View Restaurant
-                                  <ArrowRight className="w-4 h-4" />
+                                  <Button className="w-full ocean-gradient text-white hover:opacity-90">
+                                    View Details
+                                    <ArrowRight className="w-4 h-4 ml-2" />
+                                  </Button>
                                 </Link>
                               </CardContent>
                             </Card>
@@ -1421,6 +1553,506 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   </div>
                 </div>
               )}
+            </div>
+          </section>
+        )}
+
+        {/* Featured Tours Section - Moved Higher for Hub Style */}
+        {(safeTrendingTours && safeTrendingTours.length > 0) && (
+          <section className="py-12 bg-gradient-to-br from-blue-50 to-purple-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Featured Tours</h2>
+                  <p className="text-gray-600">Top-rated experiences in {safeDestination.fullName || safeDestination.name}</p>
+                </div>
+                {totalToursCount !== null && totalToursCount > 0 && (
+                  <Button asChild variant="outline" className="hidden sm:flex">
+                    <Link href={`/destinations/${safeDestination.id}/tours`}>
+                      View All {totalToursCount.toLocaleString()}+ Tours
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                )}
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {safeTrendingTours.slice(0, 6).map((tour, index) => {
+                  const productId = getTourProductId(tour) || tour.product_id || tour.productId || tour.productCode;
+                  if (!productId) return null;
+                  
+                  const matchScore = matchScores[productId] || 
+                                    matchScores[tour.productId] || 
+                                    matchScores[tour.productCode] || 
+                                    matchScores[tour.product_id] ||
+                                    null;
+                  
+                  return (
+                    <motion.div
+                      key={productId || index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <TourCard
+                        tour={tour}
+                        destination={safeDestination}
+                        matchScore={matchScore}
+                        user={user}
+                        userPreferences={userPreferences}
+                        onOpenPreferences={() => setShowPreferencesModal(true)}
+                        isFeatured={true}
+                        premiumOperatorTourIds={[]}
+                        isPromoted={false}
+                        priority={index < 3}
+                      />
+                    </motion.div>
+                  );
+                })}
+              </div>
+              
+              {totalToursCount !== null && totalToursCount > 0 && (
+                <div className="text-center mt-8">
+                  <Button asChild size="lg" className="sunset-gradient text-white">
+                    <Link href={`/destinations/${safeDestination.id}/tours`}>
+                      {totalToursCount !== null && totalToursCount > 0 
+                        ? `View All ${totalToursCount.toLocaleString()} Tours & Activities in ${safeDestination.fullName}`
+                        : `View All Tours & Activities in ${safeDestination.fullName || safeDestination.name}`
+                      }
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* Popular Pages Section - Quick Browser for Navigation Items */}
+        <section className="py-12 bg-gradient-to-br from-indigo-50 to-blue-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-8"
+            >
+              <div className="mb-6">
+                <h2 className="text-3xl sm:text-4xl font-poppins font-bold text-gray-900 mb-2">
+                  Popular Pages for {safeDestination.fullName || safeDestination.name}
+                </h2>
+                <p className="text-gray-600">
+                  Quick access to all the essential resources for planning your {safeDestination.fullName || safeDestination.name} trip.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {popularPageCards.map((card, index) => {
+                  const Icon = card.icon;
+                  const isExternal = card.href.startsWith('#');
+                  return (
+                    <Link
+                      key={`${card.type}-${index}`}
+                      href={card.href}
+                      prefetch={!isExternal}
+                    >
+                      <Card className="h-full border bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                        <CardContent className="p-6 flex flex-col h-full">
+                          <div className="flex items-start gap-4 mb-4">
+                            <div className={`w-12 h-12 bg-gradient-to-br ${card.iconGradient} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                              <Icon className="w-6 h-6 text-white" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="text-lg font-bold text-gray-900 mb-2">
+                                {card.title}
+                              </h3>
+                              <p className="text-sm text-gray-600 line-clamp-3">
+                                {card.description}
+                              </p>
+                              {card.badge && (
+                                <Badge
+                                  variant="secondary"
+                                  className={`mt-2 w-fit ${
+                                    card.type === 'tours' ? 'bg-blue-100 text-blue-700' :
+                                    card.type === 'restaurants' ? 'bg-purple-100 text-purple-700' :
+                                    card.type === 'travel-guides' ? 'bg-indigo-100 text-indigo-700' :
+                                    card.type === 'guide' ? 'bg-amber-100 text-amber-700' : 'bg-gray-100 text-gray-700'
+                                  }`}
+                                >
+                                  {card.badge}
+                                </Badge>
+                              )}
+                            </div>
+                          </div>
+                          <div className={`flex items-center ${card.ctaColorClass} text-sm font-medium mt-auto group`}>
+                            {card.ctaText}
+                            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+
+        {/* Why Visit Section - Collapsible Accordion */}
+        {safeDestination.whyVisit && safeDestination.whyVisit.length > 0 && (
+          <section className="py-6 bg-gray-50 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <button
+                onClick={() => toggleSection('whyVisit')}
+                className="w-full flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all"
+                aria-expanded={expandedSections.whyVisit}
+                aria-controls="why-visit-content"
+              >
+                <h2 className="text-xl sm:text-2xl font-poppins font-bold text-gray-800">
+                  Why Visit {safeDestination.fullName}?
+                </h2>
+                {expandedSections.whyVisit ? (
+                  <ChevronDown className="w-5 h-5 text-gray-600 transition-transform" />
+                ) : (
+                  <ChevronRight className="w-5 h-5 text-gray-600 transition-transform" />
+                )}
+              </button>
+              
+              {/* Content - Always in HTML for SEO, hidden with CSS */}
+              <div
+                id="why-visit-content"
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  expandedSections.whyVisit ? 'max-h-[5000px] opacity-100 mt-4' : 'max-h-0 opacity-0'
+                }`}
+                aria-hidden={!expandedSections.whyVisit}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                  {safeDestination.whyVisit.map((reason, index) => (
+                    <Card key={index} className="bg-white border-0 shadow-lg h-full">
+                      <CardContent className="p-6">
+                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                          <Star className="w-6 h-6 text-blue-600" />
+                        </div>
+                        <p className="text-gray-700 leading-relaxed">{reason}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Getting Around – accordion with car rental banner inside */}
+        {safeDestination.gettingAround && (
+          <section id="getting-around" className="py-6 bg-gray-50 overflow-hidden scroll-mt-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <button
+                onClick={() => toggleSection('gettingAround')}
+                className="w-full flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all"
+                aria-expanded={expandedSections.gettingAround}
+                aria-controls="getting-around-content"
+              >
+                <div className="flex items-center gap-3">
+                  <Car className="w-5 h-5 text-blue-600" />
+                  <h2 className="text-xl sm:text-2xl font-poppins font-bold text-gray-800">
+                    Getting Around {safeDestination.fullName || safeDestination.name}
+                  </h2>
+                </div>
+                {expandedSections.gettingAround ? (
+                  <ChevronDown className="w-5 h-5 text-gray-600 transition-transform" />
+                ) : (
+                  <ChevronRight className="w-5 h-5 text-gray-600 transition-transform" />
+                )}
+              </button>
+              <div
+                id="getting-around-content"
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  expandedSections.gettingAround ? 'max-h-[5000px] opacity-100 mt-4' : 'max-h-0 opacity-0'
+                }`}
+                aria-hidden={!expandedSections.gettingAround}
+              >
+                <div className="rounded-lg bg-gradient-to-br from-blue-50 via-sky-50 to-blue-50 p-4">
+                  <Card className="bg-white border-2 border-blue-200 shadow-lg">
+                    <CardContent className="p-4 sm:p-6 lg:p-8">
+                      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
+                        <div className="flex-1 w-full md:w-auto">
+                          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                            <Car className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 flex-shrink-0" />
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Getting Around {safeDestination.fullName || safeDestination.name}</h3>
+                          </div>
+                          <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4 leading-relaxed">
+                            Save up to 70% on car rentals in {safeDestination.fullName || safeDestination.name} when you compare and book in advance.
+                          </p>
+                          <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
+                            <Badge variant="secondary" className="bg-blue-50 text-blue-700 text-xs sm:text-sm">Clear prices, no surprises</Badge>
+                            <Badge variant="secondary" className="bg-amber-50 text-amber-700 text-xs sm:text-sm">24/7 Support</Badge>
+                            <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 text-xs sm:text-sm">Free Cancellation</Badge>
+                          </div>
+                        </div>
+                        <Button
+                          size="lg"
+                          className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 w-full md:w-auto md:px-8 px-4 py-4 sm:py-6 text-sm sm:text-base md:text-lg font-semibold shrink-0"
+                          onClick={() => window.open(DISCOVER_CARS_URL, '_blank')}
+                        >
+                          <span className="hidden sm:inline">Find Car Rental Deals</span>
+                          <span className="sm:hidden">Find Car Rentals</span>
+                          <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Traveling with a Baby? – accordion (baby equipment rentals) */}
+        {hasBabyEquipmentRentals && (
+          <section id="baby-equipment" className="py-6 bg-gray-50 overflow-hidden scroll-mt-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <button
+                onClick={() => toggleSection('travelingWithBaby')}
+                className="w-full flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all"
+                aria-expanded={expandedSections.travelingWithBaby}
+                aria-controls="traveling-with-baby-content"
+              >
+                <div className="flex items-center gap-3">
+                  <Baby className="w-5 h-5 text-purple-600" />
+                  <h2 className="text-xl sm:text-2xl font-poppins font-bold text-gray-800">
+                    Traveling with a Baby?
+                  </h2>
+                </div>
+                {expandedSections.travelingWithBaby ? (
+                  <ChevronDown className="w-5 h-5 text-gray-600 transition-transform" />
+                ) : (
+                  <ChevronRight className="w-5 h-5 text-gray-600 transition-transform" />
+                )}
+              </button>
+              <div
+                id="traveling-with-baby-content"
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  expandedSections.travelingWithBaby ? 'max-h-[5000px] opacity-100 mt-4' : 'max-h-0 opacity-0'
+                }`}
+                aria-hidden={!expandedSections.travelingWithBaby}
+              >
+                <div className="rounded-lg bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 p-4">
+                  <Card className="bg-white border-2 border-purple-200 shadow-lg">
+                    <CardContent className="p-4 sm:p-6 lg:p-8">
+                      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
+                        <div className="flex-1 w-full md:w-auto">
+                          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                            <Baby className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600 flex-shrink-0" />
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Traveling with a Baby?</h3>
+                          </div>
+                          <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4 leading-relaxed">
+                            Make traveling with little ones easy! Rent baby equipment in {safeDestination.fullName} – strollers, car seats, cribs, and more delivered directly to your hotel or vacation rental. Save on baggage fees and travel light with BabyQuip.
+                          </p>
+                          <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
+                            <Badge variant="secondary" className="bg-blue-50 text-blue-700 text-xs sm:text-sm">90,000+ 5-Star Reviews</Badge>
+                            <Badge variant="secondary" className="bg-green-50 text-green-700 text-xs sm:text-sm">Clean & Insured</Badge>
+                          </div>
+                        </div>
+                        <Link href={`/destinations/${safeDestination.id}/baby-equipment-rentals`} className="w-full md:w-auto">
+                          <Button
+                            size="lg"
+                            className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 w-full md:w-auto md:px-8 px-4 py-4 sm:py-6 text-sm sm:text-base md:text-lg font-semibold"
+                          >
+                            <span className="hidden sm:inline">Browse Baby Equipment Rentals</span>
+                            <span className="sm:hidden">Browse Rentals</span>
+                            <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                          </Button>
+                        </Link>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Must-See Attractions - Collapsible Accordion */}
+        {safeDestination.highlights && safeDestination.highlights.length > 0 && (
+          <section className="py-6 bg-gray-50 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <button
+                onClick={() => toggleSection('mustSee')}
+                className="w-full flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all"
+                aria-expanded={expandedSections.mustSee}
+                aria-controls="must-see-content"
+              >
+                <div className="flex items-center gap-3">
+                  <MapPin className="w-5 h-5 text-purple-600" />
+                  <h2 className="text-xl sm:text-2xl font-poppins font-bold text-gray-800">
+                    Must-See Attractions in {safeDestination.fullName || safeDestination.name}
+                  </h2>
+                </div>
+                {expandedSections.mustSee ? (
+                  <ChevronDown className="w-5 h-5 text-gray-600 transition-transform" />
+                ) : (
+                  <ChevronRight className="w-5 h-5 text-gray-600 transition-transform" />
+                )}
+              </button>
+              
+              <div
+                id="must-see-content"
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  expandedSections.mustSee ? 'max-h-[5000px] opacity-100 mt-4' : 'max-h-0 opacity-0'
+                }`}
+                aria-hidden={!expandedSections.mustSee}
+              >
+                <Card className="bg-purple-50/50 border-0 shadow-sm">
+                  <CardContent className="p-4 sm:p-5">
+                    <ul className="space-y-2">
+                      {safeDestination.highlights.map((highlight, index) => (
+                        <li key={index} className="flex items-start gap-2">
+                          <span className="text-purple-600 mt-1">•</span>
+                          <span className="text-gray-600 text-sm leading-relaxed">{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Best Time to Visit - Collapsible Accordion */}
+        {safeDestination.bestTimeToVisit && (
+          <section className="py-6 bg-white overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <button
+                onClick={() => toggleSection('bestTime')}
+                className="w-full flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all"
+                aria-expanded={expandedSections.bestTime}
+                aria-controls="best-time-content"
+              >
+                <div className="flex items-center gap-3">
+                  <Calendar className="w-5 h-5 text-orange-600" />
+                  <h2 className="text-xl sm:text-2xl font-poppins font-bold text-gray-800">
+                    Best Time to Visit {safeDestination.fullName || safeDestination.name}
+                  </h2>
+                </div>
+                {expandedSections.bestTime ? (
+                  <ChevronDown className="w-5 h-5 text-gray-600 transition-transform" />
+                ) : (
+                  <ChevronRight className="w-5 h-5 text-gray-600 transition-transform" />
+                )}
+              </button>
+              
+              <div
+                id="best-time-content"
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  expandedSections.bestTime ? 'max-h-[5000px] opacity-100 mt-4' : 'max-h-0 opacity-0'
+                }`}
+                aria-hidden={!expandedSections.bestTime}
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+                  <div>
+                    <div className="flex items-start mb-6">
+                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                        <Calendar className="w-6 h-6 text-orange-600" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold text-gray-800 mb-2">Weather</h3>
+                        <p className="text-gray-600">{safeDestination.bestTimeToVisit.weather}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start mb-6">
+                      <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                        <Clock className="w-6 h-6 text-green-600" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold text-gray-800 mb-2">Best Months</h3>
+                        <p className="text-gray-600">{safeDestination.bestTimeToVisit.bestMonths}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-6">
+                    <Card className="bg-blue-50 border-blue-200">
+                      <CardContent className="p-6">
+                        <h3 className="text-lg font-semibold text-blue-800 mb-2">Peak Season</h3>
+                        <p className="text-blue-700">{safeDestination.bestTimeToVisit.peakSeason}</p>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="bg-green-50 border-green-200">
+                      <CardContent className="p-6">
+                        <h3 className="text-lg font-semibold text-green-800 mb-2">Off Season</h3>
+                        <p className="text-green-700">{safeDestination.bestTimeToVisit.offSeason}</p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Popular Tour Categories - Collapsible Accordion */}
+        {categoryGuidesProp && categoryGuidesProp.length > 0 && (
+          <section id="guides" className="py-6 bg-gray-50 overflow-hidden scroll-mt-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <button
+                onClick={() => toggleSection('tourCategories')}
+                className="w-full flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all"
+                aria-expanded={expandedSections.tourCategories}
+                aria-controls="tour-categories-content"
+              >
+                <div className="flex items-center gap-3">
+                  <BookOpen className="w-5 h-5 text-indigo-600" />
+                  <h2 className="text-xl sm:text-2xl font-poppins font-bold text-gray-800">
+                    Popular Tour Categories in {safeDestination.fullName || safeDestination.name}
+                  </h2>
+                </div>
+                {expandedSections.tourCategories ? (
+                  <ChevronDown className="w-5 h-5 text-gray-600 transition-transform" />
+                ) : (
+                  <ChevronRight className="w-5 h-5 text-gray-600 transition-transform" />
+                )}
+              </button>
+              
+              <div
+                id="tour-categories-content"
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  expandedSections.tourCategories ? 'max-h-[5000px] opacity-100 mt-4' : 'max-h-0 opacity-0'
+                }`}
+                aria-hidden={!expandedSections.tourCategories}
+              >
+                <Card className="bg-white border-0 shadow-sm">
+                  <CardContent className="p-4 sm:p-5">
+                    <div className="mb-3">
+                      <p className="text-sm text-gray-600 mb-4">
+                        {categoryGuidesProp.length} travel guides available for {safeDestination.fullName || safeDestination.name}. Click any category to read our comprehensive guide.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {categoryGuidesProp.map((guide) => {
+                        const categoryName = guide.category_name || guide.title || '';
+                        const categorySlug = guide.category_slug || '';
+                        const normalizedSlug = normalizeSlug(categorySlug);
+                        const guideUrl = `/destinations/${safeDestination.id}/guides/${normalizedSlug}`;
+                        
+                        return (
+                          <Link key={guide.id || categorySlug} href={guideUrl} prefetch={true}>
+                            <Badge variant="outline" className="px-3 py-1.5 text-sm hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-700 transition-colors cursor-pointer">
+                              {categoryName}
+                            </Badge>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </section>
         )}
@@ -1833,96 +2465,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </div>
         </section>
 
-        {/* Related Travel Guides Section - Category Guides (same style as restaurant page) */}
-        {categoryGuidesProp && categoryGuidesProp.length > 0 && (
-          <section className="py-12 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="mb-8"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <BookOpen className="w-6 h-6 text-blue-600" />
-                  <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900">
-                    Related Travel Guides for {safeDestination.fullName || safeDestination.name}
-                </h2>
-                </div>
-                <p className="text-gray-600 mb-6">
-                  Explore comprehensive guides to plan your perfect trip, including food tours, cultural experiences, and more.
-                </p>
-                
-                {/* All category guides in a grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-                  {categoryGuidesProp.slice(0, 6).map((guide) => {
-                    const categoryName = guide.category_name || guide.title || '';
-                    const categorySlug = guide.category_slug || '';
-                    // Normalize slug to handle special characters (e.g., "banús" -> "banus")
-                    const normalizedSlug = normalizeSlug(categorySlug);
-                    const guideUrl = `/destinations/${safeDestination.id}/guides/${normalizedSlug}`;
-                    
-                    // Determine icon based on category name
-                    const isFoodRelated = categoryName.toLowerCase().includes('food') || 
-                                        categoryName.toLowerCase().includes('culinary') || 
-                                        categoryName.toLowerCase().includes('tapas') || 
-                                        categoryName.toLowerCase().includes('tasting') ||
-                                        categoryName.toLowerCase().includes('restaurant');
-                    const Icon = isFoodRelated ? UtensilsCrossed : MapPin;
-                    const iconColor = isFoodRelated ? 'text-orange-600' : 'text-blue-600';
-                  
-                  return (
-                      <Link
-                        key={categorySlug}
-                        href={guideUrl}
-                        className="group"
-                      >
-                        <Card className="h-full border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-                          <CardContent className="p-5">
-                            <div className="flex items-center gap-3 mb-3">
-                              <Icon className={`w-5 h-5 ${iconColor}`} />
-                              <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                                {guide.title || categoryName}
-                            </h3>
-                            </div>
-                            {guide.subtitle && (
-                              <p className="text-sm text-gray-600 mb-3">
-                                {guide.subtitle}
-                              </p>
-                            )}
-                            {!guide.subtitle && (
-                              <p className="text-sm text-gray-600 mb-3">
-                                {isFoodRelated 
-                                  ? `Discover the best ${categoryName.toLowerCase()} experiences in ${safeDestination.fullName || safeDestination.name}.`
-                                  : `Explore ${categoryName.toLowerCase()} in ${safeDestination.fullName || safeDestination.name}.`
-                                }
-                              </p>
-                            )}
-                            <div className="flex items-center text-blue-600 text-sm font-medium group-hover:gap-2 transition-all">
-                              Read Guide
-                              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                            </div>
-                          </CardContent>
-                        </Card>
-                      </Link>
-                  );
-                })}
-              </div>
-                
-                <div className="text-center">
-                  <Button asChild variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
-                    <Link href={`/destinations/${safeDestination.id}`}>
-                      View All {safeDestination.fullName || safeDestination.name} Guides
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Link>
-                  </Button>
-                </div>
-              </motion.div>
-            </div>
-          </section>
-        )}
-
         {/* Related Travel Guides Carousel Section */}
         {normalizedRelatedGuides.length > 0 && (
           <section className="py-12 bg-white">
@@ -2123,10 +2665,12 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     <div className="bg-white rounded-lg p-4">
                       <h4 className="font-semibold text-gray-800 mb-2">Car Rental Deals in {safeDestination.fullName}</h4>
                       <p className="text-gray-600 text-sm mb-3">Rent a car for maximum flexibility and explore at your own pace on Expedia USA.</p>
-                      <Button variant="outline" className="w-full flex items-center justify-center gap-2" onClick={() => window.open(`https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk`, '_blank')}>
+                      <Link href={`/destinations/${safeDestination.id}/car-rentals`} className="block">
+                        <Button variant="outline" className="w-full flex items-center justify-center gap-2">
                         Find Car Rental Deals
-                        <ExternalLink className="w-4 h-4" />
+                          <ArrowRight className="w-4 h-4" />
                       </Button>
+                      </Link>
                     </div>
                   </CardContent>
                 </Card>
@@ -2162,51 +2706,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
             </div>
           </div>
         </section>
-
-        {/* Traveling with Kids Section - Only show for destinations with baby equipment rentals */}
-        {hasBabyEquipmentRentals && (
-          <section className="py-12 sm:py-16 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <Card className="bg-white border-2 border-purple-200 shadow-lg">
-                  <CardContent className="p-4 sm:p-6 lg:p-8">
-                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
-                      <div className="flex-1 w-full md:w-auto">
-                        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                          <Baby className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600 flex-shrink-0" />
-                          <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Traveling with Kids?</h3>
-                        </div>
-                        <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4 leading-relaxed">
-                          Make traveling with little ones easy! Rent baby equipment in {safeDestination.fullName} - strollers, car seats, cribs, and more delivered directly to your hotel or vacation rental. Save on baggage fees and travel light with BabyQuip.
-                        </p>
-                        <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
-                          <Badge variant="secondary" className="bg-blue-50 text-blue-700 text-xs sm:text-sm">90,000+ 5-Star Reviews</Badge>
-                          <Badge variant="secondary" className="bg-green-50 text-green-700 text-xs sm:text-sm">Clean & Insured</Badge>
-                          <Badge variant="secondary" className="bg-purple-50 text-purple-700 text-xs sm:text-sm">2,000+ Locations</Badge>
-                        </div>
-                      </div>
-                      <Link href={`/destinations/${safeDestination.id}/baby-equipment-rentals`} className="w-full md:w-auto">
-                        <Button
-                          size="lg"
-                          className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 w-full md:w-auto md:px-8 px-4 py-4 sm:py-6 text-sm sm:text-base md:text-lg font-semibold"
-                        >
-                          <span className="hidden sm:inline">Browse Baby Equipment Rentals</span>
-                          <span className="sm:hidden">Browse Rentals</span>
-                          <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </div>
-          </section>
-        )}
 
         {/* FAQ Section - Scalable template-based approach */}
         {(safeDestination.bestTimeToVisit || safeDestination.gettingAround || safeDestination.whyVisit?.length > 0 || (safeDestination.highlights && safeDestination.highlights.length > 0) || (safeDestination.tourCategories && safeDestination.tourCategories.length > 0) || (categoryGuidesProp && categoryGuidesProp.length > 0)) && (

@@ -218,39 +218,57 @@ export function buildEnhancedMetaDescription(tour, destinationData = null, enric
 /**
  * Build enhanced title for SEO
  * 
- * Format: "[Tour Name] in [Destination] by [Operator] | TopTours.ai"
- * Or: "Best [Category] in [Destination] - [Tour Name] | TopTours.ai"
+ * Format: "[Tour Name] by [Operator]" or "[Tour Name] in [Destination] by [Operator]"
+ * NO brand name - better for SEO rankings and keyword optimization
+ * Includes operator name to differentiate from competitors and rank for operator searches
  */
 export function buildEnhancedTitle(tour, destinationData = null, enrichment = null) {
   const tourTitle = tour.title || 'Tour';
   const destinationName = extractDestinationName(tour, destinationData);
   const operatorName = extractOperatorName(tour);
   
-  // Option 1: Tour name + destination + operator (if all available)
+  // Priority 1: Tour name + destination + operator (best for SEO - differentiates from competitors)
   if (destinationName && operatorName) {
     const title = `${tourTitle} in ${destinationName} by ${operatorName}`;
-    // Limit to 60 characters for title tag
-    if (title.length <= 60) {
-      return `${title} | TopTours.ai`;
+    // Allow up to 65 chars (slightly over 60 is fine, Google will show it)
+    if (title.length <= 65) {
+      return title; // NO brand name
+    }
+    // If too long, try without destination
+    const titleWithoutDest = `${tourTitle} by ${operatorName}`;
+    if (titleWithoutDest.length <= 65) {
+      return titleWithoutDest;
     }
   }
   
-  // Option 2: Tour name + destination (if destination available)
-  if (destinationName) {
-    const title = `${tourTitle} in ${destinationName}`;
-    if (title.length <= 60) {
-      return `${title} | TopTours.ai`;
-    }
-  }
-  
-  // Option 3: Tour name + operator (if operator available)
+  // Priority 2: Tour name + operator (if operator available, no destination)
   if (operatorName) {
     const title = `${tourTitle} by ${operatorName}`;
-    if (title.length <= 60) {
-      return `${title} | TopTours.ai`;
+    if (title.length <= 65) {
+      return title; // NO brand name
+    }
+    // If still too long, trim operator name intelligently
+    const maxTourLength = 50;
+    if (tourTitle.length <= maxTourLength) {
+      const remainingSpace = 65 - tourTitle.length - 6; // -6 for " by "
+      if (remainingSpace > 10) {
+        const trimmedOperator = operatorName.substring(0, remainingSpace).trim();
+        return `${tourTitle} by ${trimmedOperator}`;
+      }
     }
   }
   
-  // Fallback: Just tour name
-  return `${tourTitle} | TopTours.ai`;
+  // Priority 3: Tour name + destination (if destination available, no operator)
+  if (destinationName) {
+    const title = `${tourTitle} in ${destinationName}`;
+    if (title.length <= 65) {
+      return title; // NO brand name
+    }
+  }
+  
+  // Fallback: Just tour name (trim if too long)
+  if (tourTitle.length > 65) {
+    return tourTitle.substring(0, 62) + '...';
+  }
+  return tourTitle; // NO brand name
 }

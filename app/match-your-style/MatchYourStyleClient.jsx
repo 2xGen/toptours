@@ -1699,16 +1699,13 @@ export default function MatchYourStyleClient() {
                                   <p className="text-gray-600 text-sm leading-relaxed mb-3">{destinationData.gettingAround}</p>
                                   <div className="pt-2 border-t border-gray-100">
                                     <p className="text-gray-600 text-xs mb-2">Prefer renting a car? See options here.</p>
-                                    <Button 
-                                      variant="outline" 
-                                      size="sm"
-                                      className="w-full text-xs"
-                                      onClick={() => window.open(`https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk`, '_blank')}
-                                    >
-                                      <Car className="w-3 h-3 mr-1.5" />
-                                      Find Car Rental Deals
-                                      <ExternalLink className="w-3 h-3 ml-1.5" />
-                                    </Button>
+                                    <Link href={`/destinations/${destinationData.id}/car-rentals`} className="block">
+                                      <Button variant="outline" size="sm" className="w-full text-xs">
+                                        <Car className="w-3 h-3 mr-1.5" />
+                                        Find Car Rental Deals
+                                        <ArrowRight className="w-3 h-3 ml-1.5" />
+                                      </Button>
+                                    </Link>
                                   </div>
                                 </div>
                               </div>

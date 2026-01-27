@@ -3,6 +3,7 @@
 import React, { useMemo, useState, useEffect, useCallback, useRef } from 'react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
+import DestinationStickyNav from '@/components/DestinationStickyNav';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -55,7 +56,7 @@ import {
 } from '@/lib/tourMatching';
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 
-export default function RestaurantsListClient({ destination, restaurants, promotedTours = [], promotedRestaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [], categoryGuides = [] }) {
+export default function RestaurantsListClient({ destination, restaurants, promotedTours = [], promotedRestaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [], categoryGuides = [], destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false } }) {
   const { isBookmarked, toggle } = useRestaurantBookmarks();
   const supabase = createSupabaseBrowserClient();
   const { toast } = useToast();
@@ -646,6 +647,15 @@ export default function RestaurantsListClient({ destination, restaurants, promot
             </nav>
           </div>
         </section>
+
+        {/* Destination Sticky Navigation */}
+        <DestinationStickyNav
+          destinationId={destination.id}
+          destinationName={destination.fullName || destination.name}
+          hasRestaurants={true}
+          hasAirportTransfers={destinationFeatures.hasAirportTransfers}
+          hasBabyEquipment={destinationFeatures.hasBabyEquipment}
+        />
 
         {/* Promoted Listings Section - Above Main Grid */}
         {((promotedTours && promotedTours.length > 0) || (promotedRestaurants && promotedRestaurants.length > 0)) && (
@@ -1252,14 +1262,12 @@ export default function RestaurantsListClient({ destination, restaurants, promot
                   <div className="bg-white rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Car Rental Deals in {destination.fullName}</h4>
                     <p className="text-gray-600 text-sm mb-3">Rent a car for maximum flexibility and explore at your own pace on Expedia USA.</p>
-                    <Button
-                      variant="outline"
-                      className="w-full flex items-center justify-center gap-2"
-                      onClick={() => window.open('https://expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2F&camref=1110lee9j&creativeref=1100l68075&adref=PZXFUWFJMk', '_blank')}
-                    >
-                      Find Car Rental Deals
-                      <ExternalLink className="w-4 h-4" />
-                    </Button>
+                    <Link href={`/destinations/${destination.id}/car-rentals`} className="block">
+                      <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+                        Find Car Rental Deals
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
