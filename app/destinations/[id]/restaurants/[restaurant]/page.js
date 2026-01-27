@@ -264,7 +264,6 @@ export default async function RestaurantPage({ params }) {
   const premiumSubscription = premiumSubscriptionResult.status === 'fulfilled' ? premiumSubscriptionResult.value : null;
   const categoryGuides = categoryGuidesResult.status === 'fulfilled' ? categoryGuidesResult.value : [];
   const features = destinationFeaturesResult.status === 'fulfilled' ? destinationFeaturesResult.value : { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false };
-  const features = destinationFeaturesResult.status === 'fulfilled' ? destinationFeaturesResult.value : { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false };
 
   // Generate breadcrumb schema for SEO
   const breadcrumbSchema = {
