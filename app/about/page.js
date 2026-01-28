@@ -34,8 +34,8 @@ export default function AboutPage() {
     },
     {
       icon: Globe,
-      title: '170+ Destinations',
-      description: 'Access to thousands of tours and activities across 170+ destinations worldwide, from popular hotspots to hidden gems, all curated and AI-validated.'
+      title: '3,500+ Destinations',
+      description: 'Access to thousands of tours and activities across 3,500+ destinations worldwide, from popular hotspots to hidden gems, all curated and AI-validated.'
     },
     {
       icon: Heart,
@@ -50,8 +50,8 @@ export default function AboutPage() {
   ];
 
   const stats = [
-    { number: '170+', label: 'Destinations Covered' },
-    { number: '1050+', label: 'Guides Written' },
+    { number: '3,500+', label: 'Destinations Covered' },
+    { number: '21k+', label: 'Guides Written' },
     { number: '300k+', label: 'Tours Available' }
   ];
 
@@ -293,15 +293,27 @@ export default function AboutPage() {
                 Discover your next amazing adventure. Get AI-powered matches 
                 that fit your style and find tours personalized just for you.
               </p>
-              <Button 
-                asChild
-                className="px-8 py-4 bg-white text-blue-600 font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-200"
-              >
-                <Link href="/destinations">
-                  Start Planning Now
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button 
+                  asChild
+                  className="px-8 py-4 bg-white text-blue-600 font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-200"
+                >
+                  <Link href="/match-your-style">
+                    Get Tour Recommendations
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button 
+                  asChild
+                  variant="outline"
+                  className="px-8 py-4 border-2 border-white text-white font-semibold hover:bg-white/10 hover:scale-105 transition-all duration-200"
+                >
+                  <Link href="/destinations">
+                    Browse Destinations
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+              </div>
             </motion.div>
           </div>
         </section>

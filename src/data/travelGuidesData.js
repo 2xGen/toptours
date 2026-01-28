@@ -1058,7 +1058,8 @@ This page will be updated as new information becomes available.`,
     internalLinks: ['/destinations/aruba', '/destinations/aruba/restaurants', '/destinations/aruba/tours'],
     relatedDestination: '/destinations/aruba',
     relatedDestinationLabel: 'Aruba',
-    relatedPosts: ['best-time-to-visit-aruba', '3-day-aruba-itinerary', 'aruba-packing-list']
+    relatedPosts: ['best-time-to-visit-aruba', '3-day-aruba-itinerary', 'aruba-packing-list'],
+    hidden: true
   },
   {
     id: 'curacao-flight-disruptions-venezuela-tensions',
@@ -1202,7 +1203,8 @@ This page will be updated as new information becomes available.`,
     internalLinks: ['/destinations/curacao', '/destinations/curacao/restaurants', '/destinations/curacao/tours'],
     relatedDestination: '/destinations/curacao',
     relatedDestinationLabel: 'Curaçao',
-    relatedPosts: ['best-time-to-visit-curacao', '3-day-curacao-itinerary', 'curacao-packing-list']
+    relatedPosts: ['best-time-to-visit-curacao', '3-day-curacao-itinerary', 'curacao-packing-list'],
+    hidden: true
   },
   {
     id: 'bonaire-flight-disruptions-venezuela-tensions',
@@ -1325,7 +1327,8 @@ This page will be updated as new information becomes available.`,
     internalLinks: ['/destinations', '/destinations/bonaire'],
     relatedDestination: '/destinations/bonaire',
     relatedDestinationLabel: 'Bonaire',
-    relatedPosts: ['best-time-to-visit-curacao', 'curacao-packing-list']
+    relatedPosts: ['best-time-to-visit-curacao', 'curacao-packing-list'],
+    hidden: true
   },
   {
     id: 'sint-maarten-flight-disruptions-venezuela-tensions',
@@ -1468,7 +1471,8 @@ This page will be updated as new information becomes available.`,
     internalLinks: ['/destinations', '/destinations/st-martin'],
     relatedDestination: '/destinations/st-martin',
     relatedDestinationLabel: 'St. Martin',
-    relatedPosts: ['best-time-to-visit-curacao', 'curacao-packing-list']
+    relatedPosts: ['best-time-to-visit-curacao', 'curacao-packing-list'],
+    hidden: true
   }
 ];
 
@@ -1476,10 +1480,11 @@ export const getRelatedGuides = (currentGuideId) => {
   const currentGuide = travelGuides.find(guide => guide.id === currentGuideId);
   if (!currentGuide) return [];
   
-  // Get ALL guides from the same category, excluding the current one
+  // Get ALL guides from the same category, excluding the current one and hidden guides
   const related = travelGuides.filter(guide => 
     guide.category === currentGuide.category && 
-    guide.id !== currentGuideId
+    guide.id !== currentGuideId &&
+    !guide.hidden
   );
   
   // Sort by featured first, then by publish date
@@ -1496,7 +1501,7 @@ export const getGuideById = (id) => {
 
 export const getGuidesByIds = (ids) => {
   if (!Array.isArray(ids)) return [];
-  return ids.map(id => getGuideById(id)).filter(guide => guide !== undefined);
+  return ids.map(id => getGuideById(id)).filter(guide => guide !== undefined && !guide.hidden);
 };
 
 export const getGuidesByCountry = (country) => {
@@ -1507,9 +1512,9 @@ export const getGuidesByCountry = (country) => {
 export const getGuidesByCategory = (category) => {
   if (!category) return [];
   
-  // Get ALL guides from the specified category
+  // Get ALL guides from the specified category, excluding hidden guides
   const related = travelGuides.filter(guide => 
-    guide.category === category
+    guide.category === category && !guide.hidden
   );
   
   // Sort by featured first, then by publish date

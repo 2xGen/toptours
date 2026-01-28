@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import TourCard from '@/components/tour/TourCard';
@@ -11,7 +11,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Search, MapPin, ArrowRight, UtensilsCrossed, Sparkles, Settings, Star, X, Loader2, BookOpen, Car, Calendar, ExternalLink, Clock, ChevronDown } from 'lucide-react';
+import { Search, MapPin, ArrowRight, ArrowLeft, UtensilsCrossed, Sparkles, Settings, Star, X, Loader2, BookOpen, Car, Calendar, ExternalLink, Clock, ChevronDown, Mail, Users, Check, Shield, Zap } from 'lucide-react';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { calculateTourProfile, getUserPreferenceScores } from '@/lib/tourMatching';
@@ -25,6 +25,7 @@ import { getTourProductId } from '@/utils/tourHelpers';
 
 export default function MatchYourStyleClient() {
   const router = useRouter();
+  const pathname = usePathname();
   const [destination, setDestination] = useState('');
   const [destinationData, setDestinationData] = useState(null);
   const [searchedDestinationId, setSearchedDestinationId] = useState(null); // Track which destination results are for
@@ -48,6 +49,29 @@ export default function MatchYourStyleClient() {
   const [loadingGuides, setLoadingGuides] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [showRestaurantMatchModal, setShowRestaurantMatchModal] = useState(false);
+
+  // Get Tour Recommendations: choice view ('choice' | 'ai' | 'personal') — synced to URL for shareable links
+  const [viewMode, setViewMode] = useState('choice');
+  useEffect(() => {
+    if (!pathname) return;
+    if (pathname.endsWith('/ai-match')) setViewMode('ai');
+    else if (pathname.endsWith('/personal-match')) setViewMode('personal');
+    else setViewMode('choice');
+  }, [pathname]);
+  // Personal Match form
+  const [personalEmail, setPersonalEmail] = useState('');
+  const [personalTravelDates, setPersonalTravelDates] = useState(''); // notes e.g. "Flexible in April"
+  const [personalTravelStartDate, setPersonalTravelStartDate] = useState('');
+  const [personalTravelEndDate, setPersonalTravelEndDate] = useState('');
+  const [personalName, setPersonalName] = useState('');
+  const [personalDestination, setPersonalDestination] = useState('');
+  const [personalNotes, setPersonalNotes] = useState('');
+  const [personalSubmitting, setPersonalSubmitting] = useState(false);
+  const [personalSubmitted, setPersonalSubmitted] = useState(false);
+  const [personalGroupSize, setPersonalGroupSize] = useState('');
+  const [personalPrimaryGoal, setPersonalPrimaryGoal] = useState('');
+  const [personalTermsAccepted, setPersonalTermsAccepted] = useState(false);
+
   const supabase = createSupabaseBrowserClient();
   const { toast } = useToast();
   
@@ -946,6 +970,16 @@ export default function MatchYourStyleClient() {
         {/* Hero Section */}
         <section className="pt-24 pb-16 ocean-gradient">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {(viewMode === 'ai' || viewMode === 'personal') && (
+              <button
+                type="button"
+                onClick={() => router.push('/match-your-style')}
+                className="mb-6 flex items-center gap-2 text-white/90 hover:text-white text-sm font-medium transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to options
+              </button>
+            )}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -953,15 +987,380 @@ export default function MatchYourStyleClient() {
               className="text-center"
             >
               <h1 className="text-4xl md:text-6xl font-poppins font-bold text-white mb-6">
-                Match Your Style
+                {viewMode === 'choice' && 'Get Tour Recommendations'}
+                {viewMode === 'ai' && 'Match Your Style'}
+                {viewMode === 'personal' && 'AI Precision. Human Expertise.'}
               </h1>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
-                Find tours and restaurants that match your travel style, budget, and preferences. Get personalized recommendations based on your profile.
+              <p className="text-xl md:text-2xl text-white/95 max-w-3xl mx-auto mb-8 leading-relaxed">
+                {viewMode === 'choice' && 'Get the best tours for your trip—instantly with AI, or hand-picked by our experts within 24 hours. Both free.'}
+                {viewMode === 'ai' && 'Find tours and restaurants that match your travel style, budget, and preferences.'}
+                {viewMode === 'personal' && 'Sometimes the best travel decisions need a second opinion. Tell us where you’re going, and our experts will hand-pick the top 3 tours for your dates using our proprietary AI match technology.'}
               </p>
             </motion.div>
           </div>
         </section>
 
+        {/* Choice: AI Match vs Personal Match */}
+        {viewMode === 'choice' && (
+          <section className="py-14 md:py-18 bg-gradient-to-b from-white to-gray-50">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <motion.button
+                  type="button"
+                  onClick={() => router.push('/match-your-style/ai-match')}
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.99 }}
+                  className="text-left p-8 md:p-10 rounded-2xl border-2 border-purple-200 bg-white shadow-lg shadow-purple-100/50 hover:border-purple-400 hover:shadow-xl hover:shadow-purple-200/40 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center shadow-lg">
+                      <Sparkles className="w-7 h-7 text-white" />
+                    </div>
+                    <span className="text-sm font-bold text-purple-600 uppercase tracking-wider">Instant · Free</span>
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 font-poppins">AI Match</h2>
+                  <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
+                    Get personalized tour and restaurant picks right now. Enter your destination and preferences—we’ll show you the best matches with 0–100% scores.
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-purple-600 font-bold text-base">
+                    Start now <ArrowRight className="w-5 h-5" />
+                  </span>
+                </motion.button>
+
+                <motion.button
+                  type="button"
+                  onClick={() => router.push('/match-your-style/personal-match')}
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.99 }}
+                  className="text-left p-8 md:p-10 rounded-2xl border-2 border-emerald-200 bg-white shadow-lg shadow-emerald-100/50 hover:border-emerald-400 hover:shadow-xl hover:shadow-emerald-200/40 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg">
+                      <Users className="w-7 h-7 text-white" />
+                    </div>
+                    <span className="text-sm font-bold text-emerald-600 uppercase tracking-wider">Within 24 hours · Free</span>
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 font-poppins">Personal Match</h2>
+                  <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
+                    Our experts search 300,000+ tours in 3,500 destinations and hand-pick your top 3 using our AI match technology. One short form—personal report in your inbox.
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-emerald-600 font-bold text-base">
+                    Get my picks <ArrowRight className="w-5 h-5" />
+                  </span>
+                </motion.button>
+              </div>
+              {/* Our mission / why this is free */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mt-14 text-center max-w-3xl mx-auto"
+              >
+                <h3 className="text-xl font-semibold text-gray-900 mb-4 font-poppins">Our Mission</h3>
+                <p className="text-base text-gray-600 leading-relaxed mb-4">
+                  At TopTours.ai™, we’re pioneering a new way to discover and book tours. We’ve built something unique: a platform where AI helps you find tours that actually fit your travel preferences. That’s why we offer both AI Match and Personal Match free—so every traveler can get a more personalized, transparent, and engaging experience.
+                </p>
+                <p className="text-base text-gray-600 leading-relaxed">
+                  We partner with trusted tour operators worldwide so you have access to authentic, high-quality experiences. When you book, our partners support us—so we can keep improving recommendations, expanding to more destinations, and giving you the intelligence to find the tours that match you perfectly, without charging you.
+                </p>
+              </motion.div>
+            </div>
+          </section>
+        )}
+
+        {/* Personal Match: How It Works + Form + Trust + Upsell + Footer */}
+        {viewMode === 'personal' && (
+          <>
+            {/* How It Works */}
+            <section className="py-14 bg-white border-b border-gray-100">
+              <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12 font-poppins">How it works</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                  <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-center">
+                    <div className="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-5">
+                      <span className="text-xl font-bold text-emerald-600">1</span>
+                    </div>
+                    <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-3">Share your vision</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">Fill out a quick form with your destination, dates, and what kind of experience you’re looking for.</p>
+                  </motion.div>
+                  <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-center">
+                    <div className="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-5">
+                      <span className="text-xl font-bold text-emerald-600">2</span>
+                    </div>
+                    <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-3">We run the data</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">We scan 300,000+ tours and apply your Match Style preferences to find the highest-scoring options.</p>
+                  </motion.div>
+                  <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="text-center">
+                    <div className="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-5">
+                      <span className="text-xl font-bold text-emerald-600">3</span>
+                    </div>
+                    <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-3">Get your report</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">Within 24 hours you’ll receive a personal email with 3 curated tours, match scores, and direct booking links.</p>
+                  </motion.div>
+                </div>
+              </div>
+            </section>
+
+            {/* Request Form */}
+            <section className="py-12 bg-gray-50">
+              <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
+                {personalSubmitted ? (
+                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-center py-8">
+                    <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+                      <Mail className="w-8 h-8 text-emerald-600" />
+                    </div>
+                    <h2 className="text-xl font-bold text-gray-900 mb-2">Request received</h2>
+                    <p className="text-gray-600 mb-6">
+                      Our team will hand-pick your top 3 tours and email your Personal Match Report within 24 hours.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setPersonalSubmitted(false);
+                        setPersonalEmail(''); setPersonalTravelDates(''); setPersonalTravelStartDate(''); setPersonalTravelEndDate(''); setPersonalName(''); setPersonalDestination('');
+                        setPersonalNotes(''); setPersonalGroupSize(''); setPersonalPrimaryGoal(''); setPersonalTermsAccepted(false);
+                      }}
+                      className="text-emerald-600 font-semibold hover:underline"
+                    >
+                      Submit another request
+                    </button>
+                  </motion.div>
+                ) : (
+                  <>
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-2 font-poppins">Request your Personal Match Report</h2>
+                    <p className="text-center text-gray-600 text-lg mb-2">It’s free, fast, and personalized just for you.</p>
+                    <p className="text-center text-gray-500 text-base mb-8">We offer it free because we’re supported by our tour partners when you book—so we can keep helping more travelers find the right tours.</p>
+                    <motion.form
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      onSubmit={async (e) => {
+                        e.preventDefault();
+                        const hasDateRange = personalTravelStartDate && personalTravelEndDate;
+                        const hasDatesNotes = personalTravelDates.trim();
+                        if (!personalEmail.trim() || !personalDestination.trim() || !personalTermsAccepted || (!hasDateRange && !hasDatesNotes)) return;
+                        setPersonalSubmitting(true);
+                        try {
+                          const res = await fetch('/api/internal/personal-match-submit', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                              email: personalEmail.trim(),
+                              destination: personalDestination.trim(),
+                              travelStartDate: personalTravelStartDate || undefined,
+                              travelEndDate: personalTravelEndDate || undefined,
+                              travelDatesNotes: personalTravelDates.trim() || undefined,
+                              groupSize: personalGroupSize || undefined,
+                              primaryGoal: personalPrimaryGoal || undefined,
+                              name: personalName?.trim() || undefined,
+                            }),
+                          });
+                          const data = await res.json().catch(() => ({}));
+                          if (!res.ok) {
+                            throw new Error(data.error || 'Request failed');
+                          }
+                          setPersonalSubmitted(true);
+                        } catch (err) {
+                          toast({ title: 'Something went wrong', description: err?.message || 'Please try again.', variant: 'destructive' });
+                        } finally {
+                          setPersonalSubmitting(false);
+                        }
+                      }}
+                      className="space-y-5 bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-sm"
+                    >
+                      <div>
+                        <label htmlFor="personal-destination" className="block text-sm font-semibold text-gray-900 mb-1.5">
+                          Destination <span className="text-red-500">*</span>
+                        </label>
+                        <Input
+                          id="personal-destination"
+                          type="text"
+                          placeholder="e.g. Aruba, Rome, Bali"
+                          value={personalDestination}
+                          onChange={(e) => setPersonalDestination(e.target.value)}
+                          required
+                          className="w-full"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-900 mb-1.5">
+                          Travel dates <span className="text-red-500">*</span>
+                        </label>
+                        <p className="text-xs text-gray-500 mb-2">Pick dates if you know them, or describe below (e.g. flexible in April).</p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+                          <div>
+                            <label htmlFor="personal-start-date" className="sr-only">Start date</label>
+                            <Input
+                              id="personal-start-date"
+                              type="date"
+                              value={personalTravelStartDate}
+                              onChange={(e) => setPersonalTravelStartDate(e.target.value)}
+                              className="w-full"
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="personal-end-date" className="sr-only">End date</label>
+                            <Input
+                              id="personal-end-date"
+                              type="date"
+                              value={personalTravelEndDate}
+                              onChange={(e) => setPersonalTravelEndDate(e.target.value)}
+                              min={personalTravelStartDate || undefined}
+                              className="w-full"
+                            />
+                          </div>
+                        </div>
+                        <Input
+                          id="personal-dates-notes"
+                          type="text"
+                          placeholder="Or describe: e.g. “Flexible in April” or “March 15–22”"
+                          value={personalTravelDates}
+                          onChange={(e) => setPersonalTravelDates(e.target.value)}
+                          className="w-full"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="personal-group" className="block text-sm font-semibold text-gray-900 mb-1.5">
+                          Group size
+                        </label>
+                        <select
+                          id="personal-group"
+                          value={personalGroupSize}
+                          onChange={(e) => setPersonalGroupSize(e.target.value)}
+                          className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white"
+                        >
+                          <option value="">Select...</option>
+                          <option value="solo">Solo</option>
+                          <option value="couple">Couple</option>
+                          <option value="family">Family</option>
+                          <option value="small">Small group (4–8)</option>
+                          <option value="large">Large group (8+)</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label htmlFor="personal-goal" className="block text-sm font-semibold text-gray-900 mb-1.5">
+                          What is your primary goal for this trip?
+                        </label>
+                        <textarea
+                          id="personal-goal"
+                          placeholder='e.g. "Relaxing on the beach," "Finding hidden history," "High-adrenaline adventure"'
+                          value={personalPrimaryGoal}
+                          onChange={(e) => setPersonalPrimaryGoal(e.target.value)}
+                          rows={3}
+                          className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="personal-email" className="block text-sm font-semibold text-gray-900 mb-1.5">
+                          Email <span className="text-red-500">*</span>
+                        </label>
+                        <Input
+                          id="personal-email"
+                          type="email"
+                          placeholder="you@example.com"
+                          value={personalEmail}
+                          onChange={(e) => setPersonalEmail(e.target.value)}
+                          required
+                          className="w-full"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="personal-name" className="block text-sm font-semibold text-gray-900 mb-1.5">
+                          Name (optional)
+                        </label>
+                        <Input
+                          id="personal-name"
+                          type="text"
+                          placeholder="Your name"
+                          value={personalName}
+                          onChange={(e) => setPersonalName(e.target.value)}
+                          className="w-full"
+                        />
+                      </div>
+                      <div className="flex items-start gap-3 pt-1">
+                        <input
+                          id="personal-terms"
+                          type="checkbox"
+                          checked={personalTermsAccepted}
+                          onChange={(e) => setPersonalTermsAccepted(e.target.checked)}
+                          className="mt-1 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                        />
+                        <label htmlFor="personal-terms" className="text-sm text-gray-700">
+                          I agree to the{' '}
+                          <Link href="/terms" className="text-emerald-600 hover:text-emerald-700 font-medium underline" target="_blank" rel="noopener noreferrer">
+                            Terms & Conditions
+                          </Link>
+                          . I understand that my information will be used only to find the best tour experience for me and will not be used for marketing.
+                        </label>
+                      </div>
+                      <Button
+                        type="submit"
+                        disabled={personalSubmitting || !personalEmail.trim() || !personalDestination.trim() || !personalTermsAccepted || (!(personalTravelStartDate && personalTravelEndDate) && !personalTravelDates.trim())}
+                        className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold py-6"
+                      >
+                        {personalSubmitting ? (
+                          <>
+                            <Loader2 className="w-5 h-5 animate-spin mr-2 inline" />
+                            Sending…
+                          </>
+                        ) : (
+                          'Request my Personal Match Report'
+                        )}
+                      </Button>
+                    </motion.form>
+                  </>
+                )}
+              </div>
+            </section>
+
+            {/* Trust: Why Us */}
+            <section className="py-14 bg-white border-t border-gray-100">
+              <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-10 font-poppins">Why use the TopTours Concierge?</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div className="flex flex-col items-center text-center p-5">
+                    <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                      <Zap className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Zero stress</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">Skip the hours of scrolling through endless review pages. We do the heavy lifting.</p>
+                  </div>
+                  <div className="flex flex-col items-center text-center p-5">
+                    <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
+                      <Sparkles className="w-6 h-6 text-purple-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">AI-validated</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">Every recommendation is backed by a 0–100% Match Score based on your travel style.</p>
+                  </div>
+                  <div className="flex flex-col items-center text-center p-5">
+                    <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
+                      <Shield className="w-6 h-6 text-emerald-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Trusted partners</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">We only recommend tours from verified, high-quality partners like Viator.</p>
+                  </div>
+                </div>
+                <p className="text-center text-gray-500 text-base mt-8 max-w-2xl mx-auto">
+                  Right now we only recommend tours. Restaurants, hotels, and itineraries are coming soon.
+                </p>
+              </div>
+            </section>
+
+            {/* Closing footer */}
+            <section className="py-10 bg-white border-t border-gray-100">
+              <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p className="text-gray-600 text-base leading-relaxed">
+                  <span className="font-semibold text-gray-900">TopTours.ai™</span>
+                  <br />
+                  Helping you find the tours that actually match your style.
+                </p>
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* AI Match: existing flow */}
+        {viewMode === 'ai' && (
+        <>
         {/* Main Content */}
         <section className="py-12 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1933,6 +2332,9 @@ export default function MatchYourStyleClient() {
               )}
             </div>
           </section>
+        )}
+
+        </>
         )}
 
       </div>

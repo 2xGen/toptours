@@ -946,3 +946,73 @@ export async function sendRestaurantPromotionConfirmationEmail({
   }
 }
 
+const PERSONAL_MATCH_INBOX = 'mail@toptours.ai';
+
+/**
+ * Send Personal Match form submission to internal inbox (mail@toptours.ai).
+ * Used only to create the best tour experience for the user; not for marketing.
+ */
+function formatTravelDatesDisplay({ travelStartDate, travelEndDate, travelDatesNotes }) {
+  if (travelStartDate && travelEndDate) {
+    const start = new Date(travelStartDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    const end = new Date(travelEndDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    return `${start} – ${end}${travelDatesNotes ? ` (${travelDatesNotes})` : ''}`;
+  }
+  return travelDatesNotes || '—';
+}
+
+export async function sendPersonalMatchSubmission({
+  email,
+  destination,
+  travelStartDate,
+  travelEndDate,
+  travelDatesNotes,
+  groupSize,
+  primaryGoal,
+  name,
+}) {
+  if (!resend) {
+    console.error('❌ Resend not initialized - RESEND_API_KEY is missing');
+    return { success: false, error: 'Resend not configured' };
+  }
+
+  const travelDatesDisplay = formatTravelDatesDisplay({ travelStartDate, travelEndDate, travelDatesNotes });
+
+  try {
+    const { data, error } = await resend.emails.send({
+      from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      to: [PERSONAL_MATCH_INBOX],
+      replyTo: email || undefined,
+      subject: `Personal Match request: ${destination || 'No destination'} – ${travelDatesDisplay}`,
+      html: `
+        <!DOCTYPE html>
+        <html>
+          <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+          <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 560px; margin: 0 auto; padding: 20px;">
+            <h2 style="color: #059669;">Personal Match – New request</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr><td style="padding: 6px 0; border-bottom: 1px solid #eee;"><strong>Email</strong></td><td style="padding: 6px 0; border-bottom: 1px solid #eee;">${email || '—'}</td></tr>
+              <tr><td style="padding: 6px 0; border-bottom: 1px solid #eee;"><strong>Destination</strong></td><td style="padding: 6px 0; border-bottom: 1px solid #eee;">${destination || '—'}</td></tr>
+              <tr><td style="padding: 6px 0; border-bottom: 1px solid #eee;"><strong>Travel dates</strong></td><td style="padding: 6px 0; border-bottom: 1px solid #eee;">${travelDatesDisplay}</td></tr>
+              <tr><td style="padding: 6px 0; border-bottom: 1px solid #eee;"><strong>Group size</strong></td><td style="padding: 6px 0; border-bottom: 1px solid #eee;">${groupSize || '—'}</td></tr>
+              <tr><td style="padding: 6px 0; border-bottom: 1px solid #eee;"><strong>Name</strong></td><td style="padding: 6px 0; border-bottom: 1px solid #eee;">${name || '—'}</td></tr>
+              <tr><td style="padding: 6px 0; vertical-align: top;"><strong>Primary goal</strong></td><td style="padding: 6px 0;">${primaryGoal ? primaryGoal.replace(/\n/g, '<br>') : '—'}</td></tr>
+            </table>
+            <p style="margin-top: 20px; font-size: 12px; color: #666;">Submitted via TopTours.ai Personal Match. Use only to find the best experience for this traveler; not for marketing.</p>
+          </body>
+        </html>
+      `,
+    });
+
+    if (error) {
+      console.error('❌ Resend API error sending Personal Match submission:', error);
+      return { success: false, error };
+    }
+    console.log('✅ Personal Match submission email sent to', PERSONAL_MATCH_INBOX, data?.id);
+    return { success: true, data };
+  } catch (error) {
+    console.error('❌ Exception sending Personal Match submission:', error);
+    return { success: false, error };
+  }
+}
+

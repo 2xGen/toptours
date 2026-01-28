@@ -4,10 +4,11 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { 
   Anchor, MapPin, Clock, Users, DollarSign, Calendar, 
   Camera, Shirt, Sun, Waves, Heart, Star, ArrowRight,
-  BookOpen, ChevronRight, Home, GlassWater, Music, Sailboat, Ship, PartyPopper, HeartHandshake, X, ExternalLink, Search, UtensilsCrossed
+  BookOpen, ChevronRight, Home, GlassWater, Music, Sailboat, Ship, PartyPopper, HeartHandshake, X, ExternalLink, Search, UtensilsCrossed, Car, Building2
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -30,6 +31,7 @@ import { travelGuides } from '../../../../../src/data/travelGuidesData';
 import { getRestaurantsForDestination } from '../../restaurants/restaurantsData';
 
 const AIRPORT_TRANSFERS_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/airport%20transfers.png';
+const DISCOVER_CARS_URL = 'https://www.discovercars.com/?a_aid=toptours&a_cid=65100b9c';
 
 export default function CategoryGuideClient({ destinationId, categorySlug, guideData, categoryTours = [], promotionScores = {}, availableGuideSlugs = [], allAvailableGuides = [], destination: destinationProp, destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false } }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -310,7 +312,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full h-64 sm:h-80">
                   <Image
                     src={heroImageUrl}
-                    alt={guideData.title}
+                    alt={`${guideData.categoryName || guideData.title} in ${destination.name} - ${guideData.subtitle || 'Book tours and activities'}`}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
@@ -764,112 +766,6 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         </div>
       </section>
 
-      {/* Why Visit Section - Reused from Destination Page */}
-      <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-12"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
-              Why Visit {destination.name}?
-            </h2>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {destination.whyVisit && Array.isArray(destination.whyVisit) && destination.whyVisit.map((reason, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="bg-white border-0 shadow-lg h-full">
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                      <Star className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <p className="text-gray-700 leading-relaxed">{reason}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Best Time to Visit */}
-      <section className="py-12 sm:py-16 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-12"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
-              Best Time to Visit
-            </h2>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-start mb-6">
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
-                  <Calendar className="w-6 h-6 text-orange-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">Weather</h3>
-                  <p className="text-gray-600">{destination.bestTimeToVisit?.weather || 'Check local weather forecasts for the best time to visit.'}</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start mb-6">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                  <Clock className="w-6 h-6 text-green-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">Best Months</h3>
-                  <p className="text-gray-600">{destination.bestTimeToVisit?.bestMonths || 'Spring and fall offer the best weather for most destinations.'}</p>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <Card className="bg-blue-50 border-blue-200">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-blue-800 mb-2">Peak Season</h3>
-                  <p className="text-blue-700">{destination.bestTimeToVisit?.peakSeason || 'Summer months are typically the peak season with higher prices and crowds.'}</p>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-green-50 border-green-200">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-green-800 mb-2">Off Season</h3>
-                  <p className="text-green-700">{destination.bestTimeToVisit?.offSeason || 'Winter months offer lower prices and fewer crowds, though weather may be less ideal.'}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Related Travel Guides Section - Same style as restaurant page */}
       {(() => {
         // Use allAvailableGuides (from database + hardcoded) and exclude current category
@@ -966,64 +862,49 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         ) : null;
       })()}
 
-      {/* Transportation & Where to Stay */}
-      <section className="py-12 sm:py-16 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-12"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
-              Plan Your {destination.name} Trip
-            </h2>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-              {/* Transportation */}
-              <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4">Transportation Tips</h3>
-                  <p className="text-gray-700 mb-6">{destination.gettingAround || 'Public transportation and walking are typically the best ways to explore this destination.'}</p>
-                  <div className="bg-white rounded-lg p-4">
-                    <h4 className="font-semibold text-gray-800 mb-2">Car Rental Deals in {destination.name}</h4>
-                    <p className="text-gray-600 text-sm mb-3">Rent a car for maximum flexibility and explore at your own pace on Expedia USA.</p>
-                    <Link href={`/destinations/${destinationId}/car-rentals`} className="block">
-                      <Button variant="outline" className="w-full flex items-center justify-center gap-2">
-                        Find Car Rental Deals
-                        <ArrowRight className="w-4 h-4" />
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Where to Stay */}
-              <Card className="bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4">Where to Stay</h3>
-                  <p className="text-gray-700 mb-6">
-                    Find the perfect accommodation for your {destination.name} adventure. From luxury resorts to cozy hotels, we've got you covered.
-                  </p>
-                  <div className="bg-white rounded-lg p-4">
-                    <h4 className="font-semibold text-gray-800 mb-2">Best Hotel Deals in {destination.name}</h4>
-                    <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers on Trivago USA.</p>
-                    <Button 
-                      variant="outline" 
-                      className="w-full flex items-center justify-center gap-2" 
-                      onClick={() => window.open('https://tidd.ly/4snW11u', '_blank')}
+      {/* Getting Around – car rental banner */}
+      {destination.gettingAround && (
+        <section className="py-12 sm:py-16 bg-gradient-to-br from-blue-50 via-sky-50 to-blue-50 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <Card className="bg-white border-2 border-blue-200 shadow-lg">
+                <CardContent className="p-4 sm:p-6 lg:p-8">
+                  <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
+                    <div className="flex-1 w-full md:w-auto">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                        <Car className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 flex-shrink-0" />
+                        <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Getting Around {destination.name}</h3>
+                      </div>
+                      <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4 leading-relaxed">
+                        Save up to 70% on car rentals in {destination.name} when you compare and book in advance.
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
+                        <Badge variant="secondary" className="bg-blue-50 text-blue-700 text-xs sm:text-sm">Clear prices, no surprises</Badge>
+                        <Badge variant="secondary" className="bg-amber-50 text-amber-700 text-xs sm:text-sm">24/7 Support</Badge>
+                        <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 text-xs sm:text-sm">Free Cancellation</Badge>
+                      </div>
+                    </div>
+                    <Button
+                      size="lg"
+                      className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 w-full md:w-auto md:px-8 px-4 py-4 sm:py-6 text-sm sm:text-base md:text-lg font-semibold shrink-0"
+                      onClick={() => window.open(DISCOVER_CARS_URL, '_blank')}
                     >
-                      Find Hotel Deals
-                      <ExternalLink className="w-4 h-4" />
+                      <span className="hidden sm:inline">Find Car Rental Deals</span>
+                      <span className="sm:hidden">Find Car Rentals</span>
+                      <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                     </Button>
                   </div>
                 </CardContent>
               </Card>
+            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA to Explore Destination */}
       <section className="py-16 adventure-gradient">

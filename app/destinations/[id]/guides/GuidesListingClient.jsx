@@ -210,7 +210,7 @@ export default function GuidesListingClient({ destinationId, destination, guides
         />
 
         {/* Introduction + Guides */}
-        <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-gray-50/50 overflow-hidden">
+        <section className="py-12 sm:py-16 md:py-20 bg-gray-50 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               initial={{ opacity: 0, y: 24 }}
@@ -239,7 +239,7 @@ export default function GuidesListingClient({ destinationId, destination, guides
                   </div>
                   <div>
                     <h2 className="text-xl sm:text-2xl md:text-3xl font-poppins font-bold text-gray-900">
-                      All Guides for {destinationName}
+                      Category Guides
                     </h2>
                     <p className="text-gray-500 text-sm sm:text-base">
                       {guides.length} guide{guides.length !== 1 ? 's' : ''} · tours, activities & local tips
@@ -312,7 +312,7 @@ export default function GuidesListingClient({ destinationId, destination, guides
                   </div>
                   <div>
                     <h2 className="text-xl sm:text-2xl md:text-3xl font-poppins font-bold text-gray-900">
-                      More {destinationName} Guides
+                      Planning Guides
                     </h2>
                     <p className="text-gray-500 text-sm sm:text-base">
                       Packing lists, itineraries, comparisons & planning tips
@@ -417,39 +417,33 @@ export default function GuidesListingClient({ destinationId, destination, guides
 
         {/* Why Visit */}
         {destination.whyVisit && Array.isArray(destination.whyVisit) && destination.whyVisit.length > 0 && (
-          <section className="py-14 sm:py-16 md:py-20 bg-gray-50/80 overflow-hidden">
+          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-3 mb-10"
+                className="text-center mb-8 sm:mb-12"
               >
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-500 text-white shadow-lg shadow-blue-500/20">
-                  <Star className="w-5 h-5" />
-                </div>
-                <div>
-                  <h2 className="text-xl sm:text-2xl md:text-3xl font-poppins font-bold text-gray-900">
-                    Why Visit {destinationName}?
-                  </h2>
-                  <p className="text-gray-500 text-sm">Highlights and reasons to go</p>
-                </div>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
+                  Why Visit {destinationName}?
+                </h2>
               </motion.div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 {destination.whyVisit.map((reason, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 16 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="h-full bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-100 transition-all duration-300">
-                      <CardContent className="p-5 sm:p-6">
-                        <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
-                          <Star className="w-5 h-5 text-blue-600" />
+                    <Card className="bg-white border-0 shadow-lg h-full">
+                      <CardContent className="p-6">
+                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                          <Star className="w-6 h-6 text-blue-600" />
                         </div>
                         <p className="text-gray-700 leading-relaxed">{reason}</p>
                       </CardContent>
@@ -463,79 +457,66 @@ export default function GuidesListingClient({ destinationId, destination, guides
 
         {/* Best Time to Visit */}
         {destination.bestTimeToVisit && (
-          <section className="py-14 sm:py-16 md:py-20 bg-white overflow-hidden">
+          <section className="py-12 sm:py-16 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-3 mb-10"
+                className="text-center mb-8 sm:mb-12"
               >
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-500 text-white shadow-lg shadow-amber-500/20">
-                  <Calendar className="w-5 h-5" />
-                </div>
-                <div>
-                  <h2 className="text-xl sm:text-2xl md:text-3xl font-poppins font-bold text-gray-900">
-                    Best Time to Visit {destinationName}
-                  </h2>
-                  <p className="text-gray-500 text-sm">Weather, seasons & crowds</p>
-                </div>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
+                  Best Time to Visit
+                </h2>
               </motion.div>
               
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
                 <motion.div
-                  initial={{ opacity: 0, x: -16 }}
+                  initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
-                  className="space-y-6"
                 >
-                  <div className="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
-                    <div className="w-11 h-11 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
-                      <Calendar className="w-5 h-5 text-orange-600" />
+                  <div className="flex items-start mb-6">
+                    <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                      <Calendar className="w-6 h-6 text-orange-600" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Weather</h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        {destination.bestTimeToVisit?.weather || 'Check local weather for the best time to visit.'}
-                      </p>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">Weather</h3>
+                      <p className="text-gray-600">{destination.bestTimeToVisit?.weather || 'Check local weather forecasts for the best time to visit.'}</p>
                     </div>
                   </div>
-                  <div className="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
-                    <div className="w-11 h-11 rounded-xl bg-green-100 flex items-center justify-center shrink-0">
-                      <Clock className="w-5 h-5 text-green-600" />
+                  
+                  <div className="flex items-start mb-6">
+                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                      <Clock className="w-6 h-6 text-green-600" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Best Months</h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        {destination.bestTimeToVisit?.bestMonths || 'Spring and fall offer the best weather.'}
-                      </p>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">Best Months</h3>
+                      <p className="text-gray-600">{destination.bestTimeToVisit?.bestMonths || 'Spring and fall offer the best weather for most destinations.'}</p>
                     </div>
                   </div>
                 </motion.div>
                 
                 <motion.div
-                  initial={{ opacity: 0, x: 16 }}
+                  initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
-                  className="space-y-5"
+                  className="space-y-6"
                 >
-                  <Card className="rounded-2xl border border-blue-100 bg-blue-50/50 shadow-sm overflow-hidden">
-                    <CardContent className="p-5 sm:p-6">
-                      <h3 className="font-semibold text-blue-900 mb-2">Peak Season</h3>
-                      <p className="text-blue-800/90 text-sm leading-relaxed">
-                        {destination.bestTimeToVisit?.peakSeason || 'Summer months are typically peak season with higher prices and crowds.'}
-                      </p>
+                  <Card className="bg-blue-50 border-blue-200">
+                    <CardContent className="p-6">
+                      <h3 className="text-lg font-semibold text-blue-800 mb-2">Peak Season</h3>
+                      <p className="text-blue-700">{destination.bestTimeToVisit?.peakSeason || 'Summer months are typically the peak season with higher prices and crowds.'}</p>
                     </CardContent>
                   </Card>
-                  <Card className="rounded-2xl border border-green-100 bg-green-50/50 shadow-sm overflow-hidden">
-                    <CardContent className="p-5 sm:p-6">
-                      <h3 className="font-semibold text-green-900 mb-2">Off Season</h3>
-                      <p className="text-green-800/90 text-sm leading-relaxed">
-                        {destination.bestTimeToVisit?.offSeason || 'Winter often means lower prices and fewer crowds.'}
-                      </p>
+                  
+                  <Card className="bg-green-50 border-green-200">
+                    <CardContent className="p-6">
+                      <h3 className="text-lg font-semibold text-green-800 mb-2">Off Season</h3>
+                      <p className="text-green-700">{destination.bestTimeToVisit?.offSeason || 'Winter months offer lower prices and fewer crowds, though weather may be less ideal.'}</p>
                     </CardContent>
                   </Card>
                 </motion.div>

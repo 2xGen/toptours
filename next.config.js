@@ -39,9 +39,10 @@ const nextConfig = {
         hostname: 'media-cdn.tripadvisor.com',
       },
     ],
-    // Enable optimization for non-Supabase images
-    // Supabase images will be optimized where possible, but errors are handled gracefully
-    unoptimized: false,
+    // DISABLED: Image optimization to reduce Vercel costs
+    // Supabase images don't optimize well anyway, and Viator images are already optimized
+    // Re-enable if needed, but expect ~$3-4/month in image optimization costs
+    unoptimized: true,
     // Handle image errors gracefully - don't fail the page if image optimization fails
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
