@@ -390,7 +390,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
     if (categoryGuidesProp.length > 0) {
       cards.push({
         type: 'travel-guides',
-        href: '#guides',
+        href: `/destinations/${destId}/guides`,
         icon: BookOpen,
         iconGradient: 'from-indigo-500 to-blue-600',
         title: 'Travel Guides',
@@ -1104,7 +1104,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     )}
                     {categoryGuidesProp.length > 0 && (
                       <Link 
-                        href={`#guides`}
+                        href={`/destinations/${safeDestination.id}/guides`}
                         className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all group"
                       >
                         <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
@@ -1144,7 +1144,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                         variant="outline"
                         className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold px-6 py-3"
                       >
-                        <Link href={`#guides`}>
+                        <Link href={`/destinations/${safeDestination.id}/guides`}>
                           Read Guides
                           <BookOpen className="w-4 h-4 ml-2" />
                         </Link>
@@ -1228,7 +1228,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   )}
                   {categoryGuidesProp.length > 0 && (
                     <Link 
-                      href={`#guides`}
+                      href={`/destinations/${safeDestination.id}/guides`}
                       className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all group text-center w-[140px]"
                     >
                       <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
@@ -1268,7 +1268,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       variant="outline"
                       className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold px-6 py-3"
                     >
-                      <Link href={`#guides`}>
+                      <Link href={`/destinations/${safeDestination.id}/guides`}>
                         Read Guides
                         <BookOpen className="w-4 h-4 ml-2" />
                       </Link>
@@ -1320,7 +1320,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
               )}
               {categoryGuidesProp.length > 0 && (
                 <Link 
-                  href={`#guides`}
+                  href={`/destinations/${safeDestination.id}/guides`}
                   className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-indigo-600 transition-colors border-b-2 border-transparent hover:border-indigo-600 pb-1"
                 >
                   <BookOpen className="w-4 h-4" />
