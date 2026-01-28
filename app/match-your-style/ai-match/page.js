@@ -2,9 +2,12 @@ import MatchYourStyleClient from '../MatchYourStyleClient';
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://toptours.ai';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata() {
   const canonical = `${baseUrl}/match-your-style/ai-match`;
   const title = 'AI Match - Instant Tour Recommendations | TopTours.ai';
+  const ogTitle = 'AI Match – Instant Tour & Restaurant Picks | TopTours.ai';
   const description = 'Get personalized tour and restaurant recommendations right now. Enter your destination and preferences—we’ll show you the best matches with 0–100% scores. Free.';
   const ogImage = 'https://toptours.ai/OG%20Images/TopTours%20Destinations.jpg';
 
@@ -16,7 +19,7 @@ export async function generateMetadata() {
       canonical: '/match-your-style/ai-match',
     },
     openGraph: {
-      title,
+      title: ogTitle,
       description,
       url: canonical,
       siteName: 'TopTours.ai',

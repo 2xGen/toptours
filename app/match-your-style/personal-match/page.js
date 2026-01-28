@@ -2,6 +2,8 @@ import MatchYourStyleClient from '../MatchYourStyleClient';
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://toptours.ai';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata() {
   const canonical = `${baseUrl}/match-your-style/personal-match`;
   const title = 'Personal Match - Hand-Picked Tours in 24 Hours | TopTours.ai';
