@@ -13,7 +13,6 @@ const navItems = [
   { name: 'Destinations', path: '/destinations' },
   { name: 'Tours', path: '/tours' },
   { name: 'Restaurants', path: '/restaurants' },
-  { name: 'Travel Guides', path: '/travel-guides' },
 ];
 
 const NavigationNext = () => {
