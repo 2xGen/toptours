@@ -1831,7 +1831,7 @@ export default function ToursListingClient({
             </div>
             <div className="flex items-center justify-center gap-3 mb-4 md:mb-6">
               <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white">
-                Top Tours & Activities in {destinationName}
+                Best Tours & Activities in {destinationName}
               </h1>
               <Button
                 variant="ghost"

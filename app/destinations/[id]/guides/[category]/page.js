@@ -287,9 +287,11 @@ export async function generateMetadata({ params }) {
       };
     }
 
+    // Use guide heroImage if available, otherwise destination imageUrl, otherwise fallback to category-specific default
     const TRAVEL_GUIDE_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/travel%20guides.png';
     const AIRPORT_TRANSFERS_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/airport%20transfers.png';
-    const ogImage = categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : TRAVEL_GUIDE_OG_IMAGE;
+    const defaultOgImage = categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : TRAVEL_GUIDE_OG_IMAGE;
+    const ogImage = guideData.heroImage || destination.imageUrl || defaultOgImage;
     const seo = guideData.seo || {};
 
     return {

@@ -248,62 +248,44 @@ export async function generateMetadata({ params }) {
   const bestTimeToVisit = fullContent?.bestTimeToVisit || destination.bestTimeToVisit;
   const tourCategories = fullContent?.tourCategories || destination.tourCategories || [];
   
-  // Generate title optimized for tour/excursion searches (NO brand name - better for SEO)
-  // OPTIMIZED FOR 2026 SEO: Focus on search intent - tours, activities, excursions
-  // Simple, consistent format - this page shows ALL tours, not just one category
-  // Use "Explore" instead of "Book" - we're a referral/affiliate site, not a booking platform
-  let title = `${destinationName} Tours & Activities: Explore Top-Rated Excursions`;
+  // SEO title: Transactional listing page - keyword-focused, clean format
+  // Pattern: {Destination} Tours & Activities | Top-Rated Excursions
+  const seoTitle = `${destinationName} Tours & Activities | Top-Rated Excursions`;
   
-  // Ensure title is optimal length (50-60 chars is ideal for 2026 SEO)
-  // If too short, add region or year for better keyword coverage
-  if (title.length < 45 && region) {
-    title = `${destinationName} ${region} Tours & Activities`;
-  }
-  if (title.length < 45) {
-    title = `${destinationName} Tours & Activities 2026`;
-  }
+  // OG title: Human, clickable, shareable - separate from SEO for better social CTR
+  const ogTitle = `Best Tours & Things to Do in ${destinationName}`;
   
-  // If too long, trim intelligently
-  if (title.length > 60) {
-    // Remove "Explore Top-Rated Excursions" if present and too long
-    title = title.replace(': Explore Top-Rated Excursions', '');
-    if (title.length > 60) {
-      // Trim to last complete phrase
-      const trimmed = title.substring(0, 57);
-      const lastSpace = trimmed.lastIndexOf(' ');
-      if (lastSpace > 30) {
-        title = trimmed.substring(0, lastSpace) + '...';
-      } else {
-        title = trimmed + '...';
-      }
-    }
-  }
-  
-  // Build RICH description using ALL available content
+  // Build RICH description with consistent opener, then dynamic content
   // OPTIMIZED: Prioritize most important content, respect 155 char limit (safe for mobile 120 + desktop 158)
-  let description = '';
   const MAX_DESC_LENGTH = 155; // Safe limit: works on mobile (120) and desktop (158)
   
-  // Priority 1: Start with briefDescription or heroDescription (core value prop)
+  // Consistent opener for all tours listing pages
+  const opener = `Discover top-rated tours and activities in ${destinationName}.`;
+  let dynamicContent = '';
+  
+  // Priority 1: Build dynamic content from briefDescription or heroDescription
   if (briefDescription) {
     const firstSentence = briefDescription.split(/[.!?]+/)[0].trim();
-    if (firstSentence.length <= MAX_DESC_LENGTH) {
-      description = briefDescription.length <= MAX_DESC_LENGTH ? briefDescription : firstSentence + '.';
+    if (firstSentence.length <= MAX_DESC_LENGTH - opener.length - 5) {
+      dynamicContent = briefDescription.length <= MAX_DESC_LENGTH - opener.length - 5 
+        ? briefDescription 
+        : firstSentence + '.';
     } else {
-      description = firstSentence.substring(0, MAX_DESC_LENGTH - 3).trim() + '...';
+      dynamicContent = firstSentence.substring(0, MAX_DESC_LENGTH - opener.length - 8).trim() + '...';
     }
   } else if (heroDescription) {
     const sentences = heroDescription.split(/[.!?]+/).filter(s => s.trim().length > 0);
     const firstSentence = sentences[0]?.trim() || '';
-    if (firstSentence.length <= MAX_DESC_LENGTH) {
-      description = firstSentence + (firstSentence.endsWith('.') ? '' : '.');
+    if (firstSentence.length <= MAX_DESC_LENGTH - opener.length - 5) {
+      dynamicContent = firstSentence + (firstSentence.endsWith('.') ? '' : '.');
     } else {
-      description = firstSentence.substring(0, MAX_DESC_LENGTH - 3).trim() + '...';
+      dynamicContent = firstSentence.substring(0, MAX_DESC_LENGTH - opener.length - 8).trim() + '...';
     }
   }
   
   // Priority 2: Add highlights (must-see places) if we have room
-  if (highlights.length > 0 && description.length < MAX_DESC_LENGTH - 40) {
+  const currentLength = opener.length + dynamicContent.length;
+  if (highlights.length > 0 && currentLength < MAX_DESC_LENGTH - 40) {
     const highlightText = highlights.slice(0, 2)
       .map(h => {
         const name = typeof h === 'string' ? h.split(/[-]/)[0].trim().split(/[.,]/)[0].trim() : h;
@@ -314,41 +296,46 @@ export async function generateMetadata({ params }) {
     
     if (highlightText) {
       const addition = ` Must-see: ${highlightText}.`;
-      if (description.length + addition.length <= MAX_DESC_LENGTH) {
-        description += addition;
+      if (currentLength + addition.length <= MAX_DESC_LENGTH) {
+        dynamicContent += addition;
       }
     }
   }
   
   // Priority 3: Add tour-specific info (this is a tours page, not restaurants)
   // Focus on tours, activities, excursions - what people search for
-  if (description.length < MAX_DESC_LENGTH - 30 && tourCategories.length > 0) {
+  const updatedLength = opener.length + dynamicContent.length;
+  if (updatedLength < MAX_DESC_LENGTH - 30 && tourCategories.length > 0) {
     const topCategories = tourCategories.slice(0, 2)
       .map(cat => typeof cat === 'string' ? cat : cat.name)
       .filter(Boolean)
       .join(', ');
     if (topCategories) {
       const addition = ` Popular: ${topCategories}.`;
-      if (description.length + addition.length <= MAX_DESC_LENGTH) {
-        description += addition;
+      if (updatedLength + addition.length <= MAX_DESC_LENGTH) {
+        dynamicContent += addition;
       }
     }
   }
   
   // Priority 4: Add best time to visit if we have room (very concise)
-  if (bestTimeToVisit?.bestMonths && description.length < MAX_DESC_LENGTH - 25) {
+  const finalLength = opener.length + dynamicContent.length;
+  if (bestTimeToVisit?.bestMonths && finalLength < MAX_DESC_LENGTH - 25) {
     const bestMonths = bestTimeToVisit.bestMonths.split(/[.,]/)[0].trim();
     if (bestMonths) {
       const addition = ` Best: ${bestMonths}.`;
-      if (description.length + addition.length <= MAX_DESC_LENGTH) {
-        description += addition;
+      if (finalLength + addition.length <= MAX_DESC_LENGTH) {
+        dynamicContent += addition;
       }
     }
   }
   
+  // Combine opener + dynamic content
+  let description = opener + (dynamicContent ? ' ' + dynamicContent : '');
+  
   // Fallback if we still don't have a good description
-  if (!description || description.length < 50) {
-    description = `Discover top-rated ${destinationName} tours, excursions, and activities. ${highlights.length > 0 ? `Explore ${highlights[0]}` : 'Explore options'} and experience the best of ${destinationName}.`;
+  if (!dynamicContent || description.length < 50) {
+    description = `Discover top-rated tours and activities in ${destinationName}. ${highlights.length > 0 ? `Explore ${highlights[0]}` : 'Browse top-rated excursions'} and experience the best of ${destinationName}.`;
   }
   
   // Final trim: Ensure description is optimal length (155 chars max for 2026 SEO)
@@ -410,15 +397,16 @@ export async function generateMetadata({ params }) {
     }
   }
   
-  // Always use standardized OG image so dimensions are correct
-  const ogImage = 'https://toptours.ai/OG%20Images/Browse%20Tours%20by%20Best%20Match.jpg';
+  // Use destination image if available, otherwise fall back to default OG image
+  const defaultOgImage = 'https://toptours.ai/OG%20Images/Browse%20Tours%20by%20Best%20Match.jpg';
+  const ogImage = destination.imageUrl || fullContent?.imageUrl || defaultOgImage;
   
   return {
-    title: title, // NO brand name - better for SEO rankings
+    title: seoTitle, // SEO title: keyword-focused, transactional
     description: description,
     keywords,
     openGraph: {
-      title: title,
+      title: ogTitle, // OG title: human, clickable, shareable (separate from SEO)
       description: description.length > 200 ? description.substring(0, 197) + '...' : description,
       url: `https://toptours.ai/destinations/${id}/tours`,
       images: [
@@ -435,7 +423,7 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: title,
+      title: ogTitle, // Use OG title for Twitter too (human, shareable)
       description: description.length > 200 ? description.substring(0, 197) + '...' : description,
       images: [ogImage],
     },

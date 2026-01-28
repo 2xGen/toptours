@@ -39,16 +39,20 @@ export async function generateMetadata({ params }) {
       const destinationName = fullContent?.destinationName || seoContent?.destinationName || id;
       const heroDescription = fullContent?.heroDescription || seoContent?.heroDescription || seoContent?.briefDescription || '';
       const seoTitle = fullContent?.seo?.title || seoContent?.seo?.title || `${destinationName} Tours & Activities`;
-      // Always use standardized OG image so dimensions are correct
+      // Use destination image if available, otherwise fall back to default OG image
       const defaultOgImage = 'https://toptours.ai/OG%20Images/TopTours%20Destinations.jpg';
-      const ogImage = defaultOgImage;
+      const ogImage = fullContent?.imageUrl || seoContent?.imageUrl || seoContent?.ogImage || defaultOgImage;
+      
+      // OG title: shareable in FB/WhatsApp/groups. SEO title: search-first, not mirrored.
+      const ogTitle = `Explore ${destinationName} – Things to Do, Tours, Guides & Travel Tips`;
+      const seoPageTitle = `Things to Do in ${destinationName} – Tours, Guides & Travel Tips | TopTours.ai`;
       
       return {
-        title: `${seoTitle} | TopTours.ai`,
+        title: seoPageTitle,
         description: heroDescription || `Discover the best tours and activities in ${destinationName}. Find top-rated experiences, book instantly, and explore ${destinationName} with AI-powered recommendations.`,
         keywords: `${destinationName} tours, ${destinationName} activities, ${destinationName} experiences, things to do in ${destinationName}, ${destinationName} travel guide, book tours ${destinationName}, ${destinationName} excursions, ${destinationName} attractions, ${destinationName} vacation, ${destinationName} travel planning`,
         openGraph: {
-          title: seoTitle,
+          title: ogTitle,
           description: heroDescription || `Discover the best tours and activities in ${destinationName}.`,
           url: `https://toptours.ai/destinations/${id}`,
           images: [
@@ -65,7 +69,7 @@ export async function generateMetadata({ params }) {
         },
         twitter: {
           card: 'summary_large_image',
-          title: seoTitle,
+          title: ogTitle,
           description: heroDescription || `Discover the best tours and activities in ${destinationName}.`,
           images: [ogImage],
         },
@@ -98,16 +102,20 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  // Always use standardized OG image so dimensions are correct
+  // Use destination image if available, otherwise fall back to default OG image
   const defaultOgImage = 'https://toptours.ai/OG%20Images/TopTours%20Destinations.jpg';
-  const ogImage = defaultOgImage;
+  const ogImage = destination.imageUrl || defaultOgImage;
+  
+  // OG title: shareable in FB/WhatsApp/groups. SEO title: search-first, not mirrored.
+  const ogTitle = `Explore ${destination.fullName} – Things to Do, Tours, Guides & Travel Tips`;
+  const seoPageTitle = `Things to Do in ${destination.fullName} – Tours, Guides & Travel Tips | TopTours.ai`;
   
   return {
-    title: `${destination.fullName} Tours & Activities | TopTours.ai`,
+    title: seoPageTitle,
     description: destination.seo?.description || destination.heroDescription,
     keywords: `${destination.fullName} tours, ${destination.fullName} activities, ${destination.fullName} experiences, things to do in ${destination.fullName}, ${destination.fullName} travel guide, book tours ${destination.fullName}, ${destination.fullName} excursions, ${destination.fullName} attractions, ${destination.fullName} vacation, ${destination.fullName} travel planning`,
     openGraph: {
-      title: `${destination.fullName} Tours & Activities`,
+      title: ogTitle,
       description: destination.seo?.description || destination.heroDescription,
       url: `https://toptours.ai/destinations/${destination.id}`,
       images: [
@@ -124,7 +132,7 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${destination.fullName} Tours & Activities`,
+      title: ogTitle,
       description: destination.seo?.description || destination.heroDescription,
       images: [ogImage],
     },

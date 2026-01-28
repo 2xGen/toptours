@@ -1054,8 +1054,9 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   transition={{ duration: 0.8 }}
                 >
                   <div className="flex items-center gap-3 mb-4 md:mb-6">
-                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex-1">
-                      <span className="flex items-center gap-3 flex-wrap">
+                    <h1 className="flex flex-col gap-0.5 flex-1">
+                      <span className="text-sm sm:text-base font-medium text-white/90 uppercase tracking-wide">Things to do in</span>
+                      <span className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex items-center gap-3 flex-wrap">
                         <span>{safeDestination.fullName}</span>
                         {(safeDestination.category || safeDestination.region) && (
                           <span className="flex items-center text-base sm:text-lg font-medium text-white">
@@ -1177,8 +1178,9 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 className="text-center"
               >
                 <div className="flex items-center justify-center gap-3 mb-4 md:mb-6">
-                  <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white">
-                    <span className="flex items-center gap-3 flex-wrap justify-center">
+                  <h1 className="flex flex-col gap-0.5 items-center text-center">
+                    <span className="text-sm sm:text-base font-medium text-white/90 uppercase tracking-wide">Things to do in</span>
+                    <span className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex items-center gap-3 flex-wrap justify-center">
                       <span>{safeDestination.fullName}</span>
                       {(safeDestination.category || safeDestination.region) && (
                         <span className="flex items-center text-base sm:text-lg font-medium text-white">
