@@ -690,14 +690,11 @@ export default async function ToursListingPage({ params }) {
     const destinationName = destination.fullName || destination.name || destination.destinationName || destination.id;
     const viatorDestinationId = destination.destinationId || destination.viatorDestinationId;
     
-    // Use env in production so page is cacheable; fall back to request host so localhost works on any port (e.g. 3002).
-    let baseUrl = process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null);
-    if (!baseUrl) {
-      const headersList = await headers();
-      const host = headersList.get('host') || 'localhost:3000';
-      const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-      baseUrl = `${protocol}://${host}`;
-    }
+    // Always use request host so internal fetch hits same origin (fixes 0 tours when env baseUrl wrong or cached empty).
+    const headersList = await headers();
+    const host = headersList.get('host') || 'localhost:3000';
+    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+    const baseUrl = `${protocol}://${host}`;
     
     // Use /products/search endpoint (standard approach) when we have destination ID and no search term
     // This is 100% accurate for all 3300+ destinations

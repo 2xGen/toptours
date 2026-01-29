@@ -362,14 +362,11 @@ export default async function OperatorsListingPage({ params }) {
   let topTours = [];
   if (viatorDestinationId) {
     try {
-      // Use env in production so page is cacheable; fall back to request host so localhost works on any port.
-      let baseUrl = process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null);
-      if (!baseUrl) {
-        const headersList = await headers();
-        const host = headersList.get('host') || 'localhost:3000';
-        const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-        baseUrl = `${protocol}://${host}`;
-      }
+      // Always use request host so internal fetch hits same origin.
+      const headersList = await headers();
+      const host = headersList.get('host') || 'localhost:3000';
+      const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+      const baseUrl = `${protocol}://${host}`;
       
       // Fetch first page (top 12 tours) - compliant with Viator API rules
       const toursResponse = await fetch(`${baseUrl}/api/internal/viator-search`, {
