@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { Suspense } from 'react';
 import { unstable_cache } from 'next/cache';
 import TourDetailClient from '../[productId]/TourDetailClient';
@@ -7,9 +7,8 @@ import { loadTourData, loadDestinationData } from '../[productId]/TourDataLoader
 import { getCachedTour, cacheTour } from '@/lib/viatorCache';
 import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
 import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
-import { getTourEnrichment } from '@/lib/tourEnrichment';
-import { generateTourSlug } from '@/utils/tourHelpers';
-import { trackTourForSitemap } from '@/lib/tourSitemap';
+import { getTourEnrichmentCached } from '@/lib/tourEnrichment';
+import { generateTourSlug, getTourCanonicalPath } from '@/utils/tourHelpers';
 
 // Revalidate every 7 days - page-level cache (not API JSON cache, so Viator compliant)
 // Increased from 24h to 7 days to reduce ISR writes during Google reindexing
@@ -114,10 +113,10 @@ export async function generateMetadata({ params }) {
       destinationName = primary.destinationName || primary.name || null;
     }
     
-    // Get enrichment for enhanced meta description (optional)
+    // Get enrichment for enhanced meta description (request-scoped cached: same read reused by page body)
     let enrichment = null;
     try {
-      enrichment = await getTourEnrichment(productId);
+      enrichment = await getTourEnrichmentCached(productId);
     } catch (error) {
       // Non-critical
     }
@@ -270,6 +269,16 @@ export default async function TourDetailPage({ params }) {
       notFound();
     }
 
+    // Canonical redirect: one URL per tour for cache + SEO (308 permanent)
+    const canonicalPath = getTourCanonicalPath(productId, tour);
+    const slugArray = Array.isArray(slug) ? slug : [slug];
+    const currentPath = slugArray.length >= 2
+      ? `/tours/${productId}/${slugArray[1]}`
+      : `/tours/${productId}`;
+    if (currentPath !== canonicalPath) {
+      permanentRedirect(canonicalPath);
+    }
+
     // Use Next.js level caching for extras (pricing, reviews, etc.)
     const { tourData, destData } = await getCachedTourExtras(productId, tour);
     const { destinationData, restaurantCount, restaurants, categoryGuides } = destData;
@@ -301,9 +310,6 @@ export default async function TourDetailPage({ params }) {
         .then(({ syncOperator }) => syncOperator(tour, productId))
         .catch(() => {});
     }
-
-    // Track tour for sitemap (non-blocking)
-    trackTourForSitemap(productId, tour, destinationData);
 
     // Generate structured data
     const tourSlug = generateTourSlug(tour.title);

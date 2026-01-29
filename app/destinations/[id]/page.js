@@ -9,7 +9,6 @@ import { redirect } from 'next/navigation';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import DestinationDetailClient from './DestinationDetailClient';
 import { fetchDestinationData } from './DestinationDataLoader';
-import { trackToursForSitemap } from '@/lib/tourSitemap';
 
 // Helper to generate slug
 function generateSlug(name) {
@@ -635,19 +634,6 @@ export default async function DestinationDetailPage({ params }) {
           );
         }
         
-        return null;
-      })()}
-      
-      {/* Track tours for sitemap (non-blocking) */}
-      {(() => {
-        const allTours = [
-          ...(promotedTours || []),
-          ...(trendingTours || []),
-          ...Object.values(hardcodedTours || {}).flat()
-        ];
-        if (allTours.length > 0) {
-          trackToursForSitemap(allTours, { id: destination.id, slug: destination.id });
-        }
         return null;
       })()}
       

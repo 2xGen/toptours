@@ -54,6 +54,20 @@ export function getTourUrl(productId, title) {
 }
 
 /**
+ * Canonical path for a tour (one URL per tour for cache + SEO).
+ * Use this for redirects, sitemaps, and internal links so all traffic hits the same path.
+ * @param {string} productId - Viator product ID
+ * @param {object} tour - Tour object (must have .title) or title string
+ * @returns {string} - Path like /tours/123 or /tours/123/canonical-slug
+ */
+export function getTourCanonicalPath(productId, tour) {
+  if (!productId) return '/tours';
+  const title = typeof tour === 'string' ? tour : (tour?.title ?? '');
+  const slug = generateTourSlugInternal(title || '');
+  return slug ? `/tours/${String(productId)}/${slug}` : `/tours/${String(productId)}`;
+}
+
+/**
  * Extract product ID from tour object
  * @param {object} tour - Tour object from Viator API
  * @returns {string} - Product ID

@@ -14,12 +14,11 @@ import { redirect } from 'next/navigation';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { hasDestinationPage, getDestinationFullContent } from '@/data/destinationFullContent';
-import { headers as getHeaders } from 'next/headers';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
-import { trackToursForSitemap } from '@/lib/tourSitemap';
 import { DESTINATIONS_WITH_RESTAURANTS } from '@/data/destinationsWithRestaurants';
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
+import { headers } from 'next/headers';
 
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
@@ -691,11 +690,14 @@ export default async function ToursListingPage({ params }) {
     const destinationName = destination.fullName || destination.name || destination.destinationName || destination.id;
     const viatorDestinationId = destination.destinationId || destination.viatorDestinationId;
     
-    // Get base URL for server-side fetch (must await headers in Next.js 15)
-    const headersList = await getHeaders();
-    const host = headersList.get('host') || 'localhost:3000';
-    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-    const baseUrl = `${protocol}://${host}`;
+    // Use env in production so page is cacheable; fall back to request host so localhost works on any port (e.g. 3002).
+    let baseUrl = process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null);
+    if (!baseUrl) {
+      const headersList = await headers();
+      const host = headersList.get('host') || 'localhost:3000';
+      const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+      baseUrl = `${protocol}://${host}`;
+    }
     
     // Use /products/search endpoint (standard approach) when we have destination ID and no search term
     // This is 100% accurate for all 3300+ destinations
@@ -1114,19 +1116,6 @@ export default async function ToursListingPage({ params }) {
           })
         }}
       />
-      
-      {/* Track tours for sitemap (non-blocking) */}
-      {(() => {
-        const allTours = [
-          ...(popularTours || []),
-          ...(dynamicTours || []),
-          ...(promotedTours || [])
-        ];
-        if (allTours.length > 0) {
-          trackToursForSitemap(allTours, { id: destination.id, slug: destination.id });
-        }
-        return null;
-      })()}
       
       <ToursListingClient 
         destination={destination}

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Star, MapPin } from 'lucide-react';
-import Link from 'next/link';
+import PrefetchOnHoverLink from '@/components/PrefetchOnHoverLink';
 import { getTourUrl } from '@/utils/tourHelpers';
 
 export default function RecommendedToursList({ recommendedTours, tour }) {
@@ -46,7 +46,7 @@ export default function RecommendedToursList({ recommendedTours, tour }) {
 
           return (
             <Card key={recommendedTourId || index} className="bg-white overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
-              <Link href={recommendedTourUrl} prefetch={true}>
+              <PrefetchOnHoverLink href={recommendedTourUrl}>
                 <div className="relative h-48 bg-gray-200 flex-shrink-0 cursor-pointer">
                 {recommendedImage ? (
                   <img
@@ -61,14 +61,14 @@ export default function RecommendedToursList({ recommendedTours, tour }) {
                   </div>
                 )}
                 </div>
-              </Link>
+              </PrefetchOnHoverLink>
               
               <CardContent className="p-4 flex-1 flex flex-col">
-                <Link href={recommendedTourUrl} prefetch={true}>
+                <PrefetchOnHoverLink href={recommendedTourUrl}>
                   <h3 className="font-semibold text-gray-800 mb-2 line-clamp-2 flex-1 cursor-pointer hover:text-purple-600 transition-colors">
                     {recommendedTour.title}
                   </h3>
-                </Link>
+                </PrefetchOnHoverLink>
                 
                 {recommendedRating > 0 && (
                   <div className="flex items-center mb-2">
@@ -94,9 +94,9 @@ export default function RecommendedToursList({ recommendedTours, tour }) {
                   size="sm"
                   className="w-full mt-auto border-purple-300 text-purple-700 hover:bg-purple-50"
                 >
-                  <Link href={recommendedTourUrl} prefetch={true}>
+                  <PrefetchOnHoverLink href={recommendedTourUrl}>
                     View Details
-                  </Link>
+                  </PrefetchOnHoverLink>
                 </Button>
               </CardContent>
             </Card>

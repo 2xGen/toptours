@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import PrefetchOnHoverLink from '@/components/PrefetchOnHoverLink';
 import { getRelatedDestinations, getDestinationsByIds, getDestinationsByCountry } from '../../../src/data/destinationsData.js';
 import { getGuidesByCategory, getGuidesByIds, getGuidesByCountry } from '../../../src/data/travelGuidesData.js';
 // Restaurants are now passed as props from the server component
@@ -1121,10 +1122,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       asChild
                       className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
                     >
-                      <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
+                      <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
                         Explore Tours
                         <ArrowRight className="w-4 h-4 ml-2" />
-                      </Link>
+                      </PrefetchOnHoverLink>
                     </Button>
                     {hasRestaurants && (
                       <Button
@@ -1132,10 +1133,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
                         variant="outline"
                         className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold px-6 py-3"
                       >
-                        <Link href={`/destinations/${safeDestination.id}/restaurants`} prefetch={true}>
+                        <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/restaurants`}>
                           Find Restaurants
                           <UtensilsCrossed className="w-4 h-4 ml-2" />
-                        </Link>
+                        </PrefetchOnHoverLink>
                       </Button>
                     )}
                     {categoryGuidesProp.length > 0 && (
@@ -1245,10 +1246,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     asChild
                     className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
                   >
-                    <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
+                    <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
                       Explore Tours
                       <ArrowRight className="w-4 h-4 ml-2" />
-                    </Link>
+                    </PrefetchOnHoverLink>
                   </Button>
                   {hasRestaurants && (
                     <Button
@@ -1256,10 +1257,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       variant="outline"
                       className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold px-6 py-3"
                     >
-                      <Link href={`/destinations/${safeDestination.id}/restaurants`} prefetch={true}>
+                      <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/restaurants`}>
                         Find Restaurants
                         <UtensilsCrossed className="w-4 h-4 ml-2" />
-                      </Link>
+                      </PrefetchOnHoverLink>
                     </Button>
                   )}
                   {categoryGuidesProp.length > 0 && (
@@ -2129,13 +2130,13 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     size="lg"
                     className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 px-8 py-6"
                   >
-                    <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
+                    <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
                       {totalToursCount !== null && totalToursCount > 0 
                         ? `View All ${totalToursCount} Tours & Activities in ${safeDestination.fullName}`
                         : `View All Tours & Activities in ${safeDestination.fullName}`
                       }
                       <ArrowRight className="w-5 h-5 ml-2" />
-                    </Link>
+                    </PrefetchOnHoverLink>
                   </Button>
                   <p className="text-sm text-gray-500 mt-2">
                     Browse all available tours, filter by category, price, and more
@@ -2151,10 +2152,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   size="lg"
                   className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200"
                 >
-                  <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
+                  <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
                     Browse All Tours & Activities
                     <ArrowRight className="w-5 h-5 ml-2" />
-                  </Link>
+                  </PrefetchOnHoverLink>
                 </Button>
               </div>
             )}
@@ -2181,12 +2182,12 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       Reserve a table at our hand-picked local favorites and plan dinner around your tours in {safeDestination.fullName}.
                     </p>
                   </div>
-                  <Link href={`/destinations/${safeDestination.id}/restaurants`} prefetch={true} className="self-center sm:self-end">
+                  <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/restaurants`} className="self-center sm:self-end">
                     <Button variant="outline" className="gap-2">
                       View All {safeRestaurants.length} Restaurants
                       <ArrowRight className="w-4 h-4" />
                     </Button>
-                  </Link>
+                  </PrefetchOnHoverLink>
                 </div>
               </motion.div>
 
@@ -2366,10 +2367,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   size="lg"
                   className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 px-8 py-6"
                 >
-                  <Link href={`/destinations/${safeDestination.id}/restaurants`} prefetch={true}>
+                  <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/restaurants`}>
                     View All Restaurants in {safeDestination.fullName}
                     <ArrowRight className="w-5 h-5 ml-2" />
-                  </Link>
+                  </PrefetchOnHoverLink>
                 </Button>
               </div>
             </div>
@@ -2827,12 +2828,12 @@ export default function DestinationDetailClient({ destination, promotionScores =
                           })}
                         </div>
                         <div className="mt-4">
-                          <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
+                          <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
                             <Button variant="outline" size="sm" className="text-blue-600 border-blue-300 hover:bg-blue-50">
                               View All Tours in {safeDestination.fullName}
                               <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
-                          </Link>
+                          </PrefetchOnHoverLink>
                         </div>
                       </CardContent>
                     </Card>
@@ -2880,10 +2881,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   size="lg"
                   className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-8 py-6 text-lg font-semibold"
                 >
-                  <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
+                  <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
                     View All Tours & Activities in {safeDestination.fullName}
                     <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
+                  </PrefetchOnHoverLink>
                 </Button>
               </div>
             </motion.div>
@@ -2957,7 +2958,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
             >
               <X className="w-6 h-6 text-gray-900 stroke-2" />
             </button>
-            <Link href={`/destinations/${safeDestination.id}/tours`} prefetch={true}>
+            <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
               <Button 
                 size="lg"
                 className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
@@ -2965,7 +2966,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 <span>See {destinationName} Tours & Prices</span>
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-            </Link>
+            </PrefetchOnHoverLink>
           </div>
         </div>
       )}
@@ -3030,10 +3031,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 asChild
                 className="flex-1 sunset-gradient text-white hover:scale-105 transition-transform duration-200 font-semibold"
               >
-                <Link href={`/destinations/${safeDestination.parentCountryDestination.id}/tours`} prefetch={true}>
+                <PrefetchOnHoverLink href={`/destinations/${safeDestination.parentCountryDestination.id}/tours`}>
                   View All Tours in {safeDestination.parentCountryDestination.fullName}
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+                </PrefetchOnHoverLink>
               </Button>
               <Button
                 variant="outline"

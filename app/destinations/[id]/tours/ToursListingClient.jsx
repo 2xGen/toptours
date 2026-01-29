@@ -2102,121 +2102,6 @@ export default function ToursListingClient({
         </section>
       )}
 
-      {/* Filters and Price Range Section */}
-      <section className="bg-white border-b py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-            {/* Price Range Slider - Always Visible */}
-            <div className="flex-1 max-w-md w-full">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Price Range
-              </label>
-              <div className="relative dual-range-slider">
-                {/* Dual Range Slider Container */}
-                <div className="relative h-2 bg-gray-200 rounded-lg">
-                  {/* Active Range Track */}
-                  <div
-                    className="absolute h-2 bg-purple-600 rounded-lg"
-                    style={{
-                      left: `${((parseInt(filters.priceFrom || priceRange.min) - priceRange.min) / (priceRange.max - priceRange.min)) * 100}%`,
-                      width: `${((parseInt(filters.priceTo || priceRange.max) - parseInt(filters.priceFrom || priceRange.min)) / (priceRange.max - priceRange.min)) * 100}%`
-                    }}
-                  />
-                  
-                  {/* Min Range Input - Higher z-index so it's clickable */}
-                  <input
-                    type="range"
-                    min={priceRange.min}
-                    max={priceRange.max}
-                    value={filters.priceFrom || priceRange.min}
-                    onChange={(e) => {
-                      const newMin = parseInt(e.target.value);
-                      const currentMax = parseInt(filters.priceTo || priceRange.max);
-                      if (newMin <= currentMax) {
-                        setFilters({ ...filters, priceFrom: e.target.value });
-                      }
-                    }}
-                    className="absolute w-full h-2 bg-transparent appearance-none cursor-pointer z-20"
-                    style={{ pointerEvents: 'auto' }}
-                  />
-                  
-                  {/* Max Range Input */}
-                  <input
-                    type="range"
-                    min={priceRange.min}
-                    max={priceRange.max}
-                    value={filters.priceTo || priceRange.max}
-                    onChange={(e) => {
-                      const newMax = parseInt(e.target.value);
-                      const currentMin = parseInt(filters.priceFrom || priceRange.min);
-                      if (newMax >= currentMin) {
-                        setFilters({ ...filters, priceTo: e.target.value });
-                      }
-                    }}
-                    className="absolute w-full h-2 bg-transparent appearance-none cursor-pointer z-10"
-                    style={{ pointerEvents: 'auto' }}
-                  />
-                </div>
-                
-                {/* Price Display */}
-                <div className="flex justify-between items-center mt-3">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-600">Price</span>
-                    <span className="text-sm font-semibold text-gray-900">
-                      ${filters.priceFrom || priceRange.min}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-gray-900">
-                      ${filters.priceTo || priceRange.max}
-                    </span>
-                    <span className="text-xs text-gray-500">+</span>
-                  </div>
-                </div>
-              </div>
-              {/* Only show Apply Filters button if price range has changed */}
-              {(filters.priceFrom || filters.priceTo) && (
-                <div className="flex gap-2 mt-3">
-                  <Button 
-                    onClick={handleApplyFilters} 
-                    size="sm"
-                    className="sunset-gradient text-white"
-                  >
-                    Apply Filters
-                  </Button>
-                  <Button 
-                    onClick={() => {
-                      setFilters({ ...filters, priceFrom: '', priceTo: '' });
-                    }} 
-                    size="sm"
-                    variant="outline"
-                  >
-                    Clear
-                  </Button>
-                </div>
-              )}
-            </div>
-            
-            {/* Filters Button */}
-            <div className="flex items-end">
-              <Button
-                onClick={() => setShowFilterModal(true)}
-                variant="outline"
-                className="flex items-center gap-2"
-              >
-                <Filter className="w-4 h-4" />
-                Filters
-                {activeFilterTypeCount > 0 && (
-                  <span className="ml-1 bg-purple-600 text-white rounded-full px-2 py-0.5 text-xs">
-                    {activeFilterTypeCount}
-                  </span>
-                )}
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Tag Filters */}
       {destinationTagOptions.length > 0 && (
         <section className="bg-white border-b py-4">
@@ -2229,9 +2114,6 @@ export default function ToursListingClient({
                 <h3 className="text-lg font-bold text-gray-900">
                   Curated themes travelers love in {destination.fullName || destination.name}
                 </h3>
-                <p className="text-sm text-gray-600">
-                  Tap a tag to instantly filter the grid — mix and match to narrow things down.
-                </p>
               </div>
               <div className="relative -mx-4 px-4">
                 <div
@@ -2333,6 +2215,64 @@ export default function ToursListingClient({
             </div>
             
             <div className="p-6 space-y-8">
+              {/* Price Range Slider */}
+              <div>
+                <label className="block text-lg font-semibold text-gray-900 mb-4">
+                  Price Range
+                </label>
+                <div className="relative dual-range-slider">
+                  <div className="relative h-2 bg-gray-200 rounded-lg">
+                    <div
+                      className="absolute h-2 bg-purple-600 rounded-lg"
+                      style={{
+                        left: `${((parseInt(filters.priceFrom || priceRange.min) - priceRange.min) / (priceRange.max - priceRange.min)) * 100}%`,
+                        width: `${((parseInt(filters.priceTo || priceRange.max) - parseInt(filters.priceFrom || priceRange.min)) / (priceRange.max - priceRange.min)) * 100}%`
+                      }}
+                    />
+                    <input
+                      type="range"
+                      min={priceRange.min}
+                      max={priceRange.max}
+                      value={filters.priceFrom || priceRange.min}
+                      onChange={(e) => {
+                        const newMin = parseInt(e.target.value);
+                        const currentMax = parseInt(filters.priceTo || priceRange.max);
+                        if (newMin <= currentMax) {
+                          setFilters({ ...filters, priceFrom: e.target.value });
+                        }
+                      }}
+                      className="absolute w-full h-2 bg-transparent appearance-none cursor-pointer z-20"
+                      style={{ pointerEvents: 'auto' }}
+                    />
+                    <input
+                      type="range"
+                      min={priceRange.min}
+                      max={priceRange.max}
+                      value={filters.priceTo || priceRange.max}
+                      onChange={(e) => {
+                        const newMax = parseInt(e.target.value);
+                        const currentMin = parseInt(filters.priceFrom || priceRange.min);
+                        if (newMax >= currentMin) {
+                          setFilters({ ...filters, priceTo: e.target.value });
+                        }
+                      }}
+                      className="absolute w-full h-2 bg-transparent appearance-none cursor-pointer z-10"
+                      style={{ pointerEvents: 'auto' }}
+                    />
+                  </div>
+                  <div className="flex justify-between items-center mt-3">
+                    <span className="text-sm font-semibold text-gray-900">
+                      ${filters.priceFrom || priceRange.min}
+                    </span>
+                    <span className="text-sm text-gray-500">–</span>
+                    <span className="text-sm font-semibold text-gray-900">
+                      ${filters.priceTo || priceRange.max}
+                      <span className="text-xs text-gray-500 ml-0.5">+</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
               {/* Tour Flags/Specials Filter */}
               <div>
                 <label className="block text-lg font-semibold text-gray-900 mb-4">
@@ -2580,22 +2520,38 @@ export default function ToursListingClient({
               </p>
             )}
             
-            {/* Sort and Match to Your Style - Same Line */}
+            {/* Sort, Filters, and Match to Your Style - Same Line */}
             <div className="flex items-center justify-between gap-4 flex-wrap">
-              {/* Sort Dropdown */}
-              <div className="flex items-center gap-3">
-                <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Sort by:</label>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              <div className="flex items-center gap-3 flex-wrap">
+                {/* Sort Dropdown */}
+                <div className="flex items-center gap-3">
+                  <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Sort by:</label>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  >
+                    <option value="rating">Highest Rated</option>
+                    <option value="reviews">Most Reviewed</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="best-match">Best Match {user ? '(for you)' : ''} ⭐</option>
+                  </select>
+                </div>
+                {/* Filters Button - next to Sort by */}
+                <Button
+                  onClick={() => setShowFilterModal(true)}
+                  variant="outline"
+                  className="flex items-center gap-2"
                 >
-                  <option value="rating">Highest Rated</option>
-                  <option value="reviews">Most Reviewed</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                  <option value="best-match">Best Match {user ? '(for you)' : ''} ⭐</option>
-                </select>
+                  <Filter className="w-4 h-4" />
+                  Filters
+                  {activeFilterTypeCount > 0 && (
+                    <span className="ml-1 bg-purple-600 text-white rounded-full px-2 py-0.5 text-xs">
+                      {activeFilterTypeCount}
+                    </span>
+                  )}
+                </Button>
               </div>
               
               {/* Match to Your Style - Button to open modal */}

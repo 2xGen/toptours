@@ -1,34 +1,13 @@
 import { NextResponse } from 'next/server';
 
-export function middleware(request) {
-  const { pathname, search } = request.nextUrl;
-  const hostname = request.headers.get('host') || '';
-  
-  // Redirect www to non-www (301 permanent redirect for SEO)
-  if (hostname.startsWith('www.')) {
-    const newUrl = new URL(request.url);
-    newUrl.hostname = hostname.replace(/^www\./, '');
-    return NextResponse.redirect(newUrl, 301);
-  }
-  
-  // Let API routes through without modification
-  if (pathname.startsWith('/api/')) {
-    return NextResponse.next();
-  }
-  
+// www → non-www redirect is handled by Vercel redirects (vercel.json) to avoid Edge invocations.
+// This middleware is kept but never runs (matcher matches no real path) so we don't pay for Edge Requests.
+export function middleware() {
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - public files (public folder)
-     */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
-  ],
+  // Match a path that is never requested so middleware effectively never runs (saves Edge cost).
+  matcher: ['/internal-middleware-noop-vercel'],
 };
 

@@ -6,7 +6,6 @@ import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
-import { trackToursForSitemap } from '@/lib/tourSitemap';
 import { slugToViatorId as slugToViatorIdMap } from '@/data/viatorDestinationMap';
 
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
@@ -857,14 +856,6 @@ export default async function CategoryGuidePage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* Track tours for sitemap (non-blocking) */}
-      {(() => {
-        if (categoryTours && categoryTours.length > 0) {
-          trackToursForSitemap(categoryTours, { id: destination.id, slug: destination.id });
-        }
-        return null;
-      })()}
-      
       <CategoryGuideClient 
         destinationId={destinationId} 
         categorySlug={categorySlug}

@@ -5,7 +5,7 @@
  */
 
 import { getTourPromotionScore } from '@/lib/promotionSystem';
-import { getTourEnrichment, generateTourEnrichment } from '@/lib/tourEnrichment';
+import { getTourEnrichmentCached, generateTourEnrichment } from '@/lib/tourEnrichment';
 import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds, getOperatorAggregatedStats } from '@/lib/tourOperatorPremiumServer';
 import { getCachedReviews } from '@/lib/viatorReviews';
 import { getFromPrice } from '@/lib/viatorPricing';
@@ -49,7 +49,7 @@ export async function loadTourData(productId, tour) {
         weekly_score: 0,
         past_28_days_score: 0,
       })),
-    getTourEnrichment(productId).catch(() => null),
+    getTourEnrichmentCached(productId).catch(() => null),
     getTourOperatorPremiumSubscription(productId).catch(() => null),
     (async () => {
       try {

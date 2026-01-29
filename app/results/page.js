@@ -1,6 +1,6 @@
 "use client";
-export const dynamic = 'force-dynamic';
 
+// No force-dynamic: allow caching of initial shell (saves function invocations).
 import { Suspense } from 'react';
 import Results from './ResultsClient';
 

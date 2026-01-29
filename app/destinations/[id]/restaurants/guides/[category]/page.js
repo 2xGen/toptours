@@ -6,8 +6,8 @@ import { getTrendingToursByDestination } from '@/lib/promotionSystem';
 import RestaurantGuideClient from './RestaurantGuideClient';
 import { formatRestaurantForFrontend } from '@/lib/restaurants';
 
-// Force dynamic rendering since we're querying the database
-export const dynamic = 'force-dynamic';
+// ISR: cache for 24h so repeated requests don't run the function (saves cost).
+export const revalidate = 86400;
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;

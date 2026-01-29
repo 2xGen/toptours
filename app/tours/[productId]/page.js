@@ -1,10 +1,10 @@
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { Suspense } from 'react';
 import { unstable_cache } from 'next/cache';
 import TourDetailClient from './TourDetailClient';
 import { fetchSimilarToursServer } from './fetchSimilarTours';
 import { loadTourData, loadDestinationData } from './TourDataLoader';
-import { getTourEnrichment, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
+import { getTourEnrichmentCached, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
 import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
 import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName } from '@/lib/viatorCache';
 import { getTourPromotionScore } from '@/lib/promotionSystem';
@@ -14,13 +14,12 @@ import { destinations } from '@/data/destinationsData';
 import { getDestinationNameById } from '@/lib/destinationIdLookup';
 import { getViatorDestinationById } from '@/lib/supabaseCache';
 import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds, getOperatorAggregatedStats } from '@/lib/tourOperatorPremiumServer';
-import { generateTourSlug } from '@/utils/tourHelpers';
+import { generateTourSlug, getTourCanonicalPath } from '@/utils/tourHelpers';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
 import { getCachedReviews } from '@/lib/viatorReviews';
 import { getPricingPerAgeBand } from '@/lib/viatorPricing';
-import { trackTourForSitemap, trackToursForSitemap } from '@/lib/tourSitemap';
 
 // Revalidate every 7 days - page-level cache (not API JSON cache, so Viator compliant)
 // Increased from 24h to 7 days to reduce ISR writes during Google reindexing
@@ -120,8 +119,8 @@ export async function generateMetadata({ params }) {
         };
       }
 
-    // OPTIMIZED: Only fetch enrichment if needed for metadata (cached)
-    const tourEnrichment = await getTourEnrichment(productId);
+    // Request-scoped cached: same enrichment read reused by loadTourData (one Supabase read per request)
+    const tourEnrichment = await getTourEnrichmentCached(productId);
     
     // Extract destination name from tour for metadata
     let destinationNameForMeta = null;
@@ -290,6 +289,12 @@ export default async function TourDetailPage({ params }) {
     if (!tour) {
         notFound();
       }
+
+    // Canonical redirect: /tours/123 → /tours/123/canonical-slug so one URL per tour (cache + SEO)
+    const canonicalPath = getTourCanonicalPath(productId, tour);
+    if (canonicalPath !== `/tours/${productId}`) {
+      permanentRedirect(canonicalPath);
+    }
 
     // Use Next.js level caching for extras (pricing, reviews, etc.)
     const { tourData, destData } = await getCachedTourExtras(productId, tour);
@@ -656,11 +661,6 @@ export default async function TourDetailPage({ params }) {
     // is used incorrectly. For aggregated reviews (no individual review content),
     // we only need aggregateRating in the Product schema (which we already have above).
     // The Product schema's aggregateRating is sufficient for rich snippets.
-
-    // Track tour for sitemap (non-blocking, fire and forget)
-    trackTourForSitemap(productId, tour, destinationData);
-    
-    // Track recommended/similar tours for sitemap
 
     return (
       <>

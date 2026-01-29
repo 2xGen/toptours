@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { destinations as siteDestinations } from '@/data/destinationsData';
 import { viatorRefToSlug } from '@/data/viatorDestinationMap';
 import { createSupabaseServiceRoleClient } from './supabaseClient';
@@ -426,6 +427,13 @@ export async function getTourEnrichment(productId) {
     return null;
   }
 }
+
+/**
+ * Request-scoped cached version of getTourEnrichment.
+ * Used by both generateMetadata and loadTourData so we only fetch enrichment once per request.
+ * Bots and users still get full unique content (meta + body); halves Supabase reads.
+ */
+export const getTourEnrichmentCached = cache(getTourEnrichment);
 
 const normalizeString = (value) => {
   if (!value) return '';
