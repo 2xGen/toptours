@@ -154,30 +154,10 @@ export async function generateMetadata({ params }) {
   };
 }
 
+// Return empty so we don't pre-build all restaurant pages at deploy (was causing 45+ min builds).
+// Pages are generated on first request and cached (revalidate 7 days).
 export async function generateStaticParams() {
-  const params = [];
-  const restaurantCounts = await getRestaurantCountsByDestination();
-
-  for (const destinationId of Object.keys(restaurantCounts)) {
-    // Try database first, fallback to static files
-    let restaurants = await getRestaurantsForDestinationFromDB(destinationId);
-    if (restaurants.length === 0) {
-      restaurants = getRestaurantsForDestinationFromStatic(destinationId);
-    }
-    if (restaurants.length === 0) continue;
-
-    restaurants.forEach((restaurant) => {
-      const slug = restaurant.slug || (restaurant.id ? `${restaurant.id}-${destinationId}` : null);
-      if (slug) {
-        params.push({
-          id: destinationId,
-          restaurant: slug,
-        });
-      }
-    });
-  }
-
-  return params;
+  return [];
 }
 
 export default async function RestaurantPage({ params }) {
