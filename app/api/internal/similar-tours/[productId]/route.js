@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getCachedTour } from '@/lib/viatorCache';
-import { fetchSimilarToursServer } from '@/app/tours/[productId]/fetchSimilarTours';
+import { fetchSimilarToursServer } from '../../../../tours/[productId]/fetchSimilarTours';
 
 /**
  * GET /api/internal/similar-tours/[productId]
