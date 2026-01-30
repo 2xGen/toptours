@@ -62,6 +62,7 @@ STRIPE_WEBHOOK_SECRET=whsec_9c49211cf54be6c6b2e4ccc43b0e70b0aee60d5b11c39e872b64
   - Wrong webhook secret
   - Endpoint not accessible
   - SSL certificate issues
+  - **307/301 redirect:** If Stripe shows "307 ERR" or "other errors", the endpoint URL is being redirected (e.g. www → non-www). Stripe does not follow redirects; the endpoint must return 200 at the exact URL. Use `https://toptours.ai/api/webhooks/stripe` (no www), or deploy with the vercel.json fix that excludes this path from the www redirect.
 
 ### 5. Manual Webhook Testing (If Needed)
 

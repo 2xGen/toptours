@@ -2,7 +2,7 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { Suspense } from 'react';
 import { unstable_cache } from 'next/cache';
 import TourDetailClient from '../[productId]/TourDetailClient';
-import { fetchSimilarToursServer } from '../[productId]/fetchSimilarTours';
+// Similar tours loaded on demand via "Load similar tours" in TourDetailClient (saves Viator API)
 import { loadTourData, loadDestinationData } from '../[productId]/TourDataLoader';
 import { getCachedTour, cacheTour } from '@/lib/viatorCache';
 import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
@@ -301,8 +301,7 @@ export default async function TourDetailPage({ params }) {
     } = tourData;
 
     // Fetch similar tours server-side (for SEO - crawlers can see it)
-    const { similarTours: fetchedSimilarTours } = await fetchSimilarToursServer(productId, tour, destinationData);
-    const similarTours = fetchedSimilarTours || [];
+    const similarTours = []; // Load on demand via "Load similar tours" to save Viator API
 
     // CRM sync (non-blocking)
     if (tour && productId) {

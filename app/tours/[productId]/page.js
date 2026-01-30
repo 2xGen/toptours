@@ -2,12 +2,11 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { Suspense } from 'react';
 import { unstable_cache } from 'next/cache';
 import TourDetailClient from './TourDetailClient';
-import { fetchSimilarToursServer } from './fetchSimilarTours';
+// Similar tours loaded on demand via "Load similar tours" (saves 1 Viator API call per tour page view)
 import { loadTourData, loadDestinationData } from './TourDataLoader';
 import { getTourEnrichmentCached, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
 import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
 import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName } from '@/lib/viatorCache';
-import { getTourPromotionScore } from '@/lib/promotionSystem';
 import { getRestaurantCountsByDestination, getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
 import { getRestaurantsForDestination as getRestaurantsForDestinationFromStatic } from '../../destinations/[id]/restaurants/restaurantsData';
 import { destinations } from '@/data/destinationsData';
@@ -388,9 +387,8 @@ export default async function TourDetailPage({ params }) {
       }
     }
 
-    // Fetch similar tours server-side (for SEO - crawlers can see it)
-    const { similarTours: fetchedSimilarTours } = await fetchSimilarToursServer(productId, tour, destinationData);
-    const similarTours = fetchedSimilarTours || [];
+    // Similar tours no longer fetched here - loaded on demand via client "Load similar tours" to save Viator API
+    const similarTours = [];
 
     // Fetch destination features (lightweight checks for sticky nav)
     let features = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false };

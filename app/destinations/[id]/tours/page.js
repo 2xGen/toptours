@@ -3,8 +3,7 @@ import { getDestinationById } from '@/data/destinationsData';
 import { getPopularToursForDestination } from '@/data/popularTours';
 import ToursListingClient from './ToursListingClient';
 import { slugToViatorId } from '@/data/viatorDestinationMap';
-import { getPromotionScoresByDestination, getRestaurantPromotionScoresByDestination, getHardcodedToursByDestination } from '@/lib/promotionSystem';
-import { getPromotedToursByDestination, getPromotedRestaurantsByDestination } from '@/lib/promotionSystem';
+import { getHardcodedToursByDestination, getPromotedToursByDestination, getPromotedRestaurantsByDestination } from '@/lib/promotionSystem';
 import { getPremiumOperatorTourIdsForDestination } from '@/lib/tourOperatorPremiumServer';
 import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { getRestaurantCountsByDestination, getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
@@ -795,22 +794,15 @@ export default async function ToursListingPage({ params }) {
     ...dynamicTours.map(t => t.productId || t.productCode).filter(Boolean),
   ];
 
-  // Fetch promotion scores and promoted tour data in parallel
+  // Fetch promoted tour/restaurant data in parallel (promotion scores removed to save compute)
   const [
-    promotionScoresResult,
     promotedTourDataResult,
     promotedRestaurantDataResult,
-    restaurantPromotionScoresResult,
     premiumOperatorTourIdsResult,
     premiumRestaurantIdsResult,
     categoryGuidesResult,
     destinationFeaturesResult
   ] = await Promise.allSettled([
-    // Promotion scores by destination
-    destinationIdForScores 
-      ? getPromotionScoresByDestination(destinationIdForScores).catch(() => ({}))
-      : Promise.resolve({}),
-    
     // Promoted tour data
     destinationIdForScores 
       ? getPromotedToursByDestination(destinationIdForScores, 20).catch(() => [])
@@ -820,11 +812,6 @@ export default async function ToursListingPage({ params }) {
     destination.id 
       ? getPromotedRestaurantsByDestination(destination.id, 20).catch(() => [])
       : Promise.resolve([]),
-    
-    // Restaurant promotion scores
-    destination.id 
-      ? getRestaurantPromotionScoresByDestination(destination.id).catch(() => ({}))
-      : Promise.resolve({}),
     
     // Premium operator tour IDs
     destination.id 
@@ -845,28 +832,15 @@ export default async function ToursListingPage({ params }) {
       : Promise.resolve({ hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false })
   ]);
 
-  // Extract results
-  let promotionScores = promotionScoresResult.status === 'fulfilled' ? promotionScoresResult.value : {};
+  // Extract results (promotion scores no longer fetched - pass empty)
+  const promotionScores = {};
   const promotedTourData = promotedTourDataResult.status === 'fulfilled' ? promotedTourDataResult.value : [];
   const promotedRestaurantData = promotedRestaurantDataResult.status === 'fulfilled' ? promotedRestaurantDataResult.value : [];
-  const restaurantPromotionScores = restaurantPromotionScoresResult.status === 'fulfilled' ? restaurantPromotionScoresResult.value : {};
+  const restaurantPromotionScores = {};
   const premiumOperatorTourIds = premiumOperatorTourIdsResult.status === 'fulfilled' ? premiumOperatorTourIdsResult.value : [];
   const premiumRestaurantIds = premiumRestaurantIdsResult.status === 'fulfilled' ? premiumRestaurantIdsResult.value : [];
   let categoryGuides = categoryGuidesResult.status === 'fulfilled' ? categoryGuidesResult.value : [];
   const destinationFeatures = destinationFeaturesResult.status === 'fulfilled' ? destinationFeaturesResult.value : { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false };
-
-  // CRITICAL: Also fetch scores by product IDs as a fallback (after we have product IDs)
-  // This ensures we find scores even if destination_id format doesn't match (slug vs numeric ID)
-  if (allProductIds.length > 0) {
-    const { getTourPromotionScoresBatch } = await import('@/lib/promotionSystem');
-    const scoresByProductId = await getTourPromotionScoresBatch(allProductIds);
-    
-    // Merge: destination-based scores take priority, but product-based scores fill in gaps
-    promotionScores = {
-      ...scoresByProductId,
-      ...promotionScores, // Destination-based scores override (more specific)
-    };
-  }
 
   // Fetch promoted tours for this destination
   let promotedTours = [];

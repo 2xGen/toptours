@@ -94,6 +94,11 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
   // Get booking URL (BiteReserve for all, or custom for premium)
   const bookingUrl = useMemo(() => getRestaurantBookingUrl(restaurant, premiumSubscription), [restaurant, premiumSubscription]);
   const isPremium = isPremiumRestaurant(premiumSubscription);
+  // Only show Reserve button when we have BiteReserve (bitereserve_code) or restaurant is Premium — avoid "premium for free" on plain website links
+  const showReserveButton = useMemo(
+    () => !!(restaurant.bitereserveCode && restaurant.countryIsoCode) || isPremium,
+    [restaurant.bitereserveCode, restaurant.countryIsoCode, isPremium]
+  );
   const [isGeneratingMatch, setIsGeneratingMatch] = useState(false);
   const [matchError, setMatchError] = useState(null);
   const [showMatchResultsModal, setShowMatchResultsModal] = useState(false);
@@ -570,8 +575,8 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                 </Button>
               </div>
 
-              {/* Hero CTA - Show for all restaurants with booking URL */}
-              {bookingUrl && (
+              {/* Hero CTA - Only show when BiteReserve code or Premium (not plain website) */}
+              {showReserveButton && bookingUrl && (
                 <div className="mt-4 w-full max-w-md mx-auto">
                   {isPremium ? (
                     <PremiumHeroCTA 
@@ -1062,8 +1067,8 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
               </motion.section>
             )}
 
-            {/* Mid-Page CTA - Show for all restaurants with booking URL, or Promote Banner for non-premium without URL */}
-            {bookingUrl ? (
+            {/* Mid-Page CTA - Only show reserve when BiteReserve or Premium; else show Promote banner */}
+            {showReserveButton && bookingUrl ? (
               isPremium ? (
                 <PremiumMidCTA 
                   subscription={premiumSubscription} 
@@ -2096,8 +2101,8 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
 
       </div>
 
-      {/* Sticky Button - Show for all restaurants with booking URL */}
-      {bookingUrl ? (
+      {/* Sticky Button - Only show when BiteReserve or Premium */}
+      {showReserveButton && bookingUrl ? (
         isPremium ? (
           <PremiumStickyCTA 
             subscription={premiumSubscription} 
@@ -2325,7 +2330,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                 <Heart className={`w-4 h-4 mr-2 ${isBookmarked(restaurant.id) ? 'text-red-600 fill-red-600' : 'text-gray-600'}`} />
                 {isBookmarked(restaurant.id) ? 'Saved to Favorites' : 'Save to Favorites'}
               </Button>
-              {bookingUrl && (
+              {showReserveButton && bookingUrl && (
                 <Button
                   asChild
                   className="sunset-gradient text-white font-semibold px-6 py-3 flex-1"

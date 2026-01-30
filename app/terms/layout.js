@@ -1,3 +1,6 @@
+// Build-time static: served from CDN, no serverless function on request (near-zero compute).
+export const dynamic = 'force-static';
+
 export const metadata = {
   title: 'Terms of Service | TopTours.ai',
   description: 'Read TopTours.ai Terms of Service. Learn about our policies, user responsibilities, booking terms, and account management.',

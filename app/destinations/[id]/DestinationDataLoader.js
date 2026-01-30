@@ -1,4 +1,4 @@
-import { getPromotionScoresByDestination, getTrendingToursByDestination, getTrendingRestaurantsByDestination, getRestaurantPromotionScoresByDestination, getPromotedToursByDestination, getPromotedRestaurantsByDestination } from '@/lib/promotionSystem';
+import { getTrendingToursByDestination, getTrendingRestaurantsByDestination, getPromotedToursByDestination, getPromotedRestaurantsByDestination } from '@/lib/promotionSystem';
 import { getRestaurantsForDestination, formatRestaurantForFrontend } from '@/lib/restaurants';
 import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
@@ -10,23 +10,18 @@ import { getBabyEquipmentRentalsByDestination } from '@/lib/babyEquipmentRentals
  * This function parallelizes independent queries to reduce total load time
  */
 export async function fetchDestinationData(destination, destinationIdForScores) {
-  // Parallelize all independent data fetching operations
+  // Parallelize all independent data fetching operations (promotion scores removed to save compute)
   const [
-    promotionScores,
     trendingTours,
     trendingRestaurants,
     promotedTourData,
     promotedRestaurantData,
-    restaurantPromotionScores,
     premiumRestaurantIds,
     hardcodedTours,
     categoryGuides,
     restaurants,
     hasBabyEquipmentRentals
   ] = await Promise.allSettled([
-    // Promotion scores
-    getPromotionScoresByDestination(destinationIdForScores).catch(() => ({})),
-    
     // Trending tours
     getTrendingToursByDestination(destinationIdForScores, 3).catch(() => []),
     
@@ -38,9 +33,6 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
     
     // Promoted restaurant data
     getPromotedRestaurantsByDestination(destination.id, 6).catch(() => []),
-    
-    // Restaurant promotion scores
-    getRestaurantPromotionScoresByDestination(destination.id).catch(() => ({})),
     
     // Premium restaurant IDs
     getPremiumRestaurantIds(destination.id).then(set => Array.from(set)).catch(() => []),
@@ -74,14 +66,14 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
       .catch(() => false)
   ]);
 
-  // Extract values from Promise.allSettled results
+  // Extract values from Promise.allSettled results (promotion scores no longer fetched - pass empty)
   const result = {
-    promotionScores: promotionScores.status === 'fulfilled' ? promotionScores.value : {},
+    promotionScores: {},
     trendingTours: trendingTours.status === 'fulfilled' ? trendingTours.value : [],
     trendingRestaurants: trendingRestaurants.status === 'fulfilled' ? trendingRestaurants.value : [],
     promotedTourData: promotedTourData.status === 'fulfilled' ? promotedTourData.value : [],
     promotedRestaurantData: promotedRestaurantData.status === 'fulfilled' ? promotedRestaurantData.value : [],
-    restaurantPromotionScores: restaurantPromotionScores.status === 'fulfilled' ? restaurantPromotionScores.value : {},
+    restaurantPromotionScores: {},
     premiumRestaurantIds: premiumRestaurantIds.status === 'fulfilled' ? premiumRestaurantIds.value : [],
     hardcodedTours: hardcodedTours.status === 'fulfilled' ? hardcodedTours.value : {},
     categoryGuides: categoryGuides.status === 'fulfilled' ? categoryGuides.value : [],
@@ -108,23 +100,6 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
       } else {
         return { ...category, hasGuide };
       }
-    });
-  }
-
-  // Merge hardcoded tour scores into promotionScores
-  if (result.hardcodedTours && Object.keys(result.hardcodedTours).length > 0) {
-    Object.values(result.hardcodedTours).forEach(categoryTours => {
-      categoryTours.forEach(tour => {
-        if (tour.productId && !result.promotionScores[tour.productId]) {
-          result.promotionScores[tour.productId] = {
-            product_id: tour.productId,
-            total_score: tour.totalScore || 0,
-            monthly_score: 0,
-            weekly_score: 0,
-            past_28_days_score: tour.lastMonthScore || 0,
-          };
-        }
-      });
     });
   }
 

@@ -62,36 +62,23 @@ async function main() {
     from += pageSize;
   }
   
-  // Get all 182 curated destinations
-  // User confirmed: ALL 182 curated destinations have restaurants
+  // Use all unique destination_ids from DB (supports 182 curated + 247 featured after batch)
   const curatedDestinationIds = destinations.map(d => d.id);
+  const sorted = Array.from(destinationIdsWithRestaurants).sort();
   
   console.log(`📊 Results:`);
-  console.log(`   Total destinations with restaurants in DB: ${destinationIdsWithRestaurants.size}`);
-  console.log(`   Curated destinations (182): ${curatedDestinationIds.length}`);
-  console.log(`   Including ALL 182 curated destinations in static list\n`);
-  
-  // Verify: Check how many of the 182 are actually in the DB
-  const curatedInDB = curatedDestinationIds.filter(id => destinationIdsWithRestaurants.has(id));
-  console.log(`   Curated destinations found in DB: ${curatedInDB.length}`);
-  if (curatedInDB.length < 182) {
-    console.log(`   Note: ${182 - curatedInDB.length} curated destinations may have restaurants in static files or will be added soon`);
-  }
+  console.log(`   Destinations with restaurants in DB: ${destinationIdsWithRestaurants.size}`);
+  console.log(`   Curated destinations (destinationsData.js): ${curatedDestinationIds.length}`);
+  console.log(`   Curated found in DB: ${curatedDestinationIds.filter(id => destinationIdsWithRestaurants.has(id)).length}`);
   console.log('');
   
-  // Use ALL 182 curated destinations (as user confirmed)
-  const curatedWithRestaurants = curatedDestinationIds;
-  
-  // Sort alphabetically for easy reading
-  const sorted = curatedWithRestaurants.sort();
-  
   // Generate JavaScript code for the Set
-  const jsCode = `// Auto-generated list of all curated destinations (182) that have restaurants
+  const jsCode = `// Auto-generated list of destination IDs that have restaurants in DB
 // Generated: ${new Date().toISOString()}
-// Total: ${curatedWithRestaurants.length} destinations
+// Total: ${sorted.length} destinations
 // 
-// This avoids DB lookups during metadata generation for these destinations
-// Update this file when new restaurants are added to curated destinations
+// This avoids DB lookups during metadata generation. Re-run this script
+// after adding restaurants (e.g. fetch-restaurants-all-featured-destinations.js).
 
 export const DESTINATIONS_WITH_RESTAURANTS = new Set([
 ${sorted.map(id => `  '${id}',`).join('\n')}
@@ -103,7 +90,7 @@ ${sorted.map(id => `  '${id}',`).join('\n')}
   writeFileSync(outputPath, jsCode, 'utf8');
   
   console.log(`✅ Generated static list: ${outputPath}`);
-  console.log(`   Contains ${curatedWithRestaurants.length} destination IDs\n`);
+  console.log(`   Contains ${sorted.length} destination IDs\n`);
   
   // Show first 10 as preview
   console.log('📋 Preview (first 10):');

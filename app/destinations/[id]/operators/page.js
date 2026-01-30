@@ -6,7 +6,6 @@ import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
-import { headers } from 'next/headers';
 import OperatorsListClient from './OperatorsListClient';
 import { getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
 
@@ -357,43 +356,9 @@ export default async function OperatorsListingPage({ params }) {
     }
   }
     
-  // Fetch top 12 tours for this destination (one API call, same as destination page)
-  // This makes the page SEO-friendly and shows popular tours
-  let topTours = [];
-  if (viatorDestinationId) {
-    try {
-      // Always use request host so internal fetch hits same origin.
-      const headersList = await headers();
-      const host = headersList.get('host') || 'localhost:3000';
-      const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-      const baseUrl = `${protocol}://${host}`;
-      
-      // Fetch first page (top 12 tours) - compliant with Viator API rules
-      const toursResponse = await fetch(`${baseUrl}/api/internal/viator-search`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          searchTerm: '',
-          page: 1,
-          viatorDestinationId: String(viatorDestinationId),
-          includeDestination: true,
-        }),
-        next: { revalidate: 86400 }, // Cache for 24 hours - our API route has cache headers, this reduces fetch calls
-      });
-
-      if (toursResponse.ok) {
-        const toursData = await toursResponse.json();
-        const allTours = toursData?.products?.results || [];
-        // Take top 12 tours (sorted by rating/reviews by Viator API)
-        topTours = allTours.slice(0, 12);
-        }
-    } catch (error) {
-      console.error('Error fetching top tours for operators page:', error);
-      // Continue without tours - page will still work
-    }
-  }
+  // No server-side viator-search on operators page (saves cost; page is low priority).
+  // Client shows a CTA linking to /destinations/[id] (destination detail page).
+  const topTours = [];
 
   // Fetch category guides for this destination (limit to 6 for internal linking)
   let categoryGuides = [];

@@ -1,9 +1,10 @@
 import { notFound, redirect } from 'next/navigation';
 import RestaurantDetailClient from './RestaurantDetailClient';
-import { destinations } from '../../../../../src/data/destinationsData';
+import { resolveDestinationById } from '@/lib/destinationResolver';
 import {
   getRestaurantBySlug as getRestaurantBySlugFromDB,
   getRestaurantsForDestination as getRestaurantsForDestinationFromDB,
+  getRestaurantCountsByDestination,
   formatRestaurantForFrontend,
   findRestaurantByName,
 } from '@/lib/restaurants';
@@ -66,7 +67,7 @@ export const revalidate = 604800; // 7 days - increased to reduce ISR writes dur
 
 export async function generateMetadata({ params }) {
   const { id: destinationId, restaurant: restaurantSlug } = await params;
-  const destination = destinations.find((d) => d.id === destinationId);
+  const destination = resolveDestinationById(destinationId);
   
   // Try database first, fallback to static files
   let restaurant = await getRestaurantBySlugFromDB(destinationId, restaurantSlug);
@@ -155,19 +156,21 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
   const params = [];
+  const restaurantCounts = await getRestaurantCountsByDestination();
 
-  for (const destination of destinations) {
+  for (const destinationId of Object.keys(restaurantCounts)) {
     // Try database first, fallback to static files
-    let restaurants = await getRestaurantsForDestinationFromDB(destination.id);
+    let restaurants = await getRestaurantsForDestinationFromDB(destinationId);
     if (restaurants.length === 0) {
-      restaurants = getRestaurantsForDestinationFromStatic(destination.id);
+      restaurants = getRestaurantsForDestinationFromStatic(destinationId);
     }
-    
+    if (restaurants.length === 0) continue;
+
     restaurants.forEach((restaurant) => {
-      const slug = restaurant.slug || (restaurant.id ? `${restaurant.id}-${destination.id}` : null);
+      const slug = restaurant.slug || (restaurant.id ? `${restaurant.id}-${destinationId}` : null);
       if (slug) {
         params.push({
-          id: destination.id,
+          id: destinationId,
           restaurant: slug,
         });
       }
@@ -180,7 +183,7 @@ export async function generateStaticParams() {
 export default async function RestaurantPage({ params }) {
   const { id: destinationId, restaurant: restaurantSlug } = await params;
 
-  const destination = destinations.find((d) => d.id === destinationId);
+  const destination = resolveDestinationById(destinationId);
   
   // Try database first, fallback to static files
   let restaurant = await getRestaurantBySlugFromDB(destinationId, restaurantSlug);

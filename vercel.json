@@ -2,8 +2,8 @@
   "framework": "nextjs",
   "redirects": [
     {
-      "source": "/:path*",
-      "destination": "https://toptours.ai/:path*",
+      "source": "/((?!api/webhooks/stripe).*)",
+      "destination": "https://toptours.ai/$1",
       "permanent": true,
       "has": [
         { "type": "host", "value": "www.toptours.ai" }

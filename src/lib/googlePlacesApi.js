@@ -1,9 +1,11 @@
 /**
  * Google Places API Integration
- * Fetches restaurant data from Google Places API
+ * Uses LEGACY Places API (maps.googleapis.com) so usage counts under Starter plan
+ * "Place Details Essentials" and "Text Search Essentials" (50,000 calls/month).
+ * Do not use Places API (New) (places.googleapis.com/v1) — that is pay-as-you-go.
  */
 
-const GOOGLE_PLACES_API_BASE = 'https://places.googleapis.com/v1';
+const LEGACY_PLACES_BASE = 'https://maps.googleapis.com/maps/api/place';
 
 function getApiKey() {
   const key = process.env.GOOGLE_PLACES_API_KEY;
@@ -13,101 +15,206 @@ function getApiKey() {
   return key;
 }
 
+// --- Legacy API (Starter plan) ---
+
 /**
- * Search for restaurants near a location using Text Search
- * @param {string} query - Search query (e.g., "restaurants in Aruba")
- * @param {string} location - Location bias (e.g., "12.5211,-69.9683" for lat,lng)
- * @returns {Promise<Array>} Array of place results
+ * Legacy Text Search: GET .../textsearch/json
+ * Billed as "Places API Text Search Essentials" — counts against 50k.
+ */
+async function legacyTextSearchPage(query, pageToken = null) {
+  const params = new URLSearchParams({
+    query: query,
+    key: getApiKey(),
+    language: 'en',
+  });
+  if (pageToken) {
+    params.set('pagetoken', pageToken);
+  }
+  const url = `${LEGACY_PLACES_BASE}/textsearch/json?${params.toString()}`;
+  const response = await fetch(url, { method: 'GET' });
+  const data = await response.json();
+  if (data.status !== 'OK' && data.status !== 'ZERO_RESULTS') {
+    throw new Error(`Legacy Text Search error: ${data.status} ${data.error_message || ''}`);
+  }
+  const results = data.results || [];
+  const places = results.map((r) => ({
+    id: r.place_id,
+    displayName: { text: r.name },
+    formattedAddress: r.formatted_address,
+    location: r.geometry?.location
+      ? { latitude: r.geometry.location.lat, longitude: r.geometry.location.lng }
+      : null,
+    rating: r.rating ?? null,
+    userRatingCount: r.user_ratings_total ?? 0,
+    photos: [], // Not used — saves cost
+    types: r.types || [],
+    priceLevel: r.price_level ?? null,
+  }));
+  return {
+    places,
+    nextPageToken: data.next_page_token || null,
+  };
+}
+
+/**
+ * Legacy Place Details: GET .../details/json?place_id=...&fields=...
+ * Billed as "Places API Place Details Essentials" — counts against 50k.
+ * Request only Essentials-tier fields.
+ */
+// No 'photos' — saves on call cost; we don't show them on the site.
+const LEGACY_DETAILS_FIELDS = [
+  'place_id',
+  'name',
+  'formatted_address',
+  'formatted_phone_number',
+  'international_phone_number',
+  'website',
+  'geometry',
+  'rating',
+  'user_ratings_total',
+  'types',
+  'opening_hours',
+  'address_components',
+  'price_level',
+].join(',');
+
+async function legacyPlaceDetails(placeId) {
+  const params = new URLSearchParams({
+    place_id: placeId,
+    fields: LEGACY_DETAILS_FIELDS,
+    key: getApiKey(),
+    language: 'en',
+  });
+  const url = `${LEGACY_PLACES_BASE}/details/json?${params.toString()}`;
+  const response = await fetch(url, { method: 'GET' });
+  const data = await response.json();
+  if (data.status !== 'OK') {
+    throw new Error(`Legacy Place Details error: ${data.status} ${data.error_message || ''}`);
+  }
+  const r = data.result || {};
+  // Normalize to New API-like shape so formatRestaurantData and getPlaceCountryIso work
+  const loc = r.geometry?.location;
+  const addressComponents = Array.isArray(r.address_components)
+    ? r.address_components.map((c) => ({
+        types: c.types || [],
+        shortText: c.short_name,
+        longText: c.long_name,
+      }))
+    : null;
+  return {
+    id: r.place_id,
+    displayName: { text: r.name },
+    formattedAddress: r.formatted_address,
+    nationalPhoneNumber: r.formatted_phone_number || null,
+    internationalPhoneNumber: r.international_phone_number || null,
+    websiteUri: r.website || null,
+    location: loc ? { latitude: loc.lat, longitude: loc.lng } : null,
+    rating: r.rating ?? null,
+    userRatingCount: r.user_ratings_total ?? 0,
+    types: r.types || [],
+    priceLevel: r.price_level ?? null,
+    addressComponents,
+    photos: [], // Not requested — saves cost; listing doesn't show photos
+    regularOpeningHours: r.opening_hours
+      ? {
+          weekdayDescriptions: r.opening_hours.weekday_text || [],
+        }
+      : null,
+  };
+}
+
+/**
+ * Photo URL: legacy uses photo_reference (long string); New API uses path "places/.../photos/...".
+ * Legacy URL: .../photo?photo_reference=... (Starter plan).
+ */
+export function getPhotoUrl(photoNameOrRef, maxWidth = 1200) {
+  if (!photoNameOrRef) return null;
+  if (typeof photoNameOrRef === 'string' && photoNameOrRef.startsWith('places/')) {
+    return `https://places.googleapis.com/v1/${photoNameOrRef}/media?maxWidthPx=${maxWidth}&key=${getApiKey()}`;
+  }
+  return `${LEGACY_PLACES_BASE}/photo?maxwidth=${maxWidth}&photo_reference=${encodeURIComponent(photoNameOrRef)}&key=${getApiKey()}`;
+}
+
+/**
+ * Search for restaurants (legacy API — first page only).
  */
 export async function searchRestaurants(query, location = null) {
-  try {
-    const url = `${GOOGLE_PLACES_API_BASE}/places:searchText`;
-    
-    const body = {
-      textQuery: query,
-      maxResultCount: 20,
-      includedType: 'restaurant',
-      languageCode: 'en',
-    };
-
-    if (location) {
-      body.locationBias = {
-        circle: {
-          center: {
-            latitude: parseFloat(location.split(',')[0]),
-            longitude: parseFloat(location.split(',')[1]),
-          },
-          radius: 50000, // 50km radius
-        },
-      };
-    }
-
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Goog-Api-Key': getApiKey(),
-        'X-Goog-FieldMask': 'places.id,places.displayName,places.formattedAddress,places.rating,places.userRatingCount,places.photos,places.types,places.priceLevel,places.nationalPhoneNumber,places.websiteUri,places.location',
-      },
-    });
-
-    if (!response.ok) {
-      const error = await response.text();
-      throw new Error(`Google Places API error: ${response.status} - ${error}`);
-    }
-
-    const data = await response.json();
-    return data.places || [];
-  } catch (error) {
-    console.error('Error searching restaurants:', error);
-    throw error;
-  }
+  const { places } = await legacyTextSearchPage(query, null);
+  return places;
 }
 
 /**
- * Get detailed information about a place by place ID
- * @param {string} placeId - Google Places API place ID
- * @returns {Promise<Object>} Detailed place information
+ * Single search request with optional pageToken (legacy API).
+ * When pageToken is set, only pagetoken is sent (legacy requirement).
+ */
+export async function searchRestaurantsPage(query, location = null, pageToken = null) {
+  return legacyTextSearchPage(query, pageToken);
+}
+
+/**
+ * Fetch up to 60 restaurants for one query using pagination (3 pages × 20).
+ * Waits 2 seconds between pages so nextPageToken is valid.
+ * @param {string} query - Text query
+ * @param {string|null} location - Optional "lat,lng"
+ * @param {number} maxResults - Max places to return (API max 60 per query)
+ * @returns {Promise<Array>} Array of place objects (no duplicates by id)
+ */
+export async function searchRestaurantsWithPagination(query, location = null, maxResults = 60) {
+  const seen = new Set();
+  const all = [];
+  let pageToken = null;
+
+  for (let page = 0; page < 3; page++) {
+    const { places, nextPageToken } = await searchRestaurantsPage(query, location, pageToken);
+    for (const p of places) {
+      if (p.id && !seen.has(p.id)) {
+        seen.add(p.id);
+        all.push(p);
+        if (all.length >= maxResults) return all;
+      }
+    }
+    pageToken = nextPageToken;
+    if (!pageToken || all.length >= maxResults) break;
+    await new Promise((r) => setTimeout(r, 2000));
+  }
+
+  return all;
+}
+
+/**
+ * Fetch up to maxTotal unique restaurants by running multiple queries and merging by place id.
+ * Use this to get 100+ restaurants per destination (e.g. 5 queries × up to 60 = 300, capped at maxTotal).
+ * @param {string[]} queries - Array of text queries (e.g. "restaurants in Paris", "best restaurants Paris")
+ * @param {string|null} location - Optional "lat,lng"
+ * @param {number} maxTotal - Max unique places to return (e.g. 100 or 200)
+ * @returns {Promise<Array>} Array of place objects, deduplicated by id
+ */
+export async function searchRestaurantsMany(queries, location = null, maxTotal = 100) {
+  const seen = new Set();
+  const all = [];
+
+  for (const query of queries) {
+    if (all.length >= maxTotal) break;
+    const remaining = maxTotal - all.length;
+    const places = await searchRestaurantsWithPagination(query, location, Math.min(60, remaining));
+    for (const p of places) {
+      if (p.id && !seen.has(p.id)) {
+        seen.add(p.id);
+        all.push(p);
+        if (all.length >= maxTotal) return all;
+      }
+    }
+    await new Promise((r) => setTimeout(r, 500));
+  }
+
+  return all;
+}
+
+/**
+ * Get detailed information about a place by place ID (legacy API — Starter plan).
  */
 export async function getPlaceDetails(placeId) {
-  try {
-    const url = `${GOOGLE_PLACES_API_BASE}/places/${placeId}`;
-    
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'X-Goog-Api-Key': getApiKey(),
-        'X-Goog-FieldMask': 'id,displayName,formattedAddress,nationalPhoneNumber,internationalPhoneNumber,websiteUri,rating,userRatingCount,priceLevel,editorialSummary,photos,types,location,currentOpeningHours,regularOpeningHours,reviews,outdoorSeating,liveMusic,menuForChildren,servesCocktails,servesDessert,servesCoffee,goodForChildren,allowsDogs,restroom,goodForGroups,reservable,dineIn,takeout,delivery,paymentOptions,parkingOptions,accessibilityOptions,addressComponents,plusCode,viewport,businessStatus,primaryTypeDisplayName,servesBeer,servesWine,servesBrunch,servesDinner,utcOffsetMinutes,adrFormatAddress,googleMapsUri',
-      },
-    });
-
-    if (!response.ok) {
-      const error = await response.text();
-      throw new Error(`Google Places API error: ${response.status} - ${error}`);
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching place details:', error);
-    throw error;
-  }
-}
-
-/**
- * Get a photo URL from Google Places API
- * @param {string} photoName - Photo name from the API response
- * @param {number} maxWidth - Maximum width in pixels (default: 1200)
- * @returns {string} Photo URL
- */
-export function getPhotoUrl(photoName, maxWidth = 1200) {
-  if (!photoName) return null;
-  
-  // Extract photo reference from photo name
-  // Photo name format: places/ChIJ.../photos/...
-  const photoReference = photoName.split('/').pop();
-  
-  return `https://places.googleapis.com/v1/${photoName}/media?maxWidthPx=${maxWidth}&key=${getApiKey()}`;
+  return legacyPlaceDetails(placeId);
 }
 
 /**

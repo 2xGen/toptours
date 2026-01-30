@@ -44,6 +44,31 @@ export async function getRestaurantsForDestination(destinationId) {
 }
 
 /**
+ * Get a limited number of restaurants for a destination (e.g. for tour detail "Top Restaurants" section).
+ * Reduces Supabase read when full list is not needed.
+ * @param {string} destinationId - Destination ID
+ * @param {number} limit - Max number of restaurants to return (default 10)
+ * @returns {Promise<Array>} Array of restaurants (raw DB rows)
+ */
+export async function getRestaurantsForDestinationWithLimit(destinationId, limit = 10) {
+  if (!destinationId || limit < 1) return [];
+  const supabase = createSupabaseServiceRoleClient();
+  const { data, error } = await supabase
+    .from('restaurants')
+    .select('*')
+    .eq('destination_id', destinationId)
+    .eq('is_active', true)
+    .order('google_rating', { ascending: false })
+    .range(0, Math.max(0, limit - 1));
+
+  if (error) {
+    console.error('Error fetching restaurants (limit):', error);
+    return [];
+  }
+  return data || [];
+}
+
+/**
  * Get restaurant counts per destination
  * Handles pagination for large datasets (>1000 rows)
  * @returns {Promise<Object>} Object with destination_id as key and count as value

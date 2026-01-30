@@ -1,4 +1,4 @@
-import { destinations } from '@/data/destinationsData';
+import { resolveDestinationById } from '@/lib/destinationResolver';
 import { getRestaurantCountsByDestination } from '@/lib/restaurants';
 import RestaurantsPageClient from './RestaurantsPageClient';
 
@@ -48,19 +48,19 @@ export async function generateMetadata() {
 }
 
 export default async function RestaurantsPage() {
-  // Get restaurant counts per destination
+  // Get restaurant counts per destination (includes curated + generated destinations with DB data)
   const restaurantCounts = await getRestaurantCountsByDestination();
-  
-  // Filter destinations that have restaurants
-  const destinationsWithRestaurants = destinations
-    .filter((dest) => restaurantCounts[dest.id] > 0)
-    .map((dest) => ({
-      ...dest,
-      restaurantCount: restaurantCounts[dest.id] || 0,
-    }))
-    .sort((a, b) => b.restaurantCount - a.restaurantCount); // Sort by restaurant count
 
-  // Calculate total number of restaurants
+  // Build list from all destination ids that have restaurants; resolve display info from curated or fullContent
+  const destinationsWithRestaurants = Object.entries(restaurantCounts)
+    .filter(([, count]) => count > 0)
+    .map(([destId, count]) => {
+      const dest = resolveDestinationById(destId);
+      return dest ? { ...dest, restaurantCount: count } : null;
+    })
+    .filter(Boolean)
+    .sort((a, b) => (b.restaurantCount || 0) - (a.restaurantCount || 0));
+
   const totalRestaurants = destinationsWithRestaurants.reduce(
     (sum, dest) => sum + (dest.restaurantCount || 0),
     0

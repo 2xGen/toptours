@@ -376,10 +376,11 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         </div>
       </section>
 
-      {/* Destination Sticky Navigation */}
+      {/* Destination Sticky Navigation - Tours link is destination-specific */}
       <DestinationStickyNav
         destinationId={destinationId}
         destinationName={destination.fullName || destination.name}
+        toursLinkText={`View all tours in ${destination.fullName || destination.name}`}
         hasRestaurants={destinationFeatures.hasRestaurants}
         hasAirportTransfers={destinationFeatures.hasAirportTransfers}
         hasBabyEquipment={destinationFeatures.hasBabyEquipment}
@@ -441,8 +442,8 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
             </div>
           </motion.div>
 
-          {/* Featured Tours Section */}
-          {categoryTours && categoryTours.length > 0 && (
+          {/* CTA to destination tours (no server-side Viator on guide pages - saves cost) */}
+          {(!categoryTours || categoryTours.length === 0) && (
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -450,61 +451,32 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               viewport={{ once: true }}
               className="mb-12"
             >
-              <div className="text-center mb-8">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4">
-                  Featured {guideData.categoryName} Tours
-                </h2>
-                <p className="text-gray-600 max-w-2xl mx-auto">
-                  Discover our top picks for {guideData.categoryName.toLowerCase()} in {destination.name}
-                </p>
-              </div>
-
-              {/* Tour Grid - Using TourCard component */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {categoryTours.map((tour, index) => {
-                  const tourId = tour.productId || tour.productCode;
-                  if (!tourId) return null;
-                  
-                  return (
-                    <TourCard
-                      key={tourId}
-                      tour={tour}
-                      destination={destination}
-                      matchScore={matchScores[tourId]}
-                      user={user}
-                      userPreferences={userPreferences || localPreferences}
-                      onOpenPreferences={() => setShowPreferencesModal(true)}
-                      isFeatured={false}
-                      premiumOperatorTourIds={[]}
-                    />
-                  );
-                })}
-              </div>
+              <Card className="overflow-hidden border-none shadow-xl bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 text-white">
+                <CardContent className="p-8 sm:p-10 text-center relative">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" aria-hidden />
+                  <div className="relative">
+                    {guideData.categoryName && (
+                      <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-sm font-medium text-white/95 mb-5">
+                        {guideData.categoryName}
+                      </span>
+                    )}
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold mb-4 tracking-tight">
+                      Browse {guideData.categoryName ? `${guideData.categoryName.toLowerCase()} and all tours` : 'all tours'} in {destination.fullName || destination.name}
+                    </h2>
+                    <p className="text-blue-100/95 text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+                      See tours and activities for {destination.fullName || destination.name} with instant booking and best price guarantee.
+                    </p>
+                    <Link href={`/destinations/${destinationId}/tours`}>
+                      <Button size="lg" className="bg-white text-blue-700 hover:bg-blue-50 font-semibold text-base sm:text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                        View all tours in {destination.fullName || destination.name}
+                        <ArrowRight className="ml-2 w-5 h-5" />
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
             </motion.div>
           )}
-          {/* Primary CTA */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="max-w-5xl mx-auto"
-          >
-            <Card className="bg-gradient-to-r from-blue-600 to-indigo-600 border-none text-white shadow-xl">
-              <CardContent className="p-8 text-center">
-                <h3 className="text-2xl md:text-3xl font-bold mb-3">Ready to Explore {destination.name}?</h3>
-                <p className="text-blue-100 mb-6 text-lg">
-                  Browse all available tours and activities with instant booking & best price guarantee
-                </p>
-                <Link href={`/destinations/${destinationId}/tours`}>
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-6">
-                    View All Tours & Activities
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          </motion.div>
         </div>
       </section>
 
@@ -735,8 +707,8 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         </div>
       </section>
 
-      {/* Final CTA - Blue */}
-      <section className="py-12 sm:py-16 bg-white overflow-hidden">
+      {/* Final CTA */}
+      <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -744,18 +716,24 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <Card className="bg-gradient-to-r from-blue-600 to-indigo-600 border-none text-white overflow-hidden shadow-2xl">
-            <CardContent className="p-12 text-center relative">
-              <div className="relative z-10">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Don't Miss the Perfect {destination.name} Experience
+          <Card className="bg-gradient-to-br from-indigo-600 via-indigo-700 to-blue-800 border-none text-white overflow-hidden shadow-2xl">
+            <CardContent className="p-10 sm:p-14 text-center relative">
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 to-transparent pointer-events-none" aria-hidden />
+              <div className="relative">
+                {guideData.categoryName && (
+                  <p className="text-indigo-200 text-sm font-medium uppercase tracking-wider mb-3">
+                    {guideData.categoryName}
+                  </p>
+                )}
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold mb-4">
+                  Don't miss the perfect {guideData.categoryName ? `${guideData.categoryName.toLowerCase()} experience in` : 'experience in'} {destination.fullName || destination.name}
                 </h2>
-                <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-                  Book your {guideData.categoryName.toLowerCase()} today - {guideData.stats.toursAvailable}+ tours with instant confirmation & best price guarantee!
+                <p className="text-indigo-100 text-lg mb-8 max-w-2xl mx-auto">
+                  Instant confirmation & best price guarantee when you book through TopTours.ai.
                 </p>
                 <Link href={`/destinations/${destinationId}/tours`}>
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-xl px-10 py-7">
-                    Browse All Tours & Prices
+                  <Button size="lg" className="bg-white text-indigo-700 hover:bg-indigo-50 font-semibold text-lg px-10 py-7 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                    View all tours in {destination.fullName || destination.name}
                     <ArrowRight className="ml-2 w-6 h-6" />
                   </Button>
                 </Link>

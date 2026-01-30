@@ -101,6 +101,14 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#667eea" />
         <meta name="msapplication-TileColor" content="#667eea" />
         
+        {/* Metricool tracking - visit analytics */}
+        <script
+          defer
+          dangerouslySetInnerHTML={{
+            __html: `function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"10cc6f6541b9f7bcd21bab9b7ab99987"})});`,
+          }}
+        />
+
         {/* OPTIMIZED: Service Worker Registration - Deferred to not block initial render */}
         <script
           defer

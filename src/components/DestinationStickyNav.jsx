@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
  * @param {Object} props
  * @param {string} props.destinationId - Destination slug/ID
  * @param {string} props.destinationName - Display name for destination (optional, falls back to ID)
+ * @param {string} props.toursLinkText - Optional label for Tours link (e.g. "View all tours in Tanah Rata")
  * @param {boolean} props.showCounts - Whether to show counts (default: false to avoid API calls)
  * @param {number} props.tourCount - Optional tour count to display
  * @param {number} props.guideCount - Optional guide count to display
@@ -22,6 +23,7 @@ import { Badge } from '@/components/ui/badge';
 export default function DestinationStickyNav({
   destinationId,
   destinationName,
+  toursLinkText = null,
   showCounts = false,
   tourCount = null,
   guideCount = null,
@@ -34,16 +36,26 @@ export default function DestinationStickyNav({
     return null;
   }
 
+  const displayName = destinationName || destinationId;
+
   return (
     <section className="sticky top-16 z-40 bg-white border-b shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center gap-6 py-4 overflow-x-auto hide-scrollbar">
+          {/* Explore destination - links to main destination page */}
+          <Link 
+            href={`/destinations/${destinationId}`}
+            className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1"
+          >
+            <span>Explore {displayName}</span>
+          </Link>
+
           {/* Tours */}
           <Link 
             href={`/destinations/${destinationId}/tours`}
             className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1"
           >
-            <span>Tours</span>
+            <span>{toursLinkText || 'Tours'}</span>
             {showCounts && tourCount !== null && (
               <Badge variant="secondary" className="bg-blue-100 text-blue-700">
                 {tourCount.toLocaleString()}+

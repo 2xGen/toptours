@@ -1,3 +1,6 @@
+// Build-time static: served from CDN, no serverless function on request (near-zero compute).
+export const dynamic = 'force-static';
+
 export const metadata = {
   title: 'Affiliate Disclosure | TopTours.ai',
   description: 'Transparency is important to us. Learn how TopTours.ai operates, how we\'re compensated through affiliate partnerships, and our commitment to unbiased recommendations.',

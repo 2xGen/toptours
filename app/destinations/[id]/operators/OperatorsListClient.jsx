@@ -247,92 +247,22 @@ export default function OperatorsListClient({ destination, operators = [], topTo
           </div>
         </section>
 
-        {/* Top Tours Section - SEO-friendly content */}
-        {topTours.length > 0 && (
+        {/* CTA to destination page (no server-side tours fetch - saves cost) */}
+        {topTours.length === 0 && (
           <section className="py-12 px-4 bg-white">
-            <div className="max-w-7xl mx-auto">
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Popular Tours & Activities in {destination.fullName}
-                </h2>
-                <p className="text-gray-600 text-lg mb-6">
-                  Discover top-rated tours and experiences from trusted operators in {destination.fullName}. Book instantly with free cancellation.
-                </p>
-              </div>
-              
-              {/* Top 12 Tours Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
-                {topTours.slice(0, 12).map((tour, index) => {
-                  const productId = tour.productCode || tour.productId || tour.id;
-                  const tourSlug = tour.seo?.slug || tour.slug || null;
-                  const tourUrl = tourSlug 
-                    ? `/tours/${productId}/${tourSlug}`
-                    : `/tours/${productId}`;
-                  const tourName = tour.title || tour.productName || tour.name || `Tour #${productId}`;
-                  const tourImage = tour.images?.[0]?.variants?.[3]?.url || 
-                                   tour.images?.[0]?.variants?.[0]?.url || 
-                                   tour.imageUrl || null;
-                  const rating = tour.reviews?.combinedAverageRating || 
-                               tour.reviews?.averageRating || null;
-                  const reviewCount = tour.reviews?.totalReviews || 
-                                    tour.reviews?.totalCount || null;
-                  const price = tour.pricing?.summary?.fromPrice || null;
-                  
-                  return (
-                    <Link
-                      key={productId}
-                      href={tourUrl}
-                      className="group"
-                    >
-                      <Card className="h-full border border-gray-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300">
-                        <CardContent className="p-0">
-                          {tourImage && (
-                            <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
-                              <img
-                                src={tourImage}
-                                alt={tourName}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                              />
-                            </div>
-                          )}
-                          <div className="p-4">
-                            <h3 className="font-semibold text-gray-900 line-clamp-2 mb-2 group-hover:text-orange-600 transition-colors">
-                              {tourName}
-                            </h3>
-                            <div className="flex items-center justify-between">
-                              {rating && (
-                                <div className="flex items-center gap-1 text-sm">
-                                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                                  <span className="font-medium">{rating.toFixed(1)}</span>
-                                  {reviewCount && (
-                                    <span className="text-gray-500 ml-1">
-                                      ({reviewCount.toLocaleString()})
-                                    </span>
-                                  )}
-                                </div>
-                              )}
-                              {price && (
-                                <div className="text-sm font-semibold text-orange-600">
-                                  From ${price}
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  );
-                })}
-              </div>
-              
-              <div className="text-center">
-                <Button asChild className="sunset-gradient text-white">
-                  <Link href={`/destinations/${destination.id}/tours`}>
-                    View All Tours in {destination.fullName}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
+            <div className="max-w-7xl mx-auto text-center">
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                Explore {destination.fullName}
+              </h2>
+              <p className="text-gray-600 text-lg mb-6 max-w-xl mx-auto">
+                See tours, restaurants, and travel guides for {destination.fullName} in one place.
+              </p>
+              <Button asChild className="sunset-gradient text-white">
+                <Link href={`/destinations/${destination.id}`}>
+                  Go to {destination.fullName} destination page
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </div>
           </section>
         )}

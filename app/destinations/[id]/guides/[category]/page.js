@@ -1,13 +1,10 @@
 import { destinations } from '../../../../../src/data/destinationsData';
 import CategoryGuideClient from './CategoryGuideClient';
 import { notFound, redirect } from 'next/navigation';
-import { getPromotionScoresByDestination } from '@/lib/promotionSystem';
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
-import { slugToViatorId as slugToViatorIdMap } from '@/data/viatorDestinationMap';
-
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
 
@@ -547,172 +544,10 @@ export default async function CategoryGuidePage({ params }) {
   // Fetch destination features (lightweight checks for sticky nav)
   const features = await getDestinationFeatures(destinationId);
 
-  // Fetch tours from Viator API using destination ID and category name (same as database guides)
-  // This replaces the hardcoded tours approach - always use live API calls
-  let categoryTours = [];
-    try {
-      // Get Viator destination ID - CRITICAL: Use database as source of truth (same as tours page)
-      const { getViatorDestinationBySlug } = await import('@/lib/supabaseCache');
-      
-      // Try database lookup first (same as tours page line 390-392)
-      let viatorDestinationId = null;
-      const dbDestination = await getViatorDestinationBySlug(destinationId);
-      if (dbDestination && dbDestination.id) {
-        viatorDestinationId = dbDestination.id.toString();
-        console.log(`🔍 Guide Page - Destination "${destinationId}": Using database ID = ${viatorDestinationId} (name: ${dbDestination.name})`);
-      } else {
-        // Fallback to hardcoded map or destination.destinationId
-        viatorDestinationId = slugToViatorIdMap[destinationId] || destination.destinationId || null;
-        if (viatorDestinationId) {
-          console.log(`⚠️ Guide Page - Destination "${destinationId}": Database lookup failed, using fallback = ${viatorDestinationId}`);
-        }
-      }
-      
-    // Build search term: extract just the activity type from category name
-    // Special handling for airport-transfers: use "airport transfers" as search term
-    let searchTerm = '';
-    
-    if (categorySlug === 'airport-transfers') {
-      // Special case: airport transfers page
-      searchTerm = 'airport transfers';
-    } else {
-      // Default: extract from category name
-      searchTerm = guideData.categoryName || '';
-      
-      // Remove destination name from the beginning of the category name
-      if (searchTerm && destination) {
-        const destinationName = destination.fullName || destination.name || '';
-        // Remove destination name if it appears at the start (case-insensitive)
-        const destinationPrefix = new RegExp(`^${destinationName}\\s+`, 'i');
-        searchTerm = searchTerm.replace(destinationPrefix, '').trim();
-      }
-      
-      // Remove common activity suffixes for better Viator API matching
-      // "adventure tours" -> "adventure", "catamaran cruises" -> "catamaran", "puerto banus experiences" -> "puerto banus"
-      const commonSuffixes = ['tours', 'tour', 'cruises', 'cruise', 'sailing', 'sail', 'tours & activities', 'activities', 'experiences', 'experience', 'trails', 'trail'];
-      for (const suffix of commonSuffixes) {
-        const suffixRegex = new RegExp(`\\s+${suffix}\\s*$`, 'i');
-        searchTerm = searchTerm.replace(suffixRegex, '').trim();
-      }
-      
-      // Convert to lowercase for better matching (same as AI chat search)
-      searchTerm = searchTerm.toLowerCase();
-    }
-    
-    // Determine max tours to fetch - increased to show more results (was 8, now 15)
-    const maxTours = 15;
-      
-    // Call Viator API search endpoint directly (same as database guides)
-      const apiKey = process.env.VIATOR_API_KEY;
-    if (apiKey && viatorDestinationId) {
-        const requestBody = {
-          searchTerm: searchTerm.trim(),
-          searchTypes: [{
-            searchType: 'PRODUCTS',
-            pagination: {
-              start: 1,
-            count: maxTours
-            }
-          }],
-        productFiltering: {
-          destination: viatorDestinationId.toString() // Filter by destination ID
-        },
-        productSorting: {
-          sort: 'DEFAULT', // Sort by relevancy (best matches first) - order field must be omitted for DEFAULT
-        },
-          currency: 'USD'
-        };
-      
-      console.log(`🔍 [SERVER] Fetching tours for ${destinationId}: searchTerm="${searchTerm}", destinationId=${viatorDestinationId}`);
-        
-        const viatorResponse = await fetch('https://api.viator.com/partner/search/freetext', {
-          method: 'POST',
-          headers: {
-            'exp-api-key': apiKey,
-            'Accept': 'application/json;version=2.0',
-            'Accept-Language': 'en-US',
-            'Content-Type': 'application/json'
-          },
-        body: JSON.stringify(requestBody),
-        next: { revalidate: 86400 } // Cache for 24 hours - reduced to cut costs
-        });
-        
-        if (viatorResponse.ok) {
-          const viatorData = await viatorResponse.json();
-          const products = viatorData.products?.results || [];
-        const totalCount = viatorData.products?.totalCount || 0;
-        
-        console.log(`🔍 [SERVER] Viator API response: ${products.length} products, totalCount: ${totalCount}`);
-          
-        // Pass full tour objects from Viator API (TourCard expects full structure)
-        categoryTours = products.slice(0, maxTours).map(tour => ({
-          ...tour, // Include all fields from Viator API
-          productId: tour.productCode || tour.productId,
-          productCode: tour.productCode || tour.productId,
-        }));
-        
-        console.log(`✅ Fetched ${categoryTours.length} live tours for ${destinationId}/${guideData.categoryName} from Viator API (destination ID: ${viatorDestinationId}, searchTerm: "${searchTerm}")`);
-        
-        // If no results with destination filter, try without filter (broader search)
-        if (categoryTours.length === 0 && searchTerm) {
-          console.log(`🔍 [SERVER] No results with destination filter, trying broader search: "${destination.fullName || destination.name} ${searchTerm}"`);
-          const fallbackRequestBody = {
-            searchTerm: `${destination.fullName || destination.name} ${searchTerm}`.trim(),
-            searchTypes: [{
-              searchType: 'PRODUCTS',
-              pagination: {
-                start: 1,
-                count: maxTours
-              }
-            }],
-            productSorting: {
-              sort: 'DEFAULT', // Sort by relevancy (best matches first) - order field must be omitted for DEFAULT
-            },
-            currency: 'USD'
-          };
-          
-          const fallbackResponse = await fetch('https://api.viator.com/partner/search/freetext', {
-            method: 'POST',
-            headers: {
-              'exp-api-key': apiKey,
-              'Accept': 'application/json;version=2.0',
-              'Accept-Language': 'en-US',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(fallbackRequestBody),
-            next: { revalidate: 3600 }
-          });
-          
-          if (fallbackResponse.ok) {
-            const fallbackData = await fallbackResponse.json();
-            const fallbackProducts = fallbackData.products?.results || [];
-            console.log(`🔍 [SERVER] Fallback search returned ${fallbackProducts.length} products`);
-            
-            // Pass full tour objects from Viator API (TourCard expects full structure)
-            categoryTours = fallbackProducts.slice(0, maxTours).map(tour => ({
-              ...tour, // Include all fields from Viator API
-              productId: tour.productCode || tour.productId,
-              productCode: tour.productCode || tour.productId,
-            }));
-            
-            console.log(`✅ Fallback search fetched ${categoryTours.length} tours`);
-          }
-        }
-      } else {
-        const errorText = await viatorResponse.text().catch(() => '');
-        console.warn(`⚠️ Viator API search failed for ${destinationId}/${guideData.categoryName}: ${viatorResponse.status} - ${errorText.substring(0, 200)}`);
-      }
-    } else if (!viatorDestinationId) {
-      console.warn(`⚠️ No Viator destination ID found for ${destinationId}, cannot fetch live tours`);
-      }
-    } catch (error) {
-      console.error('Error fetching tours from Viator API for category guide:', error);
-      // Continue with empty array if API call fails
-      categoryTours = [];
-  }
-  
-  // Fetch promotion scores for these tours
-  const promotionScores = await getPromotionScoresByDestination(destinationId);
+  // No server-side Viator fetch on guide pages (saves cost; ~21K guide URLs).
+  // Client shows a CTA linking to /destinations/[id]/tours (no search params = higher chance of results).
+  const categoryTours = [];
+  const promotionScores = {};
 
   // OG image: airport-transfers use dedicated image; other guides use travel guide OG
   const TRAVEL_GUIDE_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/travel%20guides.png';

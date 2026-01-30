@@ -4,66 +4,33 @@
  * while streaming in additional data
  */
 
-import { getTourPromotionScore } from '@/lib/promotionSystem';
 import { getTourEnrichmentCached, generateTourEnrichment } from '@/lib/tourEnrichment';
 import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds, getOperatorAggregatedStats } from '@/lib/tourOperatorPremiumServer';
-import { getCachedReviews } from '@/lib/viatorReviews';
 import { getFromPrice } from '@/lib/viatorPricing';
 import { getDestinationNameById } from '@/lib/destinationIdLookup';
 import { getViatorDestinationById } from '@/lib/supabaseCache';
-import { getRestaurantCountsByDestination, getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
-import { getRestaurantsForDestination as getRestaurantsForDestinationFromStatic } from '../../destinations/[id]/restaurants/restaurantsData';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 
 /**
  * Load all non-critical tour data in parallel
  */
 export async function loadTourData(productId, tour) {
-  // Fetch data in parallel
+  // Fetch data in parallel (reviews not fetched here - user loads on demand to save Viator API calls)
+  // Promotion score no longer fetched - was unused on tour detail page
   const [
     pricingResult,
-    promotionScoreResult,
     tourEnrichmentResult,
-    operatorPremiumDataResult,
-    reviewsResult
+    operatorPremiumDataResult
   ] = await Promise.allSettled([
     // Fetch pricing from schedules API (product endpoint doesn't include pricing)
     getFromPrice(productId),
-    getTourPromotionScore(productId)
-      .then(score => {
-        if (!score) {
-          return {
-            product_id: productId,
-            total_score: 0,
-            monthly_score: 0,
-            weekly_score: 0,
-            past_28_days_score: 0,
-          };
-        }
-        return score;
-      })
-      .catch(() => ({
-        product_id: productId,
-        total_score: 0,
-        monthly_score: 0,
-        weekly_score: 0,
-        past_28_days_score: 0,
-      })),
     getTourEnrichmentCached(productId).catch(() => null),
-    getTourOperatorPremiumSubscription(productId).catch(() => null),
-    (async () => {
-      try {
-        const currentReviewCount = tour.reviews?.totalReviews || 0;
-        return await getCachedReviews(productId, currentReviewCount);
-      } catch (error) {
-        return null;
-      }
-    })()
+    getTourOperatorPremiumSubscription(productId).catch(() => null)
   ]);
 
   // Extract results
   const pricing = pricingResult.status === 'fulfilled' ? pricingResult.value : null;
-  const promotionScore = promotionScoreResult.status === 'fulfilled' ? promotionScoreResult.value : {
+  const promotionScore = {
     product_id: productId,
     total_score: 0,
     monthly_score: 0,
@@ -72,7 +39,7 @@ export async function loadTourData(productId, tour) {
   };
   let tourEnrichment = tourEnrichmentResult.status === 'fulfilled' ? tourEnrichmentResult.value : null;
   let operatorPremiumData = operatorPremiumDataResult.status === 'fulfilled' ? operatorPremiumDataResult.value : null;
-  const reviews = reviewsResult.status === 'fulfilled' ? reviewsResult.value : null;
+  const reviews = null; // Load on demand via "Load reviews" button (saves 1 Viator API call per tour page view)
 
   // OPTIMIZED: Don't auto-generate enrichment on every page load (expensive AI calls)
   // Enrichment is only generated when user explicitly clicks "Generate Insight" button
@@ -121,43 +88,19 @@ export async function loadDestinationData(tour, productId) {
       return { destinationData: null, restaurantCount: 0, restaurants: [], categoryGuides: [] };
     }
 
-    // Parallelize destination-related data fetching
+    // Tour detail page does not show restaurants - no fetch (saves Supabase/static read)
     const [
       destinationNameResult,
-      restaurantCountResult,
-      restaurantsResult,
       categoryGuidesResult
     ] = await Promise.allSettled([
       getDestinationNameById(destinationId).catch(() => null),
-      getRestaurantCountsByDestination(destinationId).catch(() => ({ count: 0 })),
-      (async () => {
-        try {
-          const dbRestaurants = await getRestaurantsForDestinationFromDB(destinationId);
-          if (dbRestaurants && dbRestaurants.length > 0) {
-            return dbRestaurants.map(formatRestaurantForFrontend);
-          }
-          const staticRestaurants = await getRestaurantsForDestinationFromStatic(destinationId);
-          return staticRestaurants || [];
-        } catch (error) {
-          // Silently return empty - restaurants are optional
-          return [];
-        }
-      })(),
       getAllCategoryGuidesForDestination(destinationId).catch(() => [])
     ]);
 
     // getDestinationNameById returns { destinationName: "..." } or null
     const destinationNameObj = destinationNameResult.status === 'fulfilled' ? destinationNameResult.value : null;
     const destinationName = destinationNameObj?.destinationName || destinationNameFromTour;
-    
-    const restaurantCount = restaurantCountResult.status === 'fulfilled'
-      ? restaurantCountResult.value?.count || 0
-      : 0;
-    
-    const restaurants = restaurantsResult.status === 'fulfilled'
-      ? restaurantsResult.value
-      : [];
-    
+
     const categoryGuides = categoryGuidesResult.status === 'fulfilled'
       ? categoryGuidesResult.value
       : [];
@@ -195,8 +138,8 @@ export async function loadDestinationData(tour, productId) {
 
     return {
       destinationData,
-      restaurantCount,
-      restaurants,
+      restaurantCount: 0,
+      restaurants: [],
       categoryGuides
     };
   } catch (error) {

@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { destinations } from '../../../../../../src/data/destinationsData';
+import { resolveDestinationById } from '@/lib/destinationResolver';
 import { getRestaurantGuide, getRestaurantsForGuide } from '@/lib/restaurantGuides';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getTrendingToursByDestination } from '@/lib/promotionSystem';
@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const { id, category } = resolvedParams;
   
-  const destination = destinations.find((d) => d.id === id);
+  const destination = resolveDestinationById(id);
   if (!destination) {
     return {
       title: 'Restaurant Guide Not Found | TopTours.ai',
@@ -91,7 +91,7 @@ export default async function RestaurantGuidePage({ params }) {
   const resolvedParams = await params;
   const { id, category } = resolvedParams;
   
-  const destination = destinations.find((d) => d.id === id);
+  const destination = resolveDestinationById(id);
   if (!destination) {
     notFound();
   }

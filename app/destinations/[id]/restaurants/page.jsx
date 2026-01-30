@@ -1,11 +1,10 @@
 import { notFound } from 'next/navigation';
-import { destinations } from '../../../../src/data/destinationsData';
+import { resolveDestinationById } from '@/lib/destinationResolver';
 import {
   getRestaurantsForDestination as getRestaurantsForDestinationFromDB,
   formatRestaurantForFrontend,
 } from '@/lib/restaurants';
 import { getRestaurantsForDestination as getRestaurantsForDestinationFromStatic } from './restaurantsData';
-import { getRestaurantPromotionScoresByDestination } from '@/lib/promotionSystem';
 import { getPromotedToursByDestination, getPromotedRestaurantsByDestination } from '@/lib/promotionSystem';
 import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
@@ -29,7 +28,7 @@ async function getRestaurantsForPage(destinationId) {
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
-  const destination = destinations.find((d) => d.id === id);
+  const destination = resolveDestinationById(id);
 
   if (!destination) {
     return {
@@ -94,7 +93,7 @@ export async function generateMetadata({ params }) {
 
 export default async function RestaurantsIndexPage({ params }) {
   const { id } = await params;
-  const destination = destinations.find((d) => d.id === id);
+  const destination = resolveDestinationById(id);
 
   if (!destination) {
     notFound();
@@ -119,7 +118,6 @@ export default async function RestaurantsIndexPage({ params }) {
   const [
     promotedRestaurantDataResult,
     promotedTourDataResult,
-    restaurantPromotionScoresResult,
     premiumRestaurantIdsResult,
     categoryGuidesResult,
     destinationFeaturesResult
@@ -131,9 +129,6 @@ export default async function RestaurantsIndexPage({ params }) {
     destinationIdForScores 
       ? getPromotedToursByDestination(destinationIdForScores, 6).catch(() => [])
       : Promise.resolve([]),
-    
-    // Restaurant promotion scores
-    getRestaurantPromotionScoresByDestination(id).catch(() => ({})),
     
     // Premium restaurant IDs
     getPremiumRestaurantIds(id)
@@ -147,10 +142,10 @@ export default async function RestaurantsIndexPage({ params }) {
     getDestinationFeatures(id).catch(() => ({ hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }))
   ]);
 
-  // Extract results
+  // Extract results (restaurant promotion scores no longer fetched - pass empty)
   const promotedRestaurantData = promotedRestaurantDataResult.status === 'fulfilled' ? promotedRestaurantDataResult.value : [];
   const promotedTourData = promotedTourDataResult.status === 'fulfilled' ? promotedTourDataResult.value : [];
-  const restaurantPromotionScores = restaurantPromotionScoresResult.status === 'fulfilled' ? restaurantPromotionScoresResult.value : {};
+  const restaurantPromotionScores = {};
   const premiumRestaurantIds = premiumRestaurantIdsResult.status === 'fulfilled' ? premiumRestaurantIdsResult.value : [];
   const categoryGuides = categoryGuidesResult.status === 'fulfilled' ? categoryGuidesResult.value : [];
   const destinationFeatures = destinationFeaturesResult.status === 'fulfilled' ? destinationFeaturesResult.value : { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false };

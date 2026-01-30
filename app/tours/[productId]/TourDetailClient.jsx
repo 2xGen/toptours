@@ -35,7 +35,6 @@ import { getTourUrl, getTourProductId, generateTourSlug } from '@/utils/tourHelp
 import { destinations } from '@/data/destinationsData';
 import { viatorRefToSlug } from '@/data/viatorDestinationMap';
 import { getGuidesByCountry } from '@/data/travelGuidesData';
-import { getRestaurantsForDestination } from '../../destinations/[id]/restaurants/restaurantsData';
 import { toast } from '@/components/ui/use-toast';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
@@ -380,6 +379,12 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   const supabase = createSupabaseBrowserClient();
   const [clientDestinationLookup, setClientDestinationLookup] = useState(null);
   const [user, setUser] = useState(null);
+  // Reviews loaded on demand (saves 1 Viator API call per tour page view)
+  const [reviewsData, setReviewsData] = useState(reviews);
+  const [reviewsLoading, setReviewsLoading] = useState(false);
+  // Similar tours loaded on demand (saves 1 Viator API call per tour page view)
+  const [similarToursData, setSimilarToursData] = useState(similarTours?.length ? similarTours : null);
+  const [similarToursLoading, setSimilarToursLoading] = useState(false);
   const [userPreferences, setUserPreferences] = useState(null);
   const [tourProfile, setTourProfile] = useState(null);
   const [matchScore, setMatchScore] = useState(null);
@@ -2937,26 +2942,57 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 </motion.section>
               )}
 
-              {/* Review Snippets Section (After Ratings, Before FAQs) */}
+              {/* Guest Reviews Preview - load on demand to save Viator API calls (300k+ tour pages) */}
               {/* data-nosnippet prevents Google from using review content per Viator guidelines */}
-              {/* No Review schema - only aggregateRating in Product schema (which is correct) */}
-              {reviews && reviews.reviews && reviews.reviews.length > 0 && (
-                <motion.section
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.7 }}
-                  className="mt-8"
-                  data-nosnippet="true"
-                >
-                  <ReviewSnippets 
-                    reviews={reviews}
-                    tour={tour}
-                    productId={productId}
-                    viatorBookingUrl={viatorUrl}
-                  />
-                </motion.section>
-              )}
+              <motion.section
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                className="mt-8"
+                data-nosnippet="true"
+              >
+                {reviewsData && reviewsData.reviews && reviewsData.reviews.length > 0 ? (
+                  <Suspense fallback={null}>
+                    <ReviewSnippets 
+                      reviews={reviewsData}
+                      tour={tour}
+                      productId={productId}
+                      viatorBookingUrl={viatorUrl}
+                    />
+                  </Suspense>
+                ) : (
+                  <div className="rounded-xl p-6 md:p-8 border border-sky-100 bg-gradient-to-br from-sky-50/80 to-indigo-50/50 shadow-sm">
+                    <h2 className="text-2xl font-bold text-sky-900 mb-2">Guest Reviews Preview</h2>
+                    <p className="text-sky-800/90 mb-4">
+                      See what other travelers are saying about this experience.
+                    </p>
+                    <Button
+                      variant="outline"
+                      className="border-sky-300 text-sky-700 bg-white/80 hover:bg-sky-50 hover:border-sky-400"
+                      disabled={reviewsLoading}
+                      onClick={async () => {
+                        setReviewsLoading(true);
+                        try {
+                          const res = await fetch(`/api/internal/tour-reviews/${productId}`);
+                          const data = await res.json();
+                          if (data?.reviews?.length > 0 || data?.totalReviewsSummary) {
+                            setReviewsData(data);
+                          } else {
+                            setReviewsData({ reviews: [], totalReviewsSummary: data?.totalReviewsSummary || null });
+                          }
+                        } catch (err) {
+                          setReviewsData({ reviews: [], totalReviewsSummary: null });
+                        } finally {
+                          setReviewsLoading(false);
+                        }
+                      }}
+                    >
+                      {reviewsLoading ? 'Loading reviews…' : 'Load reviews'}
+                    </Button>
+                  </div>
+                )}
+              </motion.section>
 
               {/* Frequently Asked Questions */}
               {faqs && faqs.length > 0 && (
@@ -3350,16 +3386,44 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
             </motion.section>
           )}
 
-          {/* Similar Tours Section - Server-side rendered for SEO */}
-          {similarTours && similarTours.length > 0 && (
-            <div className="mt-16 w-full">
+          {/* Similar Tours Section - load on demand to save Viator API calls */}
+          <div className="mt-16 w-full">
+            {similarToursData && similarToursData.length > 0 ? (
               <SimilarToursListWrapper 
-                similarTours={similarTours}
+                similarTours={similarToursData}
                 tour={tour}
                 destinationData={destinationData}
               />
-            </div>
-          )}
+            ) : (
+              <div className="rounded-xl p-6 md:p-8 border border-amber-100 bg-gradient-to-br from-amber-50/80 to-orange-50/50 shadow-sm">
+                <h2 className="text-2xl font-bold text-amber-900 mb-2">Similar Tours</h2>
+                <p className="text-amber-800/90 mb-4">
+                  Discover more experiences like this one in the same destination.
+                </p>
+                <Button
+                  variant="outline"
+                  className="border-amber-300 text-amber-700 bg-white/80 hover:bg-amber-50 hover:border-amber-400"
+                  disabled={similarToursLoading}
+                  onClick={async () => {
+                    setSimilarToursLoading(true);
+                    try {
+                      const res = await fetch(`/api/internal/similar-tours/${productId}`);
+                      const data = await res.json();
+                      if (data?.similarTours?.length > 0) {
+                        setSimilarToursData(data.similarTours);
+                      }
+                    } catch (err) {
+                      setSimilarToursData([]);
+                    } finally {
+                      setSimilarToursLoading(false);
+                    }
+                  }}
+                >
+                  {similarToursLoading ? 'Loading similar tours…' : 'Load similar tours'}
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
@@ -3368,13 +3432,12 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         <section className="py-12 bg-white border-t">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto space-y-6">
-              {/* Get guides and restaurants for this destination */}
+              {/* Destination and tours links - tour detail page does not show restaurant list */}
               {(() => {
                 // Use destination if available (hardcoded), otherwise use effectiveDestinationData
                 // IMPORTANT: Always use slug for links, never the numeric ID
                 const destName = effectiveDestinationData?.destinationName || unmatchedDestinationName || subtleDestinationName || destination?.name || destination?.fullName || '';
                 const destSlugFromServer = effectiveDestinationData?.slug || subtleDestinationSlug || unmatchedDestinationSlug;
-                // If slug is numeric (like "51525"), generate slug from name instead
                 const isNumericSlug = destSlugFromServer && /^\d+$/.test(destSlugFromServer);
                 const finalSlug = isNumericSlug && destName 
                   ? generateSlugFromName(destName)
@@ -3388,12 +3451,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 };
                 
                 const destinationGuides = destForDisplay.country ? getGuidesByCountry(destForDisplay.country) : [];
-                // Use primaryDestinationSlug (from 182 destinations) or slug from effectiveDestinationData
-                const destinationIdForRestaurants = primaryDestinationSlug || destForDisplay.id || effectiveDestinationData?.slug || effectiveDestinationData?.destinationId;
-                const staticRestaurants = destinationIdForRestaurants ? getRestaurantsForDestination(destinationIdForRestaurants) : [];
-                // Use restaurants from server if available, otherwise use static restaurants
-                const restaurantsToDisplay = (restaurants && restaurants.length > 0) ? restaurants : staticRestaurants;
-                const hasRestaurants = restaurantsToDisplay.length > 0;
                 const hasGuides = destinationGuides && destinationGuides.length > 0;
 
                 return (
@@ -3462,116 +3519,31 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       </Link>
                     </motion.div>
 
-                    {/* Top Restaurants */}
-                    {hasRestaurants && (
+                    {/* Link to restaurants page (tour detail does not show restaurant list) */}
+                    {destinationFeatures?.hasRestaurants && (
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                       >
-                        <div className="mb-6">
-                          <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                            Top Restaurants in {destForDisplay.fullName || destForDisplay.name}
-                          </h3>
-                          <p className="text-sm text-gray-600 mb-6">
-                            Discover the best dining experiences and hand-picked restaurants.
-                          </p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                          {restaurantsToDisplay.slice(0, 8).map((restaurant, index) => {
-                            const restaurantUrl = `/destinations/${destinationIdForRestaurants || destination.id}/restaurants/${restaurant.slug}`;
-                            const description = restaurant.metaDescription 
-                              || restaurant.tagline 
-                              || restaurant.summary 
-                              || restaurant.description
-                              || (restaurant.cuisines?.length > 0 
-                                  ? `Discover ${restaurant.cuisines.join(' & ')} cuisine at ${restaurant.name} in ${destForDisplay.fullName || destForDisplay.name}.`
-                                  : `Experience great dining at ${restaurant.name} in ${destForDisplay.fullName || destForDisplay.name}.`);
-                            
-                            return (
-                              <motion.div
-                                key={restaurant.id || index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4, delay: index * 0.1 }}
-                                viewport={{ once: true }}
-                              >
-                                <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-shadow">
-                                  <CardContent className="p-6 flex flex-col h-full">
-                                    <div className="flex items-center gap-3 mb-3">
-                                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
-                                        <UtensilsCrossed className="w-5 h-5 text-white" />
-                                      </div>
-                                      <div className="flex-1 min-w-0">
-                                        <h4 className="text-lg font-bold text-gray-900 line-clamp-1">
-                                          {restaurant.name}
-                                        </h4>
-                                        {restaurant.cuisines?.length > 0 && (
-                                          <span className="text-xs font-medium text-blue-600 uppercase tracking-wide">
-                                            {restaurant.cuisines[0]}
-                                          </span>
-                                        )}
-                                      </div>
-                                    </div>
-                                    <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">
-                                      {description.length > 120 ? description.slice(0, 120) + '...' : description}
-                                    </p>
-                                    <div className="flex flex-wrap gap-2 mb-4">
-                                      {restaurant.ratings?.googleRating && (
-                                        <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
-                                          <Star className="w-3 h-3" />
-                                          {restaurant.ratings.googleRating.toFixed(1)}
-                                        </span>
-                                      )}
-                                      {restaurant.pricing?.priceRange && (
-                                        <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
-                                          {restaurant.pricing.priceRange}
-                                        </span>
-                                      )}
-                                    </div>
-                                    <Link
-                                      href={restaurantUrl}
-                                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
-                                    >
-                                      View Restaurant
-                                      <ArrowRight className="w-4 h-4" />
-                                    </Link>
-                                  </CardContent>
-                                </Card>
-                              </motion.div>
-                            );
-                          })}
-                          {/* View All Restaurants Card */}
-                          <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.4, delay: 0.7 }}
-                            viewport={{ once: true }}
-                          >
-                            <Link
-                              href={`/destinations/${destForDisplay.id}/restaurants`}
-                              className="block h-full"
-                            >
-                              <Card className="h-full border border-blue-100 bg-white shadow-lg hover:shadow-xl transition-shadow flex flex-col items-center justify-center text-center p-6">
-                                <UtensilsCrossed className="w-8 h-8 text-blue-600 mb-3" />
-                                <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                                  View All Restaurants in {destForDisplay.fullName || destForDisplay.name}
-                                </h4>
-                                <p className="text-sm text-gray-600 mb-4">
-                                  Explore every curated dining spot we recommend across the island.
-                                </p>
-                                <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600">
-                                  Browse the list
-                                  <ArrowRight className="w-4 h-4" />
-                                </span>
-                              </Card>
-                            </Link>
-                          </motion.div>
-                        </div>
+                        <Link href={`/destinations/${destForDisplay.id}/restaurants`} className="block h-full">
+                          <Card className="border border-blue-100 bg-white shadow-lg hover:shadow-xl transition-shadow flex flex-col items-center justify-center text-center p-6">
+                            <UtensilsCrossed className="w-8 h-8 text-blue-600 mb-3" />
+                            <h3 className="text-lg font-bold text-gray-900 mb-2">
+                              Restaurants in {destForDisplay.fullName || destForDisplay.name}
+                            </h3>
+                            <p className="text-sm text-gray-600 mb-4">
+                              Browse curated restaurants and dining in this destination.
+                            </p>
+                            <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600">
+                              View restaurants
+                              <ArrowRight className="w-4 h-4" />
+                            </span>
+                          </Card>
+                        </Link>
                       </motion.div>
                     )}
-
 
                     {/* Travel Guides */}
                     {hasGuides && (
