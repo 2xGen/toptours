@@ -73,6 +73,13 @@ export default function RestaurantsListClient({ destination, restaurants, promot
   const [showMatchModal, setShowMatchModal] = useState(false);
   const [matchScores, setMatchScores] = useState({}); // Map of productId -> match score
   const [loadingPreferences, setLoadingPreferences] = useState(true);
+  // Match scores off by default - user can enable via toggle (saves Supabase reads for crawlers/default users)
+  const [matchScoresEnabled, setMatchScoresEnabled] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    try {
+      return localStorage.getItem('topTours_matchScoresEnabled') === '1';
+    } catch { return false; }
+  });
   
   // Filter and sort state
   const [sortBy, setSortBy] = useState('rating'); // 'rating', 'name', 'price-low', 'price-high', 'best-match'
@@ -209,7 +216,7 @@ export default function RestaurantsListClient({ destination, restaurants, promot
     };
     
     calculateScores();
-  }, [promotedTours, user, userPreferences, loadingPreferences, localPreferences]);
+  }, [matchScoresEnabled, promotedTours, user, userPreferences, loadingPreferences, localPreferences]);
 
   // Auto-sync local restaurant preferences -> profile once after sign-in
   useEffect(() => {
@@ -675,10 +682,47 @@ export default function RestaurantsListClient({ destination, restaurants, promot
               {/* Promoted Tours (Cross-promotion on restaurant pages) */}
               {promotedTours && promotedTours.length > 0 && (
                 <div className="mb-8">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Promoted Tours</h3>
-                  <p className="text-sm text-gray-600 mb-4">
-                    Discover top-rated tours and activities in {destination.fullName || destination.name}
-                  </p>
+                  <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800">Promoted Tours</h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        Discover top-rated tours and activities in {destination.fullName || destination.name}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-medium text-gray-600 whitespace-nowrap">Show scores</span>
+                        <button
+                          role="switch"
+                          aria-checked={matchScoresEnabled}
+                          onClick={() => {
+                            const next = !matchScoresEnabled;
+                            setMatchScoresEnabled(next);
+                            try {
+                              localStorage.setItem('topTours_matchScoresEnabled', next ? '1' : '0');
+                            } catch {}
+                            if (!next) setMatchScores({});
+                          }}
+                          className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${matchScoresEnabled ? 'bg-purple-600' : 'bg-gray-200'}`}
+                        >
+                          <span
+                            className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition ${matchScoresEnabled ? 'translate-x-5' : 'translate-x-1'}`}
+                            style={{ top: '2px' }}
+                          />
+                        </button>
+                        <span className="text-xs text-gray-500">{matchScoresEnabled ? 'On' : 'Off'}</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setShowTourPreferencesModal(true)}
+                        className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-lg hover:border-purple-300 hover:shadow-sm transition-all"
+                      >
+                        <Sparkles className="w-4 h-4 text-purple-600" />
+                        <span className="text-sm font-semibold text-gray-900">Match to Your Style</span>
+                        <span className="text-[10px] font-medium bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">AI driven</span>
+                      </button>
+                    </div>
+                  </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {promotedTours.slice(0, 6).map((tour, index) => {
                       const productId = getTourProductId(tour) || tour.product_id || tour.productId || tour.productCode;

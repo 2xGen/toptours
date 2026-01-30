@@ -492,7 +492,14 @@ export default function ToursListingClient({
   const [userPreferences, setUserPreferences] = useState(null);
   const [matchScores, setMatchScores] = useState({}); // Map of productId -> match score
   const [loadingPreferences, setLoadingPreferences] = useState(true);
-  
+  // Match scores off by default - user can enable via toggle (saves Supabase reads for crawlers/default users)
+  const [matchScoresEnabled, setMatchScoresEnabled] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    try {
+      return localStorage.getItem('topTours_matchScoresEnabled') === '1';
+    } catch { return false; }
+  });
+
   // Lightweight localStorage preferences (works for everyone, no sign-in required)
   const [localPreferences, setLocalPreferences] = useState(() => {
     if (typeof window === 'undefined') return null;
@@ -975,7 +982,7 @@ export default function ToursListingClient({
     };
     
     calculateMatches();
-  }, [allTours, user, userPreferences, loadingPreferences, localPreferences, supabase]);
+  }, [matchScoresEnabled, allTours, user, userPreferences, loadingPreferences, localPreferences, supabase]);
   
   // Calculate min and max prices for slider
   const priceRange = useMemo(() => {
@@ -2554,19 +2561,43 @@ export default function ToursListingClient({
                 </Button>
               </div>
               
-              {/* Match to Your Style - Button to open modal */}
-              <button
-                onClick={() => setShowPreferencesModal(true)}
-                className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-lg hover:border-purple-300 hover:shadow-sm transition-all"
-              >
-                <Sparkles className="w-4 h-4 text-purple-600" />
-                <span className="text-sm font-semibold text-gray-900">
-                  Match to Your Style
-                </span>
-                <span className="text-[10px] font-medium bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">
-                  AI driven
-                </span>
-              </button>
+              {/* Match to Your Style - Toggle (off by default to save cost for crawlers) + Button to open modal */}
+              <div className="flex items-center gap-3 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-medium text-gray-600 whitespace-nowrap">Show scores</span>
+                  <button
+                    role="switch"
+                    aria-checked={matchScoresEnabled}
+                    onClick={() => {
+                      const next = !matchScoresEnabled;
+                      setMatchScoresEnabled(next);
+                      try {
+                        localStorage.setItem('topTours_matchScoresEnabled', next ? '1' : '0');
+                      } catch {}
+                      if (!next) setMatchScores({});
+                    }}
+                    className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${matchScoresEnabled ? 'bg-purple-600' : 'bg-gray-200'}`}
+                  >
+                    <span
+                      className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition ${matchScoresEnabled ? 'translate-x-5' : 'translate-x-1'}`}
+                      style={{ top: '2px' }}
+                    />
+                  </button>
+                  <span className="text-xs text-gray-500">{matchScoresEnabled ? 'On' : 'Off'}</span>
+                </div>
+                <button
+                  onClick={() => setShowPreferencesModal(true)}
+                  className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-lg hover:border-purple-300 hover:shadow-sm transition-all"
+                >
+                  <Sparkles className="w-4 h-4 text-purple-600" />
+                  <span className="text-sm font-semibold text-gray-900">
+                    Match to Your Style
+                  </span>
+                  <span className="text-[10px] font-medium bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">
+                    AI driven
+                  </span>
+                </button>
+              </div>
             </div>
 
             <p className="text-xs sm:text-sm text-gray-500">

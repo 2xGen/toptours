@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { 
   Anchor, MapPin, Clock, Users, DollarSign, Calendar, 
   Camera, Shirt, Sun, Waves, Heart, Star, ArrowRight,
-  BookOpen, ChevronRight, Home, GlassWater, Music, Sailboat, Ship, PartyPopper, HeartHandshake, X, ExternalLink, Search, UtensilsCrossed, Car, Building2
+  BookOpen, ChevronRight, Home, GlassWater, Music, Sailboat, Ship, PartyPopper, HeartHandshake, X, ExternalLink, Search, UtensilsCrossed, Car, Building2, Sparkles
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -58,7 +58,14 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
   const [matchScores, setMatchScores] = React.useState({}); // Map of productId -> match score
   const [loadingPreferences, setLoadingPreferences] = React.useState(true);
   const [showPreferencesModal, setShowPreferencesModal] = React.useState(false);
-  
+  // Match scores off by default - user can enable via toggle (saves Supabase reads for crawlers/default users)
+  const [matchScoresEnabled, setMatchScoresEnabled] = React.useState(() => {
+    if (typeof window === 'undefined') return false;
+    try {
+      return localStorage.getItem('topTours_matchScoresEnabled') === '1';
+    } catch { return false; }
+  });
+
   // Lightweight localStorage preferences (works for everyone, no sign-in required)
   const [localPreferences, setLocalPreferences] = React.useState(() => {
     if (typeof window === 'undefined') return null;
@@ -121,8 +128,12 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
     fetchUserPreferences();
   }, [supabase]);
   
-  // Calculate match scores for tours
+  // Calculate match scores for tours - only when user has enabled "Show scores"
   React.useEffect(() => {
+    if (!matchScoresEnabled) {
+      setMatchScores({});
+      return;
+    }
     if (loadingPreferences || categoryTours.length === 0) {
       if (categoryTours.length === 0) {
         setMatchScores({});
@@ -176,7 +187,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
     };
     
     calculateMatches();
-  }, [categoryTours, user, userPreferences, localPreferences, loadingPreferences]);
+  }, [matchScoresEnabled, categoryTours, user, userPreferences, localPreferences, loadingPreferences]);
   
   // Use destination from props if provided, otherwise try to find in destinationsData.js
   // The server component should ALWAYS pass destination, so this is just a safety fallback
@@ -441,6 +452,49 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               </p>
             </div>
           </motion.div>
+
+          {/* Match to Your Style - Toggle (off by default to save cost for crawlers) + Button - when we have tours */}
+          {categoryTours && categoryTours.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="flex flex-wrap items-center justify-center gap-4 mb-8"
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-medium text-gray-600 whitespace-nowrap">Show scores</span>
+                <button
+                  role="switch"
+                  aria-checked={matchScoresEnabled}
+                  onClick={() => {
+                    const next = !matchScoresEnabled;
+                    setMatchScoresEnabled(next);
+                    try {
+                      localStorage.setItem('topTours_matchScoresEnabled', next ? '1' : '0');
+                    } catch {}
+                    if (!next) setMatchScores({});
+                  }}
+                  className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${matchScoresEnabled ? 'bg-purple-600' : 'bg-gray-200'}`}
+                >
+                  <span
+                    className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition ${matchScoresEnabled ? 'translate-x-5' : 'translate-x-1'}`}
+                    style={{ top: '2px' }}
+                  />
+                </button>
+                <span className="text-xs text-gray-500">{matchScoresEnabled ? 'On' : 'Off'}</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowPreferencesModal(true)}
+                className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-lg hover:border-purple-300 hover:shadow-sm transition-all"
+              >
+                <Sparkles className="w-4 h-4 text-purple-600" />
+                <span className="text-sm font-semibold text-gray-900">Match to Your Style</span>
+                <span className="text-[10px] font-medium bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">AI driven</span>
+              </button>
+            </motion.div>
+          )}
 
           {/* CTA to destination tours (no server-side Viator on guide pages - saves cost) */}
           {(!categoryTours || categoryTours.length === 0) && (
@@ -1113,6 +1167,32 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
+        </div>
+      </div>
+    )}
+    
+    {/* Match to Your Style - simple modal with CTA to tours page to set preferences */}
+    {showPreferencesModal && (
+      <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setShowPreferencesModal(false)}>
+        <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6" onClick={(e) => e.stopPropagation()}>
+          <div className="flex items-center gap-2 mb-4">
+            <Sparkles className="w-5 h-5 text-purple-600" />
+            <h2 className="text-lg font-bold text-gray-900">Match to Your Style</h2>
+          </div>
+          <p className="text-gray-600 text-sm mb-6">
+            Set your travel style preferences on the tours page to see personalized match scores for each tour.
+          </p>
+          <div className="flex gap-3">
+            <Button variant="outline" className="flex-1" onClick={() => setShowPreferencesModal(false)}>
+              Close
+            </Button>
+            <Button asChild className="flex-1">
+              <Link href={`/destinations/${destinationId}/tours`}>
+                Go to Tours
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     )}

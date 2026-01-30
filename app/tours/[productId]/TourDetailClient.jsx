@@ -391,6 +391,13 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   const [loadingProfile, setLoadingProfile] = useState(true);
   const [isGeneratingInsight, setIsGeneratingInsight] = useState(false);
   const [insightError, setInsightError] = useState('');
+  // Match score off by default - user can enable via toggle (saves Supabase reads for crawlers/default users)
+  const [matchScoresEnabled, setMatchScoresEnabled] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    try {
+      return localStorage.getItem('topTours_matchScoresEnabled') === '1';
+    } catch { return false; }
+  });
 
   // Local, lightweight preferences (same structure as tours listing page)
   // IMPORTANT: Don't initialize with defaults - use null so all pages behave the same
@@ -898,8 +905,14 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     fetchUserPreferences();
   }, [supabase]);
 
-  // Calculate tour profile from tags
+  // Calculate tour profile from tags - only when user has enabled "Show scores" (saves CPU/Supabase for crawlers)
   useEffect(() => {
+    if (!matchScoresEnabled) {
+      setTourProfile(null);
+      setMatchScore(null);
+      setLoadingProfile(false);
+      return;
+    }
     const calculateProfile = async () => {
       if (!tour || !tour.tags || tour.tags.length === 0) {
         setTourProfile(null);
@@ -969,7 +982,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     };
 
     calculateProfile();
-  }, [tour, user, userPreferences, localPreferences]); // Added localPreferences so it recalculates when preferences change
+  }, [matchScoresEnabled, tour, user, userPreferences, localPreferences]); // Only run when user enables "Show scores"
 
   // Explicit "Save to profile" handler (same behavior as tours listing page)
   const handleSavePreferencesToProfile = useCallback(async () => {
@@ -2424,13 +2437,14 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               )}
 
 
-              {/* TopTours Insights - Tour Characteristics */}
+              {/* TopTours Insights - only render when user enabled "Show scores" (saves CPU for crawlers) */}
+              {matchScoresEnabled ? (
                 <motion.section
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.18 }}
-                className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg shadow-sm p-6 md:p-8 border border-purple-200"
+                  className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg shadow-sm p-6 md:p-8 border border-purple-200"
                 >
                 <div className="mb-6 space-y-3">
                   <div className="flex items-center justify-between gap-3">
@@ -2671,15 +2685,42 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                         </Button>
                       )}
 
-                      {/* Right: Open preferences modal (same UX as tours listing page) */}
-                      <Button
-                        variant="outline"
-                        className="inline-flex items-center gap-2 border-purple-300 text-purple-700 hover:bg-purple-50 ml-auto"
-                        onClick={() => setShowPreferencesModal(true)}
-                      >
-                        <Sparkles className="w-4 h-4" />
-                        <span className="text-sm font-semibold">Match to Your Style</span>
-                      </Button>
+                      {/* Right: Show score toggle + Match to Your Style (toggle off by default to save cost for crawlers) */}
+                      <div className="flex items-center gap-3 ml-auto flex-wrap">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-medium text-gray-600">Show score</span>
+                          <button
+                            role="switch"
+                            aria-checked={matchScoresEnabled}
+                            onClick={() => {
+                              const next = !matchScoresEnabled;
+                              setMatchScoresEnabled(next);
+                              try {
+                                localStorage.setItem('topTours_matchScoresEnabled', next ? '1' : '0');
+                              } catch {}
+                              if (!next) {
+                                setTourProfile(null);
+                                setMatchScore(null);
+                              }
+                            }}
+                            className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${matchScoresEnabled ? 'bg-purple-600' : 'bg-gray-200'}`}
+                          >
+                            <span
+                              className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition ${matchScoresEnabled ? 'translate-x-5' : 'translate-x-1'}`}
+                              style={{ top: '2px' }}
+                            />
+                          </button>
+                          <span className="text-xs text-gray-500">{matchScoresEnabled ? 'On' : 'Off'}</span>
+                        </div>
+                        <Button
+                          variant="outline"
+                          className="inline-flex items-center gap-2 border-purple-300 text-purple-700 hover:bg-purple-50"
+                          onClick={() => setShowPreferencesModal(true)}
+                        >
+                          <Sparkles className="w-4 h-4" />
+                          <span className="text-sm font-semibold">Match to Your Style</span>
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 ) : (
@@ -2692,6 +2733,60 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   </div>
               )}
               </motion.section>
+              ) : (
+                /* Minimal bar when "Show scores" is off - no insights/CPU for crawlers; user can toggle on */
+                <section className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    {viatorUrl && (
+                      <Button
+                        asChild
+                        size="sm"
+                        className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 shadow-md px-4 py-2"
+                      >
+                        <a href={viatorUrl} target="_blank" rel="sponsored noopener noreferrer">
+                          View Reviews &amp; Availability
+                          <ExternalLink className="w-4 h-4 ml-1 inline-block" />
+                        </a>
+                      </Button>
+                    )}
+                    <div className="flex items-center gap-3 ml-auto flex-wrap">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-medium text-gray-600">Show score</span>
+                        <button
+                          role="switch"
+                          aria-checked={matchScoresEnabled}
+                          onClick={() => {
+                            const next = !matchScoresEnabled;
+                            setMatchScoresEnabled(next);
+                            try {
+                              localStorage.setItem('topTours_matchScoresEnabled', next ? '1' : '0');
+                            } catch {}
+                            if (!next) {
+                              setTourProfile(null);
+                              setMatchScore(null);
+                            }
+                          }}
+                          className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${matchScoresEnabled ? 'bg-purple-600' : 'bg-gray-200'}`}
+                        >
+                          <span
+                            className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition ${matchScoresEnabled ? 'translate-x-5' : 'translate-x-1'}`}
+                            style={{ top: '2px' }}
+                          />
+                        </button>
+                        <span className="text-xs text-gray-500">{matchScoresEnabled ? 'On' : 'Off'}</span>
+                      </div>
+                      <Button
+                        variant="outline"
+                        className="inline-flex items-center gap-2 border-purple-300 text-purple-700 hover:bg-purple-50"
+                        onClick={() => setShowPreferencesModal(true)}
+                      >
+                        <Sparkles className="w-4 h-4" />
+                        <span className="text-sm font-semibold">Match to Your Style</span>
+                      </Button>
+                    </div>
+                  </div>
+                </section>
+              )}
 
 
               {/* What's Included */}

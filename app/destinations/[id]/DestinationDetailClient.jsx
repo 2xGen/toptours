@@ -138,6 +138,13 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const [userPreferences, setUserPreferences] = useState(null);
   const [loadingPreferences, setLoadingPreferences] = useState(true);
   const [showPreferencesModal, setShowPreferencesModal] = useState(false);
+  // Match scores off by default - user can enable via toggle (saves Supabase reads for crawlers/default users)
+  const [matchScoresEnabled, setMatchScoresEnabled] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    try {
+      return localStorage.getItem('topTours_matchScoresEnabled') === '1';
+    } catch { return false; }
+  });
   const [matchScores, setMatchScores] = useState({});
   const [localPreferences, setLocalPreferences] = useState(() => {
     if (typeof window === 'undefined') return getDefaultPreferences();
@@ -626,7 +633,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
     };
     
     calculateScores();
-  }, [safeTrendingTours, safePromotedTours, tours.all, userPreferences, loadingPreferences]);
+  }, [matchScoresEnabled, safeTrendingTours, safePromotedTours, tours.all, userPreferences, loadingPreferences]);
   
   // Reset carousel index when guides change or become empty
   useEffect(() => {
@@ -2085,8 +2092,30 @@ export default function DestinationDetailClient({ destination, promotionScores =
               </div>
             ) : tours.all && tours.all.length > 0 ? (
               <>
-                {/* Match to Your Style Button */}
-                <div className="flex justify-center mb-6">
+                {/* Match to Your Style - Toggle (off by default to save cost for crawlers) + Button */}
+                <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-medium text-gray-600 whitespace-nowrap">Show scores</span>
+                    <button
+                      role="switch"
+                      aria-checked={matchScoresEnabled}
+                      onClick={() => {
+                        const next = !matchScoresEnabled;
+                        setMatchScoresEnabled(next);
+                        try {
+                          localStorage.setItem('topTours_matchScoresEnabled', next ? '1' : '0');
+                        } catch {}
+                        if (!next) setMatchScores({});
+                      }}
+                      className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${matchScoresEnabled ? 'bg-purple-600' : 'bg-gray-200'}`}
+                    >
+                      <span
+                        className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition ${matchScoresEnabled ? 'translate-x-5' : 'translate-x-1'}`}
+                        style={{ top: '2px' }}
+                      />
+                    </button>
+                    <span className="text-xs text-gray-500">{matchScoresEnabled ? 'On' : 'Off'}</span>
+                  </div>
                   <Button
                     onClick={() => setShowPreferencesModal(true)}
                     variant="outline"
