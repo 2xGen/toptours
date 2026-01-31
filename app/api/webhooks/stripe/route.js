@@ -463,9 +463,10 @@ async function handleCheckoutSessionCompleted(session) {
           // Get tour name from tour cache/API (old tour_promotions table removed)
           let tourPromo = null;
           try {
-            // Try to get tour name from cache or API
-            const { getCachedTour } = await import('@/lib/viatorCache');
-            const tour = await getCachedTour(productId);
+            // Try to get tour name from cache or API (only call getCachedTour when cache enabled)
+            const { getCachedTour, useSupabaseCache } = await import('@/lib/viatorCache');
+            let tour = null;
+            if (useSupabaseCache()) tour = await getCachedTour(productId);
             if (tour) {
               tourPromo = {
                 tour_name: tour.title || tour.productTitle,

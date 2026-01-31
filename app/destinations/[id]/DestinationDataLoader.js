@@ -107,7 +107,7 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
   let promotedTours = [];
   if (result.promotedTourData.length > 0) {
     try {
-      const { getCachedTour } = await import('@/lib/viatorCache');
+      const { getCachedTour, useSupabaseCache } = await import('@/lib/viatorCache');
       const apiKey = process.env.VIATOR_API_KEY;
       
       const fetchPromises = result.promotedTourData.map(async (promoted) => {
@@ -115,10 +115,8 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
         if (!productId) return null;
         
         try {
-          // Try to get cached tour first
-          let tour = await getCachedTour(productId);
-          
-          // If not cached, fetch from Viator API
+          let tour = null;
+          if (useSupabaseCache()) tour = await getCachedTour(productId);
           if (!tour && apiKey) {
             const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
             const response = await fetch(url, {

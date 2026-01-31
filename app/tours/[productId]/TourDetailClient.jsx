@@ -3206,6 +3206,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                           <Link
                             key={operatorTour.productId || idx}
                             href={operatorTour.url || `/tours/${operatorTour.productId}`}
+                            prefetch={false}
                             className="block group"
                           >
                             <div className="flex gap-3 p-3 rounded-lg border border-gray-200 hover:border-amber-300 hover:bg-amber-50 transition-all duration-200">

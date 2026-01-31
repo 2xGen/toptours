@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getCachedTour } from '@/lib/viatorCache';
+import { getCachedTour, useSupabaseCache } from '@/lib/viatorCache';
 import { fetchSimilarToursServer } from '../../../../tours/[productId]/fetchSimilarTours';
 
 /**
@@ -16,8 +16,18 @@ export async function GET(request, { params }) {
       return NextResponse.json({ error: 'Missing productId', similarTours: [] }, { status: 400 });
     }
 
-    const tour = await getCachedTour(productId);
+    let tour = null;
+    if (useSupabaseCache()) tour = await getCachedTour(productId);
     if (!tour) {
+      const apiKey = process.env.VIATOR_API_KEY;
+      if (apiKey) {
+        const res = await fetch(`https://api.viator.com/partner/products/${productId}?currency=USD`, {
+          headers: { 'exp-api-key': apiKey, 'Accept': 'application/json;version=2.0', 'Accept-Language': 'en-US' },
+        });
+        if (res.ok) tour = await res.json();
+      }
+    }
+    if (!tour || tour.error) {
       return NextResponse.json({ similarTours: [], error: 'Tour not found' }, { status: 200 });
     }
 

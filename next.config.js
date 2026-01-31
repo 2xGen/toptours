@@ -1005,7 +1005,7 @@ const nextConfig = {
       },
       {
         source: '/how-it-works',
-        destination: '/',
+        destination: '/match-your-style',
         permanent: true,
       },
     ]

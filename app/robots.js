@@ -6,15 +6,18 @@ export default function robots() {
         userAgent: '*',
         allow: '/',
         disallow: [
-          '/api/', 
-          '/test-openai/', 
+          '/api/',
+          '/test-openai/',
           '/ai-test/',
           '/admin-matthijs/',
           '/api/internal/',
           '/api/admin/',
+          '/terms',
+          '/cookie-policy',
+          '/disclosure',
         ],
       },
-      // Optimize for Googlebot specifically
+      // Googlebot: allow legal pages (for index/transparency), same API/admin blocks
       {
         userAgent: 'Googlebot',
         allow: '/',

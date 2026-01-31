@@ -10,10 +10,14 @@ import { createSupabaseServiceRoleClient } from './supabaseClient';
 
 const RECOMMENDATIONS_CACHE_TTL_HOURS = 24; // Cache recommendations for 24 hours (increased from 6h to reduce API calls during Google crawl)
 
+// viator_cache table removed; skip Supabase unless explicitly re-enabled (same as viatorCache.js)
+const useSupabaseCache = () => process.env.VIATOR_USE_SUPABASE_CACHE === 'true';
+
 /**
  * Get cached recommendations from Supabase
  */
 async function getCachedRecommendations(productId) {
+  if (!useSupabaseCache()) return null;
   try {
     const supabase = createSupabaseServiceRoleClient();
     const { data, error } = await supabase
@@ -49,6 +53,7 @@ async function getCachedRecommendations(productId) {
  * Cache recommendations in Supabase
  */
 async function cacheRecommendations(productId, recommendedCodes) {
+  if (!useSupabaseCache()) return;
   try {
     const supabase = createSupabaseServiceRoleClient();
     const expiresAt = new Date();

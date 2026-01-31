@@ -1,18 +1,25 @@
 /**
  * Viator API Caching Layer
- * Caches tour data in Supabase to reduce API calls
+ * Caches tour, similar_tours, and destination data in Supabase to reduce API calls.
+ *
+ * viator_cache table was removed; all Supabase cache reads/writes are OFF by default.
+ * Set VIATOR_USE_SUPABASE_CACHE=true (and recreate the table) to re-enable. See SUPABASE_VIATOR_CACHE_EGRESS.md.
  */
-
 import { createSupabaseServiceRoleClient } from './supabaseClient';
 
 const CACHE_TTL_HOURS = 24; // Cache tour data for 24 hours
 const SIMILAR_TOURS_CACHE_TTL_HOURS = 24; // Cache similar tours for 24 hours (increased from 6h to reduce API calls during Google crawl)
 const DESTINATION_CACHE_TTL_DAYS = 90; // Cache destination data for 90 days (destinations rarely change)
 
+// Off by default: Supabase viator_cache for tours causes high egress; Next.js cache + Viator API used instead.
+// Export so call sites can skip invoking getCachedTour when cache is off (saves compute).
+export const useSupabaseCache = () => process.env.VIATOR_USE_SUPABASE_CACHE === 'true';
+
 /**
  * Get cached tour data from Supabase
  */
 export async function getCachedTour(productId) {
+  if (!useSupabaseCache()) return null;
   try {
     const supabase = createSupabaseServiceRoleClient();
     const { data, error } = await supabase
@@ -48,6 +55,7 @@ export async function getCachedTour(productId) {
  * Cache tour data in Supabase
  */
 export async function cacheTour(productId, tourData) {
+  if (!useSupabaseCache()) return;
   try {
     const supabase = createSupabaseServiceRoleClient();
     
@@ -136,6 +144,7 @@ export async function cacheTour(productId, tourData) {
  * Get cached similar tours
  */
 export async function getCachedSimilarTours(cacheKey) {
+  if (!useSupabaseCache()) return null;
   try {
     const supabase = createSupabaseServiceRoleClient();
     const { data, error } = await supabase
@@ -171,6 +180,7 @@ export async function getCachedSimilarTours(cacheKey) {
  * Cache similar tours results
  */
 export async function cacheSimilarTours(cacheKey, toursData) {
+  if (!useSupabaseCache()) return;
   try {
     const supabase = createSupabaseServiceRoleClient();
     
@@ -265,6 +275,7 @@ export async function getCachedDestination(destinationId) {
  * Cache destination data in Supabase
  */
 export async function cacheDestination(destinationId, destinationData) {
+  if (!useSupabaseCache()) return;
   try {
     const supabase = createSupabaseServiceRoleClient();
     
@@ -352,6 +363,7 @@ async function getCachedDestinationsList() {
  * Cache the entire destinations list
  */
 async function cacheDestinationsList(destinationsList) {
+  if (!useSupabaseCache()) return;
   try {
     const supabase = createSupabaseServiceRoleClient();
     

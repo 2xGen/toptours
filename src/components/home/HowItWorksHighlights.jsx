@@ -91,9 +91,9 @@ const HowItWorksHighlights = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <Link href="/how-it-works">
+          <Link href="/match-your-style">
             <Button className="sunset-gradient text-white font-bold px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all hover:scale-105">
-              Learn More About How It Works
+              Get Tour Recommendations
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>

@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { 
   Anchor, MapPin, Clock, Users, DollarSign, Calendar, 
   Camera, Shirt, Sun, Waves, Heart, Star, ArrowRight,
-  BookOpen, ChevronRight, Home, GlassWater, Music, Sailboat, Ship, PartyPopper, HeartHandshake, X, ExternalLink, Search, UtensilsCrossed, Car, Building2, Sparkles
+  BookOpen, ChevronRight, Home, GlassWater, Music, Sailboat, Ship, PartyPopper, HeartHandshake, X, ExternalLink, Search, UtensilsCrossed, Car, Building2, Sparkles, Loader2
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -38,19 +38,24 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
   const [showStickyButton, setShowStickyButton] = React.useState(true);
   const supabase = createSupabaseBrowserClient();
 
+  // Tours loaded on demand (like similar tours / reviews) - saves Viator cost for crawlers
+  const [clientCategoryTours, setClientCategoryTours] = React.useState(null);
+  const [loadingCategoryTours, setLoadingCategoryTours] = React.useState(false);
+  const effectiveCategoryTours = clientCategoryTours !== null ? clientCategoryTours : categoryTours;
+
   // Hero image: prefer guide/destination; for airport-transfers with no image, use dedicated OG image
   const heroImageUrl = guideData?.heroImage || destinationProp?.imageUrl
     || (categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : null);
   
   // Calculate stats from actual tours for hero display
   const heroStats = React.useMemo(() => {
-    const tourCount = categoryTours?.length || 0;
-    const prices = categoryTours
+    const tourCount = effectiveCategoryTours?.length || 0;
+    const prices = (effectiveCategoryTours || [])
       .map(t => parseFloat(t.pricing?.summary?.fromPrice || t.pricing?.fromPrice || t.price || 0))
       .filter(p => p > 0);
     const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
     return { tourCount, minPrice };
-  }, [categoryTours]);
+  }, [effectiveCategoryTours]);
   
   // User preferences for matching
   const [user, setUser] = React.useState(null);
@@ -134,8 +139,8 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
       setMatchScores({});
       return;
     }
-    if (loadingPreferences || categoryTours.length === 0) {
-      if (categoryTours.length === 0) {
+    if (loadingPreferences || effectiveCategoryTours.length === 0) {
+      if (effectiveCategoryTours.length === 0) {
         setMatchScores({});
       }
       return;
@@ -163,7 +168,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
       const scores = {};
       
       // Calculate match scores for each tour
-      for (const tour of categoryTours) {
+      for (const tour of effectiveCategoryTours) {
         const productId = tour.productId || tour.productCode;
         if (!productId) continue;
         
@@ -187,7 +192,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
     };
     
     calculateMatches();
-  }, [matchScoresEnabled, categoryTours, user, userPreferences, localPreferences, loadingPreferences]);
+  }, [matchScoresEnabled, effectiveCategoryTours, user, userPreferences, localPreferences, loadingPreferences]);
   
   // Use destination from props if provided, otherwise try to find in destinationsData.js
   // The server component should ALWAYS pass destination, so this is just a safety fallback
@@ -233,6 +238,34 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
+
+  // Load category tours on demand (like similar tours / reviews) - saves Viator cost for crawlers
+  const loadCategoryTours = React.useCallback(async () => {
+    if (!destination) return;
+    setLoadingCategoryTours(true);
+    try {
+      const destinationName = destination.fullName || destination.name;
+      const categoryName = guideData?.categoryName || guideData?.title || '';
+      const searchTerm = [categoryName, destinationName].filter(Boolean).join(' ').trim() || destinationName;
+      const res = await fetch('/api/internal/viator-search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ searchTerm, page: 1 }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || `HTTP ${res.status}`);
+      }
+      const data = await res.json();
+      const results = data.products?.results || data.tours || [];
+      setClientCategoryTours(results.slice(0, 12));
+    } catch (e) {
+      console.error('Error loading category tours:', e);
+      setClientCategoryTours([]);
+    } finally {
+      setLoadingCategoryTours(false);
+    }
+  }, [destination, guideData?.categoryName, guideData?.title]);
 
   // Icon mapping
   const iconMap = {
@@ -454,7 +487,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           </motion.div>
 
           {/* Match to Your Style - Toggle (off by default to save cost for crawlers) + Button - when we have tours */}
-          {categoryTours && categoryTours.length > 0 && (
+          {effectiveCategoryTours && effectiveCategoryTours.length > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -496,40 +529,97 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
             </motion.div>
           )}
 
-          {/* CTA to destination tours (no server-side Viator on guide pages - saves cost) */}
-          {(!categoryTours || categoryTours.length === 0) && (
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
+          {/* Load tours on demand (like similar tours / reviews) - saves Viator cost for crawlers */}
+          {effectiveCategoryTours.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
               className="mb-12"
             >
-              <Card className="overflow-hidden border-none shadow-xl bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 text-white">
-                <CardContent className="p-8 sm:p-10 text-center relative">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" aria-hidden />
-                  <div className="relative">
+              {loadingCategoryTours ? (
+                <div className="flex flex-col items-center justify-center py-12 rounded-xl border-2 border-dashed border-blue-200 bg-blue-50/50">
+                  <Loader2 className="w-10 h-10 text-blue-600 animate-spin mb-4" />
+                  <p className="text-gray-700 font-medium">Loading {guideData?.categoryName ? guideData.categoryName.toLowerCase() : 'tours'}...</p>
+                </div>
+              ) : (
+                <Card className="overflow-hidden border-none shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200">
+                  <CardContent className="p-8 sm:p-10 text-center">
                     {guideData.categoryName && (
-                      <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-sm font-medium text-white/95 mb-5">
+                      <span className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-4">
                         {guideData.categoryName}
                       </span>
                     )}
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold mb-4 tracking-tight">
-                      Browse {guideData.categoryName ? `${guideData.categoryName.toLowerCase()} and all tours` : 'all tours'} in {destination.fullName || destination.name}
+                    <h2 className="text-xl sm:text-2xl font-poppins font-bold text-gray-900 mb-3">
+                      {guideData.categoryName
+                        ? `${guideData.categoryName} in ${destination.fullName || destination.name}`
+                        : `Tours in ${destination.fullName || destination.name}`}
                     </h2>
-                    <p className="text-blue-100/95 text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-                      See tours and activities for {destination.fullName || destination.name} with instant booking and best price guarantee.
+                    <p className="text-gray-600 text-sm max-w-md mx-auto mb-6">
+                      Click the button below to load <strong>{guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'}</strong>.
                     </p>
-                    <Link href={`/destinations/${destinationId}/tours`}>
-                      <Button size="lg" className="bg-white text-blue-700 hover:bg-blue-50 font-semibold text-base sm:text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                        View all tours in {destination.fullName || destination.name}
-                        <ArrowRight className="ml-2 w-5 h-5" />
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
+                    <Button
+                      size="lg"
+                      onClick={loadCategoryTours}
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6 rounded-xl shadow-lg"
+                    >
+                      Load {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'}
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                    <p className="mt-4 text-xs text-gray-500">
+                      Or <Link href={`/destinations/${destinationId}/tours`} className="text-blue-600 hover:underline">view all tours</Link> in {destination.fullName || destination.name}
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
             </motion.div>
+          )}
+
+          {/* Tours grid - shown after user clicks "Load tours" (max 12, same style as before) */}
+          {effectiveCategoryTours.length > 0 && (
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="mb-12"
+            >
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                {guideData?.categoryName ? `${guideData.categoryName} in ${destination.fullName || destination.name}` : `Tours in ${destination.fullName || destination.name}`}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {effectiveCategoryTours.slice(0, 12).map((tour, index) => {
+                  const productId = tour.productId || tour.productCode;
+                  if (!productId) return null;
+                  return (
+                    <TourCard
+                      key={`${productId}-${index}`}
+                      tour={tour}
+                      destination={destination}
+                      promotionScores={promotionScores}
+                      effectiveDestinationId={destination?.destinationId || null}
+                      premiumOperatorTourIds={[]}
+                      matchScore={matchScores[productId]}
+                      user={user}
+                      userPreferences={userPreferences}
+                      onOpenPreferences={() => setShowPreferencesModal(true)}
+                      isFeatured={false}
+                      isPromoted={false}
+                      priority={index < 6}
+                    />
+                  );
+                })}
+              </div>
+              <div className="mt-6 text-center">
+                <Button asChild variant="outline" size="lg" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                  <Link href={`/destinations/${destinationId}/tours`}>
+                    View all tours in {destination.fullName || destination.name}
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
+            </motion.section>
           )}
         </div>
       </section>

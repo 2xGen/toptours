@@ -1,6 +1,4 @@
 import DestinationsPageClient from './DestinationsPageClient';
-import viatorDestinationsData from '@/data/viatorDestinations.json';
-import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 
 // Revalidate every 24 hours - listing page with mostly static data
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
@@ -47,8 +45,11 @@ export async function generateMetadata() {
   };
 }
 
-export default function DestinationsPage() {
-  // Use static imports - Next.js will tree-shake and optimize these
+export default async function DestinationsPage() {
+  const [viatorDestinationsData, viatorDestinationsClassifiedData] = await Promise.all([
+    import('@/data/viatorDestinations.json').then(m => m.default),
+    import('@/data/viatorDestinationsClassified.json').then(m => m.default),
+  ]);
   const viatorDestinations = Array.isArray(viatorDestinationsData) ? viatorDestinationsData : [];
   const viatorDestinationsClassified = Array.isArray(viatorDestinationsClassifiedData) ? viatorDestinationsClassifiedData : [];
   const totalAvailableDestinations = viatorDestinationsClassified.length;

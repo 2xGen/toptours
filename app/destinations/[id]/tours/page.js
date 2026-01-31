@@ -11,7 +11,7 @@ import { getDestinationNameById } from '@/lib/viatorCache';
 import { getViatorDestinationById, getViatorDestinationBySlug } from '@/lib/supabaseCache';
 import { redirect } from 'next/navigation';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
-import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
+// Dynamic import to keep large JSON out of initial server bundle
 import { hasDestinationPage, getDestinationFullContent } from '@/data/destinationFullContent';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
@@ -64,6 +64,7 @@ async function getGuideCountForMetadata(destinationId) {
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
+  const viatorDestinationsClassifiedData = (await import('@/data/viatorDestinationsClassified.json')).default;
   let destination = getDestinationById(id);
   let seoContent = null;
   
@@ -460,6 +461,7 @@ function generateSlug(name) {
  */
 export default async function ToursListingPage({ params }) {
   const { id } = await params;
+  const viatorDestinationsClassifiedData = (await import('@/data/viatorDestinationsClassified.json')).default;
   let destination = getDestinationById(id);
   let isViatorDestination = false;
   let viatorDestinationId = null;
@@ -689,12 +691,14 @@ export default async function ToursListingPage({ params }) {
     const destinationName = destination.fullName || destination.name || destination.destinationName || destination.id;
     const viatorDestinationId = destination.destinationId || destination.viatorDestinationId;
     
-    // Always use request host so internal fetch hits same origin (fixes 0 tours when env baseUrl wrong or cached empty).
-    const headersList = await headers();
-    const host = headersList.get('host') || 'localhost:3000';
-    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-    const baseUrl = `${protocol}://${host}`;
-    
+    // Prefer env baseUrl so we avoid headers() and allow static/ISR; fallback to request host for same-origin fetch.
+    let baseUrl = process.env.NEXT_PUBLIC_BASE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null);
+    if (!baseUrl) {
+      const headersList = await headers();
+      const host = headersList.get('host') || 'localhost:3000';
+      baseUrl = `${process.env.NODE_ENV === 'production' ? 'https' : 'http'}://${host}`;
+    }
+
     // Use /products/search endpoint (standard approach) when we have destination ID and no search term
     // This is 100% accurate for all 3300+ destinations
     let requestBody = {
@@ -703,7 +707,7 @@ export default async function ToursListingPage({ params }) {
       viatorDestinationId: viatorDestinationId ? String(viatorDestinationId) : null,
       includeDestination: !!viatorDestinationId // Use /products/search when destination ID is available
     };
-    
+
     // EXACT same fetch call as DestinationDetailClient.jsx line 423-429
     // Cache allowed - our API route has 1h cache headers, and page has 24h cache
     let response = await fetch(`${baseUrl}/api/internal/viator-search`, {

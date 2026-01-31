@@ -18,7 +18,7 @@ export default function TourPromotionCard({ productId, initialScore = null, comp
   const [score, setScore] = useState(initialScore);
   const [pointsToSpend, setPointsToSpend] = useState('');
   const [isSpending, setIsSpending] = useState(false);
-  const [loadingScore, setLoadingScore] = useState(!initialScore);
+  const [loadingScore, setLoadingScore] = useState(false); // Promotion scores removed: no fetch
   const [showInfo, setShowInfo] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showPromotionExplainerModal, setShowPromotionExplainerModal] = useState(false);
@@ -28,14 +28,8 @@ export default function TourPromotionCard({ productId, initialScore = null, comp
   const infoRef = useRef(null);
   const modalRef = useRef(null);
 
-  // Load score if not provided (only if initialScore is not set)
-  // Always load if in compact mode, or if not compact and no initialScore provided
-  useEffect(() => {
-    if (!initialScore && productId) {
-      // Fetch score if not provided (works for both compact and non-compact modes)
-      loadScore();
-    }
-  }, [productId, initialScore]);
+  // Promotion scores removed: no fetch (saves API/DB calls and compute)
+  // useEffect that called loadScore() removed
 
   // Close info on outside click
   useEffect(() => {
@@ -61,20 +55,10 @@ export default function TourPromotionCard({ productId, initialScore = null, comp
     }
   }, [showModal, compact, accountLoaded, accountLoading, refreshAccount]);
 
+  // Promotion scores removed: loadScore no longer called (saves API/DB calls)
   const loadScore = async () => {
-    try {
-      setLoadingScore(true);
-      // Use fresh=true to bypass CDN cache for logged-in users
-      const response = await fetch(`/api/internal/promotion/tour-score?productId=${productId}&fresh=true`);
-      if (response.ok) {
-        const data = await response.json();
-        setScore(data);
-      }
-    } catch (error) {
-      console.error('Error loading tour score:', error);
-    } finally {
-      setLoadingScore(false);
-    }
+    setScore({ total_score: 0, monthly_score: 0, weekly_score: 0, past_28_days_score: 0 });
+    setLoadingScore(false);
   };
 
   const triggerConfetti = () => {

@@ -529,16 +529,14 @@ export default function MatchYourStyleClient() {
             
             // Fetch full tour data for promoted tours
             if (promotedToursList.length > 0) {
-              const { getCachedTour } = await import('@/lib/viatorCache');
+              const { getCachedTour, useSupabaseCache } = await import('@/lib/viatorCache');
               const fetchPromises = promotedToursList.map(async (promoted) => {
                 const productId = promoted.product_id || promoted.productId || promoted.productCode;
                 if (!productId) return null;
                 
                 try {
-                  // Try to get cached tour first
-                  let tour = await getCachedTour(productId);
-                  
-                  // If not cached, fetch from internal API route (server-side)
+                  let tour = null;
+                  if (useSupabaseCache()) tour = await getCachedTour(productId);
                   if (!tour) {
                     try {
                       const response = await fetch(`/api/internal/tour/${productId}`);

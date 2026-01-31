@@ -170,7 +170,7 @@ export default async function RestaurantsIndexPage({ params }) {
   let promotedTours = [];
   try {
     if (promotedTourData.length > 0 && destinationIdForScores) {
-      const { getCachedTour } = await import('@/lib/viatorCache');
+      const { getCachedTour, useSupabaseCache } = await import('@/lib/viatorCache');
       const apiKey = process.env.VIATOR_API_KEY;
       
       const fetchPromises = promotedTourData.map(async (promoted) => {
@@ -178,8 +178,8 @@ export default async function RestaurantsIndexPage({ params }) {
         if (!productId) return null;
         
         try {
-          let tour = await getCachedTour(productId);
-          
+          let tour = null;
+          if (useSupabaseCache()) tour = await getCachedTour(productId);
           if (!tour && apiKey) {
             const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
             const response = await fetch(url, {

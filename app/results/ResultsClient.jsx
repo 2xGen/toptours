@@ -849,7 +849,7 @@ const Results = () => {
                   >
                     <Card className="h-full overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
                       {/* Tour Image - Clickable link to internal page */}
-                      <Link href={tourUrl}>
+                      <Link href={tourUrl} prefetch={false}>
                         <div className="relative h-32 bg-gray-200 flex-shrink-0 cursor-pointer">
                           {tour.images?.[0]?.variants?.[3]?.url ? (
                             <img
@@ -867,7 +867,7 @@ const Results = () => {
 
                       {/* Tour Content */}
                       <div className="p-3 flex-1 flex flex-col">
-                        <Link href={tourUrl}>
+                        <Link href={tourUrl} prefetch={false}>
                           <h3 className="font-semibold text-sm text-gray-800 mb-2 line-clamp-2 flex-1 hover:text-purple-600 transition-colors cursor-pointer">
                             {tour.title}
                           </h3>
@@ -940,7 +940,7 @@ const Results = () => {
                           size="sm"
                           className="w-full sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 mt-auto text-xs"
                         >
-                          <Link href={tourUrl}>
+                          <Link href={tourUrl} prefetch={false}>
                             View Details
                             <ArrowRight className="w-3 h-3 ml-1" />
                           </Link>

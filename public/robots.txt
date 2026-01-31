@@ -3,8 +3,19 @@ Allow: /
 Disallow: /admin-matthijs
 Disallow: /api/internal/
 Disallow: /api/admin/
+Disallow: /terms
+Disallow: /cookie-policy
+Disallow: /disclosure
+
+# Googlebot may still crawl legal pages (handled in app/robots.js)
+User-agent: Googlebot
+Allow: /
+Disallow: /admin-matthijs
+Disallow: /api/internal/
+Disallow: /api/admin/
 
 # Allow tour-related API routes for client-side functionality
+User-agent: *
 Allow: /api/tours/
 
 Sitemap: https://toptours.ai/sitemap.xml

@@ -10,7 +10,7 @@ export default function NotFound() {
   const popularPages = [
     { name: 'Home', path: '/', icon: Home, description: 'Back to homepage' },
     { name: 'Destinations', path: '/destinations', icon: MapPin, description: 'Explore destinations' },
-    { name: 'How It Works', path: '/how-it-works', icon: Sparkles, description: 'Learn how it works' },
+    { name: 'Get Tour Recommendations', path: '/match-your-style', icon: Sparkles, description: 'Personalized tour recommendations' },
     { name: 'Travel Guides', path: '/travel-guides', icon: BookOpen, description: 'Read travel guides' },
     { name: 'About', path: '/about', icon: Info, description: 'About TopTours.ai™' },
     { name: 'Leaderboard', path: '/toptours', icon: Trophy, description: 'View top promoters' },

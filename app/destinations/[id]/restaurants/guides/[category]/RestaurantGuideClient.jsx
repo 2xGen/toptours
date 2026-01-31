@@ -660,7 +660,7 @@ export default function RestaurantGuideClient({
                         viewport={{ once: true }}
                       >
                         <Card className="bg-white border-0 shadow-lg h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                          <Link href={tourUrl}>
+                          <Link href={tourUrl} prefetch={false}>
                             <div className="relative h-40 bg-gray-200 flex-shrink-0 cursor-pointer">
                               {tour.image ? (
                                 <img
@@ -677,7 +677,7 @@ export default function RestaurantGuideClient({
                           </Link>
 
                           <CardContent className="p-4">
-                            <Link href={tourUrl}>
+                            <Link href={tourUrl} prefetch={false}>
                               <h4 className="font-semibold text-base text-gray-800 mb-2 line-clamp-2 hover:text-purple-600 transition-colors cursor-pointer">
                                 {tour.title}
                               </h4>
@@ -704,7 +704,7 @@ export default function RestaurantGuideClient({
                               size="sm"
                               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs"
                             >
-                              <Link href={tourUrl}>
+                              <Link href={tourUrl} prefetch={false}>
                                 View Tour Details
                                 <ArrowRight className="w-3 h-3 ml-1" />
                               </Link>

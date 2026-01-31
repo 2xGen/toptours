@@ -147,7 +147,7 @@ const NavigationNext = () => {
                   : 'sunset-gradient text-white hover:opacity-90 hover:shadow-md'
               }`}
             >
-              Match Your Style
+              Get Tour Recommendations
             </Link>
             <div className="ml-2 flex items-center gap-2">
               {!authLoading && user ? (
@@ -215,7 +215,7 @@ const NavigationNext = () => {
               }`}
               onClick={() => setIsOpen(false)}
             >
-              Match Your Style
+              Get Tour Recommendations
             </Link>
             {/* Auth Section */}
             <div className="mt-4 pt-4 border-t border-white/20">

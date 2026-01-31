@@ -4,7 +4,6 @@
  */
 
 import { createSupabaseServiceRoleClient, createSupabaseBrowserClient } from './supabaseClient';
-import { getCachedTour } from '@/lib/viatorCache';
 
 // Subscription Tiers (Option B Pricing)
 const TIER_POINTS = {
@@ -271,8 +270,9 @@ export async function spendPointsOnTour(userId, productId, pointsToSpend, scoreT
           await updateTourMetadata(productId, tourData);
           console.log(`✅ Metadata saved from page data for ${productId}`);
         } else {
-          // Priority 2: Try cache first (no API call if cached)
-          const cached = await getCachedTour(productId);
+          // Priority 2: Try cache first only when Supabase cache is enabled (no call when off)
+          const { useSupabaseCache, getCachedTour: getCached } = await import('./viatorCache');
+          const cached = useSupabaseCache() ? await getCached(productId) : null;
           if (cached) {
             await updateTourMetadata(productId, cached);
             console.log(`✅ Metadata saved from cache for ${productId}`);

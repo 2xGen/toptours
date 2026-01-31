@@ -26,9 +26,8 @@ export async function GET(request, { params }) {
     
     console.log('Fetching tours for destination:', id);
 
-    // Skip caching for now until SQL script is run
-    // TODO: Enable caching after running scripts/supabase-add-destination-tours-cache-support.sql
-    const ENABLE_CACHING = false; // Set to true after running SQL script
+    // viator_cache table was removed; do not use Supabase for destination tours cache
+    const ENABLE_CACHING = false;
     
     let cachedData = null;
     if (ENABLE_CACHING) {

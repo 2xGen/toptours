@@ -1,6 +1,5 @@
-import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 import { NextResponse } from 'next/server';
-import { getCachedTour, cacheTour } from '@/lib/viatorCache';
+import { getCachedTour, cacheTour, useSupabaseCache } from '@/lib/viatorCache';
 
 /**
  * GET /api/internal/tour/[productId]
@@ -15,9 +14,8 @@ export async function GET(request, { params }) {
       return NextResponse.json({ error: 'Missing productId' }, { status: 400 });
     }
 
-    // Try to get cached tour data first
-    let tour = await getCachedTour(productId);
-    
+    let tour = null;
+    if (useSupabaseCache()) tour = await getCachedTour(productId);
     if (!tour) {
       // Cache miss - fetch from Viator API
       const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';

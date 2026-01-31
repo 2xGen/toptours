@@ -161,7 +161,7 @@ export default function RestaurantsHubClient({
                           )}
                           {' • '}
                           <span className="font-semibold text-gray-900">
-                            {destinations.reduce((sum, dest) => sum + (dest.restaurantCount || 0), 0).toLocaleString()} restaurants
+                            {destinations.reduce((sum, dest) => sum + (dest.restaurantCount || 0), 0).toLocaleString('en-US')} restaurants
                           </span>
                         </>
                       ) : (
@@ -175,7 +175,7 @@ export default function RestaurantsHubClient({
                           )}
                           {' • '}
                           <span className="font-semibold text-gray-900">
-                            {totalRestaurantsInCategory.toLocaleString()} restaurants
+                            {totalRestaurantsInCategory.toLocaleString('en-US')} restaurants
                           </span>
                         </>
                       )}

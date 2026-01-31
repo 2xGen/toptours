@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 import { extractProductIdFromViatorUrl, extractProductIdFromTopToursUrl } from '@/utils/tourOperatorHelpers';
-import { getCachedTour } from '@/lib/viatorCache';
+import { getCachedTour, useSupabaseCache } from '@/lib/viatorCache';
 import { getTourUrl } from '@/utils/tourHelpers';
 
 /**
@@ -65,8 +65,8 @@ export async function POST(request) {
     }
     
     // Fetch tour data to verify it exists and get operator name
-    let tourData = await getCachedTour(productId);
-    
+    let tourData = null;
+    if (useSupabaseCache()) tourData = await getCachedTour(productId);
     if (!tourData) {
       // Try fetching from Viator API
       const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getCachedTour } from '@/lib/viatorCache';
+import { getCachedTour, useSupabaseCache } from '@/lib/viatorCache';
 
 export async function GET(request, { params }) {
   try {
@@ -10,9 +10,8 @@ export async function GET(request, { params }) {
       return NextResponse.json({ error: 'Product ID required' }, { status: 400 });
     }
 
-    // Try to get cached tour data first
-    let tour = await getCachedTour(productId);
-    
+    let tour = null;
+    if (useSupabaseCache()) tour = await getCachedTour(productId);
     if (!tour) {
       // Cache miss - fetch from Viator API
       const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';

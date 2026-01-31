@@ -1209,7 +1209,7 @@ export default function ProfilePage() {
                       const tourUrl = `/tours/${productId}/${slugTitle}`;
                       return (
                         <Card key={productId} className="bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300">
-                          <Link href={tourUrl}>
+                          <Link href={tourUrl} prefetch={false}>
                             <div className="relative h-48 overflow-hidden">
                               {image && (
                                 <img
@@ -1267,7 +1267,7 @@ export default function ProfilePage() {
 
                           <CardContent className="p-4 flex flex-col flex-grow">
                             <div className="flex items-start justify-between gap-2 mb-2">
-                              <Link href={tourUrl} className="flex-1">
+                              <Link href={tourUrl} prefetch={false} className="flex-1">
                                 <h3 className="font-semibold text-lg text-gray-800 line-clamp-2 hover:text-purple-600 transition-colors">
                                   {title}
                                 </h3>
@@ -1339,7 +1339,7 @@ export default function ProfilePage() {
                               asChild
                               className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
                             >
-                              <Link href={tourUrl}>
+                              <Link href={tourUrl} prefetch={false}>
                                 View Details
                                 <ArrowRight className="w-4 h-4 ml-2" />
                               </Link>

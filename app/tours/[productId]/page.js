@@ -6,7 +6,7 @@ import TourDetailClient from './TourDetailClient';
 import { loadTourData, loadDestinationData } from './TourDataLoader';
 import { getTourEnrichmentCached, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
 import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
-import { getCachedTour, cacheTour, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName } from '@/lib/viatorCache';
+import { getCachedTour, cacheTour, useSupabaseCache, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName } from '@/lib/viatorCache';
 import { getRestaurantCountsByDestination, getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
 import { getRestaurantsForDestination as getRestaurantsForDestinationFromStatic } from '../../destinations/[id]/restaurants/restaurantsData';
 import { destinations } from '@/data/destinationsData';
@@ -27,8 +27,8 @@ export const revalidate = 604800; // 7 days
 // Cache tour data fetching at Next.js level (24 hours - matches page cache)
 const getCachedTourData = unstable_cache(
   async (productId) => {
-    let tour = await getCachedTour(productId);
-    
+    let tour = null;
+    if (useSupabaseCache()) tour = await getCachedTour(productId);
     if (!tour) {
       const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
       const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;

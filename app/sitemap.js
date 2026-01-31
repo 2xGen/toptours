@@ -4,8 +4,6 @@ import { getRestaurantCountsByDestination } from '../src/lib/restaurants.js';
 import { createSupabaseServiceRoleClient } from '../src/lib/supabaseClient.js';
 import { hasDestinationPage } from '../src/data/destinationFullContent.js';
 import { getAllBabyEquipmentRentalsDestinations } from '../src/lib/babyEquipmentRentals.js';
-import viatorDestinationsClassifiedData from '../src/data/viatorDestinationsClassified.json';
-
 // Helper to generate slug
 function generateSlug(name) {
   return name
@@ -18,6 +16,7 @@ function generateSlug(name) {
 }
 
 export default async function sitemap() {
+  const viatorDestinationsClassifiedData = (await import('../src/data/viatorDestinationsClassified.json')).default;
   const baseUrl = 'https://toptours.ai';
   // OPTIMIZED: Use actual date for better SEO - search engines prefer real lastModified dates
   const currentDate = new Date().toISOString();

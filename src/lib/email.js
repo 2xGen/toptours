@@ -717,7 +717,7 @@ export async function sendWelcomeEmail({ to, displayName }) {
               
               <div style="text-align: center; margin: 30px 0;">
                 <a href="https://toptours.ai/destinations" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 5px;">Explore Destinations</a>
-                <a href="https://toptours.ai/how-it-works" style="display: inline-block; background: white; color: #667eea; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: 600; border: 2px solid #667eea; margin: 5px;">How It Works</a>
+                <a href="https://toptours.ai/match-your-style" style="display: inline-block; background: white; color: #667eea; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: 600; border: 2px solid #667eea; margin: 5px;">How It Works</a>
               </div>
               
 <p style="font-size: 14px; color: #666; margin-top: 30px; border-top: 1px solid #e5e7eb; padding-top: 20px;">

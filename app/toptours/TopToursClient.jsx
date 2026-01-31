@@ -192,8 +192,8 @@ export default function TopToursClient({ initialTours = [], initialRestaurants =
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="border-2 border-white bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 font-bold px-8 py-6 text-lg">
-                  <Link href="/how-it-works">
-                    How It Works
+                  <Link href="/match-your-style">
+                    Get Tour Recommendations
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
                 </Button>
@@ -323,7 +323,7 @@ export default function TopToursClient({ initialTours = [], initialRestaurants =
                                 </div>
                                 
                                 {/* View Tour Button - Full width on mobile, absolute on desktop */}
-                                <Link href={tourUrl} className="block mt-3 sm:mt-0 sm:absolute sm:top-0 sm:right-0">
+                                <Link href={tourUrl} prefetch={false} className="block mt-3 sm:mt-0 sm:absolute sm:top-0 sm:right-0">
                                   <Button variant="outline" size="sm" className="w-full sm:w-auto">
                                     View Tour
                                     <ArrowRight className="w-4 h-4 ml-1" />
@@ -846,7 +846,7 @@ export default function TopToursClient({ initialTours = [], initialRestaurants =
                               asChild
                               className="flex-1 sunset-gradient text-white hover:scale-105 transition-transform duration-200"
                             >
-                              <Link href={tourUrl}>
+                              <Link href={tourUrl} prefetch={false}>
                                 View Tour
                                 <ArrowRight className="w-4 h-4 ml-2" />
                               </Link>

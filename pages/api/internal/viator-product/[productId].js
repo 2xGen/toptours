@@ -1,4 +1,4 @@
-import { getCachedTour, cacheTour } from '@/lib/viatorCache';
+import { getCachedTour, cacheTour, useSupabaseCache } from '@/lib/viatorCache';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -16,9 +16,8 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Product ID is required' });
     }
 
-    // Try to get cached tour data first
-    let data = await getCachedTour(productId);
-    
+    let data = null;
+    if (useSupabaseCache()) data = await getCachedTour(productId);
     if (!data) {
       // Cache miss - fetch from Viator API
       const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
