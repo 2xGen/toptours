@@ -55,7 +55,7 @@ import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { resolveUserPreferences } from '@/lib/preferenceResolution';
 
 // Sticky Price Bar Component - Smart: Shows match score if available, otherwise shows rating/reviews
-function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, travelers: externalTravelers = undefined, setTravelers: externalSetTravelers = undefined }) {
+function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, matchScoresEnabled = false, travelers: externalTravelers = undefined, setTravelers: externalSetTravelers = undefined }) {
   const pricingInfo = tour?.pricingInfo;
   const ageBands = pricingInfo?.ageBands || [];
   const pricingType = pricingInfo?.type || 'PER_PERSON';
@@ -175,8 +175,8 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, travelers: exter
               </div>
             )}
             
-            {/* AI Match Score (show if available) */}
-            {hasMatchScore && (
+            {/* AI Match Score (only when user has "Show score" enabled) */}
+            {matchScoresEnabled && hasMatchScore && (
               <div className="flex items-center gap-1.5 px-2 py-1 bg-purple-50 border border-purple-200 rounded-lg">
                 <span className="text-xs font-semibold text-purple-700">
                   {Math.round(matchPercentage)}% Match
@@ -905,14 +905,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     fetchUserPreferences();
   }, [supabase]);
 
-  // Calculate tour profile from tags - only when user has enabled "Show scores" (saves CPU/Supabase for crawlers)
+  // Calculate tour profile from tags (for TopTours Insights + characteristics); match % only shown when "Show score" is on
   useEffect(() => {
-    if (!matchScoresEnabled) {
-      setTourProfile(null);
-      setMatchScore(null);
-      setLoadingProfile(false);
-      return;
-    }
     const calculateProfile = async () => {
       if (!tour || !tour.tags || tour.tags.length === 0) {
         setTourProfile(null);
@@ -982,7 +976,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     };
 
     calculateProfile();
-  }, [matchScoresEnabled, tour, user, userPreferences, localPreferences]); // Only run when user enables "Show scores"
+  }, [tour, user, userPreferences, localPreferences]);
 
   // Explicit "Save to profile" handler (same behavior as tours listing page)
   const handleSavePreferencesToProfile = useCallback(async () => {
@@ -2437,9 +2431,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               )}
 
 
-              {/* TopTours Insights - only render when user enabled "Show scores" (saves CPU for crawlers) */}
-              {matchScoresEnabled ? (
-                <motion.section
+              {/* TopTours Insights - always show AI content and characteristics; only the match % badge is hidden when "Show score" is off */}
+              <motion.section
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -2460,7 +2453,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       </h2>
                     </div>
                     
-                    {matchScore && typeof matchScore.score === 'number' && (
+                    {matchScoresEnabled && matchScore && typeof matchScore.score === 'number' && (
                       <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-purple-200 shadow-sm">
                         <Sparkles
                           className={`w-4 h-4 ${
@@ -2698,10 +2691,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                               try {
                                 localStorage.setItem('topTours_matchScoresEnabled', next ? '1' : '0');
                               } catch {}
-                              if (!next) {
-                                setTourProfile(null);
-                                setMatchScore(null);
-                              }
                             }}
                             className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${matchScoresEnabled ? 'bg-purple-600' : 'bg-gray-200'}`}
                           >
@@ -2733,60 +2722,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   </div>
               )}
               </motion.section>
-              ) : (
-                /* Minimal bar when "Show scores" is off - no insights/CPU for crawlers; user can toggle on */
-                <section className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    {viatorUrl && (
-                      <Button
-                        asChild
-                        size="sm"
-                        className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 shadow-md px-4 py-2"
-                      >
-                        <a href={viatorUrl} target="_blank" rel="sponsored noopener noreferrer">
-                          View Reviews &amp; Availability
-                          <ExternalLink className="w-4 h-4 ml-1 inline-block" />
-                        </a>
-                      </Button>
-                    )}
-                    <div className="flex items-center gap-3 ml-auto flex-wrap">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-medium text-gray-600">Show score</span>
-                        <button
-                          role="switch"
-                          aria-checked={matchScoresEnabled}
-                          onClick={() => {
-                            const next = !matchScoresEnabled;
-                            setMatchScoresEnabled(next);
-                            try {
-                              localStorage.setItem('topTours_matchScoresEnabled', next ? '1' : '0');
-                            } catch {}
-                            if (!next) {
-                              setTourProfile(null);
-                              setMatchScore(null);
-                            }
-                          }}
-                          className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${matchScoresEnabled ? 'bg-purple-600' : 'bg-gray-200'}`}
-                        >
-                          <span
-                            className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition ${matchScoresEnabled ? 'translate-x-5' : 'translate-x-1'}`}
-                            style={{ top: '2px' }}
-                          />
-                        </button>
-                        <span className="text-xs text-gray-500">{matchScoresEnabled ? 'On' : 'Off'}</span>
-                      </div>
-                      <Button
-                        variant="outline"
-                        className="inline-flex items-center gap-2 border-purple-300 text-purple-700 hover:bg-purple-50"
-                        onClick={() => setShowPreferencesModal(true)}
-                      >
-                        <Sparkles className="w-4 h-4" />
-                        <span className="text-sm font-semibold">Match to Your Style</span>
-                      </Button>
-                    </div>
-                  </div>
-                </section>
-              )}
 
 
               {/* What's Included */}
@@ -3697,6 +3632,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
           pricing={pricing} 
           viatorUrl={viatorUrl} 
           matchScore={matchScore}
+          matchScoresEnabled={matchScoresEnabled}
           travelers={sharedTravelers}
           setTravelers={setSharedTravelers}
         />
