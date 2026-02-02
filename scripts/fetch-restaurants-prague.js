@@ -22,12 +22,16 @@ dotenv.config({ path: resolve(root, '.env.local') });
 dotenv.config({ path: resolve(root, '.env') });
 
 const DESTINATION_ID = 'prague';
-const MAX_RESTAURANTS = 150;
+const MAX_RESTAURANTS = 45; // 20 existing + 25 new
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
+
+// Google Places API is disabled — no API calls are made.
+console.error('Google Places API is disabled. This script does not make any Google Places API calls.');
+process.exit(1);
 
 async function resolveSlugConflict(destinationId, formattedData) {
   const { data: existing } = await supabase

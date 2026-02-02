@@ -26,6 +26,10 @@ if (!GOOGLE_PLACES_API_KEY) {
   process.exit(1);
 }
 
+// Google Places API is disabled — no API calls are made.
+console.error('Google Places API is disabled. This script does not make any Google Places API calls.');
+process.exit(1);
+
 // Google Places API functions
 async function searchRestaurant(query, location = null) {
   const url = 'https://places.googleapis.com/v1/places:searchText';

@@ -1,27 +1,24 @@
 /**
  * Google Places API Integration
- * Uses LEGACY Places API (maps.googleapis.com) so usage counts under Starter plan
- * "Place Details Essentials" and "Text Search Essentials" (50,000 calls/month).
- * Do not use Places API (New) (places.googleapis.com/v1) — that is pay-as-you-go.
+ * DISABLED: No Google Places API calls are made. All network functions throw.
+ * getPhotoUrl returns null so no Google photo URLs are generated.
+ * Re-enable only if you explicitly want to use Google Places (and accept billing).
  */
 
-const LEGACY_PLACES_BASE = 'https://maps.googleapis.com/maps/api/place';
+const DISABLED_MSG = 'Google Places API is disabled. No API calls are made.';
+const LEGACY_PLACES_BASE = 'https://maps.googleapis.com/maps/api/place'; // kept for dead code below
 
 function getApiKey() {
-  const key = process.env.GOOGLE_PLACES_API_KEY;
-  if (!key) {
-    throw new Error('GOOGLE_PLACES_API_KEY environment variable is required');
-  }
-  return key;
+  throw new Error(DISABLED_MSG);
 }
 
-// --- Legacy API (Starter plan) ---
+// --- Legacy API (disabled) ---
 
 /**
- * Legacy Text Search: GET .../textsearch/json
- * Billed as "Places API Text Search Essentials" — counts against 50k.
+ * Legacy Text Search — disabled; throws immediately.
  */
 async function legacyTextSearchPage(query, pageToken = null) {
+  throw new Error(DISABLED_MSG);
   const params = new URLSearchParams({
     query: query,
     key: getApiKey(),
@@ -79,6 +76,7 @@ const LEGACY_DETAILS_FIELDS = [
 ].join(',');
 
 async function legacyPlaceDetails(placeId) {
+  throw new Error(DISABLED_MSG);
   const params = new URLSearchParams({
     place_id: placeId,
     fields: LEGACY_DETAILS_FIELDS,
@@ -124,15 +122,10 @@ async function legacyPlaceDetails(placeId) {
 }
 
 /**
- * Photo URL: legacy uses photo_reference (long string); New API uses path "places/.../photos/...".
- * Legacy URL: .../photo?photo_reference=... (Starter plan).
+ * Photo URL — disabled. Returns null so no requests are sent to Google (no API or photo CDN usage).
  */
 export function getPhotoUrl(photoNameOrRef, maxWidth = 1200) {
-  if (!photoNameOrRef) return null;
-  if (typeof photoNameOrRef === 'string' && photoNameOrRef.startsWith('places/')) {
-    return `https://places.googleapis.com/v1/${photoNameOrRef}/media?maxWidthPx=${maxWidth}&key=${getApiKey()}`;
-  }
-  return `${LEGACY_PLACES_BASE}/photo?maxwidth=${maxWidth}&photo_reference=${encodeURIComponent(photoNameOrRef)}&key=${getApiKey()}`;
+  return null;
 }
 
 /**

@@ -125,6 +125,16 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
     };
   });
 
+  // Client-only: avoid hydration mismatch for match scores (computed from localStorage prefs)
+  const [matchScoresMounted, setMatchScoresMounted] = useState(false);
+  const [matchScoresEnabled, setMatchScoresEnabled] = useState(false);
+  useEffect(() => {
+    setMatchScoresMounted(true);
+    try {
+      setMatchScoresEnabled(typeof window !== 'undefined' && localStorage.getItem('topTours_matchScoresEnabled') === '1');
+    } catch {}
+  }, []);
+
   useEffect(() => {
     if (typeof window === 'undefined' || !localRestaurantPreferences) return;
     try {
@@ -373,9 +383,10 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
 
   const otherRestaurantsAvailable = otherRestaurants && otherRestaurants.length > 0;
 
-  // Calculate match scores for other restaurants
+  // Calculate match scores for other restaurants (only when user has enabled toggle - saves compute for crawlers)
   const otherRestaurantsMatchById = useMemo(() => {
     const map = new Map();
+    if (!matchScoresEnabled) return map;
     if (!Array.isArray(otherRestaurants)) return map;
 
     const prefs = localRestaurantPreferences || {
@@ -415,7 +426,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
       } catch {}
     });
     return map;
-  }, [otherRestaurants, localRestaurantPreferences]);
+  }, [matchScoresEnabled, otherRestaurants, localRestaurantPreferences]);
 
   const headingCuisine = cuisines.length > 0 ? `${cuisines.join(' & ')} restaurant in ${destination.name}` : `Restaurant in ${destination.name}`;
 
@@ -1805,24 +1816,26 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                               </span>
                             </div>
                             <div className="flex items-center gap-2">
-                              {/* Match Score Badge */}
-                              <button
-                                type="button"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  e.stopPropagation();
-                                  setSelectedRestaurant(other);
-                                  setShowRestaurantMatchModal(true);
-                                }}
-                                className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 flex-shrink-0"
-                                title="Click to see why this matches your taste"
-                              >
-                                <Sparkles className="w-3.5 h-3.5 text-purple-600" />
-                                <span className="text-xs font-bold text-gray-900">
-                                  {otherRestaurantsMatchById.get(other.id)?.matchScore ?? 0}%
-                                </span>
-                                <span className="text-[10px] text-gray-600">Match</span>
-                              </button>
+                              {/* Match Score Badge - only when user has enabled toggle (same key as tours/restaurant listing) */}
+                              {matchScoresEnabled && (
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    setSelectedRestaurant(other);
+                                    setShowRestaurantMatchModal(true);
+                                  }}
+                                  className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 flex-shrink-0"
+                                  title="Click to see why this matches your taste"
+                                >
+                                  <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+                                  <span className="text-xs font-bold text-gray-900">
+                                    {matchScoresMounted ? (otherRestaurantsMatchById.get(other.id)?.matchScore ?? 0) : '—'}%
+                                  </span>
+                                  <span className="text-[10px] text-gray-600">Match</span>
+                                </button>
+                              )}
                             </div>
                           </div>
                           

@@ -302,6 +302,7 @@ export default function RestaurantsListClient({ destination, restaurants, promot
 
   const restaurantMatchById = useMemo(() => {
     const map = new Map();
+    if (!matchScoresEnabled) return map;
     if (!Array.isArray(restaurants)) return map;
 
     const prefs = localRestaurantPreferences || {
@@ -355,7 +356,7 @@ export default function RestaurantsListClient({ destination, restaurants, promot
     }
     
     return map;
-  }, [restaurants, promotedRestaurants, localRestaurantPreferences]);
+  }, [matchScoresEnabled, restaurants, promotedRestaurants, localRestaurantPreferences]);
 
   // Get available cuisine types from restaurants in this destination
   const availableCuisines = useMemo(() => {
@@ -813,21 +814,23 @@ export default function RestaurantsListClient({ destination, restaurants, promot
                                   </div>
                                 </div>
 
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setSelectedRestaurant(restaurant);
-                                    setShowMatchModal(true);
-                                  }}
-                                  className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 flex-shrink-0"
-                                  title="Click to see why this matches your taste"
-                                >
-                                  <Sparkles className="w-3.5 h-3.5 text-purple-600" />
-                                  <span className="text-xs font-bold text-gray-900">
-                                    {matchScore}%
-                                  </span>
-                                  <span className="text-[10px] text-gray-600">Match</span>
-                                </button>
+                                {matchScoresEnabled && (
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setSelectedRestaurant(restaurant);
+                                      setShowMatchModal(true);
+                                    }}
+                                    className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 flex-shrink-0"
+                                    title="Click to see why this matches your taste"
+                                  >
+                                    <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+                                    <span className="text-xs font-bold text-gray-900">
+                                      {matchScore}%
+                                    </span>
+                                    <span className="text-[10px] text-gray-600">Match</span>
+                                  </button>
+                                )}
                               </div>
                               
                               <div className="flex items-start justify-between gap-2 mb-3">
@@ -1158,21 +1161,23 @@ export default function RestaurantsListClient({ destination, restaurants, promot
                         </div>
                       </div>
 
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setSelectedRestaurant(restaurant);
-                          setShowMatchModal(true);
-                        }}
-                        className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 flex-shrink-0"
-                        title="Click to see why this matches your taste"
-                      >
-                        <Sparkles className="w-3.5 h-3.5 text-purple-600" />
-                        <span className="text-xs font-bold text-gray-900">
-                          {restaurantMatchById.get(restaurant.id)?.matchScore ?? 0}%
-                        </span>
-                        <span className="text-[10px] text-gray-600">Match</span>
-                      </button>
+                      {matchScoresEnabled && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSelectedRestaurant(restaurant);
+                            setShowMatchModal(true);
+                          }}
+                          className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 flex-shrink-0"
+                          title="Click to see why this matches your taste"
+                        >
+                          <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+                          <span className="text-xs font-bold text-gray-900">
+                            {restaurantMatchById.get(restaurant.id)?.matchScore ?? 0}%
+                          </span>
+                          <span className="text-[10px] text-gray-600">Match</span>
+                        </button>
+                      )}
                     </div>
                     
                     <div className="flex items-start justify-between gap-2 mb-3">

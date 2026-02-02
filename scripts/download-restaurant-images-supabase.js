@@ -43,6 +43,10 @@ if (!GOOGLE_PLACES_API_KEY) {
   process.exit(1);
 }
 
+// Google Places API is disabled — no fetching from Google (no API or photo requests).
+console.error('Google Places API is disabled. This script does not fetch images from Google.');
+process.exit(1);
+
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
 // Download image and return as buffer

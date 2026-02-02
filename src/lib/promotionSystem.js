@@ -1761,7 +1761,8 @@ export async function updateRestaurantMetadata(restaurantId, restaurantData) {
     const supabase = createSupabaseServiceRoleClient();
     
     const restaurantName = restaurantData.name || null;
-    const restaurantImageUrl = restaurantData.hero_image_url || restaurantData.heroImage || null;
+    // Restaurant images are not used on the site
+const restaurantImageUrl = null;
     const restaurantSlug = restaurantData.slug || null;
     const destinationId = restaurantData.destination_id || null;
     

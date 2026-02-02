@@ -278,7 +278,8 @@ export function formatRestaurantForFrontend(dbRestaurant) {
       name: dbRestaurant.name || 'Restaurant',
       shortName: dbRestaurant.short_name || dbRestaurant.name || 'Restaurant',
       destinationId: dbRestaurant.destination_id || '',
-      heroImage: dbRestaurant.hero_image_url || null,
+      // Restaurant photos are not used on the site — never use hero_image_url
+heroImage: null,
       imageAlt: dbRestaurant.image_alt || dbRestaurant.name || 'Restaurant',
       tagline: tagline,
       description: dbRestaurant.description || summary || '',

@@ -32,6 +32,10 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
   process.exit(1);
 }
 
+// Google Places API is disabled — no API calls are made.
+console.error('Google Places API is disabled. This script does not make any Google Places API calls.');
+process.exit(1);
+
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
 // Google Places API functions
