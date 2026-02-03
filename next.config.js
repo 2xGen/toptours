@@ -50,6 +50,12 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // One-off: tour removal request – 301 to Baku tours page
+      {
+        source: '/tours/252542P1/full-day-individual-and-historical-baku-tour-private-and-group',
+        destination: '/destinations/baku/tours',
+        permanent: true,
+      },
       // Redirect old blog subdomain to travel-guides
       // NOTE: www to non-www redirect should be configured in Vercel domain settings, not in code
       {

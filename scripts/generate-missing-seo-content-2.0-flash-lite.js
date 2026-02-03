@@ -3,8 +3,12 @@
  * Uses Gemini 2.0 Flash-Lite (gemini-2.0-flash-lite) for cost-effective at-scale usage (~$0.075/1M input, $0.30/1M output)
  *
  * Usage:
- *   node scripts/generate-missing-seo-content-2.0-flash-lite.js              # all destinations
- *   node scripts/generate-missing-seo-content-2.0-flash-lite.js gouda       # Gouda only (test)
+ *   node scripts/generate-missing-seo-content-2.0-flash-lite.js              # all destinations with missing SEO
+ *   node scripts/generate-missing-seo-content-2.0-flash-lite.js gouda       # Gouda only
+ *   node scripts/generate-missing-seo-content-2.0-flash-lite.js aruba       # Aruba only
+ *   node scripts/generate-missing-seo-content-2.0-flash-lite.js curacao    # Curaçao only
+ *   node scripts/generate-missing-seo-content-2.0-flash-lite.js rotterdam  # Rotterdam only
+ *   node scripts/generate-missing-seo-content-2.0-flash-lite.js utrecht # Utrecht only
  */
 
 import { createClient } from '@supabase/supabase-js';
@@ -48,6 +52,7 @@ async function generateSEOContent(restaurantData, destinationName) {
   const rating = restaurantData.google_rating;
   const reviewCount = restaurantData.review_count;
   const priceRange = restaurantData.price_range || '$$';
+  const priceWording = { $: 'budget-friendly', '$$': 'moderately priced', '$$$': 'upscale', '$$$$': 'fine dining' }[priceRange] || 'moderately priced';
   const cuisines = Array.isArray(restaurantData.cuisines)
     ? restaurantData.cuisines.join(', ')
     : restaurantData.cuisines || '';
@@ -78,7 +83,8 @@ Writing Style & Guidelines:
 - Avoid overly formal phrases like "indulge" and "immerse" - use them very sparingly (maybe 1 in 20 descriptions)
 - Write naturally: "This restaurant offers...", "Located in...", "Known for...", "The atmosphere is...", "What makes this place special...", "A favorite among...", "Here you'll find..."
 - Use professional but accessible language: "enjoy", "experience", "discover", "savor", "dine", "sample", "appreciate", "features", "offers", "provides"
-- Description: Write about the atmosphere, what makes it special, the ${rating}/5 rating, ${priceRange} pricing, and what diners say. Write like a professional travel writer describing a restaurant. Do NOT use the restaurant's name ("${restaurantName}") in the description.
+- Never use dollar signs ($$, $, etc.) or phrases like "$$ price range" in the description or meta description. Use words only: "moderately priced", "mid-range", "budget-friendly", "upscale", "affordable", "fine dining".
+- Description: Write about the atmosphere, what makes it special, the ${rating}/5 rating, and what diners say. For price level use natural wording only (e.g. "${priceWording}", "mid-range", "affordable")—never use dollar signs like $$ or "$$ price range" in the description. Do NOT use the restaurant's name ("${restaurantName}") in the description.
 - SEO Title: Include "${destinationName}", location keywords, cuisine type, and "${restaurantName}". Keep it natural and under 60 characters.
 - Meta Description: Write a compelling, professional summary that includes the ${rating}-star rating. Make it sound natural and human. Include a subtle call-to-action.
 
