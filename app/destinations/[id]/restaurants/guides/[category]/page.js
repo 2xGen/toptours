@@ -7,7 +7,7 @@ import RestaurantGuideClient from './RestaurantGuideClient';
 import { formatRestaurantForFrontend } from '@/lib/restaurants';
 
 // ISR: cache for 24h so repeated requests don't run the function (saves cost).
-export const revalidate = 86400;
+export const revalidate = 604800; // 7 days - match rest of site, reduce ISR writes
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;

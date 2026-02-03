@@ -8,14 +8,14 @@ export async function generateMetadata() {
   
   return {
     title: 'TopTours.ai - AI-Powered Tour & Restaurant Discovery | 300,000+ Tours Worldwide',
-    description: 'Tours & Restaurants That Match Your Style. Get personalized recommendations with AI-powered Best Match. Explore 300,000+ tours, 3,500+ restaurants, and 19,000+ travel guides across 3,300+ destinations worldwide. See match scores on every listing. Book tours, find restaurants, and discover travel experiences.',
+    description: 'Tours & Restaurants That Match Your Style. Get personalized recommendations with AI-powered Best Match. Explore 300,000+ tours, 10,000+ restaurants, and 19,000+ travel guides across 3,300+ destinations worldwide. See match scores on every listing. Book tours, find restaurants, and discover travel experiences.',
     keywords: 'tours, activities, restaurants, travel planning, AI travel recommendations, destination guides, book tours online, travel experiences, vacation activities, personalized travel, best match tours, travel style matching, things to do, travel booking, tour booking, restaurant finder, travel guide, destination guide, travel recommendations, AI travel planner',
     alternates: {
       canonical: baseUrl,
     },
     openGraph: {
       title: 'TopTours.ai - Tours & Restaurants That Match Your Style',
-      description: 'Get personalized tour and restaurant recommendations with AI-powered Best Match. Explore 300,000+ tours, 3,500+ restaurants across 3,300+ destinations. See match scores on every listing.',
+      description: 'Get personalized tour and restaurant recommendations with AI-powered Best Match. Explore 300,000+ tours, 10,000+ restaurants across 3,300+ destinations. See match scores on every listing.',
       url: baseUrl,
       siteName: 'TopTours.ai',
       images: [{
@@ -30,7 +30,7 @@ export async function generateMetadata() {
     twitter: {
       card: 'summary_large_image',
       title: 'TopTours.ai - Tours & Restaurants That Match Your Style',
-      description: 'AI-powered Best Match for personalized travel recommendations. 300,000+ tours, 3,500+ restaurants across 3,300+ destinations.',
+      description: 'AI-powered Best Match for personalized travel recommendations. 300,000+ tours, 10,000+ restaurants across 3,300+ destinations.',
       images: [`${baseUrl}/og-homepage.jpg`],
     },
     robots: {

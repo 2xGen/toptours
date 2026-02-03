@@ -1,7 +1,12 @@
 /**
  * Stripe Webhook Handler
  * Handles payment events from Stripe
- * 
+ *
+ * IMPORTANT: In Stripe Dashboard, set the endpoint URL to:
+ *   https://toptours.ai/api/webhooks/stripe
+ * (no www). If you use https://www.toptours.ai/..., the server may redirect
+ * www → non-www; Stripe does not follow redirects and will report "other errors".
+ *
  * Events handled:
  * - checkout.session.completed: Payment successful
  * - customer.subscription.created: New subscription

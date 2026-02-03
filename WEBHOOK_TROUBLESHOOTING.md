@@ -1,5 +1,22 @@
 # Webhook Troubleshooting Guide
 
+## URGENT: "Other errors" / Webhook failing in live mode
+
+**If Stripe says the failing URL is `https://www.toptours.ai/api/webhooks/stripe`:**
+
+Stripe does **not** follow redirects. If your server redirects **www** → **non-www** (301/302), Stripe receives that response instead of 200 and reports "other errors".
+
+**Fix (do this first):**
+1. Go to [Stripe Dashboard → Webhooks](https://dashboard.stripe.com/webhooks).
+2. Open the **live** webhook endpoint that points to toptours.ai.
+3. Click **Update details** (or the endpoint URL).
+4. Change the URL from **`https://www.toptours.ai/api/webhooks/stripe`** to **`https://toptours.ai/api/webhooks/stripe`** (no `www`).
+5. Save. Stripe will send to the canonical domain and get 200 directly.
+
+If you deploy on **Hostinger** (not Vercel), the www → non-www redirect is usually at the host level, so the webhook **must** be registered with **https://toptours.ai** (no www). The `vercel.json` redirect exception only applies when deploying on Vercel.
+
+---
+
 ## Issue: Records Stay "Pending" After Successful Payment
 
 ### Root Cause

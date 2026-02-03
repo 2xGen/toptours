@@ -61,9 +61,9 @@ const OLD_RESTAURANT_REDIRECTS = {
   },
 };
 
-// Revalidate every hour for fresh data
-// Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
-export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
+// No ISR: 10k+ restaurant pages would cause ~14k ISR writes/day and ongoing cost.
+// Force dynamic so each request is server-rendered; no cache writes.
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }) {
   const { id: destinationId, restaurant: restaurantSlug } = await params;

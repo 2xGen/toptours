@@ -20,7 +20,7 @@ const steps = [
   {
     icon: Globe,
     title: 'Discover',
-    description: 'Browse 10,000+ tours and 3,500+ restaurants across 3,300+ destinations',
+    description: 'Browse 10,000+ tours and 10,000+ restaurants across 3,300+ destinations',
     color: 'from-blue-500 to-cyan-500',
     iconColor: 'text-blue-500',
     details: ['Explore worldwide destinations', 'Find amazing tours & restaurants', 'Read real traveler reviews']

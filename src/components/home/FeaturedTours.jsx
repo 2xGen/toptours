@@ -23,7 +23,7 @@ const FeaturedTours = ({ onOpenModal }) => {
             Discover Amazing Tours & Restaurants
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Explore 10,000+ tours and 3,500+ restaurants across 3,300+ destinations. Use AI-powered Best Match to find experiences that fit your travel style.
+            Explore 10,000+ tours and 10,000+ restaurants across 3,300+ destinations. Use AI-powered Best Match to find experiences that fit your travel style.
           </p>
         </motion.div>
 

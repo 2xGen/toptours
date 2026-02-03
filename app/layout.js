@@ -147,7 +147,7 @@ export default function RootLayout({ children }) {
                 "width": 512,
                 "height": 512
               },
-              "description": "AI-powered travel planning platform offering personalized tour and restaurant recommendations. Discover 300,000+ tours, 3,500+ restaurants, and 19,000+ travel guides across 3,300+ destinations worldwide.",
+              "description": "AI-powered travel planning platform offering personalized tour and restaurant recommendations. Discover 300,000+ tours, 10,000+ restaurants, and 19,000+ travel guides across 3,300+ destinations worldwide.",
               "foundingDate": "2024",
               "slogan": "Tours & Restaurants That Match Your Style",
               "knowsAbout": [
