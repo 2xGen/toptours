@@ -25,11 +25,12 @@ export async function GET() {
   <!-- Sitemaps: ${numSitemaps} (${URLS_PER_SITEMAP.toLocaleString()} URLs each) -->
 `;
 
+    const lastmod = '2026-02-11'; // Sitemap last modified date for search engines
     for (let i = 0; i < numSitemaps; i++) {
       sitemapIndex += `
   <sitemap>
     <loc>${baseUrl}/sitemap-tours/${i}</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <lastmod>${lastmod}</lastmod>
   </sitemap>`;
     }
 

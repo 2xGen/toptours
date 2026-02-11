@@ -28,6 +28,7 @@ export default async function handler(req, res) {
       flags = body.flags || [],
       viatorDestinationId = body.viatorDestinationId,
       includeDestination = body.includeDestination !== false,
+      tagIds = body.tagIds || [],
     } = body;
 
     const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
@@ -50,10 +51,16 @@ export default async function handler(req, res) {
         specialFeatures.push('PRIVATE_TOUR');
       }
 
-      // Minimal filtering - just destination ID (no other filters that might restrict results)
+      // Minimal filtering - destination ID; optionally filter by tag IDs (e.g. for tag guide "Load tours")
       const filtering = {
         destination: String(viatorDestinationId),
       };
+      if (Array.isArray(tagIds) && tagIds.length > 0) {
+        filtering.tagIds = tagIds.map((id) => Number(id)).filter((n) => !Number.isNaN(n));
+      }
+      if (Array.isArray(filtering.tagIds) && filtering.tagIds.length === 0) {
+        delete filtering.tagIds;
+      }
 
       // Only add price filter if explicitly specified
       if (minPrice > 0 || (maxPrice && maxPrice < 10000)) {

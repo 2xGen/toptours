@@ -10,6 +10,7 @@ import { getFromPrice } from '@/lib/viatorPricing';
 import { getDestinationNameById } from '@/lib/destinationIdLookup';
 import { getViatorDestinationById } from '@/lib/supabaseCache';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
+import { getPrimaryTagNameForTour } from '@/lib/tourMatching';
 
 /**
  * Load all non-critical tour data in parallel
@@ -20,12 +21,13 @@ export async function loadTourData(productId, tour) {
   const [
     pricingResult,
     tourEnrichmentResult,
-    operatorPremiumDataResult
+    operatorPremiumDataResult,
+    primaryTagNameResult
   ] = await Promise.allSettled([
-    // Fetch pricing from schedules API (product endpoint doesn't include pricing)
     getFromPrice(productId),
     getTourEnrichmentCached(productId).catch(() => null),
-    getTourOperatorPremiumSubscription(productId).catch(() => null)
+    getTourOperatorPremiumSubscription(productId).catch(() => null),
+    getPrimaryTagNameForTour(tour).catch(() => null)
   ]);
 
   // Extract results
@@ -60,13 +62,16 @@ export async function loadTourData(productId, tour) {
     }
   }
 
+  const primaryTagName = primaryTagNameResult.status === 'fulfilled' ? primaryTagNameResult.value : null;
+
   return {
     pricing,
     promotionScore,
     tourEnrichment,
     operatorPremiumData,
     operatorTours,
-    reviews
+    reviews,
+    primaryTagName
   };
 }
 

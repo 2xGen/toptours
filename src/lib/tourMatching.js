@@ -289,6 +289,33 @@ async function fetchTagTraits(tagIds, supabaseClient = null) {
 }
 
 /**
+ * Get primary tag name(s) for a tour from viator_tag_traits (for hero/SEO).
+ * Uses same DB as calculateTourProfile. Returns first tag's tag_name_en, or null.
+ * @param {Object} tour - Tour with tour.tags (array of tag IDs or objects with tag_id / tag_name_en)
+ * @param {Object} supabaseClient - Optional Supabase client (server uses service role)
+ * @returns {Promise<string|null>} First tag name or null
+ */
+export async function getPrimaryTagNameForTour(tour, supabaseClient = null) {
+  const rawTags = tour?.tags;
+  if (!Array.isArray(rawTags) || rawTags.length === 0) return null;
+
+  const first = rawTags[0];
+  if (first && typeof first === 'object' && (first.tag_name_en ?? first.tagName)) {
+    return first.tag_name_en ?? first.tagName ?? null;
+  }
+
+  const tagIds = rawTags
+    .map((t) => (typeof t === 'object' && t !== null ? (t.tag_id ?? t.tagId) : t))
+    .filter((id) => id != null && id !== '');
+  if (tagIds.length === 0) return null;
+
+  const traitsMap = await fetchTagTraits(tagIds, supabaseClient);
+  const firstId = tagIds[0];
+  const trait = traitsMap.get(Number(firstId));
+  return trait?.tag_name_en ?? trait?.tagName ?? null;
+}
+
+/**
  * Map user preferences to scores (0-100)
  * @param {Object} userPreferences - User trip preferences from profile
  * @returns {Object} Preference scores

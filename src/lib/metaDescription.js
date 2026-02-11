@@ -1,14 +1,10 @@
 /**
  * Enhanced Meta Description Generator
- * 
- * Creates SEO-optimized meta descriptions with:
- * - Tour name + destination (highest priority)
- * - Operator name (for brand searches)
- * - Rating + review count (social proof)
- * - Pricing (if competitive)
- * - Trust signals (free cancellation, instant confirmation)
- * 
- * Format: "[Tour Name] in [Destination] by [Operator] • 4.8★ • 1,234+ reviews • From $89 • Free cancellation"
+ *
+ * Intent-focused, action-driven meta descriptions. Operator is kept on-page and in schema, not in meta.
+ * - Book {Tour} in {City}. Rated X★ by Y travelers. See prices, duration, photos & availability. Trust signal.
+ * - Rating block only when rating >= 4.5 and reviews > 0.
+ * - Trust: Instant confirmation, else Free cancellation, else omit.
  */
 
 /**
@@ -66,209 +62,68 @@ function extractPricing(tour) {
 
 /**
  * Build enhanced meta description for SEO
- * 
- * Priority order:
- * 1. Tour name + destination (highest SEO value)
- * 2. Operator name (for brand searches)
- * 3. Rating (if high - 4.5+)
- * 4. Review count (if significant - 100+)
- * 5. Pricing (if competitive - under $200)
- * 6. Trust signals (free cancellation, instant confirmation)
- * 7. Value prop from enrichment (if available)
+ * Template: Book {Tour} in {City}. Rated X★ by Y travelers. See prices, duration, photos & availability. Trust signal.
+ * No operator in meta. Rating only when >= 4.5 and reviews > 0. Trust: Instant confirmation else Free cancellation.
  */
 export function buildEnhancedMetaDescription(tour, destinationData = null, enrichment = null) {
-  const parts = [];
-  
-  // Extract key data
   const tourTitle = tour.title || 'Tour';
   const destinationName = extractDestinationName(tour, destinationData);
-  const operatorName = extractOperatorName(tour);
   const rating = tour.reviews?.combinedAverageRating || tour.reviews?.averageRating || null;
   const reviewCount = tour.reviews?.totalReviews || tour.reviews?.totalCount || 0;
-  const pricing = extractPricing(tour);
   const hasFreeCancellation = tour.cancellationPolicy?.freeCancellation || false;
   const hasInstantConfirmation = tour.bookingConfirmationSettings?.confirmationType === 'INSTANT' ||
                                   tour.instantConfirmation || false;
-  
-  // 1. Tour name + destination (ALWAYS include - highest SEO value)
-  if (destinationName) {
-    parts.push(`${tourTitle} in ${destinationName}`);
-  } else {
-    parts.push(tourTitle);
-  }
-  
-  // 2. Operator name (if available - for brand searches)
-  if (operatorName) {
-    parts.push(`by ${operatorName}`);
-  }
-  
-  // 3. Rating (if high - 4.5+)
-  if (rating && rating >= 4.5) {
-    parts.push(`${rating.toFixed(1)}★`);
-  }
-  
-  // 4. Review count (if significant - 100+)
-  if (reviewCount >= 100) {
-    const formattedCount = formatNumber(reviewCount);
-    if (formattedCount) {
-      parts.push(`${formattedCount}+ reviews`);
-    }
-  }
-  
-  // 5. Pricing (if competitive - under $200, or always show if available)
-  if (pricing) {
-    const priceNum = typeof pricing === 'number' ? pricing : parseFloat(pricing);
-    if (!isNaN(priceNum)) {
-      // Show pricing if under $200, or if no other trust signals
-      if (priceNum < 200 || (!hasFreeCancellation && !hasInstantConfirmation)) {
-        parts.push(`From $${Math.round(priceNum)}`);
-      }
-    }
-  }
-  
-  // 6. Trust signals (free cancellation, instant confirmation)
-  if (hasFreeCancellation) {
-    parts.push('Free cancellation');
-  } else if (hasInstantConfirmation) {
-    parts.push('Instant confirmation');
-  }
-  
-  // 7. Value prop from enrichment (if available and space allows)
-  if (enrichment?.ai_summary) {
-    const summary = enrichment.ai_summary.trim();
-    // Only add if we have space and it's meaningful
-    if (summary.length > 0 && summary.length < 80) {
-      // Check current length
-      const currentLength = parts.join(' • ').length;
-      const remainingSpace = 160 - currentLength - 3; // -3 for " • "
-      if (remainingSpace > summary.length + 10) {
-        parts.push(summary);
-      }
-    }
-  }
-  
-  // Join parts and limit to 160 characters
-  let description = parts.join(' • ');
-  
-  // If still too long, prioritize and trim
+
+  const opener = destinationName
+    ? `Book ${tourTitle} in ${destinationName}.`
+    : `Book ${tourTitle}.`;
+
+  const showRating = rating != null && rating >= 4.5 && reviewCount > 0;
+  const ratingSentence = showRating
+    ? ` Rated ${rating.toFixed(1)}★ by ${reviewCount.toLocaleString('en-US')} travelers.`
+    : '';
+
+  const actionSentence = ' See prices, duration, photos & availability.';
+  const trustPhrase = hasInstantConfirmation
+    ? ' Instant confirmation.'
+    : hasFreeCancellation
+      ? ' Free cancellation.'
+      : '';
+
+  let description = opener + ratingSentence + actionSentence + trustPhrase;
   if (description.length > 160) {
-    // Priority order: Tour name + destination > Operator > Rating > Reviews > Pricing > Trust > Value prop
-    const priorityParts = [];
-    
-    // Always keep tour name + destination
-    if (destinationName) {
-      priorityParts.push(`${tourTitle} in ${destinationName}`);
-    } else {
-      priorityParts.push(tourTitle);
+    if (showRating && (opener + ratingSentence).length > 100) {
+      description = opener + actionSentence + trustPhrase;
     }
-    
-    // Add operator if space allows
-    if (operatorName) {
-      const withOperator = `${priorityParts[0]} by ${operatorName}`;
-      if (withOperator.length <= 100) {
-        priorityParts[0] = withOperator;
-      }
+    if (description.length > 160) {
+      description = opener + ' See prices & availability.' + trustPhrase;
     }
-    
-    // Add rating if space allows
-    if (rating && rating >= 4.5) {
-      const withRating = `${priorityParts[0]} • ${rating.toFixed(1)}★`;
-      if (withRating.length <= 120) {
-        priorityParts[0] = withRating;
-      }
-    }
-    
-    // Add review count if space allows
-    if (reviewCount >= 100) {
-      const formattedCount = formatNumber(reviewCount);
-      if (formattedCount) {
-        const withReviews = `${priorityParts[0]} • ${formattedCount}+ reviews`;
-        if (withReviews.length <= 140) {
-          priorityParts[0] = withReviews;
-        }
-      }
-    }
-    
-    // Add pricing if space allows
-    if (pricing) {
-      const priceNum = typeof pricing === 'number' ? pricing : parseFloat(pricing);
-      if (!isNaN(priceNum) && priceNum < 200) {
-        const withPricing = `${priorityParts[0]} • From $${Math.round(priceNum)}`;
-        if (withPricing.length <= 155) {
-          priorityParts[0] = withPricing;
-        }
-      }
-    }
-    
-    // Add trust signal if space allows
-    if (hasFreeCancellation) {
-      const withTrust = `${priorityParts[0]} • Free cancellation`;
-      if (withTrust.length <= 160) {
-        priorityParts[0] = withTrust;
-      }
-    }
-    
-    description = priorityParts[0];
   }
-  
-  // Final trim to 160 characters
   return description.slice(0, 160).trim();
 }
 
 /**
  * Build enhanced title for SEO
- * 
- * Format: "[Tour Name] by [Operator]" or "[Tour Name] in [Destination] by [Operator]"
- * NO brand name - better for SEO rankings and keyword optimization
- * Includes operator name to differentiate from competitors and rank for operator searches
+ * Intent-focused: no operator, no brand suffix. Commercial modifiers for CTR.
+ * Template: {Tour} in {City} | Reviews, Price & Booking (or with rating when >= 4.5).
  */
+const TITLE_SUFFIX = ' | Reviews, Price & Booking';
+const TITLE_SUFFIX_WITH_RATING = '★ Reviews & Instant Booking';
+
 export function buildEnhancedTitle(tour, destinationData = null, enrichment = null) {
   const tourTitle = tour.title || 'Tour';
   const destinationName = extractDestinationName(tour, destinationData);
-  const operatorName = extractOperatorName(tour);
-  
-  // Priority 1: Tour name + destination + operator (best for SEO - differentiates from competitors)
-  if (destinationName && operatorName) {
-    const title = `${tourTitle} in ${destinationName} by ${operatorName}`;
-    // Allow up to 65 chars (slightly over 60 is fine, Google will show it)
-    if (title.length <= 65) {
-      return title; // NO brand name
-    }
-    // If too long, try without destination
-    const titleWithoutDest = `${tourTitle} by ${operatorName}`;
-    if (titleWithoutDest.length <= 65) {
-      return titleWithoutDest;
-    }
-  }
-  
-  // Priority 2: Tour name + operator (if operator available, no destination)
-  if (operatorName) {
-    const title = `${tourTitle} by ${operatorName}`;
-    if (title.length <= 65) {
-      return title; // NO brand name
-    }
-    // If still too long, trim operator name intelligently
-    const maxTourLength = 50;
-    if (tourTitle.length <= maxTourLength) {
-      const remainingSpace = 65 - tourTitle.length - 6; // -6 for " by "
-      if (remainingSpace > 10) {
-        const trimmedOperator = operatorName.substring(0, remainingSpace).trim();
-        return `${tourTitle} by ${trimmedOperator}`;
-      }
-    }
-  }
-  
-  // Priority 3: Tour name + destination (if destination available, no operator)
-  if (destinationName) {
-    const title = `${tourTitle} in ${destinationName}`;
-    if (title.length <= 65) {
-      return title; // NO brand name
-    }
-  }
-  
-  // Fallback: Just tour name (trim if too long)
-  if (tourTitle.length > 65) {
-    return tourTitle.substring(0, 62) + '...';
-  }
-  return tourTitle; // NO brand name
+  const rating = tour.reviews?.combinedAverageRating || tour.reviews?.averageRating || null;
+  const hasHighRating = rating != null && rating >= 4.5;
+  const maxLen = 65;
+
+  const base = destinationName ? `${tourTitle} in ${destinationName}` : tourTitle;
+  const withSuffix = hasHighRating
+    ? `${base} | ${rating.toFixed(1)}${TITLE_SUFFIX_WITH_RATING}`
+    : `${base}${TITLE_SUFFIX}`;
+
+  if (withSuffix.length <= maxLen) return withSuffix;
+  if (base.length + TITLE_SUFFIX.length <= maxLen) return base + TITLE_SUFFIX;
+  const trimBase = base.slice(0, maxLen - TITLE_SUFFIX.length - 1).trim();
+  return (trimBase.endsWith(',') ? trimBase.slice(0, -1) : trimBase) + TITLE_SUFFIX;
 }

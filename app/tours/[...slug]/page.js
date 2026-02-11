@@ -65,7 +65,8 @@ const getCachedTourExtras = unstable_cache(
       tourEnrichment: null,
       operatorPremiumData: null,
       operatorTours: [],
-      reviews: null
+      reviews: null,
+      primaryTagName: null
     };
 
     const destData = destinationDataResult.status === 'fulfilled' 
@@ -297,7 +298,8 @@ export default async function TourDetailPage({ params }) {
       tourEnrichment,
       operatorPremiumData,
       operatorTours,
-      reviews
+      reviews,
+      primaryTagName
     } = tourData;
 
     // Fetch similar tours server-side (for SEO - crawlers can see it)
@@ -451,8 +453,10 @@ export default async function TourDetailPage({ params }) {
           operatorPremiumData={operatorPremiumData}
           operatorTours={operatorTours}
           categoryGuides={categoryGuides}
+          destinationFeatures={{}}
           faqs={faqs}
           reviews={reviews}
+          primaryTagName={primaryTagName}
         />
       </>
     );

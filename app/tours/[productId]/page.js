@@ -320,7 +320,8 @@ export default async function TourDetailPage({ params }) {
       tourEnrichment,
       operatorPremiumData,
       operatorTours,
-      reviews
+      reviews,
+      primaryTagName
     } = tourData;
 
     // Similar tours are fetched server-side via Suspense (for SEO - crawlers can see it)
@@ -753,6 +754,7 @@ export default async function TourDetailPage({ params }) {
           destinationFeatures={features}
           faqs={faqs}
           reviews={reviews}
+          primaryTagName={primaryTagName}
         />
       </Suspense>
       </>

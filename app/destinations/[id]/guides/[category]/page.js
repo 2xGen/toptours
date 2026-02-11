@@ -5,6 +5,13 @@ import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
+import {
+  getTagBySlug,
+  getTagGuideContent,
+  saveTagGuideContent,
+  contentToGuideData,
+  generateTagGuideContentWithGemini,
+} from '@/lib/tagGuideContent';
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
 
@@ -289,13 +296,16 @@ export async function generateMetadata({ params }) {
     const defaultOgImage = categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : TRAVEL_GUIDE_OG_IMAGE;
     const ogImage = guideData.heroImage || destination.imageUrl || defaultOgImage;
     const seo = guideData.seo || {};
+    const destName = destination.fullName || destination.name || '';
+    const categoryName = guideData.categoryName || guideData.title || 'Tours';
+    const bookingTitle = destName && categoryName ? `Best ${destName} ${categoryName} | TopTours.ai` : null;
 
     return {
-      title: seo.title || guideData.title,
+      title: seo.title || guideData.title || bookingTitle || 'Guide | TopTours.ai',
       description: seo.description || guideData.subtitle,
       keywords: seo.keywords || '',
       openGraph: {
-        title: seo.title || guideData.title,
+        title: seo.title || guideData.title || bookingTitle || 'Guide | TopTours.ai',
         description: seo.description || guideData.subtitle,
         url: `https://toptours.ai/destinations/${destinationId}/guides/${categorySlug}`,
         images: [
@@ -312,7 +322,7 @@ export async function generateMetadata({ params }) {
       },
       twitter: {
         card: 'summary_large_image',
-        title: seo.title || guideData.title,
+        title: seo.title || guideData.title || bookingTitle || 'Guide | TopTours.ai',
         description: seo.description || guideData.subtitle,
         images: [ogImage],
       },
@@ -437,6 +447,28 @@ export default async function CategoryGuidePage({ params }) {
       };
       console.log(`⚠️ Created minimal destination for ${destinationId}: ${destinationName} (no generated content found)`);
     }
+
+    // Tag guide (on-demand): resolve slug as Viator tag, use cached or generate with Gemini on first load
+    let resolvedTagId = null;
+    if (!guideData && destination && categorySlug !== 'airport-transfers') {
+      const tag = await getTagBySlug(categorySlug);
+      if (tag) {
+        resolvedTagId = tag.tag_id;
+        const normalizedDestId = normalizeSlug(destinationId);
+        let content = await getTagGuideContent(normalizedDestId, categorySlug);
+        if (!content) {
+          const destName = destination?.fullName || destination?.name || 'this destination';
+          content = await generateTagGuideContentWithGemini(destName, tag.tag_name_en);
+          if (content) {
+            await saveTagGuideContent(normalizedDestId, categorySlug, tag.tag_name_en, content);
+          }
+        }
+        if (content) {
+          guideData = contentToGuideData(content, destination?.fullName || destination?.name || destinationId, destination?.imageUrl);
+          guideSource = 'tag_guide';
+        }
+      }
+    }
     
     // Special case: airport-transfers - create default guide if not in database
     if (!guideData && categorySlug === 'airport-transfers') {
@@ -540,6 +572,11 @@ export default async function CategoryGuidePage({ params }) {
   
   // Also create slugs array for backward compatibility
   const allAvailableGuideSlugs = allAvailableGuides.map(g => g.category_slug).filter(Boolean);
+
+  // Viator destination ID for "Load tours" (product search by destination and optionally tag)
+  const { getViatorDestinationBySlug } = await import('@/lib/supabaseCache');
+  const viatorDest = await getViatorDestinationBySlug(destinationId);
+  const viatorDestinationId = viatorDest?.id ?? null;
 
   // Fetch destination features (lightweight checks for sticky nav)
   const features = await getDestinationFeatures(destinationId);
@@ -700,6 +737,8 @@ export default async function CategoryGuidePage({ params }) {
         availableGuideSlugs={allAvailableGuideSlugs}
         allAvailableGuides={allAvailableGuides}
         destinationFeatures={features}
+        viatorDestinationId={viatorDestinationId}
+        tagId={resolvedTagId}
         destination={{
           id: destination.id,
           name: destination.name,

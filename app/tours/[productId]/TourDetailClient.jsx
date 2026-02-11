@@ -38,6 +38,7 @@ import { getGuidesByCountry } from '@/data/travelGuidesData';
 import { toast } from '@/components/ui/use-toast';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
+import { getTagSlugFromName } from '@/lib/tagGuideContent';
 import SimilarToursListWrapper from './SimilarToursListWrapper';
 
 // OPTIMIZED: Lazy load heavy components for better initial page load
@@ -336,7 +337,7 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, matchScoresEnabl
   );
 }
 
-export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }, faqs = [], reviews = null, recommendedTours: initialRecommendedTours = [] }) {
+export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }, faqs = [], reviews = null, recommendedTours: initialRecommendedTours = [], primaryTagName = null }) {
   // Note: recommendedTours prop kept for backward compatibility but not used (removed to reduce API calls)
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -2065,11 +2066,57 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
             >
               <div className="flex items-center mb-4">
                 <MapPin className="w-5 h-5 text-blue-200 mr-2" />
-                <span className="text-white font-medium">{destination?.category || 'Tour'}</span>
+                {(() => {
+                  const destLabel = destination?.category
+                    || destination?.fullName
+                    || destination?.name
+                    || effectiveDestinationData?.destinationName
+                    || unmatchedDestinationName
+                    || '';
+                  const destSlug = destination?.id
+                    || subtleDestinationSlug
+                    || unmatchedDestinationSlug
+                    || effectiveDestinationData?.slug
+                    || effectiveDestinationData?.destinationId;
+                  const tagSlug = primaryTagName ? getTagSlugFromName(primaryTagName) : '';
+                  const tagGuideUrl = primaryTagName && destSlug && tagSlug
+                    ? `/destinations/${destSlug}/guides/${tagSlug}`
+                    : null;
+                  const label = primaryTagName && destLabel
+                    ? `${primaryTagName} · ${destLabel}`
+                    : primaryTagName
+                      ? primaryTagName
+                      : (() => {
+                          const viatorCategory = tour.categories?.[0]?.categoryName
+                            || tour.categories?.[0]?.name
+                            || tour.subcategories?.[0]?.categoryName
+                            || tour.subcategories?.[0]?.name
+                            || tour.classifications?.[0]?.name
+                            || '';
+                          if (viatorCategory && destLabel) return `${viatorCategory} · ${destLabel}`;
+                          if (viatorCategory) return viatorCategory;
+                          if (destLabel) return destLabel;
+                          return 'Tour';
+                        })();
+                  if (tagGuideUrl) {
+                    return (
+                      <Link
+                        href={tagGuideUrl}
+                        className="text-white font-medium hover:text-white/90 hover:underline transition-colors"
+                      >
+                        {label}
+                      </Link>
+                    );
+                  }
+                  return <span className="text-white font-medium">{label}</span>;
+                })()}
               </div>
               <div className="flex items-start gap-3 mb-4 md:mb-6">
                 <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex-1">
-                  {tour.title}
+                  {(() => {
+                    const destName = destination?.fullName || destination?.name || effectiveDestinationData?.destinationName || unmatchedDestinationName;
+                    return destName ? `${tour.title} in ${destName}` : tour.title;
+                  })()}
                 </h1>
                 <button
                   onClick={() => setShowShareModal(true)}
@@ -2080,7 +2127,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
               </div>
-              
+
               <div className="flex flex-wrap items-center gap-3 mb-6">
                 {rating > 0 && (
                   <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white">
@@ -2166,6 +2213,13 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   </div>
                 </div>
               </div>
+
+              {supplierName && (
+                <div className="inline-flex items-center mt-4 px-4 py-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/25">
+                  <span className="text-white/90 text-sm font-medium">Operated by </span>
+                  <span className="text-white font-semibold text-sm">{supplierName}</span>
+                </div>
+              )}
             </motion.div>
             
             {tourImage && (
@@ -2512,9 +2566,48 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   </div>
                 ) : (matchScore?.tourProfile || tourProfile) ? (
                   <div className="space-y-6">
-                    {/* Tour Characteristics */}
+                    {/* Tour style: SEO-friendly H2 + text snapshot for crawlers */}
+                    {(() => {
+                      const profile = matchScore?.tourProfile || tourProfile;
+                      const closest = (score, options) => {
+                        if (score == null) return options[1].desc;
+                        const distances = options.map((o) => Math.abs((o.value ?? 50) - score));
+                        const i = distances.indexOf(Math.min(...distances));
+                        return options[i]?.desc ?? options[1].desc;
+                      };
+                      const adventure = closest(profile.adventure_score, [
+                        { value: 25, desc: 'Relaxed' },
+                        { value: 50, desc: 'Balanced' },
+                        { value: 75, desc: 'Adventurous' },
+                      ]);
+                      const relaxation = closest(profile.relaxation_exploration_score, [
+                        { value: 25, desc: 'Relax' },
+                        { value: 50, desc: 'Balanced' },
+                        { value: 75, desc: 'Explore' },
+                      ]);
+                      const group = closest(profile.group_intimacy_score, [
+                        { value: 25, desc: 'Big Groups' },
+                        { value: 50, desc: 'Either Way' },
+                        { value: 75, desc: 'Private/Small' },
+                      ]);
+                      const budget = closest(profile.price_comfort_score, [
+                        { value: 25, desc: 'Budget' },
+                        { value: 50, desc: 'Balanced' },
+                        { value: 75, desc: 'Comfort' },
+                      ]);
+                      const snapshot = `Tour style: Adventure level ${adventure}. Group size: ${group}. Budget vs comfort: ${budget}. Relaxation vs exploration: ${relaxation}.`;
+                      return (
+                        <div className="mb-4">
+                          <h2 className="text-lg font-semibold text-gray-900 mb-2">Tour style</h2>
+                          <p className="text-gray-700 text-sm leading-relaxed" data-seo-snapshot="tour-characteristics">
+                            {snapshot}
+                          </p>
+                        </div>
+                      );
+                    })()}
+                    {/* Tour Characteristics (visual sliders) */}
                     <div>
-                      <h5 className="font-semibold text-gray-900 mb-4">Tour Characteristics:</h5>
+                      <h3 className="font-semibold text-gray-900 mb-4">Tour Characteristics</h3>
                       <div className="space-y-4">
                         {/* Adventure Level */}
                         <div>

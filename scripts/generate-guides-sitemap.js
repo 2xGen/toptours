@@ -24,7 +24,8 @@ const supabase = createClient(supabaseUrl, supabaseServiceRoleKey, {
 });
 
 const baseUrl = 'https://toptours.ai';
-const currentDate = new Date().toISOString();
+/** Sitemap lastmod date for search engines (update when you want to signal a fresh sitemap) */
+const SITEMAP_LASTMOD = '2026-02-11';
 
 async function generateGuidesSitemap() {
   console.log('🚀 Generating guides sitemap from database...\n');
@@ -81,14 +82,9 @@ async function generateGuidesSitemap() {
 
     // Generate XML
     const guideUrls = allGuides.map((guide) => {
-      // Use updated_at if available, otherwise use current date
-      const lastmod = guide.updated_at 
-        ? new Date(guide.updated_at).toISOString() 
-        : currentDate;
-
       return `  <url>
     <loc>${baseUrl}/destinations/${guide.destination_id}/guides/${guide.category_slug}</loc>
-    <lastmod>${lastmod}</lastmod>
+    <lastmod>${SITEMAP_LASTMOD}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>`;

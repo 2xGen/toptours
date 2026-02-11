@@ -1,4 +1,5 @@
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
+import { getTagGuidesForDestination } from '@/lib/tagGuideContent';
 
 // Simple in-memory cache to avoid repeated DB calls during builds / SSR.
 // Keyed by normalized destination slug.
@@ -60,7 +61,10 @@ export async function getAllCategoryGuidesForDestination(destinationId) {
         return [];
       }
 
-      return Array.isArray(data) ? data : [];
+      const categoryGuides = Array.isArray(data) ? data : [];
+      const tagGuides = await getTagGuidesForDestination(normalizedDestinationId).catch(() => []);
+      const combined = [...categoryGuides, ...tagGuides];
+      return combined.sort((a, b) => (a.category_name || a.title || '').localeCompare(b.category_name || b.title || ''));
     } catch (dbError) {
       // Database error - return empty array
       console.error(`[getAllCategoryGuidesForDestination] Database lookup failed for ${normalizedDestinationId}: ${dbError?.message || dbError}`);

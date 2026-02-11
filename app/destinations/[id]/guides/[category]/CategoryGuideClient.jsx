@@ -33,7 +33,7 @@ import { getRestaurantsForDestination } from '../../restaurants/restaurantsData'
 const AIRPORT_TRANSFERS_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/airport%20transfers.png';
 const DISCOVER_CARS_URL = 'https://www.discovercars.com/?a_aid=toptours&a_cid=65100b9c';
 
-export default function CategoryGuideClient({ destinationId, categorySlug, guideData, categoryTours = [], promotionScores = {}, availableGuideSlugs = [], allAvailableGuides = [], destination: destinationProp, destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false } }) {
+export default function CategoryGuideClient({ destinationId, categorySlug, guideData, categoryTours = [], promotionScores = {}, availableGuideSlugs = [], allAvailableGuides = [], destination: destinationProp, destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }, viatorDestinationId = null, tagId = null }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [showStickyButton, setShowStickyButton] = React.useState(true);
   const supabase = createSupabaseBrowserClient();
@@ -240,17 +240,26 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
   const handleCloseModal = () => setIsModalOpen(false);
 
   // Load category tours on demand (like similar tours / reviews) - saves Viator cost for crawlers
+  // Tag guides: use product search with destination + tagIds for accuracy. Category guides: use freetext search.
   const loadCategoryTours = React.useCallback(async () => {
     if (!destination) return;
     setLoadingCategoryTours(true);
     try {
-      const destinationName = destination.fullName || destination.name;
-      const categoryName = guideData?.categoryName || guideData?.title || '';
-      const searchTerm = [categoryName, destinationName].filter(Boolean).join(' ').trim() || destinationName;
+      let body;
+      if (viatorDestinationId && tagId != null) {
+        // Tag guide: product search by destination + tag (more accurate than freetext)
+        body = { viatorDestinationId: String(viatorDestinationId), tagIds: [Number(tagId)], page: 1, includeDestination: true };
+      } else {
+        // Category guide or fallback: freetext search
+        const destinationName = destination.fullName || destination.name;
+        const categoryName = guideData?.categoryName || guideData?.title || '';
+        const searchTerm = [categoryName, destinationName].filter(Boolean).join(' ').trim() || destinationName;
+        body = { searchTerm, page: 1 };
+      }
       const res = await fetch('/api/internal/viator-search', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ searchTerm, page: 1 }),
+        body: JSON.stringify(body),
       });
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
@@ -265,7 +274,10 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
     } finally {
       setLoadingCategoryTours(false);
     }
-  }, [destination, guideData?.categoryName, guideData?.title]);
+  }, [destination, guideData?.categoryName, guideData?.title, viatorDestinationId, tagId]);
+
+  // H1 display title: strip site name suffix (e.g. " | TopTours.ai") so the heading is just the guide title
+  const displayTitle = (guideData?.title || '').replace(/\s*\|\s*TopTours\.ai\s*$/i, '').trim() || guideData?.title || '';
 
   // Icon mapping
   const iconMap = {
@@ -324,10 +336,13 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                   <span className="text-white/90 text-sm font-medium">{destination.name}</span>
                 </div>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold mb-3 text-white leading-tight">
-                  {guideData.title}
+                  {displayTitle}
                 </h1>
-                <p className="text-base sm:text-lg text-white/90 mb-4 leading-relaxed">
+                <p className="text-base sm:text-lg text-white/90 mb-2 leading-relaxed">
                   {guideData.subtitle}
+                </p>
+                <p className="text-sm text-white/80 mb-4">
+                  Compare the best {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in {destination.fullName || destination.name} — see prices, durations, and book with instant confirmation.
                 </p>
                 
                 {/* Quick Stats - Compact */}
@@ -356,7 +371,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full h-64 sm:h-80">
                   <Image
                     src={heroImageUrl}
-                    alt={`${guideData.categoryName || guideData.title} in ${destination.name} - ${guideData.subtitle || 'Book tours and activities'}`}
+                    alt={`${guideData.categoryName || displayTitle} in ${destination.name} - ${guideData.subtitle || 'Book tours and activities'}`}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
@@ -379,10 +394,13 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 <span className="text-white/90 text-sm font-medium">{destination.name}</span>
               </div>
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold mb-3 text-white leading-tight">
-                {guideData.title}
+                {displayTitle}
               </h1>
-              <p className="text-base sm:text-lg text-white/90 mb-4 leading-relaxed">
+              <p className="text-base sm:text-lg text-white/90 mb-2 leading-relaxed">
                 {guideData.subtitle}
+              </p>
+              <p className="text-sm text-white/80 mb-4">
+                Compare the best {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in {destination.fullName || destination.name} — see prices, durations, and book with instant confirmation.
               </p>
               
               {/* Quick Stats - Centered Compact */}
@@ -424,7 +442,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
       <DestinationStickyNav
         destinationId={destinationId}
         destinationName={destination.fullName || destination.name}
-        toursLinkText={`View all tours in ${destination.fullName || destination.name}`}
+        toursLinkText={`View ${destination.fullName || destination.name} tours & prices`}
         hasRestaurants={destinationFeatures.hasRestaurants}
         hasAirportTransfers={destinationFeatures.hasAirportTransfers}
         hasBabyEquipment={destinationFeatures.hasBabyEquipment}
@@ -458,12 +476,12 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                   <div className="flex-1">
                     <div className="flex items-center gap-2 text-blue-100 mb-2">
                       <MapPin className="w-4 h-4" />
-                      <span className="text-sm font-medium">Planning your {destination.name} trip?</span>
+                      <span className="text-sm font-medium">More things to do in {destination.name}</span>
                     </div>
                     <h3 className="text-white text-xl md:text-2xl font-bold mb-1">
-                      Explore All {destination.name} Tours & Activities
+                      View all {destination.name} tours & prices
                     </h3>
-                    <p className="text-white/80">Complete destination guide with {destination.tourCategories?.length || 6} activity categories</p>
+                    <p className="text-white/80">Compare tours, activities, and book with instant confirmation</p>
                   </div>
                   <ArrowRight className="w-6 h-6 text-white group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -471,7 +489,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
             </Link>
           </motion.div>
 
-          {/* Introduction */}
+          {/* Booking-intent lead (template from existing data) then Introduction */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -480,6 +498,9 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
             className="max-w-4xl mx-auto mb-12"
           >
             <div className="prose prose-lg max-w-none">
+              <p className="text-gray-800 font-medium leading-relaxed text-lg mb-6">
+                Compare top-rated {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in {destination.fullName || destination.name}. Small-group and guided options with local experts — see prices and availability below.
+              </p>
               <p className="text-gray-700 leading-relaxed text-lg">
                 {guideData.introduction}
               </p>
@@ -529,7 +550,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
             </motion.div>
           )}
 
-          {/* Load tours on demand (like similar tours / reviews) - saves Viator cost for crawlers */}
+          {/* Tours CTA: static preview (SEO/crawler-friendly, no API) + intent-rich link + optional in-place load */}
           {effectiveCategoryTours.length === 0 && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -545,7 +566,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 </div>
               ) : (
                 <Card className="overflow-hidden border-none shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200">
-                  <CardContent className="p-8 sm:p-10 text-center">
+                  <CardContent className="p-8 sm:p-10">
                     {guideData.categoryName && (
                       <span className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-4">
                         {guideData.categoryName}
@@ -556,20 +577,52 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                         ? `${guideData.categoryName} in ${destination.fullName || destination.name}`
                         : `Tours in ${destination.fullName || destination.name}`}
                     </h2>
-                    <p className="text-gray-600 text-sm max-w-md mx-auto mb-6">
-                      Click the button below to load <strong>{guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'}</strong>.
+                    {/* Static tour preview for SEO — no API, signals commercial intent to crawlers */}
+                    <p className="text-gray-700 text-sm mb-4">
+                      Compare top-rated {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in {destination.fullName || destination.name} — guided experiences, local experts, and small-group options. See prices, durations, and availability.
                     </p>
-                    <Button
-                      size="lg"
-                      onClick={loadCategoryTours}
-                      className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6 rounded-xl shadow-lg"
-                    >
-                      Load {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'}
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
-                    <p className="mt-4 text-xs text-gray-500">
-                      Or <Link href={`/destinations/${destinationId}/tours`} className="text-blue-600 hover:underline">view all tours</Link> in {destination.fullName || destination.name}
+                    {(() => {
+                      const expectItems = Array.isArray(guideData.whatToExpect?.items) ? guideData.whatToExpect.items : (Array.isArray(guideData.whatToExpect) ? guideData.whatToExpect : []);
+                      const hasBullets = expectItems.length > 0;
+                      return hasBullets ? (
+                        <ul className="text-gray-600 text-sm list-disc list-inside space-y-1 mb-6 text-left max-w-xl">
+                          {expectItems.slice(0, 5).map((item, i) => (
+                            <li key={i}>{typeof item === 'string' ? item : (item.title || item.description)}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <ul className="text-gray-600 text-sm list-disc list-inside space-y-1 mb-6 text-left max-w-xl">
+                          <li>Guided experiences with local experts</li>
+                          <li>Small groups and private options</li>
+                          <li>Typical duration 2–4 hours</li>
+                          <li>See prices and availability below</li>
+                        </ul>
+                      );
+                    })()}
+                    {/* Primary CTA: indexable link to tours page with intent-rich anchor (SEO) */}
+                    <p className="text-gray-800 font-medium mb-4">
+                      Looking to book?{' '}
+                      <Link
+                        href={`/destinations/${destinationId}/tours${guideData.categoryName ? `?search=${encodeURIComponent(guideData.categoryName)}` : ''}`}
+                        className="text-blue-600 hover:text-blue-800 underline font-semibold"
+                      >
+                        View all available {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in {destination.fullName || destination.name} with live pricing and instant confirmation
+                      </Link>
+                      .
                     </p>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                      <Button
+                        size="lg"
+                        onClick={loadCategoryTours}
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6 rounded-xl shadow-lg"
+                      >
+                        View {guideData.categoryName || 'tours'} in {destination.fullName || destination.name}
+                        <ArrowRight className="ml-2 w-5 h-5" />
+                      </Button>
+                      <span className="text-xs text-gray-500">
+                        or <Link href={`/destinations/${destinationId}/tours`} className="text-blue-600 hover:underline">browse all {destination.fullName || destination.name} tours</Link>
+                      </span>
+                    </div>
                   </CardContent>
                 </Card>
               )}
@@ -614,7 +667,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               <div className="mt-6 text-center">
                 <Button asChild variant="outline" size="lg" className="border-blue-300 text-blue-700 hover:bg-blue-50">
                   <Link href={`/destinations/${destinationId}/tours`}>
-                    View all tours in {destination.fullName || destination.name}
+                    View {destination.fullName || destination.name} tours & prices
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Link>
                 </Button>
@@ -736,7 +789,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           >
             <Link href={`/destinations/${destinationId}/tours`}>
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                View All Tours & Activities
+                View {destination.fullName || destination.name} tours & prices
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
@@ -877,7 +930,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 </p>
                 <Link href={`/destinations/${destinationId}/tours`}>
                   <Button size="lg" className="bg-white text-indigo-700 hover:bg-indigo-50 font-semibold text-lg px-10 py-7 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                    View all tours in {destination.fullName || destination.name}
+                    View {destination.fullName || destination.name} tours & prices
                     <ArrowRight className="ml-2 w-6 h-6" />
                   </Button>
                 </Link>
@@ -1253,7 +1306,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               size="lg"
               className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
             >
-              <span>View All Tours In {destination.name}</span>
+              <span>View {destination.fullName || destination.name} tours & prices</span>
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
@@ -1278,7 +1331,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
             </Button>
             <Button asChild className="flex-1">
               <Link href={`/destinations/${destinationId}/tours`}>
-                Go to Tours
+                View {destination?.fullName || destination?.name || 'tours'} tours & prices
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
