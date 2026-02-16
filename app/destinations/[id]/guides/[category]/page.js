@@ -8,9 +8,7 @@ import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import {
   getTagBySlug,
   getTagGuideContent,
-  saveTagGuideContent,
   contentToGuideData,
-  generateTagGuideContentWithGemini,
 } from '@/lib/tagGuideContent';
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
@@ -448,24 +446,35 @@ export default async function CategoryGuidePage({ params }) {
       console.log(`⚠️ Created minimal destination for ${destinationId}: ${destinationName} (no generated content found)`);
     }
 
-    // Tag guide (on-demand): resolve slug as Viator tag, use cached or generate with Gemini on first load
+    // Tag guide: resolve slug as Viator tag; serve cached content or show placeholder with "Generate with AI" (no auto-Gemini on load)
     let resolvedTagId = null;
+    let tagGuidePlaceholder = null;
     if (!guideData && destination && categorySlug !== 'airport-transfers') {
       const tag = await getTagBySlug(categorySlug);
       if (tag) {
         resolvedTagId = tag.tag_id;
         const normalizedDestId = normalizeSlug(destinationId);
-        let content = await getTagGuideContent(normalizedDestId, categorySlug);
-        if (!content) {
-          const destName = destination?.fullName || destination?.name || 'this destination';
-          content = await generateTagGuideContentWithGemini(destName, tag.tag_name_en);
-          if (content) {
-            await saveTagGuideContent(normalizedDestId, categorySlug, tag.tag_name_en, content);
-          }
-        }
+        const content = await getTagGuideContent(normalizedDestId, categorySlug);
         if (content) {
           guideData = contentToGuideData(content, destination?.fullName || destination?.name || destinationId, destination?.imageUrl);
           guideSource = 'tag_guide';
+        } else {
+          const destName = destination?.fullName || destination?.name || destinationId;
+          guideData = {
+            title: `${tag.tag_name_en} in ${destName}`,
+            subtitle: `Discover ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate this guide with AI to get tips, what to expect, and FAQs.`,
+            categoryName: tag.tag_name_en,
+            isPlaceholder: true,
+            introduction: '',
+            seo: { title: `${tag.tag_name_en} in ${destName} | TopTours.ai`, description: `Guide to ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate the full guide with AI.`, keywords: '' },
+            whyChoose: [],
+            faqs: [],
+            tourTypes: [],
+            whatToExpect: {},
+            expertTips: [],
+            stats: {},
+          };
+          tagGuidePlaceholder = { tagName: tag.tag_name_en, tagSlug: categorySlug };
         }
       }
     }
@@ -739,6 +748,7 @@ export default async function CategoryGuidePage({ params }) {
         destinationFeatures={features}
         viatorDestinationId={viatorDestinationId}
         tagId={resolvedTagId}
+        tagGuidePlaceholder={tagGuidePlaceholder}
         destination={{
           id: destination.id,
           name: destination.name,

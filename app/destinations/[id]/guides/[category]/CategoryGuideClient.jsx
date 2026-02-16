@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import DestinationStickyNav from '@/components/DestinationStickyNav';
@@ -33,9 +34,12 @@ import { getRestaurantsForDestination } from '../../restaurants/restaurantsData'
 const AIRPORT_TRANSFERS_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/airport%20transfers.png';
 const DISCOVER_CARS_URL = 'https://www.discovercars.com/?a_aid=toptours&a_cid=65100b9c';
 
-export default function CategoryGuideClient({ destinationId, categorySlug, guideData, categoryTours = [], promotionScores = {}, availableGuideSlugs = [], allAvailableGuides = [], destination: destinationProp, destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }, viatorDestinationId = null, tagId = null }) {
+export default function CategoryGuideClient({ destinationId, categorySlug, guideData, categoryTours = [], promotionScores = {}, availableGuideSlugs = [], allAvailableGuides = [], destination: destinationProp, destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }, viatorDestinationId = null, tagId = null, tagGuidePlaceholder = null }) {
+  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [showStickyButton, setShowStickyButton] = React.useState(true);
+  const [generatingGuide, setGeneratingGuide] = React.useState(false);
+  const [generateError, setGenerateError] = React.useState(null);
   const supabase = createSupabaseBrowserClient();
 
   // Tours loaded on demand (like similar tours / reviews) - saves Viator cost for crawlers
@@ -341,9 +345,11 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 <p className="text-base sm:text-lg text-white/90 mb-2 leading-relaxed">
                   {guideData.subtitle}
                 </p>
-                <p className="text-sm text-white/80 mb-4">
-                  Compare the best {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in {destination.fullName || destination.name} — see prices, durations, and book with instant confirmation.
-                </p>
+                {!guideData?.isPlaceholder && (
+                  <p className="text-sm text-white/80 mb-4">
+                    Compare the best {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in {destination.fullName || destination.name} — see prices, durations, and book with instant confirmation.
+                  </p>
+                )}
                 
                 {/* Quick Stats - Compact */}
                 {heroStats.tourCount > 0 && (
@@ -399,9 +405,11 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               <p className="text-base sm:text-lg text-white/90 mb-2 leading-relaxed">
                 {guideData.subtitle}
               </p>
-              <p className="text-sm text-white/80 mb-4">
-                Compare the best {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in {destination.fullName || destination.name} — see prices, durations, and book with instant confirmation.
-              </p>
+              {!guideData?.isPlaceholder && (
+                <p className="text-sm text-white/80 mb-4">
+                  Compare the best {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in {destination.fullName || destination.name} — see prices, durations, and book with instant confirmation.
+                </p>
+              )}
               
               {/* Quick Stats - Centered Compact */}
               {heroStats.tourCount > 0 && (
@@ -448,6 +456,75 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         hasBabyEquipment={destinationFeatures.hasBabyEquipment}
       />
 
+      {/* Tag guide placeholder: show "Generate with AI" CTA (no Gemini until user clicks) */}
+      {guideData?.isPlaceholder && tagGuidePlaceholder && (
+        <section className="py-12 sm:py-16 bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-2xl mx-auto text-center"
+            >
+              <div className="rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 p-8 sm:p-12 shadow-lg">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-100 text-blue-600 mb-6">
+                  <Sparkles className="w-7 h-7" />
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900 mb-3">
+                  Generate this guide with AI
+                </h2>
+                <p className="text-gray-600 mb-6">
+                  Get a tailored guide for <strong>{tagGuidePlaceholder.tagName}</strong> in <strong>{destination.fullName || destination.name}</strong> — what to expect, expert tips, and FAQs. One click, no sign-up.
+                </p>
+                {generateError && (
+                  <p className="text-red-600 text-sm mb-4">{generateError}</p>
+                )}
+                <Button
+                  size="lg"
+                  disabled={generatingGuide}
+                  onClick={async () => {
+                    setGenerateError(null);
+                    setGeneratingGuide(true);
+                    try {
+                      const res = await fetch('/api/internal/generate-tag-guide', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ destinationId, tagSlug: tagGuidePlaceholder.tagSlug }),
+                      });
+                      const data = await res.json().catch(() => ({}));
+                      if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+                      router.refresh();
+                    } catch (e) {
+                      setGenerateError(e?.message || 'Something went wrong. Please try again.');
+                    } finally {
+                      setGeneratingGuide(false);
+                    }
+                  }}
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6 rounded-xl shadow-lg"
+                >
+                  {generatingGuide ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin mr-2 inline" />
+                      Generating…
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="w-5 h-5 mr-2 inline" />
+                      Generate guide with AI
+                    </>
+                  )}
+                </Button>
+                <p className="text-xs text-gray-500 mt-6">
+                  Or <Link href={`/destinations/${destinationId}/tours`} className="text-blue-600 hover:underline">view tours in {destination.fullName || destination.name}</Link>
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {!guideData?.isPlaceholder && (
+      <>
       {/* Introduction Section with Background */}
       <section className="py-12 sm:py-16 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1288,6 +1365,8 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           })()}
         </div>
       </section>
+      </>
+      )}
     </div>
     
     {/* Sticky Floating Button */}
