@@ -1,6 +1,4 @@
-import { getTrendingToursByDestination, getTrendingRestaurantsByDestination, getPromotedToursByDestination, getPromotedRestaurantsByDestination } from '@/lib/promotionSystem';
-import { getRestaurantsForDestination, formatRestaurantForFrontend } from '@/lib/restaurants';
-import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
+import { getTrendingToursByDestination, getPromotedToursByDestination } from '@/lib/promotionSystem';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getHardcodedToursByDestination } from '@/lib/promotionSystem';
 import { getBabyEquipmentRentalsByDestination } from '@/lib/babyEquipmentRentals';
@@ -10,32 +8,19 @@ import { getBabyEquipmentRentalsByDestination } from '@/lib/babyEquipmentRentals
  * This function parallelizes independent queries to reduce total load time
  */
 export async function fetchDestinationData(destination, destinationIdForScores) {
-  // Parallelize all independent data fetching operations (promotion scores removed to save compute)
+  // Parallelize all independent data fetching operations (promotion scores removed to save compute; restaurants removed)
   const [
     trendingTours,
-    trendingRestaurants,
     promotedTourData,
-    promotedRestaurantData,
-    premiumRestaurantIds,
     hardcodedTours,
     categoryGuides,
-    restaurants,
     hasBabyEquipmentRentals
   ] = await Promise.allSettled([
     // Trending tours
     getTrendingToursByDestination(destinationIdForScores, 3).catch(() => []),
     
-    // Trending restaurants
-    getTrendingRestaurantsByDestination(destination.id, 3).catch(() => []),
-    
     // Promoted tour data (just IDs first)
     getPromotedToursByDestination(destinationIdForScores, 6).catch(() => []),
-    
-    // Promoted restaurant data
-    getPromotedRestaurantsByDestination(destination.id, 6).catch(() => []),
-    
-    // Premium restaurant IDs
-    getPremiumRestaurantIds(destination.id).then(set => Array.from(set)).catch(() => []),
     
     // Hardcoded tours (lightweight - no API calls)
     getHardcodedToursByDestination(destination.id).catch(() => ({})),
@@ -43,41 +28,19 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
     // Category guides
     getAllCategoryGuidesForDestination(destination.id).catch(() => []),
     
-    // Restaurants (only if env vars are available)
-    (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
-      ? getRestaurantsForDestination(destination.id)
-          .then(dbRestaurants => (dbRestaurants || [])
-            .map(restaurant => {
-              try {
-                return formatRestaurantForFrontend(restaurant);
-              } catch (err) {
-                return null;
-              }
-            })
-            .filter(Boolean)
-          )
-          .catch(() => [])
-      : Promise.resolve([])
-    ),
-    
     // Baby equipment rentals check
     getBabyEquipmentRentalsByDestination(destination.id)
       .then(data => !!data)
       .catch(() => false)
   ]);
 
-  // Extract values from Promise.allSettled results (promotion scores no longer fetched - pass empty)
+  // Extract values from Promise.allSettled results (promotion scores no longer fetched - pass empty; restaurants removed)
   const result = {
     promotionScores: {},
     trendingTours: trendingTours.status === 'fulfilled' ? trendingTours.value : [],
-    trendingRestaurants: trendingRestaurants.status === 'fulfilled' ? trendingRestaurants.value : [],
     promotedTourData: promotedTourData.status === 'fulfilled' ? promotedTourData.value : [],
-    promotedRestaurantData: promotedRestaurantData.status === 'fulfilled' ? promotedRestaurantData.value : [],
-    restaurantPromotionScores: {},
-    premiumRestaurantIds: premiumRestaurantIds.status === 'fulfilled' ? premiumRestaurantIds.value : [],
     hardcodedTours: hardcodedTours.status === 'fulfilled' ? hardcodedTours.value : {},
     categoryGuides: categoryGuides.status === 'fulfilled' ? categoryGuides.value : [],
-    restaurants: restaurants.status === 'fulfilled' ? restaurants.value : [],
     hasBabyEquipmentRentals: hasBabyEquipmentRentals.status === 'fulfilled' ? hasBabyEquipmentRentals.value : false,
   };
 
@@ -159,20 +122,8 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
     }
   }
 
-  // Match promoted restaurants with full restaurant data
-  let promotedRestaurants = [];
-  if (result.promotedRestaurantData.length > 0 && result.restaurants.length > 0) {
-    const promotedRestaurantIds = new Set(
-      result.promotedRestaurantData.map(pr => String(pr.id || pr.restaurant_id)).filter(Boolean)
-    );
-    promotedRestaurants = result.restaurants.filter(r => 
-      r.id && promotedRestaurantIds.has(String(r.id))
-    );
-  }
-
   return {
     ...result,
     promotedTours,
-    promotedRestaurants,
   };
 }

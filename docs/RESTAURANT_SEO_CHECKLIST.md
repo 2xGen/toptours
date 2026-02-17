@@ -48,11 +48,8 @@
 - ✅ **Internal Linking**: Links to tour guides, main tours page
 - ⚠️ **Missing**: `BreadcrumbList` schema
 
-### **5. Sitemaps**
-- ✅ **Main Sitemap** (`/sitemap.xml`): Includes restaurant listing pages and detail pages
-- ✅ **Restaurants Sitemap** (`/sitemap-restaurants.xml`): Dedicated sitemap for all restaurants
-- ✅ **Robots.txt**: References all sitemaps
-- ⚠️ **Missing**: Restaurant guide pages in sitemap
+### **5. Sitemaps** *(retired – site is tours-only)*
+- ~~Restaurants Sitemap~~ **Removed**: `/sitemap-restaurants.xml` is no longer generated. Remove from Google Search Console (see `docs/GSC_REMOVE_RESTAURANT_SITEMAP.md`).
 
 ### **6. Technical SEO**
 - ✅ **URL Structure**: Clean, descriptive slugs

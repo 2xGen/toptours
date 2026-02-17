@@ -38,8 +38,8 @@ import FooterNext from '@/components/FooterNext';
 import DestinationStickyNav from '@/components/DestinationStickyNav';
 import { motion } from 'framer-motion';
 import { 
-  ExternalLink, ArrowRight, Car, Hotel, Shield, Star, CheckCircle, 
-  Package, Baby, ShoppingCart, Heart, Sparkles, BookOpen, MapPin
+  ExternalLink, ArrowRight, Car, Shield, Star, CheckCircle, 
+  Package, Baby, ShoppingCart, Heart, Sparkles, BookOpen, MapPin, Plane
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -565,23 +565,23 @@ export default function BabyEquipmentClient({ destination, destinationFeatures =
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-            {/* Transportation Tips */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <Card className="border-gray-200 shadow-md h-full">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Car className="w-6 h-6 text-blue-600" />
-                    <h3 className="text-2xl font-bold text-gray-800">Transportation Tips</h3>
-                  </div>
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    {destination.gettingAround || `Getting around ${destinationName} is easy. Rent a car for maximum flexibility, or use taxis and public transport. Many hotels and vacation rentals offer convenient pickup and drop-off services.`}
-                  </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="w-full"
+          >
+            <Card className="border-gray-200 shadow-md w-full">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Car className="w-6 h-6 text-blue-600" />
+                  <h3 className="text-2xl font-bold text-gray-800">Transportation Tips</h3>
+                </div>
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  {destination.gettingAround || `Getting around ${destinationName} is easy. Rent a car for maximum flexibility, or use taxis and public transport. Many hotels and vacation rentals offer convenient pickup and drop-off services.`}
+                </p>
+                <div className={`grid gap-6 ${destinationFeatures.hasAirportTransfers ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
                   <div className="bg-gray-50 rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Car Rental Deals in {destinationName}</h4>
                     <p className="text-gray-600 text-sm mb-3">Rent a car for maximum flexibility and explore at your own pace on Expedia USA.</p>
@@ -592,38 +592,22 @@ export default function BabyEquipmentClient({ destination, destinationFeatures =
                       </Button>
                     </Link>
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Where to Stay */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <Card className="border-gray-200 shadow-md h-full">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Hotel className="w-6 h-6 text-purple-600" />
-                    <h3 className="text-2xl font-bold text-gray-800">Where to Stay</h3>
-                  </div>
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    Find the perfect accommodation for your {destinationName} adventure. From luxury resorts to cozy hotels and family-friendly vacation rentals, we've got you covered. Many properties offer baby-friendly amenities and are perfectly located for easy baby gear delivery.
-                  </p>
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-gray-800 mb-2">Best Hotel Deals in {destinationName}</h4>
-                    <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers on Trivago USA.</p>
-                    <Button variant="outline" className="w-full flex items-center justify-center gap-2" onClick={() => window.open(`https://tidd.ly/4snW11u`, '_blank')}>
-                      Find Hotel Deals
-                      <ExternalLink className="w-4 h-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
+                  {destinationFeatures.hasAirportTransfers && (
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <h4 className="font-semibold text-gray-800 mb-2">Airport Transfers in {destinationName}</h4>
+                      <p className="text-gray-600 text-sm mb-3">Compare shared and private transfer options to and from the airport. Book in advance for fixed pricing.</p>
+                      <Link href={`/destinations/${destination.id}/guides/airport-transfers`} className="block">
+                        <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+                          Book Airport Transfers
+                          <Plane className="w-4 h-4" />
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </section>
 

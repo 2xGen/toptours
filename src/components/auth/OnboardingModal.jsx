@@ -47,10 +47,10 @@ export default function OnboardingModal({ isOpen, onClose }) {
                     <span className="text-xs sm:text-sm font-semibold">Revolutionary Tour Discovery</span>
                   </div>
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
-                    Discover Amazing Tours & Restaurants
+                    Discover Amazing Tours & Excursions
                   </h2>
                   <p className="text-sm sm:text-base md:text-lg text-white/90">
-                    The first community-driven, AI-powered platform that helps you discover tours and restaurants that actually match your travel style.
+                    The first community-driven, AI-powered platform that helps you discover tours that actually match your travel style.
                   </p>
                 </div>
               </div>

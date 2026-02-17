@@ -7,9 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy, UtensilsCrossed, X, Save, Check, Sparkles, CheckCircle2, Loader2, Mail } from 'lucide-react';
+import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy, X, Save, Check, Sparkles, CheckCircle2, Loader2, Mail } from 'lucide-react';
 import ConfirmDialog from '@/components/ui/ConfirmDialog';
-import { COLOR_SCHEMES, CTA_OPTIONS } from '@/lib/restaurantPremium';
 import { SUBSCRIPTION_PRICING } from '@/lib/promotionSystem';
 import { toast } from '@/components/ui/use-toast';
 import Link from 'next/link';
@@ -25,9 +24,8 @@ export default function ProfilePage() {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(true);
   const [savedTours, setSavedTours] = useState([]);
-  const [savedRestaurants, setSavedRestaurants] = useState([]);
   const [loadingSaved, setLoadingSaved] = useState(false);
-  const [activeTab, setActiveTab] = useState('saved'); // 'profile' | 'trip' | 'saved' | 'plan'
+  const [activeTab, setActiveTab] = useState('saved'); // 'profile' | 'trip' | 'saved' | 'plan' | 'my-tours'
   const [planTier, setPlanTier] = useState('free');
   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
   const [subscriptionPlan, setSubscriptionPlan] = useState(null);
@@ -36,11 +34,7 @@ export default function ProfilePage() {
   const [stripeSubscriptionId, setStripeSubscriptionId] = useState(null);
   const [cancelling, setCancelling] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
-  const [premiumRestaurants, setPremiumRestaurants] = useState([]);
-  const [restaurantSubscriptions, setRestaurantSubscriptions] = useState([]); // New restaurant_subscriptions table
   const [loadingPortal, setLoadingPortal] = useState(false);
-  const [restaurantEdits, setRestaurantEdits] = useState({}); // Track edits per restaurant
-  const [savingRestaurant, setSavingRestaurant] = useState(null); // Which restaurant is being saved
   const [tourOperatorSubscriptions, setTourOperatorSubscriptions] = useState([]);
   const [showPromoteModal, setShowPromoteModal] = useState(false);
   const [selectedSubscriptionForPromotion, setSelectedSubscriptionForPromotion] = useState(null);
@@ -53,7 +47,7 @@ export default function ProfilePage() {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const tab = params.get('tab');
-      if (tab === 'trip' || tab === 'profile' || tab === 'plan' || tab === 'restaurant' || tab === 'my-restaurants' || tab === 'my-tours') {
+      if (tab === 'trip' || tab === 'profile' || tab === 'plan' || tab === 'my-tours') {
         setActiveTab(tab);
       }
     }
@@ -72,15 +66,6 @@ export default function ProfilePage() {
     maxPricePerPerson: '',
     mustHaveFlags: [],
     avoidTags: [],
-  });
-
-  const [restaurantPreferences, setRestaurantPreferences] = useState({
-    priceRange: 'any', // 'any', '$', '$$', '$$$', '$$$$'
-    mealTime: 'any', // 'any', 'breakfast', 'lunch', 'dinner'
-    atmosphere: 'any', // 'any', 'casual', 'relaxed', 'upscale', 'fine_dining'
-    groupSize: 'any', // 'any', 'solo', 'couple', 'family', 'groups'
-    features: [], // ['outdoor_seating', 'live_music', 'dog_friendly', 'family_friendly', 'reservations']
-    diningStyle: 50, // 0-100: 0 = casual/walk-in, 100 = formal/reservations required
   });
 
   useEffect(() => {
@@ -125,118 +110,10 @@ export default function ProfilePage() {
                 ...prev,
                 ...prefs,
               }));
-              // Extract restaurant preferences if they exist
-              if (prefs.restaurantPreferences) {
-                setRestaurantPreferences((prev) => ({
-                  ...prev,
-                  ...prefs.restaurantPreferences,
-                }));
-              }
             } catch {
               // ignore malformed JSON
             }
           }
-          
-          // Fetch user's premium restaurant subscriptions (old table)
-          const { data: premiumSubs } = await supabase
-            .from('restaurant_premium_subscriptions')
-            .select('*')
-            .eq('user_id', currentUser.id)
-            .in('status', ['active', 'pending_cancellation']);
-          
-          if (premiumSubs && premiumSubs.length > 0) {
-            setPremiumRestaurants(premiumSubs);
-          }
-          
-          // Fetch user's restaurant subscriptions from restaurant_premium_subscriptions
-          // Note: restaurant_subscriptions table is not used - all data is in restaurant_premium_subscriptions
-          const restaurantSubs = premiumSubs || [];
-          
-          // Also fetch promoted restaurants to check promotion status
-          // Fetch promoted restaurants for this user
-          // Now we can query directly by user_id - much more reliable!
-          const { data: promotedRestaurants } = await supabase
-            .from('promoted_restaurants')
-            .select('restaurant_id, status, promotion_plan, destination_id, restaurant_slug, restaurant_name, user_id, email')
-            .eq('user_id', currentUser.id) // Direct query by user_id - simple and reliable!
-            .in('status', ['active', 'pending'])
-            .order('requested_at', { ascending: false });
-          
-          // Initialize the subscriptions array
-          let allSubscriptions = [];
-          
-          // Map promoted restaurants to subscriptions
-          if (restaurantSubs && restaurantSubs.length > 0) {
-            const subscriptionsWithPromoted = restaurantSubs.map(sub => {
-              // Find matching promoted restaurant by restaurant ID and user ID
-              const promoted = promotedRestaurants?.find(pr => 
-                pr.restaurant_id === sub.restaurant_id && pr.user_id === currentUser.id
-              );
-              
-              return {
-                ...sub,
-                // Override promoted_listing_plan if we have an active promotion
-                // Always use the promotion_plan from promoted_restaurants if it exists and is active/pending
-                promoted_listing_plan: promoted && (promoted.status === 'active' || promoted.status === 'pending') 
-                  ? promoted.promotion_plan 
-                  : (sub.promoted_listing_plan || null),
-                // Add promotion status - this is critical for detecting promotions
-                promotion_status: promoted?.status || null,
-              };
-            });
-            
-            allSubscriptions = subscriptionsWithPromoted;
-          } else if (restaurantSubs) {
-            allSubscriptions = restaurantSubs;
-          }
-          
-          // Also handle promoted restaurants that don't have a subscription
-          // (standalone promotions created directly)
-          if (promotedRestaurants && promotedRestaurants.length > 0) {
-            // Get list of restaurant IDs from user's subscriptions (if any)
-            const userRestaurantIds = restaurantSubs?.map(sub => sub.restaurant_id) || [];
-            const existingSubscriptionIds = new Set(allSubscriptions.map(s => s.restaurant_id));
-            
-            const standalonePromoted = promotedRestaurants.filter(pr => {
-              // Include if it doesn't match an existing subscription's restaurant_id
-              return !existingSubscriptionIds.has(pr.restaurant_id);
-            });
-            
-            // Add standalone promoted restaurants to the list
-            if (standalonePromoted.length > 0) {
-              const standaloneSubs = standalonePromoted.map(pr => {
-                // Find the matching subscription to get user info (if exists)
-                const matchingSub = restaurantSubs?.find(sub => sub.restaurant_id === pr.restaurant_id);
-                
-                return {
-                  id: matchingSub?.id || `promoted-${pr.restaurant_id}`, // Use subscription ID if available
-                  restaurant_id: pr.restaurant_id,
-                  restaurant_name: pr.restaurant_name,
-                  restaurant_slug: pr.restaurant_slug,
-                  destination_id: pr.destination_id,
-                  restaurant_premium_plan: matchingSub?.restaurant_premium_plan || null,
-                  promoted_listing_plan: pr.promotion_plan,
-                  promotion_status: pr.status,
-                  status: pr.status === 'active' ? 'active' : 'pending',
-                  current_period_end: matchingSub?.current_period_end || null,
-                  stripe_customer_id: matchingSub?.stripe_customer_id || null,
-                  color_scheme: matchingSub?.color_scheme || 'blue',
-                  hero_cta_index: matchingSub?.hero_cta_index || 0,
-                  mid_cta_index: matchingSub?.mid_cta_index || 0,
-                  sticky_cta_index: matchingSub?.sticky_cta_index || 0,
-                };
-              });
-              
-              // Merge with existing subscriptions, avoiding duplicates
-              const existingIds = new Set(allSubscriptions.map(s => s.id));
-              const newSubs = standaloneSubs.filter(s => !existingIds.has(s.id));
-              allSubscriptions = [...allSubscriptions, ...newSubs];
-            }
-          }
-          
-          // Set the final subscriptions array
-          console.log('[Profile] Setting restaurant subscriptions:', allSubscriptions.length, allSubscriptions);
-          setRestaurantSubscriptions(allSubscriptions);
           
           // Fetch user's tour operator subscriptions
           const { data: tourOperatorSubs } = await supabase
@@ -351,28 +228,6 @@ export default function ProfilePage() {
         );
         const validTours = tourItems.filter(Boolean);
         setSavedTours(validTours);
-
-
-        // Fetch restaurant bookmarks
-        const restaurantsRes = await fetch(`/api/internal/restaurant-bookmarks?userId=${encodeURIComponent(user.id)}`);
-        const restaurantsJson = await restaurantsRes.json();
-        const restaurantBookmarks = restaurantsJson.bookmarks || [];
-        // Fetch restaurant details in parallel (cap to 24 for speed)
-        const restaurantItems = await Promise.all(
-          restaurantBookmarks.slice(0, 24).map(async (b) => {
-            try {
-              const r = await fetch(`/api/internal/restaurant/${encodeURIComponent(b.restaurant_id)}`);
-              if (!r.ok) return null;
-              const data = await r.json();
-              return { restaurantId: b.restaurant_id, restaurant: data, type: 'restaurant' };
-            } catch {
-              return null;
-            }
-          })
-        );
-        const validRestaurants = restaurantItems.filter(Boolean);
-        setSavedRestaurants(validRestaurants);
-
       } finally {
         setLoadingSaved(false);
       }
@@ -394,10 +249,7 @@ export default function ProfilePage() {
         .upsert({ 
           id: user.id, 
           display_name: displayName, 
-          trip_preferences: {
-            ...tripPreferences,
-            restaurantPreferences: restaurantPreferences,
-          }
+          trip_preferences: tripPreferences,
         });
       if (error) throw error;
       
@@ -414,11 +266,6 @@ export default function ProfilePage() {
         toast({
           title: 'Travel preferences saved',
           description: 'Your travel preferences have been updated successfully.',
-        });
-      } else if (activeTab === 'restaurant') {
-        toast({
-          title: 'Restaurant preferences saved',
-          description: 'Your restaurant preferences have been updated successfully.',
         });
       } else {
         toast({
@@ -529,29 +376,11 @@ export default function ProfilePage() {
                 Tour Preferences
               </button>
               <button
-                onClick={() => setActiveTab('restaurant')}
-                className={`w-full text-left px-3 py-2 rounded-lg ${activeTab === 'restaurant' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
-              >
-                Restaurant Preferences
-              </button>
-              <button
                 onClick={() => setActiveTab('saved')}
                 className={`w-full text-left px-3 py-2 rounded-lg ${activeTab === 'saved' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
               >
-                Saved Tours & Restaurants
+                Saved Tours
               </button>
-              {(premiumRestaurants.length > 0 || restaurantSubscriptions.length > 0) && (
-                <button
-                  onClick={() => setActiveTab('my-restaurants')}
-                  className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 ${activeTab === 'my-restaurants' ? 'bg-purple-50 text-purple-700' : 'hover:bg-gray-50 text-gray-700'}`}
-                >
-                  <Crown className="w-4 h-4 text-amber-500" />
-                  My Restaurants
-                  <span className="ml-auto bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded-full">
-                    {premiumRestaurants.length + restaurantSubscriptions.length}
-                  </span>
-                </button>
-              )}
               {tourOperatorSubscriptions.length > 0 && (
                 <button
                   onClick={() => setActiveTab('my-tours')}
@@ -944,245 +773,23 @@ export default function ProfilePage() {
               </div>
             )}
 
-            {activeTab === 'restaurant' && (
-              <div className="bg-white rounded-xl shadow p-4 sm:p-6 space-y-6">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                  <div className="flex-1">
-                    <h1 className="text-xl sm:text-2xl font-semibold mb-1">Restaurant Preferences</h1>
-                    <p className="text-sm text-gray-600 max-w-xl">
-                      Tell us your dining preferences so we can match you with restaurants that fit your style.
-                    </p>
-                  </div>
-                  <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-xs font-medium text-orange-700 self-start sm:self-auto">
-                    <span>🍽️</span>
-                    Powers restaurant matching
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-                  {/* Left column - Simple selects */}
-                  <div className="space-y-5">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-800 mb-1">
-                        💰 Price Range
-                      </label>
-                      <select
-                        className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-purple-500 focus:ring-purple-500"
-                        value={restaurantPreferences.priceRange}
-                        onChange={(e) =>
-                          setRestaurantPreferences((prev) => ({ ...prev, priceRange: e.target.value }))
-                        }
-                      >
-                        <option value="any">Any price range</option>
-                        <option value="$">$ - Budget friendly</option>
-                        <option value="$$">$$ - Moderate</option>
-                        <option value="$$$">$$$ - Upscale</option>
-                        <option value="$$$$">$$$$ - Fine dining</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-800 mb-1">
-                        🕐 Preferred Meal Time
-                      </label>
-                      <select
-                        className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-purple-500 focus:ring-purple-500"
-                        value={restaurantPreferences.mealTime}
-                        onChange={(e) =>
-                          setRestaurantPreferences((prev) => ({ ...prev, mealTime: e.target.value }))
-                        }
-                      >
-                        <option value="any">Any time</option>
-                        <option value="breakfast">Breakfast</option>
-                        <option value="lunch">Lunch</option>
-                        <option value="dinner">Dinner</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-800 mb-1">
-                        👥 Group Size
-                      </label>
-                      <select
-                        className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-purple-500 focus:ring-purple-500"
-                        value={restaurantPreferences.groupSize}
-                        onChange={(e) =>
-                          setRestaurantPreferences((prev) => ({ ...prev, groupSize: e.target.value }))
-                        }
-                      >
-                        <option value="any">Any group size</option>
-                        <option value="solo">Solo dining</option>
-                        <option value="couple">Couple / date night</option>
-                        <option value="family">Family with children</option>
-                        <option value="groups">Large groups</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Right column - Three-option cards */}
-                  <div className="space-y-6">
-                    {/* Atmosphere */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-800 mb-3">
-                        🎭 What kind of atmosphere do you prefer?
-                      </label>
-                      <div className="grid grid-cols-3 gap-3">
-                        {[
-                          { value: 'casual', label: '😌 Casual', desc: 'Relaxed & laid-back' },
-                          { value: 'relaxed', label: '🌳 Outdoor', desc: 'Al fresco dining' },
-                          { value: 'upscale', label: '✨ Upscale', desc: 'Refined experience' },
-                        ].map((option) => (
-                          <button
-                            key={option.value}
-                            type="button"
-                            onClick={() =>
-                              setRestaurantPreferences((prev) => ({
-                                ...prev,
-                                atmosphere: restaurantPreferences.atmosphere === option.value ? 'any' : option.value,
-                              }))
-                            }
-                            className={`relative p-4 rounded-xl border-2 transition-all duration-200 transform hover:scale-105 ${
-                              restaurantPreferences.atmosphere === option.value
-                                ? 'border-orange-500 bg-gradient-to-br from-orange-50 to-orange-100 shadow-lg scale-105'
-                                : 'border-gray-200 bg-white hover:border-orange-300 hover:bg-orange-50'
-                            }`}
-                          >
-                            <div className="text-2xl mb-1">{option.label.split(' ')[0]}</div>
-                            <div className="text-xs font-semibold text-gray-700 mb-1">
-                              {option.label.split(' ').slice(1).join(' ')}
-                            </div>
-                            <div className="text-xs text-gray-500">{option.desc}</div>
-                            {restaurantPreferences.atmosphere === option.value && (
-                              <div className="absolute top-2 right-2">
-                                <div className="w-5 h-5 rounded-full bg-orange-500 flex items-center justify-center">
-                                  <span className="text-white text-xs">✓</span>
-                                </div>
-                              </div>
-                            )}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Dining Style */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-800 mb-3">
-                        🍽️ Do you prefer casual walk-ins or formal reservations?
-                      </label>
-                      <div className="grid grid-cols-3 gap-3">
-                        {[
-                          { value: 25, label: '🚶 Casual', desc: 'Walk-in friendly' },
-                          { value: 50, label: '⚖️ Flexible', desc: 'Either way' },
-                          { value: 75, label: '📋 Formal', desc: 'Reservations preferred' },
-                        ].map((option) => (
-                          <button
-                            key={option.value}
-                            type="button"
-                            onClick={() =>
-                              setRestaurantPreferences((prev) => ({
-                                ...prev,
-                                diningStyle: option.value,
-                              }))
-                            }
-                            className={`relative p-4 rounded-xl border-2 transition-all duration-200 transform hover:scale-105 ${
-                              restaurantPreferences.diningStyle === option.value
-                                ? 'border-orange-500 bg-gradient-to-br from-orange-50 to-orange-100 shadow-lg scale-105'
-                                : 'border-gray-200 bg-white hover:border-orange-300 hover:bg-orange-50'
-                            }`}
-                          >
-                            <div className="text-2xl mb-1">{option.label.split(' ')[0]}</div>
-                            <div className="text-xs font-semibold text-gray-700 mb-1">
-                              {option.label.split(' ').slice(1).join(' ')}
-                            </div>
-                            <div className="text-xs text-gray-500">{option.desc}</div>
-                            {restaurantPreferences.diningStyle === option.value && (
-                              <div className="absolute top-2 right-2">
-                                <div className="w-5 h-5 rounded-full bg-orange-500 flex items-center justify-center">
-                                  <span className="text-white text-xs">✓</span>
-                                </div>
-                              </div>
-                            )}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Features */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-800 mb-3">
-                        ✨ Features & Amenities (select all that apply)
-                      </label>
-                      <div className="grid grid-cols-2 gap-3">
-                        {[
-                          { value: 'outdoor_seating', label: '🌳 Outdoor Seating', desc: 'Al fresco dining' },
-                          { value: 'live_music', label: '🎵 Live Music', desc: 'Entertainment' },
-                          { value: 'dog_friendly', label: '🐕 Dog Friendly', desc: 'Bring your pup' },
-                          { value: 'family_friendly', label: '👨‍👩‍👧 Family Friendly', desc: 'Kids welcome' },
-                          { value: 'reservations', label: '📅 Reservations', desc: 'Book ahead' },
-                        ].map((feature) => (
-                          <button
-                            key={feature.value}
-                            type="button"
-                            onClick={() => {
-                              const currentFeatures = restaurantPreferences.features || [];
-                              const isSelected = currentFeatures.includes(feature.value);
-                              setRestaurantPreferences((prev) => ({
-                                ...prev,
-                                features: isSelected
-                                  ? currentFeatures.filter((f) => f !== feature.value)
-                                  : [...currentFeatures, feature.value],
-                              }));
-                            }}
-                            className={`relative p-3 rounded-xl border-2 transition-all duration-200 text-left ${
-                              (restaurantPreferences.features || []).includes(feature.value)
-                                ? 'border-orange-500 bg-gradient-to-br from-orange-50 to-orange-100 shadow-md'
-                                : 'border-gray-200 bg-white hover:border-orange-300 hover:bg-orange-50'
-                            }`}
-                          >
-                            <div className="text-sm font-semibold text-gray-700 mb-0.5">
-                              {feature.label}
-                            </div>
-                            <div className="text-xs text-gray-500">{feature.desc}</div>
-                            {(restaurantPreferences.features || []).includes(feature.value) && (
-                              <div className="absolute top-2 right-2">
-                                <div className="w-5 h-5 rounded-full bg-orange-500 flex items-center justify-center">
-                                  <span className="text-white text-xs">✓</span>
-                                </div>
-                              </div>
-                            )}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t mt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                  <Button onClick={handleSave} disabled={saving} className="sunset-gradient text-white">
-                    {saving ? 'Saving…' : 'Save Restaurant Preferences'}
-                  </Button>
-                  <p className="text-xs sm:text-sm text-gray-600">
-                    These preferences help us match you with restaurants that fit your dining style.
-                  </p>
-                </div>
-              </div>
-            )}
+            {/* Restaurant preferences tab removed - tours only */}
 
             {activeTab === 'saved' && (
               <div>
                 <div className="mb-4 flex items-center justify-between">
-                  <h1 className="text-2xl font-semibold">Saved Tours & Restaurants</h1>
-                  {(savedTours.length + savedRestaurants.length) > 0 && (
+                  <h1 className="text-2xl font-semibold">Saved Tours</h1>
+                  {savedTours.length > 0 && (
                     <span className="text-sm text-gray-500">
-                      {savedTours.length + savedRestaurants.length} item{(savedTours.length + savedRestaurants.length) > 1 ? 's' : ''}
+                      {savedTours.length} item{savedTours.length > 1 ? 's' : ''}
                     </span>
                   )}
                 </div>
                 {loadingSaved ? (
-                  <p className="text-gray-600">Loading your saved items…</p>
-                ) : savedTours.length === 0 && savedRestaurants.length === 0 ? (
+                  <p className="text-gray-600">Loading your saved tours…</p>
+                ) : savedTours.length === 0 ? (
                   <div className="text-gray-600 bg-white rounded-xl shadow p-6">
-                    You haven't saved any tours or restaurants yet. Browse destinations and tap the heart to save your favorites.
+                    You haven't saved any tours yet. Browse destinations and tap the heart to save your favorites.
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1361,114 +968,6 @@ export default function ProfilePage() {
                                 </a>
                               </Button>
                             </div>
-                          </CardContent>
-                        </Card>
-                      );
-                    })}
-                    {/* Render saved restaurants */}
-                    {savedRestaurants.map(({ restaurantId, restaurant }) => {
-                      const rating = restaurant?.ratings?.googleRating || 0;
-                      const reviewCount = restaurant?.ratings?.reviewCount || 0;
-                      const priceRange = restaurant?.pricing?.priceRange || '';
-                      const name = restaurant?.name || 'Restaurant';
-                      const tagline = restaurant?.metaDescription || restaurant?.tagline || restaurant?.summary || restaurant?.description || '';
-                      const destinationId = restaurant?.destinationId || '';
-                      const slug = restaurant?.slug || '';
-                      const restaurantUrl = slug 
-                        ? `/destinations/${destinationId}/restaurants/${slug}`
-                        : `/destinations/${destinationId}/restaurants`;
-                      const cuisineLabel = restaurant?.cuisines?.[0] || 'Restaurant';
-                      
-                      return (
-                        <Card key={restaurantId} className="bg-white border border-gray-100 shadow-lg h-full flex flex-col hover:shadow-xl transition-all duration-300">
-                          <CardContent className="p-5 flex flex-col flex-grow">
-                            <div className="flex items-center gap-3 mb-3">
-                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center flex-shrink-0">
-                                <UtensilsCrossed className="w-5 h-5 text-white" />
-                              </div>
-                              <span className="text-xs font-semibold uppercase tracking-wider text-orange-600">
-                                {cuisineLabel}
-                              </span>
-                              {priceRange && (
-                                <span className="ml-auto text-sm font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded">
-                                  {priceRange}
-                                </span>
-                              )}
-                            </div>
-                            <div className="flex items-start justify-between gap-2 mb-2">
-                              <Link href={restaurantUrl} className="flex-1">
-                                <h3 className="font-semibold text-lg text-gray-800 line-clamp-2 hover:text-purple-600 transition-colors">
-                                  {name}
-                                </h3>
-                              </Link>
-                              <button
-                                type="button"
-                                aria-label="Saved"
-                                onClick={async (e) => {
-                                  e.preventDefault();
-                                  e.stopPropagation();
-                                  const { data } = await supabase.auth.getUser();
-                                  if (!data?.user) {
-                                    toast({
-                                      title: 'Sign in required',
-                                      description: 'Create a free account to save restaurants to your favorites.',
-                                    });
-                                    return;
-                                  }
-                                  try {
-                                    await fetch(`/api/internal/restaurant-bookmarks/${encodeURIComponent(restaurantId)}`, {
-                                      method: 'DELETE',
-                                      headers: { 'Content-Type': 'application/json' },
-                                      body: JSON.stringify({ userId: data.user.id }),
-                                    });
-                                    // Optimistically remove from list
-                                    setSavedRestaurants((prev) => prev.filter((r) => r.restaurantId !== restaurantId));
-                                    toast({
-                                      title: 'Removed from favorites',
-                                      description: 'This restaurant was removed from your saved list.',
-                                    });
-                                  } catch {}
-                                }}
-                                className="ml-2 inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors text-red-600 bg-white"
-                                title="Saved"
-                              >
-                                <Heart className="w-5 h-5" fill="currentColor" />
-                              </button>
-                            </div>
-
-                            <p className="text-sm text-gray-600 mb-3 line-clamp-2 flex-grow">
-                              {tagline}
-                            </p>
-
-                            <div className="flex items-center justify-between mb-3">
-                              {rating > 0 && (
-                                <div className="flex items-center">
-                                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                                  <span className="font-medium text-gray-700 ml-1 text-sm" suppressHydrationWarning>
-                                    {typeof rating === 'number' ? rating.toFixed(1) : rating}
-                                  </span>
-                                  <span className="text-gray-500 text-xs ml-1" suppressHydrationWarning>
-                                    ({typeof reviewCount === 'number' ? reviewCount.toLocaleString('en-US') : reviewCount})
-                                  </span>
-                                </div>
-                              )}
-                              {restaurant?.cuisines && restaurant.cuisines.length > 0 && (
-                                <div className="flex items-center text-gray-600 text-sm">
-                                  <UtensilsCrossed className="w-4 h-4 mr-1" />
-                                  <span className="line-clamp-1">{restaurant.cuisines[0]}</span>
-                                </div>
-                              )}
-                            </div>
-
-                            <Button
-                              asChild
-                              className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
-                            >
-                              <Link href={restaurantUrl}>
-                                View Details
-                                <ArrowRight className="w-4 h-4 ml-2" />
-                              </Link>
-                            </Button>
                           </CardContent>
                         </Card>
                       );
@@ -1831,557 +1330,6 @@ export default function ProfilePage() {
                         Subscribe to Premium
                       </Button>
                     </Link>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Plan tab removed - no longer used */}
-
-            {activeTab === 'my-restaurants' && (
-              <div className="bg-white rounded-xl shadow p-6 space-y-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 rounded-lg bg-amber-100">
-                    <Crown className="w-6 h-6 text-amber-600" />
-                  </div>
-                      <div>
-                    <h1 className="text-2xl font-semibold">My Premium Restaurants</h1>
-                    <p className="text-sm text-gray-600">Manage your restaurant premium listings</p>
-                        </div>
-                        </div>
-
-                <div className="space-y-4">
-                  {/* New restaurant subscriptions (includes premium and promoted) */}
-                  {restaurantSubscriptions.map((subscription) => {
-                    // Check if premium: use plan_type (yearly/monthly) or restaurant_premium_plan (annual/monthly)
-                    const hasPremium = (subscription.plan_type && (subscription.plan_type === 'yearly' || subscription.plan_type === 'monthly')) ||
-                                      (subscription.restaurant_premium_plan && subscription.restaurant_premium_plan !== '');
-                    // Check both promoted_listing_plan and promotion_status (from promoted_restaurants table)
-                    // If promotion_status is active/pending, the restaurant is promoted even if promoted_listing_plan is null
-                    const hasPromoted = (subscription.promoted_listing_plan && subscription.promoted_listing_plan !== '') || 
-                                      (subscription.promotion_status === 'active' || subscription.promotion_status === 'pending');
-                    // Get the promotion plan - use promoted_listing_plan if available, otherwise try to get it from the mapping
-                    const promotionPlan = subscription.promoted_listing_plan || (hasPromoted ? 'monthly' : null);
-                    // Get premium plan display
-                    const premiumPlanDisplay = subscription.plan_type === 'yearly' ? 'Annual' : 
-                                               subscription.plan_type === 'monthly' ? 'Monthly' :
-                                               subscription.restaurant_premium_plan === 'annual' ? 'Annual' : 
-                                               subscription.restaurant_premium_plan === 'monthly' ? 'Monthly' : null;
-
-                    return (
-                      <div key={subscription.id} className="border rounded-xl p-5 hover:shadow-md transition-shadow">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-                      <div>
-                            <div className="flex items-center gap-2 mb-1">
-                              <h3 className="font-semibold text-lg">{subscription.restaurant_name}</h3>
-                              <Badge variant="outline" className={subscription.status === 'active' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-amber-50 text-amber-700 border-amber-200'}>
-                                {subscription.status === 'active' ? 'Active' : 'Pending'}
-                              </Badge>
-                              {hasPromoted && (
-                                <Badge className="bg-purple-600 text-white text-xs flex items-center gap-1">
-                                  <Sparkles className="w-3 h-3" />
-                                  Promoted
-                            </Badge>
-                          )}
-                          </div>
-                            <p className="text-sm text-gray-500">
-                              {hasPremium && premiumPlanDisplay && (
-                                <>Premium ({premiumPlanDisplay})</>
-                              )}
-                              {hasPremium && hasPromoted && ' • '}
-                              {hasPromoted && (
-                                <>Promoted ({promotionPlan === 'annual' || promotionPlan === 'yearly' ? 'Annual' : 'Monthly'})</>
-                              )}
-                              {subscription.current_period_end && (
-                                <> • Renews {new Date(subscription.current_period_end).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</>
-                              )}
-                            </p>
-                          </div>
-                          <div className="flex gap-2">
-                            <Link
-                              href={`/destinations/${subscription.destination_id}/restaurants/${subscription.restaurant_slug}`}
-                              className="inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-                            >
-                              <ExternalLink className="w-4 h-4" />
-                              View
-                            </Link>
-                            <Button
-                              onClick={async () => {
-                                setLoadingPortal(true);
-                                try {
-                                  const res = await fetch('/api/internal/restaurant-premium/portal', {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify({
-                                      customerId: subscription.stripe_customer_id, // Try direct customer ID first
-                                      subscriptionId: subscription.id, // Fallback: fetch from DB if customerId is null
-                                      userId: user.id, // Required for fetching subscription
-                                      returnUrl: window.location.href 
-                                    }),
-                                  });
-                                  const data = await res.json();
-                                  if (data.url) {
-                                    window.location.href = data.url;
-                                  } else {
-                                    throw new Error(data.error || 'Failed to open billing portal');
-                                  }
-                                } catch (error) {
-                                  toast({
-                                    title: 'Error',
-                                    description: error.message,
-                                    variant: 'destructive',
-                                  });
-                                } finally {
-                                  setLoadingPortal(false);
-                                }
-                              }}
-                              disabled={loadingPortal}
-                              variant="outline"
-                              size="sm"
-                            >
-                              Billing
-                            </Button>
-                            <Button
-                              onClick={async () => {
-                                setLoadingPortal(true);
-                                try {
-                                  const res = await fetch('/api/internal/resend-restaurant-confirmation-email', {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify({
-                                      subscriptionId: subscription.id,
-                                      restaurantId: subscription.restaurant_id,
-                                      userId: user.id,
-                                    }),
-                                  });
-                                  const data = await res.json();
-                                  if (data.success) {
-                                    toast({
-                                      title: 'Email sent',
-                                      description: 'Confirmation email has been sent to your email address.',
-                                    });
-                                  } else {
-                                    throw new Error(data.error || 'Failed to send email');
-                                  }
-                                } catch (error) {
-                                  toast({
-                                    title: 'Error',
-                                    description: error.message,
-                                    variant: 'destructive',
-                                  });
-                                } finally {
-                                  setLoadingPortal(false);
-                                }
-                              }}
-                              disabled={loadingPortal}
-                              variant="ghost"
-                              size="sm"
-                              title="Resend confirmation email"
-                            >
-                              <Mail className="w-4 h-4" />
-                            </Button>
-                            </div>
-                        </div>
-
-                        {/* Promote Restaurant Section - Always show if has premium subscription */}
-                        {hasPremium && (
-                          <div className="mt-4 pt-4 border-t">
-                            <div className="flex items-center justify-between mb-3">
-                              <div>
-                                <h4 className="text-sm font-semibold text-gray-700 mb-1">Upgrade to Promoted</h4>
-                                <p className="text-xs text-gray-500">
-                                  Promote your restaurant for top placement
-                                </p>
-                              </div>
-                            </div>
-                            {!hasPromoted ? (
-                              <Button
-                                onClick={async () => {
-                                  // Determine billing cycle from premium subscription
-                                  // Convert to 'annual' or 'monthly' (not 'yearly')
-                                  const upgradeBillingCycle = subscription.plan_type === 'yearly' ? 'annual' :
-                                                             subscription.plan_type === 'monthly' ? 'monthly' :
-                                                             subscription.restaurant_premium_plan === 'annual' ? 'annual' :
-                                                             subscription.restaurant_premium_plan === 'monthly' ? 'monthly' : 'annual';
-                                  setLoadingPortal(true);
-                                  try {
-                                    const res = await fetch('/api/partners/restaurants/upgrade', {
-                                      method: 'POST',
-                                      headers: { 'Content-Type': 'application/json' },
-                                      body: JSON.stringify({
-                                        userId: user.id,
-                                        subscriptionId: subscription.id,
-                                        promotedBillingCycle: upgradeBillingCycle,
-                                      }),
-                                    });
-                                    if (!res.ok) {
-                                      const errorData = await res.json().catch(() => ({ error: 'Network error' }));
-                                      throw new Error(errorData.error || `HTTP ${res.status}: ${res.statusText}`);
-                                    }
-                                    
-                                    const data = await res.json();
-                                    console.log('Restaurant upgrade response:', data);
-                                    
-                                    if (data.success) {
-                                      toast({
-                                        title: 'Upgrade successful!',
-                                        description: 'Promotion has been added to your subscription.',
-                                      });
-                                      setLoadingPortal(false);
-                                      // Refresh subscriptions
-                                      setTimeout(() => {
-                                        window.location.reload();
-                                      }, 1000);
-                                    } else if (data.requiresCheckout && data.checkoutUrl) {
-                                      // Redirect to Stripe checkout
-                                      console.log('Redirecting to checkout:', data.checkoutUrl);
-                                      window.location.href = data.checkoutUrl;
-                                    } else {
-                                      throw new Error(data.error || data.message || 'Failed to upgrade');
-                                    }
-                                  } catch (error) {
-                                    console.error('Restaurant upgrade error:', error);
-                                    toast({
-                                      title: 'Upgrade failed',
-                                      description: error.message || 'An unexpected error occurred. Please try again.',
-                                      variant: 'destructive',
-                                    });
-                                    setLoadingPortal(false);
-                                  }
-                                }}
-                                disabled={loadingPortal}
-                                className="bg-purple-600 hover:bg-purple-700 text-white"
-                                size="sm"
-                              >
-                                <Sparkles className="w-4 h-4 mr-1" />
-                                Promote Restaurant
-                              </Button>
-                            ) : (
-                              <p className="text-sm text-gray-600">Your restaurant is already promoted!</p>
-                            )}
-                          </div>
-                        )}
-
-                        {/* Settings row - Show if has premium subscription OR promoted listing (both allow customization) */}
-                        {(hasPremium || hasPromoted) && (
-                          <>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-gray-50 rounded-lg mt-4">
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Button Color</label>
-                                <div className="flex gap-2">
-                                  {Object.entries(COLOR_SCHEMES).map(([schemeKey, scheme]) => {
-                                    const colorMap = { blue: '#2563eb', coral: '#f97316', teal: '#0d9488' };
-                                    const key = `sub-${subscription.id}`;
-                                    const edits = restaurantEdits[key] || {};
-                                    const currentColor = edits.colorScheme ?? subscription.color_scheme ?? 'blue';
-                                    return (
-                                      <button
-                                        key={schemeKey}
-                                        onClick={() => setRestaurantEdits(prev => ({
-                                          ...prev,
-                                          [key]: { ...prev[key], colorScheme: schemeKey }
-                                        }))}
-                                        className={`w-10 h-10 rounded-lg border-2 transition-all ${
-                                          currentColor === schemeKey 
-                                            ? 'border-gray-900 scale-110 shadow-md' 
-                                            : 'border-gray-200 hover:border-gray-400'
-                                        }`}
-                                        style={{ backgroundColor: colorMap[schemeKey] }}
-                                        title={scheme.name}
-                                      >
-                                        {currentColor === schemeKey && (
-                                          <Check className="w-5 h-5 text-white mx-auto" />
-                                        )}
-                                      </button>
-                                    );
-                                  })}
-                                </div>
-                              </div>
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Hero Button</label>
-                                <select
-                                  value={restaurantEdits[`sub-${subscription.id}`]?.heroCTAIndex ?? subscription.hero_cta_index ?? 0}
-                                  onChange={(e) => setRestaurantEdits(prev => ({
-                                    ...prev,
-                                    [`sub-${subscription.id}`]: { ...prev[`sub-${subscription.id}`], heroCTAIndex: parseInt(e.target.value) }
-                                  }))}
-                                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                                >
-                                  {CTA_OPTIONS.hero.map((option, idx) => (
-                                    <option key={idx} value={idx}>{option.text}</option>
-                                  ))}
-                                </select>
-                              </div>
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Mid-Page Banner</label>
-                                <select
-                                  value={restaurantEdits[`sub-${subscription.id}`]?.midCTAIndex ?? subscription.mid_cta_index ?? 0}
-                                  onChange={(e) => setRestaurantEdits(prev => ({
-                                    ...prev,
-                                    [`sub-${subscription.id}`]: { ...prev[`sub-${subscription.id}`], midCTAIndex: parseInt(e.target.value) }
-                                  }))}
-                                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                                >
-                                  {CTA_OPTIONS.mid.map((option, idx) => (
-                                    <option key={idx} value={idx}>{option.text}</option>
-                                  ))}
-                                </select>
-                              </div>
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Sticky Button</label>
-                                <select
-                                  value={restaurantEdits[`sub-${subscription.id}`]?.stickyCTAIndex ?? subscription.sticky_cta_index ?? 0}
-                                  onChange={(e) => setRestaurantEdits(prev => ({
-                                    ...prev,
-                                    [`sub-${subscription.id}`]: { ...prev[`sub-${subscription.id}`], stickyCTAIndex: parseInt(e.target.value) }
-                                  }))}
-                                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                                >
-                                  {CTA_OPTIONS.sticky.map((option, idx) => (
-                                    <option key={idx} value={idx}>{option.text}</option>
-                                  ))}
-                                </select>
-                              </div>
-                            </div>
-
-                            {/* Save button - only show if changes */}
-                            {(() => {
-                              const key = `sub-${subscription.id}`;
-                              const edits = restaurantEdits[key] || {};
-                              const hasChanges = edits.colorScheme !== undefined || edits.heroCTAIndex !== undefined || edits.midCTAIndex !== undefined || edits.stickyCTAIndex !== undefined;
-                              
-                              if (!hasChanges) return null;
-                              
-                              return (
-                                <div className="mt-4 flex justify-end">
-                                  <Button
-                                    onClick={async () => {
-                                      setSavingRestaurant(key);
-                                      try {
-                                        const res = await fetch('/api/internal/restaurant-premium/update-settings', {
-                                          method: 'POST',
-                                          headers: { 'Content-Type': 'application/json' },
-                                          body: JSON.stringify({
-                                            restaurantId: subscription.restaurant_id,
-                                            destinationId: subscription.destination_id,
-                                            userId: user.id,
-                                            subscriptionId: subscription.id, // Include subscription ID for new table
-                                            colorScheme: edits.colorScheme,
-                                            heroCTAIndex: edits.heroCTAIndex,
-                                            midCTAIndex: edits.midCTAIndex,
-                                            endCTAIndex: edits.midCTAIndex, // End uses same as mid
-                                            stickyCTAIndex: edits.stickyCTAIndex,
-                                          }),
-                                        });
-                                        const data = await res.json();
-                                        if (data.success) {
-                                          // Update local state
-                                          setRestaurantSubscriptions(prev => prev.map(s => 
-                                            s.id === subscription.id
-                                              ? { 
-                                                  ...s, 
-                                                  color_scheme: edits.colorScheme ?? s.color_scheme,
-                                                  hero_cta_index: edits.heroCTAIndex ?? s.hero_cta_index,
-                                                  mid_cta_index: edits.midCTAIndex ?? s.mid_cta_index,
-                                                  end_cta_index: edits.midCTAIndex ?? s.end_cta_index,
-                                                  sticky_cta_index: edits.stickyCTAIndex ?? s.sticky_cta_index,
-                                                }
-                                              : s
-                                          ));
-                                          // Clear edits
-                                          setRestaurantEdits(prev => {
-                                            const newEdits = { ...prev };
-                                            delete newEdits[key];
-                                            return newEdits;
-                                          });
-                                          toast({
-                                            title: 'Settings saved!',
-                                            description: 'Your changes are now live on your restaurant page.',
-                                          });
-                                        } else {
-                                          throw new Error(data.error || 'Failed to save settings');
-                                        }
-                                      } catch (error) {
-                                        toast({
-                                          title: 'Error',
-                                          description: error.message,
-                                          variant: 'destructive',
-                                        });
-                                      } finally {
-                                        setSavingRestaurant(null);
-                                      }
-                                    }}
-                                    disabled={savingRestaurant === key}
-                                    className="bg-green-600 hover:bg-green-700 text-white"
-                                  >
-                                    {savingRestaurant === key ? (
-                                      'Saving...'
-                                    ) : (
-                                      <>
-                                        <Save className="w-4 h-4 mr-2" />
-                                        Save Changes
-                                      </>
-                                    )}
-                                  </Button>
-                                </div>
-                              );
-                            })()}
-                          </>
-                        )}
-                      </div>
-                    );
-                  })}
-                  
-                  {/* Show message if no subscriptions */}
-                  {restaurantSubscriptions.length === 0 && (
-                    <div className="text-center py-12">
-                      <Crown className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                      <p className="text-gray-500 mb-4">No restaurant subscriptions yet</p>
-                      <Link href="/partners/restaurants">
-                        <Button className="sunset-gradient text-white">
-                          Subscribe to Premium
-                        </Button>
-                      </Link>
-                    </div>
-                  )}
-                </div>
-
-                {/* Tip section */}
-                {restaurantSubscriptions.length > 0 && (
-                  <div className="bg-purple-50 rounded-lg p-4 text-sm text-purple-800">
-                    <p className="font-medium mb-1">💡 Tip</p>
-                    <p>Changes are instant! After saving, refresh your restaurant page to see the updates.</p>
-                  </div>
-                )}
-
-                {/* Cancel Subscription Button - Only show if user has active subscription */}
-                {subscriptionStatus === 'active' && subscriptionPlan && subscriptionPlan !== 'free' && (
-                  <div className="flex justify-center mt-6">
-                    <Button
-                      onClick={() => setShowCancelModal(true)}
-                      variant="ghost"
-                      size="sm"
-                      className="text-xs text-gray-500 hover:text-gray-700 hover:bg-gray-100"
-                    >
-                      Cancel Subscription
-                    </Button>
-                  </div>
-                )}
-
-                {/* Cancel Subscription Modal */}
-                {showCancelModal && (
-                  <div 
-                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
-                    onClick={() => setShowCancelModal(false)}
-                  >
-                    <div 
-                      className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 space-y-4"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <div className="text-center">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Cancel Subscription?</h3>
-                        <p className="text-gray-600 mb-4">
-                          We'd hate to see you go! 😢
-                        </p>
-                        <p className="text-sm text-gray-700 mb-2">
-                          Your subscription perks will remain active until{' '}
-                          <span className="font-semibold text-gray-900">
-                            {subscriptionEndDate 
-                              ? new Date(subscriptionEndDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-                              : 'the end of your billing period'}
-                          </span>.
-                        </p>
-                        <p className="text-sm text-gray-700 mb-2">
-                          After that date, you'll be automatically moved to the free plan and will lose access to your subscription benefits:
-                        </p>
-                        <ul className="text-sm text-gray-600 text-left max-w-sm mx-auto space-y-1 mb-4">
-                          <li>• Daily points will reset to 50 (free tier)</li>
-                          <li>• AI matches will reset to 1 per day</li>
-                          <li>• Subscription badge will be removed</li>
-                        </ul>
-                        <p className="text-xs text-gray-500">
-                          This happens automatically when your subscription period ends.
-                        </p>
-                      </div>
-                      <div className="flex gap-3 pt-4">
-                        <Button
-                          onClick={() => setShowCancelModal(false)}
-                          variant="outline"
-                          className="flex-1"
-                        >
-                          Do Not Cancel
-                        </Button>
-                        <Button
-                          onClick={async () => {
-                            setShowCancelModal(false);
-                            setCancelling(true);
-                            try {
-                              const response = await fetch('/api/internal/promotion/cancel-subscription', {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({
-                                  userId: user.id,
-                                }),
-                              });
-
-                              const data = await response.json();
-
-                              if (!response.ok) {
-                                throw new Error(data.error || 'Failed to cancel subscription');
-                              }
-
-                              toast({
-                                title: 'Subscription cancelled',
-                                description: 'Your subscription will remain active until the end of your billing period.',
-                              });
-
-                              // Reload subscription data to show updated status
-                              // NOTE: promotion_accounts table removed - get subscription info from profiles instead
-                              try {
-                                const { data: profile } = await supabase
-                                  .from('profiles')
-                                  .select('plan_tier')
-                                  .eq('id', user.id)
-                                  .maybeSingle();
-                                
-                                if (profile) {
-                                  // Set basic subscription info from profile
-                                  setSubscriptionPlan(profile.plan_tier || 'free');
-                                  setSubscriptionStatus(profile.plan_tier && profile.plan_tier !== 'free' ? 'active' : 'cancelled');
-                                }
-                              } catch (error) {
-                                console.warn('Error fetching subscription status from profiles:', error);
-                              }
-                              
-                              // Also refresh from profiles to get updated plan_tier
-                              const { data: profile } = await supabase
-                                .from('profiles')
-                                .select('plan_tier')
-                                .eq('id', user.id)
-                                .single();
-                              
-                              if (profile?.plan_tier) {
-                                setPlanTier(profile.plan_tier);
-                              }
-                            } catch (error) {
-                              console.error('Error cancelling subscription:', error);
-                              toast({
-                                title: 'Cancellation failed',
-                                description: error.message || 'Failed to cancel subscription. Please try again.',
-                                variant: 'destructive',
-                              });
-                            } finally {
-                              setCancelling(false);
-                            }
-                          }}
-                          disabled={cancelling}
-                          variant="destructive"
-                          className="flex-1"
-                        >
-                          {cancelling ? 'Cancelling...' : 'Cancel Subscription'}
-                        </Button>
-                      </div>
-                    </div>
                   </div>
                 )}
               </div>

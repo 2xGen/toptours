@@ -9,7 +9,7 @@ const WhyChoose = () => {
     {
       icon: Sparkles,
       title: 'AI-Powered Matching',
-      description: 'Our advanced AI analyzes your preferences and matches you with tours and restaurants that fit your style perfectly.',
+      description: 'Our advanced AI analyzes your preferences and matches you with tours that fit your style perfectly.',
       color: 'from-purple-500 to-pink-500'
     },
     {
@@ -33,13 +33,13 @@ const WhyChoose = () => {
     {
       icon: Globe,
       title: 'Worldwide Coverage',
-      description: 'Access to 300,000+ tours, 10,000+ restaurants, and 19,000+ travel guides across 3,300+ destinations.',
+      description: 'Access to 300,000+ tours and 19,000+ travel guides across 3,300+ destinations.',
       color: 'from-indigo-500 to-purple-500'
     },
     {
       icon: Heart,
       title: 'Save Your Favorites',
-      description: 'Create a free account to save unlimited tours and restaurants, and get personalized recommendations.',
+      description: 'Create a free account to save unlimited tours and get personalized recommendations.',
       color: 'from-pink-500 to-rose-500'
     },
   ];

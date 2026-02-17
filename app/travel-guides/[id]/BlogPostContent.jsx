@@ -2902,7 +2902,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                             asChild
                             className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-5 py-3 font-semibold"
                           >
-                            <Link href="/destinations/aruba/restaurants">
+                            <Link href="/destinations/aruba">
                               See Top Restaurants →
                             </Link>
                           </Button>
@@ -3144,7 +3144,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                             asChild
                             className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-5 py-3 font-semibold"
                           >
-                            <Link href="/destinations/aruba/restaurants">
+                            <Link href="/destinations/aruba">
                               See Top Restaurants →
                             </Link>
                           </Button>
@@ -3349,21 +3349,21 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                       <div className="space-y-4 text-gray-700 leading-relaxed">
                         <p><strong>Morning:</strong> Touch down, drop your bags along Palm or Eagle Beach, and kick things off with brunch—The Dutch Pancake House or Eduardo’s Beach Shack make it easy. Walk the Palm Beach boardwalk to get your bearings or hop over to Eagle Beach for its powder-fine sand.</p>
                         <p><strong>Midday:</strong> Ease into island time with a lounger session and a dip in the calm turquoise water. If you’re itching to explore, grab a stand-up paddleboard or wander through the boutiques and cafés at Palm Beach Plaza.</p>
-                        <p><strong>Evening:</strong> Board a champagne sunset sail for a front-row seat to Aruba’s famous golden hour, then dine directly on the sand at <Link href="/destinations/aruba/restaurants/passions-on-the-beach-aruba" className="text-orange-600 hover:underline">Passions on the Beach</Link>. Torchlight, live music, and a rotating seafood menu set the tone for the rest of your stay.</p>
+                        <p><strong>Evening:</strong> Board a champagne sunset sail for a front-row seat to Aruba’s famous golden hour, then dine directly on the sand at <Link href="/destinations/aruba" className="text-orange-600 hover:underline">Passions on the Beach</Link>. Torchlight, live music, and a rotating seafood menu set the tone for the rest of your stay.</p>
                       </div>
 
                       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Day 2 – Desert Trails, Street Art & Dockside Seafood</h2>
                       <div className="space-y-4 text-gray-700 leading-relaxed">
                         <p><strong>Morning:</strong> Join an early UTV or Jeep adventure through Arikok National Park. Expect cacti-dotted landscapes, visits to the Natural Bridge, California Lighthouse, and dramatic northern cliffs.</p>
-                        <p><strong>Midday:</strong> Reward the dust with fried snapper baskets, plantain, and coconut shrimp at <Link href="/destinations/aruba/restaurants/zeerovers-aruba" className="text-orange-600 hover:underline">Zeerovers Aruba</Link> in Savaneta—this locals’ dockside spot is worth the drive. On the way back north, swing by the San Nicolas street art district for Caribbean murals and coffee shops.</p>
-                        <p><strong>Evening:</strong> Settle into <Link href="/destinations/aruba/restaurants/wacky-wahoos-seafood-aruba" className="text-orange-600 hover:underline">Wacky Wahoo’s Seafood</Link> for lionfish specials and daily catch platters (reservations recommended). Cap the night with rum punches or live music along the Palm Beach high-rise strip.</p>
+                        <p><strong>Midday:</strong> Reward the dust with fried snapper baskets, plantain, and coconut shrimp at <Link href="/destinations/aruba" className="text-orange-600 hover:underline">Zeerovers Aruba</Link> in Savaneta—this locals’ dockside spot is worth the drive. On the way back north, swing by the San Nicolas street art district for Caribbean murals and coffee shops.</p>
+                        <p><strong>Evening:</strong> Settle into <Link href="/destinations/aruba" className="text-orange-600 hover:underline">Wacky Wahoo’s Seafood</Link> for lionfish specials and daily catch platters (reservations recommended). Cap the night with rum punches or live music along the Palm Beach high-rise strip.</p>
                       </div>
 
                       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Day 3 – Antilla Snorkel & Farewell Feast</h2>
                       <div className="space-y-4 text-gray-700 leading-relaxed">
                         <p><strong>Morning:</strong> Hop on a catamaran to the Antilla shipwreck, Boca Catalina, or Mangel Halto. Clear visibility, sea turtles, and gentle currents make these stops a final-day highlight.</p>
                         <p><strong>Midday:</strong> Recharge with a beachside lunch or aloe spa treatment. If you rented a car, detour to Baby Beach for shallow turquoise coves and low-key beach bars.</p>
-                        <p><strong>Evening:</strong> Close the trip with a barefoot tasting menu at <Link href="/destinations/aruba/restaurants/atardi-beach-restaurant-aruba" className="text-orange-600 hover:underline">Atardi Beach Restaurant</Link> or the water’s-edge tables at <Link href="/destinations/aruba/restaurants/flying-fishbone-aruba" className="text-orange-600 hover:underline">Flying Fishbone</Link>. Time dessert with the sunset, then toast a final Aruba Ariba under the stars.</p>
+                        <p><strong>Evening:</strong> Close the trip with a barefoot tasting menu at <Link href="/destinations/aruba" className="text-orange-600 hover:underline">Atardi Beach Restaurant</Link> or the water’s-edge tables at <Link href="/destinations/aruba" className="text-orange-600 hover:underline">Flying Fishbone</Link>. Time dessert with the sunset, then toast a final Aruba Ariba under the stars.</p>
                       </div>
 
                       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Essential Tours to Book Ahead</h2>
@@ -3382,7 +3382,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           <ul className="space-y-3 text-gray-700">
                             <li>• Schedule sunset sails and snorkel cruises 2–3 weeks out, longer for holiday travel.</li>
                             <li>• Plan to taxi or rideshare most days—rent a car just for the Arikok/Savaneta loop if you prefer.</li>
-                            <li>• Reserve <Link href="/destinations/aruba/restaurants/passions-on-the-beach-aruba" className="text-orange-600 hover:underline">Passions on the Beach</Link>, <Link href="/destinations/aruba/restaurants/wacky-wahoos-seafood-aruba" className="text-orange-600 hover:underline">Wacky Wahoo’s</Link>, and <Link href="/destinations/aruba/restaurants/flying-fishbone-aruba" className="text-orange-600 hover:underline">Flying Fishbone</Link> as soon as you confirm dates.</li>
+                            <li>• Reserve <Link href="/destinations/aruba" className="text-orange-600 hover:underline">Passions on the Beach</Link>, <Link href="/destinations/aruba" className="text-orange-600 hover:underline">Wacky Wahoo’s</Link>, and <Link href="/destinations/aruba" className="text-orange-600 hover:underline">Flying Fishbone</Link> as soon as you confirm dates.</li>
                             <li>• Pack reef-safe sunscreen, a cooling towel, and water shoes—the trade winds are real and some entries are rocky.</li>
                           </ul>
                         </div>
@@ -3394,7 +3394,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           Pair this itinerary with the <Link href="/travel-guides/best-time-to-visit-aruba" className="text-orange-600 hover:underline">Best Time to Visit Aruba</Link> guide to match sunshine with events, and the <Link href="/travel-guides/aruba-packing-list" className="text-orange-600 hover:underline">Aruba Packing List</Link> so your carry-on covers reef-safe sunscreen to windproof beach gear.
                         </p>
                         <p className="text-gray-700 leading-relaxed">
-                          Hungry for more dining inspo? Browse our curated <Link href="/destinations/aruba/restaurants" className="text-orange-600 hover:underline">Top Restaurants in Aruba</Link> list for backup reservations or a “Day 4” splurge.
+                          Hungry for more dining inspo? Browse our curated <Link href="/destinations/aruba" className="text-orange-600 hover:underline">Top Restaurants in Aruba</Link> list for backup reservations or a “Day 4” splurge.
                         </p>
                       </div>
 
@@ -3416,7 +3416,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                             asChild
                             className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-6 py-3 font-semibold"
                           >
-                            <Link href="/destinations/aruba/restaurants">
+                            <Link href="/destinations/aruba">
                               See Top Restaurants →
                             </Link>
                           </Button>
@@ -4449,7 +4449,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                             asChild
                             className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-5 py-3 font-semibold"
                           >
-                            <Link href="/destinations/curacao/restaurants">
+                            <Link href="/destinations/curacao">
                               See Top Restaurants →
                             </Link>
                           </Button>
@@ -4545,15 +4545,15 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           <h3 className="text-2xl font-bold text-orange-900 mb-4">Aruba Dining Highlights</h3>
                           <ul className="space-y-4">
                             <li>
-                              <Link href="/destinations/aruba/restaurants/atardi-beach-restaurant-aruba" className="text-blue-600 font-semibold hover:underline">Atardi Beach Restaurant Aruba</Link>
+                              <Link href="/destinations/aruba" className="text-blue-600 font-semibold hover:underline">Atardi Beach Restaurant Aruba</Link>
                               <p className="text-gray-700 text-sm mt-1">Barefoot tables on Palm Beach, a seafood tasting menu paced with the sunset, and Marriott-level service perfect for celebrations.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/aruba/restaurants/passions-on-the-beach-aruba" className="text-blue-600 font-semibold hover:underline">Passions on the Beach</Link>
+                              <Link href="/destinations/aruba" className="text-blue-600 font-semibold hover:underline">Passions on the Beach</Link>
                               <p className="text-gray-700 text-sm mt-1">From sunrise smoothies to moonlit dinners on Eagle Beach, Passions layers live music, tiki torches, and Caribbean-inspired menus.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/aruba/restaurants/flying-fishbone-aruba" className="text-blue-600 font-semibold hover:underline">Flying Fishbone</Link>
+                              <Link href="/destinations/aruba" className="text-blue-600 font-semibold hover:underline">Flying Fishbone</Link>
                               <p className="text-gray-700 text-sm mt-1">Toes-in-the-sand dining in Savaneta since 1997—think seafood platters, torched tiradito, and lantern-lit water tables.</p>
                             </li>
                           </ul>
@@ -4562,15 +4562,15 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           <h3 className="text-2xl font-bold text-indigo-900 mb-4">Curaçao Dining Highlights</h3>
                           <ul className="space-y-4">
                             <li>
-                              <Link href="/destinations/curacao/restaurants/kome-restaurant-curacao" className="text-indigo-600 font-semibold hover:underline">Kome Restaurant Curaçao</Link>
+                              <Link href="/destinations/curacao" className="text-indigo-600 font-semibold hover:underline">Kome Restaurant Curaçao</Link>
                               <p className="text-gray-700 text-sm mt-1">Chef-driven favorites inside Pietermaai—wood-fired meats, house-baked desserts, and cocktails crafted for each menu.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/curacao/restaurants/brisa-do-mar-curacao" className="text-indigo-600 font-semibold hover:underline">Brisa do Mar – Pop’s Place</Link>
+                              <Link href="/destinations/curacao" className="text-indigo-600 font-semibold hover:underline">Brisa do Mar – Pop’s Place</Link>
                               <p className="text-gray-700 text-sm mt-1">A Caracas Bay classic with sunset views, fresh catch baskets, and local vibes just steps from the water.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/curacao/restaurants/de-visserij-piscadera-curacao" className="text-indigo-600 font-semibold hover:underline">De Visserij Piscadera</Link>
+                              <Link href="/destinations/curacao" className="text-indigo-600 font-semibold hover:underline">De Visserij Piscadera</Link>
                               <p className="text-gray-700 text-sm mt-1">Pick your fish at the counter and watch it hit the grill—dockside dining with picnic tables, jumbo shrimp baskets, and harbor breezes.</p>
                             </li>
                           </ul>
@@ -4641,21 +4641,21 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                       <div className="space-y-4 text-gray-700 leading-relaxed">
                         <p><strong>Morning:</strong> Check into your base in Pietermaai or Punda and grab a coffee along the Handelskade. Stroll across the Queen Emma Bridge while it’s still quiet, then join a guided walking tour to hear stories behind Otrobanda’s street art and the pastel Dutch façades.</p>
                         <p><strong>Midday:</strong> Duck into the floating market for fresh fruit or head to Plasa Bieu for a slow-cooked stoba lunch. Spend the afternoon exploring the Kura Hulanda Museum or cooling off at the Infinity pool at Rif Fort.</p>
-                        <p><strong>Evening:</strong> Toast the golden hour with a cocktail at Saint Tropez Ocean Club before dinner at <Link href="/destinations/curacao/restaurants/kome-restaurant-curacao" className="text-indigo-600 hover:underline">Kome Restaurant Curaçao</Link>. Their wood-fired menu and in-house bakery make for a celebratory first night. Finish with gelato on Wilhelminaplein or live music in Pietermaai.</p>
+                        <p><strong>Evening:</strong> Toast the golden hour with a cocktail at Saint Tropez Ocean Club before dinner at <Link href="/destinations/curacao" className="text-indigo-600 hover:underline">Kome Restaurant Curaçao</Link>. Their wood-fired menu and in-house bakery make for a celebratory first night. Finish with gelato on Wilhelminaplein or live music in Pietermaai.</p>
                       </div>
                       
                       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Day 2 – Klein Curaçao Catamaran Escape</h2>
                       <div className="space-y-4 text-gray-700 leading-relaxed">
                         <p><strong>Morning:</strong> Board an early catamaran to Klein Curaçao. Expect a 90-minute sail with breakfast onboard, followed by impossibly turquoise water, a photogenic lighthouse, and sea turtles gliding past the shore.</p>
                         <p><strong>Midday:</strong> Dive into snorkeling straight off the beach, walk to the shipwreck, and refuel with the BBQ lunch most charters include. Pack reef-safe sunscreen and a rash guard—the sandbar offers little shade.</p>
-                        <p><strong>Evening:</strong> Back on the main island, stay salty with a twilight swim at Jan Thiel or lounge at Mood Beach. Reserve dinner at <Link href="/destinations/curacao/restaurants/brisa-do-mar-curacao" className="text-indigo-600 hover:underline">Brisa do Mar – Pop’s Place</Link> for waterfront seafood and sunset-on-Caracas-Bay vibes.</p>
+                        <p><strong>Evening:</strong> Back on the main island, stay salty with a twilight swim at Jan Thiel or lounge at Mood Beach. Reserve dinner at <Link href="/destinations/curacao" className="text-indigo-600 hover:underline">Brisa do Mar – Pop’s Place</Link> for waterfront seafood and sunset-on-Caracas-Bay vibes.</p>
                       </div>
                       
                       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Day 3 – West Coast Coves & Local Flavor</h2>
                       <div className="space-y-4 text-gray-700 leading-relaxed">
                         <p><strong>Morning:</strong> Rent a car and head west. Stop for cliff views and a rope swing at Playa Kenepa Grandi before snorkeling with sea turtles at Playa Piskadó.</p>
                         <p><strong>Midday:</strong> Grab a lionfish burger or batidos at a roadside stand, then continue to Shete Boka National Park for blowholes and crashing surf. Alternatively, opt for an ATV excursion across the rugged northern coastline.</p>
-                        <p><strong>Evening:</strong> Cap your trip with a dockside feast at <Link href="/destinations/curacao/restaurants/de-visserij-piscadera-curacao" className="text-indigo-600 hover:underline">De Visserij Piscadera</Link>. Pick your catch at the counter, sip a Polar beer while it grills, and watch the fishing boats ease back into the harbor.</p>
+                        <p><strong>Evening:</strong> Cap your trip with a dockside feast at <Link href="/destinations/curacao" className="text-indigo-600 hover:underline">De Visserij Piscadera</Link>. Pick your catch at the counter, sip a Polar beer while it grills, and watch the fishing boats ease back into the harbor.</p>
                       </div>
                       
                       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Essential Tours to Book Ahead</h2>
@@ -4686,7 +4686,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           Still polishing your plans? Pair this itinerary with the <Link href="/travel-guides/best-time-to-visit-curacao" className="text-indigo-600 hover:underline">Best Time to Visit Curaçao</Link> guide to time the sunshine, and the <Link href="/travel-guides/curacao-packing-list" className="text-blue-600 hover:underline">Curaçao Packing List</Link> so your suitcase is ready for reef days and city nights.
                         </p>
                         <p className="text-gray-700 leading-relaxed">
-                          For more food inspiration (or a “Day 4” splurge), browse our curated <Link href="/destinations/curacao/restaurants" className="text-indigo-600 hover:underline">Top Restaurants in Curaçao</Link> list.
+                          For more food inspiration (or a “Day 4” splurge), browse our curated <Link href="/destinations/curacao" className="text-indigo-600 hover:underline">Top Restaurants in Curaçao</Link> list.
                         </p>
                       </div>
                       
@@ -4790,15 +4790,15 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           <h3 className="text-2xl font-bold text-indigo-900 mb-4">Curaçao Dining Highlights</h3>
                           <ul className="space-y-4">
                             <li>
-                              <Link href="/destinations/curacao/restaurants/kome-restaurant-curacao" className="text-indigo-600 font-semibold hover:underline">Kome Restaurant Curaçao</Link>
+                              <Link href="/destinations/curacao" className="text-indigo-600 font-semibold hover:underline">Kome Restaurant Curaçao</Link>
                               <p className="text-gray-700 text-sm mt-1">Wood-fired Caribbean cuisine in the heart of Pietermaai, backed by an in-house bakery and cocktail program.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/curacao/restaurants/brisa-do-mar-curacao" className="text-indigo-600 font-semibold hover:underline">Brisa do Mar – Pop’s Place</Link>
+                              <Link href="/destinations/curacao" className="text-indigo-600 font-semibold hover:underline">Brisa do Mar – Pop’s Place</Link>
                               <p className="text-gray-700 text-sm mt-1">Sunset seafood on Caracas Bay with a locals’ vibe, live music, and straight-off-the-boat specials.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/curacao/restaurants/de-visserij-piscadera-curacao" className="text-indigo-600 font-semibold hover:underline">De Visserij Piscadera</Link>
+                              <Link href="/destinations/curacao" className="text-indigo-600 font-semibold hover:underline">De Visserij Piscadera</Link>
                               <p className="text-gray-700 text-sm mt-1">Pick your fish at the counter, then watch it hit the grill—dockside dining with jumbo shrimp baskets and harbor breezes.</p>
                             </li>
                           </ul>
@@ -4807,15 +4807,15 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           <h3 className="text-2xl font-bold text-emerald-900 mb-4">Jamaica Dining Highlights</h3>
                           <ul className="space-y-4">
                             <li>
-                              <Link href="/destinations/jamaica/restaurants/rockhouse-restaurant-jamaica" className="text-emerald-600 font-semibold hover:underline">Rockhouse Restaurant</Link>
+                              <Link href="/destinations/jamaica" className="text-emerald-600 font-semibold hover:underline">Rockhouse Restaurant</Link>
                               <p className="text-gray-700 text-sm mt-1">Cliff-top tables in Negril serving Caribbean fusion with sunset views and a soundtrack of the sea.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/jamaica/restaurants/miss-ts-kitchen-jamaica" className="text-emerald-600 font-semibold hover:underline">Miss T’s Kitchen</Link>
+                              <Link href="/destinations/jamaica" className="text-emerald-600 font-semibold hover:underline">Miss T’s Kitchen</Link>
                               <p className="text-gray-700 text-sm mt-1">Ocho Rios favorite for jerk chicken, coconut rundown, and homestyle hospitality under twinkling lights.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/jamaica/restaurants/little-ochie-seafood-restaurant-jamaica" className="text-emerald-600 font-semibold hover:underline">Little Ochie Seafood</Link>
+                              <Link href="/destinations/jamaica" className="text-emerald-600 font-semibold hover:underline">Little Ochie Seafood</Link>
                               <p className="text-gray-700 text-sm mt-1">Beach shacks in Alligator Pond grilling the day’s catch with Scotch bonnet heat right on the sand.</p>
                             </li>
                           </ul>
@@ -4953,15 +4953,15 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           <h3 className="text-2xl font-bold text-orange-900 mb-4">Aruba Highlights</h3>
                           <ul className="space-y-4">
                             <li>
-                              <Link href="/destinations/aruba/restaurants/atardi-beach-restaurant-aruba" className="text-orange-600 font-semibold hover:underline">Atardi Beach Restaurant Aruba</Link>
+                              <Link href="/destinations/aruba" className="text-orange-600 font-semibold hover:underline">Atardi Beach Restaurant Aruba</Link>
                               <p className="text-gray-700 text-sm mt-1">Toes-in-the-sand tables, seafood tasting menus, and sunsets framed by the Marriott pier.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/aruba/restaurants/wacky-wahoos-seafood-aruba" className="text-orange-600 font-semibold hover:underline">Wacky Wahoo’s Seafood Aruba</Link>
+                              <Link href="/destinations/aruba" className="text-orange-600 font-semibold hover:underline">Wacky Wahoo’s Seafood Aruba</Link>
                               <p className="text-gray-700 text-sm mt-1">Local institution for lionfish specials, Caribbean snapper, and chalkboard-fresh catches.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/aruba/restaurants/flying-fishbone-aruba" className="text-orange-600 font-semibold hover:underline">Flying Fishbone Aruba</Link>
+                              <Link href="/destinations/aruba" className="text-orange-600 font-semibold hover:underline">Flying Fishbone Aruba</Link>
                               <p className="text-gray-700 text-sm mt-1">Lantern-lit dinner in Savaneta with water-level seating, champagne sangria, and flambéed desserts.</p>
                             </li>
                           </ul>
@@ -4970,15 +4970,15 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           <h3 className="text-2xl font-bold text-sky-900 mb-4">Punta Cana Highlights</h3>
                           <ul className="space-y-4">
                             <li>
-                              <Link href="/destinations/punta-cana/restaurants/playa-blanca-restaurant-punta-cana" className="text-sky-600 font-semibold hover:underline">Playa Blanca Restaurant</Link>
+                              <Link href="/destinations/punta-cana" className="text-sky-600 font-semibold hover:underline">Playa Blanca Restaurant</Link>
                               <p className="text-gray-700 text-sm mt-1">Casual beachfront lunches inside Puntacana Resort & Club—ceviche, coconut cocktails, and lagoon breezes.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/punta-cana/restaurants/sbg-punta-cana" className="text-sky-600 font-semibold hover:underline">SBG Punta Cana</Link>
+                              <Link href="/destinations/punta-cana" className="text-sky-600 font-semibold hover:underline">SBG Punta Cana</Link>
                               <p className="text-gray-700 text-sm mt-1">Poolside lounge on the marina with Mediterranean plates, sushi, and DJ-backed sunset sessions.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/punta-cana/restaurants/jellyfish-restaurant-punta-cana" className="text-sky-600 font-semibold hover:underline">Jellyfish Restaurant Punta Cana</Link>
+                              <Link href="/destinations/punta-cana" className="text-sky-600 font-semibold hover:underline">Jellyfish Restaurant Punta Cana</Link>
                               <p className="text-gray-700 text-sm mt-1">Architectural showpiece between Bávaro and Cortecito serving grilled lobster, Dominican staples, and event-ready ambiance.</p>
                             </li>
                           </ul>
@@ -5116,15 +5116,15 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           <h3 className="text-2xl font-bold text-orange-900 mb-4">Aruba Dining Highlights</h3>
                           <ul className="space-y-4">
                             <li>
-                              <Link href="/destinations/aruba/restaurants/atardi-beach-restaurant-aruba" className="text-orange-600 font-semibold hover:underline">Atardi Beach Restaurant Aruba</Link>
+                              <Link href="/destinations/aruba" className="text-orange-600 font-semibold hover:underline">Atardi Beach Restaurant Aruba</Link>
                               <p className="text-gray-700 text-sm mt-1">Barefoot tables in the sand, a seafood tasting menu, and golden-hour views off the Marriott pier.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/aruba/restaurants/passions-on-the-beach-aruba" className="text-orange-600 font-semibold hover:underline">Passions on the Beach</Link>
+                              <Link href="/destinations/aruba" className="text-orange-600 font-semibold hover:underline">Passions on the Beach</Link>
                               <p className="text-gray-700 text-sm mt-1">Eagle Beach sunsets, torches, and Caribbean-inspired plates served just steps from the shoreline.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/aruba/restaurants/zeerovers-aruba" className="text-orange-600 font-semibold hover:underline">Zeerovers Aruba</Link>
+                              <Link href="/destinations/aruba" className="text-orange-600 font-semibold hover:underline">Zeerovers Aruba</Link>
                               <p className="text-gray-700 text-sm mt-1">Locals’ dockside favorite in Savaneta for just-caught fish baskets, plantain, and icy Balashi beer.</p>
                             </li>
                           </ul>
@@ -5133,15 +5133,15 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           <h3 className="text-2xl font-bold text-emerald-900 mb-4">Jamaica Dining Highlights</h3>
                           <ul className="space-y-4">
                             <li>
-                              <Link href="/destinations/jamaica/restaurants/rockhouse-restaurant-jamaica" className="text-emerald-600 font-semibold hover:underline">Rockhouse Restaurant</Link>
+                              <Link href="/destinations/jamaica" className="text-emerald-600 font-semibold hover:underline">Rockhouse Restaurant</Link>
                               <p className="text-gray-700 text-sm mt-1">Cliff-top dining in Negril with Caribbean fusion cuisine, sea breezes, and unforgettable sunsets.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/jamaica/restaurants/miss-ts-kitchen-jamaica" className="text-emerald-600 font-semibold hover:underline">Miss T’s Kitchen</Link>
+                              <Link href="/destinations/jamaica" className="text-emerald-600 font-semibold hover:underline">Miss T’s Kitchen</Link>
                               <p className="text-gray-700 text-sm mt-1">Ocho Rios crowd-pleaser for jerk chicken, coconut rundown, and yard-style hospitality under the stars.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/jamaica/restaurants/little-ochie-seafood-restaurant-jamaica" className="text-emerald-600 font-semibold hover:underline">Little Ochie Seafood Restaurant &amp; Bar</Link>
+                              <Link href="/destinations/jamaica" className="text-emerald-600 font-semibold hover:underline">Little Ochie Seafood Restaurant &amp; Bar</Link>
                               <p className="text-gray-700 text-sm mt-1">Rustic beach shacks in Alligator Pond grilling the day’s catch with Scotch bonnet heat right on the sand.</p>
                             </li>
                           </ul>
@@ -5286,15 +5286,15 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           <h3 className="text-2xl font-bold text-indigo-900 mb-4">Curaçao</h3>
                           <ul className="space-y-4">
                             <li>
-                              <Link href="/destinations/curacao/restaurants/kome-restaurant-curacao" className="text-indigo-600 font-semibold hover:underline">Kome Restaurant Curaçao</Link>
+                              <Link href="/destinations/curacao" className="text-indigo-600 font-semibold hover:underline">Kome Restaurant Curaçao</Link>
                               <p className="text-gray-700 text-sm mt-1">Wood-fired plates, craft cocktails, and bakery-fresh desserts in Pietermaai.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/curacao/restaurants/brisa-do-mar-curacao" className="text-indigo-600 font-semibold hover:underline">Brisa do Mar – Pop’s Place</Link>
+                              <Link href="/destinations/curacao" className="text-indigo-600 font-semibold hover:underline">Brisa do Mar – Pop’s Place</Link>
                               <p className="text-gray-700 text-sm mt-1">Caracas Bay seafood shacks with sunset views and relaxed island service.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/curacao/restaurants/de-visserij-piscadera-curacao" className="text-indigo-600 font-semibold hover:underline">De Visserij Piscadera</Link>
+                              <Link href="/destinations/curacao" className="text-indigo-600 font-semibold hover:underline">De Visserij Piscadera</Link>
                               <p className="text-gray-700 text-sm mt-1">Dockside grills, jumbo shrimp baskets, and pick-your-catch platters.</p>
                             </li>
                           </ul>
@@ -5303,15 +5303,15 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           <h3 className="text-2xl font-bold text-orange-900 mb-4">Punta Cana</h3>
                           <ul className="space-y-4">
                             <li>
-                              <Link href="/destinations/punta-cana/restaurants/playa-blanca-restaurant-punta-cana" className="text-orange-500 font-semibold hover:underline">Playa Blanca Restaurant</Link>
+                              <Link href="/destinations/punta-cana" className="text-orange-500 font-semibold hover:underline">Playa Blanca Restaurant</Link>
                               <p className="text-gray-700 text-sm mt-1">Beachfront lunch spot on a private cove with ceviche, fish tacos, and cocktails.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/punta-cana/restaurants/sbg-punta-cana" className="text-orange-500 font-semibold hover:underline">SBG Punta Cana</Link>
+                              <Link href="/destinations/punta-cana" className="text-orange-500 font-semibold hover:underline">SBG Punta Cana</Link>
                               <p className="text-gray-700 text-sm mt-1">Cap Cana lounge serving Mediterranean-Caribbean plates with sunset DJ sets.</p>
                             </li>
                             <li>
-                              <Link href="/destinations/punta-cana/restaurants/jellyfish-restaurant-punta-cana" className="text-orange-500 font-semibold hover:underline">Jellyfish Restaurant</Link>
+                              <Link href="/destinations/punta-cana" className="text-orange-500 font-semibold hover:underline">Jellyfish Restaurant</Link>
                               <p className="text-gray-700 text-sm mt-1">Iconic thatched-roof dining on Bávaro Beach—think seafood towers and candlelit sunsets.</p>
                             </li>
                           </ul>
@@ -9325,7 +9325,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                                 asChild
                                 className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
                               >
-                                <Link href="/destinations/aruba/restaurants">Find Restaurants in Aruba →</Link>
+                                <Link href="/destinations/aruba">Find Restaurants in Aruba →</Link>
                               </Button>
                             </div>
                             
@@ -9381,7 +9381,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                                 asChild
                                 className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
                               >
-                                <Link href="/destinations/curacao/restaurants">Find Restaurants in Curaçao →</Link>
+                                <Link href="/destinations/curacao">Find Restaurants in Curaçao →</Link>
                               </Button>
                             </div>
                             
@@ -9474,7 +9474,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                               asChild
                               className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 text-base font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
                             >
-                              <Link href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "/destinations/aruba/restaurants" : "/destinations/curacao/restaurants"}>
+                              <Link href={slug === 'aruba-flight-disruptions-venezuela-tensions' ? "/destinations/aruba" : "/destinations/curacao"}>
                                 Find Restaurants in {slug === 'aruba-flight-disruptions-venezuela-tensions' ? 'Aruba' : 'Curaçao'} →
                               </Link>
                             </Button>
@@ -9513,7 +9513,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                                 asChild
                                 className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
                               >
-                                <Link href="/destinations/bonaire/restaurants">Find Restaurants in Bonaire →</Link>
+                                <Link href="/destinations/bonaire">Explore Bonaire →</Link>
                               </Button>
                             </div>
                             
@@ -9568,7 +9568,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                                 asChild
                                 className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
                               >
-                                <Link href="/destinations/st-martin/restaurants">Find Restaurants in St. Martin →</Link>
+                                <Link href="/destinations/st-martin">Explore St. Martin →</Link>
                               </Button>
                             </div>
                             
@@ -11910,7 +11910,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                           What can I do while waiting for my flight in Aruba?
                         </h3>
                         <p className="text-gray-700 ml-8 leading-relaxed">
-                          <span className="font-semibold text-green-600">A:</span> Aruba offers plenty of ways to make your extended stay enjoyable. Explore the island's restaurants, book tours and activities like snorkeling, sunset cruises, and ATV adventures. Visit <a href="/destinations/aruba/restaurants" className="text-blue-600 hover:underline">Aruba restaurants</a> and <a href="/destinations/aruba/tours" className="text-blue-600 hover:underline">Aruba tours</a> to discover options. The island's infrastructure is strong, and all services remain fully operational.
+                          <span className="font-semibold text-green-600">A:</span> Aruba offers plenty of ways to make your extended stay enjoyable. Explore the island's restaurants, book tours and activities like snorkeling, sunset cruises, and ATV adventures. Visit <a href="/destinations/aruba" className="text-blue-600 hover:underline">Aruba restaurants</a> and <a href="/destinations/aruba/tours" className="text-blue-600 hover:underline">Aruba tours</a> to discover options. The island's infrastructure is strong, and all services remain fully operational.
                         </p>
                       </div>
                     )}
@@ -11955,7 +11955,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                                 What can I do while waiting for my flight in Curaçao?
                               </h3>
                               <p className="text-gray-700 ml-8 leading-relaxed">
-                                <span className="font-semibold text-green-600">A:</span> Curaçao offers plenty of ways to make your extended stay enjoyable. Explore the island's restaurants, book tours and activities like diving, snorkeling, and exploring Willemstad's historic architecture. Visit <a href="/destinations/curacao/restaurants" className="text-blue-600 hover:underline">Curaçao restaurants</a> and <a href="/destinations/curacao/tours" className="text-blue-600 hover:underline">Curaçao tours</a> to discover options. The island's infrastructure is strong, and all services remain fully operational.
+                                <span className="font-semibold text-green-600">A:</span> Curaçao offers plenty of ways to make your extended stay enjoyable. Explore the island's restaurants, book tours and activities like diving, snorkeling, and exploring Willemstad's historic architecture. Visit <a href="/destinations/curacao" className="text-blue-600 hover:underline">Curaçao restaurants</a> and <a href="/destinations/curacao/tours" className="text-blue-600 hover:underline">Curaçao tours</a> to discover options. The island's infrastructure is strong, and all services remain fully operational.
                               </p>
                             </div>
                           </>

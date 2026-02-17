@@ -50,6 +50,33 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Restaurants removed (Option B): 301 all restaurant URLs to destination or /destinations
+      {
+        source: '/restaurants',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/destinations/:id/restaurants/:path*',
+        destination: '/destinations/:id',
+        permanent: true,
+      },
+      {
+        source: '/destinations/:id/restaurants',
+        destination: '/destinations/:id',
+        permanent: true,
+      },
+      // Leaderboard/toptours removed (dead code)
+      {
+        source: '/toptours',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/toptours/:path*',
+        destination: '/',
+        permanent: true,
+      },
       // One-off: tour removal request – 301 to Baku tours page
       {
         source: '/tours/252542P1/full-day-individual-and-historical-baku-tour-private-and-group',

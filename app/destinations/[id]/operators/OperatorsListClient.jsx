@@ -169,7 +169,7 @@ export default function OperatorsListClient({ destination, operators = [], topTo
       <SmartTourFinder isOpen={isModalOpen} onClose={handleCloseModal} />
 
       <div className="min-h-screen pt-16 overflow-x-hidden bg-gradient-to-b from-blue-50 via-white to-white">
-        {/* Hero Section - Matching restaurants page style */}
+        {/* Hero Section */}
         <section
           className="relative py-20 sm:py-24 md:py-28 overflow-hidden -mt-12 sm:-mt-16 ocean-gradient"
         >
@@ -255,7 +255,7 @@ export default function OperatorsListClient({ destination, operators = [], topTo
                 Explore {destination.fullName}
               </h2>
               <p className="text-gray-600 text-lg mb-6 max-w-xl mx-auto">
-                See tours, restaurants, and travel guides for {destination.fullName} in one place.
+                See tours and travel guides for {destination.fullName} in one place.
               </p>
               <Button asChild className="sunset-gradient text-white">
                 <Link href={`/destinations/${destination.id}`}>
@@ -470,145 +470,6 @@ export default function OperatorsListClient({ destination, operators = [], topTo
           </div>
         </section>
 
-        {/* Restaurants Section - Exact match to destination page */}
-        {restaurants.length > 0 && (
-          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="mb-8 sm:mb-12"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-                  <div className="text-center sm:text-left">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-3">
-                      Top Restaurants in {destination.fullName}
-                    </h2>
-                    <p className="text-base sm:text-lg text-gray-600 max-w-3xl sm:max-w-xl mx-auto sm:mx-0">
-                      Reserve a table at our hand-picked local favorites and plan dinner around your tours in {destination.fullName}.
-                    </p>
-                  </div>
-                  <Link href={`/destinations/${destination.id}/restaurants`} className="self-center sm:self-end">
-                    <Button variant="outline" className="gap-2">
-                      View All {restaurants.length} Restaurants
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </Link>
-                </div>
-              </motion.div>
-
-              {/* Restaurants Grid - Exact match to destination page */}
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
-                {restaurants.slice(0, 6).map((restaurant, index) => {
-                  if (!restaurant || !restaurant.id || !restaurant.slug) return null;
-
-                  const restaurantUrl = `/destinations/${destination.id}/restaurants/${restaurant.slug}`;
-                  const description = restaurant.metaDescription 
-                    || restaurant.tagline 
-                    || restaurant.summary 
-                    || restaurant.description
-                    || (restaurant.cuisines?.length > 0 
-                        ? `Discover ${restaurant.cuisines.filter(c => c).join(' & ')} cuisine at ${restaurant.name}.`
-                        : `Experience great dining at ${restaurant.name}.`);
-
-                  return (
-                    <motion.article
-                      key={restaurant.id}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: (index % 6) * 0.05 }}
-                      viewport={{ once: true }}
-                      className="h-full"
-                    >
-                      <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                        <CardContent className="p-6 flex flex-col h-full">
-                          <div className="flex items-center justify-between gap-3 mb-3">
-                            <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
-                                <UtensilsCrossed className="w-5 h-5 text-white" />
-                              </div>
-                              <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
-                                {(() => {
-                                  const validCuisines = restaurant.cuisines && Array.isArray(restaurant.cuisines)
-                                    ? restaurant.cuisines.filter(c => c && 
-                                        c.toLowerCase() !== 'restaurant' && 
-                                        c.toLowerCase() !== 'food' &&
-                                        c.trim().length > 0)
-                                    : [];
-                                  return validCuisines.length > 0 ? validCuisines[0] : 'Restaurant';
-                                })()}
-                              </span>
-                            </div>
-                          </div>
-                          
-                          <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 flex items-center gap-1.5">
-                            {restaurant.name || 'Restaurant'}
-                          </h3>
-
-                          <p className="text-sm text-gray-600 mb-4 line-clamp-2">
-                            {description.length > 120 ? description.slice(0, 120) + '...' : description}
-                          </p>
-
-                          <div className="flex flex-wrap gap-2 mb-3">
-                            {restaurant.ratings?.googleRating && !isNaN(restaurant.ratings.googleRating) && (
-                              <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
-                                <Star className="w-3 h-3" />
-                                {parseFloat(restaurant.ratings.googleRating).toFixed(1)}
-                              </span>
-                            )}
-                            {restaurant.pricing?.priceRange && (
-                              <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
-                                {String(restaurant.pricing.priceRange)}
-                              </span>
-                            )}
-                            {(() => {
-                              const validCuisines = restaurant.cuisines && Array.isArray(restaurant.cuisines)
-                                ? restaurant.cuisines.filter(c => c && 
-                                    c.toLowerCase() !== 'restaurant' && 
-                                    c.toLowerCase() !== 'food' &&
-                                    c.trim().length > 0)
-                                : [];
-                              return validCuisines.length > 0 ? (
-                                <span className="inline-flex items-center text-xs font-medium bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full">
-                                  {validCuisines.slice(0, 2).join(' · ')}
-                                </span>
-                              ) : null;
-                            })()}
-                          </div>
-
-                          <Link
-                            href={restaurantUrl}
-                            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
-                          >
-                            View Restaurant
-                            <ArrowRight className="w-4 h-4" />
-                          </Link>
-                        </CardContent>
-                      </Card>
-                    </motion.article>
-                  );
-                })}
-              </div>
-
-              {/* View All Button */}
-              <div className="text-center mt-10">
-                <Button
-                  asChild
-                  size="lg"
-                  className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 px-8 py-6"
-                >
-                  <Link href={`/destinations/${destination.id}/restaurants`}>
-                    View All Restaurants in {destination.fullName}
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </section>
-        )}
-
         {/* Category Guides Section - Exact match to destination page */}
         {categoryGuides.length > 0 && (
           <section className="py-12 bg-white">
@@ -715,21 +576,13 @@ export default function OperatorsListClient({ destination, operators = [], topTo
         <section className="py-12 px-4 bg-gray-50">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Explore More in {destination.fullName}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Link
                 href={`/destinations/${destination.id}/tours`}
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">All Tours & Activities in {destination.fullName}</h3>
                 <p className="text-gray-600 text-sm">Browse all available tours and activities in {destination.fullName}</p>
-                <ArrowRight className="w-5 h-5 text-orange-600 mt-4" />
-              </Link>
-              <Link
-                href={`/destinations/${destination.id}/restaurants`}
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Best Restaurants in {destination.fullName}</h3>
-                <p className="text-gray-600 text-sm">Discover top-rated restaurants in {destination.fullName}</p>
                 <ArrowRight className="w-5 h-5 text-orange-600 mt-4" />
               </Link>
               <Link

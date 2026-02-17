@@ -12,7 +12,7 @@ export const metadata = {
         url: 'https://toptours.ai/OG%20Images/discover%20tours%20guides%20and%20restaurants%20in%20over%203500%20destinations.jpg',
         width: 1200,
         height: 630,
-        alt: 'Discover tours, guides and restaurants in over 3,500 destinations',
+        alt: 'Discover tours, guides and excursions in over 3,500 destinations',
       },
     ],
     locale: 'en_US',

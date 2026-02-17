@@ -14,7 +14,6 @@ import {
   UtensilsCrossed,
   MapPin,
   Car,
-  Hotel,
   ExternalLink,
   X,
   TrendingUp,
@@ -29,11 +28,11 @@ import {
   BookOpen,
   Sparkles,
   MoveHorizontal,
+  Plane,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { getTourUrl } from '@/utils/tourHelpers';
 import { motion } from 'framer-motion';
-import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { useToast } from '@/components/ui/use-toast';
 import { Heart } from 'lucide-react';
@@ -57,7 +56,9 @@ import {
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 
 export default function RestaurantsListClient({ destination, restaurants, promotedTours = [], promotedRestaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [], categoryGuides = [], destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false } }) {
-  const { isBookmarked, toggle } = useRestaurantBookmarks();
+  // Restaurant bookmarks disabled - tours only
+  const isBookmarked = () => false;
+  const toggle = async () => {};
   const supabase = createSupabaseBrowserClient();
   const { toast } = useToast();
   const router = useRouter();
@@ -1297,17 +1298,17 @@ export default function RestaurantsListClient({ destination, restaurants, promot
                 Plan Your {destination.fullName} Trip
               </h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
-                Pair these restaurants with transportation tips and hotel deals to build a complete Curaçao itinerary.
+                Pair these restaurants with transportation tips and car rentals to build a complete itinerary.
               </p>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-              <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200 h-full">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Car className="w-8 h-8 text-blue-600" />
-                    <h3 className="text-2xl font-bold text-gray-800">Transportation Tips</h3>
-                  </div>
-                  <p className="text-gray-700 mb-6 leading-relaxed">{destination.gettingAround}</p>
+            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200 w-full">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <Car className="w-8 h-8 text-blue-600" />
+                  <h3 className="text-2xl font-bold text-gray-800">Transportation Tips</h3>
+                </div>
+                <p className="text-gray-700 mb-6 leading-relaxed">{destination.gettingAround}</p>
+                <div className={`grid gap-6 ${destinationFeatures.hasAirportTransfers ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
                   <div className="bg-white rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Car Rental Deals in {destination.fullName}</h4>
                     <p className="text-gray-600 text-sm mb-3">Rent a car for maximum flexibility and explore at your own pace on Expedia USA.</p>
@@ -1318,32 +1319,21 @@ export default function RestaurantsListClient({ destination, restaurants, promot
                       </Button>
                     </Link>
                   </div>
-                </CardContent>
-              </Card>
-              <Card className="bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200 h-full">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Hotel className="w-8 h-8 text-purple-600" />
-                    <h3 className="text-2xl font-bold text-gray-800">Where to Stay</h3>
-                  </div>
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    Find the perfect accommodation for your {destination.fullName} adventure. From luxury resorts to cozy guesthouses near the best dining spots, we’ve got you covered.
-                  </p>
-                  <div className="bg-white rounded-lg p-4">
-                    <h4 className="font-semibold text-gray-800 mb-2">Best Hotel Deals in {destination.fullName}</h4>
-                    <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers on Trivago USA.</p>
-                    <Button
-                      variant="outline"
-                      className="w-full flex items-center justify-center gap-2"
-                      onClick={() => window.open('https://tidd.ly/4snW11u', '_blank')}
-                    >
-                      Find Hotel Deals
-                      <ExternalLink className="w-4 h-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                  {destinationFeatures.hasAirportTransfers && (
+                    <div className="bg-white rounded-lg p-4">
+                      <h4 className="font-semibold text-gray-800 mb-2">Airport Transfers in {destination.fullName}</h4>
+                      <p className="text-gray-600 text-sm mb-3">Compare shared and private transfer options to and from the airport. Book in advance for fixed pricing.</p>
+                      <Link href={`/destinations/${destination.id}/guides/airport-transfers`} className="block">
+                        <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+                          Book Airport Transfers
+                          <Plane className="w-4 h-4" />
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </section>
 

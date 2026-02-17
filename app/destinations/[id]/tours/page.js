@@ -3,10 +3,8 @@ import { getDestinationById } from '@/data/destinationsData';
 import { getPopularToursForDestination } from '@/data/popularTours';
 import ToursListingClient from './ToursListingClient';
 import { slugToViatorId } from '@/data/viatorDestinationMap';
-import { getHardcodedToursByDestination, getPromotedToursByDestination, getPromotedRestaurantsByDestination } from '@/lib/promotionSystem';
+import { getHardcodedToursByDestination, getPromotedToursByDestination } from '@/lib/promotionSystem';
 import { getPremiumOperatorTourIdsForDestination } from '@/lib/tourOperatorPremiumServer';
-import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
-import { getRestaurantCountsByDestination, getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
 import { getDestinationNameById } from '@/lib/viatorCache';
 import { getViatorDestinationById, getViatorDestinationBySlug } from '@/lib/supabaseCache';
 import { redirect } from 'next/navigation';
@@ -15,42 +13,10 @@ import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import { hasDestinationPage, getDestinationFullContent } from '@/data/destinationFullContent';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
-import { DESTINATIONS_WITH_RESTAURANTS } from '@/data/destinationsWithRestaurants';
-import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 import { headers } from 'next/headers';
 
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
-
-// Lightweight function to check if destination has restaurants (for metadata)
-// OPTIMIZED: For 183 curated destinations, uses static Set (instant, zero DB calls)
-async function checkHasRestaurants(destinationId) {
-  const normalizedId = destinationId.toLowerCase();
-  
-  // First check static Set (instant, zero DB calls for 183 curated destinations)
-  if (DESTINATIONS_WITH_RESTAURANTS.has(normalizedId)) {
-    return { hasRestaurants: true };
-  }
-  
-  // For destinations NOT in the 183 curated list, check database (lightweight check only)
-  try {
-    const supabase = createSupabaseServiceRoleClient();
-    const { count, error } = await supabase
-      .from('restaurants')
-      .select('*', { count: 'exact', head: true })
-      .eq('destination_id', destinationId)
-      .eq('is_active', true)
-      .limit(1);
-    
-    if (!error && count && count > 0) {
-      return { hasRestaurants: true };
-    }
-  } catch (error) {
-    // If DB check fails, return false (don't block metadata generation)
-  }
-  
-  return { hasRestaurants: false };
-}
 
 // Lightweight function to get guide count (for metadata)
 async function getGuideCountForMetadata(destinationId) {
@@ -229,13 +195,8 @@ export async function generateMetadata({ params }) {
   // Get full content if available (for 182 curated destinations)
   const fullContent = getDestinationFullContent(destination.id || id);
   
-  // Check if destination has restaurants and guides (lightweight checks for metadata)
-  const [restaurantCheck, guideCount] = await Promise.all([
-    checkHasRestaurants(destination.id || id),
-    getGuideCountForMetadata(destination.id || id),
-  ]);
-  
-  const hasRestaurants = restaurantCheck.hasRestaurants;
+  // Check if destination has guides (for metadata)
+  const guideCount = await getGuideCountForMetadata(destination.id || id);
   const hasGuides = guideCount > 0;
   const region = destination.category || destination.region || fullContent?.region || fullContent?.category;
   
@@ -798,12 +759,10 @@ export default async function ToursListingPage({ params }) {
     ...dynamicTours.map(t => t.productId || t.productCode).filter(Boolean),
   ];
 
-  // Fetch promoted tour/restaurant data in parallel (promotion scores removed to save compute)
+  // Fetch promoted tour data and features in parallel (promotion scores and restaurants removed)
   const [
     promotedTourDataResult,
-    promotedRestaurantDataResult,
     premiumOperatorTourIdsResult,
-    premiumRestaurantIdsResult,
     categoryGuidesResult,
     destinationFeaturesResult
   ] = await Promise.allSettled([
@@ -812,19 +771,9 @@ export default async function ToursListingPage({ params }) {
       ? getPromotedToursByDestination(destinationIdForScores, 20).catch(() => [])
       : Promise.resolve([]),
     
-    // Promoted restaurant data
-    destination.id 
-      ? getPromotedRestaurantsByDestination(destination.id, 20).catch(() => [])
-      : Promise.resolve([]),
-    
     // Premium operator tour IDs
     destination.id 
       ? getPremiumOperatorTourIdsForDestination(destination.id).catch(() => [])
-      : Promise.resolve([]),
-    
-    // Premium restaurant IDs
-    destination.id 
-      ? getPremiumRestaurantIds(destination.id).then(set => Array.from(set)).catch(() => [])
       : Promise.resolve([]),
     
     // Category guides
@@ -836,13 +785,10 @@ export default async function ToursListingPage({ params }) {
       : Promise.resolve({ hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false })
   ]);
 
-  // Extract results (promotion scores no longer fetched - pass empty)
+  // Extract results
   const promotionScores = {};
   const promotedTourData = promotedTourDataResult.status === 'fulfilled' ? promotedTourDataResult.value : [];
-  const promotedRestaurantData = promotedRestaurantDataResult.status === 'fulfilled' ? promotedRestaurantDataResult.value : [];
-  const restaurantPromotionScores = {};
   const premiumOperatorTourIds = premiumOperatorTourIdsResult.status === 'fulfilled' ? premiumOperatorTourIdsResult.value : [];
-  const premiumRestaurantIds = premiumRestaurantIdsResult.status === 'fulfilled' ? premiumRestaurantIdsResult.value : [];
   let categoryGuides = categoryGuidesResult.status === 'fulfilled' ? categoryGuidesResult.value : [];
   const destinationFeatures = destinationFeaturesResult.status === 'fulfilled' ? destinationFeaturesResult.value : { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false };
 
@@ -901,59 +847,6 @@ export default async function ToursListingPage({ params }) {
   } catch (error) {
     // Continue with empty array
   }
-  
-  // Process promoted restaurants (using data fetched in parallel above)
-  let promotedRestaurants = [];
-  try {
-    if (promotedRestaurantData.length > 0) {
-      // Convert both to strings for consistent comparison
-      const promotedRestaurantIds = new Set(
-        promotedRestaurantData.map(pr => String(pr.id || pr.restaurant_id)).filter(Boolean)
-      );
-      const restaurantsFromDB = await getRestaurantsForDestinationFromDB(destination.id);
-      if (restaurantsFromDB.length > 0) {
-        promotedRestaurants = restaurantsFromDB
-          .map(r => formatRestaurantForFrontend(r))
-          .filter(r => r.id && promotedRestaurantIds.has(String(r.id)));
-      }
-    }
-  } catch (error) {
-    // Continue with empty promoted restaurants
-    // Continue with empty array - page will still work
-  }
-
-  // Check if destination has restaurants and fetch restaurant data (try database first, then static fallback)
-  let hasRestaurants = false;
-  let restaurants = [];
-  if (destination.id) {
-    try {
-      // Try database first
-      const restaurantsFromDB = await getRestaurantsForDestinationFromDB(destination.id);
-      if (restaurantsFromDB.length > 0) {
-        restaurants = restaurantsFromDB.map(r => formatRestaurantForFrontend(r)).slice(0, 8);
-        hasRestaurants = restaurants.length > 0;
-      } else {
-        // Fallback: check static data
-        const { getRestaurantsForDestination: getRestaurantsForDestinationFromStatic } = await import('../restaurants/restaurantsData');
-        const staticRestaurants = getRestaurantsForDestinationFromStatic(destination.id);
-        if (staticRestaurants.length > 0) {
-          restaurants = staticRestaurants.slice(0, 8);
-          hasRestaurants = restaurants.length > 0;
-        } else {
-          // Last resort: check restaurant counts
-          const restaurantCounts = await getRestaurantCountsByDestination();
-          const restaurantCount = restaurantCounts[destination.id] || 0;
-          hasRestaurants = restaurantCount > 0;
-        }
-      }
-    } catch (error) {
-      // Continue with empty restaurants
-      // Non-critical - continue without restaurants
-    }
-  }
-
-  // Note: premiumOperatorTourIds, premiumRestaurantIds, and categoryGuides 
-  // are already fetched in parallel above
 
   // Generate JSON-LD schema for SEO
   const schemaTours = [...(popularTours || []), ...(dynamicTours || [])]
@@ -1100,13 +993,8 @@ export default async function ToursListingPage({ params }) {
         totalToursAvailable={totalToursAvailable}
         promotionScores={promotionScores}
         promotedTours={promotedTours}
-        promotedRestaurants={promotedRestaurants}
-        restaurantPromotionScores={restaurantPromotionScores}
         isViatorDestination={isViatorDestination}
         premiumOperatorTourIds={premiumOperatorTourIds}
-        premiumRestaurantIds={premiumRestaurantIds}
-        hasRestaurants={hasRestaurants}
-        restaurants={restaurants}
         categoryGuides={categoryGuides}
         destinationFeatures={destinationFeatures}
       />

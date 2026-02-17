@@ -7,15 +7,15 @@ export async function generateMetadata() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://toptours.ai';
   
   return {
-    title: 'TopTours.ai - AI-Powered Tour & Restaurant Discovery | 300,000+ Tours Worldwide',
-    description: 'Tours & Restaurants That Match Your Style. Get personalized recommendations with AI-powered Best Match. Explore 300,000+ tours, 10,000+ restaurants, and 19,000+ travel guides across 3,300+ destinations worldwide. See match scores on every listing. Book tours, find restaurants, and discover travel experiences.',
-    keywords: 'tours, activities, restaurants, travel planning, AI travel recommendations, destination guides, book tours online, travel experiences, vacation activities, personalized travel, best match tours, travel style matching, things to do, travel booking, tour booking, restaurant finder, travel guide, destination guide, travel recommendations, AI travel planner',
+    title: 'TopTours.ai - AI-Powered Tour & Excursion Discovery | 300,000+ Tours Worldwide',
+    description: 'Tours & Excursions That Match Your Style. Get personalized recommendations with AI-powered Best Match. Explore 300,000+ tours and 19,000+ travel guides across 3,300+ destinations worldwide. See match scores on every listing. Book tours and discover travel experiences.',
+    keywords: 'tours, activities, travel planning, AI travel recommendations, destination guides, book tours online, travel experiences, vacation activities, personalized travel, best match tours, travel style matching, things to do, travel booking, tour booking, travel guide, destination guide, travel recommendations, AI travel planner',
     alternates: {
       canonical: baseUrl,
     },
     openGraph: {
-      title: 'TopTours.ai - Tours & Restaurants That Match Your Style',
-      description: 'Get personalized tour and restaurant recommendations with AI-powered Best Match. Explore 300,000+ tours, 10,000+ restaurants across 3,300+ destinations. See match scores on every listing.',
+      title: 'TopTours.ai - Tours & Excursions That Match Your Style',
+      description: 'Get personalized tour and excursion recommendations with AI-powered Best Match. Explore 300,000+ tours across 3,300+ destinations. See match scores on every listing.',
       url: baseUrl,
       siteName: 'TopTours.ai',
       images: [{
@@ -29,8 +29,8 @@ export async function generateMetadata() {
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'TopTours.ai - Tours & Restaurants That Match Your Style',
-      description: 'AI-powered Best Match for personalized travel recommendations. 300,000+ tours, 10,000+ restaurants across 3,300+ destinations.',
+      title: 'TopTours.ai - Tours & Excursions That Match Your Style',
+      description: 'AI-powered Best Match for personalized travel recommendations. 300,000+ tours across 3,300+ destinations.',
       images: [`${baseUrl}/og-homepage.jpg`],
     },
     robots: {
@@ -57,7 +57,7 @@ export default async function HomePage() {
     name: 'TopTours.ai',
     url: baseUrl,
     logo: `${baseUrl}/logo.png`,
-    description: 'AI-powered tour and restaurant discovery platform with personalized recommendations across 300,000+ tours worldwide.',
+    description: 'AI-powered tour and excursion discovery platform with personalized recommendations across 300,000+ tours worldwide.',
     sameAs: [
       'https://twitter.com/toptoursai',
       'https://facebook.com/toptoursai'
@@ -70,7 +70,7 @@ export default async function HomePage() {
     '@type': 'WebSite',
     name: 'TopTours.ai',
     url: baseUrl,
-    description: 'Tours & Restaurants That Match Your Style',
+    description: 'Tours & Excursions That Match Your Style',
     potentialAction: {
       '@type': 'SearchAction',
       target: {

@@ -35,14 +35,12 @@ import FooterNext from '@/components/FooterNext';
 import DestinationStickyNav from '@/components/DestinationStickyNav';
 import Link from 'next/link';
 import { useBookmarks } from '@/hooks/useBookmarks';
-import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import { Heart, Trophy } from 'lucide-react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { toast, useToast } from '@/components/ui/use-toast';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import { getGuidesByCountry } from '@/data/travelGuidesData';
-import { getRestaurantsForDestination } from '../restaurants/restaurantsData';
 import { getDestinationById, getDestinationsByCountry } from '@/data/destinationsData';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { hasDestinationPage } from '@/data/destinationFullContent';
@@ -59,10 +57,6 @@ import {
 } from '@/lib/tourMatching';
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { resolveUserPreferences } from '@/lib/preferenceResolution';
-import { extractRestaurantStructuredValues, calculateRestaurantPreferenceMatch } from '@/lib/restaurantMatching';
-// OPTIMIZED: Lazy load RestaurantMatchModal - it's only shown conditionally
-const RestaurantMatchModal = lazy(() => import('@/components/restaurant/RestaurantMatchModal'));
-
 // Helper function to generate slug
 function generateSlug(name) {
   return name
@@ -327,12 +321,7 @@ export default function ToursListingClient({
   totalToursAvailable = 0,
   promotionScores = {}, // Map of productId -> score object
   promotedTours = [], // Promoted tour listings for this destination
-  promotedRestaurants = [], // Promoted restaurant listings for this destination
-  restaurantPromotionScores = {}, // Map of restaurantId -> score object
   premiumOperatorTourIds = [], // Array of product IDs with premium operator status
-  premiumRestaurantIds = [], // Array of restaurant IDs with premium status
-  hasRestaurants = false, // Whether destination has restaurants (from server)
-  restaurants = [], // Restaurants from server (database + static)
   categoryGuides = [], // Category guides for internal linking (database + hardcoded)
   destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false } // Destination features for sticky nav
 }) {
@@ -373,7 +362,6 @@ export default function ToursListingClient({
 
   // Keep production console clean (debug logging removed)
   const { toast } = useToast();
-  const { isBookmarked: isRestaurantBookmarked, toggle: toggleRestaurantBookmark } = useRestaurantBookmarks();
   
   // CRITICAL: Use destination.destinationId if available (from classified data), otherwise fall back to prop
   const effectiveDestinationId = destination.destinationId || destination.viatorDestinationId || viatorDestinationId;
@@ -384,7 +372,6 @@ export default function ToursListingClient({
   
   // Get guides for internal linking
   const guides = getGuidesByCountry(destination.country) || [];
-  // hasRestaurants is now passed from server component (checks both database and static data)
   
   // Check if destination has a guide (not a Viator destination without guide)
   const destinationWithGuide = getDestinationById(destination.id);
@@ -465,28 +452,6 @@ export default function ToursListingClient({
   const [savingPreferencesToProfile, setSavingPreferencesToProfile] = useState(false);
   
   // Restaurant match modal state
-  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
-  const [showRestaurantMatchModal, setShowRestaurantMatchModal] = useState(false);
-  const [localRestaurantPreferences, setLocalRestaurantPreferences] = useState(() => {
-    if (typeof window === 'undefined') return null;
-    try {
-      const stored = localStorage.getItem('topTours_restaurant_preferences');
-      if (stored) {
-        return JSON.parse(stored);
-      }
-    } catch (e) {
-      console.error('Error loading restaurant preferences:', e);
-    }
-    return {
-      atmosphere: 'any',
-      diningStyle: 50,
-      features: [],
-      priceRange: 'any',
-      mealTime: 'any',
-      groupSize: 'any',
-    };
-  });
-  
   // User preferences for matching
   const [user, setUser] = useState(null);
   const [userPreferences, setUserPreferences] = useState(null);
@@ -680,51 +645,6 @@ export default function ToursListingClient({
   const [regularToursCurrentPage, setRegularToursCurrentPage] = useState(1);
   const [regularToursHasMore, setRegularToursHasMore] = useState(false);
   const [loadingMoreRegular, setLoadingMoreRegular] = useState(false);
-
-  // Calculate restaurant match scores for promoted restaurants (only when user has enabled toggle)
-  const restaurantMatchById = useMemo(() => {
-    const map = new Map();
-    if (!matchScoresEnabled) return map;
-    if (!Array.isArray(promotedRestaurants)) return map;
-
-    const prefs = localRestaurantPreferences || {
-      atmosphere: 'any',
-      diningStyle: 50,
-      features: [],
-      priceRange: 'any',
-      mealTime: 'any',
-      groupSize: 'any',
-    };
-
-    // Build a compatible "userPreferences" object expected by the matcher
-    const pseudoUserPreferences = {
-      adventureLevel: 50,
-      cultureVsBeach: 50,
-      groupPreference:
-        prefs.groupSize === 'solo' || prefs.groupSize === 'couple'
-          ? 70
-          : prefs.groupSize === 'groups' || prefs.groupSize === 'family'
-          ? 30
-          : 50,
-      budgetComfort:
-        prefs.priceRange === '$' ? 25 : prefs.priceRange === '$$' ? 40 : prefs.priceRange === '$$$' ? 70 : prefs.priceRange === '$$$$' ? 85 : 50,
-      structurePreference: typeof prefs.diningStyle === 'number' ? prefs.diningStyle : 50,
-      foodAndDrinkInterest: 75,
-      timeOfDayPreference: 'no_preference',
-      restaurantPreferences: prefs,
-    };
-
-    promotedRestaurants.forEach((r) => {
-      try {
-        const values = extractRestaurantStructuredValues(r);
-        if (values?.error) return;
-        const match = calculateRestaurantPreferenceMatch(pseudoUserPreferences, values, r);
-        if (match?.error) return;
-        map.set(r.id, match);
-      } catch {}
-    });
-    return map;
-  }, [matchScoresEnabled, promotedRestaurants, localRestaurantPreferences]);
 
   // Combine all tours for filtering (deduplicate by productId)
   // Priority: Search results > Filtered results > Initial tours
@@ -1934,7 +1854,7 @@ export default function ToursListingClient({
       />
 
       {/* Promoted Listings Section - Above Filters */}
-      {((promotedTours && promotedTours.length > 0) || (promotedRestaurants && promotedRestaurants.length > 0)) && (
+      {(promotedTours && promotedTours.length > 0) && (
         <section className="py-12 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-2 mb-6">
@@ -1945,7 +1865,7 @@ export default function ToursListingClient({
               </Badge>
             </div>
             <p className="text-sm text-gray-600 mb-6">
-              Featured tours and restaurants from our partner operators.
+              Featured tours from our partner operators.
             </p>
 
             {/* Promoted Tours */}
@@ -1983,131 +1903,6 @@ export default function ToursListingClient({
               </div>
             )}
 
-            {/* Promoted Restaurants */}
-            {promotedRestaurants && promotedRestaurants.length > 0 && (
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Promoted Restaurants</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {promotedRestaurants.slice(0, 6).map((restaurant, index) => {
-                      const restaurantId = restaurant.id;
-                      if (!restaurantId) return null;
-                      
-                      const restaurantUrl = restaurant.slug && destination.id
-                        ? `/destinations/${destination.id}/restaurants/${restaurant.slug}`
-                        : `/destinations/${destination.id}/restaurants`;
-                      
-                      const description = restaurant.metaDescription 
-                        || restaurant.tagline 
-                        || restaurant.summary 
-                        || restaurant.description
-                        || (restaurant.cuisines?.length > 0 
-                            ? `Discover ${restaurant.cuisines.join(' & ')} cuisine at ${restaurant.name}.`
-                            : `Experience great dining at ${restaurant.name}.`);
-                      
-                      // Get match score
-                      const matchScore = restaurantMatchById.get(restaurantId)?.matchScore ?? 0;
-                      
-                      // Get cuisine for badge
-                      const validCuisines = restaurant.cuisines && Array.isArray(restaurant.cuisines)
-                        ? restaurant.cuisines.filter(c => c && 
-                            c.toLowerCase() !== 'restaurant' && 
-                            c.toLowerCase() !== 'food' &&
-                            c.trim().length > 0)
-                        : [];
-                      const cuisineBadge = validCuisines.length > 0 ? validCuisines[0] : 'Restaurant';
-                      
-                      return (
-                        <motion.div
-                          key={restaurantId || index}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.4, delay: index * 0.05 }}
-                          viewport={{ once: true }}
-                        >
-                          <Card className={`h-full border bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-purple-500 shadow-purple-200/50`}>
-                            <CardContent className="p-6 flex flex-col h-full">
-                              <div className="flex items-center justify-between gap-3 mb-3">
-                                <div className="flex items-center gap-3 min-w-0">
-                                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
-                                    <UtensilsCrossed className="w-5 h-5 text-white" />
-                                  </div>
-                                  <div className="flex items-center gap-2 min-w-0">
-                                    <Badge className="ocean-gradient text-white text-xs flex-shrink-0">
-                                      <Sparkles className="w-3 h-3 mr-1" />
-                                      Promoted
-                                    </Badge>
-                                    <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 truncate">
-                                      {cuisineBadge}
-                                    </span>
-                                  </div>
-                                </div>
-
-                                {matchScoresEnabled && (
-                                  <button
-                                    type="button"
-                                    onClick={() => {
-                                      setSelectedRestaurant(restaurant);
-                                      setShowRestaurantMatchModal(true);
-                                    }}
-                                    className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 flex-shrink-0"
-                                    title="Click to see why this matches your taste"
-                                  >
-                                    <Sparkles className="w-3.5 h-3.5 text-purple-600" />
-                                    <span className="text-xs font-bold text-gray-900">
-                                      {matchScore}%
-                                    </span>
-                                    <span className="text-[10px] text-gray-600">Match</span>
-                                  </button>
-                                )}
-                              </div>
-                              
-                              <div className="flex items-start justify-between gap-2 mb-3">
-                                <h3 className="text-lg font-bold text-gray-900 line-clamp-2 flex items-center gap-1.5">
-                                  {restaurant.name}
-                                  {(premiumRestaurantIds.includes(restaurant.id) || premiumRestaurantIds.includes(Number(restaurant.id))) && (
-                                    <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Featured Restaurant" />
-                                  )}
-                                </h3>
-                              </div>
-
-                              <p className="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
-                                {description}
-                              </p>
-
-                              <div className="flex flex-wrap gap-2 mb-4">
-                                {restaurant.ratings?.googleRating && (
-                                  <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
-                                    <Star className="w-3 h-3" />
-                                    {restaurant.ratings.googleRating.toFixed(1)}
-                                  </span>
-                                )}
-                                {restaurant.pricing?.priceRange && (
-                                  <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
-                                    {restaurant.pricing.priceRange}
-                                  </span>
-                                )}
-                                {validCuisines.length > 0 && (
-                                  <span className="inline-flex items-center text-xs font-medium bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full">
-                                    {validCuisines.slice(0, 2).join(' · ')}
-                                  </span>
-                                )}
-                              </div>
-
-                              <Link
-                                href={restaurantUrl}
-                                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
-                              >
-                                View Restaurant
-                                <ArrowRight className="w-4 h-4" />
-                              </Link>
-                            </CardContent>
-                          </Card>
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                </div>
-            )}
           </div>
         </section>
       )}
@@ -2753,130 +2548,6 @@ export default function ToursListingClient({
         </div>
       </section>
 
-      {/* Top Restaurants Section */}
-      {hasRestaurants && (() => {
-        // Use restaurants from server if available, otherwise fallback to static data
-        const restaurantsToDisplay = restaurants.length > 0 
-          ? restaurants.slice(0, 8)
-          : getRestaurantsForDestination(destination.id).slice(0, 8);
-        if (restaurantsToDisplay.length === 0) return null;
-        
-        return (
-          <section className="py-12 bg-white border-t">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <div className="mb-6">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                      Top Restaurants in {destination.fullName || destination.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-6">
-                      Discover the best dining experiences and hand-picked restaurants.
-                    </p>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {restaurantsToDisplay.map((restaurant, index) => {
-                      const restaurantUrl = `/destinations/${destination.id}/restaurants/${restaurant.slug}`;
-                      const description = restaurant.metaDescription 
-                        || restaurant.tagline 
-                        || restaurant.summary 
-                        || restaurant.description
-                        || (restaurant.cuisines?.length > 0 
-                            ? `Discover ${restaurant.cuisines.join(' & ')} cuisine at ${restaurant.name} in ${destination.fullName || destination.name}.`
-                            : `Experience great dining at ${restaurant.name} in ${destination.fullName || destination.name}.`);
-                      
-                      return (
-                        <motion.div
-                          key={restaurant.id || index}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.4, delay: index * 0.1 }}
-                          viewport={{ once: true }}
-                        >
-                          <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-shadow">
-                            <CardContent className="p-6 flex flex-col h-full">
-                              <div className="flex items-center gap-3 mb-3">
-                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
-                                  <UtensilsCrossed className="w-5 h-5 text-white" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <h4 className="text-lg font-bold text-gray-900 line-clamp-1">
-                                    {restaurant.name}
-                                  </h4>
-                                  {restaurant.cuisines?.length > 0 && (
-                                    <span className="text-xs font-medium text-blue-600 uppercase tracking-wide">
-                                      {restaurant.cuisines[0]}
-                                    </span>
-                                  )}
-                                </div>
-                              </div>
-                              <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">
-                                {description.length > 120 ? description.slice(0, 120) + '...' : description}
-                              </p>
-                              <div className="flex flex-wrap gap-2 mb-4">
-                                {restaurant.ratings?.googleRating && (
-                                  <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
-                                    <Star className="w-3 h-3" />
-                                    {restaurant.ratings.googleRating.toFixed(1)}
-                                  </span>
-                                )}
-                                {restaurant.pricing?.priceRange && (
-                                  <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
-                                    {restaurant.pricing.priceRange}
-                                  </span>
-                                )}
-                              </div>
-                              <Link
-                                href={restaurantUrl}
-                                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
-                              >
-                                View Restaurant
-                                <ArrowRight className="w-4 h-4" />
-                              </Link>
-                            </CardContent>
-                          </Card>
-                        </motion.div>
-                      );
-                    })}
-                    {/* View All Restaurants Card */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.8 }}
-                      viewport={{ once: true }}
-                    >
-                      <Link
-                        href={`/destinations/${destination.id}/restaurants`}
-                        className="block h-full"
-                      >
-                        <Card className="h-full border border-blue-100 bg-white shadow-lg hover:shadow-xl transition-shadow flex flex-col items-center justify-center text-center p-6">
-                          <UtensilsCrossed className="w-8 h-8 text-blue-600 mb-3" />
-                          <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                            View All Restaurants in {destination.fullName || destination.name}
-                          </h4>
-                          <p className="text-sm text-gray-600 mb-4">
-                            Explore every curated dining spot we recommend across the island.
-                          </p>
-                          <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600">
-                            Browse the list
-                            <ArrowRight className="w-4 h-4" />
-                          </span>
-                        </Card>
-                      </Link>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </section>
-        );
-      })()}
-
       {/* Internal Linking Section */}
       <section className="py-12 bg-white border-t">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2994,35 +2665,6 @@ export default function ToursListingClient({
               </Card>
             </Link>
           </div>
-
-          {/* Top Restaurants */}
-          {hasRestaurants && (
-            <div className="mb-6">
-              <Link href={`/destinations/${destination.id}/restaurants`}>
-                <Card className="bg-gradient-to-br from-orange-50 to-red-50 border-orange-200 hover:shadow-lg transition-all duration-300 cursor-pointer">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <UtensilsCrossed className="w-6 h-6 text-orange-600" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-bold text-gray-900 mb-2">
-                          Top Restaurants in {destination.fullName || destination.name}
-                        </h3>
-                        <p className="text-sm text-gray-600 mb-4">
-                          Discover the best dining experiences and hand-picked restaurants.
-                        </p>
-                        <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50">
-                          View Restaurants
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            </div>
-          )}
 
           {/* Travel Guides */}
           {guides.length > 0 && (
@@ -3506,21 +3148,6 @@ export default function ToursListingClient({
         </Suspense>
       )}
       
-      {showRestaurantMatchModal && (
-        <Suspense fallback={null}>
-          <RestaurantMatchModal
-            isOpen={showRestaurantMatchModal}
-            onClose={() => setShowRestaurantMatchModal(false)}
-            restaurant={selectedRestaurant}
-            matchData={selectedRestaurant ? restaurantMatchById.get(selectedRestaurant.id) : null}
-            preferences={localRestaurantPreferences}
-            onOpenPreferences={() => {
-              setShowRestaurantMatchModal(false);
-              // Note: You may want to add a restaurant preferences modal here
-            }}
-          />
-        </Suspense>
-      )}
     </>
   );
 }

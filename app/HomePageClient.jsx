@@ -36,7 +36,7 @@ export default function HomePageClient() {
     "name": "TopTours.ai",
     "url": baseUrl,
     "logo": `${baseUrl}/logo.png`,
-    "description": "AI-powered tour and restaurant discovery platform with personalized recommendations",
+    "description": "AI-powered tour and excursion discovery platform with personalized recommendations",
     "sameAs": [
       "https://www.facebook.com/toptoursai",
       "https://www.instagram.com/toptoursai",
@@ -60,7 +60,7 @@ export default function HomePageClient() {
     "@type": "WebSite",
     "name": "TopTours.ai",
     "url": baseUrl,
-    "description": "AI-powered tour and restaurant recommendations that match your travel style with personalized match scores",
+    "description": "AI-powered tour and excursion recommendations that match your travel style with personalized match scores",
     "potentialAction": {
       "@type": "SearchAction",
       "target": `${baseUrl}/results?searchTerm={search_term_string}`,

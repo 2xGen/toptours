@@ -29,7 +29,6 @@ import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { destinations } from '../../../../../src/data/destinationsData';
 import { travelGuides } from '../../../../../src/data/travelGuidesData';
-import { getRestaurantsForDestination } from '../../restaurants/restaurantsData';
 
 const AIRPORT_TRANSFERS_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/airport%20transfers.png';
 const DISCOVER_CARS_URL = 'https://www.discovercars.com/?a_aid=toptours&a_cid=65100b9c';
@@ -1184,131 +1183,6 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           </motion.div>
         </div>
       </section>
-
-      {/* Top Restaurants Section */}
-      {(() => {
-        const restaurants = getRestaurantsForDestination(destinationId);
-        const hasRestaurants = restaurants && restaurants.length > 0;
-        
-        if (!hasRestaurants) return null;
-        
-        const restaurantsToDisplay = restaurants.slice(0, 8);
-        
-        return (
-          <section className="py-12 bg-white border-t">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  <div className="mb-6">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                      Top Restaurants in {destination.fullName || destination.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-6">
-                      Discover the best dining experiences and hand-picked restaurants.
-                    </p>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {restaurantsToDisplay.map((restaurant, index) => {
-                      const restaurantUrl = `/destinations/${destinationId}/restaurants/${restaurant.slug}`;
-                      const description = restaurant.metaDescription 
-                        || restaurant.tagline 
-                        || restaurant.summary 
-                        || restaurant.description
-                        || (restaurant.cuisines?.length > 0 
-                            ? `Discover ${restaurant.cuisines.join(' & ')} cuisine at ${restaurant.name} in ${destination.fullName || destination.name}.`
-                            : `Experience great dining at ${restaurant.name} in ${destination.fullName || destination.name}.`);
-                      
-                      return (
-                        <motion.div
-                          key={restaurant.id || index}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.4, delay: index * 0.1 }}
-                          viewport={{ once: true }}
-                        >
-                          <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-shadow">
-                            <CardContent className="p-6 flex flex-col h-full">
-                              <div className="flex items-center gap-3 mb-3">
-                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
-                                  <UtensilsCrossed className="w-5 h-5 text-white" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <h4 className="text-lg font-bold text-gray-900 line-clamp-1">
-                                    {restaurant.name}
-                                  </h4>
-                                  {restaurant.cuisines?.length > 0 && (
-                                    <span className="text-xs font-medium text-blue-600 uppercase tracking-wide">
-                                      {restaurant.cuisines[0]}
-                                    </span>
-                                  )}
-                                </div>
-                              </div>
-                              <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">
-                                {description.length > 120 ? description.slice(0, 120) + '...' : description}
-                              </p>
-                              <div className="flex flex-wrap gap-2 mb-4">
-                                {restaurant.ratings?.googleRating && (
-                                  <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
-                                    <Star className="w-3 h-3" />
-                                    {restaurant.ratings.googleRating.toFixed(1)}
-                                  </span>
-                                )}
-                                {restaurant.pricing?.priceRange && (
-                                  <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
-                                    {restaurant.pricing.priceRange}
-                                  </span>
-                                )}
-                              </div>
-                              <Link
-                                href={restaurantUrl}
-                                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
-                              >
-                                View Restaurant
-                                <ArrowRight className="w-4 h-4" />
-                              </Link>
-                            </CardContent>
-                          </Card>
-                        </motion.div>
-                      );
-                    })}
-                    {/* View All Restaurants Card */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.8 }}
-                      viewport={{ once: true }}
-                    >
-                      <Link
-                        href={`/destinations/${destinationId}/restaurants`}
-                        className="block h-full"
-                      >
-                        <Card className="h-full border border-blue-100 bg-white shadow-lg hover:shadow-xl transition-shadow flex flex-col items-center justify-center text-center p-6">
-                          <UtensilsCrossed className="w-8 h-8 text-blue-600 mb-3" />
-                          <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                            View All Restaurants in {destination.fullName || destination.name}
-                          </h4>
-                          <p className="text-sm text-gray-600 mb-4">
-                            Explore every curated dining spot we recommend across the island.
-                          </p>
-                          <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600">
-                            Browse the list
-                            <ArrowRight className="w-4 h-4" />
-                          </span>
-                        </Card>
-                      </Link>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </section>
-        );
-      })()}
 
       {/* Other Featured Destinations in the Region - Purple Background */}
       <section className="py-12 px-4" style={{ backgroundColor: '#764ba2' }}>

@@ -9,7 +9,7 @@ const HowItWorksHighlights = () => {
     {
       icon: Brain,
       title: 'AI-Powered Best Match',
-      description: 'Get personalized tour and restaurant recommendations that actually fit your travel style. See 0-100% match scores with detailed breakdowns explaining why listings match your preferences.',
+      description: 'Get personalized tour recommendations that actually fit your travel style. See 0-100% match scores with detailed breakdowns explaining why listings match your preferences.',
       color: 'purple',
       gradient: 'from-purple-50 to-pink-50',
       border: 'border-purple-200',
@@ -18,7 +18,7 @@ const HowItWorksHighlights = () => {
     {
       icon: Sparkles,
       title: 'Set Your Preferences',
-      description: 'Tell us your travel style: adventure level, budget comfort, group size, and more. Our AI uses these preferences to rank tours and restaurants just for you.',
+      description: 'Tell us your travel style: adventure level, budget comfort, group size, and more. Our AI uses these preferences to rank tours just for you.',
       color: 'blue',
       gradient: 'from-blue-50 to-indigo-50',
       border: 'border-blue-200',
@@ -27,7 +27,7 @@ const HowItWorksHighlights = () => {
     {
       icon: Trophy,
       title: 'Discover Perfect Matches',
-      description: 'Every tour and restaurant shows a match score based on your preferences. Sort by "Best Match" to see the most relevant options first, across 3,300+ destinations.',
+      description: 'Every tour shows a match score based on your preferences. Sort by "Best Match" to see the most relevant options first, across 3,300+ destinations.',
       color: 'orange',
       gradient: 'from-orange-50 to-yellow-50',
       border: 'border-orange-200',
@@ -53,7 +53,7 @@ const HowItWorksHighlights = () => {
             How TopTours.ai<span className="text-xs align-super">™</span> Works
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            The first platform with <strong>AI-powered Best Match</strong>. Get personalized tour and restaurant recommendations based on your travel style, preferences, and budget. See match scores on every listing.
+            The first platform with <strong>AI-powered Best Match</strong>. Get personalized tour recommendations based on your travel style, preferences, and budget. See match scores on every listing.
           </p>
         </motion.div>
 

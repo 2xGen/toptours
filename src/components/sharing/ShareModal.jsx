@@ -161,7 +161,7 @@ export default function ShareModal({
               <p className="text-xs text-gray-500">
                 {title.includes('plan') || url.includes('/plans/') 
                   ? 'When you share, your plan details will appear automatically on social media.'
-                  : `When you share, the ${title.includes('tour') ? 'tour' : 'restaurant'} image and details will appear automatically on social media.`
+                  : `When you share, the tour image and details will appear automatically on social media.`
                 }
               </p>
             </div>

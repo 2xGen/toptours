@@ -1,6 +1,5 @@
 import { getAllDestinations } from '../src/data/destinationsData.js';
 import { travelGuides } from '../src/data/travelGuidesData.js';
-import { getRestaurantCountsByDestination } from '../src/lib/restaurants.js';
 import { createSupabaseServiceRoleClient } from '../src/lib/supabaseClient.js';
 import { hasDestinationPage } from '../src/data/destinationFullContent.js';
 import { getAllBabyEquipmentRentalsDestinations } from '../src/lib/babyEquipmentRentals.js';
@@ -74,18 +73,6 @@ export default async function sitemap() {
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/leaderboard`,
-      lastModified: currentDate,
-      changeFrequency: 'hourly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/restaurants`,
-      lastModified: currentDate,
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/tours`,
       lastModified: currentDate,
       changeFrequency: 'daily',
@@ -98,7 +85,7 @@ export default async function sitemap() {
   const destinationPages = destinations.map((destination) => ({
     url: `${baseUrl}/destinations/${destination.id}`,
     lastModified: currentDate,
-    changeFrequency: 'weekly', // Destinations update weekly with new tours/restaurants
+    changeFrequency: 'weekly', // Destinations update weekly with new tours
     priority: 0.9, // Increased from 0.8 - destinations are high-value SEO pages
   }));
 
@@ -135,17 +122,6 @@ export default async function sitemap() {
     ...fullContentSlugs,
   ];
 
-  // Restaurant listing pages per destination (fetch from database)
-  const restaurantCounts = await getRestaurantCountsByDestination();
-  const restaurantListingPages = destinations
-    .filter((destination) => (restaurantCounts[destination.id] || 0) > 0)
-    .map((destination) => ({
-      url: `${baseUrl}/destinations/${destination.id}/restaurants`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.75,
-    }));
-
   // OPTIMIZED: Destination tour listing pages - high priority for SEO
   const tourListingPages = destinations.map((destination) => ({
     url: `${baseUrl}/destinations/${destination.id}/tours`,
@@ -160,41 +136,6 @@ export default async function sitemap() {
     lastModified: currentDate,
     changeFrequency: 'weekly',
     priority: 0.72,
-  }));
-
-  // Individual restaurant pages (fetch from database)
-  const supabase = createSupabaseServiceRoleClient();
-  const allRestaurants = [];
-  const pageSize = 1000;
-  let from = 0;
-  let hasMore = true;
-
-  while (hasMore) {
-    const { data, error } = await supabase
-      .from('restaurants')
-      .select('destination_id, slug, updated_at')
-      .eq('is_active', true)
-      .range(from, from + pageSize - 1);
-
-    if (error) {
-      console.error('Error fetching restaurants for sitemap:', error);
-      break;
-    }
-
-    if (data && data.length > 0) {
-      allRestaurants.push(...data);
-    }
-
-    hasMore = data && data.length === pageSize;
-    from += pageSize;
-  }
-
-  // OPTIMIZED: Restaurant detail pages - use actual updated_at dates for better SEO
-  const restaurantDetailPages = allRestaurants.map((restaurant) => ({
-    url: `${baseUrl}/destinations/${restaurant.destination_id}/restaurants/${restaurant.slug}`,
-    lastModified: restaurant.updated_at || currentDate, // Use actual update date for better SEO
-    changeFrequency: 'monthly', // Restaurant details change monthly
-    priority: 0.75, // Increased from 0.7 - individual restaurant pages are valuable for SEO
   }));
 
   // OPTIMIZED: Travel guide pages - high priority for SEO (content marketing)
@@ -281,8 +222,6 @@ export default async function sitemap() {
     ...destinationsWithFullContent, // Destinations with full content but not in curated list
     ...tourListingPages,
     ...operatorListingPages,
-    ...restaurantListingPages,
-    ...restaurantDetailPages,
     ...babyEquipmentRentalPages, // Baby equipment rental pages
     ...travelGuidePages,
     ...guidesListingPages, // /destinations/[id]/guides (26 Jan 2026)

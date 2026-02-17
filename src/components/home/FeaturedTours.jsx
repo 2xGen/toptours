@@ -20,10 +20,10 @@ const FeaturedTours = ({ onOpenModal }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white mb-6">
-            Discover Amazing Tours & Restaurants
+            Discover Amazing Tours & Excursions
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Explore 10,000+ tours and 10,000+ restaurants across 3,300+ destinations. Use AI-powered Best Match to find experiences that fit your travel style.
+            Explore 300,000+ tours across 3,300+ destinations. Use AI-powered Best Match to find experiences that fit your travel style.
           </p>
         </motion.div>
 
@@ -34,7 +34,7 @@ const FeaturedTours = ({ onOpenModal }) => {
               <span className="text-lg font-semibold text-white">AI-Powered Discovery</span>
             </div>
             <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-              Use our AI-powered Best Match feature to find tours and restaurants that perfectly match your travel style. Set your preferences and see personalized recommendations instantly.
+              Use our AI-powered Best Match feature to find tours that perfectly match your travel style. Set your preferences and see personalized recommendations instantly.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button

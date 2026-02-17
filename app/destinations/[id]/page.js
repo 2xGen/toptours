@@ -372,13 +372,8 @@ export default async function DestinationDetailPage({ params }) {
   const {
     promotionScores,
     trendingTours,
-    trendingRestaurants,
     promotedTours,
-    promotedRestaurants,
     hardcodedTours,
-    restaurants,
-    restaurantPromotionScores,
-    premiumRestaurantIds,
     categoryGuides,
     hasBabyEquipmentRentals
   } = await fetchDestinationData(destination, destinationIdForScores);
@@ -394,7 +389,7 @@ export default async function DestinationDetailPage({ params }) {
             "@type": "TouristDestination",
             "name": destination.fullName || destination.name,
             "alternateName": destination.name !== destination.fullName ? destination.name : undefined,
-            "description": destination.seo?.description || destination.heroDescription || destination.briefDescription || `Discover the best tours, activities, and restaurants in ${destination.fullName || destination.name}`,
+            "description": destination.seo?.description || destination.heroDescription || destination.briefDescription || `Discover the best tours and activities in ${destination.fullName || destination.name}`,
             "image": destination.imageUrl,
             "url": `https://toptours.ai/destinations/${destination.id}`,
             "touristType": ["Leisure travelers", "Adventure seekers", "Culture enthusiasts", "Family travelers"],
@@ -642,13 +637,8 @@ export default async function DestinationDetailPage({ params }) {
           destination={destination} 
           promotionScores={promotionScores}
           trendingTours={trendingTours}
-          trendingRestaurants={trendingRestaurants}
           promotedTours={promotedTours}
-          promotedRestaurants={promotedRestaurants}
           hardcodedTours={hardcodedTours}
-          restaurants={restaurants}
-          restaurantPromotionScores={restaurantPromotionScores}
-          premiumRestaurantIds={premiumRestaurantIds}
           categoryGuides={categoryGuides}
           hasBabyEquipmentRentals={hasBabyEquipmentRentals}
         />

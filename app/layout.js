@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { Suspense, lazy } from 'react'
 import { Toaster } from '@/components/ui/toaster'
 import PageViewTracker from '@/components/PageViewTracker'
+import ClientHeadScripts from './ClientHeadScripts'
 
 // OPTIMIZED: Lazy load non-critical components for better initial page load
 const CookieConsentManager = lazy(() => import('@/components/CookieConsentManager'));
@@ -19,12 +20,12 @@ const inter = Inter({
 
 export const metadata = {
   title: {
-    default: 'Tours & Restaurants That Match Your Style | AI-Powered Best Match',
+    default: 'Tours & Excursions That Match Your Style | AI-Powered Best Match',
     template: '%s | TopTours.ai™'
   },
   // Force rebuild v6 - Deploy with all SEO improvements Jan 1 2026
 
-  description: 'Get personalized tour and restaurant recommendations that match your travel style, budget, and group preferences with AI-powered Best Match. See 0-100% match scores on every listing.',
+  description: 'Get personalized tour and excursion recommendations that match your travel style, budget, and group preferences with AI-powered Best Match. See 0-100% match scores on every listing.',
   keywords: 'tours, activities, travel planning, AI travel, tour booking, travel experiences, city tours, adventure tours, AI-powered tours, personalized tour recommendations, tour match score, tour leaderboard',
   authors: [{ name: 'TopTours.ai' }],
   creator: 'TopTours.ai',
@@ -39,8 +40,8 @@ export const metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Tours & Restaurants That Match Your Style | AI-Powered Best Match',
-    description: 'Get personalized tour and restaurant recommendations that match your travel style, budget, and group preferences with AI-powered Best Match. See 0-100% match scores on every listing.',
+    title: 'Tours & Excursions That Match Your Style | AI-Powered Best Match',
+    description: 'Get personalized tour and excursion recommendations that match your travel style, budget, and group preferences with AI-powered Best Match. See 0-100% match scores on every listing.',
     url: 'https://toptours.ai',
     siteName: 'TopTours.ai™',
     locale: 'en_US',
@@ -50,14 +51,14 @@ export const metadata = {
         url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
         width: 1200,
         height: 630,
-        alt: 'Discover Top Tours and Restaurants with TopTours.ai™',
+        alt: 'Discover Top Tours & Excursions with TopTours.ai™',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tours & Restaurants That Match Your Style | AI-Powered Best Match',
-    description: 'Get personalized tour and restaurant recommendations that match your travel style, budget, and group preferences with AI-powered Best Match. See 0-100% match scores on every listing.',
+    title: 'Tours & Excursions That Match Your Style | AI-Powered Best Match',
+    description: 'Get personalized tour and excursion recommendations that match your travel style, budget, and group preferences with AI-powered Best Match. See 0-100% match scores on every listing.',
     images: ['https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg'],
   },
   robots: {
@@ -100,36 +101,6 @@ export default function RootLayout({ children }) {
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#667eea" />
         <meta name="msapplication-TileColor" content="#667eea" />
-        
-        {/* Metricool tracking - visit analytics */}
-        <script
-          defer
-          dangerouslySetInnerHTML={{
-            __html: `function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"10cc6f6541b9f7bcd21bab9b7ab99987"})});`,
-          }}
-        />
-
-        {/* OPTIMIZED: Service Worker Registration - Deferred to not block initial render */}
-        <script
-          defer
-          dangerouslySetInnerHTML={{
-            __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js')
-                    .then(function(registration) {
-                      if (process.env.NODE_ENV === 'development') {
-                        console.log('Service Worker registered:', registration.scope);
-                      }
-                    })
-                    .catch(function(error) {
-                      // Silently fail - service worker is non-critical
-                    });
-                });
-              }
-            `
-          }}
-        />
         
         {/* OPTIMIZED: Enhanced Organization Schema for better SEO */}
         <script
@@ -202,6 +173,7 @@ export default function RootLayout({ children }) {
         style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', backgroundAttachment: 'fixed' }}
         suppressHydrationWarning
       >
+        <ClientHeadScripts />
         <script
           dangerouslySetInnerHTML={{
             __html: `

@@ -20,10 +20,10 @@ const steps = [
   {
     icon: Globe,
     title: 'Discover',
-    description: 'Browse 10,000+ tours and 10,000+ restaurants across 3,300+ destinations',
+    description: 'Browse 300,000+ tours across 3,300+ destinations',
     color: 'from-blue-500 to-cyan-500',
     iconColor: 'text-blue-500',
-    details: ['Explore worldwide destinations', 'Find amazing tours & restaurants', 'Read real traveler reviews']
+    details: ['Explore worldwide destinations', 'Find amazing tours & activities', 'Read real traveler reviews']
   },
   {
     icon: TrendingUp,
@@ -68,7 +68,7 @@ const steps = [
   {
     icon: Bookmark,
     title: 'Save & Explore',
-    description: 'Save unlimited tours and restaurants for your next adventure',
+    description: 'Save unlimited tours for your next adventure',
     color: 'from-teal-500 to-cyan-500',
     iconColor: 'text-teal-500',
     details: ['Save favorites', 'Plan your trips', 'Never lose a great find']

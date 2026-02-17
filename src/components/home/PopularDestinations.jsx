@@ -54,7 +54,7 @@ const PopularDestinations = () => {
               Popular Destinations by Region
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover top-rated tours and restaurants in the world's most popular destinations
+              Discover top-rated tours in the world's most popular destinations
             </p>
           </motion.div>
 

@@ -86,21 +86,6 @@ export default function DestinationStickyNav({
             <span>Car Rentals</span>
           </Link>
 
-          {/* Restaurants - Optional */}
-          {hasRestaurants && (
-            <Link 
-              href={`/destinations/${destinationId}/restaurants`}
-              className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-purple-600 transition-colors border-b-2 border-transparent hover:border-purple-600 pb-1"
-            >
-              <span>Restaurants</span>
-              {showCounts && restaurantCount !== null && (
-                <Badge variant="secondary" className="bg-purple-100 text-purple-700">
-                  {restaurantCount}+
-                </Badge>
-              )}
-            </Link>
-          )}
-
           {/* Airport Transfers - Optional */}
           {hasAirportTransfers && (
             <Link 

@@ -194,11 +194,11 @@ const Hero = ({ onOpenOnboardingModal }) => {
           >
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
               <Sparkles className="w-4 h-4 text-yellow-300" />
-              <span className="text-sm font-semibold">Revolutionary Tour & Restaurant Discovery</span>
+              <span className="text-sm font-semibold">Revolutionary Tour & Excursion Discovery</span>
             </div>
             <h1 className="font-poppins font-bold leading-tight mb-6">
               <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl mb-2">
-                Tours & Restaurants That Match Your Style
+                Tours & Excursions That Match Your Style
               </span>
               <span className="block text-xl sm:text-2xl lg:text-3xl xl:text-4xl gradient-text whitespace-nowrap">
                 Powered by AI-driven Best Match
@@ -311,8 +311,8 @@ const Hero = ({ onOpenOnboardingModal }) => {
                 <span>3,300+ destinations</span>
               </div>
               <div className="flex items-center gap-2">
-                <UtensilsCrossed className="h-5 w-5 text-green-200" />
-                <span>10,000+ restaurants</span>
+                <BookOpen className="h-5 w-5 text-green-200" />
+                <span>19,000+ travel guides</span>
               </div>
             </div>
           </motion.div>

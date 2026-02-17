@@ -14,7 +14,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { getTourUrl } from '@/utils/tourHelpers';
-import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import { useToast } from '@/components/ui/use-toast';
 import { extractRestaurantStructuredValues, getRestaurantTimeOfDay, calculateRestaurantPreferenceMatch } from '@/lib/restaurantMatching';
 import { useRouter } from 'next/navigation';
@@ -33,7 +32,7 @@ import {
   Leaf,
   Info,
   X,
-  Hotel,
+  Plane,
   Music,
   Coffee,
   Wine,
@@ -87,7 +86,9 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
   const [user, setUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
   const supabase = createSupabaseBrowserClient();
-  const { isBookmarked, toggle } = useRestaurantBookmarks();
+  // Restaurant bookmarks disabled - tours only
+  const isBookmarked = () => false;
+  const toggle = async () => {};
   const { toast } = useToast();
   const router = useRouter();
   
@@ -1970,14 +1971,14 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-              <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200 h-full">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Calendar className="w-7 h-7 text-blue-600" />
-                    <h3 className="text-2xl font-bold text-gray-800">Transportation Tips</h3>
-                  </div>
-                  <p className="text-gray-700 mb-6 leading-relaxed">{destination.gettingAround}</p>
+            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200 w-full">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <Calendar className="w-7 h-7 text-blue-600" />
+                  <h3 className="text-2xl font-bold text-gray-800">Transportation Tips</h3>
+                </div>
+                <p className="text-gray-700 mb-6 leading-relaxed">{destination.gettingAround}</p>
+                <div className={`grid gap-6 ${destinationFeatures.hasAirportTransfers ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
                   <div className="bg-white rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Car Rental Deals in {destination.name}</h4>
                     <p className="text-gray-600 text-sm mb-3">
@@ -1990,35 +1991,21 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                       </Button>
                     </Link>
                   </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200 h-full">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Hotel className="w-7 h-7 text-purple-600" />
-                    <h3 className="text-2xl font-bold text-gray-800">Where to Stay</h3>
-                  </div>
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    Find the perfect accommodation for your {destination.name} adventure. From luxury beachfront resorts to boutique hideaways, we highlight the best basecamps for food lovers.
-                  </p>
-                  <div className="bg-white rounded-lg p-4">
-                    <h4 className="font-semibold text-gray-800 mb-2">Best Hotel Deals in {destination.name}</h4>
-                    <p className="text-gray-600 text-sm mb-3">
-                      Discover top-rated hotels with exclusive rates and special offers on Trivago USA.
-                    </p>
-                    <Button
-                      variant="outline"
-                      className="w-full flex items-center justify-center gap-2"
-                      onClick={() => window.open('https://tidd.ly/4snW11u', '_blank')}
-                    >
-                      Find Hotel Deals
-                      <ExternalLink className="w-4 h-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                  {destinationFeatures.hasAirportTransfers && (
+                    <div className="bg-white rounded-lg p-4">
+                      <h4 className="font-semibold text-gray-800 mb-2">Airport Transfers in {destination.name}</h4>
+                      <p className="text-gray-600 text-sm mb-3">Compare shared and private transfer options to and from the airport. Book in advance for fixed pricing.</p>
+                      <Link href={`/destinations/${destination.id}/guides/airport-transfers`} className="block">
+                        <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+                          Book Airport Transfers
+                          <Plane className="w-4 h-4" />
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </section>
 

@@ -5,9 +5,8 @@ import FooterNext from '@/components/FooterNext';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
-  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Hotel, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, ChevronDown, Info, Share2, Heart, Crown, Building2, Sparkles, TrendingUp, Baby, Plane, Waves
+  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, ChevronDown, Info, Share2, Heart, Crown, Building2, Sparkles, TrendingUp, Baby, Plane, Waves
 } from 'lucide-react';
-import { useRestaurantBookmarks } from '@/hooks/useRestaurantBookmarks';
 import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -17,7 +16,7 @@ import Link from 'next/link';
 import PrefetchOnHoverLink from '@/components/PrefetchOnHoverLink';
 import { getRelatedDestinations, getDestinationsByIds, getDestinationsByCountry } from '../../../src/data/destinationsData.js';
 import { getGuidesByCategory, getGuidesByIds, getGuidesByCountry } from '../../../src/data/travelGuidesData.js';
-// Restaurants are now passed as props from the server component
+// Tours and destination data are passed as props from the server component
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import { groupToursByCategory } from '@/lib/tourCategorization';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
@@ -34,14 +33,10 @@ import {
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { resolveUserPreferences } from '@/lib/preferenceResolution';
 import { useBookmarks } from '@/hooks/useBookmarks';
-import { extractRestaurantStructuredValues, calculateRestaurantPreferenceMatch } from '@/lib/restaurantMatching';
-
 // OPTIMIZED: Lazy load modals - only load when opened
 const ShareModal = lazy(() => import('@/components/sharing/ShareModal'));
 const SmartTourFinder = lazy(() => import('@/components/home/SmartTourFinder'));
 const TourMatchModal = lazy(() => import('@/components/tour/TourMatchModal'));
-const RestaurantMatchModal = lazy(() => import('@/components/restaurant/RestaurantMatchModal'));
-
 // Helper to generate slug
 function generateSlug(name) {
   return name
@@ -77,7 +72,7 @@ function getDisplayCategoryName(categoryName) {
 
 const DISCOVER_CARS_URL = 'https://www.discovercars.com/?a_aid=toptours&a_cid=65100b9c';
 
-export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], trendingRestaurants = [], promotedTours = [], promotedRestaurants = [], hardcodedTours = {}, restaurants = [], restaurantPromotionScores = {}, premiumRestaurantIds = [], categoryGuides: categoryGuidesProp = [], hasBabyEquipmentRentals = false }) {
+export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], promotedTours = [], hardcodedTours = {}, categoryGuides: categoryGuidesProp = [], hasBabyEquipmentRentals = false }) {
   
   // Ensure destination exists
   if (!destination) {
@@ -105,9 +100,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
   
   // Ensure arrays are safe
   const safeTrendingTours = Array.isArray(trendingTours) ? trendingTours : [];
-  const safeTrendingRestaurants = Array.isArray(trendingRestaurants) ? trendingRestaurants : [];
   const safePromotedTours = Array.isArray(promotedTours) ? promotedTours : [];
-  const safePromotedRestaurants = Array.isArray(promotedRestaurants) ? promotedRestaurants : [];
   const safeHardcodedTours = hardcodedTours && typeof hardcodedTours === 'object' ? hardcodedTours : {};
 
 
@@ -130,8 +123,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const [showParentCountryModal, setShowParentCountryModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   
-  // Restaurant bookmarks
-  const { isBookmarked, toggle: toggleBookmark } = useRestaurantBookmarks();
+  // Bookmarks (tours only; restaurant bookmarks removed)
   // OPTIMIZED: Memoize supabase client to ensure stable reference (it's a singleton, but function call creates new reference)
   const supabase = useMemo(() => createSupabaseBrowserClient(), []);
   const [user, setUser] = useState(null);
@@ -160,25 +152,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const router = useRouter();
   const { isBookmarked: isTourBookmarked, toggle: toggleTourBookmark } = useBookmarks();
   
-  // Restaurant match score state
-  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
-  const [showRestaurantMatchModal, setShowRestaurantMatchModal] = useState(false);
-  const [showRestaurantPreferencesModal, setShowRestaurantPreferencesModal] = useState(false);
-  const [localRestaurantPreferences, setLocalRestaurantPreferences] = useState(() => {
-    if (typeof window === 'undefined') return null;
-    try {
-      const stored = localStorage.getItem('topTours_restaurant_preferences');
-      if (stored) return JSON.parse(stored);
-    } catch {}
-    return {
-      atmosphere: 'any',
-      diningStyle: 50,
-      features: [],
-      priceRange: 'any',
-      mealTime: 'any',
-      groupSize: 'any',
-    };
-  });
+  // Match score state (tours only)
   
   // Accordion state for informational sections
   const [expandedSections, setExpandedSections] = useState({
@@ -196,14 +170,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
       [section]: !prev[section]
     }));
   };
-  
-  // Sync local restaurant preferences to localStorage
-  useEffect(() => {
-    if (typeof window === 'undefined' || !localRestaurantPreferences) return;
-    try {
-      localStorage.setItem('topTours_restaurant_preferences', JSON.stringify(localRestaurantPreferences));
-    } catch {}
-  }, [localRestaurantPreferences]);
   
   // Save preferences to profile
   const handleSavePreferencesToProfile = async () => {
@@ -262,11 +228,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
     }
   }, [localPreferences]);
   
-  // Restaurants are now passed as props (already formatted from database)
-  // Ensure restaurants is always an array
-  const safeRestaurants = Array.isArray(restaurants) ? restaurants : [];
-  const hasRestaurants = safeRestaurants.length > 0;
-  
   // OPTIMIZED: Memoize promoted tours calculation to prevent recalculation on every render
   const promotedToursToDisplay = useMemo(() => {
     if (!safePromotedTours || safePromotedTours.length === 0) return [];
@@ -295,73 +256,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
     
     return [];
   }, [safePromotedTours, tours.all]);
-  
-  // OPTIMIZED: Memoize promoted restaurants calculation
-  const promotedRestaurantsToDisplay = useMemo(() => {
-    if (!safePromotedRestaurants || safePromotedRestaurants.length === 0) return [];
-    return safePromotedRestaurants.slice(0, 6);
-  }, [safePromotedRestaurants]);
-  
-  // Calculate restaurant match scores (only when user has enabled toggle - saves compute for crawlers)
-  const restaurantMatchById = useMemo(() => {
-    const map = new Map();
-    if (!matchScoresEnabled) return map;
-    if (!Array.isArray(safeRestaurants)) return map;
 
-    const prefs = localRestaurantPreferences || {
-      atmosphere: 'any',
-      diningStyle: 50,
-      features: [],
-      priceRange: 'any',
-      mealTime: 'any',
-      groupSize: 'any',
-    };
-
-    // Build a compatible "userPreferences" object expected by the matcher
-    const pseudoUserPreferences = {
-      adventureLevel: 50,
-      cultureVsBeach: 50,
-      groupPreference:
-        prefs.groupSize === 'solo' || prefs.groupSize === 'couple'
-          ? 70
-          : prefs.groupSize === 'groups' || prefs.groupSize === 'family'
-          ? 30
-          : 50,
-      budgetComfort:
-        prefs.priceRange === '$' ? 25 : prefs.priceRange === '$$' ? 40 : prefs.priceRange === '$$$' ? 70 : prefs.priceRange === '$$$$' ? 85 : 50,
-      structurePreference: typeof prefs.diningStyle === 'number' ? prefs.diningStyle : 50,
-      foodAndDrinkInterest: 75,
-      timeOfDayPreference: 'no_preference',
-      restaurantPreferences: prefs,
-    };
-
-    safeRestaurants.forEach((r) => {
-      try {
-        const values = extractRestaurantStructuredValues(r);
-        if (values?.error) return;
-        const match = calculateRestaurantPreferenceMatch(pseudoUserPreferences, values, r);
-        if (match?.error) return;
-        map.set(r.id, match);
-      } catch {}
-    });
-    
-    // Also calculate match scores for promoted restaurants
-    if (Array.isArray(safePromotedRestaurants)) {
-      safePromotedRestaurants.forEach((r) => {
-        try {
-          const values = extractRestaurantStructuredValues(r);
-          if (values?.error) return;
-          const match = calculateRestaurantPreferenceMatch(pseudoUserPreferences, values, r);
-          if (match?.error) return;
-          map.set(r.id, match);
-        } catch {}
-      });
-    }
-    
-    return map;
-  }, [matchScoresEnabled, safeRestaurants, safePromotedRestaurants, localRestaurantPreferences]);
-
-  // Popular Pages: always show 6 cards. Main cards (Tours, Restaurants, Travel Guides, Car Rentals, Airport Transfers, Baby Equipment); fill remaining with category-guide substitutes.
+  // Popular Pages: always show 6 cards. Main cards (Tours, Travel Guides, Car Rentals, Airport Transfers, Baby Equipment); fill remaining with category-guide substitutes.
   const popularPageCards = useMemo(() => {
     const destName = safeDestination.fullName || safeDestination.name;
     const destId = safeDestination.id;
@@ -380,30 +276,15 @@ export default function DestinationDetailClient({ destination, promotionScores =
       ctaColorClass: 'text-blue-600',
     });
 
-    // 2. Restaurants (if hasRestaurants)
-    if (hasRestaurants) {
-      cards.push({
-        type: 'restaurants',
-        href: `/destinations/${destId}/restaurants`,
-        icon: UtensilsCrossed,
-        iconGradient: 'from-purple-500 to-pink-600',
-        title: 'Restaurants',
-        description: `Find ${safeRestaurants.length}+ top-rated restaurants in ${destName}. Discover local favorites, fine dining, and hidden gems with our curated restaurant guide.`,
-        badge: `${safeRestaurants.length}+ restaurants`,
-        ctaText: 'Find Restaurants',
-        ctaColorClass: 'text-purple-600',
-      });
-    }
-
-    // 3. Travel Guides (if any category guides)
-    if (categoryGuidesProp.length > 0) {
+    // 2. Travel Guides (if any category guides)
+    if ((categoryGuidesProp || []).length > 0) {
       cards.push({
         type: 'travel-guides',
         href: `/destinations/${destId}/guides`,
         icon: BookOpen,
         iconGradient: 'from-indigo-500 to-blue-600',
         title: 'Travel Guides',
-        description: `Comprehensive travel guides for ${destName}. Plan your perfect trip with detailed guides covering tours, dining, transportation, and local insights.`,
+        description: `Comprehensive travel guides for ${destName}. Plan your perfect trip with detailed guides covering tours and excursions, transportation, and local insights.`,
         badge: `${categoryGuidesProp.length}+ guides`,
         ctaText: 'Read Guides',
         ctaColorClass: 'text-indigo-600',
@@ -485,8 +366,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
     safeDestination.fullName,
     safeDestination.name,
     totalToursCount,
-    hasRestaurants,
-    safeRestaurants.length,
     categoryGuidesProp,
     hasBabyEquipmentRentals,
   ]);
@@ -1100,17 +979,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       </div>
                       <div className="text-xs sm:text-sm text-white/80">Tours</div>
                           </Link>
-                    {hasRestaurants && (
-                      <Link 
-                        href={`/destinations/${safeDestination.id}/restaurants`}
-                        className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all group"
-                      >
-                        <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
-                          {safeRestaurants.length}+
-                  </div>
-                        <div className="text-xs sm:text-sm text-white/80">Restaurants</div>
-                      </Link>
-                    )}
                     {categoryGuidesProp.length > 0 && (
                       <Link 
                         href={`/destinations/${safeDestination.id}/guides`}
@@ -1135,18 +1003,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </PrefetchOnHoverLink>
                     </Button>
-                    {hasRestaurants && (
-                      <Button
-                        asChild
-                        variant="outline"
-                        className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold px-6 py-3"
-                      >
-                        <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/restaurants`}>
-                          Find Restaurants
-                          <UtensilsCrossed className="w-4 h-4 ml-2" />
-                        </PrefetchOnHoverLink>
-                      </Button>
-                    )}
                     {categoryGuidesProp.length > 0 && (
                       <Button
                         asChild
@@ -1224,17 +1080,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     </div>
                     <div className="text-xs sm:text-sm text-white/80">Tours</div>
                   </Link>
-                  {hasRestaurants && (
-                    <Link 
-                      href={`/destinations/${safeDestination.id}/restaurants`}
-                      className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all group text-center w-[140px]"
-                    >
-                      <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
-                        {safeRestaurants.length}+
-                      </div>
-                      <div className="text-xs sm:text-sm text-white/80">Restaurants</div>
-                    </Link>
-                  )}
                   {categoryGuidesProp.length > 0 && (
                     <Link 
                       href={`/destinations/${safeDestination.id}/guides`}
@@ -1259,18 +1104,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </PrefetchOnHoverLink>
                   </Button>
-                  {hasRestaurants && (
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold px-6 py-3"
-                    >
-                      <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/restaurants`}>
-                        Find Restaurants
-                        <UtensilsCrossed className="w-4 h-4 ml-2" />
-                      </PrefetchOnHoverLink>
-                    </Button>
-                  )}
                   {categoryGuidesProp.length > 0 && (
                     <Button
                       asChild
@@ -1315,18 +1148,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   {totalToursCount ? `${totalToursCount.toLocaleString()}+` : '1,900+'}
                 </Badge>
               </Link>
-              {hasRestaurants && (
-                <Link 
-                  href={`/destinations/${safeDestination.id}/restaurants`}
-                  className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-purple-600 transition-colors border-b-2 border-transparent hover:border-purple-600 pb-1"
-                >
-                  <UtensilsCrossed className="w-4 h-4" />
-                  <span>Restaurants</span>
-                  <Badge variant="secondary" className="bg-purple-100 text-purple-700">
-                    {safeRestaurants.length}+
-                  </Badge>
-                </Link>
-              )}
               {categoryGuidesProp.length > 0 && (
                 <Link 
                   href={`/destinations/${safeDestination.id}/guides`}
@@ -1372,7 +1193,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </section>
 
         {/* Promoted Listings Section - Moved Higher for Hub Style */}
-        {((safePromotedTours && safePromotedTours.length > 0) || (safePromotedRestaurants && safePromotedRestaurants.length > 0)) && (
+        {(safePromotedTours && safePromotedTours.length > 0) && (
           <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center gap-2 mb-6">
@@ -1383,7 +1204,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 </Badge>
               </div>
               <p className="text-sm text-gray-600 mb-6">
-                Featured tours and restaurants from our partner operators.
+                Featured tours from our partner operators.
               </p>
 
               {/* Promoted Tours */}
@@ -1430,142 +1251,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 </div>
               )}
 
-              {/* Promoted Restaurants */}
-              {promotedRestaurantsToDisplay.length > 0 && (
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-semibold text-gray-800">Promoted Restaurants</h3>
-                    <button
-                      type="button"
-                      onClick={() => setShowRestaurantPreferencesModal(true)}
-                      className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-lg hover:border-purple-300 hover:shadow-sm transition-all"
-                      title="Set your dining preferences for match scores"
-                    >
-                      <Sparkles className="w-4 h-4 text-purple-600" />
-                      <span className="text-sm font-semibold text-gray-900">Match to Your Taste</span>
-                      <span className="text-[10px] font-medium bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">
-                        AI driven
-                      </span>
-                    </button>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {promotedRestaurantsToDisplay.map((restaurant, index) => {
-                        const restaurantId = restaurant.id;
-                        if (!restaurantId) return null;
-                        
-                        const restaurantUrl = restaurant.slug && safeDestination.id
-                          ? `/destinations/${safeDestination.id}/restaurants/${restaurant.slug}`
-                          : `/destinations/${safeDestination.id}/restaurants`;
-                        
-                        const description = restaurant.metaDescription 
-                          || restaurant.tagline 
-                          || restaurant.summary 
-                          || restaurant.description
-                          || (restaurant.cuisines?.length > 0 
-                              ? `Discover ${restaurant.cuisines.join(' & ')} cuisine at ${restaurant.name}.`
-                              : `Experience great dining at ${restaurant.name}.`);
-                        
-                        // Get match score
-                        const matchScore = restaurantMatchById.get(restaurantId)?.matchScore ?? 0;
-                        
-                        // Get cuisine for badge
-                        const validCuisines = restaurant.cuisines && Array.isArray(restaurant.cuisines)
-                          ? restaurant.cuisines.filter(c => c && 
-                              c.toLowerCase() !== 'restaurant' && 
-                              c.toLowerCase() !== 'food' &&
-                              c.trim().length > 0)
-                          : [];
-                        const cuisineBadge = validCuisines.length > 0 ? validCuisines[0] : 'Restaurant';
-                        
-                        return (
-                          <motion.div
-                            key={restaurantId || index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.4, delay: index * 0.05 }}
-                            viewport={{ once: true }}
-                          >
-                            <Card className={`h-full border bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-purple-500 shadow-purple-200/50`}>
-                              <CardContent className="p-6 flex flex-col h-full">
-                                <div className="flex items-center justify-between gap-3 mb-3">
-                                  <div className="flex items-center gap-3 min-w-0">
-                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
-                                      <UtensilsCrossed className="w-5 h-5 text-white" />
-                                    </div>
-                                    <div className="flex items-center gap-2 min-w-0">
-                                      <Badge className="ocean-gradient text-white text-xs flex-shrink-0">
-                                        <Sparkles className="w-3 h-3 mr-1" />
-                                        Promoted
-                                      </Badge>
-                                      <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 truncate">
-                                        {cuisineBadge}
-                                      </span>
-                                    </div>
-                                  </div>
-
-                                  {matchScoresEnabled && (
-                                    <button
-                                      type="button"
-                                      onClick={() => {
-                                        setSelectedRestaurant(restaurant);
-                                        setShowRestaurantMatchModal(true);
-                                      }}
-                                      className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 flex-shrink-0"
-                                      title="Click to see why this matches your taste"
-                                    >
-                                      <Sparkles className="w-3.5 h-3.5 text-purple-600" />
-                                      <span className="text-xs font-bold text-gray-900">
-                                        {matchScore}%
-                                      </span>
-                                      <span className="text-[10px] text-gray-600">Match</span>
-                                    </button>
-                                  )}
-                                </div>
-                                
-                                <div className="flex items-start justify-between gap-2 mb-3">
-                                  <h3 className="text-lg font-bold text-gray-900 line-clamp-2 flex items-center gap-1.5">
-                                    {restaurant.name}
-                                    {(premiumRestaurantIds.includes(restaurant.id) || premiumRestaurantIds.includes(Number(restaurant.id))) && (
-                                      <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Featured Restaurant" />
-                                    )}
-                                  </h3>
-                                </div>
-
-                                <p className="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
-                                  {description}
-                                </p>
-
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                  {restaurant.ratings?.googleRating && (
-                                    <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
-                                      <Star className="w-3 h-3" />
-                                      {restaurant.ratings.googleRating.toFixed(1)}
-                                    </span>
-                                  )}
-                                  {restaurant.pricing?.priceRange && (
-                                    <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
-                                      {restaurant.pricing.priceRange}
-                                    </span>
-                                  )}
-                                </div>
-
-                                <Link
-                                  href={restaurantUrl}
-                                  className="mt-auto"
-                                >
-                                  <Button className="w-full ocean-gradient text-white hover:opacity-90">
-                                    View Details
-                                    <ArrowRight className="w-4 h-4 ml-2" />
-                                  </Button>
-                                </Link>
-                              </CardContent>
-                            </Card>
-                          </motion.div>
-                        );
-                    })}
-                  </div>
-                </div>
-              )}
             </div>
           </section>
         )}
@@ -1689,7 +1374,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
                                   variant="secondary"
                                   className={`mt-2 w-fit ${
                                     card.type === 'tours' ? 'bg-blue-100 text-blue-700' :
-                                    card.type === 'restaurants' ? 'bg-purple-100 text-purple-700' :
                                     card.type === 'travel-guides' ? 'bg-indigo-100 text-indigo-700' :
                                     card.type === 'guide' ? 'bg-amber-100 text-amber-700' : 'bg-gray-100 text-gray-700'
                                   }`}
@@ -2194,223 +1878,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </div>
         </section>
 
-        {/* All Restaurants - Unified Section */}
-        {hasRestaurants && (
-          <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="mb-8 sm:mb-12"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-                  <div className="text-center sm:text-left">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-3">
-                      Top Restaurants in {safeDestination.fullName}
-                    </h2>
-                    <p className="text-base sm:text-lg text-gray-600 max-w-3xl sm:max-w-xl mx-auto sm:mx-0">
-                      Reserve a table at our hand-picked local favorites and plan dinner around your tours in {safeDestination.fullName}.
-                    </p>
-                  </div>
-                  <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/restaurants`} className="self-center sm:self-end">
-                    <Button variant="outline" className="gap-2">
-                      View All {safeRestaurants.length} Restaurants
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </PrefetchOnHoverLink>
-                </div>
-              </motion.div>
-
-              {/* Match to Your Taste Button */}
-              {safeRestaurants && safeRestaurants.length > 0 && (
-                <div className="flex justify-center mb-6">
-                  <Button
-                    onClick={() => setShowRestaurantPreferencesModal(true)}
-                    variant="outline"
-                    size="lg"
-                    className="border-purple-300 text-purple-700 hover:bg-purple-50 hover:border-purple-400 px-6"
-                  >
-                    <Sparkles className="w-5 h-5 mr-2" />
-                    Match to Your Taste
-                    <Badge variant="secondary" className="ml-2 bg-purple-100 text-purple-700 text-xs">
-                      AI driven
-                    </Badge>
-                  </Button>
-                </div>
-              )}
-
-              {/* All Restaurants - Unified Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
-                {safeRestaurants.map((restaurant, index) => {
-                  if (!restaurant || !restaurant.id || !restaurant.slug) return null;
-
-                  const restaurantUrl = `/destinations/${safeDestination.id}/restaurants/${restaurant.slug}`;
-                  const description = restaurant.metaDescription 
-                    || restaurant.tagline 
-                    || restaurant.summary 
-                    || restaurant.description
-                    || (restaurant.cuisines?.length > 0 
-                        ? `Discover ${restaurant.cuisines.filter(c => c).join(' & ')} cuisine at ${restaurant.name}.`
-                        : `Experience great dining at ${restaurant.name}.`);
-
-                  return (
-                    <motion.article
-                      key={restaurant.id}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: (index % 6) * 0.05 }}
-                      viewport={{ once: true }}
-                      className="h-full"
-                    >
-                      <Card className="h-full border border-gray-100 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                        <CardContent className="p-6 flex flex-col h-full">
-                          <div className="flex items-center justify-between gap-3 mb-3">
-                            <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
-                                <UtensilsCrossed className="w-5 h-5 text-white" />
-                              </div>
-                              <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
-                                {(() => {
-                                  // Filter out generic cuisine types
-                                  const validCuisines = restaurant.cuisines && Array.isArray(restaurant.cuisines)
-                                    ? restaurant.cuisines.filter(c => c && 
-                                        c.toLowerCase() !== 'restaurant' && 
-                                        c.toLowerCase() !== 'food' &&
-                                        c.trim().length > 0)
-                                    : [];
-                                  return validCuisines.length > 0 ? validCuisines[0] : 'Restaurant';
-                                })()}
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              {/* Match Score Badge */}
-                              {matchScoresEnabled && (
-                                <button
-                                  type="button"
-                                  onClick={(e) => {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    setSelectedRestaurant(restaurant);
-                                    setShowRestaurantMatchModal(true);
-                                  }}
-                                  className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5"
-                                  title="Click to see why this matches your taste"
-                                >
-                                  <Sparkles className="w-3.5 h-3.5 text-purple-600" />
-                                  <span className="text-xs font-bold text-gray-900">
-                                    {restaurantMatchById.get(restaurant.id)?.matchScore ?? 0}%
-                                  </span>
-                                  <span className="text-[10px] text-gray-600">Match</span>
-                                </button>
-                              )}
-                              {/* Bookmark Button */}
-                              <button
-                                type="button"
-                                aria-label={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
-                                onClick={async (e) => {
-                                  e.preventDefault();
-                                  e.stopPropagation();
-                                  const { data } = await supabase.auth.getUser();
-                                  if (!data?.user) {
-                                    toast({
-                                      title: 'Sign in required',
-                                      description: 'Create a free account to save restaurants to your favorites.',
-                                    });
-                                    return;
-                                  }
-                                  try {
-                                    const wasBookmarked = isBookmarked(restaurant.id);
-                                    await toggleBookmark(restaurant.id);
-                                    toast({
-                                      title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
-                                      description: 'You can view your favorites in your profile.',
-                                    });
-                                  } catch (_) {}
-                                }}
-                                className={`flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full transition-colors ${
-                                  isBookmarked(restaurant.id) ? 'text-red-600 bg-red-50' : 'text-gray-400 bg-gray-100 hover:text-red-500'
-                                }`}
-                                title={isBookmarked(restaurant.id) ? 'Saved' : 'Save'}
-                              >
-                                <Heart className="w-4 h-4" fill={isBookmarked(restaurant.id) ? 'currentColor' : 'none'} />
-                              </button>
-                            </div>
-                          </div>
-                          
-                          <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 flex items-center gap-1.5">
-                            {restaurant.name || 'Restaurant'}
-                            {(premiumRestaurantIds.includes(restaurant.id) || premiumRestaurantIds.includes(Number(restaurant.id))) && (
-                              <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Featured Restaurant" />
-                            )}
-                          </h3>
-
-                          <p className="text-sm text-gray-600 mb-4 line-clamp-2">
-                            {description.length > 120 ? description.slice(0, 120) + '...' : description}
-                          </p>
-
-                          <div className="flex flex-wrap gap-2 mb-3">
-                            {restaurant.ratings?.googleRating && !isNaN(restaurant.ratings.googleRating) && (
-                              <span className="inline-flex items-center gap-1 text-xs font-medium bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">
-                                <Star className="w-3 h-3" />
-                                {parseFloat(restaurant.ratings.googleRating).toFixed(1)}
-                              </span>
-                            )}
-                            {restaurant.pricing?.priceRange && (
-                              <span className="inline-flex items-center text-xs font-medium bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
-                                {String(restaurant.pricing.priceRange)}
-                              </span>
-                            )}
-                            {(() => {
-                              // Filter out generic cuisine types and show valid ones
-                              const validCuisines = restaurant.cuisines && Array.isArray(restaurant.cuisines)
-                                ? restaurant.cuisines.filter(c => c && 
-                                    c.toLowerCase() !== 'restaurant' && 
-                                    c.toLowerCase() !== 'food' &&
-                                    c.trim().length > 0)
-                                : [];
-                              // Show cuisine badge if there's at least 1 valid cuisine
-                              return validCuisines.length > 0 ? (
-                                <span className="inline-flex items-center text-xs font-medium bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full">
-                                  {validCuisines.slice(0, 2).join(' · ')}
-                                </span>
-                              ) : null;
-                            })()}
-                          </div>
-
-
-                          <Link
-                            href={restaurantUrl}
-                            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mt-auto"
-                          >
-                            View Restaurant
-                            <ArrowRight className="w-4 h-4" />
-                          </Link>
-                        </CardContent>
-                      </Card>
-                    </motion.article>
-                  );
-                })}
-              </div>
-
-              {/* View All Button */}
-              <div className="text-center mt-10">
-                <Button
-                  asChild
-                  size="lg"
-                  className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 px-8 py-6"
-                >
-                  <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/restaurants`}>
-                    View All Restaurants in {safeDestination.fullName}
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </PrefetchOnHoverLink>
-                </Button>
-              </div>
-            </div>
-          </section>
-        )}
-
         {/* Tour Operators & Other Destinations */}
         <section className="py-12 bg-white border-t">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2684,63 +2151,47 @@ export default function DestinationDetailClient({ destination, promotionScores =
               </h2>
             </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-              {/* Transportation Tips */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200 h-full">
-                  <CardContent className="p-8">
-                    <div className="flex items-center mb-4">
-                      <Car className="w-8 h-8 text-blue-600 mr-3" />
-                      <h3 className="text-2xl font-bold text-gray-800">Transportation Tips</h3>
-                    </div>
-                    <p className="text-gray-700 mb-6 leading-relaxed">{safeDestination.gettingAround}</p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="w-full"
+            >
+              <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200 w-full">
+                <CardContent className="p-8">
+                  <div className="flex items-center mb-4">
+                    <Car className="w-8 h-8 text-blue-600 mr-3" />
+                    <h3 className="text-2xl font-bold text-gray-800">Transportation Tips</h3>
+                  </div>
+                  <p className="text-gray-700 mb-6 leading-relaxed">{safeDestination.gettingAround}</p>
+                  <div className={`grid gap-6 ${categoryGuidesProp.some((g) => (g.category_slug || '') === 'airport-transfers') ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
                     <div className="bg-white rounded-lg p-4">
                       <h4 className="font-semibold text-gray-800 mb-2">Car Rental Deals in {safeDestination.fullName}</h4>
                       <p className="text-gray-600 text-sm mb-3">Rent a car for maximum flexibility and explore at your own pace on Expedia USA.</p>
                       <Link href={`/destinations/${safeDestination.id}/car-rentals`} className="block">
                         <Button variant="outline" className="w-full flex items-center justify-center gap-2">
-                        Find Car Rental Deals
+                          Find Car Rental Deals
                           <ArrowRight className="w-4 h-4" />
-                      </Button>
+                        </Button>
                       </Link>
                     </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              {/* Where to Stay */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <Card className="bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200 h-full">
-                  <CardContent className="p-8">
-                    <div className="flex items-center mb-4">
-                      <Hotel className="w-8 h-8 text-purple-600 mr-3" />
-                      <h3 className="text-2xl font-bold text-gray-800">Where to Stay</h3>
-                    </div>
-                    <p className="text-gray-700 mb-6 leading-relaxed">
-                      Find the perfect accommodation for your {safeDestination.fullName} adventure. From luxury resorts to cozy hotels, we've got you covered.
-                    </p>
-                    <div className="bg-white rounded-lg p-4">
-                      <h4 className="font-semibold text-gray-800 mb-2">Best Hotel Deals in {safeDestination.fullName}</h4>
-                      <p className="text-gray-600 text-sm mb-3">Discover top-rated hotels with exclusive rates and special offers on Trivago USA.</p>
-                      <Button variant="outline" className="w-full flex items-center justify-center gap-2" onClick={() => window.open(`https://tidd.ly/4snW11u`, '_blank')}>
-                        Find Hotel Deals
-                        <ExternalLink className="w-4 h-4" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </div>
+                    {categoryGuidesProp.some((g) => (g.category_slug || '') === 'airport-transfers') && (
+                      <div className="bg-white rounded-lg p-4">
+                        <h4 className="font-semibold text-gray-800 mb-2">Airport Transfers in {safeDestination.fullName}</h4>
+                        <p className="text-gray-600 text-sm mb-3">Compare shared and private transfer options to and from the airport. Book in advance for fixed pricing.</p>
+                        <Link href={`/destinations/${safeDestination.id}/guides/airport-transfers`} className="block">
+                          <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+                            Book Airport Transfers
+                            <Plane className="w-4 h-4" />
+                          </Button>
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
         </section>
 
@@ -3209,7 +2660,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
             isOpen={showShareModal}
             onClose={() => setShowShareModal(false)}
             url={typeof window !== 'undefined' ? window.location.href : ''}
-            title={`Discover ${safeDestination.fullName} - Top Tours & Restaurants`}
+            title={`Discover ${safeDestination.fullName} - Top Tours & Excursions`}
           />
         </Suspense>
       )}
@@ -3499,261 +2950,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
         </div>
       )}
       
-      {/* OPTIMIZED: Lazy load RestaurantMatchModal - only loads when opened */}
-      {showRestaurantMatchModal && (
-        <Suspense fallback={null}>
-          <RestaurantMatchModal
-            isOpen={showRestaurantMatchModal}
-            onClose={() => setShowRestaurantMatchModal(false)}
-            restaurant={selectedRestaurant}
-            matchData={selectedRestaurant ? restaurantMatchById.get(selectedRestaurant.id) : null}
-            preferences={localRestaurantPreferences}
-            onOpenPreferences={() => {
-              setShowRestaurantMatchModal(false);
-              setShowRestaurantPreferencesModal(true);
-            }}
-          />
-        </Suspense>
-      )}
-      
-      {/* Match to Your Taste Modal (no account required) */}
-      {showRestaurantPreferencesModal && (
-        <div
-          className="fixed inset-0 bg-black/50 z-[10000] flex items-center justify-center p-4"
-          onClick={() => setShowRestaurantPreferencesModal(false)}
-        >
-          <div
-            className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[85vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="sticky top-0 bg-white border-b px-4 py-3 flex items-center justify-between z-10">
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-purple-600" />
-                <h2 className="text-lg font-bold text-gray-900">Match to Your Taste</h2>
-              </div>
-              <button
-                onClick={() => setShowRestaurantPreferencesModal(false)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-                aria-label="Close"
-              >
-                <X className="w-5 h-5 text-gray-600" />
-              </button>
-            </div>
-
-            <div className="p-4 space-y-4">
-              {/* Atmosphere */}
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-2">
-                  What kind of atmosphere do you prefer?
-                </label>
-                <div className="grid grid-cols-3 gap-2">
-                  {[
-                    { value: 'casual', label: '😌', desc: 'Casual' },
-                    { value: 'outdoor', label: '🌳', desc: 'Outdoor' },
-                    { value: 'upscale', label: '✨', desc: 'Upscale' },
-                  ].map((option) => {
-                    const selected = (localRestaurantPreferences?.atmosphere || 'any') === option.value;
-                    return (
-                      <button
-                        key={option.value}
-                        type="button"
-                        onClick={() =>
-                          setLocalRestaurantPreferences((prev) => ({
-                            ...(prev || {}),
-                            atmosphere: selected ? 'any' : option.value,
-                          }))
-                        }
-                        className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
-                          selected
-                            ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
-                            : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
-                        }`}
-                      >
-                        <div className="text-lg mb-0.5">{option.label}</div>
-                        <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
-                        {selected && (
-                          <div className="absolute top-1 right-1">
-                            <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
-                              <span className="text-white text-[8px]">✓</span>
-                            </div>
-                          </div>
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
-                <p className="mt-2 text-[11px] text-gray-500">
-                  Tip: click again to clear a selection.
-                </p>
-              </div>
-
-              {/* Dining style */}
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-2">
-                  🍽️ Do you prefer casual walk-ins or formal reservations?
-                </label>
-                <div className="grid grid-cols-3 gap-2">
-                  {[
-                    { value: 25, label: '🚶', desc: 'Casual' },
-                    { value: 50, label: '⚖️', desc: 'Flexible' },
-                    { value: 75, label: '📋', desc: 'Formal' },
-                  ].map((option) => {
-                    const selected = (localRestaurantPreferences?.diningStyle || 50) === option.value;
-                    return (
-                      <button
-                        key={option.value}
-                        type="button"
-                        onClick={() =>
-                          setLocalRestaurantPreferences((prev) => ({
-                            ...(prev || {}),
-                            diningStyle: option.value,
-                          }))
-                        }
-                        className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 ${
-                          selected
-                            ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
-                            : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
-                        }`}
-                      >
-                        <div className="text-lg mb-0.5">{option.label}</div>
-                        <div className="text-[10px] font-semibold text-gray-700">{option.desc}</div>
-                        {selected && (
-                          <div className="absolute top-1 right-1">
-                            <div className="w-3 h-3 rounded-full bg-purple-500 flex items-center justify-center">
-                              <span className="text-white text-[8px]">✓</span>
-                            </div>
-                          </div>
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Features */}
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-2">
-                  ✨ Features & Amenities (select all that apply)
-                </label>
-                <div className="grid grid-cols-2 gap-2">
-                  {[
-                    { value: 'outdoor_seating', label: '🌳 Outdoor Seating', desc: 'Al fresco dining' },
-                    { value: 'live_music', label: '🎵 Live Music', desc: 'Entertainment' },
-                    { value: 'dog_friendly', label: '🐕 Dog Friendly', desc: 'Bring your pup' },
-                    { value: 'family_friendly', label: '👨‍👩‍👧 Family Friendly', desc: 'Kids welcome' },
-                    { value: 'reservations', label: '📅 Reservations', desc: 'Book ahead' },
-                  ].map((feature) => {
-                    const current = localRestaurantPreferences?.features || [];
-                    const selected = current.includes(feature.value);
-                    return (
-                      <button
-                        key={feature.value}
-                        type="button"
-                        onClick={() =>
-                          setLocalRestaurantPreferences((prev) => {
-                            const prevFeatures = prev?.features || [];
-                            const next = selected
-                              ? prevFeatures.filter((f) => f !== feature.value)
-                              : [...prevFeatures, feature.value];
-                            return { ...(prev || {}), features: next };
-                          })
-                        }
-                        className={`relative p-2.5 rounded-lg border-2 transition-all duration-200 text-left ${
-                          selected
-                            ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100 shadow-md'
-                            : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50'
-                        }`}
-                      >
-                        <div className="text-xs font-semibold text-gray-800">{feature.label}</div>
-                        <div className="text-[10px] text-gray-500 mt-0.5">{feature.desc}</div>
-                        {selected && (
-                          <div className="absolute top-2 right-2">
-                            <div className="w-4 h-4 rounded-full bg-purple-500 flex items-center justify-center">
-                              <span className="text-white text-[10px]">✓</span>
-                            </div>
-                          </div>
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <p className="text-xs text-gray-500 text-center pt-2">
-                Match scores update instantly as you select preferences
-              </p>
-
-              <div className="pt-4 mt-2 border-t flex flex-col gap-2">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                  <Button
-                    variant="ghost"
-                    className="w-full text-gray-600 hover:text-gray-900"
-                    onClick={() =>
-                      setLocalRestaurantPreferences({
-                        atmosphere: 'any',
-                        diningStyle: 50,
-                        features: [],
-                        priceRange: 'any',
-                        mealTime: 'any',
-                        groupSize: 'any',
-                      })
-                    }
-                    title="Reset to defaults"
-                  >
-                    Reset
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="w-full"
-                    onClick={() => setShowRestaurantPreferencesModal(false)}
-                  >
-                    Done
-                  </Button>
-                  <Button
-                    className="w-full min-w-0 h-auto py-2 sunset-gradient text-white whitespace-normal break-words leading-tight text-xs"
-                    onClick={async () => {
-                      if (!user) {
-                        try {
-                          const redirect = typeof window !== 'undefined' ? window.location.pathname + window.location.search : '/';
-                          setShowRestaurantPreferencesModal(false);
-                          router.push(`/auth?mode=signup&redirect=${encodeURIComponent(redirect)}`);
-                        } catch {
-                          router.push('/auth');
-                        }
-                        return;
-                      }
-                      try {
-                        const mergedTripPreferences = {
-                          ...(userPreferences || {}),
-                          restaurantPreferences: {
-                            ...(userPreferences?.restaurantPreferences || {}),
-                            ...localRestaurantPreferences,
-                          },
-                        };
-                        const { error } = await supabase
-                          .from('profiles')
-                          .upsert({ id: user.id, trip_preferences: mergedTripPreferences });
-                        if (error) throw error;
-                        setUserPreferences(mergedTripPreferences);
-                        toast({ title: 'Preferences saved', description: 'Saved to your profile (syncs across devices).' });
-                        setShowRestaurantPreferencesModal(false);
-                      } catch (e) {
-                        toast({
-                          title: 'Could not save preferences',
-                          description: e?.message || 'Please try again.',
-                          variant: 'destructive',
-                        });
-                      }
-                    }}
-                  >
-                    {user ? 'Save to Profile' : 'Create account to save'}
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }

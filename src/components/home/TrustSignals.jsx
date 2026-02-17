@@ -1,14 +1,14 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Ticket, UtensilsCrossed, BookOpen, Award } from 'lucide-react';
+import { Ticket, BookOpen, Award, Trophy } from 'lucide-react';
 
 const TrustSignals = () => {
   const stats = [
     { icon: Ticket, label: 'Tours Available', value: '300,000+', description: 'Tours and activities' },
     { icon: Award, label: 'Destinations', value: '3,300+', description: 'Worldwide coverage' },
-    { icon: UtensilsCrossed, label: 'Restaurants', value: '10,000+', description: 'Curated dining options' },
-    { icon: BookOpen, label: 'Travel Guides', value: '19,000+', description: 'Destination insights' },
+    { icon: BookOpen, label: 'Travel Guides', value: '19,000+', description: 'Destination guides & tips' },
+    { icon: Trophy, label: 'Best Match', value: 'AI-powered', description: 'Personalized recommendations' },
   ];
 
 
@@ -26,7 +26,7 @@ const TrustSignals = () => {
             Trusted by Travelers Worldwide
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Join thousands of travelers who have discovered their perfect tours and restaurants with TopTours.ai
+            Join thousands of travelers who have discovered their perfect tours with TopTours.ai
           </p>
         </motion.div>
 

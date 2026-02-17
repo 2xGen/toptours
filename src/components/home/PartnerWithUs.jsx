@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, UserPlus, Ticket, UtensilsCrossed, Crown, TrendingUp, BarChart3 } from 'lucide-react';
+import { ArrowRight, UserPlus, Ticket, Crown, TrendingUp, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -11,7 +11,7 @@ const PartnerWithUs = () => {
     {
       icon: Crown,
       title: 'Reach a Global Audience',
-      description: 'Connect with travelers actively searching for tours and restaurants. Our platform reaches a global audience across 3,300+ destinations worldwide.'
+      description: 'Connect with travelers actively searching for tours and activities. Our platform reaches a global audience across 3,300+ destinations worldwide.'
     },
     {
       icon: BarChart3,
@@ -33,13 +33,6 @@ const PartnerWithUs = () => {
       link: '/partners/tour-operators',
       cta: 'Become a Tour Operator Partner'
     },
-    {
-      icon: UtensilsCrossed,
-      title: 'Restaurants',
-      description: 'Get premium visibility for your restaurant. Enhanced search placement, premium badges, and drive more traffic to your establishment.',
-      link: '/partners/restaurants',
-      cta: 'Become a Restaurant Partner'
-    }
   ];
 
   return (
@@ -56,7 +49,7 @@ const PartnerWithUs = () => {
             Partner with TopTours.ai
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-            Join tour operators and restaurants looking to grow their business. Get premium visibility across 3,300+ destinations worldwide and reach millions of travelers.
+            Join tour operators looking to grow their business. Get premium visibility across 3,300+ destinations worldwide and reach millions of travelers.
           </p>
         </motion.div>
 
@@ -64,17 +57,9 @@ const PartnerWithUs = () => {
         <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
           {partnerTypes.map((partner, index) => {
             const Icon = partner.icon;
-            // Tour Operators: amber/orange, Restaurants: purple/indigo
-            const isTourOperator = partner.title === 'Tour Operators';
-            const iconGradient = isTourOperator 
-              ? 'from-amber-500 to-orange-500' 
-              : 'from-purple-500 to-indigo-500';
-            const borderColor = isTourOperator 
-              ? 'border-amber-200' 
-              : 'border-purple-200';
-            const bgColor = isTourOperator 
-              ? 'bg-amber-50' 
-              : 'bg-purple-50';
+            const iconGradient = 'from-amber-500 to-orange-500';
+            const borderColor = 'border-amber-200';
+            const bgColor = 'bg-amber-50';
             
             return (
               <motion.div

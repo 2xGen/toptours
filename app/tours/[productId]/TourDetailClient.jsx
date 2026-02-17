@@ -3643,32 +3643,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       </Link>
                     </motion.div>
 
-                    {/* Link to restaurants page (tour detail does not show restaurant list) */}
-                    {destinationFeatures?.hasRestaurants && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                      >
-                        <Link href={`/destinations/${destForDisplay.id}/restaurants`} className="block h-full">
-                          <Card className="border border-blue-100 bg-white shadow-lg hover:shadow-xl transition-shadow flex flex-col items-center justify-center text-center p-6">
-                            <UtensilsCrossed className="w-8 h-8 text-blue-600 mb-3" />
-                            <h3 className="text-lg font-bold text-gray-900 mb-2">
-                              Restaurants in {destForDisplay.fullName || destForDisplay.name}
-                            </h3>
-                            <p className="text-sm text-gray-600 mb-4">
-                              Browse curated restaurants and dining in this destination.
-                            </p>
-                            <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600">
-                              View restaurants
-                              <ArrowRight className="w-4 h-4" />
-                            </span>
-                          </Card>
-                        </Link>
-                      </motion.div>
-                    )}
-
                     {/* Travel Guides */}
                     {hasGuides && (
                       <motion.div

@@ -50,7 +50,7 @@ export default function PromotionExplainerModal({ isOpen, onClose }) {
                     How Promotion Points Work
                   </h2>
                   <p className="text-sm sm:text-base md:text-lg text-white/90">
-                    Every tour and restaurant has a promotion score. The higher the score, the more visible it becomes — appearing in "Trending Now" sections, climbing leaderboards, and getting featured across destination pages.
+                    Every tour has a promotion score. The higher the score, the more visible it becomes — appearing in "Trending Now" sections, climbing leaderboards, and getting featured across destination pages.
                   </p>
                 </div>
               </div>
@@ -69,16 +69,16 @@ export default function PromotionExplainerModal({ isOpen, onClose }) {
                       </div>
                       <div className="text-center">
                         <Zap className="w-10 h-10 sm:w-12 sm:h-12 text-purple-600 mx-auto mb-3 sm:mb-4" />
-                        <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-2">2. Boost Tours & Restaurants</h3>
+                        <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-2">2. Boost Tours</h3>
                         <p className="text-xs sm:text-sm text-gray-600">
-                          Spend your subscription points on tours and restaurants that deserve more visibility. Minimum 10 points per boost.
+                          Spend your subscription points on tours that deserve more visibility. Minimum 10 points per boost.
                         </p>
                       </div>
                       <div className="text-center">
                         <TrendingUp className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-3 sm:mb-4" />
                         <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-2">3. Watch Them Rise</h3>
                         <p className="text-xs sm:text-sm text-gray-600">
-                          Boosted tours and restaurants appear in "Trending Now" sections, climb the leaderboard, and get featured across pages.
+                          Boosted tours appear in "Trending Now" sections, climb the leaderboard, and get featured across pages.
                         </p>
                       </div>
                     </div>
@@ -109,7 +109,7 @@ export default function PromotionExplainerModal({ isOpen, onClose }) {
                   <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border-2 border-blue-200 shadow-lg mb-4 sm:mb-6 md:mb-8">
                     <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center gap-2">
                       <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
-                      Where Tours & Restaurants Get Promoted
+                      Where Tours Get Promoted
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                       <div className="bg-white rounded-xl p-4 sm:p-6 border border-blue-200">
@@ -132,7 +132,7 @@ export default function PromotionExplainerModal({ isOpen, onClose }) {
                           </li>
                           <li className="flex items-start gap-2">
                             <Check className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                            <span>Top 3 tours and restaurants per destination</span>
+                            <span>Top 3 tours per destination</span>
                           </li>
                         </ul>
                       </div>
@@ -270,7 +270,7 @@ export default function PromotionExplainerModal({ isOpen, onClose }) {
                         Need More Points Right Now?
                       </h3>
                       <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-                        One-time purchase packages that apply points immediately to a specific tour or restaurant. Perfect for tour operators, restaurant owners, or travelers who want to give a listing an extra boost.
+                        One-time purchase packages that apply points immediately to a specific tour. Perfect for tour operators or travelers who want to give a listing an extra boost.
                       </p>
                     </div>
 
@@ -329,7 +329,7 @@ export default function PromotionExplainerModal({ isOpen, onClose }) {
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-red-600 font-bold mr-1">✗</span>
-                          <span>Don't add points to your <strong>wallet</strong> — they're applied directly to the tour or restaurant</span>
+                          <span>Don't add points to your <strong>wallet</strong> — they're applied directly to the tour</span>
                         </li>
                       </ul>
                     </div>
@@ -343,7 +343,7 @@ export default function PromotionExplainerModal({ isOpen, onClose }) {
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 max-w-4xl mx-auto">
                 <div className="text-center sm:text-left">
                   <p className="text-sm text-gray-600 mb-1">
-                    Ready to boost your favorite tours & restaurants?
+                    Ready to boost your favorite tours?
                   </p>
                   <p className="text-xs text-gray-500">
                     Create an account to get started with 50 free points daily

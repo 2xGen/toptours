@@ -165,7 +165,7 @@ Every destination is unique—whether you're exploring the beaches of Aruba or t
     wordCount: 1100,
     internalLinks: [
       '/destinations/aruba',
-      '/destinations/aruba/restaurants',
+      '/destinations/aruba',
       '/travel-guides/best-time-to-visit-caribbean',
       '/travel-guides/aruba-vs-curacao'
     ],
@@ -208,7 +208,7 @@ Every destination is unique—whether you're exploring the beaches of Aruba or t
     wordCount: 1600,
     internalLinks: [
       '/destinations/curacao',
-      '/destinations/curacao/restaurants',
+      '/destinations/curacao',
       '/travel-guides/best-time-to-visit-curacao',
       '/travel-guides/curacao-packing-list'
     ],
@@ -233,7 +233,7 @@ Every destination is unique—whether you're exploring the beaches of Aruba or t
     wordCount: 1600,
     internalLinks: [
       '/destinations/aruba',
-      '/destinations/aruba/restaurants',
+      '/destinations/aruba',
       '/travel-guides/aruba-packing-list',
       '/travel-guides/best-time-to-visit-aruba'
     ],
@@ -1055,7 +1055,7 @@ This page will be updated as new information becomes available.`,
     featured: true,
     type: 'alert',
     wordCount: 1200,
-    internalLinks: ['/destinations/aruba', '/destinations/aruba/restaurants', '/destinations/aruba/tours'],
+    internalLinks: ['/destinations/aruba', '/destinations/aruba/tours'],
     relatedDestination: '/destinations/aruba',
     relatedDestinationLabel: 'Aruba',
     relatedPosts: ['best-time-to-visit-aruba', '3-day-aruba-itinerary', 'aruba-packing-list'],
@@ -1200,7 +1200,7 @@ This page will be updated as new information becomes available.`,
     featured: true,
     type: 'alert',
     wordCount: 1200,
-    internalLinks: ['/destinations/curacao', '/destinations/curacao/restaurants', '/destinations/curacao/tours'],
+    internalLinks: ['/destinations/curacao', '/destinations/curacao/tours'],
     relatedDestination: '/destinations/curacao',
     relatedDestinationLabel: 'Curaçao',
     relatedPosts: ['best-time-to-visit-curacao', '3-day-curacao-itinerary', 'curacao-packing-list'],

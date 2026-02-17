@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, UtensilsCrossed, Ticket, MapPin } from 'lucide-react';
+import { ArrowRight, Ticket, MapPin } from 'lucide-react';
 import { destinations } from '@/data/destinationsData';
 
 const DestinationLinksFooter = () => {
@@ -72,37 +72,7 @@ const DestinationLinksFooter = () => {
     })
     .filter(Boolean);
 
-  // Popular destinations with restaurants (expanded list of major food destinations)
-  const restaurantDestinations = [
-    // Europe
-    'paris', 'rome', 'barcelona', 'london', 'amsterdam', 'lisbon', 'athens',
-    'madrid', 'venice', 'florence', 'dublin', 'prague', 'vienna', 'brussels',
-    // Caribbean
-    'aruba', 'curacao', 'barbados', 'jamaica', 'punta-cana', 'nassau',
-    'st-lucia', 'grenada', 'trinidad-and-tobago',
-    // North America
-    'new-york-city', 'los-angeles', 'miami', 'san-francisco', 'chicago',
-    'boston', 'seattle', 'washington-d-c', 'toronto', 'vancouver',
-    // Asia-Pacific
-    'tokyo', 'bangkok', 'singapore', 'melbourne', 'sydney', 'hong-kong',
-    'seoul', 'taipei', 'mumbai', 'delhi',
-    // Middle East & Africa
-    'dubai', 'istanbul', 'cairo', 'marrakech', 'cape-town',
-    // South America
-    'rio-de-janeiro', 'buenos-aires', 'sao-paulo', 'lima', 'bogota'
-  ].map(id => {
-    const dest = destinations.find(d => d.id === id);
-    if (dest) {
-      return { ...dest, displayName: dest.fullName || dest.name };
-    }
-    return null;
-  }).filter(Boolean).sort((a, b) => {
-    const nameA = (a.displayName || a.fullName || a.name || '').toLowerCase();
-    const nameB = (b.displayName || b.fullName || b.name || '').toLowerCase();
-    return nameA.localeCompare(nameB);
-  });
-
-  // Popular destinations with tours (same list, all major tour destinations)
+  // Popular destinations with tours (all major tour destinations)
   const tourDestinations = [
     // Europe
     'paris', 'rome', 'barcelona', 'london', 'amsterdam', 'lisbon', 'athens',
@@ -159,36 +129,6 @@ const DestinationLinksFooter = () => {
               className="text-sm font-semibold text-purple-600 hover:text-purple-700 flex items-center gap-1"
             >
               View All Destinations
-              <ArrowRight className="w-3 h-3" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Explore Top Restaurants Section */}
-      <section className="py-12 bg-white border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <UtensilsCrossed className="w-5 h-5 text-purple-600" />
-            <h3 className="text-xl font-bold text-gray-900">
-              Explore Top Restaurants in
-            </h3>
-          </div>
-          <div className="flex flex-wrap gap-3 justify-center">
-            {restaurantDestinations.map((destination) => (
-              <Link
-                key={destination.id}
-                href={`/destinations/${destination.id}/restaurants`}
-                className="text-sm text-gray-600 hover:text-purple-600 hover:underline transition-colors"
-              >
-                {destination.displayName || destination.fullName || destination.name}
-              </Link>
-            ))}
-            <Link
-              href="/restaurants"
-              className="text-sm font-semibold text-purple-600 hover:text-purple-700 flex items-center gap-1"
-            >
-              View All Destinations with Restaurants
               <ArrowRight className="w-3 h-3" />
             </Link>
           </div>

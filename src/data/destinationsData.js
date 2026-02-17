@@ -4923,7 +4923,7 @@ export const destinations = [
       ]
     },
     whyVisit: [
-      'World-famous gastronomy and restaurants',
+      'World-famous gastronomy and tours and excursions',
       'Historic center with colonial architecture',
       'Excellent museums and cultural institutions',
       'Beautiful Pacific coast and views',
@@ -5147,7 +5147,7 @@ export const destinations = [
     },
     whyVisit: [
       'World-class museums and cultural institutions',
-      'Excellent diverse cuisine and restaurants',
+      'Excellent diverse cuisine and tours and excursions',
       'Vibrant neighborhoods and cultural diversity',
       'Impressive architecture and urban planning',
       'Rich Brazilian culture and traditions',
@@ -5425,7 +5425,7 @@ export const destinations = [
       'Excellent wine culture and tours',
       'Modern city with historic charm',
       'Vibrant cultural scene',
-      'Great food and restaurant culture',
+      'Great food scene and tours and excursions',
       'Perfect blend of urban and nature'
     ],
     bestTimeToVisit: {
@@ -9932,7 +9932,7 @@ export const destinations = [
     country: 'Israel',
     briefDescription: 'A vibrant Mediterranean city known for its beautiful beaches, world-class cuisine, thriving arts scene, and legendary nightlife — Tel Aviv is the cultural and culinary heart of Israel.',
     relatedGuides: [],
-    heroDescription: 'Welcome to Tel Aviv, the vibrant Mediterranean metropolis where ancient Jaffa meets modern innovation, creating a dynamic destination that pulses with energy day and night. From the historic port of Jaffa to the modern Bauhaus architecture of the White City, from world-renowned restaurants to legendary nightlife, Tel Aviv offers an extraordinary blend of culture, cuisine, and coastal beauty. Whether you\'re exploring art galleries and museums, indulging in the incredible food scene, relaxing on pristine beaches, or experiencing the city\'s famous nightlife, this captivating destination promises unforgettable experiences. Let our AI-powered planner help you discover the best this cosmopolitan city has to offer.',
+    heroDescription: 'Welcome to Tel Aviv, the vibrant Mediterranean metropolis where ancient Jaffa meets modern innovation, creating a dynamic destination that pulses with energy day and night. From the historic port of Jaffa to the modern Bauhaus architecture of the White City, from top tours and excursions to legendary nightlife, Tel Aviv offers an extraordinary blend of culture, cuisine, and coastal beauty. Whether you\'re exploring art galleries and museums, indulging in the incredible food scene, relaxing on pristine beaches, or experiencing the city\'s famous nightlife, this captivating destination promises unforgettable experiences. Let our AI-powered planner help you discover the best this cosmopolitan city has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/tel%20aviv.png',
     tourCategories: [
       { name: 'Cultural Tours', hasGuide: true },
@@ -9957,7 +9957,7 @@ export const destinations = [
       ]
     },
     whyVisit: [
-      'World-renowned food scene with incredible restaurants, markets, and street food',
+      'World-renowned food scene with top tours and excursions, markets, and street food',
       'Beautiful Mediterranean beaches perfect for swimming, sunbathing, and water sports',
       'Historic Jaffa with its ancient port, narrow alleys, and rich history',
       'Vibrant arts and culture scene with galleries, museums, and street art',
@@ -10044,7 +10044,7 @@ export const destinations = [
     country: 'Lebanon',
     briefDescription: 'The vibrant capital of Lebanon where ancient history meets modern culture, offering world-class cuisine, legendary nightlife, and a rich blend of Middle Eastern and Mediterranean influences.',
     relatedGuides: [],
-    heroDescription: 'Welcome to Beirut, the dynamic capital of Lebanon where ancient Phoenician history meets contemporary Middle Eastern culture, creating a fascinating destination that pulses with energy and resilience. From the historic downtown with its Roman ruins to the vibrant neighborhoods of Gemmayze and Mar Mikhael, from world-renowned restaurants to legendary nightlife, Beirut offers an extraordinary blend of heritage, cuisine, and cosmopolitan charm. Whether you\'re exploring archaeological sites, indulging in incredible Lebanese cuisine, experiencing the city\'s famous nightlife, or discovering its rich cultural scene, this captivating city promises unforgettable experiences. Let our AI-powered planner help you discover the best this remarkable Mediterranean capital has to offer.',
+    heroDescription: 'Welcome to Beirut, the dynamic capital of Lebanon where ancient Phoenician history meets contemporary Middle Eastern culture, creating a fascinating destination that pulses with energy and resilience. From the historic downtown with its Roman ruins to the vibrant neighborhoods of Gemmayze and Mar Mikhael, from top tours and excursions to legendary nightlife, Beirut offers an extraordinary blend of heritage, cuisine, and cosmopolitan charm. Whether you\'re exploring archaeological sites, indulging in incredible Lebanese cuisine, experiencing the city\'s famous nightlife, or discovering its rich cultural scene, this captivating city promises unforgettable experiences. Let our AI-powered planner help you discover the best this remarkable Mediterranean capital has to offer.',
     imageUrl: 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/destinations/Beirut.png',
     tourCategories: [
       { name: 'Cultural Tours', hasGuide: true },
@@ -10069,7 +10069,7 @@ export const destinations = [
       ]
     },
     whyVisit: [
-      'World-renowned Lebanese cuisine with incredible restaurants, street food, and culinary traditions',
+      'World-renowned Lebanese cuisine with top tours and excursions, street food, and culinary traditions',
       'Legendary nightlife scene with world-class bars, clubs, and entertainment venues',
       'Rich history and culture with Roman ruins, museums, and historic neighborhoods',
       'Vibrant arts and culture scene with galleries, theaters, and cultural centers',

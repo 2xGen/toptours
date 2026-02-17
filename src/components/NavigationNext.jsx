@@ -12,7 +12,6 @@ const navItems = [
   { name: 'Home', path: '/' },
   { name: 'Destinations', path: '/destinations' },
   { name: 'Tours', path: '/tours' },
-  { name: 'Restaurants', path: '/restaurants' },
 ];
 
 const NavigationNext = () => {

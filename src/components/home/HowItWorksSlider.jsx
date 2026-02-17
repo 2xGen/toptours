@@ -21,7 +21,7 @@ const steps = [
   {
     icon: Brain,
     title: 'AI-Powered Best Match',
-    description: 'See 0-100% match scores on every tour and restaurant with detailed breakdowns explaining why each listing matches your preferences.',
+    description: 'See 0-100% match scores on every tour with detailed breakdowns explaining why each listing matches your preferences.',
     color: 'from-purple-500 to-pink-500',
     iconColor: 'text-purple-500',
     bgGradient: 'from-purple-50 to-pink-50',
@@ -31,7 +31,7 @@ const steps = [
   {
     icon: Sparkles,
     title: 'Set Your Preferences',
-    description: 'Tell us your travel style: adventure level, budget comfort, group size, and more. Our AI uses these preferences to rank tours and restaurants just for you.',
+    description: 'Tell us your travel style: adventure level, budget comfort, group size, and more. Our AI uses these preferences to rank tours just for you.',
     color: 'from-blue-500 to-indigo-500',
     iconColor: 'text-blue-500',
     bgGradient: 'from-blue-50 to-indigo-50',
@@ -41,7 +41,7 @@ const steps = [
   {
     icon: TrendingUp,
     title: 'See Your Perfect Matches',
-    description: 'Every tour and restaurant shows a match score based on your preferences. Sort by "Best Match" to see the most relevant options first.',
+    description: 'Every tour shows a match score based on your preferences. Sort by "Best Match" to see the most relevant options first.',
     color: 'from-orange-500 to-yellow-500',
     iconColor: 'text-orange-500',
     bgGradient: 'from-orange-50 to-yellow-50',
@@ -51,12 +51,12 @@ const steps = [
   {
     icon: Eye,
     title: 'Discover 3300+ Destinations',
-    description: 'Explore tours and restaurants across 3300+ destinations worldwide. Find hidden gems and popular spots that match your travel style.',
+    description: 'Explore tours across 3300+ destinations worldwide. Find hidden gems and popular spots that match your travel style.',
     color: 'from-green-500 to-emerald-500',
     iconColor: 'text-green-500',
     bgGradient: 'from-green-50 to-emerald-50',
     borderColor: 'border-green-200',
-    details: ['3300+ destinations', '10,000+ tours', '10,000+ restaurants']
+    details: ['3300+ destinations', '300,000+ tours', '19,000+ travel guides']
   }
 ];
 

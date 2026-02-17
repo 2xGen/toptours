@@ -22,11 +22,11 @@ const HomeCTA = ({ onOpenModal, onOpenOnboardingModal }) => {
           </div>
           
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6">
-            Ready to Discover Your Perfect Tours & Restaurants?
+            Ready to Discover Your Perfect Tours?
           </h2>
           
           <p className="text-xl md:text-2xl text-white/95 mb-8 max-w-3xl mx-auto font-medium">
-            Get <strong className="text-white">AI-powered recommendations</strong> tailored to your travel style. Discover tours and restaurants that match your preferences for adventure, budget, group size, and more.
+            Get <strong className="text-white">AI-powered recommendations</strong> tailored to your travel style. Discover tours that match your preferences for adventure, budget, group size, and more.
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center mb-10">
@@ -36,7 +36,7 @@ const HomeCTA = ({ onOpenModal, onOpenOnboardingModal }) => {
             </div>
             <div className="flex items-center gap-2 text-white/90">
               <Check className="w-5 h-5 text-yellow-300" />
-              <span className="font-medium">Save unlimited tours & restaurants</span>
+              <span className="font-medium">Save unlimited tours</span>
             </div>
             <div className="flex items-center gap-2 text-white/90">
               <Check className="w-5 h-5 text-yellow-300" />
