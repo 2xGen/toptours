@@ -139,9 +139,8 @@ export default function RootLayout({ children }) {
                 "@type": "SearchAction",
                 "target": {
                   "@type": "EntryPoint",
-                  "urlTemplate": "https://toptours.ai/results?q={search_term_string}"
-                },
-                "query-input": "required name=search_term_string"
+                  "urlTemplate": "https://toptours.ai/tours"
+                }
               }
             })
           }}
@@ -160,9 +159,8 @@ export default function RootLayout({ children }) {
                 "@type": "SearchAction",
                 "target": {
                   "@type": "EntryPoint",
-                  "urlTemplate": "https://toptours.ai/results?q={search_term_string}"
-                },
-                "query-input": "required name=search_term_string"
+                  "urlTemplate": "https://toptours.ai/tours"
+                }
               }
             })
           }}

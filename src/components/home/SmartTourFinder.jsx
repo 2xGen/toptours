@@ -85,9 +85,8 @@ const SmartTourFinder = ({ isOpen, onClose }) => {
       searchQuery += ` ${userInterests.trim()}`;
     }
 
-    // Navigate to results page
-    const url = `/results?searchTerm=${encodeURIComponent(searchQuery)}`;
-    router.push(url);
+    // Navigate to tours hub (results page disabled)
+    router.push('/tours');
     
     setIsLoading(false);
     handleClose();

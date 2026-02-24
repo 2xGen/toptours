@@ -63,7 +63,7 @@ export default function HomePageClient() {
     "description": "AI-powered tour and excursion recommendations that match your travel style with personalized match scores",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${baseUrl}/results?searchTerm={search_term_string}`,
+      "target": `${baseUrl}/tours`,
       "query-input": "required name=search_term_string"
     },
     "publisher": {

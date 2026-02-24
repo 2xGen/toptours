@@ -1816,7 +1816,7 @@ export default function ToursListingClient({
               {/* Find tours in other destinations link */}
               <div className="mt-3 text-center">
                 <Link 
-                  href="/results" 
+                  href="/tours" 
                   className="text-white/80 hover:text-white text-sm transition-colors underline"
                 >
                   Looking for tours in other destinations?

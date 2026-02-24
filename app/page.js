@@ -75,9 +75,8 @@ export default async function HomePage() {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${baseUrl}/results?query={search_term_string}`
-      },
-      'query-input': 'required name=search_term_string'
+        urlTemplate: `${baseUrl}/tours`
+      }
     }
   };
 

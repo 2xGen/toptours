@@ -84,11 +84,11 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `${destinationName} Travel Guides - Complete Destination Guide | TopTours.ai`,
-    description: `Explore comprehensive travel guides for ${destinationName}. Discover the best tours, activities, restaurants, and insider tips to plan your perfect trip.`,
+    description: `Explore comprehensive travel guides for ${destinationName}. Discover the best tours, activities, and excursions plus insider tips to plan your perfect trip.`,
     keywords: `${destinationName} travel guides, ${destinationName} guides, ${destinationName} travel tips, ${destinationName} vacation guide, ${destinationName} travel information, ${destinationName} travel planning`,
     openGraph: {
       title: `${destinationName} Travel Guides - Complete Destination Guide`,
-      description: `Explore comprehensive travel guides for ${destinationName}. Discover the best tours, activities, restaurants, and insider tips.`,
+      description: `Explore comprehensive travel guides for ${destinationName}. Discover the best tours, activities, and excursions plus insider tips.`,
       url: `https://toptours.ai/destinations/${destinationId}/guides`,
       images: [
         {
@@ -290,7 +290,7 @@ export default async function GuidesListingPage({ params }) {
       '@type': 'WebPage',
       '@id': pageUrl,
       name: `${destinationName} Travel Guides - Complete Destination Guide`,
-      description: `Explore comprehensive travel guides for ${destinationName}. Discover the best tours, activities, restaurants, and insider tips to plan your perfect trip.`,
+      description: `Explore comprehensive travel guides for ${destinationName}. Discover the best tours, activities, and excursions plus insider tips to plan your perfect trip.`,
       url: pageUrl,
       breadcrumb: { '@id': breadcrumbId },
       primaryImageOfPage: {

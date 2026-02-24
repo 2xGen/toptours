@@ -1,4 +1,4 @@
-import { notFound, permanentRedirect } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
 import { Suspense } from 'react';
 import { unstable_cache } from 'next/cache';
 import TourDetailClient from './TourDetailClient';
@@ -278,16 +278,17 @@ export default async function TourDetailPage({ params }) {
   const productId = Array.isArray(slugParam) ? slugParam[0] : slugParam;
   
   if (!productId) {
-    notFound();
+    permanentRedirect('/tours');
   }
 
   try {
     // Use Next.js level caching for tour data
     const tour = await getCachedTourData(productId);
     
+    // Product no longer on Viator (or invalid ID): 301 to /tours so users and Google land on hub instead of 404
     if (!tour) {
-        notFound();
-      }
+      permanentRedirect('/tours');
+    }
 
     // Canonical redirect: /tours/123 → /tours/123/canonical-slug so one URL per tour (cache + SEO)
     const canonicalPath = getTourCanonicalPath(productId, tour);
@@ -764,7 +765,8 @@ export default async function TourDetailPage({ params }) {
     if (process.env.NODE_ENV === 'development') {
       console.error('Error fetching tour:', error);
     }
-    notFound();
+    // Redirect to tours hub instead of 404 (product gone or transient error)
+    permanentRedirect('/tours');
   }
 }
 

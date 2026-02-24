@@ -199,71 +199,48 @@ async function getGuideFromDatabase(destinationId, categorySlug) {
   }
 }
 
-// Generate metadata for SEO
+// Resolve destination for metadata (same logic as page - so metadata matches when page would render)
+async function resolveDestinationForMetadata(destinationId) {
+  let destination = destinations.find(d => d.id === destinationId);
+  if (destination) return destination;
+  try {
+    const fullContent = getDestinationFullContent(destinationId);
+    if (fullContent && fullContent.destinationName) {
+      return {
+        id: destinationId,
+        name: fullContent.destinationName,
+        fullName: fullContent.destinationName,
+        imageUrl: fullContent.imageUrl || null,
+      };
+    }
+  } catch (_) {}
+  if (/^d?\d+$/.test(destinationId)) {
+    try {
+      const { getViatorDestinationById } = await import('@/lib/supabaseCache');
+      const viatorDestinationId = destinationId.startsWith('d') ? destinationId.replace(/^d/i, '') : destinationId;
+      const destInfo = await getViatorDestinationById(viatorDestinationId);
+      if (destInfo?.name) {
+        return { id: destinationId, name: destInfo.name, fullName: destInfo.name, imageUrl: null };
+      }
+    } catch (_) {}
+  }
+  try {
+    const { getViatorDestinationBySlug } = await import('@/lib/supabaseCache');
+    const destInfo = await getViatorDestinationBySlug(destinationId);
+    if (destInfo?.name) {
+      return { id: destinationId, name: destInfo.name, fullName: destInfo.name, imageUrl: null };
+    }
+  } catch (_) {}
+  return null;
+}
+
+// Generate metadata for SEO (must match page: index when page renders content, noindex only when 404)
 export async function generateMetadata({ params }) {
   try {
     const { id: destinationId, category: categorySlug } = await params;
     
-    // Try database first, then JSON files
     let guideData = await getGuideFromDatabase(destinationId, categorySlug);
-    let destination = destinations.find(d => d.id === destinationId);
-    
-    // If not in destinationsData.js, check generated content (JSON files)
-    if (!destination) {
-      try {
-        const fullContent = getDestinationFullContent(destinationId);
-        if (fullContent && fullContent.destinationName) {
-          destination = {
-            id: destinationId,
-            name: fullContent.destinationName,
-            fullName: fullContent.destinationName,
-            imageUrl: fullContent.imageUrl || null,
-          };
-        }
-      } catch (error) {
-        // Silently continue
-      }
-    }
-    
-    // Try database lookups (for 3,382+ destinations not in static/JSON files)
-    if (!destination) {
-      // Check if id is a Viator destination ID (numeric or starts with 'd')
-      if (/^d?\d+$/.test(destinationId)) {
-        const viatorDestinationId = destinationId.startsWith('d') ? destinationId.replace(/^d/i, '') : destinationId;
-        try {
-          const { getViatorDestinationById } = await import('@/lib/supabaseCache');
-          const destInfo = await getViatorDestinationById(viatorDestinationId);
-          if (destInfo && destInfo.name) {
-            destination = {
-              id: destinationId,
-              name: destInfo.name,
-              fullName: destInfo.name,
-              imageUrl: null,
-            };
-          }
-        } catch (error) {
-          // Continue with fallback
-        }
-      }
-      
-      // Try slug lookup using database (same as destination page)
-      if (!destination) {
-        try {
-          const { getViatorDestinationBySlug } = await import('@/lib/supabaseCache');
-          const destInfo = await getViatorDestinationBySlug(destinationId);
-          if (destInfo && destInfo.name) {
-            destination = {
-              id: destinationId,
-              name: destInfo.name,
-              fullName: destInfo.name,
-              imageUrl: null,
-            };
-          }
-        } catch (error) {
-          // Continue
-        }
-      }
-    }
+    let destination = await resolveDestinationForMetadata(destinationId);
     
     // If we have guide data but no destination, create minimal destination (last resort)
     if (guideData && !destination) {
@@ -276,6 +253,41 @@ export async function generateMetadata({ params }) {
       };
     }
     
+    // Same as page: build default airport-transfers guide when not in DB so metadata matches rendered page
+    if (!guideData && categorySlug === 'airport-transfers' && destination) {
+      const destinationName = destination.fullName || destination.name || 'Destination';
+      guideData = {
+        title: `${destinationName} Airport Transfers`,
+        subtitle: `Find reliable airport transfer services to and from ${destinationName}. Compare shared and private transfers, book in advance, and start your trip stress-free.`,
+        categoryName: 'Airport Transfers',
+        heroImage: destination?.imageUrl || null,
+        seo: {
+          title: `${destinationName} Airport Transfer: Shared & Private Transfers`,
+          description: `Book reliable airport transfers to and from ${destinationName}. Compare shared and private transfer options, prices, and durations.`,
+          keywords: `airport transfer, airport shuttle, airport taxi, private transfer, shared transfer, ${destinationName} airport`,
+        },
+      };
+    }
+    
+    // Same as page: tag-based placeholder guides (e.g. spring-break, dsa-non-compliant) so metadata matches
+    if (!guideData && destination && categorySlug !== 'airport-transfers') {
+      const tag = await getTagBySlug(categorySlug);
+      if (tag) {
+        const destName = destination.fullName || destination.name || destinationId;
+        guideData = {
+          title: `${tag.tag_name_en} in ${destName}`,
+          subtitle: `Discover ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate this guide with AI to get tips, what to expect, and FAQs.`,
+          categoryName: tag.tag_name_en,
+          seo: {
+            title: `${tag.tag_name_en} in ${destName} | TopTours.ai`,
+            description: `Guide to ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate the full guide with AI.`,
+            keywords: '',
+          },
+        };
+      }
+    }
+    
+    // Only noindex when page would 404 (no content to show)
     if (!destination || !guideData) {
       return {
         title: 'Guide Not Found',
