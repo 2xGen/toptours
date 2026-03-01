@@ -44,7 +44,7 @@ export async function generateMetadata({ params }) {
       
       // OG title: shareable in FB/WhatsApp/groups. SEO title: search-first, not mirrored.
       const ogTitle = `Explore ${destinationName} – Things to Do, Tours, Guides & Travel Tips`;
-      const seoPageTitle = `Things to Do in ${destinationName} – Tours, Guides & Travel Tips | TopTours.ai`;
+      const seoPageTitle = `Things to Do in ${destinationName} – Tours, Guides & Travel Tips`;
       
       return {
         title: seoPageTitle,
@@ -91,7 +91,7 @@ export async function generateMetadata({ params }) {
     
     // If still not found, return not found metadata
     return {
-      title: 'Destination Not Found | TopTours.ai',
+      title: 'Destination Not Found',
       robots: {
         index: false,
         follow: false,
@@ -105,10 +105,12 @@ export async function generateMetadata({ params }) {
   const defaultOgImage = 'https://toptours.ai/OG%20Images/TopTours%20Destinations.jpg';
   const ogImage = destination.imageUrl || defaultOgImage;
   
-  // OG title: shareable in FB/WhatsApp/groups. SEO title: search-first, not mirrored.
+  // OG title: shareable in FB/WhatsApp/groups. SEO title: use destination.seo.title when set (Tier 1 / high-intent), else template.
   const ogTitle = `Explore ${destination.fullName} – Things to Do, Tours, Guides & Travel Tips`;
-  const seoPageTitle = `Things to Do in ${destination.fullName} – Tours, Guides & Travel Tips | TopTours.ai`;
-  
+  const seoPageTitle = destination.seo?.title
+    ? destination.seo.title
+    : `Things to Do in ${destination.fullName} – Tours, Guides & Travel Tips`;
+
   return {
     title: seoPageTitle,
     description: destination.seo?.description || destination.heroDescription,

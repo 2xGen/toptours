@@ -5,7 +5,7 @@ export const revalidate = 604800; // 7 days - increased to reduce ISR writes dur
 
 export async function generateMetadata() {
   return {
-    title: 'Best Travel Destinations 2026: 3,500+ Cities Worldwide | TopTours.ai',
+    title: 'Best Travel Destinations 2026: 3,500+ Cities · Find Tours & Activities',
     description: 'Discover 3,500+ top-rated travel destinations worldwide. Book tours, find restaurants, and read travel guides. AI-powered recommendations help you find your perfect adventure. Instant booking, free cancellation.',
     keywords: 'best travel destinations, popular destinations, top destinations, where to travel, best places to visit, travel destinations 2026, world destinations, tour destinations, vacation destinations, travel guides, destination guides, AI travel recommendations',
     alternates: {

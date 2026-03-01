@@ -72,6 +72,11 @@ function getDisplayCategoryName(categoryName) {
 
 const DISCOVER_CARS_URL = 'https://www.discovercars.com/?a_aid=toptours&a_cid=65100b9c';
 
+// SEO: limit same-page links so landing supports this destination's pages (not 46 guides + 20 other cities)
+const MAX_POPULAR_GUIDES_ON_LANDING = 8;
+const MAX_OTHER_DESTINATIONS_ON_LANDING = 8;
+const MAX_RELATED_GUIDES_CAROUSEL = 5;
+
 export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], promotedTours = [], hardcodedTours = {}, categoryGuides: categoryGuidesProp = [], hasBabyEquipmentRentals = false }) {
   
   // Ensure destination exists
@@ -113,7 +118,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const [relatedGuides, setRelatedGuides] = useState([]);
   const [categoryGuides, setCategoryGuides] = useState([]);
   const [countryDestinations, setCountryDestinations] = useState([]);
-  const [showMoreCountryDestinations, setShowMoreCountryDestinations] = useState(12);
   const [guideCarouselIndex, setGuideCarouselIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -375,6 +379,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const normalizedRelatedGuides = Array.isArray(relatedGuides) 
     ? relatedGuides.filter(guide => guide && guide.id && guide.title)
     : [];
+  // SEO: limit country travel guides on landing to 5 so page stays destination-focused
+  const relatedGuidesForCarousel = useMemo(
+    () => normalizedRelatedGuides.slice(0, MAX_RELATED_GUIDES_CAROUSEL),
+    [normalizedRelatedGuides]
+  );
   
   // Mark as client-side after mount to prevent hydration issues
   useEffect(() => {
@@ -1728,11 +1737,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   <CardContent className="p-4 sm:p-5">
                     <div className="mb-3">
                       <p className="text-sm text-gray-600 mb-4">
-                        {categoryGuidesProp.length} travel guides available for {safeDestination.fullName || safeDestination.name}. Click any category to read our comprehensive guide.
+                        Popular guides for {safeDestination.fullName || safeDestination.name}. Click any category to read our comprehensive guide.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {categoryGuidesProp.map((guide) => {
+                      {categoryGuidesProp.slice(0, MAX_POPULAR_GUIDES_ON_LANDING).map((guide) => {
                         const categoryName = guide.category_name || guide.title || '';
                         const categorySlug = guide.category_slug || '';
                         const normalizedSlug = normalizeSlug(categorySlug);
@@ -1747,6 +1756,17 @@ export default function DestinationDetailClient({ destination, promotionScores =
                         );
                       })}
                     </div>
+                    {categoryGuidesProp.length > MAX_POPULAR_GUIDES_ON_LANDING && (
+                      <div className="mt-3">
+                        <Link
+                          href={`/destinations/${safeDestination.id}/guides`}
+                          className="text-sm font-medium text-indigo-600 hover:text-indigo-700 hover:underline inline-flex items-center gap-1"
+                        >
+                          View all {categoryGuidesProp.length} guides
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </div>
@@ -1925,7 +1945,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                           Explore top-rated tours and activities in other amazing destinations across {safeDestination.country}.
                         </p>
                         <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 mb-3">
-                          {countryDestinations.slice(0, showMoreCountryDestinations).map((otherDest, index) => (
+                          {countryDestinations.slice(0, MAX_OTHER_DESTINATIONS_ON_LANDING).map((otherDest, index) => (
                             <Link key={`${otherDest.id}-${index}`} href={`/destinations/${otherDest.id}/tours`} prefetch={true}>
                               <Button 
                                 variant="outline" 
@@ -1937,29 +1957,15 @@ export default function DestinationDetailClient({ destination, promotionScores =
                             </Link>
                           ))}
                         </div>
-                        <div className="flex flex-wrap gap-2">
-                          {countryDestinations.length > showMoreCountryDestinations && (
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => setShowMoreCountryDestinations(countryDestinations.length)}
-                              className="text-purple-700 hover:text-purple-800 hover:bg-purple-50 text-xs"
-                            >
-                              View All ({countryDestinations.length} destinations)
-                              <ArrowRight className="w-3 h-3 ml-1" />
-                            </Button>
-                          )}
-                          {showMoreCountryDestinations > 12 && (
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => setShowMoreCountryDestinations(12)}
-                              className="text-gray-600 hover:text-gray-800 hover:bg-gray-50 text-xs"
-                            >
-                              Show Less
-                            </Button>
-                          )}
-                        </div>
+                        {countryDestinations.length > MAX_OTHER_DESTINATIONS_ON_LANDING && (
+                          <Link
+                            href="/destinations"
+                            className="text-xs font-medium text-purple-700 hover:text-purple-800 hover:underline inline-flex items-center gap-1"
+                          >
+                            View all destinations ({countryDestinations.length})
+                            <ArrowRight className="w-3 h-3" />
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </CardContent>
@@ -1969,14 +1975,14 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </div>
         </section>
 
-        {/* Related Travel Guides Carousel Section */}
-        {normalizedRelatedGuides.length > 0 && (
+        {/* Related Travel Guides Carousel Section - limited to 5 for SEO (same-destination focus) */}
+        {relatedGuidesForCarousel.length > 0 && (
           <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h3 className="text-2xl font-poppins font-bold text-gray-800 mb-6 text-center">
                 {safeDestination.country} Travel Guides
               </h3>
-              {isClient && isMobile && normalizedRelatedGuides.length > 0 ? (
+              {isClient && isMobile && relatedGuidesForCarousel.length > 0 ? (
                 <div className="flex justify-center">
                   <div className="relative w-full max-w-sm">
                     <div className="flex items-center justify-center mb-6 space-x-4">
@@ -1987,23 +1993,23 @@ export default function DestinationDetailClient({ destination, promotionScores =
                           const newIndex = Math.max(0, guideCarouselIndex - 1);
                           setGuideCarouselIndex(newIndex);
                         }}
-                        disabled={guideCarouselIndex === 0 || normalizedRelatedGuides.length === 0}
+                        disabled={guideCarouselIndex === 0 || relatedGuidesForCarousel.length === 0}
                         className="w-10 h-10 p-0"
                       >
                         <ChevronLeft className="w-4 h-4" />
                       </Button>
                       <span className="text-sm text-gray-600">
-                        {Math.min(guideCarouselIndex + 1, normalizedRelatedGuides.length)} of {normalizedRelatedGuides.length}
+                        {Math.min(guideCarouselIndex + 1, relatedGuidesForCarousel.length)} of {relatedGuidesForCarousel.length}
                       </span>
                       <Button
                         variant="outline"
                         size="sm"
                         onClick={() => {
-                          const maxIndex = Math.max(0, normalizedRelatedGuides.length - 1);
+                          const maxIndex = Math.max(0, relatedGuidesForCarousel.length - 1);
                           const newIndex = Math.min(maxIndex, guideCarouselIndex + 1);
                           setGuideCarouselIndex(newIndex);
                         }}
-                        disabled={guideCarouselIndex >= Math.max(0, normalizedRelatedGuides.length - 1) || normalizedRelatedGuides.length === 0}
+                        disabled={guideCarouselIndex >= Math.max(0, relatedGuidesForCarousel.length - 1) || relatedGuidesForCarousel.length === 0}
                         className="w-10 h-10 p-0"
                       >
                         <ChevronRight className="w-4 h-4" />
@@ -2013,10 +2019,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       <div 
                         className="flex transition-transform duration-300 ease-in-out gap-6"
                         style={{ 
-                          transform: `translateX(calc(-${Math.min(guideCarouselIndex, Math.max(0, normalizedRelatedGuides.length - 1)) * 100}% - ${Math.min(guideCarouselIndex, Math.max(0, normalizedRelatedGuides.length - 1)) * 1.5}rem))`
+                          transform: `translateX(calc(-${Math.min(guideCarouselIndex, Math.max(0, relatedGuidesForCarousel.length - 1)) * 100}% - ${Math.min(guideCarouselIndex, Math.max(0, relatedGuidesForCarousel.length - 1)) * 1.5}rem))`
                         }}
                       >
-                        {normalizedRelatedGuides.map((guide, idx) => {
+                        {relatedGuidesForCarousel.map((guide, idx) => {
                           if (!guide || !guide.id || !guide.title) return null;
                           return (
                           <Link 
@@ -2074,9 +2080,9 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     </div>
                   </div>
                 </div>
-              ) : normalizedRelatedGuides.length > 0 ? (
+              ) : relatedGuidesForCarousel.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center max-w-5xl mx-auto">
-                        {normalizedRelatedGuides.map((guide, idx) => {
+                        {relatedGuidesForCarousel.map((guide, idx) => {
                           if (!guide || !guide.id || !guide.title) return null;
                           return (
                     <Link 
@@ -2132,6 +2138,17 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   })}
                 </div>
               ) : null}
+              {categoryGuidesProp.length > 0 && (
+                <p className="text-center mt-6">
+                  <Link
+                    href={`/destinations/${safeDestination.id}/guides`}
+                    className="text-indigo-600 hover:text-indigo-700 font-medium inline-flex items-center gap-1"
+                  >
+                    More {safeDestination.fullName || safeDestination.name} guides
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </p>
+              )}
             </div>
           </section>
         )}
@@ -2378,53 +2395,87 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
         {/* Combined Internal Linking Section */}
         {(categoryGuides.length > 0 || relatedDestinations.length > 0) && (
-          <section className="py-12 px-4" style={{ backgroundColor: '#764ba2' }}>
-            <div className="max-w-7xl mx-auto">
+          <section className="py-14 px-4 bg-gradient-to-b from-[#764ba2] to-[#5a3d82]">
+            <div className="max-w-4xl mx-auto">
               {/* Related Destinations */}
               {relatedDestinations.length > 0 && (
-                <div className="mb-12">
-                  <h3 className="text-xl font-semibold text-white mb-6">
-                    More {safeDestination.category} Destinations
-                  </h3>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                    {relatedDestinations.map((dest, index) => (
-                      <Link 
+                <div className="mb-14">
+                  <div className="flex items-center gap-2 mb-4">
+                    <MapPin className="w-5 h-5 text-white/90" aria-hidden />
+                    <h3 className="text-lg font-semibold text-white tracking-tight">
+                      Explore more in {safeDestination.category}
+                    </h3>
+                  </div>
+                  <p className="text-white/75 text-sm mb-5 max-w-xl">
+                    Top tours and activities in other popular {safeDestination.category} destinations.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {relatedDestinations.slice(0, MAX_OTHER_DESTINATIONS_ON_LANDING).map((dest, index) => (
+                      <Link
                         key={`${dest.id}-${index}`}
                         href={`/destinations/${dest.id}`}
-                        className="text-white/80 hover:text-white transition-colors duration-200 hover:underline"
+                        className="inline-flex items-center rounded-full bg-white/15 hover:bg-white/25 text-white text-sm font-medium px-4 py-2.5 border border-white/20 transition-all duration-200 hover:border-white/40 hover:shadow-md"
                       >
                         {dest.name}
                       </Link>
                     ))}
                   </div>
+                  {relatedDestinations.length > MAX_OTHER_DESTINATIONS_ON_LANDING && (
+                    <Link
+                      href="/destinations"
+                      className="inline-flex items-center gap-1.5 mt-5 text-white/95 hover:text-white font-medium text-sm rounded-full bg-white/10 hover:bg-white/20 px-4 py-2.5 border border-white/25 transition-colors"
+                    >
+                      View all destinations
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  )}
                 </div>
               )}
 
-              {/* Related Travel Guides by Region */}
+              {/* Related Travel Guides - same-destination guides only, capped for SEO */}
               {categoryGuides.length > 0 && (
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-6 text-center">
-                    {safeDestination.category} Travel Guides
-                  </h3>
-                  <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
-                    {categoryGuides.map((guide, index) => {
+                  <div className="flex items-center gap-2 mb-4">
+                    <BookOpen className="w-5 h-5 text-white/90" aria-hidden />
+                    <h3 className="text-lg font-semibold text-white tracking-tight">
+                      {safeDestination.fullName || safeDestination.name} guides
+                    </h3>
+                  </div>
+                  <p className="text-white/75 text-sm mb-5 max-w-xl">
+                    Planning tips, tour categories, and things to do in {safeDestination.fullName || safeDestination.name}.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {categoryGuides.slice(0, MAX_POPULAR_GUIDES_ON_LANDING).map((guide, index) => {
                       const categorySlug = guide.category_slug || '';
-                      // Normalize slug to handle special characters (e.g., "banús" -> "banus")
                       const normalizedSlug = normalizeSlug(categorySlug);
                       const guideUrl = normalizedSlug ? `/destinations/${safeDestination.id}/guides/${normalizedSlug}` : '#';
+                      const title = guide.title || guide.category_name || '';
                       return (
-                      <Link 
+                        <Link
                           key={categorySlug || `guide-${index}`}
                           href={guideUrl}
-                        className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-lg px-5 py-4 transition-all duration-200 hover:scale-105 w-full max-w-xs"
-                      >
-                        <div className="text-white hover:text-blue-200 font-medium line-clamp-2 h-12 flex items-center">
-                            {guide.title || guide.category_name || ''}
-                        </div>
-                      </Link>
+                          className="group flex items-center gap-3 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/35 px-4 py-3.5 transition-all duration-200"
+                        >
+                          <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center">
+                            <BookOpen className="w-4 h-4 text-white/90" />
+                          </div>
+                          <span className="text-white font-medium text-sm line-clamp-2 group-hover:text-blue-200 transition-colors">
+                            {title}
+                          </span>
+                          <ArrowRight className="w-4 h-4 flex-shrink-0 text-white/60 group-hover:text-white group-hover:translate-x-0.5 transition-all ml-auto" />
+                        </Link>
                       );
                     })}
                   </div>
+                  {categoryGuides.length > MAX_POPULAR_GUIDES_ON_LANDING && (
+                    <Link
+                      href={`/destinations/${safeDestination.id}/guides`}
+                      className="inline-flex items-center gap-1.5 mt-5 text-white/95 hover:text-white font-medium text-sm rounded-full bg-white/10 hover:bg-white/20 px-4 py-2.5 border border-white/25 transition-colors"
+                    >
+                      View all {categoryGuides.length} guides
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  )}
                 </div>
               )}
             </div>

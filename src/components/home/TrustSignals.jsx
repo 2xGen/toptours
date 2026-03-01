@@ -7,7 +7,7 @@ const TrustSignals = () => {
   const stats = [
     { icon: Ticket, label: 'Tours Available', value: '300,000+', description: 'Tours and activities' },
     { icon: Award, label: 'Destinations', value: '3,300+', description: 'Worldwide coverage' },
-    { icon: BookOpen, label: 'Travel Guides', value: '19,000+', description: 'Destination guides & tips' },
+    { icon: BookOpen, label: 'Travel Guides', value: '38,000+', description: 'Destination guides & tips' },
     { icon: Trophy, label: 'Best Match', value: 'AI-powered', description: 'Personalized recommendations' },
   ];
 

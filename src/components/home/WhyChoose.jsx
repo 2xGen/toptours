@@ -33,7 +33,7 @@ const WhyChoose = () => {
     {
       icon: Globe,
       title: 'Worldwide Coverage',
-      description: 'Access to 300,000+ tours and 19,000+ travel guides across 3,300+ destinations.',
+      description: 'Access to 300,000+ tours and 38,000+ travel guides across 3,300+ destinations.',
       color: 'from-indigo-500 to-purple-500'
     },
     {

@@ -25,84 +25,133 @@ const supabase = createClient(supabaseUrl, supabaseServiceRoleKey, {
 
 const baseUrl = 'https://toptours.ai';
 /** Sitemap lastmod date for search engines (update when you want to signal a fresh sitemap) */
-const SITEMAP_LASTMOD = '2026-02-11';
+const SITEMAP_LASTMOD = '2026-03-01';
 
 async function generateGuidesSitemap() {
-  console.log('🚀 Generating guides sitemap from database...\n');
+  console.log('🚀 Generating guides sitemap from database (category_guides + tag_guide_content)...\n');
 
   try {
-    // Fetch all guides from database with pagination (Supabase has 1000 row limit per query)
-    console.log('📊 Fetching all category guides from database...');
-    
-    let allGuides = [];
-    let page = 0;
     const pageSize = 1000;
-    let hasMore = true;
+    const allUrlEntries = []; // { url: string } to dedupe and output
 
+    // 1. Fetch all category_guides (destination_id, category_slug)
+    console.log('📊 Fetching category_guides...');
+    let from = 0;
+    let hasMore = true;
     while (hasMore) {
-      const from = page * pageSize;
-      const to = from + pageSize - 1;
-      
-      console.log(`   Fetching page ${page + 1} (rows ${from + 1}-${to + 1})...`);
-      
-      const { data: guides, error, count } = await supabase
+      const { data: guides, error } = await supabase
         .from('category_guides')
-        .select('destination_id, category_slug, updated_at', { count: 'exact' })
+        .select('destination_id, category_slug')
         .order('destination_id', { ascending: true })
         .order('category_slug', { ascending: true })
-        .range(from, to);
+        .range(from, from + pageSize - 1);
 
       if (error) {
-        console.error('❌ Error fetching guides:', error);
+        console.error('❌ Error fetching category_guides:', error);
         process.exit(1);
       }
+      if (!guides || guides.length === 0) break;
+      guides.forEach((g) => {
+        if (g.destination_id && g.category_slug) {
+          allUrlEntries.push(`${baseUrl}/destinations/${g.destination_id}/guides/${g.category_slug}`);
+        }
+      });
+      from += pageSize;
+      hasMore = guides.length === pageSize;
+    }
+    const categoryCount = allUrlEntries.length;
+    console.log(`   ✅ Category guides: ${categoryCount} URLs`);
 
-      if (!guides || guides.length === 0) {
-        hasMore = false;
+    // 2. Fetch all tag_guide_content (destination_id, tag_slug)
+    console.log('📊 Fetching tag_guide_content...');
+    from = 0;
+    hasMore = true;
+    const seen = new Set(allUrlEntries);
+    let tagCount = 0;
+    while (hasMore) {
+      const { data: rows, error } = await supabase
+        .from('tag_guide_content')
+        .select('destination_id, tag_slug')
+        .order('destination_id', { ascending: true })
+        .range(from, from + pageSize - 1);
+
+      if (error) {
+        console.warn('⚠️  Error fetching tag_guide_content (optional):', error.message);
         break;
       }
-
-      allGuides = allGuides.concat(guides);
-      console.log(`   ✅ Fetched ${guides.length} guides (total: ${allGuides.length})`);
-
-      // Check if there are more pages
-      if (guides.length < pageSize) {
-        hasMore = false;
-      } else {
-        page++;
-      }
+      if (!rows || rows.length === 0) break;
+      rows.forEach((r) => {
+        if (r.destination_id && r.tag_slug) {
+          const url = `${baseUrl}/destinations/${r.destination_id}/guides/${r.tag_slug}`;
+          if (!seen.has(url)) {
+            seen.add(url);
+            allUrlEntries.push(url);
+            tagCount++;
+          }
+        }
+      });
+      from += pageSize;
+      hasMore = rows.length === pageSize;
     }
+    console.log(`   ✅ Tag guides (new URLs): ${tagCount}`);
 
-    if (allGuides.length === 0) {
-      console.warn('⚠️  No guides found in database');
+    const total = allUrlEntries.length;
+    if (total === 0) {
+      console.warn('⚠️  No guide URLs found');
       return;
     }
 
-    console.log(`\n✅ Found ${allGuides.length} total guides in database\n`);
+    console.log(`\n✅ Total guide URLs: ${total} (category: ${categoryCount}, tag: ${tagCount})\n`);
 
-    // Generate XML
-    const guideUrls = allGuides.map((guide) => {
-      return `  <url>
-    <loc>${baseUrl}/destinations/${guide.destination_id}/guides/${guide.category_slug}</loc>
+    // Generate XML (max 50,000 per sitemap; split if needed)
+    const MAX_PER_FILE = 50000;
+    const chunks = [];
+    for (let i = 0; i < allUrlEntries.length; i += MAX_PER_FILE) {
+      chunks.push(allUrlEntries.slice(i, i + MAX_PER_FILE));
+    }
+
+    const writtenFiles = [];
+    for (let c = 0; c < chunks.length; c++) {
+      const urls = chunks[c];
+      const guideUrlsXml = urls
+        .map(
+          (url) => `  <url>
+    <loc>${url}</loc>
     <lastmod>${SITEMAP_LASTMOD}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>`;
-    });
+  </url>`
+        )
+        .join('\n');
 
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+      const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${guideUrls.join('\n')}
+${guideUrlsXml}
 </urlset>`;
 
-    // Write to public folder
-    const outputPath = path.join(__dirname, '../public/sitemap-guides.xml');
-    fs.writeFileSync(outputPath, xml, 'utf8');
+      const filename = chunks.length > 1 ? `sitemap-guides-${c + 1}.xml` : 'sitemap-guides.xml';
+      const outputPath = path.join(__dirname, '../public', filename);
+      fs.writeFileSync(outputPath, xml, 'utf8');
+      writtenFiles.push({ filename, count: urls.length });
+      console.log(`✅ Wrote ${filename} (${urls.length} URLs)`);
+    }
 
-    console.log(`✅ Generated sitemap-guides.xml`);
-    console.log(`   📁 Location: ${outputPath}`);
-    console.log(`   📊 Total URLs: ${allGuides.length}`);
+    // If split into multiple files, write sitemap-guides.xml as an index so GSC URL still works
+    if (chunks.length > 1) {
+      const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${writtenFiles.map((f) => `  <sitemap>
+    <loc>${baseUrl}/${f.filename}</loc>
+    <lastmod>${SITEMAP_LASTMOD}</lastmod>
+  </sitemap>`).join('\n')}
+</sitemapindex>`;
+      const indexPath = path.join(__dirname, '../public/sitemap-guides.xml');
+      fs.writeFileSync(indexPath, indexXml, 'utf8');
+      console.log('✅ Wrote sitemap-guides.xml (index of part files)');
+    }
+
     console.log(`\n✨ Guides sitemap generated successfully!`);
+    console.log('   Keep https://toptours.ai/sitemap-guides.xml submitted in GSC.');
   } catch (error) {
     console.error('❌ Error generating guides sitemap:', error);
     process.exit(1);

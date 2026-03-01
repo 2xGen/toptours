@@ -36,7 +36,7 @@ export async function generateMetadata({ params }) {
       const destinationName = fullContent?.destinationName || seoContent?.destinationName || id;
       const { desc, keywords } = carRentalsMeta(destinationName);
       return {
-        title: `Car Rentals in ${destinationName} | TopTours.ai`,
+        title: `Car Rentals in ${destinationName} – Compare & Book`,
         description: desc,
         keywords,
         alternates: { canonical: `https://toptours.ai/destinations/${id}/car-rentals` },
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }) {
         if (dest?.name) {
           const { desc, keywords } = carRentalsMeta(dest.name);
           return {
-            title: `Car Rentals in ${dest.name} | TopTours.ai`,
+            title: `Car Rentals in ${dest.name} – Compare & Book`,
             description: desc,
             keywords,
             alternates: { canonical: `https://toptours.ai/destinations/${id}/car-rentals` },
@@ -76,7 +76,7 @@ export async function generateMetadata({ params }) {
       if (dest?.name) {
         const { desc, keywords } = carRentalsMeta(dest.name);
         return {
-          title: `Car Rentals in ${dest.name} | TopTours.ai`,
+          title: `Car Rentals in ${dest.name} – Compare & Book`,
           description: desc,
           keywords,
           alternates: { canonical: `https://toptours.ai/destinations/${id}/car-rentals` },
@@ -86,14 +86,14 @@ export async function generateMetadata({ params }) {
         };
       }
     } catch (_) {}
-    return { title: 'Car Rentals | TopTours.ai', robots: { index: true, follow: true } };
+    return { title: 'Car Rentals – Compare & Book', robots: { index: true, follow: true } };
   }
 
   const name = destination.fullName || destination.name;
   const { desc, keywords } = carRentalsMeta(name);
 
   return {
-    title: `Car Rentals in ${name} | TopTours.ai`,
+    title: `Car Rentals in ${name} – Compare & Book`,
     description: desc,
     keywords,
     alternates: { canonical: `https://toptours.ai/destinations/${destination.id}/car-rentals` },

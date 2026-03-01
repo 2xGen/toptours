@@ -39,7 +39,7 @@ export async function generateMetadata({ params }) {
       const description = `Discover trusted tour operators in ${destinationName}. Browse operators offering tours and activities with instant booking and free cancellation.`;
 
       return {
-        title: `Tour Operators in ${destinationName} | TopTours.ai`,
+        title: `Tour Operators in ${destinationName} – Book Direct`,
         description,
         keywords: `tour operators ${destinationName}, ${destinationName} tour companies, ${destinationName} tour providers`,
         alternates: {
@@ -92,7 +92,7 @@ export async function generateMetadata({ params }) {
           const description = `Discover trusted tour operators in ${destInfo.name}. Browse operators offering tours and activities with instant booking and free cancellation.`;
           
           return {
-            title: `Tour Operators in ${destInfo.name} | TopTours.ai`,
+            title: `Tour Operators in ${destInfo.name} – Book Direct`,
             description,
             keywords: `tour operators ${destInfo.name}, ${destInfo.name} tour companies, ${destInfo.name} tour providers`,
             alternates: {
@@ -146,7 +146,7 @@ export async function generateMetadata({ params }) {
         const description = `Discover trusted tour operators in ${destInfo.name}. Browse operators offering tours and activities with instant booking and free cancellation.`;
         
         return {
-          title: `Tour Operators in ${destInfo.name} | TopTours.ai`,
+          title: `Tour Operators in ${destInfo.name} – Book Direct`,
           description,
           keywords: `tour operators ${destInfo.name}, ${destInfo.name} tour companies, ${destInfo.name} tour providers`,
           alternates: {
@@ -193,7 +193,7 @@ export async function generateMetadata({ params }) {
     
     // If all lookups fail, return generic metadata (but still indexable)
     return {
-      title: 'Tour Operators | TopTours.ai',
+      title: 'Tour Operators – Book Direct',
       robots: {
         index: true,
         follow: true,
@@ -206,7 +206,7 @@ export async function generateMetadata({ params }) {
   const description = `Discover trusted tour operators in ${destination.fullName}. Browse operators offering tours and activities with instant booking and free cancellation.`;
 
     return {
-      title: `Tour Operators in ${destination.fullName} | TopTours.ai`,
+      title: `Tour Operators in ${destination.fullName} – Book Direct`,
       description,
       keywords: `tour operators ${destination.fullName}, ${destination.fullName} tour companies, ${destination.fullName} tour providers`,
       alternates: {

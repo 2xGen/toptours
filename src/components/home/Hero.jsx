@@ -312,7 +312,7 @@ const Hero = ({ onOpenOnboardingModal }) => {
               </div>
               <div className="flex items-center gap-2">
                 <BookOpen className="h-5 w-5 text-green-200" />
-                <span>19,000+ travel guides</span>
+                <span>38,000+ travel guides</span>
               </div>
             </div>
           </motion.div>

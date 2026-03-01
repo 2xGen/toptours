@@ -57,7 +57,7 @@ export async function generateMetadata({ params }) {
     
     if (!destinationName) {
       return {
-        title: 'Baby Equipment Rentals | TopTours.ai',
+        title: 'Baby Equipment Rentals – Strollers, Cribs & More',
       };
     }
   } else {
@@ -69,12 +69,12 @@ export async function generateMetadata({ params }) {
   const pageData = await getBabyEquipmentRentalsByDestination(id);
   if (!pageData) {
     return {
-      title: 'Baby Equipment Rentals | TopTours.ai',
+      title: 'Baby Equipment Rentals – Strollers, Cribs & More',
     };
   }
   
   // Use database SEO data if available, otherwise generate
-  const seoTitle = pageData.seo_title || `Baby Equipment Rentals in ${destinationName} | TopTours.ai`;
+  const seoTitle = pageData.seo_title || `Baby Equipment Rentals in ${destinationName} – Strollers, Cribs & More`;
   const seoDescription = pageData.seo_description || `Skip the hassle of packing bulky gear. Rent strollers, car seats, cribs, and everything you need for your little one in ${destinationName}. Delivered to your hotel or vacation rental.`;
   const seoKeywords = pageData.seo_keywords?.join(', ') || `baby equipment rental ${destinationName}, baby gear rental ${destinationName}, stroller rental ${destinationName}, car seat rental ${destinationName}, crib rental ${destinationName}, baby equipment ${destinationName}`;
 

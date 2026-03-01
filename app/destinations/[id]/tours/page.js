@@ -180,7 +180,7 @@ export async function generateMetadata({ params }) {
   
   if (!destination) {
     return {
-      title: 'Tours Not Found | TopTours.ai',
+      title: 'Tours Not Found',
       robots: {
         index: false,
         follow: false,

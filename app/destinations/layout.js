@@ -1,9 +1,9 @@
 export const metadata = {
-  title: 'Discover Top Travel Destinations Worldwide | TopTours.ai',
+  title: 'Discover Top Travel Destinations Worldwide – Find Tours & Activities',
   description: 'Explore 175+ amazing travel destinations across the globe with AI-powered tour recommendations. From Caribbean beaches to European cities, find your perfect adventure with expert guides and curated activities.',
   keywords: 'travel destinations, vacation spots, places to visit, travel guide, tours, activities, Caribbean destinations, Europe travel, Asia travel, adventure travel',
   openGraph: {
-    title: 'Discover Top Travel Destinations Worldwide | TopTours.ai',
+    title: 'Discover Top Travel Destinations Worldwide – Find Tours & Activities',
     description: 'Explore 175+ amazing travel destinations across the globe with AI-powered tour recommendations. From Caribbean beaches to European cities, find your perfect adventure.',
     url: 'https://toptours.ai/destinations',
     siteName: 'TopTours.ai',
@@ -20,7 +20,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Discover Top Travel Destinations Worldwide | TopTours.ai',
+    title: 'Discover Top Travel Destinations Worldwide – Find Tours & Activities',
     description: 'Explore 175+ amazing travel destinations with AI-powered tour recommendations. Find your perfect adventure today!',
     images: ['https://toptours.ai/OG%20Images/discover%20tours%20guides%20and%20restaurants%20in%20over%203500%20destinations.jpg'],
   },

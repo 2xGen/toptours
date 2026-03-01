@@ -4,7 +4,7 @@ export async function generateMetadata() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://toptours.ai';
   
   return {
-    title: 'Best Tours & Activities by Destination | TopTours.ai',
+    title: 'Best Tours & Activities by Destination – Compare & Book',
     description: 'Discover top-rated tours, excursions, and activities in popular travel destinations. Browse tours by location and find the perfect adventure for your trip.',
     alternates: {
       canonical: `${baseUrl}/tours`,

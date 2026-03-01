@@ -70,7 +70,7 @@ export async function generateMetadata({ params }) {
   
   if (!destination) {
     return {
-      title: 'Travel Guides Not Found | TopTours.ai',
+      title: 'Travel Guides Not Found',
       robots: {
         index: false,
         follow: false,
@@ -83,7 +83,7 @@ export async function generateMetadata({ params }) {
   const destinationName = destination.fullName || destination.name;
 
   return {
-    title: `${destinationName} Travel Guides - Complete Destination Guide | TopTours.ai`,
+    title: `${destinationName} Travel Guides – Plan Your Trip · Tours & Tips`,
     description: `Explore comprehensive travel guides for ${destinationName}. Discover the best tours, activities, and excursions plus insider tips to plan your perfect trip.`,
     keywords: `${destinationName} travel guides, ${destinationName} guides, ${destinationName} travel tips, ${destinationName} vacation guide, ${destinationName} travel information, ${destinationName} travel planning`,
     openGraph: {

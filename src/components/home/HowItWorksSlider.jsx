@@ -56,7 +56,7 @@ const steps = [
     iconColor: 'text-green-500',
     bgGradient: 'from-green-50 to-emerald-50',
     borderColor: 'border-green-200',
-    details: ['3300+ destinations', '300,000+ tours', '19,000+ travel guides']
+    details: ['3300+ destinations', '300,000+ tours', '38,000+ travel guides']
   }
 ];
 

@@ -185,6 +185,37 @@ export default async function sitemap() {
     console.warn('Failed to fetch category guides for sitemap:', error.message);
   }
 
+  // Tag guide pages (on-demand generated, content in tag_guide_content)
+  const tagGuidePages = [];
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+    let from = 0;
+    const pageSize = 1000;
+    let hasMore = true;
+    while (hasMore) {
+      const { data: tagGuides, error: tagError } = await supabase
+        .from('tag_guide_content')
+        .select('destination_id, tag_slug')
+        .order('destination_id', { ascending: true })
+        .range(from, from + pageSize - 1);
+      if (tagError || !Array.isArray(tagGuides)) break;
+      tagGuides.forEach((row) => {
+        if (row.destination_id && row.tag_slug) {
+          tagGuidePages.push({
+            url: `${baseUrl}/destinations/${row.destination_id}/guides/${row.tag_slug}`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.7,
+          });
+        }
+      });
+      hasMore = tagGuides.length === pageSize;
+      from += pageSize;
+    }
+  } catch (error) {
+    console.warn('Failed to fetch tag_guide_content for sitemap:', error.message);
+  }
+
   // Destination guides listing pages: /destinations/[id]/guides (26 Jan 2026)
   const guidesListingPages = allDestinationIds.map((id) => ({
     url: `${baseUrl}/destinations/${id}/guides`,
@@ -227,6 +258,7 @@ export default async function sitemap() {
     ...guidesListingPages, // /destinations/[id]/guides (26 Jan 2026)
     ...carRentalPages, // /destinations/[id]/car-rentals (26 Jan 2026)
     ...categoryGuidePages, // Category guide pages (destination-specific guides)
+    ...tagGuidePages, // Tag guide pages (tag_guide_content – on-demand generated)
     ...airportTransferPages, // /destinations/[id]/guides/airport-transfers not in DB (26 Jan 2026)
     // Note: Individual tour pages are in sitemap-tours-[index].xml files
     // See app/sitemap-tours-[index]/route.js for dynamic tour sitemap generation

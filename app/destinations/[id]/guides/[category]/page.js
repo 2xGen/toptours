@@ -279,7 +279,7 @@ export async function generateMetadata({ params }) {
           subtitle: `Discover ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate this guide with AI to get tips, what to expect, and FAQs.`,
           categoryName: tag.tag_name_en,
           seo: {
-            title: `${tag.tag_name_en} in ${destName} | TopTours.ai`,
+            title: `${tag.tag_name_en} in ${destName}`,
             description: `Guide to ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate the full guide with AI.`,
             keywords: '',
           },
@@ -308,14 +308,14 @@ export async function generateMetadata({ params }) {
     const seo = guideData.seo || {};
     const destName = destination.fullName || destination.name || '';
     const categoryName = guideData.categoryName || guideData.title || 'Tours';
-    const bookingTitle = destName && categoryName ? `Best ${destName} ${categoryName} | TopTours.ai` : null;
+    const bookingTitle = destName && categoryName ? `Best ${destName} ${categoryName}` : null;
 
     return {
-      title: seo.title || guideData.title || bookingTitle || 'Guide | TopTours.ai',
+      title: seo.title || guideData.title || bookingTitle || 'Guide',
       description: seo.description || guideData.subtitle,
       keywords: seo.keywords || '',
       openGraph: {
-        title: seo.title || guideData.title || bookingTitle || 'Guide | TopTours.ai',
+        title: seo.title || guideData.title || bookingTitle || 'Guide',
         description: seo.description || guideData.subtitle,
         url: `https://toptours.ai/destinations/${destinationId}/guides/${categorySlug}`,
         images: [
@@ -332,7 +332,7 @@ export async function generateMetadata({ params }) {
       },
       twitter: {
         card: 'summary_large_image',
-        title: seo.title || guideData.title || bookingTitle || 'Guide | TopTours.ai',
+        title: seo.title || guideData.title || bookingTitle || 'Guide',
         description: seo.description || guideData.subtitle,
         images: [ogImage],
       },
@@ -478,7 +478,7 @@ export default async function CategoryGuidePage({ params }) {
             categoryName: tag.tag_name_en,
             isPlaceholder: true,
             introduction: '',
-            seo: { title: `${tag.tag_name_en} in ${destName} | TopTours.ai`, description: `Guide to ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate the full guide with AI.`, keywords: '' },
+            seo: { title: `${tag.tag_name_en} in ${destName}`, description: `Guide to ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate the full guide with AI.`, keywords: '' },
             whyChoose: [],
             faqs: [],
             tourTypes: [],

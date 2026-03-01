@@ -29,7 +29,11 @@ export default function robots() {
         ],
       },
     ],
-    sitemap: 'https://toptours.ai/sitemap.xml',
+    // Main sitemap + tour sitemap index (also submitted in GSC; here for crawler discovery)
+    sitemap: [
+      'https://toptours.ai/sitemap.xml',
+      'https://toptours.ai/sitemap-tours',
+    ],
   };
 }
 
