@@ -233,9 +233,9 @@ export default function RestaurantsHubClient({
                                 className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-10 text-sm font-semibold"
                               >
                                 <Link
-                                  href={`/destinations/${destination.id}/restaurants`}
+                                  href={`/destinations/${destination.id}`}
                                 >
-                                  View Restaurants
+                                  Explore {destination.name}
                                   <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
                               </Button>

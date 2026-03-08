@@ -101,7 +101,7 @@ export const restaurantsNassau = {
         title: 'Beach Gear Must-Haves',
         description:
           'Treat yourself to guava duff, then gear up for Junkanoo Beach with our curated packing list—reef-safe sunscreen, beach totes, and waterproof cases made for Nassau days.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'See the beach gear list',
@@ -261,7 +261,7 @@ export const restaurantsNassau = {
         title: 'Beach Gear Must-Haves',
         description:
           'Headed from the harbour to the sand? Browse our Nassau-ready beach gear picks—cooler bags, quick-dry towels, and SPF essentials for island outings.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'See the beach gear list',
@@ -417,7 +417,7 @@ export const restaurantsNassau = {
         title: 'Beach Gear Must-Haves',
         description:
           'Enjoy your meal with reusable utensils or properly dispose of plastics—help keep Arawak Cay lively for the next generation.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -575,7 +575,7 @@ export const restaurantsNassau = {
         title: 'Beach Gear Must-Haves',
         description:
           'Takeout containers and plastics should be disposed of properly—Arawak Cay’s turtles and manatees thank you.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -733,7 +733,7 @@ export const restaurantsNassau = {
         title: 'Beach Gear Must-Haves',
         description:
           'Walk the short distance from downtown or rideshare to reduce traffic along East Bay Street, and recycle bottles to keep the marina pristine.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -892,7 +892,7 @@ export const restaurantsNassau = {
         title: 'Support Local Producers',
         description:
           'Acropolis sources local produce and seafood when possible—do your part by bringing reusable bags for bakery treats and recycling drink containers.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',

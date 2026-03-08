@@ -105,11 +105,9 @@ export async function generateMetadata({ params }) {
   const defaultOgImage = 'https://toptours.ai/OG%20Images/TopTours%20Destinations.jpg';
   const ogImage = destination.imageUrl || defaultOgImage;
   
-  // OG title: shareable in FB/WhatsApp/groups. SEO title: use destination.seo.title when set (Tier 1 / high-intent), else template.
+  // One title template for all destinations (consistent SEO; description still uses seo when set)
   const ogTitle = `Explore ${destination.fullName} – Things to Do, Tours, Guides & Travel Tips`;
-  const seoPageTitle = destination.seo?.title
-    ? destination.seo.title
-    : `Things to Do in ${destination.fullName} – Tours, Guides & Travel Tips`;
+  const seoPageTitle = `Things to Do in ${destination.fullName} – Tours, Guides & Travel Tips`;
 
   return {
     title: seoPageTitle,

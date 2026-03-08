@@ -12,6 +12,8 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // SEO: one canonical URL per page (avoids "Duplicate without user-selected canonical")
+  trailingSlash: false,
   images: {
     // Note: Supabase storage URLs may not work with Next.js optimization
     // If images are from Supabase storage, keep unoptimized: true

@@ -105,7 +105,7 @@ export const restaurantsPuntaCana = {
         title: 'Keep Punta Cana’s Reefs Pristine',
         description:
           'Before you hit the beach, pack reef-safe sunscreen and reusable bottles so the coral gardens outside Puntacana Resort stay vibrant.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -279,7 +279,7 @@ export const restaurantsPuntaCana = {
         title: 'Enjoy Punta Cana Responsibly',
         description:
           'Pack reef-safe sunscreen and reusable bottles when exploring Punta Cana—every mindful choice helps protect the coast.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -437,7 +437,7 @@ export const restaurantsPuntaCana = {
         title: 'Keep Bávaro Beach Beautiful',
         description:
           'Pack reef-safe sunscreen and reusable bottles before your beachside meal—small choices help protect Bávaro’s palm-fringed shoreline.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -613,7 +613,7 @@ export const restaurantsPuntaCana = {
         title: 'Explore Punta Cana Responsibly',
         description:
           'Carry reef-safe sunscreen and reusable bottles as you hop between beach days and nightlife—small habits keep Punta Cana vibrant.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -774,7 +774,7 @@ export const restaurantsPuntaCana = {
         title: 'Protect Cabeza de Toro’s Coast',
         description:
           'Pack reef-safe sunscreen and reusable bottles so the lagoon-like waters of Cabeza de Toro stay crystal clear for future pool-and-beach days.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -932,7 +932,7 @@ export const restaurantsPuntaCana = {
         title: 'Respect Bávaro’s Coastal Waters',
         description:
           'Arrive prepared with reef-safe sunscreen and reusable bottles before strolling the shore—it keeps Bávaro’s waters pristine for future explorers.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',

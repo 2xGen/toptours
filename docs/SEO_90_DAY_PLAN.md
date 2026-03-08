@@ -193,4 +193,121 @@ Use this as a checklist for the NYC destination page (and later for other Tier 1
 
 ---
 
+---
+
+## 6. Title templates: current vs suggested, and “| TopTours.ai”
+
+### 6.1 Current state (codebase)
+
+| Page type | Current title (what you set) | Layout adds | Final in HTML |
+|-----------|-----------------------------|-------------|----------------|
+| **Destination** | `Things to Do in {Name} – Tours, Guides & Travel Tips` (one template for all) | ` \| TopTours.ai™` | Good, keyword-rich. |
+| **Tour** | `{Tour title} in {Destination} \| Reviews, Price & Booking` (from `buildEnhancedTitle`) | ` \| TopTours.ai™` | Good; includes destination + intent. |
+| **Guide (category)** | `seo.title` or `guideData.title` or `Best {Dest} {Category}` or `Guide` | ` \| TopTours.ai™` | Fallback “Guide” is weak. |
+| **Travel guide (blog)** | Was `{Guide title} \| TopTours.ai` → **fixed** to `{Guide title}` | ` \| TopTours.ai™` | No duplicate brand. |
+
+So: **destinations and tours are already in good shape.** Only guide fallback could be stronger (e.g. `{Guide title} \| {Destination} Guide` when no `seo.title`).
+
+### 6.2 Do we need “| TopTours.ai” in every title? Is it dead space?
+
+- **What it does:** The root layout uses `template: '%s | TopTours.ai™'`, so every page gets the brand at the end. That helps **recognition and trust** in SERPs (users see it’s you).
+- **“Dead space”?** Google often shows only the first **~50–60 characters**. So for long titles (e.g. tour titles), the part that gets cut is usually the end — i.e. the brand. So the “visible” part is already the keyword-rich bit; the brand isn’t eating into what users see for long titles.
+- **Recommendation:** **Keep the brand suffix.** Use a short one so it doesn’t push the limit: e.g. ` \| TopTours.ai` (or keep ` \| TopTours.ai™`). You can shorten to ` \| TopTours` to free a few characters if you want, but it’s optional. Don’t remove it entirely on inner pages; a consistent brand in the title is still useful when the title is short enough to show it.
+
+### 6.3 Optional tweaks (only if you want to align with the “one size fits all” wording)
+
+- **Destination:** Current “Things to Do in {Name} – Tours, Guides & Travel Tips” is strong. Optional: “{Name} Tours & Things to Do” if you prefer destination-first; not required.
+- **Tour:** Already “{Tour} in {Destination} | Reviews, Price & Booking” — no change needed.
+- **Guides (category):** When there’s no `seo.title`, use a fallback like “{Guide title} | {Destination} Guide” instead of “Guide” so the title is always descriptive.
+
+---
+
+## 7. Click drop and restaurant removal (Mar 2026)
+
+### 7.1 Did removing restaurants cause the drop?
+
+**Very likely, in part.** You had ~10k restaurant pages + restaurant hubs removed (301 to destination or /destinations). Before removal, many impressions and clicks could have come from:
+
+- Queries like “best restaurants [destination]”, “[city] restaurants”, “restaurants in Aruba”.
+- Those URLs had their own SERP real estate. After 301s, Google consolidates to the destination URL, but:
+  - You no longer have a dedicated “restaurants” result, so you can lose the click for that intent.
+  - Destination pages may not rank as well for “restaurants” as the old restaurant pages did.
+  - Overall impressions can drop as Google drops the old URLs from the index and replaces them with the destination.
+
+So a drop from ~50 to ~17 daily clicks over a few months is consistent with losing that long tail of restaurant traffic. It’s not the only possible factor (seasonality, competition, algorithm), but it’s a plausible and important one.
+
+### 7.2 What’s already in place
+
+- **301 redirects:** `/restaurants` → `/destinations`; `/destinations/:id/restaurants` and `/destinations/:id/restaurants/:path*` → `/destinations/:id`. Equity is passed to the destination; no 404s.
+- **Internal link fix:** The restaurants hub “View Restaurants” CTA now links directly to `/destinations/[id]` with “Explore [destination]” so we don’t point to a redirect with a misleading label.
+
+### 7.3 What to do next (recovery and optimization)
+
+| Priority | Action |
+|----------|--------|
+| **1. GSC data** | Export **Pages** and **Queries** (last 90 days). See which **pages** still get impressions/clicks and which **queries** they rank for. That shows what’s left after the restaurant drop and where to double down. |
+| **2. Tier 1 destinations** | Pick 10–20 priority destinations (e.g. NYC, Paris, Barcelona, London) from GSC + commercial value. Give them stronger titles/meta and more internal links from homepage and /destinations (see 3.2, 3.7). |
+| **3. Titles and meta** | Use GSC Queries: find queries with decent impressions but CTR &lt; ~2% or position 5–15. Improve **title** and **meta description** for those pages (see 3.5). |
+| **4. Internal linking** | On Tier 1 destination pages, add a short “Popular guides” block (6–8 links to key guides) and trim long lists of other destinations/guides so most links stay same-destination (see 3.7). |
+| **5. No new pruning** | Don’t remove or noindex more sections. Grow traffic from tours, destinations, and guides instead. |
+
+### 7.4 Realistic expectations
+
+- Restaurant traffic is unlikely to “come back” as restaurant traffic; the 301s correctly pass equity to destinations, but the specific “restaurant” SERP role is gone.
+- Recovery should come from: **better visibility for destination and tour pages** (titles, meta, internal links, Tier 1 focus) and **guides** getting indexed and ranking. The 90-day plan (sections 3–5) is the right roadmap for that.
+
+---
+
+## 8. Forecast: next 90 days, 6 months, 12 months (based on past 90 days)
+
+**What the past 90 days showed:**  
+- **Dec 7–16:** ~42 clicks/day, ~9.5k impressions/day, position ~23.  
+- **Dec 17 – early Jan:** Drop to ~30 clicks, ~5.5k impressions (likely start of restaurant removal impact).  
+- **Jan 3–6:** Short spike (52–64 clicks, position 15–17).  
+- **Jan 19 – Feb 3:** Impressions rose to 8k–21k but position worsened (25–30), CTR ~0.3–0.5%.  
+- **Feb 4 – Mar 6:** Gradual decline; **recent baseline ~20–27 clicks/day, ~5.5k–7k impressions**, position 16–25.
+
+So the **current baseline** (post–restaurant removal, before new titles fully re-indexed) is roughly **~22 clicks/day, ~6k impressions/day, position ~22**.
+
+### 8.1 Next 90 days (Mar – May 2026)
+
+| Scenario | Clicks/day (approx) | Impressions/day (approx) | Notes |
+|----------|---------------------|---------------------------|--------|
+| **Baseline** | 18–25 | 5k–7k | No major change; new titles still rolling out, minimal extra action. |
+| **Recovery** | 28–38 | 7k–10k | New destination/tour titles and meta get re-indexed; CTR improves a bit on key queries. |
+| **Upside** | 35–50 | 9k–14k | Re-indexing + you do GSC-driven title/description tweaks and Tier 1 internal linking. |
+
+**Realistic for next 90 days:** **25–35 clicks/day, 6k–9k impressions/day.** Small improvement as Google recrawls and shows updated titles; no big jump unless you actively optimise from GSC data.
+
+### 8.2 Next 6 months (by Aug 2026)
+
+| Scenario | Clicks/day (approx) | Impressions/day (approx) | Notes |
+|----------|---------------------|---------------------------|--------|
+| **Baseline** | 22–30 | 6k–8k | Stable; no new pruning, no big content/SEO push. |
+| **Recovery** | 35–50 | 9k–14k | Titles/meta and internal linking pay off; more “[destination] tours” visibility. |
+| **Upside** | 45–65 | 12k–18k | Consistent optimisation (titles, descriptions, Tier 1 links, guides); some seasonality (summer travel). |
+
+**Realistic for 6 months:** **35–50 clicks/day, 9k–14k impressions/day.** Assumes you do the planned title/meta and internal-linking work; 6 months is enough for re-indexing and some ranking/CTR gains.
+
+### 8.3 Next 12 months (by Mar 2027)
+
+Your **best recent month** (late Jan – early Feb 2026) was **~50–77 clicks/day** and **~13k–21k impressions/day**. The 12‑month target is to **at least match that** and ideally grow past it.
+
+| Scenario | Clicks/day (approx) | Impressions/day (approx) | Notes |
+|----------|---------------------|---------------------------|--------|
+| **Baseline** | 30–45 | 8k–12k | Slow recovery; no major SEO push. |
+| **Recovery** | 55–80 | 14k–20k | Back to or above your Feb 2026 peak; titles/meta and internal linking pay off. |
+| **Upside** | 70–100+ | 18k–25k+ | Sustained SEO + content; seasonal peaks; clear growth above previous peak. |
+
+**Realistic for 12 months:** **55–85 clicks/day, 14k–20k impressions/day** — i.e. **match or exceed your last strong month**. **70–100+ clicks/day** is possible with consistent optimisation and no further big removals.
+
+### 8.4 What drives the range
+
+- **Downside:** No action on GSC data; new titles take a long time to re-index; more competition; no new content.
+- **Upside:** Re-indexing of new titles; GSC-based title/description improvements; Tier 1 internal linking; guides indexing; seasonal demand; no further big removals (like restaurants).
+
+**Summary:** Use **~22 clicks / ~6k impressions** as today’s baseline. Expect **next 90 days** in the **25–35 clicks / 6k–9k impressions** range and **6 months** in **35–50 clicks / 9k–14k impressions**. By **12 months**, the aim is to **match or beat your best recent month** (50–77 clicks, 13k–21k impressions): **55–85 clicks/day, 14k–20k impressions/day** with consistent execution, and **70–100+** if you push SEO and content.
+
+---
+
 *Doc generated as SEO plan; no code changes in this file. Implement technical parts (robots, sitemap, optional noindex) in codebase as needed.*

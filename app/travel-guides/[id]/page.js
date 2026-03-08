@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `${guide.title} | TopTours.ai`,
+    title: guide.title,
     description: guide.excerpt,
     keywords: guide.tags.join(', '),
     openGraph: {

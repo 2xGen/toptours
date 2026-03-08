@@ -104,7 +104,7 @@ export const restaurantsCuracao = {
         title: 'Protecting Curaçao’s Reefs',
         description:
           'Do your part to keep Curaçao’s reefs vibrant—pack reef-safe sunscreen and low-waste beach essentials before you hit the water.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -259,7 +259,7 @@ export const restaurantsCuracao = {
         title: 'Protecting Curaçao’s Coast',
         description:
           'Help keep Caracas Bay sparkling by choosing reef-safe sunscreen and reusable beach gear for your seaside meals.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -401,7 +401,7 @@ export const restaurantsCuracao = {
         title: 'Respect for Piscadera’s Waters',
         description:
           'Plan ahead with reef-safe sunscreen and reusable containers so Piscadera’s calm waters stay pristine for fishermen and foodies alike.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -541,7 +541,7 @@ export const restaurantsCuracao = {
         title: 'Supporting Downtown Curaçao',
         description:
           'Pack reef-safe sunscreen and reusable totes to wander Punda’s streets while keeping Curaçao’s reefs healthy.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -693,7 +693,7 @@ export const restaurantsCuracao = {
         title: 'Historic Waterfront Stewardship',
         description:
           'Keep the Handelskade dazzling—choose reef-safe sunscreen and low-waste beach kits before strolling the waterfront.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -844,7 +844,7 @@ export const restaurantsCuracao = {
         title: 'Beach-Friendly Practices',
         description:
           'Heading to Jan Thiel? Protect the lagoon with reef-safe sunscreen and reusable bottles so the beach stays vibrant.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',

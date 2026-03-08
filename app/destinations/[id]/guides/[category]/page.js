@@ -269,26 +269,34 @@ export async function generateMetadata({ params }) {
       };
     }
     
-    // Same as page: tag-based placeholder guides (e.g. spring-break, dsa-non-compliant) so metadata matches
+    // Same as page: tag-based placeholder guides (e.g. spring-break, dsa-non-compliant)
+    // For metadata: if it's a placeholder (tag exists but no content), we signal noindex so crawlers don't index; page will 404
+    let isPlaceholderInMetadata = false;
     if (!guideData && destination && categorySlug !== 'airport-transfers') {
       const tag = await getTagBySlug(categorySlug);
       if (tag) {
-        const destName = destination.fullName || destination.name || destinationId;
-        guideData = {
-          title: `${tag.tag_name_en} in ${destName}`,
-          subtitle: `Discover ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate this guide with AI to get tips, what to expect, and FAQs.`,
-          categoryName: tag.tag_name_en,
-          seo: {
+        const content = await getTagGuideContent(normalizeSlug(destinationId), categorySlug);
+        if (content) {
+          guideData = contentToGuideData(content, destination?.fullName || destination?.name || destinationId, destination?.imageUrl);
+        } else {
+          const destName = destination.fullName || destination.name || destinationId;
+          guideData = {
             title: `${tag.tag_name_en} in ${destName}`,
-            description: `Guide to ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate the full guide with AI.`,
-            keywords: '',
-          },
-        };
+            subtitle: `Discover ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate this guide with AI to get tips, what to expect, and FAQs.`,
+            categoryName: tag.tag_name_en,
+            seo: {
+              title: `${tag.tag_name_en} in ${destName}`,
+              description: `Guide to ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate the full guide with AI.`,
+              keywords: '',
+            },
+          };
+          isPlaceholderInMetadata = true;
+        }
       }
     }
     
-    // Only noindex when page would 404 (no content to show)
-    if (!destination || !guideData) {
+    // Only noindex when page would 404 (no content to show), or when placeholder (page 404s for SEO)
+    if (!destination || !guideData || isPlaceholderInMetadata) {
       return {
         title: 'Guide Not Found',
         robots: {
@@ -562,6 +570,11 @@ export default async function CategoryGuidePage({ params }) {
       console.log(`✅ [SERVER] Created default airport transfers guide for ${destinationId}`);
     }
     
+    // SEO: 404 placeholder guides (no real content) so they don't inflate "Excluded by noindex" in GSC
+    if (guideData?.isPlaceholder === true) {
+      notFound();
+    }
+    
     // Final check
     if (!destination || !guideData) {
       console.error(`❌ Cannot render page: destination=${!!destination}, guideData=${!!guideData}`);
@@ -614,7 +627,20 @@ export default async function CategoryGuidePage({ params }) {
   const schemaImage = categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : (guideData.heroImage || destination.imageUrl);
   const pageUrl = `https://toptours.ai/destinations/${destinationId}/guides/${categorySlug}`;
 
-  // JSON-LD Schema for SEO: WebPage, Article, FAQPage, BreadcrumbList, TouristAttraction, ItemList(s)
+  // JSON-LD Schema for SEO: WebPage, Article, FAQPage (only when we have FAQs), BreadcrumbList, TouristAttraction, ItemList(s)
+  // Google requires FAQPage mainEntity to be a non-empty array; omit FAQPage when there are no FAQs to avoid GSC errors
+  const faqMainEntity = (guideData.faqs || [])
+    .filter(faq => faq && (faq.question || faq.name) && (faq.answer || faq.text))
+    .map(faq => ({
+      '@type': 'Question',
+      name: typeof (faq.question ?? faq.name) === 'string' ? (faq.question ?? faq.name) : '',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: typeof (faq.answer ?? faq.text) === 'string' ? (faq.answer ?? faq.text) : '',
+      },
+    }))
+    .filter(q => q.name && q.acceptedAnswer?.text);
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -653,17 +679,11 @@ export default async function CategoryGuidePage({ params }) {
         datePublished: '2025-12-31',
         dateModified: '2025-12-31',
       },
-      {
+      // Only include FAQPage when mainEntity has at least one valid Question (required for valid FAQ rich results)
+      ...(faqMainEntity.length > 0 ? [{
         '@type': 'FAQPage',
-        mainEntity: (guideData.faqs || []).map(faq => ({
-          '@type': 'Question',
-          name: faq.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: faq.answer,
-          },
-        })),
-      },
+        mainEntity: faqMainEntity,
+      }] : []),
       {
         '@type': 'BreadcrumbList',
         itemListElement: [

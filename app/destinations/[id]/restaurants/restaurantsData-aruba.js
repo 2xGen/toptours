@@ -103,7 +103,7 @@ export const restaurantsAruba = {
         title: 'Protect Aruba’s Reefs',
         description:
           'Help keep Palm Beach pristine—pack reef-safe sunscreen and reusable beach gear before your sunset dinner.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -280,7 +280,7 @@ export const restaurantsAruba = {
         title: 'Keep Eagle Beach Pristine',
         description:
           'Choose reef-safe sunscreen and low-waste beach essentials so Eagle Beach stays postcard-perfect.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -456,7 +456,7 @@ export const restaurantsAruba = {
         title: 'Care for Savaneta’s Shoreline',
         description:
           'Pack reef-safe sunscreen and reusable bottles to protect Savaneta’s calm bay for future diners.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -630,7 +630,7 @@ export const restaurantsAruba = {
         title: 'Care for Savaneta’s Shore',
         description:
           'Pack reef-safe sunscreen and reusable containers so Savaneta’s working pier stays clean for the next boatload of fresh catch.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -803,7 +803,7 @@ export const restaurantsAruba = {
         title: 'Enjoy Palm Beach Responsibly',
         description:
           'Bring reef-safe sunscreen and reusable water bottles when you explore Palm Beach before dinner—every mindful traveler helps keep Aruba’s shorelines stunning.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',
@@ -976,7 +976,7 @@ export const restaurantsAruba = {
         title: 'Support Aruba’s Reefs',
         description:
           'Bring reef-safe sunscreen and reusable bottles when you explore Palm Beach before dinner—small habits keep Aruba’s reefs thriving for future catches.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'Read the guide',

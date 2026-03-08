@@ -102,7 +102,7 @@ export const restaurantsJamaica = {
         title: 'Beach Gear Must-Haves',
         description:
           'Packing for Negril? Browse our curated beach gear checklist—reef-safe sunscreen, quick-dry towels, and snorkel-friendly accessories made for Pristine Cove days.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'See the beach gear list',
@@ -262,7 +262,7 @@ export const restaurantsJamaica = {
         title: 'Beach Gear Must-Haves',
         description:
           'Before you jet to Kingston’s beaches, shop our Caribbean packing list—sun hats, waterproof bags, and SPF essentials hand-picked for the islands.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'See the beach gear list',
@@ -418,7 +418,7 @@ export const restaurantsJamaica = {
         title: 'Beach Gear Must-Haves',
         description:
           'Heading out after your sweet treats? Grab our Caribbean beach gear checklist for totes, coolers, and SPF musts to keep you sunny-day ready.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'See the beach gear list',
@@ -576,7 +576,7 @@ export const restaurantsJamaica = {
         title: 'Beach Gear Must-Haves',
         description:
           'Pair your Kingston dinner plans with our beach essentials guide—cooler bags, UV shirts, and travel-ready gear for island adventures.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'See the beach gear list',
@@ -734,7 +734,7 @@ export const restaurantsJamaica = {
         title: 'Beach Gear Must-Haves',
         description:
           'Planning an Ocho Rios beach day? Check our hand-picked gear guide for waterproof bags, reef-safe sunscreen, and tropical-ready attire.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'See the beach gear list',
@@ -890,7 +890,7 @@ export const restaurantsJamaica = {
         title: 'Beach Gear Must-Haves',
         description:
           'Road-tripping south? Check our Jamaica beach gear guide for sun tents, insulated drinkware, and sandals made for Alligator Pond’s shoreline.',
-        guideUrl: 'https://www.toptours.ai/travel-guides/beach-vacation-packing-list',
+        guideUrl: 'https://toptours.ai/travel-guides/beach-vacation-packing-list',
         guideImage:
           'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/must-haves//beach%20gear.webp',
         guideCta: 'See the beach gear list',
