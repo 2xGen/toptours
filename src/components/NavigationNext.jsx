@@ -3,19 +3,29 @@ import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Menu, X, UserCircle2 } from 'lucide-react';
+import { Menu, X, UserCircle2, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 
 // Define navItems outside component to prevent hydration mismatches
+// Items with children show a dropdown (desktop: hover, mobile: tap to expand)
 const navItems = [
   { name: 'Home', path: '/' },
+  {
+    name: 'Explore',
+    path: '/explore/new-york-city',
+    children: [
+      { name: 'New York City', path: '/explore/new-york-city' },
+    ],
+  },
   { name: 'Destinations', path: '/destinations' },
   { name: 'Tours', path: '/tours' },
 ];
 
 const NavigationNext = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [exploreOpen, setExploreOpen] = useState(false);
+  const [exploreHover, setExploreHover] = useState(false);
   const [user, setUser] = useState(null);
   const [displayName, setDisplayName] = useState('');
   const [authLoading, setAuthLoading] = useState(true);
@@ -90,6 +100,7 @@ const NavigationNext = () => {
   // Close menu when pathname changes (navigation occurred)
   useEffect(() => {
     setIsOpen(false);
+    setExploreOpen(false);
   }, [pathname]);
 
   // Close menu when clicking outside
@@ -121,9 +132,51 @@ const NavigationNext = () => {
 
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => {
-              const isActive = item.path === '/' 
-                ? pathname === '/' 
+              const hasDropdown = item.children?.length > 0;
+              const isActive = item.path === '/'
+                ? pathname === '/'
                 : pathname.startsWith(item.path);
+              const isExploreActive = hasDropdown && item.children.some((c) => pathname.startsWith(c.path));
+
+              if (hasDropdown) {
+                return (
+                  <div
+                    key={item.name}
+                    className="relative"
+                    onMouseEnter={() => setExploreHover(true)}
+                    onMouseLeave={() => setExploreHover(false)}
+                  >
+                    <Link
+                      href={item.path}
+                      prefetch={true}
+                      className={`flex items-center gap-0.5 text-white hover:text-blue-200 transition-colors ${
+                        isExploreActive ? 'font-semibold text-blue-100' : ''
+                      }`}
+                    >
+                      {item.name}
+                      <ChevronDown className={`h-4 w-4 transition-transform ${exploreHover ? 'rotate-180' : ''}`} />
+                    </Link>
+                    {exploreHover && (
+                      <div className="absolute top-full left-0 pt-1">
+                        <div className="bg-slate-900/95 backdrop-blur-lg rounded-lg shadow-xl border border-white/10 min-w-[180px] py-1">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.path}
+                              href={child.path}
+                              prefetch={true}
+                              className={`block px-4 py-2 text-white hover:bg-white/10 hover:text-blue-200 transition-colors ${
+                                pathname.startsWith(child.path) ? 'bg-white/10 text-blue-100 font-medium' : ''
+                              }`}
+                            >
+                              {child.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
               return (
                 <Link
                   key={item.name}
@@ -187,9 +240,46 @@ const NavigationNext = () => {
             className="md:hidden bg-slate-900/80 backdrop-blur-lg rounded-lg mt-2 p-4"
           >
             {navItems.map((item) => {
-              const isActive = item.path === '/' 
-                ? pathname === '/' 
+              const hasDropdown = item.children?.length > 0;
+              const isActive = item.path === '/'
+                ? pathname === '/'
                 : pathname.startsWith(item.path);
+              const isExploreExpanded = hasDropdown && exploreOpen;
+              const isExploreActive = hasDropdown && item.children.some((c) => pathname.startsWith(c.path));
+
+              if (hasDropdown) {
+                return (
+                  <div key={item.name} className="py-1">
+                    <button
+                      type="button"
+                      onClick={() => setExploreOpen(!exploreOpen)}
+                      className={`flex items-center justify-between w-full py-2 text-left text-white hover:text-yellow-300 transition-colors duration-200 ${
+                        isExploreActive ? 'text-yellow-300 font-semibold' : ''
+                      }`}
+                    >
+                      {item.name}
+                      <ChevronDown className={`h-4 w-4 transition-transform ${isExploreExpanded ? 'rotate-180' : ''}`} />
+                    </button>
+                    {isExploreExpanded && (
+                      <div className="pl-3 pb-1">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.path}
+                            href={child.path}
+                            prefetch={true}
+                            className={`block py-2 text-white/90 hover:text-yellow-300 transition-colors ${
+                              pathname.startsWith(child.path) ? 'text-yellow-300 font-semibold' : ''
+                            }`}
+                            onClick={() => { setIsOpen(false); setExploreOpen(false); }}
+                          >
+                            {child.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
               return (
                 <Link
                   key={item.name}

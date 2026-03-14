@@ -22,6 +22,9 @@
     "classify-destinations": "node scripts/classify-viator-destinations.js",
     "classify-destinations-openai": "node scripts/classify-viator-destinations.js --openai",
     "update-tour-images": "node scripts/update-hardcoded-tour-images.js",
+    "generate-explore-tour-seo": "node scripts/generate-explore-tour-seo-gemini.js",
+    "ingest-viator-products-v3": "node scripts/ingest-viator-products-v3.js",
+    "refresh-explore-tour-prices-v3": "node scripts/refresh-explore-tour-prices-v3.js",
     "vite-dev": "vite",
     "vite-build": "node scripts/build.js",
     "vite-preview": "vite preview"
