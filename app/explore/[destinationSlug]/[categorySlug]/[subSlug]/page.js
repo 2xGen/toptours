@@ -11,6 +11,7 @@ import {
   getV3ViatorProductSummaries,
 } from '@/lib/v3LandingData';
 import { getExploreSubcategory, getExploreCategoryContent } from '@/data/exploreCategoryContent';
+import { fetchProductsBulk } from '@/lib/viatorBulk';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import ExploreSubcategoryClient from './ExploreSubcategoryClient';
@@ -189,28 +190,42 @@ export default async function ExploreSubcategoryPage({ params }) {
     .filter((s) => s.slug !== subSlug)
     .map((s) => ({ slug: s.slug, title: s.title }));
 
-  // Enrich subcategory tours with image/price/rating from bulk API when available
+  // Enrich subcategory tours: first viator_products (works in prod), then live API if enabled
   let tours = sub.tours || [];
-  if (tours.length > 0) {
+  const subTourCodes = tours.map((t) => t.productId).filter(Boolean);
+  if (subTourCodes.length > 0) {
     try {
-      const codes = tours.map((t) => t.productId).filter(Boolean);
-      if (codes.length > 0) {
-        const summaries = await fetchProductsBulk(codes);
-        const byCode = new Map(summaries.map((s) => [s.productCode, s]));
-        tours = tours.map((t) => {
-          const s = byCode.get(t.productId);
-          if (!s) return t;
-          return {
-            ...t,
-            imageUrl: t.imageUrl || s.imageUrl || null,
-            fromPrice: t.fromPrice || s.fromPriceDisplay || null,
-            rating: s.rating,
-            reviewCount: s.reviewCount,
-          };
-        });
-      }
+      const dbSummaries = await getV3ViatorProductSummaries(subTourCodes);
+      tours = tours.map((t) => {
+        const s = dbSummaries.get(t.productId);
+        if (!s) return t;
+        return {
+          ...t,
+          imageUrl: t.imageUrl || s.imageUrl || null,
+          fromPrice: t.fromPrice || s.fromPrice || null,
+          rating: t.rating ?? s.rating,
+          reviewCount: t.reviewCount ?? s.reviewCount,
+        };
+      });
     } catch {
-      // keep existing tour data
+      // keep existing
+    }
+    try {
+      const summaries = await fetchProductsBulk(subTourCodes);
+      const byCode = new Map(summaries.map((s) => [s.productCode, s]));
+      tours = tours.map((t) => {
+        const s = byCode.get(t.productId);
+        if (!s) return t;
+        return {
+          ...t,
+          imageUrl: t.imageUrl || s.imageUrl || null,
+          fromPrice: t.fromPrice || s.fromPriceDisplay || null,
+          rating: s.rating,
+          reviewCount: s.reviewCount,
+        };
+      });
+    } catch {
+      // keep DB/viator_products values
     }
   }
 

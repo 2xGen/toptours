@@ -108,14 +108,16 @@ export async function getV3LandingTopPicksFromCategories(destinationSlug) {
     for (const cat of categories) {
       const arr = byCat[cat.slug];
       if (arr && arr.length) {
+        const row = arr[0];
+        const img = typeof row.image_url === 'string' && row.image_url.trim() ? row.image_url : null;
         result.push({
-          product_id: arr[0].product_id,
-          title: arr[0].title,
-          tour_slug: arr[0].tour_slug,
-          category_slug: arr[0].category_slug,
+          product_id: row.product_id,
+          title: row.title,
+          tour_slug: row.tour_slug,
+          category_slug: row.category_slug,
           category_title: cat.title,
-          image_url: arr[0].image_url ?? null,
-          from_price: arr[0].from_price ?? null,
+          image_url: img,
+          from_price: row.from_price ?? null,
         });
       }
     }
@@ -538,8 +540,8 @@ export async function getV3LandingAllToursForDestination(destinationSlug) {
       productId: row.product_id,
       title: row.title,
       tourSlug: row.tour_slug || undefined,
-      imageUrl: row.image_url || undefined,
-      fromPrice: row.from_price || undefined,
+      imageUrl: row.image_url ?? null,
+      fromPrice: row.from_price ?? null,
       rating: row.rating,
       reviewCount: row.review_count,
       categorySlug: row.category_slug,

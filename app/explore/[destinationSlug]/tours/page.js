@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import {
   getV3LandingDestination,
   getV3LandingAllToursForDestination,
+  getV3ViatorProductSummaries,
 } from '@/lib/v3LandingData';
 import { fetchProductsBulk } from '@/lib/viatorBulk';
 import NavigationNext from '@/components/NavigationNext';
@@ -134,28 +135,52 @@ export default async function ExploreToursPage({ params, searchParams }) {
   const start = (page - 1) * TOURS_PER_PAGE;
   const toursOnPage = tours.slice(start, start + TOURS_PER_PAGE);
 
-  // Optional: enrich with live bulk data for missing images/prices (same as category page)
+  // Enrich with images/prices: DB first, then viator_products, then live API. Always pass explicit imageUrl so client gets it.
   let enrichedTours = toursOnPage;
-  try {
-    const codes = toursOnPage.map((t) => t.productId).filter(Boolean);
-    if (codes.length > 0) {
-      const summaries = await fetchProductsBulk(codes);
-      const byCode = new Map(summaries.map((s) => [s.productCode, s]));
+  const codes = toursOnPage.map((t) => t.productId).filter(Boolean);
+  if (codes.length > 0) {
+    try {
+      const dbSummaries = await getV3ViatorProductSummaries(codes);
       enrichedTours = toursOnPage.map((t) => {
-        const s = byCode.get(t.productId);
-        if (!s) return t;
+        const s = dbSummaries.get(t.productId);
+        const imageUrl = t.imageUrl || (s && s.imageUrl) || null;
+        const fromPrice = t.fromPrice || (s && s.fromPrice) || null;
         return {
           ...t,
-          imageUrl: t.imageUrl || s.imageUrl || null,
-          fromPrice: t.fromPrice || s.fromPriceDisplay || null,
-          rating: t.rating ?? s.rating,
-          reviewCount: t.reviewCount ?? s.reviewCount,
+          imageUrl,
+          fromPrice,
+          rating: t.rating ?? (s && s.rating),
+          reviewCount: t.reviewCount ?? (s && s.reviewCount),
         };
       });
+    } catch {
+      // keep existing
     }
-  } catch {
-    // keep existing
+    try {
+      const summaries = await fetchProductsBulk(codes);
+      const byCode = new Map(summaries.map((s) => [s.productCode, s]));
+      enrichedTours = enrichedTours.map((t) => {
+        const s = byCode.get(t.productId);
+        const imageUrl = t.imageUrl || (s && s.imageUrl) || null;
+        const fromPrice = t.fromPrice || (s && s.fromPriceDisplay) || null;
+        return {
+          ...t,
+          imageUrl,
+          fromPrice,
+          rating: t.rating ?? (s && s.rating),
+          reviewCount: t.reviewCount ?? (s && s.reviewCount),
+        };
+      });
+    } catch {
+      // keep DB/viator_products values
+    }
   }
+  // Normalize: ensure every tour has imageUrl (string | null) so client never receives undefined
+  enrichedTours = enrichedTours.map((t) => ({
+    ...t,
+    imageUrl: t.imageUrl ?? null,
+    fromPrice: t.fromPrice ?? null,
+  }));
 
   const basePath = `/explore/${destinationSlug}/tours`;
   const pageTitle = category ? category.title : `Tours & Activities in ${destination.name}`;

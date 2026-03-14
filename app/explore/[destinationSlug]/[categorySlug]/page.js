@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getV3LandingDestination, getV3LandingCategories, getV3LandingCategoryContent, getV3LandingCategoryPageMeta } from '@/lib/v3LandingData';
+import { getV3LandingDestination, getV3LandingCategories, getV3LandingCategoryContent, getV3LandingCategoryPageMeta, getV3ViatorProductSummaries } from '@/lib/v3LandingData';
 import Link from 'next/link';
 import { getExploreCategoryContent } from '@/data/exploreCategoryContent';
 import NavigationNext from '@/components/NavigationNext';
@@ -58,16 +58,34 @@ export default async function ExploreCategoryPage({ params }) {
 
   // Full category page with tours and subcategories
   if (content) {
-    // Enrich top picks + other tours with live Viator summary (image, price, rating) via bulk API
+    // Enrich top picks + other tours: first viator_products (works in prod), then live API if enabled
     let enrichedTopPicks = content.topPicks;
     let enrichedOtherTours = content.otherTours;
-    try {
-      const allTours = [...(content.topPicks || []), ...(content.otherTours || [])];
-      const productCodes = Array.from(new Set(allTours.map((t) => t.productId))).filter(Boolean);
-      if (productCodes.length > 0) {
+    const allTours = [...(content.topPicks || []), ...(content.otherTours || [])];
+    const productCodes = Array.from(new Set(allTours.map((t) => t.productId))).filter(Boolean);
+    if (productCodes.length > 0) {
+      try {
+        const dbSummaries = await getV3ViatorProductSummaries(productCodes);
+        const mergeFromDb = (tour) => {
+          const s = dbSummaries.get(tour.productId);
+          if (!s) return tour;
+          return {
+            ...tour,
+            imageUrl: tour.imageUrl || s.imageUrl || null,
+            fromPrice: tour.fromPrice || s.fromPrice || null,
+            rating: tour.rating ?? s.rating,
+            reviewCount: tour.reviewCount ?? s.reviewCount,
+          };
+        };
+        enrichedTopPicks = (content.topPicks || []).map(mergeFromDb);
+        enrichedOtherTours = (content.otherTours || []).map(mergeFromDb);
+      } catch {
+        // continue with DB-only values
+      }
+      try {
         const summaries = await fetchProductsBulk(productCodes);
         const byCode = new Map(summaries.map((s) => [s.productCode, s]));
-        const merge = (tour) => {
+        const mergeLive = (tour) => {
           const s = byCode.get(tour.productId);
           if (!s) return tour;
           return {
@@ -78,11 +96,11 @@ export default async function ExploreCategoryPage({ params }) {
             reviewCount: s.reviewCount,
           };
         };
-        enrichedTopPicks = (content.topPicks || []).map(merge);
-        enrichedOtherTours = (content.otherTours || []).map(merge);
+        enrichedTopPicks = enrichedTopPicks.map(mergeLive);
+        enrichedOtherTours = enrichedOtherTours.map(mergeLive);
+      } catch {
+        // cards use DB/viator_products values
       }
-    } catch {
-      // Fail silently; cards will just show title + fallback price text
     }
 
     const breadcrumbSchema = {

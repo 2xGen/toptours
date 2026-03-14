@@ -23,7 +23,7 @@ export default function ExploreToursListingClient({ tours = [], destinationSlug,
         const href = tour.tourSlug && tour.categorySlug
           ? `/explore/${destinationSlug}/${tour.categorySlug}/${tour.tourSlug}`
           : getTourUrl(tour.productId, tour.title);
-        const imageUrl = tour.imageUrl || null;
+        const imageUrl = tour.imageUrl ?? tour.image_url ?? null;
         const priceDisplay = tour.fromPrice || 'From price on request';
         const hasRating = typeof tour.rating === 'number' && tour.rating > 0 && typeof tour.reviewCount === 'number' && tour.reviewCount > 0;
 

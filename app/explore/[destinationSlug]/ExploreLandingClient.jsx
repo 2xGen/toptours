@@ -191,7 +191,7 @@ export default function ExploreLandingClient({ destination, destinationSlug, top
                 pick.tour_slug && pick.category_slug
                   ? `/explore/${destinationSlug}/${pick.category_slug}/${pick.tour_slug}`
                   : getTourUrl(pick.product_id, title);
-              const imageUrl = pick.image_url_override ?? pick.image_url ?? null;
+              const imageUrl = pick.image_url_override ?? pick.image_url ?? (pick.imageUrl ?? null);
               const priceDisplay =
                 pick.from_price_override ?? pick.from_price ?? 'From price on request';
 

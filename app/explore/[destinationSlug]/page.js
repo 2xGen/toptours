@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getV3LandingData } from '@/lib/v3LandingData';
+import { getV3LandingData, getV3ViatorProductSummaries } from '@/lib/v3LandingData';
 import { fetchProductsBulk } from '@/lib/viatorBulk';
 import ExploreLandingClient from './ExploreLandingClient';
 import NavigationNext from '@/components/NavigationNext';
@@ -42,26 +42,36 @@ export default async function ExploreDestinationPage({ params }) {
 
   if (!destination) notFound();
 
-  // Enrich top picks with image and price from Viator when DB values are missing
+  // Enrich top picks with image and price: DB image_url first, then viator_products, then live API. Always pass explicit image_url so client gets it.
   if (topPicks?.length > 0) {
-    try {
-      const productCodes = topPicks.map((p) => p.product_id).filter(Boolean);
-      if (productCodes.length > 0) {
-        const summaries = await fetchProductsBulk(productCodes);
-        const byCode = new Map(summaries.map((s) => [s.productCode, s]));
+    const productCodes = topPicks.map((p) => p.product_id).filter(Boolean);
+    if (productCodes.length > 0) {
+      try {
+        const dbSummaries = await getV3ViatorProductSummaries(productCodes);
+        topPicks = topPicks.map((pick) => {
+          const s = dbSummaries.get(pick.product_id);
+          const imageUrl = pick.image_url || (s && s.imageUrl) || null;
+          const fromPrice = pick.from_price || (s && s.fromPrice) || null;
+          return { ...pick, image_url: imageUrl, from_price: fromPrice };
+        });
+      } catch {
+        // continue with DB-only values
+      }
+      try {
+        const liveSummaries = await fetchProductsBulk(productCodes);
+        const byCode = new Map(liveSummaries.map((s) => [s.productCode, s]));
         topPicks = topPicks.map((pick) => {
           const s = byCode.get(pick.product_id);
-          if (!s) return pick;
-          return {
-            ...pick,
-            image_url: pick.image_url || s.imageUrl || null,
-            from_price: pick.from_price || s.fromPriceDisplay || null,
-          };
+          const imageUrl = pick.image_url || (s && s.imageUrl) || null;
+          const fromPrice = pick.from_price || (s && s.fromPriceDisplay) || null;
+          return { ...pick, image_url: imageUrl, from_price: fromPrice };
         });
+      } catch {
+        // use DB/viator_products values
       }
-    } catch {
-      // Fail silently; cards use DB values or fallback text
     }
+    // Normalize: ensure every pick has image_url (string | null) so client never receives undefined
+    topPicks = topPicks.map((p) => ({ ...p, image_url: p.image_url ?? null, from_price: p.from_price ?? null }));
   }
 
   const breadcrumbSchema = {
