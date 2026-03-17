@@ -1,12 +1,39 @@
 /**
  * Lightweight Viator bulk helper for explore pages.
  * Uses POST /products/bulk + /availability/schedules/bulk to get image, rating, reviews, and from-price.
+ * Converts non-USD (e.g. JPY for Tokyo) to USD so the site shows consistent "$" pricing.
  *
  * Env:
  * - VIATOR_API_KEY (required for live)
  * - VIATOR_API_BASE_URL (optional, default https://api.viator.com/partner)
  * - VIATOR_USE_LIVE_API: set to "true" to actually call Viator; otherwise returns [] (safe in dev).
  */
+
+// Approximate rates to USD (match viatorPricing.js). Used when API returns local currency (e.g. JPY for Tokyo).
+const CURRENCY_TO_USD = {
+  JPY: 0.0067,
+  EUR: 1.08,
+  GBP: 1.27,
+  AUD: 0.65,
+  CAD: 0.72,
+  CHF: 1.12,
+  MXN: 0.058,
+  KRW: 0.00075,
+  CNY: 0.14,
+  THB: 0.029,
+  SGD: 0.74,
+  HKD: 0.13,
+  NZD: 0.6,
+};
+
+function toUsd(amount, currencyCode) {
+  if (amount == null || typeof amount !== 'number' || amount <= 0) return null;
+  const code = (currencyCode || '').toUpperCase();
+  if (code === 'USD') return amount;
+  const rate = CURRENCY_TO_USD[code];
+  if (rate == null) return null;
+  return Math.round(amount * rate * 100) / 100;
+}
 
 function pixelArea(c) {
   const w = c.width ?? 0;
@@ -109,11 +136,20 @@ function mapBulkItemToSummary(item) {
       .filter((n) => typeof n === 'number');
     if (prices.length > 0) priceFrom = Math.min(...prices);
   }
-  const currency = pricing.currency || 'USD';
-  const currencySymbol = currency === 'USD' ? '$' : `${currency} `;
+  const currency = (pricing.currency || 'USD').toUpperCase();
+  let displayPrice = priceFrom;
+  let displayCurrency = currency;
+  if (typeof priceFrom === 'number' && currency !== 'USD') {
+    const usd = toUsd(priceFrom, currency);
+    if (usd != null && usd > 0) {
+      displayPrice = usd;
+      displayCurrency = 'USD';
+    }
+  }
+  const currencySymbol = displayCurrency === 'USD' ? '$' : `${displayCurrency} `;
   let fromPriceDisplay;
-  if (typeof priceFrom === 'number') {
-    fromPriceDisplay = `Price from ${currencySymbol}${Math.round(priceFrom)}`;
+  if (typeof displayPrice === 'number') {
+    fromPriceDisplay = `Price from ${currencySymbol}${Math.round(displayPrice)}`;
   } else if (typeof pricing.summary === 'string' && pricing.summary.trim()) {
     const s = pricing.summary.trim();
     fromPriceDisplay = /^(from\s+)?\$?\d+/i.test(s)
@@ -135,7 +171,8 @@ function mapBulkItemToSummary(item) {
     title: item.title || 'Tour',
     productUrl: item.productUrl,
     fromPriceDisplay,
-    fromPrice: typeof priceFrom === 'number' ? priceFrom : undefined,
+    fromPrice: typeof displayPrice === 'number' ? displayPrice : undefined,
+    currency,
     reviewCount: totalReviews,
     rating: averageRating,
     imageUrl: firstImage || null,
@@ -189,8 +226,10 @@ async function fetchPricesFromSchedules(productCodes) {
 /**
  * Fetch summary data (image, price, rating, reviewCount, productUrl) for up to 500 products.
  * Returns [] when VIATOR_USE_LIVE_API is not \"true\" or when API calls fail.
+ * @param {string[]} productCodes
+ * @param {{ destinationSlug?: string }} [opts] - If destinationSlug is 'tokyo' (or other JPY destination), schedule overlay prices are treated as JPY when API doesn't return currency.
  */
-export async function fetchProductsBulk(productCodes) {
+export async function fetchProductsBulk(productCodes, opts = {}) {
   const useLive = process.env.VIATOR_USE_LIVE_API === 'true';
   if (!useLive || !productCodes || productCodes.length === 0) return [];
   const apiKey = process.env.VIATOR_API_KEY;
@@ -213,20 +252,35 @@ export async function fetchProductsBulk(productCodes) {
   const data = await res.json();
   if (!Array.isArray(data)) return [];
 
+  const destinationSlug = opts?.destinationSlug || '';
+  const assumeJpy = /^tokyo$/i.test(destinationSlug);
+
   const summaries = [];
   for (const item of data) {
     const summary = mapBulkItemToSummary(item);
     if (summary) summaries.push(summary);
   }
 
-  // Overlay from-price from schedules when available
+  // Overlay from-price from schedules when available (schedules often return local currency e.g. JPY for Tokyo)
   const priceMap = await fetchPricesFromSchedules(productCodes);
   for (const s of summaries) {
     const p = priceMap.get(s.productCode);
     if (typeof p === 'number') {
-      s.fromPrice = p;
-      s.fromPriceDisplay = `Price from $${Math.round(p)}`;
+      let usd = null;
+      if (s.currency && s.currency !== 'USD') {
+        usd = toUsd(p, s.currency);
+      } else if (assumeJpy && p >= 500 && p <= 500000) {
+        usd = toUsd(p, 'JPY');
+      }
+      if (usd != null && usd > 0) {
+        s.fromPrice = usd;
+        s.fromPriceDisplay = `Price from $${Math.round(usd)}`;
+      } else {
+        s.fromPrice = p;
+        s.fromPriceDisplay = `Price from $${Math.round(p)}`;
+      }
     }
+    delete s.currency;
   }
 
   return summaries;

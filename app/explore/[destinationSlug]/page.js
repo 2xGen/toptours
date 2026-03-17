@@ -58,7 +58,7 @@ export default async function ExploreDestinationPage({ params }) {
         // continue with DB-only values
       }
       try {
-        const liveSummaries = await fetchProductsBulk(productCodes);
+        const liveSummaries = await fetchProductsBulk(productCodes, { destinationSlug });
         const byCode = new Map(liveSummaries.map((s) => [s.productCode, s]));
         topPicks = topPicks.map((pick) => {
           const s = byCode.get(pick.product_id);

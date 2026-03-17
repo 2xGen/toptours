@@ -3,6 +3,83 @@
  * Generates slugs, manages tour data, and provides utilities for tour pages
  */
 
+/** Viator affiliate params for booking links (pid is required for referral tracking). No campaign param. */
+const VIATOR_AFFILIATE = {
+  mcid: '42383',
+  pid: 'P00276441',
+  medium: 'api',
+  api_version: '2.0',
+};
+
+/**
+ * Normalize Viator host so links work reliably (avoid shop.live.rc.viator.com).
+ * @param {string} url
+ * @returns {string}
+ */
+function normalizeViatorHost(url) {
+  if (!url || typeof url !== 'string') return '';
+  const trimmed = url.trim();
+  if (!trimmed) return '';
+  return trimmed.replace(/^https?:\/\/shop\.live\.rc\.viator\.com/i, 'https://www.viator.com');
+}
+
+/**
+ * Append TopTours.ai Viator affiliate params to a Viator URL.
+ * - Preserves existing query string
+ * - Does NOT duplicate params if already present
+ * - Normalizes Viator host to www.viator.com
+ * @param {string} url
+ * @returns {string} url with affiliate params, or empty string if not a viator.com URL
+ */
+export function withViatorAffiliateParams(url) {
+  if (!url || typeof url !== 'string') return '';
+  const trimmed = normalizeViatorHost(url);
+  if (!trimmed) return '';
+  if (!trimmed.includes('viator.com')) return '';
+  try {
+    const u = new URL(trimmed);
+    // Only set if missing to avoid duplicates
+    for (const [k, v] of Object.entries(VIATOR_AFFILIATE)) {
+      if (!u.searchParams.has(k)) u.searchParams.set(k, v);
+    }
+    return u.toString();
+  } catch {
+    // Fallback: naive append if URL parsing fails
+    const joiner = trimmed.includes('?') ? '&' : '?';
+    const params = new URLSearchParams(VIATOR_AFFILIATE).toString();
+    return `${trimmed}${joiner}${params}`;
+  }
+}
+
+/**
+ * Build a Viator URL for a product and append affiliate params.
+ * Prefers an existing Viator productUrl (from API/DB) when provided.
+ * @param {object} args
+ * @param {string} [args.productUrl] - existing Viator URL to enrich
+ * @param {string} [args.destinationSlug] - e.g. 'prague' (fallback only)
+ * @param {string} args.productCode - Viator product code e.g. '2785DINNER'
+ * @returns {string} Full Viator URL with affiliate params
+ */
+export function getViatorAffiliateTourUrl({ productUrl, destinationSlug, productCode }) {
+  const enriched = withViatorAffiliateParams(productUrl);
+  if (enriched) return enriched;
+  if (!productCode) return '';
+  // Match Prg365's proven-working booking URL format for Prague.
+  if (destinationSlug === 'prague') {
+    return withViatorAffiliateParams(`https://www.viator.com/Prague/d462-ttd/p-${String(productCode)}`);
+  }
+  // Tokyo: Viator uses /Tokyo/d334-ttd/p-{code}
+  if (destinationSlug === 'tokyo') {
+    return withViatorAffiliateParams(`https://www.viator.com/Tokyo/d334-ttd/p-${String(productCode)}`);
+  }
+  // Curaçao: Viator uses /Curacao/d725-ttd/p-{code}
+  if (destinationSlug === 'curacao') {
+    return withViatorAffiliateParams(`https://www.viator.com/Curacao/d725-ttd/p-${String(productCode)}`);
+  }
+  // Generic fallback (works for many products even without destination context)
+  return withViatorAffiliateParams(`https://www.viator.com/tours/${String(productCode)}`);
+}
+
 // Define functions first, then export to avoid initialization order issues
 function generateTourSlugInternal(title) {
   if (!title || typeof title !== 'string') return '';

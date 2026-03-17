@@ -55,13 +55,14 @@ function parseArgs() {
   return { destination, category };
 }
 
-/** Call Viator bulk in chunks of BULK_PAGE_SIZE; return merged summaries. */
-async function fetchProductsBulkBatched(productCodes) {
+/** Call Viator bulk in chunks of BULK_PAGE_SIZE; return merged summaries. destinationSlug used for JPY conversion (e.g. tokyo). */
+async function fetchProductsBulkBatched(productCodes, destinationSlug = '') {
   if (!productCodes || productCodes.length === 0) return [];
+  const opts = destinationSlug ? { destinationSlug } : {};
   const out = [];
   for (let i = 0; i < productCodes.length; i += BULK_PAGE_SIZE) {
     const chunk = productCodes.slice(i, i + BULK_PAGE_SIZE);
-    const summaries = await fetchProductsBulk(chunk);
+    const summaries = await fetchProductsBulk(chunk, opts);
     out.push(...(summaries || []));
   }
   return out;
@@ -107,7 +108,7 @@ async function ingestOne(supabaseClient, destinationSlug, categorySlug) {
   }
 
   const productCodes = Array.from(new Set(rows.map((r) => r.product_id))).filter(Boolean);
-  const summaries = await fetchProductsBulkBatched(productCodes);
+  const summaries = await fetchProductsBulkBatched(productCodes, destinationSlug);
   if (!summaries || summaries.length === 0) {
     console.warn(`⚠️ No Viator summaries for ${destinationSlug}/${categorySlug}. Check VIATOR_* env.`);
     return { updated: 0, total: rows.length };
@@ -116,10 +117,24 @@ async function ingestOne(supabaseClient, destinationSlug, categorySlug) {
   const byCode = new Map(summaries.map((s) => [s.productCode, s]));
   let updatedCount = 0;
 
+  function isPlaceholderTitle(title) {
+    if (!title || typeof title !== 'string') return true;
+    const t = title.trim().toLowerCase();
+    if (!t) return true;
+    if (t === 'tour' || t === 'tours') return true;
+    if (t.includes('local operator')) return true;
+    if (t.includes('tour operator')) return true;
+    if (t === 'operator') return true;
+    return false;
+  }
+
   for (const row of rows) {
     const s = byCode.get(row.product_id);
     if (!s) continue;
     const update = {
+      ...(isPlaceholderTitle(row.title) && typeof s.title === 'string' && s.title.trim()
+        ? { title: s.title.trim() }
+        : {}),
       image_url: s.imageUrl || null,
       from_price: s.fromPriceDisplay || null,
       rating: typeof s.rating === 'number' && s.rating > 0 ? s.rating : null,

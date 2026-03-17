@@ -157,7 +157,7 @@ export default async function ExploreToursPage({ params, searchParams }) {
       // keep existing
     }
     try {
-      const summaries = await fetchProductsBulk(codes);
+      const summaries = await fetchProductsBulk(codes, { destinationSlug });
       const byCode = new Map(summaries.map((s) => [s.productCode, s]));
       enrichedTours = enrichedTours.map((t) => {
         const s = byCode.get(t.productId);

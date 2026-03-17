@@ -16,6 +16,7 @@ import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import ExploreSubcategoryClient from './ExploreSubcategoryClient';
 import ExploreTourDetailClient from './ExploreTourDetailClient';
+import { getViatorAffiliateTourUrl } from '@/utils/tourHelpers';
 
 export const revalidate = 3600;
 
@@ -94,7 +95,19 @@ export default async function ExploreSubcategoryPage({ params }) {
   if (tourFromDb) {
     if (!destination || !category) notFound();
     let tour = await getV3ViatorProduct(tourFromDb.productId);
-    if (!tour) notFound();
+    // When viator_products has no row, render from v3 landing data only (e.g. after Aruba import without Viator sync)
+    if (!tour) {
+      const viatorUrl =
+        getViatorAffiliateTourUrl({ destinationSlug, productCode: tourFromDb.productId })
+        || `https://www.viator.com/tours/${destinationSlug}/${tourFromDb.productId}`;
+      tour = {
+        title: tourFromDb.title,
+        productUrl: viatorUrl,
+        ...(tourFromDb.imageUrl && {
+          images: [{ url: tourFromDb.imageUrl, isCover: true }],
+        }),
+      };
+    }
 
     const content = await getV3LandingCategoryContent(destinationSlug, categorySlug);
     const allTours = [...(content?.topPicks || []), ...(content?.otherTours || [])];
@@ -211,7 +224,7 @@ export default async function ExploreSubcategoryPage({ params }) {
       // keep existing
     }
     try {
-      const summaries = await fetchProductsBulk(subTourCodes);
+      const summaries = await fetchProductsBulk(subTourCodes, { destinationSlug });
       const byCode = new Map(summaries.map((s) => [s.productCode, s]));
       tours = tours.map((t) => {
         const s = byCode.get(t.productId);

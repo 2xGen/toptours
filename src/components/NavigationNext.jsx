@@ -16,6 +16,10 @@ const navItems = [
     path: '/explore/new-york-city',
     children: [
       { name: 'New York City', path: '/explore/new-york-city' },
+      { name: 'Aruba', path: '/explore/aruba' },
+      { name: 'Prague', path: '/explore/prague' },
+      { name: 'Tokyo', path: '/explore/tokyo' },
+      { name: 'Curaçao', path: '/explore/curacao' },
     ],
   },
   { name: 'Destinations', path: '/destinations' },

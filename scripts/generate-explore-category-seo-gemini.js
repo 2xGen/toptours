@@ -167,7 +167,7 @@ async function generateCategorySeo(categorySlug, categoryTitle, destinationName,
           temperature: 0.6,
           topK: 40,
           topP: 0.95,
-          maxOutputTokens: 8192,
+          maxOutputTokens: 16384,
         },
       });
       const response = result.response;
@@ -206,10 +206,13 @@ async function generateCategorySeo(categorySlug, categoryTitle, destinationName,
   }
 
   const payload = normalizePayload(parsed);
-  const hasRequired = payload && (payload.seo_meta_title || payload.hero_description) && (payload.faq_json?.length >= 3);
-  if (!hasRequired) {
+  const hasCore = payload && (payload.seo_meta_title || payload.hero_description);
+  if (!hasCore) {
     console.error('   Raw (first 500 chars):', content.slice(0, 500));
-    throw new Error('Gemini output missing required fields (seo_meta_title or hero_description, and at least 3 FAQs).');
+    throw new Error('Gemini output missing required fields (seo_meta_title or hero_description).');
+  }
+  if (!payload.faq_json?.length || payload.faq_json.length < 3) {
+    console.log('   ⚠️ Fewer than 3 FAQs in response (possible truncation); saving anyway.');
   }
   return payload;
 }

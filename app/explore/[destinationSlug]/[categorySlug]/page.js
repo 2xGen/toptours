@@ -83,7 +83,7 @@ export default async function ExploreCategoryPage({ params }) {
         // continue with DB-only values
       }
       try {
-        const summaries = await fetchProductsBulk(productCodes);
+        const summaries = await fetchProductsBulk(productCodes, { destinationSlug });
         const byCode = new Map(summaries.map((s) => [s.productCode, s]));
         const mergeLive = (tour) => {
           const s = byCode.get(tour.productId);

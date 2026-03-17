@@ -13,7 +13,7 @@ import {
   Users,
   Sparkles,
 } from 'lucide-react';
-import { getTourUrl } from '@/utils/tourHelpers';
+import { getTourUrl, getViatorAffiliateTourUrl } from '@/utils/tourHelpers';
 
 /**
  * Aru365-style single tour page for explore: hero, intro, what's included, itinerary, similar tours, FAQ, CTA.
@@ -60,7 +60,9 @@ export default function ExploreTourDetailClient({
   }
 
   const bookUrl =
-    tour?.productUrl || `https://www.viator.com/tours/New-York-City/${productId}`;
+    getViatorAffiliateTourUrl({ productUrl: tour?.productUrl, destinationSlug, productCode: productId })
+    || tour?.productUrl
+    || getViatorAffiliateTourUrl({ destinationSlug, productCode: productId });
 
   const imageUrl = (() => {
     const imgs = tour?.images;
