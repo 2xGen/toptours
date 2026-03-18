@@ -270,15 +270,21 @@ export async function generateMetadata({ params }) {
     }
     
     // Same as page: tag-based placeholder guides (e.g. spring-break, dsa-non-compliant)
-    // For metadata: if it's a placeholder (tag exists but no content), we signal noindex so crawlers don't index; page will 404
+    // Prefer cached tag guide content first (tag traits lookup may be incomplete for some slugs).
+    // Only fall back to placeholder generation when cache is missing.
     let isPlaceholderInMetadata = false;
     if (!guideData && destination && categorySlug !== 'airport-transfers') {
-      const tag = await getTagBySlug(categorySlug);
-      if (tag) {
-        const content = await getTagGuideContent(normalizeSlug(destinationId), categorySlug);
-        if (content) {
-          guideData = contentToGuideData(content, destination?.fullName || destination?.name || destinationId, destination?.imageUrl);
-        } else {
+      const normalizedDestId = normalizeSlug(destinationId);
+      const content = await getTagGuideContent(normalizedDestId, categorySlug);
+      if (content) {
+        guideData = contentToGuideData(
+          content,
+          destination?.fullName || destination?.name || destinationId,
+          destination?.imageUrl
+        );
+      } else {
+        const tag = await getTagBySlug(categorySlug);
+        if (tag) {
           const destName = destination.fullName || destination.name || destinationId;
           guideData = {
             title: `${tag.tag_name_en} in ${destName}`,
@@ -466,19 +472,24 @@ export default async function CategoryGuidePage({ params }) {
       console.log(`⚠️ Created minimal destination for ${destinationId}: ${destinationName} (no generated content found)`);
     }
 
-    // Tag guide: resolve slug as Viator tag; serve cached content or show placeholder with "Generate with AI" (no auto-Gemini on load)
+    // Tag guide: prefer cached tag guide content first (viator_tag_traits lookup may be incomplete),
+    // then fall back to placeholder creation when cache is missing.
     let resolvedTagId = null;
     let tagGuidePlaceholder = null;
     if (!guideData && destination && categorySlug !== 'airport-transfers') {
-      const tag = await getTagBySlug(categorySlug);
-      if (tag) {
-        resolvedTagId = tag.tag_id;
-        const normalizedDestId = normalizeSlug(destinationId);
-        const content = await getTagGuideContent(normalizedDestId, categorySlug);
-        if (content) {
-          guideData = contentToGuideData(content, destination?.fullName || destination?.name || destinationId, destination?.imageUrl);
-          guideSource = 'tag_guide';
-        } else {
+      const normalizedDestId = normalizeSlug(destinationId);
+      const content = await getTagGuideContent(normalizedDestId, categorySlug);
+      if (content) {
+        guideData = contentToGuideData(
+          content,
+          destination?.fullName || destination?.name || destinationId,
+          destination?.imageUrl
+        );
+        guideSource = 'tag_guide';
+      } else {
+        const tag = await getTagBySlug(categorySlug);
+        if (tag) {
+          resolvedTagId = tag.tag_id;
           const destName = destination?.fullName || destination?.name || destinationId;
           guideData = {
             title: `${tag.tag_name_en} in ${destName}`,
@@ -486,7 +497,11 @@ export default async function CategoryGuidePage({ params }) {
             categoryName: tag.tag_name_en,
             isPlaceholder: true,
             introduction: '',
-            seo: { title: `${tag.tag_name_en} in ${destName}`, description: `Guide to ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate the full guide with AI.`, keywords: '' },
+            seo: {
+              title: `${tag.tag_name_en} in ${destName}`,
+              description: `Guide to ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate the full guide with AI.`,
+              keywords: '',
+            },
             whyChoose: [],
             faqs: [],
             tourTypes: [],
