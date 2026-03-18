@@ -477,6 +477,16 @@ export default async function CategoryGuidePage({ params }) {
     let resolvedTagId = null;
     let tagGuidePlaceholder = null;
     if (!guideData && destination && categorySlug !== 'airport-transfers') {
+      const tagNameFromSlug = (slug) => {
+        if (!slug) return 'Guide';
+        return String(slug)
+          .replace(/[_]/g, ' ')
+          .split('-')
+          .filter(Boolean)
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(' ');
+      };
+
       const normalizedDestId = normalizeSlug(destinationId);
       const content = await getTagGuideContent(normalizedDestId, categorySlug);
       if (content) {
@@ -488,29 +498,30 @@ export default async function CategoryGuidePage({ params }) {
         guideSource = 'tag_guide';
       } else {
         const tag = await getTagBySlug(categorySlug);
-        if (tag) {
-          resolvedTagId = tag.tag_id;
-          const destName = destination?.fullName || destination?.name || destinationId;
-          guideData = {
-            title: `${tag.tag_name_en} in ${destName}`,
-            subtitle: `Discover ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate this guide with AI to get tips, what to expect, and FAQs.`,
-            categoryName: tag.tag_name_en,
-            isPlaceholder: true,
-            introduction: '',
-            seo: {
-              title: `${tag.tag_name_en} in ${destName}`,
-              description: `Guide to ${tag.tag_name_en.toLowerCase()} in ${destName}. Generate the full guide with AI.`,
-              keywords: '',
-            },
-            whyChoose: [],
-            faqs: [],
-            tourTypes: [],
-            whatToExpect: {},
-            expertTips: [],
-            stats: {},
-          };
-          tagGuidePlaceholder = { tagName: tag.tag_name_en, tagSlug: categorySlug };
-        }
+        const destName = destination?.fullName || destination?.name || destinationId;
+        const tagNameEn = tag?.tag_name_en || tagNameFromSlug(categorySlug);
+
+        if (tag?.tag_id) resolvedTagId = tag.tag_id;
+
+        guideData = {
+          title: `${tagNameEn} in ${destName}`,
+          subtitle: `Discover ${tagNameEn.toLowerCase()} in ${destName}. Generate this guide with AI to get tips, what to expect, and FAQs.`,
+          categoryName: tagNameEn,
+          isPlaceholder: true,
+          introduction: '',
+          seo: {
+            title: `${tagNameEn} in ${destName}`,
+            description: `Guide to ${tagNameEn.toLowerCase()} in ${destName}. Generate the full guide with AI.`,
+            keywords: '',
+          },
+          whyChoose: [],
+          faqs: [],
+          tourTypes: [],
+          whatToExpect: {},
+          expertTips: [],
+          stats: {},
+        };
+        tagGuidePlaceholder = { tagName: tagNameEn, tagSlug: categorySlug };
       }
     }
     
@@ -586,7 +597,8 @@ export default async function CategoryGuidePage({ params }) {
     }
     
     // SEO: 404 placeholder guides (no real content) so they don't inflate "Excluded by noindex" in GSC
-    if (guideData?.isPlaceholder === true) {
+    // But for actual users we want the "Generate with AI" UI to be reachable.
+    if (guideData?.isPlaceholder === true && process.env.GUIDE_PLACEHOLDER_404 === 'true') {
       notFound();
     }
     

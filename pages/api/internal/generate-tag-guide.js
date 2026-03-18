@@ -38,9 +38,19 @@ export default async function handler(req, res) {
     }
 
     const tag = await getTagBySlug(tagSlug);
-    if (!tag) {
-      return res.status(404).json({ error: 'Tag not found' });
-    }
+    const derivedTagNameFromSlug = (slug) => {
+      if (!slug) return 'Guide';
+      return String(slug)
+        .replace(/[_]/g, ' ')
+        .split('-')
+        .filter(Boolean)
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ');
+    };
+
+    // If viator_tag_traits doesn't know this slug, still allow generation based on the slug itself.
+    // This prevents 404 UX when the UI links to a tag slug that doesn't exactly match Viator traits.
+    const tagNameEn = tag?.tag_name_en || derivedTagNameFromSlug(tagSlug);
 
     const normalizedDestId = normalizeSlug(destinationId);
     const existing = await getTagGuideContent(normalizedDestId, tagSlug);
@@ -51,12 +61,12 @@ export default async function handler(req, res) {
     const destInfo = await getViatorDestinationBySlug(destinationId);
     const destName = destInfo?.name || destinationId;
 
-    const content = await generateTagGuideContentWithGemini(destName, tag.tag_name_en);
+    const content = await generateTagGuideContentWithGemini(destName, tagNameEn);
     if (!content) {
       return res.status(500).json({ error: 'Failed to generate guide content' });
     }
 
-    await saveTagGuideContent(normalizedDestId, tagSlug, tag.tag_name_en, content);
+    await saveTagGuideContent(normalizedDestId, tagSlug, tagNameEn, content);
     return res.status(200).json({ success: true });
   } catch (error) {
     console.error('[generate-tag-guide]', error?.message || error);
